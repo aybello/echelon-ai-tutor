@@ -25,6 +25,7 @@ import { readCheckoutJurisdiction } from "@/lib/checkoutJurisdiction";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 import SiteNav from "@/components/SiteNav";
@@ -204,7 +205,8 @@ export default function Teams() {
         <div className="mt-10 text-center text-sm text-slate-600">Buying for one learner? <Link href="/pricing" className="font-semibold text-teal-700">View 12-month Individual Exam Passes</Link>.</div>
 
       </main>
-      {inquiryOpen && <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 p-4">
+      {inquiryOpen && <Dialog open onOpenChange={open => { if (!open) setInquiryOpen(null); }}>
+        <DialogContent className="w-[calc(100vw-2rem)] max-w-lg max-h-[90vh] overflow-y-auto bg-white">
         <style>{`@media print {
           @page { size: A4; margin: 16mm; }
           body * { visibility: hidden !important; }
@@ -212,8 +214,10 @@ export default function Teams() {
           .municipal-pricing-summary { position: fixed !important; inset: 0; width: 100%; padding: 24px; background: white !important; border: 0 !important; }
           .municipal-print-hidden { display: none !important; }
         }`}</style>
-        <section role="dialog" aria-modal="true" aria-label="Municipal inquiry" className="w-full max-w-lg rounded-2xl bg-white p-6 shadow-2xl">
-          <h2 className="text-xl font-bold">{inquiryOpen === "quote" ? "Municipal quotation request" : "14-day three-operator evaluation request"}</h2>
+        <DialogHeader>
+          <DialogTitle>{inquiryOpen === "quote" ? "Municipal quotation request" : "14-day three-operator evaluation request"}</DialogTitle>
+          <DialogDescription>Send a nonbinding request to Echelon Institute for staff review. No operator access or payment is created.</DialogDescription>
+        </DialogHeader>
           {inquirySaved ? <div className="mt-4 space-y-4">
               <p className="text-sm">Request #{requestReceipt ?? "—"} received for staff review. No access or invoice has been issued.</p>
               {inquiryOpen === "quote" && confirmedBeforeTaxCents !== null && (
@@ -245,8 +249,8 @@ export default function Teams() {
               <Button type="submit" disabled={sendInquiry.isPending}>{sendInquiry.isPending ? "Submitting…" : "Submit request"}</Button>
             </form>}
           <Button className="mt-3" type="button" variant="ghost" onClick={()=>setInquiryOpen(null)}>Close</Button>
-        </section>
-      </div>}
+        </DialogContent>
+      </Dialog>}
     </div>
   );
 }
