@@ -90,7 +90,7 @@ export const changelogRouter = {
 
   /** Admin: delete a changelog entry */
   delete: protectedProcedure
-    .input(z.object({ id: z.number().int() }))
+    .input(z.object({ id: z.number().int().positive() }))
     .mutation(async ({ ctx, input }) => {
       if (ctx.user.role !== "admin") throw new TRPCError({ code: "FORBIDDEN" });
       const db = await getDb();
