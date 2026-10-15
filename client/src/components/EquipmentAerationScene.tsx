@@ -36,14 +36,26 @@ const ANCHORS: Record<string, Point> = {
   "was-line": [BASIN_LENGTH / 2 + 0.35, -BASIN_DEPTH - 0.42, -BASIN_WIDTH * 0.2],
 };
 
+// Allocated once at module scope. Building this inside render allocated a new
+// unmanaged Three.js geometry on every part click and view change, with nothing
+// disposing the old one. The basin dimensions are constants, so there is no
+// reason to rebuild it.
+const BASIN_SHELL_GEOMETRY = new THREE.BoxGeometry(
+  BASIN_LENGTH,
+  BASIN_DEPTH,
+  BASIN_WIDTH
+);
+
 function Pipe({
   points,
   radius = 0.1,
   color,
+  active = false,
 }: {
   points: Point[];
   radius?: number;
   color: string;
+  active?: boolean;
 }) {
   const curve = useMemo(
     () => new THREE.CatmullRomCurve3(points.map(p => new THREE.Vector3(...p))),
@@ -52,7 +64,13 @@ function Pipe({
   return (
     <mesh castShadow>
       <tubeGeometry args={[curve, 48, radius, 10, false]} />
-      <meshStandardMaterial color={color} roughness={0.38} metalness={0.35} />
+      <meshStandardMaterial
+        color={color}
+        roughness={0.38}
+        metalness={0.35}
+        emissive={color}
+        emissiveIntensity={active ? 0.55 : 0}
+      />
     </mesh>
   );
 }
@@ -102,7 +120,6 @@ function Part({
       }}
     >
       {children}
-      {active ? null : null}
     </group>
   );
 }
@@ -290,7 +307,7 @@ export default function EquipmentAerationScene({
         <lineSegments position={[0, -BASIN_DEPTH / 2, 0]}>
           <edgesGeometry
             args={[
-              new THREE.BoxGeometry(BASIN_LENGTH, BASIN_DEPTH, BASIN_WIDTH),
+              BASIN_SHELL_GEOMETRY,
             ]}
           />
           <lineBasicMaterial color="#64748B" />
@@ -304,7 +321,14 @@ export default function EquipmentAerationScene({
         active={activePart === "mixed-liquor"}
         onSelect={onSelectPart}
       >
-        <mesh position={[0, -BASIN_DEPTH / 2, 0]}>
+        {/*
+          The mixed liquor volume encloses almost the whole basin, so a raycast
+          hits it before the diffusers, the probe or the pipes inside it. Making
+          it non-interactive lets a learner click the submerged equipment they
+          can see through it; the Mixed Liquor Zone stays selectable from the
+          component list beside the model.
+        */}
+        <mesh position={[0, -BASIN_DEPTH / 2, 0]} raycast={() => null}>
           <boxGeometry
             args={[BASIN_LENGTH * 0.985, BASIN_DEPTH * 0.96, BASIN_WIDTH * 0.985]}
           />
@@ -380,6 +404,7 @@ export default function EquipmentAerationScene({
           />
         </mesh>
         <Pipe
+          active={activePart === "blower"}
           color={colorOf("blower")}
           radius={0.08}
           points={[
@@ -445,6 +470,7 @@ export default function EquipmentAerationScene({
         onSelect={onSelectPart}
       >
         <Pipe
+          active={activePart === "ras-line"}
           color={colorOf("ras-line")}
           radius={0.1}
           points={[
@@ -465,6 +491,7 @@ export default function EquipmentAerationScene({
         onSelect={onSelectPart}
       >
         <Pipe
+          active={activePart === "was-line"}
           color={colorOf("was-line")}
           radius={0.085}
           points={[

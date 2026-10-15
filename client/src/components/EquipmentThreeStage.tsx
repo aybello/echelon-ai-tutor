@@ -1,6 +1,6 @@
 import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import type {
   EquipmentDefinition,
@@ -8,6 +8,7 @@ import type {
 } from "@shared/equipmentRegistry";
 import EquipmentAerationScene from "./EquipmentAerationScene";
 import { aerationCameraZoom } from "@/lib/equipmentAerationModel";
+import { supportsWebGL2 } from "@/lib/webglSupport";
 
 /** Camera placement per view. Shared by every scene in the lab. */
 export function equipmentCameraPosition(
@@ -44,15 +45,41 @@ function usePrefersReducedMotion() {
   return reduced;
 }
 
-/** Keeps the model framed on small screens without the user having to pinch. */
-function ResponsiveZoom({ exploded }: { exploded: boolean }) {
+/**
+ * Drives the camera from the view buttons and keeps the model framed on small
+ * screens.
+ *
+ * The `camera` prop on `<Canvas>` only applies on first mount, and OrbitControls
+ * then owns the camera. Without this, once a learner drags the model the Top,
+ * Cutaway and Exploded buttons stop moving the camera at all, which makes the
+ * whole control strip look broken.
+ */
+function CameraRig({
+  view,
+  exploded,
+  controls,
+}: {
+  view: EquipmentView;
+  exploded: boolean;
+  controls: React.MutableRefObject<{ update: () => void } | null>;
+}) {
   const { camera, size } = useThree();
+
   useEffect(() => {
     const cam = camera as THREE.OrthographicCamera;
     if (!cam.isOrthographicCamera) return;
     cam.zoom = aerationCameraZoom(size.width, size.height, exploded);
     cam.updateProjectionMatrix();
   }, [camera, size.width, size.height, exploded]);
+
+  useEffect(() => {
+    const [x, y, z] = equipmentCameraPosition(view);
+    camera.position.set(x, y, z);
+    camera.lookAt(0, -0.8, 0);
+    camera.updateProjectionMatrix();
+    controls.current?.update();
+  }, [camera, view, controls]);
+
   return null;
 }
 
@@ -74,23 +101,15 @@ export default function EquipmentThreeStage({
   const reduced = usePrefersReducedMotion();
   const exploded = view === "exploded";
   const animate = shouldAnimate(flowing, reduced, exploded);
+  const controlsRef = useRef<{ update: () => void } | null>(null);
 
-  // Some browsers and locked-down devices have no WebGL at all. Detect that up
-  // front and hand control back to the page so it can offer the diagram view,
-  // rather than mounting a canvas that silently renders nothing.
-  const [webglOk] = useState(() => {
-    if (typeof document === "undefined") return true;
-    try {
-      const probe = document.createElement("canvas");
-      return Boolean(
-        probe.getContext("webgl2") ||
-          probe.getContext("webgl") ||
-          probe.getContext("experimental-webgl")
-      );
-    } catch {
-      return false;
-    }
-  });
+  // Three.js here requires WebGL 2. Use the one shared probe the rest of the
+  // app uses, so the page and the stage cannot disagree about whether 3D is
+  // available. A looser WebGL 1 check would let the canvas mount and then
+  // render nothing at all.
+  const [webglOk] = useState(() =>
+    typeof document === "undefined" ? true : supportsWebGL2()
+  );
 
   useEffect(() => {
     if (!webglOk) onUnavailable?.();
@@ -115,7 +134,7 @@ export default function EquipmentThreeStage({
           gl.setClearColor("#F8FAFC");
         }}
       >
-        <ResponsiveZoom exploded={exploded} />
+        <CameraRig view={view} exploded={exploded} controls={controlsRef} />
         <ambientLight intensity={0.72} />
         <directionalLight
           position={[7, 11, 6]}
@@ -137,6 +156,7 @@ export default function EquipmentThreeStage({
         ) : null}
 
         <OrbitControls
+          ref={controlsRef as never}
           enablePan={false}
           enableZoom
           minZoom={9}

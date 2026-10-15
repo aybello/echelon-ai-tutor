@@ -74,7 +74,7 @@ export default function EquipmentDetail({
       <SiteNav currentPath={`/equipment-lab/${equipment.slug}`} />
       <main className="mx-auto max-w-[1280px] px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
         <GuideStudyRecording
-          topic={`Equipment Lab — ${equipment.shortTitle}`}
+          topic={`Equipment Lab: ${equipment.shortTitle}`}
         />
 
         {/* ── Header ──────────────────────────────────────────────── */}
@@ -389,7 +389,10 @@ export default function EquipmentDetail({
                         </dt>
                         <dd className="text-slate-600">
                           {t.meaning}{" "}
-                          <span className="text-slate-400">({t.units})</span>
+                          <span className="text-slate-400">
+                            (
+                            {units === "us" && t.unitsUs ? t.unitsUs : t.units})
+                          </span>
                         </dd>
                       </div>
                     ))}

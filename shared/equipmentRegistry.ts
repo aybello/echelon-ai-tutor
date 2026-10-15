@@ -58,7 +58,18 @@ export interface EquipmentFormula {
   /** US customary form, kept for candidates writing US-unit exams. */
   expressionUs?: string;
   /** Each symbol explained, so learners see what every term means. */
-  terms: { symbol: string; meaning: string; units: string }[];
+  /**
+   * `unitsUs` is required whenever the unit differs between systems.
+   * Without it the US toggle swaps the formula and worked example but
+   * leaves this definition list in metric, which reads as a mistake to
+   * a US learner.
+   */
+  terms: {
+    symbol: string;
+    meaning: string;
+    units: string;
+    unitsUs?: string;
+  }[];
   /** Worked example in metric, the primary presentation. */
   worked: WorkedExample;
   /** The same calculation in US customary units. */
@@ -110,7 +121,7 @@ export interface EquipmentDefinition {
 }
 
 /* ────────────────────────────────────────────────────────────────────────────
- * Module 02 — Activated sludge aeration basin
+ * Module 02: Activated sludge aeration basin
  * ──────────────────────────────────────────────────────────────────────────── */
 
 const AERATION_BASIN: EquipmentDefinition = {
@@ -257,11 +268,12 @@ const AERATION_BASIN: EquipmentDefinition = {
       expression: "F/M = (Q x BOD / 1000) / (V x MLVSS / 1000)",
       expressionUs: "F/M = (Q x BOD x 8.34) / (V x MLVSS x 8.34)",
       terms: [
-        { symbol: "F/M", meaning: "Food-to-microorganism ratio", units: "kg BOD per kg MLVSS per day" },
-        { symbol: "Q", meaning: "Flow entering the aeration basin, not including return sludge", units: "m3/day" },
+        { symbol: "F/M", meaning: "Food-to-microorganism ratio", units: "kg BOD per kg MLVSS per day", unitsUs: "lb BOD per lb MLVSS per day" },
+        { symbol: "Q", meaning: "Flow entering the aeration basin, not including return sludge", units: "m3/day", unitsUs: "MGD" },
         { symbol: "BOD", meaning: "BOD concentration entering the biological process", units: "mg/L" },
-        { symbol: "V", meaning: "Aeration basin volume", units: "m3" },
+        { symbol: "V", meaning: "Aeration basin volume", units: "m3", unitsUs: "MG" },
         { symbol: "MLVSS", meaning: "Mixed liquor volatile suspended solids", units: "mg/L" },
+        { symbol: "8.34", meaning: "US units only. Weight of one gallon of water, which converts MG and mg/L into pounds. It cancels out of this particular ratio", units: "not used in metric", unitsUs: "lb per gallon" },
       ],
       worked: {
         scenario:
@@ -272,7 +284,7 @@ const AERATION_BASIN: EquipmentDefinition = {
       },
       workedUs: {
         scenario:
-          "The same basin in US units: 2.0 MGD at 150 mg/L BOD, 0.75 MG volume, 2,000 mg/L MLVSS.",
+          "A comparable basin worked in US units: 2.0 MGD at 150 mg/L BOD, 0.75 MG volume, 2,000 mg/L MLVSS.",
         substitution:
           "Food = 2.0 x 150 x 8.34 = 2,502 lb/day. Microorganisms = 0.75 x 2,000 x 8.34 = 12,510 lb. F/M = 2,502 / 12,510",
         result: "F/M = 0.20 lb BOD per lb MLVSS per day",
@@ -286,8 +298,8 @@ const AERATION_BASIN: EquipmentDefinition = {
       expression: "Sludge age = Solids held in the system / Solids leaving per day",
       terms: [
         { symbol: "Sludge age", meaning: "Average time a solids particle stays in the system, also called SRT or mean cell residence time", units: "days" },
-        { symbol: "Solids held", meaning: "Mass of suspended solids in the aeration basin, found from V x MLSS / 1000", units: "kg" },
-        { symbol: "Solids leaving", meaning: "Mass removed daily as waste activated sludge plus solids lost with the effluent", units: "kg/day" },
+        { symbol: "Solids held", meaning: "Mass of suspended solids in the aeration basin, found from V x MLSS / 1000", units: "kg", unitsUs: "lb" },
+        { symbol: "Solids leaving", meaning: "Mass removed daily as waste activated sludge plus solids lost with the effluent", units: "kg/day", unitsUs: "lb/day" },
       ],
       worked: {
         scenario:
@@ -295,6 +307,13 @@ const AERATION_BASIN: EquipmentDefinition = {
         substitution:
           "Solids held = 3,000 x 2,500 / 1,000 = 7,500 kg. Sludge age = 7,500 / (700 + 50) = 7,500 / 750",
         result: "Sludge age = 10 days",
+      },
+      workedUs: {
+        scenario:
+          "A comparable basin worked in US units: 0.75 MG at 2,500 mg/L MLSS, wasting 1,545 lb/day with about 110 lb/day leaving in the effluent.",
+        substitution:
+          "Solids held = 0.75 x 2,500 x 8.34 = 15,638 lb. Sludge age = 15,638 / (1,545 + 110) = 15,638 / 1,655",
+        result: "Sludge age = 9.4 days",
       },
       interpretation:
         "Note the system boundary. This example counts only the solids in the aeration basin, which is the common simplified form used on many exams. A full-system SRT also includes the solids held in the secondary clarifier, so read each question carefully. Increasing the wasting rate lowers sludge age. Nitrification generally needs a longer sludge age, especially in cold weather.",
@@ -305,8 +324,8 @@ const AERATION_BASIN: EquipmentDefinition = {
       expression: "HRT = 24 x V / Q",
       terms: [
         { symbol: "HRT", meaning: "Nominal hydraulic retention time based on influent flow", units: "hours" },
-        { symbol: "V", meaning: "Basin volume", units: "m3" },
-        { symbol: "Q", meaning: "Flow rate through the basin", units: "m3/day" },
+        { symbol: "V", meaning: "Basin volume", units: "m3", unitsUs: "MG" },
+        { symbol: "Q", meaning: "Flow rate through the basin", units: "m3/day", unitsUs: "MGD" },
         { symbol: "24", meaning: "Converts days into hours", units: "hours per day" },
       ],
       worked: {
@@ -315,7 +334,7 @@ const AERATION_BASIN: EquipmentDefinition = {
         result: "HRT = 9.0 hours",
       },
       workedUs: {
-        scenario: "The same basin in US units: 750,000 gallons receiving 2.0 MGD.",
+        scenario: "A comparable basin worked in US units: 750,000 gallons receiving 2.0 MGD.",
         substitution:
           "Q = 2,000,000 / 24 = 83,333 gal/hr. HRT = 750,000 / 83,333",
         result: "HRT = 9.0 hours",
@@ -424,7 +443,7 @@ const AERATION_BASIN: EquipmentDefinition = {
         heading: "Mixed Liquor, MLSS and MLVSS",
         paragraphs: [
           "Mixed liquor is the combination of incoming wastewater and the biological solids held in the basin. Mixed liquor suspended solids, written as MLSS, is the total concentration of suspended solids in that blend. Mixed liquor volatile suspended solids, written as MLVSS, is the volatile portion of those solids and is used as a proxy for biomass. It is not a direct count of living organisms, because it also includes dead cells and other volatile organic material.",
-          "Operators trend both values because process control decisions depend on knowing how much biomass is working in the basin. Calculations such as the food-to-microorganism ratio use MLVSS because it better represents the organic fraction rather than inert mineral material. MLVSS is a proxy rather than a direct count of living organisms, since it also includes dead cells and other volatile organic matter.",
+          "Operators trend both values because process control decisions depend on knowing how much biomass is working in the basin. Calculations such as the food-to-microorganism ratio use MLVSS because it better represents the organic fraction rather than inert mineral material.",
         ],
       },
       {
@@ -495,12 +514,12 @@ const AERATION_BASIN: EquipmentDefinition = {
       {
         question: "What is MLSS in wastewater treatment?",
         answer:
-          "MLSS stands for mixed liquor suspended solids, the total concentration of suspended solids in the aeration basin. MLVSS, the volatile portion, approximates the biologically active fraction and is used in food-to-microorganism calculations.",
+          "MLSS stands for mixed liquor suspended solids, the total concentration of suspended solids in the aeration basin. MLVSS, the volatile portion, is used as a proxy for biomass, though it also includes dead cells and other volatile organic matter, and is the value used and is used in food-to-microorganism calculations.",
       },
       {
         question: "How do you calculate sludge age?",
         answer:
-          "Divide the pounds of suspended solids held in the aeration system by the pounds of solids leaving each day through wasting and the effluent. The answer is expressed in days. Increasing the wasting rate lowers sludge age.",
+          "Divide the mass of suspended solids held in the aeration system by the mass of solids leaving each day through wasting and with the effluent. In metric, mass in kilograms is volume in cubic metres times concentration in milligrams per litre divided by 1,000. On US exams the 8.34 pounds per gallon factor does the same job. The answer is expressed in days either way. Increasing the wasting rate lowers sludge age.",
       },
       {
         question: "Why does low dissolved oxygen cause bulking sludge?",
