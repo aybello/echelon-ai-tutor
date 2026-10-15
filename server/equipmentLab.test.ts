@@ -56,6 +56,21 @@ describe("Equipment Lab pages are reachable and indexable", () => {
     const slugs = EQUIPMENT_REGISTRY.map(u => u.slug);
     expect(new Set(slugs).size).toBe(slugs.length);
   });
+
+  it("gives the hub page its own meta and links to every unit", () => {
+    // The hub is the internal link source that passes authority to each unit
+    // page. Without its own meta it falls back to a generic study-resources
+    // title and drops out of the sitemap entirely.
+    const hub = STATIC_PAGE_META.find(m => m.path === "/equipment-lab");
+    expect(hub, "/equipment-lab has no page meta of its own").toBeDefined();
+    expect(hub!.title.toLowerCase()).toContain("equipment");
+    for (const unit of EQUIPMENT_REGISTRY) {
+      expect(
+        hub!.bodyHtml,
+        `hub page does not link to /equipment-lab/${unit.slug}`
+      ).toContain(`/equipment-lab/${unit.slug}`);
+    }
+  });
 });
 
 describe("Equipment Lab teaching content is correct", () => {

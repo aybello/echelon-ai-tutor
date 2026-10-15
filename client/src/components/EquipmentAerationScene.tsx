@@ -261,7 +261,11 @@ export default function EquipmentAerationScene({
           <planeGeometry args={[BASIN_LENGTH, BASIN_WIDTH]} />
           <meshStandardMaterial color="#CBD5E1" roughness={0.9} />
         </mesh>
-        {/* Walls. The front wall is hidden in cutaway so the inside is visible. */}
+        {/*
+          Walls. The whole point of this model is seeing what happens inside the
+          basin, so the walls render as glass rather than concrete. The near wall
+          is removed entirely in cutaway view for an unobstructed section.
+        */}
         {[
           { pos: [0, -BASIN_DEPTH / 2, -BASIN_WIDTH / 2] as Point, rot: [0, 0, 0] as Point, w: BASIN_LENGTH, hide: false },
           { pos: [0, -BASIN_DEPTH / 2, BASIN_WIDTH / 2] as Point, rot: [0, Math.PI, 0] as Point, w: BASIN_LENGTH, hide: cutaway },
@@ -274,11 +278,23 @@ export default function EquipmentAerationScene({
               <meshStandardMaterial
                 color="#E2E8F0"
                 roughness={0.85}
+                transparent
+                opacity={0.22}
+                depthWrite={false}
                 side={THREE.DoubleSide}
               />
             </mesh>
           )
         )}
+        {/* Wall edges, so the basin still reads as a solid structure. */}
+        <lineSegments position={[0, -BASIN_DEPTH / 2, 0]}>
+          <edgesGeometry
+            args={[
+              new THREE.BoxGeometry(BASIN_LENGTH, BASIN_DEPTH, BASIN_WIDTH),
+            ]}
+          />
+          <lineBasicMaterial color="#64748B" />
+        </lineSegments>
       </group>
 
       {/* ── Mixed liquor zone ──────────────────────────────────────── */}
@@ -471,7 +487,15 @@ export default function EquipmentAerationScene({
               anchor[2] + offset[2],
             ];
             return (
-              <Html key={part.id} position={pos} center distanceFactor={11}>
+              // distanceFactor is a perspective-camera feature. This stage uses
+              // an orthographic camera, where it blows the label up to tens of
+              // thousands of pixels and covers the whole scene.
+              <Html
+                key={part.id}
+                position={pos}
+                center
+                zIndexRange={[10, 0]}
+              >
                 <button
                   type="button"
                   onClick={e => {

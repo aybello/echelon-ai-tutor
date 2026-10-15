@@ -78,8 +78,11 @@ export function aerationCameraZoom(
   height: number,
   exploded: boolean
 ) {
+  // The exploded view lifts the blower above the basin and its label sits
+  // above the part again, so it needs more vertical headroom than the
+  // assembled views or the top label clips against the frame.
   return Math.max(
     11,
-    Math.min(width / 13.6, height / (exploded ? 11.2 : 9.6), 62)
+    Math.min(width / 13.6, height / (exploded ? 13.8 : 9.6), 62)
   );
 }

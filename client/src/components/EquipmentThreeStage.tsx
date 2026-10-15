@@ -75,8 +75,37 @@ export default function EquipmentThreeStage({
   const exploded = view === "exploded";
   const animate = shouldAnimate(flowing, reduced, exploded);
 
+  // Some browsers and locked-down devices have no WebGL at all. Detect that up
+  // front and hand control back to the page so it can offer the diagram view,
+  // rather than mounting a canvas that silently renders nothing.
+  const [webglOk] = useState(() => {
+    if (typeof document === "undefined") return true;
+    try {
+      const probe = document.createElement("canvas");
+      return Boolean(
+        probe.getContext("webgl2") ||
+          probe.getContext("webgl") ||
+          probe.getContext("experimental-webgl")
+      );
+    } catch {
+      return false;
+    }
+  });
+
+  useEffect(() => {
+    if (!webglOk) onUnavailable?.();
+  }, [webglOk, onUnavailable]);
+
+  if (!webglOk) {
+    return (
+      <div className="flex min-h-[360px] items-center justify-center p-8 text-sm text-slate-600">
+        This browser does not support 3D. Use the Diagram view to continue.
+      </div>
+    );
+  }
+
   return (
-    <div className="relative min-h-[360px] sm:min-h-[460px]">
+    <div className="relative h-[380px] bg-[#F8FAFC] sm:h-[500px] lg:h-[560px]">
       <Canvas
         orthographic
         shadows
@@ -85,11 +114,6 @@ export default function EquipmentThreeStage({
         onCreated={({ gl }) => {
           gl.setClearColor("#F8FAFC");
         }}
-        fallback={
-          <div className="p-8 text-sm text-slate-600">
-            3D is unavailable in this browser.
-          </div>
-        }
       >
         <ResponsiveZoom exploded={exploded} />
         <ambientLight intensity={0.72} />

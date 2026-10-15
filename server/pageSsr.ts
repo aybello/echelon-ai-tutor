@@ -974,9 +974,39 @@ function buildEquipmentPageMeta(unit: EquipmentDefinition): PageMeta {
   };
 }
 
+/**
+ * The Equipment Lab hub. This is the internal link hub that passes authority to
+ * every unit page and the page a searcher lands on for the general "water
+ * treatment equipment" style query, so it needs its own meta rather than the
+ * generic study-resources fallback.
+ */
+function buildEquipmentHubMeta(): PageMeta {
+  const cards = EQUIPMENT_REGISTRY.map(
+    unit =>
+      `<h3><a href="${SITE_URL}/equipment-lab/${unit.slug}">${escapeHtml(
+        unit.seo.h1
+      )}</a></h3><p>${escapeHtml(unit.summary)}</p>`
+  ).join("");
+
+  return {
+    path: "/equipment-lab",
+    title:
+      "Equipment Lab: Interactive 3D Water and Wastewater Equipment | Echelon Institute",
+    description:
+      "Explore water and wastewater treatment equipment in interactive 3D. See inside clarifiers, aeration basins, filters and pumps, with operator notes and worked exam calculations.",
+    h1: "Water and Wastewater Equipment in Interactive 3D",
+    changefreq: "monthly",
+    priority: "0.8",
+    bodyHtml: `<p>The Equipment Lab lets water and wastewater operators look inside the equipment they are tested on. Each module is an interactive 3D model with labelled components, operator notes, worked calculations in metric and US units, and the observations that tell you what the process is doing.</p>
+      <h2>Available modules</h2>${cards}
+      <p>Every module is free to use. These are generalized learning illustrations, not manufacturer drawings or site-specific procedures. Your plant's own procedures and your provincial authority's requirements always govern.</p>`,
+  };
+}
+
 export const STATIC_PAGE_META: PageMeta[] = [
   ...BASE_STATIC_PAGE_META,
   ...getStudyUtilityPageMeta(),
+  buildEquipmentHubMeta(),
   ...EQUIPMENT_REGISTRY.map(buildEquipmentPageMeta),
   {
     path: "/teams",
