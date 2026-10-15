@@ -200,13 +200,20 @@ describe("Equipment Lab learner-facing components follow the prose rules", () =>
   it("highlights a selected pipe instead of silently doing nothing", () => {
     const scene = readSource("components/EquipmentAerationScene.tsx");
     expect(scene).not.toContain("active ? null : null");
-    // Every Pipe the learner can select must receive the active flag.
+    // Every Pipe the learner can select must receive the active flag so its
+    // geometry changes colour. The flag may be written inline or through the
+    // isOn() helper, so accept either spelling of the same behaviour.
     for (const id of ["ras-line", "was-line", "blower"]) {
+      const inline = scene.includes(`active={activePart === "${id}"}`);
+      const viaHelper = scene.includes(`active={isOn("${id}")}`);
       expect(
-        scene,
+        inline || viaHelper,
         `clicking ${id} must change something in the 3D scene`
-      ).toContain(`active={activePart === "${id}"}`);
+      ).toBe(true);
     }
+    // The helper must resolve against the selected part, otherwise the check
+    // above could pass against a constant that never changes.
+    expect(scene).toContain("const isOn = (id: string) => activePart === id;");
   });
 
   it("lets a learner click equipment submerged in the mixed liquor", () => {
@@ -214,5 +221,20 @@ describe("Equipment Lab learner-facing components follow the prose rules", () =>
     // every raycast aimed at the diffusers, probe and pipes inside it.
     const scene = readSource("components/EquipmentAerationScene.tsx");
     expect(scene).toContain("raycast={() => null}");
+  });
+
+  it("models the basin as a structure, not floating planes", () => {
+    // The first version drew four transparent planes in empty space. An
+    // operator recognises a basin by its poured walls, slab, deck and rails,
+    // so those have to be present for the model to read as real equipment.
+    const scene = readSource("components/EquipmentAerationScene.tsx");
+    for (const marker of ["WALL_T", "GRADE_Y", "Handrail", "notches"]) {
+      expect(
+        scene,
+        `the basin needs real structure: "${marker}" is missing`
+      ).toContain(marker);
+    }
+    // Walls have thickness. A plane has none.
+    expect(scene).toMatch(/WALL_T\s*=\s*0\.\d+/);
   });
 });

@@ -54,7 +54,7 @@ export default function EquipmentDetail({
   }, []);
 
   const [aboutOpen, setAboutOpen] = useState(false);
-  const [view, setView] = useState<EquipmentView>("isometric");
+  const [view, setView] = useState<EquipmentView>("cutaway");
   const [activePart, setActivePart] = useState(equipment.parts[0].id);
   const [lens, setLens] = useState<Lens>("operator");
   const [flowing, setFlowing] = useState(true);

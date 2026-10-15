@@ -78,11 +78,16 @@ export function aerationCameraZoom(
   height: number,
   exploded: boolean
 ) {
-  // The exploded view lifts the blower above the basin and its label sits
+  // The structure now extends well beyond the tank walls: a ground slab, the
+  // blower skid on grade at the inlet end, the launder past the weir, and the
+  // RAS run below the floor. The framing divisors below are the full modelled
+  // extents, so nothing gets clipped at the edge of the frame.
+  //
+  // The exploded view lifts the blower above the basin and places its label
   // above the part again, so it needs more vertical headroom than the
   // assembled views or the top label clips against the frame.
   return Math.max(
-    11,
-    Math.min(width / 13.6, height / (exploded ? 13.8 : 9.6), 62)
+    10,
+    Math.min(width / 13.4, height / (exploded ? 13.2 : 8.9), 70)
   );
 }

@@ -15,9 +15,11 @@ export function equipmentCameraPosition(
   view: EquipmentView
 ): [number, number, number] {
   if (view === "top") return [0.01, 11.5, 0.01];
-  if (view === "cutaway") return [9.4, 4.8, 9.4];
-  if (view === "exploded") return [10.6, 7.2, 10.6];
-  return [9.4, 5.6, 9.4];
+  // A lower eye height reads as standing on the walkway rather than hovering
+  // above the plant, which is how an operator actually sees this structure.
+  if (view === "cutaway") return [9.8, 4.2, 9.8];
+  if (view === "exploded") return [10.6, 7.0, 10.6];
+  return [9.8, 4.9, 9.8];
 }
 
 /** Animation runs only when flow is on and the user has not asked for less motion. */
@@ -131,19 +133,35 @@ export default function EquipmentThreeStage({
         dpr={[1, 1.8]}
         camera={{ position: equipmentCameraPosition(view), zoom: 40 }}
         onCreated={({ gl }) => {
-          gl.setClearColor("#F8FAFC");
+          gl.setClearColor("#eaf4f5");
         }}
       >
         <CameraRig view={view} exploded={exploded} controls={controlsRef} />
-        <ambientLight intensity={0.72} />
+        {/*
+          Flat ambient light washed out every surface and made moulded concrete
+          look like coloured paper. A sky/ground hemisphere plus a strong keyed
+          sun with a wide shadow frustum is what gives the clarifier its weight,
+          so the same rig is used here.
+        */}
+        <color attach="background" args={["#eaf4f5"]} />
+        <hemisphereLight args={["#f3fdff", "#607b85", 2.0]} />
         <directionalLight
-          position={[7, 11, 6]}
-          intensity={1.15}
+          position={[6, 12, 7]}
+          intensity={2.4}
           castShadow
-          shadow-mapSize-width={1024}
-          shadow-mapSize-height={1024}
+          shadow-mapSize-width={2048}
+          shadow-mapSize-height={2048}
+          shadow-camera-left={-11}
+          shadow-camera-right={11}
+          shadow-camera-top={11}
+          shadow-camera-bottom={-11}
+          shadow-normalBias={0.04}
         />
-        <directionalLight position={[-6, 5, -7]} intensity={0.38} />
+        <directionalLight
+          position={[-8, 4, -7]}
+          intensity={1.35}
+          color="#addfea"
+        />
 
         {equipment.sceneId === "aeration-basin" ? (
           <EquipmentAerationScene

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useMemo, useRef } from "react";
 import { useFrame, type ThreeEvent } from "@react-three/fiber";
 import { Html } from "@react-three/drei";
 import * as THREE from "three";
@@ -14,37 +14,94 @@ import {
 
 type Point = [number, number, number];
 
+/*
+ * Built to match the structural honesty of the clarifier model.
+ *
+ * The first version drew four transparent planes floating in empty space, which
+ * read as a wireframe box rather than a concrete tank an operator walks on top
+ * of. A basin is a heavy civil structure: poured walls with real thickness, a
+ * slab, a grating walkway with handrails, a weir wall the water spills over, and
+ * a blower skid sitting on grade beside it. Those are the parts an operator
+ * recognises from site, so they are the parts that have to be in the model.
+ */
+
+/** Wall and slab thickness. Concrete, not glass. */
+const WALL_T = 0.24;
+/** Freeboard above the water line, where the walls keep going. */
+const FREEBOARD = 0.42;
+const WALL_H = BASIN_DEPTH + FREEBOARD;
+const WALL_MID_Y = -BASIN_DEPTH + WALL_H / 2;
+const WALL_TOP_Y = FREEBOARD;
+/** Top of the ground slab the whole structure sits on. */
+const GRADE_Y = -BASIN_DEPTH - WALL_T;
+
+/* Industrial palette. Selection uses one consistent accent, like the clarifier,
+   so a highlighted part is unmistakable without recolouring the whole scene. */
+const ACCENT = "#0891a3";
+const CONCRETE = "#bcc9cd";
+const CONCRETE_EDGE = "#9fb0b5";
+const SLAB = "#8ea4aa";
+const GROUND = "#dee9eb";
+const STEEL = "#8fa3ab";
+const STEEL_LIGHT = "#c4d2d6";
+const SAFETY = "#deb765";
+const PVC = "#dfe6e8";
+const MEMBRANE = "#48565e";
+const SLUDGE_PIPE = "#ba8145";
+
 /** Exploded-view displacement per part. */
 const OFFSETS: Record<string, Point> = {
-  "influent-channel": [-1.5, 0.5, 0],
-  "diffuser-grid": [0, -1.2, 0],
-  blower: [0, 1.9, -1.4],
-  "do-probe": [0, 1.5, 0.9],
-  "mixed-liquor": [0, 0.7, 0],
-  "ras-line": [0, -1.9, 1.3],
-  "was-line": [1.6, -1.6, -1.1],
+  "influent-channel": [-1.7, 0.7, 0],
+  "diffuser-grid": [0, -1.5, 0],
+  blower: [-0.6, 2.1, -1.5],
+  "do-probe": [0, 1.7, 1.1],
+  "mixed-liquor": [0, 0.9, 0],
+  "ras-line": [0, -2.1, 1.4],
+  "was-line": [1.8, -1.8, -1.2],
 };
 
-/** Where the label tether attaches on each part. */
+/** Where the label sits on each part before the explode offset is added. */
 const ANCHORS: Record<string, Point> = {
-  "influent-channel": [-BASIN_LENGTH / 2 - 0.45, -0.2, BASIN_WIDTH * 0.55],
-  "diffuser-grid": [-0.4, -BASIN_DEPTH * 0.86, 0],
-  blower: [-BASIN_LENGTH / 2 + 0.2, 1.15, -BASIN_WIDTH * 0.78],
-  "do-probe": [0.9, 0.35, BASIN_WIDTH * 0.42],
-  "mixed-liquor": [0.2, -BASIN_DEPTH * 0.42, 0],
-  "ras-line": [-BASIN_LENGTH * 0.25, -BASIN_DEPTH - 0.42, BASIN_WIDTH * 0.62],
-  "was-line": [BASIN_LENGTH / 2 + 0.35, -BASIN_DEPTH - 0.42, -BASIN_WIDTH * 0.2],
+  "influent-channel": [-BASIN_LENGTH / 2 - 1.05, 0.1, BASIN_WIDTH * 0.2],
+  "diffuser-grid": [-0.6, -BASIN_DEPTH + 0.35, 0],
+  blower: [-BASIN_LENGTH / 2 - 1.5, GRADE_Y + 1.1, -BASIN_WIDTH * 0.45],
+  "do-probe": [1.0, 0.95, BASIN_WIDTH * 0.3],
+  "mixed-liquor": [0.3, -BASIN_DEPTH * 0.45, 0],
+  "ras-line": [-BASIN_LENGTH * 0.2, GRADE_Y - 0.55, BASIN_WIDTH * 0.66],
+  "was-line": [BASIN_LENGTH / 2 + 1.5, GRADE_Y - 0.55, -BASIN_WIDTH * 0.4],
 };
 
-// Allocated once at module scope. Building this inside render allocated a new
-// unmanaged Three.js geometry on every part click and view change, with nothing
-// disposing the old one. The basin dimensions are constants, so there is no
-// reason to rebuild it.
-const BASIN_SHELL_GEOMETRY = new THREE.BoxGeometry(
-  BASIN_LENGTH,
-  BASIN_DEPTH,
-  BASIN_WIDTH
-);
+/** A straight member between two points. Used for handrails and bracing. */
+function Bar({
+  from,
+  to,
+  radius = 0.026,
+  color = SAFETY,
+}: {
+  from: Point;
+  to: Point;
+  radius?: number;
+  color?: string;
+}) {
+  const { mid, quaternion, length } = useMemo(() => {
+    const a = new THREE.Vector3(...from);
+    const b = new THREE.Vector3(...to);
+    return {
+      mid: a.clone().add(b).multiplyScalar(0.5),
+      quaternion: new THREE.Quaternion().setFromUnitVectors(
+        new THREE.Vector3(0, 1, 0),
+        b.clone().sub(a).normalize()
+      ),
+      length: a.distanceTo(b),
+    };
+  }, [from, to]);
+  return (
+    <mesh castShadow position={mid} quaternion={quaternion}>
+      <cylinderGeometry args={[radius, radius, length, 8]} />
+      <meshStandardMaterial color={color} metalness={0.45} roughness={0.38} />
+    </mesh>
+  );
+}
 
 function Pipe({
   points,
@@ -63,13 +120,11 @@ function Pipe({
   );
   return (
     <mesh castShadow>
-      <tubeGeometry args={[curve, 48, radius, 10, false]} />
+      <tubeGeometry args={[curve, 48, radius, 12, false]} />
       <meshStandardMaterial
-        color={color}
-        roughness={0.38}
+        color={active ? ACCENT : color}
+        roughness={0.4}
         metalness={0.35}
-        emissive={color}
-        emissiveIntensity={active ? 0.55 : 0}
       />
     </mesh>
   );
@@ -79,13 +134,11 @@ function Pipe({
 function Part({
   id,
   exploded,
-  active,
   onSelect,
   children,
 }: {
   id: string;
   exploded: boolean;
-  active: boolean;
   onSelect: (id: string) => void;
   children: React.ReactNode;
 }) {
@@ -102,16 +155,14 @@ function Part({
     g.position.z += (tz - g.position.z) * speed;
   });
 
-  const handle = (e: ThreeEvent<MouseEvent>) => {
-    e.stopPropagation();
-    onSelect(id);
-  };
-
   return (
     <group
       ref={group}
-      onClick={handle}
-      onPointerOver={e => {
+      onClick={(e: ThreeEvent<MouseEvent>) => {
+        e.stopPropagation();
+        onSelect(id);
+      }}
+      onPointerOver={(e: ThreeEvent<PointerEvent>) => {
         e.stopPropagation();
         document.body.style.cursor = "pointer";
       }}
@@ -124,7 +175,7 @@ function Part({
   );
 }
 
-/** Mixed liquor particles circulating through the basin. */
+/** Mixed liquor circulating down the basin. */
 function MixedLiquorFlow({ animate }: { animate: boolean }) {
   const COUNT = 150;
   const mesh = useRef<THREE.InstancedMesh>(null);
@@ -133,7 +184,7 @@ function MixedLiquorFlow({ animate }: { animate: boolean }) {
     () =>
       Array.from({ length: COUNT }, (_, i) => ({
         offset: i / COUNT,
-        lane: (i * 2654435761) % 1000 / 1000,
+        lane: ((i * 2654435761) % 1000) / 1000,
       })),
     []
   );
@@ -147,7 +198,7 @@ function MixedLiquorFlow({ animate }: { animate: boolean }) {
       const t = (s.offset + clock.current) % 1;
       const [x, y, z] = mixedLiquorPoint(t, s.lane);
       dummy.position.set(x, y, z);
-      dummy.scale.setScalar(0.055);
+      dummy.scale.setScalar(0.052);
       dummy.updateMatrix();
       m.setMatrixAt(i, dummy.matrix);
     });
@@ -155,16 +206,20 @@ function MixedLiquorFlow({ animate }: { animate: boolean }) {
   });
 
   return (
-    <instancedMesh ref={mesh} args={[undefined, undefined, COUNT]}>
-      <sphereGeometry args={[1, 8, 8]} />
-      <meshStandardMaterial color="#7C4A28" roughness={0.75} />
+    <instancedMesh
+      ref={mesh}
+      args={[undefined, undefined, COUNT]}
+      frustumCulled={false}
+    >
+      <sphereGeometry args={[1, 7, 5]} />
+      <meshBasicMaterial color="#8a5630" />
     </instancedMesh>
   );
 }
 
-/** Air bubbles rising from the diffuser grid. */
+/** Air rising from the floor grid. */
 function AirBubbles({ animate }: { animate: boolean }) {
-  const COUNT = 220;
+  const COUNT = 240;
   const mesh = useRef<THREE.InstancedMesh>(null);
   const dummy = useMemo(() => new THREE.Object3D(), []);
   const seeds = useMemo(
@@ -185,8 +240,8 @@ function AirBubbles({ animate }: { animate: boolean }) {
       const t = (s.offset + clock.current) % 1;
       const [x, y, z] = airBubblePoint(t, s.lane);
       dummy.position.set(x, y, z);
-      // Bubbles expand slightly as pressure drops near the surface.
-      dummy.scale.setScalar(0.028 + t * 0.016);
+      // Bubbles expand as hydrostatic pressure drops near the surface.
+      dummy.scale.setScalar(0.026 + t * 0.018);
       dummy.updateMatrix();
       m.setMatrixAt(i, dummy.matrix);
     });
@@ -194,19 +249,18 @@ function AirBubbles({ animate }: { animate: boolean }) {
   });
 
   return (
-    <instancedMesh ref={mesh} args={[undefined, undefined, COUNT]}>
-      <sphereGeometry args={[1, 8, 8]} />
-      <meshStandardMaterial
-        color="#E0F2FE"
-        transparent
-        opacity={0.72}
-        roughness={0.1}
-      />
+    <instancedMesh
+      ref={mesh}
+      args={[undefined, undefined, COUNT]}
+      frustumCulled={false}
+    >
+      <sphereGeometry args={[1, 7, 5]} />
+      <meshBasicMaterial color="#e6f6fb" />
     </instancedMesh>
   );
 }
 
-/** Return activated sludge moving back to the basin inlet. */
+/** Return sludge travelling back to the inlet. */
 function ReturnSludgeFlow({ animate }: { animate: boolean }) {
   const COUNT = 36;
   const mesh = useRef<THREE.InstancedMesh>(null);
@@ -221,7 +275,7 @@ function ReturnSludgeFlow({ animate }: { animate: boolean }) {
       const t = (i / COUNT + clock.current) % 1;
       const [x, y, z] = returnSludgePoint(t);
       dummy.position.set(x, y, z);
-      dummy.scale.setScalar(0.05);
+      dummy.scale.setScalar(0.048);
       dummy.updateMatrix();
       m.setMatrixAt(i, dummy.matrix);
     }
@@ -229,10 +283,47 @@ function ReturnSludgeFlow({ animate }: { animate: boolean }) {
   });
 
   return (
-    <instancedMesh ref={mesh} args={[undefined, undefined, COUNT]}>
-      <sphereGeometry args={[1, 8, 8]} />
-      <meshStandardMaterial color="#B45309" roughness={0.8} />
+    <instancedMesh
+      ref={mesh}
+      args={[undefined, undefined, COUNT]}
+      frustumCulled={false}
+    >
+      <sphereGeometry args={[1, 7, 5]} />
+      <meshBasicMaterial color="#96511f" />
     </instancedMesh>
+  );
+}
+
+/** One run of handrail: two rails, posts, and a kickplate. */
+/**
+ * One run of handrail along the walkway.
+ *
+ * The walkway spans the basin WIDTH, so the rails run along z at a fixed x.
+ * Running them along x instead put the railing across the deck rather than
+ * down its edge.
+ */
+function Handrail({
+  x,
+  zFrom,
+  zTo,
+  baseY,
+}: {
+  x: number;
+  zFrom: number;
+  zTo: number;
+  baseY: number;
+}) {
+  const posts = 6;
+  return (
+    <group>
+      {[baseY + 0.52, baseY + 0.29].map(y => (
+        <Bar key={y} from={[x, y, zFrom]} to={[x, y, zTo]} />
+      ))}
+      {Array.from({ length: posts }, (_, i) => {
+        const z = zFrom + ((zTo - zFrom) / (posts - 1)) * i;
+        return <Bar key={i} from={[x, baseY, z]} to={[x, baseY + 0.52, z]} />;
+      })}
+    </group>
   );
 }
 
@@ -251,263 +342,482 @@ export default function EquipmentAerationScene({
 }) {
   const exploded = view === "exploded";
   const cutaway = view === "cutaway";
-  const colorOf = (id: string) =>
-    parts.find(p => p.id === id)?.color ?? "#94A3B8";
+  const isOn = (id: string) => activePart === id;
+  /** Realistic base colour, swapped for the accent when the part is selected. */
+  const tint = (id: string, base: string) => (isOn(id) ? ACCENT : base);
 
-  // The diffuser grid: a row of lateral headers across the basin floor.
+  const halfL = BASIN_LENGTH / 2;
+  const halfW = BASIN_WIDTH / 2;
+  const floorY = -BASIN_DEPTH;
+
+  /** Six lateral diffuser runs across the basin floor. */
   const laterals = useMemo(() => {
     const rows = 6;
-    const span = BASIN_LENGTH * 0.74;
-    const startX = -BASIN_LENGTH / 2 + 0.5;
-    return Array.from({ length: rows }, (_, i) => {
-      const x = startX + (span / (rows - 1)) * i;
-      return x;
-    });
+    const span = BASIN_LENGTH * 0.72;
+    const startX = -halfL + 0.55;
+    return Array.from(
+      { length: rows },
+      (_, i) => startX + (span / (rows - 1)) * i
+    );
+  }, [halfL]);
+
+  /** Disc positions along each lateral, the detail an operator actually sees. */
+  const discZ = useMemo(() => {
+    const n = 5;
+    const span = BASIN_WIDTH * 0.72;
+    return Array.from({ length: n }, (_, i) => -span / 2 + (span / (n - 1)) * i);
   }, []);
+
+  /** V-notches along the effluent weir plate. */
+  const notches = useMemo(() => {
+    const n = 18;
+    const span = BASIN_WIDTH * 0.92;
+    return Array.from({ length: n }, (_, i) => -span / 2 + (span / (n - 1)) * i);
+  }, []);
+
+  const walkX = 1.15;
 
   return (
     <group>
-      {/* ── Basin shell ────────────────────────────────────────────── */}
+      {/* ── Ground slab the structure sits on ──────────────────────── */}
+      <mesh receiveShadow position={[0, GRADE_Y - 0.08, 0]}>
+        <boxGeometry args={[BASIN_LENGTH + 5.2, 0.16, BASIN_WIDTH + 4.4]} />
+        <meshStandardMaterial color={GROUND} roughness={1} />
+      </mesh>
+
+      {/* ── Basin structure: slab and four poured walls ─────────────── */}
       <group>
-        {/* Floor */}
-        <mesh
-          position={[0, -BASIN_DEPTH, 0]}
-          rotation={[-Math.PI / 2, 0, 0]}
-          receiveShadow
-        >
-          <planeGeometry args={[BASIN_LENGTH, BASIN_WIDTH]} />
-          <meshStandardMaterial color="#CBD5E1" roughness={0.9} />
-        </mesh>
-        {/*
-          Walls. The whole point of this model is seeing what happens inside the
-          basin, so the walls render as glass rather than concrete. The near wall
-          is removed entirely in cutaway view for an unobstructed section.
-        */}
-        {[
-          { pos: [0, -BASIN_DEPTH / 2, -BASIN_WIDTH / 2] as Point, rot: [0, 0, 0] as Point, w: BASIN_LENGTH, hide: false },
-          { pos: [0, -BASIN_DEPTH / 2, BASIN_WIDTH / 2] as Point, rot: [0, Math.PI, 0] as Point, w: BASIN_LENGTH, hide: cutaway },
-          { pos: [-BASIN_LENGTH / 2, -BASIN_DEPTH / 2, 0] as Point, rot: [0, Math.PI / 2, 0] as Point, w: BASIN_WIDTH, hide: false },
-          { pos: [BASIN_LENGTH / 2, -BASIN_DEPTH / 2, 0] as Point, rot: [0, -Math.PI / 2, 0] as Point, w: BASIN_WIDTH, hide: false },
-        ].map((wall, i) =>
-          wall.hide ? null : (
-            <mesh key={i} position={wall.pos} rotation={wall.rot} receiveShadow>
-              <planeGeometry args={[wall.w, BASIN_DEPTH]} />
-              <meshStandardMaterial
-                color="#E2E8F0"
-                roughness={0.85}
-                transparent
-                opacity={0.22}
-                depthWrite={false}
-                side={THREE.DoubleSide}
-              />
-            </mesh>
-          )
-        )}
-        {/* Wall edges, so the basin still reads as a solid structure. */}
-        <lineSegments position={[0, -BASIN_DEPTH / 2, 0]}>
-          <edgesGeometry
+        <mesh receiveShadow castShadow position={[0, floorY - WALL_T / 2, 0]}>
+          <boxGeometry
             args={[
-              BASIN_SHELL_GEOMETRY,
+              BASIN_LENGTH + WALL_T * 2,
+              WALL_T,
+              BASIN_WIDTH + WALL_T * 2,
             ]}
           />
-          <lineBasicMaterial color="#64748B" />
-        </lineSegments>
+          <meshStandardMaterial color={SLAB} roughness={0.95} />
+        </mesh>
+        {/* Interior floor finish, so the slab reads as a wetted surface. */}
+        <mesh receiveShadow position={[0, floorY + 0.005, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+          <planeGeometry args={[BASIN_LENGTH, BASIN_WIDTH]} />
+          <meshStandardMaterial color={CONCRETE_EDGE} roughness={0.95} />
+        </mesh>
+
+        {/* Far wall, always present. */}
+        <mesh castShadow receiveShadow position={[0, WALL_MID_Y, -halfW - WALL_T / 2]}>
+          <boxGeometry args={[BASIN_LENGTH + WALL_T * 2, WALL_H, WALL_T]} />
+          <meshStandardMaterial color={CONCRETE} roughness={0.92} />
+        </mesh>
+        {/* Near wall, removed in the cutaway so the section is unobstructed. */}
+        {!cutaway && (
+          <mesh castShadow receiveShadow position={[0, WALL_MID_Y, halfW + WALL_T / 2]}>
+            <boxGeometry args={[BASIN_LENGTH + WALL_T * 2, WALL_H, WALL_T]} />
+            <meshStandardMaterial color={CONCRETE} roughness={0.92} />
+          </mesh>
+        )}
+        {/* Inlet end wall. */}
+        <mesh castShadow receiveShadow position={[-halfL - WALL_T / 2, WALL_MID_Y, 0]}>
+          <boxGeometry args={[WALL_T, WALL_H, BASIN_WIDTH]} />
+          <meshStandardMaterial color={CONCRETE} roughness={0.92} />
+        </mesh>
+        {/* Outlet end wall, lower: the water spills over it to the launder. */}
+        <mesh
+          castShadow
+          receiveShadow
+          position={[halfL + WALL_T / 2, -BASIN_DEPTH + (BASIN_DEPTH + 0.06) / 2, 0]}
+        >
+          <boxGeometry args={[WALL_T, BASIN_DEPTH + 0.06, BASIN_WIDTH]} />
+          <meshStandardMaterial color={CONCRETE} roughness={0.92} />
+        </mesh>
       </group>
 
-      {/* ── Mixed liquor zone ──────────────────────────────────────── */}
-      <Part
-        id="mixed-liquor"
-        exploded={exploded}
-        active={activePart === "mixed-liquor"}
-        onSelect={onSelectPart}
-      >
+      {/* ── Mixed liquor ───────────────────────────────────────────── */}
+      <Part id="mixed-liquor" exploded={exploded} onSelect={onSelectPart}>
         {/*
-          The mixed liquor volume encloses almost the whole basin, so a raycast
-          hits it before the diffusers, the probe or the pipes inside it. Making
-          it non-interactive lets a learner click the submerged equipment they
-          can see through it; the Mixed Liquor Zone stays selectable from the
-          component list beside the model.
+          The water volume encloses the basin, so a raycast hits it before the
+          diffusers, probe or pipes inside. Disabling its raycast lets a learner
+          click the submerged equipment they can see; the Mixed Liquor Zone is
+          still selectable from the component list beside the model.
         */}
         <mesh position={[0, -BASIN_DEPTH / 2, 0]} raycast={() => null}>
           <boxGeometry
-            args={[BASIN_LENGTH * 0.985, BASIN_DEPTH * 0.96, BASIN_WIDTH * 0.985]}
+            args={[BASIN_LENGTH, BASIN_DEPTH * 0.99, BASIN_WIDTH]}
           />
           <meshStandardMaterial
-            color={colorOf("mixed-liquor")}
+            color={isOn("mixed-liquor") ? ACCENT : "#37bac9"}
             transparent
-            opacity={activePart === "mixed-liquor" ? 0.34 : 0.17}
+            opacity={isOn("mixed-liquor") ? 0.3 : 0.17}
+            depthWrite={false}
             roughness={0.25}
+            side={THREE.DoubleSide}
+          />
+        </mesh>
+        {/* Water surface, where the roll from the diffusers breaks. */}
+        <mesh
+          position={[0, -0.01, 0]}
+          rotation={[-Math.PI / 2, 0, 0]}
+          raycast={() => null}
+        >
+          <planeGeometry args={[BASIN_LENGTH, BASIN_WIDTH]} />
+          <meshStandardMaterial
+            color="#2fb4c6"
+            transparent
+            opacity={0.34}
+            depthWrite={false}
+            roughness={0.2}
+            metalness={0.1}
+            side={THREE.DoubleSide}
           />
         </mesh>
         {animate ? <MixedLiquorFlow animate={animate} /> : null}
       </Part>
 
       {/* ── Diffuser grid ──────────────────────────────────────────── */}
-      <Part
-        id="diffuser-grid"
-        exploded={exploded}
-        active={activePart === "diffuser-grid"}
-        onSelect={onSelectPart}
-      >
-        {/* Main air header running the basin length */}
+      <Part id="diffuser-grid" exploded={exploded} onSelect={onSelectPart}>
+        {/* Air header running the basin length along the far wall. */}
         <mesh
-          position={[-0.1, -BASIN_DEPTH + 0.1, -BASIN_WIDTH * 0.42]}
+          position={[-0.15, floorY + 0.14, -halfW + 0.26]}
           rotation={[0, 0, Math.PI / 2]}
           castShadow
         >
-          <cylinderGeometry args={[0.07, 0.07, BASIN_LENGTH * 0.82, 14]} />
+          <cylinderGeometry args={[0.075, 0.075, BASIN_LENGTH * 0.84, 16]} />
           <meshStandardMaterial
-            color={colorOf("diffuser-grid")}
-            metalness={0.5}
-            roughness={0.35}
+            color={tint("diffuser-grid", PVC)}
+            metalness={0.2}
+            roughness={0.45}
           />
         </mesh>
-        {/* Lateral diffuser runs across the floor */}
         {laterals.map(x => (
-          <mesh
-            key={x}
-            position={[x, -BASIN_DEPTH + 0.09, 0]}
-            rotation={[Math.PI / 2, 0, 0]}
-            castShadow
-          >
-            <cylinderGeometry args={[0.05, 0.05, BASIN_WIDTH * 0.84, 12]} />
-            <meshStandardMaterial
-              color={colorOf("diffuser-grid")}
-              metalness={0.45}
-              roughness={0.4}
-              emissive={activePart === "diffuser-grid" ? "#10B981" : "#000000"}
-              emissiveIntensity={activePart === "diffuser-grid" ? 0.45 : 0}
+          <group key={x}>
+            {/* Lateral pipe across the floor. */}
+            <mesh
+              position={[x, floorY + 0.11, 0]}
+              rotation={[Math.PI / 2, 0, 0]}
+              castShadow
+            >
+              <cylinderGeometry args={[0.05, 0.05, BASIN_WIDTH * 0.82, 12]} />
+              <meshStandardMaterial
+                color={tint("diffuser-grid", PVC)}
+                metalness={0.2}
+                roughness={0.45}
+              />
+            </mesh>
+            {/* Drop leg tying the lateral into the header. */}
+            <Bar
+              from={[x, floorY + 0.11, -halfW + 0.26]}
+              to={[x, floorY + 0.11, -halfW * 0.82]}
+              radius={0.032}
+              color={tint("diffuser-grid", PVC)}
             />
-          </mesh>
+            {/* Membrane disc diffusers, the part an operator pulls and inspects. */}
+            {discZ.map(z => (
+              <mesh key={z} position={[x, floorY + 0.17, z]} castShadow>
+                <cylinderGeometry args={[0.115, 0.115, 0.045, 18]} />
+                <meshStandardMaterial
+                  color={tint("diffuser-grid", MEMBRANE)}
+                  roughness={0.7}
+                  metalness={0.1}
+                />
+              </mesh>
+            ))}
+          </group>
         ))}
         {animate ? <AirBubbles animate={animate} /> : null}
       </Part>
 
-      {/* ── Blower and air supply ──────────────────────────────────── */}
-      <Part
-        id="blower"
-        exploded={exploded}
-        active={activePart === "blower"}
-        onSelect={onSelectPart}
-      >
-        <mesh
-          position={[-BASIN_LENGTH / 2 + 0.2, 0.62, -BASIN_WIDTH * 0.78]}
-          castShadow
-        >
-          <boxGeometry args={[0.86, 0.6, 0.62]} />
+      {/* ── Blower skid on grade ───────────────────────────────────── */}
+      <Part id="blower" exploded={exploded} onSelect={onSelectPart}>
+        {/* Housekeeping pad. */}
+        <mesh receiveShadow position={[-halfL - 1.5, GRADE_Y + 0.07, -BASIN_WIDTH * 0.45]}>
+          <boxGeometry args={[1.7, 0.14, 1.25]} />
+          <meshStandardMaterial color={CONCRETE_EDGE} roughness={1} />
+        </mesh>
+        {/* Blower housing. */}
+        <mesh castShadow position={[-halfL - 1.62, GRADE_Y + 0.5, -BASIN_WIDTH * 0.45]}>
+          <boxGeometry args={[0.92, 0.72, 0.78]} />
           <meshStandardMaterial
-            color={colorOf("blower")}
-            metalness={0.55}
-            roughness={0.32}
-            emissive={activePart === "blower" ? "#F59E0B" : "#000000"}
-            emissiveIntensity={activePart === "blower" ? 0.4 : 0}
+            color={tint("blower", "#5c7785")}
+            metalness={0.45}
+            roughness={0.42}
           />
         </mesh>
+        {/* Motor on the same skid. */}
+        <mesh
+          castShadow
+          position={[-halfL - 0.92, GRADE_Y + 0.42, -BASIN_WIDTH * 0.45]}
+          rotation={[0, 0, Math.PI / 2]}
+        >
+          <cylinderGeometry args={[0.26, 0.26, 0.56, 20]} />
+          <meshStandardMaterial
+            color={tint("blower", "#44606d")}
+            metalness={0.55}
+            roughness={0.35}
+          />
+        </mesh>
+        {/* Coupling guard, in safety yellow like everything else you can touch. */}
+        <mesh castShadow position={[-halfL - 1.2, GRADE_Y + 0.42, -BASIN_WIDTH * 0.45]}>
+          <boxGeometry args={[0.14, 0.34, 0.34]} />
+          <meshStandardMaterial color={SAFETY} metalness={0.3} roughness={0.5} />
+        </mesh>
+        {/* Air main: up off the skid, over the wall, down to the header. */}
         <Pipe
-          active={activePart === "blower"}
-          color={colorOf("blower")}
-          radius={0.08}
+          active={isOn("blower")}
+          color={STEEL_LIGHT}
+          radius={0.075}
           points={[
-            [-BASIN_LENGTH / 2 + 0.2, 0.34, -BASIN_WIDTH * 0.78],
-            [-BASIN_LENGTH / 2 + 0.2, -BASIN_DEPTH + 0.6, -BASIN_WIDTH * 0.62],
-            [-BASIN_LENGTH / 2 + 0.35, -BASIN_DEPTH + 0.1, -BASIN_WIDTH * 0.42],
+            [-halfL - 1.62, GRADE_Y + 0.88, -BASIN_WIDTH * 0.45],
+            [-halfL - 1.62, WALL_TOP_Y + 0.3, -BASIN_WIDTH * 0.45],
+            [-halfL - 0.4, WALL_TOP_Y + 0.3, -halfW + 0.26],
+            [-halfL + 0.3, floorY + 0.5, -halfW + 0.26],
+            [-halfL + 0.45, floorY + 0.14, -halfW + 0.26],
           ]}
         />
       </Part>
 
       {/* ── Influent channel ───────────────────────────────────────── */}
-      <Part
-        id="influent-channel"
-        exploded={exploded}
-        active={activePart === "influent-channel"}
-        onSelect={onSelectPart}
-      >
-        <mesh
-          position={[-BASIN_LENGTH / 2 - 0.42, -0.3, BASIN_WIDTH * 0.3]}
-          castShadow
-        >
-          <boxGeometry args={[0.8, 0.52, BASIN_WIDTH * 0.72]} />
+      <Part id="influent-channel" exploded={exploded} onSelect={onSelectPart}>
+        {/* Open channel outside the inlet wall: floor and two sides. */}
+        <mesh castShadow receiveShadow position={[-halfL - 0.78, -0.62, 0]}>
+          <boxGeometry args={[1.05, 0.16, BASIN_WIDTH * 0.78]} />
           <meshStandardMaterial
-            color={colorOf("influent-channel")}
-            roughness={0.5}
-            emissive={
-              activePart === "influent-channel" ? "#0EA5E9" : "#000000"
-            }
-            emissiveIntensity={activePart === "influent-channel" ? 0.4 : 0}
+            color={tint("influent-channel", CONCRETE)}
+            roughness={0.92}
           />
+        </mesh>
+        {[-1, 1].map(s => (
+          <mesh
+            key={s}
+            castShadow
+            receiveShadow
+            position={[-halfL - 0.78, -0.28, (s * BASIN_WIDTH * 0.78) / 2]}
+          >
+            <boxGeometry args={[1.05, 0.84, 0.16]} />
+            <meshStandardMaterial
+              color={tint("influent-channel", CONCRETE)}
+              roughness={0.92}
+            />
+          </mesh>
+        ))}
+        <mesh castShadow receiveShadow position={[-halfL - 1.28, -0.28, 0]}>
+          <boxGeometry args={[0.16, 0.84, BASIN_WIDTH * 0.78]} />
+          <meshStandardMaterial
+            color={tint("influent-channel", CONCRETE)}
+            roughness={0.92}
+          />
+        </mesh>
+        {/* Slide gate in the inlet wall, with its handwheel stand. */}
+        <mesh castShadow position={[-halfL - WALL_T / 2, -0.42, 0]}>
+          <boxGeometry args={[0.1, 0.62, 0.72]} />
+          <meshStandardMaterial
+            color={tint("influent-channel", STEEL)}
+            metalness={0.6}
+            roughness={0.33}
+          />
+        </mesh>
+        <Bar
+          from={[-halfL - WALL_T / 2, -0.12, 0]}
+          to={[-halfL - WALL_T / 2, WALL_TOP_Y + 0.44, 0]}
+          radius={0.034}
+          color={STEEL_LIGHT}
+        />
+        <mesh
+          castShadow
+          position={[-halfL - WALL_T / 2, WALL_TOP_Y + 0.5, 0]}
+          rotation={[Math.PI / 2, 0, 0]}
+        >
+          <torusGeometry args={[0.17, 0.028, 8, 24]} />
+          <meshStandardMaterial color={SAFETY} metalness={0.4} roughness={0.4} />
         </mesh>
       </Part>
 
-      {/* ── Dissolved oxygen probe ─────────────────────────────────── */}
-      <Part
-        id="do-probe"
-        exploded={exploded}
-        active={activePart === "do-probe"}
-        onSelect={onSelectPart}
-      >
-        <mesh position={[0.9, -0.35, BASIN_WIDTH * 0.38]} castShadow>
-          <cylinderGeometry args={[0.055, 0.055, 1.5, 12]} />
+      {/* ── Effluent weir and launder, where the basin discharges ───── */}
+      <group>
+        <mesh castShadow position={[halfL + WALL_T / 2, 0.1, 0]}>
+          <boxGeometry args={[0.05, 0.22, BASIN_WIDTH * 0.94]} />
+          <meshStandardMaterial color={STEEL} metalness={0.5} roughness={0.35} />
+        </mesh>
+        {notches.map(z => (
+          <mesh
+            key={z}
+            position={[halfL + WALL_T / 2, 0.21, z]}
+            rotation={[0, 0, Math.PI / 4]}
+          >
+            <boxGeometry args={[0.07, 0.07, 0.052]} />
+            <meshStandardMaterial
+              color={STEEL}
+              metalness={0.5}
+              roughness={0.35}
+            />
+          </mesh>
+        ))}
+        {/* Launder channel beyond the weir. */}
+        <mesh castShadow receiveShadow position={[halfL + 0.62, -0.28, 0]}>
+          <boxGeometry args={[0.72, 0.16, BASIN_WIDTH * 0.94]} />
+          <meshStandardMaterial color={CONCRETE} roughness={0.92} />
+        </mesh>
+        <mesh castShadow receiveShadow position={[halfL + 1.02, 0.02, 0]}>
+          <boxGeometry args={[0.14, 0.76, BASIN_WIDTH * 0.94]} />
+          <meshStandardMaterial color={CONCRETE} roughness={0.92} />
+        </mesh>
+      </group>
+
+      {/* ── Walkway across the basin ───────────────────────────────── */}
+      <group>
+        <mesh castShadow receiveShadow position={[walkX, WALL_TOP_Y + 0.06, 0]}>
+          <boxGeometry args={[1.0, 0.09, BASIN_WIDTH + WALL_T * 2 + 0.7]} />
           <meshStandardMaterial
-            color={colorOf("do-probe")}
-            metalness={0.6}
-            roughness={0.3}
-            emissive={activePart === "do-probe" ? "#A855F7" : "#000000"}
-            emissiveIntensity={activePart === "do-probe" ? 0.5 : 0}
+            color={STEEL}
+            metalness={0.45}
+            roughness={0.45}
           />
         </mesh>
-        {/* Mounting bracket at the handrail */}
-        <mesh position={[0.9, 0.44, BASIN_WIDTH * 0.42]} castShadow>
-          <boxGeometry args={[0.3, 0.16, 0.22]} />
-          <meshStandardMaterial color="#64748B" metalness={0.5} roughness={0.4} />
+        {/* Grating bars, so the deck reads as walkable steel. */}
+        {Array.from({ length: 22 }, (_, i) => (
+          <mesh
+            key={i}
+            position={[
+              walkX,
+              WALL_TOP_Y + 0.112,
+              -(BASIN_WIDTH / 2 + WALL_T + 0.28) + i * 0.168,
+            ]}
+          >
+            <boxGeometry args={[0.94, 0.012, 0.022]} />
+            <meshStandardMaterial color={STEEL_LIGHT} metalness={0.4} />
+          </mesh>
+        ))}
+        {[-1, 1].map(s => (
+          <Handrail
+            key={s}
+            x={walkX + (s * 1.0) / 2}
+            zFrom={-(BASIN_WIDTH / 2 + WALL_T + 0.3)}
+            zTo={BASIN_WIDTH / 2 + WALL_T + 0.3}
+            baseY={WALL_TOP_Y + 0.1}
+          />
+        ))}
+      </group>
+
+      {/* ── Dissolved oxygen probe, hung off the walkway ───────────── */}
+      <Part id="do-probe" exploded={exploded} onSelect={onSelectPart}>
+        <mesh castShadow position={[walkX - 0.62, WALL_TOP_Y + 0.26, 0.42]}>
+          <boxGeometry args={[0.22, 0.3, 0.18]} />
+          <meshStandardMaterial
+            color={tint("do-probe", "#4b5f69")}
+            metalness={0.5}
+            roughness={0.4}
+          />
+        </mesh>
+        <mesh castShadow position={[walkX - 0.62, -0.5, 0.42]}>
+          <cylinderGeometry args={[0.042, 0.042, 1.52, 14]} />
+          <meshStandardMaterial
+            color={tint("do-probe", STEEL_LIGHT)}
+            metalness={0.65}
+            roughness={0.28}
+          />
+        </mesh>
+        <mesh castShadow position={[walkX - 0.62, -1.3, 0.42]}>
+          <cylinderGeometry args={[0.07, 0.07, 0.2, 14]} />
+          <meshStandardMaterial
+            color={tint("do-probe", "#2f3f49")}
+            metalness={0.4}
+            roughness={0.5}
+          />
         </mesh>
       </Part>
 
       {/* ── Return activated sludge ────────────────────────────────── */}
-      <Part
-        id="ras-line"
-        exploded={exploded}
-        active={activePart === "ras-line"}
-        onSelect={onSelectPart}
-      >
+      <Part id="ras-line" exploded={exploded} onSelect={onSelectPart}>
         <Pipe
-          active={activePart === "ras-line"}
-          color={colorOf("ras-line")}
-          radius={0.1}
+          active={isOn("ras-line")}
+          color={SLUDGE_PIPE}
+          radius={0.105}
           points={[
-            [BASIN_LENGTH / 2 + 0.5, -BASIN_DEPTH * 0.6, BASIN_WIDTH * 0.62],
-            [BASIN_LENGTH / 2 + 0.5, -BASIN_DEPTH - 0.42, BASIN_WIDTH * 0.62],
-            [-BASIN_LENGTH / 2 - 0.5, -BASIN_DEPTH - 0.42, BASIN_WIDTH * 0.62],
-            [-BASIN_LENGTH / 2 - 0.5, -0.45, BASIN_WIDTH * 0.52],
+            [halfL + 1.35, -0.42, halfW * 0.66],
+            [halfL + 1.35, GRADE_Y - 0.45, halfW * 0.66],
+            [-halfL - 1.35, GRADE_Y - 0.45, halfW * 0.66],
+            [-halfL - 0.78, -0.45, halfW * 0.4],
           ]}
         />
+        {/* RAS pump on grade. */}
+        <mesh castShadow position={[-halfL - 1.35, GRADE_Y + 0.2, halfW * 0.66]}>
+          <boxGeometry args={[0.5, 0.4, 0.42]} />
+          <meshStandardMaterial
+            color={tint("ras-line", "#6d7f87")}
+            metalness={0.5}
+            roughness={0.4}
+          />
+        </mesh>
         {animate ? <ReturnSludgeFlow animate={animate} /> : null}
       </Part>
 
       {/* ── Waste activated sludge ─────────────────────────────────── */}
-      <Part
-        id="was-line"
-        exploded={exploded}
-        active={activePart === "was-line"}
-        onSelect={onSelectPart}
-      >
+      <Part id="was-line" exploded={exploded} onSelect={onSelectPart}>
         <Pipe
-          active={activePart === "was-line"}
-          color={colorOf("was-line")}
-          radius={0.085}
+          active={isOn("was-line")}
+          color="#9c6a38"
+          radius={0.08}
           points={[
-            [BASIN_LENGTH / 2 + 0.5, -BASIN_DEPTH - 0.42, BASIN_WIDTH * 0.62],
-            [BASIN_LENGTH / 2 + 0.5, -BASIN_DEPTH - 0.42, -BASIN_WIDTH * 0.1],
-            [BASIN_LENGTH / 2 + 1.25, -BASIN_DEPTH - 0.42, -BASIN_WIDTH * 0.45],
+            [halfL + 1.35, GRADE_Y - 0.45, halfW * 0.2],
+            [halfL + 1.35, GRADE_Y - 0.45, -halfW * 0.3],
+            [halfL + 2.0, GRADE_Y - 0.45, -halfW * 0.62],
           ]}
         />
+        {/* The WAS valve: the single most consequential handle on this basin. */}
+        <mesh
+          castShadow
+          position={[halfL + 1.35, GRADE_Y - 0.45, -halfW * 0.05]}
+          rotation={[Math.PI / 2, 0, 0]}
+        >
+          <cylinderGeometry args={[0.15, 0.15, 0.1, 18]} />
+          <meshStandardMaterial
+            color={isOn("was-line") ? ACCENT : SAFETY}
+            metalness={0.4}
+            roughness={0.4}
+          />
+        </mesh>
       </Part>
+
+      {/* ── Flow labels on the assembled views ─────────────────────── */}
+      {!exploded && view !== "top" ? (
+        <>
+          <Html
+            center
+            position={[-halfL - 1.75, -0.18, 0]}
+            zIndexRange={[8, 0]}
+            style={{ pointerEvents: "none" }}
+          >
+            <span className="whitespace-nowrap rounded-full border border-white bg-white/95 px-2 py-1 text-[10px] font-bold text-sky-800 shadow-sm">
+              Influent →
+            </span>
+          </Html>
+          <Html
+            center
+            position={[halfL + 1.5, 0.3, 0]}
+            zIndexRange={[8, 0]}
+            style={{ pointerEvents: "none" }}
+          >
+            <span className="whitespace-nowrap rounded-full border border-white bg-white/95 px-2 py-1 text-[10px] font-bold text-teal-800 shadow-sm">
+              To clarifier →
+            </span>
+          </Html>
+          <Html
+            center
+            position={[0, GRADE_Y - 0.78, halfW * 0.66]}
+            zIndexRange={[8, 0]}
+            style={{ pointerEvents: "none" }}
+          >
+            <span className="whitespace-nowrap rounded-full border border-white bg-white/95 px-2 py-1 text-[10px] font-bold text-amber-800 shadow-sm">
+              ← RAS
+            </span>
+          </Html>
+        </>
+      ) : null}
 
       {/* ── Exploded-view labels ───────────────────────────────────── */}
       {exploded
-        ? parts.map(part => {
+        ? parts.map((part, i) => {
             const anchor = ANCHORS[part.id];
-            const offset = OFFSETS[part.id] ?? [0, 0, 0];
             if (!anchor) return null;
+            const offset = OFFSETS[part.id] ?? [0, 0, 0];
             const pos: Point = [
               anchor[0] + offset[0],
               anchor[1] + offset[1],
@@ -517,26 +827,25 @@ export default function EquipmentAerationScene({
               // distanceFactor is a perspective-camera feature. This stage uses
               // an orthographic camera, where it blows the label up to tens of
               // thousands of pixels and covers the whole scene.
-              <Html
-                key={part.id}
-                position={pos}
-                center
-                zIndexRange={[10, 0]}
-              >
+              <Html key={part.id} position={pos} center zIndexRange={[10, 0]}>
                 <button
                   type="button"
                   onClick={e => {
                     e.stopPropagation();
                     onSelectPart(part.id);
                   }}
-                  className="whitespace-nowrap rounded-full border px-2 py-1 text-[10px] font-semibold shadow-sm"
+                  className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border bg-white px-2 py-1 text-[10px] font-semibold shadow-sm"
                   style={{
-                    borderColor: part.color,
-                    background:
-                      activePart === part.id ? part.color : "#FFFFFF",
-                    color: activePart === part.id ? "#FFFFFF" : "#0F172A",
+                    borderColor: isOn(part.id) ? ACCENT : "#cbd5e1",
+                    color: isOn(part.id) ? ACCENT : "#0f172a",
                   }}
                 >
+                  <span
+                    className="grid h-4 w-4 place-items-center rounded-full text-[9px] font-bold text-white"
+                    style={{ background: isOn(part.id) ? ACCENT : "#64748b" }}
+                  >
+                    {i + 1}
+                  </span>
                   {part.label}
                 </button>
               </Html>
