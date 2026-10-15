@@ -195,7 +195,7 @@ export function EmailCapturePanel({ scenarioId, guestId }: EmailCapturePanelProp
       >
         <Input
           type="email"
-          placeholder="fixture-117@example.com"
+          placeholder="you@example.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="bg-slate-50 border-slate-200 text-slate-900 placeholder:text-slate-400 text-sm flex-1"

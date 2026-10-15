@@ -241,7 +241,7 @@ export default function OtpLogin() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="fixture-117@example.com"
+                placeholder="you@example.com"
                 required
                 autoFocus
                 style={{

@@ -1669,7 +1669,7 @@ export default function OrgDashboard() {
                   <Label className="text-slate-700">Operator email</Label>
                   <Input
                     type="email"
-                    placeholder="fixture-7@example.com"
+                    placeholder="Operator work email"
                     value={assignEmail}
                     onChange={e => setAssignEmail(e.target.value)}
                     className="border-slate-200 text-slate-900 placeholder:text-slate-400"
