@@ -11,6 +11,7 @@ import { useAuth } from "./_core/hooks/useAuth";
 import { lazy, Suspense, useLayoutEffect } from "react";
 import { isNovaScotiaCourseSurface, isNovaScotiaPathSupported } from "@shared/novaScotiaPreparation";
 import { funnelProvince } from "@shared/funnelNavigation";
+import { findEquipment } from "@shared/equipmentRegistry";
 import { useProvince } from "@/hooks/useProvince";
 import Landing from "./pages/Landing";
 
@@ -32,6 +33,7 @@ const ChemCalc = lazy(() => import("./pages/ChemCalc"));
 const MathPractice = lazy(() => import("./pages/MathPractice"));
 const Lab = lazy(() => import("./pages/Lab"));
 const EquipmentLab = lazy(() => import("./pages/EquipmentLab"));
+const EquipmentDetail = lazy(() => import("./pages/EquipmentDetail"));
 const IncidentCommand = lazy(() => import("./pages/IncidentCommand"));
 const Formulas = lazy(() => import("./pages/Formulas"));
 const About = lazy(() => import("./pages/About"));
@@ -273,6 +275,16 @@ function Router() {
         <Route path={"/math-practice"} component={MathPractice} />
         <Route path={"/lab"} component={Lab} />
         <Route path={"/equipment-lab"} component={EquipmentLab} />
+        <Route path={"/equipment-lab/:slug"}>
+          {(params: { slug: string }) => {
+            const unit = findEquipment(params.slug);
+            return unit ? (
+              <EquipmentDetail equipment={unit} />
+            ) : (
+              <Redirect to="/equipment-lab" />
+            );
+          }}
+        </Route>
         <Route path={"/command"} component={IncidentCommand} />
         <Route path={"/formulas"} component={Formulas} />
         <Route path={"/about"} component={About} />

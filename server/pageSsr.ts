@@ -44,6 +44,10 @@ import {
   TEAMS_ALL_ACCESS_PRICE_CENTS,
 } from "../shared/pricingCatalogue";
 import { INDIVIDUAL_REFUND_SUMMARY, REFUND_CONTACT_EMAIL, TEAM_REFUND_SUMMARY } from "../shared/refundPolicy";
+import {
+  EQUIPMENT_REGISTRY,
+  type EquipmentDefinition,
+} from "../shared/equipmentRegistry";
 import { getStudyUtilityPageMeta } from "./studyUtilityPageMeta";
 
 const SITE_URL = "https://echeloninstitute.ca";
@@ -890,9 +894,90 @@ function buildUSStatePageMeta(state: USStateConfig): PageMeta {
   };
 }
 
+/**
+ * Equipment Lab pages are real teaching content, so they are server rendered
+ * with their prose, worked calculations and FAQ schema. Crawlers and answer
+ * engines see the material without executing the 3D bundle.
+ */
+function buildEquipmentPageMeta(unit: EquipmentDefinition): PageMeta {
+  const path = `/equipment-lab/${unit.slug}`;
+
+  const sections = unit.seo.sections
+    .map(
+      section =>
+        `<h2>${escapeHtml(section.heading)}</h2>${section.paragraphs
+          .map(p => `<p>${escapeHtml(p)}</p>`)
+          .join("")}`
+    )
+    .join("");
+
+  const components = `<h2>Main components</h2><ul>${unit.parts
+    .map(
+      part =>
+        `<li><strong>${escapeHtml(part.label)}.</strong> ${escapeHtml(
+          part.function
+        )} ${escapeHtml(part.examConnection)}</li>`
+    )
+    .join("")}</ul>`;
+
+  const calculations = `<h2>Worked calculations</h2>${unit.formulas
+    .map(
+      formula =>
+        `<h3>${escapeHtml(formula.name)}</h3>` +
+        `<p>${escapeHtml(formula.expression)}</p>` +
+        `<p>${escapeHtml(formula.worked.scenario)}</p>` +
+        `<p>${escapeHtml(formula.worked.substitution)}</p>` +
+        `<p>${escapeHtml(formula.worked.result)}</p>` +
+        `<p>${escapeHtml(formula.interpretation)}</p>`
+    )
+    .join("")}`;
+
+  const symptoms = `<h2>Troubleshooting observations</h2>${unit.symptoms
+    .map(
+      symptom =>
+        `<h3>${escapeHtml(symptom.observation)}</h3>` +
+        `<ul>${symptom.likelyCauses
+          .map(cause => `<li>${escapeHtml(cause)}</li>`)
+          .join("")}</ul>` +
+        `<p>${escapeHtml(symptom.examPoint)}</p>`
+    )
+    .join("")}`;
+
+  const faqHtml = `<h2>Common questions</h2>${unit.seo.faq
+    .map(
+      item =>
+        `<h3>${escapeHtml(item.question)}</h3><p>${escapeHtml(item.answer)}</p>`
+    )
+    .join("")}`;
+
+  const jsonLd = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: unit.seo.faq.map(item => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  });
+
+  return {
+    path,
+    title: unit.seo.title,
+    description: unit.seo.description,
+    h1: unit.seo.h1,
+    changefreq: "monthly",
+    priority: "0.7",
+    jsonLd,
+    bodyHtml: `<p>${escapeHtml(unit.summary)}</p>${sections}${components}${calculations}${symptoms}${faqHtml}
+      <p>Calculations are presented in metric first, matching Canadian certification exams, with US unit versions available. This is a generalized learning illustration, not manufacturer drawings or a site-specific procedure. Your plant's own procedures and your provincial authority's requirements always govern.</p>
+      <p><a href="${SITE_URL}${unit.guideRoute}">Open the related process guide</a> or <a href="${SITE_URL}${unit.practiceRoute}">work through practice questions</a>.</p>`,
+  };
+}
+
 export const STATIC_PAGE_META: PageMeta[] = [
   ...BASE_STATIC_PAGE_META,
   ...getStudyUtilityPageMeta(),
+  ...EQUIPMENT_REGISTRY.map(buildEquipmentPageMeta),
   {
     path: "/teams",
     title:

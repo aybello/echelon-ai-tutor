@@ -6,6 +6,7 @@ import ClarifierLab from "@/components/ClarifierLab";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { EQUIPMENT_REGISTRY } from "@shared/equipmentRegistry";
 
 import { supportsWebGL2 } from "@/lib/webglSupport";
 
@@ -27,8 +28,8 @@ export default function EquipmentLab() {
   const [aboutOpen, setAboutOpen] = useState(false);
   usePageMeta({
     title: "Equipment Lab | Echelon Institute",
-    description: "Explore wastewater equipment with Echelon’s interactive circular clarifier learning lab.",
-    noindex: true,
+    description:
+      "Interactive 3D models of water and wastewater treatment equipment, with operator context, worked exam calculations and troubleshooting.",
   });
 
   return (
@@ -69,6 +70,31 @@ export default function EquipmentLab() {
               </ErrorBoundary>
             </Suspense>
           ) : <ClarifierLab onStudyLink={() => navigate("/wastewater")} />}
+        </section>
+
+        <section className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-slate-200 py-6">
+          <div className="w-full">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">More modules</p>
+            <h2 className="mt-1 text-lg font-semibold text-slate-900">Other equipment in the lab</h2>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {EQUIPMENT_REGISTRY.map(unit => (
+                <button
+                  key={unit.id}
+                  onClick={() => navigate(`/equipment-lab/${unit.slug}`)}
+                  className="rounded-xl border border-slate-300 bg-white p-4 text-left transition-colors hover:border-slate-400 hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
+                >
+                  <span
+                    className="inline-block rounded px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white"
+                    style={{ background: unit.accent }}
+                  >
+                    Module {unit.moduleNumber}
+                  </span>
+                  <span className="mt-2 block text-sm font-semibold text-slate-900">{unit.title}</span>
+                  <span className="mt-1 block text-sm leading-6 text-slate-600">{unit.summary}</span>
+                </button>
+              ))}
+            </div>
+          </div>
         </section>
 
         <section className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-slate-200 py-6">
