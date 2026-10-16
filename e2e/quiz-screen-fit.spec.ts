@@ -60,9 +60,13 @@ for (const [name, width, height, path] of [
     await expect(page.getByTestId("practice-question")).toBeVisible();
     await expect(page.getByRole("textbox", { name: "Ask the AI Tutor" })).toBeVisible();
     await fits(page);
-    await page.locator(".ai-tutor-prompts summary").click();
-    await fits(page);
-    await page.locator(".ai-tutor-prompts summary").click();
+    const prompts = page.locator(".ai-tutor-prompts button");
+    await expect(prompts).toHaveCount(4);
+    await expect(page.locator("details.ai-tutor-prompts")).toHaveCount(0);
+    for (const prompt of await prompts.all()) {
+      await expect(prompt).toBeVisible();
+      await prompt.click({ trial: true });
+    }
     await page.mouse.move(20, height - 30);
     await page.mouse.wheel(0, 500);
     expect(await page.evaluate(() => scrollY)).toBe(0);
