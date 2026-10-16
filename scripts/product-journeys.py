@@ -91,6 +91,10 @@ def safety_status(current: str, unexpected_write: bool) -> str:
     return "fail" if current == "fail" else "blocked" if unexpected_write else current
 
 
+def expected_background_write(is_first: bool, procs: list[str]) -> bool:
+    return is_first and bool(procs) and all(p in EXPECTED_BACKGROUND_WRITES for p in procs)
+
+
 def telemetry_destination(url: str) -> bool:
     target = urlsplit(url)
     host = (target.hostname or "").lower()
@@ -442,7 +446,13 @@ class Audit:
             await expect(page.locator("main").last).to_contain_text("Total before tax")
             observations.append({"region": region, "availableCourseCount": len(labels)})
         await self.employer_only(page)
-        return {"detail": "Employer main has no individual pricing ads/links; Annual and Flex region/course selectors work for Ontario, Western Canada and Nova Scotia. No checkout or inquiry submitted",
+        menu_button = page.get_by_role("button", name="Open navigation menu", exact=True)
+        if await menu_button.is_visible():
+            await page.evaluate("window.scrollTo(0, 0)")
+            await menu_button.click()
+            await expect(page.locator(".echelon-mobile-menu")).to_be_visible()
+            await self.employer_only(page)
+        return {"detail": "Employer page and open mobile navigation have no individual pricing ads/links; Annual and Flex region/course selectors work for Ontario, Western Canada and Nova Scotia. No checkout or inquiry submitted",
                 "flexRegions": observations, "depth": "employer-configuration-only"}
 
     async def jobs(self, page: Any) -> dict[str, Any]:
@@ -585,7 +595,7 @@ class Audit:
                     r"mock(?:Exam)?\.(?:start|submit|finish)|exam\.(?:start|submit))", p) for p in procs)
                 if not guest_score and (request.method not in {"GET", "HEAD", "OPTIONS"} or dangerous):
                     guarded.add(request.url)
-                    expected = not is_first or (bool(procs) and all(p in EXPECTED_BACKGROUND_WRITES for p in procs))
+                    expected = expected_background_write(is_first, procs)
                     runtime["safetyBlockedRequests"].append({"url": safe_url(request.url),
                         "method": request.method, "expectedBackground": expected})
                     # Fail closed without faking a successful API result. Never

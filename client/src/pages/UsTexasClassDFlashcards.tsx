@@ -12,7 +12,7 @@ export default function UsTexasClassDFlashcards() {
     noindex: true,
   });
 
-  const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("us-texas-class-d-water");
+  const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("us-texas-class-d-water", "full", "flashcards");
   if (isLoading) return <QuizSkeleton />;
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
 

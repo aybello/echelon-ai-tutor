@@ -34,6 +34,13 @@ class DetectorTests(unittest.TestCase):
         self.assertFalse(module.telemetry_destination("https://fonts.googleapis.com/css2?family=Inter"))
         self.assertFalse(module.telemetry_destination("https://echeloninstitute.ca/api/trpc/quiz.getQuestions"))
 
+    def test_unknown_external_write_is_not_expected_background(self):
+        self.assertFalse(module.expected_background_write(False, []))
+        self.assertFalse(module.expected_background_write(False, [next(iter(module.EXPECTED_BACKGROUND_WRITES))]))
+        self.assertTrue(module.expected_background_write(True, [next(iter(module.EXPECTED_BACKGROUND_WRITES))]))
+        self.assertEqual(module.safety_status("pass", True), "blocked")
+        self.assertEqual(module.safety_status("fail", True), "fail")
+
     def test_evidence_removes_query_tokens_and_email(self):
         value = module.clean("https://example.test/path?token=private audit@echelon.test")
         self.assertNotIn("private", value)

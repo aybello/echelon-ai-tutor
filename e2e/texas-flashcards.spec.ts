@@ -34,6 +34,7 @@ async function mockTexasApis(page: Page, options: {
   entitled?: boolean;
   bankState?: "empty" | "error";
   holdQuestions?: Promise<void>;
+  holdAccess?: Promise<void>;
 } = {}) {
   const calls: Call[] = [];
   const pageErrors: string[] = [];
@@ -53,6 +54,7 @@ async function mockTexasApis(page: Page, options: {
       ? JSON.parse(url.searchParams.get("input") ?? "{}")
       : request.postDataJSON();
     if (names.includes("quiz.getQuestions")) await options.holdQuestions;
+    if (names.includes("stripe.checkAccess")) await options.holdAccess;
     const results = names.map((name, index) => {
       const input = (batched ? payload?.[index] : payload)?.json;
       calls.push({ name, input });
@@ -144,7 +146,7 @@ test("server-entitled Texas learner flips an actual conceptual card and saves it
   expect(pageErrors).toEqual([]);
 });
 
-test("forged local purchase data cannot bypass a server-denied Texas entitlement", async ({ page }) => {
+test("mocked denial restores the Texas gate despite forged local purchase data", async ({ page }) => {
   await page.addInitScript(courseKey => {
     localStorage.setItem("echelon_trial_email", "texas-learner@example.test");
     localStorage.setItem("echelon_purchased_products", JSON.stringify([courseKey]));
@@ -158,6 +160,25 @@ test("forged local purchase data cannot bypass a server-denied Texas entitlement
   expect(calls.find(call => call.name === "stripe.checkAccess")!.input).toMatchObject({
     examType: COURSE_KEY, email: "texas-learner@example.test",
   });
+  expect(pageErrors).toEqual([]);
+});
+
+test("existing optimistic preview ends after a delayed mocked access denial", async ({ page }) => {
+  await page.addInitScript(courseKey => {
+    localStorage.setItem("echelon_trial_email", "texas-learner@example.test");
+    localStorage.setItem("echelon_purchased_products", JSON.stringify([courseKey]));
+  }, COURSE_KEY);
+  let release!: () => void;
+  const holdAccess = new Promise<void>(resolve => { release = resolve; });
+  const { pageErrors } = await mockTexasApis(page, { holdAccess });
+  try {
+    await page.goto(FLASHCARD_PATH);
+    // Existing shared-gate behavior, not server entitlement proof: only the
+    // server-bounded preview fixture can render during the optimistic interval.
+    await expect(page.getByTestId("flashcard-prompt")).toHaveText(sourceQuestion.question);
+    await expect(page.locator(".pg-outer")).toHaveCount(0);
+  } finally { release(); }
+  await expect(page.getByRole("heading", { name: `Unlock ${product.name}`, exact: true })).toBeVisible();
   expect(pageErrors).toEqual([]);
 });
 

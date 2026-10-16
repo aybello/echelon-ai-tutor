@@ -66,7 +66,7 @@ describe("Texas Class D released learning surfaces", () => {
 
   it("loads Texas flashcards from the governed bank behind the existing purchase gate", () => {
     const flashcardSource = readFileSync("client/src/pages/UsTexasClassDFlashcards.tsx", "utf8");
-    expect(flashcardSource).toContain(`useQuestionBank("${COURSE_KEY}")`);
+    expect(flashcardSource).toContain(`useQuestionBank("${COURSE_KEY}", "full", "flashcards")`);
     expect(flashcardSource).toContain("<PurchaseGate");
     expect(flashcardSource).toContain(`productKey="${COURSE_KEY}"`);
     expect(flashcardSource).not.toContain("questions={[]}");
