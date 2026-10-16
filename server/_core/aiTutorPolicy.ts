@@ -7,6 +7,35 @@ import { getDb } from "../db";
 export const AI_TUTOR_DAILY_MESSAGE_LIMIT = 100;
 export const AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT = 3;
 
+/**
+ * Output budget for a tutor explanation.
+ *
+ * This was 1536, which was too small for the worked calculations this course
+ * is built around. Measured on 2026-10-16 against real questions from the live
+ * bank: a full multi-step dosing solution runs roughly 800 to 1,250 output
+ * tokens, and a hard one exceeded 1,536 on every model tested, so the provider
+ * returned a length-capped answer that stopped mid-sentence.
+ *
+ * A truncated worked example is worse than no answer, because the learner
+ * studies an incomplete method and never sees the final units or the check
+ * step. 4096 lets the answer finish naturally while still bounding spend.
+ */
+export const AI_TUTOR_MAX_OUTPUT_TOKENS = 4096;
+
+/**
+ * True when the provider stopped because it ran out of output budget rather
+ * than because the explanation was complete.
+ *
+ * Providers spell this differently, so match on the shared substring instead
+ * of one vendor's exact token. Anything unrecognized is treated as complete,
+ * so a new provider label can never silently discard a good answer.
+ */
+export function isTruncatedTutorCompletion(finishReason: string | null | undefined) {
+  if (typeof finishReason !== "string") return false;
+  const reason = finishReason.trim().toLowerCase();
+  return reason === "length" || reason === "max_tokens" || reason === "max_token";
+}
+
 export interface TutorQuestionContext {
   questionNum: number;
   module: string;

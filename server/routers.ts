@@ -31,7 +31,7 @@ import {
   resolveAccessForRequest,
   verifyAccessTokenAndRecheckDb,
 } from "./_core/accessService";
-import { AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT, buildTutorSystemPrompt, enforceAiTutorDailyQuota } from "./_core/aiTutorPolicy";
+import { AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT, AI_TUTOR_MAX_OUTPUT_TOKENS, buildTutorSystemPrompt, enforceAiTutorDailyQuota, isTruncatedTutorCompletion } from "./_core/aiTutorPolicy";
 import { resolveUSStudyContext } from "./usStudyContextServer";
 import { stripeRouter } from "./routers/stripeRouter";
 import { flashcardRouter } from "./routers/flashcardRouter";
@@ -1051,11 +1051,18 @@ export const appRouter = router({
         try {
           const response = await invokeLLM({
             messages: [{ role: "system", content: systemPrompt }, ...input.messages],
-            maxTokens: 1536,
+            maxTokens: AI_TUTOR_MAX_OUTPUT_TOKENS,
           });
           const reply = response?.choices?.[0]?.message?.content;
           if (typeof reply !== "string" || !reply.trim()) {
             throw new Error("Tutor provider returned no usable explanation");
+          }
+          // A worked calculation that stops mid-step teaches an incomplete
+          // method. Treat a length-capped answer as a failure so the learner is
+          // asked to retry rather than shown half a solution as if it were the
+          // whole thing.
+          if (isTruncatedTutorCompletion(response?.choices?.[0]?.finish_reason)) {
+            throw new Error("Tutor explanation hit the output limit before finishing");
           }
           await trackEvent("ai_tutor_message", {
             userId: resolvedUserId,
