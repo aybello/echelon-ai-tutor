@@ -1,4 +1,4 @@
-import { and, desc, eq, gte, sql } from "drizzle-orm";
+import { and, desc, eq, gte, lt, sql } from "drizzle-orm";
 import { questionAttempts, questions } from "../drizzle/schema";
 import { getDb } from "./db";
 import { computeReadiness } from "./_core/readiness";
@@ -37,6 +37,7 @@ export async function calculateReadinessSnapshot(db: Database, input: ReadinessS
     }).from(questionAttempts).where(and(
       identityWhere,
       gte(questionAttempts.createdAt, thirtyDaysAgo),
+      lt(questionAttempts.createdAt, now),
       courseWhere,
     )),
     db.select({
@@ -46,6 +47,7 @@ export async function calculateReadinessSnapshot(db: Database, input: ReadinessS
     }).from(questionAttempts).where(and(
       identityWhere,
       eq(questionAttempts.quizMode, "mock"),
+      lt(questionAttempts.createdAt, now),
       courseWhere,
     )).groupBy(questionAttempts.sessionId)
       .orderBy(desc(sql`MAX(${questionAttempts.createdAt})`))
@@ -61,6 +63,7 @@ export async function calculateReadinessSnapshot(db: Database, input: ReadinessS
       .where(and(
         identityWhere,
         gte(questionAttempts.createdAt, fourteenDaysAgo),
+      lt(questionAttempts.createdAt, now),
         courseWhere,
       )),
     // Resolve historical mock modules back to actual bank topics. questionNum
@@ -72,7 +75,7 @@ export async function calculateReadinessSnapshot(db: Database, input: ReadinessS
         eq(questions.bankKey, course.questionBankKey),
       ))
       .where(and(identityWhere, courseWhere,
-        gte(questionAttempts.createdAt, thirtyDaysAgo), learnerVisibleQuestionFilter())),
+        gte(questionAttempts.createdAt, thirtyDaysAgo), lt(questionAttempts.createdAt, now), learnerVisibleQuestionFilter())),
   ]);
 
   const recent = recentRows[0];

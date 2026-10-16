@@ -6,7 +6,7 @@ import { countCeuRecord, emptyCeuMetrics } from "../ceu/metrics";
  * Admin router — all procedures require role === 'admin'.
  * Provides read access to trial emails, waitlist signups, and question error reports.
  */
-import { desc, eq, sql, count, ne, and, gte, gt, asc, getTableColumns, inArray } from "drizzle-orm";
+import { desc, eq, sql, count, ne, and, or, gte, gt, asc, getTableColumns, inArray } from "drizzle-orm";
 import Stripe from "stripe";
 import { z } from "zod";
 import { questionErrorReports, trialEmails, waitlist, examResults, purchaseReadColumns, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions, questionBankMeta, examOutcomes, teamFlexLicences, teamFlexOrders, customerRecoveryEvidence, contactSubmissions, examDates, abandonedCheckouts } from "../../drizzle/schema";
@@ -1010,13 +1010,13 @@ export const adminRouter = router({
           .from(purchases)
           .where(and(gt(purchases.amountCAD, 0), sql`${purchases.refundedAt} IS NULL`)),
         db.select({ email: subscriptions.email }).from(subscriptions)
-          .where(gt(subscriptions.amountCAD, 0)),
+          .where(or(gt(subscriptions.amountCAD, 0), sql`${subscriptions.stripeSubscriptionId} IS NOT NULL`)),
         db
           .select({ email: teamFlexOrders.managerEmail })
           .from(teamFlexOrders)
           .where(eq(teamFlexOrders.status, "paid")),
         db.select({ email: organizations.managerEmail }).from(organizations)
-          .where(and(eq(organizations.status, "active"), eq(organizations.billingType, "stripe"), sql`${organizations.stripeSubscriptionId} IS NOT NULL`)),
+          .where(and(eq(organizations.billingType, "stripe"), sql`${organizations.stripeSubscriptionId} IS NOT NULL`)),
       ]);
       const paying = new Set(
         [...payingRows, ...subscriberRows, ...teamBuyerRows, ...payingOrganizations].map(row =>

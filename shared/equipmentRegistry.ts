@@ -67,6 +67,7 @@ export interface EquipmentFormula {
   terms: {
     symbol: string;
     meaning: string;
+    meaningUs?: string;
     units: string;
     unitsUs?: string;
   }[];
@@ -298,7 +299,7 @@ const AERATION_BASIN: EquipmentDefinition = {
       expression: "Sludge age = Solids held in the system / Solids leaving per day",
       terms: [
         { symbol: "Sludge age", meaning: "Average time a solids particle stays in the system, also called SRT or mean cell residence time", units: "days" },
-        { symbol: "Solids held", meaning: "Mass of suspended solids in the aeration basin, found from V x MLSS / 1000", units: "kg", unitsUs: "lb" },
+        { symbol: "Solids held", meaning: "Mass of suspended solids in the aeration basin, found from V x MLSS / 1000", meaningUs: "Mass of suspended solids in the aeration basin, found from V (MG) x MLSS (mg/L) x 8.34", units: "kg", unitsUs: "lb" },
         { symbol: "Solids leaving", meaning: "Mass removed daily as waste activated sludge plus solids lost with the effluent", units: "kg/day", unitsUs: "lb/day" },
       ],
       worked: {

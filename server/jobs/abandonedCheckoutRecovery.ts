@@ -4,6 +4,7 @@ import { getDb } from "../db";
 import { abandonedCheckouts, purchases } from "../../drizzle/schema";
 import { isSyntheticCustomerEmail } from "../../shared/revenueReporting";
 import { resolveQuizGateOffer } from "../../shared/checkoutOffer";
+import { leadPricingHref } from "../../shared/leadStudyContext";
 import {
   formatCheckoutPrice,
   sendAbandonedCheckoutEmail,
@@ -90,7 +91,7 @@ export function resolveRecoveryTarget(cart: {
       : (offer.priceLabel ?? "the listed price");
   const checkoutUrl =
     cart.recoveryUrl ??
-    `${site}/pricing?course=${encodeURIComponent(cart.productKey)}`;
+    `${site}${leadPricingHref(cart.productKey)}`;
   return { productName, priceLabel, checkoutUrl };
 }
 

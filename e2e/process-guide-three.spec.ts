@@ -1,5 +1,9 @@
 import { expect, test } from "@playwright/test";
 
+// Match renderer modules only. The small LazyClarifierThreeLab loader is
+// intentionally imported with the lesson and must never be aborted as a model.
+const clarifierRendererChunk = /\/(?:(?:Equipment)?ClarifierThreeLab-[^/]+\.js|src\/components\/(?:Equipment)?ClarifierThreeLab\.tsx)(?:\?.*)?$/;
+
 test.use({ launchOptions: { args: ["--use-angle=swiftshader", "--enable-unsafe-swiftshader"] } });
 
 async function openClarification(page: Parameters<typeof test>[0]["page"]) {
@@ -13,7 +17,7 @@ for (const width of [1280, 390]) {
     await page.setViewportSize({ width, height: 844 });
     const modelRequests: string[] = [];
     page.on("request", request => {
-      if (/ClarifierThreeLab-[^/]+\.js/.test(request.url())) modelRequests.push(request.url());
+      if (clarifierRendererChunk.test(request.url())) modelRequests.push(request.url());
     });
     await openClarification(page);
     await expect(page.locator("canvas")).toHaveCount(0);
@@ -72,7 +76,7 @@ test("guide retains its labelled diagram when WebGL is unavailable", async ({ pa
 });
 
 test("guide recovers from a failed 3D chunk without losing the lesson", async ({ page }) => {
-  await page.route(/(?:ClarifierThreeLab-[^/]+\.js|\/src\/components\/ClarifierThreeLab\.tsx)(?:\?.*)?$/, route => route.abort());
+  await page.route(clarifierRendererChunk, route => route.abort());
   await openClarification(page);
   await page.getByRole("button", { name: "Explore in 3D", exact: true }).click();
   await expect(page.getByRole("status").filter({ hasText: "Continue with the interactive diagram" })).toBeVisible();
@@ -82,7 +86,7 @@ test("guide recovers from a failed 3D chunk without losing the lesson", async ({
 });
 
 test("a failed guide 3D load does not disable Equipment Lab after same-session navigation", async ({ page }) => {
-  const clarifierModule = /(?:ClarifierThreeLab-[^/]+\.js|\/src\/components\/ClarifierThreeLab\.tsx)(?:\?.*)?$/;
+  const clarifierModule = clarifierRendererChunk;
   const requestedClarifierModules: string[] = [];
   page.on("request", request => {
     if (clarifierModule.test(request.url())) requestedClarifierModules.push(request.url());

@@ -182,7 +182,7 @@ describe("recovery target", () => {
       currency: "cad",
       recoveryUrl: null,
     });
-    expect(target.checkoutUrl).toContain("/pricing?course=class4-water");
+    expect(target.checkoutUrl).toContain("/pricing?product=class4-water&province=ON");
     expect(target.productName).not.toBe("");
   });
 });

@@ -19,6 +19,7 @@ import { resolvePrimaryStudyFocus } from "../_core/studyFocus";
 import { getCourseByKey, resolveCourseKey } from "../../shared/courseRegistry";
 import { learnerVisibleQuestionFilter } from "../questionGovernance";
 import { calculateReadinessSnapshot } from "../readinessSnapshot";
+import { outcomeExamDate, preExamCutoff, saveExamOutcome } from "../examOutcomeRecords";
 import { attemptCourseFilter, examCourseFilter } from "../courseActivityScope";
 
 /**
@@ -81,10 +82,9 @@ export const dashboardRouter = router({
       if (!course?.isActive) {
         throw new TRPCError({ code: "BAD_REQUEST", message: "Unknown or inactive course." });
       }
-      const examDate = new Date(`${input.examDate}T12:00:00.000Z`);
-      if (examDate.getTime() > Date.now() + 24 * 60 * 60 * 1000) {
-        throw new TRPCError({ code: "BAD_REQUEST", message: "The official exam date cannot be in the future." });
-      }
+      let examDate: Date;
+      try { examDate = outcomeExamDate(input.examDate); }
+      catch (error) { throw new TRPCError({ code: "BAD_REQUEST", message: (error as Error).message }); }
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
       const memberEmail = email.trim().toLowerCase();
@@ -92,17 +92,8 @@ export const dashboardRouter = router({
         userId,
         email: memberEmail,
         examType: course.questionBankKey,
+        now: preExamCutoff(examDate),
       });
-      const [existing] = await db
-        .select({ id: examOutcomes.id })
-        .from(examOutcomes)
-        .where(and(
-          eq(examOutcomes.orgId, 0),
-          eq(examOutcomes.memberEmail, memberEmail),
-          eq(examOutcomes.courseKey, course.courseKey),
-        ))
-        .orderBy(desc(examOutcomes.recordedAt))
-        .limit(1);
       const values = {
         result: input.result,
         examDate,
@@ -110,17 +101,13 @@ export const dashboardRouter = router({
         readinessModelVersion: readiness.hasData ? READINESS_MODEL_VERSION : null,
         recordedAt: new Date(),
       };
-      if (existing) {
-        await db.update(examOutcomes).set(values).where(eq(examOutcomes.id, existing.id));
-      } else {
-        await db.insert(examOutcomes).values({
+      await saveExamOutcome(db, {
           orgId: 0,
           memberEmail,
           courseKey: course.courseKey,
           recordedBy: "learner-self-report",
           ...values,
-        });
-      }
+      });
       return { success: true, courseKey: course.courseKey };
     }),
 
@@ -146,7 +133,7 @@ export const dashboardRouter = router({
           eq(examOutcomes.memberEmail, email.trim().toLowerCase()),
           eq(examOutcomes.courseKey, course.courseKey),
         ))
-        .orderBy(desc(examOutcomes.recordedAt))
+        .orderBy(desc(examOutcomes.examDate), desc(examOutcomes.recordedAt))
         .limit(1);
       return outcome ?? null;
     }),
@@ -672,8 +659,8 @@ export const dashboardRouter = router({
   /**
    * Exam Readiness Score — weighted composite score per examType.
    *
-   * Weights: 30% recent accuracy | 25% mock accuracy | 20% topic coverage
-   *          15% study frequency | 10% recency bonus
+   * Weights: 40% recent accuracy | 25% mock accuracy | 20% topic coverage
+   *          10% study frequency | 5% recency bonus
    */
   readinessScore: publicProcedure
     .input(z.object({ examType: z.string().optional() }).optional())

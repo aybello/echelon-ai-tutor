@@ -37,9 +37,9 @@ export interface ReadinessResult {
 }
 
 /** Increment when formula weights, inputs, or thresholds change. */
-export const READINESS_MODEL_VERSION = "estimated-readiness-v1";
+export const READINESS_MODEL_VERSION = "estimated-readiness-v2-pre-exam";
 /** Manager views use a reduced input set and are calibrated independently. */
-export const MANAGER_READINESS_MODEL_VERSION = "estimated-manager-readiness-v1";
+export const MANAGER_READINESS_MODEL_VERSION = "estimated-manager-readiness-v2-pre-exam";
 /** Remains false until scores are calibrated against sufficient official outcomes. */
 export const READINESS_MODEL_CALIBRATED = false;
 

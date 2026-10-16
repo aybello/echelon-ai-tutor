@@ -68,6 +68,11 @@ export const trialEmails = mysqlTable("trial_emails", {
    */
   phone: varchar("phone", { length: 32 }),
   source: varchar("source", { length: 32 }).notNull().default("quiz_gate"), // where the gate was hit
+  /** Canonical pricing query only: product, province or recognized US context. */
+  studyContext: varchar("studyContext", { length: 128 }),
+  /** Explicit permission for the bounded email sequence; legacy captures stay unconsented. */
+  followUpConsentAt: timestamp("followUpConsentAt"),
+  followUpConsentVersion: varchar("followUpConsentVersion", { length: 32 }),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   /**
    * Follow-up sequence state. 0 = only the capture-time study plan email was
@@ -1117,13 +1122,16 @@ export const examOutcomes = mysqlTable("exam_outcomes", {
   result: mysqlEnum("result", ["passed", "failed", "no_show"]).notNull(),
   examDate: timestamp("examDate"),
   recordedBy: varchar("recordedBy", { length: 320 }).notNull(), // manager email
-  /** Study estimate captured immediately before the official result was recorded. */
+  /** Stable identity for a dated attempt; null preserves legacy records without rewriting history. */
+  examAttemptKey: varchar("examAttemptKey", { length: 64 }),
+  /** Study estimate reconstructed strictly before the official exam date. */
   readinessScoreAtOutcome: int("readinessScoreAtOutcome"),
   readinessModelVersion: varchar("readinessModelVersion", { length: 64 }),
   recordedAt: timestamp("recordedAt").defaultNow().notNull(),
 }, (t) => [
   index("exam_outcomes_orgid_idx").on(t.orgId),
   index("exam_outcomes_email_idx").on(t.memberEmail),
+  uniqueIndex("exam_outcomes_attempt_key_idx").on(t.examAttemptKey),
 ]);
 export type ExamOutcome = typeof examOutcomes.$inferSelect;
 export type InsertExamOutcome = typeof examOutcomes.$inferInsert;

@@ -96,7 +96,7 @@ describe("lead course resolution", () => {
   it("resolves a real product key to its course label, link and price", () => {
     const resolved = resolveLeadCourse("oit");
     expect(resolved.courseLabel.toLowerCase()).toContain("oit");
-    expect(resolved.courseUrl).toContain("/pricing?course=oit");
+    expect(resolved.courseUrl).toContain("/pricing?product=oit&province=ON");
     expect(resolved.priceLabel).toMatch(/^CA\$/);
   });
 
