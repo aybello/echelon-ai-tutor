@@ -4,6 +4,9 @@ The email capture now retains a canonical product and recognized province or US
 state. Immediate study-plan emails, bounded follow-ups and recovery fallback links
 use the same pricing-link contract as the application. Existing captures retain
 their available context; a missing historic province/state cannot be reconstructed.
+Already-sent `?course=` email links redirect to the canonical selection, including
+inferred Texas context for the dedicated Texas course. Explicit current product
+selections are never overridden by a legacy parameter.
 
 The optional, unchecked reminder checkbox permits at most two follow-up emails.
 The date and copy version are retained. Legacy captures are not treated as consent.

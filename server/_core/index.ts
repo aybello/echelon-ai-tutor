@@ -1,4 +1,5 @@
 import { registerManagedJobs, requireManagedJob } from "../jobs/managedJobs";
+import { legacyLeadPricingRedirect } from "../../shared/leadStudyContext";
 import {
   runPurchaseEmailDelivery,
 } from "../purchaseEmailOutbox";
@@ -95,6 +96,15 @@ async function startServer() {
   // before Stripe, OAuth, tRPC, scheduled jobs, or bespoke route handlers can
   // create a source-side write.
   app.use(databaseCutoverWriteFreeze());
+
+  // Old study-plan emails used ?course=. Repair those links before SSR/SPA
+  // handling so the UI receives its canonical product and jurisdiction query.
+  app.get("/pricing", (req, res, next) => {
+    const queryAt = req.originalUrl.indexOf("?");
+    const target = legacyLeadPricingRedirect(queryAt < 0 ? "" : req.originalUrl.slice(queryAt));
+    if (target) return res.redirect(302, target);
+    next();
+  });
 
   // Register Stripe webhook BEFORE express.json() so raw body is preserved for signature verification
   registerStripeWebhook(app);

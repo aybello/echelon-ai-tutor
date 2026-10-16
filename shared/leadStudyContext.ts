@@ -19,3 +19,14 @@ export function leadPricingHref(source: string, studySearch = ""): string {
 export function leadStudyContext(source: string, studySearch = ""): string {
   return new URL(leadPricingHref(source, studySearch), "https://echelon.invalid").search.slice(1);
 }
+
+/** Repair already-sent email URLs without overriding an explicit current selection. */
+export function legacyLeadPricingRedirect(search: string): string | null {
+  if (search.length > 512) return null;
+  const params = new URLSearchParams(search);
+  if (params.has("product")) return null;
+  const course = resolveCourseKey(params.get("course") ?? "");
+  if (!course?.isActive) return null;
+  const target = leadPricingHref(course.courseKey, search);
+  return new URL(target, "https://echelon.invalid").searchParams.has("product") ? target : null;
+}
