@@ -14,7 +14,8 @@ export async function hasHistoricalPayment(db: Database, email: string): Promise
     // This conservative suppression is not a revenue calculation or an access grant.
     db.select({ id: subscriptions.id }).from(subscriptions).where(and(
       sql`LOWER(TRIM(${subscriptions.email})) = ${normalized}`,
-      or(gt(subscriptions.amountCAD, 0), sql`${subscriptions.stripeSubscriptionId} IS NOT NULL`),
+      or(gt(subscriptions.amountCAD, 0), sql`LEFT(${subscriptions.stripeSubscriptionId}, 4) = ${"sub_"}`,
+        sql`${subscriptions.orgId} IS NOT NULL`),
     )).limit(1),
     db.select({ id: teamFlexOrders.id }).from(teamFlexOrders).where(and(
       sql`LOWER(TRIM(${teamFlexOrders.managerEmail})) = ${normalized}`, eq(teamFlexOrders.status, "paid"),

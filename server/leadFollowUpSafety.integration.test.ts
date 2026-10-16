@@ -110,6 +110,18 @@ suite.sequential("lead follow-up delivery and suppression on isolated MySQL", ()
     expect(send).not.toHaveBeenCalled();
   });
 
+  it("does not mistake an unpaid placeholder subscription for historical payment", async () => {
+    const email = await lead();
+    await db.insert(subscriptions).values({ email, tier: "class1", province: "ontario",
+      stripeSubscriptionId: `placeholder-${randomUUID()}`, status: "active", amountCAD: 0,
+      currentPeriodStart: new Date(), currentPeriodEnd: new Date(),
+    });
+    expect(await hasHistoricalPayment(db, email)).toBe(false);
+    const send = sender();
+    await runLeadFollowUps(send);
+    expect(send).toHaveBeenCalledTimes(1);
+  });
+
   it("unsubscribes every duplicate capture and cart for the normalized email", async () => {
     const email = await lead();
     await db.insert(trialEmails).values({ email, source: "quiz_gate" });

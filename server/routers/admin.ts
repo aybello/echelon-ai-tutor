@@ -1010,7 +1010,7 @@ export const adminRouter = router({
           .from(purchases)
           .where(and(gt(purchases.amountCAD, 0), sql`${purchases.refundedAt} IS NULL`)),
         db.select({ email: subscriptions.email }).from(subscriptions)
-          .where(or(gt(subscriptions.amountCAD, 0), sql`${subscriptions.stripeSubscriptionId} IS NOT NULL`)),
+          .where(or(gt(subscriptions.amountCAD, 0), sql`LEFT(${subscriptions.stripeSubscriptionId}, 4) = ${"sub_"}`)),
         db
           .select({ email: teamFlexOrders.managerEmail })
           .from(teamFlexOrders)
