@@ -5,7 +5,7 @@
 import { useState, useRef, useEffect, useCallback, useContext } from "react";
 import { Question, HistoryEntry } from "@/lib/questionTypes";
 import { trpc } from "@/lib/trpc";
-import { getTutorFailureMessage, isTutorDismissKey, withoutTutorErrors } from "@/lib/tutorInteraction";
+import { getTutorFailureMessage, isTutorAllowanceMessage, isTutorDismissKey, isTutorPurchasePrompt, withoutTutorErrors } from "@/lib/tutorInteraction";
 import { useLearningActivitySession } from "@/hooks/useLearningActivitySession";
 import { createPortal } from "react-dom";
 import { TutorPanelPlacement } from "./TutorPanelPlacement";
@@ -412,7 +412,31 @@ export default function AITutor({
               {m.content.startsWith("__ERROR__:") ? (
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                   <span style={{ color: "#DC2626", fontWeight: 600 }}>⚠️ {m.content.slice("__ERROR__:".length)}</span>
-                  {lastUserMsg && i === messages.length - 1 && (
+                  {/*
+                    Reaching the free message allowance is not a failure to retry,
+                    it is the moment to buy. Showing Retry here would loop the
+                    visitor through an action that cannot succeed today. Send them
+                    straight to the self-serve purchase page instead.
+                  */}
+                  {isTutorPurchasePrompt(m.content.slice("__ERROR__:".length)) ? (
+                    <a
+                      href="/pricing"
+                      style={{
+                        padding: "6px 12px",
+                        borderRadius: 8,
+                        background: "#1D4ED8",
+                        color: "#fff",
+                        fontWeight: 700,
+                        fontSize: 11,
+                        alignSelf: "flex-start",
+                        textDecoration: "none",
+                        fontFamily: "inherit",
+                      }}
+                    >
+                      Unlock full access
+                    </a>
+                  ) : isTutorAllowanceMessage(m.content.slice("__ERROR__:".length)) ? null : lastUserMsg &&
+                    i === messages.length - 1 ? (
                     <button
                       onClick={() => {
                         const retryHistory = withoutTutorErrors(messages);
@@ -434,7 +458,7 @@ export default function AITutor({
                     >
                       🔄 Retry
                     </button>
-                  )}
+                  ) : null}
                 </div>
               ) : m.role === "assistant" ? (
                 <div className="prose prose-sm max-w-none break-words [&_h1]:text-base [&_h2]:mt-3 [&_h2]:text-sm [&_h3]:text-xs [&_ol]:my-2 [&_ul]:my-2 [&_p]:my-2 [&_p:first-child]:mt-0 [&_p:last-child]:mb-0">
