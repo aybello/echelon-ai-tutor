@@ -41,14 +41,15 @@ export async function runCommand(command, args, {
   const log = createWriteStream(logPath, { flags: "wx", mode: 0o600 });
   return new Promise(resolve => {
     let tail = Buffer.alloc(0), bytes = 0, timedOut = false, outputLimited = false, error = null;
-    let timer, killTimer;
+    let timer, killTimer, stopping = false;
     const child = spawn(command, args, { cwd, env, stdio: ["ignore", "pipe", "pipe"], detached: true });
     const stop = () => {
+      if (stopping) return;
+      stopping = true;
       try { process.kill(-child.pid, "SIGTERM"); } catch { /* Already closed. */ }
       killTimer = setTimeout(() => {
         try { process.kill(-child.pid, "SIGKILL"); } catch { /* Already closed. */ }
       }, 2000);
-      killTimer.unref();
     };
     log.on("error", err => { error = `Log write failed: ${err.code ?? err.message}`; stop(); });
     timer = setTimeout(() => { timedOut = true; stop(); }, timeoutMs);
@@ -69,7 +70,10 @@ export async function runCommand(command, args, {
     child.stdout.on("data", collect); child.stderr.on("data", collect);
     child.on("error", err => { error = `${err.code ?? "spawn"}: ${err.message}`; });
     child.on("close", (exitCode, signal) => {
-      clearTimeout(timer); clearTimeout(killTimer);
+      clearTimeout(timer);
+      // The leader closing does not prove its process group is empty. Preserve
+      // timeout escalation for descendants that ignore SIGTERM and detach stdio.
+      if (!stopping) clearTimeout(killTimer);
       const result = { exitCode, signal, timedOut, outputLimited, error, bytes, tail: tail.toString("utf8"), logPath };
       log.end(() => resolve(result));
     });
@@ -115,6 +119,7 @@ export function evaluateVitest(run, report) {
   return { status: pending ? "warn" : "pass", detail: `${passed} assertions passed; ${pending} pending/skipped/todo`, passed, pending };
 }
 
+/** For explicit targeted follow-up by the schedule agent, never silent automatic retries. */
 export function combineTestAttempts(first, rerun) {
   if (["fail", "blocked"].includes(first.status) && rerun?.status === "pass") {
     return { status: "warn", detail: `Initial ${first.status}, isolated rerun passed. Flaky or incomplete evidence, not a clean run. ${first.detail}` };
@@ -154,7 +159,8 @@ export function validateQuestion(question) {
     || question.options.some(option => typeof option !== "string" || !option.trim())) return "invalid four-option structure";
   if (!Number.isInteger(question.correctIndex) || question.correctIndex < 0 || question.correctIndex >= question.options.length) return "invalid correctIndex";
   if (question.steps != null && (!Array.isArray(question.steps) || question.steps.some(step => !step
-    || typeof step.l !== "string" || typeof step.c !== "string"))) return "invalid worked steps";
+    || typeof step !== "object" || Array.isArray(step)
+    || !((typeof step.c === "string" && step.c.trim()) || (typeof step.content === "string" && step.content.trim()))))) return "invalid worked steps";
   return null;
 }
 

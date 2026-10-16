@@ -23,7 +23,7 @@ function registeredAppRoutes(source: string) {
   );
 }
 
-describe("Texas Class D dormant learning surfaces", () => {
+describe("Texas Class D released learning surfaces", () => {
   it("has all released learning surfaces in code and routes", () => {
     const app = readFileSync("client/src/App.tsx", "utf8");
     const registeredRoutes = registeredAppRoutes(app);
@@ -44,7 +44,7 @@ describe("Texas Class D dormant learning surfaces", () => {
     expect(routes).toContain("/us-texas-class-d-water-mock");
   });
 
-  it("keeps the course inactive and absent from new checkout", () => {
+  it("keeps the released course active and available through governed checkout", () => {
     expect(getCourseByKey(COURSE_KEY)).toMatchObject({
       courseKey: COURSE_KEY,
       examFamily: "us-state",
@@ -64,9 +64,12 @@ describe("Texas Class D dormant learning surfaces", () => {
     expect(mockSource).toContain("questionPool={[]}");
   });
 
-  it("leaves dormant Texas flashcards free of answer-bearing bank requests", () => {
+  it("loads Texas flashcards from the governed bank behind the existing purchase gate", () => {
     const flashcardSource = readFileSync("client/src/pages/UsTexasClassDFlashcards.tsx", "utf8");
-    expect(flashcardSource).not.toContain("useQuestionBank");
-    expect(flashcardSource).toContain("questions={[]}");
+    expect(flashcardSource).toContain(`useQuestionBank("${COURSE_KEY}")`);
+    expect(flashcardSource).toContain("<PurchaseGate");
+    expect(flashcardSource).toContain(`productKey="${COURSE_KEY}"`);
+    expect(flashcardSource).not.toContain("questions={[]}");
+    expect(flashcardSource).not.toContain("freeAccess");
   });
 });

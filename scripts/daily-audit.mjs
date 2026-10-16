@@ -283,6 +283,18 @@ try {
     });
   }
 
+  await check("Serving deployment identity", async () => {
+    const response = await fetchEvidence("serving-release", "/api/health");
+    const health = JSON.parse(response.body);
+    const valid = health.releaseKind === "git-commit" ? /^[a-f0-9]{40,64}$/i.test(health.release ?? "")
+      : health.releaseKind === "source-sha256" && /^[a-f0-9]{64}$/i.test(health.release ?? "");
+    if (response.status !== 200 || health.status !== "ok" || !valid) {
+      throw new Error("Production health did not expose a valid immutable serving identity");
+    }
+    return { detail: `${health.releaseKind}: ${health.release}. Serving marker recorded separately from checkout HEAD; equality or deployment of local changes is not implied.`,
+      evidence: { artifact: response.evidence } };
+  });
+
   if (!manifest) record("Live question samples", "blocked", "No registry or preview policy. Not substituting a guessed course list.");
   else for (const course of manifest.courses) {
     const beta = course.isFreeBeta;
@@ -318,9 +330,13 @@ try {
   if (values["skip-browser"]) record("Rendered product journeys", "skipped", "Explicit --skip-browser. HTTP route checks are not DOM, mobile, Teams-content or interaction coverage.");
   else if (!manifest) record("Rendered product journeys", "blocked", "Cannot run without the real course manifest");
   else await check("Rendered product journey runner", async () => {
+    const detectors = await command("browser-detectors", "python3", ["-B", "scripts/product-journeys.test.py"], 30_000);
+    if (commandProblem(detectors) || detectors.exitCode !== 0) {
+      return { status: "blocked", detail: "Offline browser detector regression tests did not pass; see browser-detectors.log" };
+    }
     const browserDir = resolve(outputDir, "browser");
     await mkdir(browserDir, { recursive: true, mode: 0o700 });
-    const run = await runCommand("python3", ["scripts/product-journeys.py", "--base-url", SITE,
+    const run = await runCommand("python3", ["-B", "scripts/product-journeys.py", "--base-url", SITE,
       "--courses", resolve(outputDir, "courses.json"), "--output-dir", browserDir], {
       cwd: ROOT, env: { ...childEnv, PLAYWRIGHT_BROWSERS_PATH: process.env.PLAYWRIGHT_BROWSERS_PATH
         ?? resolve(process.env.HOME ?? "/home/ubuntu", ".cache/ms-playwright") },
@@ -358,6 +374,7 @@ const report = { schemaVersion: 1, runId, startedAt, finishedAt: new Date().toIS
     "Failures are evidence for validation, not automatically verified defect claims. No owner notification sent.",
     "No authenticated learner, manager or admin mutations, real email delivery, checkout charge or live ledger reconciliation.",
     "Live bank/API checks establish structure and preview contracts, not question accuracy or regulatory correctness.",
+    "DOM route checks verify expected content or gate state, not exact bank identity. Authenticated paid study journeys and deeper course/region identity tracing remain part of the scheduled deep review.",
     "Production analytics cannot prove unpaid entitlement or distinguish historical tester traffic. Tutor history snapshot predates the optional probe.",
     "CI integration suites need a disposable database. Subprocesses receive test-only credentials and no production database or key material.",
   ] };

@@ -102,6 +102,9 @@ describe("daily audit live API contracts", () => {
     expect(validateQuestion({ ...question(), correctIndex: 1.2 })).toMatch(/correctIndex/);
     expect(validateQuestion({ ...question(), options: ["a", "b", "", "d"] })).toMatch(/option/);
     expect(validateQuestion({ ...question(), steps: {} })).toMatch(/steps/);
+    expect(validateQuestion({ ...question(), steps: [{ label: "Formula", content: "V / Q" }] })).toBeNull();
+    expect(validateQuestion({ ...question(), steps: [{ l: "Answer without a body" }] })).toMatch(/steps/);
+    expect(validateQuestion({ ...question(), steps: [null] })).toMatch(/steps/);
   });
 });
 
@@ -167,5 +170,26 @@ describe("daily audit subprocesses and reports", () => {
       });
       expect(limited.outputLimited).toBe(true);
     } finally { await rm(dir, { recursive: true, force: true }); }
+  });
+  it("preserves group kill escalation after the leader exits", async () => {
+    const dir = await mkdtemp(join(tmpdir(), "daily-audit-descendant-"));
+    let descendant = 0;
+    try {
+      const childCode = "process.on('SIGTERM',()=>{});setInterval(()=>{},1000)";
+      const leader = `const {spawn}=require('node:child_process');const c=spawn(process.execPath,['-e',${JSON.stringify(childCode)}],{stdio:'ignore'});console.log(c.pid);setInterval(()=>{},1000)`;
+      const result = await runCommand(process.execPath, ["-e", leader], {
+        cwd: dir, env: isolatedTestEnv(process.env, dir), logPath: join(dir, "leader.log"), timeoutMs: 400,
+      });
+      descendant = Number(result.tail.trim());
+      expect(result.timedOut).toBe(true);
+      expect(descendant).toBeGreaterThan(0);
+      await new Promise(resolve => setTimeout(resolve, 2300));
+      let state = "gone";
+      try { state = (await readFile(`/proc/${descendant}/stat`, "utf8")).split(") ")[1].split(" ")[0]; } catch { /* Reaped. */ }
+      expect(["gone", "Z"]).toContain(state);
+    } finally {
+      if (descendant) try { process.kill(descendant, "SIGKILL"); } catch { /* Already dead. */ }
+      await rm(dir, { recursive: true, force: true });
+    }
   });
 });

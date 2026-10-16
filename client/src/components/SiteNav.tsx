@@ -111,6 +111,9 @@ export default function SiteNav({
   const accountHref = isSignedIn ? "/account" : signInHref(destination);
   const courseProvince = new URLSearchParams(search).get("province");
   const usContext = readUSStudyContext(search);
+  // /teams is employer purchasing; /team contains manager workspaces. Keep
+  // learner account, activation and course routes on their individual funnel.
+  const isEmployerRoute = ["/teams", "/team"].some((href) => isPathActive(currentPath, href));
   // A dedicated US course is always a US context. A shared WPI course only
   // counts as US when the learner actually carries US study context, so a
   // Canadian learner never sees US framing.
@@ -150,7 +153,7 @@ export default function SiteNav({
           <Link href="/electrician-309a" className={`echelon-nav-link${isPathActive(currentPath, "/electrician-309a") ? " is-active" : ""}`}>309A Electrician</Link>
           <Link href="/wpi" className={`echelon-nav-link${isPathActive(currentPath, "/wpi") ? " is-active" : ""}`}>WPI</Link>
           <Link href="/us" className={`echelon-nav-link${isPathActive(currentPath, "/us") ? " is-active" : ""}`}>US</Link>
-          <Link href={pricingHref} className={`echelon-nav-link${isPathActive(currentPath, "/pricing") ? " is-active" : ""}`}>Pricing</Link>
+          {!isEmployerRoute && <Link href={pricingHref} className={`echelon-nav-link${isPathActive(currentPath, "/pricing") ? " is-active" : ""}`}>Pricing</Link>}
           <ResourcesMenu currentPath={currentPath} />
           </>}
           <Link href="/jobs" className={`echelon-nav-link${isPathActive(currentPath, "/jobs") ? " is-active" : ""}`} aria-current={isPathActive(currentPath, "/jobs") ? "page" : undefined}>Jobs</Link>
@@ -245,7 +248,7 @@ export default function SiteNav({
               <MessageCircleQuestion size={20} aria-hidden="true" />
             </div>
             <div className="echelon-mobile-links">
-              {NAV_LINKS.map((item) => (
+              {NAV_LINKS.filter((item) => !isEmployerRoute || item.href !== "/pricing").map((item) => (
                 <a key={item.href} href={item.href === "/pricing" ? pricingHref : item.href === "/#courses" && isUSCourse ? usCatalogueHref(usContext.state?.code) : item.href} className={isPathActive(currentPath, item.href) ? "is-active" : ""}>{item.label}</a>
               ))}
             </div>

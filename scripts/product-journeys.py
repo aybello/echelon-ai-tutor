@@ -81,6 +81,24 @@ def procedures(url: str) -> list[str]:
     return path.split("/api/trpc/", 1)[1].split(",") if "/api/trpc/" in path else []
 
 
+def expected_surface_state(course: dict, surface: str) -> str:
+    # Existing pages expose practice to everyone, OIT previews and the free beta.
+    # Other mock/flashcard pages use PurchaseGate in their current source.
+    return "content" if surface == "quiz" or course.get("track") == "oit" or course.get("isFreeBeta") else "gate"
+
+
+def safety_status(current: str, unexpected_write: bool) -> str:
+    return "fail" if current == "fail" else "blocked" if unexpected_write else current
+
+
+def telemetry_destination(url: str) -> bool:
+    target = urlsplit(url)
+    host = (target.hostname or "").lower()
+    return target.path.rstrip("/").endswith("/umami") or any(
+        host == suffix or host.endswith("." + suffix)
+        for suffix in ["googletagmanager.com", "google-analytics.com", "googleadservices.com", "doubleclick.net"])
+
+
 class Blocked(Exception):
     """Cannot verify this behavior without authentication, unsafe actions or data."""
 
@@ -200,15 +218,17 @@ class Audit:
             await page.get_by_test_id("flashcard-study-card").click(trial=True)
         return "content"
 
-    def smoke(self, path: str, surface: str) -> Callable:
+    def smoke(self, path: str, surface: str, expected_state: str) -> Callable:
         async def check(page: Any) -> dict[str, Any]:
             await self.goto(page, path)
             state = await self.await_surface(page, surface)
+            if state != expected_state:
+                raise AssertionError(f"Expected signed-out {expected_state}, observed {state} for {path}")
             details = {"quiz": "Question stem, answer options and Confirm Answer rendered",
                        "mock": "Real enabled Start Exam control and exam metadata rendered; not started",
                        "flashcards": "Non-empty study-card prompt and actionable flip target rendered"}
             return {"detail": "Valid signed-out gate rendered" if state == "gate" else details[surface],
-                    "observedState": state, "depth": "route-render-only"}
+                    "observedState": state, "expectedState": expected_state, "depth": "route-render-only"}
         return check
 
     def quiz(self, path: str) -> Callable:
@@ -376,7 +396,7 @@ class Audit:
         await expect(page.locator("main").last.get_by_role("combobox").first).to_contain_text(label)
 
     async def employer_only(self, page: Any) -> None:
-        main = page.locator("main").last
+        main = page.locator("body")
         bad = []
         for link in await main.locator("a[href]").all():
             href = await link.get_attribute("href") or ""
@@ -385,7 +405,7 @@ class Audit:
         text = await main.inner_text()
         individual_ad = re.search(r"Individual Exam Pass|Buy (?:an? )?Individual|Individual (?:plans?|pricing)", text, re.I)
         if bad or individual_ad:
-            raise AssertionError("Individual pricing advertisement/link in employer main content: " + clean(bad or individual_ad.group()))
+            raise AssertionError("Individual pricing advertisement/link on employer page: " + clean(bad or individual_ad.group()))
 
     async def teams(self, page: Any) -> dict[str, Any]:
         await self.goto(page, "/teams")
@@ -542,21 +562,30 @@ class Audit:
                 request = route.request
                 procs = procedures(request.url)
                 is_first = urlsplit(request.url).netloc == self.origin
+                if telemetry_destination(request.url):
+                    guarded.add(request.url)
+                    runtime["safetyBlockedRequests"].append({"url": safe_url(request.url),
+                        "method": request.method, "expectedBackground": True})
+                    await route.abort("blockedbyclient")
+                    return
                 # Source contract: quizRouter.logAttempt returns scored success
                 # before inserting history when no verified identity is present.
                 # These fresh contexts never authenticate or inject access data.
-                guest_score = procs == ["quiz.logAttempt"] and request.method == "POST"
+                guest_score = is_first and procs == ["quiz.logAttempt"] and request.method == "POST"
                 if guest_score:
-                    payload = request.post_data_json
-                    serialized = json.dumps(payload)
-                    if re.search(r'"(?:email|accessToken|guestToken)"\s*:\s*"[^\"]+', serialized):
+                    try:
+                        payload = request.post_data_json
+                        serialized = json.dumps(payload)
+                        if re.search(r'"(?:email|accessToken|guestToken)"\s*:\s*"[^\"]+', serialized):
+                            guest_score = False
+                    except Exception:
                         guest_score = False
                 dangerous = any(re.search(r"(?i)(tutor\.(?:chat|saveSession)|create.*checkout|createOrder|"
                     r"requestOtp|sendOtp|sendCode|contact\.|municipal\.request|"
                     r"mock(?:Exam)?\.(?:start|submit|finish)|exam\.(?:start|submit))", p) for p in procs)
-                if is_first and not guest_score and (request.method not in {"GET", "HEAD", "OPTIONS"} or dangerous):
+                if not guest_score and (request.method not in {"GET", "HEAD", "OPTIONS"} or dangerous):
                     guarded.add(request.url)
-                    expected = bool(procs) and all(p in EXPECTED_BACKGROUND_WRITES for p in procs)
+                    expected = not is_first or (bool(procs) and all(p in EXPECTED_BACKGROUND_WRITES for p in procs))
                     runtime["safetyBlockedRequests"].append({"url": safe_url(request.url),
                         "method": request.method, "expectedBackground": expected})
                     # Fail closed without faking a successful API result. Never
@@ -594,7 +623,8 @@ class Audit:
             try:
                 context = await self.browser.new_context(viewport=VIEWPORTS[task.viewport],
                     is_mobile=task.viewport == "mobile", has_touch=task.viewport == "mobile",
-                    service_workers="block", accept_downloads=False)
+                    service_workers="block", accept_downloads=False,
+                    user_agent="EchelonProductAudit/1.0")
                 await context.route("**/*", safety)
                 page = await context.new_page()
                 page.set_default_timeout(self.args.timeout_ms)
@@ -621,7 +651,8 @@ class Audit:
                     result.update(status="fail", detail=clean(result["detail"] + "; unexpected page exception or failed first-party code/style chunk"))
                 unexpected_writes = [r for r in runtime["safetyBlockedRequests"] if not r["expectedBackground"]]
                 if unexpected_writes:
-                    result.update(status="blocked", detail=clean(result["detail"] + "; unexpected write was stopped by safety policy; behavior not fully verified"))
+                    result.update(status=safety_status(result["status"], True),
+                        detail=clean(result["detail"] + "; unexpected write was stopped by safety policy; behavior not fully verified"))
                 read_errors = [r for r in runtime["firstPartyHttpErrors"] if not r["expectedAnonymousGate"]]
                 if result["status"] == "pass" and (read_errors or runtime["failedFirstPartyRequests"]):
                     result.update(status="warn", detail=clean(result["detail"] + "; non-chunk first-party resource/API failures require review"))
@@ -684,7 +715,8 @@ class Audit:
                     raise ValueError(f"{course['courseKey']} is missing required {key}")
                 self.destination(path)
                 routes.setdefault((surface, path), []).append(course["courseKey"])
-        tasks = [Task(f"route/{surface}/{'+'.join(keys)}", path, self.smoke(path, surface),
+        by_key = {course["courseKey"]: course for course in selected}
+        tasks = [Task(f"route/{surface}/{'+'.join(keys)}", path, self.smoke(path, surface, expected_surface_state(by_key[keys[0]], surface)),
                       kind="route-smoke", courses=keys, surface=surface)
                  for (surface, path), keys in routes.items()]
         # Choose at most three genuinely representative study families, not all

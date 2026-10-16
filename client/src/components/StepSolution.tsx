@@ -1,14 +1,15 @@
 // ECHELON AI TUTOR — StepSolution Component
 // Design: Numbered steps with monospace code blocks + tip callout
 
-import { Step } from "@/lib/questionTypes";
+import { normalizeQuestionSteps } from "@shared/questionSteps";
 
 interface Props {
-  steps: Step[];
+  steps: unknown;
   tip?: string;
 }
 
 export default function StepSolution({ steps, tip }: Props) {
+  const normalizedSteps = normalizeQuestionSteps(steps);
   return (
     <div style={{ marginTop: 14, animation: "fadeUp 0.3s ease both" }}>
       <div
@@ -23,7 +24,12 @@ export default function StepSolution({ steps, tip }: Props) {
         📐 STEP-BY-STEP SOLUTION
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-        {steps.map((s, i) => (
+        {normalizedSteps.length === 0 && (
+          <p style={{ fontSize: 12, color: "#064E3B" }}>
+            Worked solution steps are unavailable for this question.
+          </p>
+        )}
+        {normalizedSteps.map((s, i) => (
           <div
             key={i}
             style={{ display: "flex", gap: 10, alignItems: "flex-start" }}
@@ -55,17 +61,19 @@ export default function StepSolution({ steps, tip }: Props) {
                 border: "1px solid #BBF7D0",
               }}
             >
-              <div
-                style={{
-                  fontSize: 9,
-                  fontWeight: 700,
-                  color: "#059669",
-                  marginBottom: 3,
-                  letterSpacing: "0.08em",
-                }}
-              >
-                {s.l.toUpperCase()}
-              </div>
+              {s.l && (
+                <div
+                  style={{
+                    fontSize: 9,
+                    fontWeight: 700,
+                    color: "#059669",
+                    marginBottom: 3,
+                    letterSpacing: "0.08em",
+                  }}
+                >
+                  {s.l.toUpperCase()}
+                </div>
+              )}
               <div
                 style={{
                   fontSize: 12,
