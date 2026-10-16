@@ -31,7 +31,7 @@ import {
   resolveAccessForRequest,
   verifyAccessTokenAndRecheckDb,
 } from "./_core/accessService";
-import { AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT, AI_TUTOR_MAX_OUTPUT_TOKENS, buildTutorSystemPrompt, enforceAiTutorDailyQuota, isTruncatedTutorCompletion } from "./_core/aiTutorPolicy";
+import { AI_TUTOR_CONCISE_RETRY_INSTRUCTION, AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT, AI_TUTOR_MAX_OUTPUT_TOKENS, buildTutorSystemPrompt, enforceAiTutorDailyQuota, isTruncatedTutorCompletion } from "./_core/aiTutorPolicy";
 import { resolveUSStudyContext } from "./usStudyContextServer";
 import { stripeRouter } from "./routers/stripeRouter";
 import { flashcardRouter } from "./routers/flashcardRouter";
@@ -1049,20 +1049,37 @@ export const appRouter = router({
         });
 
         try {
-          const response = await invokeLLM({
+          // A worked calculation that stops mid-step teaches an incomplete
+          // method, so a length-capped answer is never returned as if it were
+          // the whole thing. Asking the learner to retry an identical request
+          // would strand them, because a prompt that overflows the budget
+          // tends to overflow it again. So one bounded recovery attempt asks
+          // for the same solution more compactly before giving up. Exactly one
+          // retry: an unbounded chain would burn cost and make the learner
+          // wait even longer for an answer that is not coming.
+          let response = await invokeLLM({
             messages: [{ role: "system", content: systemPrompt }, ...input.messages],
             maxTokens: AI_TUTOR_MAX_OUTPUT_TOKENS,
           });
+          if (isTruncatedTutorCompletion(response?.choices?.[0]?.finish_reason)) {
+            console.error("[AI Tutor] Explanation hit the output limit, retrying concisely");
+            response = await invokeLLM({
+              messages: [
+                { role: "system", content: systemPrompt + AI_TUTOR_CONCISE_RETRY_INSTRUCTION },
+                ...input.messages,
+              ],
+              maxTokens: AI_TUTOR_MAX_OUTPUT_TOKENS,
+            });
+            if (isTruncatedTutorCompletion(response?.choices?.[0]?.finish_reason)) {
+              // Logged distinctly so this is diagnosable as an output-budget
+              // problem rather than being mistaken for a provider outage.
+              console.error("[AI Tutor] Explanation still truncated after concise retry");
+              throw new Error("Tutor explanation hit the output limit before finishing");
+            }
+          }
           const reply = response?.choices?.[0]?.message?.content;
           if (typeof reply !== "string" || !reply.trim()) {
             throw new Error("Tutor provider returned no usable explanation");
-          }
-          // A worked calculation that stops mid-step teaches an incomplete
-          // method. Treat a length-capped answer as a failure so the learner is
-          // asked to retry rather than shown half a solution as if it were the
-          // whole thing.
-          if (isTruncatedTutorCompletion(response?.choices?.[0]?.finish_reason)) {
-            throw new Error("Tutor explanation hit the output limit before finishing");
           }
           await trackEvent("ai_tutor_message", {
             userId: resolvedUserId,

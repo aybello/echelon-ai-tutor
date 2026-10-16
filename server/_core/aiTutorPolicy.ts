@@ -36,6 +36,25 @@ export function isTruncatedTutorCompletion(finishReason: string | null | undefin
   return reason === "length" || reason === "max_tokens" || reason === "max_token";
 }
 
+/**
+ * Appended to the system prompt for the single recovery attempt made after an
+ * explanation was cut off by the output limit.
+ *
+ * Retrying the identical request is close to useless: a prompt that overflows
+ * the budget tends to overflow it again, which would leave the learner
+ * retrying into the same wall. This asks for the same correct method in less
+ * space instead. It deliberately does not relax any accuracy rule, because a
+ * shorter wrong answer is worse than a long one.
+ */
+export const AI_TUTOR_CONCISE_RETRY_INSTRUCTION = `
+
+LENGTH CONSTRAINT FOR THIS REPLY
+Your previous attempt ran past the available space and was discarded. Give the
+same correct worked solution, but more compactly. Keep every formula, every
+substitution with its numbers, the final answer with its units, and the check.
+Cut only restatement, background and commentary. Do not skip a calculation step
+and do not round earlier than you otherwise would.`;
+
 export interface TutorQuestionContext {
   questionNum: number;
   module: string;
