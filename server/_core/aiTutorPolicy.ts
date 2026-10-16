@@ -204,7 +204,10 @@ export async function enforceAiTutorDailyQuota(identity: {
   }
   if (!identity.userId && !identity.email && identity.anonymousId) {
     identityFilters.push(
-      eq(productAnalyticsEvents.emailHash, hashAnalyticsAnonymousId(identity.anonymousId)),
+      // Anonymous identity is persisted to anonymousHash by resolveAnalyticsHashes
+      // in server/analytics.ts. Reading emailHash here never matched, so the free
+      // preview limit was never enforced for a signed-out visitor.
+      eq(productAnalyticsEvents.anonymousHash, hashAnalyticsAnonymousId(identity.anonymousId)),
     );
   }
 

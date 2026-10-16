@@ -20,9 +20,36 @@
 .ai-tutor-messages > div { flex-shrink: 0; min-width: 0; }
 .ai-tutor-messages .prose { overflow-wrap: anywhere; }
 .ai-tutor-messages :is(pre, .katex-display) { max-width: 100%; overflow-x: auto; }
+/*
+  A formula wider than the panel used to be silently cut off at the edge with no
+  scrollbar affordance. On an exam prep product the formula is the thing being
+  sold, so it must stay fully readable in a 257px column.
+*/
+.ai-tutor-messages .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 4px;
+  scrollbar-width: thin;
+}
+.ai-tutor-messages .katex-display > .katex {
+  max-width: 100%;
+  text-align: left;
+}
+/* Shrink long display math rather than clipping it. */
+@media (max-width: 1200px) {
+  .ai-tutor-messages .katex-display { font-size: 0.86em; }
+}
+/* The MathML accessibility copy must not be duplicated into copied text. */
+.ai-tutor-messages .katex .katex-mathml {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  user-select: none;
+}
 .ai-tutor-prompts { max-height: 30%; overflow-y: auto; }
-.ai-tutor-prompts summary { cursor: pointer; color: #475569 !important; }
-.ai-tutor-prompts[open] summary { margin-bottom: 8px; }
 .ai-tutor-composer { padding-bottom: max(12px, env(safe-area-inset-bottom)) !important; }
 .ai-tutor-composer input { min-width: 0; }
 @media (max-width: 720px) {

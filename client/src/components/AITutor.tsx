@@ -495,24 +495,31 @@ export default function AITutor({
       </div>
 
       {/* Quick prompts */}
-      <details className="ai-tutor-prompts"
+      {/*
+        These were previously inside a collapsed <details>. A closed disclosure
+        still laid its content out underneath the composer, so the buttons looked
+        clickable but every click landed on the composer instead and nothing was
+        sent. They are the highest intent action in the panel, so they stay
+        visible and directly clickable.
+      */}
+      <div className="ai-tutor-prompts"
         style={{
           padding: "10px 16px",
           borderTop: "1px solid #F1F5F9",
           flexShrink: 0,
         }}
       >
-        <summary
+        <div
           style={{
             fontSize: 10,
             fontWeight: 700,
-            color: "#CBD5E1",
+            color: "#94A3B8",
             letterSpacing: "0.1em",
             marginBottom: 6,
           }}
         >
-          Quick prompts
-        </summary>
+          QUICK PROMPTS
+        </div>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
           {QUICK.map((q) => (
             <button
@@ -537,7 +544,7 @@ export default function AITutor({
             </button>
           ))}
         </div>
-      </details>
+      </div>
 
       {/* Input area */}
       <div className="ai-tutor-composer"
