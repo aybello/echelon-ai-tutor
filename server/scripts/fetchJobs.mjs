@@ -328,27 +328,28 @@ export async function fetchAndIngest(options = {}) {
     const ordered = [...unique].sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0));
     const start = lastVerificationKey ? ordered.findIndex(([key]) => key > lastVerificationKey) : 0;
     const offset = start < 0 ? 0 : start;
-    const rotated = [...ordered.slice(offset), ...ordered.slice(0, offset)];
-    const batch = rotated.slice(0, JOB_REFRESH_BUDGET.destinations);
-    deferredCount = Math.max(0, rotated.length - batch.length);
-    for (const [, candidate] of rotated.slice(batch.length)) degradedVerificationSources.add(candidate.outcomeSource ?? candidate.sourceName);
-    if (deferredCount) allErrors.push(`Verification deferred for ${deferredCount} destinations; durable cursor resumes on the next callback`);
+    // Finish the remaining sweep before wrapping on a later callback. Repeating
+    // its prefix here wastes scarce verification slots and never drains backlog.
+    const pending = ordered.slice(offset);
+    const batch = pending.slice(0, JOB_REFRESH_BUDGET.destinations);
     verificationSignal = AbortSignal.timeout(Math.max(1, Math.min(JOB_REFRESH_BUDGET.verificationMs, invocationDeadline - Date.now() - 2000)));
     let cursor = 0;
     const processed = await Promise.allSettled(Array.from({ length: 8 }, async () => {
-      while (cursor < batch.length) {
+      while (cursor < batch.length && !verificationSignal.aborted) {
         const [, candidate] = batch[cursor++];
-        if (verificationSignal.aborted) {
-          verificationUnavailable++;
-          degradedVerificationSources.add(candidate.outcomeSource ?? candidate.sourceName);
-          continue;
-        }
         await processJob(candidate);
       }
     }));
+    deferredCount = pending.length - cursor;
+    // Prefix jobs were attempted on earlier callbacks, not verified by this one.
+    // Keep their sources degraded: a drained sweep alone cannot prove complete
+    // current coverage or authorize expiry after an earlier unavailable result.
+    for (const [, candidate] of [...ordered.slice(0, offset), ...pending.slice(cursor)]) degradedVerificationSources.add(candidate.outcomeSource ?? candidate.sourceName);
+    if (deferredCount) allErrors.push(`Verification deferred for ${deferredCount} destinations; durable cursor resumes on the next callback`);
     // Advance past unavailable attempts too; a blocked employer must not starve
-    // unrelated sources. Never advance on a thrown SQL/ownership failure.
-    const batchLastKey = batch.at(-1)?.[0] ?? lastVerificationKey;
+    // unrelated sources. Unstarted work remains deferred, never skipped by the
+    // cursor. Never advance on a thrown SQL/ownership failure.
+    const batchLastKey = cursor ? batch[cursor - 1][0] : lastVerificationKey;
     const processingFailure = processed.find(result => result.status === "rejected");
     if (processingFailure) throw processingFailure.reason;
     if (failedUpsertCount === 0) lastVerificationKey = batchLastKey;

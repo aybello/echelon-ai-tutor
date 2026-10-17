@@ -91,10 +91,10 @@ suite("Jobs real SQL durable state in a disposable database", () => {
     };
     for (let attempt = 0; attempt < 3; attempt++) {
       const result = await run({ ingestRss: ingest, ingestAssociations: empty });
-      expect(result).toMatchObject({ ok: false, processedCount: 16, deferredCount: 24, expiredCount: 0 });
+      expect(result).toMatchObject({ ok: false, processedCount: [16, 16, 8][attempt], deferredCount: [24, 8, 0][attempt], expiredCount: 0 });
       const health = JSON.parse((await readState(JOB_HEALTH_KEY)).lastError);
       expect(health.lastVerificationKey).toMatch(/^[a-f0-9]{64}$/);
-      expect(health).toMatchObject({ status: "degraded", deferredCount: 24, lastSuccessAt: null });
+      expect(health).toMatchObject({ status: "degraded", deferredCount: [24, 8, 0][attempt], lastSuccessAt: null });
       expect(await readState(JOB_REFRESH_LOCK_KEY)).toMatchObject({ status: "job-idle", claimToken: null });
     }
     const [rows] = await pool.execute<any[]>("SELECT COUNT(*) AS count FROM job_postings WHERE isActive=1");
