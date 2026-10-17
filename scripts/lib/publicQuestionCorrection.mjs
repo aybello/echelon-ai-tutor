@@ -98,7 +98,7 @@ export async function applyPublicQuestionCorrection(connection, {
     return { metadata, bankRows, rows };
   };
   if (apply) await connection.beginTransaction();
-  else await connection.execute("START TRANSACTION READ ONLY");
+  else await connection.query("START TRANSACTION READ ONLY");
   try {
     const before = await read();
     const plan = planPublicQuestionCorrection(before.rows, before.metadata, before.bankRows, document);

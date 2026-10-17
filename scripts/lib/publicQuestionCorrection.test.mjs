@@ -29,9 +29,13 @@ function fakeDatabase(failure) {
     beginTransaction: async () => { saved = clone(state); events.push("begin"); },
     commit: async () => { if (failure === "commit") throw new Error("commit failure"); events.push("commit"); },
     rollback: async () => { if (saved) Object.assign(state, clone(saved)); events.push("rollback"); },
+    query: async sql => {
+      assert.equal(sql, "START TRANSACTION READ ONLY");
+      sqls.push(sql); saved = clone(state); events.push("read-only"); return [[]];
+    },
     execute: async (sql, values = []) => {
       sqls.push(sql);
-      if (sql === "START TRANSACTION READ ONLY") { saved = clone(state); events.push("read-only"); return [[]]; }
+      if (sql === "START TRANSACTION READ ONLY") throw new Error("Transaction control is not supported by the prepared statement protocol");
       if (sql.startsWith("SELECT * FROM question_bank_meta")) {
         events.push("metadata-read");
         const result = clone(state.metadata);
