@@ -180,13 +180,13 @@ export default function StudentDashboard() {
 
   const overview = trpc.dashboard.overview.useQuery(selectedCourseKey ? { courseKey: selectedCourseKey } : undefined, { enabled: hasAccess, retry: false });
   const dailyActivity = trpc.dashboard.dailyActivity.useQuery(undefined, { enabled: hasAccess, retry: false });
-  const topicAccuracy = trpc.dashboard.topicAccuracy.useQuery(undefined, { enabled: hasAccess, retry: false });
+  const topicAccuracy = trpc.dashboard.topicAccuracy.useQuery(selectedCourseKey ? { courseKey: selectedCourseKey } : undefined, { enabled: hasAccess, retry: false });
   const courseBreakdown = trpc.dashboard.courseBreakdown.useQuery(undefined, { enabled: hasAccess, retry: false });
   const difficultyBreakdown = trpc.dashboard.difficultyBreakdown.useQuery(undefined, { enabled: hasAccess, retry: false });
-  const recentSessions = trpc.dashboard.recentSessions.useQuery(undefined, { enabled: hasAccess, retry: false });
+  const recentSessions = trpc.dashboard.recentSessions.useQuery(selectedCourseKey ? { courseKey: selectedCourseKey } : undefined, { enabled: hasAccess, retry: false });
   const examCountdown = trpc.dashboard.examCountdown.useQuery(undefined, { enabled: hasAccess, retry: false });
   const aiSessions = trpc.dashboard.aiSessionHistory.useQuery(undefined, { enabled: hasAccess, retry: false });
-  const recommendedResources = trpc.dashboard.recommendedResources.useQuery(undefined, { enabled: hasAccess, retry: false });
+  const recommendedResources = trpc.dashboard.recommendedResources.useQuery(selectedCourseKey ? { courseKey: selectedCourseKey } : undefined, { enabled: hasAccess, retry: false });
   const readinessScore = trpc.dashboard.readinessScore.useQuery(selectedCourseKey ? { examType: selectedCourseKey } : undefined, { enabled: hasAccess, retry: false });
   const studyFocus = trpc.dashboard.studyFocus.useQuery(undefined, { enabled: hasAccess, retry: false });
   const outcomeCourseKey = selectedCourseKey ?? studyFocus.data?.courseKey ?? "oit";

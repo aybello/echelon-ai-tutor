@@ -6,6 +6,8 @@ import { toast } from "sonner";
  */
 import { useState } from "react";
 import { trpc } from "@/lib/trpc";
+import { enqueuePracticeSave, removePendingPracticeSave, type PendingPracticeSave } from "@/lib/practiceSaveOutbox";
+import { notifyPracticeSave, useVerifiedPracticeSaveScope } from "./PracticeSaveStatus";
 
 export type QuizMode = "standard" | "quick10" | "missed" | "bookmarked" | "low-confidence";
 
@@ -182,11 +184,10 @@ export default function QuizModeBar({
 
 // ─── Attempt Logger ───────────────────────────────────────────────────────────
 export function useAttemptLogger(examType: string, quizMode: QuizMode = "standard") {
-  const logAttempt = trpc.quiz.logAttempt.useMutation({
-    onSuccess: result => { if (!result.success) toast.error("This answer could not be saved. Refresh practice to recheck your access."); },
-    onError: () => toast.error("This answer could not be saved. Check your connection before continuing."),
-  });
-
+  // A transport error or success:false may follow a committed insert. Exactly
+  // one send; preserve the original receipt/session/operation rather than retry.
+  const logAttempt = trpc.quiz.logAttempt.useMutation({ retry: false });
+  const scope = useVerifiedPracticeSaveScope(examType);
   // Issue Q: generate a stable UUID for this quiz session so all attempts
   // from the same session share a sessionId. Initialized once per hook mount
   // (i.e. once per quiz page load) and never changes during the session.
@@ -206,17 +207,34 @@ export function useAttemptLogger(examType: string, quizMode: QuizMode = "standar
 
     let accessToken: string | undefined;
     try { accessToken = localStorage.getItem("echelon_access_token") ?? undefined; } catch { /* unavailable */ }
-    logAttempt.mutate({
-      accessToken,
-      attemptToken: params.attemptToken,
-      examType,
-      questionId: params.questionId,
-      selectedIndex: params.selectedIndex,
-      bankKey: params.bankKey ?? examType,
-      quizMode,
-      sessionId,
-      confidence,
+    const item: PendingPracticeSave | null = scope ? {
+      version: 1, operationId: crypto.randomUUID(), scope,
+      questionId: params.questionId, attemptToken: params.attemptToken,
+      selectedIndex: params.selectedIndex, bankKey: params.bankKey ?? examType,
+      quizMode, sessionId, confidence, bookmarked: params.bookmarked ?? false, createdAt: Date.now(),
+    } : null;
+    let durable = false;
+    if (item) {
+      try { durable = enqueuePracticeSave(window.localStorage, item); } catch { /* private browsing */ }
+      notifyPracticeSave(item.scope, durable ? "Saving answer…" : "Saving answer; browser recovery storage is unavailable.");
+    }
+    void logAttempt.mutateAsync({
+      accessToken, attemptToken: params.attemptToken, examType,
+      questionId: params.questionId, selectedIndex: params.selectedIndex,
+      bankKey: params.bankKey ?? examType, quizMode, sessionId, confidence,
       bookmarked: params.bookmarked ?? false,
-    });
+    }).then(result => {
+        if (item && result.success) {
+          let removed = !durable;
+          try { removed = removePendingPracticeSave(window.localStorage, item.operationId); } catch { /* retain warning */ }
+          notifyPracticeSave(item.scope, removed ? "Answer saved to your course history." : "Answer saved, but the local pending record could not be cleared. Do not retry it.");
+        } else if (!result.success) {
+          if (item) notifyPracticeSave(item.scope, durable ? "Save not confirmed. The answer is retained locally; do not retry this attempt." : "Save not confirmed, and browser recovery storage is unavailable. Keep this page open.");
+          toast.error("Answer save not confirmed. Local session score may differ from saved progress.");
+        }
+      }).catch(() => {
+        if (item) notifyPracticeSave(item.scope, durable ? "Save not confirmed. The original attempt is retained locally; no automatic retry was made." : "Save not confirmed, and browser recovery storage is unavailable. Keep this page open.");
+        toast.error("Answer save not confirmed. No automatic retry was made.");
+      });
   };
 }

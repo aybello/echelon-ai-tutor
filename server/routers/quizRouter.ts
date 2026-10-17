@@ -1,3 +1,5 @@
+import { readCourseLearnerProfile, readOverallLearnerActivity } from "../courseLearnerProfile";
+import { latestPracticeAttemptValue } from "../practiceReviewEligibility";
 import { resolveAttemptAttribution, validateIssuedAttribution } from "../teams/attemptAttribution";
 import { practiceIdentity, issuePracticeReceipt, permitsPracticeAttempt, practiceReceiptAttribution } from "../practiceQuestionReceipt";
 import { normalizeWpiClass4Module, wpiClass4StoredModuleNames, WPI_CLASS4_BANK } from "../mockBlueprint";
@@ -291,6 +293,7 @@ export const quizRouter = router({
       limit: z.number().int().min(1).max(50).default(50),
       excludeIds: z.array(z.number().int().positive()).max(10000).default([]),
       module: z.string().min(1).max(255).optional(),
+      topic: z.string().min(1).max(255).optional(),
       calcOnly: z.boolean().default(false),
       difficulty: z.enum(["all", "easy", "medium", "hard"]).default("all"),
       reviewMode: z.enum(["standard", "missed", "bookmarked", "low-confidence"]).default("standard"),
@@ -320,20 +323,20 @@ export const quizRouter = router({
       if (input.module) filters.push(course.questionBankKey === WPI_CLASS4_BANK
         ? inArray(questions.module, wpiClass4StoredModuleNames(input.module))
         : eq(questions.module, input.module));
+      // Canonical topic names are distinct from chapter/module tabs. A null
+      // topic falls back to its module, matching diagnostic scoring exactly.
+      if (input.topic) filters.push(sql`COALESCE(${questions.topic}, ${questions.module}) = ${input.topic}`);
       if (input.calcOnly) filters.push(eq(questions.isCalc, "yes"));
       if (input.difficulty !== "all") filters.push(eq(questions.difficulty, input.difficulty));
       let priority = sql`0`;
       if (identified) {
-        const attemptScope = and(attemptIdentityFilter(identity.userId, identity.studentEmail),
-          attemptCourseFilter(course.courseKey), eq(questionAttempts.questionId, questions.questionNum));
-        const latestCorrect = sql`(SELECT ${questionAttempts.correct} FROM ${questionAttempts}
-          WHERE ${attemptScope} ORDER BY ${questionAttempts.createdAt} DESC, ${questionAttempts.id} DESC LIMIT 1)`;
+        const reviewIdentity = { userId: identity.userId, email: identity.studentEmail };
+        const latestCorrect = latestPracticeAttemptValue(reviewIdentity, course.courseKey, "correct");
         // Prefer unseen or still-missed questions without guessing mastery from
         // a random browser sample. Reviewed questions remain available to repeat.
         priority = sql`CASE WHEN ${latestCorrect} = 'yes' THEN 1 ELSE 0 END`;
         if (input.reviewMode === "missed") filters.push(sql`${latestCorrect} = 'no'`);
-        if (input.reviewMode === "low-confidence") filters.push(sql`(SELECT ${questionAttempts.confidence} FROM ${questionAttempts}
-          WHERE ${attemptScope} ORDER BY ${questionAttempts.createdAt} DESC, ${questionAttempts.id} DESC LIMIT 1) = 'low'`);
+        if (input.reviewMode === "low-confidence") filters.push(sql`${latestPracticeAttemptValue(reviewIdentity, course.courseKey, "confidence")} = 'low'`);
         if (input.reviewMode === "bookmarked") filters.push(sql`EXISTS (SELECT 1 FROM ${bookmarks} WHERE ${and(
           or(identity.userId ? eq(bookmarks.userId, identity.userId) : undefined,
             identity.studentEmail ? eq(bookmarks.studentEmail, identity.studentEmail) : undefined),
@@ -728,32 +731,10 @@ export const quizRouter = router({
       try {
         const db = await getDb();
         if (!db) return { topicAccuracy: {} as Record<string, { correct: number; total: number }>, weakTopics: [] as string[], strongTopics: [] as string[], totalAttempts: 0, totalSessions: 0, currentStreak: 0 };
-        const rows = await db
-          .select()
-          .from(studentProfiles)
-          .where(eq(studentProfiles.userId, ctx.user.id))
-          .limit(1);
-
-        if (rows.length === 0) {
-          return {
-            topicAccuracy: {} as Record<string, { correct: number; total: number }>,
-            weakTopics: [] as string[],
-            strongTopics: [] as string[],
-            totalAttempts: 0,
-            totalSessions: 0,
-            currentStreak: 0,
-          };
-        }
-
-        const profile = rows[0];
-        return {
-          topicAccuracy: JSON.parse(profile.topicAccuracy || "{}") as Record<string, { correct: number; total: number }>,
-          weakTopics: JSON.parse(profile.weakTopics || "[]") as string[],
-          strongTopics: JSON.parse(profile.strongTopics || "[]") as string[],
-          totalAttempts: profile.totalAttempts,
-          totalSessions: profile.totalSessions,
-          currentStreak: profile.currentStreak,
-        };
+        const identity = { userId: ctx.user.id, email: ctx.user.email ?? null };
+        const profile = await readCourseLearnerProfile(db, identity, input.examType);
+        const activity = await readOverallLearnerActivity(db, identity);
+        return { ...profile, currentStreak: activity.currentStreak, longestStreak: activity.longestStreak };
       } catch (err) {
         console.error("[quizRouter.getStudentProfile] Error:", err);
         return {

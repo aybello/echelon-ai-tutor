@@ -29,6 +29,7 @@ import { resolveCourseKey } from "@shared/courseRegistry";
 import { trpc } from "@/lib/trpc";
 import PracticeQuestionStatus from "@/components/PracticeQuestionStatus";
 import QuizSkeleton from "@/components/QuizSkeleton";
+import PracticeSaveStatus from "@/components/PracticeSaveStatus";
 import PracticeOptions from "@/components/PracticeOptions";
 import { getPracticeGuidePath } from "@/lib/practiceResources";
 import StudyNotesTopics from "@/components/StudyNotesTopics";
@@ -387,7 +388,7 @@ export default function QuizShell({
   // Delivery failures and genuinely empty selections are separate from a
   // completed quiz session. Normal loading stays in the quiz workspace.
   if (shouldShowPracticeQuestionStatus(questionStatus)) {
-    return <><SiteNav currentPath={currentPath} /><main className="mx-auto max-w-3xl p-6 text-slate-900">
+    return <><SiteNav currentPath={currentPath} /><PracticeSaveStatus courseKey={examType} /><main className="mx-auto max-w-3xl p-6 text-slate-900">
       <h1 className="text-xl font-bold">{courseTitle}</h1>
       <PracticeQuestionStatus status={questionStatus} error={questionError} answerCount={history.length}
         modules={modules} selectedModule={selectedModule} calcOnly={calcOnly} hasCalcOnly={hasCalcOnly}
@@ -402,7 +403,7 @@ export default function QuizShell({
     const pct = Math.round((correctCount / history.length) * 100);
     return (
       <div className="practice-page" style={{ minHeight: "100vh", background: "#F4F7FB", fontFamily: "'Sora', sans-serif" }}>
-        <SiteNav currentPath={currentPath} />
+        <SiteNav currentPath={currentPath} /><PracticeSaveStatus courseKey={examType} />
         {showSessionFeedback && examType && (
           <FeedbackModal
             examType={examType}
@@ -579,7 +580,7 @@ export default function QuizShell({
         }
       `}</style>
 
-      <SiteNav currentPath={currentPath} />
+      <SiteNav currentPath={currentPath} /><PracticeSaveStatus courseKey={examType} />
 
       <div className="practice-screen-main">
       <section className="practice-header" aria-label="Practice session">

@@ -8,8 +8,6 @@ import {
   learnerOnboarding,
   questionAttempts,
   questions,
-  studentProfiles,
-  users,
 } from "../../drizzle/schema";
 import {
   buildDiagnosticBaseline,
@@ -86,74 +84,6 @@ function parseDiagnosticRow(row: typeof diagnosticSessions.$inferSelect | undefi
     completedAt: row.completedAt,
     calibrationNote: "Starting baseline only — not an official exam score or a prediction of passing.",
   };
-}
-
-async function mergeDiagnosticIntoProfile(
-  db: NonNullable<Awaited<ReturnType<typeof getDb>>>,
-  identity: Identity,
-  courseKey: string,
-  answers: Array<{ module: string; correct: boolean }>,
-) {
-  let profileUserId = identity.userId;
-  let profileEmail = identity.studentEmail;
-  if (!profileUserId && profileEmail) {
-    const existingUser = await db.select({ id: users.id }).from(users).where(eq(users.email, profileEmail)).limit(1);
-    if (existingUser[0]) {
-      profileUserId = existingUser[0].id;
-      profileEmail = null;
-    }
-  }
-  if (!profileUserId && !profileEmail) return;
-
-  const profileWhere = profileUserId
-    ? eq(studentProfiles.userId, profileUserId)
-    : eq(studentProfiles.studentEmail, profileEmail!);
-  const [existing] = await db.select().from(studentProfiles).where(profileWhere).limit(1);
-  const topicAccuracy: Record<string, { correct: number; total: number }> = existing
-    ? JSON.parse(existing.topicAccuracy || "{}")
-    : {};
-  for (const answer of answers) {
-    const current = topicAccuracy[answer.module] ?? { correct: 0, total: 0 };
-    current.total += 1;
-    if (answer.correct) current.correct += 1;
-    topicAccuracy[answer.module] = current;
-  }
-  const weakTopics: string[] = [];
-  const strongTopics: string[] = [];
-  for (const [topic, value] of Object.entries(topicAccuracy)) {
-    const accuracy = value.total > 0 ? value.correct / value.total : 0;
-    if (accuracy < 0.65) weakTopics.push(topic);
-    else if (accuracy >= 0.8) strongTopics.push(topic);
-  }
-  const today = new Intl.DateTimeFormat("en-CA", {
-    timeZone: "America/Toronto", year: "numeric", month: "2-digit", day: "2-digit",
-  }).format(new Date());
-
-  if (existing) {
-    await db.update(studentProfiles).set({
-      examType: courseKey,
-      topicAccuracy: JSON.stringify(topicAccuracy),
-      weakTopics: JSON.stringify(weakTopics),
-      strongTopics: JSON.stringify(strongTopics),
-      totalAttempts: existing.totalAttempts + answers.length,
-      totalSessions: existing.totalSessions + 1,
-      lastActiveDate: today,
-    }).where(profileWhere);
-  } else {
-    await db.insert(studentProfiles).values({
-      userId: profileUserId,
-      studentEmail: profileEmail,
-      examType: courseKey,
-      topicAccuracy: JSON.stringify(topicAccuracy),
-      weakTopics: JSON.stringify(weakTopics),
-      strongTopics: JSON.stringify(strongTopics),
-      totalAttempts: answers.length,
-      totalSessions: 1,
-      currentStreak: 1,
-      longestStreak: 1,
-      lastActiveDate: today,
-    });
-  }
 }
 
 export const activationRouter = router({
@@ -306,7 +236,7 @@ export const activationRouter = router({
       if (replay[0]) {
         const belongsToIdentity = (identity.userId && replay[0].userId === identity.userId)
           || (identity.studentEmail && replay[0].studentEmail === identity.studentEmail);
-        if (!belongsToIdentity) throw new TRPCError({ code: "CONFLICT", message: "Diagnostic session already used." });
+        if (!belongsToIdentity || replay[0].courseKey !== course.courseKey) throw new TRPCError({ code: "CONFLICT", message: "Diagnostic session already used." });
         return { ...parseDiagnosticRow(replay[0])!, recommendation: "Continue with your personalized study plan." };
       }
       const completed = await db.select().from(diagnosticSessions)
@@ -393,7 +323,8 @@ export const activationRouter = router({
         }
       });
 
-      await mergeDiagnosticIntoProfile(db, identity, course.courseKey, scored);
+      // Course mastery is derived from the committed, course-attributed ledger.
+      // Do not merge this diagnostic into the identity-only legacy profile.
       await trackEvent("diagnostic_completed", {
         userId: identity.userId?.toString() ?? null,
         email: identity.studentEmail,

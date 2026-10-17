@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useRoute } from "wouter";
 import {
   ArrowRight,
@@ -18,12 +18,32 @@ import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { toast } from "sonner";
 import { useAuth } from "@/_core/hooks/useAuth";
+import {
+  clearDiagnosticDraft,
+  createDiagnosticDraftScope,
+  loadDiagnosticDraft,
+  saveDiagnosticDraft,
+} from "@/lib/diagnosticDraft";
 
 type Step = "loading" | "profile" | "diagnostic" | "result";
 
+const draftStorage = {
+  getItem: (key: string) => window.localStorage.getItem(key),
+  setItem: (key: string, value: string) => window.localStorage.setItem(key, value),
+};
 const STEP_LABELS = ["Study setup", "Starting diagnostic", "Your plan"];
 
 export default function LearnerActivation() {
+  const [, params] = useRoute("/activate/:courseKey");
+  const auth = trpc.dashboardAuth.me.useQuery(undefined, { retry: false });
+  const oauth = useAuth();
+  return <ActivationFlow key={`${params?.courseKey}:${oauth.user?.id ?? auth.data?.email ?? "anonymous"}`} auth={auth} oauth={oauth} />;
+}
+
+function ActivationFlow({ auth, oauth }: {
+  auth: { data: { email: string | null } | undefined; isLoading: boolean };
+  oauth: ReturnType<typeof useAuth>;
+}) {
   const [, params] = useRoute("/activate/:courseKey");
   const courseKey = decodeURIComponent(params?.courseKey ?? "");
   usePageMeta({
@@ -32,8 +52,6 @@ export default function LearnerActivation() {
     noindex: true,
   });
 
-  const auth = trpc.dashboardAuth.me.useQuery(undefined, { retry: false });
-  const oauth = useAuth();
   const status = trpc.activation.status.useQuery(
     { courseKey },
     { enabled: !!courseKey && (!!auth.data?.email || oauth.isAuthenticated), retry: false },
@@ -45,6 +63,11 @@ export default function LearnerActivation() {
   const [confidence, setConfidence] = useState<"starting_out" | "somewhat" | "confident">("somewhat");
   const [questionIndex, setQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
+  const [diagnosticSessionId, setDiagnosticSessionId] = useState<string>(() => crypto.randomUUID());
+  const [draftReadyKey, setDraftReadyKey] = useState<string | null>(null);
+  const [draftSaved, setDraftSaved] = useState(true);
+  const [resumedDraft, setResumedDraft] = useState(false);
+  const restoredDraftKeyRef = useRef<string | null>(null);
 
   const questions = trpc.activation.diagnosticQuestions.useQuery(
     { courseKey },
@@ -59,6 +82,8 @@ export default function LearnerActivation() {
   });
   const submitDiagnostic = trpc.activation.submitDiagnostic.useMutation({
     onSuccess: () => {
+      const scope = diagnosticDraftScope;
+      if (scope) clearDiagnosticDraft(draftStorage, scope, diagnosticSessionId);
       setStep("result");
       status.refetch();
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -85,6 +110,49 @@ export default function LearnerActivation() {
     else if (status.data.status === "profile_completed" || status.data.status === "diagnostic_started") setStep("diagnostic");
     else setStep("profile");
   }, [status.data]);
+
+  const diagnosticDraftScope = useMemo(() => createDiagnosticDraftScope(
+    oauth.user?.email ?? auth.data?.email,
+    courseKey,
+  ), [auth.data?.email, courseKey, oauth.user?.email]);
+  const diagnosticQuestionIds = useMemo(() => questions.data?.questions.map(question => question.id) ?? [], [questions.data?.questions]);
+  const diagnosticDraftKey = diagnosticDraftScope && diagnosticQuestionIds.length === 15
+    ? `${diagnosticDraftScope.identity}:${diagnosticDraftScope.courseKey}:${diagnosticQuestionIds.join(",")}`
+    : null;
+
+  // The server deterministically chooses the same fixed question IDs for this
+  // verified learner/course. Keep only that exact set in browser storage so a
+  // refresh can resume safely without inventing, changing, or reordering work.
+  useEffect(() => {
+    if (!diagnosticDraftScope || !diagnosticDraftKey || restoredDraftKeyRef.current === diagnosticDraftKey) return;
+    restoredDraftKeyRef.current = diagnosticDraftKey;
+    const draft = loadDiagnosticDraft(draftStorage, diagnosticDraftScope, diagnosticQuestionIds);
+    if (draft) {
+      setAnswers(draft.answers);
+      setQuestionIndex(draft.questionIndex);
+      setDiagnosticSessionId(draft.sessionId);
+      setResumedDraft(true);
+    } else {
+      setAnswers({});
+      setQuestionIndex(0);
+      setDiagnosticSessionId(crypto.randomUUID());
+      setResumedDraft(false);
+    }
+    setDraftReadyKey(diagnosticDraftKey);
+  }, [diagnosticDraftKey, diagnosticDraftScope, diagnosticQuestionIds]);
+
+  useEffect(() => {
+    if (step !== "diagnostic" || !diagnosticDraftScope || !diagnosticDraftKey || draftReadyKey !== diagnosticDraftKey) return;
+    setDraftSaved(saveDiagnosticDraft(draftStorage, {
+      version: 1,
+      scope: diagnosticDraftScope,
+      sessionId: diagnosticSessionId,
+      questionIds: diagnosticQuestionIds,
+      answers,
+      questionIndex,
+      updatedAt: Date.now(),
+    }));
+  }, [step, answers, diagnosticDraftKey, diagnosticDraftScope, diagnosticQuestionIds, diagnosticSessionId, draftReadyKey, questionIndex]);
 
   const result = submitDiagnostic.data ?? status.data?.diagnostic ?? null;
   const currentQuestion = questions.data?.questions[questionIndex];
@@ -114,9 +182,17 @@ export default function LearnerActivation() {
     }
     submitDiagnostic.mutate({
       courseKey,
-      sessionId: crypto.randomUUID(),
+      sessionId: diagnosticSessionId,
       answers: diagnosticQuestions.map(question => ({ questionId: question.id, selectedIndex: answers[question.id] })),
     });
+  };
+
+  const restartDiagnostic = () => {
+    if (diagnosticDraftScope) clearDiagnosticDraft(draftStorage, diagnosticDraftScope, diagnosticSessionId);
+    setAnswers({});
+    setQuestionIndex(0);
+    setDiagnosticSessionId(crypto.randomUUID());
+    setResumedDraft(false);
   };
 
   if (auth.isLoading || oauth.loading || status.isLoading) {
@@ -232,6 +308,8 @@ export default function LearnerActivation() {
               <div className="mt-4 h-2 overflow-hidden rounded-full bg-slate-100"><div className="h-full rounded-full bg-gradient-to-r from-blue-700 to-teal-500 transition-all" style={{ width: `${((questionIndex + 1) / 15) * 100}%` }} /></div>
             </div>
             <CardContent className="p-6 sm:p-8">
+              {resumedDraft && <div role="status" className="mb-4 text-sm text-blue-800">Resumed your diagnostic on this browser. <button type="button" disabled={submitDiagnostic.isPending} onClick={restartDiagnostic} className="underline">Restart diagnostic</button></div>}
+              <p className="mb-4 text-xs text-slate-500">{draftSaved ? "Unfinished answers are saved on this browser only, not across devices." : "Browser storage is unavailable. Unfinished answers will be lost if you leave or refresh."}</p>
               {questions.isLoading ? (
                 <div className="flex min-h-72 items-center justify-center"><Loader2 className="h-8 w-8 animate-spin text-blue-700" /></div>
               ) : questions.error ? (

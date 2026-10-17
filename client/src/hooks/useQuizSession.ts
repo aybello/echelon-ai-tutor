@@ -268,6 +268,9 @@ export function useQuizSession({
     if (m === "missed" || m === "bookmarked" || m === "low-confidence" || m === "quick10") return m as QuizMode;
     return "standard" as QuizMode;
   })();
+  // A module is a learner-selected chapter filter. Diagnostic recommendations
+  // use canonical question topics, which are often different from chapters.
+  const initialModule = _urlParams.get("module") ?? null;
   const initialTopic = _urlParams.get("topic") ?? null;
 
   // ── Core state ─────────────────────────────────────────────────────────────
@@ -288,7 +291,8 @@ export function useQuizSession({
   const [confirmed, setConfirmed] = useState(false);
   const [showSteps, setShowSteps] = useState(false);
   const [tutorOpen, setTutorOpenState] = useState(false);
-  const [selectedModule, setSelectedModule] = useState<string | null>(initialTopic);
+  const [selectedModule, setSelectedModule] = useState<string | null>(initialModule);
+  const [selectedTopic, setSelectedTopic] = useState<string | null>(initialTopic);
   const [calcOnly, setCalcOnly] = useState(initialCalcOnly);
   const [noCalcQuestions, setNoCalcQuestions] = useState(false);
   const [initialized, setInitialized] = useState(false);
@@ -409,7 +413,7 @@ export function useQuizSession({
     courseKey: examType,
     activityType: "quiz",
     enabled: initialized && current !== null && !tutorOpen && !trialDone,
-    topic: selectedModule ?? current?.module ?? null,
+    topic: selectedTopic ?? selectedModule ?? current?.topic ?? current?.module ?? null,
     unitsCompleted: history.length,
     score: correctCount,
     total: history.length || undefined,
@@ -430,6 +434,8 @@ export function useQuizSession({
     } else {
       if (selectedModule)
         qs = qs.filter((q) => q.module === selectedModule);
+      if (selectedTopic)
+        qs = qs.filter((q) => (q.topic ?? q.module) === selectedTopic);
       if (calcOnly) qs = qs.filter((q) => q.isCalc === true);
     }
     // Apply difficulty filter from quiz settings (only when a specific difficulty is chosen)
@@ -439,7 +445,7 @@ export function useQuizSession({
       if (filtered.length > 0) qs = filtered;
     }
     return qs;
-  }, [allQuestions, usedIds, selectedModule, calcOnly, quizMode, missedIds, bookmarkedIds, lowConfidenceIds, quizSettings.difficulty]);
+  }, [allQuestions, usedIds, selectedModule, selectedTopic, calcOnly, quizMode, missedIds, bookmarkedIds, lowConfidenceIds, quizSettings.difficulty]);
 
   // ── Clear UI state helper ──────────────────────────────────────────────────
   const clearUI = useCallback(() => {
@@ -489,12 +495,13 @@ export function useQuizSession({
   const practiceQueueScope = useMemo(() => JSON.stringify({
     examType,
     selectedModule,
+    selectedTopic,
     calcOnly,
     difficulty: quizSettings.difficulty,
     quizMode,
     revision,
     accessToken: storedAccessTokenForAccess ?? null,
-  }), [examType, selectedModule, calcOnly, quizSettings.difficulty, quizMode, revision, storedAccessTokenForAccess]);
+  }), [examType, selectedModule, selectedTopic, calcOnly, quizSettings.difficulty, quizMode, revision, storedAccessTokenForAccess]);
   const practiceQueueGenerationRef = useRef(0);
   const practiceQueueGeneration = useMemo(() => {
     practiceQueueGenerationRef.current += 1;
@@ -503,7 +510,7 @@ export function useQuizSession({
   const activePracticeQueueGeneration = useRef(practiceQueueGeneration);
   activePracticeQueueGeneration.current = practiceQueueGeneration;
   const queue = useMemo(() => freeCourse ? null : new PracticeQueue<DBQuestion>(async excludeIds => {
-    const page = await withPracticeQuestionTimeout(fetchRef.current({ bankKey: examType, module: selectedModule ?? undefined, calcOnly,
+    const page = await withPracticeQuestionTimeout(fetchRef.current({ bankKey: examType, module: selectedModule ?? undefined, topic: selectedTopic ?? undefined, calcOnly,
       difficulty: quizSettings.difficulty, reviewMode: quizMode === "quick10" ? "standard" : quizMode,
       excludeIds, limit: 50, accessToken: storedAccessTokenForAccess }));
     if (!shouldApplyPracticePageResult(practiceQueueGeneration, activePracticeQueueGeneration.current)) {
@@ -524,7 +531,7 @@ export function useQuizSession({
     return page;
   },
     ["standard", "quick10"].includes(quizMode) ? visited.current : new Set<number>()),
-    [freeCourse, examType, selectedModule, calcOnly, quizSettings.difficulty, quizMode, revision, storedAccessTokenForAccess, practiceQueueGeneration]);
+    [freeCourse, examType, selectedModule, selectedTopic, calcOnly, quizSettings.difficulty, quizMode, revision, storedAccessTokenForAccess, practiceQueueGeneration]);
   const activeQueue = useRef(queue);
   activeQueue.current = queue;
   const fetching = useRef<PracticeQueue<DBQuestion> | null>(null);
@@ -852,6 +859,7 @@ export function useQuizSession({
         });
         return;
       }
+      setSelectedTopic(null);
       setSelectedModule(mod);
       if (queue) { clearUI(); return; }
       let newPool = allQuestions.filter((q) => !usedIds.has(q.id));

@@ -21,6 +21,7 @@ import { waitlist, questionErrorReports, trialEmails, examResults, contactSubmis
 import { and, desc, eq, inArray, or, sql } from "drizzle-orm";
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
+import { readCourseLearnerProfile, readOverallLearnerActivity } from "./courseLearnerProfile";
 import { resolveLearningIdentity } from "./_core/learningIdentity";
 import { adminRouter } from "./routers/admin";
 import { resolveEntitlementsByEmail } from "./_core/access";
@@ -1004,21 +1005,14 @@ export const appRouter = router({
 
         let studentMemory = "";
         try {
-          const profileRows = ctx.user?.id
-            ? await db.select().from(studentProfiles).where(eq(studentProfiles.userId, ctx.user.id)).limit(1)
-            : resolvedEmail
-              ? await db.select().from(studentProfiles).where(eq(studentProfiles.studentEmail, resolvedEmail)).limit(1)
-              : [];
-          const profile = profileRows[0];
+          const profile = ctx.user?.id || resolvedEmail
+            ? await readCourseLearnerProfile(db, { userId: ctx.user?.id ?? null, email: resolvedEmail ?? null }, course.courseKey)
+            : null;
           if (profile && profile.totalAttempts >= 15) {
-            let weakTopics: string[] = [];
-            let strongTopics: string[] = [];
-            try { weakTopics = JSON.parse(profile.weakTopics || "[]"); } catch {}
-            try { strongTopics = JSON.parse(profile.strongTopics || "[]"); } catch {}
+            const { weakTopics, strongTopics } = profile;
             studentMemory = [
               `Questions attempted: ${profile.totalAttempts}`,
               `Study sessions: ${profile.totalSessions}`,
-              `Current streak: ${profile.currentStreak} days`,
               `Strong topics: ${strongTopics.join(", ") || "still building data"}`,
               `Weak topics: ${weakTopics.join(", ") || "still building data"}`,
             ].join("\n");
@@ -1282,33 +1276,25 @@ export const appRouter = router({
      */
     getStudentContext: protectedProcedure
       .input(z.object({ examType: z.string() }).optional())
-      .query(async ({ ctx }) => {
+      .query(async ({ ctx, input }) => {
         const db = await getDb();
         if (!db) return null;
 
-        const profiles = await db
-          .select()
-          .from(studentProfiles)
-          .where(eq(studentProfiles.userId, ctx.user.id))
-          .limit(1);
-
-        const profile = profiles[0];
-        if (!profile || profile.totalAttempts < 15) return null;
-
-        let weakTopics: string[] = [];
-        let strongTopics: string[] = [];
-        try { weakTopics = JSON.parse(profile.weakTopics || "[]"); } catch {}
-        try { strongTopics = JSON.parse(profile.strongTopics || "[]"); } catch {}
+        if (!input?.examType) return null;
+        const profile = await readCourseLearnerProfile(db, { userId: ctx.user.id, email: ctx.user.email ?? null }, input.examType);
+        if (profile.totalAttempts < 15) return null;
+        const { weakTopics, strongTopics } = profile;
+        const activity = await readOverallLearnerActivity(db, { userId: ctx.user.id, email: ctx.user.email ?? null });
 
         const sessionCount = await db
           .select({ cnt: sql<number>`COUNT(*)` })
           .from(aiChatSessions)
-          .where(eq(aiChatSessions.userId, ctx.user.id));
+          .where(and(eq(aiChatSessions.userId, ctx.user.id), eq(aiChatSessions.examType, input.examType)));
 
         return {
           totalAttempts: profile.totalAttempts,
           totalSessions: profile.totalSessions,
-          currentStreak: profile.currentStreak,
+          currentStreak: activity.currentStreak,
           weakTopics,
           strongTopics,
           aiSessionCount: Number(sessionCount[0]?.cnt ?? 0),
