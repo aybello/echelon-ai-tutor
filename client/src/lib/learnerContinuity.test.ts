@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import { clearDiagnosticDraft, createDiagnosticDraftScope, resolveDiagnosticDraftIdentity, loadDiagnosticDraft, saveDiagnosticDraft, type DiagnosticDraft } from "./diagnosticDraft";
 import { enqueuePracticeSave, listPendingPracticeSaves, replayPendingPracticeSaves, type PendingPracticeSave } from "./practiceSaveOutbox";
-const storage = () => { const data = new Map<string, string>(); return { getItem: (key: string) => data.get(key) ?? null, setItem: (key: string, value: string) => { data.set(key, value); } }; };
+const storage = () => { const data = new Map<string, string>(); return { get length() { return data.size; }, key: (i: number) => [...data.keys()][i] ?? null, removeItem: (key: string) => { data.delete(key); }, getItem: (key: string) => data.get(key) ?? null, setItem: (key: string, value: string) => { data.set(key, value); } }; };
 const scope = { identity: "learner@example.test", courseKey: "oit" };
 const ids = Array.from({ length: 15 }, (_, index) => 1001 + index);
 const draft = (): DiagnosticDraft => ({ version: 1, scope, sessionId: "550e8400-e29b-41d4-a716-446655440000", questionIds: ids, answers: Object.fromEntries(ids.slice(0, 14).map(id => [id, 2])), questionIndex: 14, updatedAt: 123 });

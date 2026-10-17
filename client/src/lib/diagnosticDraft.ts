@@ -70,15 +70,22 @@ function sameScope(a: DiagnosticDraftScope, b: DiagnosticDraftScope): boolean {
   return a.identity === b.identity && a.courseKey === b.courseKey;
 }
 
-function readAll(storage: Pick<Storage, "getItem">): DiagnosticDraft[] {
+// JSON tuple encoding keeps identity/course boundaries unambiguous.
+const scopedKey = (scope: DiagnosticDraftScope) => "echelon:diagnostic-draft:v2:" + JSON.stringify([scope.identity, scope.courseKey]);
+const legacyRemovedKey = (scope: DiagnosticDraftScope, sessionId: string) => "echelon:diagnostic-draft:removed:v2:" + JSON.stringify([scope.identity, scope.courseKey, sessionId]);
+function readScope(storage: Pick<Storage, "getItem">, scope: DiagnosticDraftScope): DiagnosticDraft[] {
   try {
+    const current = storage.getItem(scopedKey(scope));
+    if (current !== null) {
+      const draft: unknown = JSON.parse(current);
+      return isDraft(draft) && sameScope(draft.scope, scope)
+        && storage.getItem(legacyRemovedKey(scope, draft.sessionId)) === null ? [draft] : [];
+    }
     const raw = storage.getItem(DIAGNOSTIC_DRAFT_STORAGE_KEY);
-    if (!raw) return [];
-    const parsed: unknown = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed.filter(isDraft) : [];
-  } catch {
-    return [];
-  }
+    const parsed: unknown = raw ? JSON.parse(raw) : [];
+    return Array.isArray(parsed) ? parsed.filter(isDraft).filter(draft => sameScope(draft.scope, scope)
+      && storage.getItem(legacyRemovedKey(scope, draft.sessionId)) === null) : [];
+  } catch { return []; }
 }
 
 /** A draft only resumes when its fixed server-selected question set is unchanged. */
@@ -89,7 +96,7 @@ export function loadDiagnosticDraft(
   verifiedLegacyScope?: DiagnosticDraftScope | null,
 ): DiagnosticDraft | null {
   const expected = [...expectedQuestionIds];
-  const current = readAll(storage).find(draft => sameScope(draft.scope, scope)
+  const current = readScope(storage, scope).find(draft => sameScope(draft.scope, scope)
     && draft.questionIds.length === expected.length
     && draft.questionIds.every((id, index) => id === expected[index])
     && draft.questionIndex >= 0
@@ -98,6 +105,8 @@ export function loadDiagnosticDraft(
       expected.includes(Number(questionId)) && Number.isInteger(selectedIndex) && selectedIndex >= 0 && selectedIndex <= 9,
     )) ?? null;
   if (current) return current;
+  // Explicit completion must not fall back to an older trusted email alias.
+  try { if (storage.getItem(scopedKey(scope)) === "null") return null; } catch { return null; }
   if (!scope.identity.startsWith("user:") || !verifiedLegacyScope
     || !verifiedLegacyScope.identity.includes("@")
     || verifiedLegacyScope.courseKey !== scope.courseKey) return null;
@@ -105,8 +114,8 @@ export function loadDiagnosticDraft(
   return legacy ? { ...legacy, scope } : null;
 }
 
-/** Upgrade only after validation. One atomic storage write preserves the old
- * record if storage is unavailable, while the caller can still resume in memory.
+/** Write the validated replacement before marking the old alias as consumed.
+ * A failed first write leaves the legacy record available for in-memory resume.
  */
 export function upgradeLegacyDiagnosticDraft(
   storage: StorageLike,
@@ -123,14 +132,16 @@ export function upgradeLegacyDiagnosticDraft(
 
 export function saveDiagnosticDraft(storage: StorageLike, draft: DiagnosticDraft, verifiedLegacyScope?: DiagnosticDraftScope | null): boolean {
   try {
-    const remaining = readAll(storage).filter(existing => !sameScope(existing.scope, draft.scope)
-      && !(draft.scope.identity.startsWith("user:") && verifiedLegacyScope
-        && verifiedLegacyScope.courseKey === draft.scope.courseKey
-        && sameScope(existing.scope, verifiedLegacyScope)
-        && existing.sessionId === draft.sessionId
-        && existing.questionIds.length === draft.questionIds.length
-        && existing.questionIds.every((id, index) => id === draft.questionIds[index])));
-    storage.setItem(DIAGNOSTIC_DRAFT_STORAGE_KEY, JSON.stringify([...remaining, draft]));
+    storage.setItem(scopedKey(draft.scope), JSON.stringify(draft));
+    if (draft.scope.identity.startsWith("user:") && verifiedLegacyScope
+      && verifiedLegacyScope.identity.includes("@") && verifiedLegacyScope.courseKey === draft.scope.courseKey) {
+      for (const legacy of readScope(storage, verifiedLegacyScope)) {
+        if (legacy.sessionId === draft.sessionId && legacy.questionIds.length === draft.questionIds.length
+          && legacy.questionIds.every((id, index) => id === draft.questionIds[index])) {
+          storage.setItem(legacyRemovedKey(verifiedLegacyScope, legacy.sessionId), "1");
+        }
+      }
+    }
     return true;
   } catch {
     return false;
@@ -139,9 +150,16 @@ export function saveDiagnosticDraft(storage: StorageLike, draft: DiagnosticDraft
 
 export function clearDiagnosticDraft(storage: StorageLike, scope: DiagnosticDraftScope, sessionId?: string): boolean {
   try {
-    storage.setItem(DIAGNOSTIC_DRAFT_STORAGE_KEY, JSON.stringify(readAll(storage).filter(draft =>
-      !sameScope(draft.scope, scope) || (sessionId !== undefined && draft.sessionId !== sessionId),
-    )));
+    const drafts = readScope(storage, scope);
+    if (sessionId !== undefined && !drafts.some(draft => draft.sessionId === sessionId)) return true;
+    // Mark only completed sessions, preserving every unrelated scope in v1.
+    for (const draft of drafts) {
+      if (sessionId === undefined || draft.sessionId === sessionId) {
+        storage.setItem(legacyRemovedKey(scope, draft.sessionId), "1");
+      }
+    }
+    // A scoped null suppresses old v1 work and trusted-alias fallback too.
+    storage.setItem(scopedKey(scope), "null");
     return true;
   } catch {
     return false;

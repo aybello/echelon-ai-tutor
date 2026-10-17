@@ -8,6 +8,10 @@ beforeAll(async () => {
     import React, { useState } from 'react';
     import { createRoot } from 'react-dom/client';
     import Status from './client/src/components/PracticeSaveStatus';
+    import { listPendingPracticeSaves, enqueuePracticeSave, removePendingPracticeSave } from './client/src/lib/practiceSaveOutbox';
+    window.enqueuePending = item => enqueuePracticeSave(localStorage, item);
+    window.removePending = id => removePendingPracticeSave(localStorage, id);
+    window.pending = () => listPendingPracticeSaves(localStorage, {identity:'user:17',courseKey:'oit'});
     import { useAttemptLogger } from './client/src/components/QuizModeBar';
     function App() {
       const [, refresh] = useState(0);
@@ -36,7 +40,8 @@ beforeAll(async () => {
 }, 30000);
 afterAll(async () => { await browser?.close(); });
 async function setup(loseAck = false) {
-  const page = await browser.newPage();
+  const context = await browser.newContext();
+  const page = await context.newPage();
   const calls: Record<string, unknown>[] = [];
   await page.route("**/*", async route => {
     const url = route.request().url();
@@ -62,8 +67,24 @@ describe("practice recovery component in an offline intercepted browser", () => 
     await page.getByText("Answer confirmed saved to your course history.", {exact:true}).waitFor();
     expect(calls).toHaveLength(2); expect(calls[1]).toEqual(calls[0]);
     expect(calls[0].operationId).toMatch(/^[0-9a-f-]{36}$/);
-    expect(await page.evaluate(() => JSON.parse(localStorage.getItem("echelon:practice-save-outbox:v1")!))).toEqual([]);
+    expect(await page.evaluate(() => (window as any).pending())).toEqual([]);
     await page.close();
+  });
+  it("stores independent operations across real same-origin tabs and acknowledges only one", async () => {
+    const { page, calls } = await setup();
+    const second = await page.context().newPage();
+    await second.route("**/*", route => route.request().url() === "https://practice.invalid/"
+      ? route.fulfill({ contentType: "text/html", body: '<div id="root"></div>' }) : route.abort("blockedbyclient"));
+    await second.goto("https://practice.invalid/"); await second.addScriptTag({ content: script });
+    const original = { version: 1, idempotencyVersion: 1, operationId: "550e8400-e29b-41d4-a716-446655440001", scope: { identity: "user:17", courseKey: "oit" }, questionId: 4, selectedIndex: 2, bankKey: "oit", examType: "oit", quizMode: "standard", sessionId: "550e8400-e29b-41d4-a716-446655440000", createdAt: 1 };
+    await page.evaluate(item => (window as any).enqueuePending(item), original);
+    await second.evaluate(item => (window as any).enqueuePending(item), { ...original, operationId: "550e8400-e29b-41d4-a716-446655440002" });
+    await page.getByText(/2 answer saves awaiting confirmation/).waitFor();
+    expect(await page.evaluate(() => Object.keys(localStorage).filter(key => key.startsWith("echelon:practice-save-outbox:v2:")))).toHaveLength(2);
+    await page.evaluate(id => (window as any).removePending(id), original.operationId);
+    expect(await second.evaluate(() => (window as any).pending().map((item: any) => item.operationId))).toEqual(["550e8400-e29b-41d4-a716-446655440002"]);
+    expect(calls).toHaveLength(0);
+    await second.close(); await page.close();
   });
   it("expired receipt is unrecoverable without another call; dismiss never saves", async () => {
     const { page, calls } = await setup(true);

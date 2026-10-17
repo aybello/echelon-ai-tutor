@@ -26,7 +26,11 @@ export type PendingPracticeSave = {
   createdAt: number;
 };
 
-type StorageLike = Pick<Storage, "getItem" | "setItem">;
+type StorageLike = Pick<Storage, "getItem" | "setItem" | "key" | "length"> & Partial<Pick<Storage, "removeItem">>;
+const operationPrefix = "echelon:practice-save-outbox:v2:";
+const removedPrefix = "echelon:practice-save-outbox:removed:v2:";
+const operationKey = (id: string) => operationPrefix + encodeURIComponent(id);
+const removedKey = (id: string) => removedPrefix + encodeURIComponent(id);
 
 function isScope(value: unknown): value is PracticeSaveScope {
   if (!value || typeof value !== "object") return false;
@@ -48,31 +52,44 @@ function isPendingPracticeSave(value: unknown): value is PendingPracticeSave {
     && typeof item.createdAt === "number";
 }
 
-function readAll(storage: Pick<Storage, "getItem">): PendingPracticeSave[] {
-  const raw = storage.getItem(PRACTICE_SAVE_OUTBOX_KEY);
+function readAll(storage: Pick<Storage, "getItem" | "key" | "length">): PendingPracticeSave[] {
+  const records = new Map<string, PendingPracticeSave>();
   try {
-    if (!raw) return [];
-    const parsed: unknown = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed.filter(isPendingPracticeSave) : [];
-  } catch {
-    return [];
-  }
+    const raw = storage.getItem(PRACTICE_SAVE_OUTBOX_KEY);
+    try {
+      const legacy: unknown = raw ? JSON.parse(raw) : [];
+      if (Array.isArray(legacy)) for (const item of legacy.filter(isPendingPracticeSave)) records.set(item.operationId, item);
+    } catch { /* A corrupt legacy array must not hide independent records. */ }
+    const keys: string[] = [];
+    for (let i = 0; i < storage.length; i++) {
+      const key = storage.key(i);
+      if (key?.startsWith(operationPrefix)) keys.push(key);
+    }
+    for (const key of keys) {
+      try {
+        const item: unknown = JSON.parse(storage.getItem(key) ?? "null");
+        if (isPendingPracticeSave(item) && key === operationKey(item.operationId)) records.set(item.operationId, item);
+      } catch { /* Ignore only this malformed record. */ }
+    }
+    return [...records.values()].filter(item => storage.getItem(removedKey(item.operationId)) === null);
+  } catch { return []; }
 }
 
 function sameScope(a: PracticeSaveScope, b: PracticeSaveScope): boolean {
   return a.identity === b.identity && a.courseKey === b.courseKey;
 }
 
-export function listPendingPracticeSaves(storage: Pick<Storage, "getItem">, scope: PracticeSaveScope): PendingPracticeSave[] {
+export function listPendingPracticeSaves(storage: Pick<Storage, "getItem" | "key" | "length">, scope: PracticeSaveScope): PendingPracticeSave[] {
   return readAll(storage).filter(item => sameScope(item.scope, scope));
 }
 
 /** Save before the one network request; an acknowledgement loss is ambiguous. */
 export function enqueuePracticeSave(storage: StorageLike, item: PendingPracticeSave): boolean {
   try {
-    const current = readAll(storage);
-    const withoutDuplicate = current.filter(existing => existing.operationId !== item.operationId);
-    storage.setItem(PRACTICE_SAVE_OUTBOX_KEY, JSON.stringify([...withoutDuplicate, item]));
+    // Without enumeration a newly persisted record could not be recovered.
+    if (typeof storage.key !== "function" || !Number.isInteger(storage.length)) return false;
+    // No shared index or read-modify-write: another tab owns different keys.
+    storage.setItem(operationKey(item.operationId), JSON.stringify(item));
     return true;
   } catch {
     return false;
@@ -81,10 +98,10 @@ export function enqueuePracticeSave(storage: StorageLike, item: PendingPracticeS
 
 export function removePendingPracticeSave(storage: StorageLike, operationId: string): boolean {
   try {
-    storage.setItem(
-      PRACTICE_SAVE_OUTBOX_KEY,
-      JSON.stringify(readAll(storage).filter(item => item.operationId !== operationId)),
-    );
+    // Keep a durable per-ID acknowledgement, including for untouched v1 arrays.
+    // Re-enumeration and old-tab writes can never resurrect this operation.
+    storage.setItem(removedKey(operationId), "1");
+    try { storage.removeItem?.(operationKey(operationId)); } catch { /* The acknowledgement already prevents replay. */ }
     return true;
   } catch {
     return false;

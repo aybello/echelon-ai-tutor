@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import {
-  DIAGNOSTIC_DRAFT_STORAGE_KEY, loadDiagnosticDraft, saveDiagnosticDraft,
+  DIAGNOSTIC_DRAFT_STORAGE_KEY, loadDiagnosticDraft, saveDiagnosticDraft, clearDiagnosticDraft,
   upgradeLegacyDiagnosticDraft, resolveVerifiedLegacyDiagnosticScope,
   type DiagnosticDraft,
 } from "./diagnosticDraft";
@@ -13,10 +13,11 @@ const original: DiagnosticDraft = {
   questionIds: ids, answers: { 1: 2, 2: 0 }, questionIndex: 2, updatedAt: 123,
 };
 function storage(records: unknown[] = [original]) {
-  let raw = JSON.stringify(records);
+  const data = new Map<string, string>([[DIAGNOSTIC_DRAFT_STORAGE_KEY, JSON.stringify(records)]]);
   return {
-    getItem: () => raw,
-    setItem: vi.fn((_key: string, value: string) => { raw = value; }),
+    get length() { return data.size; }, key: (i: number) => [...data.keys()][i] ?? null,
+    getItem: (key = DIAGNOSTIC_DRAFT_STORAGE_KEY) => data.get(key) ?? null,
+    setItem: vi.fn((key: string, value: string) => { data.set(key, value); }),
   };
 }
 
@@ -35,8 +36,10 @@ describe("trusted OAuth email draft upgrade", () => {
     expect(upgraded?.answers).toEqual(original.answers);
     expect(loadDiagnosticDraft(db, scope, ids)).toEqual(upgraded);
     expect(loadDiagnosticDraft(db, legacyScope, ids)).toBeNull();
-    expect(db.setItem).toHaveBeenCalledTimes(1);
-    expect(db.setItem.mock.calls[0][0]).toBe(DIAGNOSTIC_DRAFT_STORAGE_KEY);
+    expect(db.setItem).toHaveBeenCalledTimes(2);
+    expect(db.setItem.mock.calls[0][0]).toBe('echelon:diagnostic-draft:v2:["user:7","oit"]');
+    expect(db.setItem.mock.calls[1][0]).toContain("echelon:diagnostic-draft:removed:v2:");
+    expect(db.getItem(DIAGNOSTIC_DRAFT_STORAGE_KEY)).toBe(JSON.stringify([original]));
   });
 
   it("never discovers identity aliases from local storage or another OTP email", () => {
@@ -93,4 +96,40 @@ describe("trusted OAuth email draft upgrade", () => {
     expect(loadDiagnosticDraft(db, other.scope, ids)).toEqual(other);
     expect(loadDiagnosticDraft(db, stranger.scope, ids)).toEqual(stranger);
   });
+});
+
+describe("independent diagnostic scopes", () => {
+  it("keeps interleaved saves in another course and another identity", () => {
+    const db = storage([]);
+    const other = { ...original, scope: { identity: "other", courseKey: "other" } };
+    const write = db.setItem.getMockImplementation()!;
+    db.setItem.mockImplementationOnce((key, value) => { saveDiagnosticDraft(db, other); write(key, value); });
+    saveDiagnosticDraft(db, original);
+    expect(loadDiagnosticDraft(db, original.scope, ids)).toEqual(original);
+    expect(loadDiagnosticDraft(db, other.scope, ids)).toEqual(other);
+    clearDiagnosticDraft(db, original.scope, original.sessionId);
+    expect(loadDiagnosticDraft(db, other.scope, ids)).toEqual(other);
+  });
+  it("does not resurrect a completed legacy draft or overwrite unrelated legacy work", () => {
+    const other = { ...original, scope: { ...scope, courseKey: "other" } };
+    const db = storage([original, other]); const before = db.getItem();
+    clearDiagnosticDraft(db, original.scope, original.sessionId);
+    expect(loadDiagnosticDraft(db, original.scope, ids)).toBeNull();
+    expect(upgradeLegacyDiagnosticDraft(db, scope, ids, legacyScope)).toBeNull();
+    expect(loadDiagnosticDraft(db, other.scope, ids)).toEqual(other);
+    expect(db.getItem()).toBe(before);
+  });
+  it("encodes scope boundaries without delimiter collisions", () => {
+    const db = storage([]), a = { ...original, scope: { identity: "a:b", courseKey: "c" } }, b = { ...original, scope: { identity: "a", courseKey: "b:c" } };
+    saveDiagnosticDraft(db, a); saveDiagnosticDraft(db, b);
+    expect(loadDiagnosticDraft(db, a.scope, ids)).toEqual(a); expect(loadDiagnosticDraft(db, b.scope, ids)).toEqual(b);
+  });
+});
+
+it("does not restore an older OAuth alias after completing a user-ID draft", () => {
+  const current = { ...original, scope };
+  const db = storage([original, current]);
+  clearDiagnosticDraft(db, scope, current.sessionId);
+  expect(loadDiagnosticDraft(db, scope, ids, legacyScope)).toBeNull();
+  expect(upgradeLegacyDiagnosticDraft(db, scope, ids, legacyScope)).toBeNull();
 });

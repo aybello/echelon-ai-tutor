@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 import { enqueuePracticeSave, listPendingPracticeSaves, practiceSaveInput, practiceSaveRetryProblem, retryPendingPracticeSave, type PendingPracticeSave } from "./practiceSaveOutbox";
 const scope = { identity: "user:17", courseKey: "oit" };
-const storage = () => { const data = new Map<string, string>(); return { getItem: (k: string) => data.get(k) ?? null, setItem: (k: string, v: string) => { data.set(k, v); } }; };
+const storage = () => { const data = new Map<string, string>(); return { get length() { return data.size; }, key: (i: number) => [...data.keys()][i] ?? null, removeItem: (key: string) => { data.delete(key); }, getItem: (k: string) => data.get(k) ?? null, setItem: (k: string, v: string) => { data.set(k, v); } }; };
 const item = (): PendingPracticeSave => ({ version: 1, idempotencyVersion: 1, operationId: "550e8400-e29b-41d4-a716-446655440001", scope, examType: "oit", bankKey: "oit", questionId: 4, selectedIndex: 2, quizMode: "standard", sessionId: "550e8400-e29b-41d4-a716-446655440000", confidence: "low", bookmarked: false, attemptToken: `e30.${btoa(JSON.stringify({ exp: Math.floor(Date.now()/1000)+3600 }))}.signature`, createdAt: 1 });
 describe("explicit practice recovery", () => {
   it("lost acknowledgement sends the exact same operation and original input twice, then clears only the acknowledged record", async () => {
