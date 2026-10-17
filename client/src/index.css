@@ -544,6 +544,9 @@ img {
   }
 }
 
+/* Preserve visible keyboard focus on interactive SVG guide targets. */
+.process-label-button:focus-visible { outline: 3px solid #1d4ed8; outline-offset: 3px; }
+
 /* Dashboard responsive layout */
 .dashboard-two-col {
   grid-template-columns: 1fr 300px;

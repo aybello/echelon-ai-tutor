@@ -1,3 +1,4 @@
+import { validateApprovalSteps } from "../questionApproval";
 import { TRPCError } from "@trpc/server";
 import { purchaseEmailOutbox } from "../../drizzle/schema";
 import { ceuLearningRecords } from "../../drizzle/schema";
@@ -547,10 +548,10 @@ export const adminRouter = router({
       blueprintObjective: z.string().trim().max(255).nullable(),
       reviewStatus: z.enum(["unreviewed", "in_review", "approved", "rejected"]),
     }).superRefine((value, ctx) => {
-      if (value.reviewStatus === "approved" && (!value.sourceTitle || !value.sourceReference)) {
+      if (value.reviewStatus === "approved" && (!value.sourceTitle || !value.sourceReference || !value.blueprintObjective)) {
         ctx.addIssue({
           code: "custom",
-          message: "Approved questions require a source title and precise source reference.",
+          message: "Approved questions require a source title, precise source reference and mapped objective.",
           path: ["sourceReference"],
         });
       }
@@ -560,12 +561,14 @@ export const adminRouter = router({
       if (!db) throw new Error("Database unavailable");
 
       const [existing] = await db
-        .select({ bankKey: questions.bankKey, options: questions.options, correctIndex: questions.correctIndex, explanation: questions.explanation })
+        .select({ bankKey: questions.bankKey, options: questions.options, correctIndex: questions.correctIndex, explanation: questions.explanation, steps: questions.steps, isCalc: questions.isCalc })
         .from(questions)
         .where(eq(questions.id, input.id))
         .limit(1);
       if (!existing) throw new Error("Question not found");
       if (input.reviewStatus === "approved") {
+        const stepError = validateApprovalSteps(existing.steps, existing.isCalc === "yes");
+        if (stepError) throw new TRPCError({ code: "BAD_REQUEST", message: stepError });
         let parsed: unknown;
         try { parsed = JSON.parse(existing.options); } catch { parsed = null; }
         if (!Array.isArray(parsed) || parsed.length !== 4 || !parsed.every(option => typeof option === "string" && option.trim()) || existing.correctIndex < 0 || existing.correctIndex >= 4 || !existing.explanation.trim()) {

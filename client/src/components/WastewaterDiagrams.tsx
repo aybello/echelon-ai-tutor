@@ -3,6 +3,7 @@
 // All diagrams use 640×255 viewBox so labels never clip
 
 import React from "react";
+import { svgButtonProps } from "@/lib/svgButton";
 
 interface LabelDotProps {
   x: number;
@@ -34,7 +35,7 @@ function LabelDot({ x, y, id, text, active, color, onClick }: LabelDotProps) {
       {/* hit area */}
       <rect x={x - pillW / 2 - 4} y={y - 36} width={pillW + 8} height={62} rx={6}
         fill="transparent" style={{ cursor: "pointer" }}
-        onClick={() => onClick(isActive ? null : id)} />
+        {...svgButtonProps(text, isActive, () => onClick(isActive ? null : id))} />
     </g>
   );
 }

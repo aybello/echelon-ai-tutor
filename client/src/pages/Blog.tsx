@@ -29,7 +29,7 @@ export default function Blog() {
       "water operator certification, wastewater operator exam, OIT exam, WPI exam prep, municipal operator training, utility workforce readiness",
   });
 
-  const { data: posts, isLoading, isError, isFetching, refetch } = trpc.blog.listPosts.useQuery(undefined, { retry: 1 });
+  const { data: posts, isPending, isLoading, fetchStatus, isError, isFetching, refetch } = trpc.blog.listPosts.useQuery(undefined, { retry: 1 });
   const [category, setCategory] = useState("All");
   const [query, setQuery] = useState("");
   const categories = [
@@ -101,7 +101,8 @@ export default function Blog() {
             />
           </label>
         </div>
-        {isLoading && (
+        {fetchStatus === "paused" && <p role="status" className="mb-6 text-amber-900">You are offline. {posts ? "Showing previously loaded articles. Reconnect to check for updates." : "Reconnect to load articles."}</p>}
+        {(isPending || isLoading) && fetchStatus !== "paused" && (
           <div className="space-y-6">
             {[1, 2, 3].map(i => (
               <div
@@ -125,7 +126,7 @@ export default function Blog() {
           </div>
         )}
 
-        {!isLoading && !isError && posts && visiblePosts.length === 0 && (
+        {!isPending && !isLoading && !isError && posts && visiblePosts.length === 0 && (
           <div className="text-center py-20 text-slate-500">
             <div className="text-4xl mb-4">📝</div>
             <p className="text-lg font-medium">No matching articles</p>

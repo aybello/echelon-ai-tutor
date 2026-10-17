@@ -43,7 +43,7 @@ export default function BlogPost() {
   const params = useParams<{ slug: string }>();
   const slug = params.slug ?? "";
 
-  const { data: post, isLoading, isError, isFetching, refetch } = trpc.blog.getPostBySlug.useQuery(
+  const { data: post, isPending, isLoading, fetchStatus, isError, isFetching, refetch } = trpc.blog.getPostBySlug.useQuery(
     { slug },
     { enabled: !!slug, retry: 1 }
   );
@@ -65,7 +65,11 @@ export default function BlogPost() {
       "Ontario water operator exam, OIT certification, wastewater operator",
   });
 
-  if (isLoading) {
+  if (!post && fetchStatus === "paused") {
+    return <div className="min-h-screen bg-slate-50"><SiteNav currentPath={`/blog/${slug}`} /><div role="status" className="max-w-3xl mx-auto px-4 py-20">You are offline. Reconnect to load this article.</div></div>;
+  }
+
+  if (isPending || isLoading) {
     return (
       <div className="min-h-screen bg-slate-50">
         <SiteNav currentPath={`/blog/${slug}`} />
@@ -84,7 +88,7 @@ export default function BlogPost() {
     );
   }
 
-  if (isError) {
+  if (isError && !post) {
     return (
       <div className="min-h-screen bg-slate-50">
         <SiteNav currentPath={`/blog/${slug}`} />
@@ -122,6 +126,8 @@ export default function BlogPost() {
   return (
     <div className="min-h-screen bg-slate-50">
       <SiteNav currentPath={`/blog/${slug}`} />
+
+      {(isError || fetchStatus === "paused") && <div role="status" className="max-w-3xl mx-auto px-4 py-4 text-amber-900">Showing the previously loaded article. {fetchStatus === "paused" ? "Reconnect to check for updates." : "The latest version could not be checked."} <button type="button" disabled={isFetching} onClick={() => void refetch()}>Retry</button></div>}
 
       {/* Article header */}
       <div className="bg-white border-b border-slate-200">

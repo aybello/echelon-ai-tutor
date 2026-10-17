@@ -26,3 +26,12 @@ export function withUSStudyContext(path: string, productKey: string | null | und
 export function usCatalogueHref(state?: USStateCode) {
   return state ? `/us/courses?state=${state}` : "/us/courses";
 }
+
+/** Advisory Tutor payload only; the server independently validates course/state matching. */
+export function readTutorStudyLocale(courseKey: string, search: string): { usCountry?: "US"; usState?: string } {
+  const family = resolveCourseKey(courseKey)?.examFamily;
+  if (family !== "western" && family !== "us-wpi" && family !== "us-state") return {};
+  const context = readUSStudyContext(search);
+  if (!context.isUS && family === "western") return {};
+  return { usCountry: "US", ...(context.state ? { usState: context.state.code } : {}) };
+}

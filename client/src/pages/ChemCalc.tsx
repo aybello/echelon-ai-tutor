@@ -7,6 +7,7 @@ import GuideNav from "@/components/GuideNav";
 import { getGuideResumeStep } from "@/hooks/useGuideProgress";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { calculateChlorine, formatChlorineValue, type ChlorineForm } from "@/lib/chlorineCalculation";
+import { calculateAlum, calculateFluoride, calculateLime, calculatePolymer } from "@/lib/chemicalFeedCalculation";
 
 type Tab = "chlorine" | "alum" | "lime" | "fluoride" | "polymer";
 
@@ -19,7 +20,7 @@ const TABS: { id: Tab; label: string; icon: string; color: string }[] = [
 ];
 
 function round(n: number, d = 2) {
-  return Math.round(n * 10 ** d) / 10 ** d;
+  return formatChlorineValue(n, d);
 }
 
 // ── CHLORINE CALCULATOR ──
@@ -108,45 +109,31 @@ function AlumCalc() {
   const [flow, setFlow] = useState("10000");
   const [dose, setDose] = useState("30"); // mg/L as Al₂(SO₄)₃
   const [conc, setConc] = useState("48"); // % liquid alum (48% = 480 g/L)
-
-  const flowNum = parseFloat(flow) || 0;
-  const doseNum = parseFloat(dose) || 0;
-  const concNum = parseFloat(conc) / 100 || 0.48;
-  const alumDensity = 1.33; // kg/L for 48% liquid alum
-
-  const massNeeded_kg = (flowNum * 1000 * doseNum) / 1_000_000;
-  const volumeNeeded_L = massNeeded_kg / (alumDensity * concNum);
-  const feedRate_mLMin = (volumeNeeded_L * 1000) / 1440;
-
-  // Alkalinity consumed: ~0.5 mg/L alkalinity per mg/L alum
-  const alkConsumed = doseNum * 0.5;
-  // Sludge produced: ~0.44 kg dry solids per kg alum
-  const sludge_kg = massNeeded_kg * 0.44;
-
-  const isValid = flowNum > 0 && doseNum > 0;
+  const result = calculateAlum({ flow, dose, concentration: conc });
 
   return (
     <div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 24 }}>
+      <div className="chemcalc-grid-3" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 24 }}>
         {[
-          { label: "Flow Rate (m³/day)", val: flow, set: setFlow },
-          { label: "Alum Dose (mg/L)", val: dose, set: setDose },
-          { label: "Liquid Alum Conc. (%)", val: conc, set: setConc },
-        ].map(({ label, val, set }) => (
+          { id: "alum-flow", label: "Flow Rate (m³/day)", val: flow, set: setFlow },
+          { id: "alum-dose", label: "Alum Dose (mg/L)", val: dose, set: setDose },
+          { id: "alum-concentration", label: "Liquid Alum Conc. (%)", val: conc, set: setConc },
+        ].map(({ id, label, val, set }) => (
           <div key={label}>
-            <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>{label}</label>
-            <input type="number" value={val} onChange={e => set(e.target.value)}
+            <label htmlFor={id} style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>{label}</label>
+            <input id={id} type="number" min="0" step="any" value={val} onChange={e => set(e.target.value)}
               style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
           </div>
         ))}
       </div>
 
-      {isValid && (
+      {!result && <p role="status" style={{ color: "#9A3412", fontSize: 13 }}>Enter finite positive flow, dose, and liquid alum concentration values at or below 100%.</p>}
+      {result && (
         <>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 12, marginBottom: 12 }}>
+          <div className="chemcalc-grid-2" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 12, marginBottom: 12 }}>
             {[
-              { label: "Alum Mass Needed", value: `${round(massNeeded_kg)} kg/day`, sub: `${round(massNeeded_kg / 24, 2)} kg/hr`, color: "#1D4ED8" },
-              { label: "Liquid Volume", value: `${round(volumeNeeded_L)} L/day`, sub: `${round(feedRate_mLMin)} mL/min`, color: "#7C3AED" },
+              { label: "Alum Mass Needed", value: `${round(result.massNeededKgDay)} kg/day`, sub: `${round(result.massNeededKgDay / 24, 2)} kg/hr`, color: "#1D4ED8" },
+              { label: "Liquid Volume", value: `${round(result.volumeNeededLDay)} L/day`, sub: `${round(result.feedRateMlMin)} mL/min`, color: "#7C3AED" },
             ].map(({ label, value, sub, color }) => (
               <div key={label} style={{ background: "#F8FAFC", borderRadius: 14, padding: "20px 16px", border: `2px solid ${color}33`, textAlign: "center" }}>
                 <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", marginBottom: 6 }}>{label}</div>
@@ -155,15 +142,15 @@ function AlumCalc() {
               </div>
             ))}
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 12 }}>
+          <div className="chemcalc-grid-2" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 12 }}>
             <div style={{ background: "#FFF7ED", borderRadius: 14, padding: "16px", border: "1px solid #FED7AA" }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: "#C2410C", marginBottom: 4 }}>⚠️ Alkalinity Consumed</div>
-              <div style={{ fontSize: 18, fontWeight: 800, color: "#D97706" }}>{round(alkConsumed)} mg/L as CaCO₃</div>
+              <div style={{ fontSize: 18, fontWeight: 800, color: "#D97706" }}>{round(result.alkalinityConsumedMgL)} mg/L as CaCO₃</div>
               <div style={{ fontSize: 10, color: "#92400E", marginTop: 4 }}>May need lime addition if alkalinity &lt; 50 mg/L</div>
             </div>
             <div style={{ background: "#F0FDF4", borderRadius: 14, padding: "16px", border: "1px solid #BBF7D0" }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: "#15803D", marginBottom: 4 }}>🧱 Sludge Produced</div>
-              <div style={{ fontSize: 18, fontWeight: 800, color: "#059669" }}>{round(sludge_kg)} kg dry/day</div>
+              <div style={{ fontSize: 18, fontWeight: 800, color: "#059669" }}>{round(result.sludgeKgDay)} kg dry/day</div>
               <div style={{ fontSize: 10, color: "#166534", marginTop: 4 }}>~0.44 kg dry solids per kg alum dosed</div>
             </div>
           </div>
@@ -186,47 +173,37 @@ function AlumCalc() {
 // ── LIME CALCULATOR ──
 function LimeCalc() {
   const [flow, setFlow] = useState("10000");
-  const [targetPH, setTargetPH] = useState("8.0");
   const [currentAlk, setCurrentAlk] = useState("80"); // mg/L as CaCO₃
   const [purity, setPurity] = useState("90"); // % CaO
-
-  const flowNum = parseFloat(flow) || 0;
-  const alkNum = parseFloat(currentAlk) || 0;
-  const purityNum = parseFloat(purity) / 100 || 0.9;
-
-  // Simplified: raise alkalinity by 20 mg/L per unit pH increase above 7
-  // Lime dose ≈ alkalinity deficit × 0.74 (CaO/CaCO₃ ratio)
-  const targetAlk = 100; // mg/L as CaCO₃ target
-  const alkDeficit = Math.max(0, targetAlk - alkNum);
-  const limeDose_mgL = alkDeficit * 0.74 / purityNum;
-  const limeMass_kg = (flowNum * 1000 * limeDose_mgL) / 1_000_000;
-  const feedRate_gMin = (limeMass_kg * 1000) / 1440;
-
-  const isValid = flowNum > 0 && alkNum >= 0;
+  // This educational estimate deliberately uses a fixed target rather than
+  // pretending that pH alone determines a lime dose.
+  const targetAlkalinity = "100";
+  const result = calculateLime({ flow, currentAlkalinity: currentAlk, targetAlkalinity, purity });
 
   return (
     <div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 24 }}>
+      <div className="chemcalc-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 24 }}>
         {[
-          { label: "Flow Rate (m³/day)", val: flow, set: setFlow },
-          { label: "Current Alkalinity (mg/L as CaCO₃)", val: currentAlk, set: setCurrentAlk },
-          { label: "Target pH", val: targetPH, set: setTargetPH },
-          { label: "Lime Purity (% CaO)", val: purity, set: setPurity },
-        ].map(({ label, val, set }) => (
+          { id: "lime-flow", label: "Flow Rate (m³/day)", val: flow, set: setFlow },
+          { id: "lime-current-alkalinity", label: "Current Alkalinity (mg/L as CaCO₃)", val: currentAlk, set: setCurrentAlk },
+          { id: "lime-purity", label: "Lime Purity (% CaO)", val: purity, set: setPurity },
+        ].map(({ id, label, val, set }) => (
           <div key={label}>
-            <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>{label}</label>
-            <input type="number" value={val} onChange={e => set(e.target.value)}
+            <label htmlFor={id} style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>{label}</label>
+            <input id={id} type="number" min="0" step="any" value={val} onChange={e => set(e.target.value)}
               style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
           </div>
         ))}
       </div>
 
-      {isValid && alkDeficit > 0 && (
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+      <p style={{ color: "#475569", fontSize: 12, margin: "0 0 16px" }}>Educational alkalinity-deficit estimate using a fixed target of 100 mg/L as CaCO₃.</p>
+      {!result && <p role="status" style={{ color: "#9A3412", fontSize: 13 }}>Enter finite values: positive flow and lime purity at or below 100%; current alkalinity may be zero.</p>}
+      {result && result.alkalinityDeficitMgL > 0 && (
+        <div className="chemcalc-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
           {[
-            { label: "Lime Dose", value: `${round(limeDose_mgL)} mg/L`, sub: "as CaO", color: "#64748B" },
-            { label: "Lime Mass", value: `${round(limeMass_kg)} kg/day`, sub: `${round(limeMass_kg / 24, 2)} kg/hr`, color: "#1D4ED8" },
-            { label: "Feed Rate", value: `${round(feedRate_gMin)} g/min`, sub: "dry feeder", color: "#059669" },
+            { label: "Lime Dose", value: `${round(result.limeDoseMgL)} mg/L`, sub: "as CaO", color: "#64748B" },
+            { label: "Lime Mass", value: `${round(result.limeMassKgDay)} kg/day`, sub: `${round(result.limeMassKgDay / 24, 2)} kg/hr`, color: "#1D4ED8" },
+            { label: "Feed Rate", value: `${round(result.feedRateGMin)} g/min`, sub: "dry feeder", color: "#059669" },
           ].map(({ label, value, sub, color }) => (
             <div key={label} style={{ background: "#F8FAFC", borderRadius: 14, padding: "20px 16px", border: `2px solid ${color}33`, textAlign: "center" }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", marginBottom: 6 }}>{label}</div>
@@ -237,10 +214,10 @@ function LimeCalc() {
         </div>
       )}
 
-      {isValid && alkDeficit <= 0 && (
+      {result && result.alkalinityDeficitMgL <= 0 && (
         <div style={{ background: "#F0FDF4", borderRadius: 12, padding: "16px 20px", border: "1px solid #BBF7D0", textAlign: "center" }}>
           <div style={{ fontSize: 14, fontWeight: 700, color: "#15803D" }}>✓ Alkalinity is sufficient — no lime addition required</div>
-          <div style={{ fontSize: 11, color: "#166534", marginTop: 4 }}>Current alkalinity ({currentAlk} mg/L) meets or exceeds target (100 mg/L)</div>
+          <div style={{ fontSize: 11, color: "#166534", marginTop: 4 }}>Current alkalinity ({currentAlk} mg/L) meets or exceeds the 100 mg/L target</div>
         </div>
       )}
 
@@ -264,11 +241,6 @@ function FluorideCalc() {
   const [target, setTarget] = useState("0.7");     // mg/L F⁻
   const [chemical, setChemical] = useState<"hfs" | "naf" | "fsa">("hfs");
 
-  const flowNum = parseFloat(flow) || 0;
-  const existingNum = parseFloat(existing) || 0;
-  const targetNum = parseFloat(target) || 0;
-  const dose = Math.max(0, targetNum - existingNum);
-
   // Chemical properties
   const chemicals = {
     hfs: { name: "Hydrofluosilicic Acid (H₂SiF₆)", conc: 0.23, density: 1.22, unit: "L/day" },
@@ -277,18 +249,14 @@ function FluorideCalc() {
   };
 
   const chem = chemicals[chemical];
-  const massF_kg = (flowNum * 1000 * dose) / 1_000_000;
-  const productAmount = massF_kg / (chem.conc * chem.density);
-  const feedRate = (productAmount * (chem.unit === "L/day" ? 1000 : 1000)) / 1440;
-
-  const isValid = flowNum > 0 && dose > 0;
+  const result = calculateFluoride({ flow, existing, target, concentration: chem.conc, density: chem.density });
 
   return (
     <div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 24 }}>
+      <div className="chemcalc-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 24 }}>
         <div>
-          <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>Flow Rate (m³/day)</label>
-          <input type="number" value={flow} onChange={e => setFlow(e.target.value)}
+          <label htmlFor="fluoride-flow" style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>Flow Rate (m³/day)</label>
+          <input id="fluoride-flow" type="number" min="0" step="any" value={flow} onChange={e => setFlow(e.target.value)}
             style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
         </div>
         <div>
@@ -301,29 +269,30 @@ function FluorideCalc() {
           </select>
         </div>
         <div>
-          <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>Existing Fluoride (mg/L)</label>
-          <input type="number" value={existing} onChange={e => setExisting(e.target.value)}
+          <label htmlFor="fluoride-existing" style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>Existing Fluoride (mg/L)</label>
+          <input id="fluoride-existing" type="number" min="0" step="any" value={existing} onChange={e => setExisting(e.target.value)}
             style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
         </div>
         <div>
-          <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>Target Fluoride (mg/L) — Ontario: 0.7 mg/L</label>
-          <input type="number" value={target} onChange={e => setTarget(e.target.value)}
+          <label htmlFor="fluoride-target" style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>Target Fluoride (mg/L); Ontario: 0.7 mg/L</label>
+          <input id="fluoride-target" type="number" min="0" step="any" value={target} onChange={e => setTarget(e.target.value)}
             style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
         </div>
       </div>
 
-      <div style={{ background: "#F0FDF4", borderRadius: 12, padding: "12px 16px", marginBottom: 16, border: "1px solid #BBF7D0" }}>
+      {result && <div style={{ background: "#F0FDF4", borderRadius: 12, padding: "12px 16px", marginBottom: 16, border: "1px solid #BBF7D0" }}>
         <span style={{ fontSize: 12, fontWeight: 700, color: "#15803D" }}>Fluoride Dose Required: </span>
-        <span style={{ fontSize: 14, fontWeight: 900, color: "#059669" }}>{round(dose, 3)} mg/L F⁻</span>
+        <span style={{ fontSize: 14, fontWeight: 900, color: "#059669" }}>{round(result.doseMgL, 3)} mg/L F⁻</span>
         <span style={{ fontSize: 11, color: "#166534", marginLeft: 8 }}>({target} − {existing} mg/L)</span>
-      </div>
+      </div>}
 
-      {isValid && (
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+      {!result && <p role="status" style={{ color: "#9A3412", fontSize: 13 }}>Enter finite positive flow and target values, plus a finite existing fluoride value of zero or more.</p>}
+      {result && result.doseMgL > 0 && (
+        <div className="chemcalc-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
           {[
-            { label: "F⁻ Mass Needed", value: `${round(massF_kg * 1000)} g/day`, sub: `${round(massF_kg, 3)} kg/day`, color: "#059669" },
-            { label: chem.unit === "L/day" ? "Chemical Volume" : "Chemical Mass", value: `${round(productAmount)} ${chem.unit}`, sub: chem.name.split(" (")[0], color: "#1D4ED8" },
-            { label: "Feed Rate", value: `${round(feedRate)} mL/min`, sub: "metering pump", color: "#7C3AED" },
+            { label: "F⁻ Mass Needed", value: `${round(result.massFKgDay * 1000)} g/day`, sub: `${round(result.massFKgDay, 3)} kg/day`, color: "#059669" },
+            { label: chem.unit === "L/day" ? "Chemical Volume" : "Chemical Mass", value: `${round(result.productAmountDay)} ${chem.unit}`, sub: chem.name.split(" (")[0], color: "#1D4ED8" },
+            { label: "Feed Rate", value: `${round(result.feedRateMlMin)} mL/min`, sub: "metering pump", color: "#7C3AED" },
           ].map(({ label, value, sub, color }) => (
             <div key={label} style={{ background: "#F8FAFC", borderRadius: 14, padding: "20px 16px", border: `2px solid ${color}33`, textAlign: "center" }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", marginBottom: 6 }}>{label}</div>
@@ -353,40 +322,31 @@ function PolymerCalc() {
   const [dose, setDose] = useState("0.5"); // mg/L
   const [stockConc, setStockConc] = useState("0.5"); // % stock solution
 
-  const flowNum = parseFloat(flow) || 0;
-  const doseNum = parseFloat(dose) || 0;
-  const stockNum = parseFloat(stockConc) / 100 || 0.005;
-  const stockDensity = 1.0; // kg/L (dilute solution ≈ water)
-
-  const massNeeded_g = (flowNum * 1000 * doseNum) / 1000;
-  const massNeeded_kg = massNeeded_g / 1000;
-  const stockVolume_L = massNeeded_kg / (stockDensity * stockNum);
-  const feedRate_mLMin = (stockVolume_L * 1000) / 1440;
-
-  const isValid = flowNum > 0 && doseNum > 0;
+  const result = calculatePolymer({ flow, dose, stockConcentration: stockConc });
 
   return (
     <div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 24 }}>
+      <div className="chemcalc-grid-3" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16, marginBottom: 24 }}>
         {[
-          { label: "Flow Rate (m³/day)", val: flow, set: setFlow },
-          { label: "Polymer Dose (mg/L)", val: dose, set: setDose },
-          { label: "Stock Solution Conc. (%)", val: stockConc, set: setStockConc },
-        ].map(({ label, val, set }) => (
+          { id: "polymer-flow", label: "Flow Rate (m³/day)", val: flow, set: setFlow },
+          { id: "polymer-dose", label: "Polymer Dose (mg/L)", val: dose, set: setDose },
+          { id: "polymer-concentration", label: "Stock Solution Conc. (%)", val: stockConc, set: setStockConc },
+        ].map(({ id, label, val, set }) => (
           <div key={label}>
-            <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>{label}</label>
-            <input type="number" value={val} onChange={e => set(e.target.value)}
+            <label htmlFor={id} style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>{label}</label>
+            <input id={id} type="number" min="0" step="any" value={val} onChange={e => set(e.target.value)}
               style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
           </div>
         ))}
       </div>
 
-      {isValid && (
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+      {!result && <p role="status" style={{ color: "#9A3412", fontSize: 13 }}>Enter finite positive flow, polymer dose, and stock concentration values at or below 100%.</p>}
+      {result && (
+        <div className="chemcalc-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
           {[
-            { label: "Polymer Mass", value: `${round(massNeeded_g)} g/day`, sub: `${round(massNeeded_kg, 3)} kg/day`, color: "#7C3AED" },
-            { label: "Stock Solution", value: `${round(stockVolume_L)} L/day`, sub: `at ${stockConc}% concentration`, color: "#1D4ED8" },
-            { label: "Feed Rate", value: `${round(feedRate_mLMin)} mL/min`, sub: "metering pump", color: "#059669" },
+            { label: "Polymer Mass", value: `${round(result.massNeededGDay)} g/day`, sub: `${round(result.massNeededKgDay, 3)} kg/day`, color: "#7C3AED" },
+            { label: "Stock Solution", value: `${round(result.stockVolumeLDay)} L/day`, sub: `at ${stockConc}% concentration`, color: "#1D4ED8" },
+            { label: "Feed Rate", value: `${round(result.feedRateMlMin)} mL/min`, sub: "metering pump", color: "#059669" },
           ].map(({ label, value, sub, color }) => (
             <div key={label} style={{ background: "#F8FAFC", borderRadius: 14, padding: "20px 16px", border: `2px solid ${color}33`, textAlign: "center" }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", marginBottom: 6 }}>{label}</div>
@@ -425,11 +385,13 @@ export default function ChemCalc() {
   return (
     <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
       <style>{`
+        .chemcalc-grid-2 > *, .chemcalc-grid-3 > * { min-width: 0; overflow-wrap: anywhere; }
+        .chemcalc-table-wrap { max-width: 100%; overflow-x: auto; }
         @keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
         @media (max-width: 640px) {
           .chemcalc-main { padding: 16px 14px 60px !important; }
           .chemcalc-grid-2 { grid-template-columns: 1fr !important; }
-          .chemcalc-grid-3 { grid-template-columns: 1fr 1fr !important; }
+          .chemcalc-grid-3 { grid-template-columns: 1fr !important; }
           .chemcalc-card { padding: 20px 16px !important; }
           .chemcalc-table-wrap { overflow-x: auto; }
           .chemcalc-hero { padding: 20px 18px !important; }
@@ -447,7 +409,7 @@ export default function ChemCalc() {
       <div className="chemcalc-main" style={{ maxWidth: 800, margin: "0 auto", padding: "28px 20px 80px", animation: "fadeUp 0.3s ease both" }}>
 
         {/* Hero */}
-        <div style={{ background: "linear-gradient(135deg, #1D4ED8, #0F766E)", borderRadius: 20, padding: "28px 32px", marginBottom: 24, color: "#fff" }}>
+        <div className="chemcalc-hero" style={{ background: "linear-gradient(135deg, #1D4ED8, #0F766E)", borderRadius: 20, padding: "28px 32px", marginBottom: 24, color: "#fff" }}>
           <h1 style={{ fontSize: 22, fontWeight: 800, margin: "0 0 6px" }}>🧪 Chemical Feed Calculator</h1>
           <p style={{ fontSize: 13, opacity: 0.9, margin: 0, lineHeight: 1.6 }}>
             Live dosing calculations for all major water treatment chemicals. Enter your flow rate and target dose — get feed rates instantly.
@@ -475,7 +437,7 @@ export default function ChemCalc() {
         </div>
 
         {/* Calculator card */}
-        <div style={{ background: "#fff", borderRadius: 20, padding: "32px", boxShadow: "0 4px 24px rgba(0,0,0,0.07)", animation: "fadeUp 0.25s ease both" }} key={activeTab}>
+        <div className="chemcalc-card" style={{ background: "#fff", borderRadius: 20, padding: "32px", boxShadow: "0 4px 24px rgba(0,0,0,0.07)", animation: "fadeUp 0.25s ease both" }} key={activeTab}>
           <h2 style={{ fontSize: 16, fontWeight: 800, color: "#0F172A", margin: "0 0 24px" }}>
             {TABS.find(t => t.id === activeTab)?.icon} {TABS.find(t => t.id === activeTab)?.label} Calculator
           </h2>
@@ -487,9 +449,10 @@ export default function ChemCalc() {
         </div>
 
         {/* Quick reference table */}
-        <div style={{ background: "#fff", borderRadius: 20, padding: "28px 32px", boxShadow: "0 4px 24px rgba(0,0,0,0.07)", marginTop: 20 }}>
+        <div className="chemcalc-card" style={{ background: "#fff", borderRadius: 20, padding: "28px 32px", boxShadow: "0 4px 24px rgba(0,0,0,0.07)", marginTop: 20 }}>
           <h2 style={{ fontSize: 16, fontWeight: 800, color: "#0F172A", margin: "0 0 16px" }}>📋 Typical Dose Ranges — Quick Reference</h2>
-          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>
+          <div className="chemcalc-table-wrap">
+          <table style={{ width: "100%", minWidth: 620, borderCollapse: "collapse", fontSize: 12 }}>
             <thead>
               <tr style={{ background: "#F8FAFC" }}>
                 {["Chemical", "Typical Dose", "Purpose", "pH Range", "Key Note"].map(h => (
@@ -514,6 +477,7 @@ export default function ChemCalc() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       </div>
     </div>

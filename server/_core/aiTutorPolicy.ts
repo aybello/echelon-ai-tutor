@@ -110,7 +110,7 @@ export function buildTutorSystemPrompt(input: {
 
   const performanceContext = JSON.stringify(input.recentPerformance.slice(-6));
   const isElectrician = input.subject === "construction_electrician";
-  const isUS = input.examFamily === "us-wpi" || input.examFamily === "us-state";
+  const isUS = input.examFamily === "us-wpi" || input.examFamily === "us-state" || input.usContext?.unitConvention === "us-customary";
   const regulatoryContext = isElectrician
     ? "Ontario Construction Electrician (309A) / current published exam-blueprint context"
     : input.examFamily === "ontario"
@@ -128,7 +128,7 @@ export function buildTutorSystemPrompt(input: {
   // rather than guessing at a learner's eligibility or local requirements.
   const usRules = isUS
     ? `
-- This is a United States course. Use US customary units: US gallons (never Imperial gallons), feet, psi, and mg/L. State the unit on every numeric answer.
+- This is a United States study context. Use US customary units: US gallons (never Imperial gallons), feet, psi, and mg/L. State the unit on every numeric answer.
 - Teach the general technical core only. You do NOT know this learner's state licensing rules, reciprocity, experience requirements, or exam eligibility.${input.usContext?.stateName ? ` The learner has indicated ${input.usContext.stateName}, which is display context only and does not establish that state's adopted exam edition or rules.` : ""}
 - When asked about local certification requirements, licence levels, renewal, or eligibility, say plainly that those are set by the state certifying authority and direct the learner there. Never state a specific state's requirement as fact from memory.
 - Never say or imply that this course is accredited, approved, endorsed, or accepted by any state, or that it grants credit, continuing education hours, or a licence.`

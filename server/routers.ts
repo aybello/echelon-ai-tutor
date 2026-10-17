@@ -885,6 +885,7 @@ export const appRouter = router({
           // against an allowlist and ignores anything unrecognized. It never
           // grants entitlements, changes banks, or authorizes legal advice.
           usState: z.string().max(32).optional(),
+          usCountry: z.enum(["US", "CA"]).optional(),
           accessToken: z.string().max(4096).optional(),
         }),
       )
@@ -1039,7 +1040,7 @@ export const appRouter = router({
           examFamily: course.examFamily,
           // Re-resolved server-side. An unrecognized or spoofed state becomes
           // null rather than reaching the model as free text.
-          usContext: resolveUSStudyContext(course.courseKey, input.usState ?? null),
+          usContext: resolveUSStudyContext(course.courseKey, input.usState ?? null, input.usCountry),
           subject: isElectrician309A ? "construction_electrician" : "water_operator",
           question: questionContext,
           selectedIndex: input.selectedIndex ?? null,

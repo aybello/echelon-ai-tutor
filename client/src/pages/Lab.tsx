@@ -2,6 +2,7 @@
 // Chain of custody simulator, QA/QC controls, parameter reference, and calculators
 
 import { useState } from "react";
+import { calculateRpd, calculateSpikeRecovery, calculateDilution, calculateBod } from "@/lib/labCalculation";
 import { Link } from "wouter";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -248,27 +249,31 @@ function LabCalculators() {
   // RPD
   const [rpd1, setRpd1] = useState("12.5");
   const [rpd2, setRpd2] = useState("13.1");
-  const rpdVal = Math.abs((parseFloat(rpd1) - parseFloat(rpd2))) / ((parseFloat(rpd1) + parseFloat(rpd2)) / 2) * 100;
-  const rpdPass = rpdVal <= 20;
+  const rpdResult = calculateRpd({ sample: rpd1, duplicate: rpd2 });
+  const rpdVal = rpdResult?.percent ?? 0;
+  const rpdPass = rpdResult?.passes ?? false;
 
   // Spike Recovery
   const [spikeUnspiked, setSpikeUnspiked] = useState("10.2");
   const [spikeSpiked, setSpikeSpiked] = useState("14.8");
   const [spikeAdded, setSpikeAdded] = useState("5.0");
-  const recovery = ((parseFloat(spikeSpiked) - parseFloat(spikeUnspiked)) / parseFloat(spikeAdded)) * 100;
-  const recoveryPass = recovery >= 70 && recovery <= 130;
+  const recoveryResult = calculateSpikeRecovery({ unspiked: spikeUnspiked, spiked: spikeSpiked, added: spikeAdded });
+  const recovery = recoveryResult?.percent ?? 0;
+  const recoveryPass = recoveryResult?.passes ?? false;
 
   // Dilution
   const [c1, setC1] = useState("100");
   const [v1, setV1] = useState("10");
   const [v2, setV2] = useState("100");
-  const c2 = (parseFloat(c1) * parseFloat(v1)) / parseFloat(v2);
+  const dilutionResult = calculateDilution({ initialConcentration: c1, initialVolume: v1, finalVolume: v2 });
+  const c2 = dilutionResult?.finalConcentration ?? 0;
 
   // BOD Calculation
   const [initialDO, setInitialDO] = useState("8.5");
   const [finalDO, setFinalDO] = useState("3.2");
   const [dilutionFactor, setDilutionFactor] = useState("20");
-  const bod = (parseFloat(initialDO) - parseFloat(finalDO)) * parseFloat(dilutionFactor);
+  const bodResult = calculateBod({ initialDo: initialDO, finalDo: finalDO, dilutionFactor });
+  const bod = bodResult?.mgL ?? 0;
 
   const calcTabs = [
     { id: "rpd", label: "RPD" },
@@ -296,16 +301,19 @@ function LabCalculators() {
             {[["Sample Result", rpd1, setRpd1], ["Duplicate Result", rpd2, setRpd2]].map(([label, val, set]) => (
               <div key={label as string}>
                 <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>{label as string}</label>
-                <input type="number" value={val as string} onChange={e => (set as (v: string) => void)(e.target.value)}
+                <input aria-label={label as string} type="number" min="0" step="any" value={val as string} onChange={e => (set as (v: string) => void)(e.target.value)}
                   style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
               </div>
             ))}
           </div>
+          {!rpdResult && <p role="status">Enter finite, non-negative sample and duplicate results; at least one must be greater than zero.</p>}
+          {rpdResult && (
           <div style={{ background: rpdPass ? "#F0FDF4" : "#FEF2F2", borderRadius: 14, padding: "20px", border: `2px solid ${rpdPass ? "#22C55E" : "#EF4444"}`, textAlign: "center" }}>
             <div style={{ fontSize: 32, fontWeight: 900, color: rpdPass ? "#059669" : "#DC2626" }}>{isNaN(rpdVal) ? "—" : `${rpdVal.toFixed(1)}%`}</div>
             <div style={{ fontSize: 13, fontWeight: 700, color: rpdPass ? "#15803D" : "#B91C1C", marginTop: 4 }}>{rpdPass ? "✓ PASS — Acceptable precision" : "✗ FAIL — Re-sample required"}</div>
             <div style={{ fontSize: 11, color: "#64748B", marginTop: 6 }}>RPD = |A − B| / [(A + B) / 2] × 100</div>
           </div>
+          )}
         </div>
       )}
 
@@ -317,16 +325,19 @@ function LabCalculators() {
             {[["Unspiked Sample", spikeUnspiked, setSpikeUnspiked], ["Spiked Sample", spikeSpiked, setSpikeSpiked], ["Spike Added", spikeAdded, setSpikeAdded]].map(([label, val, set]) => (
               <div key={label as string}>
                 <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>{label as string}</label>
-                <input type="number" value={val as string} onChange={e => (set as (v: string) => void)(e.target.value)}
+                <input aria-label={label as string} type="number" min="0" step="any" value={val as string} onChange={e => (set as (v: string) => void)(e.target.value)}
                   style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
               </div>
             ))}
           </div>
+          {!recoveryResult && <p role="status">Enter finite, non-negative sample results and a spike-added value greater than zero.</p>}
+          {recoveryResult && (
           <div style={{ background: recoveryPass ? "#F0FDF4" : "#FEF2F2", borderRadius: 14, padding: "20px", border: `2px solid ${recoveryPass ? "#22C55E" : "#EF4444"}`, textAlign: "center" }}>
             <div style={{ fontSize: 32, fontWeight: 900, color: recoveryPass ? "#059669" : "#DC2626" }}>{isNaN(recovery) ? "—" : `${recovery.toFixed(1)}%`}</div>
             <div style={{ fontSize: 13, fontWeight: 700, color: recoveryPass ? "#15803D" : "#B91C1C", marginTop: 4 }}>{recoveryPass ? "✓ PASS — Acceptable recovery (70–130%)" : "✗ FAIL — Outside acceptable range"}</div>
             <div style={{ fontSize: 11, color: "#64748B", marginTop: 6 }}>Recovery = (Spiked − Unspiked) / Spike Added × 100</div>
           </div>
+          )}
         </div>
       )}
 
@@ -338,16 +349,19 @@ function LabCalculators() {
             {[["Initial Conc. C₁", c1, setC1], ["Initial Volume V₁ (mL)", v1, setV1], ["Final Volume V₂ (mL)", v2, setV2]].map(([label, val, set]) => (
               <div key={label as string}>
                 <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>{label as string}</label>
-                <input type="number" value={val as string} onChange={e => (set as (v: string) => void)(e.target.value)}
+                <input aria-label={label as string} type="number" min="0" step="any" value={val as string} onChange={e => (set as (v: string) => void)(e.target.value)}
                   style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
               </div>
             ))}
           </div>
+          {!dilutionResult && <p role="status">Enter finite values: non-negative concentration, positive initial volume, and final volume at least as large as initial volume.</p>}
+          {dilutionResult && (
           <div style={{ background: "#EFF6FF", borderRadius: 14, padding: "20px", border: "2px solid #3B82F6", textAlign: "center" }}>
             <div style={{ fontSize: 32, fontWeight: 900, color: "#1D4ED8" }}>{isNaN(c2) ? "—" : c2.toFixed(3)}</div>
             <div style={{ fontSize: 13, fontWeight: 700, color: "#1E3A5F", marginTop: 4 }}>Final Concentration C₂</div>
             <div style={{ fontSize: 11, color: "#64748B", marginTop: 6 }}>C₂ = C₁ × V₁ / V₂ = {c1} × {v1} / {v2}</div>
           </div>
+          )}
         </div>
       )}
 
@@ -359,11 +373,13 @@ function LabCalculators() {
             {[["Initial DO (mg/L)", initialDO, setInitialDO], ["Final DO after 5 days (mg/L)", finalDO, setFinalDO], ["Dilution Factor", dilutionFactor, setDilutionFactor]].map(([label, val, set]) => (
               <div key={label as string}>
                 <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>{label as string}</label>
-                <input type="number" value={val as string} onChange={e => (set as (v: string) => void)(e.target.value)}
+                <input aria-label={label as string} type="number" min="0" step="any" value={val as string} onChange={e => (set as (v: string) => void)(e.target.value)}
                   style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
               </div>
             ))}
           </div>
+          {!bodResult && <p role="status">Enter finite, non-negative DO values with final DO no greater than initial DO, and a dilution factor of at least 1.</p>}
+          {bodResult && (
           <div style={{ background: "#F0FDF4", borderRadius: 14, padding: "20px", border: "2px solid #22C55E", textAlign: "center" }}>
             <div style={{ fontSize: 32, fontWeight: 900, color: "#059669" }}>{isNaN(bod) ? "—" : `${bod.toFixed(1)} mg/L`}</div>
             <div style={{ fontSize: 13, fontWeight: 700, color: "#15803D", marginTop: 4 }}>BOD₅</div>
@@ -374,6 +390,7 @@ function LabCalculators() {
                "🟢 Low BOD — meets typical secondary treatment effluent standard (≤25 mg/L)"}
             </div>
           </div>
+          )}
         </div>
       )}
     </div>
@@ -392,6 +409,7 @@ export default function Lab() {
   return (
     <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
       <style>{`
+        .lab-grid-2 > *, .lab-grid-3 > * { min-width: 0; overflow-wrap: anywhere; }
         @keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
         @media (max-width: 640px) {
           .lab-main { padding: 16px 14px 60px !important; }

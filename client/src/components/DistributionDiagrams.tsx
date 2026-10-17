@@ -3,6 +3,7 @@
 // viewBox 0 0 640 240, animated flow lines, clickable LabelDot components
 
 import React from "react";
+import { svgButtonProps } from "@/lib/svgButton";
 
 interface LabelDotProps {
   x: number;
@@ -31,7 +32,7 @@ function LabelDot({ x, y, id, text, active, color, onClick }: LabelDotProps) {
         style={{ pointerEvents: "none", userSelect: "none" as const }}>{text}</text>
       <rect x={x - 56} y={y - 36} width={112} height={62} rx={6}
         fill="transparent" style={{ cursor: "pointer" }}
-        onClick={() => onClick(isActive ? null : id)} />
+        {...svgButtonProps(text, isActive, () => onClick(isActive ? null : id))} />
     </g>
   );
 }

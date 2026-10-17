@@ -12,6 +12,7 @@ import { TutorPanelPlacement } from "./TutorPanelPlacement";
 import "./AITutor.css";
 import { Streamdown } from "streamdown";
 import { AI_TUTOR_MARKDOWN_PLUGINS } from "@/components/AIChatBox";
+import { readTutorStudyLocale } from "@shared/usStudyContext";
 import { normalizeTutorMath } from "@/lib/tutorMath";
 
 interface Props {
@@ -32,6 +33,7 @@ export default function AITutor({
   examType,
 }: Props) {
   const placement = useContext(TutorPanelPlacement);
+  const studyLocale = readTutorStudyLocale(examType, typeof window === "undefined" ? "" : window.location.search);
   const [sessionStartMs] = useState(() => Date.now());
   const saveSessionMutation = trpc.tutor.saveSession.useMutation();
   // Support both OAuth and verified email session users for session saving
@@ -140,7 +142,7 @@ export default function AITutor({
     } else {
       initMsg = isElectrician309A
         ? `Hi! I'm your Echelon 309A AI Tutor — here to help you study for the Ontario Construction Electrician exam.\n\nI can explain electrical concepts, walk through calculations, interpret the course diagrams, and help you understand *why* an answer is right or wrong.\n\nWhat would you like to work on?`
-        : `Hi! I'm your Echelon AI Tutor — here to help you master your Canadian water and wastewater operator certification exam.\n\nI can explain concepts, walk through calculations step by step, and help you understand *why* answers are right or wrong.\n\nWhat would you like to work on?`;
+        : `Hi! I'm your Echelon AI Tutor. I'm here to help you master your ${studyLocale.usCountry === "US" ? "US" : "Canadian"} water and wastewater operator certification exam.\n\nI can explain concepts, walk through calculations step by step, and help you understand *why* answers are right or wrong.\n\nWhat would you like to work on?`;
     }
 
     setMessages([{ role: "assistant", content: initMsg }]);
@@ -169,6 +171,7 @@ export default function AITutor({
           content: typeof m.content === "string" ? m.content : String(m.content),
         })),
         examType,
+        ...studyLocale,
         // Question.id in the learner model is the bank-scoped questionNum.
         questionNum: question?.id && question.id > 0 ? question.id : undefined,
         selectedIndex: userAnswer,
