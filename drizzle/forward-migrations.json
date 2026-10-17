@@ -463,6 +463,44 @@
       "verifierAllowMissingTables": [
         "abandoned_checkouts"
       ]
+    },
+    {
+      "version": 80,
+      "tag": "0080_practice_attempt_idempotency",
+      "file": "drizzle/0080_practice_attempt_idempotency.sql",
+      "sha256": "242f1e2cba4a753375fcef16ebaa54fe28b828bc62f951bd335ec4175faaa186",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "question_attempts"
+        ]
+      },
+      "verifierAllowMissingColumns": [
+        {
+          "table": "question_attempts",
+          "column": "operationId",
+          "targetType": "varchar(36)",
+          "targetNullable": true,
+          "sqlType": "varchar(36)"
+        },
+        {
+          "table": "question_attempts",
+          "column": "operationPayloadHash",
+          "targetType": "varchar(64)",
+          "targetNullable": true,
+          "sqlType": "varchar(64)"
+        }
+      ],
+      "verifierAllowMissingIndexes": [
+        {
+          "table": "question_attempts",
+          "index": "qa_operation_id_unique",
+          "unique": true,
+          "columns": [
+            "operationId"
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1,5 +1,6 @@
 import { readCourseLearnerProfile, readOverallLearnerActivity } from "../courseLearnerProfile";
 import { latestPracticeAttemptValue } from "../practiceReviewEligibility";
+import { practiceOperationHash, savePracticeAttempt } from "../practiceAttemptStore";
 import { resolveAttemptAttribution, validateIssuedAttribution } from "../teams/attemptAttribution";
 import { practiceIdentity, issuePracticeReceipt, permitsPracticeAttempt, practiceReceiptAttribution } from "../practiceQuestionReceipt";
 import { normalizeWpiClass4Module, wpiClass4StoredModuleNames, WPI_CLASS4_BANK } from "../mockBlueprint";
@@ -14,7 +15,7 @@ import { resolveAccessForRequest } from "../_core/accessService";
 import { getDb } from "../db";
 import { resolveLearningIdentity } from "../_core/learningIdentity";
 import { ELECTRICIAN_309A_PROGRAM_KEY } from "../../shared/certificationPrograms";
-import { questionAttempts, studentProfiles, questions, certificationQuestions, certificationBankVersions, questionBankMeta, moduleOverviews, users, bookmarks } from "../../drizzle/schema";
+import { questionAttempts, studentProfiles, questions, certificationQuestions, certificationBankVersions, questionBankMeta, moduleOverviews, bookmarks } from "../../drizzle/schema";
 import { and, eq, desc, sql, gte, inArray, notInArray, or } from "drizzle-orm";
 import { z } from "zod";
 import { resolveCourseKey } from "../../shared/courseRegistry";
@@ -516,6 +517,8 @@ export const quizRouter = router({
         guestToken: z.string().max(64).optional(),
         /** Issue Q: client-generated UUID for the quiz session. Nullable for legacy clients. */
         sessionId: z.string().uuid().optional().nullable(),
+        /** Stable per-answer UUID; retries must retain the original payload and receipt. */
+        operationId: z.string().uuid().optional(),
         /** Confidence self-rating — set by the student after answering. */
         confidence: z.enum(["low", "medium", "high"]).optional().nullable(),
         /** Bookmarked — student can flag a question for later review. */
@@ -581,7 +584,9 @@ export const quizRouter = router({
         // Guest previews are scored but never become unowned history or mastery.
         if (!userId && !studentEmail) return { success: true, correct };
 
-        await db.insert(questionAttempts).values({
+        return await savePracticeAttempt(db, {
+          operationId: input.operationId?.toLowerCase() ?? null,
+          operationPayloadHash: input.operationId ? practiceOperationHash(actor.owner, input) : null,
           userId,
           guestToken: null,
           studentEmail,
@@ -602,22 +607,6 @@ export const quizRouter = router({
           flexLicenceId,
         });
 
-        if (userId) {
-          await upsertStudentProfile(db, userId, null, course.courseKey, topic, correct);
-        } else if (studentEmail) {
-          const [existingUser] = await db
-            .select({ id: users.id })
-            .from(users)
-            .where(eq(users.email, studentEmail))
-            .limit(1);
-          if (existingUser) {
-            await upsertStudentProfile(db, existingUser.id, null, course.courseKey, topic, correct);
-          } else {
-            await upsertStudentProfile(db, null, studentEmail, course.courseKey, topic, correct);
-          }
-        }
-
-        return { success: true, correct };
       } catch (err) {
         console.error("[quizRouter.logAttempt] Error:", err);
         return { success: false };
@@ -833,121 +822,3 @@ export const quizRouter = router({
       }
     }),
 });
-
-// ─── Helper: get today's date in America/Toronto timezone ──────────────────
-// Using UTC (toISOString) causes off-by-one errors for users in Eastern time
-// because midnight UTC is 7-8 PM the previous day in Toronto.
-function getTodayTorontoDate(): string {
-  return new Intl.DateTimeFormat("en-CA", {
-    timeZone: "America/Toronto",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(new Date()); // returns YYYY-MM-DD in en-CA locale
-}
-
-// ─── Helper: upsert student profile ─────────────────────────────────────────
-async function upsertStudentProfile(
-  db: NonNullable<Awaited<ReturnType<typeof getDb>>>,
-  userId: number | null,
-  studentEmail: string | null,
-  examType: string,
-  topic: string,
-  correct: boolean
-) {
-  // Must have at least one identifier
-  if (!userId && !studentEmail) return;
-  try {
-    const rows = await db
-      .select()
-      .from(studentProfiles)
-      .where(
-        userId
-          ? eq(studentProfiles.userId, userId)
-          : eq(studentProfiles.studentEmail, studentEmail!)
-      )
-      .limit(1);
-    const today = getTodayTorontoDate();
-    if (rows.length === 0) {
-      // Create new profile
-      const topicAccuracy = { [topic]: { correct: correct ? 1 : 0, total: 1 } };
-      const weakTopics = correct ? [] : [topic];
-      const strongTopics: string[] = [];
-      await db.insert(studentProfiles).values({
-        userId: userId ?? null,
-        studentEmail: studentEmail ?? null,
-        examType,
-        topicAccuracy: JSON.stringify(topicAccuracy),
-        weakTopics: JSON.stringify(weakTopics),
-        strongTopics: JSON.stringify(strongTopics),
-        totalAttempts: 1,
-        totalSessions: 0,
-        currentStreak: 1,
-        longestStreak: 1,
-        lastActiveDate: today,
-      });
-    } else {
-      const profile = rows[0];
-      const topicAccuracy: Record<string, { correct: number; total: number }> =
-        JSON.parse(profile.topicAccuracy || "{}");
-
-      // Update topic accuracy
-      if (!topicAccuracy[topic]) topicAccuracy[topic] = { correct: 0, total: 0 };
-      topicAccuracy[topic].total += 1;
-      if (correct) topicAccuracy[topic].correct += 1;
-
-      // Recompute weak/strong topics
-      const weakTopics: string[] = [];
-      const strongTopics: string[] = [];
-      for (const [t, stats] of Object.entries(topicAccuracy)) {
-        if (stats.total >= 5) {
-          const pct = stats.correct / stats.total;
-          if (pct < 0.65) weakTopics.push(t);
-          else if (pct >= 0.80) strongTopics.push(t);
-        }
-      }
-
-      // Update streak
-      let currentStreak = profile.currentStreak;
-      let longestStreak = profile.longestStreak;
-      if (profile.lastActiveDate !== today) {
-        // Compute yesterday in Toronto timezone by decrementing the calendar date.
-        // Do NOT subtract 24 * 60 * 60 * 1000 ms — that breaks on DST transition days
-        // (spring forward / fall back) where the day is 23 or 25 hours long.
-        // Instead, parse today's date string and subtract exactly one calendar day.
-        const [ty, tm, td] = today.split("-").map(Number);
-        const todayLocal = new Date(ty, tm - 1, td); // local midnight, no TZ shift
-        todayLocal.setDate(todayLocal.getDate() - 1);
-        const yy = todayLocal.getFullYear();
-        const ym = String(todayLocal.getMonth() + 1).padStart(2, "0");
-        const yd = String(todayLocal.getDate()).padStart(2, "0");
-        const yesterdayStr = `${yy}-${ym}-${yd}`;
-        if (profile.lastActiveDate === yesterdayStr) {
-          currentStreak += 1;
-        } else {
-          currentStreak = 1; // streak broken
-        }
-        longestStreak = Math.max(longestStreak, currentStreak);
-      }
-
-      await db
-        .update(studentProfiles)
-        .set({
-          topicAccuracy: JSON.stringify(topicAccuracy),
-          weakTopics: JSON.stringify(weakTopics),
-          strongTopics: JSON.stringify(strongTopics),
-          totalAttempts: profile.totalAttempts + 1,
-          currentStreak,
-          longestStreak,
-          lastActiveDate: today,
-        })
-        .where(
-          userId
-            ? eq(studentProfiles.userId, userId)
-            : eq(studentProfiles.studentEmail, studentEmail!)
-        );
-    }
-  } catch (err) {
-    console.error("[upsertStudentProfile] Error:", err);
-  }
-}

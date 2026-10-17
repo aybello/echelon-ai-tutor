@@ -416,6 +416,10 @@ export const questionAttempts = mysqlTable("question_attempts", {
   /** Issue Q: client-generated UUID identifying the quiz session this attempt belongs to.
    *  Nullable for historic rows; new rows always include it. */
   sessionId: varchar("sessionId", { length: 36 }),
+  /** One answer/save operation, distinct from the multi-answer quiz session. */
+  operationId: varchar("operationId", { length: 36 }),
+  /** SHA-256 binding to the issued actor, receipt and exact submitted payload. */
+  operationPayloadHash: varchar("operationPayloadHash", { length: 64 }),
   /** Server-scored: the option index the student selected (0-3). */
   selectedIndex: int("selectedIndex"),
   /** The bank key for this attempt — used for org analytics scoping. */
@@ -437,6 +441,7 @@ export const questionAttempts = mysqlTable("question_attempts", {
   index("qa_flex_licence_created_idx").on(t.flexLicenceId, t.createdAt),
   index("qa_sessionid_idx").on(t.sessionId),
   index("qa_org_member_course_created_idx").on(t.orgId, t.organizationMemberId, t.courseKey, t.createdAt),
+  uniqueIndex("qa_operation_id_unique").on(t.operationId),
 ]);
 export type QuestionAttempt = typeof questionAttempts.$inferSelect;
 export type InsertQuestionAttempt = typeof questionAttempts.$inferInsert;

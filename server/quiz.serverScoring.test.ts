@@ -8,6 +8,7 @@ import { resolveAccessForRequest } from "./_core/accessService";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { MySqlDialect } from "drizzle-orm/mysql-core";
 import { appRouter } from "./routers";
+import { studentProfiles } from "../drizzle/schema";
 import type { TrpcContext } from "./_core/context";
 
 vi.mock("./_core/accessService", () => ({ resolveAccessForRequest: vi.fn().mockResolvedValue(true) }));
@@ -31,10 +32,14 @@ const QUESTION_ROW = { correctIndex: 2, topic: "Disinfection", difficulty: "medi
 
 function makeDb(questionRow = QUESTION_ROW, insertResult = []) {
   const insertValues = vi.fn().mockResolvedValue(insertResult);
-  const insertInto = vi.fn().mockReturnValue({ values: insertValues });
+  const insertInto = vi.fn().mockImplementation(table => table === studentProfiles
+    ? { values: vi.fn().mockReturnValue({ onDuplicateKeyUpdate: vi.fn().mockResolvedValue([]) }) }
+    : { values: insertValues });
   const selectLimit = vi.fn().mockResolvedValue(questionRow ? [questionRow] : []);
   const selectWhere = vi.fn().mockReturnValue({ limit: selectLimit });
-  const selectFrom = vi.fn().mockReturnValue({ where: selectWhere, innerJoin: vi.fn().mockReturnValue({ where: selectWhere }) });
+  const selectFrom = vi.fn().mockImplementation(table => table === studentProfiles
+    ? { where: vi.fn().mockReturnValue({ limit: vi.fn().mockReturnValue({ for: vi.fn().mockResolvedValue([{ id: 1, topicAccuracy: "{}", totalAttempts: 0, currentStreak: 0, longestStreak: 0, lastActiveDate: null }]) }) }) }
+    : { where: selectWhere, innerJoin: vi.fn().mockReturnValue({ where: selectWhere }) });
   const selectFn = vi.fn().mockReturnValue({ from: selectFrom });
   // upsertStudentProfile also calls db.select and db.insert — handle chaining
   const db: any = {
@@ -42,6 +47,7 @@ function makeDb(questionRow = QUESTION_ROW, insertResult = []) {
     insert: insertInto,
     update: vi.fn().mockReturnValue({ set: vi.fn().mockReturnValue({ where: vi.fn().mockResolvedValue([]) }) }),
   };
+  db.transaction = vi.fn(async callback => callback(db));
   return { db, insertValues, insertInto, selectFn, selectWhere };
 }
 

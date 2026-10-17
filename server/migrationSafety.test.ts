@@ -175,6 +175,19 @@ describe("forward-only migration safety", () => {
         standaloneApply: { tables: ["abandoned_checkouts"] },
         verifierAllowMissingTables: ["abandoned_checkouts"],
       }),
+      expect.objectContaining({
+        version: 80,
+        tag: "0080_practice_attempt_idempotency",
+        proposedOnly: true,
+        standaloneApply: { tables: ["question_attempts"] },
+        verifierAllowMissingColumns: [
+          { table: "question_attempts", column: "operationId", targetType: "varchar(36)", targetNullable: true, sqlType: "varchar(36)" },
+          { table: "question_attempts", column: "operationPayloadHash", targetType: "varchar(64)", targetNullable: true, sqlType: "varchar(64)" },
+        ],
+        verifierAllowMissingIndexes: [
+          { table: "question_attempts", index: "qa_operation_id_unique", unique: true, columns: ["operationId"] },
+        ],
+      }),
     ]);
     const baseline = await loadSchemaContract(manifest.baseline.contract);
     const baselineRaw = await readFile(
@@ -925,7 +938,7 @@ describe("forward-only migration safety", () => {
 
     expect(
       planForwardMigrations(manifest, rows).map(migration => migration.version)
-    ).toEqual([59, 60, 61, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]);
+    ).toEqual([59, 60, 61, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80]);
   });
 });
 
