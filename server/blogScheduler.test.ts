@@ -62,6 +62,29 @@ describe("short durable blog callbacks", () => {
     vi.stubEnv("DEPLOYMENT_ENV", "preview");
     expect(await authorizeBlogCallback(req, res, "worker")).toBe(false);
   });
+  it("accepts the bound SDK-authenticated production task through an internal delivery host", async () => {
+    vi.stubEnv("NODE_ENV", "production"); vi.stubEnv("DEPLOYMENT_ENV", "production");
+    authorized.mockResolvedValue(true);
+    const req = { headers: { host: "internal-scheduler-service:8080" } } as Request;
+    const res = { locals: { cronUser: { isCron: true, taskUid: "bound-worker" } } } as unknown as Response;
+    expect(await authorizeBlogCallback(req, res, "worker")).toBe(true);
+    expect(authorized).toHaveBeenLastCalledWith("bound-worker", "worker");
+    authorized.mockResolvedValue(false);
+    expect(await authorizeBlogCallback(req, res, "worker")).toBe(false);
+    authorized.mockResolvedValue(true);
+    vi.stubEnv("DEPLOYMENT_ENV", "preview");
+    expect(await authorizeBlogCallback(req, res, "worker")).toBe(false);
+  });
+  it("does not trust an internal host, forwarded host or task header without verified SDK identity", async () => {
+    vi.stubEnv("NODE_ENV", "production"); vi.stubEnv("DEPLOYMENT_ENV", "production");
+    authorized.mockResolvedValue(true);
+    const req = { headers: { host: "internal-scheduler-service:8080", "x-forwarded-host": "echeloninstitute.ca", "x-manus-cron-task-uid": "bound-worker" } } as unknown as Request;
+    const res = { locals: { scheduledAuthenticated: true } } as unknown as Response;
+    expect(await authorizeBlogCallback(req, res, "worker")).toBe(false);
+    expect(authorized).not.toHaveBeenCalled();
+    res.locals = {};
+    expect(await authorizeBlogCallback(req, res, "worker")).toBe(false);
+  });
   it("accepts a bound platform task header only after shared middleware authenticates its secret", async () => {
     vi.stubEnv("NODE_ENV", "production"); vi.stubEnv("DEPLOYMENT_ENV", "production");
     const req = { headers: { host: "echeloninstitute.ca", "x-manus-cron-task-uid": "bound-worker" } } as unknown as Request;

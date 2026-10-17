@@ -13,18 +13,21 @@ export async function authorizeBlogCallback(req: Request, res: Response, kind: "
   delete res.locals.blogAuthRejection;
   const reject = (code: string) => { res.locals.blogAuthRejection = code; return false; };
   if (process.env.NODE_ENV !== "production" || process.env.DEPLOYMENT_ENV === "preview") return reject("deployment_not_allowed");
-  // Heartbeat may address the existing managed deployment rather than its custom domain.
-  // Sandbox/preview hosts are never accepted, even with a valid task identity.
-  const allowedHosts = new Set(["echeloninstitute.ca", "www.echeloninstitute.ca",
-    "echelonai-9kar7mkg.manus.space", "echeloninstitute.manus.space"]);
-  if (!req.headers.host || !allowedHosts.has(req.headers.host.toLowerCase())) return reject("host_not_allowed");
-  // The shared middleware authenticates both SDK-cookie and legacy-secret callbacks.
-  // A task header alone is never sufficient, and a verified SDK identity wins.
+  // A verified platform identity plus the persisted task binding is the authority.
+  // Heartbeat can use an internal delivery host, not the public custom domain.
+  // Still reject explicit preview/sandbox hosts, even if production env was copied.
+  const host = (req.headers.host ?? "").toLowerCase();
+  if (!host || /\.manus\.computer(?::\d+)?$/.test(host)) return reject("host_not_allowed");
   if (res.locals.cronUser?.isCron === true) {
     const taskUid = res.locals.cronUser.taskUid;
     if (typeof taskUid !== "string" || !taskUid) return reject("task_identity_missing");
     return await blogTaskAuthorized(taskUid, kind) || reject("task_not_bound");
   }
+  // Legacy shared-secret requests do not carry a platform-verified identity.
+  // They retain the public-host allowlist; forwarded headers are not trusted.
+  const allowedHosts = new Set(["echeloninstitute.ca", "www.echeloninstitute.ca",
+    "echelonai-9kar7mkg.manus.space", "echeloninstitute.manus.space"]);
+  if (!allowedHosts.has(host)) return reject("host_not_allowed");
   if (res.locals.scheduledAuthenticated !== true) return reject("scheduled_auth_missing");
   const taskUid = req.headers["x-manus-cron-task-uid"];
   if (typeof taskUid !== "string" || !taskUid) return reject("task_identity_missing");
