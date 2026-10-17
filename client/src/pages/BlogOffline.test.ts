@@ -49,4 +49,41 @@ describe('public blog offline and retained-content regressions', () => {
     expect(recovered).toContain('Fixture article body'); expect(recovered).not.toContain('Showing the previously loaded article');
     client.clear();
   });
+  it('real cached list refetch is success/fetching, never pending; failed refresh retains articles', async () => {
+    vi.stubGlobal('React', React);
+    const client = new QueryClient();
+    let fail!: (error: Error) => void;
+    const observer = new QueryObserver(client, {
+      queryKey: ['blog', 'cached-list-fixture'], initialData: [fixture], retry: false,
+      queryFn: () => new Promise<typeof fixture[]>((_, reject) => { fail = reject; }),
+    });
+    const unsubscribe = observer.subscribe(() => {});
+    queries.list = observer.getCurrentResult();
+    expect(queries.list.status).toBe('success');
+    expect(queries.list.fetchStatus).toBe('fetching');
+    expect(queries.list.isPending).toBe(false); expect(queries.list.isLoading).toBe(false);
+    const render = () => renderToStaticMarkup(createElement(Router, { ssrPath: '/blog', children: createElement(Blog) }));
+    expect(render()).toContain('Fixture study guide'); expect(render()).not.toContain('animate-pulse');
+    const settled = observer.refetch({ cancelRefetch: false });
+    fail(new Error('isolated refresh failure'));
+    queries.list = await settled;
+    expect(queries.list.isError).toBe(true); expect(queries.list.data).toEqual([fixture]);
+    const html = render();
+    expect(html).toContain('Fixture study guide');
+    expect(html).toContain('Article updates are temporarily unavailable');
+    expect(html).toContain('Showing previously loaded articles');
+    expect(html).not.toContain('No matching articles'); expect(html).not.toContain('animate-pulse');
+    observer.setOptions({ queryKey: ['blog', 'cached-list-fixture'], enabled: false, retry: false, queryFn: async () => [fixture] });
+    queries.list = await observer.refetch();
+    expect(render()).toContain('Fixture study guide');
+    expect(render()).not.toContain('Article updates are temporarily unavailable');
+    unsubscribe(); client.clear();
+  });
+  it.each([false, true])('defensively avoids skeleton/list contradictions for invalid pending-data (isLoading=%s)', isLoading => {
+    vi.stubGlobal('React', React);
+    // This combination is not produced by QueryObserver with defined cached data.
+    queries.list = { data: [fixture], isPending: true, isLoading, fetchStatus: 'fetching', isError: false };
+    const html = renderToStaticMarkup(createElement(Router, { ssrPath: '/blog', children: createElement(Blog) }));
+    expect(html).toContain('Fixture study guide'); expect(html).not.toContain('animate-pulse');
+  });
 });

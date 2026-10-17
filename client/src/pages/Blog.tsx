@@ -102,7 +102,7 @@ export default function Blog() {
           </label>
         </div>
         {fetchStatus === "paused" && <p role="status" className="mb-6 text-amber-900">You are offline. {posts ? "Showing previously loaded articles. Reconnect to check for updates." : "Reconnect to load articles."}</p>}
-        {(isPending || isLoading) && fetchStatus !== "paused" && (
+        {posts === undefined && (isPending || isLoading) && fetchStatus !== "paused" && (
           <div className="space-y-6">
             {[1, 2, 3].map(i => (
               <div
@@ -120,7 +120,7 @@ export default function Blog() {
 
         {isError && (
           <div role="alert" className="mb-6 rounded-xl border border-amber-200 bg-amber-50 p-5 text-amber-900">
-            <p className="font-semibold">Articles are temporarily unavailable</p>
+            <p className="font-semibold">{posts ? "Article updates are temporarily unavailable" : "Articles are temporarily unavailable"}</p>
             <p className="mt-1 text-sm">{posts?.length ? "Showing previously loaded articles. The latest list could not be checked." : "We could not load articles. Please retry rather than changing your search."}</p>
             <button type="button" disabled={isFetching} onClick={() => void refetch()} className="mt-3 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white disabled:opacity-50">{isFetching ? "Retrying..." : "Retry"}</button>
           </div>
@@ -134,7 +134,7 @@ export default function Blog() {
           </div>
         )}
 
-        {!isLoading && visiblePosts.length > 0 && (
+        {visiblePosts.length > 0 && (
           <div className="space-y-6">
             {visiblePosts.map(post => (
               <Link key={post.slug} href={`/blog/${post.slug}`}>

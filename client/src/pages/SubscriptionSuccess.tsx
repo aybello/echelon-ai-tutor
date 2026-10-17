@@ -57,8 +57,8 @@ const TIER_QUIZ_PATHS_WPI: Record<string, string> = {
 
 export default function SubscriptionSuccess() {
   usePageMeta({
-    title: "Subscription Activated — Echelon Institute",
-    description: "Your Echelon Institute annual subscription is now active.",
+    title: "Subscription Confirmation — Echelon Institute",
+    description: "Verify your payment and current subscription access.",
     noindex: true
   });
 
@@ -68,11 +68,13 @@ export default function SubscriptionSuccess() {
   const [accessWritten, setAccessWritten] = useState(false);
   const [requiresSignIn, setRequiresSignIn] = useState(false);
 
-  // Read URL params — tier/province passed as convenience fallback
+  const [paymentConfirmed, setPaymentConfirmed] = useState(false);
+  const [verifiedPlan, setVerifiedPlan] = useState({ tier: "", province: "" });
+
+  // Only the session identifier is accepted from the receipt URL.
   const params = new URLSearchParams(window.location.search);
   const sessionId = params.get("session_id") ?? "";
-  const tier = params.get("tier") ?? "all-access";
-  const province = params.get("province") ?? "ontario";
+  const { tier, province } = verifiedPlan;
   const tierLabel = TIER_LABELS[tier] ?? "All-Access";
   const quizPath = province === "western"
     ? (TIER_QUIZ_PATHS_WPI[tier] ?? "/wpi-class1-water")
@@ -82,8 +84,10 @@ export default function SubscriptionSuccess() {
   // ── Verify session server-side and write localStorage access ──────────────
   const verifyMutation = trpc.stripe.verifySubscriptionSession.useMutation({
     onSuccess: (data) => {
+      setPaymentConfirmed(data.paid);
       if (data.paid && data.examTypes.length > 0) {
-        writeSubscriptionAccess(data.email, data.tier || tier, data.province || province, data.examTypes, data.accessToken);
+        setVerifiedPlan({ tier: data.tier, province: data.province });
+        writeSubscriptionAccess(data.email, data.tier, data.province, data.examTypes, data.accessToken);
       } else {
         // Payment evidence is not identity; continue through the existing OTP flow.
         setRequiresSignIn(true);
@@ -148,15 +152,15 @@ export default function SubscriptionSuccess() {
           background: "linear-gradient(135deg, #7C3AED, #4F46E5)",
           display: "flex", alignItems: "center", justifyContent: "center",
           margin: "0 auto 20px", fontSize: 28, color: "#fff",
-        }}>✓</div>
+        }}>{!accessWritten ? "…" : paymentConfirmed ? "✓" : "!"}</div>
         <h1 style={{ fontSize: 24, fontWeight: 900, color: "#0F172A", margin: "0 0 8px" }}>
-          {requiresSignIn ? "Sign in to restore access" : "Subscription Activated!"}
+          {!accessWritten ? "Verifying your payment…" : !paymentConfirmed ? "Payment not confirmed" : requiresSignIn ? "Payment confirmed" : "Subscription Activated!"}
         </h1>
         <p style={{ fontSize: 15, color: "#475569", margin: "0 0 20px", lineHeight: 1.6 }}>
-          {requiresSignIn ? "Verify your subscription email with a one-time code to restore current access." : <>Your <strong>{tierLabel}</strong> subscription for <strong>{provinceLabel}</strong> is now active.
+          {!accessWritten ? "Please wait while we verify your payment and current access." : !paymentConfirmed ? "We could not confirm a paid subscription from this receipt. Sign in to check your current access, or contact support if you were charged." : requiresSignIn ? "Sign in with your subscription email to access your account. This receipt confirms payment, not a new subscription term." : <>Your <strong>{tierLabel}</strong> subscription for <strong>{provinceLabel}</strong> is now active.
           You have access to your currently included exam types.</>}
         </p>
-        {!requiresSignIn && <div style={{
+        {accessWritten && !requiresSignIn && <div style={{
           background: "#F5F3FF", border: "1.5px solid #C4B5FD",
           borderRadius: 12, padding: "16px 20px", marginBottom: 24, textAlign: "left",
         }}>
@@ -171,7 +175,7 @@ export default function SubscriptionSuccess() {
             <li>Access follows your current subscription term shown in your account</li>
           </ul>
         </div>}
-        <Link href={requiresSignIn ? "/login/otp" : quizPath}>
+        {accessWritten && <Link href={requiresSignIn ? "/login/otp" : quizPath}>
           <button
             onClick={() => { if (intervalRef.current) clearInterval(intervalRef.current); }}
             style={{
@@ -183,8 +187,8 @@ export default function SubscriptionSuccess() {
           >
             {requiresSignIn ? "Sign In with Email Code →" : "Start Studying Now →"}
           </button>
-        </Link>
-        <Link href="/account">
+        </Link>}
+        {paymentConfirmed && <Link href="/account">
           <button
             onClick={() => { if (intervalRef.current) clearInterval(intervalRef.current); }}
             style={{
@@ -196,11 +200,11 @@ export default function SubscriptionSuccess() {
           >
             View My Subscriptions
           </button>
-        </Link>
-        <p style={{ fontSize: 12, color: "#94A3B8", margin: 0 }}>
+        </Link>}
+        <p role="status" style={{ fontSize: 12, color: "#94A3B8", margin: 0 }}>
           {requiresSignIn ? "Use the email associated with your subscription." : accessWritten
             ? `Redirecting to your study page in ${countdown}s…`
-            : "Activating your access…"}
+            : "Verifying your payment…"}
         </p>
       </div>
       <p style={{ marginTop: 24, fontSize: 12, color: "rgba(255,255,255,0.4)", textAlign: "center" }}>
