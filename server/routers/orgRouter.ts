@@ -35,7 +35,7 @@ import {
 } from "../../drizzle/schema";
 import { organizationTermUsage } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/access";
-import { sendTeamEnrollmentEmail, sendOperatorStudyReminderEmail } from "../email";
+import { sendTeamEnrollmentEmail, sendOperatorStudyReminderEmail, type TeamEnrollmentEmailPayload } from "../email";
 import { courseKeyToTierStrict, isValidCourseKey } from "../../shared/products";
 import { courseKeyToLabel, getExamTypesForCourseKey } from "../../shared/courseRegistry";
 import { allowedCourseKeysForOrg, subscriptionProvinceForOrg, isSubscriptionTier, validateOrgCourseKeys } from "../stripe/subscriptionProducts";
@@ -87,7 +87,9 @@ function resolveTermStart(org: { termStart: Date | null; termEnd: Date }): Date 
 /**
  * Resolves the verified manager identity to an organization owned by that email.
  * Optional organization selection cannot grant ownership. The shared resolver
- * enforces organization status and the current contract or paid Flex lifecycle.
+ * enforces dashboard status and the current contract or paid Flex lifecycle.
+ * Annual learner writes additionally require requireCurrentAnnualTerm; reporting
+ * eligibility alone never grants permission to assign or reactivate Annual access.
  * Returns the orgId and managerEmail attached to the context.
  */
 export async function resolveOrgManager(ctx: {
@@ -104,6 +106,35 @@ const teamProcedure = publicProcedure
   .input(z.object({ orgId: z.number().int().positive().optional() }).optional())
   .use(({ ctx, input, next }) => next({ ctx: { ...ctx, selectedOrganizationId: input?.orgId } }));
 
+/** Dashboard/reporting eligibility must never authorize Annual learner writes. */
+function requireCurrentAnnualTerm(org: { status: string; termEnd: Date | null }) {
+  if (!["active", "past_due"].includes(org.status) || !org.termEnd || org.termEnd <= new Date()) {
+    throw new TRPCError({ code: "FORBIDDEN", message: "The Annual contract term has ended or is inactive. Renew before assigning or changing Annual learner access." });
+  }
+}
+
+type EnrollmentOutcome = { status: "sent" | "failed" | "not_requested" };
+function enrollmentPayload(org: { name: string; province: string }, email: string, managerEmail: string | undefined, keys: string[]): TeamEnrollmentEmailPayload {
+  return {
+    email, orgName: org.name,
+    managerEmail: managerEmail ?? process.env.SUPPORT_EMAIL ?? "abello@echeloninstitute.ca",
+    loginUrl: `${process.env.FRONTEND_URL ?? "https://echeloninstitute.ca"}/login`,
+    courseName: keys.length ? keys.map(k => courseKeyToLabel(k, org.province)).join(" & ") : undefined,
+  };
+}
+/** Observed SMTP result, not an inbox receipt. Explicit resend is safe for seat accounting.
+ * No suitable enrollment outbox exists; never reuse reminder consent/cooldown state. */
+async function deliverEnrollment(payload: TeamEnrollmentEmailPayload | null): Promise<EnrollmentOutcome> {
+  if (!payload) return { status: "not_requested" };
+  try {
+    await sendTeamEnrollmentEmail(payload);
+    return { status: "sent" };
+  } catch {
+    // Keep the committed assignment and surface a retryable delivery outcome.
+    return { status: "failed" };
+  }
+}
+
 // ── Seat lifecycle helpers ────────────────────────────────────────────────────
 
 /**
@@ -117,7 +148,7 @@ const teamProcedure = publicProcedure
  */
 async function grantSeat(
   db: Awaited<ReturnType<typeof getDb>>,
-  org: { id: number; province: string; termEnd: Date; termStart?: Date | null; name: string; tier: string },
+  org: { id: number; province: string; termEnd: Date; termStart?: Date | null; name: string; tier: string; status?: string },
   email: string,
   role: "manager" | "operator" = "operator",
   managerEmail?: string,
@@ -126,6 +157,7 @@ async function grantSeat(
   courseKeys?: string[],
 ) {
   if (!db) throw new Error("Database unavailable");
+  if (role === "operator") requireCurrentAnnualTerm({ ...org, status: org.status ?? "" });
 
   // Resolve the canonical list of course keys
   const resolvedKeys: string[] = courseKeys && courseKeys.length > 0
@@ -238,26 +270,10 @@ async function grantSeat(
   // Note: annual licence usage is recorded by consumeOrReuseAnnualLicence BEFORE grantSeat is called.
   // grantSeat no longer inserts into organizationTermUsage directly.
 
-  // Send enrollment email to new operators (or re-activated ones)
-  // Fire-and-forget — don't block the seat assignment if email fails
-  if (role === "operator" && (isNewMember || wasRevoked)) {
-    const origin = process.env.FRONTEND_URL ?? "https://echeloninstitute.ca";
-    const loginUrl = `${origin}/login`;
-    const supportEmail = process.env.SUPPORT_EMAIL ?? "abello@echeloninstitute.ca";
-    // Build course label: list all assigned courses, not just the primary one
-    const courseName = validatedKeys.length > 1
-      ? validatedKeys.map(k => courseKeyToLabel(k, org.province)).join(" & ")
-      : primaryCourseKey ? courseKeyToLabel(primaryCourseKey, org.province) : undefined;
-    sendTeamEnrollmentEmail({
-      email,
-      orgName: org.name,
-      managerEmail: managerEmail ?? supportEmail,
-      loginUrl,
-      courseName,
-    }).catch(err => {
-      console.error(`[Team Enrollment Email] Failed to send to ${email}:`, err);
-    });
-  }
+  // Return intent only: the caller MUST await delivery after transaction commit.
+  return role === "operator" && (isNewMember || wasRevoked)
+    ? enrollmentPayload(org, email, managerEmail, validatedKeys)
+    : null;
 }
 
 /**
@@ -816,6 +832,7 @@ export const orgRouter = router({
         .limit(1)
         .then(r => r[0]);
       if (!org) throw new TRPCError({ code: "NOT_FOUND", message: "Organization not found" });
+      requireCurrentAnnualTerm(org);
 
       const email = normalizeEmail(input.email);
       const name = input.name?.trim() || undefined;
@@ -823,16 +840,16 @@ export const orgRouter = router({
       // Atomic seat cap check + grant inside a transaction to prevent race conditions.
       // Both the count read and the insert/update happen in the same transaction so
       // two concurrent requests cannot both pass the cap check and both write a new row.
-      await db.transaction(async (tx) => {
+      const enrollment = await db.transaction(async (tx) => {
         // consumeOrReuseAnnualLicence handles the full reactivation-vs-new-operator logic:
         // - Reactivation (previously counted this term): allowed even at full capacity
         // - New operator: blocked if all licences are consumed
         // - Pessimistic FOR UPDATE lock prevents concurrent oversubscription
         await consumeOrReuseAnnualLicence(tx, org, email);
 
-        await grantSeat(tx as any, org, email, "operator", managerEmail, name, input.courseKey, input.courseKeys);
+        return grantSeat(tx as any, org, email, "operator", managerEmail, name, input.courseKey, input.courseKeys);
       });
-      return { success: true, email };
+      return { success: true, email, enrollment: await deliverEnrollment(enrollment) };
     }),
 
   /**
@@ -858,6 +875,7 @@ export const orgRouter = router({
         .limit(1)
         .then(r => r[0]);
       if (!org) throw new TRPCError({ code: "NOT_FOUND", message: "Organization not found" });
+      requireCurrentAnnualTerm(org);
 
       const email = normalizeEmail(input.email);
 
@@ -876,6 +894,7 @@ export const orgRouter = router({
         .then(r => r[0]);
 
       if (!member) throw new TRPCError({ code: "NOT_FOUND", message: "Seat not found" });
+      if (member.status !== "assigned") throw new TRPCError({ code: "BAD_REQUEST", message: "Reactivate this operator before changing courses." });
 
       // Resolve canonical list
       const resolvedKeys: string[] = input.courseKeys && input.courseKeys.length > 0
@@ -990,6 +1009,7 @@ export const orgRouter = router({
         .limit(1)
         .then(r => r[0]);
       if (!org) throw new TRPCError({ code: "NOT_FOUND", message: "Organization not found" });
+      requireCurrentAnnualTerm(org);
 
       // Validate the course keys against the org's entitlement BEFORE processing any emails
       let validatedCourseKeys: string[];
@@ -1004,18 +1024,48 @@ export const orgRouter = router({
 
       // All-or-nothing bulk assignment inside a single transaction.
       // consumeOrReuseAnnualLicence handles reactivation vs new-operator logic with a pessimistic lock.
-      const results: Array<{ email: string; success: boolean; error?: string }> = [];
+      const pending: Array<{ email: string; payload: TeamEnrollmentEmailPayload | null }> = [];
       await db.transaction(async (tx) => {
         for (const email of uniqueEmails) {
           // consumeOrReuseAnnualLicence throws if a new licence is needed but cap is reached.
           // It allows reactivation even at full capacity.
           await consumeOrReuseAnnualLicence(tx, org, email);
-          await grantSeat(tx as any, org, email, "operator", managerEmail, undefined, undefined, validatedCourseKeys);
-          results.push({ email, success: true });
+          const payload = await grantSeat(tx as any, org, email, "operator", managerEmail, undefined, undefined, validatedCourseKeys);
+          pending.push({ email, payload });
         }
       });
 
+      // No mail can escape a partially rolled-back bulk transaction. Await every result.
+      const results = [];
+      for (const { email, payload } of pending) {
+        results.push({ email, success: true, enrollment: await deliverEnrollment(payload) });
+      }
       return { results };
+    }),
+
+  /** Explicit transactional enrollment retry: no seat, subscription, or usage writes. */
+  resendEnrollment: teamProcedure
+    .input(z.object({ email: z.string().email() }))
+    .mutation(async ({ input, ctx }) => {
+      const { orgId, managerEmail } = await resolveOrgManager(ctx);
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+      const [org] = await db.select().from(organizations).where(eq(organizations.id, orgId)).limit(1);
+      if (!org) throw new TRPCError({ code: "NOT_FOUND", message: "Organization not found" });
+      requireCurrentAnnualTerm(org);
+      const email = normalizeEmail(input.email);
+      const [member] = await db.select().from(organizationMembers).where(and(
+        eq(organizationMembers.orgId, orgId), eq(organizationMembers.email, email),
+        eq(organizationMembers.role, "operator"), eq(organizationMembers.status, "assigned"),
+      )).limit(1);
+      if (!member) throw new TRPCError({ code: "NOT_FOUND", message: "Assigned operator not found in your organization" });
+      let keys: string[] = member.courseKey ? [member.courseKey] : [];
+      if (member.courseKeys) {
+        try { keys = z.array(z.string()).parse(JSON.parse(member.courseKeys)); }
+        catch { throw new TRPCError({ code: "BAD_REQUEST", message: "Assigned courses are invalid. Update the operator courses before resending." }); }
+      }
+      const validatedKeys = validateOrgCourseKeys(keys, org.tier, org.province, "operator");
+      return { email, enrollment: await deliverEnrollment(enrollmentPayload(org, email, managerEmail, validatedKeys)) };
     }),
 
   /**

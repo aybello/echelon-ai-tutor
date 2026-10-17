@@ -240,7 +240,8 @@ export default function OrgDashboard() {
   // Mutations
   const assignSeat = trpc.org.assignSeat.useMutation({
     onSuccess: (data) => {
-      toast.success(`Seat assigned to ${data.email}`);
+      if (data.enrollment.status === "failed") toast.warning(`Seat assigned to ${data.email}, but enrollment email failed. Use Resend enrollment in the operator actions.`);
+      else toast.success(`Seat assigned to ${data.email}${data.enrollment.status === "sent" ? "; enrollment email sent" : "; use Resend enrollment to send another email"}`);
       utils.org.getOrgOverview.invalidate();
       utils.org.listMembers.invalidate();
       utils.org.getAttention.invalidate();
@@ -250,6 +251,13 @@ export default function OrgDashboard() {
       setAssignCourseKeys([]);
     },
     onError: (err) => toast.error(err.message),
+  });
+
+  const resendEnrollment = trpc.org.resendEnrollment.useMutation({
+    onSuccess: data => data.enrollment.status === "sent"
+      ? toast.success(`Enrollment email sent to ${data.email}`)
+      : toast.warning(`Enrollment email failed for ${data.email}. Seat remains assigned; please retry.`),
+    onError: err => toast.error(err.message),
   });
 
   const updateSeatCourse = trpc.org.updateSeatCourse.useMutation({
@@ -263,9 +271,10 @@ export default function OrgDashboard() {
   const assignSeats = trpc.org.assignSeats.useMutation({
     onSuccess: (data) => {
       const ok = data.results.filter(r => r.success).length;
-      const fail = data.results.filter(r => !r.success).length;
-      if (ok > 0) toast.success(`${ok} seat${ok === 1 ? "" : "s"} assigned`);
-      if (fail > 0) toast.error(`${fail} assignment${fail === 1 ? "" : "s"} failed`);
+      const mailFailed = data.results.filter(r => r.enrollment.status === "failed").length;
+      const mailSent = data.results.filter(r => r.enrollment.status === "sent").length;
+      if (ok > 0) toast.success(`${ok} seat${ok === 1 ? "" : "s"} assigned; ${mailSent} enrollment email${mailSent === 1 ? "" : "s"} sent`);
+      if (mailFailed > 0) toast.warning(`${mailFailed} enrollment email${mailFailed === 1 ? "" : "s"} failed. Seats remain assigned; use Resend enrollment in each operator’s actions.`);
       utils.org.getOrgOverview.invalidate();
       utils.org.listMembers.invalidate();
       utils.org.getAttention.invalidate();
@@ -1038,6 +1047,11 @@ export default function OrgDashboard() {
                             </div>
                           </details>
                           <div className="flex items-center justify-end gap-1">
+                            <Button variant="ghost" size="sm" className="h-7 px-2.5 text-xs"
+                              disabled={resendEnrollment.isPending}
+                              onClick={() => resendEnrollment.mutate({ ...orgInput, email: m.email })}>
+                              Resend enrollment
+                            </Button>
                             <Button
                               variant="ghost"
                               size="sm"
