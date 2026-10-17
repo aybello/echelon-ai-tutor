@@ -4,7 +4,7 @@ import {
   parsePlannedTopic, validateArticle,
   type BlogPostInsert, type BlogSource, type BlogTopic, type ExistingBlogPost, type GeneratedArticle,
 } from "./blogAutomation";
-import { blogResponseText, type BlogModelRequest, type BlogModelResponse } from "./blogModel";
+import { BlogProviderError, blogResponseText, isBlogProviderFailureKind, type BlogModelRequest, type BlogModelResponse } from "./blogModel";
 import { OutboundError } from "./_core/outboundHttp";
 
 export type BlogPhase = "topic" | "plan-submit" | "plan-poll" | "research" | "draft-submit" | "draft-poll" | "review-submit" | "review-poll" | "publish";
@@ -18,6 +18,8 @@ export type BlogProgress = {
   revision: number;
   approved?: boolean;
   submissionPending?: boolean;
+  /** Diagnostic only. Never authorizes a retry or clears submissionPending. */
+  submissionNotSent?: true;
 };
 export type BlogRun = { runKey: string; startedAt: Date; progress: BlogProgress };
 export interface BlogClaim {
@@ -40,6 +42,30 @@ export type BlogWorkflowDependencies = {
 };
 const CALLBACK_BUDGET_MS = 23_000;
 const RUN_MAX_AGE_MS = 30 * 60_000;
+const failurePhases: readonly BlogPhase[] = ["topic", "plan-submit", "plan-poll", "research", "draft-submit", "draft-poll", "review-submit", "review-poll", "publish"];
+const failureServices = ["forge", "anthropic", "openai", "maps", "notification", "storage", "image", "transcription", "audio", "data", "heartbeat", "editorial-source"] as const;
+const outboundFailureKinds: readonly OutboundError["kind"][] = ["timeout", "cancelled", "network", "too_large", "http", "invalid_json"];
+/** Never serialize an error, its message, Zod issues, request data or arbitrary properties. */
+function safeBlogFailure(error: unknown, phase: BlogPhase, submissionUncertain: boolean) {
+  let service: OutboundError["service"] | "workflow" | "unknown" = "workflow";
+  let kind: OutboundError["kind"] | BlogProviderError["kind"] | "unexpected" | "submission_uncertain" = "unexpected";
+  let status: number | undefined;
+  if (error instanceof BlogProviderError) {
+    service = "openai";
+    if (isBlogProviderFailureKind(error.kind)) kind = error.kind;
+    status = error.status;
+  } else if (error instanceof OutboundError) {
+    service = failureServices.includes(error.service) ? error.service : "unknown";
+    if (outboundFailureKinds.includes(error.kind)) kind = error.kind;
+    status = error.status;
+  } else if (submissionUncertain) kind = "submission_uncertain";
+  return {
+    phase: failurePhases.includes(phase) ? phase : "unknown",
+    service,
+    kind,
+    ...(typeof status === "number" && Number.isInteger(status) && status >= 100 && status <= 599 ? { status } : {}),
+  };
+}
 export function recentAutomatedPost(posts: ExistingBlogPost[], now: Date) {
   return posts.find(post => post.tags?.split(",").map(tag => tag.trim()).includes(AUTOMATED_ARTICLE_TAG)
     && now.getTime() - new Date(post.createdAt).getTime() < 6 * 24 * 60 * 60_000);
@@ -68,6 +94,7 @@ export async function advanceBlogWorkflow(deps: BlogWorkflowDependencies) {
   const { run } = claim;
   const p = structuredClone(run.progress);
   const safeReadPhase = p.phase === "research" || p.phase.endsWith("-poll");
+  let submissionAttempted = false;
   let receivedResponseProgress: BlogProgress | undefined;
   try {
     if (p.submissionPending) throw new Error("Previous blog submission is uncertain; inspect before retrying");
@@ -93,8 +120,10 @@ export async function advanceBlogWorkflow(deps: BlogWorkflowDependencies) {
           revision: p.revision ? { previousArticle: p.article!, issues: p.issues! } : undefined })
           : buildReviewRequest({ topic: p.topic, research: p.research, article: p.article! });
       }
+      delete p.submissionNotSent;
       p.submissionPending = true;
       await claim.checkpoint(structuredClone(p));
+      submissionAttempted = true;
       const response = await deps.submit(request, controller.signal);
       p.responseId = response.id;
       p.phase = p.phase.replace("-submit", "-poll") as BlogPhase;
@@ -147,9 +176,15 @@ export async function advanceBlogWorkflow(deps: BlogWorkflowDependencies) {
       error instanceof OutboundError &&
       ["timeout", "cancelled", "network", "http"].includes(error.kind) &&
       (!error.status || [429, 500, 502, 503, 504].includes(error.status)));
+    const failure = safeBlogFailure(error, p.phase, Boolean(run.progress.submissionPending) && !submissionAttempted);
+    // Only this live pre-transport credential failure proves no request was sent.
+    // Keep the uncertain marker and terminal failure; recovery policy is unchanged.
+    const submissionNotSent = submissionAttempted && !receivedResponseProgress &&
+      error instanceof BlogProviderError && error.kind === "missing_credential";
+    if (submissionNotSent) p.submissionNotSent = true;
     if (retryable) await claim.retry(receivedResponseProgress);
-    else await claim.fail("Blog step failed; inspect editorial or provider logs before retrying", receivedResponseProgress);
-    console.warn("[blog-workflow]", { phase: p.phase, retryable });
+    else await claim.fail(`Blog step failed: ${JSON.stringify(failure)}`, submissionNotSent ? p : receivedResponseProgress);
+    console.warn("[blog-workflow]", { ...failure, retryable });
     return { ok: false, action: retryable ? "retry_pending" : "failed", phase: p.phase };
   } finally { clearTimeout(deadline); }
 }

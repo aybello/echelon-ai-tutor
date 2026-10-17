@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { BLOG_MODEL, blogResponseText, retrieveBlogResponse, submitBlogResponse } from "./blogModel";
+import { BLOG_MODEL, BlogProviderError, blogResponseText, retrieveBlogResponse, submitBlogResponse } from "./blogModel";
 
 const input = { instructions: "Test editor", input: "Fictional source data", maxOutputTokens: 2048,
   schema: { name: "test_blog", schema: { type: "object", properties: {}, additionalProperties: false } } };
@@ -35,7 +35,32 @@ describe("blog direct model contract", () => {
   it("fails closed on unexpected provider status", async () => {
     vi.stubEnv("OPENAI_CUSTOM_API_KEY", "test-only-blog-key");
     vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify({ id: "resp_fixture", status: "unknown" }))));
-    await expect(submitBlogResponse(input)).rejects.toThrow();
+    await expect(submitBlogResponse(input)).rejects.toMatchObject({ name: "BlogProviderError", kind: "schema_unexpected", service: "openai", status: 200 });
+  });
+  it.each([
+    { id: "resp_fixture", status: "PRIVATE_PROVIDER_STATUS" },
+    { id: "PRIVATE_RESPONSE_ID", status: "queued" },
+    { id: "resp_fixture", status: "completed", output: [{ type: "message", content: [{ type: "output_text", text: { PRIVATE_FIELD: "PRIVATE_BODY" } }] }] },
+  ])("discards schema issue values and paths rather than exposing raw Zod errors", async payload => {
+    vi.stubEnv("OPENAI_CUSTOM_API_KEY", "PRIVATE_CREDENTIAL");
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    const fetch = vi.fn().mockResolvedValue(new Response(JSON.stringify(payload), { headers: { "x-private": "PRIVATE_HEADER" } }));
+    vi.stubGlobal("fetch", fetch);
+    const error = await submitBlogResponse(input).catch(error => error);
+    expect(error).toBeInstanceOf(BlogProviderError);
+    expect(error).toMatchObject({ kind: "schema_unexpected", status: 200 });
+    expect(error).not.toHaveProperty("issues");
+    expect(error).not.toHaveProperty("cause");
+    expect(`${error.stack} ${JSON.stringify(error)} ${JSON.stringify(warn.mock.calls)}`).not.toContain("PRIVATE_");
+    expect(fetch).toHaveBeenCalledOnce();
+  });
+  it("redacts malformed provider JSON before propagating a safe error", async () => {
+    vi.stubEnv("OPENAI_CUSTOM_API_KEY", "PRIVATE_CREDENTIAL");
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response('PRIVATE_BODY not JSON')));
+    const error = await submitBlogResponse(input).catch(error => error);
+    expect(error).toMatchObject({ service: "openai", kind: "invalid_json" });
+    expect(`${error.stack} ${JSON.stringify(error)} ${JSON.stringify(warn.mock.calls)}`).not.toContain("PRIVATE_");
   });
   it("does not publish refused or incomplete text", () => {
     expect(() => blogResponseText({ ...completed, status: "incomplete" })).toThrow("not complete");
@@ -45,7 +70,7 @@ describe("blog direct model contract", () => {
   it("makes no network request when a direct provider key is absent", async () => {
     vi.stubEnv("OPENAI_CUSTOM_API_KEY", ""); vi.stubEnv("OPENAI_API_KEY", "");
     const fetch = vi.fn(); vi.stubGlobal("fetch", fetch);
-    await expect(submitBlogResponse(input)).rejects.toThrow("credential is not configured");
+    await expect(submitBlogResponse(input)).rejects.toMatchObject({ name: "BlogProviderError", kind: "missing_credential", service: "openai" });
     expect(fetch).not.toHaveBeenCalled();
   });
 });

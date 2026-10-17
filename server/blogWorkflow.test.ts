@@ -1,5 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { OutboundError } from "./_core/outboundHttp";
+import { BlogProviderError, submitBlogResponse } from "./blogModel";
 import { BLOG_TOPICS, fetchOfficialSource, type GeneratedArticle } from "./blogAutomation";
 import { advanceBlogWorkflow, blogRunKey, buildPublication, type BlogClaim, type BlogProgress, type BlogWorkflowDependencies } from "./blogWorkflow";
 const NOW = new Date("2026-10-05T14:00:00Z");
@@ -33,7 +34,7 @@ function harness(initial: BlogProgress = { phase: "topic", revision: 0 }) {
   };
   return { deps, claim, get progress() { return progress; } };
 }
-afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); vi.restoreAllMocks(); });
+afterEach(() => { vi.useRealTimers(); vi.unstubAllEnvs(); vi.unstubAllGlobals(); vi.restoreAllMocks(); });
 describe("durable blog workflow", () => {
   it("saves one step per callback, resumes generation/review and publishes only after approval", async () => {
     const h = harness();
@@ -92,12 +93,130 @@ describe("durable blog workflow", () => {
     const h = harness({ phase: "draft-submit", revision: 0, topic, research, submissionPending: true });
     expect(await advanceBlogWorkflow(h.deps)).toMatchObject({ action: "failed" });
     expect(h.deps.submit).not.toHaveBeenCalled();
+    expect(h.claim.fail).toHaveBeenCalledWith('Blog step failed: {"phase":"draft-submit","service":"workflow","kind":"submission_uncertain"}', undefined);
+    expect(h.progress.submissionPending).toBe(true);
+    expect(h.progress.submissionNotSent).toBeUndefined();
   });
   it("does not blindly retry a submit timeout", async () => {
     const h = harness({ phase: "draft-submit", revision: 0, topic, research });
     vi.mocked(h.deps.submit).mockRejectedValue(new OutboundError("openai", "timeout"));
     expect(await advanceBlogWorkflow(h.deps)).toMatchObject({ action: "failed" });
     expect(h.claim.retry).not.toHaveBeenCalled(); expect(h.progress.submissionPending).toBe(true);
+    expect(h.progress.submissionNotSent).toBeUndefined();
+  });
+  it("clears stale not-sent evidence before a new explicitly authorized submission attempt", async () => {
+    const h = harness({ phase: "draft-submit", revision: 0, topic, research, submissionNotSent: true });
+    vi.mocked(h.deps.submit).mockRejectedValue(new OutboundError("openai", "network"));
+    expect(await advanceBlogWorkflow(h.deps)).toMatchObject({ action: "failed" });
+    expect(h.claim.checkpoint).toHaveBeenCalledWith(expect.objectContaining({ submissionPending: true }));
+    expect(vi.mocked(h.claim.checkpoint).mock.calls[0][0].submissionNotSent).toBeUndefined();
+    expect(h.progress.submissionNotSent).toBeUndefined();
+    expect(h.progress.submissionPending).toBe(true);
+    expect(h.claim.retry).not.toHaveBeenCalled();
+  });
+  it.each(["missing_credential", "schema_unexpected"] as const)("records a terminal polling %s failure without marking an existing response not sent", async kind => {
+    const h = harness({ phase: "draft-poll", revision: 0, topic, research, responseId: "resp_test" });
+    vi.mocked(h.deps.retrieve).mockRejectedValue(new BlogProviderError(kind));
+    expect(await advanceBlogWorkflow(h.deps)).toMatchObject({ action: "failed" });
+    expect(h.claim.fail).toHaveBeenCalledWith(`Blog step failed: {"phase":"draft-poll","service":"openai","kind":"${kind}"}`, undefined);
+    expect(h.progress.responseId).toBe("resp_test");
+    expect(h.progress.submissionNotSent).toBeUndefined();
+    expect(h.claim.retry).not.toHaveBeenCalled();
+    expect(h.deps.submit).not.toHaveBeenCalled();
+    expect(h.claim.publish).not.toHaveBeenCalled();
+  });
+  it("records a missing credential as definitely not sent without permitting automatic recovery", async () => {
+    vi.stubEnv("OPENAI_CUSTOM_API_KEY", ""); vi.stubEnv("OPENAI_API_KEY", "");
+    const fetch = vi.fn(); vi.stubGlobal("fetch", fetch);
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    const h = harness({ phase: "draft-submit", revision: 0, topic, research });
+    h.deps.submit = vi.fn(submitBlogResponse);
+    expect(await advanceBlogWorkflow(h.deps)).toMatchObject({ action: "failed" });
+    expect(fetch).not.toHaveBeenCalled();
+    expect(h.progress).toMatchObject({ phase: "draft-submit", submissionPending: true, submissionNotSent: true });
+    expect(h.claim.fail).toHaveBeenCalledWith('Blog step failed: {"phase":"draft-submit","service":"openai","kind":"missing_credential"}', expect.objectContaining({ submissionPending: true, submissionNotSent: true }));
+    expect(warn).toHaveBeenCalledWith("[blog-workflow]", { phase: "draft-submit", service: "openai", kind: "missing_credential", retryable: false });
+    expect(h.claim.retry).not.toHaveBeenCalled();
+    // Even a manually re-exposed failed run cannot use this diagnostic as retry authorization.
+    h.deps.claim = vi.fn(async () => ({ ...h.claim, run: { ...h.claim.run, progress: h.progress } }));
+    expect(await advanceBlogWorkflow(h.deps)).toMatchObject({ action: "failed" });
+    expect(h.deps.submit).toHaveBeenCalledOnce();
+    expect(fetch).not.toHaveBeenCalled();
+  });
+  it.each([400, 401, 403, 429, 500, 503])("persists only safe metadata for a submit HTTP %s rejection", async status => {
+    vi.stubEnv("OPENAI_CUSTOM_API_KEY", "PRIVATE_CREDENTIAL");
+    const fetch = vi.fn().mockResolvedValue(new Response("PRIVATE_PROVIDER_BODY", { status, headers: { "x-private": "PRIVATE_HEADER" } }));
+    vi.stubGlobal("fetch", fetch);
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    const h = harness({ phase: "draft-submit", revision: 0, topic, research });
+    h.deps.submit = vi.fn(submitBlogResponse);
+    expect(await advanceBlogWorkflow(h.deps)).toMatchObject({ action: "failed" });
+    expect(h.claim.fail).toHaveBeenCalledWith(`Blog step failed: {"phase":"draft-submit","service":"openai","kind":"http","status":${status}}`, undefined);
+    expect(warn).toHaveBeenCalledWith("[blog-workflow]", { phase: "draft-submit", service: "openai", kind: "http", status, retryable: false });
+    expect(JSON.stringify([vi.mocked(h.claim.fail).mock.calls, warn.mock.calls])).not.toContain("PRIVATE_");
+    expect(h.progress.submissionPending).toBe(true);
+    expect(h.progress.submissionNotSent).toBeUndefined();
+    expect(h.claim.retry).not.toHaveBeenCalled();
+    expect(h.claim.publish).not.toHaveBeenCalled();
+    expect(fetch).toHaveBeenCalledOnce();
+  });
+  it("redacts a raw network error and retains the uncertain paid submission", async () => {
+    vi.stubEnv("OPENAI_CUSTOM_API_KEY", "PRIVATE_CREDENTIAL");
+    const fetch = vi.fn().mockRejectedValue(new Error("PRIVATE_NETWORK https://private.test?key=PRIVATE_CREDENTIAL"));
+    vi.stubGlobal("fetch", fetch);
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    const h = harness({ phase: "draft-submit", revision: 0, topic, research });
+    h.deps.submit = vi.fn(submitBlogResponse);
+    expect(await advanceBlogWorkflow(h.deps)).toMatchObject({ action: "failed" });
+    expect(h.claim.fail).toHaveBeenCalledWith('Blog step failed: {"phase":"draft-submit","service":"openai","kind":"network"}', undefined);
+    expect(JSON.stringify([vi.mocked(h.claim.fail).mock.calls, warn.mock.calls])).not.toMatch(/PRIVATE_|private.test/);
+    expect(h.progress.submissionPending).toBe(true);
+    expect(h.progress.submissionNotSent).toBeUndefined();
+    expect(h.claim.retry).not.toHaveBeenCalled();
+    expect(fetch).toHaveBeenCalledOnce();
+  });
+  it.each([
+    ['{"id":"resp_test","status":"PRIVATE_STATUS","PRIVATE_FIELD":"PRIVATE_BODY"}', "schema_unexpected", 200],
+    ["PRIVATE_MALFORMED_JSON", "invalid_json", undefined],
+  ] as const)("does not persist or log response validation details for %s", async (body, kind, status) => {
+    vi.stubEnv("OPENAI_CUSTOM_API_KEY", "PRIVATE_CREDENTIAL");
+    const fetch = vi.fn().mockResolvedValue(new Response(body, { headers: { "x-private": "PRIVATE_HEADER" } }));
+    vi.stubGlobal("fetch", fetch);
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    const h = harness({ phase: "draft-submit", revision: 0, topic, research });
+    h.deps.submit = vi.fn(submitBlogResponse);
+    expect(await advanceBlogWorkflow(h.deps)).toMatchObject({ action: "failed" });
+    const metadata = { phase: "draft-submit", service: "openai", kind, ...(status ? { status } : {}) };
+    expect(h.claim.fail).toHaveBeenCalledWith(`Blog step failed: ${JSON.stringify(metadata)}`, undefined);
+    expect(warn).toHaveBeenCalledWith("[blog-workflow]", { ...metadata, retryable: false });
+    expect(JSON.stringify([vi.mocked(h.claim.fail).mock.calls, warn.mock.calls])).not.toContain("PRIVATE_");
+    expect(h.progress.submissionPending).toBe(true);
+    expect(h.progress.submissionNotSent).toBeUndefined();
+    expect(h.claim.retry).not.toHaveBeenCalled();
+    expect(fetch).toHaveBeenCalledOnce();
+  });
+  it.each([
+    new Error("PRIVATE_RAW_ERROR"),
+    Object.assign(new Error("PRIVATE_FORGED_ERROR"), { service: "openai", kind: "missing_credential", status: 401, body: "PRIVATE_BODY" }),
+    Object.assign(new BlogProviderError("schema_unexpected"), { message: "PRIVATE_MESSAGE", cause: "PRIVATE_CAUSE", issues: ["PRIVATE_ISSUE"] }),
+    Object.assign(new OutboundError("openai", "http", 401), { message: "PRIVATE_MESSAGE", headers: { authorization: "PRIVATE_CREDENTIAL" } }),
+    Object.assign(new BlogProviderError("schema_unexpected"), { kind: "PRIVATE_KIND", status: "PRIVATE_STATUS" }),
+    Object.assign(new OutboundError("openai", "http"), { service: "PRIVATE_SERVICE", kind: "PRIVATE_KIND", status: "PRIVATE_STATUS" }),
+    Object.assign(new OutboundError("openai", "http"), { status: 600 }),
+  ])("never copies arbitrary error properties into persisted or logged diagnostics", async error => {
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    const h = harness({ phase: "draft-submit", revision: 0, topic, research });
+    vi.mocked(h.deps.submit).mockRejectedValue(error);
+    expect(await advanceBlogWorkflow(h.deps)).toMatchObject({ action: "failed" });
+    const reason = vi.mocked(h.claim.fail).mock.calls[0][0];
+    const metadata = JSON.parse(reason.slice("Blog step failed: ".length));
+    expect(Object.keys(metadata).sort()).toEqual(metadata.status ? ["kind", "phase", "service", "status"] : ["kind", "phase", "service"]);
+    expect(warn).toHaveBeenCalledWith("[blog-workflow]", { ...metadata, retryable: false });
+    expect(JSON.stringify([vi.mocked(h.claim.fail).mock.calls, warn.mock.calls])).not.toContain("PRIVATE_");
+    expect(h.progress.submissionPending).toBe(true);
+    expect(h.progress.submissionNotSent).toBeUndefined();
+    expect(h.claim.retry).not.toHaveBeenCalled();
+    expect(h.claim.publish).not.toHaveBeenCalled();
   });
   it("preserves a returned response even when the callback deadline expires", async () => {
     vi.useFakeTimers();
