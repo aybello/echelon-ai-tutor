@@ -1,7 +1,7 @@
 import { getDb } from "../db";
 import { purchases, subscriptions, organizations, organizationMembers, teamFlexLicences } from "../../drizzle/schema";
 import type { User } from "../../drizzle/schema";
-import { eq, and, gt } from "drizzle-orm";
+import { eq, and, gt, inArray } from "drizzle-orm";
 import { getAllUnlockedExamTypes } from "../stripe/products";
 import {
   getAllSubscriptionExamTypes,
@@ -13,6 +13,7 @@ import { resolveTeamAccess } from "../teams/resolveTeamAccess";
 import { resolveCourseKey } from "../../shared/courseRegistry";
 import { selectCurrentManagerOrganization } from "../teams/managerOrganization";
 import { isNovaScotiaCourseSupported } from "../../shared/novaScotiaPreparation";
+import { flexLicenceKeepsManagerAccess } from "../teams/flexReporting";
 
 /** Number of questions a non-entitled user may access per bank (free funnel). */
 export const FREE_TRIAL_LIMIT = 15;
@@ -368,8 +369,22 @@ export async function resolveEntitlementsByEmail(
       .where(eq(organizations.managerEmail, normalised));
 
     const orgRow = selectCurrentManagerOrganization(orgRows, now);
+    const recoverableOrgIds = orgRows
+      .filter(row => ORG_ACCESS_STATUSES.has(row.status ?? ""))
+      .map(row => row.id);
+    let hasPaidFlexWindow = false;
+    if (!orgRow && recoverableOrgIds.length > 0) {
+      const paidInventory = await db.select({
+        status: teamFlexLicences.status,
+        activationDeadline: teamFlexLicences.activationDeadline,
+        accessEndsAt: teamFlexLicences.accessEndsAt,
+        reportingEndsAt: teamFlexLicences.reportingEndsAt,
+      }).from(teamFlexLicences)
+        .where(inArray(teamFlexLicences.organizationId, recoverableOrgIds));
+      hasPaidFlexWindow = paidInventory.some(licence => flexLicenceKeepsManagerAccess(licence, now));
+    }
 
-    if (orgRow) {
+    if (orgRow || hasPaidFlexWindow) {
       isManager = true;
       sources.push("org_manager");
     }
