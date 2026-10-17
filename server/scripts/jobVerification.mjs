@@ -14,16 +14,20 @@ export function sourceDate(value) {
   const date = new Date(value);
   return Number.isFinite(date.getTime()) ? date : null;
 }
-const DATE_PATTERN = "(?:[A-Za-z]+\\s+\\d{1,2}(?:st|nd|rd|th)?(?:,)?\\s+\\d{4}|\\d{1,2}(?:st|nd|rd|th)?\\s+[A-Za-z]+(?:,)?\\s+\\d{4}|\\d{4}-\\d{2}-\\d{2})";
+// Zoned ISO instants must precede date-only alternatives; never silently turn
+// an explicitly timed deadline into the end of its calendar day.
+const ISO_INSTANT_PATTERN = "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}(?::\\d{2}(?:\\.\\d{1,3})?)?(?:Z|[+-]\\d{2}:?\\d{2})";
+const DATE_PATTERN = `(?:${ISO_INSTANT_PATTERN}|[A-Za-z]+\\s+\\d{1,2}(?:st|nd|rd|th)?(?:,)?\\s+\\d{4}|\\d{1,2}(?:st|nd|rd|th)?\\s+[A-Za-z]+(?:,)?\\s+\\d{4}|\\d{4}-\\d{2}-\\d{2}(?![T\\d]))`;
 export function parseJobDates(text) {
   const clean = plainJobText(text);
   const parse = label => {
     const match = clean.match(new RegExp(`(?:${label})\\s*(?:date)?\\s*[:\\-]?\\s*(${DATE_PATTERN})`, "i"));
     if (!match) return null;
-    return sourceDate(match[1].replace(/(\d)(st|nd|rd|th)\b/gi, "$1"));
+    const date = sourceDate(match[1].replace(/(\d)(st|nd|rd|th)\b/gi, "$1"));
+    return date ? { date, precise: /T\d{2}:/i.test(match[1]) } : null;
   };
   const closing = parse("application deadline|applications? (?:close|due)|closing|deadline|apply (?:by|before)");
-  return { postedAt: parse("posted|published|posting"), closingAt: closing ? new Date(Date.UTC(closing.getUTCFullYear(), closing.getUTCMonth(), closing.getUTCDate(), 23, 59, 59, 999)) : null };
+  return { postedAt: parse("posted|published|posting")?.date ?? null, closingAt: closing ? closing.precise ? closing.date : new Date(Date.UTC(closing.date.getUTCFullYear(), closing.date.getUTCMonth(), closing.date.getUTCDate(), 23, 59, 59, 999)) : null };
 }
 const PDF_TIMEOUT_MS = 8000;
 const PDF_INPUT_LIMIT = 5_000_000;

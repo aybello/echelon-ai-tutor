@@ -234,9 +234,10 @@ export async function ingestRss(upsertJob) {
               item["job-location"] ??
               ""
             ).trim() || null;
-          const detectedProvince = detectProvince(
-            `${location ?? ""} ${title} ${description}`
-          );
+          const locationProvince = detectProvince(location);
+          const detectedProvince = locationProvince !== "other"
+            ? locationProvince
+            : detectProvince(`${title} ${description}`, { fullNamesOnly: true });
           const province =
             detectedProvince === "other" ? "ON" : detectedProvince;
           const postedAt = sourceDate(item.pubDate);

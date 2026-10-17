@@ -1,4 +1,4 @@
-export function detectProvince(locationStr?: string | null): string;
+export function detectProvince(locationStr?: string | null, options?: { fullNamesOnly?: boolean }): string;
 export function detectJobType(text?: string | null): string;
 export function extractSalary(text?: string | null): string | null;
 export function isWaterJob(

@@ -13,16 +13,17 @@ const PROVINCE_MAP = [
   { province: "MB", names: ["manitoba", "mb"] },
 ];
 
-export function detectProvince(locationStr) {
+export function detectProvince(locationStr, { fullNamesOnly = false } = {}) {
   if (!locationStr) return "other";
   const lower = locationStr.toLowerCase();
   let earliestMatch = null;
   for (const { province, names } of PROVINCE_MAP) {
     for (const name of names) {
+      if (fullNamesOnly && name.length === 2) continue;
       const match =
         name.length > 2
           ? { index: lower.indexOf(name) }
-          : new RegExp(`(?:^|[^a-z])${name}(?:$|[^a-z])`, "i").exec(lower);
+          : new RegExp(`(?:^|[^a-zA-Z])${name.toUpperCase()}(?:$|[^a-zA-Z])`).exec(locationStr);
       const index = match?.index ?? -1;
       if (index >= 0 && (!earliestMatch || index < earliestMatch.index)) {
         earliestMatch = { province, index };
@@ -141,16 +142,17 @@ export function normalizeUrl(url) {
   if (!url) return url;
   try {
     const u = new URL(url);
-    const KEEP = ["id", "jobid", "job_id", "vacancyid", "postingid", "jk"];
+    // Unknown parameters can be essential ATS routing context, not trackers.
+    const TRACKING = new Set(["gclid", "dclid", "fbclid", "msclkid", "mc_cid", "mc_eid", "_ga", "_gl"]);
     const params = new URLSearchParams();
     for (const [k, v] of u.searchParams) {
-      if (KEEP.includes(k.toLowerCase())) params.set(k, v);
+      if (!/^utm_/i.test(k) && !TRACKING.has(k.toLowerCase())) params.append(k, v);
     }
     u.search = params.toString();
     u.hash = "";
     return u.toString();
   } catch {
-    return url.split("?")[0];
+    return url;
   }
 }
 

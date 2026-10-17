@@ -45,7 +45,9 @@ function otpFromSubject(subject: string): string {
 
 async function signInWithOtp(page: Page, email: string, next: string) {
   await page.goto(`/login/otp?next=${encodeURIComponent(next)}`);
-  await page.getByPlaceholder("fixture-117@example.com").fill(email);
+  const emailInput = page.getByRole("textbox", { name: "Email address", exact: true });
+  await expect(emailInput).toBeVisible({ timeout: 5_000 });
+  await emailInput.fill(email);
   await page.getByRole("button", { name: /Send Code/i }).click();
   await expect(page.getByRole("heading", { name: "Check Your Email" })).toBeVisible();
 
@@ -85,7 +87,8 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
   const licenceRow = page.locator("tr").filter({ hasText: COURSE_NAME });
   await expect(licenceRow).toContainText("unused");
   await licenceRow.getByRole("button", { name: "Invite" }).click();
-  const inviteInput = licenceRow.getByPlaceholder("fixture-83@example.com");
+  const inviteInput = licenceRow.getByPlaceholder("Operator work email", { exact: true });
+  await expect(inviteInput).toBeVisible({ timeout: 5_000 });
   await inviteInput.fill(OPERATOR_EMAIL);
   // Target the primary action beside the email field. The deployed manager UI
   // may insert a review step before sending, while older builds send directly.
@@ -117,7 +120,9 @@ test(`${COURSE_NAME}: invitation, activation, mock recovery and manager reportin
   await expect(operatorPage.getByText(COURSE_NAME, { exact: true })).toBeVisible();
   await operatorPage.getByRole("link", { name: /Verify Email & Continue/i }).click();
 
-  await operatorPage.getByPlaceholder("fixture-117@example.com").fill(OPERATOR_EMAIL);
+  const operatorEmailInput = operatorPage.getByRole("textbox", { name: "Email address", exact: true });
+  await expect(operatorEmailInput).toBeVisible({ timeout: 5_000 });
+  await operatorEmailInput.fill(OPERATOR_EMAIL);
   await operatorPage.getByRole("button", { name: /Send Code/i }).click();
   await expect(operatorPage.getByRole("heading", { name: "Check Your Email" })).toBeVisible();
   const operatorOtpMessage = await waitForMessage(OPERATOR_EMAIL, "login code:");

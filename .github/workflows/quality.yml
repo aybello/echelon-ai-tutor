@@ -12,6 +12,8 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    env:
+      DOTENV_CONFIG_PATH: /dev/null
     services:
       mysql:
         image: mysql:8.4
@@ -164,7 +166,7 @@ jobs:
           NODE_ENV: test
           JWT_SECRET: test-only-not-for-production
           STRIPE_SECRET_KEY: sk_test_ci_placeholder
-          SMTP_HOST: smtp.gmail.com
+          SMTP_HOST: 127.0.0.1
           SMTP_PORT: "587"
           SMTP_USER: test@example.com
           SMTP_PASS: test-only-placeholder
@@ -290,8 +292,20 @@ jobs:
           DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
       - name: Install the Teams browser-test runtime
         run: pnpm exec playwright install --with-deps chromium
-      - name: Browser-test Teams access, purchase confirmation, Equipment Lab and Process Guide
-        run: pnpm exec playwright test e2e/teams-course-pass.spec.ts e2e/equipment-lab-three.spec.ts e2e/process-guide-three.spec.ts e2e/logout.spec.ts e2e/purchase-confirmation.spec.ts e2e/google-ads-measurement.spec.ts e2e/ceu-learning.spec.ts e2e/audit-repairs.spec.ts e2e/quiz-screen-fit.spec.ts e2e/course-chunk-recovery.spec.ts e2e/us-routing.spec.ts e2e/nova-scotia-selection.spec.ts
+      - name: Browser-test public Jobs, chlorine, OTP controls and Process Guide regressions
+        run: pnpm exec playwright test e2e/jobs-accessibility.spec.ts e2e/jobs-reliability.spec.ts e2e/chlorine-calculator.spec.ts e2e/otp-controls.spec.ts e2e/process-guide-three.spec.ts
+        env:
+          CI: "1"
+          NODE_ENV: test
+          PORT: "3000"
+          APP_BASE_URL: http://127.0.0.1:3000
+          E2E_BASE_URL: http://127.0.0.1:3000
+          JWT_SECRET: test-only-not-for-production
+          DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
+          STRIPE_SECRET_KEY: sk_test_ci_placeholder
+          STRIPE_WEBHOOK_SECRET: whsec_ci_placeholder
+      - name: Browser-test Teams access, purchase confirmation, Equipment Lab and learner journeys
+        run: pnpm exec playwright test e2e/teams-course-pass.spec.ts e2e/equipment-lab-three.spec.ts e2e/logout.spec.ts e2e/purchase-confirmation.spec.ts e2e/google-ads-measurement.spec.ts e2e/ceu-learning.spec.ts e2e/audit-repairs.spec.ts e2e/quiz-screen-fit.spec.ts e2e/course-chunk-recovery.spec.ts e2e/us-routing.spec.ts e2e/nova-scotia-selection.spec.ts
         env:
           CI: "1"
           NODE_ENV: test

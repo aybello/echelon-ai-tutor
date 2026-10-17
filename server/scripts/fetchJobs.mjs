@@ -105,17 +105,16 @@ export async function fetchAndIngest(options = {}) {
       return;
     }
     normalizedJob.postedAt = verification.postedAt ?? null;
-    const inferredProvince = detectProvince(
-      [normalizedJob.location, normalizedJob.title, normalizedJob.description]
-        .filter(Boolean)
-        .join(" ")
-    );
+    const locationProvince = detectProvince(normalizedJob.location);
     const province =
-      inferredProvince !== "other"
-        ? inferredProvince
+      locationProvince !== "other"
+        ? locationProvince
         : VALID_PROVINCES.has(normalizedJob.province)
           ? normalizedJob.province
-          : "other";
+          : detectProvince(
+              [normalizedJob.title, normalizedJob.description].filter(Boolean).join(" "),
+              { fullNamesOnly: true }
+            );
     const sourceType = VALID_SOURCE_TYPES.has(normalizedJob.sourceType)
       ? normalizedJob.sourceType
       : "rss";

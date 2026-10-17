@@ -1,4 +1,4 @@
-import { useRef, useState, type MouseEvent } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { Dialog, DialogClose, DialogOverlay, DialogPortal, DialogTitle } from "@/components/ui/dialog";
 import { trpc } from "@/lib/trpc";
@@ -314,6 +314,12 @@ export default function Careers() {
   const totalPages = data?.totalPages ?? 1;
   const total = data?.total ?? 0;
 
+  useEffect(() => {
+    if (data && !isError && !isFetching && page > Math.max(1, data.totalPages)) {
+      setPage(Math.max(1, data.totalPages));
+    }
+  }, [data, isError, isFetching, page]);
+
   function handleProvinceChange(p: Province) {
     setProvince(p);
     setPage(1);
@@ -375,6 +381,8 @@ export default function Careers() {
           {PROVINCES.map(p => (
             <button
               key={String(p.value)}
+              type="button"
+              aria-pressed={province === p.value}
               onClick={() => handleProvinceChange(p.value as Province)}
               className={`px-3.5 py-1.5 rounded-full text-sm font-medium border transition-all ${
                 province === p.value
