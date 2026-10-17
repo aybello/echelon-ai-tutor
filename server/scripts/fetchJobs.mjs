@@ -54,14 +54,38 @@ export async function fetchAndIngest(options = {}) {
   // destroyed (mysql2 does not cancel server-side SQL); the lease fences retries.
   const execute = conn.execute.bind(conn);
   let sqlQueue = Promise.resolve();
+  let sqlFailure;
   if (!options.createConnection) conn.execute = (query, params) => {
     // mysql2 serializes one socket already; check the deadline AFTER queue wait
     // rather than starting eight independent two-second waits behind it.
     const work = sqlQueue.then(async () => {
+      if (sqlFailure) throw sqlFailure;
       const remaining = invocationDeadline - Date.now();
       if (remaining <= 0) { conn.destroy(); throw new Error("Jobs database budget exhausted"); }
-      try { return await execute({ sql: query, timeout: Math.min(2000, remaining) }, params); }
-      catch (error) { if (error.code === "PROTOCOL_SEQUENCE_TIMEOUT") conn.destroy(); throw error; }
+      const timeout = Math.min(2000, remaining);
+      let timer;
+      try {
+        // mysql2's Execute timer does not cover its preceding Prepare command.
+        // Race the entire promise, not just the server's execution phase.
+        return await Promise.race([
+          new Promise((_, reject) => {
+            timer = setTimeout(() => {
+              sqlFailure = Object.assign(new Error("Jobs database execute budget exhausted"), { code: "PROTOCOL_SEQUENCE_TIMEOUT" });
+              conn.destroy();
+              reject(sqlFailure);
+            }, timeout);
+          }),
+          execute({ sql: query, timeout }, params),
+        ]);
+      } catch (error) {
+        if (error.code === "PROTOCOL_SEQUENCE_TIMEOUT" && !sqlFailure) {
+          sqlFailure = error;
+          conn.destroy();
+        }
+        throw error;
+      } finally {
+        clearTimeout(timer);
+      }
     });
     sqlQueue = work.then(() => undefined, () => undefined);
     return work;

@@ -78,6 +78,119 @@ describe("Jobs callback budget and durable fairness", () => {
     expect(execute.mock.calls.every(([query]) => typeof query.sql === "string" && query.timeout > 0 && query.timeout <= 2000)).toBe(true);
     expect(conn.end).toHaveBeenCalledOnce();
   });
+  it("bounds a delayed prepare callback, rejects queued SQL, and ignores late settlement", async () => {
+    vi.useFakeTimers();
+    let finish!: (value: unknown) => void;
+    const execute = vi.fn((_query: unknown) => new Promise(resolve => { finish = resolve; }));
+    const conn = { execute, end: vi.fn(), destroy: vi.fn() };
+    vi.spyOn(mysql, "createConnection").mockResolvedValue(conn as any);
+    const run = fetchAndIngest({ databaseUrl: "fixture", ingestRss: empty, ingestAssociations: empty, ingestMunicipal: empty });
+    const failed = expect(run).rejects.toThrow("Jobs database execute budget exhausted");
+    await vi.advanceTimersByTimeAsync(0);
+    const queued = expect(conn.execute("SELECT queued" as any)).rejects.toThrow("Jobs database execute budget exhausted");
+    await vi.advanceTimersByTimeAsync(2000);
+    await failed; await queued;
+    expect(execute).toHaveBeenCalledOnce();
+    expect(conn.destroy).toHaveBeenCalledOnce();
+    expect(conn.end).toHaveBeenCalledOnce();
+    finish([{ affectedRows: 1 }]);
+    await vi.advanceTimersByTimeAsync(3000);
+    expect(conn.destroy).toHaveBeenCalledOnce();
+    expect(vi.getTimerCount()).toBe(0);
+  });
+  it("clears successful SQL watchdogs and allows the application queue to drain", async () => {
+    vi.useFakeTimers();
+    const execute = vi.fn(async (query: { sql: string }) => query.sql.startsWith("SELECT") ? [[]] : [{ affectedRows: 1 }]);
+    const conn = { execute, end: vi.fn(), destroy: vi.fn() };
+    vi.spyOn(mysql, "createConnection").mockResolvedValue(conn as any);
+    await fetchAndIngest({ databaseUrl: "fixture", ingestRss: empty, ingestAssociations: empty, ingestMunicipal: empty });
+    await Promise.all([conn.execute("SELECT first" as any), conn.execute("SELECT second" as any)]);
+    expect(execute.mock.calls.slice(-2).map(([query]) => query.sql)).toEqual(["SELECT first", "SELECT second"]);
+    expect(conn.destroy).not.toHaveBeenCalled();
+    expect(vi.getTimerCount()).toBe(0);
+    await vi.advanceTimersByTimeAsync(3000);
+    expect(conn.destroy).not.toHaveBeenCalled();
+  });
+  it("limits the whole prepare/execute watchdog to the remaining invocation deadline", async () => {
+    vi.useFakeTimers();
+    const execute = vi.fn(() => new Promise(() => {}));
+    const conn = { execute, end: vi.fn(), destroy: vi.fn() };
+    vi.spyOn(mysql, "createConnection").mockImplementation(async () => { await new Promise(resolve => setTimeout(resolve, 23500)); return conn as any; });
+    const run = fetchAndIngest({ databaseUrl: "fixture", ingestRss: empty, ingestAssociations: empty, ingestMunicipal: empty });
+    const failed = expect(run).rejects.toThrow("Jobs database execute budget exhausted");
+    await vi.advanceTimersByTimeAsync(23999);
+    expect(conn.destroy).not.toHaveBeenCalled();
+    await vi.advanceTimersByTimeAsync(1);
+    await failed;
+    expect(conn.destroy).toHaveBeenCalledOnce();
+    expect(execute).toHaveBeenCalledWith(expect.objectContaining({ timeout: 500 }), expect.any(Array));
+    expect(vi.getTimerCount()).toBe(0);
+  });
+  it.runIf(process.env.JOBS_SQL_CLOSEOUT_DB === "1")("bounds real mysql2 Prepare waiting for a disposable metadata lock", async () => {
+    // No dotenv/app credentials, configurable host, or production fallback.
+    const config = { host: "127.0.0.1", port: 3306, user: "root", password: process.env.JOBS_SQL_CLOSEOUT_PASSWORD, database: "echelon_ci", connectTimeout: 1000 };
+    const connections: any[] = [];
+    const table = `sql_closeout_${process.pid}_${Date.now()}`;
+    let created = false;
+    let ddl: Promise<unknown> | undefined;
+    let raw: Promise<unknown> | undefined;
+    try {
+      for (let i = 0; i < 4; i++) {
+        const conn = await mysql.createConnection(config);
+        connections.push(conn);
+        const [[identity]]: any = await conn.query("SELECT @@datadir AS datadir, DATABASE() AS db");
+        expect(identity).toMatchObject({ datadir: "/home/ubuntu/jobs/job_H2KyvZao/mysql/", db: "echelon_ci" });
+      }
+      const [holder, alter, control, victim] = connections;
+      await holder.query(`CREATE TABLE ${table} (id INT)`); created = true;
+      await holder.query("START TRANSACTION");
+      await holder.query(`SELECT id FROM ${table}`);
+      // An exclusive MDL waiter makes subsequent uncached prepares wait too.
+      ddl = alter.query(`ALTER TABLE ${table} ADD COLUMN marker INT`).then(() => undefined, (error: unknown) => error);
+      const waitForMdl = async (conn: any) => {
+        for (let i = 0; i < 100; i++) {
+          const [rows]: any = await holder.query("SHOW PROCESSLIST");
+          if (rows.some((row: any) => row.Id === conn.connection.threadId && /metadata lock/i.test(row.State))) return;
+          await new Promise(resolve => setTimeout(resolve, 10));
+        }
+        throw new Error("Expected disposable metadata-lock waiter");
+      };
+      await waitForMdl(alter);
+      let rawSettled = false;
+      raw = control.execute({ sql: `SELECT id FROM ${table}`, timeout: 50 }).then((value: unknown) => { rawSettled = true; return value; }, (error: unknown) => { rawSettled = true; return error; });
+      const originalExecute = victim.execute.bind(victim);
+      // Redirect the FIRST Jobs SQL to our scratch table: never touch app tables.
+      vi.spyOn(victim, "execute").mockImplementation((query: any) => originalExecute({ sql: `SELECT id FROM ${table}`, timeout: query.timeout }));
+      const destroy = vi.spyOn(victim, "destroy");
+      vi.spyOn(mysql, "createConnection").mockResolvedValue(victim);
+      const started = Date.now();
+      const outcome = fetchAndIngest({ databaseUrl: config as any, ingestRss: empty, ingestAssociations: empty, ingestMunicipal: empty }).then(() => null, error => error);
+      await waitForMdl(victim);
+      expect(victim.connection._command.constructor.name).toBe("Prepare");
+      expect(control.connection._command.constructor.name).toBe("Prepare");
+      let observationTimer: ReturnType<typeof setTimeout> | undefined;
+      let error: any;
+      try {
+        error = await Promise.race([outcome, new Promise(resolve => {
+          observationTimer = setTimeout(() => resolve(new Error("Missing whole-execute watchdog")), 2700);
+        })]);
+      } finally { clearTimeout(observationTimer); }
+      expect(error?.message).toBe("Jobs database execute budget exhausted");
+      expect(Date.now() - started).toBeLessThan(2800);
+      expect(rawSettled).toBe(false); // driver's 50ms timeout did not cover Prepare, even after 2s
+      expect(destroy).toHaveBeenCalledOnce();
+      await holder.query("ROLLBACK");
+      await ddl; await raw;
+      expect((await holder.query(`SELECT id FROM ${table}`))[0]).toEqual([]);
+    } finally {
+      // Only our unique table may be changed or dropped. Release MDL first.
+      const holder = connections[0];
+      if (holder) await holder.query("ROLLBACK");
+      await ddl; await raw;
+      if (created) await holder.query(`DROP TABLE ${table}`);
+      for (const conn of connections) await conn.end().catch(() => conn.destroy());
+    }
+  }, 10000);
   it("destroys a timed-out mysql socket rather than leaving SQL in flight behind the callback", async () => {
     const execute = vi.fn().mockRejectedValue(Object.assign(new Error("fixture timeout"), { code: "PROTOCOL_SEQUENCE_TIMEOUT" }));
     const conn = { execute, end: vi.fn(), destroy: vi.fn() };
