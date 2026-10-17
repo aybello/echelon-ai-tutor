@@ -9,6 +9,7 @@ function nonEmptyString(value: unknown): value is string {
 
 /**
  * Accept canonical and legacy runtime steps at the display boundary only.
+ * Legacy string entries are already complete bodies; retain them verbatim.
  * Never coerce unknown values or invent solution text. Bodyless entries are
  * omitted; a real body without a label remains readable with no heading.
  * Canonical non-empty strings take precedence over their legacy aliases.
@@ -18,6 +19,10 @@ export function normalizeQuestionSteps(value: unknown): QuestionStep[] {
 
   const steps: QuestionStep[] = [];
   for (const entry of value) {
+    if (nonEmptyString(entry)) {
+      steps.push({ l: "", c: entry });
+      continue;
+    }
     if (entry === null || typeof entry !== "object" || Array.isArray(entry)) continue;
     const step = entry as Record<string, unknown>;
     const c = nonEmptyString(step.c) ? step.c : nonEmptyString(step.content) ? step.content : undefined;

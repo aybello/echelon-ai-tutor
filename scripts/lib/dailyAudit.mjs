@@ -200,7 +200,8 @@ export function validateQuestion(question) {
   if (!Array.isArray(question.options) || question.options.length !== 4
     || question.options.some(option => typeof option !== "string" || !option.trim())) return "invalid four-option structure";
   if (!Number.isInteger(question.correctIndex) || question.correctIndex < 0 || question.correctIndex >= question.options.length) return "invalid correctIndex";
-  if (question.steps != null && (!Array.isArray(question.steps) || question.steps.some(step => !step
+  // Match StepSolution's lossless string-body support; labels alone are not bodies.
+  if (question.steps != null && (!Array.isArray(question.steps) || question.steps.some(step => typeof step === "string" ? !step.trim() : !step
     || typeof step !== "object" || Array.isArray(step)
     || !((typeof step.c === "string" && step.c.trim()) || (typeof step.content === "string" && step.content.trim()))))) return "invalid worked steps";
   return null;

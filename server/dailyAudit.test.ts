@@ -106,6 +106,21 @@ describe("daily audit live API contracts", () => {
     expect(validateQuestion({ ...question(), steps: [{ l: "Answer without a body" }] })).toMatch(/steps/);
     expect(validateQuestion({ ...question(), steps: [null] })).toMatch(/steps/);
   });
+
+  it("accepts losslessly rendered legacy string bodies and mixed canonical steps", () => {
+    const steps = ["H = (70 psi − 30 psi) × 2.31 ft/psi", { l: "Result", c: "92.4 ft" }];
+    expect(validateQuestion({ ...question(), steps })).toBeNull();
+    expect(validateQuizReply(200, envelope({ ...quiz(), questions: [{ ...question(), steps }] }), { previewLimit: 15 }).status).toBe("pass");
+  });
+
+  it.each([
+    [""], [" \t\n"], [42], [false], [[]], [{}], [null],
+    [{ l: "Y = 0.50", c: "" }], [{ label: "Result", content: "  " }],
+    [{ c: 42 }], [{ c: false }], [{ c: {} }],
+    ["Valid body", { l: "Body missing" }],
+  ])("still rejects every blank, malformed or bodyless step: %j", (...steps) => {
+    expect(validateQuestion({ ...question(), steps })).toBe("invalid worked steps");
+  });
 });
 
 describe("daily audit tutor quota evidence", () => {

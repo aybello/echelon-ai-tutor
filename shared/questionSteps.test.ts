@@ -2,6 +2,23 @@ import { describe, expect, it } from "vitest";
 import { normalizeQuestionSteps } from "./questionSteps";
 
 describe("normalizeQuestionSteps", () => {
+  it("retains verified WPI string steps verbatim, in order, without inventing headings", () => {
+    const steps = Object.freeze([
+      "Formula: H = (P_d − P_s)C, where H is pump-added head in feet of water, P_d is discharge pressure in psi, P_s is suction pressure in psi, and C is the pressure-to-head conversion factor, 2.31 ft of water per psi.",
+      "Substitute: H = (70 psi − 30 psi) × 2.31 ft/psi = 40 psi × 2.31 ft/psi.",
+      "The pump adds 92.4 ft of head, which matches option C.",
+      "  Preserve spaces and\nline breaks.  ",
+    ]);
+    expect(normalizeQuestionSteps(steps)).toEqual(steps.map(c => ({ l: "", c })));
+  });
+
+  it("does not promote a label, even a formula label, into a missing solution body", () => {
+    expect(normalizeQuestionSteps([
+      "", " \t\n", { l: "Body missing" }, { l: "Y = 0.50", c: "" },
+      { label: "Result", content: "  " }, { c: 0 }, { c: false }, { c: {} },
+    ])).toEqual([]);
+  });
+
   it("retains complete canonical label and formula text without mutating input", () => {
     const step = Object.freeze({ l: "  Calculate — final  ", c: "  360 kg ÷ 2 = 180 kg.\nCheck both legs.  " });
     expect(normalizeQuestionSteps(Object.freeze([step]))).toEqual([step]);
@@ -41,7 +58,7 @@ describe("normalizeQuestionSteps", () => {
 
   it("omits malformed and bodyless entries without coercing or inventing content", () => {
     expect(normalizeQuestionSteps([
-      null, undefined, 3, true, "text", [], {}, { l: "Body missing" },
+      null, undefined, 3, true, "  ", [], {}, { l: "Body missing" },
       { label: "Empty", content: "   " }, { l: {}, c: {} }, { l: "Invalid", c: 180 },
       { l: "Valid", c: "360 ÷ 2 = 180" },
     ])).toEqual([{ l: "Valid", c: "360 ÷ 2 = 180" }]);
