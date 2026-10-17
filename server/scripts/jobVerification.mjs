@@ -44,9 +44,13 @@ function startPdfExtraction(task) {
   const remaining = Math.ceil(task.deadline - performance.now());
   if (remaining <= 0) { task.reject(pdfUnavailable()); return; }
   pdfChildActive = true;
-  const complete = (error, stdout) => {
-    pdfChildActive = false; // execFile callback runs after the child closes.
-    if (error || !stdout?.trim()) task.reject(pdfUnavailable());
+  let child, error = pdfUnavailable(), stdout, failed = false, completed = false;
+  const complete = () => {
+    if (completed) return;
+    completed = true;
+    pdfChildActive = false;
+    task.bytes = undefined;
+    if (failed || error || task.signal?.aborted || !stdout?.trim()) task.reject(pdfUnavailable());
     else task.resolve(stdout);
     while (!pdfChildActive && pdfQueue.length) startPdfExtraction(pdfQueue.shift());
   };
@@ -56,7 +60,7 @@ function startPdfExtraction(task) {
     // esbuild bundles this module into dist/index.js. The build copies only the
     // child helper to dist/scripts; source execution uses its sibling helper.
     const helper = fileURLToPath(new URL(import.meta.url.endsWith("/jobVerification.mjs") ? "./jobPdfText.mjs" : "./scripts/jobPdfText.mjs", import.meta.url));
-    const child = execFile(process.execPath, [
+    child = execFile(process.execPath, [
       "--max-old-space-size=96", "--max-semi-space-size=4",
       "--disallow-code-generation-from-strings", "--no-addons", "--permission",
       `--allow-fs-read=${helper}`, `--allow-fs-read=${pdfRoot}`,
@@ -64,11 +68,18 @@ function startPdfExtraction(task) {
     ], {
       timeout: remaining, signal: task.signal, killSignal: "SIGKILL", maxBuffer: PDF_OUTPUT_LIMIT,
       encoding: "utf8", env: { LANG: "C.UTF-8" },
-    }, complete);
+    }, (resultError, resultOutput) => { error = resultError; stdout = resultOutput; });
+    // Abort can invoke execFile's callback before stdio/process closure. Only
+    // close may settle a spawned task or admit the next child.
+    child.once("close", complete);
     child.stdin.on("error", () => {});
     child.stdin.end(task.bytes);
     task.bytes = undefined;
-  } catch { complete(pdfUnavailable()); }
+  } catch {
+    failed = true;
+    if (child) child.kill("SIGKILL");
+    else complete(); // No child exists to close; once-guarded synchronous cleanup.
+  }
 }
 
 /** Portable PDF.js parser. Failures/scanned PDFs remain unavailable, never proof of an open or missing vacancy. */
