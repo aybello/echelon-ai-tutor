@@ -14,6 +14,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
 import mysql from "mysql2/promise";
 import { activeScriptConnection } from "./lib/activeScriptConnection.mjs";
+import { AUTOMATED_BLOG_TAG, evaluateBlogAutomationHealth, readBlogHeartbeatSnapshot } from "./lib/blogAutomationHealth.mjs";
 import {
   isolatedTestEnv, ciDeterministicExcludes, runCommand, commandProblem, evaluateVitest, createAuditBudget,
   validateQuizReply, validateQuestion, classifyTutorReply, evaluateTutorSequence,
@@ -226,6 +227,32 @@ try {
     }
   });
 
+  await check("Weekly blog automation outcome", async () => {
+    let rows, latestArticle;
+    const blocked = [];
+    try {
+      rows = await query(`SELECT id, runKey, status, progress, weeklyTaskUid, workerTaskUid,
+        attempts, startedAt, updatedAt FROM blog_automation_runs WHERE id=? LIMIT 2`, ["weekly-echelon-blog"]);
+      // Only an exact comma-delimited automation tag on a published article counts.
+      // Manual posts, drafts and the scheduler's completed placeholder do not.
+      const articles = await query(`SELECT id, slug, published, tags, publishedAt FROM blog_posts
+        WHERE published=1 AND tags REGEXP ? AND publishedAt<=UTC_TIMESTAMP()
+        ORDER BY publishedAt DESC, id DESC LIMIT 1`, [`(^|,)[[:space:]]*${AUTOMATED_BLOG_TAG}[[:space:]]*(,|$)`]);
+      latestArticle = articles[0] ?? null;
+    } catch { blocked.push("Authoritative blog state/publication read unavailable"); }
+    const heartbeat = await readBlogHeartbeatSnapshot({ weeklyTaskUid: rows?.[0]?.weeklyTaskUid,
+      parentEnv: process.env, home: testHome, cwd: ROOT, outputDir, timeoutMs: budget.timeoutMs(35_000) });
+    heartbeat.blocked.push(...blocked);
+    const evaluated = evaluateBlogAutomationHealth({ rows, latestArticle, heartbeat });
+    const artifact = resolve(outputDir, "blog-automation-health.json");
+    // Deliberately omit persisted research, model responses, claim tokens and customer data.
+    await writeFile(artifact, JSON.stringify({ checkedAt: new Date().toISOString(), ...evaluated,
+      state: rows?.map(({ progress, ...row }) => ({ ...row, phase: (() => {
+        try { return (typeof progress === "string" ? JSON.parse(progress) : progress)?.phase ?? null; } catch { return null; }
+      })() })), latestArticle, heartbeat }, null, 2) + "\n", { mode: 0o600 });
+    return { ...evaluated, evidence: { artifact, findings: evaluated.findings } };
+  });
+
   if (!manifest) record("Published question bank structure", "blocked", "Registry import unavailable; cannot infer active banks or publication rules.");
   else for (const course of manifest.courses) {
     await check(`Published bank: ${course.courseKey}`, async () => {
@@ -407,7 +434,8 @@ const report = { schemaVersion: 2, runId, startedAt, finishedAt: new Date().toIS
     "Live bank/API checks establish structure and preview contracts, not question accuracy or regulatory correctness.",
     "DOM route checks verify expected content or gate state, not exact bank identity. Authenticated paid study journeys and deeper course/region identity tracing remain part of the scheduled deep review.",
     "Production analytics cannot prove unpaid entitlement or distinguish historical tester traffic. Tutor history snapshot predates the optional probe.",
-    "CI integration suites need a disposable database. Subprocesses receive test-only credentials and no production database or key material.",
+    "CI integration suites need a disposable database. Test subprocesses receive no production database or key material. Only read-only manus-heartbeat list/logs receive the two Forge credentials in a separate allowlisted environment.",
+    "Blog outcome checks use Monday 14:00 UTC plus 60 minutes grace, a bounded 200-job/20-run heartbeat snapshot, and published automation-tagged articles. Missing capabilities are blocked; first-run/grace coverage is not proof of publication. No automatic resume, generation or repair is performed by this baseline.",
   ] };
 await writeFile(resolve(outputDir, "daily-audit.json"), JSON.stringify(report, null, 2) + "\n", { mode: 0o600 });
 const md = ["# Echelon Daily Product Audit", "", `- Run: ${runId}`, `- Target: ${SITE}`,

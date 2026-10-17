@@ -26,6 +26,12 @@ A healthy HTTP response is not proof of a working page. A source-text check is n
 - Check the authoritative data and existing regression guards for missing revenue sources, broken lead capture, access failures and course consistency. Do not call counts of table rows a revenue reconciliation. Do not call OTP or checkout events unique captured leads.
 - Run deterministic tests with isolated test settings and no inherited production database, Stripe or SMTP credentials. Database-mutating integration tests belong in disposable test databases. If that environment is unavailable, record the gap rather than running against production or silently skipping it.
 
+### Weekly blog automation: outcome, not route availability
+
+The baseline now reads the bound `weekly-echelon-blog` database state, the latest **published** article with the exact `Automated Article` tag, and bounded read-only `manus-heartbeat list`/`logs` snapshots. It checks both saved task bindings, enabled/configuration state, the latest scheduled weekly failure/403/timeout, publication since Monday 14:00 UTC plus 60 minutes grace, and active runs stalled for over five minutes or older than thirty minutes. The completed initialization row with empty `runKey`/`progress` is not a successful run; manual posts and drafts are not automated outcomes. First-run timing is based on task creation and never reported as proven publication. Missing database/heartbeat capability is blocked, not passed. Only the read-only heartbeat subprocess receives the two Forge keys; test isolation is unchanged. Evidence stays outside the repository.
+
+Previous baseline coverage checked routes, content structure and tests but did **not** reconcile this scheduled workflow with enabled bound tasks, execution history and an actual automated publication. Those checks could stay green while generation never ran. A blog listing or a healthy callback route is not an end-to-end scheduling test. When this check fails, trace and repair the authorized scheduler/authentication/runtime cause, then verify the bound task state and a real reviewed automated publication; do not stop at a report or silently resume a paused task. The baseline itself makes no production writes, model requests or scheduling changes.
+
 ## Rotating deep review
 
 The baseline above runs every day. Add one deeper area based on the local weekday, plus any urgent real customer problem. Track the last completed area in the session log so blocked work is not forgotten.
