@@ -681,6 +681,12 @@ export const stripeRouter = router({
 
       const org = await resolveManagedOrganization(ctx, { orgId: input.orgId });
 
+      // Paid Flex reporting can admit a manager after the Annual term ends.
+      // Match orgRouter's Annual write policy before any billing side effect.
+      if (!org || !["active", "past_due"].includes(org.status) || !org.termEnd || org.termEnd <= new Date()) {
+        throw new TRPCError({ code: "FORBIDDEN", message: "The Annual contract term has ended or is inactive. Renew before changing Annual seats." });
+      }
+
       if (!org?.stripeSubscriptionId) {
         throw new TRPCError({ code: "BAD_REQUEST", message: "This organization does not have a Stripe subscription. Please contact support." });
       }
