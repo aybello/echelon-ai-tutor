@@ -111,7 +111,10 @@ export function loadDiagnosticDraft(
     || !verifiedLegacyScope.identity.includes("@")
     || verifiedLegacyScope.courseKey !== scope.courseKey) return null;
   const legacy = loadDiagnosticDraft(storage, verifiedLegacyScope, expectedQuestionIds);
-  return legacy ? { ...legacy, scope } : null;
+  if (!legacy) return null;
+  try {
+    return storage.getItem(legacyRemovedKey(scope, legacy.sessionId)) === null ? { ...legacy, scope } : null;
+  } catch { return null; }
 }
 
 /** Write the validated replacement before marking the old alias as consumed.
@@ -151,13 +154,17 @@ export function saveDiagnosticDraft(storage: StorageLike, draft: DiagnosticDraft
 export function clearDiagnosticDraft(storage: StorageLike, scope: DiagnosticDraftScope, sessionId?: string): boolean {
   try {
     const drafts = readScope(storage, scope);
-    if (sessionId !== undefined && !drafts.some(draft => draft.sessionId === sessionId)) return true;
+    // In-memory resume can complete even if its earlier upgrade write failed.
+    // Persist that completion without requiring a stored destination record.
+    if (sessionId !== undefined) storage.setItem(legacyRemovedKey(scope, sessionId), "1");
     // Mark only completed sessions, preserving every unrelated scope in v1.
     for (const draft of drafts) {
-      if (sessionId === undefined || draft.sessionId === sessionId) {
+      if (sessionId === undefined) {
         storage.setItem(legacyRemovedKey(scope, draft.sessionId), "1");
       }
     }
+    // A delayed completion must not replace another, newer draft with null.
+    if (sessionId !== undefined && drafts.some(draft => draft.sessionId !== sessionId)) return true;
     // A scoped null suppresses old v1 work and trusted-alias fallback too.
     storage.setItem(scopedKey(scope), "null");
     return true;

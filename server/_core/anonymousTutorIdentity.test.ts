@@ -57,7 +57,7 @@ describe("server-issued anonymous tutor identity", () => {
     const input = { examType: "oit", messages: [{ role: "user" as const, content: "Explain chlorine" }],
       anonymousId: "untrusted-client-identity" };
     await appRouter.createCaller(ctx).tutor.chat(input);
-    const [name, token, options] = vi.mocked(res.cookie).mock.calls[0];
+    const [name, token, options] = vi.mocked(res.cookie).mock.calls[0] as unknown as [string, string, import("express").CookieOptions];
     const { payload } = await jwtVerify(token, key);
     expect(name).toBe(COOKIE);
     expect(options).toMatchObject({ secure: true, httpOnly: true, sameSite: "lax", path: "/", maxAge: TTL * 1000 });

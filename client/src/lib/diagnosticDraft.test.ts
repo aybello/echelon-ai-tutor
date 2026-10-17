@@ -133,3 +133,38 @@ it("does not restore an older OAuth alias after completing a user-ID draft", () 
   expect(loadDiagnosticDraft(db, scope, ids, legacyScope)).toBeNull();
   expect(upgradeLegacyDiagnosticDraft(db, scope, ids, legacyScope)).toBeNull();
 });
+
+it("completes an in-memory legacy upgrade after its first storage write fails", () => {
+  const other = { ...original, scope: { ...scope, courseKey: "other" } };
+  const db = storage([original, other]);
+  db.setItem.mockImplementationOnce(() => { throw Error("quota"); });
+  const resumed = upgradeLegacyDiagnosticDraft(db, scope, ids, legacyScope)!;
+  expect(resumed).toEqual({ ...original, scope });
+  expect(clearDiagnosticDraft(db, scope, resumed.sessionId)).toBe(true);
+  expect(loadDiagnosticDraft(db, scope, ids, legacyScope)).toBeNull();
+  expect(upgradeLegacyDiagnosticDraft(db, scope, ids, legacyScope)).toBeNull();
+  expect(loadDiagnosticDraft(db, other.scope, ids)).toEqual(other);
+});
+
+it("marks an absent completed session without erasing a newer user draft", () => {
+  const db = storage();
+  db.setItem.mockImplementationOnce(() => { throw Error("quota"); });
+  const resumed = upgradeLegacyDiagnosticDraft(db, scope, ids, legacyScope)!;
+  const newer = { ...resumed, sessionId: "550e8400-e29b-41d4-a716-446655440001", updatedAt: 999 };
+  expect(saveDiagnosticDraft(db, newer)).toBe(true);
+  expect(clearDiagnosticDraft(db, scope, resumed.sessionId)).toBe(true);
+  expect(loadDiagnosticDraft(db, scope, ids, legacyScope)).toEqual(newer);
+  expect(clearDiagnosticDraft(db, scope, newer.sessionId)).toBe(true);
+  expect(loadDiagnosticDraft(db, scope, ids, legacyScope)).toBeNull();
+  expect(upgradeLegacyDiagnosticDraft(db, scope, ids, legacyScope)).toBeNull();
+});
+
+it("rejects a completed alias session even when a different current question set exists", () => {
+  const db = storage();
+  const newer = { ...original, scope, sessionId: "550e8400-e29b-41d4-a716-446655440002", questionIds: ids.map(id => id + 100), answers: {}, updatedAt: 999 };
+  saveDiagnosticDraft(db, newer);
+  clearDiagnosticDraft(db, scope, original.sessionId);
+  expect(loadDiagnosticDraft(db, scope, ids, legacyScope)).toBeNull();
+  expect(upgradeLegacyDiagnosticDraft(db, scope, ids, legacyScope)).toBeNull();
+  expect(loadDiagnosticDraft(db, scope, newer.questionIds)).toEqual(newer);
+});
