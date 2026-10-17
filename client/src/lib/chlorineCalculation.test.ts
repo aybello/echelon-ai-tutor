@@ -68,6 +68,6 @@ describe("educational chlorine calculation", () => {
     expect(formatChlorineValue(0.000001)).toBe("1.00e-6");
     expect(formatChlorineValue(25.125628)).toBe("25.13");
     expect(formatChlorineValue(25)).toBe("25");
-    expect(formatChlorineValue(Infinity)).toBe("—");
+    expect(formatChlorineValue(Infinity)).toBe("N/A");
   });
 });

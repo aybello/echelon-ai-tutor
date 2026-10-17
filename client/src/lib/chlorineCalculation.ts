@@ -9,7 +9,7 @@ const MINUTES_PER_DAY = 1440;
 
 /** Format finite educational results without multiplying large values to round. */
 export function formatChlorineValue(value: number, digits = 2): string {
-  if (!Number.isFinite(value)) return "—";
+  if (!Number.isFinite(value)) return "N/A";
   const magnitude = Math.abs(value);
   if (magnitude >= 1e12 || (magnitude > 0 && magnitude < 10 ** -digits)) {
     return value.toExponential(digits);
