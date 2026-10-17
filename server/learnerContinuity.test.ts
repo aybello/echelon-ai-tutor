@@ -119,7 +119,7 @@ describe("overall streak stays independent of course mastery", () => {
     const db: any = { select: (fields: any) => ({ from: (table: any) => ({ where: () => {
       if (getTableName(table) === "student_profiles") {
         expect(Object.keys(fields).sort()).toEqual(["currentStreak", "longestStreak", "totalSessions"]);
-        return { limit: async () => [{ currentStreak: 6, longestStreak: 17, totalSessions: 12 }] };
+        return { orderBy: () => ({ limit: async () => [{ currentStreak: 6, longestStreak: 17, totalSessions: 12 }] }) };
       }
       if (fields.topic) return { groupBy: async () => [{ topic: "Safety", correct: 0, total: 5 }] };
       return Promise.resolve([{ total: fields.correct ? 5 : 1, correct: 0 }]);
@@ -131,5 +131,50 @@ describe("overall streak stays independent of course mastery", () => {
     expect(profile).toMatchObject({ currentStreak: 6, longestStreak: 17, totalAttempts: 5, weakTopics: ["Safety"] });
     expect(await dashboardRouter.createCaller(ctx).overview({ courseKey: "oit" })).toMatchObject({ currentStreak: 6, longestStreak: 17, totalAttempts: 5, totalSessions: 1 });
     expect(await dashboardRouter.createCaller(ctx).overview()).toMatchObject({ currentStreak: 6, longestStreak: 17, totalSessions: 12 });
+  });
+});
+
+describe("verified overall activity identity fallback", () => {
+  const legacy = { id: 1, userId: null, email: "learner@example.test", currentStreak: 6, longestStreak: 17, totalSessions: 12 };
+  const owned = { ...legacy, id: 2, userId: 7, currentStreak: 2, longestStreak: 3, totalSessions: 4 };
+  const other = { ...legacy, id: 3, userId: 99, currentStreak: 99, longestStreak: 99, totalSessions: 99 };
+  function fixtureDb(rows: Array<typeof legacy | typeof owned>) {
+    return { select: (fields: any) => ({ from: (table: any) => ({ where: (filter: any) => ({ orderBy: (...order: any[]) => ({ limit: async () => {
+      const cte = `WITH student_profiles(id, userId, studentEmail, currentStreak, longestStreak, totalSessions) AS (${rows.map(row =>
+        `SELECT ${row.id}, ${row.userId ?? "NULL"}, '${row.email}', ${row.currentStreak}, ${row.longestStreak}, ${row.totalSessions}`).join(" UNION ALL ")}) `;
+      const compiled = dialect.sqlToQuery(sql`SELECT ${fields.currentStreak} AS currentStreak, ${fields.longestStreak} AS longestStreak, ${fields.totalSessions} AS totalSessions FROM ${table} WHERE ${filter} ORDER BY ${sql.join(order, sql`, `)} LIMIT 1`);
+      return JSON.parse(execFileSync("python3", ["-c", "import sqlite3,json,sys; p=json.load(sys.stdin); c=sqlite3.connect(':memory:'); c.execute('PRAGMA query_only=ON'); c.row_factory=sqlite3.Row; print(json.dumps([dict(r) for r in c.execute(p['sql'],p['params'])]))"], { input: JSON.stringify({ sql: cte + compiled.sql, params: compiled.params }), encoding: "utf8" }));
+    } }) }) }) }) } as any;
+  }
+  it("preserves legacy OTP streaks 6/17 after OAuth sign-in with verified normalized email", async () => {
+    expect(await readOverallLearnerActivity(fixtureDb([other, legacy]), { userId: 7, email: " Learner@Example.Test " }))
+      .toEqual({ currentStreak: 6, longestStreak: 17, totalSessions: 12 });
+  });
+  it("deterministically prefers the exact ID row over a larger legacy email row", async () => {
+    for (const rows of [[legacy, other, owned], [owned, other, legacy]]) {
+      expect(await readOverallLearnerActivity(fixtureDb(rows), { userId: 7, email: legacy.email }))
+        .toEqual({ currentStreak: 2, longestStreak: 3, totalSessions: 4 });
+      expect(await readOverallLearnerActivity(fixtureDb(rows), { userId: 7, email: "different@example.test" }))
+        .toEqual({ currentStreak: 2, longestStreak: 3, totalSessions: 4 });
+    }
+  });
+  it.each([
+    { userId: 7, email: legacy.email },
+    { userId: null, email: legacy.email },
+    { userId: 7, email: null },
+  ])("never reads another user's email-matching row: %j", async identity => {
+    expect(await readOverallLearnerActivity(fixtureDb([other]), identity))
+      .toEqual({ currentStreak: 0, longestStreak: 0, totalSessions: 0 });
+  });
+  it("does not invent an email fallback for an email-less OAuth user", async () => {
+    expect(await readOverallLearnerActivity(fixtureDb([legacy]), { userId: 7, email: null }))
+      .toEqual({ currentStreak: 0, longestStreak: 0, totalSessions: 0 });
+  });
+  it("allows only the unowned legacy row for verified OTP", async () => {
+    expect(await readOverallLearnerActivity(fixtureDb([other, legacy]), { userId: null, email: legacy.email }))
+      .toEqual({ currentStreak: 6, longestStreak: 17, totalSessions: 12 });
+  });
+  it("rejects absent or blank verified identity", async () => {
+    await expect(readOverallLearnerActivity(fixtureDb([legacy]), { userId: null, email: " " })).rejects.toThrow("verified learner identity");
   });
 });

@@ -23,28 +23,6 @@ export type PendingPracticeSave = {
 
 type StorageLike = Pick<Storage, "getItem" | "setItem">;
 
-function normalizeIdentity(value: string | null | undefined): string | null {
-  const normalized = value?.trim().toLowerCase();
-  return normalized && normalized.length <= 320 ? normalized : null;
-}
-
-/** Browser-owned storage is not an access authority; it scopes local recovery only. */
-export function resolvePracticeSaveScope(storage: Pick<Storage, "getItem">, courseKey: string): PracticeSaveScope | null {
-  try {
-    const runtimeUser = storage.getItem("manus-runtime-user-info");
-    const runtimeEmail = runtimeUser ? (JSON.parse(runtimeUser) as { email?: unknown }).email : undefined;
-    const identity = normalizeIdentity(
-      typeof runtimeEmail === "string"
-        ? runtimeEmail
-        : storage.getItem("echelon_subscription_email") ?? storage.getItem("echelon_trial_email"),
-    );
-    const normalizedCourse = courseKey.trim();
-    return identity && normalizedCourse ? { identity, courseKey: normalizedCourse } : null;
-  } catch {
-    return null;
-  }
-}
-
 function isScope(value: unknown): value is PracticeSaveScope {
   if (!value || typeof value !== "object") return false;
   const scope = value as Partial<PracticeSaveScope>;

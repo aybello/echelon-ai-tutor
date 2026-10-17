@@ -1,4 +1,4 @@
-import { and, eq, sql } from "drizzle-orm";
+import { and, eq, isNull, or, sql } from "drizzle-orm";
 import { questionAttempts, studentProfiles } from "../drizzle/schema";
 import { attemptCourseFilter, attemptIdentityFilter } from "./courseActivityScope";
 import type { getDb } from "./db";
@@ -35,17 +35,20 @@ export async function readCourseLearnerProfile(
 }
 
 /** Overall activity is still maintained by the existing practice updater.
- * Read only its activity fields; never relabel mixed mastery as course memory. */
+ * Read only its activity fields; never relabel mixed mastery as course memory.
+ * Callers must supply server-verified identity; email fallback is legacy OTP-only. */
 export async function readOverallLearnerActivity(
   db: NonNullable<Awaited<ReturnType<typeof getDb>>>,
   identity: { userId: number | null; email: string | null },
 ) {
-  if (!identity.userId && !identity.email) throw new Error("A verified learner identity is required");
+  const email = identity.email?.trim().toLowerCase();
+  if (!identity.userId && !email) throw new Error("A verified learner identity is required");
+  const exactUser = identity.userId ? eq(studentProfiles.userId, identity.userId) : undefined;
+  const legacyEmail = email ? and(eq(studentProfiles.studentEmail, email), isNull(studentProfiles.userId)) : undefined;
   const [profile] = await db.select({ currentStreak: studentProfiles.currentStreak,
     longestStreak: studentProfiles.longestStreak, totalSessions: studentProfiles.totalSessions,
-  }).from(studentProfiles).where(identity.userId
-    ? eq(studentProfiles.userId, identity.userId)
-    : eq(studentProfiles.studentEmail, identity.email!.trim().toLowerCase())).limit(1);
+  }).from(studentProfiles).where(or(exactUser, legacyEmail))
+    .orderBy(sql`CASE WHEN ${exactUser ?? sql`FALSE`} THEN 0 ELSE 1 END`, studentProfiles.id).limit(1);
   return { currentStreak: Number(profile?.currentStreak ?? 0),
     longestStreak: Number(profile?.longestStreak ?? 0), totalSessions: Number(profile?.totalSessions ?? 0) };
 }

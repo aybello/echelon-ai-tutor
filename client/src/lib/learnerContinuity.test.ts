@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { clearDiagnosticDraft, createDiagnosticDraftScope, loadDiagnosticDraft, saveDiagnosticDraft, type DiagnosticDraft } from "./diagnosticDraft";
+import { clearDiagnosticDraft, createDiagnosticDraftScope, resolveDiagnosticDraftIdentity, loadDiagnosticDraft, saveDiagnosticDraft, type DiagnosticDraft } from "./diagnosticDraft";
 import { enqueuePracticeSave, listPendingPracticeSaves, replayPendingPracticeSaves, type PendingPracticeSave } from "./practiceSaveOutbox";
 const storage = () => { const data = new Map<string, string>(); return { getItem: (key: string) => data.get(key) ?? null, setItem: (key: string, value: string) => { data.set(key, value); } }; };
 const scope = { identity: "learner@example.test", courseKey: "oit" };
@@ -7,6 +7,25 @@ const ids = Array.from({ length: 15 }, (_, index) => 1001 + index);
 const draft = (): DiagnosticDraft => ({ version: 1, scope, sessionId: "550e8400-e29b-41d4-a716-446655440000", questionIds: ids, answers: Object.fromEntries(ids.slice(0, 14).map(id => [id, 2])), questionIndex: 14, updatedAt: 123 });
 const operation = (): PendingPracticeSave => ({ version: 1, operationId: "op-original", scope, questionId: 1001, attemptToken: "original-issued-receipt", selectedIndex: 2, bankKey: "oit", quizMode: "standard", sessionId: "original-session", createdAt: 123 });
 describe("diagnostic browser continuity", () => {
+  it.each([
+    { userId: 7, email: undefined, expected: "user:7", label: "email-less OAuth" },
+    { userId: 7, email: "Other@Example.Test", expected: "user:7", label: "OAuth takes precedence over OTP" },
+    { userId: undefined, email: " Learner@Example.Test ", expected: "learner@example.test", label: "normalized OTP" },
+    { userId: undefined, email: undefined, expected: null, label: "anonymous" },
+  ])("scopes $label from verified identity", ({ userId, email, expected }) => {
+    const identity = resolveDiagnosticDraftIdentity(userId, email);
+    expect(identity).toBe(expected);
+    expect(createDiagnosticDraftScope(identity, "oit")).toEqual(expected ? { identity: expected, courseKey: "oit" } : null);
+  });
+  it("keeps the same OAuth draft across email changes and excludes another OAuth user", () => {
+    const db = storage();
+    const originalScope = createDiagnosticDraftScope(resolveDiagnosticDraftIdentity(7, undefined), "oit")!;
+    const original = { ...draft(), scope: originalScope };
+    saveDiagnosticDraft(db, original);
+    expect(loadDiagnosticDraft(db, createDiagnosticDraftScope(resolveDiagnosticDraftIdentity(7, "new@example.test"), "oit")!, ids)).toEqual(original);
+    expect(loadDiagnosticDraft(db, createDiagnosticDraftScope(resolveDiagnosticDraftIdentity(8, "new@example.test"), "oit")!, ids)).toBeNull();
+  });
+
   it("resumes question 15 with all 14 answers and the original submission ID after refresh", () => { const db = storage(); const original = draft(); expect(saveDiagnosticDraft(db, original)).toBe(true); expect(loadDiagnosticDraft(db, scope, ids)).toEqual(original); });
   it("does not transfer answers between identities or courses", () => { const db = storage(); saveDiagnosticDraft(db, draft()); expect(loadDiagnosticDraft(db, { ...scope, identity: "other@example.test" }, ids)).toBeNull(); expect(loadDiagnosticDraft(db, { ...scope, courseKey: "class1-water" }, ids)).toBeNull(); });
   it("refuses a changed or reordered question set instead of guessing", () => { const db = storage(); saveDiagnosticDraft(db, draft()); expect(loadDiagnosticDraft(db, scope, [...ids].reverse())).toBeNull(); expect(loadDiagnosticDraft(db, scope, [...ids.slice(0, 14), 9999])).toBeNull(); });

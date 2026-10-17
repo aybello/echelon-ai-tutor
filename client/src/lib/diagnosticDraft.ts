@@ -18,6 +18,11 @@ export type DiagnosticDraft = {
 
 type StorageLike = Pick<Storage, "getItem" | "setItem">;
 
+/** Inputs must come from authenticated OAuth / OTP state, never browser storage. */
+export function resolveDiagnosticDraftIdentity(oauthUserId: number | null | undefined, verifiedOtpEmail: string | null | undefined): string | null {
+  return oauthUserId != null ? `user:${oauthUserId}` : verifiedOtpEmail?.trim().toLowerCase() || null;
+}
+
 export function createDiagnosticDraftScope(identity: string | null | undefined, courseKey: string): DiagnosticDraftScope | null {
   const normalizedIdentity = identity?.trim().toLowerCase();
   const normalizedCourse = courseKey.trim();

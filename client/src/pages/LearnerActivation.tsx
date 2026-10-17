@@ -21,6 +21,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import {
   clearDiagnosticDraft,
   createDiagnosticDraftScope,
+  resolveDiagnosticDraftIdentity,
   loadDiagnosticDraft,
   saveDiagnosticDraft,
 } from "@/lib/diagnosticDraft";
@@ -37,7 +38,7 @@ export default function LearnerActivation() {
   const [, params] = useRoute("/activate/:courseKey");
   const auth = trpc.dashboardAuth.me.useQuery(undefined, { retry: false });
   const oauth = useAuth();
-  return <ActivationFlow key={`${params?.courseKey}:${oauth.user?.id ?? auth.data?.email ?? "anonymous"}`} auth={auth} oauth={oauth} />;
+  return <ActivationFlow key={`${params?.courseKey}:${resolveDiagnosticDraftIdentity(oauth.user?.id, auth.data?.email) ?? "anonymous"}`} auth={auth} oauth={oauth} />;
 }
 
 function ActivationFlow({ auth, oauth }: {
@@ -112,9 +113,9 @@ function ActivationFlow({ auth, oauth }: {
   }, [status.data]);
 
   const diagnosticDraftScope = useMemo(() => createDiagnosticDraftScope(
-    oauth.user?.email ?? auth.data?.email,
+    resolveDiagnosticDraftIdentity(oauth.user?.id, auth.data?.email),
     courseKey,
-  ), [auth.data?.email, courseKey, oauth.user?.email]);
+  ), [auth.data?.email, courseKey, oauth.user?.id]);
   const diagnosticQuestionIds = useMemo(() => questions.data?.questions.map(question => question.id) ?? [], [questions.data?.questions]);
   const diagnosticDraftKey = diagnosticDraftScope && diagnosticQuestionIds.length === 15
     ? `${diagnosticDraftScope.identity}:${diagnosticDraftScope.courseKey}:${diagnosticQuestionIds.join(",")}`
