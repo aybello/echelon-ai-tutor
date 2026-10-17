@@ -1,7 +1,8 @@
 import { and, eq, isNull, or, sql } from "drizzle-orm";
-import { questionAttempts, studentProfiles, users } from "../drizzle/schema";
+import { questionAttempts, studentProfiles } from "../drizzle/schema";
 import { attemptCourseFilter, attemptIdentityFilter } from "./courseActivityScope";
 import type { getDb } from "./db";
+import { resolveProfileOwner } from "./learnerProfileOwner";
 
 export function buildCourseLearnerProfile(rows: Array<{ topic: string; correct: number; total: number }>, totalSessions = 0) {
   const topicAccuracy: Record<string, { correct: number; total: number }> = {};
@@ -50,21 +51,12 @@ export async function readCourseLearnerProfile(
 
 /** Overall activity is still maintained by the existing practice updater.
  * Read only its activity fields; never relabel mixed mastery as course memory.
- * Callers must supply server-verified identity; email fallback is legacy OTP-only. */
+ * Callers must supply server-verified identity; email fallback is restricted to unowned legacy profiles. */
 export async function readOverallLearnerActivity(
   db: NonNullable<Awaited<ReturnType<typeof getDb>>>,
   identity: { userId: number | null; email: string | null },
 ) {
-  const email = identity.email?.trim().toLowerCase();
-  if (!identity.userId && !email) throw new Error("A verified learner identity is required");
-  // Older OTP writers resolved users by email and left studentEmail NULL.
-  // Never remap an authenticated OAuth identity via a different OTP email.
-  let userId = identity.userId;
-  if (!userId && email) {
-    const [mappedUser] = await db.select({ id: users.id }).from(users)
-      .where(eq(users.email, email)).orderBy(users.id).limit(1);
-    userId = mappedUser?.id ?? null;
-  }
+  const { userId, email } = await resolveProfileOwner(db, identity);
   const exactUser = userId ? eq(studentProfiles.userId, userId) : undefined;
   const legacyEmail = email ? and(eq(studentProfiles.studentEmail, email), isNull(studentProfiles.userId)) : undefined;
   const [profile] = await db.select({ currentStreak: studentProfiles.currentStreak,

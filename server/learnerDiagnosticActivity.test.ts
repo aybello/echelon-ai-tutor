@@ -28,19 +28,21 @@ print(json.dumps([dict(r) for r in c.execute(p['sql'], p['params'])]))`], {
   }));
 }
 function activityTx(initial: any = null) {
-  let profile = initial;
+  let profile = initial ? { id: 1, ...initial } : null;
   const writes: string[][] = [];
-  const tx: any = { insert: () => ({ values: (values: any) => ({ onDuplicateKeyUpdate: async ({ set }: any) => {
-    writes.push(Object.keys(set));
-    if (!profile) profile = { ...values, totalAttempts: 0 };
-    else {
-      const old = profile;
-      const keys = ["lastActiveDate", "currentStreak", "longestStreak", "totalSessions"];
-      const cte = `WITH student_profiles(${keys.map(k => '`' + k + '`').join(',')}) AS (VALUES (?,?,?,?)) `;
-      const expressions = Object.entries(set).map(([key, value]) => sql`${typeof value === "string" ? sql`${value}` : value as ReturnType<typeof sql>} AS ${sql.identifier(key)}`);
-      profile = { ...old, ...execute(sql`SELECT ${sql.join(expressions, sql`, `)} FROM student_profiles`, cte, keys.map(k => old[k]))[0] };
-    }
-  } }) }) };
+  const tx: any = {
+    select: () => ({ from: (table: any) => ({ where: () => {
+      const rows = () => getTableName(table) === "users" ? [] : profile ? [profile] : [];
+      const limit = () => Object.assign(Promise.resolve(rows()), { for: async () => rows() });
+      return { limit, orderBy: () => ({ limit }) };
+    } }) }),
+    insert: () => ({ values: (values: any) => ({ onDuplicateKeyUpdate: async () => {
+      profile ??= { id: 1, totalAttempts: 0, currentStreak: 0, longestStreak: 0, totalSessions: 0, ...values };
+    } }) }),
+    update: () => ({ set: (values: any) => ({ where: async () => {
+      writes.push(Object.keys(values)); profile = { ...profile, ...values };
+    } }) }),
+  };
   return { tx, writes, profile: () => profile };
 }
 afterEach(() => vi.useRealTimers());
@@ -59,14 +61,14 @@ describe("diagnostic activity only", () => {
     } }) });
     const db: any = { select, transaction: async (fn: any) => {
       transactions++; inTransaction = true;
-      try { return await fn({ select, insert: (table: any) => ({ values: (values: any) => {
+      try { return await fn({ select: activity.tx.select, insert: (table: any) => ({ values: (values: any) => {
         expect(inTransaction).toBe(true);
         const name = getTableName(table);
         if (name === "student_profiles") return activity.tx.insert(table).values(values);
         if (name === "diagnostic_sessions") { expect(diagnostic).toBeNull(); diagnostic = values; }
         else attempts = values;
         return Promise.resolve();
-      } }), update: () => ({ set: () => ({ where: async () => {} }) }) }); }
+      } }), update: (table: any) => getTableName(table) === "student_profiles" ? activity.tx.update() : ({ set: () => ({ where: async () => {} }) }) }); }
       finally { inTransaction = false; }
     } };
     vi.mocked(getDb).mockResolvedValue(db);
@@ -78,7 +80,7 @@ describe("diagnostic activity only", () => {
     await caller.submitDiagnostic(input);
     expect(transactions).toBe(1); expect(attempts).toHaveLength(15);
     expect(activity.profile().totalSessions).toBe(1);
-    expect(activity.writes).toEqual([["longestStreak", "currentStreak", "totalSessions", "lastActiveDate"]]);
+    expect(activity.writes).toEqual([["currentStreak", "longestStreak", "totalSessions", "lastActiveDate"]]);
   });
   it.each([
     ["2026-10-17", 4, 4], ["2026-10-16", 4, 5], ["2026-10-14", 4, 1],

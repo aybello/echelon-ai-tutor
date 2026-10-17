@@ -1,7 +1,8 @@
-import { eq, sql } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { createHash } from "node:crypto";
-import { questionAttempts, studentProfiles, users, type InsertQuestionAttempt } from "../drizzle/schema";
+import { questionAttempts, studentProfiles, type InsertQuestionAttempt } from "../drizzle/schema";
 import type { getDb } from "./db";
+import { materializeLearnerProfile } from "./learnerProfileOwner";
 
 type Database = NonNullable<Awaited<ReturnType<typeof getDb>>>;
 type Transaction = Parameters<Parameters<Database["transaction"]>[0]>[0];
@@ -45,13 +46,7 @@ export async function savePracticeAttempt(db: Database, attempt: InsertQuestionA
       // A plain unique insert is intentional: concurrent duplicates wait for the
       // winner, then roll back their entire transaction before reading its ack.
       await tx.insert(questionAttempts).values(attempt);
-      let profileUserId = attempt.userId ?? null;
-      const email = attempt.studentEmail ?? null;
-      if (!profileUserId && email) {
-        const [user] = await tx.select({ id: users.id }).from(users).where(eq(users.email, email)).limit(1);
-        profileUserId = user?.id ?? null;
-      }
-      await updateStudentProfile(tx, profileUserId, profileUserId ? null : email,
+      await updateStudentProfile(tx, attempt.userId ?? null, attempt.studentEmail ?? null,
         attempt.examType, attempt.topic, attempt.correct === "yes");
       return { success: true, correct: attempt.correct === "yes" };
     });
@@ -68,15 +63,7 @@ export async function savePracticeAttempt(db: Database, attempt: InsertQuestionA
 
 async function updateStudentProfile(tx: Transaction, userId: number | null, studentEmail: string | null,
   examType: string, topic: string, correct: boolean) {
-  if (!userId && !studentEmail) throw new Error("Practice persistence requires an identified learner");
-  const scope = userId ? eq(studentProfiles.userId, userId) : eq(studentProfiles.studentEmail, studentEmail!);
-  // Materialize the existing unique identity row before locking. This covers
-  // simultaneous first attempts as well as updates to an established profile.
-  await tx.insert(studentProfiles).values({ userId, studentEmail, examType,
-    topicAccuracy: "{}", weakTopics: "[]", strongTopics: "[]",
-  }).onDuplicateKeyUpdate({ set: { id: sql`${studentProfiles.id}` } });
-  const [profile] = await tx.select().from(studentProfiles).where(scope).limit(1).for("update");
-  if (!profile) throw new Error("Practice profile unavailable");
+  const profile = await materializeLearnerProfile(tx, { userId, email: studentEmail }, examType);
   const topicAccuracy: Record<string, { correct: number; total: number }> = JSON.parse(profile.topicAccuracy || "{}");
   topicAccuracy[topic] ??= { correct: 0, total: 0 };
   topicAccuracy[topic].total++;
