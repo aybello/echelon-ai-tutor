@@ -29,7 +29,21 @@ export async function readCourseLearnerProfile(
   const rows = await db.select({ topic: questionAttempts.topic, total: sql<number>`COUNT(*)`,
     correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
   }).from(questionAttempts).where(scope).groupBy(questionAttempts.topic);
-  const [sessions] = await db.select({ total: sql<number>`COUNT(DISTINCT ${questionAttempts.sessionId})` })
+  // Match recentSessions: explicit groups include exam/mode; legacy-only rows
+  // form consecutive same-exam runs with gaps strictly below 30 minutes.
+  // Window the scoped legacy ledger in SQL, not an unbounded JS history load.
+  const [sessions] = await db.select({ total: sql<number>`
+    COALESCE(MAX((SELECT COUNT(*) FROM (SELECT ${questionAttempts.sessionId}
+      FROM ${questionAttempts} WHERE ${scope} AND ${questionAttempts.sessionId} IS NOT NULL
+      GROUP BY ${questionAttempts.sessionId}, ${questionAttempts.examType}, ${questionAttempts.quizMode}
+    ) AS explicit_activity)
+    + (SELECT COUNT(*) FROM (
+      SELECT ${questionAttempts.examType} AS examType, ${questionAttempts.createdAt} AS createdAt,
+        LAG(${questionAttempts.examType}) OVER (ORDER BY ${questionAttempts.createdAt}, ${questionAttempts.id}) AS previousExam,
+        LAG(${questionAttempts.createdAt}) OVER (ORDER BY ${questionAttempts.createdAt}, ${questionAttempts.id}) AS previousAt
+      FROM ${questionAttempts} WHERE ${scope} AND ${questionAttempts.sessionId} IS NULL
+    ) AS legacy_activity WHERE previousAt IS NULL OR examType <> previousExam
+      OR TIMESTAMPDIFF(MICROSECOND, previousAt, createdAt) >= 1800000000)), 0)` })
     .from(questionAttempts).where(scope);
   return buildCourseLearnerProfile(rows, sessions?.total ?? 0);
 }

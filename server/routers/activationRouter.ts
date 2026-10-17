@@ -22,6 +22,7 @@ import { publicProcedure, router } from "../_core/trpc";
 import { trackEvent } from "../analytics";
 import { getDb } from "../db";
 import { learnerVisibleQuestionFilter } from "../questionGovernance";
+import { recordDiagnosticActivity } from "../learnerActivity";
 
 type Identity = Awaited<ReturnType<typeof resolveLearningIdentity>>;
 
@@ -316,6 +317,7 @@ export const activationRouter = router({
           topicBreakdown: JSON.stringify(baseline.topicBreakdown),
           completedAt,
         });
+        await recordDiagnosticActivity(tx, identity, course.courseKey, completedAt);
         const [onboarding] = await tx.select({ id: learnerOnboarding.id }).from(learnerOnboarding)
           .where(identityCourseWhere(identity, course.courseKey)).limit(1);
         if (onboarding) {
