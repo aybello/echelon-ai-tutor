@@ -1,4 +1,4 @@
-# Loading follow-up — 17 October 2026
+# Loading follow-up (17 October 2026)
 
 The earlier mobile `/chem-calc` and `/teams` 20-second DOMContentLoaded timeouts were not reproduced in this focused run. Fresh anonymous Chromium contexts at 390 × 844 recovered to usable content without interaction. A short-lived spinner, including the earlier quiz snapshot at 6.5 seconds, is not by itself evidence of an application defect.
 

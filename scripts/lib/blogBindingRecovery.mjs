@@ -7,6 +7,8 @@ export const CONTRACT = Object.freeze({
   version: "blog-binding-recovery-20261017-v1",
   id: "weekly-echelon-blog", old: "gNrrRXxb5V8mQEUpHZGXSb",
   weekly: "RCdSVHj37rLDyqV3cYkjaP", owner: "310519663446228701",
+  oldName: "echelon-blog-continuation",
+  weeklyCron: "0 0 14 * * 1", weeklyPath: "/api/scheduled/generate-blog",
   name: "echelon-blog-continuation-recovered-20261017",
   cron: "0 * * * * *", path: "/api/scheduled/continue-blog", method: "POST",
 });
@@ -21,6 +23,15 @@ export function field(row, camel, snake) {
   requireThat(!(camel in row && snake in row) || row[camel] === row[snake], "Conflicting Heartbeat field aliases");
   return row[camel] ?? row[snake];
 }
+function verifyEmptyPayload(job) {
+  const payload = field(job, "callbackPayload", "callback_payload");
+  if (payload === "") return;
+  let parsed;
+  try { parsed = typeof payload === "string" ? JSON.parse(payload) : payload; } catch { /* rejected below */ }
+  requireThat(parsed && typeof parsed === "object" && !Array.isArray(parsed)
+    && Object.getPrototypeOf(parsed) === Object.prototype && Reflect.ownKeys(parsed).length === 0,
+  "Heartbeat payload must be empty or an empty JSON object");
+}
 export function verifyJobs(snapshot, newUid) {
   validNewUid(newUid);
   requireThat(snapshot.actorUserId === CONTRACT.owner && snapshot.total === snapshot.jobs.length, "Incomplete or wrong-owner Heartbeat list");
@@ -31,16 +42,28 @@ export function verifyJobs(snapshot, newUid) {
     ids.add(uid);
     requireThat(field(job, "userId", "user_id") === CONTRACT.owner, "Heartbeat list includes an unverified owner");
     requireThat(typeof field(job, "isEnable", "is_enable") === "boolean", "Unknown Heartbeat enable state");
+    if (field(job, "isEnable", "is_enable") === true) {
+      const callbackPath = field(job, "callbackPath", "callback_path");
+      requireThat(typeof callbackPath === "string" && callbackPath.startsWith("/api/scheduled/"),
+        "Enabled Heartbeat callback path is missing or invalid");
+    }
   }
   const find = uid => snapshot.jobs.find(job => field(job, "taskUid", "task_uid") === uid);
   const old = find(CONTRACT.old), next = find(newUid), weekly = find(CONTRACT.weekly);
   requireThat(old && next && weekly, "Missing original, replacement or weekly Heartbeat");
   requireThat(field(old, "isEnable", "is_enable") === false, "Original worker must remain paused");
-  requireThat(field(old, "callbackPath", "callback_path") === CONTRACT.path, "Original worker path differs");
+  requireThat(old.name === CONTRACT.oldName && field(old, "cronExpression", "cron_expression") === CONTRACT.cron
+    && field(old, "callbackPath", "callback_path") === CONTRACT.path
+    && field(old, "callbackMethod", "callback_method") === CONTRACT.method, "Original worker configuration differs");
+  requireThat(weekly.name === CONTRACT.id && field(weekly, "isEnable", "is_enable") === true
+    && field(weekly, "cronExpression", "cron_expression") === CONTRACT.weeklyCron
+    && field(weekly, "callbackPath", "callback_path") === CONTRACT.weeklyPath
+    && field(weekly, "callbackMethod", "callback_method") === CONTRACT.method, "Weekly Heartbeat configuration differs");
   requireThat(next.name === CONTRACT.name && field(next, "isEnable", "is_enable") === true
     && field(next, "cronExpression", "cron_expression") === CONTRACT.cron
     && field(next, "callbackPath", "callback_path") === CONTRACT.path
     && field(next, "callbackMethod", "callback_method") === CONTRACT.method, "Replacement worker configuration differs");
+  for (const job of [old, next, weekly]) verifyEmptyPayload(job);
   requireThat(snapshot.jobs.filter(job => job.name === CONTRACT.name).length === 1, "Replacement name is not unique");
   requireThat(snapshot.jobs.filter(job => field(job, "callbackPath", "callback_path") === CONTRACT.path
     && field(job, "isEnable", "is_enable") === true).length === 1, "Another enabled continuation worker exists");

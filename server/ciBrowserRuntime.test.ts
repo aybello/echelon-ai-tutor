@@ -20,6 +20,17 @@ describe("CI browser runtime prerequisites", () => {
     expect(phase).not.toContain("continue-on-error");
   });
 
+  it("runs standalone blog binding recovery guards without ignoring failures", () => {
+    const phases = workflow.split(/\n(?= {6}- )/)
+      .filter(phase => phase.startsWith("      - name: Validate blog binding recovery guards\n"));
+    expect(phases).toHaveLength(1);
+    const phase = phases[0];
+    expect(phase).toContain("run: node --test scripts/blogBindingRecovery.test.mjs");
+    expect(phase.match(/^ {8}run: (.+)$/m)?.[1]).toBe("node --test scripts/blogBindingRecovery.test.mjs");
+    expect(phase).not.toContain("continue-on-error");
+    expect(phase).not.toMatch(/\|\||&&|if:|--test-skip-pattern|--test-only/);
+  });
+
   it("runs practice topic recovery with the configured learner browser journeys", () => {
     const phase = workflow.slice(workflow.indexOf("- name: Browser-test Teams access, purchase confirmation, Equipment Lab and learner journeys"),
       workflow.indexOf("- name: Browser-test the approved workspaces and offline review"));

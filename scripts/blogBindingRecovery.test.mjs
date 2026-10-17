@@ -13,9 +13,10 @@ const row = () => ({ id: C.id, workerTaskUid: C.old, weeklyTaskUid: C.weekly, ru
   startedAt: "2026-10-17 00:00:00", updatedAt: "2026-10-17 00:00:00" });
 function snapshot() {
   const job = (task_uid, is_enable, name = task_uid) => ({ task_uid, user_id: C.owner, name, is_enable,
-    callback_path: C.path, callback_method: C.method, cron_expression: C.cron });
-  return { actorUserId: C.owner, total: 3, jobs: [job(C.old, false), job(uid, true, C.name),
-    { ...job(C.weekly, true), callback_path: "/api/scheduled/generate-blog" }] };
+    callback_path: C.path, callback_method: C.method, cron_expression: C.cron, callback_payload: "{}" });
+  return { actorUserId: C.owner, total: 3, jobs: [job(C.old, false, "echelon-blog-continuation"), job(uid, true, C.name),
+    { ...job(C.weekly, true, "weekly-echelon-blog"), callback_path: "/api/scheduled/generate-blog",
+      cron_expression: "0 0 14 * * 1" }] };
 }
 function fixture({ affectedRows = 1, commitFails = false, independentFails = false, journalFails = 0, collateral = false } = {}) {
   let state = row(), saved, n = 0, committed = false;
@@ -57,6 +58,58 @@ test("job list verifies full owner, exact UID and all replacement configuration 
     s => { s.jobs.push({ ...s.jobs[1], task_uid: "another" }); s.total++; },
     s => { s.jobs.push({ ...s.jobs[1] }); s.total++; }]) {
     const s = snapshot(); mutate(s); assert.throws(() => verifyJobs(s, uid));
+  }
+});
+for (const [index, label] of [[0, "original"], [1, "replacement"], [2, "weekly"]]) {
+  for (const [key, value] of [["name", "lookalike"], ["is_enable", index === 0],
+    ["cron_expression", "0 0 15 * * 1"], ["callback_path", "/api/scheduled/other"], ["callback_method", "GET"]]) {
+    test(`rejects ${label} ${key} mutation before any database or journal operation`, async () => {
+      const f = fixture(); f.options.snapshot.jobs[index][key] = value;
+      await assert.rejects(recoverBinding(f.options));
+      assert.deepEqual(f.events, []);
+    });
+  }
+  test(`${label} payload accepts only empty or an empty JSON object`, () => {
+    for (const payload of ["", "{}", " { } ", {}]) {
+      const s = snapshot(); s.jobs[index].callback_payload = payload;
+      verifyJobs(s, uid);
+    }
+    for (const payload of [undefined, null, " ", "invalid", "null", "[]", "0", '""', "true",
+      '{"runKey":"mutated"}', { runKey: "mutated" }, [], 0, false]) {
+      const s = snapshot(); s.jobs[index].callback_payload = payload;
+      assert.throws(() => verifyJobs(s, uid), /payload/, `${label}: ${JSON.stringify(payload)}`);
+    }
+    const missing = snapshot(); delete missing.jobs[index].callback_payload;
+    assert.throws(() => verifyJobs(missing, uid), /payload/);
+  });
+  test(`${label} camel/snake aliases must agree strictly, including payload`, () => {
+    for (const [camel, snake] of [["taskUid", "task_uid"], ["userId", "user_id"], ["isEnable", "is_enable"],
+      ["cronExpression", "cron_expression"], ["callbackPath", "callback_path"],
+      ["callbackMethod", "callback_method"], ["callbackPayload", "callback_payload"]]) {
+      const equal = snapshot(); equal.jobs[index][camel] = equal.jobs[index][snake];
+      verifyJobs(equal, uid);
+      const camelOnly = snapshot(); camelOnly.jobs[index][camel] = camelOnly.jobs[index][snake];
+      delete camelOnly.jobs[index][snake]; verifyJobs(camelOnly, uid);
+      for (const conflicting of [undefined, null, snake === "callback_payload" ? "" : "conflict"]) {
+        const s = snapshot(); s.jobs[index][camel] = conflicting;
+        assert.throws(() => verifyJobs(s, uid), /Conflicting Heartbeat field aliases/);
+      }
+    }
+    const s = snapshot(); s.jobs[index].callbackPayload = {};
+    assert.throws(() => verifyJobs(s, uid), /Conflicting Heartbeat field aliases/);
+  });
+}
+test("every enabled unrelated job needs a known scheduled callback path with no alias conflict", () => {
+  const extra = { task_uid: "unrelated", user_id: C.owner, name: "unrelated", is_enable: true };
+  for (const patch of [{}, { callback_path: null }, { callback_path: 7 }, { callback_path: "/other" },
+    { callback_path: "/api/scheduled/other", callbackPath: "/api/scheduled/conflict" },
+    { callback_path: "/api/scheduled/other", callbackPath: undefined }]) {
+    const s = snapshot(); s.jobs.push({ ...extra, ...patch }); s.total++;
+    assert.throws(() => verifyJobs(s, uid));
+  }
+  for (const patch of [{ is_enable: false }, { callback_path: "/api/scheduled/other" }]) {
+    const s = snapshot(); s.jobs.push({ ...extra, ...patch }); s.total++;
+    verifyJobs(s, uid);
   }
 });
 test("reject active or uncertain state, nonempty runs, any claims/leases and wrong bindings", () => {
