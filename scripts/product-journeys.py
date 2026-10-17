@@ -603,7 +603,7 @@ class Audit:
     async def run_task(self, task: Task, semaphore: asyncio.Semaphore) -> None:
         async with semaphore:
             start = time.monotonic()
-            result: dict[str, Any] = {"name": task.name, "status": "blocked", "detail": "Not completed",
+            result: dict[str, Any] = {"name": task.name, "status": "blocked", "detail": "Not completed", "completed": False,
                                       "kind": task.kind, "viewport": task.viewport,
                                       "viewportSize": VIEWPORTS[task.viewport], "courseKeys": task.courses,
                                       "url": safe_url(self.destination(task.path))}
@@ -616,6 +616,7 @@ class Audit:
             page = None
             guarded: set[str] = set()
             finishing = False
+            cancelled = False
 
             async def safety(route: Any) -> None:
                 request = route.request
@@ -700,6 +701,7 @@ class Audit:
             except Blocked as error:
                 result.update(status="blocked", detail=clean(error))
             except asyncio.CancelledError:
+                cancelled = True
                 result.update(status="blocked", detail="Overall audit deadline reached; check not completed")
             except asyncio.TimeoutError:
                 result.update(status="fail", detail="Concrete UI condition or bounded route/journey deadline timed out")
@@ -727,6 +729,10 @@ class Audit:
                         await asyncio.wait_for(context.close(), timeout=8)
                     except Exception:
                         pass
+                # A deadline cancellation does not establish that this planned
+                # check ran to a terminal observation. Failed, blocked, and
+                # warning checks that returned normally do establish coverage.
+                result["completed"] = not cancelled
                 result["durationMs"] = round((time.monotonic() - start) * 1000)
                 result["runtime"] = {k: v[:30] for k, v in runtime.items() if v}
                 self.results.append(result)
@@ -735,12 +741,18 @@ class Audit:
 
     def write_report(self) -> None:
         counts = Counter(result["status"] for result in self.results)
-        smoke = [r for r in self.results if r.get("kind") == "route-smoke"]
-        report = {"schemaVersion": 1, "timestamp": now(), "startedAt": self.started,
+        completed = [r for r in self.results if r.get("completed") is True]
+        smoke = [r for r in completed if r.get("kind") == "route-smoke"]
+        planned_names = self.coverage.get("plannedCheckNames", [])
+        actual_names = [r["name"] for r in completed]
+        self.coverage["completedAllPlannedChecks"] = bool(planned_names) and (
+            len(actual_names) == len(planned_names) and set(actual_names) == set(planned_names))
+        report = {"schemaVersion": 2, "timestamp": now(), "startedAt": self.started,
             "baseUrl": self.base, "durationMs": round((time.monotonic() - self.started_clock) * 1000),
             "coverage": {**self.coverage, "routeSmokesCompleted": len(smoke),
                          "routeSmokeStates": dict(Counter(r.get("observedState", r["status"]) for r in smoke)),
-                         "representativeJourneyResults": len(self.results) - len(smoke)},
+                         "completedChecks": len(completed),
+                         "representativeJourneyResults": len(completed) - len(smoke)},
             "safety": {"anonymousFreshContexts": True, "noInjectedIdentityOrEntitlements": True,
                        "firstPartyWritesDeniedExceptAnonymousPracticeScoring": True, "tutorLlmInvoked": False,
                        "mockExamsStarted": False, "formsSubmitted": False,
@@ -807,7 +819,7 @@ class Audit:
             "uniqueRoutesPlanned": len(routes), "deduplicatedBy": ["surface", "path"],
             "surfaceRouteCounts": dict(Counter(s for s, _ in routes)),
             "manifestUnavailableSurfaces": missing, "representativeAnswerCourseKeys": [c["courseKey"] for c in reps],
-            "plannedChecks": len(tasks), "viewports": VIEWPORTS,
+            "plannedChecks": len(tasks), "plannedCheckNames": [task.name for task in tasks], "viewports": VIEWPORTS,
             "depthNote": "Full means every active route was scheduled for DOM smoke, not full course flow coverage. Only named representative courses have guest answer/flip journeys. Authenticated, paid, submission and LLM behavior are not tested."}
         # Run core desktop/mobile journeys first so route failures cannot starve them.
         return sorted(tasks, key=lambda t: t.kind == "route-smoke")
@@ -841,10 +853,9 @@ class Audit:
             completed = {r["name"] for r in self.results}
             for task in tasks:
                 if task.name not in completed:
-                    self.results.append({"name": task.name, "status": "blocked", "kind": task.kind,
+                    self.results.append({"name": task.name, "status": "blocked", "kind": task.kind, "completed": False,
                         "detail": "Not executed before setup failure or overall deadline", "viewport": task.viewport,
                         "courseKeys": task.courses, "surface": task.surface, "url": safe_url(self.destination(task.path))})
-            self.coverage["completedAllPlannedChecks"] = bool(tasks) and all(r.get("detail") != "Not executed before setup failure or overall deadline" for r in self.results)
             self.write_report()
         counts = Counter(r["status"] for r in self.results)
         print("Product journey summary: " + ", ".join(f"{counts[s]} {s}" for s in ["pass", "fail", "warn", "blocked", "skipped"]), flush=True)

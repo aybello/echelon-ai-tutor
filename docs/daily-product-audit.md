@@ -64,6 +64,10 @@ Use read-only production queries through `activeScriptConnection()` with `DATABA
 
 Keep each run bounded. Aim to finish the daily baseline and one useful deep review in about an hour. Prioritize urgent verified defects over completing a cosmetic quota. Record unfinished checks and the next action rather than looping indefinitely. Do not silently turn the schedule off after failure.
 
+The baseline CLI has a shared monotonic deadline of 55 minutes (`--max-seconds 3300`, configurable from 60 to 3600 seconds), including a five-second cleanup/report reserve. Commands, HTTP requests, database operations, and browser execution use the remaining budget rather than starting fresh full timeouts. Deadline-exhausted checks are blocked and the final JSON records budget and coverage; this is not a change to the schedule.
+
+Browser evidence uses schema version 2 with unique planned check names, explicit per-result completion, and reconciled status totals. The daily importer requires the requested origin and full active-course selection. Missing, duplicate, cancelled, legacy, or inconsistent evidence is blocked, never inferred clean from a zero exit code. A completed signed-out gate check is not a completed paid learning journey. Raw partial browser evidence remains available for diagnosis even when the importer rejects it. Daily JSON also uses schema version 2; readers must not assume older reports established this completeness contract.
+
 ## Evidence, history and report
 
 Persist dated JSON, command logs and browser evidence outside the public source tree, under `/home/ubuntu/reviews/daily-audit/`. Record failures, warnings, skips and blocked checks separately. A test that only passes on retry stays a flaky-test warning. A command crash or unparseable result must not become a pass.

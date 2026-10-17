@@ -3,7 +3,7 @@
  * Daily product audit. Evidence only, not an automatic owner notification.
  * The schedule agent validates failures before making defect claims or repairs.
  * Usage: node scripts/daily-audit.mjs [--skip-unit] [--skip-types] [--skip-browser]
- *        [--probe-tutor] [--base-url https://echeloninstitute.ca] [--output-dir /absolute/path]
+ *        [--probe-tutor] [--max-seconds 3300] [--base-url https://echeloninstitute.ca] [--output-dir /absolute/path]
  * Exit: 1 observed failures, 2 blocked coverage, 0 otherwise. Always read allClean
  * and individual statuses: skipped or warning coverage is never an all-clean audit.
  */
@@ -15,9 +15,9 @@ import { parseArgs } from "node:util";
 import mysql from "mysql2/promise";
 import { activeScriptConnection } from "./lib/activeScriptConnection.mjs";
 import {
-  isolatedTestEnv, ciDeterministicExcludes, runCommand, commandProblem, evaluateVitest,
+  isolatedTestEnv, ciDeterministicExcludes, runCommand, commandProblem, evaluateVitest, createAuditBudget,
   validateQuizReply, validateQuestion, classifyTutorReply, evaluateTutorSequence,
-  tutorHistoryAssessment, importJourneyResults, summarizeResults,
+  tutorHistoryAssessment, validateJourneyReport, evaluateServingReleaseIdentity, summarizeResults,
 } from "./lib/dailyAudit.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -25,7 +25,13 @@ const { values } = parseArgs({ options: {
   "skip-unit": { type: "boolean", default: false }, "skip-types": { type: "boolean", default: false },
   "skip-browser": { type: "boolean", default: false }, "probe-tutor": { type: "boolean", default: false },
   "base-url": { type: "string", default: "https://echeloninstitute.ca" }, "output-dir": { type: "string" },
+  "max-seconds": { type: "string", default: "3300" },
 } });
+const maxSeconds = Number(values["max-seconds"]);
+if (!Number.isInteger(maxSeconds) || maxSeconds < 60 || maxSeconds > 3600) {
+  throw new Error("--max-seconds must be an integer between 60 and 3600");
+}
+const budget = createAuditBudget(maxSeconds * 1000);
 const base = new URL(values["base-url"]);
 if (!["https:", "http:"].includes(base.protocol) || base.username || base.password || base.pathname !== "/" || base.search || base.hash) {
   throw new Error("--base-url must be an HTTP(S) origin without credentials, path or query");
@@ -44,7 +50,8 @@ await mkdir(testHome, { recursive: true, mode: 0o700 });
 const childEnv = isolatedTestEnv(process.env, testHome);
 const userAgent = `EchelonProductAudit/${runId}`;
 const results = [];
-let db = null, databaseUnavailable = null, manifest = null;
+let db = null, databaseUnavailable = null, manifest = null, checkoutIdentity = null;
+let deadlineBlockedChecks = 0, orchestrationCompleted = false;
 
 // Never persist production connection strings or application secrets in a report.
 function safeDetail(value) {
@@ -61,6 +68,10 @@ function record(name, status, detail, evidence = {}) {
   return result;
 }
 async function check(name, fn, errorStatus = "blocked") {
+  if (budget.remainingMs() < 1) {
+    deadlineBlockedChecks++;
+    return record(name, "blocked", "Overall audit deadline reached; check not executed", { completed: false });
+  }
   try {
     const result = await fn();
     return record(name, result.status ?? "pass", result.detail, result.evidence);
@@ -71,11 +82,11 @@ async function readJson(path, maxBytes = 32 * 1024 * 1024) {
   return JSON.parse(await readFile(path, "utf8"));
 }
 async function command(name, program, args, timeoutMs) {
-  return runCommand(program, args, { cwd: ROOT, env: childEnv, logPath: resolve(outputDir, `${name}.log`), timeoutMs });
+  return runCommand(program, args, { cwd: ROOT, env: childEnv, logPath: resolve(outputDir, `${name}.log`), timeoutMs: budget.timeoutMs(timeoutMs) });
 }
 async function fetchEvidence(name, path, options = {}, timeoutMs = 30_000) {
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  const timer = setTimeout(() => controller.abort(), budget.timeoutMs(timeoutMs));
   try {
     const response = await fetch(SITE + path, {
       ...options, headers: { "user-agent": userAgent, ...options.headers }, signal: controller.signal, redirect: "error",
@@ -100,7 +111,7 @@ function trpcQuery(procedure, input) {
 }
 async function query(sql, params = []) {
   if (!db) throw new Error(databaseUnavailable ?? "Authoritative read-only database unavailable");
-  try { return (await db.query({ sql, timeout: 25_000 }, params))[0]; }
+  try { return (await db.query({ sql, timeout: budget.timeoutMs(25_000) }, params))[0]; }
   catch (error) {
     // A timed-out mysql query cannot be safely reused. Close rather than leave work running.
     if (error.code === "PROTOCOL_SEQUENCE_TIMEOUT") {
@@ -115,8 +126,18 @@ try {
   await check("Checkout identity", async () => {
     const head = await command("git-head", "git", ["rev-parse", "HEAD"], 10_000);
     const state = await command("git-status", "git", ["status", "--short"], 10_000);
-    if (commandProblem(head) || commandProblem(state) || head.exitCode !== 0 || state.exitCode !== 0) throw new Error("Cannot establish checkout identity; see git logs");
-    return { status: state.tail.trim() ? "warn" : "pass", detail: `HEAD ${head.tail.trim()}; ${state.tail.trim() ? "working tree has changes, see git-status.log" : "working tree clean"}` };
+    const source = await command("checkout-source-fingerprint", "node", ["--import", "tsx", "--input-type=module", "-e",
+      "import { computeSourceFingerprint } from './scripts/sourceFingerprint.ts'; console.log(computeSourceFingerprint());"], 60_000);
+    const commit = head.tail.trim();
+    const sourceSha256 = source.tail.trim();
+    if (commandProblem(head) || commandProblem(state) || commandProblem(source) || head.exitCode !== 0 || state.exitCode !== 0 || source.exitCode !== 0
+      || !/^(?:[a-f0-9]{40}|[a-f0-9]{64})$/i.test(commit) || !/^[a-f0-9]{64}$/i.test(sourceSha256)) {
+      throw new Error("Cannot establish checkout commit and functional-source identities; see checkout identity logs");
+    }
+    const clean = !state.tail.trim();
+    checkoutIdentity = { head: commit, sourceSha256, clean };
+    return { status: clean ? "pass" : "warn", detail: `HEAD ${commit}; source-sha256 ${sourceSha256}; ${clean ? "working tree clean" : "working tree has changes, see git-status.log"}`,
+      evidence: { headLog: head.logPath, statusLog: state.logPath, sourceFingerprintLog: source.logPath } };
   });
 
   await check("Actual registry and preview policy", async () => {
@@ -188,7 +209,7 @@ try {
   await check("Authoritative database read-only session", async () => {
     const active = activeScriptConnection({ ...process.env, DATABASE_CUTOVER_USE_EXTERNAL_TARGET: "true" });
     if (!active.external) throw new Error("Refusing non-authoritative database");
-    db = await mysql.createConnection(active.options);
+    db = await mysql.createConnection({ ...active.options, connectTimeout: budget.timeoutMs(10_000) });
     // No writes, schema changes or sessions with production testing credentials.
     await query("SET SESSION time_zone = '+00:00'");
     await query("SET SESSION TRANSACTION READ ONLY");
@@ -285,14 +306,12 @@ try {
 
   await check("Serving deployment identity", async () => {
     const response = await fetchEvidence("serving-release", "/api/health");
-    const health = JSON.parse(response.body);
-    const valid = health.releaseKind === "git-commit" ? /^[a-f0-9]{40,64}$/i.test(health.release ?? "")
-      : health.releaseKind === "source-sha256" && /^[a-f0-9]{64}$/i.test(health.release ?? "");
-    if (response.status !== 200 || health.status !== "ok" || !valid) {
-      throw new Error("Production health did not expose a valid immutable serving identity");
-    }
-    return { detail: `${health.releaseKind}: ${health.release}. Serving marker recorded separately from checkout HEAD; equality or deployment of local changes is not implied.`,
-      evidence: { artifact: response.evidence } };
+    let health;
+    try { health = JSON.parse(response.body); } catch { throw new Error("Production health response was not valid JSON"); }
+    const evaluated = response.status === 200
+      ? evaluateServingReleaseIdentity(health, checkoutIdentity)
+      : { status: "fail", detail: `Production health returned HTTP ${response.status}` };
+    return { ...evaluated, evidence: { artifact: response.evidence } };
   });
 
   if (!manifest) record("Live question samples", "blocked", "No registry or preview policy. Not substituting a guessed course list.");
@@ -336,15 +355,22 @@ try {
     }
     const browserDir = resolve(outputDir, "browser");
     await mkdir(browserDir, { recursive: true, mode: 0o700 });
+    const browserTimeoutMs = budget.timeoutMs(16 * 60_000);
+    // The Python deadline must leave room for screenshots/context shutdown and
+    // process-group escalation before the parent's remaining budget expires.
+    const browserSeconds = Math.min(840, Math.floor((browserTimeoutMs - 30_000) / 1000));
+    if (browserSeconds < 1) throw new Error("Insufficient audit budget for browser checks and cleanup");
     const run = await runCommand("python3", ["-B", "scripts/product-journeys.py", "--base-url", SITE,
-      "--courses", resolve(outputDir, "courses.json"), "--output-dir", browserDir], {
+      "--courses", resolve(outputDir, "courses.json"), "--output-dir", browserDir, "--max-seconds", String(browserSeconds)], {
       cwd: ROOT, env: { ...childEnv, PLAYWRIGHT_BROWSERS_PATH: process.env.PLAYWRIGHT_BROWSERS_PATH
         ?? resolve(process.env.HOME ?? "/home/ubuntu", ".cache/ms-playwright") },
-      logPath: resolve(outputDir, "browser.log"), timeoutMs: 16 * 60_000,
+      logPath: resolve(outputDir, "browser.log"), timeoutMs: browserTimeoutMs,
     });
     let imported = [];
     try {
-      imported = importJourneyResults(await readJson(resolve(browserDir, "product-journeys.json")));
+      imported = validateJourneyReport(await readJson(resolve(browserDir, "product-journeys.json")), {
+        baseUrl: SITE, courseKeys: manifest.courses.map(course => course.courseKey),
+      });
       for (const result of imported) {
         const { name, status, detail, ...evidence } = result;
         record(name, status, detail, evidence);
@@ -359,6 +385,7 @@ try {
         : run.exitCode !== 0 ? "fail" : imported.some(result => result.status !== "pass") ? "warn" : "pass",
     detail: `Imported ${imported.length} individual DOM journey statuses; runner exit ${run.exitCode}`, evidence: { log: run.logPath, artifact: resolve(browserDir, "product-journeys.json") } };
   });
+  orchestrationCompleted = true;
 } catch (error) {
   record("Audit orchestration", "blocked", error.message ?? error);
 } finally {
@@ -368,8 +395,12 @@ try {
 }
 
 const summary = summarizeResults(results);
-const report = { schemaVersion: 1, runId, startedAt, finishedAt: new Date().toISOString(), baseUrl: SITE, outputDir,
+const report = { schemaVersion: 2, runId, startedAt, finishedAt: new Date().toISOString(), baseUrl: SITE, outputDir,
   ...summary, options: values, results,
+  budget: budget.snapshot(),
+  coverage: { orchestrationCompleted, deadlineBlockedChecks,
+    completedAllPlannedChecks: orchestrationCompleted && deadlineBlockedChecks === 0
+      && !results.some(result => ["blocked", "skipped"].includes(result.status)) },
   limitations: [
     "Failures are evidence for validation, not automatically verified defect claims. No owner notification sent.",
     "No authenticated learner, manager or admin mutations, real email delivery, checkout charge or live ledger reconciliation.",
@@ -382,6 +413,8 @@ await writeFile(resolve(outputDir, "daily-audit.json"), JSON.stringify(report, n
 const md = ["# Echelon Daily Product Audit", "", `- Run: ${runId}`, `- Target: ${SITE}`,
   `- Overall: **${summary.status}**; all clean: **${summary.allClean}**`,
   `- Counts: ${Object.entries(summary.counts).map(([status, n]) => `${status}=${n}`).join(", ")}`,
+  `- Budget: ${report.budget.elapsedMs}/${report.budget.maxMs} ms; deadline-blocked checks: ${deadlineBlockedChecks}`,
+  `- Completed all planned checks: **${report.coverage.completedAllPlannedChecks}** (blocked/skipped coverage is incomplete)`,
   `- Evidence: ${outputDir}`, "", "## Results", "",
   ...results.map(result => `- **${result.status.toUpperCase()}** ${result.name}: ${result.detail.replaceAll("\n", " ")}${result.artifact ? ` ([evidence](${result.artifact}))` : result.log ? ` ([log](${result.log}))` : ""}`),
   "", "## Coverage limits", "", ...report.limitations.map(text => `- ${text}`), ""].join("\n");

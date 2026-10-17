@@ -3,7 +3,7 @@ import { mkdtemp, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 // @ts-ignore Standalone ESM audit helpers are tested directly without a build step.
-import { isolatedTestEnv, ciDeterministicExcludes, runCommand, evaluateVitest, combineTestAttempts, parseTrpc, validateQuestion, validateQuizReply, classifyTutorReply, evaluateTutorSequence, tutorHistoryAssessment, importJourneyResults, summarizeResults } from "../scripts/lib/dailyAudit.mjs";
+import { isolatedTestEnv, ciDeterministicExcludes, runCommand, evaluateVitest, combineTestAttempts, parseTrpc, validateQuestion, validateQuizReply, classifyTutorReply, evaluateTutorSequence, tutorHistoryAssessment, importJourneyResults, validateJourneyReport, evaluateServingReleaseIdentity, createAuditBudget, summarizeResults } from "../scripts/lib/dailyAudit.mjs";
 
 const envelope = (data: unknown) => JSON.stringify([{ result: { data: { json: data } } }]);
 const trpcError = (code: string) => JSON.stringify([{ error: { json: { message: "test error", data: { code } } } }]);
@@ -134,6 +134,88 @@ describe("daily audit tutor quota evidence", () => {
 });
 
 describe("daily audit subprocesses and reports", () => {
+  const journeyReport = () => ({ schemaVersion: 2,
+    coverage: { plannedChecks: 2, plannedCheckNames: ["Teams DOM", "Jobs DOM"], completedAllPlannedChecks: true },
+    summary: { pass: 1, fail: 0, warn: 1, blocked: 0, skipped: 0 },
+    results: [{ name: "Teams DOM", status: "warn", detail: "Needs validation", completed: true },
+      { name: "Jobs DOM", status: "pass", detail: "Rendered", completed: true }] });
+  it("caps each operation to the shared monotonic budget and reserves final-report time", () => {
+    let clock = 1000;
+    const budget = createAuditBudget(10_000, () => clock, 2000);
+    expect(budget.timeoutMs(20_000)).toBe(8000);
+    clock += 7000;
+    expect(budget.timeoutMs(5000)).toBe(1000);
+    expect(budget.snapshot()).toMatchObject({ elapsedMs: 7000, remainingMs: 1000, reserveMs: 2000 });
+    clock += 1000;
+    expect(() => budget.timeoutMs(100)).toThrow(/deadline/);
+    expect(budget.remainingMs()).toBe(0);
+  });
+  it("writes JSON and Markdown with blocked remainder when the overall deadline is exhausted", async () => {
+    const dir = await mkdtemp(join(tmpdir(), "daily-audit-deadline-report-"));
+    try {
+      const auditUrl = new URL("../scripts/daily-audit.mjs", import.meta.url).href;
+      const code = `let calls=0;Object.defineProperty(globalThis,'performance',{value:{now:()=>calls++===0?0:100000}});
+        globalThis.fetch=()=>{throw new Error('Network forbidden in offline deadline regression')};
+        process.argv=['node','--max-seconds','60','--base-url','http://127.0.0.1:9','--output-dir',${JSON.stringify(dir)}];
+        await import(${JSON.stringify(auditUrl)});`;
+      const result = await runCommand(process.execPath, ["--input-type=module", "-e", code], {
+        cwd: process.cwd(), env: isolatedTestEnv(process.env, dir), logPath: join(dir, "cli.log"), timeoutMs: 5000,
+      });
+      expect(result.exitCode, result.tail).toBe(2);
+      const data = JSON.parse(await readFile(join(dir, "daily-audit.json"), "utf8"));
+      expect(data.status).toBe("blocked");
+      expect(data.allClean).toBe(false);
+      expect(data.coverage.orchestrationCompleted).toBe(true);
+      expect(data.coverage.completedAllPlannedChecks).toBe(false);
+      expect(data.coverage.deadlineBlockedChecks).toBeGreaterThan(0);
+      expect(data.budget.remainingMs).toBe(0);
+      expect(await readFile(join(dir, "daily-audit.md"), "utf8")).toContain("Completed all planned checks: **false**");
+    } finally { await rm(dir, { recursive: true, force: true }); }
+  });
+  it("accepts complete browser evidence without turning warnings into passes", () => {
+    expect(validateJourneyReport(journeyReport()).map((r: { status: string }) => r.status)).toEqual(["warn", "pass"]);
+  });
+  it("does not accept a complete targeted subset as the requested full active-course audit", () => {
+    const data = { ...journeyReport(), baseUrl: "http://offline.test",
+      coverage: { ...journeyReport().coverage, scope: "full-active-route-matrix", activeCoursesInManifest: 2,
+        selectedCourseCount: 2, selectedCourseKeys: ["oit", "wpi"], omittedCourseKeys: [] as string[] } };
+    const expected = { baseUrl: "http://offline.test", courseKeys: ["oit", "wpi"] };
+    expect(validateJourneyReport(data, expected)).toHaveLength(2);
+    expect(() => validateJourneyReport(data, { ...expected, baseUrl: "http://other.test" })).toThrow(/target/);
+    expect(() => validateJourneyReport(data, { ...expected, courseKeys: ["oit", "missing"] })).toThrow(/manifest/);
+    data.coverage.scope = "partial";
+    expect(() => validateJourneyReport(data, expected)).toThrow(/manifest/);
+    data.coverage.scope = "full-active-route-matrix";
+    data.coverage.omittedCourseKeys = ["missing"];
+    expect(() => validateJourneyReport(data, expected)).toThrow(/manifest/);
+  });
+  it.each(["legacy", "missing-result", "duplicate-result", "extra-result", "cancelled", "false-coverage", "summary", "plan", "unknown-status"])(
+    "rejects %s browser evidence even when the worker exits zero", (mutation) => {
+      const data = journeyReport();
+      switch (mutation) {
+        case "legacy": data.schemaVersion = 1; break;
+        case "missing-result": data.results.pop(); break;
+        case "duplicate-result": data.results[1].name = data.results[0].name; break;
+        case "extra-result": data.results.push({ ...data.results[0], name: "Unplanned" }); break;
+        case "cancelled": data.results[1].completed = false; break;
+        case "false-coverage": data.coverage.completedAllPlannedChecks = false; break;
+        case "summary": data.summary.pass = 100; break;
+        case "plan": data.coverage.plannedCheckNames[1] = "Missing"; break;
+        case "unknown-status": data.results[1].status = "unknown"; break;
+      }
+      expect(() => validateJourneyReport(data)).toThrow();
+    });
+  it("compares the corresponding immutable identity but never calls a dirty checkout deployed", () => {
+    const checkout = { head: "a".repeat(40), sourceSha256: "b".repeat(64), clean: true };
+    for (const [releaseKind, release] of [["git-commit", checkout.head], ["source-sha256", checkout.sourceSha256]]) {
+      const health = { status: "ok", releaseKind, release };
+      expect(evaluateServingReleaseIdentity(health, checkout).status).toBe("pass");
+      expect(evaluateServingReleaseIdentity(health, { ...checkout, clean: false }).status).toBe("warn");
+      expect(evaluateServingReleaseIdentity({ ...health, release: "c".repeat(release.length) }, checkout).status).toBe("warn");
+      expect(evaluateServingReleaseIdentity(health, null).status).toBe("blocked");
+    }
+    expect(evaluateServingReleaseIdentity({ status: "ok", releaseKind: "git-commit", release: "a".repeat(41) }, checkout).status).toBe("fail");
+  });
   it("imports individual browser statuses and rejects malformed or empty results", () => {
     const imported = importJourneyResults({ results: [{ name: "Teams DOM", status: "warn", detail: "Needs validation", screenshot: "teams.png" }] });
     expect(imported[0]).toMatchObject({ name: "Browser: Teams DOM", status: "warn", screenshot: "teams.png" });
@@ -177,19 +259,47 @@ describe("daily audit subprocesses and reports", () => {
     try {
       const childCode = "process.on('SIGTERM',()=>{});setInterval(()=>{},1000)";
       const leader = `const {spawn}=require('node:child_process');const c=spawn(process.execPath,['-e',${JSON.stringify(childCode)}],{stdio:'ignore'});console.log(c.pid);setInterval(()=>{},1000)`;
+      const started = performance.now();
       const result = await runCommand(process.execPath, ["-e", leader], {
         cwd: dir, env: isolatedTestEnv(process.env, dir), logPath: join(dir, "leader.log"), timeoutMs: 400,
       });
       descendant = Number(result.tail.trim());
       expect(result.timedOut).toBe(true);
       expect(descendant).toBeGreaterThan(0);
-      await new Promise(resolve => setTimeout(resolve, 2300));
+      expect(performance.now() - started).toBeGreaterThanOrEqual(2300);
       let state = "gone";
-      try { state = (await readFile(`/proc/${descendant}/stat`, "utf8")).split(") ")[1].split(" ")[0]; } catch { /* Reaped. */ }
+      // SIGKILL delivery is asynchronous: allow a bounded kernel state transition,
+      // not another escalation interval that would hide an early runner return.
+      const stateDeadline = performance.now() + 250;
+      do {
+        try { state = (await readFile(`/proc/${descendant}/stat`, "utf8")).split(") ")[1].split(" ")[0]; }
+        catch { state = "gone"; }
+        if (["gone", "Z"].includes(state)) break;
+        await new Promise(resolve => setTimeout(resolve, 10));
+      } while (performance.now() < stateDeadline);
       expect(["gone", "Z"]).toContain(state);
     } finally {
       if (descendant) try { process.kill(descendant, "SIGKILL"); } catch { /* Already dead. */ }
       await rm(dir, { recursive: true, force: true });
     }
+  });
+  it("returns blocked evidence on log-open failure instead of hanging forever", async () => {
+    const dir = await mkdtemp(join(tmpdir(), "daily-audit-log-error-"));
+    try {
+      const result = await runCommand(process.execPath, ["-e", "setInterval(()=>{},1000)"], {
+        cwd: dir, env: isolatedTestEnv(process.env, dir), logPath: dir, timeoutMs: 1000,
+      });
+      expect(result.error).toMatch(/Log write failed/);
+    } finally { await rm(dir, { recursive: true, force: true }); }
+  });
+  it("returns spawn failure as unusable command evidence", async () => {
+    const dir = await mkdtemp(join(tmpdir(), "daily-audit-spawn-error-"));
+    try {
+      const result = await runCommand(join(dir, "does-not-exist"), [], {
+        cwd: dir, env: isolatedTestEnv(process.env, dir), logPath: join(dir, "spawn.log"), timeoutMs: 1000,
+      });
+      expect(result.error).toMatch(/ENOENT/);
+      expect(result.exitCode).not.toBe(0);
+    } finally { await rm(dir, { recursive: true, force: true }); }
   });
 });

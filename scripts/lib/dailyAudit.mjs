@@ -5,6 +5,22 @@ import { dirname } from "node:path";
 
 export const AUDIT_STATUSES = ["pass", "fail", "warn", "blocked", "skipped"];
 
+/** Leave time for process-group cleanup and the final report; use a monotonic clock. */
+export function createAuditBudget(maxMs, now = () => performance.now(), reserveMs = 5000) {
+  if (!Number.isFinite(maxMs) || maxMs <= 0) throw new Error("Invalid audit deadline");
+  const start = now();
+  const remainingMs = () => Math.max(0, Math.floor(maxMs - (now() - start) - reserveMs));
+  return {
+    remainingMs,
+    timeoutMs(requestedMs) {
+      const remaining = remainingMs();
+      if (remaining < 1) throw new Error("Overall audit deadline reached; check not executed");
+      return Math.min(requestedMs, remaining);
+    },
+    snapshot: () => ({ maxMs, reserveMs, elapsedMs: Math.max(0, Math.round(now() - start)), remainingMs: remainingMs() }),
+  };
+}
+
 /** Allowlist, not a blacklist: never forward application, database, email or API secrets. */
 export function isolatedTestEnv(parent = process.env, home = "/tmp/echelon-audit-test") {
   const env = {};
@@ -33,7 +49,7 @@ export function ciDeterministicExcludes(yaml) {
   return [...new Set(excludes)];
 }
 
-/** Stream complete logs to disk, keep only a bounded tail in memory, kill the process group on timeout. */
+/** Stream complete logs to disk, keep only a bounded tail in memory, and finish timeout cleanup before resolving. */
 export async function runCommand(command, args, {
   cwd, env, logPath, timeoutMs = 120_000, captureBytes = 16_384, maxOutputBytes = 64 * 1024 * 1024,
 }) {
@@ -41,17 +57,44 @@ export async function runCommand(command, args, {
   const log = createWriteStream(logPath, { flags: "wx", mode: 0o600 });
   return new Promise(resolve => {
     let tail = Buffer.alloc(0), bytes = 0, timedOut = false, outputLimited = false, error = null;
-    let timer, killTimer, stopping = false;
+    let timer, killTimer, stopping = false, childClosed = false, settled = false;
     const child = spawn(command, args, { cwd, env, stdio: ["ignore", "pipe", "pipe"], detached: true });
+    const groupExists = () => {
+      try { process.kill(-child.pid, 0); return true; } catch { return false; }
+    };
+    const finish = () => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      clearTimeout(killTimer);
+      const complete = () => resolve({ exitCode: child.exitCode, signal: child.signalCode, timedOut, outputLimited, error, bytes, tail: tail.toString("utf8"), logPath });
+      // A failed stream never emits finish; do not strand the audit on EEXIST,
+      // ENOSPC or a write error after its child has already been cleaned up.
+      if (log.destroyed) complete();
+      else {
+        log.once("error", complete);
+        log.end(complete);
+      }
+    };
     const stop = () => {
-      if (stopping) return;
+      if (stopping || settled) return;
       stopping = true;
       try { process.kill(-child.pid, "SIGTERM"); } catch { /* Already closed. */ }
       killTimer = setTimeout(() => {
         try { process.kill(-child.pid, "SIGKILL"); } catch { /* Already closed. */ }
+        killTimer = undefined;
+        // The leader may have exited before a worker ignored SIGTERM. Do not
+        // let the next audit command start while that worker is still alive.
+        if (childClosed) finish();
       }, 2000);
     };
-    log.on("error", err => { error = `Log write failed: ${err.code ?? err.message}`; stop(); });
+    log.on("error", err => {
+      error = `Log write failed: ${err.code ?? err.message}`;
+      stop();
+      // A destroyed log cannot emit drain. Keep consuming child pipes while
+      // terminating the group, otherwise close may wait forever on paused I/O.
+      child.stdout.resume(); child.stderr.resume();
+    });
     timer = setTimeout(() => { timedOut = true; stop(); }, timeoutMs);
     const collect = chunk => {
       bytes += chunk.length;
@@ -60,7 +103,7 @@ export async function runCommand(command, args, {
         return;
       }
       // Pause both streams when disk is slower than the child, bounding the log buffer too.
-      if (!log.write(chunk)) {
+      if (!log.destroyed && !log.write(chunk)) {
         child.stdout.pause(); child.stderr.pause();
         log.once("drain", () => { child.stdout.resume(); child.stderr.resume(); });
       }
@@ -70,12 +113,11 @@ export async function runCommand(command, args, {
     child.stdout.on("data", collect); child.stderr.on("data", collect);
     child.on("error", err => { error = `${err.code ?? "spawn"}: ${err.message}`; });
     child.on("close", (exitCode, signal) => {
-      clearTimeout(timer);
+      childClosed = true;
       // The leader closing does not prove its process group is empty. Preserve
       // timeout escalation for descendants that ignore SIGTERM and detach stdio.
-      if (!stopping) clearTimeout(killTimer);
-      const result = { exitCode, signal, timedOut, outputLimited, error, bytes, tail: tail.toString("utf8"), logPath };
-      log.end(() => resolve(result));
+      if (stopping && killTimer && groupExists()) return;
+      finish();
     });
   });
 }
@@ -223,6 +265,85 @@ export function importJourneyResults(report) {
       || !AUDIT_STATUSES.includes(result.status) || typeof result.detail !== "string") throw new Error("Invalid browser result name/status/detail");
     return { ...result, name: `Browser: ${result.name}` };
   });
+}
+
+/**
+ * Accept browser evidence only when it proves every planned check reached a
+ * terminal result. A zero process exit plus one passing result is not a clean
+ * browser run if the worker was cut off before the rest of its plan.
+ */
+export function validateJourneyReport(report, expected = {}) {
+  if (!report || report.schemaVersion !== 2 || !report.coverage || typeof report.coverage !== "object") {
+    throw new Error("Browser runner report has an unsupported or missing completeness schema");
+  }
+  const coverage = report.coverage;
+  if (expected.baseUrl && report.baseUrl !== expected.baseUrl) {
+    throw new Error("Browser runner report target does not match the requested origin");
+  }
+  if (expected.courseKeys) {
+    const keys = coverage.selectedCourseKeys;
+    if (coverage.scope !== "full-active-route-matrix"
+      || coverage.activeCoursesInManifest !== expected.courseKeys.length
+      || coverage.selectedCourseCount !== expected.courseKeys.length
+      || !Array.isArray(keys) || keys.length !== expected.courseKeys.length
+      || new Set(keys).size !== keys.length
+      || keys.some(key => !expected.courseKeys.includes(key))
+      || !Array.isArray(coverage.omittedCourseKeys) || coverage.omittedCourseKeys.length) {
+      throw new Error("Browser runner did not cover the requested active-course manifest");
+    }
+  }
+  if (!Number.isSafeInteger(coverage.plannedChecks) || coverage.plannedChecks < 1
+    || !Array.isArray(coverage.plannedCheckNames)
+    || coverage.plannedCheckNames.length !== coverage.plannedChecks
+    || coverage.plannedCheckNames.some(name => typeof name !== "string" || !name.trim())
+    || new Set(coverage.plannedCheckNames).size !== coverage.plannedChecks
+    || coverage.completedAllPlannedChecks !== true) {
+    throw new Error("Browser runner did not establish complete planned-check coverage");
+  }
+  const imported = importJourneyResults(report);
+  const actualNames = report.results.map(result => result?.name);
+  if (actualNames.length !== coverage.plannedChecks
+    || new Set(actualNames).size !== actualNames.length
+    || actualNames.some(name => typeof name !== "string")
+    || [...actualNames].sort().join("\0") !== [...coverage.plannedCheckNames].sort().join("\0")
+    || report.results.some(result => result.completed !== true)) {
+    throw new Error("Browser runner report is missing, duplicating, or leaving planned checks incomplete");
+  }
+  if (!report.summary || typeof report.summary !== "object") {
+    throw new Error("Browser runner report has no status summary");
+  }
+  for (const status of AUDIT_STATUSES) {
+    const actual = report.results.filter(result => result.status === status).length;
+    if (report.summary[status] !== actual) {
+      throw new Error("Browser runner status summary does not match individual results");
+    }
+  }
+  return imported;
+}
+
+function validRelease(releaseKind, release) {
+  return releaseKind === "git-commit"
+    ? /^(?:[a-f0-9]{40}|[a-f0-9]{64})$/i.test(release ?? "")
+    : releaseKind === "source-sha256" && /^[a-f0-9]{64}$/i.test(release ?? "");
+}
+
+/** Compare the public immutable serving marker to both checkout identities. */
+export function evaluateServingReleaseIdentity(health, checkout) {
+  if (!health || health.status !== "ok" || !validRelease(health.releaseKind, health.release)) {
+    return { status: "fail", detail: "Production health did not expose a valid immutable serving identity" };
+  }
+  if (!checkout || !/^(?:[a-f0-9]{40}|[a-f0-9]{64})$/i.test(checkout.head ?? "")
+    || !/^[a-f0-9]{64}$/i.test(checkout.sourceSha256 ?? "")) {
+    return { status: "blocked", detail: "Checkout commit and functional-source identities were not both established" };
+  }
+  const expected = health.releaseKind === "git-commit" ? checkout.head : checkout.sourceSha256;
+  if (health.release.toLowerCase() !== expected.toLowerCase()) {
+    return { status: "warn", detail: `${health.releaseKind}: ${health.release}. Observed serving identity differs from this checkout's expected ${expected}; local checkout is not deployment evidence.` };
+  }
+  if (checkout.clean !== true) {
+    return { status: "warn", detail: `${health.releaseKind}: ${health.release}. Marker matches, but the checkout has uncommitted changes; this does not establish deployment of local changes.` };
+  }
+  return { status: "pass", detail: `${health.releaseKind}: ${health.release}. Observed serving identity matches this clean checkout's corresponding immutable identity.` };
 }
 
 export function summarizeResults(results) {
