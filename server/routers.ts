@@ -13,6 +13,7 @@ import { ELECTRICIAN_309A_MODULES } from "../shared/electrician309aBlueprint";
 import { clearIdentityCookies } from "./_core/logout";
 import { invokeLLM } from "./_core/llm";
 import { getResourcesForProfile, formatResourcesForPrompt } from "./resourceIndex";
+import { resolveAnonymousTutorIdentity } from "./_core/anonymousTutorIdentity";
 import { notifyOwner } from "./_core/notification";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
@@ -918,7 +919,9 @@ export const appRouter = router({
           resolvedEmail = tokenResult.hasAccess ? tokenResult.email : null;
         }
         const resolvedUserId = ctx.user?.id?.toString() ?? null;
-        const anonymousTutorId = `${ctx.req.ip ?? "unknown"}:${ctx.req.get("user-agent") ?? "unknown"}`;
+        const anonymousTutorId = resolvedUserId || resolvedEmail
+          ? `${ctx.req.ip ?? "unknown"}:${ctx.req.get("user-agent") ?? "unknown"}`
+          : await resolveAnonymousTutorIdentity(ctx.req, ctx.res);
         await enforceAiTutorDailyQuota(
           { userId: resolvedUserId, email: resolvedEmail, anonymousId: anonymousTutorId },
           isFreeOitPreview
