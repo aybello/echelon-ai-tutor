@@ -348,11 +348,19 @@ export const quizRouter = router({
       const rows = await db.select(learnerQuestionColumns).from(questions).where(and(...filters))
         .orderBy(...(identified ? [priority, sql`RAND()`] : [sql`RAND()`])).limit(input.limit);
       const parsed = parseLearnerQuestions(rows);
+      // Only retire a topic proven absent from the entire learner-visible bank.
+      // An empty preview, review, calc, difficulty or exhausted page is not proof:
+      // canonical diagnostic topics can differ from the displayed module names.
+      const topicUnavailable = Boolean(input.topic && rows.length === 0 && !(await db
+        .select({ id: questions.id }).from(questions).where(and(
+          eq(questions.bankKey, course.questionBankKey), learnerVisibleQuestionFilter(),
+          sql`COALESCE(${questions.topic}, ${questions.module}) = ${input.topic}`,
+        )).limit(1)).length);
       const actor = await practiceIdentity(ctx, input.accessToken);
       const issuedIdentity = await resolveLearningIdentity(actor.context);
       const attribution = hasAccess ? await resolveAttemptAttribution(issuedIdentity, course.courseKey) : undefined;
       const attemptToken = await issuePracticeReceipt(course.questionBankKey, parsed.map(q => q.id), actor.owner, !hasAccess, attribution);
-      return { questions: parsed.map(q => ({ ...q, attemptToken })), locked: !hasAccess, total: Number(counts.total), hasMore: rows.length === input.limit };
+      return { questions: parsed.map(q => ({ ...q, attemptToken })), locked: !hasAccess, total: Number(counts.total), hasMore: rows.length === input.limit, topicUnavailable };
     }),
 
   /**

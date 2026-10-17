@@ -50,6 +50,24 @@ suite("practice slices and mock retirement with a real database", () => {
     expect(result.questions.every(q => q.module === `${module} rare` && q.isCalc && q.difficulty === "hard")).toBe(true);
     expect((await learner.quiz.getRandomQuestions({ bankKey, module, calcOnly: true, difficulty: "easy" })).questions).toEqual([]);
   });
+  it("retires only absent topics, preserving canonical diagnostic topics and empty valid slices", async () => {
+    const topic = `Canonical diagnostic ${suffix}`;
+    await db.update(questions).set({ topic }).where(and(eq(questions.bankKey, bankKey), eq(questions.questionNum, ids[0])));
+    const valid = await learner.quiz.getRandomQuestions({ bankKey, topic });
+    expect(valid.questions.map(q => q.id)).toEqual([ids[0]]);
+    expect(valid.topicUnavailable).toBe(false);
+    for (const slice of [{ calcOnly: true }, { reviewMode: "bookmarked" as const }, { excludeIds: [ids[0]] }, { module: `${module} rare` }]) {
+      const empty = await learner.quiz.getRandomQuestions({ bankKey, topic, ...slice });
+      expect(empty.questions).toEqual([]);
+      expect(empty.topicUnavailable).toBe(false);
+    }
+    const fallbackModuleTopic = await learner.quiz.getRandomQuestions({ bankKey, topic: `${module} rare` });
+    expect(fallbackModuleTopic.questions.length).toBeGreaterThan(0);
+    expect(fallbackModuleTopic.topicUnavailable).toBe(false);
+    const retired = await learner.quiz.getRandomQuestions({ bankKey, topic: `Retired ${suffix}` });
+    expect(retired.questions).toEqual([]);
+    expect(retired.topicUnavailable).toBe(true);
+  });
   it("fetches the actual saved review questions with course, latest-attempt and identity isolation", async () => {
     await db.insert(bookmarks).values([
       { studentEmail: email, bankKey, questionId: ids[120] },

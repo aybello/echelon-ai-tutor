@@ -516,6 +516,9 @@ export function useQuizSession({
     if (!shouldApplyPracticePageResult(practiceQueueGeneration, activePracticeQueueGeneration.current)) {
       return page;
     }
+    if ("topicUnavailable" in page && page.topicUnavailable === true) {
+      setSelectedTopic(null);
+    }
     if (page.locked === false) {
       setTrialUnlockedState(true);
       setTrialUnlocked();
