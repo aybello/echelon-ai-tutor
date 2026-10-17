@@ -31,6 +31,7 @@ import { issueSubscriptionToken } from "../_core/subscriptionToken";
 import { issueVerifiedEmailSessionCookie } from "../_core/emailSession";
 import { sendOtpEmail } from "../email";
 import { trackEvent } from "../analytics";  // server/analytics.ts
+import { hasRecoverableTeamBilling } from "../teams/billingIdentity";
 import { verifyAndConsumeOtp } from "../auth/atomicVerification";
 
 const OTP_EXPIRY_MINUTES = 10;
@@ -56,9 +57,9 @@ export const emailOtpRouter = router({
     .mutation(async ({ input }) => {
       const email = normalizeEmail(input.email);
 
-      // Resolve entitlements — only send a code if the email has access or is a manager
+      // Billing identity survives paid-content expiry, but grants no learner access.
       const entitlements = await resolveEntitlementsByEmail(email);
-      if (!entitlements.hasAnyAccess && !entitlements.isManager) {
+      if (!entitlements.hasAnyAccess && !entitlements.isManager && !(await hasRecoverableTeamBilling(email))) {
         console.log(`[OTP] No entitlements for ${email.replace(/(^.{3}).+@/, "$1***@")}`);
         return { sent: true };
       }
@@ -143,7 +144,8 @@ export const emailOtpRouter = router({
         email,
         examTypes: entitlements.unlockedExamTypes,
         accessToken,
-        isManager: entitlements.isManager,
+        // This directs billing owners to their team page; course access stays live-only.
+        isManager: entitlements.isManager || await hasRecoverableTeamBilling(email),
       };
     }),
 });

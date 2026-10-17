@@ -19,6 +19,9 @@ const orgDashboardSource = readFileSync(
   "utf8"
 );
 
+const subscriptionSuccessSource = readFileSync(
+  resolve(__dirname, "../client/src/pages/SubscriptionSuccess.tsx"), "utf8"
+);
 describe("post-purchase continuation", () => {
   it("uses the Stripe-verified product and continues directly to activation", () => {
     expect(purchaseSuccessSource).toContain(
@@ -30,6 +33,13 @@ describe("post-purchase continuation", () => {
     expect(purchaseSuccessSource).not.toContain("/account?next=");
   });
 
+  it("routes an unverified subscription receipt to existing OTP without a fallback unlock", () => {
+    expect(subscriptionSuccessSource).toContain('requiresSignIn ? "/login/otp" : quizPath');
+    expect(subscriptionSuccessSource).toContain('if (!accessWritten || requiresSignIn) return;');
+    const fallback = subscriptionSuccessSource.slice(subscriptionSuccessSource.indexOf('onSuccess:'), subscriptionSuccessSource.indexOf('// Fire the verification'));
+    expect(fallback).toContain('setRequiresSignIn(true)');
+    expect(fallback).not.toContain('localStorage.setItem');
+  });
   it("does not create browser-side purchase authority", () => {
     expect(purchaseSuccessSource).not.toContain(
       'localStorage.setItem("echelon_trial_unlocked"'
@@ -37,9 +47,10 @@ describe("post-purchase continuation", () => {
     expect(purchaseSuccessSource).not.toContain(
       'localStorage.setItem("echelon_purchased_products"'
     );
-    expect(stripeRouterSource).toContain(
+    expect(stripeRouterSource).not.toContain(
       "issueVerifiedEmailSessionCookie(ctx.res, email)"
     );
+    expect(stripeRouterSource).toContain("checkoutIdentityMatches(ctx, email)");
   });
 });
 

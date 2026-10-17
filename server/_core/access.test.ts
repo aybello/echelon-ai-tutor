@@ -44,6 +44,14 @@ type OrgRow = {
   termEnd: Date;
   createdAt: Date;
 };
+type OrgSeatRow = {
+  courseKey: string | null;
+  courseKeys: string | null;
+  orgProvince: string;
+  orgTier: string;
+  orgTermEnd: Date;
+  orgStatus: string;
+};
 
 // ── Dates ────────────────────────────────────────────────────────────────────
 
@@ -51,11 +59,12 @@ const FUTURE = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000);
 
 // ── DB mock factory ──────────────────────────────────────────────────────────
 //
-// The resolver makes exactly 3 sequential DB calls:
+// The resolver makes 5 sequential DB calls:
 //   Call 1: purchases  — .select().from().where()  → returns PurchaseRow[]
 //   Call 2: subscriptions — .select().from().where() → returns SubRow[]
 //   Call 3: org seat check — .select().from().innerJoin().where() → returns OrgSeatRow[]
-//   Call 4: manager check — .select().from().where() → returns OrgRow[]
+//   Call 4: Flex licence check
+//   Call 5: manager check — .select().from().where() → returns OrgRow[]
 //
 // We track call order with a counter and return the right rows for each call.
 
@@ -63,6 +72,7 @@ function mockDb(
   purchaseRows: PurchaseRow[],
   subRows: SubRow[],
   orgRows: OrgRow[],
+  orgSeatRows: OrgSeatRow[] = [],
 ) {
   let call = 0;
 
@@ -72,10 +82,11 @@ function mockDb(
       if (call === 1) return Promise.resolve(purchaseRows);
       if (call === 2) return Promise.resolve(subRows);
       if (call === 3) {
-        // org seat check — innerJoin path returns empty array (no org seats in unit tests)
-        return Promise.resolve([]);
+        // Model the assigned/nonexpired seat predicate enforced by SQL.
+        return Promise.resolve(orgSeatRows.filter(row => row.orgTermEnd > new Date()));
       }
-      // call 4 — manager check
+      if (call === 4) return Promise.resolve([]); // Flex
+      // call 5 — manager check
       return Promise.resolve(orgRows);
     },
   });
@@ -107,8 +118,20 @@ function sub(
   province: string,
   status = "active",
   currentPeriodEnd = FUTURE,
+  orgId: number | null = null
 ): SubRow {
-  return { tier, province, status, currentPeriodEnd, orgId: null };
+  return { tier, province, status, currentPeriodEnd, orgId };
+}
+
+function orgSeat(courseKey: string): OrgSeatRow {
+  return {
+    courseKey,
+    courseKeys: null,
+    orgProvince: "ontario",
+    orgTier: "stream-water",
+    orgTermEnd: FUTURE,
+    orgStatus: "active",
+  };
 }
 
 function org(
@@ -236,6 +259,63 @@ describe("resolveEntitlementsByEmail", () => {
     expect(r.unlockedExamTypes).toContain("class1-water");
     expect(r.unlockedExamTypes).toContain("class1-ww");
     expect(r.sources).toContain("subscription");
+  });
+
+  it("resolves a Team Annual org row only through its exact active course assignment", async () => {
+    mockDb(
+      [],
+      [sub("class1", "ontario", "active", FUTURE, 701)],
+      [],
+      [orgSeat("class1-water")]
+    );
+
+    const r = await resolveEntitlementsByEmail("annual-operator@echelon.test");
+
+    expect(r.unlockedExamTypes).toContain("class1-water");
+    // Same class, but different purchased stream/course.
+    expect(r.unlockedExamTypes).not.toContain("class1-ww");
+    // Different course/class in the same regional catalogue.
+    expect(r.unlockedExamTypes).not.toContain("class2-water");
+    // Different regional stream must not be inferred from an Ontario Annual row.
+    expect(r.unlockedExamTypes).not.toContain("wpi-class1-water");
+    expect(r.activeSubscriptionRows).toEqual([]);
+    expect(r.sources).not.toContain("subscription");
+    expect(r.sources).toContain("org_seat");
+  });
+
+  it.each(["cancelled", "revoked"])("does not rescue a stale org subscription for a %s organization", async status => {
+    mockDb([], [sub("class1", "ontario", "active", FUTURE, 701)], [], [{ ...orgSeat("class1-water"), orgStatus: status }]);
+    const result = await resolveEntitlementsByEmail("revoked-seat@example.test");
+    expect(result.unlockedExamTypes).toEqual([]);
+    expect(result.hasAnyAccess).toBe(false);
+  });
+
+  it("does not rescue an expired organization through a still-active org subscription", async () => {
+    mockDb([], [sub("class1", "ontario", "active", FUTURE, 701)], [], [{ ...orgSeat("class1-water"), orgTermEnd: new Date(0) }]);
+    const result = await resolveEntitlementsByEmail("expired-seat@example.test");
+    expect(result.unlockedExamTypes).toEqual([]);
+  });
+
+  it("does not rescue a revoked seat with no assigned membership through its stale org subscription", async () => {
+    mockDb([], [sub("class1", "ontario", "active", FUTURE, 701)], []);
+    expect((await resolveEntitlementsByEmail("revoked-seat@example.test")).unlockedExamTypes).toEqual([]);
+  });
+
+  it("preserves an independent valid personal subscription alongside a stale org row", async () => {
+    mockDb([], [sub("all-access", "ontario", "active", FUTURE, 701), sub("class2", "western")], []);
+    const result = await resolveEntitlementsByEmail("personal-and-org@example.test");
+    expect(result.unlockedExamTypes).toContain("wpi-class2-water");
+    expect(result.unlockedExamTypes).not.toContain("class1-water");
+    expect(result.activeSubscriptionRows).toHaveLength(1);
+    expect(result.activeSubscriptionRows[0].orgId).toBeNull();
+  });
+
+  it("does not broaden a Western Annual course into wastewater in the same class", async () => {
+    mockDb([], [sub("class1", "western", "active", FUTURE, 701)], [], [{ ...orgSeat("wpi-class1-water"), orgProvince: "western" }]);
+    const result = await resolveEntitlementsByEmail("western-seat@example.test");
+    expect(result.unlockedExamTypes).toContain("wpi-class1-water");
+    expect(result.unlockedExamTypes).not.toContain("wpi-class1-wastewater");
+    expect(result.unlockedExamTypes).not.toContain("wpi-class1-water-dist");
   });
 
   it("grants access for past_due subscription (grace period)", async () => {

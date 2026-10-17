@@ -1,8 +1,7 @@
 // Echelon Institute — Subscription Success Page
 // Shown after a successful annual subscription checkout.
-// Calls verifySubscriptionSession to confirm payment server-side, then writes
-// subscription access to localStorage so the customer can study immediately
-// without needing to log in first.
+// Confirms payment without creating identity. Anonymous customers continue
+// through the existing OTP flow before current access can be restored.
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
@@ -67,6 +66,7 @@ export default function SubscriptionSuccess() {
   const [countdown, setCountdown] = useState(8);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const [accessWritten, setAccessWritten] = useState(false);
+  const [requiresSignIn, setRequiresSignIn] = useState(false);
 
   // Read URL params — tier/province passed as convenience fallback
   const params = new URLSearchParams(window.location.search);
@@ -85,14 +85,13 @@ export default function SubscriptionSuccess() {
       if (data.paid && data.examTypes.length > 0) {
         writeSubscriptionAccess(data.email, data.tier || tier, data.province || province, data.examTypes, data.accessToken);
       } else {
-        // Fallback: set trial-unlocked so they're not completely blocked
-        try { localStorage.setItem("echelon_trial_unlocked", "true"); } catch {}
+        // Payment evidence is not identity; continue through the existing OTP flow.
+        setRequiresSignIn(true);
       }
       setAccessWritten(true);
     },
     onError: () => {
-      // Best-effort fallback — server-side checkAccess will be authoritative once they log in
-      try { localStorage.setItem("echelon_trial_unlocked", "true"); } catch {}
+      setRequiresSignIn(true);
       setAccessWritten(true);
     },
   });
@@ -102,6 +101,7 @@ export default function SubscriptionSuccess() {
     if (sessionId) {
       verifyMutation.mutate({ sessionId });
     } else {
+      setRequiresSignIn(true);
       setAccessWritten(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -109,7 +109,7 @@ export default function SubscriptionSuccess() {
 
   // Start countdown once access is written
   useEffect(() => {
-    if (!accessWritten) return;
+    if (!accessWritten || requiresSignIn) return;
     intervalRef.current = setInterval(() => {
       setCountdown(c => {
         if (c <= 1) {
@@ -121,7 +121,7 @@ export default function SubscriptionSuccess() {
       });
     }, 1000);
     return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
-  }, [accessWritten, quizPath, setLocation]);
+  }, [accessWritten, requiresSignIn, quizPath, setLocation]);
 
   return (
     <div style={{
@@ -150,13 +150,13 @@ export default function SubscriptionSuccess() {
           margin: "0 auto 20px", fontSize: 28, color: "#fff",
         }}>✓</div>
         <h1 style={{ fontSize: 24, fontWeight: 900, color: "#0F172A", margin: "0 0 8px" }}>
-          Subscription Activated!
+          {requiresSignIn ? "Sign in to restore access" : "Subscription Activated!"}
         </h1>
         <p style={{ fontSize: 15, color: "#475569", margin: "0 0 20px", lineHeight: 1.6 }}>
-          Your <strong>{tierLabel}</strong> subscription for <strong>{provinceLabel}</strong> is now active.
-          You have full access to all included exam types for the next 12 months.
+          {requiresSignIn ? "Verify your subscription email with a one-time code to restore current access." : <>Your <strong>{tierLabel}</strong> subscription for <strong>{provinceLabel}</strong> is now active.
+          You have access to your currently included exam types.</>}
         </p>
-        <div style={{
+        {!requiresSignIn && <div style={{
           background: "#F5F3FF", border: "1.5px solid #C4B5FD",
           borderRadius: 12, padding: "16px 20px", marginBottom: 24, textAlign: "left",
         }}>
@@ -170,8 +170,8 @@ export default function SubscriptionSuccess() {
             <li>Flashcards &amp; module study notes</li>
             <li>Access valid for 12 months from today</li>
           </ul>
-        </div>
-        <Link href={quizPath}>
+        </div>}
+        <Link href={requiresSignIn ? "/login/otp" : quizPath}>
           <button
             onClick={() => { if (intervalRef.current) clearInterval(intervalRef.current); }}
             style={{
@@ -181,7 +181,7 @@ export default function SubscriptionSuccess() {
               cursor: "pointer", fontFamily: "inherit", marginBottom: 12,
             }}
           >
-            Start Studying Now →
+            {requiresSignIn ? "Sign In with Email Code →" : "Start Studying Now →"}
           </button>
         </Link>
         <Link href="/account">
@@ -198,7 +198,7 @@ export default function SubscriptionSuccess() {
           </button>
         </Link>
         <p style={{ fontSize: 12, color: "#94A3B8", margin: 0 }}>
-          {accessWritten
+          {requiresSignIn ? "Use the email associated with your subscription." : accessWritten
             ? `Redirecting to your study page in ${countdown}s…`
             : "Activating your access…"}
         </p>

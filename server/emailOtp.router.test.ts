@@ -18,6 +18,7 @@ const state = vi.hoisted(() => ({
   selectedId: null as number | null,
   lastInsertedHash: null as string | null,
   hasAccess: true,
+  billingOwner: false,
   sendOtpEmail: vi.fn(),
   issueSession: vi.fn(async () => undefined),
   trackEvent: vi.fn(async () => undefined),
@@ -108,6 +109,10 @@ vi.mock("./_core/access", () => ({
   })),
 }));
 
+vi.mock("./teams/billingIdentity", () => ({
+  hasRecoverableTeamBilling: vi.fn(async () => state.billingOwner),
+}));
+
 vi.mock("./email", () => ({
   sendOtpEmail: state.sendOtpEmail,
 }));
@@ -141,6 +146,7 @@ beforeEach(() => {
   state.selectedId = null;
   state.lastInsertedHash = null;
   state.hasAccess = true;
+  state.billingOwner = false;
   state.sendOtpEmail.mockReset().mockResolvedValue(undefined);
   state.issueSession.mockClear();
   state.trackEvent.mockClear();
@@ -219,6 +225,18 @@ describe("emailOtp router delivery and resend safety", () => {
     expect(result).toMatchObject({ valid: true, email: "manager@example.test", isManager: true });
     expect(state.rows[0].usedAt).toBeNull();
     expect(state.rows[1].usedAt).toBeInstanceOf(Date);
+    expect(state.issueSession).toHaveBeenCalledOnce();
+  });
+
+  it("lets a lapsed billing owner complete OTP without restoring expired learner access", async () => {
+    state.hasAccess = false;
+    state.billingOwner = true;
+    const caller = emailOtpRouter.createCaller(makeCtx());
+    await expect(caller.requestOtp({ email: "lapsed-manager@example.test" })).resolves.toEqual({ sent: true });
+    expect(state.sendOtpEmail).toHaveBeenCalledOnce();
+    const sentCode = state.sendOtpEmail.mock.calls[0][0].code;
+    const result = await caller.verifyOtp({ email: "lapsed-manager@example.test", code: sentCode });
+    expect(result).toMatchObject({ valid: true, isManager: true, examTypes: [], accessToken: "" });
     expect(state.issueSession).toHaveBeenCalledOnce();
   });
 

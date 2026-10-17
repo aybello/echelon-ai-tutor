@@ -33,6 +33,7 @@ import {
   readVerifiedEmailFromRequest,
   ECHELON_SESSION_COOKIE,
 } from "../_core/emailSession";
+import { hasRecoverableTeamBilling } from "../teams/billingIdentity";
 import { verifyAndConsumeOtp } from "../auth/atomicVerification";
 
 const OTP_TTL_MS = 10 * 60 * 1000; // 10 minutes
@@ -83,7 +84,7 @@ export const dashboardAuthRouter = router({
    * Uses the shared entitlement resolver to check access — this ensures:
    * - Refunded/disputed purchases do NOT trigger an OTP send.
    * - Expired/cancelled subscriptions do NOT trigger an OTP send.
-   * - Managers (isManager) can still receive an OTP even without course entitlements.
+   * - Existing billing owners can verify identity after a team lapses, without course access.
    *
    * Always returns { sent: true } to prevent email enumeration.
    */
@@ -98,7 +99,7 @@ export const dashboardAuthRouter = router({
       // A signed training record remains available to its learner after paid
       // course access ends; identity verification alone restores that record.
       const canRestoreRecords = await hasTrainingRecord(email);
-      if (!entitlements.hasAnyAccess && !entitlements.isManager && !canRestoreRecords) {
+      if (!entitlements.hasAnyAccess && !entitlements.isManager && !canRestoreRecords && !(await hasRecoverableTeamBilling(email))) {
         // Return success anyway to avoid email enumeration — just don't send
         return { sent: true };
       }

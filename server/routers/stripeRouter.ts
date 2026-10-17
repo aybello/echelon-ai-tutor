@@ -3,12 +3,11 @@ import { checkoutIdentityMatches } from "../stripe/checkoutIdentity";
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
 import { publicProcedure, protectedProcedure, router } from "../_core/trpc";
-import { resolveAccess, resolveAccessByEmail, normalizeEmail } from "../_core/access";
+import { resolveAccess, resolveAccessByEmail, normalizeEmail, resolveEntitlementsByEmail } from "../_core/access";
 import { stripe } from "../stripe/stripe";
 import { ALL_PRODUCTS, getAllUnlockedExamTypes, PRODUCT_STUDY_PATHS } from "../stripe/products";
 import {
   getAllSubscriptionExamTypes,
-  getSubscriptionExamTypes,
   TEAM_BASE_PRICE,
   TEAM_VOLUME_TIERS,
   TEAM_STREAM_TIER_LABELS,
@@ -29,9 +28,7 @@ import { purchaseReadColumns, purchases, subscriptions } from "../../drizzle/sch
 import { eq, and, gt, count } from "drizzle-orm";
 import { ENV } from "../_core/env";
 import { notifyOwner } from "../_core/notification";
-import { issueSubscriptionToken } from "../_core/subscriptionToken";
 import { verifyAccessTokenAndRecheckDb } from "../_core/accessService";
-import { issueVerifiedEmailSessionCookie } from "../_core/emailSession";
 import { validateOneTimeCheckout } from "../stripe/validateOneTimeCheckout";
 import { individualExamPassCheckoutMetadata } from "../stripe/individualExamPass";
 import { googleAdsPurchaseConversion } from "../stripe/googleAdsPurchase";
@@ -484,42 +481,49 @@ export const stripeRouter = router({
     }),
 
   /**
-   * Verify a subscription checkout session and return tier/province/examTypes/email.
-   * Called by SubscriptionSuccess.tsx immediately after the Stripe redirect so the
-   * customer gets localStorage access without needing to log in.
-   * Public procedure — safe because we verify server-side via the Stripe session ID.
+   * Confirm payment, never mailbox ownership. Identity must already be verified
+   * through OAuth/OTP; this receipt endpoint issues no session or access tokens.
+   * Team receipts must never expand into personal class-tier entitlements.
    */
   verifySubscriptionSession: publicProcedure
     .input(z.object({ sessionId: z.string() }))
     .mutation(async ({ input, ctx }) => {
+      const confirmation = {
+        paid: false, email: "", tier: "", province: "",
+        examTypes: [] as string[], accessToken: null, requiresSignIn: true,
+      };
       try {
         const session = await stripe.checkout.sessions.retrieve(input.sessionId, {
           expand: ["customer_details"],
         });
+        // A completed asynchronous checkout is not necessarily paid.
+        if (session.mode !== "subscription" || session.payment_status !== "paid") {
+          return confirmation;
+        }
         const email = normalizeEmail(
-          (session as any).customer_details?.email ??
-          session.customer_email ??
-          session.metadata?.customer_email
+          session.customer_details?.email ?? session.customer_email ?? session.metadata?.customer_email
         );
-        const tier = (session.metadata?.subscription_tier ?? "") as SubscriptionTier;
-        const province = (session.metadata?.subscription_province ?? "") as SubscriptionProvince;
-        // Subscription checkout sessions have status "complete" when paid
-        const paid = session.payment_status === "paid" || session.status === "complete";
-        if (!paid || !tier || !province) {
-          return { paid: false, email: "", tier: "", province: "", examTypes: [] as string[] };
+        const identityMatches = !!email && checkoutIdentityMatches(ctx, email);
+        const paidConfirmation = { ...confirmation, paid: true, requiresSignIn: !identityMatches };
+        const tier = session.metadata?.subscription_tier ?? "";
+        const province = session.metadata?.subscription_province ?? "";
+        if (!identityMatches || session.metadata?.type === "org" || !tier || !province) {
+          return paidConfirmation;
         }
-        const examTypes = getSubscriptionExamTypes(tier, province);
-        const accessToken = await issueSubscriptionToken({ email, examTypes });
-        // FIX 4: Issue verified Echelon session cookie so dashboard opens without OTP
-        try {
-          await issueVerifiedEmailSessionCookie(ctx.res, email);
-        } catch (e) {
-          console.error("[verifySubscriptionSession] Failed to issue session cookie:", e);
-        }
-        return { paid: true, email, tier, province, examTypes, accessToken };
+        // Historical receipts confirm payment but cannot restore lapsed access.
+        // Current access comes from the common resolver, not checkout metadata.
+        const entitlements = await resolveEntitlementsByEmail(email);
+        const hasMatchingPersonalSubscription = entitlements.activeSubscriptionRows.some(
+          row => row.orgId == null && row.tier === tier && row.province === province
+        );
+        if (!hasMatchingPersonalSubscription) return paidConfirmation;
+        return {
+          ...paidConfirmation, email, tier, province,
+          examTypes: entitlements.unlockedExamTypes,
+        };
       } catch (err: any) {
         console.error("[verifySubscriptionSession] Error:", err.message);
-        return { paid: false, email: "", tier: "", province: "", examTypes: [] as string[] };
+        return confirmation;
       }
     }),
 

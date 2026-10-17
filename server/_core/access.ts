@@ -239,6 +239,10 @@ export async function resolveEntitlementsByEmail(
   const activeSubscriptionRows: ResolvedEntitlements["activeSubscriptionRows"] = [];
 
   for (const row of eligibleSubRows) {
+    // Annual seat rows are not personal subscriptions: class-tier expansion would
+    // grant unassigned courses and streams. Resolve them only via active, exact
+    // organization assignments below (including organization term/status checks).
+    if (row.orgId != null) continue;
     try {
       const examTypes = getAllSubscriptionExamTypes([
         {
