@@ -186,6 +186,22 @@ describe("read-only heartbeat snapshot", () => {
     const snapshot = await readBlogHeartbeatSnapshot({ ...options, run: mock.run });
     expect(snapshot.jobs).toBeNull(); expect(snapshot.blocked.join(" ")).toContain("incomplete");
   });
+  it("blocks a missing newest failure rather than trusting a partial success-only log page", async () => {
+    const input = fixture();
+    const mock = runner([{ jobs: input.heartbeat.jobs, total: 2 },
+      { runs: input.heartbeat.weeklyRuns, task_uid: "weekly-fixture", total: 2 }]);
+    const snapshot = await readBlogHeartbeatSnapshot({ ...options, run: mock.run });
+    expect(snapshot.weeklyRuns).toBeNull();
+    expect(snapshot.blocked.join(" ")).toContain("incomplete");
+    expect(assess({ ...input, heartbeat: snapshot }).status).toBe("blocked");
+  });
+  it("accepts a full bounded first page but blocks a short page when total exceeds its size", async () => {
+    const full = Array.from({ length: 20 }, () => fixture().heartbeat.weeklyRuns[0]);
+    const complete = runner([{ jobs: [], total: 0 }, { runs: full, total: 30, task_uid: "weekly-fixture" }]);
+    expect((await readBlogHeartbeatSnapshot({ ...options, run: complete.run })).weeklyRuns).toHaveLength(20);
+    const partial = runner([{ jobs: [], total: 0 }, { runs: full.slice(0, 19), total: 30, task_uid: "weekly-fixture" }]);
+    expect((await readBlogHeartbeatSnapshot({ ...options, run: partial.run })).weeklyRuns).toBeNull();
+  });
   it("blocks missing credentials without launching a subprocess", async () => {
     const mock = runner([]);
     const snapshot = await readBlogHeartbeatSnapshot({ ...options, parentEnv: {}, run: mock.run });

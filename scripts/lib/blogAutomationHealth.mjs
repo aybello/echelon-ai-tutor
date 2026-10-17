@@ -46,8 +46,8 @@ export async function readBlogHeartbeatSnapshot({ weeklyTaskUid, parentEnv, home
   } else try {
     // A finite window of newest runs, without response bodies or customer payloads.
     const data = await read("weekly", ["logs", "--task-uid", weeklyTaskUid, "--page", "1", "--page-size", "20"]);
-    if (!Array.isArray(data.runs) || !Number.isInteger(data.total) || data.total < data.runs.length
-      || (data.total > 0 && !data.runs.length) || field(data, "taskUid", "task_uid") !== weeklyTaskUid) {
+    if (!Array.isArray(data.runs) || !Number.isInteger(data.total) || data.total < 0
+      || data.runs.length !== Math.min(data.total, 20) || field(data, "taskUid", "task_uid") !== weeklyTaskUid) {
       throw new Error("Heartbeat weekly log shape unsupported or incomplete");
     }
     snapshot.weeklyRuns = data.runs;
