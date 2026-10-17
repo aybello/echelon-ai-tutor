@@ -1,0 +1,905 @@
+{
+  "batch": "06",
+  "title": "Class 1 Water Treatment — batch 06 (questions 1201–1240)",
+  "bankKey": "class1-water",
+  "origin": "ai_assisted",
+  "contentStatus": "draft",
+  "reviewStatus": "in_review",
+  "notes": "Machine-authored draft staged for SME technical review. Imported as reviewStatus 'in_review' per the answer-length governance convention. No regulatory numeric limits or code citations are asserted; all calculations are self-contained.",
+  "questions": [
+    {
+      "questionNum": 1201,
+      "question": "When is fall protection required for an operator climbing a reservoir access ladder?",
+      "options": [
+        "Whenever the climb exceeds the height at which a fall could cause injury",
+        "Only when the operator is carrying tools or equipment while climbing",
+        "Only when weather conditions have made the ladder rungs wet or icy",
+        "Whenever a second worker is not present at the base of the ladder"
+      ],
+      "correctIndex": 0,
+      "explanation": "Fall protection requirements are based on the height of the potential fall and the hazard it presents, not on the task or the weather. A fixed ladder above the trigger height needs a compliant system such as a cage, a ladder safety device, or a personal fall arrest system used correctly.",
+      "difficulty": "medium",
+      "module": "Safety",
+      "topic": "Fall protection",
+      "isCalc": "no",
+      "tip": "Height and consequence trigger the requirement. Carrying tools raises risk but does not define the trigger."
+    },
+    {
+      "questionNum": 1202,
+      "question": "Why does welding or cutting near a chemical storage area require a hot work permit?",
+      "options": [
+        "Because the permit records the qualifications held by the welding operator",
+        "Because the permit ensures the work is scheduled outside operating hours",
+        "Because welding equipment must be inspected before each use on site",
+        "Because heat and sparks can ignite vapours or react with stored chemicals"
+      ],
+      "correctIndex": 3,
+      "explanation": "Hot work introduces an ignition source into an area that may contain flammable vapours, combustible materials, or chemicals that react dangerously with heat. The permit forces the hazards to be assessed, the area to be cleared and tested, a fire watch to be posted, and the work to be authorised deliberately.",
+      "difficulty": "medium",
+      "module": "Safety",
+      "topic": "Hot work",
+      "isCalc": "no",
+      "tip": "Fires from hot work often start unnoticed and are discovered after the crew has left. Hence the fire watch."
+    },
+    {
+      "questionNum": 1203,
+      "question": "Why does a plant maintain a record of its design capacity against actual peak day demand?",
+      "options": [
+        "To determine the staffing level required during periods of peak production",
+        "To calculate the chemical inventory required to sustain peak production",
+        "To establish the classification that applies to the treatment facility",
+        "To identify when demand approaches capacity so expansion can be planned"
+      ],
+      "correctIndex": 3,
+      "explanation": "A plant running close to its rated capacity has no margin for a unit out of service, a raw water quality excursion, or demand growth. Tracking peak day demand against rated capacity shows how much headroom remains and gives the lead time needed to plan and construct additional capacity.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Capacity planning",
+      "isCalc": "no",
+      "tip": "Effective capacity is what the plant can produce with the largest unit out of service, not its nameplate rating."
+    },
+    {
+      "questionNum": 1204,
+      "question": "Why is turbidity of the water entering the filters monitored as well as the filtered water?",
+      "options": [
+        "Because settled turbidity indicates whether pretreatment is performing correctly",
+        "Because filter influent turbidity is used to calculate the required backwash rate",
+        "Because the difference between the two values determines the coagulant dose",
+        "Because filter influent readings replace the need for individual filter monitors"
+      ],
+      "correctIndex": 0,
+      "explanation": "Settled water turbidity shows how much of the solids load coagulation and clarification have removed before the filters. A rise means the filters are being asked to carry more than they were designed for, which shortens runs and raises breakthrough risk, and it locates the problem upstream rather than in the filters.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Process monitoring points",
+      "isCalc": "no",
+      "tip": "Monitoring between stages tells you which stage is failing. Endpoint monitoring alone only tells you that something is."
+    },
+    {
+      "questionNum": 1205,
+      "question": "What is the purpose of a multi-barrier approach to drinking water safety?",
+      "options": [
+        "To ensure each barrier removes a different specific contaminant group",
+        "To allow one barrier to be taken out of service without any consequence",
+        "To reduce the cost of treatment by sharing the load across several stages",
+        "To ensure that failure of any single barrier does not lead to unsafe water"
+      ],
+      "correctIndex": 3,
+      "explanation": "No single barrier is completely reliable. Source protection, treatment, secure distribution, monitoring, and trained operators each reduce risk, and their overlap means a failure or shortfall in one is compensated by the others. The strength of the approach lies in the redundancy between barriers.",
+      "difficulty": "medium",
+      "module": "Water Quality & Regulations",
+      "topic": "Multi-barrier approach",
+      "isCalc": "no",
+      "tip": "Barriers overlap deliberately. Relying on any single one, however good, is the failure mode the approach prevents."
+    },
+    {
+      "questionNum": 1206,
+      "question": "Why does an operator confirm that a chemical feed change has taken effect rather than assuming it has?",
+      "options": [
+        "Because the process responds with a lag, and equipment can fail to respond",
+        "Because chemical feed adjustments must be witnessed by a second operator",
+        "Because the control system records only the setpoint, not the actual feed",
+        "Because feed changes are reversed automatically if not confirmed in time"
+      ],
+      "correctIndex": 0,
+      "explanation": "A pump can be commanded to a new rate and fail to deliver it because of a blocked line, a lost prime, an airlock, or a stuck valve. The process also responds slowly, so the operator verifies by observing the downstream measurement move as expected, rather than trusting the setpoint alone.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Verifying process changes",
+      "isCalc": "no",
+      "tip": "Make the change, then confirm the process responded. A setpoint is a request, not a result."
+    },
+    {
+      "questionNum": 1207,
+      "question": "Why is the finished water sampling point located after the clearwell rather than immediately after the filters?",
+      "options": [
+        "Because filtered water has not yet completed disinfection contact time",
+        "Because the clearwell outlet is more accessible for routine sampling",
+        "Because filter effluent turbidity is already monitored continuously",
+        "Because the clearwell removes any remaining particles from the water"
+      ],
+      "correctIndex": 0,
+      "explanation": "Water leaving the filters has not yet passed through the contact time that completes primary disinfection. Sampling after the clearwell characterises the water as it actually enters the distribution system, with disinfection complete and residual established.",
+      "difficulty": "medium",
+      "module": "Sampling & Laboratory",
+      "topic": "Sampling point selection",
+      "isCalc": "no",
+      "tip": "Sample where the process stage is complete. Sampling mid-process describes water no consumer receives."
+    },
+    {
+      "questionNum": 1208,
+      "question": "An operator notices the plant is meeting all its water quality targets but chemical consumption per megalitre has climbed steadily over several weeks. What does this most likely indicate?",
+      "options": [
+        "The finished water quality targets have been set too conservatively",
+        "A normal seasonal variation that requires no operator investigation",
+        "The chemical delivered in the most recent shipment is of higher strength",
+        "A developing process or equipment problem that current settings are masking"
+      ],
+      "correctIndex": 3,
+      "explanation": "Meeting targets with progressively more chemical means the process is working harder to achieve the same result. Deteriorating raw water, a degrading chemical, a drifting feed pump, or a failing upstream process are all consistent with the pattern, and each is easier to correct before performance itself begins to slip.",
+      "difficulty": "hard",
+      "module": "Process Control & Operations",
+      "topic": "Performance trending",
+      "isCalc": "no",
+      "tip": "Rising chemical use at constant quality is an early warning. Investigate before the quality follows."
+    },
+    {
+      "questionNum": 1209,
+      "question": "A flocculation basin holds 300 m³ and the plant treats 3.6 ML/d. What is the flocculation detention time?",
+      "options": [
+        "1.0 hour",
+        "3.0 hours",
+        "4.5 hours",
+        "2.0 hours"
+      ],
+      "correctIndex": 3,
+      "explanation": "Converting 3.6 ML/d to 3600 m³/d and dividing gives 300 ÷ 3600 = 0.0833 days, which is 2.0 hours.",
+      "difficulty": "medium",
+      "module": "Coagulation & Flocculation",
+      "topic": "Flocculation detention",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Convert flow",
+          "c": "3.6 ML/d = 3600 m³/d"
+        },
+        {
+          "l": "Divide",
+          "c": "300 m³ ÷ 3600 m³/d = 0.0833 d"
+        },
+        {
+          "l": "To hours",
+          "c": "0.0833 × 24 = 2.0 hours"
+        }
+      ],
+      "tip": "Too short a flocculation time gives small floc; too long risks shearing what has formed."
+    },
+    {
+      "questionNum": 1210,
+      "question": "Water exerts a chlorine demand of 1.9 mg/L and the operator wants a residual of 0.8 mg/L. What dose is required?",
+      "options": [
+        "1.1 mg/L",
+        "1.9 mg/L",
+        "2.7 mg/L",
+        "3.5 mg/L"
+      ],
+      "correctIndex": 2,
+      "explanation": "Dose must satisfy the demand and leave the desired residual: 1.9 + 0.8 = 2.7 mg/L.",
+      "difficulty": "easy",
+      "module": "Disinfection",
+      "topic": "Dose calculation",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "Dose = Demand + Residual"
+        },
+        {
+          "l": "Substitute",
+          "c": "1.9 mg/L + 0.8 mg/L"
+        },
+        {
+          "l": "Solve",
+          "c": "= 2.7 mg/L"
+        }
+      ],
+      "tip": "Demand must be satisfied before any residual appears, so the dose is always the larger figure."
+    },
+    {
+      "questionNum": 1211,
+      "question": "A plant produces 9.2 ML/d and uses 115 m³ per filter backwash, washing four filters daily. What percentage of production is used for backwashing?",
+      "options": [
+        "1.25 percent",
+        "12.5 percent",
+        "20.0 percent",
+        "5.0 percent"
+      ],
+      "correctIndex": 3,
+      "explanation": "Daily backwash volume is 115 m³ × 4 = 460 m³. Production is 9200 m³/d, so 460 ÷ 9200 × 100 = 5.0 percent.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Backwash water usage",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Backwash volume",
+          "c": "115 m³ × 4 washes = 460 m³/d"
+        },
+        {
+          "l": "Convert production",
+          "c": "9.2 ML/d = 9200 m³/d"
+        },
+        {
+          "l": "Percentage",
+          "c": "460 ÷ 9200 × 100 = 5.0%"
+        }
+      ],
+      "tip": "Backwash use is a standard efficiency measure. A rising percentage suggests filters are fouling faster."
+    },
+    {
+      "questionNum": 1212,
+      "question": "A filter of 24 m² operates at 5 m/h. How long will the run last if it produces 1800 m³ before backwashing?",
+      "options": [
+        "9 hours",
+        "12 hours",
+        "15 hours",
+        "20 hours"
+      ],
+      "correctIndex": 2,
+      "explanation": "At 5 m/h over 24 m², the filter produces 5 × 24 = 120 m³/h. Dividing the run volume gives 1800 ÷ 120 = 15 hours.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Filter run length",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Production rate",
+          "c": "5 m/h × 24 m² = 120 m³/h"
+        },
+        {
+          "l": "Run time",
+          "c": "1800 m³ ÷ 120 m³/h = 15 hours"
+        }
+      ],
+      "tip": "Shortening run lengths at a constant rate is an early sign of pretreatment problems."
+    },
+    {
+      "questionNum": 1213,
+      "question": "A channel is 1.2 m wide and carries water 0.5 m deep at a flow of 0.3 m³/s. What is the velocity?",
+      "options": [
+        "0.25 m/s",
+        "0.60 m/s",
+        "1.20 m/s",
+        "0.50 m/s"
+      ],
+      "correctIndex": 3,
+      "explanation": "The flow area is 1.2 m × 0.5 m = 0.6 m². Velocity is flow divided by area: 0.3 ÷ 0.6 = 0.5 m/s.",
+      "difficulty": "medium",
+      "module": "Hydraulics",
+      "topic": "Channel velocity",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Area",
+          "c": "1.2 m × 0.5 m = 0.6 m²"
+        },
+        {
+          "l": "Velocity",
+          "c": "0.3 m³/s ÷ 0.6 m² = 0.5 m/s"
+        }
+      ],
+      "tip": "Use the wetted cross-section, not the full channel depth, when the channel runs part full."
+    },
+    {
+      "questionNum": 1214,
+      "question": "An operator must dose a 40 m³ tank of water to 50 mg/L. What mass of chemical is required?",
+      "options": [
+        "0.5 kg",
+        "5.0 kg",
+        "20.0 kg",
+        "2.0 kg"
+      ],
+      "correctIndex": 3,
+      "explanation": "40 m³ is 40 000 litres. At 50 mg per litre that is 2 000 000 mg, which is 2.0 kg.",
+      "difficulty": "medium",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Batch dosing",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Convert volume",
+          "c": "40 m³ = 40 000 L"
+        },
+        {
+          "l": "Mass",
+          "c": "40 000 L × 50 mg/L = 2 000 000 mg"
+        },
+        {
+          "l": "Convert",
+          "c": "2 000 000 mg ÷ 1 000 000 = 2.0 kg"
+        },
+        {
+          "l": "Shortcut",
+          "c": "kg = m³ × mg/L ÷ 1000 = 40 × 50 ÷ 1000 = 2.0"
+        }
+      ],
+      "tip": "The shortcut kg = m³ × mg/L ÷ 1000 handles most batch dosing problems."
+    },
+    {
+      "questionNum": 1215,
+      "question": "An operator needs 200 L of 5 percent solution and has 20 percent stock available. How much stock is required?",
+      "options": [
+        "20 L of stock",
+        "40 L of stock",
+        "50 L of stock",
+        "80 L of stock"
+      ],
+      "correctIndex": 2,
+      "explanation": "Using the dilution relationship, the strong solution volume equals the required volume multiplied by the ratio of strengths: 200 × 5 ÷ 20 = 50 L of stock, made up to 200 L with water.",
+      "difficulty": "hard",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Dilution",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Relationship",
+          "c": "C₁V₁ = C₂V₂"
+        },
+        {
+          "l": "Substitute",
+          "c": "20% × V₁ = 5% × 200 L"
+        },
+        {
+          "l": "Solve",
+          "c": "V₁ = 1000 ÷ 20 = 50 L"
+        },
+        {
+          "l": "Make up",
+          "c": "Add water to bring 50 L to a final 200 L."
+        }
+      ],
+      "tip": "Add the concentrate to water, not water to concentrate, when the chemical is corrosive."
+    },
+    {
+      "questionNum": 1216,
+      "question": "A pump lifts water 25 m statically and the discharge line has losses of 3 m, 1.5 m and 0.8 m at various fittings. What is the total dynamic head?",
+      "options": [
+        "25.0 m",
+        "5.3 m",
+        "28.0 m",
+        "30.3 m"
+      ],
+      "correctIndex": 3,
+      "explanation": "Total dynamic head is the static lift plus all losses: 25 + 3 + 1.5 + 0.8 = 30.3 m.",
+      "difficulty": "medium",
+      "module": "Pumps & Hydraulics",
+      "topic": "Head loss summation",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Sum losses",
+          "c": "3 + 1.5 + 0.8 = 5.3 m"
+        },
+        {
+          "l": "Add static",
+          "c": "25 m + 5.3 m"
+        },
+        {
+          "l": "Solve",
+          "c": "= 30.3 m"
+        }
+      ],
+      "tip": "Every fitting, valve and metre of pipe adds head the pump must overcome."
+    },
+    {
+      "questionNum": 1217,
+      "question": "A reservoir requires 1200 m³ to refill and the pump delivers 40 L/s. How long will refilling take?",
+      "options": [
+        "5.0 hours",
+        "6.7 hours",
+        "8.3 hours",
+        "12.0 hours"
+      ],
+      "correctIndex": 2,
+      "explanation": "40 L/s is 0.040 m³/s, which is 144 m³/h. Dividing gives 1200 ÷ 144 = 8.3 hours.",
+      "difficulty": "medium",
+      "module": "Pumps & Hydraulics",
+      "topic": "Fill time",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Convert",
+          "c": "40 L/s = 0.040 m³/s"
+        },
+        {
+          "l": "Per hour",
+          "c": "0.040 × 3600 = 144 m³/h"
+        },
+        {
+          "l": "Time",
+          "c": "1200 ÷ 144 = 8.3 hours"
+        }
+      ],
+      "tip": "Refill time matters because it determines whether storage can recover before the next peak demand."
+    },
+    {
+      "questionNum": 1218,
+      "question": "A community holds 3000 m³ of treated storage and consumes 1.5 ML/d. How many days of supply does the storage represent?",
+      "options": [
+        "0.5 days",
+        "1.0 day",
+        "2.0 days",
+        "3.0 days"
+      ],
+      "correctIndex": 2,
+      "explanation": "Converting demand to 1500 m³/d and dividing gives 3000 ÷ 1500 = 2.0 days of supply at average demand.",
+      "difficulty": "easy",
+      "module": "Water Distribution",
+      "topic": "Storage capacity",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Convert demand",
+          "c": "1.5 ML/d = 1500 m³/d"
+        },
+        {
+          "l": "Divide",
+          "c": "3000 m³ ÷ 1500 m³/d = 2.0 days"
+        },
+        {
+          "l": "Caution",
+          "c": "Not all storage is usable; fire reserve and dead storage reduce it."
+        }
+      ],
+      "tip": "Usable storage is less than total storage. Fire reserve is not available for ordinary supply."
+    },
+    {
+      "questionNum": 1219,
+      "question": "A plant feeds 45 kg/d of chlorine at a cost of $1.20 per kilogram. What is the approximate annual chlorine cost?",
+      "options": [
+        "$5 400",
+        "$16 425",
+        "$19 710",
+        "$54 000"
+      ],
+      "correctIndex": 2,
+      "explanation": "Annual consumption is 45 kg/d × 365 d = 16 425 kg. At $1.20 per kilogram the cost is 16 425 × 1.20 = $19 710.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Annual chemical cost",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Annual mass",
+          "c": "45 kg/d × 365 d = 16 425 kg"
+        },
+        {
+          "l": "Cost",
+          "c": "16 425 kg × $1.20/kg = $19 710"
+        }
+      ],
+      "tip": "Watch for the distractor that gives annual kilograms rather than annual dollars."
+    },
+    {
+      "questionNum": 1220,
+      "question": "A clarifier of 160 m² receives 4800 m³/d carrying 25 mg/L of suspended solids. What is the solids loading rate?",
+      "options": [
+        "0.30 kg/(m²·d)",
+        "1.20 kg/(m²·d)",
+        "3.00 kg/(m²·d)",
+        "0.75 kg/(m²·d)"
+      ],
+      "correctIndex": 3,
+      "explanation": "Solids applied are 4800 m³/d × 25 g/m³ = 120 000 g/d, which is 120 kg/d. Dividing by the 160 m² area gives 0.75 kg/(m²·d).",
+      "difficulty": "hard",
+      "module": "Sedimentation",
+      "topic": "Solids loading rate",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Solids mass",
+          "c": "4800 m³/d × 25 mg/L = 120 kg/d"
+        },
+        {
+          "l": "Divide by area",
+          "c": "120 kg/d ÷ 160 m²"
+        },
+        {
+          "l": "Solve",
+          "c": "= 0.75 kg/(m²·d)"
+        },
+        {
+          "l": "Note",
+          "c": "1 mg/L equals 1 g/m³, which makes the mass conversion direct."
+        }
+      ],
+      "tip": "Remember 1 mg/L = 1 g/m³. It converts concentration to mass loading in one step."
+    },
+    {
+      "questionNum": 1221,
+      "question": "A plant must treat 12 ML/d. Each filter is 25 m² and operates at 120 m³/(m²·d). How many filters are needed to carry the flow?",
+      "options": [
+        "2 filters",
+        "3 filters",
+        "4 filters",
+        "6 filters"
+      ],
+      "correctIndex": 2,
+      "explanation": "Each filter passes 25 m² × 120 m³/(m²·d) = 3000 m³/d. The plant needs 12 000 m³/d, so 12 000 ÷ 3000 = 4 filters are required to carry the flow.",
+      "difficulty": "hard",
+      "module": "Filtration",
+      "topic": "Filter sizing",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Per filter",
+          "c": "25 m² × 120 m³/(m²·d) = 3000 m³/d"
+        },
+        {
+          "l": "Convert plant flow",
+          "c": "12 ML/d = 12 000 m³/d"
+        },
+        {
+          "l": "Divide",
+          "c": "12 000 ÷ 3000 = 4 filters"
+        },
+        {
+          "l": "In practice",
+          "c": "An additional filter is provided so flow is maintained during backwash."
+        }
+      ],
+      "tip": "Design allows for a filter being off line. Four to carry the flow usually means five installed."
+    },
+    {
+      "questionNum": 1222,
+      "question": "A plant rated at 20 ML/d recorded a peak day demand of 16 ML/d. What percentage of rated capacity was used?",
+      "options": [
+        "62 percent",
+        "72 percent",
+        "80 percent",
+        "125 percent"
+      ],
+      "correctIndex": 2,
+      "explanation": "Peak demand divided by rated capacity gives 16 ÷ 20 × 100 = 80 percent of capacity.",
+      "difficulty": "easy",
+      "module": "Process Control & Operations",
+      "topic": "Capacity utilisation",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "Utilisation = peak ÷ rated × 100"
+        },
+        {
+          "l": "Substitute",
+          "c": "16 ML/d ÷ 20 ML/d × 100"
+        },
+        {
+          "l": "Solve",
+          "c": "= 80 percent"
+        }
+      ],
+      "tip": "Sustained utilisation above about 80 percent is the usual trigger to begin planning expansion."
+    },
+    {
+      "questionNum": 1223,
+      "question": "Raw water turbidity of 15 NTU is reduced to 0.15 NTU in the finished water. What log reduction does this represent?",
+      "options": [
+        "1-log",
+        "2-log",
+        "3-log",
+        "10-log"
+      ],
+      "correctIndex": 1,
+      "explanation": "The turbidity has fallen by a factor of 100, since 15 ÷ 0.15 = 100. A hundredfold reduction is 2-log.",
+      "difficulty": "medium",
+      "module": "Water Quality & Regulations",
+      "topic": "Log reduction",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Ratio",
+          "c": "15 NTU ÷ 0.15 NTU = 100"
+        },
+        {
+          "l": "Convert to log",
+          "c": "100 = 10², so 2-log"
+        },
+        {
+          "l": "Note",
+          "c": "Turbidity reduction is a surrogate; it is not a direct pathogen log credit."
+        }
+      ],
+      "tip": "1-log is tenfold, 2-log is a hundredfold, 3-log is a thousandfold."
+    },
+    {
+      "questionNum": 1224,
+      "question": "Why is the disinfectant residual measured more frequently than most other water quality parameters?",
+      "options": [
+        "Because it is the cheapest parameter for a plant laboratory to analyse",
+        "Because it can change quickly and signals a loss of the disinfection barrier",
+        "Because regulations classify it as the most hazardous parameter to consumers",
+        "Because its measurement is required before other analyses can be performed"
+      ],
+      "correctIndex": 1,
+      "explanation": "Residual responds within minutes to a feed failure, a contamination event, or a sudden change in demand. It is a fast, sensitive indicator that the disinfection barrier is still functioning, which is why it is monitored continuously at the plant and frequently in distribution.",
+      "difficulty": "medium",
+      "module": "Disinfection",
+      "topic": "Monitoring frequency",
+      "isCalc": "no",
+      "tip": "Residual is monitored often because it changes fast and warns early, not because it is easy to measure."
+    },
+    {
+      "questionNum": 1225,
+      "question": "Why is a chlorine contact chamber inspected and cleaned periodically?",
+      "options": [
+        "Accumulated sediment reduces effective volume and shortens contact time",
+        "The chamber coating deteriorates and releases material into the water",
+        "Baffle walls shift position gradually under the pressure of flowing water",
+        "The chamber must be emptied to recalibrate the residual analyser correctly"
+      ],
+      "correctIndex": 0,
+      "explanation": "Solids that carry over from upstream settle in the contact chamber and occupy volume that was credited as contact time. As the deposit grows, the actual time available falls below the value used in CT calculations, so the credited disinfection is no longer being achieved.",
+      "difficulty": "hard",
+      "module": "Disinfection",
+      "topic": "Contact chamber maintenance",
+      "isCalc": "no",
+      "tip": "Sediment in a contact chamber silently erodes CT credit. Volume is only credited if it is actually there."
+    },
+    {
+      "questionNum": 1226,
+      "question": "Where are disinfection by-product samples typically collected within a distribution system?",
+      "options": [
+        "At the plant outlet where the disinfectant residual is highest",
+        "At locations representing long residence times where formation is greatest",
+        "At the raw water intake to establish the precursor concentration",
+        "At locations with the highest customer consumption within each zone"
+      ],
+      "correctIndex": 1,
+      "explanation": "Trihalomethanes and haloacetic acids continue to form as chlorinated water travels through the system, so concentrations rise with contact time. Sampling at long residence-time locations captures the maximum exposure consumers experience, rather than the lowest values found at the plant.",
+      "difficulty": "hard",
+      "module": "Water Quality & Regulations",
+      "topic": "By-product sampling",
+      "isCalc": "no",
+      "tip": "By-products increase with water age, so the worst results are at the system extremities."
+    },
+    {
+      "questionNum": 1227,
+      "question": "Why is ammonia feed controlled in proportion to the chlorine feed in a chloramination system?",
+      "options": [
+        "Because the ratio determines which chloramine species forms and how stable it is",
+        "Because ammonia degrades rapidly and must be replaced at a matching rate",
+        "Because the two chemicals must be injected at the same physical location",
+        "Because proportional control reduces the total chemical consumption of the plant"
+      ],
+      "correctIndex": 0,
+      "explanation": "The chlorine to ammonia ratio determines whether monochloramine, dichloramine, or trichloramine predominates. Monochloramine is the stable, low-odour species that is wanted, so the two feeds are controlled together as the plant flow changes rather than set independently.",
+      "difficulty": "hard",
+      "module": "Disinfection",
+      "topic": "Chloramine control",
+      "isCalc": "no",
+      "tip": "Dichloramine and trichloramine cause the strong swimming-pool odours customers complain about."
+    },
+    {
+      "questionNum": 1228,
+      "question": "Iron is being removed by oxidation and filtration, but iron appears in the filter effluent shortly after each backwash. What is the likely cause?",
+      "options": [
+        "The oxidant dose is being interrupted during the backwash sequence",
+        "The filter is ripening and has not yet developed its capture efficiency",
+        "The backwash water contains iron that is not being fully removed",
+        "The media has been replaced with a grade too coarse for iron removal"
+      ],
+      "correctIndex": 1,
+      "explanation": "A freshly washed bed has lost the coating of oxidised iron that assists capture, so removal efficiency is temporarily reduced until the bed ripens. Filtering to waste for an appropriate period after each backwash keeps that poorer quality water out of the clearwell.",
+      "difficulty": "hard",
+      "module": "Iron & Manganese Removal",
+      "topic": "Post-backwash breakthrough",
+      "isCalc": "no",
+      "tip": "Iron and manganese filters rely on a catalytic media coating, so ripening matters even more than usual."
+    },
+    {
+      "questionNum": 1229,
+      "question": "Why is aeration sometimes used ahead of filtration for groundwater containing iron?",
+      "options": [
+        "It raises the water temperature, which accelerates the oxidation reaction",
+        "It strips carbon dioxide, raising pH and supplying oxygen to oxidise the iron",
+        "It removes hardness that would otherwise foul the filter media rapidly",
+        "It reduces the volume of water requiring chemical oxidant treatment"
+      ],
+      "correctIndex": 1,
+      "explanation": "Aeration serves two purposes for iron-bearing groundwater. It supplies dissolved oxygen as the oxidant, and it strips carbon dioxide, which raises pH into the range where iron oxidises rapidly. Both effects speed conversion of soluble iron into filterable particles.",
+      "difficulty": "hard",
+      "module": "Iron & Manganese Removal",
+      "topic": "Aeration",
+      "isCalc": "no",
+      "tip": "Aeration alone often suffices for iron but is usually too slow for manganese without a stronger oxidant."
+    },
+    {
+      "questionNum": 1230,
+      "question": "Why does manganese generally require a higher pH or a stronger oxidant than iron?",
+      "options": [
+        "Manganese is present at higher concentrations in most groundwater sources",
+        "Manganese forms particles too fine to be captured by conventional media",
+        "Manganese oxidises far more slowly under the same conditions as iron",
+        "Manganese re-dissolves immediately after oxidation unless pH is elevated"
+      ],
+      "correctIndex": 2,
+      "explanation": "The oxidation kinetics of manganese are much slower than those of iron at a given pH and oxidant concentration. Raising pH, using a stronger oxidant such as permanganate, or providing catalytic media are the practical ways to complete the reaction before filtration.",
+      "difficulty": "hard",
+      "module": "Iron & Manganese Removal",
+      "topic": "Oxidation kinetics",
+      "isCalc": "no",
+      "tip": "If iron is removed but manganese passes through, the reaction has not been given enough driving force or time."
+    },
+    {
+      "questionNum": 1231,
+      "question": "A watermain break occurs and the section is isolated. Why is the chlorine residual checked in surrounding mains during the repair?",
+      "options": [
+        "To confirm the isolation valves have completely stopped flow to the break",
+        "To detect whether contamination has entered the surrounding distribution system",
+        "To determine the volume of water that has been lost through the break",
+        "To establish the chlorine dose required for disinfecting the repaired pipe"
+      ],
+      "correctIndex": 1,
+      "explanation": "A break causes a pressure drop and can draw external water into the mains beyond the isolated section. Loss of residual in the surrounding area indicates that contamination may have entered, which changes the scope of flushing, sampling and any public notification required.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Break response monitoring",
+      "isCalc": "no",
+      "tip": "The repaired pipe is not the whole risk. Low pressure can pull contamination in well beyond the break."
+    },
+    {
+      "questionNum": 1232,
+      "question": "What does tuberculation inside an unlined iron watermain cause?",
+      "options": [
+        "Increased roughness and headloss, reducing the carrying capacity of the main",
+        "Reduced structural strength, making the main more likely to break under load",
+        "Increased chlorine residual, because the deposits release oxidant slowly",
+        "Reduced water age, because the restricted cross-section raises velocity"
+      ],
+      "correctIndex": 0,
+      "explanation": "Tubercles are corrosion nodules that grow on the pipe wall, roughening the surface and narrowing the bore. The result is higher friction loss, lower flow at a given pressure, and reduced fire flow, along with a surface that harbours biofilm and consumes disinfectant residual.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Tuberculation",
+      "isCalc": "no",
+      "tip": "Cleaning and lining restores capacity without the cost of full main replacement."
+    },
+    {
+      "questionNum": 1233,
+      "question": "Why is a well pumping test performed before a new supply well is placed into service?",
+      "options": [
+        "To determine the sustainable yield and how drawdown responds to pumping",
+        "To disinfect the well and confirm bacteriological quality before use",
+        "To establish the depth at which the pump should be permanently set",
+        "To measure the concentration of iron and manganese in the aquifer"
+      ],
+      "correctIndex": 0,
+      "explanation": "A pumping test measures how water levels respond as the well is pumped at various rates over time. It establishes the yield the aquifer can sustain without excessive drawdown, reveals interference with nearby wells, and provides the basis for setting pump capacity and operating limits.",
+      "difficulty": "medium",
+      "module": "Water Sources & Quality",
+      "topic": "Well testing",
+      "isCalc": "no",
+      "tip": "Short-term yield can far exceed sustainable yield. The test length is what distinguishes them."
+    },
+    {
+      "questionNum": 1234,
+      "question": "Excessive drawdown is observed in a supply well over several years at a constant pumping rate. What does this suggest?",
+      "options": [
+        "The pump has become more efficient and is drawing a greater volume",
+        "The well screen or aquifer is fouling, or the aquifer is being depleted",
+        "The water table has risen, increasing the pressure against the pump",
+        "The casing has corroded, allowing water to enter from a shallower zone"
+      ],
+      "correctIndex": 1,
+      "explanation": "If the same pumping rate produces progressively greater drawdown, the well is becoming less efficient or the resource is declining. Mineral encrustation or biofouling of the screen, sand accumulation, and long-term aquifer depletion are the usual causes, and each calls for a different response.",
+      "difficulty": "hard",
+      "module": "Water Sources & Quality",
+      "topic": "Well performance",
+      "isCalc": "no",
+      "tip": "Track specific capacity, the yield per metre of drawdown. Declining specific capacity signals well deterioration."
+    },
+    {
+      "questionNum": 1235,
+      "question": "Why must a new or repaired well be disinfected before it is returned to service?",
+      "options": [
+        "To remove iron bacteria that naturally colonise every drilled water well",
+        "To satisfy the requirement for a chlorine residual within the well casing",
+        "To neutralize drilling fluids remaining in the borehole after construction",
+        "To inactivate contamination introduced by equipment and materials during work"
+      ],
+      "correctIndex": 3,
+      "explanation": "Drilling tools, pump components, pipe and workers all introduce organisms into a well that is otherwise protected. Disinfection followed by flushing and satisfactory bacteriological results confirms that the construction or repair has not left contamination in the supply.",
+      "difficulty": "medium",
+      "module": "Water Sources & Quality",
+      "topic": "Well disinfection",
+      "isCalc": "no",
+      "tip": "Any work that opens a well is treated the same as opening a watermain: disinfect, flush, then sample."
+    },
+    {
+      "questionNum": 1236,
+      "question": "Why should a SCADA setpoint change be documented rather than simply entered?",
+      "options": [
+        "Because the control system cannot store the history of setpoint values",
+        "Because a later operator must know what changed, when and for what reason",
+        "Because setpoint changes require approval from the equipment manufacturer",
+        "Because documentation is needed to calculate the resulting chemical usage"
+      ],
+      "correctIndex": 1,
+      "explanation": "Unrecorded setpoint changes make plant behaviour difficult to explain later, particularly when a problem develops days afterwards. Recording what was changed, by whom, when, and why allows the change to be evaluated, reversed if necessary, and distinguished from a genuine process shift.",
+      "difficulty": "medium",
+      "module": "Instrumentation & Control",
+      "topic": "Change control",
+      "isCalc": "no",
+      "tip": "When troubleshooting, the first question is what changed. An undocumented setpoint hides the answer."
+    },
+    {
+      "questionNum": 1237,
+      "question": "What problem does an excessive number of low-priority SCADA alarms create?",
+      "options": [
+        "Operators become desensitized and may overlook a genuinely critical alarm",
+        "The control system slows because of the volume of alarm data recorded",
+        "Alarm records consume storage capacity needed for process trend history",
+        "Instrument accuracy declines because sensors are polled more frequently"
+      ],
+      "correctIndex": 0,
+      "explanation": "When alarms are frequent and mostly inconsequential, operators learn to acknowledge and dismiss them without assessment. A critical alarm then arrives among the noise and receives the same reflexive response. Rationalising alarms so that each one requires an action preserves their meaning.",
+      "difficulty": "medium",
+      "module": "Instrumentation & Control",
+      "topic": "Alarm management",
+      "isCalc": "no",
+      "tip": "Every alarm should demand an operator action. Alarms that need no action should be trends instead."
+    },
+    {
+      "questionNum": 1238,
+      "question": "Why does a plant maintain an inventory of critical spare parts?",
+      "options": [
+        "To reduce the unit cost of parts through bulk purchasing arrangements",
+        "To avoid an extended loss of a treatment barrier while a part is sourced",
+        "To satisfy the requirements set out in equipment warranty documents",
+        "To simplify the annual reconciliation of maintenance department budgets"
+      ],
+      "correctIndex": 1,
+      "explanation": "Some components have long lead times, and their failure disables a barrier such as disinfection or filtration. Holding spares for items that are critical, long lead, or known to fail means the plant can restore the barrier in hours rather than waiting weeks for delivery.",
+      "difficulty": "easy",
+      "module": "Process Control & Operations",
+      "topic": "Spare parts",
+      "isCalc": "no",
+      "tip": "Stock by criticality and lead time, not by cost. A cheap part can shut a plant down."
+    },
+    {
+      "questionNum": 1239,
+      "question": "What is the purpose of commissioning tests when new treatment equipment is installed?",
+      "options": [
+        "To train operators on the routine operation of the new equipment",
+        "To establish the maintenance schedule that the equipment will follow",
+        "To verify the equipment performs as specified before it is relied upon",
+        "To document the equipment serial numbers for the asset register"
+      ],
+      "correctIndex": 2,
+      "explanation": "Commissioning demonstrates under controlled conditions that the installed equipment achieves its specified performance, that controls and alarms function, and that failure modes behave as designed. Placing equipment into service without that verification means relying on a barrier that has never been proven to work.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Commissioning",
+      "isCalc": "no",
+      "tip": "Commissioning is where you deliberately test failure modes, before real conditions test them for you."
+    },
+    {
+      "questionNum": 1240,
+      "question": "Why must chemical storage areas separate incompatible products even when both are stored correctly?",
+      "options": [
+        "Because a spill or leak could allow the two products to mix and react",
+        "Because different chemicals require different storage temperatures",
+        "Because sharing a storage area complicates inventory record keeping",
+        "Because suppliers deliver incompatible chemicals on different schedules"
+      ],
+      "correctIndex": 0,
+      "explanation": "Correct storage assumes containment holds. Separation addresses what happens when it does not: a leaking drum, an overfilled tank, or a delivery error can bring incompatible products together, producing toxic gas, heat, or violent reaction. Separate containment prevents the mixing rather than relying on the primary container.",
+      "difficulty": "medium",
+      "module": "Safety",
+      "topic": "Chemical compatibility",
+      "isCalc": "no",
+      "tip": "Design containment on the assumption something will leak. Shared containment defeats chemical separation."
+    }
+  ]
+}

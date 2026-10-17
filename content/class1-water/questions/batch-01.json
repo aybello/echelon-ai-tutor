@@ -1,0 +1,909 @@
+{
+  "batch": "01",
+  "title": "Class 1 Water Treatment — batch 01 (questions 1001–1040)",
+  "bankKey": "class1-water",
+  "origin": "ai_assisted",
+  "contentStatus": "draft",
+  "reviewStatus": "in_review",
+  "notes": "Machine-authored draft staged for SME technical review. Imported as reviewStatus 'in_review' per the answer-length governance convention. No regulatory numeric limits or code citations are asserted; all calculations are self-contained.",
+  "questions": [
+    {
+      "questionNum": 1001,
+      "question": "During flocculation, an operator increases the paddle speed to improve floc formation. Instead, effluent turbidity rises. What is the most likely cause?",
+      "options": [
+        "The higher paddle speed has reduced the basin's effective detention time",
+        "The increased mixing has stripped dissolved oxygen from the water column",
+        "The faster rotation has caused the coagulant to settle out before mixing",
+        "The higher velocity gradient is shearing the floc apart faster than it can form"
+      ],
+      "correctIndex": 3,
+      "explanation": "Flocculation needs gentle mixing. Excessive velocity gradient (G value) shears fragile floc particles apart faster than collisions can build them, producing small, poorly settling floc and higher effluent turbidity. The fix is to reduce mixing energy, often in a tapered pattern from inlet to outlet.",
+      "difficulty": "medium",
+      "module": "Coagulation & Flocculation",
+      "topic": "Flocculation control",
+      "isCalc": "no",
+      "tip": "Rapid mix = high energy, short time. Flocculation = low energy, long time. Confusing the two is a common exam trap."
+    },
+    {
+      "questionNum": 1002,
+      "question": "A contact tank holds 450 m³ and receives a flow of 2.7 ML/d. What is the theoretical detention time?",
+      "options": [
+        "2.0 hours",
+        "3.0 hours",
+        "4.0 hours",
+        "6.0 hours"
+      ],
+      "correctIndex": 2,
+      "explanation": "Detention time is tank volume divided by flow rate. Converting 2.7 ML/d to 2700 m³/d gives 450 ÷ 2700 = 0.1667 days, which is 4.0 hours.",
+      "difficulty": "medium",
+      "module": "Hydraulics",
+      "topic": "Detention time",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "Detention time = Volume ÷ Flow"
+        },
+        {
+          "l": "Convert flow",
+          "c": "2.7 ML/d × 1000 m³/ML = 2700 m³/d"
+        },
+        {
+          "l": "Substitute",
+          "c": "450 m³ ÷ 2700 m³/d = 0.1667 d"
+        },
+        {
+          "l": "Convert to hours",
+          "c": "0.1667 d × 24 h/d = 4.0 hours"
+        },
+        {
+          "l": "Check",
+          "c": "Tank holds about 1/6 of a day's flow, so ~4 h is reasonable."
+        }
+      ],
+      "tip": "Keep volume and flow in the same units before dividing. m³ with m³/d gives days."
+    },
+    {
+      "questionNum": 1003,
+      "question": "A plant treats 18 ML/d and doses alum at 22 mg/L. How much alum is required per day?",
+      "options": [
+        "180 kg/d",
+        "264 kg/d",
+        "396 kg/d",
+        "820 kg/d"
+      ],
+      "correctIndex": 2,
+      "explanation": "In metric units, chemical feed in kg/d equals dose in mg/L multiplied by flow in ML/d. So 22 mg/L × 18 ML/d = 396 kg/d.",
+      "difficulty": "medium",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Chemical dosage",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "kg/d = dose (mg/L) × flow (ML/d)"
+        },
+        {
+          "l": "Substitute",
+          "c": "22 mg/L × 18 ML/d"
+        },
+        {
+          "l": "Solve",
+          "c": "= 396 kg/d"
+        },
+        {
+          "l": "Check",
+          "c": "1 mg/L in 1 ML equals 1 kg, so the units resolve directly."
+        }
+      ],
+      "tip": "The metric shortcut mg/L × ML/d = kg/d avoids the 8.34 conversion factor used in US units."
+    },
+    {
+      "questionNum": 1004,
+      "question": "Late in a filter run, effluent turbidity climbs sharply while headloss remains below the setpoint. What does this pattern indicate?",
+      "options": [
+        "Air binding is forming voids within the upper media layer",
+        "The underdrain is partially blocked and restricting forward flow",
+        "The coagulant feed has been overdosed at the rapid mix stage",
+        "Turbidity breakthrough is occurring and the filter should be backwashed"
+      ],
+      "correctIndex": 3,
+      "explanation": "Turbidity breakthrough occurs when captured particles are pushed through the media before headloss reaches its terminal value. Because water quality governs filter operation, the filter must be backwashed on turbidity even though the headloss trigger has not been reached.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Filter run termination",
+      "isCalc": "no",
+      "tip": "A filter run ends on whichever comes first: turbidity breakthrough, terminal headloss, or maximum run time."
+    },
+    {
+      "questionNum": 1005,
+      "question": "A rectangular clarifier measures 20 m by 8 m and receives 4.8 ML/d. What is the surface overflow rate?",
+      "options": [
+        "24 m³/(m²·d)",
+        "40 m³/(m²·d)",
+        "60 m³/(m²·d)",
+        "30 m³/(m²·d)"
+      ],
+      "correctIndex": 3,
+      "explanation": "Surface overflow rate is flow divided by surface area. The area is 20 m × 8 m = 160 m², and 4.8 ML/d equals 4800 m³/d, giving 4800 ÷ 160 = 30 m³/(m²·d).",
+      "difficulty": "medium",
+      "module": "Sedimentation",
+      "topic": "Surface overflow rate",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "SOR = Flow ÷ Surface area"
+        },
+        {
+          "l": "Area",
+          "c": "20 m × 8 m = 160 m²"
+        },
+        {
+          "l": "Convert flow",
+          "c": "4.8 ML/d = 4800 m³/d"
+        },
+        {
+          "l": "Solve",
+          "c": "4800 ÷ 160 = 30 m³/(m²·d)"
+        }
+      ],
+      "tip": "Surface overflow rate uses plan area only. Depth does not appear in the formula."
+    },
+    {
+      "questionNum": 1006,
+      "question": "An operator observes hardened, rounded accumulations of media and floc near the surface of a filter. What condition does this describe, and what causes it?",
+      "options": [
+        "Air binding, caused by dissolved gases releasing within the media bed",
+        "Media fluidization, caused by an excessive backwash flow rate",
+        "Mudball formation, caused by inadequate backwash agitation over time",
+        "Surface sealing, caused by an overdose of filter aid polymer"
+      ],
+      "correctIndex": 2,
+      "explanation": "Mudballs form when backwashing does not fully scour accumulated floc from the media. The residue agglomerates into dense spheres that sink into the bed, reducing effective filter area and causing uneven flow distribution. Surface wash or air scour typically corrects the problem.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Filter maintenance problems",
+      "isCalc": "no",
+      "tip": "Mudballs are a backwash adequacy problem, not a media quality problem."
+    },
+    {
+      "questionNum": 1007,
+      "question": "A free chlorine residual of 1.2 mg/L is maintained through a contact chamber with an effective contact time of 45 minutes. What is the CT value achieved?",
+      "options": [
+        "37.5 mg·min/L",
+        "46.2 mg·min/L",
+        "54.0 mg·min/L",
+        "62.5 mg·min/L"
+      ],
+      "correctIndex": 2,
+      "explanation": "CT is the disinfectant residual concentration multiplied by the contact time. Here 1.2 mg/L × 45 min = 54.0 mg·min/L.",
+      "difficulty": "easy",
+      "module": "Disinfection",
+      "topic": "CT calculation",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "CT = C × T"
+        },
+        {
+          "l": "Substitute",
+          "c": "1.2 mg/L × 45 min"
+        },
+        {
+          "l": "Solve",
+          "c": "= 54.0 mg·min/L"
+        }
+      ],
+      "tip": "Use the residual measured at the end of the contact zone, and use effective contact time (T10), not theoretical detention time."
+    },
+    {
+      "questionNum": 1008,
+      "question": "Why is the T10 value, rather than theoretical detention time, used when calculating CT for disinfection credit?",
+      "options": [
+        "T10 is measured continuously by SCADA while detention time must be calculated",
+        "T10 corrects the residual measurement for temperature and pH variation",
+        "T10 represents the average time that ten percent of the flow remains in contact",
+        "T10 accounts for short-circuiting so credit reflects the least-detained water"
+      ],
+      "correctIndex": 3,
+      "explanation": "T10 is the time by which 10 percent of the water has passed through the contact chamber, so 90 percent has been detained at least that long. Using T10 accounts for short-circuiting and gives disinfection credit based on the least-detained portion of flow rather than an idealized average.",
+      "difficulty": "hard",
+      "module": "Disinfection",
+      "topic": "Contact time and baffling",
+      "isCalc": "no",
+      "tip": "Better baffling raises the T10/theoretical ratio, which increases CT credit without more chemical."
+    },
+    {
+      "questionNum": 1009,
+      "question": "A plant needs to feed 40 kg/d of chlorine using 12 percent sodium hypochlorite solution. Approximately how much solution is required per day?",
+      "options": [
+        "48 kg/d",
+        "120 kg/d",
+        "333 kg/d",
+        "480 kg/d"
+      ],
+      "correctIndex": 2,
+      "explanation": "Divide the required mass of available chlorine by the decimal strength of the solution: 40 kg/d ÷ 0.12 = 333 kg/d of hypochlorite solution.",
+      "difficulty": "medium",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Solution strength",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "Solution required = chemical needed ÷ decimal strength"
+        },
+        {
+          "l": "Substitute",
+          "c": "40 kg/d ÷ 0.12"
+        },
+        {
+          "l": "Solve",
+          "c": "= 333 kg/d"
+        },
+        {
+          "l": "Check",
+          "c": "A weaker solution requires more volume, so the answer must exceed 40 kg/d."
+        }
+      ],
+      "tip": "Divide by strength when going from pure chemical to solution. Multiply when going the other way."
+    },
+    {
+      "questionNum": 1010,
+      "question": "Customers at the far end of a distribution system report loss of chlorine residual, while residual leaving the plant is normal. What is the most likely explanation?",
+      "options": [
+        "The plant chlorine analyzer requires recalibration against a grab sample",
+        "The distribution mains are undersized for current peak hour demand",
+        "The hypochlorite storage tank has exceeded its recommended shelf life",
+        "Extended water age in the system is allowing residual to decay"
+      ],
+      "correctIndex": 3,
+      "explanation": "Chlorine residual decays over time through reaction with pipe walls, biofilm, and organic matter. Long residence times in dead ends or oversized mains at the system periphery allow the residual to fall even when plant residual is correct. Flushing, looping, or booster chlorination are typical responses.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Residual maintenance",
+      "isCalc": "no",
+      "tip": "If plant residual is fine but distribution residual is low, think water age before suspecting the plant."
+    },
+    {
+      "questionNum": 1011,
+      "question": "What is the primary purpose of conducting a jar test before adjusting full-scale coagulant feed?",
+      "options": [
+        "To confirm the coagulant shipment meets the supplier's purity specification",
+        "To measure the raw water's chlorine demand prior to primary disinfection",
+        "To determine the coagulant dose and pH that produce the best settled quality",
+        "To verify that the rapid mix impeller is developing its design velocity gradient"
+      ],
+      "correctIndex": 2,
+      "explanation": "A jar test reproduces rapid mix, flocculation, and settling at bench scale across a range of doses and pH values. It identifies the combination producing the lowest settled turbidity, allowing the operator to optimize the full-scale process without costly plant-scale trial and error.",
+      "difficulty": "easy",
+      "module": "Coagulation & Flocculation",
+      "topic": "Jar testing",
+      "isCalc": "no",
+      "tip": "Jar tests optimize both dose and pH. Coagulation is strongly pH dependent."
+    },
+    {
+      "questionNum": 1012,
+      "question": "A filter with a surface area of 24 m² is backwashed at 0.6 m/min for 8 minutes. What volume of backwash water is used?",
+      "options": [
+        "57.6 m³",
+        "144.0 m³",
+        "192.0 m³",
+        "115.2 m³"
+      ],
+      "correctIndex": 3,
+      "explanation": "Backwash volume equals the filter area multiplied by the rise rate and the duration: 24 m² × 0.6 m/min × 8 min = 115.2 m³.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Backwash volume",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "Volume = area × rise rate × time"
+        },
+        {
+          "l": "Substitute",
+          "c": "24 m² × 0.6 m/min × 8 min"
+        },
+        {
+          "l": "Solve",
+          "c": "= 115.2 m³"
+        },
+        {
+          "l": "Check",
+          "c": "Rise rate × time = 4.8 m of water over the filter, which is plausible for a backwash."
+        }
+      ],
+      "tip": "Backwash rise rate in m/min multiplied by minutes gives depth in metres. Multiply by area for volume."
+    },
+    {
+      "questionNum": 1013,
+      "question": "Following breakpoint, adding more chlorine to water containing ammonia produces which result?",
+      "options": [
+        "Combined residual rises while free residual remains unchanged",
+        "Both free and combined residuals decline as chloramines decompose",
+        "Total residual remains constant as monochloramine converts to dichloramine",
+        "Free residual increases roughly in proportion to the chlorine added"
+      ],
+      "correctIndex": 3,
+      "explanation": "Before breakpoint, chlorine reacts with ammonia to form chloramines, and further additions destroy those chloramines, driving the residual down. Once breakpoint is passed, the ammonia demand is satisfied and additional chlorine remains as free available residual, so free residual rises in proportion to the dose.",
+      "difficulty": "hard",
+      "module": "Disinfection",
+      "topic": "Breakpoint chlorination",
+      "isCalc": "no",
+      "tip": "Sketch the breakpoint curve: residual rises, falls to the breakpoint dip, then rises again as free chlorine."
+    },
+    {
+      "questionNum": 1014,
+      "question": "Manganese is removed to below detection at the plant, but consumers report black staining of laundry and fixtures. What is the most probable cause?",
+      "options": [
+        "The distribution system is experiencing galvanic corrosion of copper service lines",
+        "The plant manganese analyzer is reading low because of interference from iron",
+        "Chlorine residual in the distribution system has fallen below the target value",
+        "Manganese oxidation is incomplete and continues within the distribution system"
+      ],
+      "correctIndex": 3,
+      "explanation": "If manganese leaves the plant in dissolved form or as fine unfiltered particles, it can oxidize and precipitate later in the distribution system where oxidant contact continues. The resulting manganese dioxide causes black water and staining even though plant sampling shows acceptable results.",
+      "difficulty": "hard",
+      "module": "Iron & Manganese Removal",
+      "topic": "Post-precipitation",
+      "isCalc": "no",
+      "tip": "Manganese must be fully oxidized and filtered at the plant. Partial oxidation shifts the problem downstream."
+    },
+    {
+      "questionNum": 1015,
+      "question": "An operator applies a chlorine dose of 3.5 mg/L and measures a residual of 0.8 mg/L after the contact period. What is the chlorine demand?",
+      "options": [
+        "0.8 mg/L",
+        "3.5 mg/L",
+        "4.3 mg/L",
+        "2.7 mg/L"
+      ],
+      "correctIndex": 3,
+      "explanation": "Chlorine demand is the dose applied minus the residual remaining: 3.5 mg/L − 0.8 mg/L = 2.7 mg/L.",
+      "difficulty": "easy",
+      "module": "Disinfection",
+      "topic": "Chlorine demand",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "Demand = Dose − Residual"
+        },
+        {
+          "l": "Substitute",
+          "c": "3.5 mg/L − 0.8 mg/L"
+        },
+        {
+          "l": "Solve",
+          "c": "= 2.7 mg/L"
+        }
+      ],
+      "tip": "Dose = demand + residual. Any two values give the third."
+    },
+    {
+      "questionNum": 1016,
+      "question": "Which operating change would most directly reduce the formation of trihalomethanes in finished water?",
+      "options": [
+        "Increasing free chlorine residual entering the distribution system",
+        "Raising the coagulation pH to improve settled water clarity",
+        "Improving removal of natural organic matter before chlorination",
+        "Extending the contact time in the chlorine contact chamber"
+      ],
+      "correctIndex": 2,
+      "explanation": "Trihalomethanes form when chlorine reacts with natural organic matter. Removing that precursor material before chlorination, through enhanced coagulation or adsorption, reduces the material available to react. Increasing residual or contact time generally increases formation rather than reducing it.",
+      "difficulty": "medium",
+      "module": "Water Quality & Regulations",
+      "topic": "Disinfection by-products",
+      "isCalc": "no",
+      "tip": "To cut DBPs, remove precursors first. Reducing chlorine alone can compromise disinfection."
+    },
+    {
+      "questionNum": 1017,
+      "question": "Sludge is observed rising to the surface of a sedimentation basin in isolated clumps. Which condition best explains this?",
+      "options": [
+        "Coagulant underdose has produced pin floc that will not settle",
+        "The sludge collector mechanism is operating above its design speed",
+        "Influent water temperature has dropped, increasing water viscosity",
+        "Gas released from sludge held too long is buoying solids upward"
+      ],
+      "correctIndex": 3,
+      "explanation": "Sludge retained in the basin too long can undergo biological activity that releases gas. The gas attaches to solids and floats them to the surface as discrete clumps. More frequent sludge withdrawal normally prevents the problem.",
+      "difficulty": "hard",
+      "module": "Sedimentation",
+      "topic": "Sludge management",
+      "isCalc": "no",
+      "tip": "Rising clumps suggest gas and sludge age. A uniform haze of fine particles suggests coagulation problems instead."
+    },
+    {
+      "questionNum": 1018,
+      "question": "A seasonal earthy-musty taste and odour appears in a surface water supply during late summer. Which cause and treatment pairing is most appropriate?",
+      "options": [
+        "Iron bacteria in the intake, treated by increasing coagulant dose",
+        "Elevated hardness from lake turnover, treated by lime softening",
+        "Algal metabolites such as geosmin, treated with powdered activated carbon",
+        "Sulphate-reducing bacteria in the wet well, treated by shock chlorination"
+      ],
+      "correctIndex": 2,
+      "explanation": "Geosmin and 2-methylisoborneol are produced by cyanobacteria and actinomycetes, and are detectable at extremely low concentrations. They are poorly removed by conventional coagulation and filtration, so powdered activated carbon or oxidation with ozone is normally used.",
+      "difficulty": "medium",
+      "module": "Water Sources & Quality",
+      "topic": "Taste and odour",
+      "isCalc": "no",
+      "tip": "Earthy or musty in late summer points to algal metabolites. Rotten egg odour points to sulphide instead."
+    },
+    {
+      "questionNum": 1019,
+      "question": "What is the operational significance of a negative Langelier Saturation Index in finished water?",
+      "options": [
+        "The water is oversaturated with calcium carbonate and will deposit scale",
+        "The water contains excess dissolved oxygen and will promote pitting corrosion",
+        "The water has insufficient alkalinity to support effective coagulation with alum",
+        "The water is undersaturated with calcium carbonate and tends to be corrosive"
+      ],
+      "correctIndex": 3,
+      "explanation": "A negative Langelier index indicates the water is undersaturated with respect to calcium carbonate, so it tends to dissolve rather than deposit a protective scale. Such water is more likely to be corrosive to distribution piping, which matters for both infrastructure integrity and metal leaching.",
+      "difficulty": "hard",
+      "module": "Water Quality & Regulations",
+      "topic": "Corrosion control",
+      "isCalc": "no",
+      "tip": "Negative index means corrosive tendency. Positive means scaling tendency. Neither is a direct health measurement."
+    },
+    {
+      "questionNum": 1020,
+      "question": "A filter shows declining production and air bubbles emerging in the backwash trough. Which condition is developing?",
+      "options": [
+        "Media attrition has reduced the effective size of the filter sand",
+        "The underdrain laterals have partially separated from the manifold",
+        "Air binding has developed as negative head releases dissolved gases",
+        "Filter aid polymer has over-conditioned the upper media surface"
+      ],
+      "correctIndex": 2,
+      "explanation": "As headloss builds, pressure within the media can fall below atmospheric, creating negative head. Dissolved gases then come out of solution and accumulate in the bed, blocking flow paths, reducing filter output, and appearing as air during backwash. Maintaining sufficient water depth above the media helps prevent it.",
+      "difficulty": "hard",
+      "module": "Filtration",
+      "topic": "Air binding",
+      "isCalc": "no",
+      "tip": "Air binding is a negative head problem. Adequate submergence above the media is the usual preventive measure."
+    },
+    {
+      "questionNum": 1021,
+      "question": "A filter measuring 6 m by 4 m treats 3456 m³/d. What is the filtration rate expressed in m/h?",
+      "options": [
+        "3.0 m/h",
+        "4.5 m/h",
+        "6.0 m/h",
+        "8.0 m/h"
+      ],
+      "correctIndex": 2,
+      "explanation": "The filter area is 6 m × 4 m = 24 m². Dividing flow by area gives 3456 ÷ 24 = 144 m³/(m²·d), and dividing by 24 hours gives 6.0 m/h.",
+      "difficulty": "medium",
+      "module": "Filtration",
+      "topic": "Filtration rate",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Area",
+          "c": "6 m × 4 m = 24 m²"
+        },
+        {
+          "l": "Loading",
+          "c": "3456 m³/d ÷ 24 m² = 144 m³/(m²·d)"
+        },
+        {
+          "l": "Convert",
+          "c": "144 ÷ 24 h/d = 6.0 m/h"
+        },
+        {
+          "l": "Check",
+          "c": "m³/(m²·d) reduces to m/d, so dividing by 24 gives m/h."
+        }
+      ],
+      "tip": "Filtration rate is a velocity. m³/(m²·d) simplifies directly to m/d."
+    },
+    {
+      "questionNum": 1022,
+      "question": "Why must a cross-connection between a potable main and an industrial process line be protected by a backflow prevention device?",
+      "options": [
+        "To maintain adequate system pressure during peak industrial demand periods",
+        "To ensure accurate metering of water consumed by the industrial customer",
+        "To limit the loss of disinfectant residual through the industrial service line",
+        "To prevent contaminated water entering the potable system during a pressure reversal"
+      ],
+      "correctIndex": 3,
+      "explanation": "If pressure in the potable main drops below that of the connected system, through a main break or heavy draw, flow can reverse and draw contaminated water into the distribution system. A backflow prevention device provides a physical barrier against backsiphonage and backpressure.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Cross-connection control",
+      "isCalc": "no",
+      "tip": "Backsiphonage comes from low supply pressure. Backpressure comes from higher pressure on the customer side."
+    },
+    {
+      "questionNum": 1023,
+      "question": "Settled water leaving a clarifier carries a persistent haze of very fine particles that resist settling. Which coagulation adjustment should be evaluated first?",
+      "options": [
+        "Reducing flocculation time to limit floc shear in the basin",
+        "Increasing the sludge withdrawal rate from the basin hopper",
+        "Raising the surface overflow rate to carry solids to the filters",
+        "Reviewing coagulant dose and pH, since pin floc suggests poor destabilization"
+      ],
+      "correctIndex": 3,
+      "explanation": "A persistent haze of fine, non-settling particles is characteristic of pin floc, which indicates that particle charge has not been adequately neutralized. Coagulant dose and coagulation pH are the primary variables controlling destabilization, and a jar test is the normal way to re-optimize them.",
+      "difficulty": "medium",
+      "module": "Coagulation & Flocculation",
+      "topic": "Pin floc troubleshooting",
+      "isCalc": "no",
+      "tip": "Pin floc points upstream to coagulation chemistry, not downstream to the settling basin."
+    },
+    {
+      "questionNum": 1024,
+      "question": "Which characteristic of groundwater under the direct influence of surface water determines its treatment requirements?",
+      "options": [
+        "It contains elevated hardness that requires softening before distribution",
+        "It has consistently low temperature that slows disinfection kinetics",
+        "It exhibits high dissolved iron that must be oxidized before filtration",
+        "It shows rapid response to rainfall and can carry surface pathogens"
+      ],
+      "correctIndex": 3,
+      "explanation": "Groundwater under the direct influence of surface water shows measurable response to surface conditions such as rainfall, including turbidity spikes and temperature swings, and can transport surface pathogens including Giardia and Cryptosporidium. It is therefore treated with the pathogen barriers required for surface water rather than as protected groundwater.",
+      "difficulty": "medium",
+      "module": "Water Sources & Quality",
+      "topic": "Source classification",
+      "isCalc": "no",
+      "tip": "GUDI classification is driven by pathogen risk and surface connection, not by mineral chemistry."
+    },
+    {
+      "questionNum": 1025,
+      "question": "A pump develops a rattling noise like gravel passing through the casing, and discharge pressure fluctuates. What is occurring?",
+      "options": [
+        "Water hammer, as a rapid valve closure sends a pressure wave along the line",
+        "Impeller imbalance, as uneven wear shifts the rotating assembly off centre",
+        "Air entrainment, as a loose fitting draws atmospheric air into the volute",
+        "Cavitation, as vapour bubbles form in low pressure and collapse on the impeller"
+      ],
+      "correctIndex": 3,
+      "explanation": "When suction pressure falls below the vapour pressure of water, vapour bubbles form and then collapse violently as they reach higher pressure at the impeller. The collapse sounds like pumping gravel, causes pressure swings, and pits the impeller. Restoring adequate net positive suction head is the remedy.",
+      "difficulty": "medium",
+      "module": "Pumps & Hydraulics",
+      "topic": "Cavitation",
+      "isCalc": "no",
+      "tip": "Gravel noise plus pitted impeller vanes is the classic cavitation signature."
+    },
+    {
+      "questionNum": 1026,
+      "question": "A pump lifts water 32 m from the wet well to the reservoir, and friction losses in the discharge line total 8 m. What is the total dynamic head?",
+      "options": [
+        "24 m",
+        "48 m",
+        "256 m",
+        "40 m"
+      ],
+      "correctIndex": 3,
+      "explanation": "Total dynamic head is the static lift plus all friction and minor losses the pump must overcome: 32 m + 8 m = 40 m.",
+      "difficulty": "easy",
+      "module": "Pumps & Hydraulics",
+      "topic": "Total dynamic head",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "TDH = static head + friction losses"
+        },
+        {
+          "l": "Substitute",
+          "c": "32 m + 8 m"
+        },
+        {
+          "l": "Solve",
+          "c": "= 40 m"
+        },
+        {
+          "l": "Check",
+          "c": "Friction always adds to the work, so TDH must exceed the static lift."
+        }
+      ],
+      "tip": "Friction losses are added, never subtracted. TDH is always greater than static head."
+    },
+    {
+      "questionNum": 1027,
+      "question": "A chlorine gas leak is detected at a cylinder connection inside the chlorine room. What is the correct immediate operator response?",
+      "options": [
+        "Apply a water spray to the connection to absorb escaping chlorine gas",
+        "Open the room doors and windows to disperse the gas before entering",
+        "Evacuate upwind and uphill, raise the alarm, and enter only with SCBA",
+        "Close the main cylinder valve immediately using the nearest hand tools"
+      ],
+      "correctIndex": 2,
+      "explanation": "Chlorine gas is heavier than air and settles in low areas. Personnel evacuate upwind and to higher ground and raise the alarm. Entry to repair the leak is made only by trained responders wearing self-contained breathing apparatus. Water must never be applied to a chlorine leak, because it forms acid that enlarges the leak.",
+      "difficulty": "medium",
+      "module": "Safety",
+      "topic": "Chlorine handling",
+      "isCalc": "no",
+      "tip": "Never spray water on a chlorine leak. Chlorine plus water produces acid that accelerates corrosion."
+    },
+    {
+      "questionNum": 1028,
+      "question": "Before any worker enters a below-grade valve chamber classified as a confined space, what must be completed first?",
+      "options": [
+        "A visual inspection of the ladder and the chamber walls for damage",
+        "A pre-entry briefing covering the task and the expected duration",
+        "A check that a second worker is available somewhere on the site",
+        "Atmospheric testing for oxygen, flammable gases and toxic vapours"
+      ],
+      "correctIndex": 3,
+      "explanation": "Confined spaces can hold oxygen-deficient, flammable, or toxic atmospheres that give no warning to the senses. Testing the atmosphere before entry, with continuous monitoring during the work, is the control that prevents the most common cause of confined-space fatalities. Ventilation, a permit, and a trained attendant support it.",
+      "difficulty": "medium",
+      "module": "Safety",
+      "topic": "Confined space entry",
+      "isCalc": "no",
+      "tip": "Most confined-space deaths involve atmosphere. Test first, ventilate, and keep an attendant outside."
+    },
+    {
+      "questionNum": 1029,
+      "question": "Which statement correctly describes a limitation of ultraviolet disinfection compared with chlorination?",
+      "options": [
+        "UV is ineffective against protozoan cysts such as Giardia and Cryptosporidium",
+        "UV requires a longer contact chamber than free chlorine to achieve credit",
+        "UV raises finished water temperature enough to accelerate pipe corrosion",
+        "UV leaves no lasting residual to protect water in the distribution system"
+      ],
+      "correctIndex": 3,
+      "explanation": "UV inactivates organisms by damaging their genetic material as water passes the lamps, but it adds nothing to the water that persists. Because no residual carries into the distribution system, a chemical disinfectant is still required to guard against downstream contamination and regrowth.",
+      "difficulty": "medium",
+      "module": "Disinfection",
+      "topic": "UV disinfection",
+      "isCalc": "no",
+      "tip": "UV is a strong primary disinfectant, especially for protozoa, but it provides no secondary residual."
+    },
+    {
+      "questionNum": 1030,
+      "question": "Raw water turbidity is 12 NTU and settled water turbidity is 1.2 NTU. What is the percent removal across the process?",
+      "options": [
+        "83%",
+        "92%",
+        "98%",
+        "90%"
+      ],
+      "correctIndex": 3,
+      "explanation": "Percent removal is the change divided by the starting value: (12 − 1.2) ÷ 12 × 100 = 90%.",
+      "difficulty": "easy",
+      "module": "Water Quality & Regulations",
+      "topic": "Percent removal",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "% removal = (In − Out) ÷ In × 100"
+        },
+        {
+          "l": "Substitute",
+          "c": "(12 − 1.2) ÷ 12 × 100"
+        },
+        {
+          "l": "Solve",
+          "c": "10.8 ÷ 12 × 100 = 90%"
+        }
+      ],
+      "tip": "Always divide by the influent value, not the effluent value."
+    },
+    {
+      "questionNum": 1031,
+      "question": "An operator discovers the fluoride feed pump has been running at roughly double its intended rate for several hours. What is the correct sequence of actions?",
+      "options": [
+        "Continue the feed at a reduced rate and log the deviation at shift end",
+        "Increase plant flow to dilute the overfeed and resample after two hours",
+        "Stop the feed, notify as required, and sample to define the affected water",
+        "Switch to the standby fluoride pump and recalibrate the primary unit"
+      ],
+      "correctIndex": 2,
+      "explanation": "A chemical overfeed is stopped first to prevent further impact. The operator then follows the required notification procedure and samples to establish the concentration and the extent of affected water, so corrective action such as flushing can be scoped. Diluting or deferring the response is not acceptable.",
+      "difficulty": "medium",
+      "module": "Chemical Feed & Dosing",
+      "topic": "Overfeed response",
+      "isCalc": "no",
+      "tip": "For any chemical overfeed: stop the feed, notify, then determine the extent."
+    },
+    {
+      "questionNum": 1032,
+      "question": "Why is recarbonation commonly applied after lime softening?",
+      "options": [
+        "To restore alkalinity consumed by the lime and improve coagulation",
+        "To raise the water temperature before the water enters the filters",
+        "To strip dissolved carbon dioxide that would otherwise cause corrosion",
+        "To lower the elevated pH and stabilize the water against scale deposition"
+      ],
+      "correctIndex": 3,
+      "explanation": "Lime softening raises pH sharply to precipitate calcium carbonate and magnesium hydroxide. Water leaving the process is supersaturated and would deposit scale in filters and mains. Adding carbon dioxide lowers the pH and converts excess carbonate, stabilizing the water before filtration and distribution.",
+      "difficulty": "hard",
+      "module": "Softening",
+      "topic": "Recarbonation",
+      "isCalc": "no",
+      "tip": "Softening drives pH up; recarbonation brings it back down and stabilizes the water."
+    },
+    {
+      "questionNum": 1033,
+      "question": "Why is sodium thiosulfate added to a bottle used for collecting a bacteriological sample from a chlorinated supply?",
+      "options": [
+        "It preserves the sample by lowering the pH to halt bacterial growth",
+        "It prevents metals in the sample from adsorbing onto the bottle wall",
+        "It provides nutrients that keep viable organisms alive during transit",
+        "It neutralizes chlorine so disinfection does not continue in the bottle"
+      ],
+      "correctIndex": 3,
+      "explanation": "Residual chlorine carried into the sample bottle would continue inactivating organisms between collection and analysis, producing an artificially low result that does not represent the water at the sampling point. Sodium thiosulfate quenches the residual at the moment of collection.",
+      "difficulty": "medium",
+      "module": "Sampling & Laboratory",
+      "topic": "Sample preservation",
+      "isCalc": "no",
+      "tip": "Quenching chlorine freezes the microbiological result at the moment of collection."
+    },
+    {
+      "questionNum": 1034,
+      "question": "What is the purpose of maintaining a chain of custody record for a compliance sample?",
+      "options": [
+        "It records the calibration status of every instrument used in the analysis",
+        "It confirms the sampler holds a valid certificate for the class of system",
+        "It tracks the cost of laboratory work against the operating budget line",
+        "It documents each transfer of the sample so the result is defensible"
+      ],
+      "correctIndex": 3,
+      "explanation": "A chain of custody records who held the sample, and when, from collection through to analysis. It establishes that the sample was not altered or substituted, which is what makes the laboratory result legally and technically defensible if it is later questioned.",
+      "difficulty": "medium",
+      "module": "Sampling & Laboratory",
+      "topic": "Chain of custody",
+      "isCalc": "no",
+      "tip": "Chain of custody protects the integrity of the result, not the quality of the water."
+    },
+    {
+      "questionNum": 1035,
+      "question": "An online turbidimeter reads consistently lower than grab samples analysed on a freshly calibrated bench unit. What should the operator check first?",
+      "options": [
+        "Whether the plant flow rate has increased beyond the design capacity",
+        "Whether the coagulant feed pump is delivering its full rated output",
+        "Whether the sample line and optics are fouled and need cleaning",
+        "Whether the raw water source has changed since the last inspection"
+      ],
+      "correctIndex": 2,
+      "explanation": "A disagreement between an online analyser and a verified bench measurement points to the instrument or its sample stream, not to the treatment process. Biofilm or deposits in the sample line, bubbles, and dirty optics are common causes. The instrument is cleaned and verified before any process change is made on its readings.",
+      "difficulty": "medium",
+      "module": "Instrumentation & Control",
+      "topic": "Analyser verification",
+      "isCalc": "no",
+      "tip": "Verify the instrument before you adjust the process. Never chase a reading you have not confirmed."
+    },
+    {
+      "questionNum": 1036,
+      "question": "A pump draws 30 kW of electrical input and delivers 21 kW of water power. What is the wire-to-water efficiency?",
+      "options": [
+        "51%",
+        "63%",
+        "70%",
+        "88%"
+      ],
+      "correctIndex": 2,
+      "explanation": "Wire-to-water efficiency is the useful water power divided by the electrical power supplied: 21 kW ÷ 30 kW × 100 = 70%.",
+      "difficulty": "medium",
+      "module": "Pumps & Hydraulics",
+      "topic": "Pump efficiency",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "Efficiency = output ÷ input × 100"
+        },
+        {
+          "l": "Substitute",
+          "c": "21 kW ÷ 30 kW × 100"
+        },
+        {
+          "l": "Solve",
+          "c": "= 70%"
+        },
+        {
+          "l": "Check",
+          "c": "Output is always less than input, so efficiency must be below 100%."
+        }
+      ],
+      "tip": "Wire-to-water covers the whole motor and pump set, so it is lower than pump efficiency alone."
+    },
+    {
+      "questionNum": 1037,
+      "question": "A flow of 100 L/s is reported at the plant inlet. What is this flow expressed in ML/d?",
+      "options": [
+        "0.86 ML/d",
+        "6.00 ML/d",
+        "8.64 ML/d",
+        "86.4 ML/d"
+      ],
+      "correctIndex": 2,
+      "explanation": "There are 86 400 seconds in a day, so 100 L/s × 86 400 s/d = 8 640 000 L/d. Dividing by one million litres per megalitre gives 8.64 ML/d.",
+      "difficulty": "medium",
+      "module": "Hydraulics",
+      "topic": "Flow conversion",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Seconds per day",
+          "c": "60 × 60 × 24 = 86 400 s/d"
+        },
+        {
+          "l": "Litres per day",
+          "c": "100 L/s × 86 400 = 8 640 000 L/d"
+        },
+        {
+          "l": "Convert",
+          "c": "8 640 000 ÷ 1 000 000 = 8.64 ML/d"
+        }
+      ],
+      "tip": "Memorize 1 L/s = 0.0864 ML/d. It converts most plant flows in one step."
+    },
+    {
+      "questionNum": 1038,
+      "question": "A cylindrical reservoir has an internal diameter of 12 m and a water depth of 5 m. What volume of water does it hold?",
+      "options": [
+        "188 m³",
+        "300 m³",
+        "565 m³",
+        "720 m³"
+      ],
+      "correctIndex": 2,
+      "explanation": "The volume of a cylinder is the area of the circular base multiplied by depth. The radius is 6 m, so the area is π × 6² = 113.1 m², and 113.1 × 5 = 565 m³.",
+      "difficulty": "medium",
+      "module": "Hydraulics",
+      "topic": "Tank volume",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Radius",
+          "c": "12 m ÷ 2 = 6 m"
+        },
+        {
+          "l": "Area",
+          "c": "π × 6² = 113.1 m²"
+        },
+        {
+          "l": "Volume",
+          "c": "113.1 m² × 5 m = 565 m³"
+        }
+      ],
+      "tip": "Halve the diameter before squaring. Using diameter in place of radius is the most common error."
+    },
+    {
+      "questionNum": 1039,
+      "question": "What does a pressure decay test on a membrane filtration unit verify?",
+      "options": [
+        "That the transmembrane pressure is within its normal operating band",
+        "That the permeate flow matches the design flux at current temperature",
+        "That the integrity of the membrane fibres and seals remains intact",
+        "That the chemical cleaning cycle has restored the original permeability"
+      ],
+      "correctIndex": 2,
+      "explanation": "A pressure decay test pressurizes one side of the membrane with air and measures how quickly pressure falls. A faster than expected decay indicates a broken fibre or a failed seal, which would allow untreated water to pass. It is a direct integrity check rather than a performance measurement.",
+      "difficulty": "hard",
+      "module": "Filtration",
+      "topic": "Membrane integrity",
+      "isCalc": "no",
+      "tip": "Integrity testing confirms the barrier is intact. Flux and pressure trends only describe performance."
+    },
+    {
+      "questionNum": 1040,
+      "question": "In which situation is powdered activated carbon preferred over a granular activated carbon contactor?",
+      "options": [
+        "Where a continuous organic load must be removed year round",
+        "Where regeneration of the spent carbon on site is required",
+        "Where the plant needs a permanent barrier against synthetic organics",
+        "Where occasional seasonal taste and odour episodes must be treated"
+      ],
+      "correctIndex": 3,
+      "explanation": "Powdered activated carbon is dosed into the process only when needed and is removed with the sludge, which suits short seasonal taste and odour events. A granular carbon contactor is a fixed capital installation better matched to continuous or year-round organic removal.",
+      "difficulty": "medium",
+      "module": "Water Sources & Quality",
+      "topic": "Activated carbon",
+      "isCalc": "no",
+      "tip": "PAC is dosed as needed for short events. GAC is a permanent bed for continuous duty."
+    }
+  ]
+}
