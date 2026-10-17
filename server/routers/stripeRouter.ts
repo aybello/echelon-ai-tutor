@@ -25,7 +25,7 @@ import { CATALOGUE_VERSION } from "../../shared/pricingCatalogue";
 import { getOrCreateTeamAnnualPrice } from "../stripe/teamGraduatedPrice";
 import { getDb } from "../db";
 import { purchaseReadColumns, purchases, subscriptions } from "../../drizzle/schema";
-import { eq, and, gt, count } from "drizzle-orm";
+import { eq, and, gt, count, isNull } from "drizzle-orm";
 import { ENV } from "../_core/env";
 import { notifyOwner } from "../_core/notification";
 import { verifyAccessTokenAndRecheckDb } from "../_core/accessService";
@@ -337,7 +337,7 @@ export const stripeRouter = router({
       });
     }),
 
-  /** Get all active subscriptions for the current user (by email) */
+  /** Get active personal subscriptions; team access uses assigned-course entitlements. */
   getMySubscriptions: protectedProcedure
     .query(async ({ ctx }) => {
       const email = ctx.user.email;
@@ -351,6 +351,7 @@ export const stripeRouter = router({
         .where(
           and(
             eq(subscriptions.email, email),
+            isNull(subscriptions.orgId),
             eq(subscriptions.status, "active"),
             gt(subscriptions.currentPeriodEnd, now),
           )
@@ -381,6 +382,7 @@ export const stripeRouter = router({
         .where(
           and(
             eq(subscriptions.email, email),
+            isNull(subscriptions.orgId),
             eq(subscriptions.status, "active"),
             gt(subscriptions.currentPeriodEnd, now),
           )
