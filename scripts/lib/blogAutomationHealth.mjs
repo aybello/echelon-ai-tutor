@@ -99,13 +99,15 @@ export function evaluateBlogAutomationHealth({ rows, latestArticle, heartbeat, n
     if (matches.length !== 1) { add(`${kind}-binding`, "fail", `Bound ${kind} task missing or ambiguous`); continue; }
     const job = matches[0];
     if (kind === "weekly") weekly = job;
-    if (job.name !== name || field(job, "callbackPath", "callback_path") !== path
+    const acceptedName = job.name === name || (kind === "worker"
+      && /^echelon-blog-continuation-recovered-\d{8}$/.test(job.name));
+    if (!acceptedName || field(job, "callbackPath", "callback_path") !== path
       || String(field(job, "callbackMethod", "callback_method")).toUpperCase() !== "POST"
       || field(job, "cronExpression", "cron_expression") !== cron) add(`${kind}-configuration`, "fail", `Bound ${kind} schedule/callback differs from contract`);
     const enabled = field(job, "isEnable", "is_enable");
     if (enabled === false) add(`${kind}-disabled`, "fail", `Bound ${kind} task is disabled`);
     else if (enabled !== true) add(`${kind}-enabled`, "blocked", `Bound ${kind} enable state unavailable`);
-    if (jobs.some(other => other !== job && other.name === name)) add(`${kind}-duplicate`, "fail", `Multiple ${kind} jobs share the expected name; inspect bindings`);
+    if (jobs.some(other => other !== job && other.name === job.name)) add(`${kind}-duplicate`, "fail", `Multiple ${kind} jobs share the expected name; inspect bindings`);
   }
   const slot = weeklyBlogSlot(now);
   const dueSlot = at >= slot + graceMs ? slot : slot - WEEK;

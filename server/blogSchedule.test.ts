@@ -1,10 +1,14 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { BLOG_CONTINUATION_HEARTBEAT, ensureDurableBlogHeartbeat, resumeBoundBlogHeartbeat } from "./blogSchedule";
 import { ensureWeeklyBlogHeartbeat } from "./blogAutomation";
+import { MySqlDialect } from "drizzle-orm/mysql-core";
 const weekly = { taskUid: "weekly-fixture", name: "weekly-echelon-blog", userId: "owner", description: "Research, review, revise, and publish one source-grounded Echelon article each week.", cronExpression: "0 0 14 * * 1", callbackPath: "/api/scheduled/generate-blog", callbackMethod: "POST", callbackPayload: "{}", isEnable: true };
 const worker = { ...weekly, taskUid: "worker-fixture", name: BLOG_CONTINUATION_HEARTBEAT.name, cronExpression: BLOG_CONTINUATION_HEARTBEAT.cron, callbackPath: BLOG_CONTINUATION_HEARTBEAT.path };
 function fixture(jobs = [weekly], bindings = {}) {
-  const execute = vi.fn().mockResolvedValue([[bindings], []]);
+  const execute = vi.fn().mockImplementation(async query => {
+    const compiled = new MySqlDialect().sqlToQuery(query);
+    return compiled.sql.startsWith("SELECT") ? [[bindings], []] : [{ affectedRows: 1 }, []];
+  });
   return { execute, deps: { getDb: vi.fn().mockResolvedValue({ execute }), list: vi.fn().mockResolvedValue({ jobs, actorUserId: "owner", total: jobs.length }), create: vi.fn().mockResolvedValue({ taskUid: "worker-fixture" }), update: vi.fn().mockResolvedValue({}) } };
 }
 afterEach(() => vi.unstubAllEnvs());
@@ -24,6 +28,26 @@ describe("durable blog schedule registration", () => {
     await expect(ensureDurableBlogHeartbeat(deps)).resolves.toEqual({ weekly: "registered", continuation: "created" });
     expect(deps.create).toHaveBeenCalledWith(BLOG_CONTINUATION_HEARTBEAT, "");
     expect(execute).toHaveBeenCalledTimes(3);
+  });
+  it("does not UPDATE established bindings after remote schedule reads", async () => {
+    const { deps, execute } = fixture([weekly, worker], { weeklyTaskUid: weekly.taskUid, workerTaskUid: worker.taskUid });
+    await ensureDurableBlogHeartbeat(deps);
+    const queries = execute.mock.calls.map(([query]) => new MySqlDialect().sqlToQuery(query));
+    expect(queries.some(query => query.sql.startsWith("UPDATE"))).toBe(false);
+  });
+  it("CAS rejects bindings changed while registration was doing remote IO", async () => {
+    const { deps, execute } = fixture([weekly], { weeklyTaskUid: weekly.taskUid, workerTaskUid: null });
+    execute.mockImplementation(async query => {
+      const compiled = new MySqlDialect().sqlToQuery(query);
+      if (compiled.sql.startsWith("SELECT")) return [[{ weeklyTaskUid: weekly.taskUid, workerTaskUid: null }], []];
+      if (compiled.sql.startsWith("UPDATE")) {
+        expect(compiled.sql).toContain("weeklyTaskUid <=> ? AND workerTaskUid <=> ?");
+        expect(compiled.params.slice(-2)).toEqual([weekly.taskUid, null]);
+        return [{ affectedRows: 0 }, []]; // Another process installed recovered UID meanwhile.
+      }
+      return [{ affectedRows: 1 }, []];
+    });
+    await expect(ensureDurableBlogHeartbeat(deps)).rejects.toThrow("changed concurrently");
   });
   it("preserves weekly and continuation pauses on repeated normal startups", async () => {
     const { deps } = fixture([{ ...weekly, isEnable: false }, { ...worker, isEnable: false }], { weeklyTaskUid: weekly.taskUid, workerTaskUid: worker.taskUid });

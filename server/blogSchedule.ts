@@ -38,7 +38,11 @@ export async function ensureDurableBlogHeartbeat(deps = scheduleDeps) {
       await deps.update(workerUid, { ...BLOG_CONTINUATION_HEARTBEAT }, "");
   }
   if (!weeklyMatches[0].taskUid || !workerUid) throw new Error("Missing blog schedule task identity");
-  await db.execute(sql`UPDATE blog_automation_runs SET weeklyTaskUid = ${weeklyMatches[0].taskUid}, workerTaskUid = ${workerUid} WHERE id = 'weekly-echelon-blog'`);
+  if (bindings?.weeklyTaskUid !== weeklyMatches[0].taskUid || bindings?.workerTaskUid !== workerUid) {
+    const result = await db.execute(sql`UPDATE blog_automation_runs SET weeklyTaskUid = ${weeklyMatches[0].taskUid}, workerTaskUid = ${workerUid} WHERE id = 'weekly-echelon-blog' AND weeklyTaskUid <=> ${bindings?.weeklyTaskUid ?? null} AND workerTaskUid <=> ${bindings?.workerTaskUid ?? null}`) as any;
+    if (Number(result?.[0]?.affectedRows ?? result?.affectedRows ?? 0) !== 1)
+      throw new Error("Blog schedule binding changed concurrently; inspect before retry");
+  }
   return { weekly: "registered", continuation: worker ? "registered" : "created" };
 }
 /** Explicit owner-approved recovery only. Startup never calls this function. */

@@ -26,6 +26,20 @@ describe("weekly blog outcome audit", () => {
   it("passes only a real completed run, enabled bindings, successful schedule and tagged publication", () => {
     expect(assess(fixture()).status).toBe("pass");
   });
+  it("accepts recovered names only for the saved UID and unchanged configuration gates", () => {
+    const input = fixture();
+    input.heartbeat.jobs[1].name = "echelon-blog-continuation-recovered-20261017";
+    expect(assess(input).status).toBe("pass");
+    for (const patch of [
+      { task_uid: "unbound-replacement" }, { name: "echelon-blog-continuation-recovered-latest" },
+      { callback_path: "/api/scheduled/other" }, { callback_method: "GET" },
+      { cron_expression: "0 0 * * * *" }, { is_enable: false },
+    ]) {
+      const changed = structuredClone(input);
+      Object.assign(changed.heartbeat.jobs[1], patch);
+      expect(assess(changed).status).toBe("fail");
+    }
+  });
   it.each([0, 1])("detects disabled bound task %i", index => {
     const input = fixture(); input.heartbeat.jobs[index].is_enable = false;
     expect(assess(input).status).toBe("fail");
