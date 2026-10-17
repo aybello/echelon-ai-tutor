@@ -22,7 +22,8 @@ import {
   clearDiagnosticDraft,
   createDiagnosticDraftScope,
   resolveDiagnosticDraftIdentity,
-  loadDiagnosticDraft,
+  upgradeLegacyDiagnosticDraft,
+  resolveVerifiedLegacyDiagnosticScope,
   saveDiagnosticDraft,
 } from "@/lib/diagnosticDraft";
 
@@ -85,6 +86,7 @@ function ActivationFlow({ auth, oauth }: {
     onSuccess: () => {
       const scope = diagnosticDraftScope;
       if (scope) clearDiagnosticDraft(draftStorage, scope, diagnosticSessionId);
+      if (verifiedLegacyScope) clearDiagnosticDraft(draftStorage, verifiedLegacyScope, diagnosticSessionId);
       setStep("result");
       status.refetch();
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -116,6 +118,12 @@ function ActivationFlow({ auth, oauth }: {
     resolveDiagnosticDraftIdentity(oauth.user?.id, auth.data?.email),
     courseKey,
   ), [auth.data?.email, courseKey, oauth.user?.id]);
+  const verifiedLegacyScope = useMemo(() => resolveVerifiedLegacyDiagnosticScope(
+    oauth.isAuthenticated ? oauth.user?.id : null,
+    oauth.isAuthenticated ? oauth.user?.email : null,
+    courseKey,
+  ), [oauth.isAuthenticated, oauth.user?.id, oauth.user?.email, courseKey]);
+  const diagnosticCompleted = !!submitDiagnostic.data || !!status.data?.diagnostic || status.data?.status === "completed";
   const diagnosticQuestionIds = useMemo(() => questions.data?.questions.map(question => question.id) ?? [], [questions.data?.questions]);
   const diagnosticDraftKey = diagnosticDraftScope && diagnosticQuestionIds.length === 15
     ? `${diagnosticDraftScope.identity}:${diagnosticDraftScope.courseKey}:${diagnosticQuestionIds.join(",")}`
@@ -125,9 +133,9 @@ function ActivationFlow({ auth, oauth }: {
   // verified learner/course. Keep only that exact set in browser storage so a
   // refresh can resume safely without inventing, changing, or reordering work.
   useEffect(() => {
-    if (!diagnosticDraftScope || !diagnosticDraftKey || restoredDraftKeyRef.current === diagnosticDraftKey) return;
+    if (step !== "diagnostic" || diagnosticCompleted || !diagnosticDraftScope || !diagnosticDraftKey || restoredDraftKeyRef.current === diagnosticDraftKey) return;
     restoredDraftKeyRef.current = diagnosticDraftKey;
-    const draft = loadDiagnosticDraft(draftStorage, diagnosticDraftScope, diagnosticQuestionIds);
+    const draft = upgradeLegacyDiagnosticDraft(draftStorage, diagnosticDraftScope, diagnosticQuestionIds, verifiedLegacyScope);
     if (draft) {
       setAnswers(draft.answers);
       setQuestionIndex(draft.questionIndex);
@@ -140,10 +148,10 @@ function ActivationFlow({ auth, oauth }: {
       setResumedDraft(false);
     }
     setDraftReadyKey(diagnosticDraftKey);
-  }, [diagnosticDraftKey, diagnosticDraftScope, diagnosticQuestionIds]);
+  }, [step, diagnosticCompleted, diagnosticDraftKey, diagnosticDraftScope, diagnosticQuestionIds, verifiedLegacyScope]);
 
   useEffect(() => {
-    if (step !== "diagnostic" || !diagnosticDraftScope || !diagnosticDraftKey || draftReadyKey !== diagnosticDraftKey) return;
+    if (step !== "diagnostic" || diagnosticCompleted || !diagnosticDraftScope || !diagnosticDraftKey || draftReadyKey !== diagnosticDraftKey) return;
     setDraftSaved(saveDiagnosticDraft(draftStorage, {
       version: 1,
       scope: diagnosticDraftScope,
@@ -152,8 +160,8 @@ function ActivationFlow({ auth, oauth }: {
       answers,
       questionIndex,
       updatedAt: Date.now(),
-    }));
-  }, [step, answers, diagnosticDraftKey, diagnosticDraftScope, diagnosticQuestionIds, diagnosticSessionId, draftReadyKey, questionIndex]);
+    }, verifiedLegacyScope));
+  }, [diagnosticCompleted, verifiedLegacyScope, step, answers, diagnosticDraftKey, diagnosticDraftScope, diagnosticQuestionIds, diagnosticSessionId, draftReadyKey, questionIndex]);
 
   const result = submitDiagnostic.data ?? status.data?.diagnostic ?? null;
   const currentQuestion = questions.data?.questions[questionIndex];
@@ -176,6 +184,7 @@ function ActivationFlow({ auth, oauth }: {
   };
 
   const finishDiagnostic = () => {
+    if (diagnosticCompleted) return;
     const diagnosticQuestions = questions.data?.questions ?? [];
     if (diagnosticQuestions.length !== 15 || diagnosticQuestions.some(question => answers[question.id] === undefined)) {
       toast.error("Answer all 15 questions to create your baseline.");
@@ -189,6 +198,8 @@ function ActivationFlow({ auth, oauth }: {
   };
 
   const restartDiagnostic = () => {
+    if (diagnosticCompleted) return;
+    if (verifiedLegacyScope) clearDiagnosticDraft(draftStorage, verifiedLegacyScope, diagnosticSessionId);
     if (diagnosticDraftScope) clearDiagnosticDraft(draftStorage, diagnosticDraftScope, diagnosticSessionId);
     setAnswers({});
     setQuestionIndex(0);

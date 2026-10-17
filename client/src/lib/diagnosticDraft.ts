@@ -31,6 +31,19 @@ export function createDiagnosticDraftScope(identity: string | null | undefined, 
     : null;
 }
 
+/** Only the server-authenticated OAuth user's own email is a legacy alias.
+ * Never pass an OTP email or a browser-stored identity as oauthEmail.
+ */
+export function resolveVerifiedLegacyDiagnosticScope(
+  oauthUserId: number | null | undefined,
+  oauthEmail: string | null | undefined,
+  courseKey: string,
+): DiagnosticDraftScope | null {
+  return oauthUserId != null && oauthEmail?.includes("@")
+    ? createDiagnosticDraftScope(oauthEmail, courseKey)
+    : null;
+}
+
 function isScope(value: unknown): value is DiagnosticDraftScope {
   if (!value || typeof value !== "object") return false;
   const scope = value as Partial<DiagnosticDraftScope>;
@@ -50,7 +63,7 @@ function isDraft(value: unknown): value is DiagnosticDraft {
     && typeof draft.answers === "object"
     && !Array.isArray(draft.answers)
     && Number.isInteger(draft.questionIndex)
-    && typeof draft.updatedAt === "number";
+    && typeof draft.updatedAt === "number" && Number.isFinite(draft.updatedAt);
 }
 
 function sameScope(a: DiagnosticDraftScope, b: DiagnosticDraftScope): boolean {
@@ -73,9 +86,10 @@ export function loadDiagnosticDraft(
   storage: Pick<Storage, "getItem">,
   scope: DiagnosticDraftScope,
   expectedQuestionIds: readonly number[],
+  verifiedLegacyScope?: DiagnosticDraftScope | null,
 ): DiagnosticDraft | null {
   const expected = [...expectedQuestionIds];
-  return readAll(storage).find(draft => sameScope(draft.scope, scope)
+  const current = readAll(storage).find(draft => sameScope(draft.scope, scope)
     && draft.questionIds.length === expected.length
     && draft.questionIds.every((id, index) => id === expected[index])
     && draft.questionIndex >= 0
@@ -83,11 +97,39 @@ export function loadDiagnosticDraft(
     && Object.entries(draft.answers).every(([questionId, selectedIndex]) =>
       expected.includes(Number(questionId)) && Number.isInteger(selectedIndex) && selectedIndex >= 0 && selectedIndex <= 9,
     )) ?? null;
+  if (current) return current;
+  if (!scope.identity.startsWith("user:") || !verifiedLegacyScope
+    || !verifiedLegacyScope.identity.includes("@")
+    || verifiedLegacyScope.courseKey !== scope.courseKey) return null;
+  const legacy = loadDiagnosticDraft(storage, verifiedLegacyScope, expectedQuestionIds);
+  return legacy ? { ...legacy, scope } : null;
 }
 
-export function saveDiagnosticDraft(storage: StorageLike, draft: DiagnosticDraft): boolean {
+/** Upgrade only after validation. One atomic storage write preserves the old
+ * record if storage is unavailable, while the caller can still resume in memory.
+ */
+export function upgradeLegacyDiagnosticDraft(
+  storage: StorageLike,
+  scope: DiagnosticDraftScope,
+  expectedQuestionIds: readonly number[],
+  verifiedLegacyScope?: DiagnosticDraftScope | null,
+): DiagnosticDraft | null {
+  const current = loadDiagnosticDraft(storage, scope, expectedQuestionIds);
+  if (current) return current;
+  const draft = loadDiagnosticDraft(storage, scope, expectedQuestionIds, verifiedLegacyScope);
+  if (draft) saveDiagnosticDraft(storage, draft, verifiedLegacyScope);
+  return draft;
+}
+
+export function saveDiagnosticDraft(storage: StorageLike, draft: DiagnosticDraft, verifiedLegacyScope?: DiagnosticDraftScope | null): boolean {
   try {
-    const remaining = readAll(storage).filter(existing => !sameScope(existing.scope, draft.scope));
+    const remaining = readAll(storage).filter(existing => !sameScope(existing.scope, draft.scope)
+      && !(draft.scope.identity.startsWith("user:") && verifiedLegacyScope
+        && verifiedLegacyScope.courseKey === draft.scope.courseKey
+        && sameScope(existing.scope, verifiedLegacyScope)
+        && existing.sessionId === draft.sessionId
+        && existing.questionIds.length === draft.questionIds.length
+        && existing.questionIds.every((id, index) => id === draft.questionIds[index])));
     storage.setItem(DIAGNOSTIC_DRAFT_STORAGE_KEY, JSON.stringify([...remaining, draft]));
     return true;
   } catch {
