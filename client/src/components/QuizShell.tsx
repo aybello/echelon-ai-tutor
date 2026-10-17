@@ -580,9 +580,11 @@ export default function QuizShell({
         }
       `}</style>
 
-      <SiteNav currentPath={currentPath} /><PracticeSaveStatus courseKey={examType} />
+      <SiteNav currentPath={currentPath} />
 
       <div className="practice-screen-main">
+      {/* Save warnings belong to the quiz column, not a separate workspace grid cell. */}
+      <PracticeSaveStatus courseKey={examType} />
       <section className="practice-header" aria-label="Practice session">
         <div className="practice-header-inner">
           <div className="practice-title-row"><div>
