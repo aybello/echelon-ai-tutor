@@ -388,7 +388,7 @@ export default function EquipmentDetail({
                           {t.symbol}
                         </dt>
                         <dd className="text-slate-600">
-                          {t.meaning}{" "}
+                          {units === "us" && t.meaningUs ? t.meaningUs : t.meaning}{" "}
                           <span className="text-slate-400">
                             (
                             {units === "us" && t.unitsUs ? t.unitsUs : t.units})

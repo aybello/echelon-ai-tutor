@@ -2,6 +2,18 @@ import { test, expect, type Page } from "@playwright/test";
 import { matchedUSCourses, sharedUSCourses, US_STATE_CONFIGS } from "../shared/usExamRouting";
 import { getAllCourses } from "../shared/courseRegistry";
 
+test("already-sent study email links redirect to canonical course and jurisdiction", async ({ request }) => {
+  for (const [legacy, canonical] of [
+    ["/pricing?course=us-texas-class-d-water", "/pricing?product=us-texas-class-d-water&country=US&state=TX"],
+    ["/pricing?course=wpi-class1-water&province=AB", "/pricing?product=wpi-class1-water&province=AB"],
+  ]) {
+    const response = await request.get(legacy, { maxRedirects: 0 });
+    expect(response.status()).toBe(302);
+    expect(response.headers().location).toBe(canonical);
+    expect((await request.get(canonical, { maxRedirects: 0 })).status()).toBe(200);
+  }
+});
+
 async function mockServices(page: Page) {
   await page.route("https://analytics.example.test/**", route => route.fulfill({body:""}));
   await page.route("**/api/trpc/**", async route => {

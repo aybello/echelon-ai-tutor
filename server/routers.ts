@@ -56,6 +56,7 @@ import { trackEvent } from "./analytics";
 import { resolveCourseKey } from "../shared/courseRegistry";
 import { resolveQuizGateOffer } from "../shared/checkoutOffer";
 import { sendPreviewStudyPlanEmail } from "./previewStudyPlanEmail";
+import { leadPricingHref, leadStudyContext, STUDY_FOLLOW_UP_CONSENT_VERSION } from "../shared/leadStudyContext";
 import { ELECTRICIAN_309A_PROGRAM_KEY } from "../shared/certificationPrograms";
 import { learnerVisibleQuestionFilter } from "./questionGovernance";
 
@@ -73,6 +74,8 @@ export const studyPlanCaptureInput = z.object({
   phone: z.string().trim().max(32).optional(),
   // Course keys are at most 22 characters today; 32 matches the column.
   productKey: z.string().min(1).max(32),
+  studySearch: z.string().max(512).optional(),
+  followUpConsent: z.boolean().default(false),
   score: z.number().int().min(0).max(100),
   correct: z.number().int().min(0).max(500),
   total: z.number().int().min(1).max(500),
@@ -361,6 +364,9 @@ export const appRouter = router({
             phone: input.phone?.trim() || null,
             // Records which course earned the lead, so follow-up is targeted.
             source: input.productKey.slice(0, 32),
+            studyContext: leadStudyContext(input.productKey, input.studySearch),
+            followUpConsentAt: input.followUpConsent ? new Date() : null,
+            followUpConsentVersion: input.followUpConsent ? STUDY_FOLLOW_UP_CONSENT_VERSION : null,
           });
           await notifyOwner({
             title: "Preview study plan requested",
@@ -370,13 +376,27 @@ export const appRouter = router({
           }).catch(() => undefined);
         }
 
+        if (existing.length > 0) {
+          // Refresh requested course/contact context without reopening an opt-out
+          // or restarting a sequence that has already run.
+          await db.update(trialEmails).set({
+            source: input.productKey.slice(0, 32),
+            studyContext: leadStudyContext(input.productKey, input.studySearch),
+            ...(input.phone?.trim() ? { phone: input.phone.trim() } : {}),
+            ...(input.followUpConsent ? {
+              followUpConsentAt: new Date(),
+              followUpConsentVersion: STUDY_FOLLOW_UP_CONSENT_VERSION,
+            } : {}),
+          }).where(eq(trialEmails.id, existing[0].id));
+        }
+
         // Delivery must never fail the capture. The lead is already saved.
         try {
           const course = resolveCourseKey(input.productKey);
           const offer = resolveQuizGateOffer(input.productKey);
           const courseLabel = course?.displayName ?? offer.productName ?? "your course";
           const site = "https://echeloninstitute.ca";
-          const courseUrl = `${site}/pricing?course=${encodeURIComponent(input.productKey)}`;
+          const courseUrl = `${site}${leadPricingHref(input.productKey, input.studySearch)}`;
           await sendPreviewStudyPlanEmail({
             email,
             courseLabel,

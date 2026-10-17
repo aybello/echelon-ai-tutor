@@ -224,6 +224,7 @@ jobs:
           server/teams/auditBillingScope.integration.test.ts
           server/partnershipInquiry.integration.test.ts
           server/auditAdminLifecycle.integration.test.ts
+          server/leadFollowUpSafety.integration.test.ts
         env:
           CI: "1"
           NODE_ENV: test

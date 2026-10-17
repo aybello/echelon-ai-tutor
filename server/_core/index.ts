@@ -1,4 +1,5 @@
 import { registerManagedJobs, requireManagedJob } from "../jobs/managedJobs";
+import { legacyLeadPricingRedirect } from "../../shared/leadStudyContext";
 import {
   runPurchaseEmailDelivery,
 } from "../purchaseEmailOutbox";
@@ -95,6 +96,15 @@ async function startServer() {
   // before Stripe, OAuth, tRPC, scheduled jobs, or bespoke route handlers can
   // create a source-side write.
   app.use(databaseCutoverWriteFreeze());
+
+  // Old study-plan emails used ?course=. Repair those links before SSR/SPA
+  // handling so the UI receives its canonical product and jurisdiction query.
+  app.get("/pricing", (req, res, next) => {
+    const queryAt = req.originalUrl.indexOf("?");
+    const target = legacyLeadPricingRedirect(queryAt < 0 ? "" : req.originalUrl.slice(queryAt));
+    if (target) return res.redirect(302, target);
+    next();
+  });
 
   // Register Stripe webhook BEFORE express.json() so raw body is preserved for signature verification
   registerStripeWebhook(app);
@@ -308,10 +318,8 @@ async function startServer() {
             "<html><body><h2>Unsubscribe link not found or already used.</h2></body></html>"
           );
       }
-      await db
-        .update(trialEmails)
-        .set({ optOut: true })
-        .where(eq(trialEmails.unsubscribeToken, token));
+      const { unsubscribeFollowUpEmail } = await import("../leadFollowUpPolicy");
+      await unsubscribeFollowUpEmail(db, rows[0].email);
       return res.send(
         `<html><head><meta charset='utf-8'><title>Unsubscribed</title><style>body{font-family:Arial,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#F1F5F9;}div{background:#fff;border-radius:12px;padding:40px;max-width:480px;text-align:center;box-shadow:0 2px 16px rgba(0,0,0,0.08);}h2{color:#15803D;margin:0 0 12px;}p{color:#475569;font-size:14px;line-height:1.6;}</style></head><body><div><div style='font-size:40px;margin-bottom:16px'>✅</div><h2>You've been unsubscribed</h2><p>You will no longer receive study follow-up emails from Echelon Institute. Your free practice access is not affected.</p><p style='margin-top:20px;font-size:12px;color:#94A3B8;'>If this was a mistake, contact <a href='mailto:abello@echeloninstitute.ca' style='color:#1D4ED8;'>abello@echeloninstitute.ca</a></p></div></body></html>`
       );
@@ -360,10 +368,8 @@ async function startServer() {
           );
       }
       // Opt the person out everywhere this email appears, not just this cart.
-      await db
-        .update(abandonedCheckouts)
-        .set({ optOut: true })
-        .where(eq(abandonedCheckouts.email, rows[0].email));
+      const { unsubscribeFollowUpEmail } = await import("../leadFollowUpPolicy");
+      await unsubscribeFollowUpEmail(db, rows[0].email);
       return res.send(
         `<html><head><meta charset='utf-8'><title>Unsubscribed</title><style>body{font-family:Arial,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#F1F5F9;}div{background:#fff;border-radius:12px;padding:40px;max-width:480px;text-align:center;box-shadow:0 2px 16px rgba(0,0,0,0.08);}h2{color:#15803D;margin:0 0 12px;}p{color:#475569;font-size:14px;line-height:1.6;}</style></head><body><div><div style='font-size:40px;margin-bottom:16px'>✅</div><h2>You've been unsubscribed</h2><p>You will no longer receive checkout reminder emails from Echelon Institute. Your free practice access is not affected and you can still buy any course at any time.</p><p style='margin-top:20px;font-size:12px;color:#94A3B8;'>If this was a mistake, contact <a href='mailto:abello@echeloninstitute.ca' style='color:#1D4ED8;'>abello@echeloninstitute.ca</a></p></div></body></html>`
       );

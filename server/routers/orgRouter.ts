@@ -14,6 +14,7 @@
  *   with zero changes to access.ts, quizRouter, or any PurchaseGate.
  */
 
+import { outcomeExamDate, preExamCutoff, saveExamOutcome } from "../examOutcomeRecords";
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
 import { and, count, desc, eq, gte, inArray, lt, sql } from "drizzle-orm";
@@ -1050,6 +1051,10 @@ export const orgRouter = router({
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
       const memberEmail = normalizeEmail(input.memberEmail);
+      let examDate: Date | null = null;
+      try { if (input.examDate) examDate = outcomeExamDate(input.examDate); }
+      catch (error) { throw new TRPCError({ code: "BAD_REQUEST", message: (error as Error).message }); }
+      const cutoff = examDate ? preExamCutoff(examDate) : null;
 
       // Validate: email must belong to this org
       const [member] = await db
@@ -1107,17 +1112,19 @@ export const orgRouter = router({
         .from(questionAttempts)
         .where(and(
           eq(questionAttempts.studentEmail, memberEmail),
+          cutoff ? lt(questionAttempts.createdAt, cutoff) : sql`false`,
           outcomeExamTypes.length > 0 ? inArray(questionAttempts.examType, outcomeExamTypes) : undefined,
         ));
       const totalAttempts = Number(attemptRows[0]?.total ?? 0);
       const correctAttempts = Number(attemptRows[0]?.correct ?? 0);
       const lastActive = attemptRows[0]?.lastActive ? new Date(attemptRows[0].lastActive) : null;
-      const recentCutoff = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
+      const recentCutoff = new Date((cutoff?.getTime() ?? 0) - 14 * 24 * 60 * 60 * 1000);
       const mockRows = await db
         .select({ count: sql<number>`COUNT(*)` })
         .from(examResults)
         .where(and(
           eq(examResults.studentEmail, memberEmail),
+          cutoff ? lt(examResults.createdAt, cutoff) : sql`false`,
           eq(examResults.courseKey, input.courseKey),
         ));
       const readinessScoreAtOutcome = totalAttempts > 0
@@ -1129,12 +1136,12 @@ export const orgRouter = router({
           })
         : null;
 
-      await db.insert(examOutcomes).values({
+      await saveExamOutcome(db, {
         orgId,
         memberEmail,
         courseKey: input.courseKey,
         result: input.result,
-        examDate: input.examDate ? new Date(input.examDate) : null,
+        examDate,
         recordedBy: managerEmail,
         readinessScoreAtOutcome,
         readinessModelVersion: readinessScoreAtOutcome == null ? null : MANAGER_READINESS_MODEL_VERSION,

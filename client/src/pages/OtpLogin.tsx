@@ -239,6 +239,7 @@ export default function OtpLogin() {
             <form onSubmit={handleEmailSubmit}>
               <input
                 type="email"
+                aria-label="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"

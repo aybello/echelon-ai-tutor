@@ -463,6 +463,59 @@
       "verifierAllowMissingTables": [
         "abandoned_checkouts"
       ]
+    },
+    {
+      "version": 80,
+      "tag": "0080_lead_context_and_exam_attempts",
+      "file": "drizzle/0080_lead_context_and_exam_attempts.sql",
+      "sha256": "b888aaadb25dfadb68db4ca35369aa7210f738fba1427459b2c951d94831f9f7",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "trial_emails",
+          "exam_outcomes"
+        ]
+      },
+      "verifierAllowMissingColumns": [
+        {
+          "table": "trial_emails",
+          "column": "studyContext",
+          "targetType": "varchar(128)",
+          "targetNullable": true,
+          "sqlType": "varchar(128)"
+        },
+        {
+          "table": "trial_emails",
+          "column": "followUpConsentAt",
+          "targetType": "timestamp",
+          "targetNullable": true,
+          "sqlType": "timestamp"
+        },
+        {
+          "table": "trial_emails",
+          "column": "followUpConsentVersion",
+          "targetType": "varchar(32)",
+          "targetNullable": true,
+          "sqlType": "varchar(32)"
+        },
+        {
+          "table": "exam_outcomes",
+          "column": "examAttemptKey",
+          "targetType": "varchar(64)",
+          "targetNullable": true,
+          "sqlType": "varchar(64)"
+        }
+      ],
+      "verifierAllowMissingIndexes": [
+        {
+          "table": "exam_outcomes",
+          "index": "exam_outcomes_attempt_key_idx",
+          "columns": [
+            "examAttemptKey"
+          ],
+          "unique": true
+        }
+      ]
     }
   ]
 }

@@ -11,6 +11,7 @@ import { buildPreviewDiagnostic } from "@shared/previewDiagnostic";
 import { buildAuthoritativeOfferFeatures } from "@/lib/courseOfferFeatures";
 import { buildPricingHref } from "@shared/funnelNavigation";
 import { readCheckoutJurisdiction } from "@/lib/checkoutJurisdiction";
+import { STUDY_FOLLOW_UP_CONSENT_COPY } from "@shared/leadStudyContext";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
@@ -97,6 +98,7 @@ export default function QuizGate({
   const [planPhone, setPlanPhone] = useState("");
   const [planError, setPlanError] = useState("");
   const [planSent, setPlanSent] = useState(false);
+  const [followUpConsent, setFollowUpConsent] = useState(false);
 
   // Ensure portal target is available (SSR-safe)
   useEffect(() => {
@@ -151,6 +153,8 @@ export default function QuizGate({
       email,
       phone: planPhone.trim() || undefined,
       productKey,
+      studySearch: window.location.search,
+      followUpConsent,
       score: diagnostic.score,
       correct: diagnostic.correct,
       total: diagnostic.total,
@@ -383,6 +387,10 @@ export default function QuizGate({
                         aria-label="Phone number, optional"
                         style={{ width: "100%", marginTop: 6, padding: "9px 11px", borderRadius: 8, border: "1.5px solid #CBD5E1", fontSize: 13, fontFamily: "inherit", color: "#0F172A", boxSizing: "border-box" }}
                       />
+                      <label style={{ display: "flex", gap: 8, alignItems: "flex-start", marginTop: 8, fontSize: 12, color: "#475569" }}>
+                        <input type="checkbox" checked={followUpConsent} onChange={e => setFollowUpConsent(e.target.checked)} />
+                        <span>{STUDY_FOLLOW_UP_CONSENT_COPY}</span>
+                      </label>
                       {planError && <p role="alert" style={{ color: "#B91C1C", fontSize: 11, margin: "7px 0 0" }}>{planError}</p>}
                     </form>
                   )

@@ -21,6 +21,7 @@ import { trpc } from "@/lib/trpc";
 import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
 import { buildPreviewDiagnostic } from "@shared/previewDiagnostic";
 import { resolveCourseKey } from "@shared/courseRegistry";
+import { STUDY_FOLLOW_UP_CONSENT_COPY } from "@shared/leadStudyContext";
 
 /**
  * The question at which the offer appears. The earlier placement protects
@@ -98,6 +99,7 @@ export default function PreviewStudyPlanPrompt({
   const [dismissed, setDismissed] = useState(false);
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [followUpConsent, setFollowUpConsent] = useState(false);
   const [error, setError] = useState("");
   const [sent, setSent] = useState(false);
   const shownRef = useRef(false);
@@ -166,6 +168,8 @@ export default function PreviewStudyPlanPrompt({
       email: trimmed,
       phone: phone.trim() || undefined,
       productKey,
+      studySearch: window.location.search,
+      followUpConsent,
       score: diagnostic.score,
       correct: diagnostic.correct,
       total: diagnostic.total,
@@ -336,6 +340,10 @@ export default function PreviewStudyPlanPrompt({
             boxSizing: "border-box",
           }}
         />
+        <label style={{ display: "flex", gap: 8, alignItems: "flex-start", marginTop: 8, fontSize: 12, color: "#475569" }}>
+          <input type="checkbox" checked={followUpConsent} onChange={e => setFollowUpConsent(e.target.checked)} />
+          <span>{STUDY_FOLLOW_UP_CONSENT_COPY}</span>
+        </label>
         {error && (
           <p role="alert" style={{ color: "#B91C1C", fontSize: 12, margin: "7px 0 0" }}>
             {error}

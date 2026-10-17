@@ -91,6 +91,14 @@ describe("Equipment Lab worked examples are arithmetically correct", () => {
 });
 
 describe("Equipment Lab unit toggles stay internally consistent", () => {
+  it("changes the sludge-mass instructions as well as the unit label for US learners", () => {
+    const sludge = EQUIPMENT_REGISTRY.find(u => u.slug === "aeration-basin")!.formulas.find(f => f.id === "sludge-age")!;
+    const mass = sludge.terms.find(t => t.symbol === "Solids held")!;
+    expect(mass.meaning).toContain("/ 1000");
+    expect(mass.meaningUs).toContain("x 8.34");
+    expect(mass.meaningUs).not.toContain("/ 1000");
+    expect(readSource("pages/EquipmentDetail.tsx")).toContain('units === "us" && t.meaningUs ? t.meaningUs : t.meaning');
+  });
   it("labels US units for every term whose unit differs between systems", () => {
     const metricOnly = /m3|kg|mg\/L/i;
     for (const unit of EQUIPMENT_REGISTRY) {

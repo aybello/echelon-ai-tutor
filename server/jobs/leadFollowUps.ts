@@ -1,11 +1,15 @@
-import { and, eq, inArray, isNull, lt, or } from "drizzle-orm";
+import { and, eq, isNull, isNotNull, gt, lt, or, sql } from "drizzle-orm";
 import { randomBytes } from "node:crypto";
 import { getDb } from "../db";
-import { purchases, trialEmails } from "../../drizzle/schema";
+import { ENV } from "../_core/env";
+import { trialEmails } from "../../drizzle/schema";
 import { isSyntheticCustomerEmail } from "../../shared/revenueReporting";
 import { resolveCourseKey } from "../../shared/courseRegistry";
 import { resolveQuizGateOffer } from "../../shared/checkoutOffer";
 import { sendLeadFollowUpEmail } from "../leadFollowUpEmail";
+import { leadPricingHref, STUDY_FOLLOW_UP_CONSENT_VERSION } from "../../shared/leadStudyContext";
+import { hasHistoricalPayment, isFollowUpSuppressed } from "../leadFollowUpPolicy";
+import { deliverOnce, workKey } from "./durableWork";
 
 /**
  * Bounded follow-up for captured quiz-gate leads.
@@ -22,13 +26,12 @@ import { sendLeadFollowUpEmail } from "../leadFollowUpEmail";
  * Hard suppressions, checked at send time, in order:
  * - opted out (one-click unsubscribe)
  * - synthetic or internal test addresses
- * - the lead has purchased anything since capture (buyers are customers, not
- *   leads; customer lifecycle email is the trigger engine's job)
- * - the lead created an account and their account email purchased
+ * - historical individual, subscription or Teams payment evidence
+ * - no explicit permission for these two emails
  *
- * Failure handling mirrors the team order recovery: the stage is advanced
- * only after the send succeeds, so a transient SMTP failure retries on the
- * next run instead of silently dropping the lead.
+ * Explicit permission and email-wide suppression are rechecked immediately
+ * before SMTP. Durable email/stage receipts fence concurrent runs and crashes.
+ * An ambiguous SMTP result is held for inspection, never automatically resent.
  */
 
 const STAGE1_AGE_MS = 3 * 24 * 60 * 60 * 1000;
@@ -46,6 +49,7 @@ export interface LeadFollowUpResult {
   suppressedOptOut: number;
   suppressedSynthetic: number;
   failed: number;
+  suppressedNoConsent: number;
 }
 
 /** Decide which stage, if any, a lead is due for. Pure and exported for tests. */
@@ -65,7 +69,7 @@ export function dueStage(lead: {
 }
 
 /** Resolve the course label, link and offer for the lead's capture source. */
-export function resolveLeadCourse(source: string): {
+export function resolveLeadCourse(source: string, studyContext = ""): {
   courseLabel: string;
   courseUrl: string;
   offerUrl: string;
@@ -77,10 +81,10 @@ export function resolveLeadCourse(source: string): {
   const courseLabel =
     course?.displayName ??
     (offer.available ? offer.productName : "your operator exam");
-  // The pricing page with the course preselected works for every source,
-  // including gates like "paywall_browse" that are not product keys.
+  // Known courses use the same canonical pricing contract as the browser.
+  // Generic capture sources remain generic rather than inventing a product.
   const url = offer.available || course
-    ? `${site}/pricing?course=${encodeURIComponent(source)}`
+    ? `${site}${leadPricingHref(source, studyContext)}`
     : `${site}/pricing`;
   return {
     courseLabel,
@@ -100,6 +104,7 @@ export async function runLeadFollowUps(
     suppressedOptOut: 0,
     suppressedSynthetic: 0,
     failed: 0,
+    suppressedNoConsent: 0,
   };
 
   const db = await getDb();
@@ -115,6 +120,9 @@ export async function runLeadFollowUps(
     .where(
       and(
         eq(trialEmails.optOut, false),
+        isNotNull(trialEmails.followUpConsentAt),
+        eq(trialEmails.followUpConsentVersion, STUDY_FOLLOW_UP_CONSENT_VERSION),
+        gt(trialEmails.createdAt, new Date(now.getTime() - MAX_LEAD_AGE_MS)),
         or(
           and(eq(trialEmails.followUpStage, 0), lt(trialEmails.createdAt, stage1Cutoff)),
           and(eq(trialEmails.followUpStage, 1), lt(trialEmails.createdAt, stage2Cutoff))
@@ -124,92 +132,72 @@ export async function runLeadFollowUps(
     .limit(200);
 
   if (candidates.length === 0) return result;
-
-  // One query answers "has any candidate email purchased anything".
-  const candidateEmails = Array.from(
-    new Set(candidates.map(c => c.email.trim().toLowerCase()))
-  );
-  const purchasedRows = await db
-    .select({ email: purchases.email })
-    .from(purchases)
-    .where(
-      and(
-        inArray(purchases.email, candidateEmails),
-        eq(purchases.status, "active")
-      )
-    );
-  const purchasedEmails = new Set(
-    purchasedRows.map(r => r.email.trim().toLowerCase())
-  );
-
-  for (const lead of candidates) {
-    if (result.sent >= MAX_SENDS_PER_RUN) break;
-    const stage = dueStage({
-      followUpStage: lead.followUpStage,
-      optOut: lead.optOut,
-      createdAt: lead.createdAt,
-      now,
-    });
-    if (!stage) continue;
-    result.considered += 1;
-
-    const email = lead.email.trim().toLowerCase();
-
-    if (isSyntheticCustomerEmail(email)) {
-      result.suppressedSynthetic += 1;
-      // Park synthetic rows permanently so they stop matching the candidate
-      // query instead of being re-filtered forever.
-      await db
-        .update(trialEmails)
-        .set({ followUpStage: 2, lastFollowUpAt: now })
-        .where(eq(trialEmails.id, lead.id));
-      continue;
-    }
-
-    if (purchasedEmails.has(email)) {
-      result.suppressedPurchased += 1;
-      await db
-        .update(trialEmails)
-        .set({ followUpStage: 2, lastFollowUpAt: now })
-        .where(eq(trialEmails.id, lead.id));
-      continue;
-    }
-
-    // Ensure the unsubscribe token exists before the first send.
-    let token = lead.unsubscribeToken;
-    if (!token) {
-      token = randomBytes(32).toString("hex");
-      await db
-        .update(trialEmails)
-        .set({ unsubscribeToken: token })
-        .where(and(eq(trialEmails.id, lead.id), isNull(trialEmails.unsubscribeToken)));
-    }
-
-    const courseInfo = resolveLeadCourse(lead.source);
-    try {
-      await send({
-        email,
-        stage,
-        courseLabel: courseInfo.courseLabel,
-        courseUrl: courseInfo.courseUrl,
-        offerUrl: courseInfo.offerUrl,
-        priceLabel: courseInfo.priceLabel,
-        unsubscribeUrl: `https://echeloninstitute.ca/api/unsubscribe-lead?token=${token}`,
-      });
-      // Advance the stage ONLY after a successful send, so failures retry.
-      await db
-        .update(trialEmails)
-        .set({ followUpStage: stage, lastFollowUpAt: now })
-        .where(eq(trialEmails.id, lead.id));
-      result.sent += 1;
-    } catch (error) {
-      result.failed += 1;
-      console.error(
-        `[lead-follow-up] send failed for lead ${lead.id} stage ${stage}:`,
-        error instanceof Error ? error.message : error
-      );
-    }
+  // A known configuration failure has not attempted SMTP and must not consume a receipt.
+  if (send === sendLeadFollowUpEmail && (!ENV.smtpUser || !ENV.smtpPass)) {
+    throw new Error("SMTP not configured for lead follow-ups");
   }
 
+  const seenEmails = new Set<string>();
+  for (const lead of candidates) {
+    if (result.sent >= MAX_SENDS_PER_RUN) break;
+    const stage = dueStage({ ...lead, now });
+    if (!stage) continue;
+    const email = lead.email.trim().toLowerCase();
+    if (seenEmails.has(email)) continue;
+    seenEmails.add(email);
+    result.considered += 1;
+    if (isSyntheticCustomerEmail(email)) {
+      result.suppressedSynthetic += 1;
+      continue;
+    }
+    if (!lead.followUpConsentAt || lead.followUpConsentVersion !== STUDY_FOLLOW_UP_CONSENT_VERSION) {
+      result.suppressedNoConsent += 1;
+      continue;
+    }
+
+    try {
+      // The key is shared across duplicate captures of this email, not just one row.
+      await deliverOnce(db, workKey("lead-follow-up-v1", `${email}:${stage}`), async () => {
+        const [fresh] = await db.select().from(trialEmails).where(eq(trialEmails.id, lead.id)).limit(1);
+        if (!fresh || dueStage({ ...fresh, now: new Date() }) !== stage) return;
+        if (!fresh.followUpConsentAt || fresh.followUpConsentVersion !== STUDY_FOLLOW_UP_CONSENT_VERSION) {
+          result.suppressedNoConsent += 1;
+          return;
+        }
+        if (await isFollowUpSuppressed(db, email)) {
+          result.suppressedOptOut += 1;
+          return;
+        }
+        if (await hasHistoricalPayment(db, email)) {
+          result.suppressedPurchased += 1;
+          return;
+        }
+        if (!fresh.unsubscribeToken) {
+          await db.update(trialEmails).set({ unsubscribeToken: randomBytes(32).toString("hex") })
+            .where(and(eq(trialEmails.id, fresh.id), isNull(trialEmails.unsubscribeToken)));
+        }
+        // Read the persisted token: a competing writer may have won its conditional insert.
+        const [saved] = await db.select().from(trialEmails).where(eq(trialEmails.id, fresh.id)).limit(1);
+        if (!saved?.unsubscribeToken) throw new Error("Missing persisted unsubscribe token");
+        // Close the window introduced by token persistence before the external send.
+        if (await isFollowUpSuppressed(db, email)) { result.suppressedOptOut += 1; return; }
+        if (await hasHistoricalPayment(db, email)) { result.suppressedPurchased += 1; return; }
+        const courseInfo = resolveLeadCourse(saved.source, saved.studyContext ?? "");
+        await send({ email, stage, ...courseInfo,
+          unsubscribeUrl: `https://echeloninstitute.ca/api/unsubscribe-lead?token=${saved.unsubscribeToken}`,
+        });
+        result.sent += 1;
+      });
+      // Advance all duplicate rows only after a durable completion (including suppression).
+      // Never move another worker's later stage backwards.
+      await db.update(trialEmails).set({
+        followUpStage: sql`GREATEST(${trialEmails.followUpStage}, ${stage})`, lastFollowUpAt: now,
+      }).where(sql`LOWER(TRIM(${trialEmails.email})) = ${email}`);
+    } catch (error) {
+      result.failed += 1;
+      console.error(`[lead-follow-up] delivery held for lead ${lead.id}, stage ${stage}:`,
+        error instanceof Error ? error.message : error);
+    }
+  }
   return result;
 }
