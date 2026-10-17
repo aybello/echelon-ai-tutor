@@ -57,7 +57,7 @@ export async function main(args = process.argv.slice(2)) {
     });
     console.log(JSON.stringify({ mode: values.apply ? "apply" : "read-only-plan", repairVersion: PUBLIC_QUESTION_CORRECTION_VERSION,
       ready: result.ready, applied: result.applied, alreadyApplied: result.alreadyApplied, planHash: result.planHash,
-      postApplyPlanHash: result.postApplyPlanHash, errors: result.errors,
+      postApplyPlanHash: result.postApplyPlanHash, errors: result.errors, warnings: result.warnings,
       changes: result.changes.map(({ expected, replacement }) => ({ id: expected.id, bankKey: expected.bankKey, questionNum: expected.questionNum, fields: Object.keys(replacement).sort() })),
       unchanged: result.unchanged, historicalAttemptsChanged: false,
     }, null, 2));

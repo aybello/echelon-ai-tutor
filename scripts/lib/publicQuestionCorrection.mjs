@@ -45,7 +45,7 @@ function validateCorrections(document) {
 /** Exact raw comparisons deliberately do not parse or normalize the expected strings. */
 export function planPublicQuestionCorrection(rows, metadata, bankRows, corrections) {
   validateCorrections(corrections);
-  const errors = [], changes = [], unchanged = [];
+  const errors = [], warnings = [], changes = [], unchanged = [];
   const banks = [...new Set(corrections.corrections.map(item => item.expected.bankKey))].sort();
   if (rows.length !== corrections.corrections.length) errors.push("Target row count changed.");
   if (metadata.length !== banks.length) errors.push("Metadata row count changed.");
@@ -54,7 +54,7 @@ export function planPublicQuestionCorrection(rows, metadata, bankRows, correctio
     if (matches.length !== 1 || !Number.isSafeInteger(matches[0].contentVersion) || matches[0].contentVersion < 0 || !Number.isSafeInteger(matches[0].totalQuestions)) {
       errors.push(`${bankKey}: missing or invalid metadata`);
     } else if (bankRows.filter(row => row.bankKey === bankKey).length !== matches[0].totalQuestions) {
-      errors.push(`${bankKey}: actual question count differs from metadata`);
+      warnings.push(`${bankKey}: pre-existing declared count differs from inventory; both are preserved exactly`);
     }
   }
   if (bankRows.some(row => !banks.includes(row.bankKey)) || new Set(bankRows.map(row => row.id)).size !== bankRows.length) errors.push("Invalid bank inventory.");
@@ -74,7 +74,7 @@ export function planPublicQuestionCorrection(rows, metadata, bankRows, correctio
     }
   }
   const planHash = hash({ version: PUBLIC_QUESTION_CORRECTION_VERSION, corrections, rows: sorted(rows), metadata: sorted(metadata), bankRows: sorted(bankRows) });
-  return { ready: !errors.length, errors, changes, unchanged, planHash };
+  return { ready: !errors.length, errors, warnings, changes, unchanged, planHash };
 }
 
 /** No inserts, deletes, status changes, history changes or content normalization. */

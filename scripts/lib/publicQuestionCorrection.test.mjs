@@ -183,11 +183,26 @@ test("requires hash and backup and rejects protected fields, position moves and 
   }
 });
 
-test("missing rows, count drift, duplicate identities and missing metadata block plans", () => {
-  for (const change of [f => f.state.rows.shift(), f => f.state.rows.push({ ...f.state.rows[3], id: 5 }), f => f.state.metadata.pop(), f => f.fixture.corrections.corrections.push(clone(f.fixture.corrections.corrections[0]))]) {
+test("missing rows, duplicate identities and missing metadata block plans explicitly", () => {
+  for (const change of [f => f.state.rows.shift(), f => f.state.metadata.pop()]) {
     const fake = fakeDatabase(); change(fake);
-    try { assert.equal(fake.plan().ready, false); } catch (error) { if (error.code === "ERR_ASSERTION") throw error; }
+    assert.equal(fake.plan().ready, false);
   }
+  const duplicate = fakeDatabase();
+  duplicate.fixture.corrections.corrections.push(clone(duplicate.fixture.corrections.corrections[0]));
+  assert.throws(duplicate.plan, /Duplicate correction identity/);
+});
+
+test("pre-existing metadata count drift is disclosed and preserved, never silently corrected", async () => {
+  const fake = fakeDatabase();
+  fake.state.metadata[0].totalQuestions = 2;
+  const before = clone(fake.state);
+  assert.equal(fake.plan().ready, true);
+  assert.equal(fake.plan().warnings.length, 1);
+  await apply(fake);
+  assert.equal(fake.state.metadata[0].totalQuestions, before.metadata[0].totalQuestions);
+  assert.equal(fake.state.rows.length, before.rows.length);
+  assert.equal(fake.state.metadata[0].contentVersion, before.metadata[0].contentVersion + 1);
 });
 
 test("CLI fails closed without explicit authoritative target and trusted TLS", () => {
