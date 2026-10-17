@@ -2,9 +2,8 @@
  * orgRouter — manager-scoped procedures for the Echelon for Teams dashboard.
  *
  * Authorization: every procedure uses requireOrgManager middleware, which reads
- * ctx.studentEmail (already verified + normalized by context.ts) and resolves it
- * to a manager membership row. The orgId is derived server-side — it is NEVER
- * accepted as client input.
+ * the verified manager identity and resolves an owned organization. An optional
+ * orgId selects among owned organizations; it never grants ownership.
  *
  * Seat lifecycle (Decision 2 from spec):
  *   Assign: insert organization_members row + upsert subscriptions row (orgId set,
@@ -43,6 +42,7 @@ import { allowedCourseKeysForOrg, subscriptionProvinceForOrg, isSubscriptionTier
 import { trackEvent } from "../analytics";
 import { safeSupervisorCsvCell } from "../../shared/supervisorActionPlan";
 import { listManagedOrganizations, managerEmailForContext, resolveManagedOrganization } from "../teams/resolveManagerOrganization";
+import { calculateBaselinePracticeMetrics } from "../teams/baselinePracticeMetrics";
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
@@ -64,9 +64,8 @@ const STALLED_INACTIVE_DAYS = 14;
 // ── requireOrgManager middleware ─────────────────────────────────────────────
 
 /**
- * Organisation statuses that still grant manager access to the team dashboard.
- * Mirrors ORG_ACCESS_STATUSES in _core/access.ts, which governs operator access
- * to study material — a cancelled organisation loses both, not just one.
+ * Manager lifecycle is resolved separately from learner study entitlement.
+ * Paid Flex inventory and reporting windows do not extend Annual study terms.
  */
 /** One contract year, in milliseconds. */
 const ONE_TERM_MS = 365 * 24 * 60 * 60 * 1000;
@@ -86,10 +85,9 @@ function resolveTermStart(org: { termStart: Date | null; termEnd: Date }): Date 
 }
 
 /**
- * Resolves the manager's email from ctx.studentEmail (OTP session, already
- * verified by context.ts) and looks up their manager membership row.
- * Throws UNAUTHORIZED if no valid manager membership is found, or if the
- * organisation itself is no longer active.
+ * Resolves the verified manager identity to an organization owned by that email.
+ * Optional organization selection cannot grant ownership. The shared resolver
+ * enforces organization status and the current contract or paid Flex lifecycle.
  * Returns the orgId and managerEmail attached to the context.
  */
 export async function resolveOrgManager(ctx: {
@@ -1159,7 +1157,8 @@ export const orgRouter = router({
     }),
 
   /**
-   * getPassRateSummary — first-time pass rate for the current term.
+   * getPassRateSummary — first recorded outcome per learner-course this term.
+   * Records do not establish a learner's first official exam attempt.
    */
   getPassRateSummary: teamProcedure
     .query(async ({ ctx }) => {
@@ -1224,7 +1223,7 @@ export const orgIntelRouter = router({
         learningActivated: 0, activationRate: 0, diagnosticCompleted: 0,
         diagnosticCompletionRate: 0, mockParticipants: 0, mockParticipationRate: 0,
         totalQuestions: 0, avgDiagnosticBaseline: null, avgPracticeAccuracy: null,
-        accuracyChange: null,
+        accuracyChange: null, matchedLearnerCourses: 0, matchedPracticeAttempts: 0,
       };
     }
     const memberEmails = activeMembers.map(m => m.email);
@@ -1258,24 +1257,26 @@ export const orgIntelRouter = router({
         .groupBy(learnerOnboarding.organizationMemberId),
       db.select({
         memberId: diagnosticSessions.organizationMemberId,
-        score: sql<number>`MAX(${diagnosticSessions.score})`,
+        score: diagnosticSessions.score,
+        courseKey: diagnosticSessions.courseKey,
+        completedAt: diagnosticSessions.completedAt,
       }).from(diagnosticSessions)
-        .where(and(eq(diagnosticSessions.orgId, orgId), inArray(diagnosticSessions.organizationMemberId, activeMembers.map(m => m.id))))
-        .groupBy(diagnosticSessions.organizationMemberId),
+        .where(and(eq(diagnosticSessions.orgId, orgId), inArray(diagnosticSessions.organizationMemberId, activeMembers.map(m => m.id)))),
       db.select({ memberId: questionAttempts.organizationMemberId })
         .from(questionAttempts)
         .where(and(and(eq(questionAttempts.orgId, orgId), inArray(questionAttempts.organizationMemberId, activeMembers.map(m => m.id))), gte(questionAttempts.createdAt, thirtyDaysAgo)))
         .groupBy(questionAttempts.organizationMemberId),
       db.select({
         memberId: questionAttempts.organizationMemberId,
-        total: sql<number>`COUNT(*)`,
-        correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+        courseKey: questionAttempts.courseKey, bankKey: questionAttempts.bankKey,
+        examType: questionAttempts.examType, quizMode: questionAttempts.quizMode,
+        correct: questionAttempts.correct, createdAt: questionAttempts.createdAt,
       }).from(questionAttempts)
         .where(and(
-          and(eq(questionAttempts.orgId, orgId), inArray(questionAttempts.organizationMemberId, activeMembers.map(m => m.id))),
+          eq(questionAttempts.orgId, orgId),
+          inArray(questionAttempts.organizationMemberId, activeMembers.map(m => m.id)),
           sql`(${questionAttempts.quizMode} <> 'diagnostic' OR ${questionAttempts.quizMode} IS NULL)`,
-        ))
-        .groupBy(questionAttempts.organizationMemberId),
+        )),
     ]);
     // PATCH 4: Also fetch exam dates to align at-risk count with exam-date risk
     const examDateRows = memberEmails.length > 0
@@ -1332,25 +1333,7 @@ export const orgIntelRouter = router({
     const topWeakTopics = topicRows
       .map(r => ({ topic: r.topic, accuracy: Number(r.total) > 0 ? Math.round((Number(r.correct) / Number(r.total)) * 100) : 0 }))
       .sort((a, b) => a.accuracy - b.accuracy).slice(0, 3).map(t => t.topic);
-    const diagnosticScores = diagnosticRows.map(row => Number(row.score)).filter(Number.isFinite);
-    const avgDiagnosticBaseline = diagnosticScores.length > 0
-      ? Math.round(diagnosticScores.reduce((sum, score) => sum + score, 0) / diagnosticScores.length)
-      : null;
-    const practiceAccuracyByMemberId = new Map(
-      practiceRows
-        .filter(row => row.memberId !== null && Number(row.total) > 0)
-        .map(row => [Number(row.memberId), Math.round((Number(row.correct) / Number(row.total)) * 100)]),
-    );
-    const practiceAccuracies = Array.from(practiceAccuracyByMemberId.values());
-    const avgPracticeAccuracy = practiceAccuracies.length > 0
-      ? Math.round(practiceAccuracies.reduce((sum, accuracy) => sum + accuracy, 0) / practiceAccuracies.length)
-      : null;
-    const diagnosticByMemberId = new Map(
-      diagnosticRows.filter(row => row.memberId !== null).map(row => [Number(row.memberId), Number(row.score)]),
-    );
-    const individualAccuracyChanges = Array.from(practiceAccuracyByMemberId.entries())
-      .filter(([memberId]) => diagnosticByMemberId.has(memberId))
-      .map(([memberId, practiceAccuracy]) => practiceAccuracy - diagnosticByMemberId.get(memberId)!);
+    const baselinePractice = calculateBaselinePracticeMetrics(diagnosticRows, practiceRows);
     const mockParticipants = Array.from(mockCountByMemberId.values()).filter(count => count > 0).length;
     return {
       orgName: org.name,
@@ -1370,11 +1353,11 @@ export const orgIntelRouter = router({
       mockParticipants,
       mockParticipationRate: Math.round((mockParticipants / totalAssigned) * 100),
       totalQuestions: accuracyRows.reduce((sum, row) => sum + Number(row.total), 0),
-      avgDiagnosticBaseline,
-      avgPracticeAccuracy,
-      accuracyChange: individualAccuracyChanges.length > 0
-        ? Math.round(individualAccuracyChanges.reduce((sum, change) => sum + change, 0) / individualAccuracyChanges.length)
-        : null,
+      avgDiagnosticBaseline: baselinePractice.avgDiagnosticBaseline,
+      avgPracticeAccuracy: baselinePractice.avgPracticeAccuracy,
+      accuracyChange: baselinePractice.accuracyChange,
+      matchedLearnerCourses: baselinePractice.cohorts.length,
+      matchedPracticeAttempts: baselinePractice.cohorts.reduce((sum, cohort) => sum + cohort.practiceAttemptCount, 0),
     };
   }),
 
@@ -1532,7 +1515,7 @@ export const orgIntelRouter = router({
     if (!org) throw new TRPCError({ code: "NOT_FOUND", message: "Organization not found" });
     const members = await db.select().from(organizationMembers)
       .where(and(eq(organizationMembers.orgId, orgId), eq(organizationMembers.role, "operator")));
-    const header = "Email,Name,Assigned Course,Readiness Score,Activation,Diagnostic Baseline,Practice Accuracy,Accuracy Change,Mock Exams,Questions Attempted,Last Active,Weakest Topic,Status";
+    const header = "Email,Name,Assigned Course,Readiness Score,Onboarding or Study Started,Matched Diagnostic Baseline,Same-Course Post-Baseline Practice Accuracy,Matched Accuracy Change,Matched Learner-Courses,Matched Practice Attempts,Mock Exams,Questions Attempted,Last Active,Weakest Topic,Status";
     if (members.length === 0) {
       await trackEvent("export_downloaded", { orgId, extra: { exportType: "team_learning_outcomes", rowCount: 0 } });
       return { csv: header + "\n", orgName: org.name };
@@ -1542,13 +1525,17 @@ export const orgIntelRouter = router({
     const [accuracyRows, practiceRows, topicRows, mockRows, lastActiveRows, onboardingRows, diagnosticRows] = await Promise.all([
       db.select({ memberId: questionAttempts.organizationMemberId, total: sql<number>`COUNT(*)`, correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)` })
         .from(questionAttempts).where(eq(questionAttempts.orgId, orgId)).groupBy(questionAttempts.organizationMemberId),
-      db.select({ memberId: questionAttempts.organizationMemberId, total: sql<number>`COUNT(*)`, correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)` })
-        .from(questionAttempts)
+      db.select({
+        memberId: questionAttempts.organizationMemberId,
+        courseKey: questionAttempts.courseKey, bankKey: questionAttempts.bankKey,
+        examType: questionAttempts.examType, quizMode: questionAttempts.quizMode,
+        correct: questionAttempts.correct, createdAt: questionAttempts.createdAt,
+      }).from(questionAttempts)
         .where(and(
           eq(questionAttempts.orgId, orgId),
+          inArray(questionAttempts.organizationMemberId, members.map(m => m.id)),
           sql`(${questionAttempts.quizMode} <> 'diagnostic' OR ${questionAttempts.quizMode} IS NULL)`,
-        ))
-        .groupBy(questionAttempts.organizationMemberId),
+        )),
       db.select({ memberId: questionAttempts.organizationMemberId, topic: questionAttempts.topic, total: sql<number>`COUNT(*)`, correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)` })
         .from(questionAttempts).where(eq(questionAttempts.orgId, orgId)).groupBy(questionAttempts.organizationMemberId, questionAttempts.topic),
       db.select({ memberId: questionAttempts.organizationMemberId, mockCount: sql<number>`COUNT(DISTINCT ${questionAttempts.sessionId})` })
@@ -1557,22 +1544,24 @@ export const orgIntelRouter = router({
         .from(questionAttempts).where(eq(questionAttempts.orgId, orgId)).groupBy(questionAttempts.organizationMemberId),
       db.select({ memberId: learnerOnboarding.organizationMemberId })
         .from(learnerOnboarding).where(eq(learnerOnboarding.orgId, orgId)).groupBy(learnerOnboarding.organizationMemberId),
-      db.select({ memberId: diagnosticSessions.organizationMemberId, score: sql<number>`MAX(${diagnosticSessions.score})` })
-        .from(diagnosticSessions).where(eq(diagnosticSessions.orgId, orgId)).groupBy(diagnosticSessions.organizationMemberId),
+      db.select({ memberId: diagnosticSessions.organizationMemberId, score: diagnosticSessions.score,
+        courseKey: diagnosticSessions.courseKey, completedAt: diagnosticSessions.completedAt })
+        .from(diagnosticSessions).where(and(eq(diagnosticSessions.orgId, orgId),
+          inArray(diagnosticSessions.organizationMemberId, members.map(m => m.id)))),
     ]);
     const accuracyByMemberId = new Map(
       accuracyRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), { total: Number(r.total), correct: Number(r.correct) }]),
     );
-    const practiceByMemberId = new Map(
-      practiceRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), { total: Number(r.total), correct: Number(r.correct) }]),
-    );
+    const matchedMetricsByMemberId = new Map(members.map(member => [member.id,
+      calculateBaselinePracticeMetrics(
+        diagnosticRows.filter(row => row.memberId === member.id),
+        practiceRows.filter(row => row.memberId === member.id),
+      ),
+    ]));
     const activatedMemberIds = new Set([
       ...onboardingRows.filter(r => r.memberId !== null).map(r => Number(r.memberId)),
       ...accuracyRows.filter(r => r.memberId !== null && Number(r.total) > 0).map(r => Number(r.memberId)),
     ]);
-    const diagnosticByMemberId = new Map(
-      diagnosticRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), Number(r.score)]),
-    );
     const mockByMemberId = new Map(mockRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), Number(r.mockCount)]));
     const lastActiveByMemberId = new Map(
       lastActiveRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), r.lastActive]),
@@ -1590,14 +1579,10 @@ export const orgIntelRouter = router({
       const total = stats?.total ?? 0;
       const correct = stats?.correct ?? 0;
       const accuracy = total > 0 ? Math.round((correct / total) * 100) : null;
-      const practiceStats = practiceByMemberId.get(m.id);
-      const practiceAccuracy = practiceStats && practiceStats.total > 0
-        ? Math.round((practiceStats.correct / practiceStats.total) * 100)
-        : null;
-      const diagnosticBaseline = diagnosticByMemberId.get(m.id) ?? null;
-      const accuracyChange = practiceAccuracy !== null && diagnosticBaseline !== null
-        ? practiceAccuracy - diagnosticBaseline
-        : null;
+      const matched = matchedMetricsByMemberId.get(m.id)!;
+      const practiceAccuracy = matched.avgPracticeAccuracy;
+      const diagnosticBaseline = matched.avgDiagnosticBaseline;
+      const accuracyChange = matched.accuracyChange;
       const lastActive = lastActiveByMemberId.get(m.id) ?? null;
       const mockExamsCompleted = mockByMemberId.get(m.id) ?? 0;
       let readinessScore = 0;
@@ -1616,10 +1601,11 @@ export const orgIntelRouter = router({
       return [
         escapeCSV(m.email), escapeCSV(m.name), escapeCSV(courseLabel),
         readinessScore > 0 ? `${readinessScore}%` : "0%",
-        activatedMemberIds.has(m.id) ? "Activated" : "Not Started",
+        activatedMemberIds.has(m.id) ? "Onboarding or Study Started" : "Not Started",
         diagnosticBaseline === null ? "" : `${diagnosticBaseline}%`,
         practiceAccuracy === null ? "" : `${practiceAccuracy}%`,
         accuracyChange === null ? "" : `${accuracyChange >= 0 ? "+" : ""}${accuracyChange} pts`,
+        String(matched.cohorts.length), String(matched.cohorts.reduce((sum, cohort) => sum + cohort.practiceAttemptCount, 0)),
         String(mockExamsCompleted), String(total),
         lastActive ? lastActive.toISOString().split("T")[0] : "Never",
         escapeCSV(weakestTopic), status,

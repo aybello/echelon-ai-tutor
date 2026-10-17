@@ -738,8 +738,8 @@ export default function OrgDashboard() {
         {passRateQuery.data && passRateQuery.data.total > 0 && (
           <div className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-center justify-between">
             <div>
-              <p className="text-sm font-semibold text-green-800">First-time pass rate this term</p>
-              <p className="text-xs text-green-600 mt-0.5">{passRateQuery.data.passed} of {passRateQuery.data.total} operators passed on first attempt</p>
+              <p className="text-sm font-semibold text-green-800">First recorded outcome pass rate this term</p>
+              <p className="text-xs text-green-600 mt-0.5">{passRateQuery.data.passed} of {passRateQuery.data.total} learner-course records show a pass; first official attempts are not verified</p>
             </div>
             <span className="text-3xl font-bold text-green-700">{passRateQuery.data.passRate}%</span>
           </div>
@@ -1170,7 +1170,7 @@ export default function OrgDashboard() {
               <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
                 <div>
                   <div className="text-xs font-semibold uppercase tracking-[0.14em] text-blue-200">Activation & outcomes</div>
-                  <div className="text-lg font-bold mt-1">From assigned seat to active learning</div>
+                  <div className="text-lg font-bold mt-1">Onboarding and recorded study activity</div>
                 </div>
                 <div className="text-xs text-blue-100 bg-white/10 border border-white/10 rounded-full px-3 py-1.5">
                   {readinessSummaryQuery.data.seatsAssigned} assigned operators
@@ -1178,7 +1178,7 @@ export default function OrgDashboard() {
               </div>
               <div className="grid grid-cols-2 lg:grid-cols-6 gap-3">
                 <div className="bg-white/10 border border-white/10 rounded-xl p-3">
-                  <div className="text-[11px] text-blue-100">Activated</div>
+                  <div className="text-[11px] text-blue-100">Onboarding or study started</div>
                   <div className="text-2xl font-bold mt-1">{readinessSummaryQuery.data.activationRate}%</div>
                   <div className="text-[10px] text-blue-200 mt-1">{readinessSummaryQuery.data.learningActivated} learners</div>
                 </div>
@@ -1209,11 +1209,11 @@ export default function OrgDashboard() {
                       ? "—"
                       : `${readinessSummaryQuery.data.accuracyChange >= 0 ? "+" : ""}${readinessSummaryQuery.data.accuracyChange} pts`}
                   </div>
-                  <div className="text-[10px] text-blue-200 mt-1">baseline to practice</div>
+                  <div className="text-[10px] text-blue-200 mt-1">same-course, post-baseline practice</div>
                 </div>
               </div>
               <p className="text-[10px] text-blue-200 mt-4 leading-relaxed">
-                Aggregate learning indicators only. Diagnostic baselines and practice accuracy support coaching decisions; they are not official exam scores or pass guarantees.
+                Started includes onboarding completion or a recorded answer, not necessarily active study. Accuracy change compares the first completed diagnostic with later same-course practice: {readinessSummaryQuery.data.matchedLearnerCourses} matched learner-course samples and {readinessSummaryQuery.data.matchedPracticeAttempts} practice answers. These are coaching indicators, not official exam scores or pass guarantees.
               </p>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
@@ -1721,7 +1721,7 @@ export default function OrgDashboard() {
             <p className="text-xs text-slate-400">
               {licencesAvailableThisTerm} annual licence{licencesAvailableThisTerm === 1 ? "" : "s"} remaining this term.
               Previously revoked operators can be reactivated without using a new licence.
-              The operator will receive an invite email with their course access details.
+              Enrollment email delivery is not confirmed here. If the operator does not receive it, share their assigned course details and ask them to sign in.
             </p>
           </div>
           <DialogFooter>

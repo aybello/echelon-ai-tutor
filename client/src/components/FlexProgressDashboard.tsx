@@ -9,6 +9,7 @@ const STATUS_CONFIG: Record<string, { label: string; color: string; icon: typeof
   active: { label: "Activated", color: "bg-emerald-100 text-emerald-800", icon: Activity },
   assigned: { label: "Awaiting Activation", color: "bg-amber-100 text-amber-800", icon: Clock },
   invited: { label: "Invited", color: "bg-blue-100 text-blue-800", icon: Mail },
+  expired: { label: "Study expired · reporting only", color: "bg-slate-100 text-slate-800", icon: Clock },
 };
 
 function readinessLabel(score: number): string {
@@ -111,7 +112,8 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
             </thead>
             <tbody>
               {data.map((row) => {
-                const config = flexRowIsStudying(row)
+                const studyExpired = row.status === "expired" || (row.status === "active" && !!row.accessEndsAt && new Date(row.accessEndsAt) <= new Date());
+                const config = studyExpired ? STATUS_CONFIG.expired : flexRowIsStudying(row)
                   ? { ...STATUS_CONFIG.active, label: "Studying" }
                   : STATUS_CONFIG[row.status] ?? STATUS_CONFIG.invited;
                 const remaining = daysRemaining(row.accessEndsAt);
@@ -151,7 +153,7 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
                       )}
                     </td>
                     <td className="py-3 pr-4">
-                      {row.status === "active" && row.totalAttempts > 0 ? (
+                      {["active", "expired"].includes(row.status) && row.totalAttempts > 0 ? (
                         <div className="flex items-center gap-1.5">
                           <Target className="w-3.5 h-3.5 text-slate-400" />
                           <span className={`text-xs font-semibold ${readinessColor(row.readinessScore)}`}>

@@ -41,6 +41,7 @@ import {
   listOperatorFlexLicences,
 } from "../teams/flexLicenceService";
 import { resolveCourseKey } from "../../shared/courseRegistry";
+import { flexLicenceIsVisibleInManagerReport } from "../teams/flexReporting";
 import { ALL_PRODUCTS } from "../stripe/products";
 import {
   getCommercialAvailability,
@@ -515,14 +516,18 @@ export const teamFlexRouter = router({
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
 
-      // Get all active/assigned licences for this org
-      const licences = await db
+      // Keep expired passes in view only through their recorded reporting grace.
+      // Filtering after the org-scoped query also handles the small interval
+      // before the expiry job changes an elapsed active pass to "expired".
+      const now = new Date();
+      const licences = (await db
         .select()
         .from(teamFlexLicences)
         .where(and(
           eq(teamFlexLicences.organizationId, input.orgId),
-          sql`${teamFlexLicences.status} IN ('active', 'assigned', 'invited')`,
-        ));
+          sql`${teamFlexLicences.status} IN ('active', 'assigned', 'invited', 'expired')`,
+        )))
+        .filter(licence => flexLicenceIsVisibleInManagerReport(licence, now));
 
       if (licences.length === 0) return [];
 
@@ -531,7 +536,7 @@ export const teamFlexRouter = router({
         licences.map(async (lic) => {
           const canonicalCourse = resolveCourseKey(lic.courseKey);
           const displayCourseKey = canonicalCourse?.courseKey ?? lic.courseKey;
-          if ((!lic.operatorUserId && !lic.invitedEmail?.trim()) || lic.status !== "active" || !lic.activatedAt || !lic.startsAt || !lic.accessEndsAt) {
+          if ((!lic.operatorUserId && !lic.invitedEmail?.trim()) || !["active", "expired"].includes(lic.status) || !lic.activatedAt || !lic.startsAt || !lic.accessEndsAt) {
             return {
               licenceId: lic.id,
               courseKey: displayCourseKey,
