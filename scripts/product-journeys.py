@@ -481,6 +481,12 @@ class Audit:
         await expect(posting).to_be_visible()
         href = await posting.get_attribute("href") or ""
         u = urlsplit(href)
+        close = dialog.get_by_role("button", name="Close", exact=True)
+        await posting.focus()
+        await page.keyboard.press("Tab")
+        await expect(close).to_be_focused()
+        await page.keyboard.press("Shift+Tab")
+        await expect(posting).to_be_focused()
         if u.scheme not in {"http", "https"} or not u.hostname or u.username or u.password or \
                 u.hostname in {"localhost", "example.com", "example.test"} or u.path in {"", "/"}:
             raise AssertionError("Job detail has an invalid or non-specific apply/posting destination")

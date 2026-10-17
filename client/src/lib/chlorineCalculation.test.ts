@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { calculateChlorine, HYPOCHLORITE_DENSITY_KG_L, type ChlorineForm } from "./chlorineCalculation";
+import { calculateChlorine, formatChlorineValue, HYPOCHLORITE_DENSITY_KG_L, type ChlorineForm } from "./chlorineCalculation";
 
 const defaults = { flow: "10000", dose: "2.5", granularPurity: "65", form: "granular" as ChlorineForm };
 
@@ -59,5 +59,15 @@ describe("educational chlorine calculation", () => {
   it("rejects nonfinite derived output from finite inputs", () => {
     expect(calculateChlorine({ ...defaults, flow: "1e308", dose: "1e308" })).toBeNull();
     expect(calculateChlorine({ ...defaults, granularPurity: "1e-310" })).toBeNull();
+  });
+
+  it("formats accepted extreme results without reintroducing Infinity or rounding tiny values to zero", () => {
+    const result = calculateChlorine({ ...defaults, flow: "1e308", dose: "1" })!;
+    expect(Number.isFinite(result.activeMassGDay)).toBe(true);
+    expect(formatChlorineValue(result.activeMassGDay)).toBe("1.00e+308");
+    expect(formatChlorineValue(0.000001)).toBe("1.00e-6");
+    expect(formatChlorineValue(25.125628)).toBe("25.13");
+    expect(formatChlorineValue(25)).toBe("25");
+    expect(formatChlorineValue(Infinity)).toBe("—");
   });
 });

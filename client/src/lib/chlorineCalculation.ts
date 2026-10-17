@@ -7,6 +7,16 @@ const GAS_PURITY = 0.995;
 const LIQUID_PURITY = 0.125;
 const MINUTES_PER_DAY = 1440;
 
+/** Format finite educational results without multiplying large values to round. */
+export function formatChlorineValue(value: number, digits = 2): string {
+  if (!Number.isFinite(value)) return "—";
+  const magnitude = Math.abs(value);
+  if (magnitude >= 1e12 || (magnitude > 0 && magnitude < 10 ** -digits)) {
+    return value.toExponential(digits);
+  }
+  return Number(value.toFixed(digits)).toString();
+}
+
 export function calculateChlorine(input: {
   flow: string;
   dose: string;

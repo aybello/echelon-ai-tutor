@@ -35,6 +35,7 @@ for (const width of [1440, 390]) {
     await expect(page.getByText("25.13 kg/day", { exact: true })).toBeVisible();
     const purity = page.getByLabel(/Available Cl₂/);
     await expect(purity).toBeDisabled();
+    await expect(page.getByText("Educational calculation tool using the stated assumptions. Results are for learning, not operational dosing instructions.", { exact: true })).toBeVisible();
     await expect(purity).toHaveValue("99.5");
     await expect(page.getByText("17.45 g/min", { exact: true })).toBeVisible();
     await form.selectOption("granular");
@@ -77,6 +78,12 @@ for (const width of [1440, 390]) {
     }
     await purity.fill("65");
     await expect(page.getByText("26.71 g/min", { exact: true })).toBeVisible();
+    await flow.fill("1e308");
+    await dose.fill("1");
+    await expect(page.getByText("1.00e+308 g/day as Cl₂", { exact: true })).toBeVisible();
+    await expect(page.locator("body")).not.toContainText(/Infinity|NaN/);
+    await flow.fill("10000");
+    await dose.fill("2.5");
     await flow.focus();
     await expect(flow).toBeFocused();
     // Check the actual calculator block, and body overflow in the isolated

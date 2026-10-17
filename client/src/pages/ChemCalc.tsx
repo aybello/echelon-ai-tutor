@@ -6,7 +6,7 @@ import SiteNav from "@/components/SiteNav";
 import GuideNav from "@/components/GuideNav";
 import { getGuideResumeStep } from "@/hooks/useGuideProgress";
 import { usePageMeta } from "@/hooks/usePageMeta";
-import { calculateChlorine, type ChlorineForm } from "@/lib/chlorineCalculation";
+import { calculateChlorine, formatChlorineValue, type ChlorineForm } from "@/lib/chlorineCalculation";
 
 type Tab = "chlorine" | "alum" | "lime" | "fluoride" | "polymer";
 
@@ -69,9 +69,9 @@ function ChlorineCalc() {
       {result && (
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 170px), 1fr))", gap: 12 }}>
           {[
-            { label: "Active Cl₂ Mass Needed", value: `${round(result.activeMassKgDay)} kg/day`, sub: `${round(result.activeMassGDay)} g/day as Cl₂`, color: "#D97706" },
-            { label: form === "liquid" ? "Hypochlorite Volume" : "Product Mass", value: form === "liquid" ? `${round(result.liquidVolumeLDay!)} L/day` : `${round(result.productMassKgDay)} kg/day`, sub: form === "liquid" ? `${round(result.liquidVolumeLDay! / 24, 2)} L/hr` : `${round(result.productMassKgDay / 24, 3)} kg/hr`, color: "#1D4ED8" },
-            { label: form === "liquid" ? "Solution Feed Rate" : form === "granular" ? "Dry Product Feed Rate" : "Gas Product Feed Rate", value: form === "liquid" ? `${round(result.liquidFeedMlMin!)} mL/min` : `${round(result.productFeedGMin)} g/min`, sub: "continuous product feed", color: "#059669" },
+            { label: "Active Cl₂ Mass Needed", value: `${formatChlorineValue(result.activeMassKgDay)} kg/day`, sub: `${formatChlorineValue(result.activeMassGDay)} g/day as Cl₂`, color: "#D97706" },
+            { label: form === "liquid" ? "Hypochlorite Volume" : "Product Mass", value: form === "liquid" ? `${formatChlorineValue(result.liquidVolumeLDay!)} L/day` : `${formatChlorineValue(result.productMassKgDay)} kg/day`, sub: form === "liquid" ? `${formatChlorineValue(result.liquidVolumeLDay! / 24, 2)} L/hr` : `${formatChlorineValue(result.productMassKgDay / 24, 3)} kg/hr`, color: "#1D4ED8" },
+            { label: form === "liquid" ? "Solution Feed Rate" : form === "granular" ? "Dry Product Feed Rate" : "Gas Product Feed Rate", value: form === "liquid" ? `${formatChlorineValue(result.liquidFeedMlMin!)} mL/min` : `${formatChlorineValue(result.productFeedGMin)} g/min`, sub: "continuous product feed", color: "#059669" },
           ].map(({ label, value, sub, color }) => (
             <div key={label} style={{ background: "#F8FAFC", borderRadius: 14, padding: "20px 16px", border: `2px solid ${color}33`, textAlign: "center" }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", marginBottom: 6 }}>{label}</div>
@@ -95,6 +95,9 @@ function ChlorineCalc() {
             {form === "granular" ? "Dry Product" : "Gas Product"} Feed (g/min) = Product (kg/day) × 1000 (g/kg) ÷ 1440 (min/day)
           </>}
         </div>
+        <p style={{ fontSize: 11, color: "#9A3412", margin: "10px 0 0", lineHeight: 1.6 }}>
+          Educational calculation tool using the stated assumptions. Results are for learning, not operational dosing instructions.
+        </p>
       </div>
     </div>
   );
