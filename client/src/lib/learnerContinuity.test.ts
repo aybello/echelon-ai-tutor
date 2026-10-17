@@ -5,7 +5,7 @@ const storage = () => { const data = new Map<string, string>(); return { getItem
 const scope = { identity: "learner@example.test", courseKey: "oit" };
 const ids = Array.from({ length: 15 }, (_, index) => 1001 + index);
 const draft = (): DiagnosticDraft => ({ version: 1, scope, sessionId: "550e8400-e29b-41d4-a716-446655440000", questionIds: ids, answers: Object.fromEntries(ids.slice(0, 14).map(id => [id, 2])), questionIndex: 14, updatedAt: 123 });
-const operation = (): PendingPracticeSave => ({ version: 1, operationId: "op-original", scope, questionId: 1001, attemptToken: "original-issued-receipt", selectedIndex: 2, bankKey: "oit", quizMode: "standard", sessionId: "original-session", createdAt: 123 });
+const operation = (): PendingPracticeSave => ({ version: 1, operationId: "550e8400-e29b-41d4-a716-446655440001", idempotencyVersion: 1, examType: "oit", scope, questionId: 1001, attemptToken: `e30.${btoa(JSON.stringify({exp: Math.floor(Date.now()/1000)+3600}))}.signature`, selectedIndex: 2, bankKey: "oit", quizMode: "standard", sessionId: "550e8400-e29b-41d4-a716-446655440000", createdAt: 123 });
 describe("diagnostic browser continuity", () => {
   it.each([
     { userId: 7, email: undefined, expected: "user:7", label: "email-less OAuth" },

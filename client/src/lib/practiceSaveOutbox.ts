@@ -1,3 +1,5 @@
+import { resolveCourseKey } from "@shared/courseRegistry";
+
 export const PRACTICE_SAVE_OUTBOX_KEY = "echelon:practice-save-outbox:v1";
 export const PRACTICE_SAVE_OUTBOX_VERSION = 1;
 
@@ -9,6 +11,9 @@ export type PracticeSaveScope = {
 export type PendingPracticeSave = {
   version: typeof PRACTICE_SAVE_OUTBOX_VERSION;
   operationId: string;
+  /** Only new requests actually sent with operationId may be retried. */
+  idempotencyVersion?: 1;
+  examType?: string;
   scope: PracticeSaveScope;
   questionId: number;
   attemptToken?: string;
@@ -44,8 +49,8 @@ function isPendingPracticeSave(value: unknown): value is PendingPracticeSave {
 }
 
 function readAll(storage: Pick<Storage, "getItem">): PendingPracticeSave[] {
+  const raw = storage.getItem(PRACTICE_SAVE_OUTBOX_KEY);
   try {
-    const raw = storage.getItem(PRACTICE_SAVE_OUTBOX_KEY);
     if (!raw) return [];
     const parsed: unknown = JSON.parse(raw);
     return Array.isArray(parsed) ? parsed.filter(isPendingPracticeSave) : [];
@@ -97,11 +102,11 @@ export async function replayPendingPracticeSaves(
   options: { supportsIdempotency: boolean; isScopeActive: () => boolean },
 ): Promise<{ saved: number; pending: number }> {
   let saved = 0;
-  // No current endpoint supports idempotency. A caller must explicitly prove
-  // that contract before enabling replay; the UI deliberately never calls this.
+  // Legacy bulk replay is not used by the UI; explicit single-answer recovery validates the original receipt.
   if (!options.supportsIdempotency) return { saved, pending: listPendingPracticeSaves(storage, scope).length };
   for (const item of listPendingPracticeSaves(storage, scope)) {
     if (!options.isScopeActive()) break;
+    if (practiceSaveRetryProblem(item, scope)) continue;
     try {
       const result = await save(item);
       if (result.success && removePendingPracticeSave(storage, item.operationId)) saved++;
@@ -110,4 +115,52 @@ export async function replayPendingPracticeSaves(
     }
   }
   return { saved, pending: listPendingPracticeSaves(storage, scope).length };
+}
+
+const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+/** Reject-only checks of browser data. Never evidence of identity, access or a signature. */
+export function practiceSaveRetryProblem(item: PendingPracticeSave, scope: PracticeSaveScope, now = Date.now()): string | null {
+  if (!sameScope(item.scope, scope)) return "This answer belongs to another verified account or course.";
+  if (item.idempotencyVersion !== 1 || !uuid.test(item.operationId)) return "This older answer was not sent with a safe retry ID. It cannot be retried without risking duplicate history.";
+  const course = resolveCourseKey(scope.courseKey);
+  if (!course?.isActive || course.courseKey !== scope.courseKey || !item.examType ||
+      resolveCourseKey(item.examType)?.courseKey !== course.courseKey ||
+      resolveCourseKey(item.bankKey)?.courseKey !== course.courseKey) return "The original bank/course cannot be safely matched.";
+  if (!Number.isInteger(item.questionId) || item.questionId <= 0 || !Number.isInteger(item.selectedIndex) || item.selectedIndex < 0 || item.selectedIndex > 3 ||
+      !uuid.test(item.sessionId) || !["standard", "quick10", "missed", "bookmarked", "low-confidence"].includes(item.quizMode) ||
+      (item.confidence != null && !["low", "medium", "high"].includes(item.confidence)) ||
+      (item.bookmarked !== undefined && typeof item.bookmarked !== "boolean")) return "The original answer input is incomplete or invalid; it will not be reconstructed.";
+  // All banks, including free beta, require a server-issued receipt. Do not mint one.
+  try {
+    if (typeof item.attemptToken !== "string" || item.attemptToken.length > 16384) throw Error();
+    const parts = item.attemptToken.split(".");
+    if (parts.length !== 3 || !parts.every(Boolean)) throw Error();
+    const payload = JSON.parse(atob(parts[1].replace(/-/g, "+").replace(/_/g, "/"))) as { exp?: unknown };
+    if (typeof payload.exp !== "number" || !Number.isFinite(payload.exp)) throw Error();
+    if (payload.exp * 1000 <= now) return "The original question receipt has expired. The server cannot safely confirm this retry; it may already have saved the answer.";
+  } catch { return "The original question receipt or its expiry is missing or unreadable. This answer cannot be safely retried."; }
+  return null;
+}
+
+/** Preserve exact submitted learning fields; credentials are checked afresh by the server. */
+export function practiceSaveInput(item: PendingPracticeSave) {
+  return { operationId: item.operationId, examType: item.examType!, questionId: item.questionId,
+    selectedIndex: item.selectedIndex, bankKey: item.bankKey, quizMode: item.quizMode,
+    sessionId: item.sessionId, confidence: item.confidence, bookmarked: item.bookmarked, attemptToken: item.attemptToken };
+}
+
+export async function retryPendingPracticeSave(storage: StorageLike, scope: PracticeSaveScope, operationId: string,
+  save: (input: ReturnType<typeof practiceSaveInput>) => Promise<{ success: boolean }>, isScopeActive: () => boolean,
+): Promise<string> {
+  const item = listPendingPracticeSaves(storage, scope).find(record => record.operationId === operationId);
+  if (!item || !isScopeActive()) return "Account or course changed. No retry was sent.";
+  const problem = practiceSaveRetryProblem(item, scope);
+  if (problem) return problem;
+  try {
+    const result = await save(practiceSaveInput(item));
+    if (!result.success) return "Server did not confirm this answer. It remains pending; access or the original receipt may no longer be valid.";
+    return removePendingPracticeSave(storage, operationId)
+      ? "Answer confirmed saved to your course history."
+      : "Answer confirmed saved, but this browser could not clear its local warning. Dismiss the local record; no server history is deleted.";
+  } catch { return "Save still unconfirmed. The original answer and retry ID are retained; no automatic retry was made."; }
 }
