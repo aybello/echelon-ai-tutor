@@ -20,7 +20,7 @@ const now = () => new Date();
 const oldPosted = new Date("2026-07-02T00:00:00Z");
 const empty = async () => ({ errors: [], totalFetched: 0, successfulSources: 0, failedSources: 0, sourceOutcomes: [] });
 const verified = async (job: any) => ({ status: "verified" as const, postedAt: job.postedAt ?? null, closingAt: null });
-function job(province: "ON" | "AB", suffix = province) {
+function job(province: "ON" | "AB", suffix: string = province) {
   return { title: `Fixture water operator ${suffix}`, sourceName: `fixture-${province}`, location: province, province, sourceType: "rss", sourceUrl: `https://employer.example.test/${prefix}/${suffix}`, postedAt: oldPosted };
 }
 function tier(province: "ON" | "AB") {
@@ -82,6 +82,23 @@ suite("Jobs real SQL durable state in a disposable database", () => {
     expect(new Date(detail.postedAt!).toISOString()).toBe(oldPosted.toISOString());
     await run();
     expect(new Date((await caller.listJobs({ province: "ON" })).jobs[0].postedAt!).toISOString()).toBe(oldPosted.toISOString());
+  });
+  it("resumes bounded verification fairly from persisted SQL across separate callback connections", async () => {
+    const inputs = Array.from({ length: 40 }, (_, index) => ({ ...job("ON", String(index)), title: `Fixture water operator ${index}` }));
+    const ingest = async (collect: (candidate: unknown) => Promise<void>) => {
+      for (const input of inputs) await collect(input);
+      return { errors: [], totalFetched: inputs.length, successfulSources: 1, failedSources: 0, sourceOutcomes: [{ source: "fixture-ON", status: "success", count: inputs.length }] };
+    };
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const result = await run({ ingestRss: ingest, ingestAssociations: empty });
+      expect(result).toMatchObject({ ok: false, processedCount: 16, deferredCount: 24, expiredCount: 0 });
+      const health = JSON.parse((await readState(JOB_HEALTH_KEY)).lastError);
+      expect(health.lastVerificationKey).toMatch(/^[a-f0-9]{64}$/);
+      expect(health).toMatchObject({ status: "degraded", deferredCount: 24, lastSuccessAt: null });
+      expect(await readState(JOB_REFRESH_LOCK_KEY)).toMatchObject({ status: "job-idle", claimToken: null });
+    }
+    const [rows] = await pool.execute<any[]>("SELECT COUNT(*) AS count FROM job_postings WHERE isActive=1");
+    expect(rows[0].count).toBe(40);
   });
   it("treats an omitted expected source as degraded even when two current tiers and provinces contribute", async () => {
     await run();

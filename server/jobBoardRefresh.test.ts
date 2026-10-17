@@ -116,7 +116,7 @@ describe("job board ingestion", () => {
       },
     });
 
-    expect(createConnection).toHaveBeenCalledWith("mysql://test");
+    expect(createConnection).toHaveBeenCalledWith({ uri: "mysql://test", connectTimeout: 3000 });
     expect(result).toMatchObject({
       ok: true,
       newCount: 2,

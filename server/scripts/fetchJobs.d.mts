@@ -18,6 +18,7 @@ export type JobIngestionResult = {
   provinceCount: number;
   provinces: string[];
   verificationUnavailable: number;
+  deferredCount: number;
   quarantinedCount: number;
   errors: string[];
 };
@@ -41,3 +42,5 @@ export type JobIngestionOptions = {
 export function fetchAndIngest(
   options?: JobIngestionOptions
 ): Promise<JobIngestionResult>;
+
+export const JOB_REFRESH_BUDGET: Readonly<{ sourcesMs: number; verificationMs: number; destinations: number }>;

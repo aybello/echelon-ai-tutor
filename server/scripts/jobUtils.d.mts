@@ -22,5 +22,5 @@ export function canonicalizeJobSourceUrl(
 ): string | null | undefined;
 export function fetchWithTimeout(
   url: string,
-  timeoutMs?: number
+  timeoutMs?: number, options?: { signal?: AbortSignal }
 ): Promise<string>;

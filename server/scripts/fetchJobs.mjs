@@ -9,7 +9,7 @@
  */
 
 import "dotenv/config";
-import { randomUUID } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 import mysql from "mysql2/promise";
 import { ingestAssociations } from "./fetchJobsAssociations.mjs";
 import { ingestRss } from "./fetchJobsRss.mjs";
@@ -23,6 +23,9 @@ import {
   normalizeJobIdentityText,
 } from "./jobUtils.mjs";
 
+// The documented platform ceiling is 120s, but authoritative Oct 17
+// ExecuteCallback logs expire at 30s. Leave headroom for auth, SQL and response.
+export const JOB_REFRESH_BUDGET = Object.freeze({ sourcesMs: 12000, verificationMs: 8500, destinations: 16 });
 const VALID_PROVINCES = new Set(["ON", "BC", "AB", "SK", "MB", "other"]);
 const VALID_SOURCE_TYPES = new Set(["rss", "scraper", "association"]);
 
@@ -35,6 +38,7 @@ const VALID_SOURCE_TYPES = new Set(["rss", "scraper", "association"]);
  * database has already closed.
  */
 export async function fetchAndIngest(options = {}) {
+  const invocationDeadline = Date.now() + 24_000;
   // Explicit databaseUrl is a test dependency only. Production and the CLI
   // resolve the same active target, TLS policy, and maintenance fence as the app.
   const connectionOptions = options.databaseUrl ??
@@ -44,8 +48,24 @@ export async function fetchAndIngest(options = {}) {
   const ingestAssociationsFn = options.ingestAssociations ?? ingestAssociations;
   const ingestMunicipalFn = options.ingestMunicipal ?? ingestMunicipal;
   const now = options.now ?? (() => new Date());
-  const conn = await createConnection(connectionOptions);
-
+  const settings = typeof connectionOptions === "object" ? connectionOptions : { uri: connectionOptions };
+  const conn = await createConnection({ ...settings, connectTimeout: Math.max(1, Math.min(settings.connectTimeout ?? 3000, 3000, invocationDeadline - Date.now())) });
+  // Bound individual SQL waits as well as network work. A timed-out socket is
+  // destroyed (mysql2 does not cancel server-side SQL); the lease fences retries.
+  const execute = conn.execute.bind(conn);
+  let sqlQueue = Promise.resolve();
+  if (!options.createConnection) conn.execute = (query, params) => {
+    // mysql2 serializes one socket already; check the deadline AFTER queue wait
+    // rather than starting eight independent two-second waits behind it.
+    const work = sqlQueue.then(async () => {
+      const remaining = invocationDeadline - Date.now();
+      if (remaining <= 0) { conn.destroy(); throw new Error("Jobs database budget exhausted"); }
+      try { return await execute({ sql: query, timeout: Math.min(2000, remaining) }, params); }
+      catch (error) { if (error.code === "PROTOCOL_SEQUENCE_TIMEOUT") conn.destroy(); throw error; }
+    });
+    sqlQueue = work.then(() => undefined, () => undefined);
+    return work;
+  };
   let newCount = 0;
   let seenCount = 0;
   let failedUpsertCount = 0;
@@ -61,8 +81,10 @@ export async function fetchAndIngest(options = {}) {
   let quarantinedCount = 0;
   const candidates = [];
   const degradedVerificationSources = new Set();
-  // Feed collection and destination verification share the platform two-minute budget.
-  const deadline = Date.now() + 90_000;
+  // Source and verification phases share the stricter observed callback budget.
+  let deferredCount = 0;
+  let lastVerificationKey = null;
+  let verificationSignal;
   let health = { runStartedAt: runStart.toISOString(), runCompletedAt: null, status: "running", lastSuccessAt: null, sources: [], successfulSources: 0, failedSources: 0, productiveTiers: 0, provinceCount: 0 };
   const claimToken = randomUUID();
   let claimed = false;
@@ -80,6 +102,21 @@ export async function fetchAndIngest(options = {}) {
     if (result.affectedRows === 0) await assertOwned();
   }
 
+  async function saveSources(sources) {
+    if (!sources.length) return;
+    await assertOwned();
+    const rows = sources.map(() => "SELECT ? AS workKey, ? AS status, ? AS lastError, ? AS completedAt").join(" UNION ALL ");
+    const params = sources.flatMap(source => {
+      const key = jobSourceStateKey(source.source);
+      assertJobStateKey(key);
+      return [key, source.status, JSON.stringify(source), now()];
+    });
+    const [result] = await conn.execute(`INSERT INTO scheduled_work (workKey, status, lastError, completedAt)
+      SELECT batch.workKey, batch.status, batch.lastError, batch.completedAt FROM (${rows}) batch WHERE ${ownership}
+      ON DUPLICATE KEY UPDATE status = VALUES(status), lastError = VALUES(lastError), completedAt = VALUES(completedAt)`, [...params, ...ownerParams()]);
+    if (result.affectedRows === 0) await assertOwned();
+  }
+
   // Parsers only collect candidates. Verification runs with bounded concurrency,
   // never one network request at a time through a large RSS inventory.
   async function upsertJob(job) { candidates.push(job); }
@@ -90,7 +127,7 @@ export async function fetchAndIngest(options = {}) {
     const identityKey = buildJobIdentityKey(normalizedJob);
     if (seenJobIdentities.has(identityKey)) { duplicateInputCount++; return; }
     seenJobIdentities.add(identityKey);
-    const verification = await (options.verifyJob ?? verifyJob)(normalizedJob, { now: runStart });
+    const verification = await (options.verifyJob ?? verifyJob)(normalizedJob, { now: runStart, signal: AbortSignal.any([verificationSignal, AbortSignal.timeout(4000)]) });
     if (verification.status === "unavailable") {
       // A temporary upstream failure is not evidence of closure. Keep prior
       // verified state/inventory untouched, do not advance its seen timestamp.
@@ -238,25 +275,46 @@ export async function fetchAndIngest(options = {}) {
       const previous = parseJobRefreshHealth(stateRows[0]?.lastError ?? "null");
       health.lastSuccessAt = previous?.lastSuccessAt ?? null;
       health.sources = previous?.sources ?? [];
+      lastVerificationKey = previous?.lastVerificationKey ?? null;
     } catch { /* malformed prior telemetry cannot claim success */ }
+    health.lastVerificationKey = lastVerificationKey;
     await saveState(JOB_HEALTH_KEY, "running", health);
     console.log("[fetch-jobs] Refreshing RSS, association and municipal sources");
     // Wait for all tiers, including on unexpected parser rejection, before
     // closing their shared connection. Independent sources need not wait for
     // another tier's network timeout before they can contribute fresh jobs.
+    const sourceSignal = AbortSignal.timeout(Math.max(1, Math.min(JOB_REFRESH_BUDGET.sourcesMs, invocationDeadline - Date.now() - JOB_REFRESH_BUDGET.verificationMs - 2000)));
     const tiers = await Promise.allSettled([
-      ingestRssFn(upsertJob),
-      ingestAssociationsFn(upsertJob),
-      ingestMunicipalFn(upsertJob),
+      ingestRssFn(upsertJob, { signal: sourceSignal }),
+      ingestAssociationsFn(upsertJob, { signal: sourceSignal }),
+      ingestMunicipalFn(upsertJob, { signal: sourceSignal }),
     ]);
     const rejected = tiers.find(result => result.status === "rejected");
     if (rejected) throw rejected.reason;
     const [rss, associations, municipal] = tiers.map(result => result.value);
+    // Order by stable identity, not source completion time. Persist the last
+    // attempted key in the existing health row, so a fresh connection/retry
+    // advances instead of repeatedly spending its budget on the first source.
+    const unique = new Map();
+    for (const candidate of candidates) {
+      const key = createHash("sha256").update(buildJobIdentityKey(candidate)).digest("hex");
+      if (unique.has(key)) { duplicateInputCount++; continue; }
+      unique.set(key, candidate);
+    }
+    const ordered = [...unique].sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0));
+    const start = lastVerificationKey ? ordered.findIndex(([key]) => key > lastVerificationKey) : 0;
+    const offset = start < 0 ? 0 : start;
+    const rotated = [...ordered.slice(offset), ...ordered.slice(0, offset)];
+    const batch = rotated.slice(0, JOB_REFRESH_BUDGET.destinations);
+    deferredCount = Math.max(0, rotated.length - batch.length);
+    for (const [, candidate] of rotated.slice(batch.length)) degradedVerificationSources.add(candidate.outcomeSource ?? candidate.sourceName);
+    if (deferredCount) allErrors.push(`Verification deferred for ${deferredCount} destinations; durable cursor resumes on the next callback`);
+    verificationSignal = AbortSignal.timeout(Math.max(1, Math.min(JOB_REFRESH_BUDGET.verificationMs, invocationDeadline - Date.now() - 2000)));
     let cursor = 0;
     const processed = await Promise.allSettled(Array.from({ length: 8 }, async () => {
-      while (cursor < candidates.length) {
-        const candidate = candidates[cursor++];
-        if (Date.now() >= deadline) {
+      while (cursor < batch.length) {
+        const [, candidate] = batch[cursor++];
+        if (verificationSignal.aborted) {
           verificationUnavailable++;
           degradedVerificationSources.add(candidate.outcomeSource ?? candidate.sourceName);
           continue;
@@ -264,8 +322,12 @@ export async function fetchAndIngest(options = {}) {
         await processJob(candidate);
       }
     }));
+    // Advance past unavailable attempts too; a blocked employer must not starve
+    // unrelated sources. Never advance on a thrown SQL/ownership failure.
+    const batchLastKey = batch.at(-1)?.[0] ?? lastVerificationKey;
     const processingFailure = processed.find(result => result.status === "rejected");
     if (processingFailure) throw processingFailure.reason;
+    if (failedUpsertCount === 0) lastVerificationKey = batchLastKey;
     allErrors.push(...rss.errors);
     allErrors.push(...associations.errors);
     allErrors.push(...municipal.errors);
@@ -288,13 +350,13 @@ export async function fetchAndIngest(options = {}) {
     const provinceCount = observedProvinces.size;
     const hasNationalCoverage = productiveTiers >= 2 && provinceCount >= 2;
     const sourceOutcomes = [rss, associations, municipal].flatMap((tier, index) => tier.sourceOutcomes ?? [{ source: ["rss", "associations", "municipal"][index], status: tier.failedSources || tier.errors.length ? "failed" : "success", count: tier.totalFetched ?? 0 }])
-      .map(outcome => ({ ...outcome, status: degradedVerificationSources.has(outcome.source) ? "degraded" : outcome.status }));
+      .map(outcome => ({ ...outcome, status: outcome.status === "success" && degradedVerificationSources.has(outcome.source) ? "degraded" : outcome.status }));
     const mergedSources = mergeSourceOutcomes(health.sources, sourceOutcomes, runStart.toISOString());
     const sourceCoverageComplete = mergedSources.every(source => source.status === "success");
 
     // Never age out national inventory during a partial-source refresh. At
     // least two independent tiers and provinces must contribute current jobs.
-    if (hasNationalCoverage && sourceCoverageComplete && failedSources === 0 && verificationUnavailable === 0 && failedUpsertCount === 0 && allErrors.length === 0 && options.skipExpiry !== true) {
+    if (hasNationalCoverage && sourceCoverageComplete && failedSources === 0 && verificationUnavailable === 0 && deferredCount === 0 && failedUpsertCount === 0 && allErrors.length === 0 && options.skipExpiry !== true) {
       const staleCutoff = new Date(
         runStart.getTime() - 14 * 24 * 60 * 60 * 1000
       );
@@ -325,14 +387,14 @@ export async function fetchAndIngest(options = {}) {
       failedUpsertCount === 0 &&
       !expiryFailed &&
       failedSources === 0 &&
-      verificationUnavailable === 0 &&
+      verificationUnavailable === 0 && deferredCount === 0 &&
       allErrors.length === 0 &&
       hasNationalCoverage && sourceCoverageComplete;
 
-    health = { ...health, runCompletedAt: now().toISOString(), status: ok ? "complete" : "degraded", lastSuccessAt: ok ? now().toISOString() : health.lastSuccessAt, sources: mergedSources, successfulSources, failedSources, productiveTiers, provinceCount };
+    health = { ...health, lastVerificationKey, deferredCount, runCompletedAt: now().toISOString(), status: ok ? "complete" : "degraded", lastSuccessAt: ok ? now().toISOString() : health.lastSuccessAt, sources: mergedSources, successfulSources, failedSources, productiveTiers, provinceCount };
     health.successfulSources = health.sources.filter(source => source.status === "success").length;
     health.failedSources = health.sources.filter(source => source.status !== "success").length;
-    for (const source of health.sources) await saveState(jobSourceStateKey(source.source), source.status, source);
+    await saveSources(health.sources);
     await saveState(JOB_HEALTH_KEY, health.status, health);
 
     console.log(`\n[fetch-jobs] Ingestion ${ok ? "complete" : "degraded"}:`);
@@ -371,6 +433,7 @@ export async function fetchAndIngest(options = {}) {
       provinceCount,
       provinces: [...observedProvinces].sort(),
       verificationUnavailable,
+      deferredCount,
       quarantinedCount,
       errors: allErrors,
     };
@@ -378,7 +441,7 @@ export async function fetchAndIngest(options = {}) {
     // Keep failure/last success durable even if a whole parser tier rejects.
     if (claimed) {
       health = { ...health, status: "failed", runCompletedAt: now().toISOString(), successfulSources: 0, failedSources: health.sources.length, sources: health.sources.map(source => ({ ...source, status: "degraded", count: 0 })) };
-      for (const source of health.sources) await saveState(jobSourceStateKey(source.source), source.status, source).catch(() => {});
+      await saveSources(health.sources).catch(() => {});
       await saveState(JOB_HEALTH_KEY, "failed", health).catch(() => {});
     }
     throw error;
@@ -386,12 +449,23 @@ export async function fetchAndIngest(options = {}) {
     if (claimed) await conn.execute("UPDATE scheduled_work SET status = 'job-idle', claimToken = NULL, leaseUntil = NULL WHERE workKey = ? AND claimToken = ?", ownerParams()).catch(() => {});
     // The connection belongs to this run. Closing it avoids stale sockets and
     // makes retries independent of previous Heartbeat invocations.
+    let closeTimer;
     try {
-      await conn.end();
+      await Promise.race([
+        conn.end(),
+        new Promise((_, reject) => {
+          closeTimer = setTimeout(() => {
+            conn.destroy?.();
+            reject(new Error("Jobs database close budget exhausted"));
+          }, 500);
+        }),
+      ]);
     } catch (err) {
       console.warn(
         `[fetch-jobs] database connection close failed: ${err.message}`
       );
+    } finally {
+      clearTimeout(closeTimer);
     }
   }
 }

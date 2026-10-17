@@ -39,6 +39,8 @@ const pdfUnavailable = () => new Error("PDF text extraction unavailable");
 
 function startPdfExtraction(task) {
   clearTimeout(task.timer);
+  task.signal?.removeEventListener("abort", task.onAbort);
+  if (task.signal?.aborted) { task.reject(pdfUnavailable()); return; }
   const remaining = Math.ceil(task.deadline - performance.now());
   if (remaining <= 0) { task.reject(pdfUnavailable()); return; }
   pdfChildActive = true;
@@ -60,7 +62,7 @@ function startPdfExtraction(task) {
       `--allow-fs-read=${helper}`, `--allow-fs-read=${pdfRoot}`,
       helper, pdfModule,
     ], {
-      timeout: remaining, killSignal: "SIGKILL", maxBuffer: PDF_OUTPUT_LIMIT,
+      timeout: remaining, signal: task.signal, killSignal: "SIGKILL", maxBuffer: PDF_OUTPUT_LIMIT,
       encoding: "utf8", env: { LANG: "C.UTF-8" },
     }, complete);
     child.stdin.on("error", () => {});
@@ -70,20 +72,26 @@ function startPdfExtraction(task) {
 }
 
 /** Portable PDF.js parser. Failures/scanned PDFs remain unavailable, never proof of an open or missing vacancy. */
-export async function pdfToText(bytes) {
+export async function pdfToText(bytes, options = {}) {
+  options.signal?.throwIfAborted();
   if (!(bytes instanceof Uint8Array) || !bytes.byteLength || bytes.byteLength > PDF_INPUT_LIMIT || (pdfChildActive && pdfQueue.length >= PDF_QUEUE_LIMIT)) throw pdfUnavailable();
   return new Promise((resolve, reject) => {
-    const task = { bytes, resolve, reject, deadline: performance.now() + PDF_TIMEOUT_MS, timer: undefined };
+    const task = { bytes, signal: options.signal, resolve, reject, deadline: performance.now() + PDF_TIMEOUT_MS, timer: undefined };
     if (!pdfChildActive) startPdfExtraction(task);
     else {
       // Queue wait counts toward the same eight-second budget, so concurrent
       // verification cannot spawn eight parsers on the 512 MiB production host.
-      task.timer = setTimeout(() => {
+      task.onAbort = () => {
         const index = pdfQueue.indexOf(task);
         if (index !== -1) pdfQueue.splice(index, 1);
+        clearTimeout(task.timer);
+        task.signal?.removeEventListener("abort", task.onAbort);
+        task.bytes = undefined;
         reject(pdfUnavailable());
-      }, PDF_TIMEOUT_MS);
+      };
+      task.timer = setTimeout(task.onAbort, PDF_TIMEOUT_MS);
       pdfQueue.push(task);
+      task.signal?.addEventListener("abort", task.onAbort, { once: true });
     }
   });
 }
@@ -92,7 +100,8 @@ export async function fetchJobDocument(url, deps = {}) {
   // explicitly (also preventing stale fixtures from falling through to DNS).
   if (deps.fetch) throw new Error("Legacy fetch injection unavailable; use pinned lookup/get fixtures");
   let destination = postingDestination(url);
-  const signal = AbortSignal.timeout(8000);
+  const signal = deps.signal ? AbortSignal.any([deps.signal, AbortSignal.timeout(8000)]) : AbortSignal.timeout(8000);
+  signal.throwIfAborted();
   let response;
   for (let redirects = 0; redirects <= 3; redirects++) {
     // The built-in HTTPS transport validates all DNS answers and pins its
@@ -129,7 +138,8 @@ export async function fetchJobDocument(url, deps = {}) {
   }
   const bytes = Buffer.concat(chunks);
   const isPdf = bytes.subarray(0, 5).toString() === "%PDF-";
-  const raw = isPdf ? await (deps.pdfToText ?? pdfToText)(bytes) : bytes.toString("utf8");
+  const raw = isPdf ? await (deps.pdfToText ?? pdfToText)(bytes, { signal }) : bytes.toString("utf8");
+  signal.throwIfAborted();
   const text = plainJobText(raw);
   // A metadata-only JobPosting can still be matched by the record evaluator.
   if ((!text && !/application\/ld\+json/i.test(raw)) || /(?:just a moment|checking your browser|verify you are human|cf-chl-|captcha)/i.test(raw))
@@ -143,7 +153,7 @@ export async function verifyJob(job, options = {}) {
   let closingAt = sourceDate(job.closingAt) ?? dates.closingAt;
   if (closingAt && closingAt < now) return { status: "expired", closingAt, postedAt };
   try {
-    const document = await (options.fetchDocument ?? fetchJobDocument)(job.sourceUrl);
+    const document = await (options.fetchDocument ?? fetchJobDocument)(job.sourceUrl, { signal: options.signal });
     if (document.missing) return { status: "missing", closingAt, postedAt };
     // Insufficient identity evidence is unavailable, not unverified/missing:
     // the refresh must not deactivate inventory or advance its seen timestamp.

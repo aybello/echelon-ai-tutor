@@ -119,14 +119,14 @@ function parseLocation(summary = "") {
   return match ? match[1].trim() : null;
 }
 
-async function fetchFeed(feed, parser) {
+async function fetchFeed(feed, parser, options) {
   const res = await fetch(feed.url, {
     headers: {
       "User-Agent":
         "EchelonInstitute-JobBoard/1.0 (+https://echeloninstitute.ca)",
       Accept: "application/atom+xml, application/xml, text/xml",
     },
-    signal: AbortSignal.timeout(15000),
+    signal: options.signal ?? AbortSignal.timeout(15000),
   });
 
   if (!res.ok) {
@@ -150,7 +150,7 @@ async function fetchFeed(feed, parser) {
   return entries;
 }
 
-export async function ingestRss(upsertJob) {
+export async function ingestRss(upsertJob, options = {}) {
   const errors = [];
   const sourceOutcomes = [];
   let totalFetched = 0;
@@ -169,116 +169,120 @@ export async function ingestRss(upsertJob) {
 
   // --- OWWA RSS (WordPress RSS 2.0 format, different from Job Bank Atom) ---
   // OWWA uses Cloudflare protection — try multiple approaches
-  try {
-    // Approach 1: RSS feed with browser-like headers (Content-Type required to bypass CF 415)
-    const res = await fetch(OWWA_FEED.url, {
-      headers: {
-        "User-Agent":
-          "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
-        Accept:
-          "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Accept-Language": "en-CA,en;q=0.9",
-        "Cache-Control": "no-cache",
-      },
-      signal: AbortSignal.timeout(20000),
-    });
+  const owwaTask = (async () => {
+    try {
+      // Approach 1: RSS feed with browser-like headers (Content-Type required to bypass CF 415)
+      const res = await fetch(OWWA_FEED.url, {
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+          Accept:
+            "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+          "Content-Type": "application/x-www-form-urlencoded",
+          "Accept-Language": "en-CA,en;q=0.9",
+          "Cache-Control": "no-cache",
+        },
+        signal: options.signal ?? AbortSignal.timeout(20000),
+      });
 
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-    const xml = await res.text();
-    // If Cloudflare served a JS challenge page instead of XML, skip gracefully
-    const blocked =
-      xml.includes("One moment, please") ||
-      xml.includes("cf-browser-verification") ||
-      (!xml.includes("<rss") && !xml.includes("<channel"));
+      const xml = await res.text();
+      // If Cloudflare served a JS challenge page instead of XML, skip gracefully
+      const blocked =
+        xml.includes("One moment, please") ||
+        xml.includes("cf-browser-verification") ||
+        (!xml.includes("<rss") && !xml.includes("<channel"));
 
-    if (blocked) {
+      if (blocked) {
+        failedSources++;
+        sourceOutcomes.push({ source: OWWA_FEED.name, status: "failed", count: 0 });
+        errors.push("RSS fetch skipped (OWWA): Cloudflare challenge detected");
+        console.log(
+          "  · OWWA: Cloudflare challenge detected — continuing with Job Bank feeds"
+        );
+      } else {
+        const parsed = parser.parse(xml);
+        const channel = parsed?.rss?.channel;
+        const items = channel?.item
+          ? Array.isArray(channel.item)
+            ? channel.item
+            : [channel.item]
+          : [];
+
+        let owwaCount = 0;
+        for (const item of items) {
+          try {
+            const title = decodeHtmlEntities(
+              (item.title?.__cdata ?? item.title ?? "").trim()
+            );
+            const sourceUrl = (item.link?.__cdata ?? item.link ?? "").trim();
+            if (!title || !sourceUrl) continue;
+            if (seenUrls.has(sourceUrl)) continue;
+            seenUrls.add(sourceUrl);
+
+            const descRaw = item.description?.__cdata ?? item.description ?? "";
+            const description = decodeHtmlEntities(
+              descRaw
+                .replace(/<[^>]+>/g, " ")
+                .replace(/\s+/g, " ")
+                .trim()
+                .slice(0, 400)
+            );
+            const location =
+              (
+                item["job-location"]?.__cdata ??
+                item["job-location"] ??
+                ""
+              ).trim() || null;
+            const locationProvince = detectProvince(location);
+            const detectedProvince = locationProvince !== "other"
+              ? locationProvince
+              : detectProvince(`${title} ${description}`, { fullNamesOnly: true });
+            const province =
+              detectedProvince === "other" ? "ON" : detectedProvince;
+            const postedAt = sourceDate(item.pubDate);
+
+            await upsertJob({
+              title,
+              company: null,
+              location,
+              province,
+              salary: null,
+              jobType: "full-time",
+              sourceUrl,
+              sourceName: "OWWA",
+              outcomeSource: OWWA_FEED.name,
+              sourceType: "rss",
+              description,
+              ...parseJobDates(descRaw),
+              postedAt,
+            });
+            owwaCount++;
+            totalFetched++;
+          } catch (itemErr) {
+            errors.push(`OWWA item error: ${itemErr.message}`);
+          }
+        }
+        successfulSources++;
+        sourceOutcomes.push({ source: OWWA_FEED.name, status: "success", count: owwaCount });
+        console.log(`  ✓ ${OWWA_FEED.name}: ${owwaCount} jobs`);
+      }
+    } catch (err) {
       failedSources++;
       sourceOutcomes.push({ source: OWWA_FEED.name, status: "failed", count: 0 });
-      errors.push("RSS fetch skipped (OWWA): Cloudflare challenge detected");
-      console.log(
-        "  · OWWA: Cloudflare challenge detected — continuing with Job Bank feeds"
-      );
-    } else {
-      const parsed = parser.parse(xml);
-      const channel = parsed?.rss?.channel;
-      const items = channel?.item
-        ? Array.isArray(channel.item)
-          ? channel.item
-          : [channel.item]
-        : [];
-
-      let owwaCount = 0;
-      for (const item of items) {
-        try {
-          const title = decodeHtmlEntities(
-            (item.title?.__cdata ?? item.title ?? "").trim()
-          );
-          const sourceUrl = (item.link?.__cdata ?? item.link ?? "").trim();
-          if (!title || !sourceUrl) continue;
-          if (seenUrls.has(sourceUrl)) continue;
-          seenUrls.add(sourceUrl);
-
-          const descRaw = item.description?.__cdata ?? item.description ?? "";
-          const description = decodeHtmlEntities(
-            descRaw
-              .replace(/<[^>]+>/g, " ")
-              .replace(/\s+/g, " ")
-              .trim()
-              .slice(0, 400)
-          );
-          const location =
-            (
-              item["job-location"]?.__cdata ??
-              item["job-location"] ??
-              ""
-            ).trim() || null;
-          const locationProvince = detectProvince(location);
-          const detectedProvince = locationProvince !== "other"
-            ? locationProvince
-            : detectProvince(`${title} ${description}`, { fullNamesOnly: true });
-          const province =
-            detectedProvince === "other" ? "ON" : detectedProvince;
-          const postedAt = sourceDate(item.pubDate);
-
-          await upsertJob({
-            title,
-            company: null,
-            location,
-            province,
-            salary: null,
-            jobType: "full-time",
-            sourceUrl,
-            sourceName: "OWWA",
-            outcomeSource: OWWA_FEED.name,
-            sourceType: "rss",
-            description,
-            ...parseJobDates(descRaw),
-            postedAt,
-          });
-          owwaCount++;
-          totalFetched++;
-        } catch (itemErr) {
-          errors.push(`OWWA item error: ${itemErr.message}`);
-        }
-      }
-      successfulSources++;
-      sourceOutcomes.push({ source: OWWA_FEED.name, status: "success", count: owwaCount });
-      console.log(`  ✓ ${OWWA_FEED.name}: ${owwaCount} jobs`);
+      errors.push(`RSS fetch failed (OWWA): ${err.message}`);
     }
-  } catch (err) {
-    failedSources++;
-    sourceOutcomes.push({ source: OWWA_FEED.name, status: "failed", count: 0 });
-    errors.push(`RSS fetch failed (OWWA): ${err.message}`);
-  }
+
+  })();
 
   // Fetch independent feeds in parallel so one slow source cannot push the
   // Heartbeat request beyond the platform timeout.
-  await Promise.all(
-    allFeeds.map(async feed => {
+  await Promise.all([
+    owwaTask,
+    ...allFeeds.map(async feed => {
       try {
-        const entries = await fetchFeed(feed, parser);
+        const entries = await fetchFeed(feed, parser, options);
         let feedCount = 0;
         let skipped = 0;
 
@@ -363,7 +367,7 @@ export async function ingestRss(upsertJob) {
         );
       }
     })
-  );
+  ]);
 
   console.log(`  Total fetched from all feeds: ${totalFetched}`);
   return { errors, totalFetched, successfulSources, failedSources, sourceOutcomes };

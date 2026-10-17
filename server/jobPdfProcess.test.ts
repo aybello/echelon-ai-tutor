@@ -55,6 +55,18 @@ describe("PDF child isolation and resource admission", () => {
     expect(execFile).toHaveBeenCalledTimes(9);
     expect(vi.getTimerCount()).toBe(0);
   });
+  it("removes a cancelled queued extraction immediately without spawning or retaining its bytes", async () => {
+    const first = pdfToText(bytes);
+    const controller = new AbortController();
+    const queued = unavailable(pdfToText(bytes, { signal: controller.signal }));
+    controller.abort(new Error("Refresh budget exhausted"));
+    expect(await queued).toBe("PDF text extraction unavailable");
+    expect(execFile).toHaveBeenCalledTimes(1);
+    children[0].callback(null, "first");
+    await expect(first).resolves.toBe("first");
+    expect(execFile).toHaveBeenCalledTimes(1);
+    expect(vi.getTimerCount()).toBe(0);
+  });
   it("counts queue wait against the eight-second extraction budget", async () => {
     const first = pdfToText(bytes);
     const second = pdfToText(bytes);

@@ -12,7 +12,7 @@ export function assertJobStateKey(key: string) {
   if (key !== JOB_HEALTH_KEY && !/^job-board:(?:source|vacancy):[a-f0-9]{64}$/.test(key)) throw new Error("Invalid Jobs telemetry namespace");
 }
 export type JobSourceOutcome = { source: string; status: "success" | "failed" | "degraded"; count: number; lastAttemptAt: string; lastSuccessAt: string | null };
-export type JobRefreshHealth = { runStartedAt: string; runCompletedAt: string | null; status: "running" | "complete" | "degraded" | "failed"; lastSuccessAt: string | null; sources: JobSourceOutcome[]; successfulSources: number; failedSources: number; productiveTiers: number; provinceCount: number };
+export type JobRefreshHealth = { lastVerificationKey?: string | null; deferredCount?: number; runStartedAt: string; runCompletedAt: string | null; status: "running" | "complete" | "degraded" | "failed"; lastSuccessAt: string | null; sources: JobSourceOutcome[]; successfulSources: number; failedSources: number; productiveTiers: number; provinceCount: number };
 export function mergeSourceOutcomes(previous: JobSourceOutcome[], incoming: Array<{ source: string; status: "success" | "failed" | "degraded"; count: number }>, at: string): JobSourceOutcome[] {
   const current = incoming.map(item => ({ ...item, lastAttemptAt: at, lastSuccessAt: item.status === "success" ? at : previous.find(old => old.source === item.source)?.lastSuccessAt ?? null }));
   return [...current, ...previous.filter(old => !incoming.some(item => item.source === old.source)).map(old => ({ ...old, status: "degraded" as const, count: 0 }))];
@@ -21,7 +21,7 @@ const validDate = (value: unknown): value is string => typeof value === "string"
 export function parseJobRefreshHealth(text: string): JobRefreshHealth | null {
   try {
     const value = JSON.parse(text);
-    if (!value || !validDate(value.runStartedAt) || !["running", "complete", "degraded", "failed"].includes(value.status) ||
+    if (!value || !(value.lastVerificationKey === undefined || value.lastVerificationKey === null || (typeof value.lastVerificationKey === "string" && /^[a-f0-9]{64}$/.test(value.lastVerificationKey))) || !(value.deferredCount === undefined || (Number.isInteger(value.deferredCount) && value.deferredCount >= 0)) || !validDate(value.runStartedAt) || !["running", "complete", "degraded", "failed"].includes(value.status) ||
         !(value.runCompletedAt === null || validDate(value.runCompletedAt)) || !(value.lastSuccessAt === null || validDate(value.lastSuccessAt)) ||
         !["successfulSources", "failedSources", "productiveTiers", "provinceCount"].every(key => Number.isInteger(value[key]) && value[key] >= 0) ||
         !Array.isArray(value.sources) || !value.sources.every((source: JobSourceOutcome) => source && typeof source.source === "string" && ["success", "failed", "degraded"].includes(source.status) && Number.isInteger(source.count) && source.count >= 0 && validDate(source.lastAttemptAt) && (source.lastSuccessAt === null || validDate(source.lastSuccessAt)))) return null;

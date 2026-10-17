@@ -198,11 +198,11 @@ const ASSOCIATION_SOURCES = [
   },
 ];
 
-export async function ingestAssociations(upsertJob) {
+export async function ingestAssociations(upsertJob, options = {}) {
   const results = await Promise.all(
     ASSOCIATION_SOURCES.map(async source => {
       try {
-        const html = await fetchWithTimeout(source.url, 20000);
+        const html = await fetchWithTimeout(source.url, 20000, options);
         return { source, jobs: source.parser(html), error: null };
       } catch (error) {
         return { source, jobs: [], error };

@@ -82,7 +82,7 @@ function isWaterJob(title = "", broad = false) {
   return keywords.some(kw => t.includes(kw));
 }
 
-async function fetchHtml(url, timeoutMs = 15000) {
+async function fetchHtml(url, options = {}) {
   const res = await fetch(url, {
     headers: {
       "User-Agent":
@@ -91,7 +91,7 @@ async function fetchHtml(url, timeoutMs = 15000) {
       "Accept-Language": "en-CA,en;q=0.9",
       "Cache-Control": "no-cache",
     },
-    signal: AbortSignal.timeout(timeoutMs),
+    signal: options.signal ?? AbortSignal.timeout(options.timeoutMs ?? 15000),
   });
   if (!res.ok) throw new Error(`HTTP ${res.status} from ${url}`);
   return res.text();
@@ -143,10 +143,8 @@ function extractJobLinks(
 
 // ─── Per-municipality scrapers ────────────────────────────────────────────
 
-async function scrapeCambridge() {
-  const html = await fetchHtml(
-    "https://www.cambridge.ca/mayor-city-council-government/careers-volunteering/current-opportunities/"
-  );
+async function scrapeCambridge(options = {}) {
+  const html = await fetchHtml("https://www.cambridge.ca/mayor-city-council-government/careers-volunteering/current-opportunities/", options);
   return extractJobLinks(
     html,
     "https://www.cambridge.ca",
@@ -156,11 +154,9 @@ async function scrapeCambridge() {
   );
 }
 
-async function scrapeGuelph() {
+async function scrapeGuelph(options = {}) {
   // iCIMS ATS — search for water keyword
-  const html = await fetchHtml(
-    "https://careers-guelph.icims.com/jobs/search?ss=1&searchKeyword=water&mobile=false&width=1903&height=500&bga=true&needsRedirect=false"
-  );
+  const html = await fetchHtml("https://careers-guelph.icims.com/jobs/search?ss=1&searchKeyword=water&mobile=false&width=1903&height=500&bga=true&needsRedirect=false", options);
   const jobs = [];
   // iCIMS job titles are in <h3 class="iCIMS_JobTitle"> or similar
   const titleRe = /<a[^>]+href="(\/jobs\/\d+\/[^"]+)"[^>]*>([\s\S]*?)<\/a>/gi;
@@ -182,10 +178,8 @@ async function scrapeGuelph() {
   return jobs;
 }
 
-async function scrapeBarrie() {
-  const html = await fetchHtml(
-    "https://www.barrie.ca/government-news/employment-opportunities"
-  );
+async function scrapeBarrie(options = {}) {
+  const html = await fetchHtml("https://www.barrie.ca/government-news/employment-opportunities", options);
   // Barrie job links are under /government-news/employment-opportunities/
   return extractJobLinks(
     html,
@@ -201,13 +195,11 @@ async function scrapeBarrie() {
   );
 }
 
-async function scrapeOCWA() {
+async function scrapeOCWA(options = {}) {
   const jobs = [];
   try {
     // OCWA posts on OPS job board
-    const html = await fetchHtml(
-      "https://www.gojobs.gov.on.ca/Jobs.aspx?SearchText=water+operator&OrganizationID=&JobID=&JobTypeID=&SalaryID=&CityID=&RegionID=&LanguageID=1"
-    );
+    const html = await fetchHtml("https://www.gojobs.gov.on.ca/Jobs.aspx?SearchText=water+operator&OrganizationID=&JobID=&JobTypeID=&SalaryID=&CityID=&RegionID=&LanguageID=1", options);
     const linkRe =
       /<a[^>]+href="([^"]*JobDetails\.aspx[^"]*)"[^>]*>([\s\S]*?)<\/a>/gi;
     let m;
@@ -235,8 +227,8 @@ async function scrapeOCWA() {
   return jobs;
 }
 
-async function scrapeWaterloo() {
-  const html = await fetchHtml("https://careers.regionofwaterloo.ca/RoW/");
+async function scrapeWaterloo(options = {}) {
+  const html = await fetchHtml("https://careers.regionofwaterloo.ca/RoW/", options);
   return extractJobLinks(
     html,
     "https://careers.regionofwaterloo.ca",
@@ -246,8 +238,8 @@ async function scrapeWaterloo() {
   );
 }
 
-async function scrapePeel() {
-  const html = await fetchHtml("https://www.peelregion.ca/careers/", 25000);
+async function scrapePeel(options = {}) {
+  const html = await fetchHtml("https://www.peelregion.ca/careers/", { ...options, timeoutMs: 25000 });
   // Peel job links are under /careers/ subdirectory
   return extractJobLinks(
     html,
@@ -258,8 +250,8 @@ async function scrapePeel() {
   );
 }
 
-async function scrapeYorkRegion() {
-  const html = await fetchHtml("https://www.york.ca/careers");
+async function scrapeYorkRegion(options = {}) {
+  const html = await fetchHtml("https://www.york.ca/careers", options);
   return extractJobLinks(
     html,
     "https://www.york.ca",
@@ -269,16 +261,14 @@ async function scrapeYorkRegion() {
   );
 }
 
-async function scrapeOttawa() {
+async function scrapeOttawa(options = {}) {
   // Ottawa blocks server-side requests (403 Forbidden)
   // Return empty — their jobs are typically on Job Bank anyway
   throw new Error("Source unavailable to server-side verification");
 }
 
-async function scrapeHamilton() {
-  const html = await fetchHtml(
-    "https://www.hamilton.ca/city-council/jobs-city"
-  );
+async function scrapeHamilton(options = {}) {
+  const html = await fetchHtml("https://www.hamilton.ca/city-council/jobs-city", options);
   return extractJobLinks(
     html,
     "https://www.hamilton.ca",
@@ -295,10 +285,8 @@ async function scrapeHamilton() {
   );
 }
 
-async function scrapeDurham() {
-  const html = await fetchHtml(
-    "https://www.durham.ca/en/regional-government/careers-and-volunteering.aspx"
-  );
+async function scrapeDurham(options = {}) {
+  const html = await fetchHtml("https://www.durham.ca/en/regional-government/careers-and-volunteering.aspx", options);
   return extractJobLinks(
     html,
     "https://www.durham.ca",
@@ -308,10 +296,8 @@ async function scrapeDurham() {
   );
 }
 
-async function scrapeBrantford() {
-  const html = await fetchHtml(
-    "https://www.brantford.ca/your-government/careers/"
-  );
+async function scrapeBrantford(options = {}) {
+  const html = await fetchHtml("https://www.brantford.ca/your-government/careers/", options);
   return extractJobLinks(
     html,
     "https://www.brantford.ca",
@@ -323,10 +309,8 @@ async function scrapeBrantford() {
 
 // ─── BC Scrapers ──────────────────────────────────────────────────────────
 
-async function scrapeMetroVancouver() {
-  const html = await fetchHtml(
-    "https://metrovancouver.org/about-us/careers/job-opportunities"
-  );
+async function scrapeMetroVancouver(options = {}) {
+  const html = await fetchHtml("https://metrovancouver.org/about-us/careers/job-opportunities", options);
   return extractJobLinks(
     html,
     "https://metrovancouver.org",
@@ -336,7 +320,7 @@ async function scrapeMetroVancouver() {
   ).map(j => ({ ...j, province: "BC" }));
 }
 
-async function scrapeSurrey() {
+async function scrapeSurrey(options = {}) {
   // Surrey blocks server-side requests — graceful skip
   // Their jobs typically appear on Job Bank Canada
   throw new Error("Source unavailable to server-side verification");
@@ -344,8 +328,8 @@ async function scrapeSurrey() {
 
 // ─── AB Scrapers ──────────────────────────────────────────────────────────
 
-async function scrapeCalgary() {
-  const html = await fetchHtml("https://www.calgary.ca/careers.html");
+async function scrapeCalgary(options = {}) {
+  const html = await fetchHtml("https://www.calgary.ca/careers.html", options);
   const jobs = [];
   // Calgary uses PeopleSoft ATS — job links are in class="job-title" anchors
   const linkRe = /class="job-title"[^>]*href="([^"]+)"[^>]*>([^<]+)/gi;
@@ -367,8 +351,8 @@ async function scrapeCalgary() {
   return jobs;
 }
 
-async function scrapeEdmonton() {
-  const html = await fetchHtml("https://www.edmonton.ca/city_government/jobs");
+async function scrapeEdmonton(options = {}) {
+  const html = await fetchHtml("https://www.edmonton.ca/city_government/jobs", options);
   return extractJobLinks(
     html,
     "https://www.edmonton.ca",
@@ -378,8 +362,8 @@ async function scrapeEdmonton() {
   ).map(j => ({ ...j, province: "AB" }));
 }
 
-async function scrapeEpcor() {
-  const html = await fetchHtml("https://www.epcor.com/about/careers");
+async function scrapeEpcor(options = {}) {
+  const html = await fetchHtml("https://www.epcor.com/about/careers", options);
   return extractJobLinks(
     html,
     "https://www.epcor.com",
@@ -391,10 +375,8 @@ async function scrapeEpcor() {
 
 // ─── SK Scrapers ──────────────────────────────────────────────────────────
 
-async function scrapeSaskatoon() {
-  const html = await fetchHtml(
-    "https://www.saskatoon.ca/city-hall/careers-city"
-  );
+async function scrapeSaskatoon(options = {}) {
+  const html = await fetchHtml("https://www.saskatoon.ca/city-hall/careers-city", options);
   return extractJobLinks(
     html,
     "https://www.saskatoon.ca",
@@ -404,10 +386,8 @@ async function scrapeSaskatoon() {
   ).map(j => ({ ...j, province: "SK" }));
 }
 
-async function scrapeRegina() {
-  const html = await fetchHtml(
-    "https://www.regina.ca/about-regina/job-opportunities/"
-  );
+async function scrapeRegina(options = {}) {
+  const html = await fetchHtml("https://www.regina.ca/about-regina/job-opportunities/", options);
   return extractJobLinks(
     html,
     "https://www.regina.ca",
@@ -419,8 +399,8 @@ async function scrapeRegina() {
 
 // ─── MB Scrapers ──────────────────────────────────────────────────────────
 
-async function scrapeWinnipeg() {
-  const html = await fetchHtml("https://www.winnipeg.ca/careers/job-postings");
+async function scrapeWinnipeg(options = {}) {
+  const html = await fetchHtml("https://www.winnipeg.ca/careers/job-postings", options);
   return extractJobLinks(
     html,
     "https://www.winnipeg.ca",
@@ -430,7 +410,7 @@ async function scrapeWinnipeg() {
   ).map(j => ({ ...j, province: "MB" }));
 }
 
-async function scrapeManitobaCivilService() {
+async function scrapeManitobaCivilService(options = {}) {
   // Manitoba Civil Service Commission — blocks bots, graceful skip
   // Their jobs appear on Job Bank Canada
   throw new Error("Source unavailable to server-side verification");
@@ -501,7 +481,7 @@ const SCRAPERS = [
   },
 ];
 
-export async function ingestMunicipal(upsertJob) {
+export async function ingestMunicipal(upsertJob, options = {}) {
   const errors = [];
   const sourceOutcomes = [];
   let totalFetched = 0;
@@ -513,7 +493,7 @@ export async function ingestMunicipal(upsertJob) {
   const scrapeResults = await Promise.all(
     SCRAPERS.map(async scraper => {
       try {
-        return { scraper, jobs: await scraper.fn(), error: null };
+        return { scraper, jobs: await scraper.fn(options), error: null };
       } catch (error) {
         return { scraper, jobs: [], error };
       }

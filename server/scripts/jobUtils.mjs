@@ -202,23 +202,17 @@ export function canonicalizeJobSourceUrl(job) {
 }
 
 // ---- Fetch with timeout and polite User-Agent ----
-export async function fetchWithTimeout(url, timeoutMs = 15000) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
-  try {
-    const res = await fetch(url, {
-      signal: controller.signal,
-      headers: {
-        "User-Agent":
-          "EchelonInstituteJobBot/1.0 (+https://echeloninstitute.ca; water operator job aggregator)",
-        Accept: "application/rss+xml, application/xml, text/xml, */*",
-      },
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
-    return await res.text();
-  } finally {
-    clearTimeout(timer);
-  }
+export async function fetchWithTimeout(url, timeoutMs = 15000, options = {}) {
+  const signal = options.signal ? AbortSignal.any([options.signal, AbortSignal.timeout(timeoutMs)]) : AbortSignal.timeout(timeoutMs);
+  const res = await fetch(url, {
+    signal,
+    headers: {
+      "User-Agent": "EchelonInstituteJobBot/1.0 (+https://echeloninstitute.ca; water operator job aggregator)",
+      Accept: "application/rss+xml, application/xml, text/xml, */*",
+    },
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
+  return await res.text();
 }
 
 // ---- Simple RSS/XML parser (no external deps) ----
