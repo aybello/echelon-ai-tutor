@@ -17,7 +17,7 @@ for (const scenario of ["retired", "canonical", "empty-valid"] as const) {
         else if (path === "quiz.getMissedQuestions") value = { questions: [], total: 0 };
         else if (path === "quiz.getRandomQuestions") {
           const selection = (url.searchParams.has("batch") ? input[index]?.json : input.json) ?? {};
-          requestedTopics.push(selection.topic);
+          requestedTopics.push(selection.topic ?? undefined);
           const unavailable = selection.topic === "Retired topic";
           const empty = unavailable || scenario === "empty-valid";
           value = { questions: empty ? [] : [{ id: 991, module: "Current chapter", topic: "Canonical diagnostic topic", difficulty: "medium", question: "Canonical topic practice question", options: ["A", "B", "C", "D"], correctIndex: 0, explanation: "Reviewed answer", isCalc: false }], total: empty ? 0 : 1, hasMore: false, locked: false, topicUnavailable: unavailable };
