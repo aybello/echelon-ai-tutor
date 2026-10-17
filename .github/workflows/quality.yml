@@ -133,6 +133,8 @@ jobs:
             | grep -Ex "^0066_exam_dates_unique[[:space:]]+applied$"
           DATABASE_URL=mysql://root:root@127.0.0.1:3306/echelon_standalone_ci \
             pnpm db:migrate:status
+      - name: Install the browser-test runtime before browser-backed unit tests
+        run: pnpm exec playwright install --with-deps chromium
       - name: Deterministic unit and acceptance tests
         run: >-
           pnpm exec vitest run --maxWorkers 2 --minWorkers 1
@@ -290,8 +292,6 @@ jobs:
           CI: "1"
           NODE_ENV: test
           DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
-      - name: Install the Teams browser-test runtime
-        run: pnpm exec playwright install --with-deps chromium
       - name: Browser-test public Jobs, chlorine, OTP controls and Process Guide regressions
         run: pnpm exec playwright test e2e/jobs-accessibility.spec.ts e2e/jobs-reliability.spec.ts e2e/chlorine-calculator.spec.ts e2e/otp-controls.spec.ts e2e/process-guide-three.spec.ts
         env:

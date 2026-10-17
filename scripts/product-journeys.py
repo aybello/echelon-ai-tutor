@@ -525,7 +525,7 @@ class Audit:
         await expect(page.get_by_text("115.74 mL/min", exact=True)).to_be_visible()
         await form.select_option("granular")
         await purity.fill("")
-        await expect(page.get_by_role("status")).to_contain_text("finite positive")
+        await expect(page.get_by_role("status").filter(has_text="finite positive")).to_be_visible()
         await expect(page.get_by_text("83.33 kg/day", exact=True)).to_have_count(0)
         await form.select_option("gas")
         await expect(page.get_by_text("25.13 kg/day", exact=True)).to_be_visible()
