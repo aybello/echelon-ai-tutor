@@ -1,5 +1,5 @@
 import { and, eq, isNull, or, sql } from "drizzle-orm";
-import { questionAttempts, studentProfiles } from "../drizzle/schema";
+import { questionAttempts, studentProfiles, users } from "../drizzle/schema";
 import { attemptCourseFilter, attemptIdentityFilter } from "./courseActivityScope";
 import type { getDb } from "./db";
 
@@ -57,7 +57,15 @@ export async function readOverallLearnerActivity(
 ) {
   const email = identity.email?.trim().toLowerCase();
   if (!identity.userId && !email) throw new Error("A verified learner identity is required");
-  const exactUser = identity.userId ? eq(studentProfiles.userId, identity.userId) : undefined;
+  // Older OTP writers resolved users by email and left studentEmail NULL.
+  // Never remap an authenticated OAuth identity via a different OTP email.
+  let userId = identity.userId;
+  if (!userId && email) {
+    const [mappedUser] = await db.select({ id: users.id }).from(users)
+      .where(eq(users.email, email)).orderBy(users.id).limit(1);
+    userId = mappedUser?.id ?? null;
+  }
+  const exactUser = userId ? eq(studentProfiles.userId, userId) : undefined;
   const legacyEmail = email ? and(eq(studentProfiles.studentEmail, email), isNull(studentProfiles.userId)) : undefined;
   const [profile] = await db.select({ currentStreak: studentProfiles.currentStreak,
     longestStreak: studentProfiles.longestStreak, totalSessions: studentProfiles.totalSessions,

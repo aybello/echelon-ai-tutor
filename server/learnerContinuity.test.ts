@@ -138,11 +138,12 @@ describe("verified overall activity identity fallback", () => {
   const legacy = { id: 1, userId: null, email: "learner@example.test", currentStreak: 6, longestStreak: 17, totalSessions: 12 };
   const owned = { ...legacy, id: 2, userId: 7, currentStreak: 2, longestStreak: 3, totalSessions: 4 };
   const other = { ...legacy, id: 3, userId: 99, currentStreak: 99, longestStreak: 99, totalSessions: 99 };
-  function fixtureDb(rows: Array<typeof legacy | typeof owned>) {
+  function fixtureDb(rows: Array<Omit<typeof owned, "email" | "userId"> & { email: string | null; userId: number | null }>, userRows: Array<{ id: number; email: string }> = []) {
     return { select: (fields: any) => ({ from: (table: any) => ({ where: (filter: any) => ({ orderBy: (...order: any[]) => ({ limit: async () => {
       const cte = `WITH student_profiles(id, userId, studentEmail, currentStreak, longestStreak, totalSessions) AS (${rows.map(row =>
-        `SELECT ${row.id}, ${row.userId ?? "NULL"}, '${row.email}', ${row.currentStreak}, ${row.longestStreak}, ${row.totalSessions}`).join(" UNION ALL ")}) `;
-      const compiled = dialect.sqlToQuery(sql`SELECT ${fields.currentStreak} AS currentStreak, ${fields.longestStreak} AS longestStreak, ${fields.totalSessions} AS totalSessions FROM ${table} WHERE ${filter} ORDER BY ${sql.join(order, sql`, `)} LIMIT 1`);
+        `SELECT ${row.id}, ${row.userId ?? "NULL"}, ${row.email === null ? "NULL" : `'${row.email}'`}, ${row.currentStreak}, ${row.longestStreak}, ${row.totalSessions}`).join(" UNION ALL ")}), users(id, email) AS (${userRows.length ? userRows.map(row => `SELECT ${row.id}, '${row.email}'`).join(" UNION ALL ") : "SELECT NULL, NULL WHERE 0"}) `;
+      const projection = getTableName(table) === "users" ? sql`${fields.id} AS id` : sql`${fields.currentStreak} AS currentStreak, ${fields.longestStreak} AS longestStreak, ${fields.totalSessions} AS totalSessions`;
+      const compiled = dialect.sqlToQuery(sql`SELECT ${projection} FROM ${table} WHERE ${filter} ORDER BY ${sql.join(order, sql`, `)} LIMIT 1`);
       return JSON.parse(execFileSync("python3", ["-c", "import sqlite3,json,sys; p=json.load(sys.stdin); c=sqlite3.connect(':memory:'); c.execute('PRAGMA query_only=ON'); c.row_factory=sqlite3.Row; print(json.dumps([dict(r) for r in c.execute(p['sql'],p['params'])]))"], { input: JSON.stringify({ sql: cte + compiled.sql, params: compiled.params }), encoding: "utf8" }));
     } }) }) }) }) } as any;
   }
@@ -173,6 +174,25 @@ describe("verified overall activity identity fallback", () => {
   it("allows only the unowned legacy row for verified OTP", async () => {
     expect(await readOverallLearnerActivity(fixtureDb([other, legacy]), { userId: null, email: legacy.email }))
       .toEqual({ currentStreak: 6, longestStreak: 17, totalSessions: 12 });
+  });
+  it("recovers OTP-only activity written under the matching users ID with NULL profile email", async () => {
+    const mapped = { ...legacy, id: 4, userId: 7, email: null };
+    const fallback = { ...legacy, currentStreak: 1, longestStreak: 1, totalSessions: 1 };
+    expect(await readOverallLearnerActivity(fixtureDb([other, fallback, mapped], [{ id: 7, email: legacy.email }]), { userId: null, email: " Learner@Example.Test " }))
+      .toEqual({ currentStreak: 6, longestStreak: 17, totalSessions: 12 });
+  });
+  it("does not map OTP email to a different user's ID", async () => {
+    expect(await readOverallLearnerActivity(fixtureDb([{ ...other, email: null }], [{ id: 99, email: "different@example.test" }]), { userId: null, email: legacy.email }))
+      .toEqual({ currentStreak: 0, longestStreak: 0, totalSessions: 0 });
+  });
+  it("never looks up a different OTP user's ID when OAuth already supplies an ID", async () => {
+    const db = fixtureDb([owned, { ...other, email: null }], [{ id: 99, email: "different@example.test" }]);
+    const select = vi.spyOn(db, "select");
+    expect(await readOverallLearnerActivity(db, { userId: 7, email: "different@example.test" }))
+      .toEqual({ currentStreak: 2, longestStreak: 3, totalSessions: 4 });
+    expect(select).toHaveBeenCalledTimes(1);
+    expect(await readOverallLearnerActivity(fixtureDb([{ ...other, email: null }], [{ id: 99, email: "different@example.test" }]), { userId: 7, email: "different@example.test" }))
+      .toEqual({ currentStreak: 0, longestStreak: 0, totalSessions: 0 });
   });
   it("rejects absent or blank verified identity", async () => {
     await expect(readOverallLearnerActivity(fixtureDb([legacy]), { userId: null, email: " " })).rejects.toThrow("verified learner identity");
