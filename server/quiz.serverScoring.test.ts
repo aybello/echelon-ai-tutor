@@ -30,25 +30,46 @@ import { validateIssuedAttribution } from "./teams/attemptAttribution";
 // Minimal question row returned by DB lookup
 const QUESTION_ROW = { correctIndex: 2, topic: "Disinfection", difficulty: "medium", module: "Water Treatment" };
 
-function makeDb(questionRow = QUESTION_ROW, insertResult = []) {
+const PROFILE_ROW = { id: 1, userId: 42, studentEmail: null, topicAccuracy: "{}", totalAttempts: 0, currentStreak: 0, longestStreak: 0, totalSessions: 0, lastActiveDate: null };
+type LegacyProfile = Omit<typeof PROFILE_ROW, "userId" | "studentEmail" | "lastActiveDate"> & { userId: null; studentEmail: string; lastActiveDate: string | null };
+
+function makeDb(questionRow = QUESTION_ROW, insertResult = [], legacyProfile: LegacyProfile | null = null) {
   const insertValues = vi.fn().mockResolvedValue(insertResult);
+  const profileValues = vi.fn().mockReturnValue({ onDuplicateKeyUpdate: vi.fn().mockResolvedValue([]) });
   const insertInto = vi.fn().mockImplementation(table => table === studentProfiles
-    ? { values: vi.fn().mockReturnValue({ onDuplicateKeyUpdate: vi.fn().mockResolvedValue([]) }) }
+    ? { values: profileValues }
     : { values: insertValues });
   const selectLimit = vi.fn().mockResolvedValue(questionRow ? [questionRow] : []);
   const selectWhere = vi.fn().mockReturnValue({ limit: selectLimit });
+  const profileReads: { sql: string; params: unknown[]; lock: string | null }[] = [];
+  const profileWhere = vi.fn().mockImplementation(predicate => {
+    const query = new MySqlDialect().sqlToQuery(predicate);
+    // Source discovery/revalidation must not return the owned destination row.
+    const isLegacySource = query.sql.includes("`student_profiles`.`userId` is null");
+    const rows = isLegacySource ? (legacyProfile ? [legacyProfile] : []) : [PROFILE_ROW];
+    return { limit: vi.fn().mockImplementation(() => {
+      const read = { sql: query.sql, params: query.params, lock: null as string | null };
+      profileReads.push(read);
+      // Drizzle's limit query is both awaitable and chainable with FOR UPDATE.
+      return Object.assign(Promise.resolve(rows), { for: vi.fn().mockImplementation(lock => {
+        read.lock = lock;
+        return Promise.resolve(rows);
+      }) });
+    }) };
+  });
   const selectFrom = vi.fn().mockImplementation(table => table === studentProfiles
-    ? { where: vi.fn().mockReturnValue({ limit: vi.fn().mockReturnValue({ for: vi.fn().mockResolvedValue([{ id: 1, topicAccuracy: "{}", totalAttempts: 0, currentStreak: 0, longestStreak: 0, lastActiveDate: null }]) }) }) }
+    ? { where: profileWhere }
     : { where: selectWhere, innerJoin: vi.fn().mockReturnValue({ where: selectWhere }) });
   const selectFn = vi.fn().mockReturnValue({ from: selectFrom });
-  // upsertStudentProfile also calls db.select and db.insert — handle chaining
+  const profileSet = vi.fn().mockReturnValue({ where: vi.fn().mockResolvedValue([]) });
+  // The atomic practice write also materializes and updates the learner profile.
   const db: any = {
     select: selectFn,
     insert: insertInto,
-    update: vi.fn().mockReturnValue({ set: vi.fn().mockReturnValue({ where: vi.fn().mockResolvedValue([]) }) }),
+    update: vi.fn().mockReturnValue({ set: profileSet }),
   };
   db.transaction = vi.fn(async callback => callback(db));
-  return { db, insertValues, insertInto, selectFn, selectWhere };
+  return { db, insertValues, insertInto, selectFn, selectWhere, profileValues, profileReads, profileSet };
 }
 
 function makeCtx(user: TrpcContext["user"] = null): TrpcContext {
@@ -149,6 +170,46 @@ describe("quiz.logAttempt — server scoring", () => {
     const caller = appRouter.createCaller(makeCtx());
     const result = await caller.quiz.logAttempt({ ...BASE_INPUT, selectedIndex: 0 });
     expect(result).toEqual({ success: true, correct: false });
+  });
+
+  it("scores with no legacy source without locking the missing email range", async () => {
+    const { db, insertValues, profileReads, profileValues, profileSet } = makeDb();
+    vi.mocked(getDb).mockResolvedValue(db);
+    expect(await appRouter.createCaller(makeCtx()).quiz.logAttempt(BASE_INPUT)).toEqual({ success: true, correct: true });
+    expect(insertValues).toHaveBeenCalledTimes(1);
+    expect(profileReads).toHaveLength(2);
+    expect(profileReads[0]).toEqual({
+      sql: "(`student_profiles`.`studentEmail` = ? and `student_profiles`.`userId` is null)",
+      params: ["operator@example.com"], lock: null,
+    });
+    expect(profileReads[1]).toEqual({ sql: "`student_profiles`.`userId` = ?", params: [42], lock: "update" });
+    const seed = profileValues.mock.calls[0][0];
+    expect(seed).toMatchObject({ userId: 42, studentEmail: null, topicAccuracy: "{}", weakTopics: "[]", strongTopics: "[]" });
+    for (const field of ["currentStreak", "longestStreak", "totalSessions", "lastActiveDate"]) expect(seed).not.toHaveProperty(field);
+    expect(profileSet).toHaveBeenCalledTimes(1);
+    expect(profileSet).toHaveBeenCalledWith(expect.objectContaining({ totalAttempts: 1, topicAccuracy: JSON.stringify({ Disinfection: { correct: 1, total: 1 } }) }));
+  });
+
+  it("revalidates a discovered legacy source under lock and seeds activity, never mastery", async () => {
+    const legacy: LegacyProfile = { ...PROFILE_ROW, id: 7, userId: null, studentEmail: "operator@example.com", totalAttempts: 50,
+      topicAccuracy: JSON.stringify({ Hydraulics: { correct: 40, total: 50 } }), currentStreak: 4, longestStreak: 9,
+      totalSessions: 12, lastActiveDate: "2026-10-16" };
+    const { db, profileReads, profileValues, profileSet } = makeDb(QUESTION_ROW, [], legacy);
+    vi.mocked(getDb).mockResolvedValue(db);
+    expect(await appRouter.createCaller(makeCtx()).quiz.logAttempt(BASE_INPUT)).toEqual({ success: true, correct: true });
+    expect(profileReads).toHaveLength(3);
+    expect(profileReads[0]).toMatchObject({ params: [legacy.studentEmail], lock: null });
+    expect(profileReads[1]).toEqual({
+      sql: "(`student_profiles`.`id` = ? and `student_profiles`.`userId` is null and `student_profiles`.`studentEmail` = ?)",
+      params: [legacy.id, legacy.studentEmail], lock: "update",
+    });
+    expect(profileReads[2]).toEqual({ sql: "`student_profiles`.`userId` = ?", params: [42], lock: "update" });
+    expect(profileValues).toHaveBeenCalledTimes(1);
+    expect(profileValues).toHaveBeenCalledWith(expect.objectContaining({ userId: 42, studentEmail: null, topicAccuracy: "{}",
+      weakTopics: "[]", strongTopics: "[]", currentStreak: 4, longestStreak: 9, totalSessions: 12, lastActiveDate: legacy.lastActiveDate }));
+    expect(profileValues.mock.calls[0][0]).not.toHaveProperty("totalAttempts");
+    expect(profileSet).toHaveBeenCalledTimes(1);
+    expect(profileSet).toHaveBeenCalledWith(expect.objectContaining({ totalAttempts: 1, topicAccuracy: JSON.stringify({ Disinfection: { correct: 1, total: 1 } }) }));
   });
 
   it("persists only the server-signed, revalidated membership attribution", async () => {
