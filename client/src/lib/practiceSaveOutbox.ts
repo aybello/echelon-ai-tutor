@@ -143,10 +143,11 @@ export function practiceSaveRetryProblem(item: PendingPracticeSave, scope: Pract
 }
 
 /** Preserve exact submitted learning fields; credentials are checked afresh by the server. */
-export function practiceSaveInput(item: PendingPracticeSave) {
+export function practiceSaveInput(item: PendingPracticeSave, accessToken?: string) {
   return { operationId: item.operationId, examType: item.examType!, questionId: item.questionId,
     selectedIndex: item.selectedIndex, bankKey: item.bankKey, quizMode: item.quizMode,
-    sessionId: item.sessionId, confidence: item.confidence, bookmarked: item.bookmarked, attemptToken: item.attemptToken };
+    sessionId: item.sessionId, confidence: item.confidence, bookmarked: item.bookmarked, attemptToken: item.attemptToken,
+    ...(accessToken ? { accessToken } : {}) };
 }
 
 export async function retryPendingPracticeSave(storage: StorageLike, scope: PracticeSaveScope, operationId: string,
@@ -157,7 +158,8 @@ export async function retryPendingPracticeSave(storage: StorageLike, scope: Prac
   const problem = practiceSaveRetryProblem(item, scope);
   if (problem) return problem;
   try {
-    const result = await save(practiceSaveInput(item));
+    const accessToken = storage.getItem("echelon_access_token") ?? undefined;
+    const result = await save(practiceSaveInput(item, accessToken));
     if (!result.success) return "Server did not confirm this answer. It remains pending; access or the original receipt may no longer be valid.";
     return removePendingPracticeSave(storage, operationId)
       ? "Answer confirmed saved to your course history."

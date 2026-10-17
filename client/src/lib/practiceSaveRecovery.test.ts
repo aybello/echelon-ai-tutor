@@ -14,6 +14,17 @@ describe("explicit practice recovery", () => {
     expect(send.mock.calls.map(call => call[0])).toEqual([practiceSaveInput(original), practiceSaveInput(original)]);
     expect(listPendingPracticeSaves(db, scope)).toEqual([other]);
   });
+  it("uses the current access token while retaining the original operation and signed receipt", async () => {
+    const db = storage(), original = item(); enqueuePracticeSave(db, original);
+    db.setItem("echelon_access_token", "synthetic-old-access");
+    const send = vi.fn().mockRejectedValueOnce(Error("lost ack")).mockResolvedValueOnce({ success: true });
+    await retryPendingPracticeSave(db, scope, original.operationId, send, () => true);
+    db.setItem("echelon_access_token", "synthetic-renewed-access");
+    await retryPendingPracticeSave(db, scope, original.operationId, send, () => true);
+    expect(send.mock.calls[0][0]).toEqual({ ...practiceSaveInput(original), accessToken: "synthetic-old-access" });
+    expect(send.mock.calls[1][0]).toEqual({ ...practiceSaveInput(original), accessToken: "synthetic-renewed-access" });
+    expect(listPendingPracticeSaves(db, scope)).toEqual([]);
+  });
   it.each([{ idempotencyVersion: undefined }, { attemptToken: undefined }, { attemptToken: "invalid" }, { attemptToken: `e30.${btoa('{}')}.sig` }, { attemptToken: `e30.${btoa('{"exp":1}')}.sig` }, { quizMode: "mock" }, { confidence: "invented" }, { bankKey: "class1-water" }, { examType: "unknown" }])("rejects unsafe stored input without a new call: %j", async patch => {
     const db = storage(), original = { ...item(), ...patch } as PendingPracticeSave; enqueuePracticeSave(db, original);
     const send = vi.fn(); await retryPendingPracticeSave(db, scope, original.operationId, send, () => true);
