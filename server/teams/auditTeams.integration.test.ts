@@ -133,8 +133,10 @@ suite("October 3 team boundary regressions (isolated synthetic database)", () =>
     await db.update(organizations).set({ status, termEnd: past }).where(eq(organizations.id, orgId));
     try {
       const caller = appRouter.createCaller(ctx(manager));
-      await expect(caller.org.getOrgOverview({ orgId })).rejects.toThrow("ended");
-      external.update.mockClear(); await expect(caller.stripe.updateTeamSeats({ orgId, seats: 6 })).rejects.toThrow("ended");
+      // Both routes reject in the shared manager resolver before Annual writes.
+      const unavailable = { code: "FORBIDDEN", message: "This team has no current contract, activation, or reporting window. Manage team billing to renew; learner access is unchanged." };
+      await expect(caller.org.getOrgOverview({ orgId })).rejects.toMatchObject(unavailable);
+      external.update.mockClear(); await expect(caller.stripe.updateTeamSeats({ orgId, seats: 6 })).rejects.toMatchObject(unavailable);
       expect(external.update).not.toHaveBeenCalled();
       if (status === "pending") await expect(caller.stripe.createBillingPortalSession({ orgId })).rejects.toThrow("completed billing");
       else { external.portal.mockClear(); await caller.stripe.createBillingPortalSession({ orgId }); expect(external.portal).toHaveBeenCalledWith(expect.objectContaining({ customer: "cus_audit_team" })); }

@@ -82,7 +82,8 @@ describe("practice recovery component in an offline intercepted browser", () => 
     await page.getByText(/2 answer saves awaiting confirmation/).waitFor();
     expect(await page.evaluate(() => Object.keys(localStorage).filter(key => key.startsWith("echelon:practice-save-outbox:v2:")))).toHaveLength(2);
     await page.evaluate(id => (window as any).removePending(id), original.operationId);
-    expect(await second.evaluate(() => (window as any).pending().map((item: any) => item.operationId))).toEqual(["550e8400-e29b-41d4-a716-446655440002"]);
+    // Chromium propagates localStorage updates between renderer processes asynchronously.
+    await expect.poll(() => second.evaluate(() => (window as any).pending().map((item: any) => item.operationId))).toEqual(["550e8400-e29b-41d4-a716-446655440002"]);
     expect(calls).toHaveLength(0);
     await second.close(); await page.close();
   });
