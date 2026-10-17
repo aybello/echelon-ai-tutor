@@ -197,11 +197,17 @@ function LimeCalc() {
       </div>
 
       <p style={{ color: "#475569", fontSize: 12, margin: "0 0 16px" }}>Educational alkalinity-deficit estimate using a fixed target of 100 mg/L as CaCO₃.</p>
+      <div style={{ color: "#475569", fontSize: 12, marginBottom: 16, lineHeight: 1.8 }}>
+        Product dose (mg/L) = max(0, 100 − current alkalinity as CaCO₃) × 0.56 ÷ (CaO purity % / 100).<br/>
+        Product mass (kg/day) = Flow (m³/day) × Product dose (mg/L) ÷ 1000.<br/>
+        CaO/CaCO₃ = 56/100 = 0.56; hydrated lime uses 74/100, not the CaO factor. Source: <a href="https://www.mrwa.com/wp-content/uploads/2021/04/16-Lime-Softening.pdf#page=6" target="_blank" rel="noopener noreferrer">MRWA Lime Softening, page 6</a>.<br/>
+        Educational estimate only — not a complete softening demand, design calculation, or operational dosing instruction.
+      </div>
       {!result && <p role="status" style={{ color: "#9A3412", fontSize: 13 }}>Enter finite values: positive flow and lime purity at or below 100%; current alkalinity may be zero.</p>}
       {result && result.alkalinityDeficitMgL > 0 && (
         <div className="chemcalc-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
           {[
-            { label: "Lime Dose", value: `${round(result.limeDoseMgL)} mg/L`, sub: "as CaO", color: "#64748B" },
+            { label: "Lime Dose", value: `${round(result.limeDoseMgL)} mg/L`, sub: "CaO product at entered purity", color: "#64748B" },
             { label: "Lime Mass", value: `${round(result.limeMassKgDay)} kg/day`, sub: `${round(result.limeMassKgDay / 24, 2)} kg/hr`, color: "#1D4ED8" },
             { label: "Feed Rate", value: `${round(result.feedRateGMin)} g/min`, sub: "dry feeder", color: "#059669" },
           ].map(({ label, value, sub, color }) => (
@@ -216,7 +222,7 @@ function LimeCalc() {
 
       {result && result.alkalinityDeficitMgL <= 0 && (
         <div style={{ background: "#F0FDF4", borderRadius: 12, padding: "16px 20px", border: "1px solid #BBF7D0", textAlign: "center" }}>
-          <div style={{ fontSize: 14, fontWeight: 700, color: "#15803D" }}>✓ Alkalinity is sufficient — no lime addition required</div>
+          <div style={{ fontSize: 14, fontWeight: 700, color: "#15803D" }}>No alkalinity deficit in this educational estimate</div>
           <div style={{ fontSize: 11, color: "#166534", marginTop: 4 }}>Current alkalinity ({currentAlk} mg/L) meets or exceeds the 100 mg/L target</div>
         </div>
       )}
@@ -243,13 +249,13 @@ function FluorideCalc() {
 
   // Chemical properties
   const chemicals = {
-    hfs: { name: "Hydrofluosilicic Acid (H₂SiF₆)", conc: 0.23, density: 1.22, unit: "L/day" },
-    naf: { name: "Sodium Fluoride (NaF)", conc: 0.45, density: 1.0, unit: "kg/day" },
-    fsa: { name: "Sodium Fluorosilicate (Na₂SiF₆)", conc: 0.607, density: 1.0, unit: "kg/day" },
+    hfs: { name: "Hydrofluosilicic Acid (H₂SiF₆)", conc: 0.23, density: 1.22 },
+    naf: { name: "Sodium Fluoride (NaF)", conc: 0.45, density: 1.0 },
+    fsa: { name: "Sodium Fluorosilicate (Na₂SiF₆)", conc: 0.607, density: 1.0 },
   };
 
   const chem = chemicals[chemical];
-  const result = calculateFluoride({ flow, existing, target, concentration: chem.conc, density: chem.density });
+  const result = calculateFluoride({ flow, existing, target, concentration: chem.conc, density: chem.density, form: chemical === "hfs" ? "liquid" : "dry" });
 
   return (
     <div>
@@ -280,6 +286,10 @@ function FluorideCalc() {
         </div>
       </div>
 
+      <p style={{ color: "#475569", fontSize: 12, lineHeight: 1.8 }}>
+        Educational mass basis: the listed percentages are elemental F by product mass (23% F for the liquid option, not 23% H₂SiF₆). Product (kg/day) = F mass (kg/day) ÷ F mass fraction.<br/>
+        {chemical === "hfs" ? "Liquid volume (L/day) = product (kg/day) ÷ 1.22 kg/L; feed (mL/min) = volume × 1000 ÷ 1440." : "Dry product feed (g/min) = product (kg/day) × 1000 ÷ 1440; no solution volume or bulk density is assumed."}
+      </p>
       {result && <div style={{ background: "#F0FDF4", borderRadius: 12, padding: "12px 16px", marginBottom: 16, border: "1px solid #BBF7D0" }}>
         <span style={{ fontSize: 12, fontWeight: 700, color: "#15803D" }}>Fluoride Dose Required: </span>
         <span style={{ fontSize: 14, fontWeight: 900, color: "#059669" }}>{round(result.doseMgL, 3)} mg/L F⁻</span>
@@ -291,8 +301,8 @@ function FluorideCalc() {
         <div className="chemcalc-grid-3" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
           {[
             { label: "F⁻ Mass Needed", value: `${round(result.massFKgDay * 1000)} g/day`, sub: `${round(result.massFKgDay, 3)} kg/day`, color: "#059669" },
-            { label: chem.unit === "L/day" ? "Chemical Volume" : "Chemical Mass", value: `${round(result.productAmountDay)} ${chem.unit}`, sub: chem.name.split(" (")[0], color: "#1D4ED8" },
-            { label: "Feed Rate", value: `${round(result.feedRateMlMin)} mL/min`, sub: "metering pump", color: "#7C3AED" },
+            { label: chemical === "hfs" ? "Chemical Volume" : "Chemical Mass", value: `${round(result.productAmountDay)} ${result.productUnit}`, sub: chem.name.split(" (")[0], color: "#1D4ED8" },
+            { label: chemical === "hfs" ? "Solution Feed Rate" : "Dry Product Feed Rate", value: `${round(result.feedRatePerMin)} ${result.feedRateUnit}`, sub: chemical === "hfs" ? "metering pump" : "dry feeder", color: "#7C3AED" },
           ].map(({ label, value, sub, color }) => (
             <div key={label} style={{ background: "#F8FAFC", borderRadius: 14, padding: "20px 16px", border: `2px solid ${color}33`, textAlign: "center" }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", marginBottom: 6 }}>{label}</div>

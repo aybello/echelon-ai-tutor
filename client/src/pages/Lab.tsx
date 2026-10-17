@@ -380,14 +380,12 @@ function LabCalculators() {
           </div>
           {!bodResult && <p role="status">Enter finite, non-negative DO values with final DO no greater than initial DO, and a dilution factor of at least 1.</p>}
           {bodResult && (
-          <div style={{ background: "#F0FDF4", borderRadius: 14, padding: "20px", border: "2px solid #22C55E", textAlign: "center" }}>
-            <div style={{ fontSize: 32, fontWeight: 900, color: "#059669" }}>{isNaN(bod) ? "—" : `${bod.toFixed(1)} mg/L`}</div>
-            <div style={{ fontSize: 13, fontWeight: 700, color: "#15803D", marginTop: 4 }}>BOD₅</div>
+          <div style={{ background: "#F8FAFC", borderRadius: 14, padding: "20px", border: "2px solid #CBD5E1", textAlign: "center" }}>
+            <div style={{ fontSize: 32, fontWeight: 900, color: "#334155" }}>{isNaN(bod) ? "—" : `${bod.toFixed(1)} mg/L`}</div>
+            <div style={{ fontSize: 13, fontWeight: 700, color: "#334155", marginTop: 4 }}>Educational BOD₅ arithmetic estimate</div>
             <div style={{ fontSize: 11, color: "#64748B", marginTop: 6 }}>BOD₅ = (DO_initial − DO_final) × Dilution Factor</div>
             <div style={{ fontSize: 11, color: "#374151", marginTop: 8 }}>
-              {bod > 200 ? "🔴 High BOD — typical of raw municipal wastewater (150–300 mg/L)" :
-               bod > 25 ? "🟡 Moderate BOD — may not meet O. Reg. 129/04 effluent limit of 25 mg/L" :
-               "🟢 Low BOD — meets typical secondary treatment effluent standard (≤25 mg/L)"}
+              This arithmetic alone is not a valid analytical BOD₅ result or a compliance determination. Method validity, blank/seed corrections, acceptable DO depletion and residual, and applicable regulatory requirements are not evaluated.
             </div>
           </div>
           )}

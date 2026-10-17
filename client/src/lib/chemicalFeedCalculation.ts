@@ -1,5 +1,6 @@
 export const ALUM_DENSITY_KG_L = 1.33;
-export const LIME_CAO_EQUIVALENCE = 0.74;
+// CaO / CaCO₃ molecular weights: 56 / 100 (MRWA Lime Softening, p. 6).
+export const LIME_CAO_EQUIVALENCE = 0.56;
 export const MINUTES_PER_DAY = 1440;
 
 function finiteInput(value: string): number | null {
@@ -58,8 +59,10 @@ export function calculateFluoride(input: {
   flow: string;
   existing: string;
   target: string;
+  // Elemental F mass fraction of the product, not acid concentration.
   concentration: number;
   density: number;
+  form?: "liquid" | "dry";
 }) {
   const flow = finiteInput(input.flow);
   const existing = finiteInput(input.existing);
@@ -70,11 +73,18 @@ export function calculateFluoride(input: {
 
   const doseMgL = Math.max(0, target - existing);
   const massFKgDay = (flow * doseMgL) / 1000;
-  const productAmountDay = massFKgDay / (input.concentration * input.density);
-  const feedRateMlMin = (productAmountDay * 1000) / MINUTES_PER_DAY;
-  if (!hasFiniteValues([doseMgL, massFKgDay, productAmountDay, feedRateMlMin])) return null;
+  const productMassKgDay = massFKgDay / input.concentration;
+  const isDry = input.form === "dry";
+  // Density converts liquid mass to volume only; dry feed remains mass-based.
+  const productAmountDay = isDry ? productMassKgDay : productMassKgDay / input.density;
+  const feedRatePerMin = (productAmountDay * 1000) / MINUTES_PER_DAY;
+  if (!hasFiniteValues([doseMgL, massFKgDay, productMassKgDay, productAmountDay, feedRatePerMin])) return null;
 
-  return { doseMgL, massFKgDay, productAmountDay, feedRateMlMin };
+  return {
+    doseMgL, massFKgDay, productMassKgDay, productAmountDay, feedRatePerMin,
+    productUnit: isDry ? "kg/day" : "L/day",
+    feedRateUnit: isDry ? "g/min" : "mL/min",
+  };
 }
 
 export function calculatePolymer(input: { flow: string; dose: string; stockConcentration: string }) {
