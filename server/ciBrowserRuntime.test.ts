@@ -19,4 +19,14 @@ describe("CI browser runtime prerequisites", () => {
     expect(phase).not.toContain("--exclude client/src/lib/practiceSaveRecovery.browser.test.ts");
     expect(phase).not.toContain("continue-on-error");
   });
+
+  it("runs practice topic recovery with the configured learner browser journeys", () => {
+    const phase = workflow.slice(workflow.indexOf("- name: Browser-test Teams access, purchase confirmation, Equipment Lab and learner journeys"),
+      workflow.indexOf("- name: Browser-test the approved workspaces and offline review"));
+    const command = phase.match(/run: (pnpm exec playwright test[^\n]*)/)?.[1];
+    expect(command).toBeDefined();
+    expect(command?.split(/\s+/)).toContain("e2e/practice-topic-recovery.spec.ts");
+    expect(command?.split(/\s+/)).toContain("e2e/course-chunk-recovery.spec.ts");
+    expect(phase).not.toContain("continue-on-error");
+  });
 });
