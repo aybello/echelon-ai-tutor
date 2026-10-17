@@ -23,6 +23,7 @@ describe("billing-owner OTP eligibility is independent of current learner access
   });
   it.each([
     { status: "pending", stripeCustomerId: "cus_synthetic_pending" },
+    { status: "checkout_failed", stripeCustomerId: "cus_synthetic_failed" },
     { status: "cancelled", stripeCustomerId: null },
   ])("does not treat an uncompleted billing account as recoverable: %j", async row => {
     rows = [row];

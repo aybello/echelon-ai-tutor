@@ -17,5 +17,5 @@ export async function hasRecoverableTeamBilling(email: string): Promise<boolean>
     status: organizations.status,
     stripeCustomerId: organizations.stripeCustomerId,
   }).from(organizations).where(eq(organizations.managerEmail, normalized));
-  return rows.some(row => !!row.stripeCustomerId && row.status !== "pending");
+  return rows.some(row => !!row.stripeCustomerId && !["pending", "checkout_failed"].includes(row.status));
 }

@@ -40,6 +40,10 @@ describe("post-purchase continuation", () => {
     expect(fallback).toContain('setRequiresSignIn(true)');
     expect(fallback).not.toContain('localStorage.setItem');
   });
+  it("does not promise a fresh year when an existing customer reopens a receipt", () => {
+    expect(subscriptionSuccessSource).not.toMatch(/12 months from today|12 months from now/i);
+    expect(subscriptionSuccessSource).toContain("current subscription term shown in your account");
+  });
   it("does not create browser-side purchase authority", () => {
     expect(purchaseSuccessSource).not.toContain(
       'localStorage.setItem("echelon_trial_unlocked"'

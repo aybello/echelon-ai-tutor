@@ -168,7 +168,7 @@ export default function SubscriptionSuccess() {
             <li>AI Tutor with step-by-step explanations</li>
             <li>Timed mock exams &amp; score history</li>
             <li>Flashcards &amp; module study notes</li>
-            <li>Access valid for 12 months from today</li>
+            <li>Access follows your current subscription term shown in your account</li>
           </ul>
         </div>}
         <Link href={requiresSignIn ? "/login/otp" : quizPath}>
