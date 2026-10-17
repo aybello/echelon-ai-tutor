@@ -132,6 +132,21 @@ describe("admin Data Explorer catalog", () => {
     expect(page.rows[0]).not.toHaveProperty("stripePaymentIntentId");
   });
 
+  it("never serializes unallowlisted attempt operation metadata returned by the database", async () => {
+    const execute = vi.fn()
+      .mockResolvedValueOnce([[{ total: "1" }]])
+      .mockResolvedValueOnce([[{ id: 91, questionId: 1001, correct: "no",
+        operationId: "synthetic-operation-id", operationPayloadHash: "synthetic-payload-hash",
+        guestToken: "synthetic-guest-secret" }]]);
+    const dataset = getDataExplorerDataset("question-attempts");
+    expect(dataset).not.toBeNull();
+    const page = await readDataExplorerPage({ execute } as never, dataset!, 1, 25);
+    expect(page.rows[0]).toMatchObject({ id: 91, questionId: 1001, correct: "no" });
+    expect(page.rows[0]).not.toHaveProperty("operationId");
+    expect(page.rows[0]).not.toHaveProperty("operationPayloadHash");
+    expect(page.rows[0]).not.toHaveProperty("guestToken");
+  });
+
   it("fails closed for unknown datasets and enforces admin-only access", async () => {
     expect(getDataExplorerDataset("purchases; DROP TABLE users")).toBeNull();
     await expect(createCaller(null).getDataExplorerCatalog())
