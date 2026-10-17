@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { createPortal } from "react-dom";
+import { useRef, useState, type MouseEvent } from "react";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { Dialog, DialogClose, DialogOverlay, DialogPortal, DialogTitle } from "@/components/ui/dialog";
 import { trpc } from "@/lib/trpc";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -95,24 +96,24 @@ function ProvinceBadge({ province }: { province: string | null }) {
 
 // ─── Job Detail Modal ─────────────────────────────────────────────────────────
 
-function JobModal({ job, onClose }: { job: Job; onClose: () => void }) {
-  return createPortal(
-    <div
-      className="fixed inset-0 z-[9999] flex items-end sm:items-center justify-center p-0 sm:p-4"
-      onClick={e => {
-        if (e.target === e.currentTarget) onClose();
-      }}
-    >
-      {/* Backdrop */}
-      <div
-        className="absolute inset-0 bg-black/40 backdrop-blur-sm"
-        onClick={onClose}
-      />
-
-      {/* Modal panel */}
-      <div className="relative w-full sm:max-w-2xl max-h-[92vh] sm:max-h-[85vh] bg-white sm:rounded-2xl rounded-t-2xl shadow-2xl flex flex-col overflow-hidden">
+export function JobModal({ job, onClose, returnFocusTo }: { job: Job; onClose: () => void; returnFocusTo: HTMLButtonElement | null }) {
+  return (
+    <Dialog open onOpenChange={open => { if (!open) onClose(); }}>
+      <DialogPortal>
+        <DialogOverlay className="z-[9998] bg-black/40 backdrop-blur-sm" onClick={onClose} />
+        {/* Compose the existing primitives directly to retain the bottom sheet
+            and keep both overlay and content above the shared site navigation. */}
+        <DialogPrimitive.Content
+          aria-modal="true"
+          aria-describedby={undefined}
+          onCloseAutoFocus={event => {
+            event.preventDefault();
+            returnFocusTo?.focus({ preventScroll: true });
+          }}
+          className="fixed bottom-0 left-1/2 z-[9999] w-full -translate-x-1/2 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 sm:max-w-2xl max-h-[92vh] sm:max-h-[85vh] bg-white sm:rounded-2xl rounded-t-2xl shadow-2xl flex flex-col overflow-hidden"
+        >
         {/* Header */}
-        <div className="flex items-start justify-between gap-3 p-5 border-b border-slate-100">
+        <div className="shrink-0 flex items-start justify-between gap-3 p-5 border-b border-slate-100">
           <div className="min-w-0">
             {job.isFeatured ? (
               <div className="flex items-center gap-1.5 text-xs font-semibold text-blue-600 mb-1.5">
@@ -120,9 +121,9 @@ function JobModal({ job, onClose }: { job: Job; onClose: () => void }) {
                 Featured
               </div>
             ) : null}
-            <h2 className="text-xl font-bold text-slate-900 leading-snug capitalize">
+            <DialogTitle className="text-xl font-bold text-slate-900 leading-snug capitalize">
               {job.title}
-            </h2>
+            </DialogTitle>
             {job.company && (
               <div className="flex items-center gap-1.5 mt-1 text-sm text-slate-600">
                 <Building2 className="w-4 h-4 text-slate-400 shrink-0" />
@@ -130,17 +131,16 @@ function JobModal({ job, onClose }: { job: Job; onClose: () => void }) {
               </div>
             )}
           </div>
-          <button
-            onClick={onClose}
+          <DialogClose
             className="shrink-0 p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
             aria-label="Close"
           >
             <X className="w-5 h-5" />
-          </button>
+          </DialogClose>
         </div>
 
         {/* Meta row */}
-        <div className="flex flex-wrap gap-x-4 gap-y-2 px-5 py-3 bg-slate-50 border-b border-slate-100">
+        <div className="shrink-0 flex flex-wrap gap-x-4 gap-y-2 px-5 py-3 bg-slate-50 border-b border-slate-100">
           {job.location && (
             <span className="flex items-center gap-1.5 text-sm text-slate-600">
               <MapPin className="w-4 h-4 text-slate-400" />
@@ -169,7 +169,7 @@ function JobModal({ job, onClose }: { job: Job; onClose: () => void }) {
         </div>
 
         {/* Body — description */}
-        <div className="flex-1 overflow-y-auto px-5 py-5">
+        <div className="min-h-0 flex-1 overflow-y-auto px-5 py-5">
           {job.description ? (
             <div className="text-sm text-slate-700 leading-relaxed whitespace-pre-line">
               {job.description}
@@ -189,7 +189,7 @@ function JobModal({ job, onClose }: { job: Job; onClose: () => void }) {
         </div>
 
         {/* Footer — source + apply CTA */}
-        <div className="border-t border-slate-100 px-5 py-4 bg-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div className="shrink-0 border-t border-slate-100 px-5 py-4 bg-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div className="text-xs text-slate-400">
             <span className="font-medium text-slate-500">
               {job.sourceName ?? "Job Bank Canada"}
@@ -206,15 +206,15 @@ function JobModal({ job, onClose }: { job: Job; onClose: () => void }) {
             <ExternalLink className="w-4 h-4" />
           </a>
         </div>
-      </div>
-    </div>,
-    document.body
+        </DialogPrimitive.Content>
+      </DialogPortal>
+    </Dialog>
   );
 }
 
 // ─── Job Card ─────────────────────────────────────────────────────────────────
 
-function JobCard({ job, onClick }: { job: Job; onClick: () => void }) {
+function JobCard({ job, onClick }: { job: Job; onClick: (event: MouseEvent<HTMLButtonElement>) => void }) {
   return (
     <button
       onClick={onClick}
@@ -302,6 +302,7 @@ export default function Careers() {
   const [province, setProvince] = useState<Province>(null);
   const [page, setPage] = useState(1);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+  const jobTriggerRef = useRef<HTMLButtonElement | null>(null);
 
   const { data, isLoading, isError, isFetching, refetch } = trpc.jobs.listJobs.useQuery(
     { page, province },
@@ -324,7 +325,7 @@ export default function Careers() {
 
       {/* Job detail modal */}
       {selectedJob && (
-        <JobModal job={selectedJob} onClose={() => setSelectedJob(null)} />
+        <JobModal job={selectedJob} onClose={() => setSelectedJob(null)} returnFocusTo={jobTriggerRef.current} />
       )}
 
       {/* Hero */}
@@ -453,7 +454,10 @@ export default function Careers() {
               <JobCard
                 key={job.id}
                 job={job}
-                onClick={() => setSelectedJob(job)}
+                onClick={event => {
+                  jobTriggerRef.current = event.currentTarget;
+                  setSelectedJob(job);
+                }}
               />
             ))}
           </div>

@@ -465,7 +465,18 @@ class Audit:
         cards = page.locator("button").filter(has=page.locator("h2"))
         if not await cards.count():
             raise Blocked("No usable live job card; job detail and apply destination not verified")
-        await cards.first.click()
+        card = cards.first
+        title = (await card.locator("h2").inner_text()).strip()
+        await card.focus()
+        await page.keyboard.press("Enter")
+        dialog = page.get_by_role("dialog", name=title, exact=True)
+        await expect(dialog).to_be_visible()
+        await expect(dialog).to_have_attribute("aria-modal", "true")
+        await page.wait_for_function("() => document.querySelector('[role=dialog]')?.contains(document.activeElement)")
+        for key in ["Tab", "Shift+Tab"]:
+            await page.keyboard.press(key)
+            if not await dialog.evaluate("e => e.contains(document.activeElement)"):
+                raise AssertionError("Keyboard focus escapes the job detail dialog")
         posting = page.get_by_role("link", name="View Full Posting", exact=False)
         await expect(posting).to_be_visible()
         href = await posting.get_attribute("href") or ""
@@ -478,10 +489,42 @@ class Audit:
             rel = await posting.get_attribute("rel") or ""
             if "noopener" not in rel:
                 raise AssertionError("External posting opens a new tab without noopener")
+        await page.keyboard.press("Escape")
+        await expect(dialog).to_have_count(0)
+        await expect(card).to_be_focused()
+        await card.click()
+        await expect(dialog).to_be_visible()
         await page.get_by_role("button", name="Close", exact=True).click()
-        await expect(posting).to_have_count(0)
-        return {"detail": "Live job card opens detail with a reachable, specific HTTP(S) employer posting URL. Destination inspected only, not fetched or applied",
-                "postingDestination": safe_url(href), "depth": "list-detail-link-inspection"}
+        await expect(dialog).to_have_count(0)
+        await expect(card).to_be_focused()
+        return {"detail": "Live job detail has a named modal, keyboard focus containment, Escape/Close dismissal with focus return, and a reachable specific HTTP(S) posting link. Destination inspected only, not fetched or applied",
+                "postingDestination": safe_url(href), "depth": "list-detail-keyboard-link-inspection"}
+
+    async def chlorine(self, page: Any) -> dict[str, Any]:
+        await self.goto(page, "/chem-calc")
+        form = page.get_by_label("Chemical Form", exact=True)
+        await expect(form).to_be_visible()
+        await form.select_option("gas")
+        await expect(page.get_by_text("25.13 kg/day", exact=True)).to_be_visible()
+        await expect(page.get_by_text("17.45 g/min", exact=True)).to_be_visible()
+        purity = page.get_by_label(re.compile("Available Cl₂"))
+        await expect(purity).to_have_value("99.5")
+        await expect(purity).to_be_disabled()
+        await form.select_option("granular")
+        await purity.fill("30")
+        await expect(page.get_by_text("83.33 kg/day", exact=True)).to_be_visible()
+        await form.select_option("liquid")
+        await expect(purity).to_have_value("12.5")
+        await expect(page.get_by_text("166.67 L/day", exact=True)).to_be_visible()
+        await expect(page.get_by_text("115.74 mL/min", exact=True)).to_be_visible()
+        await form.select_option("granular")
+        await purity.fill("")
+        await expect(page.get_by_role("status")).to_contain_text("finite positive")
+        await expect(page.get_by_text("83.33 kg/day", exact=True)).to_have_count(0)
+        await form.select_option("gas")
+        await expect(page.get_by_text("25.13 kg/day", exact=True)).to_be_visible()
+        return {"detail": "Chlorine gas, granular and liquid outputs match the displayed form and units; liquid ignores previously edited granular purity; invalid granular input hides results without breaking fixed forms. Existing density assumption retained. No operational dosing or write performed",
+                "depth": "calculator-form-switch-numeric-regression"}
 
     async def account(self, page: Any) -> dict[str, Any]:
         await self.goto(page, "/account")
@@ -748,7 +791,8 @@ class Audit:
             tasks.append(Task(f"journey/{view}/tutor-ui/{tutor_course['courseKey']}", tutor_course["quizPath"], self.tutor(tutor_course["quizPath"]), view, courses=[tutor_course["courseKey"]]))
             for name, path, check in [("navigation", "/", self.navigation), ("teams", "/teams", self.teams),
                 ("jobs", "/jobs", self.jobs), ("restore-form", "/account", self.account),
-                ("formulas-scroll", "/formulas", self.formulas), ("equipment-render", "/equipment-lab", self.equipment)]:
+                ("formulas-scroll", "/formulas", self.formulas), ("equipment-render", "/equipment-lab", self.equipment),
+                ("chlorine-calculator", "/chem-calc", self.chlorine)]:
                 tasks.append(Task(f"journey/{view}/{name}", path, check, view))
         self.coverage = {"scope": "partial" if len(selected) < len(courses) else "full-active-route-matrix",
             "activeCoursesInManifest": len(courses), "selectedCourseCount": len(selected),

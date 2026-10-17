@@ -6,6 +6,7 @@ import SiteNav from "@/components/SiteNav";
 import GuideNav from "@/components/GuideNav";
 import { getGuideResumeStep } from "@/hooks/useGuideProgress";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { calculateChlorine, type ChlorineForm } from "@/lib/chlorineCalculation";
 
 type Tab = "chlorine" | "alum" | "lime" | "fluoride" | "polymer";
 
@@ -26,41 +27,20 @@ function ChlorineCalc() {
   const [flow, setFlow] = useState("10000"); // m³/day
   const [dose, setDose] = useState("2.5");   // mg/L
   const [purity, setPurity] = useState("65"); // % available Cl₂ (HTH granular)
-  const [form, setForm] = useState<"gas" | "liquid" | "granular">("granular");
-
-  const flowNum = parseFloat(flow) || 0;
-  const doseNum = parseFloat(dose) || 0;
-  const purityNum = parseFloat(purity) / 100 || 1;
-
-  // Mass of Cl₂ needed (g/day)
-  const massNeeded_g = flowNum * 1000 * doseNum / 1000; // L × mg/L = mg → /1000 = g
-  const massNeeded_kg = massNeeded_g / 1000;
-
-  // Product mass needed (accounting for purity)
-  const productMass_kg = massNeeded_kg / purityNum;
-
-  // For liquid sodium hypochlorite (12.5% = 125 g/L, density ~1.2 kg/L)
-  const hypoDensity = 1.2; // kg/L
-  const hypoConc = 0.125; // 12.5% w/w
-  const hypoVolume_L = productMass_kg / (hypoDensity * hypoConc);
-
-  // Feed rate (g/min or mL/min)
-  const feedRate_gMin = massNeeded_g / (24 * 60);
-  const feedRate_mLMin = form === "liquid" ? (hypoVolume_L * 1000) / (24 * 60) : 0;
-
-  const isValid = flowNum > 0 && doseNum > 0 && purityNum > 0;
+  const [form, setForm] = useState<ChlorineForm>("granular");
+  const result = calculateChlorine({ flow, dose, granularPurity: purity, form });
 
   return (
     <div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 24 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))", gap: 16, marginBottom: 24 }}>
         <div>
-          <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>Flow Rate (m³/day)</label>
-          <input type="number" value={flow} onChange={e => setFlow(e.target.value)}
+          <label htmlFor="chlorine-flow" style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>Flow Rate (m³/day)</label>
+          <input id="chlorine-flow" type="number" min="0" step="any" value={flow} onChange={e => setFlow(e.target.value)}
             style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
         </div>
         <div>
-          <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>Target Dose (mg/L)</label>
-          <input type="number" value={dose} onChange={e => setDose(e.target.value)}
+          <label htmlFor="chlorine-dose" style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>Target Dose (mg/L)</label>
+          <input id="chlorine-dose" type="number" min="0" step="any" value={dose} onChange={e => setDose(e.target.value)}
             style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", boxSizing: "border-box" }} />
         </div>
         <div>
@@ -73,22 +53,25 @@ function ChlorineCalc() {
           </select>
         </div>
         <div>
-          <label style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>
+          <label htmlFor="chlorine-purity" style={{ fontSize: 11, fontWeight: 700, color: "#64748B", display: "block", marginBottom: 6 }}>
             Available Cl₂ (%) — {form === "gas" ? "99.5" : form === "liquid" ? "12.5" : "65"}% typical
           </label>
-          <input type="number" value={form === "gas" ? "99.5" : form === "liquid" ? "12.5" : purity}
+          <input id="chlorine-purity" type="number" min="0" max="100" step="any" value={form === "gas" ? "99.5" : form === "liquid" ? "12.5" : purity}
             onChange={e => setPurity(e.target.value)}
             disabled={form !== "granular"}
             style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: "2px solid #E2E8F0", fontSize: 14, fontWeight: 600, color: "#0F172A", fontFamily: "inherit", outline: "none", background: form !== "granular" ? "#F8FAFC" : "#fff", boxSizing: "border-box" }} />
         </div>
       </div>
 
-      {isValid && (
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+      {!result && <p role="status" style={{ color: "#9A3412", fontSize: 13 }}>
+        Enter finite positive flow and dose values, and an available Cl₂ purity greater than 0% and at most 100%. Values must produce finite positive results.
+      </p>}
+      {result && (
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 170px), 1fr))", gap: 12 }}>
           {[
-            { label: "Cl₂ Mass Needed", value: `${round(massNeeded_kg)} kg/day`, sub: `${round(massNeeded_g)} g/day`, color: "#D97706" },
-            { label: form === "liquid" ? "Hypochlorite Volume" : "Product Mass", value: form === "liquid" ? `${round(hypoVolume_L)} L/day` : `${round(productMass_kg)} kg/day`, sub: form === "liquid" ? `${round(hypoVolume_L / 24, 2)} L/hr` : `${round(productMass_kg / 24, 3)} kg/hr`, color: "#1D4ED8" },
-            { label: "Feed Rate", value: form === "liquid" ? `${round(feedRate_mLMin)} mL/min` : `${round(feedRate_gMin)} g/min`, sub: "continuous feed", color: "#059669" },
+            { label: "Active Cl₂ Mass Needed", value: `${round(result.activeMassKgDay)} kg/day`, sub: `${round(result.activeMassGDay)} g/day as Cl₂`, color: "#D97706" },
+            { label: form === "liquid" ? "Hypochlorite Volume" : "Product Mass", value: form === "liquid" ? `${round(result.liquidVolumeLDay!)} L/day` : `${round(result.productMassKgDay)} kg/day`, sub: form === "liquid" ? `${round(result.liquidVolumeLDay! / 24, 2)} L/hr` : `${round(result.productMassKgDay / 24, 3)} kg/hr`, color: "#1D4ED8" },
+            { label: form === "liquid" ? "Solution Feed Rate" : form === "granular" ? "Dry Product Feed Rate" : "Gas Product Feed Rate", value: form === "liquid" ? `${round(result.liquidFeedMlMin!)} mL/min` : `${round(result.productFeedGMin)} g/min`, sub: "continuous product feed", color: "#059669" },
           ].map(({ label, value, sub, color }) => (
             <div key={label} style={{ background: "#F8FAFC", borderRadius: 14, padding: "20px 16px", border: `2px solid ${color}33`, textAlign: "center" }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", marginBottom: 6 }}>{label}</div>
@@ -101,10 +84,16 @@ function ChlorineCalc() {
 
       <div style={{ marginTop: 20, background: "#FFF7ED", borderRadius: 12, padding: "14px 18px", border: "1px solid #FED7AA" }}>
         <div style={{ fontSize: 11, fontWeight: 700, color: "#C2410C", marginBottom: 6 }}>📐 Formula</div>
-        <div style={{ fontFamily: "monospace", fontSize: 12, color: "#78350F", lineHeight: 1.8 }}>
-          Mass (kg/day) = Flow (m³/day) × Dose (mg/L) × 1000 (L/m³) ÷ 1,000,000<br/>
-          Product (kg/day) = Mass (kg/day) ÷ Purity (decimal)<br/>
-          Feed Rate (g/min) = Mass (g/day) ÷ 1440 min/day
+        <div style={{ fontFamily: "monospace", fontSize: 12, color: "#78350F", lineHeight: 1.8, overflowWrap: "anywhere" }}>
+          Active Cl₂ (kg/day) = Flow (m³/day) × Dose (mg/L) × 1000 (L/m³) ÷ 1,000,000 (mg/kg)<br/>
+          {form === "liquid" ? <>
+            Solution (L/day) = Active Cl₂ (kg/day) ÷ (1.2 kg/L × 0.125)<br/>
+            12.5% w/w available Cl₂; assumed solution density 1.2 kg/L<br/>
+            Solution Feed (mL/min) = Solution (L/day) × 1000 (mL/L) ÷ 1440 (min/day)
+          </> : <>
+            Product (kg/day) = Active Cl₂ (kg/day) ÷ {form === "gas" ? "0.995 (99.5% purity)" : "(entered available Cl₂ % ÷ 100)"}<br/>
+            {form === "granular" ? "Dry Product" : "Gas Product"} Feed (g/min) = Product (kg/day) × 1000 (g/kg) ÷ 1440 (min/day)
+          </>}
         </div>
       </div>
     </div>
