@@ -321,7 +321,7 @@ function ActivationFlow({ auth, oauth }: {
             </div>
             <CardContent className="p-6 sm:p-8">
               {resumedDraft && <div role="status" className="mb-4 text-sm text-blue-800">Resumed your diagnostic on this browser. <button type="button" disabled={submitDiagnostic.isPending} onClick={restartDiagnostic} className="underline">Restart diagnostic</button></div>}
-              <p className="mb-4 text-xs text-slate-500">{draftSaved ? "Unfinished answers are saved on this browser only, not across devices." : "Browser storage is unavailable. Unfinished answers will be lost if you leave or refresh."}</p>
+              <p className="mb-4 text-xs text-slate-500">{draftSaved ? "Unfinished answers are saved on this browser only, not across devices." : "Unfinished answers could not be saved on this browser. This session may have ended in another tab, or storage is unavailable. Keep this page open; leaving or refreshing may lose this tab's work."}</p>
               {questions.isLoading ? (
                 <div className="flex min-h-72 items-center justify-center"><Loader2 className="h-8 w-8 animate-spin text-blue-700" /></div>
               ) : questions.error ? (

@@ -168,3 +168,24 @@ it("rejects a completed alias session even when a different current question set
   expect(upgradeLegacyDiagnosticDraft(db, scope, ids, legacyScope)).toBeNull();
   expect(loadDiagnosticDraft(db, scope, newer.questionIds)).toEqual(newer);
 });
+
+it("rejects a retired tab's save without overwriting the restarted diagnostic", () => {
+  const db = storage([]);
+  const retired = { ...original, scope };
+  expect(saveDiagnosticDraft(db, retired)).toBe(true);
+  expect(clearDiagnosticDraft(db, scope, retired.sessionId)).toBe(true);
+  const restarted = { ...retired, sessionId: "550e8400-e29b-41d4-a716-446655440003", answers: { 1: 0, 2: 1 }, questionIndex: 2, updatedAt: 500 };
+  expect(saveDiagnosticDraft(db, restarted)).toBe(true);
+  expect(saveDiagnosticDraft(db, { ...retired, answers: { 1: 3 }, updatedAt: 999 })).toBe(false);
+  expect(loadDiagnosticDraft(db, scope, ids)).toEqual(restarted);
+});
+
+it("does not write a completed session back over its explicit completion marker", () => {
+  const db = storage([]);
+  const completed = { ...original, scope };
+  saveDiagnosticDraft(db, completed);
+  clearDiagnosticDraft(db, scope, completed.sessionId);
+  expect(saveDiagnosticDraft(db, { ...completed, updatedAt: 999 })).toBe(false);
+  expect(db.getItem('echelon:diagnostic-draft:v2:["user:7","oit"]')).toBe("null");
+  expect(loadDiagnosticDraft(db, scope, ids, legacyScope)).toBeNull();
+});

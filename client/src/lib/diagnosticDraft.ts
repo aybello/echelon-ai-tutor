@@ -135,6 +135,9 @@ export function upgradeLegacyDiagnosticDraft(
 
 export function saveDiagnosticDraft(storage: StorageLike, draft: DiagnosticDraft, verifiedLegacyScope?: DiagnosticDraftScope | null): boolean {
   try {
+    // Restart/completion in another tab retires this session. A later edit in
+    // the old tab must not overwrite the replacement draft (or its null marker).
+    if (storage.getItem(legacyRemovedKey(draft.scope, draft.sessionId)) !== null) return false;
     storage.setItem(scopedKey(draft.scope), JSON.stringify(draft));
     if (draft.scope.identity.startsWith("user:") && verifiedLegacyScope
       && verifiedLegacyScope.identity.includes("@") && verifiedLegacyScope.courseKey === draft.scope.courseKey) {
