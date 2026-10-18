@@ -13,7 +13,7 @@
  *   5. Region of Waterloo        — custom ATS (careers.regionofwaterloo.ca)
  *   6. Region of Peel            — own site
  *   7. York Region               — own site
- *   8. City of Ottawa            — ottawa.ca (blocks bots — graceful skip)
+ *   8. City of Ottawa            — official SuccessFactors careers search
  *   9. City of Hamilton          — own site
  *  10. Durham Region             — own site
  *  11. City of Brantford         — own site
@@ -33,12 +33,15 @@
  *
  * Manitoba (2 sources):
  *  19. City of Winnipeg          — own site
- *  20. Manitoba Hydro            — own site (blocks bots — graceful skip)
+ *  20. Manitoba Civil Service    — official government job-search table
  *
  * Strategy: fetch HTML, extract job titles from known job-listing containers,
  * filter by water keywords. Each source has its own parser.
  * All errors are caught and logged; a failed source never blocks others.
  */
+
+import { decodeHtmlEntities } from "./jobUtils.mjs";
+import { sourceDate } from "./jobVerification.mjs";
 
 const WATER_KEYWORDS = [
   "water operator",
@@ -261,10 +264,45 @@ async function scrapeYorkRegion(options = {}) {
   );
 }
 
+// These current public listings were checked on 2026-10-17. A missing table
+// (including a 200 challenge/login shell) is failure, not successful inventory.
+function regionalTable(html, id) {
+  if (/(?:just a moment|checking your browser|verify you are human|cf-chl-|cf-browser-verification)/i.test(html)) {
+    throw new Error("Source challenge prevents listing extraction");
+  }
+  const clean = html.replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, " ");
+  const table = clean.match(new RegExp(`<table\\b[^>]*\\bid=["']${id}["'][^>]*>([\\s\\S]*?)<\\/table\\s*>`, "i"));
+  if (!table) throw new Error(`Expected ${id} listing table unavailable`);
+  return table[1];
+}
+
+function regionalRequestOptions(options) {
+  // A caller signal must not disable the source-local bound, nor vice versa.
+  const local = AbortSignal.timeout(8000);
+  return { ...options, signal: options.signal ? AbortSignal.any([options.signal, local]) : local };
+}
+
+const listingText = html => decodeHtmlEntities(html.replace(/<[^>]+>/g, " ")).replace(/\s+/g, " ").trim();
+
 async function scrapeOttawa(options = {}) {
-  // Ottawa blocks server-side requests (403 Forbidden)
-  // Return empty — their jobs are typically on Job Bank anyway
-  throw new Error("Source unavailable to server-side verification");
+  const origin = "https://jobs-emplois.ottawa.ca";
+  const html = await fetchHtml(`${origin}/city-jobs/search/?q=water&sortColumn=referencedate&sortDirection=desc`, regionalRequestOptions(options));
+  const table = regionalTable(html, "searchresults");
+  const jobs = [], seen = new Set();
+  for (const link of table.matchAll(/<a\b[^>]*href\s*=\s*["']([^"']+)["'][^>]*>([\s\S]*?)<\/a\s*>/gi)) {
+    const title = listingText(link[2]);
+    // Ottawa's official water search includes a current water-purification role
+    // called Process Operator. Do not broaden other municipalities' filters.
+    if (title.length < 5 || title.length > 200 || (!isWaterJob(title, true) && !/^process operator(?:\b|\/)/i.test(title))) continue;
+    let url;
+    try { url = new URL(decodeHtmlEntities(link[1]), origin); } catch { continue; }
+    // Unknown ATS parameters/fragments must not disappear before verification.
+    if (url.origin !== origin || !/^\/city-jobs\/job\/[^/]+\/\d+\/$/.test(url.pathname) || url.username || url.password || url.search || url.hash) continue;
+    if (seen.has(url.href)) continue;
+    seen.add(url.href);
+    jobs.push({ title, company: "City of Ottawa", location: "Ottawa, ON", province: "ON", sourceUrl: url.href });
+  }
+  return jobs; // candidates only; the existing employer/URL/date verifier still gates writes
 }
 
 async function scrapeHamilton(options = {}) {
@@ -411,9 +449,22 @@ async function scrapeWinnipeg(options = {}) {
 }
 
 async function scrapeManitobaCivilService(options = {}) {
-  // Manitoba Civil Service Commission — blocks bots, graceful skip
-  // Their jobs appear on Job Bank Canada
-  throw new Error("Source unavailable to server-side verification");
+  const html = await fetchHtml("https://jobsearch.gov.mb.ca/search.action", regionalRequestOptions(options));
+  const table = regionalTable(html, "results_list_table");
+  const jobs = [], seen = new Set();
+  for (const row of table.matchAll(/<tr\b([^>]*)>([\s\S]*?)<\/tr\s*>/gi)) {
+    const id = row[1].match(/\bid=["'](\d+)["']/i)?.[1];
+    const cells = [...row[2].matchAll(/<td\b[^>]*>([\s\S]*?)<\/td\s*>/gi)].map(cell => listingText(cell[1]));
+    if (!id || cells.length < 6 || !/^\d+$/.test(cells[0])) continue;
+    const [, title, company, location, posted] = cells;
+    if (!title || title.length > 200 || !company || !location || !isWaterJob(title, true) || seen.has(id)) continue;
+    seen.add(id);
+    // The site's row handler uses advancedResult.action?ID=<tr id>, NOT the
+    // advertised competition number in column 1. Department is the employer;
+    // the board name remains source provenance, never a fabricated company.
+    jobs.push({ title, company, location, province: "MB", sourceUrl: `https://jobsearch.gov.mb.ca/advancedResult.action?ID=${id}`, postedAt: /^\d{4}-\d{2}-\d{2}$/.test(posted) ? sourceDate(posted) : null });
+  }
+  return jobs;
 }
 
 // ─── Orchestrator ─────────────────────────────────────────────────────────
