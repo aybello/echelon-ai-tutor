@@ -26,7 +26,16 @@ export function parseJobDates(text) {
     const date = sourceDate(match[1].replace(/(\d)(st|nd|rd|th)\b/gi, "$1"));
     return date ? { date, precise: /T\d{2}:/i.test(match[1]) } : null;
   };
-  const closing = parse("application deadline|applications? (?:close|due)|closing|deadline|apply (?:by|before)");
+  // Ottawa's explicit Application Close label uses day/month/year. Do not
+  // guess numeric dates under other labels or silently discard a time suffix.
+  const numericClose = clean.match(/\bapplication close\s*:\s*(\d{1,2})\/(\d{1,2})\/(\d{4})(?![\d/])(?!T)(?!\s+\d{1,2}(?::|\s*(?:am|pm)\b))/i);
+  let dayFirst = null;
+  if (numericClose) {
+    const [, day, month, year] = numericClose;
+    const date = sourceDate(`${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}T00:00:00Z`);
+    if (date && date.getUTCFullYear() === Number(year) && date.getUTCMonth() + 1 === Number(month) && date.getUTCDate() === Number(day)) dayFirst = { date, precise: false };
+  }
+  const closing = parse("application deadline|applications? (?:close|due)|closing|deadline|apply (?:by|before)") ?? dayFirst;
   return { postedAt: parse("posted|published|posting")?.date ?? null, closingAt: closing ? closing.precise ? closing.date : new Date(Date.UTC(closing.date.getUTCFullYear(), closing.date.getUTCMonth(), closing.date.getUTCDate(), 23, 59, 59, 999)) : null };
 }
 const PDF_TIMEOUT_MS = 8000;

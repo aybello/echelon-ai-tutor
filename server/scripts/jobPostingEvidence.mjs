@@ -50,8 +50,8 @@ function collectJsonRecords(raw) {
   return records;
 }
 
-/** Only complete explicit vacancy containers; never infer a record from page-wide title proximity. */
-function htmlRecords(raw) {
+/** Collect complete containers without browser repair or script/style evidence. */
+function htmlContainers(raw, isRecord) {
   const records = [], stack = [];
   // Script/style markup is not a visible vacancy container.
   raw = raw.replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, " ");
@@ -67,16 +67,85 @@ function htmlRecords(raw) {
       stack.splice(index);
     } else if (!/\/\s*>$/.test(tag[0]) && !/^(?:area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)$/.test(name)) {
       const className = tag[0].match(/\bclass\s*=\s*["']([^"']*)["']/i)?.[1] ?? "";
-      const record = /^(?:article|li|tr)$/.test(name) ||
-        /(?:^|\s)(?:job-card|job-listing|job-details|listing-item|vacancy|vacancy-card|job-posting)(?:\s|$)/i.test(className) ||
-        /\bitemtype\s*=\s*["']https?:\/\/schema\.org\/JobPosting["']/i.test(tag[0]);
+      const record = isRecord(name, className, tag[0]);
       stack.push({ name, start: tag.index, record });
     }
   }
+  return records;
+}
+
+/** Only complete explicit vacancy containers; never infer a record from page-wide title proximity. */
+function htmlRecords(raw) {
+  const records = htmlContainers(raw, (name, className, tag) => /^(?:article|li|tr)$/.test(name) ||
+    /(?:^|\s)(?:job-card|job-listing|job-details|listing-item|vacancy|vacancy-card|job-posting)(?:\s|$)/i.test(className) ||
+    /\bitemtype\s*=\s*["']https?:\/\/schema\.org\/JobPosting["']/i.test(tag));
   // An outer record containing other records is a list, not a single vacancy.
   return records.filter(record => !records.some(other => other !== record && record.includes(other)));
 }
 const anchorEntries = raw => [...raw.matchAll(/<a\b[^>]*href\s*=\s*["']([^"']+)["'][^>]*>([\s\S]*?)<\/a\s*>/gi)];
+
+// These two captured public layouts are not generic board approvals. Keep
+// exact detail routes and all query parameters intact; never strip ATS queries.
+function officialRoute(value) {
+  try {
+    const url = new URL(value);
+    const provider = url.hostname === "jobs-emplois.ottawa.ca" ? "ottawa" : url.hostname === "jobsearch.gov.mb.ca" ? "manitoba" : null;
+    if (!provider) return null;
+    let id = null;
+    if (url.protocol === "https:" && !url.username && !url.password && !url.port && !url.hash) {
+      if (provider === "ottawa" && !url.search) id = url.pathname.match(/^\/city-jobs\/job\/[^/]+\/(\d+)\/$/)?.[1] ?? null;
+      if (provider === "manitoba" && /^\/(?:jow\/)?advancedResult\.action$/.test(url.pathname) && [...url.searchParams.keys()].length === 1 && /^\d+$/.test(url.searchParams.get("ID") ?? "")) id = url.searchParams.get("ID");
+    }
+    return { provider, url, id };
+  } catch { return null; }
+}
+
+function officialDetailEvidence(job, raw, finalUrl, { plainJobText, parseJobDates }) {
+  const source = officialRoute(job.sourceUrl), final = officialRoute(finalUrl);
+  if (!source?.id || !final?.id || source.provider !== final.provider || source.id !== final.id ||
+      (targetId(job) && targetId(job) !== source.id) || !expectedEmployer(job)) return null;
+  const ottawa = source.provider === "ottawa";
+  const containers = htmlContainers(raw, (name, classes, tag) => name === "div" && (ottawa ?
+    /(?:^|\s)jobDisplayShell(?:\s|$)/.test(classes) && /\bitemtype\s*=\s*["']https?:\/\/schema\.org\/JobPosting["']/i.test(tag) :
+    /(?:^|\s)positionlisting(?:\s|$)/.test(classes) && /\bid\s*=\s*["']positionListing["']/i.test(tag)));
+  if (containers.length !== 1) return null;
+  const record = containers[0], text = plainJobText(record), title = identity(job.title);
+  if (!hasIdentity(text, expectedEmployer(job))) return null;
+  if (ottawa) {
+    if (identity(expectedEmployer(job)) !== identity("City of Ottawa")) return null;
+  } else {
+    // The captured bulletin advertises its hiring department as the fourth
+    // paragraph after the role heading (classification, term, optional blank,
+    // employer). Description prose and the global Manitoba masthead are not it.
+    const header = record.match(/<h2\b[^>]*>[\s\S]*?<\/h2\s*>([\s\S]*?)Advertisement Number:/i)?.[1] ?? "";
+    const paragraphs = [...header.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p\s*>/gi)];
+    if (identity(plainJobText(paragraphs[3]?.[1] ?? "")) !== identity(expectedEmployer(job))) return null;
+  }
+  const headings = [...record.matchAll(/<(h[1-6])\b[^>]*>([\s\S]*?)<\/\1\s*>/gi)]
+    .map(match => ({ level: match[1].toLowerCase(), text: identity(plainJobText(match[2])) }));
+  const titleHeadings = headings.filter(heading => heading.level === (ottawa ? "h1" : "h2"));
+  if (titleHeadings.length !== 1 || titleHeadings[0].text !== title || headings.filter(heading => heading.text === title).length !== 1) return null;
+  const sections = /^(?:job summary|education and experience|certifications and licences|knowledge|competencies skills and abilities|apply to)$/;
+  if (headings.some(heading => heading.text !== title && !sections.test(heading.text))) return null;
+  if (!ottawa && htmlContainers(record, (name, _classes, tag) => name === "div" && /\bid\s*=\s*["']bulletinTextArea["']/i.test(tag)).length !== 1) return null;
+  const ids = [];
+  for (const link of anchorEntries(record)) {
+    let url;
+    try { url = new URL(decodeHtmlEntities(link[1]), finalUrl); } catch { continue; }
+    const linkedDetail = officialRoute(url.toString());
+    if (linkedDetail?.id && (linkedDetail.provider !== source.provider || linkedDetail.id !== source.id)) return null;
+    const id = ottawa ? url.pathname.match(/^\/talentcommunity\/apply\/(\d+)\/$/)?.[1] :
+      /^\/(?:jow\/)?generateBulletin\.action$/.test(url.pathname) && [...url.searchParams.keys()].length === 1 ? url.searchParams.get("ID") : null;
+    if (id) {
+      if (url.origin !== final.url.origin || url.username || url.password || url.hash) return null;
+      ids.push(id);
+    }
+  }
+  // Repeated apply buttons for this one role are expected, not multiple jobs.
+  if (!ids.length || ids.some(id => id !== source.id)) return null;
+  if (closingDates(text, parseJobDates).size !== 1 || !parseJobDates(text).closingAt) return null;
+  return { text };
+}
 
 /**
  * Return one positively identified record or null (unavailable, NOT a 404).
@@ -88,6 +157,9 @@ export function matchPostingEvidence(job, document, { plainJobText, parseJobDate
   if (!title) return null;
   const raw = typeof document.raw === "string" ? document.raw : "";
   const finalUrl = document.finalUrl ?? job.sourceUrl;
+  // Recognized public hosts fail closed on roots, listings, redirects and
+  // incomplete detail evidence; they must not fall through to generic cards.
+  if (officialRoute(job.sourceUrl) || officialRoute(finalUrl)) return officialDetailEvidence(job, raw, finalUrl, { plainJobText, parseJobDates });
   const id = targetId(job);
   const jsonRecords = collectJsonRecords(raw);
   if (jsonRecords.length) {
