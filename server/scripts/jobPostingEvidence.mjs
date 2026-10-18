@@ -139,18 +139,20 @@ function officialDetailEvidence(job, raw, finalUrl, { plainJobText, parseJobDate
     try { url = new URL(decodeHtmlEntities(link[1]), finalUrl); } catch { continue; }
     const linkedDetail = officialRoute(url.toString());
     if (linkedDetail?.id && (linkedDetail.provider !== source.provider || linkedDetail.id !== source.id)) return null;
+    // Recognize the endpoint family before the exact supported grammar. A
+    // malformed candidate must not disappear beside another valid button.
+    const applyCandidate = /^\/talentcommunity\/apply(?:\/|$)/i.test(url.pathname) || /^\/(?:jow\/)?generateBulletin(?:[./]|$)/i.test(url.pathname);
+    if (!applyCandidate) continue;
     const id = ottawa ? url.pathname.match(/^\/talentcommunity\/apply\/(\d+)\/$/)?.[1] :
       /^\/(?:jow\/)?generateBulletin\.action$/.test(url.pathname) && [...url.searchParams.keys()].length === 1 ? url.searchParams.get("ID") : null;
-    if (id) {
-      if (url.origin !== final.url.origin || url.username || url.password || url.hash) return null;
-      if (ottawa) {
-        const params = [...url.searchParams];
-        // No query is required. If supplied, only one supported locale is
-        // allowed: identity selectors, redirects, unknowns and duplicates fail.
-        if (params.length > 1 || params.some(([key, value]) => key !== "locale" || !OTTAWA_APPLY_LOCALES.has(value))) return null;
-      }
-      ids.push(id);
+    if (!id || url.origin !== final.url.origin || url.username || url.password || url.hash) return null;
+    if (ottawa) {
+      const params = [...url.searchParams];
+      // No query is required. If supplied, only one supported locale is
+      // allowed: identity selectors, redirects, unknowns and duplicates fail.
+      if (params.length > 1 || params.some(([key, value]) => key !== "locale" || !OTTAWA_APPLY_LOCALES.has(value))) return null;
     }
+    ids.push(id);
   }
   // Repeated apply buttons for this one role are expected, not multiple jobs.
   if (!ids.length || ids.some(id => id !== source.id)) return null;

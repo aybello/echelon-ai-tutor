@@ -32,7 +32,7 @@ export function parseJobDates(text) {
   const numericSuffix = numericClose ? clean.slice(numericClose.index + numericClose[0].length) : "";
   // Look only at the immediate suffix, not incidental later prose. These time
   // forms are not supported instants and must never become end-of-day dates.
-  const unsupportedTime = /^(?:T|\s*[,;(]?\s*(?:at\s*(?:\d|noon\b|midnight\b)|\d{1,2}(?:[:.h]|\s*(?:am|pm)\b)|noon\b|midnight\b))/i.test(numericSuffix);
+  const unsupportedTime = /^(?:T|\s*[,;(:\-–—]?\s*(?:at\s*(?:\d|noon\b|midnight\b)|\d{1,2}(?:[:.h]|\s*(?:am|pm)\b)|noon\b|midnight\b))/i.test(numericSuffix);
   let dayFirst = null;
   if (numericClose && !unsupportedTime) {
     const [, day, month, year] = numericClose;

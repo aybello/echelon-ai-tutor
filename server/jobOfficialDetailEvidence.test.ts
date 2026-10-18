@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { fetchJobDocument, parseJobDates, plainJobText, verifyJob } from "./scripts/jobVerification.mjs";
 import { htmlPostingFixture, postingTransportFixture } from "./jobPostingFixtures";
+// @ts-expect-error - standalone JavaScript module lacks a declaration; exercised by Node and Vitest.
 import { scanPrivacyText } from "../scripts/privacyGuard.mjs";
 
 // Already captured public evidence; unrelated session/config fields omitted as documented in the fixture README.
@@ -49,6 +50,33 @@ describe("Ottawa application query contract", () => {
 describe.each(cases)("$name official single-vacancy detail evidence", item => {
   it("finally verifies the unmodified captured detail with its own closing date", async () => {
     expect(await evaluate(item)).toMatchObject({ status: "verified", closingAt: new Date(item.close) });
+  });
+  it.each(["malformed route", "foreign origin", "wrong ID", "unknown query", "duplicate ID", "invalid ID", "combined review repro"])("rejects one %s application candidate even beside a valid button", async defect => {
+    const ottawa = item.name === "Ottawa";
+    const supported = ottawa ? `/talentcommunity/apply/${item.id}/?locale=en_GB` : `generateBulletin.action?ID=${item.id}`;
+    const anchor = item.raw.match(ottawa ? /<a\b[^>]*href="\/talentcommunity\/apply\/[^">]+"[^>]*>[\s\S]*?<\/a>/ : /<a\b[^>]*href="generateBulletin\.action\?[^">]+"[^>]*>[\s\S]*?<\/a>/)![0];
+    // Manitoba captures one print button; repeat that evidenced route so the
+    // unsupported candidate cannot be rejected merely for missing a valid ID.
+    const baseline = ottawa ? item.raw : item.raw.replace(anchor, anchor + anchor);
+    expect(baseline.split(`href="${supported}"`)).toHaveLength(3);
+    expect((await evaluate(item, baseline)).status).toBe("verified");
+    const replacements: Record<string, string> = {
+      "malformed route": ottawa ? `/talentcommunity/apply/${item.id}?locale=en_GB` : `generateBulletin.action/?ID=${item.id}`,
+      "foreign origin": ottawa ? `https://evil.example.test${supported}` : `https://evil.example.test/${supported}`,
+      "wrong ID": supported.replace(item.id, item.otherId),
+      "unknown query": `${supported}&amp;unknown=value`,
+      "duplicate ID": `${supported}&amp;ID=${item.id}`,
+      "invalid ID": supported.replace(item.id, "not-an-id"),
+      "combined review repro": ottawa ? `https://evil.example.test/talentcommunity/apply/${item.otherId}?unknown=value` : `https://evil.example.test/generateBulletin.action/?ID=${item.otherId}&amp;unknown=value`,
+    };
+    const raw = baseline.replace(`href="${supported}"`, `href="${replacements[defect]}"`);
+    expect(raw.split(`href="${supported}"`)).toHaveLength(2);
+    expect((await evaluate(item, raw)).status).toBe("unavailable");
+  });
+  it("preserves unrelated mail and navigation links inside the vacancy", async () => {
+    const level = item.name === "Ottawa" ? 1 : 2;
+    const raw = replaceRoleHeading(item, `<h${level}>${item.job.title}</h${level}><a href="mailto:help@example.test">Contact</a><a href="/careers">Careers</a><a href="https://example.test/privacy">Privacy</a>`);
+    expect((await evaluate(item, raw)).status).toBe("verified");
   });
   it.each(["complete", "unterminated", "title", "employer", "application", "deadline"])("rejects %s commented-out vacancy evidence", async field => {
     const comment = (value: string) => `<!--${value}-->`;
@@ -178,7 +206,7 @@ describe.each(cases)("$name official single-vacancy detail evidence", item => {
 });
 
 describe("Ottawa Application Close day-first grammar only", () => {
-  const unsupportedTimes = [" at 12:30 UTC", " at12:30 UTC", " at 12 pm UTC", ", at 12:30 UTC", " (12:30 UTC)", " at noon UTC", " at midnight UTC", " 12.30 UTC"];
+  const unsupportedTimes = [" at 12:30 UTC", " at12:30 UTC", " at 12 pm UTC", ", at 12:30 UTC", " (12:30 UTC)", " at noon UTC", " at midnight UTC", " 12.30 UTC", " - 12:30 UTC", " – 12:30 UTC", " — 12:30 UTC", " : 12:30 UTC", "; 12:30 UTC"];
   it.each(unsupportedTimes)("rejects unsupported explicit time suffix %s in parsing", suffix => {
     expect(parseJobDates(`Application Close:22/10/2026${suffix}`)).toEqual({ closingAt: null, postedAt: null });
   });
@@ -186,7 +214,7 @@ describe("Ottawa Application Close day-first grammar only", () => {
     const raw = ottawaRaw.replace("22/10/2026", `22/10/2026${suffix}`);
     expect((await evaluate(cases[0], raw, cases[0].job, cases[0].job.sourceUrl, new Date("2026-10-22T13:00:00Z"))).status).toBe("unavailable");
   });
-  it.each(["", " Once the closing date has passed, the poster is unavailable.", " Applications are reviewed at the office."])("retains bare dates and incidental prose %s", async suffix => {
+  it.each(["", " Once the closing date has passed, the poster is unavailable.", " Applications are reviewed at the office.", " - Applications are reviewed at 12:30 UTC.", " – Once the closing date has passed, contact the office.", " : Applications are reviewed at the office."])("retains bare dates and incidental prose %s", async suffix => {
     expect(parseJobDates(`Application Close:22/10/2026${suffix}`).closingAt).toEqual(new Date(cases[0].close));
     expect(await evaluate(cases[0], ottawaRaw.replace("22/10/2026", `22/10/2026${suffix}`))).toMatchObject({ status: "verified", closingAt: new Date(cases[0].close) });
   });
