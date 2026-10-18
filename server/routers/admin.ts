@@ -7,7 +7,7 @@ import { countCeuRecord, emptyCeuMetrics } from "../ceu/metrics";
  * Admin router — all procedures require role === 'admin'.
  * Provides read access to trial emails, waitlist signups, and question error reports.
  */
-import { desc, eq, sql, count, ne, and, gte, gt, asc, getTableColumns, inArray } from "drizzle-orm";
+import { desc, eq, sql, count, ne, and, gte, gt, lte, asc, getTableColumns, inArray } from "drizzle-orm";
 import Stripe from "stripe";
 import { z } from "zod";
 import { questionErrorReports, trialEmails, waitlist, examResults, purchaseReadColumns, purchases, users, userFeedback, triggerLogs, organizations, organizationMembers, subscriptions, questions, questionBankMeta, examOutcomes, teamFlexLicences, teamFlexOrders, customerRecoveryEvidence, contactSubmissions, examDates, abandonedCheckouts } from "../../drizzle/schema";
@@ -1436,15 +1436,22 @@ export const adminRouter = router({
 
   /** Paginated list of user feedback, newest first */
   getFeedback: adminProcedure
-    .input(z.object({ limit: z.number().int().min(1).max(500).default(200) }))
+    .input(z.object({
+      limit: z.number().int().min(1).max(500).default(200),
+      page: z.number().int().min(1).max(1_000_000).default(1),
+      rating: z.enum(["all", "low"]).default("all"),
+    }))
     .query(async ({ input }) => {
       const db = await getDb();
       if (!db) throw new Error("Database unavailable");
       return db
         .select()
         .from(userFeedback)
-        .orderBy(desc(userFeedback.createdAt))
-        .limit(input.limit);
+        // Filter before pagination; do not discard historical zero ratings.
+        .where(input.rating === "low" ? lte(userFeedback.rating, 2) : undefined)
+        .orderBy(desc(userFeedback.createdAt), desc(userFeedback.id))
+        .limit(input.limit)
+        .offset((input.page - 1) * input.limit);
     }),
 
   /** Delete a feedback entry */

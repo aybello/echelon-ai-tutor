@@ -207,6 +207,8 @@ export default function Admin() {
   const [leadFilter, setLeadFilter] = useState<LeadTriageFilter>("actionable");
   const [reviewFilter, setReviewFilter] = useState<ReviewStatus>("unreviewed");
   const [reviewBank, setReviewBank] = useState("");
+  const [feedbackPage, setFeedbackPage] = useState(1);
+  const [feedbackRating, setFeedbackRating] = useState<"all" | "low">("all");
   const [reviewPage, setReviewPage] = useState(1);
   const [reviewingQuestionId, setReviewingQuestionId] = useState<number | null>(null);
   const [reviewDraft, setReviewDraft] = useState({ sourceTitle: "", sourceReference: "", sourceUrl: "", blueprintObjective: "" });
@@ -227,7 +229,7 @@ export default function Admin() {
   const scoresQ = trpc.admin.getScoreHistory.useQuery({ limit: 500, examType: "all" }, { enabled: user?.role === "admin" && activeTab === "scores" });
   const purchasesQ = trpc.admin.getPurchases.useQuery({ limit: 500 }, { enabled: user?.role === "admin" && activeTab === "revenue" });
   const healthQ = trpc.admin.getSystemHealth.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "health", refetchInterval: 60_000 });
-  const feedbackQ = trpc.admin.getFeedback.useQuery({ limit: 200 }, { enabled: user?.role === "admin" && activeTab === "feedback" });
+  const feedbackQ = trpc.admin.getFeedback.useQuery({ limit: 200, page: feedbackPage, rating: feedbackRating }, { enabled: user?.role === "admin" && activeTab === "feedback" });
   const orgsQ = trpc.admin.listOrganizations.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "orgs" });
   const subscriptionsQ = trpc.admin.getSubscriptions.useQuery({ limit: 500 }, { enabled: user?.role === "admin" && activeTab === "subscriptions" });
   const governanceStatsQ = trpc.admin.getQuestionGovernanceStats.useQuery(undefined, { enabled: user?.role === "admin" && activeTab === "questions" });
@@ -1719,7 +1721,7 @@ export default function Admin() {
             <div style={{ padding: "16px 20px", borderBottom: "1px solid rgba(0,0,0,0.07)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <div style={{ fontSize: 13, fontWeight: 700 }}>
                 💬 User Feedback
-                {feedbackQ.data && <span style={{ marginLeft: 8, fontSize: 11, color: "#64748B", fontWeight: 400 }}>{feedbackQ.data.length} entries</span>}
+                {feedbackQ.data && <span style={{ marginLeft: 8, fontSize: 11, color: "#64748B", fontWeight: 400 }}>{feedbackQ.data.length} entries on this page</span>}
               </div>
               {feedbackQ.data && feedbackQ.data.length > 0 && (
                 <button
@@ -1736,13 +1738,25 @@ export default function Admin() {
                   })), "echelon-feedback.csv")}
                   style={{ padding: "6px 14px", borderRadius: 20, border: "1px solid rgba(56,189,248,0.3)", background: "transparent", color: "#38BDF8", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
                 >
-                  ⬇ Export CSV
+                  ⬇ Export page CSV
                 </button>
               )}
             </div>
+            <div style={{ padding: "12px 20px", display: "flex", alignItems: "center", gap: 8 }}>
+              <label htmlFor="feedback-rating">Ratings</label>
+              <select id="feedback-rating" value={feedbackRating} onChange={event => {
+                setFeedbackRating(event.target.value === "low" ? "low" : "all");
+                setFeedbackPage(1);
+              }}>
+                <option value="all">All ratings</option>
+                <option value="low">Low ratings (2 or below)</option>
+              </select>
+              <span style={{ fontSize: 11, color: "#64748B" }}>Filtered before pagination. Up to 200 entries per page.</span>
+            </div>
             {feedbackQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 13 }}>Loading…</div>}
+            {feedbackQ.error && <div role="alert" className="admin-panel-error">Feedback could not be loaded. Use Refresh to try again.</div>}
             {feedbackQ.data && feedbackQ.data.length === 0 && (
-              <div style={{ padding: 40, textAlign: "center", color: "#475569", fontSize: 13 }}>No feedback yet.</div>
+              <div style={{ padding: 40, textAlign: "center", color: "#475569", fontSize: 13 }}>No feedback on this page for the selected ratings.</div>
             )}
             {feedbackQ.data && feedbackQ.data.length > 0 && (
               <div style={{ display: "flex", flexDirection: "column" }}>
@@ -1786,6 +1800,11 @@ export default function Admin() {
                 })}
               </div>
             )}
+            <nav aria-label="Feedback pagination" style={{ padding: "12px 20px", display: "flex", alignItems: "center", gap: 12 }}>
+              <button type="button" className="admin-btn" disabled={feedbackPage === 1 || feedbackQ.isFetching} onClick={() => setFeedbackPage(page => Math.max(1, page - 1))}>Previous</button>
+              <span aria-live="polite">Page {feedbackPage}</span>
+              <button type="button" className="admin-btn" disabled={feedbackQ.isFetching || !!feedbackQ.error || feedbackQ.data?.length !== 200 || feedbackPage >= 1_000_000} onClick={() => setFeedbackPage(page => page + 1)}>Next</button>
+            </nav>
           </div>
         )}
 
