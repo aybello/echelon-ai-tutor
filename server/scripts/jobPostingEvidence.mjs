@@ -101,7 +101,9 @@ function visibleActionMarkup(raw) {
     .replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, " ");
   const stack = [], chunks = [];
   let end = 0;
-  for (const tag of raw.matchAll(/<\/?([a-z][\w:-]*)\b[^>]*>/gi)) {
+  // Quoted > characters are attribute data, not opening-tag terminators.
+  // Keep this tokenization in sync with the action-anchor loop below.
+  for (const tag of raw.matchAll(/<\/?([a-z][\w:-]*)\b(?:[^"'<>]|"[^"]*"|'[^']*')*>/gi)) {
     const name = tag[1].toLowerCase(), hidden = stack.at(-1)?.hidden ?? false;
     if (!hidden) chunks.push(raw.slice(end, tag.index));
     if (/^<\//.test(tag[0])) {
@@ -173,7 +175,7 @@ function officialDetailEvidence(job, raw, finalUrl, { plainJobText, parseJobDate
   if (headings.some(heading => heading.text !== title && !sections.test(heading.text))) return null;
   if (!ottawa && htmlContainers(record, (name, _classes, tag) => name === "div" && /\bid\s*=\s*["']bulletinTextArea["']/i.test(tag)).length !== 1) return null;
   const ids = [];
-  for (const link of visibleActionMarkup(record).matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a\s*>/gi)) {
+  for (const link of visibleActionMarkup(record).matchAll(/<a\b((?:[^"'<>]|"[^"]*"|'[^']*')*)>([\s\S]*?)<\/a\s*>/gi)) {
     const classes = htmlAttribute(`<a${link[1]}>`, "class") ?? "";
     const label = identity(plainJobText(link[2]));
     // The captured Ottawa classes/label and Manitoba print label identify an

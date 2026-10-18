@@ -55,6 +55,7 @@ describe.each(cases)("$name captured vacancy-action restoration", item => {
 
   it.each([
     ["review repro: foreign origin and arbitrary path", "https://evil.example.test/apply-now?ID=999&amp;unknown=value"],
+    ["review repro: quoted > in foreign href", "https://evil.example.test/x>ignored"],
     ["same origin arbitrary path", "/apply-now?ID=999&amp;unknown=value"],
     ["foreign detail route", "https://evil.example.test/vacancies/999/"],
     ["JavaScript", "javascript:void(0)"],
@@ -69,6 +70,16 @@ describe.each(cases)("$name captured vacancy-action restoration", item => {
     const raw = oneChangedButton(item, changedHref(item, href));
     expect(raw.split(`href="${item.href}"`)).toHaveLength(2);
     expect((await evaluate(item, raw)).status).toBe("unavailable");
+  });
+
+  it.each(['data-note="one > two"', "data-note='one > two'"])("preserves valid actions with a benign quoted > attribute %s", async attribute => {
+    const raw = item.raw.replace(item.action, match => match.replace("<a ", `<a ${attribute} `));
+    expect((await evaluate(item, raw)).status).toBe("verified");
+  });
+
+  it.each(['data-note="one > two"', "data-note='one > two'"])("honors hidden ancestors after a quoted > attribute %s", async attribute => {
+    const replacement = `<div ${attribute} hidden>${changedHref(item, "https://evil.example.test/x>ignored")}</div>`;
+    expect((await evaluate(item, oneChangedButton(item, replacement))).status).toBe("verified");
   });
 
   it("rejects a clearly labelled action with a missing href beside a valid action", async () => {
