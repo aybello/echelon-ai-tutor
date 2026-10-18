@@ -35,6 +35,12 @@ describe("regional source adapter repair", () => {
     expect(jobs).toEqual([expect.objectContaining({ title: "Process Operator/Process Operator-in-Training 42hrs", company: "City of Ottawa", location: "Ottawa, ON", province: "ON", sourceName: "City of Ottawa", sourceUrl: `https://jobs-emplois.ottawa.ca${ottawaPath}`, postedAt: null })]);
     expect(fetch).toHaveBeenCalledWith(OTTAWA, expect.anything());
   });
+  it.each(["?FOCUS=Applicant", "?ID=1291635048", "?redirect=https%3A%2F%2Fevil.example.test", "#another-vacancy"])("rejects rather than erases unsupported Ottawa destination suffix %s", async suffix => {
+    vi.stubGlobal("fetch", regionalFetch({ [OTTAWA]: ottawaHtml.replaceAll(ottawaPath, ottawaPath + suffix) }));
+    const collect = vi.fn(); const result = await ingestMunicipal(collect);
+    expect(result.sourceOutcomes).toContainEqual({ source: "City of Ottawa", status: "success", count: 0 });
+    expect(collect).not.toHaveBeenCalled();
+  });
   it("uses Manitoba's internal row ID, actual department employer and location, not advert number or search URL", async () => {
     vi.stubGlobal("fetch", regionalFetch({ [MANITOBA]: manitobaHtml }));
     const jobs: any[] = [];

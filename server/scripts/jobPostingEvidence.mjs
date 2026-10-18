@@ -53,8 +53,10 @@ function collectJsonRecords(raw) {
 /** Collect complete containers without browser repair or script/style evidence. */
 function htmlContainers(raw, isRecord) {
   const records = [], stack = [];
-  // Script/style markup is not a visible vacancy container.
-  raw = raw.replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, " ");
+  // Comments (including an unterminated tail) and script/style markup are not
+  // visible evidence. Return cleaned records so every later check agrees.
+  raw = raw.replace(/<!--[\s\S]*?(?:-->|$)/g, " ")
+    .replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, " ");
   const tags = /<\/?([a-z][\w:-]*)\b[^>]*>/gi;
   for (const tag of raw.matchAll(tags)) {
     const name = tag[1].toLowerCase();
@@ -143,7 +145,9 @@ function officialDetailEvidence(job, raw, finalUrl, { plainJobText, parseJobDate
   }
   // Repeated apply buttons for this one role are expected, not multiple jobs.
   if (!ids.length || ids.some(id => id !== source.id)) return null;
-  if (closingDates(text, parseJobDates).size !== 1 || !parseJobDates(text).closingAt) return null;
+  const deadlines = closingDateFields(text, parseJobDates);
+  if (deadlines.some(field => field.explicit && !field.date) ||
+      new Set(deadlines.map(field => field.date).filter(Boolean)).size !== 1 || !parseJobDates(text).closingAt) return null;
   return { text };
 }
 
@@ -211,7 +215,15 @@ export function matchPostingEvidence(job, document, { plainJobText, parseJobDate
   return matches.length === 1 ? { text: plainJobText(matches[0]) } : null;
 }
 
+function closingDateFields(text, parseJobDates) {
+  const labels = [...text.matchAll(/\b(?:application deadline|applications? (?:close|due)|closing(?: date)?|deadline|apply (?:by|before))\b/gi)];
+  return labels.map((label, index) => {
+    const field = text.slice(label.index, labels[index + 1]?.index);
+    // A labelled field must parse independently. "Once the closing date has
+    // passed" is incidental prose, not an unsupported second deadline.
+    return { explicit: /^\s*[:\-]/.test(field.slice(label[0].length)), date: parseJobDates(field).closingAt?.toISOString() };
+  });
+}
 function closingDates(text, parseJobDates) {
-  const labels = [...text.matchAll(/(?:application deadline|applications? (?:close|due)|closing(?: date)?|deadline|apply (?:by|before))/gi)];
-  return new Set(labels.map((label, index) => parseJobDates(text.slice(label.index, labels[index + 1]?.index)).closingAt?.toISOString()).filter(Boolean));
+  return new Set(closingDateFields(text, parseJobDates).map(field => field.date).filter(Boolean));
 }

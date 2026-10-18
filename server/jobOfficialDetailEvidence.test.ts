@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { fetchJobDocument, parseJobDates, verifyJob } from "./scripts/jobVerification.mjs";
+import { fetchJobDocument, parseJobDates, plainJobText, verifyJob } from "./scripts/jobVerification.mjs";
 import { htmlPostingFixture, postingTransportFixture } from "./jobPostingFixtures";
 
 // Already captured public evidence; unrelated session/config fields omitted as documented in the fixture README.
@@ -17,6 +17,36 @@ const replaceRoleHeading = (item: typeof cases[number], replacement: string) => 
 describe.each(cases)("$name official single-vacancy detail evidence", item => {
   it("finally verifies the unmodified captured detail with its own closing date", async () => {
     expect(await evaluate(item)).toMatchObject({ status: "verified", closingAt: new Date(item.close) });
+  });
+  it.each(["complete", "unterminated", "title", "employer", "application", "deadline"])("rejects %s commented-out vacancy evidence", async field => {
+    const comment = (value: string) => `<!--${value}-->`;
+    let raw = item.raw;
+    if (field === "complete") raw = comment(raw);
+    if (field === "unterminated") raw = `<!--${raw}`;
+    if (field === "title") raw = replaceRoleHeading(item, comment(`<h${item.name === "Ottawa" ? 1 : 2}>${item.job.title}</h${item.name === "Ottawa" ? 1 : 2}>`));
+    if (field === "employer") raw = raw.replace(/<(p|li)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, block => block.includes(item.job.company) ? comment(block) : block);
+    if (field === "application") raw = raw.replace(/<a\b[^>]*>[\s\S]*?<\/a\s*>/gi, link => link.includes(item.id) ? comment(link) : link);
+    if (field === "deadline") raw = raw.replace(/<p\b[^>]*>[\s\S]*?<\/p\s*>/gi, block => block.includes(item.date) ? comment(block) : block);
+    expect(raw).not.toBe(item.raw);
+    expect((await evaluate(item, raw)).status).toBe("unavailable");
+  });
+  it.each([
+    "VALID Application Close: Not available",
+    "Not available Application Close: VALID",
+    "VALID Application Close: 21/10/2026 12:30",
+    "21/10/2026 12:30 Application Close: VALID",
+    "VALID Application Close: 31/02/2026",
+  ])("rejects every unresolved explicit deadline in %s", async value => {
+    expect((await evaluate(item, item.raw.replace(item.date, value.replace("VALID", item.date)))).status).toBe("unavailable");
+  });
+  it("accepts repeated explicit fields only when they resolve to the same deadline", async () => {
+    const label = item.name === "Ottawa" ? "Application Close" : "Closing Date";
+    const raw = item.raw.replace(item.date, `${item.date} ${label}: ${item.date}`);
+    expect(await evaluate(item, raw)).toMatchObject({ status: "verified", closingAt: new Date(item.close) });
+  });
+  it("does not treat incidental closing-date prose as an unresolved field", async () => {
+    const raw = item.raw.replace(item.date, `${item.date} Once the closing date has passed, the poster is unavailable.`);
+    expect(await evaluate(item, raw)).toMatchObject({ status: "verified", closingAt: new Date(item.close) });
   });
   it("verifies through the bounded pinned-transport fixture without rewriting the vacancy URL", async () => {
     const transport = postingTransportFixture([{ body: item.raw, headers: { "content-type": "text/html" } }]);
@@ -126,5 +156,14 @@ describe("Ottawa Application Close day-first grammar only", () => {
   });
   it("requires a valid deadline inside these official detail containers", async () => {
     for (const value of ["31/02/2026", "22/10/2026 12:30", "Not available"]) expect((await evaluate(cases[0], ottawaRaw.replace("22/10/2026", value))).status).toBe("unavailable");
+  });
+});
+
+describe("Manitoba captured employer paragraph index", () => {
+  it("counts the optional blank paragraph before the employer, not after it", async () => {
+    const header = manitobaRaw.match(/<h2\b[^>]*>[\s\S]*?<\/h2\s*>([\s\S]*?)Advertisement Number:/i)![1];
+    const paragraphs = [...header.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p\s*>/gi)].map(match => plainJobText(match[1]));
+    expect(paragraphs.slice(0, 5)).toEqual(["EA4 Engineering Aid 4", "Regular/full-time", "", cases[1].job.company, "Water Operations, Engineering and Technical Service"]);
+    expect((await evaluate(cases[1])).status).toBe("verified");
   });
 });

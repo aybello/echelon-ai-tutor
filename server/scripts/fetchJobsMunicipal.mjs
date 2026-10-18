@@ -296,8 +296,8 @@ async function scrapeOttawa(options = {}) {
     if (title.length < 5 || title.length > 200 || (!isWaterJob(title, true) && !/^process operator(?:\b|\/)/i.test(title))) continue;
     let url;
     try { url = new URL(decodeHtmlEntities(link[1]), origin); } catch { continue; }
-    if (url.origin !== origin || !/^\/city-jobs\/job\/[^/]+\/\d+\/$/.test(url.pathname) || url.username || url.password) continue;
-    url.search = ""; url.hash = "";
+    // Unknown ATS parameters/fragments must not disappear before verification.
+    if (url.origin !== origin || !/^\/city-jobs\/job\/[^/]+\/\d+\/$/.test(url.pathname) || url.username || url.password || url.search || url.hash) continue;
     if (seen.has(url.href)) continue;
     seen.add(url.href);
     jobs.push({ title, company: "City of Ottawa", location: "Ottawa, ON", province: "ON", sourceUrl: url.href });
