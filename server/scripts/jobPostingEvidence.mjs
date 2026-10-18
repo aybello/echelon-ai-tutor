@@ -86,6 +86,45 @@ function htmlRecords(raw) {
 }
 const anchorEntries = raw => [...raw.matchAll(/<a\b[^>]*href\s*=\s*["']([^"']+)["'][^>]*>([\s\S]*?)<\/a\s*>/gi)];
 
+function htmlAttribute(tag, name) {
+  // Match real attributes, not a suffix such as data-href or text inside a
+  // quoted value. Empty/boolean attributes differ from absent attributes.
+  for (const match of tag.matchAll(/\s+([^\s"'<>/=]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+)))?/g)) {
+    if (match[1].toLowerCase() === name) return decodeHtmlEntities(match[2] ?? match[3] ?? match[4] ?? "");
+  }
+  return null;
+}
+
+/** Visibility filtering is confined to actions in the two captured layouts. */
+function visibleActionMarkup(raw) {
+  raw = raw.replace(/<!--[\s\S]*?(?:-->|$)/g, " ")
+    .replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, " ");
+  const stack = [], chunks = [];
+  let end = 0;
+  for (const tag of raw.matchAll(/<\/?([a-z][\w:-]*)\b[^>]*>/gi)) {
+    const name = tag[1].toLowerCase(), hidden = stack.at(-1)?.hidden ?? false;
+    if (!hidden) chunks.push(raw.slice(end, tag.index));
+    if (/^<\//.test(tag[0])) {
+      const index = stack.findLastIndex(entry => entry.name === name);
+      if (index < 0) { if (!hidden) chunks.push(tag[0]); }
+      else {
+        if (!stack[index].hidden) chunks.push(tag[0]);
+        stack.splice(index);
+      }
+    } else {
+      const style = htmlAttribute(tag[0], "style") ?? "";
+      const invisible = hidden || name === "template" || htmlAttribute(tag[0], "hidden") !== null ||
+        htmlAttribute(tag[0], "aria-hidden")?.trim().toLowerCase() === "true" ||
+        /(?:^|;)\s*(?:display\s*:\s*none|visibility\s*:\s*(?:hidden|collapse))\s*(?:!important\s*)?(?:;|$)/i.test(style);
+      if (!invisible) chunks.push(tag[0]);
+      if (!/\/\s*>$/.test(tag[0]) && !/^(?:area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)$/.test(name)) stack.push({ name, hidden: invisible });
+    }
+    end = tag.index + tag[0].length;
+  }
+  if (!stack.at(-1)?.hidden) chunks.push(raw.slice(end));
+  return chunks.join("");
+}
+
 // These two captured public layouts are not generic board approvals. Keep
 // exact detail routes and all query parameters intact; never strip ATS queries.
 // Only en_GB is evidenced by the captured Ottawa apply links; there is no
@@ -134,14 +173,21 @@ function officialDetailEvidence(job, raw, finalUrl, { plainJobText, parseJobDate
   if (headings.some(heading => heading.text !== title && !sections.test(heading.text))) return null;
   if (!ottawa && htmlContainers(record, (name, _classes, tag) => name === "div" && /\bid\s*=\s*["']bulletinTextArea["']/i.test(tag)).length !== 1) return null;
   const ids = [];
-  for (const link of anchorEntries(record)) {
+  for (const link of visibleActionMarkup(record).matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a\s*>/gi)) {
+    const classes = htmlAttribute(`<a${link[1]}>`, "class") ?? "";
+    const label = identity(plainJobText(link[2]));
+    // The captured Ottawa classes/label and Manitoba print label identify an
+    // action even when its href no longer resembles the supported endpoint.
+    const markedAction = ottawa ? /(?:^|\s)(?:apply|dialogApplyBtn)(?:\s|$)/.test(classes) || label === "apply now" : label === "printer friendly version";
+    const href = htmlAttribute(`<a${link[1]}>`, "href");
+    if (href === null) { if (markedAction) return null; continue; }
     let url;
-    try { url = new URL(decodeHtmlEntities(link[1]), finalUrl); } catch { continue; }
+    try { url = new URL(href, finalUrl); } catch { if (markedAction) return null; continue; }
     const linkedDetail = officialRoute(url.toString());
     if (linkedDetail?.id && (linkedDetail.provider !== source.provider || linkedDetail.id !== source.id)) return null;
-    // Recognize the endpoint family before the exact supported grammar. A
-    // malformed candidate must not disappear beside another valid button.
-    const applyCandidate = /^\/talentcommunity\/apply(?:\/|$)/i.test(url.pathname) || /^\/(?:jow\/)?generateBulletin(?:[./]|$)/i.test(url.pathname);
+    // Endpoint families still catch malformed unlabelled candidates. Every
+    // identified action must satisfy the unchanged exact grammar below.
+    const applyCandidate = markedAction || /^\/talentcommunity\/apply(?:\/|$)/i.test(url.pathname) || /^\/(?:jow\/)?generateBulletin(?:[./]|$)/i.test(url.pathname);
     if (!applyCandidate) continue;
     const id = ottawa ? url.pathname.match(/^\/talentcommunity\/apply\/(\d+)\/$/)?.[1] :
       /^\/(?:jow\/)?generateBulletin\.action$/.test(url.pathname) && [...url.searchParams.keys()].length === 1 ? url.searchParams.get("ID") : null;
