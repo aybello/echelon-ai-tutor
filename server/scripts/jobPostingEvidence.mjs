@@ -88,6 +88,9 @@ const anchorEntries = raw => [...raw.matchAll(/<a\b[^>]*href\s*=\s*["']([^"']+)[
 
 // These two captured public layouts are not generic board approvals. Keep
 // exact detail routes and all query parameters intact; never strip ATS queries.
+// Only en_GB is evidenced by the captured Ottawa apply links; there is no
+// broader locale schema in these adapters. New values need captured evidence.
+const OTTAWA_APPLY_LOCALES = new Set(["en_GB"]);
 function officialRoute(value) {
   try {
     const url = new URL(value);
@@ -140,6 +143,12 @@ function officialDetailEvidence(job, raw, finalUrl, { plainJobText, parseJobDate
       /^\/(?:jow\/)?generateBulletin\.action$/.test(url.pathname) && [...url.searchParams.keys()].length === 1 ? url.searchParams.get("ID") : null;
     if (id) {
       if (url.origin !== final.url.origin || url.username || url.password || url.hash) return null;
+      if (ottawa) {
+        const params = [...url.searchParams];
+        // No query is required. If supplied, only one supported locale is
+        // allowed: identity selectors, redirects, unknowns and duplicates fail.
+        if (params.length > 1 || params.some(([key, value]) => key !== "locale" || !OTTAWA_APPLY_LOCALES.has(value))) return null;
+      }
       ids.push(id);
     }
   }

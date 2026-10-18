@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { fetchJobDocument, parseJobDates, plainJobText, verifyJob } from "./scripts/jobVerification.mjs";
 import { htmlPostingFixture, postingTransportFixture } from "./jobPostingFixtures";
+import { scanPrivacyText } from "../scripts/privacyGuard.mjs";
 
 // Already captured public evidence; unrelated session/config fields omitted as documented in the fixture README.
 const ottawaRaw = readFileSync(new URL("./__fixtures__/job-postings/ottawa-process-operator-20261017.html", import.meta.url), "utf8");
@@ -13,6 +14,37 @@ const cases = [
 ];
 const evaluate = (item: typeof cases[number], raw = item.raw, job = item.job, finalUrl = job.sourceUrl, at = now) => verifyJob(job, { now: at, fetchDocument: async () => htmlPostingFixture(raw, finalUrl) });
 const replaceRoleHeading = (item: typeof cases[number], replacement: string) => item.raw.replace(/<(h[12])\b[^>]*>[\s\S]*?<\/\1\s*>/gi, heading => heading.includes(item.job.title) ? replacement : heading);
+
+it.each(cases)("keeps the $name captured fixture free of unexpected contact data", item => {
+  expect(scanPrivacyText(item.raw, `${item.name}-official-fixture.html`)).toEqual([]);
+});
+
+describe("Ottawa application query contract", () => {
+  const applyLinks = /\/talentcommunity\/apply\/1291635047\/\?locale=en_GB/g;
+  it.each([
+    "locale=en_GB&ID=1291635048&redirect=https%3A%2F%2Fevil.example.test",
+    "locale=en_GB&ID=1291635048",
+    "locale=en_GB&ID=1291635047",
+    "locale=en_GB&redirect=https%3A%2F%2Fevil.example.test",
+    "locale=en_GB&unknown=value",
+    "locale=en_GB&locale=en_GB",
+    "locale=en_GB&%6cocale=en_GB",
+    "locale=en_GB&locale=fr_CA",
+    "locale=unsupported",
+    "locale=",
+    "Locale=en_GB",
+  ])("rejects unsupported, duplicate or identity-bearing apply query %s", async query => {
+    expect(ottawaRaw.match(applyLinks)).toHaveLength(2);
+    const replacement = `/talentcommunity/apply/1291635047/?${query.replaceAll("&", "&amp;")}`;
+    for (const raw of [ottawaRaw.replace(applyLinks, replacement), ottawaRaw.replace("/talentcommunity/apply/1291635047/?locale=en_GB", replacement)]) {
+      expect((await evaluate(cases[0], raw)).status).toBe("unavailable");
+    }
+  });
+  it.each(["?locale=en_GB", ""])('preserves the supported optional locale query "%s"', async query => {
+    const raw = ottawaRaw.replace(applyLinks, `/talentcommunity/apply/1291635047/${query}`);
+    expect(await evaluate(cases[0], raw)).toMatchObject({ status: "verified", closingAt: new Date(cases[0].close) });
+  });
+});
 
 describe.each(cases)("$name official single-vacancy detail evidence", item => {
   it("finally verifies the unmodified captured detail with its own closing date", async () => {
@@ -146,6 +178,18 @@ describe.each(cases)("$name official single-vacancy detail evidence", item => {
 });
 
 describe("Ottawa Application Close day-first grammar only", () => {
+  const unsupportedTimes = [" at 12:30 UTC", " at12:30 UTC", " at 12 pm UTC", ", at 12:30 UTC", " (12:30 UTC)", " at noon UTC", " at midnight UTC", " 12.30 UTC"];
+  it.each(unsupportedTimes)("rejects unsupported explicit time suffix %s in parsing", suffix => {
+    expect(parseJobDates(`Application Close:22/10/2026${suffix}`)).toEqual({ closingAt: null, postedAt: null });
+  });
+  it.each(unsupportedTimes)("rejects unsupported explicit time suffix %s in a complete official fixture", async suffix => {
+    const raw = ottawaRaw.replace("22/10/2026", `22/10/2026${suffix}`);
+    expect((await evaluate(cases[0], raw, cases[0].job, cases[0].job.sourceUrl, new Date("2026-10-22T13:00:00Z"))).status).toBe("unavailable");
+  });
+  it.each(["", " Once the closing date has passed, the poster is unavailable.", " Applications are reviewed at the office."])("retains bare dates and incidental prose %s", async suffix => {
+    expect(parseJobDates(`Application Close:22/10/2026${suffix}`).closingAt).toEqual(new Date(cases[0].close));
+    expect(await evaluate(cases[0], ottawaRaw.replace("22/10/2026", `22/10/2026${suffix}`))).toMatchObject({ status: "verified", closingAt: new Date(cases[0].close) });
+  });
   it.each([
     ["Application Close:22/10/2026", "2026-10-22T23:59:59.999Z"],
     ["Application Close: 02/03/2026", "2026-03-02T23:59:59.999Z"],
