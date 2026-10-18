@@ -50,13 +50,36 @@ function collectJsonRecords(raw) {
   return records;
 }
 
+/** Exclude non-visible nodes without rewriting quoted opening-tag bytes. */
+function withoutCommentScriptStyleNodes(raw) {
+  const tokens = /<!--[\s\S]*?(?:-->|$)|<\/?([a-z][\w:-]*)\b(?:[^"'<>]|"[^"]*"|'[^']*')*>/gi;
+  const chunks = [];
+  let end = 0, token;
+  while ((token = tokens.exec(raw))) {
+    const name = token[1]?.toLowerCase();
+    // A whole tag is one token, so comment/script-like attribute data is
+    // never examined as a node or sanitized into a different destination.
+    if (name && (/^<\//.test(token[0]) || !/^(?:script|style)$/.test(name))) continue;
+    chunks.push(raw.slice(end, token.index), " ");
+    if (name) {
+      // Script/style content is raw text, not nested evidence. An unclosed
+      // node consumes the remaining input just like an unclosed comment.
+      const closing = new RegExp(`</${name}\\s*>`, "gi");
+      closing.lastIndex = tokens.lastIndex;
+      tokens.lastIndex = closing.exec(raw) ? closing.lastIndex : raw.length;
+    }
+    end = tokens.lastIndex;
+  }
+  chunks.push(raw.slice(end));
+  return chunks.join("");
+}
+
 /** Collect complete containers without browser repair or script/style evidence. */
 function htmlContainers(raw, isRecord) {
   const records = [], stack = [];
   // Comments (including an unterminated tail) and script/style markup are not
   // visible evidence. Return cleaned records so every later check agrees.
-  raw = raw.replace(/<!--[\s\S]*?(?:-->|$)/g, " ")
-    .replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, " ");
+  raw = withoutCommentScriptStyleNodes(raw);
   const tags = /<\/?([a-z][\w:-]*)\b(?:[^"'<>]|"[^"]*"|'[^']*')*>/gi;
   for (const tag of raw.matchAll(tags)) {
     const name = tag[1].toLowerCase();
@@ -97,8 +120,7 @@ function htmlAttribute(tag, name) {
 
 /** Visibility filtering is confined to actions in the two captured layouts. */
 function visibleActionMarkup(raw) {
-  raw = raw.replace(/<!--[\s\S]*?(?:-->|$)/g, " ")
-    .replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, " ");
+  raw = withoutCommentScriptStyleNodes(raw);
   const stack = [], chunks = [];
   let end = 0;
   // Quoted > characters are attribute data, not opening-tag terminators.

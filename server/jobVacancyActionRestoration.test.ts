@@ -44,6 +44,8 @@ const hide = [
   ["visibility-hidden ancestor", (html: string) => `<span style="visibility: hidden">${html}</span>`],
   ["script", (html: string) => `<script>${html}</script>`],
   ["style", (html: string) => `<style>${html}</style>`],
+  ["script with a quoted closing tag", (html: string) => `<script data-note="one ></script> two">${html}</script>`],
+  ["style with a quoted closing tag", (html: string) => `<style data-note="one ></style> two">${html}</style>`],
 ] as const;
 
 describe.each(cases)("$name captured vacancy-action restoration", item => {
@@ -51,6 +53,16 @@ describe.each(cases)("$name captured vacancy-action restoration", item => {
     const raw = twoButtons(item);
     expect(raw.split(`href="${item.href}"`)).toHaveLength(3);
     expect((await evaluate(item, raw)).status).toBe("verified");
+  });
+
+  describe.each(['"', "'"])("literal href bytes in %s quotes", quote => {
+    it.each(["<!--x-->", "<script>x</script>", "<style>x</style>"])("rejects a captured action suffixed with %s beside a valid action", async suffix => {
+      const replacement = anchor(item).replace(`href="${item.href}"`, `href=${quote}${item.href}${suffix}${quote}`);
+      const raw = oneChangedButton(item, replacement);
+      expect(raw).toContain(`href=${quote}${item.href}${suffix}${quote}`);
+      expect(raw.split(`href="${item.href}"`)).toHaveLength(2);
+      expect((await evaluate(item, raw)).status).toBe("unavailable");
+    });
   });
 
   it("does not truncate a later changed action at closing tags inside its quoted href", async () => {
@@ -84,6 +96,15 @@ describe.each(cases)("$name captured vacancy-action restoration", item => {
   });
 
   it.each(['data-note="one > two"', "data-note='one > two'"])("preserves valid actions with a benign quoted > attribute %s", async attribute => {
+    const raw = item.raw.replace(item.action, match => match.replace("<a ", `<a ${attribute} `));
+    expect((await evaluate(item, raw)).status).toBe("verified");
+  });
+
+  it.each([
+    'data-note="one <!--x--> two"', "data-note='one <!--x--> two'",
+    'data-note="one <script>x</script> two"', "data-note='one <script>x</script> two'",
+    'data-note="one <style>x</style> two"', "data-note='one <style>x</style> two'",
+  ])("preserves valid actions with benign quoted node-like data %s", async attribute => {
     const raw = item.raw.replace(item.action, match => match.replace("<a ", `<a ${attribute} `));
     expect((await evaluate(item, raw)).status).toBe("verified");
   });
@@ -139,4 +160,11 @@ describe("Ottawa captured action markers independently of visible text", () => {
     const link = '<a class="apply-help notdialogApplyBtn" href="https://example.test/privacy">Privacy</a>';
     expect((await evaluate(item, oneChangedButton(item, anchor(item) + link))).status).toBe("verified");
   });
+});
+
+it("preserves Manitoba's captured external DOCX application-form resources", async () => {
+  const item = cases[1];
+  const href = "https://www.gov.mb.ca/govjobs/doc/Screening_Application_Form/application_form_for_screening_44505.docx";
+  expect(item.raw.split(`href="${href}"`)).toHaveLength(3);
+  expect((await evaluate(item, twoButtons(item))).status).toBe("verified");
 });
