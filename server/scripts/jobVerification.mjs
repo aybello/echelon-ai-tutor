@@ -18,9 +18,9 @@ export function sourceDate(value) {
 // an explicitly timed deadline into the end of its calendar day.
 const ISO_INSTANT_PATTERN = "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}(?::\\d{2}(?:\\.\\d{1,3})?)?(?:Z|[+-]\\d{2}:?\\d{2})";
 const DATE_PATTERN = `(?:${ISO_INSTANT_PATTERN}|[A-Za-z]+\\s+\\d{1,2}(?:st|nd|rd|th)?(?:,)?\\s+\\d{4}|\\d{1,2}(?:st|nd|rd|th)?\\s+[A-Za-z]+(?:,)?\\s+\\d{4}|\\d{4}-\\d{2}-\\d{2}(?![T\\d]))`;
-// Inspect only the immediate suffix, allowing combined punctuation wrappers.
+// Inspect only the immediate suffix, allowing punctuation wrappers before/after at.
 // These are rejection cues, not a natural-language time parser.
-const UNSUPPORTED_CLOSING_TIME = /^[\s,;:()[\]{}\-–—]*(?:T(?=\d)|at\s*(?:\d|noon\b|midnight\b)|\d{1,2}(?:[:.h]|\s*[ap]\.?m\.?(?![a-z]))|noon\b|midnight\b)/i;
+const UNSUPPORTED_CLOSING_TIME = /^[\s,;:()[\]{}\-–—]*(?:T(?=\d)|at[\s,;:()[\]{}\-–—]*(?:\d|noon\b|midnight\b)|\d{1,2}(?:[:.h]|\s*[ap]\.?m\.?(?![a-z]))|noon\b|midnight\b)/i;
 
 function closingCalendarDate(value) {
   const normalized = value.replace(/(\d)(st|nd|rd|th)\b/gi, "$1");

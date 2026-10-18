@@ -12,11 +12,16 @@ const fields = [
   { label: "Apply By", date: "October 22nd, 2026" },
   { label: "Deadline", date: "2026-10-22" },
 ];
+const afterAtSuffixes = [
+  " at (12:30 UTC)", " - (at [12:30 UTC])",
+  " at ([{noon UTC}])", " - (at [{(midnight UTC)}])",
+];
 const unsupportedSuffixes = [
   " - (12:30 UTC)", " — ([at12:30UTC])", " ; [ (12:30 UTC) ]", " : (12.30 UTC)",
   " (12h30 UTC)", " at12:30UTC", " at 12:30 UTC", " (12:30 p.m. UTC)",
   " - (12 pm UTC)", " ; [12PM UTC]", " at 12 a.m. UTC", " at noon UTC",
   " — (midnight UTC)", "T12:30:00", " - (at midnight UTC)",
+  ...afterAtSuffixes,
 ];
 const incidentalSuffixes = [
   "", " Once the closing date has passed, contact the office.",
@@ -54,7 +59,9 @@ describe.each(fields)("$label: $date immediate closing suffix validation", field
     expect(parseJobDates(`${field.label}:${field.date}${suffix}`).closingAt).toEqual(dayEnd);
   });
   it.each(["Closing Date: November 22, 2026", "Application Close: 23/10/2026", "Closing: 2026-11-22T12:30:00Z"])("does not fall back to a later field %s", later => {
-    expect(parseJobDates(`${field.label}: ${field.date} - (12:30 UTC) ${later}`).closingAt).toBeNull();
+    for (const suffix of [" - (12:30 UTC)", ...afterAtSuffixes]) {
+      expect(parseJobDates(`${field.label}: ${field.date}${suffix} ${later}`).closingAt).toBeNull();
+    }
   });
 });
 
@@ -93,7 +100,9 @@ describe.each(fixtures)("$name captured detail using socket-free transport", ite
       expect(await evaluate(item, field, suffix)).toMatchObject({ status: "verified", closingAt: dayEnd });
     });
     it("does not borrow a later valid field after an unsupported timed deadline", async () => {
-      expect(await evaluate(item, field, " - (12:30 UTC) Closing Date: November 22, 2026")).toMatchObject({ status: "unavailable", closingAt: null });
+      for (const suffix of [" - (12:30 UTC)", ...afterAtSuffixes]) {
+        expect(await evaluate(item, field, `${suffix} Closing Date: November 22, 2026`)).toMatchObject({ status: "unavailable", closingAt: null });
+      }
     });
   });
   it.each([
