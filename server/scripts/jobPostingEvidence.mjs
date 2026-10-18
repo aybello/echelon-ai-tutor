@@ -57,7 +57,7 @@ function htmlContainers(raw, isRecord) {
   // visible evidence. Return cleaned records so every later check agrees.
   raw = raw.replace(/<!--[\s\S]*?(?:-->|$)/g, " ")
     .replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, " ");
-  const tags = /<\/?([a-z][\w:-]*)\b[^>]*>/gi;
+  const tags = /<\/?([a-z][\w:-]*)\b(?:[^"'<>]|"[^"]*"|'[^']*')*>/gi;
   for (const tag of raw.matchAll(tags)) {
     const name = tag[1].toLowerCase();
     if (/^<\//.test(tag[0])) {

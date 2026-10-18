@@ -53,6 +53,17 @@ describe.each(cases)("$name captured vacancy-action restoration", item => {
     expect((await evaluate(item, raw)).status).toBe("verified");
   });
 
+  it("does not truncate a later changed action at closing tags inside its quoted href", async () => {
+    const invalid = changedHref(item, "https://evil.example.test/x></div></div></div>ignored");
+    const raw = item.raw.replace(anchor(item), anchor(item) + invalid);
+    expect((await evaluate(item, raw)).status).toBe("unavailable");
+  });
+
+  it("preserves complete records when benign quoted data contains closing tags", async () => {
+    const raw = item.raw.replace(item.action, match => match.replace("<a ", '<a data-note="one ></div></div></div> two" '));
+    expect((await evaluate(item, raw)).status).toBe("verified");
+  });
+
   it.each([
     ["review repro: foreign origin and arbitrary path", "https://evil.example.test/apply-now?ID=999&amp;unknown=value"],
     ["review repro: quoted > in foreign href", "https://evil.example.test/x>ignored"],
