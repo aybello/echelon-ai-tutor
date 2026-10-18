@@ -1,7 +1,7 @@
 import { spawn } from "node:child_process";
 import { createWriteStream } from "node:fs";
 import { mkdir } from "node:fs/promises";
-import { dirname } from "node:path";
+import { dirname, isAbsolute, resolve } from "node:path";
 
 export const AUDIT_STATUSES = ["pass", "fail", "warn", "blocked", "skipped"];
 
@@ -35,6 +35,16 @@ export function isolatedTestEnv(parent = process.env, home = "/tmp/echelon-audit
     SMTP_HOST: "127.0.0.1", SMTP_PORT: "9", SMTP_USER: "audit@echelon.test",
     SMTP_PASS: "test-only-placeholder", APP_BASE_URL: "http://127.0.0.1:3000",
   };
+}
+
+/** Browser commands need the installed cache location, not the caller's HOME or credentials. */
+export function isolatedBrowserTestEnv(parent = process.env, home = "/tmp/echelon-audit-test") {
+  const browserPath = parent.PLAYWRIGHT_BROWSERS_PATH
+    ?? resolve(parent.HOME ?? "/home/ubuntu", ".cache/ms-playwright");
+  if (typeof browserPath !== "string" || !isAbsolute(browserPath) || /[\x00-\x1f\x7f]/.test(browserPath)) {
+    throw new Error("Playwright browser cache must be an absolute directory path");
+  }
+  return { ...isolatedTestEnv(parent, home), PLAYWRIGHT_BROWSERS_PATH: browserPath };
 }
 
 /** Read the exact deterministic CI exclusions. Fail closed if the step changes shape. */

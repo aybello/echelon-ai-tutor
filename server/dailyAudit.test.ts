@@ -3,7 +3,7 @@ import { mkdtemp, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 // @ts-ignore Standalone ESM audit helpers are tested directly without a build step.
-import { isolatedTestEnv, ciDeterministicExcludes, runCommand, evaluateVitest, combineTestAttempts, parseTrpc, validateQuestion, validateQuizReply, classifyTutorReply, evaluateTutorSequence, tutorHistoryAssessment, importJourneyResults, validateJourneyReport, evaluateServingReleaseIdentity, createAuditBudget, summarizeResults } from "../scripts/lib/dailyAudit.mjs";
+import { isolatedTestEnv, isolatedBrowserTestEnv, ciDeterministicExcludes, runCommand, evaluateVitest, combineTestAttempts, parseTrpc, validateQuestion, validateQuizReply, classifyTutorReply, evaluateTutorSequence, tutorHistoryAssessment, importJourneyResults, validateJourneyReport, evaluateServingReleaseIdentity, createAuditBudget, summarizeResults } from "../scripts/lib/dailyAudit.mjs";
 
 const envelope = (data: unknown) => JSON.stringify([{ result: { data: { json: data } } }]);
 const trpcError = (code: string) => JSON.stringify([{ error: { json: { message: "test error", data: { code } } } }]);
@@ -29,6 +29,25 @@ describe("daily audit test isolation and full JSON evidence", () => {
     for (const key of ["DATABASE_URL", "EXTERNAL_DATABASE_URL", "EXTERNAL_DATABASE_CA", "DATABASE_CUTOVER_USE_EXTERNAL_TARGET",
       "OPENAI_API_KEY", "BUILT_IN_FORGE_API_KEY", "NODE_OPTIONS", "BUILD_COMMIT_SHA"]) expect(env).not.toHaveProperty(key);
   });
+  it("locates existing browsers from the caller HOME without restoring that HOME or forwarding secrets", () => {
+    const parent = { PATH: "/usr/bin", HOME: "/caller-home", DATABASE_URL: "mysql://production",
+      BUILT_IN_FORGE_API_KEY: "production-forge", NODE_OPTIONS: "--require=production-preload.cjs" };
+    const env = isolatedBrowserTestEnv(parent, "/empty-test-home");
+    expect(env).toEqual({ ...isolatedTestEnv(parent, "/empty-test-home"), PLAYWRIGHT_BROWSERS_PATH: "/caller-home/.cache/ms-playwright" });
+    expect(env.HOME).toBe("/empty-test-home"); expect(env.TMPDIR).toBe("/empty-test-home");
+    expect(isolatedBrowserTestEnv({}, "/empty-test-home").PLAYWRIGHT_BROWSERS_PATH).toBe("/home/ubuntu/.cache/ms-playwright");
+  });
+  it("forwards only an explicit browser directory to browser commands, never ordinary isolated commands", () => {
+    const parent = { HOME: "/caller-home", PLAYWRIGHT_BROWSERS_PATH: "/installed browsers", SMTP_PASS: "production-password" };
+    expect(isolatedBrowserTestEnv(parent, "/empty-test-home")).toEqual({
+      ...isolatedTestEnv(parent, "/empty-test-home"), PLAYWRIGHT_BROWSERS_PATH: "/installed browsers",
+    });
+    expect(isolatedTestEnv(parent, "/empty-test-home")).not.toHaveProperty("PLAYWRIGHT_BROWSERS_PATH");
+  });
+  it.each(["", "0", "relative/cache", "https://example.invalid/cache", "/cache\nsecret", "/cache\u0000"])(
+    "rejects an invalid explicit browser directory: %j", path => {
+      expect(() => isolatedBrowserTestEnv({ PLAYWRIGHT_BROWSERS_PATH: path }, "/empty-test-home")).toThrow(/browser.*absolute.*directory/i);
+    });
   it("uses the actual deterministic CI exclude list and does not exclude release tests", async () => {
     const yaml = await readFile(".github/workflows/quality.yml", "utf8");
     const excludes = ciDeterministicExcludes(yaml);

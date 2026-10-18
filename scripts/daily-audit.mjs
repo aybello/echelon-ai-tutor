@@ -16,7 +16,7 @@ import mysql from "mysql2/promise";
 import { activeScriptConnection } from "./lib/activeScriptConnection.mjs";
 import { AUTOMATED_BLOG_TAG, evaluateBlogAutomationHealth, readBlogHeartbeatSnapshot } from "./lib/blogAutomationHealth.mjs";
 import {
-  isolatedTestEnv, ciDeterministicExcludes, runCommand, commandProblem, evaluateVitest, createAuditBudget,
+  isolatedTestEnv, isolatedBrowserTestEnv, ciDeterministicExcludes, runCommand, commandProblem, evaluateVitest, createAuditBudget,
   validateQuizReply, validateQuestion, classifyTutorReply, evaluateTutorSequence,
   tutorHistoryAssessment, validateJourneyReport, evaluateServingReleaseIdentity, summarizeResults,
 } from "./lib/dailyAudit.mjs";
@@ -82,8 +82,8 @@ async function readJson(path, maxBytes = 32 * 1024 * 1024) {
   if ((await stat(path)).size > maxBytes) throw new Error("JSON artifact exceeds safety limit");
   return JSON.parse(await readFile(path, "utf8"));
 }
-async function command(name, program, args, timeoutMs) {
-  return runCommand(program, args, { cwd: ROOT, env: childEnv, logPath: resolve(outputDir, `${name}.log`), timeoutMs: budget.timeoutMs(timeoutMs) });
+async function command(name, program, args, timeoutMs, env = childEnv) {
+  return runCommand(program, args, { cwd: ROOT, env, logPath: resolve(outputDir, `${name}.log`), timeoutMs: budget.timeoutMs(timeoutMs) });
 }
 async function fetchEvidence(name, path, options = {}, timeoutMs = 30_000) {
   const controller = new AbortController();
@@ -181,7 +181,7 @@ try {
     await writeFile(configPath, `import base from ${JSON.stringify(pathToFileURL(resolve(ROOT, "vitest.config.ts")).href)};\nexport default { ...base, envFile: false, envDir: ${JSON.stringify(testHome)} };\n`, { mode: 0o600 });
     const args = ["--import", "tsx", resolve(ROOT, "node_modules/vitest/vitest.mjs"), "run", "--config", configPath, "--maxWorkers", "2", "--minWorkers", "1", ...excludes.flatMap(pattern => ["--exclude", pattern]),
       "--reporter=json", `--outputFile=${reportPath}`];
-    const run = await command("unit", "node", args, 12 * 60_000);
+    const run = await command("unit", "node", args, 12 * 60_000, isolatedBrowserTestEnv(process.env, testHome));
     let report = null;
     try { report = await readJson(reportPath); } catch { /* Evaluator reports missing/malformed evidence. */ }
     const evaluated = evaluateVitest(run, report);
@@ -389,8 +389,7 @@ try {
     if (browserSeconds < 1) throw new Error("Insufficient audit budget for browser checks and cleanup");
     const run = await runCommand("python3", ["-B", "scripts/product-journeys.py", "--base-url", SITE,
       "--courses", resolve(outputDir, "courses.json"), "--output-dir", browserDir, "--max-seconds", String(browserSeconds)], {
-      cwd: ROOT, env: { ...childEnv, PLAYWRIGHT_BROWSERS_PATH: process.env.PLAYWRIGHT_BROWSERS_PATH
-        ?? resolve(process.env.HOME ?? "/home/ubuntu", ".cache/ms-playwright") },
+      cwd: ROOT, env: isolatedBrowserTestEnv(process.env, testHome),
       logPath: resolve(outputDir, "browser.log"), timeoutMs: browserTimeoutMs,
     });
     let imported = [];
