@@ -43,6 +43,9 @@ describe("SWWA current official card metadata", () => {
   it("does not promote unknown labelled types using description prose", () => {
     expect(parseSwwa(captured.replaceAll('Position Type: </span>Full Time', 'Position Type: </span>Unknown')).map(job => job.jobType)).toEqual([null, null]);
   });
+  it.each(["constructor", "__proto__"])("keeps inherited-looking external type label %s unknown", type => {
+    expect(parseSwwa(captured.replaceAll('Position Type: </span>Full Time', `Position Type: </span>${type}`)).map(job => job.jobType)).toEqual([null, null]);
+  });
   it("retains expiry before transport and strict destination verification", async () => {
     const job = jobs()[1];
     const fetchDocument = vi.fn(async () => ({ missing: false, raw: `<h1>${job.title}</h1><p>${job.company}</p>`, text: `${job.title} ${job.company}` }));

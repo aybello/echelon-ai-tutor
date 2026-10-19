@@ -78,6 +78,15 @@ function swwaClosingDate(value) {
   return parseJobDates(`Closing Date: 20${date[3]}-${date[1]}-${date[2]}`).closingAt;
 }
 
+const swwaEmploymentTypes = new Map([
+  ["full time", "full-time"],
+  ["full-time", "full-time"],
+  ["part time", "part-time"],
+  ["part-time", "part-time"],
+  ["contract", "contract"],
+  ["temporary", "contract"],
+]);
+
 function swwaHeaderEmployer(detailHtml, title, location) {
   const paragraphs = [...detailHtml.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)]
     .slice(0, 3).map(match => cleanText(match[1]));
@@ -127,7 +136,7 @@ export function parseSwwa(html) {
     const closingColumn = block.match(/<div[^>]*class="[^"]*list-column\s+closing[^"]*"[^>]*>([\s\S]*?)<\/div>/i);
     const typeColumn = block.match(/<div[^>]*class="[^"]*list-column\s+type[^"]*"[^>]*>([\s\S]*?)<\/div>/i);
     const type = cleanText(typeColumn?.[1]).replace(/^Position Type:\s*/i, "").toLowerCase();
-    const jobType = typeColumn ? ({ "full time": "full-time", "full-time": "full-time", "part time": "part-time", "part-time": "part-time", contract: "contract", temporary: "contract" })[type] ?? null : detectJobType(block);
+    const jobType = typeColumn ? (swwaEmploymentTypes.get(type) ?? null) : detectJobType(block);
     jobs.push({
       title,
       company: company || "SWWA member employer",
