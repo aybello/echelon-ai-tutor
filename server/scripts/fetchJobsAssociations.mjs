@@ -70,6 +70,28 @@ export function parseAwwOA(html) {
   return jobs;
 }
 
+// SWWA's public card column uses MM/DD/YY, unlike the shared date grammar.
+// Accept only the complete evidenced date; timed/invalid values stay unknown.
+function swwaClosingDate(value) {
+  const date = value.match(/^(\d{2})\/(\d{2})\/(\d{2})$/);
+  if (!date) return null;
+  return parseJobDates(`Closing Date: 20${date[3]}-${date[1]}-${date[2]}`).closingAt;
+}
+
+function swwaHeaderEmployer(detailHtml, title, location) {
+  const paragraphs = [...detailHtml.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)]
+    .slice(0, 3).map(match => cleanText(match[1]));
+  // Captured headers: employer/type/title, or location/employer/type-title.
+  // Do not search arbitrary description prose for a plausible company name.
+  if (paragraphs[2] === title && /^(?:full|part)[- ]time$/i.test(paragraphs[1] ?? "")) return paragraphs[0];
+  const city = location.split(",")[0].trim();
+  const locations = [`${city},SK`, `${city},Saskatchewan`].map(value => value.replace(/\s/g, "").toLowerCase());
+  if (locations.includes((paragraphs[0] ?? "").replace(/\s/g, "").toLowerCase()) &&
+      /^(?:Full|Part)[- ]time-/i.test(paragraphs[2] ?? "") &&
+      paragraphs[2].replace(/^(?:Full|Part)[- ]time-/i, "") === title) return paragraphs[1];
+  return null;
+}
+
 export function parseSwwa(html) {
   const jobs = [];
   const blocks = blocksFromMarkers(
@@ -98,9 +120,14 @@ export function parseSwwa(html) {
       ...(detailHtml ?? "").matchAll(/<strong>([\s\S]*?)<\/strong>/gi),
     ].map(match => cleanText(match[1]));
     const company =
-      detailLabels.find(
+      swwaHeaderEmployer(detailHtml ?? "", title, location) ||
+      (detailLabels.find(
         label => !title.toLowerCase().includes(label.toLowerCase())
-      ) ?? detailLabels[0];
+      ) ?? detailLabels[0]);
+    const closingColumn = block.match(/<div[^>]*class="[^"]*list-column\s+closing[^"]*"[^>]*>([\s\S]*?)<\/div>/i);
+    const typeColumn = block.match(/<div[^>]*class="[^"]*list-column\s+type[^"]*"[^>]*>([\s\S]*?)<\/div>/i);
+    const type = cleanText(typeColumn?.[1]).replace(/^Position Type:\s*/i, "").toLowerCase();
+    const jobType = typeColumn ? ({ "full time": "full-time", "full-time": "full-time", "part time": "part-time", "part-time": "part-time", contract: "contract", temporary: "contract" })[type] ?? null : detectJobType(block);
     jobs.push({
       title,
       company: company || "SWWA member employer",
@@ -108,8 +135,9 @@ export function parseSwwa(html) {
       province: detectProvince(location || "Saskatchewan"),
       sourceUrl: absoluteUrl(link[1], "https://www.swwa.ca"),
       ...parseJobDates(block),
+      ...(closingColumn ? { closingAt: swwaClosingDate(cleanText(closingColumn[1]).replace(/^Closing:\s*/i, "")) } : {}),
       description: truncate(cleanText(block)),
-      jobType: detectJobType(block),
+      jobType,
     });
   }
   return jobs;

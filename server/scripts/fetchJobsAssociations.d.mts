@@ -5,7 +5,9 @@ export type AssociationJob = {
   province: string;
   sourceUrl: string;
   description: string | null;
-  jobType: string;
+  jobType: string | null;
+  postedAt?: Date | null;
+  closingAt?: Date | null;
 };
 
 export function parseAwwOA(html: string): AssociationJob[];
