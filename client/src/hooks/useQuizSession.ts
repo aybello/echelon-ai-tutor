@@ -287,6 +287,13 @@ export function useQuizSession({
   const selectedRef = useRef<number | null>(selected);
   const confidenceRef = useRef<number | null>(confidence);
   const handleNextRef = useRef<() => void>(() => {});
+  const timedAdvanceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const cancelTimedAdvance = useCallback(() => {
+    if (timedAdvanceRef.current !== null) {
+      clearTimeout(timedAdvanceRef.current);
+      timedAdvanceRef.current = null;
+    }
+  }, []);
 
   const [confirmed, setConfirmed] = useState(false);
   const [showSteps, setShowSteps] = useState(false);
@@ -449,12 +456,13 @@ export function useQuizSession({
 
   // ── Clear UI state helper ──────────────────────────────────────────────────
   const clearUI = useCallback(() => {
+    cancelTimedAdvance();
     setSelectedState(null);
     setConfidenceState(null);
     setConfirmed(false);
     setShowSteps(false);
     setTutorOpenState(false);
-  }, []);
+  }, [cancelTimedAdvance]);
 
   // ── Set selected (only when not confirmed) ─────────────────────────────────
   const setSelected = useCallback(
@@ -537,6 +545,8 @@ export function useQuizSession({
     [freeCourse, examType, selectedModule, selectedTopic, calcOnly, quizSettings.difficulty, quizMode, revision, storedAccessTokenForAccess, practiceQueueGeneration]);
   const activeQueue = useRef(queue);
   activeQueue.current = queue;
+  // A delayed answer belongs to its original queue and mounted session only.
+  useEffect(() => cancelTimedAdvance, [queue, cancelTimedAdvance]);
   const fetching = useRef<PracticeQueue<DBQuestion> | null>(null);
   const requestNext = useCallback(async () => {
     if (!queue || fetching.current === queue) return;
@@ -651,6 +661,8 @@ export function useQuizSession({
 
   // ── Next question (step 2: advance to next question) ───────────────────────
   const handleNext = useCallback(() => {
+    // Manual Next must win even while the next page is still loading.
+    cancelTimedAdvance();
     // Quick 10 stop: end session cleanly at 10 (never paywalled)
     if (quizMode === "quick10" && history.length >= 10) {
       trackQuizCompleted(history, "session_limit");
@@ -698,11 +710,12 @@ export function useQuizSession({
     }
     setCurrent(next);
     clearUI();
-  }, [history, pool, allQuestions, selectedModule, calcOnly, trialUnlocked, quizMode, sessionSize, clearUI, trackQuizCompleted, queue, requestNext]);
+  }, [history, pool, allQuestions, selectedModule, calcOnly, trialUnlocked, quizMode, sessionSize, clearUI, trackQuizCompleted, queue, requestNext, cancelTimedAdvance]);
 
   // ── Go back (undo last answer) ─────────────────────────────────────────────
   const goBack = useCallback(() => {
     if (history.length === 0) return;
+    cancelTimedAdvance();
 
     if (confirmed) {
       // Currently viewing a confirmed answer (current question IS in history).
@@ -746,7 +759,7 @@ export function useQuizSession({
       setShowSteps(false);
       setTutorOpenState(false);
     }
-  }, [history, confirmed]);
+  }, [history, confirmed, cancelTimedAdvance]);
 
   // ── Reset session ──────────────────────────────────────────────────────────
   const resetSession = useCallback(() => {
@@ -862,6 +875,7 @@ export function useQuizSession({
         });
         return;
       }
+      cancelTimedAdvance();
       setSelectedTopic(null);
       setSelectedModule(mod);
       if (queue) { clearUI(); return; }
@@ -873,7 +887,7 @@ export function useQuizSession({
         clearUI();
       }
     },
-    [practiceFiltersEnabled, allQuestions, usedIds, calcOnly, clearUI, queue],
+    [practiceFiltersEnabled, allQuestions, usedIds, calcOnly, clearUI, queue, cancelTimedAdvance],
   );
 
   // Keep the latest-value refs in sync after every render (handleNext is defined
@@ -917,8 +931,12 @@ export function useQuizSession({
     // Auto-advance after a brief delay. Call through the ref so we run the
     // freshest handleNext — the one built from the just-updated history — which
     // keeps the session-boundary check (history.length >= sessionSize) correct.
-    setTimeout(() => handleNextRef.current(), 800);
-  }, [confirmed, current, logAttemptFn]);
+    cancelTimedAdvance();
+    timedAdvanceRef.current = setTimeout(() => {
+      timedAdvanceRef.current = null;
+      handleNextRef.current();
+    }, 800);
+  }, [confirmed, current, logAttemptFn, cancelTimedAdvance]);
 
   // ── Gate unlocked handler ──────────────────────────────────────────────────
   const handleGateUnlocked = useCallback(() => {
