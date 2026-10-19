@@ -23,6 +23,14 @@ describe("short durable blog callbacks", () => {
     expect(deps.advance).not.toHaveBeenCalled();
     expect(deps.authorize).toHaveBeenCalledWith(expect.anything(), expect.anything(), "weekly");
   });
+  it("returns a conflict for an unresolved prior run instead of silently starting the new week", async () => {
+    const { deps, request } = await fixture();
+    deps.enqueue.mockResolvedValue({ ok: true, action: "failed_requires_inspection" });
+    expect(await request("/api/scheduled/generate-blog")).toEqual({ status: 409,
+      body: { ok: true, action: "failed_requires_inspection", published: false } });
+    expect(deps.enqueue).toHaveBeenCalledOnce();
+    expect(deps.advance).not.toHaveBeenCalled();
+  });
   it("rejects other tasks before any queue or model work", async () => {
     const { deps, request } = await fixture(); deps.authorize.mockResolvedValue(false);
     expect((await request("/api/scheduled/generate-blog")).status).toBe(403);

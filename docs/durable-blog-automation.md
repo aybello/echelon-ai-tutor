@@ -13,6 +13,7 @@ The weekly publishing callback performed research, article generation, editorial
 - A thirty-minute run limit stops stalled work.
 - Database-time leases allow only one worker to own a step and reject expired workers.
 - Submission intent is saved before any paid model request. An uncertain submission is stopped for inspection rather than resubmitted and billed again.
+- A failed run blocks weekly enqueue even after the UTC week changes. The next scheduled callback returns `409` / `failed_requires_inspection` without replacing its progress, error, run key or saved response. A calendar boundary is not authorization to retry.
 - A returned provider response ID is saved before deadline checks and retained through a recoverable persistence failure. Recovery polls that response instead of submitting again.
 - Temporary source HTTP failures and safe-read deadline cancellation preserve the phase for another callback, within the thirty-minute run limit.
 - Existing HTML, article-length, heading, internal-link, duplication and editorial-review checks remain. One revision is allowed. A failed review, refused output or incomplete response cannot publish.
@@ -38,6 +39,23 @@ The automated tests cover:
 - real disposable-database enqueue deduplication, competing replicas, expired lease rejection, restart recovery, atomic publication, duplicate articles and rollback on a completion failure.
 
 Existing published articles were not changed. No article was generated or published to production during this repair. A minimal harmless API capability test verified that the requested model supports background submission and retrieval.
+
+## Failed-submission inspection
+
+The direct adapter accepts `OPENAI_CUSTOM_API_KEY`, falling back to `OPENAI_API_KEY`,
+and always calls the official OpenAI Responses endpoint. Sandbox environment
+presence or successful metadata discovery does **not** establish what credential
+was available to a historical deployed callback.
+
+For a failed `*-submit` run with `submissionPending: true` and no `responseId`,
+absence of an ID is not proof that nothing was sent. A legacy generic error also
+cannot establish credential, timeout or schema failure. Do not reset/requeue it,
+including through a new weekly run. Reconcile the exact deployed-runtime logs
+and provider request history for that run's time window first. A persisted
+`submissionNotSent: true` from the pre-transport credential failure is diagnostic
+only; it does not authorize automatic recovery. Recovery still requires explicit
+operator approval and before-image/CAS guards. No recovery or retry operator is
+introduced by this fence.
 
 ## Release order
 

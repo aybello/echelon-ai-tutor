@@ -72,6 +72,27 @@ suite("durable blog with an explicitly disposable database", () => {
     await restarted.fail("fixture_uncertain");
     expect((await enqueueWeeklyBlog(NOW)).action).toBe("failed_requires_inspection");
   });
+  it.each([false, true])("preserves a failed submission across week rollover (not-sent diagnostic %s)", async notSent => {
+    await enqueueWeeklyBlog(NOW);
+    const step = (await claimBlogStep())!;
+    await step.checkpoint({ phase: "draft-submit", topic, revision: 0, submissionPending: true,
+      ...(notSent ? { submissionNotSent: true as const } : {}) });
+    await step.fail("fixture_requires_operator_inspection");
+    const [before] = await state.db.execute(sql`SELECT * FROM blog_automation_runs WHERE id = 'weekly-echelon-blog'`);
+    const nextWeek = new Date(NOW.getTime() + 7 * 24 * 60 * 60_000);
+    const results = [await enqueueWeeklyBlog(nextWeek), await enqueueWeeklyBlog(nextWeek)];
+    expect(results.map(result => result.action)).toEqual(["failed_requires_inspection", "failed_requires_inspection"]);
+    const [after] = await state.db.execute(sql`SELECT * FROM blog_automation_runs WHERE id = 'weekly-echelon-blog'`);
+    expect(after).toEqual(before);
+    expect(await claimBlogStep()).toBeNull();
+  });
+  it("still queues a new week after a completed run", async () => {
+    await enqueueWeeklyBlog(NOW);
+    await (await claimBlogStep())!.complete("fixture_complete");
+    const nextWeek = new Date(NOW.getTime() + 7 * 24 * 60 * 60_000);
+    expect((await enqueueWeeklyBlog(nextWeek)).action).toBe("queued");
+    expect((await claimBlogStep())!.run.progress).toEqual({ phase: "topic", revision: 0 });
+  });
   it("retains returned model identifiers through retry and a new worker claim", async () => {
     await enqueueWeeklyBlog(NOW);
     const first = (await claimBlogStep())!;

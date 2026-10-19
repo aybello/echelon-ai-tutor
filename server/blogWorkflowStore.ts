@@ -19,8 +19,12 @@ export async function enqueueWeeklyBlog(now = new Date()) {
     await tx.execute(sql`INSERT IGNORE INTO blog_automation_runs (id, runKey, status, progress) VALUES (${ID}, '', 'completed', '{}')`);
     const [rows] = await tx.execute(sql`SELECT runKey, status FROM blog_automation_runs WHERE id = ${ID} FOR UPDATE`) as any;
     if (["pending", "processing"].includes(rows[0].status)) return { ok: true, action: "already_queued" };
+    // A calendar boundary is not operator authorization to discard a failed run.
+    // In particular, submissionPending may represent a paid response whose ID
+    // was never saved. Preserve its evidence until explicit reconciliation.
+    if (rows[0].status === "failed") return { ok: true, action: "failed_requires_inspection" };
     const period = blogRunKey(now);
-    if (rows[0].runKey === period) return { ok: true, action: rows[0].status === "failed" ? "failed_requires_inspection" : "already_completed" };
+    if (rows[0].runKey === period) return { ok: true, action: "already_completed" };
     await tx.execute(sql`UPDATE blog_automation_runs SET runKey = ${period}, status = 'pending', progress = ${JSON.stringify({ phase: "topic", revision: 0 })}, claimToken = NULL, leaseUntil = NULL, attempts = 0, lastError = NULL, startedAt = CURRENT_TIMESTAMP WHERE id = ${ID}`);
     return { ok: true, action: "queued" };
   });
