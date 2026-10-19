@@ -18,6 +18,25 @@ export function sourceDate(value) {
 // an explicitly timed deadline into the end of its calendar day.
 const ISO_INSTANT_PATTERN = "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}(?::\\d{2}(?:\\.\\d{1,3})?)?(?:Z|[+-]\\d{2}:?\\d{2})";
 const DATE_PATTERN = `(?:${ISO_INSTANT_PATTERN}|[A-Za-z]+\\s+\\d{1,2}(?:st|nd|rd|th)?(?:,)?\\s+\\d{4}|\\d{1,2}(?:st|nd|rd|th)?\\s+[A-Za-z]+(?:,)?\\s+\\d{4}|\\d{4}-\\d{2}-\\d{2}(?![T\\d]))`;
+// Inspect only the immediate suffix, allowing punctuation wrappers before/after at.
+// These are rejection cues, not a natural-language time parser.
+const UNSUPPORTED_CLOSING_TIME = /^[\s,;:()[\]{}\-–—]*(?:T(?=\d)|at[\s,;:()[\]{}\-–—]*(?:\d|noon\b|midnight\b)|\d{1,2}(?:[:.h]|\s*[ap]\.?m\.?(?![a-z]))|noon\b|midnight\b)/i;
+
+function closingCalendarDate(value) {
+  const normalized = value.replace(/(\d)(st|nd|rd|th)\b/gi, "$1");
+  const date = sourceDate(normalized);
+  if (!date) return null;
+  const isoDay = normalized.match(/^\d{4}-\d{2}-\d{2}/)?.[0];
+  if (isoDay) {
+    // Validate the written calendar day, not the zoned instant's UTC day.
+    if (sourceDate(`${isoDay}T00:00:00Z`)?.toISOString().slice(0, 10) !== isoDay) return null;
+  } else {
+    const day = normalized.match(/^(?:[A-Za-z]+\s+)?(\d{1,2})/)?.[1];
+    if (date.getDate() !== Number(day)) return null;
+  }
+  return date;
+}
+
 export function parseJobDates(text) {
   const clean = plainJobText(text);
   const parse = label => {
@@ -26,7 +45,20 @@ export function parseJobDates(text) {
     const date = sourceDate(match[1].replace(/(\d)(st|nd|rd|th)\b/gi, "$1"));
     return date ? { date, precise: /T\d{2}:/i.test(match[1]) } : null;
   };
-  const closing = parse("application deadline|applications? (?:close|due)|closing|deadline|apply (?:by|before)");
+  // Select the field before parsing its value: an unsupported first deadline
+  // must not disappear in favour of another later label/date grammar.
+  const field = clean.match(/\b(application deadline|applications? (?:close|due)|closing|deadline|apply (?:by|before))\b\s*(?:date\b)?\s*[:\-]?\s*/i);
+  const value = field ? clean.slice(field.index + field[0].length) : "";
+  const numeric = /^application close\s*:/i.test(field?.[0] ?? "") ? value.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})(?![\d/])/) : null;
+  const matched = numeric?.[0] ?? value.match(new RegExp(`^${DATE_PATTERN}(?!\\d)`, "i"))?.[0];
+  const precise = Boolean(matched && /T\d{2}:/i.test(matched));
+  let closing = null;
+  if (matched && (precise || !UNSUPPORTED_CLOSING_TIME.test(value.slice(matched.length)))) {
+    // Ottawa's explicit Application Close label alone uses day/month/year.
+    const dateValue = numeric ? `${numeric[3]}-${numeric[2].padStart(2, "0")}-${numeric[1].padStart(2, "0")}` : matched;
+    const date = closingCalendarDate(dateValue);
+    if (date) closing = { date, precise };
+  }
   return { postedAt: parse("posted|published|posting")?.date ?? null, closingAt: closing ? closing.precise ? closing.date : new Date(Date.UTC(closing.date.getUTCFullYear(), closing.date.getUTCMonth(), closing.date.getUTCDate(), 23, 59, 59, 999)) : null };
 }
 const PDF_TIMEOUT_MS = 8000;

@@ -50,12 +50,37 @@ function collectJsonRecords(raw) {
   return records;
 }
 
-/** Only complete explicit vacancy containers; never infer a record from page-wide title proximity. */
-function htmlRecords(raw) {
+/** Exclude non-visible nodes without rewriting quoted opening-tag bytes. */
+function withoutCommentScriptStyleNodes(raw) {
+  const tokens = /<!--[\s\S]*?(?:-->|$)|<\/?([a-z][\w:-]*)\b(?:[^"'<>]|"[^"]*"|'[^']*')*>/gi;
+  const chunks = [];
+  let end = 0, token;
+  while ((token = tokens.exec(raw))) {
+    const name = token[1]?.toLowerCase();
+    // A whole tag is one token, so comment/script-like attribute data is
+    // never examined as a node or sanitized into a different destination.
+    if (name && (/^<\//.test(token[0]) || !/^(?:script|style)$/.test(name))) continue;
+    chunks.push(raw.slice(end, token.index), " ");
+    if (name) {
+      // Script/style content is raw text, not nested evidence. An unclosed
+      // node consumes the remaining input just like an unclosed comment.
+      const closing = new RegExp(`</${name}\\s*>`, "gi");
+      closing.lastIndex = tokens.lastIndex;
+      tokens.lastIndex = closing.exec(raw) ? closing.lastIndex : raw.length;
+    }
+    end = tokens.lastIndex;
+  }
+  chunks.push(raw.slice(end));
+  return chunks.join("");
+}
+
+/** Collect complete containers without browser repair or script/style evidence. */
+function htmlContainers(raw, isRecord) {
   const records = [], stack = [];
-  // Script/style markup is not a visible vacancy container.
-  raw = raw.replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, " ");
-  const tags = /<\/?([a-z][\w:-]*)\b[^>]*>/gi;
+  // Comments (including an unterminated tail) and script/style markup are not
+  // visible evidence. Return cleaned records so every later check agrees.
+  raw = withoutCommentScriptStyleNodes(raw);
+  const tags = /<\/?([a-z][\w:-]*)\b(?:[^"'<>]|"[^"]*"|'[^']*')*>/gi;
   for (const tag of raw.matchAll(tags)) {
     const name = tag[1].toLowerCase();
     if (/^<\//.test(tag[0])) {
@@ -67,16 +92,145 @@ function htmlRecords(raw) {
       stack.splice(index);
     } else if (!/\/\s*>$/.test(tag[0]) && !/^(?:area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)$/.test(name)) {
       const className = tag[0].match(/\bclass\s*=\s*["']([^"']*)["']/i)?.[1] ?? "";
-      const record = /^(?:article|li|tr)$/.test(name) ||
-        /(?:^|\s)(?:job-card|job-listing|job-details|listing-item|vacancy|vacancy-card|job-posting)(?:\s|$)/i.test(className) ||
-        /\bitemtype\s*=\s*["']https?:\/\/schema\.org\/JobPosting["']/i.test(tag[0]);
+      const record = isRecord(name, className, tag[0]);
       stack.push({ name, start: tag.index, record });
     }
   }
+  return records;
+}
+
+/** Only complete explicit vacancy containers; never infer a record from page-wide title proximity. */
+function htmlRecords(raw) {
+  const records = htmlContainers(raw, (name, className, tag) => /^(?:article|li|tr)$/.test(name) ||
+    /(?:^|\s)(?:job-card|job-listing|job-details|listing-item|vacancy|vacancy-card|job-posting)(?:\s|$)/i.test(className) ||
+    /\bitemtype\s*=\s*["']https?:\/\/schema\.org\/JobPosting["']/i.test(tag));
   // An outer record containing other records is a list, not a single vacancy.
   return records.filter(record => !records.some(other => other !== record && record.includes(other)));
 }
 const anchorEntries = raw => [...raw.matchAll(/<a\b[^>]*href\s*=\s*["']([^"']+)["'][^>]*>([\s\S]*?)<\/a\s*>/gi)];
+
+function htmlAttribute(tag, name) {
+  // Match real attributes, not a suffix such as data-href or text inside a
+  // quoted value. Empty/boolean attributes differ from absent attributes.
+  for (const match of tag.matchAll(/\s+([^\s"'<>/=]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+)))?/g)) {
+    if (match[1].toLowerCase() === name) return decodeHtmlEntities(match[2] ?? match[3] ?? match[4] ?? "");
+  }
+  return null;
+}
+
+/** Visibility filtering is confined to actions in the two captured layouts. */
+function visibleActionMarkup(raw) {
+  raw = withoutCommentScriptStyleNodes(raw);
+  const stack = [], chunks = [];
+  let end = 0;
+  // Quoted > characters are attribute data, not opening-tag terminators.
+  // Keep this tokenization in sync with the action-anchor loop below.
+  for (const tag of raw.matchAll(/<\/?([a-z][\w:-]*)\b(?:[^"'<>]|"[^"]*"|'[^']*')*>/gi)) {
+    const name = tag[1].toLowerCase(), hidden = stack.at(-1)?.hidden ?? false;
+    if (!hidden) chunks.push(raw.slice(end, tag.index));
+    if (/^<\//.test(tag[0])) {
+      const index = stack.findLastIndex(entry => entry.name === name);
+      if (index < 0) { if (!hidden) chunks.push(tag[0]); }
+      else {
+        if (!stack[index].hidden) chunks.push(tag[0]);
+        stack.splice(index);
+      }
+    } else {
+      const style = htmlAttribute(tag[0], "style") ?? "";
+      const invisible = hidden || name === "template" || htmlAttribute(tag[0], "hidden") !== null ||
+        htmlAttribute(tag[0], "aria-hidden")?.trim().toLowerCase() === "true" ||
+        /(?:^|;)\s*(?:display\s*:\s*none|visibility\s*:\s*(?:hidden|collapse))\s*(?:!important\s*)?(?:;|$)/i.test(style);
+      if (!invisible) chunks.push(tag[0]);
+      if (!/\/\s*>$/.test(tag[0]) && !/^(?:area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)$/.test(name)) stack.push({ name, hidden: invisible });
+    }
+    end = tag.index + tag[0].length;
+  }
+  if (!stack.at(-1)?.hidden) chunks.push(raw.slice(end));
+  return chunks.join("");
+}
+
+// These two captured public layouts are not generic board approvals. Keep
+// exact detail routes and all query parameters intact; never strip ATS queries.
+// Only en_GB is evidenced by the captured Ottawa apply links; there is no
+// broader locale schema in these adapters. New values need captured evidence.
+const OTTAWA_APPLY_LOCALES = new Set(["en_GB"]);
+function officialRoute(value) {
+  try {
+    const url = new URL(value);
+    const provider = url.hostname === "jobs-emplois.ottawa.ca" ? "ottawa" : url.hostname === "jobsearch.gov.mb.ca" ? "manitoba" : null;
+    if (!provider) return null;
+    let id = null;
+    if (url.protocol === "https:" && !url.username && !url.password && !url.port && !url.hash) {
+      if (provider === "ottawa" && !url.search) id = url.pathname.match(/^\/city-jobs\/job\/[^/]+\/(\d+)\/$/)?.[1] ?? null;
+      if (provider === "manitoba" && /^\/(?:jow\/)?advancedResult\.action$/.test(url.pathname) && [...url.searchParams.keys()].length === 1 && /^\d+$/.test(url.searchParams.get("ID") ?? "")) id = url.searchParams.get("ID");
+    }
+    return { provider, url, id };
+  } catch { return null; }
+}
+
+function officialDetailEvidence(job, raw, finalUrl, { plainJobText, parseJobDates }) {
+  const source = officialRoute(job.sourceUrl), final = officialRoute(finalUrl);
+  if (!source?.id || !final?.id || source.provider !== final.provider || source.id !== final.id ||
+      (targetId(job) && targetId(job) !== source.id) || !expectedEmployer(job)) return null;
+  const ottawa = source.provider === "ottawa";
+  const containers = htmlContainers(raw, (name, classes, tag) => name === "div" && (ottawa ?
+    /(?:^|\s)jobDisplayShell(?:\s|$)/.test(classes) && /\bitemtype\s*=\s*["']https?:\/\/schema\.org\/JobPosting["']/i.test(tag) :
+    /(?:^|\s)positionlisting(?:\s|$)/.test(classes) && /\bid\s*=\s*["']positionListing["']/i.test(tag)));
+  if (containers.length !== 1) return null;
+  const record = containers[0], text = plainJobText(record), title = identity(job.title);
+  if (!hasIdentity(text, expectedEmployer(job))) return null;
+  if (ottawa) {
+    if (identity(expectedEmployer(job)) !== identity("City of Ottawa")) return null;
+  } else {
+    // The captured bulletin advertises its hiring department as the fourth
+    // paragraph after the role heading (classification, term, optional blank,
+    // employer). Description prose and the global Manitoba masthead are not it.
+    const header = record.match(/<h2\b[^>]*>[\s\S]*?<\/h2\s*>([\s\S]*?)Advertisement Number:/i)?.[1] ?? "";
+    const paragraphs = [...header.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p\s*>/gi)];
+    if (identity(plainJobText(paragraphs[3]?.[1] ?? "")) !== identity(expectedEmployer(job))) return null;
+  }
+  const headings = [...record.matchAll(/<(h[1-6])\b[^>]*>([\s\S]*?)<\/\1\s*>/gi)]
+    .map(match => ({ level: match[1].toLowerCase(), text: identity(plainJobText(match[2])) }));
+  const titleHeadings = headings.filter(heading => heading.level === (ottawa ? "h1" : "h2"));
+  if (titleHeadings.length !== 1 || titleHeadings[0].text !== title || headings.filter(heading => heading.text === title).length !== 1) return null;
+  const sections = /^(?:job summary|education and experience|certifications and licences|knowledge|competencies skills and abilities|apply to)$/;
+  if (headings.some(heading => heading.text !== title && !sections.test(heading.text))) return null;
+  if (!ottawa && htmlContainers(record, (name, _classes, tag) => name === "div" && /\bid\s*=\s*["']bulletinTextArea["']/i.test(tag)).length !== 1) return null;
+  const ids = [];
+  for (const link of visibleActionMarkup(record).matchAll(/<a\b((?:[^"'<>]|"[^"]*"|'[^']*')*)>([\s\S]*?)<\/a\s*>/gi)) {
+    const classes = htmlAttribute(`<a${link[1]}>`, "class") ?? "";
+    const label = identity(plainJobText(link[2]));
+    // The captured Ottawa classes/label and Manitoba print label identify an
+    // action even when its href no longer resembles the supported endpoint.
+    const markedAction = ottawa ? /(?:^|\s)(?:apply|dialogApplyBtn)(?:\s|$)/.test(classes) || label === "apply now" : label === "printer friendly version";
+    const href = htmlAttribute(`<a${link[1]}>`, "href");
+    if (href === null) { if (markedAction) return null; continue; }
+    let url;
+    try { url = new URL(href, finalUrl); } catch { if (markedAction) return null; continue; }
+    const linkedDetail = officialRoute(url.toString());
+    if (linkedDetail?.id && (linkedDetail.provider !== source.provider || linkedDetail.id !== source.id)) return null;
+    // Endpoint families still catch malformed unlabelled candidates. Every
+    // identified action must satisfy the unchanged exact grammar below.
+    const applyCandidate = markedAction || /^\/talentcommunity\/apply(?:\/|$)/i.test(url.pathname) || /^\/(?:jow\/)?generateBulletin(?:[./]|$)/i.test(url.pathname);
+    if (!applyCandidate) continue;
+    const id = ottawa ? url.pathname.match(/^\/talentcommunity\/apply\/(\d+)\/$/)?.[1] :
+      /^\/(?:jow\/)?generateBulletin\.action$/.test(url.pathname) && [...url.searchParams.keys()].length === 1 ? url.searchParams.get("ID") : null;
+    if (!id || url.origin !== final.url.origin || url.username || url.password || url.hash) return null;
+    if (ottawa) {
+      const params = [...url.searchParams];
+      // No query is required. If supplied, only one supported locale is
+      // allowed: identity selectors, redirects, unknowns and duplicates fail.
+      if (params.length > 1 || params.some(([key, value]) => key !== "locale" || !OTTAWA_APPLY_LOCALES.has(value))) return null;
+    }
+    ids.push(id);
+  }
+  // Repeated apply buttons for this one role are expected, not multiple jobs.
+  if (!ids.length || ids.some(id => id !== source.id)) return null;
+  const deadlines = closingDateFields(text, parseJobDates);
+  if (deadlines.some(field => field.explicit && !field.date) ||
+      new Set(deadlines.map(field => field.date).filter(Boolean)).size !== 1 || !parseJobDates(text).closingAt) return null;
+  return { text };
+}
 
 /**
  * Return one positively identified record or null (unavailable, NOT a 404).
@@ -88,6 +242,9 @@ export function matchPostingEvidence(job, document, { plainJobText, parseJobDate
   if (!title) return null;
   const raw = typeof document.raw === "string" ? document.raw : "";
   const finalUrl = document.finalUrl ?? job.sourceUrl;
+  // Recognized public hosts fail closed on roots, listings, redirects and
+  // incomplete detail evidence; they must not fall through to generic cards.
+  if (officialRoute(job.sourceUrl) || officialRoute(finalUrl)) return officialDetailEvidence(job, raw, finalUrl, { plainJobText, parseJobDates });
   const id = targetId(job);
   const jsonRecords = collectJsonRecords(raw);
   if (jsonRecords.length) {
@@ -139,7 +296,15 @@ export function matchPostingEvidence(job, document, { plainJobText, parseJobDate
   return matches.length === 1 ? { text: plainJobText(matches[0]) } : null;
 }
 
+function closingDateFields(text, parseJobDates) {
+  const labels = [...text.matchAll(/\b(?:application deadline|applications? (?:close|due)|closing(?: date)?|deadline|apply (?:by|before))\b/gi)];
+  return labels.map((label, index) => {
+    const field = text.slice(label.index, labels[index + 1]?.index);
+    // A labelled field must parse independently. "Once the closing date has
+    // passed" is incidental prose, not an unsupported second deadline.
+    return { explicit: /^\s*[:\-]/.test(field.slice(label[0].length)), date: parseJobDates(field).closingAt?.toISOString() };
+  });
+}
 function closingDates(text, parseJobDates) {
-  const labels = [...text.matchAll(/(?:application deadline|applications? (?:close|due)|closing(?: date)?|deadline|apply (?:by|before))/gi)];
-  return new Set(labels.map((label, index) => parseJobDates(text.slice(label.index, labels[index + 1]?.index)).closingAt?.toISOString()).filter(Boolean));
+  return new Set(closingDateFields(text, parseJobDates).map(field => field.date).filter(Boolean));
 }
