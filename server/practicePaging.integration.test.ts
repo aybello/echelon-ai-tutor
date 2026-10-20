@@ -5,8 +5,10 @@ import { issueSubscriptionToken } from "./_core/subscriptionToken";
 import { resolveAccessForRequest } from "./_core/accessService";
 import { appRouter } from "./routers";
 import { getDb } from "./db";
-import { bookmarks, examResults, questionAttempts, questions, purchases, studentProfiles } from "../drizzle/schema";
+import { bookmarks, examResults, productAnalyticsEvents, questionAttempts, questions, purchases, studentProfiles } from "../drizzle/schema";
 import type { TrpcContext } from "./_core/context";
+import { hashAnalyticsEmail } from "./analytics";
+import { assertLearnerIntegrationDatabaseTarget } from "./learnerIntegrationGuard";
 
 const suffix = randomUUID();
 const email = `paging-${suffix}@echelon.test`, otherEmail = `other-${suffix}@echelon.test`;
@@ -16,9 +18,10 @@ const ids = Array.from({ length: 125 }, (_, i) => 930001 + i);
 const ctx = (email?: string): TrpcContext => ({ user: null, studentEmail: email ?? null, req: { headers: {}, cookies: {} }, res: {} }) as TrpcContext;
 const learner = appRouter.createCaller(ctx(email));
 let db: NonNullable<Awaited<ReturnType<typeof getDb>>>;
-const suite = process.env.DATABASE_URL ? describe : describe.skip;
+const suite = process.env.LEARNER_INTEGRATION_TEST_DB === "1" ? describe : describe.skip;
 suite("practice slices and mock retirement with a real database", () => {
   beforeAll(async () => {
+    assertLearnerIntegrationDatabaseTarget(process.env.DATABASE_URL);
     const connection = await getDb(); if (!connection) throw new Error("Test database required"); db = connection;
     await db.insert(purchases).values({ email, productKey: bankKey, productName: "Paging QA", amountCAD: 29900, stripeSessionId: `cs_${suffix}` });
     await db.insert(questions).values(ids.map((questionNum, i) => ({ bankKey, questionNum,
@@ -29,6 +32,9 @@ suite("practice slices and mock retirement with a real database", () => {
   });
   afterAll(async () => {
     if (!db) return;
+    await db.delete(productAnalyticsEvents).where(inArray(productAnalyticsEvents.emailHash, [
+      hashAnalyticsEmail(email), hashAnalyticsEmail(otherEmail),
+    ]));
     for (const table of [questionAttempts, bookmarks, examResults, studentProfiles]) await db.delete(table).where(inArray(table.studentEmail, [email, otherEmail]));
     await db.delete(questions).where(and(eq(questions.bankKey, bankKey), inArray(questions.questionNum, ids)));
     await db.delete(purchases).where(eq(purchases.email, email));

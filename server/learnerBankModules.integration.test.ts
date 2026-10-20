@@ -3,17 +3,19 @@ import mysql, { type Connection } from "mysql2/promise";
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { getDb } from "./db";
 import { quizRouter } from "./routers/quizRouter";
+import { assertLearnerIntegrationDatabaseTarget } from "./learnerIntegrationGuard";
 
 vi.mock("./db", async original => ({
   ...await original<typeof import("./db")>(),
   getDb: vi.fn(),
 }));
 
-const suite = process.env.DATABASE_URL ? describe : describe.skip;
+const suite = process.env.LEARNER_INTEGRATION_TEST_DB === "1" ? describe : describe.skip;
 let db: Connection;
 
 suite("learner bank module metadata", () => {
   beforeAll(async () => {
+    assertLearnerIntegrationDatabaseTarget(process.env.DATABASE_URL);
     db = await mysql.createConnection(process.env.DATABASE_URL!);
     for (const table of ["question_bank_meta", "questions"]) {
       const [definition] = await db.query<any[]>(`SHOW CREATE TABLE ${table}`);

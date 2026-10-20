@@ -3,10 +3,12 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { and, eq, inArray } from "drizzle-orm";
 import { appRouter } from "./routers";
 import { getDb } from "./db";
-import { examResults, questionAttempts, questions, purchases, organizations, teamFlexLicences } from "../drizzle/schema";
+import { examResults, questionAttempts, productAnalyticsEvents, questions, purchases, organizations, teamFlexLicences } from "../drizzle/schema";
 import { calculateReadinessSnapshot } from "./readinessSnapshot";
 import type { TrpcContext } from "./_core/context";
 import { ontarioWastewaterMockProfile } from "../shared/ontarioWastewaterMock";
+import { hashAnalyticsEmail } from "./analytics";
+import { assertLearnerIntegrationDatabaseTarget } from "./learnerIntegrationGuard";
 
 const suffix = randomUUID();
 const email = `reporting-${suffix}@echelon.test`;
@@ -18,10 +20,11 @@ const ctx = (email: string): TrpcContext => ({ user: null, studentEmail: email, 
 const learner = appRouter.createCaller(ctx(email));
 let db: NonNullable<Awaited<ReturnType<typeof getDb>>>;
 let orgId: number;
-const suite = process.env.DATABASE_URL ? describe : describe.skip;
+const suite = process.env.LEARNER_INTEGRATION_TEST_DB === "1" ? describe : describe.skip;
 
 suite("course reporting from issued mock to learner history and manager readiness", () => {
   beforeAll(async () => {
+    assertLearnerIntegrationDatabaseTarget(process.env.DATABASE_URL);
     const connection = await getDb(); if (!connection) throw new Error("Test database required"); db = connection;
     for (const bankKey of banks) {
       const profile = ontarioWastewaterMockProfile(bankKey);
@@ -47,6 +50,9 @@ suite("course reporting from issued mock to learner history and manager readines
   });
   afterAll(async () => {
     if (!db) return;
+    await db.delete(productAnalyticsEvents).where(inArray(productAnalyticsEvents.emailHash, [
+      hashAnalyticsEmail(email), hashAnalyticsEmail(otherEmail),
+    ]));
     await db.delete(questionAttempts).where(inArray(questionAttempts.studentEmail, [email, otherEmail]));
     await db.delete(examResults).where(inArray(examResults.studentEmail, [email, otherEmail]));
     await db.delete(questions).where(and(inArray(questions.bankKey, banks), inArray(questions.questionNum, ids)));

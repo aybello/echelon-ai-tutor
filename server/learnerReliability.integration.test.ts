@@ -3,9 +3,11 @@ import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { and, eq, inArray } from "drizzle-orm";
 import { appRouter } from "./routers";
 import { getDb } from "./db";
-import { examResults, questionAttempts, questions, purchases, purchaseEmailOutbox } from "../drizzle/schema";
+import { examResults, questionAttempts, productAnalyticsEvents, questions, purchases, purchaseEmailOutbox } from "../drizzle/schema";
 import { recordPurchaseWithConfirmation, deliverPurchaseEmails } from "./purchaseEmailOutbox";
 import type { TrpcContext } from "./_core/context";
+import { hashAnalyticsEmail } from "./analytics";
+import { assertLearnerIntegrationDatabaseTarget } from "./learnerIntegrationGuard";
 
 const email = `reliability-${randomUUID()}@echelon.test`;
 const bank = "class4-ww";
@@ -15,10 +17,11 @@ const sessions: string[] = [];
 let db: NonNullable<Awaited<ReturnType<typeof getDb>>>;
 const ctx = { user: null, studentEmail: email, req: { headers: {}, cookies: {} }, res: {} } as TrpcContext;
 const caller = appRouter.createCaller(ctx);
-const suite = process.env.DATABASE_URL ? describe : describe.skip;
+const suite = process.env.LEARNER_INTEGRATION_TEST_DB === "1" ? describe : describe.skip;
 
 suite("learner reliability with a real database", () => {
   beforeAll(async () => {
+    assertLearnerIntegrationDatabaseTarget(process.env.DATABASE_URL);
     const connection = await getDb(); if (!connection) throw new Error("Test database required"); db = connection;
     await db.insert(purchases).values({ email, productKey: bank, productName: "Mock integrity QA", amountCAD: 29900, stripeSessionId: `cs_access_${randomUUID()}` });
     await db.insert(questions).values(ids.map(questionNum => ({ bankKey: databaseBank, questionNum,
@@ -28,6 +31,7 @@ suite("learner reliability with a real database", () => {
   });
   afterAll(async () => {
     if (!db) return;
+    await db.delete(productAnalyticsEvents).where(eq(productAnalyticsEvents.emailHash, hashAnalyticsEmail(email)));
     await db.delete(questionAttempts).where(eq(questionAttempts.studentEmail, email));
     await db.delete(examResults).where(eq(examResults.studentEmail, email));
     await db.delete(questions).where(and(eq(questions.bankKey, databaseBank), inArray(questions.questionNum, ids)));
