@@ -1,5 +1,5 @@
-import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
-import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import MockExamShell from "@/components/MockExamShell";
+import { useMockExamMetadata } from "@/hooks/useQuestionBank";
 import QuizSkeleton from "@/components/QuizSkeleton";
 import { usePageMeta } from "@/hooks/usePageMeta";
 // WPI Class I Wastewater Collection exam blueprint: 100 questions
@@ -17,15 +17,8 @@ export default function WpiClass1WaterCollMockExam() {
     noindex: true
   });
 
-  const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading, dbUnavailable } = useQuestionBank("wpi-class1-wastewater-coll");
+  const { moduleTargets: dbModuleTargets, totalQuestions, isLoading: bankLoading, dbUnavailable } = useMockExamMetadata("wpi-class1-wastewater-coll");
   
-  const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({
-    id: q.id, module: q.module,
-    question: q.question ?? q.text ?? "",
-    options: q.options,
-    correct: q.correctIndex ?? q.correct ?? q.correctAnswer ?? 0,
-    explanation: q.explanation,
-  }));
 
   if (bankLoading) return <QuizSkeleton />;
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
@@ -41,7 +34,6 @@ export default function WpiClass1WaterCollMockExam() {
       passThreshold={0.7}
       moduleTargets={dbModuleTargets ?? {}}
       moduleColors={MODULE_COLORS}
-      questionPool={POOL}
       productKey="wpi-class1-water-coll"
       productName="WPI Class I Wastewater Collection Practice Pass"
       price={99}
@@ -50,7 +42,7 @@ export default function WpiClass1WaterCollMockExam() {
       practiceLabel="Class I Collection Practice"
       showProvinceSelector={false}
       currentPath="/wpi-class1-water-coll-mock"
-      infoLine={`${POOL.length} questions · Canada & US · ABC/WPI Standard · Class I`}
+      infoLine={`${totalQuestions} questions · Canada & US · ABC/WPI Standard · Class I`}
       stream="wastewater"
       accentColor="#065F46"
     />

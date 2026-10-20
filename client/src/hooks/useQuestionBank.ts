@@ -32,6 +32,32 @@ export interface ModuleOverview {
 
 export type QuestionBankPreviewSurface = "practice" | "flashcards" | "mock";
 
+/**
+ * Safe metadata for a mock-exam landing page. Active mock questions are issued
+ * only by exam.startMock, which strips answer keys and explanations until the
+ * signed exam is submitted and scored.
+ */
+export function useMockExamMetadata(bankKey: string) {
+  const metaQuery = trpc.quiz.getBankMeta.useQuery(
+    { bankKey },
+    { staleTime: 60_000, retry: 2, retryDelay: 1500 },
+  );
+  const isLoading = metaQuery.isLoading;
+
+  return {
+    moduleTargets: metaQuery.data?.moduleTargets ?? null,
+    totalQuestions: resolveQuestionBankTotal(metaQuery.data?.totalQuestions),
+    isLoading,
+    isFullyLoaded: metaQuery.isSuccess,
+    dbUnavailable: !isLoading && (
+      !metaQuery.isSuccess ||
+      !metaQuery.data ||
+      resolveQuestionBankTotal(metaQuery.data.totalQuestions) === 0
+    ),
+    error: metaQuery.error ?? null,
+  };
+}
+
 export function useQuestionBank(
   bankKey: string,
   mode: "full" | "lazy" = "full",

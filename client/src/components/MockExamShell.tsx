@@ -216,8 +216,6 @@ export interface StreamOption {
   moduleTargets: Record<string, number>;
   /** Module colour config */
   moduleColors: Record<string, ModuleColorConfig>;
-  /** Full question pool for this stream */
-  questionPool: ExamQuestion[];
   /** Override the examType saved to DB (preserves legacy score history) */
   scoreExamType?: ExamProductKey;
   /** Stream tag for ScoreHistory ("water" | "wastewater") */
@@ -261,8 +259,6 @@ export interface MockExamConfig {
   moduleTargets: Record<string, number>;
   /** Module name → colour config for badges and progress bars */
   moduleColors: Record<string, ModuleColorConfig>;
-  /** Full question pool (all questions in the bank) */
-  questionPool: ExamQuestion[];
   /** Optional course-specific visual rendered before the question stem. */
   renderQuestionSupplement?: (question: ExamQuestion) => ReactNode;
   /** Stripe / PurchaseGate product key */
@@ -315,9 +311,9 @@ export interface MockExamConfig {
   scoreExamType?: ExamProductKey;
   /**
    * When provided, the shell renders a stream-select screen before the intro.
-   * The selected stream's moduleTargets / moduleColors / questionPool / scoreExamType
+   * The selected stream's moduleTargets / moduleColors / scoreExamType
    * override the top-level props for that session.
-   * Top-level moduleTargets / moduleColors / questionPool / productKey / productName / price
+   * Top-level moduleTargets / moduleColors / productKey / productName / price
    * are used as defaults when no stream is selected yet.
    */
   streamOptions?: StreamOption[];
@@ -367,7 +363,6 @@ export default function MockExamShell({
   passThreshold,
   moduleTargets: moduleTargetsProp,
   moduleColors: moduleColorsProp,
-  questionPool: questionPoolProp,
   productKey: productKeyProp,
   productName: productNameProp,
   price: priceProp,
@@ -441,7 +436,6 @@ export default function MockExamShell({
   const price          = selectedStream?.price          ?? priceProp;
   const moduleTargets  = selectedStream?.moduleTargets  ?? moduleTargetsProp;
   const moduleColors   = selectedStream?.moduleColors   ?? moduleColorsProp;
-  const questionPool   = selectedStream?.questionPool   ?? questionPoolProp;
   const stream         = selectedStream?.stream         ?? streamProp;
   const scoreExamType  = selectedStream?.scoreExamType  ?? scoreExamTypeProp;
   // Accent colour: use stream colour when a stream is selected

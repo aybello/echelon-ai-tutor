@@ -1,8 +1,8 @@
 // OIT WASTEWATER MOCK EXAM — migrated onto MockExamShell (2025-06)
 // 50 questions · 1-hour timer · 70% pass threshold
 // productKey="oit-ww" (Stripe gate + saved examType)
-import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
-import { useQuestionBank } from "@/hooks/useQuestionBank";
+import MockExamShell from "@/components/MockExamShell";
+import { useMockExamMetadata } from "@/hooks/useQuestionBank";
 import QuizSkeleton from "@/components/QuizSkeleton";
 
 const MODULE_TARGETS: Record<string, number> = {
@@ -34,16 +34,7 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
 };
 
 export default function OITWastewaterMockExam() {
-  const { questions: dbQuestions, isLoading, dbUnavailable } = useQuestionBank("oit-ww", "full", "mock");
-
-  const pool: ExamQuestion[] = dbQuestions.map(q => ({
-    id: q.id,
-    module: q.module,
-    question: q.question,
-    options: q.options,
-    correct: q.correctIndex,
-    explanation: q.explanation,
-  }));
+  const { totalQuestions, isLoading, dbUnavailable } = useMockExamMetadata("oit-ww");
 
   if (isLoading) return <QuizSkeleton />;
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
@@ -59,13 +50,12 @@ export default function OITWastewaterMockExam() {
       passThreshold={0.7}
       moduleTargets={MODULE_TARGETS}
       moduleColors={MODULE_COLORS}
-      questionPool={pool}
       productKey="oit-ww"
       productName="OIT Wastewater Practice Pass"
       price={49}
       freeQuestionLimit={30}
       features={[
-        `${pool.length.toLocaleString()} OIT Wastewater questions — unlimited attempts`,
+        `${totalQuestions.toLocaleString()} OIT Wastewater questions — unlimited attempts`,
         "Complete 50-question timed mock exams",
         "Full flashcard deck and saved progress",
         "Module-by-module performance tracking",
@@ -74,7 +64,7 @@ export default function OITWastewaterMockExam() {
       practicePath="/oit-ww"
       practiceLabel="OIT Wastewater Practice"
       currentPath="/oit-ww-mock"
-      infoLine={`${pool.length} questions · OIT Wastewater Treatment`}
+      infoLine={`${totalQuestions} questions · OIT Wastewater Treatment`}
     />
   );
 }

@@ -1,5 +1,5 @@
-import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
-import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import MockExamShell from "@/components/MockExamShell";
+import { useMockExamMetadata } from "@/hooks/useQuestionBank";
 import QuizSkeleton from "@/components/QuizSkeleton";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { formatQuestionBankCount } from "@shared/questionBankDisplay";
@@ -20,14 +20,7 @@ export default function Class3WaterDistMockExam() {
     description: CLASS3_WATER_DISTRIBUTION_MOCK_DESCRIPTION,
     noindex: true
   });
-  const { questions: dbQuestions, moduleTargets: dbModuleTargets, totalQuestions, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class3-water-dist");
-  const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({
-    id: q.id, module: q.module,
-    question: q.question ?? q.text ?? "",
-    options: q.options,
-    correct: q.correctIndex ?? q.correct ?? q.correctAnswer ?? 0,
-    explanation: q.explanation,
-  }));
+  const { moduleTargets: dbModuleTargets, totalQuestions, isLoading: bankLoading, dbUnavailable } = useMockExamMetadata("class3-water-dist");
   if (bankLoading) return <QuizSkeleton />;
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
   return (
@@ -41,7 +34,6 @@ export default function Class3WaterDistMockExam() {
       passThreshold={0.7}
       moduleTargets={dbModuleTargets ?? {}}
       moduleColors={MODULE_COLORS}
-      questionPool={POOL}
       productKey="class3-water-dist"
       backPath="/class3-water"
       practicePath="/class3-water-dist"

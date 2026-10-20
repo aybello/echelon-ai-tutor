@@ -1,5 +1,5 @@
-import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
-import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import MockExamShell from "@/components/MockExamShell";
+import { useMockExamMetadata } from "@/hooks/useQuestionBank";
 import QuizSkeleton from "@/components/QuizSkeleton";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
@@ -20,15 +20,8 @@ export default function Class3WaterMockExam() {
     noindex: true
   });
 
-  const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class3-water");
+  const { moduleTargets: dbModuleTargets, totalQuestions, isLoading: bankLoading, dbUnavailable } = useMockExamMetadata("class3-water");
   
-  const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({
-    id: q.id, module: q.module,
-    question: q.question ?? q.text ?? "",
-    options: q.options,
-    correct: q.correctIndex ?? q.correct ?? q.correctAnswer ?? 0,
-    explanation: q.explanation,
-  }));
 
   if (bankLoading) return <QuizSkeleton />;
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
@@ -44,7 +37,6 @@ export default function Class3WaterMockExam() {
       passThreshold={0.7}
       moduleTargets={dbModuleTargets ?? {}}
       moduleColors={MODULE_COLORS}
-      questionPool={POOL}
       productKey="class3-water"
       productName="Class 3 Water Treatment Practice Pass"
       price={249}

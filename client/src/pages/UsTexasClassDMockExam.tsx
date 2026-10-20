@@ -37,7 +37,6 @@ export default function UsTexasClassDMockExam() {
       passThreshold={0.7}
       moduleTargets={Object.fromEntries(TEXAS_CLASS_D_WATER_MOCK_BLUEPRINT.map((area) => [area.module, area.total]))}
       moduleColors={MODULE_COLORS}
-      questionPool={[]}
       productKey="us-texas-class-d-water"
       practicePath="/us-texas-class-d-water"
       practiceLabel="Texas Class D Practice"
