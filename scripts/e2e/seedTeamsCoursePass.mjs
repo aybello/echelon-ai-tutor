@@ -113,6 +113,25 @@ try {
       [databaseBank, number, `Browser QA question ${number}`, JSON.stringify(['Correct QA answer', 'Second QA answer', 'Third QA answer', 'Fourth QA answer'])],
     );
   }
+  // Mock landing pages now request safe bank metadata before the signed server
+  // session supplies questions. Keep the isolated fixture shape aligned with
+  // production without storing question text, options, answers or explanations
+  // in metadata. Version 1 intentionally keeps the synthetic single-area
+  // fixture out of the production Class IV blueprint sampler.
+  await connection.execute(
+    `INSERT INTO question_bank_meta
+      (bankKey, modules, totalQuestions, contentVersion, blueprintVersion)
+     VALUES (?, '[]', 0, 1, 1)
+     ON DUPLICATE KEY UPDATE bankKey = VALUES(bankKey)`,
+    [databaseBank],
+  );
+  const [metadataRows] = await connection.execute(
+    "SELECT bankKey FROM question_bank_meta WHERE bankKey = ?",
+    [databaseBank],
+  );
+  if (metadataRows.length !== 1) {
+    throw new Error(`Expected one mock metadata fixture row for ${databaseBank}`);
+  }
   if (prefix === "reporting") {
     for (const productKey of ["class1-water", "class1-ww"]) {
       await connection.execute(

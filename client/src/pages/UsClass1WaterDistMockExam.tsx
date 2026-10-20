@@ -1,5 +1,5 @@
-import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
-import { useQuestionBank } from "@/hooks/useQuestionBank";
+import MockExamShell from "@/components/MockExamShell";
+import { useMockExamMetadata } from "@/hooks/useQuestionBank";
 import QuizSkeleton from "@/components/QuizSkeleton";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
@@ -19,15 +19,8 @@ export default function UsClass1WaterDistMockExam() {
     noindex: true,
   });
 
-  const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading, dbUnavailable } = useQuestionBank("us-class1-water-dist");
+  const { moduleTargets: dbModuleTargets, totalQuestions, isLoading: bankLoading, dbUnavailable } = useMockExamMetadata("us-class1-water-dist");
 
-  const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({
-    id: q.id, module: q.module,
-    question: q.question ?? q.text ?? "",
-    options: q.options,
-    correct: q.correctIndex ?? q.correct ?? q.correctAnswer ?? 0,
-    explanation: q.explanation,
-  }));
 
   if (bankLoading) return <QuizSkeleton />;
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
@@ -43,7 +36,6 @@ export default function UsClass1WaterDistMockExam() {
       passThreshold={0.7}
       moduleTargets={dbModuleTargets ?? {}}
       moduleColors={MODULE_COLORS}
-      questionPool={POOL}
       productKey="us-class1-water-dist"
       productName="US Class I Water Distribution Practice Pass"
       price={149}
@@ -52,7 +44,7 @@ export default function UsClass1WaterDistMockExam() {
       practiceLabel="US Class I Distribution Practice"
       showProvinceSelector={false}
       currentPath="/us-class1-water-dist-mock"
-      infoLine={`${POOL.length} questions · United States · WPI Class 1 Need-to-Know Criteria`}
+      infoLine={`${totalQuestions} questions · United States · WPI Class 1 Need-to-Know Criteria`}
       stream="water"
       accentColor="#1D4ED8"
     />

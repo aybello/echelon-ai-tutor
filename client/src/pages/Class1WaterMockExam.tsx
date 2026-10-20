@@ -1,10 +1,10 @@
 // CLASS 1 WATER MOCK EXAM — migrated onto MockExamShell (2025-06)
-// 100 questions · 2-hour timer · 70% pass threshold
+// 100 questions · 3-hour timer · 70% pass threshold
 // productKey="class1-water" (Stripe gate)
 // scoreExamType="class1" (preserves historical score records saved under "class1")
 // moduleTargets: official WPI/ABC blueprint weights from question_bank_meta DB
-import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
-import { useQuestionBank } from "@/hooks/useQuestionBank";
+import MockExamShell from "@/components/MockExamShell";
+import { useMockExamMetadata } from "@/hooks/useQuestionBank";
 import QuizSkeleton from "@/components/QuizSkeleton";
 
 const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
@@ -16,16 +16,8 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
 };
 
 export default function Class1WaterMockExam() {
-  const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading, dbUnavailable } = useQuestionBank("class1-water");
+  const { moduleTargets: dbModuleTargets, totalQuestions, isLoading: isLoading, dbUnavailable } = useMockExamMetadata("class1-water");
 
-  const pool: ExamQuestion[] = dbQuestions.map(q => ({
-    id: q.id,
-    module: q.module,
-    question: q.question,
-    options: q.options,
-    correct: q.correctIndex,
-    explanation: q.explanation,
-  }));
 
   if (isLoading) return <QuizSkeleton />;
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
@@ -34,14 +26,13 @@ export default function Class1WaterMockExam() {
     <MockExamShell
       title="Class 1 Water Treatment Mock Exam"
       badge="ONTARIO CLASS 1 · WATER TREATMENT"
-      metaDescription="100-question timed mock exam for the Ontario Class 1 Water Treatment operator certification. 2-hour timer, 70% pass threshold, and full module breakdown on results."
+      metaDescription="100-question timed mock exam for the Ontario Class 1 Water Treatment operator certification. 3-hour timer, 70% pass threshold, and full module breakdown on results."
       metaKeywords="Class 1 water treatment mock exam, Ontario water operator exam, OWWCO Class 1, timed exam prep"
       examQuestions={100}
       examDuration={3 * 60 * 60}
       passThreshold={0.7}
       moduleTargets={dbModuleTargets ?? {}}
       moduleColors={MODULE_COLORS}
-      questionPool={pool}
       productKey="class1-water"
       scoreExamType="class1"
       productName="Class 1 Water Treatment Practice Pass"
@@ -53,7 +44,7 @@ export default function Class1WaterMockExam() {
       formulaLabel="Class 1 Formula Sheet"
       currentPath="/class1-water-mock"
       stream="water"
-      infoLine={`${pool.length} questions · Ontario Class 1 Water Treatment`}
+      infoLine={`${totalQuestions} questions · Ontario Class 1 Water Treatment`}
     />
   );
 }

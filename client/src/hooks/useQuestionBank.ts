@@ -32,6 +32,34 @@ export interface ModuleOverview {
 
 export type QuestionBankPreviewSurface = "practice" | "flashcards" | "mock";
 
+/**
+ * Safe metadata for a mock-exam landing page. Active mock questions are issued
+ * only by exam.startMock, which strips answer keys and explanations until the
+ * signed exam is submitted and scored.
+ */
+export function useMockExamMetadata(bankKey: string) {
+  const metaQuery = trpc.quiz.getBankMeta.useQuery(
+    { bankKey },
+    { staleTime: 60_000, retry: 2, retryDelay: 1500 },
+  );
+  const isLoading = metaQuery.isLoading;
+  const hasNoVisibleQuestions = metaQuery.data != null
+    && resolveQuestionBankTotal(metaQuery.data.totalQuestions) === 0;
+
+  return {
+    moduleTargets: metaQuery.data?.moduleTargets ?? null,
+    totalQuestions: resolveQuestionBankTotal(metaQuery.data?.totalQuestions),
+    isLoading,
+    isFullyLoaded: metaQuery.isSuccess,
+    // A missing metadata row does not prove the active mock is unavailable.
+    // The signed startMock procedure still verifies learner-visible questions,
+    // so render the landing page and let that authoritative request decide.
+    // Actual request failures and known-empty learner inventories stay blocked.
+    dbUnavailable: !isLoading && (!metaQuery.isSuccess || hasNoVisibleQuestions),
+    error: metaQuery.error ?? null,
+  };
+}
+
 export function useQuestionBank(
   bankKey: string,
   mode: "full" | "lazy" = "full",

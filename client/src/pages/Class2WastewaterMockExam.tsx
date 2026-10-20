@@ -1,5 +1,5 @@
-import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
-import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import MockExamShell from "@/components/MockExamShell";
+import { useMockExamMetadata } from "@/hooks/useQuestionBank";
 import QuizSkeleton from "@/components/QuizSkeleton";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
@@ -19,15 +19,8 @@ export default function Class2WastewaterMockExam() {
     noindex: true
   });
 
-  const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class2-wastewater");
+  const { moduleTargets: dbModuleTargets, totalQuestions, isLoading: bankLoading, dbUnavailable } = useMockExamMetadata("class2-wastewater");
   
-  const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({
-    id: q.id, module: q.module,
-    question: q.question ?? q.text ?? "",
-    options: q.options,
-    correct: q.correctIndex ?? q.correct ?? q.correctAnswer ?? 0,
-    explanation: q.explanation,
-  }));
 
   if (bankLoading) return <QuizSkeleton />;
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
@@ -43,7 +36,6 @@ export default function Class2WastewaterMockExam() {
       passThreshold={0.7}
       moduleTargets={dbModuleTargets ?? {}}
       moduleColors={MODULE_COLORS}
-      questionPool={POOL}
       productKey="class2-ww"
       productName="Class 2 Wastewater Treatment Practice Pass"
       price={149}
@@ -52,7 +44,7 @@ export default function Class2WastewaterMockExam() {
       practiceLabel="Class 2 Wastewater Practice"
       showProvinceSelector={true}
       currentPath="/class2-ww-mock"
-      infoLine={`${POOL.length} questions · Ontario (MECP) · BC (EOCP Level II) · Alberta (AWWOA Class II)`}
+      infoLine={`${totalQuestions} questions · Ontario (MECP) · BC (EOCP Level II) · Alberta (AWWOA Class II)`}
       stream="wastewater"
     />
   );

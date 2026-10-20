@@ -1,5 +1,5 @@
-import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
-import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import MockExamShell from "@/components/MockExamShell";
+import { useMockExamMetadata } from "@/hooks/useQuestionBank";
 import QuizSkeleton from "@/components/QuizSkeleton";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
@@ -20,15 +20,8 @@ export default function Class2WaterMockExam() {
     noindex: true
   });
 
-  const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class2-water");
+  const { moduleTargets: dbModuleTargets, totalQuestions, isLoading: bankLoading, dbUnavailable } = useMockExamMetadata("class2-water");
   
-  const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({
-    id: q.id, module: q.module,
-    question: q.question ?? q.text ?? "",
-    options: q.options,
-    correct: q.correctIndex ?? q.correct ?? q.correctAnswer ?? 0,
-    explanation: q.explanation,
-  }));
 
   if (bankLoading) return <QuizSkeleton />;
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
@@ -37,14 +30,13 @@ export default function Class2WaterMockExam() {
     <MockExamShell
       title="Class 2 Water Treatment Mock Exam"
       badge="ONTARIO CLASS II · WATER TREATMENT"
-      metaDescription="100-question timed mock exam for the Ontario Class 2 Water Treatment operator certification. 2-hour timer, 70% pass threshold, and full module breakdown on results."
+      metaDescription="100-question timed mock exam for the Ontario Class 2 Water Treatment operator certification. 3-hour timer, 70% pass threshold, and full module breakdown on results."
       metaKeywords="Class 2 water treatment mock exam, Ontario operator exam, OWWCO Class 2, O. Reg. 128/04 practice test"
       examQuestions={100}
       examDuration={3 * 60 * 60}
       passThreshold={0.7}
       moduleTargets={dbModuleTargets ?? {}}
       moduleColors={MODULE_COLORS}
-      questionPool={POOL}
       productKey="class2-water"
       productName="Class 2 Water Treatment Practice Pass"
       price={149}

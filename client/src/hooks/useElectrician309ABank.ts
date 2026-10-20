@@ -74,6 +74,22 @@ export const ELECTRICIAN_309A_MODULE_TARGETS = Object.fromEntries(
   ELECTRICIAN_309A_MODULES.map((module) => [ELECTRICIAN_309A_MODULE_LABELS[module.code], module.examQuestions]),
 ) as Record<string, number>;
 
+/** Safe metadata for the 309A mock landing page. */
+export function useElectrician309AMockMetadata() {
+  const query = trpc.electricianReview.get309ABetaMetadata.useQuery(undefined, {
+    staleTime: 60_000,
+    retry: 2,
+    retryDelay: 1500,
+  });
+
+  return {
+    moduleTargets: ELECTRICIAN_309A_MODULE_TARGETS,
+    totalQuestions: query.data?.total ?? 0,
+    isLoading: query.isLoading,
+    dbUnavailable: !query.isLoading && (!query.isSuccess || !query.data || query.data.total === 0),
+  };
+}
+
 /** Adapts governed certification records to the standard Echelon course-bank contract. */
 export function useElectrician309ABank() {
   const accessToken = useMemo(() => {
