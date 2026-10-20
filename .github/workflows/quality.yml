@@ -203,6 +203,8 @@ jobs:
           NODE_ENV: test
           JWT_SECRET: test-only-not-for-production
           DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
+          CI: "1"
+          LEARNER_INTEGRATION_TEST_DB: "1"
           REQUIRE_WEBHOOK_INTEGRATION_DB: "1"
           ECHELON_RUN_ISOLATED_INTEGRATION_TESTS: "true"
           STRIPE_SECRET_KEY: sk_test_ci_placeholder
@@ -256,6 +258,8 @@ jobs:
           NODE_ENV: test
           JWT_SECRET: test-only-not-for-production
           DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
+          CI: "1"
+          LEARNER_INTEGRATION_TEST_DB: "1"
           STRIPE_SECRET_KEY: sk_test_ci_placeholder
       - name: Database-backed practice paging, module filters and mock retirement
         run: pnpm exec vitest run --maxWorkers 2 --minWorkers 1 server/practicePaging.integration.test.ts server/learnerBankModules.integration.test.ts
@@ -263,6 +267,8 @@ jobs:
           NODE_ENV: test
           JWT_SECRET: test-only-not-for-production
           DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
+          CI: "1"
+          LEARNER_INTEGRATION_TEST_DB: "1"
           STRIPE_SECRET_KEY: sk_test_ci_placeholder
       - name: Verify clean tracked release and exported source archive identity
         shell: bash
