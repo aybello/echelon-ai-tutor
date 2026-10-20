@@ -14,6 +14,10 @@ const electricianRouterSource = readFileSync(
   resolve(process.cwd(), "server/routers/electricianReviewRouter.ts"),
   "utf8"
 );
+const uiPreviewSource = readFileSync(
+  resolve(process.cwd(), "prototypes/ui-ux-preview/main.tsx"),
+  "utf8"
+);
 
 function sourceFor(filename: string) {
   return readFileSync(resolve(pagesDir, filename), "utf8");
@@ -23,6 +27,7 @@ describe("mock exam presentation integrity", () => {
   it("keeps answer keys and explanations out of every mock page before a signed submission", () => {
     expect(mockFiles.length).toBe(40);
     expect(shellSource).not.toMatch(/\bquestionPool\b/);
+    expect(uiPreviewSource).not.toMatch(/\bquestionPool\s*=/);
 
     for (const filename of mockFiles) {
       const source = sourceFor(filename);

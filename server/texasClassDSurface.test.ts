@@ -61,7 +61,8 @@ describe("Texas Class D released learning surfaces", () => {
     expect(mockSource).not.toContain("useQuestionBank");
     expect(mockSource).not.toContain("correctIndex");
     expect(mockSource).not.toContain("explanation:");
-    expect(mockSource).toContain("questionPool={[]}");
+    expect(mockSource).not.toContain("questionPool");
+    expect(mockSource).toContain("<MockExamShell");
   });
 
   it("loads Texas flashcards from the governed bank behind the existing purchase gate", () => {
