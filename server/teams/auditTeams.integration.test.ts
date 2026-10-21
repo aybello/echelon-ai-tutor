@@ -2,6 +2,7 @@ import { randomUUID } from "node:crypto";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import { and, eq, inArray, or } from "drizzle-orm";
 import { organizations, organizationMembers, teamFlexLicences, questionAttempts, subscriptions, questions, purchases, studentProfiles, examOutcomes, examResults, learnerOnboarding, diagnosticSessions, examDates, teamFlexOrders, teamFlexOrderItems } from "../../drizzle/schema";
+import { safeSupervisorCsvCell } from "../../shared/supervisorActionPlan";
 import { getDb } from "../db";
 import { createIsolatedAuditDatabase } from "./auditSqlHarness";
 import { appRouter } from "../routers";
@@ -298,7 +299,7 @@ suite("October 3 team boundary regressions (isolated synthetic database)", () =>
     ]));
     const { csv } = await caller.orgIntel.exportTeamCSV({ orgId });
     const [header, ...rows] = csv.split("\n").map(row => row.split(","));
-    const learnerRow = rows.find(row => row[header.indexOf("Email")] === learner);
+    const learnerRow = rows.find(row => row[header.indexOf("Email")] === safeSupervisorCsvCell(learner));
     if (!learnerRow) throw new Error("Synthetic learner missing from Team CSV");
     expect(learnerRow[header.indexOf("Readiness Score")]).toBe("73%");
     expect(learnerRow[header.indexOf("Mock Exams")]).toBe("5");
