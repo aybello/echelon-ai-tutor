@@ -35,7 +35,7 @@ function makeOrg(overrides: Partial<{
 }> = {}) {
   return {
     id: 1,
-    name: "Utilities Kingston",
+    name: "Example Municipal Utility",
     province: "ontario",
     tier: "all-access",
     seatsTotal: 10,
@@ -288,7 +288,7 @@ describe("webhook org provisioning", () => {
       status: "active",
       metadata: {
         type: "org",
-        org_name: "Utilities Kingston",
+        org_name: "Example Municipal Utility",
         manager_email: "fixture-3@example.com",
         subscription_province: "ontario",
         seats: "15",
@@ -313,7 +313,7 @@ describe("webhook org provisioning", () => {
     orgs.push(orgRow);
 
     expect(orgs).toHaveLength(1);
-    expect(orgs[0].name).toBe("Utilities Kingston");
+    expect(orgs[0].name).toBe("Example Municipal Utility");
     expect(orgs[0].seatsTotal).toBe(15);
     expect(orgs[0].managerEmail).toBe("fixture-3@example.com");
     expect(orgs[0].billingType).toBe("stripe");

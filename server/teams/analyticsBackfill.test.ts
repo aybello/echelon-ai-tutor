@@ -132,7 +132,7 @@ describe("Activation rate calculation", () => {
     expect(unactivated).toBe(1); // only "invited" counts as unactivated
   });
 
-  it("Kingston's 22% non-activation rate is correctly identified", () => {
+  it("Example utility 22% non-activation rate is correctly identified", () => {
     // 23 operators, 5 with zero activity = 21.7% non-activation
     const totalOperators = 23;
     const inactiveOperators = 5;

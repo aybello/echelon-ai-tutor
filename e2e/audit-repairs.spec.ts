@@ -43,7 +43,7 @@ test('partnership errors retain fields and retries reuse a receipt key',async({p
   });
   await page.goto('/partnerships');
   await page.getByPlaceholder('Jane Smith').fill('Synthetic Inquiry');
-  await page.getByPlaceholder('Kingston Utilities').fill('Synthetic Utility');
+  await page.getByPlaceholder('Example Municipal Utility').fill('Synthetic Utility');
   await page.locator('input[type="email"]').fill('inquiry@example.test');
   await page.locator('select').selectOption({index:1});
   await page.locator('textarea').fill('A synthetic browser inquiry to test saved retry behavior.');

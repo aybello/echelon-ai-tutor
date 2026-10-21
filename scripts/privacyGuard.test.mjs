@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { mkdtempSync, readFileSync, writeFileSync, rmSync } from "node:fs";
+import { mkdtempSync, readFileSync, writeFileSync, rmSync, symlinkSync, lstatSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { execFileSync, spawnSync } from "node:child_process";
@@ -75,8 +75,139 @@ test("staged mode checks the indexed tree, not a clean but unstaged replacement"
   } finally { rmSync(root, { recursive: true, force: true }); }
 });
 
-test("demo startup gates reject unapproved, remote, production-named and malformed targets without I/O", () => {
-  for (const file of ["seed-demo-org.mjs", "simulate-team-activity.ts"]) {
+test("blocks approved customer-case identifiers without disclosing them", () => {
+  const organization = [["U", "til", "ities"].join(""), ["King", "ston"].join("")].join(" ");
+  const reverseOrganization = [["King", "ston"].join(""), ["U", "til", "ities"].join("")].join(" ");
+  const promotion = ["K", "ING", "ST", "ON", "20"].join("");
+  const text = `${organization}\n${reverseOrganization}\n${promotion}\n`;
+  const findings = scanPrivacyText(text, "scripts/example.mjs");
+  assert.deepEqual(findings, [{ file: "scripts/example.mjs", category: "prohibited-case-identifier", count: 3 }]);
+  const serialized = JSON.stringify(findings);
+  assert.ok(!serialized.includes(organization));
+  assert.ok(!serialized.includes(reverseOrganization));
+  assert.ok(!serialized.includes(promotion));
+});
+
+test("staged privacy checks fail on prohibited case identifiers without echoing them", () => {
+  const root = mkdtempSync(join(tmpdir(), "privacy-case-identifier-"));
+  try {
+    execFileSync("git", ["init", "-q"], { cwd: root });
+    const organization = [["U", "til", "ities"].join(""), ["King", "ston"].join("")].join(" ");
+    const promotion = ["K", "ING", "ST", "ON", "20"].join("");
+    writeFileSync(join(root, "script.mjs"), `${organization}\n${promotion}\n`);
+    execFileSync("git", ["add", "script.mjs"], { cwd: root });
+    const result = spawnSync(process.execPath, [guard, "--staged"], {
+      cwd: root,
+      env: { PATH: process.env.PATH },
+      encoding: "utf8",
+    });
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /prohibited-case-identifier/);
+    assert.ok(!result.stderr.includes(organization));
+    assert.ok(!result.stderr.includes(promotion));
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test("blocks prohibited case identifiers embedded in tracked filenames", () => {
+  const root = mkdtempSync(join(tmpdir(), "privacy-case-path-"));
+  try {
+    execFileSync("git", ["init", "-q"], { cwd: root });
+    const stem = [["U", "til", "ities"].join(""), ["King", "ston"].join("")].join("");
+    const filename = `${stem}Recovery.mjs`;
+    writeFileSync(join(root, filename), "export const fixture = true;\n");
+    execFileSync("git", ["add", filename], { cwd: root });
+    const findings = scanTrackedTree(root).findings;
+    assert.deepEqual(findings, [{ file: "[redacted-path]", category: "prohibited-case-identifier", count: 1 }]);
+    const serialized = JSON.stringify(findings);
+    assert.ok(!serialized.includes(stem));
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test("blocks prohibited binary and symlink filenames in worktree and staged scans", () => {
+  const root = mkdtempSync(join(tmpdir(), "privacy-case-nontext-path-"));
+  try {
+    execFileSync("git", ["init", "-q"], { cwd: root });
+    const stem = [["U", "til", "ities"].join(""), ["King", "ston"].join("")].join("");
+    const binaryFilename = `${stem}Archive.bin`;
+    const symlinkFilename = `${stem}Shortcut`;
+    writeFileSync(join(root, binaryFilename), Buffer.from([0, 1, 2, 3]));
+    symlinkSync("safe-target", join(root, symlinkFilename));
+    execFileSync("git", ["add", binaryFilename, symlinkFilename], { cwd: root });
+    for (const staged of [false, true]) {
+      const findings = scanTrackedTree(root, { staged }).findings;
+      assert.deepEqual(findings, [
+        { file: "[redacted-path]", category: "prohibited-case-identifier", count: 1 },
+        { file: "[redacted-path]", category: "prohibited-case-identifier", count: 1 },
+      ]);
+      assert.ok(!JSON.stringify(findings).includes(stem));
+    }
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test("redacts every finding from a protected filename with a separate content violation", () => {
+  const root = mkdtempSync(join(tmpdir(), "privacy-case-content-path-"));
+  try {
+    execFileSync("git", ["init", "-q"], { cwd: root });
+    const stem = [["U", "til", "ities"].join(""), ["King", "ston"].join("")].join("");
+    const filename = `${stem}Notes.txt`;
+    const email = ["operator", "unapproved-mail-provider", "com"].join(".").replace(".unapproved", "@unapproved");
+    writeFileSync(join(root, filename), `${email}\n`);
+    execFileSync("git", ["add", filename], { cwd: root });
+    for (const staged of [false, true]) {
+      const findings = scanTrackedTree(root, { staged }).findings;
+      assert.deepEqual(findings.map(row => row.file), ["[redacted-path]", "[redacted-path]"]);
+      assert.ok(!JSON.stringify(findings).includes(stem));
+      assert.ok(!JSON.stringify(findings).includes(email));
+    }
+    const direct = scanPrivacyText(email, filename);
+    assert.deepEqual(direct.map(row => row.file), ["[redacted-path]", "[redacted-path]"]);
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test("fails closed when an existing tracked path cannot be inspected", () => {
+  const root = mkdtempSync(join(tmpdir(), "privacy-case-inaccessible-path-"));
+  try {
+    execFileSync("git", ["init", "-q"], { cwd: root });
+    const stem = [["U", "til", "ities"].join(""), ["King", "ston"].join("")].join("");
+    const filename = `${stem}Restricted.txt`;
+    writeFileSync(join(root, filename), "Synthetic private fixture.\n");
+    execFileSync("git", ["add", filename], { cwd: root });
+    const deniedPath = join(root, filename);
+    const inaccessibleLstat = path => {
+      if (path === deniedPath) {
+        const error = new Error("Synthetic permission denial");
+        error.code = "EACCES";
+        throw error;
+      }
+      return lstatSync(path);
+    };
+    assert.throws(
+      () => scanTrackedTree(root, { lstat: inaccessibleLstat }),
+      /Synthetic permission denial/
+    );
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test("worktree scans skip deleted tracked files while staged scans preserve the commit-bound check", () => {
+  const root = mkdtempSync(join(tmpdir(), "privacy-deleted-path-"));
+  try {
+    execFileSync("git", ["init", "-q"], { cwd: root });
+    const marker = [["U", "til", "ities"].join(""), ["King", "ston"].join("")].join(" ");
+    const filename = "retired.mjs";
+    writeFileSync(join(root, filename), `${marker}\n`);
+    execFileSync("git", ["add", filename], { cwd: root });
+    rmSync(join(root, filename));
+    assert.deepEqual(scanTrackedTree(root).findings, []);
+    assert.deepEqual(scanTrackedTree(root, { staged: true }).findings, [{
+      file: filename,
+      category: "prohibited-case-identifier",
+      count: 1,
+    }]);
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test("demo startup gate rejects unapproved, remote, production-named and malformed targets without I/O", () => {
+  for (const file of ["simulate-team-activity.ts"]) {
     const source = readFileSync(new URL(file, import.meta.url), "utf8");
     // Evaluate only the real pre-I/O guard, never import/execute a seeder.
     const start = source.indexOf("let DEMO_TARGET");

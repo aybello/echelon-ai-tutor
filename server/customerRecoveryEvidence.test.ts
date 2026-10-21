@@ -42,7 +42,7 @@ describe("historical customer recovery evidence gate", () => {
       paymentStatus: "succeeded",
       reviewStatus: "staged",
       subjectType: "organization_manager",
-      organizationName: "Utilities Kingston",
+      organizationName: "Example Municipal Utility",
       organizationGroup: "treatment",
       seatCount: null,
     })).toBeNull();
