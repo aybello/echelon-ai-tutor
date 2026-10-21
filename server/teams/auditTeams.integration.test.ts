@@ -297,7 +297,9 @@ suite("October 3 team boundary regressions (isolated synthetic database)", () =>
       expect.objectContaining({ id: revokedId, memberStatus: "revoked", readinessScore: 85, operatorStatus: "not_started" }),
     ]));
     const { csv } = await caller.orgIntel.exportTeamCSV({ orgId });
-    const [header, learnerRow] = csv.split("\n").map(row => row.split(","));
+    const [header, ...rows] = csv.split("\n").map(row => row.split(","));
+    const learnerRow = rows.find(row => row[header.indexOf("Email")] === learner);
+    if (!learnerRow) throw new Error("Synthetic learner missing from Team CSV");
     expect(learnerRow[header.indexOf("Readiness Score")]).toBe("73%");
     expect(learnerRow[header.indexOf("Mock Exams")]).toBe("5");
     expect(learnerRow[header.indexOf("Status")]).toBe("Active");
