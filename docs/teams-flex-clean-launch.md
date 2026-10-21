@@ -37,7 +37,7 @@ Automated exchanges are intentionally not available at launch. A support-led exc
 
 ## Historical customer recovery
 
-The clean-launch Teams and Flex paths do **not** create historical organizations, managers, seats, purchases, or entitlements. Utilities Kingston and all other historical records remain in the separate evidence-only recovery workflow until the required ownership, seat, term, and communication approvals are complete.
+The clean-launch Teams and Flex paths do **not** create historical organizations, managers, seats, purchases, or entitlements. Historical records remain in the separate evidence-only recovery workflow until the required ownership, seat, term, and communication approvals are complete.
 
 ## Schema change
 

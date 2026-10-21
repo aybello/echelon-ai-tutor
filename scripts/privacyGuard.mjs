@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { readFileSync, readdirSync, lstatSync } from "node:fs";
 import { resolve, relative } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -12,6 +13,34 @@ const PUBLIC_EMAILS = new Set([
 ]);
 const NON_ADDRESS_TOKENS = new Set(["wouter@3.7.1.patch"]);
 const EMAIL = /[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}/g;
+// SHA-256 fingerprints of prohibited customer-case identifiers. Keep plaintext
+// markers out of source and diagnostics; this is a narrow, reviewed blocklist.
+const PROHIBITED_CASE_IDENTIFIER_HASHES = new Set([
+  "72329678c5491ab3ed097542ed20c36d85f4d9b79ca5f82716cc8bb94b9444bf",
+  "55938f4042602289d612d0444073923cccad5d06580ba21d953ee868ad5d5df1",
+  "58a3ff070e557f6a9a878b60745ee4db4d55eb8695dbcace0226be24c6afec29",
+]);
+
+function normalizedIdentifierHash(value) {
+  return createHash("sha256").update(value.toLowerCase().replace(/[^a-z0-9]/g, "")).digest("hex");
+}
+
+function prohibitedCaseIdentifierCount(text) {
+  const tokens = text
+    .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
+    .replace(/([A-Z]+)([A-Z][a-z])/g, "$1 $2")
+    .toLowerCase()
+    .match(/[a-z0-9]+/g) ?? [];
+  let count = 0;
+  for (let start = 0; start < tokens.length; start++) {
+    let candidate = "";
+    for (let width = 1; width <= 4 && start + width <= tokens.length; width++) {
+      candidate += tokens[start + width - 1];
+      if (PROHIBITED_CASE_IDENTIFIER_HASHES.has(normalizedIdentifierHash(candidate))) count++;
+    }
+  }
+  return count;
+}
 
 function syntheticEmail(value) {
   const domain = value.split("@").at(-1).toLowerCase();
@@ -20,9 +49,22 @@ function syntheticEmail(value) {
 }
 
 /** Findings deliberately contain no matched text, hash, line or customer data. */
-export function scanPrivacyText(text, file) {
+export function scanPrivacyPath(file) {
   const counts = new Map();
   const add = category => counts.set(category, (counts.get(category) ?? 0) + 1);
+  const pathCaseIdentifiers = prohibitedCaseIdentifierCount(file);
+  if (pathCaseIdentifiers) counts.set("prohibited-case-identifier", pathCaseIdentifiers);
+  if (/(?:^|\/)(?:customer|recipient|billing|stripe|learner)[-_]?(?:export|dump|contacts|records)\.(?:json|csv|sql|tsv)$/i.test(file)) add("private-export-file");
+  const reportFile = pathCaseIdentifiers ? "[redacted-path]" : file;
+  return [...counts].map(([category, count]) => ({ file: reportFile, category, count }));
+}
+
+function scanPrivacyContent(text, file) {
+  const counts = new Map();
+  const add = category => counts.set(category, (counts.get(category) ?? 0) + 1);
+  const reportFile = prohibitedCaseIdentifierCount(file) ? "[redacted-path]" : file;
+  const prohibitedCaseIdentifiers = prohibitedCaseIdentifierCount(text);
+  if (prohibitedCaseIdentifiers) counts.set("prohibited-case-identifier", prohibitedCaseIdentifiers);
   const databaseUrls = [...text.matchAll(/\b(?:mysql|postgres(?:ql)?):\/\/[^\s"'<>`]+/g)];
   for (const match of text.matchAll(EMAIL)) {
     if (databaseUrls.some(url => match.index >= url.index && match.index < url.index + url[0].length)) continue;
@@ -53,11 +95,14 @@ export function scanPrivacyText(text, file) {
       if (url.password && !["localhost", "127.0.0.1", "[::1]", "db.example.com", "db.example.test"].includes(url.hostname) && !/\.(test|example|invalid)$/.test(url.hostname)) add("database-credential-url");
     } catch { /* incomplete URLs and regexes are not credentials */ }
   }
-  if (/(?:^|\/)(?:customer|recipient|billing|stripe|learner)[-_]?(?:export|dump|contacts|records)\.(?:json|csv|sql|tsv)$/i.test(file)) add("private-export-file");
-  return [...counts].map(([category, count]) => ({ file, category, count }));
+  return [...counts].map(([category, count]) => ({ file: reportFile, category, count }));
 }
 
-export function scanTrackedTree(root, { staged = false } = {}) {
+export function scanPrivacyText(text, file) {
+  return [...scanPrivacyPath(file), ...scanPrivacyContent(text, file)];
+}
+
+export function scanTrackedTree(root, { staged = false, lstat = lstatSync } = {}) {
   const entries = execFileSync("git", ["ls-files", "--stage", "-z"], { cwd: root }).toString().split("\0").filter(Boolean);
   const findings = [];
   let scanned = 0;
@@ -66,6 +111,14 @@ export function scanTrackedTree(root, { staged = false } = {}) {
     const [mode, objectId, stage] = metadata.split(" ");
     const file = pathParts.join("\t");
     if (stage !== "0") throw new Error("Unmerged index cannot pass the privacy gate.");
+    if (!staged) {
+      try { lstat(resolve(root, file)); }
+      catch (error) {
+        if (error?.code === "ENOENT") continue;
+        throw error;
+      }
+    }
+    findings.push(...scanPrivacyPath(file));
     if (mode === "120000" || mode === "160000") continue;
     let bytes;
     if (staged) {
@@ -75,11 +128,14 @@ export function scanTrackedTree(root, { staged = false } = {}) {
       bytes = execFileSync("git", ["cat-file", "blob", objectId], { cwd: root, maxBuffer: 64 * 1024 * 1024 });
     } else {
       const path = resolve(root, file);
-      if (lstatSync(path).isSymbolicLink()) continue;
+      // A deleted path remains in the index until staging. Worktree mode scans
+      // files that would ship from this checkout and therefore skips it; the
+      // staged gate continues scanning the indexed blob until the deletion is staged.
+      if (lstat(path).isSymbolicLink()) continue;
       bytes = readFileSync(path);
     }
     if (bytes.includes(0)) continue;
-    findings.push(...scanPrivacyText(bytes.toString("utf8"), file));
+    findings.push(...scanPrivacyContent(bytes.toString("utf8"), file));
     scanned++;
   }
   return { scanned, findings };
@@ -89,10 +145,12 @@ function scanArtifacts(root, artifactPath) {
   const findings = [];
   function visit(path) {
     const info = lstatSync(path);
+    const file = relative(root, path).replaceAll("\\", "/");
+    findings.push(...scanPrivacyPath(file));
     if (info.isSymbolicLink()) return;
     if (info.isDirectory()) { for (const name of readdirSync(path)) visit(resolve(path, name)); return; }
     const bytes = readFileSync(path);
-    if (!bytes.includes(0)) findings.push(...scanPrivacyText(bytes.toString("utf8"), relative(root, path)));
+    if (!bytes.includes(0)) findings.push(...scanPrivacyContent(bytes.toString("utf8"), file));
   }
   visit(resolve(root, artifactPath));
   return findings;

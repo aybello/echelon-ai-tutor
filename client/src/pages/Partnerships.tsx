@@ -290,7 +290,7 @@ export default function Partnerships() {
                   type="text"
                   value={form.org}
                   onChange={(e) => setForm({ ...form, org: e.target.value })}
-                  placeholder="Kingston Utilities"
+                  placeholder="Example Municipal Utility"
                   style={{
                     width: "100%", padding: "10px 14px", borderRadius: 8,
                     border: "1px solid #D1D5DB", fontSize: 14, outline: "none",
