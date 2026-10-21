@@ -1536,7 +1536,7 @@ export const orgIntelRouter = router({
         topic: questionAttempts.topic,
         total: sql<number>`COUNT(*)`,
         correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
-      }).from(questionAttempts).where(eq(questionAttempts.orgId, orgId)).groupBy(questionAttempts.studentEmail, questionAttempts.topic),
+      }).from(questionAttempts).where(eq(questionAttempts.orgId, orgId)).groupBy(questionAttempts.organizationMemberId, questionAttempts.topic),
       db.select({
           memberId: questionAttempts.organizationMemberId,
         mockCount: sql<number>`COUNT(DISTINCT ${questionAttempts.sessionId})`,
