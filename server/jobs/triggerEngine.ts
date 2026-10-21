@@ -152,7 +152,9 @@ function evaluateTriggers(student: StudentData): TriggerResult | null {
         : "";
       return {
         type: "inactive",
-        subject: `We miss you! Your ${examLabel} prep is waiting`,
+        subject: examLabel === "your exam"
+          ? "We miss you! Your exam prep is waiting"
+          : `We miss you! Your ${examLabel} prep is waiting`,
         context: `Student ${student.name || "there"} hasn't studied in ${daysSince} days. They have ${profile.totalAttempts} total attempts and were studying ${examLabel}. ${streakMsg} ${examMsg} Gently encourage them to come back — even 10 questions a day makes a difference. Don't be pushy.`,
         cooldownDays: 10,
       };

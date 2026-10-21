@@ -114,6 +114,37 @@ describe("Trigger Engine — evaluateTriggers", () => {
     expect(result!.cooldownDays).toBe(10);
   });
 
+  it("uses a non-duplicated generic subject when an inactive learner has no resolvable course label", () => {
+    const sixDaysAgo = new Date(Date.now() - 6 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split("T")[0];
+    const student = makeStudent({
+      examProductKey: "unmapped-product",
+      recentAttempts: 0,
+      recentCorrectRate: null,
+      previousCorrectRate: null,
+      profile: {
+        examType: "unmapped-profile",
+        weakTopics: [],
+        strongTopics: [],
+        totalAttempts: 50,
+        totalSessions: 5,
+        currentStreak: 0,
+        longestStreak: 0,
+        lastActiveDate: sixDaysAgo,
+        topicAccuracy: {},
+      },
+    });
+
+    const result = evaluateTriggers(student);
+
+    expect(result).toMatchObject({
+      type: "inactive",
+      subject: "We miss you! Your exam prep is waiting",
+      cooldownDays: 10,
+    });
+  });
+
   it("does NOT trigger 'inactive' when student was active recently", () => {
     const today = new Date().toISOString().split("T")[0];
     const student = makeStudent({
