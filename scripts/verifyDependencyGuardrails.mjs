@@ -14,6 +14,7 @@ const expectedOverrides = {
   "path-to-regexp": "0.1.13",
   "proxy-addr": "2.0.8",
   qs: "6.16.0",
+  "follow-redirects": "1.16.1",
 };
 const expectedPatch = {
   "wouter@3.7.1": "patches/wouter@3.7.1.patch",
