@@ -8,11 +8,12 @@ vi.mock("../analytics", () => ({ trackEvent: vi.fn().mockResolvedValue(undefined
 vi.mock("../email", () => ({ sendTeamEnrollmentEmail: vi.fn(), sendOperatorStudyReminderEmail: vi.fn(), sendCoursePassInvitationEmail: vi.fn() }));
 vi.mock("../readinessSnapshot", () => ({ calculateReadinessSnapshot }));
 vi.mock("../stripe/stripe", () => ({ stripe: {} }));
-import { orgIntelRouter } from "../routers/orgRouter";
+import { aggregateUtcDate, orgIntelRouter, orgRouter } from "../routers/orgRouter";
 import { teamFlexRouter } from "../routers/teamFlexRouter";
 const now = new Date();
 const past = new Date(now.getTime() - 86400000);
 const future = new Date(now.getTime() + 86400000);
+const mysqlTimestamp = (date: Date) => date.toISOString().slice(0, 19).replace("T", " ");
 const org = { id: 7, name: "Fixture municipality", managerEmail: "manager@example.test", billingType: "course-pass", status: "active", createdAt: past, termStart: past, termEnd: past, seatsTotal: 0, province: "ontario" };
 const lic = { id: 42, organizationId: 7, courseKey: "class1-water", termMonths: 3, status: "expired", accessEndsAt: past, reportingEndsAt: future, startsAt: new Date("2026-01-01"), activatedAt: new Date("2026-01-01"), invitedEmail: "operator@example.test", operatorUserId: null };
 const member = { id: 3, email: "operator@example.test", name: "Fixture", courseKey: "class1-water", assignedAt: past, status: "assigned" };
@@ -34,6 +35,12 @@ function database(results: any[][]) {
 }
 beforeEach(() => { vi.clearAllMocks(); });
 describe("manager reporting router behavior", () => {
+  it("interprets raw MySQL aggregate timestamps as UTC and fails closed for invalid values", () => {
+    expect(aggregateUtcDate("2026-10-21 00:30:00")?.toISOString()).toBe("2026-10-21T00:30:00.000Z");
+    expect(aggregateUtcDate("not-a-timestamp")).toBeNull();
+    expect(aggregateUtcDate("2026-02-30 12:00:00")).toBeNull();
+    expect(aggregateUtcDate(new Date("invalid"))).toBeNull();
+  });
   it("keeps actual expired-pass attempt evidence during reporting grace", async () => {
     const db = database([[org], [lic], [lic], [{ total: 10, correct: 7, lastActive: past.toISOString() }]]);
     const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
@@ -59,13 +66,64 @@ describe("manager reporting router behavior", () => {
     { memberId: 3, courseKey: "class1-wastewater", bankKey: null, examType: "class1-wastewater", quizMode: "standard", correct: "no", createdAt: new Date("2026-01-11") },
   ];
   it("summary compares only same-course practice after the first baseline", async () => {
-    const db = database([[org], [lic], [org], [member], [], [], [], [], [], diagnostics, [], practice, []]);
+    const db = database([[org], [lic], [org], [member], [], [], [], [], [], [], diagnostics, [], practice, []]);
     const result = await orgIntelRouter.createCaller(ctx).getTeamReadinessSummary({ orgId: 7 });
     expect(result).toMatchObject({ avgDiagnosticBaseline: 40, avgPracticeAccuracy: 100, accuracyChange: 60, matchedLearnerCourses: 1, matchedPracticeAttempts: 1 });
     expect(db.pending).toEqual([]);
   });
+  it("uses completed mock accuracy, not the number of completed mocks, in the team study estimate", async () => {
+    const db = database([
+      [org], [lic], [org], [member],
+      [{ memberId: 3, total: 200, correct: 160, lastActive: mysqlTimestamp(past) }],
+      [{ memberId: 3 }], [],
+      [{ memberId: 3, count: 5 }],
+      [{ memberId: 3, correct: 20, total: 100 }],
+      [], [], [{ memberId: 3 }], [], [],
+    ]);
+
+    const result = await orgIntelRouter.createCaller(ctx).getTeamReadinessSummary({ orgId: 7 });
+
+    // 80% practice × 50% + 20% completed-mock accuracy × 25%
+    // + full volume × 15% + recent activity × 10% = 70%.
+    expect(result).toMatchObject({ avgReadiness: 70, examReadyCount: 0 });
+    expect(db.pending).toEqual([]);
+  });
+  it("treats a raw MySQL aggregate timestamp string as dated activity in the attention list", async () => {
+    const stale = new Date(now.getTime() - 15 * 86400000);
+    const db = database([
+      [org], [lic], [member],
+      [{ memberId: 3, total: 10, correct: 8 }],
+      [{ memberId: 3, lastActive: mysqlTimestamp(stale) }],
+      [],
+    ]);
+
+    const result = await orgRouter.createCaller(ctx).getAttention();
+
+    expect(result.stalled).toEqual([
+      expect.objectContaining({ email: member.email, reason: "inactive", daysSinceActivity: 15 }),
+    ]);
+    expect(db.pending).toEqual([]);
+  });
+  it("normalizes a raw MySQL minimum exam date in the per-operator readiness report", async () => {
+    const examDate = new Date(now.getTime() + 7 * 86400000);
+    const db = database([
+      [org], [lic], [member],
+      [{ memberId: 3, total: 10, correct: 8 }],
+      [], [],
+      [{ memberId: 3, lastActive: mysqlTimestamp(past) }],
+      [{ email: member.email, examDate: mysqlTimestamp(examDate) }],
+      [],
+    ]);
+
+    const result = await orgIntelRouter.createCaller(ctx).getOperatorReadiness({ orgId: 7 });
+
+    expect(result.operators).toEqual([
+      expect.objectContaining({ email: member.email, daysUntilExam: 7, examRisk: "critical" }),
+    ]);
+    expect(db.pending).toEqual([]);
+  });
   it("CSV uses identical matched evidence and exposes sample sizes", async () => {
-    const db = database([[org], [lic], [org], [member], [], practice, [], [], [], [], diagnostics]);
+    const db = database([[org], [lic], [org], [member], [], practice, [], [], [], [], [], diagnostics]);
     const result = await orgIntelRouter.createCaller(ctx).exportTeamCSV({ orgId: 7 });
     const [header, row] = result.csv.split("\n").map(line => line.split(","));
     expect(row[header.indexOf("Matched Diagnostic Baseline")]).toBe("40%");

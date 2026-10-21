@@ -111,14 +111,14 @@ describe("computeReadiness", () => {
 
 describe("computeManagerReadiness", () => {
   it("returns 0 when totalAttempts=0", () => {
-    expect(computeManagerReadiness({ accuracy: 0, totalAttempts: 0, mockExamsCompleted: 0, activeRecently: false })).toBe(0);
+    expect(computeManagerReadiness({ accuracy: 0, totalAttempts: 0, mockAccuracy: 0, activeRecently: false })).toBe(0);
   });
 
   it("returns a positive score for an active operator with good accuracy", () => {
     const score = computeManagerReadiness({
       accuracy: 0.80,
       totalAttempts: 150,
-      mockExamsCompleted: 3,
+      mockAccuracy: 0.75,
       activeRecently: true,
     });
     expect(score).toBeGreaterThan(50);
@@ -129,9 +129,20 @@ describe("computeManagerReadiness", () => {
     const score = computeManagerReadiness({
       accuracy: 1.0,
       totalAttempts: 500,
-      mockExamsCompleted: 10,
+      mockAccuracy: 1.0,
       activeRecently: true,
     });
     expect(score).toBe(100);
+  });
+
+  it("uses completed mock accuracy rather than the number of mocks completed", () => {
+    const base = { accuracy: 0.80, totalAttempts: 200, activeRecently: true };
+    const lowMockPerformance = computeManagerReadiness({ ...base, mockAccuracy: 0.20 });
+    const highMockPerformance = computeManagerReadiness({ ...base, mockAccuracy: 0.90 });
+
+    // 80% × 50% + 20% × 25% + 100% × 15% + 100% × 10% = 70%.
+    expect(lowMockPerformance).toBe(70);
+    // 80% × 50% + 90% × 25% + 100% × 15% + 100% × 10% = 87.5%, rounded to 88%.
+    expect(highMockPerformance).toBe(88);
   });
 });

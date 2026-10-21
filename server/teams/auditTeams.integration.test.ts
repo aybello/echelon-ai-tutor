@@ -1,7 +1,8 @@
 import { randomUUID } from "node:crypto";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
-import { eq, inArray, or } from "drizzle-orm";
-import { organizations, organizationMembers, teamFlexLicences, questionAttempts, subscriptions, questions, purchases, studentProfiles, examResults, learnerOnboarding, diagnosticSessions, examDates, teamFlexOrders, teamFlexOrderItems } from "../../drizzle/schema";
+import { and, eq, inArray, or } from "drizzle-orm";
+import { organizations, organizationMembers, teamFlexLicences, questionAttempts, subscriptions, questions, purchases, studentProfiles, examOutcomes, examResults, learnerOnboarding, diagnosticSessions, examDates, teamFlexOrders, teamFlexOrderItems } from "../../drizzle/schema";
+import { safeSupervisorCsvCell } from "../../shared/supervisorActionPlan";
 import { getDb } from "../db";
 import { createIsolatedAuditDatabase } from "./auditSqlHarness";
 import { appRouter } from "../routers";
@@ -57,7 +58,8 @@ suite("October 3 team boundary regressions (isolated synthetic database)", () =>
       const ownedOrgs = await db.select({ id: organizations.id }).from(organizations).where(inArray(organizations.managerEmail, [manager, ...newManagers]));
       const orgIds = ownedOrgs.map(row => row.id);
       await db.delete(questionAttempts).where(inArray(questionAttempts.studentEmail, emails));
-      await db.delete(examResults).where(eq(examResults.studentEmail, paidEmail));
+      await db.delete(examResults).where(inArray(examResults.studentEmail, emails));
+      if (orgIds.length) await db.delete(examOutcomes).where(and(inArray(examOutcomes.orgId, orgIds), inArray(examOutcomes.memberEmail, emails)));
       await db.delete(purchases).where(eq(purchases.email, paidEmail));
       await db.delete(studentProfiles).where(or(inArray(studentProfiles.studentEmail, [paidEmail, annualEmail]), eq(studentProfiles.userId, 801)));
       await db.delete(examDates).where(eq(examDates.email, annualEmail));
@@ -230,6 +232,86 @@ suite("October 3 team boundary regressions (isolated synthetic database)", () =>
     expect(await caller.quiz.logAttempt({ bankKey: course, examType: course, questionId: stale.id, selectedIndex: 0, attemptToken: stale.attemptToken, sessionId: revokedSession })).toEqual({ success: true, correct: true });
     expect((await db.select().from(questionAttempts).where(eq(questionAttempts.sessionId, revokedSession)))[0]).toMatchObject({ orgId: null, organizationMemberId: null, flexLicenceId: null });
     expect((await db.select().from(questionAttempts).where(eq(questionAttempts.sessionId, sessionId)))[0]).toMatchObject({ orgId, organizationMemberId: annualMemberId });
+  });
+
+  it("uses weighted full-mock accuracy across manager views while keeping mock count as engagement evidence", async () => {
+    const mockSessionIds = Array.from({ length: 5 }, () => randomUUID());
+    const scoredMocks = [
+      { sessionId: mockSessionIds[0], score: 100, total: 100, createdAt: new Date(now.getTime() - 5000) },
+      { sessionId: mockSessionIds[1], score: 0, total: 100, createdAt: new Date(now.getTime() - 4000) },
+      { sessionId: mockSessionIds[2], score: 0, total: 300, createdAt: new Date(now.getTime() - 3000) },
+    ];
+    await db.insert(questionAttempts).values(Array.from({ length: 200 }, (_, index) => ({
+      studentEmail: learner,
+      examType: course,
+      courseKey: course,
+      bankKey: course,
+      questionId: 992000 + index,
+      correct: index < 160 ? "yes" as const : "no" as const,
+      topic: syntheticModule,
+      quizMode: "mock",
+      sessionId: mockSessionIds[Math.floor(index / 40)],
+      orgId,
+      organizationMemberId: memberId,
+      createdAt: now,
+    })));
+    await db.insert(examResults).values(scoredMocks.map((mock, index) => ({
+      sessionId: mock.sessionId,
+      studentEmail: learner,
+      examType: course,
+      courseKey: course,
+      bankKey: course,
+      score: mock.score,
+      total: mock.total,
+      passed: index === 0 ? "yes" as const : "no" as const,
+      calcOnly: "no" as const,
+      orgId,
+      organizationMemberId: memberId,
+      createdAt: mock.createdAt,
+    })));
+
+    // These high scores must not alter manager readiness unless they belong to
+    // the active member in this organization and are a full mock. The other
+    // course row is valid organization-wide readiness evidence, but outcome
+    // snapshots are deliberately course-specific.
+    await db.insert(examResults).values([
+      { sessionId: randomUUID(), studentEmail: learner, examType: course, courseKey: course, bankKey: course, score: 100, total: 100, passed: "yes", calcOnly: "no", createdAt: now },
+      { sessionId: randomUUID(), studentEmail: learner, examType: course, courseKey: course, bankKey: course, score: 100, total: 100, passed: "yes", calcOnly: "no", orgId, organizationMemberId: revokedId, createdAt: now },
+      { sessionId: randomUUID(), studentEmail: learner, examType: course, courseKey: course, bankKey: course, score: 100, total: 100, passed: "yes", calcOnly: "no", orgId: lapsedId, organizationMemberId: revokedId, createdAt: now },
+      { sessionId: randomUUID(), studentEmail: learner, examType: "class3-wastewater", courseKey: "class3-wastewater", bankKey: "class3-wastewater", score: 100, total: 100, passed: "yes", calcOnly: "no", orgId, organizationMemberId: memberId, createdAt: now },
+      { sessionId: randomUUID(), studentEmail: learner, examType: course, courseKey: course, bankKey: course, score: 100, total: 100, passed: "yes", calcOnly: "yes", orgId, organizationMemberId: memberId, createdAt: now },
+    ]);
+    await db.insert(questionAttempts).values([
+      { studentEmail: learner, examType: course, courseKey: course, bankKey: course, questionId: 993001, correct: "yes", topic: syntheticModule, orgId: null, createdAt: now },
+      { studentEmail: learner, examType: course, courseKey: course, bankKey: course, questionId: 993002, correct: "yes", topic: syntheticModule, orgId, organizationMemberId: revokedId, createdAt: now },
+      { studentEmail: learner, examType: course, courseKey: course, bankKey: course, questionId: 993003, correct: "yes", topic: syntheticModule, orgId: lapsedId, organizationMemberId: revokedId, createdAt: now },
+      { studentEmail: learner, examType: "class3-wastewater", courseKey: "class3-wastewater", bankKey: "class3-wastewater", questionId: 993004, correct: "yes", topic: syntheticModule, orgId, organizationMemberId: memberId, createdAt: now },
+    ]);
+    const caller = appRouter.createCaller(ctx(manager));
+    // Organization-wide readiness includes the operator's valid 100/100 mock
+    // in another assigned course: 161/201 × 50% + 200/600 × 25% + 15% + 10% = 73%.
+    expect(await caller.org.getOrgOverview({ orgId })).toMatchObject({ avgReadiness: 73, onTrackCount: 0 });
+    expect(await caller.orgIntel.getTeamReadinessSummary({ orgId })).toMatchObject({ avgReadiness: 73, examReadyCount: 0 });
+    expect((await caller.orgIntel.getOperatorReadiness({ orgId })).operators).toEqual(expect.arrayContaining([
+      expect.objectContaining({ id: memberId, readinessScore: 73, mockExamsCompleted: 5, operatorStatus: "active" }),
+      // Revoked operators retain their historical measurement but are never active.
+      expect.objectContaining({ id: revokedId, memberStatus: "revoked", readinessScore: 85, operatorStatus: "not_started" }),
+    ]));
+    const { csv } = await caller.orgIntel.exportTeamCSV({ orgId });
+    const [header, ...rows] = csv.split("\n").map(row => row.split(","));
+    const learnerRow = rows.find(row => row[header.indexOf("Email")] === safeSupervisorCsvCell(learner));
+    if (!learnerRow) throw new Error("Synthetic learner missing from Team CSV");
+    expect(learnerRow[header.indexOf("Readiness Score")]).toBe("73%");
+    expect(learnerRow[header.indexOf("Mock Exams")]).toBe("5");
+    expect(learnerRow[header.indexOf("Status")]).toBe("Active");
+
+    await caller.org.recordExamOutcome({ orgId, memberEmail: learner, courseKey: course, result: "passed" });
+    const [outcome] = await db.select().from(examOutcomes).where(and(
+      eq(examOutcomes.orgId, orgId),
+      eq(examOutcomes.memberEmail, learner),
+      eq(examOutcomes.courseKey, course),
+    ));
+    expect(outcome).toMatchObject({ readinessScoreAtOutcome: 70, readinessModelVersion: "estimated-manager-readiness-v2" });
   });
 
 });

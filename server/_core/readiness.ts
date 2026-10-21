@@ -39,7 +39,7 @@ export interface ReadinessResult {
 /** Increment when formula weights, inputs, or thresholds change. */
 export const READINESS_MODEL_VERSION = "estimated-readiness-v1";
 /** Manager views use a reduced input set and are calibrated independently. */
-export const MANAGER_READINESS_MODEL_VERSION = "estimated-manager-readiness-v1";
+export const MANAGER_READINESS_MODEL_VERSION = "estimated-manager-readiness-v2";
 /** Remains false until scores are calibrated against sufficient official outcomes. */
 export const READINESS_MODEL_CALIBRATED = false;
 
@@ -108,22 +108,24 @@ export function computeReadiness(input: ReadinessInput): ReadinessResult {
 }
 
 /**
- * Manager study estimate — uses only the data available in org analytics
- * queries (no topic-coverage or mock-score breakdown).
+ * Manager study estimate — uses organization-scoped practice and completed
+ * mock-result data. Mock accuracy is weighted by scored questions, so merely
+ * completing more weak mocks cannot inflate the estimate.
  */
 export function computeManagerReadiness(opts: {
   accuracy: number;
   totalAttempts: number;
-  mockExamsCompleted: number;
+  /** Weighted completed non-calculation mock accuracy (0.0–1.0); 0 if none. */
+  mockAccuracy: number;
   activeRecently: boolean;
 }): number {
-  const { accuracy, totalAttempts, mockExamsCompleted, activeRecently } = opts;
+  const { accuracy, totalAttempts, mockAccuracy, activeRecently } = opts;
   if (totalAttempts === 0) return 0;
 
-  // Simplified formula matching computeReadiness weights but without topic coverage
-  // Redistributed: accuracy 0.50, mock 0.30, frequency proxy 0.15, recent 0.05
+  // Reduced manager formula: practice accuracy 50%, completed mock accuracy 25%,
+  // practice-volume proxy 15%, recent activity 10%. Weights sum to 100%.
   const accuracyScore = Math.min(accuracy, 1.0);
-  const mockScore     = Math.min(mockExamsCompleted / 5, 1.0); // 5+ mocks = full score
+  const mockScore     = Math.min(Math.max(mockAccuracy, 0), 1.0);
   const volumeScore   = Math.min(totalAttempts / 200, 1.0);
   const recentScore   = activeRecently ? 1.0 : 0.0;
 
