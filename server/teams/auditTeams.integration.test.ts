@@ -293,7 +293,8 @@ suite("October 3 team boundary regressions (isolated synthetic database)", () =>
     expect(await caller.orgIntel.getTeamReadinessSummary({ orgId })).toMatchObject({ avgReadiness: 73, examReadyCount: 0 });
     expect((await caller.orgIntel.getOperatorReadiness({ orgId })).operators).toEqual(expect.arrayContaining([
       expect.objectContaining({ id: memberId, readinessScore: 73, mockExamsCompleted: 5, operatorStatus: "active" }),
-      expect.objectContaining({ id: revokedId, readinessScore: 0 }),
+      // Revoked operators retain their historical measurement but are never active.
+      expect.objectContaining({ id: revokedId, memberStatus: "revoked", readinessScore: 85, operatorStatus: "not_started" }),
     ]));
     const { csv } = await caller.orgIntel.exportTeamCSV({ orgId });
     const [header, learnerRow] = csv.split("\n").map(row => row.split(","));
