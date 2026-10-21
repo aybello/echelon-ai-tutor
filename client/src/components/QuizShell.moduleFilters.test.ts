@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { shouldClearUnavailableSelectedModule, shouldShowPracticeQuestionStatus } from "./QuizShell";
+import {
+  canNavigateToPreviousAnswer,
+  shouldClearUnavailableSelectedModule,
+  shouldShowPracticeQuestionStatus,
+} from "./QuizShell";
 
 describe("shouldClearUnavailableSelectedModule", () => {
   const liveModules = [{ name: "Water Treatment" }];
@@ -23,6 +27,22 @@ describe("shouldClearUnavailableSelectedModule", () => {
   it("treats an empty selected value as all modules", () => {
     expect(shouldClearUnavailableSelectedModule("", liveModules)).toBe(false);
     expect(shouldClearUnavailableSelectedModule("   ", liveModules)).toBe(false);
+  });
+});
+
+describe("canNavigateToPreviousAnswer", () => {
+  const history = [{ questionId: 1 }, { questionId: 2 }];
+
+  it("keeps Back available for an unanswered delivered question after recorded answers", () => {
+    expect(canNavigateToPreviousAnswer(history, 3, false)).toBe(true);
+  });
+
+  it("keeps Back available for a later confirmed answer", () => {
+    expect(canNavigateToPreviousAnswer(history, 2, true)).toBe(true);
+  });
+
+  it("hides Back at the first displayed confirmed answer", () => {
+    expect(canNavigateToPreviousAnswer(history, 1, true)).toBe(false);
   });
 });
 

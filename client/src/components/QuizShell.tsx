@@ -174,6 +174,23 @@ export function shouldShowPracticeQuestionStatus(
   return questionStatus === "error" || questionStatus === "empty";
 }
 
+/** Back is available only when the currently displayed question has an earlier answer. */
+export function canNavigateToPreviousAnswer(
+  history: readonly unknown[],
+  currentQuestionId: number | undefined,
+  confirmed: boolean,
+): boolean {
+  if (history.length === 0) return false;
+  if (!confirmed) return true;
+  const currentHistoryIndex = history.findIndex((entry) =>
+    typeof entry === "object"
+    && entry !== null
+    && "questionId" in entry
+    && (entry as { questionId?: unknown }).questionId === currentQuestionId,
+  );
+  return currentHistoryIndex > 0;
+}
+
 // ─── Constants ───────────────────────────────────────────────────────────────
 
 const DIFF_COLOR: Record<string, string> = {
@@ -384,6 +401,7 @@ export default function QuizShell({
 
   const progress = sessionSize ? Math.min(100, (history.length / sessionSize) * 100) : 0;
   const accuracy = history.length > 0 ? Math.round((correctCount / history.length) * 100) : null;
+  const canGoBack = canNavigateToPreviousAnswer(history, current?.id, confirmed);
 
   // Delivery failures and genuinely empty selections are separate from a
   // completed quiz session. Normal loading stays in the quiz workspace.
@@ -829,9 +847,9 @@ export default function QuizShell({
 
           {/* Action buttons */}
           <div className="qs-action-row practice-primary-actions" style={{ marginTop: 10, display: "flex", flexDirection: "column", gap: 8 }}>
-            {/* Primary row: Prev + Confirm/Next */}
+            {/* Primary row: Back + Confirm/Next */}
             <div style={{ display: "flex", gap: 8, flexWrap: "nowrap" }}>
-              {history.length > 0 && (
+              {canGoBack && (
                 <button
                   onClick={onGoBack}
                   style={{
@@ -848,7 +866,7 @@ export default function QuizShell({
                     whiteSpace: "nowrap",
                   }}
                 >
-                  ← Prev
+                  ← Back to previous answer
                 </button>
               )}
               {!confirmed ? (

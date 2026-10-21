@@ -64,6 +64,15 @@ export interface HistoryEntry {
   questionObj: DBQuestion;
 }
 
+interface ForwardNavigationSnapshot {
+  question: DBQuestion;
+  selected: number | null;
+  confidence: number | null;
+  confirmed: boolean;
+  showSteps: boolean;
+  tutorOpen: boolean;
+}
+
 export interface UseQuizSessionConfig {
   /** The bank key used for tRPC queries, e.g. "class1-water", "wpi-class1-water", "oit" */
   examType: string;
@@ -279,6 +288,13 @@ export function useQuizSession({
   const [current, setCurrent] = useState<DBQuestion | null>(null);
   const [selected, setSelectedState] = useState<number | null>(null);
   const [confidence, setConfidenceState] = useState<number | null>(null);
+  // Back/Next is view navigation, not a durable attempt undo. Keep the already
+  // delivered presentation locally so returning forward never fetches another
+  // question or records the same answer twice.
+  const forwardNavigationRef = useRef<ForwardNavigationSnapshot[]>([]);
+  const clearForwardNavigation = useCallback(() => {
+    forwardNavigationRef.current = [];
+  }, []);
 
   // Refs holding the LATEST selected / confidence / handleNext so the timed-mode
   // auto-submit (invoked from a timer closure captured at question load) reads
@@ -559,6 +575,7 @@ export function useQuizSession({
       setAvailableQuestionCount(queue.total);
       setCurrent(next);
       clearUI();
+      if (next) clearForwardNavigation();
       setQuestionStatus(next ? undefined : "empty");
       if (!next && history.length) trackQuizCompleted(history, "pool_exhausted");
     } catch (error) {
@@ -566,16 +583,17 @@ export function useQuizSession({
       setQuestionError(error instanceof Error ? error.message : "Questions could not be loaded.");
       setQuestionStatus("error");
     } finally { if (fetching.current === queue) fetching.current = null; }
-  }, [queue, history, trialUnlocked, clearUI, trackQuizCompleted]);
+  }, [queue, history, trialUnlocked, clearUI, trackQuizCompleted, clearForwardNavigation]);
   const requestNextRef = useRef(requestNext);
   requestNextRef.current = requestNext;
   useEffect(() => {
     if (!queue) return;
+    clearForwardNavigation();
     activeQueue.current = queue;
     setInitialized(true);
     void requestNextRef.current();
     return () => { if (activeQueue.current === queue) activeQueue.current = null; };
-  }, [queue]);
+  }, [queue, clearForwardNavigation]);
 
   // ── Initialize (call once when allQuestions loads) ──────────────────────────
   const initialize = useCallback(() => {
@@ -663,6 +681,18 @@ export function useQuizSession({
   const handleNext = useCallback(() => {
     // Manual Next must win even while the next page is still loading.
     cancelTimedAdvance();
+    const forwardSnapshot = forwardNavigationRef.current.pop();
+    if (forwardSnapshot) {
+      setCurrent(forwardSnapshot.question);
+      setSelectedState(forwardSnapshot.selected);
+      setConfidenceState(forwardSnapshot.confidence);
+      setConfirmed(forwardSnapshot.confirmed);
+      setShowSteps(forwardSnapshot.showSteps);
+      setTutorOpenState(forwardSnapshot.tutorOpen);
+      setQuestionStatus(undefined);
+      setQuestionError("");
+      return;
+    }
     // Quick 10 stop: end session cleanly at 10 (never paywalled)
     if (quizMode === "quick10" && history.length >= 10) {
       trackQuizCompleted(history, "session_limit");
@@ -710,60 +740,40 @@ export function useQuizSession({
     }
     setCurrent(next);
     clearUI();
-  }, [history, pool, allQuestions, selectedModule, calcOnly, trialUnlocked, quizMode, sessionSize, clearUI, trackQuizCompleted, queue, requestNext, cancelTimedAdvance]);
+    clearForwardNavigation();
+  }, [history, pool, allQuestions, selectedModule, calcOnly, trialUnlocked, quizMode, sessionSize, clearUI, trackQuizCompleted, queue, requestNext, cancelTimedAdvance, clearForwardNavigation]);
 
-  // ── Go back (undo last answer) ─────────────────────────────────────────────
+  // ── Back (view an earlier delivered question without changing saved answers) ─
   const goBack = useCallback(() => {
-    if (history.length === 0) return;
+    if (!current) return;
     cancelTimedAdvance();
+    const currentHistoryIndex = confirmed
+      ? history.findIndex(entry => entry.questionId === current.id)
+      : history.length;
+    const previousHistoryIndex = currentHistoryIndex - 1;
+    if (previousHistoryIndex < 0) return;
 
-    if (confirmed) {
-      // Currently viewing a confirmed answer (current question IS in history).
-      // We want to go back one more step: pop the current question from history
-      // and restore the one before it.
-      if (history.length < 2) {
-        // Only one entry — go back to unanswered state of that question
-        const entry = history[0];
-        setHistory([]);
-        setUsedIds((s) => { const n = new Set(Array.from(s)); n.delete(entry.questionId); return n; });
-        setCurrent(entry.questionObj);
-        setSelectedState(null);
-        setConfidenceState(null);
-        setConfirmed(false);
-        setShowSteps(false);
-        setTutorOpenState(false);
-        return;
-      }
-      // Pop current (last) entry, restore the one before it
-      const current = history[history.length - 1];
-      const prev = history[history.length - 2];
-      const newHistory = history.slice(0, -1);
-      setHistory(newHistory);
-      setUsedIds((s) => { const n = new Set(Array.from(s)); n.delete(current.questionId); return n; });
-      setCurrent(prev.questionObj);
-      setSelectedState(prev.selectedOption);
-      setConfidenceState(prev.confidence);
-      setConfirmed(true);
-      setShowSteps(false);
-      setTutorOpenState(false);
-    } else {
-      // Currently on an unanswered question (not in history yet).
-      // Go back to the last answered question WITHOUT modifying history or usedIds.
-      // The previous question stays in history (it was already answered).
-      // The current unanswered question was never added to history, so nothing to undo.
-      const prev = history[history.length - 1];
-      setCurrent(prev.questionObj);
-      setSelectedState(prev.selectedOption);
-      setConfidenceState(prev.confidence);
-      setConfirmed(true);
-      setShowSteps(false);
-      setTutorOpenState(false);
-    }
-  }, [history, confirmed, cancelTimedAdvance]);
+    forwardNavigationRef.current.push({
+      question: current,
+      selected,
+      confidence,
+      confirmed,
+      showSteps,
+      tutorOpen,
+    });
+    const previous = history[previousHistoryIndex];
+    setCurrent(previous.questionObj);
+    setSelectedState(previous.selectedOption);
+    setConfidenceState(previous.confidence);
+    setConfirmed(true);
+    setShowSteps(false);
+    setTutorOpenState(false);
+  }, [history, current, selected, confidence, confirmed, showSteps, tutorOpen, cancelTimedAdvance]);
 
   // ── Reset session ──────────────────────────────────────────────────────────
   const resetSession = useCallback(() => {
     resetAnalyticsTracking();
+    clearForwardNavigation();
     setHistory([]);
     setUsedIds(new Set());
     setTrialDone(false);
@@ -783,13 +793,14 @@ export function useQuizSession({
       if (filtered.length > 0) newPool = filtered;
     }
     setCurrent(pickRandom(newPool.length > 0 ? newPool : allQuestions));
-  }, [allQuestions, selectedModule, calcOnly, quizSettings.difficulty, clearUI, resetAnalyticsTracking, queue]);
+  }, [allQuestions, selectedModule, calcOnly, quizSettings.difficulty, clearUI, resetAnalyticsTracking, queue, clearForwardNavigation]);
 
   // ── Mode change ────────────────────────────────────────────────────────────
   const handleModeChange = useCallback(
     (mode: QuizMode) => {
       setQuizMode(mode);
       resetAnalyticsTracking();
+      clearForwardNavigation();
       setHistory([]);
       setUsedIds(new Set());
       setTrialDone(false);
@@ -810,7 +821,7 @@ export function useQuizSession({
         setCurrent(pickRandom(allQuestions));
       }
     },
-    [missedData, allQuestions, clearUI, resetAnalyticsTracking, queue],
+    [missedData, allQuestions, clearUI, resetAnalyticsTracking, queue, clearForwardNavigation],
   );
 
   // ── Settings apply ─────────────────────────────────────────────────────────
@@ -818,6 +829,7 @@ export function useQuizSession({
     (settings: QuizSettings) => {
       setQuizSettings(settings);
       resetAnalyticsTracking();
+      clearForwardNavigation();
       setSettingsOpen(false);
       setHistory([]);
       setUsedIds(new Set());
@@ -835,7 +847,7 @@ export function useQuizSession({
       }
       setCurrent(pickRandom(newPool.length > 0 ? newPool : allQuestions));
     },
-    [allQuestions, selectedModule, calcOnly, clearUI, resetAnalyticsTracking, queue],
+    [allQuestions, selectedModule, calcOnly, clearUI, resetAnalyticsTracking, queue, clearForwardNavigation],
   );
 
   // ── Calc-only toggle ───────────────────────────────────────────────────────
@@ -859,12 +871,13 @@ export function useQuizSession({
     setNoCalcQuestions(false);
     resetAnalyticsTracking();
     setCalcOnly(next);
+    clearForwardNavigation();
     setHistory([]);
     setUsedIds(new Set());
     clearUI();
     if (queue) return;
     setCurrent(pickRandom(filtered));
-  }, [practiceFiltersEnabled, calcOnly, allQuestions, selectedModule, clearUI, resetAnalyticsTracking, queue]);
+  }, [practiceFiltersEnabled, calcOnly, allQuestions, selectedModule, clearUI, resetAnalyticsTracking, queue, clearForwardNavigation]);
 
   // ── Module change ──────────────────────────────────────────────────────────
   const handleModuleChange = useCallback(
@@ -876,6 +889,7 @@ export function useQuizSession({
         return;
       }
       cancelTimedAdvance();
+      clearForwardNavigation();
       setSelectedTopic(null);
       setSelectedModule(mod);
       if (queue) { clearUI(); return; }
@@ -887,7 +901,7 @@ export function useQuizSession({
         clearUI();
       }
     },
-    [practiceFiltersEnabled, allQuestions, usedIds, calcOnly, clearUI, queue, cancelTimedAdvance],
+    [practiceFiltersEnabled, allQuestions, usedIds, calcOnly, clearUI, queue, cancelTimedAdvance, clearForwardNavigation],
   );
 
   // Keep the latest-value refs in sync after every render (handleNext is defined
@@ -943,12 +957,13 @@ export function useQuizSession({
     setTrialUnlocked();
     setTrialUnlockedState(true);
     setTrialDone(false);
+    clearForwardNavigation();
     clearUI();
     if (queue) { setRevision(v => v + 1); return; }
     // Resume with next question from pool
     const next = getAdaptiveNext(history, pool, true);
     if (next) setCurrent(next);
-  }, [history, pool, clearUI, queue]);
+  }, [history, pool, clearUI, queue, clearForwardNavigation]);
 
   return {
     // State

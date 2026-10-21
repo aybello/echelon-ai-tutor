@@ -18,7 +18,7 @@ beforeAll(async () => {
       import { createRoot } from 'react-dom/client';
       import { useQuizSession } from './client/src/hooks/useQuizSession';
       Math.random=()=>0;
-      window.bank = Array.from({length:8}, (_,i)=>({id:i+1,module:i<4?'Safety':'Pumps',topic:i%2?'Topic B':'Topic A',difficulty:'medium',question:'Synthetic '+(i+1),options:['A','B','C','D'],correctIndex:2,explanation:'Synthetic explanation',isCalc:i%2===0}));
+      window.bank = Array.from({length:15}, (_,i)=>({id:i+1,module:i<4?'Safety':'Pumps',topic:i%2?'Topic B':'Topic A',difficulty:'medium',question:'Synthetic '+(i+1),options:['A','B','C','D'],correctIndex:2,explanation:'Synthetic explanation',isCalc:i%2===0}));
       window.attempts=[]; window.requests=[];
       window.timedCallbackCount=0;
       const nativeSetTimeout=window.setTimeout.bind(window);
@@ -57,7 +57,7 @@ beforeAll(async () => {
             const query=async input=>{window.requests.push(input);let qs=window.bank.filter(q=>!input.excludeIds.includes(q.id));
               if(input.module)qs=qs.filter(q=>q.module===input.module);if(input.topic)qs=qs.filter(q=>q.topic===input.topic);if(input.calcOnly)qs=qs.filter(q=>q.isCalc);
               if(input.reviewMode==='missed')qs=qs.filter(q=>q.id===2);if(input.reviewMode==='bookmarked')qs=qs.filter(q=>q.id===3);
-              return {questions:qs,total:qs.length,locked:false,hasMore:false};};
+              return {questions:qs,total:qs.length,locked:window.access?.hasAccess!==true,hasMore:false};};
             const utils={client:{quiz:{getRandomQuestions:{query}}}};
             export const trpc={useUtils:()=>utils,stripe:{checkAccess:{useQuery:()=>({data:window.access})}},
               funnelAnalytics:{track:{useMutation:()=>({mutate(){}})}},quiz:{getMissedQuestions:{useQuery:()=>({data:{total:1,questionIds:[2]},refetch:()=>Promise.resolve()})}},
@@ -79,7 +79,7 @@ beforeAll(async () => {
 afterAll(async () => {
   await browser?.close();
 });
-async function setup(course: string, free = false, search = "") {
+async function setup(course: string, free = false, search = "", hasAccess = true) {
   const context = await browser.newContext();
   const page = await context.newPage();
   await page.route("**/*", route =>
@@ -92,14 +92,14 @@ async function setup(course: string, free = false, search = "") {
   );
   await page.goto("https://practice.echelon.test/" + search);
   await page.evaluate(
-    ({ course, free }) => {
-      Object.assign(window, { course, free, access: { hasAccess: true } });
+    ({ course, free, hasAccess }) => {
+      Object.assign(window, { course, free, access: { hasAccess } });
       localStorage.setItem(
         "echelon_subscription_email",
         "practice@echelon.test"
       );
     },
-    { course, free }
+    { course, free, hasAccess }
   );
   await page.addScriptTag({ content: script });
   await expect
@@ -221,28 +221,38 @@ describe.each(courses)("%s timed answer-state lifecycle", (course, free) => {
       }
     }
   );
-  it("keeps the restored unanswered state when going back during timed feedback", async () => {
+  it("stops timed feedback auto-advance when navigating back and preserves saved answers", async () => {
     const page = await setup(course, free);
     try {
-      const original = await page.evaluate(
+      const firstQuestion = await page.evaluate(
+        () => (window as any).session.current.id
+      );
+      await action(page, "setSelected", 1);
+      await action(page, "handleConfirm");
+      await action(page, "handleNext");
+      const timedQuestion = await page.evaluate(
         () => (window as any).session.current.id
       );
       await action(page, "handleTimeUp");
       await action(page, "goBack");
-      await action(page, "setSelected", 1);
       await page.waitForTimeout(1000);
       expect(
         await page.evaluate(() => (window as any).session.current.id)
-      ).toBe(original);
+      ).toBe(firstQuestion);
       expect(await page.evaluate(() => (window as any).session.selected)).toBe(
         1
       );
       expect(
         await page.evaluate(() => (window as any).session.history)
-      ).toHaveLength(0);
+      ).toHaveLength(2);
       expect(await page.evaluate(() => (window as any).attempts)).toHaveLength(
-        1
+        2
       );
+      await action(page, "handleNext");
+      expect(await page.evaluate(() => (window as any).session.current.id)).toBe(
+        timedQuestion
+      );
+      expect(await page.evaluate(() => (window as any).session.confirmed)).toBe(true);
     } finally {
       await page.context().close();
     }
@@ -309,6 +319,46 @@ describe.each(courses)("%s timed answer-state lifecycle", (course, free) => {
       expect(
         await page.evaluate(() => (window as any).timedCallbackCount)
       ).toBe(0);
+    } finally {
+      await page.context().close();
+    }
+  });
+});
+
+describe("locked finite-preview navigation", () => {
+  it("returns the delivered final preview question after Back instead of showing an empty state", async () => {
+    const page = await setup("oit", false, "", false);
+    try {
+      for (let index = 0; index < 14; index += 1) {
+        await action(page, "setSelected", 2);
+        await action(page, "handleConfirm");
+        await action(page, "handleNext");
+        await expect.poll(() => page.evaluate(() => (window as any).session.current?.id)).toBe(index + 2);
+      }
+
+      expect(await page.evaluate(() => (window as any).session.history)).toHaveLength(14);
+      expect(await page.evaluate(() => (window as any).session.current?.id)).toBe(15);
+      expect(await page.evaluate(() => (window as any).session.confirmed)).toBe(false);
+      const attemptsBeforeBack = await page.evaluate(() => (window as any).attempts.length);
+      const requestsBeforeBack = await page.evaluate(() => (window as any).requests.length);
+
+      await action(page, "goBack");
+      expect(await page.evaluate(() => (window as any).session.history)).toHaveLength(14);
+      expect(await page.evaluate(() => (window as any).session.current?.id)).toBe(14);
+
+      await action(page, "handleNext");
+      await expect.poll(() => page.evaluate(() => (window as any).session.current?.id)).toBe(15);
+      expect(await page.evaluate(() => (window as any).session.questionStatus)).not.toBe("empty");
+      expect(await page.evaluate(() => (window as any).session.confirmed)).toBe(false);
+      expect(await page.evaluate(() => (window as any).session.history)).toHaveLength(14);
+      expect(await page.evaluate(() => (window as any).attempts.length)).toBe(attemptsBeforeBack);
+      expect(await page.evaluate(() => (window as any).requests.length)).toBe(requestsBeforeBack);
+
+      await action(page, "setSelected", 2);
+      await action(page, "handleConfirm");
+      expect(await page.evaluate(() => (window as any).session.history)).toHaveLength(15);
+      expect(await page.evaluate(() => (window as any).attempts.length)).toBe(attemptsBeforeBack + 1);
+      expect(await page.evaluate(() => (window as any).session.trialDone)).toBe(true);
     } finally {
       await page.context().close();
     }
