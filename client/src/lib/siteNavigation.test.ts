@@ -25,7 +25,11 @@ function desktopLinks(currentPath: string, variant: "marketing" | "learning"): s
   return html.split('<div class="echelon-desktop-links">')[1].split('<div class="echelon-nav-actions">')[0];
 }
 
-for (const { label, href } of [{ label: "Jobs", href: "/jobs" }, { label: "Blog", href: "/blog" }]) {
+for (const { label, href } of [
+  { label: "Teams", href: "/teams" },
+  { label: "Jobs", href: "/jobs" },
+  { label: "Blog", href: "/blog" },
+]) {
   describe(`${label} navigation`, () => {
     it(`includes one direct ${label} destination in the mobile navigation list`, () => {
       expect(NAV_LINKS.filter(link => link.href === href)).toEqual([{ label, href }]);
