@@ -59,13 +59,30 @@ describe("manager reporting router behavior", () => {
     { memberId: 3, courseKey: "class1-wastewater", bankKey: null, examType: "class1-wastewater", quizMode: "standard", correct: "no", createdAt: new Date("2026-01-11") },
   ];
   it("summary compares only same-course practice after the first baseline", async () => {
-    const db = database([[org], [lic], [org], [member], [], [], [], [], [], diagnostics, [], practice, []]);
+    const db = database([[org], [lic], [org], [member], [], [], [], [], [], [], diagnostics, [], practice, []]);
     const result = await orgIntelRouter.createCaller(ctx).getTeamReadinessSummary({ orgId: 7 });
     expect(result).toMatchObject({ avgDiagnosticBaseline: 40, avgPracticeAccuracy: 100, accuracyChange: 60, matchedLearnerCourses: 1, matchedPracticeAttempts: 1 });
     expect(db.pending).toEqual([]);
   });
+  it("uses completed mock accuracy, not the number of completed mocks, in the team study estimate", async () => {
+    const db = database([
+      [org], [lic], [org], [member],
+      [{ memberId: 3, total: 200, correct: 160, lastActive: past }],
+      [{ memberId: 3 }], [],
+      [{ memberId: 3, count: 5 }],
+      [{ memberId: 3, correct: 20, total: 100 }],
+      [], [], [{ memberId: 3 }], [], [],
+    ]);
+
+    const result = await orgIntelRouter.createCaller(ctx).getTeamReadinessSummary({ orgId: 7 });
+
+    // 80% practice × 50% + 20% completed-mock accuracy × 25%
+    // + full volume × 15% + recent activity × 10% = 70%.
+    expect(result).toMatchObject({ avgReadiness: 70, examReadyCount: 0 });
+    expect(db.pending).toEqual([]);
+  });
   it("CSV uses identical matched evidence and exposes sample sizes", async () => {
-    const db = database([[org], [lic], [org], [member], [], practice, [], [], [], [], diagnostics]);
+    const db = database([[org], [lic], [org], [member], [], practice, [], [], [], [], [], diagnostics]);
     const result = await orgIntelRouter.createCaller(ctx).exportTeamCSV({ orgId: 7 });
     const [header, row] = result.csv.split("\n").map(line => line.split(","));
     expect(row[header.indexOf("Matched Diagnostic Baseline")]).toBe("40%");

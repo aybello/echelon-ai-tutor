@@ -61,6 +61,25 @@ const STALLED_NEVER_STARTED_DAYS = 7;
 /** Days since last activity = "stalled (inactive)" */
 const STALLED_INACTIVE_DAYS = 14;
 
+function completedMockAccuracyByMemberId(
+  rows: Array<{ memberId: number | null; correct: number | null; total: number | null }>,
+) {
+  const totalsByMemberId = new Map<number, { correct: number; total: number }>();
+  for (const row of rows) {
+    if (row.memberId === null) continue;
+    const total = Number(row.total ?? 0);
+    if (total <= 0) continue;
+    const memberId = Number(row.memberId);
+    const totals = totalsByMemberId.get(memberId) ?? { correct: 0, total: 0 };
+    totals.correct += Number(row.correct ?? 0);
+    totals.total += total;
+    totalsByMemberId.set(memberId, totals);
+  }
+  return new Map(
+    Array.from(totalsByMemberId, ([memberId, totals]) => [memberId, totals.correct / totals.total]),
+  );
+}
+
 // ── requireOrgManager middleware ─────────────────────────────────────────────
 
 /**
@@ -460,7 +479,7 @@ export const orgRouter = router({
     const oneWeekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
 
     // Phase 8: scope by orgId instead of email to prevent cross-org data leakage
-    const [accuracyRows, activeRows, mockRows] = await Promise.all([
+    const [accuracyRows, activeRows, mockAccuracyRows] = await Promise.all([
       db
         .select({
           memberId: questionAttempts.organizationMemberId,
@@ -484,10 +503,15 @@ export const orgRouter = router({
       db
         .select({
           memberId: examResults.organizationMemberId,
-          count: sql<number>`COUNT(*)`,
+          correct: sql<number>`SUM(${examResults.score})`,
+          total: sql<number>`SUM(${examResults.total})`,
         })
         .from(examResults)
-        .where(and(eq(examResults.orgId, orgId), inArray(examResults.organizationMemberId, activeMembers.map(m => m.id))))
+        .where(and(
+          eq(examResults.orgId, orgId),
+          inArray(examResults.organizationMemberId, activeMembers.map(m => m.id)),
+          eq(examResults.calcOnly, "no"),
+        ))
         .groupBy(examResults.organizationMemberId),
     ]);
 
@@ -500,11 +524,7 @@ export const orgRouter = router({
           lastActive: r.lastActive ? new Date(r.lastActive) : null,
         }]),
     );
-    const mockCountByMemberId = new Map(
-      mockRows
-        .filter(r => r.memberId !== null)
-        .map(r => [Number(r.memberId), Number(r.count)]),
-    );
+    const mockAccuracyByMemberId = completedMockAccuracyByMemberId(mockAccuracyRows);
     const activeMemberIds = new Set(activeRows.filter(r => r.memberId !== null).map(r => Number(r.memberId)));
     const activeThisWeek = activeMemberIds.size;
     // Compute the same reduced-input study estimate used throughout manager views.
@@ -516,7 +536,7 @@ export const orgRouter = router({
       const score = computeManagerReadiness({
         accuracy: totalAttempts > 0 ? (stats?.correct ?? 0) / totalAttempts : 0,
         totalAttempts,
-        mockExamsCompleted: mockCountByMemberId.get(m.id) ?? 0,
+        mockAccuracy: mockAccuracyByMemberId.get(m.id) ?? 0,
         activeRecently: !!stats?.lastActive && stats.lastActive >= oneWeekAgo,
       });
       totalReadiness += score;
@@ -1155,6 +1175,8 @@ export const orgRouter = router({
         .from(questionAttempts)
         .where(and(
           eq(questionAttempts.studentEmail, memberEmail),
+          eq(questionAttempts.orgId, orgId),
+          eq(questionAttempts.organizationMemberId, member.id),
           outcomeExamTypes.length > 0 ? inArray(questionAttempts.examType, outcomeExamTypes) : undefined,
         ));
       const totalAttempts = Number(attemptRows[0]?.total ?? 0);
@@ -1162,17 +1184,26 @@ export const orgRouter = router({
       const lastActive = attemptRows[0]?.lastActive ? new Date(attemptRows[0].lastActive) : null;
       const recentCutoff = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
       const mockRows = await db
-        .select({ count: sql<number>`COUNT(*)` })
+        .select({
+          correct: sql<number>`SUM(${examResults.score})`,
+          total: sql<number>`SUM(${examResults.total})`,
+        })
         .from(examResults)
         .where(and(
-          eq(examResults.studentEmail, memberEmail),
+          eq(examResults.orgId, orgId),
+          eq(examResults.organizationMemberId, member.id),
           eq(examResults.courseKey, input.courseKey),
+          eq(examResults.calcOnly, "no"),
         ));
+      const completedMockTotal = Number(mockRows[0]?.total ?? 0);
+      const mockAccuracy = completedMockTotal > 0
+        ? Number(mockRows[0]?.correct ?? 0) / completedMockTotal
+        : 0;
       const readinessScoreAtOutcome = totalAttempts > 0
         ? computeManagerReadiness({
             accuracy: correctAttempts / totalAttempts,
             totalAttempts,
-            mockExamsCompleted: Number(mockRows[0]?.count ?? 0),
+            mockAccuracy,
             activeRecently: !!lastActive && lastActive >= recentCutoff,
           })
         : null;
@@ -1280,7 +1311,7 @@ export const orgIntelRouter = router({
     const oneWeekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
     const twoWeeksAgo = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
     const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
-    const [accuracyRows, activeRows, topicRows, mockRows, onboardingRows, diagnosticRows, activeThirtyRows, practiceRows] = await Promise.all([
+    const [accuracyRows, activeRows, topicRows, mockRows, mockAccuracyRows, onboardingRows, diagnosticRows, activeThirtyRows, practiceRows] = await Promise.all([
       db.select({
           memberId: questionAttempts.organizationMemberId,
         total: sql<number>`COUNT(*)`,
@@ -1301,6 +1332,15 @@ export const orgIntelRouter = router({
         count: sql<number>`COUNT(*)`,
       }).from(examResults).where(and(eq(examResults.orgId, orgId), inArray(examResults.organizationMemberId, activeMembers.map(m => m.id))))
         .groupBy(examResults.organizationMemberId),
+      db.select({
+        memberId: examResults.organizationMemberId,
+        correct: sql<number>`SUM(${examResults.score})`,
+        total: sql<number>`SUM(${examResults.total})`,
+      }).from(examResults).where(and(
+        eq(examResults.orgId, orgId),
+        inArray(examResults.organizationMemberId, activeMembers.map(m => m.id)),
+        eq(examResults.calcOnly, "no"),
+      )).groupBy(examResults.organizationMemberId),
       db.select({ memberId: learnerOnboarding.organizationMemberId })
         .from(learnerOnboarding)
         .where(and(eq(learnerOnboarding.orgId, orgId), inArray(learnerOnboarding.organizationMemberId, activeMembers.map(m => m.id))))
@@ -1355,6 +1395,7 @@ export const orgIntelRouter = router({
     const mockCountByMemberId = new Map(
       mockRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), Number(r.count)]),
     );
+    const mockAccuracyByMemberId = completedMockAccuracyByMemberId(mockAccuracyRows);
     let totalReadiness = 0, examReadyCount = 0, atRiskCount = 0, inactiveCount = 0;
     const now = new Date();
     for (const m of activeMembers) {
@@ -1366,7 +1407,7 @@ export const orgIntelRouter = router({
       const readinessScore = computeManagerReadiness({
         accuracy,
         totalAttempts: total,
-        mockExamsCompleted: mockCountByMemberId.get(m.id) ?? 0,
+        mockAccuracy: mockAccuracyByMemberId.get(m.id) ?? 0,
         activeRecently: !!lastActive && lastActive >= twoWeeksAgo,
       });
       totalReadiness += readinessScore;
@@ -1481,6 +1522,7 @@ export const orgIntelRouter = router({
         .groupBy(examDates.email),
       // Last 3 mock exam scores per operator from exam_results (persistent, linked to account)
       db.select({
+        memberId: examResults.organizationMemberId,
         email: examResults.studentEmail,
         score: examResults.score,
         total: examResults.total,
@@ -1498,6 +1540,9 @@ export const orgIntelRouter = router({
       accuracyRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), { total: Number(r.total), correct: Number(r.correct) }]),
     );
     const mockByMemberId = new Map(mockRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), Number(r.mockCount)]));
+    const mockAccuracyByMemberId = completedMockAccuracyByMemberId(
+      mockScoreRows.map(row => ({ memberId: row.memberId, correct: row.score, total: row.total })),
+    );
     const lastActiveByMemberId = new Map(
       lastActiveRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), r.lastActive]),
     );
@@ -1526,7 +1571,12 @@ export const orgIntelRouter = router({
       const mockExamsCompleted = mockByMemberId.get(m.id) ?? 0;
       let readinessScore = 0;
       if (total > 0 && accuracy !== null) {
-        readinessScore = computeManagerReadiness({ accuracy: accuracy / 100, totalAttempts: total, mockExamsCompleted, activeRecently: !!(lastActive && lastActive >= twoWeeksAgo) });
+        readinessScore = computeManagerReadiness({
+          accuracy: accuracy / 100,
+          totalAttempts: total,
+          mockAccuracy: mockAccuracyByMemberId.get(m.id) ?? 0,
+          activeRecently: !!(lastActive && lastActive >= twoWeeksAgo),
+        });
       }
       const topics = topicsByMemberId.get(m.id) ?? [];
       const eligibleTopics = topics.filter(t => t.total >= 3);
@@ -1572,7 +1622,7 @@ export const orgIntelRouter = router({
     }
     const allEmails = members.map(m => m.email);
     const twoWeeksAgo = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
-    const [accuracyRows, practiceRows, topicRows, mockRows, lastActiveRows, onboardingRows, diagnosticRows] = await Promise.all([
+    const [accuracyRows, practiceRows, topicRows, mockRows, mockAccuracyRows, lastActiveRows, onboardingRows, diagnosticRows] = await Promise.all([
       db.select({ memberId: questionAttempts.organizationMemberId, total: sql<number>`COUNT(*)`, correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)` })
         .from(questionAttempts).where(eq(questionAttempts.orgId, orgId)).groupBy(questionAttempts.organizationMemberId),
       db.select({
@@ -1590,6 +1640,15 @@ export const orgIntelRouter = router({
         .from(questionAttempts).where(eq(questionAttempts.orgId, orgId)).groupBy(questionAttempts.organizationMemberId, questionAttempts.topic),
       db.select({ memberId: questionAttempts.organizationMemberId, mockCount: sql<number>`COUNT(DISTINCT ${questionAttempts.sessionId})` })
         .from(questionAttempts).where(and(eq(questionAttempts.orgId, orgId), eq(questionAttempts.quizMode, "mock"))).groupBy(questionAttempts.organizationMemberId),
+      db.select({
+        memberId: examResults.organizationMemberId,
+        correct: sql<number>`SUM(${examResults.score})`,
+        total: sql<number>`SUM(${examResults.total})`,
+      }).from(examResults).where(and(
+        eq(examResults.orgId, orgId),
+        inArray(examResults.organizationMemberId, members.map(m => m.id)),
+        eq(examResults.calcOnly, "no"),
+      )).groupBy(examResults.organizationMemberId),
       db.select({ memberId: questionAttempts.organizationMemberId, lastActive: sql<Date>`MAX(${questionAttempts.createdAt})` })
         .from(questionAttempts).where(eq(questionAttempts.orgId, orgId)).groupBy(questionAttempts.organizationMemberId),
       db.select({ memberId: learnerOnboarding.organizationMemberId })
@@ -1613,6 +1672,7 @@ export const orgIntelRouter = router({
       ...accuracyRows.filter(r => r.memberId !== null && Number(r.total) > 0).map(r => Number(r.memberId)),
     ]);
     const mockByMemberId = new Map(mockRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), Number(r.mockCount)]));
+    const mockAccuracyByMemberId = completedMockAccuracyByMemberId(mockAccuracyRows);
     const lastActiveByMemberId = new Map(
       lastActiveRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), r.lastActive]),
     );
@@ -1636,7 +1696,14 @@ export const orgIntelRouter = router({
       const lastActive = lastActiveByMemberId.get(m.id) ?? null;
       const mockExamsCompleted = mockByMemberId.get(m.id) ?? 0;
       let readinessScore = 0;
-      if (total > 0 && accuracy !== null) readinessScore = computeManagerReadiness({ accuracy: accuracy / 100, totalAttempts: total, mockExamsCompleted, activeRecently: !!(lastActive && lastActive >= twoWeeksAgo) });
+      if (total > 0 && accuracy !== null) {
+        readinessScore = computeManagerReadiness({
+          accuracy: accuracy / 100,
+          totalAttempts: total,
+          mockAccuracy: mockAccuracyByMemberId.get(m.id) ?? 0,
+          activeRecently: !!(lastActive && lastActive >= twoWeeksAgo),
+        });
+      }
       const topics = topicsByMemberId.get(m.id) ?? [];
       const eligibleTopics = topics.filter(t => t.total >= 3);
       const weakestTopic = eligibleTopics.length > 0 ? eligibleTopics.sort((a, b) => a.accuracy - b.accuracy)[0].topic : null;
