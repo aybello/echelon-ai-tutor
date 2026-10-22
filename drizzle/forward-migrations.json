@@ -501,6 +501,21 @@
           ]
         }
       ]
+    },
+    {
+      "version": 81,
+      "tag": "0081_blog_automation_unsent_archive",
+      "file": "drizzle/0081_blog_automation_unsent_archive.sql",
+      "sha256": "1d5f34af2a76cf7c82f57d2833f7ae265f4160d0b9fcf73506903d1027aad8d9",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "blog_automation_run_archives"
+        ]
+      },
+      "verifierAllowMissingTables": [
+        "blog_automation_run_archives"
+      ]
     }
   ]
 }

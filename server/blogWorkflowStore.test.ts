@@ -1,25 +1,69 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { enqueueWeeklyBlog } from "./blogWorkflowStore";
 
-const state = vi.hoisted(() => ({ row: {} as Record<string, unknown>, statements: [] as string[] }));
+const state = vi.hoisted(() => ({ row: {} as Record<string, unknown>, archiveRows: [] as Record<string, unknown>[], statements: [] as string[] }));
 vi.mock("./db", () => ({ getDb: async () => ({ transaction: async (work: (tx: unknown) => unknown) => work({
   execute: async (query: { queryChunks: unknown[] }) => {
     // Render only static SQL fragments; no production database or credentials.
     const text = JSON.stringify(query.queryChunks);
     state.statements.push(text);
-    if (text.includes("SELECT")) return [[state.row]];
+    if (text.includes("SELECT")) return [text.includes("blog_automation_run_archives") ? state.archiveRows : [state.row]];
     return [{ affectedRows: 1 }];
   },
 }) }) }));
 vi.mock("./_core/databaseCutover", () => ({ databaseWritesFrozen: () => false }));
 const NOW = new Date("2026-10-19T14:00:00Z");
 const uncertain = { phase: "draft-submit", revision: 0, submissionPending: true };
+const definitelyUnsent = {
+  ...uncertain,
+  submissionNotSent: true,
+  topic: { slug: "fixture-topic" },
+  research: [{ source: { url: "https://example.test" }, text: "Private source text" }],
+};
+const recoverableRow = (): Record<string, unknown> => ({
+  id: "weekly-echelon-blog",
+  runKey: "weekly:2026-10-12",
+  status: "failed",
+  progress: JSON.stringify(definitelyUnsent),
+  attempts: 4,
+  lastError: 'Blog step failed: {"phase":"draft-submit","service":"openai","kind":"missing_credential"}',
+  startedAt: new Date("2026-10-12T14:01:00Z"),
+  updatedAt: new Date("2026-10-12T14:12:00Z"),
+  claimToken: null,
+  leaseUntil: null,
+});
 beforeEach(() => {
   state.row = { runKey: "weekly:2026-10-12", status: "failed", progress: JSON.stringify(uncertain) };
+  state.archiveRows = [];
   state.statements = [];
 });
 const updated = () => state.statements.some(text => text.includes("UPDATE blog_automation_runs"));
 describe("weekly blog enqueue evidence fence", () => {
+  it("archives the exact definitely-unsent first-draft failure and queues a fresh week without copying private progress", async () => {
+    state.row = recoverableRow();
+    expect(await enqueueWeeklyBlog(NOW)).toEqual({ ok: true, action: "queued_after_definitely_unsent_archive" });
+    const archive = state.statements.find(text => text.includes("INSERT INTO") && text.includes("blog_automation_run_archives"));
+    expect(archive).toContain("blog_automation_run_archives");
+    expect(archive).not.toContain("Private source text");
+    expect(archive).not.toContain("lastError");
+    expect(updated()).toBe(true);
+  });
+  it.each([
+    ["a different provider error", (row: Record<string, unknown>) => { row.lastError = 'Blog step failed: {"phase":"draft-submit","service":"openai","kind":"http","status":403}'; }],
+    ["a saved provider response", (row: Record<string, unknown>) => { row.progress = JSON.stringify({ ...definitelyUnsent, responseId: "resp_fixture" }); }],
+    ["a revised draft", (row: Record<string, unknown>) => { row.progress = JSON.stringify({ ...definitelyUnsent, revision: 1 }); }],
+    ["a review issue", (row: Record<string, unknown>) => { row.progress = JSON.stringify({ ...definitelyUnsent, issues: ["fixture"] }); }],
+    ["a missing not-sent marker", (row: Record<string, unknown>) => { row.progress = JSON.stringify({ ...definitelyUnsent, submissionNotSent: false }); }],
+    ["a non-Monday source period", (row: Record<string, unknown>) => { row.runKey = "weekly:2026-10-13"; }],
+    ["an active lease", (row: Record<string, unknown>) => { row.leaseUntil = new Date("2026-10-12T14:13:00Z"); }],
+  ])("keeps %s blocked without creating an archive", async (_reason, mutate) => {
+    const row = recoverableRow();
+    mutate(row);
+    state.row = row;
+    expect(await enqueueWeeklyBlog(NOW)).toEqual({ ok: true, action: "failed_requires_inspection" });
+    expect(state.statements.some(text => text.includes("INSERT INTO") && text.includes("blog_automation_run_archives"))).toBe(false);
+    expect(updated()).toBe(false);
+  });
   it("does not replace last week's uncertain paid submission on Monday", async () => {
     expect(await enqueueWeeklyBlog(NOW)).toEqual({ ok: true, action: "failed_requires_inspection" });
     expect(updated()).toBe(false);

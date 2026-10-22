@@ -22,6 +22,14 @@ export interface DataExplorerDataset {
 }
 
 /**
+ * Schema tables deliberately excluded from every browser Data Explorer surface.
+ * They remain application-only forensic records, not operator-facing datasets.
+ */
+export const DATA_EXPLORER_EXCLUDED_TABLES = [
+  "blog_automation_run_archives",
+] as const;
+
+/**
  * The browser can select only a named dataset from this immutable application
  * catalog. Table and column identifiers are never accepted from the request.
  */

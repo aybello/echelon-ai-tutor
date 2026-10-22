@@ -11,10 +11,19 @@ vi.mock("./db", () => ({ getDb: async () => state.db }));
 vi.mock("./_core/databaseCutover", () => ({ databaseWritesFrozen: () => state.frozen }));
 const suite = process.env.BLOG_INTEGRATION_TEST_DB === "1" ? describe : describe.skip;
 let pool: mysql.Pool;
-const NOW = new Date("2098-10-06T14:00:00Z");
+const NOW = new Date("2037-10-05T14:00:00Z");
 const topic = { ...BLOG_TOPICS[0], slug: "fixture-approved-blog" };
 const post: BlogPostInsert = { slug: topic.slug, title: "Isolated fixture article", excerpt: "Fictional test data", content: "<p>Fictional data only.</p>", tags: "Automated Article", published: 1, publishedAt: new Date(), metaTitle: "Fixture article", metaDescription: "Fixture metadata", readingTimeMinutes: 4 };
 const approved = { phase: "publish", topic, article: {}, research: [], revision: 0, approved: true } as unknown as BlogProgress;
+const definitelyUnsent = {
+  phase: "draft-submit", revision: 0, submissionPending: true, submissionNotSent: true, topic,
+  research: [{ source: { url: "https://example.test" }, text: "Private fixture source text" }],
+};
+const definitelyUnsentError = 'Blog step failed: {"phase":"draft-submit","service":"openai","kind":"missing_credential"}';
+async function seedDefinitelyUnsentRun() {
+  await state.db.execute(sql`INSERT INTO blog_automation_runs (id, runKey, status, progress, attempts, lastError, startedAt, updatedAt)
+    VALUES ('weekly-echelon-blog', 'weekly:2037-10-05', 'failed', ${JSON.stringify(definitelyUnsent)}, 4, ${definitelyUnsentError}, '2037-10-05 14:01:00', '2037-10-05 14:12:00')`);
+}
 suite("durable blog with an explicitly disposable database", () => {
   beforeAll(async () => {
     const url = new URL(process.env.DATABASE_URL!);
@@ -34,11 +43,15 @@ suite("durable blog with an explicitly disposable database", () => {
   });
   beforeEach(async () => {
     state.frozen = false;
+    await pool.query("DROP TRIGGER IF EXISTS fixture_blog_recovery_reset");
+    await state.db.execute(sql`DELETE FROM blog_automation_run_archives WHERE sourceRunId = 'weekly-echelon-blog'`);
     await state.db.execute(sql`DELETE FROM blog_automation_runs WHERE id = 'weekly-echelon-blog'`);
     await state.db.execute(sql`DELETE FROM blog_posts WHERE slug LIKE 'fixture-%'`);
   });
   afterAll(async () => {
     if (!pool) return;
+    await pool.query("DROP TRIGGER IF EXISTS fixture_blog_recovery_reset");
+    await state.db.execute(sql`DELETE FROM blog_automation_run_archives WHERE sourceRunId = 'weekly-echelon-blog'`);
     await state.db.execute(sql`DELETE FROM blog_automation_runs WHERE id = 'weekly-echelon-blog'`);
     await state.db.execute(sql`DELETE FROM blog_posts WHERE slug LIKE 'fixture-%'`);
     await pool.end();
@@ -85,6 +98,41 @@ suite("durable blog with an explicitly disposable database", () => {
     const [after] = await state.db.execute(sql`SELECT * FROM blog_automation_runs WHERE id = 'weekly-echelon-blog'`);
     expect(after).toEqual(before);
     expect(await claimBlogStep()).toBeNull();
+  });
+  it("archives only safe metadata from the exact definitely-unsent failure before queuing a fresh run", async () => {
+    await seedDefinitelyUnsentRun();
+    expect(await enqueueWeeklyBlog(NOW)).toEqual({ ok: true, action: "queued_after_definitely_unsent_archive" });
+    const [archives] = await state.db.execute(sql`SELECT sourceRunId, sourceRunKey, sourceStatus, phase, attempts, failureService, failureKind, archiveReason FROM blog_automation_run_archives`);
+    expect(archives).toEqual([{
+      sourceRunId: "weekly-echelon-blog", sourceRunKey: "weekly:2037-10-05", sourceStatus: "failed",
+      phase: "draft-submit", attempts: 4, failureService: "openai", failureKind: "missing_credential",
+      archiveReason: "definitely_unsent_missing_credential",
+    }]);
+    const [run] = await state.db.execute(sql`SELECT runKey, status, progress, attempts, lastError, claimToken, leaseUntil FROM blog_automation_runs WHERE id = 'weekly-echelon-blog'`);
+    expect(run[0]).toMatchObject({ runKey: "weekly:2037-10-05", status: "pending", attempts: 0, lastError: null, claimToken: null, leaseUntil: null });
+    expect(JSON.parse(run[0].progress)).toEqual({ phase: "topic", revision: 0 });
+    const [posts] = await state.db.execute(sql`SELECT COUNT(*) AS total FROM blog_posts WHERE slug = ${topic.slug}`);
+    expect(Number(posts[0].total)).toBe(0);
+  });
+  it("allows exactly one concurrent archive-and-requeue operation", async () => {
+    await seedDefinitelyUnsentRun();
+    const outcomes = await Promise.all([enqueueWeeklyBlog(NOW), enqueueWeeklyBlog(NOW)]);
+    expect(outcomes.map(outcome => outcome.action).sort()).toEqual(["already_queued", "queued_after_definitely_unsent_archive"]);
+    const [archives] = await state.db.execute(sql`SELECT COUNT(*) AS total FROM blog_automation_run_archives`);
+    expect(Number(archives[0].total)).toBe(1);
+  });
+  it("rolls back the archive if resetting the live run fails", async () => {
+    await seedDefinitelyUnsentRun();
+    await pool.query(`CREATE TRIGGER fixture_blog_recovery_reset BEFORE UPDATE ON blog_automation_runs FOR EACH ROW
+      BEGIN IF NEW.status = 'pending' THEN SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'fixture recovery reset failure'; END IF; END`);
+    try {
+      await expect(enqueueWeeklyBlog(NOW)).rejects.toThrow();
+      const [archives] = await state.db.execute(sql`SELECT COUNT(*) AS total FROM blog_automation_run_archives`);
+      expect(Number(archives[0].total)).toBe(0);
+      const [runs] = await state.db.execute(sql`SELECT status, progress, attempts, lastError FROM blog_automation_runs WHERE id = 'weekly-echelon-blog'`);
+      expect(runs[0]).toMatchObject({ status: "failed", attempts: 4, lastError: definitelyUnsentError });
+      expect(runs[0].progress).toBe(JSON.stringify(definitelyUnsent));
+    } finally { await pool.query("DROP TRIGGER fixture_blog_recovery_reset"); }
   });
   it("still queues a new week after a completed run", async () => {
     await enqueueWeeklyBlog(NOW);
