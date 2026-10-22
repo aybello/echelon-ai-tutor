@@ -151,7 +151,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 12px;
   background: rgba(255, 255, 255, 0.96);
   border-bottom: 1px solid var(--echelon-line);
   box-shadow: 0 1px 0 rgba(15, 23, 42, 0.02);
@@ -182,8 +182,8 @@
   align-items: center;
 }
 
-.echelon-desktop-links { justify-content: center; gap: 2px; }
-.echelon-nav-actions { justify-content: flex-end; gap: 8px; flex-shrink: 0; }
+.echelon-desktop-links { min-width: 0; justify-content: center; gap: 0; }
+.echelon-nav-actions { justify-content: flex-end; gap: 6px; flex-shrink: 0; }
 
 .echelon-nav-link {
   min-height: 38px;
@@ -203,6 +203,7 @@
 .echelon-nav-link:hover { color: var(--echelon-blue); background: #eff6ff; }
 .echelon-nav-link.is-active { color: var(--echelon-blue); background: #eff6ff; }
 
+.echelon-pricing-link,
 .echelon-dashboard-link,
 .echelon-account-link,
 .echelon-menu-button {
@@ -212,13 +213,17 @@
   font-weight: 700;
   text-decoration: none;
 }
+.echelon-pricing-link { display: inline-flex; align-items: center; padding: 0 11px; color: var(--echelon-teal); background: #ecfdf5; }
+.echelon-pricing-link:hover, .echelon-pricing-link.is-active { color: #fff; background: var(--echelon-teal); }
 .echelon-dashboard-link { gap: 7px; padding: 0 12px; color: var(--echelon-blue); background: #eff6ff; }
 .echelon-dashboard-link:hover { background: #dbeafe; }
 .echelon-account-link { gap: 7px; padding: 0 14px; color: #fff; background: var(--echelon-navy); }
 .echelon-account-link:hover { background: var(--echelon-navy-soft); }
 .echelon-menu-button { display: none; width: 40px; align-items: center; justify-content: center; border: 1px solid var(--echelon-line); background: #fff; color: var(--echelon-ink); }
 
+.echelon-courses,
 .echelon-resources { position: relative; }
+.echelon-courses-menu,
 .echelon-resources-menu {
   position: absolute;
   top: calc(100% + 9px);
@@ -303,6 +308,7 @@
 .echelon-mobile-resources a { padding: 7px 4px; color: var(--echelon-copy); font-size: 11px; font-weight: 600; text-decoration: none; }
 .echelon-mobile-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding-top: 12px; border-top: 1px solid var(--echelon-line); }
 .echelon-mobile-actions a { min-height: 40px; display: flex; align-items: center; justify-content: center; gap: 7px; border-radius: 9px; color: var(--echelon-blue); background: #eff6ff; font-size: 11px; font-weight: 750; text-decoration: none; }
+.echelon-mobile-actions .echelon-mobile-pricing-link { grid-column: 1 / -1; color: #fff; background: var(--echelon-teal); }
 .echelon-mobile-actions a:last-child { color: #fff; background: var(--echelon-navy); }
 
 @media (max-width: 1160px) {
