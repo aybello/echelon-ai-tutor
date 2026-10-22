@@ -7,7 +7,7 @@ const workspacePath = resolve(rootDir, "pnpm-workspace.yaml");
 const lockfilePath = resolve(rootDir, "pnpm-lock.yaml");
 const expectedOverrides = {
   "tailwindcss>nanoid": "3.3.7",
-  "ip-address": "10.7.1",
+  "ip-address": "10.7.4",
   lodash: "4.18.0",
   "lodash-es": "4.18.0",
   "mdast-util-to-hast": "13.2.1",
@@ -60,8 +60,15 @@ for (const [name, patchPath] of Object.entries(expectedPatch)) {
 }
 
 const lockfile = readFileSync(lockfilePath, "utf8");
-if (!lockfile.includes("nodemailer@10.0.9:")) {
-  fail("pnpm-lock.yaml does not resolve patched Nodemailer 10.0.9.");
+for (const [name, version] of Object.entries({
+  dompurify: "3.4.17",
+  nodemailer: "10.2.1",
+  "express-rate-limit": "8.7.1",
+  "ip-address": "10.7.4",
+})) {
+  if (!lockfile.includes(`${name}@${version}:`)) {
+    fail(`pnpm-lock.yaml does not resolve patched ${name} ${version}.`);
+  }
 }
 if (!lockfile.includes("wouter@3.7.1(patch_hash=")) {
   fail("pnpm-lock.yaml does not record the Wouter patch.");
@@ -80,5 +87,5 @@ if (
 }
 
 console.log(
-  "Dependency guardrails are active: approved workspace overrides, installed Wouter patch, and patched Nodemailer 10.0.9."
+  "Dependency guardrails are active: approved workspace overrides, installed Wouter patch, and patched production dependencies."
 );
