@@ -201,6 +201,12 @@ export function parseTrpc(httpStatus, body) {
   return { kind: "success", data: item.result.data.json };
 }
 
+function substantiveLegacyStepLabel(value) {
+  if (typeof value !== "string" || !value.trim()) return false;
+  const words = value.trim().match(/[A-Za-z0-9]+/g) ?? [];
+  return words.length >= 4 && /[0-9=+×÷/]/.test(value);
+}
+
 export function validateQuestion(question) {
   if (!question || typeof question !== "object") return "not an object";
   if (!Number.isInteger(question.id) || question.id <= 0) return "invalid bank-scoped question id";
@@ -210,10 +216,10 @@ export function validateQuestion(question) {
   if (!Array.isArray(question.options) || question.options.length !== 4
     || question.options.some(option => typeof option !== "string" || !option.trim())) return "invalid four-option structure";
   if (!Number.isInteger(question.correctIndex) || question.correctIndex < 0 || question.correctIndex >= question.options.length) return "invalid correctIndex";
-  // Match StepSolution's lossless string-body support; labels alone are not bodies.
+  // Match StepSolution's lossless string-body support. A legacy label is only a body when it contains a substantive calculation.
   if (question.steps != null && (!Array.isArray(question.steps) || question.steps.some(step => typeof step === "string" ? !step.trim() : !step
     || typeof step !== "object" || Array.isArray(step)
-    || !((typeof step.c === "string" && step.c.trim()) || (typeof step.content === "string" && step.content.trim()))))) return "invalid worked steps";
+    || !((typeof step.c === "string" && step.c.trim()) || (typeof step.content === "string" && step.content.trim()) || substantiveLegacyStepLabel(step.l))))) return "invalid worked steps";
   return null;
 }
 

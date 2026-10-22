@@ -19,6 +19,18 @@ describe("normalizeQuestionSteps", () => {
     ])).toEqual([]);
   });
 
+  it("renders a substantive legacy calculation preserved in the label field", () => {
+    const legacyBody = "Step 2 — Area A = π × (0.3/2)^2 = π × 0.0225 = 0.0707 m²";
+    expect(normalizeQuestionSteps([{ l: legacyBody }])).toEqual([{ l: "", c: legacyBody }]);
+  });
+
+  it("requires a complete legacy calculation and preserves canonical body precedence", () => {
+    const legacyBody = "  Step 2 result = 7  ";
+    expect(normalizeQuestionSteps([{ l: legacyBody }])).toEqual([{ l: "", c: legacyBody }]);
+    expect(normalizeQuestionSteps([{ l: "Y = 0.50" }, { l: "This label needs review" }])).toEqual([]);
+    expect(normalizeQuestionSteps([{ l: legacyBody, c: "Canonical body" }])).toEqual([{ l: legacyBody, c: "Canonical body" }]);
+  });
+
   it("retains complete canonical label and formula text without mutating input", () => {
     const step = Object.freeze({ l: "  Calculate — final  ", c: "  360 kg ÷ 2 = 180 kg.\nCheck both legs.  " });
     expect(normalizeQuestionSteps(Object.freeze([step]))).toEqual([step]);

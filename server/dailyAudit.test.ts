@@ -126,6 +126,18 @@ describe("daily audit live API contracts", () => {
     expect(validateQuestion({ ...question(), steps: [null] })).toMatch(/steps/);
   });
 
+  it("accepts a substantive legacy calculation preserved in a label field", () => {
+    const steps = [{ l: "Step 2 — Area A = π × (0.3/2)^2 = π × 0.0225 = 0.0707 m²" }];
+    expect(validateQuestion({ ...question(), steps })).toBeNull();
+  });
+
+  it("requires a complete legacy calculation and preserves canonical-body precedence", () => {
+    expect(validateQuestion({ ...question(), steps: [{ l: "Step 2 result = 7" }] })).toBeNull();
+    expect(validateQuestion({ ...question(), steps: [{ l: "Y = 0.50" }] })).toBe("invalid worked steps");
+    expect(validateQuestion({ ...question(), steps: [{ l: "This label needs review" }] })).toBe("invalid worked steps");
+    expect(validateQuestion({ ...question(), steps: [{ l: "Step 2 result = 7", c: "Canonical body" }] })).toBeNull();
+  });
+
   it("accepts losslessly rendered legacy string bodies and mixed canonical steps", () => {
     const steps = ["H = (70 psi − 30 psi) × 2.31 ft/psi", { l: "Result", c: "92.4 ft" }];
     expect(validateQuestion({ ...question(), steps })).toBeNull();
