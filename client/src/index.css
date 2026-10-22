@@ -316,10 +316,12 @@
   .echelon-menu-button { display: flex; }
 }
 @media (max-width: 720px) {
-  .echelon-global-nav { height: 58px; padding: 0 12px; }
+  .echelon-global-nav { height: 58px; padding: 0 12px; gap: 6px; }
   .echelon-brand img { width: 36px; height: 34px; }
   .echelon-brand-copy strong { font-size: 13px; }
   .echelon-brand-copy small { display: none; }
+  .echelon-nav-actions { gap: 4px; }
+  .echelon-pricing-link { padding: 0 9px; }
   .echelon-dashboard-link span, .echelon-account-link span { display: none; }
   .echelon-dashboard-link, .echelon-account-link { width: 38px; padding: 0; justify-content: center; }
   .echelon-menu-backdrop { inset-block-start: 58px; }
