@@ -1657,3 +1657,22 @@ export const blogAutomationRuns = mysqlTable("blog_automation_runs", {
   index("blog_weekly_task_idx").on(table.weeklyTaskUid),
   index("blog_worker_task_idx").on(table.workerTaskUid),
 ]);
+
+/** Sparse audit evidence for the sole automatic recovery policy that never retries historic editorial content. */
+export const blogAutomationRunArchives = mysqlTable("blog_automation_run_archives", {
+  id: int("id").autoincrement().primaryKey(),
+  sourceRunId: varchar("sourceRunId", { length: 64 }).notNull(),
+  sourceRunKey: varchar("sourceRunKey", { length: 32 }).notNull(),
+  sourceStatus: varchar("sourceStatus", { length: 16 }).notNull(),
+  phase: varchar("phase", { length: 32 }).notNull(),
+  attempts: int("attempts").notNull(),
+  failureService: varchar("failureService", { length: 32 }).notNull(),
+  failureKind: varchar("failureKind", { length: 64 }).notNull(),
+  archiveReason: varchar("archiveReason", { length: 64 }).notNull(),
+  sourceStartedAt: timestamp("sourceStartedAt").notNull(),
+  sourceFailedAt: timestamp("sourceFailedAt").notNull(),
+  archivedAt: timestamp("archivedAt").defaultNow().notNull(),
+}, table => [
+  uniqueIndex("blog_run_archive_source_unique").on(table.sourceRunId, table.sourceRunKey),
+  index("blog_run_archive_archived_idx").on(table.archivedAt),
+]);

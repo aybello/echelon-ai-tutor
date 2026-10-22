@@ -188,6 +188,13 @@ describe("forward-only migration safety", () => {
           { table: "question_attempts", index: "qa_operation_id_unique", unique: true, columns: ["operationId"] },
         ],
       }),
+      expect.objectContaining({
+        version: 81,
+        tag: "0081_blog_automation_unsent_archive",
+        proposedOnly: true,
+        standaloneApply: { tables: ["blog_automation_run_archives"] },
+        verifierAllowMissingTables: ["blog_automation_run_archives"],
+      }),
     ]);
     const baseline = await loadSchemaContract(manifest.baseline.contract);
     const baselineRaw = await readFile(
@@ -938,7 +945,7 @@ describe("forward-only migration safety", () => {
 
     expect(
       planForwardMigrations(manifest, rows).map(migration => migration.version)
-    ).toEqual([59, 60, 61, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80]);
+    ).toEqual([59, 60, 61, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81]);
   });
 });
 

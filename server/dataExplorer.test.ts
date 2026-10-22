@@ -6,6 +6,7 @@ import * as schema from "../drizzle/schema";
 import { adminRouter } from "./routers/admin";
 import {
   DATA_EXPLORER_DATASETS,
+  DATA_EXPLORER_EXCLUDED_TABLES,
   buildDataExplorerStatements,
   formatDataExplorerValue,
   getDataExplorerColumnClassification,
@@ -37,10 +38,14 @@ describe("admin Data Explorer catalog", () => {
 
     expect(new Set(DATA_EXPLORER_DATASETS.map(dataset => dataset.tableName)).size)
       .toBe(DATA_EXPLORER_DATASETS.length);
-    expect([...DATA_EXPLORER_DATASETS.map(dataset => dataset.tableName)].sort())
+    expect(new Set(DATA_EXPLORER_EXCLUDED_TABLES).size).toBe(DATA_EXPLORER_EXCLUDED_TABLES.length);
+    expect(DATA_EXPLORER_DATASETS.some(dataset => DATA_EXPLORER_EXCLUDED_TABLES.includes(dataset.tableName as never)))
+      .toBe(false);
+    expect([...DATA_EXPLORER_DATASETS.map(dataset => dataset.tableName), ...DATA_EXPLORER_EXCLUDED_TABLES].sort())
       .toEqual([...schemaTableByName.keys()].sort());
     expect(Object.keys(DATA_EXPLORER_COLUMN_CLASSIFICATIONS).sort())
       .toEqual(DATA_EXPLORER_DATASETS.map(dataset => dataset.key).sort());
+    expect(getDataExplorerDataset("blog-automation-run-archives")).toBeNull();
 
     for (const dataset of DATA_EXPLORER_DATASETS) {
       const classification = getDataExplorerColumnClassification(dataset);

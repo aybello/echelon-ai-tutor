@@ -23,6 +23,13 @@ describe("short durable blog callbacks", () => {
     expect(deps.advance).not.toHaveBeenCalled();
     expect(deps.authorize).toHaveBeenCalledWith(expect.anything(), expect.anything(), "weekly");
   });
+  it("acknowledges an archived definitely-unsent run as queued without reporting a publication", async () => {
+    const { deps, request } = await fixture();
+    deps.enqueue.mockResolvedValue({ ok: true, action: "queued_after_definitely_unsent_archive" });
+    expect(await request("/api/scheduled/generate-blog")).toEqual({ status: 200,
+      body: { ok: true, action: "queued_after_definitely_unsent_archive", published: false } });
+    expect(deps.advance).not.toHaveBeenCalled();
+  });
   it("returns a conflict for an unresolved prior run instead of silently starting the new week", async () => {
     const { deps, request } = await fixture();
     deps.enqueue.mockResolvedValue({ ok: true, action: "failed_requires_inspection" });
