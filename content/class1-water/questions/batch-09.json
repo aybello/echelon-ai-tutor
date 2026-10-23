@@ -1,0 +1,797 @@
+{
+  "batch": "09",
+  "title": "Class 1 Water Treatment — batch 09 (questions 1321–1360)",
+  "bankKey": "class1-water",
+  "origin": "ai_assisted",
+  "contentStatus": "draft",
+  "reviewStatus": "in_review",
+  "notes": "Machine-authored draft staged for SME technical review. Imported as reviewStatus 'in_review' per the answer-length governance convention. No regulatory numeric limits or code citations are asserted; all calculations are self-contained.",
+  "questions": [
+    {
+      "questionNum": 1321,
+      "question": "A first-draw sample for lead is collected after water has stood in the plumbing. Why is standing time specified?",
+      "options": [
+        "Because standing water reaches the temperature at which lead dissolves",
+        "Because prolonged contact with plumbing produces the highest metal concentration",
+        "Because standing allows suspended particles to settle before sampling",
+        "Because the disinfectant residual must decay before lead becomes soluble"
+      ],
+      "correctIndex": 1,
+      "explanation": "Lead dissolves from service lines, solder and fittings in proportion to contact time. A specified standing period standardises that contact so results are comparable between properties and reflect a realistic worst case, such as first use in the morning.",
+      "difficulty": "medium",
+      "module": "Sampling & Laboratory",
+      "topic": "Lead sampling protocol",
+      "isCalc": "no",
+      "tip": "Flushing before a first-draw lead sample invalidates it. The standing period is the point of the test."
+    },
+    {
+      "questionNum": 1322,
+      "question": "Why must sample bottles for metals analysis often be preserved with acid?",
+      "options": [
+        "To prevent bacterial growth from consuming the metals in the sample",
+        "To dissolve any particles so that total metal concentration is measured",
+        "To keep metals in solution rather than adsorbing to the bottle wall",
+        "To neutralize the alkalinity that would otherwise precipitate the metals"
+      ],
+      "correctIndex": 2,
+      "explanation": "At neutral pH, dissolved metals adsorb onto container surfaces or precipitate, and the analysis then under-reports what was present. Acidifying the sample keeps the metals in solution until analysis, so the result reflects the water as collected.",
+      "difficulty": "hard",
+      "module": "Sampling & Laboratory",
+      "topic": "Metals preservation",
+      "isCalc": "no",
+      "tip": "Different parameters need different preservation. Using the wrong bottle can invalidate the result entirely."
+    },
+    {
+      "questionNum": 1323,
+      "question": "Why is a hardness titration performed with an indicator that changes colour at the endpoint?",
+      "options": [
+        "The colour change marks the point at which all hardness ions are complexed",
+        "The indicator reacts with the hardness ions and removes them from solution",
+        "The colour intensity is proportional to the hardness concentration present",
+        "The indicator prevents interference from iron and manganese in the sample"
+      ],
+      "correctIndex": 0,
+      "explanation": "In a complexometric hardness titration, the titrant progressively binds calcium and magnesium. The indicator changes colour at the moment the last of those ions is complexed, and the volume of titrant used to reach that point is proportional to the hardness present.",
+      "difficulty": "hard",
+      "module": "Sampling & Laboratory",
+      "topic": "Hardness titration",
+      "isCalc": "no",
+      "tip": "In a titration the volume delivered carries the result. The indicator only marks when to stop."
+    },
+    {
+      "questionNum": 1324,
+      "question": "Why should an operator record raw water conditions alongside process settings each shift?",
+      "options": [
+        "Because raw water conditions determine the classification of the facility",
+        "Because the relationship between conditions and settings guides future decisions",
+        "Because raw water records are required before finished water may be released",
+        "Because raw water quality is used to calculate the plant's production capacity"
+      ],
+      "correctIndex": 1,
+      "explanation": "A record showing what the raw water was doing and what settings produced good results builds an operating history. When similar conditions return, the operator starts from evidence about what worked rather than re-deriving the response, which shortens the time spent off target.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Operating history",
+      "isCalc": "no",
+      "tip": "Pairing conditions with settings and outcomes turns a logbook into a working reference."
+    },
+    {
+      "questionNum": 1325,
+      "question": "Why is a hydrant flushed slowly at the start and end of a flushing operation?",
+      "options": [
+        "To avoid pressure surges that can disturb deposits and break mains",
+        "To allow the operator to measure the chlorine residual accurately",
+        "To prevent the hydrant barrel from draining before the operation ends",
+        "To reduce the volume of water discharged during the flushing program"
+      ],
+      "correctIndex": 0,
+      "explanation": "Opening or closing a hydrant abruptly produces a rapid velocity change that generates a pressure surge. That surge can dislodge deposits throughout the surrounding mains, causing widespread discoloured water complaints, and in severe cases can damage pipes and fittings.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Flushing technique",
+      "isCalc": "no",
+      "tip": "Open slowly, close slowly. Most discoloured water after flushing comes from surges, not from the flushing itself."
+    },
+    {
+      "questionNum": 1326,
+      "question": "Why is a dry-barrel hydrant used in areas subject to freezing?",
+      "options": [
+        "Its barrel drains after use so no water remains to freeze inside",
+        "Its valve is insulated to prevent the water inside from freezing",
+        "Its barrel is heated electrically during cold weather conditions",
+        "Its valve is located above ground where it is easier to thaw"
+      ],
+      "correctIndex": 0,
+      "explanation": "A dry-barrel hydrant has its main valve below the frost line, so once closed the barrel drains and stands empty. With no water in the exposed barrel there is nothing to freeze and split it. A blocked drain that leaves water standing defeats this and is a common maintenance finding.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Hydrant design",
+      "isCalc": "no",
+      "tip": "Check that the barrel actually drains after use. A plugged drain causes a hydrant to freeze and burst."
+    },
+    {
+      "questionNum": 1327,
+      "question": "Why does an operator confirm the identity of a valve before closing it during a main break?",
+      "options": [
+        "To ensure the valve has been exercised within its maintenance schedule",
+        "To avoid isolating the wrong section and leaving the break still flowing",
+        "To determine whether the valve requires a specialised operating key",
+        "To record the number of turns required for the maintenance history"
+      ],
+      "correctIndex": 1,
+      "explanation": "Closing the wrong valve leaves the break flowing while removing supply from customers who did not need to be affected, and it can extend the low-pressure area where contamination may enter. Confirming valve identity against records and observing the result guards against that.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Isolation procedure",
+      "isCalc": "no",
+      "tip": "Verify the effect after closing. If the break does not slow, the isolation is not what you assumed."
+    },
+    {
+      "questionNum": 1328,
+      "question": "Why must the number of turns and direction be known before operating a large distribution valve?",
+      "options": [
+        "Because the valve position must be recorded for the hydraulic model",
+        "Because forcing a valve past its stop can break the stem or the seat",
+        "Because the valve must be left partially open to relieve pressure",
+        "Because the turn count determines the flow the valve will pass"
+      ],
+      "correctIndex": 1,
+      "explanation": "Continuing to turn a valve that has reached its limit can shear the stem, damage the seat, or break the operating nut, converting a routine isolation into a major repair. Knowing the expected number of turns also confirms whether a valve is fully seated or has jammed part way.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Valve operation",
+      "isCalc": "no",
+      "tip": "If a valve reaches its stop early, it is obstructed. Forcing it usually makes the situation worse."
+    },
+    {
+      "questionNum": 1329,
+      "question": "Why is total coliform used as an indicator organism rather than testing directly for pathogens?",
+      "options": [
+        "Coliforms are the most dangerous organisms found in contaminated water",
+        "Coliforms are easier to detect and signal that contamination could occur",
+        "Coliforms survive longer in treated water than any pathogen does",
+        "Coliforms are present in all water sources at predictable concentrations"
+      ],
+      "correctIndex": 1,
+      "explanation": "Testing for every waterborne pathogen would be slow, costly and insensitive. Coliforms are easily cultured, present where contamination has occurred, and generally at least as vulnerable to treatment as the pathogens of concern, so their absence provides reasonable assurance that the barriers are working.",
+      "difficulty": "medium",
+      "module": "Water Quality & Regulations",
+      "topic": "Indicator organisms",
+      "isCalc": "no",
+      "tip": "An indicator is a proxy for treatment integrity, not a measure of how dangerous the water is."
+    },
+    {
+      "questionNum": 1330,
+      "question": "What does the detection of E. coli specifically indicate, compared with total coliform?",
+      "options": [
+        "It indicates recent faecal contamination rather than general regrowth",
+        "It indicates the water contains a higher concentration of organisms",
+        "It indicates a chemical rather than a microbiological treatment failure",
+        "It indicates contamination that occurred at the plant rather than in distribution"
+      ],
+      "correctIndex": 0,
+      "explanation": "Total coliforms include environmental organisms that can enter or regrow without faecal contamination. E. coli lives in the intestines of warm-blooded animals, so its presence is strong evidence of recent faecal contamination and therefore of a genuine pathogen risk, which is why it triggers a more urgent response.",
+      "difficulty": "medium",
+      "module": "Water Quality & Regulations",
+      "topic": "E. coli significance",
+      "isCalc": "no",
+      "tip": "Total coliform suggests a problem worth investigating. E. coli indicates faecal contamination."
+    },
+    {
+      "questionNum": 1331,
+      "question": "Why is Cryptosporidium of particular concern in drinking water treatment?",
+      "options": [
+        "It multiplies rapidly within the distribution system after treatment",
+        "Its oocysts are highly resistant to chlorine at practical doses",
+        "It is not removed by filtration because of its very small size",
+        "It produces a toxin that persists after the organism is inactivated"
+      ],
+      "correctIndex": 1,
+      "explanation": "The thick-walled oocyst of Cryptosporidium survives free chlorine at the concentrations and contact times used in water treatment. Control therefore relies on physical removal through well-operated filtration, and on ultraviolet disinfection, to which the organism is highly susceptible.",
+      "difficulty": "hard",
+      "module": "Water Quality & Regulations",
+      "topic": "Cryptosporidium",
+      "isCalc": "no",
+      "tip": "Chlorine does not control Cryptosporidium. Filtration and UV are the barriers that do."
+    },
+    {
+      "questionNum": 1332,
+      "question": "How does Giardia compare with Cryptosporidium in terms of disinfection?",
+      "options": [
+        "Giardia is far more resistant to chlorine than Cryptosporidium",
+        "Giardia is inactivated by chlorine at achievable CT values",
+        "Giardia is unaffected by ultraviolet disinfection at normal doses",
+        "Giardia is removed by chlorination but not by conventional filtration"
+      ],
+      "correctIndex": 1,
+      "explanation": "Giardia cysts are more resistant than bacteria and viruses but can be inactivated by free chlorine at CT values achievable in practice, which is why CT tables include Giardia inactivation credit. Cryptosporidium is far more resistant and is not controlled by chlorination.",
+      "difficulty": "hard",
+      "module": "Disinfection",
+      "topic": "Pathogen resistance",
+      "isCalc": "no",
+      "tip": "Resistance order to chlorine, from least to most: bacteria, viruses, Giardia, Cryptosporidium."
+    },
+    {
+      "questionNum": 1333,
+      "question": "Why does elevated turbidity reduce the effectiveness of disinfection?",
+      "options": [
+        "Turbidity raises the pH of water into a less effective disinfection range",
+        "Turbidity lowers water temperature and slows the disinfection reaction",
+        "Particles shield organisms and exert additional disinfectant demand",
+        "Turbidity prevents the disinfectant from dissolving fully into the water"
+      ],
+      "correctIndex": 2,
+      "explanation": "Organisms attached to or embedded within particles are physically shielded from contact with the disinfectant and from ultraviolet light. Suspended material also consumes oxidant, reducing the residual available. This is why turbidity must be controlled before disinfection can be relied upon.",
+      "difficulty": "medium",
+      "module": "Disinfection",
+      "topic": "Turbidity interference",
+      "isCalc": "no",
+      "tip": "Disinfection is the last barrier, not a substitute for the physical removal that precedes it."
+    },
+    {
+      "questionNum": 1334,
+      "question": "What does a rising heterotrophic plate count in the distribution system generally indicate?",
+      "options": [
+        "That faecal contamination has entered the distribution system",
+        "That general bacterial regrowth is occurring, often with low residual",
+        "That the laboratory incubation temperature has been set incorrectly",
+        "That disinfection by-product concentrations are increasing in the system"
+      ],
+      "correctIndex": 1,
+      "explanation": "Heterotrophic plate count measures general bacterial populations rather than faecal organisms. A rising count usually reflects regrowth associated with loss of disinfectant residual, warm water, long residence times, or accumulated biofilm, and it is used as a general indicator of distribution system condition.",
+      "difficulty": "medium",
+      "module": "Water Quality & Regulations",
+      "topic": "Heterotrophic plate count",
+      "isCalc": "no",
+      "tip": "HPC describes system condition and biological stability. It is not a direct measure of health risk."
+    },
+    {
+      "questionNum": 1335,
+      "question": "Why is biofilm in a distribution main difficult to eliminate?",
+      "options": [
+        "The organisms within it are protected by the surrounding matrix",
+        "The biofilm consumes disinfectant faster than it can be replaced",
+        "Flushing at high velocity causes the biofilm to spread further along the main",
+        "Biofilm forms only in pipe materials that cannot be chemically cleaned"
+      ],
+      "correctIndex": 0,
+      "explanation": "Bacteria in a biofilm are embedded in a protective layer of extracellular material that limits disinfectant penetration, so organisms survive residuals that would inactivate them in suspension. Control focuses on maintaining residual, limiting nutrients, reducing water age and mechanical removal by scouring.",
+      "difficulty": "hard",
+      "module": "Water Distribution",
+      "topic": "Biofilm control",
+      "isCalc": "no",
+      "tip": "Biofilm is managed rather than eliminated. Residual, nutrient control and scouring keep it in check."
+    },
+    {
+      "questionNum": 1336,
+      "question": "Why is Legionella growth primarily associated with premise plumbing rather than distribution mains?",
+      "options": [
+        "Distribution mains carry water at velocities too high for it to establish",
+        "Premise plumbing offers warm temperatures, stagnation and low residual",
+        "Distribution mains are constructed of materials that inhibit its growth",
+        "Premise plumbing is not disinfected during routine system flushing"
+      ],
+      "correctIndex": 1,
+      "explanation": "Legionella thrives in warm, stagnant water with little disinfectant residual, conditions found in hot water systems, seldom-used fixtures and cooling towers rather than in flowing, chlorinated mains. Exposure is by inhaling aerosols, so showers and cooling systems are the usual routes.",
+      "difficulty": "hard",
+      "module": "Water Distribution",
+      "topic": "Legionella",
+      "isCalc": "no",
+      "tip": "Legionella is an inhalation risk from aerosols, not an ingestion risk from drinking the water."
+    },
+    {
+      "questionNum": 1337,
+      "question": "What is the fundamental difference between a gate valve and a butterfly valve?",
+      "options": [
+        "A gate valve throttles flow precisely while a butterfly valve cannot",
+        "A gate valve uses a rising disc while a butterfly valve rotates a disc in the flow",
+        "A gate valve operates only in horizontal pipe while a butterfly valve suits any orientation",
+        "A gate valve requires a powered actuator while a butterfly valve is manual"
+      ],
+      "correctIndex": 1,
+      "explanation": "A gate valve raises a solid disc clear of the flow path, giving a full-bore opening and very low headloss when fully open, but it is unsuited to throttling. A butterfly valve rotates a disc that remains in the flow, so it is compact and can throttle, at the cost of some permanent headloss.",
+      "difficulty": "medium",
+      "module": "Pumps & Hydraulics",
+      "topic": "Valve types",
+      "isCalc": "no",
+      "tip": "Gate valves are for isolation. Throttling with a partly open gate valve wears the seat quickly."
+    },
+    {
+      "questionNum": 1338,
+      "question": "What is the purpose of a check valve on a pump discharge line?",
+      "options": [
+        "To prevent reverse flow through the pump when it stops",
+        "To relieve excess pressure developed during pump startup",
+        "To throttle discharge flow to match the system demand",
+        "To allow air to escape from the discharge line during filling"
+      ],
+      "correctIndex": 0,
+      "explanation": "When a pump stops, water in the discharge line would otherwise flow backwards, spinning the pump in reverse and potentially draining the system. A check valve closes automatically on flow reversal, protecting the pump and preventing loss of prime and backflow.",
+      "difficulty": "easy",
+      "module": "Pumps & Hydraulics",
+      "topic": "Check valves",
+      "isCalc": "no",
+      "tip": "A slamming check valve on shutdown causes water hammer, so closure characteristics matter."
+    },
+    {
+      "questionNum": 1339,
+      "question": "What operational benefit does a variable frequency drive provide on a pump?",
+      "options": [
+        "It increases the maximum head the pump is capable of developing",
+        "It allows pump speed and therefore output to be matched to demand",
+        "It eliminates the need for a check valve on the pump discharge",
+        "It protects the motor from overload without a separate device"
+      ],
+      "correctIndex": 1,
+      "explanation": "A variable frequency drive changes motor speed so the pump delivers the flow actually required, rather than running at full speed and throttling the excess. That saves energy, reduces pressure transients, and lowers mechanical wear from frequent starting and stopping.",
+      "difficulty": "medium",
+      "module": "Pumps & Hydraulics",
+      "topic": "Variable frequency drives",
+      "isCalc": "no",
+      "tip": "Throttling wastes the energy already added to the water. Slowing the pump avoids adding it."
+    },
+    {
+      "questionNum": 1340,
+      "question": "A pump delivers 60 L/s at 1750 rpm. What flow would it deliver at 1400 rpm, assuming the affinity laws apply?",
+      "options": [
+        "38 L/s",
+        "48 L/s",
+        "54 L/s",
+        "75 L/s"
+      ],
+      "correctIndex": 1,
+      "explanation": "Flow varies directly with speed, so the new flow is 60 × (1400 ÷ 1750) = 60 × 0.8 = 48 L/s.",
+      "difficulty": "hard",
+      "module": "Pumps & Hydraulics",
+      "topic": "Affinity laws",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Relationship",
+          "c": "Flow is proportional to speed"
+        },
+        {
+          "l": "Speed ratio",
+          "c": "1400 ÷ 1750 = 0.8"
+        },
+        {
+          "l": "New flow",
+          "c": "60 L/s × 0.8 = 48 L/s"
+        },
+        {
+          "l": "Note",
+          "c": "Head varies with the square of speed and power with the cube."
+        }
+      ],
+      "tip": "Flow with speed, head with speed squared, power with speed cubed. Small speed cuts save large power."
+    },
+    {
+      "questionNum": 1341,
+      "question": "What is the purpose of motor overload protection?",
+      "options": [
+        "To prevent the motor from starting under a load it cannot accelerate",
+        "To disconnect the motor when sustained excess current would overheat it",
+        "To limit the maximum speed at which the motor is able to run",
+        "To reduce the inrush current drawn by the motor during starting"
+      ],
+      "correctIndex": 1,
+      "explanation": "A motor drawing more current than its rating overheats, and the insulation degrades until it fails. Overload protection senses sustained excess current and disconnects the motor before that damage occurs, while tolerating the brief high current normal at starting.",
+      "difficulty": "medium",
+      "module": "Pumps & Hydraulics",
+      "topic": "Motor protection",
+      "isCalc": "no",
+      "tip": "Repeated overload trips indicate a mechanical problem. Resetting without investigating destroys motors."
+    },
+    {
+      "questionNum": 1342,
+      "question": "What distinguishes a mechanical seal from packing on a pump shaft?",
+      "options": [
+        "A mechanical seal is designed to leak slightly while packing seals completely",
+        "A mechanical seal seals on rotating faces and is designed not to leak",
+        "A mechanical seal requires more frequent adjustment during operation",
+        "A mechanical seal can only be used on positive displacement pumps"
+      ],
+      "correctIndex": 1,
+      "explanation": "A mechanical seal uses two precisely finished faces, one rotating and one stationary, held together to prevent leakage. Packing is compressible material in a stuffing box that is deliberately allowed to drip slightly for lubrication and cooling, and it requires periodic adjustment as it wears.",
+      "difficulty": "medium",
+      "module": "Pumps & Hydraulics",
+      "topic": "Shaft sealing",
+      "isCalc": "no",
+      "tip": "Packing that is tightened until it stops dripping will overheat and score the shaft."
+    },
+    {
+      "questionNum": 1343,
+      "question": "Why is coupling alignment between a pump and its motor important?",
+      "options": [
+        "Misalignment causes vibration that destroys bearings and seals prematurely",
+        "Misalignment reduces the flow the pump is able to deliver to the system",
+        "Misalignment prevents the coupling guard from being fitted correctly",
+        "Misalignment causes the motor to draw a lower current than it should"
+      ],
+      "correctIndex": 0,
+      "explanation": "Even small misalignment imposes cyclic loads on the shafts every revolution. Those loads are carried by bearings and seals, which fail far earlier than they should. Alignment is checked when equipment is installed, after any disassembly, and when piping strain may have shifted the machine.",
+      "difficulty": "medium",
+      "module": "Pumps & Hydraulics",
+      "topic": "Alignment",
+      "isCalc": "no",
+      "tip": "Repeated bearing or seal failures on one machine usually point to alignment or piping strain."
+    },
+    {
+      "questionNum": 1344,
+      "question": "What is the value of routine vibration monitoring on rotating equipment?",
+      "options": [
+        "It measures the efficiency of the pump under current operating conditions",
+        "It confirms the equipment is operating within its rated speed range",
+        "It detects developing faults before they cause an unplanned failure",
+        "It determines the correct interval for changing the lubricating oil"
+      ],
+      "correctIndex": 2,
+      "explanation": "Bearing wear, misalignment, imbalance and looseness each produce characteristic vibration signatures that appear well before failure. Trending vibration allows repairs to be planned during a convenient outage rather than responding to a breakdown that takes the unit out unexpectedly.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Condition monitoring",
+      "isCalc": "no",
+      "tip": "Vibration trending converts unplanned failures into scheduled maintenance."
+    },
+    {
+      "questionNum": 1345,
+      "question": "What is the fundamental difference between a centrifugal pump and a positive displacement pump?",
+      "options": [
+        "A centrifugal pump imparts velocity, so its flow varies with system head",
+        "A centrifugal pump can develop unlimited pressure against a closed valve",
+        "A centrifugal pump moves a fixed volume with each revolution of the shaft",
+        "A centrifugal pump is self-priming while a positive displacement pump is not"
+      ],
+      "correctIndex": 0,
+      "explanation": "A centrifugal pump adds velocity that is converted to pressure, so the flow it delivers depends on the head the system imposes. A positive displacement pump traps and moves a fixed volume per revolution, so its flow is nearly independent of pressure, which is why chemical metering pumps are of that type.",
+      "difficulty": "medium",
+      "module": "Pumps & Hydraulics",
+      "topic": "Pump types",
+      "isCalc": "no",
+      "tip": "Never close the discharge of a positive displacement pump. Pressure rises until something fails."
+    },
+    {
+      "questionNum": 1346,
+      "question": "What is the difference between feedback and feedforward control of a chemical feed?",
+      "options": [
+        "Feedback anticipates a change while feedforward corrects after measurement",
+        "Feedback responds to a measured result while feedforward acts on an input change",
+        "Feedback is manual control while feedforward is automatic control",
+        "Feedback is used for flow while feedforward is used for chemical dosing"
+      ],
+      "correctIndex": 1,
+      "explanation": "Feedback control measures the outcome, such as residual, and adjusts the feed to correct any deviation, which means it always acts after an error has appeared. Feedforward acts on a measured input such as plant flow, adjusting the feed as conditions change. Combining both gives fast response with accurate correction.",
+      "difficulty": "hard",
+      "module": "Instrumentation & Control",
+      "topic": "Control strategies",
+      "isCalc": "no",
+      "tip": "Flow pacing is feedforward; residual trim is feedback. Most plants use the two together."
+    },
+    {
+      "questionNum": 1347,
+      "question": "A chemical feed is flow paced. What does this mean in practice?",
+      "options": [
+        "The feed rate changes automatically in proportion to plant flow",
+        "The feed operates only while plant flow exceeds a set minimum",
+        "The feed rate is adjusted manually whenever plant flow changes",
+        "The feed rate is controlled by the residual measured downstream"
+      ],
+      "correctIndex": 0,
+      "explanation": "Flow pacing links the chemical feed rate to the measured flow so that dose in milligrams per litre stays constant as production varies. Without it, a fixed feed rate produces an overdose when flow falls and an underdose when flow rises.",
+      "difficulty": "medium",
+      "module": "Instrumentation & Control",
+      "topic": "Flow pacing",
+      "isCalc": "no",
+      "tip": "Flow pacing holds the dose constant, not the feed rate. Those are different things."
+    },
+    {
+      "questionNum": 1348,
+      "question": "A control loop causes the chemical feed to swing repeatedly above and below the target. What does this indicate?",
+      "options": [
+        "The measuring instrument has failed and is producing random readings",
+        "The chemical feed pump is oversized for the application it serves",
+        "The controller is tuned too aggressively for the response time of the process",
+        "The setpoint has been placed outside the achievable range of the process"
+      ],
+      "correctIndex": 2,
+      "explanation": "Hunting occurs when the controller reacts strongly to a deviation before the process has had time to respond, so it overshoots, then corrects too far the other way. Water treatment processes have long lag times, so controllers must be tuned gently enough to allow the effect of a change to appear.",
+      "difficulty": "hard",
+      "module": "Instrumentation & Control",
+      "topic": "Control loop tuning",
+      "isCalc": "no",
+      "tip": "Long process lag needs patient tuning. Aggressive control on a slow process guarantees oscillation."
+    },
+    {
+      "questionNum": 1349,
+      "question": "Why are critical measurements sometimes provided by two independent instruments?",
+      "options": [
+        "To average the two readings and improve the accuracy of the measurement",
+        "To allow one instrument to be calibrated while measurement continues",
+        "To satisfy the requirement that all instruments be verified in pairs",
+        "To reduce the frequency at which each instrument requires calibration"
+      ],
+      "correctIndex": 1,
+      "explanation": "Redundancy means that a critical measurement such as filtered turbidity or chlorine residual continues while one instrument is calibrated, repaired or fails. Disagreement between the two also provides immediate warning that one has drifted, which a single instrument cannot reveal.",
+      "difficulty": "medium",
+      "module": "Instrumentation & Control",
+      "topic": "Redundant instrumentation",
+      "isCalc": "no",
+      "tip": "Two instruments give continuity and cross-checking. A single instrument cannot tell you it is wrong."
+    },
+    {
+      "questionNum": 1350,
+      "question": "What does a pH value of 6 indicate compared with a pH value of 7?",
+      "options": [
+        "The water is ten times more acidic because the scale is logarithmic",
+        "The water is one unit more acidic on a linear measurement scale",
+        "The water contains one less milligram per litre of hydrogen ions",
+        "The water is six times more acidic than water at neutral pH"
+      ],
+      "correctIndex": 0,
+      "explanation": "The pH scale is logarithmic, so each whole unit represents a tenfold change in hydrogen ion activity. Water at pH 6 has ten times the hydrogen ion activity of water at pH 7, and water at pH 5 has a hundred times as much.",
+      "difficulty": "medium",
+      "module": "Sampling & Laboratory",
+      "topic": "pH scale",
+      "isCalc": "no",
+      "tip": "A small pH change is a large chemical change. Half a unit matters in coagulation and disinfection."
+    },
+    {
+      "questionNum": 1351,
+      "question": "How does water temperature affect the settling of floc in a sedimentation basin?",
+      "options": [
+        "Cold water is more viscous, so floc settles more slowly",
+        "Cold water is less dense, so floc settles more rapidly",
+        "Temperature affects floc strength but not its settling velocity",
+        "Warm water increases viscosity and slows the settling of floc"
+      ],
+      "correctIndex": 0,
+      "explanation": "Viscosity increases as water cools, and a particle settling through a more viscous fluid experiences greater drag. Settling velocity therefore falls in cold water, which is one reason clarifier performance deteriorates in winter even when coagulation is well controlled.",
+      "difficulty": "hard",
+      "module": "Sedimentation",
+      "topic": "Temperature and settling",
+      "isCalc": "no",
+      "tip": "Cold water hurts twice: slower chemical reactions and slower physical settling."
+    },
+    {
+      "questionNum": 1352,
+      "question": "What does a concentration of 1 mg/L correspond to in a water sample?",
+      "options": [
+        "One part per thousand",
+        "One part per million",
+        "One part per billion",
+        "One percent by mass"
+      ],
+      "correctIndex": 1,
+      "explanation": "One litre of water has a mass of approximately one million milligrams, so one milligram in one litre is one part per million. Micrograms per litre correspond to parts per billion, which is the unit used for trace contaminants.",
+      "difficulty": "easy",
+      "module": "Sampling & Laboratory",
+      "topic": "Concentration units",
+      "isCalc": "no",
+      "tip": "mg/L equals ppm and µg/L equals ppb, for dilute water solutions."
+    },
+    {
+      "questionNum": 1353,
+      "question": "A plant serving 8000 people produces 2.4 ML/d. What is the average consumption per person?",
+      "options": [
+        "180 L per person per day",
+        "240 L per person per day",
+        "300 L per person per day",
+        "333 L per person per day"
+      ],
+      "correctIndex": 2,
+      "explanation": "Converting production to 2 400 000 litres per day and dividing by the population gives 2 400 000 ÷ 8000 = 300 litres per person per day.",
+      "difficulty": "medium",
+      "module": "Process Control & Operations",
+      "topic": "Per capita consumption",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Convert",
+          "c": "2.4 ML/d = 2 400 000 L/d"
+        },
+        {
+          "l": "Divide",
+          "c": "2 400 000 ÷ 8000 people"
+        },
+        {
+          "l": "Solve",
+          "c": "= 300 L per person per day"
+        },
+        {
+          "l": "Note",
+          "c": "This includes commercial use and system losses, not domestic use alone."
+        }
+      ],
+      "tip": "Per capita figures include losses and non-domestic use, so they exceed household consumption."
+    },
+    {
+      "questionNum": 1354,
+      "question": "A basin measuring 30 m by 10 m contains water 3.5 m deep. What volume of water is present?",
+      "options": [
+        "300 m³",
+        "525 m³",
+        "1050 m³",
+        "3500 m³"
+      ],
+      "correctIndex": 2,
+      "explanation": "Volume is length times width times depth: 30 × 10 × 3.5 = 1050 m³.",
+      "difficulty": "easy",
+      "module": "Hydraulics",
+      "topic": "Basin volume",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "Volume = L × W × D"
+        },
+        {
+          "l": "Substitute",
+          "c": "30 m × 10 m × 3.5 m"
+        },
+        {
+          "l": "Solve",
+          "c": "= 1050 m³"
+        }
+      ],
+      "tip": "Sketch the shape and label the dimensions before substituting. It prevents pairing the wrong values."
+    },
+    {
+      "questionNum": 1355,
+      "question": "A plant's finished water flow is 250 L/s. What is this expressed in megalitres per day?",
+      "options": [
+        "9.0 ML/d",
+        "15.0 ML/d",
+        "21.6 ML/d",
+        "36.0 ML/d"
+      ],
+      "correctIndex": 2,
+      "explanation": "Multiplying by 86 400 seconds per day gives 250 × 86 400 = 21 600 000 L/d, which is 21.6 ML/d.",
+      "difficulty": "medium",
+      "module": "Hydraulics",
+      "topic": "Flow conversion",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Per day",
+          "c": "250 L/s × 86 400 s/d = 21 600 000 L/d"
+        },
+        {
+          "l": "Convert",
+          "c": "÷ 1 000 000 = 21.6 ML/d"
+        },
+        {
+          "l": "Shortcut",
+          "c": "L/s × 0.0864 = ML/d"
+        }
+      ],
+      "tip": "The factor 0.0864 converts L/s to ML/d in one step."
+    },
+    {
+      "questionNum": 1356,
+      "question": "A motor draws 45 kW and the pump delivers 31.5 kW of water power. What is the overall efficiency?",
+      "options": [
+        "43 percent",
+        "70 percent",
+        "76 percent",
+        "143 percent"
+      ],
+      "correctIndex": 1,
+      "explanation": "Efficiency is output divided by input: 31.5 ÷ 45 × 100 = 70 percent.",
+      "difficulty": "medium",
+      "module": "Pumps & Hydraulics",
+      "topic": "Overall efficiency",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Formula",
+          "c": "Efficiency = output ÷ input × 100"
+        },
+        {
+          "l": "Substitute",
+          "c": "31.5 kW ÷ 45 kW × 100"
+        },
+        {
+          "l": "Solve",
+          "c": "= 70 percent"
+        }
+      ],
+      "tip": "Declining efficiency at the same duty point indicates wear in the pump or the motor."
+    },
+    {
+      "questionNum": 1357,
+      "question": "A filter bed 0.8 m deep expands to 1.0 m during backwash. What is the percentage bed expansion?",
+      "options": [
+        "20 percent",
+        "25 percent",
+        "80 percent",
+        "125 percent"
+      ],
+      "correctIndex": 1,
+      "explanation": "The increase is 1.0 − 0.8 = 0.2 m. Expressed against the original depth, 0.2 ÷ 0.8 × 100 = 25 percent expansion.",
+      "difficulty": "hard",
+      "module": "Filtration",
+      "topic": "Bed expansion",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Increase",
+          "c": "1.0 m − 0.8 m = 0.2 m"
+        },
+        {
+          "l": "Percentage",
+          "c": "0.2 ÷ 0.8 × 100 = 25%"
+        },
+        {
+          "l": "Why",
+          "c": "Expansion is measured to confirm the backwash rate is adequate but not excessive."
+        }
+      ],
+      "tip": "Divide by the original settled depth, not by the expanded depth."
+    },
+    {
+      "questionNum": 1358,
+      "question": "A reservoir loses 0.4 m of depth overnight with no recorded consumption. The reservoir is 25 m by 20 m. What volume was lost?",
+      "options": [
+        "50 m³",
+        "100 m³",
+        "200 m³",
+        "500 m³"
+      ],
+      "correctIndex": 2,
+      "explanation": "The plan area is 25 × 20 = 500 m². A drop of 0.4 m corresponds to 500 × 0.4 = 200 m³ of water lost.",
+      "difficulty": "medium",
+      "module": "Water Distribution",
+      "topic": "Reservoir loss",
+      "isCalc": "yes",
+      "steps": [
+        {
+          "l": "Area",
+          "c": "25 m × 20 m = 500 m²"
+        },
+        {
+          "l": "Volume",
+          "c": "500 m² × 0.4 m = 200 m³"
+        },
+        {
+          "l": "Interpret",
+          "c": "With no consumption recorded, investigate leakage or an open drain."
+        }
+      ],
+      "tip": "Overnight level drop with no demand is one of the clearest indicators of a leak."
+    },
+    {
+      "questionNum": 1359,
+      "question": "Why is a pressure transmitter sometimes preferred over a float switch for reservoir level measurement?",
+      "options": [
+        "It provides a continuous level reading rather than discrete switch points",
+        "It operates without any electrical power supply at the reservoir site",
+        "It is unaffected by changes in the density of the stored water",
+        "It requires no calibration once it has been installed and commissioned"
+      ],
+      "correctIndex": 0,
+      "explanation": "A float switch changes state at fixed points, so it can only report that level is above or below those points. A pressure transmitter measures the head of water continuously, allowing level to be trended, volumes calculated, and rates of change observed, all of which support better operating decisions.",
+      "difficulty": "medium",
+      "module": "Instrumentation & Control",
+      "topic": "Level measurement",
+      "isCalc": "no",
+      "tip": "Continuous measurement lets you see rate of change, which discrete switches cannot provide."
+    },
+    {
+      "questionNum": 1360,
+      "question": "Why must an ultrasonic level sensor have a clear path to the water surface?",
+      "options": [
+        "Because obstructions reflect the signal and produce a false level reading",
+        "Because the sensor requires direct sunlight to operate at full accuracy",
+        "Because condensation on the sensor face increases the measured distance",
+        "Because the sensor measures the temperature of the water surface directly"
+      ],
+      "correctIndex": 0,
+      "explanation": "An ultrasonic sensor measures the time for a sound pulse to travel to the surface and return. Ladders, pipework, turbulence or foam within the beam reflect the pulse early, so the instrument reports a level that is too high. Mounting position and a clear beam path are therefore critical.",
+      "difficulty": "medium",
+      "module": "Instrumentation & Control",
+      "topic": "Ultrasonic level",
+      "isCalc": "no",
+      "tip": "A level reading that sticks at one value often means the beam is reflecting off a fixed obstruction."
+    }
+  ]
+}
