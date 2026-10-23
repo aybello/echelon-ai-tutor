@@ -255,7 +255,7 @@ export async function claimFlexLicence(
     throw new TRPCError({ code: "BAD_REQUEST", message: "This licence has expired. Contact your manager." });
   }
 
-  await db.update(teamFlexLicences)
+  const claimResult = await db.update(teamFlexLicences)
     .set({
       status: "assigned",
       operatorUserId,
@@ -267,6 +267,10 @@ export async function claimFlexLicence(
       eq(teamFlexLicences.status, "invited"),
       eq(teamFlexLicences.invitationToken, invitationTokenHash),
     ));
+
+  if (affectedRows(claimResult) !== 1) {
+    throw new TRPCError({ code: "CONFLICT", message: "This invitation was already claimed or changed. Refresh and try again." });
+  }
 
   await trackEvent("team_seat_assigned", {
     userId: operatorUserId?.toString() ?? null,
@@ -307,14 +311,27 @@ export async function assignFlexLicence(
     throw new TRPCError({ code: "BAD_REQUEST", message: `Cannot assign licence in '${licence.status}' status` });
   }
 
-  await db.update(teamFlexLicences)
+  const assignConditions = [
+    eq(teamFlexLicences.id, licenceId),
+    eq(teamFlexLicences.organizationId, orgId),
+    eq(teamFlexLicences.status, licence.status),
+  ];
+  if (licence.status === "invited" && licence.invitationToken) {
+    assignConditions.push(eq(teamFlexLicences.invitationToken, licence.invitationToken));
+  }
+
+  const assignResult = await db.update(teamFlexLicences)
     .set({
       status: "assigned",
       operatorUserId,
       invitedEmail: null,
       invitationToken: null,
     })
-    .where(eq(teamFlexLicences.id, licenceId));
+    .where(and(...assignConditions));
+
+  if (affectedRows(assignResult) !== 1) {
+    throw new TRPCError({ code: "CONFLICT", message: "This licence was assigned or changed by another request. Refresh and try again." });
+  }
 
   await trackEvent("team_seat_assigned", {
     userId: operatorUserId.toString(),
