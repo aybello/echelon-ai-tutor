@@ -7,6 +7,7 @@ const workspacePath = resolve(rootDir, "pnpm-workspace.yaml");
 const lockfilePath = resolve(rootDir, "pnpm-lock.yaml");
 const expectedOverrides = {
   "tailwindcss>nanoid": "3.3.7",
+  "express>body-parser": "1.20.9",
   "ip-address": "10.7.4",
   lodash: "4.18.0",
   "lodash-es": "4.18.0",
@@ -62,6 +63,8 @@ for (const [name, patchPath] of Object.entries(expectedPatch)) {
 const lockfile = readFileSync(lockfilePath, "utf8");
 for (const [name, version] of Object.entries({
   dompurify: "3.4.17",
+  zod: "4.6.6",
+  "body-parser": "1.20.9",
   nodemailer: "10.2.1",
   "express-rate-limit": "8.7.1",
   "ip-address": "10.7.4",
