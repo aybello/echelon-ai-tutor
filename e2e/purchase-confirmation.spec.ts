@@ -25,12 +25,17 @@ async function mockConfirmation(page: Page, response: (attempt: number) => objec
     }
     await route.fulfill({ json: results });
   });
-  await page.clock.install();
+  const now = new Date("2026-01-01T00:00:00Z");
+  await page.clock.install({ time: now });
+  await page.clock.pauseAt(now);
   return () => calls;
 }
 
 async function openConfirmation(page: Page) {
   await page.goto("/purchase-success?session_id=cs_test_confirmation&product=oit");
+  await page.clock.runFor(1000);
+  await new Promise(resolve => setTimeout(resolve, 250));
+  await page.clock.runFor(1000);
 }
 
 for (const width of [1280, 390]) {
@@ -40,6 +45,10 @@ for (const width of [1280, 390]) {
     await openConfirmation(page);
     await expect(page.getByRole("status")).toContainText("checking for your course access automatically");
     await expect(page.getByRole("button", { name: "Continue to Study Setup" })).toHaveCount(0);
+    if (width === 1280) {
+      await new Promise(resolve => setTimeout(resolve, 2200));
+      expect(calls()).toBe(1);
+    }
     for (let n = 2; n <= 6; n++) {
       await page.clock.runFor(2100);
       await expect.poll(calls).toBe(n);
@@ -49,6 +58,7 @@ for (const width of [1280, 390]) {
     expect(calls()).toBe(6);
     await expect(page.getByRole("status")).toContainText("do not need to purchase again");
     await page.getByRole("button", { name: "Check access again" }).click();
+    await page.clock.runFor(1000);
     await expect(page.getByRole("link", { name: /Sign in — OIT Practice Quiz/ })).toHaveAttribute("href", "/login/otp?next=%2Fquiz");
     await expect(page.getByRole("button", { name: "Continue to Study Setup" })).toBeVisible();
     await page.clock.runFor(20_000);
@@ -76,6 +86,7 @@ for (const failure of ["disconnect", "server-unavailable"] as const) {
     await expect(page.getByRole("heading", { name: "Payment Successful!" })).toBeVisible();
     await expect(page.getByRole("button", { name: "Continue to Study Setup" })).toHaveCount(0);
     await page.getByRole("button", { name: "Check access again" }).click();
+    await page.clock.runFor(1000);
     await expect(page.getByRole("button", { name: "Continue to Study Setup" })).toBeVisible();
   });
 }
@@ -86,6 +97,7 @@ test("initial confirmation failure offers recheck without sending a charged cust
   await expect(page.getByText("If Stripe charged your card, do not purchase again.", { exact: false })).toBeVisible();
   await expect(page.getByRole("button", { name: "Return to Pricing" })).toHaveCount(0);
   await page.getByRole("button", { name: "Check access again" }).click();
+  await page.clock.runFor(1000);
   await expect(page.getByRole("button", { name: "Continue to Study Setup" })).toBeVisible();
 });
 

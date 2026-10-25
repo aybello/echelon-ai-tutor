@@ -35,6 +35,12 @@ const draftStorage = {
 };
 const STEP_LABELS = ["Study setup", "Starting diagnostic", "Your plan"];
 
+function topicEvidenceLabel(topic: string, breakdown?: Record<string, { correct: number; total: number }>) {
+  const evidence = breakdown?.[topic];
+  if (!evidence || !Number.isInteger(evidence.correct) || !Number.isInteger(evidence.total) || evidence.total < 1 || evidence.correct < 0 || evidence.correct > evidence.total) return topic;
+  return `${topic} · ${evidence.correct}/${evidence.total} correct`;
+}
+
 export default function LearnerActivation() {
   const [, params] = useRoute("/activate/:courseKey");
   const auth = trpc.dashboardAuth.me.useQuery(undefined, { retry: false });
@@ -370,16 +376,17 @@ function ActivationFlow({ auth, oauth }: {
                 </div>
               </div>
               <CardContent className="grid gap-6 p-6 sm:grid-cols-2 sm:p-8">
+                <p className="text-sm leading-6 text-slate-600 sm:col-span-2">These topic labels are early signals from a short diagnostic, not confirmed mastery.</p>
                 <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5">
                   <p className="text-xs font-black uppercase tracking-[0.16em] text-amber-800">Start here</p>
                   <div className="mt-4 flex flex-wrap gap-2">
-                    {result.weakTopics.length ? result.weakTopics.map(topic => <span key={topic} className="rounded-full border border-amber-200 bg-white px-3 py-1.5 text-xs font-bold text-amber-900">{topic}</span>) : <span className="text-sm text-amber-900">Mixed-topic practice</span>}
+                    {result.weakTopics.length ? result.weakTopics.map(topic => <span key={topic} className="rounded-full border border-amber-200 bg-white px-3 py-1.5 text-xs font-bold text-amber-900">{topicEvidenceLabel(topic, result.topicBreakdown)}</span>) : <span className="text-sm text-amber-900">Mixed-topic practice</span>}
                   </div>
                 </div>
                 <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-5">
                   <p className="text-xs font-black uppercase tracking-[0.16em] text-emerald-800">Strongest signals</p>
                   <div className="mt-4 flex flex-wrap gap-2">
-                    {result.strongTopics.length ? result.strongTopics.map(topic => <span key={topic} className="rounded-full border border-emerald-200 bg-white px-3 py-1.5 text-xs font-bold text-emerald-900">{topic}</span>) : <span className="text-sm text-emerald-900">More practice will reveal your strengths.</span>}
+                    {result.strongTopics.length ? result.strongTopics.map(topic => <span key={topic} className="rounded-full border border-emerald-200 bg-white px-3 py-1.5 text-xs font-bold text-emerald-900">{topicEvidenceLabel(topic, result.topicBreakdown)}</span>) : <span className="text-sm text-emerald-900">More practice will reveal your strengths.</span>}
                   </div>
                 </div>
               </CardContent>
