@@ -34,6 +34,8 @@ async function mockConfirmation(page: Page, response: (attempt: number) => objec
 async function openConfirmation(page: Page) {
   await page.goto("/purchase-success?session_id=cs_test_confirmation&product=oit");
   await page.clock.runFor(1000);
+  await new Promise(resolve => setTimeout(resolve, 250));
+  await page.clock.runFor(1000);
 }
 
 for (const width of [1280, 390]) {
