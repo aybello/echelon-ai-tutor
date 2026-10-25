@@ -15,6 +15,7 @@ beforeAll(async () => {
     import { useAttemptLogger } from './client/src/components/QuizModeBar';
     function App() {
       const [, refresh] = useState(0);
+      window.refreshStatus = () => refresh(x => x + 1);
       const log = useAttemptLogger('oit');
       return <><button id="answer" onClick={() => log({questionId: 4, selectedIndex: 2, attemptToken: window.receipt})}>Answer</button>
         <button id="switch" onClick={() => {window.identity = 18; refresh(x=>x+1)}}>Switch</button><Status courseKey="oit" /></>;
@@ -110,5 +111,23 @@ describe("practice recovery component in an offline intercepted browser", () => 
     await page.getByText("Answer saved to your course history.", {exact:true}).waitFor();
     expect(await page.getByText(/no durable recovery record/).count()).toBe(1);
     expect(calls).toHaveLength(2); await page.close();
+  });
+  it("renders the recovery storage warning when an independent record read throws", async () => {
+    const { page, calls } = await setup();
+    await page.evaluate(() => {
+      const record = { version: 1, idempotencyVersion: 1, operationId: "550e8400-e29b-41d4-a716-446655440001", scope: { identity: "user:17", courseKey: "oit" }, questionId: 4, selectedIndex: 2, bankKey: "oit", examType: "oit", quizMode: "standard", sessionId: "550e8400-e29b-41d4-a716-446655440000", createdAt: 1 };
+      localStorage.setItem(`echelon:practice-save-outbox:v2:${encodeURIComponent(record.operationId)}`, JSON.stringify(record));
+      const getItem = Storage.prototype.getItem;
+      (window as any).restoreStorageRead = () => { Storage.prototype.getItem = getItem; };
+      Storage.prototype.getItem = function(key: string) {
+        if (key.startsWith("echelon:practice-save-outbox:v2:")) throw Error("storage unavailable");
+        return getItem.call(this, key);
+      };
+      (window as any).refreshStatus();
+    });
+    await page.getByText("Browser recovery storage is unavailable. Pending answers cannot be recovered here.", { exact: true }).waitFor();
+    expect(calls).toHaveLength(0);
+    await page.evaluate(() => (window as any).restoreStorageRead());
+    await page.close();
   });
 });

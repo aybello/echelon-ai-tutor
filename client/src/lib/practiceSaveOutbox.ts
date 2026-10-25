@@ -54,25 +54,24 @@ function isPendingPracticeSave(value: unknown): value is PendingPracticeSave {
 
 function readAll(storage: Pick<Storage, "getItem" | "key" | "length">): PendingPracticeSave[] {
   const records = new Map<string, PendingPracticeSave>();
+  const raw = storage.getItem(PRACTICE_SAVE_OUTBOX_KEY);
   try {
-    const raw = storage.getItem(PRACTICE_SAVE_OUTBOX_KEY);
+    const legacy: unknown = raw ? JSON.parse(raw) : [];
+    if (Array.isArray(legacy)) for (const item of legacy.filter(isPendingPracticeSave)) records.set(item.operationId, item);
+  } catch { /* A corrupt legacy array must not hide independent records. */ }
+  const keys: string[] = [];
+  for (let i = 0; i < storage.length; i++) {
+    const key = storage.key(i);
+    if (key?.startsWith(operationPrefix)) keys.push(key);
+  }
+  for (const key of keys) {
+    const rawItem = storage.getItem(key);
     try {
-      const legacy: unknown = raw ? JSON.parse(raw) : [];
-      if (Array.isArray(legacy)) for (const item of legacy.filter(isPendingPracticeSave)) records.set(item.operationId, item);
-    } catch { /* A corrupt legacy array must not hide independent records. */ }
-    const keys: string[] = [];
-    for (let i = 0; i < storage.length; i++) {
-      const key = storage.key(i);
-      if (key?.startsWith(operationPrefix)) keys.push(key);
-    }
-    for (const key of keys) {
-      try {
-        const item: unknown = JSON.parse(storage.getItem(key) ?? "null");
-        if (isPendingPracticeSave(item) && key === operationKey(item.operationId)) records.set(item.operationId, item);
-      } catch { /* Ignore only this malformed record. */ }
-    }
-    return [...records.values()].filter(item => storage.getItem(removedKey(item.operationId)) === null);
-  } catch { return []; }
+      const item: unknown = JSON.parse(rawItem ?? "null");
+      if (isPendingPracticeSave(item) && key === operationKey(item.operationId)) records.set(item.operationId, item);
+    } catch { /* Ignore only this malformed record. */ }
+  }
+  return [...records.values()].filter(item => storage.getItem(removedKey(item.operationId)) === null);
 }
 
 function sameScope(a: PracticeSaveScope, b: PracticeSaveScope): boolean {
