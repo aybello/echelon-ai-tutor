@@ -44,3 +44,33 @@ it("does not claim durability for a store without enumeration", () => {
   const db = { getItem: () => null, setItem: () => {} };
   expect(enqueuePracticeSave(db as unknown as Storage, item(1))).toBe(false);
 });
+
+it("skips a corrupt independent JSON record without hiding valid records", () => {
+  const db = storage();
+  enqueuePracticeSave(db, item(1));
+  db.data.set("echelon:practice-save-outbox:v2:corrupt", "{not-json");
+  expect(listPendingPracticeSaves(db, scope)).toEqual([item(1)]);
+});
+
+it.each(["legacy getItem", "length", "key", "record getItem", "tombstone getItem"])("surfaces a storage access failure from %s", failure => {
+  const db = storage();
+  enqueuePracticeSave(db, item(1));
+  const originalGetItem = db.getItem.bind(db);
+  const broken = {
+    get length() {
+      if (failure === "length") throw Error("storage unavailable");
+      return db.length;
+    },
+    key(index: number) {
+      if (failure === "key") throw Error("storage unavailable");
+      return db.key(index);
+    },
+    getItem(key: string) {
+      if (failure === "legacy getItem" && key === PRACTICE_SAVE_OUTBOX_KEY) throw Error("storage unavailable");
+      if (failure === "record getItem" && key.startsWith("echelon:practice-save-outbox:v2:")) throw Error("storage unavailable");
+      if (failure === "tombstone getItem" && key.startsWith("echelon:practice-save-outbox:removed:v2:")) throw Error("storage unavailable");
+      return originalGetItem(key);
+    },
+  };
+  expect(() => listPendingPracticeSaves(broken, scope)).toThrow("storage unavailable");
+});
