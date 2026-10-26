@@ -302,7 +302,6 @@ export default function QuizShell({
   const [studyNotesOpen, setStudyNotesOpen] = useState(false);
   const [studyNotesModule, setStudyNotesModule] = useState<string | null>(null);
   const [studyNotesPracticeModule, setStudyNotesPracticeModule] = useState<string | null>(null);
-  const [bookmarked, setBookmarked] = useState(false);
   const bookmarkScope = useVerifiedPracticeSaveScope(examType ?? "");
   const bookmarkScopeKey = bookmarkScope ? JSON.stringify(bookmarkScope) : null;
   const activeBookmarkTargetRef = useRef({ questionId: current?.id as number | undefined, bankKey: examType, scopeKey: bookmarkScopeKey });
@@ -315,9 +314,12 @@ export default function QuizShell({
     status: "unavailable" | "loading" | "ready" | "error";
     bookmarks: { questionId: number }[];
   }>({ scopeKey: null, bankKey: examType, status: "unavailable", bookmarks: [] });
+  const bookmarkReadRef = useRef(bookmarkRead);
+  bookmarkReadRef.current = bookmarkRead;
   const ownsBookmarkRead = bookmarkRead.scopeKey === bookmarkScopeKey && bookmarkRead.bankKey === examType;
   const bookmarkReadPending = Boolean(bookmarkScope && examType) && (!ownsBookmarkRead || bookmarkRead.status === "loading");
   const bookmarkReadUnavailable = !bookmarkScope || !examType || (ownsBookmarkRead && bookmarkRead.status === "error");
+  const bookmarked = ownsBookmarkRead && bookmarkRead.status === "ready" && isQuestionBookmarked(bookmarkRead.bookmarks, current?.id);
 
   const openStudyNotes = useCallback((practiceModule: string | null) => {
     const courseKey = examType ?? currentPath.slice(1);
@@ -367,7 +369,24 @@ export default function QuizShell({
       }
       const active = activeBookmarkTargetRef.current;
       const originQuestionId = origin?.questionId;
-      if (originQuestionId != null) {
+      const originScopeKey = origin?.scopeKey;
+      const originBankKey = origin?.bankKey;
+      const read = bookmarkReadRef.current;
+      if (originQuestionId != null && originScopeKey && originBankKey && read.scopeKey === originScopeKey && read.bankKey === originBankKey && read.status === "loading" && active.scopeKey === originScopeKey && active.bankKey === originBankKey) {
+        const generation = ++bookmarkReadGeneration.current;
+        void bookmarkUtils.client.dashboard.bookmarkedQuestions.query({ examType: originBankKey }).then(
+          bookmarks => {
+            if (bookmarkReadGeneration.current === generation && activeBookmarkTargetRef.current.scopeKey === originScopeKey && activeBookmarkTargetRef.current.bankKey === originBankKey) {
+              setBookmarkRead({ scopeKey: originScopeKey, bankKey: originBankKey, status: "ready", bookmarks });
+            }
+          },
+          () => {
+            if (bookmarkReadGeneration.current === generation && activeBookmarkTargetRef.current.scopeKey === originScopeKey && activeBookmarkTargetRef.current.bankKey === originBankKey) {
+              setBookmarkRead({ scopeKey: originScopeKey, bankKey: originBankKey, status: "error", bookmarks: [] });
+            }
+          },
+        );
+      } else if (originQuestionId != null) {
         setBookmarkRead(read => {
           if (read.status !== "ready" || read.scopeKey !== origin.scopeKey || read.bankKey !== origin.bankKey) return read;
           const withoutQuestion = read.bookmarks.filter(bookmark => bookmark.questionId !== originQuestionId);
@@ -378,7 +397,6 @@ export default function QuizShell({
         });
       }
       if (active.questionId === origin?.questionId && active.bankKey === origin?.bankKey && active.scopeKey === origin?.scopeKey) {
-        setBookmarked(data.bookmarked);
         toast(data.bookmarked ? "🔖 Bookmarked" : "Bookmark removed");
       }
       if (variables.bankKey) void bookmarkUtils.dashboard.bookmarkedQuestions.invalidate({ examType: variables.bankKey });
@@ -468,13 +486,6 @@ export default function QuizShell({
   // determines when a new read is required.
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bookmarkScopeKey, examType]);
-
-  // Hydrate only from a ready result owned by the active verified scope.
-  useEffect(() => {
-    if (ownsBookmarkRead && bookmarkRead.status === "ready") {
-      setBookmarked(isQuestionBookmarked(bookmarkRead.bookmarks, current?.id));
-    }
-  }, [bookmarkRead, current?.id, ownsBookmarkRead]);
 
   const progress = sessionSize ? Math.min(100, (history.length / sessionSize) * 100) : 0;
   const accuracy = history.length > 0 ? Math.round((correctCount / history.length) * 100) : null;

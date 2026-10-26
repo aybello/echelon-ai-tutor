@@ -220,6 +220,25 @@ describe("QuizShell saved bookmark state in an isolated browser", () => {
     } finally { await page.close(); }
   });
 
+  it("refreshes a same-scope read that races a successful bookmark mutation", async () => {
+    const page = await setup({ manualRead: true });
+    try {
+      await expect.poll(async () => page.evaluate(() => (window as any).reads.length)).toBe(1);
+      await page.evaluate(() => (window as any).resolveRead(0, [{ questionId: 17 }, { questionId: 31 }]));
+      await expectBookmarkText(page, "🔖 Bookmarked");
+      await bookmarkButton(page).click();
+      await page.evaluate(() => (window as any).setAuditState({ scope: { identity: "user:8", courseKey: "audit-course" } }));
+      await expect.poll(async () => page.evaluate(() => (window as any).reads.length)).toBe(2);
+      await page.evaluate(() => (window as any).setAuditState({ scope: { identity: "user:7", courseKey: "audit-course" } }));
+      await expect.poll(async () => page.evaluate(() => (window as any).reads.length)).toBe(3);
+      await page.evaluate(() => (window as any).resolveMutation(0, { ok: true, bookmarked: false }));
+      await expect.poll(async () => page.evaluate(() => (window as any).reads.length)).toBe(4);
+      await page.evaluate(() => (window as any).resolveRead(2, [{ questionId: 17 }, { questionId: 31 }]));
+      await page.evaluate(() => (window as any).resolveRead(3, [{ questionId: 31 }]));
+      await expectBookmarkText(page, "📑 Bookmark");
+    } finally { await page.close(); }
+  });
+
   it("does not present success when a bookmark mutation returns ok false", async () => {
     const page = await setup();
     try {
