@@ -174,6 +174,15 @@ export function shouldShowPracticeQuestionStatus(
   return questionStatus === "error" || questionStatus === "empty";
 }
 
+/** Match the displayed question to its durable per-course bookmark record. */
+export function isQuestionBookmarked(
+  bookmarks: readonly { questionId?: number | null }[],
+  currentQuestionId: number | undefined,
+): boolean {
+  return currentQuestionId != null
+    && bookmarks.some((bookmark) => bookmark.questionId === currentQuestionId);
+}
+
 /** Back is available only when the currently displayed question has an earlier answer. */
 export function canNavigateToPreviousAnswer(
   history: readonly unknown[],
@@ -294,6 +303,11 @@ export default function QuizShell({
   const [studyNotesModule, setStudyNotesModule] = useState<string | null>(null);
   const [studyNotesPracticeModule, setStudyNotesPracticeModule] = useState<string | null>(null);
   const [bookmarked, setBookmarked] = useState(false);
+  const bookmarkUtils = trpc.useUtils();
+  const { data: savedBookmarks = [] } = trpc.dashboard.bookmarkedQuestions.useQuery(
+    { examType: examType ?? "" },
+    { enabled: Boolean(examType), refetchOnWindowFocus: false },
+  );
 
   const openStudyNotes = useCallback((practiceModule: string | null) => {
     const courseKey = examType ?? currentPath.slice(1);
@@ -333,6 +347,7 @@ export default function QuizShell({
   const toggleBookmarkMutation = trpc.dashboard.toggleBookmark.useMutation({
     onSuccess: (data) => {
       setBookmarked(data.bookmarked);
+      if (examType) void bookmarkUtils.dashboard.bookmarkedQuestions.invalidate({ examType });
       toast(data.bookmarked ? "🔖 Bookmarked" : "Bookmark removed");
     },
     onError: () => toast.error("Could not save bookmark — please try again."),
@@ -390,14 +405,11 @@ export default function QuizShell({
   const timerPct = timedSeconds > 0 ? (timeLeft / timedSeconds) * 100 : 100;
   const timerColor = timerPct > 50 ? "#059669" : timerPct > 25 ? "#D97706" : "#DC2626";
 
-  // Reset bookmark state when question changes
-  const prevQuestionId = useRef<number | undefined>(undefined);
+  // Hydrate the displayed question from durable bookmark state. This prevents the
+  // apparent “Bookmark” action from removing a bookmark that was saved earlier.
   useEffect(() => {
-    if (current?.id !== prevQuestionId.current) {
-      setBookmarked(false);
-      prevQuestionId.current = current?.id;
-    }
-  }, [current?.id]);
+    setBookmarked(isQuestionBookmarked(savedBookmarks, current?.id));
+  }, [current?.id, savedBookmarks]);
 
   const progress = sessionSize ? Math.min(100, (history.length / sessionSize) * 100) : 0;
   const accuracy = history.length > 0 ? Math.round((correctCount / history.length) * 100) : null;
