@@ -366,11 +366,13 @@ export default function QuizShell({
       scopeKey: bookmarkScopeKey,
     }),
     onSuccess: (data, variables, origin) => {
+      const active = activeBookmarkTargetRef.current;
       if (!data.ok) {
-        toast.error("Could not save bookmark — please try again.");
+        if (active.questionId === origin?.questionId && active.bankKey === origin?.bankKey && active.scopeKey === origin?.scopeKey) {
+          toast.error("Could not save bookmark — please try again.");
+        }
         return;
       }
-      const active = activeBookmarkTargetRef.current;
       const originQuestionId = origin?.questionId;
       const originScopeKey = origin?.scopeKey;
       const originBankKey = origin?.bankKey;
@@ -403,7 +405,12 @@ export default function QuizShell({
       }
       if (variables.bankKey) void bookmarkUtils.dashboard.bookmarkedQuestions.invalidate({ examType: variables.bankKey });
     },
-    onError: () => toast.error("Could not save bookmark — please try again."),
+    onError: (_error, _variables, origin) => {
+      const active = activeBookmarkTargetRef.current;
+      if (active.questionId === origin?.questionId && active.bankKey === origin?.bankKey && active.scopeKey === origin?.scopeKey) {
+        toast.error("Could not save bookmark — please try again.");
+      }
+    },
   });
 
   // ── Session-complete feedback modal ──────────────────────────────────────────

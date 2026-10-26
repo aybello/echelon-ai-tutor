@@ -70,6 +70,7 @@ beforeAll(async () => {
             const notify=()=>window.auditListeners.forEach(fn=>fn());
             window.setAuditState=patch=>{window.auditState={...window.auditState,...patch};notify()};
             window.resolveMutation=(index,data)=>window.mutations[index].resolve(data);
+            window.rejectMutation=(index)=>window.mutations[index].reject(new Error('synthetic mutation failure'));
             window.resolveRead=(index,data)=>window.reads[index].resolve(data);
             window.rejectRead=(index)=>window.reads[index].reject(new Error('synthetic read failure'));
             const subscribe=fn=>{window.auditListeners.add(fn);return()=>window.auditListeners.delete(fn)};
@@ -87,7 +88,7 @@ beforeAll(async () => {
                 : window.auditConfig.manualRead
                   ? {isLoading:true,isFetching:true,isError:false,isSuccess:false}
                   : {data:window.auditConfig.bookmarks,isLoading:false,isFetching:false,isError:false,isSuccess:true}}},
-              toggleBookmark:{useMutation:options=>({isPending:false,mutate:input=>{const context=options.onMutate?.(input);let resolve;const promise=new Promise(r=>resolve=r);window.mutations.push({input,resolve});promise.then(data=>options.onSuccess(data,input,context));}})}
+              toggleBookmark:{useMutation:options=>({isPending:false,mutate:input=>{const context=options.onMutate?.(input);let resolve,reject;const promise=new Promise((yes,no)=>{resolve=yes;reject=no});window.mutations.push({input,resolve,reject});promise.then(data=>options.onSuccess(data,input,context),error=>options.onError?.(error,input,context));}})}
             }};
           `, resolveDir: process.cwd() };
           return { contents: `export default function Stub(){return null}; export const TutorPanelPlacement={Provider:({children})=>children}; export const readUSStudyContext=()=>({isUS:false}); export const withUSStudyContext=x=>x; export const resolveCourseKey=value=>value?{courseKey:value,examFamily:'western'}:null; export const resolveStudyNotesTopics=()=>({initialTopic:null}); export const shouldShowReviewPrompt=()=>false; export const GOOGLE_REVIEW_URL=''; export const markReviewPromptShown=()=>{}; export const markAsReviewed=()=>{}; export const getPracticeGuidePath=()=>null; export const class1OptionOrder=(_e,_i,n)=>Array.from({length:n},(_,i)=>i); export const class1DisplayLetter=()=> 'A';` };
@@ -247,6 +248,39 @@ describe("QuizShell saved bookmark state in an isolated browser", () => {
       await expectBookmarkText(page, "🔖 Bookmarked");
       expect(await page.evaluate(() => (window as any).invalidations)).toEqual([]);
       expect(await page.evaluate(() => (window as any).toasts)).toEqual(["Could not save bookmark — please try again."]);
+    } finally { await page.close(); }
+  });
+
+  it("does not show a failed bookmark toast after question navigation", async () => {
+    const page = await setup();
+    try {
+      await bookmarkButton(page).click();
+      await page.evaluate(() => (window as any).showQuestion(29));
+      await expectBookmarkText(page, "📑 Bookmark");
+      await page.evaluate(() => (window as any).resolveMutation(0, { ok: false, bookmarked: false }));
+      await page.waitForTimeout(50);
+      expect(await page.evaluate(() => (window as any).toasts)).toEqual([]);
+    } finally { await page.close(); }
+  });
+
+  it("does not show a rejected bookmark toast after question navigation", async () => {
+    const page = await setup();
+    try {
+      await bookmarkButton(page).click();
+      await page.evaluate(() => (window as any).showQuestion(29));
+      await expectBookmarkText(page, "📑 Bookmark");
+      await page.evaluate(() => (window as any).rejectMutation(0));
+      await page.waitForTimeout(50);
+      expect(await page.evaluate(() => (window as any).toasts)).toEqual([]);
+    } finally { await page.close(); }
+  });
+
+  it("shows a rejected bookmark toast while the originating question remains active", async () => {
+    const page = await setup();
+    try {
+      await bookmarkButton(page).click();
+      await page.evaluate(() => (window as any).rejectMutation(0));
+      await expect.poll(async () => page.evaluate(() => (window as any).toasts)).toEqual(["Could not save bookmark — please try again."]);
     } finally { await page.close(); }
   });
 });
