@@ -29,7 +29,7 @@ import { resolveCourseKey } from "@shared/courseRegistry";
 import { trpc } from "@/lib/trpc";
 import PracticeQuestionStatus from "@/components/PracticeQuestionStatus";
 import QuizSkeleton from "@/components/QuizSkeleton";
-import PracticeSaveStatus from "@/components/PracticeSaveStatus";
+import PracticeSaveStatus, { useVerifiedPracticeSaveScope } from "@/components/PracticeSaveStatus";
 import PracticeOptions from "@/components/PracticeOptions";
 import { getPracticeGuidePath } from "@/lib/practiceResources";
 import StudyNotesTopics from "@/components/StudyNotesTopics";
@@ -303,13 +303,17 @@ export default function QuizShell({
   const [studyNotesModule, setStudyNotesModule] = useState<string | null>(null);
   const [studyNotesPracticeModule, setStudyNotesPracticeModule] = useState<string | null>(null);
   const [bookmarked, setBookmarked] = useState(false);
-  const currentQuestionIdRef = useRef<number | undefined>(current?.id);
-  currentQuestionIdRef.current = current?.id;
+  const bookmarkScope = useVerifiedPracticeSaveScope(examType ?? "");
+  const bookmarkScopeKey = bookmarkScope ? JSON.stringify(bookmarkScope) : null;
+  const activeBookmarkTargetRef = useRef({ questionId: current?.id as number | undefined, bankKey: examType, scopeKey: bookmarkScopeKey });
+  activeBookmarkTargetRef.current = { questionId: current?.id, bankKey: examType, scopeKey: bookmarkScopeKey };
   const bookmarkUtils = trpc.useUtils();
-  const { data: savedBookmarks = [] } = trpc.dashboard.bookmarkedQuestions.useQuery(
+  const savedBookmarkQuery = trpc.dashboard.bookmarkedQuestions.useQuery(
     { examType: examType ?? "" },
-    { enabled: Boolean(examType), refetchOnWindowFocus: false, retry: false },
+    { enabled: Boolean(examType && bookmarkScope), refetchOnWindowFocus: false, retry: false },
   );
+  const bookmarkReadPending = Boolean(bookmarkScope) && (savedBookmarkQuery.isLoading || savedBookmarkQuery.isFetching || !savedBookmarkQuery.isSuccess);
+  const bookmarkReadUnavailable = !bookmarkScope || savedBookmarkQuery.isError;
 
   const openStudyNotes = useCallback((practiceModule: string | null) => {
     const courseKey = examType ?? currentPath.slice(1);
@@ -347,12 +351,22 @@ export default function QuizShell({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPath, moduleOverviews, selectedModule]);
   const toggleBookmarkMutation = trpc.dashboard.toggleBookmark.useMutation({
-    onSuccess: (data, variables) => {
-      if (currentQuestionIdRef.current === variables.questionId) {
-        setBookmarked(data.bookmarked);
+    onMutate: (variables) => ({
+      questionId: variables.questionId,
+      bankKey: variables.bankKey,
+      scopeKey: bookmarkScopeKey,
+    }),
+    onSuccess: (data, variables, origin) => {
+      if (!data.ok) {
+        toast.error("Could not save bookmark — please try again.");
+        return;
       }
-      if (examType) void bookmarkUtils.dashboard.bookmarkedQuestions.invalidate({ examType });
-      toast(data.bookmarked ? "🔖 Bookmarked" : "Bookmark removed");
+      const active = activeBookmarkTargetRef.current;
+      if (active.questionId === origin?.questionId && active.bankKey === origin?.bankKey && active.scopeKey === origin?.scopeKey) {
+        setBookmarked(data.bookmarked);
+        toast(data.bookmarked ? "🔖 Bookmarked" : "Bookmark removed");
+      }
+      if (variables.bankKey) void bookmarkUtils.dashboard.bookmarkedQuestions.invalidate({ examType: variables.bankKey });
     },
     onError: () => toast.error("Could not save bookmark — please try again."),
   });
@@ -412,8 +426,10 @@ export default function QuizShell({
   // Hydrate the displayed question from durable bookmark state. This prevents the
   // apparent “Bookmark” action from removing a bookmark that was saved earlier.
   useEffect(() => {
-    setBookmarked(isQuestionBookmarked(savedBookmarks, current?.id));
-  }, [current?.id, savedBookmarks]);
+    if (savedBookmarkQuery.isSuccess && bookmarkScope) {
+      setBookmarked(isQuestionBookmarked(savedBookmarkQuery.data ?? [], current?.id));
+    }
+  }, [bookmarkScope, current?.id, savedBookmarkQuery.data, savedBookmarkQuery.isSuccess]);
 
   const progress = sessionSize ? Math.min(100, (history.length / sessionSize) * 100) : 0;
   const accuracy = history.length > 0 ? Math.round((correctCount / history.length) * 100) : null;
@@ -1029,11 +1045,11 @@ export default function QuizShell({
               {current?.id && (
                 <button
                   onClick={() => {
-                    if (!current?.id) return;
+                    if (!current?.id || bookmarkReadPending || bookmarkReadUnavailable) return;
                     // FIX 5: Pass bankKey (examType) + questionId for per-user+question bookmark
-                    toggleBookmarkMutation.mutate({ bankKey: examType ?? "unknown", questionId: current.id });
+                    toggleBookmarkMutation.mutate({ bankKey: examType ?? "unknown", questionId: current.id, bookmarked: !bookmarked });
                   }}
-                  disabled={toggleBookmarkMutation.isPending}
+                  disabled={bookmarkReadPending || bookmarkReadUnavailable || toggleBookmarkMutation.isPending}
                   style={{
                     background: bookmarked ? "#EFF6FF" : "none",
                     border: bookmarked ? "1px solid #BFDBFE" : "1px solid #E2E8F0",
@@ -1049,7 +1065,11 @@ export default function QuizShell({
                     fontWeight: bookmarked ? 700 : 400,
                   }}
                 >
-                  {bookmarked ? "🔖 Bookmarked" : "📑 Bookmark"}
+                  {bookmarkReadUnavailable
+                    ? "Bookmark unavailable"
+                    : bookmarkReadPending
+                      ? "Loading bookmark…"
+                      : bookmarked ? "🔖 Bookmarked" : "📑 Bookmark"}
                 </button>
               )}
             </div>
