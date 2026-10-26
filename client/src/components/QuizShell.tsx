@@ -366,15 +366,18 @@ export default function QuizShell({
         return;
       }
       const active = activeBookmarkTargetRef.current;
-      if (active.questionId === origin?.questionId && active.bankKey === origin?.bankKey && active.scopeKey === origin?.scopeKey) {
+      const originQuestionId = origin?.questionId;
+      if (originQuestionId != null) {
         setBookmarkRead(read => {
-          if (origin?.questionId == null || read.status !== "ready" || read.scopeKey !== origin.scopeKey || read.bankKey !== origin.bankKey) return read;
-          const withoutQuestion = read.bookmarks.filter(bookmark => bookmark.questionId !== origin.questionId);
+          if (read.status !== "ready" || read.scopeKey !== origin.scopeKey || read.bankKey !== origin.bankKey) return read;
+          const withoutQuestion = read.bookmarks.filter(bookmark => bookmark.questionId !== originQuestionId);
           return {
             ...read,
-            bookmarks: data.bookmarked ? [...withoutQuestion, { questionId: origin.questionId }] : withoutQuestion,
+            bookmarks: data.bookmarked ? [...withoutQuestion, { questionId: originQuestionId }] : withoutQuestion,
           };
         });
+      }
+      if (active.questionId === origin?.questionId && active.bankKey === origin?.bankKey && active.scopeKey === origin?.scopeKey) {
         setBookmarked(data.bookmarked);
         toast(data.bookmarked ? "🔖 Bookmarked" : "Bookmark removed");
       }

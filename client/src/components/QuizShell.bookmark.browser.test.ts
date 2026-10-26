@@ -205,6 +205,21 @@ describe("QuizShell saved bookmark state in an isolated browser", () => {
     } finally { await page.close(); }
   });
 
+  it("keeps the originating bookmark snapshot current after same-course navigation", async () => {
+    const page = await setup();
+    try {
+      await bookmarkButton(page).click();
+      expect(await page.evaluate(() => (window as any).mutations[0].input)).toEqual({ bankKey: "audit-course", questionId: 17, bookmarked: false });
+      await page.evaluate(() => (window as any).showQuestion(29));
+      await expectBookmarkText(page, "📑 Bookmark");
+      await page.evaluate(() => (window as any).resolveMutation(0, { ok: true, bookmarked: false }));
+      expect(await page.evaluate(() => (window as any).toasts)).toEqual([]);
+      await page.evaluate(() => (window as any).showQuestion(17));
+      await page.waitForTimeout(250);
+      await expectBookmarkText(page, "📑 Bookmark");
+    } finally { await page.close(); }
+  });
+
   it("does not present success when a bookmark mutation returns ok false", async () => {
     const page = await setup();
     try {
