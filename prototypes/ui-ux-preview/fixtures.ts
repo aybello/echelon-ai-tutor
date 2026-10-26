@@ -64,6 +64,7 @@ export function previewResult(path: string, input: any): any {
     case "dashboard.studyPlan": return { recommendations: [{ type: "weak_topic", title: "Review coagulation, then practise", description: "A short session on your focus topic is a useful next step.", action: "Continue studying", actionHref: "/class1-water?topic=Coagulation%20%26%20Flocculation" }], totalMissed: 12, totalBookmarked: 4, totalLowConf: 0 };
     case "dashboard.topicAccuracy": return { topics: [{ name: "Coagulation & Flocculation", accuracy: 58, total: 24, correct: 14, status: "weak" }] };
     case "dashboard.dailyActivity": case "dashboard.courseBreakdown": case "dashboard.recentSessions": case "dashboard.aiSessionHistory": return [];
+    case "dashboard.bookmarkedQuestions": return [];
     case "dashboard.difficultyBreakdown": return [];
     case "org.getOrgOverview": return { orgId: 1, orgName: "Prairie Utilities · Sample team", province: "western", status: "active", seatsTotal: 5, seatsAssigned: 2, seatsUsedThisTerm: 2, licencesUsedThisTerm: 2, activeThisWeek: 1, avgReadiness: 68, onTrackCount: 1, termStart: "2026-06-01", termEnd: "2027-06-01", billingType: "invoice", stripeSubscriptionId: null, allowedCourseKeys: null };
     case "org.listMembers": return clone(members);
