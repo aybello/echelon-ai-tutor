@@ -315,7 +315,10 @@ export default function QuizShell({
     bookmarks: { questionId: number }[];
   }>({ scopeKey: null, bankKey: examType, status: "unavailable", bookmarks: [] });
   const bookmarkReadRef = useRef(bookmarkRead);
-  bookmarkReadRef.current = bookmarkRead;
+  const commitBookmarkRead = (next: typeof bookmarkRead) => {
+    bookmarkReadRef.current = next;
+    setBookmarkRead(next);
+  };
   const ownsBookmarkRead = bookmarkRead.scopeKey === bookmarkScopeKey && bookmarkRead.bankKey === examType;
   const bookmarkReadPending = Boolean(bookmarkScope && examType) && (!ownsBookmarkRead || bookmarkRead.status === "loading");
   const bookmarkReadUnavailable = !bookmarkScope || !examType || (ownsBookmarkRead && bookmarkRead.status === "error");
@@ -377,24 +380,23 @@ export default function QuizShell({
         void bookmarkUtils.client.dashboard.bookmarkedQuestions.query({ examType: originBankKey }).then(
           bookmarks => {
             if (bookmarkReadGeneration.current === generation && activeBookmarkTargetRef.current.scopeKey === originScopeKey && activeBookmarkTargetRef.current.bankKey === originBankKey) {
-              setBookmarkRead({ scopeKey: originScopeKey, bankKey: originBankKey, status: "ready", bookmarks });
+              commitBookmarkRead({ scopeKey: originScopeKey, bankKey: originBankKey, status: "ready", bookmarks });
             }
           },
           () => {
             if (bookmarkReadGeneration.current === generation && activeBookmarkTargetRef.current.scopeKey === originScopeKey && activeBookmarkTargetRef.current.bankKey === originBankKey) {
-              setBookmarkRead({ scopeKey: originScopeKey, bankKey: originBankKey, status: "error", bookmarks: [] });
+              commitBookmarkRead({ scopeKey: originScopeKey, bankKey: originBankKey, status: "error", bookmarks: [] });
             }
           },
         );
       } else if (originQuestionId != null) {
-        setBookmarkRead(read => {
-          if (read.status !== "ready" || read.scopeKey !== origin.scopeKey || read.bankKey !== origin.bankKey) return read;
+        if (read.status === "ready" && read.scopeKey === origin.scopeKey && read.bankKey === origin.bankKey) {
           const withoutQuestion = read.bookmarks.filter(bookmark => bookmark.questionId !== originQuestionId);
-          return {
+          commitBookmarkRead({
             ...read,
             bookmarks: data.bookmarked ? [...withoutQuestion, { questionId: originQuestionId }] : withoutQuestion,
-          };
-        });
+          });
+        }
       }
       if (active.questionId === origin?.questionId && active.bankKey === origin?.bankKey && active.scopeKey === origin?.scopeKey) {
         toast(data.bookmarked ? "🔖 Bookmarked" : "Bookmark removed");
@@ -465,19 +467,19 @@ export default function QuizShell({
     const generation = ++bookmarkReadGeneration.current;
     let cancelled = false;
     if (!scopeKey || !bankKey) {
-      setBookmarkRead({ scopeKey, bankKey, status: "unavailable", bookmarks: [] });
+      commitBookmarkRead({ scopeKey, bankKey, status: "unavailable", bookmarks: [] });
       return () => { cancelled = true; };
     }
-    setBookmarkRead({ scopeKey, bankKey, status: "loading", bookmarks: [] });
+    commitBookmarkRead({ scopeKey, bankKey, status: "loading", bookmarks: [] });
     void bookmarkUtils.client.dashboard.bookmarkedQuestions.query({ examType: bankKey }).then(
       bookmarks => {
         if (!cancelled && bookmarkReadGeneration.current === generation) {
-          setBookmarkRead({ scopeKey, bankKey, status: "ready", bookmarks });
+          commitBookmarkRead({ scopeKey, bankKey, status: "ready", bookmarks });
         }
       },
       () => {
         if (!cancelled && bookmarkReadGeneration.current === generation) {
-          setBookmarkRead({ scopeKey, bankKey, status: "error", bookmarks: [] });
+          commitBookmarkRead({ scopeKey, bankKey, status: "error", bookmarks: [] });
         }
       },
     );
