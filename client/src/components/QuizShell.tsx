@@ -303,10 +303,12 @@ export default function QuizShell({
   const [studyNotesModule, setStudyNotesModule] = useState<string | null>(null);
   const [studyNotesPracticeModule, setStudyNotesPracticeModule] = useState<string | null>(null);
   const [bookmarked, setBookmarked] = useState(false);
+  const currentQuestionIdRef = useRef<number | undefined>(current?.id);
+  currentQuestionIdRef.current = current?.id;
   const bookmarkUtils = trpc.useUtils();
   const { data: savedBookmarks = [] } = trpc.dashboard.bookmarkedQuestions.useQuery(
     { examType: examType ?? "" },
-    { enabled: Boolean(examType), refetchOnWindowFocus: false },
+    { enabled: Boolean(examType), refetchOnWindowFocus: false, retry: false },
   );
 
   const openStudyNotes = useCallback((practiceModule: string | null) => {
@@ -345,8 +347,10 @@ export default function QuizShell({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPath, moduleOverviews, selectedModule]);
   const toggleBookmarkMutation = trpc.dashboard.toggleBookmark.useMutation({
-    onSuccess: (data) => {
-      setBookmarked(data.bookmarked);
+    onSuccess: (data, variables) => {
+      if (currentQuestionIdRef.current === variables.questionId) {
+        setBookmarked(data.bookmarked);
+      }
       if (examType) void bookmarkUtils.dashboard.bookmarkedQuestions.invalidate({ examType });
       toast(data.bookmarked ? "🔖 Bookmarked" : "Bookmark removed");
     },
