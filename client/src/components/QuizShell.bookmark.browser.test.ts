@@ -5,9 +5,12 @@ import { build } from "esbuild";
 let browser: Browser;
 let script: string;
 
+type Bookmark = { questionId: number };
 type SetupOptions = {
   scope?: { identity: string; courseKey: string } | null;
-  query?: { data?: { questionId: number }[]; isLoading?: boolean; isFetching?: boolean; isError?: boolean; isSuccess?: boolean };
+  bookmarks?: Bookmark[];
+  manualRead?: boolean;
+  readError?: boolean;
 };
 
 beforeAll(async () => {
@@ -62,15 +65,28 @@ beforeAll(async () => {
           if (args.path === "@/lib/trpc") return { contents: `
             import {useSyncExternalStore} from 'react';
             window.auditListeners=new Set();
-            window.auditState={scope:window.auditConfig.scope,query:window.auditConfig.query};
-            window.invalidations=[]; window.mutations=[]; window.queryCalls=[];
+            window.auditState={scope:window.auditConfig.scope};
+            window.invalidations=[]; window.mutations=[]; window.queryCalls=[]; window.reads=[];
             const notify=()=>window.auditListeners.forEach(fn=>fn());
             window.setAuditState=patch=>{window.auditState={...window.auditState,...patch};notify()};
             window.resolveMutation=(index,data)=>window.mutations[index].resolve(data);
+            window.resolveRead=(index,data)=>window.reads[index].resolve(data);
+            window.rejectRead=(index)=>window.reads[index].reject(new Error('synthetic read failure'));
             const subscribe=fn=>{window.auditListeners.add(fn);return()=>window.auditListeners.delete(fn)};
             const useAuditState=()=>useSyncExternalStore(subscribe,()=>window.auditState);
-            export const trpc={useUtils:()=>({dashboard:{bookmarkedQuestions:{invalidate:async input=>{window.invalidations.push(input)}}}}),dashboard:{
-              bookmarkedQuestions:{useQuery:(input,options)=>{const state=useAuditState();window.queryCalls.push({input,options});return state.query}},
+            const query=input=>{
+              let resolve, reject;
+              const promise=new Promise((yes,no)=>{resolve=yes;reject=no});
+              window.reads.push({input,resolve,reject});
+              if (!window.auditConfig.manualRead) queueMicrotask(()=>window.auditConfig.readError ? reject(new Error('synthetic read failure')) : resolve(window.auditConfig.bookmarks));
+              return promise;
+            };
+            export const trpc={useUtils:()=>({client:{dashboard:{bookmarkedQuestions:{query}}},dashboard:{bookmarkedQuestions:{invalidate:async input=>{window.invalidations.push(input)}}}}),dashboard:{
+              bookmarkedQuestions:{useQuery:(input,options)=>{useAuditState();window.queryCalls.push({input,options});return window.auditConfig.readError
+                ? {isLoading:false,isFetching:false,isError:true,isSuccess:false}
+                : window.auditConfig.manualRead
+                  ? {isLoading:true,isFetching:true,isError:false,isSuccess:false}
+                  : {data:window.auditConfig.bookmarks,isLoading:false,isFetching:false,isError:false,isSuccess:true}}},
               toggleBookmark:{useMutation:options=>({isPending:false,mutate:input=>{const context=options.onMutate?.(input);let resolve;const promise=new Promise(r=>resolve=r);window.mutations.push({input,resolve});promise.then(data=>options.onSuccess(data,input,context));}})}
             }};
           `, resolveDir: process.cwd() };
@@ -94,7 +110,9 @@ async function setup(options: SetupOptions = {}) {
   await page.goto("https://practice.echelon.test/");
   await page.evaluate(config => { (window as any).auditConfig = config; }, {
     scope: options.scope === undefined ? { identity: "user:7", courseKey: "audit-course" } : options.scope,
-    query: options.query ?? { data: [{ questionId: 17 }, { questionId: 31 }], isLoading: false, isFetching: false, isError: false, isSuccess: true },
+    bookmarks: options.bookmarks ?? [{ questionId: 17 }, { questionId: 31 }],
+    manualRead: options.manualRead ?? false,
+    readError: options.readError ?? false,
   });
   await page.addScriptTag({ content: script });
   await page.getByText("Saved synthetic question").waitFor();
@@ -122,7 +140,7 @@ describe("QuizShell saved bookmark state in an isolated browser", () => {
   });
 
   it("cannot mutate while the durable bookmark read is pending", async () => {
-    const page = await setup({ query: { isLoading: true, isFetching: true, isError: false, isSuccess: false } });
+    const page = await setup({ manualRead: true });
     try {
       await expectBookmarkText(page, "Loading bookmark…");
       await expect(bookmarkButton(page).isDisabled()).resolves.toBe(true);
@@ -132,7 +150,7 @@ describe("QuizShell saved bookmark state in an isolated browser", () => {
   });
 
   it("shows an unavailable disabled control after a failed read", async () => {
-    const page = await setup({ query: { isLoading: false, isFetching: false, isError: true, isSuccess: false } });
+    const page = await setup({ readError: true });
     try {
       await expectBookmarkText(page, "Bookmark unavailable");
       await expect(bookmarkButton(page).isDisabled()).resolves.toBe(true);
@@ -141,12 +159,31 @@ describe("QuizShell saved bookmark state in an isolated browser", () => {
     } finally { await page.close(); }
   });
 
-  it("does not enable the bookmark query or toggle without a verified scope", async () => {
+  it("does not read or toggle without a verified scope", async () => {
     const page = await setup({ scope: null });
     try {
       await expectBookmarkText(page, "Bookmark unavailable");
       await expect(bookmarkButton(page).isDisabled()).resolves.toBe(true);
-      expect(await page.evaluate(() => (window as any).queryCalls.at(-1).options.enabled)).toBe(false);
+      expect(await page.evaluate(() => (window as any).reads.length)).toBe(0);
+    } finally { await page.close(); }
+  });
+
+  it("ignores an identity-only stale read until the new scope read succeeds", async () => {
+    const page = await setup({ manualRead: true });
+    try {
+      await expect.poll(async () => page.evaluate(() => (window as any).reads.length)).toBe(1);
+      await page.evaluate(() => (window as any).setAuditState({ scope: { identity: "email:b@example.test", courseKey: "audit-course" } }));
+      await expect.poll(async () => page.evaluate(() => (window as any).reads.length)).toBe(2);
+
+      await page.evaluate(() => (window as any).resolveRead(0, [{ questionId: 17 }]));
+      await expectBookmarkText(page, "Loading bookmark…");
+      await expect(bookmarkButton(page).isDisabled()).resolves.toBe(true);
+
+      await page.evaluate(() => (window as any).resolveRead(1, []));
+      await expectBookmarkText(page, "📑 Bookmark");
+      await expect(bookmarkButton(page).isDisabled()).resolves.toBe(false);
+      await bookmarkButton(page).click();
+      expect(await page.evaluate(() => (window as any).mutations[0].input)).toEqual({ bankKey: "audit-course", questionId: 17, bookmarked: true });
     } finally { await page.close(); }
   });
 

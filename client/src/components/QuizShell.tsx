@@ -308,12 +308,16 @@ export default function QuizShell({
   const activeBookmarkTargetRef = useRef({ questionId: current?.id as number | undefined, bankKey: examType, scopeKey: bookmarkScopeKey });
   activeBookmarkTargetRef.current = { questionId: current?.id, bankKey: examType, scopeKey: bookmarkScopeKey };
   const bookmarkUtils = trpc.useUtils();
-  const savedBookmarkQuery = trpc.dashboard.bookmarkedQuestions.useQuery(
-    { examType: examType ?? "" },
-    { enabled: Boolean(examType && bookmarkScope), refetchOnWindowFocus: false, retry: false },
-  );
-  const bookmarkReadPending = Boolean(bookmarkScope) && (savedBookmarkQuery.isLoading || savedBookmarkQuery.isFetching || !savedBookmarkQuery.isSuccess);
-  const bookmarkReadUnavailable = !bookmarkScope || savedBookmarkQuery.isError;
+  const bookmarkReadGeneration = useRef(0);
+  const [bookmarkRead, setBookmarkRead] = useState<{
+    scopeKey: string | null;
+    bankKey: string | undefined;
+    status: "unavailable" | "loading" | "ready" | "error";
+    bookmarks: { questionId: number }[];
+  }>({ scopeKey: null, bankKey: examType, status: "unavailable", bookmarks: [] });
+  const ownsBookmarkRead = bookmarkRead.scopeKey === bookmarkScopeKey && bookmarkRead.bankKey === examType;
+  const bookmarkReadPending = Boolean(bookmarkScope && examType) && (!ownsBookmarkRead || bookmarkRead.status === "loading");
+  const bookmarkReadUnavailable = !bookmarkScope || !examType || (ownsBookmarkRead && bookmarkRead.status === "error");
 
   const openStudyNotes = useCallback((practiceModule: string | null) => {
     const courseKey = examType ?? currentPath.slice(1);
@@ -363,6 +367,14 @@ export default function QuizShell({
       }
       const active = activeBookmarkTargetRef.current;
       if (active.questionId === origin?.questionId && active.bankKey === origin?.bankKey && active.scopeKey === origin?.scopeKey) {
+        setBookmarkRead(read => {
+          if (origin?.questionId == null || read.status !== "ready" || read.scopeKey !== origin.scopeKey || read.bankKey !== origin.bankKey) return read;
+          const withoutQuestion = read.bookmarks.filter(bookmark => bookmark.questionId !== origin.questionId);
+          return {
+            ...read,
+            bookmarks: data.bookmarked ? [...withoutQuestion, { questionId: origin.questionId }] : withoutQuestion,
+          };
+        });
         setBookmarked(data.bookmarked);
         toast(data.bookmarked ? "🔖 Bookmarked" : "Bookmark removed");
       }
@@ -423,13 +435,43 @@ export default function QuizShell({
   const timerPct = timedSeconds > 0 ? (timeLeft / timedSeconds) * 100 : 100;
   const timerColor = timerPct > 50 ? "#059669" : timerPct > 25 ? "#D97706" : "#DC2626";
 
-  // Hydrate the displayed question from durable bookmark state. This prevents the
-  // apparent “Bookmark” action from removing a bookmark that was saved earlier.
+  // Read afresh for each verified identity/course scope. The dashboard query key is
+  // course-only, so accepting hook cache data here could expose identity A's result
+  // after identity B becomes active for the same course.
   useEffect(() => {
-    if (savedBookmarkQuery.isSuccess && bookmarkScope) {
-      setBookmarked(isQuestionBookmarked(savedBookmarkQuery.data ?? [], current?.id));
+    const scopeKey = bookmarkScopeKey;
+    const bankKey = examType;
+    const generation = ++bookmarkReadGeneration.current;
+    let cancelled = false;
+    if (!scopeKey || !bankKey) {
+      setBookmarkRead({ scopeKey, bankKey, status: "unavailable", bookmarks: [] });
+      return () => { cancelled = true; };
     }
-  }, [bookmarkScope, current?.id, savedBookmarkQuery.data, savedBookmarkQuery.isSuccess]);
+    setBookmarkRead({ scopeKey, bankKey, status: "loading", bookmarks: [] });
+    void bookmarkUtils.client.dashboard.bookmarkedQuestions.query({ examType: bankKey }).then(
+      bookmarks => {
+        if (!cancelled && bookmarkReadGeneration.current === generation) {
+          setBookmarkRead({ scopeKey, bankKey, status: "ready", bookmarks });
+        }
+      },
+      () => {
+        if (!cancelled && bookmarkReadGeneration.current === generation) {
+          setBookmarkRead({ scopeKey, bankKey, status: "error", bookmarks: [] });
+        }
+      },
+    );
+    return () => { cancelled = true; };
+  // The client proxy is stable; scope ownership, not render-created scope objects,
+  // determines when a new read is required.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bookmarkScopeKey, examType]);
+
+  // Hydrate only from a ready result owned by the active verified scope.
+  useEffect(() => {
+    if (ownsBookmarkRead && bookmarkRead.status === "ready") {
+      setBookmarked(isQuestionBookmarked(bookmarkRead.bookmarks, current?.id));
+    }
+  }, [bookmarkRead, current?.id, ownsBookmarkRead]);
 
   const progress = sessionSize ? Math.min(100, (history.length / sessionSize) * 100) : 0;
   const accuracy = history.length > 0 ? Math.round((correctCount / history.length) * 100) : null;
