@@ -19,7 +19,7 @@ beforeEach(() => {
   rows = WPI_CLASS4_BLUEPRINT.flatMap(area => ["recall", "application"].flatMap(cognitiveLevel => ["yes", "no"].flatMap(isCalc =>
     Array.from({ length: 50 }, () => ({ id: ++id, questionNum: id, bankKey: WPI_CLASS4_BANK,
       module: area.module === WPI_CLASS4_BLUEPRINT[1].module ? "Treatment Process" : area.module, cognitiveLevel, isCalc,
-      question: `Fixture ${id}`, options: '["A","B","C","D"]', correctIndex: 0, explanation: "Fixture" })))));
+      question: `Fixture ${id}`, options: '["A","B","C","D"]', correctIndex: 0, explanation: `Rationale ${id}` })))));
   vi.mocked(getDb).mockResolvedValue({ select: () => {
     let result: unknown[] = [];
     const chain: any = {
@@ -41,6 +41,8 @@ describe("issued Class IV mock blueprint wiring", () => {
     expect(selected.filter(q => q.cognitiveLevel === "recall")).toHaveLength(25);
     expect(selected.filter(q => [WPI_CLASS4_BLUEPRINT[1].module, "Treatment Process"].includes(q.module))).toHaveLength(42);
     for (const q of issued.questions) { expect(q).not.toHaveProperty("correctIndex"); expect(q).not.toHaveProperty("explanation"); }
+    expect(JSON.stringify(issued)).not.toContain("correctIndex");
+    expect(JSON.stringify(issued)).not.toContain("Rationale ");
   });
   it("rejects an activated profile with missing classifications instead of silently issuing an unbalanced exam", async () => {
     rows = rows.map(q => ({ ...q, cognitiveLevel: null }));

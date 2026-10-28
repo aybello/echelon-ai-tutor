@@ -1,6 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { MySqlDialect } from "drizzle-orm/mysql-core";
 import type { TrpcContext } from "./_core/context";
+import { ENV } from "./_core/env";
+import { issueMockReviewToken, issueMockSession, mockOwner, mockSpecification } from "./mockExamSession";
 
 const mocks = vi.hoisted(() => ({
   invokeLLM: vi.fn(),
@@ -84,6 +86,7 @@ function arrangeDatabase() {
 describe("tutor.chat", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    ENV.cookieSecret = "test-only-tutor-review-secret";
     mocks.resolveAccessForRequest.mockResolvedValue(true);
     mocks.enforceAiTutorDailyQuota.mockResolvedValue(undefined);
     mocks.invokeLLM.mockResolvedValue({
@@ -128,6 +131,61 @@ describe("tutor.chat", () => {
     expect(lookup.sql).toContain("`questions`.`questionNum` = ?");
     expect(lookup.sql).not.toContain("`questions`.`id` = ?");
     expect(lookup.params).toEqual(["class1-water", 42, "in_review", "rejected"]);
+  });
+
+  it("uses the post-submission immutable issued mock context instead of a changed canonical question", async () => {
+    const profileRows = {
+      from: vi.fn(() => ({
+        where: vi.fn(() => ({ groupBy: vi.fn().mockResolvedValue([]) })),
+      })),
+    };
+    const profileSessions = {
+      from: vi.fn(() => ({ where: vi.fn().mockResolvedValue([{ total: 0 }]) })),
+    };
+    const select = vi.fn().mockReturnValueOnce(profileRows).mockReturnValueOnce(profileSessions);
+    mocks.getDb.mockResolvedValue({ select });
+    const spec = mockSpecification("class1-water");
+    const owner = mockOwner({ userId: 7, studentEmail: "operator@example.com" });
+    const issuedQuestions = Array.from({ length: 100 }, (_, index) => ({
+      questionNum: index + 1,
+      module: index === 41 ? "Issued module" : "Safety",
+      topic: index === 41 ? "Issued topic" : null,
+      difficulty: "easy",
+      question: index === 41 ? "Issued stem must remain authoritative." : `Issued question ${index + 1}`,
+      options: index === 41 ? ["Issued correct", "Issued B", "Issued C", "Issued D"] : ["A", "B", "C", "D"],
+      correctIndex: index === 41 ? 2 : 0,
+      explanation: index === 41 ? "Issued rationale must remain authoritative." : "Issued rationale",
+      steps: null,
+      tip: null,
+      isCalc: false,
+    }));
+    const issued = issueMockSession({
+      ...spec,
+      owner,
+      preview: false,
+      questionNums: issuedQuestions.map(question => question.questionNum),
+      issuedQuestions,
+    });
+    const caller = appRouter.createCaller(createPaidContext());
+
+    await caller.tutor.chat({
+      examType: "class1-water",
+      questionNum: 42,
+      selectedIndex: 2,
+      patternMode: false,
+      recentPerformance: [],
+      messages: [{ role: "user", content: "Why was my answer correct?" }],
+      mockSessionToken: issued.token,
+      mockReviewToken: issueMockReviewToken(issued.manifest),
+    });
+
+    const prompt = mocks.invokeLLM.mock.calls[0][0].messages[0].content;
+    expect(prompt).toContain("Issued stem must remain authoritative.");
+    expect(prompt).toContain("Issued correct");
+    expect(prompt).toContain("Issued rationale must remain authoritative.");
+    expect(prompt).toContain("Issued module");
+    expect(prompt).not.toContain(canonicalQuestion.question);
+    expect(select).toHaveBeenCalledTimes(2); // learner profile only; no canonical question query
   });
 
   it("allows the OIT tutor during the free product preview", async () => {
