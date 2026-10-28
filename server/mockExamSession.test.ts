@@ -26,6 +26,18 @@ describe("mock session authority", () => {
     expect(() => issueMockSession({ ...spec, owner: "test", preview: false, questionNums: [1] })).toThrow("complete");
     expect(() => issueMockSession({ ...spec, owner: "test", preview: true, questionNums: Array.from({ length: 30 }, (_, i) => i + 1) })).toThrow("complete");
   });
+  it("rejects a highly compressible issued snapshot above the decompression limit", () => {
+    const spec = mockSpecification("class4-ww");
+    const questionNums = Array.from({ length: 100 }, (_, i) => i + 1);
+    const issuedQuestions = questionNums.map(questionNum => ({
+      questionNum, module: "Safety", topic: null, difficulty: "easy", question: "Prompt",
+      options: ["A", "B", "C", "D"], correctIndex: 0, explanation: "x".repeat(6_000),
+      steps: null, tip: null, isCalc: false,
+    }));
+
+    expect(() => issueMockSession({ ...spec, owner: "test", preview: false, questionNums, issuedQuestions }))
+      .toThrow("issued review context is too large");
+  });
   it("keeps course-specific exam sizes and fails closed on unknown courses", () => {
     expect(mockSpecification("oit-ww")).toMatchObject({ count: 50, duration: 3600 });
     expect(mockSpecification("electrician-309a")).toMatchObject({ count: 100, duration: 14400 });

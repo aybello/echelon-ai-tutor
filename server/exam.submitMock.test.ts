@@ -14,6 +14,15 @@ import { getDb } from "./db";
 import { validateIssuedAttribution, type AttemptAttribution } from "./teams/attemptAttribution";
 const identity = { userId: 5, studentEmail: "operator@example.com" };
 const QUESTIONS = Array.from({ length: 100 }, (_, i) => ({ questionNum: i + 1, correctIndex: 0, module: "Safety", difficulty: "easy", explanation: `Explanation ${i + 1}` }));
+const issuedQuestions = QUESTIONS.map(question => ({
+  ...question,
+  question: `Issued question ${question.questionNum}`,
+  options: ["Issued A", "Issued B", "Issued C", "Issued D"],
+  topic: "Issued topic",
+  steps: null,
+  tip: null,
+  isCalc: false,
+}));
 function makeDb(questionRows = QUESTIONS, existing: unknown[] = []) {
   const insertValues = vi.fn().mockResolvedValue([]);
   const db: any = {
@@ -29,7 +38,7 @@ function makeDb(questionRows = QUESTIONS, existing: unknown[] = []) {
 const ctx = { user: null, studentEmail: null, req: { headers: {} }, res: {} } as TrpcContext;
 function input(correct = 69, now = Date.now(), attribution?: AttemptAttribution) {
   const spec = mockSpecification("class4-ww");
-  const issued = issueMockSession({ ...spec, attribution, owner: mockOwner(identity), preview: false, questionNums: QUESTIONS.map(q => q.questionNum) }, now);
+  const issued = issueMockSession({ ...spec, attribution, owner: mockOwner(identity), preview: false, questionNums: QUESTIONS.map(q => q.questionNum), issuedQuestions }, now);
   return { sessionId: issued.manifest.sessionId, sessionToken: issued.token, examType: spec.examType, bankKey: spec.courseKey,
     answers: QUESTIONS.map((q, i) => ({ questionNum: q.questionNum, selectedIndex: i < correct ? 0 : null })) };
 }
@@ -66,7 +75,16 @@ describe("issued mock submission", () => {
     const all = Array.from({ length: 110 }, (_, i) => ({ ...QUESTIONS[0], questionNum: i + 1 }));
     const { insertValues } = makeDb(all);
     const spec = mockSpecification("wpi-class4-wastewater");
-    const issued = issueMockSession({ ...spec, owner: mockOwner(identity), preview: false, questionNums: all.map(q => q.questionNum), unscoredQuestionNums: all.slice(100).map(q => q.questionNum) });
+    const classIvIssuedQuestions = all.map(question => ({
+      ...question,
+      question: `Issued Class IV question ${question.questionNum}`,
+      options: ["A", "B", "C", "D"],
+      topic: "Issued topic",
+      steps: null,
+      tip: null,
+      isCalc: false,
+    }));
+    const issued = issueMockSession({ ...spec, owner: mockOwner(identity), preview: false, questionNums: all.map(q => q.questionNum), unscoredQuestionNums: all.slice(100).map(q => q.questionNum), issuedQuestions: classIvIssuedQuestions });
     const result = await appRouter.createCaller(ctx).exam.submitMock({ sessionId: issued.manifest.sessionId, sessionToken: issued.token,
       examType: spec.examType, bankKey: spec.courseKey, answers: all.map((q, i) => ({ questionNum: q.questionNum, selectedIndex: i < correct || i >= 100 ? 0 : null })) });
     expect(result).toMatchObject({ score: correct, total: 100, pct: correct, passed: correct >= 70 });
@@ -85,6 +103,25 @@ describe("issued mock submission", () => {
     const result = await appRouter.createCaller(ctx).exam.submitMock(input(70));
     expect(result.review).toHaveLength(100);
     expect(result.review[0]).toEqual({ questionNum: 1, scored: true, correctIndex: 0, explanation: "Explanation 1" });
+  });
+  it("scores and reviews the immutable issued context when the canonical row changes before the first submission", async () => {
+    const changed = QUESTIONS.map(question => question.questionNum === 1
+      ? { ...question, correctIndex: 3, module: "Changed module", explanation: "Changed explanation", question: "Changed stem", options: ["Changed A", "Changed B", "Changed C", "Changed D"] }
+      : question);
+    const { insertValues } = makeDb(changed);
+    const data = input(1);
+
+    const decoded = JSON.parse(Buffer.from(data.sessionToken.split(".")[0], "base64url").toString());
+    expect(decoded).not.toContain("Issued A");
+    expect(decoded).not.toContain("Explanation 1");
+    expect(decoded).not.toContain("correctIndex");
+
+    const result = await appRouter.createCaller(ctx).exam.submitMock(data);
+
+    expect(result).toMatchObject({ score: 1, total: 100, moduleBreakdown: { Safety: { correct: 1, total: 100 } } });
+    expect(result.review[0]).toEqual({ questionNum: 1, scored: true, correctIndex: 0, explanation: "Explanation 1" });
+    expect(result.reviewToken).toEqual(expect.any(String));
+    expect(insertValues.mock.calls[1][0][0]).toMatchObject({ correct: "yes", topic: "Issued topic", difficulty: "easy" });
   });
   it.each(["one-question", "duplicate", "replacement", "course", "session", "calcOnly", "signature", "missing-token"])("rejects %s tampering before writing results", async kind => {
     const { insertValues } = makeDb(); const data: any = input();
