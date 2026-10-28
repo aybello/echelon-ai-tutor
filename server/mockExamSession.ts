@@ -94,7 +94,11 @@ function snapshotKey() {
   return createHash("sha256").update("echelon-mock-issued-snapshot-v1:" + signingKey()).digest();
 }
 function encryptIssuedSnapshot(sessionId: string, questions: IssuedMockQuestion[]) {
-  const compressed = brotliCompressSync(Buffer.from(JSON.stringify({ version: 1, questions })), {
+  const serialized = Buffer.from(JSON.stringify({ version: 1, questions }));
+  if (serialized.length > MAX_ISSUED_SNAPSHOT_BYTES) {
+    throw new TRPCError({ code: "PRECONDITION_FAILED", message: "This mock exam is temporarily unavailable because its issued review context is too large." });
+  }
+  const compressed = brotliCompressSync(serialized, {
     params: { [zlibConstants.BROTLI_PARAM_QUALITY]: 6 },
   });
   const iv = randomBytes(12);

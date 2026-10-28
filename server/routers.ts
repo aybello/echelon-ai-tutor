@@ -1000,6 +1000,33 @@ export const appRouter = router({
             if (manifest.courseKey !== course.courseKey) {
               throw new TRPCError({ code: "BAD_REQUEST", message: "This answer review does not match the selected course." });
             }
+            const [available] = isElectrician309A
+              ? await db
+                .select({ questionNum: certificationQuestions.bankItemNumber })
+                .from(certificationQuestions)
+                .innerJoin(certificationBankVersions, eq(certificationQuestions.bankVersionId, certificationBankVersions.id))
+                .where(and(
+                  eq(certificationBankVersions.programKey, ELECTRICIAN_309A_PROGRAM_KEY),
+                  eq(certificationBankVersions.bankKey, course.questionBankKey),
+                  eq(certificationBankVersions.releaseChannel, "beta"),
+                  eq(certificationBankVersions.active, true),
+                  eq(certificationQuestions.bankItemNumber, input.questionNum),
+                  eq(certificationQuestions.contentStatus, "beta_approved"),
+                  eq(certificationQuestions.publicEligibility, true),
+                ))
+                .limit(1)
+              : await db
+                .select({ questionNum: questions.questionNum })
+                .from(questions)
+                .where(and(
+                  eq(questions.bankKey, course.questionBankKey),
+                  eq(questions.questionNum, input.questionNum),
+                  learnerVisibleQuestionFilter(),
+                ))
+                .limit(1);
+            if (!available) {
+              throw new TRPCError({ code: "BAD_REQUEST", message: "The selected course question could not be verified." });
+            }
             const issued = issuedMockQuestions(manifest)?.find(question => question.questionNum === input.questionNum);
             if (!issued) {
               throw new TRPCError({ code: "BAD_REQUEST", message: "The selected issued question could not be verified." });
