@@ -104,6 +104,71 @@ describe("manager reporting router behavior", () => {
     ]);
     expect(db.pending).toEqual([]);
   });
+  it("keeps upcoming exams, course accuracy, aliases, and dates bound to assigned members and courses", async () => {
+    const waterOperator = {
+      id: 101, orgId: 7, email: "water-operator@echelon.test", role: "operator", status: "assigned",
+      courseKey: "class1-water", courseKeys: '["class1-water"]', assignedAt: new Date(now.getTime() - 30 * 86400000),
+    };
+    const wastewaterOperator = {
+      id: 102, orgId: 7, email: "wastewater-operator@echelon.test", role: "operator", status: "assigned",
+      courseKey: "class1-ww", courseKeys: '["class1-ww"]', assignedAt: new Date(now.getTime() - 30 * 86400000),
+    };
+    const multiCourseOperator = {
+      id: 201, orgId: 7, email: "multi-course-operator@echelon.test", role: "operator", status: "assigned",
+      courseKey: "class1-water", courseKeys: '["class1-water","class1-ww"]', assignedAt: new Date(now.getTime() - 30 * 86400000),
+    };
+    const waterExamDate = new Date(now.getTime() + 3 * 86400000);
+    const wastewaterExamDate = new Date(now.getTime() + 7 * 86400000);
+    const laterWastewaterExamDate = new Date(now.getTime() + 14 * 86400000);
+    const db = database([
+      [org], [lic], [waterOperator, wastewaterOperator, multiCourseOperator],
+      [
+        { memberId: 101, examType: "class1-water", total: 100, correct: 95 },
+        { memberId: 102, examType: "class1-wastewater", total: 100, correct: 20 },
+        { memberId: 201, examType: "class1-water", total: 100, correct: 20 },
+        { memberId: 201, examType: "class1-wastewater", total: 100, correct: 0 },
+      ],
+      [
+        { memberId: 101, lastActive: now },
+        { memberId: 102, lastActive: now },
+        { memberId: 201, lastActive: now },
+      ],
+      [
+        // An alias stored on the date must normalize to class1-ww and match
+        // the registry-defined class1-wastewater question bank.
+        { memberId: 102, email: wastewaterOperator.email, courseKey: "class1-wastewater", examDate: wastewaterExamDate },
+        { memberId: 201, email: multiCourseOperator.email, courseKey: "class1-water", examDate: waterExamDate },
+        { memberId: 201, email: multiCourseOperator.email, courseKey: "class1-wastewater", examDate: laterWastewaterExamDate },
+        // This other-org row must not cross either the SQL org/member scopes
+        // or the in-memory assigned-member boundary.
+        { orgId: 8, memberId: 999, email: "foreign-operator@echelon.test", courseKey: "class1-ww", examDate: new Date(now.getTime() + 2 * 86400000) },
+      ],
+    ]);
+
+    const result = await orgRouter.createCaller(ctx).getAttention();
+
+    expect(result.atRisk).toEqual([
+      {
+        memberId: 201, email: multiCourseOperator.email, courseKey: "class1-water",
+        courseLabel: "Class 1 Water Treatment", courseAccuracy: 20,
+        examDate: waterExamDate, daysUntilExam: 3,
+      },
+      {
+        memberId: 102, email: wastewaterOperator.email, courseKey: "class1-ww",
+        courseLabel: "Class 1 Wastewater Treatment", courseAccuracy: 20,
+        examDate: wastewaterExamDate, daysUntilExam: 7,
+      },
+      {
+        memberId: 201, email: multiCourseOperator.email, courseKey: "class1-ww",
+        courseLabel: "Class 1 Wastewater Treatment", courseAccuracy: 0,
+        examDate: laterWastewaterExamDate, daysUntilExam: 14,
+      },
+    ]);
+    expect(result.atRisk.map(row => row.email)).not.toContain(waterOperator.email);
+    expect(result.atRisk.map(row => row.email)).not.toContain("foreign-operator@echelon.test");
+    expect(db.conditions.some(condition => condition.includes("organizationMemberId") && condition.includes("orgId"))).toBe(true);
+    expect(db.pending).toEqual([]);
+  });
   it("normalizes a raw MySQL minimum exam date in the per-operator readiness report", async () => {
     const examDate = new Date(now.getTime() + 7 * 86400000);
     const db = database([

@@ -37,7 +37,7 @@ import { organizationTermUsage } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/access";
 import { sendTeamEnrollmentEmail, sendOperatorStudyReminderEmail, type TeamEnrollmentEmailPayload } from "../email";
 import { courseKeyToTierStrict, isValidCourseKey } from "../../shared/products";
-import { courseKeyToLabel, getExamTypesForCourseKey } from "../../shared/courseRegistry";
+import { courseKeyToLabel, getExamTypesForCourseKey, resolveCourseKey } from "../../shared/courseRegistry";
 import { allowedCourseKeysForOrg, subscriptionProvinceForOrg, isSubscriptionTier, validateOrgCourseKeys } from "../stripe/subscriptionProducts";
 import { trackEvent } from "../analytics";
 import { safeSupervisorCsvCell } from "../../shared/supervisorActionPlan";
@@ -759,7 +759,7 @@ export const orgRouter = router({
 
     if (members.length === 0) return { atRisk: [], stalled: [] };
 
-    const memberEmails = members.map(m => m.email);
+    const memberIds = members.map(m => m.id);
 
     const now = new Date();
     const atRiskCutoff = new Date(now.getTime() + AT_RISK_EXAM_DAYS * 24 * 60 * 60 * 1000);
@@ -770,52 +770,92 @@ export const orgRouter = router({
       now.getTime() - STALLED_INACTIVE_DAYS * 24 * 60 * 60 * 1000,
     );
 
-    // Bug fix: replaced sql.raw(emailList) with inArray() to prevent SQL injection
-    const [accuracyRows, lastActiveRows, examDateRows] = await Promise.all([
+    // Keep every attention fact scoped to an assigned member of this organization.
+    const [courseAccuracyRows, lastActiveRows, examDateRows] = await Promise.all([
       db
         .select({
           memberId: questionAttempts.organizationMemberId,
+          examType: questionAttempts.examType,
           total: sql<number>`COUNT(*)`,
           correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
         })
         .from(questionAttempts)
-        .where(eq(questionAttempts.orgId, orgId))
-        .groupBy(questionAttempts.organizationMemberId),
+        .where(and(
+          eq(questionAttempts.orgId, orgId),
+          inArray(questionAttempts.organizationMemberId, memberIds),
+        ))
+        .groupBy(questionAttempts.organizationMemberId, questionAttempts.examType),
       db
         .select({
           memberId: questionAttempts.organizationMemberId,
           lastActive: sql<Date>`MAX(${questionAttempts.createdAt})`,
         })
         .from(questionAttempts)
-        .where(eq(questionAttempts.orgId, orgId))
+        .where(and(
+          eq(questionAttempts.orgId, orgId),
+          inArray(questionAttempts.organizationMemberId, memberIds),
+        ))
         .groupBy(questionAttempts.organizationMemberId),
       db
-        .select({ email: examDates.email, examDate: examDates.examDate })
+        .select({
+          memberId: examDates.organizationMemberId,
+          email: examDates.email,
+          courseKey: examDates.courseKey,
+          examDate: examDates.examDate,
+        })
         .from(examDates)
         .where(
           and(
             eq(examDates.orgId, orgId),
+            inArray(examDates.organizationMemberId, memberIds),
             lt(examDates.examDate, atRiskCutoff),
             gte(examDates.examDate, now),
           ),
         ),
     ]);
 
-    const accuracyByMemberId = new Map(
-      accuracyRows
-        .filter(r => r.memberId !== null)
-        .map(r => [Number(r.memberId), { total: Number(r.total), correct: Number(r.correct) }]),
-    );
+    const memberById = new Map(members.map(member => [member.id, member]));
+    const assignedCourseKeysByMemberId = new Map<number, Set<string>>();
+    for (const member of members) {
+      let storedCourseKeys: string[] = [];
+      if (member.courseKeys) {
+        try {
+          const parsed = JSON.parse(member.courseKeys as string);
+          if (Array.isArray(parsed)) storedCourseKeys = parsed.filter((key): key is string => typeof key === "string");
+        } catch {
+          // Fall back to the legacy primary assignment below.
+        }
+      }
+      if (storedCourseKeys.length === 0 && member.courseKey) storedCourseKeys = [member.courseKey];
+      assignedCourseKeysByMemberId.set(
+        member.id,
+        new Set(storedCourseKeys.map(key => resolveCourseKey(key)?.courseKey).filter((key): key is string => Boolean(key))),
+      );
+    }
+    const accuracyByMemberId = new Map<number, { total: number; correct: number }>();
+    const accuracyByMemberAndExamType = new Map<number, Map<string, { total: number; correct: number }>>();
+    for (const row of courseAccuracyRows) {
+      if (row.memberId === null) continue;
+      const memberId = Number(row.memberId);
+      const stats = { total: Number(row.total), correct: Number(row.correct) };
+      const totals = accuracyByMemberId.get(memberId) ?? { total: 0, correct: 0 };
+      totals.total += stats.total;
+      totals.correct += stats.correct;
+      accuracyByMemberId.set(memberId, totals);
+      const byExamType = accuracyByMemberAndExamType.get(memberId) ?? new Map();
+      byExamType.set(row.examType, stats);
+      accuracyByMemberAndExamType.set(memberId, byExamType);
+    }
     const lastActiveByMemberId = new Map(
       lastActiveRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), aggregateUtcDate(r.lastActive)]),
     );
-    const upcomingExamByEmail = new Map(
-      examDateRows.map(r => [r.email, r.examDate]),
-    );
 
     const atRisk: Array<{
+      memberId: number;
       email: string;
-      accuracy: number;
+      courseKey: string;
+      courseLabel: string;
+      courseAccuracy: number;
       examDate: Date;
       daysUntilExam: number;
     }> = [];
@@ -826,20 +866,53 @@ export const orgRouter = router({
       daysSinceActivity: number | null;
     }> = [];
 
+    const upcomingExamByMemberAndCourse = new Map<number, Map<string, Date>>();
+    for (const row of examDateRows) {
+      if (row.memberId === null) continue;
+      const memberId = Number(row.memberId);
+      const member = memberById.get(memberId);
+      const course = row.courseKey ? resolveCourseKey(row.courseKey) : undefined;
+      // SQL scopes the organization and assigned IDs; this additionally fails
+      // closed for malformed or no-longer-assigned course records.
+      if (!member || !course || !assignedCourseKeysByMemberId.get(memberId)?.has(course.courseKey)) continue;
+      const byCourse = upcomingExamByMemberAndCourse.get(memberId) ?? new Map<string, Date>();
+      const existing = byCourse.get(course.courseKey);
+      if (!existing || row.examDate < existing) byCourse.set(course.courseKey, row.examDate);
+      upcomingExamByMemberAndCourse.set(memberId, byCourse);
+    }
+
     for (const m of members) {
       const stats = accuracyByMemberId.get(m.id);
       const total = stats?.total ?? 0;
-      const correct = stats?.correct ?? 0;
-      const accuracy = total > 0 ? Math.round((correct / total) * 100) : 0;
       const lastActive = lastActiveByMemberId.get(m.id) ?? null;
-      const examDate = upcomingExamByEmail.get(m.email) ?? null;
 
-      // At risk: exam within 21 days AND accuracy below threshold
-      if (examDate && accuracy < ON_TRACK_THRESHOLD) {
-        const daysUntilExam = Math.ceil(
-          (examDate.getTime() - now.getTime()) / (24 * 60 * 60 * 1000),
-        );
-        atRisk.push({ email: m.email, accuracy, examDate, daysUntilExam });
+      // At risk: assess every upcoming assigned course only against its
+      // registry-defined question bank, never against the operator's other courses.
+      for (const [courseKey, examDate] of upcomingExamByMemberAndCourse.get(m.id) ?? []) {
+        const courseStats = accuracyByMemberAndExamType.get(m.id);
+        let courseTotal = 0;
+        let courseCorrect = 0;
+        for (const examType of getExamTypesForCourseKey(courseKey)) {
+          const examTypeStats = courseStats?.get(examType);
+          if (!examTypeStats) continue;
+          courseTotal += examTypeStats.total;
+          courseCorrect += examTypeStats.correct;
+        }
+        const courseAccuracy = courseTotal > 0 ? Math.round((courseCorrect / courseTotal) * 100) : 0;
+        if (courseAccuracy < ON_TRACK_THRESHOLD) {
+          const daysUntilExam = Math.ceil(
+            (examDate.getTime() - now.getTime()) / (24 * 60 * 60 * 1000),
+          );
+          atRisk.push({
+            memberId: m.id,
+            email: m.email,
+            courseKey,
+            courseLabel: courseKeyToLabel(courseKey),
+            courseAccuracy,
+            examDate,
+            daysUntilExam,
+          });
+        }
       }
 
       // Stalled: never started (assigned 7+ days ago, no attempts)
@@ -857,6 +930,11 @@ export const orgRouter = router({
       }
     }
 
+    atRisk.sort((a, b) =>
+      a.examDate.getTime() - b.examDate.getTime()
+      || a.email.localeCompare(b.email)
+      || a.courseKey.localeCompare(b.courseKey),
+    );
     return { atRisk, stalled };
   }),
 
