@@ -793,11 +793,11 @@ export default function OrgDashboard() {
                 <p className="text-xs text-amber-600 uppercase tracking-wider mb-2 font-semibold">Exam approaching — study estimate needs attention</p>
                 <div className="space-y-2">
                   {attention.atRisk.map(op => (
-                    <div key={op.email} className="flex items-center justify-between bg-white border border-amber-100 rounded-lg px-4 py-3">
+                    <div key={`${op.memberId}:${op.courseKey}`} className="flex items-center justify-between bg-white border border-amber-100 rounded-lg px-4 py-3">
                       <div>
                         <div className="text-sm font-medium text-slate-800">{op.email}</div>
                         <div className="text-xs text-slate-500">
-                          Exam in {op.daysUntilExam} day{op.daysUntilExam === 1 ? "" : "s"} · {op.accuracy}% practice accuracy
+                          {op.courseLabel} · Exam in {op.daysUntilExam} day{op.daysUntilExam === 1 ? "" : "s"} · {op.courseAccuracy}% course practice accuracy
                         </div>
                       </div>
                       <Badge className="bg-red-50 text-red-700 border-red-200 text-xs">At Risk</Badge>
