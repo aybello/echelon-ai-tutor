@@ -126,6 +126,22 @@
   font-size: clamp(1.4rem, 4vw, 1.75rem) !important;
 }
 
+.learner-status-glyph {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  border: 1px solid #b9ded8;
+  border-radius: 50%;
+  background: var(--learner-teal-soft);
+  color: var(--learner-teal);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
 .learner-auth-card input,
 .learner-magic-card input,
 .learner-purchase-card input,
@@ -166,6 +182,43 @@
 .learner-subscription-card a button:hover {
   background: var(--learner-teal-dark) !important;
   transform: translateY(-1px);
+}
+
+/* Normalize older inline confirmation styles to the approved light system. */
+.learner-auth-page [style*="linear-gradient"],
+.learner-purchase-page [style*="linear-gradient"],
+.learner-subscription-page [style*="linear-gradient"] {
+  background: var(--learner-teal) !important;
+}
+
+.learner-subscription-page {
+  background: var(--learner-canvas) !important;
+}
+
+.learner-subscription-page .learner-subscription-card {
+  border: 1px solid var(--learner-line) !important;
+  box-shadow: 0 16px 36px rgba(16, 37, 63, 0.10) !important;
+}
+
+.learner-subscription-page .learner-subscription-card [style*="#7C3AED"],
+.learner-subscription-page .learner-subscription-card [style*="#4F46E5"] {
+  color: var(--learner-teal) !important;
+  background: var(--learner-teal-soft) !important;
+  border-color: #b9ded8 !important;
+}
+
+.learner-subscription-page .learner-subscription-card button[style*="linear-gradient"] {
+  color: #fff !important;
+  background: var(--learner-teal) !important;
+}
+
+.learner-subscription-page .learner-subscription-card button[style*="linear-gradient"]:hover {
+  background: var(--learner-teal-dark) !important;
+}
+
+.learner-subscription-page > div:last-child > p,
+.learner-subscription-page > div:last-child > p a {
+  color: var(--learner-muted) !important;
 }
 
 .learner-auth-card [style*="font-family: 'Courier New'"],

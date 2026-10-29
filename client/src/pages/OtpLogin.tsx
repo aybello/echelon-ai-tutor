@@ -231,7 +231,7 @@ export default function OtpLogin() {
               alt="Echelon Institute"
               style={{ height: 48, marginBottom: 20, objectFit: "contain" }}
             />
-            <div style={{ fontSize: 36, marginBottom: 12 }}>🔑</div>
+            <div className="learner-status-glyph" aria-hidden="true">01</div>
             <h1 style={{ fontSize: 22, fontWeight: 800, color: "#0F172A", margin: "0 0 8px" }}>
               Sign In with a Code
             </h1>
@@ -288,7 +288,7 @@ export default function OtpLogin() {
               alt="Echelon Institute"
               style={{ height: 48, marginBottom: 20, objectFit: "contain" }}
             />
-            <div style={{ fontSize: 36, marginBottom: 12 }}>📬</div>
+            <div className="learner-status-glyph" aria-hidden="true">02</div>
             <h1 style={{ fontSize: 22, fontWeight: 800, color: "#0F172A", margin: "0 0 8px" }}>
               Check Your Email
             </h1>

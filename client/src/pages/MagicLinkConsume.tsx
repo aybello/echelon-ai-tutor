@@ -93,7 +93,7 @@ export default function MagicLinkConsume() {
 
           {status === "loading" && (
             <>
-              <div style={{ fontSize: 40, marginBottom: 16 }}>🔐</div>
+              <div className="learner-status-glyph" aria-hidden="true">AUTH</div>
               <h1 style={{ fontSize: 22, fontWeight: 800, color: "#0F172A", margin: "0 0 8px" }}>
                 Signing you in…
               </h1>
