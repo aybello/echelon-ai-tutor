@@ -59,7 +59,15 @@ const canonicalQuestion = {
 function queryChain(rows: unknown[]) {
   return {
     from: vi.fn(() => ({
-      where: vi.fn(() => ({ limit: vi.fn().mockResolvedValue(rows) })),
+      where: vi.fn(() => {
+        const terminal = {
+          limit: vi.fn().mockResolvedValue(rows),
+          groupBy: vi.fn().mockResolvedValue(rows),
+          then: (resolve: (value: unknown[]) => unknown, reject?: (reason: unknown) => unknown) =>
+            Promise.resolve(rows).then(resolve, reject),
+        };
+        return terminal;
+      }),
     })),
   };
 }
@@ -108,6 +116,7 @@ function arrangeDatabase() {
         where: vi.fn(() => ({ limit: vi.fn().mockResolvedValue([canonicalQuestion]) })),
       })),
     })
+    .mockReturnValueOnce(queryChain([]))
     .mockReturnValueOnce(queryChain([]));
   mocks.getDb.mockResolvedValue({ select });
 }

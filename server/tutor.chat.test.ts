@@ -49,7 +49,15 @@ let questionWhere: ReturnType<typeof vi.fn>;
 function queryChain(rows: unknown[]) {
   return {
     from: vi.fn(() => ({
-      where: vi.fn(() => ({ limit: vi.fn().mockResolvedValue(rows) })),
+      where: vi.fn(() => {
+        const terminal = {
+          limit: vi.fn().mockResolvedValue(rows),
+          groupBy: vi.fn().mockResolvedValue(rows),
+          then: (resolve: (value: unknown[]) => unknown, reject?: (reason: unknown) => unknown) =>
+            Promise.resolve(rows).then(resolve, reject),
+        };
+        return terminal;
+      }),
     })),
   };
 }
@@ -76,9 +84,13 @@ function createPaidContext(): TrpcContext {
 }
 
 function arrangeDatabase() {
-  questionWhere = vi.fn(() => ({ limit: vi.fn().mockResolvedValue([canonicalQuestion]) }));
+  questionWhere = vi.fn(() => ({
+    limit: vi.fn().mockResolvedValue([canonicalQuestion]),
+    groupBy: vi.fn().mockResolvedValue([canonicalQuestion]),
+  }));
   const select = vi.fn()
     .mockReturnValueOnce({ from: vi.fn(() => ({ where: questionWhere })) })
+    .mockReturnValueOnce(queryChain([]))
     .mockReturnValueOnce(queryChain([]));
   mocks.getDb.mockResolvedValue({ select });
 }
