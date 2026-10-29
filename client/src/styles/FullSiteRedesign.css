@@ -153,7 +153,7 @@
 }
 
 .echelon-system-shell .echelon-dashboard-link:hover { background: #e3ecef; }
-.echelon-system-shell .echelon-account-link { background: var(--echelon-navy); }
+.echelon-system-shell .echelon-account-link { color: #fff; background: var(--echelon-navy); }
 .echelon-system-shell .echelon-account-link:hover { background: var(--echelon-navy-soft); }
 
 .echelon-system-shell :is(.echelon-courses-menu, .echelon-resources-menu, .echelon-mobile-menu) {
