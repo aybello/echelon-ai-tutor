@@ -23,7 +23,7 @@ import { useLearningActivitySession } from "@/hooks/useLearningActivitySession";
 
 // ─── Inline AI Tutor for review mode ─────────────────────────────────────────
 
-function ReviewAITutor({ q, userAnswerIdx, examType }: { q: ExamQuestion; userAnswerIdx: number | null; examType: string }) {
+function ReviewAITutor({ q, userAnswerIdx, examType, sessionToken, reviewToken }: { q: ExamQuestion; userAnswerIdx: number | null; examType: string; sessionToken: string; reviewToken?: string }) {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<{ role: "user" | "assistant"; content: string }[]>([]);
   const [input, setInput] = useState("");
@@ -65,6 +65,7 @@ function ReviewAITutor({ q, userAnswerIdx, examType }: { q: ExamQuestion; userAn
         selectedIndex: userAnswerIdx,
         patternMode: false,
         recentPerformance: [],
+        ...(reviewToken ? { mockSessionToken: sessionToken, mockReviewToken: reviewToken } : {}),
         accessToken: (() => {
           try { return localStorage.getItem("echelon_access_token") ?? undefined; }
           catch { return undefined; }
@@ -446,6 +447,7 @@ export default function MockExamShell({
   const deadlineRef = useRef<number | null>(null);
   const [sessionToken, setSessionToken] = useState("");
   const [sessionExamType, setSessionExamType] = useState("");
+  const [reviewToken, setReviewToken] = useState<string | undefined>();
   const [previewSession, setPreviewSession] = useState(false);
   const [legacyDraft, setLegacyDraft] = useState(false);
   const [saveError, setSaveError] = useState("");
@@ -492,6 +494,7 @@ export default function MockExamShell({
           .filter(item => item.scored === false)
           .map(item => item.questionNum),
       });
+      setReviewToken(result.reviewToken);
       resultSavedRef.current = true;
       setSaveStatus(result.persisted ? "saved" : "guest");
     },
@@ -515,6 +518,7 @@ export default function MockExamShell({
       setSessionId(issued.sessionId);
       setSessionToken(issued.token);
       setSessionExamType(issued.examType);
+      setReviewToken(undefined);
       setPreviewSession(issued.preview);
       setLegacyDraft(false);
       deadlineRef.current = issued.deadline;
@@ -566,6 +570,7 @@ export default function MockExamShell({
       setLegacyDraft(legacy);
       setSessionToken(saved.sessionToken ?? "");
       setSessionExamType(saved.sessionExamType ?? "");
+      setReviewToken(typeof saved.reviewToken === "string" ? saved.reviewToken : undefined);
       setPreviewSession(saved.previewSession === true);
       finalTimeRef.current = saved.timeLeft;
       setSelectedStream(restoredStream);
@@ -589,14 +594,14 @@ export default function MockExamShell({
     if (authLoading || recoveryLoaded.current !== recoveryKey || !["active", "results"].includes(examState) || !questions.length) return;
     try {
       sessionStorage.setItem(recoveryKey, JSON.stringify({
-        version: legacyDraft ? 1 : 2, updatedAt: Date.now(), sessionId, sessionToken, sessionExamType, previewSession, questions, answers, currentIdx, flagged,
+        version: legacyDraft ? 1 : 2, updatedAt: Date.now(), sessionId, sessionToken, sessionExamType, reviewToken, previewSession, questions, answers, currentIdx, flagged,
         examState, timeLeft: finalTimeRef.current, deadline: deadlineRef.current, streamKey: selectedStream?.productKey,
         saved: saveStatus === "saved",
       }));
     } catch { /* Saving to the server remains available if local storage is full. */ }
   // The deadline is fixed. Timer ticks require no storage writes; answers,
   // navigation, flags and save status are persisted immediately for refresh.
-  }, [recoveryKey, sessionId, sessionToken, sessionExamType, previewSession, legacyDraft, questions, answers, currentIdx, flagged, examState, selectedStream, saveStatus, authLoading]);
+  }, [recoveryKey, sessionId, sessionToken, sessionExamType, reviewToken, previewSession, legacyDraft, questions, answers, currentIdx, flagged, examState, selectedStream, saveStatus, authLoading]);
 
   useEffect(() => {
     if (examState !== "active" || showPreviewGate) return;
@@ -1015,7 +1020,7 @@ export default function MockExamShell({
                       <div style={{ fontSize: 12, color: "#64748B", lineHeight: 1.5, whiteSpace: "pre-line", marginBottom: 4 }}>{q.explanation}</div>
                     )}
                     {(!isCorrect || wasSkipped) && (
-                      <ReviewAITutor q={q} userAnswerIdx={wasSkipped ? null : (a.selected ?? null)} examType={productKey} />
+                      <ReviewAITutor q={q} userAnswerIdx={wasSkipped ? null : (a.selected ?? null)} examType={productKey} sessionToken={sessionToken} reviewToken={reviewToken} />
                     )}
                     </>}
                   </div>

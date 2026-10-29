@@ -6,7 +6,7 @@ import { normalizeExamDateKey, parseExamCalendarDate, upsertExamDate, removeExam
 import { selectBlueprintQuestions, mockBlueprintForBank } from "./mockBlueprint";
 import { UNAVAILABLE_MOCK_MODULE } from "../shared/mockResult";
 import { examCourseFilter } from "./courseActivityScope";
-import { scoredMockQuestionNums, activeMockQuestion, issueMockSession, mockOwner, mockSpecification, verifyMockSession, validateMockSubmission, selectMockQuestions, selectMappedMockQuestions, MOCK_SUBMISSION_GRACE_MS } from "./mockExamSession";
+import { scoredMockQuestionNums, activeMockQuestion, issueMockSession, issuedMockQuestions, issueMockReviewToken, mockOwner, mockSpecification, verifyMockReviewContext, verifyMockSession, validateMockSubmission, selectMockQuestions, selectMappedMockQuestions, MOCK_SUBMISSION_GRACE_MS } from "./mockExamSession";
 import { ontarioWastewaterMockProfile } from "../shared/ontarioWastewaterMock";
 import { resolveWastewaterMockArea } from "./wastewaterMockAreaResolver";
 import { ELECTRICIAN_309A_MODULES } from "../shared/electrician309aBlueprint";
@@ -414,7 +414,7 @@ export const appRouter = router({
         let targets: Record<string, number> = {};
         let preview = false;
         let blueprintVersion = 1;
-        let pool: { id: number; module: string; blueprintObjective?: string | null; reviewStatus?: string | null; isCalc?: boolean; cognitiveLevel?: string | null; question: string; options: string[]; correctIndex: number; explanation: string | null; diagramId?: string | null; diagramAlt?: string | null }[];
+        let pool: { id: number; module: string; blueprintObjective?: string | null; reviewStatus?: string | null; isCalc?: boolean; cognitiveLevel?: string | null; difficulty?: string | null; topic?: string | null; question: string; options: string[]; correctIndex: number; explanation: string | null; steps?: { l: string; c: string }[] | null; tip?: string | null; diagramId?: string | null; diagramAlt?: string | null }[];
         if (spec.courseKey === "electrician-309a") {
           const result = await electricianReviewRouter.createCaller(ctx).get309ABetaPractice();
           pool = result.questions;
@@ -480,7 +480,27 @@ export const appRouter = router({
         }
         selected = selectMockQuestions([...selected, ...pretest], {}, selected.length + pretest.length);
         const attribution = preview ? undefined : await resolveAttemptAttribution(identity, spec.courseKey);
-        const issued = issueMockSession({ ...spec, attribution, unscoredQuestionNums: pretest.map(q => q.id), owner: mockOwner(identity), preview, questionNums: selected.map(q => q.id) });
+        const issued = issueMockSession({
+          ...spec,
+          attribution,
+          unscoredQuestionNums: pretest.map(q => q.id),
+          owner: mockOwner(identity),
+          preview,
+          questionNums: selected.map(q => q.id),
+          issuedQuestions: selected.map(question => ({
+            questionNum: question.id,
+            module: question.module,
+            topic: question.topic ?? null,
+            difficulty: question.difficulty ?? null,
+            question: question.question,
+            options: question.options,
+            correctIndex: question.correctIndex,
+            explanation: question.explanation ?? null,
+            steps: question.steps ?? null,
+            tip: question.tip ?? null,
+            isCalc: question.isCalc === true,
+          })),
+        });
         return {
           sessionId: issued.manifest.sessionId, token: issued.token,
           deadline: issued.manifest.deadline, duration: spec.duration,
@@ -534,7 +554,7 @@ export const appRouter = router({
 
     submitMock: publicProcedure
       .input(z.object({
-        sessionToken: z.string().min(1).max(12000),
+        sessionToken: z.string().min(1).max(64000),
         sessionId: z.string().min(1).max(64),
         examType: z.string().min(1).max(64),
         bankKey: z.string().min(1).max(64),
@@ -569,14 +589,20 @@ export const appRouter = router({
         };
         const existing = hasVerifiedIdentity ? await readExisting() : null;
         const scoredIds = new Set(scoredMockQuestionNums(manifest));
+        const issuedQuestions = issuedMockQuestions(manifest);
         const questionNums = input.answers.map(a => a.questionNum);
         if (new Set(questionNums).size !== questionNums.length) {
           throw new TRPCError({ code: "BAD_REQUEST", message: "Each exam question must appear exactly once." });
         }
-        const questionRows = input.bankKey === "electrician-309a"
-          ? await db.select({ questionNum: certificationQuestions.bankItemNumber,
-              correctIndex: certificationQuestions.correctIndex, module: certificationQuestions.module, topic: certificationQuestions.module,
-              difficulty: certificationQuestions.difficulty, explanation: certificationQuestions.explanation })
+        const availableRows = input.bankKey === "electrician-309a"
+          ? await db.select({
+              questionNum: certificationQuestions.bankItemNumber,
+              correctIndex: certificationQuestions.correctIndex,
+              module: certificationQuestions.module,
+              topic: certificationQuestions.topic,
+              difficulty: certificationQuestions.difficulty,
+              explanation: certificationQuestions.explanation,
+            })
             .from(certificationQuestions)
             .innerJoin(certificationBankVersions, eq(certificationQuestions.bankVersionId, certificationBankVersions.id))
             .where(and(eq(certificationBankVersions.programKey, ELECTRICIAN_309A_PROGRAM_KEY),
@@ -584,7 +610,14 @@ export const appRouter = router({
               eq(certificationBankVersions.active, true), inArray(certificationQuestions.bankItemNumber, questionNums),
               eq(certificationQuestions.contentStatus, "beta_approved"), eq(certificationQuestions.publicEligibility, true)))
           : await db
-          .select({ questionNum: questions.questionNum, correctIndex: questions.correctIndex, module: questions.module, topic: questions.topic, difficulty: questions.difficulty, explanation: questions.explanation })
+          .select({
+            questionNum: questions.questionNum,
+            correctIndex: questions.correctIndex,
+            module: questions.module,
+            topic: questions.topic,
+            difficulty: questions.difficulty,
+            explanation: questions.explanation,
+          })
           .from(questions)
           .where(and(
             eq(questions.bankKey, manifest.bankKey),
@@ -592,12 +625,13 @@ export const appRouter = router({
             learnerVisibleQuestionFilter(),
           ));
 
-        const questionMap = new Map(questionRows.map(q => [q.questionNum, q]));
+        const availableQuestionNums = new Set(availableRows.map(q => q.questionNum));
+        const questionMap = new Map((issuedQuestions ?? availableRows).map(q => [q.questionNum, q]));
         // The answer key becomes available only after the server has scored the
         // complete, signed attempt. Retired questions remain visibly unavailable
         // rather than receiving a fabricated answer or explanation.
         const review = input.answers.map(answer => {
-          const q = questionMap.get(answer.questionNum);
+          const q = availableQuestionNums.has(answer.questionNum) ? questionMap.get(answer.questionNum) : undefined;
           return {
             questionNum: answer.questionNum,
             scored: scoredIds.has(answer.questionNum),
@@ -615,23 +649,25 @@ export const appRouter = router({
           unavailableCount: (JSON.parse(saved.moduleBreakdown ?? "{}")[UNAVAILABLE_MOCK_MODULE]?.total ?? 0) as number,
           moduleBreakdown: JSON.parse(saved.moduleBreakdown ?? "{}") as Record<string, { correct: number; total: number }>,
           review,
+          reviewToken: manifest.version === 3 ? issueMockReviewToken(manifest) : undefined,
         });
         // An idempotent retry remains available after expiry and bank changes.
-        // It receives current answer review for still-visible questions only.
+        // New snapshot sessions receive their issued review for still-visible
+        // questions; legacy sessions retain their historical canonical behavior.
         if (existing) return existingResponse(existing);
-        if (![...scoredIds].some(id => questionMap.has(id))) {
+        if (![...scoredIds].some(id => availableQuestionNums.has(id))) {
           throw new TRPCError({ code: "BAD_REQUEST", message: "None of this exam's questions are available for scoring. No result was saved. Your answers remain in this tab for review; please contact support." });
         }
         if (Date.now() > manifest.deadline + MOCK_SUBMISSION_GRACE_MS) {
           throw new TRPCError({ code: "BAD_REQUEST", message: "The exam submission window has expired. Your local answers remain available for review; start a new exam to save a result." });
         }
         const attribution = await validateIssuedAttribution(identity, manifest.courseKey, manifest.attribution);
-        const unavailableCount = [...scoredIds].filter(id => !questionMap.has(id)).length;
+        const unavailableCount = [...scoredIds].filter(id => !availableQuestionNums.has(id)).length;
         let correct = 0;
         const moduleBreakdown: Record<string, { correct: number; total: number }> = {};
         const scoredAnswers = input.answers.filter(answer => scoredIds.has(answer.questionNum));
         const attempts = scoredAnswers.map(answer => {
-          const q = questionMap.get(answer.questionNum);
+          const q = availableQuestionNums.has(answer.questionNum) ? questionMap.get(answer.questionNum) : undefined;
           const isCorrect = answer.selectedIndex !== null && answer.selectedIndex === q?.correctIndex;
           if (isCorrect) correct++;
           const mod = q ? q.module : UNAVAILABLE_MOCK_MODULE;
@@ -679,7 +715,18 @@ export const appRouter = router({
           }
         }
 
-        return { success: true, persisted: hasVerifiedIdentity, score: correct, total, pct, passed, unavailableCount, moduleBreakdown, review };
+        return {
+          success: true,
+          persisted: hasVerifiedIdentity,
+          score: correct,
+          total,
+          pct,
+          passed,
+          unavailableCount,
+          moduleBreakdown,
+          review,
+          reviewToken: manifest.version === 3 ? issueMockReviewToken(manifest) : undefined,
+        };
       }),
   }),
 
@@ -889,6 +936,10 @@ export const appRouter = router({
           usState: z.string().max(32).optional(),
           usCountry: z.enum(["US", "CA"]).optional(),
           accessToken: z.string().max(4096).optional(),
+          // Both values are issued by the server. The review permit is minted
+          // only after submitMock finalizes the signed attempt.
+          mockSessionToken: z.string().min(1).max(64000).optional(),
+          mockReviewToken: z.string().min(1).max(1024).optional(),
         }),
       )
       .mutation(async ({ input, ctx }) => {
@@ -939,6 +990,60 @@ export const appRouter = router({
 
         let questionContext: Parameters<typeof buildTutorSystemPrompt>[0]["question"] = null;
         if (input.questionNum) {
+          const hasMockReviewContext = Boolean(input.mockSessionToken || input.mockReviewToken);
+          if (hasMockReviewContext && (!input.mockSessionToken || !input.mockReviewToken)) {
+            throw new TRPCError({ code: "BAD_REQUEST", message: "A complete answer-review context is required." });
+          }
+          if (input.mockSessionToken && input.mockReviewToken) {
+            const mockIdentity = await resolveLearningIdentity(ctx);
+            const manifest = verifyMockReviewContext(input.mockSessionToken, input.mockReviewToken, mockOwner(mockIdentity));
+            if (manifest.courseKey !== course.courseKey) {
+              throw new TRPCError({ code: "BAD_REQUEST", message: "This answer review does not match the selected course." });
+            }
+            const [available] = isElectrician309A
+              ? await db
+                .select({ questionNum: certificationQuestions.bankItemNumber })
+                .from(certificationQuestions)
+                .innerJoin(certificationBankVersions, eq(certificationQuestions.bankVersionId, certificationBankVersions.id))
+                .where(and(
+                  eq(certificationBankVersions.programKey, ELECTRICIAN_309A_PROGRAM_KEY),
+                  eq(certificationBankVersions.bankKey, course.questionBankKey),
+                  eq(certificationBankVersions.releaseChannel, "beta"),
+                  eq(certificationBankVersions.active, true),
+                  eq(certificationQuestions.bankItemNumber, input.questionNum),
+                  eq(certificationQuestions.contentStatus, "beta_approved"),
+                  eq(certificationQuestions.publicEligibility, true),
+                ))
+                .limit(1)
+              : await db
+                .select({ questionNum: questions.questionNum })
+                .from(questions)
+                .where(and(
+                  eq(questions.bankKey, course.questionBankKey),
+                  eq(questions.questionNum, input.questionNum),
+                  learnerVisibleQuestionFilter(),
+                ))
+                .limit(1);
+            if (!available) {
+              throw new TRPCError({ code: "BAD_REQUEST", message: "The selected course question could not be verified." });
+            }
+            const issued = issuedMockQuestions(manifest)?.find(question => question.questionNum === input.questionNum);
+            if (!issued) {
+              throw new TRPCError({ code: "BAD_REQUEST", message: "The selected issued question could not be verified." });
+            }
+            questionContext = {
+              questionNum: issued.questionNum,
+              module: issued.module,
+              topic: issued.topic,
+              question: issued.question,
+              options: issued.options,
+              correctIndex: issued.correctIndex,
+              explanation: issued.explanation ?? "",
+              steps: issued.steps,
+              tip: issued.tip,
+              isCalc: issued.isCalc,
+            };
+          } else {
           const [row] = isElectrician309A
             ? await db
               .select({
@@ -1003,6 +1108,7 @@ export const appRouter = router({
             };
           } catch {
             throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "The selected question data is malformed." });
+          }
           }
         }
 
