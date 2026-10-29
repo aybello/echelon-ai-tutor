@@ -390,7 +390,7 @@ export default function FormulasWpiClass1Ww() {
     : SECTIONS;
 
   return (
-    <div style={{ minHeight: "100vh", background: "#0F172A", color: "#F1F5F9" }}>      <style>{`
+    <div className="legacy-formula-page" style={{ minHeight: "100vh", background: "#0F172A", color: "#F1F5F9" }}>      <style>{`
         @media (max-width: 640px) {
           .formulas-content { padding: 16px 14px 60px !important; }
           .formulas-hero { padding: 32px 16px 28px !important; }

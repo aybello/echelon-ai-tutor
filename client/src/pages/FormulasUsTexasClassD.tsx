@@ -121,7 +121,7 @@ export default function FormulasUsTexasClassD() {
   });
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Sora', sans-serif" }}>
+    <div className="legacy-formula-page" style={{ minHeight: "100vh", background: "#F8FAFC", fontFamily: "'Sora', sans-serif" }}>
       <SiteNav currentPath="/formulas-us-texas-class-d-water" />
       <section style={{ background: "linear-gradient(135deg, #431407 0%, #9A3412 52%, #0E7490 100%)", padding: "48px 24px 42px", textAlign: "center" }}>
         <div style={{ color: "#FED7AA", fontSize: 11, letterSpacing: "0.12em", fontWeight: 800, textTransform: "uppercase", marginBottom: 12 }}>Texas Class D Water</div>

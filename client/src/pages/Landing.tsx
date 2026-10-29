@@ -13,6 +13,7 @@ import {
   Play,
 } from "lucide-react";
 import LandingNav from "@/components/LandingNav";
+import { ECHELON_LOGO_URL } from "@/components/SiteNav";
 import CoursePathHero from "@/components/CoursePathHero";
 import CourseFinder from "@/components/CourseFinder";
 import NationalWaitlistModal from "@/components/NationalWaitlistModal";
@@ -60,7 +61,7 @@ function StudyWorkspacePreview() {
   return (
     <aside className="homepage-workspace" aria-label="Illustrative OIT Water study workspace preview">
       <div className="homepage-workspace-topbar">
-        <div className="homepage-workspace-product"><span className="homepage-workspace-mark">E</span><span>Echelon Institute</span></div>
+        <div className="homepage-workspace-product"><img className="homepage-workspace-logo" src={ECHELON_LOGO_URL} alt="Echelon Institute logo" /><span>Echelon Institute</span></div>
         <span className="homepage-preview-badge">Preview</span>
       </div>
       <div className="homepage-workspace-body">
@@ -359,7 +360,7 @@ export default function Landing() {
 
       <footer className="homepage-footer">
         <div className="homepage-footer-main">
-          <div className="homepage-footer-brand"><span className="homepage-footer-mark">E</span><div><strong>Echelon Institute</strong><p>Operator certification preparation for water and wastewater professionals.</p></div></div>
+          <div className="homepage-footer-brand"><img className="homepage-footer-logo" src={ECHELON_LOGO_URL} alt="Echelon Institute logo" /><div><strong>Echelon Institute</strong><p>Operator certification preparation for water and wastewater professionals.</p></div></div>
           <div className="homepage-footer-links">
             <div><strong>Explore</strong><Link href="/#find-course">Find your course</Link><Link href="/guides">Study guides</Link><Link href="/formulas">Formula library</Link></div>
             <div><strong>Teams</strong><Link href="/teams">Team training</Link><Link href="/partnerships">Partnerships</Link><Link href="/jobs">Jobs</Link></div>

@@ -400,7 +400,7 @@ export default function FormulasUsClass1() {
   const [expandedFormula, setExpandedFormula] = useState<string | null>(null);
   const activeCat = CATEGORIES.find(c => c.id === activeCategory)!;
   return (
-    <div style={{ fontFamily: "'Sora', sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
+    <div className="legacy-formula-page" style={{ fontFamily: "'Sora', sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
       <style>{`
         @media (max-width: 640px) {
           .formulas-content { padding: 16px 14px 60px !important; }

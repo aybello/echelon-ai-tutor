@@ -74,7 +74,7 @@
 .homepage-workspace { overflow: hidden; border: 1px solid #cad9da; border-radius: 8px; background: #fff; box-shadow: 0 28px 64px rgba(16, 37, 63, .13); }
 .homepage-workspace-topbar { min-height: 52px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; border-bottom: 1px solid var(--home-border); background: #fff; }
 .homepage-workspace-product { display: inline-flex; align-items: center; gap: 8px; color: var(--home-navy); font-size: 13px; font-weight: 700; }
-.homepage-workspace-mark, .homepage-footer-mark { width: 23px; height: 23px; display: inline-grid; place-items: center; border-radius: 4px; background: var(--home-navy); color: #fff; font-family: Manrope, sans-serif; font-size: 12px; font-weight: 800; }
+.homepage-workspace-logo { width: 25px; height: 25px; object-fit: contain; }
 .homepage-preview-badge, .homepage-workspace-status { display: inline-flex; align-items: center; gap: 6px; color: #4c606e; font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: .025em; }
 .homepage-preview-badge { padding: 3px 6px; border: 1px solid var(--home-border); border-radius: 3px; }
 .homepage-workspace-status > span { width: 7px; height: 7px; border-radius: 50%; background: var(--home-teal); }
@@ -208,7 +208,7 @@
 .homepage-footer { padding: 54px max(20px, calc((100% - 1128px) / 2)) 26px; border-top: 1px solid #20384f; background: var(--home-deep-navy); color: #fff; }
 .homepage-footer-main { display: flex; justify-content: space-between; gap: 50px; }
 .homepage-footer-brand { display: flex; align-items: start; gap: 10px; max-width: 325px; }
-.homepage-footer-mark { flex: 0 0 auto; background: var(--home-teal); }
+.homepage-footer-logo { width: 30px; height: 30px; flex: 0 0 auto; object-fit: contain; filter: brightness(0) invert(1); }
 .homepage-footer-brand strong { font-size: 15px; }
 .homepage-footer-brand p { margin: 8px 0 0; color: #bbcad2; font-size: 13px; line-height: 1.5; }
 .homepage-footer-links { display: grid; grid-template-columns: repeat(3, minmax(110px, 1fr)); gap: 32px; }
