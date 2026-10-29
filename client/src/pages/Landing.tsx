@@ -1,2372 +1,356 @@
-// Echelon Institute — Homepage / Landing Page v2
-// Design: Bold, modern SaaS — feels like the product itself
-// Audience: Canadian and US water/wastewater operators seeking certification
-// Includes: Ontario Distribution & Collection sub-tabs (class1-4-water-dist, class1-4-wastewater-coll)
-// Geo-aware: hero CTA and course section header adapt to CA vs US visitors
-
 import { Link, useSearch } from "wouter";
-import { buildPricingHref, courseProvinceHref } from "@shared/funnelNavigation";
-import { isNovaScotiaCourseSupported } from "@shared/novaScotiaPreparation";
-import { useState, useRef, useEffect } from "react";
-import NotifyModal from "@/components/NotifyModal";
-import NationalWaitlistModal from "@/components/NationalWaitlistModal";
-import { usePageMeta } from "@/hooks/usePageMeta";
-import { INDIVIDUAL_REFUND_SUMMARY, REFUND_CONTACT_EMAIL } from "@shared/refundPolicy";
-import { useStructuredData } from "@/hooks/useStructuredData";
-import { landingPageSchemas } from "@/lib/structuredData";
-import { trpc } from "@/lib/trpc";
-import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
-import { getMarketingAttribution } from "@/lib/marketingAnalytics";
-import { WPI_COVERAGE, WPI_PROVINCE_COUNT } from "@/lib/wpiCoverage";
-import ProvinceBanner from "@/components/ProvinceBanner";
-import { useProvince, type ProvinceId } from "@/hooks/useProvince";
-import { useAuth } from "@/_core/hooks/useAuth";
-import { FadeUp, FadeIn, StaggerContainer, StaggerItem } from "@/components/animations";
-import { useCountUp } from "@/hooks/useCountUp";
-import { useGeoRegion } from "@/hooks/useGeoRegion";
-import React from "react";
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
+import {
+  ArrowRight,
+  BookOpen,
+  Calculator,
+  Check,
+  ChevronRight,
+  ClipboardCheck,
+  GraduationCap,
+  MapPin,
+  MessageSquareText,
+  Play,
+} from "lucide-react";
 import LandingNav from "@/components/LandingNav";
 import CoursePathHero from "@/components/CoursePathHero";
 import CourseFinder from "@/components/CourseFinder";
+import NationalWaitlistModal from "@/components/NationalWaitlistModal";
+import ProvinceBanner from "@/components/ProvinceBanner";
+import { usePageMeta } from "@/hooks/usePageMeta";
+import { useStructuredData } from "@/hooks/useStructuredData";
+import { landingPageSchemas } from "@/lib/structuredData";
+import { trpc } from "@/lib/trpc";
+import { useProvince, type ProvinceId } from "@/hooks/useProvince";
+import { useAuth } from "@/_core/hooks/useAuth";
+import { INDIVIDUAL_REFUND_SUMMARY, REFUND_CONTACT_EMAIL } from "@shared/refundPolicy";
+import { useGeoRegion } from "@/hooks/useGeoRegion";
+import "./Landing.css";
 
-// Animated stat component using count-up hook
-function AnimatedStat({ value, suffix = "", label }: { value: number; suffix?: string; label: string }) {
-  const { ref, count } = useCountUp(value, 1600);
+function PreviewChoice({ onClose }: { onClose: () => void }) {
   return (
-    <div>
-      <span ref={ref} style={{ fontSize: 32, fontWeight: 800, color: "#0F172A", letterSpacing: "-0.03em", fontFamily: "Sora, sans-serif", display: "block" }}>
-        {count.toLocaleString()}{suffix}
-      </span>
-      <div style={{ fontSize: 13, color: "#64748B", fontWeight: 500, marginTop: 2 }}>{label}</div>
+    <div id="oit-preview-choice" className="homepage-preview-choice" aria-label="Choose an OIT practice preview">
+      <div className="homepage-preview-choice-heading">
+        <div>
+          <span className="homepage-kicker">Choose a preview</span>
+          <strong>Which operator path would you like to explore?</strong>
+        </div>
+        <button type="button" onClick={onClose} aria-label="Close practice preview options">Close</button>
+      </div>
+      <div className="homepage-preview-choice-grid">
+        <Link href="/quiz" className="homepage-preview-path">
+          <BookOpen size={18} aria-hidden="true" />
+          <span><strong>Water OIT</strong><small>Start with 15 free questions</small></span>
+          <ChevronRight size={17} aria-hidden="true" />
+        </Link>
+        <Link href="/oit-ww" className="homepage-preview-path">
+          <GraduationCap size={18} aria-hidden="true" />
+          <span><strong>Wastewater OIT</strong><small>Start with 15 free questions</small></span>
+          <ChevronRight size={17} aria-hidden="true" />
+        </Link>
+      </div>
     </div>
   );
 }
 
-function FaqItem({ q, a, isLast }: { q: string; a: string; isLast?: boolean }) {
+function StudyWorkspacePreview() {
+  return (
+    <aside className="homepage-workspace" aria-label="Illustrative OIT Water study workspace preview">
+      <div className="homepage-workspace-topbar">
+        <div className="homepage-workspace-product"><span className="homepage-workspace-mark">E</span><span>Echelon Institute</span></div>
+        <span className="homepage-preview-badge">Preview</span>
+      </div>
+      <div className="homepage-workspace-body">
+        <div className="homepage-workspace-title-row">
+          <div>
+            <span className="homepage-workspace-eyebrow">OIT Water</span>
+            <h2>Your study workspace</h2>
+          </div>
+          <span className="homepage-workspace-status"><span aria-hidden="true" /> Ready to study</span>
+        </div>
+        <div className="homepage-workspace-grid">
+          <section className="homepage-readiness" aria-label="Illustrative readiness by topic">
+            <div className="homepage-panel-heading"><span>Readiness by topic</span><strong>Illustrative</strong></div>
+            {[
+              ["Treatment fundamentals", "78%", 78],
+              ["Calculations", "62%", 62],
+              ["Safety & regulations", "84%", 84],
+            ].map(([label, value, width]) => (
+              <div className="homepage-readiness-row" key={label as string}>
+                <div><span>{label}</span><strong>{value}</strong></div>
+                <span className="homepage-progress-track"><span style={{ width: `${width}%` }} /></span>
+              </div>
+            ))}
+          </section>
+          <section className="homepage-question-card" aria-label="Illustrative worked question">
+            <div className="homepage-question-card-top"><span>Worked question</span><span>Calculation</span></div>
+            <p>A plant treats 4.2 ML/day. What should you check before calculating contact time?</p>
+            <div className="homepage-answer-choice"><span>A</span><strong>Confirm the flow units and basin volume.</strong></div>
+            <div className="homepage-explanation"><Calculator size={16} aria-hidden="true" /><span><strong>Step 1.</strong> Confirm the flow units and basin volume. The worked solution then shows the conversion before applying the formula.</span></div>
+          </section>
+        </div>
+        <div className="homepage-workspace-tools" aria-label="Available study modes">
+          <div><BookOpen size={16} aria-hidden="true" /><span><strong>Practice</strong><small>Target weak topics</small></span></div>
+          <div><Calculator size={16} aria-hidden="true" /><span><strong>Math</strong><small>Work step by step</small></span></div>
+          <div><ClipboardCheck size={16} aria-hidden="true" /><span><strong>Mock exam</strong><small>Build exam stamina</small></span></div>
+        </div>
+      </div>
+    </aside>
+  );
+}
+
+function ToolCard({ icon, title, description, href }: { icon: ReactNode; title: string; description: string; href: string }) {
+  return (
+    <Link href={href} className="homepage-tool-card">
+      <span className="homepage-tool-icon">{icon}</span>
+      <span><strong>{title}</strong><small>{description}</small></span>
+      <ArrowRight size={17} aria-hidden="true" />
+    </Link>
+  );
+}
+
+function FaqItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div
-      style={{
-        borderTop: "1px solid #E2E8F0",
-        borderBottom: isLast ? "1px solid #E2E8F0" : "none",
-      }}
-    >
-      <button
-        onClick={() => setOpen(o => !o)}
-        style={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "20px 0",
-          background: "transparent",
-          border: "none",
-          cursor: "pointer",
-          textAlign: "left",
-          fontFamily: "inherit",
-          gap: 16,
-        }}
-      >
-        <span style={{ fontSize: 15, fontWeight: 700, color: "#0F172A", lineHeight: 1.4 }}>{q}</span>
-        <span style={{
-          fontSize: 20,
-          color: "#1D4ED8",
-          fontWeight: 400,
-          flexShrink: 0,
-          transform: open ? "rotate(45deg)" : "rotate(0deg)",
-          transition: "transform 0.2s ease",
-          display: "inline-block",
-          lineHeight: 1,
-        }}>+</span>
-      </button>
-      {open && (
-        <div style={{ paddingBottom: 20, fontSize: 14, color: "#475569", lineHeight: 1.7 }}>
-          {a}
-        </div>
-      )}
-    </div>
+    <article className="homepage-faq-item">
+      <h3><button type="button" onClick={() => setOpen((value) => !value)} aria-expanded={open}>
+        <span>{question}</span><span aria-hidden="true" className={open ? "is-open" : ""}>+</span>
+      </button></h3>
+      {open && <p>{answer}</p>}
+    </article>
   );
 }
 
 function BlogPreviewSection() {
   const { data: allPosts } = trpc.blog.listPosts.useQuery();
   const posts = (allPosts ?? []).slice(0, 3);
-
   if (posts.length === 0) return null;
 
   return (
-    <section style={{ background: "#F8FAFC", padding: "80px 24px", borderTop: "1px solid #E2E8F0" }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 48 }}>
-          <div style={{ display: "inline-block", background: "#DBEAFE", color: "#1D4ED8", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", padding: "6px 14px", borderRadius: 20, marginBottom: 16 }}>FROM THE BLOG</div>
-          <h2 style={{ fontSize: "clamp(24px, 4vw, 36px)", fontWeight: 800, color: "#0F172A", margin: "0 0 12px", fontFamily: "Sora, sans-serif", letterSpacing: "-0.02em" }}>Study Guides for Water &amp; Wastewater Operators</h2>
-          <p style={{ fontSize: 16, color: "#64748B", maxWidth: 520, margin: "0 auto" }}>Free in-depth articles covering exam content, regulations, and career advice for water and wastewater operators.</p>
-        </div>
-
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24, marginBottom: 40 }}>
-          {posts.map((post: { slug: string; title: string; excerpt: string; tags: string | null; readingTimeMinutes: number }) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`}>
-              <div style={{
-                background: "#FFFFFF",
-                border: "1px solid #E2E8F0",
-                borderRadius: 12,
-                padding: "28px 24px",
-                cursor: "pointer",
-                transition: "box-shadow 0.2s",
-                height: "100%",
-                display: "flex",
-                flexDirection: "column",
-              }}
-              onMouseEnter={e => (e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.10)")}
-              onMouseLeave={e => (e.currentTarget.style.boxShadow = "none")}
-              >
-                {post.tags && (
-                  <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 12 }}>
-                    {post.tags.split(",").slice(0, 2).map((tag: string) => (
-                      <span key={tag} style={{ background: "#EFF6FF", color: "#1D4ED8", fontSize: 11, fontWeight: 600, padding: "3px 10px", borderRadius: 20, letterSpacing: "0.04em" }}>{tag.trim()}</span>
-                    ))}
-                  </div>
-                )}
-                <h3 style={{ fontSize: 17, fontWeight: 700, color: "#0F172A", margin: "0 0 10px", lineHeight: 1.4, fontFamily: "Sora, sans-serif", flex: 1 }}>{post.title}</h3>
-                <p style={{ fontSize: 14, color: "#64748B", margin: "0 0 16px", lineHeight: 1.6 }}>{post.excerpt.slice(0, 120)}{post.excerpt.length > 120 ? "..." : ""}</p>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "auto" }}>
-                  <span style={{ fontSize: 12, color: "#94A3B8" }}>{post.readingTimeMinutes} min read</span>
-                  <span style={{ fontSize: 13, color: "#1D4ED8", fontWeight: 600 }}>Read article →</span>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        <div style={{ textAlign: "center" }}>
-          <Link href="/blog" style={{ display: "inline-block", background: "#1D4ED8", color: "#FFFFFF", borderRadius: 8, padding: "12px 28px", fontSize: 15, fontWeight: 600, cursor: "pointer", fontFamily: "Sora, sans-serif", textDecoration: "none" }}>View All Articles</Link>
-        </div>
+    <section className="homepage-section homepage-blog-section" aria-labelledby="homepage-blog-title">
+      <div className="homepage-section-heading">
+        <span className="homepage-kicker">From the resource library</span>
+        <h2 id="homepage-blog-title">Built for the work behind the exam.</h2>
+        <p>Clear, practical study guides for water and wastewater operators.</p>
       </div>
+      <div className="homepage-blog-grid">
+        {posts.map((post: { slug: string; title: string; excerpt: string; tags: string | null; readingTimeMinutes: number }) => (
+          <Link key={post.slug} href={`/blog/${post.slug}`} className="homepage-blog-card">
+            <span>{post.tags?.split(",")[0]?.trim() || "Study guide"}</span>
+            <h3>{post.title}</h3>
+            <p>{post.excerpt.slice(0, 150)}{post.excerpt.length > 150 ? "…" : ""}</p>
+            <small>{post.readingTimeMinutes} min read <ArrowRight size={14} aria-hidden="true" /></small>
+          </Link>
+        ))}
+      </div>
+      <Link href="/blog" className="homepage-text-link">Explore all study guides <ArrowRight size={16} aria-hidden="true" /></Link>
     </section>
   );
 }
 
 function ContactSection() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [fieldErrors, setFieldErrors] = useState({ name: "", email: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
-  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
-  const [touched, setTouched] = useState<Record<string, boolean>>({});
-
   const sendContact = trpc.contact.send.useMutation({
     onSuccess: () => setSubmitted(true),
-    onError: (err) => setError(err.message || "Failed to send. Please try again."),
+    onError: (err) => setError(err.message || "We could not send that message. Please try again."),
   });
 
-  const validateField = (name: string, value: string): string => {
-    switch (name) {
-      case "name": return value.trim() ? "" : "Name is required";
-      case "email": return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()) ? "" : "Please enter a valid email address";
-      case "subject": return value.trim() ? "" : "Please select a subject";
-      case "message": return value.trim().length >= 10 ? "" : value.trim() ? "Message must be at least 10 characters" : "Message is required";
-      default: return "";
-    }
-  };
-
-  const handleChange = (name: string, value: string) => {
-    setForm(f => ({ ...f, [name]: value }));
-    if (touched[name]) {
-      setFieldErrors(prev => ({ ...prev, [name]: validateField(name, value) }));
-    }
-  };
-
-  const handleBlur = (name: string) => {
-    setTouched(prev => ({ ...prev, [name]: true }));
-    setFieldErrors(prev => ({ ...prev, [name]: validateField(name, form[name as keyof typeof form]) }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const submit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setError("");
-    // Validate all fields
-    const allTouched = { name: true, email: true, subject: true, message: true };
-    setTouched(allTouched);
-    const errors = {
-      name: validateField("name", form.name),
-      email: validateField("email", form.email),
-      subject: validateField("subject", form.subject),
-      message: validateField("message", form.message),
+    const nextErrors = {
+      name: form.name.trim() ? "" : "Enter your name.",
+      email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim()) ? "" : "Enter a valid email address.",
+      subject: form.subject ? "" : "Choose a topic.",
+      message: form.message.trim().length >= 10 ? "" : "Enter at least 10 characters so we can help.",
     };
-    setFieldErrors(errors);
-    if (Object.values(errors).some(e => e)) return;
+    setFieldErrors(nextErrors);
+    if (Object.values(nextErrors).some(Boolean)) {
+      return;
+    }
     sendContact.mutate(form);
   };
 
+  const updateField = (field: keyof typeof form, value: string) => {
+    setForm((current) => ({ ...current, [field]: value }));
+    setFieldErrors((current) => ({ ...current, [field]: "" }));
+  };
+
   return (
-    <section id="contact" style={{ background: "#F1F5F9", padding: "80px 24px" }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 48 }}>
-          <div style={{ display: "inline-block", background: "#DBEAFE", color: "#1D4ED8", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", padding: "6px 14px", borderRadius: 20, marginBottom: 16 }}>CONTACT US</div>
-          <h2 style={{ fontSize: "clamp(24px, 3vw, 36px)", fontWeight: 800, color: "#0F172A", margin: "0 0 12px", letterSpacing: "-0.02em" }}>Get in Touch</h2>
-          <p style={{ fontSize: 16, color: "#64748B", margin: 0, maxWidth: 480, marginLeft: "auto", marginRight: "auto" }}>Have a question about a course, certification, or your account? We're here to help.</p>
-        </div>
-
-        <div className="contact-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.6fr", gap: 40, alignItems: "start" }}>
-          {/* Contact info */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-            <div style={{ background: "#FFFFFF", borderRadius: 16, padding: "24px", border: "1px solid #E2E8F0" }}>
-              <div style={{ fontSize: 28, marginBottom: 12 }}>📞</div>
-              <div style={{ fontSize: 13, fontWeight: 700, color: "#64748B", letterSpacing: "0.06em", marginBottom: 6 }}>PHONE</div>
-              <a href="tel:+12897881885" style={{ fontSize: 20, fontWeight: 800, color: "#0F172A", textDecoration: "none" }}>289-788-1885</a>
-              <p style={{ fontSize: 13, color: "#64748B", margin: "6px 0 0" }}>Mon–Fri, 9am–5pm ET</p>
+    <section id="contact" className="homepage-section homepage-contact-section" aria-labelledby="homepage-contact-title">
+      <div className="homepage-contact-copy">
+        <span className="homepage-kicker">Talk to Echelon</span>
+        <h2 id="homepage-contact-title">Questions about your course or team?</h2>
+        <p>Get help with a certification path, course access, or team training. We reply within one business day.</p>
+        <a href="mailto:abello@echeloninstitute.ca" className="homepage-text-link">abello@echeloninstitute.ca <ArrowRight size={16} aria-hidden="true" /></a>
+      </div>
+      <div className="homepage-contact-card">
+        {submitted ? (
+          <div className="homepage-contact-success"><Check size={25} aria-hidden="true" /><h3>Message received</h3><p>Thank you. We will reply within one business day.</p><button type="button" onClick={() => { setSubmitted(false); setForm({ name: "", email: "", subject: "", message: "" }); }}>Send another message</button></div>
+        ) : (
+          <form onSubmit={submit} noValidate>
+            <div className="homepage-contact-row">
+              <label>Name<input value={form.name} onChange={(event) => updateField("name", event.target.value)} autoComplete="name" aria-invalid={Boolean(fieldErrors.name)} aria-describedby={fieldErrors.name ? "contact-name-error" : undefined} />{fieldErrors.name && <span id="contact-name-error" className="homepage-field-error">{fieldErrors.name}</span>}</label>
+              <label>Email<input value={form.email} onChange={(event) => updateField("email", event.target.value)} type="email" autoComplete="email" aria-invalid={Boolean(fieldErrors.email)} aria-describedby={fieldErrors.email ? "contact-email-error" : undefined} />{fieldErrors.email && <span id="contact-email-error" className="homepage-field-error">{fieldErrors.email}</span>}</label>
             </div>
-            <div style={{ background: "#FFFFFF", borderRadius: 16, padding: "24px", border: "1px solid #E2E8F0" }}>
-              <div style={{ fontSize: 28, marginBottom: 12 }}>✉️</div>
-              <div style={{ fontSize: 13, fontWeight: 700, color: "#64748B", letterSpacing: "0.06em", marginBottom: 6 }}>EMAIL</div>
-              <a href="mailto:abello@echeloninstitute.ca" style={{ fontSize: 15, fontWeight: 700, color: "#1D4ED8", textDecoration: "none", wordBreak: "break-all" }}>abello@echeloninstitute.ca</a>
-              <p style={{ fontSize: 13, color: "#64748B", margin: "6px 0 0" }}>We reply within 1 business day</p>
-            </div>
-            <div style={{ background: "linear-gradient(135deg, #1D4ED8, #0E7490)", borderRadius: 16, padding: "24px", color: "#fff" }}>
-              <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.06em", marginBottom: 8, opacity: 0.8 }}>QUICK LINKS</div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                {[
-                  { label: "View Pricing", href: "/pricing" },
-                  { label: "Browse Courses", href: "#courses" },
-                  { label: "Formula Sheets", href: "/formulas" },
-                ].map(l => (
-                  <a key={l.label} href={l.href} style={{ fontSize: 14, color: "rgba(255,255,255,0.85)", textDecoration: "none", fontWeight: 600 }}>{l.label} →</a>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Contact form */}
-          <div style={{ background: "#FFFFFF", borderRadius: 20, padding: "36px", border: "1px solid #E2E8F0", boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
-            {submitted ? (
-              <div style={{ textAlign: "center", padding: "40px 20px" }}>
-                <div style={{ fontSize: 52, marginBottom: 16 }}>✅</div>
-                <h3 style={{ fontSize: 22, fontWeight: 800, color: "#0F172A", margin: "0 0 8px" }}>Message Sent!</h3>
-                <p style={{ fontSize: 15, color: "#64748B", margin: "0 0 24px" }}>We'll get back to you within 1 business day.</p>
-                <button
-                  onClick={() => { setSubmitted(false); setForm({ name: "", email: "", subject: "", message: "" }); }}
-                  style={{ padding: "10px 24px", borderRadius: 10, background: "#EFF6FF", color: "#1D4ED8", border: "1px solid #BFDBFE", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
-                >Send Another Message</button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-                <h3 style={{ fontSize: 18, fontWeight: 800, color: "#0F172A", margin: "0 0 4px" }}>Send Us a Message</h3>
-                <div className="contact-form-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
-                  <div>
-                    <label style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#64748B", marginBottom: 6, letterSpacing: "0.05em" }}>YOUR NAME</label>
-                    <input
-                      type="text"
-                      value={form.name}
-                      onChange={e => handleChange("name", e.target.value)}
-                      onBlur={() => handleBlur("name")}
-                      placeholder="Jane Smith"
-                      style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: `1.5px solid ${fieldErrors.name ? "#DC2626" : "#E2E8F0"}`, fontSize: 14, fontFamily: "inherit", outline: "none", boxSizing: "border-box", color: "#0F172A" }}
-                    />
-                    {fieldErrors.name && <p style={{ margin: "4px 0 0", fontSize: 12, color: "#DC2626" }}>{fieldErrors.name}</p>}
-                  </div>
-                  <div>
-                    <label style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#64748B", marginBottom: 6, letterSpacing: "0.05em" }}>EMAIL ADDRESS</label>
-                    <input
-                      type="email"
-                      value={form.email}
-                      onChange={e => handleChange("email", e.target.value)}
-                      onBlur={() => handleBlur("email")}
-                      placeholder="jane@example.com"
-                      style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: `1.5px solid ${fieldErrors.email ? "#DC2626" : "#E2E8F0"}`, fontSize: 14, fontFamily: "inherit", outline: "none", boxSizing: "border-box", color: "#0F172A" }}
-                    />
-                    {fieldErrors.email && <p style={{ margin: "4px 0 0", fontSize: 12, color: "#DC2626" }}>{fieldErrors.email}</p>}
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor="contact-subject-select" style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#64748B", marginBottom: 6, letterSpacing: "0.05em" }}>SUBJECT</label>
-                  <select
-                    id="contact-subject-select"
-                    value={form.subject}
-                    onChange={e => handleChange("subject", e.target.value)}
-                    onBlur={() => handleBlur("subject")}
-                    style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: `1.5px solid ${fieldErrors.subject ? "#DC2626" : "#E2E8F0"}`, fontSize: 14, fontFamily: "inherit", outline: "none", boxSizing: "border-box", color: form.subject ? "#0F172A" : "#94A3B8", background: "#fff" }}
-                  >
-                    <option value="" disabled>Select a topic...</option>
-                    <option value="Course Question">Course Question</option>
-                    <option value="Certification Help">Certification Help</option>
-                    <option value="Technical Support">Technical Support</option>
-                    <option value="Billing & Payments">Billing & Payments</option>
-                    <option value="Partnership Inquiry">Partnership Inquiry</option>
-                    <option value="Other">Other</option>
-                  </select>
-                  {fieldErrors.subject && <p style={{ margin: "4px 0 0", fontSize: 12, color: "#DC2626" }}>{fieldErrors.subject}</p>}
-                </div>
-                <div>
-                  <label style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#64748B", marginBottom: 6, letterSpacing: "0.05em" }}>MESSAGE</label>
-                  <textarea
-                    value={form.message}
-                    onChange={e => handleChange("message", e.target.value)}
-                    onBlur={() => handleBlur("message")}
-                    placeholder="Tell us how we can help..."
-                    rows={5}
-                    style={{ width: "100%", padding: "10px 14px", borderRadius: 10, border: `1.5px solid ${fieldErrors.message ? "#DC2626" : "#E2E8F0"}`, fontSize: 14, fontFamily: "inherit", outline: "none", resize: "vertical", boxSizing: "border-box", color: "#0F172A" }}
-                  />
-                  {fieldErrors.message && <p style={{ margin: "4px 0 0", fontSize: 12, color: "#DC2626" }}>{fieldErrors.message}</p>}
-                </div>
-                {error && <p style={{ margin: 0, fontSize: 13, color: "#DC2626", fontWeight: 600 }}>{error}</p>}
-                <button
-                  type="submit"
-                  disabled={sendContact.isPending}
-                  style={{ padding: "14px 28px", borderRadius: 12, background: sendContact.isPending ? "#94A3B8" : "linear-gradient(135deg, #1D4ED8, #0E7490)", color: "#fff", border: "none", fontSize: 15, fontWeight: 800, cursor: sendContact.isPending ? "not-allowed" : "pointer", fontFamily: "inherit" }}
-                >
-                  {sendContact.isPending ? "Sending..." : "Send Message →"}
-                </button>
-              </form>
-            )}
-          </div>
-        </div>
+            <label>How can we help?<select value={form.subject} onChange={(event) => updateField("subject", event.target.value)} aria-invalid={Boolean(fieldErrors.subject)} aria-describedby={fieldErrors.subject ? "contact-subject-error" : undefined}><option value="">Select a topic</option><option value="Course Question">Course question</option><option value="Certification Help">Certification help</option><option value="Technical Support">Technical support</option><option value="Billing & Payments">Billing and payments</option><option value="Partnership Inquiry">Partnership inquiry</option><option value="Other">Other</option></select>{fieldErrors.subject && <span id="contact-subject-error" className="homepage-field-error">{fieldErrors.subject}</span>}</label>
+            <label>Message <small>At least 10 characters</small><textarea value={form.message} onChange={(event) => updateField("message", event.target.value)} rows={4} aria-invalid={Boolean(fieldErrors.message)} aria-describedby={fieldErrors.message ? "contact-message-error" : undefined} />{fieldErrors.message && <span id="contact-message-error" className="homepage-field-error">{fieldErrors.message}</span>}</label>
+            {error && <p role="alert" className="homepage-contact-error">{error}</p>}
+            <button type="submit" className="homepage-primary-button" disabled={sendContact.isPending}>{sendContact.isPending ? "Sending…" : "Send message"}<ArrowRight size={17} aria-hidden="true" /></button>
+          </form>
+        )}
       </div>
     </section>
   );
 }
 
-const WATER_COURSES = [
-  {
-    code: "OIT-W",
-    title: "Water OIT",
-    subtitle: "Operator-in-Training",
-    duration: "4–6 weeks",
-    questions: 500,
-    description: "Foundation course covering basic water treatment principles, safety, and Ontario regulations. Your first step toward certification.",
-    topics: ["Water Sources & Quality", "Basic Treatment Processes", "O. Reg. 170/03", "Safety & First Aid", "Basic Math & Calculations"],
-    badge: "Most Popular",
-    badgeColor: "#2563EB",
-    color: "#1D4ED8",
-    bg: "#EFF6FF",
-    border: "#BFDBFE",
-    price: 49,
-    productKey: "oit",
-    flashcardHref: "/oit-water-flashcards",
-  },
-  {
-    code: "CL1-W",
-    title: "Water Class 1",
-    subtitle: "Class 1 Certification",
-    duration: "6–8 weeks",
-    questions: 500,
-    description: "Covers coagulation, flocculation, sedimentation, filtration, and disinfection in depth. Prepares you for the OWWCO Class 1 exam.",
-    topics: ["Coagulation & Flocculation", "Sedimentation & Filtration", "Chlorination & CT Values", "O. Reg. 128/04", "Process Control Basics"],
-    badge: null,
-    color: "#0369A1",
-    bg: "#F0F9FF",
-    border: "#BAE6FD",
-    price: 99,
-    productKey: "class1-water",
-    flashcardHref: "/class1-water-flashcards",
-  },
-  {
-    code: "CL2-W",
-    title: "Water Class 2",
-    subtitle: "Class 2 Certification",
-    duration: "8–10 weeks",
-    questions: 500,
-    description: "Advanced process control, chemical handling, hydraulics, and troubleshooting for mid-career operators.",
-    topics: ["Advanced Hydraulics", "Chemical Feed Systems", "Process Troubleshooting", "SCADA Fundamentals", "Regulatory Compliance"],
-    badge: "Available Now",
-    badgeColor: "#16A34A",
-    color: "#0E7490",
-    bg: "#ECFEFF",
-    border: "#A5F3FC",
-    price: 149,
-    productKey: "class2-water",
-    flashcardHref: "/class2-water-flashcards",
-  },
-  {
-    code: "CL3-W",
-    title: "Water Class 3",
-    subtitle: "Class 3 Certification",
-    duration: "10–12 weeks",
-    questions: 500,
-    description: "Application-level exam prep for Class 3 Water Treatment. LSI, CT values, membranes, lime softening, SCADA, and advanced process control.",
-    topics: ["Advanced Treatment Process", "Membrane & Softening", "Lab Analysis & SUVA", "Equipment O&M", "Source Water & Safety"],
-    badge: "New",
-    badgeColor: "#1E40AF",
-    price: 249,
-    productKey: "class3-water",
-    flashcardHref: "/class3-water-flashcards",
-    color: "#1E40AF",
-    bg: "#EFF6FF",
-    border: "#BFDBFE",
-    comingSoon: false,
-  },
-  {
-    code: "CL4-W",
-    title: "Water Class 4",
-    subtitle: "Class 4 Certification",
-    duration: "12–14 weeks",
-    questions: 500,
-    description: "The highest certification level. Full system management, regulatory compliance, and strategic operations leadership.",
-    topics: ["Full System Management", "Regulatory Leadership", "Advanced Troubleshooting", "Capital & Budget Planning", "Class 4 Exam Prep"],
-    badge: "New",
-    badgeColor: "#6D28D9",
-    price: 299,
-    productKey: "class4-water",
-    flashcardHref: "/class4-water-flashcards",
-    color: "#6D28D9",
-    bg: "#F5F3FF",
-    border: "#DDD6FE",
-    comingSoon: false,
-  },
-];
-const WASTEWATER_COURSES = [
-  {
-    code: "OIT-WW",
-    title: "Wastewater OIT",
-    subtitle: "Operator-in-Training",
-    duration: "4–6 weeks",
-    questions: 500,
-    description: "Introduction to wastewater collection, treatment principles, and Ontario regulations. Start your wastewater career here.",
-    topics: ["Wastewater Characteristics", "Collection Systems", "Basic Treatment Processes", "O. Reg. 129/04", "Safety Fundamentals"],
-    badge: "Most Popular",
-    badgeColor: "#059669",
-    color: "#065F46",
-    bg: "#ECFDF5",
-    border: "#A7F3D0",
-    price: 49,
-    productKey: "oit-ww",
-    flashcardHref: "/oit-ww-flashcards",
-  },
-  {
-    code: "CL1-WW",
-    title: "Wastewater Class 1",
-    subtitle: "Class 1 Certification",
-    duration: "6–8 weeks",
-    questions: 500,
-    description: "Primary and secondary treatment, activated sludge basics, and effluent quality standards.",
-    topics: ["Primary Clarification", "Activated Sludge Process", "BOD & TSS Control", "Effluent Standards", "Basic Lab Testing"],
-    badge: null,
-    color: "#047857",
-    bg: "#F0FDF4",
-    border: "#BBF7D0",
-    price: 99,
-    productKey: "class1-ww",
-    flashcardHref: "/class1-ww-flashcards",
-  },
-  {
-    code: "CL2-WW",
-    title: "Wastewater Class 2",
-    subtitle: "Class 2 Certification",
-    duration: "8–10 weeks",
-    questions: 500,
-    description: "Advanced biological treatment, nutrient removal, sludge management, and process troubleshooting.",
-    topics: ["Nutrient Removal (BNR)", "Sludge Processing & Dewatering", "SRT & SVI Calculations", "Advanced Lab Analysis", "Process Optimization"],
-    badge: "New",
-    badgeColor: "#0F766E",
-    color: "#0F766E",
-    bg: "#F0FDFA",
-    border: "#99F6E4",
-    price: 149,
-    productKey: "class2-ww",
-    flashcardHref: "/class2-ww-flashcards",
-  },
-  {
-    code: "CL3-WW",
-    title: "Wastewater Class 3",
-    subtitle: "Class 3 Certification",
-    duration: "10–12 weeks",
-    questions: 500,
-    description: "Large-scale wastewater system management, advanced process control, and regulatory leadership.",
-    topics: ["Large System Operations", "Advanced Process Control", "Regulatory Reporting", "Staff & Budget Management", "Emergency Planning"],
-    badge: "New",
-    badgeColor: "#0E7490",
-    color: "#0E7490",
-    bg: "#ECFEFF",
-    border: "#A5F3FC",
-    comingSoon: false,
-    price: 249,
-    productKey: "class3-ww",
-    flashcardHref: "/class3-ww-flashcards",
-  },
-  {
-    code: "CL4-WW",
-    title: "Wastewater Class 4",
-    subtitle: "Class 4 Certification",
-    duration: "12–14 weeks",
-    questions: 500,
-    description: "The pinnacle of wastewater certification. Strategic operations, capital planning, and full regulatory compliance.",
-    topics: ["Full System Leadership", "Capital & Infrastructure Planning", "Advanced Troubleshooting", "Regulatory Compliance", "Class 4 Exam Mastery"],
-    badge: "New",
-    badgeColor: "#6D28D9",
-    price: 299,
-    productKey: "class4-ww",
-    flashcardHref: "/class4-ww-flashcards",
-    color: "#6D28D9",
-    bg: "#F5F3FF",
-    border: "#DDD6FE",
-    comingSoon: false,
-  },
-];
-const WQA_COURSES = [
-  {
-    code: "WQA",
-    title: "Water Quality Analyst",
-    subtitle: "Ontario WQA Certification Prep",
-    duration: "6–8 weeks",
-    questions: 500,
-    description: "Complete preparation for the Ontario Water Quality Analyst certification under O. Reg. 128/04. Covers sampling protocols, analytical methods, QA/QC programs, chain of custody, and regulatory reporting for accredited drinking water labs. 400+ questions across 10 modules.",
-    topics: ["Sampling Techniques & Chain of Custody", "Analytical Methods & Lab Equipment", "QA/QC Programs & Method Validation", "O. Reg. 128/04 Requirements", "Regulatory Reporting & Documentation"],
-    badge: "Single Certification",
-    badgeColor: "#7C3AED",
-    color: "#6D28D9",
-    bg: "#FAF5FF",
-    border: "#DDD6FE",
-    comingSoon: false,
-    price: 149,
-    productKey: "wqa",
-    flashcardHref: "/wqa-flashcards",
-  },
-];
-
-const WPI_WATER_COURSES = [
-  {
-    code: "WPI-W1",
-    title: "WPI Class I Water",
-    subtitle: "WPI Water Treatment — Class I",
-    duration: "4–6 weeks",
-    questions: 500,
-    description: "Comprehensive WPI Class I Water Treatment prep aligned with WPI Need-to-Know Criteria. Covers coagulation, filtration, disinfection, distribution, and regulations. Echelon is an independent preparation provider. Confirm your authority's current requirements.",
-    topics: ["Coagulation & Flocculation", "Filtration & Sedimentation", "Disinfection & CT Values", "Distribution Systems", "Regulations & Safety"],
-    badge: "WPI",
-    badgeColor: "#0369A1",
-    color: "#0369A1",
-    bg: "#F0F9FF",
-    border: "#BAE6FD",
-    comingSoon: false,
-    price: 99,
-    province: "wpi" as const,
-    productKey: "wpi-class1-water",
-    flashcardHref: "/wpi-class1-water-flashcards",
-    quizHref: "/wpi-class1-water",
-    mockHref: "/wpi-class1-water-mock",
-  },
-  {
-    code: "WPI-W2",
-    title: "WPI Class II Water",
-    subtitle: "WPI Water Treatment — Class II",
-    duration: "6–8 weeks",
-    questions: 501,
-    description: "Advanced WPI Class II Water Treatment prep. Covers advanced treatment processes, system design, lab monitoring, source water management, and regulatory compliance. 400+ questions across 5 modules.",
-    topics: ["Advanced Treatment Processes", "System Design & Hydraulics", "Lab Monitoring & QC", "Source Water Management", "Regulatory Compliance"],
-    badge: "WPI",
-    badgeColor: "#0E7490",
-    color: "#0E7490",
-    bg: "#ECFEFF",
-    border: "#A5F3FC",
-    comingSoon: false,
-    price: 149,
-    province: "wpi" as const,
-    productKey: "wpi-class2-water",
-    flashcardHref: "/wpi-class2-water-flashcards",
-    quizHref: "/wpi-class2-water",
-    mockHref: "/wpi-class2-water-mock",
-  },
-  {
-    code: "WPI-W3",
-    title: "WPI Class III Water",
-    subtitle: "WPI Water Treatment — Class III",
-    duration: "8–10 weeks",
-    questions: 500,
-    description: "Senior-level WPI Class III Water Treatment prep. Covers advanced process optimization, membrane systems, chemical handling, emergency response, and senior operator responsibilities.",
-    topics: ["Advanced Process Optimization", "Membrane & Advanced Treatment", "Chemical Handling & Safety", "Emergency Response", "Senior Operator Responsibilities"],
-    badge: "WPI",
-    badgeColor: "#1E40AF",
-    color: "#1E40AF",
-    bg: "#EFF6FF",
-    border: "#BFDBFE",
-    comingSoon: false,
-    price: 249,
-    province: "wpi" as const,
-    productKey: "wpi-class3-water",
-    quizHref: "/wpi-class3-water",
-    mockHref: "/wpi-class3-water-mock",
-    flashcardHref: "/wpi-class3-water-flashcards",
-  },
-  {
-    code: "WPI-W4",
-    title: "WPI Class IV Water",
-    subtitle: "WPI Water Treatment — Class IV",
-    duration: "10–12 weeks",
-    questions: 501,
-    description: "Chief operator-level WPI Class IV Water Treatment prep. The highest WPI water certification. Covers system-wide management, capital planning, advanced regulatory compliance, and strategic operations.",
-    topics: ["System-Wide Management", "Capital & Infrastructure Planning", "Advanced Regulatory Compliance", "Strategic Operations", "Class IV Exam Mastery"],
-    badge: "WPI",
-    badgeColor: "#4C1D95",
-    color: "#4C1D95",
-    bg: "#F5F3FF",
-    border: "#DDD6FE",
-    comingSoon: false,
-    price: 299,
-    province: "wpi" as const,
-    productKey: "wpi-class4-water",
-    quizHref: "/wpi-class4-water",
-    mockHref: "/wpi-class4-water-mock",
-    flashcardHref: "/wpi-class4-water-flashcards",
-  },
-];
-
-const ONTARIO_WATER_DIST_COURSES = [
-  {
-    code: "ON-D1",
-    title: "Class 1 Water Distribution and Supply",
-    subtitle: "Ontario Class 1 — Water Distribution and Supply",
-    duration: "3–4 weeks",
-    questions: 500,
-    description: "Ontario Class 1 Water Distribution and Supply prep aligned with OWWCO certification. Covers pipe materials, valve operation, hydrant maintenance, pressure management, and O. Reg. 170/03.",
-    topics: ["Pipe Materials & Fittings", "Valve & Hydrant Operation", "Pressure Management", "Chlorine Residual", "O. Reg. 170/03"],
-    badge: "NEW",
-    badgeColor: "#B45309",
-    color: "#0369A1",
-    bg: "#E0F2FE",
-    border: "#BAE6FD",
-    comingSoon: false,
-    price: 99,
-    productKey: "class1-water-dist",
-    quizHref: "/class1-water-dist",
-    mockHref: "/class1-water-dist-mock",
-    flashcardHref: "/class1-water-dist-flashcards",
-  },
-  {
-    code: "ON-D2",
-    title: "Class 2 Water Distribution and Supply",
-    subtitle: "Ontario Class 2 — Water Distribution and Supply",
-    duration: "4–6 weeks",
-    questions: 500,
-    description: "Ontario Class 2 Water Distribution and Supply prep. Covers system design, water main installation, cross-connection control, hydraulics, and distribution operations aligned with OWWCO Class 2.",
-    topics: ["System Design", "Water Main Installation", "Cross-Connection Control", "Hydraulics", "Regulatory Compliance"],
-    badge: "NEW",
-    badgeColor: "#B45309",
-    color: "#0F766E",
-    bg: "#F0FDFA",
-    border: "#99F6E4",
-    comingSoon: false,
-    price: 149,
-    productKey: "class2-water-dist",
-    quizHref: "/class2-water-dist",
-    mockHref: "/class2-water-dist-mock",
-    flashcardHref: "/class2-water-dist-flashcards",
-  },
-  {
-    code: "ON-D3",
-    title: "Class 3 Water Distribution and Supply",
-    subtitle: "Ontario Class 3 — Water Distribution and Supply",
-    duration: "6–8 weeks",
-    questions: 500,
-    description: "Ontario Class 3 Water Distribution and Supply prep. Covers advanced hydraulics, system modelling, asset management, and distribution system planning aligned with OWWCO Class 3.",
-    topics: ["Advanced Hydraulics", "System Modelling", "Asset Management", "Distribution Planning", "SCADA & Automation"],
-    badge: "NEW",
-    badgeColor: "#B45309",
-    color: "#1E40AF",
-    bg: "#EFF6FF",
-    border: "#BFDBFE",
-    comingSoon: false,
-    price: 249,
-    productKey: "class3-water-dist",
-    quizHref: "/class3-water-dist",
-    mockHref: "/class3-water-dist-mock",
-    flashcardHref: "/class3-water-dist-flashcards",
-  },
-  {
-    code: "ON-D4",
-    title: "Class 4 Water Distribution and Supply",
-    subtitle: "Ontario Class 4 — Water Distribution and Supply",
-    duration: "8–10 weeks",
-    questions: 500,
-    description: "Ontario Class 4 Water Distribution and Supply prep. Covers strategic asset management, risk-based frameworks, KPIs, capital planning, and regulatory compliance aligned with OWWCO Class 4.",
-    topics: ["Strategic Asset Management", "Risk-Based Frameworks", "KPIs & Performance", "Capital Planning", "Regulatory Leadership"],
-    badge: "NEW",
-    badgeColor: "#B45309",
-    color: "#4C1D95",
-    bg: "#F5F3FF",
-    border: "#DDD6FE",
-    comingSoon: false,
-    price: 299,
-    productKey: "class4-water-dist",
-    quizHref: "/class4-water-dist",
-    mockHref: "/class4-water-dist-mock",
-    flashcardHref: "/class4-water-dist-flashcards",
-  },
-];
-
-const ONTARIO_WASTEWATER_COLL_COURSES = [
-  {
-    code: "ON-C1",
-    title: "Class 1 Wastewater Collection",
-    subtitle: "Ontario Class 1 — Wastewater Collection",
-    duration: "3–4 weeks",
-    questions: 500,
-    description: "Ontario Class 1 Wastewater Collection prep. Covers collection system basics, I/I identification, manhole inspection, and O. Reg. 129/04 aligned with OWWCO Class 1.",
-    topics: ["Collection System Basics", "I/I Identification", "Manhole Inspection", "H\u2082S Safety", "O. Reg. 129/04"],
-    badge: "NEW",
-    badgeColor: "#B45309",
-    color: "#065F46",
-    bg: "#ECFDF5",
-    border: "#A7F3D0",
-    comingSoon: false,
-    price: 99,
-    productKey: "class1-wastewater-coll",
-    quizHref: "/class1-wastewater-coll",
-    mockHref: "/class1-wastewater-coll-mock",
-    flashcardHref: "/class1-wastewater-coll-flashcards",
-  },
-  {
-    code: "ON-C2",
-    title: "Class 2 Wastewater Collection",
-    subtitle: "Ontario Class 2 — Wastewater Collection",
-    duration: "4–6 weeks",
-    questions: 500,
-    description: "Ontario Class 2 Wastewater Collection prep. Covers collection system design, sewer rehabilitation, pump station operations, and CSO management aligned with OWWCO Class 2.",
-    topics: ["Collection System Design", "Sewer Rehabilitation", "Pump Station Operations", "CSO Management", "Regulatory Compliance"],
-    badge: "NEW",
-    badgeColor: "#B45309",
-    color: "#047857",
-    bg: "#F0FDF4",
-    border: "#BBF7D0",
-    comingSoon: false,
-    price: 149,
-    productKey: "class2-wastewater-coll",
-    quizHref: "/class2-wastewater-coll",
-    mockHref: "/class2-wastewater-coll-mock",
-    flashcardHref: "/class2-wastewater-coll-flashcards",
-  },
-  {
-    code: "ON-C3",
-    title: "Class 3 Wastewater Collection",
-    subtitle: "Ontario Class 3 — Wastewater Collection",
-    duration: "6–8 weeks",
-    questions: 500,
-    description: "Ontario Class 3 Wastewater Collection prep. Covers advanced collection system hydraulics, CCTV inspection, force main design, and Long-Term Control Plans aligned with OWWCO Class 3.",
-    topics: ["Advanced Hydraulics", "CCTV Inspection", "Force Main Design", "Long-Term Control Plans", "Senior Operator Responsibilities"],
-    badge: "NEW",
-    badgeColor: "#B45309",
-    color: "#065F46",
-    bg: "#ECFDF5",
-    border: "#6EE7B7",
-    comingSoon: false,
-    price: 249,
-    productKey: "class3-wastewater-coll",
-    quizHref: "/class3-wastewater-coll",
-    mockHref: "/class3-wastewater-coll-mock",
-    flashcardHref: "/class3-wastewater-coll-flashcards",
-  },
-  {
-    code: "ON-C4",
-    title: "Class 4 Wastewater Collection",
-    subtitle: "Ontario Class 4 — Wastewater Collection",
-    duration: "8–10 weeks",
-    questions: 500,
-    description: "Ontario Class 4 Wastewater Collection prep. Covers strategic collection system management, lifecycle cost optimization, green infrastructure, and regulatory compliance aligned with OWWCO Class 4.",
-    topics: ["Strategic System Management", "Lifecycle Cost Optimization", "Green Infrastructure", "CMMS & Asset Management", "Regulatory Leadership"],
-    badge: "NEW",
-    badgeColor: "#B45309",
-    color: "#14532D",
-    bg: "#F0FDF4",
-    border: "#86EFAC",
-    comingSoon: false,
-    price: 299,
-    productKey: "class4-wastewater-coll",
-    quizHref: "/class4-wastewater-coll",
-    mockHref: "/class4-wastewater-coll-mock",
-    flashcardHref: "/class4-wastewater-coll-flashcards",
-  },
-];
-
-const WPI_WATER_DIST_COURSES = [
-  {
-    code: "WPI-D1",
-    title: "WPI Class I Water Distribution",
-    subtitle: "WPI Water Distribution — Class I",
-    duration: "3–4 weeks",
-    questions: 150,
-    description: "WPI Class I Water Distribution prep aligned with WPI Need-to-Know Criteria. Covers distribution system basics, pipe materials, pressure and flow, water quality maintenance, and regulations. Echelon is an independent preparation provider. Confirm your authority's current requirements.",
-    topics: ["Pipe Materials & Fittings", "Pressure & Flow Basics", "Chlorine Residual Maintenance", "Valve & Hydrant Operation", "Regulations & Safety"],
-    badge: "WPI",
-    badgeColor: "#0369A1",
-    color: "#0369A1",
-    bg: "#E0F2FE",
-    border: "#BAE6FD",
-    comingSoon: false,
-    price: 99,
-    province: "wpi" as const,
-    productKey: "wpi-class1-water-dist",
-    quizHref: "/wpi-class1-water-dist",
-    mockHref: "/wpi-class1-water-dist-mock",
-    flashcardHref: "/wpi-class1-water-dist-flashcards",
-  },
-  {
-    code: "WPI-D2",
-    title: "WPI Class II Water Distribution",
-    subtitle: "WPI Water Distribution — Class II",
-    duration: "4–6 weeks",
-    questions: 136,
-    description: "WPI Class II Water Distribution prep. Covers hydraulic analysis, pressure zone design, water quality management, cross-connection control, and regulatory compliance. 500 questions. Echelon is an independent preparation provider. Confirm your authority's current requirements.",
-    topics: ["Hydraulic Analysis", "Pressure Zone Design", "Water Quality Management", "Cross-Connection Control", "Regulatory Compliance"],
-    badge: "WPI",
-    badgeColor: "#0F766E",
-    color: "#0F766E",
-    bg: "#F0FDFA",
-    border: "#99F6E4",
-    comingSoon: false,
-    price: 149,
-    province: "wpi" as const,
-    productKey: "wpi-class2-water-dist",
-    quizHref: "/wpi-class2-water-dist",
-    mockHref: "/wpi-class2-water-dist-mock",
-    flashcardHref: "/wpi-class2-water-dist-flashcards",
-  },
-  {
-    code: "WPI-D3",
-    title: "WPI Class III Water Distribution",
-    subtitle: "WPI Water Distribution — Class III",
-    duration: "6–8 weeks",
-    questions: 150,
-    description: "Senior-level WPI Class III Water Distribution prep. Covers advanced hydraulic modeling, transmission main design, multi-zone systems, SCADA, and senior operator responsibilities. Echelon is an independent preparation provider. Confirm your authority's current requirements.",
-    topics: ["Advanced Hydraulic Modeling", "Transmission Main Design", "Multi-Zone Systems", "SCADA & Automation", "Senior Operator Responsibilities"],
-    badge: "WPI",
-    badgeColor: "#1E40AF",
-    color: "#1E40AF",
-    bg: "#EFF6FF",
-    border: "#BFDBFE",
-    comingSoon: false,
-    price: 249,
-    province: "wpi" as const,
-    productKey: "wpi-class3-water-dist",
-    quizHref: "/wpi-class3-water-dist",
-    mockHref: "/wpi-class3-water-dist-mock",
-    flashcardHref: "/wpi-class3-water-dist-flashcards",
-  },
-  {
-    code: "WPI-D4",
-    title: "WPI Class IV Water Distribution",
-    subtitle: "WPI Water Distribution — Class IV",
-    duration: "8–10 weeks",
-    questions: 150,
-    description: "Chief operator-level WPI Class IV Water Distribution prep. The highest WPI distribution certification. Covers large-scale system management, asset management, advanced water quality, DWQMS, and strategic regulatory compliance. Echelon is an independent preparation provider. Confirm your authority's current requirements.",
-    topics: ["Large-Scale System Management", "Asset Management", "Advanced Water Quality", "DWQMS Implementation", "Strategic Regulatory Compliance"],
-    badge: "WPI",
-    badgeColor: "#4C1D95",
-    color: "#4C1D95",
-    bg: "#F5F3FF",
-    border: "#DDD6FE",
-    comingSoon: false,
-    price: 299,
-    province: "wpi" as const,
-    productKey: "wpi-class4-water-dist",
-    quizHref: "/wpi-class4-water-dist",
-    mockHref: "/wpi-class4-water-dist-mock",
-    flashcardHref: "/wpi-class4-water-dist-flashcards",
-  },
-];
-
-const WPI_WATER_COLL_COURSES = [
-  {
-    code: "WPI-C1",
-    title: "WPI Class I Wastewater Collection",
-    subtitle: "WPI Wastewater Collection — Class I",
-    duration: "3–4 weeks",
-    questions: 500,
-    description: "WPI Class I Wastewater Collection prep aligned with WPI Need-to-Know Criteria. Covers gravity sewer basics, pipe materials, lift station fundamentals, H₂S safety, and regulations. Echelon is an independent preparation provider. Confirm your authority's current requirements.",
-    topics: ["Gravity Sewer Basics", "Pipe Materials & Joints", "Lift Station Fundamentals", "H₂S Safety", "Regulations & Safety"],
-    badge: "WPI",
-    badgeColor: "#065F46",
-    color: "#065F46",
-    bg: "#ECFDF5",
-    border: "#A7F3D0",
-    comingSoon: false,
-    price: 99,
-    province: "wpi" as const,
-    productKey: "wpi-class1-water-coll",
-    quizHref: "/wpi-class1-water-coll",
-    mockHref: "/wpi-class1-water-coll-mock",
-    flashcardHref: "/wpi-class1-water-coll-flashcards",
-  },
-  {
-    code: "WPI-C2",
-    title: "WPI Class II Wastewater Collection",
-    subtitle: "WPI Wastewater Collection — Class II",
-    duration: "4–6 weeks",
-    questions: 504,
-    description: "WPI Class II Wastewater Collection prep. Covers hydraulic analysis, sewer system design, inflow & infiltration control, force mains, and regulatory compliance. Echelon is an independent preparation provider. Confirm your authority's current requirements.",
-    topics: ["Hydraulic Analysis", "Sewer System Design", "Inflow & Infiltration", "Force Main Operations", "Regulatory Compliance"],
-    badge: "WPI",
-    badgeColor: "#047857",
-    color: "#047857",
-    bg: "#F0FDF4",
-    border: "#BBF7D0",
-    comingSoon: false,
-    price: 149,
-    province: "wpi" as const,
-    productKey: "wpi-class2-water-coll",
-    quizHref: "/wpi-class2-water-coll",
-    mockHref: "/wpi-class2-water-coll-mock",
-    flashcardHref: "/wpi-class2-water-coll-flashcards",
-  },
-  {
-    code: "WPI-C3",
-    title: "WPI Class III Wastewater Collection",
-    subtitle: "WPI Wastewater Collection — Class III",
-    duration: "6–8 weeks",
-    questions: 504,
-    description: "Senior-level WPI Class III Wastewater Collection prep. Covers advanced collection system management, CSO/SSO control, trenchless rehabilitation, SCADA, and senior operator responsibilities. Echelon is an independent preparation provider. Confirm your authority's current requirements.",
-    topics: ["CSO/SSO Control", "Trenchless Rehabilitation", "Advanced System Management", "SCADA & Automation", "Senior Operator Responsibilities"],
-    badge: "WPI",
-    badgeColor: "#065F46",
-    color: "#065F46",
-    bg: "#ECFDF5",
-    border: "#6EE7B7",
-    comingSoon: false,
-    price: 249,
-    province: "wpi" as const,
-    productKey: "wpi-class3-water-coll",
-    quizHref: "/wpi-class3-water-coll",
-    mockHref: "/wpi-class3-water-coll-mock",
-    flashcardHref: "/wpi-class3-water-coll-flashcards",
-  },
-  {
-    code: "WPI-C4",
-    title: "WPI Class IV Wastewater Collection",
-    subtitle: "WPI Wastewater Collection — Class IV",
-    duration: "8–10 weeks",
-    questions: 504,
-    description: "Chief operator-level WPI Class IV Wastewater Collection prep. The highest WPI collection certification. Covers large-scale collection system management, asset management, advanced I/I control, CMMS, and strategic regulatory compliance. Echelon is an independent preparation provider. Confirm your authority's current requirements.",
-    topics: ["Large-Scale System Management", "Asset Management & CMMS", "Advanced I/I Control", "DWQMS & Regulatory Compliance", "Emergency Response"],
-    badge: "WPI",
-    badgeColor: "#14532D",
-    color: "#14532D",
-    bg: "#F0FDF4",
-    border: "#86EFAC",
-    comingSoon: false,
-    price: 299,
-    province: "wpi" as const,
-    productKey: "wpi-class4-water-coll",
-    quizHref: "/wpi-class4-water-coll",
-    mockHref: "/wpi-class4-water-coll-mock",
-    flashcardHref: "/wpi-class4-water-coll-flashcards",
-  },
-];
-
-const WPI_WASTEWATER_COURSES = [
-  {
-    code: "WPI-WW1",
-    title: "WPI Class I Wastewater",
-    subtitle: "WPI Wastewater Treatment — Class I",
-    duration: "4–6 weeks",
-    questions: 501,
-    description: "WPI Class I Wastewater Treatment prep aligned with WPI Need-to-Know Criteria. Covers primary and secondary treatment, activated sludge basics, effluent quality, and regulations. Echelon is an independent preparation provider. Confirm your authority's current requirements.",
-    topics: ["Primary Clarification", "Activated Sludge Basics", "BOD & TSS Control", "Effluent Standards", "Regulations & Safety"],
-    badge: "WPI",
-    badgeColor: "#B45309",
-    color: "#B45309",
-    bg: "#FFFBEB",
-    border: "#FDE68A",
-    comingSoon: false,
-    price: 99,
-    province: "wpi" as const,
-    productKey: "wpi-class1-wastewater",
-    quizHref: "/wpi-class1-wastewater",
-    mockHref: "/wpi-class1-wastewater-mock",
-    flashcardHref: "/wpi-class1-wastewater-flashcards",
-  },
-  {
-    code: "WPI-WW2",
-    title: "WPI Class II Wastewater",
-    subtitle: "WPI Wastewater Treatment — Class II",
-    duration: "6–8 weeks",
-    questions: 501,
-    description: "Advanced WPI Class II Wastewater Treatment prep. Covers biological nutrient removal, sludge management, advanced lab analysis, and process optimization. 400+ questions across 8 modules.",
-    topics: ["Biological Nutrient Removal", "Sludge Processing & Dewatering", "SRT & SVI Calculations", "Advanced Lab Analysis", "Process Optimization"],
-    badge: "WPI",
-    badgeColor: "#0F766E",
-    color: "#0F766E",
-    bg: "#F0FDFA",
-    border: "#99F6E4",
-    comingSoon: false,
-    price: 149,
-    province: "wpi" as const,
-    productKey: "wpi-class2-wastewater",
-    quizHref: "/wpi-class2-wastewater",
-    mockHref: "/wpi-class2-wastewater-mock",
-    flashcardHref: "/wpi-class2-wastewater-flashcards",
-  },
-  {
-    code: "WPI-WW3",
-    title: "WPI Class III Wastewater",
-    subtitle: "WPI Wastewater Treatment — Class III",
-    duration: "8–10 weeks",
-    questions: 500,
-    description: "Senior-level WPI Class III Wastewater Treatment prep. Covers advanced BNR, membrane bioreactors, industrial pretreatment, advanced biosolids, and regulatory compliance. 400+ questions across 8 modules.",
-    topics: ["Advanced BNR & MBR", "Industrial Pretreatment", "Advanced Biosolids Management", "Regulatory Compliance", "Emergency Response"],
-    badge: "WPI",
-    badgeColor: "#1D4ED8",
-    color: "#1D4ED8",
-    bg: "#EFF6FF",
-    border: "#BFDBFE",
-    comingSoon: false,
-    price: 249,
-    province: "wpi" as const,
-    productKey: "wpi-class3-wastewater",
-    quizHref: "/wpi-class3-wastewater",
-    mockHref: "/wpi-class3-wastewater-mock",
-    flashcardHref: "/wpi-class3-wastewater-flashcards",
-  },
-  {
-    code: "WPI-WW4",
-    title: "WPI Class IV Wastewater",
-    subtitle: "WPI Wastewater Treatment — Class IV",
-    duration: "10–12 weeks",
-    questions: 500,
-    description: "Chief operator-level WPI Class IV Wastewater Treatment prep. The highest WPI wastewater certification. Covers advanced process control, BNR & resource recovery, plant management, and strategic regulatory compliance. 400+ questions across 7 modules.",
-    topics: ["Advanced Process Control", "BNR & Resource Recovery", "Plant Management & Leadership", "Regulatory Compliance", "Emergency Response"],
-    badge: "WPI",
-    badgeColor: "#6D28D9",
-    color: "#6D28D9",
-    bg: "#F5F3FF",
-    border: "#DDD6FE",
-    comingSoon: false,
-    price: 299,
-    province: "wpi" as const,
-    productKey: "wpi-class4-wastewater",
-    quizHref: "/wpi-class4-wastewater",
-    mockHref: "/wpi-class4-wastewater-mock",
-    flashcardHref: "/wpi-class4-wastewater-flashcards",
-  },
-];
-
-const FEATURES = [
-  {
-    icon: "🤖",
-    title: "AI Tutor",
-    description: "Ask anything, get instant expert answers. The AI Tutor knows Ontario regulations, process chemistry, and exam strategy.",
-    color: "#2563EB",
-    href: "/quiz",
-  },
-  {
-    icon: "🎯",
-    title: "Adaptive Practice",
-    description: "The engine learns your weak spots and serves targeted questions. Study smarter, not longer.",
-    color: "#7C3AED",
-    href: "/quiz",
-  },
-  {
-    icon: "🏭",
-    title: "Interactive Process Guides",
-    description: "Click through animated treatment plant diagrams. See how every component works — not just read about it.",
-    color: "#059669",
-    href: "/process",
-  },
-  {
-    icon: "🧠",
-    title: "Math Practice Hub",
-    description: "800+ calculation questions across all 18 courses — filtered to math-only, with step-by-step solutions and exam tips. Master every formula before exam day.",
-    color: "#7C3AED",
-    href: "/math-practice",
-  },
-  {
-    icon: "📐",
-    title: "Formula Sheet",
-    description: "33 Ontario operator exam formulas with worked examples and exam tips. CT values, SVI, pump power, and more.",
-    color: "#0E7490",
-    href: "/formulas",
-  },
-  {
-    icon: "🗺️",
-    title: "Career Map",
-    description: "See your full career path — OIT to Class 4 — with salary ranges, employer landscape, and certification timelines.",
-    color: "#1D4ED8",
-    href: "/career",
-  },
-  {
-    icon: "🃏",
-    title: "Flashcards",
-    description: "400+ concept cards per course — flip to reveal answers, filter by module, and track your progress as you master key definitions and processes.",
-    color: "#0F766E",
-    href: "/oit-water-flashcards",
-  },
-  {
-    icon: "📖",
-    title: "Module Study Notes",
-    description: "Condensed study notes for every module — key concepts, process tables, formulas, and exam tips. Read before you practice, not just after you get it wrong.",
-    color: "#B45309",
-    href: "/quiz",
-  },
-  {
-    icon: "🚨",
-    title: "Echelon Command",
-    description: "Build incident judgment after mastering the exam fundamentals. Step into a live control room, respond to treatment-barrier failures, and defend every call in an AI-powered after-action review.",
-    color: "#BE123C",
-    href: "/command",
-  },
-];
-
-const STATS = [
-  { value: "18,000+", label: "Practice Questions" },
-  { value: "36", label: "Certification Courses" },
-  { value: "6", label: "Specialization Tracks" },
-  { value: "Free", label: "OIT Access" },
-];
-
-type CourseType = (typeof WATER_COURSES)[number] | (typeof WASTEWATER_COURSES)[number] | (typeof WQA_COURSES)[number] | (typeof WPI_WATER_COURSES)[number] | (typeof WPI_WASTEWATER_COURSES)[number] | (typeof WPI_WATER_DIST_COURSES)[number] | (typeof WPI_WATER_COLL_COURSES)[number] | (typeof ONTARIO_WATER_DIST_COURSES)[number] | (typeof ONTARIO_WASTEWATER_COLL_COURSES)[number];
-
-function CourseCard({ course, province }: { course: CourseType; province: ProvinceId | null }) {
-  const [notifyOpen, setNotifyOpen] = useState(false);
-  const trackCourseSelection = trpc.funnelAnalytics.track.useMutation();
-  const quizHref = (course as any).quizHref ?? (
-    course.code === "OIT-WW" ? "/oit-ww" :
-    course.code === "CL1-WW" ? "/class1-ww" :
-    course.code === "CL2-WW" ? "/class2-ww" :
-    course.code === "CL1-W" ? "/class1-water" :
-    course.code === "CL2-W" ? "/class2-water" :
-    course.code === "CL3-W" ? "/class3-water" :
-    course.code === "CL3-WW" ? "/class3-ww" :
-    course.code === "CL4-W" ? "/class4-water" :
-    course.code === "CL4-WW" ? "/class4-ww" :
-    course.code === "WQA" ? "/wqa" : "/quiz"
-  );
-  const isWpiCourse = (course as any).province === "wpi";
-  const passPrice = Number((course as any).price);
-  const passPriceLabel = Number.isFinite(passPrice) ? `CA$${passPrice}` : "See pricing";
-  const pricingHref = buildPricingHref((course as any).productKey, isWpiCourse ? province : "ON");
-  const recordCourseSelection = () => {
-    const productKey = (course as any).productKey as string | undefined;
-    if (!productKey) return;
-    // Clicking a course card on the home page is browsing. Purchase intent is
-    // reported by the buy button on the pricing page.
-    trackCourseSelection.mutate({
-      event: "course_browsed",
-      courseKey: productKey,
-      surface: "course_card",
-      visitorId: getAnonymousAnalyticsId(),
-      ...getMarketingAttribution("/"),
-      province: isWpiCourse ? "western" : "ontario",
-    });
-  };
-  return (
-    <>
-      <div
-        className="course-card"
-        style={{
-          background: "#FFFFFF",
-          border: `1.5px solid ${course.border}`,
-          borderRadius: 16,
-          overflow: "hidden",
-          position: "relative",
-          transition: "box-shadow 0.2s, transform 0.2s",
-          display: "flex",
-          flexDirection: "column",
-        }}
-        onMouseEnter={e => {
-          (e.currentTarget as HTMLDivElement).style.boxShadow = "0 8px 32px rgba(0,0,0,0.10)";
-          (e.currentTarget as HTMLDivElement).style.transform = "translateY(-3px)";
-        }}
-        onMouseLeave={e => {
-          (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
-          (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
-        }}
-      >
-        {/* Coloured top accent bar */}
-        <div style={{ height: 4, background: course.color, flexShrink: 0 }} />
-
-        {/* Card body */}
-        <div style={{ padding: "20px 20px 0", flex: 1, display: "flex", flexDirection: "column" }}>
-
-          {/* Header row: code tag + question count + badge */}
-          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
-            <span style={{
-              background: course.bg, color: course.color,
-              fontSize: 10, fontWeight: 700, padding: "3px 9px", borderRadius: 6,
-              letterSpacing: "0.06em", textTransform: "uppercase", flexShrink: 0,
-            }}>
-              {course.code}
-            </span>
-            <span style={{ fontSize: 11, color: "#94A3B8", flexShrink: 0 }}>{course.duration}</span>
-            <span style={{ flex: 1 }} />
-            <span style={{
-              fontSize: 11, fontWeight: 600, color: course.color,
-              background: course.bg, borderRadius: 6, padding: "2px 8px", flexShrink: 0,
-            }}>
-              {course.questions} Q
-            </span>
-            {course.badge && (
-              <span style={{
-                background: course.badgeColor, color: "#fff",
-                fontSize: 9, fontWeight: 700, padding: "3px 8px", borderRadius: 20,
-                letterSpacing: "0.05em", textTransform: "uppercase", flexShrink: 0,
-              }}>
-                {course.badge}
-              </span>
-            )}
-          </div>
-
-          {/* Title + subtitle */}
-          <h3 style={{ fontSize: 17, fontWeight: 800, color: "#0F172A", margin: "0 0 3px", fontFamily: "Sora, sans-serif", lineHeight: 1.3 }}>
-            {course.title}
-          </h3>
-          <p style={{ fontSize: 12, color: course.color, fontWeight: 600, margin: "0 0 10px" }}>{course.subtitle}</p>
-
-          {/* Description */}
-          <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.6, margin: "0 0 14px" }}>{course.description}</p>
-
-          {/* Topic pills */}
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginBottom: 16 }}>
-            {course.topics.map(t => (
-              <span key={t} style={{
-                fontSize: 11, color: course.color, background: course.bg,
-                borderRadius: 20, padding: "3px 9px", fontWeight: 500,
-              }}>{t}</span>
-            ))}
-          </div>
-
-          {/* Spacer pushes CTA to bottom */}
-          <div style={{ flex: 1 }} />
-
-          {/* Subscription line */}
-          {(course as any).productKey && (
-            <div style={{
-              display: "flex", alignItems: "center", justifyContent: "space-between",
-              borderTop: "1px solid #F1F5F9", paddingTop: 12, marginBottom: 12,
-            }}>
-              <div>
-                <span style={{ fontSize: 12, fontWeight: 700, color: "#1D4ED8" }}>Included with Exam Pass</span>
-                <span style={{ fontSize: 11, color: "#94A3B8", display: "block", marginTop: 1 }}>{passPriceLabel}</span>
-              </div>
-              {!course.comingSoon && (
-                <span style={{
-                  fontSize: 11, fontWeight: 600, color: "#15803D",
-                  background: "#F0FDF4", border: "1px solid #86EFAC",
-                  borderRadius: 6, padding: "3px 8px",
-                }}>15 free ✓</span>
-              )}
-            </div>
-          )}
-        </div>
-
-        {/* CTA footer */}
-        <div style={{ padding: "0 20px 20px" }}>
-          {course.comingSoon ? (
-            <button
-              onClick={() => setNotifyOpen(true)}
-              style={{
-                width: "100%", padding: "12px",
-                background: "linear-gradient(135deg, #7C3AED, #6D28D9)",
-                color: "#fff", border: "none", borderRadius: 10,
-                fontSize: 13, fontWeight: 700, cursor: "pointer",
-                fontFamily: "inherit",
-              }}
-            >
-              🔔 Notify Me When Available
-            </button>
-          ) : (
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              <Link onClick={recordCourseSelection} href={courseProvinceHref(quizHref, (course as any).productKey, isWpiCourse ? province : "ON")} className="btn-pulse" style={{ display: "block", width: "100%", padding: "12px", background: course.color, color: "#fff", borderRadius: 10, fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
-                Start Studying →
-              </Link>
-              {(course as any).productKey && (
-                <Link onClick={recordCourseSelection} href={pricingHref} style={{ display: "block", width: "100%", padding: "9px", background: "transparent", color: "#64748B", border: "1px solid #E2E8F0", borderRadius: 10, fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center", boxSizing: "border-box" }}>
-                  View Plans →
-                </Link>
-              )}
-            </div>
-          )}
-        </div>
-      </div>
-
-      {notifyOpen && (
-        <NotifyModal
-          courseCode={course.code}
-          courseTitle={course.title}
-          onClose={() => setNotifyOpen(false)}
-        />
-      )}
-    </>
-  );
-}
-
 export default function Landing() {
-  const { region: geoRegion, isUS } = useGeoRegion();
+  const { isUS } = useGeoRegion();
   usePageMeta({
     title: "Water & Wastewater Operator Exam Prep",
     description: isUS
-      ? "Exam prep for US water & wastewater operators. 18,000+ practice questions, AI tutor, mock exams, and process guides. WPI exam prep for all 4 streams."
-      : "Canada's exam prep for water & wastewater operators. Try 15 OIT practice questions, 50 flashcards, 30 mock questions, and three AI Tutor messages free.",
+      ? "Exam preparation for US water and wastewater operators. Practice questions, worked calculations, timed mock exams and study tools."
+      : "Water and wastewater operator exam preparation. Start with 15 free questions and choose the certification path that fits your province and level.",
     keywords: "water operator exam prep, OIT exam, wastewater certification, operator practice questions, WPI exam prep, water quality analyst, ABC certification",
     path: "/",
   });
   useStructuredData(landingPageSchemas);
-  const { province: storedProvince, provinceInfo, showPrompt, setProvince, dismiss } = useProvince();
+
+  const { province: storedProvince, showPrompt, setProvince, dismiss } = useProvince();
   const search = useSearch();
   const routeProvince = new URLSearchParams(search).get("province")?.toLowerCase();
-  const province: ProvinceId | null = routeProvince === "on" || routeProvince === "bc" || routeProvince === "ab" || routeProvince === "sk" || routeProvince === "mb" || routeProvince === "ns"
-    ? routeProvince
-    : storedProvince;
+  const province: ProvinceId | null = routeProvince === "on" || routeProvince === "bc" || routeProvince === "ab" || routeProvince === "sk" || routeProvince === "mb" || routeProvince === "ns" ? routeProvince : storedProvince;
   const { isAuthenticated } = useAuth();
   const dashboardMe = trpc.dashboardAuth.me.useQuery(undefined, { retry: false, staleTime: 5 * 60 * 1000 });
-  const utils = trpc.useUtils();
-  // User is signed in if either OAuth or email OTP session is active
-  const isSignedIn = isAuthenticated || !!dashboardMe.data?.email;
-
   const updateProvinceMutation = trpc.auth.updateProvince.useMutation();
-  // Homepage always defaults to Ontario Water/OIT regardless of stored province or referrer.
-  // WPI is accessible via explicit tab selection only — it is not the default.
-  const validTracks = ["water", "wastewater", "wqa", "wpi-water", "wpi-wastewater", "wpi-dist", "wpi-coll", "ontario-dist", "ontario-coll"] as const;
-  // Top-level tab: 'wpi' is the parent for all 4 WPI sub-tracks
-  type TopTab = "water" | "wastewater" | "wqa" | "wpi";
-  type WpiSubTab = "wpi-water" | "wpi-wastewater" | "wpi-dist" | "wpi-coll";
-  type OntarioSubTab = "water" | "ontario-dist" | "wastewater" | "ontario-coll";
-  type Track = typeof validTracks[number];
-  const [activeTrack, setActiveTrackRaw] = useState<Track>(() => province === "ns" ? "wpi-water" : "water");
-  const setActiveTrack = (track: Track) => {
-    setActiveTrackRaw(track);
-    // Do NOT write the track to the URL hash — doing so causes the wrong
-    // track to show on refresh or back-navigation.
-  };
-  // Derive top-level tab from active track
-  const isWpiTrack = (t: Track): t is WpiSubTab => t.startsWith("wpi-");
-  const isOntarioDistTrack = (t: Track) => t === "ontario-dist";
-  const isOntarioCollTrack = (t: Track) => t === "ontario-coll";
-  const activeTopTab: TopTab = isWpiTrack(activeTrack) ? "wpi" : (activeTrack === "ontario-dist" ? "water" : activeTrack === "ontario-coll" ? "wastewater" : (activeTrack as TopTab));
-  // WPI sub-tab: default to wpi-water when entering WPI parent tab
-  const activeWpiSub: WpiSubTab = isWpiTrack(activeTrack) ? activeTrack : "wpi-water";
+  const isSignedIn = isAuthenticated || !!dashboardMe.data?.email;
+  const [showOitPreviewChoice, setShowOitPreviewChoice] = useState(false);
+  const [nationalWaitlistOpen, setNationalWaitlistOpen] = useState(false);
+  const previewTriggerRef = useRef<HTMLButtonElement>(null);
+
   useEffect(() => {
-    if (province === "ns" && !isWpiTrack(activeTrack)) setActiveTrack("wpi-water");
-  }, [activeTrack, province]);
-  const handleTopTab = (tab: TopTab) => {
-    if (province === "ns" && tab !== "wpi") {
-      setActiveTrack("wpi-water");
+    const encodedFragment = window.location.hash.slice(1);
+    if (!encodedFragment) return;
+    let fragment: string;
+    try {
+      fragment = decodeURIComponent(encodedFragment);
+    } catch {
       return;
     }
-    if (tab === "wpi") {
-      setActiveTrack(activeWpiSub);
-    } else if (tab === "water") {
-      // If currently on ontario-dist, stay on ontario-dist; otherwise go to water
-      if (activeTrack !== "ontario-dist") setActiveTrack("water");
-    } else if (tab === "wastewater") {
-      // If currently on ontario-coll, stay on ontario-coll; otherwise go to wastewater
-      if (activeTrack !== "ontario-coll") setActiveTrack("wastewater");
-    } else {
-      setActiveTrack(tab as Track);
-    }
-  };
-  const [nationalWaitlistOpen, setNationalWaitlistOpen] = useState(false);
-  const [nationalWaitlistProvince, setNationalWaitlistProvince] = useState("");
-  const [showOitPreviewChoice, setShowOitPreviewChoice] = useState(false);
+    const target = document.getElementById(fragment);
+    if (!target) return;
+    requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
+  }, []);
 
   const handleProvinceSelect = (id: ProvinceId) => {
     setProvince(id);
-    // Persist to DB if logged in
-    if (isAuthenticated) {
-      updateProvinceMutation.mutate({ province: id });
-    }
-    // Switch track to match province
-    if (id === "bc" || id === "ab" || id === "sk" || id === "mb" || id === "ns") {
-      setActiveTrack("wpi-water");
-    } else {
-      setActiveTrack("water");
-    }
+    if (isAuthenticated) updateProvinceMutation.mutate({ province: id });
+  };
+
+  const closePreviewChoice = () => {
+    setShowOitPreviewChoice(false);
+    requestAnimationFrame(() => previewTriggerRef.current?.focus());
   };
 
   return (
-    <div className="marketing-workspace" style={{ minHeight: "100vh" }}>
-      {nationalWaitlistOpen && (
-        <NationalWaitlistModal
-          defaultProvince={nationalWaitlistProvince}
-          onClose={() => { setNationalWaitlistOpen(false); setNationalWaitlistProvince(""); }}
-        />
-      )}
-      <style>{`
-        @media (max-width: 640px) {
-          .landing-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
-          .landing-track-toggle { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; width: 100% !important; flex-direction: unset !important; }
-          .landing-track-toggle button { width: 100% !important; text-align: center; }
-          .landing-footer-links { flex-wrap: wrap !important; gap: 12px !important; justify-content: center !important; }
-          .landing-hero-btns { flex-direction: column !important; align-items: stretch !important; }
-          .landing-hero-btns a, .landing-hero-btns button { width: 100% !important; box-sizing: border-box; }
-          .landing-wpi-secondary-btns { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; width: 100% !important; }
-          .landing-wpi-secondary-btns a { width: 100% !important; }
-          .landing-wpi-secondary-btns button { width: 100% !important; font-size: 12px !important; padding: 10px 8px !important; }
-          .landing-tools-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
-          .landing-tools-grid .tool-card-desc { display: none !important; }
-          .landing-tools-grid .tool-card-inner { padding: 16px 14px !important; }
-          .landing-tools-grid .tool-card-icon { width: 36px !important; height: 36px !important; font-size: 18px !important; margin-bottom: 10px !important; border-radius: 8px !important; }
-          .landing-tools-grid h3 { font-size: 13px !important; margin-bottom: 4px !important; }
-          .landing-tools-grid .tool-card-cta { font-size: 10px !important; }
-          .landing-course-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
-          .landing-track-toggle { gap: 4px !important; }
-          .landing-track-toggle button { font-size: 11px !important; padding: 8px 10px !important; }
-          .landing-session-complete-pad { padding: 32px 20px !important; }
-          .contact-grid { grid-template-columns: 1fr !important; }
-          .contact-info-row { flex-direction: row !important; flex-wrap: wrap !important; gap: 12px !important; }
-          .contact-info-card { flex: 1 1 140px !important; }
-          .contact-form-grid { grid-template-columns: 1fr !important; }
-          .landing-teams-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-          .landing-course-section { padding: 48px 16px !important; }
-          .landing-hero-reveal { opacity: 0; transform: translate3d(0, 16px, 0); animation: landingHeroReveal 420ms cubic-bezier(0.23, 1, 0.32, 1) forwards; }
-          .landing-hero-reveal-1 { animation-delay: 80ms; }
-          .landing-hero-reveal-2 { animation-delay: 150ms; }
-          .landing-hero-reveal-3 { animation-delay: 220ms; }
-          .landing-hero-reveal-4 { animation-delay: 300ms; }
-          @keyframes landingHeroReveal { to { opacity: 1; transform: translate3d(0, 0, 0); } }
-          @media (prefers-reduced-motion: reduce) { .landing-hero-reveal { opacity: 1; transform: none; animation: none; } }
-          .landing-province-banner { padding: 10px 12px !important; }
-          .landing-province-banner button { font-size: 11px !important; padding: 5px 8px !important; }
-        }
-      `}</style>
+    <div className="echelon-homepage">
+      {nationalWaitlistOpen && <NationalWaitlistModal defaultProvince="" onClose={() => setNationalWaitlistOpen(false)} />}
+      <LandingNav
+        isAuthenticated={isSignedIn}
+        currentPath="/"
+        rightSlot={<a className="homepage-get-started" href="#find-course">Get started <ArrowRight size={14} aria-hidden="true" /></a>}
+      />
+      {showPrompt && <ProvinceBanner onSelect={handleProvinceSelect} onDismiss={dismiss} />}
 
-      {/* ── Navigation ── */}
-      <LandingNav isAuthenticated={isSignedIn} currentPath="/" />
-      {/* Province Banner — shown on first visit */}
-      {showPrompt && (
-        <ProvinceBanner onSelect={handleProvinceSelect} onDismiss={dismiss} />
-      )}
-
-      {/* ── Hero ── */}
-      <section className="landing-hero-section">
-        <CoursePathHero>
-          {/* Hero CTA — visitors choose Water or Wastewater before starting the free OIT preview */}
-          <div
-            className="landing-hero-btns landing-hero-reveal landing-hero-reveal-3" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
-            <button
-              type="button"
-              className="landing-oit-secondary"
-              aria-expanded={showOitPreviewChoice}
-              aria-controls="oit-preview-choice"
-              onClick={() => setShowOitPreviewChoice(open => !open)}
-              style={{
-                padding: "13px 30px", borderRadius: 10,
-                background: "linear-gradient(135deg, #2563EB, #0E7490)",
-                color: "#fff", border: "none", fontSize: 15, fontWeight: 700,
-                cursor: "pointer", fontFamily: "inherit",
-                boxShadow: "0 4px 24px rgba(37,99,235,0.4)",
-              }}
-            >
-              Try 15 OIT Questions Free →
-            </button>
-
-            {showOitPreviewChoice && (
-              <div
-                id="oit-preview-choice"
-                aria-label="Choose an OIT practice preview"
-                style={{
-                  width: "min(100%, 430px)",
-                  background: "rgba(15, 23, 42, 0.72)",
-                  border: "1px solid rgba(255,255,255,0.18)",
-                  borderRadius: 14,
-                  padding: "14px",
-                  boxShadow: "0 12px 30px rgba(2, 6, 23, 0.28)",
-                }}
-              >
-                <p style={{ margin: "0 0 11px", color: "#fff", fontSize: 14, fontWeight: 700 }}>
-                  Which OIT exam would you like to preview?
-                </p>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 9 }}>
-                  <Link
-                    href="/quiz"
-                    style={{
-                      display: "block", padding: "12px 11px", borderRadius: 10,
-                      background: "#FFFFFF", color: "#1D4ED8", textDecoration: "none",
-                      fontSize: 14, fontWeight: 800, lineHeight: 1.25, textAlign: "left",
-                    }}
-                  >
-                    <span style={{ display: "block" }}>Water OIT</span>
-                    <span style={{ display: "block", marginTop: 3, fontSize: 11, color: "#0E7490", fontWeight: 700 }}>Recommended</span>
-                  </Link>
-                  <Link
-                    href="/oit-ww"
-                    style={{
-                      display: "block", padding: "12px 11px", borderRadius: 10,
-                      background: "rgba(255,255,255,0.10)", color: "#FFFFFF", textDecoration: "none",
-                      border: "1px solid rgba(255,255,255,0.28)",
-                      fontSize: 14, fontWeight: 800, lineHeight: 1.25, textAlign: "left",
-                    }}
-                  >
-                    <span style={{ display: "block" }}>Wastewater OIT</span>
-                    <span style={{ display: "block", marginTop: 3, fontSize: 11, color: "rgba(255,255,255,0.72)", fontWeight: 600 }}>Start free</span>
-                  </Link>
-                </div>
+      <main>
+        <section className="homepage-hero" aria-labelledby="homepage-hero-title">
+          <div className="homepage-hero-copy">
+            <CoursePathHero>
+              <div className="homepage-hero-actions">
+                <a className="homepage-primary-button" href="#find-course">Find your course <ArrowRight size={18} aria-hidden="true" /></a>
+                <button ref={previewTriggerRef} type="button" className="homepage-secondary-button" aria-expanded={showOitPreviewChoice} aria-controls="oit-preview-choice" onClick={() => setShowOitPreviewChoice((value) => !value)}>
+                  <Play size={16} fill="currentColor" aria-hidden="true" /> Try 15 free questions
+                </button>
               </div>
-            )}
+              <p className="homepage-hero-note">Choose your province, system and level. No account required to start the free preview.</p>
+              <p className="homepage-preview-inclusions">Free OIT preview includes 15 practice questions, 50 flashcards, 30 mock questions and 3 AI Tutor messages.</p>
+              {showOitPreviewChoice && <PreviewChoice onClose={closePreviewChoice} />}
+            </CoursePathHero>
           </div>
-          <p
-            className="landing-free-preview-note"
-            style={{ textAlign: "center", fontSize: 12, color: "rgba(255,255,255,0.7)", margin: "8px 0 0", fontWeight: 500 }}
-          >
-            🎁 Free OIT taste: 15 practice questions, 50 flashcards, 30 mock questions, and 3 AI Tutor messages
-          </p>
-        </CoursePathHero>
-      </section>
-      <div id="find-course" className="course-finder-container">
-        <CourseFinder initialProvince={province} />
-      </div>
+          <StudyWorkspacePreview />
+        </section>
 
-      {/* ── Course Catalogue ── */}
-      <section id="courses" className="landing-course-section" style={{ padding: "72px 24px", maxWidth: 1200, margin: "0 auto" }}>
-        <FadeUp>
-        <div style={{ textAlign: "center", marginBottom: 48 }}>
-          <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 800, color: "#0F172A", letterSpacing: "-0.02em", margin: "0 0 12px 0" }}>
-            {province === "ns" ? "Nova Scotia exam preparation" : "Browse all courses"}
-          </h2>
-          <p style={{ fontSize: 16, color: "#64748B", maxWidth: 620, margin: "0 auto 32px" }}>
-            {province === "ns" ? "Choose a shared WPI course that fits Nova Scotia's published standardized exam streams. Confirm your current exam version and requirements with the province." : "Explore Ontario and WPI certification courses. Each course brings practice questions, mock exams and its study tools together in one workspace."}
-          </p>
+        <section className="homepage-proof-strip" aria-label="Echelon platform facts">
+          <div><strong>39</strong><span>active course paths</span></div>
+          <div><strong>15</strong><span>free questions to try</span></div>
+          <div><strong>Canada + U.S.</strong><span>study contexts supported</span></div>
+          <div><strong>Practice to mock</strong><span>one study workspace</span></div>
+        </section>
 
-          {/* Track Tree — accordion-style vertical selector */}
-          <div style={{ maxWidth: 640, margin: "0 auto", textAlign: "left" }}>
-            {/* Ontario Water */}
-            <div style={{ marginBottom: 8 }}>
-              <button
-                onClick={() => handleTopTab("water")}
-                style={{
-                  width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between",
-                  padding: "13px 18px", borderRadius: activeTopTab === "water" ? "10px 10px 0 0" : 10,
-                  border: "2px solid", borderColor: activeTopTab === "water" ? "#1D4ED8" : "#E2E8F0",
-                  background: activeTopTab === "water" ? "#EFF6FF" : "#FAFAFA",
-                  color: activeTopTab === "water" ? "#1D4ED8" : "#374151",
-                  fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                  transition: "all 0.18s",
-                }}
-              >
-                <span>💧 Ontario Water</span>
-                <span style={{ fontSize: 12, opacity: 0.6 }}>{activeTopTab === "water" ? "▲" : "▼"}</span>
-              </button>
-              {activeTopTab === "water" && (
-                <div style={{
-                  display: "flex", gap: 0, border: "2px solid #1D4ED8", borderTop: "none",
-                  borderRadius: "0 0 10px 10px", overflow: "hidden",
-                }}>
-                  <button
-                    onClick={() => setActiveTrack("water")}
-                    style={{
-                      flex: 1, padding: "10px 16px", border: "none", borderRight: "1px solid #BFDBFE",
-                      background: activeTrack === "water" ? "#1D4ED8" : "#EFF6FF",
-                      color: activeTrack === "water" ? "#fff" : "#1D4ED8",
-                      fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                    }}
-                  >💧 Treatment</button>
-                  <button
-                    onClick={() => setActiveTrack("ontario-dist")}
-                    style={{
-                      flex: 1, padding: "10px 16px", border: "none",
-                      background: activeTrack === "ontario-dist" ? "#0369A1" : "#EFF6FF",
-                      color: activeTrack === "ontario-dist" ? "#fff" : "#0369A1",
-                      fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                    }}
-                  >🚰 Distribution & Supply</button>
-                </div>
-              )}
-            </div>
+        <section id="courses" className="homepage-finder-section" aria-label="Find your certification course">
+          <span id="find-course" className="homepage-anchor-target" aria-hidden="true" />
+          <div className="homepage-finder-intro"><span className="homepage-kicker"><MapPin size={14} aria-hidden="true" /> Course matching</span><p>Start with the exact route that fits where you write your exam.</p></div>
+          <CourseFinder initialProvince={province} />
+          <button type="button" className="homepage-waitlist-link" onClick={() => setNationalWaitlistOpen(true)}>Need a course path that is not listed? Join the update list <ArrowRight size={15} aria-hidden="true" /></button>
+        </section>
 
-            {/* Ontario Wastewater */}
-            <div style={{ marginBottom: 8 }}>
-              <button
-                onClick={() => handleTopTab("wastewater")}
-                style={{
-                  width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between",
-                  padding: "13px 18px", borderRadius: activeTopTab === "wastewater" ? "10px 10px 0 0" : 10,
-                  border: "2px solid", borderColor: activeTopTab === "wastewater" ? "#059669" : "#E2E8F0",
-                  background: activeTopTab === "wastewater" ? "#F0FDF4" : "#FAFAFA",
-                  color: activeTopTab === "wastewater" ? "#059669" : "#374151",
-                  fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                  transition: "all 0.18s",
-                }}
-              >
-                <span>♻️ Ontario Wastewater</span>
-                <span style={{ fontSize: 12, opacity: 0.6 }}>{activeTopTab === "wastewater" ? "▲" : "▼"}</span>
-              </button>
-              {activeTopTab === "wastewater" && (
-                <div style={{
-                  display: "flex", gap: 0, border: "2px solid #059669", borderTop: "none",
-                  borderRadius: "0 0 10px 10px", overflow: "hidden",
-                }}>
-                  <button
-                    onClick={() => setActiveTrack("wastewater")}
-                    style={{
-                      flex: 1, padding: "10px 16px", border: "none", borderRight: "1px solid #A7F3D0",
-                      background: activeTrack === "wastewater" ? "#059669" : "#F0FDF4",
-                      color: activeTrack === "wastewater" ? "#fff" : "#065F46",
-                      fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                    }}
-                  >♻️ Treatment</button>
-                  <button
-                    onClick={() => setActiveTrack("ontario-coll")}
-                    style={{
-                      flex: 1, padding: "10px 16px", border: "none",
-                      background: activeTrack === "ontario-coll" ? "#065F46" : "#F0FDF4",
-                      color: activeTrack === "ontario-coll" ? "#fff" : "#065F46",
-                      fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                    }}
-                  >🔩 Collection</button>
-                </div>
-              )}
-            </div>
+        <section id="tools" className="homepage-section homepage-tools-section" aria-labelledby="homepage-tools-title">
+          <div className="homepage-section-heading homepage-section-heading-left">
+            <span className="homepage-kicker">A better way to study</span>
+            <h2 id="homepage-tools-title">The tools that turn preparation into a routine.</h2>
+            <p>Work through questions, calculations and exam conditions with the same course context carried through each study mode.</p>
+          </div>
+          <div className="homepage-tool-grid">
+            <ToolCard icon={<BookOpen size={21} aria-hidden="true" />} title="Practice questions" description="Review course-specific questions and explanations." href="/quiz" />
+            <ToolCard icon={<Calculator size={21} aria-hidden="true" />} title="Formula library" description="Keep core operator calculations in reach." href="/formulas" />
+            <ToolCard icon={<ClipboardCheck size={21} aria-hidden="true" />} title="Mock exams" description="Build confidence under timed conditions." href="/oit-mock" />
+            <ToolCard icon={<MessageSquareText size={21} aria-hidden="true" />} title="Study guides" description="Connect concepts to process and equipment." href="/guides" />
+          </div>
+        </section>
 
-            {/* WQA */}
-            <div style={{ marginBottom: 8 }}>
-              <button
-                onClick={() => handleTopTab("wqa")}
-                style={{
-                  width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between",
-                  padding: "13px 18px", borderRadius: 10,
-                  border: "2px solid", borderColor: activeTopTab === "wqa" ? "#7C3AED" : "#E2E8F0",
-                  background: activeTopTab === "wqa" ? "#F5F3FF" : "#FAFAFA",
-                  color: activeTopTab === "wqa" ? "#7C3AED" : "#374151",
-                  fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                  transition: "all 0.18s",
-                }}
-              >
-                <span>🔬 Water Quality Analyst (WQA)</span>
-                <span style={{ fontSize: 12, opacity: 0.6 }}>{activeTopTab === "wqa" ? "●" : "▼"}</span>
-              </button>
-            </div>
+        <section id="teams" className="homepage-team-section" aria-labelledby="homepage-team-title">
+          <div className="homepage-team-content">
+            <span className="homepage-kicker">For utilities and employers</span>
+            <h2 id="homepage-team-title">Keep operator learning visible without making training harder to manage.</h2>
+            <p>Teams can give operators structured preparation while managers have a clear view of assigned learning and readiness.</p>
+            <Link href="/teams" className="homepage-primary-button">Explore team training <ArrowRight size={17} aria-hidden="true" /></Link>
+          </div>
+          <div className="homepage-team-preview" aria-label="Illustrative team training overview">
+            <div><span>Team training overview</span><small>Illustrative preview</small></div>
+            <dl><div><dt>Assigned operators</dt><dd>8 / 10</dd></div><div><dt>Active this week</dt><dd>6</dd></div><div><dt>Study plans in progress</dt><dd>5</dd></div></dl>
+            <p><Check size={15} aria-hidden="true" /> Course-specific learning paths for each assigned operator.</p>
+          </div>
+        </section>
 
-            {/* WPI */}
-            <div style={{ marginBottom: 8 }}>
-              <button
-                onClick={() => handleTopTab("wpi")}
-                style={{
-                  width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between",
-                  padding: "13px 18px", borderRadius: activeTopTab === "wpi" ? "10px 10px 0 0" : 10,
-                  border: "2px solid", borderColor: activeTopTab === "wpi" ? "#0369A1" : "#E2E8F0",
-                  background: activeTopTab === "wpi" ? "#F0F9FF" : "#FAFAFA",
-                  color: activeTopTab === "wpi" ? "#0369A1" : "#374151",
-                  fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                  transition: "all 0.18s",
-                }}
-              >
-                <span>{province === "ns" ? "🌊 Nova Scotia shared WPI preparation" : "🌐 WPI (BC, AB, SK, MB)"}</span>
-                <span style={{ fontSize: 12, opacity: 0.6 }}>{activeTopTab === "wpi" ? "▲" : "▼"}</span>
-              </button>
-              {activeTopTab === "wpi" && (
-                <div style={{
-                  display: "flex", gap: 0, border: "2px solid #0369A1", borderTop: "none",
-                  borderRadius: "0 0 10px 10px", overflow: "hidden",
-                }}>
-                  {([
-                    { id: "wpi-water" as WpiSubTab, label: "🏔️ Water", activeColor: "#0369A1", hoverBg: "#F0F9FF", hoverColor: "#0369A1" },
-                    { id: "wpi-wastewater" as WpiSubTab, label: "🌿 Wastewater", activeColor: "#B45309", hoverBg: "#F0F9FF", hoverColor: "#B45309" },
-                    { id: "wpi-dist" as WpiSubTab, label: "🚰 Distribution", activeColor: "#0369A1", hoverBg: "#F0F9FF", hoverColor: "#0369A1" },
-                    { id: "wpi-coll" as WpiSubTab, label: "🔩 Collection", activeColor: "#065F46", hoverBg: "#F0F9FF", hoverColor: "#065F46" },
-                  ] as const).map((sub, i, arr) => (
-                    <button
-                      key={sub.id}
-                      onClick={() => setActiveTrack(sub.id)}
-                      style={{
-                        flex: 1, padding: "10px 8px", border: "none",
-                        borderRight: i < arr.length - 1 ? "1px solid #BAE6FD" : "none",
-                        background: activeWpiSub === sub.id ? sub.activeColor : "#F0F9FF",
-                        color: activeWpiSub === sub.id ? "#fff" : sub.hoverColor,
-                        fontSize: 12, fontWeight: 700, cursor: "pointer", fontFamily: "inherit",
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      {sub.label}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
+        <section id="faq" className="homepage-section homepage-faq-section" aria-labelledby="homepage-faq-title">
+          <div className="homepage-section-heading"><span className="homepage-kicker">Before you start</span><h2 id="homepage-faq-title">A few useful answers.</h2></div>
+          <div className="homepage-faq-list">
+            <FaqItem question="Can I try a course before I buy?" answer="Yes. Start from the homepage to try a free practice preview before you decide on course access." />
+            <FaqItem question="How does course access work?" answer="Individuals purchase a twelve-month Exam Pass for one selected certification course after successful payment. Teams have separate access options for assigned operators." />
+            <FaqItem question="Do the questions match the real exam?" answer="The question banks are designed around relevant exam blueprints and reviewed through Echelon's content-quality process. Echelon is an independent preparation provider; confirm current requirements with your certifying authority." />
+            <FaqItem question="What is included in a course?" answer="Course inclusions and question totals vary. The pricing page lists the current question count, access term and study tools before checkout." />
+            <FaqItem question="Can I get a refund?" answer={`${INDIVIDUAL_REFUND_SUMMARY} Email ${REFUND_CONTACT_EMAIL} with your purchase email and Stripe receipt.`} />
+          </div>
+        </section>
+
+        <BlogPreviewSection />
+        <ContactSection />
+      </main>
+
+      <footer className="homepage-footer">
+        <div className="homepage-footer-main">
+          <div className="homepage-footer-brand"><span className="homepage-footer-mark">E</span><div><strong>Echelon Institute</strong><p>Operator certification preparation for water and wastewater professionals.</p></div></div>
+          <div className="homepage-footer-links">
+            <div><strong>Explore</strong><Link href="/#find-course">Find your course</Link><Link href="/guides">Study guides</Link><Link href="/formulas">Formula library</Link></div>
+            <div><strong>Teams</strong><Link href="/teams">Team training</Link><Link href="/partnerships">Partnerships</Link><Link href="/jobs">Jobs</Link></div>
+            <div><strong>Support</strong><Link href="/about">About Echelon</Link><Link href="/refund">Refund policy</Link><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></div>
           </div>
         </div>
-        </FadeUp>
-
-        <div className="landing-course-grid" style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-          gap: 24,
-        }}>
-          {(activeTrack === "water" ? WATER_COURSES : activeTrack === "wastewater" ? WASTEWATER_COURSES : activeTrack === "ontario-dist" ? ONTARIO_WATER_DIST_COURSES : activeTrack === "ontario-coll" ? ONTARIO_WASTEWATER_COLL_COURSES : activeTrack === "wpi-water" ? WPI_WATER_COURSES : activeTrack === "wpi-wastewater" ? WPI_WASTEWATER_COURSES : activeTrack === "wpi-dist" ? WPI_WATER_DIST_COURSES : activeTrack === "wpi-coll" ? WPI_WATER_COLL_COURSES : WQA_COURSES).filter(course => province !== "ns" || isNovaScotiaCourseSupported(course.productKey)).map(course => (
-            <CourseCard key={course.code} course={course} province={province} />
-          ))}
-        </div>
-      </section>
-
-      {/* ── Study Tools Feature Section ── */}
-      <section id="tools" style={{
-        background: "#0F172A",
-        padding: "72px 24px",
-      }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <FadeUp>
-          <div style={{ textAlign: "center", marginBottom: 52 }}>
-            <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.02em", margin: "0 0 12px 0" }}>
-              Every Tool You Need to Pass
-            </h2>
-            <p style={{ fontSize: 16, color: "rgba(255,255,255,0.6)", maxWidth: 500, margin: "0 auto" }}>
-              Built specifically for Canadian operator exams — not generic quiz apps repurposed for water treatment.
-            </p>
-          </div>
-          </FadeUp>
-
-          <StaggerContainer>
-          <div className="landing-tools-grid" style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-            gap: 20,
-          }}>
-            {FEATURES.map(f => (
-              <StaggerItem key={f.title}>
-              <Link key={f.title} href={f.href}>
-                <div className="tool-card-inner" style={{
-                  background: "rgba(255,255,255,0.05)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  borderRadius: 16, padding: "28px 24px",
-                  transition: "background 0.2s, transform 0.15s, box-shadow 0.15s",
-                  cursor: "pointer",
-                  height: "100%",
-                }}
-                  onMouseEnter={e => {
-                    (e.currentTarget as HTMLDivElement).style.background = "rgba(255,255,255,0.10)";
-                    (e.currentTarget as HTMLDivElement).style.transform = "translateY(-3px)";
-                    (e.currentTarget as HTMLDivElement).style.boxShadow = `0 8px 28px ${f.color}30`;
-                  }}
-                  onMouseLeave={e => {
-                    (e.currentTarget as HTMLDivElement).style.background = "rgba(255,255,255,0.05)";
-                    (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
-                    (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
-                  }}
-                >
-                  <div className="tool-card-icon" style={{
-                    width: 48, height: 48, borderRadius: 12,
-                    background: `${f.color}22`,
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    fontSize: 24, marginBottom: 16,
-                  }}>
-                    {f.icon}
-                  </div>
-                  <h3 style={{ fontSize: 16, fontWeight: 700, color: "#FFFFFF", margin: "0 0 8px 0" }}>{f.title}</h3>
-                  <p className="tool-card-desc" style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", lineHeight: 1.6, margin: "0 0 14px 0" }}>{f.description}</p>
-                  <div className="tool-card-cta" style={{ fontSize: 11, fontWeight: 700, color: f.color }}>Open →</div>
-                </div>
-              </Link>
-              </StaggerItem>
-            ))}
-          </div>
-          </StaggerContainer>
-        </div>
-      </section>
-
-      {/* ── About Section (teaser — links to /about for full content) ── */}
-      <section id="about" style={{ background: "#0F172A", padding: "72px 24px", scrollMarginTop: 80 }}>
-        <div style={{ maxWidth: 860, margin: "0 auto" }}>
-
-          {/* Teaser Header */}
-          <FadeUp>
-          <div style={{ textAlign: "center", marginBottom: 40 }}>
-            <div style={{
-              display: "inline-block",
-              background: "rgba(96,165,250,0.12)",
-              border: "1px solid rgba(96,165,250,0.25)",
-              borderRadius: 20,
-              padding: "5px 14px",
-              fontSize: 11,
-              fontWeight: 700,
-              color: "#60A5FA",
-              letterSpacing: "0.08em",
-              textTransform: "uppercase" as const,
-              marginBottom: 18,
-            }}>About Echelon Institute</div>
-            <h2 style={{ fontSize: "clamp(22px, 4vw, 36px)", fontWeight: 900, color: "#FFFFFF", margin: "0 0 16px", letterSpacing: "-0.02em" }}>
-              Built by an Engineer<br />Who Knows What's Missing
-            </h2>
-            <p style={{ fontSize: 15, color: "rgba(255,255,255,0.6)", maxWidth: 620, margin: "0 auto 32px", lineHeight: 1.75 }}>
-              Echelon Institute was built by an Environmental Engineer (EIT) who saw first-hand that Canada's water and wastewater operators were studying for technically demanding provincial exams with resources that hadn't evolved in decades. Every question is mapped to each province's regulatory framework. Every module is built for understanding, not memorization.
-            </p>
-            <Link href="/about" style={{ display: "inline-block", padding: "12px 28px", borderRadius: 10, border: "1.5px solid rgba(96,165,250,0.4)", background: "rgba(96,165,250,0.08)", color: "#60A5FA", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", letterSpacing: "0.01em", textDecoration: "none" }}>
-              Read our full story, values &amp; changelog →
-            </Link>
-          </div>
-          </FadeUp>
-
-
-        </div>
-      </section>
-
-      {/* ── Coming Soon: BC & Alberta ── */}
-      <section style={{
-        background: "#0F172A",
-        borderTop: "1px solid rgba(255,255,255,0.06)",
-        padding: "72px 24px",
-      }}>
-        <div style={{ maxWidth: 1060, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }}>
-
-          {/* Left — heading + stats + CTA */}
-          <div>
-            <div style={{
-              display: "inline-flex", alignItems: "center", gap: 8,
-              background: "rgba(52,211,153,0.12)",
-              border: "1px solid rgba(52,211,153,0.3)",
-              borderRadius: 20, padding: "5px 16px", marginBottom: 20,
-            }}>
-              <span style={{ fontSize: 11, fontWeight: 700, color: "#34D399", letterSpacing: "0.08em", textTransform: "uppercase" as const }}>✓ Nova Scotia Now Available</span>
-            </div>
-            <h2 style={{ fontSize: "clamp(24px, 3vw, 38px)", fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.02em", margin: "0 0 16px 0", lineHeight: 1.2 }}>
-              WPI Exam Prep<br />Now Available in {WPI_PROVINCE_COUNT} Provinces
-            </h2>
-            <p style={{ fontSize: 15, color: "rgba(255,255,255,0.55)", lineHeight: 1.7, margin: "0 0 28px 0" }}>
-              Over 8,000 questions across 16 WPI courses — Class I–IV Water and Class I–IV Wastewater — aligned with the WPI Need-to-Know Criteria.
-            </p>
-            <div style={{ display: "flex", gap: 28, marginBottom: 32 }}>
-              <div>
-                <div style={{ fontSize: 26, fontWeight: 800, color: "#FFFFFF" }}>8,000+</div>
-                <div style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", marginTop: 2 }}>Practice questions</div>
-              </div>
-              <div style={{ width: 1, background: "rgba(255,255,255,0.1)" }} />
-              <div>
-                <div style={{ fontSize: 26, fontWeight: 800, color: "#FFFFFF" }}>16</div>
-                <div style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", marginTop: 2 }}>WPI courses</div>
-              </div>
-              <div style={{ width: 1, background: "rgba(255,255,255,0.1)" }} />
-              <div>
-                <div style={{ fontSize: 26, fontWeight: 800, color: "#FFFFFF" }}>{WPI_PROVINCE_COUNT}</div>
-                <div style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", marginTop: 2 }}>Provinces covered</div>
-              </div>
-            </div>
-            <a href="/wpi" style={{ display: "inline-block", textDecoration: "none", padding: "12px 28px", borderRadius: 10, background: "linear-gradient(135deg, #0891B2, #7C3AED)", color: "#fff", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 20px rgba(8,145,178,0.3)" }}>
-              Explore WPI Courses →
-            </a>
-          </div>
-
-          {/* Right — province coverage grid */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
-            {WPI_COVERAGE.map((p, index) => (
-              <div key={p.province} style={{
-                background: p.colorBg,
-                border: `1px solid ${p.colorBorder}`,
-                borderRadius: 14, padding: "20px 18px",
-                position: "relative" as const,
-                gridColumn: WPI_COVERAGE.length % 2 === 1 && index === WPI_COVERAGE.length - 1 ? "1 / -1" : undefined,
-              }}>
-                <div style={{
-                  position: "absolute" as const, top: 12, right: 12,
-                  background: "rgba(52,211,153,0.15)",
-                  borderRadius: 6, padding: "2px 8px",
-                  fontSize: 9, fontWeight: 700, color: "#34D399",
-                  letterSpacing: "0.06em", textTransform: "uppercase" as const,
-                }}>✓ Live</div>
-                <div style={{ fontSize: 24, marginBottom: 8 }}>{p.flag}</div>
-                <h3 style={{ fontSize: 14, fontWeight: 800, color: "#FFFFFF", margin: "0 0 3px 0" }}>{p.province}</h3>
-                <div style={{ fontSize: 11, fontWeight: 600, color: p.color, marginBottom: 8 }}>{p.detail}</div>
-                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.5)" }}>{p.supportingText}</div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* ── Teams / Enterprise Section ── */}
-      <FadeUp>
-      <section id="teams" style={{
-        background: "#0F172A",
-        padding: "48px 24px",
-        borderTop: "1px solid rgba(255,255,255,0.06)",
-      }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 40,
-            alignItems: "center",
-          }} className="landing-teams-grid">
-
-            {/* Left — copy */}
-            <div>
-              <div style={{
-                display: "inline-block",
-                background: "rgba(16,185,129,0.12)",
-                border: "1px solid rgba(16,185,129,0.3)",
-                borderRadius: 20,
-                padding: "5px 14px",
-                fontSize: 11,
-                fontWeight: 700,
-                color: "#10B981",
-                letterSpacing: "0.08em",
-                textTransform: "uppercase" as const,
-                marginBottom: 20,
-              }}>For Utilities & Municipalities</div>
-
-              <h2 style={{
-                fontSize: "clamp(24px, 3.5vw, 40px)",
-                fontWeight: 900,
-                color: "#FFFFFF",
-                margin: "0 0 16px 0",
-                letterSpacing: "-0.02em",
-                lineHeight: 1.15,
-              }}>
-                Train Your Entire Team<br />
-                <span style={{ color: "#7DD3FC" }}>Under One Plan</span>
-              </h2>
-
-              <p style={{
-                fontSize: 16,
-                color: "rgba(255,255,255,0.65)",
-                lineHeight: 1.75,
-                margin: "0 0 20px 0",
-                maxWidth: 480,
-              }}>
-                Give every operator on your team access to 18,000+ practice questions, AI Tutor, mock exams, and real-time study tracking — all from a single manager dashboard. Self-serve plans are available for any team size. Volume discounts begin at 10 annual operator licences.
-              </p>
-
-              {/* Benefit bullets */}
-              <div style={{ display: "flex", flexDirection: "column" as const, gap: 10, marginBottom: 24 }}>
-                {[
-                  { icon: "📊", text: "Manager dashboard — track every operator's estimated study score" },
-                  { icon: "🪑", text: "Assign operators by email and track annual licence usage" },
-                  { icon: "💰", text: "Volume discounts from 10% to 20% off" },
-                  { icon: "🇨🇦", text: "Ontario, BC, Alberta, Saskatchewan & more" },
-                ].map(b => (
-                  <div key={b.text} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
-                    <span style={{ fontSize: 18, marginTop: 1 }}>{b.icon}</span>
-                    <span style={{ fontSize: 14, color: "rgba(255,255,255,0.75)", lineHeight: 1.5 }}>{b.text}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" as const }}>
-                <Link href="/teams" style={{ display: "inline-block", padding: "14px 32px", borderRadius: 10, background: "#10B981", color: "#FFFFFF", fontSize: 15, fontWeight: 800, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 20px rgba(16,185,129,0.35)", textDecoration: "none" }}>View Team Plans →</Link>
-                <Link href="/account" style={{ display: "inline-block", padding: "14px 28px", borderRadius: 10, background: "transparent", color: "rgba(255,255,255,0.7)", border: "1.5px solid rgba(255,255,255,0.2)", fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", textDecoration: "none" }}>Manager Sign In</Link>
-              </div>
-            </div>
-
-            {/* Right — dashboard preview card */}
-            <div style={{
-              background: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(255,255,255,0.1)",
-              borderRadius: 20,
-              padding: "32px 28px",
-              boxShadow: "0 20px 60px rgba(0,0,0,0.4)",
-            }}>
-              {/* Mock dashboard header */}
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 24 }}>
-                <div>
-                  <div style={{ fontSize: 14, fontWeight: 800, color: "#FFFFFF" }}>Example Municipality</div>
-                  <div style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", marginTop: 2 }}>Illustrative dashboard · sample data</div>
-                </div>
-                <div style={{
-                  background: "rgba(16,185,129,0.15)",
-                  border: "1px solid rgba(16,185,129,0.3)",
-                  borderRadius: 20,
-                  padding: "4px 10px",
-                  fontSize: 11,
-                  fontWeight: 700,
-                  color: "#10B981",
-                }}>Demo</div>
-              </div>
-
-              {/* Mock stat cards */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 20 }}>
-                {[
-                  { label: "Seats Assigned", value: "8 / 10", sub: "2 available" },
-                  { label: "Active This Week", value: "6", sub: "of 8 operators" },
-                  { label: "Avg Readiness", value: "71%", sub: "across all operators", highlight: true },
-                  { label: "Approaching Ready", value: "5", sub: "≥75% accuracy" },
-                ].map(s => (
-                  <div key={s.label} style={{
-                    background: "rgba(255,255,255,0.05)",
-                    borderRadius: 12,
-                    padding: "14px 16px",
-                  }}>
-                    <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", fontWeight: 600, textTransform: "uppercase" as const, letterSpacing: "0.06em", marginBottom: 6 }}>{s.label}</div>
-                    <div style={{ fontSize: 22, fontWeight: 800, color: s.highlight ? "#10B981" : "#FFFFFF", lineHeight: 1 }}>{s.value}</div>
-                    <div style={{ fontSize: 10, color: "rgba(255,255,255,0.4)", marginTop: 4 }}>{s.sub}</div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Mock operator rows */}
-              <div style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.06em", marginBottom: 10 }}>Operator Roster</div>
-              {[
-                { name: "Operator A", acc: "81%", status: "Approaching Ready", color: "#10B981" },
-                { name: "Operator B", acc: "68%", status: "Needs Focus", color: "#F59E0B" },
-                { name: "Operator C", acc: "—", status: "Not Started", color: "rgba(255,255,255,0.3)" },
-              ].map(op => (
-                <div key={op.name} style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  padding: "10px 0",
-                  borderBottom: "1px solid rgba(255,255,255,0.06)",
-                }}>
-                  <div style={{ fontSize: 13, color: "rgba(255,255,255,0.8)", fontWeight: 600 }}>{op.name}</div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                    <span style={{ fontSize: 13, fontWeight: 700, color: op.color }}>{op.acc}</span>
-                    <span style={{
-                      fontSize: 10,
-                      fontWeight: 700,
-                      color: op.color,
-                      background: `${op.color}18`,
-                      borderRadius: 20,
-                      padding: "3px 8px",
-                    }}>{op.status}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-          </div>
-        </div>
-      </section>
-      </FadeUp>
-
-      {/* Testimonials remain disabled until each quote has documented provenance and consent. */}
-      {false && <>
-      {/* ── Testimonials Section ── */}
-      <section style={{ background: "#FFFFFF", padding: "80px 24px" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <FadeUp>
-          <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <div style={{ display: "inline-block", background: "#EFF6FF", color: "#1D4ED8", borderRadius: 20, padding: "4px 14px", fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 12 }}>Student Stories</div>
-            <h2 style={{ fontSize: 32, fontWeight: 900, color: "#0F172A", margin: "0 0 12px", letterSpacing: "-0.02em" }}>Operators Who Passed With Echelon</h2>
-            <p style={{ fontSize: 16, color: "#64748B", maxWidth: 520, margin: "0 auto" }}>Real feedback from water and wastewater operators across Canada.</p>
-          </div>
-          </FadeUp>
-          <div className="testimonials-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
-            {[
-              {
-                quote: "The adaptive quiz engine kept drilling me on hydraulics until I actually understood it. Passed my Class 2 Water exam on the first attempt.",
-                name: "Jordan T.",
-                role: "Class 2 Water Operator — Ontario",
-                initials: "JT",
-                color: "#1D4ED8",
-                bg: "#EFF6FF",
-              },
-              {
-                quote: "I failed the OIT twice before finding Echelon. The AI Tutor explained *why* I was getting disinfection questions wrong, not just what the answer was.",
-                name: "Priya S.",
-                role: "OIT Certified — British Columbia",
-                initials: "PS",
-                color: "#0F766E",
-                bg: "#F0FDFA",
-              },
-              {
-                quote: "The WPI formula sheets alone were worth it. I had everything I needed for the Class III exam in one place, with worked examples.",
-                name: "Marcus L.",
-                role: "WPI Class III Water — Alberta",
-                initials: "ML",
-                color: "#7C3AED",
-                bg: "#F5F3FF",
-              },
-              {
-                quote: "400+ OIT questions with difficulty levels meant I could focus on the hard stuff. The mock exam format matched the real test closely.",
-                name: "Aisha K.",
-                role: "OIT Certified — Ontario",
-                initials: "AK",
-                color: "#B45309",
-                bg: "#FFFBEB",
-              },
-              {
-                quote: "I studied for my Class 1 Wastewater on my phone during lunch breaks. The mobile layout is clean and the questions are genuinely challenging.",
-                name: "Devon R.",
-                role: "Class 1 Wastewater Operator — Ontario",
-                initials: "DR",
-                color: "#065F46",
-                bg: "#ECFDF5",
-              },
-              {
-                quote: "The WQA practice bank covered every module from the exam blueprint. I felt prepared walking in — and I passed with 84%.",
-                name: "Fatima O.",
-                role: "Water Quality Analyst — Ontario",
-                initials: "FO",
-                color: "#BE185D",
-                bg: "#FDF2F8",
-              },
-            ].map((t, i) => (
-              <div key={i} style={{
-                background: "#F8FAFC",
-                borderRadius: 16,
-                padding: "28px 24px",
-                border: "1px solid #E2E8F0",
-                display: "flex",
-                flexDirection: "column",
-                gap: 16,
-              }}>
-                {/* Stars */}
-                <div style={{ display: "flex", gap: 2 }}>
-                  {[0,1,2,3,4].map(s => (
-                    <span key={s} style={{ color: "#F59E0B", fontSize: 14 }}>★</span>
-                  ))}
-                </div>
-                {/* Quote */}
-                <p style={{ fontSize: 14, color: "#334155", lineHeight: 1.7, margin: 0, fontStyle: "italic" }}>
-                  "{t.quote}"
-                </p>
-                {/* Author */}
-                <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: "auto" }}>
-                  <div style={{
-                    width: 38, height: 38, borderRadius: "50%",
-                    background: t.bg, color: t.color,
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    fontSize: 13, fontWeight: 800, flexShrink: 0,
-                  }}>{t.initials}</div>
-                  <div>
-                    <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A" }}>{t.name}</div>
-                    <div style={{ fontSize: 11, color: "#64748B" }}>{t.role}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <style>{`
-        @media (max-width: 900px) { .testimonials-grid { grid-template-columns: repeat(2, 1fr) !important; } }
-        @media (max-width: 600px) { .testimonials-grid { grid-template-columns: 1fr !important; } }
-      `}</style>
-      </>}
-
-      {/* ── FAQ Section ── */}
-      <FadeUp>
-      <section id="faq" style={{ background: "#F8FAFC", padding: "80px 24px", borderTop: "1px solid #E2E8F0", scrollMarginTop: 80 }}>
-        <div style={{ maxWidth: 780, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <div style={{ display: "inline-block", background: "#EFF6FF", color: "#1D4ED8", borderRadius: 20, padding: "4px 14px", fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 12 }}>FAQ</div>
-            <h2 style={{ fontSize: 32, fontWeight: 900, color: "#0F172A", margin: "0 0 12px", letterSpacing: "-0.02em" }}>Frequently Asked Questions</h2>
-            <p style={{ fontSize: 16, color: "#64748B", maxWidth: 520, margin: "0 auto" }}>Everything you need to know before you start studying.</p>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
-            {[
-              {
-                q: "How does individual access work?",
-                a: "Individuals buy a 12-month Exam Pass for one selected certification course from successful payment. Utilities and municipalities can choose targeted Teams Flex licences for named operators or Teams Annual access. Existing individual subscriptions remain active under their original terms, but are no longer offered to new customers.",
-              },
-              {
-                q: "Do the practice questions match the real exam?",
-                a: "The question banks are designed around the relevant exam blueprints and reviewed through Echelon's content-quality process. Echelon is an independent exam-preparation provider; candidates should confirm the current exam requirements with their certifying authority.",
-              },
-              {
-                q: "Which provinces are supported?",
-                a: "Echelon covers all major Canadian provinces: Ontario (MOECP framework — OIT through Class 4, water and wastewater), British Columbia (EOCP / WPI), Alberta (AWWOA / WPI), Saskatchewan (SPEA / WPI), and Manitoba (WPCAM / WPI). Quebec support is in development.",
-              },
-              {
-                q: "What is included with each course?",
-                a: "Course inclusions and question totals vary. The pricing page lists the exact course term, current question count, and included learning tools before checkout.",
-              },
-              {
-                q: "How is Echelon different from free study materials?",
-                a: "Free materials give you content. Echelon gives you adaptive practice, instant AI explanations for every wrong answer, timed mock exams that simulate the real thing, and a score history that shows exactly where to focus. The difference is passing vs. re-booking.",
-              },
-              {
-                q: "Can I try it before I buy?",
-                a: "Yes. Free practice is available from the homepage so you can evaluate the question experience before purchasing.",
-              },
-              {
-                q: "What payment methods do you accept?",
-                a: "All major credit and debit cards (Visa, Mastercard, Amex) via Stripe's secure checkout. Your payment information is never stored on our servers.",
-              },
-              {
-                q: "Can I get a refund?",
-                a: `${INDIVIDUAL_REFUND_SUMMARY} Email ${REFUND_CONTACT_EMAIL} with your purchase email and Stripe receipt.`,
-              },
-            ].map((faq, i, arr) => (
-              <FaqItem key={faq.q} q={faq.q} a={faq.a} isLast={i === arr.length - 1} />
-            ))}
-          </div>
-        </div>
-      </section>
-      </FadeUp>
-
-      {/* ── From the Blog Section ── */}
-      <BlogPreviewSection />
-
-      {/* ── Contact Section ── */}
-      <ContactSection />
-
-      {/* ── Footer ── */}
-      <footer style={{
-        background: "#0F172A",
-        borderTop: "1px solid rgba(255,255,255,0.08)",
-        padding: "48px 24px 32px",
-      }}>
-        <div style={{ maxWidth: 960, margin: "0 auto" }}>
-
-          {/* Top row: brand + review button */}
-          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-start", justifyContent: "space-between", gap: 24, marginBottom: 36 }}>
-            {/* Brand */}
-            <div style={{ maxWidth: 320 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
-                <img
-                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp"
-                  alt="Echelon Institute"
-                  width={32}
-                  height={30}
-                  style={{ height: 30, width: 32, filter: "brightness(0) invert(1)" }}
-                />
-                <span style={{ fontSize: 15, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.02em" }}>Echelon Institute</span>
-              </div>
-              <p style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", margin: 0, lineHeight: 1.6 }}>
-                Canada's AI-powered exam prep platform for water and wastewater operators.
-              </p>
-            </div>
-
-            {/* Google Review CTA */}
-            <a
-              href="https://g.page/r/CWsjBbkUlS8rEBM/review"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                padding: "10px 20px",
-                borderRadius: 8,
-                background: "rgba(255,255,255,0.07)",
-                border: "1px solid rgba(255,255,255,0.15)",
-                color: "#FFF",
-                fontSize: 13,
-                fontWeight: 600,
-                textDecoration: "none",
-                cursor: "pointer",
-                whiteSpace: "nowrap",
-                alignSelf: "flex-start",
-              }}
-            >
-              <span style={{ fontSize: 15 }}>⭐</span>
-              Leave us a Google Review
-            </a>
-          </div>
-
-          {/* Link columns */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "8px 16px", marginBottom: 32 }}>
-            {[
-              { label: "Courses", links: [
-                { label: "Drinking Water", href: "/process" },
-                { label: "Wastewater", href: "/wastewater" },
-                { label: "Distribution Guide", href: "/distribution-guide" },
-                { label: "Collection Guide", href: "/collection-guide" },
-                { label: "Pumping Systems", href: "/pumping" },
-                { label: "Instrumentation", href: "/instrumentation" },
-                { label: "Lab & Sampling", href: "/lab" },
-              ]},
-              { label: "Tools", links: [
-                { label: "AI Tutor Quiz", href: "/quiz" },
-                { label: "Formula Sheet", href: "/formulas" },
-                { label: "Flashcards", href: "/oit-water-flashcards" },
-                { label: "Career Map", href: "/career" },
-              ]},
-              { label: "Resources", links: [
-                { label: "Blog", href: "/blog" },
-                { label: "Operator Salaries", href: "/blog/water-operator-salary-canada-by-province-2026" },
-                { label: "Ontario OIT Guide", href: "/blog/how-to-pass-ontario-oit-water-exam" },
-                { label: "Province Comparison", href: "/blog/canadian-water-operator-certification-by-province" },
-                { label: "Jobs", href: "/jobs" },
-                { label: "Career Map", href: "/career" },
-              ]},
-              { label: "Company", links: [
-                { label: "About", href: "/about" },
-                { label: "Pricing", href: "/pricing" },
-                { label: "Teams", href: "/teams" },
-                { label: "FAQ", href: "/#faq" },
-                { label: "Contact", href: "/#contact" },
-              ]},
-              { label: "Legal", links: [
-                { label: "Privacy & Security", href: "/privacy" },
-                { label: "Terms of Use", href: "/terms" },
-                { label: "Refund Policy", href: "/refund" },
-              ]},
-              { label: "Support", links: [
-                { label: "Restore Access", href: "/account" },
-                { label: "Email Support", href: "mailto:abello@echeloninstitute.ca" },
-              ]},
-            ].map(col => (
-              <div key={col.label}>
-                <div style={{ fontSize: 10, fontWeight: 700, color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12 }}>{col.label}</div>
-                {col.links.map(link => (
-                  <Link key={link.label} href={link.href}>
-                    <div style={{ fontSize: 13, color: "rgba(255,255,255,0.55)", cursor: "pointer", marginBottom: 8, lineHeight: 1.4 }}>
-                      {link.label}
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            ))}
-          </div>
-
-          {/* Social links */}
-          <div style={{ display: "flex", gap: 12, marginBottom: 28 }}>
-            <a
-              href="https://www.instagram.com/echelon.institute/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "inline-flex", alignItems: "center", gap: 7,
-                padding: "8px 14px", borderRadius: 8,
-                background: "rgba(255,255,255,0.06)",
-                border: "1px solid rgba(255,255,255,0.12)",
-                color: "rgba(255,255,255,0.65)", fontSize: 13, fontWeight: 500,
-                textDecoration: "none", cursor: "pointer",
-              }}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                <circle cx="12" cy="12" r="4"/>
-                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-              </svg>
-              Instagram
-            </a>
-            <a
-              href="https://www.linkedin.com/company/echeloninstitute/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "inline-flex", alignItems: "center", gap: 7,
-                padding: "8px 14px", borderRadius: 8,
-                background: "rgba(255,255,255,0.06)",
-                border: "1px solid rgba(255,255,255,0.12)",
-                color: "rgba(255,255,255,0.65)", fontSize: 13, fontWeight: 500,
-                textDecoration: "none", cursor: "pointer",
-              }}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                <rect x="2" y="9" width="4" height="12"/>
-                <circle cx="4" cy="4" r="2"/>
-              </svg>
-              LinkedIn
-            </a>
-          </div>
-
-          {/* Bottom bar */}
-          <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 20, display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
-            <p style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", margin: 0 }}>
-              © {new Date().getFullYear()} Echelon Institute. All rights reserved. · Not affiliated with MOECP, OWWCO, EOCP, WPI, ABC, or any state certifying authority.
-            </p>
-            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-              <Link href="/privacy"><span style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", cursor: "pointer" }}>Privacy</span></Link>
-              <Link href="/terms"><span style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", cursor: "pointer" }}>Terms</span></Link>
-              <Link href="/refund"><span style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", cursor: "pointer" }}>Refunds</span></Link>
-              <a href="mailto:abello@echeloninstitute.ca" style={{ fontSize: 11, color: "rgba(255,255,255,0.3)" }}>Support</a>
-            </div>
-          </div>
-
-        </div>
+        <div className="homepage-footer-bottom"><span>© {new Date().getFullYear()} Echelon Institute. All rights reserved.</span><span>Independent preparation provider. Confirm current requirements with your certifying authority. Not affiliated with MOECP, OWWCO, EOCP, WPI, ABC, or any state certifying authority.</span></div>
       </footer>
-
-      {/* Fixed Admin shortcut — always visible, admin page handles auth */}
-      <a
-        href="/admin"
-        style={{
-          position: "fixed",
-          bottom: 24,
-          right: 24,
-          zIndex: 9999,
-          display: "flex",
-          alignItems: "center",
-          gap: 6,
-          padding: "10px 18px",
-          borderRadius: 12,
-          background: "linear-gradient(135deg, #7C3AED, #4F46E5)",
-          color: "#fff",
-          fontSize: 13,
-          fontWeight: 700,
-          textDecoration: "none",
-          boxShadow: "0 4px 20px rgba(124,58,237,0.45)",
-          fontFamily: "inherit",
-          whiteSpace: "nowrap",
-        }}
-      >
-        🛡️ Admin
-      </a>
     </div>
   );
 }

@@ -84,25 +84,27 @@ describe("SEO and geographic landing-page contract", () => {
       "utf8"
     );
 
-    const ctaLabel = "Try 15 OIT Questions Free →";
+    const ctaLabel = "Try 15 free questions";
     const ctaIndex = landing.indexOf(ctaLabel);
     expect(ctaIndex).toBeGreaterThan(-1);
-    expect(landing).toContain("Which OIT exam would you like to preview?");
-    expect(landing).toContain('<Link\n                    href="/quiz"');
-    expect(landing).toContain('<Link\n                    href="/oit-ww"');
+    expect(landing).toContain("Which operator path would you like to explore?");
+    expect(landing).toContain('href="/quiz"');
+    expect(landing).toContain('href="/oit-ww"');
     expect(landing).toContain("Water OIT");
     expect(landing).toContain("Wastewater OIT");
-    expect(landing).not.toContain('href="#course-finder"');
+    expect(landing).toContain('href="#find-course"');
+    expect(landing).toContain('aria-controls="oit-preview-choice"');
   });
 
-  it("labels the manager dashboard as illustrative and keeps pricing copy clean", () => {
+  it("labels homepage previews as illustrative and does not display stale per-course price copy", () => {
     const landing = fs.readFileSync(
       path.resolve(process.cwd(), "client/src/pages/Landing.tsx"),
       "utf8"
     );
-    expect(landing).toContain("Illustrative dashboard · sample data");
-    expect(landing).toContain("Example Municipality");
-    expect(landing).toContain("{passPriceLabel}");
+    expect(landing).toContain("Illustrative preview");
+    expect(landing).toContain("Illustrative team training overview");
+    expect(landing).toContain("Illustrative readiness by topic");
+    expect(landing).not.toContain("{passPriceLabel}");
     expect(landing).not.toContain('from CA$49');
     expect(landing).not.toContain('{ name: "Sample Learner 11"');
   });

@@ -31,9 +31,14 @@ describe("live visual-audit remediation", () => {
     const about = source("client/src/pages/About.tsx");
     const us = source("client/src/pages/USLanding.tsx");
 
-    expect(landing).toContain("British Columbia (EOCP / WPI)");
     expect(landing).toContain("Not affiliated with MOECP, OWWCO, EOCP, WPI");
-    expect(landing).toContain("{passPriceLabel}");
+    expect(landing).toContain("15 practice questions, 50 flashcards, 30 mock questions and 3 AI Tutor messages");
+    expect(landing).not.toContain("{passPriceLabel}");
+    expect(landing).toContain('section id="faq"');
+    expect(landing).toContain('<Link href="/refund">Refund policy</Link>');
+    expect(landing).toContain('aria-invalid={Boolean(fieldErrors.email)}');
+    expect(landing).toContain("Enter a valid email address.");
+    expect(landing).toContain("Enter at least 10 characters so we can help.");
     expect(about).toContain("15 practice questions, 50 flashcards, 30 mock-exam questions, and three AI Tutor messages");
     expect(about).not.toContain("FDEP exam in Florida");
     expect(about).not.toContain("Master's student");
