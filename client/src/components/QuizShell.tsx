@@ -29,7 +29,7 @@ import { resolveCourseKey } from "@shared/courseRegistry";
 import { trpc } from "@/lib/trpc";
 import PracticeQuestionStatus from "@/components/PracticeQuestionStatus";
 import QuizSkeleton from "@/components/QuizSkeleton";
-import PracticeSaveStatus from "@/components/PracticeSaveStatus";
+import PracticeSaveStatus, { useVerifiedPracticeSaveScope } from "@/components/PracticeSaveStatus";
 import PracticeOptions from "@/components/PracticeOptions";
 import { getPracticeGuidePath } from "@/lib/practiceResources";
 import StudyNotesTopics from "@/components/StudyNotesTopics";
@@ -174,6 +174,15 @@ export function shouldShowPracticeQuestionStatus(
   return questionStatus === "error" || questionStatus === "empty";
 }
 
+/** Match the displayed question to its durable per-course bookmark record. */
+export function isQuestionBookmarked(
+  bookmarks: readonly { questionId?: number | null }[],
+  currentQuestionId: number | undefined,
+): boolean {
+  return currentQuestionId != null
+    && bookmarks.some((bookmark) => bookmark.questionId === currentQuestionId);
+}
+
 /** Back is available only when the currently displayed question has an earlier answer. */
 export function canNavigateToPreviousAnswer(
   history: readonly unknown[],
@@ -293,7 +302,27 @@ export default function QuizShell({
   const [studyNotesOpen, setStudyNotesOpen] = useState(false);
   const [studyNotesModule, setStudyNotesModule] = useState<string | null>(null);
   const [studyNotesPracticeModule, setStudyNotesPracticeModule] = useState<string | null>(null);
-  const [bookmarked, setBookmarked] = useState(false);
+  const bookmarkScope = useVerifiedPracticeSaveScope(examType ?? "");
+  const bookmarkScopeKey = bookmarkScope ? JSON.stringify(bookmarkScope) : null;
+  const activeBookmarkTargetRef = useRef({ questionId: current?.id as number | undefined, bankKey: examType, scopeKey: bookmarkScopeKey });
+  activeBookmarkTargetRef.current = { questionId: current?.id, bankKey: examType, scopeKey: bookmarkScopeKey };
+  const bookmarkUtils = trpc.useUtils();
+  const bookmarkReadGeneration = useRef(0);
+  const [bookmarkRead, setBookmarkRead] = useState<{
+    scopeKey: string | null;
+    bankKey: string | undefined;
+    status: "unavailable" | "loading" | "ready" | "error";
+    bookmarks: { questionId: number }[];
+  }>({ scopeKey: null, bankKey: examType, status: "unavailable", bookmarks: [] });
+  const bookmarkReadRef = useRef(bookmarkRead);
+  const commitBookmarkRead = (next: typeof bookmarkRead) => {
+    bookmarkReadRef.current = next;
+    setBookmarkRead(next);
+  };
+  const ownsBookmarkRead = bookmarkRead.scopeKey === bookmarkScopeKey && bookmarkRead.bankKey === examType;
+  const bookmarkReadPending = Boolean(bookmarkScope && examType) && (!ownsBookmarkRead || bookmarkRead.status === "loading");
+  const bookmarkReadUnavailable = !bookmarkScope || !examType || (ownsBookmarkRead && bookmarkRead.status === "error");
+  const bookmarked = ownsBookmarkRead && bookmarkRead.status === "ready" && isQuestionBookmarked(bookmarkRead.bookmarks, current?.id);
 
   const openStudyNotes = useCallback((practiceModule: string | null) => {
     const courseKey = examType ?? currentPath.slice(1);
@@ -331,11 +360,57 @@ export default function QuizShell({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPath, moduleOverviews, selectedModule]);
   const toggleBookmarkMutation = trpc.dashboard.toggleBookmark.useMutation({
-    onSuccess: (data) => {
-      setBookmarked(data.bookmarked);
-      toast(data.bookmarked ? "🔖 Bookmarked" : "Bookmark removed");
+    onMutate: (variables) => ({
+      questionId: variables.questionId,
+      bankKey: variables.bankKey,
+      scopeKey: bookmarkScopeKey,
+    }),
+    onSuccess: (data, variables, origin) => {
+      const active = activeBookmarkTargetRef.current;
+      if (!data.ok) {
+        if (active.questionId === origin?.questionId && active.bankKey === origin?.bankKey && active.scopeKey === origin?.scopeKey) {
+          toast.error("Could not save bookmark — please try again.");
+        }
+        return;
+      }
+      const originQuestionId = origin?.questionId;
+      const originScopeKey = origin?.scopeKey;
+      const originBankKey = origin?.bankKey;
+      const read = bookmarkReadRef.current;
+      if (originQuestionId != null && originScopeKey && originBankKey && read.scopeKey === originScopeKey && read.bankKey === originBankKey && read.status === "loading" && active.scopeKey === originScopeKey && active.bankKey === originBankKey) {
+        const generation = ++bookmarkReadGeneration.current;
+        void bookmarkUtils.client.dashboard.bookmarkedQuestions.query({ examType: originBankKey }).then(
+          bookmarks => {
+            if (bookmarkReadGeneration.current === generation && activeBookmarkTargetRef.current.scopeKey === originScopeKey && activeBookmarkTargetRef.current.bankKey === originBankKey) {
+              commitBookmarkRead({ scopeKey: originScopeKey, bankKey: originBankKey, status: "ready", bookmarks });
+            }
+          },
+          () => {
+            if (bookmarkReadGeneration.current === generation && activeBookmarkTargetRef.current.scopeKey === originScopeKey && activeBookmarkTargetRef.current.bankKey === originBankKey) {
+              commitBookmarkRead({ scopeKey: originScopeKey, bankKey: originBankKey, status: "error", bookmarks: [] });
+            }
+          },
+        );
+      } else if (originQuestionId != null) {
+        if (read.status === "ready" && read.scopeKey === origin.scopeKey && read.bankKey === origin.bankKey) {
+          const withoutQuestion = read.bookmarks.filter(bookmark => bookmark.questionId !== originQuestionId);
+          commitBookmarkRead({
+            ...read,
+            bookmarks: data.bookmarked ? [...withoutQuestion, { questionId: originQuestionId }] : withoutQuestion,
+          });
+        }
+      }
+      if (active.questionId === origin?.questionId && active.bankKey === origin?.bankKey && active.scopeKey === origin?.scopeKey) {
+        toast(data.bookmarked ? "🔖 Bookmarked" : "Bookmark removed");
+      }
+      if (variables.bankKey) void bookmarkUtils.dashboard.bookmarkedQuestions.invalidate({ examType: variables.bankKey });
     },
-    onError: () => toast.error("Could not save bookmark — please try again."),
+    onError: (_error, _variables, origin) => {
+      const active = activeBookmarkTargetRef.current;
+      if (active.questionId === origin?.questionId && active.bankKey === origin?.bankKey && active.scopeKey === origin?.scopeKey) {
+        toast.error("Could not save bookmark — please try again.");
+      }
+    },
   });
 
   // ── Session-complete feedback modal ──────────────────────────────────────────
@@ -390,14 +465,36 @@ export default function QuizShell({
   const timerPct = timedSeconds > 0 ? (timeLeft / timedSeconds) * 100 : 100;
   const timerColor = timerPct > 50 ? "#059669" : timerPct > 25 ? "#D97706" : "#DC2626";
 
-  // Reset bookmark state when question changes
-  const prevQuestionId = useRef<number | undefined>(undefined);
+  // Read afresh for each verified identity/course scope. The dashboard query key is
+  // course-only, so accepting hook cache data here could expose identity A's result
+  // after identity B becomes active for the same course.
   useEffect(() => {
-    if (current?.id !== prevQuestionId.current) {
-      setBookmarked(false);
-      prevQuestionId.current = current?.id;
+    const scopeKey = bookmarkScopeKey;
+    const bankKey = examType;
+    const generation = ++bookmarkReadGeneration.current;
+    let cancelled = false;
+    if (!scopeKey || !bankKey) {
+      commitBookmarkRead({ scopeKey, bankKey, status: "unavailable", bookmarks: [] });
+      return () => { cancelled = true; };
     }
-  }, [current?.id]);
+    commitBookmarkRead({ scopeKey, bankKey, status: "loading", bookmarks: [] });
+    void bookmarkUtils.client.dashboard.bookmarkedQuestions.query({ examType: bankKey }).then(
+      bookmarks => {
+        if (!cancelled && bookmarkReadGeneration.current === generation) {
+          commitBookmarkRead({ scopeKey, bankKey, status: "ready", bookmarks });
+        }
+      },
+      () => {
+        if (!cancelled && bookmarkReadGeneration.current === generation) {
+          commitBookmarkRead({ scopeKey, bankKey, status: "error", bookmarks: [] });
+        }
+      },
+    );
+    return () => { cancelled = true; };
+  // The client proxy is stable; scope ownership, not render-created scope objects,
+  // determines when a new read is required.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bookmarkScopeKey, examType]);
 
   const progress = sessionSize ? Math.min(100, (history.length / sessionSize) * 100) : 0;
   const accuracy = history.length > 0 ? Math.round((correctCount / history.length) * 100) : null;
@@ -1013,11 +1110,11 @@ export default function QuizShell({
               {current?.id && (
                 <button
                   onClick={() => {
-                    if (!current?.id) return;
+                    if (!current?.id || bookmarkReadPending || bookmarkReadUnavailable) return;
                     // FIX 5: Pass bankKey (examType) + questionId for per-user+question bookmark
-                    toggleBookmarkMutation.mutate({ bankKey: examType ?? "unknown", questionId: current.id });
+                    toggleBookmarkMutation.mutate({ bankKey: examType ?? "unknown", questionId: current.id, bookmarked: !bookmarked });
                   }}
-                  disabled={toggleBookmarkMutation.isPending}
+                  disabled={bookmarkReadPending || bookmarkReadUnavailable || toggleBookmarkMutation.isPending}
                   style={{
                     background: bookmarked ? "#EFF6FF" : "none",
                     border: bookmarked ? "1px solid #BFDBFE" : "1px solid #E2E8F0",
@@ -1033,7 +1130,11 @@ export default function QuizShell({
                     fontWeight: bookmarked ? 700 : 400,
                   }}
                 >
-                  {bookmarked ? "🔖 Bookmarked" : "📑 Bookmark"}
+                  {bookmarkReadUnavailable
+                    ? "Bookmark unavailable"
+                    : bookmarkReadPending
+                      ? "Loading bookmark…"
+                      : bookmarked ? "🔖 Bookmarked" : "📑 Bookmark"}
                 </button>
               )}
             </div>

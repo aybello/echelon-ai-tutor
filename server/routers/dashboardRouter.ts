@@ -801,7 +801,9 @@ export const dashboardRouter = router({
     .query(async ({ ctx, input }) => {
       const { userId, email } = resolveDashboardIdentity(ctx);
       const db = await getDb();
-      if (!db) return [];
+      if (!db) {
+        throw new TRPCError({ code: "SERVICE_UNAVAILABLE", message: "Bookmarks are temporarily unavailable. Please retry." });
+      }
       // FIX 5: Query from the new bookmarks table (per-user+question, not per-attempt)
       const bmIdentityWhere = userId
         ? eq(bookmarks.userId, userId)

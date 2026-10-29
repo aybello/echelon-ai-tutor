@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   canNavigateToPreviousAnswer,
+  isQuestionBookmarked,
   shouldClearUnavailableSelectedModule,
   shouldShowPracticeQuestionStatus,
 } from "./QuizShell";
@@ -55,5 +56,12 @@ describe("practice delivery status presentation", () => {
   it("keeps recovery controls for a real error or empty valid selection", () => {
     expect(shouldShowPracticeQuestionStatus("error")).toBe(true);
     expect(shouldShowPracticeQuestionStatus("empty")).toBe(true);
+  });
+});
+
+describe("saved bookmark presentation", () => {
+  it("shows a previously saved bookmark when its question is displayed", () => {
+    expect(isQuestionBookmarked([{ questionId: 17 }, { questionId: 29 }], 29)).toBe(true);
+    expect(isQuestionBookmarked([{ questionId: 17 }], 29)).toBe(false);
   });
 });
