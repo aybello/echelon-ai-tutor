@@ -79,7 +79,7 @@ export default function Partnerships() {
   };
 
   return (
-    <div style={{ background: "#F8FAFC", minHeight: "100vh", fontFamily: "'Sora', sans-serif" }}>
+    <div className="public-redesign public-redesign-partnerships" style={{ background: "#F8FAFC", minHeight: "100vh", fontFamily: "'Sora', sans-serif" }}>
       <LandingNav isAuthenticated={isAuthenticated} currentPath="/partnerships" />
 
       {/* Hero */}

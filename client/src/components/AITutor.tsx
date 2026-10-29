@@ -219,7 +219,7 @@ export default function AITutor({
 
   const panel = (
     <aside
-      className={`ai-tutor-panel ai-tutor-panel--${placement}`}
+      className={`ai-tutor-panel ai-tutor-panel--${placement} learning-redesign`}
       aria-label="AI Tutor"
     >
       {/* Header */}

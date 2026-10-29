@@ -1,0 +1,339 @@
+/*
+ * Teams and employer presentation layer
+ * Scoped to the employer surfaces so existing learner and public routes retain
+ * their current contracts and styling.
+ */
+.teams-redesign {
+  --teams-navy: #10253f;
+  --teams-deep-navy: #0b1d30;
+  --teams-teal: #087f78;
+  --teams-teal-dark: #05655f;
+  --teams-soft-teal: #eaf6f3;
+  --teams-surface: #ffffff;
+  --teams-canvas: #f5f8f8;
+  --teams-ink: #17212b;
+  --teams-muted: #647481;
+  --teams-line: #dfe6e8;
+  --teams-success: #13795b;
+  --teams-warning: #a86400;
+  --teams-danger: #b42318;
+  min-height: 100%;
+  background: var(--teams-canvas);
+  color: var(--teams-ink);
+  font-family: "Source Sans 3", "Source Sans Pro", Arial, sans-serif;
+}
+
+.teams-redesign :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--teams-navy);
+  font-family: Manrope, Arial, sans-serif;
+  font-weight: 750;
+  letter-spacing: -0.027em;
+}
+
+.teams-redesign :is(input, select, textarea) {
+  border-color: #c9d4d8;
+  border-radius: 6px;
+  color: var(--teams-ink);
+  font-family: "Source Sans 3", "Source Sans Pro", Arial, sans-serif;
+}
+
+.teams-redesign :is(input, select, textarea):focus-visible,
+.teams-redesign button:focus-visible,
+.teams-redesign a:focus-visible,
+.teams-redesign summary:focus-visible,
+.teams-redesign-dialog :is(input, select, textarea, button, a):focus-visible {
+  outline: 3px solid #0e9c93;
+  outline-offset: 3px;
+}
+
+.teams-redesign :is(button, a, summary) {
+  transition: transform 150ms ease-out, opacity 150ms ease-out, background-color 150ms ease-out, border-color 150ms ease-out, color 150ms ease-out, box-shadow 150ms ease-out;
+}
+
+.teams-redesign button:not(:disabled):active,
+.teams-redesign a:active {
+  transform: translateY(1px);
+}
+
+.teams-redesign .rounded-2xl { border-radius: 8px; }
+.teams-redesign .rounded-xl { border-radius: 8px; }
+.teams-redesign .rounded-lg { border-radius: 6px; }
+
+/* Public Teams acquisition */
+.teams-redesign--public > .teams-redesign__hero {
+  position: relative;
+  isolation: isolate;
+  background: var(--teams-deep-navy) !important;
+  border-bottom: 4px solid var(--teams-teal);
+}
+
+.teams-redesign--public > .teams-redesign__hero::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  opacity: 0.7;
+  background-image: linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: linear-gradient(to bottom, #000, transparent 88%);
+}
+
+.teams-redesign__hero h1 {
+  color: #fff;
+  max-width: 840px;
+  margin-inline: auto;
+  font-size: clamp(2rem, 4vw, 3.45rem);
+  line-height: 1.08;
+}
+
+.teams-redesign__hero > div > div:first-child {
+  border-color: rgba(157, 224, 215, 0.42) !important;
+  border-radius: 6px !important;
+  background: rgba(8, 127, 120, 0.18) !important;
+  color: #d4f3ee !important;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.teams-redesign__hero p { color: #d6e2ec !important; font-size: 1.06rem; }
+.teams-redesign__hero .text-cyan-200 { color: #71d6cb !important; }
+
+.teams-redesign__content { max-width: 1180px; }
+.teams-product-switch > h2 { font-size: clamp(1.55rem, 2.5vw, 2rem); }
+.teams-product-switch > p { color: var(--teams-muted) !important; }
+
+.teams-plan-card {
+  min-height: 190px;
+  border-color: var(--teams-line) !important;
+  border-radius: 8px !important;
+  background: var(--teams-surface) !important;
+  box-shadow: 0 1px 1px rgba(16, 37, 63, 0.03);
+}
+
+.teams-plan-card:hover { transform: translateY(-2px); border-color: #99c5c0 !important; }
+.teams-plan-card.teams-plan-card--active { border-color: var(--teams-teal) !important; background: var(--teams-soft-teal) !important; box-shadow: inset 0 0 0 1px var(--teams-teal), 0 10px 22px rgba(8, 127, 120, 0.08); }
+.teams-plan-card > div:first-child { color: var(--teams-navy) !important; font-family: Manrope, Arial, sans-serif; }
+.teams-plan-card p { color: var(--teams-muted) !important; }
+.teams-plan-card > div:last-child { border-radius: 4px !important; background: #dff1ee !important; color: #075d57 !important; font-family: "IBM Plex Mono", monospace; font-weight: 600; }
+
+.teams-annual-workspace { gap: 28px; }
+.teams-config-panel,
+.teams-support-card,
+.teams-redesign__flex-order {
+  border-color: var(--teams-line) !important;
+  border-radius: 8px !important;
+  background: var(--teams-surface) !important;
+  box-shadow: 0 10px 30px rgba(16, 37, 63, 0.055) !important;
+}
+
+.teams-config-panel > h2,
+.teams-redesign__flex-order h3 { font-size: 1.3rem; }
+.teams-config-panel > p,
+.teams-redesign__flex-order p { color: var(--teams-muted) !important; }
+.teams-redesign label { color: #354451; font-weight: 650; }
+
+.teams-tier-option {
+  min-height: 100px;
+  border-color: var(--teams-line) !important;
+  border-radius: 6px !important;
+  background: #fff !important;
+}
+
+.teams-tier-option:hover { border-color: #86bdb7 !important; }
+.teams-tier-option.teams-tier-option--active { border-color: var(--teams-teal) !important; background: var(--teams-soft-teal) !important; box-shadow: inset 3px 0 0 var(--teams-teal); }
+.teams-tier-option .text-slate-900 { color: var(--teams-navy) !important; }
+.teams-tier-option .text-teal-700 { color: var(--teams-teal-dark) !important; font-family: "IBM Plex Mono", monospace; }
+
+.teams-seat-chip {
+  min-width: 40px;
+  border-radius: 4px !important;
+  border-color: var(--teams-line) !important;
+  font-family: "IBM Plex Mono", monospace;
+}
+.teams-seat-chip.teams-seat-chip--active { border-color: var(--teams-navy) !important; background: var(--teams-navy) !important; color: #fff !important; }
+
+.teams-price-summary {
+  border-color: #b7ddd8 !important;
+  border-radius: 8px !important;
+  background: var(--teams-soft-teal) !important;
+}
+.teams-price-summary .text-teal-700 { color: var(--teams-teal-dark) !important; font-family: "IBM Plex Mono", monospace; }
+.teams-price-summary .text-slate-900 { color: var(--teams-navy) !important; }
+
+.teams-checkout-button,
+.teams-redesign .bg-blue-600,
+.teams-redesign .bg-blue-700,
+.teams-redesign .bg-blue-800 {
+  background: var(--teams-teal) !important;
+}
+.teams-checkout-button:hover,
+.teams-redesign .hover\:bg-blue-700:hover,
+.teams-redesign .hover\:bg-blue-800:hover,
+.teams-redesign .hover\:bg-blue-900:hover { background: var(--teams-teal-dark) !important; }
+.teams-checkout-button { border-radius: 6px !important; box-shadow: 0 5px 12px rgba(8, 127, 120, 0.18); }
+.teams-checkout-button:hover { transform: translateY(-1px); }
+
+.teams-support-card { box-shadow: none !important; }
+.teams-support-card + .teams-support-card { border-color: #b7ddd8 !important; background: #f2faf8 !important; }
+.teams-support-card .text-teal-600 { color: var(--teams-teal) !important; }
+.teams-redesign .bg-gradient-to-r,
+.teams-redesign .bg-gradient-to-br { background-image: none !important; }
+
+/* Flex procurement and licence lifecycle panels */
+.teams-redesign__flex-order .border-t,
+.teams-flex-licence-panel .border-t { border-color: var(--teams-line) !important; }
+.teams-redesign__flex-order .bg-gray-50 { background: #f7faf9 !important; border: 1px solid var(--teams-line); }
+.teams-redesign__flex-order .text-gray-900 { color: var(--teams-navy) !important; }
+.teams-redesign__flex-order .text-gray-500,
+.teams-redesign__flex-order .text-gray-400 { color: var(--teams-muted) !important; }
+.teams-redesign__flex-order .text-green-700,
+.teams-redesign__flex-order .text-green-600 { color: var(--teams-success) !important; }
+
+.teams-flex-licence-panel,
+.teams-flex-progress {
+  border-color: var(--teams-line) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 22px rgba(16, 37, 63, 0.045) !important;
+}
+.teams-flex-licence-panel h3,
+.teams-flex-progress h3 { color: var(--teams-navy) !important; }
+.teams-flex-licence-panel thead,
+.teams-flex-progress thead { background: #f0f5f5; }
+.teams-flex-licence-panel th,
+.teams-flex-progress th,
+.teams-redesign th {
+  color: #4e606b !important;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.68rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+.teams-flex-licence-panel tbody tr:hover,
+.teams-flex-progress tbody tr:hover { background: #f7fbfa !important; }
+.teams-flex-progress .rounded-lg { border-color: var(--teams-line) !important; background: #fbfcfc; }
+.teams-flex-progress .text-teal-600 { color: var(--teams-teal) !important; }
+
+.teams-redesign-dialog { border-color: var(--teams-line) !important; border-radius: 8px !important; font-family: "Source Sans 3", "Source Sans Pro", Arial, sans-serif; }
+.teams-redesign-dialog :is(h1, h2, h3) { font-family: Manrope, Arial, sans-serif; color: var(--teams-navy); }
+
+/* Manager command and reporting workspace */
+.teams-redesign--manager { background: var(--teams-canvas) !important; }
+.teams-redesign--manager .bg-white { border-color: var(--teams-line); }
+.teams-redesign--manager .border-slate-200,
+.teams-redesign--manager .border-slate-100 { border-color: var(--teams-line) !important; }
+.teams-redesign__term-strip { background: #fbfdfd !important; border-color: var(--teams-line) !important; }
+.teams-dashboard-header { border-color: var(--teams-line) !important; box-shadow: none !important; }
+.teams-dashboard-header .manager-organization-icon { border-radius: 6px !important; background: var(--teams-deep-navy) !important; }
+.teams-dashboard-header h1 { color: var(--teams-navy) !important; font-family: Manrope, Arial, sans-serif; }
+.teams-dashboard-main { max-width: 1180px !important; }
+
+.teams-metric-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 136px;
+  border-color: var(--teams-line) !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+.teams-metric-card::before { position: absolute; inset: 0 auto 0 0; width: 3px; content: ""; background: var(--teams-teal); }
+.teams-metric-card .manager-metric-value { color: var(--teams-navy); font-family: Manrope, Arial, sans-serif; letter-spacing: -0.04em; }
+.teams-metric-card .text-blue-600 { color: var(--teams-teal) !important; }
+.teams-metric-card .text-green-600 { color: var(--teams-success) !important; }
+.teams-metric-card .text-amber-600 { color: var(--teams-warning) !important; }
+.teams-metric-card .text-red-600 { color: var(--teams-danger) !important; }
+
+.teams-redesign--manager .workspace-view-tabs {
+  gap: 4px;
+  margin-bottom: 28px;
+  padding: 4px;
+  border: 1px solid var(--teams-line);
+  border-radius: 8px;
+  background: #fff;
+}
+.teams-redesign--manager .workspace-view-tabs button { min-height: 38px; border-radius: 5px; color: var(--teams-muted); }
+.teams-redesign--manager .workspace-view-tabs button[aria-pressed=true] { background: var(--teams-deep-navy); color: #fff; }
+
+.teams-redesign--manager .manager-roster-filters {
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--teams-line);
+  border-radius: 8px;
+  background: #fff;
+}
+.teams-redesign--manager .manager-roster-filters label { color: #354451; }
+.teams-redesign--manager .manager-roster-filters input,
+.teams-redesign--manager .manager-roster-filters select { border-color: #c9d4d8; border-radius: 6px; }
+.teams-redesign--manager .manager-roster,
+.teams-redesign--manager .team-outcomes-report table,
+.teams-redesign--manager .manager-operators > .bg-white { border-color: var(--teams-line) !important; border-radius: 8px !important; box-shadow: none !important; }
+.teams-redesign--manager .manager-roster thead,
+.teams-redesign--manager .team-outcomes-report thead { background: #f0f5f5 !important; }
+.teams-redesign--manager .manager-roster tr:hover,
+.teams-redesign--manager .team-outcomes-report tbody tr:hover { background: #f7fbfa !important; }
+.teams-redesign--manager .manager-roster .bg-blue-50,
+.teams-redesign--manager .team-outcomes-report .bg-blue-50 { background: var(--teams-soft-teal) !important; }
+.teams-redesign--manager .text-blue-600,
+.teams-redesign--manager .text-blue-700,
+.teams-redesign--manager .text-blue-800 { color: var(--teams-teal-dark) !important; }
+
+.teams-outcomes-hero {
+  border: 1px solid #1a4661 !important;
+  border-radius: 8px !important;
+  background: var(--teams-deep-navy) !important;
+  box-shadow: none !important;
+}
+.teams-outcomes-hero .rounded-xl { border-radius: 6px !important; }
+.teams-outcomes-hero > div > div > div:not(:first-child) { border-color: rgba(202, 232, 228, 0.16) !important; background: rgba(255, 255, 255, 0.06) !important; }
+.teams-redesign--manager .team-outcomes-report .bg-white { border-color: var(--teams-line) !important; }
+.teams-redesign--manager .team-outcomes-report .bg-amber-50 { border-color: #efd9ae !important; background: #fff8e8 !important; }
+.teams-redesign--manager .team-outcomes-report .bg-green-50 { border-color: #c0dfd2 !important; background: #f1faf6 !important; }
+
+/* Training-hour review and signed-record workflow */
+.teams-redesign--training { background: var(--teams-canvas) !important; }
+.teams-training { max-width: 1180px !important; }
+.teams-training .operator-list,
+.teams-training .report-card { border-color: var(--teams-line) !important; border-radius: 8px !important; box-shadow: 0 8px 22px rgba(16, 37, 63, 0.045) !important; }
+.teams-training .operator-list > h2 { color: var(--teams-navy); font-family: Manrope, Arial, sans-serif; }
+.teams-training .operator-list button { border-color: var(--teams-line) !important; border-radius: 6px !important; }
+.teams-training .operator-list button:hover { border-color: #86bdb7 !important; background: #f7fbfa !important; }
+.teams-training .operator-list .border-blue-600 { border-color: var(--teams-teal) !important; background: var(--teams-soft-teal) !important; }
+.teams-training .report-card > div > div > div:first-child { color: var(--teams-teal-dark) !important; font-family: "IBM Plex Mono", monospace; }
+.teams-training .report-card details { border-color: var(--teams-line) !important; border-radius: 6px !important; }
+.teams-training .report-card details summary { color: var(--teams-navy); }
+.teams-training .attest-form { border-color: #b7ddd8 !important; border-radius: 8px !important; background: #f1faf8 !important; }
+.teams-training .attest-form .bg-emerald-50 { background: transparent !important; }
+.teams-training .attest-form input,
+.teams-training .attest-form select,
+.teams-training .attest-form textarea { border-color: #b7ddd8 !important; }
+.teams-training .attest-form button { border-radius: 6px !important; background: var(--teams-teal) !important; }
+.teams-training .attest-form button:hover { background: var(--teams-teal-dark) !important; }
+.teams-training .bg-slate-50 { background: #f3f7f7 !important; }
+
+@media (max-width: 680px) {
+  .teams-redesign__hero { padding-inline: 18px !important; }
+  .teams-redesign__hero h1 { font-size: 2rem; }
+  .teams-redesign__content,
+  .teams-dashboard-main,
+  .teams-training { padding-inline: 16px !important; }
+  .teams-plan-card { min-height: 0; padding: 20px !important; }
+  .teams-config-panel { padding: 20px !important; }
+  .teams-redesign--manager .manager-roster-filters { padding: 12px; }
+  .teams-redesign--manager .manager-roster tr { border-color: var(--teams-line) !important; border-radius: 8px; }
+  .teams-redesign--training .manager-actions { width: 100%; }
+  .teams-redesign--training .manager-actions label { flex: 1; }
+  .teams-redesign--training .manager-actions input { width: 100%; margin: 5px 0 0 !important; }
+}
+
+@media print {
+  .teams-redesign { background: #fff !important; color: #17212b !important; }
+  .teams-redesign :is(.teams-outcomes-hero, .attest-form) { background: #fff !important; border-color: #b8c6cb !important; color: #17212b !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .teams-redesign *,
+  .teams-redesign-dialog * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+}

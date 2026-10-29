@@ -398,10 +398,10 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
     if (!pending && (nextView === view || confirmDiscardUnsavedExam())) setView(nextView);
   }
 
-  if (courseQuery.isLoading) return <div className="ceu-loading">Loading course…</div>;
+  if (courseQuery.isLoading) return <div className="ceu-loading ops-ceu-loading">Loading course…</div>;
   if (!course || !activeModule || !activeSlide) {
     return (
-      <div className="ceu-loading">
+      <div className="ceu-loading ops-ceu-loading">
         <h1>Course unavailable</h1>
         <p>We could not load this course. Please return to the catalogue or try again.</p>
         <Link href="/continuing-education">Course catalogue</Link>
@@ -418,7 +418,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
   const nextModule = course.modules[activeModuleIndex + 1];
 
   return (
-    <div className="ceu-screen" ref={shellRef} data-site-header={view === "overview" ? "visible" : "hidden"}>
+    <div className="ceu-screen ops-ceu-workspace" ref={shellRef} data-site-header={view === "overview" ? "visible" : "hidden"}>
       {view === "overview" && <SiteNav currentPath={`/continuing-education/${courseKey}`} variant="marketing" />}
       <section className="ceu-course-context" ref={contextRef} aria-label="Continuing education course workspace">
         <div className="ceu-course-context-inner">

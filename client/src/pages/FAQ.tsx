@@ -15,7 +15,7 @@ const questions = [
 
 export default function FAQ() {
   usePageMeta({ title: "Frequently Asked Questions | Echelon Institute", description: "Clear answers about Echelon courses, certification coverage, access terms, pricing, refunds, and institutional plans.", keywords: "Echelon Institute FAQ, operator certification exam prep" });
-  return <main className="min-h-screen bg-slate-50 text-slate-900">
+  return <main className="public-redesign public-redesign-faq min-h-screen bg-slate-50 text-slate-900">
     <SiteNav currentPath="/faq" />
     <section className="mx-auto max-w-3xl px-6 py-16">
       <p className="text-sm font-semibold uppercase tracking-wider text-blue-700">Support</p>

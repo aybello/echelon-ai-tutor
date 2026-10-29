@@ -1,0 +1,394 @@
+/*
+ * Learner account and progress redesign.
+ * Scope is intentionally limited to .learner-redesign roots owned by the
+ * learner-facing account, progress, verification, record, and receipt surfaces.
+ */
+.learner-redesign {
+  --learner-navy: #10253f;
+  --learner-deep-navy: #0b1d30;
+  --learner-teal: #087f78;
+  --learner-teal-dark: #066a65;
+  --learner-teal-soft: #eaf6f3;
+  --learner-canvas: #f5f8f8;
+  --learner-surface: #ffffff;
+  --learner-ink: #17212b;
+  --learner-copy: #425466;
+  --learner-muted: #647481;
+  --learner-line: #dfe6e8;
+  --learner-success: #16764f;
+  --learner-success-soft: #eef8f1;
+  --learner-warning: #9a5b08;
+  --learner-warning-soft: #fff7e6;
+  --learner-danger: #b73a3a;
+  --learner-danger-soft: #fff1f1;
+  min-height: 100dvh;
+  background: var(--learner-canvas) !important;
+  color: var(--learner-ink) !important;
+  font-family: "Source Sans 3", system-ui, sans-serif !important;
+}
+
+.learner-redesign :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--learner-navy) !important;
+  font-family: Manrope, system-ui, sans-serif !important;
+  letter-spacing: -0.025em;
+}
+
+.learner-redesign :is(button, input, select, textarea) {
+  font-family: "Source Sans 3", system-ui, sans-serif !important;
+}
+
+.learner-redesign :is(button, a, input, select, textarea):focus-visible {
+  outline: 3px solid rgba(8, 127, 120, 0.46) !important;
+  outline-offset: 3px;
+}
+
+.learner-redesign :is(button, a) {
+  transition: transform 150ms ease-out, opacity 150ms ease-out, background-color 150ms ease-out, border-color 150ms ease-out, box-shadow 150ms ease-out !important;
+}
+
+.learner-redesign :is(button:not(:disabled), a[href]):active { transform: translateY(1px); }
+.learner-redesign :is(button:disabled, input:disabled, select:disabled) { cursor: not-allowed; }
+
+/* Shared page framing and technical labels. */
+.learner-account-page .account-page,
+.learner-dashboard .study-dashboard-content,
+.learner-training main,
+.learner-record main,
+.learner-course-pass main,
+.learner-activation main {
+  position: relative;
+}
+
+.learner-account-page .account-page::before,
+.learner-dashboard .study-dashboard-content::before,
+.learner-training main::before,
+.learner-record main::before,
+.learner-course-pass main::before,
+.learner-activation main::before {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--learner-teal);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.learner-account-page .account-page::before { content: "LEARNER ACCESS / ACCOUNT"; }
+.learner-dashboard .study-dashboard-content::before { content: "LEARNER WORKSPACE / STUDY PROGRESS"; }
+.learner-training main::before { content: "LEARNER RECORD / PLATFORM ACTIVITY"; }
+.learner-record main::before { content: "VERIFIED RECORD / READ ONLY"; }
+.learner-course-pass main::before { content: "COURSE PASS / ACCESS STATUS"; }
+.learner-activation main::before { content: "LEARNER SETUP / STUDY BASELINE"; }
+
+/* Authentication, email verification, and payment confirmation. */
+.learner-auth-page,
+.learner-purchase-page,
+.learner-subscription-page {
+  background:
+    linear-gradient(180deg, rgba(11, 29, 48, 0.055), transparent 320px),
+    var(--learner-canvas) !important;
+}
+
+.learner-auth-main,
+.learner-purchase-main,
+.learner-subscription-main {
+  padding-block: clamp(32px, 7vh, 80px) !important;
+}
+
+.learner-auth-card,
+.learner-magic-card,
+.learner-purchase-card,
+.learner-subscription-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--learner-line) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 16px 36px rgba(16, 37, 63, 0.10) !important;
+}
+
+.learner-auth-card::before,
+.learner-magic-card::before,
+.learner-purchase-card::before,
+.learner-subscription-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5px;
+  background: var(--learner-teal);
+}
+
+.learner-auth-card h1,
+.learner-magic-card h1,
+.learner-purchase-card h1,
+.learner-subscription-card h1 {
+  font-size: clamp(1.4rem, 4vw, 1.75rem) !important;
+}
+
+.learner-auth-card input,
+.learner-magic-card input,
+.learner-purchase-card input,
+.learner-subscription-card input {
+  border-color: #b9c7cc !important;
+  border-radius: 6px !important;
+  background: #fff !important;
+  color: var(--learner-ink) !important;
+}
+
+.learner-auth-card input:focus,
+.learner-magic-card input:focus,
+.learner-purchase-card input:focus,
+.learner-subscription-card input:focus {
+  border-color: var(--learner-teal) !important;
+  box-shadow: 0 0 0 3px rgba(8, 127, 120, 0.14);
+}
+
+.learner-auth-card button[type="submit"],
+.learner-magic-card button,
+.learner-purchase-card button,
+.learner-subscription-card button {
+  border-radius: 6px !important;
+}
+
+.learner-auth-card button[type="submit"],
+.learner-magic-card a button,
+.learner-purchase-card a button,
+.learner-subscription-card a button,
+.learner-purchase-card > div > a + a button {
+  background: var(--learner-teal) !important;
+  box-shadow: none !important;
+}
+
+.learner-auth-card button[type="submit"]:hover,
+.learner-magic-card a button:hover,
+.learner-purchase-card a button:hover,
+.learner-subscription-card a button:hover {
+  background: var(--learner-teal-dark) !important;
+  transform: translateY(-1px);
+}
+
+.learner-auth-card [style*="font-family: 'Courier New'"],
+.learner-auth-card input[inputmode="numeric"] {
+  font-family: "IBM Plex Mono", ui-monospace, monospace !important;
+  border-radius: 6px !important;
+}
+
+.learner-subscription-page > div:last-child > p {
+  color: var(--learner-muted) !important;
+}
+
+/* Account / pass inventory. */
+.learner-account-page .account-page { max-width: 780px !important; }
+.learner-account-page .account-card {
+  border-color: var(--learner-line) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 22px rgba(16, 37, 63, 0.055) !important;
+}
+.learner-account-page .pass-row { border-color: var(--learner-line) !important; }
+.learner-account-page .pass-row:hover { background: #fbfdfd; }
+.learner-account-page .pass-btn {
+  border-radius: 5px !important;
+  font-family: "Source Sans 3", system-ui, sans-serif !important;
+  transition: transform 150ms ease-out, opacity 150ms ease-out !important;
+}
+.learner-account-page .pass-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+.learner-account-page .purchase-history-row { border-color: var(--learner-line) !important; }
+.learner-account-page .step-badge { border-radius: 6px !important; background: var(--learner-navy) !important; }
+.learner-account-page input {
+  border-color: #b9c7cc !important;
+  border-radius: 6px !important;
+  background: #fff !important;
+}
+.learner-account-page button {
+  border-radius: 6px !important;
+}
+.learner-account-page button[style*="linear-gradient"] {
+  background: var(--learner-teal) !important;
+}
+.learner-account-page button[style*="linear-gradient"]:hover { background: var(--learner-teal-dark) !important; }
+.learner-account-page [style*="border-radius: 16px"] { border-radius: 8px !important; }
+.learner-account-page [style*="border-radius: 12px"] { border-radius: 8px !important; }
+
+/* Progress dashboard. */
+.learner-dashboard .study-dashboard-content { max-width: 1120px !important; }
+.learner-dashboard .study-welcome {
+  padding: 24px;
+  border: 1px solid var(--learner-line);
+  border-left: 5px solid var(--learner-teal);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(16, 37, 63, 0.05);
+}
+.learner-dashboard .study-welcome h1 { font-size: clamp(1.55rem, 3vw, 2rem) !important; }
+.learner-dashboard .study-welcome :is(a, button) {
+  border-color: var(--learner-line) !important;
+  border-radius: 6px !important;
+  color: var(--learner-navy) !important;
+}
+.learner-dashboard .study-welcome a.study-training-link {
+  background: var(--learner-teal-soft) !important;
+  border-color: #b9ded8 !important;
+  color: var(--learner-teal) !important;
+}
+.learner-dashboard .workspace-view-tabs {
+  border-bottom-color: var(--learner-line) !important;
+  margin-bottom: 22px;
+}
+.learner-dashboard .workspace-view-tabs button[aria-pressed="true"] {
+  border-color: var(--learner-teal) !important;
+  color: var(--learner-teal) !important;
+}
+.learner-dashboard :is(.dashboard-metrics-grid > div, .dashboard-action-card, .dashboard-section-title ~ *, .study-loop-details, .study-loop-details > section) {
+  border-radius: 8px !important;
+}
+.learner-dashboard .dashboard-metrics-grid > div,
+.learner-dashboard .dashboard-action-card,
+.learner-dashboard .dashboard-two-column > div,
+.learner-dashboard .dashboard-two-one > div {
+  border-color: var(--learner-line) !important;
+  box-shadow: 0 6px 18px rgba(16, 37, 63, 0.04);
+}
+.learner-dashboard .dashboard-action-card {
+  border: 1px solid var(--learner-line);
+  border-top: 3px solid var(--learner-teal);
+}
+.learner-dashboard .dashboard-action-card:hover { box-shadow: 0 12px 24px rgba(16, 37, 63, 0.10) !important; }
+.learner-dashboard .study-loop-details {
+  border: 1px solid var(--learner-line) !important;
+  background: #fff !important;
+  padding: 14px 16px !important;
+}
+.learner-dashboard .study-loop-details summary { color: var(--learner-navy); font-family: Manrope, sans-serif; font-weight: 800; }
+.learner-dashboard .dashboard-section-title { color: var(--learner-navy) !important; font-family: Manrope, sans-serif; }
+.learner-dashboard table :is(th, td) { border-color: var(--learner-line) !important; }
+.learner-dashboard table th { font-family: "IBM Plex Mono", ui-monospace, monospace; letter-spacing: 0.05em; text-transform: uppercase; }
+
+/* Shared home card as the decisive next-action panel. */
+.learner-redesign .study-home-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #d6e6e4 !important;
+  border-left: 5px solid var(--learner-teal) !important;
+  border-radius: 8px !important;
+  background: linear-gradient(135deg, #fff 0%, #f4fbfa 100%) !important;
+  box-shadow: 0 12px 28px rgba(16, 37, 63, 0.07) !important;
+}
+.learner-redesign .study-home-card h2 { color: var(--learner-navy) !important; }
+.learner-redesign .workspace-eyebrow,
+.learner-redesign .study-home-card small { color: var(--learner-teal) !important; font-family: "IBM Plex Mono", ui-monospace, monospace; }
+.learner-redesign .workspace-primary {
+  border-radius: 6px !important;
+  background: var(--learner-teal) !important;
+  font-family: Manrope, sans-serif !important;
+}
+.learner-redesign .workspace-primary:hover { background: var(--learner-teal-dark) !important; transform: translateY(-1px); }
+.learner-redesign .workspace-text-link { color: var(--learner-teal) !important; }
+
+/* Setup flow. Tailwind presentation is constrained through the page root. */
+.learner-activation [class*="rounded-2xl"] { border-radius: 8px !important; }
+.learner-activation [class*="rounded-xl"] { border-radius: 6px !important; }
+.learner-activation [class*="from-slate-950"] { background: var(--learner-deep-navy) !important; }
+.learner-activation [class*="from-blue-700"],
+.learner-activation [class*="bg-blue-700"] { background: var(--learner-teal) !important; }
+.learner-activation [class*="text-blue-700"],
+.learner-activation [class*="text-blue-800"],
+.learner-activation [class*="text-teal-700"] { color: var(--learner-teal) !important; }
+.learner-activation [class*="border-blue-700"],
+.learner-activation [class*="border-teal-700"] { border-color: var(--learner-teal) !important; }
+.learner-activation [class*="ring-blue-100"],
+.learner-activation [class*="ring-teal-100"] { --tw-ring-color: rgba(8, 127, 120, 0.16) !important; }
+.learner-activation [class*="font-black"],
+.learner-activation [class*="font-extrabold"] { font-family: Manrope, system-ui, sans-serif; }
+.learner-activation input[type="date"] { border-radius: 6px !important; border-color: #b9c7cc !important; }
+
+/* Course Pass and attested record / hours use explicit record hierarchy. */
+.learner-training .training-record,
+.learner-record .signed-record,
+.learner-course-pass [class*="shadow-xl"],
+.learner-course-pass [class*="shadow-2xl"] {
+  border-color: var(--learner-line) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 26px rgba(16, 37, 63, 0.07) !important;
+}
+.learner-training .training-record > div > div,
+.learner-record .signed-record > div > div,
+.learner-record .signed-record > section + section > div > div,
+.learner-record .signed-record > section + section > div > div {
+  border-radius: 6px !important;
+}
+.learner-training :is(button, input, details),
+.learner-record :is(button, details),
+.learner-course-pass :is(button, [class*="rounded-xl"], [class*="rounded-2xl"]) { border-radius: 6px !important; }
+.learner-training button[class*="bg-blue-700"],
+.learner-record button[class*="bg-blue-700"],
+.learner-course-pass button[class*="bg-teal-700"],
+.learner-course-pass [class*="bg-teal-700"] { background: var(--learner-teal) !important; }
+.learner-training [class*="text-blue-700"],
+.learner-record [class*="text-blue-700"],
+.learner-course-pass [class*="text-teal-700"] { color: var(--learner-teal) !important; }
+.learner-training table th,
+.learner-record table th {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  letter-spacing: 0.045em;
+}
+.learner-training table :is(th, td),
+.learner-record table :is(th, td) { border-color: var(--learner-line) !important; }
+.learner-record footer .font-mono,
+.learner-training .font-mono { font-family: "IBM Plex Mono", ui-monospace, monospace !important; }
+
+/* Exam countdown and date capture surfaces. */
+.learner-redesign .learner-exam-date,
+.learner-redesign .learner-purchase-date {
+  border-radius: 6px !important;
+  border-color: #c7ddd9 !important;
+  background: var(--learner-teal-soft) !important;
+}
+.learner-redesign .learner-exam-date button,
+.learner-redesign .learner-purchase-date button {
+  border-radius: 5px !important;
+}
+.learner-redesign .learner-exam-date input,
+.learner-redesign .learner-purchase-date input {
+  border-radius: 5px !important;
+  border-color: #a9c9c5 !important;
+  background: #fff !important;
+  color: var(--learner-ink) !important;
+}
+.learner-redesign .learner-exam-date--set { background: #fff !important; }
+.learner-redesign .learner-exam-date--set button[style*="background: rgba"] { background: #eef3f5 !important; border-color: var(--learner-line) !important; color: var(--learner-navy) !important; }
+.learner-redesign .learner-exam-date button[style*="background"]:not([style*="none"]) { background: var(--learner-teal) !important; }
+.learner-redesign .learner-purchase-date button[type="button"]:not(:last-child) { background: var(--learner-teal) !important; }
+
+@media (max-width: 640px) {
+  .learner-auth-card,
+  .learner-magic-card,
+  .learner-purchase-card,
+  .learner-subscription-card { padding: 32px 22px !important; }
+  .learner-account-page .account-page,
+  .learner-dashboard .study-dashboard-content { padding-inline: 16px !important; }
+  .learner-dashboard .study-welcome { padding: 18px; }
+  .learner-training main,
+  .learner-record main,
+  .learner-course-pass main,
+  .learner-activation main { padding-inline: 16px !important; }
+  .learner-training .training-hours-actions { width: 100%; }
+  .learner-training .training-hours-actions > * { flex: 1 1 100%; }
+}
+
+@media print {
+  .learner-redesign { background: #fff !important; color: #17212b !important; }
+  .learner-training main::before,
+  .learner-record main::before { color: #17212b !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .learner-redesign *,
+  .learner-redesign *::before,
+  .learner-redesign *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

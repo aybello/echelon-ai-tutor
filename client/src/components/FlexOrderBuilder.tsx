@@ -165,7 +165,7 @@ export function FlexOrderBuilder({ initialRegion = "ontario" }: { initialRegion?
   };
 
   return (
-    <Card className="border-0 bg-white shadow-lg">
+    <Card className="teams-redesign__flex-order border-0 bg-white shadow-lg">
       <CardHeader>
         <CardTitle className="text-xl text-gray-900">Build a Teams Flex order</CardTitle>
         <p className="text-sm text-gray-500">Buy named, course-specific licences for 3 or 6 months. You can combine both terms in one order, and add more seats later as your team grows.</p>

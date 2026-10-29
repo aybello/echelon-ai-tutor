@@ -112,7 +112,7 @@ export default function ContinuingEducation() {
   const interestCourse = useMemo(() => CEU_COURSES.find((course) => course.key === interestCourseKey), [interestCourseKey]);
 
   return (
-    <div className="ceu-page">
+    <div className="ceu-page ops-ceu-catalogue">
       <SiteNav currentPath="/continuing-education" variant="marketing" />
       <div className="ceu-catalogue-content">
         <section className="ceu-hero">

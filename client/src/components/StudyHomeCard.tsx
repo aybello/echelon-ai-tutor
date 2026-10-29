@@ -5,7 +5,7 @@ export default function StudyHomeCard({ course, title, description, href, action
   course: string; title: string; description: string; href: string; actionLabel?: string;
   secondaryHref?: string; weeklyGoal?: number | null;
 }) {
-  return <section className="study-home-card" aria-label="Your next study step">
+  return <section className="study-home-card learner-study-home-card" aria-label="Your next study step">
     <div className="study-home-copy"><span className="workspace-eyebrow"><Target size={15} /> Your next step</span>
       <p className="study-home-course">{course}</p><h2>{title}</h2><p>{description}</p>
       {weeklyGoal ? <small>Weekly goal: {weeklyGoal} questions</small> : null}

@@ -491,16 +491,16 @@ export default function Admin() {
   // ── Auth gate ──
   if (loading) {
     return (
-      <div style={{ minHeight: "100vh", background: "#FFFFFF", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <div style={{ color: "#64748B", fontFamily: "'Sora', sans-serif", fontSize: 14 }}>Loading…</div>
+      <div className="admin-auth-state ops-admin-surface" style={{ minHeight: "100vh", background: "#FFFFFF", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div className="admin-auth-card" style={{ color: "#64748B", fontFamily: "'Sora', sans-serif", fontSize: 14 }}>Loading…</div>
       </div>
     );
   }
 
   if (!user) {
     return (
-      <div style={{ minHeight: "100vh", background: "#FFFFFF", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Sora', sans-serif" }}>
-        <div style={{ textAlign: "center" }}>
+      <div className="admin-auth-state ops-admin-surface" style={{ minHeight: "100vh", background: "#FFFFFF", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Sora', sans-serif" }}>
+        <div className="admin-auth-card" style={{ textAlign: "center" }}>
           <ShieldCheck size={42} strokeWidth={1.6} style={{ color: "#173A4C", marginBottom: 16 }} aria-hidden="true" />
           <div style={{ color: "#1E293B", fontSize: 18, fontWeight: 700, marginBottom: 8 }}>Sign in required</div>
           <button type="button" onClick={() => { window.location.href = getLoginUrl(); }} style={{ background: "transparent", border: 0, color: "#38BDF8", cursor: "pointer", fontFamily: "inherit", fontSize: 14, padding: 8 }}>Sign in</button>
@@ -511,12 +511,12 @@ export default function Admin() {
 
   if (user.role !== "admin") {
     return (
-      <div style={{ minHeight: "100vh", background: "#FFFFFF", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Sora', sans-serif" }}>
-        <div style={{ textAlign: "center" }}>
+      <div className="admin-auth-state ops-admin-surface" style={{ minHeight: "100vh", background: "#FFFFFF", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Sora', sans-serif" }}>
+        <div className="admin-auth-card" style={{ textAlign: "center" }}>
           <ShieldCheck size={42} strokeWidth={1.6} style={{ color: "#B91C1C", marginBottom: 16 }} aria-hidden="true" />
           <div style={{ color: "#1E293B", fontSize: 18, fontWeight: 700, marginBottom: 8 }}>Admin access only</div>
           <div style={{ color: "#64748B", fontSize: 13, marginBottom: 20 }}>Your account ({user.email ?? user.name}) does not have admin privileges.</div>
-          <Link href="/" style={{ display: "inline-block", padding: "10px 24px", borderRadius: 20, background: "#1D4ED8", color: "#fff", fontSize: 13, fontWeight: 700, fontFamily: "inherit", textDecoration: "none" }}>Back to home</Link>
+          <Link href="/" className="admin-auth-link" style={{ display: "inline-block", padding: "10px 24px", borderRadius: 20, background: "#1D4ED8", color: "#fff", fontSize: 13, fontWeight: 700, fontFamily: "inherit", textDecoration: "none" }}>Back to home</Link>
         </div>
       </div>
     );
@@ -624,7 +624,7 @@ export default function Admin() {
   };
 
   return (
-    <div className="admin-portal" style={{ minHeight: "100vh", background: "#F3F7F9", fontFamily: "'Sora', sans-serif", color: "#15283A" }}>
+    <div className="admin-portal ops-admin-surface" style={{ minHeight: "100vh", background: "#F3F7F9", fontFamily: "'Sora', sans-serif", color: "#15283A" }}>
       <a className="admin-skip-link" href="#admin-main-content">Skip to content</a>
       <style>{`
         .admin-row:hover { background: rgba(0,0,0,0.04) !important; }

@@ -128,7 +128,7 @@ export default function SubscriptionSuccess() {
   }, [accessWritten, requiresSignIn, quizPath, setLocation]);
 
   return (
-    <div style={{
+    <div className="learner-redesign learner-subscription-page" style={{
       minHeight: "100vh",
       background: "linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #0F172A 100%)",
       display: "flex",
@@ -136,8 +136,8 @@ export default function SubscriptionSuccess() {
       fontFamily: "'Sora', sans-serif",
     }}>
       <LandingNav currentPath="/subscription-success" />
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "24px 16px", width: "100%" }}>
-      <div style={{
+      <div className="learner-subscription-main" style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "24px 16px", width: "100%" }}>
+      <div className="learner-subscription-card" style={{
         background: "#fff",
         borderRadius: 20,
         padding: "40px 36px",

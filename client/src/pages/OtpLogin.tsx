@@ -200,6 +200,7 @@ export default function OtpLogin() {
 
   return (
     <div
+      className="learner-redesign learner-auth-page"
       style={{
         fontFamily: "'Sora', sans-serif",
         background: "#F8FAFC",
@@ -211,6 +212,7 @@ export default function OtpLogin() {
     >
       <LandingNav currentPath="/login/otp" />
       <div
+        className="learner-auth-main"
         style={{
           flex: 1,
           display: "flex",
@@ -223,7 +225,7 @@ export default function OtpLogin() {
       >
         {/* Step 1: Email entry */}
         {step === "email" && (
-          <div style={cardStyle}>
+          <div className="learner-auth-card" style={cardStyle}>
             <img
               src={LOGO_URL}
               alt="Echelon Institute"
@@ -280,7 +282,7 @@ export default function OtpLogin() {
 
         {/* Step 2: Code entry */}
         {step === "code" && (
-          <div style={cardStyle}>
+          <div className="learner-auth-card" style={cardStyle}>
             <img
               src={LOGO_URL}
               alt="Echelon Institute"
@@ -403,7 +405,7 @@ export default function OtpLogin() {
 
         {/* Step 3: Success */}
         {step === "success" && (
-          <div style={cardStyle}>
+          <div className="learner-auth-card" style={cardStyle}>
             <img
               src={LOGO_URL}
               alt="Echelon Institute"
@@ -440,7 +442,7 @@ export default function OtpLogin() {
 
         {/* Error state */}
         {step === "error" && (
-          <div style={cardStyle}>
+          <div className="learner-auth-card" style={cardStyle}>
             <img
               src={LOGO_URL}
               alt="Echelon Institute"

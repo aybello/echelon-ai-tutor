@@ -66,12 +66,12 @@ export default function BlogPost() {
   });
 
   if (!post && fetchStatus === "paused") {
-    return <div className="min-h-screen bg-slate-50"><SiteNav currentPath={`/blog/${slug}`} /><div role="status" className="max-w-3xl mx-auto px-4 py-20">You are offline. Reconnect to load this article.</div></div>;
+    return <div className="public-redesign public-redesign-blog-post min-h-screen bg-slate-50"><SiteNav currentPath={`/blog/${slug}`} /><div role="status" className="max-w-3xl mx-auto px-4 py-20">You are offline. Reconnect to load this article.</div></div>;
   }
 
   if (isPending || isLoading) {
     return (
-      <div className="min-h-screen bg-slate-50">
+      <div className="public-redesign public-redesign-blog-post min-h-screen bg-slate-50">
         <SiteNav currentPath={`/blog/${slug}`} />
         <div className="max-w-3xl mx-auto px-4 py-12 animate-pulse">
           <div className="h-4 bg-slate-200 rounded w-1/4 mb-6" />
@@ -90,7 +90,7 @@ export default function BlogPost() {
 
   if (isError && !post) {
     return (
-      <div className="min-h-screen bg-slate-50">
+      <div className="public-redesign public-redesign-blog-post min-h-screen bg-slate-50">
         <SiteNav currentPath={`/blog/${slug}`} />
         <div role="alert" className="max-w-3xl mx-auto px-4 py-20 text-center">
           <h1 className="text-2xl font-bold text-slate-900 mb-2">Article temporarily unavailable</h1>
@@ -103,7 +103,7 @@ export default function BlogPost() {
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-slate-50">
+      <div className="public-redesign public-redesign-blog-post min-h-screen bg-slate-50">
         <SiteNav currentPath={`/blog/${slug}`} />
         <div className="max-w-3xl mx-auto px-4 py-20 text-center">
           <div className="text-4xl mb-4">📄</div>
@@ -124,7 +124,7 @@ export default function BlogPost() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="public-redesign public-redesign-blog-post min-h-screen bg-slate-50">
       <SiteNav currentPath={`/blog/${slug}`} />
 
       {(isError || fetchStatus === "paused") && <div role="status" className="max-w-3xl mx-auto px-4 py-4 text-amber-900">Showing the previously loaded article. {fetchStatus === "paused" ? "Reconnect to check for updates." : "The latest version could not be checked."} <button type="button" disabled={isFetching} onClick={() => void refetch()}>Retry</button></div>}

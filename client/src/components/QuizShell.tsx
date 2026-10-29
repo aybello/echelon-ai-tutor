@@ -517,7 +517,7 @@ export default function QuizShell({
   if (!current && history.length > 0) {
     const pct = Math.round((correctCount / history.length) * 100);
     return (
-      <div className="practice-page" style={{ minHeight: "100vh", background: "#F4F7FB", fontFamily: "'Sora', sans-serif" }}>
+      <div className="practice-page learning-redesign" style={{ minHeight: "100vh", background: "#F4F7FB", fontFamily: "'Sora', sans-serif" }}>
         <SiteNav currentPath={currentPath} /><PracticeSaveStatus courseKey={examType} />
         {showSessionFeedback && examType && (
           <FeedbackModal
@@ -630,7 +630,7 @@ export default function QuizShell({
     ?? (formulaLinks && current.module ? formulaLinks[current.module] : undefined);
 
   return (
-    <div className={`practice-page practice-screen${tutorOpen && renderAITutor ? " has-tutor" : ""}`} style={{ background: "#F4F7FB", fontFamily: "'Sora', sans-serif", overscrollBehavior: "none" }}>
+    <div className={`practice-page practice-screen learning-redesign${tutorOpen && renderAITutor ? " has-tutor" : ""}`} style={{ background: "#F4F7FB", fontFamily: "'Sora', sans-serif", overscrollBehavior: "none" }}>
       <style>{`
         @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
         @keyframes shake  { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-6px)} 40%,80%{transform:translateX(6px)} }

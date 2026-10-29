@@ -33,7 +33,7 @@ export default function EquipmentLab() {
   });
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
+    <div className="learning-redesign equipment-lab-page min-h-screen bg-slate-50 font-sans text-slate-900">
       <SiteNav currentPath="/equipment-lab" />
       <main className="mx-auto max-w-[1280px] px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
         <GuideStudyRecording topic="Equipment Lab - circular clarifier" />

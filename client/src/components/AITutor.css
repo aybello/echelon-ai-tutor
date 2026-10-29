@@ -7,6 +7,7 @@
   background: #fff;
   border-left: 1px solid #e5e7eb;
   box-shadow: -8px 0 32px rgba(0, 0, 0, 0.08);
+  font-family: "Source Sans 3", system-ui, sans-serif;
 }
 .ai-tutor-panel--workspace { height: 100%; width: 100%; }
 .ai-tutor-panel--drawer {
@@ -52,6 +53,9 @@
 .ai-tutor-prompts { max-height: 30%; overflow-y: auto; }
 .ai-tutor-composer { padding-bottom: max(12px, env(safe-area-inset-bottom)) !important; }
 .ai-tutor-composer input { min-width: 0; }
+.ai-tutor-panel :is(button, input):focus-visible { outline: 3px solid #087f78; outline-offset: 2px; }
+.ai-tutor-panel button { transition: transform 150ms ease, background-color 150ms ease, border-color 150ms ease; }
+.ai-tutor-panel button:not(:disabled):active { transform: translateY(1px); }
 @media (max-width: 720px) {
   .ai-tutor-panel { border-left: 0; border-top: 1px solid #e5e7eb; }
   .ai-tutor-panel > div:first-child { padding: 8px 12px !important; }

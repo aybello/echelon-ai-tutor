@@ -155,7 +155,7 @@ function MetricCard({
   accent?: string;
 }) {
   return (
-    <div className="manager-metric-card bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+    <div className="teams-metric-card manager-metric-card bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
       <div className="flex items-center gap-2 text-slate-500 text-sm mb-3">
         <Icon className="w-4 h-4" />
         {label}
@@ -527,7 +527,7 @@ export default function OrgDashboard() {
   );
 
   return (
-    <div className="manager-workspace min-h-screen bg-slate-50">
+    <div className="teams-redesign teams-redesign--manager manager-workspace min-h-screen bg-slate-50">
       <style>{TEAM_REPORT_STYLES}</style>
       {/* Bug fix: welcome banner shown after Stripe checkout redirect */}
       {showWelcomeBanner && (
@@ -557,7 +557,7 @@ export default function OrgDashboard() {
 
       {/* Term progress bar — full-width strip below welcome banner, above header */}
       {termRemainingPct !== null && overview.termEnd && (
-        <div className="bg-white border-b border-slate-100 px-6 py-3">
+        <div className="teams-redesign__term-strip bg-white border-b border-slate-100 px-6 py-3">
           <div className="max-w-6xl mx-auto">
             <div className="flex items-center justify-between mb-1.5">
               <div className="flex items-center gap-1.5 text-xs text-slate-500">
@@ -608,7 +608,7 @@ export default function OrgDashboard() {
       )}
 
       {/* Header */}
-      <header className="bg-white border-b border-slate-200 px-4 sm:px-6 py-4 shadow-sm">
+      <header className="teams-dashboard-header bg-white border-b border-slate-200 px-4 sm:px-6 py-4 shadow-sm">
         <div className="max-w-6xl mx-auto flex items-center justify-between gap-2 flex-wrap">
           <div className="flex items-center gap-3">
             <div className="manager-organization-icon w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center flex-shrink-0">
@@ -698,7 +698,7 @@ export default function OrgDashboard() {
         </div>
       </header>
 
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6 sm:space-y-8">
+      <main className="teams-dashboard-main max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6 sm:space-y-8">
 
         {/* Metric cards */}
         <div className="manager-summary-grid grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -1180,7 +1180,7 @@ export default function OrgDashboard() {
                 </Button>
               </div>
             </div>
-            <div className="bg-gradient-to-br from-slate-900 to-blue-900 rounded-2xl p-5 mb-5 text-white shadow-sm">
+            <div className="teams-outcomes-hero bg-gradient-to-br from-slate-900 to-blue-900 rounded-2xl p-5 mb-5 text-white shadow-sm">
               <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
                 <div>
                   <div className="text-xs font-semibold uppercase tracking-[0.14em] text-blue-200">Activation & outcomes</div>

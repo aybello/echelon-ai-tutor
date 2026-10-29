@@ -64,7 +64,7 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
   const { activatedLicences, assignedLearners, studyingLearners, totalAttempts, avgAccuracy, avgReadiness } = summarizeFlexProgress(data);
 
   return (
-    <Card className="mt-6">
+    <Card className="teams-flex-progress mt-6">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <TrendingUp className="h-5 w-5 text-teal-600" />

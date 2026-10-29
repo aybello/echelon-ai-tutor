@@ -118,7 +118,7 @@ export default function About() {
   );
 
   return (
-    <div style={{ background: "#F8FAFC", minHeight: "100vh", fontFamily: "'Sora', sans-serif" }}>
+    <div className="public-redesign public-redesign-about" style={{ background: "#F8FAFC", minHeight: "100vh", fontFamily: "'Sora', sans-serif" }}>
       <style>{`
         @media (max-width: 640px) {
           .about-hero { padding: 48px 16px 40px !important; }

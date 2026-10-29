@@ -35,7 +35,7 @@ export default function PurchaseExamDatePrompt({ sessionId }: Props) {
 
   if (save.data && (save.data.status === "saved" || save.data.status === "already_set")) {
     return (
-      <div role="status" style={{ background: "#F0FDF4", border: "1px solid #BBF7D0", borderRadius: 12, padding: "14px 16px", marginBottom: 16, textAlign: "left" }}>
+      <div className="learner-purchase-date" role="status" style={{ background: "#F0FDF4", border: "1px solid #BBF7D0", borderRadius: 12, padding: "14px 16px", marginBottom: 16, textAlign: "left" }}>
         <div style={{ fontSize: 13, fontWeight: 700, color: "#15803D" }}>
           {save.data.status === "saved" ? "Your exam date is saved." : "You already have an exam date on file."}
         </div>
@@ -62,7 +62,7 @@ export default function PurchaseExamDatePrompt({ sessionId }: Props) {
       : save.isError ? "We could not save that just now. You can add your exam date from your dashboard." : "";
 
   return (
-    <div style={{ background: "#EFF6FF", border: "1px solid #BFDBFE", borderRadius: 12, padding: "16px", marginBottom: 16, textAlign: "left" }}>
+    <div className="learner-purchase-date" style={{ background: "#EFF6FF", border: "1px solid #BFDBFE", borderRadius: 12, padding: "16px", marginBottom: 16, textAlign: "left" }}>
       <div style={{ fontSize: 12, fontWeight: 700, color: "#1D4ED8", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.06em" }}>
         Stay on track
       </div>

@@ -17,7 +17,7 @@ describe("Nova Scotia saved province", () => {
     const landing = readFileSync(new URL("../pages/Landing.tsx", import.meta.url), "utf8");
     expect(landing).toContain("const handleProvinceSelect = (id: ProvinceId)");
     expect(landing).toContain("setProvince(id)");
-    expect(landing).toContain("<CourseFinder initialProvince={province} />");
+    expect(landing).toContain("<CourseFinder initialProvince={province}");
     expect(landing).toContain('id="find-course"');
     const wpi = readFileSync(new URL("../pages/WpiLanding.tsx", import.meta.url), "utf8");
     expect(wpi).toContain('if (id === "ns") navigate("/?province=NS#find-course")');

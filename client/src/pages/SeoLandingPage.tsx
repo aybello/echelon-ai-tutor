@@ -145,7 +145,7 @@ function RegionPage({ page }: { page: RegionSeoPage }) {
   );
 
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900">
+    <main className="public-redesign public-redesign-seo min-h-screen bg-slate-50 text-slate-900">
       <SiteNav currentPath={page.path} variant="marketing" />
       <section className="border-b border-slate-200 bg-gradient-to-br from-slate-950 via-blue-950 to-teal-900 text-white">
         <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20">

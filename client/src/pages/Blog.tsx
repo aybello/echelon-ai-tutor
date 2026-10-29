@@ -53,7 +53,7 @@ export default function Blog() {
   }, [posts, category, query]);
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="public-redesign public-redesign-blog min-h-screen bg-slate-50">
       <SiteNav currentPath="/blog" />
 
       {/* Hero */}

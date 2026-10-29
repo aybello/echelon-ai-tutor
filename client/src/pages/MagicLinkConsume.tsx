@@ -60,6 +60,7 @@ export default function MagicLinkConsume() {
 
   return (
     <div
+      className="learner-redesign learner-auth-page"
       style={{
         fontFamily: "'Sora', sans-serif",
         background: "#F8FAFC",
@@ -70,8 +71,9 @@ export default function MagicLinkConsume() {
       }}
     >
       <LandingNav currentPath="/auth/magic" />
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "40px 24px", width: "100%" }}>
+      <div className="learner-auth-main" style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "40px 24px", width: "100%" }}>
         <div
+          className="learner-magic-card"
           style={{
             background: "#fff",
             borderRadius: 20,

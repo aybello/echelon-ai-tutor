@@ -298,7 +298,7 @@ export default function StudentDashboard() {
   /* ── Loading state ── */
   if (authLoading || dashboardMe.isLoading) {
     return (
-      <div style={{ fontFamily: "Sora, sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
+      <div className="learner-redesign learner-dashboard" style={{ fontFamily: "Sora, sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
         <SiteNav currentPath="/dashboard" />
         <div style={{ maxWidth: 900, margin: "0 auto", padding: "80px 24px", textAlign: "center" }}>
           <div style={{ color: "#475569", fontSize: 16 }}>Loading your dashboard…</div>
@@ -309,7 +309,7 @@ export default function StudentDashboard() {
 
   if (!authResolved || !hasAccess) {
     return (
-      <div style={{ fontFamily: "Sora, sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
+      <div className="learner-redesign learner-dashboard" style={{ fontFamily: "Sora, sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
         <SiteNav currentPath="/dashboard" />
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "60vh" }}>
           <div style={{ textAlign: "center", color: "#475569", fontSize: 14 }}>
@@ -330,7 +330,7 @@ export default function StudentDashboard() {
   const stats = overview.data;
   const isLoading = overview.isLoading;
   return (
-    <div className="study-dashboard" style={{ fontFamily: "Sora, sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
+    <div className="learner-redesign learner-dashboard study-dashboard" style={{ fontFamily: "Sora, sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
       <style>{DASHBOARD_RESPONSIVE_STYLES}</style>
       <SiteNav currentPath="/dashboard" />
       <div className="study-dashboard-content" style={{ maxWidth: 1040, margin: "0 auto", padding: "28px 20px 100px" }}>

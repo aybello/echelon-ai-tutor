@@ -1,6 +1,12 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "./styles/StudyDesign.css";
+@import "./styles/FullSiteRedesign.css";
+@import "./styles/PublicRedesign.css";
+@import "./styles/LearningRedesign.css";
+@import "./styles/LearnerRedesign.css";
+@import "./styles/TeamsRedesign.css";
+@import "./styles/OperationsRedesign.css";
 @source "./";
 @plugin "@tailwindcss/typography";
 

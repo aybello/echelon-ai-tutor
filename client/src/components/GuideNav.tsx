@@ -47,7 +47,7 @@ export default function GuideNav({ guideId, currentStepId, currentStepLabel, tot
     : LEVELS;
 
   return (
-    <section className="guide-nav" aria-label="Process Guides navigation">
+    <section className="guide-nav learning-redesign" aria-label="Process Guides navigation">
       <GuideStudyRecording preferredCourse={trackingCourse ?? undefined} topic={currentStepLabel} unitsCompleted={progress.record.completedStepIds.length} />
       <style>{`
         .guide-nav { position: relative; z-index: 30; font-family: 'Sora', sans-serif; }

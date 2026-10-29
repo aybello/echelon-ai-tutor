@@ -248,7 +248,7 @@ export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
 
   return (
     <>
-      <Card className="mt-6">
+      <Card className="teams-flex-licence-panel mt-6">
         <CardHeader className="gap-3 sm:flex-row sm:items-center sm:justify-between">
           <CardTitle className="flex flex-wrap items-center gap-2">
             <span>Course Passes</span>

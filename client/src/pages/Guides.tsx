@@ -43,7 +43,7 @@ export default function Guides() {
   const startedGuides = GUIDE_REGISTRY.filter((guide) => progress.guides[guide.id]?.lastStepId).length;
 
   return (
-    <div className="guides-page" style={{ minHeight: "100vh", background: "#F5F8FC", color: "#0B1F38", fontFamily: "'Sora', sans-serif" }}>
+    <div className="guides-page learning-redesign" style={{ minHeight: "100vh", background: "#F5F8FC", color: "#0B1F38", fontFamily: "'Sora', sans-serif" }}>
       <style>{`
         .guides-page * { box-sizing: border-box; }
         .guides-hero-grid {

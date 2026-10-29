@@ -15,12 +15,12 @@ export default function Privacy() {
   });
 
   return (
-    <div style={{ fontFamily: "'Sora', sans-serif", background: "#F1F5F9", minHeight: "100vh" }}>
+    <div className="public-redesign public-redesign-legal" style={{ fontFamily: "'Sora', sans-serif", background: "#F1F5F9", minHeight: "100vh" }}>
       <SiteNav currentPath="/privacy" />
-      <div style={{ maxWidth: 720, margin: "0 auto", padding: "48px 24px 120px" }}>
+      <div className="public-legal-content" style={{ maxWidth: 720, margin: "0 auto", padding: "48px 24px 120px" }}>
 
         {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: 48 }}>
+        <div className="public-legal-header" style={{ textAlign: "center", marginBottom: 48 }}>
           <img src={LOGO_URL} alt="Echelon Institute" style={{ height: 48, width: "auto", marginBottom: 20 }} />
           <h1 style={{ fontSize: 30, fontWeight: 900, color: "#0F172A", margin: "0 0 10px", letterSpacing: "-0.02em" }}>
             Privacy & Security
@@ -107,7 +107,7 @@ export default function Privacy() {
           <p>We may update this policy from time to time. Material changes will be communicated by email to active subscribers. The "last updated" date at the top of this page reflects the most recent revision.</p>
         </LegalSection>
 
-        <div style={{ marginTop: 48, padding: "20px 24px", background: "#fff", borderRadius: 12, border: "1px solid #E2E8F0", textAlign: "center" }}>
+        <div className="public-legal-contact" style={{ marginTop: 48, padding: "20px 24px", background: "#fff", borderRadius: 12, border: "1px solid #E2E8F0", textAlign: "center" }}>
           <p style={{ color: "#64748B", fontSize: 13, margin: "0 0 8px" }}>Questions about privacy or data handling?</p>
           <a href="mailto:abello@echeloninstitute.ca?subject=Privacy%20Question" style={{ color: "#3B82F6", fontWeight: 700, fontSize: 13 }}>Email abello@echeloninstitute.ca →</a>
         </div>
@@ -118,7 +118,7 @@ export default function Privacy() {
 
 function LegalSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div style={{ marginBottom: 32, background: "#fff", borderRadius: 12, border: "1px solid #E2E8F0", padding: "24px 28px" }}>
+    <div className="public-legal-section" style={{ marginBottom: 32, background: "#fff", borderRadius: 12, border: "1px solid #E2E8F0", padding: "24px 28px" }}>
       <h2 style={{ fontSize: 16, fontWeight: 800, color: "#0F172A", margin: "0 0 14px" }}>{title}</h2>
       <div style={{ fontSize: 14, color: "#475569", lineHeight: 1.8 }}>
         {children}

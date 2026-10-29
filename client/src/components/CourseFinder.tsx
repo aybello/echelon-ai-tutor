@@ -4,9 +4,15 @@ import { useLocation, useSearch } from "wouter";
 import { ArrowRight, BookOpen, MapPin } from "lucide-react";
 import { FINDER_PROVINCES, FINDER_TRACKS, getFinderCourses, getFinderLevelLabel, getFinderTrackLabel } from "@/lib/courseFinder";
 import { buildPricingHref, courseProvinceHref, funnelProvince } from "@shared/funnelNavigation";
+import type { ExamFamily } from "@shared/courseRegistry";
 import "./StudyWorkspace.css";
 
-export default function CourseFinder({ initialProvince }: { initialProvince?: string | null }) {
+type CourseFinderProps = {
+  initialProvince?: string | null;
+  onCourseSelected?: (selection: { courseKey: string; examFamily: ExamFamily }) => void;
+};
+
+export default function CourseFinder({ initialProvince, onCourseSelected }: CourseFinderProps) {
   const id = useId();
   const [location, navigate] = useLocation();
   const search = useSearch();
@@ -28,6 +34,13 @@ export default function CourseFinder({ initialProvince }: { initialProvince?: st
     if (validProvince) next.set("province", validProvince);
     if (nextTrack) next.set("track", nextTrack);
     if (nextCourse) next.set("product", nextCourse);
+    const selectedCourse = courses.find(item => item.courseKey === nextCourse);
+    if (selectedCourse && selectedCourse.courseKey !== courseKey) {
+      onCourseSelected?.({
+        courseKey: selectedCourse.courseKey,
+        examFamily: selectedCourse.examFamily,
+      });
+    }
     navigate(`${location.split("?")[0]}${next.size ? `?${next}` : ""}`);
   };
   return <section className="course-finder" aria-labelledby={`${id}-title`}>

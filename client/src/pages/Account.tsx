@@ -261,7 +261,7 @@ export default function Account() {
 
   if (isManager && !isPersonalBilling) {
     return (
-      <div style={{ fontFamily: "'Sora', sans-serif", background: "#F1F5F9", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
+      <div className="learner-redesign learner-account-page" style={{ fontFamily: "'Sora', sans-serif", background: "#F1F5F9", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
         <p style={{ color: "#475569", fontWeight: 700 }}>Opening your team dashboard…</p>
       </div>
     );
@@ -272,7 +272,7 @@ export default function Account() {
   const otherPasses = unlockedExamTypes.filter((t: string) => !EXAM_META[t]);
 
   return (
-    <div style={{ fontFamily: "'Sora', sans-serif", background: "#F1F5F9", minHeight: "100vh" }}>
+    <div className="learner-redesign learner-account-page" style={{ fontFamily: "'Sora', sans-serif", background: "#F1F5F9", minHeight: "100vh" }}>
       <SiteNav currentPath="/account" />
 
       <style>{`

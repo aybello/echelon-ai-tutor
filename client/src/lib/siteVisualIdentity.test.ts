@@ -4,41 +4,52 @@ import { describe, expect, it } from "vitest";
 
 const read = (file: string) => readFileSync(resolve(process.cwd(), file), "utf8");
 
-describe("original Echelon visual identity", () => {
-  it("uses the original display font without loading the retired serif face", () => {
+describe("Echelon technical visual identity", () => {
+  it("loads the approved full-site type system without retired serif faces", () => {
     const html = read("client/index.html");
+    const system = read("client/src/styles/FullSiteRedesign.css");
     const study = read("client/src/styles/StudyDesign.css");
     const admin = read("client/src/pages/admin.css");
-    expect(html).toContain("family=Sora");
-    for (const source of [html, study, admin]) {
+
+    expect(html).toContain("family=Manrope");
+    expect(html).toContain("family=Source+Sans+3");
+    expect(html).toContain("family=IBM+Plex+Mono");
+    for (const source of [html, system, study, admin]) {
       expect(source).not.toMatch(/DM[ +]Serif|Fraunces|Georgia/);
     }
-    expect(study).toContain("font-family: 'Sora', sans-serif");
-    expect(admin).toContain("font-family: 'Sora', sans-serif");
+    expect(system).toContain('font-family: Manrope');
+    expect(system).toContain('font-family: "Source Sans 3"');
+    expect(system).toContain('font-family: "IBM Plex Mono"');
   });
 
-  it("shares the original canvas, card and accent tokens with administration", () => {
+  it("shares the technical canvas, surface, and accent tokens with administration", () => {
     const admin = read("client/src/pages/admin.css");
+    const system = read("client/src/styles/FullSiteRedesign.css");
     for (const [role, token] of [
       ["canvas", "canvas"], ["surface", "surface"], ["ink", "ink"],
       ["border", "line"], ["sidebar", "navy"], ["mint", "teal"],
     ]) {
       expect(admin).toContain(`--admin-${role}: var(--echelon-${token})`);
     }
+    expect(system).toContain("--echelon-navy: #10253f");
+    expect(system).toContain("--echelon-teal: #087f78");
     expect(admin).not.toMatch(/#f5f3ed|#fffefa|#f4e1d6/i);
   });
 
-  it("uses the same type in regional pages without removing regional content", () => {
+  it("applies the shared type system to regional pages without removing regional content", () => {
     const sharedLayout = read("client/src/components/USPageLayout.tsx");
     const sharedCss = read("client/src/components/USPageLayout.css");
+    const publicCss = read("client/src/styles/PublicRedesign.css");
+    const globalCss = read("client/src/index.css");
+
     expect(sharedLayout).toContain('import "./USPageLayout.css"');
-    expect(sharedCss).toContain("font-family: 'Sora', sans-serif");
+    expect(globalCss).toContain('@import "./styles/PublicRedesign.css"');
+    expect(sharedCss).toMatch(/font-family:\s*(?:Manrope|"Source Sans 3")/);
+    expect(publicCss).toContain('font-family: Manrope');
     expect(sharedLayout).toContain('href="/us/courses"');
     for (const name of ["USCourses", "USLanding", "USStatePage", "USStates"]) {
       const page = read(`client/src/pages/${name}.tsx`);
-      if (name === "USLanding") expect(page).toContain(`fontFamily: "'Sora', sans-serif"`);
-      else expect(page).toContain('from "@/components/USPageLayout"');
-      expect(page).not.toContain('fontFamily: "system-ui, sans-serif"');
+      if (name !== "USLanding") expect(page).toContain('from "@/components/USPageLayout"');
       expect(page).toContain("usePageMeta");
       expect(page).toContain("/us/");
     }

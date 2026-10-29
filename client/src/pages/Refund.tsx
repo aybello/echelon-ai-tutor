@@ -20,12 +20,12 @@ export default function Refund() {
   });
 
   return (
-    <div style={{ fontFamily: "'Sora', sans-serif", background: "#F1F5F9", minHeight: "100vh" }}>
+    <div className="public-redesign public-redesign-legal public-redesign-refund" style={{ fontFamily: "'Sora', sans-serif", background: "#F1F5F9", minHeight: "100vh" }}>
       <SiteNav currentPath="/refund" />
-      <div style={{ maxWidth: 720, margin: "0 auto", padding: "48px 24px 120px" }}>
+      <div className="public-legal-content" style={{ maxWidth: 720, margin: "0 auto", padding: "48px 24px 120px" }}>
 
         {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: 48 }}>
+        <div className="public-legal-header" style={{ textAlign: "center", marginBottom: 48 }}>
           <img src={LOGO_URL} alt="Echelon Institute" style={{ height: 48, width: "auto", marginBottom: 20 }} />
           <h1 style={{ fontSize: 30, fontWeight: 900, color: "#0F172A", margin: "0 0 10px", letterSpacing: "-0.02em" }}>
             Refund Policy
@@ -34,7 +34,7 @@ export default function Refund() {
         </div>
 
         {/* Quick summary */}
-        <div style={{ background: "linear-gradient(135deg, #EFF6FF, #F0FDF4)", border: "1px solid #BFDBFE", borderRadius: 14, padding: "24px 28px", marginBottom: 32 }}>
+        <div className="public-refund-summary" style={{ background: "linear-gradient(135deg, #EFF6FF, #F0FDF4)", border: "1px solid #BFDBFE", borderRadius: 14, padding: "24px 28px", marginBottom: 32 }}>
           <h2 style={{ fontSize: 16, fontWeight: 800, color: "#1D4ED8", margin: "0 0 12px" }}>Quick Summary</h2>
           <ul style={{ fontSize: 14, color: "#334155", lineHeight: 1.8, margin: 0, paddingLeft: 20 }}>
             <li><strong>One-time passes:</strong> {REFUND_WINDOW_DAYS}-day refund window and fewer than {INDIVIDUAL_REFUND_QUESTION_LIMIT} completed questions.</li>
@@ -88,7 +88,7 @@ export default function Refund() {
           <p>We aim to respond within 1 business day and process approved refunds within 5–10 business days.</p>
         </LegalSection>
 
-        <div style={{ marginTop: 48, padding: "20px 24px", background: "#fff", borderRadius: 12, border: "1px solid #E2E8F0", textAlign: "center" }}>
+        <div className="public-legal-contact" style={{ marginTop: 48, padding: "20px 24px", background: "#fff", borderRadius: 12, border: "1px solid #E2E8F0", textAlign: "center" }}>
           <p style={{ color: "#64748B", fontSize: 13, margin: "0 0 8px" }}>Questions about refunds?</p>
           <a href={`mailto:${REFUND_CONTACT_EMAIL}?subject=Refund%20Question`} style={{ color: "#3B82F6", fontWeight: 700, fontSize: 13 }}>Email {REFUND_CONTACT_EMAIL} →</a>
         </div>
@@ -99,7 +99,7 @@ export default function Refund() {
 
 function LegalSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div style={{ marginBottom: 32, background: "#fff", borderRadius: 12, border: "1px solid #E2E8F0", padding: "24px 28px" }}>
+    <div className="public-legal-section" style={{ marginBottom: 32, background: "#fff", borderRadius: 12, border: "1px solid #E2E8F0", padding: "24px 28px" }}>
       <h2 style={{ fontSize: 16, fontWeight: 800, color: "#0F172A", margin: "0 0 14px" }}>{title}</h2>
       <div style={{ fontSize: 14, color: "#475569", lineHeight: 1.8 }}>
         {children}

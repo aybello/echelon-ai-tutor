@@ -219,7 +219,7 @@ function ActivationFlow({ auth, oauth }: {
 
   if (status.error) {
     return (
-      <div className="min-h-screen bg-[var(--echelon-canvas)]">
+      <div className="learner-redesign learner-activation min-h-screen bg-[var(--echelon-canvas)]">
         <SiteNav currentPath="/dashboard" />
         <main className="mx-auto max-w-xl px-5 py-20 text-center">
           <div className="rounded-2xl border border-red-200 bg-white p-8 shadow-sm">
@@ -237,7 +237,7 @@ function ActivationFlow({ auth, oauth }: {
   }
 
   return (
-    <div className="min-h-screen bg-[var(--echelon-canvas)] text-slate-900">
+    <div className="learner-redesign learner-activation min-h-screen bg-[var(--echelon-canvas)] text-slate-900">
       <SiteNav currentPath="/dashboard" />
       <main className="mx-auto max-w-4xl px-5 py-8 pb-24 sm:py-12">
         <div className="mb-8 text-center">
@@ -419,7 +419,7 @@ function ActivationFlow({ auth, oauth }: {
 
 function ActivationLoading() {
   return (
-    <div className="min-h-screen bg-[var(--echelon-canvas)]">
+    <div className="learner-redesign learner-activation min-h-screen bg-[var(--echelon-canvas)]">
       <SiteNav currentPath="/dashboard" />
       <div className="flex min-h-[65vh] items-center justify-center"><div className="text-center"><Loader2 className="mx-auto h-8 w-8 animate-spin text-blue-700" /><p className="mt-3 text-sm font-semibold text-slate-600">Preparing your study plan…</p></div></div>
     </div>

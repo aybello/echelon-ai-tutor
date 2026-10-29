@@ -1,0 +1,393 @@
+/* Public discovery redesign — intentionally scoped to public page roots. */
+.public-redesign {
+  --public-navy: #10253F;
+  --public-deep-navy: #0B1D30;
+  --public-teal: #087F78;
+  --public-soft-teal: #EAF6F3;
+  --public-surface: #FFFFFF;
+  --public-subtle: #F5F8F8;
+  --public-ink: #17212B;
+  --public-muted: #647481;
+  --public-border: #DFE6E8;
+  --public-focus: #087F78;
+  min-height: 100vh;
+  background: var(--public-subtle) !important;
+  color: var(--public-ink) !important;
+  font-family: "Source Sans 3", "Source Sans Pro", Arial, sans-serif !important;
+}
+
+.public-redesign :where(h1, h2, h3, h4) {
+  color: var(--public-navy);
+  font-family: Manrope, Arial, sans-serif !important;
+  letter-spacing: -0.025em;
+}
+
+.public-redesign :where(p, li, input, select, textarea, button) {
+  font-family: "Source Sans 3", "Source Sans Pro", Arial, sans-serif;
+}
+
+.public-redesign :where(button, a, input, select, textarea, summary) {
+  transition: color 150ms ease-out, background-color 150ms ease-out, border-color 150ms ease-out, box-shadow 150ms ease-out, opacity 150ms ease-out, transform 150ms ease-out;
+}
+
+.public-redesign :where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 3px solid var(--public-focus) !important;
+  outline-offset: 3px;
+}
+
+.public-redesign :where(button, [role="button"]):not(:disabled):active {
+  transform: translateY(1px);
+}
+
+.public-redesign :where(input, select, textarea) {
+  border-color: var(--public-border) !important;
+  border-radius: 6px !important;
+  color: var(--public-ink) !important;
+  background: #fff !important;
+  box-shadow: none !important;
+}
+
+.public-redesign :where(input, select, textarea):focus {
+  border-color: var(--public-teal) !important;
+  box-shadow: 0 0 0 3px rgba(8, 127, 120, 0.16) !important;
+}
+
+.public-redesign :where(button):disabled {
+  cursor: not-allowed;
+}
+
+.public-redesign .font-mono,
+.public-redesign .public-metadata,
+.public-redesign .us-code {
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace !important;
+}
+
+/* Shared title bands and dense legal/trust content. */
+.public-redesign-legal .public-legal-content {
+  max-width: 780px !important;
+  padding: 56px 24px 96px !important;
+}
+
+.public-redesign-legal .public-legal-header {
+  position: relative;
+  overflow: hidden;
+  margin: 0 0 32px !important;
+  padding: 34px 28px 30px;
+  text-align: left !important;
+  background: var(--public-deep-navy);
+  border: 1px solid var(--public-deep-navy);
+  border-radius: 8px;
+}
+
+.public-redesign-legal .public-legal-header::after {
+  position: absolute;
+  right: 24px;
+  bottom: 0;
+  width: 132px;
+  height: 4px;
+  background: var(--public-teal);
+  content: "";
+}
+
+.public-redesign-legal .public-legal-header img {
+  height: 34px !important;
+  margin: 0 0 18px !important;
+  filter: brightness(0) invert(1);
+}
+
+.public-redesign-legal .public-legal-header h1 {
+  color: #fff !important;
+  font-size: clamp(28px, 5vw, 40px) !important;
+  font-weight: 800 !important;
+}
+
+.public-redesign-legal .public-legal-header p {
+  color: #C5D1D7 !important;
+  font-family: "IBM Plex Mono", ui-monospace, monospace !important;
+  font-size: 12px !important;
+  letter-spacing: 0.02em;
+}
+
+.public-redesign-legal .public-legal-section {
+  margin-bottom: 16px !important;
+  padding: 25px 28px !important;
+  background: var(--public-surface) !important;
+  border: 1px solid var(--public-border) !important;
+  border-left: 4px solid var(--public-teal) !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+}
+
+.public-redesign-legal .public-legal-section h2 {
+  margin-bottom: 12px !important;
+  color: var(--public-navy) !important;
+  font-size: 17px !important;
+  font-weight: 800 !important;
+}
+
+.public-redesign-legal .public-legal-section > div {
+  color: #435460 !important;
+  font-size: 15px !important;
+  line-height: 1.75 !important;
+}
+
+.public-redesign-legal .public-legal-section :where(p, ul) { margin-block: 0 14px; }
+.public-redesign-legal .public-legal-section :where(p:last-child, ul:last-child) { margin-bottom: 0; }
+.public-redesign-legal .public-legal-section a,
+.public-redesign-legal .public-legal-contact a { color: var(--public-teal) !important; font-weight: 700; }
+
+.public-redesign-legal .public-legal-contact {
+  margin-top: 28px !important;
+  padding: 22px 24px !important;
+  background: var(--public-soft-teal) !important;
+  border: 1px solid #B9DDD8 !important;
+  border-radius: 6px !important;
+}
+
+.public-redesign-refund .public-refund-summary {
+  background: var(--public-soft-teal) !important;
+  border: 1px solid #B9DDD8 !important;
+  border-left: 4px solid var(--public-teal) !important;
+  border-radius: 6px !important;
+}
+
+.public-redesign-refund .public-refund-summary h2 { color: var(--public-navy) !important; }
+.public-redesign-refund .public-refund-summary a { color: var(--public-teal) !important; }
+
+/* Pricing: retain the existing checkout state machine while replacing decoration. */
+.public-redesign-pricing .pricing-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--public-deep-navy) !important;
+  border-bottom: 4px solid var(--public-teal);
+}
+
+.public-redesign-pricing .pricing-hero::before {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size: 34px 34px;
+  content: "";
+  pointer-events: none;
+}
+
+.public-redesign-pricing .pricing-hero > * { position: relative; }
+.public-redesign-pricing .pricing-hero h1 { font-family: Manrope, Arial, sans-serif !important; font-weight: 800 !important; }
+.public-redesign-pricing .pricing-hero p { color: #C5D1D7 !important; }
+.public-redesign-pricing .pricing-hero-badge,
+.public-redesign-pricing .province-wpi-tag {
+  border-radius: 4px !important;
+  color: #A7E1DB !important;
+  background: rgba(8,127,120,.20) !important;
+  border-color: rgba(167,225,219,.45) !important;
+  font-family: "IBM Plex Mono", ui-monospace, monospace !important;
+}
+
+.public-redesign-pricing .province-pill { border-radius: 6px !important; }
+.public-redesign-pricing .province-pill:hover { transform: translateY(-1px); }
+.public-redesign-pricing .province-wpi-note { border-radius: 6px !important; }
+.public-redesign-pricing .pricing-content { max-width: 1160px; }
+.public-redesign-pricing .section-header h2 { color: var(--public-navy) !important; }
+.public-redesign-pricing .section-badge { border-radius: 4px !important; }
+.public-redesign-pricing [style*="borderRadius: 16px"],
+.public-redesign-pricing [style*="borderRadius: 18px"],
+.public-redesign-pricing [style*="borderRadius: 20px"] { border-radius: 8px !important; }
+.public-redesign-pricing [style*="linear-gradient(135deg, #EFF6FF"],
+.public-redesign-pricing [style*="background: \"#EFF6FF\""] { box-shadow: none !important; }
+.public-redesign-pricing select { min-height: 48px; }
+.public-redesign-pricing .trust-grid > div { border-radius: 6px !important; }
+.public-redesign-pricing .trust-grid > div > div:first-child { filter: grayscale(1); }
+.public-redesign-pricing footer,
+.public-redesign-pricing > div:last-of-type { border-radius: 0 !important; }
+
+/* About and partnerships use measured information bands rather than decorative cards. */
+.public-redesign-about .about-hero,
+.public-redesign-partnerships > section:first-of-type {
+  position: relative;
+  overflow: hidden;
+  background: var(--public-deep-navy) !important;
+  border-bottom: 4px solid var(--public-teal);
+}
+
+.public-redesign-about .about-hero h1,
+.public-redesign-partnerships > section:first-of-type h1 { color: #fff !important; font-weight: 800 !important; }
+.public-redesign-about .about-hero p,
+.public-redesign-partnerships > section:first-of-type p { color: #C5D1D7 !important; }
+.public-redesign-about .about-hero > div > div:first-child,
+.public-redesign-partnerships > section:first-of-type > div > div:first-child {
+  border-radius: 4px !important;
+  background: rgba(8,127,120,.18) !important;
+  border-color: rgba(167,225,219,.4) !important;
+  color: #A7E1DB !important;
+  font-family: "IBM Plex Mono", ui-monospace, monospace !important;
+}
+
+.public-redesign-about .about-section > div > p,
+.public-redesign-about .about-timeline > div > div:last-child,
+.public-redesign-about .about-changelog-row,
+.public-redesign-partnerships > section:nth-of-type(3) > div > div > div,
+.public-redesign-partnerships form {
+  border-color: var(--public-border) !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+}
+
+.public-redesign-about .about-section > div > p,
+.public-redesign-about .about-timeline > div > div:last-child { border-left: 3px solid var(--public-teal) !important; }
+.public-redesign-about .about-timeline > div:first-child { background: var(--public-teal) !important; }
+.public-redesign-about > section:nth-of-type(4),
+.public-redesign-partnerships > section:nth-of-type(4) {
+  background: var(--public-deep-navy) !important;
+  border-block: 1px solid #203B56;
+}
+.public-redesign-about > section:nth-of-type(4) h2,
+.public-redesign-partnerships > section:nth-of-type(4) h2 { color: #fff !important; }
+.public-redesign-about > section:nth-of-type(4) > div > div > div,
+.public-redesign-partnerships > section:nth-of-type(4) > div > div > div {
+  border-radius: 6px !important;
+  background: #10253F !important;
+  border-color: #2C4A63 !important;
+}
+.public-redesign-about > section:nth-of-type(6) { background: var(--public-deep-navy) !important; }
+.public-redesign-about footer,
+.public-redesign-partnerships footer { background: #fff !important; border-top-color: var(--public-border) !important; }
+.public-redesign-partnerships > section:nth-of-type(2) { border-bottom-color: var(--public-border) !important; }
+.public-redesign-partnerships > section:nth-of-type(2) > div > div > div { color: var(--public-teal) !important; font-family: Manrope, sans-serif; }
+.public-redesign-partnerships > section:nth-of-type(5) { max-width: 720px !important; }
+.public-redesign-partnerships form button { background: var(--public-teal) !important; border-radius: 6px !important; }
+.public-redesign-partnerships form button:hover { background: #066860 !important; }
+.public-redesign-partnerships form input,
+.public-redesign-partnerships form select,
+.public-redesign-partnerships form textarea { min-height: 44px; }
+
+/* Blog and career discovery have a compact editorial/report hierarchy. */
+.public-redesign-blog > .bg-white,
+.public-redesign-blog-post > .bg-white,
+.public-redesign-careers > .bg-white { border-color: var(--public-border) !important; }
+.public-redesign-blog .max-w-4xl,
+.public-redesign-careers .max-w-4xl { max-width: 1120px !important; }
+.public-redesign-blog :where(h1, h2),
+.public-redesign-blog-post :where(h1, h2, h3),
+.public-redesign-careers :where(h1, h2, h3) { color: var(--public-navy) !important; font-family: Manrope, sans-serif !important; }
+.public-redesign-blog .rounded-full,
+.public-redesign-careers .rounded-full { border-radius: 4px !important; }
+.public-redesign-blog .rounded-xl,
+.public-redesign-blog-post .rounded-xl,
+.public-redesign-careers .rounded-xl { border-radius: 6px !important; }
+.public-redesign-blog article,
+.public-redesign-blog-post article,
+.public-redesign-careers button[class*="bg-white"] {
+  border-color: var(--public-border) !important;
+  box-shadow: none !important;
+}
+.public-redesign-blog article:hover,
+.public-redesign-blog-post article:hover,
+.public-redesign-careers button[class*="bg-white"]:hover {
+  border-color: #8ABDB8 !important;
+  box-shadow: 0 8px 20px rgba(16,37,63,.08) !important;
+  transform: translateY(-2px);
+}
+.public-redesign-blog .bg-blue-600,
+.public-redesign-blog-post .bg-blue-600,
+.public-redesign-careers .bg-blue-600 { background: var(--public-teal) !important; }
+.public-redesign-blog .text-blue-600,
+.public-redesign-blog .text-blue-700,
+.public-redesign-blog-post .text-blue-600,
+.public-redesign-blog-post .text-blue-700,
+.public-redesign-careers .text-blue-600,
+.public-redesign-careers .text-blue-700 { color: var(--public-teal) !important; }
+.public-redesign-blog .border-blue-600,
+.public-redesign-careers .border-blue-600 { border-color: var(--public-teal) !important; }
+.public-redesign-blog .bg-blue-50,
+.public-redesign-blog-post .bg-blue-50,
+.public-redesign-careers .bg-blue-50 { background: var(--public-soft-teal) !important; }
+.public-redesign-blog .border-blue-100,
+.public-redesign-blog-post .border-blue-100,
+.public-redesign-careers .border-blue-100 { border-color: #B9DDD8 !important; }
+.public-redesign-blog-post .prose :where(a) { color: var(--public-teal) !important; }
+.public-redesign-blog-post .prose :where(blockquote) { border-left-color: var(--public-teal) !important; background: var(--public-soft-teal) !important; }
+.public-redesign-blog-post .prose :where(code) { color: var(--public-navy) !important; background: #E8EEEE !important; }
+.public-redesign-careers > .bg-slate-900 { background: var(--public-deep-navy) !important; }
+.public-redesign-careers .animate-pulse { animation-duration: 1.4s; }
+.public-redesign-careers .text-slate-400,
+.public-redesign-blog .text-slate-500 { color: var(--public-muted) !important; }
+.public-redesign-careers [role="status"] .animate-pulse { animation: none; }
+.public-redesign-dialog { border-radius: 8px !important; }
+
+/* Compact FAQ as a support index. */
+.public-redesign-faq > section { max-width: 860px !important; padding-top: 64px !important; padding-bottom: 80px !important; }
+.public-redesign-faq h1 { color: var(--public-navy) !important; font-size: clamp(32px, 5vw, 48px) !important; }
+.public-redesign-faq > section > p:first-child { color: var(--public-teal) !important; font-family: "IBM Plex Mono", ui-monospace, monospace; }
+.public-redesign-faq .divide-y { border-color: var(--public-border) !important; border-radius: 6px !important; }
+.public-redesign-faq .divide-y > section { padding: 22px 0 !important; }
+.public-redesign-faq .divide-y h2 { color: var(--public-navy) !important; font-size: 18px !important; }
+.public-redesign-faq a { color: var(--public-teal) !important; }
+
+/* Search-first SEO routes share a clear course catalogue and disclosure panel. */
+.public-redesign-seo { background: var(--public-subtle) !important; }
+.public-redesign-seo .rounded-2xl,
+.public-redesign-seo .rounded-xl { border-radius: 8px !important; }
+.public-redesign-seo .bg-slate-950,
+.public-redesign-seo .from-slate-950 { background: var(--public-deep-navy) !important; }
+.public-redesign-seo .border-slate-200 { border-color: var(--public-border) !important; }
+.public-redesign-seo .text-blue-700,
+.public-redesign-seo .text-teal-700 { color: var(--public-teal) !important; }
+.public-redesign-seo .bg-blue-700 { background: var(--public-teal) !important; }
+.public-redesign-seo .bg-blue-50 { background: var(--public-soft-teal) !important; }
+.public-redesign-seo article[class*="bg-white"] { box-shadow: none !important; }
+.public-redesign-seo article[class*="bg-white"]:hover { border-color: #8ABDB8 !important; }
+.public-redesign-seo aside.bg-amber-50 { background: #FFF9E6 !important; border-color: #E8D394 !important; }
+.public-redesign-seo .tracking-\[0\.14em\] { font-family: "IBM Plex Mono", ui-monospace, monospace !important; letter-spacing: .1em !important; }
+
+/* US landing: the state selector is the primary discovery job; retain it as a deep-navy technical workspace. */
+.public-redesign-us-landing { background: var(--public-subtle) !important; }
+.public-redesign-us-landing > nav { background: var(--public-deep-navy) !important; border-bottom-color: #28445D !important; }
+.public-redesign-us-landing > section:first-of-type,
+.public-redesign-us-landing > section:nth-of-type(5) { background: var(--public-deep-navy) !important; }
+.public-redesign-us-landing > section:nth-of-type(2) { background: #fff !important; }
+.public-redesign-us-landing > section:nth-of-type(2) span { color: var(--public-navy) !important; font-family: Manrope, sans-serif !important; }
+.public-redesign-us-landing > section:nth-of-type(3),
+.public-redesign-us-landing > section:nth-of-type(4) { background: var(--public-subtle) !important; }
+.public-redesign-us-landing > section:nth-of-type(3) h2,
+.public-redesign-us-landing > section:nth-of-type(4) h2 { color: var(--public-navy) !important; }
+.public-redesign-us-landing > section:nth-of-type(3) p,
+.public-redesign-us-landing > section:nth-of-type(4) p { color: var(--public-muted) !important; }
+.public-redesign-us-landing > section:nth-of-type(3) > div > div > div > div,
+.public-redesign-us-landing > section:nth-of-type(4) > div > div > div > div {
+  background: #fff !important;
+  border-color: var(--public-border) !important;
+  border-radius: 8px !important;
+}
+.public-redesign-us-landing > section:nth-of-type(3) h3,
+.public-redesign-us-landing > section:nth-of-type(4) h3 { color: var(--public-navy) !important; }
+.public-redesign-us-landing > section:nth-of-type(3) > div > div > div > div:hover { transform: translateY(-2px) !important; border-color: #8ABDB8 !important; }
+.public-redesign-us-landing > section:nth-of-type(4) { background: var(--public-deep-navy) !important; }
+.public-redesign-us-landing > section:nth-of-type(4) h2 { color: #fff !important; }
+.public-redesign-us-landing > section:nth-of-type(4) p { color: #C5D1D7 !important; }
+.public-redesign-us-landing > section:nth-of-type(4) input { background: #10253F !important; border-color: #47647B !important; color: #fff !important; }
+.public-redesign-us-landing > section:nth-of-type(4) > div > div > div > div { background: #10253F !important; border-color: #2C4A63 !important; }
+.public-redesign-us-landing footer { background: #071522 !important; }
+.public-redesign-us-landing .btn-pulse { border-radius: 6px !important; background: var(--public-teal) !important; box-shadow: none !important; }
+
+@media (max-width: 720px) {
+  .public-redesign-legal .public-legal-content { padding: 32px 16px 64px !important; }
+  .public-redesign-legal .public-legal-header { padding: 28px 20px 24px; }
+  .public-redesign-legal .public-legal-section { padding: 20px 18px !important; }
+  .public-redesign-about > section,
+  .public-redesign-partnerships > section { padding-inline: 16px !important; }
+  .public-redesign-blog .max-w-4xl,
+  .public-redesign-blog-post .max-w-3xl,
+  .public-redesign-careers .max-w-4xl { padding-inline: 16px !important; }
+  .public-redesign-us-landing > nav { padding-inline: 16px !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .public-redesign *,
+  .public-redesign *::before,
+  .public-redesign *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

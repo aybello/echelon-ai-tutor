@@ -21,9 +21,12 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import { useStructuredData } from "@/hooks/useStructuredData";
 import { landingPageSchemas } from "@/lib/structuredData";
 import { trpc } from "@/lib/trpc";
+import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
+import { getMarketingAttribution } from "@/lib/marketingAnalytics";
 import { useProvince, type ProvinceId } from "@/hooks/useProvince";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { INDIVIDUAL_REFUND_SUMMARY, REFUND_CONTACT_EMAIL } from "@shared/refundPolicy";
+import type { ExamFamily } from "@shared/courseRegistry";
 import { useGeoRegion } from "@/hooks/useGeoRegion";
 import "./Landing.css";
 
@@ -226,6 +229,7 @@ export default function Landing() {
   const { isAuthenticated } = useAuth();
   const dashboardMe = trpc.dashboardAuth.me.useQuery(undefined, { retry: false, staleTime: 5 * 60 * 1000 });
   const updateProvinceMutation = trpc.auth.updateProvince.useMutation();
+  const trackCourseSelection = trpc.funnelAnalytics.track.useMutation();
   const isSignedIn = isAuthenticated || !!dashboardMe.data?.email;
   const [showOitPreviewChoice, setShowOitPreviewChoice] = useState(false);
   const [nationalWaitlistOpen, setNationalWaitlistOpen] = useState(false);
@@ -253,6 +257,19 @@ export default function Landing() {
   const closePreviewChoice = () => {
     setShowOitPreviewChoice(false);
     requestAnimationFrame(() => previewTriggerRef.current?.focus());
+  };
+
+  const recordCourseBrowse = ({ courseKey, examFamily }: { courseKey: string; examFamily: ExamFamily }) => {
+    // Selecting a course on the homepage is research, not purchase intent.
+    // The pricing buy button remains the only product_selected emission.
+    trackCourseSelection.mutate({
+      event: "course_browsed",
+      courseKey,
+      surface: "course_card",
+      visitorId: getAnonymousAnalyticsId(),
+      ...getMarketingAttribution("/"),
+      province: examFamily === "ontario" ? "ontario" : "western",
+    });
   };
 
   return (
@@ -293,7 +310,7 @@ export default function Landing() {
         <section id="courses" className="homepage-finder-section" aria-label="Find your certification course">
           <span id="find-course" className="homepage-anchor-target" aria-hidden="true" />
           <div className="homepage-finder-intro"><span className="homepage-kicker"><MapPin size={14} aria-hidden="true" /> Course matching</span><p>Start with the exact route that fits where you write your exam.</p></div>
-          <CourseFinder initialProvince={province} />
+          <CourseFinder initialProvince={province} onCourseSelected={recordCourseBrowse} />
           <button type="button" className="homepage-waitlist-link" onClick={() => setNationalWaitlistOpen(true)}>Need a course path that is not listed? Join the update list <ArrowRight size={15} aria-hidden="true" /></button>
         </section>
 

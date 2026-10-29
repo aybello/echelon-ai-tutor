@@ -390,7 +390,7 @@ export default function IncidentCommand() {
   // ─── INTRO ──────────────────────────────────────────────────────────────────
   if (mode === "intro") {
     return (
-      <div className="min-h-screen text-white" style={{ fontFamily: "'Sora', sans-serif", background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0E7490 100%)" }}>
+      <div className="learning-redesign command-page min-h-screen text-white" style={{ fontFamily: "'Sora', sans-serif", background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0E7490 100%)" }}>
         <SiteNav currentPath={location} brandName="Echelon Command" />
         <style>{`@keyframes commandPulse{0%,100%{opacity:.38;transform:scale(1)}50%{opacity:.9;transform:scale(1.08)}} .command-grid{background-image:linear-gradient(rgba(45,212,191,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(45,212,191,.12) 1px,transparent 1px);background-size:32px 32px}`}</style>
         <main className="command-grid relative min-h-[calc(100vh-64px)] overflow-hidden">
@@ -460,7 +460,7 @@ export default function IncidentCommand() {
   // ─── DEBRIEF ─────────────────────────────────────────────────────────────────
   if (mode === "debrief" && debrief) {
     return (
-      <div className="min-h-screen text-white" style={{ fontFamily: "'Sora', sans-serif", background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0E7490 100%)" }}>
+      <div className="learning-redesign command-page min-h-screen text-white" style={{ fontFamily: "'Sora', sans-serif", background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0E7490 100%)" }}>
         <SiteNav currentPath={location} brandName="Echelon Command" />
         <main className="mx-auto max-w-7xl px-5 py-10">
           <div className="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end">
@@ -551,7 +551,7 @@ export default function IncidentCommand() {
 
   // ─── LIVE ────────────────────────────────────────────────────────────────────
   return (
-    <div className="min-h-screen text-white" style={{ fontFamily: "'Sora', sans-serif", background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0E7490 100%)" }}>
+    <div className="learning-redesign command-page min-h-screen text-white" style={{ fontFamily: "'Sora', sans-serif", background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0E7490 100%)" }}>
       <SiteNav currentPath={location} brandName="Echelon Command" />
       <main className="mx-auto max-w-[1500px] px-4 py-5">
         <header className="mb-4 flex flex-col justify-between gap-4 rounded-2xl border border-slate-700 bg-slate-800 px-5 py-4 lg:flex-row lg:items-center">

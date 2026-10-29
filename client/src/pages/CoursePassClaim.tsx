@@ -71,7 +71,7 @@ export default function CoursePassClaim() {
   const isVerified = !!session.data?.email;
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="learner-redesign learner-course-pass min-h-screen bg-slate-50">
       <LandingNav currentPath="/course-pass/claim" />
       <main className="mx-auto max-w-2xl px-5 py-14">
         <Card className="border-slate-200 shadow-xl shadow-slate-200/50">

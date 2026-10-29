@@ -300,7 +300,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
     const unknownCount = reviewing ? 0 : standardUnknownCount;
     const reviewedTotal = reviewing ? reviewStartCount : deck.length;
     return (
-      <div style={{ minHeight: "100vh", background: "var(--echelon-canvas)" }}>
+      <div className="learning-redesign flashcard-page--complete" style={{ minHeight: "100vh", background: "var(--echelon-canvas)" }}>
         <SiteNav currentPath={window.location.pathname} />
         {email && persistence.status.startsWith("error") && <p role="status" className="p-3 text-center text-amber-800">Flashcard changes are waiting to save. <button onClick={persistence.retry} className="underline">Retry</button></p>}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "48px 24px" }}>
@@ -344,7 +344,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
   }
 
   return (
-    <div className="flashcard-page" style={{ minHeight: "100vh", background: "var(--echelon-canvas)", fontFamily: "'Sora', sans-serif" }}>
+    <div className="flashcard-page learning-redesign" style={{ minHeight: "100vh", background: "var(--echelon-canvas)", fontFamily: "'Sora', sans-serif" }}>
       <SiteNav currentPath={window.location.pathname} />
         {email && persistence.status.startsWith("error") && <p role="status" className="p-3 text-center text-amber-800">Flashcard changes are waiting to save. <button onClick={persistence.retry} className="underline">Retry</button></p>}
       <style>{`

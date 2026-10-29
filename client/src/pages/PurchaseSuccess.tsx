@@ -221,6 +221,7 @@ export default function PurchaseSuccess() {
 
   return (
     <div
+      className="learner-redesign learner-purchase-page"
       style={{
         fontFamily: "'Sora', sans-serif",
         background: "#F8FAFC",
@@ -231,8 +232,9 @@ export default function PurchaseSuccess() {
       }}
     >
       <LandingNav currentPath="/purchase-success" />
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "40px 24px", width: "100%" }}>
+      <div className="learner-purchase-main" style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "40px 24px", width: "100%" }}>
       <div
+        className="learner-purchase-card"
         style={{
           background: "#fff",
           borderRadius: 20,

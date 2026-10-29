@@ -55,7 +55,7 @@ export default function USLanding() {
   const featuredStates = US_STATE_NAMES.slice(0, 15);
 
   return (
-    <div style={{ background: "#0F172A", minHeight: "100vh", fontFamily: "'Sora', sans-serif", color: "#fff" }}>
+    <div className="public-redesign public-redesign-us-landing" style={{ background: "#0F172A", minHeight: "100vh", fontFamily: "'Sora', sans-serif", color: "#fff" }}>
       {/* Nav */}
       <nav style={{ position: "sticky", top: 0, zIndex: 50, background: "rgba(15,23,42,0.95)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.08)", padding: "10px 24px", minHeight: 56, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
         <Link href="/us">

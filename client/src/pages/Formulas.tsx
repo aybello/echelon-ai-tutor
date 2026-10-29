@@ -747,7 +747,7 @@ export default function Formulas() {
   const totalFormulas = CATEGORIES.reduce((sum, c) => sum + c.formulas.length, 0);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+    <div className="formulas-page learning-redesign" style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
       <style>{`
         @keyframes fadeUp   { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
         @keyframes fadeDown { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
@@ -765,7 +765,7 @@ export default function Formulas() {
 
       <FormulaSourceNotes />
       {/* ── HERO BANNER ── */}
-      <div style={{
+      <div className="formulas-hero" style={{
         background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 60%, #0E7490 100%)",
         padding: "40px 24px",
         textAlign: "center",
@@ -827,7 +827,7 @@ export default function Formulas() {
       </div>
 
       {/* ── CATEGORY FILTER ── */}
-      <div style={{
+      <div className="formulas-filter" style={{
         background: "#fff",
         borderBottom: "1px solid #E5E7EB",
         padding: "14px 24px",
@@ -1021,7 +1021,7 @@ function FormulaCardWrapper({
   const isExpanded = forceExpand || localExpand;
 
   return (
-    <div style={{
+    <div className="learning-redesign-formula-card" style={{
       background: "#fff",
       borderRadius: 14,
       border: "1px solid #E5E7EB",
@@ -1031,6 +1031,7 @@ function FormulaCardWrapper({
     }}>
       {/* Header */}
       <div
+        className="learning-redesign-formula-card__header"
         onClick={() => setLocalExpand(!localExpand)}
         style={{
           padding: "16px 20px",

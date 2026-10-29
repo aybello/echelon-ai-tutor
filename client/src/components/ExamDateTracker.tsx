@@ -101,7 +101,7 @@ export default function ExamDateTracker({ email, productKey, productLabel, color
   // If they have an exam date set
   if (examDate && days !== null) {
     return (
-      <div style={{
+      <div className="learner-exam-date learner-exam-date--set" style={{
         marginTop: 8,
         padding: "10px 14px",
         background: "rgba(15,23,42,0.6)",
@@ -188,7 +188,7 @@ export default function ExamDateTracker({ email, productKey, productLabel, color
   // No exam date set yet — show subtle prompt
   if (showPicker) {
     return (
-      <div style={{
+      <div className="learner-exam-date" style={{
         marginTop: 8,
         padding: "12px 14px",
         background: "rgba(15,23,42,0.6)",
@@ -239,6 +239,7 @@ export default function ExamDateTracker({ email, productKey, productLabel, color
   // Collapsed prompt
   return (
     <button
+      className="learner-exam-date"
       onClick={() => setShowPicker(true)}
       style={{
         marginTop: 8,

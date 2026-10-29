@@ -405,7 +405,7 @@ export default function Lab() {
   const [activeTab, setActiveTab] = useState<Tab>("sampling");
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+    <div className="lab-page learning-redesign" style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
       <style>{`
         .lab-grid-2 > *, .lab-grid-3 > * { min-width: 0; overflow-wrap: anywhere; }
         @keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
@@ -424,7 +424,7 @@ export default function Lab() {
       <div className="lab-main" style={{ maxWidth: 900, margin: "0 auto", padding: "28px 20px 80px", animation: "fadeUp 0.3s ease both" }}>
 
         {/* Hero */}
-        <div style={{ background: "linear-gradient(135deg, #0F766E, #1D4ED8)", borderRadius: 20, padding: "28px 32px", marginBottom: 24, color: "#fff" }}>
+        <div className="lab-card" style={{ background: "linear-gradient(135deg, #0F766E, #1D4ED8)", borderRadius: 20, padding: "28px 32px", marginBottom: 24, color: "#fff" }}>
           <h1 style={{ fontSize: 22, fontWeight: 800, margin: "0 0 6px" }}>🔬 Lab & Sampling Module</h1>
           <p style={{ fontSize: 13, opacity: 0.9, margin: 0, lineHeight: 1.6 }}>
             Sampling procedures, chain of custody forms, QA/QC controls, parameter reference table, and lab calculators — everything you need for the lab section of your certification exam.
@@ -472,7 +472,7 @@ export default function Lab() {
 
           {/* CHAIN OF CUSTODY */}
           {activeTab === "coc" && (
-            <div style={{ background: "#fff", borderRadius: 20, padding: "32px", boxShadow: "0 4px 24px rgba(0,0,0,0.07)" }}>
+            <div className="lab-content-panel" style={{ background: "#fff", borderRadius: 20, padding: "32px", boxShadow: "0 4px 24px rgba(0,0,0,0.07)" }}>
               <ChainOfCustody />
             </div>
           )}
@@ -510,7 +510,7 @@ export default function Lab() {
 
           {/* PARAMETER REFERENCE */}
           {activeTab === "parameters" && (
-            <div style={{ background: "#fff", borderRadius: 20, padding: "28px", boxShadow: "0 4px 24px rgba(0,0,0,0.07)", overflowX: "auto" }}>
+            <div className="lab-content-panel" style={{ background: "#fff", borderRadius: 20, padding: "28px", boxShadow: "0 4px 24px rgba(0,0,0,0.07)", overflowX: "auto" }}>
               <h2 style={{ fontSize: 16, fontWeight: 800, color: "#0F172A", margin: "0 0 20px" }}>📊 Ontario Drinking Water & Wastewater Parameter Reference</h2>
               <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 11, minWidth: 800 }}>
                 <thead>
@@ -548,7 +548,7 @@ export default function Lab() {
 
           {/* LAB CALCULATORS */}
           {activeTab === "calc" && (
-            <div style={{ background: "#fff", borderRadius: 20, padding: "32px", boxShadow: "0 4px 24px rgba(0,0,0,0.07)" }}>
+            <div className="lab-content-panel" style={{ background: "#fff", borderRadius: 20, padding: "32px", boxShadow: "0 4px 24px rgba(0,0,0,0.07)" }}>
               <LabCalculators />
             </div>
           )}

@@ -1289,7 +1289,7 @@ export default function Pricing() {
   const selectedAnnualSubscription = currentAnnualTiers.find(tier => tier.tier === selectedAnnualTier);
 
   return (
-    <div className="pricing-page">
+    <div className="pricing-page public-redesign public-redesign-pricing">
       <style>{PRICING_STYLES}</style>
 
       {/* ── Nav ── */}

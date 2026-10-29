@@ -1,0 +1,229 @@
+/*
+ * Full-site visual foundation.
+ * Presentation-only: route, access, entitlement, checkout and content behavior
+ * remain owned by the existing page components and server contracts.
+ */
+:root {
+  --echelon-navy: #10253f;
+  --echelon-navy-soft: #183a5f;
+  --echelon-blue: #10253f;
+  --echelon-blue-bright: #087f78;
+  --echelon-teal: #087f78;
+  --echelon-teal-soft: #eaf6f3;
+  --echelon-ink: #17212b;
+  --echelon-copy: #425466;
+  --echelon-muted: #647481;
+  --echelon-line: #dfe6e8;
+  --echelon-canvas: #f5f8f8;
+  --echelon-surface: #ffffff;
+  --echelon-surface-soft: #f5f8f8;
+  --echelon-focus: #087f78;
+  --echelon-radius-control: 6px;
+  --echelon-radius-card: 8px;
+  --echelon-shadow-sm: 0 1px 2px rgba(16, 37, 63, 0.04), 0 10px 24px rgba(16, 37, 63, 0.05);
+  --echelon-shadow-md: 0 18px 40px rgba(16, 37, 63, 0.11);
+
+  --background: oklch(0.973 0.004 182);
+  --foreground: oklch(0.16 0.026 247);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.16 0.026 247);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.16 0.026 247);
+  --primary: oklch(0.53 0.096 181);
+  --primary-foreground: oklch(0.99 0.002 180);
+  --secondary: oklch(0.953 0.01 181);
+  --secondary-foreground: oklch(0.22 0.025 247);
+  --muted: oklch(0.953 0.01 181);
+  --muted-foreground: oklch(0.49 0.025 236);
+  --accent: oklch(0.937 0.026 180);
+  --accent-foreground: oklch(0.22 0.055 181);
+  --border: oklch(0.9 0.01 190);
+  --input: oklch(0.9 0.01 190);
+  --ring: oklch(0.53 0.096 181);
+  --chart-1: oklch(0.53 0.096 181);
+  --chart-2: oklch(0.32 0.055 247);
+  --chart-3: oklch(0.64 0.12 161);
+  --chart-4: oklch(0.75 0.13 78);
+  --chart-5: oklch(0.63 0.16 28);
+}
+
+.echelon-system-shell {
+  min-height: 100dvh;
+  color: var(--echelon-ink);
+  background: var(--echelon-canvas);
+  font-family: "Source Sans 3", system-ui, sans-serif;
+}
+
+.echelon-system-shell :is(h1, h2, h3, h4, h5, h6) {
+  font-family: Manrope, system-ui, sans-serif;
+  color: var(--echelon-navy);
+}
+
+.echelon-system-shell :is(code, kbd, samp, .formula-mono, [data-echelon-mono]) {
+  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.echelon-system-shell :focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--echelon-teal) 75%, white);
+  outline-offset: 3px;
+}
+
+.echelon-system-shell .btn-primary,
+.echelon-system-shell .workspace-primary {
+  background: var(--echelon-teal);
+  border-radius: var(--echelon-radius-control);
+  box-shadow: none;
+  font-family: Manrope, system-ui, sans-serif;
+}
+
+.echelon-system-shell .btn-primary:hover,
+.echelon-system-shell .workspace-primary:hover {
+  background: #066a65;
+  box-shadow: 0 8px 18px rgba(8, 127, 120, 0.18);
+  transform: translateY(-1px);
+}
+
+.echelon-system-shell .echelon-gradient {
+  background: linear-gradient(135deg, var(--echelon-navy), var(--echelon-teal));
+}
+
+/* Shared public navigation and course workspace. The component structure and
+   interaction states remain unchanged. */
+.echelon-system-shell .echelon-site-header {
+  font-family: "Source Sans 3", system-ui, sans-serif;
+}
+
+.echelon-system-shell .echelon-global-nav {
+  min-height: 68px;
+  height: 68px;
+  border-bottom-color: var(--echelon-line);
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 1px 0 rgba(16, 37, 63, 0.03);
+}
+
+.echelon-system-shell .echelon-brand-copy strong {
+  color: var(--echelon-navy);
+  font-family: Manrope, system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.echelon-system-shell .echelon-brand-copy small,
+.echelon-system-shell .echelon-resource-link small {
+  color: var(--echelon-muted);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 8px;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}
+
+.echelon-system-shell .echelon-nav-link {
+  border-radius: 5px;
+  color: var(--echelon-copy);
+  font-family: "Source Sans 3", system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.echelon-system-shell .echelon-nav-link:hover,
+.echelon-system-shell .echelon-nav-link.is-active {
+  color: var(--echelon-teal);
+  background: var(--echelon-teal-soft);
+}
+
+.echelon-system-shell :is(.echelon-pricing-link, .echelon-dashboard-link, .echelon-account-link, .echelon-menu-button) {
+  border-radius: 5px;
+  font-family: Manrope, system-ui, sans-serif;
+}
+
+.echelon-system-shell .echelon-pricing-link {
+  color: var(--echelon-teal);
+  background: var(--echelon-teal-soft);
+}
+
+.echelon-system-shell .echelon-pricing-link:hover,
+.echelon-system-shell .echelon-pricing-link.is-active {
+  color: #fff;
+  background: var(--echelon-teal);
+}
+
+.echelon-system-shell .echelon-dashboard-link {
+  color: var(--echelon-navy);
+  background: #eef3f5;
+}
+
+.echelon-system-shell .echelon-dashboard-link:hover { background: #e3ecef; }
+.echelon-system-shell .echelon-account-link { background: var(--echelon-navy); }
+.echelon-system-shell .echelon-account-link:hover { background: var(--echelon-navy-soft); }
+
+.echelon-system-shell :is(.echelon-courses-menu, .echelon-resources-menu, .echelon-mobile-menu) {
+  border-radius: 8px;
+  border-color: var(--echelon-line);
+  box-shadow: var(--echelon-shadow-md);
+}
+
+.echelon-system-shell .echelon-resource-link { border-radius: 5px; }
+.echelon-system-shell .echelon-resource-link:hover { background: var(--echelon-surface-soft); }
+.echelon-system-shell .echelon-resource-link span { color: var(--echelon-navy); font-family: Manrope, system-ui, sans-serif; }
+
+.echelon-system-shell .echelon-course-bar {
+  background: var(--echelon-navy);
+  box-shadow: 0 6px 16px rgba(16, 37, 63, 0.13);
+}
+
+.echelon-system-shell .echelon-course-identity small,
+.echelon-system-shell .echelon-course-tab,
+.echelon-system-shell .echelon-mobile-course-tab {
+  font-family: "Source Sans 3", system-ui, sans-serif;
+}
+
+.echelon-system-shell .echelon-course-identity small {
+  color: #a8c7c4;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  letter-spacing: 0.02em;
+}
+
+.echelon-system-shell .echelon-course-tab.is-active,
+.echelon-system-shell .echelon-mobile-course-tab.is-active {
+  background: var(--echelon-teal);
+  box-shadow: 0 3px 10px rgba(8, 127, 120, 0.28);
+}
+
+.echelon-system-shell .echelon-mobile-menu-heading { color: var(--echelon-teal); }
+.echelon-system-shell .echelon-mobile-links a:hover,
+.echelon-system-shell .echelon-mobile-links a.is-active,
+.echelon-system-shell .echelon-mobile-tool-link.is-active,
+.echelon-system-shell .echelon-mobile-tool-link:hover { color: var(--echelon-teal); background: var(--echelon-teal-soft); }
+.echelon-system-shell .echelon-mobile-actions a { color: var(--echelon-navy); background: #eef3f5; border-radius: 5px; }
+.echelon-system-shell .echelon-mobile-actions .echelon-mobile-pricing-link { background: var(--echelon-teal); }
+.echelon-system-shell .echelon-mobile-actions a:last-child { background: var(--echelon-navy); }
+
+/* Visual reset for the shared system. Individual surface sheets add targeted
+   structure without rewriting data/state components. */
+.echelon-system-shell .echelon-page-surface {
+  background: var(--echelon-canvas);
+  color: var(--echelon-ink);
+}
+
+.echelon-system-shell .echelon-meta-label {
+  color: var(--echelon-teal);
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 720px) {
+  .echelon-system-shell .echelon-global-nav { min-height: 60px; height: 60px; }
+  .echelon-system-shell .echelon-menu-backdrop { inset-block-start: 60px; }
+  .echelon-system-shell .echelon-mobile-menu { top: 60px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .echelon-system-shell *,
+  .echelon-system-shell *::before,
+  .echelon-system-shell *::after {
+    scroll-behavior: auto !important;
+  }
+}

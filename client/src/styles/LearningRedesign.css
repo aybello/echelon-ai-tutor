@@ -1,0 +1,451 @@
+/*
+ * Learning Redesign
+ * Presentation-only system for learner study surfaces. All selectors are scoped
+ * to .learning-redesign or an existing learner component root.
+ */
+.learning-redesign {
+  --lr-navy: #10253f;
+  --lr-deep: #0b1d30;
+  --lr-teal: #087f78;
+  --lr-teal-soft: #eaf6f3;
+  --lr-canvas: #f5f8f8;
+  --lr-surface: #ffffff;
+  --lr-ink: #17212b;
+  --lr-muted: #647481;
+  --lr-line: #dfe6e8;
+  --lr-success: #167a4b;
+  --lr-success-soft: #eaf7ef;
+  --lr-warning: #a55d09;
+  --lr-warning-soft: #fff5df;
+  --lr-danger: #b64040;
+  --lr-danger-soft: #fff0ef;
+  color: var(--lr-ink);
+  background: var(--lr-canvas);
+  font-family: "Source Sans 3", system-ui, sans-serif !important;
+}
+
+.learning-redesign :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--lr-navy);
+  font-family: Manrope, system-ui, sans-serif !important;
+  letter-spacing: -0.025em;
+}
+
+.learning-redesign :is(button, input, select, textarea) {
+  font-family: "Source Sans 3", system-ui, sans-serif !important;
+}
+
+.learning-redesign :is(button, a, input, select, textarea, summary):focus-visible {
+  outline: 3px solid var(--lr-teal) !important;
+  outline-offset: 3px !important;
+}
+
+.learning-redesign :is(button, a, [role="button"]) {
+  transition: transform 150ms cubic-bezier(.2,.8,.2,1), background-color 150ms ease, border-color 150ms ease, color 150ms ease, box-shadow 150ms ease;
+}
+
+.learning-redesign :is(button:not(:disabled), a):active {
+  transform: translateY(1px);
+}
+
+/* Practice workspace -------------------------------------------------------- */
+.learning-redesign.practice-page {
+  background: var(--lr-canvas) !important;
+}
+
+.learning-redesign .practice-header {
+  background: var(--lr-surface) !important;
+  border-bottom-color: var(--lr-line) !important;
+  color: var(--lr-ink) !important;
+}
+
+.learning-redesign .workspace-eyebrow {
+  color: var(--lr-teal) !important;
+  font-family: "IBM Plex Mono", ui-monospace, monospace !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: .1em !important;
+}
+
+.learning-redesign .practice-title-row h1 {
+  color: var(--lr-navy) !important;
+  font-family: Manrope, system-ui, sans-serif !important;
+  font-weight: 800 !important;
+}
+
+.learning-redesign .practice-title-row p,
+.learning-redesign .practice-session-stats,
+.learning-redesign .practice-preview {
+  color: var(--lr-muted) !important;
+}
+
+.learning-redesign .practice-session-stats strong { color: var(--lr-navy) !important; }
+
+.learning-redesign .practice-options {
+  background: #f8fbfb !important;
+  border-color: var(--lr-line) !important;
+  border-radius: 6px !important;
+}
+
+.learning-redesign .practice-options summary {
+  color: var(--lr-navy) !important;
+  font-weight: 650 !important;
+}
+
+.learning-redesign .practice-options-body label { color: var(--lr-navy) !important; }
+.learning-redesign .practice-options select {
+  border-color: var(--lr-line) !important;
+  border-radius: 5px !important;
+}
+.learning-redesign .practice-calculations input { accent-color: var(--lr-teal) !important; }
+
+.learning-redesign .qs-question-card {
+  border: 1px solid var(--lr-line) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 12px 28px rgba(16, 37, 63, .07) !important;
+}
+
+.learning-redesign .qs-question-card [data-testid="practice-question"] {
+  color: var(--lr-navy) !important;
+  font-family: Manrope, system-ui, sans-serif !important;
+  font-weight: 700 !important;
+}
+
+.learning-redesign .qs-badges-row > span {
+  border-radius: 4px !important;
+}
+
+.learning-redesign .qs-q-counter {
+  color: var(--lr-muted) !important;
+  font-family: "IBM Plex Mono", ui-monospace, monospace !important;
+}
+
+.learning-redesign .qs-question-card button {
+  border-radius: 6px !important;
+  box-shadow: none !important;
+}
+
+.learning-redesign .qs-question-card button[aria-pressed="true"] {
+  box-shadow: inset 3px 0 0 var(--lr-teal) !important;
+}
+
+.learning-redesign .practice-primary-actions > div > button:last-child,
+.learning-redesign .practice-page .qs-session-btns button {
+  background: var(--lr-teal) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 12px rgba(8,127,120,.2) !important;
+}
+
+.learning-redesign .practice-primary-actions > div > button:last-child:hover,
+.learning-redesign .practice-page .qs-session-btns button:hover {
+  background: #066a65 !important;
+  transform: translateY(-1px);
+}
+
+.learning-redesign .practice-primary-actions > div > button:first-child,
+.learning-redesign .practice-steps-toggle,
+.learning-redesign .practice-resource-actions :is(button, a) {
+  border-color: var(--lr-line) !important;
+  border-radius: 5px !important;
+  color: var(--lr-navy) !important;
+}
+
+.learning-redesign .practice-resource-actions :is(button, a):hover {
+  background: var(--lr-teal-soft) !important;
+  border-color: #9accc7 !important;
+  color: #066a65 !important;
+}
+
+.learning-redesign .practice-explanation {
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+.learning-redesign .practice-explanation-content { color: var(--lr-ink) !important; }
+.learning-redesign.practice-page .qs-session-card {
+  border: 1px solid var(--lr-line);
+  border-radius: 8px !important;
+  box-shadow: 0 18px 42px rgba(16,37,63,.1) !important;
+}
+
+.learning-redesign .practice-page .qs-session-card h2 { color: var(--lr-navy) !important; }
+
+/* Mock exams ---------------------------------------------------------------- */
+.learning-redesign.study-mock-workspace {
+  background: var(--lr-canvas) !important;
+  color: var(--lr-ink);
+}
+
+.learning-redesign .mes-intro-card,
+.learning-redesign .mes-question-card,
+.learning-redesign .mes-navigator {
+  border: 1px solid var(--lr-line) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 12px 28px rgba(16,37,63,.07) !important;
+}
+
+.learning-redesign .mes-intro-card h1,
+.learning-redesign .mes-question-card > div:nth-of-type(2) {
+  color: var(--lr-navy) !important;
+  font-family: Manrope, system-ui, sans-serif !important;
+}
+
+.learning-redesign .mes-intro-card > div:first-child,
+.learning-redesign .mes-stream-grid > button > div:first-child {
+  border-radius: 8px !important;
+  box-shadow: 0 8px 18px rgba(16,37,63,.12);
+}
+
+.learning-redesign .mes-stream-grid > button {
+  border-radius: 8px !important;
+  box-shadow: 0 8px 18px rgba(16,37,63,.06) !important;
+}
+
+.learning-redesign .mes-stream-grid > button:hover { transform: translateY(-2px) !important; }
+.learning-redesign .mes-start-button,
+.learning-redesign .mes-active-header button:last-child,
+.learning-redesign .mes-navigator > button {
+  background: var(--lr-teal) !important;
+  border-radius: 6px !important;
+}
+
+.learning-redesign .mes-stats-grid > div,
+.learning-redesign .mes-stats-4 > div {
+  border-radius: 6px !important;
+  border: 1px solid var(--lr-line);
+}
+
+.learning-redesign .mes-option-btn {
+  border-radius: 6px !important;
+}
+
+.learning-redesign .mes-option-btn[aria-pressed="true"] {
+  border-color: var(--lr-teal) !important;
+  background: var(--lr-teal-soft) !important;
+}
+
+.learning-redesign .mes-option-btn[aria-pressed="true"] span { color: var(--lr-teal) !important; }
+.learning-redesign .mes-navigator summary {
+  color: var(--lr-navy) !important;
+  font-family: Manrope, system-ui, sans-serif !important;
+}
+.learning-redesign .mes-navigator button { border-radius: 4px !important; }
+.learning-redesign .mes-results-hero { border-radius: 8px !important; }
+.learning-redesign .mes-results-hero-btns :is(button, a > button) { border-radius: 6px !important; }
+
+/* Flashcards ---------------------------------------------------------------- */
+.learning-redesign.flashcard-page {
+  background: var(--lr-canvas) !important;
+  color: var(--lr-ink);
+}
+
+.learning-redesign .fc-header {
+  background: var(--lr-surface) !important;
+  border-bottom-color: var(--lr-line) !important;
+}
+
+.learning-redesign .fc-header-title { color: var(--lr-navy) !important; font-family: Manrope, system-ui, sans-serif !important; }
+.learning-redesign .fc-options,
+.learning-redesign .fc-front {
+  border-color: var(--lr-line) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 24px rgba(16,37,63,.06) !important;
+}
+
+.learning-redesign .fc-back {
+  background: linear-gradient(135deg, var(--lr-deep), var(--lr-navy)) !important;
+  border-radius: 8px !important;
+}
+
+.learning-redesign .fc-inner,
+.learning-redesign .fc-face { border-radius: 8px !important; }
+.learning-redesign .fc-options > summary { color: var(--lr-navy) !important; }
+.learning-redesign .fc-options > summary::after { color: var(--lr-teal) !important; }
+.learning-redesign .fc-mod-tab,
+.learning-redesign .fc-nav-btn { border-radius: 5px !important; }
+.learning-redesign .fc-mod-tab.active {
+  border-color: var(--lr-teal) !important;
+}
+.learning-redesign .fc-nav-btn:hover { background: var(--lr-teal-soft) !important; border-color: #9accc7 !important; color: #066a65 !important; }
+.learning-redesign .fc-act-btn { border-radius: 6px !important; }
+.learning-redesign .fc-progress-row > div:first-child > div { background: var(--lr-teal) !important; }
+.learning-redesign.flashcard-page--complete > div > div { border-radius: 8px !important; border-color: var(--lr-line) !important; }
+
+/* Tutor --------------------------------------------------------------------- */
+.ai-tutor-panel.learning-redesign {
+  font-family: "Source Sans 3", system-ui, sans-serif !important;
+  background: var(--lr-surface, #fff) !important;
+  border-color: var(--lr-line, #dfe6e8) !important;
+  box-shadow: -12px 0 32px rgba(16,37,63,.12) !important;
+}
+
+.ai-tutor-panel.learning-redesign :is(button, input) { font-family: "Source Sans 3", system-ui, sans-serif !important; }
+.ai-tutor-panel.learning-redesign > div:first-child {
+  background: var(--lr-deep, #0b1d30) !important;
+}
+.ai-tutor-panel.learning-redesign .ai-tutor-context {
+  background: #f8fbfb !important;
+  border-bottom-color: var(--lr-line, #dfe6e8) !important;
+}
+.ai-tutor-panel.learning-redesign .ai-tutor-messages > div > div:last-child {
+  border-radius: 7px !important;
+}
+.ai-tutor-panel.learning-redesign .ai-tutor-prompts,
+.ai-tutor-panel.learning-redesign .ai-tutor-composer { border-top-color: var(--lr-line, #dfe6e8) !important; }
+.ai-tutor-panel.learning-redesign .ai-tutor-prompts button {
+  border-radius: 4px !important;
+  border-color: var(--lr-line, #dfe6e8) !important;
+}
+.ai-tutor-panel.learning-redesign .ai-tutor-composer input { border-radius: 5px !important; }
+.ai-tutor-panel.learning-redesign :is(button, input):focus-visible { outline: 3px solid var(--lr-teal, #087f78) !important; outline-offset: 2px !important; }
+
+/* Guide navigation ---------------------------------------------------------- */
+.learning-redesign.guide-nav {
+  font-family: "Source Sans 3", system-ui, sans-serif !important;
+}
+.learning-redesign .guide-nav__top {
+  background: var(--lr-deep) !important;
+  border-bottom-color: rgba(255,255,255,.11) !important;
+}
+.learning-redesign .guide-nav__rail a { border-radius: 4px !important; }
+.learning-redesign .guide-nav__rail a[aria-current="page"] {
+  color: var(--lr-navy) !important;
+  background: #fff !important;
+}
+.learning-redesign .guide-nav__toolbar {
+  background: #fff !important;
+  border-bottom-color: var(--lr-line) !important;
+  box-shadow: 0 2px 10px rgba(16,37,63,.04) !important;
+}
+.learning-redesign .guide-nav__progress > div:first-child > span:first-child { color: var(--lr-navy) !important; font-family: Manrope, system-ui, sans-serif !important; }
+.learning-redesign .guide-nav__progress > div:last-child > div { background: var(--lr-teal) !important; }
+.learning-redesign .guide-nav__selector,
+.learning-redesign .guide-nav__actions :is(button, a) { border-radius: 5px !important; }
+.learning-redesign .guide-nav__actions a { background: var(--lr-teal) !important; box-shadow: none !important; }
+
+/* Formula reference --------------------------------------------------------- */
+.learning-redesign.formulas-page {
+  background: var(--lr-canvas) !important;
+  color: var(--lr-ink);
+}
+.learning-redesign .formulas-hero {
+  background: linear-gradient(135deg, var(--lr-deep), var(--lr-navy)) !important;
+}
+.learning-redesign .formulas-filter {
+  border-bottom-color: var(--lr-line) !important;
+}
+.learning-redesign .cat-chip,
+.learning-redesign .formulas-filter button { border-radius: 4px !important; }
+.learning-redesign .cat-chip:hover { opacity: 1 !important; border-color: var(--lr-teal) !important; color: var(--lr-teal) !important; }
+.learning-redesign .learning-redesign-formula-card {
+  border-color: var(--lr-line) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 7px 18px rgba(16,37,63,.05) !important;
+}
+.learning-redesign .learning-redesign-formula-card__header { border-radius: 7px 7px 0 0; }
+.learning-redesign .learning-redesign-formula-card [data-echelon-mono],
+.learning-redesign .learning-redesign-formula-card code {
+  font-family: "IBM Plex Mono", ui-monospace, monospace !important;
+}
+.learning-redesign .learning-redesign-formula-card :is([style*="JetBrains Mono"], [style*="monospace"]) {
+  font-family: "IBM Plex Mono", ui-monospace, monospace !important;
+}
+
+/* Process guides and Labs --------------------------------------------------- */
+.learning-redesign.process-page,
+.learning-redesign.lab-page,
+.learning-redesign.equipment-lab-page {
+  background: var(--lr-canvas) !important;
+  color: var(--lr-ink);
+  font-family: "Source Sans 3", system-ui, sans-serif !important;
+}
+
+.learning-redesign.process-page .process-view-toggles,
+.learning-redesign.lab-page .lab-tab-bar { border-color: var(--lr-line) !important; }
+.learning-redesign.process-page .view-btn,
+.learning-redesign.lab-page .lab-tab-bar button { border-radius: 5px !important; }
+.learning-redesign.process-page .view-btn[aria-pressed="true"],
+.learning-redesign.process-page .view-btn:hover,
+.learning-redesign.lab-page .lab-tab-bar button:hover {
+  border-color: var(--lr-teal) !important;
+  color: var(--lr-teal) !important;
+  background: var(--lr-teal-soft) !important;
+}
+.learning-redesign.process-page :is(.process-flow-map-card, .process-step-grid > div > div, .process-step-grid + div > div),
+.learning-redesign.lab-page .lab-card,
+.learning-redesign.lab-page .lab-content-panel {
+  border-radius: 8px !important;
+  border-color: var(--lr-line) !important;
+  box-shadow: 0 10px 24px rgba(16,37,63,.06) !important;
+}
+.learning-redesign.lab-page input,
+.learning-redesign.lab-page select {
+  border-color: var(--lr-line) !important;
+  border-radius: 5px !important;
+}
+.learning-redesign.lab-page th {
+  font-family: "IBM Plex Mono", ui-monospace, monospace !important;
+  font-size: 10px !important;
+  letter-spacing: .02em;
+}
+.learning-redesign.equipment-lab-page main { max-width: 1280px; }
+.learning-redesign.equipment-lab-page :is(button, a) { border-radius: 5px !important; }
+.learning-redesign.equipment-lab-page h1,
+.learning-redesign.equipment-lab-page h2 { color: var(--lr-navy) !important; }
+.learning-redesign.equipment-lab-page .bg-slate-900 { background-color: var(--lr-navy) !important; }
+.learning-redesign.equipment-lab-page .text-teal-700 { color: var(--lr-teal) !important; }
+
+/* Guide directory ----------------------------------------------------------- */
+.learning-redesign.guides-page { background: var(--lr-canvas) !important; color: var(--lr-ink) !important; }
+.learning-redesign .guides-hero { background-color: var(--lr-deep) !important; }
+.learning-redesign .guides-hero h1 { color: #fff !important; }
+.learning-redesign .guides-hero__stats,
+.learning-redesign .guides-loop,
+.learning-redesign .guide-card,
+.learning-redesign .guides-institution { border-radius: 8px !important; }
+.learning-redesign .guide-card { border-color: var(--lr-line) !important; }
+.learning-redesign .guide-card:hover { transform: translateY(-2px) !important; box-shadow: 0 16px 30px rgba(16,37,63,.1) !important; }
+.learning-redesign .guides-loop { box-shadow: 0 12px 28px rgba(16,37,63,.08) !important; }
+
+/* Incident Command: intentionally high-attention deep-navy workspace ------- */
+.learning-redesign.command-page {
+  background: var(--lr-deep) !important;
+  color: #f7fbfc;
+  font-family: "Source Sans 3", system-ui, sans-serif !important;
+}
+.learning-redesign.command-page :is(h1, h2, h3) { font-family: Manrope, system-ui, sans-serif !important; color: #fff !important; }
+.learning-redesign.command-page .rounded-2xl { border-radius: 8px !important; }
+.learning-redesign.command-page .rounded-xl { border-radius: 6px !important; }
+.learning-redesign.command-page .bg-slate-800,
+.learning-redesign.command-page .bg-slate-800\/70,
+.learning-redesign.command-page .bg-slate-800\/60,
+.learning-redesign.command-page .bg-slate-800\/50 { background-color: #10253f !important; }
+.learning-redesign.command-page .border-slate-700 { border-color: rgba(191,211,214,.2) !important; }
+.learning-redesign.command-page .bg-teal-400 { background-color: var(--lr-teal) !important; }
+.learning-redesign.command-page .text-teal-300 { color: #91ded6 !important; }
+.learning-redesign.command-page .text-rose-300 { color: #ffb0ab !important; }
+.learning-redesign.command-page .font-mono { font-family: "IBM Plex Mono", ui-monospace, monospace !important; }
+.learning-redesign.command-page :is(button, textarea):focus-visible { outline: 3px solid #91ded6 !important; outline-offset: 3px !important; }
+
+@media (max-width: 720px) {
+  .learning-redesign .practice-content { padding-inline: 10px; }
+  .learning-redesign .qs-question-card { border-radius: 6px !important; }
+  .learning-redesign .mes-intro-card,
+  .learning-redesign .mes-question-card,
+  .learning-redesign .mes-navigator { border-radius: 6px !important; }
+  .learning-redesign .fc-actions-row { padding-inline: 16px !important; }
+  .learning-redesign .guides-hero { padding-inline: 18px !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .learning-redesign *,
+  .learning-redesign *::before,
+  .learning-redesign *::after,
+  .ai-tutor-panel.learning-redesign *,
+  .ai-tutor-panel.learning-redesign *::before,
+  .ai-tutor-panel.learning-redesign *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}

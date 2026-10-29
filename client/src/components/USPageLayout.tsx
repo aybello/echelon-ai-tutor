@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { ECHELON_LOGO_URL } from "./SiteNav";
 import "./USPageLayout.css";
 export default function USPageLayout({ children }: { children: ReactNode }) {
-  return <div className="us-page">
+  return <div className="us-page public-redesign public-redesign-us">
     <nav className="us-nav" aria-label="US course navigation">
       <Link href="/us" className="us-brand"><img src={ECHELON_LOGO_URL} alt="Echelon Institute" width={28} height={28} /><span>Echelon US</span></Link>
       <div><Link href="/us/states">Find your state</Link><Link href="/us/courses">Shared WPI courses</Link><Link href="/account">Sign in</Link></div>

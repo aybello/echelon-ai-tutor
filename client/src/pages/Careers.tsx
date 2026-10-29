@@ -110,7 +110,7 @@ export function JobModal({ job, onClose, returnFocusTo }: { job: Job; onClose: (
             event.preventDefault();
             returnFocusTo?.focus({ preventScroll: true });
           }}
-          className="fixed bottom-0 left-1/2 z-[9999] w-full -translate-x-1/2 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 sm:max-w-2xl max-h-[92vh] sm:max-h-[85vh] bg-white sm:rounded-2xl rounded-t-2xl shadow-2xl flex flex-col overflow-hidden"
+          className="public-redesign-dialog fixed bottom-0 left-1/2 z-[9999] w-full -translate-x-1/2 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 sm:max-w-2xl max-h-[92vh] sm:max-h-[85vh] bg-white sm:rounded-2xl rounded-t-2xl shadow-2xl flex flex-col overflow-hidden"
         >
         {/* Header */}
         <div className="shrink-0 flex items-start justify-between gap-3 p-5 border-b border-slate-100">
@@ -326,7 +326,7 @@ export default function Careers() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="public-redesign public-redesign-careers min-h-screen bg-slate-50">
       <SiteNav currentPath="/jobs" />
 
       {/* Job detail modal */}

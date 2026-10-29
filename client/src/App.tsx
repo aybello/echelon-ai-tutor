@@ -540,7 +540,7 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <GoogleAdsMeasurement />
-          <div className="page-enter">
+          <div className="echelon-system-shell page-enter">
             {/* <main> landmark for accessibility — required by WCAG 2.1 */}
             <main>
               <NovaScotiaCourseGuard />
