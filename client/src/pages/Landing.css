@@ -7,7 +7,7 @@
   --home-canvas: #FFFFFF;
   --home-surface: #F5F8F8;
   --home-ink: #17212B;
-  --home-muted: #647481;
+  --home-muted: #465563;
   --home-border: #DFE6E8;
   --home-shadow: 0 16px 38px rgba(16, 37, 63, .08);
   min-height: 100vh;
@@ -28,7 +28,7 @@
 .echelon-homepage .echelon-brand img { width: 37px; height: 36px; }
 .echelon-homepage .echelon-brand-copy strong { font-family: Manrope, sans-serif; font-size: 14px; color: var(--home-navy); }
 .echelon-homepage .echelon-brand-copy small { color: var(--home-muted); font-family: "Source Sans 3", sans-serif; }
-.echelon-homepage .echelon-nav-link { color: #40515f; font-size: 14px; font-weight: 600; border-radius: 5px; }
+.echelon-homepage .echelon-nav-link { color: #263746; font-size: 14px; font-weight: 600; border-radius: 5px; }
 .echelon-homepage .echelon-nav-link:hover, .echelon-homepage .echelon-nav-link.is-active { color: var(--home-teal); background: var(--home-teal-soft); }
 .echelon-homepage .echelon-pricing-link { color: var(--home-navy); background: transparent; border: 1px solid var(--home-border); border-radius: 5px; font-size: 13px; }
 .echelon-homepage .echelon-pricing-link:hover { color: var(--home-navy); background: var(--home-surface); }
@@ -48,7 +48,7 @@
 .homepage-kicker { display: inline-flex; align-items: center; gap: 7px; margin: 0 0 18px; color: var(--home-teal); font-family: "IBM Plex Mono", monospace; font-size: 11px; font-weight: 500; letter-spacing: .055em; line-height: 1.4; text-transform: uppercase; }
 .echelon-homepage .course-path-hero h1 { max-width: 620px; margin: 0; color: var(--home-navy); font-family: Manrope, sans-serif; font-size: clamp(42px, 5vw, 68px); font-weight: 800; letter-spacing: -.058em; line-height: 1.06; }
 .echelon-homepage .course-path-hero h1 span { color: var(--home-teal); }
-.echelon-homepage .course-path-intro { max-width: 550px; margin: 24px 0 0; color: #43525f; font-size: clamp(18px, 1.65vw, 21px); font-weight: 400; line-height: 1.55; }
+.echelon-homepage .course-path-intro { max-width: 550px; margin: 24px 0 0; color: #263746; font-size: clamp(18px, 1.65vw, 21px); font-weight: 400; line-height: 1.55; }
 .homepage-hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
 .homepage-primary-button, .homepage-secondary-button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 0 19px; border-radius: 5px; font-size: 15px; font-weight: 700; text-decoration: none; transition: transform 160ms ease, border-color 160ms ease, background 160ms ease; }
 .echelon-homepage a.homepage-primary-button { border: 1px solid var(--home-teal); background: var(--home-teal); color: #fff; }
@@ -57,7 +57,7 @@
 .homepage-secondary-button:hover { border-color: var(--home-teal); color: var(--home-teal); background: var(--home-teal-soft); transform: translateY(-1px); }
 .homepage-primary-button:active, .homepage-secondary-button:active { transform: scale(.97); }
 .homepage-hero-note { max-width: 480px; margin: 15px 0 0; color: var(--home-muted); font-size: 14px; line-height: 1.5; }
-.homepage-preview-inclusions { max-width: 500px; margin: 8px 0 0; color: #536970; font-size: 12px; line-height: 1.5; }
+.homepage-preview-inclusions { max-width: 500px; margin: 8px 0 0; color: #40545d; font-size: 12px; line-height: 1.5; }
 
 .homepage-preview-choice { max-width: 520px; margin-top: 18px; padding: 16px; border: 1px solid var(--home-border); border-radius: 7px; background: #fff; box-shadow: var(--home-shadow); }
 .homepage-preview-choice-heading { display: flex; align-items: start; justify-content: space-between; gap: 16px; }
@@ -75,7 +75,7 @@
 .homepage-workspace-topbar { min-height: 52px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; border-bottom: 1px solid var(--home-border); background: #fff; }
 .homepage-workspace-product { display: inline-flex; align-items: center; gap: 8px; color: var(--home-navy); font-size: 13px; font-weight: 700; }
 .homepage-workspace-logo { width: 25px; height: 25px; object-fit: contain; }
-.homepage-preview-badge, .homepage-workspace-status { display: inline-flex; align-items: center; gap: 6px; color: #4c606e; font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: .025em; }
+.homepage-preview-badge, .homepage-workspace-status { display: inline-flex; align-items: center; gap: 6px; color: #334750; font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: .025em; }
 .homepage-preview-badge { padding: 3px 6px; border: 1px solid var(--home-border); border-radius: 3px; }
 .homepage-workspace-status > span { width: 7px; height: 7px; border-radius: 50%; background: var(--home-teal); }
 .homepage-workspace-body { padding: clamp(20px, 3vw, 30px); background: #fbfdfd; }
@@ -87,7 +87,7 @@
 .homepage-panel-heading, .homepage-question-card-top { display: flex; justify-content: space-between; gap: 10px; color: var(--home-navy); font-size: 12px; font-weight: 700; }
 .homepage-panel-heading strong, .homepage-question-card-top span:last-child { color: var(--home-muted); font-family: "IBM Plex Mono", monospace; font-size: 9px; font-weight: 500; text-transform: uppercase; }
 .homepage-readiness-row { margin-top: 17px; }
-.homepage-readiness-row > div { display: flex; justify-content: space-between; gap: 9px; color: #41515e; font-size: 11px; }
+.homepage-readiness-row > div { display: flex; justify-content: space-between; gap: 9px; color: #263746; font-size: 11px; }
 .homepage-readiness-row strong { color: var(--home-navy); font-size: 11px; }
 .homepage-progress-track { display: block; height: 5px; margin-top: 7px; overflow: hidden; border-radius: 2px; background: #e7eeee; }
 .homepage-progress-track > span { display: block; height: 100%; background: var(--home-teal); }
@@ -95,7 +95,7 @@
 .homepage-answer-choice { display: flex; align-items: center; gap: 9px; padding: 10px; border: 1px solid #afd9d4; border-radius: 4px; background: var(--home-teal-soft); color: #24504e; font-size: 11px; line-height: 1.35; }
 .homepage-answer-choice span { width: 20px; height: 20px; display: inline-grid; place-items: center; flex: 0 0 auto; border-radius: 50%; background: var(--home-teal); color: #fff; font-family: "IBM Plex Mono", monospace; font-size: 10px; }
 .homepage-answer-choice strong { font-family: "Source Sans 3", sans-serif; }
-.homepage-explanation { display: flex; align-items: start; gap: 8px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--home-border); color: var(--home-muted); font-size: 11px; line-height: 1.46; }
+.homepage-explanation { display: flex; align-items: start; gap: 8px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--home-border); color: #465563; font-size: 11px; line-height: 1.46; }
 .homepage-explanation svg { flex: 0 0 auto; color: var(--home-teal); }
 .homepage-explanation strong { color: #38504e; font-family: "Source Sans 3", sans-serif; }
 .homepage-workspace-tools { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; margin-top: 16px; }
@@ -160,7 +160,7 @@
 .homepage-team-preview dl div:last-child { border-right: 0; }
 .homepage-team-preview dt { color: var(--home-muted); font-size: 10px; line-height: 1.35; }
 .homepage-team-preview dd { margin: 7px 0 0; color: var(--home-navy); font-family: Manrope, sans-serif; font-size: 20px; font-weight: 800; letter-spacing: -.035em; }
-.homepage-team-preview p { display: flex; align-items: start; gap: 8px; margin: 0; padding-top: 16px; border-top: 1px solid var(--home-border); color: #526a6a; font-size: 12px; line-height: 1.5; }
+.homepage-team-preview p { display: flex; align-items: start; gap: 8px; margin: 0; padding-top: 16px; border-top: 1px solid var(--home-border); color: #3c5654; font-size: 12px; line-height: 1.5; }
 .homepage-team-preview p svg { flex: 0 0 auto; color: var(--home-teal); }
 
 .homepage-faq-section { max-width: 850px; }
@@ -170,7 +170,7 @@
 .homepage-faq-item button { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 19px 0; border: 0; background: transparent; color: var(--home-navy); font-size: 16px; font-weight: 700; text-align: left; cursor: pointer; }
 .homepage-faq-item button > span:last-child { color: var(--home-teal); font-family: "IBM Plex Mono", monospace; font-size: 22px; font-weight: 400; transition: transform 160ms ease; }
 .homepage-faq-item button > span:last-child.is-open { transform: rotate(45deg); }
-.homepage-faq-item p { max-width: 720px; margin: -4px 0 20px; color: var(--home-muted); font-size: 15px; line-height: 1.65; }
+.homepage-faq-item p { max-width: 720px; margin: -4px 0 20px; color: #3f4f5a; font-size: 15px; line-height: 1.65; }
 
 .homepage-blog-section { padding-top: 18px; }
 .homepage-blog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
@@ -178,7 +178,7 @@
 .homepage-blog-card:hover { border-color: #83bab5; box-shadow: 0 12px 26px rgba(16,37,63,.06); }
 .homepage-blog-card > span { color: var(--home-teal); font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: .045em; text-transform: uppercase; }
 .homepage-blog-card h3 { margin: 12px 0 8px; color: var(--home-navy); font-size: 17px; line-height: 1.32; }
-.homepage-blog-card p { margin: 0; color: var(--home-muted); font-size: 14px; line-height: 1.5; }
+.homepage-blog-card p { margin: 0; color: #3f4f5a; font-size: 14px; line-height: 1.5; }
 .homepage-blog-card small { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 16px; color: var(--home-teal); font-size: 12px; font-weight: 700; }
 .homepage-text-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 25px; color: var(--home-teal); font-size: 14px; font-weight: 700; text-decoration: none; }
 .homepage-text-link:hover { color: #066d67; text-decoration: underline; text-underline-offset: 3px; }
@@ -188,7 +188,7 @@
 .homepage-contact-copy .homepage-text-link { margin-top: 20px; }
 .homepage-contact-card { padding: clamp(20px, 4vw, 30px); border: 1px solid var(--home-border); border-radius: 7px; background: var(--home-surface); }
 .homepage-contact-card form { display: grid; gap: 15px; }
-.homepage-contact-card label { display: grid; gap: 7px; color: #3d4e5b; font-size: 13px; font-weight: 700; }
+.homepage-contact-card label { display: grid; gap: 7px; color: #283b47; font-size: 13px; font-weight: 700; }
 .homepage-contact-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .homepage-contact-card input, .homepage-contact-card select, .homepage-contact-card textarea { width: 100%; min-height: 43px; padding: 10px 11px; border: 1px solid #bdcdd0; border-radius: 4px; box-sizing: border-box; background: #fff; color: var(--home-ink); font-size: 15px; }
 .homepage-contact-card textarea { min-height: 104px; resize: vertical; }
@@ -210,13 +210,13 @@
 .homepage-footer-brand { display: flex; align-items: start; gap: 10px; max-width: 325px; }
 .homepage-footer-logo { width: 30px; height: 30px; flex: 0 0 auto; object-fit: contain; filter: brightness(0) invert(1); }
 .homepage-footer-brand strong { font-size: 15px; }
-.homepage-footer-brand p { margin: 8px 0 0; color: #bbcad2; font-size: 13px; line-height: 1.5; }
+.homepage-footer-brand p { margin: 8px 0 0; color: #d2dde2; font-size: 13px; line-height: 1.5; }
 .homepage-footer-links { display: grid; grid-template-columns: repeat(3, minmax(110px, 1fr)); gap: 32px; }
 .homepage-footer-links div { display: grid; align-content: start; gap: 8px; }
 .homepage-footer-links strong { margin-bottom: 3px; color: #fff; font-size: 12px; }
-.homepage-footer-links a { color: #b5c5ce; font-size: 13px; text-decoration: none; }
+.homepage-footer-links a { color: #d0dce1; font-size: 13px; text-decoration: none; }
 .homepage-footer-links a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
-.homepage-footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 42px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.12); color: #92a7b3; font-size: 11px; line-height: 1.5; }
+.homepage-footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 42px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.12); color: #b7c7cf; font-size: 11px; line-height: 1.5; }
 
 @media (max-width: 1040px) {
   .homepage-hero { grid-template-columns: minmax(0, 1fr) minmax(360px, .9fr); gap: 42px; }
