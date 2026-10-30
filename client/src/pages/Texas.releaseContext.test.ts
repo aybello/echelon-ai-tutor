@@ -26,8 +26,8 @@ describe("Texas published course identity", () => {
   });
   it("marks the offered local course available but does not claim other Texas credentials exist", () => {
     const html = renderToStaticMarkup(createElement(USStatePage));
-    expect(html).toContain("Dedicated Class D preparation available");
-    expect(html).not.toContain("Dedicated prep not yet available");
+    expect(html).toContain("State-specific preparation available");
+    expect(html).toContain("State-specific / no shared course.");
     expect(html).toContain("Other Texas credentials below remain research needs");
     expect(html).not.toContain("Dedicated prep is not available or being sold yet");
   });

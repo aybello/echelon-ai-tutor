@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { getAllCourses, getCourseByKey } from "./courseRegistry";
 import { classifyAppRoute } from "./appRoutes";
 import { US_STATE_NAMES } from "./usStateNames";
-import { getStateBySlug, isSharedProgram, matchedUSCourses, sharedUSCourses, usCourseHref, type USProgramEvidence, type USStateConfig } from "./usExamRouting";
+import { getStateBySlug, getUSProgramCoverage, isSharedProgram, matchedUSCourses, sharedUSCourses, usCourseHref, type USProgramEvidence, type USStateConfig } from "./usExamRouting";
 
 const program = (overrides: Partial<USProgramEvidence> = {}): USProgramEvidence => ({
   stream: "water-treatment", examSystem: "wpi-standardized", authorityName: "Synthetic authority", authorityUrl: "https://authority.example.test", localLevels: "Local Grade II corresponds to WPI I", verifiedSharedLevels: [1], note: "Synthetic routing fixture", sources: [{url:"https://authority.example.test/exams",title:"Official exam route",evidence:"Standardized exam and local mapping explicitly confirmed"}], ...overrides,
@@ -58,6 +58,23 @@ describe("source-backed US exam routing", () => {
     expect(matchedUSCourses(state([program({examSystem:"mixed",verifiedSharedLevels:[2]})])).map(item=>item.classLevel)).toEqual([2]);
     expect(matchedUSCourses(state([program({examSystem:"mixed",verifiedSharedLevels:[]})]))).toEqual([]);
   });
+  it("classifies each stream from its source-backed route rather than a statewide coverage claim", () => {
+    expect(getUSProgramCoverage(program())).toMatchObject({
+      kind: "wpi-direct",
+      label: "WPI Direct",
+      hasSharedCourse: true,
+    });
+    expect(getUSProgramCoverage(program({ examSystem: "mixed", verifiedSharedLevels: [2] }))).toMatchObject({
+      kind: "state-with-wpi-component",
+      label: "State program + WPI component",
+      hasSharedCourse: true,
+    });
+    expect(getUSProgramCoverage(program({ examSystem: "wpi-customized" }))).toMatchObject({
+      kind: "state-specific",
+      label: "State-specific / no shared course",
+      hasSharedCourse: false,
+    });
+  });
   it("keeps actual local grade differences and specialist exclusions intact", () => {
     const montana = getStateBySlug("montana")!;
     expect(matchedUSCourses(montana,"water-treatment").map(item=>item.classLevel)).toEqual([1,2,3]);
@@ -86,8 +103,10 @@ describe("source-backed US exam routing", () => {
   });
   it("routes the launched Texas state-specific course without changing shared WPI claims", () => {
     const texasCourse = getCourseByKey("us-texas-class-d-water")!;
+    const texasProgram = getStateBySlug("texas")!.programs.find(program => program.stream === "water-treatment")!;
     expect(texasCourse.examFamily).toBe("us-state");
     expect(texasCourse.isActive).toBe(true);
+    expect(getUSProgramCoverage(texasProgram).kind).toBe("state-specific");
     expect(matchedUSCourses(getStateBySlug("texas")!).map(item => item.courseKey)).toEqual(["us-texas-class-d-water"]);
     expect(matchedUSCourses(getStateBySlug("texas")!, "water-treatment").map(item => item.courseKey)).toEqual(["us-texas-class-d-water"]);
   });

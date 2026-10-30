@@ -1,7 +1,7 @@
 import { Link, useLocation, useSearch } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import USPageLayout, { USHero } from "@/components/USPageLayout";
-import { getStateByCode, US_STATE_CONFIGS, US_STREAMS, sharedUSCourses, matchedUSCourses, usCourseHref } from "@/lib/stateConfig";
+import { getStateByCode, US_STATE_CONFIGS, US_STREAMS, getUSProgramCoverage, sharedUSCourses, matchedUSCourses, usCourseHref } from "@/lib/stateConfig";
 
 export default function USCourses() {
   const search = useSearch();
@@ -12,6 +12,15 @@ export default function USCourses() {
   const stream = US_STREAMS.find(item => item.key === query.get("stream"));
   const invalidState = !!requestedState && !state;
   const courses = invalidState ? [] : state ? matchedUSCourses(state, stream?.key) : sharedUSCourses(stream?.key);
+  const statePrograms = state ? state.programs.filter(program => !stream || program.stream === stream.key) : [];
+  const coveragePrograms = statePrograms.map(program => ({
+    program,
+    streamLabel: US_STREAMS.find(item => item.key === program.stream)?.label ?? program.stream,
+    coverage: getUSProgramCoverage(program),
+  }));
+  const directPrograms = coveragePrograms.filter(item => item.coverage.kind === "wpi-direct");
+  const mixedPrograms = coveragePrograms.filter(item => item.coverage.kind === "state-with-wpi-component");
+  const unavailablePrograms = coveragePrograms.filter(item => item.coverage.kind === "state-specific");
   usePageMeta({ title: "US Operator Exam Courses | Echelon Institute", description: "Dedicated US Class I water treatment and water distribution courses in US customary units, plus shared WPI preparation for other streams and class levels." });
   const select = (key: "state" | "stream", value: string) => {
     const next = new URLSearchParams(search);
@@ -34,9 +43,9 @@ export default function USCourses() {
       </div>
     </USHero>
     <main className="us-main">
-      {state ? <div className="us-notice"><h2>{state.name}: confirmed shared routes</h2><p>Only confirmed standardized WPI programs and class matches are shown below. State-specific rules and any other streams need separate preparation.</p><Link href={`/us/states/${state.slug}`} className="us-action us-action-secondary">View {state.name} exam details</Link></div>
+      {state ? <div className="us-notice" data-state-coverage="source-backed"><h2>{state.name}: source-backed course routes</h2><p>Only confirmed standardized WPI programs and class matches are shown below. State-specific rules and any other streams need separate preparation.</p><ul className="us-coverage-summary"><li><strong>WPI Direct:</strong> {directPrograms.length} {stream ? "selected stream" : "stream(s)"}</li><li><strong>State program + WPI component:</strong> {mixedPrograms.length} {stream ? "selected stream" : "stream(s)"}</li><li><strong>State-specific / no shared course:</strong> {unavailablePrograms.length} {stream ? "selected stream" : "stream(s)"}</li></ul>{coveragePrograms.map(({ program, streamLabel, coverage }) => <p key={program.stream} className="us-coverage-note" data-program-coverage={coverage.kind}><strong>{streamLabel} · {coverage.label}.</strong> {coverage.note}</p>)}<Link href={`/us/states/${state.slug}`} className="us-action us-action-secondary">View {state.name} exam details</Link></div>
         : <div className="us-notice"><h2>Check your state before buying</h2><p>The catalogue below covers standardized exam content. It does not mean every state, grade or certification program uses these exams.</p><Link href="/us/states" className="us-action">Find your state</Link></div>}
-      {courses.length === 0 && <div className="us-empty" role="status">{invalidState ? "That state is not recognized. Choose a state from the list." : "No confirmed shared course match for this selection. Check the state page for official sources and dedicated-course needs."}</div>}
+      {courses.length === 0 && <div className="us-empty" role="status">{invalidState ? "That state is not recognized. Choose a state from the list." : state ? "No source-backed shared course is available for this state and stream. Check the state page for official sources and state-specific course needs." : "No confirmed shared course match for this selection. Check the state page for official sources and dedicated-course needs."}</div>}
       {state?.code === "TX" && <section className="us-course-section">
         <h2>Texas Class D Water</h2>
         <div className="us-card-grid"><article className="us-card" data-course-key="us-texas-class-d-water">

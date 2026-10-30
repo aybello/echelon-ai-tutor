@@ -1,6 +1,6 @@
 /** US pages use per-stream source evidence. State identity never implies full exam coverage. */
-export { US_STATE_CONFIGS, US_STREAMS, US_RESEARCH_CHECKED_DATE, getStateBySlug, getStateByCode, sharedUSCourses, matchedUSCourses, usCourseHref, usProgramLabel, isSharedProgram } from "@shared/usExamRouting";
-export type { USStateConfig, USProgramEvidence, USStreamKey } from "@shared/usExamRouting";
+export { US_STATE_CONFIGS, US_STREAMS, US_RESEARCH_CHECKED_DATE, getStateBySlug, getStateByCode, sharedUSCourses, matchedUSCourses, usCourseHref, usProgramLabel, isSharedProgram, getUSProgramCoverage } from "@shared/usExamRouting";
+export type { USStateConfig, USProgramEvidence, USProgramCoverage, USProgramCoverageKind, USStreamKey } from "@shared/usExamRouting";
 export type { USStateCode } from "@shared/usStateNames";
 export const US_LEVELS = [
   { key: "class1", level: 1, label: "Class I", roman: "I", description: "WPI Class I preparation" },

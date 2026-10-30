@@ -103,6 +103,23 @@ describe("US public index copy", () => {
     expect(body).toContain("12 months of access from successful payment");
   });
 
+  it("server-renders source-backed per-stream coverage notes for direct, mixed, and state-specific routes", () => {
+    const stateBody = (slug: string) => {
+      const page = STATIC_PAGE_META.find(candidate => candidate.path === `/us/states/${slug}`);
+      if (!page?.bodyHtml) throw new Error(`No US state SSR body for ${slug}`);
+      return page.bodyHtml;
+    };
+    const alabama = stateBody("alabama");
+    const alaska = stateBody("alaska");
+    const california = stateBody("california");
+    expect(alabama).toContain("WPI Direct.");
+    expect(alabama).toContain("The cited state record confirms the listed WPI class matches for this stream.");
+    expect(alaska).toContain("State program + WPI component.");
+    expect(alaska).toContain("Only the listed standardized WPI classes are linked.");
+    expect(california).toContain("State-specific / no shared course.");
+    expect(california).toContain("No shared WPI course is linked unless the cited record confirms an exact standardized class match.");
+  });
+
   it.each(US_INDEX_PATHS)("injects a single canonical, honest heading, and body for %s", path => {
     const page = pageFor(path);
     const html = injectSeoIntoTemplate(template, page);

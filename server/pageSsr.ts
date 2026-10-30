@@ -25,7 +25,7 @@ import { replaceAppRoot } from "./replaceAppRoot";
 import type { Express, Request, Response } from "express";
 import { WPI_PAGE_COPY, WPI_OFFICIAL_SOURCES } from "../shared/wpiContent";
 import { US_STATE_NAMES } from "../shared/usStateNames";
-import { US_STATE_CONFIGS, US_STREAMS, US_RESEARCH_CHECKED_DATE, matchedUSCourses, usCourseHref, usProgramLabel, type USStateConfig } from "../shared/usExamRouting";
+import { US_STATE_CONFIGS, US_STREAMS, US_RESEARCH_CHECKED_DATE, getUSProgramCoverage, matchedUSCourses, usCourseHref, usProgramLabel, type USStateConfig } from "../shared/usExamRouting";
 import { brandedShell } from "./staticHead";
 import { boundedPublicBlogLinks, renderPublicBlogLinks, type PublicBlogLink } from "./publicBlogIndex";
 import fs from "fs";
@@ -875,11 +875,13 @@ function buildCoursePageMeta(course: CourseSeoPage): PageMeta {
 function buildUSStatePageMeta(state: USStateConfig): PageMeta {
   const body = US_STREAMS.map(stream => {
     const program = state.programs.find(item => item.stream === stream.key)!;
+    const coverage = getUSProgramCoverage(program);
     const courses = matchedUSCourses(state, stream.key);
     const choices = courses.length ? `<ul>${courses.map(course => `<li>${escapeHtml(course.displayName)}: <a href="${escapeHtml(usCourseHref(course, "practice", state.code)!)}">Practice</a> | <a href="${escapeHtml(usCourseHref(course, "mock", state.code)!)}">Mock exam</a> | <a href="${escapeHtml(usCourseHref(course, "flashcards", state.code)!)}">Flashcards</a></li>`).join("")}</ul>` : `<p>No state-matched course is linked for this stream yet.</p>`;
     return `<section><h2>${escapeHtml(stream.label)}</h2><p>${escapeHtml(usProgramLabel(program))}</p>
       <p><strong>Program authority:</strong> ${escapeHtml(program.authorityName || "Not confirmed")}</p>
       <p><strong>Local levels:</strong> ${escapeHtml(program.localLevels)}</p><p>${escapeHtml(program.note)}</p>
+      <p><strong>${escapeHtml(coverage.label)}.</strong> ${escapeHtml(coverage.note)}</p>
       ${program.authorityUrl ? `<p><a href="${escapeHtml(program.authorityUrl)}">Official program information</a></p>` : ""}
       ${choices}${program.sources.length ? `<h3>Sources and exam scope</h3><ul>${program.sources.map(source => `<li><a href="${escapeHtml(source.url)}">${escapeHtml(source.title)}</a><p>${escapeHtml(source.evidence)}</p></li>`).join("")}</ul>` : ""}</section>`;
   }).join("");

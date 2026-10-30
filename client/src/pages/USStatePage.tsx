@@ -1,7 +1,7 @@
 import { Link, useParams } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import USPageLayout, { USHero } from "@/components/USPageLayout";
-import { getStateBySlug, US_STREAMS, US_RESEARCH_CHECKED_DATE, matchedUSCourses, usCourseHref, usProgramLabel } from "@/lib/stateConfig";
+import { getStateBySlug, US_STREAMS, US_RESEARCH_CHECKED_DATE, getUSProgramCoverage, matchedUSCourses, usCourseHref, usProgramLabel } from "@/lib/stateConfig";
 
 export default function USStatePage() {
   const params = useParams<{ slug: string }>();
@@ -18,12 +18,14 @@ export default function USStatePage() {
       <div className="us-notice"><h2>Confirm your exact exam</h2><p>Local grade names may not match WPI class numbers. Your authority sets eligibility, rules, exam dates, passing requirements and calculator policies. A WPI course is not a state-approved licence or a guarantee of complete exam coverage.</p></div>
       {US_STREAMS.map(stream => {
         const program = state.programs.find(item => item.stream === stream.key)!;
+        const coverage = getUSProgramCoverage(program);
         const courses = matchedUSCourses(state, stream.key);
         return <section key={stream.key} className="us-card us-program" data-program={stream.key}>
-          <span className="us-badge">{courses.some(course => course.examFamily === "us-state") ? "Dedicated Class D preparation available" : usProgramLabel(program)}</span><h2>{stream.label}</h2>
+          <span className={`us-badge us-coverage-${coverage.kind}`} data-coverage={coverage.kind}>{courses.some(course => course.examFamily === "us-state") ? "State-specific preparation available" : usProgramLabel(program)}</span><h2>{stream.label}</h2>
           {program.authorityName && <p><strong>Program authority:</strong> {program.authorityName}</p>}
           <p><strong>Local levels:</strong> {program.localLevels || "Not confirmed"}</p>
           <p>{program.note}</p>
+          <p className="us-coverage-note"><strong>{coverage.label}.</strong> {coverage.note}</p>
           {program.authorityUrl && <a href={program.authorityUrl} target="_blank" rel="noopener noreferrer">Official program information</a>}
           {courses.length > 0 ? <div className="us-card-grid" style={{ marginTop: 22 }}>{courses.map(course => <article key={course.courseKey} className="us-card" data-course-key={course.courseKey}>
             <h3>{course.displayName}</h3><div className="us-actions">

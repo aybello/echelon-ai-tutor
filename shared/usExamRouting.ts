@@ -37,6 +37,17 @@ export interface USStateConfig {
   dedicatedCourseNeeds: string[];
   limits: string[];
 }
+/**
+ * A coverage label is scoped to one state program and its cited evidence.
+ * It is deliberately not a promise about every credential in a state.
+ */
+export type USProgramCoverageKind = "wpi-direct" | "state-with-wpi-component" | "state-specific";
+export interface USProgramCoverage {
+  kind: USProgramCoverageKind;
+  label: string;
+  note: string;
+  hasSharedCourse: boolean;
+}
 export const US_RESEARCH_CHECKED_DATE = "2026-10-11";
 export const US_STATE_CONFIGS = Object.fromEntries(US_STATE_NAMES.map(identity => {
   const research = US_EXAM_RESEARCH.find(item => item.code === identity.code);
@@ -56,6 +67,35 @@ export function getStateByCode(code?: string | null): USStateConfig | undefined 
 }
 export function isSharedProgram(program: USProgramEvidence): boolean {
   return ["wpi-standardized", "mixed"].includes(program.examSystem) && program.sources.length > 0 && program.verifiedSharedLevels.some(level => Number.isInteger(level) && level >= 1 && level <= 4);
+}
+/**
+ * Classify only what the existing source record establishes for this stream.
+ * In particular, a WPI mention, membership, provider, or generic ABC reference
+ * never creates a shared-course match on its own.
+ */
+export function getUSProgramCoverage(program: USProgramEvidence): USProgramCoverage {
+  if (program.examSystem === "wpi-standardized" && isSharedProgram(program)) {
+    return {
+      kind: "wpi-direct",
+      label: "WPI Direct",
+      note: "The cited state record confirms the listed WPI class matches for this stream.",
+      hasSharedCourse: true,
+    };
+  }
+  if (program.examSystem === "mixed" && isSharedProgram(program)) {
+    return {
+      kind: "state-with-wpi-component",
+      label: "State program + WPI component",
+      note: "Only the listed standardized WPI classes are linked. State-specific or specialist credentials remain separate.",
+      hasSharedCourse: true,
+    };
+  }
+  return {
+    kind: "state-specific",
+    label: "State-specific / no shared course",
+    note: "No shared WPI course is linked unless the cited record confirms an exact standardized class match.",
+    hasSharedCourse: false,
+  };
 }
 export function sharedUSCourses(stream?: string): CourseEntry[] {
   // Dedicated US courses take precedence for the exact track and class level
@@ -101,9 +141,10 @@ export function usCourseHref(course: CourseEntry, tool: "practice" | "mock" | "f
   return `${path}?${query}`;
 }
 export function usProgramLabel(program: USProgramEvidence): string {
-  if (isSharedProgram(program)) return program.examSystem === "mixed" ? "Shared WPI prep for confirmed exams only" : "Shared WPI prep";
-  if (program.examSystem === "wpi-standardized") return "WPI exam, class match under review";
-  if (["wpi-customized", "state-specific", "mixed"].includes(program.examSystem)) return "Dedicated prep not yet available";
+  const coverage = getUSProgramCoverage(program);
+  if (coverage.kind === "wpi-direct") return "WPI Direct";
+  if (coverage.kind === "state-with-wpi-component") return "State program + WPI component";
+  if ((program.directCourseKeys ?? []).length > 0) return "State-specific preparation available";
   if (program.examSystem === "not-offered") return "Separate certification not identified";
-  return "Exam route under review";
+  return coverage.label;
 }
