@@ -1,0 +1,1123 @@
+{
+  "generatedAtUtc": "2026-10-30T00:56:38.782Z",
+  "criteria": "state-specific or wpi-customized examSystem; excludes existing directCourseKeys; research-only",
+  "count": 53,
+  "routes": [
+    {
+      "id": "ca-wastewater-collection",
+      "index": 1,
+      "stateCode": "CA",
+      "stateName": "California",
+      "stream": "wastewater-collection",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Collection System Maintenance Certification",
+          "url": "https://www.cwea.org/certification/collection-systems-maintenance-certification/"
+        },
+        {
+          "title": "Collection System Maintenance Candidate Handbook, Version 2025.01",
+          "url": "https://cweawebstorage1.blob.core.windows.net/cwea-website/cert/CWEA%20Certification%20Handbook_CSM.pdf"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/ca-wastewater-collection.md"
+    },
+    {
+      "id": "ca-water-distribution",
+      "index": 2,
+      "stateCode": "CA",
+      "stateName": "California",
+      "stream": "water-distribution",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "California SWRCB - Operator certification",
+          "url": "https://www.waterboards.ca.gov/water_issues/programs/operator_certification/"
+        },
+        {
+          "title": "California SWRCB - Distribution operator minimum qualifications",
+          "url": "https://www.waterboards.ca.gov/drinking_water/certlic/occupations/documents/opcert/distributionminqualcertifications.pdf"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/ca-water-distribution.md"
+    },
+    {
+      "id": "ca-water-treatment",
+      "index": 3,
+      "stateCode": "CA",
+      "stateName": "California",
+      "stream": "water-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "California SWRCB - Operator certification",
+          "url": "https://www.waterboards.ca.gov/water_issues/programs/operator_certification/"
+        },
+        {
+          "title": "California SWRCB - Treatment examination information",
+          "url": "https://www.waterboards.ca.gov/drinking_water/certlic/occupations/documents/opcert/treatment_exam.pdf"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/ca-water-treatment.md"
+    },
+    {
+      "id": "ct-wastewater-collection",
+      "index": 4,
+      "stateCode": "CT",
+      "stateName": "Connecticut",
+      "stream": "wastewater-collection",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "NEWEA Collection Systems Certification Program  -  Rev. 06/2026",
+          "url": "https://www.newea.org/wp-content/uploads/2026/06/CS-BROCHURE-Rev-06_2026-1.pdf"
+        },
+        {
+          "title": "Connecticut Wastewater Operator Certification Guidelines  -  March 2005",
+          "url": "https://portal.ct.gov/-/media/deep/water/municipal_wastewater/wastewateroperatorguidelinepdf.pdf"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/ct-wastewater-collection.md"
+    },
+    {
+      "id": "de-wastewater-treatment",
+      "index": 5,
+      "stateCode": "DE",
+      "stateName": "Delaware",
+      "stream": "wastewater-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "7 DE Admin. Code 7204  -  Regulations for Licensing Operators of Wastewater Facilities",
+          "url": "https://regulations.delaware.gov/AdminCode/title7/7204"
+        },
+        {
+          "title": "DNREC  -  Wastewater Operator Certification",
+          "url": "https://dnrec.delaware.gov/water/commercial-government/wastewater-facilities/operators/"
+        },
+        {
+          "title": "Wastewater Operator Licensing Overview Brochure, revised September 2024",
+          "url": "https://documents.dnrec.delaware.gov/Water/Wastewater/wastewater-operators-brochure.pdf"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/de-wastewater-treatment.md"
+    },
+    {
+      "id": "de-water-distribution",
+      "index": 6,
+      "stateCode": "DE",
+      "stateName": "Delaware",
+      "stream": "water-distribution",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Delaware Administrative Code 4463",
+          "url": "https://regulations.delaware.gov/AdminCode/title16/4463"
+        },
+        {
+          "title": "Delaware - Water operator examination registration",
+          "url": "https://dhss.delaware.gov/wp-content/uploads/sites/12/dph/pdf/watropreg.pdf"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/de-water-distribution.md"
+    },
+    {
+      "id": "de-water-treatment",
+      "index": 7,
+      "stateCode": "DE",
+      "stateName": "Delaware",
+      "stream": "water-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Delaware Administrative Code 4463",
+          "url": "https://regulations.delaware.gov/AdminCode/title16/4463"
+        },
+        {
+          "title": "Delaware DHSS - Public water system operator certification",
+          "url": "https://dhss.delaware.gov/dph/homepage/about/sections/hsp/licenses-and-permits/odw/public-water-system-supervision/pwso-certification/"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/de-water-treatment.md"
+    },
+    {
+      "id": "fl-water-distribution",
+      "index": 8,
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "stream": "water-distribution",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Florida DEP - Operator Certification Program handbook",
+          "url": "https://floridadep.gov/sites/default/files/ocp_handbook%20July%202026.pdf"
+        },
+        {
+          "title": "Florida DEP - Distribution examination content outline",
+          "url": "https://floridadep.gov/sites/default/files/ds-operator-exam-content-area_0.pdf"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/fl-water-distribution.md"
+    },
+    {
+      "id": "fl-water-treatment",
+      "index": 9,
+      "stateCode": "FL",
+      "stateName": "Florida",
+      "stream": "water-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Florida DEP - Operator Certification Program handbook",
+          "url": "https://floridadep.gov/sites/default/files/ocp_handbook%20July%202026.pdf"
+        },
+        {
+          "title": "Florida DEP - Treatment examination content outline",
+          "url": "https://floridadep.gov/sites/default/files/operator-exam-content-area_1.pdf"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/fl-water-treatment.md"
+    },
+    {
+      "id": "il-water-distribution",
+      "index": 10,
+      "stateCode": "IL",
+      "stateName": "Illinois",
+      "stream": "water-distribution",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Community Public Water Supply Operator Certification Program Report  -  Calendar Year 2025",
+          "url": "https://epa.illinois.gov/content/dam/soi/en/web/epa/topics/drinking-water/operator-certification/documents/Illinois-EPA-OpCert-Report-for-CY25.pdf"
+        },
+        {
+          "title": "Illinois EPA  -  Drinking Water Operator Certification Frequently Asked Questions",
+          "url": "https://epa.illinois.gov/topics/drinking-water/operator-certification/faqs.html"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/il-water-distribution.md"
+    },
+    {
+      "id": "il-water-treatment",
+      "index": 11,
+      "stateCode": "IL",
+      "stateName": "Illinois",
+      "stream": "water-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Illinois EPA  -  Drinking Water Operator Certification Frequently Asked Questions",
+          "url": "https://epa.illinois.gov/topics/drinking-water/operator-certification/faqs.html"
+        },
+        {
+          "title": "Community Public Water Supply Operator Certification Program Report  -  Calendar Year 2025",
+          "url": "https://epa.illinois.gov/content/dam/soi/en/web/epa/topics/drinking-water/operator-certification/documents/Illinois-EPA-OpCert-Report-for-CY25.pdf"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/il-water-treatment.md"
+    },
+    {
+      "id": "in-water-distribution",
+      "index": 12,
+      "stateCode": "IN",
+      "stateName": "Indiana",
+      "stream": "water-distribution",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Drinking Water Operator Certification",
+          "url": "https://www.in.gov/idem/cleanwater/drinking-water/drinking-water-operator-certification/"
+        },
+        {
+          "title": "Drinking Water Operator Certification Rule  -  Technical Guidance",
+          "url": "https://www.in.gov/idem/cleanwater/files/dw_certification_rule_guidance.pdf"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/in-water-distribution.md"
+    },
+    {
+      "id": "in-water-treatment",
+      "index": 13,
+      "stateCode": "IN",
+      "stateName": "Indiana",
+      "stream": "water-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Drinking Water Operator Certification",
+          "url": "https://www.in.gov/idem/cleanwater/drinking-water/drinking-water-operator-certification/"
+        },
+        {
+          "title": "Drinking Water Operator Certification Rule  -  Technical Guidance",
+          "url": "https://www.in.gov/idem/cleanwater/files/dw_certification_rule_guidance.pdf"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/in-water-treatment.md"
+    },
+    {
+      "id": "ks-wastewater-treatment",
+      "index": 14,
+      "stateCode": "KS",
+      "stateName": "Kansas",
+      "stream": "wastewater-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Operator Certification Requirements for water and wastewater treatment facilities",
+          "url": "https://www.kdhe.ks.gov/DocumentCenter/View/5202/Operator-Certification-Requirements-Brochure-PDF"
+        },
+        {
+          "title": "Evaluating the State’s Water Systems and Wastewater Treatment Operator Certification Program (February 2025)",
+          "url": "https://www.kslpa.gov/audit-report-library/water-certification-2/"
+        },
+        {
+          "title": "Kansas Class I–IV Wastewater Operator Need to Know",
+          "url": "https://www.kdhe.ks.gov/DocumentCenter/View/5192/Kansas-Class-I---IV-Wastewater-Operator-PDF"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/ks-wastewater-treatment.md"
+    },
+    {
+      "id": "ks-water-treatment",
+      "index": 15,
+      "stateCode": "KS",
+      "stateName": "Kansas",
+      "stream": "water-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Operator Certification Requirements for water and wastewater treatment facilities",
+          "url": "https://www.kdhe.ks.gov/DocumentCenter/View/5202/Operator-Certification-Requirements-Brochure-PDF"
+        },
+        {
+          "title": "Evaluating the State’s Water Systems and Wastewater Treatment Operator Certification Program (February 2025)",
+          "url": "https://www.kslpa.gov/audit-report-library/water-certification-2/"
+        },
+        {
+          "title": "Kansas Class III & IV Water Operator Need to Know",
+          "url": "https://www.kdhe.ks.gov/DocumentCenter/View/5195/Kansas-Class-III-and-IV-Water-Operator-PDF"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/ks-water-treatment.md"
+    },
+    {
+      "id": "ky-water-distribution",
+      "index": 16,
+      "stateCode": "KY",
+      "stateName": "Kentucky",
+      "stream": "water-distribution",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Kentucky 401 KAR 11:050",
+          "url": "https://apps.legislature.ky.gov/law/kar/titles/401/011/050/"
+        },
+        {
+          "title": "Kentucky - Operator certification test preparation",
+          "url": "https://eec.ky.gov/Environmental-Protection/Compliance-Assistance/operator-certification-program/Pages/test-preparation-materials.aspx"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/ky-water-distribution.md"
+    },
+    {
+      "id": "ky-water-treatment",
+      "index": 17,
+      "stateCode": "KY",
+      "stateName": "Kentucky",
+      "stream": "water-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Kentucky 401 KAR 11:050",
+          "url": "https://apps.legislature.ky.gov/law/kar/titles/401/011/050/"
+        },
+        {
+          "title": "Kentucky - Operator certification test preparation",
+          "url": "https://eec.ky.gov/Environmental-Protection/Compliance-Assistance/operator-certification-program/Pages/test-preparation-materials.aspx"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/ky-water-treatment.md"
+    },
+    {
+      "id": "la-water-distribution",
+      "index": 18,
+      "stateCode": "LA",
+      "stateName": "Louisiana",
+      "stream": "water-distribution",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Louisiana - Operator certification rule",
+          "url": "https://ldh.la.gov/assets/oph/Center-EH/operator/OperatorCertificationRule.pdf"
+        },
+        {
+          "title": "Louisiana - Water Distribution Need to Know",
+          "url": "https://ldh.la.gov/assets/oph/Center-EH/operator/Need2Know-WaterDistribution.pdf"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/la-water-distribution.md"
+    },
+    {
+      "id": "la-water-treatment",
+      "index": 19,
+      "stateCode": "LA",
+      "stateName": "Louisiana",
+      "stream": "water-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Louisiana - Operator certification rule",
+          "url": "https://ldh.la.gov/assets/oph/Center-EH/operator/OperatorCertificationRule.pdf"
+        },
+        {
+          "title": "Louisiana - Water Treatment Need to Know",
+          "url": "https://ldh.la.gov/assets/oph/Center-EH/operator/Need2Know-WaterTreatment.pdf"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/la-water-treatment.md"
+    },
+    {
+      "id": "md-water-treatment",
+      "index": 20,
+      "stateCode": "MD",
+      "stateName": "Maryland",
+      "stream": "water-treatment",
+      "examSystem": "wpi-customized",
+      "sourceHints": [
+        {
+          "title": "Maryland Board - June 2019 minutes",
+          "url": "https://mde.maryland.gov/programs/permits/EnvironmentalBoards/Documents/BWW-Meetings/WWSO-2019-06-20-Minutes.pdf"
+        },
+        {
+          "title": "Maryland - Water treatment plant classifications",
+          "url": "https://mde.maryland.gov/programs/permits/EnvironmentalBoards/Documents/BWW-Classification_ofWaterTreatementPlants.pdf"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/md-water-treatment.md"
+    },
+    {
+      "id": "mi-wastewater-treatment",
+      "index": 21,
+      "stateCode": "MI",
+      "stateName": "Michigan",
+      "stream": "wastewater-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Sewerage Systems  -  Michigan Administrative Rules, effective April 29, 2026",
+          "url": "https://ars.apps.lara.state.mi.us/AdminCode/DownloadAdminCodeFile?FileName=R%20299.2901%20to%20R%20299.2974.pdf"
+        },
+        {
+          "title": "Municipal wastewater operator certification  -  Exam application & instructions",
+          "url": "https://www.michigan.gov/egle/about/organization/water-resources/wastewater/operator-certification/municipal/exam-application"
+        },
+        {
+          "title": "Collection system & RTB certs",
+          "url": "https://www.michigan.gov/egle/about/organization/water-resources/wastewater/operator-certification/municipal/collection-system-rtb-certs"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/mi-wastewater-treatment.md"
+    },
+    {
+      "id": "mi-water-distribution",
+      "index": 22,
+      "stateCode": "MI",
+      "stateName": "Michigan",
+      "stream": "water-distribution",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Supplying Water to the Public  -  Part 19",
+          "url": "https://www.michigan.gov/egle/-/media/Project/Websites/egle/Documents/Programs/DWEHD/DWEHD-Laws/R32510101-to-R32512820.pdf?rev=74455a4d75694123840cfd35314b6c93"
+        },
+        {
+          "title": "Drinking water operator certification exam applications",
+          "url": "https://www.michigan.gov/egle/about/organization/drinking-water-and-environmental-health/drinking-water-operator-certification/exam-applications-and-study-guides"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/mi-water-distribution.md"
+    },
+    {
+      "id": "mi-water-treatment",
+      "index": 23,
+      "stateCode": "MI",
+      "stateName": "Michigan",
+      "stream": "water-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Supplying Water to the Public  -  Part 19, Examination and Certification of Operators",
+          "url": "https://www.michigan.gov/egle/-/media/Project/Websites/egle/Documents/Programs/DWEHD/DWEHD-Laws/R32510101-to-R32512820.pdf?rev=74455a4d75694123840cfd35314b6c93"
+        },
+        {
+          "title": "Drinking water operator certification exam applications",
+          "url": "https://www.michigan.gov/egle/about/organization/drinking-water-and-environmental-health/drinking-water-operator-certification/exam-applications-and-study-guides"
+        },
+        {
+          "title": "Drinking Water Operator Certification",
+          "url": "https://www.michigan.gov/egle/about/organization/drinking-water-and-environmental-health/drinking-water-operator-certification"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/mi-water-treatment.md"
+    },
+    {
+      "id": "mn-water-distribution",
+      "index": 24,
+      "stateCode": "MN",
+      "stateName": "Minnesota",
+      "stream": "water-distribution",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Minnesota Rule 9400.0400",
+          "url": "https://www.revisor.mn.gov/rules/9400.0400/"
+        },
+        {
+          "title": "Minnesota Department of Health - Operator FAQ",
+          "url": "https://www.health.state.mn.us/communities/environment/water/wateroperator/dwopfaqs.html"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/mn-water-distribution.md"
+    },
+    {
+      "id": "mn-water-treatment",
+      "index": 25,
+      "stateCode": "MN",
+      "stateName": "Minnesota",
+      "stream": "water-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Minnesota Rule 9400.0400",
+          "url": "https://www.revisor.mn.gov/rules/9400.0400/"
+        },
+        {
+          "title": "Minnesota Department of Health - Operator FAQ",
+          "url": "https://www.health.state.mn.us/communities/environment/water/wateroperator/dwopfaqs.html"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/mn-water-treatment.md"
+    },
+    {
+      "id": "ms-water-distribution",
+      "index": 26,
+      "stateCode": "MS",
+      "stateName": "Mississippi",
+      "stream": "water-distribution",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Mississippi - Waterworks operator certification regulations",
+          "url": "https://msdh.ms.gov/page/resources/3275.pdf"
+        },
+        {
+          "title": "Mississippi - Drinking water certification handbook",
+          "url": "https://msdh.ms.gov/page/resources/20537.pdf"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/ms-water-distribution.md"
+    },
+    {
+      "id": "ms-water-treatment",
+      "index": 27,
+      "stateCode": "MS",
+      "stateName": "Mississippi",
+      "stream": "water-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Mississippi - Waterworks operator certification regulations",
+          "url": "https://msdh.ms.gov/page/resources/3275.pdf"
+        },
+        {
+          "title": "Mississippi - Drinking water certification handbook",
+          "url": "https://msdh.ms.gov/page/resources/20537.pdf"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/ms-water-treatment.md"
+    },
+    {
+      "id": "nc-water-distribution",
+      "index": 28,
+      "stateCode": "NC",
+      "stateName": "North Carolina",
+      "stream": "water-distribution",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "North Carolina DEQ - Drinking water operator exams",
+          "url": "https://www.deq.nc.gov/about/divisions/water-resources/operator-certification/drinking-water-operator-certification/dw-operator-certification-exams"
+        },
+        {
+          "title": "North Carolina - Distribution Needs To Know",
+          "url": "http://files.nc.gov/ncdeq/Water%20Quality/Operator_Certification_Files/DW_Files/DW_Downloads/Distribution-NTK-52119.pdf"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/nc-water-distribution.md"
+    },
+    {
+      "id": "nc-water-treatment",
+      "index": 29,
+      "stateCode": "NC",
+      "stateName": "North Carolina",
+      "stream": "water-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "North Carolina DEQ - Drinking water operator exams",
+          "url": "https://www.deq.nc.gov/about/divisions/water-resources/operator-certification/drinking-water-operator-certification/dw-operator-certification-exams"
+        },
+        {
+          "title": "North Carolina - Well and Surface Needs To Know",
+          "url": "https://www.deq.nc.gov/water-quality/operator-certification-files/dw-files/needs-knows-2021-well-and-surfacepdf/download?attachment"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/nc-water-treatment.md"
+    },
+    {
+      "id": "nd-water-distribution",
+      "index": 30,
+      "stateCode": "ND",
+      "stateName": "North Dakota",
+      "stream": "water-distribution",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "North Dakota operator certification rules",
+          "url": "https://ndlegis.gov/prod/acdata/pdf.bak/pdf/33.1-19-01.pdf"
+        },
+        {
+          "title": "North Dakota DEQ - 2026 operator certification report",
+          "url": "https://deq.nd.gov/Publications/mf/North%20Dakota%20Operator%20Certification%20Program%202026.pdf"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/nd-water-distribution.md"
+    },
+    {
+      "id": "nd-water-treatment",
+      "index": 31,
+      "stateCode": "ND",
+      "stateName": "North Dakota",
+      "stream": "water-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "North Dakota operator certification rules",
+          "url": "https://ndlegis.gov/prod/acdata/pdf.bak/pdf/33.1-19-01.pdf"
+        },
+        {
+          "title": "North Dakota DEQ - 2026 operator certification report",
+          "url": "https://deq.nd.gov/Publications/mf/North%20Dakota%20Operator%20Certification%20Program%202026.pdf"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/nd-water-treatment.md"
+    },
+    {
+      "id": "ne-wastewater-treatment",
+      "index": 32,
+      "stateCode": "NE",
+      "stateName": "Nebraska",
+      "stream": "wastewater-treatment",
+      "examSystem": "wpi-customized",
+      "sourceHints": [
+        {
+          "title": "Schedule of Exams  -  2026 DWEE Test Dates, updated April 2026",
+          "url": "https://dwee.nebraska.gov/surface-water/wastewater/wastewater-treatment-facility-operator-certification-program/schedule-exams"
+        },
+        {
+          "title": "Title 197  -  Rules and Regulations for the Certification of Wastewater Treatment Operators, effective April 6, 2020",
+          "url": "https://dwee.nebraska.gov/sites/default/files/titles/Title%20197%20Effective%2004-06-2020.pdf"
+        },
+        {
+          "title": "Wastewater Treatment Facility Operator Certification Program",
+          "url": "https://dwee.nebraska.gov/surface-water/wastewater/wastewater-treatment-facility-operator-certification-program"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/ne-wastewater-treatment.md"
+    },
+    {
+      "id": "ne-water-distribution",
+      "index": 33,
+      "stateCode": "NE",
+      "stateName": "Nebraska",
+      "stream": "water-distribution",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Nebraska Title 179 - Water operator licensure",
+          "url": "https://dwee.nebraska.gov/sites/default/files/titles/Title%20179%20Effective%2003-18-2025.pdf"
+        },
+        {
+          "title": "Nebraska DWEE - Operator certification",
+          "url": "https://dwee.nebraska.gov/water-quality/drinking-water/drinking-water-field-services-training-fst-program/drinking-water-field-services-training-operator-certification-and"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/ne-water-distribution.md"
+    },
+    {
+      "id": "ne-water-treatment",
+      "index": 34,
+      "stateCode": "NE",
+      "stateName": "Nebraska",
+      "stream": "water-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Nebraska Title 179 - Water operator licensure",
+          "url": "https://dwee.nebraska.gov/sites/default/files/titles/Title%20179%20Effective%2003-18-2025.pdf"
+        },
+        {
+          "title": "Nebraska DWEE - Operator certification",
+          "url": "https://dwee.nebraska.gov/water-quality/drinking-water/drinking-water-field-services-training-fst-program/drinking-water-field-services-training-operator-certification-and"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/ne-water-treatment.md"
+    },
+    {
+      "id": "nh-wastewater-collection",
+      "index": 35,
+      "stateCode": "NH",
+      "stateName": "New Hampshire",
+      "stream": "wastewater-collection",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Resources  -  New Hampshire  -  NEWEA",
+          "url": "https://www.newea.org/careers/professional-development/resources-new-hampshire/"
+        },
+        {
+          "title": "Collection Systems Certification Program  -  NEWEA, revised June 2026",
+          "url": "https://www.newea.org/wp-content/uploads/2026/06/CS-BROCHURE-Rev-06_2026-1.pdf"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/nh-wastewater-collection.md"
+    },
+    {
+      "id": "nh-wastewater-treatment",
+      "index": 36,
+      "stateCode": "NH",
+      "stateName": "New Hampshire",
+      "stream": "wastewater-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Wastewater Operator Certification  -  NHDES",
+          "url": "https://www.des.nh.gov/waste/wastewater/operator-certification"
+        },
+        {
+          "title": "Wastewater Operator FAQ  -  NHDES",
+          "url": "https://www.des.nh.gov/wastewater-operator-faq"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/nh-wastewater-treatment.md"
+    },
+    {
+      "id": "nm-wastewater-collection",
+      "index": 37,
+      "stateCode": "NM",
+      "stateName": "New Mexico",
+      "stream": "wastewater-collection",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Wastewater Collection System – Level 1 (CS1): Operator Guidebook with Need to Know Criteria, March 2026",
+          "url": "https://service.web.env.nm.gov/urls/vBzFrpJV"
+        },
+        {
+          "title": "Certification Exams, Renewal and Equivalencies",
+          "url": "https://www.env.nm.gov/drinking_water/certification-renewal-requirements/"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/nm-wastewater-collection.md"
+    },
+    {
+      "id": "nm-wastewater-treatment",
+      "index": 38,
+      "stateCode": "NM",
+      "stateName": "New Mexico",
+      "stream": "wastewater-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Public Wastewater Facility – Level 2 (WW2): Operator Guidebook with Need-to-Know Criteria, March 2026",
+          "url": "https://service.web.env.nm.gov/urls/yYrWpQLC"
+        },
+        {
+          "title": "Certification Exams, Renewal and Equivalencies",
+          "url": "https://www.env.nm.gov/drinking_water/certification-renewal-requirements/"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/nm-wastewater-treatment.md"
+    },
+    {
+      "id": "nm-water-distribution",
+      "index": 39,
+      "stateCode": "NM",
+      "stateName": "New Mexico",
+      "stream": "water-distribution",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Water Distribution System – Level 1 (DS1): Operator Guidebook with Need to Know Criteria, March 2026",
+          "url": "https://service.web.env.nm.gov/urls/CqUPMDFn"
+        },
+        {
+          "title": "Certification Exams, Renewal and Equivalencies",
+          "url": "https://www.env.nm.gov/drinking_water/certification-renewal-requirements/"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/nm-water-distribution.md"
+    },
+    {
+      "id": "nm-water-treatment",
+      "index": 40,
+      "stateCode": "NM",
+      "stateName": "New Mexico",
+      "stream": "water-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Water Supply – Level 3 (WS3): Operator Guidebook with Need to Know Criteria, March 2026",
+          "url": "https://service.web.env.nm.gov/urls/fRhWprst"
+        },
+        {
+          "title": "Certification Exams, Renewal and Equivalencies",
+          "url": "https://www.env.nm.gov/drinking_water/certification-renewal-requirements/"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/nm-water-treatment.md"
+    },
+    {
+      "id": "ok-water-distribution",
+      "index": 41,
+      "stateCode": "OK",
+      "stateName": "Oklahoma",
+      "stream": "water-distribution",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Oklahoma DEQ - Chapter 710",
+          "url": "https://oklahoma.gov/content/dam/ok/en/deq/documents/rules/710.pdf"
+        },
+        {
+          "title": "Oklahoma DEQ - Distribution and Collection study guide",
+          "url": "https://oklahoma.gov/content/dam/ok/en/deq/documents/water-division/distribution-collection_study_guide.pdf"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/ok-water-distribution.md"
+    },
+    {
+      "id": "ok-water-treatment",
+      "index": 42,
+      "stateCode": "OK",
+      "stateName": "Oklahoma",
+      "stream": "water-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Oklahoma DEQ - Chapter 710",
+          "url": "https://oklahoma.gov/content/dam/ok/en/deq/documents/rules/710.pdf"
+        },
+        {
+          "title": "Oklahoma DEQ - Water System Operations study guide",
+          "url": "https://oklahoma.gov/content/dam/ok/en/deq/documents/water-division/completewatersystemsstudyguide7_08-1.pdf"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/ok-water-treatment.md"
+    },
+    {
+      "id": "pa-wastewater-collection",
+      "index": 43,
+      "stateCode": "PA",
+      "stateName": "Pennsylvania",
+      "stream": "wastewater-collection",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "25 Pa. Code Chapter 302, Subchapter F  -  Certification Examinations",
+          "url": "https://pacodeandbulletin.gov/display/pacode?file=/secure/pacode/data/025/chapter302/subchapFtoc.html&d="
+        },
+        {
+          "title": "DEP  -  Definitions of Classes and Subclasses",
+          "url": "https://www.pa.gov/agencies/dep/programs-and-services/water/bureau-of-safe-drinking-water/operator-certification/initial-certification/definitions-of-classes-and-subclasses"
+        },
+        {
+          "title": "DEP  -  Certification Exam Schedule",
+          "url": "https://www.pa.gov/agencies/dep/programs-and-services/water/bureau-of-safe-drinking-water/operator-certification/certification-exam-schedule"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/pa-wastewater-collection.md"
+    },
+    {
+      "id": "pa-wastewater-treatment",
+      "index": 44,
+      "stateCode": "PA",
+      "stateName": "Pennsylvania",
+      "stream": "wastewater-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "25 Pa. Code Chapter 302, Subchapter F  -  Certification Examinations",
+          "url": "https://pacodeandbulletin.gov/display/pacode?file=/secure/pacode/data/025/chapter302/subchapFtoc.html&d="
+        },
+        {
+          "title": "DEP  -  Definitions of Classes and Subclasses",
+          "url": "https://www.pa.gov/agencies/dep/programs-and-services/water/bureau-of-safe-drinking-water/operator-certification/initial-certification/definitions-of-classes-and-subclasses"
+        },
+        {
+          "title": "DEP  -  Certification Exam Schedule",
+          "url": "https://www.pa.gov/agencies/dep/programs-and-services/water/bureau-of-safe-drinking-water/operator-certification/certification-exam-schedule"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/pa-wastewater-treatment.md"
+    },
+    {
+      "id": "pa-water-distribution",
+      "index": 45,
+      "stateCode": "PA",
+      "stateName": "Pennsylvania",
+      "stream": "water-distribution",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "25 Pa. Code Chapter 302, Subchapter F  -  Certification Examinations",
+          "url": "https://pacodeandbulletin.gov/display/pacode?file=/secure/pacode/data/025/chapter302/subchapFtoc.html&d="
+        },
+        {
+          "title": "DEP  -  Definitions of Classes and Subclasses",
+          "url": "https://www.pa.gov/agencies/dep/programs-and-services/water/bureau-of-safe-drinking-water/operator-certification/initial-certification/definitions-of-classes-and-subclasses"
+        },
+        {
+          "title": "DEP  -  Certification Exam Schedule",
+          "url": "https://www.pa.gov/agencies/dep/programs-and-services/water/bureau-of-safe-drinking-water/operator-certification/certification-exam-schedule"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/pa-water-distribution.md"
+    },
+    {
+      "id": "pa-water-treatment",
+      "index": 46,
+      "stateCode": "PA",
+      "stateName": "Pennsylvania",
+      "stream": "water-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "25 Pa. Code Chapter 302, Subchapter F  -  Certification Examinations",
+          "url": "https://pacodeandbulletin.gov/display/pacode?file=/secure/pacode/data/025/chapter302/subchapFtoc.html&d="
+        },
+        {
+          "title": "DEP  -  Definitions of Classes and Subclasses",
+          "url": "https://www.pa.gov/agencies/dep/programs-and-services/water/bureau-of-safe-drinking-water/operator-certification/initial-certification/definitions-of-classes-and-subclasses"
+        },
+        {
+          "title": "DEP  -  Certification Exam Schedule",
+          "url": "https://www.pa.gov/agencies/dep/programs-and-services/water/bureau-of-safe-drinking-water/operator-certification/certification-exam-schedule"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/pa-water-treatment.md"
+    },
+    {
+      "id": "ut-water-distribution",
+      "index": 47,
+      "stateCode": "UT",
+      "stateName": "Utah",
+      "stream": "water-distribution",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Utah Administrative Rule R309-300",
+          "url": "https://adminrules.utah.gov/public/rule/R309-300/Current%20Rules"
+        },
+        {
+          "title": "Utah DEQ - Operator exam study help",
+          "url": "https://deq.utah.gov/ddw/study-help"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/ut-water-distribution.md"
+    },
+    {
+      "id": "ut-water-treatment",
+      "index": 48,
+      "stateCode": "UT",
+      "stateName": "Utah",
+      "stream": "water-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Utah Administrative Rule R309-300",
+          "url": "https://adminrules.utah.gov/public/rule/R309-300/Current%20Rules"
+        },
+        {
+          "title": "Utah DEQ - Operator exam study help",
+          "url": "https://deq.utah.gov/ddw/study-help"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/ut-water-treatment.md"
+    },
+    {
+      "id": "vt-water-distribution",
+      "index": 49,
+      "stateCode": "VT",
+      "stateName": "Vermont",
+      "stream": "water-distribution",
+      "examSystem": "wpi-customized",
+      "sourceHints": [
+        {
+          "title": "Vermont - 2025 annual capacity report",
+          "url": "https://dec.vermont.gov/sites/dec/files/dwgwp/capacitydev/pdf/VT%202025%20Annual%20Capacity%20Report.pdf"
+        },
+        {
+          "title": "Vermont DEC - Public water system operator exams",
+          "url": "https://dec.vermont.gov/water/drinking-water/public-water-system-operator-certification/public-water-system-operator-exams"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/vt-water-distribution.md"
+    },
+    {
+      "id": "wi-wastewater-collection",
+      "index": 50,
+      "stateCode": "WI",
+      "stateName": "Wisconsin",
+      "stream": "wastewater-collection",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Wastewater operator certification - Collection System Certification",
+          "url": "https://dnr.wisconsin.gov/topic/opcert/wastewater.html"
+        },
+        {
+          "title": "Sanitary Sewage Collection System Study Guide, August 2018",
+          "url": "https://dnr.wisconsin.gov/sites/default/files/topic/OpCert/StudyGuideSanitarySewer.pdf"
+        },
+        {
+          "title": "Exams",
+          "url": "https://dnr.wisconsin.gov/topic/opcert/exams.html"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/wi-wastewater-collection.md"
+    },
+    {
+      "id": "wi-wastewater-treatment",
+      "index": 51,
+      "stateCode": "WI",
+      "stateName": "Wisconsin",
+      "stream": "wastewater-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Wastewater operator certification",
+          "url": "https://dnr.wisconsin.gov/topic/opcert/wastewater.html"
+        },
+        {
+          "title": "Basic General Wastewater Study Guide, revised June 2016",
+          "url": "https://dnr.wisconsin.gov/sites/default/files/topic/OpCert/StudyGuideBasicGeneral.pdf"
+        },
+        {
+          "title": "Exams",
+          "url": "https://dnr.wisconsin.gov/topic/opcert/exams.html"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/wi-wastewater-treatment.md"
+    },
+    {
+      "id": "wi-water-distribution",
+      "index": 52,
+      "stateCode": "WI",
+      "stateName": "Wisconsin",
+      "stream": "water-distribution",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Waterworks operator certification",
+          "url": "https://dnr.wisconsin.gov/topic/opcert/muniWaterworks.html"
+        },
+        {
+          "title": "Distribution Study Guide, Subclass D, revised February 2016",
+          "url": "https://dnr.wisconsin.gov/sites/default/files/topic/OpCert/DWSGDistribution.pdf"
+        },
+        {
+          "title": "Exams",
+          "url": "https://dnr.wisconsin.gov/topic/opcert/exams.html"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/wi-water-distribution.md"
+    },
+    {
+      "id": "wi-water-treatment",
+      "index": 53,
+      "stateCode": "WI",
+      "stateName": "Wisconsin",
+      "stream": "water-treatment",
+      "examSystem": "state-specific",
+      "sourceHints": [
+        {
+          "title": "Waterworks operator certification",
+          "url": "https://dnr.wisconsin.gov/topic/opcert/muniWaterworks.html"
+        },
+        {
+          "title": "Surface Water Study Guide, Subclass S, revised February 2016",
+          "url": "https://dnr.wisconsin.gov/sites/default/files/topic/OpCert/DWSGSurfaceWater.pdf"
+        },
+        {
+          "title": "Exams",
+          "url": "https://dnr.wisconsin.gov/topic/opcert/exams.html"
+        }
+      ],
+      "directCourseKeys": [],
+      "outputPath": "docs/us-launch/state-dossiers/wi-water-treatment.md"
+    }
+  ]
+}

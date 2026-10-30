@@ -119,5 +119,18 @@ client/public/__manus__/version.json
 deliverables/*.docx
 deliverables/*.pptx
 
+# Private, review-only certification-content artifacts. Keep proprietary
+# candidate JSON, independent reviews, and local authoring workspaces out of
+# the public source repository; transfer them through approved private storage.
+artifacts/us-review-only-candidates/
+.generate_nm_cs1_draft.py
+.research/
+.review_tmp/
+research/ok-water-treatment/
+tmp-ne-water-treatment/
+tmp-nm-cs1-check/
+work/
+docs/us-launch/state-dossiers/.nm-wastewater-treatment-research-notes.md
+
 # Isolated, fictional UI preview output
 .ui-preview-build/
