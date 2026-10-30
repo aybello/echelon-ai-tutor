@@ -4,16 +4,16 @@
  * learner-facing account, progress, verification, record, and receipt surfaces.
  */
 .learner-redesign {
-  --learner-navy: #10253f;
+  --learner-navy: #000000;
   --learner-deep-navy: #0b1d30;
   --learner-teal: #087f78;
   --learner-teal-dark: #066a65;
   --learner-teal-soft: #eaf6f3;
   --learner-canvas: #f5f8f8;
   --learner-surface: #ffffff;
-  --learner-ink: #17212b;
-  --learner-copy: #425466;
-  --learner-muted: #647481;
+  --learner-ink: #000000;
+  --learner-copy: #000000;
+  --learner-muted: #000000;
   --learner-line: #dfe6e8;
   --learner-success: #16764f;
   --learner-success-soft: #eef8f1;

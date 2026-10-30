@@ -1,13 +1,13 @@
 /* Public discovery redesign — intentionally scoped to public page roots. */
 .public-redesign {
-  --public-navy: #10253F;
+  --public-navy: #000000;
   --public-deep-navy: #0B1D30;
   --public-teal: #087F78;
   --public-soft-teal: #EAF6F3;
   --public-surface: #FFFFFF;
   --public-subtle: #F5F8F8;
-  --public-ink: #17212B;
-  --public-muted: #647481;
+  --public-ink: #000000;
+  --public-muted: #000000;
   --public-border: #DFE6E8;
   --public-focus: #087F78;
   min-height: 100vh;
@@ -296,6 +296,10 @@
 .public-redesign-blog-post .text-blue-700,
 .public-redesign-careers .text-blue-600,
 .public-redesign-careers .text-blue-700 { color: var(--public-teal) !important; }
+.public-redesign-blog :is(.text-slate-500, .text-slate-600, .text-slate-700),
+.public-redesign-blog-post :is(.text-slate-500, .text-slate-600, .text-slate-700) {
+  color: var(--public-ink) !important;
+}
 .public-redesign-blog .border-blue-600,
 .public-redesign-careers .border-blue-600 { border-color: var(--public-teal) !important; }
 .public-redesign-blog .bg-blue-50,

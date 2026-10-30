@@ -1,14 +1,14 @@
 /* Operations redesign layer — scoped to admin and continuing-education page roots only. */
 
 :where(.ops-admin-surface, .ops-ceu-catalogue, .ops-ceu-workspace) {
-  --ops-navy: #10253F;
+  --ops-navy: #000000;
   --ops-deep-navy: #0B1D30;
   --ops-teal: #087F78;
   --ops-soft-teal: #EAF6F3;
   --ops-canvas: #F5F8F8;
   --ops-surface: #FFFFFF;
-  --ops-ink: #17212B;
-  --ops-muted: #647481;
+  --ops-ink: #000000;
+  --ops-muted: #000000;
   --ops-line: #DFE6E8;
   --ops-success: #176B4F;
   --ops-success-bg: #EAF6F3;

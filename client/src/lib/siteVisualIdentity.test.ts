@@ -31,9 +31,30 @@ describe("Echelon technical visual identity", () => {
     ]) {
       expect(admin).toContain(`--admin-${role}: var(--echelon-${token})`);
     }
-    expect(system).toContain("--echelon-navy: #10253f");
+    expect(system).toContain("--echelon-navy: #000000");
     expect(system).toContain("--echelon-teal: #087f78");
     expect(admin).not.toMatch(/#f5f3ed|#fffefa|#f4e1d6/i);
+  });
+
+  it("uses the approved high-contrast black text hierarchy on light surfaces", () => {
+    const system = read("client/src/styles/FullSiteRedesign.css");
+    const homepage = read("client/src/pages/Landing.css");
+    const publicCss = read("client/src/styles/PublicRedesign.css");
+    const learning = read("client/src/styles/LearningRedesign.css");
+    const learner = read("client/src/styles/LearnerRedesign.css");
+    const teams = read("client/src/styles/TeamsRedesign.css");
+    const operations = read("client/src/styles/OperationsRedesign.css");
+
+    expect(system).toContain("--echelon-ink: #000000");
+    expect(system).toContain("--echelon-muted: #000000");
+    expect(homepage).toContain("--home-ink: #000000");
+    expect(homepage).toContain("--home-muted: #000000");
+    expect(publicCss).toContain("--public-muted: #000000");
+    expect(publicCss).toContain(".public-redesign-blog :is(.text-slate-500, .text-slate-600, .text-slate-700)");
+    expect(learning).toContain("--lr-muted: #000000");
+    expect(learner).toContain("--learner-muted: #000000");
+    expect(teams).toContain("--teams-muted: #000000");
+    expect(operations).toContain("--ops-muted: #000000");
   });
 
   it("applies the shared type system to regional pages without removing regional content", () => {

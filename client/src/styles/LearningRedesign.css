@@ -4,14 +4,14 @@
  * to .learning-redesign or an existing learner component root.
  */
 .learning-redesign {
-  --lr-navy: #10253f;
+  --lr-navy: #000000;
   --lr-deep: #0b1d30;
   --lr-teal: #087f78;
   --lr-teal-soft: #eaf6f3;
   --lr-canvas: #f5f8f8;
   --lr-surface: #ffffff;
-  --lr-ink: #17212b;
-  --lr-muted: #647481;
+  --lr-ink: #000000;
+  --lr-muted: #000000;
   --lr-line: #dfe6e8;
   --lr-success: #167a4b;
   --lr-success-soft: #eaf7ef;

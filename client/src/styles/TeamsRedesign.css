@@ -4,15 +4,15 @@
  * their current contracts and styling.
  */
 .teams-redesign {
-  --teams-navy: #10253f;
+  --teams-navy: #000000;
   --teams-deep-navy: #0b1d30;
   --teams-teal: #087f78;
   --teams-teal-dark: #05655f;
   --teams-soft-teal: #eaf6f3;
   --teams-surface: #ffffff;
   --teams-canvas: #f5f8f8;
-  --teams-ink: #17212b;
-  --teams-muted: #647481;
+  --teams-ink: #000000;
+  --teams-muted: #000000;
   --teams-line: #dfe6e8;
   --teams-success: #13795b;
   --teams-warning: #a86400;

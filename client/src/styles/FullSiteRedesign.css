@@ -4,15 +4,15 @@
  * remain owned by the existing page components and server contracts.
  */
 :root {
-  --echelon-navy: #10253f;
+  --echelon-navy: #000000;
   --echelon-navy-soft: #183a5f;
-  --echelon-blue: #10253f;
+  --echelon-blue: #000000;
   --echelon-blue-bright: #087f78;
   --echelon-teal: #087f78;
   --echelon-teal-soft: #eaf6f3;
-  --echelon-ink: #101820;
-  --echelon-copy: #17232d;
-  --echelon-muted: #384955;
+  --echelon-ink: #000000;
+  --echelon-copy: #000000;
+  --echelon-muted: #000000;
   --echelon-line: #dfe6e8;
   --echelon-canvas: #edf4f2;
   --echelon-surface: #ffffff;
@@ -24,19 +24,19 @@
   --echelon-shadow-md: 0 18px 40px rgba(16, 37, 63, 0.11);
 
   --background: oklch(0.973 0.004 182);
-  --foreground: oklch(0.16 0.026 247);
+  --foreground: oklch(0 0 0);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.16 0.026 247);
+  --card-foreground: oklch(0 0 0);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.16 0.026 247);
+  --popover-foreground: oklch(0 0 0);
   --primary: oklch(0.53 0.096 181);
   --primary-foreground: oklch(0.99 0.002 180);
   --secondary: oklch(0.953 0.01 181);
-  --secondary-foreground: oklch(0.22 0.025 247);
+  --secondary-foreground: oklch(0 0 0);
   --muted: oklch(0.953 0.01 181);
-  --muted-foreground: oklch(0.39 0.025 236);
+  --muted-foreground: oklch(0 0 0);
   --accent: oklch(0.937 0.026 180);
-  --accent-foreground: oklch(0.22 0.055 181);
+  --accent-foreground: oklch(0 0 0);
   --border: oklch(0.9 0.01 190);
   --input: oklch(0.9 0.01 190);
   --ring: oklch(0.53 0.096 181);
