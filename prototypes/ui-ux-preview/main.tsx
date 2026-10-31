@@ -109,7 +109,7 @@ function Preview() {
     document.addEventListener("click",onLink); return () => document.removeEventListener("click",onLink);
   },[navigate]);
   return <>
-    <header className="preview-review-bar"><div><strong>Echelon · Old branding, simpler study flow</strong><span>Unpublished draft. Fictional sample data. No payments or customer records.</span></div><nav aria-label="Preview screens">{routes.map(([href,label]) => <button key={href} type="button" aria-pressed={view===href} onClick={() => navigate(href)}>{label}</button>)}</nav></header>
+    <header className="preview-review-bar"><div><strong>Echelon · Current product workspace</strong><span>Isolated sample data. No payments or customer records.</span></div><nav aria-label="Preview screens">{routes.map(([href,label]) => <button key={href} type="button" aria-pressed={view===href} onClick={() => navigate(href)}>{label}</button>)}</nav></header>
     <ErrorBoundary key={view}>{view === "/" ? <div className="marketing-workspace"><SiteNav currentPath="/" /><section className="landing-hero-section"><CoursePathHero /></section><main className="preview-course-surface"><CourseFinder /></main></div>
     :view === "/homepage" ? <Landing /> :view === "/pricing" ? <Pricing /> :view === "/dashboard" ? <StudentDashboard /> : view === "/team" ? <OrgDashboard />
     :view === "/admin" ? <Admin /> :view === "/account" ? <Account /> :view === "/formulas-water1" ? <FormulasWater1 />
