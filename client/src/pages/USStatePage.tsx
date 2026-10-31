@@ -19,7 +19,7 @@ export default function USStatePage() {
       {US_STREAMS.map(stream => {
         const program = state.programs.find(item => item.stream === stream.key)!;
         const coverage = getUSProgramCoverage(program);
-        const courses = matchedUSCourses(state, stream.key);
+        const courses = matchedUSCourses(state, stream.key).filter(course => course.courseKey !== "us-texas-class-d-water");
         return <section key={stream.key} className="us-card us-program" data-program={stream.key}>
           <span className={`us-badge us-coverage-${coverage.kind}`} data-coverage={coverage.kind}>{courses.some(course => course.examFamily === "us-state") ? "State-specific preparation available" : usProgramLabel(program)}</span><h2>{stream.label}</h2>
           {program.authorityName && <p><strong>Program authority:</strong> {program.authorityName}</p>}
@@ -39,14 +39,14 @@ export default function USStatePage() {
       })}
       {state.code === "TX" && <section className="us-card us-program" data-course-key="us-texas-class-d-water">
         <span className="us-badge">Texas-specific preparation</span><h2>Texas Class D Water</h2>
-        <p>120 original questions based on the public TCEQ Class D topic scope, with worked calculation steps, AI Tutor support and a timed mock exam. Echelon is an independent preparation provider and is not endorsed by TCEQ.</p>
+        <p>Covers Texas water treatment and water distribution. This combined course includes 120 original questions based on the public TCEQ Class D topic scope, worked calculation steps, AI Tutor support and a timed mock exam. Echelon is an independent preparation provider and is not endorsed by TCEQ.</p>
         <div className="us-actions">
           <Link href="/us-texas-class-d-water" className="us-action">Practice</Link>
           <Link href="/us-texas-class-d-water-mock" className="us-action us-action-secondary">Mock Exam</Link>
           <Link href="/us-texas-class-d-water-flashcards" className="us-action us-action-secondary">Flashcards</Link>
         </div>
       </section>}
-      {state.dedicatedCourseNeeds.length > 0 && <section className="us-card us-program"><h2>Dedicated course research</h2><p>{state.code === "TX" ? "Texas Class D Water preparation is available above. Other Texas credentials below remain research needs and are not offered as dedicated courses." : "These needs are separate from the shared WPI courses. Dedicated prep is not available or being sold yet."}</p><ul>{state.dedicatedCourseNeeds.map(item => <li key={item}>{item}</li>)}</ul></section>}
+      {state.dedicatedCourseNeeds.length > 0 && <section className="us-card us-program"><h2>Dedicated course research</h2><p>{state.code === "TX" ? "The combined Texas Class D course is shown above. Other Texas credentials below remain research needs and are not offered as dedicated courses." : "These needs are separate from the shared WPI courses. Dedicated prep is not available or being sold yet."}</p><ul>{state.dedicatedCourseNeeds.map(item => <li key={item}>{item}</li>)}</ul></section>}
       {state.limits.length > 0 && <section className="us-card us-program"><h2>What still needs confirmation</h2><ul>{state.limits.map(item => <li key={item}>{item}</li>)}</ul></section>}
       <Link href="/us/states" className="us-action us-action-secondary">Back to all states</Link>
     </main>

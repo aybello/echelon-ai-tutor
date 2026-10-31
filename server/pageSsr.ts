@@ -731,7 +731,10 @@ const BASE_STATIC_PAGE_META: PageMeta[] = [
 
       <h2>Dedicated US Class I Courses</h2>
       <p>Our US Class I Water Treatment and US Class I Water Distribution courses are written to the WPI Class 1 Need-to-Know Criteria in US customary units, with cited public sources and worked calculation steps.</p>
-      <ul>${COURSE_SEO_PAGES.filter(course => course.regionPath === "/us").map(course => `<li><a href="${SITE_URL}${course.quizPath}">${escapeHtml(course.displayName)}</a>: ${formatCad(course.priceCAD)} for one selected course with 12 months of access from successful payment.</li>`).join("")}</ul>
+      <ul>${COURSE_SEO_PAGES.filter(course => course.regionPath === "/us" && course.courseKey !== "us-texas-class-d-water").map(course => `<li><a href="${SITE_URL}${course.quizPath}">${escapeHtml(course.displayName)}</a>: ${formatCad(course.priceCAD)} for one selected course with 12 months of access from successful payment.</li>`).join("")}</ul>
+
+      <h2>Texas Class D Water</h2>
+      <p>For Texas learners, our Texas Class D Water course covers water treatment and water distribution in one combined state-specific course. <a href="${SITE_URL}/us-texas-class-d-water">Review Texas Class D Water preparation</a> before purchasing.</p>
 
       <h2>Four Streams at Class I to IV</h2>
       <p>Our shared WPI catalogue covers Water Treatment, Wastewater Treatment, Water Distribution, and Wastewater Collection. Course names describe the WPI study level, not an automatic match to a state's classification.</p>
@@ -876,7 +879,7 @@ function buildUSStatePageMeta(state: USStateConfig): PageMeta {
   const body = US_STREAMS.map(stream => {
     const program = state.programs.find(item => item.stream === stream.key)!;
     const coverage = getUSProgramCoverage(program);
-    const courses = matchedUSCourses(state, stream.key);
+    const courses = matchedUSCourses(state, stream.key).filter(course => course.courseKey !== "us-texas-class-d-water");
     const choices = courses.length ? `<ul>${courses.map(course => `<li>${escapeHtml(course.displayName)}: <a href="${escapeHtml(usCourseHref(course, "practice", state.code)!)}">Practice</a> | <a href="${escapeHtml(usCourseHref(course, "mock", state.code)!)}">Mock exam</a> | <a href="${escapeHtml(usCourseHref(course, "flashcards", state.code)!)}">Flashcards</a></li>`).join("")}</ul>` : `<p>No state-matched course is linked for this stream yet.</p>`;
     return `<section><h2>${escapeHtml(stream.label)}</h2><p>${escapeHtml(usProgramLabel(program))}</p>
       <p><strong>Program authority:</strong> ${escapeHtml(program.authorityName || "Not confirmed")}</p>
@@ -885,12 +888,18 @@ function buildUSStatePageMeta(state: USStateConfig): PageMeta {
       ${program.authorityUrl ? `<p><a href="${escapeHtml(program.authorityUrl)}">Official program information</a></p>` : ""}
       ${choices}${program.sources.length ? `<h3>Sources and exam scope</h3><ul>${program.sources.map(source => `<li><a href="${escapeHtml(source.url)}">${escapeHtml(source.title)}</a><p>${escapeHtml(source.evidence)}</p></li>`).join("")}</ul>` : ""}</section>`;
   }).join("");
+  const texasClassD = state.code === "TX"
+    ? `<section><h2>Texas Class D Water</h2><p>Covers Texas water treatment and water distribution in one combined state-specific course.</p><p><a href="${SITE_URL}/us-texas-class-d-water?country=US&amp;state=TX">Practice</a> | <a href="${SITE_URL}/us-texas-class-d-water-mock?country=US&amp;state=TX">Mock exam</a> | <a href="${SITE_URL}/us-texas-class-d-water-flashcards?country=US&amp;state=TX">Flashcards</a></p></section>`
+    : "";
+  const dedicatedCourseNeeds = state.code === "TX"
+    ? state.dedicatedCourseNeeds.filter(note => !note.includes("Texas Class D Water"))
+    : state.dedicatedCourseNeeds;
   return {
     path: `/us/states/${state.slug}`, title: `${state.name} Operator Exam Routes | Echelon Institute`,
     description: `Check ${state.name} water and wastewater exam programs, official sources and confirmed shared WPI course matches. State-specific courses are listed separately.`,
     h1: `${state.name} operator exam preparation`, changefreq: "monthly", priority: "0.6",
-    bodyHtml: `<p>Source check: ${US_RESEARCH_CHECKED_DATE}. Courses are linked only where the standardized exam and class match are confirmed. Local grades may not equal WPI class numbers. Your authority's current documents control.</p>${body}
-      ${state.dedicatedCourseNeeds.length ? `<h2>State-specific exam research</h2><p>The streams below use a state-specific exam. Echelon does not offer a course for them yet.</p><ul>${state.dedicatedCourseNeeds.map(note => `<li>${escapeHtml(note)}</li>`).join("")}</ul>` : ""}
+    bodyHtml: `<p>Source check: ${US_RESEARCH_CHECKED_DATE}. Courses are linked only where the standardized exam and class match are confirmed. Local grades may not equal WPI class numbers. Your authority's current documents control.</p>${body}${texasClassD}
+      ${dedicatedCourseNeeds.length ? `<h2>State-specific exam research</h2><p>The streams below use a state-specific exam. Echelon does not offer a course for them yet.</p><ul>${dedicatedCourseNeeds.map(note => `<li>${escapeHtml(note)}</li>`).join("")}</ul>` : ""}
       ${state.limits.length ? `<h2>What still needs confirmation</h2><ul>${state.limits.map(note => `<li>${escapeHtml(note)}</li>`).join("")}</ul>` : ""}
       <p><a href="/us/courses?state=${state.code}">View confirmed courses</a> or <a href="/us/states">view all states</a>.</p>`,
   };

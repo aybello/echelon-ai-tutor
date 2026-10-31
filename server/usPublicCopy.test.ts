@@ -84,13 +84,15 @@ describe("US public index copy", () => {
 
   it("renders the dedicated US Class I courses with their own links and prices", () => {
     const body = pageFor("/us/courses").bodyHtml!;
-    const usCourses = COURSE_SEO_PAGES.filter(course => course.regionPath === "/us");
-    expect(usCourses).toHaveLength(3);
+    const usCourses = COURSE_SEO_PAGES.filter(course => course.regionPath === "/us" && course.courseKey !== "us-texas-class-d-water");
+    expect(usCourses).toHaveLength(2);
     for (const course of usCourses) {
       expect(body).toContain(`href="${SITE_URL}${course.quizPath}">${course.displayName}</a>`);
       expect(body).toContain(formatCad(course.priceCAD));
     }
     expect(body).toContain("WPI Class 1 Need-to-Know Criteria in US customary units");
+    const classOneSection = body.slice(0, body.indexOf("<h2>Texas Class D Water</h2>"));
+    expect(classOneSection).not.toContain("Texas Class D Water");
   });
 
   it("directs overview readers to state matching before the shared catalogue", () => {
@@ -118,6 +120,14 @@ describe("US public index copy", () => {
     expect(alaska).toContain("Only the listed standardized WPI classes are linked.");
     expect(california).toContain("State-specific / no shared course.");
     expect(california).toContain("No shared WPI course is linked unless the cited record confirms an exact standardized class match.");
+  });
+
+  it("renders Texas as one combined state-specific course without contradictory research copy", () => {
+    const texas = STATIC_PAGE_META.find(candidate => candidate.path === "/us/states/texas")?.bodyHtml;
+    expect(texas).toBeDefined();
+    expect(texas!.match(/href="https:\/\/echeloninstitute\.ca\/us-texas-class-d-water\?country=US&amp;state=TX"/g)).toHaveLength(1);
+    expect(texas).toContain("Covers Texas water treatment and water distribution");
+    expect(texas).not.toContain("Texas Class D Water preparation is not available");
   });
 
   it.each(US_INDEX_PATHS)("injects a single canonical, honest heading, and body for %s", path => {

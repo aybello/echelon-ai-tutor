@@ -12,6 +12,8 @@ export default function USCourses() {
   const stream = US_STREAMS.find(item => item.key === query.get("stream"));
   const invalidState = !!requestedState && !state;
   const courses = invalidState ? [] : state ? matchedUSCourses(state, stream?.key) : sharedUSCourses(stream?.key);
+  const texasClassD = state?.code === "TX" ? courses.find(course => course.courseKey === "us-texas-class-d-water") : undefined;
+  const streamCourses = courses.filter(course => course.courseKey !== "us-texas-class-d-water");
   const statePrograms = state ? state.programs.filter(program => !stream || program.stream === stream.key) : [];
   const coveragePrograms = statePrograms.map(program => ({
     program,
@@ -46,21 +48,21 @@ export default function USCourses() {
       {state ? <div className="us-notice" data-state-coverage="source-backed"><h2>{state.name}: source-backed course routes</h2><p>Only confirmed standardized WPI programs and class matches are shown below. State-specific rules and any other streams need separate preparation.</p><ul className="us-coverage-summary"><li><strong>WPI Direct:</strong> {directPrograms.length} {stream ? "selected stream" : "stream(s)"}</li><li><strong>State program + WPI component:</strong> {mixedPrograms.length} {stream ? "selected stream" : "stream(s)"}</li><li><strong>State-specific / no shared course:</strong> {unavailablePrograms.length} {stream ? "selected stream" : "stream(s)"}</li></ul>{coveragePrograms.map(({ program, streamLabel, coverage }) => <p key={program.stream} className="us-coverage-note" data-program-coverage={coverage.kind}><strong>{streamLabel} · {coverage.label}.</strong> {coverage.note}</p>)}<Link href={`/us/states/${state.slug}`} className="us-action us-action-secondary">View {state.name} exam details</Link></div>
         : <div className="us-notice"><h2>Check your state before buying</h2><p>The catalogue below covers standardized exam content. It does not mean every state, grade or certification program uses these exams.</p><Link href="/us/states" className="us-action">Find your state</Link></div>}
       {courses.length === 0 && <div className="us-empty" role="status">{invalidState ? "That state is not recognized. Choose a state from the list." : state ? "No source-backed shared course is available for this state and stream. Check the state page for official sources and state-specific course needs." : "No confirmed shared course match for this selection. Check the state page for official sources and dedicated-course needs."}</div>}
-      {state?.code === "TX" && <section className="us-course-section">
+      {texasClassD && <section className="us-course-section">
         <h2>Texas Class D Water</h2>
         <div className="us-card-grid"><article className="us-card" data-course-key="us-texas-class-d-water">
           <span className="us-badge">Texas-specific preparation</span><h3>Texas Class D Water</h3>
-          <p>120 original questions based on the public TCEQ Class D topic scope, with worked calculation steps, AI Tutor support and a timed mock exam. Echelon is an independent preparation provider and is not endorsed by TCEQ.</p>
+          <p>Covers Texas water treatment and water distribution. Includes 120 original questions based on the public TCEQ Class D topic scope, worked calculation steps, AI Tutor support and a timed mock exam. Echelon is an independent preparation provider and is not endorsed by TCEQ.</p>
           <div className="us-actions">
-            <Link href="/us-texas-class-d-water" className="us-action">Practice Quiz</Link>
-            <Link href="/us-texas-class-d-water-mock" className="us-action us-action-secondary">Mock Exam</Link>
-            <Link href="/us-texas-class-d-water-flashcards" className="us-action us-action-secondary">Flashcards</Link>
+            <Link href={usCourseHref(texasClassD, "practice", state?.code)!} className="us-action">Practice Quiz</Link>
+            <Link href={usCourseHref(texasClassD, "mock", state?.code)!} className="us-action us-action-secondary">Mock Exam</Link>
+            <Link href={usCourseHref(texasClassD, "flashcards", state?.code)!} className="us-action us-action-secondary">Flashcards</Link>
           </div>
         </article></div>
       </section>}
-      {US_STREAMS.filter(item => courses.some(course => course.track === item.key)).map(item => <section key={item.key} className="us-course-section">
+      {US_STREAMS.filter(item => streamCourses.some(course => course.track === item.key)).map(item => <section key={item.key} className="us-course-section">
         <h2>{item.label}</h2>
-        <div className="us-card-grid">{courses.filter(course => course.track === item.key).map(course => <article key={course.courseKey} className="us-card" data-course-key={course.courseKey}>
+        <div className="us-card-grid">{streamCourses.filter(course => course.track === item.key).map(course => <article key={course.courseKey} className="us-card" data-course-key={course.courseKey}>
           <span className="us-badge">{course.examFamily === "us-wpi" ? "Dedicated US Class I course" : "Shared WPI preparation"}</span><h3>{course.displayName}</h3>
           <p>{course.examFamily === "us-wpi"
             ? "Written to the WPI Class 1 Need-to-Know Criteria in US customary units, with cited public sources and worked calculation steps."

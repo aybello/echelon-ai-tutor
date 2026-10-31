@@ -56,6 +56,9 @@ const EXAM_META: Record<
   "wpi-class2-water-coll": { label: "WPI Class II Wastewater Collection Pass", quizPath: "/wpi-class2-water-coll", mockPath: "/wpi-class2-water-coll-mock", formulaPath: "/formulas-wpi-class2-ww", flashcardPath: "/wpi-class2-water-coll-flashcards", color: "#0F766E", bg: "#F0FDFA", icon: "🏗️", track: "WPI" },
   "wpi-class3-water-coll": { label: "WPI Class III Wastewater Collection Pass", quizPath: "/wpi-class3-water-coll", mockPath: "/wpi-class3-water-coll-mock", formulaPath: "/formulas-wpi-class3-ww", flashcardPath: "/wpi-class3-water-coll-flashcards", color: "#1D4ED8", bg: "#EFF6FF", icon: "🏗️", track: "WPI" },
   "wpi-class4-water-coll": { label: "WPI Class IV Wastewater Collection Pass", quizPath: "/wpi-class4-water-coll", mockPath: "/wpi-class4-water-coll-mock", formulaPath: "/formulas-wpi-class4-ww", flashcardPath: "/wpi-class4-water-coll-flashcards", color: "#6D28D9", bg: "#F5F3FF", icon: "🏗️", track: "WPI" },
+  "us-class1-water": { label: "US Class I Water Treatment Practice Pass", quizPath: "/us-class1-water", mockPath: "/us-class1-water-mock", formulaPath: "/formulas-us-class1", flashcardPath: "/us-class1-water-flashcards", color: "#0E7490", bg: "#ECFEFF", icon: "🇺🇸", track: "US" },
+  "us-class1-water-dist": { label: "US Class I Water Distribution Practice Pass", quizPath: "/us-class1-water-dist", mockPath: "/us-class1-water-dist-mock", formulaPath: "/formulas-us-class1", flashcardPath: "/us-class1-water-dist-flashcards", color: "#1D4ED8", bg: "#EFF6FF", icon: "🇺🇸", track: "US" },
+  "us-texas-class-d-water": { label: "Texas Class D Water Practice Pass", quizPath: "/us-texas-class-d-water", mockPath: "/us-texas-class-d-water-mock", formulaPath: "/formulas-us-texas-class-d-water", flashcardPath: "/us-texas-class-d-water-flashcards", color: "#7C3AED", bg: "#F5F3FF", icon: "⭐", track: "US" },
 };
 
 /** Small inline mastery progress badge for flashcard stats */
@@ -269,6 +272,7 @@ export default function Account() {
 
   const ontarioPasses = unlockedExamTypes.filter((t: string) => EXAM_META[t]?.track === "Ontario");
   const wpiPasses = unlockedExamTypes.filter((t: string) => EXAM_META[t]?.track === "WPI");
+  const usPasses = unlockedExamTypes.filter((t: string) => EXAM_META[t]?.track === "US");
   const otherPasses = unlockedExamTypes.filter((t: string) => !EXAM_META[t]);
 
   return (
@@ -617,6 +621,64 @@ export default function Account() {
                                 productLabel={meta.label}
                                 color={meta.color}
                               />
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {/* U.S. individual passes */}
+                {usPasses.length > 0 && (
+                  <div style={{ marginBottom: 20 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>
+                      🇺🇸 US Operator Certification Passes
+                    </div>
+                    <div className="account-card" style={{ overflow: "hidden" }}>
+                      {usPasses.map((examType: string) => {
+                        const meta = EXAM_META[examType];
+                        if (!meta) return null;
+                        return (
+                          <div key={examType} className="pass-row">
+                            <div className="pass-row-main">
+                              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                                <div style={{ width: 42, height: 42, borderRadius: 10, background: meta.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>
+                                  {meta.icon}
+                                </div>
+                                <div>
+                                  <p style={{ color: "#0F172A", fontWeight: 700, fontSize: 13, margin: "0 0 3px" }}>{meta.label}</p>
+                                  <p style={{ color: "#94A3B8", fontSize: 11, margin: 0 }}>Unlimited practice · AI Tutor · Mock Exam · Flashcards</p>
+                                </div>
+                              </div>
+                              <div className="pass-actions">
+                                <Link href={meta.quizPath}>
+                                  <span className="pass-btn" style={{ background: meta.color, color: "#fff" }}>Practice →</span>
+                                </Link>
+                                {meta.mockPath && (
+                                  <Link href={meta.mockPath}>
+                                    <span className="pass-btn" style={{ background: "#F1F5F9", color: "#475569", border: "1px solid #E2E8F0" }}>Mock Exam</span>
+                                  </Link>
+                                )}
+                                {meta.flashcardPath && (
+                                  <Link href={meta.flashcardPath}>
+                                    <span className="pass-btn" style={{ background: "#EFF6FF", color: "#1D4ED8" }}>🃏 Flashcards</span>
+                                  </Link>
+                                )}
+                                {meta.formulaPath && (
+                                  <Link href={meta.formulaPath}>
+                                    <span className="pass-btn" style={{ background: "#F0FDF4", color: "#15803D" }}>📐 Formulas</span>
+                                  </Link>
+                                )}
+                              </div>
+                            </div>
+                            {meta.flashcardPath && flashcardMastery[examType] && (
+                              <div style={{ paddingLeft: 54 }}>
+                                <MasteryBadge knownCount={flashcardMastery[examType].knownCount} totalCards={flashcardMastery[examType].totalCards} />
+                              </div>
+                            )}
+                            {submittedEmail && (
+                              <ExamDateTracker email={submittedEmail} productKey={examType} productLabel={meta.label} color={meta.color} />
                             )}
                           </div>
                         );

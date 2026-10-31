@@ -65,6 +65,18 @@ describe("personal billing UI without changing team membership or terms", () => 
     expect(render()).toContain("Class 2 Water Treatment Pass");
     expect(render()).not.toContain("Class 4 Wastewater Treatment Pass");
   });
+  it.each([
+    ["us-class1-water", "US Class I Water Treatment Practice Pass", "/us-class1-water"],
+    ["us-class1-water-dist", "US Class I Water Distribution Practice Pass", "/us-class1-water-dist"],
+    ["us-texas-class-d-water", "Texas Class D Water Practice Pass", "/us-texas-class-d-water"],
+  ])("restores %s with a usable U.S. study action", (productKey, label, path) => {
+    state.purchases = [productKey];
+    const html = render();
+    expect(html).toContain("US Operator Certification Passes");
+    expect(html).toContain(label);
+    expect(html).toContain(`href="${path}"`);
+    expect(html).toContain("Mock Exam");
+  });
   it("makes the personal empty state distinct from missing Team access", () => {
     state.subscriptions = [];
     const html = render();

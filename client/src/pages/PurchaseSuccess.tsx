@@ -64,6 +64,18 @@ const PRODUCT_PATHS: Record<string, { label: string; path: string }[]> = {
     { label: "WPI Class 1 Water Practice Quiz", path: "/wpi-class1-water" },
     { label: "WPI Class 1 Water Mock Exam", path: "/wpi-class1-water-mock" },
   ],
+  "us-class1-water": [
+    { label: "US Class I Water Treatment Practice Quiz", path: "/us-class1-water" },
+    { label: "US Class I Water Treatment Mock Exam", path: "/us-class1-water-mock" },
+  ],
+  "us-class1-water-dist": [
+    { label: "US Class I Water Distribution Practice Quiz", path: "/us-class1-water-dist" },
+    { label: "US Class I Water Distribution Mock Exam", path: "/us-class1-water-dist-mock" },
+  ],
+  "us-texas-class-d-water": [
+    { label: "Texas Class D Water Practice Quiz", path: "/us-texas-class-d-water" },
+    { label: "Texas Class D Water Mock Exam", path: "/us-texas-class-d-water-mock" },
+  ],
   "wpi-class2-water": [
     { label: "WPI Class 2 Water Practice Quiz", path: "/wpi-class2-water" },
     { label: "WPI Class 2 Water Mock Exam", path: "/wpi-class2-water-mock" },

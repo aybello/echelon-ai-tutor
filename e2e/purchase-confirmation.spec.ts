@@ -31,11 +31,27 @@ async function mockConfirmation(page: Page, response: (attempt: number) => objec
   return () => calls;
 }
 
-async function openConfirmation(page: Page) {
-  await page.goto("/purchase-success?session_id=cs_test_confirmation&product=oit");
+async function openConfirmation(page: Page, productKey = "oit") {
+  await page.goto(`/purchase-success?session_id=cs_test_confirmation&product=${productKey}`);
   await page.clock.runFor(1000);
   await new Promise(resolve => setTimeout(resolve, 250));
   await page.clock.runFor(1000);
+}
+
+const dedicatedUsProducts = [
+  { productKey: "us-class1-water", label: "US Class I Water Treatment Practice Quiz", path: "/us-class1-water" },
+  { productKey: "us-class1-water-dist", label: "US Class I Water Distribution Practice Quiz", path: "/us-class1-water-dist" },
+  { productKey: "us-texas-class-d-water", label: "Texas Class D Water Practice Quiz", path: "/us-texas-class-d-water" },
+];
+
+for (const product of dedicatedUsProducts) {
+  test(`a completed ${product.productKey} purchase opens its own study path`, async ({ page }) => {
+    await mockConfirmation(page, () => ({ ...ready, productKey: product.productKey }));
+    await openConfirmation(page, product.productKey);
+    await expect(page.getByRole("link", { name: `Sign in — ${product.label}` }))
+      .toHaveAttribute("href", `/login/otp?next=${encodeURIComponent(product.path)}`);
+    await expect(page.getByRole("button", { name: "Continue to Study Setup" })).toBeVisible();
+  });
 }
 
 for (const width of [1280, 390]) {

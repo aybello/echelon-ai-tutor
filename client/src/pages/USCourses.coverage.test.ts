@@ -37,4 +37,11 @@ describe("U.S. catalogue source-backed coverage notes", () => {
     expect(html).toContain("Water Treatment · State-specific / no shared course.");
     expect(html).toContain("No source-backed shared course is available for this state and stream.");
   });
+
+  it("shows Texas Class D once as a combined course and never under a treatment-only section for distribution", () => {
+    const html = renderCourses("state=TX&stream=water-distribution");
+    expect(html.match(/data-course-key="us-texas-class-d-water"/g)).toHaveLength(1);
+    expect(html).toContain("Covers Texas water treatment and water distribution");
+    expect(html).not.toContain("<h2>Water Treatment</h2>");
+  });
 });
