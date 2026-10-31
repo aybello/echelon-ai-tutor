@@ -75,4 +75,11 @@ describe("Echelon technical visual identity", () => {
       expect(page).toContain("/us/");
     }
   });
+
+  it("keeps the Partnerships proof point aligned with the verified learner-visible question count", () => {
+    const partnerships = read("client/src/pages/Partnerships.tsx");
+    expect(partnerships).toContain('stat: "24,100+"');
+    expect(partnerships).not.toContain('stat: "18,000+"');
+    expect(partnerships).toContain("authoritative learner-visible bank count on 2026-10-30");
+  });
 });

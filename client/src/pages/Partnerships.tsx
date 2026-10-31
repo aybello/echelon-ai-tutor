@@ -32,7 +32,8 @@ const PARTNER_TYPES = [
 ];
 
 const BENEFITS = [
-  { stat: "18,000+", label: "Practice questions across the course catalogue" },
+  // Verified against the authoritative learner-visible bank count on 2026-10-30.
+  { stat: "24,100+", label: "Practice questions across the course catalogue" },
   { stat: "5", label: "Provinces supported (ON, BC, AB, SK, MB)" },
   { stat: "4", label: "WPI streams (Water, Wastewater, Distribution, Collection)" },
   { stat: "AI", label: "Tutor with confidence scoring and pattern detection" },
