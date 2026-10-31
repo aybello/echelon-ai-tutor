@@ -20,6 +20,7 @@ import { calculateMockResultStats } from "@/lib/mockExamResultStats";
 import { shouldShowReviewPrompt } from "@/lib/reviewFunnel";
 import { getTutorFailureMessage, isTutorDismissKey } from "@/lib/tutorInteraction";
 import { useLearningActivitySession } from "@/hooks/useLearningActivitySession";
+import { TutorGuideMark } from "@/components/TutorGuideMark";
 
 // ─── Inline AI Tutor for review mode ─────────────────────────────────────────
 
@@ -103,12 +104,12 @@ function ReviewAITutor({ q, userAnswerIdx, examType, sessionToken, reviewToken }
             cursor: "pointer", fontFamily: "inherit", display: "flex", alignItems: "center", gap: 6,
           }}
         >
-          🤖 Ask AI Tutor
+          <TutorGuideMark size={14} /> Ask AI Tutor
         </button>
       ) : (
         <div style={{ background: "#F8FAFC", borderRadius: 10, border: "1.5px solid #E0E7FF", padding: "12px 14px", marginTop: 4 }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-            <span style={{ fontSize: 11, fontWeight: 700, color: "#4338CA", letterSpacing: "0.06em" }}>🤖 AI TUTOR</span>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 11, fontWeight: 700, color: "#4338CA", letterSpacing: "0.06em" }}><TutorGuideMark size={13} /> AI TUTOR</span>
             <button
               type="button"
               aria-label="Close AI Tutor"

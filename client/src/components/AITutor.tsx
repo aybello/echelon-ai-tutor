@@ -14,6 +14,7 @@ import { Streamdown } from "streamdown";
 import { AI_TUTOR_MARKDOWN_PLUGINS } from "@/components/AIChatBox";
 import { readTutorStudyLocale } from "@shared/usStudyContext";
 import { normalizeTutorMath } from "@/lib/tutorMath";
+import { TutorGuideMark } from "@/components/TutorGuideMark";
 
 interface Props {
   question: Question | null;
@@ -252,7 +253,7 @@ export default function AITutor({
                 fontSize: 20,
               }}
             >
-              {patternMode ? "🧠" : "🤖"}
+              <TutorGuideMark mode={patternMode ? "analysis" : "tutor"} size={20} color="#fff" />
             </div>
             <div>
               <div style={{ fontSize: 13, fontWeight: 700 }}>
@@ -395,7 +396,7 @@ export default function AITutor({
                   marginTop: 2,
                 }}
               >
-                {patternMode ? "🧠" : "🤖"}
+                <TutorGuideMark mode={patternMode ? "analysis" : "tutor"} size={14} color="#fff" />
               </div>
             )}
             <div
@@ -491,7 +492,7 @@ export default function AITutor({
                 fontSize: 13,
               }}
             >
-              {patternMode ? "🧠" : "🤖"}
+              <TutorGuideMark mode={patternMode ? "analysis" : "tutor"} size={14} color="#fff" />
             </div>
             <div
               style={{

@@ -7,6 +7,7 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/animations";
 import { US_STATE_NAMES } from "../../../shared/usStateNames";
 import React from "react";
+import { TutorGuideMark } from "@/components/TutorGuideMark";
 
 const LOGO_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
@@ -31,7 +32,7 @@ const STREAMS = [
 
 const FEATURES = [
   { icon: "🎯", title: "Topic-Based Practice", body: "Work through practice questions and explanations by topic in your selected course." },
-  { icon: "🤖", title: "AI Tutor Study Support", body: "Ask the AI Tutor to explain concepts and work through calculations in your selected course. Available with an active course pass." },
+  { icon: <TutorGuideMark size={28} color="#5EEAD4" />, title: "AI Tutor Study Support", body: "Ask the AI Tutor to explain concepts and work through calculations in your selected course. Available with an active course pass." },
   { icon: "📋", title: "Timed Mock Exams", body: "Practise pacing and review missed topics with timed mock exams. Confirm your state's exam format with the certifying authority." },
   { icon: "🃏", title: "Flashcard Review Mode", body: "Reinforce key concepts with topic-organized flashcards covering treatment processes, equipment O&M, lab analysis, and safety procedures." },
   { icon: "📐", title: "Formula Reference Sheets", body: "Review flow calculations, chemical dosing, and hydraulics. Check your authority's rules for references permitted during the exam." },

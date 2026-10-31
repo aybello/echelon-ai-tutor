@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { trpc } from "@/lib/trpc";
 import { getTutorFailureMessage, isTutorDismissKey } from "@/lib/tutorInteraction";
+import { TutorGuideMark } from "@/components/TutorGuideMark";
 
 interface ReviewAITutorProps {
   questionText: string;
@@ -85,12 +86,12 @@ export default function ReviewAITutor({ questionText, options, correctIndex, use
             cursor: "pointer", fontFamily: "inherit", display: "flex", alignItems: "center", gap: 6,
           }}
         >
-          🤖 Ask AI Tutor
+          <TutorGuideMark size={14} /> Ask AI Tutor
         </button>
       ) : (
         <div style={{ background: "#F8FAFC", borderRadius: 10, border: "1.5px solid #E0E7FF", padding: "12px 14px", marginTop: 4 }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-            <span style={{ fontSize: 11, fontWeight: 700, color: "#4338CA", letterSpacing: "0.06em" }}>🤖 AI TUTOR</span>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 11, fontWeight: 700, color: "#4338CA", letterSpacing: "0.06em" }}><TutorGuideMark size={13} /> AI TUTOR</span>
             <button
               type="button"
               aria-label="Close AI Tutor"

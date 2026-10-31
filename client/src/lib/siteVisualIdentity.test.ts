@@ -82,4 +82,23 @@ describe("Echelon technical visual identity", () => {
     expect(partnerships).not.toContain('stat: "18,000+"');
     expect(partnerships).toContain("authoritative learner-visible bank count on 2026-10-30");
   });
+
+  it("uses a professional study-guidance mark instead of a robot mascot for the Tutor", () => {
+    const tutorMark = read("client/src/components/TutorGuideMark.tsx");
+    const tutorSurfaces = [
+      "client/src/components/AITutor.tsx",
+      "client/src/components/MockExamShell.tsx",
+      "client/src/components/ReviewAITutor.tsx",
+      "client/src/pages/USLanding.tsx",
+      "client/src/pages/Pricing.tsx",
+      "client/src/pages/StudentDashboard.tsx",
+    ].map(read);
+
+    expect(tutorMark).toContain("BookOpenCheck");
+    expect(tutorMark).toContain("BrainCircuit");
+    for (const source of tutorSurfaces) {
+      expect(source).toContain("TutorGuideMark");
+      expect(source).not.toContain("🤖");
+    }
+  });
 });

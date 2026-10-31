@@ -10,6 +10,7 @@ import { useSearch } from "wouter";
 import { signInHref } from "@shared/funnelNavigation";
 import SiteNav from "@/components/SiteNav";
 import StudyHomeCard from "@/components/StudyHomeCard";
+import { TutorGuideMark } from "@/components/TutorGuideMark";
 import "@/components/StudyWorkspace.css";
 import { useMemo, useState, useEffect } from "react";
 import {
@@ -30,7 +31,6 @@ import {
   AlertTriangle,
   BarChart3,
   BookOpen,
-  Bot,
   CalendarDays,
   ClipboardCheck,
   Clock3,
@@ -796,7 +796,7 @@ export default function StudentDashboard() {
         <div className="dashboard-two-column">
 
           {/* AI Tutor Sessions */}
-          <Section title={<><Bot size={17} color="#0F766E" />AI Tutor Sessions</>} style={{ margin: 0 }}>
+          <Section title={<><TutorGuideMark size={17} color="#0F766E" />AI Tutor Sessions</>} style={{ margin: 0 }}>
             {aiSessions.isLoading ? (
               <Skeleton height={120} />
             ) : (aiSessions.data?.length ?? 0) === 0 ? (

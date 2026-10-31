@@ -14,6 +14,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import CheckoutContactModal from "@/components/CheckoutContactModal";
 import NotifyModal from "@/components/NotifyModal";
 import LandingNav from "@/components/LandingNav";
+import { TutorGuideMark } from "@/components/TutorGuideMark";
 import { ALL_PRODUCTS as SHARED_PRODUCTS, PRODUCT_STUDY_PATHS } from "@shared/products";
 import { availablePricingSelection, buildPricingHref, courseProvinceHref, readPricingSelection } from "@shared/funnelNavigation";
 import { isNovaScotiaCourseSupported, NOVA_SCOTIA_EXAM_GUIDANCE_URL, NOVA_SCOTIA_PREPARATION_NOTE } from "@shared/novaScotiaPreparation";
@@ -1821,7 +1822,7 @@ export default function Pricing() {
           <div className="trust-grid">
             {[
               { icon: "📚", label: liveQuestionTotal > 0 ? `${liveQuestionTotal.toLocaleString("en-CA")} Verified Questions` : "Verified Question Banks" },
-              { icon: "🤖", label: "AI Tutor Chat" },
+              { icon: <TutorGuideMark size={24} color="#087F78" />, label: "AI Tutor Chat" },
               { icon: "📝", label: "Mock Practice" },
               { icon: "🃏", label: "Course Flashcards" },
               { icon: "📖", label: "Study Resources" },
