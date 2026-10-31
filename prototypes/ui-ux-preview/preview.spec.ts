@@ -1,22 +1,45 @@
 import { expect, test } from "@playwright/test";
 import { course } from "./fixtures";
+import { readFile } from "node:fs/promises";
 import { pathToFileURL } from "node:url";
 
-test("real homepage keeps the approved branding and both free OIT entry points on a phone", async ({page}) => {
+test("offline preview embeds and loads the approved Echelon font families without remote font URLs", async ({page}) => {
+  const fonts = await readFile(new URL("./restoration-fonts.css", import.meta.url), "utf8");
+  expect(fonts).toContain('font-family: "Manrope"');
+  expect(fonts).toContain('font-family: "Source Sans 3"');
+  expect(fonts).toContain("data:font/woff2;base64,");
+  expect(fonts).toContain("Copyright 2018 The Manrope Project Authors");
+  expect(fonts).toContain("Copyright 2010-2020 Adobe");
+  expect(fonts).toContain("SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007");
+  expect(fonts).not.toContain("Sora");
+  expect(fonts).not.toMatch(/src:\s*url\(https?:\/\//);
+
+  await page.goto("/#/homepage");
+  await expect.poll(() => page.evaluate(async () => {
+    await document.fonts.ready;
+    return Array.from(document.fonts)
+      .filter(font => font.status === "loaded")
+      .map(font => font.family.replaceAll('"', ""));
+  })).toEqual(expect.arrayContaining(["Manrope", "Source Sans 3"]));
+});
+
+test("real homepage keeps the approved light technical design and both free OIT entry points on a phone", async ({page}) => {
   await page.setViewportSize({width:390,height:844});
   await page.goto("/#/homepage");
-  await expect(page.getByRole("heading",{name:"Pass Your Operator Exam. Advance Your Career."})).toBeVisible();
+  const heroTitle = page.getByRole("heading", {name:"Prepare with confidence for your operator exam."});
+  await expect(heroTitle).toBeVisible();
+  await expect(heroTitle).toHaveCSS("font-family", /Manrope/);
   await expect.poll(() => page.locator(".echelon-brand img").evaluate((image: HTMLImageElement) => image.naturalWidth > 0)).toBe(true);
   await page.getByRole("button", {name:"Open navigation menu", exact:true}).click();
   await expect(page.locator(".echelon-mobile-links").getByRole("link", {name:"Jobs", exact:true})).toHaveAttribute("href", "/jobs");
   await expect(page.locator(".echelon-mobile-links").getByRole("link", {name:"Blog", exact:true})).toHaveAttribute("href", "/blog");
   await page.getByRole("button", {name:"Close navigation menu", exact:true}).first().click();
-  await page.getByRole("button",{name:"Try 15 OIT Questions Free →",exact:true}).click();
-  await expect(page.locator("#oit-preview-choice").getByRole("link",{name:/Water OIT Recommended/})).toHaveAttribute("href",/^#?\/quiz$/);
-  await expect(page.locator("#oit-preview-choice").getByRole("link",{name:/Wastewater OIT Start free/})).toHaveAttribute("href",/^#?\/oit-ww$/);
+  await page.getByRole("button",{name:"Try 15 free questions",exact:true}).click();
+  await expect(page.locator("#oit-preview-choice").getByRole("link",{name:/Water OIT.*Start with 15 free questions/})).toHaveAttribute("href",/^#?\/quiz$/);
+  await expect(page.locator("#oit-preview-choice").getByRole("link",{name:/Wastewater OIT.*Start with 15 free questions/})).toHaveAttribute("href",/^#?\/oit-ww$/);
   await expect(page.getByRole("link",{name:"Find my course →",exact:true})).toHaveCount(0);
-  await expect(page.locator("#find-course").getByRole("heading",{name:"Find your course",exact:true})).toBeVisible();
-  await expect(page.locator("#find-course").getByLabel("1. Province")).toBeEnabled();
+  await expect(page.locator("#courses").getByRole("heading",{name:"Find your course",exact:true})).toBeVisible();
+  await expect(page.locator("#courses").getByLabel("1. Province")).toBeEnabled();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   await page.screenshot({path:"test-results/ui-workspace/homepage-mobile.png",fullPage:true});
 });
@@ -245,7 +268,7 @@ test("flashcard options retain module filters, shuffle and learning decisions", 
   await page.screenshot({path:"test-results/ui-workspace/flashcards-mobile.png",fullPage:true});
 });
 
-test("formula and account screens retain their original functions and shared type", async ({page}) => {
+test("formula and account screens retain their original functions and approved readable type", async ({page}) => {
   await page.goto("/#/formulas-water1");
   await expect(page.getByRole("heading", {name:/Class 1 Water Treatment/})).toBeVisible();
   await page.getByPlaceholder("Search formulas, variables, or topics…").fill("CT Value");
@@ -253,15 +276,17 @@ test("formula and account screens retain their original functions and shared typ
   await expect(page.getByText("Turbidity Removal Efficiency", {exact:true})).toHaveCount(0);
   await page.getByRole("button", {name:"Account",exact:true}).first().click();
   await expect(page.getByRole("heading", {name:"My Account",exact:true})).toBeVisible();
-  await expect(page.locator(".account-page")).toHaveCSS("font-family", /Sora/);
+  await expect(page.locator(".account-page")).toHaveCSS("font-family", /Source Sans 3/);
+  await expect(page.locator(".account-page")).toHaveCSS("color", "rgb(0, 0, 0)");
 });
 
 test("admin keeps all fifteen sections and a keyboard-accessible mobile drawer", async ({page}) => {
   await page.setViewportSize({width:390,height:844});
   await page.goto("/#/admin");
   await expect(page.locator("#admin-founder-title")).toBeVisible();
-  await expect(page.locator("#admin-founder-title")).toHaveCSS("font-family", /Sora/);
-  await expect(page.locator(".admin-portal")).toHaveCSS("background-color", "rgb(244, 247, 251)");
+  await expect(page.locator("#admin-founder-title")).toHaveCSS("font-family", /Manrope/);
+  await expect(page.locator(".admin-portal")).toHaveCSS("background-color", "rgb(245, 248, 248)");
+  await expect(page.locator(".admin-portal")).toHaveCSS("color", "rgb(0, 0, 0)");
   // The business pipeline panel reuses this table class, so scope the money
   // assertion to the founder decision ledger specifically.
   const ledger = page.getByRole("region", {name:"Founder decision ledger"}).locator(".admin-ledger-table");
