@@ -46,7 +46,7 @@ test("Nova Scotia banner opens the scoped finder instead of Ontario's catalogue"
   await page.goto("/wpi");
   await page.locator('button[title="Nova Scotia"]').click();
   await expect(page).toHaveURL(/\?province=NS#find-course$/);
-  await expect(page.locator('#find-course .course-finder select').nth(0)).toHaveValue("ns");
+  await expect(page.locator('.course-finder select').nth(0)).toHaveValue("ns");
 });
 
 test("Nova Scotia finder fits a mobile viewport", async ({ page }) => {

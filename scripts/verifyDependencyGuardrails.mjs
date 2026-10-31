@@ -15,7 +15,7 @@ const expectedOverrides = {
   "path-to-regexp": "0.1.13",
   "proxy-addr": "2.0.8",
   qs: "6.16.1",
-  "follow-redirects": "1.16.1",
+  "follow-redirects": "1.16.2",
 };
 const expectedPatch = {
   "wouter@3.7.1": "patches/wouter@3.7.1.patch",
@@ -68,6 +68,7 @@ for (const [name, version] of Object.entries({
   nodemailer: "10.2.1",
   "express-rate-limit": "8.7.1",
   "ip-address": "10.7.4",
+  "follow-redirects": "1.16.2",
 })) {
   if (!lockfile.includes(`${name}@${version}:`)) {
     fail(`pnpm-lock.yaml does not resolve patched ${name} ${version}.`);
