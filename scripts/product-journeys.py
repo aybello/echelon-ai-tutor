@@ -469,7 +469,10 @@ class Audit:
         title = (await card.locator("h2").inner_text()).strip()
         await card.focus()
         await page.keyboard.press("Enter")
-        dialog = page.get_by_role("dialog", name=title, exact=True)
+        # Job-card feeds may title-case words that the dialog renders in
+        # sentence case. Keep the full accessible-name assertion while
+        # treating capitalization as presentation, not a route failure.
+        dialog = page.get_by_role("dialog", name=re.compile(rf"^{re.escape(title)}$", re.IGNORECASE))
         await expect(dialog).to_be_visible()
         await expect(dialog).to_have_attribute("aria-modal", "true")
         await page.wait_for_function("() => document.querySelector('[role=dialog]')?.contains(document.activeElement)")
