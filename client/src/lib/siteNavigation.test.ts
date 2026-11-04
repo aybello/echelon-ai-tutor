@@ -3,11 +3,20 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
+const authState = vi.hoisted(() => ({
+  user: null as { role: string } | null,
+  isAuthenticated: false,
+  email: null as string | null,
+  useAuth: vi.fn(),
+}));
 vi.mock("@/lib/trpc", () => ({
-  trpc: { dashboardAuth: { me: { useQuery: () => ({ data: null }) } } },
+  trpc: { dashboardAuth: { me: { useQuery: () => ({ data: { email: authState.email } }) } } },
 }));
 vi.mock("@/_core/hooks/useAuth", () => ({
-  useAuth: () => ({ isAuthenticated: false }),
+  useAuth: (options?: unknown) => {
+    authState.useAuth(options);
+    return { user: authState.user, isAuthenticated: authState.isAuthenticated };
+  },
 }));
 vi.mock("wouter", () => ({
   useSearch: () => "",
@@ -28,7 +37,13 @@ const PRIMARY_LABELS = [
 ];
 
 // The existing Vitest configuration uses the classic JSX transform.
-beforeEach(() => vi.stubGlobal("React", React));
+beforeEach(() => {
+  vi.stubGlobal("React", React);
+  authState.user = null;
+  authState.isAuthenticated = false;
+  authState.email = null;
+  authState.useAuth.mockClear();
+});
 afterEach(() => vi.unstubAllGlobals());
 
 function renderNavigation(
@@ -127,6 +142,36 @@ describe("Pricing funnel protection", () => {
       expect(renderNavigation(route)).not.toContain('href="/pricing"');
     }
     expect(renderNavigation("/teams-unrelated")).toContain('href="/pricing"');
+  });
+});
+
+describe("admin navigation visibility", () => {
+  it("shows a direct, labelled admin shortcut for a verified admin", () => {
+    authState.user = { role: "admin" };
+    authState.isAuthenticated = true;
+    const html = renderNavigation("/");
+    expect(html).toContain('href="/admin" class="echelon-dashboard-link echelon-admin-link" aria-label="Admin dashboard"');
+    expect(html).toContain("<span>Admin</span>");
+    expect(renderNavigation("/admin")).toContain('aria-label="Admin dashboard" aria-current="page"');
+  });
+  it("does not grant the shortcut to learners, anonymous users or email-only sessions", () => {
+    for (const user of [null, { role: "user" }]) {
+      authState.user = user;
+      authState.email = "learner@example.com";
+      expect(renderNavigation("/")).not.toContain('href="/admin"');
+      expect(renderNavigation("/")).toContain("<span>Dashboard</span>");
+    }
+  });
+  it("resolves the role on a fresh page instead of relying on a prior learner-page cache", () => {
+    renderNavigation("/");
+    expect(authState.useAuth).toHaveBeenCalledWith(undefined);
+  });
+  it("keeps an admin on the employer funnel without linking individual pricing", () => {
+    authState.user = { role: "admin" };
+    authState.isAuthenticated = true;
+    const html = renderNavigation("/teams");
+    expect(html).toContain('href="/admin"');
+    expect(html).not.toContain('href="/pricing"');
   });
 });
 

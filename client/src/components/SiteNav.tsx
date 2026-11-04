@@ -3,7 +3,7 @@ import { Link, useSearch } from "wouter";
 import {
   BookOpen, ChevronDown, CircleUserRound, FileCheck2, FlaskConical,
   Gauge, GraduationCap, LayoutDashboard, Menu, MessageCircleQuestion,
-  NotebookTabs, Sigma, Sparkles, X, Zap,
+  NotebookTabs, ShieldCheck, Sigma, Sparkles, X, Zap,
 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
@@ -146,7 +146,11 @@ export default function SiteNav({
 }: SiteNavProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
-  const { isAuthenticated } = useAuth({ lazy: true });
+  // Resolve the server-backed role on a fresh page load, not only after a
+  // learner route has populated the auth cache. Email verification alone
+  // does not grant admin access.
+  const { user, isAuthenticated } = useAuth();
+  const isAdmin = user?.role === "admin";
   const dashboardMe = trpc.dashboardAuth.me.useQuery(undefined, { retry: false, staleTime: 5 * 60 * 1000 });
   const search = useSearch();
   const progressCourseKey = currentPath.split("?")[0] === "/dashboard" ? new URLSearchParams(search).get("course") : null;
@@ -206,10 +210,17 @@ export default function SiteNav({
         <div className="echelon-nav-actions">
           {rightSlot}
           {!isEmployerRoute && <Link href={pricingHref} className={`echelon-pricing-link${isPathActive(currentPath, "/pricing") ? " is-active" : ""}`} aria-current={isPathActive(currentPath, "/pricing") ? "page" : undefined}>Pricing</Link>}
-          <Link href={dashboardHref} className="echelon-dashboard-link">
-            <LayoutDashboard size={16} aria-hidden="true" />
-            <span>Dashboard</span>
-          </Link>
+          {isAdmin ? (
+            <Link href="/admin" className="echelon-dashboard-link echelon-admin-link" aria-label="Admin dashboard" aria-current={isPathActive(currentPath, "/admin") ? "page" : undefined}>
+              <ShieldCheck size={16} aria-hidden="true" />
+              <span>Admin</span>
+            </Link>
+          ) : (
+            <Link href={dashboardHref} className="echelon-dashboard-link">
+              <LayoutDashboard size={16} aria-hidden="true" />
+              <span>Dashboard</span>
+            </Link>
+          )}
           <Link href={accountHref} className="echelon-account-link">
             <CircleUserRound size={17} aria-hidden="true" />
             <span>{isSignedIn ? "My account" : "Sign in"}</span>
@@ -307,6 +318,7 @@ export default function SiteNav({
             <div className="echelon-mobile-actions">
               {!isEmployerRoute && <Link href={pricingHref} className="echelon-mobile-pricing-link" onClick={() => setMenuOpen(false)}>Pricing</Link>}
               <Link href={dashboardHref} onClick={() => setMenuOpen(false)}><LayoutDashboard size={17} /> Dashboard</Link>
+              {isAdmin && <Link href="/admin" className="echelon-admin-link" onClick={() => setMenuOpen(false)}><ShieldCheck size={17} aria-hidden="true" /> Admin dashboard</Link>}
               <Link href={accountHref} onClick={() => setMenuOpen(false)}><CircleUserRound size={17} /> {isSignedIn ? "My account" : "Sign in"}</Link>
             </div>
           </div>
