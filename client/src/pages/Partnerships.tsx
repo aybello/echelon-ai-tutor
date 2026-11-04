@@ -378,7 +378,7 @@ export default function Partnerships() {
             >
               {submitting ? "Saving…" : submitError ? "Retry inquiry" : "Send Partnership Inquiry"}
             </button>
-            <p style={{ fontSize: 12, color: "#9CA3AF", margin: 0, textAlign: "center" as const }}>
+            <p className="partnerships-contact-caption" style={{ fontSize: 12, color: "#9CA3AF", margin: 0, textAlign: "center" as const }}>
               Or email us directly at{" "}
               <a href="mailto:abello@echeloninstitute.ca" style={{ color: "#1D4ED8" }}>abello@echeloninstitute.ca</a>
             </p>

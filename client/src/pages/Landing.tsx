@@ -302,7 +302,9 @@ export default function Landing() {
               {showOitPreviewChoice && <PreviewChoice onClose={closePreviewChoice} />}
             </CoursePathHero>
           </div>
-          <StudyWorkspacePreview />
+          <div className="homepage-hero-visual">
+            <img src="https://echeloninstitute.ca/manus-storage/echelon-blue-hero_b6e705fa.webp" alt="Skilled workers reviewing plans together in an industrial workplace" width="1800" height="1350" fetchPriority="high" />
+          </div>
         </section>
 
         <section className="homepage-proof-strip" aria-label="Echelon platform facts">

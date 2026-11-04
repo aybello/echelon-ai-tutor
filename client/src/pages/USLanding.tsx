@@ -133,8 +133,9 @@ export default function USLanding() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 20 }}>
             {STREAMS.map((stream, i) => (
               <FadeUp key={stream.key} delay={i * 0.08}>
-                <Link href={stream.href}>
+                <Link href={stream.href} className="us-stream-link">
                   <div
+                    className="us-stream-card"
                     style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 16, padding: "28px 24px", cursor: "pointer", transition: "all 0.2s ease" }}
                     onMouseEnter={e => { const el = e.currentTarget as HTMLDivElement; el.style.background = "rgba(255,255,255,0.07)"; el.style.borderColor = "rgba(255,255,255,0.2)"; el.style.transform = "translateY(-2px)"; }}
                     onMouseLeave={e => { const el = e.currentTarget as HTMLDivElement; el.style.background = "rgba(255,255,255,0.04)"; el.style.borderColor = "rgba(255,255,255,0.1)"; el.style.transform = "translateY(0)"; }}
@@ -144,10 +145,10 @@ export default function USLanding() {
                     <p style={{ fontSize: 13, color: "rgba(255,255,255,0.55)", lineHeight: 1.6, margin: "0 0 16px" }}>{stream.desc}</p>
                     <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
                       {["Class I", "Class II", "Class III", "Class IV"].map(cls => (
-                        <span key={cls} style={{ fontSize: 11, fontWeight: 600, padding: "3px 10px", borderRadius: 20, background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.7)", border: "1px solid rgba(255,255,255,0.12)" }}>{cls}</span>
+                        <span key={cls} className="us-stream-badge" style={{ fontSize: 11, fontWeight: 600, padding: "3px 10px", borderRadius: 20, background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.7)", border: "1px solid rgba(255,255,255,0.12)" }}>{cls}</span>
                       ))}
                     </div>
-                    <div style={{ fontSize: 13, color: "#38BDF8", fontWeight: 600 }}>View Courses →</div>
+                    <div className="us-stream-action" style={{ fontSize: 13, color: "#38BDF8", fontWeight: 600 }}>View Courses →</div>
                   </div>
                 </Link>
               </FadeUp>
@@ -237,7 +238,7 @@ export default function USLanding() {
       </section>
 
       {/* CTA */}
-      <section style={{ padding: "96px 24px", background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0E7490 100%)", position: "relative", overflow: "hidden" }}>
+      <section className="us-landing-cta" style={{ padding: "96px 24px", background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 50%, #0E7490 100%)", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0)", backgroundSize: "40px 40px", pointerEvents: "none" }} />
         <div style={{ position: "relative", maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
           <FadeUp>
@@ -247,14 +248,14 @@ export default function USLanding() {
             </h2>
             <p style={{ fontSize: 17, color: "rgba(255,255,255,0.65)", margin: "0 0 40px", lineHeight: 1.6 }}>Check your state's requirements first, then review the course catalogue and each course's free preview.</p>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-              <Link href="/us/states" className="btn-pulse" style={{ padding: "14px 36px", borderRadius: 12, background: "linear-gradient(135deg, #2563EB, #0E7490)", color: "#fff", fontSize: 16, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 24px rgba(37,99,235,0.4)", textDecoration: "none" }}>
+              <Link href="/us/states" className="btn-pulse us-landing-cta-primary" style={{ padding: "14px 36px", borderRadius: 12, background: "linear-gradient(135deg, #2563EB, #0E7490)", color: "#fff", fontSize: 16, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 24px rgba(37,99,235,0.4)", textDecoration: "none" }}>
                 Find Your State →
               </Link>
-              <Link href="/us/courses" style={{ padding: "14px 36px", borderRadius: 12, background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)", color: "#fff", border: "1px solid rgba(255,255,255,0.2)", fontSize: 16, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none" }}>
+              <Link href="/us/courses" className="us-landing-cta-secondary" style={{ padding: "14px 36px", borderRadius: 12, background: "rgba(255,255,255,0.1)", backdropFilter: "blur(8px)", color: "#fff", border: "1px solid rgba(255,255,255,0.2)", fontSize: 16, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none" }}>
                 Browse All Courses
               </Link>
             </div>
-            <p style={{ marginTop: 20, fontSize: 13, color: "rgba(255,255,255,0.5)", lineHeight: 1.7 }}>Individual Exam Passes provide 12 months of access to one selected course from successful payment. Prices are in Canadian dollars (CAD). <Link href="/pricing?country=US" style={{ color: "#60A5FA" }}>Review pricing and access details</Link>.</p>
+            <p className="us-landing-cta-disclosure" style={{ marginTop: 20, fontSize: 13, color: "rgba(255,255,255,0.5)", lineHeight: 1.7 }}>Individual Exam Passes provide 12 months of access to one selected course from successful payment. Prices are in Canadian dollars (CAD). <Link href="/pricing?country=US" style={{ color: "#60A5FA" }}>Review pricing and access details</Link>.</p>
           </FadeUp>
         </div>
       </section>

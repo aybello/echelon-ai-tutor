@@ -3,22 +3,22 @@
 :where(.ops-admin-surface, .ops-ceu-catalogue, .ops-ceu-workspace) {
   --ops-navy: #000000;
   --ops-deep-navy: #0B1D30;
-  --ops-teal: #087F78;
-  --ops-soft-teal: #EAF6F3;
-  --ops-canvas: #F5F8F8;
+  --ops-teal: #1757B8;
+  --ops-soft-teal: #EAF2FC;
+  --ops-canvas: #F3F7FC;
   --ops-surface: #FFFFFF;
   --ops-ink: #000000;
   --ops-muted: #000000;
-  --ops-line: #DFE6E8;
+  --ops-line: #D9E4F0;
   --ops-success: #176B4F;
   --ops-success-bg: #EAF6F3;
   --ops-warning: #92620A;
   --ops-warning-bg: #FFF7E5;
   --ops-danger: #B63E3E;
   --ops-danger-bg: #FFF0F0;
-  --ops-focus: #087F78;
-  --ops-radius: 6px;
-  --ops-radius-tight: 4px;
+  --ops-focus: #1757B8;
+  --ops-radius: 10px;
+  --ops-radius-tight: 6px;
   --ops-ease: cubic-bezier(0.16, 1, 0.3, 1);
   color: var(--ops-ink);
   font-family: "Source Sans 3", "Source Sans Pro", Arial, sans-serif;
@@ -86,7 +86,7 @@
   background: var(--ops-teal) !important;
   border: 1px solid var(--ops-teal) !important;
   border-radius: var(--ops-radius-tight) !important;
-  box-shadow: 0 3px 8px rgba(8, 127, 120, 0.18);
+  box-shadow: 0 3px 8px rgba(23, 87, 184, 0.18);
   color: #fff !important;
   font-family: "Source Sans 3", "Source Sans Pro", Arial, sans-serif !important;
   font-weight: 700 !important;
@@ -94,8 +94,8 @@
 }
 
 .admin-auth-link:hover {
-  background: #066B65 !important;
-  box-shadow: 0 5px 14px rgba(8, 127, 120, 0.2);
+  background: #124894 !important;
+  box-shadow: 0 5px 14px rgba(23, 87, 184, 0.2);
   transform: translateY(-1px);
 }
 
@@ -193,8 +193,8 @@
 }
 
 .ops-admin-surface .admin-sidebar-button[aria-current="page"] {
-  background: rgba(8, 127, 120, 0.24);
-  border-left-color: #54D1C7;
+  background: rgba(23, 87, 184, 0.24);
+  border-left-color: #A9CEFF;
   box-shadow: none;
   color: #fff;
   font-weight: 700;
@@ -214,7 +214,7 @@
 
 .ops-admin-surface .admin-back-to-site,
 .ops-admin-surface .admin-mobile-site-link {
-  color: #A8E1DB;
+  color: #B9D6FF;
   font-family: "Source Sans 3", "Source Sans Pro", Arial, sans-serif;
   font-size: 12px;
 }
@@ -269,7 +269,7 @@
 
 .ops-admin-surface .admin-refresh-button {
   background: #fff;
-  border-color: #B8CCCB;
+  border-color: #B9CAE0;
   color: var(--ops-navy);
   font-size: 12px;
   font-weight: 700;
@@ -278,7 +278,7 @@
 
 .ops-admin-surface .admin-refresh-button:hover:not(:disabled) {
   border-color: var(--ops-teal);
-  box-shadow: 0 5px 12px rgba(8, 127, 120, 0.1);
+  box-shadow: 0 5px 12px rgba(23, 87, 184, 0.1);
   transform: translateY(-1px);
 }
 
@@ -295,9 +295,9 @@
 .ops-admin-surface .admin-founder-period,
 .ops-admin-surface .admin-live-marker,
 .ops-admin-surface .admin-priority-count {
-  border: 1px solid #B6D8D4;
+  border: 1px solid #C7DAEF;
   border-radius: var(--ops-radius-tight);
-  color: #086862;
+  color: #124894;
   font-family: "IBM Plex Mono", ui-monospace, monospace;
   font-size: 9px;
   font-weight: 600;
@@ -378,7 +378,7 @@
 
 .ops-admin-surface .admin-ledger-table thead th,
 .ops-admin-surface .admin-ceu-table th {
-  background: #F7FAFA;
+  background: #F7FAFE;
   color: #52626E;
   font-family: "IBM Plex Mono", ui-monospace, monospace;
   font-size: 9px;
@@ -395,7 +395,7 @@
 
 .ops-admin-surface .admin-ledger-table tbody tr:hover,
 .ops-admin-surface .admin-row:hover {
-  background: #F8FBFB !important;
+  background: #F7FAFF !important;
 }
 
 .ops-admin-surface .admin-ledger-table tbody th,
@@ -415,7 +415,7 @@
 }
 
 .ops-admin-surface .admin-text-action:hover {
-  color: #066B65;
+  color: #124894;
 }
 
 .ops-admin-surface .admin-trust-panel {
@@ -427,7 +427,7 @@
 }
 
 .ops-admin-surface .admin-trust-panel .admin-section-label {
-  color: #79D1C8;
+  color: #A9CEFF;
 }
 
 .ops-admin-surface .admin-trust-panel h2 {
@@ -450,14 +450,14 @@
 }
 
 .ops-admin-surface .admin-trust-link {
-  border-color: #5FCAC0;
+  border-color: #8EBBF2;
   border-radius: var(--ops-radius-tight);
-  color: #C9F4EE;
+  color: #D9E9FF;
   font-family: "Source Sans 3", "Source Sans Pro", Arial, sans-serif;
 }
 
 .ops-admin-surface .admin-trust-link:hover {
-  background: rgba(95, 202, 192, 0.15);
+  background: rgba(142, 187, 242, 0.15);
   transform: translateY(-1px);
 }
 
@@ -505,7 +505,7 @@
 }
 
 .ops-admin-surface .admin-priority-item:hover {
-  background: #F8FBFB;
+  background: #F7FAFF;
 }
 
 .ops-admin-surface .admin-priority-number {
@@ -526,16 +526,16 @@
 
 .ops-admin-surface .admin-priority-meta b {
   background: var(--ops-soft-teal);
-  border: 1px solid #B6D8D4;
+  border: 1px solid #C7DAEF;
   border-radius: var(--ops-radius-tight);
-  color: #086862;
+  color: #124894;
   font-family: "IBM Plex Mono", ui-monospace, monospace;
   font-size: 9px;
 }
 
 .ops-admin-surface .admin-priority-note,
 .ops-admin-surface .admin-scorecard-notes p {
-  background: #F7FAFA;
+  background: #F7FAFE;
 }
 
 .ops-admin-surface .admin-priority-note span {
@@ -550,7 +550,7 @@
 }
 
 .ops-admin-surface .admin-product-metric {
-  background: #F7FAFA;
+  background: #F7FAFE;
   border-color: var(--ops-line);
   border-radius: var(--ops-radius-tight);
   min-height: 116px;
@@ -575,12 +575,12 @@
 }
 
 .ops-admin-surface .admin-review-card:hover {
-  background: #F9FCFC;
+  background: #F8FBFF;
 }
 
 .ops-admin-surface .admin-review-option,
 .ops-admin-surface .admin-review-detail {
-  background: #F7FAFA;
+  background: #F7FAFE;
   border-radius: var(--ops-radius-tight);
   color: #43535F;
 }
@@ -590,14 +590,14 @@
 }
 
 .ops-admin-surface .admin-review-option[data-correct="true"] {
-  background: var(--ops-soft-teal);
+  background: var(--ops-success-bg);
   border-color: #A8D8D2;
   color: #155C55;
 }
 
 .ops-admin-surface .admin-review-form {
-  background: #F7FAFA;
-  border-color: #C8E1DD;
+  background: #F7FAFE;
+  border-color: #C9DCF1;
   border-radius: var(--ops-radius);
 }
 
@@ -643,7 +643,7 @@
 }
 
 .ops-admin-surface .admin-content table thead tr {
-  background: #F7FAFA !important;
+  background: #F7FAFE !important;
 }
 
 .ops-admin-surface .admin-content table th {
@@ -759,7 +759,7 @@
 }
 
 .ops-ceu-catalogue .ceu-hero-panel p {
-  color: #90D8D0;
+  color: #B4D4FF;
   font-family: "IBM Plex Mono", ui-monospace, monospace;
   font-size: 9px;
 }
@@ -841,7 +841,7 @@
 
 .ops-ceu-catalogue .ceu-course-card:hover,
 .ops-ceu-catalogue .ceu-course-card.is-expanded {
-  border-color: #AFCBC9;
+  border-color: #ABC4E3;
   box-shadow: 0 12px 24px rgba(11, 29, 48, 0.06);
 }
 
@@ -869,9 +869,9 @@
 
 .ops-ceu-catalogue .ceu-course-topline .ceu-course-stage {
   background: var(--ops-soft-teal);
-  border: 1px solid #B8DAD6;
+  border: 1px solid #C7DAEF;
   border-radius: var(--ops-radius-tight);
-  color: #086862;
+  color: #124894;
   font-family: "Source Sans 3", "Source Sans Pro", Arial, sans-serif;
   font-size: 11px;
   font-weight: 700;
@@ -953,12 +953,12 @@
 }
 
 .ops-ceu-catalogue .ceu-preview-link:hover {
-  background: #066B65;
+  background: #124894;
 }
 
 .ops-ceu-catalogue .ceu-outline-button:hover {
   border-color: var(--ops-teal);
-  color: #066B65;
+  color: #124894;
 }
 
 .ops-ceu-catalogue .ceu-outline {
@@ -1064,7 +1064,7 @@
 
 .ops-ceu-catalogue .ceu-regulatory-note {
   background: var(--ops-soft-teal);
-  border: 1px solid #C6E2DE;
+  border: 1px solid #C7DAEF;
   border-left: 4px solid var(--ops-teal);
   border-radius: var(--ops-radius);
   gap: 48px;
@@ -1077,7 +1077,7 @@
 }
 
 .ops-ceu-catalogue .ceu-note-copy a {
-  color: #066B65;
+  color: #124894;
 }
 
 .ops-ceu-catalogue .ceu-modal-backdrop {
@@ -1115,7 +1115,7 @@
 }
 
 .ops-ceu-catalogue .ceu-form-message {
-  background: var(--ops-soft-teal);
+  background: var(--ops-success-bg);
   border-radius: var(--ops-radius-tight);
   color: #155C55;
 }
@@ -1131,7 +1131,7 @@
   --ceu-canvas: var(--ops-canvas);
   --ceu-line: var(--ops-line);
   --ceu-muted: var(--ops-muted);
-  --ceu-green: var(--ops-teal);
+  --ceu-green: #087F78;
   --ceu-amber: #A36B12;
   background: var(--ops-canvas);
   color: var(--ops-ink);
@@ -1139,7 +1139,7 @@
 }
 
 .ops-ceu-loading {
-  background: #F5F8F8;
+  background: #F3F7FC;
   color: #10253F;
   font-family: "Source Sans 3", "Source Sans Pro", Arial, sans-serif;
 }
@@ -1157,7 +1157,7 @@
 
 .ops-ceu-workspace .ceu-course-context-identity span,
 .ops-ceu-workspace .ceu-course-context-identity small {
-  color: #9DCFCB;
+  color: #B4D4FF;
   font-family: "IBM Plex Mono", ui-monospace, monospace;
   font-size: 9px;
   font-weight: 500;
@@ -1202,7 +1202,7 @@
 }
 
 .ops-ceu-workspace .ceu-exit-button:hover {
-  background: rgba(8, 127, 120, 0.28);
+  background: rgba(23, 87, 184, 0.28);
 }
 
 .ops-ceu-workspace .ceu-primary-button,
@@ -1217,12 +1217,12 @@
 .ops-ceu-workspace .ceu-primary-button {
   background: var(--ops-teal);
   border-color: var(--ops-teal);
-  box-shadow: 0 3px 8px rgba(8, 127, 120, 0.18);
+  box-shadow: 0 3px 8px rgba(23, 87, 184, 0.18);
 }
 
 .ops-ceu-workspace .ceu-primary-button:hover:not(:disabled) {
-  background: #066B65;
-  box-shadow: 0 6px 14px rgba(8, 127, 120, 0.22);
+  background: #124894;
+  box-shadow: 0 6px 14px rgba(23, 87, 184, 0.22);
   transform: translateY(-1px);
 }
 
@@ -1235,7 +1235,7 @@
 .ops-ceu-workspace .ceu-secondary-button:hover:not(:disabled),
 .ops-ceu-workspace .ceu-back-button:hover:not(:disabled) {
   border-color: var(--ops-teal);
-  color: #066B65;
+  color: #124894;
   transform: translateY(-1px);
 }
 
@@ -1265,9 +1265,9 @@
 .ops-ceu-workspace .ceu-pills span,
 .ops-ceu-workspace .ceu-pills span:last-child {
   background: var(--ops-soft-teal);
-  border-color: #B7D9D5;
+  border-color: #C7DAEF;
   border-radius: var(--ops-radius-tight);
-  color: #155C55;
+  color: #124894;
   font-family: "IBM Plex Mono", ui-monospace, monospace;
   font-size: 9px;
   font-weight: 600;
@@ -1384,7 +1384,7 @@
 
 .ops-ceu-workspace .ceu-module-row:hover,
 .ops-ceu-workspace .ceu-module-row.is-current {
-  background: #F4FAF9;
+  background: #F1F7FE;
 }
 
 .ops-ceu-workspace .ceu-module-marker {
@@ -1396,8 +1396,8 @@
 }
 
 .ops-ceu-workspace .ceu-module-marker.is-done {
-  background: var(--ops-teal);
-  border-color: var(--ops-teal);
+  background: #087F78;
+  border-color: #087F78;
 }
 
 .ops-ceu-workspace .ceu-module-row-title small,
@@ -1475,7 +1475,7 @@
 }
 
 .ops-ceu-workspace .ceu-sidebar-progress .ceu-progress-track span {
-  background: #5AD1C6;
+  background: #8EBBF2;
 }
 
 .ops-ceu-workspace .ceu-sidebar-module > button,
@@ -1501,10 +1501,14 @@
   font-family: "IBM Plex Mono", ui-monospace, monospace;
 }
 
-.ops-ceu-workspace .ceu-sidebar-module > button.is-active > span,
-.ops-ceu-workspace .ceu-sidebar-module > button.is-complete > span {
+.ops-ceu-workspace .ceu-sidebar-module > button.is-active > span {
   background: var(--ops-teal);
   border-color: var(--ops-teal);
+}
+
+.ops-ceu-workspace .ceu-sidebar-module > button.is-complete > span {
+  background: #087F78;
+  border-color: #087F78;
 }
 
 .ops-ceu-workspace .ceu-sidebar-module strong {
@@ -1523,13 +1527,13 @@
 
 .ops-ceu-workspace .ceu-sidebar-module ol button:hover,
 .ops-ceu-workspace .ceu-sidebar-module ol button.is-current {
-  background: rgba(8, 127, 120, 0.25);
+  background: rgba(23, 87, 184, 0.25);
   color: #fff;
 }
 
 .ops-ceu-workspace .ceu-sidebar-final {
   border-top-color: rgba(255, 255, 255, 0.17);
-  color: #C9F3EE;
+  color: #D9E9FF;
 }
 
 .ops-ceu-workspace .ceu-module-drawer-trigger {
@@ -1593,7 +1597,7 @@
 }
 
 .ops-ceu-workspace .ceu-reading th {
-  background: #F4FAF9;
+  background: #F1F7FE;
   color: var(--ops-navy);
 }
 
@@ -1615,7 +1619,7 @@
 }
 
 .ops-ceu-workspace .ceu-quick-check {
-  background: #F4FAF9;
+  background: #F1F7FE;
   border-color: #B9DCD7;
   border-radius: var(--ops-radius);
 }
@@ -1639,7 +1643,7 @@
 }
 
 .ops-ceu-workspace .ceu-choice:hover:not(:has(input:disabled)) {
-  border-color: #79BDB6;
+  border-color: #83AEE0;
 }
 
 .ops-ceu-workspace .ceu-choice.is-selected {
@@ -1671,7 +1675,7 @@
 
 .ops-ceu-workspace .ceu-source-strip a,
 .ops-ceu-workspace .ceu-text-link {
-  color: #066B65;
+  color: #124894;
 }
 
 .ops-ceu-workspace .ceu-lesson-footer {
@@ -1757,8 +1761,8 @@
 }
 
 .ops-ceu-workspace .ceu-question-grid button.is-current {
-  border-color: #9FE5DD;
-  box-shadow: 0 0 0 2px rgba(159, 229, 221, 0.24);
+  border-color: #A9CEFF;
+  box-shadow: 0 0 0 2px rgba(169, 206, 255, 0.24);
 }
 
 .ops-ceu-workspace .ceu-question-grid button.is-flagged::after {
@@ -1781,7 +1785,7 @@
 }
 
 .ops-ceu-workspace .ceu-exam-legend .is-current {
-  border-color: #9FE5DD;
+  border-color: #A9CEFF;
 }
 
 .ops-ceu-workspace .ceu-exam-note {
@@ -1801,7 +1805,7 @@
 }
 
 .ops-ceu-workspace .ceu-exam-note .ceu-pilot-disclosure svg {
-  color: #8DDBD2;
+  color: #B4D4FF;
 }
 
 .ops-ceu-workspace .ceu-exam-save-warning {
@@ -1823,7 +1827,7 @@
 }
 
 .ops-ceu-workspace .ceu-result-hero:has(.ceu-score-orb.is-passed) {
-  border-left-color: var(--ops-teal);
+  border-left-color: #087F78;
 }
 
 .ops-ceu-workspace .ceu-score-orb {
@@ -1834,8 +1838,8 @@
 }
 
 .ops-ceu-workspace .ceu-score-orb.is-passed {
-  background: var(--ops-soft-teal);
-  border-color: var(--ops-teal);
+  background: var(--ops-success-bg);
+  border-color: #087F78;
   color: #155C55;
 }
 
@@ -1884,7 +1888,7 @@
 }
 
 .ops-ceu-workspace .ceu-answer-compare > div:last-child {
-  background: var(--ops-soft-teal);
+  background: var(--ops-success-bg);
   border-color: #B9DCD7;
 }
 

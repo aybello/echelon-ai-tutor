@@ -1334,6 +1334,7 @@ export default function Pricing() {
                 key={p.code}
                 onClick={() => handleProvinceSelect(p.code)}
                 className="province-pill"
+                aria-pressed={selectedProvince === p.code}
                 style={{
                   border: selectedProvince === p.code
                     ? "2px solid #7DD3FC"
@@ -1400,7 +1401,7 @@ export default function Pricing() {
               <div style={{ fontSize: 25, marginBottom: 10 }}>🏢</div>
               <div style={{ fontSize: 18, fontWeight: 850, color: "#0F172A" }}>For my team</div>
               <p style={{ margin: "6px 0 0", color: "#64748B", fontSize: 13, lineHeight: 1.5 }}>Build an annual stream plan or combine 3- and 6-month course-specific licences in one order.</p>
-              <div style={{ marginTop: 12, color: "#0D9488", fontSize: 13, fontWeight: 800 }}>Build a team plan →</div>
+              <div className="pricing-team-plan-action" style={{ marginTop: 12, color: "#1757B8", fontSize: 13, fontWeight: 800 }}>Build a team plan →</div>
             </button>
           </div>
 
@@ -1816,7 +1817,7 @@ export default function Pricing() {
           <p style={{ color: "#64748B", fontSize: 14, margin: "0 0 8px" }}>
             Individual Exam Passes are one-time purchases with no renewal. Grandfathered annual subscriptions continue through their paid term if renewal is cancelled.
           </p>
-          <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 24px" }}>
+          <p className="pricing-trust-caption" style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 24px" }}>
             {liveCourseLabel}. {isUSPreparation ? "US exam preparation with AI explanations; confirm your local exam requirements." : "Canada-specific and AI-explained."}
           </p>
           <div className="trust-grid">
@@ -1875,6 +1876,7 @@ export default function Pricing() {
         </p>
         <a
           href="/teams"
+          className="pricing-team-cta"
           style={{
             marginTop: 8,
             display: "inline-block",
@@ -1938,7 +1940,7 @@ export default function Pricing() {
         </div>
         <div style={{ textAlign: "center", marginTop: 32, padding: "20px", background: "#F8FAFC", borderRadius: 12, border: "1px solid #E2E8F0" }}>
           <p style={{ color: "#64748B", fontSize: 13, margin: "0 0 8px" }}>Still have questions?</p>
-          <a href="mailto:abello@echeloninstitute.ca?subject=Pricing%20Question" style={{ color: "#3B82F6", fontWeight: 700, fontSize: 13 }}>Email abello@echeloninstitute.ca →</a>
+          <a className="pricing-support-link" href="mailto:abello@echeloninstitute.ca?subject=Pricing%20Question" style={{ color: "#3B82F6", fontWeight: 700, fontSize: 13 }}>Email abello@echeloninstitute.ca →</a>
         </div>
       </div>
 
@@ -1948,7 +1950,7 @@ export default function Pricing() {
           background: "#0F172A",
           padding: "24px 20px",
           textAlign: "center",
-          color: "#64748B",
+          color: "#CBD5E1",
           fontSize: 12,
           marginTop: 48,
         }}
@@ -1988,7 +1990,7 @@ function ProductCard({
     ? SHARED_PRODUCTS.find(item => item.key === product.key)!.description
     : isWpi && wpiLabel ? wpiLabel.description : product.description;
   const displayBadge = isWpi && wpiLabel?.badge ? wpiLabel.badge : product.badge;
-  const displayBadgeColor = isWpi && wpiLabel?.badge ? "#0E7490" : (product.badgeColor ?? "#1D4ED8");
+  const displayBadgeColor = isWpi && wpiLabel?.badge ? "#0E7490" : product.badgeColor === "#16A34A" ? "#166534" : (product.badgeColor ?? "#1D4ED8");
 
   // Extract question count from first feature bullet (e.g. "400+ practice questions" → "500 Q")
   const qMatch = product.features?.[0]?.match(/(\d[\d,]+)/);
@@ -2147,6 +2149,8 @@ function FAQItem({ q, a }: { q: string; a: string }) {
       }}
     >
       <button
+        type="button"
+        aria-expanded={open}
         onClick={() => setOpen(o => !o)}
         style={{
           width: "100%",
@@ -2163,7 +2167,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
         }}
       >
         <span style={{ fontSize: 14, fontWeight: 700, color: "#0F172A", lineHeight: 1.4 }}>{q}</span>
-        <span style={{ fontSize: 18, color: "#94A3B8", flexShrink: 0, transform: open ? "rotate(45deg)" : "none", transition: "transform 0.2s" }}>+</span>
+        <span className="pricing-faq-indicator" style={{ fontSize: 18, color: "#94A3B8", flexShrink: 0, transform: open ? "rotate(45deg)" : "none", transition: "transform 0.2s" }}>+</span>
       </button>
       {open && (
         <div style={{ padding: "0 20px 16px", fontSize: 13, color: "#64748B", lineHeight: 1.7, borderTop: "1px solid #F1F5F9" }}>

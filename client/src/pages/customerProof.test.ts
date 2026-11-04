@@ -27,6 +27,6 @@ describe("customer proof on public pages", () => {
     const source = read("client/src/pages/Teams.tsx");
     const styles = read("client/src/styles/TeamsRedesign.css");
     expect(source).toContain("teams-customer-proof-label");
-    expect(styles).toMatch(/p\.teams-customer-proof-label\s*\{\s*color:\s*#075e59\s*!important/i);
+    expect(styles).toMatch(/p\.teams-customer-proof-label\s*\{\s*color:\s*#10458f\s*!important/i);
   });
 });

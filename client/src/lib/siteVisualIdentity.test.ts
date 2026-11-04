@@ -32,7 +32,7 @@ describe("Echelon technical visual identity", () => {
       expect(admin).toContain(`--admin-${role}: var(--echelon-${token})`);
     }
     expect(system).toContain("--echelon-navy: #000000");
-    expect(system).toContain("--echelon-teal: #087f78");
+    expect(system).toContain("--echelon-teal: #1757b8");
     expect(admin).not.toMatch(/#f5f3ed|#fffefa|#f4e1d6/i);
   });
 

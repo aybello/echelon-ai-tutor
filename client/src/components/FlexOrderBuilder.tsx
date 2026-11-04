@@ -172,27 +172,28 @@ export function FlexOrderBuilder({ initialRegion = "ontario" }: { initialRegion?
       </CardHeader>
       <CardContent className="space-y-5">
         <div className="space-y-1.5">
-          <Label className="font-medium text-gray-700">Organization name</Label>
-          <Input value={organizationName} onChange={(event) => setOrganizationName(event.target.value)} placeholder="City or organization" maxLength={200} />
-          <p className="text-xs text-gray-400">For a new organization this name appears after payment. Adding licences to an existing team does not rename it.</p>
-          {!!signedInEmail && organizations.data && organizations.data.length > 1 && <div className="space-y-1.5"><Label>Existing organization</Label><Select value={selectedOrgId ? String(selectedOrgId) : undefined} onValueChange={value => setSelectedOrgId(Number(value))}><SelectTrigger><SelectValue placeholder="Choose the team receiving licences" /></SelectTrigger><SelectContent>{organizations.data.map(org => <SelectItem key={org.id} value={String(org.id)}>{org.name} ({org.status})</SelectItem>)}</SelectContent></Select></div>}
+          <Label htmlFor="flex-organization-name" className="font-medium text-gray-700">Organization name</Label>
+          <Input id="flex-organization-name" aria-describedby="flex-organization-name-hint" value={organizationName} onChange={(event) => setOrganizationName(event.target.value)} placeholder="City or organization" maxLength={200} />
+          <p id="flex-organization-name-hint" className="text-xs text-gray-400">For a new organization this name appears after payment. Adding licences to an existing team does not rename it.</p>
+          {!!signedInEmail && organizations.data && organizations.data.length > 1 && <div className="space-y-1.5"><Label htmlFor="flex-existing-organization">Existing organization</Label><Select value={selectedOrgId ? String(selectedOrgId) : undefined} onValueChange={value => setSelectedOrgId(Number(value))}><SelectTrigger id="flex-existing-organization"><SelectValue placeholder="Choose the team receiving licences" /></SelectTrigger><SelectContent>{organizations.data.map(org => <SelectItem key={org.id} value={String(org.id)}>{org.name} ({org.status})</SelectItem>)}</SelectContent></Select></div>}
         </div>
 
         <div className="space-y-1.5">
-          <Label className="font-medium text-gray-700">Province or region</Label>
+          <Label htmlFor="flex-region" className="font-medium text-gray-700">Province or region</Label>
           <Select value={province} onValueChange={(value) => { if (!isTeamRegion(value)) return; setProvince(value); setItems([{ courseKey: "", termMonths: 3, quantity: 1 }]); }}>
-            <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
+            <SelectTrigger id="flex-region" aria-describedby="flex-region-hint" className="w-full"><SelectValue /></SelectTrigger>
             <SelectContent>
               {TEAM_REGION_VALUES.map((teamRegion) => <SelectItem key={teamRegion} value={teamRegion}>{TEAM_REGION_LABELS[teamRegion]}</SelectItem>)}
             </SelectContent>
           </Select>
+          <p id="flex-region-hint" className="text-xs text-gray-500">Changing the region clears the course selections in this order.</p>
           {province === "nova-scotia" && <p className="text-xs leading-relaxed text-gray-500">Nova Scotia operators prepare with the shared WPI exam content. Distribution and collection are certified to Class III.</p>}
         </div>
 
         <div className="space-y-1.5">
-          <Label className="font-medium text-gray-700">Billing email</Label>
-          <Input type="email" value={billingEmail} onChange={(event) => setBillingEmail(event.target.value)} placeholder="Where the invoice and receipt should go" />
-          <p className="text-xs text-gray-400">Stripe sends the receipt and paid invoice to this address.</p>
+          <Label htmlFor="flex-billing-email" className="font-medium text-gray-700">Billing email</Label>
+          <Input id="flex-billing-email" aria-describedby="flex-billing-email-hint" type="email" value={billingEmail} onChange={(event) => setBillingEmail(event.target.value)} placeholder="Where the invoice and receipt should go" />
+          <p id="flex-billing-email-hint" className="text-xs text-gray-400">Stripe sends the receipt and paid invoice to this address.</p>
         </div>
 
         <div className="space-y-1.5">
@@ -200,7 +201,7 @@ export function FlexOrderBuilder({ initialRegion = "ontario" }: { initialRegion?
             <input type="checkbox" checked={sameEmail} onChange={(event) => setSameEmail(event.target.checked)} className="rounded border-gray-300" />
             Manager email is the same as billing email
           </label>
-          {!sameEmail && <div className="mt-2"><Label className="font-medium text-gray-700">Manager email</Label><Input type="email" value={managerEmail} onChange={(event) => setManagerEmail(event.target.value)} placeholder="Who will assign licences to operators" className="mt-1" /><p className="mt-1 text-xs text-gray-400">This person manages operator licences and the team dashboard.</p></div>}
+          {!sameEmail && <div className="mt-2"><Label htmlFor="flex-manager-email" className="font-medium text-gray-700">Manager email</Label><Input id="flex-manager-email" aria-describedby="flex-manager-email-hint" type="email" value={managerEmail} onChange={(event) => setManagerEmail(event.target.value)} placeholder="Who will assign licences to operators" className="mt-1" /><p id="flex-manager-email-hint" className="mt-1 text-xs text-gray-400">This person manages operator licences and the team dashboard.</p></div>}
           </>}
         </div>
 
@@ -212,15 +213,15 @@ export function FlexOrderBuilder({ initialRegion = "ontario" }: { initialRegion?
             return <div key={index} className="space-y-2 rounded-lg bg-gray-50 p-3">
               <div className="flex flex-wrap items-center gap-2">
                 <Select value={item.courseKey} onValueChange={(value) => updateItem(index, "courseKey", value)}>
-                  <SelectTrigger className="min-w-[200px] flex-1"><SelectValue placeholder={availability.isLoading ? "Checking courses…" : "Select a released course"} /></SelectTrigger>
+                  <SelectTrigger aria-label={`Course for row ${index + 1}`} className="min-w-[200px] flex-1"><SelectValue placeholder={availability.isLoading ? "Checking courses…" : "Select a released course"} /></SelectTrigger>
                   <SelectContent>{courses.map((option) => <SelectItem key={option.key} value={option.key}>{option.label}</SelectItem>)}</SelectContent>
                 </Select>
                 <Select value={String(item.termMonths)} onValueChange={(value) => updateItem(index, "termMonths", Number(value) as 3 | 6)}>
-                  <SelectTrigger className="w-28"><SelectValue /></SelectTrigger>
+                  <SelectTrigger aria-label={`Term for row ${index + 1}`} className="w-28"><SelectValue /></SelectTrigger>
                   <SelectContent><SelectItem value="3">3 months</SelectItem><SelectItem value="6">6 months</SelectItem></SelectContent>
                 </Select>
-                <Input type="number" min={1} max={100} className="w-16 text-center" value={item.quantity} onChange={(event) => updateItem(index, "quantity", Math.max(1, Number.parseInt(event.target.value, 10) || 1))} />
-                {items.length > 1 && <Button variant="ghost" size="sm" className="h-8 px-2 text-red-500" onClick={() => removeItem(index)}>Remove</Button>}
+                <Input aria-label={`Quantity for row ${index + 1}`} type="number" min={1} max={100} className="w-16 text-center" value={item.quantity} onChange={(event) => updateItem(index, "quantity", Math.max(1, Number.parseInt(event.target.value, 10) || 1))} />
+                {items.length > 1 && <Button aria-label={`Remove course row ${index + 1}`} variant="ghost" size="sm" className="teams-flex-remove h-8 px-2 text-red-500" onClick={() => removeItem(index)}>Remove</Button>}
               </div>
               {item.courseKey && <div className="flex justify-between px-1 text-xs text-gray-500"><span>{formatCAD(unitPrice)} × {item.quantity}</span><span className="font-medium text-gray-700">{formatCAD(unitPrice * item.quantity)}</span></div>}
             </div>;
@@ -235,7 +236,7 @@ export function FlexOrderBuilder({ initialRegion = "ontario" }: { initialRegion?
           {discount > 0 && <p className="text-right text-xs text-green-600">You save {formatCAD(discountAmount)} through volume pricing.</p>}
         </div>
 
-        <Button className="w-full bg-gradient-to-r from-blue-600 to-teal-500 py-3 font-semibold text-white" onClick={handleSubmit} disabled={identity.isLoading || availability.isLoading || createOrder.isPending || total === 0}>
+        <Button className="teams-checkout-button w-full bg-gradient-to-r from-blue-600 to-teal-500 py-3 font-semibold text-white" onClick={handleSubmit} disabled={identity.isLoading || availability.isLoading || createOrder.isPending || total === 0}>
           {createOrder.isPending ? "Creating secure checkout…" : `Proceed to secure checkout — ${formatCAD(total)}`}
         </Button>
         <p className="text-center text-xs text-gray-400">Unused licences can be reassigned. Each operator starts their own study term when they activate the assigned Course Pass.</p>

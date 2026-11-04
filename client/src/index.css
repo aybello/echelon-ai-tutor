@@ -59,47 +59,47 @@
   
   /* Echelon brand colors */
   --color-echelon-blue: oklch(0.45 0.22 260);
-  --color-echelon-teal: oklch(0.42 0.14 185);
+  --color-echelon-teal: #1757b8;
   --color-echelon-slate: oklch(0.96 0.005 240);
 }
 
 :root {
   --radius: 0.75rem;
-  --echelon-navy: #0b1f3a;
-  --echelon-navy-soft: #153459;
-  --echelon-blue: #1d4ed8;
-  --echelon-blue-bright: #2563eb;
-  --echelon-teal: #0f766e;
-  --echelon-ink: #0f172a;
-  --echelon-copy: #475569;
-  --echelon-muted: #64748b;
-  --echelon-line: #dbe4ef;
-  --echelon-canvas: #f4f7fb;
+  --echelon-navy: #000000;
+  --echelon-navy-soft: #183a5f;
+  --echelon-blue: #1757b8;
+  --echelon-blue-bright: #1757b8;
+  --echelon-teal: #1757b8;
+  --echelon-ink: #000000;
+  --echelon-copy: #000000;
+  --echelon-muted: #000000;
+  --echelon-line: #d9e3ef;
+  --echelon-canvas: #f3f7fc;
   --echelon-surface: #ffffff;
-  --echelon-surface-soft: #f8fafc;
-  --echelon-focus: #2563eb;
+  --echelon-surface-soft: #edf4fc;
+  --echelon-focus: #1757b8;
   --echelon-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.05);
   --echelon-shadow-md: 0 18px 48px rgba(15, 23, 42, 0.14);
-  --background: oklch(0.96 0.005 240);
+  --background: #f7f9fc;
   --foreground: oklch(0.1 0.015 250);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.1 0.015 250);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.1 0.015 250);
-  --primary: oklch(0.45 0.22 260);
+  --primary: #1757b8;
   --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.94 0.008 240);
+  --secondary: #edf4fc;
   --secondary-foreground: oklch(0.3 0.015 250);
-  --muted: oklch(0.94 0.008 240);
-  --muted-foreground: oklch(0.55 0.015 250);
-  --accent: oklch(0.94 0.008 240);
+  --muted: #edf4fc;
+  --muted-foreground: #000000;
+  --accent: #e5effb;
   --accent-foreground: oklch(0.1 0.015 250);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.9 0.008 240);
-  --input: oklch(0.9 0.008 240);
-  --ring: oklch(0.45 0.22 260);
-  --chart-1: oklch(0.45 0.22 260);
+  --border: #d9e3ef;
+  --input: #c8d5e5;
+  --ring: #1757b8;
+  --chart-1: #1757b8;
   --chart-2: oklch(0.42 0.14 185);
   --chart-3: oklch(0.55 0.18 150);
   --chart-4: oklch(0.65 0.18 55);
@@ -219,7 +219,7 @@
   font-weight: 700;
   text-decoration: none;
 }
-.echelon-pricing-link { display: inline-flex; align-items: center; padding: 0 11px; color: var(--echelon-teal); background: #ecfdf5; }
+.echelon-pricing-link { display: inline-flex; align-items: center; padding: 0 11px; color: var(--echelon-teal); background: #eaf2fe; }
 .echelon-pricing-link:hover, .echelon-pricing-link.is-active { color: #fff; background: var(--echelon-teal); }
 .echelon-dashboard-link { gap: 7px; padding: 0 12px; color: var(--echelon-blue); background: #eff6ff; }
 .echelon-dashboard-link:hover { background: #dbeafe; }

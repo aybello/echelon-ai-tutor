@@ -6,15 +6,15 @@
 .learner-redesign {
   --learner-navy: #000000;
   --learner-deep-navy: #0b1d30;
-  --learner-teal: #087f78;
-  --learner-teal-dark: #066a65;
-  --learner-teal-soft: #eaf6f3;
-  --learner-canvas: #f5f8f8;
+  --learner-teal: #1757b8;
+  --learner-teal-dark: #124894;
+  --learner-teal-soft: #eaf2fc;
+  --learner-canvas: #f3f7fc;
   --learner-surface: #ffffff;
   --learner-ink: #000000;
   --learner-copy: #000000;
   --learner-muted: #000000;
-  --learner-line: #dfe6e8;
+  --learner-line: #d9e4f0;
   --learner-success: #16764f;
   --learner-success-soft: #eef8f1;
   --learner-warning: #9a5b08;
@@ -38,8 +38,14 @@
 }
 
 .learner-redesign :is(button, a, input, select, textarea):focus-visible {
-  outline: 3px solid rgba(8, 127, 120, 0.46) !important;
+  /* The white halo preserves contrast when the blue outline meets a dark surface. */
+  outline: 3px solid #1757b8 !important;
   outline-offset: 3px;
+}
+
+/* Override component shadows as well, including important submit-button rules. */
+.learner-redesign.learner-redesign :is(button, a, input, select, textarea):focus-visible {
+  box-shadow: 0 0 0 7px #fff !important;
 }
 
 .learner-redesign :is(button, a) {
@@ -132,7 +138,7 @@
   width: 64px;
   height: 64px;
   margin: 0 auto 20px;
-  border: 1px solid #b9ded8;
+  border: 1px solid #bed2ed;
   border-radius: 50%;
   background: var(--learner-teal-soft);
   color: var(--learner-teal);
@@ -142,11 +148,17 @@
   letter-spacing: 0.08em;
 }
 
+.learner-purchase-page .learner-status-glyph {
+  border-color: #b9ded8;
+  background: #eaf6f3;
+  color: #087f78;
+}
+
 .learner-auth-card input,
 .learner-magic-card input,
 .learner-purchase-card input,
 .learner-subscription-card input {
-  border-color: #b9c7cc !important;
+  border-color: #bacbe0 !important;
   border-radius: 6px !important;
   background: #fff !important;
   color: var(--learner-ink) !important;
@@ -157,7 +169,7 @@
 .learner-purchase-card input:focus,
 .learner-subscription-card input:focus {
   border-color: var(--learner-teal) !important;
-  box-shadow: 0 0 0 3px rgba(8, 127, 120, 0.14);
+  box-shadow: 0 0 0 3px rgba(23, 87, 184, 0.14);
 }
 
 .learner-auth-card button[type="submit"],
@@ -204,7 +216,7 @@
 .learner-subscription-page .learner-subscription-card [style*="#4F46E5"] {
   color: var(--learner-teal) !important;
   background: var(--learner-teal-soft) !important;
-  border-color: #b9ded8 !important;
+  border-color: #bed2ed !important;
 }
 
 .learner-subscription-page .learner-subscription-card button[style*="linear-gradient"] {
@@ -239,7 +251,7 @@
   box-shadow: 0 8px 22px rgba(16, 37, 63, 0.055) !important;
 }
 .learner-account-page .pass-row { border-color: var(--learner-line) !important; }
-.learner-account-page .pass-row:hover { background: #fbfdfd; }
+.learner-account-page .pass-row:hover { background: #f8fbff; }
 .learner-account-page .pass-btn {
   border-radius: 5px !important;
   font-family: "Source Sans 3", system-ui, sans-serif !important;
@@ -249,7 +261,7 @@
 .learner-account-page .purchase-history-row { border-color: var(--learner-line) !important; }
 .learner-account-page .step-badge { border-radius: 6px !important; background: var(--learner-navy) !important; }
 .learner-account-page input {
-  border-color: #b9c7cc !important;
+  border-color: #bacbe0 !important;
   border-radius: 6px !important;
   background: #fff !important;
 }
@@ -281,7 +293,7 @@
 }
 .learner-dashboard .study-welcome a.study-training-link {
   background: var(--learner-teal-soft) !important;
-  border-color: #b9ded8 !important;
+  border-color: #bed2ed !important;
   color: var(--learner-teal) !important;
 }
 .learner-dashboard .workspace-view-tabs {
@@ -321,10 +333,10 @@
 .learner-redesign .study-home-card {
   position: relative;
   overflow: hidden;
-  border: 1px solid #d6e6e4 !important;
+  border: 1px solid #d4e3f4 !important;
   border-left: 5px solid var(--learner-teal) !important;
   border-radius: 8px !important;
-  background: linear-gradient(135deg, #fff 0%, #f4fbfa 100%) !important;
+  background: linear-gradient(135deg, #fff 0%, #f1f7ff 100%) !important;
   box-shadow: 0 12px 28px rgba(16, 37, 63, 0.07) !important;
 }
 .learner-redesign .study-home-card h2 { color: var(--learner-navy) !important; }
@@ -350,10 +362,10 @@
 .learner-activation [class*="border-blue-700"],
 .learner-activation [class*="border-teal-700"] { border-color: var(--learner-teal) !important; }
 .learner-activation [class*="ring-blue-100"],
-.learner-activation [class*="ring-teal-100"] { --tw-ring-color: rgba(8, 127, 120, 0.16) !important; }
+.learner-activation [class*="ring-teal-100"] { --tw-ring-color: rgba(23, 87, 184, 0.16) !important; }
 .learner-activation [class*="font-black"],
 .learner-activation [class*="font-extrabold"] { font-family: Manrope, system-ui, sans-serif; }
-.learner-activation input[type="date"] { border-radius: 6px !important; border-color: #b9c7cc !important; }
+.learner-activation input[type="date"] { border-radius: 6px !important; border-color: #bacbe0 !important; }
 
 /* Course Pass and attested record / hours use explicit record hierarchy. */
 .learner-training .training-record,
@@ -394,7 +406,7 @@
 .learner-redesign .learner-exam-date,
 .learner-redesign .learner-purchase-date {
   border-radius: 6px !important;
-  border-color: #c7ddd9 !important;
+  border-color: #c9dbf0 !important;
   background: var(--learner-teal-soft) !important;
 }
 .learner-redesign .learner-exam-date button,
@@ -404,7 +416,7 @@
 .learner-redesign .learner-exam-date input,
 .learner-redesign .learner-purchase-date input {
   border-radius: 5px !important;
-  border-color: #a9c9c5 !important;
+  border-color: #adc7e7 !important;
   background: #fff !important;
   color: var(--learner-ink) !important;
 }
