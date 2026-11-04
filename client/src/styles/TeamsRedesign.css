@@ -99,6 +99,7 @@
 }
 
 .teams-redesign__hero p { color: #d6e2ec !important; font-size: 1.06rem; }
+.teams-redesign__hero p.teams-customer-proof-label { color: #075e59 !important; font-size: 0.875rem; }
 .teams-redesign__hero .text-cyan-200 { color: #71d6cb !important; }
 
 .teams-redesign__content { max-width: 1180px; }
