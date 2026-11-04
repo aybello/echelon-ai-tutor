@@ -59,6 +59,9 @@
 .homepage-primary-button:active, .homepage-secondary-button:active { transform: scale(.97); }
 .homepage-hero-note { max-width: 480px; margin: 15px 0 0; color: var(--home-muted); font-size: 14px; line-height: 1.5; }
 .homepage-preview-inclusions { max-width: 500px; margin: 8px 0 0; color: var(--home-copy); font-size: 12px; line-height: 1.5; }
+.homepage-customer-proof { margin-top: 22px; padding-top: 15px; border-top: 1px solid var(--home-border); color: var(--home-ink); }
+.homepage-customer-proof > span { display: block; font-size: 13px; line-height: 1.4; }
+.homepage-customer-proof > strong { display: block; margin-top: 5px; font-size: 15px; line-height: 1.5; }
 
 .homepage-preview-choice { max-width: 520px; margin-top: 18px; padding: 16px; border: 1px solid var(--home-border); border-radius: 7px; background: #fff; box-shadow: var(--home-shadow); }
 .homepage-preview-choice-heading { display: flex; align-items: start; justify-content: space-between; gap: 16px; }

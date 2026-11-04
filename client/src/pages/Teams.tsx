@@ -170,6 +170,10 @@ export default function Teams() {
       </section>
 
       <main className="teams-redesign__content mx-auto max-w-6xl px-6 py-12">
+        <div className="mx-auto mb-8 max-w-4xl rounded-xl border border-slate-200 bg-white px-5 py-4 text-center">
+          <p className="text-sm text-slate-700">Used by operators at</p>
+          <p className="mt-1 text-base font-bold text-slate-950">Utilities Kingston and the City of Winnipeg</p>
+        </div>
         <section className="teams-product-switch mx-auto mb-10 max-w-4xl">
           <h2 className="text-center text-2xl font-bold text-slate-900">Choose the right team product</h2>
           <p className="mt-2 text-center text-sm text-slate-600">Annual plans support ongoing workforce development. Flex is for a defined exam-prep cohort.</p>

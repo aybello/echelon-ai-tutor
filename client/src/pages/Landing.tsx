@@ -295,6 +295,10 @@ export default function Landing() {
               </div>
               <p className="homepage-hero-note">Choose your province, system and level. No account required to start the free preview.</p>
               <p className="homepage-preview-inclusions">Free OIT preview includes 15 practice questions, 50 flashcards, 30 mock questions and 3 AI Tutor messages.</p>
+              <div className="homepage-customer-proof">
+                <span>Used by operators at</span>
+                <strong>Utilities Kingston and the City of Winnipeg</strong>
+              </div>
               {showOitPreviewChoice && <PreviewChoice onClose={closePreviewChoice} />}
             </CoursePathHero>
           </div>
