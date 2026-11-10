@@ -673,7 +673,8 @@ export function registerStripeWebhook(app: Express) {
             // Stripe retries; the event's own status is never trusted.
             const flexResult = await handleFlexDisputeCreated(pi, async () => {
               if (typeof dispute.id !== "string") return dispute.status as string | undefined;
-              const live = await stripe.disputes.retrieve(dispute.id);
+              // Bounded so the order row lock is never held through a slow read.
+              const live = await stripe.disputes.retrieve(dispute.id, undefined, { timeout: 5_000, maxNetworkRetries: 0 });
               return live.status as string;
             });
             if (flexResult.handled) {

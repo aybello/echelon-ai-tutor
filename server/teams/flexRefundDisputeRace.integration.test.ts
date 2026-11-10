@@ -227,6 +227,25 @@ databaseSuite("Course Pass refund and dispute handlers hold the order lock", () 
     expect(mocks.notifyOwner).toHaveBeenCalled();
   });
 
+  it("routes a refund naming an already settled licence to a human instead of rewriting it", async () => {
+    const order = await createOrder("dup_refund", 2);
+    await handleFlexPartialRefund(order.paymentIntentId, [order.licenceIds[0]]);
+    const [first] = await licenceStates([order.licenceIds[0]]);
+    mocks.notifyOwner.mockClear();
+    // Same licence refunded again: nothing is rewritten, nothing else is revoked, a human is told.
+    await handleFlexPartialRefund(order.paymentIntentId, [order.licenceIds[0]]);
+    expect((await licenceStates(order.licenceIds)).map(row => row.status)).toEqual(["revoked", "active"]);
+    expect((await licenceStates([order.licenceIds[0]]))[0]).toEqual(first);
+    expect(await orderStatus(order.orderId)).toBe("reconciliation_needed");
+    expect(mocks.notifyOwner).toHaveBeenCalled();
+    // A refund naming a cancelled licence is treated the same way.
+    const other = await createOrder("cancelled_refund", 2);
+    await db.update(teamFlexLicences).set({ status: "cancelled" }).where(eq(teamFlexLicences.id, other.licenceIds[1]));
+    await handleFlexPartialRefund(other.paymentIntentId, [other.licenceIds[1]]);
+    expect((await licenceStates(other.licenceIds)).map(row => row.status)).toEqual(["active", "cancelled"]);
+    expect(await orderStatus(other.orderId)).toBe("reconciliation_needed");
+  });
+
   it("settles an order as refunded once every licence has been refunded one by one", async () => {
     const order = await createOrder("piecewise", 2);
     await handleFlexPartialRefund(order.paymentIntentId, [order.licenceIds[0]]);

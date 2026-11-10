@@ -69,7 +69,7 @@ function fakeDb() {
       insert: () => ({ values: () => ({ $returningId: async () => [{ id: 1 }] }) }),
       $client: {
         getConnection: async () => ({
-          query: async () => [[{ acquired: 1 }], undefined],
+          query: async () => [[{ acquired: 1, released: 1 }], undefined],
           release: () => {},
           destroy: () => {},
         }),

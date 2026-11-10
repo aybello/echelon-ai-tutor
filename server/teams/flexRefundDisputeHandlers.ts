@@ -89,11 +89,14 @@ export async function handleFlexPartialRefund(
     if (order.status === "refunded") return true;
     const requestedIds = [...new Set(licenceIds)].filter(id => Number.isInteger(id) && id > 0);
     const orderLicences = await findOrderLicences(tx, order.id);
-    const orderLicenceIds = new Set(orderLicences.map(licence => licence.id));
+    const liveOrderLicenceIds = new Set(orderLicences.filter(isLiveLicence).map(licence => licence.id));
+    // A refund that names a licence already revoked or cancelled is either a
+    // duplicate or mis-keyed; a human allocates it rather than the handler
+    // rewriting settled history and silently leaving other seats live.
     if (
       requestedIds.length === 0
       || requestedIds.length !== licenceIds.length
-      || requestedIds.some(id => !orderLicenceIds.has(id))
+      || requestedIds.some(id => !liveOrderLicenceIds.has(id))
     ) {
       await tx.update(teamFlexOrders)
         .set({ status: "reconciliation_needed" })
@@ -202,7 +205,8 @@ export async function handleFlexDisputeCreated(
    * is locked so a closure that commits while this handler waits for the lock
    * is seen before any licence is suspended. A read failure propagates so the
    * webhook returns 503 and Stripe retries; a stale event status is never
-   * used as a fallback.
+   * used as a fallback. The caller bounds the read with a short timeout so
+   * the order row lock is not held through a slow Stripe response.
    */
   readLiveStatus: () => Promise<string | null | undefined>,
 ): Promise<FlexDisputeCreatedResult> {

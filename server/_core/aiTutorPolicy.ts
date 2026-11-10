@@ -353,7 +353,10 @@ export async function enforceAiTutorDailyQuota(identity: {
       // the lock cannot outlive this request.
       let released = true;
       for (const lockName of held.reverse()) {
-        try { await connection.query("SELECT RELEASE_LOCK(?)", [lockName]); } catch { released = false; }
+        try {
+          const [rows] = await connection.query("SELECT RELEASE_LOCK(?) AS released", [lockName]);
+          if (Number((rows as Array<{ released: unknown }>)[0]?.released ?? 0) !== 1) released = false;
+        } catch { released = false; }
       }
       if (released) connection.release();
       else connection.destroy();
