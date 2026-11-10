@@ -26,7 +26,7 @@ test("offline preview embeds and loads the approved Echelon font families withou
 test("real homepage keeps the approved light technical design and both free OIT entry points on a phone", async ({page}) => {
   await page.setViewportSize({width:390,height:844});
   await page.goto("/#/homepage");
-  const heroTitle = page.getByRole("heading", {name:"Prepare with confidence for your operator exam."});
+  const heroTitle = page.getByRole("heading", {name:"Be ready for what’s next."});
   await expect(heroTitle).toBeVisible();
   await expect(heroTitle).toHaveCSS("font-family", /Manrope/);
   await expect.poll(() => page.locator(".echelon-brand img").evaluate((image: HTMLImageElement) => image.naturalWidth > 0)).toBe(true);
@@ -285,7 +285,8 @@ test("admin keeps all fifteen sections and a keyboard-accessible mobile drawer",
   await page.goto("/#/admin");
   await expect(page.locator("#admin-founder-title")).toBeVisible();
   await expect(page.locator("#admin-founder-title")).toHaveCSS("font-family", /Manrope/);
-  await expect(page.locator(".admin-portal")).toHaveCSS("background-color", "rgb(245, 248, 248)");
+  // Approved blue redesign canvas (--ops-canvas #F3F7FC), applied Nov 4, 2026.
+  await expect(page.locator(".admin-portal")).toHaveCSS("background-color", "rgb(243, 247, 252)");
   await expect(page.locator(".admin-portal")).toHaveCSS("color", "rgb(0, 0, 0)");
   // The business pipeline panel reuses this table class, so scope the money
   // assertion to the founder decision ledger specifically.
