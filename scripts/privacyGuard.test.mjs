@@ -75,26 +75,25 @@ test("staged mode checks the indexed tree, not a clean but unstaged replacement"
   } finally { rmSync(root, { recursive: true, force: true }); }
 });
 
-test("blocks approved customer-case identifiers without disclosing them", () => {
-  const organization = [["U", "til", "ities"].join(""), ["King", "ston"].join("")].join(" ");
-  const reverseOrganization = [["King", "ston"].join(""), ["U", "til", "ities"].join("")].join(" ");
+test("blocks the customer-case promotion code without disclosing it, and permits approved public customer names", () => {
+  // Founder approval on 2026-11-10: paying municipal customers may be named on public pages.
+  const organization = "Utilities Kingston";
+  const reverseOrganization = "Kingston Utilities";
+  const secondOrganization = "City of Winnipeg";
   const promotion = ["K", "ING", "ST", "ON", "20"].join("");
-  const text = `${organization}\n${reverseOrganization}\n${promotion}\n`;
+  assert.deepEqual(scanPrivacyText(`${organization}\n${reverseOrganization}\n${secondOrganization}\n`, "client/src/pages/Landing.tsx"), []);
+  const text = `${organization}\n${promotion}\n`;
   const findings = scanPrivacyText(text, "scripts/example.mjs");
-  assert.deepEqual(findings, [{ file: "scripts/example.mjs", category: "prohibited-case-identifier", count: 3 }]);
-  const serialized = JSON.stringify(findings);
-  assert.ok(!serialized.includes(organization));
-  assert.ok(!serialized.includes(reverseOrganization));
-  assert.ok(!serialized.includes(promotion));
+  assert.deepEqual(findings, [{ file: "scripts/example.mjs", category: "prohibited-case-identifier", count: 1 }]);
+  assert.ok(!JSON.stringify(findings).includes(promotion));
 });
 
 test("staged privacy checks fail on prohibited case identifiers without echoing them", () => {
   const root = mkdtempSync(join(tmpdir(), "privacy-case-identifier-"));
   try {
     execFileSync("git", ["init", "-q"], { cwd: root });
-    const organization = [["U", "til", "ities"].join(""), ["King", "ston"].join("")].join(" ");
     const promotion = ["K", "ING", "ST", "ON", "20"].join("");
-    writeFileSync(join(root, "script.mjs"), `${organization}\n${promotion}\n`);
+    writeFileSync(join(root, "script.mjs"), `${promotion}\n`);
     execFileSync("git", ["add", "script.mjs"], { cwd: root });
     const result = spawnSync(process.execPath, [guard, "--staged"], {
       cwd: root,
@@ -103,7 +102,6 @@ test("staged privacy checks fail on prohibited case identifiers without echoing 
     });
     assert.equal(result.status, 1);
     assert.match(result.stderr, /prohibited-case-identifier/);
-    assert.ok(!result.stderr.includes(organization));
     assert.ok(!result.stderr.includes(promotion));
   } finally { rmSync(root, { recursive: true, force: true }); }
 });
@@ -112,7 +110,7 @@ test("blocks prohibited case identifiers embedded in tracked filenames", () => {
   const root = mkdtempSync(join(tmpdir(), "privacy-case-path-"));
   try {
     execFileSync("git", ["init", "-q"], { cwd: root });
-    const stem = [["U", "til", "ities"].join(""), ["King", "ston"].join("")].join("");
+    const stem = ["K", "ING", "ST", "ON", "20"].join("");
     const filename = `${stem}Recovery.mjs`;
     writeFileSync(join(root, filename), "export const fixture = true;\n");
     execFileSync("git", ["add", filename], { cwd: root });
@@ -127,7 +125,7 @@ test("blocks prohibited binary and symlink filenames in worktree and staged scan
   const root = mkdtempSync(join(tmpdir(), "privacy-case-nontext-path-"));
   try {
     execFileSync("git", ["init", "-q"], { cwd: root });
-    const stem = [["U", "til", "ities"].join(""), ["King", "ston"].join("")].join("");
+    const stem = ["K", "ING", "ST", "ON", "20"].join("");
     const binaryFilename = `${stem}Archive.bin`;
     const symlinkFilename = `${stem}Shortcut`;
     writeFileSync(join(root, binaryFilename), Buffer.from([0, 1, 2, 3]));
@@ -148,7 +146,7 @@ test("redacts every finding from a protected filename with a separate content vi
   const root = mkdtempSync(join(tmpdir(), "privacy-case-content-path-"));
   try {
     execFileSync("git", ["init", "-q"], { cwd: root });
-    const stem = [["U", "til", "ities"].join(""), ["King", "ston"].join("")].join("");
+    const stem = ["K", "ING", "ST", "ON", "20"].join("");
     const filename = `${stem}Notes.txt`;
     const email = ["operator", "unapproved-mail-provider", "com"].join(".").replace(".unapproved", "@unapproved");
     writeFileSync(join(root, filename), `${email}\n`);
@@ -168,7 +166,7 @@ test("fails closed when an existing tracked path cannot be inspected", () => {
   const root = mkdtempSync(join(tmpdir(), "privacy-case-inaccessible-path-"));
   try {
     execFileSync("git", ["init", "-q"], { cwd: root });
-    const stem = [["U", "til", "ities"].join(""), ["King", "ston"].join("")].join("");
+    const stem = ["K", "ING", "ST", "ON", "20"].join("");
     const filename = `${stem}Restricted.txt`;
     writeFileSync(join(root, filename), "Synthetic private fixture.\n");
     execFileSync("git", ["add", filename], { cwd: root });
@@ -192,7 +190,7 @@ test("worktree scans skip deleted tracked files while staged scans preserve the 
   const root = mkdtempSync(join(tmpdir(), "privacy-deleted-path-"));
   try {
     execFileSync("git", ["init", "-q"], { cwd: root });
-    const marker = [["U", "til", "ities"].join(""), ["King", "ston"].join("")].join(" ");
+    const marker = ["K", "ING", "ST", "ON", "20"].join("");
     const filename = "retired.mjs";
     writeFileSync(join(root, filename), `${marker}\n`);
     execFileSync("git", ["add", filename], { cwd: root });

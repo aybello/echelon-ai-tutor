@@ -301,7 +301,7 @@ jobs:
           NODE_ENV: test
           DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
       - name: Browser-test public Jobs, chlorine, OTP controls and Process Guide regressions
-        run: pnpm exec playwright test e2e/jobs-accessibility.spec.ts e2e/jobs-reliability.spec.ts e2e/chlorine-calculator.spec.ts e2e/otp-controls.spec.ts e2e/process-guide-three.spec.ts
+        run: pnpm exec playwright test e2e/jobs-accessibility.spec.ts e2e/jobs-reliability.spec.ts e2e/chlorine-calculator.spec.ts e2e/otp-controls.spec.ts e2e/process-guide-three.spec.ts e2e/formula-contrast.spec.ts e2e/public-control-accessibility.spec.ts
         env:
           CI: "1"
           NODE_ENV: test
