@@ -10,6 +10,8 @@ const mocks = vi.hoisted(() => ({
   getDb: vi.fn(),
   resolveAccessForRequest: vi.fn(),
   enforceAiTutorDailyQuota: vi.fn(),
+  recordAiTutorUsage: vi.fn(),
+  releaseAiTutorReservation: vi.fn(),
   trackEvent: vi.fn(),
 }));
 vi.mock("./_core/llm", () => ({ invokeLLM: mocks.invokeLLM }));
@@ -25,7 +27,12 @@ vi.mock("./_core/accessService", async () => {
 });
 vi.mock("./_core/aiTutorPolicy", async () => {
   const actual = await vi.importActual<typeof import("./_core/aiTutorPolicy")>("./_core/aiTutorPolicy");
-  return { ...actual, enforceAiTutorDailyQuota: mocks.enforceAiTutorDailyQuota };
+  return {
+    ...actual,
+    enforceAiTutorDailyQuota: mocks.enforceAiTutorDailyQuota,
+    recordAiTutorUsage: mocks.recordAiTutorUsage,
+    releaseAiTutorReservation: mocks.releaseAiTutorReservation,
+  };
 });
 import { appRouter } from "./routers";
 
@@ -133,7 +140,9 @@ describe("AI Tutor truncated explanations", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     mocks.resolveAccessForRequest.mockResolvedValue(true);
-    mocks.enforceAiTutorDailyQuota.mockResolvedValue(undefined);
+    mocks.enforceAiTutorDailyQuota.mockResolvedValue({ eventId: 501 });
+    mocks.recordAiTutorUsage.mockResolvedValue(undefined);
+    mocks.releaseAiTutorReservation.mockResolvedValue(undefined);
     arrangeDatabase();
   });
 
@@ -151,7 +160,8 @@ describe("AI Tutor truncated explanations", () => {
     mocks.invokeLLM.mockResolvedValue(truncated);
     await expect(ask()).rejects.toMatchObject({ code: "SERVICE_UNAVAILABLE" });
     // The half-finished text must never be returned as a usable answer.
-    expect(mocks.trackEvent).not.toHaveBeenCalled();
+    expect(mocks.recordAiTutorUsage).not.toHaveBeenCalled();
+    expect(mocks.releaseAiTutorReservation).toHaveBeenCalledWith({ eventId: 501 });
   });
 
   it("recovers by asking for the same solution more compactly before giving up", async () => {
@@ -179,15 +189,17 @@ describe("AI Tutor truncated explanations", () => {
     const result = await ask();
     expect(result.reply).toContain("12 mg/L");
     expect(mocks.invokeLLM).toHaveBeenCalledTimes(1);
-    expect(mocks.trackEvent).toHaveBeenCalled();
+    expect(mocks.recordAiTutorUsage).toHaveBeenCalledWith({ eventId: 501 }, expect.anything());
+    expect(mocks.releaseAiTutorReservation).not.toHaveBeenCalled();
   });
 
   it("does not charge the learner for an explanation they never received", async () => {
     mocks.invokeLLM.mockResolvedValue(truncated);
     await expect(ask()).rejects.toMatchObject({ code: "SERVICE_UNAVAILABLE" });
     // Daily quota and the free preview limit both count ai_tutor_message
-    // events, so not recording one is what keeps the failed attempt free.
-    expect(mocks.trackEvent).not.toHaveBeenCalled();
+    // events, so releasing the reservation is what keeps the failed attempt free.
+    expect(mocks.recordAiTutorUsage).not.toHaveBeenCalled();
+    expect(mocks.releaseAiTutorReservation).toHaveBeenCalledWith({ eventId: 501 });
   });
 });
 

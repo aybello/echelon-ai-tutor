@@ -22,8 +22,10 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 const captured: { sql: string[] } = { sql: [] };
 let rowTotal = 0;
 
-vi.mock("../db", () => ({
-  getDb: async () => {
+// The reservation builds a drizzle handle on the pinned connection; route it
+// to the same fake so the count filter is still captured.
+vi.mock("drizzle-orm/mysql2", () => ({ drizzle: () => fakeDb() }));
+function fakeDb() {
     const builder = {
       from() {
         return this;
@@ -59,9 +61,22 @@ vi.mock("../db", () => ({
         return Promise.resolve([{ total: rowTotal }]).then(resolve);
       },
     };
-    return { select: () => builder };
-  },
-}));
+    // The reservation pins a pool connection for the per-identity named lock,
+    // then counts and inserts the usage row through the pool. The fake mirrors
+    // that surface while still capturing the count filter's columns.
+    return {
+      select: () => builder,
+      insert: () => ({ values: () => ({ $returningId: async () => [{ id: 1 }] }) }),
+      $client: {
+        getConnection: async () => ({
+          query: async () => [[{ acquired: 1, released: 1 }], undefined],
+          release: () => {},
+          destroy: () => {},
+        }),
+      },
+    };
+}
+vi.mock("../db", () => ({ getDb: async () => fakeDb() }));
 
 const { enforceAiTutorDailyQuota, AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT } = await import(
   "./aiTutorPolicy"
@@ -119,7 +134,7 @@ describe("anonymous free preview quota", () => {
         { userId: null, email: null, anonymousId: "visitor-fixture" },
         { limit: AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT },
       ),
-    ).resolves.toBeUndefined();
+    ).resolves.toEqual({ eventId: 1 });
   });
 
   it("keeps counting a known email on the email column", async () => {

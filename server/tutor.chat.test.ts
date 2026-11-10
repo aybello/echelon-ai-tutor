@@ -9,6 +9,8 @@ const mocks = vi.hoisted(() => ({
   getDb: vi.fn(),
   resolveAccessForRequest: vi.fn(),
   enforceAiTutorDailyQuota: vi.fn(),
+  recordAiTutorUsage: vi.fn(),
+  releaseAiTutorReservation: vi.fn(),
   trackEvent: vi.fn(),
 }));
 
@@ -25,7 +27,12 @@ vi.mock("./_core/accessService", async () => {
 });
 vi.mock("./_core/aiTutorPolicy", async () => {
   const actual = await vi.importActual<typeof import("./_core/aiTutorPolicy")>("./_core/aiTutorPolicy");
-  return { ...actual, enforceAiTutorDailyQuota: mocks.enforceAiTutorDailyQuota };
+  return {
+    ...actual,
+    enforceAiTutorDailyQuota: mocks.enforceAiTutorDailyQuota,
+    recordAiTutorUsage: mocks.recordAiTutorUsage,
+    releaseAiTutorReservation: mocks.releaseAiTutorReservation,
+  };
 });
 
 import { appRouter } from "./routers";
@@ -100,7 +107,9 @@ describe("tutor.chat", () => {
     vi.clearAllMocks();
     ENV.cookieSecret = "test-only-tutor-review-secret";
     mocks.resolveAccessForRequest.mockResolvedValue(true);
-    mocks.enforceAiTutorDailyQuota.mockResolvedValue(undefined);
+    mocks.enforceAiTutorDailyQuota.mockResolvedValue({ eventId: 501 });
+    mocks.recordAiTutorUsage.mockResolvedValue(undefined);
+    mocks.releaseAiTutorReservation.mockResolvedValue(undefined);
     mocks.invokeLLM.mockResolvedValue({
       choices: [{ message: { content: "Chlorine residual is the chlorine remaining after demand is satisfied." } }],
     });
@@ -130,8 +139,11 @@ describe("tutor.chat", () => {
         email: "operator@example.com",
         anonymousId: "192.0.2.10:test-agent",
       },
-      undefined,
+      { usage: expect.objectContaining({ examType: "class1-water" }) },
     );
+    // The reserved slot is finalized only after a usable reply exists.
+    expect(mocks.recordAiTutorUsage).toHaveBeenCalledWith({ eventId: 501 }, expect.objectContaining({ examType: "class1-water" }));
+    expect(mocks.releaseAiTutorReservation).not.toHaveBeenCalled();
     const llmInput = mocks.invokeLLM.mock.calls[0][0];
     expect(llmInput.messages[0].role).toBe("system");
     expect(llmInput.messages[0].content).toContain("NON-NEGOTIABLE RULES");
@@ -269,6 +281,7 @@ describe("tutor.chat", () => {
       {
         limit: 3,
         limitMessage: "You have used your 3 free AI Tutor messages. Unlock the OIT Exam Pass to keep asking questions.",
+        usage: expect.objectContaining({ examType: "oit" }),
       },
     );
   });
@@ -306,6 +319,9 @@ describe("tutor.chat", () => {
       patternMode: false,
       recentPerformance: [],
     })).rejects.toMatchObject({ code: "SERVICE_UNAVAILABLE" });
-    expect(mocks.trackEvent).not.toHaveBeenCalled();
+    // A failed provider call gives the reserved slot back, so the learner is
+    // never charged for an answer they did not receive.
+    expect(mocks.recordAiTutorUsage).not.toHaveBeenCalled();
+    expect(mocks.releaseAiTutorReservation).toHaveBeenCalledWith({ eventId: 501 });
   });
 });

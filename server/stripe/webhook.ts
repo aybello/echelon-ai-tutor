@@ -35,6 +35,7 @@ import {
   handleFlexFullRefund,
   handleFlexPartialRefund,
   handleFlexUnallocatedRefund,
+  flexDisputeOutcome,
 } from "../teams/flexRefundDisputeHandlers";
 
 export function parseRefundLicenceIds(metadata: Record<string, string> | null | undefined): number[] {
@@ -665,12 +666,27 @@ export function registerStripeWebhook(app: Express) {
         const pi = typeof dispute.payment_intent === "string" ? dispute.payment_intent : dispute.payment_intent?.id;
         if (pi) {
           try {
-            const flexHandled = await handleFlexDisputeCreated(pi);
-            if (flexHandled) {
-              await notifyOwner({
-                title: "⚠️ Course Pass dispute opened",
-                content: `Chargeback for PI ${pi}. Order licences were suspended pending Stripe's decision.`,
-              });
+            // Delivery order is not guaranteed. The handler reads the dispute
+            // as it stands now, after locking the order, so a closure that
+            // landed first is applied instead of suspending licences forever.
+            // If Stripe cannot be read the handler throws, we answer 503 and
+            // Stripe retries; the event's own status is never trusted.
+            const flexResult = await handleFlexDisputeCreated(pi, async () => {
+              if (typeof dispute.id !== "string") return dispute.status as string | undefined;
+              // Bounded so the order row lock is never held through a slow read.
+              const live = await stripe.disputes.retrieve(dispute.id, undefined, { timeout: 5_000, maxNetworkRetries: 0 });
+              return live.status as string;
+            });
+            if (flexResult.handled) {
+              await notifyOwner(flexResult.action === "suspended"
+                ? {
+                    title: "⚠️ Course Pass dispute opened",
+                    content: `Chargeback for PI ${pi}. Order licences were suspended pending Stripe's decision.`,
+                  }
+                : {
+                    title: "Course Pass dispute already closed",
+                    content: `Dispute for PI ${pi} arrived after its closure. The outcome was applied; no licences were suspended.`,
+                  });
               return res.json({ received: true });
             }
             const db = await getDb();
@@ -687,9 +703,10 @@ export function registerStripeWebhook(app: Express) {
       if (event.type === "charge.dispute.closed") {
         const dispute = event.data.object as any;
         const pi = typeof dispute.payment_intent === "string" ? dispute.payment_intent : dispute.payment_intent?.id;
-        if (pi && (dispute.status === "won" || dispute.status === "lost")) {
+        const outcome = flexDisputeOutcome(dispute.status);
+        if (pi && outcome) {
           try {
-            const handled = await handleFlexDisputeClosed(pi, dispute.status);
+            const handled = await handleFlexDisputeClosed(pi, outcome);
             if (handled) return res.json({ received: true });
           } catch (err: any) {
             console.error("[Stripe Webhook] dispute.closed:", err.message);

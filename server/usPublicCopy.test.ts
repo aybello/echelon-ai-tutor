@@ -165,7 +165,8 @@ describe("US landing copy and original presentation", () => {
       expect(landing).toContain(`value="${value}"`);
     }
     expect(landing).not.toMatch(/132400|10700|58,260|US Operators Employed|Annual Job Openings|Median Annual Salary/);
-    const primaryLinks = [...landing.matchAll(/<Link href="([^"]+)" className="btn-pulse"/g)].map(match => match[1]);
+    // Match the class token, not an exact class string, so extra styling classes cannot break the destination check.
+    const primaryLinks = [...landing.matchAll(/<Link href="([^"]+)" className="(?:[^"]*\s)?btn-pulse(?:\s[^"]*)?"/g)].map(match => match[1]);
     expect(primaryLinks).toEqual(["/us/states", "/us/states"]);
     expect(landing).toContain('href="/us/courses"');
     expect(landing).toContain("one selected course from successful payment");

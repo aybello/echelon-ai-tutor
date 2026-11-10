@@ -1,4 +1,4 @@
-import { summarizeFlexProgress, flexRowIsStudying } from "@/lib/flexProgressMetrics";
+import { summarizeFlexProgress, flexRowIsStudying, countPurchasedFlexLicences } from "@/lib/flexProgressMetrics";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -51,7 +51,11 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
     refetchInterval: 60_000, // Refresh every minute
   });
 
+  // The full licence list includes paid-but-unused licences, which progress
+  // rows deliberately omit. The badge denominator must be what was purchased.
+  const licencesQuery = trpc.teamFlex.listLicences.useQuery({ orgId }, { retry: false, refetchInterval: 60_000 });
   const data = progressQuery.data ?? [];
+  const purchasedLicences = licencesQuery.data ? countPurchasedFlexLicences(licencesQuery.data) : null;
 
   if (progressQuery.isError) {
     return <p role="alert" className="mt-6 text-sm text-amber-800">Course Pass progress could not load. <button type="button" className="workspace-text-link" onClick={() => { void progressQuery.refetch(); }}>Retry progress</button></p>;
@@ -69,8 +73,12 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
         <CardTitle className="flex items-center gap-2">
           <TrendingUp className="h-5 w-5 text-teal-600" />
           <span>Course Pass Progress</span>
-          <Badge variant="outline" className="text-xs ml-2">
-            {activatedLicences} activated / {data.length} licences
+          <Badge
+            variant="outline"
+            className="text-xs ml-2"
+            title={licencesQuery.isError ? "Licence count could not be loaded. It will retry within a minute." : undefined}
+          >
+            {activatedLicences} activated / {purchasedLicences ?? (licencesQuery.isError ? "?" : "…")} licences
           </Badge>
         </CardTitle>
       </CardHeader>

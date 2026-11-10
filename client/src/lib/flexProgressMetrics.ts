@@ -14,3 +14,15 @@ export function summarizeFlexProgress(rows: ProgressRow[], now = new Date()) {
     totalAttempts, avgAccuracy: totalAttempts ? Math.round(correctAttempts / totalAttempts * 100) : 0,
     avgReadiness: recorded.length ? Math.round(recorded.reduce((sum, row) => sum + row.readinessScore, 0) / recorded.length) : 0 };
 }
+
+/**
+ * Count every licence the organization has paid for, from the full licence
+ * list rather than the progress rows. Progress rows exclude unused licences
+ * and expired ones past their reporting grace, so using them as the
+ * denominator showed "2 activated / 2 licences" to a manager who had paid for
+ * eight. Revoked (refunded) and cancelled licences are not purchased capacity;
+ * a suspended licence under an open dispute still is until the dispute closes.
+ */
+export function countPurchasedFlexLicences(licences: ReadonlyArray<{ status: string }>) {
+  return licences.filter(licence => !["cancelled", "revoked"].includes(licence.status)).length;
+}

@@ -15,10 +15,11 @@ const NON_ADDRESS_TOKENS = new Set(["wouter@3.7.1.patch"]);
 const EMAIL = /[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}/g;
 // SHA-256 fingerprints of prohibited customer-case identifiers. Keep plaintext
 // markers out of source and diagnostics; this is a narrow, reviewed blocklist.
+// 2026-11-10: the founder approved naming paying municipal customers on public
+// pages (homepage and Teams), so organization names were removed from this list.
+// Customer-specific promotion codes remain prohibited.
 const PROHIBITED_CASE_IDENTIFIER_HASHES = new Set([
-  "72329678c5491ab3ed097542ed20c36d85f4d9b79ca5f82716cc8bb94b9444bf",
   "55938f4042602289d612d0444073923cccad5d06580ba21d953ee868ad5d5df1",
-  "58a3ff070e557f6a9a878b60745ee4db4d55eb8695dbcace0226be24c6afec29",
 ]);
 
 function normalizedIdentifierHash(value) {

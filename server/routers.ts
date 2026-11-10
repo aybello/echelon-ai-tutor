@@ -33,7 +33,7 @@ import {
   resolveAccessForRequest,
   verifyAccessTokenAndRecheckDb,
 } from "./_core/accessService";
-import { AI_TUTOR_CONCISE_RETRY_INSTRUCTION, AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT, AI_TUTOR_MAX_OUTPUT_TOKENS, buildTutorSystemPrompt, enforceAiTutorDailyQuota, isTruncatedTutorCompletion } from "./_core/aiTutorPolicy";
+import { AI_TUTOR_CONCISE_RETRY_INSTRUCTION, AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT, AI_TUTOR_MAX_ASSISTANT_MESSAGE_CHARS, AI_TUTOR_MAX_HISTORY_MESSAGES, AI_TUTOR_MAX_OUTPUT_TOKENS, AI_TUTOR_MAX_USER_MESSAGE_CHARS, boundTutorHistory, buildTutorSystemPrompt, enforceAiTutorDailyQuota, isTruncatedTutorCompletion, recordAiTutorUsage, releaseAiTutorReservation } from "./_core/aiTutorPolicy";
 import { resolveUSStudyContext } from "./usStudyContextServer";
 import { stripeRouter } from "./routers/stripeRouter";
 import { flashcardRouter } from "./routers/flashcardRouter";
@@ -913,12 +913,14 @@ export const appRouter = router({
     chat: publicProcedure
       .input(
         z.object({
+          // Learner messages stay short; assistant replies may be full worked
+          // solutions and must round-trip as history (see aiTutorPolicy).
           messages: z.array(
-            z.object({
-              role: z.enum(["user", "assistant"]),
-              content: z.string().min(1).max(2000),
-            }),
-          ).min(1).max(20),
+            z.discriminatedUnion("role", [
+              z.object({ role: z.literal("user"), content: z.string().min(1).max(AI_TUTOR_MAX_USER_MESSAGE_CHARS) }),
+              z.object({ role: z.literal("assistant"), content: z.string().min(1).max(AI_TUTOR_MAX_ASSISTANT_MESSAGE_CHARS) }),
+            ]),
+          ).min(1).max(AI_TUTOR_MAX_HISTORY_MESSAGES),
           examType: z.string().min(1).max(64),
           // Learner-facing question identifiers are the per-bank questionNum,
           // never the questions table's internal auto-increment primary key.
@@ -947,9 +949,12 @@ export const appRouter = router({
         if (!course?.isActive) {
           throw new TRPCError({ code: "BAD_REQUEST", message: "Unknown or inactive course." });
         }
-        if (input.messages.reduce((total, message) => total + message.content.length, 0) > 12_000) {
-          throw new TRPCError({ code: "BAD_REQUEST", message: "Tutor conversation is too long. Start a new session." });
+        if (input.messages[input.messages.length - 1]?.role !== "user") {
+          throw new TRPCError({ code: "BAD_REQUEST", message: "The latest tutor message must come from the learner." });
         }
+        // Bound total prompt size by dropping the oldest turns instead of
+        // rejecting a valid long conversation outright.
+        const conversation = boundTutorHistory(input.messages);
         const isElectrician309A = course.courseKey === "electrician-309a";
 
         const hasPaidAccess = await resolveAccessForRequest(ctx, course.courseKey, {
@@ -973,15 +978,11 @@ export const appRouter = router({
         const anonymousTutorId = resolvedUserId || resolvedEmail
           ? `${ctx.req.ip ?? "unknown"}:${ctx.req.get("user-agent") ?? "unknown"}`
           : await resolveAnonymousTutorIdentity(ctx.req, ctx.res);
-        await enforceAiTutorDailyQuota(
-          { userId: resolvedUserId, email: resolvedEmail, anonymousId: anonymousTutorId },
-          isFreeOitPreview
-            ? {
-                limit: AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT,
-                limitMessage: "You have used your 3 free AI Tutor messages. Unlock the OIT Exam Pass to keep asking questions.",
-              }
-            : undefined,
-        );
+        const tutorUsage = {
+          examType: course.courseKey,
+          productKey: course.productKey,
+          extra: { questionNum: input.questionNum ?? null, patternMode: input.patternMode },
+        };
 
         const db = await getDb();
         if (!db) {
@@ -1151,7 +1152,20 @@ export const appRouter = router({
           recentPerformance: input.recentPerformance,
           studentMemory,
         });
-
+        // Reserve today's slot as the last step before the provider call, so
+        // nothing that can throw sits between the reservation and the release
+        // in the catch below. Reviewers flagged that a database failure while
+        // building context used to burn a message the learner never received.
+        const quotaReservation = await enforceAiTutorDailyQuota(
+          { userId: resolvedUserId, email: resolvedEmail, anonymousId: anonymousTutorId },
+          isFreeOitPreview
+            ? {
+                limit: AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT,
+                limitMessage: "You have used your 3 free AI Tutor messages. Unlock the OIT Exam Pass to keep asking questions.",
+                usage: tutorUsage,
+              }
+            : { usage: tutorUsage },
+        );
         try {
           // A worked calculation that stops mid-step teaches an incomplete
           // method, so a length-capped answer is never returned as if it were
@@ -1162,7 +1176,7 @@ export const appRouter = router({
           // retry: an unbounded chain would burn cost and make the learner
           // wait even longer for an answer that is not coming.
           let response = await invokeLLM({
-            messages: [{ role: "system", content: systemPrompt }, ...input.messages],
+            messages: [{ role: "system", content: systemPrompt }, ...conversation],
             maxTokens: AI_TUTOR_MAX_OUTPUT_TOKENS,
           });
           if (isTruncatedTutorCompletion(response?.choices?.[0]?.finish_reason)) {
@@ -1170,7 +1184,7 @@ export const appRouter = router({
             response = await invokeLLM({
               messages: [
                 { role: "system", content: systemPrompt + AI_TUTOR_CONCISE_RETRY_INSTRUCTION },
-                ...input.messages,
+                ...conversation,
               ],
               maxTokens: AI_TUTOR_MAX_OUTPUT_TOKENS,
             });
@@ -1185,17 +1199,11 @@ export const appRouter = router({
           if (typeof reply !== "string" || !reply.trim()) {
             throw new Error("Tutor provider returned no usable explanation");
           }
-          await trackEvent("ai_tutor_message", {
-            userId: resolvedUserId,
-            email: resolvedEmail,
-            examType: course.courseKey,
-            productKey: course.productKey,
-            anonymousId: resolvedUserId || resolvedEmail ? null : anonymousTutorId,
-            extra: { questionNum: input.questionNum ?? null, patternMode: input.patternMode },
-          });
+          await recordAiTutorUsage(quotaReservation, tutorUsage);
           return { reply };
         } catch {
           console.error("[AI Tutor] Response unavailable");
+          await releaseAiTutorReservation(quotaReservation);
           throw new TRPCError({
             code: "SERVICE_UNAVAILABLE",
             message: "The AI Tutor could not finish the explanation. Please retry. Your question is still here.",
@@ -1212,10 +1220,10 @@ export const appRouter = router({
         z.object({
           examType: z.string().min(1).max(64),
           messages: z.array(
-            z.object({
-              role: z.enum(["user", "assistant"]),
-              content: z.string().min(1).max(4000),
-            })
+            z.discriminatedUnion("role", [
+              z.object({ role: z.literal("user"), content: z.string().min(1).max(AI_TUTOR_MAX_USER_MESSAGE_CHARS) }),
+              z.object({ role: z.literal("assistant"), content: z.string().min(1).max(AI_TUTOR_MAX_ASSISTANT_MESSAGE_CHARS) }),
+            ])
           ).min(1).max(40),
           sessionStartMs: z.number().int().positive(), // unix ms when panel was opened
           accessToken: z.string().max(4096).optional(),
@@ -1253,7 +1261,8 @@ export const appRouter = router({
         if (userMessages.length === 0) return { saved: false };
 
         try {
-          const conversationText = input.messages
+          // Bound the summary prompt the same way the chat prompt is bounded.
+          const conversationText = boundTutorHistory(input.messages, { maxMessages: 40 })
             .map((m) => `${m.role === "user" ? "Student" : "Tutor"}: ${m.content}`)
             .join("\n");
 

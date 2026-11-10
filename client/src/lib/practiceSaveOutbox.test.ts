@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { enqueuePracticeSave, listPendingPracticeSaves, removePendingPracticeSave, PRACTICE_SAVE_OUTBOX_KEY, type PendingPracticeSave } from "./practiceSaveOutbox";
+import { enqueuePracticeSave, listPendingPracticeSaves, removePendingPracticeSave, prunePracticeSaveAcknowledgements, PRACTICE_SAVE_ACK_RETENTION_MS, PRACTICE_SAVE_OUTBOX_KEY, type PendingPracticeSave } from "./practiceSaveOutbox";
 const scope = { identity: "user:7", courseKey: "oit" };
 const item = (id: number): PendingPracticeSave => ({ version: 1, operationId: `550e8400-e29b-41d4-a716-44665544000${id}`, scope, questionId: id, selectedIndex: 2, bankKey: "oit", quizMode: "standard", sessionId: "550e8400-e29b-41d4-a716-446655440000", createdAt: id });
 function storage() {
@@ -73,4 +73,38 @@ it.each(["legacy getItem", "length", "key", "record getItem", "tombstone getItem
     },
   };
   expect(() => listPendingPracticeSaves(broken, scope)).toThrow("storage unavailable");
+});
+
+describe("acknowledgement marker pruning", () => {
+  const removedKey = (id: number) => `echelon:practice-save-outbox:removed:v2:${encodeURIComponent(item(id).operationId)}`;
+  it("keeps a marker while its record exists anywhere and for the retention window after", () => {
+    const s = storage();
+    enqueuePracticeSave(s, item(1));
+    s.setItem(PRACTICE_SAVE_OUTBOX_KEY, JSON.stringify([item(2)]));
+    removePendingPracticeSave(s, item(1).operationId);
+    removePendingPracticeSave(s, item(2).operationId);
+    // Independent record for 1 was deleted on acknowledgement; legacy array still holds 2.
+    const now = Date.now();
+    expect(prunePracticeSaveAcknowledgements(s, now)).toBe(0);
+    expect(s.data.has(removedKey(1))).toBe(true);
+    expect(prunePracticeSaveAcknowledgements(s, now + PRACTICE_SAVE_ACK_RETENTION_MS + 1)).toBe(1);
+    expect(s.data.has(removedKey(1))).toBe(false);
+    expect(s.data.has(removedKey(2))).toBe(true);
+    expect(listPendingPracticeSaves(s, scope)).toEqual([]);
+  });
+  it("prunes undated legacy markers once their record is gone and never a live one", () => {
+    const s = storage();
+    s.setItem(removedKey(3), "1");
+    s.setItem(removedKey(4), "1");
+    enqueuePracticeSave(s, item(4));
+    expect(prunePracticeSaveAcknowledgements(s)).toBe(1);
+    expect(s.data.has(removedKey(3))).toBe(false);
+    expect(s.data.has(removedKey(4))).toBe(true);
+    expect(listPendingPracticeSaves(s, scope)).toEqual([]);
+  });
+  it("is a no-op for a store that cannot remove items", () => {
+    const s = storage();
+    s.setItem(removedKey(5), "1");
+    expect(prunePracticeSaveAcknowledgements({ getItem: s.getItem, setItem: s.setItem, key: s.key, get length() { return s.length; } })).toBe(0);
+  });
 });
