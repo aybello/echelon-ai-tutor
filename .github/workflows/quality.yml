@@ -233,6 +233,7 @@ jobs:
           server/partnershipInquiry.integration.test.ts
           server/auditAdminLifecycle.integration.test.ts
           server/aiTutorQuota.integration.test.ts
+          server/teams/flexRefundDisputeRace.integration.test.ts
         env:
           CI: "1"
           NODE_ENV: test
