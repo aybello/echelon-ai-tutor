@@ -56,6 +56,7 @@ vi.mock("./stripe", () => ({
     subscriptions: {
       retrieve: mockRetrieveSubscription,
     },
+    disputes: { retrieve: vi.fn(async (id: string) => ({ id, status: "needs_response" })) },
     paymentIntents: {
       retrieve: mockRetrievePaymentIntent,
     },
@@ -280,11 +281,11 @@ describe("Stripe webhook handler — Course Pass refunds and disputes", () => {
     mockConstructEvent.mockReturnValue({
       id: "evt_dispute_opened",
       type: "charge.dispute.created",
-      data: { object: { payment_intent: "pi_flex" } },
+      data: { object: { id: "dp_flex", payment_intent: "pi_flex", status: "needs_response" } },
     });
     mockFlexDisputeCreated.mockResolvedValue(true);
     await handler(makeRequest(), openedResponse);
-    expect(mockFlexDisputeCreated).toHaveBeenCalledWith("pi_flex");
+    expect(mockFlexDisputeCreated).toHaveBeenCalledWith("pi_flex", "needs_response");
 
     const closedResponse = makeResponse();
     mockConstructEvent.mockReturnValue({

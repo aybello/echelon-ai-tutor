@@ -3,6 +3,8 @@ import { and, count, eq, gte, or, sql } from "drizzle-orm";
 import { productAnalyticsEvents } from "../../drizzle/schema";
 import { hashAnalyticsAnonymousId, hashAnalyticsEmail } from "../analytics";
 import { getDb } from "../db";
+import { drizzle } from "drizzle-orm/mysql2";
+import type { PoolConnection } from "mysql2/promise";
 
 export const AI_TUTOR_DAILY_MESSAGE_LIMIT = 100;
 export const AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT = 3;
@@ -289,21 +291,33 @@ export async function enforceAiTutorDailyQuota(identity: {
   const limit = options?.limit ?? AI_TUTOR_DAILY_MESSAGE_LIMIT;
   const limitMessage = options?.limitMessage ?? "You have reached today's AI Tutor message limit. Please continue tomorrow or use the course explanations and study guides.";
   // Lock names are capped at 64 characters; a 40-hex prefix of the hashed
-  // identity is far beyond collision concern for a per-learner mutex. A
-  // signed-in learner always locks on the user ID; the count still matches
-  // rows written under either the user ID or the email hash.
-  const lockName = `ai_tutor_quota:${(identity.userId ? hashAnalyticsEmail(`user:${identity.userId}`) : emailHash ?? anonymousHash ?? "none").slice(0, 40)}`;
+  // identity is far beyond collision concern for a per-learner mutex. The
+  // count matches rows under the user ID or the email hash, so when both are
+  // present both locks are taken, in a fixed order, so an email-only request
+  // and a signed-in request for the same learner serialize on the same mutex.
+  const lockNames = [
+    identity.userId ? `ai_tutor_quota:${hashAnalyticsEmail(`user:${identity.userId}`).slice(0, 40)}` : null,
+    emailHash ? `ai_tutor_quota:${emailHash.slice(0, 40)}` : null,
+    anonymousHash ? `ai_tutor_quota:${anonymousHash.slice(0, 40)}` : null,
+  ].filter((name): name is string => name !== null);
   let reservationError: TRPCError | null = null;
   let eventId: number | null = null;
   let connection: PinnedConnection | null = null;
-  let locked = false;
+  const held: string[] = [];
   try {
     connection = await pool.getConnection();
-    const [lockRows] = await connection.query("SELECT GET_LOCK(?, 5) AS acquired", [lockName]);
-    const acquired = Number((lockRows as Array<{ acquired: unknown }>)[0]?.acquired ?? 0);
-    if (acquired !== 1) throw new Error("tutor quota lock unavailable");
-    locked = true;
-    const [row] = await db
+    for (const lockName of lockNames) {
+      const [lockRows] = await connection.query("SELECT GET_LOCK(?, 5) AS acquired", [lockName]);
+      const acquired = Number((lockRows as Array<{ acquired: unknown }>)[0]?.acquired ?? 0);
+      if (acquired !== 1) throw new Error("tutor quota lock unavailable");
+      held.push(lockName);
+    }
+    // Every statement below runs on the pinned connection. Going back to the
+    // pool here would need a second connection per request, and under load
+    // all pinned connections could wait on each other for one that never
+    // frees: both independent reviewers flagged that as a pool deadlock.
+    const pinned = drizzle(connection as unknown as PoolConnection);
+    const [row] = await pinned
       .select({ total: count() })
       .from(productAnalyticsEvents)
       .where(and(
@@ -316,7 +330,7 @@ export async function enforceAiTutorDailyQuota(identity: {
     } else {
       // Autocommit: this row is committed and visible when the await returns,
       // which is before the lock below is released to the next waiter.
-      const [inserted] = await db.insert(productAnalyticsEvents).values({
+      const [inserted] = await pinned.insert(productAnalyticsEvents).values({
         eventName: "ai_tutor_message",
         userId: identity.userId,
         emailHash,
@@ -337,9 +351,9 @@ export async function enforceAiTutorDailyQuota(identity: {
       // The lock is connection-scoped. Release it explicitly, then return the
       // connection. If release fails the pool connection is destroyed below so
       // the lock cannot outlive this request.
-      let released = !locked;
-      if (locked) {
-        try { await connection.query("SELECT RELEASE_LOCK(?)", [lockName]); released = true; } catch { released = false; }
+      let released = true;
+      for (const lockName of held.reverse()) {
+        try { await connection.query("SELECT RELEASE_LOCK(?)", [lockName]); } catch { released = false; }
       }
       if (released) connection.release();
       else connection.destroy();

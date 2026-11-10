@@ -15,6 +15,7 @@ import {
   handleFlexDisputeCreated,
   handleFlexFullRefund,
   handleFlexPartialRefund,
+  handleFlexUnallocatedRefund,
 } from "./flexRefundDisputeHandlers";
 
 // A test must never adopt a deployment database merely because DATABASE_URL exists.
@@ -151,6 +152,47 @@ databaseSuite("Course Pass refund and dispute handlers hold the order lock", () 
     expect((await licenceStates(order.licenceIds)).map(row => row.status)).toEqual(["suspended", "cancelled"]);
     await handleFlexDisputeClosed(order.paymentIntentId, "won");
     expect((await licenceStates(order.licenceIds)).map(row => row.status)).toEqual(["active", "cancelled"]);
+  });
+
+  it("applies the outcome when the creation event arrives after the dispute already closed", async () => {
+    const won = await createOrder("reversed_won", 2);
+    await handleFlexDisputeClosed(won.paymentIntentId, "won");
+    // Late creation event; Stripe now reports the dispute as won.
+    await handleFlexDisputeCreated(won.paymentIntentId, "won");
+    expect((await licenceStates(won.licenceIds)).map(row => row.status)).toEqual(["active", "active"]);
+    expect(await orderStatus(won.orderId)).toBe("paid");
+    const lost = await createOrder("reversed_lost", 2);
+    await handleFlexDisputeClosed(lost.paymentIntentId, "lost");
+    expect((await licenceStates(lost.licenceIds)).map(row => row.status)).toEqual(["revoked", "revoked"]);
+    await handleFlexDisputeCreated(lost.paymentIntentId, "lost");
+    expect((await licenceStates(lost.licenceIds)).map(row => row.status)).toEqual(["revoked", "revoked"]);
+    expect(await orderStatus(lost.orderId)).toBe("refunded");
+  });
+
+  it("keeps an unallocated refund flagged for a human through a dispute", async () => {
+    const order = await createOrder("reconciliation_hold", 2);
+    expect(await handleFlexUnallocatedRefund(order.paymentIntentId)).toBe(true);
+    expect(await orderStatus(order.orderId)).toBe("reconciliation_needed");
+    await handleFlexDisputeCreated(order.paymentIntentId, "needs_response");
+    expect(await orderStatus(order.orderId)).toBe("reconciliation_needed");
+    expect((await licenceStates(order.licenceIds)).map(row => row.status)).toEqual(["suspended", "suspended"]);
+    await handleFlexDisputeClosed(order.paymentIntentId, "won");
+    expect((await licenceStates(order.licenceIds)).map(row => row.status)).toEqual(["active", "active"]);
+    expect(await orderStatus(order.orderId)).toBe("reconciliation_needed");
+    expect(mocks.notifyOwner).toHaveBeenCalled();
+  });
+
+  it("settles an order as refunded once every licence has been refunded one by one", async () => {
+    const order = await createOrder("piecewise", 2);
+    await handleFlexPartialRefund(order.paymentIntentId, [order.licenceIds[0]]);
+    expect(await orderStatus(order.orderId)).toBe("partially_refunded");
+    await handleFlexPartialRefund(order.paymentIntentId, [order.licenceIds[1]]);
+    expect(await orderStatus(order.orderId)).toBe("refunded");
+    // A later unallocated refund on a fully refunded order has nothing to allocate.
+    mocks.notifyOwner.mockClear();
+    await handleFlexUnallocatedRefund(order.paymentIntentId);
+    expect(await orderStatus(order.orderId)).toBe("refunded");
+    expect(mocks.notifyOwner).not.toHaveBeenCalled();
   });
 
   it("serializes a concurrent refund and dispute win so no licence ends up active", async () => {

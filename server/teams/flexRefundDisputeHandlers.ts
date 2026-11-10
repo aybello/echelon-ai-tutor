@@ -4,7 +4,7 @@
  * Every mutation is scoped through order item IDs. An organization can place
  * several orders, so organizationId alone is never a safe refund boundary.
  */
-import { and, eq, inArray } from "drizzle-orm";
+import { and, eq, inArray, ne } from "drizzle-orm";
 import { getDb } from "../db";
 import {
   teamFlexLicences,
@@ -59,6 +59,12 @@ async function findOrderLicences(tx: Tx, orderId: number, onlySuspended = false)
 }
 /** Order states in which some money has gone back. */
 const REFUNDED_ORDER_STATES = new Set(["refunded", "partially_refunded"]);
+/**
+ * Order states that a dispute event must not overwrite. "disputed" is the
+ * dispute's own marker; "reconciliation_needed" records an unallocated refund
+ * a human still has to apply, and a dispute outcome does not settle it.
+ */
+const HOLD_ORDER_STATES = new Set(["disputed", "reconciliation_needed"]);
 /** Return true when the payment intent belongs to a Course Pass order. */
 export async function handleFlexPartialRefund(
   paymentIntentId: string,
@@ -94,10 +100,13 @@ export async function handleFlexPartialRefund(
         suspendedReason: null,
       })
       .where(inArray(teamFlexLicences.id, requestedIds));
-    // An open dispute keeps the order marked disputed; the revoked licences
-    // carry the refund evidence themselves, and the dispute close handler
-    // settles the order status once Stripe reports the outcome.
-    if (order.status !== "disputed") {
+    const stillLive = orderLicences.filter(licence => licence.status !== "revoked" && !requestedIds.includes(licence.id)).length;
+    // Every licence refunded one by one is a full refund. Otherwise an open
+    // dispute or an outstanding reconciliation keeps its marker; the revoked
+    // licences carry the refund evidence themselves.
+    if (stillLive === 0) {
+      await tx.update(teamFlexOrders).set({ status: "refunded" }).where(eq(teamFlexOrders.id, order.id));
+    } else if (!HOLD_ORDER_STATES.has(order.status)) {
       await tx.update(teamFlexOrders)
         .set({ status: "partially_refunded" })
         .where(eq(teamFlexOrders.id, order.id));
@@ -165,8 +174,19 @@ export async function handleFlexFullRefund(paymentIntentId: string): Promise<boo
     return true;
   });
 }
-/** Suspend only non-terminal licences created by the disputed order. */
-export async function handleFlexDisputeCreated(paymentIntentId: string): Promise<boolean> {
+/**
+ * Suspend only non-terminal licences created by the disputed order.
+ *
+ * Stripe does not guarantee delivery order, so `charge.dispute.created` can
+ * arrive after `charge.dispute.closed`. The webhook passes the dispute's
+ * current status as read from Stripe at handling time; when it is already
+ * won or lost, the outcome is applied instead of suspending licences that no
+ * later event would ever restore.
+ */
+export async function handleFlexDisputeCreated(paymentIntentId: string, liveDisputeStatus?: string | null): Promise<boolean> {
+  if (liveDisputeStatus === "won" || liveDisputeStatus === "lost") {
+    return handleFlexDisputeClosed(paymentIntentId, liveDisputeStatus);
+  }
   const db = await requireDb();
   return db.transaction(async (tx) => {
     const order = await lockFlexOrder(tx, paymentIntentId);
@@ -186,8 +206,9 @@ export async function handleFlexDisputeCreated(paymentIntentId: string): Promise
         // Guard on the status just read so a concurrent revocation is never overwritten.
         .where(and(eq(teamFlexLicences.id, licence.id), eq(teamFlexLicences.status, licence.status)));
     }
-    // A refund that already landed is the stronger fact about the money.
-    if (!REFUNDED_ORDER_STATES.has(order.status)) {
+    // A refund that already landed, or a refund still waiting to be allocated,
+    // is the stronger fact about the money and keeps its marker.
+    if (!REFUNDED_ORDER_STATES.has(order.status) && !HOLD_ORDER_STATES.has(order.status)) {
       await tx.update(teamFlexOrders)
         .set({ status: "disputed" })
         .where(eq(teamFlexOrders.id, order.id));
@@ -205,8 +226,22 @@ export async function handleFlexDisputeClosed(
   return db.transaction(async (tx) => {
     const order = await lockFlexOrder(tx, paymentIntentId);
     if (!order) return false;
-    const suspendedLicences = await findOrderLicences(tx, order.id, true);
     const now = new Date();
+    if (outcome === "lost") {
+      // The card network took the whole charge back. Every licence that is
+      // not already revoked goes, whether or not the creation event was
+      // processed first, so a reversed delivery order cannot leave access open.
+      const live = (await findOrderLicences(tx, order.id)).filter(licence => licence.status !== "revoked");
+      if (live.length > 0) {
+        await tx.update(teamFlexLicences)
+          .set({ status: "revoked", revokedAt: now, revokeReason: "dispute_lost", previousStatus: null, suspendedAt: null, suspendedReason: null })
+          .where(and(inArray(teamFlexLicences.id, live.map(licence => licence.id)), ne(teamFlexLicences.status, "revoked")));
+      }
+      await tx.update(teamFlexOrders).set({ status: "refunded" }).where(eq(teamFlexOrders.id, order.id));
+      console.log(`[Course Pass Dispute] lost: revoked ${live.length} licence(s) for order #${order.id}`);
+      return true;
+    }
+    const suspendedLicences = await findOrderLicences(tx, order.id, true);
     // A win restores the licences this dispute suspended, unless the whole
     // order was refunded in the meantime; then the refund is the last word
     // on the money. A partial refund has already revoked exactly the licences
@@ -223,7 +258,7 @@ export async function handleFlexDisputeClosed(
         } : {
           status: "revoked",
           revokedAt: now,
-          revokeReason: outcome === "won" ? "refunded_before_dispute_closed" : "dispute_lost",
+          revokeReason: "refunded_before_dispute_closed",
           previousStatus: null,
           suspendedAt: null,
           suspendedReason: null,
@@ -235,12 +270,12 @@ export async function handleFlexDisputeClosed(
           eq(teamFlexLicences.suspendedReason, "dispute_pending"),
         ));
     }
-    if (order.status !== "refunded") {
+    // An unallocated refund still waiting for a human keeps its marker; a win
+    // says nothing about where that money should be applied.
+    if (order.status !== "refunded" && order.status !== "reconciliation_needed") {
       const all = await findOrderLicences(tx, order.id);
       const remaining = all.filter(licence => licence.status !== "revoked").length;
-      const settled = outcome === "lost" || remaining === 0
-        ? "refunded"
-        : remaining < all.length ? "partially_refunded" : "paid";
+      const settled = remaining === 0 ? "refunded" : remaining < all.length ? "partially_refunded" : "paid";
       await tx.update(teamFlexOrders)
         .set({ status: settled })
         .where(eq(teamFlexOrders.id, order.id));

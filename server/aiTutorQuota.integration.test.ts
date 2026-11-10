@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 import mysql from "mysql2/promise";
 import { drizzle, type MySql2Database } from "drizzle-orm/mysql2";
-import { and, eq } from "drizzle-orm";
+import { and, eq, inArray } from "drizzle-orm";
 import { productAnalyticsEvents } from "../drizzle/schema";
 import { assertAuditIntegrationDatabaseTarget } from "./auditIntegrationGuard";
 
@@ -41,6 +41,8 @@ beforeAll(async () => {
 afterAll(async () => {
   if (!enabled) return;
   await db.delete(productAnalyticsEvents).where(eq(productAnalyticsEvents.emailHash, emailHash));
+  await db.delete(productAnalyticsEvents).where(inArray(productAnalyticsEvents.emailHash,
+    Array.from({ length: 8 }, (_, index) => hashAnalyticsEmail(`pool-${index}-${email}`))));
   await pool.end();
 });
 
@@ -72,6 +74,26 @@ databaseSuite("AI Tutor daily allowance is reserved atomically", () => {
     expect(rows.every(row => JSON.parse(row.metadata ?? "{}").reserved === true)).toBe(true);
   });
 
+  it("does not deadlock the pool when more learners arrive at once than there are connections", async () => {
+    // A two-connection pool with eight different learners. If any statement
+    // after the lock went back to the pool for a second connection, the first
+    // two requests would hold both connections while waiting for a third that
+    // can never free, and this test would time out.
+    const smallPool = mysql.createPool({ uri: rawUrl!, connectionLimit: 2 });
+    const smallDb = drizzle(smallPool) as unknown as MySql2Database;
+    mocks.getDb.mockResolvedValue(smallDb);
+    try {
+      const results = await Promise.race([
+        Promise.allSettled(Array.from({ length: 8 }, (_, index) =>
+          enforceAiTutorDailyQuota({ userId: null, email: `pool-${index}-${email}`, anonymousId: null }, { limit: 3, usage }))),
+        new Promise<never>((_, reject) => setTimeout(() => reject(new Error("pool deadlock: reservations did not complete in 15s")), 15_000)),
+      ]);
+      expect(results.every(result => result.status === "fulfilled")).toBe(true);
+    } finally {
+      mocks.getDb.mockResolvedValue(db);
+      await smallPool.end();
+    }
+  }, 20_000);
   it("finalizes a reservation after a reply and releases one after a provider failure", async () => {
     const [first, second] = await countToday();
     await recordAiTutorUsage({ eventId: first.id }, usage);

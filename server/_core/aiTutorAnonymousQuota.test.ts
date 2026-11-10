@@ -22,8 +22,10 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 const captured: { sql: string[] } = { sql: [] };
 let rowTotal = 0;
 
-vi.mock("../db", () => ({
-  getDb: async () => {
+// The reservation builds a drizzle handle on the pinned connection; route it
+// to the same fake so the count filter is still captured.
+vi.mock("drizzle-orm/mysql2", () => ({ drizzle: () => fakeDb() }));
+function fakeDb() {
     const builder = {
       from() {
         return this;
@@ -73,8 +75,8 @@ vi.mock("../db", () => ({
         }),
       },
     };
-  },
-}));
+}
+vi.mock("../db", () => ({ getDb: async () => fakeDb() }));
 
 const { enforceAiTutorDailyQuota, AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT } = await import(
   "./aiTutorPolicy"

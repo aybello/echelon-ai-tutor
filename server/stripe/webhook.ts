@@ -665,7 +665,13 @@ export function registerStripeWebhook(app: Express) {
         const pi = typeof dispute.payment_intent === "string" ? dispute.payment_intent : dispute.payment_intent?.id;
         if (pi) {
           try {
-            const flexHandled = await handleFlexDisputeCreated(pi);
+            // Delivery order is not guaranteed. Read the dispute as it stands
+            // now so a creation event that arrives after the closure applies
+            // the outcome instead of suspending licences forever.
+            const liveStatus = typeof dispute.id === "string"
+              ? await stripe.disputes.retrieve(dispute.id).then(d => d.status as string).catch(() => dispute.status as string | undefined)
+              : (dispute.status as string | undefined);
+            const flexHandled = await handleFlexDisputeCreated(pi, liveStatus ?? null);
             if (flexHandled) {
               await notifyOwner({
                 title: "⚠️ Course Pass dispute opened",
