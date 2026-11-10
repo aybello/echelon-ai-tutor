@@ -1,5 +1,5 @@
 import { TRPCError } from "@trpc/server";
-import { and, count, eq, gte, or } from "drizzle-orm";
+import { and, count, eq, gte, or, sql } from "drizzle-orm";
 import { productAnalyticsEvents } from "../../drizzle/schema";
 import { hashAnalyticsAnonymousId, hashAnalyticsEmail } from "../analytics";
 import { getDb } from "../db";
@@ -21,6 +21,46 @@ export const AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT = 3;
  * step. 4096 lets the answer finish naturally while still bounding spend.
  */
 export const AI_TUTOR_MAX_OUTPUT_TOKENS = 4096;
+/**
+ * Message length limits for the chat history the client resubmits each turn.
+ *
+ * A learner's own message is capped at 2,000 characters. An assistant reply is
+ * allowed up to 4,096 output tokens, which is roughly 16,000 characters, so a
+ * completed worked solution must be accepted back as history or the very next
+ * clarifying question fails validation before the model ever runs. The total
+ * conversation budget bounds prompt size; `boundTutorHistory` trims the oldest
+ * turns first so a long but valid conversation keeps working.
+ */
+export const AI_TUTOR_MAX_USER_MESSAGE_CHARS = 2_000;
+export const AI_TUTOR_MAX_ASSISTANT_MESSAGE_CHARS = 16_000;
+export const AI_TUTOR_MAX_HISTORY_MESSAGES = 20;
+export const AI_TUTOR_MAX_CONVERSATION_CHARS = 40_000;
+
+export type TutorHistoryMessage = { role: "user" | "assistant"; content: string };
+
+/**
+ * Keep the most recent turns that fit the message-count and character
+ * budgets. The latest message is always kept. Trimming happens from the oldest
+ * end so the model still sees the learner's current question and the most
+ * recent explanation it is being asked to clarify.
+ */
+export function boundTutorHistory(
+  messages: readonly TutorHistoryMessage[],
+  limits: { maxMessages?: number; maxChars?: number } = {},
+): TutorHistoryMessage[] {
+  const maxMessages = limits.maxMessages ?? AI_TUTOR_MAX_HISTORY_MESSAGES;
+  const maxChars = limits.maxChars ?? AI_TUTOR_MAX_CONVERSATION_CHARS;
+  const kept: TutorHistoryMessage[] = [];
+  let total = 0;
+  for (let index = messages.length - 1; index >= 0; index--) {
+    const message = messages[index];
+    const length = message.content.length;
+    if (kept.length > 0 && (kept.length >= maxMessages || total + length > maxChars)) break;
+    kept.unshift(message);
+    total += length;
+  }
+  return kept;
+}
 
 /**
  * True when the provider stopped because it ran out of output budget rather
@@ -171,11 +211,37 @@ REFERENCE DATA — VERIFIED STUDENT MEMORY:
 ${input.studentMemory?.trim() || "No verified student memory is available yet."}`;
 }
 
+/**
+ * A reserved daily-allowance slot. The reservation row is the usage record:
+ * it is inserted before the provider call so two concurrent requests cannot
+ * both pass the count check, and it is deleted again if the provider fails
+ * so a learner is never charged for an answer they did not receive.
+ */
+export type AiTutorQuotaReservation = { eventId: number };
+
+export type AiTutorUsageDetails = {
+  examType: string;
+  productKey: string | null;
+  extra?: Record<string, unknown>;
+};
+
+/**
+ * Atomically check and reserve one AI Tutor message for today.
+ *
+ * The count and the insert run in one transaction under a per-identity named
+ * lock (MySQL GET_LOCK), so a second request from the same learner waits for
+ * this reservation to commit and then sees it. A range lock on the count was
+ * tried first and deadlocks under concurrent inserts, which is why the lock is
+ * explicit. Before this change the count ran first and the usage row was
+ * written only after the provider replied, so several parallel requests could
+ * each pass the check, and a failed analytics write silently granted
+ * unlimited messages.
+ */
 export async function enforceAiTutorDailyQuota(identity: {
   userId: string | null;
   email: string | null;
   anonymousId?: string | null;
-}, options?: { limit?: number; limitMessage?: string }): Promise<void> {
+}, options?: { limit?: number; limitMessage?: string; usage?: AiTutorUsageDetails }): Promise<AiTutorQuotaReservation> {
   if (!identity.userId && !identity.email) {
     if (!identity.anonymousId) {
       throw new TRPCError({
@@ -184,7 +250,6 @@ export async function enforceAiTutorDailyQuota(identity: {
       });
     }
   }
-
   const db = await getDb();
   if (!db) {
     throw new TRPCError({
@@ -192,42 +257,118 @@ export async function enforceAiTutorDailyQuota(identity: {
       message: "AI Tutor usage verification is temporarily unavailable.",
     });
   }
-
   const since = new Date();
   since.setUTCHours(0, 0, 0, 0);
+  const emailHash = identity.email ? hashAnalyticsEmail(identity.email) : null;
+  const anonymousHash = !identity.userId && !identity.email && identity.anonymousId
+    ? hashAnalyticsAnonymousId(identity.anonymousId)
+    : null;
   const identityFilters = [];
   if (identity.userId) identityFilters.push(eq(productAnalyticsEvents.userId, identity.userId));
-  if (identity.email) {
-    identityFilters.push(
-      eq(productAnalyticsEvents.emailHash, hashAnalyticsEmail(identity.email)),
-    );
-  }
-  if (!identity.userId && !identity.email && identity.anonymousId) {
+  if (emailHash) identityFilters.push(eq(productAnalyticsEvents.emailHash, emailHash));
+  if (anonymousHash) {
     identityFilters.push(
       // Anonymous identity is persisted to anonymousHash by resolveAnalyticsHashes
       // in server/analytics.ts. Reading emailHash here never matched, so the free
       // preview limit was never enforced for a signed-out visitor.
-      eq(productAnalyticsEvents.anonymousHash, hashAnalyticsAnonymousId(identity.anonymousId)),
+      eq(productAnalyticsEvents.anonymousHash, anonymousHash),
     );
   }
-
   const identityFilter = identityFilters.length === 1
     ? identityFilters[0]
     : or(...identityFilters);
-  const [row] = await db
-    .select({ total: count() })
-    .from(productAnalyticsEvents)
-    .where(and(
-      eq(productAnalyticsEvents.eventName, "ai_tutor_message"),
-      gte(productAnalyticsEvents.occurredAt, since),
-      identityFilter,
-    ));
-
   const limit = options?.limit ?? AI_TUTOR_DAILY_MESSAGE_LIMIT;
-  if (Number(row?.total ?? 0) >= limit) {
-    throw new TRPCError({
-      code: "TOO_MANY_REQUESTS",
-      message: options?.limitMessage ?? "You have reached today's AI Tutor message limit. Please continue tomorrow or use the course explanations and study guides.",
+  const limitMessage = options?.limitMessage ?? "You have reached today's AI Tutor message limit. Please continue tomorrow or use the course explanations and study guides.";
+  // Lock names are capped at 64 characters; a 40-hex prefix of the hashed
+  // identity is far beyond collision concern for a per-learner mutex.
+  const lockName = `ai_tutor_quota:${(identity.userId ? hashAnalyticsEmail(`user:${identity.userId}`) : emailHash ?? anonymousHash ?? "none").slice(0, 40)}`;
+  let reservationError: TRPCError | null = null;
+  let eventId: number | null = null;
+  try {
+    await db.transaction(async (tx) => {
+      const [lockRows] = await tx.execute(sql`SELECT GET_LOCK(${lockName}, 5) AS acquired`);
+      const acquired = Number((lockRows as unknown as Array<{ acquired: unknown }>)[0]?.acquired ?? 0);
+      if (acquired !== 1) throw new Error("tutor quota lock unavailable");
+      try {
+        const [row] = await tx
+          .select({ total: count() })
+          .from(productAnalyticsEvents)
+          .where(and(
+            eq(productAnalyticsEvents.eventName, "ai_tutor_message"),
+            gte(productAnalyticsEvents.occurredAt, since),
+            identityFilter,
+          ));
+        if (Number(row?.total ?? 0) >= limit) {
+          reservationError = new TRPCError({ code: "TOO_MANY_REQUESTS", message: limitMessage });
+          return;
+        }
+        const [inserted] = await tx.insert(productAnalyticsEvents).values({
+          eventName: "ai_tutor_message",
+          userId: identity.userId,
+          emailHash,
+          anonymousHash,
+          examType: options?.usage?.examType ?? null,
+          productKey: options?.usage?.productKey ?? null,
+          metadata: JSON.stringify({ ...(options?.usage?.extra ?? {}), reserved: true }),
+        }).$returningId();
+        eventId = inserted?.id ?? null;
+      } finally {
+        // The lock is connection-scoped; release it on the same connection
+        // after the insert is part of the transaction that is about to commit.
+        await tx.execute(sql`SELECT RELEASE_LOCK(${lockName})`);
+      }
     });
+  } catch {
+    throw new TRPCError({
+      code: "INTERNAL_SERVER_ERROR",
+      message: "AI Tutor usage verification is temporarily unavailable.",
+    });
+  }
+  if (reservationError) throw reservationError;
+  if (eventId === null) {
+    throw new TRPCError({
+      code: "INTERNAL_SERVER_ERROR",
+      message: "AI Tutor usage verification is temporarily unavailable.",
+    });
+  }
+  return { eventId };
+}
+
+/**
+ * Mark a reservation as a completed message. Never throws: once the learner
+ * has an answer, a bookkeeping failure must not take it away. The reserved
+ * row already counts against the allowance either way.
+ */
+export async function recordAiTutorUsage(
+  reservation: AiTutorQuotaReservation | null | undefined,
+  usage: AiTutorUsageDetails,
+): Promise<void> {
+  if (!reservation) return;
+  try {
+    const db = await getDb();
+    if (!db) return;
+    await db.update(productAnalyticsEvents)
+      .set({ examType: usage.examType, productKey: usage.productKey, metadata: JSON.stringify({ ...(usage.extra ?? {}), reserved: false }) })
+      .where(eq(productAnalyticsEvents.id, reservation.eventId));
+    console.log(`[analytics] ${JSON.stringify({ event: "ai_tutor_message", ts: new Date().toISOString(), examType: usage.examType, productKey: usage.productKey, extra: usage.extra ?? null })}`);
+  } catch {
+    console.error("[AI Tutor] Could not finalize the usage record");
+  }
+}
+
+/**
+ * Give the slot back after a provider failure. Best effort: if the delete
+ * fails the learner loses one message for the day, which is the safe side.
+ */
+export async function releaseAiTutorReservation(
+  reservation: AiTutorQuotaReservation | null | undefined,
+): Promise<void> {
+  if (!reservation) return;
+  try {
+    const db = await getDb();
+    if (!db) return;
+    await db.delete(productAnalyticsEvents).where(eq(productAnalyticsEvents.id, reservation.eventId));
+  } catch {
+    console.error("[AI Tutor] Could not release an unused usage reservation");
   }
 }

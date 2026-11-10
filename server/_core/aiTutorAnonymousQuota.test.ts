@@ -59,7 +59,15 @@ vi.mock("../db", () => ({
         return Promise.resolve([{ total: rowTotal }]).then(resolve);
       },
     };
-    return { select: () => builder };
+    // The reservation now runs inside a transaction that takes a per-identity
+    // named lock, counts, and inserts the usage row. The fake mirrors that
+    // surface while still capturing the count filter's columns.
+    const tx = {
+      select: () => builder,
+      execute: async () => [[{ acquired: 1 }]],
+      insert: () => ({ values: () => ({ $returningId: async () => [{ id: 1 }] }) }),
+    };
+    return { select: () => builder, transaction: async (work: (t: typeof tx) => Promise<void>) => work(tx) };
   },
 }));
 
@@ -119,7 +127,7 @@ describe("anonymous free preview quota", () => {
         { userId: null, email: null, anonymousId: "visitor-fixture" },
         { limit: AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT },
       ),
-    ).resolves.toBeUndefined();
+    ).resolves.toEqual({ eventId: 1 });
   });
 
   it("keeps counting a known email on the email column", async () => {

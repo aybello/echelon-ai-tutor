@@ -3,7 +3,7 @@ import { SignJWT, jwtVerify } from "jose";
 import type { Request, Response } from "express";
 
 const mocks = vi.hoisted(() => ({
-  invokeLLM: vi.fn(), getDb: vi.fn(), quota: vi.fn(), trackEvent: vi.fn(), access: vi.fn(),
+  invokeLLM: vi.fn(), getDb: vi.fn(), quota: vi.fn(), record: vi.fn(), trackEvent: vi.fn(), access: vi.fn(),
 }));
 vi.mock("./env", () => ({ ENV: {
   cookieSecret: "isolated-unit-test-secret-32-characters-minimum", isProduction: false,
@@ -23,6 +23,8 @@ vi.mock("./accessService", async () => ({
 vi.mock("./aiTutorPolicy", async () => ({
   ...await vi.importActual<typeof import("./aiTutorPolicy")>("./aiTutorPolicy"),
   enforceAiTutorDailyQuota: mocks.quota,
+  recordAiTutorUsage: mocks.record,
+  releaseAiTutorReservation: vi.fn(),
 }));
 import { ENV } from "./env";
 import { ANONYMOUS_TUTOR_COOKIE as COOKIE, ANONYMOUS_TUTOR_TTL_SECONDS as TTL, resolveAnonymousTutorIdentity as resolve } from "./anonymousTutorIdentity";
@@ -45,7 +47,7 @@ async function signed(sub: string, iat: number, exp: number, signer = key) {
 
 beforeEach(() => {
   vi.clearAllMocks(); ENV.cookieSecret = secret;
-  mocks.access.mockResolvedValue(false); mocks.quota.mockResolvedValue(undefined);
+  mocks.access.mockResolvedValue(false); mocks.quota.mockResolvedValue({ eventId: 1 }); mocks.record.mockResolvedValue(undefined);
   mocks.getDb.mockResolvedValue({});
   mocks.invokeLLM.mockResolvedValue({ choices: [{ message: { content: "Mock tutor answer" } }] });
 });
@@ -67,24 +69,25 @@ describe("server-issued anonymous tutor identity", () => {
     expect(JSON.stringify(payload)).not.toContain("test-agent");
     expect(mocks.quota.mock.calls[0][0]).toEqual({ userId: null, email: null, anonymousId: payload.sub });
     expect(mocks.quota.mock.calls[0][1]).toMatchObject({ limit: 3 });
-    expect(mocks.trackEvent).toHaveBeenCalledWith("ai_tutor_message", expect.objectContaining({ anonymousId: payload.sub }));
+    // The reservation is the persisted usage record, keyed by the same server-issued identity.
+    expect(mocks.record).toHaveBeenCalledWith({ eventId: 1 }, expect.objectContaining({ examType: "oit" }));
     const res2 = response();
     const nextRequest = request("198.51.100.50", "changed-UA");
     nextRequest.headers.cookie = `${COOKIE}=${token}`;
     await appRouter.createCaller({ ...ctx, req: nextRequest, res: res2 }).tutor.chat(input);
     expect(mocks.quota.mock.calls[1][0].anonymousId).toBe(payload.sub);
-    expect(mocks.trackEvent.mock.calls[1][1].anonymousId).toBe(payload.sub);
+    expect(mocks.record).toHaveBeenCalledTimes(2);
     expect(res2.cookie).not.toHaveBeenCalled();
   });
 
   it("counts the initial message and blocks the fourth rotated request with the existing limit", async () => {
     const { TRPCError } = await import("@trpc/server");
     const counts = new Map<string, number>();
+    // The quota call now reserves the slot itself, so counting happens there.
     mocks.quota.mockImplementation(async ({ anonymousId }, options) => {
       if ((counts.get(anonymousId) ?? 0) >= options.limit) throw new TRPCError({ code: "TOO_MANY_REQUESTS" });
-    });
-    mocks.trackEvent.mockImplementation(async (_event, { anonymousId }) => {
       counts.set(anonymousId, (counts.get(anonymousId) ?? 0) + 1);
+      return { eventId: counts.get(anonymousId)! };
     });
     const res = response();
     const input = { examType: "oit", messages: [{ role: "user" as const, content: "Explain dosage" }] };
