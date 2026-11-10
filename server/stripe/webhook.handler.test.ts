@@ -72,6 +72,8 @@ vi.mock("./provisionOrg", () => ({
 }));
 
 vi.mock("../teams/flexRefundDisputeHandlers", () => ({
+  flexDisputeOutcome: (status: string | null | undefined) =>
+    status === "won" || status === "warning_closed" ? "won" : status === "lost" ? "lost" : null,
   handleFlexFullRefund: mockFlexFullRefund,
   handleFlexPartialRefund: mockFlexPartialRefund,
   handleFlexUnallocatedRefund: mockFlexUnallocatedRefund,
@@ -202,7 +204,7 @@ beforeEach(() => {
   mockFlexFullRefund.mockResolvedValue(false);
   mockFlexPartialRefund.mockResolvedValue(false);
   mockFlexUnallocatedRefund.mockResolvedValue(false);
-  mockFlexDisputeCreated.mockResolvedValue(false);
+  mockFlexDisputeCreated.mockResolvedValue({ handled: false });
   mockFlexDisputeClosed.mockResolvedValue(false);
   mockRetrievePaymentIntent.mockResolvedValue({
     status: "succeeded",
@@ -283,9 +285,10 @@ describe("Stripe webhook handler — Course Pass refunds and disputes", () => {
       type: "charge.dispute.created",
       data: { object: { id: "dp_flex", payment_intent: "pi_flex", status: "needs_response" } },
     });
-    mockFlexDisputeCreated.mockResolvedValue(true);
+    mockFlexDisputeCreated.mockResolvedValue({ handled: true, action: "suspended" });
     await handler(makeRequest(), openedResponse);
-    expect(mockFlexDisputeCreated).toHaveBeenCalledWith("pi_flex", "needs_response");
+    expect(mockFlexDisputeCreated).toHaveBeenCalledWith("pi_flex", expect.any(Function));
+    await expect(mockFlexDisputeCreated.mock.calls[0][1]()).resolves.toBe("needs_response");
 
     const closedResponse = makeResponse();
     mockConstructEvent.mockReturnValue({

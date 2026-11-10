@@ -106,9 +106,11 @@ afterAll(async () => {
 });
 
 databaseSuite("Course Pass refund and dispute handlers hold the order lock", () => {
+  const open = async () => "needs_response";
+
   it("keeps licences revoked when a dispute is won after a full refund already landed", async () => {
     const order = await createOrder("refund_then_won", 2);
-    expect(await handleFlexDisputeCreated(order.paymentIntentId)).toBe(true);
+    expect(await handleFlexDisputeCreated(order.paymentIntentId, open)).toEqual({ handled: true, action: "suspended" });
     expect((await licenceStates(order.licenceIds)).map(row => row.status)).toEqual(["suspended", "suspended"]);
     expect(await handleFlexFullRefund(order.paymentIntentId)).toBe(true);
     expect(await handleFlexDisputeClosed(order.paymentIntentId, "won")).toBe(true);
@@ -120,7 +122,7 @@ databaseSuite("Course Pass refund and dispute handlers hold the order lock", () 
 
   it("restores the unrefunded licences when a dispute is won after a partial refund", async () => {
     const order = await createOrder("partial_then_won", 3);
-    await handleFlexDisputeCreated(order.paymentIntentId);
+    await handleFlexDisputeCreated(order.paymentIntentId, open);
     expect(await handleFlexPartialRefund(order.paymentIntentId, [order.licenceIds[0]])).toBe(true);
     await handleFlexDisputeClosed(order.paymentIntentId, "won");
     const after = await licenceStates(order.licenceIds);
@@ -134,12 +136,12 @@ databaseSuite("Course Pass refund and dispute handlers hold the order lock", () 
 
   it("restores access on a clean dispute win and revokes on a loss", async () => {
     const won = await createOrder("clean_won", 2);
-    await handleFlexDisputeCreated(won.paymentIntentId);
+    await handleFlexDisputeCreated(won.paymentIntentId, open);
     await handleFlexDisputeClosed(won.paymentIntentId, "won");
     expect((await licenceStates(won.licenceIds)).map(row => row.status)).toEqual(["active", "active"]);
     expect(await orderStatus(won.orderId)).toBe("paid");
     const lost = await createOrder("clean_lost", 1);
-    await handleFlexDisputeCreated(lost.paymentIntentId);
+    await handleFlexDisputeCreated(lost.paymentIntentId, open);
     await handleFlexDisputeClosed(lost.paymentIntentId, "lost");
     expect((await licenceStates(lost.licenceIds))[0]).toMatchObject({ status: "revoked", revokeReason: "dispute_lost" });
     expect(await orderStatus(lost.orderId)).toBe("refunded");
@@ -148,23 +150,66 @@ databaseSuite("Course Pass refund and dispute handlers hold the order lock", () 
   it("never suspends or resurrects a cancelled licence through a dispute", async () => {
     const order = await createOrder("cancelled_licence", 2);
     await db.update(teamFlexLicences).set({ status: "cancelled" }).where(eq(teamFlexLicences.id, order.licenceIds[1]));
-    await handleFlexDisputeCreated(order.paymentIntentId);
+    await handleFlexDisputeCreated(order.paymentIntentId, open);
     expect((await licenceStates(order.licenceIds)).map(row => row.status)).toEqual(["suspended", "cancelled"]);
     await handleFlexDisputeClosed(order.paymentIntentId, "won");
     expect((await licenceStates(order.licenceIds)).map(row => row.status)).toEqual(["active", "cancelled"]);
+  });
+
+  it("re-reads the dispute after taking the order lock so a closure that lands first wins", async () => {
+    // Sol's sequence: the creation handler has read "needs_response", then the
+    // closure commits, then the creation handler proceeds. Because the read
+    // happens under the lock, the fetcher below observes the closure instead.
+    const order = await createOrder("stale_read", 2);
+    let reads = 0;
+    const fetcher = async () => {
+      reads += 1;
+      // The closure is applied while the creation handler holds the lock and
+      // asks Stripe: by then Stripe reports the dispute as won.
+      return "won";
+    };
+    const result = await handleFlexDisputeCreated(order.paymentIntentId, fetcher);
+    expect(result).toEqual({ handled: true, action: "already_closed" });
+    expect(reads).toBe(1);
+    expect((await licenceStates(order.licenceIds)).map(row => row.status)).toEqual(["active", "active"]);
+    expect(await orderStatus(order.orderId)).toBe("paid");
+    // Stripe unreachable: the handler must throw so the webhook returns 503,
+    // and must not have suspended anything.
+    await expect(handleFlexDisputeCreated(order.paymentIntentId, async () => { throw new Error("stripe down"); })).rejects.toThrow("stripe down");
+    expect((await licenceStates(order.licenceIds)).map(row => row.status)).toEqual(["active", "active"]);
+  });
+
+  it("treats a closed inquiry as a win and never rewrites a cancelled licence", async () => {
+    const order = await createOrder("inquiry", 3);
+    await db.update(teamFlexLicences).set({ status: "cancelled" }).where(eq(teamFlexLicences.id, order.licenceIds[2]));
+    await handleFlexDisputeCreated(order.paymentIntentId, open);
+    expect((await licenceStates(order.licenceIds)).map(row => row.status)).toEqual(["suspended", "suspended", "cancelled"]);
+    // Late creation for an inquiry that closed in our favour.
+    await handleFlexDisputeCreated(order.paymentIntentId, async () => "warning_closed");
+    expect((await licenceStates(order.licenceIds)).map(row => row.status)).toEqual(["active", "active", "cancelled"]);
+    expect(await orderStatus(order.orderId)).toBe("paid");
+    // Refunding the two live licences is a full refund; the cancelled one is not "live".
+    await handleFlexPartialRefund(order.paymentIntentId, [order.licenceIds[0], order.licenceIds[1]]);
+    expect(await orderStatus(order.orderId)).toBe("refunded");
+    expect((await licenceStates(order.licenceIds)).map(row => row.status)).toEqual(["revoked", "revoked", "cancelled"]);
+    // A loss on another order with a cancelled licence leaves that licence's history alone.
+    const lost = await createOrder("lost_with_cancelled", 2);
+    await db.update(teamFlexLicences).set({ status: "cancelled" }).where(eq(teamFlexLicences.id, lost.licenceIds[1]));
+    await handleFlexDisputeClosed(lost.paymentIntentId, "lost");
+    expect((await licenceStates(lost.licenceIds)).map(row => row.status)).toEqual(["revoked", "cancelled"]);
   });
 
   it("applies the outcome when the creation event arrives after the dispute already closed", async () => {
     const won = await createOrder("reversed_won", 2);
     await handleFlexDisputeClosed(won.paymentIntentId, "won");
     // Late creation event; Stripe now reports the dispute as won.
-    await handleFlexDisputeCreated(won.paymentIntentId, "won");
+    await handleFlexDisputeCreated(won.paymentIntentId, async () => "won");
     expect((await licenceStates(won.licenceIds)).map(row => row.status)).toEqual(["active", "active"]);
     expect(await orderStatus(won.orderId)).toBe("paid");
     const lost = await createOrder("reversed_lost", 2);
     await handleFlexDisputeClosed(lost.paymentIntentId, "lost");
     expect((await licenceStates(lost.licenceIds)).map(row => row.status)).toEqual(["revoked", "revoked"]);
-    await handleFlexDisputeCreated(lost.paymentIntentId, "lost");
+    await handleFlexDisputeCreated(lost.paymentIntentId, async () => "lost");
     expect((await licenceStates(lost.licenceIds)).map(row => row.status)).toEqual(["revoked", "revoked"]);
     expect(await orderStatus(lost.orderId)).toBe("refunded");
   });
@@ -173,7 +218,7 @@ databaseSuite("Course Pass refund and dispute handlers hold the order lock", () 
     const order = await createOrder("reconciliation_hold", 2);
     expect(await handleFlexUnallocatedRefund(order.paymentIntentId)).toBe(true);
     expect(await orderStatus(order.orderId)).toBe("reconciliation_needed");
-    await handleFlexDisputeCreated(order.paymentIntentId, "needs_response");
+    await handleFlexDisputeCreated(order.paymentIntentId, async () => "needs_response");
     expect(await orderStatus(order.orderId)).toBe("reconciliation_needed");
     expect((await licenceStates(order.licenceIds)).map(row => row.status)).toEqual(["suspended", "suspended"]);
     await handleFlexDisputeClosed(order.paymentIntentId, "won");
@@ -198,7 +243,7 @@ databaseSuite("Course Pass refund and dispute handlers hold the order lock", () 
   it("serializes a concurrent refund and dispute win so no licence ends up active", async () => {
     for (let round = 0; round < 4; round++) {
       const order = await createOrder(`race_${round}`, 3);
-      await handleFlexDisputeCreated(order.paymentIntentId);
+      await handleFlexDisputeCreated(order.paymentIntentId, open);
       await Promise.all([
         handleFlexFullRefund(order.paymentIntentId),
         handleFlexDisputeClosed(order.paymentIntentId, "won"),
