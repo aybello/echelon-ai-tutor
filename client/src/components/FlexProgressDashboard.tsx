@@ -73,8 +73,12 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
         <CardTitle className="flex items-center gap-2">
           <TrendingUp className="h-5 w-5 text-teal-600" />
           <span>Course Pass Progress</span>
-          <Badge variant="outline" className="text-xs ml-2">
-            {activatedLicences} activated / {purchasedLicences ?? data.length} licences
+          <Badge
+            variant="outline"
+            className="text-xs ml-2"
+            title={licencesQuery.isError ? "Licence count could not be loaded. It will retry within a minute." : undefined}
+          >
+            {activatedLicences} activated / {purchasedLicences ?? (licencesQuery.isError ? "?" : "…")} licences
           </Badge>
         </CardTitle>
       </CardHeader>

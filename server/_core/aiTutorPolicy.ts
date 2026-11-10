@@ -218,6 +218,12 @@ ${input.studentMemory?.trim() || "No verified student memory is available yet."}
  * so a learner is never charged for an answer they did not receive.
  */
 export type AiTutorQuotaReservation = { eventId: number };
+/** The subset of a mysql2 pool connection the quota mutex needs. */
+type PinnedConnection = {
+  query: (sql: string, values?: unknown[]) => Promise<[unknown, unknown]>;
+  release: () => void;
+  destroy: () => void;
+};
 
 export type AiTutorUsageDetails = {
   examType: string;
@@ -228,14 +234,16 @@ export type AiTutorUsageDetails = {
 /**
  * Atomically check and reserve one AI Tutor message for today.
  *
- * The count and the insert run in one transaction under a per-identity named
- * lock (MySQL GET_LOCK), so a second request from the same learner waits for
- * this reservation to commit and then sees it. A range lock on the count was
- * tried first and deadlocks under concurrent inserts, which is why the lock is
- * explicit. Before this change the count ran first and the usage row was
- * written only after the provider replied, so several parallel requests could
- * each pass the check, and a failed analytics write silently granted
- * unlimited messages.
+ * The per-identity named lock (MySQL GET_LOCK) is taken on a connection
+ * pinned from the pool and held until after the usage row has committed.
+ * The count and the insert run as autocommit statements, so the insert is
+ * durable the moment it returns and the next waiter, which starts a fresh
+ * statement after the lock is handed over, sees it. An earlier version
+ * released the lock inside a transaction callback, which runs before COMMIT,
+ * leaving a window in which a waiter could count before the row was visible;
+ * both independent reviewers flagged it. A range lock on the count was also
+ * tried and deadlocks under concurrent inserts, which is why the lock is an
+ * explicit mutex rather than row locking.
  */
 export async function enforceAiTutorDailyQuota(identity: {
   userId: string | null;
@@ -251,7 +259,8 @@ export async function enforceAiTutorDailyQuota(identity: {
     }
   }
   const db = await getDb();
-  if (!db) {
+  const pool = (db as unknown as { $client?: { getConnection?: () => Promise<PinnedConnection> } } | null)?.$client;
+  if (!db || typeof pool?.getConnection !== "function") {
     throw new TRPCError({
       code: "INTERNAL_SERVER_ERROR",
       message: "AI Tutor usage verification is temporarily unavailable.",
@@ -280,49 +289,61 @@ export async function enforceAiTutorDailyQuota(identity: {
   const limit = options?.limit ?? AI_TUTOR_DAILY_MESSAGE_LIMIT;
   const limitMessage = options?.limitMessage ?? "You have reached today's AI Tutor message limit. Please continue tomorrow or use the course explanations and study guides.";
   // Lock names are capped at 64 characters; a 40-hex prefix of the hashed
-  // identity is far beyond collision concern for a per-learner mutex.
+  // identity is far beyond collision concern for a per-learner mutex. A
+  // signed-in learner always locks on the user ID; the count still matches
+  // rows written under either the user ID or the email hash.
   const lockName = `ai_tutor_quota:${(identity.userId ? hashAnalyticsEmail(`user:${identity.userId}`) : emailHash ?? anonymousHash ?? "none").slice(0, 40)}`;
   let reservationError: TRPCError | null = null;
   let eventId: number | null = null;
+  let connection: PinnedConnection | null = null;
+  let locked = false;
   try {
-    await db.transaction(async (tx) => {
-      const [lockRows] = await tx.execute(sql`SELECT GET_LOCK(${lockName}, 5) AS acquired`);
-      const acquired = Number((lockRows as unknown as Array<{ acquired: unknown }>)[0]?.acquired ?? 0);
-      if (acquired !== 1) throw new Error("tutor quota lock unavailable");
-      try {
-        const [row] = await tx
-          .select({ total: count() })
-          .from(productAnalyticsEvents)
-          .where(and(
-            eq(productAnalyticsEvents.eventName, "ai_tutor_message"),
-            gte(productAnalyticsEvents.occurredAt, since),
-            identityFilter,
-          ));
-        if (Number(row?.total ?? 0) >= limit) {
-          reservationError = new TRPCError({ code: "TOO_MANY_REQUESTS", message: limitMessage });
-          return;
-        }
-        const [inserted] = await tx.insert(productAnalyticsEvents).values({
-          eventName: "ai_tutor_message",
-          userId: identity.userId,
-          emailHash,
-          anonymousHash,
-          examType: options?.usage?.examType ?? null,
-          productKey: options?.usage?.productKey ?? null,
-          metadata: JSON.stringify({ ...(options?.usage?.extra ?? {}), reserved: true }),
-        }).$returningId();
-        eventId = inserted?.id ?? null;
-      } finally {
-        // The lock is connection-scoped; release it on the same connection
-        // after the insert is part of the transaction that is about to commit.
-        await tx.execute(sql`SELECT RELEASE_LOCK(${lockName})`);
-      }
-    });
+    connection = await pool.getConnection();
+    const [lockRows] = await connection.query("SELECT GET_LOCK(?, 5) AS acquired", [lockName]);
+    const acquired = Number((lockRows as Array<{ acquired: unknown }>)[0]?.acquired ?? 0);
+    if (acquired !== 1) throw new Error("tutor quota lock unavailable");
+    locked = true;
+    const [row] = await db
+      .select({ total: count() })
+      .from(productAnalyticsEvents)
+      .where(and(
+        eq(productAnalyticsEvents.eventName, "ai_tutor_message"),
+        gte(productAnalyticsEvents.occurredAt, since),
+        identityFilter,
+      ));
+    if (Number(row?.total ?? 0) >= limit) {
+      reservationError = new TRPCError({ code: "TOO_MANY_REQUESTS", message: limitMessage });
+    } else {
+      // Autocommit: this row is committed and visible when the await returns,
+      // which is before the lock below is released to the next waiter.
+      const [inserted] = await db.insert(productAnalyticsEvents).values({
+        eventName: "ai_tutor_message",
+        userId: identity.userId,
+        emailHash,
+        anonymousHash,
+        examType: options?.usage?.examType ?? null,
+        productKey: options?.usage?.productKey ?? null,
+        metadata: JSON.stringify({ ...(options?.usage?.extra ?? {}), reserved: true }),
+      }).$returningId();
+      eventId = inserted?.id ?? null;
+    }
   } catch {
     throw new TRPCError({
       code: "INTERNAL_SERVER_ERROR",
       message: "AI Tutor usage verification is temporarily unavailable.",
     });
+  } finally {
+    if (connection) {
+      // The lock is connection-scoped. Release it explicitly, then return the
+      // connection. If release fails the pool connection is destroyed below so
+      // the lock cannot outlive this request.
+      let released = !locked;
+      if (locked) {
+        try { await connection.query("SELECT RELEASE_LOCK(?)", [lockName]); released = true; } catch { released = false; }
+      }
+      if (released) connection.release();
+      else connection.destroy();
+    }
   }
   if (reservationError) throw reservationError;
   if (eventId === null) {

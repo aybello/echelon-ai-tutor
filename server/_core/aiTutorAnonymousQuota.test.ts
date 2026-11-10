@@ -59,15 +59,20 @@ vi.mock("../db", () => ({
         return Promise.resolve([{ total: rowTotal }]).then(resolve);
       },
     };
-    // The reservation now runs inside a transaction that takes a per-identity
-    // named lock, counts, and inserts the usage row. The fake mirrors that
-    // surface while still capturing the count filter's columns.
-    const tx = {
+    // The reservation pins a pool connection for the per-identity named lock,
+    // then counts and inserts the usage row through the pool. The fake mirrors
+    // that surface while still capturing the count filter's columns.
+    return {
       select: () => builder,
-      execute: async () => [[{ acquired: 1 }]],
       insert: () => ({ values: () => ({ $returningId: async () => [{ id: 1 }] }) }),
+      $client: {
+        getConnection: async () => ({
+          query: async () => [[{ acquired: 1 }], undefined],
+          release: () => {},
+          destroy: () => {},
+        }),
+      },
     };
-    return { select: () => builder, transaction: async (work: (t: typeof tx) => Promise<void>) => work(tx) };
   },
 }));
 

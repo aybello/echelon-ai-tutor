@@ -117,17 +117,17 @@ databaseSuite("Course Pass refund and dispute handlers hold the order lock", () 
     expect(await orderStatus(order.orderId)).toBe("refunded");
   });
 
-  it("does not let a dispute win restore licences from a partially refunded order", async () => {
+  it("restores the unrefunded licences when a dispute is won after a partial refund", async () => {
     const order = await createOrder("partial_then_won", 3);
     await handleFlexDisputeCreated(order.paymentIntentId);
     expect(await handleFlexPartialRefund(order.paymentIntentId, [order.licenceIds[0]])).toBe(true);
     await handleFlexDisputeClosed(order.paymentIntentId, "won");
     const after = await licenceStates(order.licenceIds);
     expect(after[0]).toMatchObject({ status: "revoked", revokeReason: "partial_refund" });
-    // The two unrefunded licences were suspended by the dispute; money for them was
-    // partially returned on this order, so they are revoked rather than restored.
-    expect(after[1]).toMatchObject({ status: "revoked", revokeReason: "refunded_before_dispute_closed" });
-    expect(after[2]).toMatchObject({ status: "revoked", revokeReason: "refunded_before_dispute_closed" });
+    // Only the refunded licence stays revoked. The other two were paid for and
+    // the dispute was won, so access comes back.
+    expect(after[1]).toMatchObject({ status: "active", previousStatus: null });
+    expect(after[2]).toMatchObject({ status: "active", previousStatus: null });
     expect(await orderStatus(order.orderId)).toBe("partially_refunded");
   });
 
@@ -142,6 +142,15 @@ databaseSuite("Course Pass refund and dispute handlers hold the order lock", () 
     await handleFlexDisputeClosed(lost.paymentIntentId, "lost");
     expect((await licenceStates(lost.licenceIds))[0]).toMatchObject({ status: "revoked", revokeReason: "dispute_lost" });
     expect(await orderStatus(lost.orderId)).toBe("refunded");
+  });
+
+  it("never suspends or resurrects a cancelled licence through a dispute", async () => {
+    const order = await createOrder("cancelled_licence", 2);
+    await db.update(teamFlexLicences).set({ status: "cancelled" }).where(eq(teamFlexLicences.id, order.licenceIds[1]));
+    await handleFlexDisputeCreated(order.paymentIntentId);
+    expect((await licenceStates(order.licenceIds)).map(row => row.status)).toEqual(["suspended", "cancelled"]);
+    await handleFlexDisputeClosed(order.paymentIntentId, "won");
+    expect((await licenceStates(order.licenceIds)).map(row => row.status)).toEqual(["active", "cancelled"]);
   });
 
   it("serializes a concurrent refund and dispute win so no licence ends up active", async () => {

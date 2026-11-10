@@ -983,17 +983,6 @@ export const appRouter = router({
           productKey: course.productKey,
           extra: { questionNum: input.questionNum ?? null, patternMode: input.patternMode },
         };
-        // Reserves today's slot atomically before the provider is called.
-        const quotaReservation = await enforceAiTutorDailyQuota(
-          { userId: resolvedUserId, email: resolvedEmail, anonymousId: anonymousTutorId },
-          isFreeOitPreview
-            ? {
-                limit: AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT,
-                limitMessage: "You have used your 3 free AI Tutor messages. Unlock the OIT Exam Pass to keep asking questions.",
-                usage: tutorUsage,
-              }
-            : { usage: tutorUsage },
-        );
 
         const db = await getDb();
         if (!db) {
@@ -1163,7 +1152,20 @@ export const appRouter = router({
           recentPerformance: input.recentPerformance,
           studentMemory,
         });
-
+        // Reserve today's slot as the last step before the provider call, so
+        // nothing that can throw sits between the reservation and the release
+        // in the catch below. Reviewers flagged that a database failure while
+        // building context used to burn a message the learner never received.
+        const quotaReservation = await enforceAiTutorDailyQuota(
+          { userId: resolvedUserId, email: resolvedEmail, anonymousId: anonymousTutorId },
+          isFreeOitPreview
+            ? {
+                limit: AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT,
+                limitMessage: "You have used your 3 free AI Tutor messages. Unlock the OIT Exam Pass to keep asking questions.",
+                usage: tutorUsage,
+              }
+            : { usage: tutorUsage },
+        );
         try {
           // A worked calculation that stops mid-step teaches an incomplete
           // method, so a length-capped answer is never returned as if it were
