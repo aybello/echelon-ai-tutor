@@ -95,11 +95,45 @@ export function enqueuePracticeSave(storage: StorageLike, item: PendingPracticeS
   }
 }
 
+/** How long an acknowledgement must outlive its record before it may be pruned. */
+export const PRACTICE_SAVE_ACK_RETENTION_MS = 7 * 24 * 60 * 60 * 1000;
+/**
+ * Drop acknowledgement markers that no longer guard anything. A marker is kept
+ * while any record with its ID still exists (legacy array or independent key),
+ * and for a retention window afterwards so a slow tab cannot resurrect the
+ * operation. Markers written before timestamps were recorded carry "1"; once
+ * their record is gone they are pruned too, since the legacy array is never
+ * rewritten by current code. Returns the number of markers removed.
+ */
+export function prunePracticeSaveAcknowledgements(storage: StorageLike, now = Date.now()): number {
+  if (typeof storage.removeItem !== "function" || typeof storage.key !== "function") return 0;
+  const live = new Set<string>();
+  try {
+    const legacy: unknown = JSON.parse(storage.getItem(PRACTICE_SAVE_OUTBOX_KEY) ?? "[]");
+    if (Array.isArray(legacy)) for (const item of legacy.filter(isPendingPracticeSave)) live.add(item.operationId);
+  } catch { /* A corrupt legacy array guards nothing. */ }
+  const markers: string[] = [];
+  for (let i = 0; i < storage.length; i++) {
+    const key = storage.key(i);
+    if (!key) continue;
+    if (key.startsWith(operationPrefix)) live.add(decodeURIComponent(key.slice(operationPrefix.length)));
+    else if (key.startsWith(removedPrefix)) markers.push(key);
+  }
+  let pruned = 0;
+  for (const key of markers) {
+    const id = decodeURIComponent(key.slice(removedPrefix.length));
+    if (live.has(id)) continue;
+    const stamp = Number(storage.getItem(key));
+    if (Number.isFinite(stamp) && stamp > 1 && now - stamp < PRACTICE_SAVE_ACK_RETENTION_MS) continue;
+    try { storage.removeItem(key); pruned++; } catch { /* Try again on a later visit. */ }
+  }
+  return pruned;
+}
 export function removePendingPracticeSave(storage: StorageLike, operationId: string): boolean {
   try {
     // Keep a durable per-ID acknowledgement, including for untouched v1 arrays.
     // Re-enumeration and old-tab writes can never resurrect this operation.
-    storage.setItem(removedKey(operationId), "1");
+    storage.setItem(removedKey(operationId), String(Date.now()));
     try { storage.removeItem?.(operationKey(operationId)); } catch { /* The acknowledgement already prevents replay. */ }
     return true;
   } catch {

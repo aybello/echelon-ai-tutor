@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { trpc } from "@/lib/trpc";
-import { listPendingPracticeSaves, practiceSaveRetryProblem, removePendingPracticeSave, retryPendingPracticeSave, type PendingPracticeSave, type PracticeSaveScope } from "@/lib/practiceSaveOutbox";
+import { listPendingPracticeSaves, practiceSaveRetryProblem, prunePracticeSaveAcknowledgements, removePendingPracticeSave, retryPendingPracticeSave, type PendingPracticeSave, type PracticeSaveScope } from "@/lib/practiceSaveOutbox";
 import { resolveCourseKey } from "@shared/courseRegistry";
 
 const listeners = new Set<() => void>();
@@ -37,6 +37,8 @@ export default function PracticeSaveStatus({ courseKey }: { courseKey?: string }
   const mutation = trpc.quiz.logAttempt.useMutation({ retry: false });
   useEffect(() => {
     mounted.current = true;
+    // Acknowledgement markers otherwise accumulate for the life of the browser profile.
+    try { prunePracticeSaveAcknowledgements(window.localStorage); } catch { /* Pruning is housekeeping only. */ }
     const changed = () => render(value => value + 1);
     listeners.add(changed);
     window.addEventListener("storage", changed);
