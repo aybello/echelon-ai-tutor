@@ -182,7 +182,7 @@ export default function Teams() {
                 <span className="teams-plan-title">Teams Annual</span>
                 <span className="teams-plan-description">Year-round access for a named operator across one stream or all streams. Best for workforce training programs.</span>
                 <span className="teams-plan-price">From CA$449 per operator / year · 5-seat minimum</span>
-                <span className="teams-plan-action" aria-hidden="true">Explore annual <ArrowRight /></span>
+                <span className="teams-plan-action">Explore annual <ArrowRight aria-hidden="true" /></span>
               </span>
             </button>
             <button type="button" aria-pressed={planType === "flex"} onClick={() => setPlanType("flex")} className={`teams-plan-card ${planType === "flex" ? "teams-plan-card--active" : ""} text-left transition`}>
@@ -191,7 +191,7 @@ export default function Teams() {
                 <span className="teams-plan-title">Teams Flex</span>
                 <span className="teams-plan-description">Course-specific licences for named operators. Combine 3- and 6-month licences in one order.</span>
                 <span className="teams-plan-price">From CA$39 per operator · one-time payment</span>
-                <span className="teams-plan-action" aria-hidden="true">Explore Flex <ArrowRight /></span>
+                <span className="teams-plan-action">Explore Flex <ArrowRight aria-hidden="true" /></span>
               </span>
             </button>
           </div>

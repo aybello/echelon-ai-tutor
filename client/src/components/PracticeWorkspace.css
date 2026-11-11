@@ -50,8 +50,7 @@
   font-size: 15px !important;
   line-height: 1.5 !important;
 }
-.practice-screen.learning-redesign .qs-question-card button[aria-pressed] { color: #101820 !important; }
-.practice-screen.learning-redesign .qs-question-card button[aria-pressed]:not(:disabled):hover {
+.practice-screen.learning-redesign .qs-question-card button[aria-pressed="false"]:not(:disabled):hover {
   border-color: #1757b8 !important;
   background: #f0f6ff !important;
 }
@@ -79,7 +78,7 @@
   padding: 26px 28px !important;
   box-shadow: 0 8px 28px rgba(21, 50, 86, .05) !important;
 }
-.practice-screen .practice-result-label { color: #174b8f !important; font-size: 12px !important; margin-bottom: 12px !important; }
+.practice-screen .practice-result-label { font-size: 12px !important; margin-bottom: 12px !important; }
 .practice-screen.learning-redesign .practice-explanation-content { color: #101820 !important; font-size: 16px !important; line-height: 1.7 !important; overflow-wrap: anywhere; }
 .practice-screen .practice-solution {
   margin-top: 20px;
