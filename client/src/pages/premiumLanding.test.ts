@@ -11,8 +11,10 @@ describe("premium homepage contracts", () => {
   it("positions the platform for skilled trades without overstating course coverage", () => {
     const hero = read("client/src/components/CoursePathHero.tsx");
     const nav = read("client/src/components/SiteNav.tsx");
-    expect(hero).toContain("AI-powered exam prep for skilled trades");
-    expect(nav).toContain("AI-powered exam prep for skilled trades");
+    expect(hero).toContain("Exam prep for skilled trades");
+    expect(nav).toContain("Exam prep for skilled trades");
+    expect(hero).not.toContain("AI-powered exam prep for skilled trades");
+    expect(nav).not.toContain("AI-powered exam prep for skilled trades");
     expect(hero).toContain("water and wastewater certification across Canada and the United States");
     expect(nav).not.toContain('"Operator certification prep"');
   });
