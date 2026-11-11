@@ -36,6 +36,7 @@ import StudyNotesTopics from "@/components/StudyNotesTopics";
 import PreviewStudyPlanPrompt from "@/components/PreviewStudyPlanPrompt";
 import { resolveStudyNotesTopics } from "@/lib/studyNotesTopics";
 import "./StudyWorkspace.css";
+import "./PracticeWorkspace.css";
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 
@@ -945,7 +946,7 @@ export default function QuizShell({
           {/* Action buttons */}
           <div className="qs-action-row practice-primary-actions" style={{ marginTop: 10, display: "flex", flexDirection: "column", gap: 8 }}>
             {/* Primary row: Back + Confirm/Next */}
-            <div style={{ display: "flex", gap: 8, flexWrap: "nowrap" }}>
+            <div className="practice-action-buttons" style={{ display: "flex", gap: 8, flexWrap: "nowrap" }}>
               {canGoBack && (
                 <button
                   onClick={onGoBack}
@@ -1015,7 +1016,7 @@ export default function QuizShell({
                 </button>
               )}
             </div>
-            {confirmed && current.steps && current.steps.length > 0 && <button type="button" className="practice-steps-toggle" onClick={onToggleSteps}>{showSteps ? "Hide worked solution" : "Show worked solution"}</button>}
+            {confirmed && current.steps && current.steps.length > 0 && <button type="button" className="practice-steps-toggle" aria-expanded={showSteps} aria-controls="practice-worked-solution" onClick={onToggleSteps}>{showSteps ? "Hide worked solution" : "Show worked solution"}</button>}
           </div>
           </div>
         </div>
@@ -1031,7 +1032,7 @@ export default function QuizShell({
             marginBottom: 10,
             animation: "fadeUp 0.2s ease",
           }}>
-            <div style={{
+            <div className="practice-result-label" style={{
               fontSize: 12,
               fontWeight: 800,
               color: selected === correctIdx ? "#15803D" : "#C2410C",
@@ -1086,6 +1087,12 @@ export default function QuizShell({
               </a>
             )}
 
+            {current.steps && current.steps.length > 0 && (
+              <div id="practice-worked-solution" hidden={!showSteps}>
+                {showSteps && <StepSolution steps={current.steps} tip={current.tip ?? ""} />}
+              </div>
+            )}
+
             <div className="practice-resource-actions">
               {moduleOverviews && <button type="button" onClick={() => openStudyNotes(current.module ?? null)}>Read topic notes</button>}
               <button type="button" onClick={onTutorOpen}>Ask the Tutor about this question</button>
@@ -1138,16 +1145,6 @@ export default function QuizShell({
                 </button>
               )}
             </div>
-          </div>
-        )}
-
-        {/* ── Step-by-step solution ── */}
-        {confirmed && showSteps && current.steps && current.steps.length > 0 && (
-          <div style={{ marginBottom: 12, animation: "fadeUp 0.2s ease" }}>
-            <StepSolution
-              steps={current.steps}
-              tip={current.tip ?? ""}
-            />
           </div>
         )}
 

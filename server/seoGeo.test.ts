@@ -103,7 +103,10 @@ describe("SEO and geographic landing-page contract", () => {
     );
     expect(landing).toContain("Illustrative preview");
     expect(landing).toContain("Illustrative team training overview");
-    expect(landing).toContain("Illustrative readiness by topic");
+    expect(landing).toContain('aria-label="Example worked solution from the study tools"');
+    expect(landing).toContain('className="homepage-preview-badge">Example');
+    expect(landing).toContain("Worked calculation · Water Class I");
+    expect(landing).not.toContain("Illustrative readiness by topic");
     expect(landing).not.toContain("{passPriceLabel}");
     expect(landing).not.toContain('from CA$49');
     expect(landing).not.toContain('{ name: "Sample Learner 11"');

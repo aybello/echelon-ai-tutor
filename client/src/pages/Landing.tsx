@@ -15,6 +15,7 @@ import {
 import LandingNav from "@/components/LandingNav";
 import { ECHELON_LOGO_URL } from "@/components/SiteNav";
 import CoursePathHero from "@/components/CoursePathHero";
+import StepSolution from "@/components/StepSolution";
 import CourseFinder from "@/components/CourseFinder";
 import NationalWaitlistModal from "@/components/NationalWaitlistModal";
 import ProvinceBanner from "@/components/ProvinceBanner";
@@ -59,45 +60,28 @@ function PreviewChoice({ onClose }: { onClose: () => void }) {
 
 function StudyWorkspacePreview() {
   return (
-    <aside className="homepage-workspace" aria-label="Illustrative OIT Water study workspace preview">
+    <aside className="homepage-workspace" aria-label="Example worked solution from the study tools">
       <div className="homepage-workspace-topbar">
-        <div className="homepage-workspace-product"><img className="homepage-workspace-logo" src={ECHELON_LOGO_URL} alt="Echelon Institute logo" /><span>Echelon Institute</span></div>
-        <span className="homepage-preview-badge">Preview</span>
+        <div className="homepage-workspace-product"><img className="homepage-workspace-logo" src={ECHELON_LOGO_URL} alt="" /><span>Echelon Institute</span></div>
+        <span className="homepage-preview-badge">Example</span>
       </div>
       <div className="homepage-workspace-body">
-        <div className="homepage-workspace-title-row">
-          <div>
-            <span className="homepage-workspace-eyebrow">OIT Water</span>
-            <h2>Your study workspace</h2>
-          </div>
-          <span className="homepage-workspace-status"><span aria-hidden="true" /> Ready to study</span>
+        <span className="homepage-workspace-eyebrow">Worked calculation · Water Class I</span>
+        <h2>Practice. Learn. Improve.</h2>
+        <div className="homepage-example-question">
+          <span>Flow rate conversion</span>
+          <p>A plant treats 25 L/s. What is the daily flow in m³/d?</p>
+          <strong>Answer: 2,160 m³/d</strong>
         </div>
-        <div className="homepage-workspace-grid">
-          <section className="homepage-readiness" aria-label="Illustrative readiness by topic">
-            <div className="homepage-panel-heading"><span>Readiness by topic</span><strong>Illustrative</strong></div>
-            {[
-              ["Treatment fundamentals", "78%", 78],
-              ["Calculations", "62%", 62],
-              ["Safety & regulations", "84%", 84],
-            ].map(([label, value, width]) => (
-              <div className="homepage-readiness-row" key={label as string}>
-                <div><span>{label}</span><strong>{value}</strong></div>
-                <span className="homepage-progress-track"><span style={{ width: `${width}%` }} /></span>
-              </div>
-            ))}
-          </section>
-          <section className="homepage-question-card" aria-label="Illustrative worked question">
-            <div className="homepage-question-card-top"><span>Worked question</span><span>Calculation</span></div>
-            <p>A plant treats 4.2 ML/day. What should you check before calculating contact time?</p>
-            <div className="homepage-answer-choice"><span>A</span><strong>Confirm the flow units and basin volume.</strong></div>
-            <div className="homepage-explanation"><Calculator size={16} aria-hidden="true" /><span><strong>Step 1.</strong> Confirm the flow units and basin volume. The worked solution then shows the conversion before applying the formula.</span></div>
-          </section>
-        </div>
-        <div className="homepage-workspace-tools" aria-label="Available study modes">
-          <div><BookOpen size={16} aria-hidden="true" /><span><strong>Practice</strong><small>Target weak topics</small></span></div>
-          <div><Calculator size={16} aria-hidden="true" /><span><strong>Math</strong><small>Work step by step</small></span></div>
-          <div><ClipboardCheck size={16} aria-hidden="true" /><span><strong>Mock exam</strong><small>Build exam stamina</small></span></div>
-        </div>
+        <StepSolution
+          steps={[
+            { l: "Relationship", c: "Q (m³/d) = Q (L/s) × 86.4" },
+            { l: "Substitution", c: "Q = 25 × 86.4" },
+            { l: "Result", c: "2,160 m³/d" },
+          ]}
+          tip="1 L/s = 86.4 m³/d."
+        />
+        <Link href="/formulas" className="homepage-example-link">Explore the formula library <ArrowRight size={15} aria-hidden="true" /></Link>
       </div>
     </aside>
   );
@@ -293,23 +277,38 @@ export default function Landing() {
               </div>
               <div className="homepage-hero-actions">
                 <a className="homepage-primary-button" href="#find-course">Find your course <ArrowRight size={18} aria-hidden="true" /></a>
-                <button ref={previewTriggerRef} type="button" className="homepage-secondary-button" aria-expanded={showOitPreviewChoice} aria-controls="oit-preview-choice" onClick={() => setShowOitPreviewChoice((value) => !value)}>
-                  <Play size={16} fill="currentColor" aria-hidden="true" /> Try 15 free questions
+                <Link href="/teams" className="homepage-secondary-button">Explore team plans <ArrowRight size={17} aria-hidden="true" /></Link>
+                <button ref={previewTriggerRef} type="button" className="homepage-preview-button" aria-expanded={showOitPreviewChoice} aria-controls="oit-preview-choice" onClick={() => setShowOitPreviewChoice((value) => !value)}>
+                  <Play size={14} fill="currentColor" aria-hidden="true" /> Try 15 free questions (OIT)
                 </button>
               </div>
-              <p className="homepage-hero-note">Choose your province, system and level. No account required to start the free preview.</p>
-              <p className="homepage-preview-inclusions">Free OIT preview includes 15 practice questions, 50 flashcards, 30 mock questions and 3 AI Tutor messages.</p>
+              <p className="homepage-hero-note">Choose your province, system and level. No account required to start the OIT free preview.</p>
+              <p className="homepage-preview-inclusions">For new learners, the free OIT preview includes 15 practice questions, 50 flashcards, 30 mock questions and 3 AI Tutor messages.</p>
               {showOitPreviewChoice && <PreviewChoice onClose={closePreviewChoice} />}
             </CoursePathHero>
           </div>
           <div className="homepage-hero-visual">
-            <img src="https://echeloninstitute.ca/manus-storage/echelon-blue-hero_b6e705fa.webp" alt="Skilled workers reviewing plans together in an industrial workplace" width="1800" height="1350" fetchPriority="high" />
+            <StudyWorkspacePreview />
+          </div>
+        </section>
+
+        <section id="tools" className="homepage-section homepage-tools-section" aria-labelledby="homepage-tools-title">
+          <div className="homepage-section-heading homepage-section-heading-left">
+            <span className="homepage-kicker">A better way to prep</span>
+            <h2 id="homepage-tools-title">A better way to prepare.</h2>
+            <p>Work through questions, calculations and exam conditions with the same course context carried through each study mode.</p>
+          </div>
+          <div className="homepage-tool-grid">
+            <ToolCard icon={<BookOpen size={21} aria-hidden="true" />} title="Practice questions" description="Review course-specific questions and explanations." href="/quiz" />
+            <ToolCard icon={<Calculator size={21} aria-hidden="true" />} title="Formula library" description="Keep core operator calculations in reach." href="/formulas" />
+            <ToolCard icon={<ClipboardCheck size={21} aria-hidden="true" />} title="Mock exams" description="Build confidence under timed conditions." href="/oit-mock" />
+            <ToolCard icon={<MessageSquareText size={21} aria-hidden="true" />} title="Study guides" description="Connect concepts to process and equipment." href="/guides" />
           </div>
         </section>
 
         <section className="homepage-proof-strip" aria-label="Echelon platform facts">
-          <div><strong>39</strong><span>active course paths</span></div>
-          <div><strong>15</strong><span>free questions to try</span></div>
+          <div><strong>Course-specific</strong><span>certification preparation</span></div>
+          <div><strong>15</strong><span>free OIT questions for new learners</span></div>
           <div><strong>Canada + U.S.</strong><span>study contexts supported</span></div>
           <div><strong>Practice to mock</strong><span>one study workspace</span></div>
         </section>
@@ -321,20 +320,6 @@ export default function Landing() {
           <button type="button" className="homepage-waitlist-link" onClick={() => setNationalWaitlistOpen(true)}>Need a course path that is not listed? Join the update list <ArrowRight size={15} aria-hidden="true" /></button>
         </section>
 
-        <section id="tools" className="homepage-section homepage-tools-section" aria-labelledby="homepage-tools-title">
-          <div className="homepage-section-heading homepage-section-heading-left">
-            <span className="homepage-kicker">A better way to study</span>
-            <h2 id="homepage-tools-title">The tools that turn preparation into a routine.</h2>
-            <p>Work through questions, calculations and exam conditions with the same course context carried through each study mode.</p>
-          </div>
-          <div className="homepage-tool-grid">
-            <ToolCard icon={<BookOpen size={21} aria-hidden="true" />} title="Practice questions" description="Review course-specific questions and explanations." href="/quiz" />
-            <ToolCard icon={<Calculator size={21} aria-hidden="true" />} title="Formula library" description="Keep core operator calculations in reach." href="/formulas" />
-            <ToolCard icon={<ClipboardCheck size={21} aria-hidden="true" />} title="Mock exams" description="Build confidence under timed conditions." href="/oit-mock" />
-            <ToolCard icon={<MessageSquareText size={21} aria-hidden="true" />} title="Study guides" description="Connect concepts to process and equipment." href="/guides" />
-          </div>
-        </section>
-
         <section id="teams" className="homepage-team-section" aria-labelledby="homepage-team-title">
           <div className="homepage-team-content">
             <span className="homepage-kicker">For utilities and employers</span>
@@ -344,7 +329,7 @@ export default function Landing() {
           </div>
           <div className="homepage-team-preview" aria-label="Illustrative team training overview">
             <div><span>Team training overview</span><small>Illustrative preview</small></div>
-            <dl><div><dt>Assigned operators</dt><dd>8 / 10</dd></div><div><dt>Active this week</dt><dd>6</dd></div><div><dt>Study plans in progress</dt><dd>5</dd></div></dl>
+            <dl><div><dt>Learning</dt><dd>Assigned courses</dd></div><div><dt>Preparation</dt><dd>Study plans</dd></div><div><dt>Visibility</dt><dd>Readiness</dd></div></dl>
             <p><Check size={15} aria-hidden="true" /> Course-specific learning paths for each assigned operator.</p>
           </div>
         </section>

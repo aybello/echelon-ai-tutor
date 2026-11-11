@@ -34,4 +34,18 @@ describe("StepSolution legacy text bodies", () => {
     expect(html).toContain("&lt;script&gt;alert(1)&lt;/script&gt;");
     expect(html).not.toContain("<script>");
   });
+
+  it("presents actual labeled steps as an ordered list and retains a supplied tip", () => {
+    const html = renderToStaticMarkup(createElement(StepSolution, {
+      steps: [{ l: "Relationship", c: "Flow × time" }, { l: "Result", c: "42 m³" }],
+      tip: "Use consistent units.",
+    }));
+    expect(html).toContain('<ol class="practice-solution-list" role="list">');
+    expect(html.match(/<li class="practice-solution-step" role="listitem">/g)).toHaveLength(2);
+    expect(html.match(/class="practice-solution-number" aria-hidden="true"/g)).toHaveLength(2);
+    expect(html).toContain("Relationship");
+    expect(html).toContain("Flow × time");
+    expect(html).toContain("42 m³");
+    expect(html).toContain("Use consistent units.");
+  });
 });

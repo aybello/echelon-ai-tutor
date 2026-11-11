@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { useLocation } from "wouter";
-import { Building2, CheckCircle2, ShieldCheck, Users, FileText, FlaskConical } from "lucide-react";
+import { Building2, CheckCircle2, Users, FileText, FlaskConical, CalendarClock, ArrowRight } from "lucide-react";
 import {
   type TeamStreamTier,
   type TeamRegion,
@@ -156,37 +156,43 @@ export default function Teams() {
   return (
     <div className="teams-redesign teams-redesign--public min-h-screen bg-slate-50 text-gray-900">
       <SiteNav currentPath={location} />
-      <section className="teams-redesign__hero relative overflow-hidden px-6 pb-14 pt-12 text-center" style={{ background: "linear-gradient(135deg, #1E3A5F 0%, #0E7490 100%)" }}>
-        <div className="pointer-events-none absolute inset-0 opacity-70" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.11) 1px, transparent 0)", backgroundSize: "32px 32px" }} />
-        <div className="relative mx-auto max-w-4xl">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-4 py-1.5 text-sm font-semibold text-white"><Building2 className="h-3.5 w-3.5" />Echelon for Teams</div>
-          <h1 className="mb-4 text-3xl font-bold tracking-tight text-white md:text-5xl">Train your crew. Track every operator.</h1>
-          <p className="mx-auto max-w-2xl text-base leading-relaxed text-blue-100">Choose targeted, course-specific preparation for a current exam or an annual stream plan for your workforce. Every new sale is backed by the released question-bank library.</p>
-          <div className="mt-6 flex flex-wrap justify-center gap-5 text-sm text-blue-50">
-            <span className="inline-flex items-center gap-2"><Users className="h-4 w-4 text-cyan-200" />Named operator licences</span>
-            <span className="inline-flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-cyan-200" />Stripe checkout and paid invoice</span>
-          </div>
-          <div className="mx-auto mt-7 max-w-2xl rounded-xl border border-teal-200 bg-white px-5 py-4 text-center shadow-sm">
+      <section className="teams-redesign__hero px-6 text-center">
+        <div className="mx-auto max-w-4xl">
+          <div className="teams-hero-eyebrow"><Building2 aria-hidden="true" className="h-4 w-4" />Teams for utilities &amp; municipalities</div>
+          <h1>Train your crew. Track every operator.</h1>
+          <p className="teams-hero-intro">Flexible exam preparation for utilities and employers.</p>
+          <p className="teams-hero-assurance">Named operator licences · Stripe checkout and paid invoice</p>
+          <div className="teams-customer-proof">
             <p className="teams-customer-proof-label text-sm font-semibold">Used by operators at</p>
-            <div className="mt-2 flex flex-wrap justify-center gap-x-8 gap-y-1 text-lg font-bold text-slate-950"><strong>Utilities Kingston</strong><strong>City of Winnipeg</strong></div>
+            <div className="teams-customer-proof-names"><strong>Utilities Kingston</strong><strong>City of Winnipeg</strong></div>
           </div>
         </div>
       </section>
 
       <main className="teams-redesign__content mx-auto max-w-6xl px-6 py-12">
-        <section className="teams-product-switch mx-auto mb-10 max-w-4xl">
-          <h2 className="text-center text-2xl font-bold text-slate-900">Choose the right team product</h2>
-          <p className="mt-2 text-center text-sm text-slate-600">Annual plans support ongoing workforce development. Flex is for a defined exam-prep cohort.</p>
-          <div className="mt-6 grid gap-5 md:grid-cols-2">
-            <button type="button" aria-pressed={planType === "annual"} onClick={() => setPlanType("annual")} className={`teams-plan-card ${planType === "annual" ? "teams-plan-card--active" : ""} relative rounded-2xl border-2 p-6 text-left transition ${planType === "annual" ? "border-blue-900 bg-blue-50 shadow-lg shadow-blue-100" : "border-slate-200 bg-white hover:border-slate-300"}`}>
-              <div className="text-lg font-bold text-slate-950">Teams Annual</div>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">Year-round access for a named operator across one stream or all streams. Best for workforce training programs.</p>
-              <div className="mt-4 inline-flex rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-900">From CA$449 per operator / year · 5-seat minimum</div>
+        <section className="teams-product-switch mx-auto mb-10">
+          <div className="teams-product-intro">
+            <h2>Choose the right team product</h2>
+            <p>Annual plans support ongoing workforce development. Flex is for a defined exam-prep cohort.</p>
+          </div>
+          <div className="teams-plan-grid mt-6 grid gap-5 md:grid-cols-2">
+            <button type="button" aria-pressed={planType === "annual"} onClick={() => setPlanType("annual")} className={`teams-plan-card ${planType === "annual" ? "teams-plan-card--active" : ""} text-left transition`}>
+              <span className="teams-plan-icon" aria-hidden="true"><Users /></span>
+              <span className="teams-plan-copy">
+                <span className="teams-plan-title">Teams Annual</span>
+                <span className="teams-plan-description">Year-round access for a named operator across one stream or all streams. Best for workforce training programs.</span>
+                <span className="teams-plan-price">From CA$449 per operator / year · 5-seat minimum</span>
+                <span className="teams-plan-action" aria-hidden="true">Explore annual <ArrowRight /></span>
+              </span>
             </button>
-            <button type="button" aria-pressed={planType === "flex"} onClick={() => setPlanType("flex")} className={`teams-plan-card ${planType === "flex" ? "teams-plan-card--active" : ""} relative rounded-2xl border-2 p-6 text-left transition ${planType === "flex" ? "border-teal-700 bg-teal-50 shadow-lg shadow-teal-100" : "border-slate-200 bg-white hover:border-slate-300"}`}>
-              <div className="text-lg font-bold text-slate-950">Teams Flex</div>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">Course-specific licences for named operators. Combine 3- and 6-month licences in one order.</p>
-              <div className="mt-4 inline-flex rounded-full bg-teal-100 px-3 py-1 text-xs font-bold text-teal-800">From CA$39 per operator · one-time payment</div>
+            <button type="button" aria-pressed={planType === "flex"} onClick={() => setPlanType("flex")} className={`teams-plan-card ${planType === "flex" ? "teams-plan-card--active" : ""} text-left transition`}>
+              <span className="teams-plan-icon" aria-hidden="true"><CalendarClock /></span>
+              <span className="teams-plan-copy">
+                <span className="teams-plan-title">Teams Flex</span>
+                <span className="teams-plan-description">Course-specific licences for named operators. Combine 3- and 6-month licences in one order.</span>
+                <span className="teams-plan-price">From CA$39 per operator · one-time payment</span>
+                <span className="teams-plan-action" aria-hidden="true">Explore Flex <ArrowRight /></span>
+              </span>
             </button>
           </div>
         </section>

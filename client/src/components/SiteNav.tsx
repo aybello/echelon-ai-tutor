@@ -216,12 +216,12 @@ export default function SiteNav({
               <span>Admin</span>
             </Link>
           ) : (
-            <Link href={dashboardHref} className="echelon-dashboard-link">
+            <Link href={dashboardHref} className="echelon-dashboard-link" aria-label="Dashboard">
               <LayoutDashboard size={16} aria-hidden="true" />
               <span>Dashboard</span>
             </Link>
           )}
-          <Link href={accountHref} className="echelon-account-link">
+          <Link href={accountHref} className="echelon-account-link" aria-label={isSignedIn ? "My account" : "Sign in"}>
             <CircleUserRound size={17} aria-hidden="true" />
             <span>{isSignedIn ? "My account" : "Sign in"}</span>
           </Link>

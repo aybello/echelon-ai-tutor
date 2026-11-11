@@ -1,6 +1,4 @@
-// ECHELON AI TUTOR — StepSolution Component
-// Design: Numbered steps with monospace code blocks + tip callout
-
+// ECHELON AI TUTOR — data-driven worked solution
 import { normalizeQuestionSteps } from "@shared/questionSteps";
 
 interface Props {
@@ -11,103 +9,24 @@ interface Props {
 export default function StepSolution({ steps, tip }: Props) {
   const normalizedSteps = normalizeQuestionSteps(steps);
   return (
-    <div style={{ marginTop: 14, animation: "fadeUp 0.3s ease both" }}>
-      <div
-        style={{
-          fontSize: 10,
-          fontWeight: 700,
-          color: "#0F766E",
-          letterSpacing: "0.1em",
-          marginBottom: 8,
-        }}
-      >
-        📐 STEP-BY-STEP SOLUTION
-      </div>
-      <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-        {normalizedSteps.length === 0 && (
-          <p style={{ fontSize: 12, color: "#064E3B" }}>
-            Worked solution steps are unavailable for this question.
-          </p>
-        )}
-        {normalizedSteps.map((s, i) => (
-          <div
-            key={i}
-            style={{ display: "flex", gap: 10, alignItems: "flex-start" }}
-          >
-            <div
-              style={{
-                width: 24,
-                height: 24,
-                borderRadius: "50%",
-                background: "#0F766E",
-                color: "#fff",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 10,
-                fontWeight: 800,
-                flexShrink: 0,
-                marginTop: 2,
-              }}
-            >
-              {i + 1}
-            </div>
-            <div
-              style={{
-                background: "#F0FDF4",
-                borderRadius: 8,
-                padding: "8px 12px",
-                flex: 1,
-                border: "1px solid #BBF7D0",
-              }}
-            >
-              {s.l && (
-                <div
-                  style={{
-                    fontSize: 9,
-                    fontWeight: 700,
-                    color: "#059669",
-                    marginBottom: 3,
-                    letterSpacing: "0.08em",
-                  }}
-                >
-                  {s.l.toUpperCase()}
-                </div>
-              )}
-              <div
-                style={{
-                  fontSize: 12,
-                  color: "#064E3B",
-                  fontFamily: "'JetBrains Mono', 'Fira Code', 'Courier New', monospace",
-                  fontWeight: 600,
-                }}
-              >
-                {s.c}
+    <section className="practice-solution" aria-label="Step-by-step solution">
+      <h3>Step-by-step solution</h3>
+      {normalizedSteps.length === 0 ? (
+        <p className="practice-solution-empty">Worked solution steps are unavailable for this question.</p>
+      ) : (
+        <ol className="practice-solution-list" role="list">
+          {normalizedSteps.map((step, index) => (
+            <li key={index} className="practice-solution-step" role="listitem">
+              <span className="practice-solution-number" aria-hidden="true">{index + 1}</span>
+              <div>
+                {step.l && <div className="practice-solution-label">{step.l}</div>}
+                <div className="practice-solution-body">{step.c}</div>
               </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Tip callout — only shown when tip is non-empty */}
-      {tip && (
-        <div
-          style={{
-            marginTop: 10,
-            background: "#EFF6FF",
-            borderRadius: 8,
-            padding: "10px 12px",
-            borderLeft: "3px solid #2563EB",
-          }}
-        >
-          <span style={{ fontSize: 9, fontWeight: 700, color: "#1D4ED8" }}>
-            💡 TIP{"  "}
-          </span>
-          <span style={{ fontSize: 11, color: "#1E3A5F", lineHeight: 1.6 }}>
-            {tip}
-          </span>
-        </div>
+            </li>
+          ))}
+        </ol>
       )}
-    </div>
+      {tip && <p className="practice-solution-tip"><strong>Tip:</strong> {tip}</p>}
+    </section>
   );
 }

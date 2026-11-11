@@ -14,16 +14,25 @@ describe("approved blue homepage presentation", () => {
     expect(landing).toContain("<ProvinceBanner onSelect={handleProvinceSelect} onDismiss={dismiss} />");
   });
 
-  it("uses a descriptive photo and the approved blue rather than mint branding", () => {
+  it("uses a product-led worked example and the approved blue rather than mint branding", () => {
     const landing = read("client/src/pages/Landing.tsx");
     const hero = read("client/src/components/CoursePathHero.tsx");
     const css = read("client/src/pages/Landing.css");
-    expect(landing).toContain('alt="Skilled workers reviewing plans together in an industrial workplace"');
-    expect(landing).toContain("echelon-blue-hero_b6e705fa.webp");
+    expect(landing).toContain('<StudyWorkspacePreview />');
+    expect(landing).toContain('aria-label="Example worked solution from the study tools"');
+    expect(landing).toContain('className="homepage-preview-badge">Example');
+    expect(landing).toContain("Worked calculation · Water Class I");
+    expect(landing).toContain("A plant treats 25 L/s. What is the daily flow in m³/d?");
+    expect(landing).toContain("Answer: 2,160 m³/d");
+    expect(landing).toContain("<StepSolution");
+    expect(landing).toContain('href="/formulas" className="homepage-example-link"');
+    expect(landing).not.toContain("echelon-blue-hero_b6e705fa.webp");
     expect(hero).toContain("Be ready for");
     expect(hero).toContain("Practice questions, worked calculations and timed mock exams");
     expect(css).toContain("--home-teal: #1757B8");
     expect(css).toContain("--home-canvas: #F4F8FD");
-    expect(css).toMatch(/@media \(max-width: 820px\)[\s\S]*?\.homepage-hero-visual img/);
+    expect(css).toMatch(/@media \(max-width: 820px\)\s*\{(?:(?!\n\})[\s\S])*?\.homepage-hero\s*\{[^}]*grid-template-columns:\s*1fr/);
+    expect(css).toMatch(/@media \(max-width: 820px\)\s*\{(?:(?!\n\})[\s\S])*?\.homepage-hero-visual \.homepage-workspace-logo\s*\{[^}]*aspect-ratio:\s*auto/);
+    expect(css).toMatch(/@media \(max-width: 640px\)\s*\{(?:(?!\n\})[\s\S])*?\.homepage-workspace-body\s*\{[^}]*padding:/);
   });
 });

@@ -105,6 +105,53 @@ test("practice accepts an answer without confidence and filters the actual sampl
   await page.screenshot({path:"test-results/ui-workspace/practice-notes.png",fullPage:true});
 });
 
+for (const width of [320, 390, 720, 820]) {
+  for (const tutorOpen of [false, true]) {
+    test(`practice navigation fits and retains history at ${width}px with tutor ${tutorOpen ? "open" : "closed"}`, async ({page}) => {
+      await page.setViewportSize({width, height:844});
+      await page.goto("/#/class1-water");
+      const question = page.getByTestId("practice-question");
+      await expect(question).toBeVisible();
+      const firstQuestion = await question.innerText();
+      const confirm = page.getByRole("button", {name:"Confirm Answer", exact:true});
+      await expect(confirm).toBeDisabled();
+      await expect(page.getByRole("button", {name:"← Back to previous answer", exact:true})).toHaveCount(0);
+      await page.locator('.qs-question-card button[aria-pressed]').first().click();
+      await confirm.click();
+      await page.getByRole("button", {name:"Next Question →", exact:true}).click();
+      await expect(question).not.toHaveText(firstQuestion);
+      const secondQuestion = await question.innerText();
+      await expect(confirm).toBeDisabled();
+      await expect(page.getByRole("button", {name:"← Back to previous answer", exact:true})).toBeVisible();
+      expect(await confirm.evaluate(el => el.scrollWidth <= el.clientWidth && el.getBoundingClientRect().right <= innerWidth)).toBe(true);
+      await page.locator('.qs-question-card button[aria-pressed]').first().click();
+      await confirm.click();
+      if (tutorOpen) {
+        await page.getByRole("button", {name:"Ask the Tutor about this question", exact:true}).click();
+        await expect(page.getByRole("dialog", {name:"AI Tutor"})).toBeVisible();
+      }
+      const back = page.getByRole("button", {name:"← Back to previous answer", exact:true});
+      const next = page.getByRole("button", {name:"Next Question →", exact:true});
+      for (const button of [back, next]) {
+        await expect(button).toBeVisible();
+        expect(await button.evaluate(el => {
+          const rect = el.getBoundingClientRect();
+          const card = el.closest(".qs-question-card")!.getBoundingClientRect();
+          return rect.left >= card.left && rect.right <= card.right && rect.left >= 0 && rect.right <= innerWidth && el.scrollWidth <= el.clientWidth;
+        })).toBe(true);
+      }
+      if (width === 320) {
+        expect(await next.evaluate(el => el.getBoundingClientRect().top)).toBeGreaterThan(await back.evaluate(el => el.getBoundingClientRect().top));
+      }
+      await back.click();
+      await expect(question).toHaveText(firstQuestion);
+      await page.getByRole("button", {name:"Next Question →", exact:true}).click();
+      await expect(question).toHaveText(secondQuestion);
+      if (tutorOpen) await expect(page.getByRole("dialog", {name:"AI Tutor"})).toBeVisible();
+    });
+  }
+}
+
 test("learner gets one primary step with charts in Progress", async ({page}) => {
   await page.goto("/#/dashboard");
   await expect(page.getByRole("region",{name:"Your next study step"})).toBeVisible();
