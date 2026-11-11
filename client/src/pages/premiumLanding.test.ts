@@ -8,6 +8,15 @@ describe("premium homepage contracts", () => {
   const landing = read("client/src/pages/Landing.tsx");
   const css = read("client/src/pages/Landing.css");
 
+  it("positions the platform for skilled trades without overstating course coverage", () => {
+    const hero = read("client/src/components/CoursePathHero.tsx");
+    const nav = read("client/src/components/SiteNav.tsx");
+    expect(hero).toContain("AI-powered exam prep for skilled trades");
+    expect(nav).toContain("AI-powered exam prep for skilled trades");
+    expect(hero).toContain("water and wastewater certification across Canada and the United States");
+    expect(nav).not.toContain('"Operator certification prep"');
+  });
+
   it("uses the shared worked solution with an example from the formula library", () => {
     const formulas = read("client/src/pages/FormulasWater1.tsx");
     expect(landing).toContain("<StepSolution");

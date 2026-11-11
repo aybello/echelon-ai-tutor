@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 export default function CoursePathHero({ children }: { children?: ReactNode }) {
   return (
     <div className="course-path-hero">
-      <span className="homepage-kicker">Operator certification preparation</span>
+      <span className="homepage-kicker">AI-powered exam prep for skilled trades</span>
       <h1 id="homepage-hero-title" className="landing-hero-reveal landing-hero-reveal-1">
         Be ready for <span>what’s next.</span>
       </h1>

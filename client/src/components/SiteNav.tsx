@@ -193,7 +193,7 @@ export default function SiteNav({
           <img src={ECHELON_LOGO_URL} alt="Echelon Institute logo" width={42} height={40} />
           <span className="echelon-brand-copy">
             <strong>{brandName}</strong>
-            <small>{course?.courseKey === "electrician-309a" ? "309A electrician exam prep" : "Operator certification prep"}</small>
+            <small>AI-powered exam prep for skilled trades</small>
           </span>
         </Link>
 
