@@ -191,27 +191,6 @@ export default function Teams() {
           </div>
         </section>
 
-        <section className="teams-founder-band mx-auto mb-10 max-w-4xl rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
-            <img
-              src="/echelon-logo.webp"
-              alt="Echelon Institute"
-              className="h-12 w-12 shrink-0 rounded-lg object-contain"
-            />
-            <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-teal-800">Built by a founder who has done this before</p>
-              <h2 className="mt-2 text-xl font-bold text-slate-950">Ayoola Bello, Founder and CEO</h2>
-              <p className="mt-3 text-sm leading-relaxed text-slate-700">
-                Before Echelon, Ayoola founded AfroPuppyYoga in January 2024 and built a wellness events business valued above C$600,000. He describes it as one of the largest wellness brands in the Tri-Cities. He is an Engineer-in-Training with the PEO and an Operator-in-Training, with municipal and industrial experience at the Region of Peel, the City of Mississauga and Toyota.
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-slate-700">
-                Echelon combines that experience running a business with his engineering and operator-training background.
-              </p>
-              <p className="mt-3 text-xs leading-relaxed text-slate-600">AfroPuppyYoga valuation and regional standing are founder-reported.</p>
-            </div>
-          </div>
-        </section>
-
         {planType === "flex" ? <section className="mx-auto max-w-2xl"><FlexOrderBuilder initialRegion={region} /></section> : <section className="teams-annual-workspace grid items-start gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="teams-config-panel rounded-2xl border border-slate-200 bg-white p-7 shadow-xl shadow-slate-200/50">
             <h2 className="text-xl font-bold text-slate-900">Configure an annual plan</h2>
