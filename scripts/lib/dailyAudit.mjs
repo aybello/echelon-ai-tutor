@@ -30,7 +30,7 @@ export function isolatedTestEnv(parent = process.env, home = "/tmp/echelon-audit
   return {
     ...env, HOME: home, TMPDIR: home, TZ: "UTC", CI: "1", NO_COLOR: "1",
     NODE_ENV: "test", DEPLOYMENT_ENV: "test", DOTENV_CONFIG_PATH: "/dev/null",
-    JWT_SECRET: "daily-audit-test-only-not-for-production",
+    JWT_SECRET: "test-only-not-for-production",
     STRIPE_SECRET_KEY: "sk_test_ci_placeholder", STRIPE_WEBHOOK_SECRET: "whsec_ci_placeholder",
     SMTP_HOST: "127.0.0.1", SMTP_PORT: "9", SMTP_USER: "audit@echelon.test",
     SMTP_PASS: "test-only-placeholder", APP_BASE_URL: "http://127.0.0.1:3000",
@@ -49,14 +49,27 @@ export function isolatedBrowserTestEnv(parent = process.env, home = "/tmp/echelo
 
 /** Read the exact deterministic CI exclusions. Fail closed if the step changes shape. */
 export function ciDeterministicExcludes(yaml) {
-  const section = yaml.split("- name: Deterministic unit and acceptance tests\n")[1]?.split("\n        env:")[0];
-  if (!section?.includes("pnpm exec vitest run")) throw new Error("Cannot locate CI deterministic Vitest command");
-  const excludes = [...section.matchAll(/--exclude\s+(?:'([^']+)'|"([^"]+)"|(\S+))/g)]
+  const steps = yaml.split(/\n(?= {6}- )/).filter(step => step.startsWith("      - name: Deterministic unit and acceptance tests\n"));
+  if (steps.length !== 1) throw new Error("Cannot locate CI deterministic Vitest command");
+  const run = steps[0].match(/^ {8}run: (?:>-\n((?: {10}[^\n]+\n?)+)|([^\n]+))/m);
+  const command = (run?.[1] ?? run?.[2] ?? "").trim().replace(/\n\s*/g, " ");
+  if (!/^(?:pnpm exec vitest run|node --require \.\/scripts\/test-safety\.cjs \.\/node_modules\/vitest\/vitest\.mjs run)(?:\s|$)/.test(command)
+    || /[;|&`$\\]/.test(command)) {
+    throw new Error("Cannot locate CI deterministic Vitest command");
+  }
+  const excludes = [...command.matchAll(/--exclude\s+(?:'([^']+)'|"([^"]+)"|(\S+))/g)]
     .map(match => match[1] ?? match[2] ?? match[3]);
   if (!excludes.includes("**/*.integration.test.ts") || excludes.length < 2) {
     throw new Error("CI deterministic exclusion list missing or unrecognized");
   }
   return [...new Set(excludes)];
+}
+
+/** Keep the guard first in Node's preloads, as required by the repository Vitest config. */
+export function isolatedVitestArgs(root, configPath, excludes, reportPath) {
+  return ["--require", resolve(root, "scripts/test-safety.cjs"), "--import", "tsx", resolve(root, "node_modules/vitest/vitest.mjs"),
+    "run", "--config", configPath, "--maxWorkers", "2", "--minWorkers", "1", ...excludes.flatMap(pattern => ["--exclude", pattern]),
+    "--reporter=json", `--outputFile=${reportPath}`];
 }
 
 /** Stream complete logs to disk, keep only a bounded tail in memory, and finish timeout cleanup before resolving. */

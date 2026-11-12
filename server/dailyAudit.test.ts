@@ -1,9 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { mkdtemp, readFile, rm } from "node:fs/promises";
+import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { join, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 // @ts-ignore Standalone ESM audit helpers are tested directly without a build step.
-import { isolatedTestEnv, isolatedBrowserTestEnv, ciDeterministicExcludes, runCommand, evaluateVitest, combineTestAttempts, parseTrpc, validateQuestion, validateQuizReply, classifyTutorReply, evaluateTutorSequence, tutorHistoryAssessment, importJourneyResults, validateJourneyReport, evaluateServingReleaseIdentity, createAuditBudget, summarizeResults } from "../scripts/lib/dailyAudit.mjs";
+import { isolatedTestEnv, isolatedBrowserTestEnv, ciDeterministicExcludes, isolatedVitestArgs, runCommand, evaluateVitest, combineTestAttempts, parseTrpc, validateQuestion, validateQuizReply, classifyTutorReply, evaluateTutorSequence, tutorHistoryAssessment, importJourneyResults, validateJourneyReport, evaluateServingReleaseIdentity, createAuditBudget, summarizeResults } from "../scripts/lib/dailyAudit.mjs";
 
 const envelope = (data: unknown) => JSON.stringify([{ result: { data: { json: data } } }]);
 const trpcError = (code: string) => JSON.stringify([{ error: { json: { message: "test error", data: { code } } } }]);
@@ -24,7 +25,7 @@ describe("daily audit test isolation and full JSON evidence", () => {
       JWT_SECRET: "production-secret", SMTP_HOST: "production-mail", SMTP_PASS: "production-password", OPENAI_API_KEY: "production-key",
       BUILT_IN_FORGE_API_KEY: "production-forge", NODE_OPTIONS: "--require=production-preload.cjs", BUILD_COMMIT_SHA: "production-release" });
     expect(env.NODE_ENV).toBe("test"); expect(env.DEPLOYMENT_ENV).toBe("test");
-    expect(env.JWT_SECRET).toContain("test-only"); expect(env.SMTP_HOST).toBe("127.0.0.1");
+    expect(env.JWT_SECRET).toBe("test-only-not-for-production"); expect(env.SMTP_HOST).toBe("127.0.0.1");
     expect(env.SMTP_USER).toBe("audit@echelon.test");
     for (const key of ["DATABASE_URL", "EXTERNAL_DATABASE_URL", "EXTERNAL_DATABASE_CA", "DATABASE_CUTOVER_USE_EXTERNAL_TARGET",
       "OPENAI_API_KEY", "BUILT_IN_FORGE_API_KEY", "NODE_OPTIONS", "BUILD_COMMIT_SHA"]) expect(env).not.toHaveProperty(key);
@@ -57,6 +58,28 @@ describe("daily audit test isolation and full JSON evidence", () => {
     expect(excludes).not.toContain("server/buildRelease.test.ts");
     expect(() => ciDeterministicExcludes("unrecognized workflow")).toThrow();
   });
+  it("parses old and guarded CI commands identically and rejects unrecognized or bypassed commands", async () => {
+    const yaml = await readFile(".github/workflows/quality.yml", "utf8");
+    const guarded = "node --require ./scripts/test-safety.cjs ./node_modules/vitest/vitest.mjs run";
+    expect(yaml).toContain(guarded);
+    expect(ciDeterministicExcludes(yaml.replace(guarded, "pnpm exec vitest run"))).toEqual(ciDeterministicExcludes(yaml));
+    expect(() => ciDeterministicExcludes(yaml.replace(guarded, "node ./node_modules/vitest/vitest.mjs run"))).toThrow();
+    expect(() => ciDeterministicExcludes(yaml.replace(guarded, `${guarded} || true`))).toThrow();
+    expect(() => ciDeterministicExcludes(yaml.replace("--exclude '**/*.integration.test.ts'", ""))).toThrow();
+  });
+  it("runs the actual isolated audit Vitest invocation with its safety preload", async () => {
+    const dir = await mkdtemp(join(tmpdir(), "daily-audit-vitest-"));
+    try {
+      const root = process.cwd(), config = join(dir, "vitest.config.mjs"), reportPath = join(dir, "vitest.json");
+      await writeFile(config, `import base from ${JSON.stringify(pathToFileURL(resolve(root, "vitest.config.ts")).href)};\nexport default { ...base, envFile: false, envDir: ${JSON.stringify(dir)} };\n`);
+      const args = isolatedVitestArgs(root, config, [], reportPath);
+      expect(args.slice(0, 4)).toEqual(["--require", resolve(root, "scripts/test-safety.cjs"), "--import", "tsx"]);
+      args.push("server/ciBrowserRuntime.test.ts");
+      const result = await runCommand(process.execPath, args, { cwd: root, env: isolatedBrowserTestEnv(process.env, dir), logPath: join(dir, "vitest.log"), timeoutMs: 20_000 });
+      expect(result.exitCode, result.tail).toBe(0);
+      expect(evaluateVitest(result, JSON.parse(await readFile(reportPath, "utf8"))).status).toBe("pass");
+    } finally { await rm(dir, { recursive: true, force: true }); }
+  }, 25_000);
   it("passes only actual executed, consistent JSON and a zero exit", () => {
     expect(evaluateVitest(run(), report()).status).toBe("pass");
     expect(evaluateVitest(run(1), report()).status).toBe("fail");
