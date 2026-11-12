@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 import LandingNav from "@/components/LandingNav";
+import { notifyIdentityChange } from "@shared/identityChange";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
@@ -26,14 +27,17 @@ export default function MagicLinkConsume() {
     onSuccess: (data) => {
       if (data.valid) {
         // Store access in localStorage
-        localStorage.setItem("echelon_access_token", data.accessToken);
-        localStorage.setItem("echelon_subscription_email", data.email);
-        localStorage.setItem("echelon_trial_email", data.email);
-        localStorage.setItem("echelon_trial_unlocked", "true");
-        if (data.examTypes.length > 0) {
-          localStorage.setItem("echelon_subscription_exam_types", JSON.stringify(data.examTypes));
-          localStorage.setItem("echelon_purchased_products", JSON.stringify(data.examTypes));
-        }
+        try {
+          localStorage.setItem("echelon_access_token", data.accessToken);
+          localStorage.setItem("echelon_subscription_email", data.email);
+          localStorage.setItem("echelon_trial_email", data.email);
+          localStorage.setItem("echelon_trial_unlocked", "true");
+          if (data.examTypes.length > 0) {
+            localStorage.setItem("echelon_subscription_exam_types", JSON.stringify(data.examTypes));
+            localStorage.setItem("echelon_purchased_products", JSON.stringify(data.examTypes));
+          }
+        } catch { /* session cookie remains valid without local storage */ }
+        notifyIdentityChange();
         setEmail(data.email);
         setIsManager(!!data.isManager);
         setStatus("success");

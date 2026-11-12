@@ -439,7 +439,7 @@ export async function resolveAccessByEmail(
 }
 
 export async function resolveAccess(
-  user: User | null,
+  user: Pick<User, "id" | "email" | "role" | "openId"> | null,
   examType: string,
 ): Promise<AccessResult> {
   // Free exam types are always accessible — no purchase required

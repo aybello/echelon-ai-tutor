@@ -8,6 +8,7 @@ import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { useSearch } from "wouter";
 import { signInHref } from "@shared/funnelNavigation";
+import { notifyIdentityChange } from "@shared/identityChange";
 import SiteNav from "@/components/SiteNav";
 import StudyHomeCard from "@/components/StudyHomeCard";
 import { TutorGuideMark } from "@/components/TutorGuideMark";
@@ -171,6 +172,7 @@ export default function StudentDashboard() {
     setOtpError("");
     try {
       await verifyOtp.mutateAsync({ email: otpEmail.trim().toLowerCase(), code: otpCode.trim() });
+      notifyIdentityChange();
       await utils.dashboardAuth.me.invalidate();
       await utils.dashboard.overview.invalidate();
     } catch (e: any) {

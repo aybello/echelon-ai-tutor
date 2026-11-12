@@ -1,0 +1,1906 @@
+{
+  "courseKey": "us-texas-class-d-water",
+  "status": "approved",
+  "version": "echelon-six-games-2026-11-12-final-candidate",
+  "previewIds": {
+    "rapid-swipe": "us-texas-class-d-water-001",
+    "speed-match": "us-texas-class-d-water-021",
+    "odd-one-out": "us-texas-class-d-water-029",
+    "cause-effect": "us-texas-class-d-water-044",
+    "tap-the-flaw": "us-texas-class-d-water-059",
+    "before-after": "us-texas-class-d-water-order-001"
+  },
+  "examples": [
+    {
+      "id": "us-texas-class-d-water-001",
+      "mode": "rapid-swipe",
+      "prompt": "Groundwater is water found beneath the ground.",
+      "correctAnswer": true,
+      "explanation": "Groundwater is water found beneath the land surface; wells can draw it from an aquifer."
+    },
+    {
+      "id": "us-texas-class-d-water-002",
+      "mode": "rapid-swipe",
+      "prompt": "A well cap helps keep insects and debris out.",
+      "correctAnswer": true,
+      "explanation": "A properly installed cap helps protect the well opening."
+    },
+    {
+      "id": "us-texas-class-d-water-003",
+      "mode": "rapid-swipe",
+      "prompt": "A well screen is intended to let all sediment freely enter the well.",
+      "correctAnswer": false,
+      "explanation": "A screen limits sediment entering with the water."
+    },
+    {
+      "id": "us-texas-class-d-water-004",
+      "mode": "rapid-swipe",
+      "prompt": "Surface water treatment trains are identical at every utility.",
+      "correctAnswer": false,
+      "explanation": "Treatment steps vary with the source and utility."
+    },
+    {
+      "id": "us-texas-class-d-water-005",
+      "mode": "rapid-swipe",
+      "prompt": "Coagulation helps small particles bind together.",
+      "correctAnswer": true,
+      "explanation": "Coagulant chemicals help small particles come together."
+    },
+    {
+      "id": "us-texas-class-d-water-006",
+      "mode": "rapid-swipe",
+      "prompt": "Gentle mixing helps form larger floc particles.",
+      "correctAnswer": true,
+      "explanation": "Flocculation encourages formation of larger flocs."
+    },
+    {
+      "id": "us-texas-class-d-water-007",
+      "mode": "rapid-swipe",
+      "prompt": "Sedimentation separates floc mainly by settling.",
+      "correctAnswer": true,
+      "explanation": "Heavier floc settles to the bottom."
+    },
+    {
+      "id": "us-texas-class-d-water-008",
+      "mode": "rapid-swipe",
+      "prompt": "Chlorine can disinfect drinking water.",
+      "correctAnswer": true,
+      "explanation": "Chlorine is a chemical disinfectant that kills germs."
+    },
+    {
+      "id": "us-texas-class-d-water-009",
+      "mode": "rapid-swipe",
+      "prompt": "Ultraviolet treatment alone maintains a disinfectant residual through the pipes.",
+      "correctAnswer": false,
+      "explanation": "UV disinfects in the plant but does not leave a distribution residual."
+    },
+    {
+      "id": "us-texas-class-d-water-010",
+      "mode": "rapid-swipe",
+      "prompt": "A cross-connection may link drinking water piping to a nonpotable source.",
+      "correctAnswer": true,
+      "explanation": "Such a connection can allow contamination to enter during backflow."
+    },
+    {
+      "id": "us-texas-class-d-water-011",
+      "mode": "rapid-swipe",
+      "prompt": "Backflow is the intended forward delivery of drinking water.",
+      "correctAnswer": false,
+      "explanation": "Backflow is an unintended reversal of flow."
+    },
+    {
+      "id": "us-texas-class-d-water-012",
+      "mode": "rapid-swipe",
+      "prompt": "A sterile coliform sample bottle should be rinsed before filling.",
+      "correctAnswer": false,
+      "explanation": "Do not rinse a sterile coliform bottle: it can compromise sterility and remove any dechlorinating agent supplied in the bottle."
+    },
+    {
+      "id": "us-texas-class-d-water-013",
+      "mode": "rapid-swipe",
+      "prompt": "A rectangular tank 4 ft long, 5 ft wide and filled to 3 ft contains 60 cubic feet.",
+      "correctAnswer": true,
+      "explanation": "Volume = length × width × water depth = 4 × 5 × 3 = 60 cubic feet."
+    },
+    {
+      "id": "us-texas-class-d-water-014",
+      "mode": "rapid-swipe",
+      "prompt": "A DPD chlorine residual test is generally performed immediately on site.",
+      "correctAnswer": true,
+      "explanation": "EPA advises immediate on-site analysis and following kit directions."
+    },
+    {
+      "id": "us-texas-class-d-water-015",
+      "mode": "rapid-swipe",
+      "prompt": "Chlorine gas tends to collect in lower areas.",
+      "correctAnswer": true,
+      "explanation": "Chlorine gas is heavier than air and can collect low."
+    },
+    {
+      "id": "us-texas-class-d-water-016",
+      "mode": "rapid-swipe",
+      "prompt": "During an indoor chlorine release, entering the room without protection is a safe first response.",
+      "correctAnswer": false,
+      "explanation": "Leave the building and get help; do not enter an unsafe release area."
+    },
+    {
+      "id": "us-texas-class-d-water-017",
+      "mode": "rapid-swipe",
+      "prompt": "Checking a production meter over time can help identify unusual water use.",
+      "correctAnswer": true,
+      "explanation": "Comparing readings can reveal abnormal trends that deserve investigation."
+    },
+    {
+      "id": "us-texas-class-d-water-018",
+      "mode": "rapid-swipe",
+      "prompt": "Using 7.48 gallons per cubic foot, 10 cubic feet holds 74.8 gallons.",
+      "correctAnswer": true,
+      "explanation": "Multiply 10 cubic feet by 7.48 gallons per cubic foot to get 74.8 gallons."
+    },
+    {
+      "id": "us-texas-class-d-water-019",
+      "mode": "rapid-swipe",
+      "prompt": "A low disinfectant residual proves a cross-connection has occurred.",
+      "correctAnswer": false,
+      "explanation": "A low residual can be an indicator, but does not by itself prove backflow."
+    },
+    {
+      "id": "us-texas-class-d-water-020",
+      "mode": "rapid-swipe",
+      "prompt": "TCEQ lists basic water operations and resiliency overview for Class D training.",
+      "correctAnswer": true,
+      "explanation": "The TCEQ licensing page lists both courses for Class D."
+    },
+    {
+      "id": "us-texas-class-d-water-021",
+      "mode": "speed-match",
+      "prompt": "Match the terms to their unique descriptions: Coagulation, Flocculation, Sedimentation.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Coagulation",
+          "right": "Chemicals help small particles bind"
+        },
+        {
+          "id": "pair-2",
+          "left": "Flocculation",
+          "right": "Gentle mixing forms larger floc"
+        },
+        {
+          "id": "pair-3",
+          "left": "Sedimentation",
+          "right": "Heavier floc settles"
+        }
+      ],
+      "explanation": "Coagulation: Chemicals help small particles bind; Flocculation: Gentle mixing forms larger floc; Sedimentation: Heavier floc settles."
+    },
+    {
+      "id": "us-texas-class-d-water-022",
+      "mode": "speed-match",
+      "prompt": "Match the terms to their unique descriptions: Well casing, Well cap, Well screen.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Well casing",
+          "right": "Tube that maintains the well opening from groundwater to the surface"
+        },
+        {
+          "id": "pair-2",
+          "left": "Well cap",
+          "right": "Cover fitted on top of the casing"
+        },
+        {
+          "id": "pair-3",
+          "left": "Well screen",
+          "right": "Slotted component that limits sediment entering the well"
+        }
+      ],
+      "explanation": "Casing maintains the opening, a cap covers the top, and a screen limits sediment entry."
+    },
+    {
+      "id": "us-texas-class-d-water-023",
+      "mode": "speed-match",
+      "prompt": "Match the terms to their unique descriptions: Cross-connection, Backflow, Backflow prevention assembly.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Cross-connection",
+          "right": "Actual or potential link to nonpotable piping"
+        },
+        {
+          "id": "pair-2",
+          "left": "Backflow",
+          "right": "Unintended reversal of flow"
+        },
+        {
+          "id": "pair-3",
+          "left": "Backflow prevention assembly",
+          "right": "Device assembly intended to prevent reverse flow"
+        }
+      ],
+      "explanation": "Cross-connection: Actual or potential link to nonpotable piping; Backflow: Unintended reversal of flow; Backflow prevention assembly: Device assembly intended to prevent reverse flow."
+    },
+    {
+      "id": "us-texas-class-d-water-024",
+      "mode": "speed-match",
+      "prompt": "Match the terms to their unique descriptions: Production meter reading, Storage tank level reading, Chemical feed measurement.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Production meter reading",
+          "right": "Tracks quantity of water produced"
+        },
+        {
+          "id": "pair-2",
+          "left": "Storage tank level reading",
+          "right": "Tracks water level in a tank"
+        },
+        {
+          "id": "pair-3",
+          "left": "Chemical feed measurement",
+          "right": "Tracks amount of solution fed over time"
+        }
+      ],
+      "explanation": "Production meter reading: Tracks quantity of water produced; Storage tank level reading: Tracks water level in a tank; Chemical feed measurement: Tracks amount of solution fed over time."
+    },
+    {
+      "id": "us-texas-class-d-water-025",
+      "mode": "speed-match",
+      "prompt": "Match the terms to their unique descriptions: Chlorine, Sodium thiosulfate, DPD reagent.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Chlorine",
+          "right": "Disinfectant used to kill germs in water"
+        },
+        {
+          "id": "pair-2",
+          "left": "Sodium thiosulfate",
+          "right": "Neutralizer used for chlorinated coliform samples"
+        },
+        {
+          "id": "pair-3",
+          "left": "DPD reagent",
+          "right": "Reagent used in a common colorimetric residual test"
+        }
+      ],
+      "explanation": "Chlorine: Disinfectant used to kill germs in water; Sodium thiosulfate: Neutralizer used for chlorinated coliform samples; DPD reagent: Reagent used in a common colorimetric residual test."
+    },
+    {
+      "id": "us-texas-class-d-water-026",
+      "mode": "speed-match",
+      "prompt": "Match the terms to their unique descriptions: Ultraviolet light, Activated carbon, Chloramine.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Ultraviolet light",
+          "right": "Disinfection method that does not persist in distribution"
+        },
+        {
+          "id": "pair-2",
+          "left": "Activated carbon",
+          "right": "Filter material used to remove bad smells"
+        },
+        {
+          "id": "pair-3",
+          "left": "Chloramine",
+          "right": "Chlorine-and-ammonia disinfectant that persists in pipes"
+        }
+      ],
+      "explanation": "Ultraviolet light: Disinfection method that does not persist in distribution; Activated carbon: Filter material used to remove bad smells; Chloramine: Chlorine-and-ammonia disinfectant that persists in pipes."
+    },
+    {
+      "id": "us-texas-class-d-water-027",
+      "mode": "speed-match",
+      "prompt": "Match the terms to their unique descriptions: Sedimentation, Filtration, Disinfection.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Sedimentation",
+          "right": "Separation by settling heavier floc"
+        },
+        {
+          "id": "pair-2",
+          "left": "Filtration",
+          "right": "Passage of water through filter media"
+        },
+        {
+          "id": "pair-3",
+          "left": "Disinfection",
+          "right": "Treatment intended to inactivate or kill harmful microorganisms"
+        }
+      ],
+      "explanation": "Sedimentation separates by settling, filtration passes water through media, and disinfection inactivates or kills microorganisms. Filtration can also remove germs."
+    },
+    {
+      "id": "us-texas-class-d-water-028",
+      "mode": "speed-match",
+      "prompt": "Match the terms to their unique descriptions: Chlorine gas, Well cap, Isolation valve.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Chlorine gas",
+          "right": "Heavier-than-air respiratory hazard"
+        },
+        {
+          "id": "pair-2",
+          "left": "Well cap",
+          "right": "Barrier at the well top against debris"
+        },
+        {
+          "id": "pair-3",
+          "left": "Isolation valve",
+          "right": "Control used to separate a pipe section"
+        }
+      ],
+      "explanation": "Chlorine gas: Heavier-than-air respiratory hazard; Well cap: Barrier at the well top against debris; Isolation valve: Control used to separate a pipe section."
+    },
+    {
+      "id": "us-texas-class-d-water-029",
+      "mode": "odd-one-out",
+      "prompt": "In the example train coagulation → flocculation → sedimentation → filtration → disinfection, which option is not a treatment step?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Coagulation"
+        },
+        {
+          "id": "option-2",
+          "label": "Flocculation"
+        },
+        {
+          "id": "option-3",
+          "label": "Sedimentation"
+        },
+        {
+          "id": "option-4",
+          "label": "Billing"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Billing is an administrative task, not a treatment step."
+    },
+    {
+      "id": "us-texas-class-d-water-030",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a well component?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Casing"
+        },
+        {
+          "id": "option-2",
+          "label": "Cap"
+        },
+        {
+          "id": "option-3",
+          "label": "Screen"
+        },
+        {
+          "id": "option-4",
+          "label": "Coagulant"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Coagulant is a treatment chemical, not a well component."
+    },
+    {
+      "id": "us-texas-class-d-water-031",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a water source?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Lake"
+        },
+        {
+          "id": "option-2",
+          "label": "River"
+        },
+        {
+          "id": "option-3",
+          "label": "Aquifer"
+        },
+        {
+          "id": "option-4",
+          "label": "Chlorinator"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A chlorinator adds disinfectant; it is not a source."
+    },
+    {
+      "id": "us-texas-class-d-water-032",
+      "mode": "odd-one-out",
+      "prompt": "Which result is not an area measurement?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "20 square feet"
+        },
+        {
+          "id": "option-2",
+          "label": "12 square feet"
+        },
+        {
+          "id": "option-3",
+          "label": "5 feet"
+        },
+        {
+          "id": "option-4",
+          "label": "36 square feet"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Feet measure length; square feet measure area."
+    },
+    {
+      "id": "us-texas-class-d-water-033",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a chemical disinfectant mentioned by CDC?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Chlorine"
+        },
+        {
+          "id": "option-2",
+          "label": "Chloramine"
+        },
+        {
+          "id": "option-3",
+          "label": "Chlorine dioxide"
+        },
+        {
+          "id": "option-4",
+          "label": "Sand"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Sand is filter media; the others are chemical disinfectants."
+    },
+    {
+      "id": "us-texas-class-d-water-034",
+      "mode": "odd-one-out",
+      "prompt": "Using 7.48 US gallons per cubic foot, which volume is NOT approximately equal to 1 cubic foot?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "7.48 US gallons"
+        },
+        {
+          "id": "option-2",
+          "label": "1 cubic foot"
+        },
+        {
+          "id": "option-3",
+          "label": "10 US gallons"
+        },
+        {
+          "id": "option-4",
+          "label": "About 7.5 US gallons"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "One cubic foot is approximately 7.48 US gallons, which rounds to about 7.5 gallons; 10 gallons is not equivalent."
+    },
+    {
+      "id": "us-texas-class-d-water-035",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a potential sign of a backflow incident?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Unusual odor"
+        },
+        {
+          "id": "option-2",
+          "label": "Pressure drop"
+        },
+        {
+          "id": "option-3",
+          "label": "Reverse meter movement"
+        },
+        {
+          "id": "option-4",
+          "label": "A scheduled staff meeting"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A meeting is not an indicator of water flowing backward."
+    },
+    {
+      "id": "us-texas-class-d-water-036",
+      "mode": "odd-one-out",
+      "prompt": "Which is not part of a coliform sample bottle’s sanitary handling?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Keep cap interior clean"
+        },
+        {
+          "id": "option-2",
+          "label": "Use sterile bottle"
+        },
+        {
+          "id": "option-3",
+          "label": "Do not rinse bottle"
+        },
+        {
+          "id": "option-4",
+          "label": "Touch bottle interior"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Touching the interior can contaminate the sample."
+    },
+    {
+      "id": "us-texas-class-d-water-037",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a chlorine exposure symptom listed by CDC?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Coughing"
+        },
+        {
+          "id": "option-2",
+          "label": "Eye burning"
+        },
+        {
+          "id": "option-3",
+          "label": "Chest tightness"
+        },
+        {
+          "id": "option-4",
+          "label": "Improved night vision"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Chlorine can irritate eyes and lungs; it does not improve vision."
+    },
+    {
+      "id": "us-texas-class-d-water-038",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a treatment objective?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Remove particles"
+        },
+        {
+          "id": "option-2",
+          "label": "Kill germs"
+        },
+        {
+          "id": "option-3",
+          "label": "Reduce some odors"
+        },
+        {
+          "id": "option-4",
+          "label": "Increase billing revenue"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Treatment protects water quality; billing revenue is not a treatment process objective."
+    },
+    {
+      "id": "us-texas-class-d-water-039",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a reason to keep a valve maintenance log?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Find valve problems"
+        },
+        {
+          "id": "option-2",
+          "label": "Track repairs"
+        },
+        {
+          "id": "option-3",
+          "label": "Document inspections"
+        },
+        {
+          "id": "option-4",
+          "label": "Measure rainfall"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A valve log documents equipment condition and maintenance."
+    },
+    {
+      "id": "us-texas-class-d-water-040",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a distribution-system component?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Water main"
+        },
+        {
+          "id": "option-2",
+          "label": "Isolation valve"
+        },
+        {
+          "id": "option-3",
+          "label": "Storage tank"
+        },
+        {
+          "id": "option-4",
+          "label": "Aquifer rock"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Aquifer rock is part of a groundwater source, not the distribution network."
+    },
+    {
+      "id": "us-texas-class-d-water-041",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a chlorine emergency safety action?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Leave an indoor release"
+        },
+        {
+          "id": "option-2",
+          "label": "Seek fresh air"
+        },
+        {
+          "id": "option-3",
+          "label": "Call for help"
+        },
+        {
+          "id": "option-4",
+          "label": "Ignore breathing trouble"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Chlorine inhalation can harm breathing and warrants prompt help."
+    },
+    {
+      "id": "us-texas-class-d-water-042",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a sample integrity concern?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Dirty cap interior"
+        },
+        {
+          "id": "option-2",
+          "label": "Wrong container"
+        },
+        {
+          "id": "option-3",
+          "label": "Late delivery"
+        },
+        {
+          "id": "option-4",
+          "label": "Operator shoe color"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Sample handling and timing matter; shoe color does not."
+    },
+    {
+      "id": "us-texas-class-d-water-043",
+      "mode": "odd-one-out",
+      "prompt": "Which is not used to judge a tank’s operating condition?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Water level"
+        },
+        {
+          "id": "option-2",
+          "label": "Evidence of overflow"
+        },
+        {
+          "id": "option-3",
+          "label": "System pressure"
+        },
+        {
+          "id": "option-4",
+          "label": "Employee birthday"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Level, overflow and pressure can reveal storage or control issues."
+    },
+    {
+      "id": "us-texas-class-d-water-044",
+      "mode": "cause-effect",
+      "prompt": "If a well cap is missing, what risk increases?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Debris or insects entering the well"
+        },
+        {
+          "id": "option-2",
+          "label": "The well becomes a filter"
+        },
+        {
+          "id": "option-3",
+          "label": "The water automatically disinfects"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The cap helps exclude debris and small animals."
+    },
+    {
+      "id": "us-texas-class-d-water-045",
+      "mode": "cause-effect",
+      "prompt": "If polluted rainwater pools near a well, what can happen?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It may seep into the well"
+        },
+        {
+          "id": "option-2",
+          "label": "It guarantees a safe source"
+        },
+        {
+          "id": "option-3",
+          "label": "It changes groundwater into distilled water"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Runoff can carry harmful bacteria or chemicals toward a well."
+    },
+    {
+      "id": "us-texas-class-d-water-047",
+      "mode": "cause-effect",
+      "prompt": "Why can floc settle during sedimentation?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The floc is denser than the surrounding water"
+        },
+        {
+          "id": "option-2",
+          "label": "It becomes a dissolved gas"
+        },
+        {
+          "id": "option-3",
+          "label": "It floats because it is less dense"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Floc denser than the surrounding water can settle under gravity."
+    },
+    {
+      "id": "us-texas-class-d-water-049",
+      "mode": "cause-effect",
+      "prompt": "Why leave a suitable chemical disinfectant residual in water entering distribution?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "To help kill germs in pipes"
+        },
+        {
+          "id": "option-2",
+          "label": "To make every chemical disappear"
+        },
+        {
+          "id": "option-3",
+          "label": "To measure tank height"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A residual can continue acting as water travels in the pipes."
+    },
+    {
+      "id": "us-texas-class-d-water-050",
+      "mode": "cause-effect",
+      "prompt": "If pressure in nonpotable plumbing exceeds drinking-water pressure across an unprotected connection, what may happen?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Backflow into drinking water"
+        },
+        {
+          "id": "option-2",
+          "label": "Guaranteed forward flow"
+        },
+        {
+          "id": "option-3",
+          "label": "Immediate coagulation"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A pressure difference across an unprotected cross-connection can drive reverse flow."
+    },
+    {
+      "id": "us-texas-class-d-water-051",
+      "mode": "cause-effect",
+      "prompt": "Why use an appropriate backflow prevention assembly at a cross-connection?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "To reduce reverse-flow contamination risk"
+        },
+        {
+          "id": "option-2",
+          "label": "To raise water temperature"
+        },
+        {
+          "id": "option-3",
+          "label": "To replace all treatment"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A suitable assembly protects against backflow; applicability depends on local requirements."
+    },
+    {
+      "id": "us-texas-class-d-water-053",
+      "mode": "cause-effect",
+      "prompt": "In a simplified chlorine balance, dose is 2.0 mg/L and demand is 0.8 mg/L at the stated test time. What is the residual?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "1.2 mg/L"
+        },
+        {
+          "id": "option-2",
+          "label": "2.8 mg/L"
+        },
+        {
+          "id": "option-3",
+          "label": "0.8 mg/L"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Residual = dose − demand = 2.0 − 0.8 = 1.2 mg/L for the same sample and time."
+    },
+    {
+      "id": "us-texas-class-d-water-054",
+      "mode": "cause-effect",
+      "prompt": "Why measure chlorine residual promptly with a DPD kit?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The residual can change after collection, including loss on exposure to light"
+        },
+        {
+          "id": "option-2",
+          "label": "The sample must be stored for weeks"
+        },
+        {
+          "id": "option-3",
+          "label": "A delay always increases the result"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Chlorine may be lost after collection, including from exposure to strong light. Analyze immediately according to the approved method and kit directions."
+    },
+    {
+      "id": "us-texas-class-d-water-055",
+      "mode": "cause-effect",
+      "prompt": "Why investigate a sudden, unexplained rise in daily production?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It can indicate a leak or unauthorized use"
+        },
+        {
+          "id": "option-2",
+          "label": "It proves every customer is ill"
+        },
+        {
+          "id": "option-3",
+          "label": "It guarantees the pump is failing"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "An unusual high-flow trend is a clue, not proof of a specific cause."
+    },
+    {
+      "id": "us-texas-class-d-water-056",
+      "mode": "cause-effect",
+      "prompt": "Why maintain isolation valves before a main break?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "They help isolate a section for repairs"
+        },
+        {
+          "id": "option-2",
+          "label": "They sterilize a sample bottle"
+        },
+        {
+          "id": "option-3",
+          "label": "They remove all dissolved chemicals"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A functioning valve helps separate a section when a repair is needed."
+    },
+    {
+      "id": "us-texas-class-d-water-057",
+      "mode": "cause-effect",
+      "prompt": "Why monitor a storage tank for overflow?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Overflow can indicate a control problem"
+        },
+        {
+          "id": "option-2",
+          "label": "Overflow proves a laboratory is closed"
+        },
+        {
+          "id": "option-3",
+          "label": "Overflow disinfects the distribution system"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "EPA notes overflow may indicate a pump-control problem."
+    },
+    {
+      "id": "us-texas-class-d-water-058",
+      "mode": "cause-effect",
+      "prompt": "Why monitor a chemical feed pump and solution usage?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "To check whether feed is being delivered as intended"
+        },
+        {
+          "id": "option-2",
+          "label": "To determine a customer’s birthday"
+        },
+        {
+          "id": "option-3",
+          "label": "To stop the aquifer from recharging"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Feed measurements and trends can indicate plugging or incorrect dosing."
+    },
+    {
+      "id": "us-texas-class-d-water-059",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator adds 4 ft of tank length and 5 ft of width and calls 9 square feet the area. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Rectangular area uses multiplication"
+        },
+        {
+          "id": "option-2",
+          "label": "Rectangular area uses addition"
+        },
+        {
+          "id": "option-3",
+          "label": "The answer must be in cubic feet"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A 4 ft by 5 ft rectangle has an area of 4 × 5 = 20 square feet."
+    },
+    {
+      "id": "us-texas-class-d-water-060",
+      "mode": "cause-effect",
+      "prompt": "Why leave a building when chlorine gas is released indoors?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "To move away from exposure and seek fresh air"
+        },
+        {
+          "id": "option-2",
+          "label": "To make the gas heavier"
+        },
+        {
+          "id": "option-3",
+          "label": "To test whether the odor is pleasant"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "CDC advises leaving an indoor release area and getting help."
+    },
+    {
+      "id": "us-texas-class-d-water-061",
+      "mode": "tap-the-flaw",
+      "prompt": "For the same sample and stated test time, a worker calculates 2.0 mg/L chlorine dose minus 0.8 mg/L demand as 2.8 mg/L residual. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Demand should be subtracted from dose"
+        },
+        {
+          "id": "option-2",
+          "label": "Demand should be added to dose"
+        },
+        {
+          "id": "option-3",
+          "label": "Residual must be reported in feet"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Using the simplified balance at the same test time, residual = 2.0 − 0.8 = 1.2 mg/L."
+    },
+    {
+      "id": "us-texas-class-d-water-062",
+      "mode": "cause-effect",
+      "prompt": "For a simplified dose problem, demand is 0.5 mg/L and the desired residual at the same test time is 0.7 mg/L. What dose is needed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "1.2 mg/L"
+        },
+        {
+          "id": "option-2",
+          "label": "0.2 mg/L"
+        },
+        {
+          "id": "option-3",
+          "label": "0.35 mg/L"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Dose = demand + residual = 0.5 + 0.7 = 1.2 mg/L in this simplified balance."
+    },
+    {
+      "id": "us-texas-class-d-water-063",
+      "mode": "cause-effect",
+      "prompt": "Why compare chemical use with water production?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "To assess feed trends relative to water treated"
+        },
+        {
+          "id": "option-2",
+          "label": "To identify the color of a well cap"
+        },
+        {
+          "id": "option-3",
+          "label": "To calculate employee vacation"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Comparing chemical usage to water volume can reveal changes requiring investigation."
+    },
+    {
+      "id": "us-texas-class-d-water-064",
+      "mode": "tap-the-flaw",
+      "prompt": "A sampler says, “I will touch the inside of the sterile cap.” What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Touching the inside can contaminate the sample"
+        },
+        {
+          "id": "option-2",
+          "label": "The cap must be painted blue"
+        },
+        {
+          "id": "option-3",
+          "label": "A sample needs no cap"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Keep the inside of the bottle and cap clean."
+    },
+    {
+      "id": "us-texas-class-d-water-065",
+      "mode": "tap-the-flaw",
+      "prompt": "A sampler rinses a sterile coliform bottle before filling. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Rinsing compromises the bottle and may remove neutralizer"
+        },
+        {
+          "id": "option-2",
+          "label": "Rinsing increases the water pressure"
+        },
+        {
+          "id": "option-3",
+          "label": "Coliform bottles need no sample"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "EPA says do not rinse the sterile bottle."
+    },
+    {
+      "id": "us-texas-class-d-water-066",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator collects a sample but omits its collection date and location. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The sample record lacks traceability"
+        },
+        {
+          "id": "option-2",
+          "label": "The tank gets too full"
+        },
+        {
+          "id": "option-3",
+          "label": "The water is automatically disinfected"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Document sample location, sampler and collection date and time."
+    },
+    {
+      "id": "us-texas-class-d-water-067",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator assumes all sample types use identical bottles and preservation. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Requirements vary by analyte and method"
+        },
+        {
+          "id": "option-2",
+          "label": "All bottles must be metal"
+        },
+        {
+          "id": "option-3",
+          "label": "Preservation is never used"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Check the laboratory’s bottles, preservatives, method and instructions."
+    },
+    {
+      "id": "us-texas-class-d-water-068",
+      "mode": "tap-the-flaw",
+      "prompt": "Immediately before collecting a first-draw lead sample, a sampler flushes the tap instead of collecting the first water after the required standing period. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Flushing defeats the first-draw condition"
+        },
+        {
+          "id": "option-2",
+          "label": "Flushing always sterilizes lead"
+        },
+        {
+          "id": "option-3",
+          "label": "Lead samples require boiling"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "EPA distinguishes first-draw lead sampling from flushed coliform collection."
+    },
+    {
+      "id": "us-texas-class-d-water-069",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator stores a chlorine residual sample for days before testing. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Residual testing should be immediate on site"
+        },
+        {
+          "id": "option-2",
+          "label": "A residual test is a meter reading"
+        },
+        {
+          "id": "option-3",
+          "label": "Residuals are measured by smell"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "EPA specifies immediate on-site residual analysis."
+    },
+    {
+      "id": "us-texas-class-d-water-070",
+      "mode": "tap-the-flaw",
+      "prompt": "A coworker says a good chlorine odor proves the exact residual. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Odor is not a measured residual"
+        },
+        {
+          "id": "option-2",
+          "label": "Chlorine cannot have an odor"
+        },
+        {
+          "id": "option-3",
+          "label": "Residual is measured in feet"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Use an appropriate residual test and follow its directions."
+    },
+    {
+      "id": "us-texas-class-d-water-071",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator sets a DPD kit aside and guesses the result by looking at the water. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A visual guess is not the specified test"
+        },
+        {
+          "id": "option-2",
+          "label": "Clear water is always germ-free"
+        },
+        {
+          "id": "option-3",
+          "label": "DPD is a pipe fitting"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Follow the test kit’s reagent and color measurement instructions."
+    },
+    {
+      "id": "us-texas-class-d-water-072",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator says UV treatment leaves a lasting chlorine residual. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "UV provides no persistent distribution disinfectant residual"
+        },
+        {
+          "id": "option-2",
+          "label": "UV is the same chemical as chlorine"
+        },
+        {
+          "id": "option-3",
+          "label": "All residuals are tank levels"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "UV disinfects at the point where it is applied but does not provide a continuing disinfectant residual in distribution pipes."
+    },
+    {
+      "id": "us-texas-class-d-water-073",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker calls sedimentation “gentle mixing.” What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Gentle mixing describes flocculation"
+        },
+        {
+          "id": "option-2",
+          "label": "Sedimentation is always chlorination"
+        },
+        {
+          "id": "option-3",
+          "label": "Floc never settles"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Sedimentation separates heavier floc by settling."
+    },
+    {
+      "id": "us-texas-class-d-water-074",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker says coagulation means measuring tank level. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Coagulation helps particles bind"
+        },
+        {
+          "id": "option-2",
+          "label": "Coagulation is a meter brand"
+        },
+        {
+          "id": "option-3",
+          "label": "Tank level is the same as a dose"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Coagulant chemicals help small particles come together."
+    },
+    {
+      "id": "us-texas-class-d-water-075",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker claims every plant must use the same five treatment steps in the same order. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Treatment trains vary with source and utility"
+        },
+        {
+          "id": "option-2",
+          "label": "All source water is identical"
+        },
+        {
+          "id": "option-3",
+          "label": "Every utility uses only wells"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The CDC sequence is common, not universal."
+    },
+    {
+      "id": "us-texas-class-d-water-076",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker says a well cap can be left missing because casing alone keeps insects out. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The cap protects the top opening"
+        },
+        {
+          "id": "option-2",
+          "label": "A cap is a water meter"
+        },
+        {
+          "id": "option-3",
+          "label": "A cap is filter media"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A well cap helps keep debris, insects and small animals out."
+    },
+    {
+      "id": "us-texas-class-d-water-077",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker says a well screen is designed to let excessive sediment enter. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A screen limits sediment entry"
+        },
+        {
+          "id": "option-2",
+          "label": "A screen measures chlorine residual"
+        },
+        {
+          "id": "option-3",
+          "label": "A screen is a fire hydrant"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The well screen reduces sediment entering the well."
+    },
+    {
+      "id": "us-texas-class-d-water-078",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker assumes a deep well can never be contaminated. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Depth alone does not guarantee protection from contamination"
+        },
+        {
+          "id": "option-2",
+          "label": "All groundwater is surface water"
+        },
+        {
+          "id": "option-3",
+          "label": "Well caps are chemical disinfectants"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Depth and continuous casing can reduce risk, but contamination remains possible; well condition and location matter."
+    },
+    {
+      "id": "us-texas-class-d-water-079",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator calls a potable-to-irrigation connection harmless even when unprotected. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "An unprotected cross-connection can allow backflow"
+        },
+        {
+          "id": "option-2",
+          "label": "Irrigation is always sterile"
+        },
+        {
+          "id": "option-3",
+          "label": "Flow can never reverse"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A pressure difference can draw or push contaminants through the connection."
+    },
+    {
+      "id": "us-texas-class-d-water-080",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker says a pressure drop proves contamination has entered. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A pressure drop is a warning indicator, not proof"
+        },
+        {
+          "id": "option-2",
+          "label": "Pressure cannot change"
+        },
+        {
+          "id": "option-3",
+          "label": "Pressure is a unit of color"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Investigate indicators and follow the incident plan; one sign alone is not proof."
+    },
+    {
+      "id": "us-texas-class-d-water-081",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker says a short-term drop in disinfectant residual by itself identifies exactly where backflow occurred. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A residual drop alone does not locate or prove backflow"
+        },
+        {
+          "id": "option-2",
+          "label": "Chlorine residual is a pipe material"
+        },
+        {
+          "id": "option-3",
+          "label": "All leaks reverse flow"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A short-term residual reduction can be an indicator, but it is not proof and warrants investigation."
+    },
+    {
+      "id": "us-texas-class-d-water-082",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator ignores an unusual high production reading because it can never signal a leak. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Unusually high flow can indicate leaks or unauthorized use"
+        },
+        {
+          "id": "option-2",
+          "label": "Production meters measure only taste"
+        },
+        {
+          "id": "option-3",
+          "label": "Leaks always lower production"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "An unusual production trend warrants investigation, not an automatic diagnosis."
+    },
+    {
+      "id": "us-texas-class-d-water-083",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator never checks tank level because a tank cannot overflow. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Tanks can overflow and may signal control problems"
+        },
+        {
+          "id": "option-2",
+          "label": "A tank is a laboratory bottle"
+        },
+        {
+          "id": "option-3",
+          "label": "Tank level is always constant"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "EPA advises checking levels and overflow evidence."
+    },
+    {
+      "id": "us-texas-class-d-water-084",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker assumes a stuck isolation valve is acceptable until the next pipe emergency. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A stuck valve may prevent timely isolation"
+        },
+        {
+          "id": "option-2",
+          "label": "Isolation valves are sampling bottles"
+        },
+        {
+          "id": "option-3",
+          "label": "Valves disinfect water"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Inspection, exercise and repair help valves operate when needed."
+    },
+    {
+      "id": "us-texas-class-d-water-085",
+      "mode": "tap-the-flaw",
+      "prompt": "During an indoor chlorine release a worker enters without training or protective equipment to investigate. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Entering exposes the worker to chlorine"
+        },
+        {
+          "id": "option-2",
+          "label": "Chlorine is always harmless"
+        },
+        {
+          "id": "option-3",
+          "label": "A leak should be identified by tasting it"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Leave the release area, alert others and get emergency help under the response plan."
+    },
+    {
+      "id": "us-texas-class-d-water-086",
+      "mode": "tap-the-flaw",
+      "prompt": "A chlorine-exposed person is told to ignore eye burning. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Eye irritation needs prompt decontamination and help"
+        },
+        {
+          "id": "option-2",
+          "label": "Eye burning improves vision"
+        },
+        {
+          "id": "option-3",
+          "label": "Chlorine cannot irritate eyes"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "CDC advises flushing affected eyes with lukewarm water and getting help."
+    },
+    {
+      "id": "us-texas-class-d-water-087",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker mixes household bleach with another cleaner to make it stronger. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Some bleach-and-cleaner mixtures can release chlorine gas"
+        },
+        {
+          "id": "option-2",
+          "label": "Mixing always makes water potable"
+        },
+        {
+          "id": "option-3",
+          "label": "Bleach cannot react with cleaners"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "CDC warns that household bleach mixed with certain cleaning products can release chlorine gas; do not mix household cleaners."
+    },
+    {
+      "id": "us-texas-class-d-water-088",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator concludes that visible clean water must contain no germs. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Appearance alone cannot establish microbiological safety"
+        },
+        {
+          "id": "option-2",
+          "label": "Germs are always visible"
+        },
+        {
+          "id": "option-3",
+          "label": "Clear water always has a chlorine residual"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Source water can contain germs and must be evaluated and treated as appropriate."
+    },
+    {
+      "id": "us-texas-class-d-water-top-001",
+      "mode": "tap-the-flaw",
+      "prompt": "An upright cylindrical tank has an inside diameter of 4 ft and a water depth of 6 ft. Using 0.785 × diameter² × water depth, an operator reports 18.84 ft³. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The diameter must be squared before multiplying by the depth"
+        },
+        {
+          "id": "option-2",
+          "label": "The diameter must be added to the depth"
+        },
+        {
+          "id": "option-3",
+          "label": "Cubic feet measure the surface area of the water"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Cylinder water volume = 0.785 × diameter² × water depth. First square 4 ft: 4 ft × 4 ft = 16 ft². Then 0.785 × 16 ft² × 6 ft = 75.36 ft³. The reported 18.84 ft³ incorrectly uses 4 rather than 16 for diameter squared. This is a geometry exercise, not an operating setpoint."
+    },
+    {
+      "id": "us-texas-class-d-water-top-003",
+      "mode": "tap-the-flaw",
+      "prompt": "A utility treats 0.20 million gallons with a hypothetical 3.0 mg/L dose of pure chlorine. Using 8.34 as the standard conversion factor, an operator calculates 25.02 pounds by multiplying only the dose and conversion factor. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The volume in million gallons was not multiplied into the dose calculation"
+        },
+        {
+          "id": "option-2",
+          "label": "The desired dose should be added to the water volume"
+        },
+        {
+          "id": "option-3",
+          "label": "The factor 8.34 converts feet directly into square feet"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Pure chlorine mass in lb = water volume in million US gallons × dose in mg/L × 8.34, with 8.34 having units lb per (million US gallons × mg/L). Thus 0.20 × 3.0 × 8.34 = 5.004 lb, or approximately 5.00 lb. The reported 25.02 omitted the 0.20-million-gallon volume. This theoretical exercise does not determine an operational feed setting."
+    },
+    {
+      "id": "us-texas-class-d-water-top-004",
+      "mode": "tap-the-flaw",
+      "prompt": "A master meter reading rises from 125,000 gal to 173,000 gal over two full days, with no rollover. A worker reports average production as 48,000 gal/day. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The 48,000 gallons is the two-day total, not the daily average"
+        },
+        {
+          "id": "option-2",
+          "label": "Meter readings should be added, not subtracted"
+        },
+        {
+          "id": "option-3",
+          "label": "A daily average has units of square feet"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Volume produced = final meter reading − initial meter reading = 173,000 gal − 125,000 gal = 48,000 gal. Average production = 48,000 gal ÷ 2 days = 24,000 gal/day. This assumes the meter records gallons and does not roll over."
+    },
+    {
+      "id": "us-texas-class-d-water-top-005",
+      "mode": "tap-the-flaw",
+      "prompt": "A pump fills an empty 3,600-gallon tank at a constant 30 gal/min, with no water leaving. A worker says filling takes 120 hours. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Dividing gallons by gallons per minute gives minutes, not hours"
+        },
+        {
+          "id": "option-2",
+          "label": "Volume must be multiplied by the pumping rate to obtain time"
+        },
+        {
+          "id": "option-3",
+          "label": "Gallons per minute measure tank depth"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Time = volume ÷ flow rate = 3,600 gal ÷ 30 gal/min = 120 min. Convert minutes to hours: 120 min ÷ 60 min/hour = 2 hours. The answer assumes constant flow and no outlet or overflow."
+    },
+    {
+      "id": "us-texas-class-d-water-top-006",
+      "mode": "tap-the-flaw",
+      "prompt": "A straight-sided chemical solution tank is calibrated at 2 gallons per inch of level. Without a refill or leak, its level falls from 18 inches to 13 inches during a shift. An operator reports that 62 gallons were used. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Use the drop in level, not the sum of the readings, to calculate usage"
+        },
+        {
+          "id": "option-2",
+          "label": "Multiply the sum of the levels by the tank calibration"
+        },
+        {
+          "id": "option-3",
+          "label": "The calibration converts gallons into pressure"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Level drop = initial level − final level = 18 in − 13 in = 5 in. Solution used = 5 in × 2 gal/in = 10 gal. Adding the readings instead gives (18 + 13) × 2 = 62 gal, which is not the amount used. This is solution volume, not pounds of active chemical; the result assumes no refill, leak or other loss."
+    },
+    {
+      "id": "us-texas-class-d-water-top-007",
+      "mode": "speed-match",
+      "prompt": "Match each water-cycle process to the movement or change it describes.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Evaporation",
+          "right": "Liquid water changes to water vapor"
+        },
+        {
+          "id": "pair-2",
+          "left": "Precipitation",
+          "right": "Rain, snow or hail falls from clouds"
+        },
+        {
+          "id": "pair-3",
+          "left": "Infiltration",
+          "right": "Water enters the ground from the surface"
+        }
+      ],
+      "explanation": "Evaporation changes liquid water to vapor; precipitation is water falling from clouds; infiltration moves surface water into the ground. These processes are distinct paths within the water cycle."
+    },
+    {
+      "id": "us-texas-class-d-water-top-008",
+      "mode": "tap-the-flaw",
+      "prompt": "A mechanic switches a pump off at its normal control button and immediately starts servicing it without applying the facility's hazardous-energy procedure. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A control switch alone may not prevent unexpected startup or release of stored energy"
+        },
+        {
+          "id": "option-2",
+          "label": "A normal stop button is an energy-isolating device if the pump appears stationary"
+        },
+        {
+          "id": "option-3",
+          "label": "Stored energy needs control only if the pump restarts"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Unexpected startup or stored energy can injure workers during servicing. When the facility's hazardous-energy procedure applies, authorized, trained personnel should follow it, including control of stored energy and verification of isolation before work. OSHA identifies push buttons as control devices, not energy-isolating devices; a normal stop button is not a substitute for the procedure."
+    },
+    {
+      "id": "us-texas-class-d-water-top-009",
+      "mode": "tap-the-flaw",
+      "prompt": "A sampler chooses an expired, sterile-bottle package for a routine coliform sample because the bottle looks intact. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The expired bottle should not be used; obtain an acceptable laboratory-supplied bottle"
+        },
+        {
+          "id": "option-2",
+          "label": "Use it after rinsing the bottle with tap water"
+        },
+        {
+          "id": "option-3",
+          "label": "Use it if the seal looks intact and the expiration date is recent"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "TCEQ's example microbial sampling procedure says not to use expired, damaged or broken-seal bottles and specifies sterile bottles obtained from a TCEQ-accredited laboratory for total coliform and E. coli drinking-water analysis. Follow current laboratory instructions and the system sampling plan."
+    },
+    {
+      "id": "us-texas-class-d-water-order-001",
+      "mode": "before-after",
+      "prompt": "In CDC’s example surface-water treatment sequence, does flocculation occur before or after coagulation?",
+      "correctAnswer": "after",
+      "explanation": "In the CDC example, coagulation helps small particles bind, and flocculation then gently mixes them into larger flocs. Treatment processes vary by utility."
+    },
+    {
+      "id": "us-texas-class-d-water-order-002",
+      "mode": "before-after",
+      "prompt": "In CDC’s example surface-water treatment sequence, does sedimentation occur before or after flocculation?",
+      "correctAnswer": "after",
+      "explanation": "CDC’s example uses flocculation to form larger flocs and sedimentation to settle them out. The example is not a universal plant design."
+    },
+    {
+      "id": "us-texas-class-d-water-order-003",
+      "mode": "before-after",
+      "prompt": "In CDC’s example surface-water treatment sequence, does filtration occur before or after sedimentation?",
+      "correctAnswer": "after",
+      "explanation": "In the CDC example, floc settles during sedimentation; the clear water above it then passes through filters. Treatment trains differ among utilities."
+    },
+    {
+      "id": "us-texas-class-d-water-order-004",
+      "mode": "before-after",
+      "prompt": "In CDC’s example surface-water treatment sequence, does filtration occur before or after the final disinfection step?",
+      "correctAnswer": "before",
+      "explanation": "The CDC example filters the water and then applies the final disinfection step to kill remaining germs. Some plants also disinfect at other points."
+    },
+    {
+      "id": "us-texas-class-d-water-order-005",
+      "mode": "before-after",
+      "prompt": "For CDC’s example drinking-water system, does the source-water intake occur before or after treatment at the plant?",
+      "correctAnswer": "before",
+      "explanation": "CDC describes water being piped from its source to a plant for treatment. The particular treatment steps depend on the source and the utility."
+    },
+    {
+      "id": "us-texas-class-d-water-order-006",
+      "mode": "before-after",
+      "prompt": "In a system applying chlorine at the plant to leave a distribution residual, is the plant chlorine addition before or after that residual acts in the distribution pipes?",
+      "correctAnswer": "before",
+      "explanation": "Chlorine is added at the plant, and the residual remaining in the water can continue killing germs as water moves through distribution pipes. The exercise does not specify a dose."
+    },
+    {
+      "id": "us-texas-class-d-water-order-007",
+      "mode": "before-after",
+      "prompt": "In the TCEQ example microbial sample procedure, is the initial tap flush before or after tap disinfection?",
+      "correctAnswer": "before",
+      "explanation": "TCEQ’s example places the initial flush ahead of tap disinfection. This example is for microbial collection, not a general instruction for every analyte; use the current system plan and laboratory instructions."
+    },
+    {
+      "id": "us-texas-class-d-water-order-008",
+      "mode": "before-after",
+      "prompt": "In the TCEQ example microbial sample procedure, is filling the sterile sample bottle before or after disinfection of the sample tap?",
+      "correctAnswer": "after",
+      "explanation": "The TCEQ microbial example disinfects the tap and then collects the sample in a sterile bottle. Use the current system sampling plan and laboratory instructions."
+    },
+    {
+      "id": "us-texas-class-d-water-order-009",
+      "mode": "before-after",
+      "prompt": "In the TCEQ example microbial sample procedure, is transferring the sample bottle to an ice chest before or after filling the bottle?",
+      "correctAnswer": "after",
+      "explanation": "The TCEQ example calls for promptly placing the collected sample in an ice chest. It is an example for microbial samples; current laboratory handling instructions control."
+    },
+    {
+      "id": "us-texas-class-d-water-order-010",
+      "mode": "before-after",
+      "prompt": "Under the EPA Region 8 drinking-water sampling guide, is checking the analytical laboratory’s acceptable bottles and procedures before or after collecting the sample?",
+      "correctAnswer": "before",
+      "explanation": "The EPA guide recommends checking the laboratory’s requirements ahead of collection so that the equipment and procedures are acceptable. The guide is not a Texas-specific compliance procedure."
+    },
+    {
+      "id": "us-texas-class-d-water-order-011",
+      "mode": "before-after",
+      "prompt": "In EPA’s general DPD colorimetric residual example, is measuring the sample’s pink color before or after adding the DPD reagent?",
+      "correctAnswer": "after",
+      "explanation": "EPA describes adding the DPD reagent, allowing the reaction specified by the method, and measuring the color produced. Follow the applicable method and test-kit instructions."
+    },
+    {
+      "id": "us-texas-class-d-water-order-012",
+      "mode": "before-after",
+      "prompt": "In EPA’s general DPD colorimetric example, is adding the reagent before or after measuring out the sample volume?",
+      "correctAnswer": "after",
+      "explanation": "EPA’s general example measures a known sample volume, adds the DPD reagents, and then measures the resulting color. Follow the specific test-kit and applicable method instructions; other kits can differ."
+    },
+    {
+      "id": "us-texas-class-d-water-order-013",
+      "mode": "before-after",
+      "prompt": "For the same master meter and reporting period, is calculating water production from the readings before or after obtaining the current reading?",
+      "correctAnswer": "after",
+      "explanation": "EPA’s small-system guide calculates water production from a current meter reading and an earlier reading. The current reading must be obtained before that period’s total can be calculated."
+    },
+    {
+      "id": "us-texas-class-d-water-order-014",
+      "mode": "before-after",
+      "prompt": "In EPA’s small-system daily production review, is comparing daily use with system design capacity before or after calculating daily use for the same period?",
+      "correctAnswer": "after",
+      "explanation": "EPA describes calculating daily use from meter readings and then comparing it with design capacity to assess whether treatment capacity is adequate."
+    },
+    {
+      "id": "us-texas-class-d-water-order-015",
+      "mode": "before-after",
+      "prompt": "In OSHA’s simple lockout example for equipment servicing, is verifying isolation before or after applying the assigned lock?",
+      "correctAnswer": "after",
+      "explanation": "OSHA’s illustrative procedure applies the lock, addresses stored energy and verifies isolation before servicing. Only authorized personnel should use the facility-specific hazardous-energy procedure; complex equipment may require additional steps."
+    },
+    {
+      "id": "us-texas-class-d-water-order-016",
+      "mode": "before-after",
+      "prompt": "In OSHA’s simple lockout example, is notifying affected employees of the planned shutdown before or after the equipment is stopped?",
+      "correctAnswer": "before",
+      "explanation": "The example notifies affected employees that servicing and shutdown are needed before the normal stopping step. The applicable employer procedure governs actual work."
+    },
+    {
+      "id": "us-texas-class-d-water-order-017",
+      "mode": "before-after",
+      "prompt": "In OSHA’s simple lockout example, is checking that employees are safely positioned or removed before or after removing the lock for return to service?",
+      "correctAnswer": "before",
+      "explanation": "OSHA’s example checks that personnel are safely positioned or removed before lock removal and reenergization. Actual restoration must follow the employer’s applicable procedure and authorized personnel requirements."
+    },
+    {
+      "id": "us-texas-class-d-water-order-018",
+      "mode": "before-after",
+      "prompt": "For a water parcel in a liquid-cloud rain event, does condensation into cloud droplets occur before or after that rainfall reaches the ground?",
+      "correctAnswer": "before",
+      "explanation": "In this specified rain event, water vapor condenses into cloud droplets; droplets grow and precipitation can fall to the surface. Water can take many other routes through the water cycle."
+    },
+    {
+      "id": "us-texas-class-d-water-order-019",
+      "mode": "before-after",
+      "prompt": "In a rain-fed natural groundwater recharge pathway, does infiltration into soil occur before or after the same water reaches the aquifer?",
+      "correctAnswer": "before",
+      "explanation": "In this recharge pathway, rainwater infiltrates the ground and some travels deeper to recharge groundwater. Not all rainfall infiltrates or reaches an aquifer."
+    },
+    {
+      "id": "us-texas-class-d-water-order-020",
+      "mode": "before-after",
+      "prompt": "In a groundwater flow pathway that discharges at a natural spring, does movement through the aquifer occur before or after emergence at the spring?",
+      "correctAnswer": "before",
+      "explanation": "In this specific groundwater pathway, water moves through soil or rock underground and then emerges at the land surface as a spring. Groundwater does not always discharge at a spring."
+    }
+  ]
+}

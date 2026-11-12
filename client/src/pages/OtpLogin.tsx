@@ -9,6 +9,7 @@ import { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import LandingNav from "@/components/LandingNav";
+import { notifyIdentityChange } from "@shared/identityChange";
 
 const LOGO_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
@@ -78,16 +79,19 @@ export default function OtpLogin() {
     onSuccess: (data) => {
       if (data.valid) {
         // Store access in localStorage — same pattern as magic link
-        if (data.accessToken) {
-          localStorage.setItem("echelon_access_token", data.accessToken);
-        }
-        localStorage.setItem("echelon_subscription_email", data.email);
-        localStorage.setItem("echelon_trial_email", data.email);
-        localStorage.setItem("echelon_trial_unlocked", "true");
-        if (data.examTypes.length > 0) {
-          localStorage.setItem("echelon_subscription_exam_types", JSON.stringify(data.examTypes));
-          localStorage.setItem("echelon_purchased_products", JSON.stringify(data.examTypes));
-        }
+        try {
+          if (data.accessToken) {
+            localStorage.setItem("echelon_access_token", data.accessToken);
+          }
+          localStorage.setItem("echelon_subscription_email", data.email);
+          localStorage.setItem("echelon_trial_email", data.email);
+          localStorage.setItem("echelon_trial_unlocked", "true");
+          if (data.examTypes.length > 0) {
+            localStorage.setItem("echelon_subscription_exam_types", JSON.stringify(data.examTypes));
+            localStorage.setItem("echelon_purchased_products", JSON.stringify(data.examTypes));
+          }
+        } catch { /* session cookie remains valid without local storage */ }
+        notifyIdentityChange();
         setIsManager(!!data.isManager);
         setStep("success");
         const redirectPath = data.isManager ? "/team" : "/quiz";

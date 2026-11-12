@@ -53,7 +53,7 @@ import type { CourseEntry } from "../../shared/courseRegistry";
 // ---------------------------------------------------------------------------
 
 export type VerifiedIdentity =
-  | { type: "oauth"; userId: number; email: string }
+  | { type: "oauth"; userId: number; email: string; user: NonNullable<Parameters<typeof resolveAccess>[0]> }
   | { type: "otp"; email: string }
   | { type: "anonymous" };
 
@@ -74,6 +74,9 @@ export function resolveVerifiedIdentity(ctx: TrpcContext): VerifiedIdentity {
       type: "oauth",
       userId: ctx.user.id,
       email: normalizeEmail(ctx.user.email),
+      // Only server-authenticated ctx.user supplies privileged fields; token and
+      // client input never become an OAuth identity.
+      user: { id: ctx.user.id, email: normalizeEmail(ctx.user.email), role: ctx.user.role, openId: ctx.user.openId },
     };
   }
   if (ctx.studentEmail) {
@@ -122,10 +125,7 @@ export async function hasAccessToExam(
 
   if (identity.type === "oauth") {
     // resolveAccess handles owner/admin bypass
-    const result = await resolveAccess(
-      { id: identity.userId, email: identity.email } as Parameters<typeof resolveAccess>[0],
-      examType,
-    );
+    const result = await resolveAccess(identity.user, examType);
     return result.hasAccess;
   }
 

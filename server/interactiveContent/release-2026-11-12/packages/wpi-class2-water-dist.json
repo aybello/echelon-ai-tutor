@@ -1,0 +1,1883 @@
+{
+  "courseKey": "wpi-class2-water-dist",
+  "status": "approved",
+  "version": "echelon-six-games-2026-11-12-final-candidate",
+  "previewIds": {
+    "rapid-swipe": "wpi-class2-water-dist-001",
+    "speed-match": "wpi-class2-water-dist-018",
+    "odd-one-out": "wpi-class2-water-dist-030",
+    "cause-effect": "wpi-class2-water-dist-046",
+    "tap-the-flaw": "wpi-class2-water-dist-063",
+    "before-after": "wpi-class2-water-dist-order-001"
+  },
+  "examples": [
+    {
+      "id": "wpi-class2-water-dist-001",
+      "mode": "rapid-swipe",
+      "prompt": "A check valve is intended to limit reverse flow through a line.",
+      "correctAnswer": true,
+      "explanation": "A check valve closes against reverse flow."
+    },
+    {
+      "id": "wpi-class2-water-dist-002",
+      "mode": "rapid-swipe",
+      "prompt": "An isolation valve is used to separate a section of main from the rest of the system.",
+      "correctAnswer": true,
+      "explanation": "Isolation valves allow a section to be taken out of service."
+    },
+    {
+      "id": "wpi-class2-water-dist-003",
+      "mode": "rapid-swipe",
+      "prompt": "An open potable-water tank hatch can create a contamination pathway.",
+      "correctAnswer": true,
+      "explanation": "Open hatches can admit debris and contaminants."
+    },
+    {
+      "id": "wpi-class2-water-dist-004",
+      "mode": "rapid-swipe",
+      "prompt": "High water age guarantees a regulatory violation at every location.",
+      "correctAnswer": false,
+      "explanation": "Age can increase quality risk, but alone does not establish a violation."
+    },
+    {
+      "id": "wpi-class2-water-dist-005",
+      "mode": "rapid-swipe",
+      "prompt": "A falling disinfectant residual alone identifies the exact cause of the decline.",
+      "correctAnswer": false,
+      "explanation": "Many mechanisms can reduce residual; investigate using additional evidence."
+    },
+    {
+      "id": "wpi-class2-water-dist-006",
+      "mode": "rapid-swipe",
+      "prompt": "At equal outlet elevation, more water depth above a gauge produces greater static pressure.",
+      "correctAnswer": true,
+      "explanation": "Hydrostatic pressure increases with vertical water depth."
+    },
+    {
+      "id": "wpi-class2-water-dist-007",
+      "mode": "rapid-swipe",
+      "prompt": "A SCADA alarm should be checked against field measurements when a sensor fault is plausible.",
+      "correctAnswer": true,
+      "explanation": "Verification helps distinguish a real change from instrumentation error."
+    },
+    {
+      "id": "wpi-class2-water-dist-008",
+      "mode": "rapid-swipe",
+      "prompt": "A cross-connection can link a potable water system to a nonpotable source.",
+      "correctAnswer": true,
+      "explanation": "The connection can create a path for backflow under adverse pressure conditions."
+    },
+    {
+      "id": "wpi-class2-water-dist-009",
+      "mode": "rapid-swipe",
+      "prompt": "Clear water by itself proves that a repaired main is microbiologically safe.",
+      "correctAnswer": false,
+      "explanation": "Appearance alone does not establish microbiological quality."
+    },
+    {
+      "id": "wpi-class2-water-dist-010",
+      "mode": "rapid-swipe",
+      "prompt": "At constant flow, a partial obstruction in a main can increase head loss.",
+      "correctAnswer": true,
+      "explanation": "An obstruction adds resistance to flow."
+    },
+    {
+      "id": "wpi-class2-water-dist-011",
+      "mode": "rapid-swipe",
+      "prompt": "Increasing tank turnover can reduce residence time when the operating change actually moves stored water out.",
+      "correctAnswer": true,
+      "explanation": "More effective turnover can reduce age, subject to mixing and operational constraints."
+    },
+    {
+      "id": "wpi-class2-water-dist-012",
+      "mode": "rapid-swipe",
+      "prompt": "Free chlorine is one component of total chlorine.",
+      "correctAnswer": true,
+      "explanation": "Total chlorine includes free and combined chlorine."
+    },
+    {
+      "id": "wpi-class2-water-dist-013",
+      "mode": "rapid-swipe",
+      "prompt": "Water flowing into a storage tank must instantly mix uniformly with all stored water.",
+      "correctAnswer": false,
+      "explanation": "Poor mixing or temperature stratification can produce older-water zones."
+    },
+    {
+      "id": "wpi-class2-water-dist-014",
+      "mode": "rapid-swipe",
+      "prompt": "A pressure drop near a leak can increase intrusion risk when contaminated water surrounds an opening.",
+      "correctAnswer": true,
+      "explanation": "A breach and adverse pressure can allow outside contaminants to enter."
+    },
+    {
+      "id": "wpi-class2-water-dist-015",
+      "mode": "rapid-swipe",
+      "prompt": "An electrical disconnect alone addresses every possible stored hydraulic energy hazard.",
+      "correctAnswer": false,
+      "explanation": "Hydraulic pressure and other energy sources must also be controlled under the energy-control procedure."
+    },
+    {
+      "id": "wpi-class2-water-dist-016",
+      "mode": "rapid-swipe",
+      "prompt": "A damaged tank vent screen is relevant to sanitary inspection.",
+      "correctAnswer": true,
+      "explanation": "An opening can allow animals or debris to enter the storage facility."
+    },
+    {
+      "id": "wpi-class2-water-dist-017",
+      "mode": "rapid-swipe",
+      "prompt": "A water balance can reveal a discrepancy between system input and accounted-for water.",
+      "correctAnswer": true,
+      "explanation": "Tracking input and uses helps identify water-loss concerns, though it does not locate a leak by itself."
+    },
+    {
+      "id": "wpi-class2-water-dist-018",
+      "mode": "speed-match",
+      "prompt": "Match each component to its described function.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Isolation valve",
+          "right": "Separates a main section for work"
+        },
+        {
+          "id": "pair-2",
+          "left": "Check valve",
+          "right": "Restricts reverse flow"
+        },
+        {
+          "id": "pair-3",
+          "left": "Water meter",
+          "right": "Measures the volume passing its location"
+        }
+      ],
+      "explanation": "Isolation valve → Separates a main section for work; Check valve → Restricts reverse flow; Water meter → Measures the volume passing its location."
+    },
+    {
+      "id": "wpi-class2-water-dist-019",
+      "mode": "speed-match",
+      "prompt": "Match each storage feature to its primary role in normal operation, with the access hatch closed.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Tank vent",
+          "right": "Provides the designed air exchange as water level changes"
+        },
+        {
+          "id": "pair-2",
+          "left": "Overflow pipe",
+          "right": "Provides an outlet for excess tank water"
+        },
+        {
+          "id": "pair-3",
+          "left": "Access hatch",
+          "right": "Provides controlled access for inspection or entry"
+        }
+      ],
+      "explanation": "The vent allows normal air exchange; the overflow conveys excess water; the closed hatch provides controlled inspection or entry access."
+    },
+    {
+      "id": "wpi-class2-water-dist-020",
+      "mode": "speed-match",
+      "prompt": "Match each monitored parameter to the quantity it describes.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Temperature",
+          "right": "Thermal state of the water"
+        },
+        {
+          "id": "pair-2",
+          "left": "Chlorine residual",
+          "right": "Concentration of remaining disinfectant"
+        },
+        {
+          "id": "pair-3",
+          "left": "pH",
+          "right": "Measure related to hydrogen ion activity"
+        }
+      ],
+      "explanation": "Temperature → Thermal state of the water; Chlorine residual → Concentration of remaining disinfectant; pH → Measure related to hydrogen ion activity."
+    },
+    {
+      "id": "wpi-class2-water-dist-021",
+      "mode": "speed-match",
+      "prompt": "Match each instrument to the field quantity it is designed to measure.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Pressure gauge",
+          "right": "Pressure"
+        },
+        {
+          "id": "pair-2",
+          "left": "Thermometer",
+          "right": "Temperature"
+        },
+        {
+          "id": "pair-3",
+          "left": "Flow meter",
+          "right": "Flow rate"
+        }
+      ],
+      "explanation": "Pressure gauge → Pressure; Thermometer → Temperature; Flow meter → Flow rate."
+    },
+    {
+      "id": "wpi-class2-water-dist-022",
+      "mode": "speed-match",
+      "prompt": "Match each record to the operational history it documents.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Valve exercise log",
+          "right": "Valve operation and condition"
+        },
+        {
+          "id": "pair-2",
+          "left": "Customer meter history",
+          "right": "Recorded customer usage"
+        },
+        {
+          "id": "pair-3",
+          "left": "Repair log",
+          "right": "Completed infrastructure repairs"
+        }
+      ],
+      "explanation": "Valve exercise log → Valve operation and condition; Customer meter history → Recorded customer usage; Repair log → Completed infrastructure repairs."
+    },
+    {
+      "id": "wpi-class2-water-dist-023",
+      "mode": "speed-match",
+      "prompt": "Match each situation to the pressure or flow condition illustrated.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Potable supply at +40 psi gauge connected to nonpotable equipment at +60 psi gauge",
+          "right": "Backpressure from pressurized equipment with positive supply pressure"
+        },
+        {
+          "id": "pair-2",
+          "left": "Potable supply below atmospheric pressure connected to an open nonpotable tank",
+          "right": "Possible backsiphonage from an open tank under vacuum"
+        },
+        {
+          "id": "pair-3",
+          "left": "Water at rest in a stable closed column",
+          "right": "Static condition"
+        }
+      ],
+      "explanation": "A higher downstream equipment pressure creates backpressure; an open tank and subatmospheric potable pressure can produce backsiphonage; a motionless column is static."
+    },
+    {
+      "id": "wpi-class2-water-dist-024",
+      "mode": "speed-match",
+      "prompt": "Match each water-quality observation to the parameter measured.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Cloudiness from suspended material",
+          "right": "Turbidity"
+        },
+        {
+          "id": "pair-2",
+          "left": "Dissolved ionic contribution to electrical conductance",
+          "right": "Specific conductance"
+        },
+        {
+          "id": "pair-3",
+          "left": "Heat condition of the water",
+          "right": "Temperature"
+        }
+      ],
+      "explanation": "Cloudiness from suspended material → Turbidity; Dissolved ionic contribution to electrical conductance → Specific conductance; Heat condition of the water → Temperature."
+    },
+    {
+      "id": "wpi-class2-water-dist-025",
+      "mode": "speed-match",
+      "prompt": "Match each hydraulic quantity to its unit in these examples.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Flow rate",
+          "right": "Gallons per minute"
+        },
+        {
+          "id": "pair-2",
+          "left": "Stored volume",
+          "right": "Gallons"
+        },
+        {
+          "id": "pair-3",
+          "left": "Pressure",
+          "right": "Pounds per square inch"
+        }
+      ],
+      "explanation": "Flow rate → Gallons per minute; Stored volume → Gallons; Pressure → Pounds per square inch."
+    },
+    {
+      "id": "wpi-class2-water-dist-026",
+      "mode": "speed-match",
+      "prompt": "Match the tank condition to the inspection location.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Torn vent insect screen",
+          "right": "Vent opening"
+        },
+        {
+          "id": "pair-2",
+          "left": "Unsecured entry cover",
+          "right": "Access hatch"
+        },
+        {
+          "id": "pair-3",
+          "left": "Sediment on the tank bottom",
+          "right": "Interior floor"
+        }
+      ],
+      "explanation": "Inspect the vent for its insect screen, the access hatch for its cover, and the interior floor for settled sediment."
+    },
+    {
+      "id": "wpi-class2-water-dist-027",
+      "mode": "speed-match",
+      "prompt": "Match the excavation hazard control to its description.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Sloping",
+          "right": "Cutting back excavation walls"
+        },
+        {
+          "id": "pair-2",
+          "left": "Shoring",
+          "right": "Supporting excavation walls"
+        },
+        {
+          "id": "pair-3",
+          "left": "Shielding",
+          "right": "Placing a protective structure between workers and trench walls"
+        }
+      ],
+      "explanation": "Sloping → Cutting back excavation walls; Shoring → Supporting excavation walls; Shielding → Placing a protective structure between workers and trench walls."
+    },
+    {
+      "id": "wpi-class2-water-dist-028",
+      "mode": "speed-match",
+      "prompt": "Match each water-quality term to its definition.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Water age",
+          "right": "Time water spends in the distribution system before use"
+        },
+        {
+          "id": "pair-2",
+          "left": "Backflow",
+          "right": "Unwanted reverse flow into a potable system"
+        },
+        {
+          "id": "pair-3",
+          "left": "Nitrification",
+          "right": "Microbial oxidation of ammonia to nitrite and then nitrate"
+        }
+      ],
+      "explanation": "Water age describes time in distribution; backflow is undesired reverse flow; nitrifying microorganisms oxidize ammonia to nitrite and then nitrate."
+    },
+    {
+      "id": "wpi-class2-water-dist-029",
+      "mode": "speed-match",
+      "prompt": "Match each calculation to the correct result.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "200 gallons divided by 10 minutes",
+          "right": "20 gallons per minute"
+        },
+        {
+          "id": "pair-2",
+          "left": "2,400 gallons divided by 8 hours",
+          "right": "300 gallons per hour"
+        },
+        {
+          "id": "pair-3",
+          "left": "80 gallons per minute for 5 minutes",
+          "right": "400 gallons"
+        }
+      ],
+      "explanation": "200 gallons divided by 10 minutes → 20 gallons per minute; 2,400 gallons divided by 8 hours → 300 gallons per hour; 80 gallons per minute for 5 minutes → 400 gallons."
+    },
+    {
+      "id": "wpi-class2-water-dist-030",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a distribution system component?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Pump station"
+        },
+        {
+          "id": "option-2",
+          "label": "Distribution main"
+        },
+        {
+          "id": "option-3",
+          "label": "Finished water tank"
+        },
+        {
+          "id": "option-4",
+          "label": "Wastewater aeration basin"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "An aeration basin is a wastewater-treatment unit; the others distribute or store potable water."
+    },
+    {
+      "id": "wpi-class2-water-dist-031",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a chemical or physical water-quality parameter?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "pH"
+        },
+        {
+          "id": "option-2",
+          "label": "Temperature"
+        },
+        {
+          "id": "option-3",
+          "label": "Chlorine residual"
+        },
+        {
+          "id": "option-4",
+          "label": "Valve serial number"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A serial number identifies equipment, not water quality."
+    },
+    {
+      "id": "wpi-class2-water-dist-032",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a possible tank sanitary defect?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Broken vent screen"
+        },
+        {
+          "id": "option-2",
+          "label": "Open hatch"
+        },
+        {
+          "id": "option-3",
+          "label": "Damaged overflow screen"
+        },
+        {
+          "id": "option-4",
+          "label": "Closed, intact, locked, properly sealed hatch"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A properly closed, secured and sealed hatch is protective; the other defects may create contamination pathways."
+    },
+    {
+      "id": "wpi-class2-water-dist-033",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a unit of flow rate?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "gallons per minute"
+        },
+        {
+          "id": "option-2",
+          "label": "liters per second"
+        },
+        {
+          "id": "option-3",
+          "label": "cubic feet per second"
+        },
+        {
+          "id": "option-4",
+          "label": "gallons"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Gallons are a volume; the other units include volume per time."
+    },
+    {
+      "id": "wpi-class2-water-dist-035",
+      "mode": "odd-one-out",
+      "prompt": "Which action does not reduce exposure to hazardous energy during pump servicing?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Follow the energy-control procedure"
+        },
+        {
+          "id": "option-2",
+          "label": "Control stored pressure"
+        },
+        {
+          "id": "option-3",
+          "label": "Apply the designated lockout device"
+        },
+        {
+          "id": "option-4",
+          "label": "Rely solely on the normal start button"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A control button is not a substitute for energy isolation."
+    },
+    {
+      "id": "wpi-class2-water-dist-037",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a sign of a potential excavation hazard?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Water entering the trench"
+        },
+        {
+          "id": "option-2",
+          "label": "Cracking at the trench edge"
+        },
+        {
+          "id": "option-3",
+          "label": "Moving soil at the wall"
+        },
+        {
+          "id": "option-4",
+          "label": "A verified safe access ladder"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A safe access ladder helps workers leave; the other observations suggest changing or unstable conditions."
+    },
+    {
+      "id": "wpi-class2-water-dist-038",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a conceivable backflow pathway?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Unprotected submerged hose"
+        },
+        {
+          "id": "option-2",
+          "label": "Unprotected connection to a pressurized nonpotable tank"
+        },
+        {
+          "id": "option-3",
+          "label": "Open cross-connection to a nonpotable line"
+        },
+        {
+          "id": "option-4",
+          "label": "A properly sized, maintained air gap above the receiving vessel flood-level rim"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "An effective air gap physically separates the potable outlet from the receiving vessel; the other arrangements may permit backflow."
+    },
+    {
+      "id": "wpi-class2-water-dist-039",
+      "mode": "odd-one-out",
+      "prompt": "Which reading is not directly produced by a pressure gauge?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "30 psi"
+        },
+        {
+          "id": "option-2",
+          "label": "45 psi"
+        },
+        {
+          "id": "option-3",
+          "label": "60 psi"
+        },
+        {
+          "id": "option-4",
+          "label": "4 mg/L chlorine"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "mg/L chlorine is a concentration, not a pressure reading."
+    },
+    {
+      "id": "wpi-class2-water-dist-040",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a purpose of a water distribution map?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Locate valves"
+        },
+        {
+          "id": "option-2",
+          "label": "Identify main routes"
+        },
+        {
+          "id": "option-3",
+          "label": "Record main replacements"
+        },
+        {
+          "id": "option-4",
+          "label": "Measure chlorine residual directly"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Maps support location and asset history; a field instrument or test measures residual."
+    },
+    {
+      "id": "wpi-class2-water-dist-042",
+      "mode": "odd-one-out",
+      "prompt": "Which item is not part of an excavation protective-system category?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Sloping"
+        },
+        {
+          "id": "option-2",
+          "label": "Shoring"
+        },
+        {
+          "id": "option-3",
+          "label": "Shielding"
+        },
+        {
+          "id": "option-4",
+          "label": "Chlorination"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Chlorination is water treatment, not excavation wall protection."
+    },
+    {
+      "id": "wpi-class2-water-dist-043",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a measurement of amount or rate of water?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Tank volume"
+        },
+        {
+          "id": "option-2",
+          "label": "Main flow rate"
+        },
+        {
+          "id": "option-3",
+          "label": "Metered customer volume"
+        },
+        {
+          "id": "option-4",
+          "label": "Water temperature"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Temperature describes heat condition, not water amount or flow."
+    },
+    {
+      "id": "wpi-class2-water-dist-044",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a water-quality issue that can be reported by a customer?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Unusual odor"
+        },
+        {
+          "id": "option-2",
+          "label": "Discolored water"
+        },
+        {
+          "id": "option-3",
+          "label": "Unusual taste"
+        },
+        {
+          "id": "option-4",
+          "label": "Pump bearing serial number"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A serial number identifies equipment; the other items describe perceived water quality."
+    },
+    {
+      "id": "wpi-class2-water-dist-045",
+      "mode": "odd-one-out",
+      "prompt": "Which is not typically part of a system emergency plan?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Contacts and communication"
+        },
+        {
+          "id": "option-2",
+          "label": "Response roles"
+        },
+        {
+          "id": "option-3",
+          "label": "Contingency actions"
+        },
+        {
+          "id": "option-4",
+          "label": "A guarantee that failures cannot happen"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Plans prepare for failures; they cannot guarantee that failures will never occur."
+    },
+    {
+      "id": "wpi-class2-water-dist-046",
+      "mode": "cause-effect",
+      "prompt": "In an otherwise unchanged main, what can increasing flow cause?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "More friction head loss"
+        },
+        {
+          "id": "option-2",
+          "label": "Zero friction"
+        },
+        {
+          "id": "option-3",
+          "label": "Guaranteed pipe failure"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Higher flow generally increases friction losses in the same pipe."
+    },
+    {
+      "id": "wpi-class2-water-dist-047",
+      "mode": "cause-effect",
+      "prompt": "A pressurized nonpotable tank is connected without protection to a potable line at lower pressure. What can result?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Backflow into the potable line"
+        },
+        {
+          "id": "option-2",
+          "label": "Guaranteed sterilization"
+        },
+        {
+          "id": "option-3",
+          "label": "No flow can occur"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The pressure difference can drive nonpotable water toward the potable side."
+    },
+    {
+      "id": "wpi-class2-water-dist-048",
+      "mode": "cause-effect",
+      "prompt": "In a leaking submerged main, internal pressure drops below the surrounding contaminated water pressure. What risk can increase?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Intrusion of surrounding water"
+        },
+        {
+          "id": "option-2",
+          "label": "Automatic removal of all sediment"
+        },
+        {
+          "id": "option-3",
+          "label": "Increased tank storage capacity"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The adverse pressure difference can draw surrounding water through the breach into the main."
+    },
+    {
+      "id": "wpi-class2-water-dist-049",
+      "mode": "cause-effect",
+      "prompt": "A tank has poorly mixed corners and long residence time. What can happen to local disinfectant residual?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It can decline"
+        },
+        {
+          "id": "option-2",
+          "label": "It must increase"
+        },
+        {
+          "id": "option-3",
+          "label": "It cannot change"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Older stagnant water can experience disinfectant decay."
+    },
+    {
+      "id": "wpi-class2-water-dist-050",
+      "mode": "cause-effect",
+      "prompt": "A vent screen is torn. What risk increases?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Animal or debris entry"
+        },
+        {
+          "id": "option-2",
+          "label": "Automatic improvement in mixing"
+        },
+        {
+          "id": "option-3",
+          "label": "A lower pump motor voltage"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "An unprotected opening can admit contaminants."
+    },
+    {
+      "id": "wpi-class2-water-dist-051",
+      "mode": "cause-effect",
+      "prompt": "A water main is rapidly valved closed during flow. What hydraulic event may occur?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A pressure surge"
+        },
+        {
+          "id": "option-2",
+          "label": "A guaranteed sustained vacuum"
+        },
+        {
+          "id": "option-3",
+          "label": "An increase in tank volume"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Rapid change in flow velocity can produce a transient pressure wave."
+    },
+    {
+      "id": "wpi-class2-water-dist-052",
+      "mode": "cause-effect",
+      "prompt": "An instrument sample line becomes fouled. What may happen to an online residual reading?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It may become unrepresentative"
+        },
+        {
+          "id": "option-2",
+          "label": "It must exactly equal the lab result"
+        },
+        {
+          "id": "option-3",
+          "label": "It increases tank capacity"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Sensor and sampling problems can distort or delay the measurement."
+    },
+    {
+      "id": "wpi-class2-water-dist-053",
+      "mode": "cause-effect",
+      "prompt": "Water stands for a long period in a low-use dead end. What water-quality trend is plausible?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Residual may decline"
+        },
+        {
+          "id": "option-2",
+          "label": "All microbes must die"
+        },
+        {
+          "id": "option-3",
+          "label": "Water age becomes zero"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Longer residence time permits disinfectant decay."
+    },
+    {
+      "id": "wpi-class2-water-dist-054",
+      "mode": "cause-effect",
+      "prompt": "In a chloraminated system, residual falls while nitrite rises. What is a reasonable investigation?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Possible nitrification"
+        },
+        {
+          "id": "option-2",
+          "label": "Proof of a single contaminant"
+        },
+        {
+          "id": "option-3",
+          "label": "Guaranteed meter failure"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "This pattern is consistent with nitrification but needs additional confirmation."
+    },
+    {
+      "id": "wpi-class2-water-dist-055",
+      "mode": "cause-effect",
+      "prompt": "Excavation walls become unstable after rain. What should happen before workers return?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Leave the hazard area and reassess protection"
+        },
+        {
+          "id": "option-2",
+          "label": "Continue until the next shift"
+        },
+        {
+          "id": "option-3",
+          "label": "Remove the ladder"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Changing soil conditions require inspection and control before exposure."
+    },
+    {
+      "id": "wpi-class2-water-dist-056",
+      "mode": "cause-effect",
+      "prompt": "If a customer meter under-registers authorized use, what can happen to the water-loss estimate calculated as system input minus recorded authorized use?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It can be higher than the estimate with accurate registration"
+        },
+        {
+          "id": "option-2",
+          "label": "It must be zero"
+        },
+        {
+          "id": "option-3",
+          "label": "Actual physical leakage must double"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Under-registration makes recorded authorized consumption too low; the resulting unrecorded use is an apparent loss, not proof of additional physical leakage."
+    },
+    {
+      "id": "wpi-class2-water-dist-057",
+      "mode": "cause-effect",
+      "prompt": "If the same positive volume is pumped in half the time, what happens to average flow rate?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It doubles"
+        },
+        {
+          "id": "option-2",
+          "label": "It halves"
+        },
+        {
+          "id": "option-3",
+          "label": "It stays the same"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Average flow equals volume divided by time."
+    },
+    {
+      "id": "wpi-class2-water-dist-058",
+      "mode": "cause-effect",
+      "prompt": "During an interval, total inflow to a tank exceeds total outflow. If there is no leakage or overflow and the tank has available capacity, what happens to stored volume?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It increases"
+        },
+        {
+          "id": "option-2",
+          "label": "It decreases"
+        },
+        {
+          "id": "option-3",
+          "label": "It remains constant"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "With no other losses or overflow, net inflow increases stored volume."
+    },
+    {
+      "id": "wpi-class2-water-dist-059",
+      "mode": "cause-effect",
+      "prompt": "If a check valve fails open, what possibility should be evaluated?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Reverse flow when pressure reverses"
+        },
+        {
+          "id": "option-2",
+          "label": "Automatic increase in chlorine concentration"
+        },
+        {
+          "id": "option-3",
+          "label": "Guaranteed valve isolation"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "An open check valve may no longer block reversal."
+    },
+    {
+      "id": "wpi-class2-water-dist-060",
+      "mode": "cause-effect",
+      "prompt": "In a fixed-geometry tank with a steady water level and no leakage or other losses, how do total inflow and outflow over the same period compare?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "They are equal"
+        },
+        {
+          "id": "option-2",
+          "label": "Inflow is always greater"
+        },
+        {
+          "id": "option-3",
+          "label": "Outflow is always greater"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Constant stored volume means net flow is zero under the stated assumptions."
+    },
+    {
+      "id": "wpi-class2-water-dist-061",
+      "mode": "cause-effect",
+      "prompt": "If a chlorine dose is held constant and chlorine demand rises, what may happen to residual?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Residual may decrease"
+        },
+        {
+          "id": "option-2",
+          "label": "Residual must double"
+        },
+        {
+          "id": "option-3",
+          "label": "Demand becomes negative"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "More of the applied chlorine is consumed before residual remains."
+    },
+    {
+      "id": "wpi-class2-water-dist-062",
+      "mode": "cause-effect",
+      "prompt": "If a disinfectant sensor shows an unexpected drop but a fresh field test is normal, what is a useful next step?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Check the sensor and sample line"
+        },
+        {
+          "id": "option-2",
+          "label": "Assume deliberate contamination is proven"
+        },
+        {
+          "id": "option-3",
+          "label": "Delete the alarm without review"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Disagreement calls for instrument verification and further investigation."
+    },
+    {
+      "id": "wpi-class2-water-dist-063",
+      "mode": "tap-the-flaw",
+      "prompt": "A main repair team reviews its plan. Which action is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Locate utilities before digging"
+        },
+        {
+          "id": "option-2",
+          "label": "Check isolation boundaries"
+        },
+        {
+          "id": "option-3",
+          "label": "Enter an unstable trench before inspection"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Workers should not enter an unsafe excavation; a competent person must assess conditions."
+    },
+    {
+      "id": "wpi-class2-water-dist-064",
+      "mode": "tap-the-flaw",
+      "prompt": "A pump is being serviced. Which action is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Identify energy sources"
+        },
+        {
+          "id": "option-2",
+          "label": "Follow isolation procedure"
+        },
+        {
+          "id": "option-3",
+          "label": "Assume the stop button alone isolates all energy"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "A normal control button does not control all hazardous energy."
+    },
+    {
+      "id": "wpi-class2-water-dist-065",
+      "mode": "tap-the-flaw",
+      "prompt": "A tank inspection finds a damaged vent screen. Which response is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Record the defect"
+        },
+        {
+          "id": "option-2",
+          "label": "Arrange appropriate repair"
+        },
+        {
+          "id": "option-3",
+          "label": "Ignore the opening because the tank is covered"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "A damaged vent screen can be a contamination pathway even with the hatch closed."
+    },
+    {
+      "id": "wpi-class2-water-dist-066",
+      "mode": "tap-the-flaw",
+      "prompt": "A residual monitor alarms. Which conclusion is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Check field residual"
+        },
+        {
+          "id": "option-2",
+          "label": "Inspect the sample line"
+        },
+        {
+          "id": "option-3",
+          "label": "Conclude from one reading that sabotage is proven"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "An anomaly has multiple possible explanations and requires investigation."
+    },
+    {
+      "id": "wpi-class2-water-dist-067",
+      "mode": "tap-the-flaw",
+      "prompt": "A water balance is prepared. Which step is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Record production volume"
+        },
+        {
+          "id": "option-2",
+          "label": "Account for authorized consumption"
+        },
+        {
+          "id": "option-3",
+          "label": "Treat every unaccounted gallon as a confirmed physical leak"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Meter error and other apparent losses can also contribute to the discrepancy."
+    },
+    {
+      "id": "wpi-class2-water-dist-068",
+      "mode": "tap-the-flaw",
+      "prompt": "A utility updates its main-break records. Which practice is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Record the repair location"
+        },
+        {
+          "id": "option-2",
+          "label": "Update affected system maps"
+        },
+        {
+          "id": "option-3",
+          "label": "Delete the history of prior failures"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Historical failures can inform maintenance and replacement decisions."
+    },
+    {
+      "id": "wpi-class2-water-dist-069",
+      "mode": "tap-the-flaw",
+      "prompt": "A customer reports colored water. Which response is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Record location and timing"
+        },
+        {
+          "id": "option-2",
+          "label": "Investigate nearby system activity"
+        },
+        {
+          "id": "option-3",
+          "label": "Promise that color proves the water is safe"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Appearance does not prove microbiological or chemical safety."
+    },
+    {
+      "id": "wpi-class2-water-dist-070",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator evaluates a storage change. Which approach is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Consider fire and demand needs"
+        },
+        {
+          "id": "option-2",
+          "label": "Check mixing and turnover"
+        },
+        {
+          "id": "option-3",
+          "label": "Reduce tank level without checking service impacts"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Storage changes should account for pressure, service, fire needs and water quality."
+    },
+    {
+      "id": "wpi-class2-water-dist-071",
+      "mode": "tap-the-flaw",
+      "prompt": "A crew plans flushing. Which action is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Consider discharge handling"
+        },
+        {
+          "id": "option-2",
+          "label": "Record the work"
+        },
+        {
+          "id": "option-3",
+          "label": "Open hydrants without considering pressure and customers"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Flushing changes flows and pressure and should be planned for system impacts."
+    },
+    {
+      "id": "wpi-class2-water-dist-072",
+      "mode": "tap-the-flaw",
+      "prompt": "A lab result is unexpected. Which action is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Check sample identification"
+        },
+        {
+          "id": "option-2",
+          "label": "Review quality-control information"
+        },
+        {
+          "id": "option-3",
+          "label": "Alter the recorded result to match expectations"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "The result should be preserved and investigated, not altered to fit expectations."
+    },
+    {
+      "id": "wpi-class2-water-dist-073",
+      "mode": "tap-the-flaw",
+      "prompt": "A valve is difficult to operate. Which response is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Record its condition"
+        },
+        {
+          "id": "option-2",
+          "label": "Use the approved maintenance procedure"
+        },
+        {
+          "id": "option-3",
+          "label": "Apply unlimited force without assessment"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Excessive force can damage a valve; assess and follow the applicable procedure."
+    },
+    {
+      "id": "wpi-class2-water-dist-074",
+      "mode": "tap-the-flaw",
+      "prompt": "A pump station has a reported electrical isolation. Which is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Identify other energy sources"
+        },
+        {
+          "id": "option-2",
+          "label": "Control stored hydraulic energy"
+        },
+        {
+          "id": "option-3",
+          "label": "Assume all energy hazards are gone because power is off"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Hydraulic, mechanical or other stored energy can remain."
+    },
+    {
+      "id": "wpi-class2-water-dist-075",
+      "mode": "tap-the-flaw",
+      "prompt": "A storage sample shows low residual. Which interpretation is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Check the measurement"
+        },
+        {
+          "id": "option-2",
+          "label": "Compare with recent trends"
+        },
+        {
+          "id": "option-3",
+          "label": "Assume the tank is uniformly mixed without evidence"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Tank water can be stratified or poorly mixed."
+    },
+    {
+      "id": "wpi-class2-water-dist-076",
+      "mode": "tap-the-flaw",
+      "prompt": "A pressure trend suddenly changes. Which action is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Compare nearby readings"
+        },
+        {
+          "id": "option-2",
+          "label": "Verify the gauge"
+        },
+        {
+          "id": "option-3",
+          "label": "Assume a single gauge reading proves the exact cause"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "One reading can identify an issue but not establish its cause."
+    },
+    {
+      "id": "wpi-class2-water-dist-077",
+      "mode": "tap-the-flaw",
+      "prompt": "A cross-connection survey finds a hose submerged in a chemical tank. Which action is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Identify the connection"
+        },
+        {
+          "id": "option-2",
+          "label": "Address the hazard using the approved program"
+        },
+        {
+          "id": "option-3",
+          "label": "Leave it unprotected because flow normally goes outward"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "A pressure reversal can cause backflow through the connection."
+    },
+    {
+      "id": "wpi-class2-water-dist-078",
+      "mode": "tap-the-flaw",
+      "prompt": "A trench inspection follows rain. Which action is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Assess changed soil conditions"
+        },
+        {
+          "id": "option-2",
+          "label": "Check the protective system"
+        },
+        {
+          "id": "option-3",
+          "label": "Assume yesterday’s inspection is sufficient"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Rain can change stability; renewed inspection is necessary."
+    },
+    {
+      "id": "wpi-class2-water-dist-079",
+      "mode": "tap-the-flaw",
+      "prompt": "A chlorine residual result is low. Which action is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Verify the test"
+        },
+        {
+          "id": "option-2",
+          "label": "Review dose and operating trends"
+        },
+        {
+          "id": "option-3",
+          "label": "Assume colorless water proves an adequate residual"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Visual clarity does not measure disinfectant residual."
+    },
+    {
+      "id": "wpi-class2-water-dist-080",
+      "mode": "tap-the-flaw",
+      "prompt": "A facility’s hatch is found unlocked. Which response is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Secure it following the site procedure"
+        },
+        {
+          "id": "option-2",
+          "label": "Document and report the finding"
+        },
+        {
+          "id": "option-3",
+          "label": "Dismiss it without checking for possible tampering"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "An unsecured access point may pose security and sanitary risks."
+    },
+    {
+      "id": "wpi-class2-water-dist-091",
+      "mode": "cause-effect",
+      "prompt": "A water main carries 120 gallons per minute for 15 minutes at constant flow. What volume passes?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "1,800 gallons"
+        },
+        {
+          "id": "option-2",
+          "label": "135 gallons"
+        },
+        {
+          "id": "option-3",
+          "label": "8 gallons"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "120 gal/min × 15 min = 1,800 gal."
+    },
+    {
+      "id": "wpi-class2-water-dist-092",
+      "mode": "cause-effect",
+      "prompt": "A tank has 36,000 gallons of usable water. At a steady withdrawal of 300 gallons per minute with no inflow, how long until that amount is withdrawn?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "120 minutes"
+        },
+        {
+          "id": "option-2",
+          "label": "12 minutes"
+        },
+        {
+          "id": "option-3",
+          "label": "300 minutes"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "36,000 gal ÷ 300 gal/min = 120 min."
+    },
+    {
+      "id": "wpi-class2-water-dist-093",
+      "mode": "cause-effect",
+      "prompt": "A leak loses 3 gallons per minute continuously. How many gallons are lost in 2 hours?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "360 gallons"
+        },
+        {
+          "id": "option-2",
+          "label": "6 gallons"
+        },
+        {
+          "id": "option-3",
+          "label": "180 gallons"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "2 hours is 120 minutes; 3 × 120 = 360 gallons."
+    },
+    {
+      "id": "wpi-class2-water-dist-095",
+      "mode": "cause-effect",
+      "prompt": "A meter reads 12,500 gallons on Monday and 13,700 gallons on Tuesday. What volume was recorded between readings?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "1,200 gallons"
+        },
+        {
+          "id": "option-2",
+          "label": "26,200 gallons"
+        },
+        {
+          "id": "option-3",
+          "label": "1,300 gallons"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "13,700 − 12,500 = 1,200 gallons."
+    },
+    {
+      "id": "wpi-class2-water-dist-096",
+      "mode": "cause-effect",
+      "prompt": "A circular pipe has an internal diameter of 2 feet. Use area = 0.785 × diameter squared. What is its internal cross-sectional area?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "3.14 square feet"
+        },
+        {
+          "id": "option-2",
+          "label": "1.57 square feet"
+        },
+        {
+          "id": "option-3",
+          "label": "6.28 square feet"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "0.785 × 2² = 3.14 square feet."
+    },
+    {
+      "id": "wpi-class2-water-dist-097",
+      "mode": "cause-effect",
+      "prompt": "A rectangular storage tank is 10 feet long by 8 feet wide. If water depth is 5 feet, what is the water volume in cubic feet?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "400 cubic feet"
+        },
+        {
+          "id": "option-2",
+          "label": "23 cubic feet"
+        },
+        {
+          "id": "option-3",
+          "label": "80 cubic feet"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Length × width × depth = 10 × 8 × 5 = 400 cubic feet."
+    },
+    {
+      "id": "wpi-class2-water-dist-098",
+      "mode": "cause-effect",
+      "prompt": "A tank holds 600 cubic feet of water. Using 7.48 gallons per cubic foot, about how many gallons is that?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "4,488 gallons"
+        },
+        {
+          "id": "option-2",
+          "label": "80 gallons"
+        },
+        {
+          "id": "option-3",
+          "label": "600 gallons"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "600 ft³ × 7.48 gal/ft³ = 4,488 gallons."
+    },
+    {
+      "id": "wpi-class2-water-dist-099",
+      "mode": "cause-effect",
+      "prompt": "An open, atmospheric tank contains static water connected to a gauge 46.2 feet vertically below the water surface. Using 2.31 feet of water per psi, what is the gauge pressure?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "20 psi"
+        },
+        {
+          "id": "option-2",
+          "label": "10 psi"
+        },
+        {
+          "id": "option-3",
+          "label": "106.7 psi"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "For a static connected water column with an atmospheric surface, 46.2 ft ÷ 2.31 ft/psi = 20 psi gauge."
+    },
+    {
+      "id": "wpi-class2-water-dist-100",
+      "mode": "cause-effect",
+      "prompt": "Water initially has no chlorine residual. An operator adds a 2.0 mg/L chlorine dose, with no further chlorine addition. After the specified contact time, total chlorine residual is 0.5 mg/L. What is the chlorine demand?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "1.5 mg/L"
+        },
+        {
+          "id": "option-2",
+          "label": "2.5 mg/L"
+        },
+        {
+          "id": "option-3",
+          "label": "4.0 mg/L"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "With zero initial residual and no later addition, chlorine demand = dose − final total residual = 2.0 − 0.5 = 1.5 mg/L for the stated contact time."
+    },
+    {
+      "id": "wpi-class2-water-dist-top-001",
+      "mode": "cause-effect",
+      "prompt": "A full circular water main has an internal diameter of 6 inches and carries 200 gallons per minute. Using area = 0.785 × diameter² and 1 cubic foot per second = 448.8 gallons per minute, what is the average velocity, rounded to two decimal places?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "2.27 feet per second"
+        },
+        {
+          "id": "option-2",
+          "label": "1.13 feet per second"
+        },
+        {
+          "id": "option-3",
+          "label": "4.54 feet per second"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Velocity = flow ÷ internal cross-sectional area. Convert diameter: 6 in ÷ 12 in/ft = 0.5 ft. Area = 0.785 × (0.5 ft)² = 0.19625 ft². Convert flow: 200 gal/min ÷ 448.8 (gal/min per ft³/s) = 0.4456 ft³/s. Divide: 0.4456 ft³/s ÷ 0.19625 ft² = 2.27 ft/s, rounded."
+    },
+    {
+      "id": "wpi-class2-water-dist-top-002",
+      "mode": "cause-effect",
+      "prompt": "For a hypothetical calculation, 300,000 gallons of water require an applied chlorine dose of 2.0 mg/L. If a dry product contains 65% available chlorine by weight, how many pounds of product provide that dose? Use 8.34 in the standard pounds formula and round to two decimal places. Ignore losses. This is not a disinfection procedure.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "7.70 lb of product"
+        },
+        {
+          "id": "option-2",
+          "label": "5.00 lb of product"
+        },
+        {
+          "id": "option-3",
+          "label": "3.25 lb of product"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "First express volume in million gallons: 300,000 gal ÷ 1,000,000 gal/MG = 0.300 MG. Active chlorine mass = volume in MG × dose in mg/L × 8.34 = 0.300 × 2.0 × 8.34 = 5.004 lb. Product is 65% active, or 0.65 by weight, so product mass = 5.004 lb ÷ 0.65 = 7.70 lb, rounded. Actual disinfection requirements depend on the applicable procedure and site conditions."
+    },
+    {
+      "id": "wpi-class2-water-dist-top-003",
+      "mode": "cause-effect",
+      "prompt": "A distribution pump delivers 500 gallons per minute against 100 feet of total dynamic head at 70% pump efficiency. Using brake horsepower = flow × head ÷ (3,960 × pump efficiency), what shaft power is required, rounded to one decimal place?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "18.0 hp"
+        },
+        {
+          "id": "option-2",
+          "label": "12.6 hp"
+        },
+        {
+          "id": "option-3",
+          "label": "25.3 hp"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Convert pump efficiency to a decimal: 70% = 0.70. Brake horsepower is shaft input power; water horsepower is flow in gal/min × head in ft ÷ 3,960. Water power = 500 × 100 ÷ 3,960 = 12.63 hp. Shaft power = 12.63 hp ÷ 0.70 = 18.0 hp, rounded. Motor efficiency is not included in the requested shaft power."
+    },
+    {
+      "id": "wpi-class2-water-dist-top-004",
+      "mode": "cause-effect",
+      "prompt": "Two water batches are combined: 400 gallons at 0.8 mg/L free chlorine residual and 600 gallons at 1.4 mg/L free chlorine residual. Assuming complete mixing and no chlorine reaction or loss during mixing, what is the resulting free chlorine residual?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "1.16 mg/L"
+        },
+        {
+          "id": "option-2",
+          "label": "1.10 mg/L"
+        },
+        {
+          "id": "option-3",
+          "label": "2.20 mg/L"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Use the volume-weighted blend formula: C = (V₁C₁ + V₂C₂) ÷ (V₁ + V₂). Total volume = 400 gal + 600 gal = 1,000 gal. Weighted concentration-volume sum = (400 gal × 0.8 mg/L) + (600 gal × 1.4 mg/L) = 320 + 840 = 1,160 gal·mg/L. Divide by 1,000 gal: C = 1.16 mg/L. This is an idealized blend, not a prediction of subsequent residual decay."
+    },
+    {
+      "id": "wpi-class2-water-dist-top-005",
+      "mode": "cause-effect",
+      "prompt": "A simplified water audit for one period estimates 4.00 million gallons of system input, 3.20 million gallons of billed authorized use, 0.20 million gallons of unbilled authorized use, and 0.15 million gallons of apparent losses. What is the estimated real loss for that period? Assume no net change in storage and that the categories and input are complete and consistent.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "0.45 million gallons"
+        },
+        {
+          "id": "option-2",
+          "label": "0.60 million gallons"
+        },
+        {
+          "id": "option-3",
+          "label": "0.65 million gallons"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Authorized consumption = billed + unbilled = 3.20 + 0.20 = 3.40 million gal. Total water loss = input − authorized consumption = 4.00 − 3.40 = 0.60 million gal. Estimated real loss = total water loss − apparent loss = 0.60 − 0.15 = 0.45 million gal. Because audit inputs may be estimates, the result is an estimate rather than a measured leak volume."
+    },
+    {
+      "id": "wpi-class2-water-dist-top-006",
+      "mode": "cause-effect",
+      "prompt": "A straight-sided vertical cylindrical storage tank has an internal diameter of 12 feet and holds water 10 feet deep. Using volume = 0.785 × diameter² × depth and 7.48 gallons per cubic foot, approximately how many gallons are stored? Round to the nearest gallon.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "8,455 gallons"
+        },
+        {
+          "id": "option-2",
+          "label": "4,228 gallons"
+        },
+        {
+          "id": "option-3",
+          "label": "10,768 gallons"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The water volume in a vertical cylinder is cross-sectional area × water depth, or 0.785 × diameter² × depth. Area = 0.785 × (12 ft)² = 113.04 ft². Volume = 113.04 ft² × 10 ft = 1,130.4 ft³. Convert to gallons: 1,130.4 ft³ × 7.48 gal/ft³ = 8,455.392 gal, or approximately 8,455 gal."
+    },
+    {
+      "id": "wpi-class2-water-dist-order-001",
+      "mode": "before-after",
+      "prompt": "In the Pennsylvania DEP training example for a newly installed distribution main, is trench backfilling before or after the pressure test?",
+      "correctAnswer": "before",
+      "explanation": "The training example places backfilling before the pressure test. The applicable construction specification and local procedure govern actual work."
+    },
+    {
+      "id": "wpi-class2-water-dist-order-002",
+      "mode": "before-after",
+      "prompt": "In the Pennsylvania DEP training example for chlorine-solution disinfection of a new main, is removal of the concentrated chlorinated water by flushing before or after completion of the disinfectant contact period?",
+      "correctAnswer": "after",
+      "explanation": "The example flushes the chlorinated water out at the end of its contact period. Discharge and dechlorination requirements depend on the applicable authority and site."
+    },
+    {
+      "id": "wpi-class2-water-dist-order-003",
+      "mode": "before-after",
+      "prompt": "In Pennsylvania DEP’s new-main training sequence, is collection of bacteriological samples before or after the post-disinfection flushing?",
+      "correctAnswer": "after",
+      "explanation": "The training example collects bacteriological samples after disinfection, flushing and refilling with distribution water. Follow the applicable approved method rather than treating this as a universal sequence."
+    },
+    {
+      "id": "wpi-class2-water-dist-order-004",
+      "mode": "before-after",
+      "prompt": "In the Pennsylvania DEP pipe-installation training example, is inspection of the bell for foreign material before or after connecting the pipe?",
+      "correctAnswer": "before",
+      "explanation": "The manual calls for inspecting the bell for foreign material and cleaning the pipe end before connecting the pipe."
+    },
+    {
+      "id": "wpi-class2-water-dist-order-005",
+      "mode": "before-after",
+      "prompt": "In the typical customer service connection described by Pennsylvania DEP, is the corporation stop before or after the curb stop in normal flow from the distribution main to the customer?",
+      "correctAnswer": "before",
+      "explanation": "The corporation stop is at the main connection; the curb stop is along the service line toward the property. Individual service arrangements can differ."
+    },
+    {
+      "id": "wpi-class2-water-dist-order-006",
+      "mode": "before-after",
+      "prompt": "In the typical service connection described by Pennsylvania DEP, is the customer meter before or after the curb stop in normal flow toward the customer?",
+      "correctAnswer": "after",
+      "explanation": "The manual describes the customer meter as downstream of the curb stop in its typical arrangement; actual layouts can vary."
+    },
+    {
+      "id": "wpi-class2-water-dist-order-007",
+      "mode": "before-after",
+      "prompt": "Under the Ohio EPA total-coliform sample collection procedure, is removal of a faucet aerator before or after filling the sample bottle?",
+      "correctAnswer": "before",
+      "explanation": "The Ohio procedure calls for removing the aerator during preparation, before collecting the sample. Sampling procedures and local approvals may differ."
+    },
+    {
+      "id": "wpi-class2-water-dist-order-008",
+      "mode": "before-after",
+      "prompt": "In the Ohio EPA total-coliform collection procedure, is the final tap flush to obtain a representative main-water sample before or after sanitizing the tap nozzle?",
+      "correctAnswer": "after",
+      "explanation": "The Ohio procedure sanitizes the nozzle and then flushes the tap before collecting the sample. It is a named procedure, not a universal method for every analyte."
+    },
+    {
+      "id": "wpi-class2-water-dist-order-012",
+      "mode": "before-after",
+      "prompt": "In OSHA’s general-industry energy-control sequence for pump servicing, is application of the lockout device before or after isolation of the pump from its energy sources?",
+      "correctAnswer": "after",
+      "explanation": "The example sequence isolates the equipment from energy sources and then applies the lockout or tagout devices. Authorized personnel must follow their specific procedure."
+    },
+    {
+      "id": "wpi-class2-water-dist-order-014",
+      "mode": "before-after",
+      "prompt": "In OSHA’s excavation safety guidance for a water-main repair, is determining the approximate location of underground utilities before or after excavation begins?",
+      "correctAnswer": "before",
+      "explanation": "OSHA describes locating underground utilities as part of preparation before excavation. Local notification and applicable site procedures must also be followed."
+    },
+    {
+      "id": "wpi-class2-water-dist-order-016",
+      "mode": "before-after",
+      "prompt": "For a finished-water tank taken out of service for interior cleaning, is disinfection before or after the tank returns to service under EPA’s storage guidance?",
+      "correctAnswer": "before",
+      "explanation": "EPA recommends disinfecting a storage facility taken out of operation for interior cleaning before returning it to service. Sampling and other applicable local requirements still need to be met."
+    },
+    {
+      "id": "wpi-class2-water-dist-order-018",
+      "mode": "before-after",
+      "prompt": "In the nitrification process described by EPA for a chloraminated distribution system, is formation of nitrate before or after formation of the nitrite intermediate?",
+      "correctAnswer": "after",
+      "explanation": "EPA describes ammonia being oxidized sequentially to nitrite and then nitrate in nitrification."
+    },
+    {
+      "id": "wpi-class2-water-dist-order-019",
+      "mode": "before-after",
+      "prompt": "In planning a distribution flushing program using EPA’s guidance, is verification of adequate hydraulic capacity before or after conducting the planned flushing?",
+      "correctAnswer": "before",
+      "explanation": "EPA includes checking system hydraulic capacity in flushing-program planning. The design must also account for site conditions and applicable discharge requirements."
+    },
+    {
+      "id": "wpi-class2-water-dist-order-021",
+      "mode": "before-after",
+      "prompt": "In OSHA’s pump-service restoration guidance, is checking that personnel are safely positioned before or after removal of the lockout devices?",
+      "correctAnswer": "before",
+      "explanation": "OSHA lists checking that everyone is safely positioned among the steps taken before lockout or tagout devices are removed. Equipment-specific and personnel notification requirements also apply."
+    }
+  ]
+}

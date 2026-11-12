@@ -1,0 +1,2057 @@
+{
+  "courseKey": "wpi-class4-water",
+  "status": "approved",
+  "version": "echelon-six-games-2026-11-12-final-candidate",
+  "previewIds": {
+    "rapid-swipe": "wpi-class4-water-001",
+    "speed-match": "wpi-class4-water-021",
+    "odd-one-out": "wpi-class4-water-031",
+    "cause-effect": "wpi-class4-water-046",
+    "tap-the-flaw": "wpi-class4-water-066",
+    "before-after": "wpi-class4-water-order-001"
+  },
+  "examples": [
+    {
+      "id": "wpi-class4-water-001",
+      "mode": "rapid-swipe",
+      "prompt": "A CT calculation uses the disinfectant residual, not just the applied dose.",
+      "correctAnswer": true,
+      "explanation": "CT uses residual concentration and effective contact time."
+    },
+    {
+      "id": "wpi-class4-water-002",
+      "mode": "rapid-swipe",
+      "prompt": "Theoretical detention time always equals effective contact time.",
+      "correctAnswer": false,
+      "explanation": "Short-circuiting makes effective time less than theoretical time in many basins."
+    },
+    {
+      "id": "wpi-class4-water-003",
+      "mode": "rapid-swipe",
+      "prompt": "A UV reactor by itself supplies a lasting disinfectant residual in distribution pipes.",
+      "correctAnswer": false,
+      "explanation": "UV inactivates organisms at the reactor but does not maintain a distribution residual."
+    },
+    {
+      "id": "wpi-class4-water-004",
+      "mode": "rapid-swipe",
+      "prompt": "Coagulation is intended to help small particles aggregate.",
+      "correctAnswer": true,
+      "explanation": "Coagulants help destabilize and bind small particles."
+    },
+    {
+      "id": "wpi-class4-water-005",
+      "mode": "rapid-swipe",
+      "prompt": "Flocculation relies on gentle mixing to help form larger flocs.",
+      "correctAnswer": true,
+      "explanation": "Gentle mixing helps particles collide and form floc without assuming every system uses the same speed."
+    },
+    {
+      "id": "wpi-class4-water-006",
+      "mode": "rapid-swipe",
+      "prompt": "A rising individual-filter turbidity trend can warrant investigation even when combined turbidity appears stable.",
+      "correctAnswer": true,
+      "explanation": "An individual filter can deteriorate while dilution masks its performance in the combined stream."
+    },
+    {
+      "id": "wpi-class4-water-007",
+      "mode": "rapid-swipe",
+      "prompt": "A turbidimeter reading is reliable even when its sample line is blocked.",
+      "correctAnswer": false,
+      "explanation": "A blocked line can prevent representative flow to the instrument; check sample delivery."
+    },
+    {
+      "id": "wpi-class4-water-008",
+      "mode": "rapid-swipe",
+      "prompt": "Verification against a standard and calibration mean exactly the same operation.",
+      "correctAnswer": false,
+      "explanation": "Calibration establishes a relationship between a standard and instrument indications; verification checks whether specified requirements are met. Adjustment is a separate operation."
+    },
+    {
+      "id": "wpi-class4-water-009",
+      "mode": "rapid-swipe",
+      "prompt": "An exhausted granular activated carbon bed may need replacement or regeneration.",
+      "correctAnswer": true,
+      "explanation": "Adsorption capacity is finite and exhausted media needs attention."
+    },
+    {
+      "id": "wpi-class4-water-010",
+      "mode": "rapid-swipe",
+      "prompt": "The concentrate from reverse osmosis is the water that passes through the membrane.",
+      "correctAnswer": false,
+      "explanation": "Permeate passes through; concentrate is the rejected stream."
+    },
+    {
+      "id": "wpi-class4-water-011",
+      "mode": "rapid-swipe",
+      "prompt": "Anion exchange can remove negatively charged ions such as nitrate when an appropriate resin is used.",
+      "correctAnswer": true,
+      "explanation": "Anion exchange swaps target anions for other anions; effectiveness depends on resin and water."
+    },
+    {
+      "id": "wpi-class4-water-012",
+      "mode": "rapid-swipe",
+      "prompt": "Cation-exchange softening can remove calcium and magnesium hardness.",
+      "correctAnswer": true,
+      "explanation": "The resin exchanges hardness cations for other cations, commonly sodium."
+    },
+    {
+      "id": "wpi-class4-water-013",
+      "mode": "rapid-swipe",
+      "prompt": "Streambank stabilization can help reduce sediment entering source water.",
+      "correctAnswer": true,
+      "explanation": "Reducing erosion is one source-protection practice."
+    },
+    {
+      "id": "wpi-class4-water-014",
+      "mode": "rapid-swipe",
+      "prompt": "Source-water protection eliminates the need for all treatment.",
+      "correctAnswer": false,
+      "explanation": "Protection reduces risk but is one barrier alongside effective treatment."
+    },
+    {
+      "id": "wpi-class4-water-015",
+      "mode": "rapid-swipe",
+      "prompt": "A stop button alone is the same as an energy-isolating device for servicing a pump.",
+      "correctAnswer": false,
+      "explanation": "A control button is not an energy-isolating device; use the site energy-control procedure."
+    },
+    {
+      "id": "wpi-class4-water-016",
+      "mode": "rapid-swipe",
+      "prompt": "Before an authorized permit-space entry, rescue arrangements should be established under the site entry and rescue plan.",
+      "correctAnswer": true,
+      "explanation": "Rescue arrangements are made before entry, and workers follow the applicable entry and rescue plan; local legal requirements vary."
+    },
+    {
+      "id": "wpi-class4-water-017",
+      "mode": "rapid-swipe",
+      "prompt": "Disinfectant residual and contact time alone are enough to determine every organism’s inactivation without considering other conditions.",
+      "correctAnswer": false,
+      "explanation": "Disinfectant type, organism, temperature and other relevant conditions affect inactivation."
+    },
+    {
+      "id": "wpi-class4-water-018",
+      "mode": "rapid-swipe",
+      "prompt": "A contact basin can short-circuit, reducing effective contact time relative to its theoretical detention time.",
+      "correctAnswer": true,
+      "explanation": "Some water may pass through faster than volume divided by flow suggests."
+    },
+    {
+      "id": "wpi-class4-water-019",
+      "mode": "rapid-swipe",
+      "prompt": "Plant operating records can help identify process trends and abnormal events.",
+      "correctAnswer": true,
+      "explanation": "Comparing historical operating and water-quality data supports trend investigation."
+    },
+    {
+      "id": "wpi-class4-water-020",
+      "mode": "rapid-swipe",
+      "prompt": "Water can require different treatment steps when source water quality changes.",
+      "correctAnswer": true,
+      "explanation": "Treatment selection depends on source-water characteristics and target contaminants."
+    },
+    {
+      "id": "wpi-class4-water-021",
+      "mode": "speed-match",
+      "prompt": "Match each conventional treatment stage to its defining action.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Coagulation",
+          "right": "Destabilizes small suspended particles"
+        },
+        {
+          "id": "pair-2",
+          "left": "Flocculation",
+          "right": "Gently brings particles together into floc"
+        },
+        {
+          "id": "pair-3",
+          "left": "Sedimentation",
+          "right": "Settles heavier floc from the water"
+        }
+      ],
+      "explanation": "These are distinct unit-process functions, though facilities may combine them."
+    },
+    {
+      "id": "wpi-class4-water-022",
+      "mode": "speed-match",
+      "prompt": "Match the listed membrane stream to its definition.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Feed",
+          "right": "Water entering the membrane unit"
+        },
+        {
+          "id": "pair-2",
+          "left": "Permeate",
+          "right": "Water passing through the membrane"
+        },
+        {
+          "id": "pair-3",
+          "left": "Concentrate",
+          "right": "Stream retaining rejected material"
+        }
+      ],
+      "explanation": "The inlet divides into permeate and concentrate."
+    },
+    {
+      "id": "wpi-class4-water-023",
+      "mode": "speed-match",
+      "prompt": "Match each plant measurement to its unit in this exercise.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Turbidity",
+          "right": "NTU"
+        },
+        {
+          "id": "pair-2",
+          "left": "Disinfectant residual concentration",
+          "right": "mg/L"
+        },
+        {
+          "id": "pair-3",
+          "left": "Contact time",
+          "right": "minutes"
+        }
+      ],
+      "explanation": "These are the specified units for these three quantities."
+    },
+    {
+      "id": "wpi-class4-water-024",
+      "mode": "speed-match",
+      "prompt": "Match each term to the calculation shown.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "CT",
+          "right": "Residual concentration × effective contact time"
+        },
+        {
+          "id": "pair-2",
+          "left": "Theoretical detention time",
+          "right": "Basin water volume ÷ water flow"
+        },
+        {
+          "id": "pair-3",
+          "left": "Filter loading rate",
+          "right": "Flow through filter ÷ filter area"
+        }
+      ],
+      "explanation": "Use compatible units and effective, not automatically theoretical, time for CT."
+    },
+    {
+      "id": "wpi-class4-water-025",
+      "mode": "speed-match",
+      "prompt": "Match each treatment approach to the example target specifically identified here.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Cation-exchange softening",
+          "right": "Calcium hardness ions"
+        },
+        {
+          "id": "pair-2",
+          "left": "Anion exchange with suitable resin",
+          "right": "Nitrate ions"
+        },
+        {
+          "id": "pair-3",
+          "left": "Packed tower aeration",
+          "right": "Volatile organic compounds transferred to air"
+        }
+      ],
+      "explanation": "The specified target and resin distinguish the technologies; other uses are possible."
+    },
+    {
+      "id": "wpi-class4-water-026",
+      "mode": "speed-match",
+      "prompt": "Match each laboratory instrument to the named measurement.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "pH meter",
+          "right": "pH"
+        },
+        {
+          "id": "pair-2",
+          "left": "Turbidimeter",
+          "right": "Turbidity"
+        },
+        {
+          "id": "pair-3",
+          "left": "Free-chlorine analyzer",
+          "right": "Free-chlorine residual"
+        }
+      ],
+      "explanation": "Each instrument is named for the specific measurement here."
+    },
+    {
+      "id": "wpi-class4-water-027",
+      "mode": "speed-match",
+      "prompt": "Match each item used in this coagulant application to its specific role.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Day tank",
+          "right": "Holds prepared chemical solution for feeding"
+        },
+        {
+          "id": "pair-2",
+          "left": "Metering pump",
+          "right": "Delivers controlled chemical feed"
+        },
+        {
+          "id": "pair-3",
+          "left": "Rapid mixer",
+          "right": "Disperses the fed coagulant into water"
+        }
+      ],
+      "explanation": "Storage, delivery, and dispersion are different feed-system functions."
+    },
+    {
+      "id": "wpi-class4-water-028",
+      "mode": "speed-match",
+      "prompt": "Match each information source to what it specifically shows in this scenario.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Individual filter profile",
+          "right": "A plot of one filter’s turbidity over a filter run"
+        },
+        {
+          "id": "pair-2",
+          "left": "Maintenance work order",
+          "right": "A document specifying an equipment-maintenance task"
+        },
+        {
+          "id": "pair-3",
+          "left": "Online analyzer display",
+          "right": "The current local instrument indication"
+        }
+      ],
+      "explanation": "A filter profile is a time plot, a work order specifies a maintenance task, and a local display shows a current indication."
+    },
+    {
+      "id": "wpi-class4-water-029",
+      "mode": "speed-match",
+      "prompt": "For a simple chlorine test with no initial residual, match each term to its definition at the stated contact time.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Chlorine dose",
+          "right": "Chlorine concentration added to the sample"
+        },
+        {
+          "id": "pair-2",
+          "left": "Total chlorine residual",
+          "right": "Free plus combined chlorine remaining at that time"
+        },
+        {
+          "id": "pair-3",
+          "left": "Chlorine demand",
+          "right": "Added chlorine minus total residual at that time"
+        }
+      ],
+      "explanation": "For this stated test, dose = demand + total residual. Total residual includes free and combined chlorine, measured on the same basis."
+    },
+    {
+      "id": "wpi-class4-water-030",
+      "mode": "speed-match",
+      "prompt": "Match each unit to the quantity explicitly specified.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "m³/day",
+          "right": "Volume of water per day"
+        },
+        {
+          "id": "pair-2",
+          "left": "m²",
+          "right": "Surface area"
+        },
+        {
+          "id": "pair-3",
+          "left": "kg/day",
+          "right": "Mass of chemical fed per day"
+        }
+      ],
+      "explanation": "These units identify flow, area and chemical mass rate, respectively."
+    },
+    {
+      "id": "wpi-class4-water-031",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a disinfectant process?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "UV irradiation"
+        },
+        {
+          "id": "option-2",
+          "label": "Ozone"
+        },
+        {
+          "id": "option-3",
+          "label": "Chlorine"
+        },
+        {
+          "id": "option-4",
+          "label": "Sedimentation"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Sedimentation separates settleable solids; the others can inactivate microorganisms."
+    },
+    {
+      "id": "wpi-class4-water-032",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a conventional coagulation or flocculation input?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Aluminum sulfate"
+        },
+        {
+          "id": "option-2",
+          "label": "Ferric chloride"
+        },
+        {
+          "id": "option-3",
+          "label": "Polymer flocculant aid"
+        },
+        {
+          "id": "option-4",
+          "label": "Ultraviolet light"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "UV is a disinfection method, not a coagulant or flocculant aid."
+    },
+    {
+      "id": "wpi-class4-water-033",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a source-water protection measure?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Streambank stabilization"
+        },
+        {
+          "id": "option-2",
+          "label": "Runoff controls"
+        },
+        {
+          "id": "option-3",
+          "label": "Emergency planning"
+        },
+        {
+          "id": "option-4",
+          "label": "Disabling raw-water monitoring"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "The other options are source-protection actions; disabling monitoring impairs awareness."
+    },
+    {
+      "id": "wpi-class4-water-034",
+      "mode": "odd-one-out",
+      "prompt": "Which quantity is not a measure of time?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Minutes"
+        },
+        {
+          "id": "option-2",
+          "label": "Hours"
+        },
+        {
+          "id": "option-3",
+          "label": "Seconds"
+        },
+        {
+          "id": "option-4",
+          "label": "mg/L"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "mg/L is a concentration, not a duration."
+    },
+    {
+      "id": "wpi-class4-water-035",
+      "mode": "odd-one-out",
+      "prompt": "Which quantity is not a measure of disinfectant concentration?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "mg/L free chlorine"
+        },
+        {
+          "id": "option-2",
+          "label": "mg/L total chlorine"
+        },
+        {
+          "id": "option-3",
+          "label": "mg/L ozone residual"
+        },
+        {
+          "id": "option-4",
+          "label": "minutes of contact"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Minutes describe time, not residual concentration."
+    },
+    {
+      "id": "wpi-class4-water-036",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a stream of the specified reverse-osmosis unit?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Feed"
+        },
+        {
+          "id": "option-2",
+          "label": "Permeate"
+        },
+        {
+          "id": "option-3",
+          "label": "Concentrate"
+        },
+        {
+          "id": "option-4",
+          "label": "Flocculator paddle"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A paddle is equipment, not a membrane stream."
+    },
+    {
+      "id": "wpi-class4-water-037",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a way to check data integrity of an online analyzer?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Check sample flow"
+        },
+        {
+          "id": "option-2",
+          "label": "Compare local display to SCADA"
+        },
+        {
+          "id": "option-3",
+          "label": "Check the analyzer against a suitable standard"
+        },
+        {
+          "id": "option-4",
+          "label": "Assume its reading is accurate indefinitely"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Analyzer data need sample-flow, calibration, and display checks."
+    },
+    {
+      "id": "wpi-class4-water-038",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a physical component of a rapid gravity filter?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Filter media"
+        },
+        {
+          "id": "option-2",
+          "label": "Underdrain"
+        },
+        {
+          "id": "option-3",
+          "label": "Washwater trough"
+        },
+        {
+          "id": "option-4",
+          "label": "UV lamp sleeve"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "The sleeve belongs to a UV reactor, not the specified gravity-filter components."
+    },
+    {
+      "id": "wpi-class4-water-039",
+      "mode": "odd-one-out",
+      "prompt": "Which item is not part of a filter performance profile?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Filter turbidity versus time"
+        },
+        {
+          "id": "option-2",
+          "label": "Start and end of filter run"
+        },
+        {
+          "id": "option-3",
+          "label": "Backwash timing"
+        },
+        {
+          "id": "option-4",
+          "label": "Unrelated staff vacation balance"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A filter profile tracks performance during the filter run and relevant events."
+    },
+    {
+      "id": "wpi-class4-water-040",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a type of hazardous energy that may need control?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Electrical"
+        },
+        {
+          "id": "option-2",
+          "label": "Hydraulic"
+        },
+        {
+          "id": "option-3",
+          "label": "Pneumatic"
+        },
+        {
+          "id": "option-4",
+          "label": "A historical turbidity record"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A record is information; the other choices are energy sources."
+    },
+    {
+      "id": "wpi-class4-water-041",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a possible drinking-water source?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Reservoir"
+        },
+        {
+          "id": "option-2",
+          "label": "River"
+        },
+        {
+          "id": "option-3",
+          "label": "Groundwater aquifer"
+        },
+        {
+          "id": "option-4",
+          "label": "Coagulant day tank"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A chemical day tank stores feed solution rather than serving as a natural source."
+    },
+    {
+      "id": "wpi-class4-water-042",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a unit of flow in the choices?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "L/min"
+        },
+        {
+          "id": "option-2",
+          "label": "m³/day"
+        },
+        {
+          "id": "option-3",
+          "label": "US gal/min"
+        },
+        {
+          "id": "option-4",
+          "label": "m²"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Area in square meters is not a volume-per-time flow rate."
+    },
+    {
+      "id": "wpi-class4-water-043",
+      "mode": "odd-one-out",
+      "prompt": "Which device is not intended to isolate hazardous energy by itself?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Manual disconnect switch"
+        },
+        {
+          "id": "option-2",
+          "label": "Line isolation valve"
+        },
+        {
+          "id": "option-3",
+          "label": "Push button"
+        },
+        {
+          "id": "option-4",
+          "label": "Blind flange"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "A control-circuit push button is not an energy-isolating device."
+    },
+    {
+      "id": "wpi-class4-water-044",
+      "mode": "odd-one-out",
+      "prompt": "Which option is not an example of water-quality monitoring?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Measuring turbidity"
+        },
+        {
+          "id": "option-2",
+          "label": "Testing disinfectant residual"
+        },
+        {
+          "id": "option-3",
+          "label": "Measuring pH"
+        },
+        {
+          "id": "option-4",
+          "label": "Counting empty shipping pallets"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "The other actions measure water quality."
+    },
+    {
+      "id": "wpi-class4-water-045",
+      "mode": "odd-one-out",
+      "prompt": "Which is not one of the five Class IV outline content areas?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Treatment process"
+        },
+        {
+          "id": "option-2",
+          "label": "Laboratory analysis"
+        },
+        {
+          "id": "option-3",
+          "label": "Source water characteristics"
+        },
+        {
+          "id": "option-4",
+          "label": "Wastewater collection network design"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "The specified course is drinking-water treatment, not wastewater collection."
+    },
+    {
+      "id": "wpi-class4-water-046",
+      "mode": "cause-effect",
+      "prompt": "A basin holds 300 m³ and flow is 10 m³/min. What is theoretical detention time?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "30 min"
+        },
+        {
+          "id": "option-2",
+          "label": "3 min"
+        },
+        {
+          "id": "option-3",
+          "label": "3000 min"
+        },
+        {
+          "id": "option-4",
+          "label": "10 min"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Volume divided by flow is 300 ÷ 10 = 30 min. This is not automatically effective contact time."
+    },
+    {
+      "id": "wpi-class4-water-047",
+      "mode": "cause-effect",
+      "prompt": "A disinfectant residual is 1.5 mg/L and the validated effective contact time is 20 min. What is CT?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "30 mg·min/L"
+        },
+        {
+          "id": "option-2",
+          "label": "13.3 mg·min/L"
+        },
+        {
+          "id": "option-3",
+          "label": "21.5 mg·min/L"
+        },
+        {
+          "id": "option-4",
+          "label": "0.075 mg·min/L"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "CT = 1.5 × 20 = 30 mg·min/L; compliance depends on the applicable target."
+    },
+    {
+      "id": "wpi-class4-water-048",
+      "mode": "cause-effect",
+      "prompt": "A tank holds 240 m³ at steady flow of 8 m³/min in and out. A baffling factor of 0.5 applies at that flow. What is the estimated effective contact time?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "15 min"
+        },
+        {
+          "id": "option-2",
+          "label": "30 min"
+        },
+        {
+          "id": "option-3",
+          "label": "60 min"
+        },
+        {
+          "id": "option-4",
+          "label": "4 min"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Theoretical time = 240 ÷ 8 = 30 min; 30 × 0.5 = 15 min. This is an estimate, not proof of compliance."
+    },
+    {
+      "id": "wpi-class4-water-049",
+      "mode": "cause-effect",
+      "prompt": "At unchanged volume and baffling factor, flow through a contact tank doubles. What happens to estimated effective contact time?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It halves"
+        },
+        {
+          "id": "option-2",
+          "label": "It doubles"
+        },
+        {
+          "id": "option-3",
+          "label": "It remains unchanged"
+        },
+        {
+          "id": "option-4",
+          "label": "It becomes zero"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Theoretical detention is volume divided by flow; multiplying by the same factor preserves the inverse relationship."
+    },
+    {
+      "id": "wpi-class4-water-050",
+      "mode": "cause-effect",
+      "prompt": "A 40 m² filter handles 120 L/s. What is its loading rate?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "3 L/s/m²"
+        },
+        {
+          "id": "option-2",
+          "label": "0.33 L/s/m²"
+        },
+        {
+          "id": "option-3",
+          "label": "80 L/s/m²"
+        },
+        {
+          "id": "option-4",
+          "label": "4800 L/s/m²"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Loading rate is flow ÷ area = 120 ÷ 40 = 3 L/s/m²."
+    },
+    {
+      "id": "wpi-class4-water-051",
+      "mode": "cause-effect",
+      "prompt": "Two equal-area filters share 120 L/s equally; one is taken offline and the other receives the entire flow. What happens to the remaining filter’s loading rate?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It doubles"
+        },
+        {
+          "id": "option-2",
+          "label": "It halves"
+        },
+        {
+          "id": "option-3",
+          "label": "It stays constant"
+        },
+        {
+          "id": "option-4",
+          "label": "It falls to zero"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The remaining filter’s flow rises from 60 to 120 L/s while its area is unchanged."
+    },
+    {
+      "id": "wpi-class4-water-052",
+      "mode": "cause-effect",
+      "prompt": "At constant flow, a chemical dose is raised from 4 to 6 mg/L. How does the pure chemical mass feed rate change?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It increases by 50%"
+        },
+        {
+          "id": "option-2",
+          "label": "It increases by 20%"
+        },
+        {
+          "id": "option-3",
+          "label": "It decreases by 50%"
+        },
+        {
+          "id": "option-4",
+          "label": "It remains constant"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "For fixed flow and chemical purity, feed is proportional to dose: 6 ÷ 4 = 1.5."
+    },
+    {
+      "id": "wpi-class4-water-053",
+      "mode": "cause-effect",
+      "prompt": "A plant treats 2,000 m³/day at a pure chemical dose of 5 mg/L. What is the chemical feed rate?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "10 kg/day"
+        },
+        {
+          "id": "option-2",
+          "label": "1 kg/day"
+        },
+        {
+          "id": "option-3",
+          "label": "100 kg/day"
+        },
+        {
+          "id": "option-4",
+          "label": "0.01 kg/day"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "(2,000 m³/day × 5 mg/L) ÷ 1,000 = 10 kg/day of pure chemical."
+    },
+    {
+      "id": "wpi-class4-water-054",
+      "mode": "cause-effect",
+      "prompt": "Raw water turbidity rises sharply after a storm and settled-water turbidity rises too. What is a useful first process-control check?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Review raw-water data and run a jar test"
+        },
+        {
+          "id": "option-2",
+          "label": "Disable turbidity alarms"
+        },
+        {
+          "id": "option-3",
+          "label": "Assume filters are always the sole cause"
+        },
+        {
+          "id": "option-4",
+          "label": "Increase every chemical to maximum"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Changing source conditions can alter coagulation needs; a controlled jar test informs adjustments."
+    },
+    {
+      "id": "wpi-class4-water-055",
+      "mode": "cause-effect",
+      "prompt": "Filtered-water turbidity spikes immediately after a pump change. What is a plausible factor to investigate?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Hydraulic surge"
+        },
+        {
+          "id": "option-2",
+          "label": "Instant carbon exhaustion in every plant"
+        },
+        {
+          "id": "option-3",
+          "label": "A guaranteed laboratory transcription error"
+        },
+        {
+          "id": "option-4",
+          "label": "A new watershed boundary"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Pump changes can cause flow surges that disturb filter performance; investigate rather than assume."
+    },
+    {
+      "id": "wpi-class4-water-056",
+      "mode": "cause-effect",
+      "prompt": "One filter’s effluent turbidity increases while others remain stable. What data best help isolate the problem?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "That filter’s turbidity profile and operating events"
+        },
+        {
+          "id": "option-2",
+          "label": "Only monthly chemical purchasing totals"
+        },
+        {
+          "id": "option-3",
+          "label": "Only combined-filter averages"
+        },
+        {
+          "id": "option-4",
+          "label": "Only the raw-water source name"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Individual run data can reveal a local filter disturbance hidden by combined data."
+    },
+    {
+      "id": "wpi-class4-water-057",
+      "mode": "cause-effect",
+      "prompt": "A filter turbidimeter suddenly reads zero but the sample line has stopped flowing. What is the strongest interpretation?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The reading may not represent filter effluent"
+        },
+        {
+          "id": "option-2",
+          "label": "The filter is proven perfect"
+        },
+        {
+          "id": "option-3",
+          "label": "Disinfection is guaranteed"
+        },
+        {
+          "id": "option-4",
+          "label": "The source water has no pathogens"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Without representative sample flow, an online reading cannot establish water quality."
+    },
+    {
+      "id": "wpi-class4-water-058",
+      "mode": "cause-effect",
+      "prompt": "An online pH instrument reads differently from a freshly calibrated bench instrument on a representative grab sample. What should staff investigate?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Sensor calibration and condition"
+        },
+        {
+          "id": "option-2",
+          "label": "Only the building paint color"
+        },
+        {
+          "id": "option-3",
+          "label": "A guaranteed change in water source"
+        },
+        {
+          "id": "option-4",
+          "label": "The plant budget alone"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Compare methods and inspect, clean or verify the online sensor according to procedures."
+    },
+    {
+      "id": "wpi-class4-water-059",
+      "mode": "cause-effect",
+      "prompt": "A carbon bed reaches the end of its useful adsorption capacity. What can happen to a target contaminant in its effluent?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Breakthrough can increase its concentration"
+        },
+        {
+          "id": "option-2",
+          "label": "The bed becomes an infinite sink"
+        },
+        {
+          "id": "option-3",
+          "label": "The target must become harmless"
+        },
+        {
+          "id": "option-4",
+          "label": "The bed automatically regenerates"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "As adsorption capacity is exhausted, the target can appear in treated water; monitor and replace or regenerate media."
+    },
+    {
+      "id": "wpi-class4-water-060",
+      "mode": "cause-effect",
+      "prompt": "In a reverse-osmosis unit, 80 m³/day of 100 m³/day feed becomes permeate. What is recovery?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "80%"
+        },
+        {
+          "id": "option-2",
+          "label": "20%"
+        },
+        {
+          "id": "option-3",
+          "label": "125%"
+        },
+        {
+          "id": "option-4",
+          "label": "8%"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Recovery is permeate flow divided by feed flow: 80 ÷ 100 × 100 = 80%."
+    },
+    {
+      "id": "wpi-class4-water-061",
+      "mode": "cause-effect",
+      "prompt": "A sample initially has no chlorine residual. It receives a 2.0 mg/L chlorine dose and has a total chlorine residual of 1.2 mg/L after 30 minutes. What is its chlorine demand at 30 minutes?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "0.8 mg/L"
+        },
+        {
+          "id": "option-2",
+          "label": "3.2 mg/L"
+        },
+        {
+          "id": "option-3",
+          "label": "1.67 mg/L"
+        },
+        {
+          "id": "option-4",
+          "label": "2.0 mg/L"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "On the same chlorine concentration basis, demand = dose − total residual = 2.0 − 1.2 = 0.8 mg/L. Total residual includes free and combined chlorine."
+    },
+    {
+      "id": "wpi-class4-water-062",
+      "mode": "cause-effect",
+      "prompt": "A lab tests a 10 NTU sample and measures 2 NTU after treatment. What is the turbidity reduction?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "80%"
+        },
+        {
+          "id": "option-2",
+          "label": "20%"
+        },
+        {
+          "id": "option-3",
+          "label": "5%"
+        },
+        {
+          "id": "option-4",
+          "label": "500%"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Percentage reduction = (10 − 2) ÷ 10 × 100 = 80%."
+    },
+    {
+      "id": "wpi-class4-water-063",
+      "mode": "cause-effect",
+      "prompt": "A 4,000 m³ finished-water reservoir receives 1,000 m³/h with equal outflow, under steady-flow assumptions. What is volume/flow?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "4 h"
+        },
+        {
+          "id": "option-2",
+          "label": "0.25 h"
+        },
+        {
+          "id": "option-3",
+          "label": "5,000 h"
+        },
+        {
+          "id": "option-4",
+          "label": "4,000 h"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "4,000 ÷ 1,000 = 4 h theoretical detention. It does not establish effective disinfection contact time."
+    },
+    {
+      "id": "wpi-class4-water-064",
+      "mode": "cause-effect",
+      "prompt": "A metering pump delivers 12 L/h of a solution containing 50 g/L active chemical. How much active chemical is delivered per hour?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "0.6 kg/h"
+        },
+        {
+          "id": "option-2",
+          "label": "6 kg/h"
+        },
+        {
+          "id": "option-3",
+          "label": "0.06 kg/h"
+        },
+        {
+          "id": "option-4",
+          "label": "600 kg/h"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "12 L/h × 50 g/L = 600 g/h = 0.6 kg/h."
+    },
+    {
+      "id": "wpi-class4-water-065",
+      "mode": "cause-effect",
+      "prompt": "Two equal flows with concentrations of 2 and 6 mg/L are blended completely without reaction. What is the blend concentration?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "4 mg/L"
+        },
+        {
+          "id": "option-2",
+          "label": "8 mg/L"
+        },
+        {
+          "id": "option-3",
+          "label": "3 mg/L"
+        },
+        {
+          "id": "option-4",
+          "label": "12 mg/L"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Equal flows give the average concentration: (2 + 6) ÷ 2 = 4 mg/L."
+    },
+    {
+      "id": "wpi-class4-water-066",
+      "mode": "tap-the-flaw",
+      "prompt": "Select the flawed statement about jar tests.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A single historical dose must be optimal for every raw-water condition"
+        },
+        {
+          "id": "option-2",
+          "label": "Compare performance across tested doses"
+        },
+        {
+          "id": "option-3",
+          "label": "Record test conditions"
+        },
+        {
+          "id": "option-4",
+          "label": "Assess floc and settled-water results"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Raw-water conditions change, so controlled tests and process data inform dose selection."
+    },
+    {
+      "id": "wpi-class4-water-067",
+      "mode": "tap-the-flaw",
+      "prompt": "Select the flawed disinfection calculation.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Use applied dose as if it were measured residual in CT"
+        },
+        {
+          "id": "option-2",
+          "label": "Use effective time in CT"
+        },
+        {
+          "id": "option-3",
+          "label": "Keep concentration and time units clear"
+        },
+        {
+          "id": "option-4",
+          "label": "Compare CT to the appropriate target"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "CT is based on residual concentration, not the applied dose alone."
+    },
+    {
+      "id": "wpi-class4-water-068",
+      "mode": "tap-the-flaw",
+      "prompt": "Select the flawed assumption about a baffled contact basin.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Nominal volume/flow is always the validated effective time"
+        },
+        {
+          "id": "option-2",
+          "label": "Short-circuiting can reduce effective time"
+        },
+        {
+          "id": "option-3",
+          "label": "A tracer study can help establish contact time"
+        },
+        {
+          "id": "option-4",
+          "label": "The water level can affect available volume"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Hydraulic short-circuiting means theoretical detention and effective time can differ."
+    },
+    {
+      "id": "wpi-class4-water-069",
+      "mode": "tap-the-flaw",
+      "prompt": "Select the flawed response to one filter’s persistent turbidity increase.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Ignore it because combined turbidity is low"
+        },
+        {
+          "id": "option-2",
+          "label": "Review the filter profile"
+        },
+        {
+          "id": "option-3",
+          "label": "Check recent flow changes"
+        },
+        {
+          "id": "option-4",
+          "label": "Investigate the filter and its instruments"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Combined water can mask deterioration in one filter."
+    },
+    {
+      "id": "wpi-class4-water-070",
+      "mode": "tap-the-flaw",
+      "prompt": "Select the flawed analyzer practice.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Treat a reading from a dry sample line as verified water quality"
+        },
+        {
+          "id": "option-2",
+          "label": "Confirm sample flow"
+        },
+        {
+          "id": "option-3",
+          "label": "Inspect sample lines"
+        },
+        {
+          "id": "option-4",
+          "label": "Compare analyzer and SCADA readings"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The analyzer must receive a representative sample to support the result."
+    },
+    {
+      "id": "wpi-class4-water-071",
+      "mode": "tap-the-flaw",
+      "prompt": "Select the flawed calibration statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A clean instrument never needs verification"
+        },
+        {
+          "id": "option-2",
+          "label": "Use suitable standards"
+        },
+        {
+          "id": "option-3",
+          "label": "Record verification results"
+        },
+        {
+          "id": "option-4",
+          "label": "Follow instrument instructions"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Cleaning helps but does not replace calibration verification."
+    },
+    {
+      "id": "wpi-class4-water-072",
+      "mode": "tap-the-flaw",
+      "prompt": "Select the flawed approach to a chemical-feed change.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Change feed without recording the action"
+        },
+        {
+          "id": "option-2",
+          "label": "Record the time and new setting"
+        },
+        {
+          "id": "option-3",
+          "label": "Check observed process response"
+        },
+        {
+          "id": "option-4",
+          "label": "Use the approved operating procedure"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A record links operational changes to subsequent performance."
+    },
+    {
+      "id": "wpi-class4-water-073",
+      "mode": "tap-the-flaw",
+      "prompt": "Select the flawed claim about granular activated carbon.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The bed has unlimited capacity for every contaminant"
+        },
+        {
+          "id": "option-2",
+          "label": "Adsorption is a removal mechanism"
+        },
+        {
+          "id": "option-3",
+          "label": "Media can become exhausted"
+        },
+        {
+          "id": "option-4",
+          "label": "Target and water chemistry matter"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Carbon adsorption capacity is finite and varies by compound and water quality."
+    },
+    {
+      "id": "wpi-class4-water-074",
+      "mode": "tap-the-flaw",
+      "prompt": "For a conventional continuous reverse-osmosis unit with a concentrate outlet, select the flawed claim.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "All reverse-osmosis feed becomes permeate"
+        },
+        {
+          "id": "option-2",
+          "label": "Permeate passes through the membrane"
+        },
+        {
+          "id": "option-3",
+          "label": "Concentrate retains rejected materials"
+        },
+        {
+          "id": "option-4",
+          "label": "Concentrate requires management"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The stated unit sends part of its feed to concentrate, while permeate is the fraction passing through the membrane."
+    },
+    {
+      "id": "wpi-class4-water-075",
+      "mode": "tap-the-flaw",
+      "prompt": "Select the flawed safety action before servicing a pump with hazardous energy.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Press stop and begin work without isolation"
+        },
+        {
+          "id": "option-2",
+          "label": "Identify energy sources"
+        },
+        {
+          "id": "option-3",
+          "label": "Isolate according to procedure"
+        },
+        {
+          "id": "option-4",
+          "label": "Verify isolation before work"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A stop button is not a physical energy-isolating device; stored energy also needs control."
+    },
+    {
+      "id": "wpi-class4-water-076",
+      "mode": "tap-the-flaw",
+      "prompt": "Select the flawed response to a collapsed worker inside a hazardous confined space.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Rush in without training or protective measures"
+        },
+        {
+          "id": "option-2",
+          "label": "Summon the designated rescue service"
+        },
+        {
+          "id": "option-3",
+          "label": "Follow the facility rescue plan"
+        },
+        {
+          "id": "option-4",
+          "label": "Prevent unauthorized entry"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Unplanned entry can create additional victims; use the site rescue arrangements."
+    },
+    {
+      "id": "wpi-class4-water-077",
+      "mode": "tap-the-flaw",
+      "prompt": "Select the flawed assumption about chemical hazards.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A familiar chemical needs no safety review"
+        },
+        {
+          "id": "option-2",
+          "label": "Review the safety data sheet"
+        },
+        {
+          "id": "option-3",
+          "label": "Use appropriate protective equipment"
+        },
+        {
+          "id": "option-4",
+          "label": "Follow the site handling procedure"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Chemical hazards and controls depend on the material and handling task."
+    },
+    {
+      "id": "wpi-class4-water-078",
+      "mode": "tap-the-flaw",
+      "prompt": "Select the flawed source-protection claim.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Protection upstream guarantees no treatment is necessary"
+        },
+        {
+          "id": "option-2",
+          "label": "Manage runoff where practical"
+        },
+        {
+          "id": "option-3",
+          "label": "Assess potential contamination sources"
+        },
+        {
+          "id": "option-4",
+          "label": "Coordinate an emergency response plan"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Source protection is one barrier, not an assurance that treatment is unnecessary."
+    },
+    {
+      "id": "wpi-class4-water-079",
+      "mode": "tap-the-flaw",
+      "prompt": "Select the flawed approach to a rapidly changing raw-water supply.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Keep every setpoint unchanged without checking results"
+        },
+        {
+          "id": "option-2",
+          "label": "Review the trend"
+        },
+        {
+          "id": "option-3",
+          "label": "Assess treatment performance"
+        },
+        {
+          "id": "option-4",
+          "label": "Use tests to guide adjustments"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A change in raw-water characteristics can alter treatment performance."
+    },
+    {
+      "id": "wpi-class4-water-080",
+      "mode": "tap-the-flaw",
+      "prompt": "Select the flawed claim about UV disinfection.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "UV alone leaves a persistent chemical residual in pipes"
+        },
+        {
+          "id": "option-2",
+          "label": "UV acts at the reactor"
+        },
+        {
+          "id": "option-3",
+          "label": "A separate residual may be used where needed"
+        },
+        {
+          "id": "option-4",
+          "label": "UV does not provide continuing pipe disinfection"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "UV does not leave a continuing distribution disinfectant residual."
+    },
+    {
+      "id": "wpi-class4-water-081",
+      "mode": "tap-the-flaw",
+      "prompt": "Select the flawed use of instrument data.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Assume SCADA and local analyzer displays always match"
+        },
+        {
+          "id": "option-2",
+          "label": "Check local and SCADA values"
+        },
+        {
+          "id": "option-3",
+          "label": "Inspect the sample line"
+        },
+        {
+          "id": "option-4",
+          "label": "Record maintenance events"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Data transmission or configuration errors can create differences; compare the values."
+    },
+    {
+      "id": "wpi-class4-water-082",
+      "mode": "tap-the-flaw",
+      "prompt": "Select the flawed solids-management assumption.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A treatment residual can be discharged anywhere without checking controls"
+        },
+        {
+          "id": "option-2",
+          "label": "Estimate residual quantities"
+        },
+        {
+          "id": "option-3",
+          "label": "Follow the facility disposal procedure"
+        },
+        {
+          "id": "option-4",
+          "label": "Review applicable permit conditions"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Residual handling must reflect the facility’s actual procedures and applicable conditions."
+    },
+    {
+      "id": "wpi-class4-water-083",
+      "mode": "tap-the-flaw",
+      "prompt": "Select the flawed response to a sudden unexplained residual drop.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Assume all instruments and feed equipment are correct"
+        },
+        {
+          "id": "option-2",
+          "label": "Check the analyzer and sample flow"
+        },
+        {
+          "id": "option-3",
+          "label": "Investigate the chemical feed system"
+        },
+        {
+          "id": "option-4",
+          "label": "Review recent process conditions"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A drop can reflect a feed or measurement issue or changed demand; investigate."
+    },
+    {
+      "id": "wpi-class4-water-084",
+      "mode": "tap-the-flaw",
+      "prompt": "Select the flawed mathematical statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "An increase in flow raises theoretical detention when volume is fixed"
+        },
+        {
+          "id": "option-2",
+          "label": "Detention time equals volume divided by flow"
+        },
+        {
+          "id": "option-3",
+          "label": "Compatible flow and volume units matter"
+        },
+        {
+          "id": "option-4",
+          "label": "Baffling can affect effective contact time"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "At fixed volume, higher flow reduces theoretical detention time."
+    },
+    {
+      "id": "wpi-class4-water-085",
+      "mode": "tap-the-flaw",
+      "prompt": "Select the flawed pH monitoring action.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Declare compliance from an unverified reading after a sensor fault"
+        },
+        {
+          "id": "option-2",
+          "label": "Check a representative sample with a calibrated instrument"
+        },
+        {
+          "id": "option-3",
+          "label": "Investigate the sensor"
+        },
+        {
+          "id": "option-4",
+          "label": "Document the issue according to procedure"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A questionable sensor result should be verified before it is relied on."
+    },
+    {
+      "id": "wpi-class4-water-top-001",
+      "mode": "cause-effect",
+      "prompt": "A plant blends 300 m³/day of water containing 2 mg/L of a dissolved constituent with 900 m³/day containing 10 mg/L. Assuming complete mixing and no reaction or loss, what is the blend concentration?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "8 mg/L"
+        },
+        {
+          "id": "option-2",
+          "label": "6 mg/L"
+        },
+        {
+          "id": "option-3",
+          "label": "12 mg/L"
+        },
+        {
+          "id": "option-4",
+          "label": "3 mg/L"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Use the flow-weighted blend formula C = (Q₁C₁ + Q₂C₂)/(Q₁ + Q₂), with flow Q in m³/day and concentration C in mg/L. The weighted sum is (300 × 2) + (900 × 10) = 9,600 (m³/day)(mg/L); total flow is 300 + 900 = 1,200 m³/day. Dividing gives 9,600/1,200 = 8 mg/L. This assumes the constituent is conserved during mixing."
+    },
+    {
+      "id": "wpi-class4-water-top-002",
+      "mode": "cause-effect",
+      "prompt": "A plant treats 2,400 m³/day and requires 8 mg/L of active chemical. The dry product contains 40% active chemical by mass. Assuming complete dissolution and delivery, how many kg/day of product are needed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "48 kg/day"
+        },
+        {
+          "id": "option-2",
+          "label": "19.2 kg/day"
+        },
+        {
+          "id": "option-3",
+          "label": "7.68 kg/day"
+        },
+        {
+          "id": "option-4",
+          "label": "120 kg/day"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "First find active mass using flow × dose: 2,400 m³/day × 1,000 L/m³ × 8 mg/L = 19,200,000 mg/day = 19.2 kg/day. Product mass = active mass ÷ active mass fraction = 19.2 kg/day ÷ 0.40 = 48 kg/day of product. The 40% is a mass fraction, not a solution concentration."
+    },
+    {
+      "id": "wpi-class4-water-top-003",
+      "mode": "cause-effect",
+      "prompt": "During a filter backwash test, the expandable media depth is 0.80 m before washing and 1.00 m when expanded. Excluding the gravel, what is the percent expansion of the media?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "25%"
+        },
+        {
+          "id": "option-2",
+          "label": "20%"
+        },
+        {
+          "id": "option-3",
+          "label": "80%"
+        },
+        {
+          "id": "option-4",
+          "label": "125%"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Percent expansion = (expanded depth − unexpanded depth) ÷ unexpanded depth × 100. The change is 1.00 m − 0.80 m = 0.20 m; 0.20 m ÷ 0.80 m × 100 = 25%. Interpret the result against the plant’s design and procedure, not a universal target."
+    },
+    {
+      "id": "wpi-class4-water-top-004",
+      "mode": "cause-effect",
+      "prompt": "A rectangular sedimentation basin has an effective horizontal surface 20 m long and 12 m wide. At 4,800 m³/day of flow, what is its surface overflow rate?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "20 m³/day/m²"
+        },
+        {
+          "id": "option-2",
+          "label": "240 m³/day/m²"
+        },
+        {
+          "id": "option-3",
+          "label": "40 m³/day/m²"
+        },
+        {
+          "id": "option-4",
+          "label": "0.05 m³/day/m²"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Surface overflow rate = flow ÷ horizontal surface area. Area = length × width = 20 m × 12 m = 240 m². Divide 4,800 m³/day by 240 m² to obtain 20 m³/day/m². The value alone does not establish whether this basin meets a site-specific performance goal."
+    },
+    {
+      "id": "wpi-class4-water-top-005",
+      "mode": "cause-effect",
+      "prompt": "A water pump delivers 0.050 m³/s against a total dynamic head of 40 m. If pump efficiency is 70%, what is the approximate pump shaft power? Use 9.8 kW per (m³/s × m), and ignore motor losses.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "28 kW"
+        },
+        {
+          "id": "option-2",
+          "label": "19.6 kW"
+        },
+        {
+          "id": "option-3",
+          "label": "13.7 kW"
+        },
+        {
+          "id": "option-4",
+          "label": "196 kW"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Water power = 9.8 × flow × head = 9.8 × 0.050 m³/s × 40 m = 19.6 kW. Pump shaft power = water power ÷ pump efficiency = 19.6 kW ÷ 0.70 = 28 kW. This is pump input power, not electrical input; motor losses are excluded."
+    },
+    {
+      "id": "wpi-class4-water-top-007",
+      "mode": "cause-effect",
+      "prompt": "In a hypothetical disinfection test on a fixed-volume sample, viable target microorganisms fall from 10,000 to 100 per mL. Assume no removal, addition, growth, or dilution, and that the decrease is entirely due to inactivation. What log inactivation does this represent?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "2-log"
+        },
+        {
+          "id": "option-2",
+          "label": "1-log"
+        },
+        {
+          "id": "option-3",
+          "label": "3-log"
+        },
+        {
+          "id": "option-4",
+          "label": "4-log"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The remaining fraction = final concentration ÷ initial concentration = 100 organisms/mL ÷ 10,000 organisms/mL = 0.01 = 1/100. Since 1/100 = 10⁻², the inactivation is 2-log; the corresponding percentage inactivated is (1 − 0.01) × 100 = 99%. The stated assumptions distinguish inactivation from removal, dilution or growth; this hypothetical result does not prove any particular treatment achieves it in practice."
+    },
+    {
+      "id": "wpi-class4-water-order-001",
+      "mode": "before-after",
+      "prompt": "In conventional surface-water treatment, is coagulation before or after flocculation?",
+      "correctAnswer": "before",
+      "explanation": "Coagulation destabilizes particles; the subsequent gentle flocculation step promotes their aggregation into larger floc. Other plant designs may use different arrangements."
+    },
+    {
+      "id": "wpi-class4-water-order-002",
+      "mode": "before-after",
+      "prompt": "In a conventional surface-water treatment process, is sedimentation before or after flocculation?",
+      "correctAnswer": "after",
+      "explanation": "Flocculation forms larger particles that can settle in the sedimentation basin. This describes the conventional configuration, not every treatment design."
+    },
+    {
+      "id": "wpi-class4-water-order-003",
+      "mode": "before-after",
+      "prompt": "In conventional surface-water treatment, is granular filtration before or after sedimentation?",
+      "correctAnswer": "after",
+      "explanation": "Settled water passes to the filters, which remove particles remaining after sedimentation."
+    },
+    {
+      "id": "wpi-class4-water-order-004",
+      "mode": "before-after",
+      "prompt": "In the conventional drinking-water process described by CDC, is final disinfection before or after granular filtration?",
+      "correctAnswer": "after",
+      "explanation": "In the CDC example, filtration removes particles and final disinfection then inactivates remaining microorganisms. Some facilities also apply disinfectant at earlier points."
+    },
+    {
+      "id": "wpi-class4-water-order-005",
+      "mode": "before-after",
+      "prompt": "In the Kentucky training manual’s example jar test, is the slow-mixing period before or after the rapid-mixing period?",
+      "correctAnswer": "after",
+      "explanation": "The example uses rapid mixing to simulate initial chemical dispersion, then slower mixing to simulate flocculation. Actual test settings depend on the plant."
+    },
+    {
+      "id": "wpi-class4-water-order-006",
+      "mode": "before-after",
+      "prompt": "In the Kentucky training manual’s jar-test example, is the settling period before or after slow mixing?",
+      "correctAnswer": "after",
+      "explanation": "The stirrers are stopped after the slow-mixing period and the floc is allowed to settle; the test is a bench-scale simulation."
+    },
+    {
+      "id": "wpi-class4-water-order-007",
+      "mode": "before-after",
+      "prompt": "In a rapid gravity filter recovery cycle, is the settling of expanded filter media before or after water backwash ends?",
+      "correctAnswer": "after",
+      "explanation": "EPA describes allowing the media to settle once backwashing is complete, prior to putting the filter back into service. Follow the facility’s procedure."
+    },
+    {
+      "id": "wpi-class4-water-order-008",
+      "mode": "before-after",
+      "prompt": "In a rapid filter cycle that uses filter-to-waste for initial ripening, is filter-to-waste before or after completion of backwash?",
+      "correctAnswer": "after",
+      "explanation": "Filter-to-waste diverts the initial filtrate during the ripening period after a backwash. It is one option, not a feature of every plant."
+    },
+    {
+      "id": "wpi-class4-water-order-009",
+      "mode": "before-after",
+      "prompt": "For the air-scour-alone variant described in the EPA filter-backwash guide, is the air-scour stage before or after water backwash?",
+      "correctAnswer": "before",
+      "explanation": "EPA describes an air-scour-alone stage ahead of water backwash as one possible configuration. Other systems use simultaneous air and water, so this answer is not universal."
+    },
+    {
+      "id": "wpi-class4-water-order-010",
+      "mode": "before-after",
+      "prompt": "In Health Canada’s aeration-based groundwater iron-removal example, is the rapid sand filter before or after the aerator?",
+      "correctAnswer": "after",
+      "explanation": "Aeration provides oxygen that oxidizes soluble iron; the resulting iron particles can be captured by the downstream filter. Iron removal has other valid designs."
+    },
+    {
+      "id": "wpi-class4-water-order-011",
+      "mode": "before-after",
+      "prompt": "In Health Canada’s staged oxidation example for groundwater containing both iron and manganese, is chlorine addition before or after potassium permanganate addition?",
+      "correctAnswer": "before",
+      "explanation": "In the cited staged example, chlorine is added first to target iron, with sufficient contact time, and permanganate is added later to target manganese. This is not a universal chemical-feed recipe."
+    },
+    {
+      "id": "wpi-class4-water-order-013",
+      "mode": "before-after",
+      "prompt": "For a chemical-disinfection segment defined in EPA’s CT guidance, is disinfectant injection before or after the residual sampling point for that segment?",
+      "correctAnswer": "before",
+      "explanation": "The segment’s contact time runs from the disinfectant injection point to its residual measurement point. Segments and measurement locations are system-specific."
+    },
+    {
+      "id": "wpi-class4-water-order-014",
+      "mode": "before-after",
+      "prompt": "In EPA’s disinfection-profiling workflow, is calculation of the inactivation ratio before or after calculation of CT?",
+      "correctAnswer": "after",
+      "explanation": "The calculated CT for a segment is used with the appropriate required CT to calculate an inactivation ratio. CT alone does not establish compliance."
+    },
+    {
+      "id": "wpi-class4-water-order-015",
+      "mode": "before-after",
+      "prompt": "In EPA Method 1604 for a drinking-water bacteriological sample, is sample filtration before or after placing the membrane on MI medium?",
+      "correctAnswer": "before",
+      "explanation": "The sample is filtered first, trapping organisms on the membrane; that membrane is then transferred to MI agar or broth medium."
+    },
+    {
+      "id": "wpi-class4-water-order-016",
+      "mode": "before-after",
+      "prompt": "In EPA Method 1604, is incubation of the inoculated MI plate before or after transferring the sample membrane onto the medium?",
+      "correctAnswer": "after",
+      "explanation": "The membrane is placed on the MI medium and the resulting plate is incubated so colonies can develop."
+    },
+    {
+      "id": "wpi-class4-water-order-017",
+      "mode": "before-after",
+      "prompt": "In EPA Method 1604, is the routine count of E. coli colonies described in the procedure before or after completion of the 24-hour primary incubation of the MI plate?",
+      "correctAnswer": "after",
+      "explanation": "The procedure describes incubating the plate for 24 hours and then counting colonies. Positive results observed earlier are valid, but negative results cannot be recorded until 24 hours have elapsed."
+    },
+    {
+      "id": "wpi-class4-water-order-018",
+      "mode": "before-after",
+      "prompt": "For an undiluted drinking-water sample below 40 NTU analyzed under EPA Method 180.1, is sample mixing before or after reading turbidity?",
+      "correctAnswer": "before",
+      "explanation": "The method disperses sample solids by mixing before the turbidity reading, allowing air bubbles to disappear. Apply the laboratory’s approved method and equipment instructions."
+    },
+    {
+      "id": "wpi-class4-water-order-019",
+      "mode": "before-after",
+      "prompt": "For a sample over 40 NTU that is diluted under EPA Method 180.1, is applying the dilution factor before or after reading the diluted sample?",
+      "correctAnswer": "after",
+      "explanation": "The diluted sample is read first; its reading is then multiplied by the appropriate dilution factor to calculate the original sample turbidity."
+    },
+    {
+      "id": "wpi-class4-water-order-020",
+      "mode": "before-after",
+      "prompt": "In EPA Method 180.1 quality control, is the immediate instrument performance check before or after the daily calibration?",
+      "correctAnswer": "after",
+      "explanation": "The method describes analyzing an instrument performance check solution and calibration blank immediately after daily calibration to verify performance."
+    },
+    {
+      "id": "wpi-class4-water-order-021",
+      "mode": "before-after",
+      "prompt": "For authorized maintenance under the OSHA energy-control sequence, is verification of equipment isolation before or after the protected servicing work starts?",
+      "correctAnswer": "before",
+      "explanation": "Isolation and deenergization are verified before servicing begins. This U.S. technical example does not establish law elsewhere; use the applicable local energy-control procedure."
+    },
+    {
+      "id": "wpi-class4-water-order-022",
+      "mode": "before-after",
+      "prompt": "In the OSHA lockout application example, is equipment shutdown before or after application of the lockout device?",
+      "correctAnswer": "before",
+      "explanation": "The referenced U.S. sequence includes an orderly equipment shutdown and isolation before the authorized employee applies the lockout device. The example is not a complete operating procedure or a statement of Canadian law."
+    }
+  ]
+}

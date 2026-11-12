@@ -1,0 +1,1766 @@
+{
+  "courseKey": "wpi-class3-wastewater",
+  "status": "approved",
+  "version": "echelon-six-games-2026-11-12-final-candidate",
+  "previewIds": {
+    "rapid-swipe": "wpi-class3-wastewater-001",
+    "speed-match": "wpi-class3-wastewater-019",
+    "odd-one-out": "wpi-class3-wastewater-029",
+    "cause-effect": "wpi-class3-wastewater-044",
+    "tap-the-flaw": "wpi-class3-wastewater-062",
+    "before-after": "wpi-class3-wastewater-order-001"
+  },
+  "examples": [
+    {
+      "id": "wpi-class3-wastewater-001",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: A bar screen primarily intercepts large debris rather than dissolved ammonia.",
+      "correctAnswer": true,
+      "explanation": "Screens capture coarse material; dissolved ammonia passes through."
+    },
+    {
+      "id": "wpi-class3-wastewater-002",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: Grit removal reduces abrasive mineral material reaching pumps.",
+      "correctAnswer": true,
+      "explanation": "Sand and other grit wear mechanical equipment."
+    },
+    {
+      "id": "wpi-class3-wastewater-003",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: Biological nitrification consumes dissolved oxygen.",
+      "correctAnswer": true,
+      "explanation": "Nitrifiers oxidize ammonia through nitrite to nitrate using oxygen."
+    },
+    {
+      "id": "wpi-class3-wastewater-004",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: Denitrification converts nitrate into nitrogen gas under suitable anoxic conditions.",
+      "correctAnswer": true,
+      "explanation": "Denitrifiers use nitrate and a suitable carbon source when dissolved oxygen is absent or low."
+    },
+    {
+      "id": "wpi-class3-wastewater-005",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: A primary clarifier is designed to settle readily settleable solids and remove floating material.",
+      "correctAnswer": true,
+      "explanation": "Quiescent conditions allow settling and scum removal."
+    },
+    {
+      "id": "wpi-class3-wastewater-006",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: Increasing clarifier flow at constant effective volume increases theoretical detention time.",
+      "correctAnswer": false,
+      "explanation": "Detention time equals volume divided by flow, so it decreases."
+    },
+    {
+      "id": "wpi-class3-wastewater-007",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: Anaerobic digestion takes place without molecular oxygen.",
+      "correctAnswer": true,
+      "explanation": "Anaerobic microorganisms stabilize solids without oxygen."
+    },
+    {
+      "id": "wpi-class3-wastewater-008",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: Methane generated in an anaerobic digester can be used as a fuel.",
+      "correctAnswer": true,
+      "explanation": "The solids training describes using digester methane for heating."
+    },
+    {
+      "id": "wpi-class3-wastewater-009",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: For a pollutant that varies throughout the day, a single grab sample automatically represents its full-day average as reliably as a properly designed daily composite.",
+      "correctAnswer": false,
+      "explanation": "A grab represents conditions at collection; a properly designed composite integrates the sampling period. The applicable permit and method determine the appropriate sample type."
+    },
+    {
+      "id": "wpi-class3-wastewater-010",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: A flow-proportional composite can use equal aliquots at intervals triggered by equal volumes of flow.",
+      "correctAnswer": true,
+      "explanation": "Equal aliquots triggered by equal cumulative flow volumes create a flow-proportional composite; trigger timing varies with flow."
+    },
+    {
+      "id": "wpi-class3-wastewater-011",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: Return activated sludge normally carries settled biomass back to the aeration basin.",
+      "correctAnswer": true,
+      "explanation": "Returning settled sludge maintains biomass in the activated sludge system."
+    },
+    {
+      "id": "wpi-class3-wastewater-012",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: A time composite typically combines equal volumes collected at equal time intervals.",
+      "correctAnswer": true,
+      "explanation": "Equal aliquots at constant intervals form a time composite."
+    },
+    {
+      "id": "wpi-class3-wastewater-013",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: A dirty screen can increase head loss across the screen.",
+      "correctAnswer": true,
+      "explanation": "Accumulated debris obstructs the channel and increases resistance."
+    },
+    {
+      "id": "wpi-class3-wastewater-014",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: A stopped motor automatically proves all hazardous energy is isolated.",
+      "correctAnswer": false,
+      "explanation": "Stored mechanical, hydraulic, pneumatic or electrical energy can remain."
+    },
+    {
+      "id": "wpi-class3-wastewater-015",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: Dewatering and digestion mean exactly the same operation.",
+      "correctAnswer": false,
+      "explanation": "Digestion stabilizes solids; dewatering removes water from them."
+    },
+    {
+      "id": "wpi-class3-wastewater-016",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: A calibrated dissolved-oxygen meter is useful in evaluating aeration.",
+      "correctAnswer": true,
+      "explanation": "DO measurements help operators assess oxygen conditions."
+    },
+    {
+      "id": "wpi-class3-wastewater-017",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: Ammonia-to-nitrate conversion by itself removes all nitrogen from the liquid.",
+      "correctAnswer": false,
+      "explanation": "Nitrification changes the nitrogen form; subsequent removal such as denitrification is needed."
+    },
+    {
+      "id": "wpi-class3-wastewater-018",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: A safety program should account for stored energy as well as unexpected equipment startup.",
+      "correctAnswer": true,
+      "explanation": "Hazardous energy includes stored mechanical, electrical and other forms."
+    },
+    {
+      "id": "wpi-class3-wastewater-019",
+      "mode": "speed-match",
+      "prompt": "Match each named preliminary unit with its primary job.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Bar screen",
+          "right": "Intercept large debris"
+        },
+        {
+          "id": "pair-2",
+          "left": "Grit chamber",
+          "right": "Remove abrasive mineral particles"
+        },
+        {
+          "id": "pair-3",
+          "left": "Flow equalization basin",
+          "right": "Buffer variations in flow"
+        }
+      ],
+      "explanation": "Bar screen → Intercept large debris; Grit chamber → Remove abrasive mineral particles; Flow equalization basin → Buffer variations in flow."
+    },
+    {
+      "id": "wpi-class3-wastewater-020",
+      "mode": "speed-match",
+      "prompt": "Match each nitrogen conversion with its starting and ending forms.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Ammonification",
+          "right": "Organic nitrogen to ammonia"
+        },
+        {
+          "id": "pair-2",
+          "left": "Nitrification",
+          "right": "Ammonia to nitrate"
+        },
+        {
+          "id": "pair-3",
+          "left": "Denitrification",
+          "right": "Nitrate to nitrogen gas"
+        }
+      ],
+      "explanation": "Ammonification → Organic nitrogen to ammonia; Nitrification → Ammonia to nitrate; Denitrification → Nitrate to nitrogen gas."
+    },
+    {
+      "id": "wpi-class3-wastewater-021",
+      "mode": "speed-match",
+      "prompt": "Match each named solids unit with its distinctive mechanism.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Gravity thickener",
+          "right": "Settles and compacts sludge by gravity"
+        },
+        {
+          "id": "pair-2",
+          "left": "Anaerobic digester",
+          "right": "Biologically stabilizes sludge without molecular oxygen"
+        },
+        {
+          "id": "pair-3",
+          "left": "Belt filter press",
+          "right": "Drains and presses sludge on porous belts to produce cake"
+        }
+      ],
+      "explanation": "Gravity thickening uses sedimentation and compaction; anaerobic digestion uses biology without oxygen; a belt press drains and presses sludge into cake."
+    },
+    {
+      "id": "wpi-class3-wastewater-022",
+      "mode": "speed-match",
+      "prompt": "Match each sampling approach to its specified collection control.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Single grab",
+          "right": "Collect one discrete sample at one sampling event"
+        },
+        {
+          "id": "pair-2",
+          "left": "Time-paced composite",
+          "right": "Collect equal aliquots at fixed clock intervals, regardless of measured flow"
+        },
+        {
+          "id": "pair-3",
+          "left": "Volume-paced composite",
+          "right": "Collect equal aliquots whenever a fixed cumulative flow volume passes"
+        }
+      ],
+      "explanation": "A grab is discrete. Time pacing uses the clock; volume pacing uses cumulative flow. At constant flow the resulting patterns can coincide, but their control rules differ."
+    },
+    {
+      "id": "wpi-class3-wastewater-023",
+      "mode": "speed-match",
+      "prompt": "Match each instrument to the quantity it reports in this exercise.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "DO probe",
+          "right": "Dissolved oxygen"
+        },
+        {
+          "id": "pair-2",
+          "left": "pH meter",
+          "right": "Acidity or basicity expressed on the pH scale"
+        },
+        {
+          "id": "pair-3",
+          "left": "Flowmeter",
+          "right": "Flow rate"
+        }
+      ],
+      "explanation": "A DO probe reports dissolved oxygen, a pH meter reports pH, and a flowmeter reports flow rate. pH is not the same measurement as alkalinity."
+    },
+    {
+      "id": "wpi-class3-wastewater-024",
+      "mode": "speed-match",
+      "prompt": "Match each named part of a conventional activated sludge train to its role.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Aeration basin",
+          "right": "Aerate mixed liquor"
+        },
+        {
+          "id": "pair-2",
+          "left": "Secondary clarifier",
+          "right": "Settle biological floc"
+        },
+        {
+          "id": "pair-3",
+          "left": "Return sludge line",
+          "right": "Carry settled biomass back to the aeration basin"
+        }
+      ],
+      "explanation": "Aeration basin → Aerate mixed liquor; Secondary clarifier → Settle biological floc; Return sludge line → Carry settled biomass back to the aeration basin."
+    },
+    {
+      "id": "wpi-class3-wastewater-025",
+      "mode": "speed-match",
+      "prompt": "Match each process-zone condition as defined in this exercise.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Aerobic",
+          "right": "Dissolved oxygen is present"
+        },
+        {
+          "id": "pair-2",
+          "left": "Anoxic",
+          "right": "Dissolved oxygen is absent and nitrate or nitrite is available"
+        },
+        {
+          "id": "pair-3",
+          "left": "Anaerobic",
+          "right": "Dissolved oxygen, nitrate and nitrite are absent"
+        }
+      ],
+      "explanation": "These exercise definitions distinguish oxygen present, oxygen absent with oxidized nitrogen present, and both absent; real systems may contain gradients."
+    },
+    {
+      "id": "wpi-class3-wastewater-026",
+      "mode": "speed-match",
+      "prompt": "Match each form of energy to its example.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Electrical",
+          "right": "Energized motor circuit"
+        },
+        {
+          "id": "pair-2",
+          "left": "Pneumatic",
+          "right": "Pressurized compressed air"
+        },
+        {
+          "id": "pair-3",
+          "left": "Mechanical",
+          "right": "Stored energy in a tensioned spring"
+        }
+      ],
+      "explanation": "Electrical → Energized motor circuit; Pneumatic → Pressurized compressed air; Mechanical → Stored energy in a tensioned spring."
+    },
+    {
+      "id": "wpi-class3-wastewater-027",
+      "mode": "speed-match",
+      "prompt": "Match each laboratory metric to what it represents.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "BOD",
+          "right": "Biochemical oxygen demand"
+        },
+        {
+          "id": "pair-2",
+          "left": "MLSS",
+          "right": "Mixed liquor suspended solids"
+        },
+        {
+          "id": "pair-3",
+          "left": "DO",
+          "right": "Dissolved oxygen"
+        }
+      ],
+      "explanation": "BOD → Biochemical oxygen demand; MLSS → Mixed liquor suspended solids; DO → Dissolved oxygen."
+    },
+    {
+      "id": "wpi-class3-wastewater-028",
+      "mode": "speed-match",
+      "prompt": "Match the solids handling device to its operating principle in the cited training.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Belt filter press",
+          "right": "Drains and presses sludge on porous belts"
+        },
+        {
+          "id": "pair-2",
+          "left": "Centrifuge",
+          "right": "Uses rotation to separate sludge and liquid"
+        },
+        {
+          "id": "pair-3",
+          "left": "Drying bed",
+          "right": "Drains and evaporates water from sludge on a bed"
+        }
+      ],
+      "explanation": "A belt press drains and presses on porous belts, a centrifuge uses rotation, and a drying bed removes water through drainage and evaporation."
+    },
+    {
+      "id": "wpi-class3-wastewater-029",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a preliminary treatment unit?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Bar screen"
+        },
+        {
+          "id": "option-2",
+          "label": "Grit chamber"
+        },
+        {
+          "id": "option-3",
+          "label": "Primary clarifier"
+        },
+        {
+          "id": "option-4",
+          "label": "Grinder"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Primary clarification follows preliminary treatment in this classification."
+    },
+    {
+      "id": "wpi-class3-wastewater-030",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a nitrogen form?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Ammonium"
+        },
+        {
+          "id": "option-2",
+          "label": "Nitrite"
+        },
+        {
+          "id": "option-3",
+          "label": "Nitrate"
+        },
+        {
+          "id": "option-4",
+          "label": "Phosphate"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Phosphate is a phosphorus form; the other three are nitrogen forms."
+    },
+    {
+      "id": "wpi-class3-wastewater-031",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a component of a wastewater aeration system?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Diffuser"
+        },
+        {
+          "id": "option-2",
+          "label": "Surface aerator"
+        },
+        {
+          "id": "option-3",
+          "label": "Blower"
+        },
+        {
+          "id": "option-4",
+          "label": "Sludge blanket finder"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A blanket finder measures settled sludge depth, not aeration."
+    },
+    {
+      "id": "wpi-class3-wastewater-032",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a wastewater sample type?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Grab"
+        },
+        {
+          "id": "option-2",
+          "label": "Time composite"
+        },
+        {
+          "id": "option-3",
+          "label": "Flow-proportional composite"
+        },
+        {
+          "id": "option-4",
+          "label": "Centrifuge"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A centrifuge is separation equipment, not a sampling design."
+    },
+    {
+      "id": "wpi-class3-wastewater-033",
+      "mode": "odd-one-out",
+      "prompt": "Which is not an energy source to evaluate during isolation?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Electrical"
+        },
+        {
+          "id": "option-2",
+          "label": "Pneumatic"
+        },
+        {
+          "id": "option-3",
+          "label": "Mechanical"
+        },
+        {
+          "id": "option-4",
+          "label": "Sample identification"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Sample identification is a laboratory record, not an energy source."
+    },
+    {
+      "id": "wpi-class3-wastewater-034",
+      "mode": "odd-one-out",
+      "prompt": "According to the WPI Class III outline's laboratory-analysis categories, which is not classified as a physical analysis?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Temperature"
+        },
+        {
+          "id": "option-2",
+          "label": "Dissolved oxygen"
+        },
+        {
+          "id": "option-3",
+          "label": "Settleable solids"
+        },
+        {
+          "id": "option-4",
+          "label": "Bacterial indicator count"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "The WPI outline groups temperature, dissolved oxygen and settleable solids with physical analyses, and bacterial indicators with bacteriological analyses. Other classification systems may differ."
+    },
+    {
+      "id": "wpi-class3-wastewater-035",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a device for solids dewatering?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Belt press"
+        },
+        {
+          "id": "option-2",
+          "label": "Centrifuge"
+        },
+        {
+          "id": "option-3",
+          "label": "Drying bed"
+        },
+        {
+          "id": "option-4",
+          "label": "Bar screen"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A bar screen intercepts large debris; the others dewater sludge."
+    },
+    {
+      "id": "wpi-class3-wastewater-036",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a typical substrate or condition for heterotrophic denitrification?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Nitrate"
+        },
+        {
+          "id": "option-2",
+          "label": "Organic carbon"
+        },
+        {
+          "id": "option-3",
+          "label": "Anoxic conditions"
+        },
+        {
+          "id": "option-4",
+          "label": "High dissolved oxygen"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Denitrification is favored under anoxic conditions with nitrate and available organic carbon."
+    },
+    {
+      "id": "wpi-class3-wastewater-037",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a phosphorus-containing form?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Orthophosphate"
+        },
+        {
+          "id": "option-2",
+          "label": "Polyphosphate"
+        },
+        {
+          "id": "option-3",
+          "label": "Organic phosphorus"
+        },
+        {
+          "id": "option-4",
+          "label": "Nitrate"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Nitrate contains nitrogen; the other terms describe phosphorus forms."
+    },
+    {
+      "id": "wpi-class3-wastewater-038",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a component of the example activated sludge loop?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Aeration basin"
+        },
+        {
+          "id": "option-2",
+          "label": "Secondary clarifier"
+        },
+        {
+          "id": "option-3",
+          "label": "Return sludge pump"
+        },
+        {
+          "id": "option-4",
+          "label": "Grit chamber"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Grit removal is upstream, outside the described biomass-return loop."
+    },
+    {
+      "id": "wpi-class3-wastewater-039",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a typical safety control before hazardous maintenance?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Energy isolation"
+        },
+        {
+          "id": "option-2",
+          "label": "Stored-energy control"
+        },
+        {
+          "id": "option-3",
+          "label": "Verification of isolation"
+        },
+        {
+          "id": "option-4",
+          "label": "Assuming a stop button alone isolates all energy"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A stop button does not establish that all hazardous energy is isolated."
+    },
+    {
+      "id": "wpi-class3-wastewater-040",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a measure of loading or hydraulic performance?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Surface overflow rate"
+        },
+        {
+          "id": "option-2",
+          "label": "Weir loading rate"
+        },
+        {
+          "id": "option-3",
+          "label": "Detention time"
+        },
+        {
+          "id": "option-4",
+          "label": "Sample bottle color"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "The first three are hydraulic measures; bottle color is not."
+    },
+    {
+      "id": "wpi-class3-wastewater-041",
+      "mode": "odd-one-out",
+      "prompt": "Which is not used to measure or express oxygen demand?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "BOD"
+        },
+        {
+          "id": "option-2",
+          "label": "CBOD"
+        },
+        {
+          "id": "option-3",
+          "label": "COD"
+        },
+        {
+          "id": "option-4",
+          "label": "pH"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "pH expresses acidity, whereas BOD, CBOD and COD are oxygen-demand measures."
+    },
+    {
+      "id": "wpi-class3-wastewater-042",
+      "mode": "odd-one-out",
+      "prompt": "Which item is not a typical anaerobic digester system component?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Gas collection piping"
+        },
+        {
+          "id": "option-2",
+          "label": "Sludge feed piping"
+        },
+        {
+          "id": "option-3",
+          "label": "Sludge withdrawal line"
+        },
+        {
+          "id": "option-4",
+          "label": "UV lamp sleeve"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A UV sleeve belongs to UV disinfection equipment, not the digester gas or sludge system."
+    },
+    {
+      "id": "wpi-class3-wastewater-043",
+      "mode": "odd-one-out",
+      "prompt": "Which is not one of the three atmospheric categories tested in the cited confined-space guidance?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Oxygen"
+        },
+        {
+          "id": "option-2",
+          "label": "Flammable gas"
+        },
+        {
+          "id": "option-3",
+          "label": "Toxic gas"
+        },
+        {
+          "id": "option-4",
+          "label": "Alkalinity"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Atmospheric testing addresses oxygen, flammable gases and vapors, and toxic contaminants."
+    },
+    {
+      "id": "wpi-class3-wastewater-044",
+      "mode": "cause-effect",
+      "prompt": "At constant usable tank volume, flow doubles. What happens to theoretical hydraulic detention time?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It halves"
+        },
+        {
+          "id": "option-2",
+          "label": "It doubles"
+        },
+        {
+          "id": "option-3",
+          "label": "It stays the same"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Detention time is volume divided by flow."
+    },
+    {
+      "id": "wpi-class3-wastewater-045",
+      "mode": "cause-effect",
+      "prompt": "An idealized reactor has a stagnant portion isolated from the active flow. At constant flow, the actively mixed volume decreases. What happens to its modeled active-volume detention time?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It falls"
+        },
+        {
+          "id": "option-2",
+          "label": "It rises"
+        },
+        {
+          "id": "option-3",
+          "label": "It stays the same"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "For the stated idealized active-volume model, detention time is active volume divided by flow. A smaller active volume at the same flow gives a shorter modeled detention time."
+    },
+    {
+      "id": "wpi-class3-wastewater-046",
+      "mode": "cause-effect",
+      "prompt": "At constant clarifier surface area, flow increases. What happens to surface overflow rate?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It increases"
+        },
+        {
+          "id": "option-2",
+          "label": "It decreases"
+        },
+        {
+          "id": "option-3",
+          "label": "It is unchanged"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Surface overflow rate is flow divided by surface area."
+    },
+    {
+      "id": "wpi-class3-wastewater-047",
+      "mode": "cause-effect",
+      "prompt": "Two equal parallel clarifiers initially share total flow equally. At unchanged total flow, one is removed from service and the remaining unit receives all flow. What happens to its surface overflow rate?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It doubles"
+        },
+        {
+          "id": "option-2",
+          "label": "It halves"
+        },
+        {
+          "id": "option-3",
+          "label": "It stays the same"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The same flow passes through half the original total area."
+    },
+    {
+      "id": "wpi-class3-wastewater-048",
+      "mode": "cause-effect",
+      "prompt": "A screen accumulates debris at unchanged flow. Which hydraulic effect is expected across it?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Head loss increases"
+        },
+        {
+          "id": "option-2",
+          "label": "Head loss disappears"
+        },
+        {
+          "id": "option-3",
+          "label": "Water density doubles"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A more obstructed screen creates greater resistance to flow."
+    },
+    {
+      "id": "wpi-class3-wastewater-049",
+      "mode": "cause-effect",
+      "prompt": "If nitrifying organisms receive too little oxygen for their needs, what can happen to ammonia oxidation?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It slows"
+        },
+        {
+          "id": "option-2",
+          "label": "It becomes independent of oxygen"
+        },
+        {
+          "id": "option-3",
+          "label": "It turns directly into phosphorus removal"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Nitrification requires oxygen and can be limited by low DO."
+    },
+    {
+      "id": "wpi-class3-wastewater-050",
+      "mode": "cause-effect",
+      "prompt": "In an anoxic zone, the readily biodegradable carbon source becomes insufficient. What may happen to heterotrophic denitrification?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It decreases"
+        },
+        {
+          "id": "option-2",
+          "label": "It becomes nitrification"
+        },
+        {
+          "id": "option-3",
+          "label": "It needs no nitrate"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Heterotrophic denitrifiers need a suitable organic carbon source."
+    },
+    {
+      "id": "wpi-class3-wastewater-051",
+      "mode": "cause-effect",
+      "prompt": "A pollutant concentration and wastewater flow rate remain constant throughout each of two days. What happens to the calculated daily mass load from the first day to the second?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Stays the same"
+        },
+        {
+          "id": "option-2",
+          "label": "Doubles"
+        },
+        {
+          "id": "option-3",
+          "label": "Falls to zero"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Mass per day is proportional to flow multiplied by concentration."
+    },
+    {
+      "id": "wpi-class3-wastewater-052",
+      "mode": "cause-effect",
+      "prompt": "At the same constant daily flow, a representative pollutant concentration doubles. What happens to the calculated daily mass load?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It doubles"
+        },
+        {
+          "id": "option-2",
+          "label": "It halves"
+        },
+        {
+          "id": "option-3",
+          "label": "It remains unchanged"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Daily load is directly proportional to concentration when flow is fixed."
+    },
+    {
+      "id": "wpi-class3-wastewater-053",
+      "mode": "cause-effect",
+      "prompt": "In a normally functioning activated sludge process, what happens if solids are continuously returned but never wasted over a prolonged period?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Solids can accumulate"
+        },
+        {
+          "id": "option-2",
+          "label": "All biomass instantly vanishes"
+        },
+        {
+          "id": "option-3",
+          "label": "Nitrate becomes grit"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Growth and incoming solids need an exit path; wasting controls inventory."
+    },
+    {
+      "id": "wpi-class3-wastewater-054",
+      "mode": "cause-effect",
+      "prompt": "A sludge blanket is left in a primary clarifier too long and becomes septic. What may occur?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Sludge can float"
+        },
+        {
+          "id": "option-2",
+          "label": "The blanket becomes a screen"
+        },
+        {
+          "id": "option-3",
+          "label": "Flow becomes zero by definition"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The Kentucky manual notes septic floating sludge can develop when removal is inadequate."
+    },
+    {
+      "id": "wpi-class3-wastewater-055",
+      "mode": "cause-effect",
+      "prompt": "At the same pump rate, pump run time increases from 10 to 20 minutes. How does transferred volume change?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It doubles"
+        },
+        {
+          "id": "option-2",
+          "label": "It halves"
+        },
+        {
+          "id": "option-3",
+          "label": "It stays the same"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Volume equals flow rate times running time."
+    },
+    {
+      "id": "wpi-class3-wastewater-056",
+      "mode": "cause-effect",
+      "prompt": "A flow-paced sampler starts just after a trigger and collects one equal aliquot per 1,000 gallons. Exactly 5,000 gallons pass in the next hour. How many aliquots are collected during that hour?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "5"
+        },
+        {
+          "id": "option-2",
+          "label": "1"
+        },
+        {
+          "id": "option-3",
+          "label": "10"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "5,000 gallons ÷ 1,000 gallons per trigger = 5 aliquots. The sampler is paced by cumulative flow volume, not elapsed time."
+    },
+    {
+      "id": "wpi-class3-wastewater-057",
+      "mode": "cause-effect",
+      "prompt": "Poor polymer conditioning on a belt filter press may produce which result?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Wet cake or washout"
+        },
+        {
+          "id": "option-2",
+          "label": "Guaranteed dry cake"
+        },
+        {
+          "id": "option-3",
+          "label": "Automatic disinfection of all sludge"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The solids training links improper dosage with wet cake and washout."
+    },
+    {
+      "id": "wpi-class3-wastewater-058",
+      "mode": "cause-effect",
+      "prompt": "At constant total mass of wet sludge, solids increase from 2% to 4%. How does dry-solids mass change?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It doubles"
+        },
+        {
+          "id": "option-2",
+          "label": "It halves"
+        },
+        {
+          "id": "option-3",
+          "label": "It is unchanged"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Dry solids equal wet mass multiplied by solids fraction."
+    },
+    {
+      "id": "wpi-class3-wastewater-059",
+      "mode": "cause-effect",
+      "prompt": "During nitrification, alkalinity is consumed. If buffering is insufficient, what can happen?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "pH can fall"
+        },
+        {
+          "id": "option-2",
+          "label": "pH must rise"
+        },
+        {
+          "id": "option-3",
+          "label": "Nitrate turns into grit"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Nitrification consumes alkalinity and can lower pH when buffering is insufficient."
+    },
+    {
+      "id": "wpi-class3-wastewater-060",
+      "mode": "cause-effect",
+      "prompt": "If denitrification produces gas within a settled sludge blanket, what physical result may occur?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Sludge may rise"
+        },
+        {
+          "id": "option-2",
+          "label": "Sand dissolves"
+        },
+        {
+          "id": "option-3",
+          "label": "Screen openings widen"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Gas bubbles can attach to settled sludge and lift it."
+    },
+    {
+      "id": "wpi-class3-wastewater-061",
+      "mode": "cause-effect",
+      "prompt": "If an anaerobic digester gas line leaks, what concern follows from methane in the gas?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Fire or explosion hazard"
+        },
+        {
+          "id": "option-2",
+          "label": "Loss of nitrate measurement only"
+        },
+        {
+          "id": "option-3",
+          "label": "Guaranteed oxygen enrichment"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Methane is combustible; follow the site gas-safety and emergency procedures."
+    },
+    {
+      "id": "wpi-class3-wastewater-062",
+      "mode": "tap-the-flaw",
+      "prompt": "Choose the flawed sampling statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A grab shows a point-in-time condition"
+        },
+        {
+          "id": "option-2",
+          "label": "A composite can integrate a period"
+        },
+        {
+          "id": "option-3",
+          "label": "A grab automatically represents every hour of a variable day"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "A grab does not by itself represent a full variable day."
+    },
+    {
+      "id": "wpi-class3-wastewater-063",
+      "mode": "tap-the-flaw",
+      "prompt": "Choose the flawed safety statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Identify hazardous energy sources"
+        },
+        {
+          "id": "option-2",
+          "label": "A stop button alone proves zero energy"
+        },
+        {
+          "id": "option-3",
+          "label": "Control stored energy under the site procedure"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "A stop button is not proof of isolation or dissipation of stored energy."
+    },
+    {
+      "id": "wpi-class3-wastewater-064",
+      "mode": "tap-the-flaw",
+      "prompt": "Choose the flawed nitrification statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Ammonia is oxidized"
+        },
+        {
+          "id": "option-2",
+          "label": "Dissolved oxygen is needed"
+        },
+        {
+          "id": "option-3",
+          "label": "Nitrification alone turns all nitrogen into nitrogen gas"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Nitrification mainly converts ammonia to nitrate; denitrification can form nitrogen gas."
+    },
+    {
+      "id": "wpi-class3-wastewater-065",
+      "mode": "tap-the-flaw",
+      "prompt": "Choose the flawed clarification statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Settleable solids can settle"
+        },
+        {
+          "id": "option-2",
+          "label": "Floating scum can be removed"
+        },
+        {
+          "id": "option-3",
+          "label": "A primary clarifier is intended to disinfect using UV light"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Primary clarification separates solids; UV disinfection is a distinct process."
+    },
+    {
+      "id": "wpi-class3-wastewater-066",
+      "mode": "tap-the-flaw",
+      "prompt": "Choose the flawed flow-proportional sampling statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Aliquots can be triggered by flow volume"
+        },
+        {
+          "id": "option-2",
+          "label": "Flow measurement should be reliable"
+        },
+        {
+          "id": "option-3",
+          "label": "Equal clock-time aliquots always weight by flow even when flow varies"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Equal aliquots at equal times make a time composite, not necessarily a flow-weighted one."
+    },
+    {
+      "id": "wpi-class3-wastewater-067",
+      "mode": "tap-the-flaw",
+      "prompt": "Choose the flawed nutrient-control statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Nitrate is a nitrogen form"
+        },
+        {
+          "id": "option-2",
+          "label": "Phosphate is a phosphorus form"
+        },
+        {
+          "id": "option-3",
+          "label": "Nitrate and phosphate are the same compound"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Nitrate and phosphate contain different nutrient elements."
+    },
+    {
+      "id": "wpi-class3-wastewater-068",
+      "mode": "tap-the-flaw",
+      "prompt": "Choose the flawed sludge statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Digestion can stabilize sludge"
+        },
+        {
+          "id": "option-2",
+          "label": "Dewatering can reduce sludge water"
+        },
+        {
+          "id": "option-3",
+          "label": "Dewatering is identical to biological digestion"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Physical dewatering and biological stabilization are different operations."
+    },
+    {
+      "id": "wpi-class3-wastewater-069",
+      "mode": "tap-the-flaw",
+      "prompt": "Choose the flawed laboratory statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Calibrate a DO meter according to its instructions"
+        },
+        {
+          "id": "option-2",
+          "label": "Label samples clearly"
+        },
+        {
+          "id": "option-3",
+          "label": "Use an unidentified bottle and guess its collection location later"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Sample identity and records are essential to interpreting results."
+    },
+    {
+      "id": "wpi-class3-wastewater-070",
+      "mode": "tap-the-flaw",
+      "prompt": "Choose the flawed equipment statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Grit may abrade pumps"
+        },
+        {
+          "id": "option-2",
+          "label": "Bar screens intercept large debris"
+        },
+        {
+          "id": "option-3",
+          "label": "Grit removal is designed primarily to measure pH"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Grit removal separates abrasive mineral particles; it is not a pH measurement."
+    },
+    {
+      "id": "wpi-class3-wastewater-071",
+      "mode": "tap-the-flaw",
+      "prompt": "Choose the flawed activated sludge statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Biomass grows while treating wastewater"
+        },
+        {
+          "id": "option-2",
+          "label": "Some settled biomass can be returned"
+        },
+        {
+          "id": "option-3",
+          "label": "Return sludge is the same thing as final effluent"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Return sludge carries settled biomass back; effluent leaves the liquid treatment train."
+    },
+    {
+      "id": "wpi-class3-wastewater-072",
+      "mode": "tap-the-flaw",
+      "prompt": "Choose the flawed process-control statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Monitor pH when nitrifying"
+        },
+        {
+          "id": "option-2",
+          "label": "Monitor dissolved oxygen"
+        },
+        {
+          "id": "option-3",
+          "label": "Nitrification cannot consume alkalinity"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Ammonia oxidation consumes alkalinity, potentially lowering pH."
+    },
+    {
+      "id": "wpi-class3-wastewater-073",
+      "mode": "tap-the-flaw",
+      "prompt": "Choose the flawed math statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Detention time equals volume divided by flow"
+        },
+        {
+          "id": "option-2",
+          "label": "At fixed volume, higher flow shortens detention time"
+        },
+        {
+          "id": "option-3",
+          "label": "At fixed volume, doubling flow doubles detention time"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Doubling flow halves theoretical detention time."
+    },
+    {
+      "id": "wpi-class3-wastewater-074",
+      "mode": "tap-the-flaw",
+      "prompt": "Choose the flawed secondary clarifier statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Biological floc can settle"
+        },
+        {
+          "id": "option-2",
+          "label": "Settled solids can be returned"
+        },
+        {
+          "id": "option-3",
+          "label": "A clarifier always removes dissolved ammonia by settling"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Dissolved ammonia does not settle like particulate floc."
+    },
+    {
+      "id": "wpi-class3-wastewater-075",
+      "mode": "tap-the-flaw",
+      "prompt": "Choose the flawed gas safety statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Digester gas can contain methane"
+        },
+        {
+          "id": "option-2",
+          "label": "Methane is combustible"
+        },
+        {
+          "id": "option-3",
+          "label": "A digester gas leak is harmless because methane cannot burn"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Methane is combustible; treat gas leaks as an operational safety hazard."
+    },
+    {
+      "id": "wpi-class3-wastewater-076",
+      "mode": "tap-the-flaw",
+      "prompt": "Choose the flawed solids-conditioning statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Polymer can help bind particles"
+        },
+        {
+          "id": "option-2",
+          "label": "Polymer dosage needs optimization"
+        },
+        {
+          "id": "option-3",
+          "label": "Any polymer dose gives identical cake quality"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Improper conditioning can produce wet cake or washout."
+    },
+    {
+      "id": "wpi-class3-wastewater-077",
+      "mode": "tap-the-flaw",
+      "prompt": "Choose the flawed confined-space response.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Use the site entry program"
+        },
+        {
+          "id": "option-2",
+          "label": "Test the atmosphere as required by the procedure"
+        },
+        {
+          "id": "option-3",
+          "label": "Rush in unprotected to rescue a collapsed coworker"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Unplanned entry may expose the rescuer to the same hazard; summon the designated rescue service."
+    },
+    {
+      "id": "wpi-class3-wastewater-078",
+      "mode": "tap-the-flaw",
+      "prompt": "Choose the flawed mass-loading statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Mass loading depends on flow and concentration"
+        },
+        {
+          "id": "option-2",
+          "label": "At constant concentration, doubling flow doubles load"
+        },
+        {
+          "id": "option-3",
+          "label": "A concentration alone determines mass per day without flow"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "A daily mass load also needs the corresponding flow volume per day."
+    },
+    {
+      "id": "wpi-class3-wastewater-079",
+      "mode": "tap-the-flaw",
+      "prompt": "Choose the flawed recordkeeping statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Record the calibration"
+        },
+        {
+          "id": "option-2",
+          "label": "Identify sampling location and time"
+        },
+        {
+          "id": "option-3",
+          "label": "Replace a missing measurement with a guessed value without noting it"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Missing or estimated data must not be disguised as measured data."
+    },
+    {
+      "id": "wpi-class3-wastewater-080",
+      "mode": "tap-the-flaw",
+      "prompt": "Choose the flawed disinfection statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Disinfection targets microorganisms"
+        },
+        {
+          "id": "option-2",
+          "label": "Clarification and disinfection have different purposes"
+        },
+        {
+          "id": "option-3",
+          "label": "Disinfection is the same physical operation as grit separation"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Grit separation removes heavy particles; disinfection reduces target microorganisms."
+    },
+    {
+      "id": "wpi-class3-wastewater-081",
+      "mode": "tap-the-flaw",
+      "prompt": "Choose the flawed anoxic process statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Nitrate can serve as an electron acceptor"
+        },
+        {
+          "id": "option-2",
+          "label": "Organic carbon can support heterotrophic denitrification"
+        },
+        {
+          "id": "option-3",
+          "label": "Denitrification needs high dissolved oxygen as its defining condition"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Denitrification is favored in anoxic conditions, not high dissolved oxygen."
+    },
+    {
+      "id": "wpi-class3-wastewater-top-001",
+      "mode": "cause-effect",
+      "prompt": "A plant receives a constant flow of 1.2 million US gallons per day with a constant influent total suspended solids concentration of 150 mg/L. Using the conversion factor 8.34, what daily solids load does this produce?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "1,501.2 lb/day"
+        },
+        {
+          "id": "option-2",
+          "label": "1,251 lb/day"
+        },
+        {
+          "id": "option-3",
+          "label": "1,801.44 lb/day"
+        },
+        {
+          "id": "option-4",
+          "label": "15,012 lb/day"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Daily mass load in lb/day = flow in million US gallons per day × concentration in mg/L × 8.34 lb per million US gallons per mg/L. Substitute 1.2 MGD × 150 mg/L × 8.34 = 1,501.2 lb/day. This calculation assumes the stated flow and concentration represent the day."
+    },
+    {
+      "id": "wpi-class3-wastewater-top-002",
+      "mode": "cause-effect",
+      "prompt": "For a five-day biochemical oxygen demand test, an unseeded 15 mL wastewater sample is diluted to 300 mL. Dissolved oxygen drops from 8.0 to 3.0 mg/L after incubation. Assume dilution-water oxygen demand is negligible and no correction is needed. What BOD5 does this oxygen depletion indicate?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "5 mg/L"
+        },
+        {
+          "id": "option-2",
+          "label": "20 mg/L"
+        },
+        {
+          "id": "option-3",
+          "label": "100 mg/L"
+        },
+        {
+          "id": "option-4",
+          "label": "300 mg/L"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "For this unseeded, uncorrected case, BOD5 = (initial DO − final DO) × (total bottle volume ÷ wastewater sample volume). The DO depletion is 8.0 − 3.0 = 5.0 mg/L; the dilution factor is 300 mL ÷ 15 mL = 20. Thus 5.0 mg/L × 20 = 100 mg/L BOD5. Actual analyses must follow the applicable method and quality-control requirements."
+    },
+    {
+      "id": "wpi-class3-wastewater-top-003",
+      "mode": "cause-effect",
+      "prompt": "An activated sludge system has 20,000 lb of suspended solids in its aeration basin. It loses 900 lb/day in waste sludge and 100 lb/day in effluent. Assuming these are the only system solids exits, what is the aeration-basin-inventory-based solids retention time?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "18 days"
+        },
+        {
+          "id": "option-2",
+          "label": "20 days"
+        },
+        {
+          "id": "option-3",
+          "label": "22.2 days"
+        },
+        {
+          "id": "option-4",
+          "label": "200 days"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "For the specified aeration-basin inventory convention, solids retention time = aeration-basin suspended-solids inventory ÷ (wasted solids per day + effluent solids per day). Total loss = 900 + 100 = 1,000 lb/day; 20,000 lb ÷ 1,000 lb/day = 20 days. This aeration-only estimate excludes solids held in the clarifier; a whole-system mean cell residence time convention includes that inventory."
+    },
+    {
+      "id": "wpi-class3-wastewater-order-001",
+      "mode": "before-after",
+      "prompt": "In the Pennsylvania DEP complete-mix activated sludge example, does the primary clarifier treat the main wastewater flow before or after the aeration tank?",
+      "correctAnswer": "before",
+      "explanation": "In this example, primary clarification removes settleable material from the main liquid flow before aeration. Other plant designs can omit primary clarification."
+    },
+    {
+      "id": "wpi-class3-wastewater-order-002",
+      "mode": "before-after",
+      "prompt": "In the Pennsylvania DEP complete-mix activated sludge example with a chlorine contact basin, does secondary clarification occur before or after chlorine contact for the main effluent?",
+      "correctAnswer": "before",
+      "explanation": "In the cited example, secondary clarification separates biological solids before the clarified effluent enters chlorine contact. This is not a universal layout."
+    },
+    {
+      "id": "wpi-class3-wastewater-order-003",
+      "mode": "before-after",
+      "prompt": "In a conventional activated sludge return loop, is biological floc settling in the secondary clarifier before or after biomass from the clarifier is returned to the aeration tank?",
+      "correctAnswer": "before",
+      "explanation": "The return activated sludge stream carries biomass that has settled in the secondary clarifier back to the aeration tank."
+    },
+    {
+      "id": "wpi-class3-wastewater-order-004",
+      "mode": "before-after",
+      "prompt": "During the two-step biological nitrification described by Pennsylvania DEP, does oxidation of nitrite to nitrate occur before or after oxidation of ammonia to nitrite?",
+      "correctAnswer": "after",
+      "explanation": "Ammonia is oxidized to nitrite, and nitrite is then oxidized to nitrate. The question concerns this biochemical conversion, not separate physical tanks."
+    },
+    {
+      "id": "wpi-class3-wastewater-order-005",
+      "mode": "before-after",
+      "prompt": "In the biological denitrification pathway described by Pennsylvania DEP, does reduction of nitrite to nitrogen gas occur before or after reduction of nitrate to nitrite?",
+      "correctAnswer": "after",
+      "explanation": "The described pathway first reduces nitrate to nitrite and then reduces nitrite to nitrogen gas."
+    },
+    {
+      "id": "wpi-class3-wastewater-order-006",
+      "mode": "before-after",
+      "prompt": "For phosphorus-accumulating organisms in the Pennsylvania DEP A/O process, does anaerobic phosphate release occur before or after aerobic luxury uptake?",
+      "correctAnswer": "before",
+      "explanation": "In the A/O example, the organisms release phosphate under anaerobic conditions and subsequently take up phosphate in the aerobic stage."
+    },
+    {
+      "id": "wpi-class3-wastewater-order-007",
+      "mode": "before-after",
+      "prompt": "In the Pennsylvania DEP A/O phosphorus-removal example, is removal of phosphorus-rich biomass by sludge wasting before or after its aerobic phosphorus uptake?",
+      "correctAnswer": "after",
+      "explanation": "Phosphorus is taken up into biomass in the aerobic stage; wasting solids from the secondary clarifier removes phosphorus-containing biomass from the system."
+    },
+    {
+      "id": "wpi-class3-wastewater-order-008",
+      "mode": "before-after",
+      "prompt": "For the main forward wastewater flow in the Pennsylvania DEP A²O example, is the anoxic zone encountered before or after the aerobic zone?",
+      "correctAnswer": "before",
+      "explanation": "In this A²O example, forward flow passes through the anoxic zone and then the aerobic zone. Nitrate-rich mixed liquor is recycled in the opposite direction, so this is not a statement about every parcel of recycled liquid."
+    },
+    {
+      "id": "wpi-class3-wastewater-order-009",
+      "mode": "before-after",
+      "prompt": "In the Pennsylvania DEP five-stage Bardenpho example, does the second anoxic denitrification zone receive the main forward flow before or after the nitrifying aerobic zone?",
+      "correctAnswer": "after",
+      "explanation": "The example places the second anoxic stage downstream of the nitrifying aerobic stage; unrecycled nitrate can enter that second anoxic stage. Other nutrient-removal configurations differ."
+    },
+    {
+      "id": "wpi-class3-wastewater-order-010",
+      "mode": "before-after",
+      "prompt": "In anaerobic sludge digestion, does methane production from the simpler acid-forming products occur before or after their formation from complex sludge material?",
+      "correctAnswer": "after",
+      "explanation": "Acid-forming organisms break complex material into simpler products, including organic acids; methane formers can subsequently use suitable products. The biological reactions can overlap in time."
+    },
+    {
+      "id": "wpi-class3-wastewater-order-011",
+      "mode": "before-after",
+      "prompt": "In the Pennsylvania DEP example of a two-tank anaerobic digestion system, does sludge enter the secondary digester before or after the primary digester?",
+      "correctAnswer": "after",
+      "explanation": "The cited two-tank example transfers mixed contents from the primary digester to the secondary digester. Not all anaerobic systems use two tanks."
+    },
+    {
+      "id": "wpi-class3-wastewater-order-012",
+      "mode": "before-after",
+      "prompt": "For digested sludge sent to a drying bed in the Pennsylvania DEP solids-handling example, is sludge withdrawal from the digester before or after dewatering on the drying bed?",
+      "correctAnswer": "before",
+      "explanation": "In this stated route, digested sludge is withdrawn from the digester and then sent to the drying bed for further water removal. Other solids trains are possible."
+    },
+    {
+      "id": "wpi-class3-wastewater-order-013",
+      "mode": "before-after",
+      "prompt": "In the Pennsylvania DEP belt filter press description, does gravity drainage of sludge occur before or after the pressing step?",
+      "correctAnswer": "before",
+      "explanation": "The training describes sludge draining on a porous belt by gravity before it is pressed. Actual equipment layouts and operating procedures vary."
+    },
+    {
+      "id": "wpi-class3-wastewater-order-014",
+      "mode": "before-after",
+      "prompt": "In the Pennsylvania DEP gravity belt thickener example using polymer, does the polymer conditioning occur before or after drainage on the belt?",
+      "correctAnswer": "before",
+      "explanation": "The described sludge is preconditioned, typically with polymer, before being applied to the belt where free water drains."
+    },
+    {
+      "id": "wpi-class3-wastewater-order-015",
+      "mode": "before-after",
+      "prompt": "For a batch plate-and-frame filter press as described by Pennsylvania DEP, is emptying the press before or after removal of water from the loaded sludge?",
+      "correctAnswer": "after",
+      "explanation": "The plate-and-frame unit is filled, water is removed, and the unit is then emptied; unlike the cited belt filter, it is a batch process."
+    },
+    {
+      "id": "wpi-class3-wastewater-order-016",
+      "mode": "before-after",
+      "prompt": "In the typical sequencing batch reactor cycle described in the Kentucky operator manual, is decanting clarified liquid before or after settling?",
+      "correctAnswer": "after",
+      "explanation": "The manual describes the mixed liquor settling and then the clarified supernatant being decanted. The stages occur in the same batch tank."
+    },
+    {
+      "id": "wpi-class3-wastewater-order-017",
+      "mode": "before-after",
+      "prompt": "In the typical sequencing batch reactor cycle described in the Kentucky operator manual, is the react period before or after the settle period?",
+      "correctAnswer": "before",
+      "explanation": "In the typical cycle identified by the manual, the react period precedes settling. Individual facilities may use different cycle settings."
+    },
+    {
+      "id": "wpi-class3-wastewater-order-018",
+      "mode": "before-after",
+      "prompt": "In the Kentucky manual’s gravimetric mixed-liquor solids example, is ignition for volatile solids determination before or after determining dry mixed liquor suspended solids?",
+      "correctAnswer": "after",
+      "explanation": "The manual determines mixed liquor suspended solids from dry solids and then uses ignition and the remaining ash to determine the volatile portion."
+    },
+    {
+      "id": "wpi-class3-wastewater-order-020",
+      "mode": "before-after",
+      "prompt": "In EPA’s manual wastewater composite-sampling procedure, is thorough mixing of an individual collected portion before or after pouring its aliquot into the composite container?",
+      "correctAnswer": "before",
+      "explanation": "The EPA procedure calls for thoroughly mixing each individual portion before its aliquot is poured into the composite container. Follow the applicable analytical method and sampling plan."
+    },
+    {
+      "id": "wpi-class3-wastewater-order-021",
+      "mode": "before-after",
+      "prompt": "Under EPA’s described automatic composite procedure for conventional parameters, is the transfer to individual analysis containers before or after the end of the compositing period?",
+      "correctAnswer": "after",
+      "explanation": "At the end of the compositing period the collected composite is mixed and transferred to the appropriate containers. Preservation requirements depend on the analyte and method."
+    },
+    {
+      "id": "wpi-class3-wastewater-order-023",
+      "mode": "before-after",
+      "prompt": "In EPA’s described automatic sampler setup for extractable organics, is collecting the equipment blank before or after positioning the collection tubing in the wastewater stream?",
+      "correctAnswer": "before",
+      "explanation": "The cited EPA setup calls for a rinse and equipment blank before positioning the tubing in the wastewater and starting the sampler. Sampling procedures and blanks depend on the method and study plan."
+    }
+  ]
+}

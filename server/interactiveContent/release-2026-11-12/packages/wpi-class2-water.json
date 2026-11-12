@@ -1,0 +1,1836 @@
+{
+  "courseKey": "wpi-class2-water",
+  "status": "approved",
+  "version": "echelon-six-games-2026-11-12-final-candidate",
+  "previewIds": {
+    "rapid-swipe": "wpi-class2-water-001",
+    "speed-match": "wpi-class2-water-021",
+    "odd-one-out": "wpi-class2-water-036",
+    "cause-effect": "wpi-class2-water-051",
+    "tap-the-flaw": "wpi-class2-water-071",
+    "before-after": "wpi-class2-water-order-001"
+  },
+  "examples": [
+    {
+      "id": "wpi-class2-water-001",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: A 120,000-gallon basin at 4,000 gal/min has a theoretical detention time of 30 minutes.",
+      "correctAnswer": true,
+      "explanation": "120,000 gal ÷ 4,000 gal/min = 30 min; this is theoretical, not verified effective contact time."
+    },
+    {
+      "id": "wpi-class2-water-002",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: A rectangular filter 10 ft long by 8 ft wide has 90 square feet of surface area.",
+      "correctAnswer": false,
+      "explanation": "10 ft × 8 ft = 80 ft²."
+    },
+    {
+      "id": "wpi-class2-water-003",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: A 200 gpm filter with 100 square feet of area has a loading rate of 2 gpm/ft².",
+      "correctAnswer": true,
+      "explanation": "200 gpm ÷ 100 ft² = 2 gpm/ft²."
+    },
+    {
+      "id": "wpi-class2-water-004",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: A disinfectant residual of 0.5 mg/L and an effective contact time of 20 minutes give a calculated CT of 20 mg·min/L.",
+      "correctAnswer": false,
+      "explanation": "CT = 0.5 mg/L × 20 min = 10 mg·min/L. This arithmetic alone does not establish regulatory compliance."
+    },
+    {
+      "id": "wpi-class2-water-005",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: A target concentration falls from 10 mg/L to 2 mg/L, giving 80% removal.",
+      "correctAnswer": true,
+      "explanation": "Removal = (10 − 2) ÷ 10 × 100 = 80%."
+    },
+    {
+      "id": "wpi-class2-water-006",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: A rectangular basin containing water 20 ft long, 10 ft wide, and 5 ft deep holds 100 cubic feet of water.",
+      "correctAnswer": false,
+      "explanation": "20 × 10 × 5 = 1,000 ft³; this assumes a rectangular basin filled to 5 ft."
+    },
+    {
+      "id": "wpi-class2-water-007",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: At 1 MGD and a 2 mg/L dose, 100%-active chemical feed is 16.68 lb/day.",
+      "correctAnswer": true,
+      "explanation": "1 × 2 × 8.34 = 16.68 lb/day using the US-unit feed-rate formula."
+    },
+    {
+      "id": "wpi-class2-water-008",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: A pump delivering a constant 100 gpm for 60 minutes delivers 600 gallons.",
+      "correctAnswer": false,
+      "explanation": "100 gal/min × 60 min = 6,000 gal at constant flow."
+    },
+    {
+      "id": "wpi-class2-water-009",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: Increasing a 40 mg/L reading by 25% gives 50 mg/L.",
+      "correctAnswer": true,
+      "explanation": "40 × 1.25 = 50 mg/L."
+    },
+    {
+      "id": "wpi-class2-water-010",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: Three measured turbidity values of 1, 2, and 3 NTU have an arithmetic mean of 3 NTU.",
+      "correctAnswer": false,
+      "explanation": "(1 + 2 + 3) ÷ 3 = 2 NTU."
+    },
+    {
+      "id": "wpi-class2-water-011",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: Chlorine contact time matters to disinfection.",
+      "correctAnswer": true,
+      "explanation": "Both residual concentration and effective contact time influence disinfection performance."
+    },
+    {
+      "id": "wpi-class2-water-012",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: A reverse-osmosis permeate stream passes through the membrane.",
+      "correctAnswer": true,
+      "explanation": "Permeate is treated water that has passed through the membrane."
+    },
+    {
+      "id": "wpi-class2-water-013",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: In ion exchange, exhaustion means that a resin no longer has adequate working capacity.",
+      "correctAnswer": true,
+      "explanation": "Exhausted resin must be regenerated or replaced according to the design."
+    },
+    {
+      "id": "wpi-class2-water-014",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: Activated carbon removes some contaminants by adsorption.",
+      "correctAnswer": true,
+      "explanation": "Certain dissolved compounds adhere to porous carbon surfaces."
+    },
+    {
+      "id": "wpi-class2-water-015",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: An intake screen is intended to capture large debris.",
+      "correctAnswer": true,
+      "explanation": "Screens remove items such as sticks and leaves before downstream equipment."
+    },
+    {
+      "id": "wpi-class2-water-016",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: Rainfall and runoff can change surface-water quality.",
+      "correctAnswer": true,
+      "explanation": "Runoff can carry suspended solids and other contaminants into a source."
+    },
+    {
+      "id": "wpi-class2-water-017",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: A well’s pumping water level may differ from its static water level.",
+      "correctAnswer": true,
+      "explanation": "Pumping draws down the water level relative to the non-pumping level."
+    },
+    {
+      "id": "wpi-class2-water-018",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: An SDS identifies chemical hazards and safe-handling information.",
+      "correctAnswer": true,
+      "explanation": "Consult the specific safety data sheet and site procedure before handling chemicals."
+    },
+    {
+      "id": "wpi-class2-water-019",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: A rising differential pressure across a filter may indicate clogging.",
+      "correctAnswer": true,
+      "explanation": "Accumulated solids can increase resistance and headloss across the filter."
+    },
+    {
+      "id": "wpi-class2-water-020",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: SCADA is used to monitor and control plant processes.",
+      "correctAnswer": true,
+      "explanation": "Supervisory control and data acquisition systems communicate process information and controls."
+    },
+    {
+      "id": "wpi-class2-water-021",
+      "mode": "speed-match",
+      "prompt": "Match each conventional treatment step to its principal task in this set.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Screening",
+          "right": "Remove large debris"
+        },
+        {
+          "id": "pair-2",
+          "left": "Flocculation",
+          "right": "Promote particle collisions"
+        },
+        {
+          "id": "pair-3",
+          "left": "Sedimentation",
+          "right": "Settle floc by gravity"
+        }
+      ],
+      "explanation": "Screening removes large debris; flocculation promotes particle collisions; sedimentation removes settleable floc by gravity."
+    },
+    {
+      "id": "wpi-class2-water-022",
+      "mode": "speed-match",
+      "prompt": "Match the measurement to the indicated water property.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "pH",
+          "right": "Acidity or basicity"
+        },
+        {
+          "id": "pair-2",
+          "left": "Turbidity",
+          "right": "Optical cloudiness"
+        },
+        {
+          "id": "pair-3",
+          "left": "Temperature",
+          "right": "Thermal condition"
+        }
+      ],
+      "explanation": "Each instrument reads a different property of the sample."
+    },
+    {
+      "id": "wpi-class2-water-023",
+      "mode": "speed-match",
+      "prompt": "Match the unit to its measured quantity.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "NTU",
+          "right": "Turbidity"
+        },
+        {
+          "id": "pair-2",
+          "left": "mg/L",
+          "right": "Mass concentration"
+        },
+        {
+          "id": "pair-3",
+          "left": "gpm",
+          "right": "Volume flow per minute"
+        }
+      ],
+      "explanation": "These units describe optical turbidity, concentration, and volumetric flow, respectively."
+    },
+    {
+      "id": "wpi-class2-water-024",
+      "mode": "speed-match",
+      "prompt": "Match each water-quality characteristic to its description.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Alkalinity",
+          "right": "Acid-neutralizing capacity"
+        },
+        {
+          "id": "pair-2",
+          "left": "Hardness",
+          "right": "Primarily dissolved calcium and magnesium"
+        },
+        {
+          "id": "pair-3",
+          "left": "Turbidity",
+          "right": "Cloudiness from particles"
+        }
+      ],
+      "explanation": "Alkalinity is acid-neutralizing capacity; hardness is mainly associated with calcium and magnesium, and turbidity is an optical effect of suspended particles."
+    },
+    {
+      "id": "wpi-class2-water-025",
+      "mode": "speed-match",
+      "prompt": "Match each treatment stage to its named equipment.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Rapid mixing",
+          "right": "Flash mixer"
+        },
+        {
+          "id": "pair-2",
+          "left": "Flocculation",
+          "right": "Slow mixer"
+        },
+        {
+          "id": "pair-3",
+          "left": "Filtration",
+          "right": "Media bed"
+        }
+      ],
+      "explanation": "Equipment selection corresponds to its stage in this example conventional train."
+    },
+    {
+      "id": "wpi-class2-water-026",
+      "mode": "speed-match",
+      "prompt": "Match the contaminant category to its example.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Biological",
+          "right": "Giardia"
+        },
+        {
+          "id": "pair-2",
+          "left": "Chemical",
+          "right": "Nitrate"
+        },
+        {
+          "id": "pair-3",
+          "left": "Physical",
+          "right": "Suspended silt"
+        }
+      ],
+      "explanation": "A protozoan, a dissolved ion, and particles represent distinct categories."
+    },
+    {
+      "id": "wpi-class2-water-027",
+      "mode": "speed-match",
+      "prompt": "Match the operational document to its primary use.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "SDS",
+          "right": "Chemical hazard information"
+        },
+        {
+          "id": "pair-2",
+          "left": "SOP",
+          "right": "Facility work procedure"
+        },
+        {
+          "id": "pair-3",
+          "left": "Maintenance log",
+          "right": "Equipment work history"
+        }
+      ],
+      "explanation": "These documents guide hazard handling, standard tasks, and equipment records."
+    },
+    {
+      "id": "wpi-class2-water-028",
+      "mode": "speed-match",
+      "prompt": "Match each source-water term to its definition.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Runoff",
+          "right": "Water moving over land"
+        },
+        {
+          "id": "pair-2",
+          "left": "Infiltration",
+          "right": "Water entering soil"
+        },
+        {
+          "id": "pair-3",
+          "left": "Precipitation",
+          "right": "Water falling from the atmosphere"
+        }
+      ],
+      "explanation": "Runoff, infiltration and precipitation refer to different parts of the water cycle."
+    },
+    {
+      "id": "wpi-class2-water-029",
+      "mode": "speed-match",
+      "prompt": "Match each chemical name to its formula; aluminum sulfate here is anhydrous.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Anhydrous aluminum sulfate",
+          "right": "Al2(SO4)3"
+        },
+        {
+          "id": "pair-2",
+          "left": "Sodium hydroxide",
+          "right": "NaOH"
+        },
+        {
+          "id": "pair-3",
+          "left": "Sodium hypochlorite",
+          "right": "NaOCl"
+        }
+      ],
+      "explanation": "The formulas identify anhydrous aluminum sulfate, caustic soda, and sodium hypochlorite. Commercial alum can be hydrated."
+    },
+    {
+      "id": "wpi-class2-water-030",
+      "mode": "speed-match",
+      "prompt": "Match each instrument to the quantity it measures.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Turbidimeter",
+          "right": "Turbidity"
+        },
+        {
+          "id": "pair-2",
+          "left": "pH meter",
+          "right": "pH"
+        },
+        {
+          "id": "pair-3",
+          "left": "Flow meter",
+          "right": "Flow rate"
+        }
+      ],
+      "explanation": "The appropriate instrument depends on the parameter being measured."
+    },
+    {
+      "id": "wpi-class2-water-031",
+      "mode": "speed-match",
+      "prompt": "Match each membrane-flow label to its meaning.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Feed",
+          "right": "Water entering the membrane unit"
+        },
+        {
+          "id": "pair-2",
+          "left": "Permeate",
+          "right": "Water passing through the membrane"
+        },
+        {
+          "id": "pair-3",
+          "left": "Concentrate",
+          "right": "Outlet stream retained on the feed side of the membrane"
+        }
+      ],
+      "explanation": "The membrane splits incoming feed into permeate and concentrate."
+    },
+    {
+      "id": "wpi-class2-water-032",
+      "mode": "speed-match",
+      "prompt": "Match each process to the principal mechanism named here.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Granular activated carbon",
+          "right": "Adsorption onto porous media"
+        },
+        {
+          "id": "pair-2",
+          "left": "Cation exchange",
+          "right": "Exchange of positively charged ions"
+        },
+        {
+          "id": "pair-3",
+          "left": "Packed tower aeration",
+          "right": "Transfer of volatile compounds to air"
+        }
+      ],
+      "explanation": "These processes use different mechanisms; applicability depends on the contaminant and design."
+    },
+    {
+      "id": "wpi-class2-water-033",
+      "mode": "speed-match",
+      "prompt": "Match each maintenance strategy to the distinct example described.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Calendar-based preventive",
+          "right": "Service at fixed scheduled intervals regardless of condition"
+        },
+        {
+          "id": "pair-2",
+          "left": "Corrective",
+          "right": "Repair an identified equipment fault"
+        },
+        {
+          "id": "pair-3",
+          "left": "Predictive",
+          "right": "Forecast likely failure using condition trends to time service"
+        }
+      ],
+      "explanation": "The examples distinguish time-scheduled service, repair of an identified fault, and service timed by a prediction from condition data. Broader maintenance categories may overlap."
+    },
+    {
+      "id": "wpi-class2-water-034",
+      "mode": "speed-match",
+      "prompt": "For a rectangular basin, match each calculation to its formula.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Water volume",
+          "right": "Length × width × water depth"
+        },
+        {
+          "id": "pair-2",
+          "left": "Horizontal water surface area",
+          "right": "Length × width"
+        },
+        {
+          "id": "pair-3",
+          "left": "Theoretical detention time",
+          "right": "Water volume ÷ flow"
+        }
+      ],
+      "explanation": "Use compatible volume and flow units. Theoretical detention time is not automatically effective contact time."
+    },
+    {
+      "id": "wpi-class2-water-035",
+      "mode": "speed-match",
+      "prompt": "Match each sampling record to its meaning.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Sample location",
+          "right": "Where sample was collected"
+        },
+        {
+          "id": "pair-2",
+          "left": "Collection time",
+          "right": "When sample was collected"
+        },
+        {
+          "id": "pair-3",
+          "left": "Analysis result",
+          "right": "Measured value"
+        }
+      ],
+      "explanation": "Location, time and measured result are different pieces of the sample record."
+    },
+    {
+      "id": "wpi-class2-water-036",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a drinking-water disinfectant in this list?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Chlorine"
+        },
+        {
+          "id": "option-2",
+          "label": "Ozone"
+        },
+        {
+          "id": "option-3",
+          "label": "Ultraviolet light"
+        },
+        {
+          "id": "option-4",
+          "label": "Alum"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Alum is a coagulant; the others are used for disinfection."
+    },
+    {
+      "id": "wpi-class2-water-037",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a physical source-water feature?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Turbidity"
+        },
+        {
+          "id": "option-2",
+          "label": "Color"
+        },
+        {
+          "id": "option-3",
+          "label": "Temperature"
+        },
+        {
+          "id": "option-4",
+          "label": "Nitrate concentration"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Nitrate concentration is a chemical property; the others are physical characteristics."
+    },
+    {
+      "id": "wpi-class2-water-038",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a chlorine residual measurement?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Free chlorine"
+        },
+        {
+          "id": "option-2",
+          "label": "Total chlorine"
+        },
+        {
+          "id": "option-3",
+          "label": "Combined chlorine"
+        },
+        {
+          "id": "option-4",
+          "label": "Alkalinity"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Alkalinity measures acid-neutralizing capacity, not chlorine residual."
+    },
+    {
+      "id": "wpi-class2-water-039",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a commonly used coagulation chemical?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Aluminum sulfate"
+        },
+        {
+          "id": "option-2",
+          "label": "Ferric chloride"
+        },
+        {
+          "id": "option-3",
+          "label": "Ferric sulfate"
+        },
+        {
+          "id": "option-4",
+          "label": "Sodium thiosulfate"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "The first three are coagulants; sodium thiosulfate is a dechlorinating agent."
+    },
+    {
+      "id": "wpi-class2-water-040",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a source of water for a treatment plant?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "River"
+        },
+        {
+          "id": "option-2",
+          "label": "Lake"
+        },
+        {
+          "id": "option-3",
+          "label": "Aquifer"
+        },
+        {
+          "id": "option-4",
+          "label": "Flocculator"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A flocculator is process equipment, not a source-water body."
+    },
+    {
+      "id": "wpi-class2-water-041",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a treatment residual stream?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Settled sludge"
+        },
+        {
+          "id": "option-2",
+          "label": "Spent backwash water"
+        },
+        {
+          "id": "option-3",
+          "label": "RO concentrate"
+        },
+        {
+          "id": "option-4",
+          "label": "Finished-water product"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Sludge, spent washwater, and RO concentrate are residual streams. Finished water is the treated product."
+    },
+    {
+      "id": "wpi-class2-water-043",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a biological contaminant?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Virus"
+        },
+        {
+          "id": "option-2",
+          "label": "Bacterium"
+        },
+        {
+          "id": "option-3",
+          "label": "Protozoan"
+        },
+        {
+          "id": "option-4",
+          "label": "Arsenic"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Arsenic is a chemical element; the others are biological agents."
+    },
+    {
+      "id": "wpi-class2-water-044",
+      "mode": "odd-one-out",
+      "prompt": "Which is not normally classified as personal protective equipment?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Safety goggles"
+        },
+        {
+          "id": "option-2",
+          "label": "Chemical-resistant gloves"
+        },
+        {
+          "id": "option-3",
+          "label": "Protective apron"
+        },
+        {
+          "id": "option-4",
+          "label": "Flow meter"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A flow meter measures flow; the other items can protect a worker."
+    },
+    {
+      "id": "wpi-class2-water-045",
+      "mode": "odd-one-out",
+      "prompt": "Which is not normally a water-quality sample record field?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Location"
+        },
+        {
+          "id": "option-2",
+          "label": "Collection time"
+        },
+        {
+          "id": "option-3",
+          "label": "Sample ID"
+        },
+        {
+          "id": "option-4",
+          "label": "Pump impeller diameter"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Location, collection time, and sample ID document a sample; impeller diameter describes a pump."
+    },
+    {
+      "id": "wpi-class2-water-046",
+      "mode": "odd-one-out",
+      "prompt": "Which item is not an oxidant or disinfectant?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Chlorine"
+        },
+        {
+          "id": "option-2",
+          "label": "Ozone"
+        },
+        {
+          "id": "option-3",
+          "label": "Potassium permanganate"
+        },
+        {
+          "id": "option-4",
+          "label": "Aluminum sulfate"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Aluminum sulfate is a coagulant, not an oxidant or disinfectant."
+    },
+    {
+      "id": "wpi-class2-water-048",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a chemical-feed system component?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Metering pump"
+        },
+        {
+          "id": "option-2",
+          "label": "Injection line"
+        },
+        {
+          "id": "option-3",
+          "label": "Solution tank"
+        },
+        {
+          "id": "option-4",
+          "label": "Sedimentation weir"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A weir is part of a settling basin, not a chemical-feed assembly in this set."
+    },
+    {
+      "id": "wpi-class2-water-050",
+      "mode": "odd-one-out",
+      "prompt": "Which listed ion is not a cation in an ion-exchange discussion?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Calcium ion (Ca²⁺)"
+        },
+        {
+          "id": "option-2",
+          "label": "Magnesium ion (Mg²⁺)"
+        },
+        {
+          "id": "option-3",
+          "label": "Sodium ion (Na⁺)"
+        },
+        {
+          "id": "option-4",
+          "label": "Chloride ion (Cl⁻)"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Chloride carries a negative charge; calcium, magnesium and sodium ions carry positive charges. Cation exchange acts on positively charged ions."
+    },
+    {
+      "id": "wpi-class2-water-051",
+      "mode": "cause-effect",
+      "prompt": "At unchanged chlorine dose and contact time, chlorine demand increases while both residuals remain measurable. What happens to chlorine residual?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It decreases"
+        },
+        {
+          "id": "option-2",
+          "label": "It must increase"
+        },
+        {
+          "id": "option-3",
+          "label": "It becomes pH"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "More chlorine is consumed, so less can remain as residual."
+    },
+    {
+      "id": "wpi-class2-water-052",
+      "mode": "cause-effect",
+      "prompt": "For a fixed basin volume, flow doubles. What happens to theoretical detention time?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It is halved"
+        },
+        {
+          "id": "option-2",
+          "label": "It doubles"
+        },
+        {
+          "id": "option-3",
+          "label": "It stays fixed"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Detention time equals volume divided by flow."
+    },
+    {
+      "id": "wpi-class2-water-053",
+      "mode": "cause-effect",
+      "prompt": "At constant filter flow, solids accumulate in a rapid filter. What tends to rise?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Headloss"
+        },
+        {
+          "id": "option-2",
+          "label": "Basin volume"
+        },
+        {
+          "id": "option-3",
+          "label": "Pump nameplate voltage"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Deposits add resistance to flow through the media."
+    },
+    {
+      "id": "wpi-class2-water-054",
+      "mode": "cause-effect",
+      "prompt": "A storm adds soil-laden runoff to a river. Which source-water measurement may rise?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Turbidity"
+        },
+        {
+          "id": "option-2",
+          "label": "Well casing diameter"
+        },
+        {
+          "id": "option-3",
+          "label": "Pump motor frequency"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Suspended sediment from runoff can increase cloudiness."
+    },
+    {
+      "id": "wpi-class2-water-055",
+      "mode": "cause-effect",
+      "prompt": "A plant has one chemical-feed pump with no backup and an automatic shutoff that prevents siphoning. The pump stops while water flow continues. What happens to chemical delivery from the pump?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It stops"
+        },
+        {
+          "id": "option-2",
+          "label": "It must rise"
+        },
+        {
+          "id": "option-3",
+          "label": "It remains verified without measurement"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The stopped pump cannot deliver chemical under the stated no-backup, no-siphoning conditions. Follow the site response procedure."
+    },
+    {
+      "id": "wpi-class2-water-056",
+      "mode": "cause-effect",
+      "prompt": "In a conventional train, inadequate floc formation reaches a settling basin. What may happen?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "More fine particles remain suspended"
+        },
+        {
+          "id": "option-2",
+          "label": "All particles settle faster"
+        },
+        {
+          "id": "option-3",
+          "label": "Dissolved oxygen becomes a flow meter"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Small poorly formed particles can settle less readily than well-formed floc."
+    },
+    {
+      "id": "wpi-class2-water-057",
+      "mode": "cause-effect",
+      "prompt": "At constant feed concentration and other conditions, an adsorption bed approaches breakthrough. Compared with the low pre-breakthrough level, what happens to the target concentration in the effluent?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It rises"
+        },
+        {
+          "id": "option-2",
+          "label": "It must be zero"
+        },
+        {
+          "id": "option-3",
+          "label": "It becomes a flow rate"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Breakthrough is the appearance or rise of the target contaminant in effluent as the bed loses effective capacity; the threshold used is site-specific."
+    },
+    {
+      "id": "wpi-class2-water-058",
+      "mode": "cause-effect",
+      "prompt": "For a water-only rapid granular-media filter, at constant water temperature, insufficient backwash flow can have what effect?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Inadequate media cleaning"
+        },
+        {
+          "id": "option-2",
+          "label": "Guaranteed complete cleaning"
+        },
+        {
+          "id": "option-3",
+          "label": "Membrane desalination"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Insufficient upward flow may fail to expand and clean the media adequately. Backwash design and temperature affect the required rate."
+    },
+    {
+      "id": "wpi-class2-water-059",
+      "mode": "cause-effect",
+      "prompt": "A caustic feed pump adds less sodium hydroxide than intended, all else equal. What is a possible result?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Less pH increase"
+        },
+        {
+          "id": "option-2",
+          "label": "A guaranteed pH of 7"
+        },
+        {
+          "id": "option-3",
+          "label": "More filter surface area"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Sodium hydroxide is used to raise pH; a reduced feed can yield less increase."
+    },
+    {
+      "id": "wpi-class2-water-060",
+      "mode": "cause-effect",
+      "prompt": "An online meter gives an abrupt, implausible reading and its sensor appears damaged. What is a sensible first interpretation?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The reading needs verification"
+        },
+        {
+          "id": "option-2",
+          "label": "The water is certainly unsafe"
+        },
+        {
+          "id": "option-3",
+          "label": "The reading must be correct"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Confirm an unexpected reading with an independent check and inspect the instrument."
+    },
+    {
+      "id": "wpi-class2-water-061",
+      "mode": "cause-effect",
+      "prompt": "If an unprotected wellhead is flooded, what hazard may increase?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Potential contamination of the well"
+        },
+        {
+          "id": "option-2",
+          "label": "Filter area"
+        },
+        {
+          "id": "option-3",
+          "label": "Disinfectant concentration by definition"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Floodwater near an unprotected well can introduce contaminants."
+    },
+    {
+      "id": "wpi-class2-water-062",
+      "mode": "cause-effect",
+      "prompt": "A sample bottle is contaminated during collection. What is the likely effect?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The result may not represent the source"
+        },
+        {
+          "id": "option-2",
+          "label": "The result becomes more representative"
+        },
+        {
+          "id": "option-3",
+          "label": "The water flow automatically increases"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Poor sampling technique can contaminate the sample and invalidate its interpretation."
+    },
+    {
+      "id": "wpi-class2-water-063",
+      "mode": "cause-effect",
+      "prompt": "If flow increases through a fixed-area filter, what happens to loading rate?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It increases"
+        },
+        {
+          "id": "option-2",
+          "label": "It decreases"
+        },
+        {
+          "id": "option-3",
+          "label": "It stays identical"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Filter loading rate is flow divided by filter area."
+    },
+    {
+      "id": "wpi-class2-water-064",
+      "mode": "cause-effect",
+      "prompt": "For the same measured chlorine residual, effective contact time falls from 20 to 10 minutes. What happens to calculated CT?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It halves"
+        },
+        {
+          "id": "option-2",
+          "label": "It doubles"
+        },
+        {
+          "id": "option-3",
+          "label": "It remains unchanged"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "CT is disinfectant residual concentration multiplied by contact time."
+    },
+    {
+      "id": "wpi-class2-water-065",
+      "mode": "cause-effect",
+      "prompt": "A centrifugal pump loses prime. What can happen to water delivery?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Flow can decrease or stop"
+        },
+        {
+          "id": "option-2",
+          "label": "Flow must double"
+        },
+        {
+          "id": "option-3",
+          "label": "Turbidity units become gallons"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A centrifugal pump may fail to move water properly if air prevents priming."
+    },
+    {
+      "id": "wpi-class2-water-066",
+      "mode": "cause-effect",
+      "prompt": "At unchanged dose, increasing plant flow from 1 to 2 MGD changes required chemical mass per day how?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It doubles"
+        },
+        {
+          "id": "option-2",
+          "label": "It halves"
+        },
+        {
+          "id": "option-3",
+          "label": "It stays unchanged"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "For a fixed dose and chemical purity, mass per day is proportional to flow."
+    },
+    {
+      "id": "wpi-class2-water-067",
+      "mode": "cause-effect",
+      "prompt": "At the same membrane flux and water temperature, membrane fouling occurs. What operational consequence can occur?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Higher transmembrane pressure needed to maintain the same flux"
+        },
+        {
+          "id": "option-2",
+          "label": "Guaranteed lower pressure at equal flux"
+        },
+        {
+          "id": "option-3",
+          "label": "No concentrate is produced"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Fouling increases resistance; maintaining the same flux can require greater transmembrane pressure. Pressure normalization and other operating conditions matter."
+    },
+    {
+      "id": "wpi-class2-water-068",
+      "mode": "cause-effect",
+      "prompt": "A storage tank loses a protective screen over a vent. What risk increases?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Entry of insects or debris"
+        },
+        {
+          "id": "option-2",
+          "label": "Automatic chlorine production"
+        },
+        {
+          "id": "option-3",
+          "label": "More aquifer recharge"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A protected vent helps exclude contaminants while allowing air movement."
+    },
+    {
+      "id": "wpi-class2-water-069",
+      "mode": "cause-effect",
+      "prompt": "Water with elevated natural organic matter is chlorinated. What formation concern may increase?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Disinfection byproducts"
+        },
+        {
+          "id": "option-2",
+          "label": "Pump horsepower rating"
+        },
+        {
+          "id": "option-3",
+          "label": "Filter surface area"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Chlorine can react with organic precursors to form disinfection byproducts."
+    },
+    {
+      "id": "wpi-class2-water-070",
+      "mode": "cause-effect",
+      "prompt": "An instrument is not calibrated as required by the facility procedure. What risk increases?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Unreliable readings"
+        },
+        {
+          "id": "option-2",
+          "label": "Guaranteed accuracy"
+        },
+        {
+          "id": "option-3",
+          "label": "A change in pipe diameter"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Calibration checks instrument response against standards."
+    },
+    {
+      "id": "wpi-class2-water-071",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee records three statements about a jar test. Tap the flawed statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Compare trial conditions"
+        },
+        {
+          "id": "option-2",
+          "label": "Observe resulting floc and settling"
+        },
+        {
+          "id": "option-3",
+          "label": "Assume one trial proves the best dose forever"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Water quality changes, so dosing must be evaluated and adjusted as needed."
+    },
+    {
+      "id": "wpi-class2-water-072",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the unsafe chlorine-leak response.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Follow the emergency plan"
+        },
+        {
+          "id": "option-2",
+          "label": "Keep untrained staff away"
+        },
+        {
+          "id": "option-3",
+          "label": "Enter the area alone to locate the leak"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Do not enter a hazardous atmosphere without appropriate training, equipment and procedures."
+    },
+    {
+      "id": "wpi-class2-water-073",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed microbiological sampling practice.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Use the designated sample location"
+        },
+        {
+          "id": "option-2",
+          "label": "Label the bottle"
+        },
+        {
+          "id": "option-3",
+          "label": "Touch the inside of the sample cap"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Touching the inside can contaminate the sample."
+    },
+    {
+      "id": "wpi-class2-water-074",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed maintenance step.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Identify equipment"
+        },
+        {
+          "id": "option-2",
+          "label": "Isolate hazardous energy under the site procedure"
+        },
+        {
+          "id": "option-3",
+          "label": "Start repair before verifying isolation"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Hazardous energy must be controlled and isolation verified under the applicable procedure."
+    },
+    {
+      "id": "wpi-class2-water-075",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed statement about filter effluent turbidity.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Trend it over time"
+        },
+        {
+          "id": "option-2",
+          "label": "Investigate an unexpected increase"
+        },
+        {
+          "id": "option-3",
+          "label": "Ignore it whenever flow looks normal"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Normal-looking flow does not establish adequate particle removal."
+    },
+    {
+      "id": "wpi-class2-water-076",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed chemical-handling statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Review the product SDS"
+        },
+        {
+          "id": "option-2",
+          "label": "Use site-specified PPE"
+        },
+        {
+          "id": "option-3",
+          "label": "Mix unfamiliar chemicals without checking compatibility"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Incompatible chemicals can react dangerously; follow the SDS and facility procedures."
+    },
+    {
+      "id": "wpi-class2-water-077",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed measurement practice.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Use suitable standards"
+        },
+        {
+          "id": "option-2",
+          "label": "Record calibration results"
+        },
+        {
+          "id": "option-3",
+          "label": "Adjust the meter until it matches yesterday’s result without a standard"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Calibration requires appropriate reference standards, not a previous result."
+    },
+    {
+      "id": "wpi-class2-water-078",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed disinfectant statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Measure residual at the specified point"
+        },
+        {
+          "id": "option-2",
+          "label": "Record contact-time assumptions"
+        },
+        {
+          "id": "option-3",
+          "label": "Use dose alone as proof of achieved residual"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Reactions consume disinfectant; applied dose does not establish the remaining residual."
+    },
+    {
+      "id": "wpi-class2-water-079",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed recordkeeping practice.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Record actual results"
+        },
+        {
+          "id": "option-2",
+          "label": "Document instrument problems"
+        },
+        {
+          "id": "option-3",
+          "label": "Change an actual reading to make the log look normal"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Records should reflect actual readings and explain any verified corrections."
+    },
+    {
+      "id": "wpi-class2-water-080",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed response to an unexpected raw-water change.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Check the source measurement"
+        },
+        {
+          "id": "option-2",
+          "label": "Review process performance"
+        },
+        {
+          "id": "option-3",
+          "label": "Assume no downstream impact is possible"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Changing source quality can affect chemical demand, particle removal and disinfection."
+    },
+    {
+      "id": "wpi-class2-water-081",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed pump statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Check suction conditions"
+        },
+        {
+          "id": "option-2",
+          "label": "Observe unusual vibration"
+        },
+        {
+          "id": "option-3",
+          "label": "Assume vibration never needs investigation"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Unexpected vibration can signal a mechanical or hydraulic problem."
+    },
+    {
+      "id": "wpi-class2-water-082",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed chlorine-residual comparison.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Use the correct test method"
+        },
+        {
+          "id": "option-2",
+          "label": "Use the appropriate sample location"
+        },
+        {
+          "id": "option-3",
+          "label": "Treat free and total chlorine as necessarily identical"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Total chlorine includes free and combined chlorine; the values need not match."
+    },
+    {
+      "id": "wpi-class2-water-083",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed RO statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Monitor permeate quality"
+        },
+        {
+          "id": "option-2",
+          "label": "Manage concentrate"
+        },
+        {
+          "id": "option-3",
+          "label": "Assume all feed becomes permeate"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "RO divides feed into permeate and concentrate."
+    },
+    {
+      "id": "wpi-class2-water-084",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed filter-backwash practice.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Follow the plant’s filter procedure"
+        },
+        {
+          "id": "option-2",
+          "label": "Monitor wash rate"
+        },
+        {
+          "id": "option-3",
+          "label": "Return the filter to service solely because the clock ran, regardless of procedure"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "A filter return decision should follow the approved procedure and performance checks."
+    },
+    {
+      "id": "wpi-class2-water-085",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed confined-space response.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Follow the entry program"
+        },
+        {
+          "id": "option-2",
+          "label": "Assess hazards using approved procedures"
+        },
+        {
+          "id": "option-3",
+          "label": "Enter to rescue a coworker without protection or a rescue plan"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "An unplanned entry can create additional victims; activate the site rescue procedure."
+    },
+    {
+      "id": "wpi-class2-water-086",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed source-protection assumption.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Protect wellheads"
+        },
+        {
+          "id": "option-2",
+          "label": "Observe watershed conditions"
+        },
+        {
+          "id": "option-3",
+          "label": "Assume groundwater can never be contaminated"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Groundwater can be contaminated; protection depends on site conditions."
+    },
+    {
+      "id": "wpi-class2-water-087",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed residuals-management claim.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Track residual quantities"
+        },
+        {
+          "id": "option-2",
+          "label": "Follow applicable disposal requirements"
+        },
+        {
+          "id": "option-3",
+          "label": "Assume every sludge can be discharged anywhere"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Residual handling depends on composition, permits and applicable requirements."
+    },
+    {
+      "id": "wpi-class2-water-088",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed CT calculation.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Use residual in mg/L"
+        },
+        {
+          "id": "option-2",
+          "label": "Use effective contact time in minutes"
+        },
+        {
+          "id": "option-3",
+          "label": "Multiply dose in pounds by pipe diameter"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "CT is concentration times contact time, not dose mass times diameter."
+    },
+    {
+      "id": "wpi-class2-water-089",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed emergency-power practice.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Follow the generator maintenance plan"
+        },
+        {
+          "id": "option-2",
+          "label": "Record tests and faults"
+        },
+        {
+          "id": "option-3",
+          "label": "Assume backup power works without any checks"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Routine checks and records help reveal faults before an outage."
+    },
+    {
+      "id": "wpi-class2-water-090",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed claim about drinking-water treatment.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Treatment choices depend on source water"
+        },
+        {
+          "id": "option-2",
+          "label": "Different barriers address different hazards"
+        },
+        {
+          "id": "option-3",
+          "label": "One process removes every possible contaminant"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Different contaminants need different treatment mechanisms and monitoring."
+    },
+    {
+      "id": "wpi-class2-water-top-001",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: A plant treating 1.2 million US gallons per day needs 120.10 lb/day of dry product to apply an active-ingredient dose of 12 mg/L when the product is 60% active by weight. Assume steady flow and complete delivery, and use the 8.34 US-unit conversion factor.",
+      "correctAnswer": false,
+      "explanation": "First calculate active ingredient using the rounded 8.34 US-unit factor: dose × flow × 8.34 = 12 mg/L × 1.2 million gal/day × 8.34 = 120.096 lb active ingredient/day. Product feed = active ingredient ÷ active mass fraction = 120.096 lb/day ÷ 0.60 = 200.16 lb of product/day. The proposed 120.10 lb/day is the rounded active mass, not the product mass."
+    },
+    {
+      "id": "wpi-class2-water-top-002",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: A 12 ft by 15 ft rectangular filter backwashed at a constant 14 gal/min per ft² for 8 minutes uses 20,160 US gallons of wash water. Ignore any other flows.",
+      "correctAnswer": true,
+      "explanation": "Filter area = length × width = 12 ft × 15 ft = 180 ft². Wash flow = area × applied rate = 180 ft² × 14 gal/min/ft² = 2,520 gal/min. Wash volume = flow × time = 2,520 gal/min × 8 min = 20,160 gal. This is a volume calculation, not a recommended backwash setting."
+    },
+    {
+      "id": "wpi-class2-water-top-003",
+      "mode": "tap-the-flaw",
+      "prompt": "Two steady source streams are completely mixed with no reaction: 0.8 million US gallons/day at 10 mg/L and 0.2 million US gallons/day at 60 mg/L of the same substance. Tap the flawed statement about the mixture.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The combined flow is 1.0 million gallons/day"
+        },
+        {
+          "id": "option-2",
+          "label": "The flow-weighted blend concentration is 20 mg/L"
+        },
+        {
+          "id": "option-3",
+          "label": "The blend concentration is 35 mg/L because the two concentrations should be averaged equally"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Use the flow-weighted blending equation Cmix = (C1Q1 + C2Q2) ÷ (Q1 + Q2). Total flow = 0.8 + 0.2 = 1.0 million gal/day. The numerator is (10 mg/L × 0.8 MGD) + (60 mg/L × 0.2 MGD) = 8 + 12 = 20 mg/L·MGD. Divide by 1.0 MGD to obtain 20 mg/L. An equal average of 35 mg/L ignores the unequal flows."
+    },
+    {
+      "id": "wpi-class2-water-top-004",
+      "mode": "tap-the-flaw",
+      "prompt": "A pump delivers 396 US gal/min against 100 ft of total dynamic head at 50% pump efficiency. For these conditions, tap the flawed statement. Use 3,960 in the US-unit horsepower formula.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The water horsepower is 10 hp"
+        },
+        {
+          "id": "option-2",
+          "label": "The brake horsepower is 20 hp"
+        },
+        {
+          "id": "option-3",
+          "label": "The brake horsepower is 10 hp because pump efficiency need not be considered"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Water horsepower = flow × head ÷ 3,960 = 396 gal/min × 100 ft ÷ 3,960 = 10 hp; the constant converts these US units to horsepower. Brake horsepower accounts for pump efficiency: 10 water hp ÷ 0.50 = 20 brake hp. This is pump-shaft power and does not include motor losses."
+    },
+    {
+      "id": "wpi-class2-water-top-005",
+      "mode": "rapid-swipe",
+      "prompt": "True or false: A 100 mL water sample requires 12 mL of 0.020-normal acid to reach the total-alkalinity endpoint. Using the standard titration formula, the total alkalinity is 120 mg/L as CaCO3.",
+      "correctAnswer": true,
+      "explanation": "Total alkalinity as CaCO3 (mg/L) = acid volume (mL) × acid normality × 50,000 ÷ sample volume (mL). The 50,000 factor incorporates the equivalent weight of CaCO3 and unit conversion. Substitute: 12 mL × 0.020 × 50,000 ÷ 100 mL = 12,000 ÷ 100 = 120 mg/L as CaCO3. This result assumes the stated titrant normality and correct endpoint."
+    },
+    {
+      "id": "wpi-class2-water-order-001",
+      "mode": "before-after",
+      "prompt": "In the Tennessee training example of conventional surface-water treatment, does intake screening occur before or after flash mixing?",
+      "correctAnswer": "before",
+      "explanation": "In the illustrated Tennessee example, screening removes debris from the intake water before it enters the flash mixer. Individual treatment configurations differ."
+    },
+    {
+      "id": "wpi-class2-water-order-002",
+      "mode": "before-after",
+      "prompt": "In a conventional surface-water plant with separate flocculation and sedimentation basins, does sedimentation occur before or after flocculation?",
+      "correctAnswer": "after",
+      "explanation": "In this conventional configuration, flocculation promotes formation of larger particles and the sedimentation basin then removes settleable floc. Other designs can combine processes or omit sedimentation."
+    },
+    {
+      "id": "wpi-class2-water-order-003",
+      "mode": "before-after",
+      "prompt": "In the conventional surface-water treatment example in the overview of Tennessee's training, does filtration occur before or after the chlorination step described there?",
+      "correctAnswer": "before",
+      "explanation": "The cited conventional-plant example places filtration ahead of post-chlorination. Some facilities also use an earlier oxidant or disinfectant addition; the example is not a universal layout."
+    },
+    {
+      "id": "wpi-class2-water-order-004",
+      "mode": "before-after",
+      "prompt": "For an iron-removal process using aeration and filtration, does filtration occur before or after oxidation?",
+      "correctAnswer": "after",
+      "explanation": "In this particular oxidation-and-filtration method, aeration oxidizes dissolved iron and filtration removes the resulting particles. Other iron-removal methods have different configurations."
+    },
+    {
+      "id": "wpi-class2-water-order-005",
+      "mode": "before-after",
+      "prompt": "In EPA's enhanced-coagulation jar test, does collection of the supernatant for total organic carbon analysis occur before or after the settling period?",
+      "correctAnswer": "after",
+      "explanation": "EPA's described jar-test protocol collects supernatant for analysis after the floc has been allowed to settle without stirring. Specific test methods and laboratory instructions govern an actual test."
+    },
+    {
+      "id": "wpi-class2-water-order-006",
+      "mode": "before-after",
+      "prompt": "In the Kentucky manual's example coagulation jar test, does the high-speed mixing interval occur before or after the lower-speed flocculation interval?",
+      "correctAnswer": "before",
+      "explanation": "The example uses high-speed mixing to simulate the plant's mixer, then a lower-speed mixing interval to simulate flocculation. Actual test conditions should represent the plant and the selected method."
+    },
+    {
+      "id": "wpi-class2-water-order-007",
+      "mode": "before-after",
+      "prompt": "In an RO drinking-water system that uses a sediment cartridge filter to protect the membrane from incoming particles, does water pass through the cartridge filter before or after the membrane?",
+      "correctAnswer": "before",
+      "explanation": "Pretreatment acts on the feed before it reaches the membrane, reducing conditions that can foul or plug it. The choice of pretreatment depends on the water and design."
+    },
+    {
+      "id": "wpi-class2-water-order-008",
+      "mode": "before-after",
+      "prompt": "In EPA's drinking-water RO example, when corrosion control is used to address the pH decrease caused by RO, is that treatment applied before or after membrane separation?",
+      "correctAnswer": "after",
+      "explanation": "Permeate has passed through the RO membrane, so corrosion-control treatment applied to that permeate is downstream of membrane separation. EPA notes that RO can lower pH and may call for post-treatment."
+    },
+    {
+      "id": "wpi-class2-water-order-009",
+      "mode": "before-after",
+      "prompt": "During a service–regeneration cycle in a regenerable ion-exchange softener, does exhaustion of working resin capacity occur before or after the regeneration that restores that capacity?",
+      "correctAnswer": "before",
+      "explanation": "The resin loses working capacity during service; regeneration can then restore it for further use. Some systems replace resin instead of regenerating it."
+    },
+    {
+      "id": "wpi-class2-water-order-010",
+      "mode": "before-after",
+      "prompt": "In the Tennessee training discussion of water-treatment residuals, is sludge conditioning before or after the mechanical dewatering it supports?",
+      "correctAnswer": "before",
+      "explanation": "Conditioning is a pretreatment that improves subsequent water removal from sludge. The chemicals, equipment and operating procedures depend on the facility."
+    },
+    {
+      "id": "wpi-class2-water-order-011",
+      "mode": "before-after",
+      "prompt": "In the Tennessee solar sludge-drying lagoon example, does removal of sludge for disposal occur before or after solar drying?",
+      "correctAnswer": "after",
+      "explanation": "The training example dries settled sludge in the lagoon and then describes disposal of the dried material. Disposal options and permissions are site- and jurisdiction-specific."
+    },
+    {
+      "id": "wpi-class2-water-order-012",
+      "mode": "before-after",
+      "prompt": "In the Pennsylvania training example for a rapid filter with a rinse step, does the water backwash end before or after the filter rinse begins?",
+      "correctAnswer": "before",
+      "explanation": "The Pennsylvania example stops the water backwash before beginning the filter rinse. This describes a training sequence, not a substitute for the plant-specific procedure."
+    },
+    {
+      "id": "wpi-class2-water-order-013",
+      "mode": "before-after",
+      "prompt": "In Pennsylvania's filter startup example after backwashing, is filter-to-waste before or after returning the filter to normal production service?",
+      "correctAnswer": "before",
+      "explanation": "In Pennsylvania's example, the initial filtered water is directed to waste during ripening, and the filter is returned to normal service once the specified performance is achieved. Follow the facility's approved criteria and procedure."
+    },
+    {
+      "id": "wpi-class2-water-order-014",
+      "mode": "before-after",
+      "prompt": "For a chlorinated drinking-water sample collected for total coliform analysis using a laboratory-prepared sterile bottle, is sodium thiosulfate present in the bottle before or after the water is collected?",
+      "correctAnswer": "before",
+      "explanation": "The sterile bottle is prepared with sodium thiosulfate to neutralize chlorine in the collected sample; the EPA guide specifies the preservative for chlorinated biological samples and says not to rinse the bottle. Follow the receiving laboratory's instructions."
+    },
+    {
+      "id": "wpi-class2-water-order-015",
+      "mode": "before-after",
+      "prompt": "Using EPA's general total-coliform tap-sampling guidance, is collection in the sterile bottle before or after flushing the sampling line?",
+      "correctAnswer": "after",
+      "explanation": "For the EPA biological-sampling example, the line is flushed and the flow reduced before filling the sterile bottle. Sampling instructions vary by analyte; first-draw lead and copper sampling is different."
+    },
+    {
+      "id": "wpi-class2-water-order-016",
+      "mode": "before-after",
+      "prompt": "For a drinking-water sample sent to a laboratory, does the sample's holding-time clock begin before or after laboratory analysis?",
+      "correctAnswer": "before",
+      "explanation": "EPA's collection guide states that holding time starts at sample collection and ends at preparation and/or analysis. The applicable holding time depends on the analyte and method."
+    },
+    {
+      "id": "wpi-class2-water-order-017",
+      "mode": "before-after",
+      "prompt": "In CCOHS's general lockout example, is verification of isolation before or after starting pump maintenance?",
+      "correctAnswer": "before",
+      "explanation": "CCOHS places verification of isolation before the maintenance or service activity. This is only one relationship in a general example, not a complete procedure; trained personnel must follow the facility's approved procedure and applicable requirements."
+    },
+    {
+      "id": "wpi-class2-water-order-018",
+      "mode": "before-after",
+      "prompt": "In CCOHS's general lockout-release example, is removal of lockout devices before or after inspecting the work area for tools and other items?",
+      "correctAnswer": "after",
+      "explanation": "CCOHS lists inspection of the work area for tools and items before removing lockout devices. This is not a complete release procedure; trained personnel must follow the facility's approved procedure and applicable requirements."
+    },
+    {
+      "id": "wpi-class2-water-order-020",
+      "mode": "before-after",
+      "prompt": "In Tennessee's conventional-plant example, is pumping finished water to the distribution system before or after the stated minimum disinfectant detention period?",
+      "correctAnswer": "after",
+      "explanation": "The example describes a disinfectant detention period before water may be pumped to distribution. Required contact time and compliance depend on the disinfectant, water conditions, facility and applicable authority; the example is not a universal layout or operating setpoint."
+    }
+  ]
+}

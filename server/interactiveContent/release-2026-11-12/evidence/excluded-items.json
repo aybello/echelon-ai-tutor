@@ -1,0 +1,1449 @@
+[
+  {
+    "course_file": "class1-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class1-water-dist-082",
+      "mode": "tap-the-flaw",
+      "prompt": "Under Ontario’s watermain disinfection procedure for a municipal residential system subject to its permit conditions, a pipe surface disinfected for a tap touches excavation soil before use. Which action is flawed?",
+      "options": [
+        "Use it without repeating cleaning and disinfection",
+        "Repeat cleaning and disinfection",
+        "Maintain sanitary conditions"
+      ],
+      "answer": "Use it without repeating cleaning and disinfection",
+      "explanation": "Section 1.5 requires cleaning and disinfection to be repeated if a disinfected surface contacts soil or excavation water before use.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class1-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class1-water-dist-order-013",
+      "mode": "before-after",
+      "prompt": "Ontario’s new-watermain procedure, section 1.1.2, discusses a cleaning flush referenced in C651 sections 4.4.2 and 4.5.2. Is that flush before or after disinfection?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "Section 1.1.2 describes this flush as preliminary to disinfection and allows an alternative cleaning approach in specified circumstances. The applicable standard and site-specific procedure still apply.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class1-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class1-water-dist-order-014",
+      "mode": "before-after",
+      "prompt": "For a new-watermain connection of at most one pipe length under Ontario’s sampling pathway, with no witnessed-installation exception applied, is placing the connection in service before or after satisfactory microbiological results are received?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "After",
+      "explanation": "Under that particular sampling pathway, the connection remains isolated except while flushing or sampling until a satisfactory microbiological result is received. Ontario also describes a separate witnessed-installation exception.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class1-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class1-water-dist-order-015",
+      "mode": "before-after",
+      "prompt": "In Ontario staged sampling of a new watermain, is establishing flow before or after taking the samples at the calculated intervals?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "The staged-sampling description establishes flow and then takes samples at calculated intervals based on the pipe and measured flow. This is one specific sampling method, not a complete commissioning plan.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class2-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class2-water-dist-023",
+      "mode": "speed-match",
+      "prompt": "Match the Ontario new-main disinfection method to its minimum contact time in the 2020 procedure.",
+      "options": [],
+      "answer": "Tablet or continuous feed → 24 hours; Slug → 3 hours; Spray → 30 minutes",
+      "explanation": "Ontario Table 1 specifies minimum contact times of 24 hours for tablet or continuous feed, 3 hours for slug, and 30 minutes for spray.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": [
+        {
+          "left": "Tablet or continuous feed",
+          "right": "24 hours"
+        },
+        {
+          "left": "Slug",
+          "right": "3 hours"
+        },
+        {
+          "left": "Spray",
+          "right": "30 minutes"
+        }
+      ]
+    }
+  },
+  {
+    "course_file": "class2-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class2-water-dist-024",
+      "mode": "speed-match",
+      "prompt": "Match each Ontario new-main disinfection method to its minimum initial chlorine concentration.",
+      "options": [],
+      "answer": "Tablet or continuous feed → 25 mg/L; Slug → 100 mg/L; Spray → 200 mg/L",
+      "explanation": "Ontario Table 1 specifies initial chlorine at least 25 mg/L for tablet or continuous feed, 100 mg/L for slug, and 200 mg/L for spray.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": [
+        {
+          "left": "Tablet or continuous feed",
+          "right": "25 mg/L"
+        },
+        {
+          "left": "Slug",
+          "right": "100 mg/L"
+        },
+        {
+          "left": "Spray",
+          "right": "200 mg/L"
+        }
+      ]
+    }
+  },
+  {
+    "course_file": "class2-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class2-water-dist-061",
+      "mode": "cause-effect",
+      "prompt": "In Ontario’s new-main continuous-feed method, initial chlorine is 50 mg/L. What minimum remains after 24 hours under the table?",
+      "options": [
+        "30 mg/L",
+        "10 mg/L",
+        "50 mg/L"
+      ],
+      "answer": "30 mg/L",
+      "explanation": "The permitted decrease is 40% of 50, or 20 mg/L, leaving at least 30 mg/L.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class2-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class2-water-dist-062",
+      "mode": "cause-effect",
+      "prompt": "In Ontario’s new-main slug method, initial chlorine is 150 mg/L and it falls to 120 mg/L at a sample point. What follows?",
+      "options": [
+        "Stop flow and restore at least the initial concentration",
+        "Ignore the result",
+        "Declare the main ready for service"
+      ],
+      "answer": "Stop flow and restore at least the initial concentration",
+      "explanation": "A 30 mg/L decrease exceeds 25 mg/L; the procedure calls for stopping flow and restoring the initial concentration.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class2-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class2-water-dist-079",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed Ontario new-main continuous-feed statement.",
+      "options": [
+        "The table sets a minimum 24-hour contact time.",
+        "The table sets an initial concentration of at least 25 mg/L.",
+        "The table requires only 30 minutes of contact."
+      ],
+      "answer": "The table requires only 30 minutes of contact.",
+      "explanation": "Thirty minutes is the table’s minimum for spray, not continuous feed.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class2-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class2-water-dist-080",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed Ontario new-main spray statement.",
+      "options": [
+        "The minimum contact time is 30 minutes.",
+        "The initial chlorine concentration is at least 200 mg/L.",
+        "The initial concentration is at least 25 mg/L and no higher value is specified."
+      ],
+      "answer": "The initial concentration is at least 25 mg/L and no higher value is specified.",
+      "explanation": "The Ontario table specifies at least 200 mg/L for spray disinfection.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class2-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class2-water-dist-081",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed Ontario break-categorization statement.",
+      "options": [
+        "Suspected contamination calls for Category 2.",
+        "An OIC assesses contamination throughout the repair.",
+        "A break remains Category 1 even after contamination is suspected."
+      ],
+      "answer": "A break remains Category 1 even after contamination is suspected.",
+      "explanation": "The OIC must reclassify to Category 2 when contamination becomes evident or suspected.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class2-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class2-water-dist-082",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed Ontario new-main sampling statement.",
+      "options": [
+        "The microbiological samples include E. coli and total coliforms.",
+        "The required tests use a licensed and accredited laboratory.",
+        "A chlorine residual test alone replaces the microbiological tests."
+      ],
+      "answer": "A chlorine residual test alone replaces the microbiological tests.",
+      "explanation": "The procedure requires microbiological tests as well as associated residual tests in the specified context.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class2-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class2-water-dist-top-009",
+      "mode": "tap-the-flaw",
+      "prompt": "For a copper pipe used as a watermain under Ontario's 2020 watermain disinfection procedure, tap the flawed statement about the table's copper exception.",
+      "options": [
+        "The continuous-feed method is specified for copper pipe.",
+        "The initial chlorine concentration is at least 50 mg/L with at least 24 hours' contact.",
+        "The table's maximum allowable decrease applies to copper exactly as it does to other pipe materials."
+      ],
+      "answer": "The table's maximum allowable decrease applies to copper exactly as it does to other pipe materials.",
+      "explanation": "The procedure's copper-pipe exception specifies continuous feed, at least 50 mg/L initial chlorine and at least 24 hours of contact. Because copper exerts chlorine demand, the table's maximum allowable decrease does not apply; effectiveness must instead be demonstrated by the specified microbiological sampling. Other applicable requirements remain in force.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class2-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class2-water-dist-top-010",
+      "mode": "cause-effect",
+      "prompt": "Under Ontario's 2020 watermain procedure, a chloraminated system takes the required microbiological sample from a new main not yet placed into service. Which associated disinfectant test is specified for an additional sample taken at the same time and location?",
+      "options": [
+        "Combined chlorine residual, tested immediately",
+        "Free chlorine residual in place of combined residual",
+        "Chlorine residual only after the new main enters service",
+        "No associated chlorine residual test"
+      ],
+      "answer": "Combined chlorine residual, tested immediately",
+      "explanation": "For a system providing chloramination, Ontario specifies an additional sample at the same time and location as the microbiological sample and immediate testing for combined chlorine residual. A system that chlorinates without chloramination instead tests free chlorine. These tests accompany, rather than replace, the required microbiological samples; follow the procedure and applicable permit.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class2-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class2-water-dist-order-001",
+      "mode": "before-after",
+      "prompt": "Under Ontario's 2020 watermain procedure, is flushing a temporary water supply before or after using it as a water source for a new watermain?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "The procedure specifies that a temporary water supply to a new watermain is flushed before it is used as a water source. This is specific to that temporary supply, not a complete commissioning sequence.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class2-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class2-water-dist-order-002",
+      "mode": "before-after",
+      "prompt": "During planned watermain inspection under Ontario's 2020 procedure, is insertion of the inspection equipment before or after its cleaning and disinfection?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "After",
+      "explanation": "Inspection equipment inserted into the main is cleaned and disinfected immediately before insertion under section 1.3. This is not a substitute for the complete site procedure.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class2-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class2-water-dist-order-004",
+      "mode": "before-after",
+      "prompt": "In Ontario's planned watermain cleaning procedure for swabbing or higher-velocity flushing, is achieving an acceptable disinfectant concentration at the flushing point before or after return to normal service?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "Section 1.3 permits return to normal service after an acceptable disinfectant concentration is achieved at the flushing point. Other cleaning methods have separate site-specific planning provisions.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class2-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class2-water-dist-order-005",
+      "mode": "before-after",
+      "prompt": "In Ontario's procedure for a new-main connection of no more than one pipe length, using the sampling route rather than the witnessed-installation exception, is placing the connection into service before or after receiving its satisfactory microbiological sample result?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "After",
+      "explanation": "For the stated sampling route, section 1.1.4.1 keeps the connection isolated, except for flushing or sampling, until a satisfactory microbiological result is received. The procedure has a separate witnessed-installation exception.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class2-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class2-water-dist-order-006",
+      "mode": "before-after",
+      "prompt": "For a service pipe smaller than 100 mm under Ontario's 2020 watermain procedure, is flushing before or after placement into service?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "Section 1.6 specifies flushing before service for a service pipe smaller than 100 mm, along with sanitary conditions during installation or repair. Larger service pipes are treated as watermains for this procedure.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class2-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class2-water-dist-order-007",
+      "mode": "before-after",
+      "prompt": "For an isolated Ontario watermain covered by section 1.7 because the specified residual was not maintained, is return to service before or after receiving a satisfactory microbiological test result under its recommissioning plan?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "After",
+      "explanation": "Section 1.7 requires the recommissioning plan to include receipt of a satisfactory result from at least one microbiological sample before the isolated main is placed into service. It also requires flushing and may require additional measures.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class2-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class2-water-dist-order-008",
+      "mode": "before-after",
+      "prompt": "For an Ontario emergency watermain repair, is disinfection of repair-part surfaces that contact drinking water before or after installation of those parts?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "Section 2.2.3 specifies disinfecting those surfaces immediately before installation. If they contact excavation soil or water before installation, the procedure calls for cleaning and repeating disinfection.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class2-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class2-water-dist-order-009",
+      "mode": "before-after",
+      "prompt": "In an Ontario emergency watermain repair where section 2.2.5 flushing is required, is return to normal service before or after the discharged water is visibly free of discolouration and particulates and an acceptable disinfectant concentration is restored?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "After",
+      "explanation": "Where flushing is required, section 2.2.5 continues it until the discharge is visibly free of discolouration and particulates and an acceptable disinfectant concentration is restored; the system can then return to normal service. The section also describes a repair-sleeve exception.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class2-water-dist.json",
+    "reason": "Ontario construction, confined-space, or well-construction duty and sequence",
+    "item": {
+      "id": "class2-water-dist-order-015",
+      "mode": "before-after",
+      "prompt": "For a trench on an Ontario construction project, is a worker entering the trench before or after the applicable competent-person hazard inspection?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "After",
+      "explanation": "The Ontario excavation guidance says a competent person inspects trenches and excavations daily and when conditions change, before workers enter. Inspection alone does not establish that entry is safe or satisfy every other requirement.",
+      "sources": [
+        "https://www.ontario.ca/page/excavation-hazards-construction-projects"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class2-water-dist.json",
+    "reason": "Ontario construction, confined-space, or well-construction duty and sequence",
+    "item": {
+      "id": "class2-water-dist-order-016",
+      "mode": "before-after",
+      "prompt": "When work is to be performed in an Ontario water-system space determined to be a confined space, is issuance of the entry permit before or after worker entry?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "Ontario's confined-space guideline states that a separate entry permit is issued for the work before any worker enters. A permit is only one part of the required confined-space protections.",
+      "sources": [
+        "https://www.ontario.ca/document/guideline-working-confined-spaces/entry-permit"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class2-water-dist.json",
+    "reason": "Ontario construction, confined-space, or well-construction duty and sequence",
+    "item": {
+      "id": "class2-water-dist-order-017",
+      "mode": "before-after",
+      "prompt": "For work in an Ontario water-system space determined to be a confined space, is worker entry before or after development and implementation of the adequate written plan?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "After",
+      "explanation": "The confined-space plan must be developed and implemented before a worker enters; it includes procedures to control hazards identified in the assessment and other prescribed provisions. A plan alone does not authorize entry.",
+      "sources": [
+        "https://www.ontario.ca/document/guideline-working-confined-spaces/plan"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class2-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class2-water-dist-order-021",
+      "mode": "before-after",
+      "prompt": "For staged microbiological sampling of a new Ontario watermain with limited sampling points, is taking the staged samples before or after establishing flow?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "After",
+      "explanation": "Section 1.1.3 specifies establishing flow and taking staged samples at calculated intervals based on pipe size and measured flow. This method has additional meter and sampling-point requirements.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class2-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class2-water-dist-order-022",
+      "mode": "before-after",
+      "prompt": "In the Ontario procedure's specified exception for qualifying longer connections up to 40 m, is disinfecting the new connection's pipe and appurtenances before or after their installation?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "For the particular exception in section 1.1.4.2, the connection pipe and appurtenances are sprayed or hand-swabbed immediately before installation. The exception has eligibility, witness and sampling conditions and is not a general rule for every connection.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class3-wastewater-coll.json",
+    "reason": "Ontario construction, confined-space, or well-construction duty and sequence",
+    "item": {
+      "id": "class3-wastewater-coll-order-019",
+      "mode": "before-after",
+      "prompt": "For an Ontario collection-system space that has been assessed as a confined space, is implementation of its adequate written entry plan before or after worker entry?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "Ontario’s confined-space regulation requires the employer to ensure that an adequate written plan has been developed and implemented by a competent person before a worker enters. The applicable programme and other site-specific precautions also apply.",
+      "sources": [
+        "https://www.ontario.ca/document/guideline-working-confined-spaces/plan",
+        "https://www.ontario.ca/laws/regulation/050632"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class3-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class3-water-dist-077",
+      "mode": "tap-the-flaw",
+      "prompt": "For a Category 2 emergency break governed by Ontario’s 2020 Watermain Disinfection Procedure, with no special-case contamination and flushing completed, a worker claims microbiological sampling is optional. What is flawed?",
+      "options": [
+        "The procedure requires at least one microbiological sample after flushing",
+        "The procedure requires no repair",
+        "The procedure forbids sampling"
+      ],
+      "answer": "The procedure requires at least one microbiological sample after flushing",
+      "explanation": "Ontario procedure section 2.4.3 requires the post-flushing sample; special cases add conditions.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class3-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class3-water-dist-078",
+      "mode": "tap-the-flaw",
+      "prompt": "For a Category 2 emergency break governed by Ontario’s 2020 Watermain Disinfection Procedure, with required repair and flushing steps completed and no special case, a worker says normal service can never resume before lab results arrive. What is flawed?",
+      "options": [
+        "The procedure allows return before results under its stated conditions",
+        "All results arrive instantly",
+        "Sampling must be skipped"
+      ],
+      "answer": "The procedure allows return before results under its stated conditions",
+      "explanation": "Section 2.4.3 permits return before receipt of results; follow all applicable procedure conditions.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class3-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class3-water-dist-079",
+      "mode": "tap-the-flaw",
+      "prompt": "For a Category 2 emergency repair governed by Ontario’s 2020 Watermain Disinfection Procedure, a sample plan takes water upstream of the repair and calls it representative of water that passed the repair. What is flawed?",
+      "options": [
+        "The sample must represent water that passed through the repair",
+        "Upstream water always passes the repair first",
+        "The repair location is irrelevant"
+      ],
+      "answer": "The sample must represent water that passed through the repair",
+      "explanation": "The Ontario procedure requires flow direction that makes the sample representative of the repair location.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class3-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class3-water-dist-080",
+      "mode": "tap-the-flaw",
+      "prompt": "During an emergency repair governed by Ontario’s 2020 Watermain Disinfection Procedure, a disinfected repair surface that will contact drinking water falls in trench water before installation. A crew proposes using it without further action. What is flawed?",
+      "options": [
+        "Clean and disinfect the contaminated surface again before installation",
+        "Trench water is a disinfectant",
+        "The surface cannot be recontaminated"
+      ],
+      "answer": "Clean and disinfect the contaminated surface again before installation",
+      "explanation": "Section 2.2.3 requires cleaning and repeating disinfection using at least 1% sodium hypochlorite for drinking-water-contact surfaces that touch excavation soil or water before installation.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class3-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class3-water-dist-order-001",
+      "mode": "before-after",
+      "prompt": "Under Ontario’s 2020 watermain disinfection procedure for a municipal residential system, is flushing a temporary water supply for a new main before or after using that supply as a water source?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "The procedure requires a temporary supply for a new watermain to be flushed before it is used as a water source. This is a specific commissioning requirement, not a general sequence for every repair.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class3-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class3-water-dist-order-002",
+      "mode": "before-after",
+      "prompt": "Under Ontario’s 2020 watermain disinfection procedure, for a Category 2 watermain break where post-repair flushing is performed, is taking the required microbiological sample before or after completing that flushing?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "After",
+      "explanation": "Section 2.4.3 places the Category 2 sample after completion of flushing. The sample must represent water that passed through the repair; receipt of results is not always required before normal service. Special contamination cases need additional planning.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class3-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class3-water-dist-order-003",
+      "mode": "before-after",
+      "prompt": "Under Ontario’s 2020 watermain disinfection procedure, during an emergency watermain repair, is disinfection of the drinking-water-contact surfaces of repair parts before or after their installation?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "Section 2.2.3 calls for disinfection immediately prior to installation. If disinfected surfaces contact trench water or soil before installation, cleaning and disinfection must be repeated. Follow the approved site procedure.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class3-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class3-water-dist-order-004",
+      "mode": "before-after",
+      "prompt": "Under Ontario’s 2020 watermain disinfection procedure, during a planned watermain inspection, is cleaning and disinfecting the inspection equipment before or after inserting it into the main?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "Section 1.3 places cleaning and disinfection immediately before insertion of inspection equipment. Residual testing is performed when the equipment is removed; actual work requires the approved procedure.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class3-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class3-water-dist-order-006",
+      "mode": "before-after",
+      "prompt": "Under Ontario’s 2020 watermain disinfection procedure, for a service pipe less than 100 mm in diameter, is the required flushing before or after placing the pipe into service?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "Section 1.6 says a service pipe under 100 mm is flushed before being placed into service and sanitary conditions are maintained during installation or repair. The procedure treats service pipes of 100 mm or greater as watermains.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class3-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class3-water-dist-order-007",
+      "mode": "before-after",
+      "prompt": "Under Ontario’s 2020 watermain disinfection procedure, a main isolated from a chlorinated system did not maintain 0.05 mg/L free chlorine residual. Is receipt of a satisfactory microbiological result before or after returning that main to service under its recommissioning plan?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "Section 1.7 requires a recommissioning plan and satisfactory results from at least one microbiological sample before that isolated main is placed into service. This is distinct from the Category 2 break provision.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class3-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class3-water-dist-order-008",
+      "mode": "before-after",
+      "prompt": "Under Ontario’s 2020 watermain disinfection procedure, for a new-main connection no longer than one pipe length when the witnessed-installation exception is not used, is receipt of its satisfactory microbiological result before or after placing the connection into service?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "Section 1.1.4.1 requires isolation, except for flushing or sampling, until a satisfactory sample result is received. A separate witnessed-installation exception can eliminate that sample requirement, so it is excluded here.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class3-water-dist.json",
+    "reason": "Ontario construction, confined-space, or well-construction duty and sequence",
+    "item": {
+      "id": "class3-water-dist-order-015",
+      "mode": "before-after",
+      "prompt": "Under Ontario’s well-construction shock-chlorination procedure, where the first residual test is outside the specified range and no exception applies, is re-dosing the well before or after that test?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "After",
+      "explanation": "An out-of-range residual result triggers the corrective sequence, which includes pumping down the chlorinated water before re-dosing and retesting. The applicable well-construction procedure and environmental discharge protections govern the work.",
+      "sources": [
+        "https://www.ontario.ca/document/water-supply-wells-requirements-and-best-practices/well-disinfection"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class3-water.json",
+    "reason": "Ontario drinking-water procedure or compliance claim: mandatory CT, sampling or laboratory rule",
+    "item": {
+      "id": "class3-water-082",
+      "mode": "tap-the-flaw",
+      "prompt": "A filter is returned to service without checking the site’s filter-ripening procedure. Tap the flaw.",
+      "options": [
+        "Ignore the filter-ripening procedure",
+        "Monitor filter effluent",
+        "Review plant operating procedure"
+      ],
+      "answer": "Ignore the filter-ripening procedure",
+      "explanation": "Ontario’s procedure describes filter-to-waste or equivalent during ripening for specified conventional filtration criteria.",
+      "sources": [
+        "https://www.ontario.ca/page/procedure-disinfection-drinking-water-ontario"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class3-water.json",
+    "reason": "Ontario drinking-water procedure or compliance claim: mandatory CT, sampling or laboratory rule",
+    "item": {
+      "id": "class3-water-top-025",
+      "mode": "cause-effect",
+      "prompt": "A free-chlorine disinfection process is operating at the same measured residual and effective contact time, but water pH has increased substantially. Why must the required CT be reassessed?",
+      "options": [
+        "Required CT depends on conditions including pH and temperature",
+        "Measured residual becomes an applied dose",
+        "A higher pH automatically increases the basin volume",
+        "The unit of CT changes to mg/L"
+      ],
+      "answer": "Required CT depends on conditions including pH and temperature",
+      "explanation": "Ontario’s procedure requires determination of required CT at actual operating conditions, including pH and temperature. The same calculated CT does not by itself demonstrate the same inactivation under changed conditions.",
+      "sources": [
+        "https://www.ontario.ca/page/procedure-disinfection-drinking-water-ontario"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class3-water.json",
+    "reason": "Ontario drinking-water procedure or compliance claim: mandatory CT, sampling or laboratory rule",
+    "item": {
+      "id": "class3-water-top-028",
+      "mode": "cause-effect",
+      "prompt": "A facility plans to use chloramination for primary virus inactivation using Ontario’s chloramine CT table. Which sequence condition is specified for application of that particular table?",
+      "options": [
+        "Chlorine is added before ammonia",
+        "Ammonia is added after the distribution system",
+        "Both chemicals must be added only after UV",
+        "The sequence never matters for primary disinfection"
+      ],
+      "answer": "Chlorine is added before ammonia",
+      "explanation": "Ontario states that its specified chloramine virus-inactivation CT table is applicable only if chlorine is added prior to ammonia. This table condition must not be generalized to every secondary chloramination arrangement.",
+      "sources": [
+        "https://www.ontario.ca/page/procedure-disinfection-drinking-water-ontario"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class3-water.json",
+    "reason": "Ontario drinking-water procedure or compliance claim: mandatory CT, sampling or laboratory rule",
+    "item": {
+      "id": "class3-water-top-031",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator wants to use filtered metals results to establish regulatory compliance for Ontario drinking-water sampling. Tap the flawed assumption.",
+      "options": [
+        "Filtered metals results may be used for regulatory compliance",
+        "Unfiltered samples can be more representative of consumer water",
+        "Investigative sampling may have a separate purpose"
+      ],
+      "answer": "Filtered metals results may be used for regulatory compliance",
+      "explanation": "Ontario’s sampling guidance says filtered metals results may be used for investigation but not for regulatory compliance. Follow the approved sampling and laboratory method for the particular program.",
+      "sources": [
+        "https://www.ontario.ca/page/practices-collection-and-handling-drinking-water-samples"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class4-wastewater-coll.json",
+    "reason": "Ontario construction, confined-space, or well-construction duty and sequence",
+    "item": {
+      "id": "class4-wastewater-coll-order-013",
+      "mode": "before-after",
+      "prompt": "For a newly assessed sewer confined space in Ontario, is the initial hazard assessment before or after completion of the first adequate written plan for that space?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "After",
+      "explanation": "The written plan must include procedures to control hazards identified in the assessment. Plans and assessments must also be reviewed as necessary; this comparison is not a complete entry procedure.",
+      "sources": [
+        "https://www.ontario.ca/document/guideline-working-confined-spaces/hazard-assessment",
+        "https://www.ontario.ca/document/guideline-working-confined-spaces/plan"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class4-wastewater-coll.json",
+    "reason": "Ontario construction, confined-space, or well-construction duty and sequence",
+    "item": {
+      "id": "class4-wastewater-coll-order-014",
+      "mode": "before-after",
+      "prompt": "For a sewer space assessed as an Ontario confined space, is worker entry before or after development and implementation of the written entry plan?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "After",
+      "explanation": "Ontario guidance specifies that an adequate written plan must be developed and implemented before a worker enters a confined space. An entry also needs all other applicable protections and procedures.",
+      "sources": [
+        "https://www.ontario.ca/document/guideline-working-confined-spaces/plan"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class4-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class4-water-dist-030",
+      "mode": "speed-match",
+      "prompt": "Under Ontario’s 2020 watermain procedure, match each explicitly described example to its category. These are examples, not exhaustive definitions.",
+      "options": [],
+      "answer": "New watermain work → An added or extended main, not an emergency break repair; Category 1 emergency break → An OIC classifies an eligible break after inspection and finds no evident or suspected contamination; Category 2 emergency break → An emergency repair replaces more than one pipe length",
+      "explanation": "All breaks default to Category 2 unless the OIC classifies them as Category 1 after inspection; more than one pipe length replaced is Category 2, even without observed contamination.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": [
+        {
+          "left": "New watermain work",
+          "right": "An added or extended main, not an emergency break repair"
+        },
+        {
+          "left": "Category 1 emergency break",
+          "right": "An OIC classifies an eligible break after inspection and finds no evident or suspected contamination"
+        },
+        {
+          "left": "Category 2 emergency break",
+          "right": "An emergency repair replaces more than one pipe length"
+        }
+      ]
+    }
+  },
+  {
+    "course_file": "class4-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class4-water-dist-top-017",
+      "mode": "cause-effect",
+      "prompt": "Under Ontario’s 2020 watermain procedure, a drinking-water-contact surface of a disinfected repair part touches soil in the excavation before installation in an emergency repair. What must be done to that surface?",
+      "options": [
+        "Clean it and repeat disinfection",
+        "Clean it without repeating disinfection",
+        "Repeat disinfection without cleaning it"
+      ],
+      "answer": "Clean it and repeat disinfection",
+      "explanation": "Section 2.2.3 requires cleaning and repeating disinfection when a disinfected surface contacts excavation soil or water before installation. Check the current applicable permit and SOP.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class4-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class4-water-dist-top-018",
+      "mode": "cause-effect",
+      "prompt": "Under Ontario’s 2020 watermain procedure, after flow from an emergency break has been discontinued, excavation water rises and the air gap at the break is lost. What classification applies?",
+      "options": [
+        "Category 2",
+        "Category 1 unless sewage is observed",
+        "The original category remains if repair parts are disinfected"
+      ],
+      "answer": "Category 2",
+      "explanation": "Section 2.2.2 says that loss of the air gap after flow has been discontinued results in Category 2 classification. Dewatering and other applicable controls are needed; local safety and procedures govern.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class4-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class4-water-dist-top-019",
+      "mode": "cause-effect",
+      "prompt": "Ontario’s 2020 watermain procedure applies to a Category 2 emergency repair. Which water must the mandatory post-flushing microbiological sample represent?",
+      "options": [
+        "Water that passed through the repair location",
+        "Water from a downstream location without verifying its flow path",
+        "Water upstream that has not passed through the repair location"
+      ],
+      "answer": "Water that passed through the repair location",
+      "explanation": "Section 2.4.3 requires flow to be directed so the post-flushing sample represents water that passed through the repair location. The sample must be submitted as soon as reasonably possible, considering laboratory and transport timing.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class4-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class4-water-dist-top-020",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator says: “Our Category 2 break has suspected sewage contamination; the ordinary Category 2 sampling rule alone is sufficient and no site-specific plan is needed.” Which claim is flawed under Ontario’s 2020 procedure?",
+      "options": [
+        "No site-specific plan is needed",
+        "The special-case rule applies when sewage contamination is suspected",
+        "The plan requires at least two sets of microbiological samples at least 24 hours apart"
+      ],
+      "answer": "No site-specific plan is needed",
+      "explanation": "Section 2.4.4 requires the operating authority to develop and implement a site-specific disinfection and sampling plan when sewage contamination is evident or suspected. The sampling plan must include at least two sets of microbiological samples at least 24 hours apart; return-to-service conditions also apply.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class4-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class4-water-dist-top-021",
+      "mode": "cause-effect",
+      "prompt": "Ontario’s 2020 watermain procedure applies to an emergency repair, and post-repair flushing water will discharge directly into surface water. What does the procedure require for this discharge?",
+      "options": [
+        "Dechlorination",
+        "Dechlorination only after adverse effects are observed",
+        "Dechlorination only if the discharge is visibly discoloured"
+      ],
+      "answer": "Dechlorination",
+      "explanation": "Section 2.2.5 requires dechlorination of water directly discharged to surface water. Other permit, environmental and site requirements may also apply.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class4-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class4-water-dist-order-001",
+      "mode": "before-after",
+      "prompt": "Under Ontario's watermain procedure, is an operator-in-charge's decision to classify an eligible break as Category 1 before or after the required visual inspection of the excavated break?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "After",
+      "explanation": "The operator-in-charge visually inspects the excavated break before classifying it as Category 1. Breaks remain Category 2 unless the operator-in-charge determines that Category 1 criteria are met.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class4-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class4-water-dist-order-002",
+      "mode": "before-after",
+      "prompt": "For an Ontario emergency watermain repair covered by the watermain procedure, is disinfection of the drinking-water-contact surfaces of a repair part before or after installation of that part?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "The procedure places disinfection of pipe and repair-part surfaces immediately before installation. If a disinfected surface contacts excavation water or soil before installation, cleaning and repeated disinfection are required.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class4-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class4-water-dist-order-003",
+      "mode": "before-after",
+      "prompt": "For an Ontario Category 2 watermain repair where flushing is performed, is collection of the required microbiological sample before or after completion of flushing?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "After",
+      "explanation": "Section 2.4.3 specifies the microbiological sample after flushing is completed. It separately permits normal service to resume before laboratory results are received; special contamination cases have additional conditions.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class4-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class4-water-dist-order-004",
+      "mode": "before-after",
+      "prompt": "For a new watermain connection no longer than one pipe length covered by Ontario section 1.1.4.1, with no certified-operator-witness exception used, are satisfactory microbiological results received before or after the connection is placed into service?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "For the stated connection, the procedure requires isolation, apart from flushing or sampling, until satisfactory results from the specified microbiological sample are received. An explicit witnessed-installation exception can change the sampling requirement.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class4-water-dist.json",
+    "reason": "Ontario watermain procedure: specific regulated limits, conditions, sequences or classifications",
+    "item": {
+      "id": "class4-water-dist-order-005",
+      "mode": "before-after",
+      "prompt": "In the new-watermain case addressed by Ontario section 1.1.2 and AWWA C651 sections 4.4.2 and 4.5.2, is disinfection before or after the flushing or alternative cleaning addressed there?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "After",
+      "explanation": "Ontario describes the preliminary flushing as prior to disinfection and permits specified alternative cleaning where the prescribed flushing velocity is impractical. The actual method and applicable standards depend on the project.",
+      "sources": [
+        "https://www.ontario.ca/page/water-main-disinfection-procedure"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class4-water-dist.json",
+    "reason": "Ontario construction, confined-space, or well-construction duty and sequence",
+    "item": {
+      "id": "class4-water-dist-order-016",
+      "mode": "before-after",
+      "prompt": "For a non-exempt Ontario well-construction case using the guide's shock-chlorination steps, is removal of debris from the well before or after the initial chlorine dose?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "In the guide's stated construction case, debris is removed before the initial dose. The requirements have exceptions, and site-specific work requires trained personnel and the applicable well-construction requirements.",
+      "sources": [
+        "https://www.ontario.ca/document/water-supply-wells-requirements-and-best-practices/well-disinfection"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "class4-water-dist.json",
+    "reason": "Ontario construction, confined-space, or well-construction duty and sequence",
+    "item": {
+      "id": "class4-water-dist-order-017",
+      "mode": "before-after",
+      "prompt": "For Ontario's well-construction shock-chlorination steps when the 12-to-24-hour residual test is required, is that free-chlorine-residual test before or after the initial chlorine dose?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "After",
+      "explanation": "The required residual test occurs 12 to 24 hours after the initial dose. The guide also discusses a separate early check and exceptions; this is a well-construction case, not a general instruction for watermains or all wells.",
+      "sources": [
+        "https://www.ontario.ca/document/water-supply-wells-requirements-and-best-practices/well-disinfection"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "us-class1-water-dist.json",
+    "reason": "US federal OSHA construction requirements",
+    "item": {
+      "id": "us-class1-water-dist-020",
+      "mode": "rapid-swipe",
+      "prompt": "Under federal OSHA construction excavation rules, a competent person must inspect a trench before work when employee exposure can reasonably be anticipated.",
+      "options": [],
+      "answer": true,
+      "explanation": "29 CFR 1926.651(k) requires daily competent-person inspections before work, as needed during the shift, and after rainstorms or other hazard-increasing occurrences when employee exposure can reasonably be anticipated. Applicable state-plan rules also matter.",
+      "sources": [
+        "https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.651",
+        "https://www.osha.gov/sites/default/files/publications/TRENCH_EXCAVATION_FS.pdf"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "us-class1-water-dist.json",
+    "reason": "US federal OSHA construction requirements",
+    "item": {
+      "id": "us-class1-water-dist-066",
+      "mode": "tap-the-flaw",
+      "prompt": "A crew prepares to repair a main during construction excavation work. Which action is flawed?",
+      "options": [
+        "Enter an uninspected trench",
+        "Locate utilities before digging",
+        "Set appropriate traffic controls"
+      ],
+      "answer": "Enter an uninspected trench",
+      "explanation": "A competent person must inspect excavations before work and as conditions warrant when employee exposure is reasonably anticipated.",
+      "sources": [
+        "https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.651",
+        "https://www.osha.gov/sites/default/files/publications/TRENCH_EXCAVATION_FS.pdf"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "us-class1-water-dist.json",
+    "reason": "US federal OSHA construction requirements",
+    "item": {
+      "id": "us-class1-water-dist-order-001",
+      "mode": "before-after",
+      "prompt": "For a water-main construction excavation subject to federal OSHA construction rules, is determining the estimated location of reasonably expected underground utilities before or after opening the excavation?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "Federal OSHA construction standard 29 CFR 1926.651(b)(1) places determining estimated underground utility locations before opening an excavation. Actual work also requires applicable utility-locate and safety procedures.",
+      "sources": [
+        "https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.651"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "us-class1-water-dist.json",
+    "reason": "US federal OSHA construction requirements",
+    "item": {
+      "id": "us-class1-water-dist-order-002",
+      "mode": "before-after",
+      "prompt": "For an excavation subject to federal OSHA construction rules, where a hazardous atmosphere could reasonably be expected and the trench is deeper than four feet, is atmospheric testing before or after employee entry?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "Section 1926.651(g)(1)(i) requires testing before employees enter in the stated circumstances. A safe entry program may require further precautions; this is not an entry procedure.",
+      "sources": [
+        "https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.651"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "us-class1-water-dist.json",
+    "reason": "US federal OSHA construction requirements",
+    "item": {
+      "id": "us-class1-water-dist-order-003",
+      "mode": "before-after",
+      "prompt": "Under federal OSHA construction rules, when a competent person finds a hazardous condition in an occupied excavation, is removing exposed employees from the hazardous area before or after completion of the precautions needed to address that condition?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "Under federal OSHA construction rule 1926.651(k)(2), exposed workers are removed until the precautions necessary to ensure safety are taken.",
+      "sources": [
+        "https://www.osha.gov/laws-regs/regulations/standardnumber/1926/1926.651"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "wpi-class2-wastewater.json",
+    "reason": "OSHA general-industry or permit-space sequence expressed as a rule or required duty",
+    "item": {
+      "id": "wpi-class2-wastewater-order-021",
+      "mode": "before-after",
+      "prompt": "In OSHA’s permit-space atmospheric testing sequence for a wastewater wet well, is the oxygen test before or after the combustible-gas test?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "The cited OSHA sequence tests oxygen first, then combustible gases and vapors, then toxic gases and vapors. This is only one part of a complete confined-space program; follow applicable local rules and site procedures.",
+      "sources": [
+        "https://gowpi.org/wp-content/uploads/2026/04/WastewaterTreatment-%E2%80%93-Class-2_mh-fin.pdf",
+        "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.146"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "wpi-class2-wastewater.json",
+    "reason": "OSHA general-industry or permit-space sequence expressed as a rule or required duty",
+    "item": {
+      "id": "wpi-class2-wastewater-order-022",
+      "mode": "before-after",
+      "prompt": "For a wastewater permit-space entry where isolation is feasible under OSHA’s general permit-space program, is testing for acceptable entry conditions before or after entry authorization?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "In the specified feasible-isolation case, OSHA calls for testing for acceptable conditions before authorizing entry. Testing alone is not authorization to enter; apply the relevant local program.",
+      "sources": [
+        "https://gowpi.org/wp-content/uploads/2026/04/WastewaterTreatment-%E2%80%93-Class-2_mh-fin.pdf",
+        "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.146"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "wpi-class2-water-dist.json",
+    "reason": "OSHA general-industry or permit-space sequence expressed as a rule or required duty",
+    "item": {
+      "id": "wpi-class2-water-dist-order-011",
+      "mode": "before-after",
+      "prompt": "In OSHA’s general-industry energy-control sequence for servicing a distribution pump, is verification of isolation before or after control of hazardous stored energy?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "After",
+      "explanation": "OSHA’s initial sequence renders stored or residual energy safe before verifying isolation and deenergization. If energy may reaccumulate, continued verification is required. Follow the equipment-specific procedure and applicable jurisdiction.",
+      "sources": [
+        "https://www.osha.gov/sites/default/files/publications/OSHA3120.pdf"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "wpi-class2-water-dist.json",
+    "reason": "OSHA general-industry or permit-space sequence expressed as a rule or required duty",
+    "item": {
+      "id": "wpi-class2-water-dist-order-013",
+      "mode": "before-after",
+      "prompt": "In OSHA’s general-industry pump-service restoration process, is inspection that the equipment is operationally intact before or after removal of the lockout device?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "OSHA calls for inspection of the equipment and removal of nonessential items before the energy-control devices are removed. Other personnel and reenergization checks also apply.",
+      "sources": [
+        "https://www.osha.gov/sites/default/files/publications/OSHA3120.pdf"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "wpi-class2-water-dist.json",
+    "reason": "OSHA general-industry or permit-space sequence expressed as a rule or required duty",
+    "item": {
+      "id": "wpi-class2-water-dist-order-015",
+      "mode": "before-after",
+      "prompt": "Under OSHA’s excavation-safety guidance, after a rainstorm interrupts work at an open water-main trench, is the competent person’s hazard inspection before or after workers resume work in the affected excavation?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "OSHA calls for inspections after rainstorms and before work starts, and unsafe conditions must be addressed before workers are exposed. Applicable local requirements and site procedures govern actual work.",
+      "sources": [
+        "https://www.osha.gov/sites/default/files/publications/OSHA2226.pdf"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "wqa.json",
+    "reason": "Ontario drinking-water procedure or compliance claim: mandatory CT, sampling or laboratory rule",
+    "item": {
+      "id": "wqa-017",
+      "mode": "rapid-swipe",
+      "prompt": "A WQA certificate automatically authorizes every drinking-water laboratory test.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": false,
+      "explanation": "Ontario distinguishes operational testing and sampling from tests required to go to a licensed laboratory.",
+      "sources": [
+        "https://www.ontario.ca/page/water-quality-analyst-certification"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "wqa.json",
+    "reason": "Ontario drinking-water procedure or compliance claim: mandatory CT, sampling or laboratory rule",
+    "item": {
+      "id": "wqa-018",
+      "mode": "rapid-swipe",
+      "prompt": "Ontario Regulation 170/03 applies identical schedules to every system category.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": false,
+      "explanation": "The regulation’s application table assigns different schedules to different system categories.",
+      "sources": [
+        "https://www.ontario.ca/laws/regulation/030170"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "wqa.json",
+    "reason": "Ontario drinking-water procedure or compliance claim: mandatory CT, sampling or laboratory rule",
+    "item": {
+      "id": "wqa-088",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee assumes WQA certification permits every test that must go to a licensed laboratory. What is the flaw?",
+      "options": [
+        "Certificate scope is not unrestricted",
+        "Any certificate automatically authorizes every laboratory test",
+        "A licensed-lab requirement is removed by the certificate"
+      ],
+      "answer": "Certificate scope is not unrestricted",
+      "explanation": "Ontario distinguishes operational testing and sampling from tests required to be submitted to a licensed lab.",
+      "sources": [
+        "https://www.ontario.ca/page/water-quality-analyst-certification"
+      ],
+      "pairs": []
+    }
+  },
+  {
+    "course_file": "wqa.json",
+    "reason": "Ontario drinking-water procedure or compliance claim: mandatory CT, sampling or laboratory rule",
+    "item": {
+      "id": "wqa-order-005",
+      "mode": "before-after",
+      "prompt": "For microbiological grab sampling of Ontario production wells whose water is blended at the high-lift pumps, when each well can be sampled separately, does the guide place sampling each well's raw water before or after blending?",
+      "options": [
+        "Before",
+        "After"
+      ],
+      "answer": "Before",
+      "explanation": "Ontario's guide calls for each well's raw water to be sampled before blending. If that is not possible, the owner or operator must contact the ministry to obtain approval to use blended raw samples.",
+      "sources": [
+        "https://www.ontario.ca/page/practices-collection-and-handling-drinking-water-samples"
+      ],
+      "pairs": []
+    }
+  }
+]

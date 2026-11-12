@@ -3,6 +3,7 @@ import type { Express, Request, Response } from "express";
 import * as db from "../db";
 import { getSessionCookieOptions } from "./cookies";
 import { sdk } from "./sdk";
+import { IDENTITY_CHANGE_EVENT_KEY, publishIdentityChange } from "../../shared/identityChange";
 
 function getQueryParam(req: Request, key: string): string | undefined {
   const value = req.query[key];
@@ -51,8 +52,12 @@ export function registerOAuthRoutes(app: Express) {
 <head><title>Redirecting...</title></head>
 <body>
 <script>
-  var returnPath = sessionStorage.getItem('echelon_login_return') || '/';
-  sessionStorage.removeItem('echelon_login_return');
+  try { (${publishIdentityChange.toString()})(${JSON.stringify(IDENTITY_CHANGE_EVENT_KEY)}); } catch (_) {}
+  var returnPath = '/';
+  try {
+    returnPath = sessionStorage.getItem('echelon_login_return') || '/';
+    sessionStorage.removeItem('echelon_login_return');
+  } catch (_) {}
   // Validate it's a safe relative path
   if (!returnPath.startsWith('/')) returnPath = '/';
   window.location.replace(returnPath);

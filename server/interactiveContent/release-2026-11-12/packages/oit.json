@@ -1,0 +1,1758 @@
+{
+  "courseKey": "oit",
+  "status": "approved",
+  "version": "echelon-six-games-2026-11-12-final-candidate",
+  "previewIds": {
+    "rapid-swipe": "oit-001",
+    "speed-match": "oit-021",
+    "odd-one-out": "oit-031",
+    "cause-effect": "oit-046",
+    "tap-the-flaw": "oit-066",
+    "before-after": "oit-order-001"
+  },
+  "examples": [
+    {
+      "id": "oit-001",
+      "mode": "rapid-swipe",
+      "prompt": "Flocculation normally uses gentle mixing to help make larger particles.",
+      "correctAnswer": true,
+      "explanation": "Gentle mixing helps small particles join into larger flocs."
+    },
+    {
+      "id": "oit-002",
+      "mode": "rapid-swipe",
+      "prompt": "Sedimentation can separate settling floc from water.",
+      "correctAnswer": true,
+      "explanation": "Floc that is heavier than water settles in a sedimentation basin."
+    },
+    {
+      "id": "oit-003",
+      "mode": "rapid-swipe",
+      "prompt": "UV treatment leaves a disinfectant residual throughout distribution pipes.",
+      "correctAnswer": false,
+      "explanation": "UV disinfects at the plant but does not provide a persistent distribution residual."
+    },
+    {
+      "id": "oit-004",
+      "mode": "rapid-swipe",
+      "prompt": "Turbidity describes light scattering associated with suspended material.",
+      "correctAnswer": true,
+      "explanation": "Suspended particles scatter light and can make water cloudy."
+    },
+    {
+      "id": "oit-005",
+      "mode": "rapid-swipe",
+      "prompt": "A grab sample represents a particular sampling time and place.",
+      "correctAnswer": true,
+      "explanation": "A grab sample is an individual sample collected at one location and time."
+    },
+    {
+      "id": "oit-006",
+      "mode": "rapid-swipe",
+      "prompt": "A chlorine residual is the same thing as the chlorine dose added.",
+      "correctAnswer": false,
+      "explanation": "Residual is chlorine remaining after reactions; dose is what was added."
+    },
+    {
+      "id": "oit-007",
+      "mode": "rapid-swipe",
+      "prompt": "A scratched sample cell can affect an optical test reading.",
+      "correctAnswer": true,
+      "explanation": "Scratches and smudges can interfere with light passing through the cell."
+    },
+    {
+      "id": "oit-008",
+      "mode": "rapid-swipe",
+      "prompt": "A clear water sample proves that it contains no disease-causing organisms.",
+      "correctAnswer": false,
+      "explanation": "Visual clarity alone cannot establish the absence of pathogens; monitoring and treatment are needed."
+    },
+    {
+      "id": "oit-009",
+      "mode": "rapid-swipe",
+      "prompt": "Activated carbon works in part by adsorbing certain compounds onto its surface.",
+      "correctAnswer": true,
+      "explanation": "Granular activated carbon is porous adsorption media that can remove certain organics and taste-and-odour compounds."
+    },
+    {
+      "id": "oit-010",
+      "mode": "rapid-swipe",
+      "prompt": "Cation exchange can remove hardness ions such as calcium and magnesium.",
+      "correctAnswer": true,
+      "explanation": "The resin exchanges positively charged ions and can soften water."
+    },
+    {
+      "id": "oit-011",
+      "mode": "rapid-swipe",
+      "prompt": "Anion exchange resin can be used to remove nitrate from water.",
+      "correctAnswer": true,
+      "explanation": "Nitrate is a negatively charged contaminant that suitable anion exchange resins can remove."
+    },
+    {
+      "id": "oit-012",
+      "mode": "rapid-swipe",
+      "prompt": "Reverse osmosis produces a permeate stream and a concentrate stream.",
+      "correctAnswer": true,
+      "explanation": "Permeate passes through the membrane; concentrate retains many rejected substances."
+    },
+    {
+      "id": "oit-013",
+      "mode": "rapid-swipe",
+      "prompt": "All water treatment plants must have the same process order.",
+      "correctAnswer": false,
+      "explanation": "Source water and local plant designs differ; the same sequence is not universal."
+    },
+    {
+      "id": "oit-014",
+      "mode": "rapid-swipe",
+      "prompt": "A nephelometric turbidimeter determines turbidity using light scattered by particles.",
+      "correctAnswer": true,
+      "explanation": "Nephelometric instruments measure scattered light and compare the response with standards. Other optical measurement methods also exist."
+    },
+    {
+      "id": "oit-015",
+      "mode": "rapid-swipe",
+      "prompt": "The same DPD reagent is automatically appropriate for every free- and total-chlorine test.",
+      "correctAnswer": false,
+      "explanation": "Free and total chlorine testing can require different reagents; follow the instrument instructions."
+    },
+    {
+      "id": "oit-016",
+      "mode": "rapid-swipe",
+      "prompt": "Waiting a long time before measuring a grab sample can change its measured turbidity.",
+      "correctAnswer": true,
+      "explanation": "Particles can settle or the sample can change, so the manual says to measure promptly."
+    },
+    {
+      "id": "oit-017",
+      "mode": "rapid-swipe",
+      "prompt": "Water quality monitoring can help track changes in source water.",
+      "correctAnswer": true,
+      "explanation": "Raw-water monitoring helps reveal changes over time."
+    },
+    {
+      "id": "oit-018",
+      "mode": "rapid-swipe",
+      "prompt": "A plant operator should record test results accurately rather than alter them to meet a target.",
+      "correctAnswer": true,
+      "explanation": "Accurate, honest records support safe operations and are part of the Ontario operator code of ethics."
+    },
+    {
+      "id": "oit-019",
+      "mode": "rapid-swipe",
+      "prompt": "Aeration can transfer some volatile contaminants from water to air.",
+      "correctAnswer": true,
+      "explanation": "In aeration, volatile substances can move from water into air."
+    },
+    {
+      "id": "oit-020",
+      "mode": "rapid-swipe",
+      "prompt": "A filter effluent turbidity increase can indicate a filter performance problem.",
+      "correctAnswer": true,
+      "explanation": "A rising filtered-water turbidity is a signal to investigate, not proof of one particular cause."
+    },
+    {
+      "id": "oit-021",
+      "mode": "speed-match",
+      "prompt": "Match each term to its one best definition or role: Coagulation, Flocculation, Sedimentation.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Coagulation",
+          "right": "Chemical destabilization that prepares particles for aggregation"
+        },
+        {
+          "id": "pair-2",
+          "left": "Flocculation",
+          "right": "Gentle mixing to grow larger flocs"
+        },
+        {
+          "id": "pair-3",
+          "left": "Sedimentation",
+          "right": "Gravity settling of heavier floc"
+        }
+      ],
+      "explanation": "Coagulation destabilizes particles; gentle mixing grows floc; sedimentation allows settleable floc to sink."
+    },
+    {
+      "id": "oit-022",
+      "mode": "speed-match",
+      "prompt": "Match each term to its one best definition or role: Turbidimeter, DPD colorimeter, Grab sample.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Turbidimeter",
+          "right": "Measures light scattering in water"
+        },
+        {
+          "id": "pair-2",
+          "left": "DPD colorimeter",
+          "right": "Reads the colour from a chlorine test"
+        },
+        {
+          "id": "pair-3",
+          "left": "Grab sample",
+          "right": "Individual sample at a time and place"
+        }
+      ],
+      "explanation": "Each term is paired with its specific definition or role: Turbidimeter: measures light scattering in water; DPD colorimeter: reads the colour from a chlorine test; Grab sample: individual sample at a time and place."
+    },
+    {
+      "id": "oit-023",
+      "mode": "speed-match",
+      "prompt": "For the Ontario manual’s example DPD kit, match each test or step with its specified material.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Free-chlorine DPD test",
+          "right": "Use the reagent labelled for free chlorine by the test kit"
+        },
+        {
+          "id": "pair-2",
+          "left": "Total-chlorine DPD test",
+          "right": "Use the reagent labelled for total chlorine by the test kit"
+        },
+        {
+          "id": "pair-3",
+          "left": "Colorimeter zeroing",
+          "right": "Use the untreated sample blank as specified by the kit"
+        }
+      ],
+      "explanation": "Use the kit-specific reagent for the required chlorine form and zero with the specified untreated sample blank; follow the manufacturer’s method."
+    },
+    {
+      "id": "oit-024",
+      "mode": "speed-match",
+      "prompt": "Match each term to its one best definition or role: Granular activated carbon, Cation exchange, Anion exchange.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Granular activated carbon",
+          "right": "Adsorbs certain taste-and-odour compounds"
+        },
+        {
+          "id": "pair-2",
+          "left": "Cation exchange",
+          "right": "Exchanges positively charged ions"
+        },
+        {
+          "id": "pair-3",
+          "left": "Anion exchange",
+          "right": "Exchanges negatively charged ions"
+        }
+      ],
+      "explanation": "Each term is paired with its specific definition or role: Granular activated carbon: adsorbs certain taste-and-odour compounds; Cation exchange: exchanges positively charged ions; Anion exchange: exchanges negatively charged ions."
+    },
+    {
+      "id": "oit-025",
+      "mode": "speed-match",
+      "prompt": "Match each term to its one best definition or role: RO permeate, RO concentrate, Packed tower aeration.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "RO permeate",
+          "right": "Water passing through the membrane"
+        },
+        {
+          "id": "pair-2",
+          "left": "RO concentrate",
+          "right": "Stream retaining rejected substances"
+        },
+        {
+          "id": "pair-3",
+          "left": "Packed tower aeration",
+          "right": "Transfers volatile compounds from water to air"
+        }
+      ],
+      "explanation": "Each term is paired with its specific definition or role: RO permeate: water passing through the membrane; RO concentrate: stream retaining rejected substances; Packed tower aeration: transfers volatile compounds from water to air."
+    },
+    {
+      "id": "oit-026",
+      "mode": "speed-match",
+      "prompt": "Match each term to its one best definition or role: Ultraviolet light, Ozone, Chlorine.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Ultraviolet light",
+          "right": "Physical disinfection using radiation"
+        },
+        {
+          "id": "pair-2",
+          "left": "Ozone",
+          "right": "Chemical disinfectant without a lasting distribution residual"
+        },
+        {
+          "id": "pair-3",
+          "left": "Chlorine",
+          "right": "Chemical disinfectant that can leave a distribution residual"
+        }
+      ],
+      "explanation": "Each term is paired with its specific definition or role: Ultraviolet light: physical disinfection using radiation; Ozone: chemical disinfectant without a lasting distribution residual; Chlorine: chemical disinfectant that can leave a distribution residual."
+    },
+    {
+      "id": "oit-027",
+      "mode": "speed-match",
+      "prompt": "Match each term to its one best definition or role: Turbidity, Chlorine residual, Contact time.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Turbidity",
+          "right": "Often expressed in NTU"
+        },
+        {
+          "id": "pair-2",
+          "left": "Chlorine residual",
+          "right": "Often expressed in mg/L"
+        },
+        {
+          "id": "pair-3",
+          "left": "Contact time",
+          "right": "A duration, commonly expressed in minutes"
+        }
+      ],
+      "explanation": "Each term is paired with its specific definition or role: Turbidity: often expressed in ntu; Chlorine residual: often expressed in mg/l; Contact time: a duration, commonly expressed in minutes."
+    },
+    {
+      "id": "oit-028",
+      "mode": "speed-match",
+      "prompt": "In a plant where filtration precedes distribution, match each sampling point to its location.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Raw-water sampling point",
+          "right": "Before the stated treatment train"
+        },
+        {
+          "id": "pair-2",
+          "left": "Filter-effluent sampling point",
+          "right": "Immediately after the filter and before distribution"
+        },
+        {
+          "id": "pair-3",
+          "left": "Distribution sampling point",
+          "right": "Representative tap in distribution well beyond the entry point"
+        }
+      ],
+      "explanation": "The example places the filter upstream of distribution; these are distinct sampling points in that specified arrangement."
+    },
+    {
+      "id": "oit-029",
+      "mode": "speed-match",
+      "prompt": "Match each term to its one best definition or role: Sodium thiosulphate in a microbiological bottle, Chain-of-custody form, Laboratory instructions.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Sodium thiosulphate in a microbiological sample bottle",
+          "right": "Neutralizes residual chlorine in the collected sample"
+        },
+        {
+          "id": "pair-2",
+          "left": "Chain-of-custody form",
+          "right": "Records sample identity and custody transfers"
+        },
+        {
+          "id": "pair-3",
+          "left": "Laboratory instructions",
+          "right": "Specify how to collect, package and transport the sample"
+        }
+      ],
+      "explanation": "Thiosulphate dechlorinates the sample; the custody form documents its identity and transfers; laboratory instructions set sampling and transport procedures."
+    },
+    {
+      "id": "oit-030",
+      "mode": "speed-match",
+      "prompt": "Match each term to its one best definition or role: Nephelometry, Adsorption, Ion exchange.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Nephelometry",
+          "right": "Measuring light scattered by suspended particles"
+        },
+        {
+          "id": "pair-2",
+          "left": "Adsorption",
+          "right": "Attachment of substances to media surfaces"
+        },
+        {
+          "id": "pair-3",
+          "left": "Ion exchange",
+          "right": "Exchange of dissolved ions for ions held by a resin"
+        }
+      ],
+      "explanation": "Nephelometry uses scattered light; adsorption attaches substances to surfaces; ion exchange swaps dissolved ions with ions on resin."
+    },
+    {
+      "id": "oit-031",
+      "mode": "odd-one-out",
+      "prompt": "Which item is not a conventional particle-removal step?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Coagulation"
+        },
+        {
+          "id": "option-2",
+          "label": "Flocculation"
+        },
+        {
+          "id": "option-3",
+          "label": "Sedimentation"
+        },
+        {
+          "id": "option-4",
+          "label": "Chlorine disinfection"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "The first three help particles form and settle; disinfection primarily inactivates germs."
+    },
+    {
+      "id": "oit-032",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a treatment chemical disinfectant?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Chlorine"
+        },
+        {
+          "id": "option-2",
+          "label": "Ozone"
+        },
+        {
+          "id": "option-3",
+          "label": "Chloramine"
+        },
+        {
+          "id": "option-4",
+          "label": "Ultraviolet light"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "UV is a physical radiation process; the others are chemicals."
+    },
+    {
+      "id": "oit-033",
+      "mode": "odd-one-out",
+      "prompt": "Which item is neither a measurement unit nor a water-quality scale?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "mg/L"
+        },
+        {
+          "id": "option-2",
+          "label": "NTU"
+        },
+        {
+          "id": "option-3",
+          "label": "Valve"
+        },
+        {
+          "id": "option-4",
+          "label": "pH"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "mg/L and NTU are units; pH is a water-quality scale, while a valve is equipment."
+    },
+    {
+      "id": "oit-034",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a location in a drinking-water process?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Raw water intake"
+        },
+        {
+          "id": "option-2",
+          "label": "Filter effluent"
+        },
+        {
+          "id": "option-3",
+          "label": "Treated water outlet"
+        },
+        {
+          "id": "option-4",
+          "label": "DPD reagent"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "DPD is a testing chemical, while the others name sampling or process locations."
+    },
+    {
+      "id": "oit-035",
+      "mode": "odd-one-out",
+      "prompt": "Which item is not an optical cell problem?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Fingerprint"
+        },
+        {
+          "id": "option-2",
+          "label": "Scratch"
+        },
+        {
+          "id": "option-3",
+          "label": "Fogging"
+        },
+        {
+          "id": "option-4",
+          "label": "Labeled sampling location"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Scratches, fingerprints and fog can interfere with optical readings; a location label documents where the sample came from."
+    },
+    {
+      "id": "oit-036",
+      "mode": "odd-one-out",
+      "prompt": "Which item is not a source of water or a source-water category?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "River"
+        },
+        {
+          "id": "option-2",
+          "label": "Lake"
+        },
+        {
+          "id": "option-3",
+          "label": "Groundwater"
+        },
+        {
+          "id": "option-4",
+          "label": "Floc"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Rivers and lakes are sources and groundwater is a source-water category. Floc is an aggregate of particles formed during treatment."
+    },
+    {
+      "id": "oit-037",
+      "mode": "odd-one-out",
+      "prompt": "Which item is not used to collect a water sample or monitor water quality?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Grab sample"
+        },
+        {
+          "id": "option-2",
+          "label": "Continuous analyzer"
+        },
+        {
+          "id": "option-3",
+          "label": "Spot sample"
+        },
+        {
+          "id": "option-4",
+          "label": "Flocculator"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A grab or spot sample is a discrete sample, and a continuous analyzer monitors water quality; a flocculator mixes water to form floc."
+    },
+    {
+      "id": "oit-039",
+      "mode": "odd-one-out",
+      "prompt": "Which term is not an ion-exchange process or classification?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Cation exchange"
+        },
+        {
+          "id": "option-2",
+          "label": "Anion exchange"
+        },
+        {
+          "id": "option-3",
+          "label": "Sedimentation"
+        },
+        {
+          "id": "option-4",
+          "label": "Ion exchange"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Cation exchange and anion exchange are types of ion exchange; sedimentation is a gravity-settling process."
+    },
+    {
+      "id": "oit-040",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a membrane stream?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Feed water"
+        },
+        {
+          "id": "option-2",
+          "label": "Permeate"
+        },
+        {
+          "id": "option-3",
+          "label": "Concentrate"
+        },
+        {
+          "id": "option-4",
+          "label": "Flocculation paddle"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A paddle mixes water; feed, permeate and concentrate describe RO process streams."
+    },
+    {
+      "id": "oit-041",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a recommended practice for reliable optical testing?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Use a clean cell"
+        },
+        {
+          "id": "option-2",
+          "label": "Follow instrument instructions"
+        },
+        {
+          "id": "option-3",
+          "label": "Remove bubbles as instructed"
+        },
+        {
+          "id": "option-4",
+          "label": "Leave fingerprints on the cell"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Fingerprints can interfere with optical measurements."
+    },
+    {
+      "id": "oit-042",
+      "mode": "odd-one-out",
+      "prompt": "Which term does not describe a potentially useful monitoring record?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Sampling time"
+        },
+        {
+          "id": "option-2",
+          "label": "Sampling location"
+        },
+        {
+          "id": "option-3",
+          "label": "Measured result"
+        },
+        {
+          "id": "option-4",
+          "label": "Invented result"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A fabricated result is not a legitimate measurement and must not be entered as one."
+    },
+    {
+      "id": "oit-043",
+      "mode": "odd-one-out",
+      "prompt": "Which item is not a suspended-particle indicator or property?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Cloudiness"
+        },
+        {
+          "id": "option-2",
+          "label": "Light scattering"
+        },
+        {
+          "id": "option-3",
+          "label": "Turbidity"
+        },
+        {
+          "id": "option-4",
+          "label": "Pump voltage"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Voltage concerns electrical supply; the other terms relate to turbidity."
+    },
+    {
+      "id": "oit-044",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a physical component used to move or control water?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Pump"
+        },
+        {
+          "id": "option-2",
+          "label": "Pipe"
+        },
+        {
+          "id": "option-3",
+          "label": "Valve"
+        },
+        {
+          "id": "option-4",
+          "label": "Turbidity"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Turbidity is a water-quality measurement, not a device."
+    },
+    {
+      "id": "oit-046",
+      "mode": "cause-effect",
+      "prompt": "Particles shield microorganisms during chlorination. What can happen?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Disinfection may be less effective"
+        },
+        {
+          "id": "option-2",
+          "label": "The water becomes sterile automatically"
+        },
+        {
+          "id": "option-3",
+          "label": "The chlorine dose becomes zero"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Particles can protect microorganisms from contact with chlorine."
+    },
+    {
+      "id": "oit-047",
+      "mode": "cause-effect",
+      "prompt": "A filter effluent turbidity trend rises unexpectedly. What does this suggest?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The filter may need investigation"
+        },
+        {
+          "id": "option-2",
+          "label": "All pathogens are absent"
+        },
+        {
+          "id": "option-3",
+          "label": "The meter is certainly broken"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Higher effluent turbidity can indicate impaired filtration, but it does not identify the cause by itself."
+    },
+    {
+      "id": "oit-048",
+      "mode": "cause-effect",
+      "prompt": "A microbiological sample bottle containing preservative is rinsed before sampling. What is the concern?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Preservative may be lost"
+        },
+        {
+          "id": "option-2",
+          "label": "The sample automatically becomes sterile"
+        },
+        {
+          "id": "option-3",
+          "label": "The sample gains a measured chlorine residual"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Rinsing can remove preservative and compromise sample integrity; follow laboratory instructions."
+    },
+    {
+      "id": "oit-049",
+      "mode": "cause-effect",
+      "prompt": "A water sample is left standing before turbidity testing. What can happen?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Particles may settle and alter the reading"
+        },
+        {
+          "id": "option-2",
+          "label": "The sample becomes a continuous reading"
+        },
+        {
+          "id": "option-3",
+          "label": "NTU changes into mg/L"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Suspended matter can settle or change after sampling."
+    },
+    {
+      "id": "oit-050",
+      "mode": "cause-effect",
+      "prompt": "An optical sample cell has fingerprints. What can result?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The reading can be affected"
+        },
+        {
+          "id": "option-2",
+          "label": "The sample location changes"
+        },
+        {
+          "id": "option-3",
+          "label": "The meter becomes a pump"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Marks on the optical surface interfere with light transmission."
+    },
+    {
+      "id": "oit-051",
+      "mode": "cause-effect",
+      "prompt": "An activated carbon bed exhausts its adsorption capacity. What is needed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Replace or regenerate the media"
+        },
+        {
+          "id": "option-2",
+          "label": "Assume removal will remain unchanged"
+        },
+        {
+          "id": "option-3",
+          "label": "Remove the raw-water source"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "EPA notes that exhausted media must be replaced or regenerated."
+    },
+    {
+      "id": "oit-052",
+      "mode": "cause-effect",
+      "prompt": "Appropriate coagulant is mixed with raw water. What is its intended effect?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Help small particles bind"
+        },
+        {
+          "id": "option-2",
+          "label": "Add a permanent UV residual"
+        },
+        {
+          "id": "option-3",
+          "label": "Convert all dissolved salts to floc"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Coagulants help small particles bind and prepare for subsequent floc formation."
+    },
+    {
+      "id": "oit-053",
+      "mode": "cause-effect",
+      "prompt": "In a sufficiently calm settling basin, floc denser than water has enough time to settle. What is expected?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It settles toward the bottom"
+        },
+        {
+          "id": "option-2",
+          "label": "It turns into disinfectant"
+        },
+        {
+          "id": "option-3",
+          "label": "It rises solely because it is heavy"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Under these conditions, gravity causes the denser floc to settle toward the bottom."
+    },
+    {
+      "id": "oit-054",
+      "mode": "cause-effect",
+      "prompt": "A sample is shaken and bubbles remain in an optical cell. What may happen?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The reading may be affected"
+        },
+        {
+          "id": "option-2",
+          "label": "The sample becomes a chemical standard"
+        },
+        {
+          "id": "option-3",
+          "label": "The meter measures pressure"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Air bubbles can interfere with light-based readings."
+    },
+    {
+      "id": "oit-055",
+      "mode": "cause-effect",
+      "prompt": "A disinfectant remains in the water after treatment. What can it help do?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Control germs in distribution pipes"
+        },
+        {
+          "id": "option-2",
+          "label": "Remove every dissolved salt"
+        },
+        {
+          "id": "option-3",
+          "label": "Replace all monitoring"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A suitable residual can help control germs as treated water travels through pipes."
+    },
+    {
+      "id": "oit-056",
+      "mode": "cause-effect",
+      "prompt": "Water is forced through an RO membrane. What happens to the permeate?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It passes through the membrane"
+        },
+        {
+          "id": "option-2",
+          "label": "It is the entire feed stream"
+        },
+        {
+          "id": "option-3",
+          "label": "It is always identical to concentrate"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The product or permeate is the part that passes through the membrane."
+    },
+    {
+      "id": "oit-057",
+      "mode": "cause-effect",
+      "prompt": "A plant uses aeration for a suitable volatile compound. What is the intended transfer?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "From water to air"
+        },
+        {
+          "id": "option-2",
+          "label": "From air to membrane concentrate only"
+        },
+        {
+          "id": "option-3",
+          "label": "From water into settled floc only"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Aeration transfers volatile contaminants from water to air."
+    },
+    {
+      "id": "oit-058",
+      "mode": "cause-effect",
+      "prompt": "A sample result is entered with the wrong sampling location. What is the practical risk?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Staff may interpret it as representing the wrong point"
+        },
+        {
+          "id": "option-2",
+          "label": "The water automatically changes pH"
+        },
+        {
+          "id": "option-3",
+          "label": "The analyzer calibrates itself"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Locations distinguish raw, filtered and distributed water; accurate records matter."
+    },
+    {
+      "id": "oit-059",
+      "mode": "cause-effect",
+      "prompt": "A coagulant dose is unsuitable for current raw-water conditions. What is a reasonable response?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Use approved procedures and seek operator guidance"
+        },
+        {
+          "id": "option-2",
+          "label": "Change multiple settings without authorization"
+        },
+        {
+          "id": "option-3",
+          "label": "Assume the water is safe without checks"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Monitoring supports process control; an OIT should use site procedures and seek guidance when needed."
+    },
+    {
+      "id": "oit-060",
+      "mode": "cause-effect",
+      "prompt": "A chlorine sample sits too long before testing. What can happen?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The residual can change"
+        },
+        {
+          "id": "option-2",
+          "label": "The chlorine concentration must increase"
+        },
+        {
+          "id": "option-3",
+          "label": "The sample turns into raw water"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Chlorine residual can deteriorate quickly, so prompt measurement is important."
+    },
+    {
+      "id": "oit-061",
+      "mode": "cause-effect",
+      "prompt": "A suitable anion-exchange resin treats water containing nitrate. What is the intended effect?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Nitrate ions are exchanged onto the resin"
+        },
+        {
+          "id": "option-2",
+          "label": "Nitrate becomes a filter paddle"
+        },
+        {
+          "id": "option-3",
+          "label": "All contaminants are necessarily removed"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A suitable resin exchanges nitrate for other negatively charged ions on the resin; not all contaminants are necessarily removed."
+    },
+    {
+      "id": "oit-062",
+      "mode": "cause-effect",
+      "prompt": "A cation-exchange softener removes calcium and magnesium. What is the intended result?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Reduced hardness"
+        },
+        {
+          "id": "option-2",
+          "label": "Increased turbidity by definition"
+        },
+        {
+          "id": "option-3",
+          "label": "A guaranteed chlorine residual"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Calcium and magnesium are hardness ions; removing them softens the water."
+    },
+    {
+      "id": "oit-063",
+      "mode": "cause-effect",
+      "prompt": "Raw-water turbidity increases after a source-water disturbance. Why monitor it?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "To detect a change in incoming water quality"
+        },
+        {
+          "id": "option-2",
+          "label": "To prove all filters failed"
+        },
+        {
+          "id": "option-3",
+          "label": "To establish an exact legal violation without other information"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A turbidity trend helps identify changes in raw-water quality and guide operational assessment."
+    },
+    {
+      "id": "oit-064",
+      "mode": "cause-effect",
+      "prompt": "A chlorine colorimeter is not zeroed as its instructions require. What is the concern?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The result may be inaccurate"
+        },
+        {
+          "id": "option-2",
+          "label": "Turbidity is always zero"
+        },
+        {
+          "id": "option-3",
+          "label": "The sample becomes the standard"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The blank or control helps account for sample colour and turbidity in the measurement."
+    },
+    {
+      "id": "oit-065",
+      "mode": "cause-effect",
+      "prompt": "Operators use gentle mixing after coagulant addition. What is the intended effect?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Small particles form larger flocs"
+        },
+        {
+          "id": "option-2",
+          "label": "Settled solids instantly dissolve"
+        },
+        {
+          "id": "option-3",
+          "label": "A UV residual forms in pipes"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Flocculation uses gentle mixing to build larger, heavier particles."
+    },
+    {
+      "id": "oit-066",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee says: “UV alone leaves a residual that protects the distribution pipes.” What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "UV does not provide a persistent distribution residual"
+        },
+        {
+          "id": "option-2",
+          "label": "UV is a form of sedimentation"
+        },
+        {
+          "id": "option-3",
+          "label": "UV makes water flow uphill"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "UV can disinfect water but does not continue killing germs as water moves through pipes."
+    },
+    {
+      "id": "oit-067",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee says: “Every plant uses the same five treatment steps in the same order.” What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Treatment trains vary with source and design"
+        },
+        {
+          "id": "option-2",
+          "label": "Source water is always identical"
+        },
+        {
+          "id": "option-3",
+          "label": "Filters cannot remove particles"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Utilities use different treatment steps depending on the source and treatment objectives."
+    },
+    {
+      "id": "oit-068",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee says: “My sample looks clear, so it cannot contain pathogens.” What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Clarity alone does not prove microbiological safety"
+        },
+        {
+          "id": "option-2",
+          "label": "Cloudiness always means a positive E. coli result"
+        },
+        {
+          "id": "option-3",
+          "label": "A clear sample cannot be tested"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Turbidity is not a complete microbiological test; monitoring and treatment provide important protection."
+    },
+    {
+      "id": "oit-069",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee rinses the lab-supplied microbiological bottle to remove its powder. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The preservative may be removed"
+        },
+        {
+          "id": "option-2",
+          "label": "The bottle becomes a filter"
+        },
+        {
+          "id": "option-3",
+          "label": "The sample becomes a turbidity standard"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A laboratory-supplied microbiological bottle can contain preservative; do not rinse the bottle. Follow the laboratory’s collection instructions."
+    },
+    {
+      "id": "oit-070",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee uses a total-chlorine DPD reagent for a test specified as free chlorine. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The selected reagent may measure the wrong form"
+        },
+        {
+          "id": "option-2",
+          "label": "Total and free chlorine are identical in every sample"
+        },
+        {
+          "id": "option-3",
+          "label": "The cell automatically selects the correct reagent"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The manual distinguishes free- and total-chlorine reagents; follow the test method."
+    },
+    {
+      "id": "oit-071",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee holds the inside of a sterile sample cap while collecting a microbiological sample. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The cap can contaminate the sample"
+        },
+        {
+          "id": "option-2",
+          "label": "It makes a grab sample continuous"
+        },
+        {
+          "id": "option-3",
+          "label": "It increases contact time"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Keep the inside of the cap and bottle untouched to reduce contamination."
+    },
+    {
+      "id": "oit-072",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee reports yesterday’s chlorine residual as today’s measurement. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The entry is not today’s actual result"
+        },
+        {
+          "id": "option-2",
+          "label": "Residual never changes"
+        },
+        {
+          "id": "option-3",
+          "label": "Only written results are valid"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Records must accurately reflect the actual sampling time and result."
+    },
+    {
+      "id": "oit-073",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee reads a DPD test long after the manufacturer’s reading window. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Timing can affect the reading"
+        },
+        {
+          "id": "option-2",
+          "label": "A colour test requires no reagent"
+        },
+        {
+          "id": "option-3",
+          "label": "Waiting produces a continuous analyzer"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The manual stresses reading within the specified time because the colour can change."
+    },
+    {
+      "id": "oit-074",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee pours sample water directly into the sample well of a turbidimeter designed for a cuvette. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The sample belongs in an appropriate cuvette"
+        },
+        {
+          "id": "option-2",
+          "label": "The water must be poured on the light source"
+        },
+        {
+          "id": "option-3",
+          "label": "The well is a sedimentation basin"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "For this cuvette-based instrument, place the sample in the specified sample cell, not directly in the well; follow the instrument instructions."
+    },
+    {
+      "id": "oit-075",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee calls the water entering a treatment plant “filter effluent.” What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Filter effluent is water leaving a filter"
+        },
+        {
+          "id": "option-2",
+          "label": "Effluent always means untreated intake"
+        },
+        {
+          "id": "option-3",
+          "label": "A filter has no outlet"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Raw water is untreated incoming water; filter effluent is the water leaving a filter."
+    },
+    {
+      "id": "oit-076",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee calls RO concentrate the water that passes through the membrane. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "That stream is permeate"
+        },
+        {
+          "id": "option-2",
+          "label": "Concentrate means all feed passes"
+        },
+        {
+          "id": "option-3",
+          "label": "A membrane cannot reject substances"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Permeate passes through the membrane; concentrate retains many rejected substances."
+    },
+    {
+      "id": "oit-077",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee says: “An activated-carbon bed has unlimited adsorption capacity.” What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Adsorption capacity can become exhausted"
+        },
+        {
+          "id": "option-2",
+          "label": "Carbon never contacts water"
+        },
+        {
+          "id": "option-3",
+          "label": "Activated carbon is a disinfectant residual"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Exhausted activated carbon needs regeneration or replacement."
+    },
+    {
+      "id": "oit-078",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee sees a high filter-effluent turbidity reading and immediately declares a specific cause without checking. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A single reading does not establish the cause"
+        },
+        {
+          "id": "option-2",
+          "label": "High turbidity always proves perfect filtration"
+        },
+        {
+          "id": "option-3",
+          "label": "Turbidity cannot be measured"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Elevated turbidity can indicate a problem, but it requires investigation using plant procedures."
+    },
+    {
+      "id": "oit-079",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee mixes up sampling bottles and does not identify the location. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The sample cannot be reliably tied to its source point"
+        },
+        {
+          "id": "option-2",
+          "label": "The sample becomes a pump"
+        },
+        {
+          "id": "option-3",
+          "label": "Location can never affect interpretation"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Correct labels and records link results to the sampling location."
+    },
+    {
+      "id": "oit-080",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee assumes ozone treatment by itself protects water throughout distribution. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Ozone does not provide a lasting distribution residual"
+        },
+        {
+          "id": "option-2",
+          "label": "Ozone is suspended sand"
+        },
+        {
+          "id": "option-3",
+          "label": "Ozone is always used as a filter bed"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Ozone can disinfect at the plant but does not provide lasting disinfection through pipes."
+    },
+    {
+      "id": "oit-081",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee ignores the laboratory’s packaging instructions for a sample. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Improper handling can compromise the sample"
+        },
+        {
+          "id": "option-2",
+          "label": "The sample is guaranteed unchanged"
+        },
+        {
+          "id": "option-3",
+          "label": "A laboratory never gives instructions"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Follow the laboratory’s collection, packaging, storage and transport directions."
+    },
+    {
+      "id": "oit-082",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee says: “All suspended solids are dissolved salts.” What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Suspended particles and dissolved substances are different"
+        },
+        {
+          "id": "option-2",
+          "label": "All solids are chlorine"
+        },
+        {
+          "id": "option-3",
+          "label": "Turbidity is measured in hours"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Turbidity is associated with suspended particles; dissolved salts are not the same category."
+    },
+    {
+      "id": "oit-083",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee says: “Sedimentation removes floc because heavier floc rises.” What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Heavier floc settles"
+        },
+        {
+          "id": "option-2",
+          "label": "Settling needs a UV lamp"
+        },
+        {
+          "id": "option-3",
+          "label": "Floc is a unit of flow"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Sedimentation separates heavier floc as it settles toward the bottom."
+    },
+    {
+      "id": "oit-084",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee assumes aeration destroys all volatile contaminants in water. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Aeration transfers suitable volatile contaminants to air"
+        },
+        {
+          "id": "option-2",
+          "label": "Aeration is an ion-exchange resin"
+        },
+        {
+          "id": "option-3",
+          "label": "Air has no contact with the water"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Aeration can move volatile contaminants from water to air; it does not necessarily destroy them."
+    },
+    {
+      "id": "oit-085",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee changes equipment settings outside their authority because an unusual result appears. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The trainee should follow site procedures and seek guidance"
+        },
+        {
+          "id": "option-2",
+          "label": "An unusual result should always be erased"
+        },
+        {
+          "id": "option-3",
+          "label": "Every reading has the same cause"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Ontario operator ethics emphasize working competently and seeking guidance from the appropriate responsible operator."
+    },
+    {
+      "id": "oit-top-001",
+      "mode": "cause-effect",
+      "prompt": "In a training calculation, 600,000 L of water receives a coagulant dose of 2.0 mg/L, expressed as the mass of the supplied chemical. What mass of that chemical is required? Assume uniform dosing and no losses.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "1.2 kg"
+        },
+        {
+          "id": "option-2",
+          "label": "0.12 kg"
+        },
+        {
+          "id": "option-3",
+          "label": "12 kg"
+        },
+        {
+          "id": "option-4",
+          "label": "300 kg"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Chemical mass = dose × water volume. The dose is 2.0 mg/L and the volume is 600,000 L, so 2.0 mg/L × 600,000 L = 1,200,000 mg. Since 1 kg = 1,000,000 mg, 1,200,000 mg ÷ 1,000,000 mg/kg = 1.2 kg. The dose is already specified as the supplied chemical; do not apply a separate strength correction. This is a practice calculation, not an operating setpoint."
+    },
+    {
+      "id": "oit-top-002",
+      "mode": "cause-effect",
+      "prompt": "A full basin has a water volume of 36 m³ and a constant flow of 1,200 L/min. What is its theoretical detention time? Use 1 m³ = 1,000 L.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "3 minutes"
+        },
+        {
+          "id": "option-2",
+          "label": "30 minutes"
+        },
+        {
+          "id": "option-3",
+          "label": "300 minutes"
+        },
+        {
+          "id": "option-4",
+          "label": "43.2 minutes"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "Theoretical detention time = basin water volume ÷ flow rate. Convert volume first: 36 m³ × 1,000 L/m³ = 36,000 L. Then 36,000 L ÷ 1,200 L/min = 30 min. This is an ideal hydraulic average, not a measured effective disinfection contact time; short-circuiting or other basin hydraulics can change actual contact time."
+    },
+    {
+      "id": "oit-top-003",
+      "mode": "cause-effect",
+      "prompt": "In a chlorine test, the applied dose is 2.7 mg/L and the measured free chlorine residual after the specified contact time is 0.6 mg/L, both on the same chlorine basis. What is the chlorine demand based on this free residual, using dose = demand + residual?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "3.3 mg/L"
+        },
+        {
+          "id": "option-2",
+          "label": "2.1 mg/L"
+        },
+        {
+          "id": "option-3",
+          "label": "1.6 mg/L"
+        },
+        {
+          "id": "option-4",
+          "label": "4.5 mg/L"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "Chlorine demand based on free residual = chlorine dose − free chlorine residual. Both concentrations use the same chlorine basis, so 2.7 mg/L − 0.6 mg/L = 2.1 mg/L. Demand depends on the stated water and contact conditions; this example does not establish that a particular residual or contact time meets a regulatory requirement."
+    },
+    {
+      "id": "oit-order-001",
+      "mode": "before-after",
+      "prompt": "In the conventional drinking-water treatment example described by CDC, does coagulation occur before or after flocculation?",
+      "correctAnswer": "before",
+      "explanation": "Coagulation destabilizes particles; the subsequent gentle flocculation helps them form larger flocs. This is the cited conventional example, not a claim about every plant."
+    },
+    {
+      "id": "oit-order-002",
+      "mode": "before-after",
+      "prompt": "In the conventional drinking-water treatment example described by CDC, is sedimentation before or after flocculation?",
+      "correctAnswer": "after",
+      "explanation": "Flocs form during flocculation and then settle during sedimentation in this example. Other plant configurations can differ."
+    },
+    {
+      "id": "oit-order-003",
+      "mode": "before-after",
+      "prompt": "In the conventional drinking-water treatment example described by CDC, is filtration before or after sedimentation?",
+      "correctAnswer": "after",
+      "explanation": "In this example, the water above the settled floc is filtered after sedimentation. Direct filtration is a different arrangement."
+    },
+    {
+      "id": "oit-order-004",
+      "mode": "before-after",
+      "prompt": "In CDC’s conventional drinking-water treatment example, is final disinfection before or after filtration?",
+      "correctAnswer": "after",
+      "explanation": "The example places the final disinfection step after filtration; disinfection may also occur at other points in other plant designs."
+    },
+    {
+      "id": "oit-order-005",
+      "mode": "before-after",
+      "prompt": "In CDC’s drinking-water treatment example, is delivery to the community before or after treatment at the plant?",
+      "correctAnswer": "after",
+      "explanation": "The utility treats the water at the plant and then delivers it to the community through its distribution system."
+    },
+    {
+      "id": "oit-order-006",
+      "mode": "before-after",
+      "prompt": "For the Ontario manual’s example free-chlorine DPD colorimeter procedure, is instrument zeroing before or after adding the free-chlorine reagent to the sample tube?",
+      "correctAnswer": "before",
+      "explanation": "The illustrated free-chlorine procedure zeroes the instrument using the untreated control tube, then prepares the sample tube with the free-chlorine reagent. Actual kits can differ; follow their instructions."
+    },
+    {
+      "id": "oit-order-007",
+      "mode": "before-after",
+      "prompt": "For the Ontario manual’s example free-chlorine DPD colorimeter procedure, is the displayed sample reading before or after addition of the free-chlorine reagent?",
+      "correctAnswer": "after",
+      "explanation": "The sample is treated with free-chlorine DPD reagent and then read by the instrument. Follow the relevant manufacturer’s timing and instructions."
+    },
+    {
+      "id": "oit-order-008",
+      "mode": "before-after",
+      "prompt": "For the Ontario manual’s example total-chlorine DPD procedure, is the instrument’s sample reading before or after the manufacturer-specified reagent reaction time has elapsed?",
+      "correctAnswer": "after",
+      "explanation": "The manual’s total-chlorine example allows the specified reaction time to elapse before placing and reading the treated sample. Timing depends on the instrument and reagent."
+    },
+    {
+      "id": "oit-order-009",
+      "mode": "before-after",
+      "prompt": "In the Ontario operational-check training manual’s sample-labelling guidance, is labelling the sample container before or after taking the sample?",
+      "correctAnswer": "before",
+      "explanation": "The manual recommends labelling containers before sampling to reduce mix-ups. Record actual collection details as directed by the laboratory."
+    },
+    {
+      "id": "oit-order-010",
+      "mode": "before-after",
+      "prompt": "For microbiological sampling in the Ontario training manual, is replacing the bottle cap before or after sample collection?",
+      "correctAnswer": "after",
+      "explanation": "The manual states that the bottle is capped immediately after collecting the sample. Follow the receiving laboratory’s instructions."
+    },
+    {
+      "id": "oit-order-011",
+      "mode": "before-after",
+      "prompt": "For a drinking-water sample sent to a laboratory, is sample collection before or after laboratory analysis of that sample?",
+      "correctAnswer": "before",
+      "explanation": "A sample must first be collected and sent to the laboratory for analysis; its identity and custody are documented along the way."
+    },
+    {
+      "id": "oit-order-012",
+      "mode": "before-after",
+      "prompt": "For a permitted grab-sample turbidity measurement described by the Ontario manual, is the instrument measurement before or after collection of that sample?",
+      "correctAnswer": "after",
+      "explanation": "A grab sample is collected and then measured promptly because its turbidity can change on standing. Follow current requirements and site procedures."
+    },
+    {
+      "id": "oit-order-013",
+      "mode": "before-after",
+      "prompt": "In the Ontario manual’s example of a diluted high-turbidity grab sample, is calculation of the original sample turbidity before or after measuring the diluted sample?",
+      "correctAnswer": "after",
+      "explanation": "The manual describes calculating original-sample turbidity from the measured diluted sample using the dilution factor. Use the current method and equipment instructions."
+    },
+    {
+      "id": "oit-order-014",
+      "mode": "before-after",
+      "prompt": "A drinking-water reverse-osmosis system uses a water-conditioning step to protect its membrane from fouling. Is that conditioning step before or after the water passes through the membrane?",
+      "correctAnswer": "before",
+      "explanation": "In the described arrangement, feed pretreatment is applied before the RO membrane to help prevent fouling or plugging. Not all RO installations use the same pretreatment."
+    },
+    {
+      "id": "oit-order-015",
+      "mode": "before-after",
+      "prompt": "In the Ontario manual’s example grab-sample turbidity procedure, is allowing air bubbles to disappear before or after pouring the sample into the turbidimeter tube?",
+      "correctAnswer": "before",
+      "explanation": "The example waits for bubbles to disappear before pouring the sample into the tube. Testing methods differ; use the applicable manufacturer and site instructions."
+    },
+    {
+      "id": "oit-order-016",
+      "mode": "before-after",
+      "prompt": "In the Ontario manual’s example procedure for a turbidity grab sample from a distribution tap, is the initial tap flushing before or after sample collection?",
+      "correctAnswer": "before",
+      "explanation": "The example allows the tap to run before collecting the grab sample. Follow the laboratory, site and current applicable instructions rather than assuming one universal flushing protocol."
+    },
+    {
+      "id": "oit-order-018",
+      "mode": "before-after",
+      "prompt": "In the Ontario design guideline’s anticipated powdered activated carbon addition arrangement, is the powdered activated carbon addition before or after coagulant addition?",
+      "correctAnswer": "before",
+      "explanation": "The guideline recommends adding anticipated powdered activated carbon upstream of coagulant addition in the described arrangement. Actual application points depend on approved plant design."
+    },
+    {
+      "id": "oit-order-019",
+      "mode": "before-after",
+      "prompt": "In the Ontario design guideline’s arrangement using a polymer flocculation aid, is the separate polymer addition before or after coagulant mixing?",
+      "correctAnswer": "after",
+      "explanation": "The guideline describes separate addition of polymer flocculation aid downstream of coagulant mixing to avoid high-shear mixing. Site design and procedures govern actual dosing."
+    },
+    {
+      "id": "oit-order-020",
+      "mode": "before-after",
+      "prompt": "In the Ontario manual’s example volatile-organic-compound sample procedure, is checking the bottle for an air bubble before or after capping the filled bottle?",
+      "correctAnswer": "after",
+      "explanation": "The example describes capping the filled bottle and then turning it upside down to check for a bubble. Sample collection and handling must follow the receiving laboratory’s instructions."
+    }
+  ]
+}

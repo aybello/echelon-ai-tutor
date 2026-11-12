@@ -1,9 +1,11 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { chromium, type Browser, type Page } from "@playwright/test";
 import { build } from "esbuild";
+import { readFile } from "node:fs/promises";
 
 let browser: Browser;
 let script: string;
+let css: string;
 
 // All content is synthetic, including IDs, labels, prompts, and explanations.
 const examples = [
@@ -45,6 +47,7 @@ beforeAll(async () => {
     loader: { ".css": "empty" },
   });
   script = result.outputFiles[0].text;
+  css = await readFile("client/src/components/InteractiveDrill.css", "utf8");
   browser = await chromium.launch({ headless: true });
 }, 30000);
 
@@ -80,7 +83,14 @@ async function withDrill(run: (page: Page) => Promise<void>, data: unknown[] = e
         deleteProperty: (_target, key) => { state.__storageWrites.push(["property delete", String(key)]); delete values[String(key)]; return true; },
       });
       Object.defineProperty(window, "localStorage", { configurable: true, get: () => storage });
+      state.__choiceSnapshots = [];
+      new MutationObserver(() => {
+        const options = document.querySelector(".interactive-drill__options");
+        const labels = options && Array.from(options.querySelectorAll("button"), button => button.textContent);
+        if (labels && labels.length >= 2) state.__choiceSnapshots.push(labels);
+      }).observe(document.getElementById("root")!, { childList: true, subtree: true });
     }, data);
+    await page.addStyleTag({ content: css });
     await page.addScriptTag({ content: script });
     await run(page);
   } finally {
@@ -348,6 +358,80 @@ describe("InteractiveDrill in an isolated browser", () => {
     }));
   }
 
+  for (const mode of ["odd-one-out", "cause-effect", "tap-the-flaw", "before-after"] as const) {
+    it(`varies ${mode} positions without changing grading or order after answering`, async () => {
+      const labels = mode === "before-after" ? ["Choice Alpha", "Choice Beta"] : ["Choice Alpha", "Choice Beta", "Choice Gamma", "Choice Delta"];
+      const data = Array.from({ length: 12 }, (_, index) => ({
+        id: `shuffle-${index + 1}`, mode, prompt: `Synthetic card ${index}`, explanation: "Synthetic result.",
+        ...(mode === "before-after"
+          ? { options: labels, correctAnswer: labels[0] }
+          : { options: labels.map((label, i) => ({ id: `option-${i}`, label })), correctOptionId: "option-0" }),
+      }));
+      await withDrill(async page => {
+        const positions = new Set<number>();
+        const lastPositions = new Set<number>();
+        const group = page.locator(".interactive-drill__options");
+        let firstOrder: string[] = [];
+        for (let i = 0; i < data.length; i++) {
+          await expectHeading(page, `Synthetic card ${i}`);
+          const order = await group.getByRole("button").allTextContents();
+          expect([...order].sort()).toEqual([...labels].sort());
+          positions.add(order.indexOf(labels[0]));
+          lastPositions.add(order.indexOf(labels[labels.length - 1]));
+          if (i === 0) {
+            firstOrder = order;
+            // The first observed committed DOM already has the final order.
+            expect(order).not.toEqual(labels);
+            const snapshots = await page.evaluate(() => (window as any).__choiceSnapshots as string[][]);
+            expect(snapshots.length).toBeGreaterThan(0);
+            expect(snapshots[0]).toEqual(order);
+            await group.getByRole("button").first().focus();
+            for (let j = 0; j < order.length; j++) {
+              expect(await group.getByRole("button").nth(j).evaluate(el => el === document.activeElement)).toBe(true);
+              if (j + 1 < order.length) await page.keyboard.press("Tab");
+            }
+            await button(page, labels[0]).focus();
+            await page.keyboard.press("Enter");
+          } else if (i === 1) {
+            await button(page, labels[1]).focus();
+            await page.keyboard.press("Space");
+          } else {
+            await button(page, labels[0]).click();
+          }
+          await expectFeedback(page, i === 1 ? `The correct answer is ${labels[0]}. Synthetic result.` : "Correct");
+          expect(await group.getByRole("button").allTextContents()).toEqual(order);
+          expect(await group.getByRole("button").evaluateAll(buttons => buttons.every(button => (button as HTMLButtonElement).disabled))).toBe(true);
+          expect(await feedback(page).evaluate(el => el === document.activeElement)).toBe(true);
+          if (i < data.length - 1) await button(page, "Next activity →").click();
+        }
+        expect(positions.size).toBe(labels.length);
+        expect(lastPositions.size).toBe(labels.length);
+        await button(page, "Start again").click();
+        await expectHeading(page, "Synthetic card 0");
+        expect(await group.getByRole("button").allTextContents()).toEqual(firstOrder);
+        expect((await feedback(page).innerText()).trim()).toBe("");
+        expect(await button(page, labels[0]).isEnabled()).toBe(true);
+        expect(await page.evaluate(() => (window as any).__drillExamples)).toEqual(data);
+      }, data);
+    });
+  }
+
+  it("does not use answer identity or option IDs to choose display order", async () => {
+    const labels = ["Choice Alpha", "Choice Beta", "Choice Gamma", "Choice Delta"];
+    let originalOrder: string[] = [];
+    for (const variant of [0, 1]) {
+      const options = labels.map((label, i) => ({ id: `variant-${variant}-option-${i}`, label }));
+      await withDrill(async page => {
+        const group = page.locator(".interactive-drill__options");
+        const order = await group.getByRole("button").allTextContents();
+        if (variant === 0) originalOrder = order;
+        else expect(order).toEqual(originalOrder);
+        await button(page, labels[variant]).click();
+        await expectFeedback(page, "Correct");
+      }, [{ id: "same-activity", mode: "cause-effect", prompt: "Synthetic identity test", options, correctOptionId: options[variant].id, explanation: "Synthetic result." }]);
+    }
+  });
+
   it("grades Before/After in both directions and resets when switching modes", async () => withDrill(async page => {
     await chooseMode(page, "Before/After");
     await expectHeading(page, "Synthetic order one");
@@ -374,6 +458,200 @@ describe("InteractiveDrill in an isolated browser", () => {
     expect(await button(page, "Before").isDisabled()).toBe(false);
   }));
 
+  it("offers supplied process labels without revealing the answer and grades both positions on mobile", async () => withDrill(async page => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await expectHeading(page, "Which step happens first in the synthetic process?");
+    const group = page.getByRole("group", { name: "Answer choices" });
+    expect((await group.getByRole("button").allTextContents()).sort()).toEqual(["Synthetic filtration", "Synthetic mixing"]);
+    expect(await page.getByRole("heading", { level: 2 }).innerText()).not.toContain("Synthetic mixing");
+    expect((await feedback(page).innerText()).trim()).toBe("");
+    expect(await button(page, "Before").count()).toBe(0);
+    for (const label of ["Synthetic filtration", "Synthetic mixing"]) {
+      const box = await button(page, label).boundingBox();
+      expect(box).not.toBeNull();
+      expect(box!.height).toBeGreaterThanOrEqual(44);
+      expect(box!.x).toBeGreaterThanOrEqual(0);
+      expect(box!.x + box!.width).toBeLessThanOrEqual(390);
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    await button(page, "Synthetic filtration").focus();
+    await page.keyboard.press("Enter");
+    await expectFeedback(page, "Not quite");
+    await expectFeedback(page, "The correct answer is Synthetic mixing. Synthetic first explanation.");
+    expect(await feedback(page).evaluate(el => el === document.activeElement)).toBe(true);
+    expect(await button(page, "Synthetic mixing").isDisabled()).toBe(true);
+    await button(page, "Next activity →").click();
+    await expectHeading(page, "Which step happens later in the synthetic process?");
+    await button(page, "Synthetic storage").click();
+    await expectFeedback(page, "Correct");
+    await expectFeedback(page, "Synthetic later explanation.");
+    await button(page, "Previous").click();
+    await button(page, "Synthetic mixing").click();
+    await expectFeedback(page, "Correct");
+    await button(page, "Next activity →").click();
+    await button(page, "Synthetic intake").click();
+    await expectFeedback(page, "The correct answer is Synthetic storage. Synthetic later explanation.");
+  }, [
+    { id: "label-first", mode: "before-after", prompt: "Which step happens first in the synthetic process?", options: ["Synthetic filtration", "Synthetic mixing"], correctAnswer: " synthetic MIXING ", explanation: "Synthetic first explanation." },
+    { id: "label-second", mode: "before-after", prompt: "Which step happens later in the synthetic process?", options: ["Synthetic storage", "Synthetic intake"], correctAnswer: "Synthetic storage", explanation: "Synthetic later explanation." },
+  ]));
+
+  it("rejects ambiguous or incomplete Before/After choices rather than misgrading", async () => withDrill(async page => {
+    for (const heading of ["Before/After activity unavailable", "Before/After activity unavailable", "Before/After activity unavailable", "Before/After activity unavailable", "Before/After activity unavailable", "Synthetic invalid legacy"]) {
+      await expectHeading(page, heading);
+      expect(await page.getByRole("status").filter({ hasText: "This activity is unavailable" }).count()).toBe(1);
+      expect(await page.getByRole("group", { name: "Answer choices" }).count()).toBe(0);
+      expect(await page.locator(".interactive-drill__content").innerText()).not.toContain("Synthetic A → Synthetic B");
+      await button(page, "Next activity →").click();
+    }
+    await expectHeading(page, "Synthetic valid labels");
+    await button(page, "Synthetic A").click();
+    await expectFeedback(page, "Correct");
+  }, [
+    { id: "bad-answer", mode: "before-after", prompt: "Synthetic missing answer", options: ["Synthetic A", "Synthetic B"], correctAnswer: "Synthetic C", explanation: "Synthetic" },
+    { id: "duplicate", mode: "before-after", prompt: "Synthetic duplicate labels", options: ["Synthetic A", " synthetic a "], correctAnswer: "Synthetic A", explanation: "Synthetic" },
+    { id: "blank", mode: "before-after", prompt: "Synthetic blank label", options: ["Synthetic A", "  "], correctAnswer: "Synthetic A", explanation: "Synthetic" },
+    { id: "three", mode: "before-after", prompt: "Synthetic three choices", options: ["Synthetic A", "Synthetic B", "Synthetic C"], correctAnswer: "Synthetic A", explanation: "Synthetic" },
+    { id: "reveals", mode: "before-after", prompt: "Synthetic A → Synthetic B: which is first?", options: ["Synthetic A", "Synthetic B"], correctAnswer: "Synthetic A", explanation: "Synthetic" },
+    { id: "legacy-invalid", mode: "before-after", prompt: "Synthetic invalid legacy", correctAnswer: "Synthetic A", explanation: "Synthetic" },
+    { id: "valid-labels", mode: "before-after", prompt: "Synthetic valid labels", options: ["Synthetic A", "Synthetic B"], correctAnswer: "Synthetic A", explanation: "Synthetic" },
+  ]));
+
+  it.each([
+    { name: "A and B inside words", prompt: "Which batch comes earlier?", instruction: "Compare both stages.", options: ["A", "B"], valid: true },
+    { name: "Unicode word neighbors", prompt: "éA xB2 _A B́", options: ["A", "B"], valid: true },
+    { name: "three code points inside words", prompt: "xABCy", options: ["ABC", "XYZ"], valid: true },
+    { name: "astral code points counted as characters", prompt: "x𐐀𐐁𐐂y", options: ["𐐀𐐁𐐂", "Z"], valid: true },
+    { name: "standalone A in prompt", prompt: "Which is earlier: (A)?", options: ["A", "B"], valid: false },
+    { name: "standalone B in instruction", prompt: "Which stage comes earlier?", instruction: "Consider [B].", options: ["A", "B"], valid: false },
+    { name: "case and whitespace folding", prompt: "Which stage comes earlier?", instruction: "Consider  X \t Y!", options: ["x y", "Z"], valid: false },
+    { name: "NFKC compatibility variant", prompt: "Which stage is Ａ?", options: ["A", "B"], valid: false },
+    { name: "plain normalization still detects boundary changed by NFKC", prompt: "AⒷ", options: ["A", "Z"], valid: false },
+    { name: "regex metacharacter is literal", prompt: "Choose (+).", options: ["+", "?"], valid: false },
+    { name: "long label remains a conservative substring", prompt: "xABCDy", options: ["ABCD", "XYZ"], valid: false },
+  ])("uses server visible-label boundaries: $name", async ({ prompt, instruction, options, valid }) => withDrill(async page => {
+    if (valid) {
+      await expectHeading(page, prompt);
+      const group = page.getByRole("group", { name: "Answer choices" });
+      expect((await group.getByRole("button").allTextContents()).sort()).toEqual([...options].sort());
+      await button(page, options[0]).click();
+      await expectFeedback(page, "Correct");
+    } else {
+      await expectHeading(page, "Before/After activity unavailable");
+      expect(await page.getByRole("status").filter({ hasText: "This activity is unavailable" }).count()).toBe(1);
+      expect(await page.getByRole("group", { name: "Answer choices" }).count()).toBe(0);
+      expect(await page.locator(".interactive-drill__content").innerText()).not.toContain(prompt);
+    }
+  }, [{ id: "boundary", mode: "before-after", prompt, instruction, options, correctAnswer: options[0], explanation: "Synthetic explanation." }]));
+
+  it("runs a timed swipe round with keyboard, touch, streak reset and answer review", async () => withDrill(async page => {
+    await page.clock.install();
+    await button(page, "Start 30-second round").click();
+    await expectHeading(page, "30-second round");
+    expect(await page.getByRole("heading", { name: "30-second round" }).evaluate(el => el === document.activeElement)).toBe(true);
+    await page.keyboard.press("ArrowRight");
+    await expectFeedback(page, "Synthetic yes explanation.");
+    expect(await page.getByText("Time: 30s · Correct: 1/1 · Streak: 1 · Best combo: 1").count()).toBe(1);
+    await button(page, "Next →").click();
+    const swipe = page.locator(".interactive-drill__swipe");
+    const base = { pointerId: 12, isPrimary: true, pointerType: "touch", button: 0 };
+    await swipe.dispatchEvent("pointerdown", { ...base, clientX: 100, clientY: 100 });
+    await swipe.dispatchEvent("pointerup", { ...base, clientX: 20, clientY: 100 });
+    await expectFeedback(page, "Synthetic no explanation.");
+    expect(await page.getByText("Time: 30s · Correct: 2/2 · Streak: 2 · Best combo: 2").count()).toBe(1);
+    await button(page, "Next →").click();
+    await button(page, "No").click();
+    await expectFeedback(page, "Correct answer: Yes. Synthetic yes explanation.");
+    expect(await page.getByText("Time: 30s · Correct: 2/3 · Streak: 0 · Best combo: 2").count()).toBe(1);
+    await button(page, "Next →").click();
+    await page.clock.fastForward(30_000);
+    await expectHeading(page, "Round complete");
+    expect(await page.getByText("Round complete. 2 correct out of 3 answered. Best combo: 2.").count()).toBe(1);
+    expect(await page.locator(".interactive-drill__review li").count()).toBe(3);
+    expect(await page.locator(".interactive-drill__review").innerText()).toContain("Your answer: No · Correct answer: Yes. Synthetic yes explanation.");
+    expect(await page.getByRole("heading", { name: "Round complete" }).evaluate(el => el === document.activeElement)).toBe(true);
+    await button(page, "Back to practice").click();
+    await expectHeading(page, "Synthetic swipe one");
+  }));
+  it("locks feedback against duplicate gestures and repeated arrows and offers focused, announced Next", async () => withDrill(async page => {
+    await button(page, "Start 30-second round").click();
+    const yesBox = await button(page, "Yes").boundingBox();
+    if (!yesBox) throw new Error("Answer button has no bounding box");
+    await page.mouse.dblclick(yesBox.x + yesBox.width / 2, yesBox.y + yesBox.height / 2);
+    await expectFeedback(page, "Synthetic yes explanation.");
+    expect(await feedback(page).getAttribute("role")).toBe("status");
+    expect(await feedback(page).getAttribute("aria-live")).toBe("polite");
+    expect(await button(page, "Yes").isDisabled()).toBe(true);
+    await page.keyboard.down("ArrowRight");
+    await page.keyboard.down("ArrowRight");
+    await page.keyboard.up("ArrowRight");
+    await expectFeedback(page, "Synthetic yes explanation.");
+    expect(await page.getByText(/Correct: 1\/1/).count()).toBe(1);
+    await feedback(page).focus();
+    await page.keyboard.press("Tab");
+    expect(await button(page, "Next →").evaluate(el => el === document.activeElement)).toBe(true);
+    await page.keyboard.press("Enter");
+    expect(await page.getByRole("heading", { name: "Synthetic swipe two" }).evaluate(el => el === document.activeElement)).toBe(true);
+    await page.keyboard.down("ArrowRight");
+    await page.keyboard.down("ArrowRight");
+    await page.keyboard.up("ArrowRight");
+    await expectFeedback(page, "Synthetic no explanation.");
+    expect(await feedback(page).evaluate(el => el === document.activeElement)).toBe(true);
+    expect(await page.getByText(/Correct: 1\/2/).count()).toBe(1);
+  }));
+
+  it("pauses precise active time for feedback and page visibility, then expires at 30 seconds", async () => withDrill(async page => {
+    await page.clock.install();
+    await button(page, "Start 30-second round").click();
+    await page.clock.fastForward(1250);
+    await button(page, "Yes").click();
+    await page.clock.fastForward(60_000);
+    await expectFeedback(page, "Synthetic yes explanation.");
+    expect(await page.getByText(/Time: 29s · Correct: 1\/1/).count()).toBe(1);
+    await button(page, "Next →").click();
+    // Simulate browser visibility changes, including a backgrounded answer attempt.
+    await page.evaluate(() => { Object.defineProperty(document, "hidden", { configurable: true, value: true }); document.dispatchEvent(new Event("visibilitychange")); });
+    await page.clock.fastForward(60_000);
+    await page.keyboard.press("ArrowLeft");
+    expect(await page.getByText(/Correct: 1\/1/).count()).toBe(1);
+    await page.evaluate(() => { Object.defineProperty(document, "hidden", { configurable: true, value: false }); document.dispatchEvent(new Event("visibilitychange")); });
+    await page.clock.fastForward(27_000);
+    expect(await page.getByRole("heading", { name: "Round complete" }).count()).toBe(0);
+    await page.clock.fastForward(2_000);
+    await expectHeading(page, "Round complete");
+    expect(await page.getByText(/Time: 0s · Correct: 1\/1/).count()).toBe(1);
+  }));
+
+  it("does not score a repeat keydown or stale pointer after feedback and Next", async () => withDrill(async page => {
+    await button(page, "Start 30-second round").click();
+    const swipe = page.locator(".interactive-drill__swipe");
+    const base = { pointerId: 12, isPrimary: true, pointerType: "touch", button: 0 };
+    await swipe.dispatchEvent("pointerdown", { ...base, clientX: 100, clientY: 100 });
+    await button(page, "Yes").click();
+    await button(page, "Next →").click();
+    await swipe.dispatchEvent("pointerup", { ...base, clientX: 20, clientY: 100 });
+    await page.locator(".interactive-drill__activity").dispatchEvent("keydown", { key: "ArrowLeft", repeat: true });
+    expect(await page.getByText(/Correct: 1\/1/).count()).toBe(1);
+    expect((await feedback(page).innerText()).trim()).toBe("");
+    await page.keyboard.press("ArrowLeft");
+    await expectFeedback(page, "Synthetic no explanation.");
+    expect(await page.getByText(/Correct: 2\/2/).count()).toBe(1);
+  }));
+
+  it("ends and resets a round when changing modes, without stale timers", async () => withDrill(async page => {
+    await page.clock.install();
+    await button(page, "Start 30-second round").click();
+    await button(page, "Yes").click();
+    await chooseMode(page, "Speed-Match");
+    await page.clock.fastForward(30_000);
+    await expectHeading(page, "Synthetic matching");
+    await chooseMode(page, "Rapid Swipe");
+    await button(page, "Start 30-second round").click();
+    expect(await page.getByText("Time: 30s · Correct: 0/0 · Streak: 0 · Best combo: 0").count()).toBe(1);
+    await button(page, "End round").click();
+    await expectHeading(page, "Round complete");
+    expect(await page.getByText("Round complete. 0 correct out of 0 answered. Best combo: 0.").count()).toBe(1);
+  }));
   it("shows an empty state when no examples are supplied", async () => withDrill(async page => {
     await page.getByText("No practice activities are available yet.").waitFor();
     expect(await page.getByRole("navigation", { name: "Choose a practice mode" }).count()).toBe(0);

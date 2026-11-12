@@ -53,6 +53,7 @@ import { funnelAnalyticsRouter } from "./routers/funnelAnalyticsRouter";
 import { electricianReviewRouter } from "./routers/electricianReviewRouter";
 import { ceuRouter } from "./routers/ceuRouter";
 import { trainingRouter } from "./routers/trainingRouter";
+import { interactiveRouter } from "./routers/interactiveRouter";
 import { sendContactEmail } from "./email";
 import { trackEvent } from "./analytics";
 import { resolveCourseKey } from "../shared/courseRegistry";
@@ -165,6 +166,7 @@ export const appRouter = router({
   stripe: stripeRouter,
   flashcard: flashcardRouter,
   quiz: quizRouter,
+  interactive: interactiveRouter,
   dashboard: dashboardRouter,
   magicLink: magicLinkRouter,
   dashboardAuth: dashboardAuthRouter,

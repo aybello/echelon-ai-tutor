@@ -1,4 +1,5 @@
 import type { QueryClient } from "@tanstack/react-query";
+import { IDENTITY_CHANGE_EVENT_KEY } from "@shared/identityChange";
 
 export const LOGOUT_EVENT_KEY = "echelon.logout.event";
 
@@ -9,7 +10,7 @@ export function clearLearnerStorage(storage: Storage): void {
   const keys: string[] = [];
   for (let i = 0; i < storage.length; i++) {
     const key = storage.key(i);
-    if (key && key !== LOGOUT_EVENT_KEY &&
+    if (key && key !== LOGOUT_EVENT_KEY && key !== IDENTITY_CHANGE_EVENT_KEY &&
       (key.startsWith("echelon_") || key.startsWith("echelon.") || key === "manus-runtime-user-info")) {
       keys.push(key);
     }

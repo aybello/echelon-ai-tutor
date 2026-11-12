@@ -1,0 +1,633 @@
+{
+  "format": "echelon-six-games-server-release-v1",
+  "visibility": "server-only; content and provenance contain answers",
+  "contentAuthorship": "AI-authored",
+  "review": "AI-reviewed against primary sources in prior research/review stages; no human subject-matter review is claimed. Referenced records vary by item and document their scope and limitations.",
+  "limitations": "This assembly independently performs structural checks only; it does not verify claims, citations, source currency, jurisdiction, safety, instructional quality, or human sign-off. Prior AI research/review can contain errors. Source notes include specific restrictions and may recommend expert review. The conservative screening cannot establish all legal claims were removed; production-release-gate.md remains applicable.",
+  "releaseEligibility": "User authorized registration of these release-scoped packages. Approved is a software release eligibility flag only, not proof of human review, instructor validation, correctness, safety, compliance, or complete exam coverage. This is not a deployment.",
+  "candidateMetadataSha256": "934304ad19093615fcfa2202e81ad6a7e22a142849dc1fb104a1454ceaa8f97b",
+  "previewSelection": "Lexicographically smallest existing item ID per mode, deterministic, not editorially evaluated.",
+  "exclusions": "73 identified items excluded from the 4057-item screened input; see server-only evidence.",
+  "counts": {
+    "courses": 38,
+    "examples": 3984,
+    "modes": {
+      "rapid-swipe": 715,
+      "speed-match": 397,
+      "odd-one-out": 526,
+      "cause-effect": 1015,
+      "tap-the-flaw": 693,
+      "before-after": 638
+    }
+  },
+  "courses": [
+    {
+      "courseKey": "class1-wastewater-coll",
+      "sourceSha256": "aff04cd1c1f31375704758c4e9d2338f893d8deff153456de8ec2528e69ae57c",
+      "candidatePackageSha256": "b0ef0d22d72734e8f5ade64495cd8646044a4487ff67ae2c99bd17536b069917",
+      "provenanceSha256": "4d954907b784765bd52aa87a050b50d07fc7747bef721cc1099ee704db46f4a6",
+      "releasedPackageSha256": "1e3096627036b2db1086515433703de65034c6741d425660d7ad6d80c46d3a0b",
+      "itemCount": 110,
+      "previewIds": {
+        "rapid-swipe": "class1-wastewater-coll-001",
+        "speed-match": "class1-wastewater-coll-021",
+        "odd-one-out": "class1-wastewater-coll-031",
+        "cause-effect": "class1-wastewater-coll-046",
+        "tap-the-flaw": "class1-wastewater-coll-067",
+        "before-after": "class1-wastewater-coll-order-001"
+      }
+    },
+    {
+      "courseKey": "class1-water",
+      "sourceSha256": "6cac6c030925ee661322f8a4ea8722b57659ee665bf13a741dcdba21d9362ced",
+      "candidatePackageSha256": "e3ed2bc0bde9a6b591cf8277e2d5b4af8ead89da720b8fa4d2a65bbd4a44163d",
+      "provenanceSha256": "60522c081980558227a1850ad445b21e144baea85495ba7c1be916580e6b55ca",
+      "releasedPackageSha256": "fa98756df74e77ea8995944cb6746a3c7035f8182a86bbec25456b980d48e5f0",
+      "itemCount": 110,
+      "previewIds": {
+        "rapid-swipe": "class1-water-001",
+        "speed-match": "class1-water-021",
+        "odd-one-out": "class1-water-031",
+        "cause-effect": "class1-water-046",
+        "tap-the-flaw": "class1-water-066",
+        "before-after": "class1-water-order-001"
+      }
+    },
+    {
+      "courseKey": "class1-water-dist",
+      "sourceSha256": "aebbab61a8fcd826cf162818c1794602172ee871d777d132868045db18a2de67",
+      "candidatePackageSha256": "e8e8d5384e7bebe409329443b40f66ef4a4cd6e6474cb39a4bd290cfba8ff8fb",
+      "provenanceSha256": "afc197ae875efa72a65fc1e4870ff2b4e4a4cf62dbf8c0c8a80fa3386810bb32",
+      "releasedPackageSha256": "d91de0ca8f2ee1f3886fc59305310a6d3774d4deca4ff418144822394e5cd051",
+      "itemCount": 101,
+      "previewIds": {
+        "rapid-swipe": "class1-water-dist-001",
+        "speed-match": "class1-water-dist-021",
+        "odd-one-out": "class1-water-dist-031",
+        "cause-effect": "class1-water-dist-046",
+        "tap-the-flaw": "class1-water-dist-066",
+        "before-after": "class1-water-dist-order-001"
+      }
+    },
+    {
+      "courseKey": "class1-ww",
+      "sourceSha256": "208d4701aafddfdc41bcf1c9c10fd783668fec15d8fb183ef054634d49e63e73",
+      "candidatePackageSha256": "50d6c0835d9f1846ca60d4d80586106898141d5a996df76189f3ee3db2123bc0",
+      "provenanceSha256": "0cc9927f82aeb9ad338cb3721678d3d5b241c8055a88e117ddb4a69b7b460b89",
+      "releasedPackageSha256": "d19436ef8eb35129614ccb3e43728ccda9016cc6ff30d5bfc3494def5f7d2704",
+      "itemCount": 114,
+      "previewIds": {
+        "rapid-swipe": "class1-ww-001",
+        "speed-match": "class1-ww-017",
+        "odd-one-out": "class1-ww-029",
+        "cause-effect": "class1-ww-049",
+        "tap-the-flaw": "class1-ww-069",
+        "before-after": "class1-ww-order-001"
+      }
+    },
+    {
+      "courseKey": "class2-wastewater-coll",
+      "sourceSha256": "7332fd5dea117c47287af252bb69a55663bcffb708784d19b7f3c1faf8ce20d9",
+      "candidatePackageSha256": "664a289585382889e59424a2169b2ace566d5d845b96441b47c0245259438d2d",
+      "provenanceSha256": "d5a03ea86627086c65202c5e3e86922774ccfdbc38a7587810cda03750be156f",
+      "releasedPackageSha256": "2c8d72c5849deb5928af13375b04d7fc9a5c420ad20c390acb7cf2b24d6df729",
+      "itemCount": 109,
+      "previewIds": {
+        "rapid-swipe": "class2-wastewater-coll-001",
+        "speed-match": "class2-wastewater-coll-021",
+        "odd-one-out": "class2-wastewater-coll-031",
+        "cause-effect": "class2-wastewater-coll-046",
+        "tap-the-flaw": "class2-wastewater-coll-066",
+        "before-after": "class2-wastewater-coll-order-001"
+      }
+    },
+    {
+      "courseKey": "class2-water",
+      "sourceSha256": "6a210fbe29e7d5c4390413a70b3661b301ed45ff7278e0d1b1d41a711952d0d0",
+      "candidatePackageSha256": "f39a44ca8b7fb9bee5c4d2db1e2a0e6a2849ac7eed2d46c375ddbc76d91ffcb6",
+      "provenanceSha256": "9d1f133a29f79a3152c7234a7d95cf248b7d775e8ac2d69cc67c333c629ddde5",
+      "releasedPackageSha256": "308567e418ab7f11436fb01a4e2414faf593f0ea1e90d60d9172b7009e9b7f9e",
+      "itemCount": 90,
+      "previewIds": {
+        "rapid-swipe": "class2-water-001",
+        "speed-match": "class2-water-021",
+        "odd-one-out": "class2-water-031",
+        "cause-effect": "class2-water-047",
+        "tap-the-flaw": "class2-water-067",
+        "before-after": "class2-water-order-001"
+      }
+    },
+    {
+      "courseKey": "class2-water-dist",
+      "sourceSha256": "17015f9052e8cd7ff357814a900bc1bb929f675c1385c216ab0cdae94290c508",
+      "candidatePackageSha256": "8f2450db1d891dde5444b0c767d32b3fe633d330a19b4f0cb6de76969c469930",
+      "provenanceSha256": "f7fa030a9908b758a8c10354e190b2c88eae380a4e554adeff312df98c1ce024",
+      "releasedPackageSha256": "4a8c5e3eaaf1676635981c2288f2d77ede8300950b3f7caede2f4fcbeacf017e",
+      "itemCount": 87,
+      "previewIds": {
+        "rapid-swipe": "class2-water-dist-001",
+        "speed-match": "class2-water-dist-021",
+        "odd-one-out": "class2-water-dist-031",
+        "cause-effect": "class2-water-dist-046",
+        "tap-the-flaw": "class2-water-dist-066",
+        "before-after": "class2-water-dist-order-011"
+      }
+    },
+    {
+      "courseKey": "class2-ww",
+      "sourceSha256": "85a6a7f95c1daad8c28d18fa7851af8bf196562137edc0b4df8ddada2f30b068",
+      "candidatePackageSha256": "0e67068693b7804f5ea0572ac56443be51d8c5946fe9f1a6e19b74bf29b8a777",
+      "provenanceSha256": "d50144bbae5925756afbf3f4353f5beee95e15930ae6519bd97290004a9633ca",
+      "releasedPackageSha256": "449f38cf709bba7cb2b3cea2b8adf87d15df7ac31f9aef102f3cb69a5c0144a4",
+      "itemCount": 105,
+      "previewIds": {
+        "rapid-swipe": "class2-ww-001",
+        "speed-match": "class2-ww-019",
+        "odd-one-out": "class2-ww-029",
+        "cause-effect": "class2-ww-045",
+        "tap-the-flaw": "class2-ww-063",
+        "before-after": "class2-ww-order-001"
+      }
+    },
+    {
+      "courseKey": "class3-wastewater-coll",
+      "sourceSha256": "04084a9b246734a8af820f06c997fa75f8693158ae60b8244b754144fe0f3fd7",
+      "candidatePackageSha256": "a7fdd9c2f8d44b876b8b09eec03cf74280b274778b3aa27de53c071e3b61255c",
+      "provenanceSha256": "8f3b300276b78a2031f21cb993daf6abccc4e7fbc967ec5db6f63ddebbd1234f",
+      "releasedPackageSha256": "baf085ff961085d361c37e894d108f4787e634f917d20292fa7b8209c30f708f",
+      "itemCount": 104,
+      "previewIds": {
+        "rapid-swipe": "class3-wastewater-coll-001",
+        "speed-match": "class3-wastewater-coll-021",
+        "odd-one-out": "class3-wastewater-coll-033",
+        "cause-effect": "class3-wastewater-coll-048",
+        "tap-the-flaw": "class3-wastewater-coll-066",
+        "before-after": "class3-wastewater-coll-order-001"
+      }
+    },
+    {
+      "courseKey": "class3-water",
+      "sourceSha256": "8eb0177f130a127588427e80f8bb4807f68b18dd3b6984ec1e7704deaa2605f0",
+      "candidatePackageSha256": "56c37393ce12a7f2fc1d1baea1b1fa0ab303247a729fd60e76c2d3b6b45c2002",
+      "provenanceSha256": "be694ebbe77ba8a09abb708032b89f04c8bc1672b1e6cadbf67555ba837b9091",
+      "releasedPackageSha256": "33771185cd6c54c373927922043e49ec226b340a94f7c50b1c4020c05c8bcbb9",
+      "itemCount": 108,
+      "previewIds": {
+        "rapid-swipe": "class3-water-001",
+        "speed-match": "class3-water-019",
+        "odd-one-out": "class3-water-032",
+        "cause-effect": "class3-water-047",
+        "tap-the-flaw": "class3-water-069",
+        "before-after": "class3-water-order-001"
+      }
+    },
+    {
+      "courseKey": "class3-water-dist",
+      "sourceSha256": "710d477de45d1def5285ab1c560b9235863bd2e455a447bbfa05d35d2e563f88",
+      "candidatePackageSha256": "67f600fffc5031ec705cdf847681caed21f38f1b54dbbe17e47c7f2d5c5cef49",
+      "provenanceSha256": "bb67d6c7a5f877a43c8d29f8ce239bb99632ea5278f5053cf404a1264294dc71",
+      "releasedPackageSha256": "fe73ebf9ee7b1dff44b683868350b62186a371c8b17ae84d126d9946320ac3d9",
+      "itemCount": 97,
+      "previewIds": {
+        "rapid-swipe": "class3-water-dist-001",
+        "speed-match": "class3-water-dist-018",
+        "odd-one-out": "class3-water-dist-030",
+        "cause-effect": "class3-water-dist-047",
+        "tap-the-flaw": "class3-water-dist-065",
+        "before-after": "class3-water-dist-order-009"
+      }
+    },
+    {
+      "courseKey": "class3-ww",
+      "sourceSha256": "5b09089d0050a6286faff2fbc7875383532b13d2430a698fee1bb79e82524aa3",
+      "candidatePackageSha256": "8e3b000ce603438ef5d68654bae94df0be20467ebab179ecf2a5f8bbb04145b6",
+      "provenanceSha256": "36d7b60f5a994de8222e1f40b33e3e9933201e404fc63eaa6358e473e22e0364",
+      "releasedPackageSha256": "add126f0eb9a9d71b3678167e532b3559786f5af9d07e51b71d3d61d6540afdd",
+      "itemCount": 117,
+      "previewIds": {
+        "rapid-swipe": "class3-ww-001",
+        "speed-match": "class3-ww-021",
+        "odd-one-out": "class3-ww-031",
+        "cause-effect": "class3-ww-046",
+        "tap-the-flaw": "class3-ww-066",
+        "before-after": "class3-ww-order-001"
+      }
+    },
+    {
+      "courseKey": "class4-wastewater-coll",
+      "sourceSha256": "bb424c17b3f4ca704ea2e37a6db0009c2b4844030fbcf627a0e6138ffa74860c",
+      "candidatePackageSha256": "a39ee834cb15e5bb4118308f4dff16fc7164603c57323b241d257103f621ca53",
+      "provenanceSha256": "46b4ce0b69281d0f38fd0b581bb85c365940bfc4405eaf92418d70fefb8a54cd",
+      "releasedPackageSha256": "2da43f4e75a87190b74c25ce1b6bf30109d81576d780d70668b8c20ada34ed45",
+      "itemCount": 101,
+      "previewIds": {
+        "rapid-swipe": "class4-wastewater-coll-001",
+        "speed-match": "class4-wastewater-coll-021",
+        "odd-one-out": "class4-wastewater-coll-033",
+        "cause-effect": "class4-wastewater-coll-049",
+        "tap-the-flaw": "class4-wastewater-coll-069",
+        "before-after": "class4-wastewater-coll-order-001"
+      }
+    },
+    {
+      "courseKey": "class4-water",
+      "sourceSha256": "74813a6f5e7c2a6cfa3d266730676e3e2030e8d613b6bd0c91eb68e109a53fde",
+      "candidatePackageSha256": "c7741261aef444d8625162af0cf74e6f780c41f4bb4d2e8df63372e797637ccb",
+      "provenanceSha256": "620e00e853c979849919820e78424d39f4bfa2c75995f263e410fdcd2bf8003e",
+      "releasedPackageSha256": "05ce8bdd2b952e1b385217e15a2da56daa96dcfea55e1a0e617556f6357561a1",
+      "itemCount": 108,
+      "previewIds": {
+        "rapid-swipe": "class4-water-001",
+        "speed-match": "class4-water-019",
+        "odd-one-out": "class4-water-029",
+        "cause-effect": "class4-water-045",
+        "tap-the-flaw": "class4-water-066",
+        "before-after": "class4-water-order-001"
+      }
+    },
+    {
+      "courseKey": "class4-water-dist",
+      "sourceSha256": "49a897bf822e4fc7ca49fb8f1d6372440e3d68598c8a628c9ac52535f807ae91",
+      "candidatePackageSha256": "320e32f7752ad35fc21073dd177cd317f46ab0913f720be600ddf191f4f81c83",
+      "provenanceSha256": "b6f9501e45182f414eb7127b31eafdeae0ce47a19e26a314bf290f3ac00b3bf1",
+      "releasedPackageSha256": "2da0c8b3726640eb2859e46797a5c08a2caab1d8c940075255af24194c5d7d99",
+      "itemCount": 91,
+      "previewIds": {
+        "rapid-swipe": "class4-water-dist-001",
+        "speed-match": "class4-water-dist-021",
+        "odd-one-out": "class4-water-dist-031",
+        "cause-effect": "class4-water-dist-046",
+        "tap-the-flaw": "class4-water-dist-068",
+        "before-after": "class4-water-dist-order-007"
+      }
+    },
+    {
+      "courseKey": "class4-ww",
+      "sourceSha256": "954a167f30d5ae9b3ad13c293a60bafba92191e9ed721a83841b840e2aeada87",
+      "candidatePackageSha256": "10cc4cd71a558570b7e7925957eebe95b332df8a478670269ee364a8981787ff",
+      "provenanceSha256": "c70c672a73b44422b88a69e2f2b26a40500d00e9a5d14f84985c5c75475cf69c",
+      "releasedPackageSha256": "90458f091da11464ac55da3b588d196da908b7d500400a106fd7b63177f76546",
+      "itemCount": 108,
+      "previewIds": {
+        "rapid-swipe": "class4-ww-001",
+        "speed-match": "class4-ww-017",
+        "odd-one-out": "class4-ww-029",
+        "cause-effect": "class4-ww-045",
+        "tap-the-flaw": "class4-ww-065",
+        "before-after": "class4-ww-order-001"
+      }
+    },
+    {
+      "courseKey": "oit",
+      "sourceSha256": "d189014d49b63b8dc51a40af91aad0e6abbb75f7fd5d6cb18efc597567f36f1c",
+      "candidatePackageSha256": "fd613a621b92ed159f232ed7666df598ab4b2cc6d7f7685f68c498b49dbb5cf9",
+      "provenanceSha256": "cee0b6c87ecb8b6b7de8036ba77d67f01b6d0554163ec07e53d5889387147b83",
+      "releasedPackageSha256": "79efe78fd9c476993e6a13d471167b1eb942f83cc47b720e1d2cf75a72eede13",
+      "itemCount": 105,
+      "previewIds": {
+        "rapid-swipe": "oit-001",
+        "speed-match": "oit-021",
+        "odd-one-out": "oit-031",
+        "cause-effect": "oit-046",
+        "tap-the-flaw": "oit-066",
+        "before-after": "oit-order-001"
+      }
+    },
+    {
+      "courseKey": "oit-ww",
+      "sourceSha256": "c4fd8574199fdbfddb6f11785e72c013e4abe97840fe0739b1c8a2cde7fee046",
+      "candidatePackageSha256": "2fc1ea8efcb305dbe296f6420f934deb4c74c73d4e174daf85ab806b271da68f",
+      "provenanceSha256": "57533dfe27ecf586b7f88fd0ecf9d3a0a89f94e46b772ba0ab76ea3d77ba9e14",
+      "releasedPackageSha256": "2a5566a7517071506ad4c1322ca077aa066de78a478adae9c8fa71f6463b6a0a",
+      "itemCount": 107,
+      "previewIds": {
+        "rapid-swipe": "oit-ww-001",
+        "speed-match": "oit-ww-021",
+        "odd-one-out": "oit-ww-031",
+        "cause-effect": "oit-ww-046",
+        "tap-the-flaw": "oit-ww-066",
+        "before-after": "oit-ww-order-001"
+      }
+    },
+    {
+      "courseKey": "us-class1-water",
+      "sourceSha256": "94a62798ba5d896e46ed39cdcb080ef24fd9783d44762c5aae25df473e4aed20",
+      "candidatePackageSha256": "45baab499387d8dd6d5b41fa207b6f68719df98d6a25845952fc8500c6fa8e3a",
+      "provenanceSha256": "4b3acc3f233b9e2198e649e6216364af6e40f1971f0cc66d973f1b0b52d76f81",
+      "releasedPackageSha256": "517ba9eabcfb9cb8898361690bede9216a7f323d56f9fb7838c3cf563fe326c4",
+      "itemCount": 110,
+      "previewIds": {
+        "rapid-swipe": "us-class1-water-011",
+        "speed-match": "us-class1-water-021",
+        "odd-one-out": "us-class1-water-031",
+        "cause-effect": "us-class1-water-001",
+        "tap-the-flaw": "us-class1-water-066",
+        "before-after": "us-class1-water-order-001"
+      }
+    },
+    {
+      "courseKey": "us-class1-water-dist",
+      "sourceSha256": "62b8cfe18cdec09b37f04bb28fecf410763bc301ae56fa569173f642f8653577",
+      "candidatePackageSha256": "bfd0ba7b2aaeecc4eb8c448544ed0893f46078d5f954291812895f7c9e4b3ea2",
+      "provenanceSha256": "ebb650de3ae87bb8554f4bdb85b8d9a069b8946dc13947d2479a385a55c3b9c0",
+      "releasedPackageSha256": "bfaa089e25218bfc743d1ba8af739b297f4ca70bf1207000051f2ae48bcad231",
+      "itemCount": 100,
+      "previewIds": {
+        "rapid-swipe": "us-class1-water-dist-001",
+        "speed-match": "us-class1-water-dist-021",
+        "odd-one-out": "us-class1-water-dist-031",
+        "cause-effect": "us-class1-water-dist-046",
+        "tap-the-flaw": "us-class1-water-dist-067",
+        "before-after": "us-class1-water-dist-order-005"
+      }
+    },
+    {
+      "courseKey": "us-texas-class-d-water",
+      "sourceSha256": "772f4042c2cfe8129d7614c1291b60ae7647c6dae86fcb841532b8533ff39cf6",
+      "candidatePackageSha256": "a6596db777b154daf1d7b12fbc1facf55d6494d64f56642f1314046799e5fe8f",
+      "provenanceSha256": "f03ab17223c00aafd6c3f936dee861636ded03d5d08ca989101490dfb4d7c811",
+      "releasedPackageSha256": "1870a432f02747afca2c2f6b975458aaaa50675d306283869c94fb9537aae1f7",
+      "itemCount": 113,
+      "previewIds": {
+        "rapid-swipe": "us-texas-class-d-water-001",
+        "speed-match": "us-texas-class-d-water-021",
+        "odd-one-out": "us-texas-class-d-water-029",
+        "cause-effect": "us-texas-class-d-water-044",
+        "tap-the-flaw": "us-texas-class-d-water-059",
+        "before-after": "us-texas-class-d-water-order-001"
+      }
+    },
+    {
+      "courseKey": "wpi-class1-wastewater",
+      "sourceSha256": "f14d25a90dd4b5df69a3ceacb1f78a8f871a4e135042da66af7c15fd215d1f91",
+      "candidatePackageSha256": "635cbcd13b3711e8feefc4eae36c43eb917ee90f3b0e8d8a7960f3e3f258c71a",
+      "provenanceSha256": "491c7a083de5758830ec20d858c7c4b57138d9a91360ac5a84fb2148ddc2436e",
+      "releasedPackageSha256": "c8997144e23a3c70800abde74fcb05ebb08a51d2942fd542083808f0bdbf9817",
+      "itemCount": 110,
+      "previewIds": {
+        "rapid-swipe": "wpi-class1-wastewater-002",
+        "speed-match": "wpi-class1-wastewater-021",
+        "odd-one-out": "wpi-class1-wastewater-031",
+        "cause-effect": "wpi-class1-wastewater-001",
+        "tap-the-flaw": "wpi-class1-wastewater-066",
+        "before-after": "wpi-class1-wastewater-order-001"
+      }
+    },
+    {
+      "courseKey": "wpi-class1-water",
+      "sourceSha256": "86a14a0ae447f819ae349249d68b06acdb17b76a8442bb4571fd7e875e8c1edb",
+      "candidatePackageSha256": "62ddd298cd6fa8d258d4f90df490ee88b6fce6f399f27f60d811786437dfc7c8",
+      "provenanceSha256": "b5254585295e68b81bab08b47ec1b4452255c862bf3ac6f263d1a1e770e1a0ac",
+      "releasedPackageSha256": "75da06d41c1663fdfcabf11010624eb677969e4dfb266251ff426f7a046668f9",
+      "itemCount": 110,
+      "previewIds": {
+        "rapid-swipe": "wpi-class1-water-001",
+        "speed-match": "wpi-class1-water-021",
+        "odd-one-out": "wpi-class1-water-031",
+        "cause-effect": "wpi-class1-water-046",
+        "tap-the-flaw": "wpi-class1-water-066",
+        "before-after": "wpi-class1-water-order-001"
+      }
+    },
+    {
+      "courseKey": "wpi-class1-water-coll",
+      "sourceSha256": "4805b2368285776ca0dc29b2d872cb7a64eac597140155fc85671a9886b273fa",
+      "candidatePackageSha256": "ecf8fab1a287dea2bb6a547ba553e50425ddcf4b70b84385023cf0c7f3bd7553",
+      "provenanceSha256": "42f56cc5d0bcf5cc3ace9611494229f3ccaa60134fe8a62798fe15b463383226",
+      "releasedPackageSha256": "ef27917b9ec9201c72809cb446fa6f0569b7321fd0ee829ad61d033de81b8043",
+      "itemCount": 95,
+      "previewIds": {
+        "rapid-swipe": "wpi-class1-water-coll-001",
+        "speed-match": "wpi-class1-water-coll-021",
+        "odd-one-out": "wpi-class1-water-coll-029",
+        "cause-effect": "wpi-class1-water-coll-045",
+        "tap-the-flaw": "wpi-class1-water-coll-065",
+        "before-after": "wpi-class1-water-coll-order-001"
+      }
+    },
+    {
+      "courseKey": "wpi-class1-water-dist",
+      "sourceSha256": "78063668358e6fd23dfbe083cf7e9a676234cf64b0ed7fbee4554fde79daa665",
+      "candidatePackageSha256": "9be2e8de50c032c0eea89a772aa9f4664ad947c62b6a56331a39c1e899ef0d44",
+      "provenanceSha256": "ca0105704f73103ca3892155b358639149cbe87acd611c922bb5e15d6db2206a",
+      "releasedPackageSha256": "967961a9039ace10a3509878a91fe0ffc6e0bafab86b000dbf40d47f78c608e2",
+      "itemCount": 110,
+      "previewIds": {
+        "rapid-swipe": "wpi-class1-water-dist-001",
+        "speed-match": "wpi-class1-water-dist-021",
+        "odd-one-out": "wpi-class1-water-dist-032",
+        "cause-effect": "wpi-class1-water-dist-046",
+        "tap-the-flaw": "wpi-class1-water-dist-064",
+        "before-after": "wpi-class1-water-dist-order-001"
+      }
+    },
+    {
+      "courseKey": "wpi-class2-wastewater",
+      "sourceSha256": "be3f76a39b9e9c71214a5fa10a0f92325353e608791138e88da223e70a4ee400",
+      "candidatePackageSha256": "e75d75cae10c57dfb26d9bfa82f14b62087de32dbd610b5bd90eec224c078fdf",
+      "provenanceSha256": "8e74aab33d6b6c5cff74fbae1e0570679f2a0413274e71858be50c3d6124ac75",
+      "releasedPackageSha256": "12aa788f04de3615aab330bc2092f1b52708ad78e0d7111e8175ae7b58f5ec30",
+      "itemCount": 103,
+      "previewIds": {
+        "rapid-swipe": "wpi-class2-wastewater-001",
+        "speed-match": "wpi-class2-wastewater-021",
+        "odd-one-out": "wpi-class2-wastewater-033",
+        "cause-effect": "wpi-class2-wastewater-048",
+        "tap-the-flaw": "wpi-class2-wastewater-068",
+        "before-after": "wpi-class2-wastewater-order-001"
+      }
+    },
+    {
+      "courseKey": "wpi-class2-water",
+      "sourceSha256": "1cd50ef7079e24240f990a2c9fe6968650806348138393b5a4ff4981c1f4a973",
+      "candidatePackageSha256": "3f42255cc2fe9eabdc236813bce1ad84a440e21d392e0e0678e13195707d0359",
+      "provenanceSha256": "77f6131c9c73cce2f69a14dc865790d7934bfeff2f9392d619e02afae0bbecb3",
+      "releasedPackageSha256": "8f1131beec738f7182402f05f3a755de04c995cca5eeab41b605b819ec829d7d",
+      "itemCount": 111,
+      "previewIds": {
+        "rapid-swipe": "wpi-class2-water-001",
+        "speed-match": "wpi-class2-water-021",
+        "odd-one-out": "wpi-class2-water-036",
+        "cause-effect": "wpi-class2-water-051",
+        "tap-the-flaw": "wpi-class2-water-071",
+        "before-after": "wpi-class2-water-order-001"
+      }
+    },
+    {
+      "courseKey": "wpi-class2-water-coll",
+      "sourceSha256": "3ba0ea12826ecda75418dee1f8cdeac3f399fa6e8ae7bd7b39134ecae5853653",
+      "candidatePackageSha256": "75a9fcf0ac1e9a16091e85ded7d575c59f4cd25745c939146d21054262282b7c",
+      "provenanceSha256": "c6b18e251aa45be400f5954655a5838ab6c76e17a67e5e07b29ae300af79f430",
+      "releasedPackageSha256": "282b101843b52278cf224775c0627b16c37e68419aea734855b9184ad2281d93",
+      "itemCount": 103,
+      "previewIds": {
+        "rapid-swipe": "wpi-class2-water-coll-001",
+        "speed-match": "wpi-class2-water-coll-021",
+        "odd-one-out": "wpi-class2-water-coll-031",
+        "cause-effect": "wpi-class2-water-coll-046",
+        "tap-the-flaw": "wpi-class2-water-coll-066",
+        "before-after": "wpi-class2-water-coll-order-001"
+      }
+    },
+    {
+      "courseKey": "wpi-class2-water-dist",
+      "sourceSha256": "706b42ce83fc97f47c7701aeafebe3dfdbadf916a8f8fe969947eb808ee646b8",
+      "candidatePackageSha256": "6c34a97844d414c65788b69ea2423cd76e879dd145223f71b37f30e3050c2da3",
+      "provenanceSha256": "a9f5bada1cb9771e90b8a2d822c1aef9c4b1f279d832f948bc5bc86b2fbe8095",
+      "releasedPackageSha256": "de9e287004ca151889a98d8083f8b31de2da9fadf9876a703f6e2c441e3af735",
+      "itemCount": 106,
+      "previewIds": {
+        "rapid-swipe": "wpi-class2-water-dist-001",
+        "speed-match": "wpi-class2-water-dist-018",
+        "odd-one-out": "wpi-class2-water-dist-030",
+        "cause-effect": "wpi-class2-water-dist-046",
+        "tap-the-flaw": "wpi-class2-water-dist-063",
+        "before-after": "wpi-class2-water-dist-order-001"
+      }
+    },
+    {
+      "courseKey": "wpi-class3-wastewater",
+      "sourceSha256": "833e92127b931ba5afde0a9d13d89cb791d6963f6701c82e04d2769e806ed308",
+      "candidatePackageSha256": "8692bccc81ae31e1157fd27ce26672fbd2ae4b3e539ddc395c5d439a8e41aa1d",
+      "provenanceSha256": "b7487eed59268139106a8ef5316c5ac60436b13b1ef3e1f1ed7f7453210b74ec",
+      "releasedPackageSha256": "72490249b94f7b3ec984141b967fc8873d037e332ffe58a95c8e0ef6c34ea203",
+      "itemCount": 105,
+      "previewIds": {
+        "rapid-swipe": "wpi-class3-wastewater-001",
+        "speed-match": "wpi-class3-wastewater-019",
+        "odd-one-out": "wpi-class3-wastewater-029",
+        "cause-effect": "wpi-class3-wastewater-044",
+        "tap-the-flaw": "wpi-class3-wastewater-062",
+        "before-after": "wpi-class3-wastewater-order-001"
+      }
+    },
+    {
+      "courseKey": "wpi-class3-water",
+      "sourceSha256": "24d4a415cde42c3fb1d5d05c5efac198af7b7d778e2e540ad8809c8493eb5a28",
+      "candidatePackageSha256": "0a46e42bbce98297a6e105c602875a0cd1885844e208280dccab34b939982fc6",
+      "provenanceSha256": "34439413d66b2e460557043016f4c9b0f77152ec1ed1a435fafe5d4ea2987fcb",
+      "releasedPackageSha256": "82e90e03af8f22809388edf689f63cee9500826a03dc05f61e0640a691c1cda8",
+      "itemCount": 106,
+      "previewIds": {
+        "rapid-swipe": "wpi-class3-water-001",
+        "speed-match": "wpi-class3-water-019",
+        "odd-one-out": "wpi-class3-water-031",
+        "cause-effect": "wpi-class3-water-046",
+        "tap-the-flaw": "wpi-class3-water-066",
+        "before-after": "wpi-class3-water-order-001"
+      }
+    },
+    {
+      "courseKey": "wpi-class3-water-coll",
+      "sourceSha256": "78aeca28979bef90eec0ba7a7ba685793a79e7d64b026d7475425b9cb7339261",
+      "candidatePackageSha256": "f00cd53258e39449f316d31ced233e4f37b06858a38a22bedbd2a1983326773c",
+      "provenanceSha256": "0b486e05b0aebef97888a20c7e8199987cc1a8fbab7ecf80b5abd9d353ed5135",
+      "releasedPackageSha256": "edbd28f599dcb46220a247b24efc928e9991b08f94c5688d01ef604564524711",
+      "itemCount": 102,
+      "previewIds": {
+        "rapid-swipe": "wpi-class3-water-coll-001",
+        "speed-match": "wpi-class3-water-coll-021",
+        "odd-one-out": "wpi-class3-water-coll-029",
+        "cause-effect": "wpi-class3-water-coll-045",
+        "tap-the-flaw": "wpi-class3-water-coll-065",
+        "before-after": "wpi-class3-water-coll-order-001"
+      }
+    },
+    {
+      "courseKey": "wpi-class3-water-dist",
+      "sourceSha256": "8e07ee8bcfd7a9addd571b864466004ca32dd2c9da6a6c14cf066cabc422c0c9",
+      "candidatePackageSha256": "8a56c6ce6893e99b26fd9de53814b1823ad0a59c4f60cdac8de3e7cf8f19a259",
+      "provenanceSha256": "7d9a6092e8e74f36d9a4b327be874060a01af78c218cd041fd6429682e4ca4d9",
+      "releasedPackageSha256": "13185adb4e691f0adfe477a4a423b0ecf2d36b6ab469c87e9cf390e1f1de13f7",
+      "itemCount": 111,
+      "previewIds": {
+        "rapid-swipe": "wpi-class3-water-dist-001",
+        "speed-match": "wpi-class3-water-dist-017",
+        "odd-one-out": "wpi-class3-water-dist-029",
+        "cause-effect": "wpi-class3-water-dist-047",
+        "tap-the-flaw": "wpi-class3-water-dist-066",
+        "before-after": "wpi-class3-water-dist-order-001"
+      }
+    },
+    {
+      "courseKey": "wpi-class4-wastewater",
+      "sourceSha256": "59fc83b0bea257e6a98edf6d85ca1641988e06a69d93a6544f0d231ebaa9c434",
+      "candidatePackageSha256": "2461a72326a32c7b2f6b508cf95fe520273ec17975d4afd20e66136abf564064",
+      "provenanceSha256": "a7b6e63191cd516fb7d948f8fc58e9afd08937c29a3a4c4f77952987e42c5394",
+      "releasedPackageSha256": "7ba96a4dde39aa96749a6087bba12f292b06f667510bdbd6d02dd3c418c60a8e",
+      "itemCount": 93,
+      "previewIds": {
+        "rapid-swipe": "wpi-class4-ww-001",
+        "speed-match": "wpi-class4-wastewater-top-010",
+        "odd-one-out": "wpi-class4-ww-037",
+        "cause-effect": "wpi-class4-wastewater-top-001",
+        "tap-the-flaw": "wpi-class4-ww-069",
+        "before-after": "wpi-class4-wastewater-order-001"
+      }
+    },
+    {
+      "courseKey": "wpi-class4-water",
+      "sourceSha256": "13097950702b04371e3824efa9f1253d464e0844e40b641bb42f6ad4bce51098",
+      "candidatePackageSha256": "328f2d5f45ace16c277b0d0a57fc9c8367349450c61ab65840277c3a326bab08",
+      "provenanceSha256": "86a508e89f50dc456fe67f1ff807be2d9c3eb708fd04549083f99cce2e7f9203",
+      "releasedPackageSha256": "b72cae3dd831b53f59bdecc1701ff812ad9c618c4af44966e917b9a72f98688c",
+      "itemCount": 112,
+      "previewIds": {
+        "rapid-swipe": "wpi-class4-water-001",
+        "speed-match": "wpi-class4-water-021",
+        "odd-one-out": "wpi-class4-water-031",
+        "cause-effect": "wpi-class4-water-046",
+        "tap-the-flaw": "wpi-class4-water-066",
+        "before-after": "wpi-class4-water-order-001"
+      }
+    },
+    {
+      "courseKey": "wpi-class4-water-coll",
+      "sourceSha256": "923c60a1789d4a4b76c27ab5b578dd309bc7d1faa4b963e893731a6cf5dd7d54",
+      "candidatePackageSha256": "1af1465c4d81278dcd788d01761fd36f6bd87c9f042badd05910a9caacf16f30",
+      "provenanceSha256": "311c38885f2f9c975395074a3442387f54239c02b2f65b02e803ef0ee4257073",
+      "releasedPackageSha256": "4ea7776c5c4006d568dac410c67bbea0b6fedcde14e82900deb77f9356de2ae0",
+      "itemCount": 102,
+      "previewIds": {
+        "rapid-swipe": "wpi-class4-water-coll-001",
+        "speed-match": "wpi-class4-water-coll-017",
+        "odd-one-out": "wpi-class4-water-coll-031",
+        "cause-effect": "wpi-class4-water-coll-048",
+        "tap-the-flaw": "wpi-class4-water-coll-065",
+        "before-after": "wpi-class4-water-coll-order-001"
+      }
+    },
+    {
+      "courseKey": "wpi-class4-water-dist",
+      "sourceSha256": "d8459841546aaa3e949c9b7cbe9aa92385f98a35e7cef2dec13bb8c7e380a8e2",
+      "candidatePackageSha256": "324c5155b95b00b635c71a8526b698eebbbb093480149f09b69f4b038b235d84",
+      "provenanceSha256": "c4a4743ed8e82effd61b28039f4d50bbe3ec82f5128c209247a15a075f786e31",
+      "releasedPackageSha256": "79b113cb21aa34a68db115f2fed3334ba0230fe64d0fa0a51dca12a31369b07a",
+      "itemCount": 108,
+      "previewIds": {
+        "rapid-swipe": "wpi-class4-water-dist-001",
+        "speed-match": "wpi-class4-water-dist-018",
+        "odd-one-out": "wpi-class4-water-dist-030",
+        "cause-effect": "wpi-class4-water-dist-046",
+        "tap-the-flaw": "wpi-class4-water-dist-063",
+        "before-after": "wpi-class4-water-dist-order-001"
+      }
+    },
+    {
+      "courseKey": "wqa",
+      "sourceSha256": "21cf2573afe6b245fc1fe31f30ec13e701e851311c85354943bec49059da4518",
+      "candidatePackageSha256": "9fed9943991638d21be0267de729b9ec5d7b3157609db71f0ecd58758f09a0e0",
+      "provenanceSha256": "65aa5c4113e06896ff76adfcccc3aab5314098d6a399ad373dc9b28bcb331940",
+      "releasedPackageSha256": "b79d12aeeebec9d1d14ab508decbc28dae56204fbf90e51c3d997d29bb05ea2f",
+      "itemCount": 102,
+      "previewIds": {
+        "rapid-swipe": "wqa-001",
+        "speed-match": "wqa-021",
+        "odd-one-out": "wqa-031",
+        "cause-effect": "wqa-046",
+        "tap-the-flaw": "wqa-066",
+        "before-after": "wqa-order-001"
+      }
+    }
+  ]
+}

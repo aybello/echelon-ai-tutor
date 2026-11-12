@@ -19,6 +19,7 @@
 }
 
 .interactive-drill__content h2:focus,
+.interactive-drill__round h3:focus,
 .interactive-drill__feedback-region:focus {
   outline: 3px solid #1757b8;
   outline-offset: 3px;
@@ -147,6 +148,10 @@
 .interactive-drill__options, .interactive-drill__column {
   display: grid;
   gap: 10px;
+}
+
+.interactive-drill__options--ordering button {
+  text-align: left;
 }
 
 .interactive-drill__options--two, .interactive-drill__matching {
@@ -301,3 +306,11 @@
     transition: none;
   }
 }
+.interactive-drill__round-start { margin-bottom: 14px; }
+.interactive-drill__round { margin-top: 24px; }
+.interactive-drill__round h3 { overflow-wrap: anywhere; }
+.interactive-drill__round-end { margin-top: 16px; }
+.interactive-drill__review { padding-left: 24px; line-height: 1.5; }
+.interactive-drill__review li { margin-bottom: 14px; overflow-wrap: anywhere; }
+
+.interactive-drill__round-next { margin-top: 16px; margin-right: 10px; }

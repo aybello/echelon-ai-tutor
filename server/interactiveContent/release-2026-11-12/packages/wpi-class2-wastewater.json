@@ -1,0 +1,1748 @@
+{
+  "courseKey": "wpi-class2-wastewater",
+  "status": "approved",
+  "version": "echelon-six-games-2026-11-12-final-candidate",
+  "previewIds": {
+    "rapid-swipe": "wpi-class2-wastewater-001",
+    "speed-match": "wpi-class2-wastewater-021",
+    "odd-one-out": "wpi-class2-wastewater-033",
+    "cause-effect": "wpi-class2-wastewater-048",
+    "tap-the-flaw": "wpi-class2-wastewater-068",
+    "before-after": "wpi-class2-wastewater-order-001"
+  },
+  "examples": [
+    {
+      "id": "wpi-class2-wastewater-001",
+      "mode": "rapid-swipe",
+      "prompt": "A bar screen is intended to intercept coarse debris such as rags.",
+      "correctAnswer": true,
+      "explanation": "Screens intercept large debris and help protect downstream equipment."
+    },
+    {
+      "id": "wpi-class2-wastewater-002",
+      "mode": "rapid-swipe",
+      "prompt": "A comminutor removes all shredded debris from the flow.",
+      "correctAnswer": false,
+      "explanation": "A comminutor cuts debris into smaller pieces; it does not necessarily remove it."
+    },
+    {
+      "id": "wpi-class2-wastewater-003",
+      "mode": "rapid-swipe",
+      "prompt": "Grit removal can reduce abrasive wear on downstream equipment.",
+      "correctAnswer": true,
+      "explanation": "Grit includes hard inorganic particles such as sand that can abrade equipment."
+    },
+    {
+      "id": "wpi-class2-wastewater-004",
+      "mode": "rapid-swipe",
+      "prompt": "In primary clarification, gravity settling separates some suspended solids from wastewater.",
+      "correctAnswer": true,
+      "explanation": "Primary sedimentation removes settleable solids by gravity."
+    },
+    {
+      "id": "wpi-class2-wastewater-005",
+      "mode": "rapid-swipe",
+      "prompt": "A trickling filter relies on microorganisms attached to media.",
+      "correctAnswer": true,
+      "explanation": "Wastewater flows over media that support a biological film."
+    },
+    {
+      "id": "wpi-class2-wastewater-006",
+      "mode": "rapid-swipe",
+      "prompt": "An activated sludge aeration basin is a suspended-growth biological process.",
+      "correctAnswer": true,
+      "explanation": "Microorganisms are mixed in the liquid as suspended floc."
+    },
+    {
+      "id": "wpi-class2-wastewater-007",
+      "mode": "rapid-swipe",
+      "prompt": "In a conventional activated-sludge process, RAS and WAS have the same immediate process destination.",
+      "correctAnswer": false,
+      "explanation": "RAS is returned to the biological process; WAS is removed from that process for solids handling."
+    },
+    {
+      "id": "wpi-class2-wastewater-008",
+      "mode": "rapid-swipe",
+      "prompt": "UV disinfection itself adds a persistent chlorine residual to treated water.",
+      "correctAnswer": false,
+      "explanation": "UV is a physical disinfection process; it does not add chlorine. Any preexisting chlorine residual is a separate issue."
+    },
+    {
+      "id": "wpi-class2-wastewater-009",
+      "mode": "rapid-swipe",
+      "prompt": "Dechlorination can reduce chlorine residual after chlorination.",
+      "correctAnswer": true,
+      "explanation": "A dechlorinating chemical can react with residual chlorine."
+    },
+    {
+      "id": "wpi-class2-wastewater-010",
+      "mode": "rapid-swipe",
+      "prompt": "Dewatering is intended to reduce the water content of sludge.",
+      "correctAnswer": true,
+      "explanation": "Dewatering concentrates solids by removing part of the water."
+    },
+    {
+      "id": "wpi-class2-wastewater-011",
+      "mode": "rapid-swipe",
+      "prompt": "Dissolved oxygen and total suspended solids measure the same thing.",
+      "correctAnswer": false,
+      "explanation": "Dissolved oxygen measures oxygen in solution; TSS measures suspended material retained by the test filter."
+    },
+    {
+      "id": "wpi-class2-wastewater-012",
+      "mode": "rapid-swipe",
+      "prompt": "A grab sample describes conditions at a particular sampling time.",
+      "correctAnswer": true,
+      "explanation": "A grab is a discrete sample intended to represent the conditions at collection."
+    },
+    {
+      "id": "wpi-class2-wastewater-013",
+      "mode": "rapid-swipe",
+      "prompt": "A composite sample can represent a period rather than one instant.",
+      "correctAnswer": true,
+      "explanation": "Multiple portions collected over time can represent average conditions over the compositing period."
+    },
+    {
+      "id": "wpi-class2-wastewater-014",
+      "mode": "rapid-swipe",
+      "prompt": "A pH meter must be maintained and checked according to its applicable procedure.",
+      "correctAnswer": true,
+      "explanation": "Instrument checks and maintenance support valid measurements."
+    },
+    {
+      "id": "wpi-class2-wastewater-015",
+      "mode": "rapid-swipe",
+      "prompt": "A high hydrogen sulfide concentration may impair a person’s sense of smell.",
+      "correctAnswer": true,
+      "explanation": "Olfactory fatigue makes odor an unreliable safety alarm."
+    },
+    {
+      "id": "wpi-class2-wastewater-016",
+      "mode": "rapid-swipe",
+      "prompt": "Electrical power is the only hazardous energy that must be considered before servicing equipment.",
+      "correctAnswer": false,
+      "explanation": "Stored mechanical, hydraulic, pneumatic, chemical and thermal energy can also be hazardous."
+    },
+    {
+      "id": "wpi-class2-wastewater-017",
+      "mode": "rapid-swipe",
+      "prompt": "A calibrated gas detector can replace all other confined-space entry precautions.",
+      "correctAnswer": false,
+      "explanation": "Atmospheric testing is one element of a full entry and rescue program."
+    },
+    {
+      "id": "wpi-class2-wastewater-018",
+      "mode": "rapid-swipe",
+      "prompt": "A record of sampling location and time helps interpret a test result.",
+      "correctAnswer": true,
+      "explanation": "Sampling context connects the result with the water and process conditions tested."
+    },
+    {
+      "id": "wpi-class2-wastewater-019",
+      "mode": "rapid-swipe",
+      "prompt": "Solids retention time describes solids inventory relative to solids leaving the system.",
+      "correctAnswer": true,
+      "explanation": "WPI expresses SRT as process solids mass divided by solids leaving per day."
+    },
+    {
+      "id": "wpi-class2-wastewater-020",
+      "mode": "rapid-swipe",
+      "prompt": "Volume in gallons divided by flow in gallons per day gives detention time in hours without conversion.",
+      "correctAnswer": false,
+      "explanation": "Gallons divided by gallons per day gives days; multiply by 24 to express the result in hours."
+    },
+    {
+      "id": "wpi-class2-wastewater-021",
+      "mode": "speed-match",
+      "prompt": "Match each preliminary-treatment device to its specific function.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Bar screen",
+          "right": "Intercepts coarse rags and debris"
+        },
+        {
+          "id": "pair-2",
+          "left": "Comminutor",
+          "right": "Cuts debris into smaller pieces"
+        },
+        {
+          "id": "pair-3",
+          "left": "Grit chamber",
+          "right": "Settles dense abrasive particles"
+        }
+      ],
+      "explanation": "Bar screen → Intercepts coarse rags and debris; Comminutor → Cuts debris into smaller pieces; Grit chamber → Settles dense abrasive particles."
+    },
+    {
+      "id": "wpi-class2-wastewater-022",
+      "mode": "speed-match",
+      "prompt": "Match the activated-sludge abbreviations to their full terms.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "RAS",
+          "right": "Return activated sludge"
+        },
+        {
+          "id": "pair-2",
+          "left": "WAS",
+          "right": "Waste activated sludge"
+        },
+        {
+          "id": "pair-3",
+          "left": "MLSS",
+          "right": "Mixed liquor suspended solids"
+        }
+      ],
+      "explanation": "RAS → Return activated sludge; WAS → Waste activated sludge; MLSS → Mixed liquor suspended solids."
+    },
+    {
+      "id": "wpi-class2-wastewater-023",
+      "mode": "speed-match",
+      "prompt": "Match each lab abbreviation to its full term.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "DO",
+          "right": "Dissolved oxygen"
+        },
+        {
+          "id": "pair-2",
+          "left": "TSS",
+          "right": "Total suspended solids"
+        },
+        {
+          "id": "pair-3",
+          "left": "BOD",
+          "right": "Biochemical oxygen demand"
+        }
+      ],
+      "explanation": "DO → Dissolved oxygen; TSS → Total suspended solids; BOD → Biochemical oxygen demand."
+    },
+    {
+      "id": "wpi-class2-wastewater-024",
+      "mode": "speed-match",
+      "prompt": "Match each instrument to the physical quantity that its named measurement directly represents.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Flowmeter",
+          "right": "Flow rate"
+        },
+        {
+          "id": "pair-2",
+          "left": "Pressure sensor",
+          "right": "Pressure"
+        },
+        {
+          "id": "pair-3",
+          "left": "Level sensor",
+          "right": "Liquid level"
+        }
+      ],
+      "explanation": "Flowmeter → Flow rate; Pressure sensor → Pressure; Level sensor → Liquid level."
+    },
+    {
+      "id": "wpi-class2-wastewater-025",
+      "mode": "speed-match",
+      "prompt": "Match each operator calculation with the expression shown.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Detention time",
+          "right": "Tank volume divided by flow"
+        },
+        {
+          "id": "pair-2",
+          "left": "Surface overflow rate",
+          "right": "Flow divided by clarifier surface area"
+        },
+        {
+          "id": "pair-3",
+          "left": "Weir overflow rate",
+          "right": "Flow divided by weir length"
+        }
+      ],
+      "explanation": "Detention time → Tank volume divided by flow; Surface overflow rate → Flow divided by clarifier surface area; Weir overflow rate → Flow divided by weir length."
+    },
+    {
+      "id": "wpi-class2-wastewater-026",
+      "mode": "speed-match",
+      "prompt": "Match each process quantity to the unit shown for this exercise.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Sludge volume index",
+          "right": "mL/g"
+        },
+        {
+          "id": "pair-2",
+          "left": "Dissolved oxygen concentration",
+          "right": "mg/L"
+        },
+        {
+          "id": "pair-3",
+          "left": "Temperature",
+          "right": "degrees Celsius"
+        }
+      ],
+      "explanation": "Sludge volume index → mL/g; Dissolved oxygen concentration → mg/L; Temperature → degrees Celsius."
+    },
+    {
+      "id": "wpi-class2-wastewater-027",
+      "mode": "speed-match",
+      "prompt": "Match each conventional biological treatment configuration to its primary growth arrangement.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Activated sludge",
+          "right": "Suspended microbial growth"
+        },
+        {
+          "id": "pair-2",
+          "left": "Trickling filter",
+          "right": "Biofilm on stationary media"
+        },
+        {
+          "id": "pair-3",
+          "left": "Rotating biological contactor",
+          "right": "Biofilm on rotating media"
+        }
+      ],
+      "explanation": "Activated sludge → Suspended microbial growth; Trickling filter → Biofilm on stationary media; Rotating biological contactor → Biofilm on rotating media."
+    },
+    {
+      "id": "wpi-class2-wastewater-028",
+      "mode": "speed-match",
+      "prompt": "With changing flow, match each sampling method to the specific collection pattern described.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Grab",
+          "right": "One discrete sample at a sampling time"
+        },
+        {
+          "id": "pair-2",
+          "left": "Time composite",
+          "right": "Equal-volume portions at fixed time intervals"
+        },
+        {
+          "id": "pair-3",
+          "left": "Flow-proportional composite",
+          "right": "At fixed intervals, portion volumes vary in proportion to flow"
+        }
+      ],
+      "explanation": "A grab is discrete. A time composite uses equal volumes at fixed intervals. In this specified flow-proportional method, aliquot volume varies with changing flow at fixed intervals; flow pacing of equal volumes is another valid method."
+    },
+    {
+      "id": "wpi-class2-wastewater-029",
+      "mode": "speed-match",
+      "prompt": "Match each type of solids equipment with the named mechanism.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Belt press",
+          "right": "Compresses sludge between moving belts"
+        },
+        {
+          "id": "pair-2",
+          "left": "Centrifuge",
+          "right": "Uses rapid rotation to separate solids and liquid"
+        },
+        {
+          "id": "pair-3",
+          "left": "Drying bed",
+          "right": "Drains and evaporates water from a sludge layer"
+        }
+      ],
+      "explanation": "Belt press → Compresses sludge between moving belts; Centrifuge → Uses rapid rotation to separate solids and liquid; Drying bed → Drains and evaporates water from a sludge layer."
+    },
+    {
+      "id": "wpi-class2-wastewater-030",
+      "mode": "speed-match",
+      "prompt": "Match the calculation quantity to its stated unit.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Daily mass loading",
+          "right": "lb/day"
+        },
+        {
+          "id": "pair-2",
+          "left": "Liquid detention time",
+          "right": "hours"
+        },
+        {
+          "id": "pair-3",
+          "left": "Rectangular tank volume",
+          "right": "cubic feet"
+        }
+      ],
+      "explanation": "Daily mass loading → lb/day; Liquid detention time → hours; Rectangular tank volume → cubic feet."
+    },
+    {
+      "id": "wpi-class2-wastewater-031",
+      "mode": "speed-match",
+      "prompt": "Match each wastewater stage with its named task in this exercise.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Screening",
+          "right": "Remove coarse debris"
+        },
+        {
+          "id": "pair-2",
+          "left": "Secondary clarification",
+          "right": "Settle biological floc"
+        },
+        {
+          "id": "pair-3",
+          "left": "Dechlorination",
+          "right": "Reduce residual chlorine"
+        }
+      ],
+      "explanation": "Screening → Remove coarse debris; Secondary clarification → Settle biological floc; Dechlorination → Reduce residual chlorine."
+    },
+    {
+      "id": "wpi-class2-wastewater-032",
+      "mode": "speed-match",
+      "prompt": "Match each safety term to the best description.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Lockout",
+          "right": "Locks an energy-isolating device in the safe position"
+        },
+        {
+          "id": "pair-2",
+          "left": "Atmospheric testing",
+          "right": "Measures selected airborne hazards"
+        },
+        {
+          "id": "pair-3",
+          "left": "Rescue plan",
+          "right": "Sets arrangements to retrieve entrants in an emergency"
+        }
+      ],
+      "explanation": "Lockout → Locks an energy-isolating device in the safe position; Atmospheric testing → Measures selected airborne hazards; Rescue plan → Sets arrangements to retrieve entrants in an emergency."
+    },
+    {
+      "id": "wpi-class2-wastewater-033",
+      "mode": "odd-one-out",
+      "prompt": "Which item is not preliminary wastewater treatment equipment?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Bar screen"
+        },
+        {
+          "id": "option-2",
+          "label": "Grit chamber"
+        },
+        {
+          "id": "option-3",
+          "label": "Comminutor"
+        },
+        {
+          "id": "option-4",
+          "label": "UV reactor"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A UV reactor disinfects; screening and grit removal are preliminary treatment, while a comminutor grinds debris without necessarily removing it."
+    },
+    {
+      "id": "wpi-class2-wastewater-034",
+      "mode": "odd-one-out",
+      "prompt": "In a conventional activated-sludge train with an aeration basin, secondary clarifier and return sludge pump, which item is not part of that stated train?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Aeration basin"
+        },
+        {
+          "id": "option-2",
+          "label": "Secondary clarifier"
+        },
+        {
+          "id": "option-3",
+          "label": "Return sludge pump"
+        },
+        {
+          "id": "option-4",
+          "label": "Trickling-filter media"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Trickling-filter media supports attached growth; the other components are in the stated activated-sludge train."
+    },
+    {
+      "id": "wpi-class2-wastewater-035",
+      "mode": "odd-one-out",
+      "prompt": "Which item is equipment rather than a measured process variable?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "pH"
+        },
+        {
+          "id": "option-2",
+          "label": "Dissolved oxygen"
+        },
+        {
+          "id": "option-3",
+          "label": "Flow"
+        },
+        {
+          "id": "option-4",
+          "label": "Belt press"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A belt press dewaters solids; the other choices are measurable variables."
+    },
+    {
+      "id": "wpi-class2-wastewater-036",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a chlorine-based disinfectant?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Chlorine gas"
+        },
+        {
+          "id": "option-2",
+          "label": "Sodium hypochlorite"
+        },
+        {
+          "id": "option-3",
+          "label": "Chloramine"
+        },
+        {
+          "id": "option-4",
+          "label": "Ultraviolet light"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "UV uses radiation rather than a chlorine compound."
+    },
+    {
+      "id": "wpi-class2-wastewater-037",
+      "mode": "odd-one-out",
+      "prompt": "Which does not measure a concentration?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "DO in mg/L"
+        },
+        {
+          "id": "option-2",
+          "label": "TSS in mg/L"
+        },
+        {
+          "id": "option-3",
+          "label": "BOD in mg/L"
+        },
+        {
+          "id": "option-4",
+          "label": "Flow in MGD"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "MGD is a volumetric flow rate, not a mass concentration."
+    },
+    {
+      "id": "wpi-class2-wastewater-038",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a sample collection type?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Grab"
+        },
+        {
+          "id": "option-2",
+          "label": "Time composite"
+        },
+        {
+          "id": "option-3",
+          "label": "Flow-proportional composite"
+        },
+        {
+          "id": "option-4",
+          "label": "Aeration"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Aeration adds air or oxygen; the other terms describe sample collection."
+    },
+    {
+      "id": "wpi-class2-wastewater-039",
+      "mode": "odd-one-out",
+      "prompt": "Which is not an example of a hazardous energy source?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Electrical"
+        },
+        {
+          "id": "option-2",
+          "label": "Pneumatic"
+        },
+        {
+          "id": "option-3",
+          "label": "Hydraulic"
+        },
+        {
+          "id": "option-4",
+          "label": "Sample label"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A label is a record identifier, not an energy source."
+    },
+    {
+      "id": "wpi-class2-wastewater-040",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a solids dewatering device?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Belt press"
+        },
+        {
+          "id": "option-2",
+          "label": "Centrifuge"
+        },
+        {
+          "id": "option-3",
+          "label": "Drying bed"
+        },
+        {
+          "id": "option-4",
+          "label": "Bar screen"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A bar screen removes coarse debris rather than dewatering sludge."
+    },
+    {
+      "id": "wpi-class2-wastewater-041",
+      "mode": "odd-one-out",
+      "prompt": "Which action, by itself and without any automatic log, does not record a wastewater process observation?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Log entry"
+        },
+        {
+          "id": "option-2",
+          "label": "Trend chart"
+        },
+        {
+          "id": "option-3",
+          "label": "Daily report"
+        },
+        {
+          "id": "option-4",
+          "label": "Turning off an alarm"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Silencing an alarm without a recorded entry does not document the observation; the other choices are records."
+    },
+    {
+      "id": "wpi-class2-wastewater-042",
+      "mode": "odd-one-out",
+      "prompt": "Which does not belong to wastewater secondary biological treatment?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Activated sludge"
+        },
+        {
+          "id": "option-2",
+          "label": "Trickling filter"
+        },
+        {
+          "id": "option-3",
+          "label": "Rotating biological contactor"
+        },
+        {
+          "id": "option-4",
+          "label": "Grit chamber"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A grit chamber is preliminary physical treatment; the other choices support biological treatment."
+    },
+    {
+      "id": "wpi-class2-wastewater-044",
+      "mode": "odd-one-out",
+      "prompt": "A detector is equipped to measure oxygen, combustible gas and hydrogen sulfide. Which item is not an atmospheric measurement by this detector?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Oxygen content"
+        },
+        {
+          "id": "option-2",
+          "label": "Combustible gas"
+        },
+        {
+          "id": "option-3",
+          "label": "Hydrogen sulfide"
+        },
+        {
+          "id": "option-4",
+          "label": "Wastewater TSS"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "TSS is a laboratory measurement of suspended solids in liquid, not an atmospheric detector reading."
+    },
+    {
+      "id": "wpi-class2-wastewater-045",
+      "mode": "odd-one-out",
+      "prompt": "Which substance is not used here as a dechlorinating agent?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Sodium bisulfite"
+        },
+        {
+          "id": "option-2",
+          "label": "Sodium thiosulfate"
+        },
+        {
+          "id": "option-3",
+          "label": "Sulfur dioxide"
+        },
+        {
+          "id": "option-4",
+          "label": "Oxygen gas"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "WPI lists the first three dechlorination chemicals, not oxygen gas."
+    },
+    {
+      "id": "wpi-class2-wastewater-046",
+      "mode": "odd-one-out",
+      "prompt": "Which of these is a water-quality measurement rather than an equipment type?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "pH"
+        },
+        {
+          "id": "option-2",
+          "label": "Centrifugal pump"
+        },
+        {
+          "id": "option-3",
+          "label": "Blower"
+        },
+        {
+          "id": "option-4",
+          "label": "Mixer"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "pH is a measurement; the other choices are equipment."
+    },
+    {
+      "id": "wpi-class2-wastewater-047",
+      "mode": "odd-one-out",
+      "prompt": "Which item is not a biological process-control observation?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Sludge blanket depth"
+        },
+        {
+          "id": "option-2",
+          "label": "Mixed liquor settleability"
+        },
+        {
+          "id": "option-3",
+          "label": "Aeration-basin DO"
+        },
+        {
+          "id": "option-4",
+          "label": "Exterior paint color"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Paint color does not characterize biological treatment; the other measurements can support process control."
+    },
+    {
+      "id": "wpi-class2-wastewater-048",
+      "mode": "cause-effect",
+      "prompt": "A clean screen gradually becomes clogged with rags while influent flow stays constant. What is a likely effect?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Increased head loss across the screen"
+        },
+        {
+          "id": "option-2",
+          "label": "Lower debris capture to zero immediately"
+        },
+        {
+          "id": "option-3",
+          "label": "Greater UV intensity"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Debris narrows the flow openings and increases resistance to flow."
+    },
+    {
+      "id": "wpi-class2-wastewater-049",
+      "mode": "cause-effect",
+      "prompt": "If abrasive grit is not removed, what can happen to downstream pumps?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Accelerated wear"
+        },
+        {
+          "id": "option-2",
+          "label": "Automatic disinfection"
+        },
+        {
+          "id": "option-3",
+          "label": "Increased pH by definition"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Hard particles can erode equipment surfaces."
+    },
+    {
+      "id": "wpi-class2-wastewater-050",
+      "mode": "cause-effect",
+      "prompt": "At constant tank volume, flow doubles. What happens to theoretical detention time?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It halves"
+        },
+        {
+          "id": "option-2",
+          "label": "It doubles"
+        },
+        {
+          "id": "option-3",
+          "label": "It remains unchanged"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Detention time equals volume divided by flow."
+    },
+    {
+      "id": "wpi-class2-wastewater-051",
+      "mode": "cause-effect",
+      "prompt": "At constant flow, clarifier surface area doubles. What happens to surface overflow rate?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It halves"
+        },
+        {
+          "id": "option-2",
+          "label": "It doubles"
+        },
+        {
+          "id": "option-3",
+          "label": "It stays fixed"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Surface overflow rate is flow divided by surface area."
+    },
+    {
+      "id": "wpi-class2-wastewater-052",
+      "mode": "cause-effect",
+      "prompt": "At constant flow, total weir length doubles. What happens to weir overflow rate?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It halves"
+        },
+        {
+          "id": "option-2",
+          "label": "It doubles"
+        },
+        {
+          "id": "option-3",
+          "label": "It stays fixed"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Weir overflow rate is flow divided by weir length."
+    },
+    {
+      "id": "wpi-class2-wastewater-053",
+      "mode": "cause-effect",
+      "prompt": "In a biological aeration basin, prolonged loss of air supply can do what?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Reduce dissolved oxygen available to aerobic organisms"
+        },
+        {
+          "id": "option-2",
+          "label": "Guarantee complete nitrification"
+        },
+        {
+          "id": "option-3",
+          "label": "Automatically increase blower output"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Aerobic microorganisms need oxygen; an air loss can reduce its availability."
+    },
+    {
+      "id": "wpi-class2-wastewater-054",
+      "mode": "cause-effect",
+      "prompt": "All else equal, removing excess biomass as waste activated sludge directly decreases which quantity compared with not wasting?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "System solids inventory"
+        },
+        {
+          "id": "option-2",
+          "label": "Influent flow"
+        },
+        {
+          "id": "option-3",
+          "label": "Tank volume"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Wasting removes solids from the system; net inventory can still rise if solids growth or inputs exceed removals."
+    },
+    {
+      "id": "wpi-class2-wastewater-055",
+      "mode": "cause-effect",
+      "prompt": "If sludge remains too long in a secondary clarifier and denitrification occurs, what may happen?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Gas bubbles can lift settled sludge"
+        },
+        {
+          "id": "option-2",
+          "label": "All sludge becomes sterile"
+        },
+        {
+          "id": "option-3",
+          "label": "The effluent flow stops automatically"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Nitrogen gas produced in the blanket can carry floc to the surface."
+    },
+    {
+      "id": "wpi-class2-wastewater-056",
+      "mode": "cause-effect",
+      "prompt": "A UV sleeve becomes heavily fouled while lamp output is unchanged. What is the likely effect?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Less UV reaches the wastewater"
+        },
+        {
+          "id": "option-2",
+          "label": "More chlorine residual forms"
+        },
+        {
+          "id": "option-3",
+          "label": "Grit settles faster"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Deposits on the sleeve obstruct transmission of ultraviolet light."
+    },
+    {
+      "id": "wpi-class2-wastewater-057",
+      "mode": "cause-effect",
+      "prompt": "If sodium bisulfite is fed after chlorination, what does it act to reduce?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Chlorine residual"
+        },
+        {
+          "id": "option-2",
+          "label": "Tank diameter"
+        },
+        {
+          "id": "option-3",
+          "label": "Screen bar spacing"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Bisulfite is a dechlorination chemical that reacts with residual chlorine."
+    },
+    {
+      "id": "wpi-class2-wastewater-058",
+      "mode": "cause-effect",
+      "prompt": "A tank holds 600,000 gallons and receives 300,000 gallons per hour. What is its theoretical detention time?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "2 hours"
+        },
+        {
+          "id": "option-2",
+          "label": "0.5 hour"
+        },
+        {
+          "id": "option-3",
+          "label": "6 hours"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "600,000 gal ÷ 300,000 gal/hour = 2 hours."
+    },
+    {
+      "id": "wpi-class2-wastewater-059",
+      "mode": "cause-effect",
+      "prompt": "Influent TSS concentration is 200 mg/L and effluent TSS concentration is 50 mg/L. What is the percentage reduction in concentration?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "75%"
+        },
+        {
+          "id": "option-2",
+          "label": "25%"
+        },
+        {
+          "id": "option-3",
+          "label": "150%"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Concentration reduction = (200 − 50) ÷ 200 × 100 = 75%; a mass-removal percentage also requires appropriate flow data."
+    },
+    {
+      "id": "wpi-class2-wastewater-060",
+      "mode": "cause-effect",
+      "prompt": "A wastewater flow is 1 million US gallons per day (MGD) and its TSS concentration is 100 mg/L. What is the approximate TSS mass loading?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "834 lb/day"
+        },
+        {
+          "id": "option-2",
+          "label": "83.4 lb/day"
+        },
+        {
+          "id": "option-3",
+          "label": "8,340 lb/day"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "1 × 100 × 8.34 = 834 lb/day."
+    },
+    {
+      "id": "wpi-class2-wastewater-061",
+      "mode": "cause-effect",
+      "prompt": "The 30-minute settled sludge volume is 300 mL/L and MLSS is 3,000 mg/L. What is the sludge volume index (SVI)?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "100 mL/g"
+        },
+        {
+          "id": "option-2",
+          "label": "10 mL/g"
+        },
+        {
+          "id": "option-3",
+          "label": "1,000 mL/g"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "SVI = 30-minute settled volume × 1,000 ÷ MLSS = 300 × 1,000 ÷ 3,000 = 100 mL/g."
+    },
+    {
+      "id": "wpi-class2-wastewater-062",
+      "mode": "cause-effect",
+      "prompt": "At constant flow, the measured feed concentration doubles. What happens to mass loading?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It doubles"
+        },
+        {
+          "id": "option-2",
+          "label": "It halves"
+        },
+        {
+          "id": "option-3",
+          "label": "It stays fixed"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "For fixed flow, mass loading is proportional to concentration."
+    },
+    {
+      "id": "wpi-class2-wastewater-063",
+      "mode": "cause-effect",
+      "prompt": "If a sample bottle is contaminated before collection, what may happen to a reported concentration?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It may be biased by contamination"
+        },
+        {
+          "id": "option-2",
+          "label": "It becomes a guaranteed accurate result"
+        },
+        {
+          "id": "option-3",
+          "label": "It becomes a flow reading"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Foreign material can alter the measured sample result."
+    },
+    {
+      "id": "wpi-class2-wastewater-064",
+      "mode": "cause-effect",
+      "prompt": "A working flow totalizer with no reset or rollover reads 1,250,000 US gallons at the start and 1,730,000 US gallons at the end of a day. What volume passed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "480,000 gallons"
+        },
+        {
+          "id": "option-2",
+          "label": "2,980,000 gallons"
+        },
+        {
+          "id": "option-3",
+          "label": "120,000 gallons"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "With no reset or rollover, subtract the start reading from the end reading: 480,000 gallons."
+    },
+    {
+      "id": "wpi-class2-wastewater-065",
+      "mode": "cause-effect",
+      "prompt": "When an electrical supply fails, which unit is intended to provide auxiliary power if installed and available?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Standby generator"
+        },
+        {
+          "id": "option-2",
+          "label": "Grit chamber"
+        },
+        {
+          "id": "option-3",
+          "label": "Secondary weir"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A generator can supply auxiliary electrical power to designated equipment."
+    },
+    {
+      "id": "wpi-class2-wastewater-066",
+      "mode": "cause-effect",
+      "prompt": "In a fixed-film process, excessive biological growth can detach from the media. What is this called?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Sloughing"
+        },
+        {
+          "id": "option-2",
+          "label": "Compositing"
+        },
+        {
+          "id": "option-3",
+          "label": "Dechlorination"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Sloughing is the release of attached biological material from the media."
+    },
+    {
+      "id": "wpi-class2-wastewater-067",
+      "mode": "cause-effect",
+      "prompt": "A 24-hour time composite divides the period into 12 equal intervals and collects one equal portion at the end of each interval. How far apart are successive collection times?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "2 hours"
+        },
+        {
+          "id": "option-2",
+          "label": "12 hours"
+        },
+        {
+          "id": "option-3",
+          "label": "30 minutes"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The interval length is 24 hours ÷ 12 = 2 hours, so successive collections are 2 hours apart."
+    },
+    {
+      "id": "wpi-class2-wastewater-068",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker says, “The motor is stopped, so I can reach into the conveyor without isolating energy.” What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A stopped motor does not control unexpected startup or stored energy"
+        },
+        {
+          "id": "option-2",
+          "label": "A conveyor can never jam"
+        },
+        {
+          "id": "option-3",
+          "label": "Stopped equipment cannot have electrical energy"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Follow the site’s energy-isolation and verification procedure before servicing."
+    },
+    {
+      "id": "wpi-class2-wastewater-069",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator says, “I cannot smell hydrogen sulfide, so the air is safe.” What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Smell can fatigue and is not a reliable gas test"
+        },
+        {
+          "id": "option-2",
+          "label": "Hydrogen sulfide is always visible"
+        },
+        {
+          "id": "option-3",
+          "label": "Odor proves the exact oxygen level"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Use appropriate atmospheric monitoring and the facility entry program, not smell."
+    },
+    {
+      "id": "wpi-class2-wastewater-070",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker plans to enter a potentially hazardous space to rescue a coworker without training or equipment. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "An unplanned entry can create another casualty"
+        },
+        {
+          "id": "option-2",
+          "label": "A rescue never needs planning"
+        },
+        {
+          "id": "option-3",
+          "label": "Atmospheric hazards affect only the first entrant"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Summon the designated rescue service and follow the site rescue procedure."
+    },
+    {
+      "id": "wpi-class2-wastewater-071",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator decides a clear secondary effluent means all instruments and samples can be skipped. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Clarity alone cannot establish all treatment performance"
+        },
+        {
+          "id": "option-2",
+          "label": "Clear water contains no dissolved chemicals"
+        },
+        {
+          "id": "option-3",
+          "label": "Visual checks replace every laboratory method"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Use required measurements and tests; dissolved constituents may not be visible."
+    },
+    {
+      "id": "wpi-class2-wastewater-072",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee uses gallons divided by gallons per day and labels the result “hours” without conversion. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The direct result is in days"
+        },
+        {
+          "id": "option-2",
+          "label": "The direct result is in pounds"
+        },
+        {
+          "id": "option-3",
+          "label": "The units produce a concentration"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Convert days to hours by multiplying by 24 when an hourly answer is needed."
+    },
+    {
+      "id": "wpi-class2-wastewater-073",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator says, “Returning more sludge removes that mass from the activated-sludge system.” What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Return sludge recycles solids rather than removing them from the system"
+        },
+        {
+          "id": "option-2",
+          "label": "Return sludge is always disinfected"
+        },
+        {
+          "id": "option-3",
+          "label": "Return flow is the same as raw influent"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Wasting removes solids; return pumping moves biomass back to aeration."
+    },
+    {
+      "id": "wpi-class2-wastewater-074",
+      "mode": "tap-the-flaw",
+      "prompt": "A sampler replaces a required time-composite sample with a single grab because it is faster. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The grab does not represent the same sampling period"
+        },
+        {
+          "id": "option-2",
+          "label": "A grab is always a composite"
+        },
+        {
+          "id": "option-3",
+          "label": "The sample automatically becomes invalid for every purpose"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Use the sample type specified for the purpose and applicable method."
+    },
+    {
+      "id": "wpi-class2-wastewater-075",
+      "mode": "tap-the-flaw",
+      "prompt": "A technician reports a result without the sample location or collection time. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The result lacks essential sampling context"
+        },
+        {
+          "id": "option-2",
+          "label": "The measurement is automatically negative"
+        },
+        {
+          "id": "option-3",
+          "label": "A result never needs a unit"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Location and timing identify the water sampled and aid interpretation."
+    },
+    {
+      "id": "wpi-class2-wastewater-076",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator changes a chemical-feed setting using only yesterday’s conditions despite a new abnormal reading. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The abnormal result and feed system need checking before an adjustment"
+        },
+        {
+          "id": "option-2",
+          "label": "Every abnormal value proves one specific cause"
+        },
+        {
+          "id": "option-3",
+          "label": "Chemical dose never depends on conditions"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Verify the reading, feed equipment and current conditions, then follow the site procedure before changing a dose."
+    },
+    {
+      "id": "wpi-class2-wastewater-077",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker opens a pressurized line immediately after shutting off its pump. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Stored pressure can remain after shutdown"
+        },
+        {
+          "id": "option-2",
+          "label": "A pump switch drains every line"
+        },
+        {
+          "id": "option-3",
+          "label": "Pressure is identical to temperature"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Isolate and safely relieve stored pressure under the site’s energy-control procedure."
+    },
+    {
+      "id": "wpi-class2-wastewater-078",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee concludes that any rising clarifier solids must be caused by denitrification. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Several causes are possible and observations must be checked"
+        },
+        {
+          "id": "option-2",
+          "label": "Denitrification cannot produce bubbles"
+        },
+        {
+          "id": "option-3",
+          "label": "Clarifiers cannot contain sludge"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Check conditions such as blanket depth, aeration and sludge characteristics rather than assume one cause."
+    },
+    {
+      "id": "wpi-class2-wastewater-079",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee computes concentration removal as effluent concentration divided by influent concentration × 100, with influent concentration above zero. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "That computes the percentage of the influent concentration remaining, not the percentage reduction"
+        },
+        {
+          "id": "option-2",
+          "label": "It gives detention time"
+        },
+        {
+          "id": "option-3",
+          "label": "It calculates mass in pounds"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Concentration reduction is (influent concentration − effluent concentration) ÷ influent concentration × 100; a mass removal calculation also needs the relevant flows."
+    },
+    {
+      "id": "wpi-class2-wastewater-080",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker mixes chemical containers without checking compatibility. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Incompatible chemicals can react dangerously"
+        },
+        {
+          "id": "option-2",
+          "label": "All treatment chemicals are interchangeable"
+        },
+        {
+          "id": "option-3",
+          "label": "Labels have no safety purpose"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Consult the safety data sheets and the site chemical-handling procedure."
+    },
+    {
+      "id": "wpi-class2-wastewater-081",
+      "mode": "tap-the-flaw",
+      "prompt": "A technician substitutes an uncalibrated meter for a checked meter and reports its number without qualification. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The measurement reliability has not been established"
+        },
+        {
+          "id": "option-2",
+          "label": "Calibration changes wastewater flow"
+        },
+        {
+          "id": "option-3",
+          "label": "A meter reading is always exact"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Check and maintain the instrument as required by the method and procedure."
+    },
+    {
+      "id": "wpi-class2-wastewater-082",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator assumes UV treatment by itself adds a chlorine residual downstream. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "UV itself adds no chlorine residual"
+        },
+        {
+          "id": "option-2",
+          "label": "UV is a grit removal process"
+        },
+        {
+          "id": "option-3",
+          "label": "UV turns every suspended particle into chlorine"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "UV uses light and does not add chlorine; a residual may be present from a separate upstream chlorine source."
+    },
+    {
+      "id": "wpi-class2-wastewater-083",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee uses a single settleability result as proof of the exact cause of bulking. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A settling test alone does not uniquely identify the cause"
+        },
+        {
+          "id": "option-2",
+          "label": "A settling test measures pipe diameter"
+        },
+        {
+          "id": "option-3",
+          "label": "Bulking is always caused by chlorine"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Evaluate the trend with DO, loading, microscopic observations and other plant data."
+    },
+    {
+      "id": "wpi-class2-wastewater-084",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker relies on the motor control switch alone when a pump also has hydraulic pressure. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Electrical shutdown does not eliminate stored hydraulic energy"
+        },
+        {
+          "id": "option-2",
+          "label": "Hydraulic pressure only exists in a lab"
+        },
+        {
+          "id": "option-3",
+          "label": "Every pump is powered by gravity"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Identify and control all relevant energy sources according to the site procedure."
+    },
+    {
+      "id": "wpi-class2-wastewater-085",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee compares a tank volume in gallons directly with flow in cubic feet per hour. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The volume units are incompatible until converted"
+        },
+        {
+          "id": "option-2",
+          "label": "Flow has no time unit"
+        },
+        {
+          "id": "option-3",
+          "label": "The tank volume must be measured in kilograms"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Convert gallons or cubic feet so volume units match before dividing."
+    },
+    {
+      "id": "wpi-class2-wastewater-top-001",
+      "mode": "cause-effect",
+      "prompt": "For a plant's activated-sludge system, aeration tank suspended solids inventory is 12,000 kg and secondary clarifier inventory is 3,000 kg. Waste sludge removes 1,000 kg of suspended solids per day, and effluent carries out another 250 kg per day. Using both inventories and both losses, what is the solids retention time?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "12 days"
+        },
+        {
+          "id": "option-2",
+          "label": "15 days"
+        },
+        {
+          "id": "option-3",
+          "label": "9.6 days"
+        },
+        {
+          "id": "option-4",
+          "label": "60 days"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Solids retention time = (aeration tank solids + clarifier solids) ÷ (waste solids per day + effluent solids per day). Add the inventories: 12,000 kg + 3,000 kg = 15,000 kg. Add the losses: 1,000 kg/day + 250 kg/day = 1,250 kg/day. Divide 15,000 kg ÷ 1,250 kg/day = 12 days; kilograms cancel, leaving days."
+    },
+    {
+      "id": "wpi-class2-wastewater-top-002",
+      "mode": "cause-effect",
+      "prompt": "A biological aeration basin receives 3,000 m³/day with BOD₅ of 200 mg/L. Its aeration volume is 3,000 m³ and mixed liquor volatile suspended solids (MLVSS) is 2,000 mg/L. Using BOD₅ load divided by basin MLVSS inventory, what is the food-to-microorganism (F/M) ratio?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "0.10 day⁻¹"
+        },
+        {
+          "id": "option-2",
+          "label": "0.01 day⁻¹"
+        },
+        {
+          "id": "option-3",
+          "label": "1.0 day⁻¹"
+        },
+        {
+          "id": "option-4",
+          "label": "10 day⁻¹"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "F/M = BOD₅ load (kg/day) ÷ MLVSS inventory (kg). For metric units, load = flow (m³/day) × concentration (mg/L) ÷ 1,000, because 1 m³ = 1,000 L and 1 kg = 1,000,000 mg. Thus 3,000 m³/day × 200 mg/L ÷ 1,000 = 600 kg BOD₅/day. Inventory = volume (m³) × MLVSS (mg/L) ÷ 1,000 = 3,000 × 2,000 ÷ 1,000 = 6,000 kg MLVSS. Therefore 600 kg/day ÷ 6,000 kg = 0.10 day⁻¹."
+    },
+    {
+      "id": "wpi-class2-wastewater-order-001",
+      "mode": "before-after",
+      "prompt": "In a conventional municipal wastewater plant with primary settling, is coarse screening before or after primary clarification along the main liquid flow?",
+      "correctAnswer": "before",
+      "explanation": "In this conventional arrangement, coarse screening is preliminary treatment and precedes primary clarification. Other plant layouts may differ."
+    },
+    {
+      "id": "wpi-class2-wastewater-order-002",
+      "mode": "before-after",
+      "prompt": "For the main liquid stream in conventional activated sludge with primary settling, is aeration before or after primary clarification?",
+      "correctAnswer": "after",
+      "explanation": "The primary clarifier produces settled wastewater for the aeration basin; this arrangement is common but is not universal."
+    },
+    {
+      "id": "wpi-class2-wastewater-order-003",
+      "mode": "before-after",
+      "prompt": "For a single pass through a conventional activated-sludge liquid train, is secondary clarification before or after the aeration basin?",
+      "correctAnswer": "after",
+      "explanation": "Mixed liquor leaving the aeration basin enters the secondary clarifier, where activated-sludge solids settle."
+    },
+    {
+      "id": "wpi-class2-wastewater-order-004",
+      "mode": "before-after",
+      "prompt": "Following one pass through a conventional activated-sludge secondary clarifier, is collection of settled biomass before or after its return to the aeration basin?",
+      "correctAnswer": "before",
+      "explanation": "Solids settle and are collected in the secondary clarifier; a portion is then returned to the aeration basin. The question refers to one passage through the clarifier, not the whole recycle loop."
+    },
+    {
+      "id": "wpi-class2-wastewater-order-005",
+      "mode": "before-after",
+      "prompt": "In a biological trickling filter with an overhead distributor, does contact with the media occur before or after collection in the underdrain?",
+      "correctAnswer": "before",
+      "explanation": "Wastewater is distributed across the media and trickles through it; the underdrain collects the resulting filter effluent."
+    },
+    {
+      "id": "wpi-class2-wastewater-order-006",
+      "mode": "before-after",
+      "prompt": "In a trickling-filter plant with a humus settling tank, is settling of sloughed biofilm before or after passage over the trickling-filter media?",
+      "correctAnswer": "after",
+      "explanation": "Biofilm sloughs from the media and is carried with filter effluent to the secondary or humus clarifier, where it can settle."
+    },
+    {
+      "id": "wpi-class2-wastewater-order-007",
+      "mode": "before-after",
+      "prompt": "In a conventional activated-sludge plant using UV disinfection of the liquid effluent, is UV exposure before or after secondary clarification?",
+      "correctAnswer": "after",
+      "explanation": "The stated UV system disinfects secondary effluent, so clarification is upstream of UV exposure. Other designs may include additional treatment."
+    },
+    {
+      "id": "wpi-class2-wastewater-order-008",
+      "mode": "before-after",
+      "prompt": "In a wastewater chlorination system with chemical dechlorination, is removal of residual chlorine before or after chlorination for disinfection?",
+      "correctAnswer": "after",
+      "explanation": "Dechlorination reacts with the chlorine residual left by disinfection. It is not a universal stage for every plant or every disinfectant."
+    },
+    {
+      "id": "wpi-class2-wastewater-order-009",
+      "mode": "before-after",
+      "prompt": "In EPA’s example of feedback control for wastewater dechlorination, is the residual-chlorine analyzer sampling point before or after the sulfur dioxide addition point along the liquid flow?",
+      "correctAnswer": "after",
+      "explanation": "The cited feedback configuration measures chlorine residual downstream of sulfur dioxide addition and uses the measurement to inform chemical feed."
+    },
+    {
+      "id": "wpi-class2-wastewater-order-010",
+      "mode": "before-after",
+      "prompt": "In EPA’s example of feed-forward control for wastewater dechlorination, is the chlorine-residual sampling point before or after the sulfur dioxide addition point along the liquid flow?",
+      "correctAnswer": "before",
+      "explanation": "The cited feed-forward configuration measures the residual following disinfection but upstream of sulfur dioxide addition."
+    },
+    {
+      "id": "wpi-class2-wastewater-order-012",
+      "mode": "before-after",
+      "prompt": "In the solids-handling arrangement described in EPA’s operator orientation using digestion and a drying bed, is drying-bed dewatering before or after digestion?",
+      "correctAnswer": "after",
+      "explanation": "In the cited arrangement, the bed receives sludge removed from the digester; water is then removed by drainage and evaporation. Other solids-handling arrangements exist."
+    },
+    {
+      "id": "wpi-class2-wastewater-order-013",
+      "mode": "before-after",
+      "prompt": "For a wastewater-sludge centrifuge using polymer conditioning, is polymer contact with the sludge before or after separation in the centrifuge?",
+      "correctAnswer": "before",
+      "explanation": "In this conditioned-feed system, polymer is blended with the sludge to promote solids aggregation before the centrifuge separates the solids from liquid. Site-specific procedures govern feed arrangements."
+    },
+    {
+      "id": "wpi-class2-wastewater-order-014",
+      "mode": "before-after",
+      "prompt": "For sludge handled by a dewatering centrifuge, is discharge of the resulting cake before or after the sludge enters the centrifuge?",
+      "correctAnswer": "after",
+      "explanation": "Sludge enters the rotating centrifuge for separation, and dewatered cake is discharged as a product of that separation."
+    },
+    {
+      "id": "wpi-class2-wastewater-order-015",
+      "mode": "before-after",
+      "prompt": "Under EPA’s wastewater sampling procedure, is checking an automatic sampler’s delivered volume before or after starting the sampling run?",
+      "correctAnswer": "before",
+      "explanation": "The cited EPA procedure checks pumping volume with a calibrated container before initiating the automatic sampler. Follow the applicable current method and local SOP."
+    },
+    {
+      "id": "wpi-class2-wastewater-order-016",
+      "mode": "before-after",
+      "prompt": "For EPA’s flow-proportional wastewater sampling procedure using a facility’s flow-measurement system, is checking that system for proper installation and accuracy before or after collecting the composite?",
+      "correctAnswer": "before",
+      "explanation": "The EPA procedure calls for examining the facility’s flow measurement system before collecting flow-proportional samples, because the sampling scheme depends on flow measurement. Follow the applicable current method."
+    },
+    {
+      "id": "wpi-class2-wastewater-order-017",
+      "mode": "before-after",
+      "prompt": "For EPA’s conventional automatic wastewater composite sampling procedure for inorganic parameters, is mixing the completed composite before or after transferring it to the individual sample containers?",
+      "correctAnswer": "before",
+      "explanation": "For this specified procedure, the completed composite is mixed and then transferred to the appropriate containers. Preservation and handling depend on the analyte and applicable method."
+    },
+    {
+      "id": "wpi-class2-wastewater-order-018",
+      "mode": "before-after",
+      "prompt": "When calculating sludge volume index from a 30-minute settleability test and mixed-liquor suspended solids, is reading the 30-minute settled volume before or after calculating the index?",
+      "correctAnswer": "before",
+      "explanation": "The 30-minute settled volume and MLSS concentration are inputs to the SVI calculation, so the reading must be available before calculating that result."
+    }
+  ]
+}

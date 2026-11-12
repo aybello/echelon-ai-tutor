@@ -30,6 +30,7 @@ import { cutoverStatusChallenge, databaseCutoverWriteFreeze, databaseWritesFroze
 import { frameAncestorsForEnvironment } from "../previewSecurity";
 import { analyticsCspOrigin, GOOGLE_ADS_SCRIPT_ORIGINS, GOOGLE_ADS_CONNECT_ORIGINS, GOOGLE_ADS_FRAME_ORIGINS } from "../analyticsCsp";
 import { assertIndividualPaymentSchemaReady } from "../stripe/paymentSchemaReadiness";
+import { interactiveContentNoStore } from "./interactiveContentCache";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -89,6 +90,9 @@ async function startServer() {
       },
     })
   );
+
+  // Protect the complete tRPC response, including early parser and gate errors.
+  app.use("/api/trpc", interactiveContentNoStore);
 
   // A final external-database clone must have a stable source snapshot. When
   // DATABASE_CUTOVER_MODE=freeze is set, this rejects every non-read request

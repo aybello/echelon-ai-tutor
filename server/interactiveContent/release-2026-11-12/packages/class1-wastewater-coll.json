@@ -1,0 +1,1915 @@
+{
+  "courseKey": "class1-wastewater-coll",
+  "status": "approved",
+  "version": "echelon-six-games-2026-11-12-final-candidate",
+  "previewIds": {
+    "rapid-swipe": "class1-wastewater-coll-001",
+    "speed-match": "class1-wastewater-coll-021",
+    "odd-one-out": "class1-wastewater-coll-031",
+    "cause-effect": "class1-wastewater-coll-046",
+    "tap-the-flaw": "class1-wastewater-coll-067",
+    "before-after": "class1-wastewater-coll-order-001"
+  },
+  "examples": [
+    {
+      "id": "class1-wastewater-coll-001",
+      "mode": "rapid-swipe",
+      "prompt": "A gravity sewer normally relies on elevation difference to move wastewater.",
+      "correctAnswer": true,
+      "explanation": "Gravity moves wastewater downhill along the sewer grade."
+    },
+    {
+      "id": "class1-wastewater-coll-002",
+      "mode": "rapid-swipe",
+      "prompt": "A force main is normally a pressurized conveyance pipe.",
+      "correctAnswer": true,
+      "explanation": "A pump sends wastewater through a force main under pressure."
+    },
+    {
+      "id": "class1-wastewater-coll-003",
+      "mode": "rapid-swipe",
+      "prompt": "A lift station can raise wastewater when gravity alone cannot convey it onward.",
+      "correctAnswer": true,
+      "explanation": "Pumps lift or pressurize flow where the system needs added energy."
+    },
+    {
+      "id": "class1-wastewater-coll-004",
+      "mode": "rapid-swipe",
+      "prompt": "Groundwater entering a cracked pipe below the water table is infiltration.",
+      "correctAnswer": true,
+      "explanation": "Infiltration is groundwater entering the collection system through defects."
+    },
+    {
+      "id": "class1-wastewater-coll-005",
+      "mode": "rapid-swipe",
+      "prompt": "Rainwater entering a sanitary sewer through an improperly connected roof drain is inflow.",
+      "correctAnswer": true,
+      "explanation": "Inflow enters through direct connections or openings, rather than seeping through soil."
+    },
+    {
+      "id": "class1-wastewater-coll-006",
+      "mode": "rapid-swipe",
+      "prompt": "Exfiltration means wastewater leaks out of a sewer.",
+      "correctAnswer": true,
+      "explanation": "Exfiltration is outward leakage from the pipe or structure."
+    },
+    {
+      "id": "class1-wastewater-coll-007",
+      "mode": "rapid-swipe",
+      "prompt": "A collection system conveys wastewater; it is not itself a complete wastewater treatment plant.",
+      "correctAnswer": true,
+      "explanation": "Collection infrastructure moves wastewater toward downstream facilities."
+    },
+    {
+      "id": "class1-wastewater-coll-008",
+      "mode": "rapid-swipe",
+      "prompt": "A manhole can provide access for sewer inspection and maintenance.",
+      "correctAnswer": true,
+      "explanation": "Manholes give access to pipes and junctions, subject to safe-entry procedures."
+    },
+    {
+      "id": "class1-wastewater-coll-009",
+      "mode": "rapid-swipe",
+      "prompt": "The absence of a rotten-egg smell proves that hydrogen sulfide is absent.",
+      "correctAnswer": false,
+      "explanation": "Hydrogen sulfide can dull the sense of smell; odour is not a safe detector."
+    },
+    {
+      "id": "class1-wastewater-coll-010",
+      "mode": "rapid-swipe",
+      "prompt": "Hydrogen sulfide can be both toxic and flammable.",
+      "correctAnswer": true,
+      "explanation": "CCOHS identifies serious inhalation and fire hazards."
+    },
+    {
+      "id": "class1-wastewater-coll-011",
+      "mode": "rapid-swipe",
+      "prompt": "A check valve can help prevent reverse flow when a lift-station pump stops.",
+      "correctAnswer": true,
+      "explanation": "A functioning check valve restricts backflow toward the wet well."
+    },
+    {
+      "id": "class1-wastewater-coll-012",
+      "mode": "rapid-swipe",
+      "prompt": "A wet well is used to collect wastewater at a lift station before pumping.",
+      "correctAnswer": true,
+      "explanation": "The wet well receives wastewater for the station pumps."
+    },
+    {
+      "id": "class1-wastewater-coll-013",
+      "mode": "rapid-swipe",
+      "prompt": "A sewer camera inspection can reveal visible defects inside a pipe.",
+      "correctAnswer": true,
+      "explanation": "CCTV provides a view of accessible internal pipe conditions."
+    },
+    {
+      "id": "class1-wastewater-coll-014",
+      "mode": "rapid-swipe",
+      "prompt": "A higher wet-well level always proves the level sensor has failed.",
+      "correctAnswer": false,
+      "explanation": "High level has several possible causes, including insufficient pumping or excess inflow."
+    },
+    {
+      "id": "class1-wastewater-coll-015",
+      "mode": "rapid-swipe",
+      "prompt": "A flow meter totalizer and an instantaneous flow reading describe the same quantity.",
+      "correctAnswer": false,
+      "explanation": "A totalizer records accumulated volume; an instantaneous reading is a rate."
+    },
+    {
+      "id": "class1-wastewater-coll-016",
+      "mode": "rapid-swipe",
+      "prompt": "Preventive maintenance is performed before equipment fails.",
+      "correctAnswer": true,
+      "explanation": "Scheduled inspection and maintenance reduce the likelihood of breakdown."
+    },
+    {
+      "id": "class1-wastewater-coll-017",
+      "mode": "rapid-swipe",
+      "prompt": "A blocked sewer can contribute to an overflow upstream.",
+      "correctAnswer": true,
+      "explanation": "A blockage restricts conveyance and can cause wastewater to back up."
+    },
+    {
+      "id": "class1-wastewater-coll-018",
+      "mode": "rapid-swipe",
+      "prompt": "A system map can help operators locate a pump station or sewer segment.",
+      "correctAnswer": true,
+      "explanation": "Accurate maps show the location and configuration of system assets."
+    },
+    {
+      "id": "class1-wastewater-coll-019",
+      "mode": "rapid-swipe",
+      "prompt": "Sewage can present infectious exposure hazards.",
+      "correctAnswer": true,
+      "explanation": "Wastewater can contain organisms that cause disease; use appropriate hygiene and PPE."
+    },
+    {
+      "id": "class1-wastewater-coll-020",
+      "mode": "rapid-swipe",
+      "prompt": "A pump-hour record can help compare pump operating history over time.",
+      "correctAnswer": true,
+      "explanation": "Recorded run hours help operators observe trends and plan maintenance."
+    },
+    {
+      "id": "class1-wastewater-coll-021",
+      "mode": "speed-match",
+      "prompt": "Match each sewer term to its definition.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Infiltration",
+          "right": "Groundwater enters through defects"
+        },
+        {
+          "id": "pair-2",
+          "left": "Inflow",
+          "right": "Stormwater enters through a direct opening or connection"
+        },
+        {
+          "id": "pair-3",
+          "left": "Exfiltration",
+          "right": "Wastewater leaks outward from a sewer"
+        }
+      ],
+      "explanation": "Infiltration enters from groundwater through defects; inflow uses a direct stormwater pathway; exfiltration is leakage out of the sewer."
+    },
+    {
+      "id": "class1-wastewater-coll-022",
+      "mode": "speed-match",
+      "prompt": "Match each flow-path asset to its stated function.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Gravity sewer",
+          "right": "Carries flow downhill by gravity"
+        },
+        {
+          "id": "pair-2",
+          "left": "Lift-station pump",
+          "right": "Adds energy to move wastewater"
+        },
+        {
+          "id": "pair-3",
+          "left": "Force main",
+          "right": "Carries pumped wastewater under pressure"
+        }
+      ],
+      "explanation": "Gravity sewers use elevation; pumps add energy; force mains convey pumped flow under pressure."
+    },
+    {
+      "id": "class1-wastewater-coll-023",
+      "mode": "speed-match",
+      "prompt": "Match each inspection method to the feature described.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "CCTV",
+          "right": "Views the pipe interior with a camera"
+        },
+        {
+          "id": "pair-2",
+          "left": "Smoke testing",
+          "right": "Shows paths where introduced smoke escapes"
+        },
+        {
+          "id": "pair-3",
+          "left": "Dye testing",
+          "right": "Uses colored water to trace a suspected connection"
+        }
+      ],
+      "explanation": "CCTV uses an internal camera; smoke testing tracks introduced smoke escaping; dye testing traces coloured water."
+    },
+    {
+      "id": "class1-wastewater-coll-024",
+      "mode": "speed-match",
+      "prompt": "Match each map feature to the information it describes.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Pipe diameter",
+          "right": "Nominal diameter listed for the pipe"
+        },
+        {
+          "id": "pair-2",
+          "left": "Flow arrow",
+          "right": "Indicated direction of wastewater movement"
+        },
+        {
+          "id": "pair-3",
+          "left": "Asset ID",
+          "right": "Unique identifier for the mapped component"
+        }
+      ],
+      "explanation": "The label identifies nominal pipe diameter, the arrow shows direction, and the asset ID identifies the component."
+    },
+    {
+      "id": "class1-wastewater-coll-025",
+      "mode": "speed-match",
+      "prompt": "Match each pump-station component to its role in this station.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Wet well",
+          "right": "Receives wastewater before pumping"
+        },
+        {
+          "id": "pair-2",
+          "left": "Check valve",
+          "right": "Restricts reverse flow"
+        },
+        {
+          "id": "pair-3",
+          "left": "Level sensor",
+          "right": "Signals the liquid level"
+        }
+      ],
+      "explanation": "The wet well collects incoming flow, the check valve limits backflow, and the level sensor reports liquid level."
+    },
+    {
+      "id": "class1-wastewater-coll-026",
+      "mode": "speed-match",
+      "prompt": "Match each measurement to its unit in this example.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Flow rate",
+          "right": "litres per second"
+        },
+        {
+          "id": "pair-2",
+          "left": "Accumulated volume",
+          "right": "litres"
+        },
+        {
+          "id": "pair-3",
+          "left": "Pump run time",
+          "right": "hours"
+        }
+      ],
+      "explanation": "Rate is volume per time; accumulated volume is volume; pump runtime is time."
+    },
+    {
+      "id": "class1-wastewater-coll-027",
+      "mode": "speed-match",
+      "prompt": "Match each record to the observation it is designed to capture.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Alarm log",
+          "right": "Time and nature of an alarm"
+        },
+        {
+          "id": "pair-2",
+          "left": "Maintenance history",
+          "right": "Work performed on an asset"
+        },
+        {
+          "id": "pair-3",
+          "left": "Customer complaint log",
+          "right": "Reported location and nature of a concern"
+        }
+      ],
+      "explanation": "An alarm log records alarms; maintenance history records asset work; a complaint log records reported concerns."
+    },
+    {
+      "id": "class1-wastewater-coll-028",
+      "mode": "speed-match",
+      "prompt": "Match each observed action to the best category. Classify the action itself, not the entire maintenance program.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Preventive maintenance",
+          "right": "Scheduled bearing lubrication to limit wear"
+        },
+        {
+          "id": "pair-2",
+          "left": "Corrective maintenance",
+          "right": "Replacing a failed bearing to restore operation"
+        },
+        {
+          "id": "pair-3",
+          "left": "Inspection",
+          "right": "Examining a bearing for damage without servicing or repairing it"
+        }
+      ],
+      "explanation": "Scheduled lubrication prevents wear, replacement corrects a failure, and the standalone examination checks condition. A broader preventive program may include inspections."
+    },
+    {
+      "id": "class1-wastewater-coll-029",
+      "mode": "speed-match",
+      "prompt": "Match each hazardous-energy control concept to its description.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Isolation",
+          "right": "Separating equipment from an energy source"
+        },
+        {
+          "id": "pair-2",
+          "left": "Lockout",
+          "right": "Applying a lock to an isolating device"
+        },
+        {
+          "id": "pair-3",
+          "left": "Verification",
+          "right": "Checking that the intended isolation is effective"
+        }
+      ],
+      "explanation": "Isolation separates the energy source, lockout secures the isolating device, and verification checks that the intended isolation is effective. Use the site-specific procedure."
+    },
+    {
+      "id": "class1-wastewater-coll-030",
+      "mode": "speed-match",
+      "prompt": "Match each component of a gravity sewer drawing to its meaning.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Upstream",
+          "right": "Side from which flow approaches"
+        },
+        {
+          "id": "pair-2",
+          "left": "Downstream",
+          "right": "Side toward which flow travels"
+        },
+        {
+          "id": "pair-3",
+          "left": "Invert",
+          "right": "Inside bottom of the sewer pipe"
+        }
+      ],
+      "explanation": "Upstream is the approaching-flow side; downstream is the direction of travel; the invert is the inside bottom of the pipe."
+    },
+    {
+      "id": "class1-wastewater-coll-031",
+      "mode": "odd-one-out",
+      "prompt": "Which is not normally a collection-system conveyance asset?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Gravity sewer"
+        },
+        {
+          "id": "option-2",
+          "label": "Lift station"
+        },
+        {
+          "id": "option-3",
+          "label": "Clarifier"
+        },
+        {
+          "id": "option-4",
+          "label": "Force main"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "A clarifier is a treatment unit; the others convey or pump wastewater."
+    },
+    {
+      "id": "class1-wastewater-coll-032",
+      "mode": "odd-one-out",
+      "prompt": "Which activity is not a collection-system inspection or investigation method?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Dye testing"
+        },
+        {
+          "id": "option-2",
+          "label": "CCTV"
+        },
+        {
+          "id": "option-3",
+          "label": "Smoke testing"
+        },
+        {
+          "id": "option-4",
+          "label": "Pump lubrication"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Lubrication maintains equipment; the other methods investigate system condition or connections."
+    },
+    {
+      "id": "class1-wastewater-coll-033",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a sewer blockage material?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Grease deposits"
+        },
+        {
+          "id": "option-2",
+          "label": "Rags"
+        },
+        {
+          "id": "option-3",
+          "label": "Roots"
+        },
+        {
+          "id": "option-4",
+          "label": "Clear pipe wall"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Roots, grease and rags can obstruct flow; a clear wall is not an obstruction."
+    },
+    {
+      "id": "class1-wastewater-coll-034",
+      "mode": "odd-one-out",
+      "prompt": "Which is not an electrical or mechanical lift-station component?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Roof drain"
+        },
+        {
+          "id": "option-2",
+          "label": "Check valve"
+        },
+        {
+          "id": "option-3",
+          "label": "Control relay"
+        },
+        {
+          "id": "option-4",
+          "label": "Pump motor"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A roof drain is a drainage feature, not one of the listed lift-station components."
+    },
+    {
+      "id": "class1-wastewater-coll-035",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a potentially useful entry in a sewer asset map?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Pipe diameter"
+        },
+        {
+          "id": "option-2",
+          "label": "Flow direction"
+        },
+        {
+          "id": "option-3",
+          "label": "Manhole ID"
+        },
+        {
+          "id": "option-4",
+          "label": "Operator favourite colour"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Asset attributes help locate and understand the system; favourite colour does not."
+    },
+    {
+      "id": "class1-wastewater-coll-036",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a gas hazard characteristic?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Flammability"
+        },
+        {
+          "id": "option-2",
+          "label": "Pipe diameter"
+        },
+        {
+          "id": "option-3",
+          "label": "Toxicity"
+        },
+        {
+          "id": "option-4",
+          "label": "Oxygen displacement"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "Pipe diameter is a physical pipe dimension, not a property of an atmospheric hazard."
+    },
+    {
+      "id": "class1-wastewater-coll-037",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a source of inflow in the given examples?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Connected roof drain"
+        },
+        {
+          "id": "option-2",
+          "label": "Open manhole cover in floodwater"
+        },
+        {
+          "id": "option-3",
+          "label": "Connected catch basin"
+        },
+        {
+          "id": "option-4",
+          "label": "Groundwater seeping through a cracked joint"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Groundwater seeping through a joint is infiltration; the other examples are direct inflow paths."
+    },
+    {
+      "id": "class1-wastewater-coll-038",
+      "mode": "odd-one-out",
+      "prompt": "Which measurement is not a rate?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Cubic metres"
+        },
+        {
+          "id": "option-2",
+          "label": "Cubic metres per hour"
+        },
+        {
+          "id": "option-3",
+          "label": "Litres per minute"
+        },
+        {
+          "id": "option-4",
+          "label": "Litres per second"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Cubic metres measure volume; the other units divide volume by time."
+    },
+    {
+      "id": "class1-wastewater-coll-039",
+      "mode": "odd-one-out",
+      "prompt": "Which does not normally describe a collection record?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Staff member favourite film"
+        },
+        {
+          "id": "option-2",
+          "label": "Cleaning location"
+        },
+        {
+          "id": "option-3",
+          "label": "Pump run hours"
+        },
+        {
+          "id": "option-4",
+          "label": "Manhole inspection finding"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The other entries document system condition, operation or work performed."
+    },
+    {
+      "id": "class1-wastewater-coll-040",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a typical pipe condition detected by interior CCTV?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Visible crack"
+        },
+        {
+          "id": "option-2",
+          "label": "Root intrusion"
+        },
+        {
+          "id": "option-3",
+          "label": "Motor winding insulation resistance"
+        },
+        {
+          "id": "option-4",
+          "label": "Accumulated debris"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "A sewer camera can show interior pipe conditions, not test motor insulation."
+    },
+    {
+      "id": "class1-wastewater-coll-041",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a form of personal protective equipment?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Protective gloves"
+        },
+        {
+          "id": "option-2",
+          "label": "Safety glasses"
+        },
+        {
+          "id": "option-3",
+          "label": "Sewer flow meter"
+        },
+        {
+          "id": "option-4",
+          "label": "Safety boots"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "A flow meter measures flow; the other items are worn as protective equipment."
+    },
+    {
+      "id": "class1-wastewater-coll-042",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a potential contributor to a sewer overflow?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Pump failure"
+        },
+        {
+          "id": "option-2",
+          "label": "Adequate unobstructed capacity"
+        },
+        {
+          "id": "option-3",
+          "label": "Collapsed pipe"
+        },
+        {
+          "id": "option-4",
+          "label": "Sewer blockage"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "Blockage, pump failure and collapse can restrict conveyance; adequate clear capacity does not."
+    },
+    {
+      "id": "class1-wastewater-coll-043",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a component of a basic pump station?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Pump"
+        },
+        {
+          "id": "option-2",
+          "label": "Wet well"
+        },
+        {
+          "id": "option-3",
+          "label": "Discharge pipe"
+        },
+        {
+          "id": "option-4",
+          "label": "Traffic signal"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "The other components collect or convey wastewater through the pump station."
+    },
+    {
+      "id": "class1-wastewater-coll-044",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a sewer cleaning approach?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Checking a customer billing address"
+        },
+        {
+          "id": "option-2",
+          "label": "Rodding"
+        },
+        {
+          "id": "option-3",
+          "label": "Flushing"
+        },
+        {
+          "id": "option-4",
+          "label": "Jetting"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Jetting, rodding and flushing are cleaning approaches; checking a billing address is not."
+    },
+    {
+      "id": "class1-wastewater-coll-045",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a potentially useful wet-well monitoring observation?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Liquid level"
+        },
+        {
+          "id": "option-2",
+          "label": "Street tree species"
+        },
+        {
+          "id": "option-3",
+          "label": "Pump running status"
+        },
+        {
+          "id": "option-4",
+          "label": "Alarm condition"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "The first three observations describe station operating conditions."
+    },
+    {
+      "id": "class1-wastewater-coll-046",
+      "mode": "cause-effect",
+      "prompt": "Roots grow into a gravity sewer and narrow its bore. What can happen upstream?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The roots become a pump"
+        },
+        {
+          "id": "option-2",
+          "label": "Flow may back up"
+        },
+        {
+          "id": "option-3",
+          "label": "Pipe diameter increases"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "Intruding roots restrict the passage available for wastewater."
+    },
+    {
+      "id": "class1-wastewater-coll-047",
+      "mode": "cause-effect",
+      "prompt": "Grease accumulates in a sewer until it restricts the pipe. What risk increases?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Elimination of inflow"
+        },
+        {
+          "id": "option-2",
+          "label": "Automatic pipe repair"
+        },
+        {
+          "id": "option-3",
+          "label": "A sewer backup"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Grease deposits can restrict capacity and lead to a blockage."
+    },
+    {
+      "id": "class1-wastewater-coll-048",
+      "mode": "cause-effect",
+      "prompt": "A check valve at a lift station fails open after the pump stops. What may occur?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The gravity sewer gains slope"
+        },
+        {
+          "id": "option-2",
+          "label": "Groundwater becomes disinfected"
+        },
+        {
+          "id": "option-3",
+          "label": "Flow returns toward the wet well"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "The check valve normally limits reverse flow from the discharge."
+    },
+    {
+      "id": "class1-wastewater-coll-049",
+      "mode": "cause-effect",
+      "prompt": "A level-control float is coated with grease and cannot move freely. What can result?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Incorrect pump control"
+        },
+        {
+          "id": "option-2",
+          "label": "A larger force main"
+        },
+        {
+          "id": "option-3",
+          "label": "A repaired electrical cable"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Grease buildup can interfere with float movement and proper operation."
+    },
+    {
+      "id": "class1-wastewater-coll-050",
+      "mode": "cause-effect",
+      "prompt": "A pump loses its electrical supply while wastewater continues entering the wet well. What may happen?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The force main changes to a gravity sewer"
+        },
+        {
+          "id": "option-2",
+          "label": "Wet-well inflow stops automatically"
+        },
+        {
+          "id": "option-3",
+          "label": "Wet-well level rises"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "If inflow exceeds pumping, wastewater accumulates in the wet well."
+    },
+    {
+      "id": "class1-wastewater-coll-051",
+      "mode": "cause-effect",
+      "prompt": "Rain enters a sanitary system through a connected roof drain during a storm. What happens to sewer flow?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It can increase"
+        },
+        {
+          "id": "option-2",
+          "label": "It must stop"
+        },
+        {
+          "id": "option-3",
+          "label": "It becomes drinking water"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The connected roof drain adds rainwater as direct inflow."
+    },
+    {
+      "id": "class1-wastewater-coll-052",
+      "mode": "cause-effect",
+      "prompt": "At a defective sewer joint, the surrounding groundwater hydraulic head is higher than the hydraulic head inside the sewer. What can happen?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The joint automatically seals"
+        },
+        {
+          "id": "option-2",
+          "label": "Wastewater is guaranteed to leave the sewer"
+        },
+        {
+          "id": "option-3",
+          "label": "Groundwater enters the sewer"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "The higher external head can drive groundwater through the defect into the sewer as infiltration."
+    },
+    {
+      "id": "class1-wastewater-coll-053",
+      "mode": "cause-effect",
+      "prompt": "A cracked sewer carries wastewater under conditions that allow outward leakage. What can happen?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A rise in pipe material strength"
+        },
+        {
+          "id": "option-2",
+          "label": "Inflow from a roof drain"
+        },
+        {
+          "id": "option-3",
+          "label": "Exfiltration to surrounding soil"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Exfiltration means wastewater escapes from the collection system."
+    },
+    {
+      "id": "class1-wastewater-coll-054",
+      "mode": "cause-effect",
+      "prompt": "A manhole cover is submerged during flooding and has openings to the sewer. What can occur?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The sewer is automatically cleaned"
+        },
+        {
+          "id": "option-2",
+          "label": "Pumps become unnecessary"
+        },
+        {
+          "id": "option-3",
+          "label": "Floodwater can enter the sewer"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Direct entry through openings is a potential inflow pathway."
+    },
+    {
+      "id": "class1-wastewater-coll-055",
+      "mode": "cause-effect",
+      "prompt": "Debris lodges in a pump impeller. What is a possible result?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Automatic removal of roots in the sewer"
+        },
+        {
+          "id": "option-2",
+          "label": "Reduced pumping performance"
+        },
+        {
+          "id": "option-3",
+          "label": "A guaranteed increase in pump capacity"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "Debris can obstruct an impeller and impair normal pumping."
+    },
+    {
+      "id": "class1-wastewater-coll-056",
+      "mode": "cause-effect",
+      "prompt": "A station alarm is not working during a high-level event. What risk increases?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Elimination of wet-well inflow"
+        },
+        {
+          "id": "option-2",
+          "label": "Immediate repair without personnel"
+        },
+        {
+          "id": "option-3",
+          "label": "Delayed awareness of the problem"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "A functioning alarm alerts staff to abnormal operating conditions."
+    },
+    {
+      "id": "class1-wastewater-coll-057",
+      "mode": "cause-effect",
+      "prompt": "Maintenance records are accurate and include previous failures. What do they help staff do?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Determine wastewater taste"
+        },
+        {
+          "id": "option-2",
+          "label": "Eliminate all future failures"
+        },
+        {
+          "id": "option-3",
+          "label": "Identify recurring problems"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Reliable histories support trend identification and maintenance planning."
+    },
+    {
+      "id": "class1-wastewater-coll-058",
+      "mode": "cause-effect",
+      "prompt": "A sewer section has recurring root intrusions documented by inspection. What planning benefit follows?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Assume every pipe has the same condition"
+        },
+        {
+          "id": "option-2",
+          "label": "Target the affected section for maintenance"
+        },
+        {
+          "id": "option-3",
+          "label": "Stop recording inspections"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "Inspection history helps direct maintenance toward known problem areas."
+    },
+    {
+      "id": "class1-wastewater-coll-059",
+      "mode": "cause-effect",
+      "prompt": "Hydrogen sulfide accumulates in a low-lying confined space. What hazard can increase?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A guaranteed safe atmosphere"
+        },
+        {
+          "id": "option-2",
+          "label": "Dangerous inhalation exposure"
+        },
+        {
+          "id": "option-3",
+          "label": "A reduction in gas toxicity"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "Hydrogen sulfide is highly toxic and can accumulate in low areas and confined spaces."
+    },
+    {
+      "id": "class1-wastewater-coll-062",
+      "mode": "cause-effect",
+      "prompt": "At a constant-speed pump station, start and stop levels are set very close together. What operating pattern may occur?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Instant removal of wet-well grease"
+        },
+        {
+          "id": "option-2",
+          "label": "A permanent increase in pipe diameter"
+        },
+        {
+          "id": "option-3",
+          "label": "Frequent pump cycling"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "A small working volume between start and stop levels can result in frequent starts and stops; actual cycling also depends on inflow and pump capacity."
+    },
+    {
+      "id": "class1-wastewater-coll-063",
+      "mode": "cause-effect",
+      "prompt": "A sewer inspection reveals a damaged pipe segment. Why record its asset ID?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "To avoid all further inspection"
+        },
+        {
+          "id": "option-2",
+          "label": "To locate the segment for follow-up"
+        },
+        {
+          "id": "option-3",
+          "label": "To change the direction of gravity"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "Asset identifiers tie observations to the correct location and history."
+    },
+    {
+      "id": "class1-wastewater-coll-065",
+      "mode": "cause-effect",
+      "prompt": "A blockage reduces available sewer capacity during high flow. What is a possible consequence?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Automatic pump repair"
+        },
+        {
+          "id": "option-2",
+          "label": "Overflow or backup"
+        },
+        {
+          "id": "option-3",
+          "label": "Guaranteed elimination of odours"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "When incoming flow cannot pass the restriction, wastewater can back up or overflow."
+    },
+    {
+      "id": "class1-wastewater-coll-067",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker sees a collapsed person in a manhole and plans to jump in immediately. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Unprotected entry can create another victim"
+        },
+        {
+          "id": "option-2",
+          "label": "All rescues need no plan"
+        },
+        {
+          "id": "option-3",
+          "label": "The opening is too wide"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Do not enter impulsively: activate the site emergency response and summon trained rescuers; unprotected entry may create another victim."
+    },
+    {
+      "id": "class1-wastewater-coll-068",
+      "mode": "tap-the-flaw",
+      "prompt": "A technician plans to service an energized pump without following isolation procedures. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The wet well is too large"
+        },
+        {
+          "id": "option-2",
+          "label": "The pipe map has arrows"
+        },
+        {
+          "id": "option-3",
+          "label": "Hazardous energy remains uncontrolled"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Follow applicable lockout and verification procedures before work on hazardous equipment."
+    },
+    {
+      "id": "class1-wastewater-coll-069",
+      "mode": "tap-the-flaw",
+      "prompt": "A crew records a sewer defect but omits its location. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A location is a flow rate"
+        },
+        {
+          "id": "option-2",
+          "label": "The affected asset may be hard to locate"
+        },
+        {
+          "id": "option-3",
+          "label": "The defect has repaired itself"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "Location and asset identification connect the finding to the correct segment."
+    },
+    {
+      "id": "class1-wastewater-coll-070",
+      "mode": "tap-the-flaw",
+      "prompt": "A crew assumes all wet-weather flow is sewage generated by customers. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Rain always reduces flow"
+        },
+        {
+          "id": "option-2",
+          "label": "Stormwater inflow or groundwater infiltration may contribute"
+        },
+        {
+          "id": "option-3",
+          "label": "Sewer flow cannot change"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "Wet-weather increases can include inflow and infiltration, which require investigation."
+    },
+    {
+      "id": "class1-wastewater-coll-072",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator calls a running pump “healthy” solely because its motor can be heard. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Flow meters measure sound"
+        },
+        {
+          "id": "option-2",
+          "label": "Running noise alone does not establish normal pumping"
+        },
+        {
+          "id": "option-3",
+          "label": "A running motor cannot make noise"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "Check relevant level, flow, pressure and other indicators against normal conditions."
+    },
+    {
+      "id": "class1-wastewater-coll-074",
+      "mode": "tap-the-flaw",
+      "prompt": "A crew decides to clean every sewer equally often without reviewing local condition history. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "All pipe defects are identical"
+        },
+        {
+          "id": "option-2",
+          "label": "Problem areas and inspection history are ignored"
+        },
+        {
+          "id": "option-3",
+          "label": "Sewers can never need cleaning"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "Inspection and maintenance records help tailor cleaning to actual conditions."
+    },
+    {
+      "id": "class1-wastewater-coll-075",
+      "mode": "tap-the-flaw",
+      "prompt": "A crew reports a customer backup as fixed without recording the location or response. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The record lacks information needed for follow-up"
+        },
+        {
+          "id": "option-2",
+          "label": "Customer reports contain no useful information"
+        },
+        {
+          "id": "option-3",
+          "label": "A backup cannot happen"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A complaint record should identify the location, concern and action taken."
+    },
+    {
+      "id": "class1-wastewater-coll-076",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker substitutes an arbitrary lubricant for the one specified in a pump manual. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Pumps never need maintenance"
+        },
+        {
+          "id": "option-2",
+          "label": "The lubricant may not suit the equipment"
+        },
+        {
+          "id": "option-3",
+          "label": "All lubricants are identical"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "Follow equipment instructions for lubricant type and maintenance."
+    },
+    {
+      "id": "class1-wastewater-coll-078",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker treats a single normal gas reading as proof that conditions can never change. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Gas detectors measure pipe size"
+        },
+        {
+          "id": "option-2",
+          "label": "Atmospheric conditions can change"
+        },
+        {
+          "id": "option-3",
+          "label": "Every space has identical air"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "Confined-space hazards require a site-specific procedure and appropriate atmospheric monitoring."
+    },
+    {
+      "id": "class1-wastewater-coll-079",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator assumes a high wet-well level proves one specific pump is defective without further checks. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "More than one cause can produce a high level"
+        },
+        {
+          "id": "option-2",
+          "label": "Levels cannot rise"
+        },
+        {
+          "id": "option-3",
+          "label": "Only pipes can affect flow"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Pump, power, controls, blockage or excess inflow can all merit investigation."
+    },
+    {
+      "id": "class1-wastewater-coll-080",
+      "mode": "tap-the-flaw",
+      "prompt": "A technician assumes the check valve is an isolation valve for maintenance without verifying the isolation plan. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A check valve’s backflow function is not proof of safe isolation"
+        },
+        {
+          "id": "option-2",
+          "label": "All valves automatically lock themselves"
+        },
+        {
+          "id": "option-3",
+          "label": "A check valve measures level"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Use the approved isolation and verification procedure rather than assuming a check valve isolates hazardous energy."
+    },
+    {
+      "id": "class1-wastewater-coll-081",
+      "mode": "tap-the-flaw",
+      "prompt": "A crew disposes of wipes in a toilet because the pump will always pass them. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Wipes dissolve all grease"
+        },
+        {
+          "id": "option-2",
+          "label": "Wipes can contribute to blockages"
+        },
+        {
+          "id": "option-3",
+          "label": "Wipes increase pipe slope"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "Wipes and other debris can obstruct sewer or pump operation."
+    },
+    {
+      "id": "class1-wastewater-coll-082",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker treats a force main as if it is always unpressurized. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A force main can contain pressurized wastewater"
+        },
+        {
+          "id": "option-2",
+          "label": "A force main is a street sign"
+        },
+        {
+          "id": "option-3",
+          "label": "A force main never contains wastewater"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Force mains convey pumped wastewater under pressure; use approved isolation procedures."
+    },
+    {
+      "id": "class1-wastewater-coll-083",
+      "mode": "tap-the-flaw",
+      "prompt": "A staff member assumes a valid map never needs updating after rehabilitation. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Asset changes can make the map inaccurate"
+        },
+        {
+          "id": "option-2",
+          "label": "Maps cannot include pipe materials"
+        },
+        {
+          "id": "option-3",
+          "label": "Rehabilitation changes only the weather"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Updating asset information preserves useful location and condition records."
+    },
+    {
+      "id": "class1-wastewater-coll-085",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator assumes a clear CCTV image proves every pipe joint is watertight under every condition. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Visual inspection alone cannot prove watertightness under all conditions"
+        },
+        {
+          "id": "option-2",
+          "label": "All joints are visible without a camera"
+        },
+        {
+          "id": "option-3",
+          "label": "CCTV measures electrical voltage"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A camera shows visible interior conditions; a separate suitable test may be needed to assess leakage."
+    },
+    {
+      "id": "class1-wastewater-coll-top-001",
+      "mode": "cause-effect",
+      "prompt": "A gravity sewer has a 1.8 m invert fall over a 300 m horizontal run. What is its slope as a percentage?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "0.06%"
+        },
+        {
+          "id": "option-2",
+          "label": "0.6%"
+        },
+        {
+          "id": "option-3",
+          "label": "6%"
+        },
+        {
+          "id": "option-4",
+          "label": "1.8%"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "Slope (%) = (invert fall ÷ horizontal run) × 100. Here fall = 1.8 m and run = 300 m, so 1.8 m ÷ 300 m = 0.006; 0.006 × 100 = 0.6%."
+    },
+    {
+      "id": "class1-wastewater-coll-top-002",
+      "mode": "cause-effect",
+      "prompt": "A straight sewer has a uniform downward slope of 0.4% over a horizontal run of 250 m. What invert fall results?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "0.1 m"
+        },
+        {
+          "id": "option-2",
+          "label": "1.0 m"
+        },
+        {
+          "id": "option-3",
+          "label": "10 m"
+        },
+        {
+          "id": "option-4",
+          "label": "6.25 m"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "Fall = horizontal run × slope as a decimal. First convert 0.4% ÷ 100 = 0.004; then 250 m × 0.004 = 1.0 m of fall."
+    },
+    {
+      "id": "class1-wastewater-coll-top-003",
+      "mode": "cause-effect",
+      "prompt": "An upstream pipe invert is at elevation 102.40 m. The pipe falls 0.75 m along its run. Use the same elevation datum for both ends. What is the downstream invert elevation?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "103.15 m"
+        },
+        {
+          "id": "option-2",
+          "label": "101.75 m"
+        },
+        {
+          "id": "option-3",
+          "label": "101.65 m"
+        },
+        {
+          "id": "option-4",
+          "label": "102.325 m"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Downstream invert elevation = upstream elevation − fall. Thus 102.40 m − 0.75 m = 101.65 m. Both elevations use the same datum."
+    },
+    {
+      "id": "class1-wastewater-coll-top-004",
+      "mode": "cause-effect",
+      "prompt": "A circular pipe has an actual inside diameter of 0.20 m and flows completely full. Using π = 3.14, what is the cross-sectional flow area?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "0.0314 m²"
+        },
+        {
+          "id": "option-2",
+          "label": "0.1256 m²"
+        },
+        {
+          "id": "option-3",
+          "label": "0.0628 m²"
+        },
+        {
+          "id": "option-4",
+          "label": "0.314 m²"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Circle area = π × diameter² ÷ 4. With diameter = 0.20 m, diameter² = 0.0400 m²; 3.14 × 0.0400 m² ÷ 4 = 0.0314 m². This is the full cross-section, not the area of a partially full pipe."
+    },
+    {
+      "id": "class1-wastewater-coll-top-005",
+      "mode": "cause-effect",
+      "prompt": "A rectangular open channel carries wastewater 1.2 m wide and 0.5 m deep at a measured cross-section-average velocity of 0.4 m/s. What is the flow rate?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "0.24 m³/s"
+        },
+        {
+          "id": "option-2",
+          "label": "0.60 m³/s"
+        },
+        {
+          "id": "option-3",
+          "label": "0.48 m³/s"
+        },
+        {
+          "id": "option-4",
+          "label": "2.4 m³/s"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Flow Q = wetted cross-sectional area × average velocity. Area = width × depth = 1.2 m × 0.5 m = 0.60 m². Q = 0.60 m² × 0.4 m/s = 0.24 m³/s."
+    },
+    {
+      "id": "class1-wastewater-coll-top-006",
+      "mode": "tap-the-flaw",
+      "prompt": "A technician uses a flow of 0.18 m³/s and a measured wetted area of 0.30 m², but reports a mean velocity of 0.054 m/s by multiplying the two. What is the correct velocity?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "0.6 m/s"
+        },
+        {
+          "id": "option-2",
+          "label": "0.054 m/s"
+        },
+        {
+          "id": "option-3",
+          "label": "1.67 m/s"
+        },
+        {
+          "id": "option-4",
+          "label": "0.48 m/s"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Velocity = flow ÷ wetted area, because Q = area × velocity. Divide 0.18 m³/s by 0.30 m² to obtain 0.60 m/s; multiplying gives the wrong dimensions."
+    },
+    {
+      "id": "class1-wastewater-coll-top-007",
+      "mode": "cause-effect",
+      "prompt": "A flow tracer moves at a constant average velocity of 0.75 m/s along a 180 m sewer reach. Under this simplified assumption, how long does it take to traverse the reach?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "4 min"
+        },
+        {
+          "id": "option-2",
+          "label": "2.25 min"
+        },
+        {
+          "id": "option-3",
+          "label": "135 min"
+        },
+        {
+          "id": "option-4",
+          "label": "240 min"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Travel time = distance ÷ velocity = 180 m ÷ 0.75 m/s = 240 s. Convert seconds to minutes: 240 s ÷ 60 s/min = 4 min. Actual wastewater travel times may vary with flow conditions."
+    },
+    {
+      "id": "class1-wastewater-coll-top-008",
+      "mode": "cause-effect",
+      "prompt": "A rectangular wet well has a constant horizontal inside area 2.5 m long by 2.0 m wide. Pump start and stop levels are 1.8 m and 0.6 m above the same flat bottom. Ignoring displaced equipment, what volume lies between these levels?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "6.0 m³"
+        },
+        {
+          "id": "option-2",
+          "label": "3.0 m³"
+        },
+        {
+          "id": "option-3",
+          "label": "9.0 m³"
+        },
+        {
+          "id": "option-4",
+          "label": "12.0 m³"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Working volume = horizontal area × level difference. Area = 2.5 m × 2.0 m = 5.0 m²; level difference = 1.8 m − 0.6 m = 1.2 m. Therefore 5.0 m² × 1.2 m = 6.0 m³."
+    },
+    {
+      "id": "class1-wastewater-coll-top-009",
+      "mode": "cause-effect",
+      "prompt": "A cylindrical wet well is 2.0 m in inside diameter. With no inflow, a pump lowers the level 0.50 m in 5.0 min. Ignore equipment displacement and use π = 3.14. What is the average pump discharge?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "314 L/min"
+        },
+        {
+          "id": "option-2",
+          "label": "157 L/min"
+        },
+        {
+          "id": "option-3",
+          "label": "628 L/min"
+        },
+        {
+          "id": "option-4",
+          "label": "3,140 L/min"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "First find horizontal area: π × diameter² ÷ 4 = 3.14 × (2.0 m)² ÷ 4 = 3.14 m². Volume removed = 3.14 m² × 0.50 m = 1.57 m³ = 1,570 L. With no inflow, pump rate = 1,570 L ÷ 5.0 min = 314 L/min."
+    },
+    {
+      "id": "class1-wastewater-coll-top-010",
+      "mode": "tap-the-flaw",
+      "prompt": "During a 10 min pump test, wet-well volume falls by 1,500 L while inflow stays at 30 L/min. An operator reports pump discharge as 150 L/min, ignoring inflow. What is the actual average pump discharge, assuming no other flows?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "120 L/min"
+        },
+        {
+          "id": "option-2",
+          "label": "150 L/min"
+        },
+        {
+          "id": "option-3",
+          "label": "180 L/min"
+        },
+        {
+          "id": "option-4",
+          "label": "300 L/min"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "The net decrease rate is 1,500 L ÷ 10 min = 150 L/min. The pump must also remove the incoming 30 L/min: pump discharge = net decrease rate + inflow rate = 150 + 30 = 180 L/min."
+    },
+    {
+      "id": "class1-wastewater-coll-top-011",
+      "mode": "cause-effect",
+      "prompt": "A wet well can hold 12 m³ up to the specified overflow level and currently holds 7 m³. With pumps off and constant inflow of 0.25 m³/min, how long until that level is reached? Assume no other flows.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "5 min"
+        },
+        {
+          "id": "option-2",
+          "label": "20 min"
+        },
+        {
+          "id": "option-3",
+          "label": "28 min"
+        },
+        {
+          "id": "option-4",
+          "label": "48 min"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "Available storage = overflow-level volume − current volume = 12 m³ − 7 m³ = 5 m³. Time = available storage ÷ inflow = 5 m³ ÷ 0.25 m³/min = 20 min. This is an ideal estimate, not an operating safety margin."
+    },
+    {
+      "id": "class1-wastewater-coll-top-012",
+      "mode": "cause-effect",
+      "prompt": "A wastewater flow totalizer reads 164,400 L at 08:00 and 188,400 L at 16:00 the same day. It did not reset or roll over. What was the average flow rate in L/h?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "2,400 L/h"
+        },
+        {
+          "id": "option-2",
+          "label": "3,000 L/h"
+        },
+        {
+          "id": "option-3",
+          "label": "24,000 L/h"
+        },
+        {
+          "id": "option-4",
+          "label": "6,000 L/h"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "Volume through the meter = later reading − earlier reading = 188,400 L − 164,400 L = 24,000 L. Elapsed time = 8 h. Average flow = 24,000 L ÷ 8 h = 3,000 L/h; this average is not an instantaneous rate."
+    },
+    {
+      "id": "class1-wastewater-coll-top-013",
+      "mode": "cause-effect",
+      "prompt": "Average monitored flow at a sewer station rises from 12 L/s in one dry-weather period to 18 L/s in a wet-weather period. What is the percentage increase relative to the dry-weather value?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "33.3%"
+        },
+        {
+          "id": "option-2",
+          "label": "50%"
+        },
+        {
+          "id": "option-3",
+          "label": "6%"
+        },
+        {
+          "id": "option-4",
+          "label": "150%"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "Percentage increase = (new rate − baseline rate) ÷ baseline rate × 100. The increase is 18 − 12 = 6 L/s; 6 L/s ÷ 12 L/s × 100 = 50%. The comparison alone does not establish the cause of the increase."
+    },
+    {
+      "id": "class1-wastewater-coll-top-015",
+      "mode": "cause-effect",
+      "prompt": "At a steady sewer junction, two upstream branch flows enter and one downstream flow leaves. If the combined downstream flow is 45 L/s and one branch contributes 18 L/s, what does the other branch contribute? Assume no other flow or storage.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "27 L/s"
+        },
+        {
+          "id": "option-2",
+          "label": "63 L/s"
+        },
+        {
+          "id": "option-3",
+          "label": "2.5 L/s"
+        },
+        {
+          "id": "option-4",
+          "label": "18 L/s"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Conservation of flow at this steady junction gives downstream flow = branch 1 + branch 2. Thus branch 2 = 45 L/s − 18 L/s = 27 L/s, with no other inputs, outputs or accumulation."
+    },
+    {
+      "id": "class1-wastewater-coll-order-001",
+      "mode": "before-after",
+      "prompt": "For wastewater passing through both a building drain and a building sewer, is the building sewer reached before or after the building drain?",
+      "correctAnswer": "after",
+      "explanation": "The building drain conveys wastewater to the building sewer. The National Plumbing Code of Canada 2020 defines their connection; this question describes the flow relationship, not a local legal requirement."
+    },
+    {
+      "id": "class1-wastewater-coll-order-002",
+      "mode": "before-after",
+      "prompt": "In the Kentucky manual’s conventional sewer naming example, for wastewater passing through both a lateral sewer and a branch sewer, is the lateral reached before or after the branch?",
+      "correctAnswer": "before",
+      "explanation": "In this configuration, the branch collects wastewater from lateral sewers. Direct building connections and other network layouts may differ (Kentucky collection manual, chapter 4, page 29)."
+    },
+    {
+      "id": "class1-wastewater-coll-order-003",
+      "mode": "before-after",
+      "prompt": "In the Kentucky manual’s conventional sewer naming example, for wastewater passing through both a main and a trunk sewer, is the trunk reached before or after the main?",
+      "correctAnswer": "after",
+      "explanation": "The trunk collects flow from main sewers in this configuration; not every system has every named sewer class (Kentucky collection manual, chapter 4, page 29)."
+    },
+    {
+      "id": "class1-wastewater-coll-order-004",
+      "mode": "before-after",
+      "prompt": "In the Kentucky manual’s conventional sewer naming example, for wastewater passing through both a trunk and an interceptor, is the interceptor reached before or after the trunk?",
+      "correctAnswer": "after",
+      "explanation": "In the described configuration, the interceptor receives wastewater from trunk sewers and conveys it towards treatment (Kentucky collection manual, chapter 4, page 29)."
+    },
+    {
+      "id": "class1-wastewater-coll-order-005",
+      "mode": "before-after",
+      "prompt": "In a vacuum collection system using property sumps, does wastewater reach the sump before or after the vacuum collection piping?",
+      "correctAnswer": "before",
+      "explanation": "The building sewer discharges to the sump. The vacuum valve opens to draw the sump contents into the vacuum collection piping (Kentucky collection manual, chapter 4, page 51)."
+    },
+    {
+      "id": "class1-wastewater-coll-order-006",
+      "mode": "before-after",
+      "prompt": "At a vacuum sewer station, is wastewater collected in the vacuum collection tank before or after it passes through the station’s wastewater discharge pump?",
+      "correctAnswer": "before",
+      "explanation": "Wastewater is stored in the collection tank and discharged by the wastewater pump when sufficient volume accumulates. The vacuum pump maintains vacuum and is not the wastewater discharge pump (Kentucky collection manual, chapter 4, pages 53–54)."
+    },
+    {
+      "id": "class1-wastewater-coll-order-007",
+      "mode": "before-after",
+      "prompt": "For wastewater passing through a centrifugal lift-station pump, is the impeller eye reached before or after the pump discharge?",
+      "correctAnswer": "before",
+      "explanation": "Liquid enters at the impeller eye, and the rotating vanes move it outward toward the discharge (Kentucky collection manual, chapter 6, page 79)."
+    },
+    {
+      "id": "class1-wastewater-coll-order-008",
+      "mode": "before-after",
+      "prompt": "For wastewater passing through a lift station that pumps into a force main, is the force main reached before or after the pump impeller?",
+      "correctAnswer": "after",
+      "explanation": "The impeller transfers energy to wastewater inside the pump; the pumped wastewater then travels in the discharge pipe or force main. The relative location is for this specified station, not a universal layout (Kentucky collection manual, chapters 4 and 6)."
+    },
+    {
+      "id": "class1-wastewater-coll-order-009",
+      "mode": "before-after",
+      "prompt": "In the Kentucky manual’s monitoring approach for estimating wet-weather infiltration and inflow, is dry-weather flow measured before or after wet-weather flow monitoring?",
+      "correctAnswer": "before",
+      "explanation": "The manual describes first measuring dry-weather flows and then using wet-weather monitoring and comparisons to assess the problem. Actual monitoring programs depend on site conditions and their approved plan (chapter 7, page 130)."
+    },
+    {
+      "id": "class1-wastewater-coll-order-010",
+      "mode": "before-after",
+      "prompt": "In a monitoring-led infiltration-and-inflow investigation, is smoke or dye testing of a high-inflow basin undertaken before or after the monitoring identifies the basin for further investigation?",
+      "correctAnswer": "after",
+      "explanation": "The manual describes comparing flow data to identify high-inflow basins and then investigating those basins further using smoke or dye testing. Other investigation programs may differ (Kentucky collection manual, chapter 7, pages 130–132)."
+    },
+    {
+      "id": "class1-wastewater-coll-order-012",
+      "mode": "before-after",
+      "prompt": "In the Kentucky manual’s sewer televising preparation, is cleaning the pipe performed before or after televising it?",
+      "correctAnswer": "before",
+      "explanation": "The manual describes cleaning the line before televising so the pipe can be inspected. Actual work must follow the utility’s approved procedures (chapter 7, page 134)."
+    },
+    {
+      "id": "class1-wastewater-coll-order-013",
+      "mode": "before-after",
+      "prompt": "For the cured-in-place pipe method described in the collection manual, is curing the liner before or after expanding it against the host pipe?",
+      "correctAnswer": "after",
+      "explanation": "The resin-impregnated liner is placed and expanded against the existing pipe, then allowed to cure. Product-specific methods and requirements differ (Kentucky collection manual, chapter 11, page 208)."
+    },
+    {
+      "id": "class1-wastewater-coll-order-014",
+      "mode": "before-after",
+      "prompt": "In the cured-in-place pipe method described in the Kentucky manual, is resin impregnation of the liner before or after the liner is inserted into the sewer?",
+      "correctAnswer": "before",
+      "explanation": "The Kentucky manual describes inserting a resin-impregnated tube into the sewer. Installation details depend on the product and project (chapter 11, page 208)."
+    },
+    {
+      "id": "class1-wastewater-coll-order-015",
+      "mode": "before-after",
+      "prompt": "In the fold-and-form pipe method described in the Kentucky manual, is the folded liner rounded to fit the host pipe before or after it is pulled into place?",
+      "correctAnswer": "after",
+      "explanation": "The folded thermoplastic liner is pulled into the existing pipe and subsequently rounded to fit its inside. The manual describes a method, not a procedure for field work (Kentucky collection manual, chapter 11, page 209)."
+    },
+    {
+      "id": "class1-wastewater-coll-order-016",
+      "mode": "before-after",
+      "prompt": "In the Kentucky manual’s traditional long-pipe slip-lining example, are liner-pipe lengths butt-welded at the surface before or after those lengths are winched into the host sewer?",
+      "correctAnswer": "before",
+      "explanation": "The manual describes butt-welding pipe on the surface before winching or jacking it into the existing pipe, with additional lengths added as needed. Other slip-lining methods use different joining arrangements (chapter 11, page 207)."
+    },
+    {
+      "id": "class1-wastewater-coll-order-017",
+      "mode": "before-after",
+      "prompt": "In the pipe-bursting method described in the collection manual, does the replacement pipe pass a particular point before or after the bursting device?",
+      "correctAnswer": "after",
+      "explanation": "The bursting device breaks the existing pipe outward while the replacement pipe is pulled behind it. This states the relative positions in the described method (Kentucky collection manual, chapter 11, page 210)."
+    },
+    {
+      "id": "class1-wastewater-coll-order-019",
+      "mode": "before-after",
+      "prompt": "In CCOHS’s general lockout sequence applied to a lift-station pump, is verification of isolation before or after the maintenance activity?",
+      "correctAnswer": "before",
+      "explanation": "CCOHS places verification of effective isolation before the maintenance or service activity. This is a learning relationship, not a complete lockout procedure; use the employer’s equipment-specific procedure and trained, authorized personnel."
+    },
+    {
+      "id": "class1-wastewater-coll-order-020",
+      "mode": "before-after",
+      "prompt": "In CCOHS’s general lockout sequence for pump equipment, is dissipation of residual stored energy before or after verification of isolation?",
+      "correctAnswer": "before",
+      "explanation": "CCOHS lists dissipation of residual or stored energy ahead of verification in its general sequence. Specific equipment may require additional controls; follow the approved equipment-specific procedure, not this exercise."
+    },
+    {
+      "id": "class1-wastewater-coll-order-021",
+      "mode": "before-after",
+      "prompt": "For the manhole coating method described in the Kentucky manual, is substrate preparation before or after coating application?",
+      "correctAnswer": "before",
+      "explanation": "The manual describes applying coatings to cleaned, prepared manhole interiors; preparation supports adhesion. This is not an entry or coating-work instruction (Kentucky collection manual, chapter 11, page 211)."
+    }
+  ]
+}

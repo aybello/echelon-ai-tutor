@@ -206,86 +206,101 @@ export function parseLearnerQuestions(rows: (typeof questions.$inferSelect | Pic
   });
 }
 
+const questionWorkingSetInput = z.object({
+  bankKey: z.string().min(1).max(64),
+  accessToken: z.string().optional(),
+  previewSurface: z.enum(["practice", "flashcards", "mock"]).optional(),
+});
+
+// One resolver preserves the exact entitlement, sampling, projection, and receipt
+// behavior for the legacy query and allowed interactive POST requests.
+async function questionWorkingSet({ input, ctx }: {
+  input: z.infer<typeof questionWorkingSetInput>;
+  ctx: import("../_core/context").TrpcContext;
+}) {
+  const db = await getDb();
+  if (!db) {
+    throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+  }
+  const { course } = courseActivityScope(input.bankKey, { requireActive: true });
+  const examType = course.courseKey;
+  const hasAccess = await resolveAccessForRequest(ctx, examType, {
+    accessToken: input.accessToken,
+  });
+  const rows = await db
+    .select(learnerQuestionColumns)
+    .from(questions)
+    .where(and(
+      eq(questions.bankKey, course.questionBankKey),
+      learnerVisibleQuestionFilter(),
+    ))
+    .orderBy(questions.questionNum);
+
+  const total = rows.length;
+  const previewLimit = previewLimitForRequest(input);
+  // For trial users, sample questions across all modules for a representative experience
+  // instead of just taking the first N (which would all be from one module).
+  let visible;
+  if (hasAccess) {
+    visible = buildFullAccessSample(rows);
+  } else {
+    const surface = input.previewSurface ?? "practice";
+    const minimumCalculations = resolveCourseKey(examType)?.track === "oit"
+      ? OIT_PREVIEW_CALC_MINIMUMS[surface]
+      : 0;
+    visible = buildPreviewSample(
+      previewRowsForBank(rows, input.bankKey),
+      previewLimit,
+      surface,
+      minimumCalculations,
+    );
+  }
+
+  // Per-row safe parse: one malformed row is skipped, not fatal to the bank.
+  const parsed = visible.flatMap((r) => {
+    try {
+      return [{
+        id: r.questionNum,
+        module: r.bankKey === WPI_CLASS4_BANK ? normalizeWpiClass4Module(r.module) : r.module,
+        cognitiveLevel: r.cognitiveLevel,
+        difficulty: r.difficulty,
+        question: r.question,
+        options: JSON.parse(r.options) as string[],
+        correctIndex: r.correctIndex,
+        explanation: r.explanation,
+        steps: r.steps ? (JSON.parse(r.steps) as { l: string; c: string }[]) : undefined,
+        tip: r.tip ?? undefined,
+        isCalc: r.isCalc === "yes",
+        topic: r.topic ?? undefined,
+      }];
+    } catch (err) {
+      console.error(`[getQuestions] malformed row ${r.bankKey}#${r.questionNum}:`, err);
+      return [];
+    }
+  });
+
+  const actor = await practiceIdentity(ctx, input.accessToken);
+  const issuedIdentity = await resolveLearningIdentity(actor.context);
+  const attribution = hasAccess ? await resolveAttemptAttribution(issuedIdentity, course.courseKey) : undefined;
+  const attemptToken = await issuePracticeReceipt(course.questionBankKey, parsed.map(q => q.id), actor.owner, !hasAccess, attribution);
+  return { questions: parsed.map(q => ({ ...q, attemptToken })), locked: !hasAccess, total, trialLimit: previewLimit };
+}
+
 export const quizRouter = router({
   /**
    * getQuestions — fetch a bounded, module-balanced working set.
    * The total bank size is returned separately; the browser never needs every
    * paid question and answer in one response.
    */
-    getQuestions: publicProcedure
-    .input(z.object({
-      bankKey: z.string().min(1).max(64),
-      accessToken: z.string().optional(),
-      previewSurface: z.enum(["practice", "flashcards", "mock"]).optional(),
-    }))
-    .query(async ({ input, ctx }) => {
-      const db = await getDb();
-      if (!db) {
-        throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-      }
-      const { course } = courseActivityScope(input.bankKey, { requireActive: true });
-      const examType = course.courseKey;
-      const hasAccess = await resolveAccessForRequest(ctx, examType, {
-        accessToken: input.accessToken,
-      });
-      const rows = await db
-        .select(learnerQuestionColumns)
-        .from(questions)
-        .where(and(
-          eq(questions.bankKey, course.questionBankKey),
-          learnerVisibleQuestionFilter(),
-        ))
-        .orderBy(questions.questionNum);
-
-      const total = rows.length;
-      const previewLimit = previewLimitForRequest(input);
-      // For trial users, sample questions across all modules for a representative experience
-      // instead of just taking the first N (which would all be from one module).
-      let visible;
-      if (hasAccess) {
-        visible = buildFullAccessSample(rows);
-      } else {
-        const surface = input.previewSurface ?? "practice";
-        const minimumCalculations = resolveCourseKey(examType)?.track === "oit"
-          ? OIT_PREVIEW_CALC_MINIMUMS[surface]
-          : 0;
-        visible = buildPreviewSample(
-          previewRowsForBank(rows, input.bankKey),
-          previewLimit,
-          surface,
-          minimumCalculations,
-        );
-      }
-
-      // Per-row safe parse: one malformed row is skipped, not fatal to the bank.
-      const parsed = visible.flatMap((r) => {
-        try {
-          return [{
-            id: r.questionNum,
-            module: r.bankKey === WPI_CLASS4_BANK ? normalizeWpiClass4Module(r.module) : r.module,
-            cognitiveLevel: r.cognitiveLevel,
-            difficulty: r.difficulty,
-            question: r.question,
-            options: JSON.parse(r.options) as string[],
-            correctIndex: r.correctIndex,
-            explanation: r.explanation,
-            steps: r.steps ? (JSON.parse(r.steps) as { l: string; c: string }[]) : undefined,
-            tip: r.tip ?? undefined,
-            isCalc: r.isCalc === "yes",
-            topic: r.topic ?? undefined,
-          }];
-        } catch (err) {
-          console.error(`[getQuestions] malformed row ${r.bankKey}#${r.questionNum}:`, err);
-          return [];
-        }
-      });
-
-      const actor = await practiceIdentity(ctx, input.accessToken);
-      const issuedIdentity = await resolveLearningIdentity(actor.context);
-      const attribution = hasAccess ? await resolveAttemptAttribution(issuedIdentity, course.courseKey) : undefined;
-      const attemptToken = await issuePracticeReceipt(course.questionBankKey, parsed.map(q => q.id), actor.owner, !hasAccess, attribution);
-      return { questions: parsed.map(q => ({ ...q, attemptToken })), locked: !hasAccess, total, trialLimit: previewLimit };
-    }),
+  getQuestions: publicProcedure.input(questionWorkingSetInput).query(questionWorkingSet),
+  // The interactive fallback uses POST so access tokens never enter URLs.
+  getInteractiveQuestions: publicProcedure.input(questionWorkingSetInput).mutation(opts => {
+    // 309A is served by its beta-controlled route, not the generic question bank.
+    if (resolveCourseKey(opts.input.bankKey)?.courseKey === "electrician-309a") {
+      throw new TRPCError({ code: "FORBIDDEN", message: "Interactive questions are unavailable for this course." });
+    }
+    return questionWorkingSet(opts);
+  }),
 
   /** Bounded pages from the requested slice, including identity-scoped review. */
   getRandomQuestions: publicProcedure

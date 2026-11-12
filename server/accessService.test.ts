@@ -106,7 +106,7 @@ describe("resolveVerifiedIdentity", () => {
 
 describe("identityEmail", () => {
   it("returns email for oauth identity", () => {
-    expect(identityEmail({ type: "oauth", userId: 1, email: "fixture-12@example.com" })).toBe("fixture-12@example.com");
+    expect(identityEmail({ type: "oauth", userId: 1, email: "fixture-12@example.com", user: { id: 1, email: "fixture-12@example.com", role: "user", openId: "fixture" } })).toBe("fixture-12@example.com");
   });
 
   it("returns email for otp identity", () => {

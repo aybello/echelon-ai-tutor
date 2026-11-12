@@ -1,0 +1,1903 @@
+{
+  "courseKey": "class1-water",
+  "status": "approved",
+  "version": "echelon-six-games-2026-11-12-final-candidate",
+  "previewIds": {
+    "rapid-swipe": "class1-water-001",
+    "speed-match": "class1-water-021",
+    "odd-one-out": "class1-water-031",
+    "cause-effect": "class1-water-046",
+    "tap-the-flaw": "class1-water-066",
+    "before-after": "class1-water-order-001"
+  },
+  "examples": [
+    {
+      "id": "class1-water-001",
+      "mode": "rapid-swipe",
+      "prompt": "UV treatment provides a persistent disinfectant residual in distribution water.",
+      "correctAnswer": false,
+      "explanation": "UV supplies energy at the unit but leaves no continuing chemical residual."
+    },
+    {
+      "id": "class1-water-002",
+      "mode": "rapid-swipe",
+      "prompt": "Chlorine dose and chlorine residual are different concepts, even if their numerical values happen to be equal.",
+      "correctAnswer": true,
+      "explanation": "Dose is the amount applied per unit volume; residual is what remains after chlorine demand. In the simple relationship, dose equals demand plus residual."
+    },
+    {
+      "id": "class1-water-003",
+      "mode": "rapid-swipe",
+      "prompt": "Turbidity describes water cloudiness associated with suspended particles.",
+      "correctAnswer": true,
+      "explanation": "Suspended particles scatter light and contribute to turbidity."
+    },
+    {
+      "id": "class1-water-004",
+      "mode": "rapid-swipe",
+      "prompt": "Clear water is automatically free of disease-causing microorganisms.",
+      "correctAnswer": false,
+      "explanation": "Appearance alone cannot establish microbiological safety."
+    },
+    {
+      "id": "class1-water-005",
+      "mode": "rapid-swipe",
+      "prompt": "Rapid mixing disperses a coagulant through the water.",
+      "correctAnswer": true,
+      "explanation": "Mixing distributes the chemical before subsequent floc formation."
+    },
+    {
+      "id": "class1-water-006",
+      "mode": "rapid-swipe",
+      "prompt": "Flocculation aims to encourage destabilized particles to collide and form larger floc.",
+      "correctAnswer": true,
+      "explanation": "Gentle mixing promotes collisions without excessive floc breakup."
+    },
+    {
+      "id": "class1-water-007",
+      "mode": "rapid-swipe",
+      "prompt": "For chemical CT, T10 and theoretical detention time always have the same value.",
+      "correctAnswer": false,
+      "explanation": "Short-circuiting and mixing mean T10 can differ greatly from theoretical detention time."
+    },
+    {
+      "id": "class1-water-008",
+      "mode": "rapid-swipe",
+      "prompt": "Ozone is suitable for maintaining a persistent disinfectant residual throughout distribution.",
+      "correctAnswer": false,
+      "explanation": "Ontario describes ozone as unsuitable for maintaining a persistent distribution residual."
+    },
+    {
+      "id": "class1-water-009",
+      "mode": "rapid-swipe",
+      "prompt": "Free chlorine and combined chlorine are different forms of chlorine residual.",
+      "correctAnswer": true,
+      "explanation": "Free chlorine is not combined with ammonia; combined chlorine includes chloramines."
+    },
+    {
+      "id": "class1-water-010",
+      "mode": "rapid-swipe",
+      "prompt": "UV treatment removes dissolved hardness minerals from water.",
+      "correctAnswer": false,
+      "explanation": "UV disinfects but does not remove calcium and other hardness minerals."
+    },
+    {
+      "id": "class1-water-011",
+      "mode": "rapid-swipe",
+      "prompt": "A membrane process may require pretreatment to limit fouling.",
+      "correctAnswer": true,
+      "explanation": "Poor feed-water quality can foul membranes, so pretreatment can protect them."
+    },
+    {
+      "id": "class1-water-012",
+      "mode": "rapid-swipe",
+      "prompt": "A treatment plant sample result is more useful when the location and collection time are recorded.",
+      "correctAnswer": true,
+      "explanation": "Sampling location and time provide context for interpreting the result."
+    },
+    {
+      "id": "class1-water-013",
+      "mode": "rapid-swipe",
+      "prompt": "Hypochlorite can supply free chlorine for disinfection.",
+      "correctAnswer": true,
+      "explanation": "Ontario lists sodium and calcium hypochlorite among free-chlorination methods."
+    },
+    {
+      "id": "class1-water-014",
+      "mode": "rapid-swipe",
+      "prompt": "Chloramination uses chlorine and ammonia to form combined chlorine residual.",
+      "correctAnswer": true,
+      "explanation": "Chlorination with ammonia can produce chloramines, including monochloramine."
+    },
+    {
+      "id": "class1-water-015",
+      "mode": "rapid-swipe",
+      "prompt": "Activated carbon filters should be treated as a substitute for disinfection.",
+      "correctAnswer": false,
+      "explanation": "Activated carbon can address taste, odour and chlorine, but is not a disinfection device."
+    },
+    {
+      "id": "class1-water-016",
+      "mode": "rapid-swipe",
+      "prompt": "A water treatment train can differ between facilities.",
+      "correctAnswer": true,
+      "explanation": "Treatment selection depends on source-water quality and the system design."
+    },
+    {
+      "id": "class1-water-017",
+      "mode": "rapid-swipe",
+      "prompt": "An equipment log can help an operator recognize a change from normal operation.",
+      "correctAnswer": true,
+      "explanation": "Comparing readings and events over time helps identify trends."
+    },
+    {
+      "id": "class1-water-018",
+      "mode": "rapid-swipe",
+      "prompt": "In a CT calculation, chlorine residual concentration is expressed in mg/L.",
+      "correctAnswer": true,
+      "explanation": "Ontario expresses CT as residual in mg/L multiplied by effective time in minutes."
+    },
+    {
+      "id": "class1-water-019",
+      "mode": "rapid-swipe",
+      "prompt": "In a tracer test, T10 is the elapsed time at which 10% of the tracer has passed the outlet.",
+      "correctAnswer": true,
+      "explanation": "T10 is the tenth-percentile contact time: about 90% of the water has a longer contact time. It can differ from theoretical volume divided by flow."
+    },
+    {
+      "id": "class1-water-020",
+      "mode": "rapid-swipe",
+      "prompt": "A sodium hypochlorite feed system adds a chemical rather than using UV radiation.",
+      "correctAnswer": true,
+      "explanation": "Hypochlorite is a chlorinating chemical; UV is a physical disinfection process."
+    },
+    {
+      "id": "class1-water-021",
+      "mode": "speed-match",
+      "prompt": "Match the water-quality term to what it describes.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Turbidity",
+          "right": "Cloudiness from particles"
+        },
+        {
+          "id": "pair-2",
+          "left": "pH",
+          "right": "Acidity or basicity"
+        },
+        {
+          "id": "pair-3",
+          "left": "Temperature",
+          "right": "Degree of hotness"
+        }
+      ],
+      "explanation": "Correct pairs: Turbidity means cloudiness from particles; pH means acidity or basicity; Temperature means degree of hotness."
+    },
+    {
+      "id": "class1-water-022",
+      "mode": "speed-match",
+      "prompt": "Match each treatment step to its principal stated role.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Rapid mix",
+          "right": "Rapidly distributes the coagulant"
+        },
+        {
+          "id": "pair-2",
+          "left": "Flocculation",
+          "right": "Gently mixes to form larger floc"
+        },
+        {
+          "id": "pair-3",
+          "left": "Sedimentation",
+          "right": "Allows floc to settle"
+        }
+      ],
+      "explanation": "Rapid mix disperses the coagulant; subsequent gentle flocculation grows floc, which can settle in sedimentation."
+    },
+    {
+      "id": "class1-water-023",
+      "mode": "speed-match",
+      "prompt": "Match the disinfection method to its description.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "UV",
+          "right": "Radiation inactivates microorganisms"
+        },
+        {
+          "id": "pair-2",
+          "left": "Sodium hypochlorite",
+          "right": "NaOCl chemical source of free chlorine"
+        },
+        {
+          "id": "pair-3",
+          "left": "Chloramination",
+          "right": "Chlorine and ammonia form chloramines"
+        }
+      ],
+      "explanation": "UV uses radiation. Sodium hypochlorite (NaOCl) supplies free chlorine. Chloramination forms chloramines using chlorine and ammonia."
+    },
+    {
+      "id": "class1-water-024",
+      "mode": "speed-match",
+      "prompt": "Match each measurement to the conventional unit shown.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Chlorine residual concentration",
+          "right": "mg/L"
+        },
+        {
+          "id": "pair-2",
+          "left": "Effective contact time",
+          "right": "minutes"
+        },
+        {
+          "id": "pair-3",
+          "left": "Turbidity",
+          "right": "NTU"
+        }
+      ],
+      "explanation": "Chlorine residual can be reported in mg/L, effective contact time in minutes, and nephelometric turbidity in NTU."
+    },
+    {
+      "id": "class1-water-025",
+      "mode": "speed-match",
+      "prompt": "Match the contact-time term with its meaning.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "T10",
+          "right": "Time at which 10% of tracer has passed the outlet"
+        },
+        {
+          "id": "pair-2",
+          "left": "Theoretical detention time",
+          "right": "Water volume divided by flow rate"
+        },
+        {
+          "id": "pair-3",
+          "left": "Chemical CT",
+          "right": "End-of-step disinfectant residual multiplied by T10"
+        }
+      ],
+      "explanation": "T10 is the tenth-percentile contact time. Theoretical detention is volume divided by flow. For a chemical disinfection step, CT multiplies the endpoint residual by T10."
+    },
+    {
+      "id": "class1-water-026",
+      "mode": "speed-match",
+      "prompt": "Match each chemical form to its disinfection classification.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Hypochlorous acid",
+          "right": "A form of free chlorine"
+        },
+        {
+          "id": "pair-2",
+          "left": "Monochloramine",
+          "right": "A form of combined chlorine"
+        },
+        {
+          "id": "pair-3",
+          "left": "Ozone",
+          "right": "O3, a molecule of three oxygen atoms"
+        }
+      ],
+      "explanation": "Hypochlorous acid is free chlorine, monochloramine is combined chlorine, and ozone is O3."
+    },
+    {
+      "id": "class1-water-027",
+      "mode": "speed-match",
+      "prompt": "Match the laboratory item to its direct purpose.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Turbidimeter",
+          "right": "Measures turbidity"
+        },
+        {
+          "id": "pair-2",
+          "left": "pH meter",
+          "right": "Measures acidity or basicity"
+        },
+        {
+          "id": "pair-3",
+          "left": "Thermometer",
+          "right": "Measures temperature"
+        }
+      ],
+      "explanation": "Correct pairs: Turbidimeter means measures turbidity; pH meter means measures acidity or basicity; Thermometer means measures temperature."
+    },
+    {
+      "id": "class1-water-028",
+      "mode": "speed-match",
+      "prompt": "Match the operator record with the event it documents.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Sample log",
+          "right": "Water sample collection point and time"
+        },
+        {
+          "id": "pair-2",
+          "left": "Maintenance log",
+          "right": "Equipment service work performed"
+        },
+        {
+          "id": "pair-3",
+          "left": "Chemical inventory",
+          "right": "Chemical stock quantity on hand"
+        }
+      ],
+      "explanation": "Sample records document collection, maintenance records document servicing, and inventories track stock."
+    },
+    {
+      "id": "class1-water-029",
+      "mode": "speed-match",
+      "prompt": "Match the treatment device with the issue it is described as addressing.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Activated carbon",
+          "right": "Adsorbs some organic taste- and odour-causing compounds"
+        },
+        {
+          "id": "pair-2",
+          "left": "Ion-exchange water softener",
+          "right": "Exchanges hardness ions using resin"
+        },
+        {
+          "id": "pair-3",
+          "left": "UV unit",
+          "right": "Uses ultraviolet radiation to inactivate microorganisms"
+        }
+      ],
+      "explanation": "Carbon adsorbs some organic compounds; ion-exchange resin reduces hardness; UV radiation inactivates microorganisms."
+    },
+    {
+      "id": "class1-water-030",
+      "mode": "speed-match",
+      "prompt": "Match the technical term to its definition.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Source water",
+          "right": "Untreated water from a supply source"
+        },
+        {
+          "id": "pair-2",
+          "left": "Disinfectant dose",
+          "right": "Amount of disinfectant applied per volume"
+        },
+        {
+          "id": "pair-3",
+          "left": "Disinfectant residual",
+          "right": "Disinfectant remaining after contact"
+        }
+      ],
+      "explanation": "Source water is untreated supply water; dose is the amount applied per volume; residual is what remains after contact."
+    },
+    {
+      "id": "class1-water-031",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a physical or chemical disinfectant?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "UV"
+        },
+        {
+          "id": "option-2",
+          "label": "Ozone"
+        },
+        {
+          "id": "option-3",
+          "label": "Chlorine"
+        },
+        {
+          "id": "option-4",
+          "label": "Turbidimeter"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A turbidimeter measures cloudiness; it does not disinfect."
+    },
+    {
+      "id": "class1-water-032",
+      "mode": "odd-one-out",
+      "prompt": "Which one is not a chlorine-containing disinfectant?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Sodium hypochlorite"
+        },
+        {
+          "id": "option-2",
+          "label": "Calcium hypochlorite"
+        },
+        {
+          "id": "option-3",
+          "label": "Chlorine gas"
+        },
+        {
+          "id": "option-4",
+          "label": "UV radiation"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "UV is radiation, not a chlorine chemical."
+    },
+    {
+      "id": "class1-water-033",
+      "mode": "odd-one-out",
+      "prompt": "Which one is not a type of information about a collected sample?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Collection time"
+        },
+        {
+          "id": "option-2",
+          "label": "Collection location"
+        },
+        {
+          "id": "option-3",
+          "label": "Test result"
+        },
+        {
+          "id": "option-4",
+          "label": "Pump impeller"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "An impeller is a pump component, not sample documentation."
+    },
+    {
+      "id": "class1-water-034",
+      "mode": "odd-one-out",
+      "prompt": "Which item is not a group that includes disease-causing microorganisms?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Viruses"
+        },
+        {
+          "id": "option-2",
+          "label": "Bacteria"
+        },
+        {
+          "id": "option-3",
+          "label": "Protozoa"
+        },
+        {
+          "id": "option-4",
+          "label": "Sand"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Viruses, bacteria and protozoa include disease-causing agents; sand is not a microorganism."
+    },
+    {
+      "id": "class1-water-035",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a form of water filtration listed in Ontario guidance?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Slow sand"
+        },
+        {
+          "id": "option-2",
+          "label": "Rapid sand"
+        },
+        {
+          "id": "option-3",
+          "label": "Membrane filtration"
+        },
+        {
+          "id": "option-4",
+          "label": "Chloramination"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Chloramination is a disinfection method, not a filtration method."
+    },
+    {
+      "id": "class1-water-036",
+      "mode": "odd-one-out",
+      "prompt": "Which quantity is not a CT calculation input?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Residual concentration"
+        },
+        {
+          "id": "option-2",
+          "label": "Effective contact time"
+        },
+        {
+          "id": "option-3",
+          "label": "Basin paint colour"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "CT uses residual and contact time; paint colour is irrelevant."
+    },
+    {
+      "id": "class1-water-037",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a commonly recorded operating observation?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Flow rate"
+        },
+        {
+          "id": "option-2",
+          "label": "Chlorine residual"
+        },
+        {
+          "id": "option-3",
+          "label": "Turbidity"
+        },
+        {
+          "id": "option-4",
+          "label": "A random guess"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Use actual measurements and observations rather than guesses."
+    },
+    {
+      "id": "class1-water-038",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a unit of time?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Minute"
+        },
+        {
+          "id": "option-2",
+          "label": "Hour"
+        },
+        {
+          "id": "option-3",
+          "label": "Second"
+        },
+        {
+          "id": "option-4",
+          "label": "mg/L"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "mg/L is a concentration unit; the other choices are time units."
+    },
+    {
+      "id": "class1-water-039",
+      "mode": "odd-one-out",
+      "prompt": "Which action is not a sound response to an abnormal instrument reading?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Check against the site procedure"
+        },
+        {
+          "id": "option-2",
+          "label": "Record the observation"
+        },
+        {
+          "id": "option-3",
+          "label": "Tell the responsible operator"
+        },
+        {
+          "id": "option-4",
+          "label": "Conceal the reading"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Abnormal readings need verification, communication and records, not concealment."
+    },
+    {
+      "id": "class1-water-040",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a process intended to help remove particles?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Coagulation"
+        },
+        {
+          "id": "option-2",
+          "label": "Flocculation"
+        },
+        {
+          "id": "option-3",
+          "label": "Filtration"
+        },
+        {
+          "id": "option-4",
+          "label": "UV radiation"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "UV inactivates microorganisms; it does not remove particles."
+    },
+    {
+      "id": "class1-water-041",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a source-water category?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Surface water"
+        },
+        {
+          "id": "option-2",
+          "label": "Groundwater"
+        },
+        {
+          "id": "option-3",
+          "label": "Water temperature"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Temperature is a water characteristic, not a source category."
+    },
+    {
+      "id": "class1-water-042",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a factor specified in evaluating chemical disinfection CT?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Residual concentration"
+        },
+        {
+          "id": "option-2",
+          "label": "Effective contact time"
+        },
+        {
+          "id": "option-3",
+          "label": "Water temperature"
+        },
+        {
+          "id": "option-4",
+          "label": "Tank exterior colour"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Residual and time calculate CT; temperature helps determine required CT."
+    },
+    {
+      "id": "class1-water-043",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a treatment plant safety resource?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Safety data sheet"
+        },
+        {
+          "id": "option-2",
+          "label": "Emergency response plan"
+        },
+        {
+          "id": "option-3",
+          "label": "Appropriate protective equipment"
+        },
+        {
+          "id": "option-4",
+          "label": "Unlabelled chemical container"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "An unlabelled chemical creates a hazard, not a safety resource."
+    },
+    {
+      "id": "class1-water-044",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a chlorine residual type?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Free chlorine"
+        },
+        {
+          "id": "option-2",
+          "label": "Combined chlorine"
+        },
+        {
+          "id": "option-3",
+          "label": "Total chlorine"
+        },
+        {
+          "id": "option-4",
+          "label": "Particle size"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Particle size describes solids, not chlorine residual."
+    },
+    {
+      "id": "class1-water-045",
+      "mode": "odd-one-out",
+      "prompt": "Which one is not a direct reading of a water-quality instrument?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Turbidity"
+        },
+        {
+          "id": "option-2",
+          "label": "pH"
+        },
+        {
+          "id": "option-3",
+          "label": "Temperature"
+        },
+        {
+          "id": "option-4",
+          "label": "Maintenance work order"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A work order is a maintenance record, not a water-quality measurement."
+    },
+    {
+      "id": "class1-water-046",
+      "mode": "cause-effect",
+      "prompt": "If a positive residual concentration doubles while a positive T10 stays fixed, what happens to calculated CT?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It doubles"
+        },
+        {
+          "id": "option-2",
+          "label": "It halves"
+        },
+        {
+          "id": "option-3",
+          "label": "It stays the same"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "CT is residual multiplied by T10."
+    },
+    {
+      "id": "class1-water-047",
+      "mode": "cause-effect",
+      "prompt": "If a positive T10 halves while a positive residual stays fixed, what happens to calculated CT?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It halves"
+        },
+        {
+          "id": "option-2",
+          "label": "It doubles"
+        },
+        {
+          "id": "option-3",
+          "label": "It stays the same"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "With concentration fixed, CT is proportional to effective contact time."
+    },
+    {
+      "id": "class1-water-048",
+      "mode": "cause-effect",
+      "prompt": "A UV unit receives highly turbid water. What potential effect needs attention?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Particles can interfere with UV effectiveness"
+        },
+        {
+          "id": "option-2",
+          "label": "UV creates a chlorine residual"
+        },
+        {
+          "id": "option-3",
+          "label": "UV removes all particles"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Cloudy water can make UV treatment less effective; pretreatment may be needed."
+    },
+    {
+      "id": "class1-water-049",
+      "mode": "cause-effect",
+      "prompt": "A flocculator mixes far too violently. What can happen to formed floc?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It can break apart"
+        },
+        {
+          "id": "option-2",
+          "label": "It becomes a disinfectant residual"
+        },
+        {
+          "id": "option-3",
+          "label": "It turns into dissolved chlorine"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Mixing must promote collisions without breaking floc."
+    },
+    {
+      "id": "class1-water-050",
+      "mode": "cause-effect",
+      "prompt": "In a clarifier, settleable floc is given adequate settling conditions. What is the intended result?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Particles settle from the water"
+        },
+        {
+          "id": "option-2",
+          "label": "Dissolved chlorine becomes UV light"
+        },
+        {
+          "id": "option-3",
+          "label": "Water hardness always becomes zero"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Clarification separates settleable floc from the water."
+    },
+    {
+      "id": "class1-water-051",
+      "mode": "cause-effect",
+      "prompt": "A filter removes suspended particles upstream of UV. What is the potential benefit?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Less particle interference with UV"
+        },
+        {
+          "id": "option-2",
+          "label": "A guaranteed chemical residual"
+        },
+        {
+          "id": "option-3",
+          "label": "A guaranteed zero chlorine demand"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Pretreatment can reduce cloudiness that interferes with UV."
+    },
+    {
+      "id": "class1-water-052",
+      "mode": "cause-effect",
+      "prompt": "An operator records readings over time. What can a trend reveal?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A gradual change in process performance"
+        },
+        {
+          "id": "option-2",
+          "label": "The exact future condition with certainty"
+        },
+        {
+          "id": "option-3",
+          "label": "The legal status of every plant"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Comparing successive readings can reveal drift or emerging problems."
+    },
+    {
+      "id": "class1-water-053",
+      "mode": "cause-effect",
+      "prompt": "If steady flow through a contact basin increases while its operating water volume stays fixed, what happens to theoretical detention time?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It decreases"
+        },
+        {
+          "id": "option-2",
+          "label": "It increases"
+        },
+        {
+          "id": "option-3",
+          "label": "It cannot change"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Theoretical detention time equals volume divided by flow; actual T10 still needs a separate determination."
+    },
+    {
+      "id": "class1-water-054",
+      "mode": "cause-effect",
+      "prompt": "At a fixed positive steady flow, the operating water volume of a basin doubles. What happens to theoretical volume/flow detention time?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It doubles"
+        },
+        {
+          "id": "option-2",
+          "label": "It halves"
+        },
+        {
+          "id": "option-3",
+          "label": "It remains unchanged"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "With flow unchanged, volume divided by flow doubles; this is not automatically T10."
+    },
+    {
+      "id": "class1-water-055",
+      "mode": "cause-effect",
+      "prompt": "If coagulant is not dispersed effectively in rapid mix, what may suffer downstream?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Floc formation"
+        },
+        {
+          "id": "option-2",
+          "label": "The definition of mg/L"
+        },
+        {
+          "id": "option-3",
+          "label": "The existence of UV radiation"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Rapid mixing distributes coagulant so later particle destabilization and flocculation can work."
+    },
+    {
+      "id": "class1-water-056",
+      "mode": "cause-effect",
+      "prompt": "An activated carbon cartridge becomes plugged by sediment. What maintenance effect is possible?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "More frequent cartridge changes"
+        },
+        {
+          "id": "option-2",
+          "label": "UV lamps become unnecessary"
+        },
+        {
+          "id": "option-3",
+          "label": "Hardness is always eliminated"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Ontario notes sediment plugging can increase cartridge replacement frequency."
+    },
+    {
+      "id": "class1-water-057",
+      "mode": "cause-effect",
+      "prompt": "A free-chlorine contact process is assessed at colder water temperatures. What needs rechecking?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Required CT for the actual conditions"
+        },
+        {
+          "id": "option-2",
+          "label": "The meaning of a litre"
+        },
+        {
+          "id": "option-3",
+          "label": "The sample bottle colour only"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The applicable required CT depends on temperature, pH, disinfectant and target inactivation."
+    },
+    {
+      "id": "class1-water-058",
+      "mode": "cause-effect",
+      "prompt": "An operator sees total chlorine of 1.2 mg/L and free chlorine of 0.8 mg/L. What is estimated combined chlorine?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "0.4 mg/L"
+        },
+        {
+          "id": "option-2",
+          "label": "2.0 mg/L"
+        },
+        {
+          "id": "option-3",
+          "label": "1.2 mg/L"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Estimated combined chlorine is total minus free: 1.2 − 0.8 = 0.4 mg/L."
+    },
+    {
+      "id": "class1-water-059",
+      "mode": "cause-effect",
+      "prompt": "At the end of a chemical disinfection step, the measured residual is 0.5 mg/L and the established T10 is 20 minutes. What is calculated CT?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "10 mg·min/L"
+        },
+        {
+          "id": "option-2",
+          "label": "40 mg·min/L"
+        },
+        {
+          "id": "option-3",
+          "label": "20 mg·min/L"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Multiply 0.5 mg/L by 20 minutes; compare with the applicable required CT separately."
+    },
+    {
+      "id": "class1-water-060",
+      "mode": "cause-effect",
+      "prompt": "The only lamp in a single-lamp UV unit fails, with no alternate UV unit operating. Which treatment barrier is directly lost?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "UV inactivation"
+        },
+        {
+          "id": "option-2",
+          "label": "Coagulant rapid mixing"
+        },
+        {
+          "id": "option-3",
+          "label": "Sedimentation"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The failed lamp supplies no UV exposure in this single-lamp example. Follow the facility response procedure; other disinfection barriers may still exist."
+    },
+    {
+      "id": "class1-water-061",
+      "mode": "cause-effect",
+      "prompt": "A sample label lacks the collection location. What is the practical consequence?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The result is harder to interpret"
+        },
+        {
+          "id": "option-2",
+          "label": "The sample automatically becomes distilled water"
+        },
+        {
+          "id": "option-3",
+          "label": "The result proves compliance"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Location is needed to relate a laboratory result to the relevant process or sampling point."
+    },
+    {
+      "id": "class1-water-062",
+      "mode": "cause-effect",
+      "prompt": "A full tank contains 120 m³ of water at a steady flow of 30 m³/h. What is its theoretical volume/flow detention time?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "4 hours"
+        },
+        {
+          "id": "option-2",
+          "label": "90 hours"
+        },
+        {
+          "id": "option-3",
+          "label": "0.25 hours"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "120 m³ divided by 30 m³/h equals 4 hours; this is not automatically T10."
+    },
+    {
+      "id": "class1-water-063",
+      "mode": "cause-effect",
+      "prompt": "A dose of 2 mg of active chemical per litre is applied to 1,000 L of water. What mass of active chemical is applied?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "2 g"
+        },
+        {
+          "id": "option-2",
+          "label": "0.5 g"
+        },
+        {
+          "id": "option-3",
+          "label": "2 kg"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "2 mg/L × 1,000 L = 2,000 mg = 2 g of active chemical. Product mass would depend on its strength."
+    },
+    {
+      "id": "class1-water-064",
+      "mode": "cause-effect",
+      "prompt": "If a measured chlorine residual decreases while a positive established T10 is unchanged, what happens to calculated CT?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It decreases"
+        },
+        {
+          "id": "option-2",
+          "label": "It increases"
+        },
+        {
+          "id": "option-3",
+          "label": "It remains unchanged"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "CT is proportional to the measured residual when effective contact time is fixed."
+    },
+    {
+      "id": "class1-water-065",
+      "mode": "cause-effect",
+      "prompt": "A water softener removes hardness minerals by ion exchange. What quality does it primarily change?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Hardness"
+        },
+        {
+          "id": "option-2",
+          "label": "UV lamp intensity"
+        },
+        {
+          "id": "option-3",
+          "label": "Turbidity measurement units"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Ion exchange softening is used to reduce water hardness."
+    },
+    {
+      "id": "class1-water-066",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed CT statement.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Use measured residual at the end of the contact step"
+        },
+        {
+          "id": "option-2",
+          "label": "Use effective T10"
+        },
+        {
+          "id": "option-3",
+          "label": "Assume theoretical volume/flow always equals T10"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Actual contact depends on basin hydraulics and can differ substantially from volume/flow."
+    },
+    {
+      "id": "class1-water-067",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed statement about UV.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "UV can inactivate microorganisms"
+        },
+        {
+          "id": "option-2",
+          "label": "UV leaves a lasting chlorine residual"
+        },
+        {
+          "id": "option-3",
+          "label": "Cloudy water can interfere with UV"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "UV does not add chlorine or provide a persistent disinfectant residual."
+    },
+    {
+      "id": "class1-water-068",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed statement about a filtration process.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A filter can remove suspended particles"
+        },
+        {
+          "id": "option-2",
+          "label": "Filtration can reduce turbidity"
+        },
+        {
+          "id": "option-3",
+          "label": "Every filter removes every dissolved chemical"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Removal depends on contaminant and filter technology; ordinary filtration is not universal chemical removal."
+    },
+    {
+      "id": "class1-water-069",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed flocculation practice.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Encourage particle collisions"
+        },
+        {
+          "id": "option-2",
+          "label": "Avoid excessive floc breakup"
+        },
+        {
+          "id": "option-3",
+          "label": "Maximize shear even when floc breaks apart"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Flocculation mixing must be gentle enough to preserve formed floc."
+    },
+    {
+      "id": "class1-water-070",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed sample-handling decision.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Identify the sample location"
+        },
+        {
+          "id": "option-2",
+          "label": "Record collection time"
+        },
+        {
+          "id": "option-3",
+          "label": "Invent a missing laboratory result"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Results must be measured and documented accurately, not invented."
+    },
+    {
+      "id": "class1-water-071",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed chlorine comparison.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Free chlorine is a residual form"
+        },
+        {
+          "id": "option-2",
+          "label": "Combined chlorine includes chloramines"
+        },
+        {
+          "id": "option-3",
+          "label": "Dose and residual are always identical"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Some added chlorine reacts, so the dose and residual are not interchangeable."
+    },
+    {
+      "id": "class1-water-072",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed statement about a carbon filter.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It can reduce certain organic tastes"
+        },
+        {
+          "id": "option-2",
+          "label": "It can remove chlorine"
+        },
+        {
+          "id": "option-3",
+          "label": "It is inherently a disinfection device"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Activated carbon is used for water conditioning, not as a stand-alone disinfectant."
+    },
+    {
+      "id": "class1-water-073",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed approach to an unexpected analyzer reading.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Check the instrument using site procedures"
+        },
+        {
+          "id": "option-2",
+          "label": "Record and communicate the observation"
+        },
+        {
+          "id": "option-3",
+          "label": "Delete the reading to avoid an alarm"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "An abnormal reading should be investigated and reported under site procedures."
+    },
+    {
+      "id": "class1-water-074",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed CT calculation for residual 1 mg/L and T10 10 minutes.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "CT = 1 mg/L × 10 min = 10 mg·min/L"
+        },
+        {
+          "id": "option-2",
+          "label": "CT = 10 mg·min/L"
+        },
+        {
+          "id": "option-3",
+          "label": "CT = 0.1 mg·min/L"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "1 mg/L × 10 min = 10 mg·min/L."
+    },
+    {
+      "id": "class1-water-075",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed statement about source water.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Surface water is a source type"
+        },
+        {
+          "id": "option-2",
+          "label": "Groundwater is a source type"
+        },
+        {
+          "id": "option-3",
+          "label": "All source waters have identical quality"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Source-water characteristics vary by source and conditions."
+    },
+    {
+      "id": "class1-water-076",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed process claim.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Rapid mix disperses coagulant"
+        },
+        {
+          "id": "option-2",
+          "label": "Flocculation promotes collisions"
+        },
+        {
+          "id": "option-3",
+          "label": "Flocculation is intended to stop all particle collisions"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Flocculation promotes, rather than prevents, collisions between destabilized particles."
+    },
+    {
+      "id": "class1-water-077",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed emergency action.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Follow the facility emergency plan"
+        },
+        {
+          "id": "option-2",
+          "label": "Notify the designated responsible person"
+        },
+        {
+          "id": "option-3",
+          "label": "Ignore a suspected chemical leak"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "A suspected leak warrants the facility-specific emergency response, not inaction."
+    },
+    {
+      "id": "class1-water-078",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed chemical handling practice.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Read the safety data sheet"
+        },
+        {
+          "id": "option-2",
+          "label": "Use assigned protective equipment"
+        },
+        {
+          "id": "option-3",
+          "label": "Handle an unidentified chemical as if it were harmless"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Unknown chemicals must not be assumed harmless; follow the facility procedure."
+    },
+    {
+      "id": "class1-water-079",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed chlorine arithmetic.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Total residual 1.0 mg/L minus free residual 0.6 mg/L gives 0.4 mg/L combined"
+        },
+        {
+          "id": "option-2",
+          "label": "Combined residual can be estimated as total minus free"
+        },
+        {
+          "id": "option-3",
+          "label": "Combined residual equals total plus free"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Combined chlorine is estimated by subtracting free from total chlorine, not adding them."
+    },
+    {
+      "id": "class1-water-080",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed use of records.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Record actual test results"
+        },
+        {
+          "id": "option-2",
+          "label": "Record equipment maintenance"
+        },
+        {
+          "id": "option-3",
+          "label": "Change old readings to hide poor performance"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Records should accurately reflect observed results and maintenance activities."
+    },
+    {
+      "id": "class1-water-083",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed statement about a turbidimeter.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It measures turbidity"
+        },
+        {
+          "id": "option-2",
+          "label": "Its readings should be checked and maintained as required"
+        },
+        {
+          "id": "option-3",
+          "label": "It measures chlorine residual directly"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "A turbidimeter measures turbidity, not chlorine residual."
+    },
+    {
+      "id": "class1-water-085",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed operational assumption.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Compare readings with site procedures"
+        },
+        {
+          "id": "option-2",
+          "label": "Process designs differ across plants"
+        },
+        {
+          "id": "option-3",
+          "label": "A single generic train describes every treatment plant"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Treatment trains depend on source water and facility design."
+    },
+    {
+      "id": "class1-water-top-002",
+      "mode": "cause-effect",
+      "prompt": "A filter has a surface area of 20 m² and receives a steady flow of 160 m³/h. What is its filtration rate expressed as flow per unit area?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "8 m/h"
+        },
+        {
+          "id": "option-2",
+          "label": "0.125 m/h"
+        },
+        {
+          "id": "option-3",
+          "label": "80 m/h"
+        },
+        {
+          "id": "option-4",
+          "label": "3,200 m/h"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Filtration rate = flow ÷ filter surface area. Divide 160 m³/h by 20 m²: 160 ÷ 20 = 8 m³/(m²·h), or 8 m/h. This is a calculation example, not an operating setpoint."
+    },
+    {
+      "id": "class1-water-top-003",
+      "mode": "cause-effect",
+      "prompt": "A practice backwash runs at a constant 1,500 L/min for 12 minutes. What volume of water is used?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "18,000 L"
+        },
+        {
+          "id": "option-2",
+          "label": "125 L"
+        },
+        {
+          "id": "option-3",
+          "label": "1,512 L"
+        },
+        {
+          "id": "option-4",
+          "label": "180,000 L"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Backwash volume = flow rate × duration. Multiply 1,500 L/min × 12 min = 18,000 L; the minutes cancel. The duration is hypothetical, not a site operating instruction."
+    },
+    {
+      "id": "class1-water-top-004",
+      "mode": "cause-effect",
+      "prompt": "A membrane train receives 100 m³/h of feed and produces 80 m³/h of permeate. What is its recovery?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "80%"
+        },
+        {
+          "id": "option-2",
+          "label": "20%"
+        },
+        {
+          "id": "option-3",
+          "label": "125%"
+        },
+        {
+          "id": "option-4",
+          "label": "8%"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Recovery (%) = permeate flow ÷ feed flow × 100. Divide 80 m³/h by 100 m³/h = 0.80, then multiply by 100 = 80%. Both flows must use matching units."
+    },
+    {
+      "id": "class1-water-top-005",
+      "mode": "cause-effect",
+      "prompt": "A membrane feed has total dissolved solids (TDS) of 400 mg/L and its permeate has TDS of 40 mg/L. Using 100 × (1 − permeate TDS ÷ feed TDS), what is the TDS rejection?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "90%"
+        },
+        {
+          "id": "option-2",
+          "label": "10%"
+        },
+        {
+          "id": "option-3",
+          "label": "40%"
+        },
+        {
+          "id": "option-4",
+          "label": "99%"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "First divide permeate concentration by feed concentration: 40 mg/L ÷ 400 mg/L = 0.10. Subtract this dimensionless ratio from 1: 1 − 0.10 = 0.90. Multiply by 100 to obtain 90% TDS rejection. It does not establish rejection of every individual contaminant."
+    },
+    {
+      "id": "class1-water-top-006",
+      "mode": "cause-effect",
+      "prompt": "A water sample receives a chlorine dose of 2.3 mg/L. After the stated contact time its residual is 0.7 mg/L. Under the simple dose = demand + residual relationship, what is the chlorine demand?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "1.6 mg/L"
+        },
+        {
+          "id": "option-2",
+          "label": "3.0 mg/L"
+        },
+        {
+          "id": "option-3",
+          "label": "0.7 mg/L"
+        },
+        {
+          "id": "option-4",
+          "label": "2.3 mg/L"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Demand = dose − residual, using values for the same water and contact time. Subtract 0.7 mg/L from 2.3 mg/L: 2.3 − 0.7 = 1.6 mg/L. This is the chlorine consumed under those test conditions."
+    },
+    {
+      "id": "class1-water-top-008",
+      "mode": "cause-effect",
+      "prompt": "For a classroom exercise, a dry product is 25% active ingredient by mass. How much product supplies 2 kg of active ingredient? Assume the stated mass fraction is exact.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "8 kg"
+        },
+        {
+          "id": "option-2",
+          "label": "0.5 kg"
+        },
+        {
+          "id": "option-3",
+          "label": "2.5 kg"
+        },
+        {
+          "id": "option-4",
+          "label": "50 kg"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Active mass = product mass × active mass fraction, so product mass = active mass ÷ fraction. Convert 25% to 0.25, then divide 2 kg by 0.25 = 8 kg of product. Check: 8 kg × 0.25 = 2 kg active ingredient."
+    },
+    {
+      "id": "class1-water-top-009",
+      "mode": "cause-effect",
+      "prompt": "For a classroom estimate, a basin contains 90 m³ of water at a steady flow of 180 m³/h. An assumed T10/T factor for these conditions is 0.5. What is the estimated T10 in minutes?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "15 min"
+        },
+        {
+          "id": "option-2",
+          "label": "30 min"
+        },
+        {
+          "id": "option-3",
+          "label": "60 min"
+        },
+        {
+          "id": "option-4",
+          "label": "10 min"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "First calculate theoretical detention T = water volume ÷ flow = 90 m³ ÷ 180 m³/h = 0.5 h = 30 min. Then apply the assumed factor: T10 = 0.5 × 30 min = 15 min. The factor is only an exercise assumption, not evidence of an approved operating value."
+    },
+    {
+      "id": "class1-water-top-010",
+      "mode": "cause-effect",
+      "prompt": "Two consecutive, non-overlapping free-chlorine contact steps have the same pH, water temperature and constant chlorine residual. Their endpoint residuals are each 0.8 mg/L and their established T10 values are 10 and 15 minutes. What is their summed CT?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "20 mg·min/L"
+        },
+        {
+          "id": "option-2",
+          "label": "12 mg·min/L"
+        },
+        {
+          "id": "option-3",
+          "label": "25 mg·min/L"
+        },
+        {
+          "id": "option-4",
+          "label": "32 mg·min/L"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "For each step, CT = endpoint residual × T10. Step 1: 0.8 mg/L × 10 min = 8 mg·min/L. Step 2: 0.8 mg/L × 15 min = 12 mg·min/L. Under the stated constant pH and chlorine residual, add the steps: 8 + 12 = 20 mg·min/L. Assess required CT separately for the actual target and conditions."
+    },
+    {
+      "id": "class1-water-top-011",
+      "mode": "cause-effect",
+      "prompt": "In a conceptual disinfection test, a water sample initially contains 10,000 viable target organisms. After treatment, 100 remain viable. Assume there is no physical removal. What log inactivation does this represent?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "2-log"
+        },
+        {
+          "id": "option-2",
+          "label": "1-log"
+        },
+        {
+          "id": "option-3",
+          "label": "3-log"
+        },
+        {
+          "id": "option-4",
+          "label": "4-log"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The remaining fraction is 100 ÷ 10,000 = 0.01, or 1%; therefore 99% are inactivated. A 100-fold reduction is log10(10,000 ÷ 100) = log10(100) = 2-log. This arithmetic alone does not establish regulatory treatment credit."
+    },
+    {
+      "id": "class1-water-top-012",
+      "mode": "speed-match",
+      "prompt": "Match each filter or membrane component or stream to its distinctive function in the described system.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Filter underdrain",
+          "right": "Distributes backwash water across the media bed"
+        },
+        {
+          "id": "pair-2",
+          "left": "Membrane permeate line",
+          "right": "Carries filtered product water from the membrane"
+        },
+        {
+          "id": "pair-3",
+          "left": "Membrane reject line",
+          "right": "Carries the concentrated waste stream from the membrane"
+        }
+      ],
+      "explanation": "The filter underdrain helps distribute backwash uniformly. Permeate is the product stream passing through the membrane, whereas reject or concentrate carries the separate waste stream."
+    },
+    {
+      "id": "class1-water-order-001",
+      "mode": "before-after",
+      "prompt": "In conventional surface-water treatment, is rapid mixing of the coagulant before or after flocculation?",
+      "correctAnswer": "before",
+      "explanation": "Rapid mixing disperses the coagulant; gentle flocculation then promotes collisions that grow floc."
+    },
+    {
+      "id": "class1-water-order-002",
+      "mode": "before-after",
+      "prompt": "In conventional surface-water treatment with a settling basin, is granular filtration before or after clarification?",
+      "correctAnswer": "after",
+      "explanation": "Clarification settles floc before the clarified water reaches the granular filters. This is the conventional example, not every filtration design."
+    },
+    {
+      "id": "class1-water-order-003",
+      "mode": "before-after",
+      "prompt": "In conventional surface-water treatment with a settling basin, is coagulant addition before or after sedimentation?",
+      "correctAnswer": "before",
+      "explanation": "The coagulant is added and mixed so particles can form floc; sedimentation then removes settleable floc."
+    },
+    {
+      "id": "class1-water-order-004",
+      "mode": "before-after",
+      "prompt": "In a conventional drinking-water jar test simulating a settling plant, is the settling period before or after the rapid-mix period?",
+      "correctAnswer": "after",
+      "explanation": "The example jar test uses rapid mixing to simulate the plant mixer, then gentle mixing and settling. Jar-test settings must reflect the particular plant."
+    },
+    {
+      "id": "class1-water-order-005",
+      "mode": "before-after",
+      "prompt": "In a drinking-water jar test representing conventional clarification, is the gentle mixing period before or after the settling period?",
+      "correctAnswer": "before",
+      "explanation": "Gentle mixing simulates flocculation; the stirrer is stopped to allow the floc to settle. The example is not a universal jar-test recipe."
+    },
+    {
+      "id": "class1-water-order-006",
+      "mode": "before-after",
+      "prompt": "At an intake using both coarse screens and microscreens, is microscreening before or after coarse screening?",
+      "correctAnswer": "after",
+      "explanation": "Ontario guidance describes microscreens as generally placed immediately downstream of coarse screens when both are used."
+    },
+    {
+      "id": "class1-water-order-007",
+      "mode": "before-after",
+      "prompt": "In a drinking-water system using microscreens to reduce algae loading on granular filters, is granular filtration before or after microscreening?",
+      "correctAnswer": "after",
+      "explanation": "In this application microscreens remove some suspended material such as algae to lessen the load reaching the granular filters."
+    },
+    {
+      "id": "class1-water-order-008",
+      "mode": "before-after",
+      "prompt": "In a drinking-water treatment design that uses ozone to make natural organic matter more biodegradable for a biological filter, is ozone treatment before or after biological filtration?",
+      "correctAnswer": "before",
+      "explanation": "For this particular biological filtration application, ozone is applied upstream to make some natural organic matter more biodegradable for the biofilm."
+    },
+    {
+      "id": "class1-water-order-009",
+      "mode": "before-after",
+      "prompt": "In the Ontario example treating groundwater under the direct influence of surface water for iron or manganese with permanganate and a coagulant, is coagulant addition before or after permanganate addition?",
+      "correctAnswer": "after",
+      "explanation": "The guidance describes adding the oxidant upstream and allowing time for metal oxidation before coagulation in this application. Other configurations can differ."
+    },
+    {
+      "id": "class1-water-order-010",
+      "mode": "before-after",
+      "prompt": "In the Ontario taste-and-odour treatment example using both permanganate and powdered activated carbon, is powdered carbon addition before or after permanganate addition?",
+      "correctAnswer": "after",
+      "explanation": "Ontario guidance places powdered activated carbon downstream of permanganate because the carbon can adsorb permanganate and reduce its availability for oxidation."
+    },
+    {
+      "id": "class1-water-order-011",
+      "mode": "before-after",
+      "prompt": "In an Ontario drinking-water application using powdered activated carbon with chemically assisted filtration and primary disinfection, is removal of the powdered carbon before or after primary disinfection?",
+      "correctAnswer": "before",
+      "explanation": "In the described application, powdered carbon is removed after its contact period and before primary disinfection; chemically assisted filtration is one removal option."
+    },
+    {
+      "id": "class1-water-order-012",
+      "mode": "before-after",
+      "prompt": "For a membrane process removing dissolved iron by oxidation and particle capture, is chemical oxidation before or after membrane filtration?",
+      "correctAnswer": "before",
+      "explanation": "The Ontario guidance describes providing oxidant and reaction time upstream so iron precipitate or floc can form for membrane removal. Designs vary with water chemistry."
+    },
+    {
+      "id": "class1-water-order-013",
+      "mode": "before-after",
+      "prompt": "In a nanofiltration drinking-water system using particulate removal to protect the membranes, is particulate removal before or after nanofiltration?",
+      "correctAnswer": "before",
+      "explanation": "The protective treatment precedes the nanofiltration membrane, limiting particulate buildup. The type of pretreatment depends on the system and feed water."
+    },
+    {
+      "id": "class1-water-order-014",
+      "mode": "before-after",
+      "prompt": "In a sodium-cycle softener using brine regeneration, is resin loading with hardness ions during a service run before or after regeneration of that same loaded resin?",
+      "correctAnswer": "before",
+      "explanation": "During the service run calcium and magnesium accumulate on the resin. Regeneration with brine then displaces those ions and restores exchange capacity."
+    },
+    {
+      "id": "class1-water-order-017",
+      "mode": "before-after",
+      "prompt": "For a single chemical disinfection contact step, is measurement of the residual at that step’s endpoint before or after application of the disinfectant?",
+      "correctAnswer": "after",
+      "explanation": "The disinfectant is applied at the start of its contact period; the residual used for the step is measured at the downstream end."
+    },
+    {
+      "id": "class1-water-order-018",
+      "mode": "before-after",
+      "prompt": "In a rapid-filter cleaning cycle equipped with filter-to-waste, is backwashing before or after the filter-to-waste period?",
+      "correctAnswer": "before",
+      "explanation": "In the cited example the filter is backwashed first; the initial filtrate is then sent to waste to manage the post-wash turbidity spike. The details are site-specific."
+    },
+    {
+      "id": "class1-water-order-019",
+      "mode": "before-after",
+      "prompt": "In a rapid-filter restart that includes filter-to-waste, is return of the filter to normal production before or after its filter-to-waste period?",
+      "correctAnswer": "after",
+      "explanation": "Filter-to-waste diverts initial filtrate until the plant’s predetermined water-quality conditions are met, after which the filter can return to production under its procedures."
+    },
+    {
+      "id": "class1-water-order-020",
+      "mode": "before-after",
+      "prompt": "In a drinking-water residuals treatment line using a gravity thickener and a belt filter press, is belt-press dewatering before or after thickening?",
+      "correctAnswer": "after",
+      "explanation": "In this residuals-management example, thickening concentrates the solids before mechanical dewatering by a belt filter press. Not all plants use this arrangement."
+    }
+  ]
+}
