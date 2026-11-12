@@ -66,8 +66,29 @@ import {
 
 // Preserve valid database values and their types, but never pass an invalid
 // Date to SuperJSON (or an unparseable timestamp to clients).
-function validTimestamp<T extends Date | string | null | undefined>(value: T): Exclude<T, null | undefined> | null {
+export function validTimestamp<T extends Date | string | null | undefined>(value: T): Exclude<T, null | undefined> | null {
   if (value == null || !aggregateUtcDate(value)) return null;
+  if (typeof value === "string") {
+    // Date parsing can silently normalize impossible ISO dates, including
+    // timestamps with a timezone. Validate their original calendar fields.
+    const isoTimestamp = value.trim().match(
+      /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::(\d{2})(?:\.(\d+))?)?(Z|[+-]\d{2}:?\d{2})?$/i,
+    );
+    if (isoTimestamp) {
+      const [, yearText, monthText, dayText, hourText, minuteText, secondText = "0", fractionText = "", zone] = isoTimestamp;
+      const year = Number(yearText), month = Number(monthText), day = Number(dayText);
+      const hour = Number(hourText), minute = Number(minuteText), second = Number(secondText);
+      const leapYear = year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
+      const daysInMonth = [31, leapYear ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+      if (month < 1 || month > 12 || day < 1 || day > daysInMonth[month - 1]
+        || hour > 24 || minute > 59 || second > 59
+        || (hour === 24 && (minute !== 0 || second !== 0 || /[1-9]/.test(fractionText)))) return null;
+      if (zone && zone.toUpperCase() !== "Z") {
+        const offset = zone.slice(1).replace(":", "");
+        if (Number(offset.slice(0, 2)) > 23 || Number(offset.slice(2)) > 59) return null;
+      }
+    }
+  }
   return value as Exclude<T, null | undefined>;
 }
 

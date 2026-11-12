@@ -10,7 +10,7 @@ vi.mock("../email", () => ({ sendTeamEnrollmentEmail: vi.fn(), sendOperatorStudy
 vi.mock("../readinessSnapshot", () => ({ calculateReadinessSnapshot }));
 vi.mock("../stripe/stripe", () => ({ stripe: {} }));
 import { aggregateUtcDate, orgIntelRouter, orgRouter } from "../routers/orgRouter";
-import { teamFlexRouter } from "../routers/teamFlexRouter";
+import { teamFlexRouter, validTimestamp } from "../routers/teamFlexRouter";
 const now = new Date();
 const past = new Date(now.getTime() - 86400000);
 const future = new Date(now.getTime() + 86400000);
@@ -41,6 +41,31 @@ describe("manager reporting router behavior", () => {
     expect(aggregateUtcDate("not-a-timestamp")).toBeNull();
     expect(aggregateUtcDate("2026-02-30 12:00:00")).toBeNull();
     expect(aggregateUtcDate(new Date("invalid"))).toBeNull();
+    expect(aggregateUtcDate("October 21, 2026 00:30:00 GMT")?.toISOString()).toBe("2026-10-21T00:30:00.000Z");
+    expect(aggregateUtcDate("2026-02-30T12:00:00Z")?.toISOString()).toBe("2026-03-02T12:00:00.000Z");
+  });
+  it("strictly validates Flex ISO calendar dates and timezone offsets without changing valid values", () => {
+    for (const value of [
+      "2026-02-29T12:00:00Z", "2024-02-30T12:00:00Z", "2026-04-31T12:00:00+02:00", "2026-02-30T12:00",
+      "2026-00-01T00:00:00Z", "2026-01-00T00:00:00Z", "2026-01-01T25:00:00Z",
+      "2026-01-01T24:00:01Z", "2026-01-01T12:60:00Z", "2026-01-01T12:00:60Z",
+      "2026-01-01T12:00:00+24:00", "2026-01-01T12:00:00-05:60", "1900-02-29T00:00:00Z",
+    ]) expect(validTimestamp(value)).toBeNull();
+    for (const [value, expected] of [
+      ["2024-02-29T23:30:45.123Z", "2024-02-29T23:30:45.123Z"],
+      ["2024-02-29T23:30:45+02:30", "2024-02-29T21:00:45.000Z"],
+      ["2024-02-29T23:30:45-0500", "2024-03-01T04:30:45.000Z"],
+      ["2026-01-01T24:00:00Z", "2026-01-02T00:00:00.000Z"],
+      ["2000-02-29T00:00:00Z", "2000-02-29T00:00:00.000Z"],
+    ]) {
+      expect(validTimestamp(value)).toBe(value);
+      expect(aggregateUtcDate(value)?.toISOString()).toBe(expected);
+    }
+    expect(validTimestamp("2026-01-01T12:00")).toBe("2026-01-01T12:00");
+    expect(validTimestamp("2026-10-21 00:30:00")).toBe("2026-10-21 00:30:00");
+    expect(validTimestamp("October 21, 2026 00:30:00 GMT")).toBe("October 21, 2026 00:30:00 GMT");
+    expect(validTimestamp(past)).toBe(past);
+    expect(validTimestamp(new Date("invalid"))).toBeNull();
   });
   it("keeps actual expired-pass attempt evidence during reporting grace", async () => {
     const db = database([[org], [lic], [lic], [{ total: 10, correct: 7, lastActive: past.toISOString() }]]);
@@ -124,19 +149,21 @@ describe("manager reporting router behavior", () => {
       { ...lic, id: 25, status: "assigned", activatedAt: null, startsAt: null, accessEndsAt: invalid },
       { ...lic, id: 26, status: "invited", activatedAt: null, startsAt: null, accessEndsAt: null },
       { ...lic, id: 27, status: "assigned", activatedAt: null, startsAt: null, accessEndsAt: null, operatorUserId: 123, invitedEmail: null },
+      { ...lic, id: 28, status: "active", activatedAt: "2026-02-30T12:00:00Z", accessEndsAt: "2026-04-31T12:00:00+02:00" },
     ];
     const db = database([[org], [lic], licences]);
     const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
-    expect(rows.map(row => row.activityAvailable)).toEqual([false, false, false, false, false, true, true]);
+    expect(rows.map(row => row.activityAvailable)).toEqual([false, false, false, false, false, true, true, false]);
     expect(rows[0]).toMatchObject({ activatedAt: null, accessEndsAt: future, lastActiveAt: null });
     expect(rows[1]).toMatchObject({ activatedAt: null, accessEndsAt: null, lastActiveAt: null });
+    expect(rows[7]).toMatchObject({ activatedAt: null, accessEndsAt: null, lastActiveAt: null });
     expect(() => superjson.serialize(rows)).not.toThrow();
     expect(db.select).toHaveBeenCalledTimes(3);
     expect(calculateReadinessSnapshot).not.toHaveBeenCalled();
   });
   it("sanitizes invalid last activity without discarding otherwise valid activity", async () => {
     const active = { ...lic, status: "active", accessEndsAt: future };
-    for (const lastActive of [new Date("invalid"), "2026-02-30 12:00:00"]) {
+    for (const lastActive of [new Date("invalid"), "2026-02-30 12:00:00", "2026-02-30T12:00:00Z", "2026-04-31T12:00:00+02:00"]) {
       const db = database([[org], [active], [active], [{ total: 2, correct: 1, lastActive }]]);
       const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
       expect(rows[0]).toMatchObject({ activatedAt: active.activatedAt, accessEndsAt: future, lastActiveAt: null, activityAvailable: true, totalAttempts: 2 });

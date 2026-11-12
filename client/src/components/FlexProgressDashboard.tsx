@@ -66,7 +66,7 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
     return null; // No Flex licences to show progress for
   }
 
-  const { activatedLicences, assignedLearners, studyingLearners, totalAttempts, avgAccuracy, avgReadiness, lifetimeActivityComplete, activeActivityComplete } = summarizeFlexProgress(data);
+  const { activatedLicences, assignedLearners, studyingLearners, totalAttempts, avgAccuracy, avgReadiness, lifetimeActivityComplete, activeActivityComplete, activeCohortComplete } = summarizeFlexProgress(data);
 
   return (
     <Card className="teams-flex-progress mt-6">
@@ -79,7 +79,7 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
             className="text-xs ml-2"
             title={licencesQuery.isError ? "Licence count could not be loaded. It will retry within a minute." : undefined}
           >
-            {activatedLicences} activated / {purchasedLicences ?? (licencesQuery.isError ? "?" : "…")} licences
+            {activeCohortComplete ? activatedLicences : "Not available"} activated / {purchasedLicences ?? (licencesQuery.isError ? "?" : "…")} licences
           </Badge>
         </CardTitle>
       </CardHeader>

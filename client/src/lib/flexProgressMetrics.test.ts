@@ -32,6 +32,15 @@ describe("Flex licence and learner cohorts", () => {
 });
 
 describe("Flex readiness availability", () => {
+  it("marks only undetermined active licence ends as an incomplete activated cohort", () => {
+    for (const accessEndsAt of [null, "invalid", new Date("invalid")]) {
+      expect(summarizeFlexProgress([row, { ...row, accessEndsAt }], now).activeCohortComplete).toBe(false);
+    }
+    expect(summarizeFlexProgress([row, { ...row, activityAvailable: false }], now).activeCohortComplete).toBe(true);
+    expect(summarizeFlexProgress([row, { ...row, accessEndsAt: now.toISOString() }], now).activeCohortComplete).toBe(true);
+    expect(summarizeFlexProgress([row, { ...row, status: "assigned", accessEndsAt: null }], now).activeCohortComplete).toBe(true);
+  });
+
   it("requires completeness only in each metric's relevant cohort", () => {
     for (const irrelevant of [
       { ...row, status: "expired", activityAvailable: false },

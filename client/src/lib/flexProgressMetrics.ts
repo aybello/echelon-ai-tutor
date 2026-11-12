@@ -5,6 +5,7 @@ export function flexRowIsStudying(row: Pick<ProgressRow, 'status' | 'daysActive3
 export function summarizeFlexProgress(rows: ProgressRow[], now = new Date()) {
   const active = rows.filter(row => row.status === "active" && !!row.accessEndsAt && new Date(row.accessEndsAt) > now);
   const lifetimeActivityComplete = rows.every(row => row.activityAvailable);
+  const activeCohortComplete = rows.every(row => row.status !== "active" || (row.accessEndsAt != null && Number.isFinite(new Date(row.accessEndsAt).getTime())));
   // An active row is outside the current cohort only when its end is known
   // and elapsed. A missing or invalid end makes cohort membership uncertain.
   const activeActivityComplete = rows.every(row => {
@@ -18,7 +19,7 @@ export function summarizeFlexProgress(rows: ProgressRow[], now = new Date()) {
   const totalAttempts = rows.reduce((sum, row) => sum + row.totalAttempts, 0);
   const correctAttempts = rows.reduce((sum, row) => sum + row.correctAttempts, 0);
   const recorded = active.filter(row => row.totalAttempts > 0 && row.readinessAvailable);
-  return { activatedLicences: active.length, assignedLearners: assigned.size, studyingLearners: studying.size, lifetimeActivityComplete, activeActivityComplete,
+  return { activatedLicences: active.length, assignedLearners: assigned.size, studyingLearners: studying.size, lifetimeActivityComplete, activeActivityComplete, activeCohortComplete,
     totalAttempts, avgAccuracy: totalAttempts ? Math.round(correctAttempts / totalAttempts * 100) : null,
     avgReadiness: recorded.length ? Math.round(recorded.reduce((sum, row) => sum + row.readinessScore, 0) / recorded.length) : null };
 }

@@ -58,6 +58,17 @@ describe("Flex readiness display", () => {
     expect(html).toMatch(/0%<\/p><p[^>]*>Avg Accuracy/);
   });
 
+  it("shows the activated count only when active licence ends are known", () => {
+    for (const accessEndsAt of [null, "invalid"]) {
+      const html = render([base, { ...base, licenceId: 2, accessEndsAt }]);
+      expect(html).toContain("Not available activated / 2 licences");
+      expect(html).not.toContain("1 activated / 2 licences");
+    }
+    expect(render([base, { ...base, licenceId: 2, accessEndsAt: "2000-01-01", activityAvailable: false }])).toContain("1 activated / 2 licences");
+    expect(render([{ ...base, activityAvailable: false }])).toContain("1 activated / 1 licences");
+    expect(render([base, { ...base, licenceId: 2, status: "assigned", accessEndsAt: null }])).toContain("1 activated / 2 licences");
+  });
+
   it("does not present partial activity as complete in a mixed cohort", () => {
     for (const unknown of [
       { ...base, licenceId: 2, totalAttempts: 0, activityAvailable: false },
