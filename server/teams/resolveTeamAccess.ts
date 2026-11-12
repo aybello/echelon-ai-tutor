@@ -8,6 +8,7 @@ import { getDb } from "../db";
 import { teamFlexLicences, organizationMembers, organizations } from "../../drizzle/schema";
 import { resolveCourseKey } from "../../shared/courseRegistry";
 import { assignedAnnualCourseKeys } from "../trainingRecords";
+import { DELEGATED_MANAGER_ROLE } from "./delegatedManagers";
 
 export interface FlexAccessGrant {
   source: "flex";
@@ -96,6 +97,7 @@ export async function resolveTeamAccess(
       courseKey: organizationMembers.courseKey,
       courseKeys: organizationMembers.courseKeys,
       status: organizationMembers.status,
+      role: organizationMembers.role,
     })
     .from(organizationMembers)
     .where(and(
@@ -104,6 +106,7 @@ export async function resolveTeamAccess(
     ));
 
   for (const member of annualMembers) {
+    if (member.role === DELEGATED_MANAGER_ROLE) continue;
     // Missing assignment is never all-access. Reuse the same canonical assignment
     // resolution as training records, including multi-course and legacy seats.
     if (member.status === "assigned" && assignedAnnualCourseKeys(member.courseKey, member.courseKeys).includes(requestedCourseKey)) {

@@ -87,7 +87,8 @@ function mockDb(
       }
       if (call === 4) return Promise.resolve([]); // Flex
       // call 5 — manager check
-      return Promise.resolve(orgRows);
+      if (call === 5) return Promise.resolve(orgRows);
+      return Promise.resolve([]); // Independent delegate / paid Flex inventory lookup
     },
   });
 

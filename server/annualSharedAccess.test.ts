@@ -22,7 +22,7 @@ beforeEach(() => {
   memberStatus = "assigned";
   includePersonal = false;
   seatPredicate = [];
-  vi.mocked(getDb).mockResolvedValue({ select: () => ({ from: (table: unknown) => {
+  vi.mocked(getDb).mockResolvedValue({ select: (projection?: any) => ({ from: (table: unknown) => {
     const where = async () => {
       if (table === subscriptions) return [
         { tier: "class1", province: "ontario", status: "active", currentPeriodEnd: future, orgId: 701 },
@@ -31,11 +31,15 @@ beforeEach(() => {
       if (table === purchases || table === organizations || table === teamFlexLicences) return [];
       throw new Error("Unexpected mocked table");
     };
-    return { where, innerJoin: () => ({ where: async (condition: any) => {
+    return { where, innerJoin: (joinedTable: unknown) => ({ where: async (condition: any) => {
       expect(table).toBe(organizationMembers);
+      expect(joinedTable).toBe(organizations);
+      // This operator fixture has no delegated memberships; keep discovery separate from seats.
+      if (projection?.organization === organizations) return [];
+      expect(projection?.memberRole).toBe(organizationMembers.role);
       seatPredicate = new MySqlDialect().sqlToQuery(condition).params;
       return memberStatus === "assigned" && termEnd > new Date() ? [{
-        courseKey: "class1-water", courseKeys: null, orgProvince: "ontario", orgTier: "stream-water", orgStatus, orgTermEnd: termEnd,
+        courseKey: "class1-water", courseKeys: null, memberRole: "operator", orgProvince: "ontario", orgTier: "stream-water", orgStatus, orgTermEnd: termEnd,
       }] : [];
     } }) };
   } }) } as any);

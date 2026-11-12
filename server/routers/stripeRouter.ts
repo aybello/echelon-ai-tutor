@@ -679,7 +679,7 @@ export const stripeRouter = router({
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
 
-      const org = await resolveManagedOrganization(ctx, { orgId: input.orgId });
+      const org = await resolveManagedOrganization(ctx, { orgId: input.orgId, ownerOnly: true });
 
       // Paid Flex reporting can admit a manager after the Annual term ends.
       // Match orgRouter's Annual write policy before any billing side effect.

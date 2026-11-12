@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { MySqlDialect } from "drizzle-orm/mysql-core";
 import superjson from "superjson";
+import { organizationMembers, organizations } from "../../drizzle/schema";
 const { getDb, calculateReadinessSnapshot } = vi.hoisted(() => ({
   getDb: vi.fn(), calculateReadinessSnapshot: vi.fn().mockResolvedValue({ score: 65, hasData: true, activeDaysLast30: 2 }),
 }));
@@ -24,11 +25,27 @@ function database(results: any[][]) {
   const pending = [...results];
   const conditions: string[] = [];
   const dialect = new MySqlDialect();
-  const select = vi.fn(() => {
-    const rows = pending.shift();
-    if (!rows) throw new Error("Unexpected database query");
-    const chain: any = { then: (resolve: any, reject: any) => Promise.resolve(rows).then(resolve, reject) };
-    for (const method of ["from", "groupBy", "orderBy", "having", "limit"]) chain[method] = vi.fn(() => chain);
+  const select = vi.fn((projection?: any) => {
+    let table: unknown;
+    let joinedTable: unknown;
+    let rows: any[] | undefined;
+    const result = () => {
+      // These primary-owner fixtures have zero delegates, not zero reporting members.
+      if (table === organizationMembers && joinedTable === organizations && projection?.organization === organizations) return [];
+      rows ??= pending.shift();
+      if (!rows) throw new Error("Unexpected database query");
+      return rows;
+    };
+    const chain: any = { then: (resolve: any, reject: any) => Promise.resolve().then(result).then(resolve, reject) };
+    chain.from = vi.fn((source: unknown) => { table = source; return chain; });
+    chain.innerJoin = vi.fn((joined: unknown) => {
+      expect(table).toBe(organizationMembers);
+      expect(joined).toBe(organizations);
+      expect(projection?.organization).toBe(organizations);
+      joinedTable = joined;
+      return chain;
+    });
+    for (const method of ["groupBy", "orderBy", "having", "limit"]) chain[method] = vi.fn(() => chain);
     chain.where = vi.fn((condition: any) => { conditions.push(dialect.sqlToQuery(condition).sql); return chain; });
     return chain;
   });
@@ -151,7 +168,7 @@ describe("manager reporting router behavior", () => {
     expect(rows.map(row => row.licenceId)).toEqual(licences.map(item => item.id));
     expect(rows.every(row => !row.activityAvailable && !row.readinessAvailable && row.totalAttempts === 0)).toBe(true);
     expect(rows.filter(row => [14, 18].includes(row.licenceId)).every(row => row.accessEndsAt === null)).toBe(true);
-    expect(db.select).toHaveBeenCalledTimes(3);
+    expect(db.select).toHaveBeenCalledTimes(4); // Includes the empty delegated-membership lookup.
     expect(calculateReadinessSnapshot).not.toHaveBeenCalled();
     expect(db.pending).toEqual([]);
   });
@@ -174,7 +191,7 @@ describe("manager reporting router behavior", () => {
     expect(rows[1]).toMatchObject({ activatedAt: null, accessEndsAt: null, lastActiveAt: null });
     expect(rows[7]).toMatchObject({ activatedAt: null, accessEndsAt: null, lastActiveAt: null });
     expect(() => superjson.serialize(rows)).not.toThrow();
-    expect(db.select).toHaveBeenCalledTimes(3);
+    expect(db.select).toHaveBeenCalledTimes(4); // Includes the empty delegated-membership lookup.
     expect(calculateReadinessSnapshot).not.toHaveBeenCalled();
   });
   it("sanitizes invalid last activity without discarding otherwise valid activity", async () => {
@@ -214,7 +231,7 @@ describe("manager reporting router behavior", () => {
     const db = database([[{ ...org, termEnd: future }], [], [{ ...lic, reportingEndsAt: past }]]);
     await expect(teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 })).resolves.toEqual([]);
     expect(calculateReadinessSnapshot).not.toHaveBeenCalled();
-    expect(db.select).toHaveBeenCalledTimes(3);
+    expect(db.select).toHaveBeenCalledTimes(4); // Includes the empty delegated-membership lookup.
   });
   const diagnostics = [
     { memberId: 3, courseKey: "class1-water", score: 40, completedAt: new Date("2026-01-10") },

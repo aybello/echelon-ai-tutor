@@ -1,36 +1,29 @@
 import { TRPCError } from "@trpc/server";
 import { eq, inArray } from "drizzle-orm";
 import { organizations, teamFlexLicences } from "../../drizzle/schema";
-import { flexLicenceKeepsManagerAccess, type FlexReportingLicence } from "./flexReporting";
+import type { FlexReportingLicence } from "./flexReporting";
+import { listCurrentDelegatedOrganizations, managerOrganizationIsCurrent } from "./delegatedManagers";
 import { normalizeEmail } from "../_core/access";
 import { getDb } from "../db";
 
 export type ManagerContext = { user: { id: number; email?: string | null } | null; studentEmail?: string | null };
 export const managerEmailForContext = (ctx: ManagerContext) => normalizeEmail(ctx.user ? ctx.user.email : ctx.studentEmail);
-export function managerOrganizationIsCurrent(
-  row: { status: string; termEnd: Date | null; billingType: string },
-  now = new Date(),
-  flexLicences: readonly FlexReportingLicence[] = [],
-) {
-  if (!["active", "past_due"].includes(row.status)) return false;
-  if (row.termEnd && row.termEnd > now) return true;
-  // Paid Flex inventory may outlive either a Course Pass or an Annual term.
-  // This only admits the manager; learner entitlement still uses its own clock.
-  return flexLicences.some(licence => flexLicenceKeepsManagerAccess(licence, now));
-}
+export { managerOrganizationIsCurrent };
 
-/** managerEmail is authoritative. An unrelated legacy membership is not ownership. */
-export async function listManagedOrganizations(ctx: ManagerContext) {
+/** Primary ownership stays authoritative; only explicitly approved delegates join discovery. */
+export async function listManagedOrganizations(ctx: ManagerContext, options: { ownerOnly?: boolean } = {}) {
   const email = managerEmailForContext(ctx);
   if (!email) throw new TRPCError({ code: "UNAUTHORIZED", message: "Please sign in to access the team dashboard." });
   const db = await getDb();
   if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-  const rows = await db.select().from(organizations).where(eq(organizations.managerEmail, email));
+  const owned = await db.select().from(organizations).where(eq(organizations.managerEmail, email));
+  const delegated = options.ownerOnly ? [] : await listCurrentDelegatedOrganizations(db, email);
+  const rows = Array.from(new Map([...owned, ...delegated].map(row => [row.id, row])).values());
   return rows.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime() || b.id - a.id);
 }
 
-export async function resolveManagedOrganization(ctx: ManagerContext, options: { orgId?: number; purpose?: "dashboard" | "billing"; allowMissing?: boolean } = {}) {
-  const rows = await listManagedOrganizations(ctx);
+export async function resolveManagedOrganization(ctx: ManagerContext, options: { orgId?: number; purpose?: "dashboard" | "billing"; allowMissing?: boolean; ownerOnly?: boolean } = {}) {
+  const rows = await listManagedOrganizations(ctx, { ownerOnly: options.ownerOnly || options.purpose === "billing" });
   const billing = options.purpose === "billing";
   const now = new Date();
   const managedOrgIds = rows.map(row => row.id);

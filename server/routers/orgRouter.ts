@@ -43,6 +43,7 @@ import { trackEvent } from "../analytics";
 import { safeSupervisorCsvCell } from "../../shared/supervisorActionPlan";
 import { listManagedOrganizations, managerEmailForContext, resolveManagedOrganization } from "../teams/resolveManagerOrganization";
 import { calculateBaselinePracticeMetrics } from "../teams/baselinePracticeMetrics";
+import { changeDelegatedManager, DELEGATED_MANAGER_ROLE } from "../teams/delegatedManagers";
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
@@ -384,6 +385,14 @@ async function consumeOrReuseAnnualLicence(
   // Pessimistic lock: serialize licence allocation for this organization
   await tx.execute(sql`SELECT id FROM organizations WHERE id = ${org.id} FOR UPDATE`);
 
+  // A manager-only identity must not become a course-bearing row through an
+  // ordinary single/bulk assignment. Check before any ledger/subscription write.
+  const [membership] = await tx.select({ role: organizationMembers.role }).from(organizationMembers)
+    .where(and(eq(organizationMembers.orgId, org.id), eq(organizationMembers.email, email))).limit(1);
+  if (membership?.role === DELEGATED_MANAGER_ROLE) {
+    throw new TRPCError({ code: "CONFLICT", message: "This email is a delegated manager. Use a separate operator identity; manager-only memberships cannot consume operator licences." });
+  }
+
   // Check if this email is already counted in the current term
   const existingUsage = await tx
     .select({ id: organizationTermUsage.id })
@@ -442,6 +451,30 @@ export const orgRouter = router({
     (await listManagedOrganizations(ctx)).map(org => ({
       id: org.id, name: org.name, status: org.status, termEnd: org.termEnd,
     }))),
+  listDelegatedManagers: teamProcedure.query(async ({ ctx }) => {
+    const org = await resolveManagedOrganization(ctx, { orgId: ctx.selectedOrganizationId, ownerOnly: true });
+    const db = await getDb();
+    if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+    return db.select({ id: organizationMembers.id, email: organizationMembers.email, name: organizationMembers.name,
+      status: organizationMembers.status, assignedAt: organizationMembers.assignedAt, revokedAt: organizationMembers.revokedAt })
+      .from(organizationMembers).where(and(eq(organizationMembers.orgId, org!.id), eq(organizationMembers.role, DELEGATED_MANAGER_ROLE)));
+  }),
+  addDelegatedManager: teamProcedure
+    .input(z.object({ email: z.string().email(), name: z.string().trim().max(200).optional() }))
+    .mutation(async ({ ctx, input }) => {
+      const org = await resolveManagedOrganization(ctx, { orgId: ctx.selectedOrganizationId, ownerOnly: true });
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+      return changeDelegatedManager(db, org!.id, managerEmailForContext(ctx), normalizeEmail(input.email), "add", input.name);
+    }),
+  removeDelegatedManager: teamProcedure
+    .input(z.object({ email: z.string().email() }))
+    .mutation(async ({ ctx, input }) => {
+      const org = await resolveManagedOrganization(ctx, { orgId: ctx.selectedOrganizationId, ownerOnly: true });
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+      return changeDelegatedManager(db, org!.id, managerEmailForContext(ctx), normalizeEmail(input.email), "remove");
+    }),
   /**
    * getOrgOverview — four summary numbers for the dashboard header cards.
    * Seats assigned, active this week, average study indicator, strong indicators.
