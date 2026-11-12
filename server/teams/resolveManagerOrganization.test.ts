@@ -11,7 +11,7 @@ const org = (overrides = {}) => ({ id: 7, managerEmail: "manager@example.test", 
 const licence = (overrides = {}) => ({ organizationId: 7, status: "expired", accessEndsAt: past, reportingEndsAt: future, activationDeadline: past, ...overrides });
 function database(rows: any[], licences: any[]) {
   const where = vi.fn().mockResolvedValueOnce(rows).mockResolvedValueOnce(licences);
-  const db = { select: vi.fn(() => ({ from: vi.fn(() => ({ where })) })) };
+  const db = { select: vi.fn(() => ({ from: vi.fn(() => ({ where, innerJoin: () => ({ where: async () => [] }) })) })) };
   getDb.mockResolvedValue(db);
   return db;
 }

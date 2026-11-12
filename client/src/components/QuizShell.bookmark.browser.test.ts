@@ -56,6 +56,15 @@ beforeAll(async () => {
             export const toast=Object.assign(message=>window.toasts.push(message), {error(message){window.toasts.push(message)},warning(message){window.toasts.push(message)}});
           ` };
           if (args.path === "wouter") return { contents: "export const useSearch=()=>location.search;export const Link=({children})=>children;" };
+          if (args.path === "@/lib/courseNavigation") return { contents: `
+            export const getCourseInteractiveHref=(courseKey,search='')=>{
+              if (!courseKey || courseKey==='electrician-309a') return undefined;
+              const province=new URLSearchParams(search).get('province')?.toUpperCase();
+              const query=new URLSearchParams();
+              if (['ON','BC','AB','SK','MB','NS'].includes(province)) query.set('province',province);
+              return '/courses/'+encodeURIComponent(courseKey)+'/interactive'+(query.size?'?'+query:'');
+            };
+          ` };
           if (args.path === "@/components/PracticeSaveStatus") return { contents: `
             import {useSyncExternalStore} from 'react';
             const subscribe=fn=>{window.auditListeners.add(fn);return()=>window.auditListeners.delete(fn)};
