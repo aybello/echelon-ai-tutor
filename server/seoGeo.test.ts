@@ -84,7 +84,7 @@ describe("SEO and geographic landing-page contract", () => {
       "utf8"
     );
 
-    const ctaLabel = "Try 15 free questions";
+    const ctaLabel = "Try 15 free questions (OIT)";
     const ctaIndex = landing.indexOf(ctaLabel);
     expect(ctaIndex).toBeGreaterThan(-1);
     expect(landing).toContain("Which operator path would you like to explore?");
