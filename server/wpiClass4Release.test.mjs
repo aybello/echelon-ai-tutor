@@ -1,3 +1,4 @@
+import '../scripts/test-safety.cjs';
 import { describe, expect, it } from "vitest";
 import { hashWpiNewQuestionRows, hashWpiQuestionRows, planWpiClass4Release } from "../scripts/lib/wpiClass4Release.mjs";
 

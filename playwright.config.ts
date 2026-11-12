@@ -1,4 +1,11 @@
+import safety from "./scripts/test-safety.cjs";
 import { defineConfig, devices } from "@playwright/test";
+
+safety.assertPreloaded();
+const baseURL = process.env.E2E_BASE_URL ?? "http://127.0.0.1:3000";
+if (baseURL !== "http://127.0.0.1:3000") {
+  throw new Error("[test safety] browser tests require the locally started test server");
+}
 
 export default defineConfig({
   testDir: "./e2e",
@@ -12,7 +19,8 @@ export default defineConfig({
   expect: { timeout: 20_000 },
   reporter: process.env.CI ? [["line"], ["html", { open: "never" }]] : "list",
   use: {
-    baseURL: process.env.E2E_BASE_URL ?? "http://127.0.0.1:3000",
+    baseURL,
+    serviceWorkers: "block",
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
     video: "retain-on-failure",
@@ -23,7 +31,7 @@ export default defineConfig({
   webServer: {
     command: "node dist/index.js",
     url: "http://127.0.0.1:3000/api/health",
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: false,
     timeout: 120_000,
   },
 });

@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { execFile } from "node:child_process";
-import { mkdtemp, readFile, rm, stat } from "node:fs/promises";
+import { mkdtemp, readFile, rm, stat, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { promisify } from "node:util";
@@ -13,6 +13,45 @@ import { upsertExamDate, removeExamDate, recordExamReminder } from "./examDateRe
 import { deliverCurrentExamReminder } from "./jobs/examReminders";
 import { workKey } from "./jobs/durableWork";
 import { appRouter } from "./routers";
+
+// The tsx CLI uses an IPC socket, which the test safety preload correctly blocks.
+// Node's import hook runs TypeScript without opening that socket, while preserving
+// the inherited NODE_OPTIONS preload and the caller's environment.
+const runTsScript = (script: string, args: string[], env: NodeJS.ProcessEnv) => promisify(execFile)(
+  process.execPath, ["--import", "tsx", script, ...args], { timeout: 20_000, env },
+);
+
+it("runs a TypeScript subprocess with the safety preload and blocks Unix sockets", async () => {
+  const directory = await mkdtemp(path.join(tmpdir(), "exam-date-tsx-"));
+  const script = path.join(directory, "fixture.ts");
+  try {
+    await writeFile(script, `
+      import net from 'node:net';
+      const paths: string[] = ['/tmp/mysql.sock', '/tmp/arbitrary-test.sock'];
+      for (const socketPath of paths) {
+        try { net.connect(socketPath); throw new Error('socket was not blocked'); }
+        catch (error) { if (!(error as Error).message.includes('[test safety]')) throw error; }
+      }
+      console.log(JSON.stringify({
+        guarded: !!(globalThis as any).__echelonTestSafetyInstalled,
+        nodeOptions: process.env.NODE_OPTIONS, value: process.env.EXAM_DATE_TEST_VALUE,
+        args: process.argv.slice(2),
+      }));
+      if (process.argv.includes('--fail')) { console.error('synthetic failure'); process.exit(7); }
+    `);
+    const env = { ...process.env, EXAM_DATE_TEST_VALUE: "synthetic" };
+    const result = await runTsScript(script, ["--example", "value"], env);
+    expect(result.stderr).toBe("");
+    expect(JSON.parse(result.stdout)).toEqual({
+      guarded: true, nodeOptions: process.env.NODE_OPTIONS, value: "synthetic", args: ["--example", "value"],
+    });
+    await expect(runTsScript(script, ["--fail"], env)).rejects.toMatchObject({
+      code: 7, stderr: expect.stringContaining("synthetic failure"), stdout: expect.stringContaining('"guarded":true'),
+    });
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
 
 // Entitlement fixtures only; database and verified-identity resolution remain real.
 vi.mock("./_core/accessService", async original => ({
@@ -138,13 +177,12 @@ suite("exam-date concurrency and reminder integrity with a real database", () =>
         (1,'Release@Example.test','class1','2030-06-01 00:00:00','[30]',NULL,'2026-01-01'),
         (2,'release@example.test','class1-water','2030-06-01 12:00:00','[14]','class1-water','2026-01-02')`);
       sourceUrl.pathname = `/${fixture}`;
-      const run = async (args: string[] = [], approved = false) => promisify(execFile)(
-        path.resolve("node_modules/.bin/tsx"), ["scripts/db/reconcileExamDates.ts", ...args], {
-          timeout: 20_000, env: { ...process.env, DATABASE_URL: sourceUrl.toString(),
+      const run = async (args: string[] = [], approved = false) => runTsScript(
+        "scripts/db/reconcileExamDates.ts", args, { ...process.env, DATABASE_URL: sourceUrl.toString(),
             EXAM_DATE_RECONCILIATION_APPROVED: approved ? "APPLY_REVIEWED_EXAM_DATES" : "",
             EXAM_DATE_WRITERS_PAUSED: approved ? "ALL_WRITERS_PAUSED" : "",
             MIGRATION_BACKUP_CONFIRMED: approved ? "BACKUP_VERIFIED" : "" },
-        });
+      );
       const initial = JSON.parse((await run()).stdout);
       expect(initial.rowCount).toBe(2);
       expect(initial.changes[0].keeper.remindersSent).toBe("[30,14]");

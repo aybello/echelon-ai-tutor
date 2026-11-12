@@ -1,3 +1,4 @@
+import '../test-safety.cjs';
 import assert from "node:assert/strict";
 import test from "node:test";
 import { hashWpiNewQuestionRows, hashWpiQuestionRows } from "../lib/wpiClass4Release.mjs";

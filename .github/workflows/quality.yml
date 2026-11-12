@@ -14,6 +14,7 @@ jobs:
     timeout-minutes: 20
     env:
       DOTENV_CONFIG_PATH: /dev/null
+      ECHELON_TEST_DATABASE: I_UNDERSTAND_THIS_IS_A_DISPOSABLE_LOCAL_DATABASE
     services:
       mysql:
         image: mysql:8.4
@@ -44,6 +45,8 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - name: Exercise test safety boundary without inherited credentials
+        run: env -i PATH="$PATH" HOME="$HOME" node --test scripts/test-safety.test.mjs
       - name: Verify enforced dependency guardrails
         run: pnpm deps:verify-guardrails
       - name: Block moderate, high and critical production dependency advisories
@@ -139,7 +142,7 @@ jobs:
         run: pnpm exec playwright install --with-deps chromium
       - name: Deterministic unit and acceptance tests
         run: >-
-          pnpm exec vitest run --maxWorkers 2 --minWorkers 1
+          node --require ./scripts/test-safety.cjs ./node_modules/vitest/vitest.mjs run --maxWorkers 2 --minWorkers 1
           --exclude '**/*.integration.test.ts'
           --exclude server/_core/access.test.ts
           --exclude server/accessService.test.ts
@@ -176,7 +179,7 @@ jobs:
           SMTP_PASS: test-only-placeholder
       - name: Database-backed access, OTP and Stripe lifecycle tests
         run: >-
-          pnpm exec vitest run --maxWorkers 2 --minWorkers 1
+          node --require ./scripts/test-safety.cjs ./node_modules/vitest/vitest.mjs run --maxWorkers 2 --minWorkers 1
           server/_core/access.test.ts
           server/accessService.test.ts
           server/emailOtp.test.ts
@@ -210,14 +213,14 @@ jobs:
           STRIPE_SECRET_KEY: sk_test_ci_placeholder
           STRIPE_WEBHOOK_SECRET: whsec_ci_placeholder
       - name: Database-backed CEU self-paced completion
-        run: pnpm exec vitest run --maxWorkers 2 --minWorkers 1 server/ceuLearning.integration.test.ts
+        run: node --require ./scripts/test-safety.cjs ./node_modules/vitest/vitest.mjs run --maxWorkers 2 --minWorkers 1 server/ceuLearning.integration.test.ts
         env:
           NODE_ENV: test
           JWT_SECRET: test-only-not-for-production
           DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
           CEU_INTEGRATION_TEST_DB: "1"
       - name: Database-backed durable blog recovery and atomic publication
-        run: pnpm exec vitest run --maxWorkers 2 --minWorkers 1 server/blogWorkflow.integration.test.ts
+        run: node --require ./scripts/test-safety.cjs ./node_modules/vitest/vitest.mjs run --maxWorkers 2 --minWorkers 1 server/blogWorkflow.integration.test.ts
         env:
           CI: "1"
           NODE_ENV: test
@@ -225,7 +228,7 @@ jobs:
           BLOG_INTEGRATION_TEST_DB: "1"
       - name: Database-backed audit auth, payment, Teams and partnership invariants
         run: >-
-          pnpm exec vitest run --maxWorkers 2 --minWorkers 1
+          node --require ./scripts/test-safety.cjs ./node_modules/vitest/vitest.mjs run --maxWorkers 2 --minWorkers 1
           server/auth.atomicVerification.integration.test.ts
           server/stripe/paymentInvariant.integration.test.ts
           server/teams/auditTeams.integration.test.ts
@@ -243,19 +246,19 @@ jobs:
           STRIPE_SECRET_KEY: sk_test_ci_placeholder
           STRIPE_WEBHOOK_SECRET: whsec_ci_placeholder
       - name: Database-backed Jobs state, vacancy filters and concurrent ownership
-        run: pnpm exec vitest run --maxWorkers 2 --minWorkers 1 server/jobBoardReliability.integration.test.ts
+        run: node --require ./scripts/test-safety.cjs ./node_modules/vitest/vitest.mjs run --maxWorkers 2 --minWorkers 1 server/jobBoardReliability.integration.test.ts
         env:
           CI: "1"
           NODE_ENV: test
           DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
           AUDIT_INTEGRATION_TEST_DB: "1"
       - name: Database-backed OIT import and batch release
-        run: pnpm exec vitest run --maxWorkers 2 --minWorkers 1 server/oitImporter.integration.test.ts
+        run: node --require ./scripts/test-safety.cjs ./node_modules/vitest/vitest.mjs run --maxWorkers 2 --minWorkers 1 server/oitImporter.integration.test.ts
         env:
           DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
           REQUIRE_OIT_IMPORTER_DB: "1"
       - name: Database-backed learner and manager course reporting
-        run: pnpm exec vitest run --maxWorkers 2 --minWorkers 1 server/courseReporting.integration.test.ts
+        run: node --require ./scripts/test-safety.cjs ./node_modules/vitest/vitest.mjs run --maxWorkers 2 --minWorkers 1 server/courseReporting.integration.test.ts
         env:
           NODE_ENV: test
           JWT_SECRET: test-only-not-for-production
@@ -264,7 +267,7 @@ jobs:
           LEARNER_INTEGRATION_TEST_DB: "1"
           STRIPE_SECRET_KEY: sk_test_ci_placeholder
       - name: Database-backed practice paging, module filters and mock retirement
-        run: pnpm exec vitest run --maxWorkers 2 --minWorkers 1 server/practicePaging.integration.test.ts server/learnerBankModules.integration.test.ts
+        run: node --require ./scripts/test-safety.cjs ./node_modules/vitest/vitest.mjs run --maxWorkers 2 --minWorkers 1 server/practicePaging.integration.test.ts server/learnerBankModules.integration.test.ts
         env:
           NODE_ENV: test
           JWT_SECRET: test-only-not-for-production
@@ -303,7 +306,7 @@ jobs:
           NODE_ENV: test
           DATABASE_URL: mysql://root:root@127.0.0.1:3306/echelon_ci
       - name: Browser-test public Jobs, chlorine, OTP controls and Process Guide regressions
-        run: pnpm exec playwright test e2e/jobs-accessibility.spec.ts e2e/jobs-reliability.spec.ts e2e/chlorine-calculator.spec.ts e2e/otp-controls.spec.ts e2e/process-guide-three.spec.ts e2e/formula-contrast.spec.ts e2e/public-control-accessibility.spec.ts
+        run: node --require ./scripts/test-safety.cjs ./node_modules/@playwright/test/cli.js test e2e/jobs-accessibility.spec.ts e2e/jobs-reliability.spec.ts e2e/chlorine-calculator.spec.ts e2e/otp-controls.spec.ts e2e/process-guide-three.spec.ts e2e/formula-contrast.spec.ts e2e/public-control-accessibility.spec.ts
         env:
           CI: "1"
           NODE_ENV: test
@@ -315,7 +318,7 @@ jobs:
           STRIPE_SECRET_KEY: sk_test_ci_placeholder
           STRIPE_WEBHOOK_SECRET: whsec_ci_placeholder
       - name: Browser-test Teams access, purchase confirmation, Equipment Lab and learner journeys
-        run: pnpm exec playwright test e2e/teams-course-pass.spec.ts e2e/equipment-lab-three.spec.ts e2e/logout.spec.ts e2e/purchase-confirmation.spec.ts e2e/google-ads-measurement.spec.ts e2e/ceu-learning.spec.ts e2e/audit-repairs.spec.ts e2e/quiz-screen-fit.spec.ts e2e/course-chunk-recovery.spec.ts e2e/practice-topic-recovery.spec.ts e2e/us-routing.spec.ts e2e/nova-scotia-selection.spec.ts
+        run: node --require ./scripts/test-safety.cjs ./node_modules/@playwright/test/cli.js test e2e/teams-course-pass.spec.ts e2e/equipment-lab-three.spec.ts e2e/logout.spec.ts e2e/purchase-confirmation.spec.ts e2e/google-ads-measurement.spec.ts e2e/ceu-learning.spec.ts e2e/audit-repairs.spec.ts e2e/quiz-screen-fit.spec.ts e2e/course-chunk-recovery.spec.ts e2e/practice-topic-recovery.spec.ts e2e/us-routing.spec.ts e2e/nova-scotia-selection.spec.ts
         env:
           CI: "1"
           NODE_ENV: test
@@ -336,7 +339,7 @@ jobs:
       - name: Browser-test the approved workspaces and offline review
         run: |
           node prototypes/ui-ux-preview/build-single-file.mjs /tmp/echelon-ui-preview.html
-          pnpm exec playwright test --config prototypes/ui-ux-preview/playwright.config.ts
+          node --require ./scripts/test-safety.cjs ./node_modules/@playwright/test/cli.js test --config prototypes/ui-ux-preview/playwright.config.ts
         env:
           CI: "1"
           UI_PREVIEW_HTML: /tmp/echelon-ui-preview.html

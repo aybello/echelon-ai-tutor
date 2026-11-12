@@ -16,7 +16,7 @@ import mysql from "mysql2/promise";
 import { activeScriptConnection } from "./lib/activeScriptConnection.mjs";
 import { AUTOMATED_BLOG_TAG, evaluateBlogAutomationHealth, readBlogHeartbeatSnapshot } from "./lib/blogAutomationHealth.mjs";
 import {
-  isolatedTestEnv, isolatedBrowserTestEnv, ciDeterministicExcludes, runCommand, commandProblem, evaluateVitest, createAuditBudget,
+  isolatedTestEnv, isolatedBrowserTestEnv, ciDeterministicExcludes, isolatedVitestArgs, runCommand, commandProblem, evaluateVitest, createAuditBudget,
   validateQuizReply, validateQuestion, classifyTutorReply, evaluateTutorSequence,
   tutorHistoryAssessment, validateJourneyReport, evaluateServingReleaseIdentity, summarizeResults,
 } from "./lib/dailyAudit.mjs";
@@ -179,8 +179,7 @@ try {
     // path too, using an untracked wrapper around the real repository config.
     const configPath = resolve(outputDir, "isolated-vitest.config.mjs");
     await writeFile(configPath, `import base from ${JSON.stringify(pathToFileURL(resolve(ROOT, "vitest.config.ts")).href)};\nexport default { ...base, envFile: false, envDir: ${JSON.stringify(testHome)} };\n`, { mode: 0o600 });
-    const args = ["--import", "tsx", resolve(ROOT, "node_modules/vitest/vitest.mjs"), "run", "--config", configPath, "--maxWorkers", "2", "--minWorkers", "1", ...excludes.flatMap(pattern => ["--exclude", pattern]),
-      "--reporter=json", `--outputFile=${reportPath}`];
+    const args = isolatedVitestArgs(ROOT, configPath, excludes, reportPath);
     const run = await command("unit", "node", args, 12 * 60_000, isolatedBrowserTestEnv(process.env, testHome));
     let report = null;
     try { report = await readJson(reportPath); } catch { /* Evaluator reports missing/malformed evidence. */ }
