@@ -60,14 +60,21 @@ function install() {
   for (const name of ['spawn', 'spawnSync', 'execFile', 'execFileSync', 'exec', 'execSync', 'fork']) {
     const original = child[name];
     const wrapped = function(...args) {
-      // The optional options object follows the command and optional arguments.
+      // Only file/spawn/fork APIs have an optional argument list. A nullish
+      // value there is an argument-list placeholder, not an options object.
       let index = 1;
-      if (Array.isArray(args[index])) index++;
+      const hasArgList = name !== 'exec' && name !== 'execSync';
+      if (hasArgList && (Array.isArray(args[index]) || args[index] == null)) index++;
+      // Let Node validate invalid values, including spawn's null options.
+      if ((name === 'spawn' || name === 'spawnSync') && args[index] === null) return original.apply(this, args);
+      if (hasArgList && Array.isArray(args[index])) return original.apply(this, args);
+      if (args[index] != null && typeof args[index] !== 'object' && typeof args[index] !== 'function') return original.apply(this, args);
+      if (typeof args[index] === 'function' && name !== 'exec' && name !== 'execFile') return original.apply(this, args);
       const supplied = args[index] && typeof args[index] === 'object' ? args[index] : {};
       const options = { ...supplied, env: { ...(supplied.env || process.env),
         NODE_OPTIONS: process.env.NODE_OPTIONS, DOTENV_CONFIG_PATH: '/dev/null' } };
-      if (supplied === args[index]) args[index] = options;
-      else args.splice(index, 0, options);
+      if (typeof args[index] === 'function') args.splice(index, 0, options);
+      else args[index] = options;
       return original.apply(this, args);
     };
     // Node's custom hook returns {stdout, stderr}, attaches child to the

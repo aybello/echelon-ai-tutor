@@ -116,6 +116,98 @@ test('callback and promisified exec/execFile retain outputs, errors, child and r
   }
 });
 
+test('exec and execFile callbacks and promises support nullish options and argument placeholders', { timeout: 20000 }, async () => {
+  const { exec, execFile } = await import('node:child_process');
+  const { promisify } = await import('node:util');
+  const command = `${JSON.stringify(process.execPath)} -e "process.stdout.write('out')"`;
+  const fileArgs = [process.execPath, ['-e', "process.stdout.write('out')"]];
+  // A no-argument executable also exercises omitted or nullish argument lists.
+  for (const [fn, args, expected] of [
+    [exec, [command], 'out'],
+    [execFile, fileArgs, 'out'],
+    [execFile, ['/bin/echo'], '\n'],
+    [execFile, ['/bin/echo', null], '\n'],
+    [execFile, ['/bin/echo', undefined], '\n'],
+  ]) {
+    for (const suffix of [[], [null], [undefined]]) {
+      const callback = await new Promise((resolve, reject) => {
+        let timer;
+        const child = fn(...args, ...suffix, (error, stdout, stderr) => {
+          clearTimeout(timer);
+          error ? reject(error) : resolve({ stdout, stderr });
+        });
+        timer = setTimeout(() => { child.kill(); reject(new Error('callback did not settle')); }, 3000);
+      });
+      assert.deepEqual(callback, { stdout: expected, stderr: '' });
+      const pending = promisify(fn)(...args, ...suffix);
+      assert.ok(pending.child && typeof pending.child.pid === 'number');
+      let timer;
+      try {
+        const timeout = new Promise((_, reject) => { timer = setTimeout(() => { pending.child.kill(); reject(new Error('promise did not settle')); }, 3000); });
+        assert.deepEqual(await Promise.race([pending, timeout]), { stdout: expected, stderr: '' });
+      } finally { clearTimeout(timer); }
+    }
+  }
+});
+
+test('nullish exec options retain error outputs and the descendant guard', { timeout: 10000 }, async () => {
+  const { exec, execFile } = await import('node:child_process');
+  const { promisify } = await import('node:util');
+  const script = "process.stdout.write(String(!!globalThis.__echelonTestSafetyInstalled));process.stderr.write('err');process.exit(7)";
+  for (const [fn, args] of [
+    [exec, [`${JSON.stringify(process.execPath)} -e ${JSON.stringify(script)}`]],
+    [execFile, [process.execPath, ['-e', script]]],
+  ]) {
+    for (const option of [null, undefined]) {
+      await new Promise((resolve, reject) => fn(...args, option, (error, stdout, stderr) => {
+        try { assert.equal(error.code, 7); assert.equal(stdout, 'true'); assert.equal(stderr, 'err'); resolve(); } catch (e) { reject(e); }
+      }));
+      await assert.rejects(promisify(fn)(...args, option), error => error.code === 7 && error.stdout === 'true' && error.stderr === 'err');
+    }
+  }
+});
+
+test('spawn, fork and synchronous overloads preserve argument placeholders, guard and stdin', { timeout: 10000 }, async () => {
+  const { spawn, spawnSync, fork, execSync, execFileSync } = await import('node:child_process');
+  const fs = await import('node:fs');
+  const os = await import('node:os');
+  for (const placeholder of [null, undefined]) {
+    // With no argument list, Node reads its program from stdin.
+    const check = spawnSync(process.execPath, placeholder, { input: "process.stdout.write(String(!!globalThis.__echelonTestSafetyInstalled))", encoding: 'utf8', env: {} });
+    assert.equal(check.status, 0, check.stderr);
+    assert.equal(check.stdout, 'true', check.stderr);
+    assert.equal(execFileSync('/bin/cat', placeholder, { input: 'stdin', encoding: 'utf8' }), 'stdin');
+    const asyncChild = spawn('/bin/echo', placeholder, { env: {} });
+    let output = '';
+    asyncChild.stdout.setEncoding('utf8').on('data', chunk => { output += chunk; });
+    const code = await new Promise((resolve, reject) => { asyncChild.once('error', reject); asyncChild.once('close', resolve); });
+    assert.equal(code, 0);
+    assert.equal(output, '\n');
+  }
+  const cat = spawn('/bin/cat', { env: {} });
+  let catOutput = '';
+  cat.stdout.setEncoding('utf8').on('data', chunk => { catOutput += chunk; });
+  const catExit = new Promise((resolve, reject) => { cat.once('error', reject); cat.once('close', resolve); });
+  cat.stdin.end('streamed stdin');
+  assert.equal(await catExit, 0);
+  assert.equal(catOutput, 'streamed stdin');
+  assert.equal(execSync('/bin/cat', { input: 'stdin', encoding: 'utf8' }), 'stdin');
+  assert.equal(execFileSync('/bin/cat', { input: 'stdin', encoding: 'utf8' }), 'stdin');
+  assert.throws(() => spawnSync('/bin/echo', [], null), { code: 'ERR_INVALID_ARG_TYPE' });
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'echelon-safety-fork-'));
+  try {
+    const fixture = path.join(dir, 'fixture.cjs');
+    fs.writeFileSync(fixture, "process.send({guard: !!globalThis.__echelonTestSafetyInstalled, dotenv: process.env.DOTENV_CONFIG_PATH});\n");
+    for (const args of [[null, { env: {}, silent: true }], [undefined, { env: {}, silent: true }], [[], null], [[], undefined]]) {
+      const child = fork(fixture, ...args);
+      const exited = new Promise((resolve, reject) => { child.once('error', reject); child.once('exit', code => code === 0 ? resolve() : reject(new Error(`fork exited ${code}`))); });
+      const message = await new Promise((resolve, reject) => { child.once('error', reject); child.once('message', resolve); });
+      assert.deepEqual(message, { guard: true, dotenv: '/dev/null' });
+      await exited;
+    }
+  } finally { fs.rmSync(dir, { recursive: true, force: true }); }
+});
+
 test('late guard installation rejects preloaded direct, promise and pool mysql2 classes', () => {
   for (const setup of [
     "const m=require('mysql2'); const f=m.createConnection",
