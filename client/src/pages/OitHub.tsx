@@ -43,6 +43,12 @@ export default function OitHub() {
           account or credit card is required for the free preview. A permanent
           pass for one selected OIT course is CA$49.
         </p>
+        <Link
+          href="/interactive-learning"
+          className="mt-5 inline-block rounded-lg font-semibold text-teal-700 underline underline-offset-4 hover:text-teal-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2"
+        >
+          Try an introductory interactive example →
+        </Link>
       </section>
 
       <section

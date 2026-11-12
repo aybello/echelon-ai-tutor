@@ -53,6 +53,7 @@ const PurchaseSuccess = lazy(() => import("./pages/PurchaseSuccess"));
 const SubscriptionSuccess = lazy(() => import("./pages/SubscriptionSuccess"));
 const WpiLanding = lazy(() => import("./pages/WpiLanding"));
 const OitHub = lazy(() => import("./pages/OitHub"));
+const InteractiveLearning = lazy(() => import("./pages/InteractiveLearning"));
 const MagicLinkConsume = lazy(() => import("./pages/MagicLinkConsume"));
 const OtpLogin = lazy(() => import("./pages/OtpLogin"));
 const Teams = lazy(() => import("./pages/Teams"));
@@ -264,6 +265,7 @@ function Router() {
         <Route path={"/"} component={Landing} />
         <Route path={"/quiz"} component={Home} />
         <Route path={"/oit"} component={OitHub} />
+        <Route path={"/interactive-learning"} component={InteractiveLearning} />
         <Route path={"/guides"} component={Guides} />
         <Route path={"/process"} component={Process} />
         <Route path={"/wastewater"} component={Wastewater} />
