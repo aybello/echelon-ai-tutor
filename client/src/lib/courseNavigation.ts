@@ -5,7 +5,7 @@ import { withUSStudyContext } from "@shared/usStudyContext";
 /** Use the quiz's registry key, never a derived label or path, for the activity surface. */
 export function getCourseInteractiveHref(courseKey: string | undefined, search: string): string | undefined {
   const course = resolveCourseKey(courseKey ?? "");
-  if (!course?.isActive) return undefined;
+  if (!course?.isActive || course.courseKey === "electrician-309a") return undefined;
   const province = funnelProvince(new URLSearchParams(search).get("province"));
   const query = new URLSearchParams();
   if (province) query.set("province", province);

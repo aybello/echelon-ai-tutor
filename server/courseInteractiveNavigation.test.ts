@@ -17,7 +17,7 @@ describe("course-specific interactive navigation", () => {
     expect(app.indexOf(landing)).toBeGreaterThan(app.indexOf(activity));
   });
 
-  it("links every active registry quiz to its canonical course-specific route", () => {
+  it("links supported active registry quizzes to their canonical course-specific routes", () => {
     for (const course of getAllCourses().filter((item) => item.isActive)) {
       const routeMatch = app.match(new RegExp(`<Route path=\\{"${course.quizPath}"\\} component=\\{(\\w+)\\} \\/>`));
       expect(routeMatch, course.quizPath).not.toBeNull();
@@ -30,11 +30,23 @@ describe("course-specific interactive navigation", () => {
       expect(examType, course.quizPath).toBeTruthy();
       expect(resolveCourseKey(examType!)?.courseKey, course.quizPath).toBe(course.courseKey);
       const href = getCourseInteractiveHref(examType, "");
+      if (course.courseKey === "electrician-309a") {
+        expect(href).toBeUndefined();
+        continue;
+      }
       expect(href).toBe(`/courses/${course.courseKey}/interactive`);
       expect(classifyAppRoute(href!).kind).toBe("public");
     }
     expect(shell).toContain("getCourseInteractiveHref(canonicalCourse?.courseKey, search)");
     expect(shell).toContain('className="practice-interactive-link">Interactive activities</Link>');
+  });
+
+  it("does not advertise interactive activities for the active electrician course", () => {
+    expect(resolveCourseKey("electrician-309a")?.isActive).toBe(true);
+    expect(getCourseInteractiveHref("electrician-309a", "province=ON")).toBeUndefined();
+    expect(resolveCourseKey("class1-ww")?.isActive).toBe(true);
+    expect(getCourseInteractiveHref("class1-ww", "province=ON"))
+      .toBe("/courses/class1-ww/interactive?province=ON");
   });
 
   it("normalizes aliases and preserves the existing province or US study context", () => {

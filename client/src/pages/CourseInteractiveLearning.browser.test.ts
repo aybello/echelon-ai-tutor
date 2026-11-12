@@ -19,8 +19,10 @@ beforeAll(async () => {
       contents: `
         import React from 'react';
         import { createRoot } from 'react-dom/client';
-        import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+        import { QueryClient, QueryClientProvider, onlineManager } from '@tanstack/react-query';
         import CourseInteractiveLearning from './client/src/pages/CourseInteractiveLearning';
+        onlineManager.setOnline(!window.__startOffline);
+        window.__setOnline = online => { onlineManager.setOnline(online); if (online) window.dispatchEvent(new Event('online')); };
         const client = new QueryClient({defaultOptions:{queries:{retry:false}}});
         window.__client = client;
         const root = createRoot(document.getElementById('root'));
@@ -95,6 +97,7 @@ async function withCourse(
   responses: Record<string, MockResponse>,
   run: (page: Page) => Promise<void>,
   search = "",
+  startOffline = false,
 ) {
   const page = await browser.newPage();
   const requests: string[] = [];
@@ -104,9 +107,10 @@ async function withCourse(
   await page.route("**/*", route => route.abort("blockedbyclient"));
   try {
     await page.setContent('<!doctype html><html><body><div id="root"></div></body></html>');
-    await page.evaluate(({ course, search, responses }) => {
+    await page.evaluate(({ course, search, responses, startOffline }) => {
       const state = window as any;
       state.__route = { course, search };
+      state.__startOffline = startOffline;
       state.__responses = responses;
       state.__calls = [];
       state.__mode = "success";
@@ -138,7 +142,7 @@ async function withCourse(
           if (!state.__ignoreAbort) signal.addEventListener("abort", () => reject(new DOMException("Aborted", "AbortError")), { once: true });
         });
       };
-    }, { course, search, responses });
+    }, { course, search, responses, startOffline });
     await page.addScriptTag({ content: script });
     await run(page);
   } finally {
@@ -234,6 +238,81 @@ describe("CourseInteractiveLearning isolated browser", () => {
       await page.getByRole("button", { name: "Try again" }).click();
       await page.getByText("Synthetic Recovered question?", { exact: false }).first().waitFor();
       await page.getByText(/available free preview/i).waitFor();
+    });
+  });
+
+  it("shows an actionable offline state on initial pause and retries with the current token", async () => {
+    await withCourse("oit", { oit: response("Offline recovery") }, async page => {
+      await page.getByRole("alert").filter({ hasText: /offline.*check your connection/i }).waitFor();
+      expect(await calls(page)).toEqual([]);
+      expect(await page.getByText(/loading practice activities/i).count()).toBe(0);
+      await page.evaluate(() => localStorage.setItem("echelon_access_token", "new-offline-token"));
+      await page.getByRole("button", { name: "Try again" }).click();
+      await page.getByRole("alert").filter({ hasText: /offline/i }).waitFor();
+      expect(await calls(page)).toEqual([]);
+      await page.evaluate(() => (window as any).__setOnline(true));
+      await page.getByText("Synthetic Offline recovery question?", { exact: false }).first().waitFor();
+      expect((await calls(page)).every(input => input.accessToken === "new-offline-token")).toBe(true);
+    }, "", true);
+  });
+
+  it("hides cached activities during an offline recheck and reauthorizes on reconnect with the latest token", async () => {
+    await withCourse("oit", { oit: response("Cached paid") }, async page => {
+      await page.getByText("Synthetic Cached paid question?", { exact: false }).first().waitFor();
+      const before = (await calls(page)).length;
+      await page.evaluate(() => {
+        const state = window as any;
+        state.__mode = "hold";
+        state.__ignoreAbort = true;
+        window.dispatchEvent(new Event("focus"));
+      });
+      await expect.poll(async () => (await calls(page)).length).toBeGreaterThan(before);
+      await page.evaluate(() => {
+        const state = window as any;
+        state.__setOnline(false);
+        state.__responses.oit = { questions: [{ question: "Synthetic Reconnected question?", options: ["Synthetic A", "Synthetic B"], correctIndex: 0, explanation: "Synthetic recovery." }], locked: true };
+        window.dispatchEvent(new Event("focus"));
+      });
+      await page.getByRole("alert").filter({ hasText: /offline/i }).waitFor();
+      expect(await page.locator("body").evaluate(body => body.textContent?.includes("Synthetic Cached paid question?"))).toBe(false);
+      const beforeReconnect = (await calls(page)).length;
+      await page.evaluate(() => {
+        localStorage.setItem("echelon_access_token", "reconnected-token"); // No storage event in the same tab.
+        (window as any).__setOnline(true);
+      });
+      await expect.poll(async () => (await calls(page)).some(input => input.accessToken === "reconnected-token")).toBe(true);
+      expect((await calls(page)).slice(beforeReconnect).every(input => input.accessToken === "reconnected-token")).toBe(true);
+      await page.evaluate(() => { (window as any).__pending.shift()(); }); // Old request ignores abort.
+      await page.getByRole("status").filter({ hasText: /loading/i }).waitFor();
+      expect(await page.getByText("Synthetic Cached paid question?", { exact: false }).count()).toBe(0);
+      await page.evaluate(() => {
+        const state = window as any;
+        state.__mode = "success";
+        state.__pending.splice(0).forEach((release: () => void) => release());
+      });
+      await page.getByText("Synthetic Reconnected question?", { exact: false }).first().waitFor();
+      await page.getByText(/available free preview/i).waitFor();
+      expect(await page.getByText("Synthetic Cached paid question?", { exact: false }).count()).toBe(0);
+    });
+  });
+
+  it("rereads a changed token on error retry rather than refetching the old key", async () => {
+    await withCourse("oit", { oit: response("After retry") }, async page => {
+      await page.getByText("Synthetic After retry question?", { exact: false }).first().waitFor();
+      await page.evaluate(() => {
+        (window as any).__mode = "error";
+        window.dispatchEvent(new Event("focus"));
+      });
+      await page.getByRole("alert").waitFor();
+      const before = (await calls(page)).length;
+      await page.evaluate(() => {
+        localStorage.setItem("echelon_access_token", "retry-token");
+        (window as any).__mode = "success";
+      });
+      await page.getByRole("button", { name: "Try again" }).click();
+      await page.getByText("Synthetic After retry question?", { exact: false }).first().waitFor();
+      expect((await calls(page)).slice(before).length).toBeGreaterThan(0);
+      expect((await calls(page)).slice(before).every(input => input.accessToken === "retry-token")).toBe(true);
     });
   });
 

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { getQueryKey } from "@trpc/react-query";
 import { Link, useRoute, useSearch } from "wouter";
@@ -42,7 +42,8 @@ function CoursePractice({ course }: { course: CourseEntry }) {
   // paging, filters or client-selected aliases: the server decides entitlement.
   const query = trpc.quiz.getQuestions.useQuery(
     { bankKey: course.questionBankKey, accessToken, previewSurface: "practice" },
-    { staleTime: 0, gcTime: 0, refetchOnMount: "always", retry: 2, retryDelay: 1500 },
+    // Reconnect is handled below so it rereads the token before refetching.
+    { staleTime: 0, gcTime: 0, refetchOnMount: "always", refetchOnReconnect: false, retry: 2, retryDelay: 1500 },
   );
   const input = { bankKey: course.questionBankKey, accessToken, previewSurface: "practice" as const };
   const queryKey = getQueryKey(trpc.quiz.getQuestions, input, "query");
@@ -56,26 +57,27 @@ function CoursePractice({ course }: { course: CourseEntry }) {
   // Cookie identities are not part of the tRPC key, and entitlements can change
   // without a token change. Reauthorize on return and periodically while visible.
   // Rechecking discards the mounted drill and its unsaved state.
-  useEffect(() => {
+  const refresh = useCallback(() => {
     const input = { bankKey: course.questionBankKey, accessToken, previewSurface: "practice" as const };
     const queryKey = getQueryKey(trpc.quiz.getQuestions, input, "query");
-    const refresh = () => {
-      const generation = ++refreshGeneration.current;
-      setReauthorizing(true);
-      const nextToken = readAccessToken();
-      // A fetch started by another observer may predate the identity event.
-      // Cancel it even when no data is cached (cancelRefetch alone won't).
-      void queryClient.cancelQueries({ queryKey, exact: true });
-      if (nextToken !== accessToken) {
-        const nextKey = getQueryKey(trpc.quiz.getQuestions, { ...input, accessToken: nextToken }, "query");
-        void queryClient.resetQueries({ queryKey: nextKey, exact: true });
-        setAccessToken(nextToken);
-      } else {
-        void queryClient.refetchQueries({ queryKey, exact: true }, { cancelRefetch: true }).finally(() => {
-          if (refreshGeneration.current === generation) setReauthorizing(false);
-        });
-      }
-    };
+    const generation = ++refreshGeneration.current;
+    setReauthorizing(true);
+    const nextToken = readAccessToken();
+    // A fetch started by another observer may predate the identity event.
+    // Cancel it even when no data is cached (cancelRefetch alone won't).
+    void queryClient.cancelQueries({ queryKey, exact: true });
+    if (nextToken !== accessToken) {
+      const nextKey = getQueryKey(trpc.quiz.getQuestions, { ...input, accessToken: nextToken }, "query");
+      void queryClient.resetQueries({ queryKey: nextKey, exact: true });
+      setAccessToken(nextToken);
+    } else {
+      void queryClient.refetchQueries({ queryKey, exact: true }, { cancelRefetch: true }).finally(() => {
+        if (refreshGeneration.current === generation) setReauthorizing(false);
+      });
+    }
+  }, [accessToken, course.questionBankKey, queryClient]);
+
+  useEffect(() => {
     // Other components may refresh identity or entitlement without changing the
     // token. A fresh server response is a signal to reauthorize this working set,
     // not a substitute for the getQuestions access decision.
@@ -95,6 +97,7 @@ function CoursePractice({ course }: { course: CourseEntry }) {
     };
     window.addEventListener("focus", refresh);
     window.addEventListener("pageshow", refresh);
+    window.addEventListener("online", refresh);
     window.addEventListener("storage", onStorage);
     document.addEventListener("visibilitychange", onVisible);
     const timer = window.setInterval(onVisible, 5 * 60_000);
@@ -104,11 +107,12 @@ function CoursePractice({ course }: { course: CourseEntry }) {
       unsubscribe();
       window.removeEventListener("focus", refresh);
       window.removeEventListener("pageshow", refresh);
+      window.removeEventListener("online", refresh);
       window.removeEventListener("storage", onStorage);
       document.removeEventListener("visibilitychange", onVisible);
       window.clearInterval(timer);
     };
-  }, [accessToken, course.questionBankKey, queryClient]);
+  }, [refresh, queryClient]);
 
   // The adapter receives only the server-authorized working set.
   const examples = useMemo(
@@ -118,10 +122,16 @@ function CoursePractice({ course }: { course: CourseEntry }) {
 
   // Never expose cached data during any reauthorization (including external
   // invalidation). Errors discard the mounted drill even if stale data remains.
+  if (query.fetchStatus === "paused") return (
+    <div className="course-interactive__status" role="alert">
+      <p>Practice activities are unavailable while offline. Check your connection and try again.</p>
+      <button type="button" onClick={refresh}>Try again</button>
+    </div>
+  );
   if (query.isError) return (
     <div className="course-interactive__status" role="alert">
       <p>We couldn’t load practice activities. Please try again.</p>
-      <button type="button" onClick={() => void query.refetch()}>Try again</button>
+      <button type="button" onClick={refresh}>Try again</button>
     </div>
   );
   if (!query.data || readAccessToken() !== accessToken) return <p className="course-interactive__status" role="status">Loading practice activities…</p>;
