@@ -56,13 +56,43 @@ import {
 } from "../teams/flexBulkOnboardingService";
 import { buildProvisionalCoursePassOrganization } from "../teams/flexCheckoutOrganization";
 import { buildTeamFlexBillingDocumentOptions } from "../stripe/teamBillingDocuments";
-import { resolveOrgManager } from "./orgRouter";
+import { aggregateUtcDate, resolveOrgManager } from "./orgRouter";
 import { managerEmailForContext, resolveManagedOrganization } from "../teams/resolveManagerOrganization";
 import { normalizeEmail } from "../_core/access";
 import {
   checkExtensionEligibility,
   createRetakeExtensionCheckout,
 } from "../teams/flexExtensionService";
+
+// Normalize database timestamps to Dates before comparisons, queries or serialization.
+export function validTimestamp(value: Date | string | null | undefined): Date | null {
+  if (value == null) return null;
+  if (typeof value === "string") {
+    // Date parsing can silently normalize impossible ISO dates, including
+    // timestamps with a timezone. Validate their original calendar fields.
+    const isoTimestamp = value.trim().match(
+      /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::(\d{2})(?:\.(\d+))?)?(Z|[+-]\d{2}:?\d{2})?$/i,
+    );
+    if (isoTimestamp) {
+      const [, yearText, monthText, dayText, hourText, minuteText, secondText = "0", fractionText = "", zone] = isoTimestamp;
+      const year = Number(yearText), month = Number(monthText), day = Number(dayText);
+      const hour = Number(hourText), minute = Number(minuteText), second = Number(secondText);
+      const leapYear = year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
+      const daysInMonth = [31, leapYear ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+      if (month < 1 || month > 12 || day < 1 || day > daysInMonth[month - 1]
+        || hour > 24 || minute > 59 || second > 59
+        || (hour === 24 && (minute !== 0 || second !== 0 || /[1-9]/.test(fractionText)))) return null;
+      if (zone && zone.toUpperCase() !== "Z") {
+        const offset = zone.slice(1).replace(":", "");
+        if (Number(offset.slice(0, 2)) > 23 || Number(offset.slice(2)) > 59) return null;
+      }
+      // aggregateUtcDate handles MySQL timestamps as UTC, but a zone-less
+      // ISO timestamp without seconds would otherwise use the local timezone.
+      if (!zone) return aggregateUtcDate(`${value.trim()}Z`);
+    }
+  }
+  return aggregateUtcDate(value);
+}
 
 const flexBulkRowsSchema = z.array(z.object({
   clientRowId: z.string().min(1).max(64),
@@ -527,7 +557,11 @@ export const teamFlexRouter = router({
           eq(teamFlexLicences.organizationId, input.orgId),
           sql`${teamFlexLicences.status} IN ('active', 'assigned', 'invited', 'expired')`,
         )))
-        .filter(licence => flexLicenceIsVisibleInManagerReport(licence, now));
+        .filter(licence => flexLicenceIsVisibleInManagerReport({
+          ...licence,
+          accessEndsAt: validTimestamp(licence.accessEndsAt),
+          reportingEndsAt: validTimestamp(licence.reportingEndsAt),
+        }, now));
 
       if (licences.length === 0) return [];
 
@@ -536,26 +570,36 @@ export const teamFlexRouter = router({
         licences.map(async (lic) => {
           const canonicalCourse = resolveCourseKey(lic.courseKey);
           const displayCourseKey = canonicalCourse?.courseKey ?? lic.courseKey;
-          if ((!lic.operatorUserId && !lic.invitedEmail?.trim()) || !["active", "expired"].includes(lic.status) || !lic.activatedAt || !lic.startsAt || !lic.accessEndsAt) {
+          const activatedAt = validTimestamp(lic.activatedAt);
+          const startsAt = validTimestamp(lic.startsAt);
+          const accessEndsAt = validTimestamp(lic.accessEndsAt);
+          const startTime = startsAt?.getTime() ?? NaN;
+          const endTime = accessEndsAt?.getTime() ?? NaN;
+          const validInterval = Number.isFinite(startTime) && Number.isFinite(endTime) && startTime < endTime;
+          if ((!lic.operatorUserId && !lic.invitedEmail?.trim()) || !["active", "expired"].includes(lic.status) || !activatedAt || !validInterval) {
             return {
               licenceId: lic.id,
               courseKey: displayCourseKey,
               termMonths: lic.termMonths,
               status: lic.status,
               operatorEmail: lic.invitedEmail,
-              operatorKey: lic.operatorUserId ? `user:${lic.operatorUserId}` : lic.invitedEmail ? `email:${normalizeEmail(lic.invitedEmail)}` : null,
-              activatedAt: lic.activatedAt,
-              accessEndsAt: lic.accessEndsAt,
+              operatorKey: lic.operatorUserId ? `user:${lic.operatorUserId}` : lic.invitedEmail?.trim() ? `email:${normalizeEmail(lic.invitedEmail)}` : null,
+              activatedAt,
+              accessEndsAt,
+              // Pre-activation licences have not started; incomplete active or
+              // expired licences cannot be safely queried and remain unknown.
+              activityAvailable: ["assigned", "invited"].includes(lic.status) && lic.activatedAt == null && lic.startsAt == null && lic.accessEndsAt == null,
               totalAttempts: 0,
               correctAttempts: 0,
               accuracy: 0,
               readinessScore: 0,
+              readinessAvailable: false,
               lastActiveAt: null,
               daysActive30: 0,
             };
           }
 
-          const flexScope = { orgId: input.orgId, licenceId: lic.id, startsAt: lic.startsAt!, endsAt: lic.accessEndsAt! };
+          const flexScope = { orgId: input.orgId, licenceId: lic.id, startsAt: startsAt!, endsAt: accessEndsAt! };
           // Fetch only attributable activity under this licence interval
           const [stats] = await db
             .select({
@@ -587,14 +631,16 @@ export const teamFlexRouter = router({
             termMonths: lic.termMonths,
             status: lic.status,
             operatorEmail: lic.invitedEmail,
-            operatorKey: lic.operatorUserId ? `user:${lic.operatorUserId}` : lic.invitedEmail ? `email:${normalizeEmail(lic.invitedEmail)}` : null,
-            activatedAt: lic.activatedAt,
-            accessEndsAt: lic.accessEndsAt,
+            operatorKey: lic.operatorUserId ? `user:${lic.operatorUserId}` : lic.invitedEmail?.trim() ? `email:${normalizeEmail(lic.invitedEmail)}` : null,
+            activatedAt,
+            accessEndsAt,
+            activityAvailable: true,
             totalAttempts: total,
             correctAttempts: correct,
             accuracy: Math.round(accuracy * 100),
             readinessScore: readinessResult.score,
-            lastActiveAt: stats?.lastActive ?? null,
+            readinessAvailable: readinessResult.hasData,
+            lastActiveAt: validTimestamp(stats?.lastActive),
             daysActive30: readinessResult.activeDaysLast30,
           };
         }),

@@ -25,12 +25,12 @@ function readinessColor(score: number): string {
   return "text-slate-500";
 }
 
-function daysRemaining(accessEndsAt: string | Date | null): string | null {
+function daysRemaining(accessEndsAt: string | Date | null, now: Date): string | null {
   if (!accessEndsAt) return null;
   const end = new Date(accessEndsAt);
-  const now = new Date();
+  if (!Number.isFinite(end.getTime())) return null;
+  if (end.getTime() <= now.getTime()) return "Expired";
   const days = Math.ceil((end.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
-  if (days < 0) return "Expired";
   if (days === 0) return "Expires today";
   if (days === 1) return "1 day left";
   return `${days} days left`;
@@ -65,7 +65,8 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
     return null; // No Flex licences to show progress for
   }
 
-  const { activatedLicences, assignedLearners, studyingLearners, totalAttempts, avgAccuracy, avgReadiness } = summarizeFlexProgress(data);
+  const now = new Date();
+  const { activatedLicences, assignedLearners, studyingLearners, totalAttempts, avgAccuracy, avgReadiness, lifetimeActivityComplete, activeActivityComplete, activeCohortComplete } = summarizeFlexProgress(data, now);
 
   return (
     <Card className="teams-flex-progress mt-6">
@@ -78,7 +79,7 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
             className="text-xs ml-2"
             title={licencesQuery.isError ? "Licence count could not be loaded. It will retry within a minute." : undefined}
           >
-            {activatedLicences} activated / {purchasedLicences ?? (licencesQuery.isError ? "?" : "…")} licences
+            {activeCohortComplete ? activatedLicences : "Not available"} activated / {purchasedLicences ?? (licencesQuery.isError ? "?" : "…")} licences
           </Badge>
         </CardTitle>
       </CardHeader>
@@ -86,24 +87,24 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
         {/* Summary stats */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
           <div className="rounded-lg border border-slate-200 p-3 text-center">
-            <p className="text-2xl font-bold text-slate-900">{totalAttempts.toLocaleString()}</p>
+            <p className="text-2xl font-bold text-slate-900">{lifetimeActivityComplete ? totalAttempts.toLocaleString() : "Not available"}</p>
             <p className="text-xs text-slate-500">Questions Answered</p>
           </div>
           <div className="rounded-lg border border-slate-200 p-3 text-center">
-            <p className="text-2xl font-bold text-slate-900">{avgAccuracy}%</p>
+            <p className="text-2xl font-bold text-slate-900">{lifetimeActivityComplete && avgAccuracy !== null ? `${avgAccuracy}%` : "Not available"}</p>
             <p className="text-xs text-slate-500">Avg Accuracy</p>
           </div>
           <div className="rounded-lg border border-slate-200 p-3 text-center">
-            <p className={`text-2xl font-bold ${readinessColor(avgReadiness)}`}>{avgReadiness}</p>
-            <p className="text-xs text-slate-500">Avg Licence Readiness</p>
+            <p className={`text-2xl font-bold ${!activeActivityComplete || avgReadiness === null ? "text-slate-500" : readinessColor(avgReadiness)}`}>{!activeActivityComplete || avgReadiness === null ? "Not available" : avgReadiness}</p>
+            <p className="text-xs text-slate-500">Avg readiness: active licences with recent data</p>
           </div>
           <div className="rounded-lg border border-slate-200 p-3 text-center">
-            <p className="text-2xl font-bold text-slate-900">{studyingLearners}</p>
+            <p className="text-2xl font-bold text-slate-900">{activeActivityComplete ? studyingLearners ?? "Not available" : "Not available"}</p>
             <p className="text-xs text-slate-500">Actively Studying</p>
           </div>
         </div>
 
-        <p className="mb-4 text-xs text-slate-500">{assignedLearners} unique assigned learners. Actively studying means recorded licence-attributed answers in the last 30 days. Personal study and unattributed historical attempts are excluded.</p>
+        <p className="mb-4 text-xs text-slate-500">{assignedLearners ?? "Not available"} unique assigned learners. Actively studying means recorded licence-attributed answers in the last 30 days. Personal study and unattributed historical attempts are excluded.</p>
         {/* Per-operator progress table */}
         <div className="overflow-x-auto">
           <table className="w-full text-sm" aria-label="Course Pass study progress">
@@ -120,11 +121,16 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
             </thead>
             <tbody>
               {data.map((row) => {
-                const studyExpired = row.status === "expired" || (row.status === "active" && !!row.accessEndsAt && new Date(row.accessEndsAt) <= new Date());
-                const config = studyExpired ? STATUS_CONFIG.expired : flexRowIsStudying(row)
+                const endTime = row.accessEndsAt == null ? NaN : new Date(row.accessEndsAt).getTime();
+                const studyExpired = row.status === "expired" || (row.status === "active" && Number.isFinite(endTime) && endTime <= now.getTime());
+                const config = studyExpired ? STATUS_CONFIG.expired : flexRowIsStudying(row, now)
                   ? { ...STATUS_CONFIG.active, label: "Studying" }
+                  : row.status === "active" && !Number.isFinite(endTime)
+                  ? { ...STATUS_CONFIG.active, label: "Not available" }
                   : STATUS_CONFIG[row.status] ?? STATUS_CONFIG.invited;
-                const remaining = daysRemaining(row.accessEndsAt);
+                const remaining = daysRemaining(row.accessEndsAt, now);
+                const operatorEmail = row.operatorEmail?.trim();
+                const operator = operatorEmail || (row.operatorKey?.startsWith("user:") ? "Assigned operator" : "Unknown");
                 const Icon = config.icon;
                 return (
                   <tr key={row.licenceId} className="border-b last:border-0 hover:bg-slate-50/50">
@@ -133,8 +139,8 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
                         <div className="w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0">
                           <UserCheck className="w-3.5 h-3.5 text-slate-500" />
                         </div>
-                        <span className="text-slate-700 truncate max-w-[160px]" title={row.operatorEmail ?? ""}>
-                          {row.operatorEmail ?? "Unassigned"}
+                        <span className="text-slate-700 truncate max-w-[160px]" title={operatorEmail ?? ""}>
+                          {operator}
                         </span>
                       </div>
                     </td>
@@ -148,10 +154,12 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
                       </span>
                     </td>
                     <td className="py-3 pr-4 text-slate-700 tabular-nums">
-                      {row.totalAttempts > 0 ? row.totalAttempts.toLocaleString() : "—"}
+                      {!row.activityAvailable ? "Not available" : row.totalAttempts > 0 ? row.totalAttempts.toLocaleString() : "—"}
                     </td>
                     <td className="py-3 pr-4">
-                      {row.totalAttempts > 0 ? (
+                      {!row.activityAvailable ? (
+                        <span className="text-slate-400 text-xs">Not available</span>
+                      ) : row.totalAttempts > 0 ? (
                         <div className="flex items-center gap-2">
                           <Progress value={row.accuracy} className="h-1.5 w-16" />
                           <span className="text-xs tabular-nums text-slate-600">{row.accuracy}%</span>
@@ -161,7 +169,11 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
                       )}
                     </td>
                     <td className="py-3 pr-4">
-                      {["active", "expired"].includes(row.status) && row.totalAttempts > 0 ? (
+                      {!row.activityAvailable ? (
+                        <span className="text-slate-400 text-xs">Not available</span>
+                      ) : row.totalAttempts === 0 ? (
+                        <span className="text-slate-400 text-xs">Not started</span>
+                      ) : row.readinessAvailable ? (
                         <div className="flex items-center gap-1.5">
                           <Target className="w-3.5 h-3.5 text-slate-400" />
                           <span className={`text-xs font-semibold ${readinessColor(row.readinessScore)}`}>
@@ -169,7 +181,7 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
                           </span>
                         </div>
                       ) : (
-                        <span className="text-slate-400 text-xs">Not started</span>
+                        <span className="text-slate-400 text-xs">Not enough recent data</span>
                       )}
                     </td>
                     <td className="py-3">
@@ -178,7 +190,7 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
                           {remaining}
                         </span>
                       ) : (
-                        <span className="text-slate-400 text-xs">—</span>
+                        <span className="text-slate-400 text-xs">{row.status === "active" ? "Not available" : "—"}</span>
                       )}
                     </td>
                   </tr>
