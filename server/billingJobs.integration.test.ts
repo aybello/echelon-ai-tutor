@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
-import { eq, like, sql } from "drizzle-orm";
+import { eq, inArray, like, sql } from "drizzle-orm";
 import { getDb } from "./db";
 import {
   scheduledWork,
@@ -17,6 +17,9 @@ import { provisionIndividualSubscription } from "./stripe/provisionIndividualSub
 import { runManagedJob, MANAGED_JOBS } from "./jobs/managedJobs";
 
 const prefix = `reliability-${randomUUID()}`;
+// runManagedJob's public type lists production jobs; this injected test-only job
+// has its own UUID namespace for both date keys and the cross-day lock.
+const testJobName = `test-${prefix}` as keyof typeof MANAGED_JOBS;
 let db: NonNullable<Awaited<ReturnType<typeof getDb>>>;
 const suite = process.env.DATABASE_URL ? describe : describe.skip;
 suite("billing and managed work with a real isolated database", () => {
@@ -32,13 +35,14 @@ suite("billing and managed work with a real isolated database", () => {
       .where(like(scheduledWork.workKey, `${prefix}%`));
     await db
       .delete(scheduledWork)
-      .where(eq(scheduledWork.workKey, "job:exam-reminders:2098-01-02"));
-    await db
-      .delete(scheduledWork)
-      .where(like(scheduledWork.workKey, "job:exam-reminders:2098-01-0%"));
-    await db
-      .delete(scheduledWork)
-      .where(eq(scheduledWork.workKey, "job-lock:exam-reminders"));
+      .where(
+        inArray(scheduledWork.workKey, [
+          `job-lock:${testJobName}`,
+          ...["2098-01-02", "2098-01-03", "2098-01-04"].map(
+            day => `job:${testJobName}:${day}`
+          ),
+        ])
+      );
     await db
       .delete(stripeEventLog)
       .where(like(stripeEventLog.stripeEventId, `${prefix}%`));
@@ -97,16 +101,16 @@ suite("billing and managed work with a real isolated database", () => {
       .mockResolvedValue({ sent: 1, errors: [] });
     const deps = {
       getDb: async () => db,
-      jobs: { ...MANAGED_JOBS, "exam-reminders": { cron: "0 0 8 * * *", run } },
+      jobs: { ...MANAGED_JOBS, [testJobName]: { cron: "0 0 8 * * *", run } },
     };
     await expect(
-      runManagedJob("exam-reminders", new Date("2098-01-02"), deps)
+      runManagedJob(testJobName, new Date("2098-01-02"), deps)
     ).rejects.toThrow("unresolved errors");
     expect(
-      await runManagedJob("exam-reminders", new Date("2098-01-02"), deps)
+      await runManagedJob(testJobName, new Date("2098-01-02"), deps)
     ).toEqual({ state: "completed" });
     expect(
-      await runManagedJob("exam-reminders", new Date("2098-01-02"), deps)
+      await runManagedJob(testJobName, new Date("2098-01-02"), deps)
     ).toEqual({ state: "already_completed" });
     expect(run).toHaveBeenCalledTimes(2);
   });
@@ -126,17 +130,17 @@ suite("billing and managed work with a real isolated database", () => {
     });
     const deps = {
       getDb: async () => db,
-      jobs: { ...MANAGED_JOBS, "exam-reminders": { cron: "0 0 8 * * *", run } },
+      jobs: { ...MANAGED_JOBS, [testJobName]: { cron: "0 0 8 * * *", run } },
     };
     const first = runManagedJob(
-      "exam-reminders",
+      testJobName,
       new Date("2098-01-03T23:59:59Z"),
       deps
     );
     await running;
     try {
       await expect(
-        runManagedJob("exam-reminders", new Date("2098-01-04T00:00:01Z"), deps)
+        runManagedJob(testJobName, new Date("2098-01-04T00:00:01Z"), deps)
       ).rejects.toBeInstanceOf(WorkBusyError);
       expect(run).toHaveBeenCalledTimes(1);
     } finally {
@@ -144,7 +148,7 @@ suite("billing and managed work with a real isolated database", () => {
       await first;
     }
     expect(
-      await runManagedJob("exam-reminders", new Date("2098-01-04"), deps)
+      await runManagedJob(testJobName, new Date("2098-01-04"), deps)
     ).toEqual({ state: "completed" });
     expect(run).toHaveBeenCalledTimes(2);
   });
