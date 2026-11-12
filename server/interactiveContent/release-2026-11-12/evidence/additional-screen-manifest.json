@@ -254,14 +254,14 @@
   {
     "courseKey": "us-class1-water",
     "before": 110,
-    "after": 103,
-    "excluded": 7,
+    "after": 102,
+    "excluded": 8,
     "modeCounts": {
       "rapid-swipe": 10,
       "speed-match": 8,
       "odd-one-out": 13,
       "cause-effect": 42,
-      "tap-the-flaw": 15,
+      "tap-the-flaw": 14,
       "before-after": 15
     }
   },
@@ -324,28 +324,28 @@
   {
     "courseKey": "wpi-class1-water-coll",
     "before": 95,
-    "after": 90,
-    "excluded": 5,
+    "after": 89,
+    "excluded": 6,
     "modeCounts": {
       "rapid-swipe": 19,
       "speed-match": 7,
       "odd-one-out": 15,
       "cause-effect": 23,
-      "tap-the-flaw": 16,
+      "tap-the-flaw": 15,
       "before-after": 10
     }
   },
   {
     "courseKey": "wpi-class1-water-dist",
     "before": 110,
-    "after": 104,
-    "excluded": 6,
+    "after": 103,
+    "excluded": 7,
     "modeCounts": {
       "rapid-swipe": 20,
       "speed-match": 9,
       "odd-one-out": 12,
       "cause-effect": 28,
-      "tap-the-flaw": 19,
+      "tap-the-flaw": 18,
       "before-after": 16
     }
   },
@@ -394,13 +394,13 @@
   {
     "courseKey": "wpi-class2-water-dist",
     "before": 106,
-    "after": 99,
-    "excluded": 7,
+    "after": 98,
+    "excluded": 8,
     "modeCounts": {
       "rapid-swipe": 15,
       "speed-match": 12,
       "odd-one-out": 12,
-      "cause-effect": 32,
+      "cause-effect": 31,
       "tap-the-flaw": 17,
       "before-after": 11
     }
@@ -422,14 +422,14 @@
   {
     "courseKey": "wpi-class3-water",
     "before": 106,
-    "after": 100,
-    "excluded": 6,
+    "after": 99,
+    "excluded": 7,
     "modeCounts": {
       "rapid-swipe": 18,
       "speed-match": 13,
       "odd-one-out": 13,
       "cause-effect": 28,
-      "tap-the-flaw": 11,
+      "tap-the-flaw": 10,
       "before-after": 17
     }
   },
@@ -450,13 +450,13 @@
   {
     "courseKey": "wpi-class3-water-dist",
     "before": 111,
-    "after": 104,
-    "excluded": 7,
+    "after": 103,
+    "excluded": 8,
     "modeCounts": {
       "rapid-swipe": 16,
       "speed-match": 12,
       "odd-one-out": 16,
-      "cause-effect": 35,
+      "cause-effect": 34,
       "tap-the-flaw": 11,
       "before-after": 14
     }
@@ -506,13 +506,13 @@
   {
     "courseKey": "wpi-class4-water-dist",
     "before": 108,
-    "after": 103,
-    "excluded": 5,
+    "after": 102,
+    "excluded": 6,
     "modeCounts": {
       "rapid-swipe": 15,
       "speed-match": 12,
       "odd-one-out": 10,
-      "cause-effect": 34,
+      "cause-effect": 33,
       "tap-the-flaw": 18,
       "before-after": 14
     }

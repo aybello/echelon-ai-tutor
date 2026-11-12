@@ -490,7 +490,7 @@ function RapidSwipeRound({ examples, onExit }: { examples: readonly RapidSwipeEx
           </li>)}</ol></>}
           <button type="button" className="interactive-drill__primary" onClick={onExit}>Back to practice</button>
         </> : <>
-          <p className="interactive-drill__instruction">Swipe left for No or right for Yes. Use the buttons or Left/Right arrow keys. The timer pauses for feedback and when this page is hidden. Choose Next to continue. Statements repeat if you reach the end.</p>
+          <p className="interactive-drill__instruction">Swipe/keys: ← No · Yes →. Buttons work too. Explanations pause; Next continues. Statements repeat. Course-tab return rechecks access and resets the round.</p>
           <>
             <h3 ref={promptRef} tabIndex={-1}>{current.prompt}</h3>
             {current.instruction && <p>{current.instruction}</p>}

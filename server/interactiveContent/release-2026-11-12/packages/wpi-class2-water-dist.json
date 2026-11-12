@@ -882,27 +882,6 @@
       "explanation": "This pattern is consistent with nitrification but needs additional confirmation."
     },
     {
-      "id": "wpi-class2-water-dist-055",
-      "mode": "cause-effect",
-      "prompt": "Excavation walls become unstable after rain. What should happen before workers return?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Leave the hazard area and reassess protection"
-        },
-        {
-          "id": "option-2",
-          "label": "Continue until the next shift"
-        },
-        {
-          "id": "option-3",
-          "label": "Remove the ladder"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Changing soil conditions require inspection and control before exposure."
-    },
-    {
       "id": "wpi-class2-water-dist-056",
       "mode": "cause-effect",
       "prompt": "If a customer meter under-registers authorized use, what can happen to the water-loss estimate calculated as system input minus recorded authorized use?",

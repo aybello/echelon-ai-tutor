@@ -10,6 +10,18 @@ const manualIds = new Set([
   'wpi-class4-water-dist-015', 'wpi-class2-water-dist-015',
   'wpi-class4-water-dist-order-015', 'wqa-087',
 ]);
+// These OSHA-linked legal/site-program control obligations lack verified
+// jurisdiction-specific authority evidence. This exclusion is not a factual verdict.
+export const missingAuthorityEvidenceIds = Object.freeze([
+  'wpi-class1-water-dist-078',
+  'wpi-class2-water-dist-055',
+  'wpi-class4-water-dist-055',
+  'wpi-class3-water-072',
+  'wpi-class3-water-dist-057',
+  'wpi-class1-water-coll-065',
+  'us-class1-water-072',
+]);
+const missingAuthorityEvidence = new Set(missingAuthorityEvidenceIds);
 export function legalScreen(item) {
   const text = JSON.stringify({ prompt: item.prompt, options: item.options, answer: item.answer, pairs: item.pairs, explanation: item.explanation });
   const sources = (item.sources || []).join(' ');
@@ -23,5 +35,6 @@ export function legalScreen(item) {
   // The answer and explanation imply mandatory backflow protection under an
   // applicable standard, without a verified jurisdiction-specific authority.
   if (item.id === 'class1-water-dist-074') reasons.push('unverified-mandatory-backflow-standard-claim');
+  if (missingAuthorityEvidence.has(item.id)) reasons.push('excluded-missing-authority-evidence');
   return reasons;
 }

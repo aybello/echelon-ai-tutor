@@ -368,10 +368,10 @@ export default function CourseInteractiveLearning() {
   });
 
   return (
-    <div className="interactive-learning">
+    <div className="interactive-learning course-interactive">
       <nav className="interactive-learning__header" aria-label="Interactive practice navigation">
         <div className="interactive-learning__header-inner">
-          <Link href="/" className="interactive-learning__brand"><img src="/echelon-logo.webp" alt="" width="32" height="32" /> Echelon Institute</Link>
+          <Link href="/" className="interactive-learning__brand"><img src="/echelon-logo.webp" alt="" width="32" height="32" /><span>Echelon Institute</span></Link>
           <Link href={course ? quizHref(course, search) : "/"} className="interactive-learning__back">{course ? "← Back to course practice" : "← Home"}</Link>
         </div>
       </nav>
@@ -381,14 +381,17 @@ export default function CourseInteractiveLearning() {
           <h1 id="course-interactive-title">{course ? course.displayName : "Course unavailable"}</h1>
           {course ? (
             <>
-              <p className="interactive-learning__description">Practise with activities drawn from the questions available to you in this course.</p>
-              <p className="interactive-learning__note">Your answers and progress stay on this page and are not saved to your account or quiz history. Switching activities or rechecking access resets your temporary session.</p>
+              <details className="course-interactive__details">
+                <summary>Practice details · progress not saved</summary>
+                <p className="interactive-learning__description">Course-specific exercises for interactive exam practice.</p>
+                <p className="interactive-learning__note">Your answers and progress stay on this page and are not saved to your account or quiz history. Switching activities or rechecking access resets your temporary session. Returning to this tab rechecks access and resets your round.</p>
+                <p>Exam practice, not operating instructions or regulatory advice.</p>
+              </details>
             </>
           ) : <p className="interactive-learning__description">This course could not be found or is not currently active.</p>}
         </section>
         {course && (
           <section className="interactive-learning__practice" aria-label={`${course.displayName} activities`}>
-            <div className="interactive-learning__section-heading"><div><p className="interactive-learning__eyebrow">Learn by doing</p><h2>Practice activities</h2></div></div>
             {course.courseKey === "electrician-309a" ? (
               <p className="course-interactive__status" role="status">Interactive practice is not available for the 309A beta yet. Please use the course practice page instead.</p>
             ) : <CoursePractice key={course.courseKey} course={course} />}

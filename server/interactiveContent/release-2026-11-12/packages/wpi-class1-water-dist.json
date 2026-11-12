@@ -1310,27 +1310,6 @@
       "explanation": "Reliable labels preserve the sample’s origin and collection information."
     },
     {
-      "id": "wpi-class1-water-dist-078",
-      "mode": "tap-the-flaw",
-      "prompt": "A crew plans an excavation. Which statement is flawed?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Know how to exit safely."
-        },
-        {
-          "id": "option-2",
-          "label": "Keep material back from the edge."
-        },
-        {
-          "id": "option-3",
-          "label": "Enter before the trench has been properly inspected."
-        }
-      ],
-      "correctOptionId": "option-3",
-      "explanation": "Trench conditions and protective measures must be assessed before entry."
-    },
-    {
       "id": "wpi-class1-water-dist-079",
       "mode": "tap-the-flaw",
       "prompt": "A tank overflows unexpectedly. Which conclusion is flawed?",

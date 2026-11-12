@@ -1119,27 +1119,6 @@
       "explanation": "A stop button does not isolate all electrical and stored energy sources."
     },
     {
-      "id": "wpi-class3-water-072",
-      "mode": "tap-the-flaw",
-      "prompt": "Tap the flawed response to a potentially hazardous tank atmosphere.",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Keep unauthorized people out"
-        },
-        {
-          "id": "option-2",
-          "label": "Follow the confined-space program"
-        },
-        {
-          "id": "option-3",
-          "label": "Enter quickly to check without an assessment"
-        }
-      ],
-      "correctOptionId": "option-3",
-      "explanation": "Confined spaces can contain dangerous atmospheres; entry requires the applicable site program."
-    },
-    {
       "id": "wpi-class3-water-075",
       "mode": "tap-the-flaw",
       "prompt": "Tap the flawed chemical safety practice.",

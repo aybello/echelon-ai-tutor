@@ -2436,6 +2436,49 @@
   {
     "courseKey": "us-class1-water",
     "reasons": [
+      "excluded-missing-authority-evidence"
+    ],
+    "original": {
+      "id": "us-class1-water-072",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker says, “The motor switch is off, so all hazardous energy is controlled.” What is the flaw?",
+      "options": [
+        "Other stored or connected energy may remain.",
+        "Hydraulic energy cannot injure anyone.",
+        "The switch itself is a sample bottle."
+      ],
+      "answer": "Other stored or connected energy may remain.",
+      "explanation": "Electrical, mechanical, hydraulic and other energy must be addressed under the applicable procedure.",
+      "sources": [
+        "https://www.osha.gov/control-hazardous-energy"
+      ],
+      "pairs": []
+    },
+    "converted": {
+      "id": "us-class1-water-072",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker says, “The motor switch is off, so all hazardous energy is controlled.” What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Other stored or connected energy may remain."
+        },
+        {
+          "id": "option-2",
+          "label": "Hydraulic energy cannot injure anyone."
+        },
+        {
+          "id": "option-3",
+          "label": "The switch itself is a sample bottle."
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Electrical, mechanical, hydraulic and other energy must be addressed under the applicable procedure."
+    }
+  },
+  {
+    "courseKey": "us-class1-water",
+    "reasons": [
       "numbered-section-and-regulatory-source"
     ],
     "original": {
@@ -3327,6 +3370,50 @@
   {
     "courseKey": "wpi-class1-water-coll",
     "reasons": [
+      "excluded-missing-authority-evidence"
+    ],
+    "original": {
+      "id": "wpi-class1-water-coll-065",
+      "mode": "tap-the-flaw",
+      "prompt": "Before servicing an automatically controlled pump, the crew presses STOP and assumes all energy is controlled. What is the flaw?",
+      "options": [
+        "The crew noticed automatic control",
+        "The pump has an operating switch",
+        "STOP alone is not an equipment-specific energy isolation procedure"
+      ],
+      "answer": "STOP alone is not an equipment-specific energy isolation procedure",
+      "explanation": "Unexpected startup and stored energy require proper control under the applicable procedure.",
+      "sources": [
+        "https://gowpi.org/wp-content/uploads/2026/04/Collection-%E2%80%93-Class-1_final.pdf",
+        "https://www.osha.gov/control-hazardous-energy"
+      ],
+      "pairs": []
+    },
+    "converted": {
+      "id": "wpi-class1-water-coll-065",
+      "mode": "tap-the-flaw",
+      "prompt": "Before servicing an automatically controlled pump, the crew presses STOP and assumes all energy is controlled. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The crew noticed automatic control"
+        },
+        {
+          "id": "option-2",
+          "label": "The pump has an operating switch"
+        },
+        {
+          "id": "option-3",
+          "label": "STOP alone is not an equipment-specific energy isolation procedure"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Unexpected startup and stored energy require proper control under the applicable procedure."
+    }
+  },
+  {
+    "courseKey": "wpi-class1-water-coll",
+    "reasons": [
       "source-linked-safety-duty-or-sequence"
     ],
     "original": {
@@ -3507,6 +3594,49 @@
       ],
       "correctOptionId": "option-2",
       "explanation": "A stop button is a control-circuit device, not an energy-isolating device. Follow the applicable approved energy-control procedure."
+    }
+  },
+  {
+    "courseKey": "wpi-class1-water-dist",
+    "reasons": [
+      "excluded-missing-authority-evidence"
+    ],
+    "original": {
+      "id": "wpi-class1-water-dist-078",
+      "mode": "tap-the-flaw",
+      "prompt": "A crew plans an excavation. Which statement is flawed?",
+      "options": [
+        "Know how to exit safely.",
+        "Keep material back from the edge.",
+        "Enter before the trench has been properly inspected."
+      ],
+      "answer": "Enter before the trench has been properly inspected.",
+      "explanation": "Trench conditions and protective measures must be assessed before entry.",
+      "sources": [
+        "https://www.osha.gov/trenching-excavation"
+      ],
+      "pairs": []
+    },
+    "converted": {
+      "id": "wpi-class1-water-dist-078",
+      "mode": "tap-the-flaw",
+      "prompt": "A crew plans an excavation. Which statement is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Know how to exit safely."
+        },
+        {
+          "id": "option-2",
+          "label": "Keep material back from the edge."
+        },
+        {
+          "id": "option-3",
+          "label": "Enter before the trench has been properly inspected."
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Trench conditions and protective measures must be assessed before entry."
     }
   },
   {
@@ -4191,6 +4321,49 @@
   {
     "courseKey": "wpi-class2-water-dist",
     "reasons": [
+      "excluded-missing-authority-evidence"
+    ],
+    "original": {
+      "id": "wpi-class2-water-dist-055",
+      "mode": "cause-effect",
+      "prompt": "Excavation walls become unstable after rain. What should happen before workers return?",
+      "options": [
+        "Leave the hazard area and reassess protection",
+        "Continue until the next shift",
+        "Remove the ladder"
+      ],
+      "answer": "Leave the hazard area and reassess protection",
+      "explanation": "Changing soil conditions require inspection and control before exposure.",
+      "sources": [
+        "https://www.osha.gov/sites/default/files/publications/OSHA2226.pdf"
+      ],
+      "pairs": []
+    },
+    "converted": {
+      "id": "wpi-class2-water-dist-055",
+      "mode": "cause-effect",
+      "prompt": "Excavation walls become unstable after rain. What should happen before workers return?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Leave the hazard area and reassess protection"
+        },
+        {
+          "id": "option-2",
+          "label": "Continue until the next shift"
+        },
+        {
+          "id": "option-3",
+          "label": "Remove the ladder"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Changing soil conditions require inspection and control before exposure."
+    }
+  },
+  {
+    "courseKey": "wpi-class2-water-dist",
+    "reasons": [
       "source-linked-safety-duty-or-sequence",
       "manual-flagged-item"
     ],
@@ -4396,6 +4569,50 @@
   {
     "courseKey": "wpi-class3-water",
     "reasons": [
+      "excluded-missing-authority-evidence"
+    ],
+    "original": {
+      "id": "wpi-class3-water-072",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed response to a potentially hazardous tank atmosphere.",
+      "options": [
+        "Keep unauthorized people out",
+        "Follow the confined-space program",
+        "Enter quickly to check without an assessment"
+      ],
+      "answer": "Enter quickly to check without an assessment",
+      "explanation": "Confined spaces can contain dangerous atmospheres; entry requires the applicable site program.",
+      "sources": [
+        "https://www.osha.gov/confined-spaces",
+        "https://gowpi.org/wp-content/uploads/2026/04/Water-Treatment-Class-3_mh-fin.pdf"
+      ],
+      "pairs": []
+    },
+    "converted": {
+      "id": "wpi-class3-water-072",
+      "mode": "tap-the-flaw",
+      "prompt": "Tap the flawed response to a potentially hazardous tank atmosphere.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Keep unauthorized people out"
+        },
+        {
+          "id": "option-2",
+          "label": "Follow the confined-space program"
+        },
+        {
+          "id": "option-3",
+          "label": "Enter quickly to check without an assessment"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Confined spaces can contain dangerous atmospheres; entry requires the applicable site program."
+    }
+  },
+  {
+    "courseKey": "wpi-class3-water",
+    "reasons": [
       "legal-or-authority-language",
       "named-safety-program-sequence",
       "source-linked-safety-duty-or-sequence"
@@ -4561,6 +4778,50 @@
       ],
       "correctOptionId": "option-4",
       "explanation": "Meter reading is a task rather than an excavation hazard."
+    }
+  },
+  {
+    "courseKey": "wpi-class3-water-dist",
+    "reasons": [
+      "excluded-missing-authority-evidence"
+    ],
+    "original": {
+      "id": "wpi-class3-water-dist-057",
+      "mode": "cause-effect",
+      "prompt": "During pump maintenance, stored hydraulic pressure is not controlled. What is the potential effect?",
+      "options": [
+        "Unexpected energy release can injure workers",
+        "The equipment is automatically safe",
+        "All electrical sources are isolated"
+      ],
+      "answer": "Unexpected energy release can injure workers",
+      "explanation": "Hydraulic energy is a hazardous energy source that must be addressed by the applicable procedure.",
+      "sources": [
+        "https://gowpi.org/wp-content/uploads/2026/04/WaterDistribution-%E2%80%93-Class-3_mh-fin.pdf",
+        "https://www.osha.gov/control-hazardous-energy"
+      ],
+      "pairs": []
+    },
+    "converted": {
+      "id": "wpi-class3-water-dist-057",
+      "mode": "cause-effect",
+      "prompt": "During pump maintenance, stored hydraulic pressure is not controlled. What is the potential effect?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Unexpected energy release can injure workers"
+        },
+        {
+          "id": "option-2",
+          "label": "The equipment is automatically safe"
+        },
+        {
+          "id": "option-3",
+          "label": "All electrical sources are isolated"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Hydraulic energy is a hazardous energy source that must be addressed by the applicable procedure."
     }
   },
   {
@@ -5565,6 +5826,49 @@
       "prompt": "An electrical disconnect alone addresses every possible stored hydraulic energy hazard.",
       "correctAnswer": false,
       "explanation": "Hydraulic pressure and other energy sources must also be controlled under the energy-control procedure."
+    }
+  },
+  {
+    "courseKey": "wpi-class4-water-dist",
+    "reasons": [
+      "excluded-missing-authority-evidence"
+    ],
+    "original": {
+      "id": "wpi-class4-water-dist-055",
+      "mode": "cause-effect",
+      "prompt": "Excavation walls become unstable after rain. What should happen before workers return?",
+      "options": [
+        "Leave the hazard area and reassess protection",
+        "Continue until the next shift",
+        "Remove the ladder"
+      ],
+      "answer": "Leave the hazard area and reassess protection",
+      "explanation": "Changing soil conditions require inspection and control before exposure.",
+      "sources": [
+        "https://www.osha.gov/sites/default/files/publications/OSHA2226.pdf"
+      ],
+      "pairs": []
+    },
+    "converted": {
+      "id": "wpi-class4-water-dist-055",
+      "mode": "cause-effect",
+      "prompt": "Excavation walls become unstable after rain. What should happen before workers return?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Leave the hazard area and reassess protection"
+        },
+        {
+          "id": "option-2",
+          "label": "Continue until the next shift"
+        },
+        {
+          "id": "option-3",
+          "label": "Remove the ladder"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Changing soil conditions require inspection and control before exposure."
     }
   },
   {

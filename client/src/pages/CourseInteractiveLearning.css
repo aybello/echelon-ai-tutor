@@ -1,26 +1,107 @@
+/* Course practice only: the shared interactive demo keeps its spacious layout. */
+.course-interactive {
+  color: #000;
+  background: linear-gradient(180deg, #eaf4ff 0, #f7fbff 360px, #fff 100%);
+}
+
+.course-interactive .interactive-learning__header-inner {
+  min-height: 56px;
+  padding: 6px 24px;
+  gap: 12px;
+}
+
+.course-interactive .interactive-learning__header a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #000;
+}
+
+.course-interactive .interactive-learning__brand img { flex: 0 0 32px; }
+.course-interactive .interactive-learning__back { justify-content: flex-end; }
+
+.course-interactive .interactive-learning__content { padding: 0 24px 24px; }
+.course-interactive .interactive-learning__intro { max-width: none; padding: 16px 0 12px; }
+.course-interactive .interactive-learning__eyebrow { margin-bottom: 4px; color: #000; }
+.course-interactive .interactive-learning__intro h1 {
+  color: #000;
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  overflow-wrap: anywhere;
+}
+
+.course-interactive .interactive-learning__description {
+  max-width: none;
+  margin: 6px 0 0;
+  color: #000;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.course-interactive__details { margin-top: 4px; font-size: 16px; line-height: 1.4; }
+.course-interactive__details summary {
+  width: fit-content;
+  min-height: 44px;
+  padding: 10px 0;
+  cursor: pointer;
+  font-weight: 600;
+}
+.course-interactive__details summary:focus-visible {
+  outline: 3px solid #1757b8;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.course-interactive__details[open] { padding-bottom: 8px; }
+.course-interactive__details p { margin: 0 0 8px; }
+.course-interactive .interactive-learning__note {
+  display: block;
+  margin: 0 0 8px;
+  padding: 10px 12px;
+  color: #000;
+  font-size: 16px;
+}
+.course-interactive .interactive-learning__practice { padding-bottom: 0; }
+
 .course-interactive__status,
 .course-interactive__preview {
   border: 1px solid #cbdff2;
   border-radius: 12px;
   background: #fff;
-  color: #35536e;
-  line-height: 1.55;
-  padding: 18px 20px;
+  color: #000;
+  font-size: 16px;
+  line-height: 1.4;
+  padding: 12px 16px;
 }
-
+.course-interactive__status { margin: 0; }
 .course-interactive__status p { margin: 0 0 12px; }
 .course-interactive__status button {
-  border: 1px solid #14549b;
+  min-height: 44px;
+  border: 1px solid #8db6dd;
   border-radius: 8px;
-  background: #14549b;
-  color: white;
+  background: #d7eaff;
+  color: #000;
   cursor: pointer;
   font: inherit;
   font-weight: 700;
   padding: 8px 14px;
 }
+.course-interactive__status button:hover { background: #c5e0ff; }
 .course-interactive__status button:focus-visible {
   outline: 3px solid #1757b8;
   outline-offset: 3px;
 }
-.course-interactive__preview { margin: 0 0 18px; }
+.course-interactive__preview { margin: 0 0 10px; }
+
+@media (max-width: 699px) {
+  .course-interactive .interactive-learning__header-inner { padding: 6px 16px; }
+  .course-interactive .interactive-learning__brand span { max-width: 100px; }
+  .course-interactive .interactive-learning__back { max-width: 160px; }
+  .course-interactive .interactive-learning__content { padding: 0 16px 16px; }
+  .course-interactive .interactive-learning__intro { padding: 12px 0 8px; }
+  .course-interactive__preview { padding: 10px 12px; }
+}
+
+@media (max-width: 699px) {
+  .course-interactive .interactive-learning__intro { padding: 8px 0 4px; }
+}

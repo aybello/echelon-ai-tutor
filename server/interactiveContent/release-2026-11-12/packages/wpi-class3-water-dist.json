@@ -1010,27 +1010,6 @@
       "explanation": "An open or unsecured hatch compromises site security and a sanitary barrier."
     },
     {
-      "id": "wpi-class3-water-dist-057",
-      "mode": "cause-effect",
-      "prompt": "During pump maintenance, stored hydraulic pressure is not controlled. What is the potential effect?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Unexpected energy release can injure workers"
-        },
-        {
-          "id": "option-2",
-          "label": "The equipment is automatically safe"
-        },
-        {
-          "id": "option-3",
-          "label": "All electrical sources are isolated"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Hydraulic energy is a hazardous energy source that must be addressed by the applicable procedure."
-    },
-    {
       "id": "wpi-class3-water-dist-059",
       "mode": "cause-effect",
       "prompt": "Flushing replaces older water in a low-use main with fresher water. What may improve temporarily?",

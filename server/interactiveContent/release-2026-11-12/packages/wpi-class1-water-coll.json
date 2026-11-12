@@ -7,7 +7,7 @@
     "speed-match": "wpi-class1-water-coll-021",
     "odd-one-out": "wpi-class1-water-coll-029",
     "cause-effect": "wpi-class1-water-coll-045",
-    "tap-the-flaw": "wpi-class1-water-coll-065",
+    "tap-the-flaw": "wpi-class1-water-coll-066",
     "before-after": "wpi-class1-water-coll-order-001"
   },
   "examples": [
@@ -973,27 +973,6 @@
       ],
       "correctOptionId": "option-3",
       "explanation": "A dangerous atmosphere requires immediate exit and evaluation before re-entry under applicable procedures."
-    },
-    {
-      "id": "wpi-class1-water-coll-065",
-      "mode": "tap-the-flaw",
-      "prompt": "Before servicing an automatically controlled pump, the crew presses STOP and assumes all energy is controlled. What is the flaw?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "The crew noticed automatic control"
-        },
-        {
-          "id": "option-2",
-          "label": "The pump has an operating switch"
-        },
-        {
-          "id": "option-3",
-          "label": "STOP alone is not an equipment-specific energy isolation procedure"
-        }
-      ],
-      "correctOptionId": "option-3",
-      "explanation": "Unexpected startup and stored energy require proper control under the applicable procedure."
     },
     {
       "id": "wpi-class1-water-coll-066",

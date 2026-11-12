@@ -3,32 +3,67 @@
   "visibility": "server-only; content and provenance contain answers",
   "contentAuthorship": "AI-authored",
   "review": "AI-reviewed against primary sources in prior research/review stages; no human subject-matter review is claimed. Referenced records vary by item and document their scope and limitations.",
-  "limitations": "This assembly independently performs structural checks only; it does not verify claims, citations, source currency, jurisdiction, safety, instructional quality, or human sign-off. Prior AI research/review can contain errors. Source notes include specific restrictions and may recommend expert review. A conservative deterministic legal-language screen and manual flag check cannot prove all requirements were identified or verify safety or correctness; production-release-gate.md remains applicable.",
+  "limitations": "This assembly independently performs structural checks only; it does not verify claims, citations, source currency, jurisdiction, safety, instructional quality, or human sign-off. Prior AI research/review can contain errors. Source notes include specific restrictions and may recommend expert review. A conservative deterministic legal-language screen and explicit ID exclusions cannot prove all requirements were identified or verify safety or correctness. The content authority gate in docs/production-release-gate.md applies to content stating legal or regulatory requirements; field-practice classification UI is planned, not implemented by this release.",
   "releaseEligibility": "User authorized games registration, not deployment. Approved is a software flag, not human review or regulatory approval.",
   "candidateMetadataSha256": "934304ad19093615fcfa2202e81ad6a7e22a142849dc1fb104a1454ceaa8f97b",
   "previewSelection": "Lexicographically smallest retained ID of the same mode.",
-  "exclusions": "73 historical exclusions plus 156 new conservative screen exclusions; full originals and converted items are in server-only evidence.",
+  "exclusions": "73 historical exclusions plus 163 additional conservative screen exclusions (156 prior plus 7 excluded for missing authority evidence); full originals and converted items are in server-only evidence.",
   "screenDecisions": [
     {
       "id": "class1-water-dist-074",
       "decision": "excluded",
-      "rationale": "The answer and explanation imply mandatory backflow protection under an applicable standard without verified jurisdiction-specific authority; exclusion does not establish that the claim is false."
+      "rationale": "The answer and explanation imply mandatory backflow protection under an applicable standard without verified jurisdiction-specific authority; excluded for missing authority evidence, not a factual verdict."
     },
     {
       "id": "wqa-023",
       "decision": "retained",
       "rationale": "The item identifies headings of numbered WHMIS safety data sheet sections; it does not state a legal requirement. This is not a determination that WHMIS has no legal requirements or independent verification of the headings."
+    },
+    {
+      "id": "wpi-class1-water-dist-078",
+      "decision": "excluded",
+      "rationale": "Excluded for missing authority evidence: an OSHA-linked legal or site-program control obligation lacks verified jurisdiction-specific authority evidence. This is not a factual verdict."
+    },
+    {
+      "id": "wpi-class2-water-dist-055",
+      "decision": "excluded",
+      "rationale": "Excluded for missing authority evidence: an OSHA-linked legal or site-program control obligation lacks verified jurisdiction-specific authority evidence. This is not a factual verdict."
+    },
+    {
+      "id": "wpi-class4-water-dist-055",
+      "decision": "excluded",
+      "rationale": "Excluded for missing authority evidence: an OSHA-linked legal or site-program control obligation lacks verified jurisdiction-specific authority evidence. This is not a factual verdict."
+    },
+    {
+      "id": "wpi-class3-water-072",
+      "decision": "excluded",
+      "rationale": "Excluded for missing authority evidence: an OSHA-linked legal or site-program control obligation lacks verified jurisdiction-specific authority evidence. This is not a factual verdict."
+    },
+    {
+      "id": "wpi-class3-water-dist-057",
+      "decision": "excluded",
+      "rationale": "Excluded for missing authority evidence: an OSHA-linked legal or site-program control obligation lacks verified jurisdiction-specific authority evidence. This is not a factual verdict."
+    },
+    {
+      "id": "wpi-class1-water-coll-065",
+      "decision": "excluded",
+      "rationale": "Excluded for missing authority evidence: an OSHA-linked legal or site-program control obligation lacks verified jurisdiction-specific authority evidence. This is not a factual verdict."
+    },
+    {
+      "id": "us-class1-water-072",
+      "decision": "excluded",
+      "rationale": "Excluded for missing authority evidence: an OSHA-linked legal or site-program control obligation lacks verified jurisdiction-specific authority evidence. This is not a factual verdict."
     }
   ],
   "counts": {
     "courses": 38,
-    "examples": 3828,
+    "examples": 3821,
     "modes": {
       "rapid-swipe": 701,
       "speed-match": 389,
       "odd-one-out": 521,
-      "cause-effect": 990,
-      "tap-the-flaw": 660,
+      "cause-effect": 987,
+      "tap-the-flaw": 656,
       "before-after": 567
     }
   },
@@ -326,8 +361,8 @@
       "sourceSha256": "94a62798ba5d896e46ed39cdcb080ef24fd9783d44762c5aae25df473e4aed20",
       "candidatePackageSha256": "45baab499387d8dd6d5b41fa207b6f68719df98d6a25845952fc8500c6fa8e3a",
       "provenanceSha256": "4b3acc3f233b9e2198e649e6216364af6e40f1971f0cc66d973f1b0b52d76f81",
-      "releasedPackageSha256": "18a43477f5160727df7835ec2fc95b09a6624e63cf72048d0da22a63a16518e7",
-      "itemCount": 103,
+      "releasedPackageSha256": "bbdbbf8b326b2437518a7c5bdde83a420db1de7bf32815335beb1a9ac64b4b48",
+      "itemCount": 102,
       "previewIds": {
         "rapid-swipe": "us-class1-water-011",
         "speed-match": "us-class1-water-021",
@@ -406,14 +441,14 @@
       "sourceSha256": "4805b2368285776ca0dc29b2d872cb7a64eac597140155fc85671a9886b273fa",
       "candidatePackageSha256": "ecf8fab1a287dea2bb6a547ba553e50425ddcf4b70b84385023cf0c7f3bd7553",
       "provenanceSha256": "42f56cc5d0bcf5cc3ace9611494229f3ccaa60134fe8a62798fe15b463383226",
-      "releasedPackageSha256": "f40b63741ae41247f8799b8d1ffdb7757ec2f32ad57cc3a5aef9fd038c4d951c",
-      "itemCount": 90,
+      "releasedPackageSha256": "5b06eef452600136e4286815d609080c1e1056d319c7a0437f834b5df0009917",
+      "itemCount": 89,
       "previewIds": {
         "rapid-swipe": "wpi-class1-water-coll-001",
         "speed-match": "wpi-class1-water-coll-021",
         "odd-one-out": "wpi-class1-water-coll-029",
         "cause-effect": "wpi-class1-water-coll-045",
-        "tap-the-flaw": "wpi-class1-water-coll-065",
+        "tap-the-flaw": "wpi-class1-water-coll-066",
         "before-after": "wpi-class1-water-coll-order-001"
       }
     },
@@ -422,8 +457,8 @@
       "sourceSha256": "78063668358e6fd23dfbe083cf7e9a676234cf64b0ed7fbee4554fde79daa665",
       "candidatePackageSha256": "9be2e8de50c032c0eea89a772aa9f4664ad947c62b6a56331a39c1e899ef0d44",
       "provenanceSha256": "ca0105704f73103ca3892155b358639149cbe87acd611c922bb5e15d6db2206a",
-      "releasedPackageSha256": "f5a164b39768c8a30457dabc453aee37eada9031ffb24cab11bc2c0cda113386",
-      "itemCount": 104,
+      "releasedPackageSha256": "04e2ef6b6946e60857362965e190d3eb3cf1666fb3413499fd72acbb7e3677f6",
+      "itemCount": 103,
       "previewIds": {
         "rapid-swipe": "wpi-class1-water-dist-001",
         "speed-match": "wpi-class1-water-dist-021",
@@ -486,8 +521,8 @@
       "sourceSha256": "706b42ce83fc97f47c7701aeafebe3dfdbadf916a8f8fe969947eb808ee646b8",
       "candidatePackageSha256": "6c34a97844d414c65788b69ea2423cd76e879dd145223f71b37f30e3050c2da3",
       "provenanceSha256": "a9f5bada1cb9771e90b8a2d822c1aef9c4b1f279d832f948bc5bc86b2fbe8095",
-      "releasedPackageSha256": "48202a26666ede6b2e98324c373c4af0003fe135f1c45dedd45bebf219780748",
-      "itemCount": 99,
+      "releasedPackageSha256": "c31a7132cc8b6ab714921b818207fd26495a177802ce72364b4349cba9a5620d",
+      "itemCount": 98,
       "previewIds": {
         "rapid-swipe": "wpi-class2-water-dist-001",
         "speed-match": "wpi-class2-water-dist-018",
@@ -518,8 +553,8 @@
       "sourceSha256": "24d4a415cde42c3fb1d5d05c5efac198af7b7d778e2e540ad8809c8493eb5a28",
       "candidatePackageSha256": "0a46e42bbce98297a6e105c602875a0cd1885844e208280dccab34b939982fc6",
       "provenanceSha256": "34439413d66b2e460557043016f4c9b0f77152ec1ed1a435fafe5d4ea2987fcb",
-      "releasedPackageSha256": "a0c0292e08eb9d874ec2b9c221143accc15e200879296415a7a599f8a7b1260e",
-      "itemCount": 100,
+      "releasedPackageSha256": "2b81c2f5fb65950a359a1f0d0a682a0ded5f111bff195e5d6b1457544274a839",
+      "itemCount": 99,
       "previewIds": {
         "rapid-swipe": "wpi-class3-water-001",
         "speed-match": "wpi-class3-water-019",
@@ -550,8 +585,8 @@
       "sourceSha256": "8e07ee8bcfd7a9addd571b864466004ca32dd2c9da6a6c14cf066cabc422c0c9",
       "candidatePackageSha256": "8a56c6ce6893e99b26fd9de53814b1823ad0a59c4f60cdac8de3e7cf8f19a259",
       "provenanceSha256": "7d9a6092e8e74f36d9a4b327be874060a01af78c218cd041fd6429682e4ca4d9",
-      "releasedPackageSha256": "5c31531bae968d1f0e384bbd4ecb1bfed44e17bbb419fb8f5965ec4340dab29f",
-      "itemCount": 104,
+      "releasedPackageSha256": "f4c7996889a289a05bf489c86980198e2174b7d2837f5db47428b82c468f4eb6",
+      "itemCount": 103,
       "previewIds": {
         "rapid-swipe": "wpi-class3-water-dist-001",
         "speed-match": "wpi-class3-water-dist-017",
@@ -614,8 +649,8 @@
       "sourceSha256": "d8459841546aaa3e949c9b7cbe9aa92385f98a35e7cef2dec13bb8c7e380a8e2",
       "candidatePackageSha256": "324c5155b95b00b635c71a8526b698eebbbb093480149f09b69f4b038b235d84",
       "provenanceSha256": "c4a4743ed8e82effd61b28039f4d50bbe3ec82f5128c209247a15a075f786e31",
-      "releasedPackageSha256": "1808f0b5c24233fcf4695c772a0c21cb388bec33f9ccc3e55139fe459192db0b",
-      "itemCount": 103,
+      "releasedPackageSha256": "73e7a5801b7ccbcdf3c382803729f6451909c668ba4babc177f58f2489d18ab4",
+      "itemCount": 102,
       "previewIds": {
         "rapid-swipe": "wpi-class4-water-dist-001",
         "speed-match": "wpi-class4-water-dist-018",

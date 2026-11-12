@@ -314,3 +314,111 @@
 .interactive-drill__review li { margin-bottom: 14px; overflow-wrap: anywhere; }
 
 .interactive-drill__round-next { margin-top: 16px; margin-right: 10px; }
+
+/* Compact course workspace; do not change the shared demo's spacing or palette. */
+.course-interactive .interactive-drill { color: #000; }
+.course-interactive .interactive-drill__layout { gap: 12px; }
+.course-interactive .interactive-drill__nav { padding: 4px; }
+.course-interactive .interactive-drill__nav button,
+.course-interactive .interactive-drill__nav button.is-active,
+.course-interactive .interactive-drill__nav small,
+.course-interactive .interactive-drill__meta,
+.course-interactive .interactive-drill__content h2,
+.course-interactive .interactive-drill__instruction,
+.course-interactive .interactive-drill__swipe,
+.course-interactive .interactive-drill__options button,
+.course-interactive .interactive-drill__options button:disabled,
+.course-interactive .interactive-drill__column button,
+.course-interactive .interactive-drill__column button.is-selected,
+.course-interactive .interactive-drill__column button.is-matched,
+.course-interactive .interactive-drill__feedback,
+.course-interactive .interactive-drill__feedback.is-incorrect,
+.course-interactive .interactive-drill__invalid,
+.course-interactive .interactive-drill__primary,
+.course-interactive .interactive-drill__secondary,
+.course-interactive .interactive-drill__primary:disabled,
+.course-interactive .interactive-drill__secondary:disabled { color: #000; }
+
+.course-interactive .interactive-drill__nav button.is-active,
+.course-interactive .interactive-drill__column button.is-selected {
+  border-color: #8db6dd;
+  background: #d7eaff;
+}
+.course-interactive .interactive-drill__activity {
+  min-height: auto;
+  padding: 18px;
+  border-radius: 16px;
+}
+.course-interactive .interactive-drill__track { margin: 10px 0 14px; }
+.course-interactive .interactive-drill__content { max-width: 720px; }
+.course-interactive .interactive-drill__instruction { margin-bottom: 12px; }
+.course-interactive .interactive-drill__swipe { min-height: 60px; padding: 12px; }
+.course-interactive .interactive-drill__options,
+.course-interactive .interactive-drill__column,
+.course-interactive .interactive-drill__matching { gap: 8px; }
+.course-interactive .interactive-drill__options button,
+.course-interactive .interactive-drill__column button { min-height: 44px; padding: 9px 12px; }
+.course-interactive .interactive-drill__feedback {
+  margin-top: 12px;
+  padding: 10px 12px;
+  font-size: 16px;
+}
+.course-interactive .interactive-drill__controls { margin-top: 12px; flex-wrap: wrap; }
+.course-interactive .interactive-drill__primary { border-color: #8db6dd; background: #d7eaff; }
+.course-interactive .interactive-drill__primary:not(:disabled):hover { background: #c5e0ff; }
+.course-interactive .interactive-drill__secondary { border-color: #8db6dd; }
+.course-interactive .interactive-drill__primary:disabled,
+.course-interactive .interactive-drill__secondary:disabled { border-color: #cad5df; background: #edf1f5; }
+.course-interactive .interactive-drill__round-start { margin-bottom: 10px; }
+.course-interactive .interactive-drill__round { margin-top: 8px; }
+.course-interactive .interactive-drill__round h3 { margin: 12px 0 8px; font-size: 21px; line-height: 1.25; }
+.course-interactive .interactive-drill__round p { margin: 8px 0; }
+.course-interactive .interactive-drill__round .interactive-drill__swipe { min-height: 44px; padding: 8px; }
+.course-interactive .interactive-drill__round .interactive-drill__feedback { margin-top: 8px; }
+.course-interactive .interactive-drill__round-next,
+.course-interactive .interactive-drill__round-end { margin-top: 12px; }
+
+@media (min-width: 700px) {
+  .course-interactive .interactive-drill__layout { grid-template-columns: 200px minmax(0, 1fr); gap: 16px; }
+  .course-interactive .interactive-drill__nav button { padding: 9px 12px; }
+}
+
+@media (max-width: 699px) {
+  .course-interactive .interactive-drill__nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    overflow: visible;
+  }
+  .course-interactive .interactive-drill__nav button {
+    min-width: 0;
+    padding: 9px 6px;
+    text-align: center;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+  .course-interactive .interactive-drill__activity { padding: 14px; }
+  .course-interactive .interactive-drill__track { margin: 8px 0 12px; }
+}
+
+.course-interactive .interactive-drill__round {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.course-interactive .interactive-drill__round > :not(button) { grid-column: 1 / -1; margin: 0; }
+.course-interactive .interactive-drill__round > button { margin: 0; }
+.course-interactive .interactive-drill__round .interactive-drill__feedback { margin-top: 0; }
+
+.course-interactive .interactive-drill__round { white-space: normal; }
+.course-interactive .interactive-drill__round h3,
+.course-interactive .interactive-drill__round .interactive-drill__feedback span { white-space: pre-line; }
+@media (max-width: 699px) {
+  .course-interactive .interactive-drill__round { gap: 4px; }
+}
+
+@media (max-width: 699px) {
+  .course-interactive .interactive-drill__activity { padding: 12px; }
+  .course-interactive .interactive-drill__round { gap: 2px; }
+  .course-interactive .interactive-drill__round .interactive-drill__feedback { padding: 6px 12px; }
+}

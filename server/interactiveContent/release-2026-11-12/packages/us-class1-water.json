@@ -1196,27 +1196,6 @@
       "explanation": "EPA says not to touch the inside of the bottle or cap when collecting this sample."
     },
     {
-      "id": "us-class1-water-072",
-      "mode": "tap-the-flaw",
-      "prompt": "A worker says, “The motor switch is off, so all hazardous energy is controlled.” What is the flaw?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Other stored or connected energy may remain."
-        },
-        {
-          "id": "option-2",
-          "label": "Hydraulic energy cannot injure anyone."
-        },
-        {
-          "id": "option-3",
-          "label": "The switch itself is a sample bottle."
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Electrical, mechanical, hydraulic and other energy must be addressed under the applicable procedure."
-    },
-    {
       "id": "us-class1-water-074",
       "mode": "tap-the-flaw",
       "prompt": "A trainee says, “Every high turbidity reading proves the filter media failed.” What is the flaw?",
