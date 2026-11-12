@@ -421,4 +421,19 @@
   .course-interactive .interactive-drill__activity { padding: 12px; }
   .course-interactive .interactive-drill__round { gap: 2px; }
   .course-interactive .interactive-drill__round .interactive-drill__feedback { padding: 6px 12px; }
+  /* Fit short feedback states; long questions/options keep natural page scrolling. */
+  .course-interactive .interactive-drill { line-height: 1.25; }
+  .course-interactive .interactive-drill__layout { gap: 8px; }
+  .course-interactive .interactive-drill__nav button { padding: 1px 6px; }
+  .course-interactive .interactive-drill__activity { padding: 6px; }
+  .course-interactive .interactive-drill__track { margin: 6px 0 8px; }
+  .course-interactive .interactive-drill__content h2 { margin-bottom: 6px; }
+  .course-interactive .interactive-drill__instruction { margin-bottom: 8px; line-height: 1.2; }
+  .course-interactive .interactive-drill__options,
+  .course-interactive .interactive-drill__column,
+  .course-interactive .interactive-drill__matching { gap: 4px; }
+  .course-interactive .interactive-drill__column button { padding: 1px 4px; line-height: 1.2; }
+  .course-interactive .interactive-drill__matched-label { font-size: 16px; }
+  .course-interactive .interactive-drill__feedback { margin-top: 8px; padding: 6px 8px; line-height: 1.25; }
+  .course-interactive .interactive-drill__controls { margin-top: 8px; }
 }

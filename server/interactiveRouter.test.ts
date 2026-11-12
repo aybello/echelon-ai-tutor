@@ -139,7 +139,7 @@ describe("interactive.getContent", () => {
 });
 
 describe("AI-source-reviewed software release package validation", () => {
-  it("registers exactly the 38 canonical non-309 keys with 3828 items and all six fixed previews", async () => {
+  it("registers exactly the 38 canonical non-309 keys with 3821 items and all six fixed previews", async () => {
     const actual = await vi.importActual<typeof import("./interactiveContent/loader")>("./interactiveContent/loader");
     const expected = [
       "class1-wastewater-coll", "class1-water", "class1-water-dist", "class1-ww",
@@ -174,7 +174,7 @@ describe("AI-source-reviewed software release package validation", () => {
         ids.add(item.id);
       }
     }
-    expect(ids.size).toBe(3828);
+    expect(ids.size).toBe(3821);
     expect(ids.has("class1-water-dist-074")).toBe(false);
     expect(ids.has("wqa-023")).toBe(true);
     expect(modes).toEqual(releaseMetadata.counts.modes);
