@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { MySqlDialect } from "drizzle-orm/mysql-core";
+import superjson from "superjson";
 const { getDb, calculateReadinessSnapshot } = vi.hoisted(() => ({
   getDb: vi.fn(), calculateReadinessSnapshot: vi.fn().mockResolvedValue({ score: 65, hasData: true, activeDaysLast30: 2 }),
 }));
@@ -112,6 +113,43 @@ describe("manager reporting router behavior", () => {
     expect(db.select).toHaveBeenCalledTimes(3);
     expect(calculateReadinessSnapshot).not.toHaveBeenCalled();
     expect(db.pending).toEqual([]);
+  });
+  it("rejects invalid activation timestamps and does not serialize invalid fallback dates", async () => {
+    const invalid = new Date("invalid");
+    const licences = [
+      { ...lic, id: 21, status: "active", accessEndsAt: future, activatedAt: invalid },
+      { ...lic, id: 22, status: "active", accessEndsAt: invalid, activatedAt: invalid },
+      { ...lic, id: 23, status: "assigned", activatedAt: invalid, startsAt: null, accessEndsAt: null },
+      { ...lic, id: 24, status: "invited", activatedAt: null, startsAt: invalid, accessEndsAt: null },
+      { ...lic, id: 25, status: "assigned", activatedAt: null, startsAt: null, accessEndsAt: invalid },
+      { ...lic, id: 26, status: "invited", activatedAt: null, startsAt: null, accessEndsAt: null },
+      { ...lic, id: 27, status: "assigned", activatedAt: null, startsAt: null, accessEndsAt: null, operatorUserId: 123, invitedEmail: null },
+    ];
+    const db = database([[org], [lic], licences]);
+    const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
+    expect(rows.map(row => row.activityAvailable)).toEqual([false, false, false, false, false, true, true]);
+    expect(rows[0]).toMatchObject({ activatedAt: null, accessEndsAt: future, lastActiveAt: null });
+    expect(rows[1]).toMatchObject({ activatedAt: null, accessEndsAt: null, lastActiveAt: null });
+    expect(() => superjson.serialize(rows)).not.toThrow();
+    expect(db.select).toHaveBeenCalledTimes(3);
+    expect(calculateReadinessSnapshot).not.toHaveBeenCalled();
+  });
+  it("sanitizes invalid last activity without discarding otherwise valid activity", async () => {
+    const active = { ...lic, status: "active", accessEndsAt: future };
+    for (const lastActive of [new Date("invalid"), "2026-02-30 12:00:00"]) {
+      const db = database([[org], [active], [active], [{ total: 2, correct: 1, lastActive }]]);
+      const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
+      expect(rows[0]).toMatchObject({ activatedAt: active.activatedAt, accessEndsAt: future, lastActiveAt: null, activityAvailable: true, totalAttempts: 2 });
+      expect(() => superjson.serialize(rows)).not.toThrow();
+      expect(db.pending).toEqual([]);
+    }
+  });
+  it("preserves a valid last activity timestamp from the aggregate", async () => {
+    const active = { ...lic, status: "active", accessEndsAt: future };
+    database([[org], [active], [active], [{ total: 1, correct: 1, lastActive: past.toISOString() }]]);
+    const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
+    expect(rows[0].lastActiveAt).toBe(past.toISOString());
+    expect(() => superjson.serialize(rows)).not.toThrow();
   });
   it("retains elapsed active-pass evidence during reporting grace before the expiry job runs", async () => {
     const elapsed = { ...lic, status: "active", accessEndsAt: past };

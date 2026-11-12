@@ -48,8 +48,8 @@ describe("Flex readiness display", () => {
       expect(html).not.toContain("Not started");
       expect(html).toMatch(/Not available<\/p><p[^>]*>Questions Answered/);
       expect(html).toMatch(/Not available<\/p><p[^>]*>Avg Accuracy/);
-      expect(html).toMatch(/Not available<\/p><p[^>]*>Actively Studying/);
-      expect(html.match(/Not available/g)?.length).toBeGreaterThanOrEqual(6);
+      if (status === "active") expect(html).toMatch(/Not available<\/p><p[^>]*>Actively Studying/);
+      else expect(html).toMatch(/>0<\/p><p[^>]*>Actively Studying/);
     }
   });
 
@@ -62,13 +62,28 @@ describe("Flex readiness display", () => {
     for (const unknown of [
       { ...base, licenceId: 2, totalAttempts: 0, activityAvailable: false },
       { ...base, licenceId: 2, totalAttempts: 0, activityAvailable: false, accessEndsAt: null },
-      { ...base, licenceId: 2, totalAttempts: 0, activityAvailable: false, status: "expired" },
+      { ...base, licenceId: 2, totalAttempts: 0, activityAvailable: false, accessEndsAt: "invalid" },
     ]) {
       const html = render([{ ...base, readinessAvailable: true, readinessScore: 72 }, unknown]);
       expect(html).toMatch(/Not available<\/p><p[^>]*>Questions Answered/);
       expect(html).toMatch(/Not available<\/p><p[^>]*>Avg Accuracy/);
       expect(html).toMatch(/Not available<\/p><p[^>]*>Avg readiness: active licences with recent data/);
+      expect(html).toMatch(/Not available<\/p><p[^>]*>Actively Studying/);
       expect(html).toContain("72% — Progressing");
+    }
+  });
+
+  it("keeps active metrics visible when unrelated historical or pending activity is unknown", () => {
+    for (const unknown of [
+      { ...base, licenceId: 2, status: "expired", activityAvailable: false },
+      { ...base, licenceId: 2, status: "assigned", activityAvailable: false },
+      { ...base, licenceId: 2, accessEndsAt: "2000-01-01", activityAvailable: false },
+    ]) {
+      const html = render([{ ...base, readinessAvailable: true, readinessScore: 72, daysActive30: 1 }, unknown]);
+      expect(html).toMatch(/Not available<\/p><p[^>]*>Questions Answered/);
+      expect(html).toMatch(/Not available<\/p><p[^>]*>Avg Accuracy/);
+      expect(html).toMatch(/>72<\/p><p[^>]*>Avg readiness: active licences with recent data/);
+      expect(html).toMatch(/>1<\/p><p[^>]*>Actively Studying/);
     }
   });
 

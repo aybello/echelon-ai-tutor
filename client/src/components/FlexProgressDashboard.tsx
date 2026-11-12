@@ -29,6 +29,7 @@ function daysRemaining(accessEndsAt: string | Date | null): string | null {
   if (!accessEndsAt) return null;
   const end = new Date(accessEndsAt);
   const now = new Date();
+  if (!Number.isFinite(end.getTime())) return null;
   const days = Math.ceil((end.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
   if (days < 0) return "Expired";
   if (days === 0) return "Expires today";
@@ -65,8 +66,7 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
     return null; // No Flex licences to show progress for
   }
 
-  const { activatedLicences, assignedLearners, studyingLearners, totalAttempts, avgAccuracy, avgReadiness } = summarizeFlexProgress(data);
-  const activityComplete = data.every(row => row.activityAvailable);
+  const { activatedLicences, assignedLearners, studyingLearners, totalAttempts, avgAccuracy, avgReadiness, lifetimeActivityComplete, activeActivityComplete } = summarizeFlexProgress(data);
 
   return (
     <Card className="teams-flex-progress mt-6">
@@ -87,19 +87,19 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
         {/* Summary stats */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
           <div className="rounded-lg border border-slate-200 p-3 text-center">
-            <p className="text-2xl font-bold text-slate-900">{activityComplete ? totalAttempts.toLocaleString() : "Not available"}</p>
+            <p className="text-2xl font-bold text-slate-900">{lifetimeActivityComplete ? totalAttempts.toLocaleString() : "Not available"}</p>
             <p className="text-xs text-slate-500">Questions Answered</p>
           </div>
           <div className="rounded-lg border border-slate-200 p-3 text-center">
-            <p className="text-2xl font-bold text-slate-900">{activityComplete && avgAccuracy !== null ? `${avgAccuracy}%` : "Not available"}</p>
+            <p className="text-2xl font-bold text-slate-900">{lifetimeActivityComplete && avgAccuracy !== null ? `${avgAccuracy}%` : "Not available"}</p>
             <p className="text-xs text-slate-500">Avg Accuracy</p>
           </div>
           <div className="rounded-lg border border-slate-200 p-3 text-center">
-            <p className={`text-2xl font-bold ${!activityComplete || avgReadiness === null ? "text-slate-500" : readinessColor(avgReadiness)}`}>{!activityComplete || avgReadiness === null ? "Not available" : avgReadiness}</p>
+            <p className={`text-2xl font-bold ${!activeActivityComplete || avgReadiness === null ? "text-slate-500" : readinessColor(avgReadiness)}`}>{!activeActivityComplete || avgReadiness === null ? "Not available" : avgReadiness}</p>
             <p className="text-xs text-slate-500">Avg readiness: active licences with recent data</p>
           </div>
           <div className="rounded-lg border border-slate-200 p-3 text-center">
-            <p className="text-2xl font-bold text-slate-900">{activityComplete ? studyingLearners : "Not available"}</p>
+            <p className="text-2xl font-bold text-slate-900">{activeActivityComplete ? studyingLearners : "Not available"}</p>
             <p className="text-xs text-slate-500">Actively Studying</p>
           </div>
         </div>

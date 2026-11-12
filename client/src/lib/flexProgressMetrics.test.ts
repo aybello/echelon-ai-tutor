@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { summarizeFlexProgress, flexRowIsStudying, countPurchasedFlexLicences } from "./flexProgressMetrics";
 const now = new Date("2026-10-03T12:00:00Z");
-const row = { status: "active", operatorKey: "user:42", operatorEmail: "learner@example.test", totalAttempts: 0, correctAttempts: 0, readinessScore: 0, readinessAvailable: false, daysActive30: 0, accessEndsAt: "2027-01-03T12:00:00Z" };
+const row = { status: "active", operatorKey: "user:42", operatorEmail: "learner@example.test", totalAttempts: 0, correctAttempts: 0, readinessScore: 0, readinessAvailable: false, activityAvailable: true, daysActive30: 0, accessEndsAt: "2027-01-03T12:00:00Z" };
 describe("Flex licence and learner cohorts", () => {
   it("counts two activated licences as one assigned learner and zero studying without answers", () => {
     expect(summarizeFlexProgress([row, row], now)).toMatchObject({ activatedLicences: 2, assignedLearners: 1, studyingLearners: 0, totalAttempts: 0, avgAccuracy: null });
@@ -32,6 +32,24 @@ describe("Flex licence and learner cohorts", () => {
 });
 
 describe("Flex readiness availability", () => {
+  it("requires completeness only in each metric's relevant cohort", () => {
+    for (const irrelevant of [
+      { ...row, status: "expired", activityAvailable: false },
+      { ...row, status: "assigned", activityAvailable: false },
+      { ...row, status: "active", activityAvailable: false, accessEndsAt: now.toISOString() },
+    ]) {
+      expect(summarizeFlexProgress([row, irrelevant], now)).toMatchObject({ lifetimeActivityComplete: false, activeActivityComplete: true });
+    }
+    for (const uncertain of [
+      { ...row, activityAvailable: false },
+      { ...row, accessEndsAt: null },
+      { ...row, accessEndsAt: "not a date" },
+      { ...row, accessEndsAt: new Date("invalid") },
+    ]) {
+      expect(summarizeFlexProgress([row, uncertain], now).activeActivityComplete).toBe(false);
+    }
+  });
+
   it("returns no average when history exists but no recent snapshot is available", () => {
     expect(summarizeFlexProgress([{ ...row, totalAttempts: 20, readinessScore: 0 }], now).avgReadiness).toBeNull();
     expect(summarizeFlexProgress([row], now).avgReadiness).toBeNull();
