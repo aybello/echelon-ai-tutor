@@ -1,5 +1,6 @@
-import "../../scripts/test-safety.cjs";
+import safety from "../../scripts/test-safety.cjs";
 import { defineConfig, devices } from "@playwright/test";
+safety.assertPreloaded();
 const port = Number(process.env.UI_PREVIEW_PORT || 4178);
 if (!Number.isInteger(port) || port < 1 || port > 65_535) {
   throw new Error("UI_PREVIEW_PORT must be an integer between 1 and 65535.");

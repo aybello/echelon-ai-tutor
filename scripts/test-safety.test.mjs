@@ -75,3 +75,85 @@ test('the actual mysql2 selected config is checked before socket creation', () =
     try{m.createConnection({uri:'mysql://u:p@127.0.0.1/echelon_ci'});process.exit(1)}catch(e){if(!e.message.includes('validated connect reached'))throw e}`;
   const result = node(code, safe); assert.equal(result.status, 0, result.stderr);
 });
+
+// Strip the wrapper-injected NODE_OPTIONS only to simulate an incorrectly started
+// runner in a fresh, credential-free Node process; all inputs below are synthetic.
+function lateNode(code, args = ['-e', code]) {
+  return spawnSync('/usr/bin/env', ['-u', 'NODE_OPTIONS', process.execPath, ...args], {
+    cwd: root, env: base, encoding: 'utf8', timeout: 10000,
+  });
+}
+
+test('callback and promisified exec/execFile retain outputs, errors, child and replacement-env guard', async () => {
+  const { exec, execFile } = await import('node:child_process');
+  const { promisify } = await import('node:util');
+  for (const [fn, args] of [
+    [execFile, [process.execPath, ['-e', "process.stdout.write('out');process.stderr.write('err')"]]],
+    [exec, [`${JSON.stringify(process.execPath)} -e "process.stdout.write('out');process.stderr.write('err')"`]],
+  ]) {
+    const options = { env: { LANG: 'C.UTF-8' }, encoding: 'utf8' };
+    const callback = await new Promise((resolve, reject) => fn(...args, options, (error, stdout, stderr) => error ? reject(error) : resolve({ stdout, stderr })));
+    assert.deepEqual(callback, { stdout: 'out', stderr: 'err' });
+    const pending = promisify(fn)(...args, options);
+    assert.ok(pending.child && typeof pending.child.pid === 'number');
+    assert.deepEqual(await pending, { stdout: 'out', stderr: 'err' });
+  }
+  for (const [fn, args] of [
+    [execFile, [process.execPath, ['-e', "process.stdout.write('out');process.stderr.write('err');process.exit(7)"]]],
+    [exec, [`${JSON.stringify(process.execPath)} -e "process.stdout.write('out');process.stderr.write('err');process.exit(7)"`]],
+  ]) {
+    const options = { env: { LANG: 'C.UTF-8' }, encoding: 'utf8' };
+    await assert.rejects(promisify(fn)(...args, options), error => error.code === 7 && error.stdout === 'out' && error.stderr === 'err');
+    await new Promise((resolve, reject) => fn(...args, options, (error, stdout, stderr) => {
+      try { assert.equal(error.code, 7); assert.equal(stdout, 'out'); assert.equal(stderr, 'err'); resolve(); } catch (e) { reject(e); }
+    }));
+  }
+  for (const [fn, args] of [
+    [execFile, [process.execPath, ['-e', "console.log('BAD')"]]],
+    [exec, [`${JSON.stringify(process.execPath)} -e "console.log('BAD')"`]],
+  ]) {
+    await assert.rejects(promisify(fn)(...args, { env: { DATABASE_URL: 'mysql://u:p@remote.invalid/live' } }), error => /\[test safety\]/.test(error.stderr) && !error.stdout.includes('BAD'));
+  }
+});
+
+test('late guard installation rejects preloaded direct, promise and pool mysql2 classes', () => {
+  for (const setup of [
+    "const m=require('mysql2'); const f=m.createConnection",
+    "const m=require('mysql2/promise'); const f=m.createConnection",
+    "const m=require('mysql2'); const p=m.createPool({host:'127.0.0.1',database:'echelon_ci'})",
+    "const m=require('mysql2/promise'); const p=m.createPool({host:'127.0.0.1',database:'echelon_ci'})",
+    "const C=require('mysql2/lib/base/connection.js')",
+  ]) {
+    // The last internal path is not exported by mysql2: use its actual filename.
+    const statement = setup.replace("require('mysql2/lib/base/connection.js')", "require(require('node:path').join(require.resolve('mysql2').replace(/index\\.js$/, ''),'lib/base/connection.js'))");
+    blocked(lateNode(`${statement};require(${JSON.stringify(preload)});console.log('BAD')`));
+  }
+});
+
+test('ESM import order rejects late installation and a startup preload guards ESM mysql2', () => {
+  const late = `import mysql from 'mysql2'; import ${JSON.stringify(preload)}; console.log('BAD')`;
+  blocked(lateNode(late, ['--input-type=module', '-e', late]));
+  const guarded = `import mysql from 'mysql2'; import promise from 'mysql2/promise'; for(const f of [()=>mysql.createConnection({host:'127.0.0.1',database:'live'}),()=>mysql.createPool({host:'127.0.0.1',database:'live'}).getConnection(()=>{}),()=>promise.createConnection({host:'127.0.0.1',database:'live'}),()=>promise.createPool({host:'127.0.0.1',database:'live'}).getConnection()]) {try {await f();throw Error('not blocked')} catch(e) {if(!e.message.includes('[test safety]'))throw e}}`;
+  const result = node(guarded, safe, ['-r', preload, '--input-type=module', '-e', guarded]);
+  assert.equal(result.status, 0, result.stderr);
+});
+
+test('runner config requires first startup preload rather than late installation', () => {
+  const args = [path.join(root, 'node_modules/vitest/vitest.mjs'), 'run', 'server/jobPdfText.test.ts'];
+  const result = lateNode('', args);
+  blocked(result);
+  assert.doesNotMatch(result.stdout, /Test Files\s+1 passed/);
+  const preloadedFirst = lateNode('', ['-r', 'mysql2', '-r', preload, '-e', "console.log('BAD')"]);
+  blocked(preloadedFirst);
+  assert.doesNotMatch(preloadedFirst.stdout, /BAD/);
+});
+
+test('dotenv direct and ESM config cannot load synthetic env files', () => {
+  const code = `const fs=require('node:fs'),os=require('node:os'),path=require('node:path');const dir=fs.mkdtempSync(path.join(os.tmpdir(),'dotenv-synthetic-'));try{process.chdir(dir);fs.writeFileSync('.env','SYNTHETIC_DOTENV_VALUE=loaded\\n');const d=require('dotenv');d.config({quiet:true});d.configDotenv();if(process.env.SYNTHETIC_DOTENV_VALUE)process.exit(1);try{d.config({path:'.env'});process.exit(1)}catch(e){if(!e.message.includes('[test safety]'))throw e}}finally{fs.rmSync(dir,{recursive:true,force:true})}`;
+  const result = node(code);
+  assert.equal(result.status, 0, result.stderr);
+  const esm = `import { config } from 'dotenv';try{config({path:'.env'});process.exit(1)}catch(e){if(!e.message.includes('[test safety]'))throw e}`;
+  const esmResult = node(esm, {}, ['-r', preload, '--input-type=module', '-e', esm]);
+  assert.equal(esmResult.status, 0, esmResult.stderr);
+  blocked(lateNode(`require('dotenv');require(${JSON.stringify(preload)});console.log('BAD')`));
+});

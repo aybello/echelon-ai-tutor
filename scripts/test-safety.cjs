@@ -44,19 +44,22 @@ function preflight() {
     }
   }
   for (const name of ['ECHELON_CUTOVER_STATUS_URL', 'PRACTICE_TEST_MYSQL_SOCKET']) if (process.env[name]) denied();
-  // Prevent dotenv from loading a developer's .env in child scripts.
+  // This affects dotenv/config; direct dotenv.config() needs the hook below.
   process.env.DOTENV_CONFIG_PATH = '/dev/null';
 }
 function install() {
   if (globalThis.__echelonTestSafetyInstalled) return;
   preflight();
+  // mysql2 caches classes derived from its base connection; wrapping the base
+  // after any mysql2 module has loaded cannot repair those retained references.
+  if (Object.keys(require.cache).some(file => /[\\/](?:mysql2|dotenv)[\\/]/.test(file))) denied();
   globalThis.__echelonTestSafetyInstalled = true;
   // Parent runner and Node children, including tsx, inherit the same guard.
   process.env.NODE_OPTIONS = `--require=${JSON.stringify(__filename)}`;
   const child = require('node:child_process');
   for (const name of ['spawn', 'spawnSync', 'execFile', 'execFileSync', 'exec', 'execSync', 'fork']) {
     const original = child[name];
-    child[name] = function(...args) {
+    const wrapped = function(...args) {
       // The optional options object follows the command and optional arguments.
       let index = 1;
       if (Array.isArray(args[index])) index++;
@@ -67,6 +70,23 @@ function install() {
       else args.splice(index, 0, options);
       return original.apply(this, args);
     };
+    // Node's custom hook returns {stdout, stderr}, attaches child to the
+    // promise, and puts both outputs on errors. It must call the guarded
+    // wrapper, not the original hook, so replacement env stays protected.
+    if (name === 'exec' || name === 'execFile') {
+      wrapped[require('node:util').promisify.custom] = function(...args) {
+        let childProcess;
+        const promise = new Promise((resolve, reject) => {
+          childProcess = wrapped(...args, (error, stdout, stderr) => {
+            if (error) { error.stdout = stdout; error.stderr = stderr; reject(error); }
+            else resolve({ stdout, stderr });
+          });
+        });
+        promise.child = childProcess;
+        return promise;
+      };
+    }
+    child[name] = wrapped;
   }
   require('node:module').syncBuiltinESMExports();
   const originalLoad = Module._load;
@@ -75,6 +95,17 @@ function install() {
   Module._load = function(request, parent, isMain) {
     const resolved = Module._resolveFilename(request, parent, isMain);
     const result = originalLoad.apply(this, arguments);
+    if (typeof resolved === 'string' && /[\\/]dotenv[\\/]lib[\\/]main\.js$/.test(resolved)) {
+      // config() ignores DOTENV_CONFIG_PATH. Do not read any real env file;
+      // leave parse() available for callers that process synthetic input.
+      const emptyConfig = options => {
+        if (options && options.path && options.path !== '/dev/null') denied();
+        return { parsed: {} };
+      };
+      result.config = emptyConfig;
+      result.configDotenv = emptyConfig;
+      result._configVault = denied;
+    }
     if (typeof resolved === 'string' && /[\\/]mysql2[\\/]lib[\\/]base[\\/]connection\.js$/.test(resolved)) {
       if (!guardedClasses.has(result)) {
         class GuardedConnection extends result {
@@ -110,6 +141,12 @@ function install() {
     return originalConnect.apply(this, args);
   };
 }
-module.exports = { install, preflight, assertUrl, validDatabase, OPT_IN };
+function assertPreloaded() {
+  const first = process._preload_modules && process._preload_modules[0];
+  let resolved;
+  try { resolved = first && require.resolve(first, { paths: [process.cwd()] }); } catch {}
+  if (resolved !== __filename || !globalThis.__echelonTestSafetyInstalled) denied();
+}
+module.exports = { install, preflight, assertUrl, validDatabase, assertPreloaded, OPT_IN };
 // NODE_OPTIONS preload in workers and child tooling.
 if (require.main !== module) install();

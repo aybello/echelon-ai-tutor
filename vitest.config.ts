@@ -3,7 +3,7 @@ import { defineConfig } from "vitest/config";
 import path from "path";
 
 const templateRoot = path.resolve(import.meta.dirname);
-createRequire(import.meta.url)(path.join(templateRoot, "scripts/test-safety.cjs"));
+createRequire(import.meta.url)(path.join(templateRoot, "scripts/test-safety.cjs")).assertPreloaded();
 
 export default defineConfig({
   root: templateRoot,

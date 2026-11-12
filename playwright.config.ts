@@ -1,6 +1,7 @@
-import "./scripts/test-safety.cjs";
+import safety from "./scripts/test-safety.cjs";
 import { defineConfig, devices } from "@playwright/test";
 
+safety.assertPreloaded();
 const baseURL = process.env.E2E_BASE_URL ?? "http://127.0.0.1:3000";
 if (baseURL !== "http://127.0.0.1:3000") {
   throw new Error("[test safety] browser tests require the locally started test server");
