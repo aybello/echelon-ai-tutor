@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { MySqlDialect } from "drizzle-orm/mysql-core";
 const { getDb, calculateReadinessSnapshot } = vi.hoisted(() => ({
-  getDb: vi.fn(), calculateReadinessSnapshot: vi.fn().mockResolvedValue({ score: 65, activeDaysLast30: 2 }),
+  getDb: vi.fn(), calculateReadinessSnapshot: vi.fn().mockResolvedValue({ score: 65, hasData: true, activeDaysLast30: 2 }),
 }));
 vi.mock("../db", () => ({ getDb }));
 vi.mock("../analytics", () => ({ trackEvent: vi.fn().mockResolvedValue(undefined) }));
@@ -44,10 +44,89 @@ describe("manager reporting router behavior", () => {
   it("keeps actual expired-pass attempt evidence during reporting grace", async () => {
     const db = database([[org], [lic], [lic], [{ total: 10, correct: 7, lastActive: past.toISOString() }]]);
     const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
-    expect(rows).toMatchObject([{ licenceId: 42, status: "expired", totalAttempts: 10, correctAttempts: 7, accuracy: 70, readinessScore: 65 }]);
+    expect(rows).toMatchObject([{ licenceId: 42, status: "expired", totalAttempts: 10, correctAttempts: 7, accuracy: 70, activityAvailable: true, readinessScore: 65, readinessAvailable: true }]);
     expect(calculateReadinessSnapshot).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ flexScope: { orgId: 7, licenceId: 42, startsAt: lic.startsAt, endsAt: past } }));
     expect(db.conditions.at(-1)).toContain("flexLicenceId");
     expect(db.conditions.at(-1)).toContain("orgId");
+    expect(db.pending).toEqual([]);
+  });
+  it("reports a genuine zero readiness score when the snapshot has evidence", async () => {
+    calculateReadinessSnapshot.mockResolvedValueOnce({ score: 0, hasData: true, activeDaysLast30: 1 });
+    const active = { ...lic, status: "active", accessEndsAt: future };
+    const db = database([[org], [active], [active], [{ total: 1, correct: 0, lastActive: past.toISOString() }]]);
+    const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
+    expect(rows).toMatchObject([{ status: "active", totalAttempts: 1, correctAttempts: 0, accuracy: 0, activityAvailable: true, readinessScore: 0, readinessAvailable: true }]);
+    expect(db.pending).toEqual([]);
+  });
+  it("distinguishes unavailable readiness from available historical activity", async () => {
+    calculateReadinessSnapshot.mockResolvedValueOnce({ score: 0, hasData: false, activeDaysLast30: 0 });
+    const active = { ...lic, status: "active", accessEndsAt: future };
+    const db = database([[org], [active], [active], [{ total: 5, correct: 4, lastActive: past.toISOString() }]]);
+    const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
+    expect(rows).toMatchObject([{ totalAttempts: 5, accuracy: 80, activityAvailable: true, readinessScore: 0, readinessAvailable: false }]);
+    expect(db.pending).toEqual([]);
+  });
+  it("distinguishes known unstarted passes from incomplete active and expired metadata", async () => {
+    const incomplete = [
+      { ...lic, id: 1, status: "active", accessEndsAt: future, operatorUserId: null, invitedEmail: "  " },
+      { ...lic, id: 2, status: "active", accessEndsAt: future, activatedAt: null },
+      { ...lic, id: 3, status: "active", accessEndsAt: future, startsAt: null },
+      { ...lic, id: 4, status: "active", accessEndsAt: null },
+      { ...lic, id: 5, status: "expired", startsAt: null },
+      { ...lic, id: 8, status: "expired", operatorUserId: null, invitedEmail: null },
+      { ...lic, id: 9, status: "expired", accessEndsAt: null },
+      { ...lic, id: 10, status: "assigned", activatedAt: null },
+    ];
+    const unstarted = [
+      { ...lic, id: 6, status: "assigned", activatedAt: null, startsAt: null, accessEndsAt: null },
+      { ...lic, id: 7, status: "invited", activatedAt: null, startsAt: null, accessEndsAt: null },
+    ];
+    const all = [...incomplete, ...unstarted];
+    const db = database([[org], [lic], all]);
+    const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
+    expect(rows.map(row => [row.licenceId, row.activityAvailable, row.readinessAvailable])).toEqual([
+      [1, false, false], [2, false, false], [3, false, false], [4, false, false], [5, false, false], [8, false, false], [9, false, false], [10, false, false],
+      [6, true, false], [7, true, false],
+    ]);
+    expect(rows.every(row => row.totalAttempts === 0)).toBe(true);
+    expect(calculateReadinessSnapshot).not.toHaveBeenCalled();
+    expect(db.pending).toEqual([]);
+  });
+  it("marks equal, reversed, and invalid activity intervals unavailable without querying activity", async () => {
+    const invalid = new Date("invalid");
+    const licences = [
+      { ...lic, id: 11, status: "active", startsAt: future, accessEndsAt: future },
+      { ...lic, id: 12, status: "active", startsAt: future, accessEndsAt: past },
+      { ...lic, id: 13, status: "active", startsAt: invalid, accessEndsAt: future },
+      { ...lic, id: 14, status: "active", startsAt: past, accessEndsAt: invalid },
+      { ...lic, id: 15, status: "expired", startsAt: past, accessEndsAt: past },
+      { ...lic, id: 16, status: "expired", startsAt: future, accessEndsAt: past },
+      { ...lic, id: 17, status: "expired", startsAt: invalid, accessEndsAt: past },
+      { ...lic, id: 18, status: "expired", startsAt: past, accessEndsAt: invalid },
+    ];
+    const db = database([[org], [lic], licences]);
+    const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
+    expect(rows.map(row => row.licenceId)).toEqual(licences.map(item => item.id));
+    expect(rows.every(row => !row.activityAvailable && !row.readinessAvailable && row.totalAttempts === 0)).toBe(true);
+    expect(rows.filter(row => [14, 18].includes(row.licenceId)).every(row => row.accessEndsAt === null)).toBe(true);
+    expect(db.select).toHaveBeenCalledTimes(3);
+    expect(calculateReadinessSnapshot).not.toHaveBeenCalled();
+    expect(db.pending).toEqual([]);
+  });
+  it("retains elapsed active-pass evidence during reporting grace before the expiry job runs", async () => {
+    const elapsed = { ...lic, status: "active", accessEndsAt: past };
+    const db = database([[org], [lic], [elapsed], [{ total: 2, correct: 1, lastActive: past.toISOString() }]]);
+    const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
+    expect(rows).toMatchObject([{ status: "active", activityAvailable: true, totalAttempts: 2, accuracy: 50 }]);
+    expect(calculateReadinessSnapshot).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ flexScope: { orgId: 7, licenceId: 42, startsAt: lic.startsAt, endsAt: past } }));
+    expect(db.pending).toEqual([]);
+  });
+  it("reports a queried empty active licence as known unstarted", async () => {
+    calculateReadinessSnapshot.mockResolvedValueOnce({ score: 0, hasData: false, activeDaysLast30: 0 });
+    const active = { ...lic, status: "active", accessEndsAt: future };
+    const db = database([[org], [active], [active], [{ total: 0, correct: null, lastActive: null }]]);
+    const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
+    expect(rows).toMatchObject([{ activityAvailable: true, totalAttempts: 0, readinessAvailable: false }]);
     expect(db.pending).toEqual([]);
   });
   it("drops expired progress only after the recorded reporting window", async () => {

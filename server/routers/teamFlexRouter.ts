@@ -536,7 +536,10 @@ export const teamFlexRouter = router({
         licences.map(async (lic) => {
           const canonicalCourse = resolveCourseKey(lic.courseKey);
           const displayCourseKey = canonicalCourse?.courseKey ?? lic.courseKey;
-          if ((!lic.operatorUserId && !lic.invitedEmail?.trim()) || !["active", "expired"].includes(lic.status) || !lic.activatedAt || !lic.startsAt || !lic.accessEndsAt) {
+          const startTime = lic.startsAt ? new Date(lic.startsAt).getTime() : NaN;
+          const endTime = lic.accessEndsAt ? new Date(lic.accessEndsAt).getTime() : NaN;
+          const validInterval = Number.isFinite(startTime) && Number.isFinite(endTime) && startTime < endTime;
+          if ((!lic.operatorUserId && !lic.invitedEmail?.trim()) || !["active", "expired"].includes(lic.status) || !lic.activatedAt || !validInterval) {
             return {
               licenceId: lic.id,
               courseKey: displayCourseKey,
@@ -545,11 +548,15 @@ export const teamFlexRouter = router({
               operatorEmail: lic.invitedEmail,
               operatorKey: lic.operatorUserId ? `user:${lic.operatorUserId}` : lic.invitedEmail ? `email:${normalizeEmail(lic.invitedEmail)}` : null,
               activatedAt: lic.activatedAt,
-              accessEndsAt: lic.accessEndsAt,
+              accessEndsAt: Number.isFinite(endTime) ? lic.accessEndsAt : null,
+              // Pre-activation licences have not started; incomplete active or
+              // expired licences cannot be safely queried and remain unknown.
+              activityAvailable: ["assigned", "invited"].includes(lic.status) && !lic.activatedAt && !lic.startsAt && !lic.accessEndsAt,
               totalAttempts: 0,
               correctAttempts: 0,
               accuracy: 0,
               readinessScore: 0,
+              readinessAvailable: false,
               lastActiveAt: null,
               daysActive30: 0,
             };
@@ -590,10 +597,12 @@ export const teamFlexRouter = router({
             operatorKey: lic.operatorUserId ? `user:${lic.operatorUserId}` : lic.invitedEmail ? `email:${normalizeEmail(lic.invitedEmail)}` : null,
             activatedAt: lic.activatedAt,
             accessEndsAt: lic.accessEndsAt,
+            activityAvailable: true,
             totalAttempts: total,
             correctAttempts: correct,
             accuracy: Math.round(accuracy * 100),
             readinessScore: readinessResult.score,
+            readinessAvailable: readinessResult.hasData,
             lastActiveAt: stats?.lastActive ?? null,
             daysActive30: readinessResult.activeDaysLast30,
           };

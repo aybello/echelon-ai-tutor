@@ -66,6 +66,7 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
   }
 
   const { activatedLicences, assignedLearners, studyingLearners, totalAttempts, avgAccuracy, avgReadiness } = summarizeFlexProgress(data);
+  const activityComplete = data.every(row => row.activityAvailable);
 
   return (
     <Card className="teams-flex-progress mt-6">
@@ -86,19 +87,19 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
         {/* Summary stats */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
           <div className="rounded-lg border border-slate-200 p-3 text-center">
-            <p className="text-2xl font-bold text-slate-900">{totalAttempts.toLocaleString()}</p>
+            <p className="text-2xl font-bold text-slate-900">{activityComplete ? totalAttempts.toLocaleString() : "Not available"}</p>
             <p className="text-xs text-slate-500">Questions Answered</p>
           </div>
           <div className="rounded-lg border border-slate-200 p-3 text-center">
-            <p className="text-2xl font-bold text-slate-900">{avgAccuracy}%</p>
+            <p className="text-2xl font-bold text-slate-900">{activityComplete && avgAccuracy !== null ? `${avgAccuracy}%` : "Not available"}</p>
             <p className="text-xs text-slate-500">Avg Accuracy</p>
           </div>
           <div className="rounded-lg border border-slate-200 p-3 text-center">
-            <p className={`text-2xl font-bold ${readinessColor(avgReadiness)}`}>{avgReadiness}</p>
-            <p className="text-xs text-slate-500">Avg Licence Readiness</p>
+            <p className={`text-2xl font-bold ${!activityComplete || avgReadiness === null ? "text-slate-500" : readinessColor(avgReadiness)}`}>{!activityComplete || avgReadiness === null ? "Not available" : avgReadiness}</p>
+            <p className="text-xs text-slate-500">Avg readiness: active licences with recent data</p>
           </div>
           <div className="rounded-lg border border-slate-200 p-3 text-center">
-            <p className="text-2xl font-bold text-slate-900">{studyingLearners}</p>
+            <p className="text-2xl font-bold text-slate-900">{activityComplete ? studyingLearners : "Not available"}</p>
             <p className="text-xs text-slate-500">Actively Studying</p>
           </div>
         </div>
@@ -148,10 +149,12 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
                       </span>
                     </td>
                     <td className="py-3 pr-4 text-slate-700 tabular-nums">
-                      {row.totalAttempts > 0 ? row.totalAttempts.toLocaleString() : "—"}
+                      {!row.activityAvailable ? "Not available" : row.totalAttempts > 0 ? row.totalAttempts.toLocaleString() : "—"}
                     </td>
                     <td className="py-3 pr-4">
-                      {row.totalAttempts > 0 ? (
+                      {!row.activityAvailable ? (
+                        <span className="text-slate-400 text-xs">Not available</span>
+                      ) : row.totalAttempts > 0 ? (
                         <div className="flex items-center gap-2">
                           <Progress value={row.accuracy} className="h-1.5 w-16" />
                           <span className="text-xs tabular-nums text-slate-600">{row.accuracy}%</span>
@@ -161,7 +164,11 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
                       )}
                     </td>
                     <td className="py-3 pr-4">
-                      {["active", "expired"].includes(row.status) && row.totalAttempts > 0 ? (
+                      {!row.activityAvailable ? (
+                        <span className="text-slate-400 text-xs">Not available</span>
+                      ) : row.totalAttempts === 0 ? (
+                        <span className="text-slate-400 text-xs">Not started</span>
+                      ) : row.readinessAvailable ? (
                         <div className="flex items-center gap-1.5">
                           <Target className="w-3.5 h-3.5 text-slate-400" />
                           <span className={`text-xs font-semibold ${readinessColor(row.readinessScore)}`}>
@@ -169,7 +176,7 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
                           </span>
                         </div>
                       ) : (
-                        <span className="text-slate-400 text-xs">Not started</span>
+                        <span className="text-slate-400 text-xs">Not enough recent data</span>
                       )}
                     </td>
                     <td className="py-3">
