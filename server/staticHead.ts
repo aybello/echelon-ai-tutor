@@ -29,11 +29,12 @@ export function prepareAppFallback(template: string, url: string): { html: strin
   const route = classifyAppRoute(url);
   const missing = route.kind === "not-found";
   const privatePage = route.kind === "private";
+  const activityPage = route.kind === "public" && /^\/courses\/[a-z0-9-]+\/interactive$/.test(route.path);
   const title = missing ? "Page Not Found | Echelon Institute" : "Operator Study Resources | Echelon Institute";
   const description = missing ? "The requested page does not exist. Browse Echelon operator courses and resources." : "Independent water and wastewater operator exam preparation and study resources.";
-  const canonical = !missing && !privatePage ? `https://echeloninstitute.ca${route.path}` : null;
+  const canonical = !missing && !privatePage && !activityPage ? `https://echeloninstitute.ca${route.path}` : null;
   const head = `<meta name="description" content="${escapeHtml(description)}" />
-    <meta name="robots" content="${missing || privatePage ? "noindex, nofollow" : "index, follow"}" />
+    <meta name="robots" content="${missing || privatePage || activityPage ? "noindex, nofollow" : "index, follow"}" />
     <meta property="og:title" content="${escapeHtml(title)}" />
     <meta property="og:description" content="${escapeHtml(description)}" />
     ${canonical ? `<link rel="canonical" href="${escapeHtml(canonical)}" /><meta property="og:url" content="${escapeHtml(canonical)}" />` : ""}`;

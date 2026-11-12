@@ -21,6 +21,16 @@
   margin: 5px 0 8px;
 }
 .practice-screen .practice-title-row p { color: #25364b !important; font-size: 14px; line-height: 1.5; }
+.practice-interactive-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #1757b8;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 .practice-screen .practice-session-stats { color: #25364b !important; font-size: 13px; gap: 18px; margin: 12px 0; }
 .practice-screen .practice-options { margin-top: 10px; }
 .practice-screen .practice-options summary { min-height: 44px; padding: 9px 14px; font-size: 13px; }

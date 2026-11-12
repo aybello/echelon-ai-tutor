@@ -25,6 +25,8 @@ function normalizePathname(pathname: string): string {
 function courseForNovaScotiaPath(pathname: string) {
   const normalized = normalizePathname(pathname);
   const legacyCourse = NOVA_SCOTIA_LEGACY_FORMULA_COURSES[normalized];
+  const interactiveCourse = /^\/courses\/([a-z0-9-]+)\/interactive$/.exec(normalized);
+  if (interactiveCourse) return resolveCourseKey(interactiveCourse[1]);
   return legacyCourse
     ? resolveCourseKey(legacyCourse)
     : getAllCourses().find(candidate => [

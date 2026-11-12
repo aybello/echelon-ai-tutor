@@ -31,6 +31,11 @@ describe("App route existence contract", () => {
     // Blog existence is handled by its published-only SSR query, not inferred here.
     expect(classifyAppRoute("/blog/no-such-post").kind).toBe("public");
   });
+  it("accepts only canonical active course keys on activity routes", () => {
+    expect(classifyAppRoute("/courses/class1-ww/interactive/?province=ON").kind).toBe("public");
+    expect(classifyAppRoute("/courses/class1-wastewater/interactive").kind).toBe("not-found");
+    expect(classifyAppRoute("/courses/no-such-course/interactive").kind).toBe("not-found");
+  });
   it.each(["/404", "/ordinary-missing-page", "/class9-water", "/class3-water-quiz", "/pricing/extra", "/courses/no-such-course", "/canada/no-such-region", "/us/states/no-such-state", "/continuing-education/no-such-course", "/blog/x/extra", "/blog/%2fprivate", "/team/extra", "/activate/a/b", "/assets", "/api/no-such-endpoint", "/%2faccount", "/pricing//"])("rejects genuine unknown %s", route => {
     expect(classifyAppRoute(route).kind).toBe("not-found");
   });

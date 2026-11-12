@@ -1,0 +1,26 @@
+.course-interactive__status,
+.course-interactive__preview {
+  border: 1px solid #cbdff2;
+  border-radius: 12px;
+  background: #fff;
+  color: #35536e;
+  line-height: 1.55;
+  padding: 18px 20px;
+}
+
+.course-interactive__status p { margin: 0 0 12px; }
+.course-interactive__status button {
+  border: 1px solid #14549b;
+  border-radius: 8px;
+  background: #14549b;
+  color: white;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  padding: 8px 14px;
+}
+.course-interactive__status button:focus-visible {
+  outline: 3px solid #1757b8;
+  outline-offset: 3px;
+}
+.course-interactive__preview { margin: 0 0 18px; }

@@ -48,6 +48,17 @@ describe("initial application loading display", () => {
     expect(privatePage.html).not.toContain('rel="canonical"');
     expect(privatePage.html).not.toContain("synthetic");
   });
+  it("serves canonical course activity routes with noindex before JavaScript", () => {
+    const activity = prepareAppFallback(template, "/courses/class1-ww/interactive/?province=ON");
+    expect(activity.status).toBe(200);
+    expect(activity.html).toContain('<meta name="robots" content="noindex, nofollow"');
+    expect(activity.html).not.toContain('rel="canonical"');
+    expect(activity.html).not.toContain('content="index, follow"');
+    const alias = prepareAppFallback(template, "/courses/class1-wastewater/interactive");
+    expect(alias.status).toBe(404);
+    expect(alias.html).toContain('<meta name="robots" content="noindex, nofollow"');
+    expect(prepareAppFallback(template, "/interactive-learning").html).toContain('content="index, follow"');
+  });
   it("keeps Sora identity without making the remote font sheet block first content", () => {
     expect(template).toContain('rel="preload" as="style"');
     expect(template).toContain("family=Sora");

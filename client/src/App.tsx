@@ -54,6 +54,7 @@ const SubscriptionSuccess = lazy(() => import("./pages/SubscriptionSuccess"));
 const WpiLanding = lazy(() => import("./pages/WpiLanding"));
 const OitHub = lazy(() => import("./pages/OitHub"));
 const InteractiveLearning = lazy(() => import("./pages/InteractiveLearning"));
+const CourseInteractiveLearning = lazy(() => import("./pages/CourseInteractiveLearning"));
 const MagicLinkConsume = lazy(() => import("./pages/MagicLinkConsume"));
 const OtpLogin = lazy(() => import("./pages/OtpLogin"));
 const Teams = lazy(() => import("./pages/Teams"));
@@ -473,6 +474,7 @@ function Router() {
         <Route path={"/terms"} component={Terms} />
         <Route path={"/refund"} component={Refund} />
         <Route path={"/faq"} component={FAQ} />
+        <Route path={"/courses/:courseKey/interactive"} component={CourseInteractiveLearning} />
         <Route path={"/courses/:courseKey"} component={SeoLandingPage} />
         <Route path={"/canada/:regionSlug"} component={SeoLandingPage} />
         {/* US Expansion routes */}
