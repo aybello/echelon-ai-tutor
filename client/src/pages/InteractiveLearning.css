@@ -26,6 +26,9 @@
 }
 
 .interactive-learning__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   color: #102c49;
   font: 800 17px/1.2 Manrope, sans-serif;
   text-decoration: none;

@@ -14,12 +14,12 @@ export default function InteractiveLearning() {
 
   return (
     <div className="interactive-learning">
-      <header className="interactive-learning__header">
+      <nav className="interactive-learning__header" aria-label="Interactive learning navigation">
         <div className="interactive-learning__header-inner">
-          <Link href="/" className="interactive-learning__brand">Echelon Institute</Link>
+          <Link href="/" className="interactive-learning__brand"><img src="/echelon-logo.webp" alt="" width="32" height="32" /> Echelon Institute</Link>
           <Link href="/oit" className="interactive-learning__back">← OIT overview</Link>
         </div>
-      </header>
+      </nav>
 
       <div className="interactive-learning__content">
         <section className="interactive-learning__intro" aria-labelledby="interactive-learning-title">
