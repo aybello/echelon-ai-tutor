@@ -18,7 +18,7 @@ const base = {
   readinessScore: 0, readinessAvailable: false, activityAvailable: true, daysActive30: 0, accessEndsAt: "2099-01-01",
 };
 
-function render(rows: (Omit<typeof base, "accessEndsAt"> & { accessEndsAt: string | null })[]) {
+function render(rows: (Omit<typeof base, "accessEndsAt" | "operatorEmail" | "operatorKey"> & { accessEndsAt: string | Date | null; operatorEmail: string | null; operatorKey: string | null })[]) {
   query.rows = rows;
   return renderToStaticMarkup(createElement(FlexProgressDashboard, { orgId: 1 }));
 }
@@ -67,6 +67,37 @@ describe("Flex readiness display", () => {
     expect(render([base, { ...base, licenceId: 2, accessEndsAt: "2000-01-01", activityAvailable: false }])).toContain("1 activated / 2 licences");
     expect(render([{ ...base, activityAvailable: false }])).toContain("1 activated / 1 licences");
     expect(render([base, { ...base, licenceId: 2, status: "assigned", accessEndsAt: null }])).toContain("1 activated / 2 licences");
+  });
+
+  it("labels assigned users without emails and suppresses unknown unique identities", () => {
+    for (const operatorEmail of [null, "  "]) {
+      const html = render([{ ...base, operatorEmail, operatorKey: null, daysActive30: 1 }]);
+      expect(html).toContain(">Unknown</span>");
+      expect(html).toContain("Not available unique assigned learners");
+      expect(html).toMatch(/Not available<\/p><p[^>]*>Actively Studying/);
+      expect(html).not.toContain("Unassigned");
+      const assigned = render([{ ...base, operatorEmail, operatorKey: "user:1", daysActive30: 1 }]);
+      expect(assigned).toContain(">Assigned operator</span>");
+      expect(assigned).toContain("1 unique assigned learners");
+      expect(assigned).toMatch(/>1<\/p><p[^>]*>Actively Studying/);
+    }
+  });
+
+  it("shows elapsed sub-day expirations and missing active ends consistently", () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-10-21T12:00:00Z"));
+    try {
+      const elapsed = render([{ ...base, accessEndsAt: "2026-10-21T11:59:59Z" }]);
+      expect(elapsed).toContain("Study expired · reporting only");
+      expect(elapsed).toContain(">Expired</span>");
+      expect(elapsed).not.toContain("Expires today");
+      for (const accessEndsAt of [null, "invalid"]) {
+        const unknown = render([{ ...base, accessEndsAt }]);
+        expect(unknown).not.toContain(">Activated</span>");
+        expect(unknown).toMatch(/<td class="py-3"><span[^>]*>Not available<\/span><\/td>/);
+      }
+      expect(render([{ ...base, status: "assigned", accessEndsAt: null }])).toMatch(/<td class="py-3"><span[^>]*>—<\/span><\/td>/);
+    } finally { vi.useRealTimers(); }
   });
 
   it("does not present partial activity as complete in a mixed cohort", () => {

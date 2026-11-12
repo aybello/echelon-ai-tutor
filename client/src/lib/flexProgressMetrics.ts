@@ -13,13 +13,15 @@ export function summarizeFlexProgress(rows: ProgressRow[], now = new Date()) {
     const end = row.accessEndsAt == null ? NaN : new Date(row.accessEndsAt).getTime();
     return Number.isFinite(end) && (end <= now.getTime() || row.activityAvailable);
   });
-  const key = (row: ProgressRow) => row.operatorEmail?.trim().toLowerCase() || row.operatorKey;
-  const assigned = new Set(rows.filter(row => row.status !== "invited").map(key).filter(Boolean));
-  const studying = new Set(active.filter(row => flexRowIsStudying(row, now)).map(key).filter(Boolean));
+  const key = (row: ProgressRow) => row.operatorEmail?.trim().toLowerCase() || row.operatorKey?.trim() || null;
+  const assignedKeys = rows.filter(row => row.status !== "invited").map(key);
+  const studyingKeys = active.filter(row => flexRowIsStudying(row, now)).map(key);
+  const assigned = assignedKeys.every(Boolean) ? new Set(assignedKeys).size : null;
+  const studying = studyingKeys.every(Boolean) ? new Set(studyingKeys).size : null;
   const totalAttempts = rows.reduce((sum, row) => sum + row.totalAttempts, 0);
   const correctAttempts = rows.reduce((sum, row) => sum + row.correctAttempts, 0);
   const recorded = active.filter(row => row.totalAttempts > 0 && row.readinessAvailable);
-  return { activatedLicences: active.length, assignedLearners: assigned.size, studyingLearners: studying.size, lifetimeActivityComplete, activeActivityComplete, activeCohortComplete,
+  return { activatedLicences: active.length, assignedLearners: assigned, studyingLearners: studying, lifetimeActivityComplete, activeActivityComplete, activeCohortComplete,
     totalAttempts, avgAccuracy: totalAttempts ? Math.round(correctAttempts / totalAttempts * 100) : null,
     avgReadiness: recorded.length ? Math.round(recorded.reduce((sum, row) => sum + row.readinessScore, 0) / recorded.length) : null };
 }

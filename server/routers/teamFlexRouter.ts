@@ -64,10 +64,9 @@ import {
   createRetakeExtensionCheckout,
 } from "../teams/flexExtensionService";
 
-// Preserve valid database values and their types, but never pass an invalid
-// Date to SuperJSON (or an unparseable timestamp to clients).
-export function validTimestamp<T extends Date | string | null | undefined>(value: T): Exclude<T, null | undefined> | null {
-  if (value == null || !aggregateUtcDate(value)) return null;
+// Normalize database timestamps to Dates before comparisons, queries or serialization.
+export function validTimestamp(value: Date | string | null | undefined): Date | null {
+  if (value == null) return null;
   if (typeof value === "string") {
     // Date parsing can silently normalize impossible ISO dates, including
     // timestamps with a timezone. Validate their original calendar fields.
@@ -87,9 +86,12 @@ export function validTimestamp<T extends Date | string | null | undefined>(value
         const offset = zone.slice(1).replace(":", "");
         if (Number(offset.slice(0, 2)) > 23 || Number(offset.slice(2)) > 59) return null;
       }
+      // aggregateUtcDate handles MySQL timestamps as UTC, but a zone-less
+      // ISO timestamp without seconds would otherwise use the local timezone.
+      if (!zone) return aggregateUtcDate(`${value.trim()}Z`);
     }
   }
-  return value as Exclude<T, null | undefined>;
+  return aggregateUtcDate(value);
 }
 
 const flexBulkRowsSchema = z.array(z.object({
@@ -555,7 +557,11 @@ export const teamFlexRouter = router({
           eq(teamFlexLicences.organizationId, input.orgId),
           sql`${teamFlexLicences.status} IN ('active', 'assigned', 'invited', 'expired')`,
         )))
-        .filter(licence => flexLicenceIsVisibleInManagerReport(licence, now));
+        .filter(licence => flexLicenceIsVisibleInManagerReport({
+          ...licence,
+          accessEndsAt: validTimestamp(licence.accessEndsAt),
+          reportingEndsAt: validTimestamp(licence.reportingEndsAt),
+        }, now));
 
       if (licences.length === 0) return [];
 
@@ -567,8 +573,8 @@ export const teamFlexRouter = router({
           const activatedAt = validTimestamp(lic.activatedAt);
           const startsAt = validTimestamp(lic.startsAt);
           const accessEndsAt = validTimestamp(lic.accessEndsAt);
-          const startTime = startsAt ? new Date(startsAt).getTime() : NaN;
-          const endTime = accessEndsAt ? new Date(accessEndsAt).getTime() : NaN;
+          const startTime = startsAt?.getTime() ?? NaN;
+          const endTime = accessEndsAt?.getTime() ?? NaN;
           const validInterval = Number.isFinite(startTime) && Number.isFinite(endTime) && startTime < endTime;
           if ((!lic.operatorUserId && !lic.invitedEmail?.trim()) || !["active", "expired"].includes(lic.status) || !activatedAt || !validInterval) {
             return {
@@ -577,7 +583,7 @@ export const teamFlexRouter = router({
               termMonths: lic.termMonths,
               status: lic.status,
               operatorEmail: lic.invitedEmail,
-              operatorKey: lic.operatorUserId ? `user:${lic.operatorUserId}` : lic.invitedEmail ? `email:${normalizeEmail(lic.invitedEmail)}` : null,
+              operatorKey: lic.operatorUserId ? `user:${lic.operatorUserId}` : lic.invitedEmail?.trim() ? `email:${normalizeEmail(lic.invitedEmail)}` : null,
               activatedAt,
               accessEndsAt,
               // Pre-activation licences have not started; incomplete active or
@@ -593,7 +599,7 @@ export const teamFlexRouter = router({
             };
           }
 
-          const flexScope = { orgId: input.orgId, licenceId: lic.id, startsAt: lic.startsAt!, endsAt: lic.accessEndsAt! };
+          const flexScope = { orgId: input.orgId, licenceId: lic.id, startsAt: startsAt!, endsAt: accessEndsAt! };
           // Fetch only attributable activity under this licence interval
           const [stats] = await db
             .select({
@@ -625,7 +631,7 @@ export const teamFlexRouter = router({
             termMonths: lic.termMonths,
             status: lic.status,
             operatorEmail: lic.invitedEmail,
-            operatorKey: lic.operatorUserId ? `user:${lic.operatorUserId}` : lic.invitedEmail ? `email:${normalizeEmail(lic.invitedEmail)}` : null,
+            operatorKey: lic.operatorUserId ? `user:${lic.operatorUserId}` : lic.invitedEmail?.trim() ? `email:${normalizeEmail(lic.invitedEmail)}` : null,
             activatedAt,
             accessEndsAt,
             activityAvailable: true,

@@ -13,6 +13,16 @@ describe("Flex licence and learner cohorts", () => {
   it("counts people once across OAuth and email and only recent current-licence activity", () => {
     expect(summarizeFlexProgress([row, { ...row, operatorKey: "email:learner@example.test", totalAttempts: 10, correctAttempts: 8, daysActive30: 1 }, { ...row, operatorEmail: "old@example.test", accessEndsAt: "2026-09-01", daysActive30: 1 }], now)).toMatchObject({ activatedLicences: 2, assignedLearners: 2, studyingLearners: 1, avgAccuracy: 80 });
   });
+  it("suppresses only unique counts affected by missing identity", () => {
+    for (const operatorEmail of [null, "  "]) {
+      const unknown = { ...row, operatorEmail, operatorKey: null };
+      expect(summarizeFlexProgress([row, unknown], now)).toMatchObject({ assignedLearners: null, studyingLearners: 0, activeActivityComplete: true });
+      expect(summarizeFlexProgress([row, { ...unknown, daysActive30: 1 }], now)).toMatchObject({ assignedLearners: null, studyingLearners: null, activeActivityComplete: true });
+      expect(summarizeFlexProgress([row, { ...unknown, status: "invited" }], now).assignedLearners).toBe(1);
+      expect(summarizeFlexProgress([row, { ...unknown, status: "expired", daysActive30: 1 }], now).studyingLearners).toBe(0);
+      expect(summarizeFlexProgress([{ ...unknown, operatorKey: "user:42", daysActive30: 1 }], now)).toMatchObject({ assignedLearners: 1, studyingLearners: 1 });
+    }
+  });
   it("uses the same evidence for a studying row and the summary count", () => {
     expect(flexRowIsStudying(row, now)).toBe(false);
     const studied = { ...row, totalAttempts: 100, daysActive30: 1 };

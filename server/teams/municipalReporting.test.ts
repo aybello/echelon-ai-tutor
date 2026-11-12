@@ -11,6 +11,7 @@ vi.mock("../readinessSnapshot", () => ({ calculateReadinessSnapshot }));
 vi.mock("../stripe/stripe", () => ({ stripe: {} }));
 import { aggregateUtcDate, orgIntelRouter, orgRouter } from "../routers/orgRouter";
 import { teamFlexRouter, validTimestamp } from "../routers/teamFlexRouter";
+import { summarizeFlexProgress } from "../../client/src/lib/flexProgressMetrics";
 const now = new Date();
 const past = new Date(now.getTime() - 86400000);
 const future = new Date(now.getTime() + 86400000);
@@ -44,7 +45,7 @@ describe("manager reporting router behavior", () => {
     expect(aggregateUtcDate("October 21, 2026 00:30:00 GMT")?.toISOString()).toBe("2026-10-21T00:30:00.000Z");
     expect(aggregateUtcDate("2026-02-30T12:00:00Z")?.toISOString()).toBe("2026-03-02T12:00:00.000Z");
   });
-  it("strictly validates Flex ISO calendar dates and timezone offsets without changing valid values", () => {
+  it("strictly validates Flex dates and returns valid timestamps as UTC Dates", () => {
     for (const value of [
       "2026-02-29T12:00:00Z", "2024-02-30T12:00:00Z", "2026-04-31T12:00:00+02:00", "2026-02-30T12:00",
       "2026-00-01T00:00:00Z", "2026-01-00T00:00:00Z", "2026-01-01T25:00:00Z",
@@ -58,12 +59,11 @@ describe("manager reporting router behavior", () => {
       ["2026-01-01T24:00:00Z", "2026-01-02T00:00:00.000Z"],
       ["2000-02-29T00:00:00Z", "2000-02-29T00:00:00.000Z"],
     ]) {
-      expect(validTimestamp(value)).toBe(value);
-      expect(aggregateUtcDate(value)?.toISOString()).toBe(expected);
+      expect(validTimestamp(value)?.toISOString()).toBe(expected);
     }
-    expect(validTimestamp("2026-01-01T12:00")).toBe("2026-01-01T12:00");
-    expect(validTimestamp("2026-10-21 00:30:00")).toBe("2026-10-21 00:30:00");
-    expect(validTimestamp("October 21, 2026 00:30:00 GMT")).toBe("October 21, 2026 00:30:00 GMT");
+    expect(validTimestamp("2026-01-01T12:00")?.toISOString()).toBe("2026-01-01T12:00:00.000Z");
+    expect(validTimestamp("2026-10-21 00:30:00")?.toISOString()).toBe("2026-10-21T00:30:00.000Z");
+    expect(validTimestamp("October 21, 2026 00:30:00 GMT")?.toISOString()).toBe("2026-10-21T00:30:00.000Z");
     expect(validTimestamp(past)).toBe(past);
     expect(validTimestamp(new Date("invalid"))).toBeNull();
   });
@@ -75,6 +75,21 @@ describe("manager reporting router behavior", () => {
     expect(db.conditions.at(-1)).toContain("flexLicenceId");
     expect(db.conditions.at(-1)).toContain("orgId");
     expect(db.pending).toEqual([]);
+  });
+  it("normalizes timestamps before visibility, interval filtering and client metrics", async () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-10-21T00:15:00Z"));
+    try {
+      const active = { ...lic, status: "active", activatedAt: "2026-10-20T22:00", startsAt: "2026-10-21T00:15:00+02:00", accessEndsAt: "2026-10-21 00:30:00", reportingEndsAt: "2026-10-22 00:30:00" };
+      const db = database([[org], [lic], [active], [{ total: 1, correct: 1, lastActive: "2026-10-21 00:10:00" }]]);
+      const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
+      expect(rows).toHaveLength(1);
+      expect(rows[0]).toMatchObject({ activatedAt: new Date("2026-10-20T22:00:00Z"), accessEndsAt: new Date("2026-10-21T00:30:00Z"), lastActiveAt: new Date("2026-10-21T00:10:00Z"), activityAvailable: true });
+      expect(calculateReadinessSnapshot).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ flexScope: { orgId: 7, licenceId: 42, startsAt: new Date("2026-10-20T22:15:00Z"), endsAt: new Date("2026-10-21T00:30:00Z") } }));
+      const roundTrip = superjson.parse<typeof rows>(superjson.stringify(rows));
+      expect(summarizeFlexProgress(roundTrip, new Date("2026-10-21T00:15:00Z"))).toMatchObject({ activatedLicences: 1, studyingLearners: 1, activeCohortComplete: true });
+      expect(db.pending).toEqual([]);
+    } finally { vi.useRealTimers(); }
   });
   it("reports a genuine zero readiness score when the snapshot has evidence", async () => {
     calculateReadinessSnapshot.mockResolvedValueOnce({ score: 0, hasData: true, activeDaysLast30: 1 });
@@ -115,6 +130,7 @@ describe("manager reporting router behavior", () => {
       [6, true, false], [7, true, false],
     ]);
     expect(rows.every(row => row.totalAttempts === 0)).toBe(true);
+    expect(rows.find(row => row.licenceId === 1)?.operatorKey).toBeNull();
     expect(calculateReadinessSnapshot).not.toHaveBeenCalled();
     expect(db.pending).toEqual([]);
   });
@@ -175,7 +191,7 @@ describe("manager reporting router behavior", () => {
     const active = { ...lic, status: "active", accessEndsAt: future };
     database([[org], [active], [active], [{ total: 1, correct: 1, lastActive: past.toISOString() }]]);
     const rows = await teamFlexRouter.createCaller(ctx).getFlexProgress({ orgId: 7 });
-    expect(rows[0].lastActiveAt).toBe(past.toISOString());
+    expect(rows[0].lastActiveAt).toEqual(past);
     expect(() => superjson.serialize(rows)).not.toThrow();
   });
   it("retains elapsed active-pass evidence during reporting grace before the expiry job runs", async () => {
