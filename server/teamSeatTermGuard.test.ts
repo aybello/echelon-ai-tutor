@@ -59,7 +59,7 @@ describe("updateTeamSeats Annual term guard", () => {
   ])("rejects %s before any Stripe call, usage query, or DB write", async (_label, status, termEnd) => {
     mocks.resolve.mockResolvedValue({ ...organization(), status, termEnd });
     await expect(caller().updateTeamSeats({ orgId: 7, seats: 15 })).rejects.toMatchObject({ code: "FORBIDDEN" });
-    expect(mocks.resolve).toHaveBeenCalledWith(context, { orgId: 7 });
+    expect(mocks.resolve).toHaveBeenCalledWith(context, { orgId: 7, ownerOnly: true });
     expect(db.select).not.toHaveBeenCalled();
     noEffects();
   });

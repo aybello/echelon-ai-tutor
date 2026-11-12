@@ -14,6 +14,7 @@ import { resolveCourseKey } from "../../shared/courseRegistry";
 import { selectCurrentManagerOrganization } from "../teams/managerOrganization";
 import { isNovaScotiaCourseSupported } from "../../shared/novaScotiaPreparation";
 import { flexLicenceKeepsManagerAccess } from "../teams/flexReporting";
+import { DELEGATED_MANAGER_ROLE, listCurrentDelegatedOrganizations } from "../teams/delegatedManagers";
 
 /** Number of questions a non-entitled user may access per bank (free funnel). */
 export const FREE_TRIAL_LIMIT = 15;
@@ -285,6 +286,7 @@ export async function resolveEntitlementsByEmail(
       .select({
         courseKey: organizationMembers.courseKey,
         courseKeys: organizationMembers.courseKeys,
+        memberRole: organizationMembers.role,
         orgProvince: organizations.province,
         orgTier: organizations.tier,
         orgTermEnd: organizations.termEnd,
@@ -300,6 +302,8 @@ export async function resolveEntitlementsByEmail(
         ),
       );
     for (const seat of seatRows) {
+      // Even malformed manager-only rows must never provide learner entitlements.
+      if (seat.memberRole === DELEGATED_MANAGER_ROLE) continue;
       if (!ORG_ACCESS_STATUSES.has(seat.orgStatus ?? "active")) continue;
       if (seat.orgProvince === "nova-scotia") belongsToNovaScotiaOrg = true;
       // Multi-course seat: courseKeys JSON array takes precedence
@@ -385,6 +389,10 @@ export async function resolveEntitlementsByEmail(
     }
 
     if (orgRow || hasPaidFlexWindow) {
+      isManager = true;
+      sources.push("org_manager");
+    }
+    if (!isManager && (await listCurrentDelegatedOrganizations(db, normalised, now)).length > 0) {
       isManager = true;
       sources.push("org_manager");
     }

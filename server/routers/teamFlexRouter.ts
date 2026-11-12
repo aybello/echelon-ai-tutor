@@ -293,7 +293,7 @@ export const teamFlexRouter = router({
       const purchaserUserId = ctx.user?.id ?? null;
       const managerEmail = ctxEmail || namedManager;
       if (!managerEmail) throw new TRPCError({ code: "BAD_REQUEST", message: "Please provide your manager email address." });
-      const ownedOrganization = ctxEmail ? await resolveManagedOrganization(ctx, { orgId: input.orgId, allowMissing: true }) : null;
+      const ownedOrganization = ctxEmail ? await resolveManagedOrganization(ctx, { orgId: input.orgId, allowMissing: true, ownerOnly: true }) : null;
       const orgId = ownedOrganization?.id ?? null;
       const billingEmail = normalizeEmail(input.billingEmail ?? managerEmail);
 
