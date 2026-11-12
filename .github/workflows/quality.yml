@@ -14,6 +14,7 @@ jobs:
     timeout-minutes: 20
     env:
       DOTENV_CONFIG_PATH: /dev/null
+      ECHELON_TEST_DATABASE: I_UNDERSTAND_THIS_IS_A_DISPOSABLE_LOCAL_DATABASE
     services:
       mysql:
         image: mysql:8.4
@@ -44,6 +45,8 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - name: Exercise test safety boundary without inherited credentials
+        run: env -i PATH="$PATH" HOME="$HOME" node --test scripts/test-safety.test.mjs
       - name: Verify enforced dependency guardrails
         run: pnpm deps:verify-guardrails
       - name: Block moderate, high and critical production dependency advisories

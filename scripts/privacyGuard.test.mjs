@@ -1,3 +1,4 @@
+import './test-safety.cjs';
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { mkdtempSync, readFileSync, writeFileSync, rmSync, symlinkSync, lstatSync } from "node:fs";

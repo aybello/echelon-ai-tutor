@@ -1,3 +1,4 @@
+import '../test-safety.cjs';
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { corrections, planPublicQuestionCorrections } from "./plan-public-question-corrections.mjs";

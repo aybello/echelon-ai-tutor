@@ -1,7 +1,9 @@
+import { createRequire } from "node:module";
 import { defineConfig } from "vitest/config";
 import path from "path";
 
 const templateRoot = path.resolve(import.meta.dirname);
+createRequire(import.meta.url)(path.join(templateRoot, "scripts/test-safety.cjs"));
 
 export default defineConfig({
   root: templateRoot,

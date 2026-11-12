@@ -1,3 +1,4 @@
+import './test-safety.cjs';
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { exportSnapshot, sha256, BANK_KEY } from "./export-wpi-class4-collection-review.mjs";
