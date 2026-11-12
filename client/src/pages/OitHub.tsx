@@ -40,7 +40,7 @@ export default function OitHub() {
         </h1>
         <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
           Choose Water or Wastewater and start with 15 practice questions. No
-          account or credit card is required for the free preview. A permanent
+          account or credit card is required for the free preview. A 12-month
           pass for one selected OIT course is CA$49.
         </p>
         <Link
