@@ -52,8 +52,16 @@ describe("daily audit test isolation and full JSON evidence", () => {
   it("uses the actual deterministic CI exclude list and does not exclude release tests", async () => {
     const yaml = await readFile(".github/workflows/quality.yml", "utf8");
     const excludes = ciDeterministicExcludes(yaml);
-    expect(excludes).toContain("**/*.integration.test.ts");
-    expect(excludes).toContain("server/_core/access.test.ts");
+    expect(excludes).toEqual([
+      "**/*.integration.test.ts", "server/_core/access.test.ts", "server/accessService.test.ts", "server/emailOtp.test.ts",
+      "server/ki001.otp.test.ts", "server/purchase.flow.test.ts", "server/subscription.flow.test.ts", "server/org.teams.test.ts",
+      "server/quiz.serverScoring.test.ts", "server/exam.submitMock.test.ts", "server/stripe/individualExamPass.test.ts",
+      "server/stripe/validateOneTimeCheckout.test.ts", "server/stripe/webhook.handler.test.ts", "server/webhook.integration.test.ts",
+      "server/flashcardReliability.integration.test.ts", "server/trainingRouter.integration.test.ts", "server/learnerReliability.integration.test.ts",
+      "server/wpiBlueprintRelease.integration.test.ts", "server/courseReporting.integration.test.ts", "server/practicePaging.integration.test.ts",
+      "server/learnerBankModules.integration.test.ts", "server/billingJobs.integration.test.ts", "server/examDateRecords.integration.test.ts",
+      "server/ceuLearning.integration.test.ts", "server/blogWorkflow.integration.test.ts", "server/jobBoardReliability.integration.test.ts",
+    ]);
     expect(excludes).not.toContain("server/release.test.ts");
     expect(excludes).not.toContain("server/buildRelease.test.ts");
     expect(() => ciDeterministicExcludes("unrecognized workflow")).toThrow();
@@ -66,6 +74,21 @@ describe("daily audit test isolation and full JSON evidence", () => {
     expect(() => ciDeterministicExcludes(yaml.replace(guarded, "node ./node_modules/vitest/vitest.mjs run"))).toThrow();
     expect(() => ciDeterministicExcludes(yaml.replace(guarded, `${guarded} || true`))).toThrow();
     expect(() => ciDeterministicExcludes(yaml.replace("--exclude '**/*.integration.test.ts'", ""))).toThrow();
+  });
+  it("fails closed on blank or comment continuations and parses equals exclusions", async () => {
+    const yaml = await readFile(".github/workflows/quality.yml", "utf8");
+    const line = "          --exclude server/emailOtp.test.ts";
+    expect(yaml).toContain(line);
+    for (const insertion of ["\n", "\n          # shell comment", "\n        # YAML comment", "\n          ", "\n            --exclude server/hidden.test.ts"]) {
+      expect(() => ciDeterministicExcludes(yaml.replace(line, `${insertion}\n${line}`))).toThrow();
+    }
+    const equals = yaml.replace("--exclude '**/*.integration.test.ts'", "--exclude='**/*.integration.test.ts'")
+      .replace("--exclude server/emailOtp.test.ts", "--exclude=server/emailOtp.test.ts");
+    expect(ciDeterministicExcludes(equals)).toEqual(ciDeterministicExcludes(yaml));
+    expect(() => ciDeterministicExcludes(yaml.replace(line, `${line}\n          --exclude=`))).toThrow();
+    expect(() => ciDeterministicExcludes(yaml.replace(line, `${line}\n          --exclude **/*.test.ts`))).toThrow();
+    const inline = yaml.replace("        run: >-\n          ", "        run: ");
+    expect(() => ciDeterministicExcludes(inline)).toThrow();
   });
   it("runs the actual isolated audit Vitest invocation with its safety preload", async () => {
     const dir = await mkdtemp(join(tmpdir(), "daily-audit-vitest-"));
@@ -80,6 +103,31 @@ describe("daily audit test isolation and full JSON evidence", () => {
       expect(evaluateVitest(result, JSON.parse(await readFile(reportPath, "utf8"))).status).toBe("pass");
     } finally { await rm(dir, { recursive: true, force: true }); }
   }, 25_000);
+  it("runs the audit invocation from a genuinely unpreloaded env -i parent", async () => {
+    const dir = await mkdtemp(join(tmpdir(), "daily-audit-unpreloaded-"));
+    try {
+      const root = process.cwd(), config = join(dir, "vitest.config.mjs"), reportPath = join(dir, "vitest.json");
+      await writeFile(config, `import base from ${JSON.stringify(pathToFileURL(resolve(root, "vitest.config.ts")).href)};\nexport default { ...base, envFile: false, envDir: ${JSON.stringify(dir)} };\n`);
+      const helper = pathToFileURL(resolve(root, "scripts/lib/dailyAudit.mjs")).href;
+      const parent = `
+        import { isolatedTestEnv, isolatedVitestArgs, runCommand, evaluateVitest } from ${JSON.stringify(helper)};
+        import { readFile } from 'node:fs/promises';
+        if (process.env.NODE_OPTIONS || process._preload_modules.length || globalThis.__echelonTestSafetyInstalled) throw Error('parent was preloaded');
+        const args = isolatedVitestArgs(${JSON.stringify(root)}, ${JSON.stringify(config)}, [], ${JSON.stringify(reportPath)});
+        args.push('server/ciBrowserRuntime.test.ts');
+        const env = isolatedTestEnv(process.env, ${JSON.stringify(dir)});
+        const negative = await runCommand(process.execPath, args.slice(2), { cwd: ${JSON.stringify(root)}, env, logPath: ${JSON.stringify(join(dir, "negative.log"))}, timeoutMs: 20000 });
+        if (negative.exitCode === 0 || negative.timedOut || negative.error || !negative.tail.includes('[test safety]')) throw Error('unpreloaded negative control did not fail safely: ' + negative.tail);
+        const result = await runCommand(process.execPath, args, { cwd: ${JSON.stringify(root)}, env, logPath: ${JSON.stringify(join(dir, "inner.log"))}, timeoutMs: 20000 });
+        if (result.exitCode !== 0 || evaluateVitest(result, JSON.parse(await readFile(${JSON.stringify(reportPath)}, 'utf8'))).status !== 'pass') throw Error(result.tail);
+        console.log('UNPRELOADED_PARENT_GUARDED_CHILD_PASSED');`;
+      const result = await runCommand("/usr/bin/env", ["-i", `PATH=${process.env.PATH}`, `HOME=${dir}`, process.execPath, "--input-type=module", "-e", parent], {
+        cwd: root, env: isolatedTestEnv(process.env, dir), logPath: join(dir, "parent.log"), timeoutMs: 25_000,
+      });
+      expect(result.exitCode, result.tail).toBe(0);
+      expect(result.tail).toContain("UNPRELOADED_PARENT_GUARDED_CHILD_PASSED");
+    } finally { await rm(dir, { recursive: true, force: true }); }
+  }, 30_000);
   it("passes only actual executed, consistent JSON and a zero exit", () => {
     expect(evaluateVitest(run(), report()).status).toBe("pass");
     expect(evaluateVitest(run(1), report()).status).toBe("fail");

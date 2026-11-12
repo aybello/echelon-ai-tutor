@@ -51,14 +51,64 @@ export function isolatedBrowserTestEnv(parent = process.env, home = "/tmp/echelo
 export function ciDeterministicExcludes(yaml) {
   const steps = yaml.split(/\n(?= {6}- )/).filter(step => step.startsWith("      - name: Deterministic unit and acceptance tests\n"));
   if (steps.length !== 1) throw new Error("Cannot locate CI deterministic Vitest command");
-  const run = steps[0].match(/^ {8}run: (?:>-\n((?: {10}[^\n]+\n?)+)|([^\n]+))/m);
-  const command = (run?.[1] ?? run?.[2] ?? "").trim().replace(/\n\s*/g, " ");
-  if (!/^(?:pnpm exec vitest run|node --require \.\/scripts\/test-safety\.cjs \.\/node_modules\/vitest\/vitest\.mjs run)(?:\s|$)/.test(command)
-    || /[;|&`$\\]/.test(command)) {
-    throw new Error("Cannot locate CI deterministic Vitest command");
+  const fail = () => { throw new Error("Cannot safely parse CI deterministic Vitest command"); };
+  const lines = steps[0].split("\n");
+  const runs = lines.flatMap((line, i) => /^ {8}run:/.test(line) ? [i] : []);
+  if (runs.length !== 1) fail();
+  const header = lines[runs[0]];
+  let command;
+  if (header === "        run: >-") {
+    const body = [];
+    for (const line of lines.slice(runs[0] + 1)) {
+      // Only an unambiguous sibling mapping key can terminate the scalar.
+      if (/^ {8}[A-Za-z_][\w-]*:/.test(line)) break;
+      // Blank lines, comments and extra indentation alter YAML/shell folding;
+      // reject them instead of silently accepting only a prefix of the command.
+      if (!/^ {10}\S/.test(line) || line.includes("#")) fail();
+      body.push(line.slice(10));
+    }
+    if (!body.length) fail();
+    command = body.join(" ");
+  } else if (/^ {8}run: \S/.test(header)) {
+    // A plain scalar can also continue on following lines. Do not treat its
+    // first line as the whole command unless the next line is a sibling key.
+    if (!/^ {8}[A-Za-z_][\w-]*:/.test(lines[runs[0] + 1] ?? "")) fail();
+    command = header.slice(13);
   }
-  const excludes = [...command.matchAll(/--exclude\s+(?:'([^']+)'|"([^"]+)"|(\S+))/g)]
-    .map(match => match[1] ?? match[2] ?? match[3]);
+  else fail();
+  // Recognize only simple shell words. Quoted globs remain literal; unquoted
+  // globs, expansions, escapes, comments and control operators fail closed.
+  const words = [];
+  const token = /(?:[A-Za-z0-9_./=\-]+|'[A-Za-z0-9_./*?\[\]\-]+'|"[A-Za-z0-9_./*?\[\]\-]+")+/gy;
+  let pos = 0;
+  while (pos < command.length) {
+    while (command[pos] === " " || command[pos] === "\t") pos++;
+    if (pos === command.length) break;
+    token.lastIndex = pos;
+    const match = token.exec(command);
+    if (!match || (token.lastIndex < command.length && !/[ \t]/.test(command[token.lastIndex]))) fail();
+    words.push(match[0].replace(/'([^']*)'|"([^"]*)"/g, (_, single, double) => single ?? double));
+    pos = token.lastIndex;
+  }
+  const guarded = ["node", "--require", "./scripts/test-safety.cjs", "./node_modules/vitest/vitest.mjs", "run"];
+  const legacy = ["pnpm", "exec", "vitest", "run"];
+  const prefix = [guarded, legacy].find(parts => parts.every((part, i) => words[i] === part));
+  if (!prefix) fail();
+  const excludes = [];
+  for (let i = prefix.length; i < words.length; i++) {
+    const word = words[i];
+    if (word === "--exclude") {
+      const value = words[++i];
+      if (!value || value.startsWith("-")) fail();
+      excludes.push(value);
+    } else if (word.startsWith("--exclude=")) {
+      const value = word.slice("--exclude=".length);
+      if (!value || value.startsWith("-")) fail();
+      excludes.push(value);
+    } else if (word === "--maxWorkers" || word === "--minWorkers") {
+      if (!/^\d+$/.test(words[++i] ?? "")) fail();
+    } else if (!/^--(?:maxWorkers|minWorkers)=\d+$/.test(word)) fail();
+  }
   if (!excludes.includes("**/*.integration.test.ts") || excludes.length < 2) {
     throw new Error("CI deterministic exclusion list missing or unrecognized");
   }
