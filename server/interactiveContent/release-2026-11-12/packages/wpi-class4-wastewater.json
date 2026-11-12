@@ -82,13 +82,6 @@
       "explanation": "Sampling frequency can be adjusted in proportion to flow."
     },
     {
-      "id": "wpi-class4-ww-011",
-      "mode": "rapid-swipe",
-      "prompt": "A confined-space atmosphere can become unsafe after a satisfactory initial test.",
-      "correctAnswer": true,
-      "explanation": "Conditions can change; test and monitor in accordance with the applicable permit-space program, rules and site procedure."
-    },
-    {
       "id": "wpi-class4-ww-012",
       "mode": "rapid-swipe",
       "prompt": "Pressing a stop button alone verifies isolation of all hazardous energy.",
@@ -587,31 +580,6 @@
       "explanation": "The first three are chlorine accounting terms."
     },
     {
-      "id": "wpi-class4-ww-051",
-      "mode": "odd-one-out",
-      "prompt": "Which item is NOT in this group: hazardous-energy control items?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Lockout device"
-        },
-        {
-          "id": "option-2",
-          "label": "Energy isolator"
-        },
-        {
-          "id": "option-3",
-          "label": "Stored-energy restraint"
-        },
-        {
-          "id": "option-4",
-          "label": "Screenings dumpster"
-        }
-      ],
-      "correctOptionId": "option-4",
-      "explanation": "The first three relate to hazardous-energy control."
-    },
-    {
       "id": "wpi-class4-ww-052",
       "mode": "odd-one-out",
       "prompt": "Which item is NOT in this group: factors that can reduce UV exposure?",
@@ -971,27 +939,6 @@
       ],
       "correctOptionId": "option-1",
       "explanation": "Shutdown alone does not isolate and verify all hazardous energy."
-    },
-    {
-      "id": "wpi-class4-ww-070",
-      "mode": "tap-the-flaw",
-      "prompt": "A worker enters a suspected permit space to rescue a colleague without training or equipment. What is flawed?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Unplanned entry rescue"
-        },
-        {
-          "id": "option-2",
-          "label": "Summoning rescue services"
-        },
-        {
-          "id": "option-3",
-          "label": "Keeping others away"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Unplanned entry can create another casualty; follow the rescue plan."
     },
     {
       "id": "wpi-class4-ww-071",
@@ -1561,20 +1508,6 @@
       "prompt": "In the cited EPA Region 4 procedure for a non-VOC sample preserved by pH adjustment, is the preservation-adequacy check before or after adding the preservative?",
       "correctAnswer": "after",
       "explanation": "The procedure specifies checking preservation after adding preservative, including checking pH-adjusted samples other than VOCs. Requirements differ by analyte and approved method."
-    },
-    {
-      "id": "wpi-class4-wastewater-order-016",
-      "mode": "before-after",
-      "prompt": "In CCOHS’s general lockout guidance, is equipment shutdown before or after isolation from energy sources?",
-      "correctAnswer": "before",
-      "explanation": "CCOHS lists equipment shutdown before system isolation in its general guidance. Actual tasks require trained personnel, applicable jurisdictional requirements and the equipment-specific site procedure."
-    },
-    {
-      "id": "wpi-class4-wastewater-order-018",
-      "mode": "before-after",
-      "prompt": "In CCOHS’s general lockout guidance, is verification of isolation before or after beginning maintenance?",
-      "correctAnswer": "before",
-      "explanation": "CCOHS places verification of isolation before the maintenance or service activity. This comparison is not a complete lockout procedure; follow applicable requirements and the equipment-specific site procedure."
     }
   ]
 }

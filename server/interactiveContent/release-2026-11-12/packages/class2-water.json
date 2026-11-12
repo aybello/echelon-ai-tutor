@@ -1091,31 +1091,6 @@
       "explanation": "Delivery rate = volume ÷ time = 4.5 L ÷ 3 min = 1.5 L/min. Convert to hours: 1.5 L/min × 60 min/h = 90 L/h."
     },
     {
-      "id": "class2-water-top-010",
-      "mode": "cause-effect",
-      "prompt": "A 0.50 mg/L chlorine residual is measured at the end of a hypothetical contact section whose established T10 is 24 min. What is CT?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "0.021 mg·min/L"
-        },
-        {
-          "id": "option-2",
-          "label": "12 mg·min/L"
-        },
-        {
-          "id": "option-3",
-          "label": "24.5 mg·min/L"
-        },
-        {
-          "id": "option-4",
-          "label": "48 mg·min/L"
-        }
-      ],
-      "correctOptionId": "option-2",
-      "explanation": "CT = residual concentration C × effective contact time T10 = 0.50 mg/L × 24 min = 12 mg·min/L. This is not a determination of compliance or pathogen credit."
-    },
-    {
       "id": "class2-water-top-011",
       "mode": "cause-effect",
       "prompt": "A contact tank has a working water volume of 300 m³ and constant flow of 600 m³/h. A site-assessed T10/T factor is 0.4. What is the estimated T10?",
@@ -1214,31 +1189,6 @@
       ],
       "correctOptionId": "option-3",
       "explanation": "Rejection = (1 − permeate concentration ÷ feed concentration) × 100%. Substitute: (1 − 50 mg/L ÷ 500 mg/L) × 100% = (1 − 0.10) × 100% = 90%. This is not hydraulic recovery."
-    },
-    {
-      "id": "class2-water-top-016",
-      "mode": "cause-effect",
-      "prompt": "A filter influent turbidity is 8.0 NTU and its effluent turbidity is 0.40 NTU in two samples taken at the same time. What is the percentage reduction between these readings?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "5%"
-        },
-        {
-          "id": "option-2",
-          "label": "80%"
-        },
-        {
-          "id": "option-3",
-          "label": "95%"
-        },
-        {
-          "id": "option-4",
-          "label": "99.5%"
-        }
-      ],
-      "correctOptionId": "option-3",
-      "explanation": "Reduction = (influent − effluent) ÷ influent × 100% = (8.0 − 0.40) NTU ÷ 8.0 NTU × 100% = 95%. This is a comparison of the two readings; it does not by itself establish matched-water removal, microbial removal or compliance."
     },
     {
       "id": "class2-water-top-018",

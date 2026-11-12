@@ -1,0 +1,534 @@
+[
+  {
+    "courseKey": "class1-wastewater-coll",
+    "before": 110,
+    "after": 104,
+    "excluded": 6,
+    "modeCounts": {
+      "rapid-swipe": 20,
+      "speed-match": 9,
+      "odd-one-out": 15,
+      "cause-effect": 29,
+      "tap-the-flaw": 15,
+      "before-after": 16
+    }
+  },
+  {
+    "courseKey": "class1-water",
+    "before": 110,
+    "after": 103,
+    "excluded": 7,
+    "modeCounts": {
+      "rapid-swipe": 20,
+      "speed-match": 11,
+      "odd-one-out": 14,
+      "cause-effect": 23,
+      "tap-the-flaw": 17,
+      "before-after": 18
+    }
+  },
+  {
+    "courseKey": "class1-water-dist",
+    "before": 101,
+    "after": 98,
+    "excluded": 3,
+    "modeCounts": {
+      "rapid-swipe": 28,
+      "speed-match": 10,
+      "odd-one-out": 13,
+      "cause-effect": 20,
+      "tap-the-flaw": 15,
+      "before-after": 12
+    }
+  },
+  {
+    "courseKey": "class1-ww",
+    "before": 114,
+    "after": 112,
+    "excluded": 2,
+    "modeCounts": {
+      "rapid-swipe": 20,
+      "speed-match": 12,
+      "odd-one-out": 20,
+      "cause-effect": 19,
+      "tap-the-flaw": 20,
+      "before-after": 21
+    }
+  },
+  {
+    "courseKey": "class2-wastewater-coll",
+    "before": 109,
+    "after": 99,
+    "excluded": 10,
+    "modeCounts": {
+      "rapid-swipe": 20,
+      "speed-match": 9,
+      "odd-one-out": 15,
+      "cause-effect": 26,
+      "tap-the-flaw": 19,
+      "before-after": 10
+    }
+  },
+  {
+    "courseKey": "class2-water",
+    "before": 90,
+    "after": 88,
+    "excluded": 2,
+    "modeCounts": {
+      "rapid-swipe": 20,
+      "speed-match": 9,
+      "odd-one-out": 8,
+      "cause-effect": 22,
+      "tap-the-flaw": 8,
+      "before-after": 21
+    }
+  },
+  {
+    "courseKey": "class2-water-dist",
+    "before": 87,
+    "after": 84,
+    "excluded": 3,
+    "modeCounts": {
+      "rapid-swipe": 20,
+      "speed-match": 7,
+      "odd-one-out": 15,
+      "cause-effect": 23,
+      "tap-the-flaw": 17,
+      "before-after": 2
+    }
+  },
+  {
+    "courseKey": "class2-ww",
+    "before": 105,
+    "after": 102,
+    "excluded": 3,
+    "modeCounts": {
+      "rapid-swipe": 18,
+      "speed-match": 10,
+      "odd-one-out": 16,
+      "cause-effect": 26,
+      "tap-the-flaw": 16,
+      "before-after": 16
+    }
+  },
+  {
+    "courseKey": "class3-wastewater-coll",
+    "before": 104,
+    "after": 103,
+    "excluded": 1,
+    "modeCounts": {
+      "rapid-swipe": 20,
+      "speed-match": 12,
+      "odd-one-out": 15,
+      "cause-effect": 21,
+      "tap-the-flaw": 20,
+      "before-after": 15
+    }
+  },
+  {
+    "courseKey": "class3-water",
+    "before": 108,
+    "after": 102,
+    "excluded": 6,
+    "modeCounts": {
+      "rapid-swipe": 17,
+      "speed-match": 13,
+      "odd-one-out": 3,
+      "cause-effect": 40,
+      "tap-the-flaw": 11,
+      "before-after": 18
+    }
+  },
+  {
+    "courseKey": "class3-water-dist",
+    "before": 97,
+    "after": 92,
+    "excluded": 5,
+    "modeCounts": {
+      "rapid-swipe": 17,
+      "speed-match": 12,
+      "odd-one-out": 17,
+      "cause-effect": 27,
+      "tap-the-flaw": 15,
+      "before-after": 4
+    }
+  },
+  {
+    "courseKey": "class3-ww",
+    "before": 117,
+    "after": 114,
+    "excluded": 3,
+    "modeCounts": {
+      "rapid-swipe": 19,
+      "speed-match": 10,
+      "odd-one-out": 15,
+      "cause-effect": 31,
+      "tap-the-flaw": 20,
+      "before-after": 19
+    }
+  },
+  {
+    "courseKey": "class4-wastewater-coll",
+    "before": 101,
+    "after": 101,
+    "excluded": 0,
+    "modeCounts": {
+      "rapid-swipe": 15,
+      "speed-match": 11,
+      "odd-one-out": 14,
+      "cause-effect": 30,
+      "tap-the-flaw": 17,
+      "before-after": 14
+    }
+  },
+  {
+    "courseKey": "class4-water",
+    "before": 108,
+    "after": 106,
+    "excluded": 2,
+    "modeCounts": {
+      "rapid-swipe": 18,
+      "speed-match": 11,
+      "odd-one-out": 12,
+      "cause-effect": 31,
+      "tap-the-flaw": 14,
+      "before-after": 20
+    }
+  },
+  {
+    "courseKey": "class4-water-dist",
+    "before": 91,
+    "after": 90,
+    "excluded": 1,
+    "modeCounts": {
+      "rapid-swipe": 20,
+      "speed-match": 10,
+      "odd-one-out": 9,
+      "cause-effect": 31,
+      "tap-the-flaw": 13,
+      "before-after": 7
+    }
+  },
+  {
+    "courseKey": "class4-ww",
+    "before": 108,
+    "after": 104,
+    "excluded": 4,
+    "modeCounts": {
+      "rapid-swipe": 16,
+      "speed-match": 11,
+      "odd-one-out": 16,
+      "cause-effect": 22,
+      "tap-the-flaw": 18,
+      "before-after": 21
+    }
+  },
+  {
+    "courseKey": "oit",
+    "before": 105,
+    "after": 103,
+    "excluded": 2,
+    "modeCounts": {
+      "rapid-swipe": 20,
+      "speed-match": 10,
+      "odd-one-out": 13,
+      "cause-effect": 21,
+      "tap-the-flaw": 20,
+      "before-after": 19
+    }
+  },
+  {
+    "courseKey": "oit-ww",
+    "before": 107,
+    "after": 107,
+    "excluded": 0,
+    "modeCounts": {
+      "rapid-swipe": 20,
+      "speed-match": 10,
+      "odd-one-out": 15,
+      "cause-effect": 22,
+      "tap-the-flaw": 20,
+      "before-after": 20
+    }
+  },
+  {
+    "courseKey": "us-class1-water",
+    "before": 110,
+    "after": 103,
+    "excluded": 7,
+    "modeCounts": {
+      "rapid-swipe": 10,
+      "speed-match": 8,
+      "odd-one-out": 13,
+      "cause-effect": 42,
+      "tap-the-flaw": 15,
+      "before-after": 15
+    }
+  },
+  {
+    "courseKey": "us-class1-water-dist",
+    "before": 100,
+    "after": 98,
+    "excluded": 2,
+    "modeCounts": {
+      "rapid-swipe": 19,
+      "speed-match": 8,
+      "odd-one-out": 14,
+      "cause-effect": 28,
+      "tap-the-flaw": 19,
+      "before-after": 10
+    }
+  },
+  {
+    "courseKey": "us-texas-class-d-water",
+    "before": 113,
+    "after": 103,
+    "excluded": 10,
+    "modeCounts": {
+      "rapid-swipe": 19,
+      "speed-match": 9,
+      "odd-one-out": 15,
+      "cause-effect": 15,
+      "tap-the-flaw": 32,
+      "before-after": 13
+    }
+  },
+  {
+    "courseKey": "wpi-class1-wastewater",
+    "before": 110,
+    "after": 108,
+    "excluded": 2,
+    "modeCounts": {
+      "rapid-swipe": 15,
+      "speed-match": 10,
+      "odd-one-out": 15,
+      "cause-effect": 28,
+      "tap-the-flaw": 20,
+      "before-after": 20
+    }
+  },
+  {
+    "courseKey": "wpi-class1-water",
+    "before": 110,
+    "after": 105,
+    "excluded": 5,
+    "modeCounts": {
+      "rapid-swipe": 19,
+      "speed-match": 10,
+      "odd-one-out": 15,
+      "cause-effect": 28,
+      "tap-the-flaw": 19,
+      "before-after": 14
+    }
+  },
+  {
+    "courseKey": "wpi-class1-water-coll",
+    "before": 95,
+    "after": 90,
+    "excluded": 5,
+    "modeCounts": {
+      "rapid-swipe": 19,
+      "speed-match": 7,
+      "odd-one-out": 15,
+      "cause-effect": 23,
+      "tap-the-flaw": 16,
+      "before-after": 10
+    }
+  },
+  {
+    "courseKey": "wpi-class1-water-dist",
+    "before": 110,
+    "after": 104,
+    "excluded": 6,
+    "modeCounts": {
+      "rapid-swipe": 20,
+      "speed-match": 9,
+      "odd-one-out": 12,
+      "cause-effect": 28,
+      "tap-the-flaw": 19,
+      "before-after": 16
+    }
+  },
+  {
+    "courseKey": "wpi-class2-wastewater",
+    "before": 103,
+    "after": 101,
+    "excluded": 2,
+    "modeCounts": {
+      "rapid-swipe": 20,
+      "speed-match": 11,
+      "odd-one-out": 14,
+      "cause-effect": 22,
+      "tap-the-flaw": 17,
+      "before-after": 17
+    }
+  },
+  {
+    "courseKey": "wpi-class2-water",
+    "before": 111,
+    "after": 105,
+    "excluded": 6,
+    "modeCounts": {
+      "rapid-swipe": 22,
+      "speed-match": 15,
+      "odd-one-out": 12,
+      "cause-effect": 20,
+      "tap-the-flaw": 21,
+      "before-after": 15
+    }
+  },
+  {
+    "courseKey": "wpi-class2-water-coll",
+    "before": 103,
+    "after": 99,
+    "excluded": 4,
+    "modeCounts": {
+      "rapid-swipe": 20,
+      "speed-match": 12,
+      "odd-one-out": 9,
+      "cause-effect": 23,
+      "tap-the-flaw": 21,
+      "before-after": 14
+    }
+  },
+  {
+    "courseKey": "wpi-class2-water-dist",
+    "before": 106,
+    "after": 99,
+    "excluded": 7,
+    "modeCounts": {
+      "rapid-swipe": 15,
+      "speed-match": 12,
+      "odd-one-out": 12,
+      "cause-effect": 32,
+      "tap-the-flaw": 17,
+      "before-after": 11
+    }
+  },
+  {
+    "courseKey": "wpi-class3-wastewater",
+    "before": 105,
+    "after": 105,
+    "excluded": 0,
+    "modeCounts": {
+      "rapid-swipe": 18,
+      "speed-match": 10,
+      "odd-one-out": 15,
+      "cause-effect": 21,
+      "tap-the-flaw": 20,
+      "before-after": 21
+    }
+  },
+  {
+    "courseKey": "wpi-class3-water",
+    "before": 106,
+    "after": 100,
+    "excluded": 6,
+    "modeCounts": {
+      "rapid-swipe": 18,
+      "speed-match": 13,
+      "odd-one-out": 13,
+      "cause-effect": 28,
+      "tap-the-flaw": 11,
+      "before-after": 17
+    }
+  },
+  {
+    "courseKey": "wpi-class3-water-coll",
+    "before": 102,
+    "after": 102,
+    "excluded": 0,
+    "modeCounts": {
+      "rapid-swipe": 20,
+      "speed-match": 8,
+      "odd-one-out": 16,
+      "cause-effect": 23,
+      "tap-the-flaw": 20,
+      "before-after": 15
+    }
+  },
+  {
+    "courseKey": "wpi-class3-water-dist",
+    "before": 111,
+    "after": 104,
+    "excluded": 7,
+    "modeCounts": {
+      "rapid-swipe": 16,
+      "speed-match": 12,
+      "odd-one-out": 16,
+      "cause-effect": 35,
+      "tap-the-flaw": 11,
+      "before-after": 14
+    }
+  },
+  {
+    "courseKey": "wpi-class4-wastewater",
+    "before": 93,
+    "after": 88,
+    "excluded": 5,
+    "modeCounts": {
+      "rapid-swipe": 18,
+      "speed-match": 5,
+      "odd-one-out": 15,
+      "cause-effect": 22,
+      "tap-the-flaw": 14,
+      "before-after": 14
+    }
+  },
+  {
+    "courseKey": "wpi-class4-water",
+    "before": 112,
+    "after": 104,
+    "excluded": 8,
+    "modeCounts": {
+      "rapid-swipe": 18,
+      "speed-match": 10,
+      "odd-one-out": 15,
+      "cause-effect": 24,
+      "tap-the-flaw": 19,
+      "before-after": 18
+    }
+  },
+  {
+    "courseKey": "wpi-class4-water-coll",
+    "before": 102,
+    "after": 96,
+    "excluded": 6,
+    "modeCounts": {
+      "rapid-swipe": 14,
+      "speed-match": 13,
+      "odd-one-out": 16,
+      "cause-effect": 25,
+      "tap-the-flaw": 13,
+      "before-after": 15
+    }
+  },
+  {
+    "courseKey": "wpi-class4-water-dist",
+    "before": 108,
+    "after": 103,
+    "excluded": 5,
+    "modeCounts": {
+      "rapid-swipe": 15,
+      "speed-match": 12,
+      "odd-one-out": 10,
+      "cause-effect": 34,
+      "tap-the-flaw": 18,
+      "before-after": 14
+    }
+  },
+  {
+    "courseKey": "wqa",
+    "before": 102,
+    "after": 99,
+    "excluded": 3,
+    "modeCounts": {
+      "rapid-swipe": 18,
+      "speed-match": 8,
+      "odd-one-out": 14,
+      "cause-effect": 25,
+      "tap-the-flaw": 23,
+      "before-after": 11
+    }
+  }
+]

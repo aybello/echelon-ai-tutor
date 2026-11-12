@@ -217,7 +217,7 @@ const questionWorkingSetInput = z.object({
 async function questionWorkingSet({ input, ctx }: {
   input: z.infer<typeof questionWorkingSetInput>;
   ctx: import("../_core/context").TrpcContext;
-}) {
+}, privilegedInteractiveAccess = false) {
   const db = await getDb();
   if (!db) {
     throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
@@ -226,6 +226,7 @@ async function questionWorkingSet({ input, ctx }: {
   const examType = course.courseKey;
   const hasAccess = await resolveAccessForRequest(ctx, examType, {
     accessToken: input.accessToken,
+    ...(privilegedInteractiveAccess ? { privilegedInteractiveAccess: true } : {}),
   });
   const rows = await db
     .select(learnerQuestionColumns)
@@ -292,14 +293,14 @@ export const quizRouter = router({
    * The total bank size is returned separately; the browser never needs every
    * paid question and answer in one response.
    */
-  getQuestions: publicProcedure.input(questionWorkingSetInput).query(questionWorkingSet),
+  getQuestions: publicProcedure.input(questionWorkingSetInput).query(opts => questionWorkingSet(opts)),
   // The interactive fallback uses POST so access tokens never enter URLs.
   getInteractiveQuestions: publicProcedure.input(questionWorkingSetInput).mutation(opts => {
     // 309A is served by its beta-controlled route, not the generic question bank.
     if (resolveCourseKey(opts.input.bankKey)?.courseKey === "electrician-309a") {
       throw new TRPCError({ code: "FORBIDDEN", message: "Interactive questions are unavailable for this course." });
     }
-    return questionWorkingSet(opts);
+    return questionWorkingSet(opts, true);
   }),
 
   /** Bounded pages from the requested slice, including identity-scoped review. */

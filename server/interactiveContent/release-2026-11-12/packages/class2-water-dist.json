@@ -1556,32 +1556,11 @@
       "explanation": "The Ontario guidance advises flushing the line before a distribution sample so the collected water represents the distribution system. Sampling requirements differ by analyte and purpose; follow the applicable sampling plan and laboratory directions."
     },
     {
-      "id": "class2-water-dist-order-013",
-      "mode": "before-after",
-      "prompt": "In Ontario's suggested backflow-prevention program development approach, is the initial review of records to identify potentially hazardous sites before or after establishing hazard categories and the level of protection required?",
-      "correctAnswer": "after",
-      "explanation": "The Ontario guide describes beginning the site-identification records review once hazard categories and required protection levels are established. This is suggested program-development guidance, not a universal legal sequence."
-    },
-    {
       "id": "class2-water-dist-order-014",
       "mode": "before-after",
       "prompt": "For a planned watermain excavation in Ontario, is obtaining underground utility locations before or after digging?",
       "correctAnswer": "before",
       "explanation": "Ontario's excavation guidance identifies obtaining utility locations before digging as part of planning. Locating services is only one element of a complete excavation safety process."
-    },
-    {
-      "id": "class2-water-dist-order-018",
-      "mode": "before-after",
-      "prompt": "In Ontario's described well-yield test, is measuring the stabilized static water level before or after running water for the pumping portion of that test?",
-      "correctAnswer": "before",
-      "explanation": "Ontario's well-yield example measures a stable at-rest level first and then runs water for the pumping portion. The source is rural-well educational guidance, not a municipal operating mandate."
-    },
-    {
-      "id": "class2-water-dist-order-020",
-      "mode": "before-after",
-      "prompt": "In EPA's general guidance for a finished-water storage facility taken out of operation for interior inspection and cleaning, is disinfection before or after the facility is returned to service?",
-      "correctAnswer": "before",
-      "explanation": "EPA recommends disinfecting a facility taken out of operation for interior inspection and cleaning before returning it to service. This US technical guidance is not an Ontario legal rule; local approved procedures and requirements govern the actual work."
     }
   ]
 }

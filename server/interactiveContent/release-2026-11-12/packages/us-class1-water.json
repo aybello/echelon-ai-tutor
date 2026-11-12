@@ -338,34 +338,6 @@
       "explanation": "Each pair connects the named item to its stated defining action or example."
     },
     {
-      "id": "us-class1-water-023",
-      "mode": "speed-match",
-      "prompt": "Match the SDS section number to the primary topic named.",
-      "pairs": [
-        {
-          "id": "pair-1",
-          "left": "Section 2",
-          "right": "Hazard identification"
-        },
-        {
-          "id": "pair-2",
-          "left": "Section 4",
-          "right": "First-aid measures"
-        },
-        {
-          "id": "pair-3",
-          "left": "Section 6",
-          "right": "Accidental release measures"
-        },
-        {
-          "id": "pair-4",
-          "left": "Section 8",
-          "right": "Exposure controls and personal protection"
-        }
-      ],
-      "explanation": "Each pair connects the named item to its stated defining action or example."
-    },
-    {
       "id": "us-class1-water-024",
       "mode": "speed-match",
       "prompt": "Match each stream from an RO unit to its definition.",
@@ -456,34 +428,6 @@
         }
       ],
       "explanation": "Air bubbles, dirty sample cells and particle settling are distinct potential measurement interferences."
-    },
-    {
-      "id": "us-class1-water-028",
-      "mode": "speed-match",
-      "prompt": "Match the SDS section number with its subject.",
-      "pairs": [
-        {
-          "id": "pair-1",
-          "left": "Section 1",
-          "right": "Product identification and supplier contact"
-        },
-        {
-          "id": "pair-2",
-          "left": "Section 3",
-          "right": "Composition and ingredients"
-        },
-        {
-          "id": "pair-3",
-          "left": "Section 7",
-          "right": "Handling and storage"
-        },
-        {
-          "id": "pair-4",
-          "left": "Section 10",
-          "right": "Stability and reactivity"
-        }
-      ],
-      "explanation": "Each pair connects the named item to its stated defining action or example."
     },
     {
       "id": "us-class1-water-029",
@@ -979,27 +923,6 @@
       "explanation": "EPA notes that dirty glassware can cause measurement errors."
     },
     {
-      "id": "us-class1-water-052",
-      "mode": "cause-effect",
-      "prompt": "Why compare several coagulant doses in a jar test?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "To estimate a suitable dose for the water being tested."
-        },
-        {
-          "id": "option-2",
-          "label": "To establish every future legal limit."
-        },
-        {
-          "id": "option-3",
-          "label": "To replace all plant monitoring."
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Jar tests compare floc formation and settling at differing doses."
-    },
-    {
       "id": "us-class1-water-054",
       "mode": "cause-effect",
       "prompt": "What is the expected effect of cation exchange designed for softening?",
@@ -1292,27 +1215,6 @@
       ],
       "correctOptionId": "option-1",
       "explanation": "Electrical, mechanical, hydraulic and other energy must be addressed under the applicable procedure."
-    },
-    {
-      "id": "us-class1-water-073",
-      "mode": "tap-the-flaw",
-      "prompt": "An operator chooses PPE without checking the chemical information. What is the flaw?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "The chemical’s SDS and workplace procedure contain relevant protection information."
-        },
-        {
-          "id": "option-2",
-          "label": "All chemicals require identical PPE."
-        },
-        {
-          "id": "option-3",
-          "label": "PPE replaces all engineering controls."
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "SDS section 8 gives exposure controls and personal-protection information."
     },
     {
       "id": "us-class1-water-074",
@@ -1985,27 +1887,6 @@
       "prompt": "In reverse osmosis, is the feed entering the unit before or after the product-water permeate has passed through the membrane?",
       "correctAnswer": "before",
       "explanation": "Feed enters the membrane process, and the fraction passing through the semipermeable membrane becomes permeate. This describes one pass, not every system’s recirculation layout."
-    },
-    {
-      "id": "us-class1-water-order-018",
-      "mode": "before-after",
-      "prompt": "Under OSHA’s example lockout sequence, is the authorized employee’s isolation verification before or after controlling stored energy?",
-      "correctAnswer": "after",
-      "explanation": "In OSHA’s example, residual energy is dissipated or restrained and isolation is then verified. Follow the employer’s equipment-specific procedure and training; the example is not a complete field instruction."
-    },
-    {
-      "id": "us-class1-water-order-019",
-      "mode": "before-after",
-      "prompt": "In OSHA’s example lockout procedure, is the normal shutdown of operating equipment before or after locking the energy-isolating devices?",
-      "correctAnswer": "before",
-      "explanation": "OSHA’s example shuts operating equipment down normally before isolating and locking its energy sources. Site-specific energy-control procedures remain essential."
-    },
-    {
-      "id": "us-class1-water-order-020",
-      "mode": "before-after",
-      "prompt": "In OSHA’s example return-to-service sequence, is checking that employees are safely positioned or removed before or after removing the lockout devices?",
-      "correctAnswer": "before",
-      "explanation": "The example checks that employees are safely positioned or removed before lockout devices are removed. Follow the complete employer-specific restoration procedure; special cases can require additional controls."
     }
   ]
 }

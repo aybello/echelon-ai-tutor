@@ -8,7 +8,7 @@ import { interactiveRouter } from "./routers/interactiveRouter";
 import { quizRouter } from "./routers/quizRouter";
 import { router } from "./_core/trpc";
 import { issueSubscriptionToken } from "./_core/subscriptionToken";
-import { assertAccess } from "./_core/accessService";
+import { assertAccess, hasAccessToExam, resolveAccessForRequest } from "./_core/accessService";
 import { getDb } from "./db";
 import { loadInteractivePackage } from "./interactiveContent/loader";
 
@@ -93,23 +93,73 @@ beforeEach(() => {
   fakeDb();
 });
 
-describe("real interactive routers with privileged OAuth identity", () => {
+describe("privileged OAuth access is confined to an explicit interactive opt-in", () => {
   it.each([
     ["admin", "interactive.getContent", user("admin"), expectContent],
     ["admin", "quiz.getInteractiveQuestions", user("admin"), expectQuiz],
     ["owner with non-admin role", "interactive.getContent", user("user", "fixture-owner-openid"), expectContent],
     ["owner with non-admin role", "quiz.getInteractiveQuestions", user("user", "fixture-owner-openid"), expectQuiz],
-  ] as const)("unlocks %s on %s", async (_label, _route, oauth, check) => {
+  ] as const)("unlocks %s on %s via the trusted OAuth identity", async (_label, _route, oauth, check) => {
     await check(caller(oauth), false);
-    expect(reads.every(kind => kind === "questions")).toBe(true); // bypass before entitlement DB reads
+    expect(reads).not.toContain("purchases");
   });
-  it.each([user("admin"), user("user", "fixture-owner-openid")])("also preserves privileges in assertAccess", async oauth => {
-    await expect(assertAccess({ user: oauth, studentEmail: null } as TrpcContext, "class1-water")).resolves.toBeUndefined();
+  it.each([user("admin"), user("user", "fixture-owner-openid")])("keeps the legacy question query on its ordinary entitlement path", async oauth => {
+    const result = await caller(oauth).quiz.getQuestions({ bankKey: "class1-water" });
+    expect(result).toMatchObject({ locked: true, total: 30, trialLimit: 15 });
+    expect(result.questions).toHaveLength(15);
+    expect(reads).toContain("purchases");
+  });
+  it.each([user("admin"), user("user", "fixture-owner-openid")])("canonicalizes an ordinary quiz bank alias before the privileged check", async oauth => {
+    const result = await caller(oauth).quiz.getInteractiveQuestions({ bankKey: "class1" });
+    expect(result.locked).toBe(false);
+    expect(result.questions).toHaveLength(30);
+  });
+  it.each(["electrician-309a", "electrician-309a-demo"])("rejects %s even for privileged users", async courseKey => {
+    for (const oauth of [user("admin"), user("user", "fixture-owner-openid")]) {
+      const c = caller(oauth);
+      await expect(c.interactive.getContent({ courseKey })).rejects.toMatchObject({ code: "BAD_REQUEST" });
+      await expect(c.quiz.getInteractiveQuestions({ bankKey: courseKey })).rejects.toMatchObject({ code: "FORBIDDEN" });
+    }
+    expect(getDb).not.toHaveBeenCalled();
+    expect(loadInteractivePackage).not.toHaveBeenCalled();
+  });
+  it.each([user("admin"), user("user", "fixture-owner-openid")])("does not grant shared guards privileged access", async oauth => {
+    const ctx = { user: oauth, studentEmail: null } as TrpcContext;
+    await expect(resolveAccessForRequest(ctx, "class1-water")).resolves.toBe(false);
+    await expect(assertAccess(ctx, "class1-water")).rejects.toMatchObject({ code: "FORBIDDEN" });
+  });
+  it.each([user("admin"), user("user", "fixture-owner-openid")])("permits explicit opt-in only for an active canonical game course", async oauth => {
+    const ctx = { user: oauth, studentEmail: null } as TrpcContext;
+    await expect(resolveAccessForRequest(ctx, "class1-water", { privilegedInteractiveAccess: true })).resolves.toBe(true);
     expect(reads).toEqual([]);
+    await expect(resolveAccessForRequest(ctx, "totally-unknown-exam", { privilegedInteractiveAccess: true })).resolves.toBe(false);
+    await expect(resolveAccessForRequest(ctx, "class1-wastewater", { privilegedInteractiveAccess: true })).resolves.toBe(false);
+  });
+  it("does not elevate an ordinary OAuth user or an anonymous caller when opted in", async () => {
+    await expect(resolveAccessForRequest({ user: user("user"), studentEmail: null } as TrpcContext, "class1-water", { privilegedInteractiveAccess: true })).resolves.toBe(false);
+    await expect(resolveAccessForRequest({ user: null, studentEmail: null } as TrpcContext, "class1-water", { privilegedInteractiveAccess: true })).resolves.toBe(false);
+    await expect(hasAccessToExam({ type: "oauth", userId: 123, email: "alice@example.test", user: user("admin") }, "class1-water")).resolves.toBe(false);
   });
   it("keeps a nonadmin nonowner OAuth user on previews with no entitlement", async () => {
     await expectBoth(caller(user("user")), true);
     expect(reads.filter(kind => kind === "purchases")).toHaveLength(2);
+  });
+  it("preserves purchased access for an ordinary OAuth user", async () => {
+    fakeDb([{ productKey: "class1-water", status: "active", accessExpiresAt: null }], "alice@example.test");
+    await expectBoth(caller(user("user")), false);
+  });
+  it("does not accept a client-supplied privileged opt-in", async () => {
+    for (const c of [caller(null), caller(user("user"))]) {
+      await expect(c.interactive.getContent({ courseKey: "class1-water", privilegedInteractiveAccess: true, role: "admin", openId: "fixture-owner-openid" } as never)).rejects.toMatchObject({ code: "BAD_REQUEST" });
+      // Quiz strips unknown fields; they cannot change either route's access.
+      const input = { bankKey: "class1-water", privilegedInteractiveAccess: true, role: "admin", openId: "fixture-owner-openid" } as never;
+      expect((await c.quiz.getInteractiveQuestions(input)).locked).toBe(true);
+      expect((await c.quiz.getQuestions(input)).locked).toBe(true);
+    }
+    const admin = caller(user("admin"));
+    const result = await admin.quiz.getInteractiveQuestions({ bankKey: "class1-water", privilegedInteractiveAccess: false } as never);
+    expect(result.locked).toBe(false);
+    expect(result.questions).toHaveLength(30);
   });
   it("rejects role and owner claims in a forged token and in a signed token without entitlement", async () => {
     const payload = { email: "spoof@example.test", examTypes: ["class1-water"], role: "admin", openId: "fixture-owner-openid" };
@@ -121,6 +171,8 @@ describe("real interactive routers with privileged OAuth identity", () => {
     reads.length = 0;
     await expectBoth(caller(null), true, await makeToken("test-only-not-for-production"));
     expect(reads.filter(kind => kind === "purchases")).toHaveLength(2);
+    const signed = await makeToken("test-only-not-for-production");
+    await expect(resolveAccessForRequest({ user: null, studentEmail: null } as TrpcContext, "class1-water", { privilegedInteractiveAccess: true, accessToken: signed })).resolves.toBe(false);
   });
   it("preserves anonymous and OTP paths and never replaces a verified identity with a token", async () => {
     const token = await issueSubscriptionToken({ email: "foreign@example.test", examTypes: ["class1-water"] });
@@ -128,6 +180,7 @@ describe("real interactive routers with privileged OAuth identity", () => {
     fakeDb(purchase, "foreign@example.test");
     await expectBoth(caller(null), false, token);
     await expectBoth(caller(null, "otp@example.test"), true, token);
+    await expect(resolveAccessForRequest({ user: null, studentEmail: "otp@example.test" } as TrpcContext, "class1-water", { privilegedInteractiveAccess: true, accessToken: token })).resolves.toBe(false);
     fakeDb(purchase, "otp@example.test");
     await expectBoth(caller(null, "otp@example.test"), false, token);
     await expectBoth(caller(user("user"), "otp@example.test"), true, token);

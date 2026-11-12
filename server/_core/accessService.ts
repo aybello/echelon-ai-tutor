@@ -53,7 +53,7 @@ import type { CourseEntry } from "../../shared/courseRegistry";
 // ---------------------------------------------------------------------------
 
 export type VerifiedIdentity =
-  | { type: "oauth"; userId: number; email: string; user: NonNullable<Parameters<typeof resolveAccess>[0]> }
+  | { type: "oauth"; userId: number; email: string; user: { id: number; email: string } }
   | { type: "otp"; email: string }
   | { type: "anonymous" };
 
@@ -74,9 +74,8 @@ export function resolveVerifiedIdentity(ctx: TrpcContext): VerifiedIdentity {
       type: "oauth",
       userId: ctx.user.id,
       email: normalizeEmail(ctx.user.email),
-      // Only server-authenticated ctx.user supplies privileged fields; token and
-      // client input never become an OAuth identity.
-      user: { id: ctx.user.id, email: normalizeEmail(ctx.user.email), role: ctx.user.role, openId: ctx.user.openId },
+      // Do not propagate privileged fields to shared paid-surface guards.
+      user: { id: ctx.user.id, email: normalizeEmail(ctx.user.email) },
     };
   }
   if (ctx.studentEmail) {
@@ -112,7 +111,7 @@ export async function getEntitlementsForIdentity(
 /**
  * Check whether a verified identity has access to a specific exam type.
  *
- * For OAuth users, also checks owner/admin bypass.
+ * For OAuth users, checks entitlement and user-linked team access.
  * For OTP users, checks DB entitlement by email.
  * For anonymous, returns false (unless the exam type is free).
  */
@@ -124,8 +123,8 @@ export async function hasAccessToExam(
   if (FREE_EXAM_TYPES.has(examType)) return true;
 
   if (identity.type === "oauth") {
-    // resolveAccess handles owner/admin bypass
-    const result = await resolveAccess(identity.user, examType);
+    // Shared access deliberately does not propagate admin/owner privileges.
+    const result = await resolveAccess({ id: identity.user.id, email: identity.user.email }, examType);
     return result.hasAccess;
   }
 
@@ -269,12 +268,17 @@ export async function hasAccessToCourse(
  * Client-supplied email is NOT an accepted access path.
  * A typed email is not authentication — only verified ownership + active entitlement
  * can unlock paid content.
+ *
+ * privilegedInteractiveAccess is a server-side opt-in for the interactive game
+ * endpoints only. Never pass it through from client input. It accepts only an
+ * active canonical interactive course and trusts only the authenticated ctx.user.
  */
 export async function resolveAccessForRequest(
   ctx: TrpcContext,
   examType: string,
   opts?: {
     accessToken?: string | null;
+    privilegedInteractiveAccess?: boolean;
   },
 ): Promise<boolean> {
   // 1. Free exam types
@@ -284,6 +288,14 @@ export async function resolveAccessForRequest(
 
   // 2 & 3. Verified identity (OAuth or OTP)
   if (identity.type !== "anonymous") {
+    if (opts?.privilegedInteractiveAccess === true && identity.type === "oauth" && ctx.user) {
+      const course = getCourseByKey(examType);
+      if (course?.isActive && course.courseKey === examType && examType !== "electrician-309a") {
+        // Only this explicit game path receives server-authenticated privileges.
+        const result = await resolveAccess({ ...identity.user, role: ctx.user.role, openId: ctx.user.openId }, examType);
+        return result.hasAccess;
+      }
+    }
     return hasAccessToExam(identity, examType);
   }
 

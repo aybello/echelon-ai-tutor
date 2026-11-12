@@ -7,6 +7,7 @@ import { createHash } from 'node:crypto';
 import { isDeepStrictEqual } from 'node:util';
 import { getAllCourses } from '../shared/courseRegistry.ts';
 import { interactiveModes, interactivePackageSchema } from '../server/interactiveContent/schema.ts';
+import { legalScreen } from './echelonsix-legal-screen.mjs';
 
 const candidate = '/home/ubuntu/outputs/echelon-six-games-2026-11-12/final-candidate';
 const output = path.resolve('server/interactiveContent/release-2026-11-12');
@@ -40,7 +41,7 @@ function run(verify) {
   const excludedIds = new Set(exclusions.map(x => x.item.id));
   if (excludedIds.size !== 73) fail('Duplicate excluded IDs');
   const allIds = new Set(); const totals = Object.fromEntries(interactiveModes.map(m => [m, 0]));
-  const releaseRows = [];
+  const releaseRows = []; const additionalExclusions = []; const screenManifest = [];
   for (const row of rows) {
     const key = row.courseKey;
     for (const ref of row.reviewReferences) checkRef(ref);
@@ -51,31 +52,54 @@ function run(verify) {
     equal(Buffer.from(prov.source.originalBytes, 'base64'), source, `Source preservation mismatch: ${key}`);
     equal(pkg.previewIds, row.previewIds, `Preview mismatch: ${key}`);
     if (pkg.examples.length !== row.itemCount) fail(`Count mismatch: ${key}`);
+    const originals = JSON.parse(source);
+    const originalById = new Map(originals.map(x => [x.id, x]));
+    if (originalById.size !== originals.length || originals.length !== pkg.examples.length) fail(`Source IDs invalid: ${key}`);
+    const kept = [];
     for (const item of pkg.examples) {
-      if (allIds.has(item.id) || excludedIds.has(item.id) || /309/i.test(item.id)) fail(`Excluded/duplicate item: ${item.id}`);
-      allIds.add(item.id); totals[item.mode]++;
+      const original = originalById.get(item.id);
+      if (!original || item.mode !== original.mode || allIds.has(item.id) || excludedIds.has(item.id) || /309/i.test(item.id)) fail(`Excluded/duplicate/missing item: ${item.id}`);
+      allIds.add(item.id);
+      const reasons = legalScreen(original);
+      if (reasons.length) additionalExclusions.push({ courseKey: key, reasons, original, converted: item });
+      else { kept.push(item); totals[item.mode]++; }
     }
+    const previewIds = {};
     for (const mode of interactiveModes) {
-      const ids = sorted(pkg.examples.filter(x => x.mode === mode).map(x => x.id));
-      if (ids.length !== row.modeCounts[mode] || ids.length < 2 || ids[0] !== pkg.previewIds[mode]) fail(`Invalid mode or preview: ${key}/${mode}`);
+      const ids = sorted(kept.filter(x => x.mode === mode).map(x => x.id));
+      if (ids.length < 2) fail(`Insufficient retained mode coverage: ${key}/${mode}`);
+      previewIds[mode] = ids[0];
     }
-    // "approved" is the schema's software-release eligibility flag, not a claim
-    // of human/technical review; only this field differs from the draft candidate.
-    const released = { ...pkg, status: 'approved' };
+    // Approval is software eligibility only; no human or technical validation is asserted.
+    const released = { ...pkg, status: 'approved', previewIds, examples: kept };
+    screenManifest.push({ courseKey: key, before: pkg.examples.length, after: kept.length, excluded: pkg.examples.length - kept.length, modeCounts: Object.fromEntries(interactiveModes.map(mode => [mode, kept.filter(x => x.mode === mode).length])) });
     const parsed = interactivePackageSchema.safeParse(released);
     if (!parsed.success) fail(`Runtime schema rejected ${key}: ${JSON.stringify(parsed.error.issues)}`);
     const releaseBytes = Buffer.from(stringify(released));
     files.set(`packages/${key}.json`, releaseBytes);
     files.set(`provenance/${key}.json`, provBytes);
-    releaseRows.push({ courseKey: key, sourceSha256: row.source.sha256, candidatePackageSha256: row.package.sha256, provenanceSha256: row.provenance.sha256, releasedPackageSha256: digest(releaseBytes), itemCount: row.itemCount, previewIds: row.previewIds });
+    releaseRows.push({ courseKey: key, sourceSha256: row.source.sha256, candidatePackageSha256: row.package.sha256, provenanceSha256: row.provenance.sha256, releasedPackageSha256: digest(releaseBytes), itemCount: kept.length, previewIds });
   }
-  equal(totals, meta.counts.modes, 'Mode totals mismatch');
-  if (allIds.size !== 3984) fail('Item count mismatch');
+  if (allIds.size !== 3984) fail('Candidate item count mismatch');
+  const counts = { courses: rows.length, examples: Object.values(totals).reduce((a,b) => a+b,0), modes: totals };
+  files.set('evidence/additional-exclusions.json', Buffer.from(stringify(additionalExclusions)));
+  files.set('evidence/additional-screen-manifest.json', Buffer.from(stringify(screenManifest)));
+  files.set('evidence/additional-screen-rules.mjs', read(path.resolve('scripts/echelonsix-legal-screen.mjs')));
   const imports = rows.map((r,i) => `import p${i} from './packages/${r.courseKey}.json';`).join('\n');
   const entries = rows.map((r,i) => `  '${r.courseKey}': { approved: true, content: p${i} },`).join('\n');
   files.set('registry.ts', Buffer.from(`// Generated by scripts/import-echelonsix-release.mjs; server-only.\n// Approval here means software release eligibility, not human technical review.\n${imports}\n\nexport const releasePackages: Readonly<Record<string, { approved: boolean; content: unknown }>> = Object.freeze({\n${entries}\n});\n`));
-  files.set('release-metadata.json', Buffer.from(stringify({ format: 'echelon-six-games-server-release-v1', visibility: 'server-only; content and provenance contain answers', contentAuthorship: 'AI-authored', review: meta.review, limitations: meta.limitations + ' The conservative screening cannot establish all legal claims were removed; production-release-gate.md remains applicable.', releaseEligibility: 'User authorized registration of these release-scoped packages. Approved is a software release eligibility flag only, not proof of human review, instructor validation, correctness, safety, compliance, or complete exam coverage. This is not a deployment.', candidateMetadataSha256: metadataHash, previewSelection: meta.previewSelection, exclusions: '73 identified items excluded from the 4057-item screened input; see server-only evidence.', counts: meta.counts, courses: releaseRows })));
-  files.set('README.md', Buffer.from(`# Server-only six-game registration\n\nThese packages contain answer keys. Do not import into client code or copy to public assets. Provenance and evidence are server-only and are never sent by the interactive router.\n\nThe 38 active canonical non-309 packages retain 3,984 AI-authored, AI-source-reviewed items. No human subject-matter review or instructor validation is claimed. The prior offline screening removed 73 identified items from 4,057, but did not establish remaining content is accurate, safe, current, legally compliant, or free of all legal claims. Coverage is not represented as complete. The unchanged production release gate, including its content authority requirements, remains applicable.\n\nUser authorization enables software registration, not production deployment. Runtime schema requires status \`approved\`; the deterministic import changes only that field from the stored draft, and the registry's approval flag is likewise a software eligibility flag. Neither constitutes factual validation. Fixed previews are the lexicographically smallest IDs in each mode, not editorially reviewed. The original candidate metadata and sidecars retain the historical candidate status and original hashes; release-metadata.json maps each candidate and source hash to its release hash.\n\n## Reproduce\n\nFrom repository root, with the original candidate, its release-scoped source files and referenced reviews available: \`node --import tsx scripts/import-echelonsix-release.mjs verify\`. For a fresh import move this directory aside and run the same command with \`assemble\`; it refuses to overwrite. The source candidate derives from \`scripts/assemble-echelonsix-candidate.mjs\` and the release-scoped variant documented in candidate-metadata.json. Before registration, both candidate assemblers verified successfully. Their metadata includes the then-current loader hash, so changing the loader for registration makes their historical whole-candidate verification sensitive to that deliberate change. The import pins the pre-registration candidate metadata hash and verifies source, package, provenance, and review references. No network, database or deployment is used.\n`));
+  files.set('release-metadata.json', Buffer.from(stringify({ format: 'echelon-six-games-server-release-v2', visibility: 'server-only; content and provenance contain answers', contentAuthorship: 'AI-authored', review: meta.review, limitations: meta.limitations + ' A conservative deterministic legal-language screen and manual flag check cannot prove all requirements were identified or verify safety or correctness; production-release-gate.md remains applicable.', releaseEligibility: 'User authorized games registration, not deployment. Approved is a software flag, not human review or regulatory approval.', candidateMetadataSha256: metadataHash, previewSelection: 'Lexicographically smallest retained ID of the same mode.', exclusions: `73 historical exclusions plus ${additionalExclusions.length} new conservative screen exclusions; full originals and converted items are in server-only evidence.`, screenDecisions: [
+    { id: 'class1-water-dist-074', decision: 'excluded', rationale: 'The answer and explanation imply mandatory backflow protection under an applicable standard without verified jurisdiction-specific authority; exclusion does not establish that the claim is false.' },
+    { id: 'wqa-023', decision: 'retained', rationale: 'The item identifies headings of numbered WHMIS safety data sheet sections; it does not state a legal requirement. This is not a determination that WHMIS has no legal requirements or independent verification of the headings.' },
+  ], counts, courses: releaseRows })));
+  files.set('README.md', Buffer.from(`# Server-only six-game registration
+
+Packages and evidence contain answers and must remain server-only. These items were AI-authored; no human expert review, legal approval, factual accuracy or release-gate compliance is claimed. Software status approved is not technical approval or deployment authorization. Historical candidate provenance remains unchanged and records all candidate items, including items excluded by the later screen. Additional exclusion evidence records original and converted item objects and reasons; manifest records retained mode counts.
+
+The conservative deterministic screen uses legal/authority terminology, specific regulatory-source safety-duty indicators, six manually flagged IDs, and an item-specific exclusion for class1-water-dist-074; it does not remove an item solely for the word must. That item implies mandatory backflow protection under an applicable standard without verified jurisdiction-specific authority. Exclusion does not establish the claim is false. Wqa-023 is retained because it identifies WHMIS safety data sheet section headings, not a legal requirement; this does not assert WHMIS has no legal requirements or independently verify the headings. It can remove neutral examples with legal wording and cannot establish that all indirect claims have been found. Expert legal and technical review remains necessary. Source review reports are AI reviews, not human sign-off.
+
+Reproduce from the repository root, with original pinned candidate and referenced sources available: \`node --import tsx scripts/import-echelonsix-release.mjs verify\`. For fresh assembly move this directory aside and run with \`assemble\`; the importer refuses overwrite. No network, database or deployment is involved.
+`));
   if (!verify && fs.existsSync(output)) fail('Output exists; refusing to overwrite');
   if (verify) {
     const walk = d => fs.readdirSync(d, { withFileTypes: true }).flatMap(e => e.isDirectory() ? walk(path.join(d,e.name)) : [path.relative(output,path.join(d,e.name)).replaceAll('\\','/')]);
@@ -87,6 +111,6 @@ function run(verify) {
     try { fs.mkdirSync(stage, { recursive: false }); for (const [name, bytes] of files) { const dest = path.join(stage,name); fs.mkdirSync(path.dirname(dest), { recursive: true }); fs.writeFileSync(dest, bytes, { flag: 'wx' }); } fs.renameSync(stage,output); }
     catch (e) { fs.rmSync(stage, { recursive: true, force: true }); throw e; }
   }
-  console.log(stringify({ operation: verify ? 'verify' : 'assemble', valid: true, output, counts: meta.counts }));
+  console.log(stringify({ operation: verify ? 'verify' : 'assemble', valid: true, output, counts, additionalExclusions: additionalExclusions.length }));
 }
 try { const cmd = process.argv[2] ?? 'verify'; if (!['assemble','verify'].includes(cmd) || process.argv.length > 3) fail('Usage: import-echelonsix-release.mjs [assemble|verify]'); run(cmd === 'verify'); } catch (e) { console.error(`Error: ${e.message}`); process.exitCode = 1; }

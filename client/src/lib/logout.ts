@@ -1,5 +1,5 @@
 import type { QueryClient } from "@tanstack/react-query";
-import { IDENTITY_CHANGE_EVENT_KEY } from "@shared/identityChange";
+import { IDENTITY_CHANGE_EVENT_KEY, notifyIdentityChange } from "@shared/identityChange";
 
 export const LOGOUT_EVENT_KEY = "echelon.logout.event";
 
@@ -15,20 +15,29 @@ export function clearLearnerStorage(storage: Storage): void {
       keys.push(key);
     }
   }
-  for (const key of keys) storage.removeItem(key);
+  for (const key of keys) {
+    try { storage.removeItem(key); } catch { /* continue with other keys */ }
+  }
 }
 
 export async function clearBrowserIdentity(queryClient: QueryClient): Promise<void> {
-  await queryClient.cancelQueries();
-  queryClient.clear();
+  // Attempt every cleanup even when cancellation or cache clearing fails.
+  let failed = false;
+  let failure: unknown;
+  try { await queryClient.cancelQueries(); } catch (error) { failed = true; failure = error; }
+  try { queryClient.clear(); } catch (error) { if (!failed) { failed = true; failure = error; } }
   // Some browsers disable storage; that must not prevent server logout or redirect.
   for (const getStorage of [() => window.localStorage, () => window.sessionStorage]) {
     try { clearLearnerStorage(getStorage()); } catch { /* unavailable */ }
   }
+  if (failed) throw failure;
 }
 
 export async function finishLogout(queryClient: QueryClient): Promise<void> {
-  await clearBrowserIdentity(queryClient);
+  // Server logout has succeeded. Cleanup should happen first, but a local
+  // failure must not suppress cross-tab identity invalidation or redirect.
+  try { await clearBrowserIdentity(queryClient); } catch { /* best effort */ }
+  try { notifyIdentityChange(); } catch { /* best effort */ }
   try { localStorage.setItem(LOGOUT_EVENT_KEY, crypto.randomUUID()); } catch { /* unavailable */ }
   // Unmount every hook holding a token, paid sample, or learner data in memory.
   window.location.replace("/account");

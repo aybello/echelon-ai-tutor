@@ -1330,27 +1330,6 @@
       "explanation": "Dirt and foreign material can contaminate the new pipe."
     },
     {
-      "id": "us-class1-water-dist-078",
-      "mode": "tap-the-flaw",
-      "prompt": "A crew examines a trench after rain. Which action is flawed?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Assume the earlier inspection covers changed conditions"
-        },
-        {
-          "id": "option-2",
-          "label": "Have a competent person reassess conditions"
-        },
-        {
-          "id": "option-3",
-          "label": "Stay out until hazards are addressed"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Rain or water intrusion can change excavation conditions."
-    },
-    {
       "id": "us-class1-water-dist-079",
       "mode": "tap-the-flaw",
       "prompt": "A utility records a bacteriological sample. Which action is flawed?",
@@ -1763,13 +1742,6 @@
       "prompt": "In EPA’s district-metered-area leak investigation example, is a detailed acoustic survey of a suspect area before or after identifying suspiciously high flow during low-demand hours?",
       "correctAnswer": "after",
       "explanation": "EPA describes suspiciously high minimum-consumption flow as a reason to select a district-metered area for detailed acoustic leak detection. Other leak-detection approaches are possible."
-    },
-    {
-      "id": "us-class1-water-dist-order-013",
-      "mode": "before-after",
-      "prompt": "For a first-flush lead and copper sample using EPA Region 4’s described procedure, is the undisturbed water period before or after collection of the first water from the tap?",
-      "correctAnswer": "before",
-      "explanation": "EPA Region 4 describes an undisturbed period followed by collection of the initial water. This is a specific first-flush protocol, not the flushing procedure for routine bacteriological sampling; confirm the current applicable compliance protocol."
     },
     {
       "id": "us-class1-water-dist-order-014",

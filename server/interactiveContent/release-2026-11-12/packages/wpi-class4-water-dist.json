@@ -33,13 +33,6 @@
       "explanation": "Open hatches can admit debris and contaminants."
     },
     {
-      "id": "wpi-class4-water-dist-004",
-      "mode": "rapid-swipe",
-      "prompt": "High water age guarantees a regulatory violation at every location.",
-      "correctAnswer": false,
-      "explanation": "Age can increase quality risk, but alone does not establish a violation."
-    },
-    {
       "id": "wpi-class4-water-dist-005",
       "mode": "rapid-swipe",
       "prompt": "A falling disinfectant residual alone identifies the exact cause of the decline.",
@@ -108,13 +101,6 @@
       "prompt": "When contaminated water surrounds a main breach, a pressure drop that makes internal pressure lower than external pressure can create an intrusion risk.",
       "correctAnswer": true,
       "explanation": "An opening and an inward pressure difference can allow outside water to enter."
-    },
-    {
-      "id": "wpi-class4-water-dist-015",
-      "mode": "rapid-swipe",
-      "prompt": "An electrical disconnect alone addresses every possible stored hydraulic energy hazard.",
-      "correctAnswer": false,
-      "explanation": "Hydraulic pressure and other energy sources must also be controlled under the energy-control procedure."
     },
     {
       "id": "wpi-class4-water-dist-016",
@@ -1866,27 +1852,6 @@
       "prompt": "For a scheduled distribution-system flushing program, is notifying affected customers before or after the planned flushing activity?",
       "correctAnswer": "before",
       "explanation": "EPA includes preparing and distributing customer notices in flushing-program planning. Advance notice can help customers understand temporary disruption or discoloration; communication must follow local procedures."
-    },
-    {
-      "id": "wpi-class4-water-dist-order-014",
-      "mode": "before-after",
-      "prompt": "For a pump maintenance job using OSHA’s hazardous-energy control sequence, is normal equipment shutdown before or after applying the lockout device?",
-      "correctAnswer": "before",
-      "explanation": "OSHA’s example sequence shuts down the equipment and isolates energy sources before the authorized employee applies lockout or tagout devices. This is a safety principle, not a complete isolation procedure or a claim of local legal applicability."
-    },
-    {
-      "id": "wpi-class4-water-dist-order-015",
-      "mode": "before-after",
-      "prompt": "In OSHA’s hazardous-energy control sequence for pump maintenance, is verification of isolation before or after servicing begins?",
-      "correctAnswer": "before",
-      "explanation": "The authorized employee verifies isolation and deenergization before starting work. The actual site-specific procedure must also address all energy sources and stored energy."
-    },
-    {
-      "id": "wpi-class4-water-dist-order-016",
-      "mode": "before-after",
-      "prompt": "In OSHA’s specified lockout sequence for pump maintenance, is the step of relieving, disconnecting, restraining, or otherwise rendering safe potentially hazardous stored or residual energy before or after applying the lockout devices?",
-      "correctAnswer": "after",
-      "explanation": "OSHA specifies that potentially hazardous stored or residual energy is rendered safe following application of lockout or tagout devices. Other precautions can be necessary earlier; this example is not a complete procedure or a statement of local law. Follow the approved site-specific energy control procedure."
     },
     {
       "id": "wpi-class4-water-dist-order-018",

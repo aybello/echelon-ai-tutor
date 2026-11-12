@@ -7,7 +7,7 @@
     "speed-match": "class2-ww-019",
     "odd-one-out": "class2-ww-029",
     "cause-effect": "class2-ww-045",
-    "tap-the-flaw": "class2-ww-063",
+    "tap-the-flaw": "class2-ww-064",
     "before-after": "class2-ww-order-001"
   },
   "examples": [
@@ -1125,27 +1125,6 @@
       "explanation": "Accurate sample identification is essential for interpreting results correctly."
     },
     {
-      "id": "class2-ww-063",
-      "mode": "tap-the-flaw",
-      "prompt": "A screen is jammed. Which proposed action is unsafe?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Report the jam"
-        },
-        {
-          "id": "option-2",
-          "label": "Reach into the moving rake to pull out rags"
-        },
-        {
-          "id": "option-3",
-          "label": "Isolate the equipment under the site procedure"
-        }
-      ],
-      "correctOptionId": "option-2",
-      "explanation": "Do not reach into moving machinery. Authorized workers must control hazardous energy and verify isolation under the equipment-specific site procedure before clearing a jam."
-    },
-    {
       "id": "class2-ww-064",
       "mode": "tap-the-flaw",
       "prompt": "A tank may be a confined space. Which statement is flawed?",
@@ -1438,27 +1417,6 @@
       ],
       "correctOptionId": "option-3",
       "explanation": "Equal time and volume aliquots form a time composite, not necessarily flow proportional."
-    },
-    {
-      "id": "class2-ww-078",
-      "mode": "tap-the-flaw",
-      "prompt": "Before a maintenance job, which approach to isolation is flawed?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Follow the site isolation and verification procedure"
-        },
-        {
-          "id": "option-2",
-          "label": "Rely only on a verbal promise that equipment will remain off"
-        },
-        {
-          "id": "option-3",
-          "label": "Identify hazardous energy sources"
-        }
-      ],
-      "correctOptionId": "option-2",
-      "explanation": "A verbal promise does not isolate hazardous energy. Follow the equipment-specific site procedure for isolation, lockout and verification."
     },
     {
       "id": "class2-ww-079",
@@ -1811,13 +1769,6 @@
       "prompt": "In the basic five-phase sequencing batch reactor cycle, is the idle phase before or after the decant phase of the batch just treated?",
       "correctAnswer": "after",
       "explanation": "The basic cycle has an idle period after treated liquid is decanted and before the next batch begins. The idle period varies by operating strategy."
-    },
-    {
-      "id": "class2-ww-order-021",
-      "mode": "before-after",
-      "prompt": "Under CCOHS confined-space guidance, is completion of the entry permit before or after a worker enters a wastewater tank identified as a confined space for planned maintenance?",
-      "correctAnswer": "before",
-      "explanation": "CCOHS says an entry permit should be completed before entry. A permit alone does not make entry safe; follow the site plan and applicable Ontario requirements."
     },
     {
       "id": "class2-ww-order-022",

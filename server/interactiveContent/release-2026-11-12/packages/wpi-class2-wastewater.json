@@ -405,29 +405,6 @@
       "explanation": "Screening → Remove coarse debris; Secondary clarification → Settle biological floc; Dechlorination → Reduce residual chlorine."
     },
     {
-      "id": "wpi-class2-wastewater-032",
-      "mode": "speed-match",
-      "prompt": "Match each safety term to the best description.",
-      "pairs": [
-        {
-          "id": "pair-1",
-          "left": "Lockout",
-          "right": "Locks an energy-isolating device in the safe position"
-        },
-        {
-          "id": "pair-2",
-          "left": "Atmospheric testing",
-          "right": "Measures selected airborne hazards"
-        },
-        {
-          "id": "pair-3",
-          "left": "Rescue plan",
-          "right": "Sets arrangements to retrieve entrants in an emergency"
-        }
-      ],
-      "explanation": "Lockout → Locks an energy-isolating device in the safe position; Atmospheric testing → Measures selected airborne hazards; Rescue plan → Sets arrangements to retrieve entrants in an emergency."
-    },
-    {
       "id": "wpi-class2-wastewater-033",
       "mode": "odd-one-out",
       "prompt": "Which item is not preliminary wastewater treatment equipment?",
@@ -1385,27 +1362,6 @@
       ],
       "correctOptionId": "option-1",
       "explanation": "Verify the reading, feed equipment and current conditions, then follow the site procedure before changing a dose."
-    },
-    {
-      "id": "wpi-class2-wastewater-077",
-      "mode": "tap-the-flaw",
-      "prompt": "A worker opens a pressurized line immediately after shutting off its pump. What is the flaw?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Stored pressure can remain after shutdown"
-        },
-        {
-          "id": "option-2",
-          "label": "A pump switch drains every line"
-        },
-        {
-          "id": "option-3",
-          "label": "Pressure is identical to temperature"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Isolate and safely relieve stored pressure under the site’s energy-control procedure."
     },
     {
       "id": "wpi-class2-wastewater-078",

@@ -117,13 +117,6 @@
       "explanation": "Maintenance and operational records allow trends and repeated faults to be reviewed."
     },
     {
-      "id": "class3-water-016",
-      "mode": "rapid-swipe",
-      "prompt": "For pump repair that exposes a worker to hazardous energy, it is safe to proceed without isolating or otherwise controlling that energy.",
-      "correctAnswer": false,
-      "explanation": "Hazardous energy must be controlled under the applicable equipment-specific procedure; lockout includes controlling stored energy and verifying isolation."
-    },
-    {
       "id": "class3-water-017",
       "mode": "rapid-swipe",
       "prompt": "For a homogeneous solution, mass concentration multiplied by solution volume gives solute mass when volume units are consistent.",
@@ -821,27 +814,6 @@
       "explanation": "20 g/L × 3 L = 60 g."
     },
     {
-      "id": "class3-water-063",
-      "mode": "cause-effect",
-      "prompt": "At a constant verified residual of 0.8 mg/L, effective contact time is 20 min. What is CT?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "16 mg·min/L"
-        },
-        {
-          "id": "option-2",
-          "label": "25 mg·min/L"
-        },
-        {
-          "id": "option-3",
-          "label": "0.04 mg·min/L"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "0.8 × 20 = 16 mg·min/L; this alone does not establish compliance."
-    },
-    {
       "id": "class3-water-064",
       "mode": "cause-effect",
       "prompt": "An equal-volume jar test shows best settled turbidity at a middle dose; lower and higher doses perform worse. What should be done?",
@@ -924,27 +896,6 @@
       ],
       "correctOptionId": "option-1",
       "explanation": "CT uses residual disinfectant concentration and effective contact time, not applied dose."
-    },
-    {
-      "id": "class3-water-071",
-      "mode": "tap-the-flaw",
-      "prompt": "A worker plans pump repair that exposes them to hazardous energy before isolating or otherwise controlling that energy. Tap the unsafe action.",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Repair before controlling hazardous energy"
-        },
-        {
-          "id": "option-2",
-          "label": "Use the work order"
-        },
-        {
-          "id": "option-3",
-          "label": "Follow the facility procedure"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Follow the site-specific hazardous-energy control procedure, including isolation, control of stored energy and verification as applicable before servicing."
     },
     {
       "id": "class3-water-072",
@@ -1309,31 +1260,6 @@
       ],
       "correctOptionId": "option-1",
       "explanation": "Theoretical detention T = volume ÷ flow = 180 m³ ÷ 60 m³/h = 3 h = 180 min. Estimated T10 = factor × T = 0.5 × 180 min = 90 min. The factor must be justified for the actual basin; T10 is not automatically V/Q."
-    },
-    {
-      "id": "class3-water-top-008",
-      "mode": "cause-effect",
-      "prompt": "Two sequential disinfection segments are eligible to have CT summed under Ontario’s stated constant-pH and residual conditions. The common residual is 1.2 mg/L; effective times are 10 and 15 min. What is the total CT?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "30 mg·min/L"
-        },
-        {
-          "id": "option-2",
-          "label": "25 mg·min/L"
-        },
-        {
-          "id": "option-3",
-          "label": "18 mg·min/L"
-        },
-        {
-          "id": "option-4",
-          "label": "12 mg·min/L"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "For each segment CT = residual concentration × effective time. Segment 1: 1.2 mg/L × 10 min = 12 mg·min/L. Segment 2: 1.2 mg/L × 15 min = 18 mg·min/L. Sum = 12 + 18 = 30 mg·min/L. Required CT and conditions must still be checked."
     },
     {
       "id": "class3-water-top-009",
@@ -1854,20 +1780,6 @@
       "prompt": "For an Ontario drinking-water system that uses primary disinfection, is the treated-water sampling point in Ontario’s guidance before or after completion of primary disinfection?",
       "correctAnswer": "after",
       "explanation": "The guidance describes the treated-water sample location as after disinfection, representative of water ready for distribution. Site-specific sampling plans and approvals matter."
-    },
-    {
-      "id": "class3-water-order-019",
-      "mode": "before-after",
-      "prompt": "For a treatment-plant pump in the CCOHS general lockout sequence, is verification of isolation before or after maintenance begins?",
-      "correctAnswer": "before",
-      "explanation": "CCOHS places verification of effective isolation before the maintenance work. This is a general teaching sequence, not a substitute for an authorized equipment-specific procedure."
-    },
-    {
-      "id": "class3-water-order-020",
-      "mode": "before-after",
-      "prompt": "For a treatment-plant pump in the CCOHS general lockout sequence, is removal of lockout devices before or after the maintenance work is completed?",
-      "correctAnswer": "after",
-      "explanation": "CCOHS places device removal after the maintenance activity and associated return-to-service checks. Actual lock removal and re-energization must follow the site-specific procedure."
     }
   ]
 }

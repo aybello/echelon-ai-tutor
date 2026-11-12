@@ -386,29 +386,6 @@
       "explanation": "Asset map: Shows infrastructure locations; Maintenance log: Records work and equipment history; Alarm record: Records abnormal operating alerts."
     },
     {
-      "id": "wpi-class4-water-coll-029",
-      "mode": "speed-match",
-      "prompt": "In a conventional hand-off-auto selector, match each position to its intended control function.",
-      "pairs": [
-        {
-          "id": "pair-1",
-          "left": "Hand mode",
-          "right": "Commands the selected pump to run manually, subject to its interlocks"
-        },
-        {
-          "id": "pair-2",
-          "left": "Off mode",
-          "right": "Commands the selected pump off at the selector"
-        },
-        {
-          "id": "pair-3",
-          "left": "Auto mode",
-          "right": "Commands operation using the station level controls"
-        }
-      ],
-      "explanation": "Hand mode: Commands the selected pump to run manually, subject to its interlocks; Off mode: Commands the selected pump off at the selector; Auto mode: Commands operation using the station level controls. The selector is not an energy-isolating device; follow the site energy-control procedure."
-    },
-    {
       "id": "wpi-class4-water-coll-030",
       "mode": "speed-match",
       "prompt": "Match each term to its distinct description: Wet-weather comparison, Pump drawdown test, Motor hour meter.",
@@ -1126,27 +1103,6 @@
       "explanation": "A narrow operating range may produce frequent starts and stops; settings must suit the station."
     },
     {
-      "id": "wpi-class4-water-coll-062",
-      "mode": "cause-effect",
-      "prompt": "An untrained person enters a hazardous sewer to rescue a collapsed worker. What is the key risk?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "The rescuer may also be overcome"
-        },
-        {
-          "id": "option-2",
-          "label": "The atmosphere becomes safe"
-        },
-        {
-          "id": "option-3",
-          "label": "The need for rescue equipment disappears"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "OSHA documents multiple fatalities when untrained rescuers enter hazardous spaces."
-    },
-    {
       "id": "wpi-class4-water-coll-063",
       "mode": "cause-effect",
       "prompt": "A rising trend of repeat blockages occurs on one pipe segment. What management action is justified?",
@@ -1315,27 +1271,6 @@
       "explanation": "Both blockages and insufficient capacity may cause backups."
     },
     {
-      "id": "wpi-class4-water-coll-072",
-      "mode": "tap-the-flaw",
-      "prompt": "A crew assumes a permit-space atmosphere stays safe throughout entry because the first test was acceptable. Find the flaw.",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Treating one pre-entry reading as permanent"
-        },
-        {
-          "id": "option-2",
-          "label": "Planning monitoring"
-        },
-        {
-          "id": "option-3",
-          "label": "Testing before entry"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Sewer atmospheres can change; OSHA discusses ongoing hazard monitoring."
-    },
-    {
       "id": "wpi-class4-water-coll-073",
       "mode": "tap-the-flaw",
       "prompt": "A planner divides 600 gallons of available storage up to the first spill point by 40 gallons/minute inflow to estimate 15 minutes to spill. A bypass continuously removes 10 gallons/minute, and there are no other inflows or outlets. What is the flaw?",
@@ -1441,27 +1376,6 @@
       "explanation": "Time to overflow depends on available volume and net rate of filling."
     },
     {
-      "id": "wpi-class4-water-coll-078",
-      "mode": "tap-the-flaw",
-      "prompt": "A supervisor treats EPA’s CMOM guide itself as a binding local permit. Find the flaw.",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Confusing guidance with the applicable permit"
-        },
-        {
-          "id": "option-2",
-          "label": "Reviewing actual permit conditions"
-        },
-        {
-          "id": "option-3",
-          "label": "Checking current requirements"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "EPA explicitly says the guide itself is not a regulation; actual obligations require separate verification."
-    },
-    {
       "id": "wpi-class4-water-coll-079",
       "mode": "tap-the-flaw",
       "prompt": "A station has a known first spill elevation at its wet well. An operator counts volume above that elevation as available emergency storage. Find the flaw.",
@@ -1481,27 +1395,6 @@
       ],
       "correctOptionId": "option-1",
       "explanation": "In this example the first spill point limits storage; in an actual system check for lower upstream overflow points too."
-    },
-    {
-      "id": "wpi-class4-water-coll-081",
-      "mode": "tap-the-flaw",
-      "prompt": "A worker proposes restarting a locked-out pump before the authorized work team has completed its procedure. Find the flaw.",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Bypassing energy-control procedures"
-        },
-        {
-          "id": "option-2",
-          "label": "Following the energy-control plan"
-        },
-        {
-          "id": "option-3",
-          "label": "Coordinating with the work team"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Unexpected startup endangers workers; follow the employer’s applicable lockout procedure."
     },
     {
       "id": "wpi-class4-water-coll-082",
@@ -1846,13 +1739,6 @@
       "prompt": "In EPA’s example involving a large basin with poor infiltration and inflow performance, were strategically placed flow meters deployed before or after low-infiltration-and-inflow sub-basins were screened out of further condition assessment?",
       "correctAnswer": "before",
       "explanation": "In EPA’s example, the utility subdivided the basin and used strategically placed flow meters to identify areas with low infiltration and inflow, which it could then exclude from further condition assessment. The sequence describes that example, not every study."
-    },
-    {
-      "id": "wpi-class4-water-coll-order-016",
-      "mode": "before-after",
-      "prompt": "In the Minnesota training manual’s smoke-testing program, is briefing local fire and police departments about the operation before or after the smoke test?",
-      "correctAnswer": "before",
-      "explanation": "The Minnesota manual describes briefing local fire and police as a preparation for the smoke-testing operation. This is a training example, not a statement of a universal notification law."
     },
     {
       "id": "wpi-class4-water-coll-order-021",

@@ -2,7 +2,6 @@ import { trpc } from "@/lib/trpc";
 import { finishLogout } from "@/lib/logout";
 import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { notifyIdentityChange } from "@shared/identityChange";
 
 export function useLogout() {
   const queryClient = useQueryClient();
@@ -10,12 +9,12 @@ export function useLogout() {
   const logout = async () => {
     try {
       await mutation.mutateAsync();
-      notifyIdentityChange();
-      await finishLogout(queryClient);
     } catch {
       // Do not claim the httpOnly cookies were cleared when the request failed.
       toast.error("Sign out did not complete. Check your connection and try again.");
+      return;
     }
+    await finishLogout(queryClient);
   };
   return { logout, isPending: mutation.isPending, error: mutation.error };
 }

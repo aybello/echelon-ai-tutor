@@ -1490,31 +1490,6 @@
       "explanation": "Run production = 140 m³/h × 18 h = 2,520 m³. Unit filter run volume = run production ÷ filter area = 2,520 m³ ÷ 35 m² = 72 m³/m². This is production normalized by area, not a flow rate."
     },
     {
-      "id": "class4-water-top-009",
-      "mode": "cause-effect",
-      "prompt": "A basin has 240 m³ of effective water volume and a steady flow of 120 m³/h. For this exercise only, a tracer study conducted at that flow and basin configuration gives T₁₀ as 0.40 times theoretical detention. The exit residual is 0.80 mg/L. What is the illustrative CT?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "38.4 mg·min/L"
-        },
-        {
-          "id": "option-2",
-          "label": "96 mg·min/L"
-        },
-        {
-          "id": "option-3",
-          "label": "1.6 mg·min/L"
-        },
-        {
-          "id": "option-4",
-          "label": "60 mg·min/L"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Theoretical time = 240 m³ ÷ 120 m³/h = 2 h = 120 min. T₁₀ = 0.40 × 120 min = 48 min. CT = exit residual × T₁₀ = 0.80 mg/L × 48 min = 38.4 mg·min/L. This arithmetic is not a regulatory credit; actual credit requires the applicable validated method and conditions."
-    },
-    {
       "id": "class4-water-top-010",
       "mode": "cause-effect",
       "prompt": "In a hypothetical system, two independent sequential barriers each have already validated log reductions of 2.0 and 1.5 for the same organism. Assuming the credited reductions may be combined, what is the combined log reduction?",
@@ -1663,31 +1638,6 @@
       ],
       "correctOptionId": "option-2",
       "explanation": "Convert flow: 120 m³/h ÷ 3,600 s/h = 0.03333 m³/s. Hydraulic power = density × gravity × flow × head = 1,000 kg/m³ × 9.81 m/s² × 0.03333 m³/s × 30 m = 9,810 W. Shaft power = 9,810 W ÷ 0.75 = 13,080 W = 13.08 kW, or 13.1 kW rounded. Motor input would also include motor losses."
-    },
-    {
-      "id": "class4-water-top-016",
-      "mode": "cause-effect",
-      "prompt": "For free-chlorine inactivation of Giardia, a plant holds the residual, effective contact time and water temperature constant but observes a rise in pH. What should be reassessed?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Whether the applicable CT requirement has changed"
-        },
-        {
-          "id": "option-2",
-          "label": "Whether calculated CT has changed even though residual and contact time are unchanged"
-        },
-        {
-          "id": "option-3",
-          "label": "Whether higher pH guarantees more Giardia inactivation at the same CT"
-        },
-        {
-          "id": "option-4",
-          "label": "Whether the measured free-chlorine residual is necessarily zero"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Health Canada reports that pH affects free-chlorine inactivation of Giardia. Re-evaluate the appropriate validated CT requirements under the actual pH and temperature; a fixed calculated CT does not guarantee unchanged inactivation."
     },
     {
       "id": "class4-water-top-017",

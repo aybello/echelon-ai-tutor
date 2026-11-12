@@ -7,7 +7,7 @@
     "speed-match": "wpi-class2-water-dist-018",
     "odd-one-out": "wpi-class2-water-dist-030",
     "cause-effect": "wpi-class2-water-dist-046",
-    "tap-the-flaw": "wpi-class2-water-dist-063",
+    "tap-the-flaw": "wpi-class2-water-dist-064",
     "before-after": "wpi-class2-water-dist-order-001"
   },
   "examples": [
@@ -31,13 +31,6 @@
       "prompt": "An open potable-water tank hatch can create a contamination pathway.",
       "correctAnswer": true,
       "explanation": "Open hatches can admit debris and contaminants."
-    },
-    {
-      "id": "wpi-class2-water-dist-004",
-      "mode": "rapid-swipe",
-      "prompt": "High water age guarantees a regulatory violation at every location.",
-      "correctAnswer": false,
-      "explanation": "Age can increase quality risk, but alone does not establish a violation."
     },
     {
       "id": "wpi-class2-water-dist-005",
@@ -108,13 +101,6 @@
       "prompt": "A pressure drop near a leak can increase intrusion risk when contaminated water surrounds an opening.",
       "correctAnswer": true,
       "explanation": "A breach and adverse pressure can allow outside contaminants to enter."
-    },
-    {
-      "id": "wpi-class2-water-dist-015",
-      "mode": "rapid-swipe",
-      "prompt": "An electrical disconnect alone addresses every possible stored hydraulic energy hazard.",
-      "correctAnswer": false,
-      "explanation": "Hydraulic pressure and other energy sources must also be controlled under the energy-control procedure."
     },
     {
       "id": "wpi-class2-water-dist-016",
@@ -505,31 +491,6 @@
       ],
       "correctOptionId": "option-4",
       "explanation": "Gallons are a volume; the other units include volume per time."
-    },
-    {
-      "id": "wpi-class2-water-dist-035",
-      "mode": "odd-one-out",
-      "prompt": "Which action does not reduce exposure to hazardous energy during pump servicing?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Follow the energy-control procedure"
-        },
-        {
-          "id": "option-2",
-          "label": "Control stored pressure"
-        },
-        {
-          "id": "option-3",
-          "label": "Apply the designated lockout device"
-        },
-        {
-          "id": "option-4",
-          "label": "Rely solely on the normal start button"
-        }
-      ],
-      "correctOptionId": "option-4",
-      "explanation": "A control button is not a substitute for energy isolation."
     },
     {
       "id": "wpi-class2-water-dist-037",
@@ -1087,27 +1048,6 @@
       ],
       "correctOptionId": "option-1",
       "explanation": "Disagreement calls for instrument verification and further investigation."
-    },
-    {
-      "id": "wpi-class2-water-dist-063",
-      "mode": "tap-the-flaw",
-      "prompt": "A main repair team reviews its plan. Which action is the flaw?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Locate utilities before digging"
-        },
-        {
-          "id": "option-2",
-          "label": "Check isolation boundaries"
-        },
-        {
-          "id": "option-3",
-          "label": "Enter an unstable trench before inspection"
-        }
-      ],
-      "correctOptionId": "option-3",
-      "explanation": "Workers should not enter an unsafe excavation; a competent person must assess conditions."
     },
     {
       "id": "wpi-class2-water-dist-064",
@@ -1838,20 +1778,6 @@
       "explanation": "The Ohio procedure sanitizes the nozzle and then flushes the tap before collecting the sample. It is a named procedure, not a universal method for every analyte."
     },
     {
-      "id": "wpi-class2-water-dist-order-012",
-      "mode": "before-after",
-      "prompt": "In OSHA’s general-industry energy-control sequence for pump servicing, is application of the lockout device before or after isolation of the pump from its energy sources?",
-      "correctAnswer": "after",
-      "explanation": "The example sequence isolates the equipment from energy sources and then applies the lockout or tagout devices. Authorized personnel must follow their specific procedure."
-    },
-    {
-      "id": "wpi-class2-water-dist-order-014",
-      "mode": "before-after",
-      "prompt": "In OSHA’s excavation safety guidance for a water-main repair, is determining the approximate location of underground utilities before or after excavation begins?",
-      "correctAnswer": "before",
-      "explanation": "OSHA describes locating underground utilities as part of preparation before excavation. Local notification and applicable site procedures must also be followed."
-    },
-    {
       "id": "wpi-class2-water-dist-order-016",
       "mode": "before-after",
       "prompt": "For a finished-water tank taken out of service for interior cleaning, is disinfection before or after the tank returns to service under EPA’s storage guidance?",
@@ -1871,13 +1797,6 @@
       "prompt": "In planning a distribution flushing program using EPA’s guidance, is verification of adequate hydraulic capacity before or after conducting the planned flushing?",
       "correctAnswer": "before",
       "explanation": "EPA includes checking system hydraulic capacity in flushing-program planning. The design must also account for site conditions and applicable discharge requirements."
-    },
-    {
-      "id": "wpi-class2-water-dist-order-021",
-      "mode": "before-after",
-      "prompt": "In OSHA’s pump-service restoration guidance, is checking that personnel are safely positioned before or after removal of the lockout devices?",
-      "correctAnswer": "before",
-      "explanation": "OSHA lists checking that everyone is safely positioned among the steps taken before lockout or tagout devices are removed. Equipment-specific and personnel notification requirements also apply."
     }
   ]
 }

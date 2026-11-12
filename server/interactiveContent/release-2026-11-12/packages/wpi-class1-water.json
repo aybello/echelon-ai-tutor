@@ -131,13 +131,6 @@
       "explanation": "Unexpected motion or stored hydraulic energy can injure workers."
     },
     {
-      "id": "wpi-class1-water-018",
-      "mode": "rapid-swipe",
-      "prompt": "Turning off a control switch alone is the same as a completed hazardous-energy control procedure.",
-      "correctAnswer": false,
-      "explanation": "A control switch alone is not a substitute for the facility’s energy-isolation procedure."
-    },
-    {
       "id": "wpi-class1-water-019",
       "mode": "rapid-swipe",
       "prompt": "An operator should record the location, date, and time of a collected sample.",
@@ -1408,27 +1401,6 @@
       "explanation": "Control switches alone do not establish isolation of hazardous energy."
     },
     {
-      "id": "wpi-class1-water-077",
-      "mode": "tap-the-flaw",
-      "prompt": "A trainee attempts to start a machine that another worker has locked out. What is the flaw?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Attempting to reenergize locked-out equipment can endanger workers"
-        },
-        {
-          "id": "option-2",
-          "label": "Locks increase chlorine concentration"
-        },
-        {
-          "id": "option-3",
-          "label": "Tags measure turbidity"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Attempting to restart locked-out equipment can endanger workers if isolation is compromised; do not attempt it and follow the energy-control procedure."
-    },
-    {
       "id": "wpi-class1-water-078",
       "mode": "tap-the-flaw",
       "prompt": "A trainee says groundwater is the only drinking-water source. What is the flaw?",
@@ -1865,27 +1837,6 @@
       "prompt": "In the general DPD colorimetric residual test described by EPA Region 8, is measuring the developed pink color before or after adding the DPD reagent?",
       "correctAnswer": "after",
       "explanation": "The DPD reagent produces a color whose intensity is then measured, with reaction time and reagent order determined by the specific kit instructions. EPA advises immediate onsite analysis."
-    },
-    {
-      "id": "wpi-class1-water-order-012",
-      "mode": "before-after",
-      "prompt": "In OSHA's illustrative lockout procedure for equipment maintenance, is verification of equipment isolation before or after servicing begins?",
-      "correctAnswer": "before",
-      "explanation": "The illustrative procedure verifies isolation as part of lockout before servicing. This is not a complete procedure: only trained authorized personnel should follow the facility-specific energy-control procedure."
-    },
-    {
-      "id": "wpi-class1-water-order-013",
-      "mode": "before-after",
-      "prompt": "In OSHA's illustrative lockout procedure for equipment that is operating, is application of locks to energy-isolating devices before or after normal equipment shutdown?",
-      "correctAnswer": "after",
-      "explanation": "OSHA's example places normal shutdown ahead of isolation and locking. It is illustrative rather than a complete plant-specific instruction; trained authorized personnel must use the applicable procedure."
-    },
-    {
-      "id": "wpi-class1-water-order-014",
-      "mode": "before-after",
-      "prompt": "In OSHA's illustrative restoration-to-service procedure, is checking that workers are safely positioned or removed before or after reenergizing the equipment?",
-      "correctAnswer": "before",
-      "explanation": "OSHA's example checks that workers are safely positioned or removed before lockout devices are removed and equipment is reenergized. The complete facility procedure and applicable requirements control the work."
     },
     {
       "id": "wpi-class1-water-order-017",

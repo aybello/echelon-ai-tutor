@@ -1868,20 +1868,6 @@
       "explanation": "The described procedure cools the oven-dried filter and residue in a desiccator before weighing to limit moisture uptake and improve mass accuracy."
     },
     {
-      "id": "wpi-class1-wastewater-order-020",
-      "mode": "before-after",
-      "prompt": "In OSHA’s lockout application tutorial, is verification of energy isolation before or after servicing the isolated wastewater pump?",
-      "correctAnswer": "before",
-      "explanation": "OSHA’s US tutorial describes verification of isolation and de-energization before servicing begins. This is not a complete lockout procedure or a statement of Canadian law; follow applicable local requirements and facility-specific procedures."
-    },
-    {
-      "id": "wpi-class1-wastewater-order-021",
-      "mode": "before-after",
-      "prompt": "For a wastewater pump under the OSHA lockout application sequence, is equipment shutdown before or after application of the lockout device?",
-      "correctAnswer": "before",
-      "explanation": "The OSHA US tutorial describes shutting down the equipment, isolating energy sources, and then applying lockout or tagout devices. This is not a complete procedure or a statement of Canadian law; follow applicable local requirements and facility-specific procedures."
-    },
-    {
       "id": "wpi-class1-wastewater-order-022",
       "mode": "before-after",
       "prompt": "In EPA’s wastewater sampling approach for trace metals or organic analysis using reusable equipment, is sample collection before or after cleaning the equipment for that collection?",

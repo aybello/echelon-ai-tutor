@@ -57,7 +57,7 @@ describe("interactive.getContent", () => {
     expect(first).toEqual(second);
     expect(first).toMatchObject({ courseKey: "class1-water", available: true, locked: true, version: "test-only-v1" });
     expect(first.examples.map(x => x.id)).toEqual(previewIds);
-    expect(resolveAccessForRequest).toHaveBeenCalledWith(ctx, "class1-water", { accessToken: undefined });
+    expect(resolveAccessForRequest).toHaveBeenCalledWith(ctx, "class1-water", { accessToken: undefined, privilegedInteractiveAccess: true });
     for (const extra of [{ mode: "rapid-swipe" }, { id: "paid-rapid-swipe" }, { page: 2 }, { limit: 100 }, { email: "victim@example.test" }]) {
       await expect(caller.getContent({ courseKey: "class1-water", ...extra } as never)).rejects.toMatchObject({ code: "BAD_REQUEST" });
     }
@@ -67,7 +67,7 @@ describe("interactive.getContent", () => {
     const result = await caller.getContent({ courseKey: "class1-water", accessToken: "token" });
     expect(result.locked).toBe(false);
     expect(result.examples.map(x => x.id)).toEqual(fixture.examples.map(x => x.id));
-    expect(resolveAccessForRequest).toHaveBeenCalledWith(ctx, "class1-water", { accessToken: "token" });
+    expect(resolveAccessForRequest).toHaveBeenCalledWith(ctx, "class1-water", { accessToken: "token", privilegedInteractiveAccess: true });
   });
   it("does not use another course entitlement to release paid content", async () => {
     vi.mocked(resolveAccessForRequest).mockImplementation(async (_ctx, course) => course === "class1-ww");
@@ -139,7 +139,7 @@ describe("interactive.getContent", () => {
 });
 
 describe("AI-source-reviewed software release package validation", () => {
-  it("registers exactly the 38 canonical non-309 keys with 3984 items and all six fixed previews", async () => {
+  it("registers exactly the 38 canonical non-309 keys with 3828 items and all six fixed previews", async () => {
     const actual = await vi.importActual<typeof import("./interactiveContent/loader")>("./interactiveContent/loader");
     const expected = [
       "class1-wastewater-coll", "class1-water", "class1-water-dist", "class1-ww",
@@ -174,7 +174,9 @@ describe("AI-source-reviewed software release package validation", () => {
         ids.add(item.id);
       }
     }
-    expect(ids.size).toBe(3984);
+    expect(ids.size).toBe(3828);
+    expect(ids.has("class1-water-dist-074")).toBe(false);
+    expect(ids.has("wqa-023")).toBe(true);
     expect(modes).toEqual(releaseMetadata.counts.modes);
     for (const key of ["__proto__", "constructor", "electrician-309a", "electrician-309a-demo", "class1", "not-a-course"]) {
       expect(actual.loadInteractivePackage(key)).toEqual({ status: "absent" });
@@ -200,7 +202,7 @@ describe("AI-source-reviewed software release package validation", () => {
       expect(Object.keys(full).sort()).toEqual(["available", "courseKey", "examples", "locked", "version"]);
       const serialized = JSON.stringify(full);
       for (const secretField of ["sourceSha256", "provenance", "reviewReferences", "originalBytes", "reviewers"]) expect(serialized).not.toContain(secretField);
-      expect(resolveAccessForRequest).toHaveBeenLastCalledWith(ctx, key, { accessToken: "token" });
+      expect(resolveAccessForRequest).toHaveBeenLastCalledWith(ctx, key, { accessToken: "token", privilegedInteractiveAccess: true });
     }
   });
   it("distinguishes a registered valid entry from all invalid entries", () => {

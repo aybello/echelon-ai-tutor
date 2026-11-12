@@ -1172,27 +1172,6 @@
       "explanation": "Ozone does not provide a persistent residual for distribution secondary disinfection."
     },
     {
-      "id": "class4-water-dist-078",
-      "mode": "tap-the-flaw",
-      "prompt": "A statement says: “A CT of 12 mg·min/L always proves adequate inactivation regardless of pH, temperature or organism.” Tap the flaw.",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Always adequate regardless of conditions"
-        },
-        {
-          "id": "option-2",
-          "label": "CT is 12 mg·min/L"
-        },
-        {
-          "id": "option-3",
-          "label": "CT has units of mg·min/L"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Required CT depends on disinfectant, target organism and operating conditions."
-    },
-    {
       "id": "class4-water-dist-079",
       "mode": "tap-the-flaw",
       "prompt": "A pump log says: “No checks are needed because a running motor guarantees normal water flow.” Tap the flaw.",

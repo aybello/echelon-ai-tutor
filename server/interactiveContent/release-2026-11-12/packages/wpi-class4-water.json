@@ -110,20 +110,6 @@
       "explanation": "Protection reduces risk but is one barrier alongside effective treatment."
     },
     {
-      "id": "wpi-class4-water-015",
-      "mode": "rapid-swipe",
-      "prompt": "A stop button alone is the same as an energy-isolating device for servicing a pump.",
-      "correctAnswer": false,
-      "explanation": "A control button is not an energy-isolating device; use the site energy-control procedure."
-    },
-    {
-      "id": "wpi-class4-water-016",
-      "mode": "rapid-swipe",
-      "prompt": "Before an authorized permit-space entry, rescue arrangements should be established under the site entry and rescue plan.",
-      "correctAnswer": true,
-      "explanation": "Rescue arrangements are made before entry, and workers follow the applicable entry and rescue plan; local legal requirements vary."
-    },
-    {
       "id": "wpi-class4-water-017",
       "mode": "rapid-swipe",
       "prompt": "Disinfectant residual and contact time alone are enough to determine every organism’s inactivation without considering other conditions.",
@@ -780,56 +766,6 @@
       ],
       "correctOptionId": "option-1",
       "explanation": "Volume divided by flow is 300 ÷ 10 = 30 min. This is not automatically effective contact time."
-    },
-    {
-      "id": "wpi-class4-water-047",
-      "mode": "cause-effect",
-      "prompt": "A disinfectant residual is 1.5 mg/L and the validated effective contact time is 20 min. What is CT?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "30 mg·min/L"
-        },
-        {
-          "id": "option-2",
-          "label": "13.3 mg·min/L"
-        },
-        {
-          "id": "option-3",
-          "label": "21.5 mg·min/L"
-        },
-        {
-          "id": "option-4",
-          "label": "0.075 mg·min/L"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "CT = 1.5 × 20 = 30 mg·min/L; compliance depends on the applicable target."
-    },
-    {
-      "id": "wpi-class4-water-048",
-      "mode": "cause-effect",
-      "prompt": "A tank holds 240 m³ at steady flow of 8 m³/min in and out. A baffling factor of 0.5 applies at that flow. What is the estimated effective contact time?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "15 min"
-        },
-        {
-          "id": "option-2",
-          "label": "30 min"
-        },
-        {
-          "id": "option-3",
-          "label": "60 min"
-        },
-        {
-          "id": "option-4",
-          "label": "4 min"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Theoretical time = 240 ÷ 8 = 30 min; 30 × 0.5 = 15 min. This is an estimate, not proof of compliance."
     },
     {
       "id": "wpi-class4-water-049",
@@ -1732,31 +1668,6 @@
       "explanation": "At fixed volume, higher flow reduces theoretical detention time."
     },
     {
-      "id": "wpi-class4-water-085",
-      "mode": "tap-the-flaw",
-      "prompt": "Select the flawed pH monitoring action.",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Declare compliance from an unverified reading after a sensor fault"
-        },
-        {
-          "id": "option-2",
-          "label": "Check a representative sample with a calibrated instrument"
-        },
-        {
-          "id": "option-3",
-          "label": "Investigate the sensor"
-        },
-        {
-          "id": "option-4",
-          "label": "Document the issue according to procedure"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "A questionable sensor result should be verified before it is relied on."
-    },
-    {
       "id": "wpi-class4-water-top-001",
       "mode": "cause-effect",
       "prompt": "A plant blends 300 m³/day of water containing 2 mg/L of a dissolved constituent with 900 m³/day containing 10 mg/L. Assuming complete mixing and no reaction or loss, what is the blend concentration?",
@@ -1991,13 +1902,6 @@
       "explanation": "The segment’s contact time runs from the disinfectant injection point to its residual measurement point. Segments and measurement locations are system-specific."
     },
     {
-      "id": "wpi-class4-water-order-014",
-      "mode": "before-after",
-      "prompt": "In EPA’s disinfection-profiling workflow, is calculation of the inactivation ratio before or after calculation of CT?",
-      "correctAnswer": "after",
-      "explanation": "The calculated CT for a segment is used with the appropriate required CT to calculate an inactivation ratio. CT alone does not establish compliance."
-    },
-    {
       "id": "wpi-class4-water-order-015",
       "mode": "before-after",
       "prompt": "In EPA Method 1604 for a drinking-water bacteriological sample, is sample filtration before or after placing the membrane on MI medium?",
@@ -2038,20 +1942,6 @@
       "prompt": "In EPA Method 180.1 quality control, is the immediate instrument performance check before or after the daily calibration?",
       "correctAnswer": "after",
       "explanation": "The method describes analyzing an instrument performance check solution and calibration blank immediately after daily calibration to verify performance."
-    },
-    {
-      "id": "wpi-class4-water-order-021",
-      "mode": "before-after",
-      "prompt": "For authorized maintenance under the OSHA energy-control sequence, is verification of equipment isolation before or after the protected servicing work starts?",
-      "correctAnswer": "before",
-      "explanation": "Isolation and deenergization are verified before servicing begins. This U.S. technical example does not establish law elsewhere; use the applicable local energy-control procedure."
-    },
-    {
-      "id": "wpi-class4-water-order-022",
-      "mode": "before-after",
-      "prompt": "In the OSHA lockout application example, is equipment shutdown before or after application of the lockout device?",
-      "correctAnswer": "before",
-      "explanation": "The referenced U.S. sequence includes an orderly equipment shutdown and isolation before the authorized employee applies the lockout device. The example is not a complete operating procedure or a statement of Canadian law."
     }
   ]
 }

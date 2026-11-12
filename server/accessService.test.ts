@@ -75,6 +75,14 @@ describe("resolveVerifiedIdentity", () => {
     }
   });
 
+  it("does not propagate admin or owner claims into the shared identity", () => {
+    const ctx = makeOAuthCtx({ role: "admin", openId: "owner-id" });
+    expect(resolveVerifiedIdentity(ctx as any)).toEqual({
+      type: "oauth", userId: 1, email: "alice@example.com",
+      user: { id: 1, email: "alice@example.com" },
+    });
+  });
+
   it("returns otp identity for an OTP session", () => {
     const ctx = makeOtpCtx("bob@example.com");
     const identity = resolveVerifiedIdentity(ctx as any);
@@ -106,7 +114,7 @@ describe("resolveVerifiedIdentity", () => {
 
 describe("identityEmail", () => {
   it("returns email for oauth identity", () => {
-    expect(identityEmail({ type: "oauth", userId: 1, email: "fixture-12@example.com", user: { id: 1, email: "fixture-12@example.com", role: "user", openId: "fixture" } })).toBe("fixture-12@example.com");
+    expect(identityEmail({ type: "oauth", userId: 1, email: "fixture-12@example.com", user: { id: 1, email: "fixture-12@example.com" } })).toBe("fixture-12@example.com");
   });
 
   it("returns email for otp identity", () => {

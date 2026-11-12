@@ -1295,27 +1295,6 @@
       "explanation": "Visual clarity alone is not a universal return-to-service criterion."
     },
     {
-      "id": "class1-water-dist-074",
-      "mode": "tap-the-flaw",
-      "prompt": "Which claim about a check valve is flawed?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "It can replace every required backflow prevention assembly"
-        },
-        {
-          "id": "option-2",
-          "label": "It is intended to limit reverse flow"
-        },
-        {
-          "id": "option-3",
-          "label": "Its flow direction matters"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Specific backflow protection must be selected for the hazard and applicable standard."
-    },
-    {
       "id": "class1-water-dist-075",
       "mode": "tap-the-flaw",
       "prompt": "A worker uses a DPD colorimeter. Which action is flawed?",
@@ -1356,48 +1335,6 @@
       ],
       "correctOptionId": "option-1",
       "explanation": "Locating and marking underground services reduces the risk of striking them."
-    },
-    {
-      "id": "class1-water-dist-077",
-      "mode": "tap-the-flaw",
-      "prompt": "A pump requires electrical maintenance. Which action is flawed?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Start work without isolating hazardous energy"
-        },
-        {
-          "id": "option-2",
-          "label": "Use the site lockout procedure"
-        },
-        {
-          "id": "option-3",
-          "label": "Verify isolation as the procedure requires"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Follow the workplace energy-isolation and verification procedure before work."
-    },
-    {
-      "id": "class1-water-dist-078",
-      "mode": "tap-the-flaw",
-      "prompt": "A crew is confronted with an unknown confined-space hazard. Which action is flawed?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Enter immediately without the required controls"
-        },
-        {
-          "id": "option-2",
-          "label": "Stop and consult the site confined-space program"
-        },
-        {
-          "id": "option-3",
-          "label": "Use trained personnel and approved controls"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Confined spaces require hazard assessment and controls; do not enter casually."
     },
     {
       "id": "class1-water-dist-079",

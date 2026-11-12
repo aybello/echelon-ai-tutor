@@ -800,31 +800,6 @@
       "explanation": "A trench shield is physical safety equipment, not a record."
     },
     {
-      "id": "wpi-class3-water-dist-046",
-      "mode": "odd-one-out",
-      "prompt": "Which is not an excavation hazard described by OSHA?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Cave-in"
-        },
-        {
-          "id": "option-2",
-          "label": "Falling load"
-        },
-        {
-          "id": "option-3",
-          "label": "Hazardous atmosphere"
-        },
-        {
-          "id": "option-4",
-          "label": "Customer meter reading"
-        }
-      ],
-      "correctOptionId": "option-4",
-      "explanation": "Meter reading is a task rather than an excavation hazard."
-    },
-    {
       "id": "wpi-class3-water-dist-047",
       "mode": "cause-effect",
       "prompt": "A repair valve is mistakenly left closed and restricts flow to a dead end. What can happen?",
@@ -1056,27 +1031,6 @@
       "explanation": "Hydraulic energy is a hazardous energy source that must be addressed by the applicable procedure."
     },
     {
-      "id": "wpi-class3-water-dist-058",
-      "mode": "cause-effect",
-      "prompt": "Heavy spoils are placed close to a trench edge. What hazard increases?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Material or soil can fall into the excavation"
-        },
-        {
-          "id": "option-2",
-          "label": "Finished water becomes softer"
-        },
-        {
-          "id": "option-3",
-          "label": "The meter reads faster"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "OSHA identifies spoil and equipment near edges as hazards to trench workers."
-    },
-    {
       "id": "wpi-class3-water-dist-059",
       "mode": "cause-effect",
       "prompt": "Flushing replaces older water in a low-use main with fresher water. What may improve temporarily?",
@@ -1306,27 +1260,6 @@
       ],
       "correctOptionId": "option-3",
       "explanation": "Flushing does not repair a defective valve; inspect and maintain valves separately."
-    },
-    {
-      "id": "wpi-class3-water-dist-077",
-      "mode": "tap-the-flaw",
-      "prompt": "Which safety choice is flawed near a trench?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Consider the position of spoil."
-        },
-        {
-          "id": "option-2",
-          "label": "Inspect after changed conditions."
-        },
-        {
-          "id": "option-3",
-          "label": "Work underneath a suspended load."
-        }
-      ],
-      "correctOptionId": "option-3",
-      "explanation": "A suspended load may fall; OSHA advises against working beneath it."
     },
     {
       "id": "wpi-class3-water-dist-079",
@@ -1923,13 +1856,6 @@
       "explanation": "In this specific sequence, post-disinfection flushing precedes pressure and leak testing. Other approved procedures can differ. This Iowa example is not a statement of Canadian or other local requirements."
     },
     {
-      "id": "wpi-class3-water-dist-order-003",
-      "mode": "before-after",
-      "prompt": "In the Iowa Section 5030 example for placing a new water main in service, is obtaining passing results for both bacteriological sample sets before or after putting the main in service?",
-      "correctAnswer": "before",
-      "explanation": "The specification calls for both sets to pass, and jurisdiction permission to be obtained, before the main is put in service. Neither this example nor the pair is a complete commissioning procedure. This Iowa example is not a statement of Canadian or other local requirements."
-    },
-    {
       "id": "wpi-class3-water-dist-order-004",
       "mode": "before-after",
       "prompt": "In EPA Region 8’s general drinking-water sampling guidance, is checking the intended sampling containers and procedures with the laboratory before or after sample collection?",
@@ -1956,27 +1882,6 @@
       "prompt": "When the DPD colorimetric method is used as described in EPA Region 8 guidance, is measuring the developed pink color before or after adding the prescribed reagent?",
       "correctAnswer": "after",
       "explanation": "The color develops after reagent addition; the observed intensity is then measured with a comparator or spectrophotometer. The specific kit instructions govern reagents and timing."
-    },
-    {
-      "id": "wpi-class3-water-dist-order-008",
-      "mode": "before-after",
-      "prompt": "In OSHA’s illustrative lockout procedure applied to a distribution pump, is verification of energy isolation before or after beginning the servicing work?",
-      "correctAnswer": "before",
-      "explanation": "The illustrative procedure calls for isolation and verification before the equipment is serviced. It is not a substitute for a site-specific energy-control procedure. The U.S. OSHA illustration does not establish Canadian requirements."
-    },
-    {
-      "id": "wpi-class3-water-dist-order-009",
-      "mode": "before-after",
-      "prompt": "In OSHA’s illustrative lockout procedure for a distribution pump, is locking the energy-isolating devices before or after deactivating those devices?",
-      "correctAnswer": "after",
-      "explanation": "OSHA’s example deactivates the energy-isolating devices to isolate the equipment and then applies locks. An authorized person must use the equipment-specific procedure. The U.S. OSHA illustration does not establish Canadian requirements."
-    },
-    {
-      "id": "wpi-class3-water-dist-order-010",
-      "mode": "before-after",
-      "prompt": "In OSHA’s illustrative return-to-service procedure for a serviced pump, is removing nonessential items from the equipment area before or after removing the lockout devices?",
-      "correctAnswer": "before",
-      "explanation": "The example checks that nonessential items have been removed and the equipment is intact before lockout removal and reenergization. The example does not replace the site-specific procedure. The U.S. OSHA illustration does not establish Canadian requirements."
     },
     {
       "id": "wpi-class3-water-dist-order-011",

@@ -1374,27 +1374,6 @@
       "explanation": "It is an important hazard source but may not contain workplace-specific controls."
     },
     {
-      "id": "wqa-080",
-      "mode": "tap-the-flaw",
-      "prompt": "A sampler selects a tap after a domestic treatment device to represent the untreated-by-household distribution supply. What is the flaw?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "The result may reflect the device"
-        },
-        {
-          "id": "option-2",
-          "label": "A household device cannot change the water"
-        },
-        {
-          "id": "option-3",
-          "label": "Every household outlet samples raw source water"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "The device may alter the result. Ontario general guidance excludes post-home-treatment taps for distribution representation; check applicable regulation and site instructions."
-    },
-    {
       "id": "wqa-081",
       "mode": "tap-the-flaw",
       "prompt": "A trainee concludes that clear-looking water must be microbiologically safe. What is the flaw?",
@@ -1521,27 +1500,6 @@
       "explanation": "CT uses effective contact time, which depends on the treatment configuration and specified method."
     },
     {
-      "id": "wqa-087",
-      "mode": "tap-the-flaw",
-      "prompt": "A trainee applies one O. Reg. 170/03 schedule to every system without checking category. What is the flaw?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Applicable schedules depend on the system category"
-        },
-        {
-          "id": "option-2",
-          "label": "Every system category has the same schedules"
-        },
-        {
-          "id": "option-3",
-          "label": "Sampling schedules are determined by bottle colour"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Section 4 lists different applicable schedules for different types of systems."
-    },
-    {
       "id": "wqa-089",
       "mode": "tap-the-flaw",
       "prompt": "A sampler assumes location and time are optional for interpreting a sample. What is the flaw?",
@@ -1582,31 +1540,6 @@
       ],
       "correctOptionId": "option-1",
       "explanation": "Multiply litres by 1,000 to obtain millilitres."
-    },
-    {
-      "id": "wqa-top-001",
-      "mode": "cause-effect",
-      "prompt": "For a study example, hydraulic detention time is 30 min, the applicable T₁₀/T factor is 0.50, and the measured disinfectant residual at the end of the step is 0.80 mg/L. What is the calculated CT?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "12 mg·min/L"
-        },
-        {
-          "id": "option-2",
-          "label": "15 mg·min/L"
-        },
-        {
-          "id": "option-3",
-          "label": "24 mg·min/L"
-        },
-        {
-          "id": "option-4",
-          "label": "48 mg·min/L"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "First calculate effective contact time T₁₀ = detention time T × the stated T₁₀/T factor = 30 min × 0.50 = 15 min. Then CT = residual concentration × T₁₀ = 0.80 mg/L × 15 min = 12 mg·min/L. A real system must use its applicable contact-time determination and compare CT with the required value for its conditions; this exercise does not establish compliance."
     },
     {
       "id": "wqa-top-002",

@@ -21,7 +21,10 @@ export const interactiveRouter = router({
       if (!course || !course.isActive || course.courseKey === "electrician-309a") {
         throw new TRPCError({ code: "BAD_REQUEST", message: "Unknown or unavailable interactive course." });
       }
-      const hasAccess = await resolveAccessForRequest(ctx, course.courseKey, { accessToken: input.accessToken });
+      const hasAccess = await resolveAccessForRequest(ctx, course.courseKey, {
+        accessToken: input.accessToken,
+        privilegedInteractiveAccess: true,
+      });
       const result = loadInteractivePackage(course.courseKey);
       if (result.status === "absent") return { courseKey: course.courseKey, available: false as const, locked: !hasAccess, version: null, examples: [] };
       if (result.status === "invalid") {

@@ -775,27 +775,6 @@
       "explanation": "Failure history helps target attention but does not alone establish the root cause."
     },
     {
-      "id": "wpi-class2-water-coll-054",
-      "mode": "cause-effect",
-      "prompt": "A sewer atmosphere contains hydrogen sulfide. Why is relying on smell unsafe?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "The sense of smell can lose sensitivity"
-        },
-        {
-          "id": "option-2",
-          "label": "The gas is always visible"
-        },
-        {
-          "id": "option-3",
-          "label": "The gas cannot enter manholes"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "OSHA warns that the ability to smell hydrogen sulfide can disappear."
-    },
-    {
       "id": "wpi-class2-water-coll-055",
       "mode": "cause-effect",
       "prompt": "A defective manhole allows groundwater to enter. What type of added water is this?",
@@ -1547,31 +1526,6 @@
       "explanation": "With no discharge, storage increases at the inflow rate. Time = available volume ÷ net accumulation rate = 900 gal ÷ 75 gal/min = 12 min. This simplified estimate assumes constant inflow and no other storage or discharge; actual emergency response must follow the site plan."
     },
     {
-      "id": "wpi-class2-water-coll-top-006",
-      "mode": "cause-effect",
-      "prompt": "A measured sewer test section loses 80 US gal/day over 1,320 ft of 8-in-diameter pipe. Express the loss as gal/day per inch of diameter per mile, using 5,280 ft/mile. Do not compare the result with any regulatory limit.",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "40 gal/day/in/mile"
-        },
-        {
-          "id": "option-2",
-          "label": "10 gal/day/in/mile"
-        },
-        {
-          "id": "option-3",
-          "label": "160 gal/day/in/mile"
-        },
-        {
-          "id": "option-4",
-          "label": "2.5 gal/day/in/mile"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Convert length: 1,320 ft ÷ 5,280 ft/mile = 0.25 mile. Normalize the measured loss: 80 gal/day ÷ (8 in × 0.25 mile) = 80 ÷ 2 = 40 gal/day/in/mile. The number is a calculation, not an acceptance standard."
-    },
-    {
       "id": "wpi-class2-water-coll-top-010",
       "mode": "speed-match",
       "prompt": "Match each inspection method with the specific observation it is especially suited to make in the stated investigation.",
@@ -1739,20 +1693,6 @@
       "prompt": "In a restaurant with a grease interceptor on its kitchen-wastewater line, does that wastewater pass through the interceptor before or after entering the public sewer?",
       "correctAnswer": "before",
       "explanation": "The interceptor separates grease from the kitchen wastewater flowing through it before that wastewater reaches the sewer. Installations and maintenance vary by site."
-    },
-    {
-      "id": "wpi-class2-water-coll-order-016",
-      "mode": "before-after",
-      "prompt": "Under the U.S. OSHA sewer construction fact sheet, is the initial atmospheric test before or after workers enter a confined space?",
-      "correctAnswer": "before",
-      "explanation": "The OSHA fact sheet describes testing the atmosphere for oxygen, flammable substances and toxic substances before entry. Testing alone does not authorize entry; the applicable program and site plan matter. This U.S. guidance does not establish Canadian or other local requirements."
-    },
-    {
-      "id": "wpi-class2-water-coll-order-017",
-      "mode": "before-after",
-      "prompt": "Under the U.S. OSHA sewer construction fact sheet, are rescue procedures for a permit-required confined space determined before or after workers enter?",
-      "correctAnswer": "before",
-      "explanation": "The fact sheet includes determining rescue procedures and necessary equipment in pre-entry planning for a permit space. This is not authorization for untrained entry or rescue. U.S. guidance does not establish Canadian or other local requirements."
     }
   ]
 }

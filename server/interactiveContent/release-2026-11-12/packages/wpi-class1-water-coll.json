@@ -145,13 +145,6 @@
       "explanation": "Hydraulic cleaning directs water pressure through a nozzle."
     },
     {
-      "id": "wpi-class1-water-coll-020",
-      "mode": "rapid-swipe",
-      "prompt": "Removing a power supply alone always controls every hazardous energy source.",
-      "correctAnswer": false,
-      "explanation": "Stored or other energy sources can remain; follow the equipment-specific energy-control procedure."
-    },
-    {
       "id": "wpi-class1-water-coll-021",
       "mode": "speed-match",
       "prompt": "Match each term to its distinct definition or role: Infiltration, Inflow, Exfiltration.",
@@ -196,29 +189,6 @@
         }
       ],
       "explanation": "Each method uses a distinct tracer or observation technique."
-    },
-    {
-      "id": "wpi-class1-water-coll-023",
-      "mode": "speed-match",
-      "prompt": "Match each term to its distinct definition or role: Hydrogen sulfide, Lockout/tagout, Attendant.",
-      "pairs": [
-        {
-          "id": "pair-1",
-          "left": "Hydrogen sulfide",
-          "right": "Toxic gas that may collect in low spaces"
-        },
-        {
-          "id": "pair-2",
-          "left": "Lockout/tagout",
-          "right": "Energy-control practice during equipment servicing"
-        },
-        {
-          "id": "pair-3",
-          "left": "Attendant",
-          "right": "Person stationed outside who monitors permit-space entrants"
-        }
-      ],
-      "explanation": "These identify an atmospheric hazard, an energy-control practice and an entry role."
     },
     {
       "id": "wpi-class1-water-coll-024",
@@ -709,31 +679,6 @@
       ],
       "correctOptionId": "option-3",
       "explanation": "Preventive upkeep is performed proactively, rather than only after failures."
-    },
-    {
-      "id": "wpi-class1-water-coll-044",
-      "mode": "odd-one-out",
-      "prompt": "Which is NOT a permit-space role described by OSHA?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Untrained spontaneous rescuer"
-        },
-        {
-          "id": "option-2",
-          "label": "Outside attendant"
-        },
-        {
-          "id": "option-3",
-          "label": "Authorized entrant"
-        },
-        {
-          "id": "option-4",
-          "label": "Entry supervisor"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Rescue must be planned and performed by appropriately equipped and trained personnel."
     },
     {
       "id": "wpi-class1-water-coll-045",
@@ -1282,27 +1227,6 @@
       "explanation": "Protect the public and follow the site spill response and applicable notification procedures."
     },
     {
-      "id": "wpi-class1-water-coll-079",
-      "mode": "tap-the-flaw",
-      "prompt": "A worker claims pressing a control button removes stored hydraulic pressure. What is the flaw?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Stored pressure can remain and must be controlled"
-        },
-        {
-          "id": "option-2",
-          "label": "Pressure is a form of energy"
-        },
-        {
-          "id": "option-3",
-          "label": "Pumps move liquid"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Hazardous energy includes hydraulic energy and may remain after a machine stops."
-    },
-    {
       "id": "wpi-class1-water-coll-080",
       "mode": "tap-the-flaw",
       "prompt": "A crew uses the same assumed pump run time for every shift rather than reading and recording the meter. What is the flaw?",
@@ -1343,27 +1267,6 @@
       ],
       "correctOptionId": "option-1",
       "explanation": "Rain entering direct connections can also increase wet-weather flow; investigate the source."
-    },
-    {
-      "id": "wpi-class1-water-coll-082",
-      "mode": "tap-the-flaw",
-      "prompt": "A crew assumes a closed check valve provides complete isolation for every repair. What is the flaw?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Repairs involve equipment"
-        },
-        {
-          "id": "option-2",
-          "label": "A check valve is not automatically an approved isolation method"
-        },
-        {
-          "id": "option-3",
-          "label": "Check valves can limit reverse flow"
-        }
-      ],
-      "correctOptionId": "option-2",
-      "explanation": "Use the site-specific isolation and energy-control procedure rather than relying on assumed valve function."
     },
     {
       "id": "wpi-class1-water-coll-083",

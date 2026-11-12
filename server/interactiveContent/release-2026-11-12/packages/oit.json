@@ -1064,27 +1064,6 @@
       "explanation": "Calcium and magnesium are hardness ions; removing them softens the water."
     },
     {
-      "id": "oit-063",
-      "mode": "cause-effect",
-      "prompt": "Raw-water turbidity increases after a source-water disturbance. Why monitor it?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "To detect a change in incoming water quality"
-        },
-        {
-          "id": "option-2",
-          "label": "To prove all filters failed"
-        },
-        {
-          "id": "option-3",
-          "label": "To establish an exact legal violation without other information"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "A turbidity trend helps identify changes in raw-water quality and guide operational assessment."
-    },
-    {
       "id": "oit-064",
       "mode": "cause-effect",
       "prompt": "A chlorine colorimeter is not zeroed as its instructions require. What is the concern?",
@@ -1595,31 +1574,6 @@
       ],
       "correctOptionId": "option-2",
       "explanation": "Theoretical detention time = basin water volume ÷ flow rate. Convert volume first: 36 m³ × 1,000 L/m³ = 36,000 L. Then 36,000 L ÷ 1,200 L/min = 30 min. This is an ideal hydraulic average, not a measured effective disinfection contact time; short-circuiting or other basin hydraulics can change actual contact time."
-    },
-    {
-      "id": "oit-top-003",
-      "mode": "cause-effect",
-      "prompt": "In a chlorine test, the applied dose is 2.7 mg/L and the measured free chlorine residual after the specified contact time is 0.6 mg/L, both on the same chlorine basis. What is the chlorine demand based on this free residual, using dose = demand + residual?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "3.3 mg/L"
-        },
-        {
-          "id": "option-2",
-          "label": "2.1 mg/L"
-        },
-        {
-          "id": "option-3",
-          "label": "1.6 mg/L"
-        },
-        {
-          "id": "option-4",
-          "label": "4.5 mg/L"
-        }
-      ],
-      "correctOptionId": "option-2",
-      "explanation": "Chlorine demand based on free residual = chlorine dose − free chlorine residual. Both concentrations use the same chlorine basis, so 2.7 mg/L − 0.6 mg/L = 2.1 mg/L. Demand depends on the stated water and contact conditions; this example does not establish that a particular residual or contact time meets a regulatory requirement."
     },
     {
       "id": "oit-order-001",

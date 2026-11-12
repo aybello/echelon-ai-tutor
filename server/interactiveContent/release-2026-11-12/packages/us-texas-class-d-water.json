@@ -145,13 +145,6 @@
       "explanation": "A low residual can be an indicator, but does not by itself prove backflow."
     },
     {
-      "id": "us-texas-class-d-water-020",
-      "mode": "rapid-swipe",
-      "prompt": "TCEQ lists basic water operations and resiliency overview for Class D training.",
-      "correctAnswer": true,
-      "explanation": "The TCEQ licensing page lists both courses for Class D."
-    },
-    {
       "id": "us-texas-class-d-water-021",
       "mode": "speed-match",
       "prompt": "Match the terms to their unique descriptions: Coagulation, Flocculation, Sedimentation.",
@@ -1721,48 +1714,6 @@
       "explanation": "Evaporation changes liquid water to vapor; precipitation is water falling from clouds; infiltration moves surface water into the ground. These processes are distinct paths within the water cycle."
     },
     {
-      "id": "us-texas-class-d-water-top-008",
-      "mode": "tap-the-flaw",
-      "prompt": "A mechanic switches a pump off at its normal control button and immediately starts servicing it without applying the facility's hazardous-energy procedure. What is the flaw?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "A control switch alone may not prevent unexpected startup or release of stored energy"
-        },
-        {
-          "id": "option-2",
-          "label": "A normal stop button is an energy-isolating device if the pump appears stationary"
-        },
-        {
-          "id": "option-3",
-          "label": "Stored energy needs control only if the pump restarts"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Unexpected startup or stored energy can injure workers during servicing. When the facility's hazardous-energy procedure applies, authorized, trained personnel should follow it, including control of stored energy and verification of isolation before work. OSHA identifies push buttons as control devices, not energy-isolating devices; a normal stop button is not a substitute for the procedure."
-    },
-    {
-      "id": "us-texas-class-d-water-top-009",
-      "mode": "tap-the-flaw",
-      "prompt": "A sampler chooses an expired, sterile-bottle package for a routine coliform sample because the bottle looks intact. What is the flaw?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "The expired bottle should not be used; obtain an acceptable laboratory-supplied bottle"
-        },
-        {
-          "id": "option-2",
-          "label": "Use it after rinsing the bottle with tap water"
-        },
-        {
-          "id": "option-3",
-          "label": "Use it if the seal looks intact and the expiration date is recent"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "TCEQ's example microbial sampling procedure says not to use expired, damaged or broken-seal bottles and specifies sterile bottles obtained from a TCEQ-accredited laboratory for total coliform and E. coli drinking-water analysis. Follow current laboratory instructions and the system sampling plan."
-    },
-    {
       "id": "us-texas-class-d-water-order-001",
       "mode": "before-after",
       "prompt": "In CDC’s example surface-water treatment sequence, does flocculation occur before or after coagulation?",
@@ -1805,34 +1756,6 @@
       "explanation": "Chlorine is added at the plant, and the residual remaining in the water can continue killing germs as water moves through distribution pipes. The exercise does not specify a dose."
     },
     {
-      "id": "us-texas-class-d-water-order-007",
-      "mode": "before-after",
-      "prompt": "In the TCEQ example microbial sample procedure, is the initial tap flush before or after tap disinfection?",
-      "correctAnswer": "before",
-      "explanation": "TCEQ’s example places the initial flush ahead of tap disinfection. This example is for microbial collection, not a general instruction for every analyte; use the current system plan and laboratory instructions."
-    },
-    {
-      "id": "us-texas-class-d-water-order-008",
-      "mode": "before-after",
-      "prompt": "In the TCEQ example microbial sample procedure, is filling the sterile sample bottle before or after disinfection of the sample tap?",
-      "correctAnswer": "after",
-      "explanation": "The TCEQ microbial example disinfects the tap and then collects the sample in a sterile bottle. Use the current system sampling plan and laboratory instructions."
-    },
-    {
-      "id": "us-texas-class-d-water-order-009",
-      "mode": "before-after",
-      "prompt": "In the TCEQ example microbial sample procedure, is transferring the sample bottle to an ice chest before or after filling the bottle?",
-      "correctAnswer": "after",
-      "explanation": "The TCEQ example calls for promptly placing the collected sample in an ice chest. It is an example for microbial samples; current laboratory handling instructions control."
-    },
-    {
-      "id": "us-texas-class-d-water-order-010",
-      "mode": "before-after",
-      "prompt": "Under the EPA Region 8 drinking-water sampling guide, is checking the analytical laboratory’s acceptable bottles and procedures before or after collecting the sample?",
-      "correctAnswer": "before",
-      "explanation": "The EPA guide recommends checking the laboratory’s requirements ahead of collection so that the equipment and procedures are acceptable. The guide is not a Texas-specific compliance procedure."
-    },
-    {
       "id": "us-texas-class-d-water-order-011",
       "mode": "before-after",
       "prompt": "In EPA’s general DPD colorimetric residual example, is measuring the sample’s pink color before or after adding the DPD reagent?",
@@ -1859,27 +1782,6 @@
       "prompt": "In EPA’s small-system daily production review, is comparing daily use with system design capacity before or after calculating daily use for the same period?",
       "correctAnswer": "after",
       "explanation": "EPA describes calculating daily use from meter readings and then comparing it with design capacity to assess whether treatment capacity is adequate."
-    },
-    {
-      "id": "us-texas-class-d-water-order-015",
-      "mode": "before-after",
-      "prompt": "In OSHA’s simple lockout example for equipment servicing, is verifying isolation before or after applying the assigned lock?",
-      "correctAnswer": "after",
-      "explanation": "OSHA’s illustrative procedure applies the lock, addresses stored energy and verifies isolation before servicing. Only authorized personnel should use the facility-specific hazardous-energy procedure; complex equipment may require additional steps."
-    },
-    {
-      "id": "us-texas-class-d-water-order-016",
-      "mode": "before-after",
-      "prompt": "In OSHA’s simple lockout example, is notifying affected employees of the planned shutdown before or after the equipment is stopped?",
-      "correctAnswer": "before",
-      "explanation": "The example notifies affected employees that servicing and shutdown are needed before the normal stopping step. The applicable employer procedure governs actual work."
-    },
-    {
-      "id": "us-texas-class-d-water-order-017",
-      "mode": "before-after",
-      "prompt": "In OSHA’s simple lockout example, is checking that employees are safely positioned or removed before or after removing the lock for return to service?",
-      "correctAnswer": "before",
-      "explanation": "OSHA’s example checks that personnel are safely positioned or removed before lock removal and reenergization. Actual restoration must follow the employer’s applicable procedure and authorized personnel requirements."
     },
     {
       "id": "us-texas-class-d-water-order-018",

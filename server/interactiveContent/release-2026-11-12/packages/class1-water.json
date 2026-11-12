@@ -649,31 +649,6 @@
       "explanation": "Temperature is a water characteristic, not a source category."
     },
     {
-      "id": "class1-water-042",
-      "mode": "odd-one-out",
-      "prompt": "Which is not a factor specified in evaluating chemical disinfection CT?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Residual concentration"
-        },
-        {
-          "id": "option-2",
-          "label": "Effective contact time"
-        },
-        {
-          "id": "option-3",
-          "label": "Water temperature"
-        },
-        {
-          "id": "option-4",
-          "label": "Tank exterior colour"
-        }
-      ],
-      "correctOptionId": "option-4",
-      "explanation": "Residual and time calculate CT; temperature helps determine required CT."
-    },
-    {
       "id": "class1-water-043",
       "mode": "odd-one-out",
       "prompt": "Which is not a treatment plant safety resource?",
@@ -875,27 +850,6 @@
       "explanation": "Pretreatment can reduce cloudiness that interferes with UV."
     },
     {
-      "id": "class1-water-052",
-      "mode": "cause-effect",
-      "prompt": "An operator records readings over time. What can a trend reveal?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "A gradual change in process performance"
-        },
-        {
-          "id": "option-2",
-          "label": "The exact future condition with certainty"
-        },
-        {
-          "id": "option-3",
-          "label": "The legal status of every plant"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Comparing successive readings can reveal drift or emerging problems."
-    },
-    {
       "id": "class1-water-053",
       "mode": "cause-effect",
       "prompt": "If steady flow through a contact basin increases while its operating water volume stays fixed, what happens to theoretical detention time?",
@@ -980,27 +934,6 @@
       "explanation": "Ontario notes sediment plugging can increase cartridge replacement frequency."
     },
     {
-      "id": "class1-water-057",
-      "mode": "cause-effect",
-      "prompt": "A free-chlorine contact process is assessed at colder water temperatures. What needs rechecking?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Required CT for the actual conditions"
-        },
-        {
-          "id": "option-2",
-          "label": "The meaning of a litre"
-        },
-        {
-          "id": "option-3",
-          "label": "The sample bottle colour only"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "The applicable required CT depends on temperature, pH, disinfectant and target inactivation."
-    },
-    {
       "id": "class1-water-058",
       "mode": "cause-effect",
       "prompt": "An operator sees total chlorine of 1.2 mg/L and free chlorine of 0.8 mg/L. What is estimated combined chlorine?",
@@ -1022,27 +955,6 @@
       "explanation": "Estimated combined chlorine is total minus free: 1.2 − 0.8 = 0.4 mg/L."
     },
     {
-      "id": "class1-water-059",
-      "mode": "cause-effect",
-      "prompt": "At the end of a chemical disinfection step, the measured residual is 0.5 mg/L and the established T10 is 20 minutes. What is calculated CT?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "10 mg·min/L"
-        },
-        {
-          "id": "option-2",
-          "label": "40 mg·min/L"
-        },
-        {
-          "id": "option-3",
-          "label": "20 mg·min/L"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Multiply 0.5 mg/L by 20 minutes; compare with the applicable required CT separately."
-    },
-    {
       "id": "class1-water-060",
       "mode": "cause-effect",
       "prompt": "The only lamp in a single-lamp UV unit fails, with no alternate UV unit operating. Which treatment barrier is directly lost?",
@@ -1062,27 +974,6 @@
       ],
       "correctOptionId": "option-1",
       "explanation": "The failed lamp supplies no UV exposure in this single-lamp example. Follow the facility response procedure; other disinfection barriers may still exist."
-    },
-    {
-      "id": "class1-water-061",
-      "mode": "cause-effect",
-      "prompt": "A sample label lacks the collection location. What is the practical consequence?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "The result is harder to interpret"
-        },
-        {
-          "id": "option-2",
-          "label": "The sample automatically becomes distilled water"
-        },
-        {
-          "id": "option-3",
-          "label": "The result proves compliance"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Location is needed to relate a laboratory result to the relevant process or sampling point."
     },
     {
       "id": "class1-water-062",
@@ -1699,56 +1590,6 @@
       ],
       "correctOptionId": "option-1",
       "explanation": "First calculate theoretical detention T = water volume ÷ flow = 90 m³ ÷ 180 m³/h = 0.5 h = 30 min. Then apply the assumed factor: T10 = 0.5 × 30 min = 15 min. The factor is only an exercise assumption, not evidence of an approved operating value."
-    },
-    {
-      "id": "class1-water-top-010",
-      "mode": "cause-effect",
-      "prompt": "Two consecutive, non-overlapping free-chlorine contact steps have the same pH, water temperature and constant chlorine residual. Their endpoint residuals are each 0.8 mg/L and their established T10 values are 10 and 15 minutes. What is their summed CT?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "20 mg·min/L"
-        },
-        {
-          "id": "option-2",
-          "label": "12 mg·min/L"
-        },
-        {
-          "id": "option-3",
-          "label": "25 mg·min/L"
-        },
-        {
-          "id": "option-4",
-          "label": "32 mg·min/L"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "For each step, CT = endpoint residual × T10. Step 1: 0.8 mg/L × 10 min = 8 mg·min/L. Step 2: 0.8 mg/L × 15 min = 12 mg·min/L. Under the stated constant pH and chlorine residual, add the steps: 8 + 12 = 20 mg·min/L. Assess required CT separately for the actual target and conditions."
-    },
-    {
-      "id": "class1-water-top-011",
-      "mode": "cause-effect",
-      "prompt": "In a conceptual disinfection test, a water sample initially contains 10,000 viable target organisms. After treatment, 100 remain viable. Assume there is no physical removal. What log inactivation does this represent?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "2-log"
-        },
-        {
-          "id": "option-2",
-          "label": "1-log"
-        },
-        {
-          "id": "option-3",
-          "label": "3-log"
-        },
-        {
-          "id": "option-4",
-          "label": "4-log"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "The remaining fraction is 100 ÷ 10,000 = 0.01, or 1%; therefore 99% are inactivated. A 100-fold reduction is log10(10,000 ÷ 100) = log10(100) = 2-log. This arithmetic alone does not establish regulatory treatment credit."
     },
     {
       "id": "class1-water-top-012",

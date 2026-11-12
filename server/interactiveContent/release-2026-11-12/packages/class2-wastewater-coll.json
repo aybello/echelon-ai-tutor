@@ -1196,27 +1196,6 @@
       "explanation": "Activities or incoming material can change the atmosphere; determine monitoring needs."
     },
     {
-      "id": "class2-wastewater-coll-068",
-      "mode": "tap-the-flaw",
-      "prompt": "A crew sees an unconscious person in a manhole and plans to rush in without equipment. What is the flaw?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Unplanned entry can create another victim"
-        },
-        {
-          "id": "option-2",
-          "label": "Rescuers cannot be affected by gas"
-        },
-        {
-          "id": "option-3",
-          "label": "The opening guarantees fresh air"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Confined-space rescue requires a planned response by properly equipped and trained rescuers."
-    },
-    {
       "id": "class2-wastewater-coll-069",
       "mode": "tap-the-flaw",
       "prompt": "A worker plans to test confined-space air only after climbing inside. What is the flaw?",
@@ -1278,27 +1257,6 @@
       ],
       "correctOptionId": "option-1",
       "explanation": "Follow the site energy-isolation procedure, including verification and other relevant energy sources."
-    },
-    {
-      "id": "class2-wastewater-coll-072",
-      "mode": "tap-the-flaw",
-      "prompt": "A crew assumes that a closed valve alone makes every confined-space supply line safe. What is the flaw?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "A closed valve alone may not provide adequate isolation"
-        },
-        {
-          "id": "option-2",
-          "label": "A valve detects oxygen"
-        },
-        {
-          "id": "option-3",
-          "label": "A valve repairs broken piping"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Isolation must address entry of hazardous materials using the approved site method."
     },
     {
       "id": "class2-wastewater-coll-073",
@@ -1805,67 +1763,11 @@
       "explanation": "NEIWPCC states that mandrel testing checks pipe tolerances and is normally performed on new pipe before it is put into service. Follow the project specifications."
     },
     {
-      "id": "class2-wastewater-coll-order-010",
-      "mode": "before-after",
-      "prompt": "For a collection-system excavation near buried services, is obtaining applicable utility locates before or after excavation begins?",
-      "correctAnswer": "before",
-      "explanation": "Canadian utility-owner excavation guidance places obtaining applicable locates ahead of excavation. Exact obligations, exceptions and safe digging methods depend on the site and jurisdiction."
-    },
-    {
-      "id": "class2-wastewater-coll-order-011",
-      "mode": "before-after",
-      "prompt": "In CCOHS’s general lockout sequence for lift-station equipment, is verification of isolation before or after the maintenance activity?",
-      "correctAnswer": "before",
-      "explanation": "CCOHS places verification of isolation ahead of maintenance in its general sequence. This is not a complete lockout procedure; use the employer’s equipment-specific procedure and trained personnel."
-    },
-    {
-      "id": "class2-wastewater-coll-order-012",
-      "mode": "before-after",
-      "prompt": "In CCOHS’s general lockout sequence, is notifying affected personnel of a planned pump shutdown before or after shutting the equipment down?",
-      "correctAnswer": "before",
-      "explanation": "The CCOHS general sequence notifies affected personnel prior to equipment shutdown. Actual isolation and restoration require the approved equipment-specific procedure."
-    },
-    {
-      "id": "class2-wastewater-coll-order-013",
-      "mode": "before-after",
-      "prompt": "In CCOHS’s general lockout sequence for a pump, is equipment shutdown before or after isolation of its energy sources?",
-      "correctAnswer": "before",
-      "explanation": "CCOHS places equipment shutdown before system isolation. Shutdown alone does not isolate hazardous energy, and this question is not a substitute for the site lockout procedure."
-    },
-    {
-      "id": "class2-wastewater-coll-order-014",
-      "mode": "before-after",
-      "prompt": "In CCOHS’s general lockout sequence for a pump repair, is removal of lockout devices before or after the maintenance activity is completed?",
-      "correctAnswer": "after",
-      "explanation": "CCOHS places maintenance before removal of lockout devices and describes further checks when returning equipment to service. Removal must follow the approved procedure by authorized personnel."
-    },
-    {
-      "id": "class2-wastewater-coll-order-015",
-      "mode": "before-after",
-      "prompt": "For a planned manhole entry under the CCOHS confined-space guidance, is the initial air-quality test from outside before or after worker entry?",
-      "correctAnswer": "before",
-      "explanation": "CCOHS calls for air-quality testing from outside before entry. Testing alone does not authorize entry; risk assessment, controls, the entry program, and applicable requirements remain essential."
-    },
-    {
       "id": "class2-wastewater-coll-order-016",
       "mode": "before-after",
       "prompt": "In a confined-space hazard-control program for a collection-system vault, is hazard identification and assessment before or after establishing controls for the identified hazards?",
       "correctAnswer": "before",
       "explanation": "CCOHS explains that hazards and risks are first identified through a risk assessment and then a hazard-control program can be put in place. Controls must be appropriate to the site and reviewed when conditions change."
-    },
-    {
-      "id": "class2-wastewater-coll-order-017",
-      "mode": "before-after",
-      "prompt": "For a planned confined-space entry into a sewer chamber, is completion of the entry permit before or after entry under CCOHS guidance?",
-      "correctAnswer": "before",
-      "explanation": "CCOHS says the entry permit should be completed before entry and documents assessment and required controls. A permit alone does not establish safe conditions; follow the applicable entry program."
-    },
-    {
-      "id": "class2-wastewater-coll-order-018",
-      "mode": "before-after",
-      "prompt": "For a confined-space entry program, is establishing an emergency plan before or after an unforeseen emergency occurs?",
-      "correctAnswer": "before",
-      "explanation": "CCOHS includes an emergency plan, equipment and training in the confined-space program. Rescue arrangements must be prepared in advance; an untrained person must not attempt entry rescue."
     },
     {
       "id": "class2-wastewater-coll-order-022",

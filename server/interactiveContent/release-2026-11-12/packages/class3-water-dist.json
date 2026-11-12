@@ -1768,46 +1768,11 @@
       "explanation": "The Ontario guidance recommends gently swirling the preserved sample, allowing it to equilibrate for two minutes, and then checking the pH. Preservative choice and handling are analyte- and laboratory-specific."
     },
     {
-      "id": "class3-water-dist-order-012",
-      "mode": "before-after",
-      "prompt": "In CCOHS’s general lockout sequence for distribution equipment, is notifying affected personnel before or after the equipment shutdown?",
-      "correctAnswer": "before",
-      "explanation": "In the CCOHS general sequence, affected personnel are notified before equipment shutdown. Actual hazardous-energy control must use the site’s equipment-specific procedure and qualified personnel."
-    },
-    {
-      "id": "class3-water-dist-order-013",
-      "mode": "before-after",
-      "prompt": "During CCOHS’s general lockout sequence for a distribution pump, is verification of isolation before or after the maintenance activity?",
-      "correctAnswer": "before",
-      "explanation": "The general sequence verifies effective isolation before servicing starts. A closed switch or valve alone is not proof of safe isolation; follow the employer’s specific hazardous-energy procedure."
-    },
-    {
-      "id": "class3-water-dist-order-014",
-      "mode": "before-after",
-      "prompt": "In CCOHS’s general return-to-service sequence for a locked-out pump, is inspection to ensure tools have been removed before or after lockout devices are removed?",
-      "correctAnswer": "before",
-      "explanation": "CCOHS lists inspection for removal of tools and items as part of the checks made before removing lockout devices and re-energizing. Site-specific procedures and authorized personnel govern actual work."
-    },
-    {
-      "id": "class3-water-dist-order-016",
-      "mode": "before-after",
-      "prompt": "In the Pennsylvania operator-training example of bell-and-spigot main installation, is cleaning the pipe’s spigot end before or after connecting that pipe?",
-      "correctAnswer": "before",
-      "explanation": "The training manual specifies cleaning the spigot end before connecting the pipe and keeping dirt out during installation. This technical training example is not an Ontario construction regulation."
-    },
-    {
       "id": "class3-water-dist-order-017",
       "mode": "before-after",
       "prompt": "In the Pennsylvania training manual’s typical customer-service connection, for normal flow from the distribution main, is the corporation stop encountered before or after the customer meter?",
       "correctAnswer": "before",
       "explanation": "The manual describes the corporation stop at the main connection, the curb stop near the property line and the meter downstream of the curb stop. This is a typical illustrative configuration, not a universal plumbing layout."
-    },
-    {
-      "id": "class3-water-dist-order-018",
-      "mode": "before-after",
-      "prompt": "In the Pennsylvania training manual’s new-main chlorination example, is flushing out the chlorinated water before or after the end of the chlorine contact period?",
-      "correctAnswer": "after",
-      "explanation": "The manual describes flushing chlorinated water from the pipeline at the end of the contact period. This is a training example, not an Ontario legal sequence for every disinfection method or emergency repair."
     },
     {
       "id": "class3-water-dist-order-019",

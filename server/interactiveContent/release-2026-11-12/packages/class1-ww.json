@@ -1526,23 +1526,6 @@
       "explanation": "Weir length is the circumference: π × diameter = 3.14 × 10 m = 31.4 m. Weir overflow rate = flow ÷ weir length = 628 m³/day ÷ 31.4 m = 20 m³/(m·day). The calculation assumes the whole stated circumference is active."
     },
     {
-      "id": "class1-ww-top-004",
-      "mode": "tap-the-flaw",
-      "prompt": "Comparable primary-clarifier samples have influent total suspended solids (TSS) of 240 mg/L and effluent TSS of 90 mg/L. One trainee reports a 37.5% concentration reduction and another reports 62.5%. Tap the incorrect report.",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "37.5% concentration reduction"
-        },
-        {
-          "id": "option-2",
-          "label": "62.5% concentration reduction"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Concentration reduction (%) = (influent concentration − effluent concentration) ÷ influent concentration × 100. The reduction is 240 − 90 = 150 mg/L; 150 ÷ 240 × 100 = 62.5%. The 37.5% figure is the fraction of influent concentration remaining, not the fraction removed. This is a concentration comparison, not a mass balance or a compliance determination."
-    },
-    {
       "id": "class1-ww-top-005",
       "mode": "rapid-swipe",
       "prompt": "For a steady wastewater flow of 1,800 m³/day with a representative TSS concentration of 200 mg/L, the TSS mass load is 360 kg/day.",
@@ -1732,13 +1715,6 @@
       "prompt": "In the Imhoff-cone settleable-solids test, is the reading of settled volume before or after the settling period?",
       "correctAnswer": "after",
       "explanation": "The sample is allowed to settle in the cone, then the settled solids volume is recorded. Follow the site laboratory procedure."
-    },
-    {
-      "id": "class1-ww-order-019",
-      "mode": "before-after",
-      "prompt": "For a wastewater pump maintenance task requiring lockout, is verification of hazardous-energy isolation before or after beginning the maintenance activity?",
-      "correctAnswer": "before",
-      "explanation": "CCOHS places verification of isolation before maintenance. This question is not a complete lockout procedure: use trained personnel and the site-specific program."
     },
     {
       "id": "class1-ww-order-020",

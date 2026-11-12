@@ -7,7 +7,7 @@
     "speed-match": "wpi-class1-water-dist-021",
     "odd-one-out": "wpi-class1-water-dist-032",
     "cause-effect": "wpi-class1-water-dist-046",
-    "tap-the-flaw": "wpi-class1-water-dist-064",
+    "tap-the-flaw": "wpi-class1-water-dist-065",
     "before-after": "wpi-class1-water-dist-order-001"
   },
   "examples": [
@@ -357,29 +357,6 @@
         }
       ],
       "explanation": "Electrical circuits, pressurized water, and rotating machinery represent distinct hazardous energy sources during servicing."
-    },
-    {
-      "id": "wpi-class1-water-dist-030",
-      "mode": "speed-match",
-      "prompt": "Match each trench protection term to its method.",
-      "pairs": [
-        {
-          "id": "pair-1",
-          "left": "Slope",
-          "right": "Cut trench sides back at an angle"
-        },
-        {
-          "id": "pair-2",
-          "left": "Shore",
-          "right": "Use structural supports to hold trench walls"
-        },
-        {
-          "id": "pair-3",
-          "left": "Shield",
-          "right": "Use a protective box to protect workers from a cave-in"
-        }
-      ],
-      "explanation": "Sloping angles the walls back, shoring supports them, and a shield such as a trench box protects the worker; follow a competent person’s site-specific protective design."
     },
     {
       "id": "wpi-class1-water-dist-032",
@@ -1060,27 +1037,6 @@
       "explanation": "The pump supplies energy needed to move or lift the water."
     },
     {
-      "id": "wpi-class1-water-dist-064",
-      "mode": "tap-the-flaw",
-      "prompt": "A crew prepares for pump maintenance. Which statement contains the flaw?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "We will follow the energy-control procedure."
-        },
-        {
-          "id": "option-2",
-          "label": "We will rely on the stop button alone to prevent restart."
-        },
-        {
-          "id": "option-3",
-          "label": "We will identify hazardous energy sources."
-        }
-      ],
-      "correctOptionId": "option-2",
-      "explanation": "A stop button is a control-circuit device, not an energy-isolating device. Follow the applicable approved energy-control procedure."
-    },
-    {
       "id": "wpi-class1-water-dist-065",
       "mode": "tap-the-flaw",
       "prompt": "A technician samples for bacteria. Which action is flawed?",
@@ -1580,31 +1536,6 @@
       "explanation": "Convert diameter: 6 in ÷ 12 in/ft = 0.5 ft. Cross-sectional area = 0.785 × (0.5 ft)² = 0.19625 ft². Velocity = flow ÷ area = 0.60 ft³/s ÷ 0.19625 ft² = 3.0573 ft/s, which rounds to 3.06 ft/s. This is cross-section-average velocity, not a local point measurement."
     },
     {
-      "id": "wpi-class1-water-dist-top-006",
-      "mode": "cause-effect",
-      "prompt": "For water initially containing no chlorine, a chlorine dose of 2.4 mg/L as Cl₂ leaves a total chlorine residual of 0.7 mg/L as Cl₂ after a specified contact period. In a simplified chlorine balance, what is the chlorine demand?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "1.7 mg/L"
-        },
-        {
-          "id": "option-2",
-          "label": "3.1 mg/L"
-        },
-        {
-          "id": "option-3",
-          "label": "0.7 mg/L"
-        },
-        {
-          "id": "option-4",
-          "label": "2.4 mg/L"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "In this simplified balance, dose = demand + residual, so demand = dose − residual. Both concentrations are expressed as chlorine (Cl₂), for the same water and contact period, and there was no initial chlorine. Thus 2.4 mg/L − 0.7 mg/L = 1.7 mg/L as Cl₂. This does not specify a regulatory residual or a required contact time."
-    },
-    {
       "id": "wpi-class1-water-dist-top-007",
       "mode": "cause-effect",
       "prompt": "For a classroom batch calculation, 400,000 gal of water is to receive a 3.0 mg/L chlorine dose from a product with 60% available chlorine by weight. Assuming complete availability and mixing, how many pounds of product are needed? Use 8.34 in the million-gallon mass formula; round to two decimal places. The dose is hypothetical, not a field instruction.",
@@ -1851,27 +1782,6 @@
       "prompt": "In EPA Region 8’s colorimetric DPD residual-test example, is measuring the developed color before or after adding the reagent?",
       "correctAnswer": "after",
       "explanation": "The reagent produces a color whose intensity is measured after the prescribed reaction time. Follow the specific test-kit directions."
-    },
-    {
-      "id": "wpi-class1-water-dist-order-016",
-      "mode": "before-after",
-      "prompt": "In OSHA’s general lockout example for machinery or equipment, is verifying equipment isolation before or after servicing begins?",
-      "correctAnswer": "before",
-      "explanation": "The general example verifies equipment isolation before servicing. Complex systems need a complete equipment-specific energy-control procedure and trained personnel; applicable local requirements and the utility’s approved procedures govern actual work."
-    },
-    {
-      "id": "wpi-class1-water-dist-order-017",
-      "mode": "before-after",
-      "prompt": "In OSHA’s example lockout procedure, is applying assigned locks to the energy-isolating devices before or after deactivating those devices?",
-      "correctAnswer": "after",
-      "explanation": "The example deactivates the energy-isolating devices and then applies the assigned locks. The example is not a complete site-specific procedure."
-    },
-    {
-      "id": "wpi-class1-water-dist-order-018",
-      "mode": "before-after",
-      "prompt": "In OSHA’s example restoration of locked-out equipment, is checking that employees are safely positioned or removed before or after removing lockout devices and reenergizing the equipment?",
-      "correctAnswer": "before",
-      "explanation": "The example checks that employees are safely positioned or removed before lockout devices are removed and the equipment is reenergized. Authorized staff must follow the applicable site procedure."
     },
     {
       "id": "wpi-class1-water-dist-order-019",

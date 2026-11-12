@@ -308,29 +308,6 @@
       "explanation": "PAOs release phosphorus and store substrate anaerobically, take up phosphorus aerobically, and leave the system when phosphorus-rich biomass is wasted."
     },
     {
-      "id": "class4-ww-025",
-      "mode": "speed-match",
-      "prompt": "Match each action to its administrative or safety purpose.",
-      "pairs": [
-        {
-          "id": "pair-1",
-          "left": "Lockout/tagout",
-          "right": "Control hazardous energy before work"
-        },
-        {
-          "id": "pair-2",
-          "left": "Calibration",
-          "right": "Relate instrument readings to reference standards"
-        },
-        {
-          "id": "pair-3",
-          "left": "Operating record",
-          "right": "Preserve measurements and events for review"
-        }
-      ],
-      "explanation": "Energy control reduces hazardous-energy exposure; calibration relates readings to standards; records preserve evidence for review."
-    },
-    {
       "id": "class4-ww-026",
       "mode": "speed-match",
       "prompt": "Match each clarifier observation to the corresponding observation category.",
@@ -1514,27 +1491,6 @@
       "explanation": "Treatment configurations vary, so specify the assumed process train."
     },
     {
-      "id": "class4-ww-080",
-      "mode": "tap-the-flaw",
-      "prompt": "A pump work order says: “Start maintenance before isolating energy because the motor is stopped.” Identify the flaw.",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Stopped motor means energy isolation is unnecessary"
-        },
-        {
-          "id": "option-2",
-          "label": "Equipment should be inspected"
-        },
-        {
-          "id": "option-3",
-          "label": "Work should be planned"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "A stopped motor is not proof of isolation; use the site energy-control procedure."
-    },
-    {
       "id": "class4-ww-081",
       "mode": "tap-the-flaw",
       "prompt": "A phosphorus-removal report says: “PAOs accumulate most phosphorus in the anaerobic zone.” Identify the flaw.",
@@ -1596,27 +1552,6 @@
       ],
       "correctOptionId": "option-1",
       "explanation": "Bar screens intercept coarse debris; dissolved ammonia passes through."
-    },
-    {
-      "id": "class4-ww-084",
-      "mode": "tap-the-flaw",
-      "prompt": "A supervisor says: “The EPA example residual is automatically the legal Ontario discharge limit.” Identify the flaw.",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "An EPA example is automatically an Ontario limit"
-        },
-        {
-          "id": "option-2",
-          "label": "Residual can be monitored"
-        },
-        {
-          "id": "option-3",
-          "label": "Conditions differ by facility"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "A U.S. technical example cannot establish an Ontario legal or site-specific discharge limit."
     },
     {
       "id": "class4-ww-top-001",
@@ -1727,13 +1662,6 @@
       "prompt": "In a conventional activated-sludge plant using UV disinfection of its liquid effluent, is the secondary clarifier before or after the UV reactor along the main liquid path?",
       "correctAnswer": "before",
       "explanation": "For this specified secondary-effluent UV application, clarification precedes UV exposure. Solids removal helps limit particulate shielding; layouts and treatment levels vary."
-    },
-    {
-      "id": "class4-ww-order-006",
-      "mode": "before-after",
-      "prompt": "In the sulfur-dioxide dechlorination system illustrated by EPA, is the principal chlorine contact period before or after sulfur dioxide is introduced along the effluent path?",
-      "correctAnswer": "before",
-      "explanation": "In the illustrated system, chlorine is introduced near the basin inlet and sulfur dioxide near its outlet, after the principal chlorine contact period. This is an example configuration, not an Ontario regulatory requirement."
     },
     {
       "id": "class4-ww-order-007",

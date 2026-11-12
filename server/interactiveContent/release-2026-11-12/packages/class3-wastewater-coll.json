@@ -1626,31 +1626,6 @@
       "explanation": "Volume decrease = 42 − 18 = 24 m³. Average net drawdown rate = 24 m³ ÷ 20 min = 1.20 m³/min. The pump removes both the incoming wastewater and the volume lost from storage, so average pump discharge = average net drawdown rate + inflow = 1.20 + 0.30 = 1.50 m³/min. This balance gives the time-average discharge; instantaneous discharge could vary. Actual testing requires applicable site procedures."
     },
     {
-      "id": "class3-wastewater-coll-top-002",
-      "mode": "cause-effect",
-      "prompt": "A straight gravity sewer has an upstream invert elevation of 102.84 m and a downstream invert elevation of 102.36 m over a horizontal length of 120 m. What is its downward grade as a percentage?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "0.4%"
-        },
-        {
-          "id": "option-2",
-          "label": "4.0%"
-        },
-        {
-          "id": "option-3",
-          "label": "0.04%"
-        },
-        {
-          "id": "option-4",
-          "label": "2.5%"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "Invert drop = upstream elevation − downstream elevation = 102.84 − 102.36 = 0.48 m. Grade = drop ÷ horizontal length = 0.48 m ÷ 120 m = 0.004 m/m. Convert the dimensionless ratio to percent: 0.004 × 100 = 0.4%. This is the calculated grade, not a conclusion about design compliance."
-    },
-    {
       "id": "class3-wastewater-coll-top-003",
       "mode": "cause-effect",
       "prompt": "A station has 25.2 m³ of verified storage remaining before a specified high-water level. Constant inflow is 180 L/s and one operating pump removes 75 L/s. Assuming these rates remain constant and no other flows occur, how long until the specified level is reached?",

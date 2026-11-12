@@ -145,13 +145,6 @@
       "explanation": "The batch process uses separate time phases rather than necessarily separate tanks."
     },
     {
-      "id": "class3-ww-020",
-      "mode": "rapid-swipe",
-      "prompt": "Ventilation alone guarantees all confined-space hazards are controlled.",
-      "correctAnswer": false,
-      "explanation": "Atmosphere, isolation, physical hazards and rescue must be assessed together."
-    },
-    {
       "id": "class3-ww-021",
       "mode": "speed-match",
       "prompt": "In a conventional activated-sludge plant, match each stream to its distinct role.",
@@ -2003,20 +1996,6 @@
       "prompt": "In the EPA operator-training Gooch-crucible suspended-solids procedure, is the tare weighing of the prepared empty crucible before or after sample filtration?",
       "correctAnswer": "before",
       "explanation": "The prepared crucible and filter are weighed to establish a tare before the sample is filtered. The subsequent residue weighing includes the captured solids. Use the laboratory’s approved current method, not this historical training example, as the SOP."
-    },
-    {
-      "id": "class3-ww-order-020",
-      "mode": "before-after",
-      "prompt": "For a wastewater tank identified as a confined space, does the CCOHS-recommended initial external air test take place before or after worker entry?",
-      "correctAnswer": "before",
-      "explanation": "CCOHS says the atmosphere should be tested from outside before entry; further monitoring may also be needed as conditions can change. A test alone does not make entry safe: follow the applicable entry program and site procedures."
-    },
-    {
-      "id": "class3-ww-order-021",
-      "mode": "before-after",
-      "prompt": "For a particular confined space, under the CCOHS risk-assessment approach, is identifying and assessing hazards before or after putting a hazard-control program in place for those hazards?",
-      "correctAnswer": "before",
-      "explanation": "CCOHS describes identifying and assessing confined-space hazards first, then establishing controls. Jurisdiction-specific requirements and the facility's program still apply."
     }
   ]
 }

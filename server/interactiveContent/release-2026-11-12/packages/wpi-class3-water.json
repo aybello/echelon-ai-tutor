@@ -82,13 +82,6 @@
       "explanation": "A good combined result can hide a poorly performing individual filter."
     },
     {
-      "id": "wpi-class3-water-011",
-      "mode": "rapid-swipe",
-      "prompt": "Lockout concerns only electrical energy, never stored hydraulic energy.",
-      "correctAnswer": false,
-      "explanation": "Hazardous energy can also be hydraulic, mechanical, pneumatic, thermal or chemical."
-    },
-    {
       "id": "wpi-class3-water-012",
       "mode": "rapid-swipe",
       "prompt": "A tank can present confined-space hazards even when no hazardous odor is noticed.",
@@ -1000,27 +993,6 @@
       "explanation": "(10 − 2) ÷ 10 × 100 = 80%; this is not pathogen removal credit."
     },
     {
-      "id": "wpi-class3-water-060",
-      "mode": "cause-effect",
-      "prompt": "A disinfectant residual is 0.8 mg/L and effective contact time is 15 minutes. What is the calculated CT?",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "12 mg·min/L"
-        },
-        {
-          "id": "option-2",
-          "label": "0.053 mg·min/L"
-        },
-        {
-          "id": "option-3",
-          "label": "15.8 mg·min/L"
-        }
-      ],
-      "correctOptionId": "option-1",
-      "explanation": "0.8 × 15 = 12 mg·min/L. Required CT depends on treatment conditions."
-    },
-    {
       "id": "wpi-class3-water-062",
       "mode": "cause-effect",
       "prompt": "A raw-water intake screen becomes heavily blocked. What issue should the operator investigate?",
@@ -1737,34 +1709,6 @@
       "prompt": "For an on-site DPD colorimetric chlorine test using a kit that specifies a nonzero reaction time, is reading the developed color before or after that reaction time?",
       "correctAnswer": "after",
       "explanation": "For the cited EPA general DPD approach, the analyst follows the kit instructions, waits the specified reaction time and then measures the color. Different methods and kits have different timing requirements."
-    },
-    {
-      "id": "wpi-class3-water-order-016",
-      "mode": "before-after",
-      "prompt": "In OSHA’s energy-control tutorial, is equipment energy isolation before or after application of the lockout device?",
-      "correctAnswer": "before",
-      "explanation": "The US OSHA tutorial describes isolating the equipment from its energy sources, then applying a lockout or tagout device. This is not a complete procedure or a statement of Canadian law. Trained authorized staff must follow the applicable local requirements and facility program."
-    },
-    {
-      "id": "wpi-class3-water-order-017",
-      "mode": "before-after",
-      "prompt": "In OSHA’s energy-control tutorial, is verification of isolation before or after hazardous stored energy is rendered safe?",
-      "correctAnswer": "after",
-      "explanation": "The US OSHA tutorial places control of hazardous stored energy before verification of isolation. This is not a complete procedure or a statement of Canadian law. Trained authorized staff must follow the applicable local requirements and facility program."
-    },
-    {
-      "id": "wpi-class3-water-order-018",
-      "mode": "before-after",
-      "prompt": "In the OSHA lockout-release tutorial, is the inspection for nonessential tools and intact equipment before or after lockout device removal?",
-      "correctAnswer": "before",
-      "explanation": "The US OSHA tutorial describes inspecting the work area and equipment before removing lockout or tagout devices. This is not a complete procedure or a statement of Canadian law. Follow applicable local requirements and the facility program."
-    },
-    {
-      "id": "wpi-class3-water-order-019",
-      "mode": "before-after",
-      "prompt": "In EPA’s plant-performance assessment method, is preparing turbidity trend charts before or after reviewing sampling locations and laboratory quality control?",
-      "correctAnswer": "after",
-      "explanation": "EPA first reviews records, sampling locations and quality control to assess data representativeness, then develops trend charts. This is an assessment method rather than a universal regulatory sequence."
     },
     {
       "id": "wpi-class3-water-order-020",

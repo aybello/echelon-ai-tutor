@@ -33,13 +33,6 @@
       "explanation": "200 gpm ÷ 100 ft² = 2 gpm/ft²."
     },
     {
-      "id": "wpi-class2-water-004",
-      "mode": "rapid-swipe",
-      "prompt": "True or false: A disinfectant residual of 0.5 mg/L and an effective contact time of 20 minutes give a calculated CT of 20 mg·min/L.",
-      "correctAnswer": false,
-      "explanation": "CT = 0.5 mg/L × 20 min = 10 mg·min/L. This arithmetic alone does not establish regulatory compliance."
-    },
-    {
       "id": "wpi-class2-water-005",
       "mode": "rapid-swipe",
       "prompt": "True or false: A target concentration falls from 10 mg/L to 2 mg/L, giving 80% removal.",
@@ -1280,27 +1273,6 @@
       "explanation": "Touching the inside can contaminate the sample."
     },
     {
-      "id": "wpi-class2-water-074",
-      "mode": "tap-the-flaw",
-      "prompt": "Tap the flawed maintenance step.",
-      "options": [
-        {
-          "id": "option-1",
-          "label": "Identify equipment"
-        },
-        {
-          "id": "option-2",
-          "label": "Isolate hazardous energy under the site procedure"
-        },
-        {
-          "id": "option-3",
-          "label": "Start repair before verifying isolation"
-        }
-      ],
-      "correctOptionId": "option-3",
-      "explanation": "Hazardous energy must be controlled and isolation verified under the applicable procedure."
-    },
-    {
       "id": "wpi-class2-water-075",
       "mode": "tap-the-flaw",
       "prompt": "Tap the flawed statement about filter effluent turbidity.",
@@ -1770,13 +1742,6 @@
       "explanation": "Conditioning is a pretreatment that improves subsequent water removal from sludge. The chemicals, equipment and operating procedures depend on the facility."
     },
     {
-      "id": "wpi-class2-water-order-011",
-      "mode": "before-after",
-      "prompt": "In the Tennessee solar sludge-drying lagoon example, does removal of sludge for disposal occur before or after solar drying?",
-      "correctAnswer": "after",
-      "explanation": "The training example dries settled sludge in the lagoon and then describes disposal of the dried material. Disposal options and permissions are site- and jurisdiction-specific."
-    },
-    {
       "id": "wpi-class2-water-order-012",
       "mode": "before-after",
       "prompt": "In the Pennsylvania training example for a rapid filter with a rinse step, does the water backwash end before or after the filter rinse begins?",
@@ -1810,27 +1775,6 @@
       "prompt": "For a drinking-water sample sent to a laboratory, does the sample's holding-time clock begin before or after laboratory analysis?",
       "correctAnswer": "before",
       "explanation": "EPA's collection guide states that holding time starts at sample collection and ends at preparation and/or analysis. The applicable holding time depends on the analyte and method."
-    },
-    {
-      "id": "wpi-class2-water-order-017",
-      "mode": "before-after",
-      "prompt": "In CCOHS's general lockout example, is verification of isolation before or after starting pump maintenance?",
-      "correctAnswer": "before",
-      "explanation": "CCOHS places verification of isolation before the maintenance or service activity. This is only one relationship in a general example, not a complete procedure; trained personnel must follow the facility's approved procedure and applicable requirements."
-    },
-    {
-      "id": "wpi-class2-water-order-018",
-      "mode": "before-after",
-      "prompt": "In CCOHS's general lockout-release example, is removal of lockout devices before or after inspecting the work area for tools and other items?",
-      "correctAnswer": "after",
-      "explanation": "CCOHS lists inspection of the work area for tools and items before removing lockout devices. This is not a complete release procedure; trained personnel must follow the facility's approved procedure and applicable requirements."
-    },
-    {
-      "id": "wpi-class2-water-order-020",
-      "mode": "before-after",
-      "prompt": "In Tennessee's conventional-plant example, is pumping finished water to the distribution system before or after the stated minimum disinfectant detention period?",
-      "correctAnswer": "after",
-      "explanation": "The example describes a disinfectant detention period before water may be pumped to distribution. Required contact time and compliance depend on the disinfectant, water conditions, facility and applicable authority; the example is not a universal layout or operating setpoint."
     }
   ]
 }

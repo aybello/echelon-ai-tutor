@@ -439,7 +439,7 @@ export async function resolveAccessByEmail(
 }
 
 export async function resolveAccess(
-  user: Pick<User, "id" | "email" | "role" | "openId"> | null,
+  user: (Pick<User, "id" | "email"> & Partial<Pick<User, "role" | "openId">>) | null,
   examType: string,
 ): Promise<AccessResult> {
   // Free exam types are always accessible — no purchase required
