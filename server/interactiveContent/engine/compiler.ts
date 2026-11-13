@@ -6,6 +6,7 @@ import ts from "typescript";
 import { getAllActiveCourseKeys, getCourseByKey } from "../../../shared/courseRegistry";
 import { interactiveModes, type InteractiveDrillExample, type InteractiveDifficulty } from "../../../shared/interactiveSessions";
 import { interactivePackageSchema, type InteractivePackage } from "../schema";
+import { trustedApproval } from "../../../scripts/content-engine/trusted-corpora";
 import { ENGINE_LIMITS, engineExampleSchema, engineManifestSchema, engineRegistrationSchema, engineShardSchema, type ArtifactDescriptor, type EngineManifest } from "./schema";
 
 export const digest = (data: string | Buffer) => createHash("sha256").update(data).digest("hex");
@@ -26,11 +27,20 @@ function artifact(root: string, file: string, data: unknown, limit: number): Art
 }
 export type ClassifiedExample = { example: InteractiveDrillExample; topicId: string; difficulty: InteractiveDifficulty };
 /** Pure artifact compilation; classifications must be supplied, never inferred. */
-export function compileCourse(root: string, legacyInput: unknown, records?: ClassifiedExample[], topics = [{ id: "unclassified", label: "Unclassified" }], expandedVersion?: string): ArtifactDescriptor {
+export function compileCourse(root: string, legacyInput: unknown, records?: ClassifiedExample[], topics = [{ id: "unclassified", label: "Unclassified" }], expandedVersion?: string, checkedRelease?: { approvalId: string; publicVersion: string }): ArtifactDescriptor {
+  if (!!expandedVersion !== !!checkedRelease) throw new Error("Checked release identity required");
   const legacy = interactivePackageSchema.parse(legacyInput);
   canonicalCourse(legacy.courseKey);
   const rows = records ?? legacy.examples.map(example => ({ example, topicId: "unclassified", difficulty: "unclassified" as const }));
   if (!rows.length || rows.length > ENGINE_LIMITS.maxCourseItems) throw new Error("Invalid course item count");
+  if (expandedVersion && checkedRelease) {
+    const approval = trustedApproval(checkedRelease.approvalId);
+    const originalRows = legacy.examples.map(example => ({ example, topicId: "unclassified", difficulty: "unclassified" }));
+    if (!approval || approval.releaseToken !== checkedRelease.publicVersion || approval.checkedVersions[legacy.courseKey] !== expandedVersion ||
+        canonicalJson(rows.slice(0, originalRows.length)) !== canonicalJson(originalRows) ||
+        expandedVersion !== `checked-${digest(canonicalJson(rows.slice(originalRows.length))).slice(0, 32)}`)
+      throw new Error("Checked release identity or content does not match trusted approval");
+  }
   const ids = new Set<string>();
   const entries: EngineManifest["entries"] = [];
   const shards: EngineManifest["shards"] = [];
@@ -67,7 +77,7 @@ export function compileCourse(root: string, legacyInput: unknown, records?: Clas
   const legacyDescriptor = artifact(root, `${legacy.courseKey}/legacy.json`, legacy, ENGINE_LIMITS.legacyBytes);
   const manifest = engineManifestSchema.parse({
     format: "interactive-course-v1", courseKey: legacy.courseKey, version, classification: expandedVersion ? "legacy_plus_checked" : "legacy_release",
-    sourceVersion: legacy.version, sourceSha256, previewIds: legacy.previewIds, topics, legacy: legacyDescriptor, shards, entries,
+    ...(checkedRelease ?? {}), sourceVersion: legacy.version, sourceSha256, previewIds: legacy.previewIds, topics, legacy: legacyDescriptor, shards, entries,
   });
   return artifact(root, `${legacy.courseKey}/manifest.json`, manifest, ENGINE_LIMITS.manifestBytes);
 }
@@ -119,7 +129,7 @@ function approvedLegacyRegistrations(registry: string): string[] {
 }
 
 /** Reads JSON and exact literal registration AST, never executes/imports release scripts or the whole catalog. */
-export function compileLegacyRelease(options: { sourceDir?: string; outputDir?: string; additionalRecords?: ReadonlyMap<string, ClassifiedExample[]> } = {}) {
+export function compileLegacyRelease(options: { sourceDir?: string; outputDir?: string; additionalRecords?: ReadonlyMap<string, ClassifiedExample[]>; checkedRelease?: { approvalId: string; publicVersion: string } } = {}) {
   const engineDir = fileURLToPath(new URL(".", import.meta.url));
   const sourceDir = options.sourceDir ?? resolve(engineDir, "../release-2026-11-12");
   const outputDir = options.outputDir ?? resolve(engineDir, "release-v1");
@@ -148,7 +158,7 @@ export function compileLegacyRelease(options: { sourceDir?: string; outputDir?: 
       ...additional,
     ];
     const expandedVersion = additional.length ? `checked-${digest(canonicalJson(additional)).slice(0, 32)}` : undefined;
-    courses[key] = compileCourse(outputDir, pkg, rows, undefined, expandedVersion);
+    courses[key] = compileCourse(outputDir, pkg, rows, undefined, expandedVersion, expandedVersion ? options.checkedRelease : undefined);
     itemCount += pkg.examples.length;
   }
   if (itemCount !== metadata.counts.examples) throw new Error("Legacy total mismatch");

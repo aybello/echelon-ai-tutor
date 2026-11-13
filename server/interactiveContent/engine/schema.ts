@@ -27,13 +27,17 @@ export const engineManifestSchema = z.object({
   version: z.string().min(1).max(80),
   // Checked records are additional; the unchanged legacy package retains its own status.
   classification: z.enum(["legacy_release", "legacy_plus_checked"]), sourceVersion: z.string().min(1).max(80), sourceSha256: sha256Schema,
+  approvalId: z.string().min(1).max(120).optional(), publicVersion: z.string().min(1).max(80).optional(),
   previewIds: z.object(Object.fromEntries(interactiveModes.map(mode => [mode, interactiveSafeIdSchema])) as Record<(typeof interactiveModes)[number], typeof interactiveSafeIdSchema>).strict(),
   topics: z.array(z.object({ id: interactiveSafeIdSchema, label: z.string().min(1).max(120) }).strict()).min(1).max(200),
   legacy: artifactDescriptorSchema,
   // Byte-driven splits can produce more shards than ceil(itemCount / 100).
   shards: z.array(artifactDescriptorSchema.extend({ count: z.number().int().min(1).max(100) }).strict()).min(1).max(400),
   entries: z.array(engineIndexEntrySchema).min(1).max(ENGINE_LIMITS.maxCourseItems),
-}).strict();
+}).strict().superRefine((manifest, ctx) => {
+  if (manifest.classification === "legacy_plus_checked" ? !manifest.approvalId || !manifest.publicVersion : manifest.approvalId !== undefined || manifest.publicVersion !== undefined)
+    ctx.addIssue({ code: "custom", message: "Invalid checked release identity" });
+});
 export type EngineRegistration = z.infer<typeof engineRegistrationSchema>;
 export type EngineManifest = z.infer<typeof engineManifestSchema>;
 export type EngineIndexEntry = z.infer<typeof engineIndexEntrySchema>;

@@ -1,12 +1,17 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-const { approvals } = vi.hoisted(() => ({ approvals: {} as Record<string, { corpusSha256: string; scope: string; inventoryEvidence: string; approvalEvidence: string }> }));
-vi.mock("../../../scripts/content-engine/trusted-corpora", () => ({ approvedCorpora: approvals }));
-import { mkdtempSync, readFileSync, rmSync, readdirSync } from "node:fs";
+const { approvals } = vi.hoisted(() => ({ approvals: {} as Record<string, any> }));
+vi.mock("../../../scripts/content-engine/trusted-corpora", async (original) => {
+  const actual = await original<typeof import("../../../scripts/content-engine/trusted-corpora")>();
+  return { ...actual, approvedCorpora: approvals, trustedApproval: (id: string) => actual.validateTrustedApproval(id, approvals) };
+});
+import { mkdtempSync, readFileSync, writeFileSync, rmSync, readdirSync } from "node:fs";
+import { randomUUID, createHash } from "node:crypto";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { compileCheckedRelease, compilePrivateInput } from "../../../scripts/content-engine/compile-checked";
 import { InteractiveContentEngine } from "./loader";
-import { interactiveModes, interactiveStartSessionInputSchema } from "../../../shared/interactiveSessions";
+import { interactiveModes, interactiveDrillExampleSchema, interactiveStartSessionInputSchema } from "../../../shared/interactiveSessions";
+import { canonicalJson, digest } from "./compiler";
 import { computeInteractiveArtifactFingerprint } from "../../../scripts/interactiveArtifactFingerprint";
 // @ts-expect-error Synthetic JS fixtures only.
 import { completeFixture, attachReview, attachPolicyReviews, attachBatchAudit } from "../../../scripts/content-engine/fixtures.mjs";
@@ -17,12 +22,19 @@ import { readRelease } from "../../../scripts/content-engine/inventory.mjs";
 
 const roots: string[] = [];
 function root() { const r = mkdtempSync(join(tmpdir(), "checked-compiler-test-")); roots.push(r); return r; }
-function request(doc: any, selected = doc.exercises.map((e: any) => ({ courseKey: e.courseKey, exerciseId: e.exerciseId }))) {
-  approvals.fixture = { corpusSha256: hash(doc), scope: "synthetic full corpus", inventoryEvidence: "fixture inventory", approvalEvidence: "fixture approval" };
-  return { approvalId: "fixture", corpus: doc, selected };
+function request(doc: any, selected = doc.exercises.map((e: any) => ({ courseKey: e.courseKey, exerciseId: e.exerciseId })), id = "fixture") {
+  const keys = selected.map(({ courseKey, exerciseId }: any) => `${courseKey}/${exerciseId}`).sort();
+  const versions: Record<string, string> = {};
+  for (const course of new Set<string>(selected.map((e: any) => e.courseKey))) {
+    const rows = doc.exercises.filter((e: any) => e.courseKey === course && keys.includes(`${e.courseKey}/${e.exerciseId}`))
+      .map((e: any) => ({ example: interactiveDrillExampleSchema.parse(e.item), topicId: "unclassified", difficulty: e.difficulty }));
+    versions[course] = `checked-${digest(canonicalJson(rows)).slice(0, 32)}`;
+  }
+  approvals[id] = { corpusSha256: hash(doc), scope: "synthetic full corpus", inventoryEvidence: "fixture inventory", approvalEvidence: "fixture approval", releaseToken: approvals[id]?.releaseToken ?? `checked-${randomUUID()}`, selected: keys, checkedVersions: versions };
+  return { approvalId: id, corpus: doc, selected };
 }
 function checked() { const doc = completeFixture(); attachReview(doc, "human-technical"); attachReview(doc, "software-release"); return doc; }
-afterEach(() => { delete approvals.fixture; for (const r of roots.splice(0)) rmSync(r, { recursive: true, force: true }); });
+afterEach(() => { for (const key of Object.keys(approvals)) delete approvals[key]; for (const r of roots.splice(0)) rmSync(r, { recursive: true, force: true }); });
 
 describe("private checked authoring compiler", () => {
   it("distinguishes different synthetic checked runtime content built from the same source", () => {
@@ -39,15 +51,55 @@ describe("private checked authoring compiler", () => {
     changed.exercises[0].reviews = [];
     attachReview(changed, "human-technical"); attachReview(changed, "software-release");
     const second = root();
-    compileCheckedRelease(request(changed), second);
+    compileCheckedRelease(request(changed, undefined, "other"), second);
     expect(computeInteractiveArtifactFingerprint(second)).not.toBe(before);
-    expect(new InteractiveContentEngine(first).getCatalog("class1-water", false).version).toBe("checked-v1");
-    expect(new InteractiveContentEngine(second).getCatalog("class1-water", false).version).toBe("checked-v1");
+    const a = new InteractiveContentEngine(first); const a2 = new InteractiveContentEngine(repeat); const b = new InteractiveContentEngine(second);
+    const input = interactiveStartSessionInputSchema.parse({ courseKey: "class1-water", mode: "rapid-swipe", sessionSize: 5 });
+    const catalog = a.getCatalog("class1-water", false);
+    const sessionA = a2.startSession(input, false); const sessionB = b.startSession(input, false);
+    expect(catalog.version).toBe(approvals.fixture.releaseToken);
+    expect(sessionA.version).toBe(catalog.version);
+    expect(sessionB.version).toBe(approvals.other.releaseToken);
+    expect(sessionB.version).not.toBe(catalog.version); // client rejects this mixed pair
+    expect(b.getCatalog("class1-water", false).version).toBe(sessionB.version);
   });
   it("fails closed without separately pinned prior full-corpus evidence", () => {
     const doc = checked(); const out = root();
     expect(() => compileCheckedRelease({ approvalId: "missing", corpus: doc, selected: [{ courseKey: doc.exercises[0].courseKey, exerciseId: doc.exercises[0].exerciseId }] }, out)).toThrow("prior full-corpus approval");
     expect(readdirSync(out)).toEqual([]);
+  });
+  it("refuses missing, malformed, reused and caller-selected tokens or changed selections before writing", () => {
+    const doc = checked(); const input = request(doc); const out = root();
+    const token = approvals.fixture.releaseToken;
+    for (const invalid of [undefined, "checked-v1", "checked-00000000-0000-4000-8000-000000000000".toUpperCase()]) {
+      approvals.fixture.releaseToken = invalid;
+      expect(() => compileCheckedRelease(input, out)).toThrow("prior full-corpus approval");
+    }
+    approvals.fixture.releaseToken = token;
+    expect(() => compileCheckedRelease({ ...input, selected: [{ courseKey: "class1-water", exerciseId: "unapproved" }] }, out)).toThrow("Selection does not match");
+    expect(() => compileCheckedRelease({ ...input, publicVersion: `checked-${randomUUID()}` }, out)).toThrow();
+    approvals.other = { ...approvals.fixture };
+    expect(() => compileCheckedRelease(input, out)).toThrow("prior full-corpus approval");
+    delete approvals.other;
+    approvals.fixture.checkedVersions[doc.exercises[0].courseKey] = `checked-${"a".repeat(32)}`;
+    expect(() => compileCheckedRelease(input, out)).toThrow("content does not match");
+    expect(readdirSync(out)).toEqual([]);
+  });
+  it("rejects missing or changed manifest tokens even when registry checksums are recomputed", () => {
+    const doc = checked(); const out = root(); compileCheckedRelease(request(doc), out);
+    const manifestPath = join(out, "class1-water/manifest.json"); const registryPath = join(out, "registry.json");
+    const original = JSON.parse(readFileSync(manifestPath, "utf8"));
+    for (const altered of [undefined, `checked-${randomUUID()}`]) {
+      const manifest = { ...original, publicVersion: altered };
+      const content = JSON.stringify(manifest) + "\n"; writeFileSync(manifestPath, content);
+      const registry = JSON.parse(readFileSync(registryPath, "utf8"));
+      registry.courses["class1-water"].sha256 = createHash("sha256").update(content).digest("hex");
+      registry.courses["class1-water"].bytes = Buffer.byteLength(content);
+      writeFileSync(registryPath, JSON.stringify(registry) + "\n");
+      const engine = new InteractiveContentEngine(out);
+      expect(() => engine.getCatalog("class1-water", false)).toThrow();
+      expect(() => engine.startSession(interactiveStartSessionInputSchema.parse({ courseKey: "class1-water", mode: "rapid-swipe", sessionSize: 5 }), false)).toThrow();
+    }
   });
   it("uses the pinned complete corpus for quarantine even when selecting one item", () => {
     const doc = checked(); const duplicate = structuredClone(doc.exercises[0]);
@@ -99,9 +151,11 @@ describe("private checked authoring compiler", () => {
     for (const access of [false, true]) {
       const catalog = engine.getCatalog("class1-water", access);
       const session = engine.startSession(input, access);
-      expect(catalog.version).toBe("checked-v1");
-      expect(session.version).toBe("checked-v1");
+      expect(catalog.version).toBe(approvals.fixture.releaseToken);
+      expect(session.version).toBe(approvals.fixture.releaseToken);
       expect(JSON.stringify([catalog, session])).not.toContain(manifest.version);
+      expect(JSON.stringify([catalog, session])).not.toContain(approvals.fixture.corpusSha256);
+      for (const entry of manifest.entries) expect(JSON.stringify([catalog, session])).not.toContain(entry.sha256);
     }
     const files = readdirSync(join(out, "class1-water"));
     const serialized = files.map(f => readFileSync(join(out, "class1-water", f), "utf8")).join("\n");
@@ -146,7 +200,7 @@ describe("private checked authoring compiler", () => {
     expect(() => compileCheckedRelease(input, out)).toThrow("prior full-corpus approval");
     const fresh = request(doc);
     expect(() => compileCheckedRelease({ ...fresh, selected: [...fresh.selected, ...fresh.selected] }, out)).toThrow("Duplicate selection");
-    expect(() => compileCheckedRelease({ ...fresh, selected: [{ courseKey: "class1-water", exerciseId: "missing" }] }, out)).toThrow("Selection missing");
+    expect(() => compileCheckedRelease({ ...fresh, selected: [{ courseKey: "class1-water", exerciseId: "missing" }] }, out)).toThrow("Selection does not match");
     expect(readdirSync(out)).toEqual([]);
   });
   it("does not override a manual legal exclusion with new approvals", () => {

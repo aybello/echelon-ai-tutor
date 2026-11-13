@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { getCourseByKey, getAllActiveCourseKeys } from "../../../shared/courseRegistry";
 import { interactiveModes, interactiveCatalogResponseSchema, interactiveSessionResponseSchema, type InteractiveCatalogResponse, type InteractiveDrillExample, type InteractiveMode, type InteractiveSessionResponse, type InteractiveStartSessionInput } from "../../../shared/interactiveSessions";
 import { interactivePackageSchema, type InteractivePackage } from "../schema";
+import { trustedApproval } from "../../../scripts/content-engine/trusted-corpora";
 import { ENGINE_LIMITS, engineRegistrationSchema, engineManifestSchema, engineShardSchema, type ArtifactDescriptor, type EngineManifest, type EngineIndexEntry } from "./schema";
 
 export class InteractiveEngineError extends Error {
@@ -13,8 +14,8 @@ export class InteractiveEngineError extends Error {
 const fail = (): never => { throw new InteractiveEngineError(); };
 const hash = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
 const json = (value: unknown) => JSON.stringify(value);
-// Checked versions are payload-derived and must stay on the private side of the wire.
-const publicVersion = (manifest: EngineManifest) => manifest.classification === "legacy_plus_checked" ? "checked-v1" : manifest.version;
+// The private content-derived version never crosses the wire.
+const publicVersion = (manifest: EngineManifest) => manifest.classification === "legacy_plus_checked" ? manifest.publicVersion! : manifest.version;
 function freeze<T>(value: T): T {
   if (value && typeof value === "object" && !Object.isFrozen(value)) {
     for (const child of Object.values(value)) freeze(child);
@@ -106,6 +107,11 @@ export class InteractiveContentEngine {
     if (!descriptor) return null;
     return this.read(descriptor.file, ENGINE_LIMITS.manifestBytes, input => {
       const manifest = engineManifestSchema.parse(input);
+      if (manifest.classification === "legacy_plus_checked") {
+        const approval = trustedApproval(manifest.approvalId!);
+        if (!approval || approval.releaseToken !== manifest.publicVersion || approval.checkedVersions[courseKey] !== manifest.version) fail();
+      }
+      if (manifest.classification === "legacy_release" && manifest.version !== manifest.sourceVersion) fail();
       if (manifest.courseKey !== courseKey || manifest.legacy.file !== `${courseKey}/legacy.json` || manifest.legacy.bytes > ENGINE_LIMITS.legacyBytes) fail();
       const ids = new Set<string>();
       const positions = new Set<string>();

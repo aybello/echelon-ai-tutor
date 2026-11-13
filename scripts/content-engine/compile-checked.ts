@@ -2,8 +2,8 @@ import { resolve } from "node:path";
 import { mkdirSync, rmSync, lstatSync } from "node:fs";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { z } from "zod";
-import { approvedCorpora } from "./trusted-corpora";
-import { compileLegacyRelease, type ClassifiedExample } from "../../server/interactiveContent/engine/compiler";
+import { trustedApproval } from "./trusted-corpora";
+import { compileLegacyRelease, canonicalJson, digest, type ClassifiedExample } from "../../server/interactiveContent/engine/compiler";
 import { interactivePackageSchema } from "../../server/interactiveContent/schema";
 import { interactiveDrillExampleSchema, interactiveModes } from "../../shared/interactiveSessions";
 // The offline authoring modules are plain ESM and intentionally have no runtime/backend imports.
@@ -31,10 +31,11 @@ const selectionSchema = z.object({
 export function compileCheckedRelease(input: unknown, outputDir: string) {
   const request = selectionSchema.parse(input);
   const doc = request.corpus;
-  const approval = approvedCorpora[request.approvalId];
-  if (!approval || ![approval.scope, approval.inventoryEvidence, approval.approvalEvidence].every(v => typeof v === "string" && v.trim().length > 0) || !/^[a-f0-9]{64}$/.test(approval.corpusSha256) || approval.corpusSha256 !== hash(doc)) throw new Error("No trusted prior full-corpus approval for this document");
+  const approval = trustedApproval(request.approvalId);
+  if (!approval || approval.corpusSha256 !== hash(doc)) throw new Error("No trusted prior full-corpus approval for this document");
   const selectedKeys = request.selected.map(({ courseKey, exerciseId }) => `${courseKey}/${exerciseId}`);
   if (new Set(selectedKeys).size !== selectedKeys.length) throw new Error("Duplicate selection");
+  if (JSON.stringify([...selectedKeys].sort()) !== JSON.stringify(approval.selected)) throw new Error("Selection does not match trusted release approval");
   const selected = new Set(selectedKeys);
   const candidates = (doc.exercises as Exercise[]).filter(e => selected.has(`${e.courseKey}/${e.exerciseId}`));
   if (candidates.length !== selected.size) throw new Error("Selection missing or ambiguous");
@@ -73,7 +74,10 @@ export function compileCheckedRelease(input: unknown, outputDir: string) {
   }
   // compileLegacyRelease independently verifies registry approvals, package hashes,
   // scope, preview identity, byte/count limits and runtime manifest/shard schemas.
-  const result = compileLegacyRelease({ outputDir, additionalRecords: additions });
+  for (const [courseKey, rows] of additions) {
+    if (approval.checkedVersions[courseKey] !== `checked-${digest(canonicalJson(rows)).slice(0, 32)}`) throw new Error("Checked release content does not match trusted approval");
+  }
+  const result = compileLegacyRelease({ outputDir, additionalRecords: additions, checkedRelease: { approvalId: request.approvalId, publicVersion: approval.releaseToken } });
   return { ...result, newItemCount: candidates.length };
 }
 
