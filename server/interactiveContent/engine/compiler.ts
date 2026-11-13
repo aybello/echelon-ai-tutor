@@ -20,13 +20,13 @@ function artifact(root: string, file: string, data: unknown, limit: number): Art
   const content = encode(data);
   if (Buffer.byteLength(content) > limit) throw new Error("Interactive artifact byte limit exceeded");
   const path = join(root, file);
-  mkdirSync(resolve(path, ".."), { recursive: true });
+  mkdirSync(resolve(path, ".."), { recursive: true, mode: 0o700 });
   writeFileSync(path, content, { mode: 0o600 });
   return { file, sha256: digest(content), bytes: Buffer.byteLength(content) };
 }
 export type ClassifiedExample = { example: InteractiveDrillExample; topicId: string; difficulty: InteractiveDifficulty };
 /** Pure artifact compilation; classifications must be supplied, never inferred. */
-export function compileCourse(root: string, legacyInput: unknown, records?: ClassifiedExample[], topics = [{ id: "unclassified", label: "Unclassified" }]): ArtifactDescriptor {
+export function compileCourse(root: string, legacyInput: unknown, records?: ClassifiedExample[], topics = [{ id: "unclassified", label: "Unclassified" }], expandedVersion?: string): ArtifactDescriptor {
   const legacy = interactivePackageSchema.parse(legacyInput);
   canonicalCourse(legacy.courseKey);
   const rows = records ?? legacy.examples.map(example => ({ example, topicId: "unclassified", difficulty: "unclassified" as const }));
@@ -34,7 +34,7 @@ export function compileCourse(root: string, legacyInput: unknown, records?: Clas
   const ids = new Set<string>();
   const entries: EngineManifest["entries"] = [];
   const shards: EngineManifest["shards"] = [];
-  const version = legacy.version;
+  const version = expandedVersion ?? legacy.version;
   const sourceSha256 = digest(canonicalJson(legacy));
   let batch: InteractiveDrillExample[] = [];
   const flush = () => {
@@ -66,7 +66,7 @@ export function compileCourse(root: string, legacyInput: unknown, records?: Clas
   if (topicIds.size !== topics.length || entries.some(e => !topicIds.has(e.topicId))) throw new Error("Invalid topic classification");
   const legacyDescriptor = artifact(root, `${legacy.courseKey}/legacy.json`, legacy, ENGINE_LIMITS.legacyBytes);
   const manifest = engineManifestSchema.parse({
-    format: "interactive-course-v1", courseKey: legacy.courseKey, version, classification: "legacy_release",
+    format: "interactive-course-v1", courseKey: legacy.courseKey, version, classification: expandedVersion ? "legacy_plus_checked" : "legacy_release",
     sourceVersion: legacy.version, sourceSha256, previewIds: legacy.previewIds, topics, legacy: legacyDescriptor, shards, entries,
   });
   return artifact(root, `${legacy.courseKey}/manifest.json`, manifest, ENGINE_LIMITS.manifestBytes);
@@ -119,7 +119,7 @@ function approvedLegacyRegistrations(registry: string): string[] {
 }
 
 /** Reads JSON and exact literal registration AST, never executes/imports release scripts or the whole catalog. */
-export function compileLegacyRelease(options: { sourceDir?: string; outputDir?: string } = {}) {
+export function compileLegacyRelease(options: { sourceDir?: string; outputDir?: string; additionalRecords?: ReadonlyMap<string, ClassifiedExample[]> } = {}) {
   const engineDir = fileURLToPath(new URL(".", import.meta.url));
   const sourceDir = options.sourceDir ?? resolve(engineDir, "../release-2026-11-12");
   const outputDir = options.outputDir ?? resolve(engineDir, "release-v1");
@@ -129,7 +129,8 @@ export function compileLegacyRelease(options: { sourceDir?: string; outputDir?: 
   const approved = approvedLegacyRegistrations(registry);
   const canonical = eligibleCourseKeys();
   if (canonicalJson(approved) !== canonicalJson(canonical) || approved.length !== 38 || metadata.counts?.courses !== 38 || metadata.courses?.length !== 38) throw new Error("Approved legacy registration must match the 38 canonical eligible courses");
-  mkdirSync(outputDir, { recursive: true });
+  if (options.additionalRecords && [...options.additionalRecords.keys()].some(key => !approved.includes(key))) throw new Error("Additional records outside eligible scope");
+  mkdirSync(outputDir, { recursive: true, mode: 0o700 });
   const courses: Record<string, ArtifactDescriptor> = {};
   let itemCount = 0;
   for (const key of approved) {
@@ -141,7 +142,13 @@ export function compileLegacyRelease(options: { sourceDir?: string; outputDir?: 
     if (!meta || digest(source) !== meta.releasedPackageSha256) throw new Error("Legacy released package checksum mismatch");
     const pkg: InteractivePackage = interactivePackageSchema.parse(JSON.parse(source.toString("utf8")));
     if (pkg.courseKey !== key || pkg.examples.length !== meta.itemCount || canonicalJson(pkg.previewIds) !== canonicalJson(meta.previewIds)) throw new Error("Legacy metadata mismatch");
-    courses[key] = compileCourse(outputDir, pkg);
+    const additional = options.additionalRecords?.get(key) ?? [];
+    const rows: ClassifiedExample[] = [
+      ...pkg.examples.map(example => ({ example, topicId: "unclassified", difficulty: "unclassified" as const })),
+      ...additional,
+    ];
+    const expandedVersion = additional.length ? `checked-${digest(canonicalJson(additional)).slice(0, 32)}` : undefined;
+    courses[key] = compileCourse(outputDir, pkg, rows, undefined, expandedVersion);
     itemCount += pkg.examples.length;
   }
   if (itemCount !== metadata.counts.examples) throw new Error("Legacy total mismatch");

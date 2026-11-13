@@ -1,6 +1,6 @@
 # Private interactive content engine v1
 
-This server-only filesystem adapter compiles the unchanged 38 software-approved packages in `release-2026-11-12`. The current bank contains 3,821 examples in total, **not** 1,000 examples per course/mode. The target of 1,000 examples in each of six modes is a future course/mode target; it is not a per-filter quota or an advertised count. No generation, database writes, persisted game results, or readiness attribution happens here.
+This server-only filesystem adapter compiles the unchanged 38 software-approved packages in `release-2026-11-12`. The frozen legacy bank contains 3,821 examples in total, **not** 1,000 examples per course/mode. An explicitly supplied, checked private authoring document may add records to the indexed bank; see `docs/content-engine.md`. The target of 1,000 examples in each of six modes is a future course/mode target; it is not a per-filter quota or an advertised count. No generation, database writes, persisted game results, or readiness attribution happens here.
 
 ## Wire contract
 
@@ -21,6 +21,8 @@ Every procedure sets `private, no-store` before input validation, rejects aliase
 `registry.json` registers exactly the canonical 38 eligible courses and stores SHA-256/byte descriptors for course manifests. Manifests contain IDs, mode/topic/difficulty, shard offsets, per-example SHA-256/byte counts, preserved preview IDs and checked shard descriptors. Shards contain at most 100 examples, with smaller splits when needed to respect byte limits. Legacy compatibility files and the original release metadata are private checked artifacts.
 
 Legacy manifests are labeled `legacy_release`; every existing entry has `topicId: "unclassified"` and `difficulty: "unclassified"`. This is a structural/software adapter, not a claim of objective alignment, technical approval, human review, jurisdictional accuracy or source currency. The preserved legacy release metadata describes the original review scope and limitations.
+
+An opt-in checked expansion uses `legacy_plus_checked`; the legacy rows and compatibility package remain unchanged. The compiler checks documentary review and release gates without authenticating the declarations. Sources, review evidence and answer-bearing shards remain private server data and are not public assets.
 
 Resource ceilings: 32 KiB per example, 1 MiB per shard, 4 MiB per course manifest, 64 KiB registration metadata, 2 MiB legacy compatibility package, 12,000 indexed examples per course, 256 KiB session JSON, and an LRU of at most 64 entries/16 MiB conservative decoded-object accounting. Byte budgets may return fewer examples than requested; `requestedSize` preserves the actual request and `totalAvailableCount` remains the truthful intersection size. Sampling never replaces a rejected item or switches its filters.
 

@@ -25,8 +25,8 @@ export const engineIndexEntrySchema = z.object({
 export const engineManifestSchema = z.object({
   format: z.literal("interactive-course-v1"), courseKey: safeCourse,
   version: z.string().min(1).max(80),
-  // This adapter does not claim objective alignment, technical or human review.
-  classification: z.literal("legacy_release"), sourceVersion: z.string().min(1).max(80), sourceSha256: sha256Schema,
+  // Checked records are additional; the unchanged legacy package retains its own status.
+  classification: z.enum(["legacy_release", "legacy_plus_checked"]), sourceVersion: z.string().min(1).max(80), sourceSha256: sha256Schema,
   previewIds: z.object(Object.fromEntries(interactiveModes.map(mode => [mode, interactiveSafeIdSchema])) as Record<(typeof interactiveModes)[number], typeof interactiveSafeIdSchema>).strict(),
   topics: z.array(z.object({ id: interactiveSafeIdSchema, label: z.string().min(1).max(120) }).strict()).min(1).max(200),
   legacy: artifactDescriptorSchema,
