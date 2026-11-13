@@ -78,11 +78,16 @@ function fakeDb(purchaseRows: object[] = [], entitledEmail?: string) {
   };
   vi.mocked(getDb).mockResolvedValue({ select } as never);
 }
-async function expectContent(c: ReturnType<typeof caller>, locked: boolean, accessToken?: string) {
+async function expectContent(c: ReturnType<typeof caller>, _quizLocked: boolean, accessToken?: string) {
+  const readsBefore = [...reads];
+  const dbCallsBefore = vi.mocked(getDb).mock.calls.length;
   const content = await c.interactive.startSession({ courseKey: "class1-water", mode: "rapid-swipe", sessionSize: 20, ...(accessToken ? { accessToken } : {}) });
-  expect(content).toMatchObject({ available: true, locked, version: "synthetic-v1" });
-  expect(content.examples.map(x => x.id)).toEqual(examples.filter(x => x.mode === "rapid-swipe" && (!locked || x.id.startsWith("preview-"))).map(x => x.id));
-  expect(content).toMatchObject({ mode: "rapid-swipe", totalAvailableCount: locked ? 1 : 2, filters: { topicId: null, difficulty: null, requestedSize: 20 } });
+  expect(content).toMatchObject({ available: true, locked: false, version: "synthetic-v1" });
+  expect(content.examples.map(x => x.id)).toEqual(examples.filter(x => x.mode === "rapid-swipe").map(x => x.id));
+  expect(content).toMatchObject({ mode: "rapid-swipe", totalAvailableCount: 2, filters: { topicId: null, difficulty: null, requestedSize: 20 } });
+  expect(sessionEngine.startSession.mock.calls.at(-1)?.[1]).toBe(true);
+  expect(reads).toEqual(readsBefore);
+  expect(getDb).toHaveBeenCalledTimes(dbCallsBefore);
 }
 async function expectQuiz(c: ReturnType<typeof caller>, locked: boolean, accessToken?: string) {
   const quiz = await c.quiz.getInteractiveQuestions({ bankKey: "class1-water", ...(accessToken ? { accessToken } : {}) });
@@ -91,7 +96,7 @@ async function expectQuiz(c: ReturnType<typeof caller>, locked: boolean, accessT
   expect(quiz.questions.every(q => Boolean(q.attemptToken))).toBe(true);
 }
 async function expectBoth(c: ReturnType<typeof caller>, locked: boolean, accessToken?: string) {
-  await expectContent(c, locked, accessToken);
+  await expectContent(c, false, accessToken);
   await expectQuiz(c, locked, accessToken);
 }
 beforeEach(() => {
@@ -101,7 +106,7 @@ beforeEach(() => {
   fakeDb();
 });
 
-describe("privileged OAuth access is confined to an explicit interactive opt-in", () => {
+describe("public games preserve real quiz and shared access boundaries", () => {
   it.each([
     ["admin", "interactive.startSession", user("admin"), expectContent],
     ["admin", "quiz.getInteractiveQuestions", user("admin"), expectQuiz],
@@ -148,9 +153,9 @@ describe("privileged OAuth access is confined to an explicit interactive opt-in"
     await expect(resolveAccessForRequest({ user: null, studentEmail: null } as TrpcContext, "class1-water", { privilegedInteractiveAccess: true })).resolves.toBe(false);
     await expect(hasAccessToExam({ type: "oauth", userId: 123, email: "alice@example.test", user: user("admin") }, "class1-water")).resolves.toBe(false);
   });
-  it("keeps a nonadmin nonowner OAuth user on previews with no entitlement", async () => {
+  it("keeps a nonadmin nonowner OAuth user's quiz on preview while games are full", async () => {
     await expectBoth(caller(user("user")), true);
-    expect(reads.filter(kind => kind === "purchases")).toHaveLength(2);
+    expect(reads.filter(kind => kind === "purchases")).toHaveLength(1);
   });
   it("preserves purchased access for an ordinary OAuth user", async () => {
     fakeDb([{ productKey: "class1-water", status: "active", accessExpiresAt: null }], "alice@example.test");
@@ -159,7 +164,7 @@ describe("privileged OAuth access is confined to an explicit interactive opt-in"
   it("does not accept a client-supplied privileged opt-in", async () => {
     for (const c of [caller(null), caller(user("user"))]) {
       await expect(c.interactive.startSession({ courseKey: "class1-water", mode: "rapid-swipe", sessionSize: 20, privilegedInteractiveAccess: true, role: "admin", openId: "fixture-owner-openid" } as never)).rejects.toMatchObject({ code: "BAD_REQUEST" });
-      // Quiz strips unknown fields; they cannot change either route's access.
+      // Quiz strips unknown fields; they cannot change either quiz route's access.
       const input = { bankKey: "class1-water", privilegedInteractiveAccess: true, role: "admin", openId: "fixture-owner-openid" } as never;
       expect((await c.quiz.getInteractiveQuestions(input)).locked).toBe(true);
       expect((await c.quiz.getQuestions(input)).locked).toBe(true);
@@ -169,7 +174,7 @@ describe("privileged OAuth access is confined to an explicit interactive opt-in"
     expect(result.locked).toBe(false);
     expect(result.questions).toHaveLength(30);
   });
-  it("rejects role and owner claims in a forged token and in a signed token without entitlement", async () => {
+  it("does not unlock quiz with forged or unentitled signed role/owner tokens while games stay full", async () => {
     const payload = { email: "spoof@example.test", examTypes: ["class1-water"], role: "admin", openId: "fixture-owner-openid" };
     const makeToken = (secret: string) => new SignJWT(payload).setProtectedHeader({ alg: "HS256" })
       .setIssuer("echelon-access").setAudience("echelon-quiz").setExpirationTime("1h")
@@ -178,7 +183,7 @@ describe("privileged OAuth access is confined to an explicit interactive opt-in"
     expect(reads).toEqual(["questions"]);
     reads.length = 0;
     await expectBoth(caller(null), true, await makeToken("test-only-not-for-production"));
-    expect(reads.filter(kind => kind === "purchases")).toHaveLength(2);
+    expect(reads.filter(kind => kind === "purchases")).toHaveLength(1);
     const signed = await makeToken("test-only-not-for-production");
     await expect(resolveAccessForRequest({ user: null, studentEmail: null } as TrpcContext, "class1-water", { privilegedInteractiveAccess: true, accessToken: signed })).resolves.toBe(false);
   });
@@ -193,6 +198,18 @@ describe("privileged OAuth access is confined to an explicit interactive opt-in"
     await expectBoth(caller(null, "otp@example.test"), false, token);
     await expectBoth(caller(user("user"), "otp@example.test"), true, token);
     fakeDb();
-    await expectBoth(caller(null), true, token); // token still needs a live entitlement
+    await expectBoth(caller(null), true, token); // Quiz token still needs a live entitlement; games do not.
+  });
+  it.each(["revoked", "refunded", "disputed", "expired", "different-course"])("keeps quiz on preview for a %s purchase while games stay full", async state => {
+    const accessToken = await issueSubscriptionToken({ email: "alice@example.test", examTypes: ["class1-water"] });
+    fakeDb([{
+      productKey: state === "different-course" ? "class1-ww" : "class1-water",
+      status: state === "expired" || state === "different-course" ? "active" : state,
+      accessExpiresAt: state === "expired" ? new Date(Date.now() - 60_000) : null,
+    }], "alice@example.test");
+    for (const c of [caller(null), caller(null, "alice@example.test"), caller(user("user"))]) {
+      await expectBoth(c, true, accessToken);
+    }
+    expect(reads.filter(kind => kind === "purchases")).toHaveLength(3);
   });
 });
