@@ -1,0 +1,3392 @@
+{
+ "format": "interactive-overlay-v1",
+ "overlayId": "option-length-batch-2-20261114",
+ "scope": "Reviewed option rewrites for 92 items in 4 courses.",
+ "additions": [],
+ "replacements": [
+  {
+   "courseKey": "class1-water",
+   "replacesId": "class1-water-031",
+   "replacesSha256": "17c4451db8e820c9f317cc12bfa9c4e6beb7fe1022bd50611bfd484081857079",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-031-r1",
+    "prompt": "Which is not a physical or chemical disinfectant?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Ultraviolet light"
+     },
+     {
+      "id": "option-2",
+      "label": "Ozone"
+     },
+     {
+      "id": "option-3",
+      "label": "Chlorine"
+     },
+     {
+      "id": "option-4",
+      "label": "Turbidimeter"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "A turbidimeter measures cloudiness; it does not disinfect."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "replacesId": "class1-water-040",
+   "replacesSha256": "1fe9fef34f24d74b9394ad32a247f0150147fabb339a0bd94ebc40e6cb37f276",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-040-r1",
+    "prompt": "Which is not a process intended to help remove particles?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Coagulation of fine particles"
+     },
+     {
+      "id": "option-2",
+      "label": "Flocculation into larger floc"
+     },
+     {
+      "id": "option-3",
+      "label": "Filtration through media"
+     },
+     {
+      "id": "option-4",
+      "label": "UV radiation"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "UV inactivates microorganisms; it does not remove particles."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "replacesId": "class1-water-041",
+   "replacesSha256": "e1fe9cbbd86f8ba450be8e482ef29d9808a73d0a01cced390f72e93c9b739c19",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-041-r1",
+    "prompt": "Which is not a source-water category?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Surface water such as rivers"
+     },
+     {
+      "id": "option-2",
+      "label": "Groundwater from wells"
+     },
+     {
+      "id": "option-3",
+      "label": "Water temperature"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Temperature is a water characteristic, not a source category."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "replacesId": "class1-water-045",
+   "replacesSha256": "7f92eebaf547fa98480e2860d2f08ed1f576d102ef4993ab89cb0ce109b89165",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-045-r1",
+    "prompt": "Which one is not a direct reading of a water-quality instrument?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Turbidity reading"
+     },
+     {
+      "id": "option-2",
+      "label": "Chlorine residual reading"
+     },
+     {
+      "id": "option-3",
+      "label": "Temperature reading"
+     },
+     {
+      "id": "option-4",
+      "label": "Work order number"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "A work order is a maintenance record, not a water-quality measurement."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "replacesId": "class1-water-048",
+   "replacesSha256": "20a4ba11741dbacd00c18e10972cee0b288fbf2feac661abf945ca4c78bb1d2c",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-048-r1",
+    "prompt": "A UV unit receives highly turbid water. What potential effect needs attention?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Particles can reduce UV effectiveness"
+     },
+     {
+      "id": "option-2",
+      "label": "UV adds a chlorine residual to the water"
+     },
+     {
+      "id": "option-3",
+      "label": "UV removes the particles from the water"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Cloudy water can make UV treatment less effective; pretreatment may be needed."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "replacesId": "class1-water-051",
+   "replacesSha256": "ae47407543d81f93a1c4438c50a1491fb148f9b3d819b958a0d3b63e841ae06b",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-051-r1",
+    "prompt": "A filter removes suspended particles upstream of UV. What is the potential benefit?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Less particle interference with UV"
+     },
+     {
+      "id": "option-2",
+      "label": "A chemical residual that lasts downstream"
+     },
+     {
+      "id": "option-3",
+      "label": "Low chlorine demand in the treated water"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Pretreatment can reduce cloudiness that interferes with UV."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "replacesId": "class1-water-056",
+   "replacesSha256": "9bb9996b69aadb957cf9a221793addb82132eb0814898154a53eb53271821932",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-056-r1",
+    "prompt": "An activated carbon cartridge becomes plugged by sediment. What maintenance effect is possible?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "More frequent cartridge changes"
+     },
+     {
+      "id": "option-2",
+      "label": "The UV lamps can be switched off"
+     },
+     {
+      "id": "option-3",
+      "label": "Hardness is removed from the water"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Ontario notes sediment plugging can increase cartridge replacement frequency."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "replacesId": "class1-water-067",
+   "replacesSha256": "36e392b5fe25d0b0913619e14896728ad622c982124f27df581948035fa0ea40",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-067-r1",
+    "prompt": "Tap the flawed statement about UV.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "UV can inactivate many microorganisms"
+     },
+     {
+      "id": "option-2",
+      "label": "UV leaves a chlorine residual"
+     },
+     {
+      "id": "option-3",
+      "label": "Cloudy water can interfere with UV"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "UV does not add chlorine or provide a persistent disinfectant residual."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "replacesId": "class1-water-068",
+   "replacesSha256": "4a577ee4a4efa08b59e4501cf5db3884107c6da1e703da247e76e75b0332bc03",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-068-r1",
+    "prompt": "Tap the flawed statement about a filtration process.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "A filter can remove suspended particles from water"
+     },
+     {
+      "id": "option-2",
+      "label": "Filtration can lower the turbidity of water"
+     },
+     {
+      "id": "option-3",
+      "label": "Filters also remove dissolved chemicals"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Removal depends on contaminant and filter technology; ordinary filtration is not universal chemical removal."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "replacesId": "class1-water-069",
+   "replacesSha256": "93a5fd6927c43f1170884e1b5e2fb77b53796f013b6b39738bc0d39b85c8e176",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-069-r1",
+    "prompt": "Tap the flawed flocculation practice.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Encourage particle collisions with gentle mixing"
+     },
+     {
+      "id": "option-2",
+      "label": "Avoid excessive floc breakup during mixing"
+     },
+     {
+      "id": "option-3",
+      "label": "Increase shear until the floc breaks apart"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Flocculation mixing must be gentle enough to preserve formed floc."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "replacesId": "class1-water-070",
+   "replacesSha256": "5a4a732c4e883db45a92ca298520ea16bf5847542984d1f45f068d3e6b850199",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-070-r1",
+    "prompt": "Tap the flawed sample-handling decision.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Identify the sample location on the label"
+     },
+     {
+      "id": "option-2",
+      "label": "Record the collection time and date"
+     },
+     {
+      "id": "option-3",
+      "label": "Estimate a missing laboratory result"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Results must be measured and documented accurately, not invented."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "replacesId": "class1-water-071",
+   "replacesSha256": "2bcf669ef7a0b585fc50aba9a826459531baa84234608277a0d1a535be893e62",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-071-r1",
+    "prompt": "Tap the flawed chlorine comparison.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Free chlorine is a form of residual chlorine"
+     },
+     {
+      "id": "option-2",
+      "label": "Combined chlorine includes the chloramines"
+     },
+     {
+      "id": "option-3",
+      "label": "Dose and residual are the same measurement"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Some added chlorine reacts, so the dose and residual are not interchangeable."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "replacesId": "class1-water-072",
+   "replacesSha256": "c14f90805ed3397c174c3243accf9d774fd47da393100cf09a2cc8a5f86d9d03",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-072-r1",
+    "prompt": "Tap the flawed statement about a carbon filter.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It can reduce some organic tastes and odours"
+     },
+     {
+      "id": "option-2",
+      "label": "It can remove chlorine from the water"
+     },
+     {
+      "id": "option-3",
+      "label": "It works mainly as a disinfection device"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Activated carbon is used for water conditioning, not as a stand-alone disinfectant."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "replacesId": "class1-water-075",
+   "replacesSha256": "6060af5cebaa564d4931b758b54940e59853aa281460e64c850b194197710b4d",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-075-r1",
+    "prompt": "Tap the flawed statement about source water.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Surface water is a type of source"
+     },
+     {
+      "id": "option-2",
+      "label": "Groundwater is also a type of source"
+     },
+     {
+      "id": "option-3",
+      "label": "Source waters have the same quality"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Source-water characteristics vary by source and conditions."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "replacesId": "class1-water-076",
+   "replacesSha256": "cbe15aa49f807a2ac0b2d26da4dac1479fc8ec9a369c776313c1f727b59470e5",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-076-r1",
+    "prompt": "Tap the flawed process claim.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Rapid mix disperses the coagulant within seconds"
+     },
+     {
+      "id": "option-2",
+      "label": "Flocculation promotes particle collisions in the basin"
+     },
+     {
+      "id": "option-3",
+      "label": "Flocculation is meant to stop particle collisions"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Flocculation promotes, rather than prevents, collisions between destabilized particles."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "replacesId": "class1-water-078",
+   "replacesSha256": "0d78129e0fc95594f66d507815eeca9d67fd383c2ac8c3b9ac806678e15d7103",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-078-r1",
+    "prompt": "Tap the flawed chemical handling practice.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Read the safety data sheet first"
+     },
+     {
+      "id": "option-2",
+      "label": "Use the assigned protective equipment correctly"
+     },
+     {
+      "id": "option-3",
+      "label": "Treat an unknown chemical as harmless"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Unknown chemicals must not be assumed harmless; follow the facility procedure."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "replacesId": "class1-water-080",
+   "replacesSha256": "c9efa3c320420216107227f4e0d7833f2d28cd3be2fda44a1129a719ee9b78c3",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-080-r1",
+    "prompt": "Tap the flawed use of records.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Record the actual test results"
+     },
+     {
+      "id": "option-2",
+      "label": "Record equipment maintenance work done"
+     },
+     {
+      "id": "option-3",
+      "label": "Change old readings to look better"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Records should accurately reflect observed results and maintenance activities."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water",
+   "replacesId": "class1-water-085",
+   "replacesSha256": "8bc9cdf01e84462cde90f7f95976876da1478fdf9ee5403dfb1c41ddacc26c12",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-085-r1",
+    "prompt": "Tap the flawed operational assumption.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Compare readings with the site procedures"
+     },
+     {
+      "id": "option-2",
+      "label": "Process designs differ among treatment plants and sites"
+     },
+     {
+      "id": "option-3",
+      "label": "One treatment train describes all plants"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Treatment trains depend on source water and facility design."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "replacesId": "class1-ww-030",
+   "replacesSha256": "6b0a7fa953389076d78586a72dfb2a7ac847d4fba92ed9defee628c0190687c9",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-ww-030-r1",
+    "prompt": "Which item is not a form of grit commonly found in wastewater?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Heavy sand grains"
+     },
+     {
+      "id": "option-2",
+      "label": "Small gravel pieces"
+     },
+     {
+      "id": "option-3",
+      "label": "Cinder particles"
+     },
+     {
+      "id": "option-4",
+      "label": "Dissolved oxygen"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Grit consists of relatively heavy particles; dissolved oxygen is a dissolved gas."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "replacesId": "class1-ww-031",
+   "replacesSha256": "3b37a3124d7844cd6d9f7f678ec66a99c65515782ed5a15d5763d170e0e345d1",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-ww-031-r1",
+    "prompt": "Which one is not a fixed-film biological process?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Trickling filter with media"
+     },
+     {
+      "id": "option-2",
+      "label": "Rotating biological contactor discs"
+     },
+     {
+      "id": "option-3",
+      "label": "Biotower with fixed media"
+     },
+     {
+      "id": "option-4",
+      "label": "Conventional activated sludge"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Activated sludge uses suspended growth; the other listed processes use attached growth."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "replacesId": "class1-ww-034",
+   "replacesSha256": "8c5228421ae950384ce8435fff20ab9ed55bd78d7098080976e1936ba66ffd41",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-ww-034-r1",
+    "prompt": "Which is not a unit of liquid volume?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Litres (L)"
+     },
+     {
+      "id": "option-2",
+      "label": "Cubic metres (m³)"
+     },
+     {
+      "id": "option-3",
+      "label": "Millilitres (mL)"
+     },
+     {
+      "id": "option-4",
+      "label": "m³/h"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Cubic metres per hour is a flow rate, not a volume."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "replacesId": "class1-ww-037",
+   "replacesSha256": "e702939532a04e81377a2162d020618d1a6571622c717d1fbf10c89c76fe9dbb",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-ww-037-r1",
+    "prompt": "Which is not an example of a potential confined-space hazard?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Oxygen deficiency in the air"
+     },
+     {
+      "id": "option-2",
+      "label": "Toxic gas such as hydrogen sulfide"
+     },
+     {
+      "id": "option-3",
+      "label": "Engulfment by flowing material"
+     },
+     {
+      "id": "option-4",
+      "label": "A documented rescue plan"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "A rescue plan is a safety control; the others are hazards."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "replacesId": "class1-ww-041",
+   "replacesSha256": "ad0bd172c3b2b3117be37610dc3f2bc1f492afb42ff7b3859ce205b406aea74b",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-ww-041-r1",
+    "prompt": "Which is not needed as an input or unit-conversion consideration when computing theoretical detention time?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Tank liquid volume in cubic metres"
+     },
+     {
+      "id": "option-2",
+      "label": "Volumetric flow rate through the tank"
+     },
+     {
+      "id": "option-3",
+      "label": "Consistent time units for both values"
+     },
+     {
+      "id": "option-4",
+      "label": "Colour of the tank paint"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Theoretical detention time is volume divided by volumetric flow."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "replacesId": "class1-ww-043",
+   "replacesSha256": "7055f44e34659ef66aea36a1e5a805151b0334f28f15586a19e335f3167f7a41",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-ww-043-r1",
+    "prompt": "Which is not a sample identification detail?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Sampling location"
+     },
+     {
+      "id": "option-2",
+      "label": "Collection time and date"
+     },
+     {
+      "id": "option-3",
+      "label": "Sample identifier number"
+     },
+     {
+      "id": "option-4",
+      "label": "Pump impeller diameter"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Sample identifiers, locations and times describe the sample, not a pump dimension."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "replacesId": "class1-ww-045",
+   "replacesSha256": "c90fb663a6531cedf9f768562b34f523f858fe91cb772b514ffa57b7808b56d3",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-ww-045-r1",
+    "prompt": "Which is not part of a typical trickling-filter arrangement?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Media for the biofilm"
+     },
+     {
+      "id": "option-2",
+      "label": "Rotating distributor arm"
+     },
+     {
+      "id": "option-3",
+      "label": "Underdrain collection system"
+     },
+     {
+      "id": "option-4",
+      "label": "Quartz UV sleeve"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "The quartz sleeve belongs to a UV system, not the trickling-filter arrangement."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "replacesId": "class1-ww-046",
+   "replacesSha256": "0ee25f6adbb7d7362b0d2c004dda3ff5562da615c3b58578939df40b1946a194",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-ww-046-r1",
+    "prompt": "Which item is not a possible hydrogen sulfide characteristic?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Colourless gas at room temperature"
+     },
+     {
+      "id": "option-2",
+      "label": "Toxic by inhalation at high levels"
+     },
+     {
+      "id": "option-3",
+      "label": "Flammable in air at some levels"
+     },
+     {
+      "id": "option-4",
+      "label": "Smell gives a dependable warning"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Hydrogen sulfide can dull smell, so odour is not a reliable detector."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "replacesId": "class1-ww-048",
+   "replacesSha256": "6b24e831b9f936e3d64124110ae8ed7b5ef9fcb405c7a7f42a84697e089ae6e7",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-ww-048-r1",
+    "prompt": "Which does not measure or indicate a physical process variable?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Flowmeter on the line"
+     },
+     {
+      "id": "option-2",
+      "label": "Pressure gauge on the pump"
+     },
+     {
+      "id": "option-3",
+      "label": "Level sensor in the tank"
+     },
+     {
+      "id": "option-4",
+      "label": "Screenings bin"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "The first three measure or indicate flow, pressure and level; a bin collects material."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "replacesId": "class1-ww-049",
+   "replacesSha256": "27cd5c8caa7dfc54518366594a0aa0057fcdae24c8ea4fb5aa0fc771887b1d59",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-ww-049-r1",
+    "prompt": "A bar screen becomes heavily clogged while flow continues. What is a likely effect across the screen?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Higher head loss"
+     },
+     {
+      "id": "option-2",
+      "label": "Lower head loss across the screen"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Debris obstructs the channel and increases resistance to flow."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "replacesId": "class1-ww-050",
+   "replacesSha256": "c257cd61f8a7886fe4e62e96268b16042d4960fd357aecb541466ea7574406db",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-ww-050-r1",
+    "prompt": "Sand bypasses grit removal and enters a pump. What wear risk increases?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Abrasion of the pump parts"
+     },
+     {
+      "id": "option-2",
+      "label": "Less abrasive wear on the pump parts"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Grit is abrasive and can damage mechanical equipment."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "replacesId": "class1-ww-055",
+   "replacesSha256": "bbaeb9aabf27f9bda7552867e7f3f6f2937a452bca627a06250efa376fb6312f",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-ww-055-r1",
+    "prompt": "At constant flow, the wetted clarifier surface area is halved. What happens to surface loading?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It doubles"
+     },
+     {
+      "id": "option-2",
+      "label": "It is cut in half"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Surface loading is flow divided by surface area."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "replacesId": "class1-ww-061",
+   "replacesSha256": "c994732b6489909e00c0d3b18a56bc26a727f50b909ebb94ff92042c7971e048",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-ww-061-r1",
+    "prompt": "Too much sulfite is fed for dechlorination. What can happen to effluent dissolved oxygen?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It can be lowered"
+     },
+     {
+      "id": "option-2",
+      "label": "It can rise sharply"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "The EPA notes significant sulfite overdosing can suppress dissolved oxygen."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "replacesId": "class1-ww-062",
+   "replacesSha256": "a39ff60c754dc992845a7b84ebf48abceb3390649ded623036014b37ed6b8c8f",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-ww-062-r1",
+    "prompt": "A sample is taken only once during a short influent spike. What can it represent?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Conditions at that time"
+     },
+     {
+      "id": "option-2",
+      "label": "The daily average of the influent"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "A single grab captures a point in time, not necessarily the daily average."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "replacesId": "class1-ww-063",
+   "replacesSha256": "ec47ee42ad1e4078237831b41a8d7ea3adf107fbbf1d5d20e654d77ca2b42120",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-ww-063-r1",
+    "prompt": "Equal volumes are sampled every hour and combined for a stable dissolved constituent. What does the composite represent?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "An average of the sampled values"
+     },
+     {
+      "id": "option-2",
+      "label": "The last instant that was sampled"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Equal-volume aliquots weight the sampled concentrations equally; short spikes between collection times may be missed."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "replacesId": "class1-ww-065",
+   "replacesSha256": "93279c8dfb2f9fbd7f22c86ca8634bc71a30c33e4464dd6d9dec21a4c5599505",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-ww-065-r1",
+    "prompt": "A blower bearing vibration rises from its normal baseline. What is the sensible implication?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Inspect the bearing"
+     },
+     {
+      "id": "option-2",
+      "label": "Conclude the bearing is fine"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Condition monitoring identifies changes that may warrant investigation."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "replacesId": "class1-ww-070",
+   "replacesSha256": "b4aa80a9c2f3a824b00b823e8975ca2f148b382569cb3248efa990c76c2bc8f5",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-ww-070-r1",
+    "prompt": "A worker says, “The confined space smells fine, so I can enter without testing.” Tap the flaw.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Skip testing because the air smells fine"
+     },
+     {
+      "id": "option-2",
+      "label": "Assess the hazards and test the air from outside"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Smell cannot establish a safe atmosphere; follow confined-space procedures."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "replacesId": "class1-ww-072",
+   "replacesSha256": "4db63cd59f696a90ab829f044f3500445fa1bf116bb494e920e64288054f722b",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-ww-072-r1",
+    "prompt": "A worker says, “A closed valve alone always guarantees safe pipe isolation for confined-space work.” Tap the flaw.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "A closed valve alone is enough isolation"
+     },
+     {
+      "id": "option-2",
+      "label": "Use the isolation method set by the hazard assessment"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "CCOHS warns that closing valves alone is insufficient for pipe isolation in this context."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-ww",
+   "replacesId": "class1-ww-081",
+   "replacesSha256": "55c303a3a006196dd1fbe660b63e24cb0f779054101357f795fa406e63fb188d",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-ww-081-r1",
+    "prompt": "A pump operator says, “Any grease is interchangeable with the manufacturer’s specified lubricant.” Tap the flaw.",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Grease type does not matter"
+     },
+     {
+      "id": "option-2",
+      "label": "Use the lubricant the manufacturer specifies"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Different equipment has different lubrication needs; correct lubricant selection matters."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-034",
+   "replacesSha256": "17a185b7df40dcbdc25c6f4d4c497a3462b3451650fa551128f19f2b0a1d21d4",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-034-r1",
+    "prompt": "Which is not normally a physical component of a distribution network?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Buried water main"
+     },
+     {
+      "id": "option-2",
+      "label": "Fire hydrant outlet"
+     },
+     {
+      "id": "option-3",
+      "label": "Elevated storage tank"
+     },
+     {
+      "id": "option-4",
+      "label": "Chlorine demand"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Chlorine demand is a water characteristic, not equipment."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-035",
+   "replacesSha256": "790822ace317461742b0ef6abdb3c78055649f42c4254866da15cfcfa1fd459c",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-035-r1",
+    "prompt": "Which is not a typical physical distribution measurement?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Pressure at a hydrant"
+     },
+     {
+      "id": "option-2",
+      "label": "Flow rate in a main"
+     },
+     {
+      "id": "option-3",
+      "label": "Water level in a tank"
+     },
+     {
+      "id": "option-4",
+      "label": "Invoice number"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "An invoice number is an identifier, not a hydraulic measurement."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-036",
+   "replacesSha256": "c219267d2d5b844654932804c90e1070c05c883b39f909a2a1073941733f9830",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-036-r1",
+    "prompt": "Which one is not a likely sample identifier?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Sampling location name"
+     },
+     {
+      "id": "option-2",
+      "label": "Collection time and date"
+     },
+     {
+      "id": "option-3",
+      "label": "Name of the collector"
+     },
+     {
+      "id": "option-4",
+      "label": "Pipe colour from memory"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "The location, collection time and collector identify the sample; guessed pipe colour does not."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-037",
+   "replacesSha256": "aa6f9c50aad0d172b9f3f4b38f87e2d13ca64649cf47d4894fc1bb3e53cbb996",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-037-r1",
+    "prompt": "Which one is not an indication of a possible sampling-cell problem?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "fingerprint on the vial"
+     },
+     {
+      "id": "option-2",
+      "label": "scratched sample vial"
+     },
+     {
+      "id": "option-3",
+      "label": "dirty sample vial"
+     },
+     {
+      "id": "option-4",
+      "label": "clean undamaged vial"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "The manual calls for clean, unscratched vials free of fingerprints."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-039",
+   "replacesSha256": "9bef71fe957c507104f38abfc027ad86c0c589b4e2977ad4dce97ba18c4a96cb",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-039-r1",
+    "prompt": "Which is not a possible route for contaminated liquid to enter a drinking-water system?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "hose left submerged in a non-potable tank"
+     },
+     {
+      "id": "option-2",
+      "label": "damaged main under negative pressure"
+     },
+     {
+      "id": "option-3",
+      "label": "unprotected connection to a non-potable system"
+     },
+     {
+      "id": "option-4",
+      "label": "sealed sample bottle kept off the system"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "A sealed bottle disconnected from the system provides no flow path into the main; the other choices can provide intrusion or backflow paths."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-044",
+   "replacesSha256": "b33155674146a94382d5b7385535e2f99c53aa677a5f513832495eded019722f",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-044-r1",
+    "prompt": "Which item is not an operating record?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "pump run-time reading"
+     },
+     {
+      "id": "option-2",
+      "label": "pressure reading at a pump station"
+     },
+     {
+      "id": "option-3",
+      "label": "repair date and crew"
+     },
+     {
+      "id": "option-4",
+      "label": "unwritten guess about a repair"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "An assumption not recorded is not an operating record."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-051",
+   "replacesSha256": "9c3906fa901d927578a054a5acb96e8971241632457b50687161c4f5b16aeb48",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-051-r1",
+    "prompt": "If a main has trapped air at a high point, what can an appropriate air-release valve do?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Release accumulated air"
+     },
+     {
+      "id": "option-2",
+      "label": "Sterilize the water in the main"
+     },
+     {
+      "id": "option-3",
+      "label": "Measure the customer's usage"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "An air-release valve is intended to vent air pockets."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-056",
+   "replacesSha256": "c2976479d30e8095f2469a53fadc14bb74ef6c8251f67e1c53aa194eaf2fe14a",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-056-r1",
+    "prompt": "An uncovered opening in a finished-water tank allows entry of foreign material. What risk increases?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Contamination of stored water"
+     },
+     {
+      "id": "option-2",
+      "label": "Automatic control of tank pressure"
+     },
+     {
+      "id": "option-3",
+      "label": "Better customer meter accuracy"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Open access can provide a pathway into stored water."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-057",
+   "replacesSha256": "7d05cc5893501aa639bcbb47853b2f2fe374d076786b4d023bc122621280185c",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-057-r1",
+    "prompt": "A chlorine feed pump stops while the rest of the system continues. What should be investigated?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Possible loss of the disinfectant dose"
+     },
+     {
+      "id": "option-2",
+      "label": "A higher chlorine residual in the system"
+     },
+     {
+      "id": "option-3",
+      "label": "A larger diameter in the affected pipe"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "A stopped feed pump can interrupt the dose; verify conditions and follow the SOP."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-058",
+   "replacesSha256": "efa3c71f7ae393ad0e3e7dfedfabe6553014cb981b05481ca22699f536cbf475",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-058-r1",
+    "prompt": "A watermain leak develops below the water table and pressure inside falls below outside pressure. What can occur?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Intrusion through the leak"
+     },
+     {
+      "id": "option-2",
+      "label": "Disinfection of the surrounding soil"
+     },
+     {
+      "id": "option-3",
+      "label": "A mechanical air gap in the main"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "A pressure difference toward the main can draw surrounding water in through a leak."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-060",
+   "replacesSha256": "e27e8f2b63219aba6a21773cf9b6dc5a33db043e0350ed2f4b69fb79b5ff5224",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-060-r1",
+    "prompt": "A pump draws water from a source and increases its energy. What can this help do?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Move water to a higher elevation"
+     },
+     {
+      "id": "option-2",
+      "label": "Reduce the water's chlorine demand"
+     },
+     {
+      "id": "option-3",
+      "label": "Remove the need for storage tanks"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Pump energy can lift water to a higher elevation."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-061",
+   "replacesSha256": "39ae18b1c9a9114456fc331ae5f4aedb62a734c9263831bfebdf676ea17e8d51",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-061-r1",
+    "prompt": "An in-service drinking-water main containing loose deposits is flushed at sufficient flow. Why might deposits decrease?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Flow can carry loose material out"
+     },
+     {
+      "id": "option-2",
+      "label": "The pipe wall filters out the deposits"
+     },
+     {
+      "id": "option-3",
+      "label": "The water in the main becomes older"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Moving water can carry loose material out. Use the approved site-specific flushing plan."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-062",
+   "replacesSha256": "29b03118f021e577a7603accb94eea1a5b39ae855c639db1731548a10ae07f55",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-062-r1",
+    "prompt": "A tank is poorly mixed and water remains inside for a long time. What water-quality risk increases?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Stagnation and residual loss"
+     },
+     {
+      "id": "option-2",
+      "label": "Fresher water at the tank outlet"
+     },
+     {
+      "id": "option-3",
+      "label": "Removal of biofilm from the walls"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Long retention and stagnant areas can reduce residual and encourage regrowth."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-063",
+   "replacesSha256": "9513014863ee6367be412b7fb3ab1aaba5425bbeafe6a987331bb1e806b7dcd7",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-063-r1",
+    "prompt": "The same water volume passes a meter in half the time. What is the average flow rate?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Twice as high"
+     },
+     {
+      "id": "option-2",
+      "label": "Half as high as before"
+     },
+     {
+      "id": "option-3",
+      "label": "Unchanged from before"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Flow equals volume divided by time."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-064",
+   "replacesSha256": "e92c86e78cfb479045b85677a39fee9abc6e546a8632cd9e23e52fe1fe3b8a84",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-064-r1",
+    "prompt": "A dry-barrel hydrant is used in freezing weather. Why is drainage of its barrel useful?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It leaves less water to freeze"
+     },
+     {
+      "id": "option-2",
+      "label": "It disinfects the main as it drains"
+     },
+     {
+      "id": "option-3",
+      "label": "It records the pressure while draining"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "A dry barrel design helps prevent freezing damage when correctly drained."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-065",
+   "replacesSha256": "5eb68348fb3c7a647271fdb4654746c79b3d4811cfcedbcd712f8365f00b2681",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-065-r1",
+    "prompt": "A cross-connection is removed by a suitable physical air gap. What direct benefit does this provide?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Breaks the liquid connection"
+     },
+     {
+      "id": "option-2",
+      "label": "Adds chlorine to the water supply"
+     },
+     {
+      "id": "option-3",
+      "label": "Increases the diameter of the main"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "The physical separation interrupts the direct liquid pathway."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-066",
+   "replacesSha256": "89e50b6b0da5cb09dbe5364fa6781e12ee3f7dc1abc007d1878da9bd49fc934a",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-066-r1",
+    "prompt": "A worker prepares a DPD chlorine test. Which action is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Leaving fingerprints on the vial"
+     },
+     {
+      "id": "option-2",
+      "label": "Following the timing in the kit"
+     },
+     {
+      "id": "option-3",
+      "label": "Using the reagent specified for the kit"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Fingerprints can interfere with the measurement; keep the vial clean."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-067",
+   "replacesSha256": "09cdf4455a94b7fb406311d4c1e60c989e4d80f615d0a8c7b22923dfeddced7c",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-067-r1",
+    "prompt": "A sample is taken for a laboratory microbiological test. Which action is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Skipping the lab handling instructions"
+     },
+     {
+      "id": "option-2",
+      "label": "Labelling the bottle with the sample location"
+     },
+     {
+      "id": "option-3",
+      "label": "Recording the time of collection on the form"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Follow the receiving laboratory instructions for collecting and handling the sample."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-068",
+   "replacesSha256": "11e5c083dd75f53c7656f0cbaab0ba2c00f456f42607b5c453c1118a48068ea2",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-068-r1",
+    "prompt": "A worker plans a valve operation. Which action is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Assuming valves close in the same direction"
+     },
+     {
+      "id": "option-2",
+      "label": "Checking the valve map against the work plan"
+     },
+     {
+      "id": "option-3",
+      "label": "Recording the final valve position and turns"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Valve opening and closing direction may vary; check identification and the local procedure."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-070",
+   "replacesSha256": "29ae6be48b4133dd18722d54e2b78a0e58113413a0576d7748e3cf342fab1f67",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-070-r1",
+    "prompt": "Which action undermines a reliable operator handover?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Omitting an unresolved alarm from the log"
+     },
+     {
+      "id": "option-2",
+      "label": "Recording a pump fault and its time"
+     },
+     {
+      "id": "option-3",
+      "label": "Noting the time and operator of a valve change"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Incomplete records hide conditions the next operator needs to know."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-072",
+   "replacesSha256": "067cf207f41878c724adf7b8c0a9f474695a510033a34db864103193d604c345",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-072-r1",
+    "prompt": "Which practice can compromise a microbiological sample?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Touching the inside of the bottle cap"
+     },
+     {
+      "id": "option-2",
+      "label": "Using the bottle provided by the lab"
+     },
+     {
+      "id": "option-3",
+      "label": "Following the lab's instructions for filling"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Touching sterile surfaces can introduce contamination into the sample."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-073",
+   "replacesSha256": "3b185d3ad3e727069efb8a51281e869157ff5959e0dc78af8f628bff8a472048",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-073-r1",
+    "prompt": "When deciding how to return a repaired main to service, which action is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Assume one clear flush authorizes service"
+     },
+     {
+      "id": "option-2",
+      "label": "Follow the applicable disinfection procedure and SOP"
+     },
+     {
+      "id": "option-3",
+      "label": "Use the required verification for the specific work"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Visual clarity alone is not a universal return-to-service criterion."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-075",
+   "replacesSha256": "2e063bda92069412de56b7aa8ffa6bcde2c884a0d3b44a6dc22fc6ec76970369",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-075-r1",
+    "prompt": "A worker uses a DPD colorimeter. Which action is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Reading well after the specified time"
+     },
+     {
+      "id": "option-2",
+      "label": "Using a clean, unscratched cuvette"
+     },
+     {
+      "id": "option-3",
+      "label": "Using the reagent that matches the test"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Timing affects DPD results; follow the manufacturer’s reading window."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-076",
+   "replacesSha256": "f722c0a64e3a8fee66c3e3002540101b6d6faa4eb311965eaa99542922d49146",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-076-r1",
+    "prompt": "A planned repair needs excavation near buried utilities. Which action is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Dig before utilities are marked"
+     },
+     {
+      "id": "option-2",
+      "label": "Review the utility information on file"
+     },
+     {
+      "id": "option-3",
+      "label": "Use the site safety procedure and plan"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Locating and marking underground services reduces the risk of striking them."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-079",
+   "replacesSha256": "b37563263ab12f798bcb592023c98d57acd32f551613c6faf38349a599acbd0f",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-079-r1",
+    "prompt": "A sample vial has bubbles after mixing. Which action is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Ignore bubbles the method says to remove"
+     },
+     {
+      "id": "option-2",
+      "label": "Follow the instrument instructions exactly as written"
+     },
+     {
+      "id": "option-3",
+      "label": "Handle the vial by its clean surfaces"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Bubbles can affect readings; use the method’s prescribed technique."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-084",
+   "replacesSha256": "2b4ba3a4241d8c9aa5eaf65552f757fe47b0267fa8bcf659b8794a39bf9d4601",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-084-r1",
+    "prompt": "During a pressure complaint, which action is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Name a cause before checking records"
+     },
+     {
+      "id": "option-2",
+      "label": "Record the customer's location and concern"
+     },
+     {
+      "id": "option-3",
+      "label": "Check system pressure data under the SOP"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "A complaint has multiple possible causes and should be investigated."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-water-dist",
+   "replacesId": "class1-water-dist-085",
+   "replacesSha256": "7b9d41ee566f18e9bee2c11d1d0d3a9bce0c499e0a25382279db7ffc5e696074",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-water-dist-085-r1",
+    "prompt": "A crew handles a watermain component for repair. Which action is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Set its contact surface down in the dirt"
+     },
+     {
+      "id": "option-2",
+      "label": "Keep the part clean and protected from soil"
+     },
+     {
+      "id": "option-3",
+      "label": "Follow the applicable disinfection procedure"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Contaminating surfaces creates a pathway into the watermain."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-032",
+   "replacesSha256": "06fec8f131aa81c2ac0dddaa4754fc637904726a0404001b6c76b22a46770167",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-032-r1",
+    "prompt": "Which activity is not a collection-system inspection or investigation method?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Dye testing of connections"
+     },
+     {
+      "id": "option-2",
+      "label": "CCTV pipe inspection"
+     },
+     {
+      "id": "option-3",
+      "label": "Smoke testing of sewers"
+     },
+     {
+      "id": "option-4",
+      "label": "Pump lubrication"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Lubrication maintains equipment; the other methods investigate system condition or connections."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-033",
+   "replacesSha256": "5df685072366d40d63d1137986f812e974292566afac5103039082962c134a50",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-033-r1",
+    "prompt": "Which is not a sewer blockage material?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Hardened grease deposits"
+     },
+     {
+      "id": "option-2",
+      "label": "Rags and wipes caught in the pipe"
+     },
+     {
+      "id": "option-3",
+      "label": "Roots entering joints"
+     },
+     {
+      "id": "option-4",
+      "label": "Clear pipe wall"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Roots, grease and rags can obstruct flow; a clear wall is not an obstruction."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-035",
+   "replacesSha256": "f9afdcc83795f204ba271ed92ff4b58cd492f9476c856e34a1ffebacd7da415a",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-035-r1",
+    "prompt": "Which is not a potentially useful entry in a sewer asset map?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Pipe diameter and material of each run"
+     },
+     {
+      "id": "option-2",
+      "label": "Direction of flow in each pipe"
+     },
+     {
+      "id": "option-3",
+      "label": "Manhole ID number and depth"
+     },
+     {
+      "id": "option-4",
+      "label": "Operator favourite colour"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Asset attributes help locate and understand the system; favourite colour does not."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-037",
+   "replacesSha256": "9476f997039036d77f2477a7244ed68f69fc0a594a6b1094ae55b2a9ab9745bb",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-037-r1",
+    "prompt": "Which is not a source of inflow in the given examples?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Roof drain connected to the sewer"
+     },
+     {
+      "id": "option-2",
+      "label": "Open manhole cover in floodwater"
+     },
+     {
+      "id": "option-3",
+      "label": "Storm catch basin connected to the sewer"
+     },
+     {
+      "id": "option-4",
+      "label": "Groundwater seeping through a joint"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Groundwater seeping through a joint is infiltration; the other examples are direct inflow paths."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-039",
+   "replacesSha256": "037e4790aa25b9d3c094b2217b9af4a6be5e0acf7d1806ef3027c79fc4efbdb4",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-039-r1",
+    "prompt": "Which does not normally describe a collection record?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Staff favourite film"
+     },
+     {
+      "id": "option-2",
+      "label": "Location of the cleaning work"
+     },
+     {
+      "id": "option-3",
+      "label": "Pump run hours this month"
+     },
+     {
+      "id": "option-4",
+      "label": "Manhole inspection finding"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "The other entries document system condition, operation or work performed."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-040",
+   "replacesSha256": "dd89e398b10a80b59a80c461b7db2c13080c5def22d4cafa3600a8a611a07a79",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-040-r1",
+    "prompt": "Which is not a typical pipe condition detected by interior CCTV?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Visible crack in the pipe wall"
+     },
+     {
+      "id": "option-2",
+      "label": "Root intrusion at a joint"
+     },
+     {
+      "id": "option-3",
+      "label": "Motor winding resistance"
+     },
+     {
+      "id": "option-4",
+      "label": "Accumulated debris on the invert"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "A sewer camera can show interior pipe conditions, not test motor insulation."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-042",
+   "replacesSha256": "75adae3511a83bd13ce7df6400f09d245a77e87b4cba1c8545b8f07d8fcbdf9b",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-042-r1",
+    "prompt": "Which is not a potential contributor to a sewer overflow?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Pump failure at the station"
+     },
+     {
+      "id": "option-2",
+      "label": "Adequate pipe capacity"
+     },
+     {
+      "id": "option-3",
+      "label": "Collapsed pipe section downstream"
+     },
+     {
+      "id": "option-4",
+      "label": "Blockage of the sewer pipe"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Blockage, pump failure and collapse can restrict conveyance; adequate clear capacity does not."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-043",
+   "replacesSha256": "fdd3a5edc7f02be7d2a4cbef6692b77247615bcf67d96855276c30daba507302",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-043-r1",
+    "prompt": "Which is not a component of a basic pump station?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Pump with a motor"
+     },
+     {
+      "id": "option-2",
+      "label": "Wet well for storage"
+     },
+     {
+      "id": "option-3",
+      "label": "Discharge pipe to the force main"
+     },
+     {
+      "id": "option-4",
+      "label": "Traffic signal"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "The other components collect or convey wastewater through the pump station."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-044",
+   "replacesSha256": "b98f200adbda05675dafd15912a50d4a4c43b145ef65677c409a4eeeb638992c",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-044-r1",
+    "prompt": "Which is not a sewer cleaning approach?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Checking a billing address"
+     },
+     {
+      "id": "option-2",
+      "label": "Rodding with a cutting head"
+     },
+     {
+      "id": "option-3",
+      "label": "Flushing with a water truck"
+     },
+     {
+      "id": "option-4",
+      "label": "High-pressure water jetting"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Jetting, rodding and flushing are cleaning approaches; checking a billing address is not."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-045",
+   "replacesSha256": "e4a262c2f54741c76d2bd3407752a6cc8c4eec446badf75c6f1d1f4a009386ef",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-045-r1",
+    "prompt": "Which is not a potentially useful wet-well monitoring observation?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Liquid level in the well"
+     },
+     {
+      "id": "option-2",
+      "label": "Street tree species"
+     },
+     {
+      "id": "option-3",
+      "label": "Pump running or stopped status"
+     },
+     {
+      "id": "option-4",
+      "label": "Alarm condition at the station"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "The first three observations describe station operating conditions."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-048",
+   "replacesSha256": "bd4c92d715b840743f710a2873698b59554b10813bd8363b215d1b99510956d9",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-048-r1",
+    "prompt": "A check valve at a lift station fails open after the pump stops. What may occur?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "The gravity sewer gains extra slope"
+     },
+     {
+      "id": "option-2",
+      "label": "The wet well stops receiving inflow"
+     },
+     {
+      "id": "option-3",
+      "label": "Flow returns toward the wet well"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "The check valve normally limits reverse flow from the discharge."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-053",
+   "replacesSha256": "81715ddce3d0781dbc95a7dc9685da0fa3326c518829a342ca8df66789ccf802",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-053-r1",
+    "prompt": "A cracked sewer carries wastewater under conditions that allow outward leakage. What can happen?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "A gain in the pipe's material strength"
+     },
+     {
+      "id": "option-2",
+      "label": "Inflow from a connected roof drain"
+     },
+     {
+      "id": "option-3",
+      "label": "Exfiltration to surrounding soil"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Exfiltration means wastewater escapes from the collection system."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-058",
+   "replacesSha256": "ada29f458f684f6c8f861284be554a65c1ddbbd7a7e4e469cca3da16e4dbc211",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-058-r1",
+    "prompt": "A sewer section has recurring root intrusions documented by inspection. What planning benefit follows?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Treat the whole network as one condition"
+     },
+     {
+      "id": "option-2",
+      "label": "Target that section for maintenance"
+     },
+     {
+      "id": "option-3",
+      "label": "Reduce how often inspections are recorded"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Inspection history helps direct maintenance toward known problem areas."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-059",
+   "replacesSha256": "fe81fff36430c8bd164c5a032295caf252d359a2add465fe8657bda6d4888b69",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-059-r1",
+    "prompt": "Hydrogen sulfide accumulates in a low-lying confined space. What hazard can increase?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "A safer atmosphere in the space"
+     },
+     {
+      "id": "option-2",
+      "label": "Dangerous inhalation exposure"
+     },
+     {
+      "id": "option-3",
+      "label": "A drop in the gas's toxicity level"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Hydrogen sulfide is highly toxic and can accumulate in low areas and confined spaces."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-063",
+   "replacesSha256": "1359dbf0bfc5aaf485dbb8d48a5c878d6014036b89bb3f6e39c0826c66af87af",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-063-r1",
+    "prompt": "A sewer inspection reveals a damaged pipe segment. Why record its asset ID?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "To reduce later inspection work"
+     },
+     {
+      "id": "option-2",
+      "label": "To find the segment again"
+     },
+     {
+      "id": "option-3",
+      "label": "To change the slope of the pipe"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Asset identifiers tie observations to the correct location and history."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-067",
+   "replacesSha256": "236f01f7f2dcdc4f2041850e77810419d2e2ee2baf6feda66513f91ab8fdc8e2",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-067-r1",
+    "prompt": "A worker sees a collapsed person in a manhole and plans to jump in immediately. What is the flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Unprotected entry can add a victim"
+     },
+     {
+      "id": "option-2",
+      "label": "Rescues can skip planning when time is short"
+     },
+     {
+      "id": "option-3",
+      "label": "The opening is too wide to enter safely"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Do not enter impulsively: activate the site emergency response and summon trained rescuers; unprotected entry may create another victim."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-069",
+   "replacesSha256": "fdbc6f77c9626535d46bcc69ef3b7105db811389c4f9ea34aa4adfa7e674f8b1",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-069-r1",
+    "prompt": "A crew records a sewer defect but omits its location. What is the flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "A location is the same as a flow rate"
+     },
+     {
+      "id": "option-2",
+      "label": "The asset may be hard to find again"
+     },
+     {
+      "id": "option-3",
+      "label": "The defect may repair itself over time"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Location and asset identification connect the finding to the correct segment."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-070",
+   "replacesSha256": "f2a443b9f15aedb0eb905b790fdc0ad61f7f4e17a95dbf3e5a300ff5eff815e9",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-070-r1",
+    "prompt": "A crew assumes all wet-weather flow is sewage generated by customers. What is the flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Rain on the system tends to lower sewer flow"
+     },
+     {
+      "id": "option-2",
+      "label": "Stormwater or groundwater may contribute"
+     },
+     {
+      "id": "option-3",
+      "label": "Sewer flow stays about the same in wet weather"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Wet-weather increases can include inflow and infiltration, which require investigation."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-072",
+   "replacesSha256": "83d4d2d33ad3aace7b68e9a66ca8107a208355dc04b15e1a652151fb3ceb427c",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-072-r1",
+    "prompt": "An operator calls a running pump “healthy” solely because its motor can be heard. What is the flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "A flow meter works by measuring sound levels"
+     },
+     {
+      "id": "option-2",
+      "label": "Noise alone does not show normal pumping"
+     },
+     {
+      "id": "option-3",
+      "label": "A running motor does not make audible noise"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Check relevant level, flow, pressure and other indicators against normal conditions."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-074",
+   "replacesSha256": "66620c5157e89d078f4550b27b8280cf77894107a77033cfec4d95cd846a6ec9",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-074-r1",
+    "prompt": "A crew decides to clean every sewer equally often without reviewing local condition history. What is the flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Pipe defects are the same everywhere"
+     },
+     {
+      "id": "option-2",
+      "label": "Problem areas and history are ignored"
+     },
+     {
+      "id": "option-3",
+      "label": "Sewers rarely need regular cleaning work"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Inspection and maintenance records help tailor cleaning to actual conditions."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-075",
+   "replacesSha256": "15b44130a6e3d511047bf9de982d172c18463f95d2602da61402a587fb73c1a6",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-075-r1",
+    "prompt": "A crew reports a customer backup as fixed without recording the location or response. What is the flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "The record lacks follow-up information"
+     },
+     {
+      "id": "option-2",
+      "label": "Customer reports hold little useful information"
+     },
+     {
+      "id": "option-3",
+      "label": "A fixed backup does not return"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "A complaint record should identify the location, concern and action taken."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-076",
+   "replacesSha256": "096e2b65ab237abe60f6f4eb7a278da8458999153707fb28745319980f7aad41",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-076-r1",
+    "prompt": "A worker substitutes an arbitrary lubricant for the one specified in a pump manual. What is the flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Pumps rarely need maintenance work"
+     },
+     {
+      "id": "option-2",
+      "label": "It may not suit the equipment"
+     },
+     {
+      "id": "option-3",
+      "label": "Lubricants behave the same way"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Follow equipment instructions for lubricant type and maintenance."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-079",
+   "replacesSha256": "854cbe1cf8ffe338dda0787f7b16a07e711c47d16a2a45df417907d8a24dc6d4",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-079-r1",
+    "prompt": "An operator assumes a high wet-well level proves one specific pump is defective without further checks. What is the flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Several causes can give a high level"
+     },
+     {
+      "id": "option-2",
+      "label": "A high level is caused by the pump motor alone"
+     },
+     {
+      "id": "option-3",
+      "label": "The pipes alone decide the wet-well level"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Pump, power, controls, blockage or excess inflow can all merit investigation."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-080",
+   "replacesSha256": "a55b1dcaad0bbb5c3c61a3215e7fb7bf5995fd3757f5dc135a8b2935a04d113e",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-080-r1",
+    "prompt": "A technician assumes the check valve is an isolation valve for maintenance without verifying the isolation plan. What is the flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "A check valve is not proof of safe isolation"
+     },
+     {
+      "id": "option-2",
+      "label": "Valves lock themselves when they close"
+     },
+     {
+      "id": "option-3",
+      "label": "A check valve measures the level in the wet well"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Use the approved isolation and verification procedure rather than assuming a check valve isolates hazardous energy."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-081",
+   "replacesSha256": "5187a3cdd1c1c8a88d4f019daade0ca023c34bc3681ac658529cec5ad6e868e3",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-081-r1",
+    "prompt": "A crew disposes of wipes in a toilet because the pump will always pass them. What is the flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Wipes dissolve the grease in the pipe"
+     },
+     {
+      "id": "option-2",
+      "label": "Wipes can contribute to blockages"
+     },
+     {
+      "id": "option-3",
+      "label": "Wipes increase the slope of the pipe"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Wipes and other debris can obstruct sewer or pump operation."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-082",
+   "replacesSha256": "06d7eac11d2d3e82a550627bacd85d26e831b94cd9e717c2f1ce3573603449bf",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-082-r1",
+    "prompt": "A worker treats a force main as if it is always unpressurized. What is the flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "A force main can be under pressure"
+     },
+     {
+      "id": "option-2",
+      "label": "A force main runs partly full like a gravity sewer"
+     },
+     {
+      "id": "option-3",
+      "label": "A force main carries clean water, not wastewater"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Force mains convey pumped wastewater under pressure; use approved isolation procedures."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-083",
+   "replacesSha256": "47668345d4e380cd232919588c772949bc57bfbd34f488984ce2ed3ad3ec4571",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-083-r1",
+    "prompt": "A staff member assumes a valid map never needs updating after rehabilitation. What is the flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Changes can make the map inaccurate"
+     },
+     {
+      "id": "option-2",
+      "label": "Maps leave out pipe materials and ages"
+     },
+     {
+      "id": "option-3",
+      "label": "Rehabilitation changes the flow rate, not the pipes"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Updating asset information preserves useful location and condition records."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class1-wastewater-coll",
+   "replacesId": "class1-wastewater-coll-085",
+   "replacesSha256": "880c2bbd54132a2186a49d3c380b7970e23d86fcb2e271665be45ee13668eeb5",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class1-wastewater-coll-085-r1",
+    "prompt": "An operator assumes a clear CCTV image proves every pipe joint is watertight under every condition. What is the flaw?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "A clear image does not show watertightness"
+     },
+     {
+      "id": "option-2",
+      "label": "Camera images show the leakage rate of each joint"
+     },
+     {
+      "id": "option-3",
+      "label": "A camera is not needed to inspect the joints"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "A camera shows visible interior conditions; a separate suitable test may be needed to assess leakage."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  }
+ ]
+}

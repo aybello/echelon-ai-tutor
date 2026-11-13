@@ -277,7 +277,7 @@ describe("private indexed interactive engine", () => {
     const production = join(root, "dist");
     // A tiny isolated bundle proves import.meta.url works after bundling, no server launch.
     const entry = join(root, "entry.ts");
-    writeFileSync(entry, `export { getInteractiveContentEngine } from ${JSON.stringify(join(process.cwd(), "server/interactiveContent/engine/loader.ts"))};`);
+    writeFileSync(entry, `export { InteractiveContentEngine } from ${JSON.stringify(join(process.cwd(), "server/interactiveContent/engine/loader.ts"))};`);
     const { cpSync, mkdirSync } = await import("node:fs");
     mkdirSync(production);
     cpSync(root + "/class1-water", production + "/interactive-content/class1-water", { recursive: true });
@@ -285,6 +285,7 @@ describe("private indexed interactive engine", () => {
     const bundle = await build({ entryPoints: [entry], outfile: join(production, "index.js"), platform: "node", format: "esm", bundle: true, logLevel: "silent", metafile: true });
     expect(Object.keys(bundle.metafile!.inputs).some(file => file.includes("typescript/") || file.endsWith("/compiler.ts"))).toBe(false);
     const bundled = await import(/* @vite-ignore */ pathToFileURL(join(production, "index.js")).href);
-    expect(bundled.getInteractiveContentEngine().getCatalog("class1-water", false).available).toBe(true);
+    // The default root resolves beside the bundle; no overlay, because this bank is synthetic.
+    expect(new bundled.InteractiveContentEngine(undefined, []).getCatalog("class1-water", false).available).toBe(true);
   });
 });

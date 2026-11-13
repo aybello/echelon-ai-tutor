@@ -121,3 +121,35 @@ describe("reviewed option-length revisions for class2-ww", () => {
     expect(after).toBeLessThan(0.3);
   });
 });
+
+describe("every committed revision", () => {
+  const replacements = (committedOverlayDocuments() as ContentOverlay[]).flatMap(d => d.replacements);
+  type Choice = { options: { id: string; label: string }[]; correctOptionId: string; explanation: string; prompt: string };
+  const storedExample = (courseKey: string, id: string) => {
+    const manifest = (engine as unknown as { manifest(k: string): { entries: { id: string }[] } }).manifest(courseKey);
+    const entry = manifest.entries.find(e => e.id === id)!;
+    return (engine as unknown as { examples(m: unknown, s: unknown[]): Choice[] }).examples(manifest, [entry])[0];
+  };
+
+  it("keeps each question's option ids, keyed answer and explanation, and states no absolute wording", () => {
+    expect(replacements.length).toBeGreaterThanOrEqual(124);
+    const absolute = /\b(always|never|automatically|guarantee[sd]?|cannot|must|completely|entirely|any|solely|only)\b/i;
+    for (const r of replacements) {
+      const before = storedExample(r.courseKey, r.replacesId);
+      const after = r.example as unknown as Choice;
+      expect(after.options.map(o => o.id), r.replacesId).toEqual(before.options.map(o => o.id));
+      expect(after.correctOptionId, r.replacesId).toBe(before.correctOptionId);
+      expect(after.explanation, r.replacesId).toBe(before.explanation);
+      for (const o of after.options) expect(absolute.test(o.label), `${r.replacesId}: ${o.label}`).toBe(false);
+    }
+  });
+
+  it("no longer lets the longest option identify the correct answer", () => {
+    for (const r of replacements) {
+      const after = r.example as unknown as Choice;
+      const lens = after.options.map(o => o.label.length);
+      const correct = after.options.find(o => o.id === after.correctOptionId)!.label.length;
+      expect(correct === Math.max(...lens) && new Set(lens).size > 1, r.replacesId).toBe(false);
+    }
+  });
+});
