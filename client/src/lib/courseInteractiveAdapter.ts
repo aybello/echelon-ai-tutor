@@ -161,9 +161,22 @@ export function adaptCourseQuestionsToInteractiveDrills(
   _options: CourseInteractiveAdapterOptions = {},
 ): CourseInteractiveAdapterResult {
   const valid = questions.map(parseQuestion).filter((question): question is ValidQuestion => question !== undefined);
-  const examples: DrillExample[] = valid.map((item, index): RapidSwipeExample => {
-    const correctAnswer = index % 2 === 0;
-    const candidateIndex = correctAnswer ? item.correctIndex : item.options.findIndex((_, optionIndex) => optionIndex !== item.correctIndex);
+  const examples: DrillExample[] = valid.map((item): RapidSwipeExample => {
+    // Source order must not reveal the answer (the old even/odd rule did).
+    // Hash the source text, not its answer key or position, for stable presentation.
+    let seed = 2166136261;
+    for (const char of JSON.stringify([item.question, item.options])) {
+      seed = Math.imul(seed ^ char.codePointAt(0)!, 16777619);
+    }
+    // Avalanche before selecting so similar stems do not create parity patterns.
+    seed ^= seed >>> 16;
+    seed = Math.imul(seed, 0x85ebca6b);
+    seed ^= seed >>> 13;
+    seed = Math.imul(seed, 0xc2b2ae35);
+    seed ^= seed >>> 16;
+    const correctAnswer = (seed >>> 0) < 0x80000000;
+    const distractors = item.options.map((_, optionIndex) => optionIndex).filter(optionIndex => optionIndex !== item.correctIndex);
+    const candidateIndex = correctAnswer ? item.correctIndex : distractors[(seed >>> 1) % distractors.length];
     // Preserve the source quiz's A/B/C labels and show the candidate only once.
     const label = (optionIndex: number) => String.fromCharCode(65 + optionIndex);
     const choices = item.options.map((option, optionIndex) => `${label(optionIndex)}. ${option}`).join("  |  ");
