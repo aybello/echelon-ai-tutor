@@ -11,6 +11,12 @@ const text = z.string().trim().min(1).max(4000);
 const base = { id: interactiveSafeIdSchema, prompt: text, instruction: text.optional() };
 const option = z.object({ id: interactiveSafeIdSchema, label: text }).strict();
 const pair = z.object({ id: interactiveSafeIdSchema, left: text, right: text }).strict();
+const normalize = (value: string) => value.normalize("NFKC").trim().replace(/\s+/gu, " ").toLowerCase();
+const rendererLabel = (value: string) => value.trim().replace(/\s+/g, " ").toLowerCase();
+const unique = (values: string[]) => new Set(values.map(normalize)).size === values.length;
+const containsLabel = (visible: string, label: string) => Array.from(label).length > 3 ? visible.includes(label) : new RegExp(`(?:^|[^\\p{L}\\p{M}\\p{N}_])${label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?=$|[^\\p{L}\\p{M}\\p{N}_])`, "u").test(visible);
+// Same conservative legacy before-after sequence/answer-leak rejection.
+const answerLeak = (value: string) => /(?:→|⇒|⟶|➝|->|=>)|\b(?:(?:correct\s+)?(?:answer|choice|option)\s*(?:is\b|[:=])|answer\s+key\b|hint\s*[:=]|(?:choose|select|pick)\s+(?:the\s+)?(?:first|second|left|right)\s+(?:option|choice|answer)\b|(?:first|second|left|right)\s+(?:option|choice|answer)\s+is\s+correct\b|followed\s+by\b|precedes\b|\bthen\b|first\b[^.!?]*\bsecond\b)/iu.test(value);
 // Both historical before-after payloads are intentionally retained.
 export const interactiveDrillExampleSchema = z.union([
   z.object({ ...base, mode: z.literal("rapid-swipe"), correctAnswer: z.boolean(), explanation: text }).strict(),
@@ -19,7 +25,18 @@ export const interactiveDrillExampleSchema = z.union([
     z.object({ ...base, mode: z.literal(mode), options: z.array(option).min(2).max(20), correctOptionId: interactiveSafeIdSchema, explanation: text }).strict()),
   z.object({ ...base, mode: z.literal("before-after"), correctAnswer: z.enum(["before", "after"]), explanation: text }).strict(),
   z.object({ ...base, mode: z.literal("before-after"), options: z.array(text).length(2), correctAnswer: text, explanation: text }).strict(),
-]);
+]).superRefine((item, ctx) => {
+  const invalid = () => ctx.addIssue({ code: "custom", message: "Invalid interactive example semantics" });
+  if (item.mode === "speed-match") {
+    if (new Set(item.pairs.map(p => p.id)).size !== item.pairs.length || !unique(item.pairs.map(p => p.left)) || !unique(item.pairs.map(p => p.right))) invalid();
+  } else if (item.mode === "before-after") {
+    const visible = `${item.prompt} ${item.instruction ?? ""}`;
+    if (answerLeak(visible)) invalid();
+    if ("options" in item && (!unique(item.options) || item.options.map(rendererLabel).filter(label => label === rendererLabel(item.correctAnswer)).length !== 1 || item.options.some(label => containsLabel(rendererLabel(visible), rendererLabel(label)) || containsLabel(normalize(visible), normalize(label))))) invalid();
+  } else if ("options" in item) {
+    if (new Set(item.options.map(o => o.id)).size !== item.options.length || !item.options.some(o => o.id === item.correctOptionId) || !unique(item.options.map(o => o.label))) invalid();
+  }
+});
 export type InteractiveDrillExample = z.infer<typeof interactiveDrillExampleSchema>;
 export type DrillExample = InteractiveDrillExample;
 
