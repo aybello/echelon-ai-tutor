@@ -9,7 +9,7 @@ import { committedOverlayDocuments, compileOverlays, exampleSha256, type Content
 const here = dirname(fileURLToPath(import.meta.url));
 const registry = JSON.parse(readFileSync(join(here, "release-v1/registry.json"), "utf8")) as { courses: Record<string, unknown> };
 const courseKeys = Object.keys(registry.courses);
-const documents = committedOverlayDocuments() as ContentOverlay[];
+const documents = (committedOverlayDocuments() as ContentOverlay[]).filter(d => d.additions.length > 0);
 const engine = new InteractiveContentEngine();
 const stored = (courseKey: string) => (engine as unknown as { manifest(key: string): { entries: { id: string; mode: string; sha256: string }[] } }).manifest(courseKey);
 
@@ -68,5 +68,56 @@ describe("reviewed rapid-swipe balance overlay", () => {
 
   it("keeps the committed overlay's content hashes stable", () => {
     expect(documents[0].additions.every(a => exampleSha256(a.example).length === 64)).toBe(true);
+  });
+});
+
+describe("reviewed option-length revisions for class2-ww", () => {
+  const modes = ["odd-one-out", "tap-the-flaw", "cause-effect"] as const;
+  const served = () => modes.flatMap(mode => engine.startSession({ courseKey: "class2-ww", mode, sessionSize: 50 }, true).examples);
+  const revisions = (committedOverlayDocuments() as ContentOverlay[]).flatMap(d => d.replacements).filter(r => r.courseKey === "class2-ww");
+
+  it("serves each revision instead of its stored original, with unchanged pool counts", () => {
+    expect(revisions).toHaveLength(32);
+    const plain = new InteractiveContentEngine(undefined, []);
+    for (const mode of modes) {
+      const withOverlay = engine.getCatalog("class2-ww", true).modes.find(m => m.mode === mode)!.totalCount;
+      expect(withOverlay).toBe(plain.getCatalog("class2-ww", true).modes.find(m => m.mode === mode)!.totalCount);
+    }
+    const ids = new Set(served().map(e => e.id));
+    for (const r of revisions) {
+      expect(ids.has(r.example.id), r.example.id).toBe(true);
+      expect(ids.has(r.replacesId), r.replacesId).toBe(false);
+    }
+  });
+
+  it("keeps each question's keyed meaning: same option ids, same key, same explanation", () => {
+    const plain = new InteractiveContentEngine(undefined, []);
+    const originals = new Map(modes.flatMap(mode => plain.startSession({ courseKey: "class2-ww", mode, sessionSize: 50 }, true).examples).map(e => [e.id, e as { options: { id: string }[]; correctOptionId: string; explanation: string }]));
+    for (const r of revisions) {
+      const before = originals.get(r.replacesId)!;
+      const after = r.example as unknown as { options: { id: string }[]; correctOptionId: string; explanation: string };
+      expect(after.options.map(o => o.id)).toEqual(before.options.map(o => o.id));
+      expect(after.correctOptionId).toBe(before.correctOptionId);
+      expect(after.explanation).toBe(before.explanation);
+    }
+  });
+
+  it("no longer lets the longest option identify the correct answer", () => {
+    const longest = (examples: unknown[]) => {
+      let hits = 0, total = 0;
+      for (const e of examples as { options?: { id: string; label: string }[]; correctOptionId?: string }[]) {
+        if (!e.options || !e.correctOptionId) continue;
+        const lens = e.options.map(o => o.label.length);
+        if (new Set(lens).size === 1) continue;
+        total++;
+        if (e.options.find(o => o.id === e.correctOptionId)!.label.length === Math.max(...lens)) hits++;
+      }
+      return hits / total;
+    };
+    const plain = new InteractiveContentEngine(undefined, []);
+    const before = longest(modes.flatMap(mode => plain.startSession({ courseKey: "class2-ww", mode, sessionSize: 50 }, true).examples));
+    const after = longest(served());
+    expect(before).toBeGreaterThan(0.4);
+    expect(after).toBeLessThan(0.3);
   });
 });

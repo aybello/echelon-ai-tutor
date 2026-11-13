@@ -5,6 +5,10 @@ import { causeEffectFit, type CauseEffectChoiceItem } from "../../../shared/inte
 import { interactiveDifficultySchema, interactiveDrillExampleSchema, interactiveSafeIdSchema, type InteractiveDifficulty, type InteractiveDrillExample } from "../../../shared/interactiveSessions";
 import { ENGINE_LIMITS } from "./schema";
 import rapidSwipeBalance from "../overlay/2026-11-14-rapid-swipe-balance.json";
+import optionLengthClass2Ww from "../overlay/2026-11-14-option-length-class2-ww.json";
+
+// Every committed overlay, in application order. Add new reviewed batches here.
+const COMMITTED_OVERLAYS: readonly unknown[] = [rapidSwipeBalance, optionLengthClass2Ww];
 
 /**
  * Committed, server-only content overlays on the published game bank.
@@ -99,7 +103,7 @@ export function compileOverlays(overlays: readonly unknown[]): ReadonlyMap<strin
   return deepFreeze(courses);
 }
 
-const committed = compileOverlays([rapidSwipeBalance]);
+const committed = compileOverlays(COMMITTED_OVERLAYS);
 const empty: CourseOverlay = Object.freeze({ additions: [], replacements: new Map() }) as CourseOverlay;
 export const committedOverlay = (courseKey: string): CourseOverlay => committed.get(courseKey) ?? empty;
-export const committedOverlayDocuments = (): readonly unknown[] => [rapidSwipeBalance];
+export const committedOverlayDocuments = (): readonly unknown[] => COMMITTED_OVERLAYS;
