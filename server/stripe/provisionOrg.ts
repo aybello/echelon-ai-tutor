@@ -1,3 +1,4 @@
+import type { TeamRegion } from "../../shared/teamPricing";
 import { and, eq } from "drizzle-orm";
 import { organizations, subscriptions, stripeEventLog } from "../../drizzle/schema";
 import { ENV } from "../_core/env";
@@ -14,7 +15,6 @@ import { initializeOrganizationRenewalTerm } from "./renewalTerm";
 import {
   getOrganizationTierLabel,
   type OrganizationSubscriptionTier,
-  type SubscriptionProvince,
 } from "./subscriptionProducts";
 
 export interface ProvisionOrgInput {
@@ -24,7 +24,7 @@ export interface ProvisionOrgInput {
   stripeCustomerId: string | null;
   orgName: string;
   managerEmail: string;
-  province: SubscriptionProvince;
+  province: TeamRegion;
   tier: OrganizationSubscriptionTier;
   seats: number;
   currentPeriodStart: Date | null;
@@ -221,7 +221,7 @@ export async function provisionOrgFromWebhook(
         managerEmail: organization.managerEmail,
         orgName: organization.name,
         seats: organization.seatsTotal,
-        tierLabel: getOrganizationTierLabel(organization.tier),
+        tierLabel: getOrganizationTierLabel(organization.tier, organization.province),
         dashboardUrl: `${ENV.appBaseUrl}/account?next=/team`,
       });
 

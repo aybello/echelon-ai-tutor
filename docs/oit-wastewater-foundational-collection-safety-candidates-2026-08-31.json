@@ -1,0 +1,32 @@
+[
+  {
+    "questionNum": 266,
+    "question": "What is the basic purpose of a drop connection in a sanitary sewer manhole?",
+    "options": [
+      "It carries an incoming sewer flow from a higher elevation down toward the manhole invert, which can help reduce excessive turbulence.",
+      "It stores a temporary volume of untreated wastewater so operators can choose when to release it to a nearby receiving waterbody.",
+      "It adds air to sewage by creating a free-falling spray, which is the standard method for preventing odour in every collection system.",
+      "It measures the wastewater pH at the manhole before sending the flow to a separate process for chemical treatment and disinfection."
+    ],
+    "correctIndex": 0,
+    "explanation": "A drop connection is used when an incoming sewer enters a manhole at a higher elevation than the invert. The drop pipe directs the flow downward toward the invert rather than allowing a high free fall inside the manhole.",
+    "sourceTitle": "Ontario Ministry of the Environment — Design Guidelines for Sewage Works",
+    "sourceReference": "Odour Control and Design of Sewer: a drop pipe should be provided where a sewer enters a manhole 610 mm or more above the manhole invert; the surrounding discussion identifies turbulence at drop manholes as a source of sulphide stripping and odour potential.",
+    "sourceUrl": "https://www.ontario.ca/document/design-guidelines-sewage-works/odour-control-and-design-sewer"
+  },
+  {
+    "questionNum": 453,
+    "question": "Which statement best describes the main workplace hazards of chlorine gas?",
+    "options": [
+      "It is a toxic, corrosive oxidizing gas under pressure that can seriously harm workers, especially where gas may accumulate in poorly ventilated areas.",
+      "It is a low-hazard treatment gas that becomes dangerous only when it is intentionally ignited near open flames or high-temperature equipment.",
+      "It is a non-corrosive inert gas that can be managed by opening a nearby door without isolating the area or following the facility response plan.",
+      "It is a biological treatment additive that creates a mild odour but does not require controls for inhalation, skin contact, or eye exposure."
+    ],
+    "correctIndex": 0,
+    "explanation": "Canadian occupational-safety guidance identifies chlorine as an oxidizing gas, an acute inhalation hazard, and corrosive to skin, eyes, and the respiratory tract. It is also a gas under pressure. The exact response to a release must follow the facility’s approved emergency procedures.",
+    "sourceTitle": "Canadian Centre for Occupational Health and Safety — Chlorine Chemical Profile",
+    "sourceReference": "WHMIS and emergency overview: chlorine is an oxidizing gas, acute inhalation hazard, corrosive to skin, eyes, and respiratory tract, and a compressed gas; the profile notes gas may accumulate in low-lying or confined areas if ventilation is insufficient.",
+    "sourceUrl": "https://www.ccohs.ca/oshanswers/chemicals/chem_profiles/chlorine/health-chlorine.htm"
+  }
+]

@@ -1,6 +1,6 @@
 // Echelon Institute — Purchase Success Page
 // Shown after Stripe Checkout completes successfully
-// Verifies the Stripe session and continues into the purchased course setup.
+// Verifies the Stripe session while the signed Stripe webhook records the purchase.
 // Course access remains server-authoritative; browser storage is not an entitlement source.
 
 import { useEffect, useState } from "react";
@@ -8,6 +8,8 @@ import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import LandingNav from "@/components/LandingNav";
+import PurchaseExamDatePrompt from "@/components/PurchaseExamDatePrompt";
+import { adsMeasurement } from "@/lib/googleAds";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
@@ -61,6 +63,18 @@ const PRODUCT_PATHS: Record<string, { label: string; path: string }[]> = {
   "wpi-class1-water": [
     { label: "WPI Class 1 Water Practice Quiz", path: "/wpi-class1-water" },
     { label: "WPI Class 1 Water Mock Exam", path: "/wpi-class1-water-mock" },
+  ],
+  "us-class1-water": [
+    { label: "US Class I Water Treatment Practice Quiz", path: "/us-class1-water" },
+    { label: "US Class I Water Treatment Mock Exam", path: "/us-class1-water-mock" },
+  ],
+  "us-class1-water-dist": [
+    { label: "US Class I Water Distribution Practice Quiz", path: "/us-class1-water-dist" },
+    { label: "US Class I Water Distribution Mock Exam", path: "/us-class1-water-dist-mock" },
+  ],
+  "us-texas-class-d-water": [
+    { label: "Texas Class D Water Practice Quiz", path: "/us-texas-class-d-water" },
+    { label: "Texas Class D Water Mock Exam", path: "/us-texas-class-d-water-mock" },
   ],
   "wpi-class2-water": [
     { label: "WPI Class 2 Water Practice Quiz", path: "/wpi-class2-water" },
@@ -137,6 +151,7 @@ export default function PurchaseSuccess() {
   const requestedProductKey = params.get("product") ?? "";
 
   const [email, setEmail] = useState<string>("");
+  const [requiresSignIn, setRequiresSignIn] = useState(true);
   const [verified, setVerified] = useState(false);
   const [verifying, setVerifying] = useState(true);
   const [referralSource, setReferralSource] = useState("");
@@ -144,13 +159,24 @@ export default function PurchaseSuccess() {
   const [stripeSessionId, setStripeSessionId] = useState("");
   const [purchasedProductKey, setPurchasedProductKey] = useState(requestedProductKey);
   const [accessExpiresAt, setAccessExpiresAt] = useState<Date | null>(null);
+  const [fulfillmentPending, setFulfillmentPending] = useState(false);
+  const [fulfillmentAttempts, setFulfillmentAttempts] = useState(0);
+  const [verificationFailed, setVerificationFailed] = useState(false);
 
   const saveReferral = trpc.stripe.saveReferralSource.useMutation();
 
 
-  // Verify the session with Stripe and record the purchase
+  // Verify the session while Stripe's signed webhook records the purchase.
   const verifySession = trpc.stripe.verifySession.useMutation({
     onSuccess: (data) => {
+      // A transient server/Stripe failure must not erase a payment already
+      // confirmed on this page or imply that the customer should pay again.
+      if (!data.paid) {
+        setVerificationFailed(true);
+        setVerifying(false);
+        return;
+      }
+      setVerificationFailed(false);
       if (data.paid && data.email) {
         setEmail(data.email);
         try {
@@ -161,11 +187,15 @@ export default function PurchaseSuccess() {
       }
       setPurchasedProductKey(data.paid ? data.productKey : "");
       setVerified(data.paid);
+      setRequiresSignIn(data.requiresSignIn);
       setVerifying(false);
       setStripeSessionId(sessionId);
       setAccessExpiresAt(data.accessExpiresAt ?? null);
+      setFulfillmentPending(data.fulfillmentPending);
+      if (!data.fulfillmentPending) adsMeasurement()?.recordPurchase(data.adsConversion);
     },
     onError: () => {
+      setVerificationFailed(true);
       setVerifying(false);
     },
   });
@@ -178,8 +208,32 @@ export default function PurchaseSuccess() {
     }
   }, [sessionId]);
 
+  useEffect(() => {
+    if (!fulfillmentPending || !sessionId || fulfillmentAttempts >= 5 || verificationFailed || verifySession.isPending) return;
+    const timer = window.setTimeout(() => {
+      setFulfillmentAttempts(attempt => attempt + 1);
+      verifySession.mutate({ sessionId });
+    }, 2_000);
+    return () => window.clearTimeout(timer);
+  }, [fulfillmentPending, fulfillmentAttempts, sessionId, verificationFailed, verifySession.isPending]);
+
+  const retryVerification = () => {
+    if (!sessionId || verifySession.isPending) return;
+    setFulfillmentAttempts(0);
+    setVerificationFailed(false);
+    verifySession.mutate({ sessionId });
+  };
+  const waitingForRetry = verificationFailed || fulfillmentAttempts >= 5;
+  const retryButton = (
+    <button type="button" onClick={retryVerification} disabled={!sessionId || verifySession.isPending}
+      style={{ padding: "10px 20px", borderRadius: 8, border: "none", background: "#1D4ED8", color: "#fff", fontSize: 14, fontWeight: 700, cursor: verifySession.isPending ? "wait" : "pointer", fontFamily: "inherit" }}>
+      {verifySession.isPending ? "Checking access…" : "Check access again"}
+    </button>
+  );
+
   return (
     <div
+      className="learner-redesign learner-purchase-page"
       style={{
         fontFamily: "'Sora', sans-serif",
         background: "#F8FAFC",
@@ -190,8 +244,9 @@ export default function PurchaseSuccess() {
       }}
     >
       <LandingNav currentPath="/purchase-success" />
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "40px 24px", width: "100%" }}>
+      <div className="learner-purchase-main" style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "40px 24px", width: "100%" }}>
       <div
+        className="learner-purchase-card"
         style={{
           background: "#fff",
           borderRadius: 20,
@@ -211,7 +266,7 @@ export default function PurchaseSuccess() {
 
         {verifying ? (
           <>
-            <div style={{ fontSize: 40, marginBottom: 16 }}>⏳</div>
+            <div className="learner-status-glyph" aria-hidden="true">CHECK</div>
             <h1 style={{ fontSize: 22, fontWeight: 800, color: "#0F172A", margin: "0 0 8px" }}>
               Confirming your purchase…
             </h1>
@@ -226,13 +281,10 @@ export default function PurchaseSuccess() {
               We couldn't confirm this purchase
             </h1>
             <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, marginBottom: 20 }}>
-              No access was changed. Please return to pricing or contact us if Stripe charged your card.
+              We could not verify your payment right now. If Stripe charged your card, do not purchase again. Check again or contact us for help.
             </p>
-            <Link href="/pricing">
-              <button style={{ padding: "10px 20px", borderRadius: 8, border: "none", background: "#1D4ED8", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
-                Return to Pricing
-              </button>
-            </Link>
+            {sessionId && retryButton}
+            <p><a href="mailto:abello@echeloninstitute.ca">Contact support</a></p>
           </>
         ) : (
           <>
@@ -254,20 +306,30 @@ export default function PurchaseSuccess() {
             <h1 style={{ fontSize: 24, fontWeight: 900, color: "#0F172A", margin: "0 0 8px" }}>
               Payment Successful!
             </h1>
-            <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 8px" }}>
-              {email ? (
+            <p role="status" aria-live="polite" style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: "0 0 8px" }}>
+              {fulfillmentPending ? (
+                <>Your payment is confirmed. You do not need to purchase again. {verifySession.isPending
+                  ? "Checking whether your course access is ready…"
+                  : waitingForRetry
+                    ? "Your course access is not confirmed yet. Automatic checks have paused. Check again below, or contact support if access is still unavailable."
+                    : "We are checking for your course access automatically."}</>
+              ) : email ? (
                 <>
-                  Your {accessExpiresAt ? "Individual Exam Pass" : "grandfathered Practice Pass"} is now active for <strong>{email}</strong>.
+                  Your {accessExpiresAt ? "Individual Exam Pass" : "grandfathered Practice Pass"} has been recorded for <strong>{email}</strong>.
                   {accessExpiresAt ? ` You have unlimited practice through ${new Date(accessExpiresAt).toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" })}.` : " Your original permanent-access terms remain unchanged."}
                 </>
               ) : (
                 <>
-                  Your {accessExpiresAt ? "Individual Exam Pass" : "grandfathered Practice Pass"} is now active.
+                  Your {accessExpiresAt ? "Individual Exam Pass" : "grandfathered Practice Pass"} has been recorded.
                   {accessExpiresAt ? ` You have unlimited practice through ${new Date(accessExpiresAt).toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" })}.` : " Your original permanent-access terms remain unchanged."}
                 </>
               )}
             </p>
+            {fulfillmentPending && waitingForRetry && <div style={{ margin: "16px 0" }}>{retryButton}</div>}
 
+            {requiresSignIn && !fulfillmentPending && <p style={{ color: "#334155", fontSize: 14 }}>
+              Sign in with the email used at checkout to open your course. Your payment is recorded; you do not need to purchase again.
+            </p>}
             {/* Access email reminder */}
             {email && (
               <div style={{ background: "#FFF7ED", border: "1.5px solid #FED7AA", borderRadius: 10, padding: "12px 16px", marginBottom: 16, textAlign: "left" }}>
@@ -276,8 +338,8 @@ export default function PurchaseSuccess() {
               </div>
             )}
 
-            {/* Your Courses - show all unlocked products */}
-            <div
+            {/* Your Courses - show only after the webhook has recorded access */}
+            {!fulfillmentPending && <div
               style={{
                 background: "#F0FDF4",
                 border: "1px solid #BBF7D0",
@@ -294,7 +356,7 @@ export default function PurchaseSuccess() {
                 {[purchasedProductKey].filter(Boolean).map(pk => {
                   const courseLinks = PRODUCT_PATHS[pk] ?? [{ label: pk, path: "/quiz" }];
                   return courseLinks.map(link => (
-                    <Link key={link.path} href={link.path}>
+                    <Link key={link.path} href={requiresSignIn ? `/login/otp?next=${encodeURIComponent(link.path)}` : link.path}>
                       <div
                         style={{
                           padding: "10px 14px",
@@ -310,7 +372,7 @@ export default function PurchaseSuccess() {
                           alignItems: "center",
                         }}
                       >
-                        {link.label}
+                        {requiresSignIn ? `Sign in — ${link.label}` : link.label}
                         {pk === purchasedProductKey && <span style={{ fontSize: 10, background: "#16A34A", color: "#fff", padding: "2px 6px", borderRadius: 4, fontWeight: 700 }}>NEW</span>}
                         <span style={{ color: "#16A34A" }}>→</span>
                       </div>
@@ -318,7 +380,12 @@ export default function PurchaseSuccess() {
                   ));
                 })}
               </div>
-            </div>
+            </div>}
+
+            {/* Exam date: lets the reminder engine reach this learner. Only
+                shown once the purchase is recorded, because the date is
+                attached to that record. */}
+            {!fulfillmentPending && stripeSessionId && <PurchaseExamDatePrompt sessionId={stripeSessionId} />}
 
             {/* How did you hear about us */}
             {!referralSubmitted ? (
@@ -373,7 +440,7 @@ export default function PurchaseSuccess() {
             </div>
 
             <div style={{ marginTop: 24, display: "flex", gap: 12, justifyContent: "center" }}>
-              {purchasedProductKey && PRODUCT_PATHS[purchasedProductKey] && (
+              {!fulfillmentPending && purchasedProductKey && PRODUCT_PATHS[purchasedProductKey] && (
                 <Link href={`/activate/${encodeURIComponent(purchasedProductKey)}`}>
                   <button
                     style={{

@@ -5,6 +5,7 @@ import { useState, useRef, useEffect } from "react";
 import { useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { notifyIdentityChange } from "@shared/identityChange";
 
 export default function Login() {
   usePageMeta({
@@ -52,6 +53,7 @@ export default function Login() {
           localStorage.setItem("echelon_purchased_products", JSON.stringify(data.purchasedProductKeys));
         }
       } catch { /* ignore storage errors */ }
+      notifyIdentityChange();
       // Use hard navigation so the browser commits the session cookie
       // before Account mounts and fires dashboardAuth.me
       window.location.href = "/account";

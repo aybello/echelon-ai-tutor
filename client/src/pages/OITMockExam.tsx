@@ -1,8 +1,8 @@
 // OIT MOCK EXAM — migrated onto MockExamShell (2025-06)
-// 100 questions · 2-hour timer · 70% pass threshold
+// 100 questions · 3-hour timer · 70% pass threshold
 // productKey="oit" (Stripe gate + saved examType)
-import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
-import { useQuestionBank } from "@/hooks/useQuestionBank";
+import MockExamShell from "@/components/MockExamShell";
+import { useMockExamMetadata } from "@/hooks/useQuestionBank";
 import QuizSkeleton from "@/components/QuizSkeleton";
 
 const MODULE_TARGETS: Record<string, number> = {
@@ -32,16 +32,7 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
 };
 
 export default function OITMockExam() {
-  const { questions: dbQuestions, isLoading, dbUnavailable } = useQuestionBank("oit", "full", "mock");
-
-  const pool: ExamQuestion[] = dbQuestions.map(q => ({
-    id: q.id,
-    module: q.module,
-    question: q.question,
-    options: q.options,
-    correct: q.correctIndex,
-    explanation: q.explanation,
-  }));
+  const { totalQuestions, isLoading, dbUnavailable } = useMockExamMetadata("oit");
 
   if (isLoading) return <QuizSkeleton />;
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
@@ -50,20 +41,19 @@ export default function OITMockExam() {
     <MockExamShell
       title="OIT Mock Exam"
       badge="OPERATOR-IN-TRAINING · WATER & WASTEWATER"
-      metaDescription="100-question timed mock exam for the Operator-in-Training (OIT) certification. 2-hour timer, 70% pass threshold, and full module breakdown on results. For Ontario, BC, Alberta, and all Canadian provinces."
+      metaDescription="100-question timed mock exam for the Operator-in-Training (OIT) certification. 3-hour timer, 70% pass threshold, and full module breakdown on results. For Ontario, BC, Alberta, and all Canadian provinces."
       metaKeywords="OIT mock exam, Canadian operator in training exam, water operator practice test, OWWCO OIT, MOECP OIT, timed exam prep"
       examQuestions={100}
       examDuration={3 * 60 * 60}
       passThreshold={0.7}
       moduleTargets={MODULE_TARGETS}
       moduleColors={MODULE_COLORS}
-      questionPool={pool}
       productKey="oit"
       productName="OIT Practice Pass"
       price={49}
       freeQuestionLimit={30}
       features={[
-        `${pool.length.toLocaleString()} OIT Water questions — unlimited attempts`,
+        `${totalQuestions.toLocaleString()} OIT Water questions — unlimited attempts`,
         "Complete 100-question timed mock exams",
         "Full flashcard deck and saved progress",
         "Module-by-module performance tracking",
@@ -73,7 +63,7 @@ export default function OITMockExam() {
       practiceLabel="OIT Practice Mode"
       showProvinceSelector={true}
       currentPath="/oit-mock"
-      infoLine={`${pool.length} questions · Canadian OIT (Water & Wastewater)`}
+      infoLine={`${totalQuestions} questions · Canadian OIT (Water & Wastewater)`}
     />
   );
 }

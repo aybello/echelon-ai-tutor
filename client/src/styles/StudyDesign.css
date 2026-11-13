@@ -1,0 +1,98 @@
+/* Echelon's original visual identity. Layout and study-flow improvements live
+   in StudyWorkspace.css; this layer must not introduce a second brand palette. */
+:where(.course-finder, .study-dashboard, .manager-workspace, .practice-page,
+  .ceu-screen, .study-mock-workspace, .marketing-workspace) {
+  color: var(--echelon-ink);
+  font-family: 'Sora', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.marketing-workspace { background: var(--echelon-canvas); }
+:where(.course-finder, .study-dashboard, .manager-workspace, .practice-page,
+  .ceu-screen, .study-mock-workspace, .marketing-workspace)
+  :is(button, a, input, select, summary) { -webkit-tap-highlight-color: transparent; }
+:where(.course-finder, .study-dashboard, .manager-workspace, .practice-page,
+  .ceu-screen, .study-mock-workspace, .marketing-workspace)
+  :is(button, a, input, select, summary):focus-visible {
+  outline: 3px solid var(--echelon-focus);
+  outline-offset: 3px;
+}
+
+/* Familiar homepage, with the new course finder and free-preview controls. */
+.landing-hero-section {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0e7490 100%);
+  padding: 40px 24px 46px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.landing-hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,.05) 1px, transparent 0);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+.course-path-hero { position: relative; max-width: 800px; margin: 0 auto; }
+.course-path-hero h1 {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(28px, 4.4vw, 50px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: -.03em;
+  margin: 0 0 12px;
+  text-wrap: pretty;
+}
+.course-path-hero h1 span {
+  background: linear-gradient(90deg, #38bdf8, #34d399);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.course-path-intro {
+  font-size: clamp(14px, 1.6vw, 17px);
+  color: rgba(255,255,255,.8);
+  line-height: 1.55;
+  max-width: 620px;
+  margin: 0 auto 22px;
+}
+.landing-hero-btns {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.landing-hero-btns .workspace-primary { background: #2563eb; }
+.landing-hero-btns .workspace-primary:hover { background: #1d4ed8; }
+.landing-hero-btns .landing-oit-secondary {
+  color: #fff;
+  border-radius: 10px;
+}
+.landing-free-preview-note { line-height: 1.6; }
+.course-finder-container {
+  max-width: 1160px;
+  margin: 28px auto 0;
+  padding: 0 24px;
+  scroll-margin-top: 90px;
+}
+
+/* Keep shared exam cards rounded and readable without changing answer states. */
+.study-mock-workspace :is(.mes-intro-card, .mes-question-card, .mes-navigator) {
+  border: 1px solid var(--echelon-line);
+  border-radius: 14px;
+}
+.study-mock-workspace .mes-start-button:disabled { opacity: .6; }
+
+@media (max-width: 680px) {
+  .landing-hero-section { padding: 28px 16px 30px; }
+  .course-path-hero h1 { font-size: clamp(24px, 7vw, 40px); }
+  .course-path-intro { font-size: 14px; }
+  .course-finder-container { padding: 0 16px; margin-top: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :where(.course-finder, .study-dashboard, .manager-workspace, .practice-page,
+    .ceu-screen, .study-mock-workspace, .marketing-workspace) * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "questionNum": 414,
+    "question": "Under O. Reg. 129/04, can an operator-in-training be designated as the overall responsible operator of a wastewater facility?",
+    "options": [
+      "No. An operator-in-training cannot be designated as overall responsible operator.",
+      "Yes, for up to 15 days in any 12-month period when supervised by a certified operator.",
+      "Yes, for any Class I facility when another operator can be contacted by telephone.",
+      "Yes, whenever the facility owner gives written authorization to the operator-in-training."
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 129/04 requires an overall responsible operator to hold an applicable licence of the same or a higher class than the facility. The regulation specifically states that an operator-in-training cannot be designated as an overall responsible operator.",
+    "sourceTitle": "Ontario Regulation 129/04 — Licensing of Sewage Works Operators",
+    "sourceReference": "Section 15(1) requires the overall responsible operator to hold an applicable licence of the same or higher facility class; section 15(3) states that an operator-in-training cannot be designated as overall responsible operator.",
+    "sourceUrl": "https://www.ontario.ca/laws/regulation/040129"
+  }
+]

@@ -1,6 +1,7 @@
 // Terms of Use Page — Echelon Institute
 // Phase 9: Trust, Credibility, and Enterprise Polish
 import SiteNav from "@/components/SiteNav";
+import { INDIVIDUAL_REFUND_SUMMARY, REFUND_CONTACT_EMAIL, TEAM_REFUND_SUMMARY } from "@shared/refundPolicy";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
 const LOGO_URL =
@@ -8,18 +9,18 @@ const LOGO_URL =
 
 export default function Terms() {
   usePageMeta({
-    title: "Terms of Use — Echelon Institute",
+    title: "Terms of Use | Echelon Institute",
     description: "Terms and conditions for using the Echelon Institute exam preparation platform.",
     keywords: "terms of use, terms and conditions, Echelon Institute",
   });
 
   return (
-    <div style={{ fontFamily: "'Sora', sans-serif", background: "#F1F5F9", minHeight: "100vh" }}>
+    <div className="public-redesign public-redesign-legal" style={{ fontFamily: "'Sora', sans-serif", background: "#F1F5F9", minHeight: "100vh" }}>
       <SiteNav currentPath="/terms" />
-      <div style={{ maxWidth: 720, margin: "0 auto", padding: "48px 24px 120px" }}>
+      <div className="public-legal-content" style={{ maxWidth: 720, margin: "0 auto", padding: "48px 24px 120px" }}>
 
         {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: 48 }}>
+        <div className="public-legal-header" style={{ textAlign: "center", marginBottom: 48 }}>
           <img src={LOGO_URL} alt="Echelon Institute" style={{ height: 48, width: "auto", marginBottom: 20 }} />
           <h1 style={{ fontSize: 30, fontWeight: 900, color: "#0F172A", margin: "0 0 10px", letterSpacing: "-0.02em" }}>
             Terms of Use
@@ -57,12 +58,14 @@ export default function Terms() {
         </LegalSection>
 
         <LegalSection title="5. Intellectual Property">
-          <p>All content on Echelon — including questions, explanations, flashcards, study notes, and AI-generated responses — is the property of Echelon Institute or its licensors. You may use the content solely for personal exam preparation. No content may be reproduced or distributed without written permission.</p>
+          <p>All content on Echelon, including questions, explanations, flashcards, study notes, and AI-generated responses, is the property of Echelon Institute or its licensors. You may use the content solely for personal exam preparation. No content may be reproduced or distributed without written permission.</p>
         </LegalSection>
 
         <LegalSection title="6. Payments and Refunds">
           <p>All payments are processed by Stripe. The checkout page identifies the currency before payment. Taxes may be added where required.</p>
-          <p><strong>Refund policy:</strong> We offer a 7-day refund for first-time purchases if you have not completed more than 50 questions. To request a refund, email <a href="mailto:abello@echeloninstitute.ca" style={{ color: "#3B82F6" }}>abello@echeloninstitute.ca</a> with your purchase email and Stripe receipt.</p>
+          <p><strong>Individual Exam Pass refunds:</strong> {INDIVIDUAL_REFUND_SUMMARY}</p>
+          <p><strong>Teams refunds:</strong> {TEAM_REFUND_SUMMARY}</p>
+          <p>To request a refund, email <a href={`mailto:${REFUND_CONTACT_EMAIL}`} style={{ color: "#3B82F6" }}>{REFUND_CONTACT_EMAIL}</a> with your purchase email and Stripe receipt.</p>
           <p>Subscriptions auto-renew annually unless cancelled before the renewal date. You can cancel at any time from your Account page.</p>
         </LegalSection>
 
@@ -93,7 +96,7 @@ export default function Terms() {
 
 function LegalSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div style={{ marginBottom: 32, background: "#fff", borderRadius: 12, border: "1px solid #E2E8F0", padding: "24px 28px" }}>
+    <div className="public-legal-section" style={{ marginBottom: 32, background: "#fff", borderRadius: 12, border: "1px solid #E2E8F0", padding: "24px 28px" }}>
       <h2 style={{ fontSize: 16, fontWeight: 800, color: "#0F172A", margin: "0 0 14px" }}>{title}</h2>
       <div style={{ fontSize: 14, color: "#475569", lineHeight: 1.8 }}>
         {children}

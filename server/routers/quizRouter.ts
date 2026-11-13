@@ -1,3 +1,9 @@
+import { readCourseLearnerProfile, readOverallLearnerActivity } from "../courseLearnerProfile";
+import { latestPracticeAttemptValue } from "../practiceReviewEligibility";
+import { practiceOperationHash, savePracticeAttempt } from "../practiceAttemptStore";
+import { resolveAttemptAttribution, validateIssuedAttribution } from "../teams/attemptAttribution";
+import { practiceIdentity, issuePracticeReceipt, permitsPracticeAttempt, practiceReceiptAttribution } from "../practiceQuestionReceipt";
+import { normalizeWpiClass4Module, wpiClass4StoredModuleNames, WPI_CLASS4_BANK } from "../mockBlueprint";
 /**
  * Quiz Router — Handles question attempt logging and missed questions
  * Powers: Missed Question Quiz, Quick 10 mode, and the Agentic Learning Engine
@@ -8,11 +14,15 @@ import { bankKeyToExamType, FREE_TRIAL_LIMIT } from "../_core/access";
 import { resolveAccessForRequest } from "../_core/accessService";
 import { getDb } from "../db";
 import { resolveLearningIdentity } from "../_core/learningIdentity";
-import { questionAttempts, studentProfiles, questions, questionBankMeta, moduleOverviews, users } from "../../drizzle/schema";
-import { and, eq, desc, sql, gte } from "drizzle-orm";
+import { ELECTRICIAN_309A_PROGRAM_KEY } from "../../shared/certificationPrograms";
+import { questionAttempts, studentProfiles, questions, certificationQuestions, certificationBankVersions, questionBankMeta, moduleOverviews, bookmarks } from "../../drizzle/schema";
+import { and, eq, desc, sql, gte, inArray, notInArray, or } from "drizzle-orm";
 import { z } from "zod";
 import { resolveCourseKey } from "../../shared/courseRegistry";
+import { attemptCourseFilter, attemptIdentityFilter, courseActivityScope } from "../courseActivityScope";
 import { learnerVisibleQuestionFilter } from "../questionGovernance";
+import { reconcileLearnerBankModules } from "../../shared/learnerBankModules";
+import { ontarioWastewaterMockProfile } from "../../shared/ontarioWastewaterMock";
 
 export const OIT_PREVIEW_LIMITS = {
   practice: 15,
@@ -27,6 +37,14 @@ export const OIT_PREVIEW_CALC_MINIMUMS = {
 } as const;
 
 export type OitPreviewSurface = keyof typeof OIT_PREVIEW_LIMITS;
+
+/**
+ * A learner only needs a session-sized working set in the browser. Keeping the
+ * response bounded avoids sending an entire paid bank (including every answer
+ * and explanation) to one device while retaining enough breadth for a
+ * 100-question mock and module filtering.
+ */
+export const FULL_ACCESS_QUESTION_LIMIT = 200;
 
 export function previewLimitForRequest(input: {
   bankKey: string;
@@ -136,6 +154,21 @@ export function buildPreviewSample<T extends PreviewQuestionRow>(
   return sampled;
 }
 
+export function buildFullAccessSample<T extends PreviewQuestionRow>(
+  rows: T[],
+  limit = FULL_ACCESS_QUESTION_LIMIT,
+  random: () => number = Math.random,
+): T[] {
+  if (rows.length <= limit) return [...rows];
+
+  const shuffled = [...rows];
+  for (let index = shuffled.length - 1; index > 0; index--) {
+    const swapIndex = Math.floor(random() * (index + 1));
+    [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+  }
+  return buildPreviewSample(shuffled, limit, "practice");
+}
+
 /**
  * Columns needed by learner quiz screens. Keep governance-only columns out of
  * this projection so ordinary quiz reads remain compatible during the brief
@@ -158,153 +191,192 @@ export const learnerQuestionColumns = {
   cognitiveLevel: questions.cognitiveLevel,
 };
 
+/** Parse before sampling, so malformed rows cannot shorten an issued exam. */
+export function parseLearnerQuestions(rows: (typeof questions.$inferSelect | Pick<typeof questions.$inferSelect, keyof typeof learnerQuestionColumns>)[]) {
+  return rows.flatMap(r => {
+    try {
+      const options = JSON.parse(r.options) as string[];
+      if (!Array.isArray(options) || options.length !== 4 || !options.every(o => typeof o === "string")
+        || r.correctIndex < 0 || r.correctIndex >= options.length) return [];
+      return [{ id: r.questionNum, module: r.bankKey === WPI_CLASS4_BANK ? normalizeWpiClass4Module(r.module) : r.module, cognitiveLevel: r.cognitiveLevel, difficulty: r.difficulty, question: r.question,
+        options, correctIndex: r.correctIndex, explanation: r.explanation,
+        steps: r.steps ? JSON.parse(r.steps) as { l: string; c: string }[] : undefined,
+        tip: r.tip ?? undefined, isCalc: r.isCalc === "yes", topic: r.topic ?? undefined }];
+    } catch { return []; }
+  });
+}
+
+const questionWorkingSetInput = z.object({
+  bankKey: z.string().min(1).max(64),
+  accessToken: z.string().optional(),
+  previewSurface: z.enum(["practice", "flashcards", "mock"]).optional(),
+});
+
+// One resolver preserves the exact entitlement, sampling, projection, and receipt
+// behavior for the legacy query and allowed interactive POST requests.
+async function questionWorkingSet({ input, ctx }: {
+  input: z.infer<typeof questionWorkingSetInput>;
+  ctx: import("../_core/context").TrpcContext;
+}, privilegedInteractiveAccess = false) {
+  const db = await getDb();
+  if (!db) {
+    throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+  }
+  const { course } = courseActivityScope(input.bankKey, { requireActive: true });
+  const examType = course.courseKey;
+  const hasAccess = await resolveAccessForRequest(ctx, examType, {
+    accessToken: input.accessToken,
+    ...(privilegedInteractiveAccess ? { privilegedInteractiveAccess: true } : {}),
+  });
+  const rows = await db
+    .select(learnerQuestionColumns)
+    .from(questions)
+    .where(and(
+      eq(questions.bankKey, course.questionBankKey),
+      learnerVisibleQuestionFilter(),
+    ))
+    .orderBy(questions.questionNum);
+
+  const total = rows.length;
+  const previewLimit = previewLimitForRequest(input);
+  // For trial users, sample questions across all modules for a representative experience
+  // instead of just taking the first N (which would all be from one module).
+  let visible;
+  if (hasAccess) {
+    visible = buildFullAccessSample(rows);
+  } else {
+    const surface = input.previewSurface ?? "practice";
+    const minimumCalculations = resolveCourseKey(examType)?.track === "oit"
+      ? OIT_PREVIEW_CALC_MINIMUMS[surface]
+      : 0;
+    visible = buildPreviewSample(
+      previewRowsForBank(rows, input.bankKey),
+      previewLimit,
+      surface,
+      minimumCalculations,
+    );
+  }
+
+  // Per-row safe parse: one malformed row is skipped, not fatal to the bank.
+  const parsed = visible.flatMap((r) => {
+    try {
+      return [{
+        id: r.questionNum,
+        module: r.bankKey === WPI_CLASS4_BANK ? normalizeWpiClass4Module(r.module) : r.module,
+        cognitiveLevel: r.cognitiveLevel,
+        difficulty: r.difficulty,
+        question: r.question,
+        options: JSON.parse(r.options) as string[],
+        correctIndex: r.correctIndex,
+        explanation: r.explanation,
+        steps: r.steps ? (JSON.parse(r.steps) as { l: string; c: string }[]) : undefined,
+        tip: r.tip ?? undefined,
+        isCalc: r.isCalc === "yes",
+        topic: r.topic ?? undefined,
+      }];
+    } catch (err) {
+      console.error(`[getQuestions] malformed row ${r.bankKey}#${r.questionNum}:`, err);
+      return [];
+    }
+  });
+
+  const actor = await practiceIdentity(ctx, input.accessToken);
+  const issuedIdentity = await resolveLearningIdentity(actor.context);
+  const attribution = hasAccess ? await resolveAttemptAttribution(issuedIdentity, course.courseKey) : undefined;
+  const attemptToken = await issuePracticeReceipt(course.questionBankKey, parsed.map(q => q.id), actor.owner, !hasAccess, attribution);
+  return { questions: parsed.map(q => ({ ...q, attemptToken })), locked: !hasAccess, total, trialLimit: previewLimit };
+}
+
 export const quizRouter = router({
   /**
-   * getQuestions — fetch all questions for a given bank key.
-   * Returns the full question array needed by quiz/mock/flashcard pages.
+   * getQuestions — fetch a bounded, module-balanced working set.
+   * The total bank size is returned separately; the browser never needs every
+   * paid question and answer in one response.
    */
-    getQuestions: publicProcedure
+  getQuestions: publicProcedure.input(questionWorkingSetInput).query(opts => questionWorkingSet(opts)),
+  // The interactive fallback uses POST so access tokens never enter URLs.
+  getInteractiveQuestions: publicProcedure.input(questionWorkingSetInput).mutation(opts => {
+    // 309A is served by its beta-controlled route, not the generic question bank.
+    if (resolveCourseKey(opts.input.bankKey)?.courseKey === "electrician-309a") {
+      throw new TRPCError({ code: "FORBIDDEN", message: "Interactive questions are unavailable for this course." });
+    }
+    return questionWorkingSet(opts, true);
+  }),
+
+  /** Bounded pages from the requested slice, including identity-scoped review. */
+  getRandomQuestions: publicProcedure
     .input(z.object({
       bankKey: z.string().min(1).max(64),
-      accessToken: z.string().optional(),
-      previewSurface: z.enum(["practice", "flashcards", "mock"]).optional(),
-    }))
-    .query(async ({ input, ctx }) => {
-      const db = await getDb();
-      if (!db) {
-        throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-      }
-            const examType = bankKeyToExamType(input.bankKey);
-      const hasAccess = await resolveAccessForRequest(ctx, examType, {
-        accessToken: input.accessToken,
-      });
-      const rows = await db
-        .select(learnerQuestionColumns)
-        .from(questions)
-        .where(and(
-          eq(questions.bankKey, input.bankKey),
-          learnerVisibleQuestionFilter(),
-        ))
-        .orderBy(questions.questionNum);
-
-      const total = rows.length;
-      const previewLimit = previewLimitForRequest(input);
-      // For trial users, sample questions across all modules for a representative experience
-      // instead of just taking the first N (which would all be from one module).
-      let visible;
-      if (hasAccess) {
-        visible = rows;
-      } else {
-        const surface = input.previewSurface ?? "practice";
-        const minimumCalculations = resolveCourseKey(examType)?.track === "oit"
-          ? OIT_PREVIEW_CALC_MINIMUMS[surface]
-          : 0;
-        visible = buildPreviewSample(
-          previewRowsForBank(rows, input.bankKey),
-          previewLimit,
-          surface,
-          minimumCalculations,
-        );
-      }
-
-      // Per-row safe parse: one malformed row is skipped, not fatal to the bank.
-      const parsed = visible.flatMap((r) => {
-        try {
-          return [{
-            id: r.questionNum,
-            module: r.module,
-            difficulty: r.difficulty,
-            question: r.question,
-            options: JSON.parse(r.options) as string[],
-            correctIndex: r.correctIndex,
-            explanation: r.explanation,
-            steps: r.steps ? (JSON.parse(r.steps) as { l: string; c: string }[]) : undefined,
-            tip: r.tip ?? undefined,
-            isCalc: r.isCalc === "yes",
-            topic: r.topic ?? undefined,
-          }];
-        } catch (err) {
-          console.error(`[getQuestions] malformed row ${r.bankKey}#${r.questionNum}:`, err);
-          return [];
-        }
-      });
-
-      return { questions: parsed, locked: !hasAccess, total, trialLimit: previewLimit };
-    }),
-
-  /**
-   * getRandomQuestions — fetch a small random batch of questions for instant quiz start.
-   * Returns N random questions (default 20) so the first question appears immediately
-   * while the full bank loads in the background.
-   */
-    getRandomQuestions: publicProcedure
-    .input(z.object({
-      bankKey: z.string().min(1).max(64),
-      limit: z.number().int().min(1).max(50).default(20),
-      excludeIds: z.array(z.number().int()).max(200).default([]),
+      limit: z.number().int().min(1).max(50).default(50),
+      excludeIds: z.array(z.number().int().positive()).max(10000).default([]),
+      module: z.string().min(1).max(255).optional(),
+      topic: z.string().min(1).max(255).optional(),
+      calcOnly: z.boolean().default(false),
+      difficulty: z.enum(["all", "easy", "medium", "hard"]).default("all"),
+      reviewMode: z.enum(["standard", "missed", "bookmarked", "low-confidence"]).default("standard"),
       accessToken: z.string().optional(),
     }))
     .query(async ({ input, ctx }) => {
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-            const examType = bankKeyToExamType(input.bankKey);
-      const hasAccess = await resolveAccessForRequest(ctx, examType, {
-        accessToken: input.accessToken,
-      });
-      const excludeClause = input.excludeIds.length > 0
-        ? sql` AND ${questions.questionNum} NOT IN (${sql.join(input.excludeIds.map((id) => sql`${id}`), sql`, `)})`
-        : sql``;
-
-      if (hasAccess) {
-        // Full access: random from entire bank
-        const rows = await db.execute(
-          sql`SELECT * FROM questions WHERE bankKey = ${input.bankKey} AND reviewStatus NOT IN ('in_review', 'rejected')${excludeClause} ORDER BY RAND() LIMIT ${input.limit}`
-        );
-        const list = (rows[0] as unknown as any[]).flatMap((r: any) => {
-          try {
-            return [{
-              id: r.questionNum, module: r.module, difficulty: r.difficulty, question: r.question,
-              options: JSON.parse(r.options) as string[], correctIndex: r.correctIndex, explanation: r.explanation,
-              steps: r.steps ? (JSON.parse(r.steps) as { l: string; c: string }[]) : undefined,
-              tip: r.tip ?? undefined, isCalc: r.isCalc === "yes", topic: r.topic ?? undefined,
-            }];
-          } catch { return []; }
-        });
-        return { questions: list, locked: false };
-      } else {
-        // Trial: sample across modules (round-robin first question from each module)
-        // to give a representative experience instead of all from one module.
-        const allRows = await db.execute(
-          sql`SELECT * FROM questions WHERE bankKey = ${input.bankKey} AND reviewStatus NOT IN ('in_review', 'rejected')${excludeClause} ORDER BY module, questionNum`
-        );
-        const allList = allRows[0] as unknown as any[];
-        const sampleLimit = Math.min(FREE_TRIAL_LIMIT, input.limit);
-        const minimumCalculations = resolveCourseKey(examType)?.track === "oit"
-          ? Math.min(OIT_PREVIEW_CALC_MINIMUMS.practice, sampleLimit)
-          : 0;
-        const sampled = buildPreviewSample(
-          previewRowsForBank(allList, input.bankKey),
-          sampleLimit,
-          "practice",
-          minimumCalculations,
-        );
-        // Shuffle the sampled array for randomness
-        for (let i = sampled.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [sampled[i], sampled[j]] = [sampled[j], sampled[i]];
-        }
-        const list = sampled.flatMap((r: any) => {
-          try {
-            return [{
-              id: r.questionNum, module: r.module, difficulty: r.difficulty, question: r.question,
-              options: JSON.parse(r.options) as string[], correctIndex: r.correctIndex, explanation: r.explanation,
-              steps: r.steps ? (JSON.parse(r.steps) as { l: string; c: string }[]) : undefined,
-              tip: r.tip ?? undefined, isCalc: r.isCalc === "yes", topic: r.topic ?? undefined,
-            }];
-          } catch { return []; }
-        });
-        return { questions: list, locked: true };
+      const { course, keys } = courseActivityScope(input.bankKey, { requireActive: true });
+      const hasAccess = await resolveAccessForRequest(ctx, course.courseKey, { accessToken: input.accessToken });
+      const identity = await resolveLearningIdentity(ctx);
+      const identified = Boolean(identity.userId || identity.studentEmail);
+      if (input.reviewMode !== "standard" && !identified) {
+        throw new TRPCError({ code: "UNAUTHORIZED", message: "Sign in to review your saved questions." });
       }
+      const filters = [eq(questions.bankKey, course.questionBankKey), learnerVisibleQuestionFilter()];
+      // A preview is fixed BEFORE applying filters/exclusions. Paging must never
+      // turn the free preview into a way to enumerate the paid bank.
+      if (!hasAccess) {
+        const rows = await db.select(learnerQuestionColumns).from(questions)
+          .where(and(...filters)).orderBy(questions.questionNum);
+        const sampled = buildPreviewSample(previewRowsForBank(rows, course.questionBankKey),
+          FREE_TRIAL_LIMIT, "practice", course.track === "oit" ? OIT_PREVIEW_CALC_MINIMUMS.practice : 0);
+        if (!sampled.length) return { questions: [], locked: true, total: 0, hasMore: false };
+        filters.push(inArray(questions.questionNum, sampled.map(q => q.questionNum)));
+      }
+      if (input.module) filters.push(course.questionBankKey === WPI_CLASS4_BANK
+        ? inArray(questions.module, wpiClass4StoredModuleNames(input.module))
+        : eq(questions.module, input.module));
+      // Canonical topic names are distinct from chapter/module tabs. A null
+      // topic falls back to its module, matching diagnostic scoring exactly.
+      if (input.topic) filters.push(sql`COALESCE(${questions.topic}, ${questions.module}) = ${input.topic}`);
+      if (input.calcOnly) filters.push(eq(questions.isCalc, "yes"));
+      if (input.difficulty !== "all") filters.push(eq(questions.difficulty, input.difficulty));
+      let priority = sql`0`;
+      if (identified) {
+        const reviewIdentity = { userId: identity.userId, email: identity.studentEmail };
+        const latestCorrect = latestPracticeAttemptValue(reviewIdentity, course.courseKey, "correct");
+        // Prefer unseen or still-missed questions without guessing mastery from
+        // a random browser sample. Reviewed questions remain available to repeat.
+        priority = sql`CASE WHEN ${latestCorrect} = 'yes' THEN 1 ELSE 0 END`;
+        if (input.reviewMode === "missed") filters.push(sql`${latestCorrect} = 'no'`);
+        if (input.reviewMode === "low-confidence") filters.push(sql`${latestPracticeAttemptValue(reviewIdentity, course.courseKey, "confidence")} = 'low'`);
+        if (input.reviewMode === "bookmarked") filters.push(sql`EXISTS (SELECT 1 FROM ${bookmarks} WHERE ${and(
+          or(identity.userId ? eq(bookmarks.userId, identity.userId) : undefined,
+            identity.studentEmail ? eq(bookmarks.studentEmail, identity.studentEmail) : undefined),
+          inArray(bookmarks.bankKey, keys), eq(bookmarks.questionId, questions.questionNum))})`);
+      }
+      const [counts] = await db.select({ total: sql<number>`COUNT(*)` }).from(questions).where(and(...filters));
+      if (input.excludeIds.length) filters.push(notInArray(questions.questionNum, input.excludeIds));
+      const rows = await db.select(learnerQuestionColumns).from(questions).where(and(...filters))
+        .orderBy(...(identified ? [priority, sql`RAND()`] : [sql`RAND()`])).limit(input.limit);
+      const parsed = parseLearnerQuestions(rows);
+      // Only retire a topic proven absent from the entire learner-visible bank.
+      // An empty preview, review, calc, difficulty or exhausted page is not proof:
+      // canonical diagnostic topics can differ from the displayed module names.
+      const topicUnavailable = Boolean(input.topic && rows.length === 0 && !(await db
+        .select({ id: questions.id }).from(questions).where(and(
+          eq(questions.bankKey, course.questionBankKey), learnerVisibleQuestionFilter(),
+          sql`COALESCE(${questions.topic}, ${questions.module}) = ${input.topic}`,
+        )).limit(1)).length);
+      const actor = await practiceIdentity(ctx, input.accessToken);
+      const issuedIdentity = await resolveLearningIdentity(actor.context);
+      const attribution = hasAccess ? await resolveAttemptAttribution(issuedIdentity, course.courseKey) : undefined;
+      const attemptToken = await issuePracticeReceipt(course.questionBankKey, parsed.map(q => q.id), actor.owner, !hasAccess, attribution);
+      return { questions: parsed.map(q => ({ ...q, attemptToken })), locked: !hasAccess, total: Number(counts.total), hasMore: rows.length === input.limit, topicUnavailable };
     }),
 
   /**
@@ -329,6 +401,24 @@ export const quizRouter = router({
       try { modules = JSON.parse(row.modules) as string[]; }
       catch (err) { console.error(`[getBankMeta] malformed modules for ${row.bankKey}:`, err); }
 
+      // Do not advertise a module filter that cannot return a learner-visible
+      // question. This prevents stale metadata from creating a blank practice
+      // screen after a bank import or content repair.
+      const storedModuleRows = await db
+        .select({ module: questions.module })
+        .from(questions)
+        .where(and(
+          eq(questions.bankKey, row.bankKey),
+          learnerVisibleQuestionFilter(),
+        ));
+      const storedModules = storedModuleRows.map(({ module }) =>
+        row.bankKey === WPI_CLASS4_BANK ? normalizeWpiClass4Module(module) : module,
+      );
+      // The row count is the learner-facing inventory. Bank metadata can lag
+      // behind a controlled import or remediation, which would otherwise make
+      // course pages understate the questions a learner can actually study.
+      const learnerVisibleQuestionCount = storedModuleRows.length;
+
       let moduleTargets: Record<string, number> | null = null;
       if (row.moduleTargets) {
         try { moduleTargets = JSON.parse(row.moduleTargets) as Record<string, number>; }
@@ -341,15 +431,37 @@ export const quizRouter = router({
         catch (err) { console.error(`[getBankMeta] malformed formulaLinks for ${row.bankKey}:`, err); }
       }
 
+      if (row.bankKey === WPI_CLASS4_BANK) {
+        modules = [...new Set(modules.map(normalizeWpiClass4Module))];
+        if (moduleTargets) {
+          const normalized: Record<string, number> = {};
+          for (const [module, target] of Object.entries(moduleTargets)) {
+            const key = normalizeWpiClass4Module(module);
+            normalized[key] = (normalized[key] ?? 0) + target;
+          }
+          moduleTargets = normalized;
+          // Old display-only metadata can contain seven unrelated chapter titles.
+          // Practice tabs must use the same topic keys as this bank's mock targets.
+          if (Object.keys(normalized).length) modules = Object.keys(normalized);
+        }
+      }
+
+      modules = reconcileLearnerBankModules(modules, storedModules);
+      // Study chapters remain unchanged. The same reviewed area quotas feed the
+      // mock gate and server sampler, even if old metadata uses chapter names.
+      moduleTargets = ontarioWastewaterMockProfile(row.bankKey)?.targets ?? moduleTargets;
       return {
         bankKey: row.bankKey,
         modules,
         moduleTargets,
         formulaLinks,
-        totalQuestions: row.totalQuestions,
+        totalQuestions: learnerVisibleQuestionCount,
         /** Issue L: monotonic counter incremented on admin question edits.
          *  Clients compare against their cached value and invalidate on mismatch. */
         contentVersion: row.contentVersion ?? 1,
+        blueprintVersion: row.blueprintVersion ?? 1,
+        minCalcPerMock: row.minCalcPerMock,
+        recallTargetPct: row.recallTargetPct,
       };
     }),
 
@@ -385,7 +497,9 @@ export const quizRouter = router({
     .input(z.object({ courseKey: z.string().min(1).max(64) }))
     .query(async ({ input }) => {
       const course = resolveCourseKey(input.courseKey);
-      if (!course) {
+      // An unreleased course must not report an inventory count. Doing so
+      // would disclose that it exists and imply content is ready.
+      if (!course?.isActive) {
         throw new TRPCError({ code: "NOT_FOUND", message: "Course not found." });
       }
       const db = await getDb();
@@ -414,8 +528,8 @@ export const quizRouter = router({
     }),
 
   /**
-   * logAttempt — silently logs every quiz answer for topic tracking and missed questions.
-   * Called on every confirm() in QuizShell. Fails silently if unauthenticated (guest users).
+   * Score only server-issued practice questions. Persist verified learner history
+   * under the canonical course; anonymous previews are scored without a write.
    */
   logAttempt: publicProcedure
     .input(
@@ -427,27 +541,51 @@ export const quizRouter = router({
         guestToken: z.string().max(64).optional(),
         /** Issue Q: client-generated UUID for the quiz session. Nullable for legacy clients. */
         sessionId: z.string().uuid().optional().nullable(),
+        /** Stable per-answer UUID; retries must retain the original payload and receipt. */
+        operationId: z.string().uuid().optional(),
         /** Confidence self-rating — set by the student after answering. */
         confidence: z.enum(["low", "medium", "high"]).optional().nullable(),
         /** Bookmarked — student can flag a question for later review. */
         bookmarked: z.boolean().optional(),
         /** bankKey — needed to look up the question for server scoring */
         bankKey: z.string().min(1).max(64),
+        accessToken: z.string().max(8192).optional(),
+        attemptToken: z.string().max(16384).optional(),
       })
     )
     .mutation(async ({ input, ctx }) => {
       try {
+        const { course } = courseActivityScope(input.bankKey);
+        // Mock results have a separate server-issued session and atomic submission.
+        if (input.quizMode === "mock") return { success: false };
+        const hasAccess = await resolveAccessForRequest(ctx, course.courseKey, { accessToken: input.accessToken });
+        const actor = await practiceIdentity(ctx, input.accessToken);
+        if (!await permitsPracticeAttempt(input.attemptToken, course.questionBankKey, input.questionId, actor.owner, hasAccess)) {
+          return { success: false };
+        }
         const db = await getDb();
         if (!db) return { success: false };
 
         // Learner clients receive questionNum as their question id. Verify it
         // inside the supplied bank so an identical number in another course
         // can never be used for scoring.
-        const [questionRow] = await db
+        const [questionRow] = course.courseKey === "electrician-309a"
+          ? await db.select({ correctIndex: certificationQuestions.correctIndex, topic: certificationQuestions.topic,
+              difficulty: certificationQuestions.difficulty, module: certificationQuestions.module })
+            .from(certificationQuestions)
+            .innerJoin(certificationBankVersions, eq(certificationQuestions.bankVersionId, certificationBankVersions.id))
+            .where(and(eq(certificationBankVersions.programKey, ELECTRICIAN_309A_PROGRAM_KEY),
+              eq(certificationBankVersions.bankKey, course.questionBankKey),
+              eq(certificationBankVersions.releaseChannel, "beta"), eq(certificationBankVersions.active, true),
+              eq(certificationBankVersions.commercialEligibility, false), eq(certificationBankVersions.teamEligibility, false),
+              eq(certificationQuestions.bankItemNumber, input.questionId),
+              eq(certificationQuestions.contentStatus, "beta_approved"), eq(certificationQuestions.publicEligibility, true)))
+            .limit(1)
+          : await db
           .select({ correctIndex: questions.correctIndex, topic: questions.topic, difficulty: questions.difficulty, module: questions.module })
           .from(questions)
           .where(and(
-            eq(questions.bankKey, input.bankKey),
+            eq(questions.bankKey, course.questionBankKey),
             eq(questions.questionNum, input.questionId),
             learnerVisibleQuestionFilter(),
           ))
@@ -459,17 +597,24 @@ export const quizRouter = router({
         }
 
         const correct = input.selectedIndex === questionRow.correctIndex;
-        const topic = questionRow.topic ?? questionRow.module ?? input.examType;
+        const topic = questionRow.topic ?? questionRow.module ?? course.courseKey;
         const difficulty = questionRow.difficulty ?? null;
 
-        const identity = await resolveLearningIdentity(ctx);
-        const { userId, studentEmail, orgId, organizationMemberId } = identity;
+        const identity = await resolveLearningIdentity(actor.context);
+        const { userId, studentEmail } = identity;
+        const { orgId, organizationMemberId, flexLicenceId } = await validateIssuedAttribution(identity, course.courseKey,
+          await practiceReceiptAttribution(input.attemptToken!));
 
-        await db.insert(questionAttempts).values({
+        // Guest previews are scored but never become unowned history or mastery.
+        if (!userId && !studentEmail) return { success: true, correct };
+
+        return await savePracticeAttempt(db, {
+          operationId: input.operationId?.toLowerCase() ?? null,
+          operationPayloadHash: input.operationId ? practiceOperationHash(actor.owner, input) : null,
           userId,
-          guestToken: input.guestToken ?? null,
+          guestToken: null,
           studentEmail,
-          examType: input.examType,
+          examType: course.courseKey,
           topic,
           questionId: input.questionId,
           correct: correct ? "yes" : "no",
@@ -479,28 +624,13 @@ export const quizRouter = router({
           confidence: input.confidence ?? null,
           bookmarked: input.bookmarked ? "yes" : "no",
           selectedIndex: input.selectedIndex,
-          bankKey: input.bankKey,
-          courseKey: input.bankKey,
+          bankKey: course.questionBankKey,
+          courseKey: course.courseKey,
           orgId,
           organizationMemberId,
+          flexLicenceId,
         });
 
-        if (userId) {
-          await upsertStudentProfile(db, userId, null, input.examType, topic, correct);
-        } else if (studentEmail) {
-          const [existingUser] = await db
-            .select({ id: users.id })
-            .from(users)
-            .where(eq(users.email, studentEmail))
-            .limit(1);
-          if (existingUser) {
-            await upsertStudentProfile(db, existingUser.id, null, input.examType, topic, correct);
-          } else {
-            await upsertStudentProfile(db, null, studentEmail, input.examType, topic, correct);
-          }
-        }
-
-        return { success: true, correct };
       } catch (err) {
         console.error("[quizRouter.logAttempt] Error:", err);
         return { success: false };
@@ -614,32 +744,10 @@ export const quizRouter = router({
       try {
         const db = await getDb();
         if (!db) return { topicAccuracy: {} as Record<string, { correct: number; total: number }>, weakTopics: [] as string[], strongTopics: [] as string[], totalAttempts: 0, totalSessions: 0, currentStreak: 0 };
-        const rows = await db
-          .select()
-          .from(studentProfiles)
-          .where(eq(studentProfiles.userId, ctx.user.id))
-          .limit(1);
-
-        if (rows.length === 0) {
-          return {
-            topicAccuracy: {} as Record<string, { correct: number; total: number }>,
-            weakTopics: [] as string[],
-            strongTopics: [] as string[],
-            totalAttempts: 0,
-            totalSessions: 0,
-            currentStreak: 0,
-          };
-        }
-
-        const profile = rows[0];
-        return {
-          topicAccuracy: JSON.parse(profile.topicAccuracy || "{}") as Record<string, { correct: number; total: number }>,
-          weakTopics: JSON.parse(profile.weakTopics || "[]") as string[],
-          strongTopics: JSON.parse(profile.strongTopics || "[]") as string[],
-          totalAttempts: profile.totalAttempts,
-          totalSessions: profile.totalSessions,
-          currentStreak: profile.currentStreak,
-        };
+        const identity = { userId: ctx.user.id, email: ctx.user.email ?? null };
+        const profile = await readCourseLearnerProfile(db, identity, input.examType);
+        const activity = await readOverallLearnerActivity(db, identity);
+        return { ...profile, currentStreak: activity.currentStreak, longestStreak: activity.longestStreak };
       } catch (err) {
         console.error("[quizRouter.getStudentProfile] Error:", err);
         return {
@@ -738,121 +846,3 @@ export const quizRouter = router({
       }
     }),
 });
-
-// ─── Helper: get today's date in America/Toronto timezone ──────────────────
-// Using UTC (toISOString) causes off-by-one errors for users in Eastern time
-// because midnight UTC is 7-8 PM the previous day in Toronto.
-function getTodayTorontoDate(): string {
-  return new Intl.DateTimeFormat("en-CA", {
-    timeZone: "America/Toronto",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(new Date()); // returns YYYY-MM-DD in en-CA locale
-}
-
-// ─── Helper: upsert student profile ─────────────────────────────────────────
-async function upsertStudentProfile(
-  db: NonNullable<Awaited<ReturnType<typeof getDb>>>,
-  userId: number | null,
-  studentEmail: string | null,
-  examType: string,
-  topic: string,
-  correct: boolean
-) {
-  // Must have at least one identifier
-  if (!userId && !studentEmail) return;
-  try {
-    const rows = await db
-      .select()
-      .from(studentProfiles)
-      .where(
-        userId
-          ? eq(studentProfiles.userId, userId)
-          : eq(studentProfiles.studentEmail, studentEmail!)
-      )
-      .limit(1);
-    const today = getTodayTorontoDate();
-    if (rows.length === 0) {
-      // Create new profile
-      const topicAccuracy = { [topic]: { correct: correct ? 1 : 0, total: 1 } };
-      const weakTopics = correct ? [] : [topic];
-      const strongTopics: string[] = [];
-      await db.insert(studentProfiles).values({
-        userId: userId ?? null,
-        studentEmail: studentEmail ?? null,
-        examType,
-        topicAccuracy: JSON.stringify(topicAccuracy),
-        weakTopics: JSON.stringify(weakTopics),
-        strongTopics: JSON.stringify(strongTopics),
-        totalAttempts: 1,
-        totalSessions: 0,
-        currentStreak: 1,
-        longestStreak: 1,
-        lastActiveDate: today,
-      });
-    } else {
-      const profile = rows[0];
-      const topicAccuracy: Record<string, { correct: number; total: number }> =
-        JSON.parse(profile.topicAccuracy || "{}");
-
-      // Update topic accuracy
-      if (!topicAccuracy[topic]) topicAccuracy[topic] = { correct: 0, total: 0 };
-      topicAccuracy[topic].total += 1;
-      if (correct) topicAccuracy[topic].correct += 1;
-
-      // Recompute weak/strong topics
-      const weakTopics: string[] = [];
-      const strongTopics: string[] = [];
-      for (const [t, stats] of Object.entries(topicAccuracy)) {
-        if (stats.total >= 5) {
-          const pct = stats.correct / stats.total;
-          if (pct < 0.65) weakTopics.push(t);
-          else if (pct >= 0.80) strongTopics.push(t);
-        }
-      }
-
-      // Update streak
-      let currentStreak = profile.currentStreak;
-      let longestStreak = profile.longestStreak;
-      if (profile.lastActiveDate !== today) {
-        // Compute yesterday in Toronto timezone by decrementing the calendar date.
-        // Do NOT subtract 24 * 60 * 60 * 1000 ms — that breaks on DST transition days
-        // (spring forward / fall back) where the day is 23 or 25 hours long.
-        // Instead, parse today's date string and subtract exactly one calendar day.
-        const [ty, tm, td] = today.split("-").map(Number);
-        const todayLocal = new Date(ty, tm - 1, td); // local midnight, no TZ shift
-        todayLocal.setDate(todayLocal.getDate() - 1);
-        const yy = todayLocal.getFullYear();
-        const ym = String(todayLocal.getMonth() + 1).padStart(2, "0");
-        const yd = String(todayLocal.getDate()).padStart(2, "0");
-        const yesterdayStr = `${yy}-${ym}-${yd}`;
-        if (profile.lastActiveDate === yesterdayStr) {
-          currentStreak += 1;
-        } else {
-          currentStreak = 1; // streak broken
-        }
-        longestStreak = Math.max(longestStreak, currentStreak);
-      }
-
-      await db
-        .update(studentProfiles)
-        .set({
-          topicAccuracy: JSON.stringify(topicAccuracy),
-          weakTopics: JSON.stringify(weakTopics),
-          strongTopics: JSON.stringify(strongTopics),
-          totalAttempts: profile.totalAttempts + 1,
-          currentStreak,
-          longestStreak,
-          lastActiveDate: today,
-        })
-        .where(
-          userId
-            ? eq(studentProfiles.userId, userId)
-            : eq(studentProfiles.studentEmail, studentEmail!)
-        );
-    }
-  } catch (err) {
-    console.error("[upsertStudentProfile] Error:", err);
-  }
-}

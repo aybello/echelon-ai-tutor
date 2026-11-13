@@ -7,6 +7,7 @@
  * See API examples below the type definitions for usage patterns.
  */
 
+import { serviceJson, serviceFetch, requireServiceSuccess } from "./outboundHttp";
 import { ENV } from "./env";
 
 // ============================================================================
@@ -41,6 +42,7 @@ function getMapsConfig(): MapsConfig {
 interface RequestOptions {
   method?: "GET" | "POST";
   body?: Record<string, unknown>;
+  signal?: AbortSignal;
 }
 
 /**
@@ -71,22 +73,18 @@ export async function makeRequest<T = unknown>(
     }
   });
 
-  const response = await fetch(url.toString(), {
+  const response = await serviceFetch(url.toString(), {
     method: options.method || "GET",
     headers: {
       "Content-Type": "application/json",
     },
     body: options.body ? JSON.stringify(options.body) : undefined,
-  });
+    signal: options.signal,
+  }, { service: "maps", timeoutMs: 10_000, retryRead: true });
 
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(
-      `Google Maps API request failed (${response.status} ${response.statusText}): ${errorText}`
-    );
-  }
+  requireServiceSuccess(response, "maps");
 
-  return (await response.json()) as T;
+  return (await serviceJson<any>(response, "maps")) as T;
 }
 
 // ============================================================================

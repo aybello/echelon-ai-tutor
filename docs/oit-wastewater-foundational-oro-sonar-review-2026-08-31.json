@@ -1,0 +1,17 @@
+{
+  "reviews": [
+    {
+      "questionNum": 414,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Claim about O. Reg. 129/04 overall responsible operator licensing accurately reflects the requirement that the ORO hold an applicable licence of the same or higher class than the facility, matching s. 15(1).",
+        "Statement that an operator-in-training cannot be designated as overall responsible operator is directly traceable to s. 15(3) of O. Reg. 129/04 and correctly framed as an Ontario regulatory condition.",
+        "Jurisdiction and regulatory scope are correctly identified as Ontario wastewater operator licensing under O. Reg. 129/04, with no conflation with other provinces or U.S. EPA materials.",
+        "Exactly one option is correct; the distractors present plausible but incorrect scenarios (time-limited designation, Class I facilities with phone contact, owner authorization alone) without encouraging unsafe operation or omission of required regulatory oversight.",
+        "The learning objective—understanding that an OIT cannot be designated as ORO under Ontario Regulation 129/04—is foundational and appropriate for an Ontario OIT learner, focusing on basic regulatory role limits rather than advanced process control or design."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

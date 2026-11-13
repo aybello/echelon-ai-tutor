@@ -1,0 +1,17 @@
+{
+  "reviews": [
+    {
+      "questionNum": 100,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option matches Ontario MECP guidance that grit removal protects pumps and equipment and reduces grit accumulation in treatment units, with no added universal or prescriptive claims.",
+        "Question stays within foundational OIT scope by focusing on basic preliminary-treatment purpose rather than design criteria or site-specific operational responses.",
+        "Jurisdiction and regulatory scope are accurate: Ontario MECP is correctly cited as technical design guidance, not misrepresented as an exam framework or universal rule.",
+        "Exactly one option is correct; distractors are clearly incorrect but remain plausible without implying or normalizing unsafe operation, missed maintenance, or omission of required actions.",
+        "Explanation is traceable to the cited section 10.3.1 and does not overstate the source or introduce unsupported claims."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

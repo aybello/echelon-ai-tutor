@@ -29,7 +29,10 @@ export default function Class3WaterQuiz() {
   const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("class3-water", "lazy");
   const allQuestions = dbQuestions;
 
-  const MODULES = MODULE_CONFIG;
+  // Bank categories determine filters; the local catalogue supplies styling only.
+  const MODULES: ModuleConfig[] = dbModules.map(name =>
+    MODULE_CONFIG.find(module => module.name === name) ?? { name },
+  );
 
   const session = useQuizSession({ examType: "class3-water", allQuestions });
 
@@ -65,6 +68,9 @@ export default function Class3WaterQuiz() {
       calcOnly={session.calcOnly}
       noCalcQuestions={session.noCalcQuestions}
       onCalcOnlyToggle={session.handleCalcOnlyToggle}
+      questionStatus={session.questionStatus}
+      questionError={session.questionError}
+      onRetryQuestions={session.retryQuestions}
       current={session.current}
       selected={session.selected}
       confidence={session.confidence}
@@ -99,7 +105,7 @@ export default function Class3WaterQuiz() {
               settings={session.quizSettings}
               onApply={session.handleSettingsApply}
               onClose={() => session.setSettingsOpen(false)}
-              totalQuestions={allQuestions.length}
+              totalQuestions={session.availableQuestionCount}
               trialUnlocked={session.trialUnlocked}
             />
           )}

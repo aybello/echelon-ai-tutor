@@ -1,0 +1,32 @@
+{
+  "reviews": [
+    {
+      "questionNum": 55,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Primary function in stem matches Ontario preliminary-treatment guidance: comminutors/grinders are alternatives to coarse screening that shred/cut solids rather than remove them, allowing material to remain in the flow but in reduced size.",
+        "No unsupported design criteria, performance claims, or regulatory obligations are introduced; question stays within basic headworks-purpose recognition appropriate for Ontario OIT level.",
+        "Jurisdiction and scope are accurate: source is Ontario Ministry of the Environment design guideline and is used only for technical description, not as an exam or licensing authority beyond its design-guidance role.",
+        "Exactly one option is correct: other options describe grit removal, oil/grease separation, and aeration/oxidation, which are distinct unit processes, making them plausible but clearly incorrect for comminutors/grinders.",
+        "Distractors do not normalize unsafe practices, missed maintenance, or omission of required actions; they simply misidentify unit-process functions.",
+        "Explanation is traceable to the cited source, accurately summarizing comminutors/grinders as shredding/cutting alternatives to coarse screening and noting equipment protection from stringy material without overstating the source."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 63,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Key difference stated—mechanical cleaning equipment versus manual operator removal of screenings—matches Ontario guidance distinguishing mechanically and manually cleaned coarse bar screens.",
+        "Question remains within foundational OIT scope: it focuses on basic operational understanding of screen types, not detailed design criteria, safety procedures, or regulatory requirements.",
+        "Jurisdiction and regulatory scope are appropriate: Ontario design guideline is used for general technical description only, without implying legal obligations beyond the document’s role.",
+        "Exactly one option is correct: other choices incorrectly attribute disinfection, dissolved-organic removal, sedimentation, or elimination of maintenance to screens, making them plausible misunderstandings but clearly wrong.",
+        "Distractors do not promote unsafe operation or omission of required actions; they only misstate process functions, without suggesting ignoring maintenance or safety controls.",
+        "Explanation is traceable to the cited source sections on manual raking access and mechanically cleaned equipment with maintenance protection; it does not overstate or generalize beyond what is supported."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

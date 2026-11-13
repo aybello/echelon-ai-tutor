@@ -11,25 +11,31 @@ export const changelogRouter = {
   /** Public: list all visible changelog entries ordered by sortOrder ASC (newest first) */
   list: publicProcedure.query(async () => {
     const db = await getDb();
-    if (!db) return [];
+    if (!db) return [...PLATFORM_RELEASES];
     const rows = await db
       .select()
       .from(changelog)
       .where(eq(changelog.visible, true))
       .orderBy(asc(changelog.sortOrder), desc(changelog.createdAt), desc(changelog.id));
     return [...PLATFORM_RELEASES, ...rows]
-      .sort((a, b) => a.sortOrder - b.sortOrder || b.createdAt.getTime() - a.createdAt.getTime());
+      .sort((a, b) => a.sortOrder - b.sortOrder || b.createdAt.getTime() - a.createdAt.getTime() || b.id - a.id);
   }),
 
   /** Admin: list ALL entries including hidden ones */
   adminList: protectedProcedure.query(async ({ ctx }) => {
     if (ctx.user.role !== "admin") throw new TRPCError({ code: "FORBIDDEN" });
     const db = await getDb();
-    if (!db) return [];
-    return db
+    if (!db) throw new TRPCError({ code: "SERVICE_UNAVAILABLE", message: "Changelog database is unavailable. Please retry." });
+    const entries = await db
       .select()
       .from(changelog)
       .orderBy(asc(changelog.sortOrder), desc(changelog.createdAt), desc(changelog.id));
+    // Public changelog merges bundled and editable releases. Expose both in
+    // admin, but mark bundled releases read-only because they ship with code.
+    return [
+      ...PLATFORM_RELEASES.map(release => ({ ...release, origin: "bundled" as const })),
+      ...entries.map(entry => ({ ...entry, origin: "database" as const })),
+    ].sort((a, b) => a.sortOrder - b.sortOrder || b.createdAt.getTime() - a.createdAt.getTime() || b.id - a.id);
   }),
 
   /** Admin: create a new changelog entry */
@@ -52,7 +58,11 @@ export const changelogRouter = {
         .from(changelog);
       const [result] = await db.insert(changelog).values({
         ...input,
-        sortOrder: input.sortOrder ?? nextChangelogSortOrder(orderRow?.minimum),
+        // Include code-bundled releases in the minimum or a newly published
+        // database entry will appear below the older bundled release.
+        sortOrder: input.sortOrder ?? nextChangelogSortOrder(
+          Math.min(orderRow?.minimum ?? 0, ...PLATFORM_RELEASES.map(release => release.sortOrder)),
+        ),
       });
       return { id: result.insertId };
     }),
@@ -60,7 +70,7 @@ export const changelogRouter = {
   /** Admin: update an existing changelog entry */
   update: protectedProcedure
     .input(z.object({
-      id: z.number().int(),
+      id: z.number().int().positive(),
       date: z.string().min(1).max(32).optional(),
       badge: z.string().max(32).optional(),
       badgeColor: z.string().max(16).optional(),
@@ -74,18 +84,20 @@ export const changelogRouter = {
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "DB unavailable" });
       const { id, ...updates } = input;
-      await db.update(changelog).set(updates).where(eq(changelog.id, id));
+      const [result] = await db.update(changelog).set(updates).where(eq(changelog.id, id));
+      if (!result.affectedRows) throw new TRPCError({ code: "NOT_FOUND", message: "Platform update not found. Refresh the history and try again." });
       return { success: true };
     }),
 
   /** Admin: delete a changelog entry */
   delete: protectedProcedure
-    .input(z.object({ id: z.number().int() }))
+    .input(z.object({ id: z.number().int().positive() }))
     .mutation(async ({ ctx, input }) => {
       if (ctx.user.role !== "admin") throw new TRPCError({ code: "FORBIDDEN" });
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "DB unavailable" });
-      await db.delete(changelog).where(eq(changelog.id, input.id));
+      const [result] = await db.delete(changelog).where(eq(changelog.id, input.id));
+      if (!result.affectedRows) throw new TRPCError({ code: "NOT_FOUND", message: "Platform update not found. Refresh the history and try again." });
       return { success: true };
     }),
 };

@@ -1,7 +1,9 @@
+import "./MockExamShell.css";
 // MockExamShell — unified mock exam UI shared by all Ontario and WPI exam pages.
 // Full feature parity: ScoreHistory, usePageMeta, stats grid, weakest-first module sort,
 // timer colour changes, province selector, report modal, flag/review system.
 
+import { class1OptionOrder } from "@/lib/class1OptionOrder";
 import { useState, useEffect, useCallback, useRef, useMemo, type ReactNode } from "react";
 import { Link } from "wouter";
 import { toast } from "sonner";
@@ -13,15 +15,16 @@ import ScoreHistory from "@/components/ScoreHistory";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { shuffle } from "@/lib/utils";
 import FeedbackModal from "@/components/FeedbackModal";
+import { calculateMockResultStats } from "@/lib/mockExamResultStats";
 import { shouldShowReviewPrompt } from "@/lib/reviewFunnel";
 import { getTutorFailureMessage, isTutorDismissKey } from "@/lib/tutorInteraction";
 import { useLearningActivitySession } from "@/hooks/useLearningActivitySession";
+import { TutorGuideMark } from "@/components/TutorGuideMark";
 
 // ─── Inline AI Tutor for review mode ─────────────────────────────────────────
 
-function ReviewAITutor({ q, userAnswerIdx, examType }: { q: ExamQuestion; userAnswerIdx: number | null; examType: string }) {
+function ReviewAITutor({ q, userAnswerIdx, examType, sessionToken, reviewToken }: { q: ExamQuestion; userAnswerIdx: number | null; examType: string; sessionToken: string; reviewToken?: string }) {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<{ role: "user" | "assistant"; content: string }[]>([]);
   const [input, setInput] = useState("");
@@ -63,6 +66,7 @@ function ReviewAITutor({ q, userAnswerIdx, examType }: { q: ExamQuestion; userAn
         selectedIndex: userAnswerIdx,
         patternMode: false,
         recentPerformance: [],
+        ...(reviewToken ? { mockSessionToken: sessionToken, mockReviewToken: reviewToken } : {}),
         accessToken: (() => {
           try { return localStorage.getItem("echelon_access_token") ?? undefined; }
           catch { return undefined; }
@@ -100,12 +104,12 @@ function ReviewAITutor({ q, userAnswerIdx, examType }: { q: ExamQuestion; userAn
             cursor: "pointer", fontFamily: "inherit", display: "flex", alignItems: "center", gap: 6,
           }}
         >
-          🤖 Ask AI Tutor
+          <TutorGuideMark size={14} /> Ask AI Tutor
         </button>
       ) : (
         <div style={{ background: "#F8FAFC", borderRadius: 10, border: "1.5px solid #E0E7FF", padding: "12px 14px", marginTop: 4 }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-            <span style={{ fontSize: 11, fontWeight: 700, color: "#4338CA", letterSpacing: "0.06em" }}>🤖 AI TUTOR</span>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 11, fontWeight: 700, color: "#4338CA", letterSpacing: "0.06em" }}><TutorGuideMark size={13} /> AI TUTOR</span>
             <button
               type="button"
               aria-label="Close AI Tutor"
@@ -175,7 +179,9 @@ export interface ExamQuestion {
   question: string;
   options: string[];
   /** 0-based index of the correct option */
-  correct: number;
+  /** Present only after the server scores a finalized signed mock session. */
+  correct?: number;
+  scored?: boolean;
   explanation?: string;
   diagramId?: string | null;
   diagramAlt?: string | null;
@@ -212,16 +218,14 @@ export interface StreamOption {
   moduleTargets: Record<string, number>;
   /** Module colour config */
   moduleColors: Record<string, ModuleColorConfig>;
-  /** Full question pool for this stream */
-  questionPool: ExamQuestion[];
   /** Override the examType saved to DB (preserves legacy score history) */
   scoreExamType?: ExamProductKey;
   /** Stream tag for ScoreHistory ("water" | "wastewater") */
   stream?: "water" | "wastewater";
-  /** Human-readable product name for paywall */
-  productName: string;
-  /** Price in USD */
-  price: number;
+  /** Optional legacy fallback. Registered product names come from the shared catalogue. */
+  productName?: string;
+  /** Optional legacy fallback. Registered product prices come from the shared catalogue. */
+  price?: number;
 }
 
 export type ExamProductKey =
@@ -232,6 +236,7 @@ export type ExamProductKey =
   | "wpi-class1-wastewater" | "wpi-class2-wastewater" | "wpi-class3-wastewater" | "wpi-class4-wastewater"
   | "wpi-class1-water-dist" | "wpi-class2-water-dist" | "wpi-class3-water-dist" | "wpi-class4-water-dist"
   | "wpi-class1-water-coll" | "wpi-class2-water-coll" | "wpi-class3-water-coll" | "wpi-class4-water-coll"
+  | "us-class1-water" | "us-class1-water-dist" | "us-texas-class-d-water"
   | "class1-water-dist" | "class2-water-dist" | "class3-water-dist" | "class4-water-dist"
   | "class1-wastewater-coll" | "class2-wastewater-coll" | "class3-wastewater-coll" | "class4-wastewater-coll";
 
@@ -256,16 +261,14 @@ export interface MockExamConfig {
   moduleTargets: Record<string, number>;
   /** Module name → colour config for badges and progress bars */
   moduleColors: Record<string, ModuleColorConfig>;
-  /** Full question pool (all questions in the bank) */
-  questionPool: ExamQuestion[];
   /** Optional course-specific visual rendered before the question stem. */
   renderQuestionSupplement?: (question: ExamQuestion) => ReactNode;
   /** Stripe / PurchaseGate product key */
   productKey: ExamProductKey;
-  /** Human-readable product name for paywall */
-  productName: string;
-  /** Price in USD cents (displayed as $XX) */
-  price: number;
+  /** Optional legacy fallback. Registered product names come from the shared catalogue. */
+  productName?: string;
+  /** Optional legacy fallback. Registered product prices come from the shared catalogue. */
+  price?: number;
   /** Optional feature bullets for paywall */
   features?: string[];
   /** Deliberately free course mock; bypasses the standard purchase gate. */
@@ -310,9 +313,9 @@ export interface MockExamConfig {
   scoreExamType?: ExamProductKey;
   /**
    * When provided, the shell renders a stream-select screen before the intro.
-   * The selected stream's moduleTargets / moduleColors / questionPool / scoreExamType
+   * The selected stream's moduleTargets / moduleColors / scoreExamType
    * override the top-level props for that session.
-   * Top-level moduleTargets / moduleColors / questionPool / productKey / productName / price
+   * Top-level moduleTargets / moduleColors / productKey / productName / price
    * are used as defaults when no stream is selected yet.
    */
   streamOptions?: StreamOption[];
@@ -326,30 +329,6 @@ interface ExamAnswer {
 type ExamState = "stream-select" | "intro" | "active" | "results";
 
 // ─── Question selector ────────────────────────────────────────────────────────
-
-function selectExamQuestions(
-  pool: ExamQuestion[],
-  moduleTargets: Record<string, number>,
-  total: number
-): ExamQuestion[] {
-  const shuffled = shuffle([...pool]);
-  const selected: ExamQuestion[] = [];
-  const byModule: Record<string, ExamQuestion[]> = {};
-  for (const q of shuffled) {
-    if (!byModule[q.module]) byModule[q.module] = [];
-    byModule[q.module].push(q);
-  }
-  for (const [mod, target] of Object.entries(moduleTargets)) {
-    const available = byModule[mod] ?? [];
-    selected.push(...available.slice(0, target));
-  }
-  const selectedIds = new Set(selected.map(q => q.id));
-  const remaining = shuffled.filter(q => !selectedIds.has(q.id));
-  while (selected.length < total && remaining.length > 0) {
-    selected.push(remaining.shift()!);
-  }
-  return shuffle(selected).slice(0, total);
-}
 
 function formatTime(seconds: number): string {
   const h = Math.floor(seconds / 3600);
@@ -386,7 +365,6 @@ export default function MockExamShell({
   passThreshold,
   moduleTargets: moduleTargetsProp,
   moduleColors: moduleColorsProp,
-  questionPool: questionPoolProp,
   productKey: productKeyProp,
   productName: productNameProp,
   price: priceProp,
@@ -409,7 +387,14 @@ export default function MockExamShell({
   streamOptions,
   renderQuestionSupplement,
 }: MockExamConfig) {
-  const { user } = useAuth();
+  const { user, loading: authLoading } = useAuth();
+  const [navigatorOpen, setNavigatorOpen] = useState(() => typeof window !== "undefined" && window.matchMedia("(min-width: 769px)").matches);
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 769px)");
+    const sync = () => setNavigatorOpen(media.matches);
+    media.addEventListener("change", sync);
+    return () => media.removeEventListener("change", sync);
+  }, []);
   const [storedEmailForAccess] = useState<string | undefined>(() => {
     try {
       return localStorage.getItem("echelon_subscription_email")
@@ -453,14 +438,25 @@ export default function MockExamShell({
   const price          = selectedStream?.price          ?? priceProp;
   const moduleTargets  = selectedStream?.moduleTargets  ?? moduleTargetsProp;
   const moduleColors   = selectedStream?.moduleColors   ?? moduleColorsProp;
-  const questionPool   = selectedStream?.questionPool   ?? questionPoolProp;
   const stream         = selectedStream?.stream         ?? streamProp;
   const scoreExamType  = selectedStream?.scoreExamType  ?? scoreExamTypeProp;
   // Accent colour: use stream colour when a stream is selected
   const resolvedAccent  = selectedStream?.color  ?? accentColor;
   const resolvedAccent2 = selectedStream?.color  ?? accentColor2;
 
-  const sessionId = useRef(`mock-${productKeyProp}-${Math.random().toString(36).slice(2)}`).current;
+  const [sessionId, setSessionId] = useState<string>(() => crypto.randomUUID());
+  const deadlineRef = useRef<number | null>(null);
+  const [sessionToken, setSessionToken] = useState("");
+  const [sessionExamType, setSessionExamType] = useState("");
+  const [reviewToken, setReviewToken] = useState<string | undefined>();
+  const [previewSession, setPreviewSession] = useState(false);
+  const [legacyDraft, setLegacyDraft] = useState(false);
+  const [saveError, setSaveError] = useState("");
+  const startMock = trpc.exam.startMock.useMutation();
+  const startingRef = useRef(false);
+  const finalTimeRef = useRef(EXAM_DURATION);
+  const recoveryKey = `echelon.mock.v1:${productKeyProp}:${user?.email ?? storedEmailForAccess ?? "guest"}`;
+  const recoveryLoaded = useRef<string | null>(null);
 
   const [examState, setExamState] = useState<ExamState>(
     streamOptions && streamOptions.length > 0 ? "stream-select" : "intro"
@@ -478,7 +474,33 @@ export default function MockExamShell({
   );
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const resultSavedRef = useRef(false);
-  const submitMock = trpc.exam.submitMock.useMutation();
+  const [saveStatus, setSaveStatus] = useState<"idle" | "saving" | "saved" | "guest" | "error">("idle");
+  const [scoredResult, setScoredResult] = useState<{
+    score: number; total: number; pct: number; passed: boolean; unavailableCount: number;
+    moduleBreakdown: Record<string, { correct: number; total: number }>;
+    unscoredQuestionNums: number[];
+  } | null>(null);
+  const submitMock = trpc.exam.submitMock.useMutation({
+    onSuccess: result => {
+      const reviewByQuestion = new Map(result.review.map(item => [item.questionNum, item]));
+      setQuestions(previous => previous.map(question => {
+        const review = reviewByQuestion.get(question.id);
+        return review?.correctIndex === null || !review
+          ? { ...question, scored: review?.scored }
+          : { ...question, scored: review.scored, correct: review.correctIndex, explanation: review.explanation ?? undefined };
+      }));
+      setScoredResult({
+        ...result,
+        unscoredQuestionNums: result.review
+          .filter(item => item.scored === false)
+          .map(item => item.questionNum),
+      });
+      setReviewToken(result.reviewToken);
+      resultSavedRef.current = true;
+      setSaveStatus(result.persisted ? "saved" : "guest");
+    },
+    onError: error => { resultSavedRef.current = false; setSaveError(error.message); setSaveStatus("error"); },
+  });
   const answered = answers.filter(a => a.selected !== null).length;
   const showPreviewGate =
     examState === "active" &&
@@ -486,100 +508,186 @@ export default function MockExamShell({
     !hasPaidAccess &&
     answered >= freeQuestionLimit;
 
-  const startExam = useCallback((overridePool?: ExamQuestion[], overrideTargets?: Record<string, number>) => {
-    if (showProvinceSelector) {
-      try { localStorage.setItem("echelon_province", selectedProvince); } catch {}
-    }
-    const pool    = overridePool    ?? questionPool;
-    const targets = overrideTargets ?? moduleTargets;
-    const qs = selectExamQuestions(pool, targets, EXAM_QUESTIONS);
-    setQuestions(qs);
-    setCurrentIdx(0);
-    setAnswers(qs.map((_, i) => ({ questionIndex: i, selected: null })));
-    setTimeLeft(EXAM_DURATION);
-    setFlagged([]);
-    setShowReview(false);
-    resultSavedRef.current = false;
-    setExamState("active");
-  }, [questionPool, moduleTargets, EXAM_QUESTIONS, EXAM_DURATION, showProvinceSelector, selectedProvince]);
+  const startExam = useCallback(async () => {
+    if (startingRef.current) return;
+    startingRef.current = true;
+    try {
+      const issued = await startMock.mutateAsync({ courseKey: productKey, accessToken: storedAccessTokenForAccess });
+      if (showProvinceSelector) {
+        try { localStorage.setItem("echelon_province", selectedProvince); } catch {}
+      }
+      setSessionId(issued.sessionId);
+      setSessionToken(issued.token);
+      setSessionExamType(issued.examType);
+      setReviewToken(undefined);
+      setPreviewSession(issued.preview);
+      setLegacyDraft(false);
+      deadlineRef.current = issued.deadline;
+      finalTimeRef.current = issued.duration;
+      setSaveStatus("idle");
+      setSaveError("");
+      submitMock.reset();
+      setScoredResult(null);
+      setQuestions(issued.questions);
+      setCurrentIdx(0);
+      setAnswers(issued.questions.map((_, i) => ({ questionIndex: i, selected: null })));
+      setTimeLeft(Math.max(0, Math.ceil((issued.deadline - Date.now()) / 1000)));
+      setFlagged([]);
+      setShowReview(false);
+      resultSavedRef.current = false;
+      setExamState("active");
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Could not start the exam. Please try again.");
+    } finally { startingRef.current = false; }
+  }, [productKey, storedAccessTokenForAccess, showProvinceSelector, selectedProvince, startMock.mutateAsync]);
 
   const handleSubmit = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
+    finalTimeRef.current = Math.max(0, Math.ceil(((deadlineRef.current ?? Date.now()) - Date.now()) / 1000));
     setExamState("results");
   }, []);
 
-  // Timer
+  // Restore only this tab's exam for the same course and learner. No new
+  // questions are selected and the wall-clock deadline survives a refresh.
+  useEffect(() => {
+    if (authLoading || recoveryLoaded.current === recoveryKey) return;
+    recoveryLoaded.current = recoveryKey;
+    try {
+      const raw = sessionStorage.getItem(recoveryKey);
+      if (!raw) return;
+      const saved = JSON.parse(raw);
+      if (![1, 2].includes(saved.version) || Date.now() - saved.updatedAt > 86400000
+        || !Array.isArray(saved.questions) || !saved.questions.length || saved.questions.length > 200
+        || !Array.isArray(saved.answers) || saved.answers.length !== saved.questions.length
+        || !["active", "results"].includes(saved.examState) || typeof saved.deadline !== "number"
+        || typeof saved.sessionId !== "string"
+        || !saved.questions.every((q: ExamQuestion) => Number.isInteger(q.id) && Array.isArray(q.options))
+        || !saved.answers.every((a: ExamAnswer, i: number) => a.questionIndex === i
+          && (a.selected === null || (Number.isInteger(a.selected) && a.selected >= 0 && a.selected < 4)))) return;
+      const restoredStream = streamOptions?.find(option => option.productKey === saved.streamKey) ?? null;
+      if (streamOptions?.length && !restoredStream) return;
+      const legacy = saved.version === 1;
+      if (!legacy && (typeof saved.sessionToken !== "string" || !saved.sessionToken || typeof saved.sessionExamType !== "string")) return;
+      setLegacyDraft(legacy);
+      setSessionToken(saved.sessionToken ?? "");
+      setSessionExamType(saved.sessionExamType ?? "");
+      setReviewToken(typeof saved.reviewToken === "string" ? saved.reviewToken : undefined);
+      setPreviewSession(saved.previewSession === true);
+      finalTimeRef.current = saved.timeLeft;
+      setSelectedStream(restoredStream);
+      setSessionId(saved.sessionId);
+      setQuestions(saved.questions);
+      setAnswers(saved.answers);
+      setCurrentIdx(Math.max(0, Math.min(saved.currentIdx ?? 0, saved.questions.length - 1)));
+      setFlagged(Array.isArray(saved.flagged) ? saved.flagged : []);
+      deadlineRef.current = saved.deadline;
+      setTimeLeft(saved.examState === "results" ? saved.timeLeft : Math.max(0, Math.ceil((saved.deadline - Date.now()) / 1000)));
+      setExamState(legacy ? "results" : saved.examState);
+      // Replay retrieves the authoritative result, including later unavailable
+      // items, even after the deadline. Do not reconstruct saved scores locally.
+      resultSavedRef.current = false;
+      setSaveStatus(legacy ? "guest" : "idle");
+      toast.info(legacy ? "Your previous answers are available for review. Start a new exam to save a new result." : "Your exam has been restored.");
+    } catch { /* Storage may be unavailable or an old draft invalid. */ }
+  }, [recoveryKey, streamOptions, authLoading]);
+
+  useEffect(() => {
+    if (authLoading || recoveryLoaded.current !== recoveryKey || !["active", "results"].includes(examState) || !questions.length) return;
+    try {
+      sessionStorage.setItem(recoveryKey, JSON.stringify({
+        version: legacyDraft ? 1 : 2, updatedAt: Date.now(), sessionId, sessionToken, sessionExamType, reviewToken, previewSession, questions, answers, currentIdx, flagged,
+        examState, timeLeft: finalTimeRef.current, deadline: deadlineRef.current, streamKey: selectedStream?.productKey,
+        saved: saveStatus === "saved",
+      }));
+    } catch { /* Saving to the server remains available if local storage is full. */ }
+  // The deadline is fixed. Timer ticks require no storage writes; answers,
+  // navigation, flags and save status are persisted immediately for refresh.
+  }, [recoveryKey, sessionId, sessionToken, sessionExamType, reviewToken, previewSession, legacyDraft, questions, answers, currentIdx, flagged, examState, selectedStream, saveStatus, authLoading]);
+
   useEffect(() => {
     if (examState !== "active" || showPreviewGate) return;
-    // Seed from the freshly-reset timeLeft (startExam sets it to EXAM_DURATION).
-    let remaining = EXAM_DURATION;
-    let fired = false;
-    timerRef.current = setInterval(() => {
-      remaining -= 1;
-      setTimeLeft(remaining > 0 ? remaining : 0);
-      if (remaining <= 0 && !fired) {
-        fired = true;
+    const tick = () => {
+      const remaining = Math.max(0, Math.ceil(((deadlineRef.current ?? Date.now()) - Date.now()) / 1000));
+      setTimeLeft(remaining);
+      if (remaining === 0) {
         if (timerRef.current) clearInterval(timerRef.current);
-        toast.warning("\u23f1\ufe0f Time's up!", { description: "Your exam has been auto-submitted.", duration: 5000 });
+        finalTimeRef.current = 0;
         setExamState("results");
       }
-    }, 1000);
+    };
+    tick();
+    timerRef.current = setInterval(tick, 1000);
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, [examState, showPreviewGate]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [examState, showPreviewGate]);
 
   const results = useMemo(() => {
     if (examState !== "results" || questions.length === 0) return null;
+    if (scoredResult) return { correct: scoredResult.score, score: scoredResult.score / scoredResult.total,
+      pct: scoredResult.pct, passed: scoredResult.passed, moduleBreakdown: scoredResult.moduleBreakdown,
+      sortedModules: Object.entries(scoredResult.moduleBreakdown).filter(([, b]) => b.total > 0)
+        .sort(([, a], [, b]) => a.correct / a.total - b.correct / b.total) };
+    // New signed sessions receive no answer key until submitMock returns the
+    // server-owned score. Only legacy drafts can retain browser-era keys.
+    if (!legacyDraft) return null;
     let correct = 0;
     const moduleBreakdown: Record<string, { correct: number; total: number }> = {};
     questions.forEach((q, i) => {
       if (!moduleBreakdown[q.module]) moduleBreakdown[q.module] = { correct: 0, total: 0 };
       moduleBreakdown[q.module].total++;
-      if (answers[i]?.selected === q.correct) {
+      if (q.correct !== undefined && answers[i]?.selected === q.correct) {
         correct++;
         moduleBreakdown[q.module].correct++;
       }
     });
     const score = correct / questions.length;
     const pct = Math.round(score * 100);
-    const passed = score >= passThreshold; // compare raw floats to avoid rounding artifacts (e.g. 69.5% rounding to 70% and passing a 70% threshold)
+    const passed = !previewSession && score >= passThreshold; // compare raw floats to avoid rounding artifacts (e.g. 69.5% rounding to 70% and passing a 70% threshold)
     // Sort modules weakest first
     const sortedModules = Object.entries(moduleBreakdown)
       .filter(([, bd]) => bd.total > 0)
       .sort(([, a], [, b]) => (a.correct / a.total) - (b.correct / b.total));
     return { correct, score, pct, passed, moduleBreakdown, sortedModules };
-  }, [examState, questions, answers, EXAM_QUESTIONS, passThreshold]);
+  }, [examState, questions, answers, EXAM_QUESTIONS, passThreshold, previewSession, scoredResult, legacyDraft]);
+  const resultStats = useMemo(() => {
+    if (!results) return null;
+    return calculateMockResultStats({
+      questions,
+      answers,
+      correct: results.correct,
+      authoritativeTotal: scoredResult?.total,
+      unscoredQuestionNums: scoredResult?.unscoredQuestionNums,
+    });
+  }, [answers, questions, results, scoredResult]);
+  // Keep the recorder mounted while the server evaluates the submitted exam.
+  // Closing it as soon as the UI switches to results would flush before
+  // `scoredResult` supplies the authoritative Class IV 100-question total.
+  const recordMockActivity =
+    !legacyDraft &&
+    !showPreviewGate &&
+    (examState === "active" || (examState === "results" && !scoredResult));
   useLearningActivitySession({
     courseKey: productKey,
     activityType: "mock_exam",
-    enabled: examState === "active" && !showPreviewGate,
+    enabled: recordMockActivity,
     unitsCompleted: answered,
     score: results?.correct,
-    total: results ? questions.length : undefined,
+    total: resultStats?.total,
   });
 
-  // Save result once
-  useEffect(() => {
-    if (examState !== "results" || !results || resultSavedRef.current) return;
-    resultSavedRef.current = true;
-    const calcOnlyProp = false; // Mock exams are not calc-only sessions
-    // Submit answer indices to server for server-side scoring
-    const answerPayload = answers
-      .filter(a => a.selected !== null)
-      .map(a => ({
-        questionNum: questions[a.questionIndex]?.id ?? 0,
-        selectedIndex: a.selected as number,
-      }))
-      .filter(a => a.questionNum > 0);
+  const saveResult = () => {
+    if (submitMock.isPending || !sessionToken || legacyDraft) return;
+    setSaveStatus("saving");
     submitMock.mutate({
-      sessionId,
-      examType: scoreExamType ?? productKey,
-      bankKey: productKey,
+      sessionId, sessionToken, examType: sessionExamType, bankKey: productKey,
       timeTakenSeconds: EXAM_DURATION - timeLeft,
       ...(stream ? { stream } : {}),
-      ...(calcOnlyProp ? { calcOnly: true } : {}),
-      answers: answerPayload,
+      // Every selected question is submitted, including unanswered questions.
+      answers: questions.map((q, i) => ({ questionNum: q.id, selectedIndex: answers[i]?.selected ?? null })),
     });
-  }, [examState, results]); // eslint-disable-line react-hooks/exhaustive-deps
+  };
+  useEffect(() => {
+    if (examState === "results" && !legacyDraft && saveStatus === "idle" && !resultSavedRef.current) saveResult();
+  }, [examState, legacyDraft, saveStatus]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Show feedback modal after mock exam results (with delay for user to see score)
   useEffect(() => {
@@ -616,7 +724,7 @@ export default function MockExamShell({
         freeAccess={freeAccess || freeQuestionLimit !== undefined}
         backPath={practicePath}
       >
-        <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+        <div className="study-mock-workspace learning-redesign" style={{ minHeight: "100vh" }}>
           <SiteNav currentPath={currentPath} />
           <div style={{ maxWidth: 640, margin: "0 auto", padding: "48px 20px 80px" }}>
             {/* Header */}
@@ -686,36 +794,7 @@ export default function MockExamShell({
   if (examState === "intro") {
     return (
       <>
-      <style>{`
-        @media (max-width: 768px) {
-          .mes-active-grid { grid-template-columns: 1fr !important; }
-          .mes-navigator { display: none !important; }
-          .mes-mobile-progress { display: block !important; }
-        }
-        @media (max-width: 640px) {
-          .mes-results-hero-btns { flex-direction: column !important; }
-          .mes-results-hero-btns button, .mes-results-hero-btns a { width: 100% !important; min-height: 48px !important; }
-          .mes-stats-4 { grid-template-columns: repeat(2, 1fr) !important; }
-          /* Larger touch targets for answer options in active exam */
-          .mes-option-btn {
-            min-height: 52px !important;
-            padding: 14px 16px !important;
-            touch-action: manipulation;
-          }
-          /* Nav buttons full-width on mobile */
-          .mes-nav-btns { flex-direction: column !important; gap: 10px !important; }
-          .mes-nav-btns button { width: 100% !important; min-height: 48px !important; }
-          /* Scroll to top on question change */
-          .mes-question-area { scroll-margin-top: 70px; }
-        }
-        @media (max-width: 480px) {
-          .mes-intro-card { padding: 28px 18px !important; }
-          .mes-stats-grid { grid-template-columns: 1fr 1fr !important; }
-          .mes-results-hero { padding: 24px 16px !important; }
-          .mes-active-header { flex-wrap: wrap !important; gap: 8px !important; }
-          .mes-active-header-right { flex-wrap: wrap !important; gap: 8px !important; }
-        }
-      `}</style>
+
       <PurchaseGate
         examType={productKey}
         productKey={productKey}
@@ -725,7 +804,7 @@ export default function MockExamShell({
         freeAccess={freeAccess || freeQuestionLimit !== undefined}
         backPath={practicePath}
       >
-        <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+        <div className="study-mock-workspace learning-redesign" style={{ minHeight: "100vh" }}>
           <SiteNav currentPath={currentPath} />
           <div style={{ maxWidth: 600, margin: "0 auto", padding: "48px 20px 80px" }}>
             <div className="mes-intro-card" style={{ background: "#fff", borderRadius: 20, padding: "40px 36px", boxShadow: "0 4px 24px rgba(0,0,0,0.08)", textAlign: "center" }}>
@@ -774,7 +853,7 @@ export default function MockExamShell({
                 {[
                   { icon: "📝", label: "Questions",  value: `${EXAM_QUESTIONS} MCQ` },
                   { icon: "⏱️", label: "Time Limit", value: `${Math.round(EXAM_DURATION / 3600)} Hour${EXAM_DURATION >= 7200 ? "s" : ""}` },
-                  { icon: "🎯", label: "Pass Mark",  value: `${Math.round(passThreshold * 100)}% (${Math.round(passThreshold * EXAM_QUESTIONS)}/${EXAM_QUESTIONS})` },
+                  { icon: "🎯", label: "Pass Mark",  value: `${Math.round(passThreshold * 100)}% (${Math.round(passThreshold * (productKey === "wpi-class4-wastewater" ? 100 : EXAM_QUESTIONS))}/${productKey === "wpi-class4-wastewater" ? 100 : EXAM_QUESTIONS})` },
                   { icon: "📊", label: "Modules",    value: `${moduleCount ?? Object.keys(moduleTargets).length} Topics` },
                 ].map(({ icon, label, value }) => (
                   <div key={label} style={{ padding: "14px 16px", borderRadius: 12, background: "#F8FAFC", border: "1px solid #E2E8F0" }}>
@@ -798,10 +877,12 @@ export default function MockExamShell({
               </div>
 
               <button
+                className="mes-start-button"
+                disabled={startMock.isPending}
                 onClick={() => startExam()}
                 style={{ width: "100%", padding: "14px 24px", borderRadius: 14, background: `linear-gradient(135deg, ${resolvedAccent}, ${resolvedAccent2})`, color: "#fff", fontWeight: 800, fontSize: 16, border: "none", cursor: "pointer", fontFamily: "inherit" }}
               >
-                🚀 Start Exam
+                {startMock.isPending ? "Preparing exam…" : "🚀 Start Exam"}
               </button>
               <div style={{ marginTop: 16 }}>
                 <Link href={practicePath} style={{ fontSize: 12, color: "#94A3B8", textDecoration: "none" }}>
@@ -819,12 +900,26 @@ export default function MockExamShell({
   // ── RESULTS SCREEN ──────────────────────────────────────────────────────────
   if (examState === "results" && results) {
     const { correct, pct, passed, sortedModules } = results;
-    const skipped = answers.filter(a => a.selected === null).length;
-    const incorrect = questions.length - correct - skipped;
+    const { total: scoredTotal, skipped, incorrect } = resultStats ?? {
+      total: questions.length,
+      skipped: answers.filter(answer => answer.selected === null).length,
+      incorrect: questions.length - correct - answers.filter(answer => answer.selected === null).length,
+    };
     return (
-      <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+      <div className="study-mock-workspace learning-redesign" style={{ minHeight: "100vh" }}>
         <SiteNav currentPath={currentPath} />
         <div style={{ maxWidth: 700, margin: "0 auto", padding: "32px 20px 80px" }}>
+            {!!scoredResult?.unavailableCount && <p role="status" className="mb-3 rounded bg-amber-50 p-3 text-amber-900">
+              {scoredResult.unavailableCount} question(s) became unavailable during your exam and counted as incorrect.
+              The full {scoredResult.total}-question denominator is retained. Answer explanations below reflect the questions when your exam started.
+            </p>}
+          <div role="status" aria-live="polite" style={{ marginBottom: 16 }}>
+            {saveStatus === "saving" && "Saving your exam result…"}
+            {saveStatus === "saved" && "Exam result saved."}
+            {saveStatus === "guest" && (legacyDraft ? "Your previous answers are available for review. Start a new exam to save a new result." : previewSession ? "Preview complete. Full mock exams are saved with an active course pass." : "Your result is shown below. Sign in before your next exam to save results to your history.")}
+            {saveStatus === "error" && <><span>{saveError || "Your result could not be saved."} Your answers are kept in this tab. </span>
+              <button onClick={saveResult}>Retry saving result</button></>}
+          </div>
           {/* Score hero */}
           <div style={{
             background: passed
@@ -835,12 +930,14 @@ export default function MockExamShell({
           }} className="mes-results-hero">
             <div style={{ fontSize: 52, marginBottom: 8 }}>{passed ? "🎉" : "📚"}</div>
             <div style={{ fontSize: 48, fontWeight: 900, marginBottom: 4 }}>{pct}%</div>
-            <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 8 }}>{passed ? "PASSED" : "NOT YET"}</div>
+            <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 8 }}>{previewSession ? "PREVIEW COMPLETE" : passed ? "PASSED" : "NOT YET"}</div>
             <div style={{ fontSize: 14, opacity: 0.85, marginBottom: 24 }}>
-              {correct} / {questions.length} correct · {passed ? `You met the ${Math.round(passThreshold * 100)}% pass threshold` : `${Math.round(passThreshold * 100)}% required to pass`}
+              {correct} / {scoredTotal} scored questions correct · {previewSession ? "Practice preview — not a full mock result" : passed ? `You met the ${Math.round(passThreshold * 100)}% pass threshold` : `${Math.round(passThreshold * 100)}% required to pass`}
             </div>
+            {scoredResult && questions.length > scoredResult.total && <p>{questions.length - scoredResult.total} unscored practice items are excluded from your result and readiness history.</p>}
             <div className="mes-results-hero-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
               <button
+                disabled={startMock.isPending || saveStatus === "saving" || (saveStatus === "error" && !saveError.includes("expired"))}
                 onClick={() => { resultSavedRef.current = false; startExam(); }}
                 style={{ padding: "12px 28px", borderRadius: 10, background: "rgba(255,255,255,0.2)", color: "#fff", border: "2px solid rgba(255,255,255,0.4)", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}
               >
@@ -905,24 +1002,28 @@ export default function MockExamShell({
               <div style={{ fontSize: 13, fontWeight: 700, color: "#0F172A", marginBottom: 16 }}>Question Review</div>
               {questions.map((q, i) => {
                 const a = answers[i];
-                const isCorrect = a?.selected === q.correct;
+                const reviewAvailable = q.correct !== undefined;
+                const isCorrect = reviewAvailable && a?.selected === q.correct;
                 const wasSkipped = a?.selected === null;
                 return (
-                  <div key={q.id} style={{ marginBottom: 16, padding: "14px 16px", borderRadius: 12, background: wasSkipped ? "#FFF7ED" : isCorrect ? "#F0FDF4" : "#FFF1F2", border: `1px solid ${wasSkipped ? "#FED7AA" : isCorrect ? "#BBF7D0" : "#FECDD3"}` }}>
+                  <div key={q.id} style={{ marginBottom: 16, padding: "14px 16px", borderRadius: 12, background: !reviewAvailable ? "#F8FAFC" : wasSkipped ? "#FFF7ED" : isCorrect ? "#F0FDF4" : "#FFF1F2", border: `1px solid ${!reviewAvailable ? "#E2E8F0" : wasSkipped ? "#FED7AA" : isCorrect ? "#BBF7D0" : "#FECDD3"}` }}>
                     <div style={{ display: "flex", gap: 8, alignItems: "flex-start", marginBottom: 8 }}>
-                      <span style={{ fontSize: 16, flexShrink: 0 }}>{wasSkipped ? "⏭️" : isCorrect ? "✅" : "❌"}</span>
+                      <span style={{ fontSize: 16, flexShrink: 0 }}>{!reviewAvailable ? "ℹ️" : wasSkipped ? "⏭️" : isCorrect ? "✅" : "❌"}</span>
                       <div style={{ fontSize: 13, fontWeight: 600, color: "#0F172A", lineHeight: 1.5 }}>Q{i + 1}. {q.question}</div>
                     </div>
+                    {q.scored === false && <p className="mb-2 text-xs text-slate-600">Unscored practice item — excluded from your score and readiness.</p>}
+                    {!reviewAvailable ? <div style={{ fontSize: 12, color: "#64748B" }}>Answer review is unavailable because this question changed after your exam was finalized.</div> : <>
                     {!wasSkipped && !isCorrect && (
                       <div style={{ fontSize: 12, color: "#DC2626", marginBottom: 4 }}>Your answer: {q.options[a.selected!].replace(/^[A-Da-d][.):]\s*/, "")}</div>
                     )}
-                    <div style={{ fontSize: 12, color: "#059669", fontWeight: 600, marginBottom: q.explanation ? 4 : 0 }}>✓ {q.options[q.correct].replace(/^[A-Da-d][.):]\s*/, "")}</div>
+                    <div style={{ fontSize: 12, color: "#059669", fontWeight: 600, marginBottom: q.explanation ? 4 : 0 }}>✓ {q.options[q.correct!].replace(/^[A-Da-d][.):]\s*/, "")}</div>
                     {q.explanation && (
                       <div style={{ fontSize: 12, color: "#64748B", lineHeight: 1.5, whiteSpace: "pre-line", marginBottom: 4 }}>{q.explanation}</div>
                     )}
                     {(!isCorrect || wasSkipped) && (
-                      <ReviewAITutor q={q} userAnswerIdx={wasSkipped ? null : (a.selected ?? null)} examType={productKey} />
+                      <ReviewAITutor q={q} userAnswerIdx={wasSkipped ? null : (a.selected ?? null)} examType={productKey} sessionToken={sessionToken} reviewToken={reviewToken} />
                     )}
+                    </>}
                   </div>
                 );
               })}
@@ -957,13 +1058,30 @@ export default function MockExamShell({
     );
   }
 
+  if (examState === "results") {
+    return (
+      <div className="study-mock-workspace learning-redesign" style={{ minHeight: "100vh" }}>
+        <SiteNav currentPath={currentPath} />
+        <div style={{ maxWidth: 600, margin: "0 auto", padding: "72px 20px" }}>
+          <div style={{ background: "#fff", borderRadius: 20, padding: "36px", textAlign: "center", boxShadow: "0 4px 24px rgba(0,0,0,0.08)" }}>
+            <h1 style={{ margin: "0 0 12px", color: "#0F172A", fontSize: 24 }}>Finalizing your result</h1>
+            {saveStatus === "error" ? <>
+              <p style={{ color: "#B91C1C", lineHeight: 1.6 }}>{saveError || "Your result could not be saved."} Your answers remain in this tab.</p>
+              <button onClick={saveResult} style={{ padding: "12px 20px", border: "none", borderRadius: 10, background: resolvedAccent, color: "#fff", fontWeight: 700, cursor: "pointer" }}>Retry saving result</button>
+            </> : <p style={{ color: "#475569", lineHeight: 1.6 }}>The server is scoring your complete signed exam. Answer keys are revealed only after scoring finishes.</p>}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // ── ACTIVE EXAM SCREEN ──────────────────────────────────────────────────────
   if (!currentQ) return null;
   const isFlagged = flagged.includes(currentIdx);
   const isLastQ = currentIdx === questions.length - 1;
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+    <div className="study-mock-workspace learning-redesign" style={{ minHeight: "100vh" }}>
       <SiteNav currentPath={currentPath} />
       {/* Sticky header */}
       <div style={{ position: "sticky", top: 0, zIndex: 100, background: "#fff", borderBottom: "1px solid #E2E8F0", padding: "10px 20px" }}>
@@ -972,7 +1090,7 @@ export default function MockExamShell({
             {/* Exit button — lets user abandon the exam and return to the practice page */}
             <button
               onClick={() => {
-                if (window.confirm("Exit exam? Your progress will be lost.")) {
+                if (window.confirm("Leave this exam? Your progress is kept in this tab, and the exam timer will keep running.")) {
                   window.location.href = practicePath;
                 }
               }}
@@ -1038,7 +1156,7 @@ export default function MockExamShell({
 
       <div className="mes-active-grid" style={{ maxWidth: 1100, margin: "0 auto", padding: "24px 20px 80px", display: "grid", gridTemplateColumns: "1fr 220px", gap: 20, alignItems: "start" }}>
         {/* Question card */}
-        <div style={{ background: "#fff", borderRadius: 16, padding: "28px 28px 24px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
+        <div className="mes-question-card" style={{ background: "#fff", borderRadius: 16, padding: "28px 28px 24px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
           {/* Module badge */}
           <div style={{ display: "inline-block", padding: "3px 10px", borderRadius: 20, background: moduleColors[currentQ.module]?.bg ?? "#E0F2FE", color: moduleColors[currentQ.module]?.color ?? accentColor, fontSize: 11, fontWeight: 700, marginBottom: 16 }}>
             {currentQ.module}
@@ -1050,7 +1168,8 @@ export default function MockExamShell({
           </div>
           {/* Options */}
           <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 24 }}>
-            {currentQ.options.map((rawOpt, i) => {
+            {class1OptionOrder(productKey, currentQ.id, currentQ.options.length).map((i, displayIndex) => {
+              const rawOpt = currentQ.options[i];
               // Strip any baked-in letter prefix (e.g. "A. ", "B. ") to avoid doubling
               const opt = rawOpt.replace(/^[A-Da-d][.):]\s*/, "");
               const isSelected = answers[currentIdx]?.selected === i;
@@ -1058,6 +1177,7 @@ export default function MockExamShell({
                 <button
                   key={i}
                   className="mes-option-btn"
+                  aria-pressed={isSelected}
                   onClick={() => setAnswers(prev => prev.map((a, idx) => idx === currentIdx ? { ...a, selected: i } : a))}
                   style={{
                     padding: "14px 18px", borderRadius: 12, textAlign: "left",
@@ -1068,7 +1188,7 @@ export default function MockExamShell({
                   }}
                 >
                   <span style={{ marginRight: 10, fontWeight: 800, color: isSelected ? accentColor : "#94A3B8" }}>
-                    {String.fromCharCode(65 + i)}.
+                    {String.fromCharCode(65 + displayIndex)}.
                   </span>
                   {opt}
                 </button>
@@ -1086,16 +1206,17 @@ export default function MockExamShell({
             </button>
             <button
               onClick={toggleFlag}
+              aria-pressed={isFlagged}
               style={{ padding: "12px 16px", borderRadius: 12, border: `1.5px solid ${isFlagged ? "#D97706" : "#E2E8F0"}`, background: isFlagged ? "#FEF9C3" : "#fff", color: isFlagged ? "#A16207" : "#64748B", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}
             >
-              {isFlagged ? "🚩 Flagged" : "🚩 Flag"}
+              {isFlagged ? "Flagged for review" : "Flag for review"}
             </button>
             <button
               onClick={() => setReportModal({ id: currentQ.id, text: currentQ.question, module: currentQ.module })}
               style={{ padding: "12px 14px", borderRadius: 12, border: "1.5px solid #E2E8F0", background: "#fff", color: "#94A3B8", fontWeight: 600, fontSize: 13, cursor: "pointer", fontFamily: "inherit" }}
               title="Report an error"
             >
-              ⚑
+              Report question
             </button>
             {isLastQ ? (
               <button
@@ -1116,8 +1237,8 @@ export default function MockExamShell({
         </div>
 
         {/* Question navigator */}
-        <div className="mes-navigator" style={{ background: "#fff", borderRadius: 16, padding: "16px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", position: "sticky", top: 70 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em", marginBottom: 10 }}>QUESTION NAVIGATOR</div>
+        <details className="mes-navigator" open={navigatorOpen} onToggle={event => setNavigatorOpen(event.currentTarget.open)} style={{ background: "#fff", borderRadius: 16, padding: "16px", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", position: "sticky", top: 70 }}>
+          <summary>Questions · {answered} of {questions.length} answered</summary>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 4 }}>
             {questions.map((_, i) => {
               const isAnswered = answers[i]?.selected !== null;
@@ -1126,7 +1247,9 @@ export default function MockExamShell({
               return (
                 <button
                   key={i}
-                  onClick={() => setCurrentIdx(i)}
+                  onClick={() => { setCurrentIdx(i); if (!window.matchMedia("(min-width: 769px)").matches) setNavigatorOpen(false); }}
+                  aria-label={`Question ${i + 1}${isFlaggedQ ? ", flagged" : ""}${isAnswered ? ", answered" : ", unanswered"}`}
+                  aria-current={isCurrent ? "step" : undefined}
                   style={{
                     padding: "6px 0", borderRadius: 6,
                     border: isCurrent ? `2px solid ${accentColor}` : "1px solid #E2E8F0",
@@ -1158,7 +1281,7 @@ export default function MockExamShell({
           >
             Submit Exam ✓
           </button>
-        </div>
+        </details>
       </div>
 
       {showPreviewGate && (
@@ -1168,12 +1291,13 @@ export default function MockExamShell({
             const selected = answers[index]?.selected;
             return selected === null || selected === undefined
               ? []
-              : [{ module: question.module, correct: selected === question.correct }];
+              : [{ module: question.module }];
           })}
           productKey={productKey}
           productName={productName}
           paidFeatures={features}
           examType={productKey}
+          diagnosticAvailable={false}
           previewName="mock-exam questions"
           backPath={practicePath}
           onUnlocked={() => {}}

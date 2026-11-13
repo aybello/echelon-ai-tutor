@@ -1,4 +1,4 @@
-import nodemailer from "nodemailer";
+import nodemailer, { type Transporter, type SendMailOptions } from "nodemailer";
 import { ENV } from "./_core/env";
 
 export interface ContactEmailPayload {
@@ -12,12 +12,43 @@ export interface PurchaseConfirmationPayload {
   email: string;
   productName: string;
   productKey: string;
+  // Existing purchase rows use the historic `amountCAD` column. New Individual
+  // Exam Passes are CAD-only, while old queued receipts can carry USD safely.
   amountCAD: number; // in cents
+  paymentCurrency?: "cad" | "usd";
   quizPath: string;  // e.g. "/class1-ww"
   mockPath: string;  // e.g. "/class1-ww-mock"
+  accessExpiresAt: Date | string | null;
 }
 
-function createTransporter(): nodemailer.Transporter {
+export function purchaseAccessLabel(accessExpiresAt: PurchaseConfirmationPayload["accessExpiresAt"]): string {
+  if (!accessExpiresAt) return "Your recorded access term is available in your account";
+  const expiry = accessExpiresAt instanceof Date ? accessExpiresAt : new Date(accessExpiresAt);
+  if (Number.isNaN(expiry.getTime())) return "Your recorded access term is available in your account";
+  return `Access expires ${new Intl.DateTimeFormat("en-CA", {
+    timeZone: "UTC",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  }).format(expiry)} UTC`;
+}
+
+export function purchaseAccessSummary(accessExpiresAt: PurchaseConfirmationPayload["accessExpiresAt"]): string {
+  return `${purchaseAccessLabel(accessExpiresAt)}.`;
+}
+
+export function formatPurchasePaymentAmount(
+  amountCents: number,
+  currency: PurchaseConfirmationPayload["paymentCurrency"] = "cad",
+): string {
+  const prefix = currency === "usd" ? "US$" : "CA$";
+  return `${prefix}${(amountCents / 100).toFixed(2)}`;
+}
+
+function createTransporter(): Transporter {
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     return nodemailer.createTransport({
       host: ENV.smtpHost,
@@ -27,13 +58,15 @@ function createTransporter(): nodemailer.Transporter {
         user: ENV.smtpUser,
         pass: ENV.smtpPass,
       },
+      disableFileAccess: true,
+      disableUrlAccess: true,
     });
   }
   // Fallback — should not reach here in production
   throw new Error("SMTP not configured");
 }
 
-async function getTransporter(): Promise<nodemailer.Transporter> {
+async function getTransporter(): Promise<Transporter> {
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     return createTransporter();
   }
@@ -56,9 +89,9 @@ async function getTransporter(): Promise<nodemailer.Transporter> {
 export async function sendPurchaseConfirmationEmail(
   payload: PurchaseConfirmationPayload
 ): Promise<void> {
-  const { email, productName, productKey, amountCAD, quizPath, mockPath } = payload;
+  const { email, productName, productKey, amountCAD, paymentCurrency, quizPath, mockPath, accessExpiresAt } = payload;
 
-  let transporter: nodemailer.Transporter;
+  let transporter: Transporter;
 
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     transporter = createTransporter();
@@ -76,10 +109,12 @@ export async function sendPurchaseConfirmationEmail(
   }
 
   const siteUrl = "https://echeloninstitute.ca";
-  const amountFormatted = `CA$${(amountCAD / 100).toFixed(2)}`;
+  const amountFormatted = formatPurchasePaymentAmount(amountCAD, paymentCurrency);
   const quizUrl = `${siteUrl}${quizPath}`;
   const mockUrl = `${siteUrl}${mockPath}`;
   const accountUrl = `${siteUrl}/account`;
+  const accessSummary = purchaseAccessSummary(accessExpiresAt);
+  const accessLabel = purchaseAccessLabel(accessExpiresAt);
 
   const confirmationMail = {
     from: `"Echelon Institute" <${ENV.smtpUser || "no-reply@echeloninstitute.ca"}>`,
@@ -89,6 +124,7 @@ export async function sendPurchaseConfirmationEmail(
       `You're all set!`,
       ``,
       `Thank you for purchasing the ${productName} (${amountFormatted}).`,
+      accessSummary,
       ``,
       `Start studying now:`,
       `  Practice Quiz: ${quizUrl}`,
@@ -130,7 +166,7 @@ export async function sendPurchaseConfirmationEmail(
             <div style="background:#F0FDF4;border:1.5px solid #BBF7D0;border-radius:10px;padding:18px 22px;margin-bottom:28px;">
               <p style="margin:0 0 4px;font-size:12px;font-weight:700;color:#15803D;letter-spacing:0.06em;text-transform:uppercase;">Purchase Confirmed</p>
               <p style="margin:0;font-size:18px;font-weight:800;color:#0F172A;">${productName}</p>
-              <p style="margin:4px 0 0;font-size:14px;color:#475569;">${amountFormatted} · One-time payment · Access never expires</p>
+              <p style="margin:4px 0 0;font-size:14px;color:#475569;">${amountFormatted} · One-time payment · ${accessLabel}</p>
             </div>
 
             <!-- Start studying CTAs -->
@@ -219,7 +255,7 @@ export async function sendSubscriptionConfirmationEmail(
 ): Promise<void> {
   const { email, tierLabel, provinceLabel, currentPeriodEnd, quizPath } = payload;
 
-  let transporter: nodemailer.Transporter;
+  let transporter: Transporter;
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     transporter = createTransporter();
   } else if (!ENV.isProduction) {
@@ -330,7 +366,7 @@ export async function sendSubscriptionRenewalEmail(
 ): Promise<void> {
   const { email, tierLabel, provinceLabel, currentPeriodEnd, quizPath } = payload;
 
-  let transporter: nodemailer.Transporter;
+  let transporter: Transporter;
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     transporter = createTransporter();
   } else if (!ENV.isProduction) {
@@ -437,7 +473,7 @@ export async function sendSubscriptionRenewalEmail(
 export async function sendContactEmail(payload: ContactEmailPayload): Promise<void> {
   const { name, email, subject, message } = payload;
 
-  let transporter: nodemailer.Transporter;
+  let transporter: Transporter;
 
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     transporter = createTransporter();
@@ -552,7 +588,7 @@ export async function sendMagicLinkEmail(
 ): Promise<void> {
   const { email, magicLinkUrl, expiresInMinutes } = payload;
 
-  let transporter: nodemailer.Transporter;
+  let transporter: Transporter;
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     transporter = createTransporter();
   } else if (!ENV.isProduction) {
@@ -887,7 +923,7 @@ export async function sendTeamEnrollmentEmail(
   const { email, orgName, managerEmail, loginUrl, courseName, unsubscribeUrl } = payload;
   const courseLabel = courseName ?? "All-Access (all certification levels)";
 
-  let transporter: nodemailer.Transporter;
+  let transporter: Transporter;
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     transporter = createTransporter();
   } else if (!ENV.isProduction) {
@@ -1115,7 +1151,7 @@ export async function sendOperatorStudyReminderEmail(
         : `You have ${daysUntilExam} days until your exam. Keep your momentum going.`
     : "Your manager wants to make sure you're on track for your upcoming exam.";
 
-  let transporter: nodemailer.Transporter;
+  let transporter: Transporter;
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     transporter = createTransporter();
   } else if (!ENV.isProduction) {
@@ -1131,7 +1167,7 @@ export async function sendOperatorStudyReminderEmail(
     return;
   }
 
-  const mail: nodemailer.SendMailOptions = {
+  const mail: SendMailOptions = {
     from: `"Echelon Institute" <${ENV.smtpUser ?? "noreply@echeloninstitute.ca"}>`,
     to: email,
     subject: `📚 Study reminder from ${orgName} — keep up the great work`,
@@ -1208,7 +1244,7 @@ export interface OtpEmailPayload {
 export async function sendOtpEmail(payload: OtpEmailPayload): Promise<void> {
   const { email, code, expiresInMinutes } = payload;
 
-  let transporter: nodemailer.Transporter;
+  let transporter: Transporter;
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     transporter = createTransporter();
   } else if (!ENV.isProduction) {

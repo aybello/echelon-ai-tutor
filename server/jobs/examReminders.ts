@@ -1,3 +1,7 @@
+import { and, eq } from "drizzle-orm";
+import { EXAM_REMINDER_INTERVALS, normalizeExamDateKey, parseReminderHistory, recordExamReminder } from "../examDateRecords";
+import type { Database } from "../stripe/eventLedger";
+import { deliverOnce, workKey } from "./durableWork";
 /**
  * Exam Date Reminder Job
  * Runs daily at 8:00 AM UTC. Checks all exam_dates rows and sends
@@ -6,27 +10,26 @@
  */
 import { getDb } from "../db";
 import { examDates } from "../../drizzle/schema";
-import { notifyOwner } from "../_core/notification";
 import { ENV } from "../_core/env";
-import { withRetry } from "./retry";
-import nodemailer from "nodemailer";
+import nodemailer, { type Transporter, type SendMailOptions } from "nodemailer";
 
-const REMINDER_INTERVALS = [30, 14, 7, 1]; // days before exam
+const REMINDER_INTERVALS = EXAM_REMINDER_INTERVALS; // days before exam
 
 function getDaysUntil(examDate: Date): number {
   const now = new Date();
-  now.setHours(0, 0, 0, 0);
+  now.setUTCHours(0, 0, 0, 0);
   const exam = new Date(examDate);
-  exam.setHours(0, 0, 0, 0);
+  exam.setUTCHours(0, 0, 0, 0);
   return Math.ceil((exam.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
 }
 
-function createTransporter(): nodemailer.Transporter {
+function createTransporter(): Transporter {
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     return nodemailer.createTransport({
       host: ENV.smtpHost,
       port: Number(ENV.smtpPort ?? 587),
       secure: Number(ENV.smtpPort ?? 587) === 465,
+      connectionTimeout: 10_000, greetingTimeout: 10_000, socketTimeout: 30_000,
       auth: { user: ENV.smtpUser, pass: ENV.smtpPass },
     });
   }
@@ -37,7 +40,7 @@ function getReminderSubject(days: number, productLabel: string): string {
   if (days === 1) return `⏰ Your ${productLabel} exam is TOMORROW — final review time!`;
   if (days === 7) return `📅 7 days until your ${productLabel} exam — stay on track`;
   if (days === 14) return `📚 2 weeks to your ${productLabel} exam — keep the momentum`;
-  return `🎯 30 days until your ${productLabel} exam — great time to start`;
+  return `🎯 ${days} days until your ${productLabel} exam — great time to start`;
 }
 
 function getReminderHtml(
@@ -50,7 +53,7 @@ function getReminderHtml(
   const siteUrl = "https://echeloninstitute.ca";
   const accountUrl = `${siteUrl}/account`;
   const examDateFormatted = new Date(examDateStr).toLocaleDateString("en-CA", {
-    weekday: "long", year: "numeric", month: "long", day: "numeric",
+    weekday: "long", year: "numeric", month: "long", day: "numeric", timeZone: "UTC",
   });
 
   const urgencyColor = days <= 1 ? "#EF4444" : days <= 7 ? "#F59E0B" : days <= 14 ? "#3B82F6" : "#22C55E";
@@ -157,7 +160,7 @@ const PRODUCT_LABELS: Record<string, string> = {
   "wpi-class4-wastewater": "WPI Class IV Wastewater Treatment Pass",
 };
 
-export async function runExamReminders(): Promise<{ sent: number; errors: string[] }> {
+export async function runExamReminders(assertOwned: () => Promise<void> = async () => {}): Promise<{ sent: number; errors: string[] }> {
   const db = await getDb();
   if (!db) return { sent: 0, errors: ["Database unavailable"] };
 
@@ -165,7 +168,7 @@ export async function runExamReminders(): Promise<{ sent: number; errors: string
   let sent = 0;
   const errors: string[] = [];
 
-  let transporter: nodemailer.Transporter | null = null;
+  let transporter: Transporter | null = null;
   try {
     transporter = createTransporter();
   } catch (err) {
@@ -173,39 +176,41 @@ export async function runExamReminders(): Promise<{ sent: number; errors: string
   }
 
   for (const row of allRows) {
+    await assertOwned();
     const days = getDaysUntil(row.examDate);
 
-    // Skip past exams (more than 1 day ago)
-    if (days < 0) continue;
+    // Skip exams that are today or already past: the last reminder is the
+    // 1-day message, and a "tomorrow" email on exam morning would be wrong.
+    if (days < 1) continue;
 
-    const alreadySent: number[] = (() => {
-      try { return JSON.parse(row.remindersSent) as number[]; } catch { return []; }
-    })();
+    let alreadySent: number[];
+    try { alreadySent = parseReminderHistory(row.remindersSent); }
+    catch { errors.push(`Invalid reminder history for exam date ${row.id}`); continue; }
 
-    for (const interval of REMINDER_INTERVALS) {
-      if (days !== interval) continue;
-      if (alreadySent.includes(interval)) continue;
+    // A reminder window is due once days-until reaches the interval. Catch-up:
+    // if a run was missed (scheduler outage, exam date added mid-window), send
+    // the most urgent pending reminder instead of silently skipping it, and
+    // retire the larger missed windows so the learner never receives two
+    // reminders for the same stretch.
+    const due = REMINDER_INTERVALS.filter(
+      (interval) => days <= interval && !alreadySent.includes(interval)
+    );
+    if (due.length > 0) {
+      const interval = Math.min(...due);
 
       const productLabel = PRODUCT_LABELS[row.productKey] ?? row.productKey;
 
       try {
-        await transporter.sendMail({
+        await assertOwned();
+        const delivered = await deliverCurrentExamReminder(db, row, due, () => transporter!.sendMail({
           from: `"Echelon Institute" <${ENV.smtpUser || "no-reply@echeloninstitute.ca"}>`,
           to: row.email,
-          subject: getReminderSubject(interval, productLabel),
-          html: getReminderHtml(row.email, productLabel, row.productKey, interval, row.examDate.toISOString()),
-        });
+          subject: getReminderSubject(days, productLabel),
+          html: getReminderHtml(row.email, productLabel, row.productKey, days, row.examDate.toISOString()),
+        }));
 
-        // Mark this interval as sent
-        const updated = [...alreadySent, interval];
-        const { eq, and } = await import("drizzle-orm");
-        await db
-          .update(examDates)
-          .set({ remindersSent: JSON.stringify(updated) })
-          .where(and(eq(examDates.email, row.email), eq(examDates.productKey, row.productKey)));
-
-        sent++;
-        console.log(`[ExamReminder] Sent ${interval}-day reminder to ${row.email.replace(/(^.{3}).+@/, '$1***@')} for ${row.productKey}`);
+        if (delivered) sent++;
+        if (delivered) console.log(`[ExamReminder] Sent ${interval}-day reminder to ${row.email.replace(/(^.{3}).+@/, '$1***@')} for ${row.productKey}`);
       } catch (err) {
         const msg = `Failed to send ${interval}-day reminder to ${row.email}: ${(err as Error).message}`;
         errors.push(msg);
@@ -217,30 +222,24 @@ export async function runExamReminders(): Promise<{ sent: number; errors: string
   return { sent, errors };
 }
 
-export function startExamReminderJob(): void {
-  import("node-cron")
-    .then(({ default: cron }) => {
-      // Run daily at 8:00 AM UTC
-      cron.schedule("0 8 * * *", async () => {
-        console.log("[ExamReminder] Running daily exam reminder check...");
-        try {
-          const result = await withRetry(() => runExamReminders(), "examReminders");
-          console.log(`[ExamReminder] Done — sent: ${result.sent}, errors: ${result.errors.length}`);
-          if (result.sent > 0 || result.errors.length > 0) {
-            await notifyOwner({
-              title: `Exam reminders: ${result.sent} sent`,
-              content: result.errors.length
-                ? `Sent: ${result.sent}\nErrors:\n${result.errors.join("\n")}`
-                : `Sent ${result.sent} exam reminder email(s) today.`,
-            }).catch((err) => { console.error("[examReminders] notifyOwner failed:", err); });
-          }
-        } catch (err) {
-          console.error("[ExamReminder] Job error:", err);
-        }
-      });
-      console.log("[ExamReminder] Cron job scheduled — daily at 8:00 AM UTC");
-    })
-    .catch((err) => {
-      console.error("[ExamReminder] Failed to load node-cron:", err.message);
-    });
+/**
+ * Recheck a scanned date before SMTP and fence its acknowledgement after
+ * delivery. `intervals` holds every pending window for this exam date (most
+ * urgent first after sorting); exactly one email is sent, keyed to the most
+ * urgent window, and every pending window is recorded afterwards so a
+ * caught-up learner is never mailed twice for the same stretch.
+ */
+export async function deliverCurrentExamReminder(
+  db: Database, scanned: typeof examDates.$inferSelect, intervals: number[],
+  send: () => Promise<unknown>,
+) {
+  const interval = Math.min(...intervals);
+  const [current] = await db.select().from(examDates)
+    .where(and(eq(examDates.id, scanned.id), eq(examDates.examDate, scanned.examDate))).limit(1);
+  if (!current || parseReminderHistory(current.remindersSent).includes(interval)) return false;
+  const key = normalizeExamDateKey(current.email, current.productKey);
+  const delivered = await deliverOnce(db, workKey("exam-email",
+    `${key.email}:${key.productKey}:${current.examDate.toISOString().slice(0,10)}:${interval}`), send);
+  for (const pending of intervals) await recordExamReminder(db, current, pending);
+  return delivered;
 }

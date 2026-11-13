@@ -1,0 +1,1772 @@
+{
+  "courseKey": "wqa",
+  "status": "approved",
+  "version": "echelon-six-games-2026-11-12-final-candidate",
+  "previewIds": {
+    "rapid-swipe": "wqa-001",
+    "speed-match": "wqa-021",
+    "odd-one-out": "wqa-031",
+    "cause-effect": "wqa-046",
+    "tap-the-flaw": "wqa-066",
+    "before-after": "wqa-order-001"
+  },
+  "examples": [
+    {
+      "id": "wqa-001",
+      "mode": "rapid-swipe",
+      "prompt": "A grab sample represents water at a specific time.",
+      "correctAnswer": true,
+      "explanation": "A grab captures a particular point in time; it is not a time average."
+    },
+    {
+      "id": "wqa-002",
+      "mode": "rapid-swipe",
+      "prompt": "A raw-water sample is collected after disinfection.",
+      "correctAnswer": false,
+      "explanation": "Raw water is sampled before treatment, including pre-disinfection."
+    },
+    {
+      "id": "wqa-003",
+      "mode": "rapid-swipe",
+      "prompt": "A sterile microbiology sample bottle may be used after touching its inside with a finger.",
+      "correctAnswer": false,
+      "explanation": "The interior is contaminated if touched; use a suitable replacement."
+    },
+    {
+      "id": "wqa-004",
+      "mode": "rapid-swipe",
+      "prompt": "A sample location and collection time matter to representativeness.",
+      "correctAnswer": true,
+      "explanation": "Both affect what conditions the sample represents."
+    },
+    {
+      "id": "wqa-005",
+      "mode": "rapid-swipe",
+      "prompt": "The lab-provided container can vary by the test requested.",
+      "correctAnswer": true,
+      "explanation": "Container material and preparation depend on the analytical method."
+    },
+    {
+      "id": "wqa-006",
+      "mode": "rapid-swipe",
+      "prompt": "In drinking-water analysis, turbidity describes water clarity.",
+      "correctAnswer": true,
+      "explanation": "Turbidity describes cloudiness and reduced water clarity."
+    },
+    {
+      "id": "wqa-007",
+      "mode": "rapid-swipe",
+      "prompt": "Hardness is generally associated with dissolved calcium and magnesium.",
+      "correctAnswer": true,
+      "explanation": "Dissolved calcium and magnesium are principal hardness contributors."
+    },
+    {
+      "id": "wqa-008",
+      "mode": "rapid-swipe",
+      "prompt": "At 25 °C, a water sample at pH 6 is acidic.",
+      "correctAnswer": true,
+      "explanation": "At 25 °C, neutral pH is 7; a pH of 6 is acidic."
+    },
+    {
+      "id": "wqa-009",
+      "mode": "rapid-swipe",
+      "prompt": "Alkalinity and pH mean exactly the same thing.",
+      "correctAnswer": false,
+      "explanation": "Alkalinity measures acid-neutralizing capacity; pH measures acidity or basicity."
+    },
+    {
+      "id": "wqa-010",
+      "mode": "rapid-swipe",
+      "prompt": "Dissolved oxygen is the oxygen atom chemically bound in H2O.",
+      "correctAnswer": false,
+      "explanation": "Dissolved oxygen is molecular oxygen dissolved in water, not the oxygen bound in H2O."
+    },
+    {
+      "id": "wqa-011",
+      "mode": "rapid-swipe",
+      "prompt": "At the same pressure and salinity, colder water can hold more dissolved oxygen than warmer water.",
+      "correctAnswer": true,
+      "explanation": "Oxygen solubility generally increases as water temperature decreases."
+    },
+    {
+      "id": "wqa-012",
+      "mode": "rapid-swipe",
+      "prompt": "Total coliform detection always proves recent fecal contamination.",
+      "correctAnswer": false,
+      "explanation": "Total coliforms may arise from environmental sources or regrowth, not only fecal material."
+    },
+    {
+      "id": "wqa-013",
+      "mode": "rapid-swipe",
+      "prompt": "In the Ontario disinfection procedure, primary and secondary disinfection have identical purposes.",
+      "correctAnswer": false,
+      "explanation": "Primary disinfection targets pathogens before the first consumer; secondary disinfection maintains a distribution residual."
+    },
+    {
+      "id": "wqa-014",
+      "mode": "rapid-swipe",
+      "prompt": "Ozone provides a persistent disinfectant residual throughout distribution.",
+      "correctAnswer": false,
+      "explanation": "Ontario guidance says ozone is not suitable for maintaining a persistent distribution residual."
+    },
+    {
+      "id": "wqa-015",
+      "mode": "rapid-swipe",
+      "prompt": "An SDS describes hazards and safe handling precautions for a hazardous product.",
+      "correctAnswer": true,
+      "explanation": "The safety data sheet gives product hazard, prevention and emergency information."
+    },
+    {
+      "id": "wqa-016",
+      "mode": "rapid-swipe",
+      "prompt": "An eyewash path should be kept unobstructed.",
+      "correctAnswer": true,
+      "explanation": "An exposed worker needs prompt access to the eyewash station."
+    },
+    {
+      "id": "wqa-019",
+      "mode": "rapid-swipe",
+      "prompt": "The Ontario WQA need-to-know outline includes laboratory and sampling.",
+      "correctAnswer": true,
+      "explanation": "The outline includes laboratory apparatus, reagents and sample collection."
+    },
+    {
+      "id": "wqa-020",
+      "mode": "rapid-swipe",
+      "prompt": "A field blank can help identify contamination introduced during sample handling.",
+      "correctAnswer": true,
+      "explanation": "The blank is exposed at the site to help assess contamination during field handling."
+    },
+    {
+      "id": "wqa-021",
+      "mode": "speed-match",
+      "prompt": "Match each water parameter to its definition.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "pH",
+          "right": "Acidity or basicity"
+        },
+        {
+          "id": "pair-2",
+          "left": "Turbidity",
+          "right": "Cloudiness or loss of clarity"
+        },
+        {
+          "id": "pair-3",
+          "left": "Alkalinity",
+          "right": "Acid-neutralizing capacity"
+        }
+      ],
+      "explanation": "pH → Acidity or basicity; Turbidity → Cloudiness or loss of clarity; Alkalinity → Acid-neutralizing capacity."
+    },
+    {
+      "id": "wqa-022",
+      "mode": "speed-match",
+      "prompt": "Match each Ontario sampling location to the specified point in the system.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Raw-water sampling point",
+          "right": "Before any treatment"
+        },
+        {
+          "id": "pair-2",
+          "left": "Treated-water sampling point",
+          "right": "At entry to distribution, after treatment and before the first consumer"
+        },
+        {
+          "id": "pair-3",
+          "left": "Distribution sampling point",
+          "right": "Within the delivery network downstream of entry"
+        }
+      ],
+      "explanation": "Raw-water sampling precedes treatment; treated-water sampling is at system entry after treatment; distribution sampling is within the delivery network."
+    },
+    {
+      "id": "wqa-023",
+      "mode": "speed-match",
+      "prompt": "Match each numbered Canadian WHMIS SDS section to its exact section heading.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Section 2",
+          "right": "Hazard identification"
+        },
+        {
+          "id": "pair-2",
+          "left": "Section 4",
+          "right": "First-aid measures"
+        },
+        {
+          "id": "pair-3",
+          "left": "Section 7",
+          "right": "Handling and storage"
+        }
+      ],
+      "explanation": "Section 2 → Hazard identification; Section 4 → First-aid measures; Section 7 → Handling and storage."
+    },
+    {
+      "id": "wqa-025",
+      "mode": "speed-match",
+      "prompt": "Match each operation in this specified train to its main role: coagulation → flocculation → sedimentation.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Coagulation",
+          "right": "Destabilize small particles with chemicals"
+        },
+        {
+          "id": "pair-2",
+          "left": "Flocculation",
+          "right": "Gently mix to build larger flocs"
+        },
+        {
+          "id": "pair-3",
+          "left": "Sedimentation",
+          "right": "Allow heavy flocs to settle"
+        }
+      ],
+      "explanation": "Coagulation → Destabilize small particles with chemicals; Flocculation → Gently mix to build larger flocs; Sedimentation → Allow heavy flocs to settle."
+    },
+    {
+      "id": "wqa-026",
+      "mode": "speed-match",
+      "prompt": "Match the monitoring concept to its description.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Grab sample",
+          "right": "Represents a particular time"
+        },
+        {
+          "id": "pair-2",
+          "left": "Sample label",
+          "right": "Identifies the sample container"
+        },
+        {
+          "id": "pair-3",
+          "left": "Chain of custody",
+          "right": "Documents sample possession and transfer"
+        }
+      ],
+      "explanation": "Grab sample → Represents a particular time; Sample label → Identifies the sample container; Chain of custody → Documents sample possession and transfer."
+    },
+    {
+      "id": "wqa-027",
+      "mode": "speed-match",
+      "prompt": "Match each disinfection term to its meaning.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Primary disinfection",
+          "right": "Inactivation before the first consumer"
+        },
+        {
+          "id": "pair-2",
+          "left": "Secondary disinfection",
+          "right": "Maintaining a distribution-system residual"
+        },
+        {
+          "id": "pair-3",
+          "left": "CT",
+          "right": "Residual concentration multiplied by effective contact time"
+        }
+      ],
+      "explanation": "Primary disinfection → Inactivation before the first consumer; Secondary disinfection → Maintaining a distribution-system residual; CT → Residual concentration multiplied by effective contact time."
+    },
+    {
+      "id": "wqa-028",
+      "mode": "speed-match",
+      "prompt": "Match each water-quality parameter to the property or material it describes.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Hardness",
+          "right": "Calcium and magnesium contribution"
+        },
+        {
+          "id": "pair-2",
+          "left": "Dissolved oxygen",
+          "right": "Oxygen gas dissolved in water"
+        },
+        {
+          "id": "pair-3",
+          "left": "Turbidity",
+          "right": "Cloudiness associated with particles"
+        }
+      ],
+      "explanation": "Hardness → Calcium and magnesium contribution; Dissolved oxygen → Oxygen gas dissolved in water; Turbidity → Cloudiness associated with particles."
+    },
+    {
+      "id": "wqa-030",
+      "mode": "speed-match",
+      "prompt": "Match the unit conversion.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "1 litre",
+          "right": "1,000 millilitres"
+        },
+        {
+          "id": "pair-2",
+          "left": "1 gram",
+          "right": "1,000 milligrams"
+        },
+        {
+          "id": "pair-3",
+          "left": "1 milligram",
+          "right": "1,000 micrograms"
+        }
+      ],
+      "explanation": "1 litre → 1,000 millilitres; 1 gram → 1,000 milligrams; 1 milligram → 1,000 micrograms."
+    },
+    {
+      "id": "wqa-031",
+      "mode": "odd-one-out",
+      "prompt": "Which item is not a drinking-water measurement parameter?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "pH"
+        },
+        {
+          "id": "option-2",
+          "label": "Turbidity"
+        },
+        {
+          "id": "option-3",
+          "label": "Hardness"
+        },
+        {
+          "id": "option-4",
+          "label": "Sample label"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A label identifies a sample; the other choices are water characteristics."
+    },
+    {
+      "id": "wqa-032",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a microbiological sample-handling safeguard?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Use a sterile bottle"
+        },
+        {
+          "id": "option-2",
+          "label": "Keep the bottle interior untouched"
+        },
+        {
+          "id": "option-3",
+          "label": "Hold the cap away from contamination"
+        },
+        {
+          "id": "option-4",
+          "label": "Touch the inside of the cap"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Touching interior surfaces can contaminate the sample."
+    },
+    {
+      "id": "wqa-033",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a documented purpose of an SDS?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Describe hazards"
+        },
+        {
+          "id": "option-2",
+          "label": "Describe first aid"
+        },
+        {
+          "id": "option-3",
+          "label": "Describe safe handling"
+        },
+        {
+          "id": "option-4",
+          "label": "Prove an instrument is calibrated"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "An SDS concerns product hazards and safety; it is not an instrument calibration record."
+    },
+    {
+      "id": "wqa-034",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a water sampling location category?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Raw water"
+        },
+        {
+          "id": "option-2",
+          "label": "Treated water"
+        },
+        {
+          "id": "option-3",
+          "label": "Distribution water"
+        },
+        {
+          "id": "option-4",
+          "label": "Safety data sheet"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "The other three identify parts of a drinking-water system."
+    },
+    {
+      "id": "wqa-035",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a metric volume unit?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Litre"
+        },
+        {
+          "id": "option-2",
+          "label": "Millilitre"
+        },
+        {
+          "id": "option-3",
+          "label": "Microlitre"
+        },
+        {
+          "id": "option-4",
+          "label": "Milligram"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Milligram is a mass unit; the others measure volume."
+    },
+    {
+      "id": "wqa-036",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a metric mass unit?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Gram"
+        },
+        {
+          "id": "option-2",
+          "label": "Milligram"
+        },
+        {
+          "id": "option-3",
+          "label": "Microgram"
+        },
+        {
+          "id": "option-4",
+          "label": "Litre"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Litre measures volume; the others measure mass."
+    },
+    {
+      "id": "wqa-037",
+      "mode": "odd-one-out",
+      "prompt": "Which item is not an SDS section topic?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Hazard identification"
+        },
+        {
+          "id": "option-2",
+          "label": "First-aid measures"
+        },
+        {
+          "id": "option-3",
+          "label": "Handling and storage"
+        },
+        {
+          "id": "option-4",
+          "label": "Distribution-system sampling site"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "The first three are SDS subjects; sample location is not."
+    },
+    {
+      "id": "wqa-039",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a drinking-water process in this stated train: coagulation → flocculation → sedimentation → filtration → disinfection?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Flocculation"
+        },
+        {
+          "id": "option-2",
+          "label": "Filtration"
+        },
+        {
+          "id": "option-3",
+          "label": "Disinfection"
+        },
+        {
+          "id": "option-4",
+          "label": "Chain of custody"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Chain of custody records handling rather than treating water."
+    },
+    {
+      "id": "wqa-040",
+      "mode": "odd-one-out",
+      "prompt": "Which quantity is not a component of chemical-disinfection CT?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Disinfectant residual concentration"
+        },
+        {
+          "id": "option-2",
+          "label": "Effective contact time"
+        },
+        {
+          "id": "option-3",
+          "label": "Sample bottle colour"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "CT multiplies residual concentration by effective contact time."
+    },
+    {
+      "id": "wqa-041",
+      "mode": "odd-one-out",
+      "prompt": "Which substance is not a persistent distribution disinfectant in Ontario’s guidance?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Free chlorine residual"
+        },
+        {
+          "id": "option-2",
+          "label": "Monochloramine residual"
+        },
+        {
+          "id": "option-3",
+          "label": "Ozone"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Ozone does not maintain a persistent residual in distribution."
+    },
+    {
+      "id": "wqa-042",
+      "mode": "odd-one-out",
+      "prompt": "Which is not part of an emergency chemical-eye-exposure response?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Begin eye flushing promptly"
+        },
+        {
+          "id": "option-2",
+          "label": "Get medical attention"
+        },
+        {
+          "id": "option-3",
+          "label": "Delay flushing to look for a neutralizer"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Prompt irrigation matters; neutralization can delay care and cause harm."
+    },
+    {
+      "id": "wqa-043",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a unit of mass concentration?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "mg/L"
+        },
+        {
+          "id": "option-2",
+          "label": "µg/L"
+        },
+        {
+          "id": "option-3",
+          "label": "g/L"
+        },
+        {
+          "id": "option-4",
+          "label": "L"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A litre is volume alone; the other choices express mass per volume."
+    },
+    {
+      "id": "wqa-044",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a sample-container handling practice that protects integrity?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Keep the inside untouched"
+        },
+        {
+          "id": "option-2",
+          "label": "Use the lab-specified container"
+        },
+        {
+          "id": "option-3",
+          "label": "Keep the cap away from contamination"
+        },
+        {
+          "id": "option-4",
+          "label": "Place the cap interior on a dirty bench"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Contact with a dirty surface can contaminate the interior."
+    },
+    {
+      "id": "wqa-045",
+      "mode": "odd-one-out",
+      "prompt": "Which is not an indication that sample traceability is supported?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Collection location recorded"
+        },
+        {
+          "id": "option-2",
+          "label": "Collection time recorded"
+        },
+        {
+          "id": "option-3",
+          "label": "Sampler information recorded"
+        },
+        {
+          "id": "option-4",
+          "label": "Unidentified bottle"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "An unidentified bottle cannot be linked reliably to its collection record."
+    },
+    {
+      "id": "wqa-046",
+      "mode": "cause-effect",
+      "prompt": "A sampler touches the inside of a sterile bottle. What risk increases?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Sample contamination"
+        },
+        {
+          "id": "option-2",
+          "label": "Automatic calibration"
+        },
+        {
+          "id": "option-3",
+          "label": "Improved traceability"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Touch introduces outside material or microorganisms."
+    },
+    {
+      "id": "wqa-047",
+      "mode": "cause-effect",
+      "prompt": "A grab sample is left too long before analysis. What may happen?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Its target analyte may change"
+        },
+        {
+          "id": "option-2",
+          "label": "Its origin becomes a new source"
+        },
+        {
+          "id": "option-3",
+          "label": "The lab container becomes automatically sterile"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Holding time matters because sample characteristics may change."
+    },
+    {
+      "id": "wqa-048",
+      "mode": "cause-effect",
+      "prompt": "A sample is collected from a hot-water tap rather than the specified cold-water tap. What is the concern?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It may not represent the supplied water"
+        },
+        {
+          "id": "option-2",
+          "label": "It becomes a raw-water sample"
+        },
+        {
+          "id": "option-3",
+          "label": "It automatically becomes a field blank"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Stored heated water may differ from the water supplied by the system."
+    },
+    {
+      "id": "wqa-049",
+      "mode": "cause-effect",
+      "prompt": "A sample is taken downstream of a domestic softener when distribution water is the target. What may result?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The sample may reflect household treatment"
+        },
+        {
+          "id": "option-2",
+          "label": "The sample becomes untreated source water"
+        },
+        {
+          "id": "option-3",
+          "label": "The sampler measures elapsed time"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The softener can alter water relative to the distribution supply."
+    },
+    {
+      "id": "wqa-050",
+      "mode": "cause-effect",
+      "prompt": "The wrong sampling location is recorded. What is harmed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Traceability to the sampled location"
+        },
+        {
+          "id": "option-2",
+          "label": "Chemical identity of oxygen"
+        },
+        {
+          "id": "option-3",
+          "label": "The size of a litre"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Location records connect results to the sampled source."
+    },
+    {
+      "id": "wqa-051",
+      "mode": "cause-effect",
+      "prompt": "A sampler uses the wrong bottle for the requested analysis. What may happen?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The sample may not be suitable for the requested test"
+        },
+        {
+          "id": "option-2",
+          "label": "The sample automatically becomes representative"
+        },
+        {
+          "id": "option-3",
+          "label": "The chlorine dose is calculated automatically"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Container type and preparation depend on the analytical method; the wrong container can compromise sample integrity."
+    },
+    {
+      "id": "wqa-052",
+      "mode": "cause-effect",
+      "prompt": "The pH of a sample falls from 7 to 6 at 25 °C. How does hydrogen-ion activity change approximately?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It increases tenfold"
+        },
+        {
+          "id": "option-2",
+          "label": "It decreases tenfold"
+        },
+        {
+          "id": "option-3",
+          "label": "It remains unchanged"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Each one-unit decrease in pH corresponds to a tenfold increase in hydrogen-ion activity."
+    },
+    {
+      "id": "wqa-053",
+      "mode": "cause-effect",
+      "prompt": "In comparable water, more suspended particles reduce clarity. What is likely to rise?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Turbidity"
+        },
+        {
+          "id": "option-2",
+          "label": "The definition of alkalinity"
+        },
+        {
+          "id": "option-3",
+          "label": "Sample identification accuracy"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "More cloudiness is associated with higher turbidity."
+    },
+    {
+      "id": "wqa-054",
+      "mode": "cause-effect",
+      "prompt": "In otherwise comparable water, dissolved calcium and magnesium both increase while other hardness contributors stay constant. What increases?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Hardness"
+        },
+        {
+          "id": "option-2",
+          "label": "Sterility"
+        },
+        {
+          "id": "option-3",
+          "label": "Contact time"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Calcium and magnesium are principal contributors to hardness."
+    },
+    {
+      "id": "wqa-055",
+      "mode": "cause-effect",
+      "prompt": "At the same pressure and salinity, water warms. What happens to its oxygen saturation capacity?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It decreases"
+        },
+        {
+          "id": "option-2",
+          "label": "It always doubles"
+        },
+        {
+          "id": "option-3",
+          "label": "It becomes pH"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Warmer water holds less dissolved oxygen at saturation."
+    },
+    {
+      "id": "wqa-056",
+      "mode": "cause-effect",
+      "prompt": "An analyst finds total coliforms in distribution after they were absent leaving the plant. What is one possible cause?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Regrowth or post-treatment contamination"
+        },
+        {
+          "id": "option-2",
+          "label": "Proof of a specific pathogen"
+        },
+        {
+          "id": "option-3",
+          "label": "Guaranteed fecal contamination"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Health Canada identifies both as possible explanations; neither is proven by this result alone."
+    },
+    {
+      "id": "wqa-057",
+      "mode": "cause-effect",
+      "prompt": "In a chemical-disinfection process, a positive residual concentration decreases while positive effective contact time stays constant. What happens to calculated CT?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "CT decreases"
+        },
+        {
+          "id": "option-2",
+          "label": "CT increases"
+        },
+        {
+          "id": "option-3",
+          "label": "CT is unchanged"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "CT is concentration multiplied by effective contact time. With positive time unchanged, reducing concentration reduces CT."
+    },
+    {
+      "id": "wqa-058",
+      "mode": "cause-effect",
+      "prompt": "A chemical splash reaches the eyes. What action reduces delay in first aid?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Start flushing immediately"
+        },
+        {
+          "id": "option-2",
+          "label": "Look for a neutralizer before rinsing"
+        },
+        {
+          "id": "option-3",
+          "label": "Wait for an SDS before rinsing"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "CCOHS emphasizes immediate irrigation and prompt medical attention."
+    },
+    {
+      "id": "wqa-059",
+      "mode": "cause-effect",
+      "prompt": "A chemical product is transferred into an unidentified container. What problem results?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The user may not identify its hazards"
+        },
+        {
+          "id": "option-2",
+          "label": "The product becomes nonhazardous"
+        },
+        {
+          "id": "option-3",
+          "label": "Its SDS becomes a calibration standard"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Identification is needed to connect a product to its hazard and safe-use information."
+    },
+    {
+      "id": "wqa-060",
+      "mode": "cause-effect",
+      "prompt": "A field blank contains the target contaminant. What possible issue should be investigated?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Contamination introduced during sampling or handling"
+        },
+        {
+          "id": "option-2",
+          "label": "Proof that the source has the same concentration"
+        },
+        {
+          "id": "option-3",
+          "label": "Proof of complete disinfection"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A field blank helps reveal contamination introduced outside the environmental sample."
+    },
+    {
+      "id": "wqa-061",
+      "mode": "cause-effect",
+      "prompt": "Duplicate results differ greatly for the same well-mixed sample. What measurement property is in question?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Precision"
+        },
+        {
+          "id": "option-2",
+          "label": "Sample location name"
+        },
+        {
+          "id": "option-3",
+          "label": "Water temperature unit"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Large differences between repeats indicate poor agreement and possible precision problems."
+    },
+    {
+      "id": "wqa-062",
+      "mode": "cause-effect",
+      "prompt": "A calibration check fails its method acceptance criterion. What is the concern?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Results may be unreliable until the issue is resolved"
+        },
+        {
+          "id": "option-2",
+          "label": "All samples are automatically sterile"
+        },
+        {
+          "id": "option-3",
+          "label": "The unit mg/L has changed"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A failed check indicates the measurement system may not be performing as intended."
+    },
+    {
+      "id": "wqa-063",
+      "mode": "cause-effect",
+      "prompt": "A distribution sample is taken from plumbing with local microbial growth. What may it reflect?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Local plumbing conditions, not necessarily the wider distribution system"
+        },
+        {
+          "id": "option-2",
+          "label": "Only untreated source water"
+        },
+        {
+          "id": "option-3",
+          "label": "An exact average of all mains"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Local growth can affect the sample; the result alone does not establish conditions throughout the distribution system."
+    },
+    {
+      "id": "wqa-064",
+      "mode": "cause-effect",
+      "prompt": "A sample is exposed to light even though its analyte is light-sensitive. What is a potential effect?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The analyte may change before analysis"
+        },
+        {
+          "id": "option-2",
+          "label": "The sample becomes a calibration standard"
+        },
+        {
+          "id": "option-3",
+          "label": "The analyte is guaranteed to increase"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Light protection helps maintain the integrity of light-sensitive compounds."
+    },
+    {
+      "id": "wqa-065",
+      "mode": "cause-effect",
+      "prompt": "A product’s SDS warns of incompatible materials. Why keep them separate?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "To reduce the risk of a hazardous reaction"
+        },
+        {
+          "id": "option-2",
+          "label": "To improve sample representativeness"
+        },
+        {
+          "id": "option-3",
+          "label": "To increase turbidity accuracy"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The SDS identifies incompatible materials and safe storage precautions."
+    },
+    {
+      "id": "wqa-066",
+      "mode": "tap-the-flaw",
+      "prompt": "A sampler says: “I will use any bottle because all analytical tests use the same container.” What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Container needs vary by test"
+        },
+        {
+          "id": "option-2",
+          "label": "Containers are chosen only by water temperature"
+        },
+        {
+          "id": "option-3",
+          "label": "A preservative eliminates the need for the specified container"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The laboratory specifies containers and preparation for each method."
+    },
+    {
+      "id": "wqa-067",
+      "mode": "tap-the-flaw",
+      "prompt": "A sampler puts a sterile cap on the bench, inside down. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The cap interior may be contaminated"
+        },
+        {
+          "id": "option-2",
+          "label": "The outside of the cap is the sampling target"
+        },
+        {
+          "id": "option-3",
+          "label": "The bottle automatically becomes a field blank"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Avoid touching or exposing the inside of the cap to contamination."
+    },
+    {
+      "id": "wqa-068",
+      "mode": "tap-the-flaw",
+      "prompt": "An analyst claims a single grab sample is a time-weighted daily average. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A grab represents a specific time"
+        },
+        {
+          "id": "option-2",
+          "label": "A grab necessarily includes equal volumes from each hour"
+        },
+        {
+          "id": "option-3",
+          "label": "A single collection records all changes over the day"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A grab is not equivalent to an average across the day."
+    },
+    {
+      "id": "wqa-069",
+      "mode": "tap-the-flaw",
+      "prompt": "A sampler labels two bottles only after forgetting which location each came from. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Sample identity is uncertain"
+        },
+        {
+          "id": "option-2",
+          "label": "The labels can reliably be reconstructed without records"
+        },
+        {
+          "id": "option-3",
+          "label": "Mixing the two samples would restore traceability"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The result cannot be reliably linked to its collection location."
+    },
+    {
+      "id": "wqa-070",
+      "mode": "tap-the-flaw",
+      "prompt": "A sampler sends a light-sensitive analyte in a clear unprotected bottle against lab instructions. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Light may affect analyte integrity"
+        },
+        {
+          "id": "option-2",
+          "label": "A clear bottle always shields light-sensitive analytes"
+        },
+        {
+          "id": "option-3",
+          "label": "The collection time makes light protection unnecessary"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Use the container and light protection specified by the laboratory."
+    },
+    {
+      "id": "wqa-071",
+      "mode": "tap-the-flaw",
+      "prompt": "A sampler rinses away a lab-added preservative without asking the laboratory. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Required preservation may be lost"
+        },
+        {
+          "id": "option-2",
+          "label": "Preservatives are needed only after analysis"
+        },
+        {
+          "id": "option-3",
+          "label": "Rinsing leaves a pre-charged bottle unchanged"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Preservation is method-specific; follow laboratory instructions."
+    },
+    {
+      "id": "wqa-072",
+      "mode": "tap-the-flaw",
+      "prompt": "A sampler assumes the kitchen hot-water tap represents the cold distribution supply. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Heated stored water may differ"
+        },
+        {
+          "id": "option-2",
+          "label": "Heating ensures the same chemistry as cold supply"
+        },
+        {
+          "id": "option-3",
+          "label": "Hot-water storage cannot affect water quality"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The Ontario guide calls for cold taps for this sampling context."
+    },
+    {
+      "id": "wqa-073",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker uses an unknown reagent before reading its label or SDS. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Hazards and precautions are unknown"
+        },
+        {
+          "id": "option-2",
+          "label": "Every reagent has the same hazards"
+        },
+        {
+          "id": "option-3",
+          "label": "A product label is an instrument calibration record"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Identify the product and understand its hazards and safe handling before use."
+    },
+    {
+      "id": "wqa-074",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker stores a cart in front of the eyewash station. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Emergency access is obstructed"
+        },
+        {
+          "id": "option-2",
+          "label": "Emergency equipment can only be reached after completing paperwork"
+        },
+        {
+          "id": "option-3",
+          "label": "A cart makes the flushing fluid safer"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "An exposed person must be able to reach the station promptly."
+    },
+    {
+      "id": "wqa-075",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker delays eye irrigation to search for a neutralizing chemical. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Flushing is dangerously delayed"
+        },
+        {
+          "id": "option-2",
+          "label": "Neutralizer searches should precede all irrigation"
+        },
+        {
+          "id": "option-3",
+          "label": "Flushing must wait until pain has stopped"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Begin flushing immediately; neutralization can add injury or delay."
+    },
+    {
+      "id": "wqa-076",
+      "mode": "tap-the-flaw",
+      "prompt": "An analyst treats a close group of repeated results as proof they are accurate. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Precision alone does not establish accuracy"
+        },
+        {
+          "id": "option-2",
+          "label": "Close agreement eliminates all systematic bias"
+        },
+        {
+          "id": "option-3",
+          "label": "Repeated measurements always equal the reference value"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Repeatability is agreement among results; a shared bias can still move them away from the true value."
+    },
+    {
+      "id": "wqa-077",
+      "mode": "tap-the-flaw",
+      "prompt": "An analyst assumes a nonzero field blank proves source-water contamination. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The blank may reveal introduced contamination"
+        },
+        {
+          "id": "option-2",
+          "label": "A field blank directly samples the source water"
+        },
+        {
+          "id": "option-3",
+          "label": "A detected contaminant can originate only in the source"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A field blank is used to assess contamination during sampling and handling, not directly measure the source."
+    },
+    {
+      "id": "wqa-078",
+      "mode": "tap-the-flaw",
+      "prompt": "An analyst discards a failed calibration check and reports results without investigating. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The measurement system may be out of control"
+        },
+        {
+          "id": "option-2",
+          "label": "A failed check verifies stable calibration"
+        },
+        {
+          "id": "option-3",
+          "label": "Deleting the check corrects the instrument"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Investigate the failure and follow the method and laboratory quality procedures."
+    },
+    {
+      "id": "wqa-079",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker claims an SDS is a substitute for site-specific training. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "An SDS may not describe all site procedures"
+        },
+        {
+          "id": "option-2",
+          "label": "An SDS always describes every workplace-specific procedure"
+        },
+        {
+          "id": "option-3",
+          "label": "The SDS replaces all hands-on emergency training"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "It is an important hazard source but may not contain workplace-specific controls."
+    },
+    {
+      "id": "wqa-081",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee concludes that clear-looking water must be microbiologically safe. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Clarity alone does not establish microbial safety"
+        },
+        {
+          "id": "option-2",
+          "label": "Clear appearance proves no microorganisms are present"
+        },
+        {
+          "id": "option-3",
+          "label": "Turbidity alone identifies every pathogen"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Visible clarity is not a microbiological test."
+    },
+    {
+      "id": "wqa-082",
+      "mode": "tap-the-flaw",
+      "prompt": "An analyst calls alkalinity “the same measurement as pH.” What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Alkalinity and pH describe different properties"
+        },
+        {
+          "id": "option-2",
+          "label": "The terms describe identical properties"
+        },
+        {
+          "id": "option-3",
+          "label": "Acid-neutralizing capacity is measured by appearance"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Alkalinity measures acid-neutralizing capacity while pH measures acidity or basicity."
+    },
+    {
+      "id": "wqa-083",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee reports oxygen bound in H2O as dissolved oxygen. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Dissolved oxygen is separate molecular oxygen"
+        },
+        {
+          "id": "option-2",
+          "label": "The oxygen in H2O is the dissolved oxygen result"
+        },
+        {
+          "id": "option-3",
+          "label": "A DO test measures the number of water molecules"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The oxygen atom in the water molecule is not the dissolved oxygen measured by a DO test."
+    },
+    {
+      "id": "wqa-084",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker assumes total coliforms always mean fecal contamination. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Total coliforms can have environmental sources"
+        },
+        {
+          "id": "option-2",
+          "label": "Every coliform is necessarily fecal in origin"
+        },
+        {
+          "id": "option-3",
+          "label": "Coliforms cannot grow within distribution biofilms"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Regrowth or post-treatment contamination is also possible."
+    },
+    {
+      "id": "wqa-085",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker claims ozone alone leaves a persistent residual in distribution. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Ozone does not provide a persistent residual"
+        },
+        {
+          "id": "option-2",
+          "label": "Ozone maintains a long-lasting residual on its own"
+        },
+        {
+          "id": "option-3",
+          "label": "An ozone residual must persist to the last consumer"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Ontario guidance says ozone is unsuitable for maintaining a distribution residual."
+    },
+    {
+      "id": "wqa-086",
+      "mode": "tap-the-flaw",
+      "prompt": "A trainee uses the total tank detention time as effective contact time without checking the method. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Effective contact time is not automatically total detention time"
+        },
+        {
+          "id": "option-2",
+          "label": "Detention time always equals effective contact time"
+        },
+        {
+          "id": "option-3",
+          "label": "CT never depends on contact time"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "CT uses effective contact time, which depends on the treatment configuration and specified method."
+    },
+    {
+      "id": "wqa-089",
+      "mode": "tap-the-flaw",
+      "prompt": "A sampler assumes location and time are optional for interpreting a sample. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Representativeness depends on where and when it was taken"
+        },
+        {
+          "id": "option-2",
+          "label": "A sample result always represents every location and time"
+        },
+        {
+          "id": "option-3",
+          "label": "Collection records cannot help interpret a result"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Location and time are essential to interpret the result and trace the sample."
+    },
+    {
+      "id": "wqa-090",
+      "mode": "tap-the-flaw",
+      "prompt": "An analyst reports 1 litre as 100 millilitres. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "1 litre equals 1,000 millilitres"
+        },
+        {
+          "id": "option-2",
+          "label": "One litre contains 100 millilitres"
+        },
+        {
+          "id": "option-3",
+          "label": "One litre contains 10 millilitres"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Multiply litres by 1,000 to obtain millilitres."
+    },
+    {
+      "id": "wqa-top-002",
+      "mode": "cause-effect",
+      "prompt": "A correctly performed operational test reports total chlorine of 1.3 mg/L and free chlorine of 0.4 mg/L. What is the estimated combined chlorine residual?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "1.7 mg/L"
+        },
+        {
+          "id": "option-2",
+          "label": "0.9 mg/L"
+        },
+        {
+          "id": "option-3",
+          "label": "0.4 mg/L"
+        },
+        {
+          "id": "option-4",
+          "label": "3.25 mg/L"
+        }
+      ],
+      "correctOptionId": "option-2",
+      "explanation": "Estimated combined residual = total residual − free residual. Substituting the two measurements gives 1.3 mg/L − 0.4 mg/L = 0.9 mg/L. This estimates combined chlorine; the result does not establish that it is all monochloramine."
+    },
+    {
+      "id": "wqa-top-003",
+      "mode": "cause-effect",
+      "prompt": "A well-mixed water sample has a dissolved constituent concentration of 2.4 mg/L. How much of that constituent is in a 250 mL portion? Assume concentration is uniform.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "9.6 mg"
+        },
+        {
+          "id": "option-2",
+          "label": "0.060 mg"
+        },
+        {
+          "id": "option-3",
+          "label": "0.60 mg"
+        },
+        {
+          "id": "option-4",
+          "label": "600 mg"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Convert volume to litres: 250 mL ÷ 1,000 mL/L = 0.250 L. Mass = concentration × volume = 2.4 mg/L × 0.250 L = 0.60 mg. The litres cancel, leaving milligrams."
+    },
+    {
+      "id": "wqa-top-004",
+      "mode": "cause-effect",
+      "prompt": "A laboratory reports a constituent at 0.035 mg/L. What is the same concentration in µg/L?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "0.035 µg/L"
+        },
+        {
+          "id": "option-2",
+          "label": "3.5 µg/L"
+        },
+        {
+          "id": "option-3",
+          "label": "350 µg/L"
+        },
+        {
+          "id": "option-4",
+          "label": "35 µg/L"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A milligram contains 1,000 micrograms. Multiply the mass numerator by that conversion while the volume denominator remains one litre: 0.035 mg/L × 1,000 µg/mg = 35 µg/L. This is a unit conversion, not a change in the water."
+    },
+    {
+      "id": "wqa-top-005",
+      "mode": "cause-effect",
+      "prompt": "A microbiological sample bottle contains a laboratory-provided dechlorinating agent. Why is it included?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "To prevent residual chlorine from changing the microbiological result after collection"
+        },
+        {
+          "id": "option-2",
+          "label": "To preserve the residual chlorine for a later chlorine test"
+        },
+        {
+          "id": "option-3",
+          "label": "To sterilize the collected sample before analysis"
+        },
+        {
+          "id": "option-4",
+          "label": "To remove microorganisms introduced by a contaminated cap"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The agent neutralizes any chlorine present, preventing residual chlorine from affecting the sample after collection. Ontario's guide specifies this preservative for both chlorinated and non-chlorinated microbiological samples; follow the laboratory's instructions."
+    },
+    {
+      "id": "wqa-top-006",
+      "mode": "tap-the-flaw",
+      "prompt": "A sampler opens a laboratory-supplied travel blank at the collection site and pours it into another bottle, treating it as a field blank. What is the flaw?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A travel blank is meant to accompany samples unopened"
+        },
+        {
+          "id": "option-2",
+          "label": "A travel blank must be filled from the sampling tap before transport"
+        },
+        {
+          "id": "option-3",
+          "label": "A travel blank measures only contamination introduced by the sampling tap"
+        },
+        {
+          "id": "option-4",
+          "label": "A travel blank must never accompany samples to the laboratory"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Ontario describes a travel blank as analyte-free water that accompanies samples without being opened during the process. A field blank is handled at the sampling location as directed by the laboratory. Each helps assess different parts of the handling process."
+    },
+    {
+      "id": "wqa-top-007",
+      "mode": "cause-effect",
+      "prompt": "A laboratory control sample passes, but a matrix spike made from a particular water sample fails its method's recovery criterion. What is a reasonable issue to investigate?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Interference related to that sample's matrix"
+        },
+        {
+          "id": "option-2",
+          "label": "Proof that the target analyte is absent from the original sample"
+        },
+        {
+          "id": "option-3",
+          "label": "Proof that the sample result is free of matrix interference"
+        },
+        {
+          "id": "option-4",
+          "label": "Proof that the failed spike resulted from laboratory contamination"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A matrix spike evaluates method performance in the particular sample matrix, whereas a laboratory control sample checks performance in a suitable relatively interference-free matrix. The contrasting outcomes suggest a possible matrix effect, not proof of its cause. Follow the applicable method and laboratory quality procedures; EPA's examples are general QA concepts, not Ontario drinking-water QC requirements."
+    },
+    {
+      "id": "wqa-order-001",
+      "mode": "before-after",
+      "prompt": "In the CDC's conventional drinking-water treatment example, does coagulation occur before or after flocculation?",
+      "correctAnswer": "before",
+      "explanation": "In this example, coagulation comes before flocculation: coagulants help small particles bind, and gentle mixing then builds larger flocs. Actual plant designs differ."
+    },
+    {
+      "id": "wqa-order-002",
+      "mode": "before-after",
+      "prompt": "In the CDC's conventional drinking-water treatment example, does filtration occur before or after sedimentation?",
+      "correctAnswer": "after",
+      "explanation": "In the example, sedimentation lets floc settle and the clearer water then passes through filters. This is not the arrangement at every plant."
+    },
+    {
+      "id": "wqa-order-003",
+      "mode": "before-after",
+      "prompt": "In the CDC's conventional drinking-water treatment example, does sedimentation occur before or after flocculation?",
+      "correctAnswer": "after",
+      "explanation": "Flocculation forms larger flocs, which settle during the subsequent sedimentation step in this example. Other treatment designs may differ."
+    },
+    {
+      "id": "wqa-order-004",
+      "mode": "before-after",
+      "prompt": "In the CDC's conventional drinking-water treatment example, does final disinfection occur before or after filtration?",
+      "correctAnswer": "after",
+      "explanation": "The CDC example places its final disinfection after filtration. Other plants may use additional or differently located disinfection steps."
+    },
+    {
+      "id": "wqa-order-006",
+      "mode": "before-after",
+      "prompt": "For a distribution-system grab sample intended to represent supplied water, does the Ontario guide place line flushing before or after collection?",
+      "correctAnswer": "before",
+      "explanation": "The guide recommends flushing the lines before taking a representative distribution sample. Follow the applicable sampling plan and laboratory instructions for the particular test."
+    },
+    {
+      "id": "wqa-order-007",
+      "mode": "before-after",
+      "prompt": "When collecting both volatile organic compound samples and samples in solvent-rinsed bottles, does the Ontario guide place VOC collection before or after collection in the solvent-rinsed bottles?",
+      "correctAnswer": "before",
+      "explanation": "The guide puts VOC sample collection first to reduce potential exposure to solvents from the other bottles. Use the laboratory's method-specific directions."
+    },
+    {
+      "id": "wqa-order-011",
+      "mode": "before-after",
+      "prompt": "Under Ontario's recommended approach for strong-acid preservation in a plastic sample bottle that is not pre-charged, is preservative addition before or after sample collection?",
+      "correctAnswer": "after",
+      "explanation": "For strong acid or alkali in a plastic container, the guide recommends adding preservative after sampling, while permitting appropriately pre-charged laboratory bottles. Chemical handling belongs to trained personnel following the laboratory's instructions."
+    },
+    {
+      "id": "wqa-order-013",
+      "mode": "before-after",
+      "prompt": "In the USGS field guidance for a multiparameter water-quality instrument, is the sensor calibration or check performed before or after field use?",
+      "correctAnswer": "before",
+      "explanation": "The USGS guidance calls for sensors to be calibrated or checked before each field use. It is a technical example, not an Ontario-specific calibration schedule; follow the actual method and manufacturer instructions."
+    },
+    {
+      "id": "wqa-order-014",
+      "mode": "before-after",
+      "prompt": "In the USGS multiparameter field-measurement guidance, should the reading stabilize before or after it is recorded as the field measurement?",
+      "correctAnswer": "before",
+      "explanation": "The USGS guidance says to allow the displayed readings to stabilize within its criteria and to record the required measurements. Apply the criteria in the method actually in use."
+    },
+    {
+      "id": "wqa-order-019",
+      "mode": "before-after",
+      "prompt": "When preparing to use a hazardous laboratory product, should a worker become familiar with its hazards before or after starting work with it?",
+      "correctAnswer": "before",
+      "explanation": "CCOHS advises understanding a product's hazards and safe handling information before use. The SDS should be considered alongside workplace training and procedures."
+    },
+    {
+      "id": "wqa-order-020",
+      "mode": "before-after",
+      "prompt": "Under Ontario's disinfection procedure, is completion of primary disinfection before or after delivery to the first consumer?",
+      "correctAnswer": "before",
+      "explanation": "Ontario defines primary disinfection as pathogen inactivation completed before water reaches the first consumer. Its secondary-disinfection objective is maintaining a distribution residual, which is a distinct function."
+    }
+  ]
+}

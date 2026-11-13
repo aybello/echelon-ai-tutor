@@ -1,6 +1,6 @@
 import { and, eq } from "drizzle-orm";
-import { productAnalyticsEvents, purchases, stripeEventLog } from "../../drizzle/schema";
-import { hashAnalyticsEmail } from "../analytics";
+import { stripeEventLog } from "../../drizzle/schema";
+import { revokeIndividualPurchases, revokePaymentState, withPaymentState } from "./paymentState";
 import {
   claimStripeEvent,
   markStripeEventFailed,
@@ -19,6 +19,8 @@ export interface ProcessRefundInput {
   stripeEventId: string;
   stripePaymentIntentId: string;
   stripeChargeId: string | null;
+  /** Individual partial refunds retain the existing revoke-on-refund policy. */
+  refundKind?: "full_refund" | "partial_refund";
 }
 
 export type ProcessRefundResult =
@@ -29,44 +31,23 @@ export type ProcessRefundResult =
 
 interface RefundDependencies {
   claimEvent: (db: Database, input: { stripeEventId: string; eventType: string; stripeObjectId: string | null }) => Promise<ClaimEventResult>;
-  completeRefund: (db: Database, input: ProcessRefundInput, token: string) => Promise<RefundPurchase | null>;
+  completeRefund: (db: Database, input: ProcessRefundInput, token: string | null) => Promise<RefundPurchase | null>;
   markFailed: (db: Database, stripeEventId: string, token: string, error: unknown) => Promise<void>;
 }
 
 const productionRefundDependencies: RefundDependencies = {
   claimEvent: (db, input) => claimStripeEvent(db, input),
   async completeRefund(db, input, token) {
-    return db.transaction(async tx => {
-      const [purchase] = await tx
-        .select({
-          id: purchases.id,
-          userId: purchases.userId,
-          email: purchases.email,
-          productKey: purchases.productKey,
-        })
-        .from(purchases)
-        .where(eq(purchases.stripePaymentIntentId, input.stripePaymentIntentId))
-        .limit(1);
-
-      if (purchase) {
-        await tx
-          .update(purchases)
-          .set({ status: "refunded", refundedAt: new Date() })
-          .where(eq(purchases.id, purchase.id));
-
-        await tx.insert(productAnalyticsEvents).values({
-          eventName: "purchase_refunded",
-          userId: purchase.userId?.toString() ?? null,
-          emailHash: hashAnalyticsEmail(purchase.email),
-          productKey: purchase.productKey,
-          metadata: JSON.stringify({
-            stripeEventId: input.stripeEventId,
-            stripePaymentIntentId: input.stripePaymentIntentId,
-            stripeChargeId: input.stripeChargeId,
-          }),
-        });
+    return withPaymentState(db, input.stripePaymentIntentId, async (tx, current) => {
+      const [event] = await tx.select().from(stripeEventLog)
+        .where(eq(stripeEventLog.stripeEventId, input.stripeEventId)).limit(1).for("update");
+      if (!event || (token ? event.processingToken !== token : event.status !== "completed")) {
+        throw new Error("Refund event claim was lost");
       }
-
+      const next = await revokePaymentState(tx, input.stripePaymentIntentId, current, input.refundKind ?? "full_refund");
+      const purchase = await revokeIndividualPurchases(tx, input.stripePaymentIntentId, next, {
+        stripeEventId: input.stripeEventId, stripeChargeId: input.stripeChargeId,
+      });
       // This update shares the same transaction as purchase and analytics writes.
       // The unique Stripe event ledger therefore makes a delivered event exactly
       // once for business state and analytics, even if Stripe retries the webhook.
@@ -83,7 +64,7 @@ const productionRefundDependencies: RefundDependencies = {
         })
         .where(and(
           eq(stripeEventLog.stripeEventId, input.stripeEventId),
-          eq(stripeEventLog.processingToken, token),
+          token ? eq(stripeEventLog.processingToken, token) : eq(stripeEventLog.status, "completed"),
         ));
 
       return purchase ?? null;
@@ -93,9 +74,9 @@ const productionRefundDependencies: RefundDependencies = {
 };
 
 /**
- * Applies a Stripe refund and its attributable analytics event in one database
- * transaction with the unique Stripe event ledger. A replay either claims no
- * work because the ledger is complete, or retries a fully rolled-back update.
+ * Durably remembers a refund even before its purchase exists. Completed-event
+ * replays reassert revocation (including pre-fix unmatched events) without
+ * duplicating accounting. All writers serialize on the same payment guard.
  */
 export async function processRefund(
   db: Database,
@@ -108,15 +89,14 @@ export async function processRefund(
     stripeObjectId: input.stripeChargeId,
   });
 
-  if (claim.state === "completed") return { state: "already_completed", purchase: null };
   if (claim.state === "busy") return { state: "busy", purchase: null };
 
-  const { token } = claim;
+  const token = claim.state === "claimed" ? claim.token : null;
   try {
     const purchase = await dependencies.completeRefund(db, input, token);
-    return { state: "completed", purchase };
+    return claim.state === "completed" ? { state: "already_completed", purchase: null } : { state: "completed", purchase };
   } catch (error) {
-    await dependencies.markFailed(db, input.stripeEventId, token, error);
+    if (token) await dependencies.markFailed(db, input.stripeEventId, token, error);
     return {
       state: "retryable_failure",
       purchase: null,

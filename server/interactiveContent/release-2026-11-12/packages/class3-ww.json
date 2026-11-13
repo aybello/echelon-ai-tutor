@@ -1,0 +1,2001 @@
+{
+  "courseKey": "class3-ww",
+  "status": "approved",
+  "version": "echelon-six-games-2026-11-12-final-candidate",
+  "previewIds": {
+    "rapid-swipe": "class3-ww-001",
+    "speed-match": "class3-ww-021",
+    "odd-one-out": "class3-ww-031",
+    "cause-effect": "class3-ww-046",
+    "tap-the-flaw": "class3-ww-066",
+    "before-after": "class3-ww-order-001"
+  },
+  "examples": [
+    {
+      "id": "class3-ww-001",
+      "mode": "rapid-swipe",
+      "prompt": "In a conventional activated-sludge plant, RAS returns settled biomass to biological treatment.",
+      "correctAnswer": true,
+      "explanation": "Returning biomass retains microorganisms in the biological process."
+    },
+    {
+      "id": "class3-ww-002",
+      "mode": "rapid-swipe",
+      "prompt": "Increasing RAS always removes excess solids from the activated-sludge system.",
+      "correctAnswer": false,
+      "explanation": "RAS recirculates solids; wasting removes solids from the system."
+    },
+    {
+      "id": "class3-ww-003",
+      "mode": "rapid-swipe",
+      "prompt": "Nitrification consumes alkalinity.",
+      "correctAnswer": true,
+      "explanation": "Ammonia oxidation consumes alkalinity, potentially lowering pH."
+    },
+    {
+      "id": "class3-ww-004",
+      "mode": "rapid-swipe",
+      "prompt": "A grab sample alone reliably represents all fluctuations over a whole day.",
+      "correctAnswer": false,
+      "explanation": "A grab sample reflects conditions at collection; it is not a full-day composite."
+    },
+    {
+      "id": "class3-ww-005",
+      "mode": "rapid-swipe",
+      "prompt": "Particles in wastewater can shield microorganisms from UV light.",
+      "correctAnswer": true,
+      "explanation": "Suspended matter absorbs UV and can shield organisms."
+    },
+    {
+      "id": "class3-ww-006",
+      "mode": "rapid-swipe",
+      "prompt": "A gravity thickener concentrates solids by gravity separation.",
+      "correctAnswer": true,
+      "explanation": "Settleable solids accumulate and the clarified liquid separates."
+    },
+    {
+      "id": "class3-ww-007",
+      "mode": "rapid-swipe",
+      "prompt": "Anaerobic digestion can generate methane-containing biogas.",
+      "correctAnswer": true,
+      "explanation": "Anaerobic microorganisms convert organic matter to methane and carbon dioxide."
+    },
+    {
+      "id": "class3-ww-008",
+      "mode": "rapid-swipe",
+      "prompt": "A falling aeration-basin DO reading proves the probe is faulty.",
+      "correctAnswer": false,
+      "explanation": "Check the instrument and process: low oxygen supply or higher demand may also cause the reading."
+    },
+    {
+      "id": "class3-ww-009",
+      "mode": "rapid-swipe",
+      "prompt": "Flow equalization can reduce the rate of peak flow to later treatment units.",
+      "correctAnswer": true,
+      "explanation": "An equalization basin stores and releases flow at a more manageable rate."
+    },
+    {
+      "id": "class3-ww-010",
+      "mode": "rapid-swipe",
+      "prompt": "No perceptible odour means confined-space air is safe to enter.",
+      "correctAnswer": false,
+      "explanation": "Hazardous atmospheres cannot reliably be detected by smell. A competent assessment and atmospheric testing are needed; follow applicable entry procedures."
+    },
+    {
+      "id": "class3-ww-011",
+      "mode": "rapid-swipe",
+      "prompt": "A time composite consists of samples collected across a defined period.",
+      "correctAnswer": true,
+      "explanation": "A composite combines sample portions collected over time."
+    },
+    {
+      "id": "class3-ww-012",
+      "mode": "rapid-swipe",
+      "prompt": "Waste activated sludge (WAS) is the portion removed from the biological system for further handling.",
+      "correctAnswer": true,
+      "explanation": "Wasting controls solids accumulation and sends removed solids onward."
+    },
+    {
+      "id": "class3-ww-013",
+      "mode": "rapid-swipe",
+      "prompt": "A rise in clarifier blanket depth can result from poor settling or excess solids inventory.",
+      "correctAnswer": true,
+      "explanation": "The sludge blanket can rise for either reason, so check both."
+    },
+    {
+      "id": "class3-ww-014",
+      "mode": "rapid-swipe",
+      "prompt": "UV treatment itself adds a chlorine residual to wastewater.",
+      "correctAnswer": false,
+      "explanation": "UV disinfection does not add chlorine. A residual could nevertheless be present if chlorine was added elsewhere in the treatment train."
+    },
+    {
+      "id": "class3-ww-015",
+      "mode": "rapid-swipe",
+      "prompt": "An oxidation ditch is a form of activated sludge treatment.",
+      "correctAnswer": true,
+      "explanation": "An oxidation ditch is a modified activated-sludge process."
+    },
+    {
+      "id": "class3-ww-016",
+      "mode": "rapid-swipe",
+      "prompt": "In a gravity thickener, gas bubbles can carry solids upward.",
+      "correctAnswer": true,
+      "explanation": "Gas attached to solids increases their buoyancy and inhibits settling."
+    },
+    {
+      "id": "class3-ww-017",
+      "mode": "rapid-swipe",
+      "prompt": "A flow-proportional composite gives greater sample weight to periods with greater flow.",
+      "correctAnswer": true,
+      "explanation": "Aliquot volume or collection frequency is adjusted in proportion to flow."
+    },
+    {
+      "id": "class3-ww-018",
+      "mode": "rapid-swipe",
+      "prompt": "Pump performance evaluation should consider flow, head and power together.",
+      "correctAnswer": true,
+      "explanation": "These measurements support assessment of the operating point and efficiency."
+    },
+    {
+      "id": "class3-ww-019",
+      "mode": "rapid-swipe",
+      "prompt": "A sequencing batch reactor can settle biomass in the same tank used for reaction.",
+      "correctAnswer": true,
+      "explanation": "The batch process uses separate time phases rather than necessarily separate tanks."
+    },
+    {
+      "id": "class3-ww-021",
+      "mode": "speed-match",
+      "prompt": "In a conventional activated-sludge plant, match each stream to its distinct role.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "RAS",
+          "right": "Biomass recycled to the aeration basin"
+        },
+        {
+          "id": "pair-2",
+          "left": "WAS",
+          "right": "Surplus biomass removed from the biological system for solids handling"
+        },
+        {
+          "id": "pair-3",
+          "left": "Clarifier effluent",
+          "right": "Clarified liquid flowing over the clarifier weir"
+        }
+      ],
+      "explanation": "These roles distinguish recycled biomass, biomass wasted from the process, and the clarified liquid overflow."
+    },
+    {
+      "id": "class3-ww-022",
+      "mode": "speed-match",
+      "prompt": "At a site with variable flow, match these three specified sampling designs to their distinct collection patterns.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Grab",
+          "right": "One discrete collection at a particular time"
+        },
+        {
+          "id": "pair-2",
+          "left": "Equal-time composite",
+          "right": "Equal-volume aliquots at equal time intervals, regardless of flow"
+        },
+        {
+          "id": "pair-3",
+          "left": "Flow-proportional composite using variable aliquot volumes",
+          "right": "Aliquots at equal time intervals with volume proportional to flow"
+        }
+      ],
+      "explanation": "This example uses the variable-volume, constant-interval method for flow-proportional sampling. Another valid method keeps aliquot volume constant and changes collection frequency with flow."
+    },
+    {
+      "id": "class3-ww-023",
+      "mode": "speed-match",
+      "prompt": "Match each SBR phase to its distinguishing action in the stated fill–react–settle–decant cycle.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Fill",
+          "right": "Wastewater enters the reactor"
+        },
+        {
+          "id": "pair-2",
+          "left": "Settle",
+          "right": "Mixing stops so solids settle"
+        },
+        {
+          "id": "pair-3",
+          "left": "Decant",
+          "right": "Clarified liquid is withdrawn"
+        }
+      ],
+      "explanation": "In this cycle each named phase is distinguished by its primary action."
+    },
+    {
+      "id": "class3-ww-024",
+      "mode": "speed-match",
+      "prompt": "Match each measurement to what it directly indicates.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Dissolved oxygen",
+          "right": "Oxygen dissolved in liquid"
+        },
+        {
+          "id": "pair-2",
+          "left": "Temperature",
+          "right": "Thermal condition of sample"
+        },
+        {
+          "id": "pair-3",
+          "left": "pH",
+          "right": "Acidity or basicity of sample"
+        }
+      ],
+      "explanation": "DO, temperature, and pH describe distinct sample properties."
+    },
+    {
+      "id": "class3-ww-025",
+      "mode": "speed-match",
+      "prompt": "Match each digestion step to the described transformation.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Hydrolysis",
+          "right": "Complex organics broken into smaller soluble molecules"
+        },
+        {
+          "id": "pair-2",
+          "left": "Acid formation",
+          "right": "Organic intermediates converted to acids"
+        },
+        {
+          "id": "pair-3",
+          "left": "Methane formation",
+          "right": "Suitable intermediates converted to methane-rich gas"
+        }
+      ],
+      "explanation": "Digestion involves sequential transformations by distinct microbial groups."
+    },
+    {
+      "id": "class3-ww-026",
+      "mode": "speed-match",
+      "prompt": "Match each device to its main purpose in a defined UV system.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Lamp",
+          "right": "Generates ultraviolet radiation"
+        },
+        {
+          "id": "pair-2",
+          "left": "Quartz sleeve",
+          "right": "Separates and protects lamp from wastewater"
+        },
+        {
+          "id": "pair-3",
+          "left": "Ballast",
+          "right": "Supplies starting voltage and controls lamp current"
+        }
+      ],
+      "explanation": "Lamp, sleeve and ballast perform distinct functions in the UV installation."
+    },
+    {
+      "id": "class3-ww-027",
+      "mode": "speed-match",
+      "prompt": "Match each gravity-thickener stream to its location and role.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Feed",
+          "right": "Incoming slurry to be thickened"
+        },
+        {
+          "id": "pair-2",
+          "left": "Underflow",
+          "right": "Concentrated solids withdrawn from bottom"
+        },
+        {
+          "id": "pair-3",
+          "left": "Supernatant",
+          "right": "Separated liquid leaving near surface"
+        }
+      ],
+      "explanation": "Feed enters, underflow removes concentrated solids, and supernatant carries separated liquid."
+    },
+    {
+      "id": "class3-ww-028",
+      "mode": "speed-match",
+      "prompt": "Match each nutrient process to the transformation described.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Nitrification",
+          "right": "Ammonia oxidized to nitrite and nitrate"
+        },
+        {
+          "id": "pair-2",
+          "left": "Denitrification",
+          "right": "Nitrate reduced to nitrogen gas"
+        },
+        {
+          "id": "pair-3",
+          "left": "Chemical phosphorus precipitation",
+          "right": "Phosphate converted to removable precipitate"
+        }
+      ],
+      "explanation": "These nitrogen and phosphorus transformations use different mechanisms."
+    },
+    {
+      "id": "class3-ww-029",
+      "mode": "speed-match",
+      "prompt": "Match each pump-system measurement to its unit in this exercise.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Flow rate",
+          "right": "m³/day"
+        },
+        {
+          "id": "pair-2",
+          "left": "Pressure",
+          "right": "kPa"
+        },
+        {
+          "id": "pair-3",
+          "left": "Power",
+          "right": "kW"
+        }
+      ],
+      "explanation": "These units quantify liquid throughput, pressure and electrical power respectively."
+    },
+    {
+      "id": "class3-ww-030",
+      "mode": "speed-match",
+      "prompt": "Match each aeration-system component to its primary role in this setup.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Blower",
+          "right": "Supplies pressurized air"
+        },
+        {
+          "id": "pair-2",
+          "left": "Diffuser",
+          "right": "Distributes air bubbles into liquid"
+        },
+        {
+          "id": "pair-3",
+          "left": "DO probe",
+          "right": "Measures dissolved oxygen"
+        }
+      ],
+      "explanation": "The blower supplies air, the diffuser distributes it, and the probe measures process DO."
+    },
+    {
+      "id": "class3-ww-031",
+      "mode": "odd-one-out",
+      "prompt": "In a plant where a screen, aeration basin and secondary clarifier treat the main liquid stream, and a gravity thickener handles withdrawn solids, which is NOT a main liquid-stream unit?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Screen"
+        },
+        {
+          "id": "option-2",
+          "label": "Aeration basin"
+        },
+        {
+          "id": "option-3",
+          "label": "Secondary clarifier"
+        },
+        {
+          "id": "option-4",
+          "label": "Gravity thickener"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A thickener is a solids-handling unit in this train; the others treat the main liquid stream."
+    },
+    {
+      "id": "class3-ww-032",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT a form of nitrogen?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Ammonia"
+        },
+        {
+          "id": "option-2",
+          "label": "Nitrite"
+        },
+        {
+          "id": "option-3",
+          "label": "Nitrate"
+        },
+        {
+          "id": "option-4",
+          "label": "Phosphate"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Phosphate is a phosphorus species, unlike the three nitrogen species."
+    },
+    {
+      "id": "class3-ww-033",
+      "mode": "odd-one-out",
+      "prompt": "Which measurement is NOT a direct solids-settling observation?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Sludge blanket depth"
+        },
+        {
+          "id": "option-2",
+          "label": "30-minute settling volume"
+        },
+        {
+          "id": "option-3",
+          "label": "Supernatant clarity in a settling test"
+        },
+        {
+          "id": "option-4",
+          "label": "Motor nameplate power"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Nameplate power describes the motor, not how a mixed-liquor sample settles."
+    },
+    {
+      "id": "class3-ww-034",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT an SBR phase in the specified fill–react–settle–decant cycle?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Fill"
+        },
+        {
+          "id": "option-2",
+          "label": "React"
+        },
+        {
+          "id": "option-3",
+          "label": "Settle"
+        },
+        {
+          "id": "option-4",
+          "label": "Chlorinate"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "The four-phase cycle given uses fill, react, settle and decant; chlorination is a separate process."
+    },
+    {
+      "id": "class3-ww-035",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT a wastewater sampling pattern?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Grab"
+        },
+        {
+          "id": "option-2",
+          "label": "Time composite"
+        },
+        {
+          "id": "option-3",
+          "label": "Flow-proportional composite"
+        },
+        {
+          "id": "option-4",
+          "label": "Diffused aeration"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Diffused aeration supplies air; the other choices are sample collection patterns."
+    },
+    {
+      "id": "class3-ww-036",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT a component of the described lamp-based UV unit?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Lamp"
+        },
+        {
+          "id": "option-2",
+          "label": "Quartz sleeve"
+        },
+        {
+          "id": "option-3",
+          "label": "Ballast"
+        },
+        {
+          "id": "option-4",
+          "label": "Gravity thickener"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A thickener is a solids unit; the lamp, sleeve and ballast belong to this UV system."
+    },
+    {
+      "id": "class3-ww-037",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT a gas commonly associated with anaerobic digester biogas?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Methane"
+        },
+        {
+          "id": "option-2",
+          "label": "Carbon dioxide"
+        },
+        {
+          "id": "option-3",
+          "label": "Hydrogen sulfide"
+        },
+        {
+          "id": "option-4",
+          "label": "Phosphate"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Phosphate is a dissolved or particulate species, not a biogas component."
+    },
+    {
+      "id": "class3-ww-038",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT a direct measurement used to assess a pump operating point or efficiency?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Flow"
+        },
+        {
+          "id": "option-2",
+          "label": "Head"
+        },
+        {
+          "id": "option-3",
+          "label": "Power"
+        },
+        {
+          "id": "option-4",
+          "label": "Sample bottle colour"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Flow, head and power support pump evaluation; bottle colour does not."
+    },
+    {
+      "id": "class3-ww-039",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT a physical hazard associated with confined-space work?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Engulfment"
+        },
+        {
+          "id": "option-2",
+          "label": "Moving parts"
+        },
+        {
+          "id": "option-3",
+          "label": "Electrical energy"
+        },
+        {
+          "id": "option-4",
+          "label": "Sample chain-of-custody form"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A custody form records sample handling; it is not an energy or engulfment hazard."
+    },
+    {
+      "id": "class3-ww-040",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT a biosolids thickening method?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Gravity thickening"
+        },
+        {
+          "id": "option-2",
+          "label": "Dissolved air flotation thickening"
+        },
+        {
+          "id": "option-3",
+          "label": "Gravity belt thickening"
+        },
+        {
+          "id": "option-4",
+          "label": "UV disinfection"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "UV inactivates microorganisms in liquid; the other choices concentrate solids."
+    },
+    {
+      "id": "class3-ww-041",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT a biological nitrogen-removal process or associated configuration?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Aerobic nitrification"
+        },
+        {
+          "id": "option-2",
+          "label": "Anoxic denitrification"
+        },
+        {
+          "id": "option-3",
+          "label": "Nitrate recycle to an anoxic zone"
+        },
+        {
+          "id": "option-4",
+          "label": "Quartz sleeve cleaning"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Quartz sleeve cleaning is UV maintenance. Aerobic nitrification, anoxic denitrification and nitrate recycle to an anoxic zone are nitrogen-treatment processes or configurations."
+    },
+    {
+      "id": "class3-ww-042",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT an example of a typical field sample property?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Temperature"
+        },
+        {
+          "id": "option-2",
+          "label": "Dissolved oxygen"
+        },
+        {
+          "id": "option-3",
+          "label": "pH"
+        },
+        {
+          "id": "option-4",
+          "label": "Motor frame size"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Motor frame size is equipment information, unlike the sample properties."
+    },
+    {
+      "id": "class3-ww-043",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT a reason to evaluate an aeration system?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Low DO"
+        },
+        {
+          "id": "option-2",
+          "label": "Blower malfunction"
+        },
+        {
+          "id": "option-3",
+          "label": "Uneven air distribution"
+        },
+        {
+          "id": "option-4",
+          "label": "Mislabelled sample bottle"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A label issue concerns sample identity, while the others concern oxygen delivery."
+    },
+    {
+      "id": "class3-ww-044",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT a route of solids from a secondary clarifier in the described activated-sludge plant?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "RAS to aeration"
+        },
+        {
+          "id": "option-2",
+          "label": "WAS to solids handling"
+        },
+        {
+          "id": "option-3",
+          "label": "Solids leaving in effluent"
+        },
+        {
+          "id": "option-4",
+          "label": "Lamp ballast to power supply"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A ballast is electrical equipment, not a clarifier solids stream."
+    },
+    {
+      "id": "class3-ww-045",
+      "mode": "odd-one-out",
+      "prompt": "Which is NOT a purpose of digester mixing?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Reduce thermal stratification"
+        },
+        {
+          "id": "option-2",
+          "label": "Improve contact between feed and organisms"
+        },
+        {
+          "id": "option-3",
+          "label": "Help reduce scum accumulation"
+        },
+        {
+          "id": "option-4",
+          "label": "Measure pump motor current"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Digester mixing distributes contents; current measurement is an electrical diagnostic."
+    },
+    {
+      "id": "class3-ww-046",
+      "mode": "cause-effect",
+      "prompt": "A 1,200 m³ tank receives 300 m³/h at steady flow. What is nominal detention time?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "4 h"
+        },
+        {
+          "id": "option-2",
+          "label": "0.25 h"
+        },
+        {
+          "id": "option-3",
+          "label": "12 h"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Volume ÷ flow = 1,200 ÷ 300 = 4 h."
+    },
+    {
+      "id": "class3-ww-047",
+      "mode": "cause-effect",
+      "prompt": "A wastewater flow is 2,000 m³/day and BOD is 150 mg/L. What is the BOD load?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "300 kg/day"
+        },
+        {
+          "id": "option-2",
+          "label": "30 kg/day"
+        },
+        {
+          "id": "option-3",
+          "label": "3,000 kg/day"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Load = flow × concentration ÷ 1,000 = 2,000 × 150 ÷ 1,000 = 300 kg/day."
+    },
+    {
+      "id": "class3-ww-048",
+      "mode": "cause-effect",
+      "prompt": "Mixed liquor settles to 360 mL/L in 30 minutes; MLSS is 3,000 mg/L. What is SVI?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "120 mL/g"
+        },
+        {
+          "id": "option-2",
+          "label": "12 mL/g"
+        },
+        {
+          "id": "option-3",
+          "label": "1,200 mL/g"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "SVI = 360 × 1,000 ÷ 3,000 = 120 mL/g."
+    },
+    {
+      "id": "class3-ww-049",
+      "mode": "cause-effect",
+      "prompt": "Influent BOD is 200 mg/L and effluent BOD is 20 mg/L. What is concentration-based removal?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "90%"
+        },
+        {
+          "id": "option-2",
+          "label": "80%"
+        },
+        {
+          "id": "option-3",
+          "label": "10%"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Removal = (200 − 20) ÷ 200 × 100 = 90%."
+    },
+    {
+      "id": "class3-ww-050",
+      "mode": "cause-effect",
+      "prompt": "The entire activated-sludge system contains 6,000 kg of total suspended solids in its aeration basin and clarifier; no other significant solids inventory exists. A combined 600 kg/day of TSS leaves in waste sludge and effluent, with no other solids losses. What is SRT?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "10 days"
+        },
+        {
+          "id": "option-2",
+          "label": "0.1 day"
+        },
+        {
+          "id": "option-3",
+          "label": "100 days"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "For this system boundary, SRT = total TSS inventory ÷ daily TSS leaving = 6,000 ÷ 600 = 10 days."
+    },
+    {
+      "id": "class3-ww-051",
+      "mode": "cause-effect",
+      "prompt": "Influent flow is 4,000 m³/day and RAS flow is 2,000 m³/day. What is the return rate?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "50%"
+        },
+        {
+          "id": "option-2",
+          "label": "25%"
+        },
+        {
+          "id": "option-3",
+          "label": "200%"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Return rate = 2,000 ÷ 4,000 × 100 = 50%."
+    },
+    {
+      "id": "class3-ww-052",
+      "mode": "cause-effect",
+      "prompt": "The clarified overflow flow from a secondary clarifier is 6,000 m³/day and the clarifier surface area is 300 m². What is the surface overflow rate?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "20 m³/day/m²"
+        },
+        {
+          "id": "option-2",
+          "label": "2 m³/day/m²"
+        },
+        {
+          "id": "option-3",
+          "label": "200 m³/day/m²"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Surface overflow rate = clarified overflow flow ÷ surface area = 6,000 ÷ 300 = 20 m³/day/m². The specified flow is the overflow, not the influent-plus-RAS feed."
+    },
+    {
+      "id": "class3-ww-053",
+      "mode": "cause-effect",
+      "prompt": "A process tank contains 1,000 m³ of mixed liquor at 2,000 mg/L suspended solids. What is the solids mass?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "2,000 kg"
+        },
+        {
+          "id": "option-2",
+          "label": "200 kg"
+        },
+        {
+          "id": "option-3",
+          "label": "20,000 kg"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Mass = volume × concentration ÷ 1,000 = 1,000 × 2,000 ÷ 1,000 = 2,000 kg."
+    },
+    {
+      "id": "class3-ww-054",
+      "mode": "cause-effect",
+      "prompt": "A sample bottle is contaminated before collection. What is the data risk?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The reported concentration can be biased"
+        },
+        {
+          "id": "option-2",
+          "label": "The sample becomes flow-proportional"
+        },
+        {
+          "id": "option-3",
+          "label": "The plant automatically loses nitrification"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Contaminants introduced during sampling can distort analytical results."
+    },
+    {
+      "id": "class3-ww-055",
+      "mode": "cause-effect",
+      "prompt": "A gravity thickener is pumped too quickly at one draw-off point. What problem can occur?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Ratholing"
+        },
+        {
+          "id": "option-2",
+          "label": "UV lamp ageing"
+        },
+        {
+          "id": "option-3",
+          "label": "Nitrate generation by a ballast"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A cone can form around the draw-off, pulling thin solids while denser solids remain."
+    },
+    {
+      "id": "class3-ww-056",
+      "mode": "cause-effect",
+      "prompt": "A poorly settling sludge enters a secondary clarifier. What can happen?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Solids carryover increases"
+        },
+        {
+          "id": "option-2",
+          "label": "All solids instantly compact"
+        },
+        {
+          "id": "option-3",
+          "label": "Disinfection becomes unnecessary"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Poor settling allows more solids to remain in the liquid and escape over the weir."
+    },
+    {
+      "id": "class3-ww-057",
+      "mode": "cause-effect",
+      "prompt": "A pump develops cavitation-like noise and flow is lower than normal. What should be investigated?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Pump and suction conditions"
+        },
+        {
+          "id": "option-2",
+          "label": "UV lamp wavelength alone"
+        },
+        {
+          "id": "option-3",
+          "label": "Sample bottle label alone"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Cavitation noise and reduced delivery are warning indicators; investigate before assuming a single cause."
+    },
+    {
+      "id": "class3-ww-058",
+      "mode": "cause-effect",
+      "prompt": "A large increase in flow passes through a fixed-volume tank. Assuming ideal steady flow, what happens to nominal detention time?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It decreases"
+        },
+        {
+          "id": "option-2",
+          "label": "It increases"
+        },
+        {
+          "id": "option-3",
+          "label": "It remains unchanged"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Nominal detention time equals tank volume divided by flow; a larger flow gives a shorter time."
+    },
+    {
+      "id": "class3-ww-059",
+      "mode": "cause-effect",
+      "prompt": "An anoxic denitrification zone receives much more dissolved oxygen. What may happen?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Denitrification is inhibited"
+        },
+        {
+          "id": "option-2",
+          "label": "Nitrate becomes a UV lamp"
+        },
+        {
+          "id": "option-3",
+          "label": "Oxygen is converted to phosphorus"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Denitrification needs anoxic conditions; excess DO can inhibit it."
+    },
+    {
+      "id": "class3-ww-060",
+      "mode": "cause-effect",
+      "prompt": "At a gravity thickener, hydraulic loading increases enough to create turbulence. What can happen?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "More solids escape in overflow"
+        },
+        {
+          "id": "option-2",
+          "label": "Gravity becomes stronger"
+        },
+        {
+          "id": "option-3",
+          "label": "All solids become biogas immediately"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Turbulence interferes with settling and can carry lighter solids over the weir."
+    },
+    {
+      "id": "class3-ww-061",
+      "mode": "cause-effect",
+      "prompt": "A sludge pump is delivering less than usual. Why compare current flow and power with baseline?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "To identify a possible equipment or system change"
+        },
+        {
+          "id": "option-2",
+          "label": "To prove the sludge is sterile"
+        },
+        {
+          "id": "option-3",
+          "label": "To replace atmospheric testing"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Comparing operating measurements with baseline can flag a possible equipment or system change; it does not establish a unique cause."
+    },
+    {
+      "id": "class3-ww-062",
+      "mode": "cause-effect",
+      "prompt": "A well-maintained sampler collects a flow-proportional composite. Why proportion the combined sample by flow?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "To represent more of the mass-bearing high-flow periods"
+        },
+        {
+          "id": "option-2",
+          "label": "To measure only one instant"
+        },
+        {
+          "id": "option-3",
+          "label": "To measure oxygen in air"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Flow weighting accounts for the greater volume passing during high-flow periods. Depending on the sampler, aliquot volume or collection frequency can be adjusted."
+    },
+    {
+      "id": "class3-ww-063",
+      "mode": "cause-effect",
+      "prompt": "A digester mixing system fails for an extended period. What is one plausible consequence?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "More temperature stratification"
+        },
+        {
+          "id": "option-2",
+          "label": "Automatic UV disinfection"
+        },
+        {
+          "id": "option-3",
+          "label": "Guaranteed higher solids capture"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Mixing helps distribute heat and contents and limit stratification."
+    },
+    {
+      "id": "class3-ww-064",
+      "mode": "cause-effect",
+      "prompt": "In an aerobic basin, diffuser fouling reduces oxygen transfer. With demand unchanged, which reading may fall?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Dissolved oxygen"
+        },
+        {
+          "id": "option-2",
+          "label": "Pump nameplate voltage"
+        },
+        {
+          "id": "option-3",
+          "label": "Sample bottle volume"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Less oxygen transfer can cause DO to decline if uptake remains unchanged."
+    },
+    {
+      "id": "class3-ww-065",
+      "mode": "cause-effect",
+      "prompt": "In a conventional plant, RAS returns to the aeration basin upstream of the secondary clarifier. Influent flow stays constant and sludge settles poorly. What may happen if RAS flow is increased without checking loading?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Extra hydraulic loading can worsen solids carryover"
+        },
+        {
+          "id": "option-2",
+          "label": "It always cures bulking"
+        },
+        {
+          "id": "option-3",
+          "label": "It removes all solids from the system"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "In this configuration, increased RAS raises the flow entering the clarifier. With poorly settling sludge, that extra hydraulic loading may increase solids carryover; it is not a guaranteed outcome."
+    },
+    {
+      "id": "class3-ww-066",
+      "mode": "tap-the-flaw",
+      "prompt": "A colleague reviews sludge control. Which statement is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "RAS returns biomass to aeration"
+        },
+        {
+          "id": "option-2",
+          "label": "WAS removes solids from the system"
+        },
+        {
+          "id": "option-3",
+          "label": "RAS alone always disposes of excess biomass"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "RAS returns solids; it does not dispose of excess biomass."
+    },
+    {
+      "id": "class3-ww-067",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator reviews sample types. Which statement is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A grab reflects collection-time conditions"
+        },
+        {
+          "id": "option-2",
+          "label": "A composite covers a defined period"
+        },
+        {
+          "id": "option-3",
+          "label": "A grab necessarily describes the full day average"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "A single grab cannot reliably represent all daily fluctuations."
+    },
+    {
+      "id": "class3-ww-068",
+      "mode": "tap-the-flaw",
+      "prompt": "A UV operator reviews checks. Which statement is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Sleeve fouling can reduce transmitted UV"
+        },
+        {
+          "id": "option-2",
+          "label": "Particles can shield organisms"
+        },
+        {
+          "id": "option-3",
+          "label": "A working lamp guarantees adequate disinfection under every condition"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Disinfection also depends on wastewater quality, exposure and reactor conditions."
+    },
+    {
+      "id": "class3-ww-069",
+      "mode": "tap-the-flaw",
+      "prompt": "A process lead reviews nitrogen removal. Which statement is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Nitrification requires oxygen"
+        },
+        {
+          "id": "option-2",
+          "label": "Denitrification uses anoxic conditions"
+        },
+        {
+          "id": "option-3",
+          "label": "Nitrification creates unlimited alkalinity"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Nitrification consumes alkalinity; denitrification can recover some."
+    },
+    {
+      "id": "class3-ww-070",
+      "mode": "tap-the-flaw",
+      "prompt": "A sampler reviews chain of custody. Which statement is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Sample transfers should be documented"
+        },
+        {
+          "id": "option-2",
+          "label": "Sample identity must be traceable"
+        },
+        {
+          "id": "option-3",
+          "label": "A missing label can be reconstructed from memory without documentation"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "An undocumented identity guess compromises traceability."
+    },
+    {
+      "id": "class3-ww-071",
+      "mode": "tap-the-flaw",
+      "prompt": "A supervisor reviews confined-space planning. Which statement is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Assess hazards before entry"
+        },
+        {
+          "id": "option-2",
+          "label": "Test air from outside before entry"
+        },
+        {
+          "id": "option-3",
+          "label": "Enter immediately to rescue a collapsed worker without a plan"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Unplanned rescue can create additional victims; use the established rescue response."
+    },
+    {
+      "id": "class3-ww-072",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator reviews thickener observations. Which statement is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Monitor blanket depth"
+        },
+        {
+          "id": "option-2",
+          "label": "Observe overflow clarity"
+        },
+        {
+          "id": "option-3",
+          "label": "Rising gas-laden solids prove gravity has stopped working"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Gas bubbles add buoyancy and can lift solids despite gravity."
+    },
+    {
+      "id": "class3-ww-073",
+      "mode": "tap-the-flaw",
+      "prompt": "A technician reviews pump assessment. Which statement is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Compare flow with baseline"
+        },
+        {
+          "id": "option-2",
+          "label": "Compare head and power with baseline"
+        },
+        {
+          "id": "option-3",
+          "label": "A single motor nameplate proves present pump efficiency"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Efficiency depends on actual flow, head and power, not nameplate data alone."
+    },
+    {
+      "id": "class3-ww-074",
+      "mode": "tap-the-flaw",
+      "prompt": "A process lead reviews a settleability test. Which statement is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Observe settling rate"
+        },
+        {
+          "id": "option-2",
+          "label": "Inspect the supernatant"
+        },
+        {
+          "id": "option-3",
+          "label": "One test alone proves the root cause of all clarifier problems"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Settling is an indicator; diagnose using additional process and equipment evidence."
+    },
+    {
+      "id": "class3-ww-075",
+      "mode": "tap-the-flaw",
+      "prompt": "A team reviews an anaerobic digester. Which statement is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It can produce methane"
+        },
+        {
+          "id": "option-2",
+          "label": "Mixing can reduce stratification"
+        },
+        {
+          "id": "option-3",
+          "label": "Its contents are guaranteed free of all pathogens"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Digestion can reduce pathogens but does not guarantee complete elimination."
+    },
+    {
+      "id": "class3-ww-076",
+      "mode": "tap-the-flaw",
+      "prompt": "A team reviews an SBR. Which statement is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The same reactor can be used for reaction and settling"
+        },
+        {
+          "id": "option-2",
+          "label": "Decant follows settling in the specified cycle"
+        },
+        {
+          "id": "option-3",
+          "label": "A separate return-sludge line from a secondary clarifier is always required"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "In a typical SBR, settling occurs in the reactor, so a separate RAS system is not required."
+    },
+    {
+      "id": "class3-ww-077",
+      "mode": "tap-the-flaw",
+      "prompt": "A sampler reviews automatic sampling. Which statement is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Clean equipment to reduce contamination"
+        },
+        {
+          "id": "option-2",
+          "label": "Use a representative location"
+        },
+        {
+          "id": "option-3",
+          "label": "A blocked intake cannot affect the sample"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "A blockage can prevent representative collection or reduce sample volume."
+    },
+    {
+      "id": "class3-ww-078",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker reviews confined-space hazards. Which statement is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Atmospheric conditions can change"
+        },
+        {
+          "id": "option-2",
+          "label": "Hazardous energy needs control"
+        },
+        {
+          "id": "option-3",
+          "label": "An open hatch by itself ensures safe air throughout the space"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Natural ventilation may be insufficient and conditions can vary by location."
+    },
+    {
+      "id": "class3-ww-079",
+      "mode": "tap-the-flaw",
+      "prompt": "A technician reviews UV maintenance. Which statement is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Sleeves need site-specific cleaning"
+        },
+        {
+          "id": "option-2",
+          "label": "Lamps and ballasts need to function"
+        },
+        {
+          "id": "option-3",
+          "label": "Visible lamp glow alone proves the required UV dose was delivered"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Dose also depends on intensity, fouling, wastewater quality and exposure."
+    },
+    {
+      "id": "class3-ww-080",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator reviews cold-weather treatment. Which statement is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Biological reaction rates can change with temperature"
+        },
+        {
+          "id": "option-2",
+          "label": "Nitrification often slows in colder wastewater"
+        },
+        {
+          "id": "option-3",
+          "label": "Temperature never influences nitrification"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Temperature is a significant factor in biological nitrification."
+    },
+    {
+      "id": "class3-ww-081",
+      "mode": "tap-the-flaw",
+      "prompt": "A shift lead reviews clarifier troubleshooting in a conventional plant that returns RAS upstream of its clarifier. Which statement is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Check blanket depth"
+        },
+        {
+          "id": "option-2",
+          "label": "Consider settling and solids load"
+        },
+        {
+          "id": "option-3",
+          "label": "Increasing RAS must solve every rising-blanket problem"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "A high blanket can have several causes; extra RAS is not a universal cure and can increase clarifier hydraulic loading in this configuration."
+    },
+    {
+      "id": "class3-ww-082",
+      "mode": "tap-the-flaw",
+      "prompt": "A technician reviews thickener control. Which statement is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Examine supernatant quality"
+        },
+        {
+          "id": "option-2",
+          "label": "Track solids withdrawal"
+        },
+        {
+          "id": "option-3",
+          "label": "Maximum withdrawal speed always produces the thickest underflow"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Overpumping may cause ratholing and dilute the withdrawn underflow."
+    },
+    {
+      "id": "class3-ww-083",
+      "mode": "tap-the-flaw",
+      "prompt": "A lab operator reviews sample handling. Which statement is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Use clean appropriate containers"
+        },
+        {
+          "id": "option-2",
+          "label": "Follow the applicable method and sample plan"
+        },
+        {
+          "id": "option-3",
+          "label": "All analytes have identical preservation and holding requirements"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Sample handling depends on the analyte and applicable method."
+    },
+    {
+      "id": "class3-ww-084",
+      "mode": "tap-the-flaw",
+      "prompt": "A pump operator reviews warning signs. Which statement is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Cavitation-like noise warrants investigation"
+        },
+        {
+          "id": "option-2",
+          "label": "Unexpected flow changes merit review"
+        },
+        {
+          "id": "option-3",
+          "label": "Noise alone proves exactly which component has failed"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "A symptom is not a complete diagnosis; investigate operating and equipment conditions."
+    },
+    {
+      "id": "class3-ww-085",
+      "mode": "tap-the-flaw",
+      "prompt": "A digester operator reviews safety. Which statement is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Digester biogas contains methane"
+        },
+        {
+          "id": "option-2",
+          "label": "Biogas can contain hydrogen sulfide"
+        },
+        {
+          "id": "option-3",
+          "label": "No hazard assessment is needed because biogas is a natural product"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "Methane and hydrogen sulfide present fire, explosion and toxic exposure concerns."
+    },
+    {
+      "id": "class3-ww-top-001",
+      "mode": "cause-effect",
+      "prompt": "A basin receives 2,400 m³/day of wastewater at 200 mg/L BOD₅. Its aeration volume is 1,500 m³ and MLVSS is 2,000 mg/L. Using applied BOD₅ load divided by aeration-basin MLVSS mass, what is the food-to-microorganism ratio?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "0.16 day⁻¹"
+        },
+        {
+          "id": "option-2",
+          "label": "0.60 day⁻¹"
+        },
+        {
+          "id": "option-3",
+          "label": "6.25 day⁻¹"
+        },
+        {
+          "id": "option-4",
+          "label": "1.60 day⁻¹"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "First calculate food load: 2,400 m³/day × 200 mg/L ÷ 1,000 = 480 kg BOD₅/day. Calculate microorganism proxy mass: 1,500 m³ × 2,000 mg/L ÷ 1,000 = 3,000 kg MLVSS. The factor 1,000 accounts for 1,000 L/m³ and 1,000,000 mg/kg. F/M = 480 kg/day ÷ 3,000 kg = 0.16 day⁻¹. This is the specified BOD₅/MLVSS basis, not an operating setpoint."
+    },
+    {
+      "id": "class3-ww-top-002",
+      "mode": "cause-effect",
+      "prompt": "A sludge total-solids test uses a dish weighing 20 g. Dish plus wet sample weighs 120 g; dish plus dried residue weighs 25 g. What is the sample's total solids by mass?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "5%"
+        },
+        {
+          "id": "option-2",
+          "label": "4.2%"
+        },
+        {
+          "id": "option-3",
+          "label": "20%"
+        },
+        {
+          "id": "option-4",
+          "label": "25%"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Wet sample mass = 120 g − 20 g tare = 100 g. Dry solids mass = 25 g − 20 g tare = 5 g. Total solids (%) = dry solids mass ÷ wet sample mass × 100 = 5 g ÷ 100 g × 100 = 5%."
+    },
+    {
+      "id": "class3-ww-top-003",
+      "mode": "cause-effect",
+      "prompt": "A thickener processes 100 m³ of sludge at 1% solids by mass and produces 4% solids by mass. Assume equal sludge densities of 1,000 kg/m³ before and after thickening and no solids loss. What is the thickened sludge volume?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "25 m³"
+        },
+        {
+          "id": "option-2",
+          "label": "4 m³"
+        },
+        {
+          "id": "option-3",
+          "label": "75 m³"
+        },
+        {
+          "id": "option-4",
+          "label": "400 m³"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Initial wet mass = 100 m³ × 1,000 kg/m³ = 100,000 kg. Initial dry solids = 100,000 kg × 0.01 = 1,000 kg. With no solids loss, product wet mass = 1,000 kg ÷ 0.04 = 25,000 kg. Product volume = 25,000 kg ÷ 1,000 kg/m³ = 25 m³. Equal density and full capture are explicit simplifying assumptions."
+    },
+    {
+      "id": "class3-ww-top-004",
+      "mode": "cause-effect",
+      "prompt": "A treatment stream flows at 6,000 m³/day and requires 5 mg/L of active chemical. A commercial product is 25% active chemical by mass. Assuming the full dose is delivered, how many kilograms of product are required per day?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "120 kg/day"
+        },
+        {
+          "id": "option-2",
+          "label": "30 kg/day"
+        },
+        {
+          "id": "option-3",
+          "label": "7.5 kg/day"
+        },
+        {
+          "id": "option-4",
+          "label": "240 kg/day"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Active chemical load = 6,000 m³/day × 5 mg/L ÷ 1,000 = 30 kg active/day; the conversion factor accounts for litres per cubic metre and milligrams per kilogram. Product requirement = 30 kg active/day ÷ 0.25 kg active/kg product = 120 kg product/day. This is a mass feed requirement, not a volumetric pump setting."
+    },
+    {
+      "id": "class3-ww-top-005",
+      "mode": "cause-effect",
+      "prompt": "For an unseeded BOD₅ test, 15 mL of sample is diluted to 300 mL. Dissolved oxygen falls from 8.0 to 3.5 mg/L. Assume dilution-water oxygen depletion is zero. What is sample BOD₅?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "90 mg/L"
+        },
+        {
+          "id": "option-2",
+          "label": "4.5 mg/L"
+        },
+        {
+          "id": "option-3",
+          "label": "45 mg/L"
+        },
+        {
+          "id": "option-4",
+          "label": "160 mg/L"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Bottle oxygen depletion = 8.0 − 3.5 = 4.5 mg/L. The dilution factor is total bottle volume ÷ sample volume = 300 mL ÷ 15 mL = 20. Unseeded BOD₅ = 4.5 mg/L × 20 = 90 mg/L, under the stated zero-blank-depletion assumption. Actual acceptance and validity checks depend on the laboratory method."
+    },
+    {
+      "id": "class3-ww-top-006",
+      "mode": "cause-effect",
+      "prompt": "A flow-proportional composite is planned using four aliquots collected at equal time intervals and a total target volume of 1,000 mL. The four equal-duration intervals have an average flow of 200 m³/h; the flow during one collection interval is 300 m³/h. Using aliquot volume proportional to interval flow, what volume should be taken for that interval?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "375 mL"
+        },
+        {
+          "id": "option-2",
+          "label": "250 mL"
+        },
+        {
+          "id": "option-3",
+          "label": "150 mL"
+        },
+        {
+          "id": "option-4",
+          "label": "750 mL"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The average aliquot volume is 1,000 mL ÷ 4 = 250 mL. The interval flow weighting is 300 m³/h ÷ 200 m³/h = 1.5. Multiply the average aliquot by the weighting: 250 mL × 1.5 = 375 mL. The actual four interval flows must average the stated 200 m³/h for their weighted aliquots to total 1,000 mL."
+    },
+    {
+      "id": "class3-ww-top-007",
+      "mode": "cause-effect",
+      "prompt": "A water pump delivers 0.050 m³/s against 20 m total dynamic head. Assume water hydraulic power is 9.8 × flow in m³/s × head in m, in kW, and pump efficiency is 70%. What pump shaft power is required? Ignore motor losses.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "14 kW"
+        },
+        {
+          "id": "option-2",
+          "label": "9.8 kW"
+        },
+        {
+          "id": "option-3",
+          "label": "6.86 kW"
+        },
+        {
+          "id": "option-4",
+          "label": "28 kW"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Hydraulic power = 9.8 × 0.050 m³/s × 20 m = 9.8 kW. Pump shaft power = hydraulic power ÷ pump efficiency = 9.8 kW ÷ 0.70 = 14 kW. Shaft power exceeds water power because the pump is not perfectly efficient; electrical input would additionally depend on motor efficiency."
+    },
+    {
+      "id": "class3-ww-top-008",
+      "mode": "cause-effect",
+      "prompt": "A secondary clarifier has 500 m² of surface area. Total mixed-liquor feed, including return sludge already mixed upstream, is 8,000 m³/day at 2,500 mg/L suspended solids. What is the solids loading rate onto the clarifier surface?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "40 kg/day/m²"
+        },
+        {
+          "id": "option-2",
+          "label": "20 kg/day/m²"
+        },
+        {
+          "id": "option-3",
+          "label": "4 kg/day/m²"
+        },
+        {
+          "id": "option-4",
+          "label": "80 kg/day/m²"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Solids applied = total feed flow × feed concentration ÷ 1,000 = 8,000 m³/day × 2,500 mg/L ÷ 1,000 = 20,000 kg/day. The factor 1,000 accounts for the litre-to-cubic-metre and milligram-to-kilogram conversions. Solids loading = 20,000 kg/day ÷ 500 m² = 40 kg/day/m². The given feed already includes RAS, so do not add it a second time."
+    },
+    {
+      "id": "class3-ww-top-009",
+      "mode": "cause-effect",
+      "prompt": "A clarifier's measured overflow is 3,600 m³/day over 90 m of effective weir length. What is the average weir overflow rate in L/day per metre?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "40,000 L/day/m"
+        },
+        {
+          "id": "option-2",
+          "label": "4,000 L/day/m"
+        },
+        {
+          "id": "option-3",
+          "label": "400 L/day/m"
+        },
+        {
+          "id": "option-4",
+          "label": "400,000 L/day/m"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Convert overflow to litres: 3,600 m³/day × 1,000 L/m³ = 3,600,000 L/day. Weir overflow rate = overflow flow ÷ effective weir length = 3,600,000 L/day ÷ 90 m = 40,000 L/day/m. This is per unit weir length, not per unit clarifier surface area."
+    },
+    {
+      "id": "class3-ww-top-010",
+      "mode": "cause-effect",
+      "prompt": "In a mixed-liquor oxygen uptake test with aeration stopped, DO drops from 7.2 to 4.8 mg/L in 8 minutes. Assuming the observed decline is linear and reflects oxygen uptake, what is the oxygen uptake rate?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "0.30 mg/L/min"
+        },
+        {
+          "id": "option-2",
+          "label": "0.60 mg/L/min"
+        },
+        {
+          "id": "option-3",
+          "label": "2.4 mg/L/min"
+        },
+        {
+          "id": "option-4",
+          "label": "3.0 mg/L/min"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Oxygen used = initial DO − final DO = 7.2 − 4.8 = 2.4 mg/L. Oxygen uptake rate = oxygen used ÷ elapsed time = 2.4 mg/L ÷ 8 min = 0.30 mg/L/min. The result is a test rate, not a basin DO setpoint."
+    },
+    {
+      "id": "class3-ww-top-011",
+      "mode": "cause-effect",
+      "prompt": "Two wastewater streams are fully mixed. Assume their flows and BOD₅ loads are additive and no BOD₅ load is lost. Stream A is 100 m³/h at 150 mg/L BOD₅; stream B is 50 m³/h at 300 mg/L BOD₅. What is their blended concentration?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "200 mg/L"
+        },
+        {
+          "id": "option-2",
+          "label": "225 mg/L"
+        },
+        {
+          "id": "option-3",
+          "label": "150 mg/L"
+        },
+        {
+          "id": "option-4",
+          "label": "300 mg/L"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Use the flow-weighted blend: C = (Q₁C₁ + Q₂C₂) ÷ (Q₁ + Q₂). The weighted numerator is (100 m³/h × 150 mg/L) + (50 m³/h × 300 mg/L) = 30,000 in the corresponding combined flow–concentration units. Total flow is 100 + 50 = 150 m³/h. Divide 30,000 by 150 to obtain 200 mg/L; the common flow units cancel. This assumes additive flows and BOD₅ loads; a simple unweighted average would ignore the unequal stream flows."
+    },
+    {
+      "id": "class3-ww-order-001",
+      "mode": "before-after",
+      "prompt": "In the EPA's extended-aeration package-plant example with flow equalization, does screening occur before or after equalization along the main influent path?",
+      "correctAnswer": "before",
+      "explanation": "In the cited example, incoming wastewater is screened before reaching the optional equalization basin. Other facilities can have different layouts."
+    },
+    {
+      "id": "class3-ww-order-002",
+      "mode": "before-after",
+      "prompt": "For the main liquid path in the EPA's extended-aeration package-plant example, is secondary clarification before or after the aeration chamber?",
+      "correctAnswer": "after",
+      "explanation": "The example sends aerated mixed liquor to the clarifier, where biomass settles; this concerns the forward liquid path, not the return-sludge loop."
+    },
+    {
+      "id": "class3-ww-order-003",
+      "mode": "before-after",
+      "prompt": "In the EPA's extended-aeration package-plant example, does disinfection of the main liquid stream occur before or after the clarified liquid passes the clarifier weir?",
+      "correctAnswer": "after",
+      "explanation": "In this specific example, clarified wastewater passes over the weir into a collection channel and is then directed to disinfection. This is not a claim about every plant layout."
+    },
+    {
+      "id": "class3-ww-order-004",
+      "mode": "before-after",
+      "prompt": "In the main influent path of the modified Ludzack-Ettinger biological nitrogen removal configuration, is the anoxic zone before or after the aerobic zone?",
+      "correctAnswer": "before",
+      "explanation": "The modified Ludzack-Ettinger configuration places the anoxic zone ahead of the aerobic zone in forward flow. An internal recycle returns nitrate-rich mixed liquor to the anoxic zone, so the recycle direction differs from the main flow."
+    },
+    {
+      "id": "class3-ww-order-005",
+      "mode": "before-after",
+      "prompt": "During conventional two-step nitrification, is the conversion of nitrite to nitrate before or after the conversion of ammonia to nitrite?",
+      "correctAnswer": "after",
+      "explanation": "In this conventional two-step pathway, ammonia is oxidized to nitrite, and nitrite is subsequently oxidized to nitrate. These transformations can occur in the same reactor; other nitrogen-removal pathways differ."
+    },
+    {
+      "id": "class3-ww-order-006",
+      "mode": "before-after",
+      "prompt": "In the EPA's basic Pho-redox A/O biological phosphorus-removal configuration, is the anaerobic zone before or after the aerobic zone along the forward treatment path?",
+      "correctAnswer": "before",
+      "explanation": "The cited A/O arrangement places its anaerobic zone at the head of the aeration basin. Organisms release phosphorus there and subsequently take it up in the aerobic zone; other nutrient-removal layouts differ."
+    },
+    {
+      "id": "class3-ww-order-007",
+      "mode": "before-after",
+      "prompt": "In the EPA package-plant fact sheet's basic sequencing batch reactor cycle, is the react phase before or after the settle phase within the same batch?",
+      "correctAnswer": "before",
+      "explanation": "In the described cycle the reaction phase precedes settling. Aeration and mixing are suspended during settling so biomass can separate from the treated liquid."
+    },
+    {
+      "id": "class3-ww-order-008",
+      "mode": "before-after",
+      "prompt": "In the EPA package-plant fact sheet's basic sequencing batch reactor cycle, is the decant phase before or after the fill phase for the same batch?",
+      "correctAnswer": "after",
+      "explanation": "The batch is filled and treated before clarified liquid is withdrawn during decant. Real SBR operating strategies can vary, so this answer applies to the stated basic cycle."
+    },
+    {
+      "id": "class3-ww-order-009",
+      "mode": "before-after",
+      "prompt": "For the EPA's example of a batch SBR with effluent equalization and filtration, is effluent equalization before or after the downstream filter?",
+      "correctAnswer": "before",
+      "explanation": "The cited SBR example places post-reactor equalization between the SBR and downstream filtration to moderate the batch discharge to the filter. Not all SBR installations have this equipment."
+    },
+    {
+      "id": "class3-ww-order-010",
+      "mode": "before-after",
+      "prompt": "In EPA's typical multistage anaerobic-digestion solids train, is thickening before or after digestion?",
+      "correctAnswer": "before",
+      "explanation": "EPA describes multistage anaerobic digestion as typically located after thickening. Thickening reduces the volume of the feed; a particular facility can use a different solids train."
+    },
+    {
+      "id": "class3-ww-order-011",
+      "mode": "before-after",
+      "prompt": "In EPA's typical multistage anaerobic-digestion solids train, is dewatering before or after digestion?",
+      "correctAnswer": "after",
+      "explanation": "The EPA fact sheet places dewatering after multistage digestion in its typical solids train. That arrangement should not be assumed for every facility."
+    },
+    {
+      "id": "class3-ww-order-012",
+      "mode": "before-after",
+      "prompt": "During anaerobic digestion of a given portion of complex organic material, does hydrolysis occur before or after volatile-acid fermentation?",
+      "correctAnswer": "before",
+      "explanation": "Hydrolysis breaks complex material into smaller soluble molecules; fermentation converts those products into organic acids. Different digestion reactions may also occur simultaneously in a mixed tank."
+    },
+    {
+      "id": "class3-ww-order-013",
+      "mode": "before-after",
+      "prompt": "In the EPA's standard two-stage acid/gas-phased digester example, is the methane-phase digester before or after the acid-phase digester along the solids path?",
+      "correctAnswer": "after",
+      "explanation": "The acid-phase digester processes the feed in the first stage; the separate methane-phase digester receives material in the second stage. This is one configuration, not a universal digester layout."
+    },
+    {
+      "id": "class3-ww-order-014",
+      "mode": "before-after",
+      "prompt": "In the EPA chlorine-disinfection example that uses dechlorination, does dechlorination occur before or after chlorine contact?",
+      "correctAnswer": "after",
+      "explanation": "The example provides chlorine contact for disinfection, then removes remaining chlorine by dechlorination. The source describes a particular design and does not establish an Ontario requirement."
+    },
+    {
+      "id": "class3-ww-order-015",
+      "mode": "before-after",
+      "prompt": "For the EPA dechlorination fact sheet's feed-forward control example, is the chlorine residual measured before or after the dechlorinating chemical is added?",
+      "correctAnswer": "before",
+      "explanation": "In the stated feed-forward arrangement, the analyzer measures the residual from disinfection upstream of dechlorinating chemical addition. The same source describes a different downstream measurement arrangement for feedback control."
+    },
+    {
+      "id": "class3-ww-order-016",
+      "mode": "before-after",
+      "prompt": "In the EPA operator-training example of a five-day BOD test, is the final dissolved-oxygen measurement before or after incubation?",
+      "correctAnswer": "after",
+      "explanation": "The example measures initial dissolved oxygen separately, incubates the corresponding BOD bottle, and measures final dissolved oxygen at the end of the incubation. Use the laboratory's approved method rather than this training item as an SOP."
+    },
+    {
+      "id": "class3-ww-order-017",
+      "mode": "before-after",
+      "prompt": "In the EPA operator-training Gooch-crucible suspended-solids procedure, is filtration of the measured sample before or after drying the collected sample residue?",
+      "correctAnswer": "before",
+      "explanation": "The measured sample is filtered to capture suspended solids; the crucible and collected residue are then dried. This question refers to drying the sample residue, not the preliminary preparation of the empty crucible. Use the laboratory’s approved current method, not this historical training example, as the SOP."
+    },
+    {
+      "id": "class3-ww-order-018",
+      "mode": "before-after",
+      "prompt": "In the EPA operator-training Gooch-crucible suspended-solids procedure, is the final weighing of the dried sample residue before or after cooling it in a desiccator?",
+      "correctAnswer": "after",
+      "explanation": "For the cited method, the dried crucible and residue are cooled in a desiccator and then weighed. The empty prepared crucible also has a separate earlier tare weighing. Use the laboratory’s approved current method, not this historical training example, as the SOP."
+    },
+    {
+      "id": "class3-ww-order-019",
+      "mode": "before-after",
+      "prompt": "In the EPA operator-training Gooch-crucible suspended-solids procedure, is the tare weighing of the prepared empty crucible before or after sample filtration?",
+      "correctAnswer": "before",
+      "explanation": "The prepared crucible and filter are weighed to establish a tare before the sample is filtered. The subsequent residue weighing includes the captured solids. Use the laboratory’s approved current method, not this historical training example, as the SOP."
+    }
+  ]
+}

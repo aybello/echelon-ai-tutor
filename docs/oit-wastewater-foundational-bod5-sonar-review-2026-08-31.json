@@ -1,0 +1,17 @@
+{
+  "reviews": [
+    {
+      "questionNum": 456,
+      "approved": true,
+      "severity": "minor",
+      "reasons": [
+        "BOD5 definition as five-day biochemical oxygen demand is correctly stated and traceable to Ontario Procedure F-10-1, which defines BOD5 as five-day biochemical oxygen demand and includes it in routine monitoring tables for raw and treated sewage.",
+        "Jurisdiction and regulatory scope are accurate: the stem and explanation correctly frame F-10-1 as an Ontario sewage-treatment sampling procedure and do not generalize beyond Ontario or overstate non-regulatory sources.",
+        "The learning objective (basic meaning of BOD5) is foundational and appropriate for an Ontario OIT learner and aligns with the earlier directive that OIT-level BOD questions focus on what BOD measures rather than detailed methodological or design claims.",
+        "Exactly one option is correct: the distractors (suspended material, pH, residual chlorine) are plausible parameters in wastewater monitoring but do not describe BOD5, and they do not normalize unsafe operation or omitted required actions.",
+        "The explanation appropriately notes that BOD5 helps assess treatment performance while clarifying that site-specific sampling requirements still govern each facility, avoiding universal operational prescriptions."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

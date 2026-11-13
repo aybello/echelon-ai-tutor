@@ -1,0 +1,82 @@
+import { beforeEach, describe, expect, it } from "vitest";
+import { ENV } from "./_core/env";
+import { activeMockQuestion, issueMockSession, mockOwner, mockSpecification, verifyMockSession, validateMockSubmission, selectMockQuestions } from "./mockExamSession";
+describe("mock session authority", () => {
+  beforeEach(() => { ENV.cookieSecret = "test-only-signing-key"; });
+  it("does not expose answer keys or explanations in the active-exam projection", () => {
+    const active = activeMockQuestion({
+      id: 1, module: "Safety", question: "Prompt", options: ["A", "B", "C", "D"],
+      correctIndex: 2, explanation: "Only available after scoring.", diagramId: "diagram-1", diagramAlt: "Diagram",
+    });
+    expect(active).toEqual({ id: 1, module: "Safety", question: "Prompt", options: ["A", "B", "C", "D"], diagramId: "diagram-1", diagramAlt: "Diagram" });
+    expect(active).not.toHaveProperty("correctIndex");
+    expect(active).not.toHaveProperty("explanation");
+  });
+  it("binds the session to the verified learner, bank, duration and complete question list", () => {
+    const spec = mockSpecification("class4-ww");
+    expect(spec.bankKey).toBe("class4-wastewater");
+    const owner = mockOwner({ userId: null, studentEmail: "one@example.com" });
+    const issued = issueMockSession({ ...spec, owner, preview: false, questionNums: Array.from({ length: 100 }, (_, i) => i + 1) }, 1000);
+    expect(verifyMockSession(issued.token, owner)).toMatchObject({ deadline: 10801000, bankKey: "class4-wastewater" });
+    expect(() => verifyMockSession(issued.token, mockOwner({ userId: null, studentEmail: "two@example.com" }))).toThrow("another learner");
+    expect(() => validateMockSubmission(issued.manifest, { sessionId: issued.manifest.sessionId, bankKey: "class4-ww", examType: "class4-ww", answers: [{ questionNum: 1 }] })).toThrow("exactly once");
+  });
+  it("cannot issue a short full exam or a preview for a paid-only course", () => {
+    const spec = mockSpecification("class4-ww");
+    expect(() => issueMockSession({ ...spec, owner: "test", preview: false, questionNums: [1] })).toThrow("complete");
+    expect(() => issueMockSession({ ...spec, owner: "test", preview: true, questionNums: Array.from({ length: 30 }, (_, i) => i + 1) })).toThrow("complete");
+  });
+  it("rejects a highly compressible issued snapshot above the decompression limit", () => {
+    const spec = mockSpecification("class4-ww");
+    const questionNums = Array.from({ length: 100 }, (_, i) => i + 1);
+    const issuedQuestions = questionNums.map(questionNum => ({
+      questionNum, module: "Safety", topic: null, difficulty: "easy", question: "Prompt",
+      options: ["A", "B", "C", "D"], correctIndex: 0, explanation: "x".repeat(6_000),
+      steps: null, tip: null, isCalc: false,
+    }));
+
+    expect(() => issueMockSession({ ...spec, owner: "test", preview: false, questionNums, issuedQuestions }))
+      .toThrow("issued review context is too large");
+  });
+  it("keeps course-specific exam sizes and fails closed on unknown courses", () => {
+    expect(mockSpecification("oit-ww")).toMatchObject({ count: 50, duration: 3600 });
+    expect(mockSpecification("electrician-309a")).toMatchObject({ count: 100, duration: 14400 });
+    expect(mockSpecification("class1-water").examType).toBe("class1");
+    expect(() => mockSpecification("made-up")).toThrow("Unknown");
+  });
+  it("selects unique questions to configured targets and fills only from eligible pool", () => {
+    const pool = Array.from({ length: 150 }, (_, i) => ({ id: i + 1, module: i < 75 ? "A" : "B" }));
+    const sample = selectMockQuestions([...pool, pool[0]], { A: 40, B: 60 }, 100);
+    expect(sample).toHaveLength(100); expect(new Set(sample.map(q => q.id)).size).toBe(100);
+    expect(sample.filter(q => q.module === "A")).toHaveLength(40);
+  });
+  it("fills sparse module weights from the eligible bank without shortening the exam", () => {
+    const pool = Array.from({ length: 110 }, (_, i) => ({ id: i + 1, module: i < 2 ? "Rare" : "Common" }));
+    expect(selectMockQuestions(pool, { Rare: 80, Common: 20 }, 100)).toHaveLength(100);
+    expect(selectMockQuestions(pool.slice(0, 99), { Rare: 80, Common: 20 }, 100)).toHaveLength(99);
+  });
+
+});
+
+describe("Class IV unscored practice items", () => {
+  beforeEach(() => { ENV.cookieSecret = "test-only-signing-key"; });
+  it("issues 110 unique items, conceals the scoring plan, and requires all answers", async () => {
+    const { scoredMockQuestionNums } = await import("./mockExamSession");
+    const spec = mockSpecification("wpi-class4-wastewater");
+    const ids = Array.from({ length: 110 }, (_, i) => i + 1);
+    const owner = mockOwner({ studentEmail: "test@example.invalid", userId: null });
+    const issued = issueMockSession({ ...spec, owner, preview: false, questionNums: ids, unscoredQuestionNums: ids.slice(100) });
+    const verified = verifyMockSession(issued.token, owner);
+    expect(scoredMockQuestionNums(verified)).toEqual(ids.slice(0, 100));
+    const decoded = JSON.parse(Buffer.from(issued.token.split(".")[0], "base64url").toString());
+    expect(decoded).not.toHaveProperty("unscoredQuestionNums");
+    expect(decoded.scoring).not.toContain(JSON.stringify(ids.slice(100)));
+    expect(() => validateMockSubmission(verified, { sessionId: verified.sessionId, examType: spec.examType, bankKey: spec.courseKey, answers: ids.slice(0, 100).map(questionNum => ({ questionNum })) })).toThrow("exactly once");
+    expect(() => issueMockSession({ ...spec, owner, preview: false, questionNums: ids, unscoredQuestionNums: Array(10).fill(101) })).toThrow("scoring");
+  });
+  it("keeps scoring of existing v1 100-item mocks", async () => {
+    const { scoredMockQuestionNums } = await import("./mockExamSession");
+    const ids = Array.from({ length: 100 }, (_, i) => i + 1);
+    expect(scoredMockQuestionNums({ version: 1, courseKey: "wpi-class4-wastewater", questionNums: ids } as any)).toEqual(ids);
+  });
+});

@@ -1,3 +1,4 @@
+import { applyOitEditorial } from "../lib/oitEditorial.mjs";
 import fs from "node:fs/promises";
 import { EXPANDED_OIT_OBJECTIVES } from "./oit-expanded-objectives.mjs";
 
@@ -231,44 +232,6 @@ const stemTemplates = {
   ],
 };
 
-function peersFor(index, answerField) {
-  const c = concepts[index];
-  const answerLength = value => value.trim().split(/\s+/).length;
-  const tokens = value => new Set(value.toLowerCase().replace(/[^a-z0-9 ]/g, "").split(/\s+/).filter(token => token.length > 2));
-  const similarity = (left, right) => {
-    const leftTokens = tokens(left);
-    const rightTokens = tokens(right);
-    const intersection = [...leftTokens].filter(token => rightTokens.has(token)).length;
-    const union = new Set([...leftTokens, ...rightTokens]).size;
-    return union === 0 ? 0 : intersection / union;
-  };
-  const targetLength = answerLength(c[answerField]);
-  const candidates = concepts
-    .map((x, i) => ({ x, i }))
-    .filter(v => v.i !== index && v.x.stream === c.stream)
-    .filter(v => similarity(v.x[answerField], c[answerField]) < 0.35)
-    .sort((left, right) => {
-      const leftDifferentModule = left.x.module === c.module ? 1 : 0;
-      const rightDifferentModule = right.x.module === c.module ? 1 : 0;
-      if (leftDifferentModule !== rightDifferentModule) return leftDifferentModule - rightDifferentModule;
-      const leftLengthPenalty = Math.abs(answerLength(left.x[answerField]) - targetLength) > Math.max(4, targetLength * 0.4) ? 1 : 0;
-      const rightLengthPenalty = Math.abs(answerLength(right.x[answerField]) - targetLength) > Math.max(4, targetLength * 0.4) ? 1 : 0;
-      if (leftLengthPenalty !== rightLengthPenalty) return leftLengthPenalty - rightLengthPenalty;
-      const leftLengthDifference = Math.abs(answerLength(left.x[answerField]) - targetLength);
-      const rightLengthDifference = Math.abs(answerLength(right.x[answerField]) - targetLength);
-      if (leftLengthDifference !== rightLengthDifference) return leftLengthDifference - rightLengthDifference;
-      return ((left.i - index + concepts.length) * 17 % concepts.length) - ((right.i - index + concepts.length) * 17 % concepts.length);
-    });
-  const selected = [];
-  for (const candidate of candidates) {
-    if (selected.every(existing => similarity(existing.x[answerField], candidate.x[answerField]) < 0.35)) {
-      selected.push(candidate);
-      if (selected.length === 3) break;
-    }
-  }
-  if (selected.length < 3) throw new Error(`Could not find three distinct distractors for ${c.name} ${answerField}.`);
-  return selected.map(value => value.x);
-}
 
 function canonicalModule(stream, module) {
   if (stream === "Water Treatment") {
@@ -402,10 +365,10 @@ for (let i = 0; i < concepts.length; i += 1) {
   const indicatorExplanation = isAdverseCondition(c)
     ? `The relevant evidence is that ${c.indicator}. This shows that ${c.name} has been controlled after this response: ${c.action}.`
     : `The relevant performance evidence is that ${c.indicator}. The objective of ${c.name} is to ${c.purpose}.`;
-  addQuestion({ stream: c.stream, module: c.module, topic: c.name, difficulty: "easy", stem: purposeStem(c, t), correct: c.purpose, distractors: peersFor(i, "purpose").map(p => p.purpose), explanation: purposeExplanation, source: c.source });
-  addQuestion({ stream: c.stream, module: c.module, topic: c.name, difficulty: c.difficulty, stem: stemTemplates.action[(t + 1) % 8](c), correct: c.action, distractors: peersFor(i, "action").map(p => p.action), explanation: `The first response is to ${c.action}. ${c.principle}.`, source: c.source });
-  addQuestion({ stream: c.stream, module: c.module, topic: c.name, difficulty: "medium", stem: stemTemplates.principle[(t + 2) % 8](c), correct: c.principle, distractors: peersFor(i, "principle").map(p => p.principle), explanation: `${c.principle}. In practice, the operator should ${c.action}.`, source: c.source });
-  addQuestion({ stream: c.stream, module: c.module, topic: c.name, difficulty: i % 3 === 0 ? "hard" : "medium", stem: indicatorStem(c, (t + 3) % 8), correct: c.indicator, distractors: peersFor(i, "indicator").map(p => p.indicator), explanation: indicatorExplanation, source: c.source });
+  addQuestion({ stream: c.stream, module: c.module, topic: c.name, difficulty: "easy", stem: purposeStem(c, t), correct: c.purpose, distractors: ["EDITORIAL_REQUIRED_A", "EDITORIAL_REQUIRED_B", "EDITORIAL_REQUIRED_C"], explanation: purposeExplanation, source: c.source });
+  addQuestion({ stream: c.stream, module: c.module, topic: c.name, difficulty: c.difficulty, stem: stemTemplates.action[(t + 1) % 8](c), correct: c.action, distractors: ["EDITORIAL_REQUIRED_A", "EDITORIAL_REQUIRED_B", "EDITORIAL_REQUIRED_C"], explanation: `The first response is to ${c.action}. ${c.principle}.`, source: c.source });
+  addQuestion({ stream: c.stream, module: c.module, topic: c.name, difficulty: "medium", stem: stemTemplates.principle[(t + 2) % 8](c), correct: c.principle, distractors: ["EDITORIAL_REQUIRED_A", "EDITORIAL_REQUIRED_B", "EDITORIAL_REQUIRED_C"], explanation: `${c.principle}. In practice, the operator should ${c.action}.`, source: c.source });
+  addQuestion({ stream: c.stream, module: c.module, topic: c.name, difficulty: i % 3 === 0 ? "hard" : "medium", stem: indicatorStem(c, (t + 3) % 8), correct: c.indicator, distractors: ["EDITORIAL_REQUIRED_A", "EDITORIAL_REQUIRED_B", "EDITORIAL_REQUIRED_C"], explanation: indicatorExplanation, source: c.source });
 }
 
 const fmt = (n, decimals = 1) => {
@@ -535,9 +498,9 @@ const EXCLUDED_QUESTION_NUMBERS = {
   oit: new Set([1080, 1084, 1114, 1148, 1150, 1176, 1224, 1280, 1312, 1397, 1400]),
   "oit-ww": new Set([1006, 1044, 1051, 1060, 1067, 1083, 1130, 1153, 1161, 1162, 1193, 1251, 1289, 1327, 1378, 1483, 1486]),
 };
-const retainedQuestions = questions.filter(
+const retainedQuestions = applyOitEditorial(questions.filter(
   question => !EXCLUDED_QUESTION_NUMBERS[question.bankKey].has(question.questionNum),
-);
+));
 
 const outputDirectory = "content/oit/questions";
 function hashSeed(value) {
@@ -627,7 +590,7 @@ await fs.mkdir(outputDirectory, { recursive: true });
 await fs.writeFile(`${outputDirectory}/oit-water-500.json`, `${JSON.stringify(waterQuestions, null, 2)}\n`);
 await fs.writeFile(`${outputDirectory}/oit-wastewater-500.json`, `${JSON.stringify(wastewaterQuestions, null, 2)}\n`);
 await fs.writeFile("content/oit/manifest.json", `${JSON.stringify({
-  version: "2026-08-29-v3",
+  version: "2026-09-09-v4",
   importMode: "additive",
   questionNumberRange: { start: 1001, end: 1500 },
   banks: [
@@ -637,7 +600,7 @@ await fs.writeFile("content/oit/manifest.json", `${JSON.stringify({
   governance: {
     sourceReviewStatus: "unreviewed",
     databaseStagingStatus: "in_review",
-    activation: "individual-admin-approval-required",
+    activation: "validated-exact-package-batch-release",
     historicalAttemptSafety: "additive question numbers preserve existing question identity",
   },
   blueprint: BLUEPRINT,

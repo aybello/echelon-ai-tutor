@@ -16,6 +16,12 @@ const PROJECT_ROOT = resolve(__dirname, "..");
 
 const results = [];
 let overallPass = true;
+const FAILURE_DETAIL_LIMIT = 2_000;
+
+function formatFailureDetail(err) {
+  const detail = err instanceof Error ? err.message : String(err);
+  return detail.length > FAILURE_DETAIL_LIMIT ? `${detail.slice(0, FAILURE_DETAIL_LIMIT)}…` : detail;
+}
 
 function run(label, fn) {
   try {
@@ -24,7 +30,7 @@ function run(label, fn) {
     console.log(`✅ ${label}`);
   } catch (err) {
     overallPass = false;
-    const detail = err.message?.slice(0, 300) || String(err).slice(0, 300);
+    const detail = formatFailureDetail(err);
     results.push({ label, status: "❌ FAIL", detail });
     console.error(`❌ ${label}: ${detail}`);
   }
@@ -37,7 +43,7 @@ async function runAsync(label, fn) {
     console.log(`✅ ${label}`);
   } catch (err) {
     overallPass = false;
-    const detail = err.message?.slice(0, 300) || String(err).slice(0, 300);
+    const detail = formatFailureDetail(err);
     results.push({ label, status: "❌ FAIL", detail });
     console.error(`❌ ${label}: ${detail}`);
   }
@@ -190,10 +196,26 @@ run("Route Coverage (all routes have components)", () => {
 
 // ── 6. User Journey Checks (Playwright, live site) ──────────────────────────
 await runAsync("User Journey Checks (live site)", async () => {
-  const output = execSync(
-    "python3 scripts/journey-checks.py",
-    { cwd: PROJECT_ROOT, timeout: 300_000, encoding: "utf8" }
-  );
+  let output;
+  try {
+    output = execSync(
+      "python3 scripts/journey-checks.py",
+      { cwd: PROJECT_ROOT, timeout: 300_000, encoding: "utf8" }
+    );
+  } catch (error) {
+    const childOutput = [error?.stdout, error?.stderr]
+      .filter(Boolean)
+      .map(value => String(value).trim())
+      .filter(Boolean)
+      .join("\n");
+    const failedLines = childOutput
+      .split("\n")
+      .filter(line => line.includes("❌"))
+      .map(line => line.trim())
+      .join("; ");
+    const diagnostic = failedLines || childOutput.slice(-1_000) || "No child-process output was captured.";
+    throw new Error(`Journey runner exited unsuccessfully: ${diagnostic}`);
+  }
   const match = output.match(/Journey Checks: (\d+) passed, (\d+) failed/);
   if (!match) throw new Error("Could not parse journey check output");
   const passed = parseInt(match[1]);

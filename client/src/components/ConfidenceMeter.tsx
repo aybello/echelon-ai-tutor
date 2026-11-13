@@ -23,13 +23,14 @@ export default function ConfidenceMeter({ value, onChange, disabled }: Props) {
         whiteSpace: "nowrap",
         flexShrink: 0,
       }}>
-        CONFIDENCE:
+        Confidence (optional):
       </span>
 
       <div style={{ display: "flex", gap: 6 }}>
         {/* Not Sure */}
         <button
           onClick={() => !disabled && onChange(1)}
+          aria-pressed={notSure}
           disabled={disabled}
           style={{
             padding: "4px 12px",
@@ -51,6 +52,7 @@ export default function ConfidenceMeter({ value, onChange, disabled }: Props) {
         {/* Sure */}
         <button
           onClick={() => !disabled && onChange(4)}
+          aria-pressed={sure}
           disabled={disabled}
           style={{
             padding: "4px 12px",

@@ -2,8 +2,12 @@
 // Design: Light theme — white cards, #F1F5F9 background, slate text (matches site)
 import { useState, useEffect } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { Link } from "wouter";
+import { Link, useSearch } from "wouter";
 import { trpc } from "@/lib/trpc";
+import { managerAccountDestination } from "@/lib/managerAccountRoute";
+import { getAllUnlockedExamTypes } from "@shared/products";
+// Pure catalogue mapping; this module has no Stripe SDK or server dependencies.
+import { getAllSubscriptionExamTypes } from "../../../server/stripe/subscriptionProducts";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import ExamDateTracker from "@/components/ExamDateTracker";
@@ -28,10 +32,10 @@ const EXAM_META: Record<
   "class2-ww": { label: "Class 2 Wastewater Treatment Pass", quizPath: "/class2-ww", mockPath: "/class2-ww-mock", formulaPath: "/formulas-ww2", flashcardPath: "/class2-ww-flashcards", color: "#0F766E", bg: "#F0FDFA", icon: "🌊", track: "Ontario" },
   "class3-ww": { label: "Class 3 Wastewater Treatment Pass", quizPath: "/class3-ww", mockPath: "/class3-ww-mock", formulaPath: "/formulas-ww3", flashcardPath: "/class3-ww-flashcards", color: "#0F766E", bg: "#F0FDFA", icon: "🌊", track: "Ontario" },
   "class4-ww": { label: "Class 4 Wastewater Treatment Pass", quizPath: "/class4-ww", flashcardPath: "/class4-ww-flashcards", color: "#0F766E", bg: "#F0FDFA", icon: "🌊", track: "Ontario" },
-  "class1-water-dist": { label: "Class 1 Water Distribution Pass", quizPath: "/class1-water-dist", mockPath: "/class1-water-dist-mock", flashcardPath: "/class1-water-dist-flashcards", color: "#0369A1", bg: "#F0F9FF", icon: "🔧", track: "Ontario" },
-  "class2-water-dist": { label: "Class 2 Water Distribution Pass", quizPath: "/class2-water-dist", mockPath: "/class2-water-dist-mock", flashcardPath: "/class2-water-dist-flashcards", color: "#0E7490", bg: "#ECFEFF", icon: "🔧", track: "Ontario" },
-  "class3-water-dist": { label: "Class 3 Water Distribution Pass", quizPath: "/class3-water-dist", mockPath: "/class3-water-dist-mock", flashcardPath: "/class3-water-dist-flashcards", color: "#1E40AF", bg: "#EFF6FF", icon: "🔧", track: "Ontario" },
-  "class4-water-dist": { label: "Class 4 Water Distribution Pass", quizPath: "/class4-water-dist", mockPath: "/class4-water-dist-mock", flashcardPath: "/class4-water-dist-flashcards", color: "#4C1D95", bg: "#F5F3FF", icon: "🔧", track: "Ontario" },
+  "class1-water-dist": { label: "Class 1 Water Distribution and Supply Pass", quizPath: "/class1-water-dist", mockPath: "/class1-water-dist-mock", flashcardPath: "/class1-water-dist-flashcards", color: "#0369A1", bg: "#F0F9FF", icon: "🔧", track: "Ontario" },
+  "class2-water-dist": { label: "Class 2 Water Distribution and Supply Pass", quizPath: "/class2-water-dist", mockPath: "/class2-water-dist-mock", flashcardPath: "/class2-water-dist-flashcards", color: "#0E7490", bg: "#ECFEFF", icon: "🔧", track: "Ontario" },
+  "class3-water-dist": { label: "Class 3 Water Distribution and Supply Pass", quizPath: "/class3-water-dist", mockPath: "/class3-water-dist-mock", flashcardPath: "/class3-water-dist-flashcards", color: "#1E40AF", bg: "#EFF6FF", icon: "🔧", track: "Ontario" },
+  "class4-water-dist": { label: "Class 4 Water Distribution and Supply Pass", quizPath: "/class4-water-dist", mockPath: "/class4-water-dist-mock", flashcardPath: "/class4-water-dist-flashcards", color: "#4C1D95", bg: "#F5F3FF", icon: "🔧", track: "Ontario" },
   "class1-wastewater-coll": { label: "Class 1 Wastewater Collection Pass", quizPath: "/class1-wastewater-coll", mockPath: "/class1-wastewater-coll-mock", flashcardPath: "/class1-wastewater-coll-flashcards", color: "#065F46", bg: "#ECFDF5", icon: "🏗️", track: "Ontario" },
   "class2-wastewater-coll": { label: "Class 2 Wastewater Collection Pass", quizPath: "/class2-wastewater-coll", mockPath: "/class2-wastewater-coll-mock", flashcardPath: "/class2-wastewater-coll-flashcards", color: "#0F766E", bg: "#F0FDFA", icon: "🏗️", track: "Ontario" },
   "class3-wastewater-coll": { label: "Class 3 Wastewater Collection Pass", quizPath: "/class3-wastewater-coll", mockPath: "/class3-wastewater-coll-mock", flashcardPath: "/class3-wastewater-coll-flashcards", color: "#1D4ED8", bg: "#EFF6FF", icon: "🏗️", track: "Ontario" },
@@ -52,6 +56,9 @@ const EXAM_META: Record<
   "wpi-class2-water-coll": { label: "WPI Class II Wastewater Collection Pass", quizPath: "/wpi-class2-water-coll", mockPath: "/wpi-class2-water-coll-mock", formulaPath: "/formulas-wpi-class2-ww", flashcardPath: "/wpi-class2-water-coll-flashcards", color: "#0F766E", bg: "#F0FDFA", icon: "🏗️", track: "WPI" },
   "wpi-class3-water-coll": { label: "WPI Class III Wastewater Collection Pass", quizPath: "/wpi-class3-water-coll", mockPath: "/wpi-class3-water-coll-mock", formulaPath: "/formulas-wpi-class3-ww", flashcardPath: "/wpi-class3-water-coll-flashcards", color: "#1D4ED8", bg: "#EFF6FF", icon: "🏗️", track: "WPI" },
   "wpi-class4-water-coll": { label: "WPI Class IV Wastewater Collection Pass", quizPath: "/wpi-class4-water-coll", mockPath: "/wpi-class4-water-coll-mock", formulaPath: "/formulas-wpi-class4-ww", flashcardPath: "/wpi-class4-water-coll-flashcards", color: "#6D28D9", bg: "#F5F3FF", icon: "🏗️", track: "WPI" },
+  "us-class1-water": { label: "US Class I Water Treatment Practice Pass", quizPath: "/us-class1-water", mockPath: "/us-class1-water-mock", formulaPath: "/formulas-us-class1", flashcardPath: "/us-class1-water-flashcards", color: "#0E7490", bg: "#ECFEFF", icon: "🇺🇸", track: "US" },
+  "us-class1-water-dist": { label: "US Class I Water Distribution Practice Pass", quizPath: "/us-class1-water-dist", mockPath: "/us-class1-water-dist-mock", formulaPath: "/formulas-us-class1", flashcardPath: "/us-class1-water-dist-flashcards", color: "#1D4ED8", bg: "#EFF6FF", icon: "🇺🇸", track: "US" },
+  "us-texas-class-d-water": { label: "Texas Class D Water Practice Pass", quizPath: "/us-texas-class-d-water", mockPath: "/us-texas-class-d-water-mock", formulaPath: "/formulas-us-texas-class-d-water", flashcardPath: "/us-texas-class-d-water-flashcards", color: "#7C3AED", bg: "#F5F3FF", icon: "⭐", track: "US" },
 };
 
 /** Small inline mastery progress badge for flashcard stats */
@@ -141,6 +148,9 @@ export default function Account() {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [portalLoading, setPortalLoading] = useState(false);
 
+  const search = useSearch();
+  const managerDestination = managerAccountDestination(search);
+  const isPersonalBilling = managerDestination === null;
   const { isAuthenticated, logout } = useAuth();
 
   // FIX 3: Detect verified email session (OTP/magic-link users who are not OAuth-authenticated)
@@ -154,21 +164,18 @@ export default function Account() {
     undefined,
     { enabled: isAnyAuthenticated, retry: false, staleTime: 60_000 }
   );
+  const isManager = entitlementsQuery.data?.isManager ?? false;
 
-  const handleClearDeviceState = () => {
-    try {
-      localStorage.removeItem("echelon_trial_email");
-      localStorage.removeItem("echelon_purchased_products");
-      localStorage.removeItem("echelon_trial_unlocked");
-      localStorage.removeItem("echelon_subscription_email");
-      localStorage.removeItem("echelon_subscription_exam_types");
-      localStorage.removeItem("echelon_access_token");
-    } catch { /* ignore */ }
-    setSubmittedEmail(null);
-    setEmail("");
-    setRestored(false);
-    toast.success("Device state cleared", { description: "All saved access on this device has been removed." });
-  };
+  // Municipal managers own a team licence pool, not an individual practice
+  // pass. Sending them through the individual empty state incorrectly says
+  // their purchase is missing. Route active managers to their team workspace.
+  useEffect(() => {
+    if (!isManager || managerDestination === null) return;
+    window.location.replace(managerDestination);
+  }, [isManager, managerDestination]);
+
+  // Shared-device reset must end httpOnly sessions as well as cached access.
+  const handleClearDeviceState = logout;
 
   const getPurchases = trpc.stripe.getMyPurchases.useQuery(
     undefined,
@@ -179,6 +186,14 @@ export default function Account() {
     undefined,
     { enabled: !!isAuthenticated, retry: false } // OAuth only — entitlementsQuery covers email sessions
   );
+  const getEmailSubscriptions = trpc.stripe.getMySubscriptionsForEmailSession.useQuery(
+    undefined,
+    { enabled: !isAuthenticated && !!emailSession, retry: false }
+  );
+  const personalSubscriptions = (isAuthenticated
+    ? getSubscriptions.data?.subscriptions
+    : getEmailSubscriptions.data?.subscriptions
+  )?.filter(sub => sub.orgId == null) ?? [];
 
   const createBillingPortal = trpc.stripe.createBillingPortalSession.useMutation({
     onSuccess: (data) => {
@@ -192,7 +207,7 @@ export default function Account() {
   const handleManageSubscription = () => {
     setPortalLoading(true);
     createBillingPortal.mutate(
-      {},
+      { scope: "personal" },
       { onSettled: () => setPortalLoading(false) }
     );
   };
@@ -226,7 +241,7 @@ export default function Account() {
     }
     // Redirect to OTP login with email pre-filled
     // Forward the ?next= param if it is a safe same-application relative path
-    const rawNext = new URLSearchParams(window.location.search).get("next") ?? "";
+    const rawNext = isPersonalBilling ? "/account?billing=personal" : new URLSearchParams(search).get("next") ?? "";
     const safeNext = /^\/[^/]/.test(rawNext) && !/^\/\//.test(rawNext) && !rawNext.includes(":") ? rawNext : "";
     setOtpRedirecting(true);
     window.location.href = `/login/otp?email=${encodeURIComponent(trimmed)}${safeNext ? `&next=${encodeURIComponent(safeNext)}` : ""}`;
@@ -234,7 +249,11 @@ export default function Account() {
 
   // FIX 4: Prefer live entitlements as primary source; fall back to legacy purchase queries for OAuth users
   const entitlementCourses = entitlementsQuery.data?.accessibleCourses ?? [];
-  const unlockedExamTypes = entitlementCourses.length > 0
+  const personalExamTypes = [
+    ...getAllUnlockedExamTypes(entitlementsQuery.data?.purchasedProductKeys ?? []),
+    ...getAllSubscriptionExamTypes(personalSubscriptions),
+  ].filter((v, i, a) => a.indexOf(v) === i);
+  const unlockedExamTypes = isPersonalBilling ? personalExamTypes : entitlementCourses.length > 0
     ? entitlementCourses.map((c: { courseKey: string }) => c.courseKey)
     : [
         ...(getPurchases.data?.unlockedExamTypes ?? []),
@@ -243,12 +262,21 @@ export default function Account() {
   const purchases = getPurchases.data?.purchases ?? [];
   const hasPurchases = unlockedExamTypes.length > 0;
 
+  if (isManager && !isPersonalBilling) {
+    return (
+      <div className="learner-redesign learner-account-page" style={{ fontFamily: "'Sora', sans-serif", background: "#F1F5F9", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
+        <p style={{ color: "#475569", fontWeight: 700 }}>Opening your team dashboard…</p>
+      </div>
+    );
+  }
+
   const ontarioPasses = unlockedExamTypes.filter((t: string) => EXAM_META[t]?.track === "Ontario");
   const wpiPasses = unlockedExamTypes.filter((t: string) => EXAM_META[t]?.track === "WPI");
+  const usPasses = unlockedExamTypes.filter((t: string) => EXAM_META[t]?.track === "US");
   const otherPasses = unlockedExamTypes.filter((t: string) => !EXAM_META[t]);
 
   return (
-    <div style={{ fontFamily: "'Sora', sans-serif", background: "#F1F5F9", minHeight: "100vh" }}>
+    <div className="learner-redesign learner-account-page" style={{ fontFamily: "'Sora', sans-serif", background: "#F1F5F9", minHeight: "100vh" }}>
       <SiteNav currentPath="/account" />
 
       <style>{`
@@ -279,15 +307,22 @@ export default function Account() {
         <div style={{ textAlign: "center", marginBottom: 40 }}>
           <img src={LOGO_URL} alt="Echelon Institute" style={{ height: 52, width: "auto", marginBottom: 20 }} />
           <h1 style={{ fontSize: 30, fontWeight: 900, color: "#0F172A", margin: "0 0 10px", letterSpacing: "-0.02em" }}>
-            {isAnyAuthenticated ? "My Account" : "Restore Access"}
+            {isAnyAuthenticated ? (isPersonalBilling ? "Individual Billing & Passes" : "My Account") : "Restore Access"}
           </h1>
           <p style={{ fontSize: 15, color: "#64748B", maxWidth: 440, margin: "0 auto", lineHeight: 1.6 }}>
-            {isAuthenticated
+            {isPersonalBilling && isAnyAuthenticated
+              ? "Manage your separate individual subscription and practice passes here. Team billing and licences stay in your team dashboard; nothing is transferred."
+              : isAuthenticated
               ? "View your active passes, subscriptions, and team seats. Manage your account below."
               : emailSession
               ? `Signed in as ${emailSession}. Your active passes are shown below.`
               : "Enter the email you used at checkout to unlock your passes on this device. Works on any browser or phone."}
           </p>
+          {isPersonalBilling && isAnyAuthenticated && (
+            <Link href="/team" style={{ display: "inline-block", marginTop: 12, color: "#1D4ED8", fontSize: 13, fontWeight: 700 }}>
+              Return to team dashboard →
+            </Link>
+          )}
         </div>
 
         {/* How it works */}
@@ -373,7 +408,7 @@ export default function Account() {
         )}
 
         {/* Results — only shown for authenticated users (who have proven inbox ownership) */}
-        {isAnyAuthenticated && !(getPurchases.isFetching || entitlementsQuery.isFetching) && (
+        {isAnyAuthenticated && !(getPurchases.isFetching || entitlementsQuery.isFetching || getSubscriptions.isFetching || getEmailSubscriptions.isFetching) && (
           <>
             {hasPurchases ? (
               <>
@@ -410,13 +445,13 @@ export default function Account() {
                 <OtpAccessSection email={submittedEmail ?? ""} />
 
                 {/* Active Subscriptions */}
-                {(getSubscriptions.data?.subscriptions ?? []).length > 0 && (
+                {personalSubscriptions.length > 0 && (
                   <div style={{ marginBottom: 24 }}>
                     <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>
-                      🔄 Active Annual Subscriptions
+                      🔄 Active Individual Subscriptions
                     </div>
                     <div className="account-card" style={{ overflow: "hidden" }}>
-                      {(getSubscriptions.data?.subscriptions ?? []).map((sub) => {
+                      {personalSubscriptions.map((sub) => {
                         const renewalDate = new Date(sub.currentPeriodEnd).toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" });
                         const tierLabel = {
                           "class1": "Class 1 All-Access",
@@ -594,6 +629,64 @@ export default function Account() {
                   </div>
                 )}
 
+                {/* U.S. individual passes */}
+                {usPasses.length > 0 && (
+                  <div style={{ marginBottom: 20 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10, paddingLeft: 4 }}>
+                      🇺🇸 US Operator Certification Passes
+                    </div>
+                    <div className="account-card" style={{ overflow: "hidden" }}>
+                      {usPasses.map((examType: string) => {
+                        const meta = EXAM_META[examType];
+                        if (!meta) return null;
+                        return (
+                          <div key={examType} className="pass-row">
+                            <div className="pass-row-main">
+                              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                                <div style={{ width: 42, height: 42, borderRadius: 10, background: meta.bg, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>
+                                  {meta.icon}
+                                </div>
+                                <div>
+                                  <p style={{ color: "#0F172A", fontWeight: 700, fontSize: 13, margin: "0 0 3px" }}>{meta.label}</p>
+                                  <p style={{ color: "#94A3B8", fontSize: 11, margin: 0 }}>Unlimited practice · AI Tutor · Mock Exam · Flashcards</p>
+                                </div>
+                              </div>
+                              <div className="pass-actions">
+                                <Link href={meta.quizPath}>
+                                  <span className="pass-btn" style={{ background: meta.color, color: "#fff" }}>Practice →</span>
+                                </Link>
+                                {meta.mockPath && (
+                                  <Link href={meta.mockPath}>
+                                    <span className="pass-btn" style={{ background: "#F1F5F9", color: "#475569", border: "1px solid #E2E8F0" }}>Mock Exam</span>
+                                  </Link>
+                                )}
+                                {meta.flashcardPath && (
+                                  <Link href={meta.flashcardPath}>
+                                    <span className="pass-btn" style={{ background: "#EFF6FF", color: "#1D4ED8" }}>🃏 Flashcards</span>
+                                  </Link>
+                                )}
+                                {meta.formulaPath && (
+                                  <Link href={meta.formulaPath}>
+                                    <span className="pass-btn" style={{ background: "#F0FDF4", color: "#15803D" }}>📐 Formulas</span>
+                                  </Link>
+                                )}
+                              </div>
+                            </div>
+                            {meta.flashcardPath && flashcardMastery[examType] && (
+                              <div style={{ paddingLeft: 54 }}>
+                                <MasteryBadge knownCount={flashcardMastery[examType].knownCount} totalCards={flashcardMastery[examType].totalCards} />
+                              </div>
+                            )}
+                            {submittedEmail && (
+                              <ExamDateTracker email={submittedEmail} productKey={examType} productLabel={meta.label} color={meta.color} />
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
                 {/* Unknown passes */}
                 {otherPasses.length > 0 && (
                   <div style={{ marginBottom: 20 }}>
@@ -660,13 +753,15 @@ export default function Account() {
               /* No purchases found */
               <div className="account-card" style={{ padding: 36, textAlign: "center" }}>
                 <div style={{ width: 64, height: 64, borderRadius: "50%", background: "#F1F5F9", border: "2px solid #E2E8F0", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 28, margin: "0 auto 20px" }}>🔍</div>
-                <h2 style={{ color: "#0F172A", fontWeight: 800, fontSize: 18, margin: "0 0 10px" }}>No purchases found</h2>
+                <h2 style={{ color: "#0F172A", fontWeight: 800, fontSize: 18, margin: "0 0 10px" }}>{isPersonalBilling ? "No active individual passes or subscriptions" : "No purchases found"}</h2>
                 <p style={{ color: "#64748B", fontSize: 13, margin: "0 0 8px", lineHeight: 1.6 }}>
-                  We couldn't find any purchases for{" "}
+                  {isPersonalBilling ? "No active individual access was found for " : "We couldn't find any purchases for "}
                   <span style={{ color: "#334155", fontWeight: 700 }}>{submittedEmail}</span>.
                 </p>
                 <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 28px", lineHeight: 1.6 }}>
-                  Make sure you're using the exact email you entered at checkout. Check your inbox for a Stripe receipt to confirm the address.
+                  {isPersonalBilling
+                    ? "Team licences and billing are separate and remain in your team dashboard. Check the email on your individual receipt if you expected a personal purchase."
+                    : "Make sure you're using the exact email you entered at checkout. Check your inbox for a Stripe receipt to confirm the address."}
                 </p>
 
                 <div style={{ background: "#F8FAFC", borderRadius: 12, padding: "16px 20px", marginBottom: 24, textAlign: "left", border: "1px solid #E2E8F0" }}>

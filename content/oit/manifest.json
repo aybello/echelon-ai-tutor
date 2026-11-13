@@ -1,5 +1,5 @@
 {
-  "version": "2026-08-29-v3",
+  "version": "2026-09-09-v4",
   "importMode": "additive",
   "questionNumberRange": {
     "start": 1001,
@@ -20,7 +20,7 @@
   "governance": {
     "sourceReviewStatus": "unreviewed",
     "databaseStagingStatus": "in_review",
-    "activation": "individual-admin-approval-required",
+    "activation": "validated-exact-package-batch-release",
     "historicalAttemptSafety": "additive question numbers preserve existing question identity"
   },
   "blueprint": {

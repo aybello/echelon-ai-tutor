@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from "react";
 
-export type ProvinceId = "on" | "bc" | "ab" | "sk" | "mb";
+export type ProvinceId = "on" | "bc" | "ab" | "sk" | "mb" | "ns";
 
 export interface ProvinceInfo {
   id: ProvinceId;
@@ -19,15 +19,16 @@ export const PROVINCE_LIST: ProvinceInfo[] = [
   { id: "ab", name: "Alberta",         abbr: "AB", flag: "🌾", track: "wpi"     },
   { id: "sk", name: "Saskatchewan",    abbr: "SK", flag: "🌻", track: "wpi"     },
   { id: "mb", name: "Manitoba",        abbr: "MB", flag: "🦌", track: "wpi"     },
+  { id: "ns", name: "Nova Scotia",     abbr: "NS", flag: "🌊", track: "wpi"     },
 ];
 
-const STORAGE_KEY = "echelon_province";
+export const PROVINCE_STORAGE_KEY = "echelon_province";
 const DISMISSED_KEY = "echelon_province_dismissed";
 
 export function useProvince() {
   const [province, setProvinceState] = useState<ProvinceId | null>(() => {
     try {
-      const stored = localStorage.getItem(STORAGE_KEY);
+      const stored = localStorage.getItem(PROVINCE_STORAGE_KEY);
       return (stored as ProvinceId) ?? null;
     } catch {
       return null;
@@ -46,7 +47,7 @@ export function useProvince() {
     setProvinceState(id);
     setDismissedState(true);
     try {
-      localStorage.setItem(STORAGE_KEY, id);
+      localStorage.setItem(PROVINCE_STORAGE_KEY, id);
       localStorage.setItem(DISMISSED_KEY, "true");
     } catch { /* ignore */ }
   };
@@ -62,7 +63,7 @@ export function useProvince() {
     setProvinceState(null);
     setDismissedState(false);
     try {
-      localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(PROVINCE_STORAGE_KEY);
       localStorage.removeItem(DISMISSED_KEY);
     } catch { /* ignore */ }
   };

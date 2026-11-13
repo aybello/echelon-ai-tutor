@@ -8,8 +8,10 @@
  */
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
+import { readCourseLearnerProfile, readOverallLearnerActivity } from "../courseLearnerProfile";
+import { readPracticeReviewCounts } from "../practiceReviewEligibility";
 import { READINESS_MODEL_VERSION } from "../_core/readiness";
-import { questionAttempts, studentProfiles, aiChatSessions, examDates, questions, bookmarks, examOutcomes } from "../../drizzle/schema";
+import { questionAttempts, studentProfiles, aiChatSessions, examDates, questions, bookmarks, examOutcomes, examResults } from "../../drizzle/schema";
 import { and, eq, sql, desc, gte, or } from "drizzle-orm";
 import { getResourcesForProfile } from "../resourceIndex";
 import { TRPCError } from "@trpc/server";
@@ -19,6 +21,7 @@ import { resolvePrimaryStudyFocus } from "../_core/studyFocus";
 import { getCourseByKey, resolveCourseKey } from "../../shared/courseRegistry";
 import { learnerVisibleQuestionFilter } from "../questionGovernance";
 import { calculateReadinessSnapshot } from "../readinessSnapshot";
+import { attemptCourseFilter, examCourseFilter } from "../courseActivityScope";
 
 /**
  * Resolves the dashboard identity from the tRPC context.
@@ -160,16 +163,10 @@ export const dashboardRouter = router({
     const db = await getDb();
     if (!db) return null;
 
-    // Get profile data (streak, totalAttempts) — only available for OAuth users
-    let profile = null;
-    if (userId) {
-      const profiles = await db
-        .select()
-        .from(studentProfiles)
-        .where(eq(studentProfiles.userId, userId))
-        .limit(1);
-      profile = profiles[0] ?? null;
-    }
+    const profile = input?.courseKey
+      ? await readCourseLearnerProfile(db, { userId, email }, input.courseKey)
+      : null;
+    const overallActivity = await readOverallLearnerActivity(db, { userId, email });
 
     // Get overall accuracy from attempts (works for both paths)
     const [accuracyRow] = await db
@@ -178,7 +175,7 @@ export const dashboardRouter = router({
         correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
       })
       .from(questionAttempts)
-      .where(input?.courseKey ? and(attemptsWhere(userId, email), eq(questionAttempts.bankKey, input.courseKey)) : attemptsWhere(userId, email));
+      .where(input?.courseKey ? and(attemptsWhere(userId, email), attemptCourseFilter(input.courseKey)) : attemptsWhere(userId, email));
 
     const total = Number(accuracyRow?.total ?? 0);
     const correct = Number(accuracyRow?.correct ?? 0);
@@ -186,9 +183,9 @@ export const dashboardRouter = router({
     return {
       totalAttempts: total,
       overallAccuracy: total > 0 ? Math.round((correct / total) * 100) : 0,
-      currentStreak: profile?.currentStreak ?? 0,
-      longestStreak: profile?.longestStreak ?? 0,
-      totalSessions: profile?.totalSessions ?? 0,
+      currentStreak: overallActivity.currentStreak,
+      longestStreak: overallActivity.longestStreak,
+      totalSessions: profile?.totalSessions ?? overallActivity.totalSessions,
     };
   }),
 
@@ -227,46 +224,10 @@ export const dashboardRouter = router({
   /**
    * Topic accuracy breakdown — per-topic correct/total
    */
-  topicAccuracy: publicProcedure.query(async ({ ctx }) => {
+  topicAccuracy: publicProcedure.input(z.object({ courseKey: z.string().optional() }).optional()).query(async ({ ctx, input }) => {
     const { userId, email } = await resolveDashboardIdentity(ctx);
     const db = await getDb();
     if (!db) return { topics: [], weakTopics: [], strongTopics: [] };
-
-    // For OAuth users, use the pre-computed profile
-    if (userId) {
-      const profiles = await db
-        .select()
-        .from(studentProfiles)
-        .where(eq(studentProfiles.userId, userId))
-        .limit(1);
-
-      if (!profiles.length) return { topics: [], weakTopics: [], strongTopics: [] };
-
-      const profile = profiles[0];
-      let topicAccuracy: Record<string, { correct: number; total: number }> = {};
-      let weakTopics: string[] = [];
-      let strongTopics: string[] = [];
-
-      try { topicAccuracy = JSON.parse(profile.topicAccuracy || "{}"); } catch { /* empty */ }
-      try { weakTopics = JSON.parse(profile.weakTopics || "[]"); } catch { /* empty */ }
-      try { strongTopics = JSON.parse(profile.strongTopics || "[]"); } catch { /* empty */ }
-
-      const topics = Object.entries(topicAccuracy)
-        .map(([name, data]) => ({
-          name,
-          correct: data.correct,
-          total: data.total,
-          accuracy: data.total > 0 ? Math.round((data.correct / data.total) * 100) : 0,
-          status: weakTopics.includes(name)
-            ? ("weak" as const)
-            : strongTopics.includes(name)
-              ? ("strong" as const)
-              : ("neutral" as const),
-        }))
-        .sort((a, b) => b.total - a.total);
-
-      return { topics, weakTopics, strongTopics };
-    }
 
     // For email-only users, compute from raw attempts
     const rows = await db
@@ -276,7 +237,7 @@ export const dashboardRouter = router({
         correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
       })
       .from(questionAttempts)
-      .where(eq(questionAttempts.studentEmail, email!))
+      .where(and(attemptsWhere(userId, email), input?.courseKey ? attemptCourseFilter(input.courseKey) : undefined))
       .groupBy(questionAttempts.topic)
       .orderBy(desc(sql`COUNT(*)`));
 
@@ -359,7 +320,7 @@ export const dashboardRouter = router({
    * (all new rows). Legacy rows (sessionId IS NULL) fall back to the original
    * 30-minute gap clustering so old data still renders correctly.
    */
-  recentSessions: publicProcedure.query(async ({ ctx }) => {
+  recentSessions: publicProcedure.input(z.object({ courseKey: z.string().optional() }).optional()).query(async ({ ctx, input }) => {
     const { userId, email } = await resolveDashboardIdentity(ctx);
     const db = await getDb();
     if (!db) return [];
@@ -375,7 +336,7 @@ export const dashboardRouter = router({
         correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
       })
       .from(questionAttempts)
-      .where(and(attemptsWhere(userId, email), sql`${questionAttempts.sessionId} IS NOT NULL`))
+      .where(and(attemptsWhere(userId, email), input?.courseKey ? attemptCourseFilter(input.courseKey) : undefined, sql`${questionAttempts.sessionId} IS NOT NULL`))
       .groupBy(questionAttempts.sessionId, questionAttempts.examType, questionAttempts.quizMode)
       .orderBy(desc(sql`MIN(${questionAttempts.createdAt})`))
       .limit(10);
@@ -401,7 +362,7 @@ export const dashboardRouter = router({
         quizMode: questionAttempts.quizMode,
       })
       .from(questionAttempts)
-      .where(and(attemptsWhere(userId, email), sql`${questionAttempts.sessionId} IS NULL`))
+      .where(and(attemptsWhere(userId, email), input?.courseKey ? attemptCourseFilter(input.courseKey) : undefined, sql`${questionAttempts.sessionId} IS NULL`))
       .orderBy(desc(questionAttempts.createdAt))
       .limit(200);
 
@@ -509,47 +470,15 @@ export const dashboardRouter = router({
   /**
    * Recommended Resources — personalized study materials
    */
-  recommendedResources: publicProcedure.query(async ({ ctx }) => {
+  recommendedResources: publicProcedure.input(z.object({ courseKey: z.string().optional() }).optional()).query(async ({ ctx, input }) => {
     const { userId, email } = await resolveDashboardIdentity(ctx);
     const db = await getDb();
     if (!db) return [];
 
     let weakTopics: string[] = [];
-    let examType = "oit";
-
-    if (userId) {
-      const profiles = await db
-        .select()
-        .from(studentProfiles)
-        .where(eq(studentProfiles.userId, userId))
-        .limit(1);
-
-      if (profiles.length) {
-        try { weakTopics = JSON.parse(profiles[0].weakTopics || "[]"); } catch { /* empty */ }
-      }
-    } else if (email) {
-      // Compute weak topics from raw attempts for email-only users
-      const rows = await db
-        .select({
-          topic: questionAttempts.topic,
-          total: sql<number>`COUNT(*)`,
-          correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
-        })
-        .from(questionAttempts)
-        .where(eq(questionAttempts.studentEmail, email))
-        .groupBy(questionAttempts.topic);
-
-      weakTopics = rows
-        .filter((r) => {
-          const t = Number(r.total);
-          const c = Number(r.correct);
-          return t >= 5 && (c / t) < 0.65;
-        })
-        .map((r) => r.topic);
-    }
-
+    let examType = input?.courseKey ?? "oit";
     // Resolve current primary study focus (avoids stale stored examType — same pattern as triggerEngine)
-    try {
+    if (!input?.courseKey) try {
       const entitlements = await resolveEntitlementsByEmail(email ?? "");
       if (entitlements.unlockedExamTypes.length > 0) {
         const focus = await resolvePrimaryStudyFocus({
@@ -577,6 +506,9 @@ export const dashboardRouter = router({
         .orderBy(desc(sql`COUNT(*)`));
       examType = examRow?.examType ?? "oit";
     }
+
+    const profile = await readCourseLearnerProfile(db, { userId, email }, examType);
+    weakTopics = profile.weakTopics;
 
     const resources = getResourcesForProfile(
       { examType, weakTopics, strongTopics: [] },
@@ -728,58 +660,37 @@ export const dashboardRouter = router({
       examTypeFilter = focus.examType;
     }
 
+    const focusedCourse = examTypeFilter ? resolveCourseKey(examTypeFilter) : undefined;
+    if (examTypeFilter && !focusedCourse) {
+      throw new TRPCError({ code: "BAD_REQUEST", message: "Unknown study course." });
+    }
+    const focusedCourseKey = focusedCourse?.courseKey ?? null;
     let topicAccuracyMap: Record<string, { correct: number; total: number }> = {};
     let weakTopics: string[] = [];
 
-    if (userId) {
-      const profiles = await db.select().from(studentProfiles).where(eq(studentProfiles.userId, userId)).limit(1);
-      if (profiles[0]) {
-        try { topicAccuracyMap = JSON.parse(profiles[0].topicAccuracy || "{}"); } catch { /* empty */ }
-        try { weakTopics = JSON.parse(profiles[0].weakTopics || "[]"); } catch { /* empty */ }
-      }
-    } else {
-      const rows = await db
-        .select({
-          topic: questionAttempts.topic,
-          total: sql<number>`COUNT(*)`,
-          correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
-        })
-        .from(questionAttempts)
-        .where(and(
-          eq(questionAttempts.studentEmail, email!),
-          examTypeFilter ? eq(questionAttempts.examType, examTypeFilter) : undefined,
-        ))
-        .groupBy(questionAttempts.topic);
-      for (const r of rows) {
-        topicAccuracyMap[r.topic] = { correct: Number(r.correct), total: Number(r.total) };
-        if (Number(r.total) >= 5 && Number(r.correct) / Number(r.total) < 0.65) weakTopics.push(r.topic);
-      }
+    // Keep course history separated even where older rows use a bank key or legacy Class 1 stream.
+    const identityWhere = attemptsWhere(userId, email);
+    const focusedAttemptWhere = focusedCourseKey ? attemptCourseFilter(focusedCourseKey) : undefined;
+    const rows = await db.select({
+      topic: questionAttempts.topic, total: sql<number>`COUNT(*)`,
+      correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+    }).from(questionAttempts).where(and(identityWhere, focusedAttemptWhere)).groupBy(questionAttempts.topic);
+    for (const row of rows) {
+      topicAccuracyMap[row.topic] = { correct: Number(row.correct), total: Number(row.total) };
+      if (Number(row.total) >= 5 && Number(row.correct) / Number(row.total) < 0.65) weakTopics.push(row.topic);
     }
 
-    const identityWhere = userId
-      ? eq(questionAttempts.userId, userId)
-      : eq(questionAttempts.studentEmail, email!);
-
-    const examTypeWhere = examTypeFilter ? eq(questionAttempts.examType, examTypeFilter) : undefined;
-
-    const [missedRow] = await db
-      .select({ count: sql<number>`COUNT(*)` })
-      .from(questionAttempts)
-      .where(and(identityWhere, examTypeWhere, eq(questionAttempts.correct, "no")));
-    const totalMissed = Number(missedRow?.count ?? 0);
-
-    const [lowConfRow] = await db
-      .select({ count: sql<number>`COUNT(*)` })
-      .from(questionAttempts)
-      .where(and(identityWhere, examTypeWhere, eq(questionAttempts.confidence, "low")));
-    const totalLowConf = Number(lowConfRow?.count ?? 0);
-
+    // The focused plan and the practice destination share exact eligibility.
+    // Without a resolved course there is no unambiguous review destination.
+    const { totalMissed, totalLowConf } = focusedCourseKey
+      ? await readPracticeReviewCounts(db, { userId, email }, focusedCourseKey)
+      : { totalMissed: 0, totalLowConf: 0 };
     // Count bookmarks scoped to the current focus exam type (via bankKey prefix)
     const bmIdentityWhere = userId
       ? eq(bookmarks.userId, userId)
       : eq(bookmarks.studentEmail, email!);
-    const bmWhere = examTypeFilter
-      ? and(bmIdentityWhere, eq(bookmarks.bankKey, examTypeFilter))
+    const bmWhere = focusedCourse
+      ? and(bmIdentityWhere, eq(bookmarks.bankKey, focusedCourse.questionBankKey))
       : bmIdentityWhere;
     const [bookmarkRow] = await db
       .select({ count: sql<number>`COUNT(*)` })
@@ -796,12 +707,25 @@ export const dashboardRouter = router({
     const mockBase = examTypeFilter
       ? (getCourseByKey(examTypeFilter)?.mockExamPath ?? "/quiz?mode=mock")
       : "/quiz?mode=mock";
+    const resultIdentityWhere = userId && email
+      ? or(eq(examResults.userId, userId), eq(examResults.studentEmail, email))
+      : userId ? eq(examResults.userId, userId) : eq(examResults.studentEmail, email!);
+    const [latestMock] = await db.select({
+      score: examResults.score,
+      total: examResults.total,
+      createdAt: examResults.createdAt,
+    }).from(examResults).where(and(
+      resultIdentityWhere,
+      focusedCourseKey ? examCourseFilter(focusedCourseKey) : undefined,
+      eq(examResults.calcOnly, "no"),
+    )).orderBy(desc(examResults.createdAt)).limit(1);
 
     type RecType = "weak_topic" | "missed_review" | "low_confidence" | "bookmarked" | "mock_exam" | "start_practicing";
     const recommendations: Array<{ type: RecType; title: string; description: string; action: string; actionHref: string; priority: number }> = [];
 
     if (totalAttempts === 0) {
-      recommendations.push({ type: "start_practicing", title: "Start Practicing", description: "Answer your first questions to get a personalized study plan.", action: "Start Quiz", actionHref: quizBase, priority: 1 });
+      const activationPath = focusedCourseKey ? `/activate/${focusedCourseKey}` : quizBase;
+      recommendations.push({ type: "start_practicing", title: "Start with your diagnostic", description: "Set a baseline first, then Echelon can direct your next study block.", action: "Set my baseline", actionHref: activationPath, priority: 1 });
     } else {
       const weakWithData = weakTopics
         .map((t) => ({ topic: t, ...(topicAccuracyMap[t] ?? { correct: 0, total: 0 }) }))
@@ -817,11 +741,19 @@ export const dashboardRouter = router({
       if (totalMissed > 0) recommendations.push({ type: "missed_review", title: "Review Missed Questions", description: `You have ${totalMissed} missed question${totalMissed === 1 ? "" : "s"} to review.`, action: "Review missed", actionHref: `${quizBase}?mode=missed`, priority: 3 });
       if (totalLowConf > 0) recommendations.push({ type: "low_confidence", title: "Review Low-Confidence Questions", description: `You marked ${totalLowConf} question${totalLowConf === 1 ? "" : "s"} as low-confidence.`, action: "Review low-confidence", actionHref: `${quizBase}?mode=low-confidence`, priority: 4 });
       if (totalBookmarked > 0) recommendations.push({ type: "bookmarked", title: "Review Bookmarked Questions", description: `You have ${totalBookmarked} bookmarked question${totalBookmarked === 1 ? "" : "s"}.`, action: "Review bookmarks", actionHref: `${quizBase}?mode=bookmarked`, priority: 5 });
-      if (totalAttempts >= 50 && weakWithData.length === 0) recommendations.push({ type: "mock_exam", title: "Take a Mock Exam", description: "You've built a solid foundation. Test yourself with a full mock exam.", action: "Start mock exam", actionHref: mockBase, priority: 6 });
+      if (totalAttempts >= 50 && weakWithData.length === 0 && !latestMock) recommendations.push({ type: "mock_exam", title: "Validate with a Mock Exam", description: "You have enough practice data. Use a full mock to check how your study plan is working.", action: "Start mock exam", actionHref: mockBase, priority: 6 });
+      if (latestMock && totalMissed > 0) {
+        const score = Math.round((latestMock.score / latestMock.total) * 100);
+        recommendations.push({ type: "missed_review", title: "Turn your mock into the next study block", description: `Your latest mock was ${score}%. Review the missed areas, then retest after focused practice.`, action: "Review missed", actionHref: `${quizBase}?mode=missed`, priority: 1 });
+      }
     }
 
     recommendations.sort((a, b) => a.priority - b.priority);
-    return { recommendations: recommendations.slice(0, 4), totalMissed, totalLowConf, totalBookmarked, hasData: totalAttempts > 0, examType: examTypeFilter };
+    return {
+      recommendations: recommendations.slice(0, 4), totalMissed, totalLowConf, totalBookmarked,
+      hasData: totalAttempts > 0, examType: focusedCourseKey ?? examTypeFilter,
+      latestMock: latestMock ? { score: latestMock.score, total: latestMock.total, createdAt: latestMock.createdAt } : null,
+    };
   }),
 
   /**
@@ -869,7 +801,9 @@ export const dashboardRouter = router({
     .query(async ({ ctx, input }) => {
       const { userId, email } = resolveDashboardIdentity(ctx);
       const db = await getDb();
-      if (!db) return [];
+      if (!db) {
+        throw new TRPCError({ code: "SERVICE_UNAVAILABLE", message: "Bookmarks are temporarily unavailable. Please retry." });
+      }
       // FIX 5: Query from the new bookmarks table (per-user+question, not per-attempt)
       const bmIdentityWhere = userId
         ? eq(bookmarks.userId, userId)

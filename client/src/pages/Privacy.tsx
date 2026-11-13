@@ -2,29 +2,30 @@
 // Phase 9: Trust, Credibility, and Enterprise Polish
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
+import { PrivacyAdsControls } from "@/components/GoogleAdsNotice";
 
 const LOGO_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
 export default function Privacy() {
   usePageMeta({
-    title: "Privacy & Security — Echelon Institute",
+    title: "Privacy & Security | Echelon Institute",
     description: "How Echelon Institute collects, uses, and protects your personal information.",
     keywords: "privacy policy, data security, Echelon Institute",
   });
 
   return (
-    <div style={{ fontFamily: "'Sora', sans-serif", background: "#F1F5F9", minHeight: "100vh" }}>
+    <div className="public-redesign public-redesign-legal" style={{ fontFamily: "'Sora', sans-serif", background: "#F1F5F9", minHeight: "100vh" }}>
       <SiteNav currentPath="/privacy" />
-      <div style={{ maxWidth: 720, margin: "0 auto", padding: "48px 24px 120px" }}>
+      <div className="public-legal-content" style={{ maxWidth: 720, margin: "0 auto", padding: "48px 24px 120px" }}>
 
         {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: 48 }}>
+        <div className="public-legal-header" style={{ textAlign: "center", marginBottom: 48 }}>
           <img src={LOGO_URL} alt="Echelon Institute" style={{ height: 48, width: "auto", marginBottom: 20 }} />
           <h1 style={{ fontSize: 30, fontWeight: 900, color: "#0F172A", margin: "0 0 10px", letterSpacing: "-0.02em" }}>
             Privacy & Security
           </h1>
-          <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Last updated: August 28, 2026</p>
+          <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Last updated: October 14, 2026</p>
         </div>
 
         <LegalSection title="1. Who We Are">
@@ -35,11 +36,12 @@ export default function Privacy() {
         <LegalSection title="2. Information We Collect">
           <p>We collect the following information when you use Echelon:</p>
           <ul>
-            <li><strong>Email address</strong> — used to identify your account, restore access, and send purchase receipts and study reminders.</li>
-            <li><strong>Payment information</strong> — processed entirely by Stripe. Echelon never stores your credit card number, CVV, or full payment details.</li>
-            <li><strong>Practice and training activity</strong> — questions answered, accuracy, confidence ratings, bookmarks, activity type, platform-recorded study duration, and session dates. Used to power your study plan, readiness score, and training-hours record.</li>
-            <li><strong>Exam date</strong> — if you choose to enter it, used to calculate your countdown and pace recommendations.</li>
-            <li><strong>Device, browser, IP, and security-event information</strong> — used to secure accounts, prevent abuse, and diagnose service problems.</li>
+            <li><strong>Email address:</strong> used to identify your account, restore access, and send purchase receipts and study reminders.</li>
+            <li><strong>Phone number and callback requests:</strong> collected for purchase-related support, or optionally when you ask us to call about a municipal quote or pilot request. For a requested callback, we retain the number, preferred time, permission notice version and server acceptance time with the inquiry. A phone number does not subscribe you to promotional calls or texts.</li>
+            <li><strong>Payment information:</strong> processed entirely by Stripe. Echelon never stores your credit card number, CVV, or full payment details.</li>
+            <li><strong>Practice and training activity:</strong> questions answered, accuracy, confidence ratings, bookmarks, activity type, platform-recorded study duration, and session dates. Used to power your study plan, readiness score, and training-hours record.</li>
+            <li><strong>Exam date:</strong> if you choose to enter it, used to calculate your countdown and pace recommendations.</li>
+            <li><strong>Device, browser, IP, and security-event information:</strong> used to secure accounts, prevent abuse, and diagnose service problems.</li>
           </ul>
         </LegalSection>
 
@@ -48,6 +50,7 @@ export default function Privacy() {
             <li>To provide access to the courses you purchased.</li>
             <li>To personalize your study plan, readiness score, and AI tutor responses.</li>
             <li>To send purchase receipts, access restoration links, and study reminders.</li>
+            <li>To respond to your inquiry and, only if requested, call about that inquiry.</li>
             <li>To help team managers track operator progress (Teams plan only).</li>
             <li>To detect and prevent fraud and abuse.</li>
           </ul>
@@ -57,7 +60,7 @@ export default function Privacy() {
         <LegalSection title="4. Data Storage and Security">
           <ul>
             <li>Information may be processed or stored in Canada, the United States, or another country where a service provider operates. It may therefore be subject to the laws of that jurisdiction.</li>
-            <li>Passwords are never stored — we use magic links and OTP codes for authentication.</li>
+            <li>Passwords are never stored. We use magic links and OTP codes for authentication.</li>
             <li>All connections are encrypted via HTTPS/TLS.</li>
             <li>Payment processing is handled by Stripe, which is PCI DSS Level 1 certified.</li>
             <li>Access tokens are short-lived and signed with a server-side secret.</li>
@@ -82,8 +85,13 @@ export default function Privacy() {
           <p>To exercise a right or make a privacy complaint, email <a href="mailto:abello@echeloninstitute.ca?subject=Privacy%20Request" style={{ color: "#3B82F6" }}>abello@echeloninstitute.ca</a>. We may need to verify your identity. If you are not satisfied with our response, you may contact the Office of the Privacy Commissioner of Canada or the applicable provincial/state regulator.</p>
         </LegalSection>
 
-        <LegalSection title="8. Cookies">
-          <p>Echelon uses cookies to maintain your session after signing in. We do not use advertising or tracking cookies. You can clear cookies at any time from your browser settings or from the <a href="/account" style={{ color: "#3B82F6" }}>Account page</a>.</p>
+        <LegalSection title="8. Cookies and Analytics Storage">
+          <p>Echelon uses cookies to maintain your session after signing in. First-party product reporting also stores a persistent pseudonymous browser identifier in local storage; the server hashes this identifier before storing events. Acquisition categories are stored for the browser session. You can clear cookies and local storage from your browser settings; the <a href="/account" style={{ color: "#3B82F6" }}>Account page</a> also provides sign-out controls.</p>
+          <p>Our existing public analytics receives only allowlisted page paths and categories, with dynamic values replaced by route templates. It does not receive query strings, fragments, referrers, personal page titles or arbitrary event fields. Authentication, invitation, claim, activation, purchase-confirmation and private learner pages are excluded from page reporting.</p>
+          <p>Google Ads measurement starts automatically on approved public pages and for verified purchases, without an on-page permission prompt. It measures which ads lead to visits and purchases. Our Google consent defaults permit advertising cookies and ad-click attribution in Canada except Quebec, and in the United States. All other regions, including the EEA, UK and Switzerland, and Quebec retain denied advertising-storage and advertising-user-data defaults. Google may send limited cookieless signals in those regions; no cookie permission is inferred from browsing or from this page's measurement switch.</p>
+          <p>Google may receive browser, device and network information, including your IP address, and process data outside Canada. Public landing URLs include only approved paths and bounded Google ad-click identifiers. General URL queries, fragments, emails, phones, access tokens and private learner activity are not sent in our measurement payloads. Confirmed-purchase measurement contains the actual amount, payment currency and a one-way order identifier for duplicate prevention, not your Stripe session ID or contact details. We do not enable enhanced conversions, personalized advertising or remarketing audiences.</p>
+          <p>You can turn Google measurement off below without affecting study access. Existing refusals and browser Global Privacy Control and Do Not Track opt-out signals are respected; for these browsers our Google tag does not load or send cookieless signals. Turning it off clears its first-party attribution cookies and refreshes the page. Your preference and non-personal duplicate-prevention markers are saved in this browser's local storage. If that privacy preference cannot be read, Google measurement stays off. Google's <a href="https://policies.google.com/privacy" style={{ color: "#3B82F6" }}>Privacy Policy</a> explains its processing.</p>
+          <PrivacyAdsControls />
         </LegalSection>
 
         <LegalSection title="9. Service Providers, Retention, and Transfers">
@@ -99,7 +107,7 @@ export default function Privacy() {
           <p>We may update this policy from time to time. Material changes will be communicated by email to active subscribers. The "last updated" date at the top of this page reflects the most recent revision.</p>
         </LegalSection>
 
-        <div style={{ marginTop: 48, padding: "20px 24px", background: "#fff", borderRadius: 12, border: "1px solid #E2E8F0", textAlign: "center" }}>
+        <div className="public-legal-contact" style={{ marginTop: 48, padding: "20px 24px", background: "#fff", borderRadius: 12, border: "1px solid #E2E8F0", textAlign: "center" }}>
           <p style={{ color: "#64748B", fontSize: 13, margin: "0 0 8px" }}>Questions about privacy or data handling?</p>
           <a href="mailto:abello@echeloninstitute.ca?subject=Privacy%20Question" style={{ color: "#3B82F6", fontWeight: 700, fontSize: 13 }}>Email abello@echeloninstitute.ca →</a>
         </div>
@@ -110,7 +118,7 @@ export default function Privacy() {
 
 function LegalSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div style={{ marginBottom: 32, background: "#fff", borderRadius: 12, border: "1px solid #E2E8F0", padding: "24px 28px" }}>
+    <div className="public-legal-section" style={{ marginBottom: 32, background: "#fff", borderRadius: 12, border: "1px solid #E2E8F0", padding: "24px 28px" }}>
       <h2 style={{ fontSize: 16, fontWeight: 800, color: "#0F172A", margin: "0 0 14px" }}>{title}</h2>
       <div style={{ fontSize: 14, color: "#475569", lineHeight: 1.8 }}>
         {children}

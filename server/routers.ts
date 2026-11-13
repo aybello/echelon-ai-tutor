@@ -1,7 +1,19 @@
-import { COOKIE_NAME } from "@shared/const";
-import { getSessionCookieOptions } from "./_core/cookies";
+import { resolveAttemptAttribution, validateIssuedAttribution } from "./teams/attemptAttribution";
+import { persistedPartnershipInquiry } from "./partnershipInquiry";
+import { municipalProcurementRouter } from "./municipalProcurement";
+import { partnershipInquirySchema } from "../shared/partnershipInquiry";
+import { normalizeExamDateKey, parseExamCalendarDate, upsertExamDate, removeExamDate } from "./examDateRecords";
+import { selectBlueprintQuestions, mockBlueprintForBank } from "./mockBlueprint";
+import { UNAVAILABLE_MOCK_MODULE } from "../shared/mockResult";
+import { examCourseFilter } from "./courseActivityScope";
+import { scoredMockQuestionNums, activeMockQuestion, issueMockSession, issuedMockQuestions, issueMockReviewToken, mockOwner, mockSpecification, verifyMockReviewContext, verifyMockSession, validateMockSubmission, selectMockQuestions, selectMappedMockQuestions, MOCK_SUBMISSION_GRACE_MS } from "./mockExamSession";
+import { ontarioWastewaterMockProfile } from "../shared/ontarioWastewaterMock";
+import { resolveWastewaterMockArea } from "./wastewaterMockAreaResolver";
+import { ELECTRICIAN_309A_MODULES } from "../shared/electrician309aBlueprint";
+import { clearIdentityCookies } from "./_core/logout";
 import { invokeLLM } from "./_core/llm";
 import { getResourcesForProfile, formatResourcesForPrompt } from "./resourceIndex";
+import { resolveAnonymousTutorIdentity } from "./_core/anonymousTutorIdentity";
 import { notifyOwner } from "./_core/notification";
 import { systemRouter } from "./_core/systemRouter";
 import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
@@ -10,6 +22,7 @@ import { waitlist, questionErrorReports, trialEmails, examResults, contactSubmis
 import { and, desc, eq, inArray, or, sql } from "drizzle-orm";
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
+import { readCourseLearnerProfile, readOverallLearnerActivity } from "./courseLearnerProfile";
 import { resolveLearningIdentity } from "./_core/learningIdentity";
 import { adminRouter } from "./routers/admin";
 import { resolveEntitlementsByEmail } from "./_core/access";
@@ -20,15 +33,15 @@ import {
   resolveAccessForRequest,
   verifyAccessTokenAndRecheckDb,
 } from "./_core/accessService";
-import { AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT, buildTutorSystemPrompt, enforceAiTutorDailyQuota } from "./_core/aiTutorPolicy";
+import { AI_TUTOR_CONCISE_RETRY_INSTRUCTION, AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT, AI_TUTOR_MAX_ASSISTANT_MESSAGE_CHARS, AI_TUTOR_MAX_HISTORY_MESSAGES, AI_TUTOR_MAX_OUTPUT_TOKENS, AI_TUTOR_MAX_USER_MESSAGE_CHARS, boundTutorHistory, buildTutorSystemPrompt, enforceAiTutorDailyQuota, isTruncatedTutorCompletion, recordAiTutorUsage, releaseAiTutorReservation } from "./_core/aiTutorPolicy";
+import { resolveUSStudyContext } from "./usStudyContextServer";
 import { stripeRouter } from "./routers/stripeRouter";
 import { flashcardRouter } from "./routers/flashcardRouter";
-import { quizRouter } from "./routers/quizRouter";
+import { learnerQuestionColumns, parseLearnerQuestions, quizRouter } from "./routers/quizRouter";
 import { dashboardRouter } from "./routers/dashboardRouter";
 import { magicLinkRouter } from "./routers/magicLinkRouter";
 import { dashboardAuthRouter } from "./routers/dashboardAuthRouter";
 import { orgRouter, orgIntelRouter } from "./routers/orgRouter";
-import { trainingRecordsRouter } from "./routers/trainingRecordsRouter";
 import { blogRouter } from "./routers/blogRouter";
 import { jobsRouter } from "./routers/jobsRouter";
 import { emailOtpRouter } from "./routers/emailOtpRouter";
@@ -38,14 +51,45 @@ import { changelogRouter } from "./routers/changelogRouter";
 import { activationRouter } from "./routers/activationRouter";
 import { funnelAnalyticsRouter } from "./routers/funnelAnalyticsRouter";
 import { electricianReviewRouter } from "./routers/electricianReviewRouter";
+import { ceuRouter } from "./routers/ceuRouter";
 import { trainingRouter } from "./routers/trainingRouter";
+import { interactiveRouter } from "./routers/interactiveRouter";
 import { sendContactEmail } from "./email";
 import { trackEvent } from "./analytics";
 import { resolveCourseKey } from "../shared/courseRegistry";
+import { resolveQuizGateOffer } from "../shared/checkoutOffer";
+import { sendPreviewStudyPlanEmail } from "./previewStudyPlanEmail";
 import { ELECTRICIAN_309A_PROGRAM_KEY } from "../shared/certificationPrograms";
 import { learnerVisibleQuestionFilter } from "./questionGovernance";
 
+/**
+ * Study plan capture contract, shared by both offer placements: the early,
+ * dismissible prompt partway through the free preview and the paywall at the
+ * end of it. Exported so the contract can be asserted directly rather than
+ * reached through router internals.
+ */
+export const studyPlanCaptureInput = z.object({
+  email: z.string().email("Please enter a valid email address"),
+  // Collected alongside email so a warm lead can be reached by more than one
+  // channel. Optional at the gate: demanding it before any value is delivered
+  // would cost more leads than it gains.
+  phone: z.string().trim().max(32).optional(),
+  // Course keys are at most 22 characters today; 32 matches the column.
+  productKey: z.string().min(1).max(32),
+  score: z.number().int().min(0).max(100),
+  correct: z.number().int().min(0).max(500),
+  total: z.number().int().min(1).max(500),
+  weakTopics: z.array(z.string().min(1).max(64)).max(3),
+  /**
+   * Where the learner asked for the plan. The offer also appears partway
+   * through the preview, so the email and the owner alert must not claim they
+   * finished something they are still inside.
+   */
+  stage: z.enum(["in_preview", "preview_complete"]).default("preview_complete"),
+});
+
 export const appRouter = router({
+  municipal: municipalProcurementRouter,
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
   changelog: router(changelogRouter),
@@ -81,6 +125,7 @@ export const appRouter = router({
           purchasedProductKeys: [],
           activeSubscriptions: [],
           accessibleCourses: [],
+          isManager: false,
           identityType: identity.type,
         };
       }
@@ -111,6 +156,7 @@ export const appRouter = router({
           mockExamPath: c.mockExamPath,
           subscriptionTier: c.subscriptionTier,
         })),
+        isManager: entitlements.isManager,
         identityType: identity.type,
       };
     }),
@@ -120,12 +166,12 @@ export const appRouter = router({
   stripe: stripeRouter,
   flashcard: flashcardRouter,
   quiz: quizRouter,
+  interactive: interactiveRouter,
   dashboard: dashboardRouter,
   magicLink: magicLinkRouter,
   dashboardAuth: dashboardAuthRouter,
   org: orgRouter,
   orgIntel: orgIntelRouter,
-  trainingRecords: trainingRecordsRouter,
   blog: blogRouter,
   jobs: jobsRouter,
   emailOtp: emailOtpRouter,
@@ -135,11 +181,11 @@ export const appRouter = router({
   funnelAnalytics: funnelAnalyticsRouter,
   electricianReview: electricianReviewRouter,
   training: trainingRouter,
+  ceu: ceuRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {
-      const cookieOptions = getSessionCookieOptions(ctx.req);
-      ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
+      clearIdentityCookies(ctx.req, ctx.res);
       return {
         success: true,
       } as const;
@@ -159,7 +205,7 @@ export const appRouter = router({
     updateProvince: protectedProcedure
       .input(
         z.object({
-          province: z.enum(["on", "bc", "ab", "sk", "mb"]),
+          province: z.enum(["on", "bc", "ab", "sk", "mb", "ns"]),
         })
       )
       .mutation(async ({ ctx, input }) => {
@@ -281,72 +327,194 @@ export const appRouter = router({
 
         return { success: true };
       }),
+
+    /**
+     * Capture a learner who finished the free preview and send them a study
+     * plan built from their own answers.
+     *
+     * Previously the paywall was a single yes-or-no moment: buy now or be
+     * lost. Over a 30 day window 78 learners used the entire free preview and
+     * only 2 were ever reachable again. This keeps the relationship open with
+     * something genuinely useful, and the lead is stored before any mail is
+     * attempted so a delivery failure can never discard it.
+     */
+    studyPlan: publicProcedure
+      .input(studyPlanCaptureInput)
+      .mutation(async ({ input }) => {
+        const db = await getDb();
+        if (!db) throw new Error("Database unavailable");
+
+        const email = input.email.trim().toLowerCase();
+        const existing = await db
+          .select()
+          .from(trialEmails)
+          .where(eq(trialEmails.email, email))
+          .limit(1);
+
+        // Recorded server-side so the capture rate cannot be undercounted by
+        // a client that navigates away as soon as it submits.
+        await trackEvent("preview_plan_requested", {
+          email,
+          productKey: input.productKey,
+          extra: { score: input.score, weakTopicCount: input.weakTopics.length, stage: input.stage },
+        }).catch(() => undefined);
+
+        if (existing.length === 0) {
+          await db.insert(trialEmails).values({
+            email,
+            phone: input.phone?.trim() || null,
+            // Records which course earned the lead, so follow-up is targeted.
+            source: input.productKey.slice(0, 32),
+          });
+          await notifyOwner({
+            title: "Preview study plan requested",
+            content: input.stage === "in_preview"
+              ? `${email} asked for a study plan ${input.total} questions into the free preview of ${input.productKey}, scoring ${input.score}% so far.`
+              : `${email} finished the free preview of ${input.productKey} scoring ${input.score}% and asked for their study plan.`,
+          }).catch(() => undefined);
+        }
+
+        // Delivery must never fail the capture. The lead is already saved.
+        try {
+          const course = resolveCourseKey(input.productKey);
+          const offer = resolveQuizGateOffer(input.productKey);
+          const courseLabel = course?.displayName ?? offer.productName ?? "your course";
+          const site = "https://echeloninstitute.ca";
+          const courseUrl = `${site}/pricing?course=${encodeURIComponent(input.productKey)}`;
+          await sendPreviewStudyPlanEmail({
+            email,
+            courseLabel,
+            score: input.score,
+            correct: input.correct,
+            total: input.total,
+            weakTopics: input.weakTopics,
+            courseUrl,
+            offerUrl: courseUrl,
+            priceLabel: offer.priceLabel ?? "available on the pricing page",
+            stage: input.stage,
+          });
+        } catch (error) {
+          console.error("[preview-plan] Delivery failed after capture:", error);
+        }
+
+        return { success: true };
+      }),
   }),
 
   // Exam results — saves mock exam scores for score history
   exam: router({
-    saveResult: publicProcedure
-      .input(
-        z.object({
-          sessionId: z.string().min(1).max(64),
-          examType: z.enum(["class1", "wqa", "oit", "oit-ww", "class1-water", "class1-ww", "class2-water", "class2-ww", "class3-water", "class3-ww", "class4-water", "class4-ww", "wpi-class1-water", "wpi-class2-water", "wpi-class3-water", "wpi-class4-water", "wpi-class1-wastewater", "wpi-class2-wastewater", "wpi-class3-wastewater", "wpi-class4-wastewater", "wpi-class1-water-dist", "wpi-class2-water-dist", "wpi-class3-water-dist", "wpi-class4-water-dist", "wpi-class1-water-coll", "wpi-class2-water-coll", "wpi-class3-water-coll", "wpi-class4-water-coll", "class1-water-dist", "class2-water-dist", "class3-water-dist", "class4-water-dist", "class1-wastewater-coll", "class2-wastewater-coll", "class3-wastewater-coll", "class4-wastewater-coll", "electrician-309a"]),
-          stream: z.enum(["water", "wastewater"]).optional(),
-          score: z.number().int().min(0),
-          total: z.number().int().min(1),
-          passed: z.boolean(),
-          timeTakenSeconds: z.number().int().min(0).optional(),
-          moduleBreakdown: z.record(z.string(), z.object({ correct: z.number(), total: z.number() })).optional(),
-          calcOnly: z.boolean().optional(), // true if this was a Math Practice (calc-only) session
-        })
-      )
+    // Retired: accepting browser-calculated scores bypasses issued sessions.
+    saveResult: publicProcedure.input(z.unknown()).mutation(() => {
+      throw new TRPCError({ code: "BAD_REQUEST", message: "Please refresh and start a new mock exam. Browser-calculated results are no longer accepted." });
+    }),
+
+    startMock: publicProcedure
+      .input(z.object({ courseKey: z.string().min(1).max(64), accessToken: z.string().optional() }))
       .mutation(async ({ input, ctx }) => {
-        const db = await getDb();
-        if (!db) throw new Error("Database unavailable");
-
-        // Resolve user identity so results persist to the account (not just the session)
-        const userId = ctx.user?.id ?? null;
-        const studentEmail: string | null = (() => {
-          const otpEmail = (ctx as Record<string, unknown>).otpEmail as string | undefined;
-          if (otpEmail) return otpEmail;
-          const purchaseEmail = (ctx as Record<string, unknown>).purchaseEmail as string | undefined;
-          if (purchaseEmail) return purchaseEmail;
-          return ctx.user?.email ?? null;
-        })();
-
-        if (!userId && !studentEmail) {
-          return { success: false, persisted: false };
+        const spec = mockSpecification(input.courseKey);
+        const identity = await resolveLearningIdentity(ctx);
+        let targets: Record<string, number> = {};
+        let preview = false;
+        let blueprintVersion = 1;
+        let pool: { id: number; module: string; blueprintObjective?: string | null; reviewStatus?: string | null; isCalc?: boolean; cognitiveLevel?: string | null; difficulty?: string | null; topic?: string | null; question: string; options: string[]; correctIndex: number; explanation: string | null; steps?: { l: string; c: string }[] | null; tip?: string | null; diagramId?: string | null; diagramAlt?: string | null }[];
+        if (spec.courseKey === "electrician-309a") {
+          const result = await electricianReviewRouter.createCaller(ctx).get309ABetaPractice();
+          pool = result.questions;
+          targets = Object.fromEntries(ELECTRICIAN_309A_MODULES.map(m => [`${m.code}. ${m.title}`, m.weightPercent]));
+        } else {
+          const caller = quizRouter.createCaller(ctx);
+          const hasAccess = await resolveAccessForRequest(ctx, spec.courseKey, { accessToken: input.accessToken });
+          preview = !hasAccess;
+          if (preview && !["oit", "oit-ww"].includes(spec.courseKey)) {
+            throw new TRPCError({ code: "FORBIDDEN", message: "An active course pass is required to start this mock exam." });
+          }
+          if (preview) {
+            pool = (await caller.getQuestions({ bankKey: spec.bankKey, previewSurface: "mock", accessToken: input.accessToken })).questions;
+          } else {
+            const db = await getDb();
+            if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+            if (ontarioWastewaterMockProfile(spec.bankKey)) {
+              // Existing governance columns are read only for this mock path.
+              // They are never returned in active questions or practice payloads.
+              const rows = await db.select({ ...learnerQuestionColumns, blueprintObjective: questions.blueprintObjective, reviewStatus: questions.reviewStatus }).from(questions)
+                .where(and(eq(questions.bankKey, spec.bankKey), learnerVisibleQuestionFilter()));
+              const byNumber = new Map(rows.map(row => [row.questionNum, row]));
+              pool = parseLearnerQuestions(rows).map(question => ({ ...question,
+                blueprintObjective: byNumber.get(question.id)?.blueprintObjective,
+                reviewStatus: byNumber.get(question.id)?.reviewStatus,
+              }));
+            } else {
+              pool = parseLearnerQuestions(await db.select(learnerQuestionColumns).from(questions)
+                .where(and(eq(questions.bankKey, spec.bankKey), learnerVisibleQuestionFilter())));
+            }
+          }
+          const metadata = await caller.getBankMeta({ bankKey: spec.bankKey });
+          targets = metadata?.moduleTargets ?? {};
+          blueprintVersion = metadata?.blueprintVersion ?? 1;
         }
-
-        await db.insert(examResults).values({
-          sessionId: input.sessionId,
-          userId,
-          studentEmail,
-          examType: input.examType,
-          stream: input.stream ?? null,
-          score: input.score,
-          total: input.total,
-          passed: input.passed ? "yes" : "no",
-          timeTakenSeconds: input.timeTakenSeconds ?? null,
-          moduleBreakdown: input.moduleBreakdown ? JSON.stringify(input.moduleBreakdown) : null,
-          calcOnly: input.calcOnly ? "yes" : "no",
+        const count = preview ? 30 : spec.scoredCount;
+        let selected: typeof pool;
+        const blueprint = preview ? null : mockBlueprintForBank(spec.bankKey, blueprintVersion);
+        const wastewaterProfile = preview ? null : ontarioWastewaterMockProfile(spec.bankKey);
+        if (wastewaterProfile) {
+          try {
+            selected = selectMappedMockQuestions(pool, wastewaterProfile.targets, count,
+              question => resolveWastewaterMockArea(spec.bankKey, question));
+          } catch {
+            throw new TRPCError({ code: "PRECONDITION_FAILED", message: "A balanced mock exam is temporarily unavailable because some exam areas need reviewed question coverage. Practice remains available. Please use practice or contact support for help with mock access." });
+          }
+        } else if (blueprint) {
+          try { selected = selectBlueprintQuestions(pool, blueprint, count); }
+          catch (error) {
+            console.error("[startMock] Class IV blueprint unavailable", error);
+            throw new TRPCError({ code: "PRECONDITION_FAILED", message: "A balanced mock exam is temporarily unavailable. Practice questions remain available while we restore exam coverage." });
+          }
+        } else {
+          selected = selectMockQuestions(pool, preview ? {} : targets, count);
+        }
+        if (selected.length !== count) {
+          throw new TRPCError({ code: "PRECONDITION_FAILED", message: "A complete question set is temporarily unavailable. Please try again shortly." });
+        }
+        const selectedIds = new Set(selected.map(q => q.id));
+        const pretest = selectMockQuestions(pool.filter(q => !selectedIds.has(q.id)), {}, preview ? 0 : spec.count - spec.scoredCount);
+        if (selected.length + pretest.length !== (preview ? 30 : spec.count)) {
+          throw new TRPCError({ code: "PRECONDITION_FAILED", message: "A complete question set is temporarily unavailable." });
+        }
+        selected = selectMockQuestions([...selected, ...pretest], {}, selected.length + pretest.length);
+        const attribution = preview ? undefined : await resolveAttemptAttribution(identity, spec.courseKey);
+        const issued = issueMockSession({
+          ...spec,
+          attribution,
+          unscoredQuestionNums: pretest.map(q => q.id),
+          owner: mockOwner(identity),
+          preview,
+          questionNums: selected.map(q => q.id),
+          issuedQuestions: selected.map(question => ({
+            questionNum: question.id,
+            module: question.module,
+            topic: question.topic ?? null,
+            difficulty: question.difficulty ?? null,
+            question: question.question,
+            options: question.options,
+            correctIndex: question.correctIndex,
+            explanation: question.explanation ?? null,
+            steps: question.steps ?? null,
+            tip: question.tip ?? null,
+            isCalc: question.isCalc === true,
+          })),
         });
-
-        if (!input.calcOnly) {
-          await trackEvent("mock_exam_completed", {
-            userId: userId?.toString() ?? null,
-            email: studentEmail,
-            examType: input.examType,
-            extra: { passed: input.passed, totalQuestions: input.total },
-          });
-        }
-
-        return { success: true, persisted: true };
+        return {
+          sessionId: issued.manifest.sessionId, token: issued.token,
+          deadline: issued.manifest.deadline, duration: spec.duration,
+          examType: spec.examType, preview,
+          questions: selected.map(activeMockQuestion),
+        };
       }),
 
     getHistory: publicProcedure
       .input(z.object({
         sessionId: z.string().min(1).max(64),
-        examType: z.enum(["class1", "wqa", "oit", "oit-ww", "class1-water", "class1-ww", "class2-water", "class2-ww", "class3-water", "class3-ww", "class4-water", "class4-ww", "wpi-class1-water", "wpi-class2-water", "wpi-class3-water", "wpi-class4-water", "wpi-class1-wastewater", "wpi-class2-wastewater", "wpi-class3-wastewater", "wpi-class4-wastewater", "wpi-class1-water-dist", "wpi-class2-water-dist", "wpi-class3-water-dist", "wpi-class4-water-dist", "wpi-class1-water-coll", "wpi-class2-water-coll", "wpi-class3-water-coll", "wpi-class4-water-coll", "class1-water-dist", "class2-water-dist", "class3-water-dist", "class4-water-dist", "class1-wastewater-coll", "class2-wastewater-coll", "class3-wastewater-coll", "class4-wastewater-coll", "electrician-309a"]),
+        examType: z.enum(["class1", "wqa", "oit", "oit-ww", "class1-water", "class1-ww", "class2-water", "class2-ww", "class3-water", "class3-ww", "class4-water", "class4-ww", "wpi-class1-water", "wpi-class2-water", "wpi-class3-water", "wpi-class4-water", "wpi-class1-wastewater", "wpi-class2-wastewater", "wpi-class3-wastewater", "wpi-class4-wastewater", "wpi-class1-water-dist", "wpi-class2-water-dist", "wpi-class3-water-dist", "wpi-class4-water-dist", "wpi-class1-water-coll", "wpi-class2-water-coll", "wpi-class3-water-coll", "wpi-class4-water-coll", "class1-water-dist", "class2-water-dist", "class3-water-dist", "class4-water-dist", "class1-wastewater-coll", "class2-wastewater-coll", "class3-wastewater-coll", "class4-wastewater-coll", "us-class1-water", "us-class1-water-dist", "us-texas-class-d-water", "electrician-309a"]),
         stream: z.enum(["water", "wastewater"]).optional(),
         calcOnly: z.boolean().optional(), // filter to only Math Practice sessions
       }))
@@ -354,25 +522,17 @@ export const appRouter = router({
         const db = await getDb();
         if (!db) return [];
 
-        // Prefer user identity (persistent) over sessionId (ephemeral)
-        const userId = ctx.user?.id ?? null;
-        const studentEmail: string | null = (() => {
-          const otpEmail = (ctx as Record<string, unknown>).otpEmail as string | undefined;
-          if (otpEmail) return otpEmail;
-          const purchaseEmail = (ctx as Record<string, unknown>).purchaseEmail as string | undefined;
-          if (purchaseEmail) return purchaseEmail;
-          return ctx.user?.email ?? null;
-        })();
-        // Build identity condition: match by userId OR email OR sessionId (fallback for anonymous)
-        const identityCondition = userId
-          ? eq(examResults.userId, userId)
-          : studentEmail
-            ? eq(examResults.studentEmail, studentEmail)
-            : eq(examResults.sessionId, input.sessionId);
+        const { userId, studentEmail } = await resolveLearningIdentity(ctx);
+        const identityCondition = userId || studentEmail
+          ? or(
+              userId ? eq(examResults.userId, userId) : undefined,
+              studentEmail ? eq(examResults.studentEmail, studentEmail) : undefined,
+            )!
+          : eq(examResults.sessionId, input.sessionId);
 
         const conditions = [
           identityCondition,
-          eq(examResults.examType, input.examType),
+          examCourseFilter(input.examType, input.stream),
         ];
         if (input.stream) {
           conditions.push(eq(examResults.stream, input.stream));
@@ -396,6 +556,7 @@ export const appRouter = router({
 
     submitMock: publicProcedure
       .input(z.object({
+        sessionToken: z.string().min(1).max(64000),
         sessionId: z.string().min(1).max(64),
         examType: z.string().min(1).max(64),
         bankKey: z.string().min(1).max(64),
@@ -404,108 +565,211 @@ export const appRouter = router({
         calcOnly: z.boolean().optional(),
         answers: z.array(z.object({
           questionNum: z.number().int().positive(),
-          selectedIndex: z.number().int().min(0).max(3),
+          selectedIndex: z.number().int().min(0).max(3).nullable(),
         })).min(1).max(200),
       }))
       .mutation(async ({ input, ctx }) => {
         const db = await getDb();
         if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
 
+        const identity = await resolveLearningIdentity(ctx);
+        const manifest = verifyMockSession(input.sessionToken, mockOwner(identity));
+        validateMockSubmission(manifest, input);
+        const hasVerifiedIdentity = Boolean(identity.userId || identity.studentEmail) && !manifest.preview;
+        // Read a previously committed result before deadline/content checks, so
+        // a lost response can always be retried without duplicating attempts.
+        const readExisting = async () => {
+          const [existing] = await db.select().from(examResults)
+            .where(eq(examResults.sessionId, manifest.sessionId)).limit(1);
+          if (!existing) return null;
+          const owned = (identity.userId && existing.userId === identity.userId)
+            || (identity.studentEmail && existing.studentEmail?.toLowerCase() === identity.studentEmail.toLowerCase());
+          if (!owned || existing.examType !== manifest.examType || existing.bankKey !== manifest.courseKey) {
+            throw new TRPCError({ code: "CONFLICT", message: "This exam session is already in use." });
+          }
+          return existing;
+        };
+        const existing = hasVerifiedIdentity ? await readExisting() : null;
+        const scoredIds = new Set(scoredMockQuestionNums(manifest));
+        const issuedQuestions = issuedMockQuestions(manifest);
         const questionNums = input.answers.map(a => a.questionNum);
-        const questionRows = await db
-          .select({ questionNum: questions.questionNum, correctIndex: questions.correctIndex, module: questions.module, difficulty: questions.difficulty })
+        if (new Set(questionNums).size !== questionNums.length) {
+          throw new TRPCError({ code: "BAD_REQUEST", message: "Each exam question must appear exactly once." });
+        }
+        const availableRows = input.bankKey === "electrician-309a"
+          ? await db.select({
+              questionNum: certificationQuestions.bankItemNumber,
+              correctIndex: certificationQuestions.correctIndex,
+              module: certificationQuestions.module,
+              topic: certificationQuestions.topic,
+              difficulty: certificationQuestions.difficulty,
+              explanation: certificationQuestions.explanation,
+            })
+            .from(certificationQuestions)
+            .innerJoin(certificationBankVersions, eq(certificationQuestions.bankVersionId, certificationBankVersions.id))
+            .where(and(eq(certificationBankVersions.programKey, ELECTRICIAN_309A_PROGRAM_KEY),
+              eq(certificationBankVersions.bankKey, input.bankKey), eq(certificationBankVersions.releaseChannel, "beta"),
+              eq(certificationBankVersions.active, true), inArray(certificationQuestions.bankItemNumber, questionNums),
+              eq(certificationQuestions.contentStatus, "beta_approved"), eq(certificationQuestions.publicEligibility, true)))
+          : await db
+          .select({
+            questionNum: questions.questionNum,
+            correctIndex: questions.correctIndex,
+            module: questions.module,
+            topic: questions.topic,
+            difficulty: questions.difficulty,
+            explanation: questions.explanation,
+          })
           .from(questions)
           .where(and(
-            eq(questions.bankKey, input.bankKey),
+            eq(questions.bankKey, manifest.bankKey),
             inArray(questions.questionNum, questionNums),
             learnerVisibleQuestionFilter(),
           ));
 
-        const questionMap = new Map(questionRows.map(q => [q.questionNum, q]));
-        const identity = await resolveLearningIdentity(ctx);
-        const hasVerifiedIdentity = Boolean(identity.userId || identity.studentEmail);
-
+        const availableQuestionNums = new Set(availableRows.map(q => q.questionNum));
+        const questionMap = new Map((issuedQuestions ?? availableRows).map(q => [q.questionNum, q]));
+        // The answer key becomes available only after the server has scored the
+        // complete, signed attempt. Retired questions remain visibly unavailable
+        // rather than receiving a fabricated answer or explanation.
+        const review = input.answers.map(answer => {
+          const q = availableQuestionNums.has(answer.questionNum) ? questionMap.get(answer.questionNum) : undefined;
+          return {
+            questionNum: answer.questionNum,
+            scored: scoredIds.has(answer.questionNum),
+            correctIndex: q?.correctIndex ?? null,
+            explanation: q?.explanation ?? null,
+          };
+        });
+        const existingResponse = (saved: NonNullable<typeof existing>) => ({
+          success: true,
+          persisted: true,
+          score: saved.score,
+          total: saved.total,
+          pct: Math.round(saved.score / saved.total * 100),
+          passed: saved.passed === "yes",
+          unavailableCount: (JSON.parse(saved.moduleBreakdown ?? "{}")[UNAVAILABLE_MOCK_MODULE]?.total ?? 0) as number,
+          moduleBreakdown: JSON.parse(saved.moduleBreakdown ?? "{}") as Record<string, { correct: number; total: number }>,
+          review,
+          reviewToken: manifest.version === 3 ? issueMockReviewToken(manifest) : undefined,
+        });
+        // An idempotent retry remains available after expiry and bank changes.
+        // New snapshot sessions receive their issued review for still-visible
+        // questions; legacy sessions retain their historical canonical behavior.
+        if (existing) return existingResponse(existing);
+        if (![...scoredIds].some(id => availableQuestionNums.has(id))) {
+          throw new TRPCError({ code: "BAD_REQUEST", message: "None of this exam's questions are available for scoring. No result was saved. Your answers remain in this tab for review; please contact support." });
+        }
+        if (Date.now() > manifest.deadline + MOCK_SUBMISSION_GRACE_MS) {
+          throw new TRPCError({ code: "BAD_REQUEST", message: "The exam submission window has expired. Your local answers remain available for review; start a new exam to save a result." });
+        }
+        const attribution = await validateIssuedAttribution(identity, manifest.courseKey, manifest.attribution);
+        const unavailableCount = [...scoredIds].filter(id => !availableQuestionNums.has(id)).length;
         let correct = 0;
         const moduleBreakdown: Record<string, { correct: number; total: number }> = {};
-
-        for (const answer of input.answers) {
-          const q = questionMap.get(answer.questionNum);
-          if (!q) continue;
-          const isCorrect = answer.selectedIndex === q.correctIndex;
+        const scoredAnswers = input.answers.filter(answer => scoredIds.has(answer.questionNum));
+        const attempts = scoredAnswers.map(answer => {
+          const q = availableQuestionNums.has(answer.questionNum) ? questionMap.get(answer.questionNum) : undefined;
+          const isCorrect = answer.selectedIndex !== null && answer.selectedIndex === q?.correctIndex;
           if (isCorrect) correct++;
-          const mod = q.module ?? input.examType;
-          if (!moduleBreakdown[mod]) moduleBreakdown[mod] = { correct: 0, total: 0 };
+          const mod = q ? q.module : UNAVAILABLE_MOCK_MODULE;
+          moduleBreakdown[mod] ??= { correct: 0, total: 0 };
           moduleBreakdown[mod].total++;
           if (isCorrect) moduleBreakdown[mod].correct++;
-          if (hasVerifiedIdentity) try {
-            await db.insert(questionAttempts).values({
-              userId: identity.userId,
-              studentEmail: identity.studentEmail,
-              examType: input.examType,
-              topic: mod,
-              questionId: answer.questionNum,
-              correct: isCorrect ? "yes" : "no",
-              difficulty: q.difficulty ?? null,
-              quizMode: "mock",
-              sessionId: input.sessionId,
-              selectedIndex: answer.selectedIndex,
-              bankKey: input.bankKey,
-              courseKey: input.bankKey,
-              orgId: identity.orgId,
-              organizationMemberId: identity.organizationMemberId,
+          return {
+            userId: identity.userId, studentEmail: identity.studentEmail,
+            examType: input.examType, topic: q?.topic?.trim() || mod, questionId: answer.questionNum,
+            correct: isCorrect ? "yes" as const : "no" as const,
+            flexLicenceId: attribution.flexLicenceId,
+            difficulty: q?.difficulty ?? null, quizMode: "mock", sessionId: input.sessionId,
+            selectedIndex: answer.selectedIndex, bankKey: input.bankKey, courseKey: input.bankKey,
+            orgId: attribution.orgId, organizationMemberId: attribution.organizationMemberId,
+          };
+        });
+        const total = scoredAnswers.length;
+        const pct = Math.round((correct / total) * 100);
+        const passed = !manifest.preview && correct / total >= 0.7;
+        if (hasVerifiedIdentity) {
+          try {
+            await db.transaction(async tx => {
+              // Claim the unique session before writing attempts. A concurrent retry
+              // loses this insert and cannot write duplicate analytics.
+              await tx.insert(examResults).values({
+                sessionId: input.sessionId, userId: identity.userId, studentEmail: identity.studentEmail,
+                examType: input.examType, stream: /ww|wastewater|water-coll/.test(manifest.courseKey) ? "wastewater" : "water", score: correct, total,
+                passed: passed ? "yes" : "no", timeTakenSeconds: Math.floor((Math.min(Date.now(), manifest.deadline) - manifest.startedAt) / 1000),
+                moduleBreakdown: JSON.stringify(moduleBreakdown), calcOnly: input.calcOnly ? "yes" : "no",
+                bankKey: input.bankKey, courseKey: input.bankKey,
+                orgId: attribution.orgId, organizationMemberId: attribution.organizationMemberId,
+              });
+              await tx.insert(questionAttempts).values(attempts);
             });
-          } catch (err) {
-            console.warn("[exam.submitMock] Failed to log attempt:", err);
+          } catch (error) {
+            const saved = await readExisting();
+            if (saved) return existingResponse(saved);
+            throw error;
+          }
+          if (!input.calcOnly) {
+            await trackEvent("mock_exam_completed", {
+              userId: identity.userId?.toString() ?? null, email: identity.studentEmail,
+              examType: input.examType, orgId: attribution.orgId, extra: { passed, totalQuestions: total },
+            }).catch(error => console.error("[submitMock] Analytics failed after save", error));
           }
         }
 
-        const total = input.answers.length;
-        const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
-        const passed = pct >= 70;
-
-        if (hasVerifiedIdentity) await db.insert(examResults).values({
-          sessionId: input.sessionId,
-          userId: identity.userId,
-          studentEmail: identity.studentEmail,
-          examType: input.examType,
-          stream: input.stream ?? null,
+        return {
+          success: true,
+          persisted: hasVerifiedIdentity,
           score: correct,
           total,
-          passed: passed ? "yes" : "no",
-          timeTakenSeconds: input.timeTakenSeconds ?? null,
-          moduleBreakdown: JSON.stringify(moduleBreakdown),
-          calcOnly: input.calcOnly ? "yes" : "no",
-        });
-
-        if (hasVerifiedIdentity && !input.calcOnly) {
-          await trackEvent("mock_exam_completed", {
-            userId: identity.userId?.toString() ?? null,
-            email: identity.studentEmail,
-            examType: input.examType,
-            orgId: identity.orgId,
-            extra: { passed, totalQuestions: total },
-          });
-        }
-
-        return { success: true, persisted: hasVerifiedIdentity, score: correct, total, pct, passed, moduleBreakdown };
+          pct,
+          passed,
+          unavailableCount,
+          moduleBreakdown,
+          review,
+          reviewToken: manifest.version === 3 ? issueMockReviewToken(manifest) : undefined,
+        };
       }),
   }),
 
   // Contact form — sends email to abello@echeloninstitute.ca
   contact: router({
+    partnership: publicProcedure
+      .input(partnershipInquirySchema)
+      .mutation(({ input }) => persistedPartnershipInquiry(input)),
+    // Owner-only searchable receipts, including pending/failed secondary notifications.
+    partnershipInbox: protectedProcedure
+      .input(z.object({ search: z.string().max(128).optional(), followUpStatus: z.enum(["new", "contacted", "closed"]).optional() }).optional())
+      .query(async ({ input, ctx }) => {
+        if (ctx.user.role !== "admin") throw new TRPCError({ code: "FORBIDDEN" });
+        const db = await getDb();
+        if (!db) throw new TRPCError({ code: "SERVICE_UNAVAILABLE", message: "Inquiry inbox unavailable." });
+        const search = input?.search?.trim();
+        return db.select().from(contactSubmissions).where(and(
+          sql`${contactSubmissions.requestKey} IS NOT NULL`,
+          input?.followUpStatus ? eq(contactSubmissions.followUpStatus, input.followUpStatus) : undefined,
+          search ? or(
+            sql`${contactSubmissions.organization} LIKE ${`%${search}%`}`,
+            sql`${contactSubmissions.email} LIKE ${`%${search}%`}`,
+            sql`${contactSubmissions.partnershipType} LIKE ${`%${search}%`}`,
+            sql`${contactSubmissions.message} LIKE ${`%${search}%`}`,
+          ) : undefined,
+        )).orderBy(desc(contactSubmissions.createdAt)).limit(100);
+      }),
     send: publicProcedure
       .input(
         z.object({
           name: z.string().min(1, "Name is required").max(100),
-          email: z.string().email("Please enter a valid email address"),
-          subject: z.string().min(1, "Subject is required").max(200),
+          email: z.string().email("Please enter a valid email address").max(320),
+          subject: z.string().min(1, "Subject is required").max(128),
           message: z.string().min(10, "Message must be at least 10 characters").max(2000),
         })
       )
       .mutation(async ({ input }) => {
         const db = await getDb();
         // 1. Save to database first (always, even if email fails)
-        if (db) await db.insert(contactSubmissions).values({
+        if (!db) throw new TRPCError({ code: "SERVICE_UNAVAILABLE", message: "Your message could not be saved. Please retry." });
+        await db.insert(contactSubmissions).values({
           name: input.name,
           email: input.email,
           subject: input.subject,
@@ -515,14 +779,14 @@ export const appRouter = router({
         try {
           await sendContactEmail(input);
         } catch (err) {
-          console.error("[Contact] Email send failed (submission still saved):", err);
+          console.error("[Contact] Email notification failed; saved message retained.");
           // Don't throw — submission is already saved, user gets success
         }
         // 3. Notify owner via Manus notification system as backup
         notifyOwner({
           title: `Contact form: ${input.subject}`,
           content: `From: ${input.name} <${input.email}>\n\n${input.message}`,
-        }).catch((err) => { console.error("[contact] notifyOwner failed:", err); }); // non-blocking
+        }).catch((err) => { console.error("[Contact] Owner notification failed; saved message retained."); }); // non-blocking
         return { success: true };
       }),
   }),
@@ -530,69 +794,54 @@ export const appRouter = router({
   // Exam Date Tracker — optional per-product exam date for countdown + reminders
   examDate: router({
     get: publicProcedure
-      .input(z.object({ email: z.string().email(), productKey: z.string() }))
+      .input(z.object({ email: z.string().trim().email(), productKey: z.string().min(1).max(64) }))
       .query(async ({ input, ctx }) => {
         // Identity check: caller must be the owner of this email record.
         // Accept either an OAuth user or a student OTP session cookie.
-        const callerEmail = ctx.user?.email ?? ctx.studentEmail;
-        if (!callerEmail || callerEmail.toLowerCase() !== input.email.toLowerCase()) {
+        const callerEmail = identityEmail(resolveVerifiedIdentity(ctx));
+        if (!callerEmail || callerEmail.toLowerCase() !== input.email.trim().toLowerCase()) {
           return null; // Silently return null rather than leaking existence
         }
+        const key = normalizeExamDateKey(callerEmail, input.productKey);
         const db = await getDb();
         if (!db) return null;
         const rows = await db
           .select()
           .from(examDates)
-          .where(and(eq(examDates.email, input.email), eq(examDates.productKey, input.productKey)))
+          .where(and(eq(examDates.email, key.email), eq(examDates.productKey, key.productKey)))
           .limit(1);
         if (!rows.length) return null;
         return { examDate: rows[0].examDate.toISOString(), productKey: rows[0].productKey };
       }),
     set: publicProcedure
-      .input(z.object({ email: z.string().email(), productKey: z.string(), examDate: z.string() }))
+      .input(z.object({ email: z.string().trim().email(), productKey: z.string().min(1).max(64), examDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/) }))
       .mutation(async ({ input, ctx }) => {
         // Identity check: caller must own this email.
-        const callerEmail = ctx.user?.email ?? ctx.studentEmail;
-        if (!callerEmail || callerEmail.toLowerCase() !== input.email.toLowerCase()) {
+        const callerEmail = identityEmail(resolveVerifiedIdentity(ctx));
+        if (!callerEmail || callerEmail.toLowerCase() !== input.email.trim().toLowerCase()) {
           throw new Error("Unauthorized: you may only set your own exam date");
         }
+        const key = normalizeExamDateKey(callerEmail, input.productKey);
         const db = await getDb();
         if (!db) throw new Error("Database unavailable");
-        const date = new Date(input.examDate);
-        if (isNaN(date.getTime())) throw new Error("Invalid date");
-        const existing = await db
-          .select()
-          .from(examDates)
-          .where(and(eq(examDates.email, input.email), eq(examDates.productKey, input.productKey)))
-          .limit(1);
-        if (existing.length) {
-          await db
-            .update(examDates)
-            .set({ examDate: date, remindersSent: "[]" })
-            .where(and(eq(examDates.email, input.email), eq(examDates.productKey, input.productKey)));
-        } else {
-          await db.insert(examDates).values({
-            email: input.email,
-            productKey: input.productKey,
-            examDate: date,
-            remindersSent: "[]",
-          });
-        }
+        parseExamCalendarDate(input.examDate);
+        const identity = await resolveLearningIdentity(ctx, key.productKey);
+        await upsertExamDate(db, { ...key, date: input.examDate,
+          orgId: identity.orgId, organizationMemberId: identity.organizationMemberId });
         return { success: true };
       }),
     remove: publicProcedure
-      .input(z.object({ email: z.string().email(), productKey: z.string() }))
+      .input(z.object({ email: z.string().trim().email(), productKey: z.string().min(1).max(64) }))
       .mutation(async ({ input, ctx }) => {
         // Identity check: caller must own this email.
-        const callerEmail = ctx.user?.email ?? ctx.studentEmail;
-        if (!callerEmail || callerEmail.toLowerCase() !== input.email.toLowerCase()) {
+        const callerEmail = identityEmail(resolveVerifiedIdentity(ctx));
+        if (!callerEmail || callerEmail.toLowerCase() !== input.email.trim().toLowerCase()) {
           throw new Error("Unauthorized: you may only remove your own exam date");
         }
+        const key = normalizeExamDateKey(callerEmail, input.productKey);
         const db = await getDb();
         if (!db) throw new Error("Database unavailable");
-        await db
-          .delete(examDates)
-          .where(and(eq(examDates.email, input.email), eq(examDates.productKey, input.productKey)));
+        await removeExamDate(db, key.email, key.productKey);
         return { success: true };
       }),
   }),
@@ -666,12 +915,14 @@ export const appRouter = router({
     chat: publicProcedure
       .input(
         z.object({
+          // Learner messages stay short; assistant replies may be full worked
+          // solutions and must round-trip as history (see aiTutorPolicy).
           messages: z.array(
-            z.object({
-              role: z.enum(["user", "assistant"]),
-              content: z.string().min(1).max(2000),
-            }),
-          ).min(1).max(20),
+            z.discriminatedUnion("role", [
+              z.object({ role: z.literal("user"), content: z.string().min(1).max(AI_TUTOR_MAX_USER_MESSAGE_CHARS) }),
+              z.object({ role: z.literal("assistant"), content: z.string().min(1).max(AI_TUTOR_MAX_ASSISTANT_MESSAGE_CHARS) }),
+            ]),
+          ).min(1).max(AI_TUTOR_MAX_HISTORY_MESSAGES),
           examType: z.string().min(1).max(64),
           // Learner-facing question identifiers are the per-bank questionNum,
           // never the questions table's internal auto-increment primary key.
@@ -683,7 +934,16 @@ export const appRouter = router({
             correct: z.boolean(),
             confidence: z.number().min(0).max(100).nullable(),
           })).max(6).default([]),
+          // Requested US state. Advisory only: the server re-resolves it
+          // against an allowlist and ignores anything unrecognized. It never
+          // grants entitlements, changes banks, or authorizes legal advice.
+          usState: z.string().max(32).optional(),
+          usCountry: z.enum(["US", "CA"]).optional(),
           accessToken: z.string().max(4096).optional(),
+          // Both values are issued by the server. The review permit is minted
+          // only after submitMock finalizes the signed attempt.
+          mockSessionToken: z.string().min(1).max(64000).optional(),
+          mockReviewToken: z.string().min(1).max(1024).optional(),
         }),
       )
       .mutation(async ({ input, ctx }) => {
@@ -691,9 +951,12 @@ export const appRouter = router({
         if (!course?.isActive) {
           throw new TRPCError({ code: "BAD_REQUEST", message: "Unknown or inactive course." });
         }
-        if (input.messages.reduce((total, message) => total + message.content.length, 0) > 12_000) {
-          throw new TRPCError({ code: "BAD_REQUEST", message: "Tutor conversation is too long. Start a new session." });
+        if (input.messages[input.messages.length - 1]?.role !== "user") {
+          throw new TRPCError({ code: "BAD_REQUEST", message: "The latest tutor message must come from the learner." });
         }
+        // Bound total prompt size by dropping the oldest turns instead of
+        // rejecting a valid long conversation outright.
+        const conversation = boundTutorHistory(input.messages);
         const isElectrician309A = course.courseKey === "electrician-309a";
 
         const hasPaidAccess = await resolveAccessForRequest(ctx, course.courseKey, {
@@ -714,16 +977,14 @@ export const appRouter = router({
           resolvedEmail = tokenResult.hasAccess ? tokenResult.email : null;
         }
         const resolvedUserId = ctx.user?.id?.toString() ?? null;
-        const anonymousTutorId = `${ctx.req.ip ?? "unknown"}:${ctx.req.get("user-agent") ?? "unknown"}`;
-        await enforceAiTutorDailyQuota(
-          { userId: resolvedUserId, email: resolvedEmail, anonymousId: anonymousTutorId },
-          isFreeOitPreview
-            ? {
-                limit: AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT,
-                limitMessage: "You have used your 3 free AI Tutor messages. Unlock the OIT Exam Pass to keep asking questions.",
-              }
-            : undefined,
-        );
+        const anonymousTutorId = resolvedUserId || resolvedEmail
+          ? `${ctx.req.ip ?? "unknown"}:${ctx.req.get("user-agent") ?? "unknown"}`
+          : await resolveAnonymousTutorIdentity(ctx.req, ctx.res);
+        const tutorUsage = {
+          examType: course.courseKey,
+          productKey: course.productKey,
+          extra: { questionNum: input.questionNum ?? null, patternMode: input.patternMode },
+        };
 
         const db = await getDb();
         if (!db) {
@@ -732,6 +993,60 @@ export const appRouter = router({
 
         let questionContext: Parameters<typeof buildTutorSystemPrompt>[0]["question"] = null;
         if (input.questionNum) {
+          const hasMockReviewContext = Boolean(input.mockSessionToken || input.mockReviewToken);
+          if (hasMockReviewContext && (!input.mockSessionToken || !input.mockReviewToken)) {
+            throw new TRPCError({ code: "BAD_REQUEST", message: "A complete answer-review context is required." });
+          }
+          if (input.mockSessionToken && input.mockReviewToken) {
+            const mockIdentity = await resolveLearningIdentity(ctx);
+            const manifest = verifyMockReviewContext(input.mockSessionToken, input.mockReviewToken, mockOwner(mockIdentity));
+            if (manifest.courseKey !== course.courseKey) {
+              throw new TRPCError({ code: "BAD_REQUEST", message: "This answer review does not match the selected course." });
+            }
+            const [available] = isElectrician309A
+              ? await db
+                .select({ questionNum: certificationQuestions.bankItemNumber })
+                .from(certificationQuestions)
+                .innerJoin(certificationBankVersions, eq(certificationQuestions.bankVersionId, certificationBankVersions.id))
+                .where(and(
+                  eq(certificationBankVersions.programKey, ELECTRICIAN_309A_PROGRAM_KEY),
+                  eq(certificationBankVersions.bankKey, course.questionBankKey),
+                  eq(certificationBankVersions.releaseChannel, "beta"),
+                  eq(certificationBankVersions.active, true),
+                  eq(certificationQuestions.bankItemNumber, input.questionNum),
+                  eq(certificationQuestions.contentStatus, "beta_approved"),
+                  eq(certificationQuestions.publicEligibility, true),
+                ))
+                .limit(1)
+              : await db
+                .select({ questionNum: questions.questionNum })
+                .from(questions)
+                .where(and(
+                  eq(questions.bankKey, course.questionBankKey),
+                  eq(questions.questionNum, input.questionNum),
+                  learnerVisibleQuestionFilter(),
+                ))
+                .limit(1);
+            if (!available) {
+              throw new TRPCError({ code: "BAD_REQUEST", message: "The selected course question could not be verified." });
+            }
+            const issued = issuedMockQuestions(manifest)?.find(question => question.questionNum === input.questionNum);
+            if (!issued) {
+              throw new TRPCError({ code: "BAD_REQUEST", message: "The selected issued question could not be verified." });
+            }
+            questionContext = {
+              questionNum: issued.questionNum,
+              module: issued.module,
+              topic: issued.topic,
+              question: issued.question,
+              options: issued.options,
+              correctIndex: issued.correctIndex,
+              explanation: issued.explanation ?? "",
+              steps: issued.steps,
+              tip: issued.tip,
+              isCalc: issued.isCalc,
+            };
+          } else {
           const [row] = isElectrician309A
             ? await db
               .select({
@@ -797,25 +1112,19 @@ export const appRouter = router({
           } catch {
             throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "The selected question data is malformed." });
           }
+          }
         }
 
         let studentMemory = "";
         try {
-          const profileRows = ctx.user?.id
-            ? await db.select().from(studentProfiles).where(eq(studentProfiles.userId, ctx.user.id)).limit(1)
-            : resolvedEmail
-              ? await db.select().from(studentProfiles).where(eq(studentProfiles.studentEmail, resolvedEmail)).limit(1)
-              : [];
-          const profile = profileRows[0];
+          const profile = ctx.user?.id || resolvedEmail
+            ? await readCourseLearnerProfile(db, { userId: ctx.user?.id ?? null, email: resolvedEmail ?? null }, course.courseKey)
+            : null;
           if (profile && profile.totalAttempts >= 15) {
-            let weakTopics: string[] = [];
-            let strongTopics: string[] = [];
-            try { weakTopics = JSON.parse(profile.weakTopics || "[]"); } catch {}
-            try { strongTopics = JSON.parse(profile.strongTopics || "[]"); } catch {}
+            const { weakTopics, strongTopics } = profile;
             studentMemory = [
               `Questions attempted: ${profile.totalAttempts}`,
               `Study sessions: ${profile.totalSessions}`,
-              `Current streak: ${profile.currentStreak} days`,
               `Strong topics: ${strongTopics.join(", ") || "still building data"}`,
               `Weak topics: ${weakTopics.join(", ") || "still building data"}`,
             ].join("\n");
@@ -835,6 +1144,9 @@ export const appRouter = router({
         const systemPrompt = buildTutorSystemPrompt({
           courseName: course.displayName,
           examFamily: course.examFamily,
+          // Re-resolved server-side. An unrecognized or spoofed state becomes
+          // null rather than reaching the model as free text.
+          usContext: resolveUSStudyContext(course.courseKey, input.usState ?? null, input.usCountry),
           subject: isElectrician309A ? "construction_electrician" : "water_operator",
           question: questionContext,
           selectedIndex: input.selectedIndex ?? null,
@@ -842,26 +1154,62 @@ export const appRouter = router({
           recentPerformance: input.recentPerformance,
           studentMemory,
         });
-
+        // Reserve today's slot as the last step before the provider call, so
+        // nothing that can throw sits between the reservation and the release
+        // in the catch below. Reviewers flagged that a database failure while
+        // building context used to burn a message the learner never received.
+        const quotaReservation = await enforceAiTutorDailyQuota(
+          { userId: resolvedUserId, email: resolvedEmail, anonymousId: anonymousTutorId },
+          isFreeOitPreview
+            ? {
+                limit: AI_TUTOR_FREE_PREVIEW_MESSAGE_LIMIT,
+                limitMessage: "You have used your 3 free AI Tutor messages. Unlock the OIT Exam Pass to keep asking questions.",
+                usage: tutorUsage,
+              }
+            : { usage: tutorUsage },
+        );
         try {
-          const response = await invokeLLM({
-            messages: [{ role: "system", content: systemPrompt }, ...input.messages],
-            maxTokens: 1536,
+          // A worked calculation that stops mid-step teaches an incomplete
+          // method, so a length-capped answer is never returned as if it were
+          // the whole thing. Asking the learner to retry an identical request
+          // would strand them, because a prompt that overflows the budget
+          // tends to overflow it again. So one bounded recovery attempt asks
+          // for the same solution more compactly before giving up. Exactly one
+          // retry: an unbounded chain would burn cost and make the learner
+          // wait even longer for an answer that is not coming.
+          let response = await invokeLLM({
+            messages: [{ role: "system", content: systemPrompt }, ...conversation],
+            maxTokens: AI_TUTOR_MAX_OUTPUT_TOKENS,
           });
-          const reply = response?.choices?.[0]?.message?.content ??
-            "I'm having trouble connecting right now — please try again.";
-          await trackEvent("ai_tutor_message", {
-            userId: resolvedUserId,
-            email: resolvedEmail,
-            examType: course.courseKey,
-            productKey: course.productKey,
-            anonymousId: resolvedUserId || resolvedEmail ? null : anonymousTutorId,
-            extra: { questionNum: input.questionNum ?? null, patternMode: input.patternMode },
-          });
+          if (isTruncatedTutorCompletion(response?.choices?.[0]?.finish_reason)) {
+            console.error("[AI Tutor] Explanation hit the output limit, retrying concisely");
+            response = await invokeLLM({
+              messages: [
+                { role: "system", content: systemPrompt + AI_TUTOR_CONCISE_RETRY_INSTRUCTION },
+                ...conversation,
+              ],
+              maxTokens: AI_TUTOR_MAX_OUTPUT_TOKENS,
+            });
+            if (isTruncatedTutorCompletion(response?.choices?.[0]?.finish_reason)) {
+              // Logged distinctly so this is diagnosable as an output-budget
+              // problem rather than being mistaken for a provider outage.
+              console.error("[AI Tutor] Explanation still truncated after concise retry");
+              throw new Error("Tutor explanation hit the output limit before finishing");
+            }
+          }
+          const reply = response?.choices?.[0]?.message?.content;
+          if (typeof reply !== "string" || !reply.trim()) {
+            throw new Error("Tutor provider returned no usable explanation");
+          }
+          await recordAiTutorUsage(quotaReservation, tutorUsage);
           return { reply };
-        } catch (err) {
-          console.error("[AI Tutor] LLM error:", err);
-          return { reply: "Connection issue — please try again in a moment." };
+        } catch {
+          console.error("[AI Tutor] Response unavailable");
+          await releaseAiTutorReservation(quotaReservation);
+          throw new TRPCError({
+            code: "SERVICE_UNAVAILABLE",
+            message: "The AI Tutor could not finish the explanation. Please retry. Your question is still here.",
+          });
         }
       }),
 
@@ -874,10 +1222,10 @@ export const appRouter = router({
         z.object({
           examType: z.string().min(1).max(64),
           messages: z.array(
-            z.object({
-              role: z.enum(["user", "assistant"]),
-              content: z.string().min(1).max(4000),
-            })
+            z.discriminatedUnion("role", [
+              z.object({ role: z.literal("user"), content: z.string().min(1).max(AI_TUTOR_MAX_USER_MESSAGE_CHARS) }),
+              z.object({ role: z.literal("assistant"), content: z.string().min(1).max(AI_TUTOR_MAX_ASSISTANT_MESSAGE_CHARS) }),
+            ])
           ).min(1).max(40),
           sessionStartMs: z.number().int().positive(), // unix ms when panel was opened
           accessToken: z.string().max(4096).optional(),
@@ -915,7 +1263,8 @@ export const appRouter = router({
         if (userMessages.length === 0) return { saved: false };
 
         try {
-          const conversationText = input.messages
+          // Bound the summary prompt the same way the chat prompt is bounded.
+          const conversationText = boundTutorHistory(input.messages, { maxMessages: 40 })
             .map((m) => `${m.role === "user" ? "Student" : "Tutor"}: ${m.content}`)
             .join("\n");
 
@@ -1047,33 +1396,25 @@ export const appRouter = router({
      */
     getStudentContext: protectedProcedure
       .input(z.object({ examType: z.string() }).optional())
-      .query(async ({ ctx }) => {
+      .query(async ({ ctx, input }) => {
         const db = await getDb();
         if (!db) return null;
 
-        const profiles = await db
-          .select()
-          .from(studentProfiles)
-          .where(eq(studentProfiles.userId, ctx.user.id))
-          .limit(1);
-
-        const profile = profiles[0];
-        if (!profile || profile.totalAttempts < 15) return null;
-
-        let weakTopics: string[] = [];
-        let strongTopics: string[] = [];
-        try { weakTopics = JSON.parse(profile.weakTopics || "[]"); } catch {}
-        try { strongTopics = JSON.parse(profile.strongTopics || "[]"); } catch {}
+        if (!input?.examType) return null;
+        const profile = await readCourseLearnerProfile(db, { userId: ctx.user.id, email: ctx.user.email ?? null }, input.examType);
+        if (profile.totalAttempts < 15) return null;
+        const { weakTopics, strongTopics } = profile;
+        const activity = await readOverallLearnerActivity(db, { userId: ctx.user.id, email: ctx.user.email ?? null });
 
         const sessionCount = await db
           .select({ cnt: sql<number>`COUNT(*)` })
           .from(aiChatSessions)
-          .where(eq(aiChatSessions.userId, ctx.user.id));
+          .where(and(eq(aiChatSessions.userId, ctx.user.id), eq(aiChatSessions.examType, input.examType)));
 
         return {
           totalAttempts: profile.totalAttempts,
           totalSessions: profile.totalSessions,
-          currentStreak: profile.currentStreak,
+          currentStreak: activity.currentStreak,
           weakTopics,
           strongTopics,
           aiSessionCount: Number(sessionCount[0]?.cnt ?? 0),

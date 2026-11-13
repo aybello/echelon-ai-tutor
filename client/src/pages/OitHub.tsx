@@ -43,6 +43,12 @@ export default function OitHub() {
           account or credit card is required for the free preview. A 12-month
           pass for one selected OIT course is CA$49.
         </p>
+        <Link
+          href="/interactive-learning"
+          className="mt-5 inline-block rounded-lg font-semibold text-teal-700 underline underline-offset-4 hover:text-teal-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2"
+        >
+          Try an introductory interactive example →
+        </Link>
       </section>
 
       <section
@@ -93,7 +99,7 @@ export default function OitHub() {
             <li>Timed 100-question mock exam with module results</li>
             <li>AI Tutor explanations for concepts and calculations</li>
             <li>Process guides, formula sheets, and math practice</li>
-            <li>12 months of access for one named learner</li>
+            <li>12 months of access for one named learner from successful payment</li>
           </ul>
           <div className="mt-7 flex flex-col gap-3 sm:flex-row">
             <Link

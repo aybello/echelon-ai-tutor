@@ -1,0 +1,17 @@
+[
+  {
+    "questionNum": 267,
+    "question": "What is a primary concern with infiltration in a wastewater collection system?",
+    "options": [
+      "It can add groundwater through cracks, leaks, or deteriorated pipes and increase the flow handled by the sewer system.",
+      "It removes suspended solids from wastewater before the flow reaches a treatment plant and improves final effluent clarity.",
+      "It adds chemicals that neutralize acidic wastewater within the collection system before it is pumped to the treatment facility.",
+      "It replaces wastewater with drinking water so sewers carry less liquid and require fewer collection-system inspections."
+    ],
+    "correctIndex": 0,
+    "explanation": "Infiltration is groundwater that enters a sanitary sewer through cracks, leaks, or deteriorated pipes. Ontario municipal guidance explains that excessive infiltration can overwhelm sewer systems and contribute to increased treatment costs and environmental impacts.",
+    "sourceTitle": "City of Port Colborne — Omer Area Inflow & Infiltration Investigation & Remediation Program",
+    "sourceReference": "The program defines infiltration as groundwater seeping into the sewer system through cracks, leaks, or deteriorated pipes, and notes that excessive inflow and infiltration can overwhelm the sewer system and increase treatment costs.",
+    "sourceUrl": "https://www.letsconnect.portcolborne.ca/inflow-infiltration-door-to-door-survey-remediation-omer-area"
+  }
+]

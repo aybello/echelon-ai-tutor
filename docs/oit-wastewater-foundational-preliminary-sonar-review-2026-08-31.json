@@ -1,0 +1,40 @@
+{
+  "reviews": [
+    {
+      "questionNum": 51,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Claim about preliminary treatment removing debris and grit to protect equipment and downstream processes is directly supported by Ontario Chapter 10 on preliminary treatment at headworks, including screening, comminution, grinding, and grit removal.",
+        "Jurisdiction and regulatory scope are accurate and Ontario-specific, matching the cited Ministry design guideline source without overstating legal obligations.",
+        "Exactly one option is correct; distractors refer to biological treatment, disinfection, and nutrient removal, which are plausible other plant functions but not preliminary treatment, and they do not normalize unsafe operation or omitted required actions.",
+        "Learning objective (basic purpose of preliminary treatment/headworks) is foundational and appropriate for an Ontario OIT learner and aligns with the described OIT scope of basics of wastewater treatment."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 61,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Claim that bar screens remove large debris to prevent blockage or physical damage to downstream equipment is directly traceable to Ontario Chapter 10 text stating coarse screens/bar screens protect pumps and other equipment against blockage or physical damage.",
+        "Jurisdiction and scope correctly reference Ontario Ministry design guidance and do not introduce non-Ontario regulatory claims.",
+        "Exactly one option is correct; other options describe chemical treatment, primary clarification, and odour control/aeration, which are plausible treatment concepts but not bar screen functions and do not promote unsafe operation or missed maintenance.",
+        "Learning objective (primary function of a bar screen) is a basic headworks concept suitable for Ontario OIT foundational preparation."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 65,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Claim that grit can settle/accumulate and its abrasive particles can damage pumps and other machinery matches Ontario Chapter 10 descriptions of grit’s damaging effects on pumps, comminutors, and equipment and accumulation in units.",
+        "Jurisdiction and regulatory scope are properly limited to Ontario Ministry technical guidance without overstating requirements beyond the source.",
+        "Exactly one option is correct; distractors incorrectly treat grit as a biological food source, disinfection chemical residual, or DO source, which are plausible but clearly wrong and do not normalize unsafe practices.",
+        "Learning objective (reason for grit removal in preliminary treatment) is a foundational equipment-protection and capacity concept appropriate for Ontario OIT level."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

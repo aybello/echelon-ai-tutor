@@ -1,8 +1,8 @@
 // WQA MOCK EXAM — migrated onto MockExamShell (2025-06)
-// 100 questions · 2-hour timer · 70% pass threshold
+// 100 questions · 3-hour timer · 70% pass threshold
 // productKey="wqa" (Stripe gate + saved examType)
-import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
-import { useQuestionBank } from "@/hooks/useQuestionBank";
+import MockExamShell from "@/components/MockExamShell";
+import { useMockExamMetadata } from "@/hooks/useQuestionBank";
 import QuizSkeleton from "@/components/QuizSkeleton";
 
 const MODULE_TARGETS: Record<string, number> = {
@@ -32,16 +32,8 @@ const MODULE_COLORS: Record<string, { bg: string; color: string }> = {
 };
 
 export default function WQAMockExam() {
-  const { questions: dbQuestions, isLoading, dbUnavailable } = useQuestionBank("wqa");
+  const { totalQuestions, isLoading: isLoading, dbUnavailable } = useMockExamMetadata("wqa");
 
-  const pool: ExamQuestion[] = dbQuestions.map(q => ({
-    id: q.id,
-    module: q.module,
-    question: q.question,
-    options: q.options,
-    correct: q.correctIndex,
-    explanation: q.explanation,
-  }));
 
   if (isLoading) return <QuizSkeleton />;
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
@@ -50,14 +42,13 @@ export default function WQAMockExam() {
     <MockExamShell
       title="WQA Mock Exam"
       badge="WATER QUALITY ANALYST · AWWA / WQA CERTIFICATION"
-      metaDescription="100-question timed mock exam for the Water Quality Analyst (WQA) certification. 2-hour timer, 70% pass threshold, and full module breakdown on results."
+      metaDescription="100-question timed mock exam for the Water Quality Analyst (WQA) certification. 3-hour timer, 70% pass threshold, and full module breakdown on results."
       metaKeywords="WQA mock exam, water quality analyst exam, AWWA water quality, timed exam prep, water certification"
       examQuestions={100}
       examDuration={3 * 60 * 60}
       passThreshold={0.7}
       moduleTargets={MODULE_TARGETS}
       moduleColors={MODULE_COLORS}
-      questionPool={pool}
       productKey="wqa"
       productName="WQA Practice Pass"
       price={149}
@@ -67,7 +58,7 @@ export default function WQAMockExam() {
       formulaPath="/formulas-wqa"
       formulaLabel="WQA Formula Sheet"
       currentPath="/wqa-mock"
-      infoLine={`${pool.length} questions · Water Quality Analyst`}
+      infoLine={`${totalQuestions} questions · Water Quality Analyst`}
     />
   );
 }

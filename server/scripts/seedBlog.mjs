@@ -1,3 +1,4 @@
+import { ontarioMathGuide } from "../content/ontarioMathGuide.mjs";
 /**
  * Blog seed script — inserts 5 SEO-targeted posts for Ontario water/wastewater
  * operator certification.
@@ -21,42 +22,30 @@ const posts = [
     slug: "how-to-pass-ontario-oit-water-exam",
     title: "How to Pass the Ontario OIT Water Exam: A Complete Study Guide",
     excerpt:
-      "The Ontario OIT (Operator-in-Training) Water exam covers disinfection, hydraulics, regulations, math, and health & safety. Here is everything you need to know to pass on your first attempt.",
+      "A source-grounded guide to Ontario's modular Operator-in-Training exam, including official study resources, water-treatment topics, calculations, and a practical preparation plan.",
     author: "Echelon Institute",
     tags: "OIT,Ontario,water treatment,exam prep,certification",
     metaTitle: "How to Pass the Ontario OIT Water Exam | Echelon Institute",
     metaDescription:
-      "Step-by-step study guide for the Ontario OIT Water Operator exam. Covers disinfection, hydraulics, regulations, math, and health & safety. Free practice questions included.",
+      "Prepare for Ontario's modular OIT exam with official OWWCO resources, water-treatment topics, calculation practice, and free sample questions.",
     readingTimeMinutes: 8,
     content: `
 <h2>What Is the Ontario OIT Water Exam?</h2>
-<p>The Operator-in-Training (OIT) certification is the entry-level credential for anyone working in an Ontario water treatment or distribution facility. Issued by the Ontario Ministry of the Environment, Conservation and Parks (MECP), it is a prerequisite for all higher-level Class 1 through Class 4 water certifications.</p>
-<p>The exam consists of 100 multiple-choice questions drawn from six core subject areas. You need a score of at least 70% to pass. Most candidates write the exam after completing an approved operator training program or after accumulating supervised operating experience.</p>
+<p>The Operator-in-Training (OIT) exam is the entry point for people pursuing Ontario drinking-water and wastewater operator certification. The Ontario Water Wastewater Certification Office (OWWCO) describes it as a modular exam. A candidate may request one area or any combination of up to four areas: water treatment, water distribution and supply, wastewater treatment, and wastewater collection.</p>
+<p>All Ontario operator exams require a mark of 70% to pass. Confirm the modules, registration requirements, current exam format, and permitted reference material for your own sitting directly with <a href="https://owwco.ca/preparing-for-your-exam/">OWWCO</a>; those details can change.</p>
 
-<h2>The Six Exam Modules</h2>
-<p>Understanding the weight of each module helps you allocate your study time effectively. The exam draws questions roughly as follows:</p>
+<h2>How to Scope Your Preparation</h2>
+<p>Study the area or areas you selected rather than relying on an unofficial percentage split. For the water-treatment area, build competence across treatment processes, disinfection, basic hydraulics, water quality, safety, regulations, and the calculations that connect those subjects. OWWCO recommends its OIT Examination Study Guide and Mathematics for Water and Wastewater Operators guide for this exam.</p>
 
-<table>
-  <thead><tr><th>Module</th><th>Approximate Weight</th><th>Key Topics</th></tr></thead>
-  <tbody>
-    <tr><td>Disinfection</td><td>20%</td><td>Chlorination, CT values, UV, ozone, residuals</td></tr>
-    <tr><td>Hydraulics</td><td>18%</td><td>Flow rates, pressure, head loss, pump curves</td></tr>
-    <tr><td>Regulations</td><td>17%</td><td>Safe Drinking Water Act, O. Reg. 170/03, reporting</td></tr>
-    <tr><td>Math &amp; Calculations</td><td>20%</td><td>Dosage, flow, volume, unit conversions</td></tr>
-    <tr><td>Health &amp; Safety</td><td>13%</td><td>WHMIS, confined space, PPE, OHSA</td></tr>
-    <tr><td>Water Quality</td><td>12%</td><td>Turbidity, pH, hardness, coagulation, filtration</td></tr>
-  </tbody>
-</table>
-
-<h2>Disinfection: The Highest-Value Module</h2>
-<p>Disinfection questions are consistently the most challenging for new operators. The exam tests your ability to calculate CT values (concentration multiplied by contact time), understand the difference between primary and secondary disinfection, and identify the correct residual levels required under Ontario Regulation 170/03.</p>
+<h2>Disinfection and CT Calculations</h2>
+<p>Disinfection study should include CT calculations (disinfectant residual multiplied by effective contact time), primary versus secondary disinfection, monitoring, and the operational factors that change pathogen inactivation.</p>
 <blockquote>
-  <p><strong>Key formula:</strong> CT = C (mg/L) × T (minutes). A CT of 0.2 mg·min/L achieves 99% inactivation of Giardia at 5°C with free chlorine.</p>
+  <p><strong>Key formula:</strong> CT = C (mg/L) × T (minutes). A required CT is not one universal number: it depends on the disinfectant, organism, target log inactivation, temperature, pH, and residual. Use the CT table supplied by the applicable authority instead of memorizing a single value.</p>
 </blockquote>
-<p>Practice interpreting CT tables for different temperatures and pH values. The exam will give you a scenario and ask you to determine whether the required CT has been achieved.</p>
+<p>For context, <a href="https://www.canada.ca/en/health-canada/services/publications/healthy-living/guidelines-canadian-drinking-water-quality-guideline-technical-document-enteric-protozoa-giardia-cryptosporidium/page-11-guidelines-canadian-drinking-water-quality-guideline-technical-document-enteric-protozoa-giardia-cryptosporidium.html">Health Canada's free-chlorine table</a> for 3-log Giardia inactivation at 5°C shows values from 97 to 389 mg·min/L across the listed residual and pH conditions. That range demonstrates why a fixed claim such as 0.2 mg·min/L is unsafe. Practise reading the row and column conditions before comparing achieved CT with required CT.</p>
 
 <h2>Math and Calculations: Do Not Skip These</h2>
-<p>Many candidates underestimate the math section. You will need to calculate chlorine dosage, flow rates, tank volumes, and chemical feed rates without a formula sheet. The good news is that the same formulas appear repeatedly, so mastering about 15 core equations covers the vast majority of calculation questions.</p>
+<p>Calculation practice should include chlorine dosage, flow rates, tank volumes, detention time, and chemical feed rates. OWWCO currently directs candidates to WPI's formula/conversion tables and sample questions. Check the instructions for your specific exam sitting, then practise choosing the right equation, keeping units consistent, and checking whether the result is reasonable.</p>
 <p>The most commonly tested formulas include:</p>
 <ul>
   <li>Flow rate: Q = A × V (flow = area × velocity)</li>
@@ -66,20 +55,19 @@ const posts = [
   <li>Percent solution: % = (mass of solute / mass of solution) × 100</li>
 </ul>
 
-<h2>Regulations: Know O. Reg. 170/03 Cold</h2>
-<p>Ontario Regulation 170/03 governs the sampling, testing, and reporting requirements for all municipal drinking water systems. The exam tests your knowledge of minimum sampling frequencies, required residual levels at the point of consumption (minimum 0.05 mg/L free chlorine), and adverse result reporting timelines (notify the local Medical Officer of Health within 24 hours of an adverse result).</p>
-<p>You do not need to memorize every section number, but you do need to understand the intent and key thresholds of the regulation.</p>
+<h2>Regulations: Use Current Official Material</h2>
+<p>Know the purpose of Ontario's Safe Drinking Water Act and the operational, sampling, testing, reporting, and corrective-action duties that apply to drinking-water systems. Do not rely on an old study article for a regulatory threshold or deadline. Read the current official material linked by OWWCO and pay attention to the exact system type, sampling location, disinfectant, and circumstance in each question.</p>
 
 <h2>A Realistic Study Plan</h2>
-<p>Most candidates who pass on their first attempt spend 40 to 60 hours studying over four to six weeks. A practical approach is to dedicate the first two weeks to reading your course notes and the MECP's Drinking Water Operator Training modules, then spend the remaining time on practice questions. Doing at least 300 to 400 practice questions before the exam is strongly recommended.</p>
-<p>Echelon Institute's OIT practice bank contains over 550 questions across all six modules, with detailed explanations for every answer. The first 15 questions on every course are free with no account required.</p>
+<p>Build a schedule around your exam date and your diagnostic results. Start with the official study guide, practise calculations by hand, and use question explanations to repair weak topics. Take a timed mock only after you have covered the material, then return to the areas where the result shows gaps.</p>
+<p>Echelon provides separate Ontario OIT Water and OIT Wastewater preparation experiences with practice questions, explanations, flashcards, process guides, and mock exams. The free preview lets you evaluate the question experience before purchasing. Echelon is an independent exam-preparation provider and is not affiliated with or endorsed by OWWCO or MECP.</p>
 
 <h2>On Exam Day</h2>
-<p>The exam is administered at approved testing centres across Ontario. You will need government-issued photo ID and your confirmation number. The exam is closed-book, so all formulas must be memorized. Budget roughly 90 seconds per question; most candidates finish with time to spare.</p>
-<p>If you encounter a calculation question you cannot solve, mark it and move on. Return to it after completing the rest of the exam. Partial credit is not awarded, so an educated guess is always better than leaving a question blank.</p>
+<p>Follow the confirmation and candidate instructions issued for your exam date. Verify identification, arrival, calculator, reference-table, timing, and rescheduling rules with the official administrator rather than assuming that an older candidate's experience still applies.</p>
+<p>During the exam, read units and qualifiers carefully. If the exam interface permits review, mark a difficult item, continue, and return after completing the questions you can answer confidently.</p>
 
 <h2>After You Pass</h2>
-<p>Once you pass the OIT exam, you can begin accumulating the supervised operating experience required for Class 1 certification. Ontario requires a minimum of 12 months of full-time operating experience at a Class 1 or higher facility before you can write the Class 1 exam. Keeping a detailed log of your operating hours and the tasks you perform will make the application process much smoother.</p>
+<p>Passing an exam is only one part of certification. OWWCO and MECP determine the current education, experience, training, and application requirements for each certificate or licence. Keep records of your operating experience and training, and confirm the requirements for your next application directly with OWWCO.</p>
     `.trim(),
   },
   {
@@ -249,103 +237,7 @@ const posts = [
 <p>Practice questions are the most effective preparation tool. Echelon Institute's OIT Wastewater practice bank covers all six modules with detailed explanations. The Class 1 and Class 2 Wastewater banks are also available for operators preparing for higher-level OWWCO exams.</p>
     `.trim(),
   },
-  {
-    slug: "ontario-water-operator-exam-math-formulas-cheat-sheet",
-    title: "Ontario Water Operator Exam: Essential Math Formulas and Practice Problems",
-    excerpt:
-      "Math questions account for 20% of every Ontario water operator exam. This guide covers the 15 essential formulas you must memorize, with worked examples for the most common calculation types.",
-    author: "Echelon Institute",
-    tags: "math,formulas,calculations,Ontario,water operator,OIT,Class 1,Class 2,exam prep",
-    metaTitle: "Ontario Water Operator Exam Math Formulas | Echelon Institute",
-    metaDescription:
-      "Master the math for Ontario water operator exams. Covers 15 essential formulas with worked examples: chlorine dosage, flow rates, tank volumes, pump efficiency, and chemical feed calculations.",
-    readingTimeMinutes: 10,
-    content: `
-<h2>Why Math Is Worth Mastering</h2>
-<p>Math and calculation questions account for approximately 20% of every Ontario water operator exam from OIT through Class 4. Unlike process knowledge questions that require memorizing facts, math questions reward practice. Every formula you master is a near-guaranteed correct answer on exam day.</p>
-<p>The exam does not provide a formula sheet. You must have the formulas memorized and be able to apply them quickly. The good news is that the same 15 formulas appear repeatedly across all certification levels, with increasing complexity at higher levels.</p>
-
-<h2>Unit Conversions You Must Know</h2>
-<p>Before working through the formulas, make sure you have these unit conversions memorized. Conversion errors are the most common source of mistakes on calculation questions.</p>
-
-<table>
-  <thead><tr><th>Conversion</th><th>Value</th></tr></thead>
-  <tbody>
-    <tr><td>1 m³</td><td>1,000 litres (L)</td></tr>
-    <tr><td>1 ML (megalitre)</td><td>1,000 m³ = 1,000,000 L</td></tr>
-    <tr><td>1 mg/L</td><td>1 g/m³ = 1 ppm (in water)</td></tr>
-    <tr><td>1 kg/day</td><td>1,000 g/day</td></tr>
-    <tr><td>1 L/s</td><td>86.4 m³/day</td></tr>
-    <tr><td>1 m³/s</td><td>1,000 L/s = 86,400 m³/day</td></tr>
-  </tbody>
-</table>
-
-<h2>The 15 Essential Formulas</h2>
-
-<h3>1. Chlorine Dosage</h3>
-<p><strong>Dose (mg/L) = Demand (mg/L) + Residual (mg/L)</strong></p>
-<p><em>Example:</em> Chlorine demand = 2.1 mg/L, target residual = 0.4 mg/L. Dose = 2.1 + 0.4 = <strong>2.5 mg/L</strong></p>
-
-<h3>2. Chemical Mass Required</h3>
-<p><strong>Mass (kg/day) = Flow (m³/day) × Dose (g/m³) ÷ 1,000</strong></p>
-<p><em>Example:</em> Flow = 8,000 m³/day, dose = 2.5 mg/L. Mass = 8,000 × 2.5 ÷ 1,000 = <strong>20 kg/day</strong></p>
-
-<h3>3. Volume of a Cylinder</h3>
-<p><strong>V = π × r² × h</strong> (where r = radius, h = height)</p>
-<p><em>Example:</em> Tank diameter = 10 m, depth = 4 m. r = 5 m. V = 3.14159 × 25 × 4 = <strong>314.2 m³</strong></p>
-
-<h3>4. Volume of a Rectangle</h3>
-<p><strong>V = L × W × H</strong></p>
-<p><em>Example:</em> Reservoir 20 m × 15 m × 5 m deep. V = 20 × 15 × 5 = <strong>1,500 m³</strong></p>
-
-<h3>5. Flow Rate (Velocity Method)</h3>
-<p><strong>Q = A × V</strong> (flow = cross-sectional area × velocity)</p>
-<p><em>Example:</em> Pipe diameter = 0.3 m, velocity = 1.5 m/s. A = π × (0.15)² = 0.0707 m². Q = 0.0707 × 1.5 = <strong>0.106 m³/s</strong></p>
-
-<h3>6. Hydraulic Retention Time</h3>
-<p><strong>HRT (hours) = Volume (m³) × 24 / Flow (m³/day)</strong></p>
-<p><em>Example:</em> Tank volume = 500 m³, flow = 2,000 m³/day. HRT = 500 × 24 / 2,000 = <strong>6 hours</strong></p>
-
-<h3>7. CT Value</h3>
-<p><strong>CT = C (mg/L) × T (minutes)</strong></p>
-<p><em>Example:</em> Chlorine residual = 0.8 mg/L, contact time = 25 minutes. CT = 0.8 × 25 = <strong>20 mg·min/L</strong></p>
-
-<h3>8. Percent Solution</h3>
-<p><strong>% = (mass of solute / mass of solution) × 100</strong></p>
-<p><em>Example:</em> 5 kg of alum dissolved in 95 kg of water. % = (5 / 100) × 100 = <strong>5%</strong></p>
-
-<h3>9. Pump Efficiency</h3>
-<p><strong>Efficiency (%) = (Water Power / Input Power) × 100</strong></p>
-<p>Water power (kW) = Flow (m³/s) × Head (m) × 9.81 kN/m³</p>
-
-<h3>10. Fluoride Dosage</h3>
-<p><strong>Volume of fluoride solution = (Target dose × Flow) / (Concentration of solution)</strong></p>
-<p>Same structure as chlorine dosage but applied to fluoridation chemicals.</p>
-
-<h3>11. Weir Overflow Rate</h3>
-<p><strong>Weir overflow rate (m³/m·day) = Flow (m³/day) / Weir length (m)</strong></p>
-
-<h3>12. Surface Overflow Rate</h3>
-<p><strong>SOR (m³/m²·day) = Flow (m³/day) / Surface area (m²)</strong></p>
-
-<h3>13. Sludge Volume Index (SVI)</h3>
-<p><strong>SVI = (Settled sludge volume mL/L × 1,000) / MLSS (mg/L)</strong></p>
-<p>A healthy activated sludge has an SVI between 80 and 150 mL/g.</p>
-
-<h3>14. Food-to-Microorganism Ratio</h3>
-<p><strong>F:M = BOD applied (kg/day) / MLVSS in aeration basin (kg)</strong></p>
-
-<h3>15. Percent Removal</h3>
-<p><strong>% Removal = ((Influent - Effluent) / Influent) × 100</strong></p>
-<p><em>Example:</em> Influent BOD = 250 mg/L, effluent BOD = 15 mg/L. % Removal = ((250 - 15) / 250) × 100 = <strong>94%</strong></p>
-
-<h2>Practice Problem: Full Calculation Scenario</h2>
-<p>A water treatment plant treats 12,000 m³/day. The raw water has a chlorine demand of 1.6 mg/L and the target residual at the point of entry is 0.6 mg/L. The plant uses a 12% sodium hypochlorite solution (specific gravity 1.17). How many litres of hypochlorite solution are required per day?</p>
-<p><strong>Step 1:</strong> Calculate the chlorine dose. Dose = 1.6 + 0.6 = 2.2 mg/L</p>
-<p><strong>Step 2:</strong> Calculate the mass of chlorine required. Mass = 12,000 m³/day × 2.2 g/m³ ÷ 1,000 = 26.4 kg/day</p>
-<p><strong>Step 3:</strong> Calculate the volume of hypochlorite solution. The solution is 12% by weight. Mass of solution = 26.4 kg ÷ 0.12 = 220 kg. Volume = 220 kg ÷ 1.17 kg/L = <strong>188 litres/day</strong></p>
-    `.trim(),
-  },
+  ontarioMathGuide,
   {
     slug: "water-operator-salary-canada-by-province-2025",
     title: "Water Operator Salary in Canada by Province (2025)",

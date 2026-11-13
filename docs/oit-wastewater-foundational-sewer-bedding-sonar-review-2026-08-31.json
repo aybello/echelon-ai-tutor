@@ -1,0 +1,19 @@
+{
+  "reviews": [
+    {
+      "questionNum": 269,
+      "approved": true,
+      "severity": "minor",
+      "reasons": [
+        "Core claim that bedding provides uniform support and helps avoid point loading is standard collection-system practice and consistent with the Ontario sewage-works design context described, without asserting a specific design criterion or universal requirement.",
+        "All distractors are clearly incorrect yet plausible to a novice and do not normalize unsafe operation or suggest that required maintenance or groundwater control can be universally avoided.",
+        "Jurisdiction and regulatory scope are appropriate: the stem and explanation frame the concept as design guidance in Ontario sewage works, not as a prescriptive legal duty for every installation.",
+        "Learning objective is foundational and suitable for an Ontario OIT learner, focusing on a basic purpose of sewer bedding rather than detailed engineering design, installation methods, or calculations.",
+        "Exactly one option is correct, and none of the distractors accidentally restate the correct concept or introduce competing partially true statements."
+      ],
+      "requiredChanges": [
+        "Clarify in the sourceReference or explanation that the wording about Ontario guidance is paraphrased background and that the question does not rely on a specific clause or figure from the guideline, to avoid implying a precise regulatory prescription where none is cited."
+      ]
+    }
+  ]
+}

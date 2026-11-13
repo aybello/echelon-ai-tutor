@@ -31,26 +31,38 @@ describe("live visual-audit remediation", () => {
     const about = source("client/src/pages/About.tsx");
     const us = source("client/src/pages/USLanding.tsx");
 
-    expect(landing).toContain('certBody: "EOCP"');
-    expect(landing).toContain("{passPriceLabel}");
+    expect(landing).toContain("Not affiliated with MOECP, OWWCO, EOCP, WPI");
+    expect(landing).toContain("15 practice questions, 50 flashcards, 30 mock questions and 3 AI Tutor messages");
+    expect(landing).not.toContain("{passPriceLabel}");
+    expect(landing).toContain('section id="faq"');
+    expect(landing).toContain('<Link href="/refund">Refund policy</Link>');
+    expect(landing).toContain('aria-invalid={Boolean(fieldErrors.email)}');
+    expect(landing).toContain("Enter a valid email address.");
+    expect(landing).toContain("Enter at least 10 characters so we can help.");
     expect(about).toContain("15 practice questions, 50 flashcards, 30 mock-exam questions, and three AI Tutor messages");
     expect(about).not.toContain("FDEP exam in Florida");
     expect(about).not.toContain("Master's student");
-    expect(us).toContain("value={132400}");
-    expect(us).toContain("value={10700}");
+    expect(us).toContain('value="4 Streams"');
+    expect(us).toContain('value="Class I-IV"');
+    expect(us).toContain('value="398 Questions"');
+    expect(us).toContain('value="State Rules"');
+    expect(us).toContain("Dedicated US Class I, written in US units");
+    expect(us).toContain("not any single state's own regulations");
+    expect(us).not.toMatch(/132400|10700|58,260/);
     expect(us).not.toContain("const TESTIMONIALS");
   });
 
-  it("explains graduated team pricing as blended pricing", () => {
+  it("explains active graduated pricing and approved Teams checkout", () => {
     const pricing = source("client/src/pages/Pricing.tsx");
     const teams = source("client/src/pages/Teams.tsx");
 
-    for (const page of [pricing, teams]) {
-      expect(page).toContain("Graduated discounts apply only to seats inside each volume band");
-      expect(page).toMatch(/Average [Pp]er [Oo]perator/);
-    }
-    expect(teams).toContain("Blended order discount:");
+    expect(pricing).toContain("Graduated discounts apply only to seats inside each volume band");
+    expect(pricing).toMatch(/Average [Pp]er [Oo]perator/);
     expect(pricing).toContain("off those seats");
+    expect(teams).toContain("Stripe checkout and paid invoice");
+    expect(teams).toContain("createTeamCheckout.mutate");
+    expect(teams).toContain("Combine 3- and 6-month licences in one order.");
+    expect(teams).toContain("Blended discount:");
   });
 
   it("does not nest buttons inside links on audited public surfaces", () => {

@@ -1,4 +1,4 @@
-// OIT Practice Quiz — 551+ Questions — Unified via useQuizSession hook
+// OIT Practice Quiz — Unified via useQuizSession hook
 import { usePageMeta } from "@/hooks/usePageMeta";
 import QuizShell, { type ModuleConfig } from "@/components/QuizShell";
 import AITutor from "@/components/AITutor";
@@ -8,6 +8,11 @@ import { useQuestionBank } from "@/hooks/useQuestionBank";
 import { useQuizSession } from "@/hooks/useQuizSession";
 import QuizSkeleton from "@/components/QuizSkeleton";
 import QuizGate from "@/components/QuizGate";
+import {
+  formatQuestionBankAccessFeature,
+  formatQuestionBankDescription,
+  formatQuestionBankTitle,
+} from "@/lib/questionBankInventory";
 
 
 const MODULE_CONFIG: ModuleConfig[] = [
@@ -25,17 +30,22 @@ const MODULE_CONFIG: ModuleConfig[] = [
 ];
 
 export default function Home() {
+  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, totalQuestions, isLoading: bankLoading, dbUnavailable } = useQuestionBank("oit", "lazy", "practice");
+  const courseTitle = formatQuestionBankTitle("OIT", totalQuestions);
+
   usePageMeta({
-    title: "OIT Practice Quiz — 551+ Questions",
-    description: "Practice for the Ontario Operator-in-Training (OIT) exam with 551+ questions across 11 modules including Water Distribution. AI Tutor, step-by-step solutions, and confidence tracking included.",
+    title: courseTitle,
+    description: formatQuestionBankDescription("Ontario Operator-in-Training (OIT)", totalQuestions, "Water Treatment and Distribution fundamentals"),
     keywords: "water operator exam, OIT exam prep, wastewater certification, operator practice questions",
     noindex: true
   });
 
-  const { questions: dbQuestions, modules: dbModules, overviews: dbOverviews, formulaLinks, isLoading: bankLoading, dbUnavailable } = useQuestionBank("oit", "full", "practice");
   const allQuestions = dbQuestions;
 
-  const MODULES = MODULE_CONFIG;
+  // Bank categories determine filters; the local catalogue supplies styling only.
+  const MODULES: ModuleConfig[] = dbModules.map(name =>
+    MODULE_CONFIG.find(module => module.name === name) ?? { name },
+  );
 
   const session = useQuizSession({ examType: "oit", allQuestions, freeTutorPreview: true });
 
@@ -52,7 +62,7 @@ export default function Home() {
       examType="oit"
       currentPath="/quiz"
       courseLabel="Ontario OIT · Water Treatment"
-      courseTitle="OIT Practice Quiz — 551+ Questions"
+      courseTitle={courseTitle}
       courseSubtitle="Ontario OIT Water Exam Prep"
       headerGradient="linear-gradient(135deg, #1D4ED8 0%, #0F766E 100%)"
       headerIcon="💧"
@@ -74,6 +84,9 @@ export default function Home() {
       calcOnly={session.calcOnly}
       noCalcQuestions={session.noCalcQuestions}
       onCalcOnlyToggle={session.handleCalcOnlyToggle}
+      questionStatus={session.questionStatus}
+      questionError={session.questionError}
+      onRetryQuestions={session.retryQuestions}
       current={session.current}
       selected={session.selected}
       confidence={session.confidence}
@@ -104,7 +117,7 @@ export default function Home() {
           productName="OIT Water Treatment Exam Pass"
           priceLabel="CA$49"
           paidFeatures={[
-            "551 OIT Water questions — unlimited attempts",
+            formatQuestionBankAccessFeature("OIT Water", totalQuestions),
             "Complete 100-question timed mock exams",
             "Full flashcard deck and saved progress",
             "Module-by-module performance tracking",
@@ -126,7 +139,7 @@ export default function Home() {
               settings={session.quizSettings}
               onApply={session.handleSettingsApply}
               onClose={() => session.setSettingsOpen(false)}
-              totalQuestions={allQuestions.length}
+              totalQuestions={session.availableQuestionCount}
               trialUnlocked={session.trialUnlocked}
             />
           )}

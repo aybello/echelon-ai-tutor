@@ -5,7 +5,9 @@ export type AssociationJob = {
   province: string;
   sourceUrl: string;
   description: string | null;
-  jobType: string;
+  jobType: string | null;
+  postedAt?: Date | null;
+  closingAt?: Date | null;
 };
 
 export function parseAwwOA(html: string): AssociationJob[];
@@ -13,7 +15,7 @@ export function parseSwwa(html: string): AssociationJob[];
 export function parseCwwa(html: string): AssociationJob[];
 export function parseCwra(html: string): AssociationJob[];
 export function ingestAssociations(
-  upsertJob: (job: unknown) => Promise<void>
+  upsertJob: (job: unknown) => Promise<void>, options?: { signal?: AbortSignal }
 ): Promise<{
   errors: string[];
   totalFetched: number;

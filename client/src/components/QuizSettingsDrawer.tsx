@@ -4,7 +4,7 @@
  * Allows users to set: session size, difficulty filter, and timed mode.
  * Rendered via createPortal so it always overlays correctly.
  */
-import { useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 export type DifficultyFilter = "all" | "easy" | "medium" | "hard";
@@ -48,6 +48,25 @@ export default function QuizSettingsDrawer({
   trialUnlocked = false,
 }: QuizSettingsDrawerProps) {
   const [local, setLocal] = useState<QuizSettings>({ ...settings });
+  const panelRef = useRef<HTMLDivElement>(null);
+  const titleId = useId();
+  const closeRef = useRef(onClose);
+  closeRef.current = onClose;
+  useEffect(() => {
+    const previous = document.activeElement as HTMLElement | null;
+    const controls = () => Array.from(panelRef.current?.querySelectorAll<HTMLElement>('button:not(:disabled), input:not(:disabled), select:not(:disabled), [tabindex="0"]') ?? []);
+    controls()[0]?.focus();
+    const handleKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") { event.preventDefault(); closeRef.current(); }
+      if (event.key !== "Tab") return;
+      const items = controls();
+      const first = items[0], last = items.at(-1);
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+    };
+    document.addEventListener("keydown", handleKey);
+    return () => { document.removeEventListener("keydown", handleKey); previous?.focus(); };
+  }, []);
 
   function handleApply() {
     onApply(local);
@@ -68,7 +87,7 @@ export default function QuizSettingsDrawer({
         }}
       />
       {/* Drawer panel */}
-      <div
+      <div ref={panelRef} role="dialog" aria-modal="true" aria-labelledby={titleId}
         style={{
           position: "fixed",
           top: 0,
@@ -95,12 +114,12 @@ export default function QuizSettingsDrawer({
           color: "#fff",
         }}>
           <div>
-            <div style={{ fontSize: 16, fontWeight: 800, letterSpacing: "-0.3px" }}>⚙️ Quiz Settings</div>
+            <div id={titleId} style={{ fontSize: 16, fontWeight: 800, letterSpacing: "-0.3px" }}>Quiz Settings</div>
             <div style={{ fontSize: 12, opacity: 0.8, marginTop: 2 }}>
               Customise your study session
             </div>
           </div>
-          <button
+          <button type="button" aria-label="Close Quiz Settings"
             onClick={onClose}
             style={{
               width: 32, height: 32, borderRadius: "50%",

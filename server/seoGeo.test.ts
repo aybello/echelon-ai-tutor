@@ -5,9 +5,15 @@ import { getAllCourses } from "../shared/courseRegistry";
 import { INDIVIDUAL_PRODUCTS } from "../shared/products";
 import { COURSE_SEO_PAGES, REGION_SEO_PAGES } from "../shared/seoCatalog";
 import { buildDynamicSitemap } from "./blogSsr";
-import { buildLlmsTxt, STATIC_PAGE_META } from "./pageSsr";
+import { buildLlmsTxt, PUBLIC_SSR_CACHE_CONTROL, STATIC_PAGE_META } from "./pageSsr";
 
 describe("SEO and geographic landing-page contract", () => {
+  it("uses short edge caching only for static public SSR pages", () => {
+    expect(PUBLIC_SSR_CACHE_CONTROL).toContain("s-maxage=300");
+    expect(PUBLIC_SSR_CACHE_CONTROL).toContain("stale-while-revalidate");
+    expect(PUBLIC_SSR_CACHE_CONTROL).not.toContain("private");
+  });
+
   it("publishes one accurate landing page for every purchasable active course", () => {
     const productByKey = new Map(
       INDIVIDUAL_PRODUCTS.map(product => [product.key, product])
@@ -78,27 +84,32 @@ describe("SEO and geographic landing-page contract", () => {
       "utf8"
     );
 
-    const ctaLabel = "Try 15 OIT Questions Free →";
+    const ctaLabel = "Try 15 free questions (OIT)";
     const ctaIndex = landing.indexOf(ctaLabel);
     expect(ctaIndex).toBeGreaterThan(-1);
-    expect(landing).toContain("Which OIT exam would you like to preview?");
-    expect(landing).toContain('<Link\n                    href="/quiz"');
-    expect(landing).toContain('<Link\n                    href="/oit-ww"');
+    expect(landing).toContain("Which operator path would you like to explore?");
+    expect(landing).toContain('href="/quiz"');
+    expect(landing).toContain('href="/oit-ww"');
     expect(landing).toContain("Water OIT");
     expect(landing).toContain("Wastewater OIT");
-    expect(landing).not.toContain('href="#course-finder"');
+    expect(landing).toContain('href="#find-course"');
+    expect(landing).toContain('aria-controls="oit-preview-choice"');
   });
 
-  it("labels the manager dashboard as illustrative and keeps pricing copy clean", () => {
+  it("labels homepage previews as illustrative and does not display stale per-course price copy", () => {
     const landing = fs.readFileSync(
       path.resolve(process.cwd(), "client/src/pages/Landing.tsx"),
       "utf8"
     );
-    expect(landing).toContain("Illustrative dashboard · sample data");
-    expect(landing).toContain("Example Municipality");
-    expect(landing).toContain("{passPriceLabel}");
+    expect(landing).toContain("Illustrative preview");
+    expect(landing).toContain("Illustrative team training overview");
+    expect(landing).toContain('aria-label="Example worked solution from the study tools"');
+    expect(landing).toContain('className="homepage-preview-badge">Example');
+    expect(landing).toContain("Worked calculation · Water Class I");
+    expect(landing).not.toContain("Illustrative readiness by topic");
+    expect(landing).not.toContain("{passPriceLabel}");
     expect(landing).not.toContain('from CA$49');
-    expect(landing).not.toContain('{ name: "Alex Thompson"');
+    expect(landing).not.toContain('{ name: "Sample Learner 11"');
   });
 
   it("uses the shared account action only once on the Teams page", () => {
@@ -144,7 +155,7 @@ describe("SEO and geographic landing-page contract", () => {
   it("describes Echelon accurately for answer engines", () => {
     const llms = buildLlmsTxt();
     expect(llms).toContain("Echelon Institute is independent");
-    expect(llms).toContain("one selected course and 12 months");
+    expect(llms).toContain("one selected course and 12 months of access from successful payment");
     expect(llms).toContain("OIT also includes 50 flashcards, 30 mock-exam questions, and three AI Tutor messages");
     expect(llms).not.toContain("Alberta AWWOA");
     expect(llms).not.toContain("Saskatchewan SLWA");
@@ -179,9 +190,9 @@ describe("SEO and geographic landing-page contract", () => {
     const pricingSsr = STATIC_PAGE_META.find(page => page.path === "/pricing")?.bodyHtml ?? "";
 
     for (const source of [pricing, pricingSsr]) {
-      expect(source).toContain("Teams Course Pass");
-      expect(source).toContain("Teams All-Access");
-      expect(source).toMatch(/3-, 6-, or 12-month|3, 6, or 12 months/);
+      expect(source).toContain("Teams Flex");
+      expect(source).toContain("Teams Annual");
+      expect(source).toMatch(/3- or 6-month|3 or 6 months/);
       expect(source).toContain("five-seat minimum");
     }
   });

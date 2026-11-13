@@ -12,6 +12,7 @@
 
 import { describe, it, expect } from "vitest";
 import { courseKeyToLabel } from "../shared/courseRegistry";
+import { computeManagerReadiness } from "./_core/readiness";
 
 // ── Unit tests for CSV escaping helper ────────────────────────────────────────
 
@@ -51,56 +52,35 @@ describe("CSV escape helper", () => {
 
 // ── Unit tests for readiness score formula ────────────────────────────────────
 
-function computeReadinessScore(
-  accuracy: number | null,
-  totalAttempts: number,
-  mockExamsCompleted: number,
-  lastActiveRecent: boolean
-): number {
-  if (totalAttempts === 0 || accuracy === null) return 0;
-  return Math.min(
-    100,
-    Math.round(
-      accuracy * 0.5 +
-      Math.min(totalAttempts / 200, 1) * 20 +
-      Math.min(mockExamsCompleted * 5, 20) +
-      (lastActiveRecent ? 10 : 0)
-    )
-  );
-}
-
 describe("Operator readiness score formula", () => {
   it("returns 0 for operators with no attempts", () => {
-    expect(computeReadinessScore(null, 0, 0, false)).toBe(0);
+    expect(computeManagerReadiness({ accuracy: 0, totalAttempts: 0, mockAccuracy: 0, activeRecently: false })).toBe(0);
   });
 
   it("caps at 100", () => {
-    expect(computeReadinessScore(100, 500, 10, true)).toBe(100);
+    expect(computeManagerReadiness({ accuracy: 1, totalAttempts: 500, mockAccuracy: 1, activeRecently: true })).toBe(100);
   });
 
   it("gives partial score for low attempt count", () => {
-    // 80% accuracy * 0.5 = 40, 50 attempts / 200 * 20 = 5, 0 mocks, not recent = 45
-    expect(computeReadinessScore(80, 50, 0, false)).toBe(45);
+    // 80% × 50% + 0% × 25% + 25% × 15% + 0% × 10% = 43.75%, rounded to 44%.
+    expect(computeManagerReadiness({ accuracy: 0.8, totalAttempts: 50, mockAccuracy: 0, activeRecently: false })).toBe(44);
   });
 
   it("adds 10 points for recent activity", () => {
-    const withoutRecent = computeReadinessScore(80, 50, 0, false);
-    const withRecent = computeReadinessScore(80, 50, 0, true);
+    const withoutRecent = computeManagerReadiness({ accuracy: 0.8, totalAttempts: 50, mockAccuracy: 0, activeRecently: false });
+    const withRecent = computeManagerReadiness({ accuracy: 0.8, totalAttempts: 50, mockAccuracy: 0, activeRecently: true });
     expect(withRecent - withoutRecent).toBe(10);
   });
 
-  it("adds up to 20 points for mock exams (caps at 4 mocks)", () => {
-    const noMocks = computeReadinessScore(80, 200, 0, false);
-    const fourMocks = computeReadinessScore(80, 200, 4, false);
-    const eightMocks = computeReadinessScore(80, 200, 8, false);
-    expect(fourMocks - noMocks).toBe(20);
-    expect(eightMocks).toBe(fourMocks); // capped at 20
+  it("adds up to 25 points for completed mock performance", () => {
+    const noMocks = computeManagerReadiness({ accuracy: 0.8, totalAttempts: 200, mockAccuracy: 0, activeRecently: false });
+    const strongMocks = computeManagerReadiness({ accuracy: 0.8, totalAttempts: 200, mockAccuracy: 1, activeRecently: false });
+    expect(strongMocks - noMocks).toBe(25);
   });
 
   it("exam-ready threshold is 80+", () => {
-    // 80% accuracy, 200 attempts, 0 mocks, not recent = 80*0.5 + 20 = 60
-    // needs mocks or recent activity to reach 80
-    const score = computeReadinessScore(80, 200, 4, true);
+    // 80% × 50% + 100% × 25% + 100% × 15% + 100% × 10% = 90%.
+    const score = computeManagerReadiness({ accuracy: 0.8, totalAttempts: 200, mockAccuracy: 1, activeRecently: true });
     expect(score).toBeGreaterThanOrEqual(80);
   });
 });

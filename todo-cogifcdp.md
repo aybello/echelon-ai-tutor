@@ -10,13 +10,13 @@
 - [x] Add focused automated policy and forward-migration tests; provide clear empty activity states in the interface.
 - [x] Run type checks, tests, and responsive visual verification before publishing.
 - [ ] Document the release, decisions, and remaining action in the AI Context Hub.
-- [x] Review Codex’s current training-report implementation against Philip’s request and OWWCO record requirements without changing or publishing code.
+- [x] Review Codex’s current training-report implementation against Sample Learner 1’s request and OWWCO record requirements without changing or publishing code.
 - [x] Validate the relevant implementation tests and report whether the current build is fit for a demonstration review.
 - [x] Independently review GitHub PR #58 for implementation correctness, safety, test coverage, and product fit without changing or merging it.
 - [x] Re-review Codex’s corrected PR #58 against the published migration ledger and audit-record requirements once it is updated.
 - [x] Integrate the approved active-study tracking replacement with a reconciled forward migration and retire the superseded report screens.
 - [ ] Apply any approved additive database migration, validate the release, publish it, and update the AI Context Hub.
-- [x] Trace the completed purchase, entitlement, and code-delivery status for wwd-education-training@winnipeg.ca without changing customer access prematurely.
+- [x] Trace the completed purchase, entitlement, and code-delivery status for fixture-116@example.com without changing customer access prematurely.
 - [ ] Diagnose the access-code delivery failure and apply the least-invasive authorized recovery after verification.
 - [x] Re-review Codex’s updated PR #58 against the prior training-record, migration, audit, and access-code findings.
 - [x] Integrate the corrected PR only after validating compatibility with the live project and production database.

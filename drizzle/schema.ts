@@ -1,4 +1,4 @@
-import { boolean, decimal, index, int, mediumtext, mysqlEnum, mysqlTable, text, timestamp, varchar, uniqueIndex } from "drizzle-orm/mysql-core";
+import { boolean, datetime, decimal, index, int, mediumtext, mysqlEnum, mysqlTable, text, timestamp, varchar, uniqueIndex } from "drizzle-orm/mysql-core";
 import { sql } from "drizzle-orm";
 
 /**
@@ -61,12 +61,67 @@ export type InsertQuestionErrorReport = typeof questionErrorReports.$inferInsert
 export const trialEmails = mysqlTable("trial_emails", {
   id: int("id").autoincrement().primaryKey(),
   email: varchar("email", { length: 320 }).notNull(),
+  /**
+   * Optional second contact channel for a warm lead. Nullable on purpose: the
+   * gate must never block capture on it, because an email we hold beats a
+   * phone number we never got because the form demanded too much up front.
+   */
+  phone: varchar("phone", { length: 32 }),
   source: varchar("source", { length: 32 }).notNull().default("quiz_gate"), // where the gate was hit
   createdAt: timestamp("createdAt").defaultNow().notNull(),
+  /**
+   * Follow-up sequence state. 0 = only the capture-time study plan email was
+   * sent. 1 and 2 record the two bounded follow-ups. There is no stage 3: the
+   * sequence is deliberately finite so a lead who does not buy stops hearing
+   * from us instead of being drip-marketed forever.
+   */
+  followUpStage: int("followUpStage").notNull().default(0),
+  lastFollowUpAt: timestamp("lastFollowUpAt"),
+  /** One-click opt-out. Honoured before any follow-up send. */
+  optOut: boolean("optOut").notNull().default(false),
+  /** Random token backing the unsubscribe link in follow-up emails. */
+  unsubscribeToken: varchar("unsubscribeToken", { length: 128 }),
 });
 
 export type TrialEmail = typeof trialEmails.$inferSelect;
 export type InsertTrialEmail = typeof trialEmails.$inferInsert;
+
+/**
+ * Abandoned individual checkouts.
+ *
+ * A learner who reaches the Stripe payment page has already decided to buy.
+ * When that session expires the buyer used to vanish, because the email is
+ * typed on Stripe's page rather than ours. Stripe keeps a reopenable recovery
+ * link and the consented email; this table records that so exactly one
+ * recovery email can be sent per abandoned session and the outcome measured.
+ */
+export const abandonedCheckouts = mysqlTable("abandoned_checkouts", {
+  id: int("id").autoincrement().primaryKey(),
+  /** Expired Stripe checkout session. Unique, so a replayed webhook is idempotent. */
+  stripeSessionId: varchar("stripeSessionId", { length: 128 }).notNull().unique(),
+  email: varchar("email", { length: 320 }).notNull(),
+  productKey: varchar("productKey", { length: 64 }).notNull(),
+  productName: varchar("productName", { length: 128 }),
+  amountCents: int("amountCents").notNull().default(0),
+  currency: varchar("currency", { length: 8 }).notNull().default("cad"),
+  /** Stripe-hosted link that reopens the same cart. Null when Stripe gave none. */
+  recoveryUrl: varchar("recoveryUrl", { length: 512 }),
+  abandonedAt: timestamp("abandonedAt").defaultNow().notNull(),
+  /** Set only after a successful send, so a transient SMTP failure retries. */
+  recoveryEmailSentAt: timestamp("recoveryEmailSentAt"),
+  /** Set when a purchase by this email is later observed. */
+  recoveredAt: timestamp("recoveredAt"),
+  /** One-click opt-out. Honoured before any recovery send. */
+  optOut: boolean("optOut").notNull().default(false),
+  unsubscribeToken: varchar("unsubscribeToken", { length: 64 }),
+}, (t) => [
+  index("abandoned_checkouts_email_idx").on(t.email),
+  index("abandoned_checkouts_pending_idx").on(t.recoveryEmailSentAt, t.abandonedAt),
+  uniqueIndex("abandoned_checkouts_unsubscribeToken_idx").on(t.unsubscribeToken),
+]);
+
+export type AbandonedCheckout = typeof abandonedCheckouts.$inferSelect;
+export type InsertAbandonedCheckout = typeof abandonedCheckouts.$inferInsert;
 
 /** Exam results — saved when a user completes a mock exam */
 export const examResults = mysqlTable("exam_results", {
@@ -131,6 +186,111 @@ export const purchases = mysqlTable("purchases", {
 export type Purchase = typeof purchases.$inferSelect;
 export type InsertPurchase = typeof purchases.$inferInsert;
 
+/**
+ * Private evidence ledger for reconstructing historic entitlements after a
+ * database-loss event. Rows are evidence only: this table never grants access
+ * and no application code may create purchases or subscriptions from it without
+ * a separately approved, idempotent import operation.
+ */
+export const customerRecoveryEvidence = mysqlTable("customer_recovery_evidence", {
+  id: int("id").autoincrement().primaryKey(),
+  /** Stable, non-secret evidence key, e.g. `stripe:pi_123` or an archive-row digest. */
+  sourceEvidenceKey: varchar("sourceEvidenceKey", { length: 191 }).notNull(),
+  sourceType: mysqlEnum("sourceType", ["stripe_payment", "stripe_checkout", "manual_document"]).notNull(),
+  /** Reference to a private archive manifest only, never a public file URL. */
+  sourceArchiveRef: varchar("sourceArchiveRef", { length: 191 }).notNull(),
+  stripePaymentIntentId: varchar("stripePaymentIntentId", { length: 128 }),
+  stripeCheckoutSessionId: varchar("stripeCheckoutSessionId", { length: 128 }),
+  stripeCustomerId: varchar("stripeCustomerId", { length: 128 }),
+  customerEmail: varchar("customerEmail", { length: 320 }).notNull(),
+  normalizedEmail: varchar("normalizedEmail", { length: 320 }).notNull(),
+  customerName: varchar("customerName", { length: 128 }),
+  amountMinor: int("amountMinor").notNull(),
+  currency: varchar("currency", { length: 3 }).notNull(),
+  paymentStatus: mysqlEnum("paymentStatus", ["succeeded", "refunded", "disputed", "unknown"]).notNull(),
+  paymentCreatedAt: timestamp("paymentCreatedAt"),
+  /** Evidence categorization only. This field never grants a product entitlement. */
+  recoverySubjectType: mysqlEnum("recoverySubjectType", ["individual", "organization_manager"]),
+  /** Private review context, not an organization record. */
+  recoveryOrganizationName: varchar("recoveryOrganizationName", { length: 128 }),
+  recoveryOrganizationGroup: mysqlEnum("recoveryOrganizationGroup", ["treatment", "distribution", "unspecified"]),
+  /** May be blank until the source seat count is reconciled. Never creates licences. */
+  recoverySeatCount: int("recoverySeatCount"),
+  candidateProductKey: varchar("candidateProductKey", { length: 64 }),
+  candidateAccessExpiresAt: timestamp("candidateAccessExpiresAt"),
+  /** staged → mapped → claim_verified → approved; rejected and imported are terminal. */
+  reviewStatus: mysqlEnum("reviewStatus", ["staged", "mapped", "claim_verified", "approved", "rejected", "imported"]).notNull().default("staged"),
+  claimVerifiedAt: timestamp("claimVerifiedAt"),
+  reviewedByUserId: int("reviewedByUserId"),
+  reviewedAt: timestamp("reviewedAt"),
+  reviewNote: text("reviewNote"),
+  importedPurchaseId: int("importedPurchaseId"),
+  importedAt: timestamp("importedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (t) => [
+  uniqueIndex("customer_recovery_evidence_source_key_unique").on(t.sourceEvidenceKey),
+  uniqueIndex("customer_recovery_evidence_payment_intent_unique").on(t.stripePaymentIntentId),
+  uniqueIndex("customer_recovery_evidence_checkout_session_unique").on(t.stripeCheckoutSessionId),
+  index("customer_recovery_evidence_status_idx").on(t.reviewStatus, t.createdAt),
+  index("customer_recovery_evidence_email_idx").on(t.normalizedEmail),
+]);
+
+export type CustomerRecoveryEvidence = typeof customerRecoveryEvidence.$inferSelect;
+export type InsertCustomerRecoveryEvidence = typeof customerRecoveryEvidence.$inferInsert;
+
+/**
+ * Durable, append-only recovery batches for explicitly approved exceptional
+ * organization restoration. They bind a private source archive, owner approval,
+ * preflight plan and post-commit output without reusing live Stripe identifiers.
+ */
+export const customerRecoveryBatches = mysqlTable("customer_recovery_batches", {
+  id: int("id").autoincrement().primaryKey(),
+  recoveryKey: varchar("recoveryKey", { length: 191 }).notNull(),
+  planDigest: varchar("planDigest", { length: 64 }).notNull(),
+  archiveSha256: varchar("archiveSha256", { length: 64 }).notNull(),
+  authorizationRef: varchar("authorizationRef", { length: 255 }).notNull(),
+  confirmationTokenSha256: varchar("confirmationTokenSha256", { length: 64 }).notNull(),
+  scriptVersion: varchar("scriptVersion", { length: 32 }).notNull(),
+  beforeSnapshotSha256: varchar("beforeSnapshotSha256", { length: 64 }).notNull(),
+  backupArtifactPath: varchar("backupArtifactPath", { length: 512 }).notNull(),
+  status: mysqlEnum("status", ["applying", "applied"]).notNull(),
+  outputDigest: varchar("outputDigest", { length: 64 }),
+  appliedAt: timestamp("appliedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, (t) => [
+  uniqueIndex("customer_recovery_batches_key_unique").on(t.recoveryKey),
+  uniqueIndex("customer_recovery_batches_plan_unique").on(t.planDigest),
+]);
+
+export type CustomerRecoveryBatch = typeof customerRecoveryBatches.$inferSelect;
+
+/**
+ * Immutable evidence-to-output mapping for organization recovery. This is an
+ * audit record only; organization and manager records are created separately.
+ */
+export const customerRecoveryImportItems = mysqlTable("customer_recovery_import_items", {
+  id: int("id").autoincrement().primaryKey(),
+  batchId: int("batchId").notNull(),
+  evidenceId: int("evidenceId").notNull(),
+  organizationId: int("organizationId").notNull(),
+  managerMemberId: int("managerMemberId").notNull(),
+  recoveryGroup: mysqlEnum("recoveryGroup", ["treatment", "distribution"]).notNull(),
+  seatCount: int("seatCount").notNull(),
+  termStart: datetime("termStart").notNull(),
+  termEnd: datetime("termEnd").notNull(),
+  externalReference: varchar("externalReference", { length: 191 }).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, (t) => [
+  uniqueIndex("customer_recovery_import_items_evidence_unique").on(t.evidenceId),
+  uniqueIndex("customer_recovery_import_items_organization_unique").on(t.organizationId),
+  uniqueIndex("customer_recovery_import_items_manager_unique").on(t.managerMemberId),
+  uniqueIndex("customer_recovery_import_items_reference_unique").on(t.externalReference),
+  index("customer_recovery_import_items_batch_idx").on(t.batchId),
+]);
+
+export type CustomerRecoveryImportItem = typeof customerRecoveryImportItems.$inferSelect;
+
 /** Active purchase fields; deliberately excludes the retired welcome marker. */
 export const purchaseReadColumns = {
   id: purchases.id,
@@ -193,8 +353,14 @@ export const contactSubmissions = mysqlTable("contact_submissions", {
   email: varchar("email", { length: 320 }).notNull(),
   subject: varchar("subject", { length: 128 }).notNull(),
   message: text("message").notNull(),
+  // Nullable additive fields preserve every historical general-contact row.
+  requestKey: varchar("requestKey", { length: 36 }),
+  organization: varchar("organization", { length: 128 }),
+  partnershipType: varchar("partnershipType", { length: 64 }),
+  followUpStatus: varchar("followUpStatus", { length: 16 }).default("new").notNull(),
+  notificationStatus: varchar("notificationStatus", { length: 16 }).default("pending").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
-});
+}, table => [uniqueIndex("contact_request_key_unique").on(table.requestKey)]);
 
 export type ContactSubmission = typeof contactSubmissions.$inferSelect;
 export type InsertContactSubmission = typeof contactSubmissions.$inferInsert;
@@ -225,6 +391,7 @@ export const examDates = mysqlTable("exam_dates", {
   organizationMemberId: int("organizationMemberId"),
   courseKey: varchar("courseKey", { length: 64 }),
 }, (t) => [
+  uniqueIndex("exam_dates_email_product_unique").on(t.email, t.productKey),
   index("exam_dates_org_member_idx").on(t.orgId, t.organizationMemberId, t.courseKey, t.examDate),
 ]);
 export type ExamDate = typeof examDates.$inferSelect;
@@ -249,6 +416,10 @@ export const questionAttempts = mysqlTable("question_attempts", {
   /** Issue Q: client-generated UUID identifying the quiz session this attempt belongs to.
    *  Nullable for historic rows; new rows always include it. */
   sessionId: varchar("sessionId", { length: 36 }),
+  /** One answer/save operation, distinct from the multi-answer quiz session. */
+  operationId: varchar("operationId", { length: 36 }),
+  /** SHA-256 binding to the issued actor, receipt and exact submitted payload. */
+  operationPayloadHash: varchar("operationPayloadHash", { length: 64 }),
   /** Server-scored: the option index the student selected (0-3). */
   selectedIndex: int("selectedIndex"),
   /** The bank key for this attempt — used for org analytics scoping. */
@@ -259,17 +430,47 @@ export const questionAttempts = mysqlTable("question_attempts", {
   orgId: int("orgId"),
   /** Organization member ID for team plan operators — null for individual learners. */
   organizationMemberId: int("organizationMemberId"),
+  /** Server-issued Flex membership; null for individual, Annual and legacy study. */
+  flexLicenceId: int("flexLicenceId"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 }, (t) => [
   // Issue O: composite indexes for the frequent userId/studentEmail + createdAt filter pattern
   index("qa_userid_createdat_idx").on(t.userId, t.createdAt),
   index("qa_email_createdat_idx").on(t.studentEmail, t.createdAt),
   // Issue Q: index for GROUP BY sessionId queries in recentSessions
+  index("qa_flex_licence_created_idx").on(t.flexLicenceId, t.createdAt),
   index("qa_sessionid_idx").on(t.sessionId),
   index("qa_org_member_course_created_idx").on(t.orgId, t.organizationMemberId, t.courseKey, t.createdAt),
+  uniqueIndex("qa_operation_id_unique").on(t.operationId),
 ]);
 export type QuestionAttempt = typeof questionAttempts.$inferSelect;
 export type InsertQuestionAttempt = typeof questionAttempts.$inferInsert;
+
+/**
+ * Immutable before-images for controlled question-bank releases.
+ *
+ * The legacy attempt ledger records a question ID and selected index rather than
+ * the question content shown at attempt time. A release records the exact
+ * pre-change question payload here before an existing item is revised, allowing
+ * historical attempts to remain interpretable without modifying learner data.
+ */
+export const questionContentSnapshots = mysqlTable("question_content_snapshots", {
+  id: int("id").autoincrement().primaryKey(),
+  releaseKey: varchar("releaseKey", { length: 128 }).notNull(),
+  bankKey: varchar("bankKey", { length: 64 }).notNull(),
+  questionId: int("questionId").notNull(),
+  questionNum: int("questionNum").notNull(),
+  sourceContentVersion: int("sourceContentVersion").notNull(),
+  contentHash: varchar("contentHash", { length: 64 }).notNull(),
+  /** JSON before-image of the educational content and governance fields only; no learner data. */
+  payload: mediumtext("payload").notNull(),
+  capturedAt: timestamp("capturedAt").defaultNow().notNull(),
+}, (t) => [
+  uniqueIndex("question_snapshot_release_question_idx").on(t.releaseKey, t.questionId),
+  index("question_snapshot_bank_question_idx").on(t.bankKey, t.questionId),
+]);
+export type QuestionContentSnapshot = typeof questionContentSnapshots.$inferSelect;
+export type InsertQuestionContentSnapshot = typeof questionContentSnapshots.$inferInsert;
 
 /** Student profiles — live topic accuracy snapshot, updated after each quiz session */
 export const studentProfiles = mysqlTable("student_profiles", {
@@ -1144,6 +1345,8 @@ export const stripeEventLog = mysqlTable("stripe_event_log", {
   status: varchar("status", { length: 40 }).notNull().default("pending"),
   dbProcessed: boolean("dbProcessed").notNull().default(false),
   emailDelivered: boolean("emailDelivered").notNull().default(false),
+  /** Paid invoice conversion events have been persisted to product analytics. */
+  analyticsProcessed: boolean("analyticsProcessed").notNull().default(false),
   attemptCount: int("attemptCount").notNull().default(0),
   processingToken: varchar("processingToken", { length: 64 }),
   processingStartedAt: timestamp("processingStartedAt"),
@@ -1339,7 +1542,8 @@ export const teamFlexExtensions = mysqlTable("team_flex_extensions", {
   id: int("id").autoincrement().primaryKey(),
   licenceId: int("licenceId").notNull(),
   organizationId: int("organizationId").notNull(),
-  purchaserUserId: int("purchaserUserId").notNull(),
+  /** OTP-verified Course Pass operators do not necessarily have an OAuth user row. */
+  purchaserUserId: int("purchaserUserId"),
   extensionDays: int("extensionDays").notNull().default(90),
   priceCents: int("priceCents").notNull(),
   stripeCheckoutSessionId: varchar("stripeCheckoutSessionId", { length: 128 }),
@@ -1368,3 +1572,107 @@ export const changelog = mysqlTable("changelog", {
 });
 export type ChangelogEntry = typeof changelog.$inferSelect;
 export type InsertChangelogEntry = typeof changelog.$inferInsert;
+
+/** Durable individual purchase email delivery. Existing purchases are not backfilled. */
+export const purchaseEmailOutbox = mysqlTable("purchase_email_outbox", {
+  id: int("id").autoincrement().primaryKey(),
+  stripeSessionId: varchar("stripeSessionId", { length: 255 }).notNull(),
+  payload: text("payload").notNull(),
+  status: mysqlEnum("status", ["pending", "sending", "sent", "failed"]).default("pending").notNull(),
+  attempts: int("attempts").default(0).notNull(),
+  availableAt: timestamp("availableAt").defaultNow().notNull(),
+  leaseToken: varchar("leaseToken", { length: 36 }),
+  sentAt: timestamp("sentAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, t => [uniqueIndex("purchase_email_session_unique_idx").on(t.stripeSessionId),
+  index("purchase_email_delivery_idx").on(t.status, t.availableAt)]);
+
+/** Course-wide state, independent of the currently downloaded flashcard sample. */
+export const flashcardProgressState = mysqlTable("flashcard_progress_state", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }).notNull(),
+  examType: varchar("examType", { length: 64 }).notNull(),
+  knownIds: mediumtext("knownIds").notNull(),
+  totalCards: int("totalCards").notNull().default(0),
+}, t => [uniqueIndex("flashcard_state_identity_idx").on(t.email, t.examType)]);
+export const flashcardProgressOperations = mysqlTable("flashcard_progress_operations", {
+  operationId: varchar("operationId", { length: 64 }).primaryKey(),
+  email: varchar("email", { length: 320 }).notNull(),
+  examType: varchar("examType", { length: 64 }).notNull(),
+  payloadHash: varchar("payloadHash", { length: 64 }).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+/** Shared managed-job leases and conservative SMTP delivery receipts. */
+export const scheduledWork = mysqlTable("scheduled_work", {
+  workKey: varchar("workKey", { length: 191 }).primaryKey(),
+  leaseVersion: int("leaseVersion").notNull().default(0),
+  status: varchar("status", { length: 16 }).notNull().default("pending"),
+  claimToken: varchar("claimToken", { length: 36 }),
+  leaseUntil: timestamp("leaseUntil"),
+  attempts: int("attempts").notNull().default(0),
+  lastError: text("lastError"),
+  completedAt: timestamp("completedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+/** Separate pilot learning records; never treated as exam-pass entitlements or approved CEUs. */
+export const ceuLearningRecords = mysqlTable('ceu_learning_records', {
+  id: int('id').autoincrement().primaryKey(),
+  studentEmail: varchar('studentEmail', {length:320}).notNull(),
+  courseKey: varchar('courseKey', {length:80}).notNull(),
+  courseVersion: varchar('courseVersion', {length:32}).notNull(),
+  operatorNumber: varchar('operatorNumber', {length:32}).notNull(),
+  activeSeconds: int('activeSeconds').notNull().default(0),
+  exerciseAttempts: int('exerciseAttempts').notNull().default(0),
+  revision: int('revision').notNull().default(0),
+  stateJson: mediumtext('stateJson').notNull(),
+  createdAt: timestamp('createdAt').defaultNow().notNull(),
+  updatedAt: timestamp('updatedAt').defaultNow().onUpdateNow().notNull(),
+}, table => [uniqueIndex('ceu_learner_course_edition').on(table.studentEmail,table.courseKey,table.courseVersion)]);
+
+/** Atomic time reservations enforce the seven-hour limit across all CEU courses. */
+export const ceuLearningDailyTime = mysqlTable('ceu_learning_daily_time', {
+  studentEmail: varchar('studentEmail', {length:320}).notNull(),
+  localDate: varchar('localDate', {length:10}).notNull(),
+  seconds: int('seconds').notNull().default(0),
+  lastCreditedAt: timestamp('lastCreditedAt'),
+}, table => [uniqueIndex('ceu_learning_daily_time_pk').on(table.studentEmail, table.localDate)]);
+
+/** Restart-safe editorial state. Draft/source payload and provider IDs are never public. */
+export const blogAutomationRuns = mysqlTable("blog_automation_runs", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  runKey: varchar("runKey", { length: 32 }).notNull(),
+  status: varchar("status", { length: 16 }).notNull(),
+  progress: mediumtext("progress").notNull(),
+  weeklyTaskUid: varchar("weeklyTaskUid", { length: 65 }),
+  workerTaskUid: varchar("workerTaskUid", { length: 65 }),
+  claimToken: varchar("claimToken", { length: 64 }),
+  leaseUntil: timestamp("leaseUntil"),
+  attempts: int("attempts").notNull().default(0),
+  lastError: varchar("lastError", { length: 500 }),
+  startedAt: timestamp("startedAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, table => [
+  index("blog_weekly_task_idx").on(table.weeklyTaskUid),
+  index("blog_worker_task_idx").on(table.workerTaskUid),
+]);
+
+/** Sparse audit evidence for the sole automatic recovery policy that never retries historic editorial content. */
+export const blogAutomationRunArchives = mysqlTable("blog_automation_run_archives", {
+  id: int("id").autoincrement().primaryKey(),
+  sourceRunId: varchar("sourceRunId", { length: 64 }).notNull(),
+  sourceRunKey: varchar("sourceRunKey", { length: 32 }).notNull(),
+  sourceStatus: varchar("sourceStatus", { length: 16 }).notNull(),
+  phase: varchar("phase", { length: 32 }).notNull(),
+  attempts: int("attempts").notNull(),
+  failureService: varchar("failureService", { length: 32 }).notNull(),
+  failureKind: varchar("failureKind", { length: 64 }).notNull(),
+  archiveReason: varchar("archiveReason", { length: 64 }).notNull(),
+  sourceStartedAt: timestamp("sourceStartedAt").notNull(),
+  sourceFailedAt: timestamp("sourceFailedAt").notNull(),
+  archivedAt: timestamp("archivedAt").defaultNow().notNull(),
+}, table => [
+  uniqueIndex("blog_run_archive_source_unique").on(table.sourceRunId, table.sourceRunKey),
+  index("blog_run_archive_archived_idx").on(table.archivedAt),
+]);

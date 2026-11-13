@@ -74,9 +74,28 @@ export const ELECTRICIAN_309A_MODULE_TARGETS = Object.fromEntries(
   ELECTRICIAN_309A_MODULES.map((module) => [ELECTRICIAN_309A_MODULE_LABELS[module.code], module.examQuestions]),
 ) as Record<string, number>;
 
+/** Safe metadata for the 309A mock landing page. */
+export function useElectrician309AMockMetadata() {
+  const query = trpc.electricianReview.get309ABetaMetadata.useQuery(undefined, {
+    staleTime: 60_000,
+    retry: 2,
+    retryDelay: 1500,
+  });
+
+  return {
+    moduleTargets: ELECTRICIAN_309A_MODULE_TARGETS,
+    totalQuestions: query.data?.total ?? 0,
+    isLoading: query.isLoading,
+    dbUnavailable: !query.isLoading && (!query.isSuccess || !query.data || query.data.total === 0),
+  };
+}
+
 /** Adapts governed certification records to the standard Echelon course-bank contract. */
 export function useElectrician309ABank() {
-  const query = trpc.electricianReview.get309ABetaPractice.useQuery(undefined, {
+  const accessToken = useMemo(() => {
+    try { return localStorage.getItem("echelon_access_token") ?? undefined; } catch { return undefined; }
+  }, []);
+  const query = trpc.electricianReview.get309ABetaPractice.useQuery({ accessToken }, {
     staleTime: 1000 * 60 * 5,
     retry: 4,
     retryDelay: 5000,
@@ -84,6 +103,7 @@ export function useElectrician309ABank() {
 
   const questions = useMemo<DBQuestion[]>(() => (query.data?.questions ?? []).map((question) => ({
     id: question.id,
+    attemptToken: question.attemptToken,
     module: ELECTRICIAN_309A_MODULE_LABELS[question.module] ?? question.module,
     difficulty: question.difficulty,
     question: question.question,

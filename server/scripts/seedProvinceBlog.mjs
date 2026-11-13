@@ -3,6 +3,7 @@
  * Run: node server/scripts/seedProvinceBlog.mjs
  */
 import mysql from "mysql2/promise";
+import { eocpArticleCorrections } from "../content/eocpArticleCorrections.mjs";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -11,136 +12,16 @@ const conn = await mysql.createConnection(process.env.DATABASE_URL);
 const posts = [
   // ─── BRITISH COLUMBIA ───────────────────────────────────────────────────────
   {
-    slug: "bc-water-operator-certification-guide",
-    title: "BC Water Operator Certification: A Complete Guide (EOCP Classes D–A)",
-    excerpt:
-      "Everything you need to know about getting certified as a water or wastewater operator in British Columbia — from EOCP class levels and exam requirements to BCWWA training resources.",
-    content: `## What Is the EOCP?
-
-In British Columbia, water and wastewater operators are certified through the **Environmental Operators Certification Program (EOCP)**. The EOCP is a non-profit society that administers certification exams and maintains the registry of certified operators in BC. Whether you operate a small community water system or a large municipal treatment plant, EOCP certification is required under the *Drinking Water Protection Act* and the *Environmental Management Act*.
-
-## Certification Classes in BC
-
-BC uses a letter-based class system for water treatment and distribution operators:
-
-| Class | Water Treatment | Water Distribution | Wastewater Treatment | Wastewater Collection |
-|-------|----------------|-------------------|---------------------|----------------------|
-| D | Entry level | Entry level | Entry level | Entry level |
-| C | Small systems | Small systems | Small systems | Small systems |
-| B | Medium systems | Medium systems | Medium systems | Medium systems |
-| A | Large/complex | Large/complex | Large/complex | Large/complex |
-
-Most new operators start by writing the **Class D** exam, which covers fundamental concepts in water treatment, distribution, wastewater treatment, or collection depending on your stream.
-
-## How to Get Certified
-
-1. **Meet the eligibility requirements.** For Class D, you typically need a Grade 12 diploma (or equivalent) and some hands-on operating experience. Higher classes require progressively more experience and education.
-2. **Complete an approved training course.** The BC Water & Waste Association (BCWWA) offers courses specifically designed to prepare you for each EOCP exam level. BCIT and Thompson Rivers University also offer accredited programs.
-3. **Apply to write the EOCP exam.** Submit your application through the EOCP website with proof of education and experience. Exams are written at approved testing centres across BC.
-4. **Pass the exam.** The passing score is 70%. Exams are multiple-choice and cover process knowledge, regulations, math, and safety.
-5. **Maintain your certification.** BC operators must renew their certification every three years by earning Continuing Education Units (CEUs).
-
-## What Does the EOCP Exam Cover?
-
-The content of each EOCP exam varies by class and stream, but common topics include:
-
-- **Water treatment:** coagulation, flocculation, sedimentation, filtration, disinfection (chlorination, UV, ozone), pH control, and corrosion control
-- **Water distribution:** pipe materials, pressure zones, cross-connection control, water quality monitoring, and system maintenance
-- **Wastewater treatment:** primary, secondary, and tertiary treatment processes; sludge handling; effluent quality standards
-- **Wastewater collection:** gravity sewers, lift stations, infiltration/inflow, and maintenance
-- **Regulations:** BC Drinking Water Protection Act, Environmental Management Act, and relevant regulations
-- **Math and calculations:** flow rates, chemical dosing, CT values, chlorine residuals, and hydraulics
-
-## BCWWA Training Resources
-
-The **BC Water & Waste Association (BCWWA)** is the primary training provider for BC operators. Their course catalogue includes:
-
-- Water Treatment 1, 2, and 3 (aligned to Classes D, C, and B/A)
-- Wastewater Treatment 1, 2, and 3
-- Water Distribution 1 and 2
-- Wastewater Collection 1 and 2
-- Specialized workshops on disinfection, instrumentation, and asset management
-
-Courses are available online, in-person, and through regional chapters across BC.
-
-## How Echelon Can Help
-
-Echelon Institute offers adaptive practice questions, AI-powered tutoring, and interactive process guides that align with EOCP exam content. While our question banks are currently optimized for Ontario's OIT and Class 1–3 exams, the underlying science — disinfection chemistry, hydraulics, treatment processes — is the same across Canada. Our **WPI (Water & Process Industry)** course track is designed for operators in BC, Alberta, Saskatchewan, and Manitoba who need to master the same core competencies tested on EOCP exams.
-
-Practice with Echelon to build the process knowledge and calculation skills that will carry you through your EOCP exam and your entire career.`,
+    ...eocpArticleCorrections.find(post => post.slug === "bc-water-operator-certification-guide"),
     author: "Echelon Institute",
     tags: "British Columbia,EOCP,BC water operator,BCWWA,water certification",
-    metaTitle: "BC Water Operator Certification Guide: EOCP Classes D to A | Echelon",
-    metaDescription:
-      "Complete guide to BC water operator certification through the EOCP. Learn about Class D to A exams, BCWWA training, eligibility requirements, and how to prepare.",
-    readingTimeMinutes: 8,
     published: 1,
     publishedAt: new Date("2026-05-20"),
   },
   {
-    slug: "eocp-exam-study-tips-bc",
-    title: "How to Pass the EOCP Exam in BC: Study Tips and Practice Strategies",
-    excerpt:
-      "Practical study strategies for BC water and wastewater operators preparing for the EOCP certification exam — from Class D entry level to Class A advanced.",
-    content: `## The EOCP Exam: What to Expect
-
-The Environmental Operators Certification Program (EOCP) exam in British Columbia is a multiple-choice test administered at approved testing centres. Depending on the class and stream you are writing, the exam typically contains 80–120 questions and must be completed within a set time limit. The passing score is **70%**.
-
-Many candidates underestimate the exam, particularly at the Class D level. While Class D covers foundational concepts, the questions are designed to test practical understanding — not just memorization. You need to know *why* treatment processes work, not just *what* they are.
-
-## Start With the EOCP Candidate Handbook
-
-Before you study anything else, download the **EOCP Candidate Handbook** from the EOCP website (eocp.ca). This document outlines the exact competencies tested at each class level. Use it as your study roadmap — if a topic is not in the handbook, it is unlikely to appear on the exam.
-
-## Core Topics to Master
-
-### Water Treatment Stream
-- Coagulation and flocculation: jar test, optimal coagulant dose, pH adjustment
-- Sedimentation: surface overflow rate, detention time calculations
-- Filtration: filter run length, backwash procedures, turbidity limits
-- Disinfection: chlorine chemistry, CT values, contact time, residual monitoring
-- pH and alkalinity: carbonate system, corrosion control, Langelier Saturation Index
-
-### Wastewater Treatment Stream
-- Preliminary treatment: screening, grit removal
-- Primary treatment: suspended solids removal, BOD reduction
-- Secondary treatment: activated sludge, SVI, MLSS, F/M ratio
-- Sludge handling: thickening, digestion, dewatering
-- Effluent standards: BC Environmental Management Act limits
-
-### Math and Calculations
-The EOCP exam always includes calculation questions. Key formulas to know:
-- Flow rate: Q = A × V
-- Chemical dose: Dose (mg/L) × Flow (L/day) ÷ 1,000,000 = kg/day
-- CT value: CT = C × T (concentration × contact time)
-- Chlorine demand: Demand = Applied dose − Residual
-- Hydraulic detention time: HDT = Volume ÷ Flow rate
-
-## Study Schedule Recommendation
-
-| Week | Focus |
-|------|-------|
-| 1–2 | Review EOCP candidate handbook; identify weak areas |
-| 3–4 | Water treatment processes (coagulation through disinfection) |
-| 5–6 | Regulations, safety, and operations |
-| 7 | Math and calculations — practice daily |
-| 8 | Full practice exams and review of wrong answers |
-
-## Use BCWWA Courses
-
-The BCWWA offers exam preparation courses for each class level. These courses are taught by experienced operators and are closely aligned with EOCP exam content. If you can only take one course, take the one that matches the class you are writing.
-
-## Practice With Adaptive Questions
-
-One of the most effective study methods is answering practice questions under exam conditions. Echelon Institute's adaptive quiz engine serves questions based on your performance — focusing more on your weak areas and less on what you already know. The underlying process science is identical whether you are writing the EOCP in BC or the OIT exam in Ontario.
-
-Start with our free OIT practice questions to build your foundation, then use the WPI course track for content specifically relevant to BC operators.`,
+    ...eocpArticleCorrections.find(post => post.slug === "eocp-exam-study-tips-bc"),
     author: "Echelon Institute",
     tags: "British Columbia,EOCP exam,study tips,BC water operator,exam prep",
-    metaTitle: "How to Pass the EOCP Exam in BC: Study Tips for Water Operators | Echelon",
-    metaDescription:
-      "Study strategies for BC water and wastewater operators writing the EOCP certification exam. Covers Class D to A content, math formulas, and a study schedule.",
-    readingTimeMinutes: 7,
     published: 1,
     publishedAt: new Date("2026-05-28"),
   },
@@ -453,67 +334,9 @@ Our **WPI course track** is designed for operators across Western Canada, includ
 
   // ─── CANADA-WIDE ─────────────────────────────────────────────────────────────
   {
-    slug: "canadian-water-operator-certification-by-province",
-    title: "Canadian Water Operator Certification by Province: Ontario, BC, Alberta, Saskatchewan, Manitoba",
-    excerpt:
-      "A side-by-side comparison of water and wastewater operator certification requirements across Canada's five most populous provinces — helping you understand how certification works wherever you are.",
-    content: `## Certification Across Canada: One Career, Many Pathways
-
-Canada does not have a single national water operator certification. Instead, each province administers its own certification program under provincial legislation. While the underlying science is the same everywhere — water treatment, disinfection, hydraulics, and regulations — the certification bodies, class levels, and exam systems differ from province to province.
-
-This guide compares certification in Ontario, British Columbia, Alberta, Saskatchewan, and Manitoba to help you understand your pathway regardless of where you work.
-
-## Province-by-Province Comparison
-
-| Province | Certifying Body | Exam System | Class/Level System | Renewal Period |
-|----------|----------------|-------------|-------------------|----------------|
-| Ontario | MECP (Ministry) | Province-specific | OIT → Class 1–4 | 3 years |
-| British Columbia | EOCP | Province-specific | Classes D, C, B, A | 3 years |
-| Alberta | Alberta Environment | Province-specific | Levels 1–4 | 3 years |
-| Saskatchewan | OCB | Province-specific | Levels 1–4 | 2 years |
-| Manitoba | Manitoba Environment | ABC (standardized) | Levels 1–4 + Small Systems | 5 years |
-
-## Ontario: OIT and Class 1–4
-
-Ontario's certification system is among the most structured in Canada. New operators typically begin as an **Operator-in-Training (OIT)**, which allows them to work under a certified operator while gaining experience. After meeting experience and exam requirements, operators advance through **Class 1, 2, 3, and 4** — with Class 4 being the highest level for large, complex treatment plants.
-
-Ontario's certification is governed by the *Safe Drinking Water Act* and *O. Reg. 128/04* (drinking water) and *O. Reg. 129/04* (wastewater). The Ministry of the Environment, Conservation and Parks (MECP) administers the exams.
-
-## British Columbia: EOCP Classes D to A
-
-BC uses a letter-based system administered by the **Environmental Operators Certification Program (EOCP)**. Class D is the entry level, and Class A is the highest for large, complex facilities. The **BC Water & Waste Association (BCWWA)** is the primary training provider.
-
-One distinctive feature of BC's system is that it covers a wide range of facility types, including small community water systems that serve rural and Indigenous communities across the province.
-
-## Alberta: AWWOA and Levels 1–4
-
-Alberta's certification is governed by **Alberta Environment and Protected Areas**, with the **Alberta Water & Wastewater Operators Association (AWWOA)** providing training. The four-level system (Level 1 through 4) applies separately to water treatment, water distribution, wastewater treatment, and wastewater collection.
-
-Alberta operators benefit from a strong professional association and a robust training calendar, with courses available in multiple formats including online self-study.
-
-## Saskatchewan: OCB Levels 1–4
-
-Saskatchewan's **Operator Certification Board (OCB)** administers certification independently from the provincial government. Saskatchewan Polytechnic is the primary training provider. The two-year renewal cycle is shorter than most other provinces, reflecting a commitment to keeping operators current.
-
-## Manitoba: ABC Exams and 18 Categories
-
-Manitoba is unique in using the **ABC (Association of Boards of Certification)** examination system — a standardized exam platform also used in many US states. This makes Manitoba certifications more portable and recognized across North America. Manitoba has 18 distinct exam categories covering small systems, water treatment, water distribution, wastewater treatment, and wastewater collection at multiple levels.
-
-## Is Certification Transferable Between Provinces?
-
-Certification is generally **not automatically transferable** between provinces. However, most provinces have reciprocity provisions that allow certified operators to apply for equivalent certification in another province without re-writing all exams, provided they meet the experience and education requirements. Contact the certifying body in your destination province for details.
-
-## How Echelon Serves Operators Across Canada
-
-Echelon Institute is built for Canadian operators. Our practice question banks cover the core competencies tested on certification exams in every province — disinfection chemistry, hydraulics, treatment processes, regulations, and math. Our **WPI (Water & Process Industry)** course track is specifically designed for operators in BC, Alberta, Saskatchewan, and Manitoba, while our Ontario-specific tracks cover OIT through Class 3.
-
-Wherever you are in Canada, Echelon's adaptive practice engine and AI Tutor can help you prepare for your certification exam and advance your career.`,
+    ...eocpArticleCorrections.find(post => post.slug === "canadian-water-operator-certification-by-province"),
     author: "Echelon Institute",
     tags: "Canada,water operator certification,Ontario,BC,Alberta,Saskatchewan,Manitoba,comparison",
-    metaTitle: "Canadian Water Operator Certification by Province: Complete Comparison | Echelon",
-    metaDescription:
-      "Compare water operator certification requirements across Ontario, BC, Alberta, Saskatchewan, and Manitoba. Learn about EOCP, AWWOA, OCB, ABC exams, and more.",
-    readingTimeMinutes: 9,
     published: 1,
     publishedAt: new Date("2026-06-11"),
   },

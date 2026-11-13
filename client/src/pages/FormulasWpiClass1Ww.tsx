@@ -209,7 +209,7 @@ const SECTIONS: FormulaSection[] = [
           { symbol: "T", meaning: "Contact time (minutes)" },
         ],
         example: "C = 2 mg/L, T = 30 min → CT = 60 mg·min/L",
-        notes: "Required CT for 4-log Giardia inactivation at 15°C: ~170 mg·min/L for free chlorine",
+        notes: "Select wastewater disinfection targets and evaluation methods from the effluent permit and facility requirements; a drinking-water Giardia CT value is not a universal wastewater requirement.",
       },
       {
         title: "Chlorine Feed Rate",
@@ -229,7 +229,7 @@ const SECTIONS: FormulaSection[] = [
           { symbol: "Irradiance", meaning: "UV intensity (mW/cm²)" },
           { symbol: "Exposure Time", meaning: "Contact time (seconds)" },
         ],
-        notes: "Minimum UV dose for 4-log virus inactivation: 186 mJ/cm²",
+        notes: "Wastewater UV targets depend on the effluent permit, validated reactor and target organism; do not use one dose as a universal requirement",
       },
     ],
   },
@@ -390,7 +390,7 @@ export default function FormulasWpiClass1Ww() {
     : SECTIONS;
 
   return (
-    <div style={{ minHeight: "100vh", background: "#0F172A", color: "#F1F5F9" }}>      <style>{`
+    <div className="legacy-formula-page" style={{ minHeight: "100vh", background: "#0F172A", color: "#F1F5F9" }}>      <style>{`
         @media (max-width: 640px) {
           .formulas-content { padding: 16px 14px 60px !important; }
           .formulas-hero { padding: 32px 16px 28px !important; }

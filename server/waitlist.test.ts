@@ -15,7 +15,7 @@ const waitlistInputSchema = z.object({
 describe("waitlist input validation", () => {
   it("accepts a valid email and course details", () => {
     const result = waitlistInputSchema.safeParse({
-      email: "operator@ontario.ca",
+      email: "fixture-85@example.com",
       courseCode: "CL2-W",
       courseTitle: "Water Class 2",
     });
@@ -36,7 +36,7 @@ describe("waitlist input validation", () => {
 
   it("rejects empty courseCode", () => {
     const result = waitlistInputSchema.safeParse({
-      email: "operator@ontario.ca",
+      email: "fixture-85@example.com",
       courseCode: "",
       courseTitle: "Water Class 2",
     });
@@ -45,7 +45,7 @@ describe("waitlist input validation", () => {
 
   it("rejects empty courseTitle", () => {
     const result = waitlistInputSchema.safeParse({
-      email: "operator@ontario.ca",
+      email: "fixture-85@example.com",
       courseCode: "CL2-W",
       courseTitle: "",
     });

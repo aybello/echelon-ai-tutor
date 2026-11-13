@@ -21,6 +21,7 @@ export {
 import {
   type TeamStreamTier,
   TEAM_STREAM_TIER_LABELS,
+  getTeamStreamLabel,
   TEAM_BASE_PRICE,
   TEAM_VOLUME_TIERS,
 } from "../../shared/teamPricing";
@@ -72,6 +73,26 @@ export const STREAM_COURSE_KEYS: Record<string, Record<TeamStreamTier, string[]>
       "wpi-class2-water","wpi-class2-wastewater","wpi-class2-water-dist","wpi-class2-water-coll",
       "wpi-class3-water","wpi-class3-wastewater","wpi-class3-water-dist","wpi-class3-water-coll",
       "wpi-class4-water","wpi-class4-wastewater","wpi-class4-water-dist","wpi-class4-water-coll",
+    ],
+  },
+  /**
+   * Nova Scotia prepares operators with the shared WPI exam family, so its
+   * course keys are western keys. The province certifies Water Treatment and
+   * Wastewater Treatment Classes I to IV, but Water Distribution and Wastewater
+   * Collection only to Class III. Class IV distribution and Class IV collection
+   * are therefore excluded from every Nova Scotia team entitlement.
+   * https://novascotia.ca/nse/water.operator.certification/docs/Standardized_exam_info.pdf
+   */
+  "nova-scotia": {
+    "stream-water":           ["wpi-class1-water","wpi-class2-water","wpi-class3-water","wpi-class4-water"],
+    "stream-wastewater":      ["wpi-class1-wastewater","wpi-class2-wastewater","wpi-class3-wastewater","wpi-class4-wastewater"],
+    "stream-water-dist":      ["wpi-class1-water-dist","wpi-class2-water-dist","wpi-class3-water-dist"],
+    "stream-wastewater-coll": ["wpi-class1-water-coll","wpi-class2-water-coll","wpi-class3-water-coll"],
+    "all-access":             [
+      "wpi-class1-water","wpi-class1-wastewater","wpi-class1-water-dist","wpi-class1-water-coll",
+      "wpi-class2-water","wpi-class2-wastewater","wpi-class2-water-dist","wpi-class2-water-coll",
+      "wpi-class3-water","wpi-class3-wastewater","wpi-class3-water-dist","wpi-class3-water-coll",
+      "wpi-class4-water","wpi-class4-wastewater",
     ],
   },
 };
@@ -134,8 +155,14 @@ export function validateOrgCourseKeys(
     const normalized = ck.trim().toLowerCase();
     // Rule 2: must be a valid key for this province
     if (!allRegionalKeys.includes(normalized)) {
+      const regionName =
+        province === "western"
+          ? "Western Canada (WPI)"
+          : province === "nova-scotia"
+            ? "Nova Scotia"
+            : "Ontario";
       throw new Error(
-        `'${ck}' is not a valid course for ${province === "western" ? "Western Canada (WPI)" : "Ontario"}. ` +
+        `'${ck}' is not a valid course for ${regionName}. ` +
         `Check the course key and try again.`,
       );
     }
@@ -163,6 +190,18 @@ export function isSubscriptionTier(value: unknown): value is SubscriptionTier {
 
 export function isSubscriptionProvince(value: unknown): value is SubscriptionProvince {
   return typeof value === "string" && (SUBSCRIPTION_PROVINCE_VALUES as readonly string[]).includes(value);
+}
+
+/**
+ * A Nova Scotia utility retains its own organization region and its Class III
+ * distribution/collection ceiling, while individual subscription rows use
+ * the shared western WPI exam family accepted by the subscriptions enum.
+ * Do not widen SUBSCRIPTION_PROVINCE_VALUES without a database migration.
+ */
+export function subscriptionProvinceForOrg(region: string): SubscriptionProvince {
+  if (region === "nova-scotia") return "western";
+  if (isSubscriptionProvince(region)) return region;
+  throw new Error("Organization province is not supported for subscription access.");
 }
 
 export interface SubscriptionProduct {
@@ -331,9 +370,11 @@ export const TIER_LABELS: Record<SubscriptionTier, string> = {
   "all-access": "All-Access Pass",
 };
 
-export function getOrganizationTierLabel(tier: string): string {
+export function getOrganizationTierLabel(tier: string, province?: string): string {
+  if (Object.prototype.hasOwnProperty.call(TEAM_STREAM_TIER_LABELS, tier)) {
+    return getTeamStreamLabel(province ?? "western", tier as TeamStreamTier);
+  }
   return (
-    TEAM_STREAM_TIER_LABELS[tier as TeamStreamTier] ??
     TIER_LABELS[tier as SubscriptionTier] ??
     tier
   );

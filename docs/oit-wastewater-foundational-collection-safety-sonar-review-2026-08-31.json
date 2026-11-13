@@ -1,0 +1,32 @@
+{
+  "reviews": [
+    {
+      "questionNum": 266,
+      "approved": true,
+      "severity": "minor",
+      "reasons": [
+        "Correct option matches Ontario Design Guidelines description of drop pipes conveying flow from a higher inlet down to the manhole invert and addressing turbulence/odour concerns.",
+        "Jurisdiction and regulatory scope are accurate: Ontario guideline is used only to support basic conveyance purpose, not to test precise 610 mm design criterion.",
+        "Learning objective is foundational and appropriate for an Ontario OIT learner (basic purpose of a drop connection in a manhole).",
+        "Exactly one option is clearly correct; other options are implausible without encouraging unsafe operation or regulatory non-compliance.",
+        "Explanation is traceable to the cited source and does not introduce unsourced universal design or regulatory claims."
+      ],
+      "requiredChanges": [
+        "Option A: remove the phrase 'helping limit turbulence within the manhole' or soften it to 'which can help reduce excessive turbulence' to avoid overstating a universal performance effect beyond the source discussion of turbulence and odour potential."
+      ]
+    },
+    {
+      "questionNum": 453,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option accurately reflects CCOHS characterization of chlorine as a toxic, corrosive oxidizing gas under pressure and notes potential accumulation where ventilation is poor.",
+        "Jurisdiction and regulatory scope are appropriate: Canadian occupational-safety source is used for hazard recognition only, and the explanation defers emergency response actions to facility procedures.",
+        "Learning objective (basic recognition of chlorine-gas workplace hazards) is foundational and suitable for Ontario OIT level.",
+        "Exactly one option is correct; distractors are clearly incorrect without normalizing unsafe responses or downplaying the hazard.",
+        "All key claims in the stem, correct option, and explanation are traceable to the cited CCOHS profile and do not add unsupported universal operational or regulatory prescriptions."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

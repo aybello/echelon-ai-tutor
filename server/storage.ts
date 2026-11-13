@@ -1,6 +1,7 @@
 // Preconfigured storage helpers for Manus WebDev templates
 // Uses the Biz-provided storage proxy (Authorization: Bearer <token>)
 
+import { serviceJson, serviceFetch, requireServiceSuccess } from "./_core/outboundHttp";
 import { ENV } from './_core/env';
 
 type StorageConfig = { baseUrl: string; apiKey: string };
@@ -34,11 +35,12 @@ async function buildDownloadUrl(
     ensureTrailingSlash(baseUrl)
   );
   downloadApiUrl.searchParams.set("path", normalizeKey(relKey));
-  const response = await fetch(downloadApiUrl, {
+  const response = await serviceFetch(downloadApiUrl, {
     method: "GET",
     headers: buildAuthHeaders(apiKey),
-  });
-  return (await response.json()).url;
+  }, { service: "storage", timeoutMs: 10_000, retryRead: true });
+  requireServiceSuccess(response, "storage");
+  return (await serviceJson<{ url: string }>(response, "storage")).url;
 }
 
 function ensureTrailingSlash(value: string): string {
@@ -76,19 +78,14 @@ export async function storagePut(
   const key = normalizeKey(relKey);
   const uploadUrl = buildUploadUrl(baseUrl, key);
   const formData = toFormData(data, contentType, key.split("/").pop() ?? key);
-  const response = await fetch(uploadUrl, {
+  const response = await serviceFetch(uploadUrl, {
     method: "POST",
     headers: buildAuthHeaders(apiKey),
     body: formData,
-  });
+  }, { service: "storage", timeoutMs: 60_000 });
 
-  if (!response.ok) {
-    const message = await response.text().catch(() => response.statusText);
-    throw new Error(
-      `Storage upload failed (${response.status} ${response.statusText}): ${message}`
-    );
-  }
-  const url = (await response.json()).url;
+  requireServiceSuccess(response, "storage");
+  const url = (await serviceJson<{ url: string }>(response, "storage")).url;
   return { key, url };
 }
 

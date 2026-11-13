@@ -1,0 +1,1085 @@
+{
+  "key": "ceu-sampling-data-quality",
+  "title": "Sampling, Laboratory Results and Data Quality",
+  "shortTitle": "Sampling and Data Quality",
+  "stream": "drinking_water",
+  "audience": "Practising drinking-water operators and supervisors seeking focused applied development.",
+  "prerequisites": "Basic operator terminology, metric calculations and access to the source readings. Use a calculator; all supplied facility data are fictional.",
+  "introduction": "Build a sampling and result-review package for a fictional reservoir investigation. Practise representativeness, traceability, quality-control interpretation and qualified reporting.",
+  "plannedMinutes": 180,
+  "delivery": "Self-paced lessons, optional quick checks, a graded final exam and a non-credit certificate. Duration is being validated; no contact-hour award is made.",
+  "modules": [
+    {
+      "id": "sample-design",
+      "title": "Design a sample that answers the question",
+      "objectives": [
+        "Align location and timing with a stated decision.",
+        "Distinguish independent sampling from repeat analysis."
+      ],
+      "lesson": "### Define the decision before choosing the sample\n\nThis is study and training material for a non-credit pilot, not operating or compliance instruction. All facilities, operators, records and readings in the examples are fictional. Every example value is a supplied case assumption, not an authorised sampling frequency, residual, limit or operating target.\n\nA useful sampling question identifies a condition, a place, a time and a decision. “Check the reservoir” leaves all four uncertain. “Determine whether lower free chlorine residual at the reservoir outlet is associated with the morning drawdown period, compared with the inlet condition” gives the investigation a direction. It does not yet establish a cause or authorise a response.\n\nSeparate three possible questions:\n\n- **Current condition:** What was the measured condition at this point when the sample was collected?\n- **Pattern:** Does the difference recur across specified locations, operating states or time windows?\n- **Cause:** Is the difference attributable to storage, local plumbing, measurement error or another mechanism?\n\nA single valid grab can support the first question. A planned set of observations is needed for the second. The third usually needs additional hydraulic, operational and measurement evidence. Do not promote a pattern into a causal conclusion merely because it is consistent with an explanation.\n\nWrite the proposed decision in the sampling-plan draft. For example: “Use the investigation to decide whether further reservoir-specific investigation is warranted under the facility's procedure.” Keep this distinct from any action required by a regulated result. Supplemental investigation cannot replace required compliance sampling, delay required reporting or create its own acceptance limits.\n\nDefine the population being described. It might be reservoir-outlet water during morning drawdown, rather than all water delivered by the system. That distinction controls how far the conclusion can reasonably extend.\n\n### Match location and timing to the water being questioned\n\nStart with an up-to-date system drawing and the facility's approved sampling arrangements. Identify what each point actually receives. A labelled reservoir outlet tap might be connected upstream of a blending point, downstream of a bypass or through a seldom-used branch. The label alone does not establish representativeness.\n\nTap preparation is part of the question. If the question concerns distribution water, preparation must follow the applicable sampling procedure so that local stagnation does not dominate the result. If the investigation concerns premise plumbing or first-draw conditions, flushing may remove the condition being investigated. Record the intended sample type rather than applying one preparation routine to every question.\n\nTime also has several meanings: collection time, instrument reading time, laboratory receipt time and historian timestamp. Preserve those distinctions. Confirm clock alignment when comparing a field observation with pump status or an online trend. A precisely recorded but incorrect timestamp can attach a good result to the wrong operating state.\n\nSimultaneous upstream and downstream grabs describe two locations at the same clock time. They do not automatically describe the same parcel of water. Storage, recirculation, variable demand, blending and changing flow can break that assumption. Conversely, delaying the downstream sample by an estimated travel time does not prove parcel matching if that estimate lacks a defensible hydraulic basis.\n\nUS EPA: Drinking Water Distribution System Tools and Resources provides US technical guidance relevant to water age, storage, pressure management and distribution-system integrity. It is not an Ontario sampling requirement. Use those concepts to identify the operational records needed to interpret a comparison, not to invent a locally mandatory schedule.\n\nWhen conditions change during the investigation, reconsider the comparison. A pump change or bypass opening may create a different operating stratum. Label that observation accordingly. Do not silently pool it with observations collected under the original condition.\n\n### Separate independent sampling from repeated measurement\n\nCount the unit that answers the question, not the number of spreadsheet rows.\n\nA new field collection can add evidence about a location and time. A repeat determination from an existing sample adds information about measurement repeatability, subject to the method and any sample changes between readings. It does not create another observation of the distribution system.\n\nDifferent duplicate arrangements answer different questions:\n\n- A **split sample** compares portions of the same collected material. Depending on the design, it can help investigate laboratory or measurement differences.\n- A **sequential field duplicate** includes another collection immediately after the first. It can reveal collection and measurement variability, but both samples may share essentially the same system condition.\n- An **independently scheduled collection event** can add evidence about variation across time or operating states. Its independence still depends on the design and the persistence of the condition being measured.\n\nDifferent bottles do not guarantee statistical independence. Closely spaced samples can share the same hydraulic event. Samples on different dates can also remain related through a continuing operational condition. Describe the design honestly before using a statistical method that assumes independent observations.\n\nQuality-control agreement is necessary evidence for some interpretations, but it does not prove representativeness. Two analyses can agree closely because both came from the wrong tap. A well-maintained instrument can measure a poorly chosen sample very precisely.\n\nUS EPA: Field turbidity measurement provides US technical guidance on field measurement and quality control. Local laboratory and site methods govern its application. For turbidity investigations, the collection, handling, instrument check and measurement records help distinguish a system change from a measurement-chain problem.\n\nUS EPA: Generating high-quality turbidity data, EPA 815-B-19-010, is US technical guidance, not Ontario law. Its measurement-chain and SCADA data-quality perspective is useful when comparing field results with online data. An online trend and a grab result are not interchangeable simply because both are reported in NTU. Their locations, timing, methods and data processing must support the comparison.\n\n### Build an input register that exposes unsupported assumptions\n\nUse an input register before interpreting the results. An empty evidence field is a visible limitation, not permission to fill the gap with a convenient assumption.\n\n| Register item | Evidence to record | Why it changes the interpretation |\n|---|---|---|\n| Decision and scope | Written investigation question and intended use | Prevents an outlet investigation from becoming a claim about the entire network |\n| Sampling point | Point identifier, drawing reference and connection verification | Establishes which water the sample can represent |\n| Collection conditions | Time, preparation, sample type and applicable procedure | Separates distribution conditions from local tap effects |\n| Operating state | Pump, valve, bypass and reservoir records | Identifies observations that belong to different conditions |\n| Hydraulic relationship | Basis and limitations of any travel-time or mixing estimate | Prevents an unsupported same-parcel claim |\n| Measurement identity | Parameter, method, instrument and units | Prevents combining unlike measurements, such as free and total chlorine |\n| Quality control | Required checks, duplicate relationship and acceptance assessment | Shows which part of the measurement chain was examined |\n| Sample identity | Unique collection identifier linked to every determination | Prevents repeat analysis being counted as new field evidence |\n| Data disposition | Included, qualified or excluded, with reason and reviewer | Makes the interpretation reproducible without deleting inconvenient results |\n\nThe register should link to retained source records, not merely contain an operator's recollection. Retain collection sheets, original instrument outputs where available, relevant laboratory reports, required custody information and the operational trend extracts used in the interpretation. Apply the facility's record-control and retention requirements.\n\nDistinguish an excluded calculation input from an erased record. If a result is unsuitable for a particular comparison, preserve it with the reason. It may still explain a sampling problem, identify a separate condition or have reporting significance under the applicable requirements.\n\n### Worked example: count observations, not determinations\n\nThe fictional Birch Inlet system is planning an investigation of inlet and outlet free chlorine residual during morning drawdown. Supplied case assumptions are six scheduled collection events on separate dates, two locations per event and two determinations from each collected sample where permitted by the specified method. These are teaching assumptions, not a prescribed sampling design or authorised analytical procedure.\n\nThe decision is whether an inlet-to-outlet difference recurs across the observed events. The repeat determinations are intended to assess measurement repeatability, not to expand the number of field observations.\n\n**Step 1. Count field samples.**\n\n6 collection events × 2 field samples/collection event = 12 field samples.\n\n**Step 2. Count analytical determinations.**\n\n12 field samples × 2 determinations/field sample = 24 determinations.\n\n**Step 3. Count within-sample repeat comparisons.**\n\n12 field samples × 1 repeat comparison/field sample = 12 repeat comparisons.\n\n**Step 4. Count paired location contrasts.**\n\n6 collection events × 1 inlet-outlet contrast/collection event = 6 inlet-outlet contrasts.\n\n**Answer:** The design produces 12 field samples, 24 determinations, 12 repeat comparisons and six paired location contrasts. It does not produce 24 independent observations of system conditions.\n\nThe proposed event spacing does not, by itself, prove independence between the six contrasts. The analyst must consider whether the events represent distinct conditions or repeated observations of one persistent condition. Within each event, the inlet and outlet are deliberately paired and should not be treated as unrelated measurements when evaluating the paired difference.\n\nSuppose the outlet sample from one event lacks a defensible collection time. If the time cannot be recovered from reliable original records, that event cannot support the intended time-specific paired comparison.\n\n6 planned inlet-outlet contrasts − 1 unsupported inlet-outlet contrast = 5 usable inlet-outlet contrasts.\n\nThe inlet result may still describe the inlet at its documented time. Preserve the outlet result and its limitation. Repeating an analysis of that outlet bottle cannot recover the missing collection-time evidence.\n\nThis example also shows why workload and evidence strength are different quantities. More determinations may improve understanding of analytical repeatability without expanding the range of operating conditions observed. If the question concerns recurrence, adding defensibly selected collection events may be more informative than repeatedly analysing the same bottles.\n\n### Worked example: the sampling schedule changes the apparent average\n\nThe fictional Cedar Storage system asks two different questions: “What is the time-average outlet free chlorine residual over the described day?” and “What condition occurs during morning drawdown?” Those questions need different summaries.\n\nFor this arithmetic example only, supplied assumptions are a four-hour drawdown period at a constant 0.20 mg/L and a twenty-hour remaining period at a constant 0.80 mg/L. These fictional residuals are not authorised values or action thresholds. The assumed constancy is part of the example, not something established by two field grabs.\n\nFirst consider a schedule that collects one sample in each period and reports the ordinary mean.\n\n**Step 1. Add the two assumed concentrations.**\n\n0.20 mg/L + 0.80 mg/L = 1.00 mg/L.\n\n**Step 2. Calculate the equally weighted sample mean.**\n\n1.00 mg/L ÷ 2 = 0.50 mg/L.\n\nHere, the divisor is the dimensionless count of equally weighted observations. This mean gives each sampled period equal influence even though the periods have unequal duration.\n\nNow calculate the time-weighted mean under the supplied constant-within-period assumptions.\n\n**Step 3. Confirm the total duration.**\n\n4 h + 20 h = 24 h.\n\n**Step 4. Calculate each concentration-duration contribution.**\n\n0.20 mg/L × 4 h = 0.80 mg·h/L.\n\n0.80 mg/L × 20 h = 16.00 mg·h/L.\n\n**Step 5. Add the contributions.**\n\n0.80 mg·h/L + 16.00 mg·h/L = 16.80 mg·h/L.\n\n**Step 6. Divide by the total duration.**\n\n16.80 mg·h/L ÷ 24 h = 0.70 mg/L.\n\n**Step 7. Compare the two summaries.**\n\n0.70 mg/L − 0.50 mg/L = 0.20 mg/L.\n\n**Answer:** The equally weighted sample mean is 0.50 mg/L. The time-weighted mean is 0.70 mg/L under the supplied assumptions. The difference is 0.20 mg/L because the schedules assign different weight to the drawdown condition.\n\nNeither mean removes the drawdown-period observation of 0.20 mg/L. If the decision concerns that period, a daily average is not a substitute for evidence about it. Neither calculation establishes compliance, adequate disinfection or permission to change operations. Those judgments require the applicable requirements and approved procedures.\n\nThe time-weighted calculation becomes unsupported if concentrations vary materially within either period and the available evidence cannot characterise that variation. Actual duration changes also require revised weights. A volume-weighted question would need corresponding flow or volume data; duration weights alone would not answer it.\n\nRetain the period definitions, their operational basis, original measurements and the calculation. With sparse grabs, describe the result as an estimate supported by stated assumptions, not a measured continuous daily average.\n\n### Common errors\n\n- **Counting laboratory repeats as new system samples.** Repeats share a collection event and cannot reveal an unobserved location or operating period. Inflating the count overstates the breadth of evidence.\n- **Calling simultaneous samples the same water.** Equal timestamps do not resolve storage and mixing. The comparison may show a same-time spatial difference without measuring parcel-specific residual loss.\n- **Averaging away the condition under investigation.** A broad average can conceal a short, recurring condition. Match the summary to the decision rather than choosing the most reassuring number.\n- **Discarding a surprising result without a documented reason.** Disagreement can reflect a real event or a measurement problem. Investigate against the method and quality-control criteria, retain the original record and document its disposition.\n- **Using agreement as proof of correct sampling.** Close duplicate results demonstrate only the repeatability covered by that duplicate design. They do not verify the tap connection, sample timing or population represented.\n\n### What to verify before you act\n\nBefore applying any lesson from an investigation, consult the facility's applicable drinking-water approvals, Municipal Drinking Water Licence and Drinking Water Works Permit where applicable, current governing regulations, approved sampling arrangements and operating procedures. Confirm which provisions apply to the system and the particular result. The investigation is supplemental unless the governing arrangements explicitly establish otherwise.\n\nVerify the parameter-specific collection and analytical procedure, preservation and holding provisions where applicable, instrument quality-control records, point-identification record, operational logs and any approved hydraulic basis used in interpretation. Check that the proposed decision is actually supported by those records.\n\nFor Ontario adverse drinking-water results, consult Ontario: adverse drinking water results technical bulletin and the applicable current regulation for reporting requirements and exemptions. Where the Ontario adverse-result reporting requirement applies, an immediate verbal report is required, followed by written notice within 24 hours after that report. Investigation or repeat analysis must not be used to postpone required reporting.\n\nFinally, distinguish three conclusions in the investigation record: what the observations establish, what remains uncertain and what additional evidence would resolve that uncertainty. “Lower outlet residual occurred during the sampled drawdown events” may be supportable. “The reservoir caused the difference throughout the system” requires substantially more evidence.",
+      "evidence": "### Fictional worked scenario: paired events are not repeat determinations\n\nThe facility, operators, records and readings below are fictional. All numerical values are supplied case assumptions for training, not authorised residuals, sampling frequencies or acceptance limits.\n\nAt fictional Maple Reservoir, the investigation asks whether outlet free chlorine residual is lower than inlet residual during the observed drawdown events. The supplied register contains three dated events with one inlet sample and one outlet sample per event. Each sample has two determinations, accepted under the fictional case's specified method and quality-control record. The register supplies these sample-level results for the comparison:\n\n| Event | Inlet free chlorine | Outlet free chlorine |\n|---|---:|---:|\n| A | 0.80 mg/L | 0.40 mg/L |\n| B | 0.75 mg/L | 0.45 mg/L |\n| C | 0.85 mg/L | 0.35 mg/L |\n\nAn unsigned summary claims “12 independent system samples prove reservoir chlorine consumption.” The learner must reject both claims. Original collection identifiers establish only six field samples. The paired locations were sampled at the same clock time, and no validated parcel-matching evidence is supplied.\n\nThe worked count is:\n\n3 events × 2 field samples/event = 6 field samples.\n\n6 field samples × 2 determinations/field sample = 12 determinations.\n\n3 events × 1 paired contrast/event = 3 paired contrasts.\n\nCalculate inlet minus outlet for each event:\n\nEvent A: 0.80 mg/L − 0.40 mg/L = 0.40 mg/L.\n\nEvent B: 0.75 mg/L − 0.45 mg/L = 0.30 mg/L.\n\nEvent C: 0.85 mg/L − 0.35 mg/L = 0.50 mg/L.\n\nMean observed contrast: (0.40 mg/L + 0.30 mg/L + 0.50 mg/L) ÷ 3 = 0.40 mg/L.\n\n**Answer:** Outlet residual was lower in each observed pair, with a mean paired difference of 0.40 mg/L. This describes the sampled events, not proven parcel-specific consumption or system-wide conditions. Statistical independence between events remains unestablished.\n\nRetain collection identifiers, timestamps, determination records, quality-control assessments and pump and valve logs. Use the distribution-system concepts in US EPA: Drinking Water Distribution System Tools and Resources as US technical guidance, not Ontario requirements, when identifying the additional hydraulic evidence needed.",
+      "assignment": "Draft a 350–500-word supplemental sampling plan. Select and improve one proposal; justify locations and times; specify independent sampling versus repeat readings, chain-of-custody responsibilities and records of reservoir operation. Explain two limits on interpreting “paired” samples and how required sampling is preserved.",
+      "rubric": [
+        "Decision, locations and times align.",
+        "Distinguishes spatial evidence from repeat measurement.",
+        "Preserves required sampling and names method/handling verification."
+      ],
+      "facilitatorGuide": "B best addresses the recurrent time window, but not conclusively after one morning. Strong plans repeat across relevant operating states and document levels, inflow/outflow and sampling methods. A measures one bottle repeatedly; C misses the stated window. Do not accept 2–6 hours as an exact lag or a claim that S1/R2 samples are necessarily the same parcel. Require independent observations and local method verification.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 10,
+          "instruction": "Study the explanation and worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 5,
+          "instruction": "Locate the cited source section and note its application boundary."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Complete the evidence-based assignment."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 5,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the knowledge checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "field",
+        "distribution"
+      ],
+      "checks": [
+        {
+          "id": "ceu-sampling-data-quality-sample-design-c1",
+          "objective": "sample-design",
+          "prompt": "Non-credit study material, not operating or compliance instruction. In a fictional investigation, what conclusion can a valid grab sample support without additional system observations?",
+          "choices": [
+            "The measured condition describes the sampled point at collection.",
+            "The measured condition establishes storage as the underlying cause.",
+            "The measured condition represents the usual daily pattern.",
+            "The measured condition characterises the entire service area."
+          ],
+          "correctIndex": 0,
+          "explanation": "A valid grab supports a point-and-time description. It does not establish a recurring pattern, system-wide condition or cause. Source: supplied module, 'Define the decision before choosing the sample'."
+        },
+        {
+          "id": "ceu-sampling-data-quality-sample-design-c2",
+          "objective": "sample-design",
+          "prompt": "A fictional investigation asks about water after stagnation in premise plumbing. Which preparation approach best preserves the question being investigated?",
+          "choices": [
+            "Choose preparation after reviewing which results appear unusual.",
+            "Use the applicable first-draw procedure and record the sample type.",
+            "Flush until readings stabilise, then label the collection first-draw.",
+            "Use the distribution-water flushing routine before every collection."
+          ],
+          "correctIndex": 1,
+          "explanation": "The applicable first-draw procedure preserves the condition of interest. Distribution-water flushing can remove the stagnation condition rather than measure it. Source: supplied module, 'Match location and timing to the water being questioned'."
+        },
+        {
+          "id": "ceu-sampling-data-quality-sample-design-c3",
+          "objective": "sample-design",
+          "prompt": "In a fictional quality-control exercise, portions of the same collected water are sent to separate laboratories. What does agreement between their results most directly support?",
+          "choices": [
+            "Representativeness of the selected tap for the wider distribution network.",
+            "Persistence of the system condition throughout the day.",
+            "Agreement between laboratory results for the shared collected material.",
+            "Independence of field observations across the investigated operating states."
+          ],
+          "correctIndex": 2,
+          "explanation": "A split sample can examine laboratory or measurement differences for shared material. Agreement does not demonstrate that the collection point represents the network. Source: supplied module, 'Separate independent sampling from repeated measurement'."
+        },
+        {
+          "id": "ceu-sampling-data-quality-sample-design-c4",
+          "objective": "sample-design",
+          "prompt": "A fictional sample record contains collection time, field reading time and laboratory receipt time. Which timestamp normally links the sampled water to pump status, subject to clock verification?",
+          "choices": [
+            "The report time, because the reviewed result then becomes available.",
+            "The receipt time, because laboratory handling confirms the sample identity.",
+            "The reading time, because the instrument produces the reported value.",
+            "The collection time, because it identifies when the water was obtained."
+          ],
+          "correctIndex": 3,
+          "explanation": "Collection time identifies when the water was obtained. Reading time can differ and may attach the result to another pump state if substituted without justification. Source: supplied module, 'Match location and timing to the water being questioned'."
+        },
+        {
+          "id": "ceu-sampling-data-quality-sample-design-c5",
+          "objective": "sample-design",
+          "prompt": "A fictional reviewer finds that a result cannot support the intended inlet-outlet comparison. How should the input register address this result?",
+          "choices": [
+            "Retain the result with its disposition, reason and reviewer recorded.",
+            "Keep the result in every calculation so that the dataset stays complete.",
+            "Replace its value with the mean of the retained comparison results.",
+            "Remove the original result and preserve only the revised summary."
+          ],
+          "correctIndex": 0,
+          "explanation": "Excluding a calculation input is different from erasing a record. Retention with a documented disposition preserves evidence, while including an unsuitable result can distort the comparison. Source: supplied module, 'Build an input register that exposes unsupported assumptions'."
+        },
+        {
+          "id": "ceu-sampling-data-quality-sample-design-c6",
+          "objective": "sample-design",
+          "prompt": "A fictional Ontario study group consults US EPA distribution-system resources. How should those resources inform a draft investigation plan?",
+          "choices": [
+            "Adopt their suggested practices as binding local approval conditions.",
+            "Use their concepts while checking applicable local requirements.",
+            "Treat their technical examples as Ontario sampling obligations.",
+            "Use their schedules instead of the facility's sampling arrangements."
+          ],
+          "correctIndex": 1,
+          "explanation": "US EPA resources provide US technical guidance, not Ontario law. They can help identify relevant evidence but do not replace applicable facility arrangements or create Ontario requirements. Source: supplied module discussion of US EPA Drinking Water Distribution System Tools and Resources."
+        }
+      ]
+    },
+    {
+      "id": "custody",
+      "title": "Trace samples and preserve corrections",
+      "objectives": [
+        "Reconstruct a custody timeline.",
+        "Resolve conflicting identifiers without overwriting originals."
+      ],
+      "lesson": "### Keep identity, custody and result connected\n\nThis is study and training material for a non-credit pilot, not operating or compliance instruction. All facilities, operators, records and readings in the examples are fictional. Every numerical acceptance criterion is a supplied case assumption, not an authorised value for another facility.\n\nA defensible result needs an unbroken explanation of what was sampled, where and when it was collected, how it reached the laboratory, and which analysis belongs to it. A correct laboratory measurement cannot repair an unidentified bottle. Equally, a clerical mismatch does not automatically prove that the laboratory analysed the wrong sample. Your task in a record review is to distinguish a demonstrated link from a plausible story.\n\nBuild the chain around individual containers and analytical portions where needed. A field identifier may cover several bottles with different preservatives or analytical destinations. A laboratory accession may cover several samples. Neither identifier alone proves that a particular result belongs to a particular location.\n\nSeparate three questions:\n\n- **Identity:** Which sampling event and location produced this container?\n- **Integrity:** Were collection, preservation, transport and analysis conditions suitable under the applicable method and instructions?\n- **Record integrity:** Can another reviewer reproduce the history, including changes, without relying on your memory?\n\nAn identity problem and a holding-time problem need different evidence. A location scan may resolve identity without proving preservation. A courier receipt may establish a handover without proving when analysis began.\n\nUS EPA: Generating high-quality turbidity data discusses the measurement chain and SCADA data quality. It is US technical guidance, not Ontario law. Its measurement-chain perspective is useful here: examine the links behind a value, rather than treating the final number as self-explanatory. The correction practices below are training practices whose local use must follow the facility's controlled procedures.\n\n### Build a traceability register before interpreting the result\n\nCreate a working register from preserved source records. Do not first clean up the records and then reconstruct the chain. That approach can remove the discrepancy you need to explain.\n\nThe following register is a training template. Entries should point to retrievable evidence, not simply say checked.\n\n| Link | Record to inspect | Detail to capture | Warning sign |\n|---|---|---|---|\n| Planned sampling event | Applicable sampling plan and location register | Location code, purpose and required analyses | Informal location name replaces controlled code |\n| Collection | Original field sheet or controlled electronic event | Collector, identifier, date, time and time basis | Time entered later without explanation |\n| Container | Label photograph and bottle inventory | Bottle identifier, container type and requested analysis | One identifier appears on unrelated containers |\n| Transfer | Custody form and courier handover record | Releasing person, receiving person and transfer time | Signature exists but transfer event is unclear |\n| Laboratory receipt | Laboratory receipt record | Accession, condition observations and receipt time | Receipt time is copied into collection field |\n| Analytical event | Laboratory worksheet or controlled system record | Method-specific event and time | Report issue time is treated as analysis time |\n| Result and amendment | Laboratory report and amendment history | Report version, qualifiers and sample mapping | Revised PDF appears without an amendment trail |\n\nKeep observation separate from interpretation. For example, label photograph shows location code EAST is an observation. Collector probably meant WEST is an interpretation. If both appear in a review note, label them differently.\n\nRecord the time basis explicitly. A local timestamp without an offset can become ambiguous during a seasonal clock change. A device export may use UTC while its display uses local time. Preserve the original timestamp, its displayed zone or offset, and any documented conversion. Do not silently standardise times in the only surviving copy.\n\nAn electronic scan is not automatically stronger evidence than handwriting. Check whether the scan was generated at the location, whether identifiers could be reused, and whether offline synchronisation changed the displayed event time. Evidence strength comes from how the record was created and protected, not its appearance.\n\n### Worked example: reconstruct elapsed time across midnight\n\nAt fictional Alder Drinking Water Works, fictional sample AL-031 has a consistent bottle identifier across the field record, custody form and laboratory accession. For this teaching case, the supplied laboratory instruction sets a maximum collection-to-analysis-start interval of **4 h 00 min** for the selected analysis. That interval and endpoint are case assumptions only. Other analyses may use different endpoints or conditions.\n\nAll timestamps below are fictional records expressed in UTC:\n\n- Collection: 14 May, 21:35 UTC.\n- Courier release: 14 May, 22:05 UTC.\n- Laboratory receipt: 14 May, 23:50 UTC.\n- Analysis start: 15 May, 01:10 UTC.\n\nFirst calculate the total interval using the date boundary. In the arithmetic, h and min express clock positions or durations as labelled.\n\n1. Collection to midnight: 24 h 00 min − 21 h 35 min = **2 h 25 min**.\n2. Midnight to analysis start: 1 h 10 min − 0 h 00 min = **1 h 10 min**.\n3. Total elapsed time: 2 h 25 min + 1 h 10 min = **3 h 35 min**.\n4. Convert elapsed time: (3 h × 60 min/h) + 35 min = **215 min**.\n5. Convert the supplied maximum: 4 h × 60 min/h = **240 min**.\n6. Remaining margin: 240 min − 215 min = **25 min**.\n\nCross-check the total against separate custody intervals:\n\n7. Collection to receipt: 23 h 50 min − 21 h 35 min = **2 h 15 min = 135 min**.\n8. Receipt to midnight: 24 h 00 min − 23 h 50 min = **0 h 10 min = 10 min**.\n9. Midnight to analysis start: 1 h 10 min − 0 h 00 min = **1 h 10 min = 70 min**.\n10. Receipt to analysis start: 10 min + 70 min = **80 min**.\n11. Cross-check: 135 min + 80 min = **215 min**.\n\n**Answer:** The reconstructed collection-to-analysis-start interval is **215 min**, which is **25 min shorter** than the supplied case maximum. This demonstrates only that this timing criterion is met under the example assumptions. It does not establish acceptable preservation, container suitability or result validity.\n\nThe receipt-to-analysis interval matters. Looking only at the collection and receipt records would omit 80 min. Conversely, the report issue time is not a substitute for analysis start. Reports can be issued after analytical work is complete.\n\nRetain the original collection record, handover evidence, laboratory receipt record, analysis-start evidence, applicable instruction version and calculation. If the laboratory can provide only a report date, mark the timing assessment unresolved. Do not invent an analysis time to finish the worksheet.\n\n### Worked example: correct a timestamp without erasing it\n\nA correction should show the original entry, proposed or accepted corrected entry, reason, supporting evidence, person making the change, date of change and review status. The method depends on the controlled record system. Paper and electronic systems need different mechanisms, but both must preserve the history.\n\nAt fictional Birch Drinking Water Works, fictional sample BW-018 has a mobile collection timestamp of 08:22 local time. The supplied case records include paired clock checks immediately before and after collection. Both demonstrate that the mobile clock was **12 min fast** relative to the designated reference clock. The case assumes no intervening clock reset and a stable offset. The laboratory records analysis start as 12:15 on the same date and time basis.\n\nFor this example only, the supplied method instruction allows **4 h 00 min** from collection to analysis start. First calculate what an uncorrected review would show:\n\n1. Apparent elapsed time: 12 h 15 min − 8 h 22 min = **3 h 53 min**.\n2. Apparent elapsed time in minutes: (3 h × 60 min/h) + 53 min = **233 min**.\n3. Supplied maximum: 4 h × 60 min/h = **240 min**.\n4. Apparent margin: 240 min − 233 min = **7 min**.\n\nNow apply the documented clock relationship. A fast clock displays a later time than the reference, so subtract the offset:\n\n5. Corrected collection clock time: 8 h 22 min − 0 h 12 min = **8 h 10 min**.\n6. Corrected elapsed time: 12 h 15 min − 8 h 10 min = **4 h 05 min**.\n7. Corrected elapsed time in minutes: (4 h × 60 min/h) + 5 min = **245 min**.\n8. Exceedance of supplied maximum: 245 min − 240 min = **5 min**.\n9. Change in calculated interval: 245 min − 233 min = **12 min**.\n\n**Answer:** The supported corrected interval is **245 min**, exceeding the supplied case maximum by **5 min**. The original timestamp would have produced the opposite timing assessment.\n\nDo not replace 08:22 with 08:10 and discard the original. Link the correction to both clock-check records and preserve the calculation. The facility review should distinguish the corrected timestamp from the laboratory's decision about qualification or acceptance of the analysis. Operators should not edit a laboratory report to create that decision.\n\nIf the only clock check occurred much later, the exact correction would not be demonstrated. The clock might have drifted, been reset or changed time zones. Record that uncertainty and seek corroboration. A precise subtraction does not make a weak assumption reliable.\n\n### Resolve identifier conflicts by testing explanations\n\nWhen identifiers conflict, list the competing explanations before choosing one. Possibilities include a transposed digit, an incorrect location selection, a reused bottle label, a wrong accession mapping or an actual sample swap. Each explanation predicts different evidence.\n\nSuppose a fictional bottle photograph and collection scan identify location NORTH, while the custody form identifies SOUTH. The photograph and scan may support NORTH, but first establish that they belong to this bottle and sampling event. A photograph from an earlier visit does not resolve the conflict. A later statement that the collector always visits NORTH first is supporting context, not proof.\n\nAvoid deciding by majority vote. Several matching database fields may all have been copied from one mistaken entry. Independent records are more persuasive than repeated copies of the same source. Trace where each disputed value originated.\n\nUse a discrepancy record to preserve the competing identifiers, affected containers, evidence reviewed, remaining uncertainty and disposition. A supported facility correction should identify who authorised it under the local procedure. If laboratory mapping or reporting is affected, request clarification or amendment through the approved channel. Keep the superseded report and link it to the replacement.\n\nWhere identity remains unresolved, say exactly what remains unknown. For example, laboratory result linked to bottle BW-018; collection location not established is more useful than bad sample. A replacement sample may provide new information but cannot retrospectively identify the original bottle.\n\nDistinguish uncertainty about attribution from obligations associated with a potentially adverse result. For Ontario adverse drinking water test results subject to reporting, an immediate verbal report is required, followed by written notice within 24 hours after that report. Consult Ontario: adverse drinking water results technical bulletin, including its reporting requirements and exemptions, and check the applicable current regulation. An identifier discrepancy does not itself cancel an applicable reporting obligation. This Ontario rule is not derived from US technical guidance.\n\n### Common errors\n\n- **Using receipt time as the endpoint for every analysis.** Receipt proves arrival, not completion of the method-specific event. The applicable method or laboratory instruction determines the relevant endpoint.\n- **Overwriting the original identifier.** This hides what the collector or laboratory actually recorded and prevents later reviewers from reconstructing the discrepancy. Preserve the original and link the correction.\n- **Adding an offset to a fast clock.** A fast clock already displays a later time. Adding the offset moves the reconstructed event further in the wrong direction. Write the clock relationship before calculating.\n- **Treating matching copies as independent confirmation.** An export, spreadsheet and report may inherit the same error. Investigate the source of each field.\n- **Declaring the whole result valid because one interval passes.** Timing is only one component of integrity. Identity, preservation, container suitability, analytical quality control and report qualifiers still need review.\n- **Deleting a disputed result after replacement sampling.** The later sample is a separate event. It does not remove the original result or its associated records and obligations.\n\n### What to verify before you act\n\nUse the following documents to determine what the training assessment would mean at a real facility:\n\n- **Applicable facility approval and regulatory framework:** In Ontario, consult the drinking-water works permit, municipal drinking-water licence or other applicable approval, together with the current regulations governing that system. Establish which sampling and reporting provisions apply.\n- **Current sampling plan and controlled location register:** Verify the approved location code, sampling purpose, requested analyses and identification convention.\n- **Method-specific laboratory instructions:** Confirm containers, preservatives, transport conditions, holding-time origin and endpoint, and how the laboratory handles deviations. Do not borrow a criterion from another analysis.\n- **Custody and correction procedures:** Confirm authorised reviewers, amendment methods, electronic audit-trail controls and communication routes to the laboratory.\n- **Original records and instrument metadata:** Verify dates, zones, clock checks, transfers, receipt observations, analytical event records and report versions. Retain records according to the applicable retention requirements.\n- **Adverse-result response procedure:** Confirm the current Ontario reporting provisions where applicable, designated contacts and required notices. Keep the identity investigation distinct from time-sensitive response decisions.\n\nA complete review package allows someone else to reconstruct the same conclusion. Include the source records, register, arithmetic, discrepancies, correction history, laboratory correspondence and unresolved questions. State the scope of the conclusion: identity established, timing established, preservation unresolved, or another precise combination. Do not turn a limited finding into a blanket declaration of compliance.",
+      "evidence": "### Fictional worked scenario: conflicting location and timing evidence\n\n**The facility, operators, records and readings below are fictional. All values are supplied case assumptions for training, not authorised operating criteria.**\n\nAt fictional Cedar Drinking Water Works, bottle CD-044 has a collection-label photograph showing EAST and 22:40 UTC on 8 June. A contemporaneous location scan links that bottle identifier to EAST. The scan system audit record confirms the event date and an unreused identifier. The signed custody form instead says WEST.\n\nA later spreadsheet changes collection to 23:10 UTC and selects WEST, but provides no source, authorisation or correction history. The learner must reject that spreadsheet as an unsupported replacement for the original records, while retaining it as evidence of the discrepancy.\n\nThe fictional laboratory receipt record shows 23:55 UTC on 8 June. Its analytical worksheet shows analysis start at 02:05 UTC on 9 June. The supplied case instruction sets a collection-to-analysis-start maximum of 3 h 30 min for this analysis only.\n\nWorked calculation using the supported collection time:\n\n1. Collection to midnight: 24 h 00 min − 22 h 40 min = **1 h 20 min = 80 min**.\n2. Midnight to analysis start: 2 h 05 min − 0 h 00 min = **2 h 05 min = 125 min**.\n3. Total elapsed time: 80 min + 125 min = **205 min**.\n4. Supplied maximum: (3 h × 60 min/h) + 30 min = **210 min**.\n5. Timing margin: 210 min − 205 min = **5 min**.\n\n**Answer:** The supported interval is 205 min, within the supplied case maximum by 5 min. Preservation remains unassessed because the scenario supplies no preservation evidence.\n\nThe independent photograph and authenticated location scan support EAST, not the unsupported spreadsheet mapping. Preserve WEST on the original custody form and document the evidence supporting a linked correction through the controlled review process. Ask the laboratory to confirm its bottle-to-accession mapping and issue an amendment if needed. Retain both report versions, the discrepancy record and the calculation. Do not silently edit the laboratory PDF.",
+      "assignment": "Prepare a timeline with elapsed collection-to-receipt and collection-to-analysis times. Draft a correction request that preserves both conflicting location entries, cites evidence and asks the laboratory to confirm the mapping. State what is known, what remains unconfirmed and what information is required before deciding whether the timing meets the method.",
+      "rubric": [
+        "Calculates across midnight correctly.",
+        "Preserves original IDs and routes report amendment appropriately.",
+        "Does not infer a method limit or cancel a response automatically."
+      ],
+      "facilitatorGuide": "Receipt elapsed 1 h 45 m; analysis 8 h 25 m. Contemporary barcode and form supportR2; the lab report remainsR7 until clarified. Require an auditable amendment request, not an editedPDF or assertion of validity. The analyst must obtain the applicable method limit and event definition; neither elapsed time alone proves acceptable handling. Discuss how urgent reporting and identity resolution can proceed together.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 10,
+          "instruction": "Study the explanation and worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 5,
+          "instruction": "Locate the cited source section and note its application boundary."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Complete the evidence-based assignment."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 5,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the knowledge checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "field",
+        "adverse"
+      ],
+      "checks": [
+        {
+          "id": "ceu-sampling-data-quality-custody-c1",
+          "objective": "custody",
+          "prompt": "In this non-credit training pilot, which record most directly supports reconstruction of a sample handover?",
+          "choices": [
+            "A custody entry identifying both people and the dated transfer time.",
+            "A field sheet identifying the collector and intended laboratory destination.",
+            "A courier invoice listing the delivery address and transport charge.",
+            "A laboratory report listing the accession and final analytical result."
+          ],
+          "correctIndex": 0,
+          "explanation": "The module's traceability register identifies the releasing person, receiving person and transfer time as handover evidence. An intended destination does not demonstrate that transfer occurred. This is study material, not operating or compliance instruction; local practices follow controlled facility procedures."
+        },
+        {
+          "id": "ceu-sampling-data-quality-custody-c2",
+          "objective": "custody",
+          "prompt": "A fictional review contains a photograph of an unreadable bottle label and a collector's later recollection of the location. Which entry properly separates observation from interpretation?",
+          "choices": [
+            "Observation: the collector recalls a location; interpretation: custody is complete.",
+            "Observation: the label is unreadable; interpretation: the recalled location is possible.",
+            "Observation: the location is confirmed; interpretation: the label was damaged.",
+            "Observation: the photograph is unclear; interpretation: the bottle is invalid."
+          ],
+          "correctIndex": 1,
+          "explanation": "The module distinguishes what a record visibly demonstrates from a proposed explanation. An unreadable label is observable, while the recalled location remains a possibility. Treating recollection as confirmed identity overstates the evidence."
+        },
+        {
+          "id": "ceu-sampling-data-quality-custody-c3",
+          "objective": "custody",
+          "prompt": "Fictional records include a handwritten collection time and a conflicting electronic scan time. What should a training reviewer examine before ranking their evidential strength?",
+          "choices": [
+            "Whether the handwritten entry matches the laboratory's preferred report format.",
+            "Whether the scan export appears later in the assembled review package.",
+            "Whether record creation, clock handling and change protection are documented.",
+            "Whether the electronic record has a cleaner layout than the handwritten entry."
+          ],
+          "correctIndex": 2,
+          "explanation": "The module's electronic-record discussion bases evidence strength on record creation and protection, including clock and synchronisation behaviour. A polished electronic layout is not evidence that its timestamp represents the collection event."
+        },
+        {
+          "id": "ceu-sampling-data-quality-custody-c4",
+          "objective": "custody",
+          "prompt": "Fictional records provide collection, laboratory receipt and report issue times, but no analysis-start evidence. The supplied case instruction measures collection to analysis start. What timing finding is supported?",
+          "choices": [
+            "Estimate analysis start from the laboratory's usual processing schedule.",
+            "Use receipt as the endpoint because laboratory custody has begun.",
+            "Use report issue as the endpoint because testing must be complete.",
+            "Leave timing unresolved until evidence establishes analysis start."
+          ],
+          "correctIndex": 3,
+          "explanation": "The module's elapsed-time example requires evidence for the specified analytical endpoint. Receipt proves arrival, not analysis start, and report issue may occur later. Neither timestamp can silently replace the missing event."
+        },
+        {
+          "id": "ceu-sampling-data-quality-custody-c5",
+          "objective": "custody",
+          "prompt": "In a fictional paper record, an entry needs a supported correction. Which proposed correction record best preserves the history for another reviewer?",
+          "choices": [
+            "Keep both entries, reason, evidence, author, change date and review status.",
+            "Keep the replacement, evidence and reviewer initials in a newly prepared clean copy.",
+            "Keep both entries and the correction date, relying on the collector to explain the reason.",
+            "Keep the original and replacement entries with a brief note that the review is complete."
+          ],
+          "correctIndex": 0,
+          "explanation": "The module's correction example identifies the original and corrected entries, reason, evidence, person, change date and review status. Keeping both values alone is tempting but does not explain or substantiate the change. The correction mechanism depends on the controlled record system."
+        },
+        {
+          "id": "ceu-sampling-data-quality-custody-c6",
+          "objective": "custody",
+          "prompt": "A fictional location scan reliably links a container to its sampling event, but preservation records are missing. Which conclusion follows from the supplied evidence?",
+          "choices": [
+            "Neither identity nor preservation can be assessed without a courier invoice.",
+            "Identity is supported, but preservation remains a separate unresolved question.",
+            "Identity and preservation are established because the scan links the container.",
+            "Preservation is established, but identity still requires a laboratory result."
+          ],
+          "correctIndex": 1,
+          "explanation": "The module separates identity from integrity. A reliable location link supports identity but does not document preservation. Concluding that the scan establishes both confuses evidence about origin with evidence about sample condition."
+        }
+      ]
+    },
+    {
+      "id": "quality-control",
+      "title": "Interpret blanks, duplicates and reporting limits",
+      "objectives": [
+        "Calculate relative percent difference.",
+        "Separate contamination evidence from sample representativeness."
+      ],
+      "lesson": "### What quality controls can establish\n\nThis module is study and training material for a non-credit pilot, not operating or compliance instruction. All facilities, operators, records and readings in the teaching examples are fictional. Every numerical criterion in those examples is a supplied case assumption, not an authorised value for an operating system.\n\nA laboratory result describes a sample measured through a particular analytical process. Before using it to support a decision, separate three questions: Was contamination introduced? Were repeated measurements sufficiently consistent? Did the sample represent the location, condition and time relevant to the decision?\n\nBlanks address possible contamination within the parts of the sampling and analytical chain they cover. Duplicates assess agreement across the processes actually repeated. Neither proves representativeness. Two bottles collected from the wrong tap can agree closely. A clean blank can accompany a sample collected after an undocumented flushing period that changed the water being assessed.\n\nA reporting limit describes how a laboratory reports results under its method and reporting arrangements. It is not automatically a drinking-water standard, an instrument detection limit or a boundary between safe and unsafe water. A result reported below that limit remains qualified information.\n\nThe US EPA publication *Generating high-quality turbidity data* discusses the measurement chain and SCADA data quality. It is US technical guidance, not Ontario law. Its measurement-chain perspective is useful here: a displayed value depends on collection, measurement, processing and transfer. It does not supply universal acceptance criteria for the chemical duplicate examples below. Those criteria must come from the applicable laboratory method, validated procedure and sampling plan.\n\n### Read a blank by the processes it covers\n\nIdentify how each blank was prepared before interpreting its result. A field blank generally exposes suitable blank water to specified field handling. An equipment blank evaluates contact with designated sampling equipment. A trip blank accompanies samples but is normally not opened in the field. A laboratory method blank passes through defined preparation and analytical steps. Exact definitions and applicability depend on the method and sampling plan.\n\nDo not treat these labels as interchangeable. A sealed trip blank does not assess contamination introduced while a sampler opens a bottle. A laboratory blank does not assess a dirty sampling hose that never entered the laboratory. Conversely, a field blank may include bottle, transport and analytical contributions as well as field handling. Its result alone seldom identifies the source.\n\nA detected analyte in a relevant blank is evidence requiring interpretation, not an automatic instruction to reject every associated sample. Establish the linkage: bottle lot, equipment, sampling event, shipping container, preparation batch and analytical batch. Then check the method's blank acceptance rules and the laboratory's documented assessment. The relative sizes of the blank and sample results may matter, but only within the applicable decision rule.\n\nA blank reported below its reporting limit does not establish that contamination was absent. It establishes a reporting outcome under that blank's method and limit. A blank analysed with a higher reporting limit may be unable to resolve contamination at the concentration relevant to the sample.\n\nDo not subtract a blank concentration from sample results unless the validated method explicitly requires that correction. Blank contamination may not enter every bottle equally. Automatic subtraction can hide a genuine contamination problem and create unsupported precision. Retain the original laboratory results, blank associations, qualifiers and any authorised corrected report.\n\nThe US EPA publication *Field turbidity measurement* addresses field measurement procedure and quality control. It is US technical guidance; laboratory and site methods govern local use. Its emphasis on controlled field measurement supports checking handling and equipment records, not transferring one method's blank rules to another analyte.\n\n### Build an input register before calculating\n\nA useful register connects each number to its evidence. Complete it from controlled records rather than memory. Where information is missing, mark the gap instead of assuming that similarly named samples belong together.\n\n| Input to establish | Record to consult | Interpretation risk if missing |\n|---|---|---|\n| Analyte, fraction and units | Laboratory report and sample request | Different analytes, filtered fractions or units may be compared |\n| Primary and duplicate identities | Chain of custody and field sheet | Unrelated bottles may be treated as a pair |\n| Duplicate design | Sampling plan and field procedure | Analytical agreement may be mistaken for field agreement |\n| Collection location, time and conditions | Field sheet and site records | A precise result may describe the wrong water condition |\n| Result qualifiers and reporting limits | Complete laboratory report | A censored or qualified result may become a false exact value |\n| Blank type and sample association | Field blank log and laboratory batch records | Contamination evidence may be assigned to the wrong samples |\n| Acceptance criteria and applicable range | Validated method and quality-control procedure | A percentage rule may be used outside its valid range |\n| Preservation, transport and receipt condition | Chain of custody and laboratory receipt record | Sample changes may be overlooked |\n\nA field duplicate consists of separately collected samples intended to represent the same conditions under the sampling plan. Its difference can include local variability, collection, handling and analysis. A split sample is divided from a common sample and does not repeat the original collection process. A laboratory duplicate generally repeats designated laboratory steps on material already received. Record which design was used.\n\nCheck that both results have compatible units and analytical bases before calculating. Confirm whether dilution changed either reporting limit. Check qualifiers for holding, preservation, interference or other method concerns. A mathematically correct calculation cannot repair an invalid comparison.\n\nKeep the laboratory's reported precision. Carry adequate digits through the calculation, then round according to the applicable procedure. Do not round intermediate values until a borderline pair appears acceptable. If the documented procedure is unclear about rounding, record the ambiguity and obtain clarification through the authorised review process.\n\n### Worked example: calculate relative percent difference\n\nRelative percent difference, or RPD, expresses the absolute difference between two results relative to their mean. It treats the pair symmetrically: neither result is assumed to be the true concentration.\n\n**Supplied fictional case assumptions:** Two field-duplicate results for the same dissolved constituent are 0.40 mg/L and 0.50 mg/L. Each reporting limit is 0.01 mg/L. The fictional quality-control procedure accepts RPD at or below 20% only when both results are at least 0.20 mg/L. These are teaching assumptions, not authorised criteria for any facility.\n\nFirst establish that the pair is eligible for the supplied rule:\n\n- Primary result: 0.40 mg/L ≥ 0.20 mg/L.\n- Duplicate result: 0.50 mg/L ≥ 0.20 mg/L.\n\nBoth results are numerical concentrations within the stated rule's range. Calculate the mean and absolute difference before calculating the percentage:\n\n- Pair sum = 0.40 mg/L + 0.50 mg/L = 0.90 mg/L.\n- Pair mean = 0.90 mg/L ÷ 2 = 0.45 mg/L.\n- Absolute difference = |0.40 mg/L − 0.50 mg/L| = 0.10 mg/L.\n- Difference-to-mean ratio = 0.10 mg/L ÷ 0.45 mg/L = 0.2222, dimensionless.\n- RPD = 0.2222 × 100% = 22.22%, approximately 22.2%.\n- Criterion comparison = 22.2% > 20%.\n\n**Answer:** The calculated RPD is 22.2%. The pair fails the supplied fictional acceptance criterion. Its absolute difference is 0.10 mg/L.\n\nThis finding means the pair's agreement does not meet that procedure's expectation. It does not identify which result is wrong, prove contamination or establish a drinking-water exceedance. Do not select the lower result because it is more convenient. The calculated mean is a denominator for RPD, not automatically an authorised replacement result.\n\nReview collection timing, sampling conditions, bottle handling, laboratory qualifiers and relevant batch quality controls. If laboratory duplicates agree but field duplicates do not, collection or local variability deserves attention, although it is not proven to be the cause. If laboratory duplicates also disagree, investigate the analytical process as well.\n\nRetain both original results, the criterion and its version, the arithmetic, the reviewer's assessment and the disposition. Any repeat analysis or recollection should remain linked to the original event. A later acceptable pair does not erase the earlier disagreement.\n\n### Worked example: low concentrations and censored results\n\nPercentages can become unstable near the reporting limit because their denominator is small. An absolute-difference criterion may be more appropriate in a specified low-concentration range, but its use must be authorised by the applicable method or procedure.\n\n**Supplied fictional case assumptions:** A second duplicate pair is 0.014 mg/L and 0.018 mg/L, with reporting limits of 0.010 mg/L for both results. The fictional procedure uses an absolute-difference limit of 0.005 mg/L when both results are numerical and either is below 0.20 mg/L. The percentage criterion from the previous example does not govern this range.\n\nCheck the rule's applicability and calculate agreement:\n\n- Primary result: 0.014 mg/L < 0.20 mg/L.\n- Duplicate result: 0.018 mg/L < 0.20 mg/L.\n- Absolute difference = |0.014 mg/L − 0.018 mg/L| = 0.004 mg/L.\n- Acceptance comparison = 0.004 mg/L ≤ 0.005 mg/L.\n\nFor teaching comparison only, calculate the RPD as well:\n\n- Pair sum = 0.014 mg/L + 0.018 mg/L = 0.032 mg/L.\n- Pair mean = 0.032 mg/L ÷ 2 = 0.016 mg/L.\n- Difference-to-mean ratio = 0.004 mg/L ÷ 0.016 mg/L = 0.25, dimensionless.\n- RPD = 0.25 × 100% = 25%.\n\n**Answer:** The absolute difference is 0.004 mg/L, so this pair passes its supplied fictional low-concentration criterion. The calculated RPD is 25%, but using the previous example's percentage criterion here would apply a rule outside its stated range.\n\nNow change a condition. Suppose the first result is instead reported as <0.010 mg/L while the second remains 0.018 mg/L. The first result is no longer an exact concentration. The supplied rule requires two numerical results, so it cannot establish acceptance for this changed pair. The appropriate training conclusion is that the supplied information is insufficient and the censored-result procedure must be consulted.\n\nDo not replace <0.010 mg/L with zero, the reporting limit or half the reporting limit without an authorised data-treatment rule. Each substitution manufactures a specific denominator and therefore a different apparent RPD. Preserve the less-than symbol and reporting limit in the dataset.\n\nAlso distinguish censored results from laboratory estimates reported with qualifiers. A qualified numerical estimate may be usable for some purposes under a defined plan, but it must not silently become an unqualified result. If dilution raises a sample's reporting limit above the concentration needed for a decision, ask whether the analytical approach was fit for that purpose. A lower instrument detection limit does not override the sample-specific reporting limit.\n\n### Separate contamination from representativeness\n\nRepresentativeness depends on the question being asked. A sample intended to describe water after a defined flushing procedure is not interchangeable with a sample intended to describe stagnant premise-plumbing water. The applicable sampling plan must specify the relevant condition.\n\nConsider fictional field duplicates that agree and have associated blanks reported below their limits. If the sampling location was entered incorrectly, those controls do not establish conditions at the intended location. The correct conclusion is not simply that the data are good. Agreement and blank findings may be acceptable, while suitability for the intended decision remains unsupported.\n\nLikewise, a relevant blank detection does not prove that the water system contained that analyte at the blank concentration. It raises a contamination question in the covered chain. Actual water contamination and handling contamination can also coexist. Avoid forcing every investigation into a single explanation before the evidence supports it.\n\nThe US EPA resource *Drinking Water Distribution System Tools and Resources* discusses water age, storage, pressure management and distribution-system integrity. It is US technical guidance, not Ontario requirements. Those subjects help identify contextual records worth reviewing when asking whether a sample captured the intended distribution-system condition.\n\nRetain site identification, sampling point details, collection sequence, required flushing observations, relevant disinfectant or turbidity readings, sampler observations and operational context. Use records appropriate to the event rather than collecting unrelated paperwork. A pressure disturbance, storage change or maintenance activity may alter interpretation even when the laboratory quality controls are acceptable.\n\nWhen conditions change, distinguish a confirmation sample from a replacement sample. Sampling after a repair or after different flushing may answer a new question. Record that difference explicitly. Do not describe the new result as proof that the original water condition was acceptable.\n\n### Common errors\n\n- **Dividing by only the primary result.** That calculates a relative difference referenced to one result, not RPD. RPD uses the pair mean and does not designate either result as truth.\n- **Applying one percentage criterion at every concentration.** Low-concentration results can have large percentages despite small absolute differences. Use the documented concentration range and the applicable alternative rule.\n- **Treating a less-than result as zero.** This removes censoring information and creates unsupported arithmetic. Preserve the qualifier and use only authorised substitution methods where required.\n- **Subtracting a field blank automatically.** The blank does not demonstrate an identical contamination contribution to every bottle. Correction requires a validated method basis.\n- **Calling matching duplicates representative.** Agreement describes the processes repeated. It cannot establish that the correct location, timing or sampling condition was selected.\n- **Deleting an unfavourable result after recollection.** Recollection adds evidence. It does not remove the original result, its reporting implications or the need for a documented disposition.\n\n### What to verify before you act\n\nConsult the facility's applicable drinking-water licence, permit or other approval, the governing regulation, the current sampling plan, the validated collection procedure and the laboratory's analytical and quality-control procedures. Confirm which document governs the proposed use of the result. A research or troubleshooting sample may have different data-use criteria from a required compliance sample.\n\nCheck the complete laboratory report, including amendments, qualifiers, sample-specific reporting limits and associated quality-control records. Compare it with the chain of custody and field sheet. Establish who is authorised to assess data usability, request laboratory clarification, arrange recollection and make reporting decisions under the facility's documented arrangements.\n\nFor Ontario adverse drinking water test results, immediate verbal reporting is required, followed by written notice within 24 hours after that report. Consult *Ontario: adverse drinking water results technical bulletin*, particularly its reporting requirements and exemptions, and check the applicable current regulation for triggers, recipients and any exemption. Do not assume that a duplicate disagreement or suspected blank contamination suspends a reporting obligation while an investigation proceeds.\n\nBefore a decision is documented, state separately the analytical finding, blank finding, duplicate assessment and representativeness assessment. Identify unresolved gaps and the intended use that remains supported or unsupported. Retain original records and a traceable review rather than replacing evidence with a single spreadsheet label such as pass or fail.",
+      "evidence": "### Fictional worked scenario\n\n**The facility, operators, records and readings below are fictional. All numerical criteria are supplied case assumptions for this non-credit training exercise, not authorised operating values.**\n\nAt fictional Maple Reach Drinking Water System, a field sheet records a dissolved-constituent duplicate pair collected at the designated distribution sampling tap under the same documented conditions. The laboratory reports 0.28 mg/L and 0.36 mg/L, each with a reporting limit of 0.010 mg/L. The associated field blank is 0.012 mg/L. The associated laboratory method blank is <0.010 mg/L.\n\nThe supplied fictional procedure requires RPD ≤20% when both sample results are at least 0.20 mg/L. It flags a field blank reported at or above its reporting limit for documented investigation. It does not authorise blank subtraction. These quality-control criteria are not drinking-water concentration standards.\n\nAn unsigned spreadsheet note says: “Subtract the field blank from both results and accept the pair because the laboratory blank was clean.” No controlled procedure supports that instruction.\n\n### Worked solution and judgment\n\nBoth sample results exceed 0.20 mg/L, so the supplied RPD rule applies.\n\n- Pair sum = 0.28 mg/L + 0.36 mg/L = 0.64 mg/L.\n- Pair mean = 0.64 mg/L ÷ 2 = 0.32 mg/L.\n- Absolute difference = |0.28 mg/L − 0.36 mg/L| = 0.08 mg/L.\n- Difference-to-mean ratio = 0.08 mg/L ÷ 0.32 mg/L = 0.25, dimensionless.\n- RPD = 0.25 × 100% = 25%.\n- Duplicate comparison = 25% > 20%: fails the supplied criterion.\n- Field blank comparison = 0.012 mg/L ≥ 0.010 mg/L: investigation flag applies.\n\n**Answer:** Reject the unsupported spreadsheet instruction. Retain both sample results without unauthorised subtraction. The laboratory blank's censored result neither proves zero contamination nor clears field handling.\n\nRetain the reports, blank associations, field sheet, calculation and rejected note in the review record. Investigate duplicate agreement and possible introduced contamination separately. The field record supports the stated sampling conditions, but the blanks and duplicates do not independently prove representativeness. These findings alone do not determine whether an adverse-result reporting trigger applies; that requires the applicable regulation and actual analyte information.",
+      "assignment": "Calculate D1 and D2 RPD and absolute differences. Prepare a qualified batch review: apply the supplied rule only where valid, state what the blank comparison suggests without assigning a source, and preserve S1's reporting notation. Draft three precise questions to the laboratory that would resolve the missing criteria.",
+      "rubric": [
+        "Correct RPD values and applicability boundary.",
+        "Does not subtract the blank or select a “true” duplicate result.",
+        "Retains censored notation and identifies missing rules."
+      ],
+      "facilitatorGuide": "D1RPD22.22%, difference 0.10: fails supplied 20% criterion. D2 mean 0.04,RPD50%,difference 0.02; no accept/reject conclusion under the unavailable low-range rule. Field blank detection with lab blank below 0.01 points to investigation beyond laboratory blank contamination, not proof of a specific field source. S1 mustremain<0.02. Return categorical acceptance/rejection unsupported by criteria.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 10,
+          "instruction": "Study the explanation and worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 5,
+          "instruction": "Locate the cited source section and note its application boundary."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 20,
+          "instruction": "Complete the evidence-based assignment."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 5,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the knowledge checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "field",
+        "quality"
+      ],
+      "checks": [
+        {
+          "id": "ceu-sampling-data-quality-quality-control-c1",
+          "objective": "quality-control",
+          "prompt": "Fictional case assumptions: comparable duplicate results are 0.60 mg/L and 0.66 mg/L. Both are unqualified numerical results. What is their relative percent difference, rounded to one decimal place for this example?",
+          "choices": [
+            "9.5%, using the absolute difference divided by the pair mean.",
+            "9.1%, using the absolute difference divided by the larger result.",
+            "4.8%, using the difference divided by the pair sum.",
+            "10.0%, using the absolute difference divided by the first result."
+          ],
+          "correctIndex": 0,
+          "explanation": "RPD = |0.60 − 0.66| ÷ [(0.60 + 0.66) ÷ 2] × 100% = 9.52%, rounded here to 9.5%. Dividing by the first result gives 10.0%, but RPD uses the mean and treats both results symmetrically. Source: supplied module, 'Worked example: calculate relative percent difference'. All items are study and training material for a non-credit pilot, not operating or compliance instruction. All scenarios, records and readings are fictional. Numerical criteria and example values are supplied case assumptions, not authorised operating values."
+        },
+        {
+          "id": "ceu-sampling-data-quality-quality-control-c2",
+          "objective": "quality-control",
+          "prompt": "In a fictional sampling exercise, a trip blank remains sealed throughout field collection. The reviewer wants to assess contamination introduced while sample bottles were opened. What can this trip blank establish?",
+          "choices": [
+            "It assesses all field handling because the same sampler transported every bottle.",
+            "It covers its defined transport pathway, but not exposure during bottle opening.",
+            "It covers laboratory preparation alone, regardless of its travel history.",
+            "It assesses bottle-opening contamination because it travelled with the samples."
+          ],
+          "correctIndex": 1,
+          "explanation": "A sealed trip blank does not repeat exposure during bottle opening. Travelling with the samples does not make it a field-handling blank. Its exact coverage depends on its preparation, method and sampling plan. Source: supplied module, 'Read a blank by the processes it covers'."
+        },
+        {
+          "id": "ceu-sampling-data-quality-quality-control-c3",
+          "objective": "quality-control",
+          "prompt": "Fictional case assumption: a laboratory reports a blank result as <0.005 mg/L. No additional interpretation is supplied. Which statement accurately preserves the meaning of this result?",
+          "choices": [
+            "The blank confirms that associated drinking water is safe to consume.",
+            "The blank contains exactly 0.005 mg/L for later calculations.",
+            "The blank result is below its stated reporting limit.",
+            "The blank has a reported concentration of zero."
+          ],
+          "correctIndex": 2,
+          "explanation": "The notation preserves a below-reporting-limit result, not an exact concentration. Substituting zero would turn qualified information into an unsupported numerical value. A reporting limit is also not a safety threshold. Source: supplied module, 'What quality controls can establish' and 'Read a blank by the processes it covers'."
+        },
+        {
+          "id": "ceu-sampling-data-quality-quality-control-c4",
+          "objective": "quality-control",
+          "prompt": "A fictional field sheet records that one collected sample was mixed and divided into two bottles. Which interpretation correctly describes what this duplicate design repeats?",
+          "choices": [
+            "A field duplicate repeats collection because two bottles reach the laboratory.",
+            "A laboratory duplicate repeats only instrument readings.",
+            "An equipment blank repeats equipment contact without collecting source water.",
+            "A split sample repeats steps after division, not the original collection."
+          ],
+          "correctIndex": 3,
+          "explanation": "Dividing a common sample creates a split sample. It can assess agreement across subsequent processes but does not repeat the original collection. Two bottles alone do not establish a field-duplicate design. Source: supplied module, 'Build an input register before calculating'."
+        },
+        {
+          "id": "ceu-sampling-data-quality-quality-control-c5",
+          "objective": "quality-control",
+          "prompt": "In a fictional exercise, duplicates agree closely and the associated blank is below its reporting limit. The field sheet shows collection from a different tap than the sampling plan specified. Which conclusion is supported?",
+          "choices": [
+            "Agreement supports precision, but the intended tap was not sampled.",
+            "The tap discrepancy establishes contamination despite the blank result.",
+            "The blank establishes that the sampling location cannot affect interpretation.",
+            "Agreement establishes that the intended tap was represented accurately."
+          ],
+          "correctIndex": 0,
+          "explanation": "Agreement addresses the processes repeated by the duplicates, not whether the planned location was sampled. A favourable blank result cannot correct a location mismatch or prove representativeness. Source: supplied module, 'What quality controls can establish'."
+        },
+        {
+          "id": "ceu-sampling-data-quality-quality-control-c6",
+          "objective": "quality-control",
+          "prompt": "A fictional duplicate register pairs a dissolved-metal result in mg/L with a total-metal result in µg/L. The bottles share a collection time. What is the sound review approach before calculating RPD?",
+          "choices": [
+            "Average the reported numbers before checking the analytical fractions.",
+            "Resolve the fraction mismatch and units before accepting the comparison.",
+            "Use the larger reporting limit to make the different fractions directly comparable.",
+            "Convert the units and accept the pair because collection times match."
+          ],
+          "correctIndex": 1,
+          "explanation": "Compatible units and analytical bases are both necessary. Unit conversion cannot make dissolved and total fractions equivalent, and matching collection times does not establish a valid pair. Source: supplied module, 'Build an input register before calculating'."
+        }
+      ]
+    },
+    {
+      "id": "qualified-report",
+      "title": "Write a decision-ready result summary",
+      "objectives": [
+        "Separate findings, limitations and next actions.",
+        "Prevent unsupported claims from entering a public summary."
+      ],
+      "lesson": "### Build a summary around an answerable question\n\nThis is study and training material for a non-credit pilot, not operating or compliance instruction. All facilities, operators, records, identifiers and readings in the examples are fictional. Every numerical teaching value is a supplied case assumption, not an authorised limit, acceptance criterion or operating value.\n\nA decision-ready result summary answers a bounded question: what does the available evidence establish, what remains uncertain, and what decision needs an accountable owner? “Review turbidity” is too broad. “Determine whether the available measurements support a statement about the recorded outlet turbidity during the reviewed period” identifies the measurement, location, period and proposed use.\n\nStart with the decision, but do not start with the conclusion you hope to reach. If the intended decision is whether to publish an explanation for a change in results, the evidence must support that explanation. A collection of measurements might establish a change without establishing its cause. It might also establish a measurement problem without establishing what the water quality actually was during the affected period.\n\nKeep four elements visibly separate:\n\n- **Finding:** What a traceable record establishes.\n- **Limitation:** What restricts interpretation or prevents a broader conclusion.\n- **Next action:** What evidence or review is needed, rather than an unsupported treatment adjustment.\n- **Owner and closure evidence:** Which role is responsible and what record will demonstrate completion.\n\nWrite the finding at the narrowest defensible scale. Name the sampling point, parameter, measurement method where relevant, and collection period. A result from one outlet does not automatically describe the distribution system. An acceptable instrument check does not establish that sample custody was correct. A laboratory result does not establish the hydraulic conditions between sampling events.\n\nPreserve the distinction between a result and a compliance determination. The latter requires the applicable legal requirement, sampling basis, method, location, timing and other conditions to be checked. A summary should not silently supply those missing conditions.\n\n### Qualify the measurement chain before interpreting the result\n\nA number passes through a chain: collection, identification, preservation where applicable, transport, analysis, instrument processing, transcription and reporting. Errors at any link can change its meaning. The US EPA publication *Generating high-quality turbidity data*, EPA 815-B-19-010, provides US technical guidance on the measurement chain and SCADA data quality. It is not Ontario law.\n\nUse an evidence register to make qualifications visible before drafting the conclusion. The following is a training template, not a substitute for the facility's approved forms or procedures.\n\n| Evidence item | What to establish | Qualification to carry into the summary | Record to retain |\n|---|---|---|---|\n| Sample identity | Location, parameter, collection time and matching identifiers | Unresolved identity prevents confident attribution to a location | Collection sheet, custody record and discrepancy resolution |\n| Analytical result | Method, units, reporting status and laboratory qualifiers | Preliminary, corrected or qualified results need explicit identification | Laboratory report and revision history |\n| Field measurement | Instrument identity, applicable checks and sample handling | An instrument check does not resolve handling or location errors | Field sheet and instrument check record |\n| SCADA extract | Tag meaning, timestamps, quality flags and aggregation basis | Missing or invalid data restrict period-wide conclusions | Native export, configuration information and event log |\n| Operating context | Relevant equipment state and contemporaneous events | Coincidence supports investigation, not automatic causation | Shift log, work record and event chronology |\n| Comparison criterion | Current source and applicability to this measurement | An unsupported threshold cannot establish acceptance or compliance | Applicable approval, regulation or validated procedure |\n\nRetain the original data, not just a screenshot of a trend. A screenshot can omit quality flags, compress short events and conceal how an average was calculated. Record the extraction settings and time convention. Check whether an instrument clock and the historian clock represent the same time basis before aligning a maintenance event with a measurement change.\n\nThe US EPA source *Field turbidity measurement* discusses field measurement procedure and quality control as US technical guidance. Local laboratory and site methods govern their use. Handling, mixing, bubbles and measurement timing can matter, but a plausible explanation is not evidence that a particular result was affected. Record observations rather than retrospectively inventing a reason to discard an inconvenient result.\n\n### Worked example: describe duplicate agreement without inventing acceptance\n\nFor this fictional example, the supplied case assumptions are two turbidity measurements of separately handled duplicate portions from the same collected sample. The recorded values are 0.18 NTU and 0.22 NTU. The case method reports NTU. The study package provides no applicable duplicate acceptance criterion and does not designate either portion as the primary reportable result.\n\nThe question is limited: how far apart are the measurements, and what does that difference establish? Calculate the absolute difference and relative percent difference, or RPD. RPD expresses the absolute difference relative to the pair's mean.\n\n1. Absolute difference = |0.22 NTU − 0.18 NTU| = 0.04 NTU.\n2. Sum of measurements = 0.18 NTU + 0.22 NTU = 0.40 NTU.\n3. Pair mean = 0.40 NTU ÷ 2 = 0.20 NTU.\n4. Relative difference = 0.04 NTU ÷ 0.20 NTU = 0.20, dimensionless.\n5. RPD = 0.20 × 100% = 20%.\n\n**Stated answer:** The duplicate portions differ by 0.04 NTU, with an RPD of 20%. Their arithmetic mean is 0.20 NTU. These calculations alone do not establish acceptance or authorise replacement of the individual results by their mean.\n\nA defensible finding reads: “The recorded duplicate measurements were 0.18 NTU and 0.22 NTU, giving an absolute difference of 0.04 NTU and an RPD of 20%.” The limitation follows separately: “The applicable duplicate assessment criterion was not included in the reviewed package; acceptance has not been determined.”\n\nDo not describe the pair as passing because the measurements look close. Do not describe it as failing because the percentage looks large. At low concentrations, a small absolute difference can produce a relatively large percentage. Both descriptions belong in the review, together with method capability, instrument resolution and the applicable quality-control procedure.\n\nThis duplicate design also limits what the calculation tests. Separately handled portions from one collected sample do not test the variability between independently collected samples at different places or times. They cannot establish the condition of the entire system.\n\nRetain both original results, their linkage to the collected sample, instrument records, handling observations and the calculation. If a subsequent review finds that one entry used a different method or reporting unit, the comparison needs reassessment. Arithmetic cannot repair measurements that were not meaningfully comparable.\n\n### Worked example: calculate a qualified period mean\n\nFor this fictional example, the supplied case assumptions are a 60 min review window containing twelve equal 5 min intervals. The export contains interval means, not instantaneous point readings. The case-specific validated data-review procedure identifies one interval as missing and two as instrument start-up records unsuitable for this calculation. Their exclusion is an analytical qualification, not permission to erase them.\n\nThe remaining interval means are four intervals at 0.08 NTU, three at 0.12 NTU and two at 0.20 NTU. Calculate the valid-duration coverage and the time-weighted mean of the retained intervals.\n\n1. Total represented duration = 12 intervals × 5 min/interval = 60 min.\n2. Excluded interval count = 1 interval + 2 intervals = 3 intervals.\n3. Retained interval count = 12 intervals − 3 intervals = 9 intervals.\n4. Retained duration = 9 intervals × 5 min/interval = 45 min.\n5. Unrepresented duration in the qualified calculation = 60 min − 45 min = 15 min.\n6. Valid-duration coverage = (45 min ÷ 60 min) × 100% = 75%.\n7. First group's duration = 4 intervals × 5 min/interval = 20 min.\n8. Second group's duration = 3 intervals × 5 min/interval = 15 min.\n9. Third group's duration = 2 intervals × 5 min/interval = 10 min.\n10. First weighted contribution = 0.08 NTU × 20 min = 1.60 NTU·min.\n11. Second weighted contribution = 0.12 NTU × 15 min = 1.80 NTU·min.\n12. Third weighted contribution = 0.20 NTU × 10 min = 2.00 NTU·min.\n13. Total weighted contribution = 1.60 NTU·min + 1.80 NTU·min + 2.00 NTU·min = 5.40 NTU·min.\n14. Qualified mean = 5.40 NTU·min ÷ 45 min = 0.12 NTU.\n\n**Stated answer:** The retained interval means have a time-weighted mean of 0.12 NTU and represent 45 min, or 75%, of the supplied 60 min review window. This is not an established mean for the complete window.\n\nThe denominator must match the retained evidence. Dividing the retained weighted contribution by the full window would silently treat the excluded duration as contributing zero turbidity. That would manufacture a lower result. Filling gaps with the last good value would also require an applicable, documented basis and clear disclosure.\n\nThe reported 0.20 NTU is the highest retained interval mean, not necessarily the highest instantaneous turbidity. Averaging can conceal short excursions. Whether the retained data are adequate for a particular decision depends on the applicable approval, procedure and intended use. The supplied 75% coverage is descriptive, not a universal completeness threshold.\n\nRetain the original export, excluded rows, quality flags, procedure reference, interval definition and calculation file. If the records later prove to be point readings rather than interval means, this calculation's time-weighting basis is unsupported and must be reconsidered.\n\n### Write findings, limitations and next actions for different readers\n\nAn internal handover needs enough detail for the next reviewer to continue the work. A public summary needs plain language, but simplification must not remove a limitation that changes the meaning. Both versions should remain traceable to the same evidence.\n\nFor the fictional period-mean example, the internal finding could state: “The qualified extract has a retained-duration mean of 0.12 NTU. Retained records represent 45 min of the reviewed 60 min window.” The limitation is: “The complete-window mean and conditions during the excluded intervals are not established.”\n\nThe next action should close a defined gap: “The designated data reviewer will reconcile the missing interval against the native historian and document the start-up exclusions under the site procedure before the summary is released.” That is more useful than “continue monitoring.” It identifies an owner, evidence and a closure event without inventing a regulatory deadline.\n\nA public-facing draft could say: “Some instrument records from the reviewed period could not be used. The usable records do not establish conditions throughout the complete period.” Add measurements only when their context and qualifications can be communicated accurately. Do not translate a narrow dataset into “the water was safe,” “the system was compliant” or “there was no issue.”\n\nKeep mandatory reporting separate from publication review. For Ontario adverse drinking water test results, an immediate verbal report is required, followed by written notice within 24 hours after that report. This Ontario requirement is not a generic deadline for every unusual instrument reading. Consult *Ontario: adverse drinking water results technical bulletin* and the applicable current regulation for reporting requirements and exemptions. Drafting or polishing a public summary must not delay required reporting.\n\n### Change the conclusion when the evidence changes\n\nA qualification should identify what new evidence could change the decision. If a corrected laboratory report resolves a transcription error, revise the finding and retain the superseded version. If sample identity remains unresolved, better analytical precision does not make location attribution reliable.\n\nIf missing records are recovered, inspect their quality before adding them to the calculation. Recompute coverage and the mean using a consistent basis. Explain whether the recovered evidence changes the interpretation, rather than merely replacing the number in the final paragraph.\n\nIf a maintenance log places an instrument disturbance near an observed increase, report the temporal association. Establishing causation needs additional evidence, such as diagnostic records and a supported comparison with independent measurements. A maintenance explanation must not become an excuse to exclude genuine water-quality changes.\n\nThe US EPA source *Drinking Water Distribution System Tools and Resources* provides US technical guidance on water age, storage, pressure management and distribution-system integrity. These resources can inform investigation questions, but they do not establish Ontario requirements or prove the cause of a site-specific result. For example, a storage operating state and a changed result occurring together justify checking the chronology and sampling coverage, not declaring water age the cause.\n\nA serious operating concern and an uncertain measurement can coexist. Keep the quality qualification visible while routing the concern through the current site procedure. Neither uncertainty nor apparent analytical precision should be used to suppress relevant evidence.\n\n### Common errors\n\n- **Averaging away disagreement:** Combining duplicate results without retaining both values hides the evidence needed to assess precision. The method or procedure determines whether averaging is appropriate.\n- **Turning missing data into zero:** A blank or invalid record is not a measured zero. Substitution changes the result and can misrepresent the reviewed period.\n- **Using an undocumented threshold:** A spreadsheet note or remembered value does not establish an applicable acceptance criterion. Verify its governing source and scope.\n- **Claiming causation from timing:** An event occurring near a result change does not isolate the mechanism. Other measurement and operating explanations remain possible.\n- **Removing qualifications from the public version:** A shorter statement becomes misleading when it omits missing coverage, unresolved identity or preliminary status that materially affects the conclusion.\n\n### What to verify before you act\n\nConsult the facility's applicable drinking water approval documents, including its Municipal Drinking Water Licence and Drinking Water Works Permit where applicable, together with the current Ontario regulation relevant to the question. Verify that the criterion being considered applies to the parameter, measurement location, method and reporting basis actually used.\n\nConsult the current sampling plan, laboratory or site analytical method, quality-control procedure, instrument maintenance procedure and SCADA data-validation procedure. Locate the original laboratory report, field sheet, custody record, native historian extract and event log. Confirm that the summary cites the correct versions and does not conceal a corrected or superseded record.\n\nFor a potentially adverse drinking water test result, consult the current reporting procedure and the Ontario technical bulletin alongside the applicable regulation. For external wording, consult the facility's communication review procedure and identify the authorised reviewer.\n\nBefore release, ask whether another reviewer can reconstruct every material claim from the retained records. Ensure each unresolved question has an owner and a documented closure requirement. If the evidence supports only a limited finding, publish that limited finding rather than a broader claim.",
+      "evidence": "### Fictional worked scenario: qualify the release draft\n\nThe facility, operators, records, identifiers and readings in this scenario are fictional. All numerical values are supplied case assumptions for training, not authorised limits or acceptance criteria.\n\nAt fictional Cedar Junction Drinking Water Facility, a supervisor receives an outlet turbidity summary for a supplied 40 min review window. Record H-14 contains eight equal 5 min interval means. Six intervals are valid: two at 0.10 NTU, two at 0.14 NTU and two at 0.18 NTU. Two intervals are marked invalid during instrument maintenance. Fictional procedure Q-4 supports their exclusion from this analytical calculation, but not deletion from the original record.\n\nDraft P-2 says: “Average turbidity was 0.105 NTU throughout the period, confirming compliance.” Its spreadsheet divides the retained weighted contribution by the complete window. A margin note supplies an alleged acceptance threshold without an approval or procedure reference. The learner must reject both the full-period claim and the unsupported compliance conclusion.\n\n### Worked solution and decision-ready wording\n\n- Retained duration = 6 intervals × 5 min/interval = 30 min.\n- Coverage = (30 min ÷ 40 min) × 100% = 75%.\n- Duration for each value group = 2 intervals × 5 min/interval = 10 min.\n- Weighted total = (0.10 NTU × 10 min) + (0.14 NTU × 10 min) + (0.18 NTU × 10 min) = 4.20 NTU·min.\n- Qualified mean = 4.20 NTU·min ÷ 30 min = 0.14 NTU.\n- Draft's unsupported calculation = 4.20 NTU·min ÷ 40 min = 0.105 NTU.\n\n**Answer:** The retained-duration mean is 0.14 NTU, covering 30 min of the 40 min window. Conditions during the excluded duration are not established.\n\nThe summary should separate this finding from the coverage limitation. Assign the designated reviewer to check the applicable approval and data-validation procedure before release. Retain H-14, its quality flags, the maintenance record, Q-4, the calculation and rejected draft P-2. As discussed in the US EPA's *Generating high-quality turbidity data*, measurement-chain evidence matters. This is US technical guidance, not Ontario law.",
+      "assignment": "Replace Q6 with a 450–650-word decision memo. Reference at least five evidence IDs or records, include a limitations table and a follow-up register with owners. Explain each removed claim and propose a targeted next sampling round. Present the memo to the instructor, revise it and complete the final assessment and evaluation.",
+      "rubric": [
+        "Corrects all five unsupported claims in Q6.",
+        "Uses a clear evidence trail and specific follow-up requests.",
+        "Keeps operational response and analytical review connected without declaring compliance."
+      ],
+      "facilitatorGuide": "Expected corrections: five repeat readings are not system coverage;R7 amendment is pending;blank subtraction is unsupported;holding-time rule missing;follow-up remains needed. Accept concise tables within the word target. Ask learner which missing evidence most changes the operational decision. Return any memo quietly retaining an edited lab report or blanket safety statement. Final assessment and evaluation fit the revised last-module timetable.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 5,
+          "instruction": "Study the explanation and worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 5,
+          "instruction": "Locate the cited source section and note its application boundary."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Complete the evidence-based assignment."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 5,
+          "instruction": "Compare one decision with an alternative interpretation, then self-check it against the case evidence and exercise feedback. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 15,
+          "instruction": "Complete the module checks and final assessment; the course evaluation is optional. Review the automatic case feedback to address remaining questions."
+        }
+      ],
+      "sourceIds": [
+        "field",
+        "adverse",
+        "distribution"
+      ],
+      "checks": [
+        {
+          "id": "ceu-sampling-data-quality-qualified-report-c1",
+          "objective": "qualified-report",
+          "prompt": "For this non-credit pilot, all cases are fictional study material, not operating or compliance instruction. Which question best bounds a proposed public result summary?",
+          "choices": [
+            "What do the reviewed outlet turbidity records establish about the stated collection period?",
+            "Do the reviewed outlet turbidity records confirm that the recent maintenance improved treatment?",
+            "What do the reviewed outlet records suggest about overall treatment performance?",
+            "Do the reviewed outlet records demonstrate reliable treatment across the distribution system?"
+          ],
+          "correctIndex": 0,
+          "explanation": "The module calls for an answerable question bounded by measurement, location, period and proposed use. The correct question does not presume a favourable conclusion. Extending outlet records to the distribution system would exceed their demonstrated scope."
+        },
+        {
+          "id": "ceu-sampling-data-quality-qualified-report-c2",
+          "objective": "qualified-report",
+          "prompt": "Fictional study case: a laboratory result is traceable to an outlet sample, but the reviewed package lacks the applicable comparison criterion. Which sentence belongs in the limitation section?",
+          "choices": [
+            "The reviewer should obtain the applicable criterion before completing the proposed assessment.",
+            "Acceptance cannot be determined because the applicable comparison criterion was not supplied.",
+            "The laboratory report records an outlet measurement linked to the collection and custody records.",
+            "The outlet result demonstrates acceptable performance despite the unavailable comparison criterion."
+          ],
+          "correctIndex": 1,
+          "explanation": "The missing criterion restricts interpretation, so it is a limitation. Obtaining that criterion is a next action, not a limitation. As the module explains, a result alone does not establish acceptance or compliance."
+        },
+        {
+          "id": "ceu-sampling-data-quality-qualified-report-c3",
+          "objective": "qualified-report",
+          "prompt": "Fictional study case: a reviewer has only a screenshot of a turbidity trend. Which additional evidence package best supports a reproducible review of the displayed period?",
+          "choices": [
+            "Printed trend, laboratory results, reviewer signature and an expanded explanatory narrative.",
+            "Daily averages, tag names, instrument serial number and the current calibration certificate.",
+            "Native export, quality flags, tag definitions, extraction settings and time convention.",
+            "Trend screenshot, shift narrative, maintenance summary and the displayed average."
+          ],
+          "correctIndex": 2,
+          "explanation": "The native export and its interpretation settings allow another reviewer to examine flags, timestamps and aggregation. A screenshot with a narrative can still conceal short events and exclusions. US EPA's Generating high-quality turbidity data, EPA 815-B-19-010, informs this technical discussion; it is US guidance, not Ontario law."
+        },
+        {
+          "id": "ceu-sampling-data-quality-qualified-report-c4",
+          "objective": "qualified-report",
+          "prompt": "Fictional study case: a draft calls an outlet result compliant because it is below a value copied from a training slide. What review is needed before making that determination?",
+          "choices": [
+            "Confirm that the copied value appears in recent training material and uses the same reporting units.",
+            "Confirm that the result resembles recent outlet measurements and that laboratory checks were satisfactory.",
+            "Confirm that the copied value is more conservative than the benchmark used in the previous summary.",
+            "Confirm the governing requirement and its applicable method, location, timing and sampling basis."
+          ],
+          "correctIndex": 3,
+          "explanation": "The module distinguishes a reported result from a compliance determination, which requires the applicable legal and measurement conditions. A training benchmark does not become an authorised criterion merely because its units match or it appears conservative."
+        },
+        {
+          "id": "ceu-sampling-data-quality-qualified-report-c5",
+          "objective": "qualified-report",
+          "prompt": "Fictional study case: an unexpectedly high field turbidity result has no recorded handling anomaly. A draft attributes it to bubbles because bubbles can affect measurements. Which edit is defensible?",
+          "choices": [
+            "Retain the result, identify its cause as unresolved and request review of available handling evidence.",
+            "Replace the result with the nearest routine reading because the suspected interference makes it less useful.",
+            "Retain the result but describe bubbles as the likely cause because instrument checks were satisfactory.",
+            "Remove the result from the summary because bubbles are a recognised source of measurement interference."
+          ],
+          "correctIndex": 0,
+          "explanation": "A plausible mechanism is not evidence that it affected this result. Retention with an explicit uncertainty avoids inventing grounds for exclusion. US EPA's Field turbidity measurement discusses handling effects as US technical guidance, not Ontario law; applicable local methods govern their use."
+        },
+        {
+          "id": "ceu-sampling-data-quality-qualified-report-c6",
+          "objective": "qualified-report",
+          "prompt": "Fictional study case: separately handled duplicate portions came from the same collected outlet sample. What is the narrowest defensible description of the comparison's scope?",
+          "choices": [
+            "It establishes whether the outlet sample represents conditions across the distribution system.",
+            "It describes agreement between separately handled portions of the same collected sample.",
+            "It establishes whether sample preservation and transport met all applicable method requirements.",
+            "It assesses variation between independent collections throughout the reviewed sampling period."
+          ],
+          "correctIndex": 1,
+          "explanation": "The module limits this duplicate design to agreement between portions of one collected sample. It does not assess independent collection variability or establish distribution-system conditions. Agreement also cannot, by itself, prove that preservation and transport were correct."
+        }
+      ]
+    }
+  ],
+  "finalAssessment": [
+    {
+      "id": "ceu-sampling-data-quality-sample-design-f1",
+      "objective": "sample-design",
+      "prompt": "Fictional case assumptions: an outlet study schedules 4 collection events across different drawdown periods. Each event supplies 1 bottle analysed 3 times. Which summary correctly distinguishes field coverage from analytical repetition?",
+      "choices": [
+        "There are 4 collection events, and their independence needs assessment.",
+        "There are 3 collection events, corresponding to the analytical repeats.",
+        "There is 1 collection event, because all bottles came from the outlet.",
+        "There are 12 collection events, and each captures a separate drawdown."
+      ],
+      "correctIndex": 0,
+      "explanation": "The study has 4 collection events and 12 determinations. Repeat analysis does not expand field coverage, and scheduling separate events does not by itself establish statistical independence. Source: supplied module, 'Separate independent sampling from repeated measurement'."
+    },
+    {
+      "id": "ceu-sampling-data-quality-sample-design-f2",
+      "objective": "sample-design",
+      "prompt": "Fictional case assumptions: a normal-routing study has 6 paired collection events. Records show that a bypass opened during the last 2 events. What is the most defensible starting point for reviewing the intended comparison?",
+      "choices": [
+        "Delete the last 2 events because changed routing makes their records unusable.",
+        "Review the first 4 for normal routing and retain the last 2 as a separate state.",
+        "Compare only the last 2 events because recent observations best describe normal routing.",
+        "Average all 6 events together because the point identifiers stayed unchanged."
+      ],
+      "correctIndex": 1,
+      "explanation": "Six minus two leaves four events potentially relevant to normal routing. The other two represent a changed state and should remain traceable. Unchanged tap identifiers do not justify pooling different routing conditions. Source: supplied module sections on location and timing and the input register."
+    },
+    {
+      "id": "ceu-sampling-data-quality-sample-design-f3",
+      "objective": "sample-design",
+      "prompt": "In a fictional reservoir study, the decision is whether further storage-specific investigation is warranted. A verified drawing places the labelled outlet tap after a blend with bypass water. Which draft design best addresses the decision?",
+      "choices": [
+        "Use any nearby distribution tap and match its collection times to inlet samples.",
+        "Use the blended tap alone and repeat its analyses to remove bypass uncertainty.",
+        "Verify an available pre-blend point and document routing and hydraulic limitations.",
+        "Use the labelled tap and assign every observed difference to reservoir storage."
+      ],
+      "correctIndex": 2,
+      "explanation": "A verified pre-blend point better isolates the water being questioned, subject to applicable sampling arrangements and hydraulic limitations. Repeating analyses at the blended tap cannot resolve uncertainty about which water it receives. Source: supplied module, 'Match location and timing to the water being questioned'."
+    },
+    {
+      "id": "ceu-sampling-data-quality-sample-design-f4",
+      "objective": "sample-design",
+      "prompt": "Fictional case assumptions: collection is logged at 09:18 on a field clock verified as 7 minutes fast relative to the historian. The historian records a pump starting at 09:14. Which interpretation correctly aligns the observation?",
+      "choices": [
+        "It aligns to 09:25, after startup; the offset should be added to field time.",
+        "It aligns to 09:18, after startup; the written collection entry should control.",
+        "It aligns to 09:14, at startup; the nearest operating transition defines sample timing.",
+        "It aligns to 09:11, before startup; the clock correction should be recorded."
+      ],
+      "correctIndex": 3,
+      "explanation": "Subtracting the 7-minute fast offset gives 09:11, which precedes the 09:14 startup. Adding the offset reverses the correction and assigns the sample to the wrong state. Preserve the original entry and documented correction. Source: supplied module discussion of clock alignment."
+    },
+    {
+      "id": "ceu-sampling-data-quality-sample-design-f5",
+      "objective": "sample-design",
+      "prompt": "A fictional outlet investigation must assess recurrence across separate drawdown periods and investigate laboratory disagreement. Which design most directly provides evidence for both purposes without confusing their sampling units?",
+      "choices": [
+        "Collect during separate drawdowns and split selected samples for laboratory comparison.",
+        "Collect sequential bottles during a single drawdown and send all bottles to one laboratory.",
+        "Collect from nearby taps together and count each laboratory result as a new drawdown.",
+        "Collect a large outlet sample and analyse stored portions during later drawdowns."
+      ],
+      "correctIndex": 0,
+      "explanation": "Collections across separate drawdowns address temporal recurrence, while splits address laboratory differences. Analysing stored portions later changes the analysis time, not the system observation time. Independence of the collection events still needs assessment. Source: supplied module, 'Separate independent sampling from repeated measurement'."
+    },
+    {
+      "id": "ceu-sampling-data-quality-custody-f1",
+      "objective": "custody",
+      "prompt": "Fictional case records: collection 6 June 23:40 UTC−04:00; receipt 7 June 04:25 UTC; analysis start 7 June 05:10 UTC. The supplied case maximum is 100 min from collection to analysis start. Which timing finding is supported?",
+      "choices": [
+        "The interval is 45 min, leaving 55 min before the supplied maximum.",
+        "The interval is 90 min, leaving 10 min under the supplied maximum.",
+        "The interval is 330 min, exceeding the supplied maximum by 230 min.",
+        "The interval is 50 min, leaving a margin of 50 min."
+      ],
+      "correctIndex": 1,
+      "explanation": "Collection converts to 7 June 03:40 UTC. Analysis starts 90 min later, leaving 10 min against the supplied case maximum. The tempting 45 min answer stops at receipt and omits laboratory waiting time. Following the module's time-basis guidance, retain the original timestamp and documented conversion; this finding establishes timing only."
+    },
+    {
+      "id": "ceu-sampling-data-quality-custody-f2",
+      "objective": "custody",
+      "prompt": "Fictional case assumptions: paired clock checks establish that a device stayed 8 min slow with no reset. It recorded collection at 09:12 on its UTC display; analysis began at 12:25 UTC that date. Which corrected collection time and elapsed interval belong in the review?",
+      "choices": [
+        "09:04 UTC and 201 min, with the original entry retained for review.",
+        "09:12 UTC and 193 min, with clock checks filed as supporting evidence.",
+        "09:20 UTC and 185 min, with the original retained alongside the correction.",
+        "09:20 UTC and 193 min, with the correction noted in the register."
+      ],
+      "correctIndex": 2,
+      "explanation": "A slow clock displays an earlier time than the reference, so add 8 min to obtain 09:20 UTC. The interval to 12:25 UTC is 185 min. Subtracting the offset produces the tempting but incorrect 09:04 answer. The module's correction example also requires preservation of the original and supporting correction history."
+    },
+    {
+      "id": "ceu-sampling-data-quality-custody-f3",
+      "objective": "custody",
+      "prompt": "Fictional records: a bottle photo and field sheet pair unique serial K8 with site NORTH. Receipt and worksheet retain K8, but the result report says SOUTH. Which review finding best fits this evidence?",
+      "choices": [
+        "Evidence supports SOUTH because the issued laboratory report is authoritative.",
+        "The discrepancy proves that a different bottle was analysed.",
+        "The shared serial resolves the discrepancy, so the report needs no documented amendment.",
+        "Evidence supports NORTH; request a reviewed, traceable report amendment."
+      ],
+      "correctIndex": 3,
+      "explanation": "The container serial connects the collection evidence, receipt and analytical worksheet, supporting NORTH while identifying a report discrepancy. The module warns that a clerical mismatch does not automatically prove analysis of the wrong sample. The issued report should not override the supporting chain without investigation and a preserved amendment history."
+    },
+    {
+      "id": "ceu-sampling-data-quality-custody-f4",
+      "objective": "custody",
+      "prompt": "Fictional records: field ID R4 covers bottles B1 and B2 from different locations. Accession A9 includes both. The worksheet assigns the result to portion P7 but omits its parent bottle. Which additional evidence most directly closes the result-to-location gap?",
+      "choices": [
+        "The laboratory preparation record linking portion P7 to its source bottle.",
+        "The accession cover sheet confirming that both bottles arrived together.",
+        "The courier manifest showing who delivered the two bottles to the laboratory.",
+        "The report approval record identifying the person who released the result."
+      ],
+      "correctIndex": 0,
+      "explanation": "The missing link is between analytical portion P7 and its parent container. Once that link is established, the bottle's collection evidence can connect the result to a location. The module specifically warns that a shared accession or field identifier does not establish this mapping; arrival together cannot close the gap."
+    },
+    {
+      "id": "ceu-sampling-data-quality-custody-f5",
+      "objective": "custody",
+      "prompt": "Fictional review records contain two report PDFs. The newer PDF changes the sample identifier and removes a qualifier, but includes no amendment explanation. Which review approach best preserves a defensible history?",
+      "choices": [
+        "Use the newer PDF as current and keep the older PDF only until the review closes.",
+        "Preserve both PDFs and reconcile both changes against the laboratory amendment history.",
+        "Preserve both PDFs and accept the identifier change while disregarding the removed qualifier.",
+        "Use the older PDF throughout the review because an unexplained revision cannot be investigated."
+      ],
+      "correctIndex": 1,
+      "explanation": "The module's result-and-amendment link includes report versions, qualifiers and sample mapping. Both changes need reconciliation against retrievable evidence. Simply choosing the newer PDF is tempting, but its issue order alone does not explain the changes or establish which content is supported."
+    },
+    {
+      "id": "ceu-sampling-data-quality-quality-control-f1",
+      "objective": "quality-control",
+      "prompt": "Fictional case assumptions: a confirmed duplicate pair is 0.72 mg/L and 880 µg/L for the same fraction. Both results are unqualified. The example rule accepts RPD ≤20% when both results are ≥0.50 mg/L. Which assessment is correct?",
+      "choices": [
+        "RPD is 18.2%; the pair passes under the supplied case rule.",
+        "RPD is 99.8%; the pair fails because the reported units differ.",
+        "RPD is 20.0%; the eligible pair meets the supplied case rule.",
+        "RPD is 22.2%; the eligible pair fails the supplied acceptance criterion."
+      ],
+      "correctIndex": 2,
+      "explanation": "Convert 880 µg/L to 0.880 mg/L. The mean is 0.800 mg/L and the difference is 0.160 mg/L, giving RPD = 20.0%. Both results satisfy the example's concentration condition, and equality meets its ≤20% rule. Using the lower result as the denominator gives 22.2%, but that is not RPD. These are supplied case criteria only. Source: supplied module, 'Build an input register before calculating' and 'Worked example: calculate relative percent difference'."
+    },
+    {
+      "id": "ceu-sampling-data-quality-quality-control-f2",
+      "objective": "quality-control",
+      "prompt": "Fictional case assumptions: confirmed duplicates are 0.018 and 0.024 mg/L, both unqualified and above their reporting limits. The example accepts RPD ≤20% only when both results are ≥0.050 mg/L. What assessment preserves the rule's scope?",
+      "choices": [
+        "RPD is 25.0%; the pair fails because the first result is smaller.",
+        "RPD is 14.3%; the pair passes the stated percentage criterion.",
+        "RPD is 28.6%; the pair fails the supplied acceptance rule.",
+        "RPD is 28.6%; the supplied acceptance rule is not applicable."
+      ],
+      "correctIndex": 3,
+      "explanation": "The difference is 0.006 mg/L and the mean is 0.021 mg/L, so RPD is approximately 28.6%. However, neither result reaches the supplied rule's applicable concentration range. Calling the pair a failure under that rule extends it beyond its stated scope. Source: supplied module, 'Build an input register before calculating'."
+    },
+    {
+      "id": "ceu-sampling-data-quality-quality-control-f3",
+      "objective": "quality-control",
+      "prompt": "Fictional case assumptions: an associated hose equipment blank is 0.006 mg/L, the sample is 0.008 mg/L, and the method blank is <0.001 mg/L. The target is unflushed tap water, but sampling followed flushing. Which conclusion separates the quality issues?",
+      "choices": [
+        "Hose-path contamination is possible; flushing mismatched the target condition.",
+        "The sample exceeded the blank; both quality questions are resolved.",
+        "The hose alone caused the result; flushing has no bearing on representation.",
+        "The laboratory blank proves the hose was clean; flushing improved target representation."
+      ],
+      "correctIndex": 0,
+      "explanation": "The equipment blank supports investigation of contamination within its covered pathway, without proving that the hose alone caused it. Independently, flushing changed the condition being assessed. A method blank does not clear field equipment or resolve representativeness. Source: supplied module, 'What quality controls can establish' and 'Read a blank by the processes it covers'."
+    },
+    {
+      "id": "ceu-sampling-data-quality-quality-control-f4",
+      "objective": "quality-control",
+      "prompt": "Fictional records show confirmed field duplicates disagree under the supplied case procedure, while laboratory duplicates from each bottle agree. Locations and times are documented. Which review focus best respects what these controls establish?",
+      "choices": [
+        "Replace the field pair with its mean to resolve the disagreement.",
+        "Review collection conditions and handling without treating them as proven causes.",
+        "Select the lower field result because laboratory agreement validates its accuracy.",
+        "Treat laboratory agreement as proof that field handling caused the difference."
+      ],
+      "correctIndex": 1,
+      "explanation": "Agreement within laboratory duplicates makes collection, handling and local variability relevant review areas, but it does not prove a cause. Selecting the lower result or automatically substituting the mean discards information without an authorised basis. Source: supplied module, 'Build an input register before calculating' and 'Worked example: calculate relative percent difference'."
+    },
+    {
+      "id": "ceu-sampling-data-quality-quality-control-f5",
+      "objective": "quality-control",
+      "prompt": "In a fictional review, an analyst proposes subtracting a detected method-blank result from a drinking-water result. Records place them in different preparation batches, and no validated correction is documented. Which assessment is best supported?",
+      "choices": [
+        "Treat the batch mismatch as proof that contamination is absent.",
+        "Subtract the blank first, then document the batch mismatch as a qualifier.",
+        "Check batch linkage and correction rules while retaining the original results.",
+        "Reject every result for that analyte because any detected method blank invalidates them."
+      ],
+      "correctIndex": 2,
+      "explanation": "The batch mismatch requires review of the actual blank association, and no subtraction is justified without a validated method requiring it. Retaining original results preserves traceability. A detected blank neither authorises automatic correction nor invalidates every result for an analyte. Source: supplied module, 'Read a blank by the processes it covers'."
+    },
+    {
+      "id": "ceu-sampling-data-quality-qualified-report-f1",
+      "objective": "qualified-report",
+      "prompt": "Fictional study case, supplied assumptions: comparable duplicate portions measure 0.24 NTU and 0.36 NTU. No applicable duplicate acceptance criterion is supplied. Which calculation and qualification belong in the summary?",
+      "choices": [
+        "Difference: 0.12 NTU; RPD: 50%; acceptance requires the applicable criterion.",
+        "Difference: 0.12 NTU; RPD: 40%; the duplicate pair meets acceptance expectations.",
+        "Difference: 0.12 NTU; RPD: 20%; acceptance is unresolved.",
+        "Difference: 0.12 NTU; RPD: 40%; acceptance remains undetermined."
+      ],
+      "correctIndex": 3,
+      "explanation": "Using the supplied assumptions, the mean is 0.30 NTU and RPD is 0.12 ÷ 0.30 × 100% = 40%. Dividing by the sum produces the tempting but incorrect 20%. As the module explains, correct arithmetic does not establish acceptance without the applicable criterion."
+    },
+    {
+      "id": "ceu-sampling-data-quality-qualified-report-f2",
+      "objective": "qualified-report",
+      "prompt": "Fictional study case, supplied assumptions: a 50 min window has interval means of 0.10 NTU for 20 min and 0.20 NTU for 20 min; 10 min are missing and excluded by the case-specific validated procedure. Which qualified summary is supported?",
+      "choices": [
+        "The retained-duration mean is 0.15 NTU, with 80% valid-duration coverage.",
+        "The retained mean is 0.15 NTU, with complete window coverage.",
+        "The full-window mean is 0.12 NTU, with 80% valid-duration coverage confirmed.",
+        "The retained-duration mean is 0.30 NTU, with 80% valid-duration coverage reported."
+      ],
+      "correctIndex": 0,
+      "explanation": "The retained duration is 40 min, so coverage is 40 ÷ 50 × 100% = 80%. The weighted mean is (0.10 × 20 + 0.20 × 20) ÷ 40 = 0.15 NTU. Dividing by the full window gives 0.12 NTU but effectively assigns zero to missing time. These are supplied example assumptions, not authorised values."
+    },
+    {
+      "id": "ceu-sampling-data-quality-qualified-report-f3",
+      "objective": "qualified-report",
+      "prompt": "Fictional study case: a work log uses local time and a historian uses UTC. A trend change appears beside a maintenance entry, but the time bases have not been reconciled. Which review sequence best supports a public explanation?",
+      "choices": [
+        "Match displayed timestamps, confirm the work description and attribute the change to the maintenance activity.",
+        "Reconcile time bases, review qualified event data and assess whether evidence supports more than coincidence.",
+        "Reconcile time bases, confirm temporal overlap and identify maintenance as the established cause of the change.",
+        "Compare daily averages, retain the work entry and describe maintenance as the probable cause."
+      ],
+      "correctIndex": 1,
+      "explanation": "The module requires a common time basis before aligning events and measurements. Even confirmed temporal overlap does not establish causation. EPA 815-B-19-010 informs the measurement-chain discussion as US technical guidance, not Ontario law."
+    },
+    {
+      "id": "ceu-sampling-data-quality-qualified-report-f4",
+      "objective": "qualified-report",
+      "prompt": "Fictional study case: a verified corrected laboratory report supersedes a preliminary outlet result. The proposed public summary still uses the preliminary result to claim system-wide compliance. No governing comparison basis was reviewed. Which revision is defensible?",
+      "choices": [
+        "Use the corrected outlet result, remove the preliminary report from the evidence package and defer the compliance conclusion.",
+        "Use the corrected outlet result, retain the revision history and conclude that the distribution system is now compliant.",
+        "Use the corrected outlet result, retain the revision history and withhold the unsupported system-wide compliance claim.",
+        "Keep the preliminary result for consistency, identify the correction in a footnote and retain the system-wide conclusion."
+      ],
+      "correctIndex": 2,
+      "explanation": "The module requires explicit reporting status and retained revision history. A corrected outlet result does not establish system-wide conditions or compliance without the applicable basis. Deleting the preliminary report would also weaken traceability of the correction."
+    },
+    {
+      "id": "ceu-sampling-data-quality-qualified-report-f5",
+      "objective": "qualified-report",
+      "prompt": "Fictional study case: collection and custody records disagree about a sample's outlet identity, although the analyser check passed. Which next-action entry provides an accountable owner and suitable closure evidence?",
+      "choices": [
+        "Laboratory liaison: accept the analyser check as identity confirmation and attach its certificate to the summary.",
+        "Shift supervisor: choose the more likely outlet and record the selection in the next shift note.",
+        "Summary author: remove the location qualifier once the laboratory confirms that analysis met its method checks.",
+        "Sampling coordinator: reconcile identity against original records and retain a signed discrepancy disposition."
+      ],
+      "correctIndex": 3,
+      "explanation": "The sampling coordinator's task addresses the unresolved identity and specifies a retained disposition documenting the outcome, including any remaining uncertainty. An analyser check supports instrument performance, not sample identity, so its certificate cannot close this discrepancy."
+    }
+  ],
+  "sources": [
+    {
+      "id": "field",
+      "title": "US EPA: Field turbidity measurement",
+      "url": "https://www.epa.gov/quality/field-turbidity-measurement",
+      "section": "Field measurement procedure and quality control",
+      "jurisdiction": "US technical guidance; laboratory/site methods govern local use",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "distribution",
+      "title": "US EPA: Drinking Water Distribution System Tools and Resources",
+      "url": "https://www.epa.gov/dwreginfo/drinking-water-distribution-system-tools-and-resources",
+      "section": "Water age, storage, pressure management and distribution-system integrity resources",
+      "jurisdiction": "US technical guidance; not Ontario requirements",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "adverse",
+      "title": "Ontario: adverse drinking water results technical bulletin",
+      "url": "https://www.ontario.ca/page/technical-bulletin-adverse-drinking-water-test-results-reporting-requirements-and-exemptions",
+      "section": "Reporting requirements and exemptions; check the applicable current regulation",
+      "jurisdiction": "Ontario",
+      "accessed": "2026-09-24"
+    },
+    {
+      "id": "quality",
+      "title": "US EPA: Generating high-quality turbidity data",
+      "url": "https://www.epa.gov/sdwa/generating-high-quality-turbidity-data-drinking-water-treatment-plants-support-system",
+      "section": "Measurement chain and SCADA data-quality guidance, EPA 815-B-19-010",
+      "jurisdiction": "US technical guidance; not Ontario law",
+      "accessed": "2026-09-24"
+    }
+  ],
+  "version": "2026-09-24.1",
+  "alternateFinalAssessment": [
+    {
+      "id": "ceu-sampling-data-quality-sample-design-a1",
+      "objective": "sample-design",
+      "prompt": "Fictional case assumptions: an inlet study has 5 scheduled collection events. Each collected sample is split between 2 laboratories, each reporting 1 result. Which description correctly identifies the field evidence?",
+      "choices": [
+        "There are 5 collection events, with independence still requiring design review.",
+        "There is 1 collection event, because the study investigates a single inlet.",
+        "There are 10 collection events, because each laboratory reports a separate result.",
+        "There are 2 collection events, because the study uses separate laboratories."
+      ],
+      "correctIndex": 0,
+      "explanation": "Five events produce ten laboratory results, but splitting does not create additional field collections. Separate laboratories also do not make the underlying collection events statistically independent. Source: supplied module, 'Separate independent sampling from repeated measurement'."
+    },
+    {
+      "id": "ceu-sampling-data-quality-sample-design-a2",
+      "objective": "sample-design",
+      "prompt": "Fictional case assumptions: a study targets outlet conditions with a single pump running. Of 8 collection events, trend records confirm that 3 occurred with both pumps running. How should the initial comparison be organised?",
+      "choices": [
+        "Use only the 3 changed-state events because greater pumping makes them more representative.",
+        "Review 5 events for the target state and retain 3 under the different pump state.",
+        "Combine all 8 events because the sample tap remained at the same physical location.",
+        "Discard the 3 changed-state records before retaining the study dataset."
+      ],
+      "correctIndex": 1,
+      "explanation": "Eight minus three leaves five events potentially matching the target state. The three other events belong to a different operating stratum and should remain documented. A common sample location does not make pump states interchangeable. Source: supplied module sections on location and timing and the input register."
+    },
+    {
+      "id": "ceu-sampling-data-quality-sample-design-a3",
+      "objective": "sample-design",
+      "prompt": "A fictional study asks whether tank-outlet water warrants further investigation during refilling. The labelled outlet tap is verified to connect upstream of the tank on a supply main. Which proposal best aligns the sample with the decision?",
+      "choices": [
+        "Use the supply-main tap because its water will eventually enter the tank.",
+        "Use the nearest accessible tap without checking its connection or local sampling arrangements.",
+        "Verify a point receiving tank-outlet water and link collections to refill records.",
+        "Keep the labelled tap and use repeated measurements to confirm its outlet identity."
+      ],
+      "correctIndex": 2,
+      "explanation": "The design needs a verified point receiving the water of interest and evidence of the relevant operating period. Precise repeat measurements cannot make an upstream supply-main tap representative of tank-outlet water. Source: supplied module, 'Match location and timing to the water being questioned'."
+    },
+    {
+      "id": "ceu-sampling-data-quality-sample-design-a4",
+      "objective": "sample-design",
+      "prompt": "Fictional case assumptions: a sample is logged at 14:06 on a field clock verified as 4 minutes slow relative to the historian. A valve change is logged by the historian at 14:08. Which alignment is correct?",
+      "choices": [
+        "It aligns to 14:06, before the change; an original timestamp must never be adjusted.",
+        "It aligns to 14:08, at the change; use the nearest historian event.",
+        "It aligns to 14:02, before the change; subtract the offset from the field entry.",
+        "It aligns to 14:10, after the change; record the correction alongside the entry."
+      ],
+      "correctIndex": 3,
+      "explanation": "A clock that is 4 minutes slow requires adding 4 minutes, giving 14:10. That is after the valve change. Retaining the original record does not prohibit a documented alignment correction. Source: supplied module discussion of clock alignment."
+    },
+    {
+      "id": "ceu-sampling-data-quality-sample-design-a5",
+      "objective": "sample-design",
+      "prompt": "A fictional turbidity study must assess variation across separate high-demand periods and examine repeatability of the field measurement step. Which design separates these aims most clearly?",
+      "choices": [
+        "Collect across high-demand periods and repeat selected determinations as the method permits.",
+        "Collect sequential bottles during one period and treat them as independent daily conditions.",
+        "Read a single collected sample repeatedly and assign each reading to a different demand period.",
+        "Collect once during high demand and split the sample among laboratories for all measurements."
+      ],
+      "correctIndex": 0,
+      "explanation": "Collections across the target periods address system variation. Method-permitted repeat determinations address measurement repeatability without creating new system observations. Sequential bottles from one period do not establish variation across separate periods. Source: supplied module, 'Separate independent sampling from repeated measurement'."
+    },
+    {
+      "id": "ceu-sampling-data-quality-custody-a1",
+      "objective": "custody",
+      "prompt": "Fictional case records: collection 18 July 22:55 UTC−03:00; receipt 19 July 02:30 UTC; analysis start 19 July 03:20 UTC. The supplied case maximum is 80 min from collection to analysis start. Which timing finding is supported?",
+      "choices": [
+        "The interval is 265 min, exceeding the supplied maximum by 185 min.",
+        "The interval is 85 min, exceeding the supplied maximum by 5 min.",
+        "The interval is 35 min, leaving 45 min before the supplied maximum.",
+        "The interval is 50 min, leaving a margin of 30 min."
+      ],
+      "correctIndex": 1,
+      "explanation": "Collection converts to 19 July 01:55 UTC. The interval to analysis start is 85 min, which exceeds this supplied case maximum by 5 min. The 50 min distractor measures receipt to analysis and omits transport time. The module requires a documented conversion and the complete interval, not an isolated custody segment."
+    },
+    {
+      "id": "ceu-sampling-data-quality-custody-a2",
+      "objective": "custody",
+      "prompt": "Fictional case assumptions: paired clock checks establish that a device stayed 11 min fast with no reset. It recorded collection at 10:26 on its UTC display; analysis began at 13:20 UTC that date. Which corrected collection time and elapsed interval belong in the review?",
+      "choices": [
+        "10:26 UTC and 174 min, with clock checks filed as supporting evidence.",
+        "10:15 UTC and 174 min, with the correction noted in the register.",
+        "10:15 UTC and 185 min, with the original retained alongside the correction.",
+        "10:37 UTC and 163 min, with the original entry retained for review."
+      ],
+      "correctIndex": 2,
+      "explanation": "A fast clock displays a later time than the reference, so subtract 11 min to obtain 10:15 UTC. The interval to 13:20 UTC is 185 min. Adding the offset gives the tempting but incorrect 10:37 answer. Under the module's correction framework, preserve the original, evidence and review history rather than replacing the timestamp silently."
+    },
+    {
+      "id": "ceu-sampling-data-quality-custody-a3",
+      "objective": "custody",
+      "prompt": "Fictional records: a field sheet says EAST; a bottle photo and protected on-site scan pair unique serial M6 with WEST. Receipt and worksheet retain M6. The collector cannot recall the site. Which finding is best supported?",
+      "choices": [
+        "The shared serial permits replacing EAST with WEST without preserving the disputed entry.",
+        "Evidence supports EAST because the field sheet is the designated collection record.",
+        "The collector's uncertainty prevents any evidence-based review of location.",
+        "Evidence supports WEST; seek a reviewed, traceable field-record correction."
+      ],
+      "correctIndex": 3,
+      "explanation": "The independent collection evidence links M6 to WEST, and the receipt and worksheet continue that container chain. This supports a reviewed correction rather than dependence on memory. The module does not make a field sheet automatically decisive, nor does it allow the disputed original to be overwritten."
+    },
+    {
+      "id": "ceu-sampling-data-quality-custody-a4",
+      "objective": "custody",
+      "prompt": "Fictional records: accession T5 includes bottles C3 and C4, each linked to a different collection site. The instrument file reports daughter vial D2; receipt records identify both bottles but not D2. Which evidence most directly completes the result-to-site chain?",
+      "choices": [
+        "The portioning record mapping daughter vial D2 to its original bottle.",
+        "The instrument maintenance record demonstrating suitable analytical performance.",
+        "The report distribution list naming the staff who received the analytical results.",
+        "The delivery record confirming that C3 and C4 entered laboratory custody together."
+      ],
+      "correctIndex": 0,
+      "explanation": "The daughter vial must be linked to its parent bottle before the result can be traced to that bottle's collection site. The module builds traceability around containers and analytical portions, not accessions alone. Instrument performance may support measurement quality but cannot establish the missing identity link."
+    },
+    {
+      "id": "ceu-sampling-data-quality-custody-a5",
+      "objective": "custody",
+      "prompt": "Fictional records: a reviewed field correction changes a location code. The review register uses the corrected code, but the laboratory's issued report retains the disputed code. Which approach best preserves the correction history and result connection?",
+      "choices": [
+        "Restore the disputed code in the register so it matches the laboratory's existing report.",
+        "Retain the report and correction trail; seek a linked laboratory amendment.",
+        "Edit the issued report locally and retain its original issue date and laboratory signature.",
+        "Close the discrepancy because the reviewed field correction automatically revises the issued report."
+      ],
+      "correctIndex": 1,
+      "explanation": "A field correction does not itself amend the laboratory's issued report. The module's correction and amendment framework requires preserved source records and a reproducible connection between versions. Locally editing the report is tempting but would obscure who authorised the report change and how it relates to the laboratory record."
+    },
+    {
+      "id": "ceu-sampling-data-quality-quality-control-a1",
+      "objective": "quality-control",
+      "prompt": "Fictional case assumptions: a confirmed duplicate pair is 1.20 mg/L and 1500 µg/L for the same fraction. Both results are unqualified. The example rule accepts RPD ≤20% when both results are ≥0.50 mg/L. Which assessment is correct?",
+      "choices": [
+        "RPD is 25.0%; the eligible pair fails the supplied acceptance criterion.",
+        "RPD is 99.9%; the pair fails because the reported units differ.",
+        "RPD is 22.2%; the eligible pair fails the supplied case rule.",
+        "RPD is 20.0%; the pair passes under the supplied case rule."
+      ],
+      "correctIndex": 2,
+      "explanation": "Convert 1500 µg/L to 1.500 mg/L. The difference is 0.300 mg/L and the mean is 1.350 mg/L, giving RPD of approximately 22.2%. Both concentrations meet the supplied range condition, but the RPD exceeds the example criterion. Dividing by the higher result gives 20.0%, not RPD. Source: supplied module, 'Build an input register before calculating' and 'Worked example: calculate relative percent difference'."
+    },
+    {
+      "id": "ceu-sampling-data-quality-quality-control-a2",
+      "objective": "quality-control",
+      "prompt": "Fictional case assumptions: confirmed duplicates are 0.012 and 0.018 mg/L, both unqualified and above their reporting limits. The example accepts RPD ≤25% only when both results are ≥0.040 mg/L. Which interpretation applies the full rule?",
+      "choices": [
+        "RPD is 40.0%; the pair fails the supplied acceptance rule.",
+        "RPD is 50.0%; the pair fails because the first result is smaller.",
+        "RPD is 20.0%; the pair passes the stated percentage criterion.",
+        "RPD is 40.0%; the supplied acceptance rule is not applicable."
+      ],
+      "correctIndex": 3,
+      "explanation": "RPD = 0.006 mg/L ÷ 0.015 mg/L × 100% = 40.0%. The arithmetic is valid, but both concentrations fall below the supplied rule's applicable range. Comparing only 40.0% with 25% overlooks the concentration condition and cannot establish failure under that rule. Source: supplied module, 'Build an input register before calculating'."
+    },
+    {
+      "id": "ceu-sampling-data-quality-quality-control-a3",
+      "objective": "quality-control",
+      "prompt": "Fictional case assumptions: an associated field blank is 0.007 mg/L, the sample is 0.009 mg/L, and the method blank is <0.001 mg/L. Sampling targeted peak-demand water but occurred during documented low demand. Which interpretation addresses both concerns?",
+      "choices": [
+        "Handling-chain contamination is possible; demand conditions missed the sampling target.",
+        "The sample exceeded the field blank; neither concern requires further interpretation.",
+        "The laboratory blank clears all handling stages; low demand improves the sample's target relevance.",
+        "The sampler alone caused contamination; demand conditions do not affect representation."
+      ],
+      "correctIndex": 0,
+      "explanation": "The field blank raises a contamination question across the processes it covered, but cannot identify the sampler as the sole source. Separately, low-demand collection did not represent the specified peak-demand condition. A method blank does not assess every field-handling contribution. Source: supplied module, 'What quality controls can establish' and 'Read a blank by the processes it covers'."
+    },
+    {
+      "id": "ceu-sampling-data-quality-quality-control-a4",
+      "objective": "quality-control",
+      "prompt": "Fictional records show separately collected field duplicates disagree under the supplied case procedure. Splits made from each bottle after collection agree through subsequent handling and analysis. Which interpretation best identifies the remaining uncertainty?",
+      "choices": [
+        "The split results establish that the higher field result is the accurate one.",
+        "Review collection and local variability, without claiming the splits prove a cause.",
+        "The split agreement conclusively identifies collection technique as the source of disagreement.",
+        "Average the field results to remove the collection uncertainty."
+      ],
+      "correctIndex": 1,
+      "explanation": "Splits repeat processes after division, not the original collection. Their agreement makes collection and local variability useful review areas, but does not establish a specific cause or identify the accurate field result. Averaging cannot remove the underlying uncertainty. Source: supplied module, 'Build an input register before calculating'."
+    },
+    {
+      "id": "ceu-sampling-data-quality-quality-control-a5",
+      "objective": "quality-control",
+      "prompt": "In a fictional data review, a technician proposes subtracting a detected equipment-blank result from a drinking-water result. The blank used a different hose, and no validated correction is documented. What conclusion preserves the evidence?",
+      "choices": [
+        "Reject all samples from the day because the equipment blank contained the analyte.",
+        "Treat the different hose as proof that the sample was uncontaminated.",
+        "Verify equipment linkage and method rules while preserving the original results.",
+        "Apply the subtraction because equipment blanks measure a shared sampling bias."
+      ],
+      "correctIndex": 2,
+      "explanation": "A different hose weakens the proposed association and requires checking equipment and event records. Without a validated method requiring correction, subtraction is unsupported. The mismatch also does not prove that the sample was uncontaminated. Source: supplied module, 'Read a blank by the processes it covers'."
+    },
+    {
+      "id": "ceu-sampling-data-quality-qualified-report-a1",
+      "objective": "qualified-report",
+      "prompt": "Fictional study case, supplied assumptions: comparable duplicate portions measure 0.35 NTU and 0.45 NTU. The applicable duplicate acceptance criterion is absent. Which calculation and qualification should the reviewer select?",
+      "choices": [
+        "Difference: 0.10 NTU; RPD: 25%; the duplicate pair meets acceptance expectations.",
+        "Difference: 0.10 NTU; RPD: 28.6%; acceptance requires the applicable criterion.",
+        "Difference: 0.10 NTU; RPD: 12.5%; acceptance is unresolved.",
+        "Difference: 0.10 NTU; RPD: 25%; acceptance remains undetermined."
+      ],
+      "correctIndex": 3,
+      "explanation": "Using the supplied assumptions, the pair mean is 0.40 NTU and RPD is 0.10 ÷ 0.40 × 100% = 25%. Using the lower result as the denominator gives about 28.6%, not RPD. The absent applicable criterion prevents an acceptance determination."
+    },
+    {
+      "id": "ceu-sampling-data-quality-qualified-report-a2",
+      "objective": "qualified-report",
+      "prompt": "Fictional study case, supplied assumptions: a 60 min window has interval means of 0.12 NTU for 10 min and 0.20 NTU for 30 min; 20 min are missing and excluded by the case-specific validated procedure. Which summary correctly weights duration?",
+      "choices": [
+        "The retained-duration mean is 0.18 NTU, with 66.7% valid-duration coverage.",
+        "The retained mean is 0.16 NTU, with 66.7% coverage.",
+        "The full-window mean is 0.12 NTU, with 66.7% valid-duration coverage confirmed.",
+        "The retained-duration mean is 0.18 NTU, with 100% valid-duration coverage reported."
+      ],
+      "correctIndex": 0,
+      "explanation": "Retained duration is 40 min, giving approximately 66.7% coverage. The weighted mean is (0.12 × 10 + 0.20 × 30) ÷ 40 = 0.18 NTU. The tempting 0.16 NTU is an unweighted average that ignores unequal durations. All numerical values are supplied teaching assumptions."
+    },
+    {
+      "id": "ceu-sampling-data-quality-qualified-report-a3",
+      "objective": "qualified-report",
+      "prompt": "Fictional study case: a logger clock was reset during the review period. An exported trend places a turbidity change before a valve inspection, while the shift narrative places it after. Which sequence best resolves the proposed causal statement?",
+      "choices": [
+        "Use export order as the authoritative chronology, disregard the narrative and rule out any inspection effect.",
+        "Reconstruct clock history, align qualified records and assess whether a causal explanation is supported.",
+        "Average across the reset, compare the surrounding periods and describe the inspection as the probable explanation.",
+        "Use the shift narrative to reorder the trend, retain the export and identify the inspection as the cause."
+      ],
+      "correctIndex": 1,
+      "explanation": "Clock reconstruction and qualified record alignment must precede interpretation of event order. Neither the export nor the narrative automatically resolves the discrepancy, and chronology alone does not prove causation. The module draws on US EPA technical guidance without treating it as Ontario law."
+    },
+    {
+      "id": "ceu-sampling-data-quality-qualified-report-a4",
+      "objective": "qualified-report",
+      "prompt": "Fictional study case: an amended laboratory report corrects the units for a sample from the north outlet. The amendment is verified. A draft retains the old units and declares both north and south outlets acceptable, although no south sample or applicable criterion was reviewed. Which edit is supported?",
+      "choices": [
+        "Report the amended result and assess both outlets from their shared treatment source.",
+        "Report the original north-outlet entry for continuity and explain that the amendment does not affect outlet acceptance.",
+        "Report the amended north-outlet result, retain both report versions and leave outlet acceptance undetermined.",
+        "Report the amended north-outlet result, retain both report versions and extend acceptance to the south outlet."
+      ],
+      "correctIndex": 2,
+      "explanation": "The verified amendment supplies the current reporting units, while both versions preserve traceability. Missing south-outlet evidence prevents extending the finding there, and the absent applicable criterion prevents acceptance claims. A shared treatment source does not supply the missing sampling evidence."
+    },
+    {
+      "id": "ceu-sampling-data-quality-qualified-report-a5",
+      "objective": "qualified-report",
+      "prompt": "Fictional study case: a SCADA export is retained, but nobody has established whether its values are interval means or instantaneous readings. The summary proposes a period mean. Which next-action entry has an appropriate owner and closure record?",
+      "choices": [
+        "Instrument technician: confirm the current calibration and retain its certificate as evidence that period averaging is valid.",
+        "Shift supervisor: approve an arithmetic average and retain the spreadsheet as evidence that aggregation is resolved.",
+        "Summary author: label the export as interval means and retain the draft calculation sheet.",
+        "Data custodian: verify aggregation metadata and retain the source configuration with a documented review disposition."
+      ],
+      "correctIndex": 3,
+      "explanation": "The data custodian's task addresses the missing aggregation basis and identifies records demonstrating the review outcome. A completed spreadsheet does not establish what exported values represent. Calibration evidence likewise cannot establish whether a duration-weighted period calculation is justified."
+    }
+  ]
+}

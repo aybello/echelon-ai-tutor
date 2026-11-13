@@ -1,11 +1,4 @@
-/**
- * Echelon Institute — Reusable Animation Components
- * All animations respect prefers-reduced-motion for accessibility.
- * Mobile-first: animations are lightweight and performant.
- */
-"use client";
-import { motion, useInView, useReducedMotion } from "framer-motion";
-import { useRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 
 interface AnimProps {
   children: ReactNode;
@@ -14,177 +7,89 @@ interface AnimProps {
   once?: boolean;
 }
 
-// ─── FadeUp ────────────────────────────────────────────────────────────────
-
-export function FadeUp({ children, delay = 0, className, once = true }: AnimProps) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once, margin: "-60px" });
-  const reduced = useReducedMotion();
-
-  if (reduced) return <div className={className}>{children}</div>;
-
-  return (
-    <motion.div
-      ref={ref}
-      className={className}
-      initial={{ opacity: 0, y: 24 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-      transition={{ duration: 0.5, ease: "easeOut", delay }}
-    >
-      {children}
-    </motion.div>
-  );
+function prefersReducedMotion() {
+  return typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 }
 
-// ─── FadeIn ────────────────────────────────────────────────────────────────
+function useReveal(once: boolean, margin = "-60px") {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
 
-export function FadeIn({ children, delay = 0, className, once = true }: AnimProps) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once, margin: "-60px" });
-  const reduced = useReducedMotion();
+  useEffect(() => {
+    if (prefersReducedMotion()) {
+      setVisible(true);
+      return;
+    }
+    const element = ref.current;
+    if (!element) return;
+    if (!("IntersectionObserver" in window)) {
+      setVisible(true);
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      const inView = Boolean(entry?.isIntersecting);
+      setVisible(inView);
+      if (inView && once) observer.disconnect();
+    }, { rootMargin: margin });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [margin, once]);
 
-  if (reduced) return <div className={className}>{children}</div>;
-
-  return (
-    <motion.div
-      ref={ref}
-      className={className}
-      initial={{ opacity: 0 }}
-      animate={inView ? { opacity: 1 } : { opacity: 0 }}
-      transition={{ duration: 0.45, ease: "easeOut", delay }}
-    >
-      {children}
-    </motion.div>
-  );
+  return { ref, visible };
 }
 
-// ─── SlideLeft ─────────────────────────────────────────────────────────────
-
-export function SlideLeft({ children, delay = 0, className, once = true }: AnimProps) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once, margin: "-60px" });
-  const reduced = useReducedMotion();
-
-  if (reduced) return <div className={className}>{children}</div>;
-
-  return (
-    <motion.div
-      ref={ref}
-      className={className}
-      initial={{ opacity: 0, x: -32 }}
-      animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -32 }}
-      transition={{ duration: 0.5, ease: "easeOut", delay }}
-    >
-      {children}
-    </motion.div>
-  );
+function revealStyle(visible: boolean, delay: number, transform: string, kind: "fade" | "slide"): CSSProperties {
+  return {
+    opacity: visible ? 1 : 0,
+    transform: visible ? "translate3d(0, 0, 0)" : transform,
+    transition: `${kind === "fade" ? "opacity 180ms" : "opacity 420ms cubic-bezier(0.23, 1, 0.32, 1), transform 420ms cubic-bezier(0.23, 1, 0.32, 1)"}`,
+    transitionDelay: `${Math.max(delay, 0)}ms`,
+    willChange: "opacity, transform",
+  };
 }
 
-// ─── SlideRight ────────────────────────────────────────────────────────────
-
-export function SlideRight({ children, delay = 0, className, once = true }: AnimProps) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once, margin: "-60px" });
-  const reduced = useReducedMotion();
-
-  if (reduced) return <div className={className}>{children}</div>;
-
-  return (
-    <motion.div
-      ref={ref}
-      className={className}
-      initial={{ opacity: 0, x: 32 }}
-      animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 32 }}
-      transition={{ duration: 0.5, ease: "easeOut", delay }}
-    >
-      {children}
-    </motion.div>
-  );
+function Reveal({ children, delay = 0, className, once = true, transform, kind = "slide" }: AnimProps & { transform: string; kind?: "fade" | "slide" }) {
+  const { ref, visible } = useReveal(once);
+  return <div ref={ref} data-echelon-reveal className={className} style={revealStyle(visible, delay * 1000, transform, kind)}>{children}</div>;
 }
 
-// ─── StaggerContainer + StaggerItem ───────────────────────────────────────
+/** Native CSS and IntersectionObserver replaces Framer Motion on public routes. */
+export function FadeUp(props: AnimProps) {
+  return <Reveal {...props} transform="translate3d(0, 18px, 0)" />;
+}
+
+export function FadeIn(props: AnimProps) {
+  return <Reveal {...props} transform="translate3d(0, 0, 0)" kind="fade" />;
+}
+
+export function SlideLeft(props: AnimProps) {
+  return <Reveal {...props} transform="translate3d(-24px, 0, 0)" />;
+}
+
+export function SlideRight(props: AnimProps) {
+  return <Reveal {...props} transform="translate3d(24px, 0, 0)" />;
+}
 
 interface StaggerContainerProps {
   children: ReactNode;
   className?: string;
   once?: boolean;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
 }
 
 export function StaggerContainer({ children, className, once = true, style }: StaggerContainerProps) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once, margin: "-60px" });
-  const reduced = useReducedMotion();
-
-  if (reduced) return <div className={className} style={style}>{children}</div>;
-
-  return (
-    <motion.div
-      ref={ref}
-      className={className}
-      style={style}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-      variants={{
-        hidden: {},
-        visible: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
-      }}
-    >
-      {children}
-    </motion.div>
-  );
+  const { ref, visible } = useReveal(once);
+  return <div ref={ref} data-echelon-reveal className={className} style={{ ...style, opacity: visible ? 1 : 0, transition: "opacity 180ms ease-out" }}>{children}</div>;
 }
 
 export function StaggerItem({ children, className }: { children: ReactNode; className?: string }) {
-  const reduced = useReducedMotion();
-  if (reduced) return <div className={className}>{children}</div>;
-
-  return (
-    <motion.div
-      className={className}
-      variants={{
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
-      }}
-    >
-      {children}
-    </motion.div>
-  );
+  return <div className={className}>{children}</div>;
 }
-
-// ─── ScaleOnHover ──────────────────────────────────────────────────────────
 
 export function ScaleOnHover({ children, className }: { children: ReactNode; className?: string }) {
-  const reduced = useReducedMotion();
-  if (reduced) return <div className={className}>{children}</div>;
-
-  return (
-    <motion.div
-      className={className}
-      whileHover={{ scale: 1.02, y: -3 }}
-      whileTap={{ scale: 0.98 }}
-      transition={{ type: "spring", stiffness: 400, damping: 25 }}
-    >
-      {children}
-    </motion.div>
-  );
+  return <div className={className}>{children}</div>;
 }
 
-// ─── PageTransition ────────────────────────────────────────────────────────
-
 export function PageTransition({ children, className }: { children: ReactNode; className?: string }) {
-  const reduced = useReducedMotion();
-  if (reduced) return <div className={className}>{children}</div>;
-
-  return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y: 8 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -8 }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
-    >
-      {children}
-    </motion.div>
-  );
+  return <div className={className}>{children}</div>;
 }

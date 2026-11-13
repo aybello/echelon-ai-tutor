@@ -1,0 +1,152 @@
+[
+  {
+    "questionNum": 132,
+    "question": "What is the main operational difference between complete-mix and plug-flow activated-sludge systems?",
+    "options": [
+      "Complete-mix keeps mixed liquor relatively uniform throughout the basin, whereas plug flow moves wastewater progressively through the basin and creates a loading gradient.",
+      "Complete-mix always has a longer detention time than plug flow, so its only operating advantage is more time for biological treatment to occur.",
+      "Plug-flow treatment cannot support nitrification because wastewater must be completely mixed before microorganisms can oxidize ammonia in an aeration basin.",
+      "The two systems use identical flow patterns, and the names refer only to the shape of the aeration basin rather than the distribution of loading and conditions."
+    ],
+    "correctIndex": 0,
+    "explanation": "Complete-mix systems are designed to keep mixed liquor comparatively uniform, while plug-flow systems move wastewater along the basin so loading conditions change progressively. Actual performance depends on the facility design and operating conditions; neither configuration guarantees a particular detention time, settling result, nitrification outcome, or effluent quality.",
+    "sourceTitle": "Ontario Design Guidelines for Sewage Works",
+    "sourceReference": "Activated-sludge design concepts; configuration and operating conditions must be evaluated for the specific facility.",
+    "sourceUrl": "https://www.ontario.ca/document/design-guidelines-sewage-works-0"
+  },
+  {
+    "questionNum": 144,
+    "question": "What is the primary purpose of a grit classifier or grit-washing step at a wastewater treatment facility?",
+    "options": [
+      "To wash collected grit and separate entrained organic material before the grit is handled further, improving the grit stream for subsequent management.",
+      "To aerate collected grit until all retained organic material is biologically digested, replacing the need for downstream wastewater treatment processes.",
+      "To remove floatable debris from incoming wastewater so primary clarifiers and secondary clarifiers can operate without any screening or solids control.",
+      "To chemically neutralize the mineral fraction of collected grit so the material can be discharged directly without evaluating site-specific handling requirements."
+    ],
+    "correctIndex": 0,
+    "explanation": "Grit classifiers and washing equipment separate or wash organic material from collected grit before further handling. Disposal, reuse, and handling requirements are site-specific; the question does not assume a universal landfill or beneficial-use outcome.",
+    "sourceTitle": "U.S. EPA — Wastewater Technology Fact Sheet: Screening and Grit Removal",
+    "sourceReference": "Grit classification and washing remove organic material associated with collected grit before further handling.",
+    "sourceUrl": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=P1000S7N.TXT"
+  },
+  {
+    "questionNum": 219,
+    "question": "Under the U.S. EPA Part 503 framework, how do Class A and Class B biosolids pathogen designations differ?",
+    "options": [
+      "Class A meets the applicable pathogen-reduction requirements, while Class B is subject to additional site restrictions when biosolids are land applied.",
+      "Class A may be land applied only on agricultural land, while Class B must be placed only in landfill regardless of pathogen-reduction results or site conditions.",
+      "Class A and Class B identify the nutrient concentration of biosolids, while pathogen reduction and land-application restrictions are unrelated to those designations.",
+      "Class A is the Canadian wastewater designation and Class B is the U.S. drinking-water designation, so neither classification applies to biosolids management."
+    ],
+    "correctIndex": 0,
+    "explanation": "Class A and Class B are U.S. EPA Part 503 pathogen-reduction designations for biosolids. Class B biosolids are subject to additional site restrictions when land applied. This terminology is explicitly U.S. EPA scoped and should not be presented as an Ontario biosolids classification.",
+    "sourceTitle": "U.S. EPA — Land Application of Biosolids",
+    "sourceReference": "40 CFR Part 503, Subpart D; Class A and Class B pathogen requirements and land-application restrictions.",
+    "sourceUrl": "https://www.epa.gov/biosolids/land-application-biosolids"
+  },
+  {
+    "questionNum": 404,
+    "question": "For confined-space entry at a wastewater facility, what is an entry permit used to document?",
+    "options": [
+      "Completion of the hazard and risk assessment and the required controls, such as monitoring, isolation, lockout, ventilation, and authorization for entry.",
+      "The worker’s attendance and payroll hours, so the entry team can begin work without separately identifying hazards, controls, or rescue arrangements.",
+      "A permanent approval that allows any employee to enter similar spaces later without a new assessment, atmospheric testing, or verification of controls.",
+      "A substitute for a confined-space program that removes the need to assign responsibilities, define the work, or record changing conditions during entry."
+    ],
+    "correctIndex": 0,
+    "explanation": "An entry permit is an administrative tool that documents completion of a confined-space hazard and risk assessment and the controls required for that specific entry. The exact legal requirements may vary by jurisdiction and by the facility’s confined-space program.",
+    "sourceTitle": "Canadian Centre for Occupational Health and Safety — Confined Space Program",
+    "sourceReference": "Entry permits document hazard and risk assessment and controls such as monitoring, isolation, lockout, ventilation, safeguards, and authorization.",
+    "sourceUrl": "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_program.html"
+  },
+  {
+    "questionNum": 466,
+    "question": "How do BOD and COD differ as wastewater organic-strength tests?",
+    "options": [
+      "BOD measures oxygen depletion caused by biological activity during incubation, whereas COD estimates oxygen demand using a chemical oxidation method completed more quickly.",
+      "BOD and COD are two names for the same test, so laboratories obtain the same result by using either a five-day incubation or a chemical oxidant procedure.",
+      "COD measures only inorganic pollutants and excludes oxidizable organic matter, whereas BOD measures every chemical compound present in the sample without an incubation step.",
+      "BOD is a rapid chemical test completed in hours, whereas COD requires a five-day biological incubation before any oxygen-demand result can be calculated."
+    ],
+    "correctIndex": 0,
+    "explanation": "The five-day BOD test measures dissolved-oxygen depletion during biological incubation. COD uses a chemical oxidation approach. The two tests characterize different aspects of wastewater organic strength; this item does not claim that their numerical results always have a fixed relationship.",
+    "sourceTitle": "NEMI Summary of Standard Methods 5210B: BOD: 5-Day Test",
+    "sourceReference": "Five-day BOD method scope and incubation-based dissolved-oxygen measurement.",
+    "sourceUrl": "https://www.nemi.gov/methods/method_summary/5715/"
+  },
+  {
+    "questionNum": 477,
+    "question": "Why might a laboratory seed a BOD test sample, and what must be considered for a chlorinated sample?",
+    "options": [
+      "Seeding supplies microorganisms when the sample lacks sufficient biological activity; a sample with residual chlorine must be dechlorinated before biological testing proceeds.",
+      "Seeding adds nutrients to increase algal growth during incubation, while residual chlorine should be retained because it protects the organisms needed for the BOD test.",
+      "Seeding is required for every BOD sample regardless of its condition, and chlorine is added before incubation to prevent microorganisms from affecting oxygen demand.",
+      "Seeding replaces the BOD incubation step by chemically oxidizing organic matter, so neither microorganisms nor control procedures are relevant to the reported result."
+    ],
+    "correctIndex": 0,
+    "explanation": "Seeding can provide the microorganisms needed when a BOD sample lacks sufficient biological activity. The Standard Methods summary notes that samples with residual chlorine should be dechlorinated and that dilution water is seeded. Laboratory procedures, controls, and method requirements govern the specific test setup.",
+    "sourceTitle": "NEMI Summary of Standard Methods 5210B: BOD: 5-Day Test",
+    "sourceReference": "Sample handling: dechlorinate samples with residual chlorine and seed dilution water for the BOD method.",
+    "sourceUrl": "https://www.nemi.gov/methods/method_summary/5715/"
+  },
+  {
+    "questionNum": 480,
+    "question": "How do time-proportional and flow-proportional composite samples differ?",
+    "options": [
+      "Time-proportional composites use aliquots collected at set time intervals, while flow-proportional composites link collection to measured flow; the choice depends on the monitoring objective.",
+      "Time-proportional composites collect only when the highest wastewater flow occurs, while flow-proportional composites use a single grab sample taken before any flow is measured.",
+      "Time-proportional and flow-proportional are interchangeable names for a single automatic-sampling method, so neither collection timing nor flow measurement affects the sampling design.",
+      "Flow-proportional composites can be used only for drinking water, while time-proportional composites are the sole method that can be used in wastewater monitoring programs."
+    ],
+    "correctIndex": 0,
+    "explanation": "Time-proportional composites are based on set collection intervals, while flow-proportional composites link sample collection to measured flow. The appropriate design depends on the monitoring objective and applicable program, permit, or method requirements.",
+    "sourceTitle": "U.S. EPA — Handbook for Sampling and Sample Preservation of Water and Wastewater",
+    "sourceReference": "Sampling objectives, flow measurement, and sample-type selection for water and wastewater monitoring.",
+    "sourceUrl": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=30000QSA.TXT"
+  },
+  {
+    "questionNum": 526,
+    "question": "Which condition can impair enhanced biological phosphorus removal (EBPR) in the anaerobic zone?",
+    "options": [
+      "Nitrate or dissolved oxygen entering the anaerobic zone can interfere with the anaerobic conditions that support phosphorus release by phosphate-accumulating organisms.",
+      "A properly isolated anaerobic zone without dissolved oxygen or nitrate will always stop phosphate-accumulating organisms from storing carbon and taking up phosphorus later.",
+      "Maintaining the required anaerobic conditions eliminates the need to consider influent characteristics, recycle loads, process configuration, or other site-specific operating factors.",
+      "EBPR depends on direct chemical precipitation in the anaerobic zone, so dissolved oxygen and nitrate conditions have no meaningful relationship to biological phosphorus removal."
+    ],
+    "correctIndex": 0,
+    "explanation": "Biological phosphorus removal requires an anaerobic zone free of dissolved oxygen and nitrate. PAOs use readily biodegradable carbon under anaerobic conditions and then take up phosphorus under later aerobic conditions. Performance depends on multiple facility-specific factors; chemical precipitation is a separate phosphorus-removal approach.",
+    "sourceTitle": "U.S. EPA — Biological Nutrient Removal Processes and Costs",
+    "sourceReference": "Anaerobic conditions required for biological phosphorus removal and the role of PAOs, nitrate, dissolved oxygen, and readily biodegradable carbon.",
+    "sourceUrl": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=60000G2U.TXT"
+  },
+  {
+    "questionNum": 532,
+    "question": "What is the Modified Ludzack-Ettinger (MLE) process primarily designed to remove?",
+    "options": [
+      "MLE is a biological nitrogen-removal process with an initial anoxic stage followed by an aerobic stage, using internal recycle to support denitrification.",
+      "MLE is a chemical phosphorus-removal process that adds metal salts before clarification, with no biological zones or internal recycle used for nitrogen transformations.",
+      "MLE is a membrane-filtration process that physically separates nutrients after secondary treatment, so anoxic and aerobic biological conditions are not part of its design.",
+      "MLE is a biological process designed primarily for phosphorus removal alone, so nitrogen transformations and nitrate recycling are not relevant to its operation."
+    ],
+    "correctIndex": 0,
+    "explanation": "MLE is a continuous-flow suspended-growth process with an initial anoxic stage followed by an aerobic stage. It is used for total nitrogen removal: the aerobic stage supports nitrification and internal recycle returns nitrate-containing mixed liquor to the anoxic stage for denitrification.",
+    "sourceTitle": "U.S. EPA — Biological Nutrient Removal Processes and Costs",
+    "sourceReference": "MLE configuration: initial anoxic stage followed by aerobic stage; total-nitrogen removal application.",
+    "sourceUrl": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=60000G2U.TXT"
+  },
+  {
+    "questionNum": 534,
+    "question": "What is the purpose of tertiary effluent polishing in wastewater treatment?",
+    "options": [
+      "To add treatment beyond secondary processes when the facility’s treatment objective calls for further removal of solids, nutrients, or other contaminants.",
+      "To improve the taste and appearance of treated wastewater before discharge, regardless of the treatment objective, permit conditions, or receiving-water requirements.",
+      "To heat treated wastewater before it is discharged so receiving-water organisms are protected, without using filtration, chemical treatment, or other removal processes.",
+      "To replace secondary biological treatment completely by adding oxygen after primary clarification, with no need for solids removal or additional treatment-process controls."
+    ],
+    "correctIndex": 0,
+    "explanation": "Tertiary or polishing processes provide treatment beyond secondary treatment when further removal is needed to meet the facility’s treatment objectives. Available methods include filtration and, for phosphorus control, chemical addition; selection depends on site-specific requirements and treatment performance.",
+    "sourceTitle": "U.S. EPA — Biological Nutrient Removal Processes and Costs",
+    "sourceReference": "Filtration and chemical processes as polishing approaches for additional solids and nutrient removal after biological treatment.",
+    "sourceUrl": "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=60000G2U.TXT"
+  }
+]

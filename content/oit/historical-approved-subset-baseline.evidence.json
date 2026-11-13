@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "capturedAtUtc": "2026-09-10T23:02:21.947Z",
+  "purpose": "Pre-update rollback snapshot for the 62-item approved historical OIT subset revision.",
+  "snapshotChecksum": "c9f6b662e28e078e36ae9c3111de6e43026077effbda24aa918dc1951fc83c95",
+  "baselineChecksum": "6acd234a8d6f2c243d606c7a56190faed72e4dfcd780bda1188cdc8e1880dfc6",
+  "stagedPayloadChecksum": "517f82e130049583a61004c2fc8744f02db6890a70a923d378673be005dc8198",
+  "storageKey": "governed-content-backups/oit/historical-approved-subset/6acd234a8d6f2c243d606c7a56190faed72e4dfcd780bda1188cdc8e1880dfc6.json",
+  "storageUrl": "https://d2xsxph8kpxj0f.cloudfront.net/310519663824308637/9YRbBamkQDMXNb5cx5zZ4o/governed-content-backups/oit/historical-approved-subset/6acd234a8d6f2c243d606c7a56190faed72e4dfcd780bda1188cdc8e1880dfc6.json",
+  "entries": 62,
+  "bankCounts": {
+    "oit": 52,
+    "oit-ww": 10
+  }
+}

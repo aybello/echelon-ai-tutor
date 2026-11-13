@@ -1,0 +1,129 @@
+/* Practice-only presentation. The quiz state, navigation and tutor remain unchanged. */
+.practice-screen.learning-redesign {
+  background: #f3f7fc !important;
+  color: #101820;
+}
+
+.practice-screen.learning-redesign .practice-header {
+  background: #f3f7fc !important;
+  border-bottom: 1px solid #dce6f2 !important;
+  padding: 20px 24px 16px;
+}
+.practice-screen .practice-header-inner { max-width: 920px; }
+.practice-screen.learning-redesign .workspace-eyebrow {
+  color: #1757b8 !important;
+  font-family: inherit !important;
+  font-size: 11px !important;
+}
+.practice-screen.learning-redesign .practice-title-row h1 {
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.2;
+  margin: 5px 0 8px;
+}
+.practice-screen .practice-title-row p { color: #25364b !important; font-size: 14px; line-height: 1.5; }
+.practice-interactive-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #1757b8;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.practice-screen .practice-session-stats { color: #25364b !important; font-size: 13px; gap: 18px; margin: 12px 0; }
+.practice-screen .practice-options { margin-top: 10px; }
+.practice-screen .practice-options summary { min-height: 44px; padding: 9px 14px; font-size: 13px; }
+.practice-screen .practice-content {
+  padding: 20px max(20px, calc((100% - 920px) / 2)) 32px;
+}
+.practice-screen.learning-redesign .qs-question-card {
+  padding: 28px !important;
+  border: 1px solid #dce6f2 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 8px 28px rgba(21, 50, 86, .05) !important;
+  margin-bottom: 16px !important;
+}
+.practice-screen.learning-redesign [data-testid="practice-question"] {
+  color: #101820 !important;
+  font-size: 18px !important;
+  line-height: 1.6 !important;
+  margin: 16px 0 22px !important;
+  overflow-wrap: anywhere;
+}
+.practice-screen.learning-redesign .qs-badges-row > span {
+  color: #17283e !important;
+  font-size: 12px !important;
+}
+.practice-screen.learning-redesign .qs-question-card button {
+  min-height: 48px;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+}
+.practice-screen.learning-redesign .qs-question-card button[aria-pressed="false"]:not(:disabled):hover {
+  border-color: #1757b8 !important;
+  background: #f0f6ff !important;
+}
+.practice-screen.learning-redesign .practice-primary-actions { padding-top: 12px; }
+.practice-screen.learning-redesign .practice-primary-actions > div > button:last-child:not(:disabled) { color: #fff !important; }
+.practice-screen.learning-redesign .practice-primary-actions > div > button:last-child:disabled {
+  background: #e3e9f0 !important;
+  color: #536273 !important;
+  box-shadow: none !important;
+  cursor: not-allowed;
+}
+.practice-screen.learning-redesign .practice-primary-actions > div > button:first-child:not(:last-child) { color: #182c42 !important; }
+.practice-screen.learning-redesign .practice-action-buttons { flex-wrap: wrap !important; }
+.practice-screen.learning-redesign .practice-action-buttons > button:first-child:not(:last-child) {
+  flex: 0 1 auto;
+  max-width: 100%;
+  white-space: normal !important;
+}
+.practice-screen.learning-redesign .practice-action-buttons > button:last-child { flex: 1 1 160px !important; max-width: 100%; }
+.practice-screen.learning-redesign .practice-steps-toggle { color: #1757b8 !important; padding: 10px 14px; cursor: pointer; }
+.practice-screen.learning-redesign .practice-explanation {
+  background: #fff !important;
+  border: 1px solid #dce6f2 !important;
+  border-radius: 10px !important;
+  padding: 26px 28px !important;
+  box-shadow: 0 8px 28px rgba(21, 50, 86, .05) !important;
+}
+.practice-screen .practice-result-label { font-size: 12px !important; margin-bottom: 12px !important; }
+.practice-screen.learning-redesign .practice-explanation-content { color: #101820 !important; font-size: 16px !important; line-height: 1.7 !important; overflow-wrap: anywhere; }
+.practice-screen .practice-solution {
+  margin-top: 20px;
+  padding: 22px;
+  background: #f1f6fc;
+  border: 1px solid #e4edf7;
+  border-radius: 8px;
+  color: #101820;
+}
+.practice-screen.learning-redesign .practice-solution h3 {
+  margin: 0 0 12px;
+  color: #1757b8 !important;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.practice-solution-list { list-style: none; padding: 0; margin: 0; }
+.practice-solution-step { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 16px; align-items: start; padding: 16px 0; }
+.practice-solution-step + .practice-solution-step { border-top: 1px solid #d8e4f2; }
+.practice-solution-number { display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: #1757b8; color: #fff; font-size: 14px; font-weight: 700; }
+.practice-solution-label { color: #1757b8; font-size: 12px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; margin: 2px 0 4px; overflow-wrap: anywhere; }
+.practice-solution-body, .practice-solution-empty, .practice-solution-tip { color: #101820; font-size: 15px; line-height: 1.65; overflow-wrap: anywhere; white-space: pre-wrap; }
+.practice-solution-tip { margin: 12px 0 0; padding-top: 14px; border-top: 1px solid #d8e4f2; }
+.practice-screen.learning-redesign .practice-resource-actions { gap: 10px; margin-top: 20px; padding-top: 18px; }
+.practice-screen.learning-redesign .practice-resource-actions :is(button, a) { color: #1757b8 !important; min-height: 44px; padding: 10px 14px; font-size: 14px; }
+.practice-screen.learning-redesign :is(button, a, input, select, summary, [tabindex="0"]):focus-visible { outline: 3px solid #1757b8 !important; outline-offset: 3px !important; }
+
+@media (max-width: 720px) {
+  .practice-screen.learning-redesign .practice-header { padding: 14px 16px 12px; }
+  .practice-screen .practice-content { padding: 14px 12px 24px; }
+  .practice-screen.learning-redesign .qs-question-card { padding: 20px 16px !important; }
+  .practice-screen.learning-redesign [data-testid="practice-question"] { font-size: 16px !important; line-height: 1.55 !important; }
+  .practice-screen.learning-redesign .practice-explanation { padding: 20px 16px !important; }
+  .practice-screen .practice-solution { padding: 16px; }
+  .practice-solution-step { gap: 12px; }
+  .practice-screen.learning-redesign .practice-resource-actions :is(button, a) { min-height: 44px; }
+}

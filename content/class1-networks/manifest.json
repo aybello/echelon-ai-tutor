@@ -1,0 +1,85 @@
+{
+  "version": "2026-09-09-v1",
+  "status": "validated-local-candidate-not-imported",
+  "releaseMode": "additive-exact-batch-after-full-live-bank-reconciliation",
+  "individualApprovalRequired": false,
+  "numberRange": {
+    "start": 2001,
+    "end": 2250,
+    "status": "proposed-not-reserved-in-production"
+  },
+  "purpose": "Supplemental Ontario Class 1 practice; allocation is not an official exam blueprint",
+  "banks": [
+    {
+      "bankKey": "class1-water-dist",
+      "file": "questions/distribution-250.json",
+      "count": 250,
+      "calculations": 50,
+      "sha256": "ccc667ee3fc6304088926c1b136234859c55aa30d7080604fb4cb4e011616eef",
+      "modules": {
+        "General": 63,
+        "Processes": 68,
+        "Support Systems": 97,
+        "Administration": 22
+      }
+    },
+    {
+      "bankKey": "class1-wastewater-coll",
+      "file": "questions/collection-250.json",
+      "count": 250,
+      "calculations": 50,
+      "sha256": "64317caeda804c243c92ff79f5a3548a11bf971f173cc98fc0d25550c9320320",
+      "modules": {
+        "Monitor, Evaluate & Adjust Collection System": 55,
+        "Maintain & Restore Collection System": 48,
+        "Operate Equipment": 24,
+        "Evaluate & Maintain Equipment": 43,
+        "Maintain Lift Stations": 57,
+        "Security, Safety & Administrative Procedures": 23
+      }
+    }
+  ],
+  "productionReconciliation": "not-run-no-complete-live-baseline",
+  "validation": {
+    "distribution": {
+      "valid": true,
+      "errors": [],
+      "count": 250,
+      "calculations": 50,
+      "answerPositions": [
+        63,
+        63,
+        62,
+        62
+      ],
+      "answerCues": {
+        "conceptualCount": 200,
+        "longestRate": 0.235,
+        "shortestRate": 0.325,
+        "longTells": [],
+        "shortTells": [],
+        "qualifierTells": []
+      }
+    },
+    "collection": {
+      "valid": true,
+      "errors": [],
+      "count": 250,
+      "calculations": 50,
+      "answerPositions": [
+        63,
+        63,
+        62,
+        62
+      ],
+      "answerCues": {
+        "conceptualCount": 200,
+        "longestRate": 0.285,
+        "shortestRate": 0.26,
+        "longTells": [],
+        "shortTells": [],
+        "qualifierTells": []
+      }
+    }
+  }
+}

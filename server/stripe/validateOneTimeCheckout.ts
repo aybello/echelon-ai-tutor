@@ -2,6 +2,7 @@ import Stripe from "stripe";
 import { TRPCError } from "@trpc/server";
 import { ALL_PRODUCTS } from "./products";
 import { normalizeEmail } from "../_core/access";
+import { legacyUsdSubtotalForProduct } from "./legacyUsdCheckout";
 
 export type ValidatedOneTimeCheckout = {
   sessionId: string;
@@ -59,7 +60,15 @@ export function validateOneTimeCheckout(
 
   // amount_subtotal is the catalogue amount before promotion codes.
   // amount_total may be lower when a valid Stripe promotion is applied.
-  const expectedSubtotal = currency === "cad" ? product.priceCAD : product.priceUSD;
+  const expectedSubtotal = currency === "cad"
+    ? product.priceCAD
+    : legacyUsdSubtotalForProduct(productKey);
+  if (expectedSubtotal == null) {
+    throw new TRPCError({
+      code: "BAD_REQUEST",
+      message: "Checkout uses an unsupported historical USD price.",
+    });
+  }
   if (session.amount_subtotal !== expectedSubtotal) {
     throw new TRPCError({
       code: "BAD_REQUEST",

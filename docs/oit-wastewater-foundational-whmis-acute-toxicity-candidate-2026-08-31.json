@@ -1,0 +1,17 @@
+[
+  {
+    "questionNum": 442,
+    "question": "In Canadian WHMIS, what does the skull-and-crossbones pictogram communicate?",
+    "options": [
+      "Acute toxicity that may be fatal or toxic.",
+      "A product that is flammable under WHMIS.",
+      "A product that is corrosive to metals.",
+      "An explosive product under transportation rules."
+    ],
+    "correctIndex": 0,
+    "explanation": "In WHMIS, the skull-and-crossbones pictogram is used for acute toxicity hazards. It communicates that a hazardous product may cause toxic or fatal effects from an acute exposure; workers must follow the label, safety data sheet, and workplace procedures.",
+    "sourceTitle": "Health Canada — Guidance on the WHMIS Supplier Requirements",
+    "sourceReference": "Health Canada's WHMIS guidance describes a Canadian hazard-classification and communication system. Pictograms are assigned based on hazardous-product classification, including acute toxicity hazards.",
+    "sourceUrl": "https://www.canada.ca/en/health-canada/services/environmental-workplace-health/occupational-health-safety/workplace-hazardous-materials-information-system/supplier-hazard-communication-requirements-whmis/guidance.html"
+  }
+]

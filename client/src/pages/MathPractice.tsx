@@ -3,6 +3,7 @@
 import { Link } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import SiteNav from "@/components/SiteNav";
+import "./PracticeTools.css";
 
 const COURSES = [
   // Ontario
@@ -55,16 +56,16 @@ export default function MathPractice() {
   });
 
   return (
-    <div style={{ fontFamily: "'Sora', sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
+    <div className="practice-tools math-practice" style={{ fontFamily: "'Sora', sans-serif", background: "#F8FAFC", minHeight: "100vh" }}>
       <SiteNav currentPath="/math-practice" />
 
       {/* Hero */}
-      <div style={{
+      <div className="math-hero" style={{
         background: "linear-gradient(135deg, #1E1B4B 0%, #312E81 50%, #4C1D95 100%)",
         padding: "60px 24px 48px",
         textAlign: "center",
       }}>
-        <div style={{ display: "inline-block", background: "rgba(167,139,250,0.2)", border: "1px solid rgba(167,139,250,0.4)", borderRadius: 100, padding: "6px 16px", fontSize: 12, fontWeight: 700, color: "#C4B5FD", letterSpacing: "0.08em", marginBottom: 20 }}>
+        <div className="math-kicker" style={{ display: "inline-block", background: "rgba(167,139,250,0.2)", border: "1px solid rgba(167,139,250,0.4)", borderRadius: 100, padding: "6px 16px", fontSize: 12, fontWeight: 700, color: "#C4B5FD", letterSpacing: "0.08em", marginBottom: 20 }}>
           🧮 MATH PRACTICE HUB
         </div>
         <h1 style={{ fontFamily: "'Sora', sans-serif", fontSize: "clamp(28px, 5vw, 48px)", fontWeight: 800, color: "#FFFFFF", margin: "0 0 16px", lineHeight: 1.2 }}>
@@ -74,7 +75,7 @@ export default function MathPractice() {
         <p style={{ fontSize: 16, color: "#C4B5FD", maxWidth: 560, margin: "0 auto 32px", lineHeight: 1.7 }}>
           Every course filtered to calculation questions only — with step-by-step solutions, exam tips, and instant feedback.
         </p>
-        <div style={{ display: "flex", gap: 24, justifyContent: "center", flexWrap: "wrap" }}>
+        <div className="math-stats" style={{ display: "flex", gap: 24, justifyContent: "center", flexWrap: "wrap" }}>
           {[
             { value: "800+", label: "Calc Questions" },
             { value: "100%", label: "Step-by-Step" },
@@ -89,13 +90,13 @@ export default function MathPractice() {
       </div>
 
       {/* Exam Tips */}
-      <div style={{ maxWidth: 900, margin: "0 auto", padding: "40px 24px 0" }}>
-        <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 16 }}>
+      <div className="math-content" style={{ maxWidth: 900, margin: "0 auto", padding: "40px 24px 0" }}>
+        <div className="math-section-label" style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 16 }}>
           💡 Exam Strategy
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12, marginBottom: 40 }}>
           {TIPS.map(tip => (
-            <div key={tip.title} style={{ background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 14, padding: "16px 18px" }}>
+            <div className="math-tip" key={tip.title} style={{ background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 14, padding: "16px 18px" }}>
               <div style={{ fontSize: 20, marginBottom: 8 }}>{tip.icon}</div>
               <div style={{ fontSize: 13, fontWeight: 700, color: "#0F172A", marginBottom: 4 }}>{tip.title}</div>
               <div style={{ fontSize: 12, color: "#64748B", lineHeight: 1.6 }}>{tip.desc}</div>
@@ -106,13 +107,13 @@ export default function MathPractice() {
         {/* Course groups */}
         {COURSES.map(group => (
           <div key={group.group} style={{ marginBottom: 40 }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 16 }}>
+            <div className="math-section-label" style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase" as const, letterSpacing: "0.1em", marginBottom: 16 }}>
               {group.group}
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 12 }}>
               {group.items.map(item => (
                 <Link key={item.href} href={item.href}>
-                  <div style={{
+                  <div className="math-course" style={{
                     background: item.bg,
                     border: `1.5px solid ${item.border}`,
                     borderRadius: 14,
@@ -132,7 +133,7 @@ export default function MathPractice() {
                       <div style={{ fontSize: 11, color: "#64748B" }}>{item.sub}</div>
                     </div>
                     <div style={{ textAlign: "right" as const, flexShrink: 0 }}>
-                      <div style={{ fontSize: 11, fontWeight: 700, color: "#7C3AED", background: "#F5F3FF", padding: "3px 8px", borderRadius: 6, marginBottom: 4 }}>
+                      <div className="math-count" style={{ fontSize: 11, fontWeight: 700, color: "#7C3AED", background: "#F5F3FF", padding: "3px 8px", borderRadius: 6, marginBottom: 4 }}>
                         🧮 {item.count} calc
                       </div>
                       <div style={{ fontSize: 11, color: item.color, fontWeight: 600 }}>Start →</div>
@@ -145,7 +146,7 @@ export default function MathPractice() {
         ))}
 
         {/* Bottom CTA */}
-        <div style={{
+        <div className="math-cta" style={{
           background: "linear-gradient(135deg, #F5F3FF 0%, #EFF6FF 100%)",
           border: "2px solid #DDD6FE",
           borderRadius: 20,

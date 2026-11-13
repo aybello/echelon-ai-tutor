@@ -1,0 +1,70 @@
+{
+  "reviews": [
+    {
+      "questionNum": 226,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The correct option matches the source record’s verified finding that anaerobic digestion stabilizes organic matter in wastewater solids and produces biogas.",
+        "The question is foundational and appropriate for an Ontario OIT learner because it asks only for the basic purpose of the process, not design or advanced operational details.",
+        "The distractors are plausible but clearly incorrect and do not normalize unsafe operation or omit required actions."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 246,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The correct option is traceable to the cited EPA belt-filter-press fact sheet, which describes removing water from wastewater residuals to produce dewatered cake.",
+        "The learning objective is basic solids-handling knowledge appropriate for OIT level.",
+        "The distractors are plausible yet clearly wrong and do not promote unsafe or incomplete operation."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 248,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The correct option aligns with the source record’s finding that polymer conditioning supports belt-filter-press dewatering performance.",
+        "The question remains foundational and does not require detailed process design or laboratory knowledge.",
+        "The distractors are plausible but clearly incorrect and do not normalize unsafe practice or omit required controls."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 432,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The correct option is consistent with the scoped source note that fall arrest stops a fall before contact with a lower level or obstruction.",
+        "The topic is appropriate for foundational OIT safety awareness.",
+        "The distractors are plausible but clearly incorrect and do not imply that training, inspection, or rescue planning can be skipped."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 443,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The correct option accurately reflects the distinction in the source record: travel restraint prevents reaching an unguarded edge, while fall arrest stops a fall.",
+        "The question is basic safety knowledge suitable for OIT learners.",
+        "The distractors remain plausible without normalizing unsafe work or replacing required precautions."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 476,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "The correct option matches the EPA QC guidance that duplicates or replicates are used to assess precision of sampling and/or laboratory measurements.",
+        "The learning objective is foundational and appropriate for an OIT-level understanding of monitoring quality control.",
+        "The distractors are plausible but do not overstate the role of duplicates or undermine other QA/QC requirements."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

@@ -105,7 +105,7 @@ export default function Process() {
   const stepIdx = STEPS.findIndex(s => s.id === activeStep.id);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
+    <div className="process-page learning-redesign" style={{ minHeight: "100vh", background: "#F1F5F9", fontFamily: "'Sora', sans-serif" }}>
       <style>{`
         @keyframes flow    { 0%{stroke-dashoffset:30} 100%{stroke-dashoffset:0} }
         @keyframes ping    { 0%{r:8;opacity:0.8} 100%{r:18;opacity:0} }

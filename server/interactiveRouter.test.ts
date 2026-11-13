@@ -1,0 +1,384 @@
+import { EventEmitter } from "node:events";
+import { nodeHTTPRequestHandler } from "@trpc/server/adapters/node-http";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import type { TrpcContext } from "./_core/context";
+import * as courseRegistry from "../shared/courseRegistry";
+import { getAllCourses } from "../shared/courseRegistry";
+import { resolveAccessForRequest } from "./_core/accessService";
+import { inspectInteractiveRegistration, loadInteractivePackage, validateInteractivePackage } from "./interactiveContent/loader";
+import { releasePackages } from "./interactiveContent/release-2026-11-12/registry";
+import releaseMetadata from "./interactiveContent/release-2026-11-12/release-metadata.json";
+import { interactiveModes } from "./interactiveContent/schema";
+import { getInteractiveContentEngine, InteractiveContentEngine } from "./interactiveContent/engine/loader";
+import { interactiveRouter } from "./routers/interactiveRouter";
+// @ts-expect-error The standalone offline converter is plain JavaScript.
+import { validatePack } from "../scripts/validate-interactive-drafts.mjs";
+
+vi.mock("./_core/accessService", () => ({ resolveAccessForRequest: vi.fn() }));
+vi.mock("./interactiveContent/engine/loader", async original => ({
+  ...await original<typeof import("./interactiveContent/engine/loader")>(),
+  getInteractiveContentEngine: vi.fn(),
+}));
+// Compatibility-only fixture adapter: the router delegates to getLegacyContent.
+// Model its frozen legacy response, including absent versus corrupt registration.
+const loadRegistration = vi.fn<typeof loadInteractivePackage>();
+const legacyEngine = { getLegacyContent: vi.fn((courseKey: string, hasAccess: boolean) => {
+  const loaded = loadRegistration(courseKey);
+  if (loaded.status === "invalid") throw new Error("Interactive content is unavailable.");
+  if (loaded.status === "absent") return { courseKey, available: false, locked: !hasAccess, version: null, examples: [] };
+  const pkg = loaded.package;
+  const previews = new Set(Object.values(pkg.previewIds));
+  return { courseKey, available: true, locked: !hasAccess, version: pkg.version, examples: hasAccess ? pkg.examples : pkg.examples.filter(example => previews.has(example.id)) };
+}) };
+
+const setHeader = vi.fn();
+const ctx: TrpcContext = { user: null, studentEmail: null, req: { headers: {} } as TrpcContext["req"], res: { setHeader } as unknown as TrpcContext["res"] };
+const makeExample = (mode: typeof interactiveModes[number], kind: "preview" | "paid") => {
+  const base = { id: `${kind}-${mode}`, mode, prompt: "Synthetic prompt" };
+  switch (mode) {
+    case "rapid-swipe": return { ...base, correctAnswer: true, explanation: "Synthetic" };
+    case "before-after": return { ...base, correctAnswer: "before", explanation: "Synthetic" };
+    case "speed-match": return { ...base, pairs: [
+      { id: "a", left: "Left A", right: "Right A" },
+      { id: "b", left: "Left B", right: "Right B" },
+      { id: "c", left: "Left C", right: "Right C" },
+    ] };
+    default: return { ...base, options: [{ id: "a", label: "Alpha" }, { id: "b", label: "Beta" }], correctOptionId: "a", explanation: "Synthetic" };
+  }
+};
+const fixture = {
+  courseKey: "class1-water", status: "approved", version: "test-only-v1",
+  previewIds: Object.fromEntries(interactiveModes.map(mode => [mode, `preview-${mode}`])) as Record<typeof interactiveModes[number], string>,
+  examples: interactiveModes.flatMap(mode => [makeExample(mode, "paid"), makeExample(mode, "preview")]),
+};
+const approved = { approved: true, content: fixture };
+const caller = interactiveRouter.createCaller(ctx);
+const validated = (content: unknown) => validateInteractivePackage("class1-water", { approved: true, content });
+
+beforeEach(() => {
+  vi.clearAllMocks();
+  vi.mocked(resolveAccessForRequest).mockResolvedValue(false);
+  vi.mocked(getInteractiveContentEngine).mockReturnValue(legacyEngine as unknown as InteractiveContentEngine);
+  vi.mocked(loadRegistration).mockImplementation(key => key === fixture.courseKey ? inspectInteractiveRegistration(key, approved) : { status: "absent" });
+});
+afterEach(() => expect(resolveAccessForRequest).not.toHaveBeenCalled());
+
+describe("interactive.getContent", () => {
+  it("returns the full published legacy pack for anonymous users without client selection", async () => {
+    const first = await caller.getContent({ courseKey: "class1-water" });
+    const second = await caller.getContent({ courseKey: "class1-water" });
+    expect(first).toEqual(second);
+    expect(first).toMatchObject({ courseKey: "class1-water", available: true, locked: false, version: "test-only-v1" });
+    expect(first.examples).toHaveLength(12);
+    expect(first.examples.map(x => x.id)).toEqual(fixture.examples.map(x => x.id));
+    expect(getInteractiveContentEngine).toHaveBeenCalledTimes(2);
+    expect(legacyEngine.getLegacyContent).toHaveBeenNthCalledWith(1, "class1-water", true);
+    expect(resolveAccessForRequest).not.toHaveBeenCalled();
+    for (const extra of [{ mode: "rapid-swipe" }, { id: "paid-rapid-swipe" }, { page: 2 }, { limit: 100 }, { email: "victim@example.test" }]) {
+      await expect(caller.getContent({ courseKey: "class1-water", ...extra } as never)).rejects.toMatchObject({ code: "BAD_REQUEST" });
+    }
+  });
+  it("returns all approved examples with an arbitrary token without resolving entitlements", async () => {
+    const result = await caller.getContent({ courseKey: "class1-water", accessToken: "token" });
+    expect(result.locked).toBe(false);
+    expect(legacyEngine.getLegacyContent).toHaveBeenCalledWith("class1-water", true);
+    expect(result.examples.map(x => x.id)).toEqual(fixture.examples.map(x => x.id));
+    expect(resolveAccessForRequest).not.toHaveBeenCalled();
+  });
+  it("returns the same full content to OTP, ordinary and privileged accounts regardless of token state", async () => {
+    const accounts = [
+      { user: null, studentEmail: "student@example.test" },
+      { user: { id: 123, email: "student@example.test", role: "user", openId: "ordinary" }, studentEmail: null },
+      { user: { id: 124, email: "admin@example.test", role: "admin", openId: "admin" }, studentEmail: null },
+    ];
+    for (const account of accounts) for (const accessToken of [undefined, "expired-token", "other-course-token", "paid-token"]) {
+      const accountCaller = interactiveRouter.createCaller({ ...ctx, ...account } as TrpcContext);
+      const result = await accountCaller.getContent({ courseKey: "class1-water", accessToken });
+      expect(result.locked).toBe(false);
+      expect(result.examples.map(x => x.id)).toEqual(fixture.examples.map(x => x.id));
+    }
+    expect(resolveAccessForRequest).not.toHaveBeenCalled();
+  });
+  it("preserves the unavailable legacy fallback signal without account gating", async () => {
+    expect(await caller.getContent({ courseKey: "class1-ww" })).toEqual({ courseKey: "class1-ww", available: false, locked: false, version: null, examples: [] });
+    expect(await caller.getContent({ courseKey: "class1-ww", accessToken: "token" })).toEqual({ courseKey: "class1-ww", available: false, locked: false, version: null, examples: [] });
+  });
+  it("bounds bearer tokens consistently with existing quiz endpoints", async () => {
+    await caller.getContent({ courseKey: "class1-water", accessToken: "x".repeat(8192) });
+    expect(legacyEngine.getLegacyContent).toHaveBeenCalledTimes(1);
+    for (const accessToken of ["", "x".repeat(8193)]) {
+      await expect(caller.getContent({ courseKey: "class1-water", accessToken })).rejects.toMatchObject({ code: "BAD_REQUEST" });
+    }
+    expect(resolveAccessForRequest).not.toHaveBeenCalled();
+    expect(legacyEngine.getLegacyContent).toHaveBeenCalledTimes(1);
+    expect(setHeader).toHaveBeenCalledTimes(3);
+  });
+  it.each([
+    ["unapproved", { approved: false, content: fixture }],
+    ["draft", { approved: true, content: { ...fixture, status: "draft" } }],
+    ["wrong course", { approved: true, content: { ...fixture, courseKey: "class1-ww" } }],
+    ["tampered", { approved: true, content: { ...fixture, examples: [...fixture.examples, fixture.examples[0]] } }],
+    ["malformed registered entry", undefined],
+  ])("fails closed for a registered %s pack instead of returning the fallback signal", async (_label, registration) => {
+    const warning = vi.spyOn(console, "warn").mockImplementation(() => {});
+    try {
+      vi.mocked(loadRegistration).mockImplementation(key => inspectInteractiveRegistration(key, registration));
+      for (const accessToken of [undefined, "secret-token"]) {
+        await expect(caller.getContent({ courseKey: "class1-water", accessToken })).rejects.toMatchObject({
+          code: "INTERNAL_SERVER_ERROR", message: "Interactive content is unavailable.",
+        });
+      }
+      // Current engine/router intentionally emits no artifact diagnostics.
+    expect(warning.mock.calls).toEqual([]);
+      expect(setHeader).toHaveBeenCalledWith("Cache-Control", "private, no-store");
+    } finally { warning.mockRestore(); }
+  });
+  it("excludes beta, aliases, unknown and inactive keys before access or loading", async () => {
+    const inactive = getAllCourses().find(course => !course.isActive);
+    for (const courseKey of ["electrician-309a", "electrician-309a-demo", "class1", "../class1-water", "not-a-course", ...(inactive ? [inactive.courseKey] : [])]) {
+      await expect(caller.getContent({ courseKey })).rejects.toMatchObject({ code: "BAD_REQUEST" });
+    }
+    expect(resolveAccessForRequest).not.toHaveBeenCalled();
+    expect(loadRegistration).not.toHaveBeenCalled();
+  });
+  it("rejects a known but inactive canonical course", async () => {
+    const course = courseRegistry.getCourseByKey("class1-water")!;
+    const spy = vi.spyOn(courseRegistry, "getCourseByKey").mockReturnValue({ ...course, isActive: false });
+    try {
+      await expect(caller.getContent({ courseKey: "class1-water" })).rejects.toMatchObject({ code: "BAD_REQUEST" });
+      expect(resolveAccessForRequest).not.toHaveBeenCalled();
+      expect(loadRegistration).not.toHaveBeenCalled();
+    } finally { spy.mockRestore(); }
+  });
+});
+
+describe("AI-source-reviewed software release package validation", () => {
+  it("registers exactly the 38 canonical non-309 keys with 3821 items and all six fixed previews", async () => {
+    const actual = await vi.importActual<typeof import("./interactiveContent/loader")>("./interactiveContent/loader");
+    const expected = [
+      "class1-wastewater-coll", "class1-water", "class1-water-dist", "class1-ww",
+      "class2-wastewater-coll", "class2-water", "class2-water-dist", "class2-ww",
+      "class3-wastewater-coll", "class3-water", "class3-water-dist", "class3-ww",
+      "class4-wastewater-coll", "class4-water", "class4-water-dist", "class4-ww",
+      "oit", "oit-ww", "us-class1-water", "us-class1-water-dist", "us-texas-class-d-water",
+      "wpi-class1-wastewater", "wpi-class1-water", "wpi-class1-water-coll", "wpi-class1-water-dist",
+      "wpi-class2-wastewater", "wpi-class2-water", "wpi-class2-water-coll", "wpi-class2-water-dist",
+      "wpi-class3-wastewater", "wpi-class3-water", "wpi-class3-water-coll", "wpi-class3-water-dist",
+      "wpi-class4-wastewater", "wpi-class4-water", "wpi-class4-water-coll", "wpi-class4-water-dist", "wqa",
+    ].sort();
+    expect(Object.keys(releasePackages).sort()).toEqual(expected);
+    expect(getAllCourses().filter(c => c.isActive && c.track !== "construction-electrician").map(c => c.courseKey).sort()).toEqual(expected);
+    const ids = new Set<string>();
+    const modes = Object.fromEntries(interactiveModes.map(mode => [mode, 0]));
+    for (const key of expected) {
+      const loaded = actual.loadInteractivePackage(key);
+      expect(loaded.status).toBe("valid");
+      if (loaded.status !== "valid") throw new Error(`Invalid release: ${key}`);
+      const { package: pkg } = loaded;
+      expect(pkg.courseKey).toBe(key);
+      for (const mode of interactiveModes) {
+        const items = pkg.examples.filter(x => x.mode === mode);
+        expect(items.length).toBeGreaterThanOrEqual(2);
+        expect(pkg.previewIds[mode]).toBe(items.map(x => x.id).sort()[0]);
+        modes[mode] += items.length;
+      }
+      for (const item of pkg.examples) {
+        expect(ids.has(item.id)).toBe(false);
+        expect(item.id).not.toMatch(/309/i);
+        ids.add(item.id);
+      }
+    }
+    expect(ids.size).toBe(3821);
+    expect(ids.has("class1-water-dist-074")).toBe(false);
+    expect(ids.has("wqa-023")).toBe(true);
+    expect(modes).toEqual(releaseMetadata.counts.modes);
+    for (const key of ["__proto__", "constructor", "electrician-309a", "electrician-309a-demo", "class1", "not-a-course"]) {
+      expect(actual.loadInteractivePackage(key)).toEqual({ status: "absent" });
+    }
+  });
+  it("exposes all 38 published legacy packs anonymously and with tokens within the existing compatibility budget", async () => {
+    const actual = await vi.importActual<typeof import("./interactiveContent/loader")>("./interactiveContent/loader");
+    // Exercise the real private engine legacy wrapper, not a v2 full-bank response.
+    vi.mocked(getInteractiveContentEngine).mockReturnValue(new InteractiveContentEngine());
+    for (const key of Object.keys(releasePackages)) {
+      const result = actual.loadInteractivePackage(key);
+      if (result.status !== "valid") throw new Error(`Invalid release: ${key}`);
+      const anonymous = await caller.getContent({ courseKey: key });
+      expect(anonymous).toEqual(await caller.getContent({ courseKey: key }));
+      expect(anonymous).toMatchObject({ courseKey: key, available: true, locked: false });
+      expect(anonymous.examples).toEqual(result.package.examples);
+      expect(new Set(anonymous.examples.map(x => x.mode))).toEqual(new Set(interactiveModes));
+      const full = await caller.getContent({ courseKey: key, accessToken: "token" });
+      expect(full).toEqual(anonymous);
+      expect(full.locked).toBe(false);
+      expect(full.examples).toEqual(result.package.examples);
+      expect(full.examples.length).toBeLessThanOrEqual(300);
+      expect(Object.keys(full).sort()).toEqual(["available", "courseKey", "examples", "locked", "version"]);
+      const serialized = JSON.stringify(full);
+      for (const secretField of ["sourceSha256", "provenance", "reviewReferences", "originalBytes", "reviewers"]) expect(serialized).not.toContain(secretField);
+      expect(resolveAccessForRequest).not.toHaveBeenCalled();
+    }
+  });
+  it("distinguishes a registered valid entry from all invalid entries", () => {
+    expect(inspectInteractiveRegistration("class1-water", approved)).toMatchObject({ status: "valid", package: { courseKey: "class1-water" } });
+    for (const registration of [undefined, { ...approved, approved: false }, { ...approved, content: { ...fixture, status: "draft" } }, { ...approved, content: { ...fixture, courseKey: "class1-ww" } }]) {
+      expect(inspectInteractiveRegistration("class1-water", registration)).toEqual({ status: "invalid" });
+    }
+    const throwing = { approved: true, get content(): unknown { throw new Error("private-content"); } };
+    expect(inspectInteractiveRegistration("class1-water", throwing)).toEqual({ status: "invalid" });
+  });
+  it("fails closed for absent, unapproved, draft, invalid or mismatched content", () => {
+    expect(validateInteractivePackage("class1-water", undefined)).toBeNull();
+    expect(validateInteractivePackage("class1-water", { ...approved, approved: false })).toBeNull();
+    expect(validated({ ...fixture, status: "draft" })).toBeNull();
+    expect(validateInteractivePackage("class1-ww", approved)).toBeNull();
+    expect(validated({ ...fixture, examples: [...fixture.examples, fixture.examples[0]] })).toBeNull();
+    expect(validated(fixture)).not.toBeNull();
+  });
+  it("requires all six modes, one distinct valid preview and at least one paid example per mode", () => {
+    for (const mode of interactiveModes) {
+      const { [mode]: _missing, ...rest } = fixture.previewIds;
+      expect(validated({ ...fixture, previewIds: rest })).toBeNull();
+      expect(validated({ ...fixture, examples: fixture.examples.filter(item => item.mode !== mode) })).toBeNull();
+      expect(validated({ ...fixture, examples: fixture.examples.filter(item => item.id !== `paid-${mode}`) })).toBeNull();
+      expect(validated({ ...fixture, previewIds: { ...fixture.previewIds, [mode]: "not-an-example" } })).toBeNull();
+      const other = interactiveModes.find(candidate => candidate !== mode)!;
+      expect(validated({ ...fixture, previewIds: { ...fixture.previewIds, [mode]: fixture.previewIds[other] } })).toBeNull();
+    }
+    expect(validated({ ...fixture, previewIds: { ...fixture.previewIds, unexpected: "preview-rapid-swipe" } })).toBeNull();
+  });
+  it("rejects duplicate choice IDs, missing answers and normalized duplicate labels in every choice mode", () => {
+    for (const mode of ["odd-one-out", "cause-effect", "tap-the-flaw"] as const) {
+      const original = makeExample(mode, "paid");
+      for (const overrides of [
+        { options: [{ id: "a", label: "A" }, { id: "a", label: "B" }] },
+        { correctOptionId: "missing" },
+        { options: [{ id: "a", label: "  Ａlpha  Beta " }, { id: "b", label: "alpha\t beta" }] },
+        { options: [{ id: "a", label: "Café" }, { id: "b", label: "Cafe\u0301" }] },
+      ]) {
+        expect(validated({ ...fixture, examples: fixture.examples.map(item => item.id === original.id ? { ...original, ...overrides } : item) })).toBeNull();
+      }
+    }
+  });
+  it("accepts renderer-compatible legacy and named before/after examples and fails closed on leaks", () => {
+    const original = makeExample("before-after", "paid");
+    const validate = (overrides: Record<string, unknown>) => validated({ ...fixture, examples: fixture.examples.map(item => item.id === original.id ? { ...original, ...overrides } : item) });
+    expect(validate({ correctAnswer: "after" })).not.toBeNull();
+    const named = { options: ["Screening", "Sedimentation"], correctAnswer: " SEDIMENTATION ", prompt: "Which stage is earlier?" };
+    expect(validate(named)).not.toBeNull();
+    expect(validate({ ...named, options: [...named.options].reverse() })).not.toBeNull();
+    for (const override of [
+      { options: ["Screening"] }, { options: ["Screening", "Sedimentation", "Filtration"] },
+      { options: ["Screening", " SCREENING "] }, { options: ["Café", "Cafe\u0301"] },
+      { correctAnswer: "missing" }, { options: ["Café", "Tea"], correctAnswer: "Cafe\u0301" },
+      { prompt: "The correct answer is Sedimentation" }, { instruction: "Consider SCREENING." },
+      { prompt: "Water → stage A → stage B" }, { instruction: "First A then B" },
+      { options: [{ id: "a", label: "Screening" }, { id: "b", label: "Sedimentation" }], correctOptionId: "a" },
+    ]) expect(validate({ ...named, ...override })).toBeNull();
+    expect(validate({ prompt: "The answer is before", correctAnswer: "before" })).toBeNull();
+    expect(validate({ prompt: "Water → stage A → stage B", correctAnswer: "before" })).toBeNull();
+    expect(validate({ prompt: "Is stage A before or after stage B?", correctAnswer: "before" })).not.toBeNull();
+  });
+  it("accepts every synthetic converted example as a renderer-compatible package", () => {
+    const drafts = interactiveModes.flatMap(mode => ["paid", "preview"].map(kind => {
+      const item = { id: `${kind}-${mode}`, mode, prompt: `Question ${kind} ${mode}`, explanation: "Synthetic explanation", sources: ["Synthetic citation"], options: [] as string[], pairs: [] as { left: string; right: string }[], answer: "" };
+      if (mode === "rapid-swipe") item.answer = "true";
+      else if (mode === "speed-match") { item.answer = "Match the pairs"; item.pairs = [{ left: "A", right: "One" }, { left: "B", right: "Two" }, { left: "C", right: "Three" }]; }
+      else if (mode === "before-after") { item.options = ["Screening", "Sedimentation"]; item.answer = " sedimentation "; }
+      else { item.options = ["Alpha", "Beta"]; item.answer = "Beta"; }
+      return item;
+    }));
+    const converted = validatePack(drafts);
+    expect(converted.valid).toBe(true);
+    expect(converted.provenance).toHaveLength(drafts.length);
+    const parsed = validated({ ...fixture, examples: converted.examples });
+    expect(parsed).not.toBeNull();
+    expect(parsed?.examples.find(item => item.id === "paid-before-after")).toMatchObject({ options: ["Screening", "Sedimentation"], correctAnswer: "sedimentation" });
+  });
+  it("requires at least three pairs and independently rejects duplicate IDs, left labels and right labels", () => {
+    const original = makeExample("speed-match", "paid");
+    const good = [
+      { id: "a", left: "Left A", right: "Right A" },
+      { id: "b", left: "Left B", right: "Right B" },
+      { id: "c", left: "Left C", right: "Right C" },
+    ];
+    const variants = [good.slice(0, 2),
+      [good[0], { ...good[1], id: "a" }, good[2]],
+      [good[0], { ...good[1], left: "  LEFT   A " }, good[2]],
+      [good[0], { ...good[1], right: "Ｒight A" }, good[2]],
+    ];
+    for (const pairs of variants) {
+      expect(validated({ ...fixture, examples: fixture.examples.map(item => item.id === original.id ? { ...original, pairs } : item) })).toBeNull();
+    }
+    // The same label on opposite sides is not ambiguous within either column.
+    const crossSide = [good[0], { ...good[1], right: "Left A" }, good[2]];
+    expect(validated({ ...fixture, examples: fixture.examples.map(item => item.id === original.id ? { ...original, pairs: crossSide } : item) })).not.toBeNull();
+  });
+});
+
+// Exercise tRPC's real Node HTTP adapter and headers without binding a socket.
+async function httpRequest(method: "GET" | "POST", input: unknown, rawBody?: string) {
+  const req = Object.assign(new EventEmitter(), {
+    method, url: "/getContent", headers: { host: "localhost", "content-type": "application/json" },
+    ...(method === "POST" ? { body: rawBody ?? { json: input } } : {}),
+  });
+  class Response extends EventEmitter {
+    statusCode = 200;
+    headersSent = false;
+    headers = new Map<string, string>();
+    chunks: Uint8Array[] = [];
+    setHeader(name: string, value: string) { this.headers.set(name.toLowerCase(), value); return this; }
+    write(chunk: Uint8Array) { this.chunks.push(chunk); return true; }
+    end() { this.emit("finish"); }
+  }
+  const res = new Response();
+  await nodeHTTPRequestHandler({
+    req: req as never, res: res as never, path: "getContent", router: interactiveRouter,
+    createContext: () => ({ ...ctx, req: req as never, res: res as never }),
+  });
+  return res;
+}
+
+describe("HTTP transport", () => {
+  it("accepts POST and rejects GET for the mutation", async () => {
+    expect((await httpRequest("POST", { courseKey: "class1-water", accessToken: "test-token" })).statusCode).toBe(200);
+    expect((await httpRequest("GET", {})).statusCode).toBe(405);
+  });
+  it("sends private no-store on anonymous, token, validation, course and invalid-artifact responses", async () => {
+    const success = await httpRequest("POST", { courseKey: "class1-water" });
+    const token = await httpRequest("POST", { courseKey: "class1-water", accessToken: "arbitrary-token" });
+    const invalid = await httpRequest("POST", { courseKey: "class1-water", accessToken: "x".repeat(8193) });
+    const course = await httpRequest("POST", { courseKey: "unknown" });
+    vi.mocked(loadRegistration).mockImplementation(key => inspectInteractiveRegistration(key, { approved: true, content: { ...fixture, status: "draft" } }));
+    const failure = await httpRequest("POST", { courseKey: "class1-water" });
+    expect([success.statusCode, token.statusCode, invalid.statusCode, course.statusCode, failure.statusCode]).toEqual([200, 200, 400, 400, 500]);
+    for (const response of [success, token, invalid, course, failure]) expect(response.headers.get("cache-control")).toBe("private, no-store");
+    expect(resolveAccessForRequest).not.toHaveBeenCalled();
+  });
+  it("only signals legacy fallback for an absent package, never an invalid registration", async () => {
+    const warning = vi.spyOn(console, "warn").mockImplementation(() => {});
+    try {
+      const absent = await httpRequest("POST", { courseKey: "class1-ww" });
+      expect(absent.statusCode).toBe(200);
+      const absentBody = Buffer.concat(absent.chunks).toString();
+      expect(absentBody).toContain('"available":false');
+      vi.mocked(loadRegistration).mockImplementation(key => inspectInteractiveRegistration(key, {
+        approved: true, content: { ...fixture, status: "draft", version: "private-version", examples: [{ answer: "private-answer" }] },
+      }));
+      const invalid = await httpRequest("POST", { courseKey: "class1-water", accessToken: "private-token" });
+      const body = Buffer.concat(invalid.chunks).toString();
+      expect(invalid.statusCode).toBe(500);
+      expect(invalid.headers.get("cache-control")).toBe("private, no-store");
+      expect(body).toContain("Interactive content is unavailable.");
+      for (const secret of ["private-version", "private-answer", "private-token", '"available":false', '"examples"']) expect(body).not.toContain(secret);
+      expect(warning).not.toHaveBeenCalled();
+    } finally { warning.mockRestore(); }
+  });
+  it("sets no-store for malformed JSON but documents GET rejection before middleware", async () => {
+    const wrongMethod = await httpRequest("GET", {});
+    const invalidJson = await httpRequest("POST", {}, "{");
+    expect([wrongMethod.statusCode, invalidJson.statusCode]).toEqual([405, 400]);
+    expect(wrongMethod.headers.get("cache-control")).toBeUndefined();
+    expect(invalidJson.headers.get("cache-control")).toBe("private, no-store");
+  });
+});

@@ -18,16 +18,15 @@
 
 import { z } from "zod";
 import crypto from "crypto";
-import { eq, and, gt, isNull } from "drizzle-orm";
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
-import { magicLinks } from "../../drizzle/schema";
 import { sendMagicLinkEmail } from "../email";
 import { issueSubscriptionToken } from "../_core/subscriptionToken";
 import { resolveEntitlementsByEmail, normalizeEmail } from "../_core/access";
 import { ENV } from "../_core/env";
 import { trackEvent } from "../analytics";
 import { issueVerifiedEmailSessionCookie } from "../_core/emailSession";
+import { consumeMagicLinkAtomically } from "../auth/atomicVerification";
 
 const MAGIC_LINK_EXPIRY_MINUTES = 15;
 
@@ -80,32 +79,13 @@ export const magicLinkRouter = router({
       const db = await getDb();
       if (!db) return { valid: false, email: "", examTypes: [] as string[], accessToken: "", isManager: false };
 
-      const now = new Date();
-
       // Hash the incoming token and look up by hash — the raw token is never stored
       const incomingHash = crypto.createHash("sha256").update(input.token).digest("hex");
-
-      // Find the token by hash
-      const [link] = await db
-        .select()
-        .from(magicLinks)
-        .where(
-          and(
-            eq(magicLinks.tokenHash, incomingHash),
-            gt(magicLinks.expiresAt, now),
-            isNull(magicLinks.usedAt),
-          )
-        )
-        .limit(1);
+      const link = await consumeMagicLinkAtomically(db, incomingHash);
 
       if (!link) {
         return { valid: false, email: "", examTypes: [] as string[], accessToken: "", isManager: false };
       }
-
-      // Mark as used immediately to prevent replay
-      await db.update(magicLinks)
-        .set({ usedAt: now })
-        .where(eq(magicLinks.id, link.id));
 
       // Re-resolve live entitlements — do not use the stored examTypes snapshot.
       // The snapshot was taken at request time; by consume time the user may have

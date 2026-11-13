@@ -1,6 +1,7 @@
 // ProcessMap.tsx — Unified Drinking Water Treatment Process Diagram
 // Snake layout (row 1 left→right, row 2 right→left), clean proportioned arrows
 
+import { svgButtonProps } from "@/lib/svgButton";
 import { STEPS } from "@/lib/processData";
 
 interface ProcessMapProps {
@@ -81,7 +82,7 @@ export default function ProcessMap({ onStepClick, activeStepId }: ProcessMapProp
         @keyframes pmSnakeFlow { from { stroke-dashoffset: 20 } to { stroke-dashoffset: 0 } }
         .pm-snake-pipe { animation: pmSnakeFlow 0.75s linear infinite; }
         .pm-snake-node { cursor: pointer; }
-        .pm-snake-node:hover .pm-snake-card { filter: brightness(1.07) drop-shadow(0 6px 18px rgba(0,0,0,0.15)) !important; }
+        .pm-snake-node:focus-visible .pm-snake-card, .pm-snake-node:hover .pm-snake-card { filter: brightness(1.07) drop-shadow(0 6px 18px rgba(0,0,0,0.15)) !important; }
       `}</style>
       <svg
         viewBox={`0 0 ${totalW} ${totalH}`}
@@ -139,7 +140,7 @@ export default function ProcessMap({ onStepClick, activeStepId }: ProcessMapProp
           const twoLine = step.label.length > 13 && words.length > 1;
 
           return (
-            <g key={step.id} className="pm-snake-node" onClick={() => onStepClick(step.id)} transform={`translate(${x},${y})`}>
+            <g key={step.id} {...svgButtonProps(step.label, isActive, () => onStepClick(step.id))} className="pm-snake-node process-label-button" transform={`translate(${x},${y})`}>
               {isActive && (
                 <rect x={-5} y={-5} width={SW + 10} height={SH + 10} rx={22}
                   fill="none" stroke={step.color} strokeWidth={3} opacity={0.4} />

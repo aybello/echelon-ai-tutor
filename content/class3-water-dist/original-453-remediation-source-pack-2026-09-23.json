@@ -1,0 +1,174 @@
+{
+  "title": "Controlled source pack for Class 3 Water Distribution remediation",
+  "bankKey": "class3-water-dist",
+  "retrievedAt": "2026-09-23T03:38:14Z",
+  "authoringRules": [
+    "Use only the source keys in this pack for source metadata.",
+    "Do not invent a statute, regulation section, numeric threshold, test interval, chemical dose, contact time, certification requirement, or manufacturer practice.",
+    "If no source directly supports a specific numeric or regulatory claim, rewrite the item to test a supported qualitative principle instead.",
+    "Use Ontario sources for Ontario regulatory or operational claims. Do not cite a general technical source as Ontario law.",
+    "Each item must have one best answer, four parallel and plausible options, a concise explanation, a source title, source reference, source URL, and a blueprint objective.",
+    "Avoid absolute claims such as always, never, only, or must unless the cited source makes that claim.",
+    "Do not include a source citation in learner-facing question text or answer options. Source metadata supports internal governance.",
+    "Use the WPI blueprint only to describe the topic objective. It is not factual evidence for the answer."
+  ],
+  "sources": [
+    {
+      "key": "ON_DISTRIBUTION",
+      "title": "Ontario Design Guidelines for Drinking-Water Systems: Instrumentation, Control and Distribution Systems",
+      "url": "https://www.ontario.ca/document/design-guidelines-drinking-water-systems/instrumentation-control-and-distribution-systems",
+      "permittedClaims": [
+        "High-quality distribution systems provide continuous potable supply at adequate pressure and seek to minimize water age, dead ends, and customer inconvenience during repairs.",
+        "Positive pressure should be maintained to prevent contaminant intrusion.",
+        "Water age, flow, pipe condition, and deposited materials affect distribution-system water quality.",
+        "Interconnections and pressure zones require consideration of water quality and upstream and downstream pressure impacts.",
+        "Hydraulic analysis supports water-main sizing and pressure assessment.",
+        "At maximum day demand plus fire flow, the recommended minimum ground-level pressure is 140 kPa; normal operating pressure is approximately 350 to 480 kPa and should not be below 275 kPa; maximum pressure should not exceed 700 kPa without pressure reduction.",
+        "Rapid valve operation, pump starts, pump shutdowns, and power failures can create transient pressures."
+      ],
+      "restrictions": [
+        "These are design guidelines, not a substitute for a utility-specific operating procedure or an enforceable regulation.",
+        "Do not infer a specific municipal practice or maintenance interval from this source."
+      ]
+    },
+    {
+      "key": "ON_PUMPING_STORAGE",
+      "title": "Ontario Design Guidelines for Drinking-Water Systems: Pumping Facilities and Treated Water Storage",
+      "url": "https://www.ontario.ca/document/design-guidelines-drinking-water-systems/pumping-facilities-and-treated-water-storage",
+      "permittedClaims": [
+        "Treated-water and booster pumping stations should have appropriate firm capacity considering available pressure-zone storage and source conditions.",
+        "Pumping facilities should support water quality by minimizing retention time and maintaining appropriate flows and velocities.",
+        "Pumps, level instruments, controls, pressure, flow, storage level, and operating records are relevant to safe assessment of pumping and storage performance.",
+        "Treated-water storage should help minimize on-off cycling of treated-water pumps.",
+        "A standpipe with a booster station may have an equalization volume related to maintaining pressure in the system."
+      ],
+      "restrictions": [
+        "Do not claim a universal wet-well volume, pump start limit, generator run interval, or NPSH margin unless it is expressly provided by another source.",
+        "Do not treat a standpipe as a surge tank."
+      ]
+    },
+    {
+      "key": "ON_WATERMAIN_DISINFECTION",
+      "title": "Ontario Watermain Disinfection Procedure",
+      "url": "https://www.ontario.ca/page/water-main-disinfection-procedure",
+      "permittedClaims": [
+        "For a new watermain, tablet or continuous-feed disinfection requires at least 24 hours at an initial chlorine concentration of at least 25 mg/L.",
+        "For a new watermain, slug disinfection requires at least 3 hours at an initial chlorine concentration of at least 100 mg/L.",
+        "For a new watermain, spray disinfection requires at least 30 minutes at an initial chlorine concentration of at least 200 mg/L.",
+        "An isolated section that did not maintain the specified disinfectant residual requires a re-commissioning plan that at minimum includes flushing and satisfactory microbiological results before return to service.",
+        "Watermain breaks are Category 2 unless an Operator-in-Charge visually inspects and classifies the break as Category 1 based on the procedure."
+      ],
+      "restrictions": [
+        "Distinguish new-watermain procedures from emergency repair procedures.",
+        "Do not substitute an AWWA method, concentration, or contact time for the Ontario procedure."
+      ]
+    },
+    {
+      "key": "ON_CONF_SPACE",
+      "title": "O. Reg. 632/05: Confined Spaces",
+      "url": "https://www.ontario.ca/laws/regulation/050632",
+      "permittedClaims": [
+        "Acceptable oxygen content is at least 19.5 percent and not more than 23 percent by volume.",
+        "A separate entry permit is required before work is performed in a confined space.",
+        "An entry permit includes identified hazards, controls, equipment, rescue information, and atmospheric test results.",
+        "Adequate atmospheric tests must be performed as often as necessary before and while workers are in the confined space to ensure acceptable atmospheric levels are maintained.",
+        "Testing must use calibrated instruments appropriate for the identified hazards."
+      ],
+      "restrictions": [
+        "Do not state that continuous monitoring is required in every confined-space situation."
+      ]
+    },
+    {
+      "key": "ON_CONSTRUCTION",
+      "title": "O. Reg. 213/91: Construction Projects",
+      "url": "https://www.ontario.ca/laws/regulation/910213",
+      "permittedClaims": [
+        "Water mains are included in the regulation's definition of conduit.",
+        "Excavation work is governed by Part III of the Construction Projects regulation, including requirements concerning entry, soil types, precautions, general requirements, and support systems.",
+        "A competent worker is qualified by knowledge, training, and experience, is familiar with applicable occupational health and safety requirements, and knows the potential or actual dangers related to the work."
+      ],
+      "restrictions": [
+        "Do not invent trench-depth, slope, shoring, or protective-system thresholds without a direct verified citation."
+      ]
+    },
+    {
+      "key": "ON_DWQ_STANDARDS",
+      "title": "O. Reg. 169/03: Ontario Drinking Water Quality Standards",
+      "url": "https://www.ontario.ca/laws/regulation/030169",
+      "permittedClaims": [
+        "E. coli is not detectable under the microbiological standard.",
+        "Total coliforms are not detectable under the microbiological standard.",
+        "Where water does not meet a standard, the regulation describes immediate contact with the medical officer of health and directed steps, and links corrective action to O. Reg. 170/03 schedules."
+      ],
+      "restrictions": [
+        "Do not use this source to claim that a cross-connection program is mandated by O. Reg. 170/03.",
+        "Do not state an adverse-result notification workflow beyond the text in this source."
+      ]
+    },
+    {
+      "key": "ON_OPERATOR_CERTIFICATION",
+      "title": "O. Reg. 128/04: Certification of Drinking Water System Operators and Water Quality Analysts",
+      "url": "https://www.ontario.ca/laws/regulation/040128",
+      "permittedClaims": [
+        "A municipal residential subsystem must have an overall responsible operator holding a certificate for the subsystem type and class equal to or higher than the subsystem class.",
+        "Class III certificate qualifications include passing an approved examination, holding the relevant Class II certificate, and specified education and experience requirements."
+      ],
+      "restrictions": [
+        "Do not create questions about an exact applicant profile unless the full regulatory text directly supports every condition used."
+      ]
+    },
+    {
+      "key": "EPA_EPANET",
+      "title": "EPA EPANET: Application for Modeling Drinking Water Distribution Systems",
+      "url": "https://www.epa.gov/water-research/epanet",
+      "permittedClaims": [
+        "EPANET models pressurized pipe networks with pipes, junctions, pumps, valves, tanks, and reservoirs.",
+        "It can model pressure, flow, tank level, water age, water quality, pumps, valves, friction head loss, minor losses, and pressure-dependent demands.",
+        "Hydraulic modeling can support planning, pump and tank operations, water quality assessment, fire-flow analysis, emergency preparation, and model calibration."
+      ],
+      "restrictions": [
+        "Use basic hydraulic equations only where they are shown in the item and can be independently checked.",
+        "Do not cite EPANET as an Ontario regulatory source."
+      ]
+    },
+    {
+      "key": "EPA_WATER_AGE",
+      "title": "EPA Distribution System Water Quality: Protecting Water Quality Through Water Age Management",
+      "url": "https://www.epa.gov/system/files/documents/2022-04/ds-toolbox-fact-sheets_water-age-mgt_final-508_revised.pdf",
+      "permittedClaims": [
+        "Water age is the time water spends in the distribution system before use.",
+        "Excessive water age can contribute to disinfectant residual consumption, DBP formation, microbial growth, sediment, and water-quality deterioration.",
+        "Dead ends, closed valves, poor circulation, oversized assets, and thermal stratification can increase water age.",
+        "Useful operational responses include residual monitoring, water-quality or hydraulic modeling, controlled flushing, optimizing tank and pumping operations, and checking valve positions."
+      ],
+      "restrictions": [
+        "Do not use this U.S. guidance to assert Ontario legal requirements."
+      ]
+    },
+    {
+      "key": "AWWA_WATER_LOSS",
+      "title": "AWWA Water Loss Control",
+      "url": "https://www.awwa.org/resource/water-loss-control/",
+      "permittedClaims": [
+        "Real losses arise from pipeline leakage.",
+        "Apparent losses occur when customer consumption is not properly measured or billed.",
+        "The IWA/AWWA water-audit method is a best-practice tool used to manage water loss and revenue recovery.",
+        "A water audit is a rational starting point for water-loss control and leakage-management decisions."
+      ],
+      "restrictions": [
+        "Do not use non-revenue water and unaccounted-for water as interchangeable terms unless the item defines its terminology."
+      ]
+    },
+    {
+      "key": "WPI_CLASS3_TOPIC_MAP",
+      "title": "Water Professionals International Class III Water Distribution Need-to-Know Criteria",
+      "url": "https://gowpi.org/wp-content/uploads/2026/04/WaterDistribution-%E2%80%93-Class-3_mh-fin.pdf",
+      "permittedClaims": [
+        "Use only to map the question to a Class III distribution subject area such as components, operation and maintenance, water quality, safety, administration, or public interactions."
+      ],
+      "restrictions": [
+        "This source does not establish the factual correctness of an answer."
+      ]
+    }
+  ]
+}

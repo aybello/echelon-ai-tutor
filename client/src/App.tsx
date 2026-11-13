@@ -1,13 +1,18 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Route, Switch, Redirect } from "wouter";
+import { Route, Switch, Redirect, useLocation, useSearch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { trpc } from "@/lib/trpc";
 import PhoneCollectionModal from "./components/PhoneCollectionModal";
-import { QuestionBankPrefetcher } from "./components/QuestionBankPrefetcher";
+import MarketingPageViewTracker from "./components/MarketingPageViewTracker";
+import GoogleAdsMeasurement from "./components/GoogleAdsNotice";
 import { useAuth } from "./_core/hooks/useAuth";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useLayoutEffect } from "react";
+import { isNovaScotiaCourseSurface, isNovaScotiaPathSupported } from "@shared/novaScotiaPreparation";
+import { funnelProvince } from "@shared/funnelNavigation";
+import { findEquipment } from "@shared/equipmentRegistry";
+import { useProvince } from "@/hooks/useProvince";
 import Landing from "./pages/Landing";
 
 // ── Lazy-loaded pages (code splitting) ───────────────────────────────────────
@@ -27,6 +32,8 @@ const ProcessControl = lazy(() => import("./pages/ProcessControl"));
 const ChemCalc = lazy(() => import("./pages/ChemCalc"));
 const MathPractice = lazy(() => import("./pages/MathPractice"));
 const Lab = lazy(() => import("./pages/Lab"));
+const EquipmentLab = lazy(() => import("./pages/EquipmentLab"));
+const EquipmentDetail = lazy(() => import("./pages/EquipmentDetail"));
 const IncidentCommand = lazy(() => import("./pages/IncidentCommand"));
 const Formulas = lazy(() => import("./pages/Formulas"));
 const About = lazy(() => import("./pages/About"));
@@ -46,6 +53,8 @@ const PurchaseSuccess = lazy(() => import("./pages/PurchaseSuccess"));
 const SubscriptionSuccess = lazy(() => import("./pages/SubscriptionSuccess"));
 const WpiLanding = lazy(() => import("./pages/WpiLanding"));
 const OitHub = lazy(() => import("./pages/OitHub"));
+const InteractiveLearning = lazy(() => import("./pages/InteractiveLearning"));
+const CourseInteractiveLearning = lazy(() => import("./pages/CourseInteractiveLearning"));
 const MagicLinkConsume = lazy(() => import("./pages/MagicLinkConsume"));
 const OtpLogin = lazy(() => import("./pages/OtpLogin"));
 const Teams = lazy(() => import("./pages/Teams"));
@@ -119,7 +128,9 @@ const FormulasWW2 = lazy(() => import("./pages/FormulasWW2"));
 const FormulasWW3 = lazy(() => import("./pages/FormulasWW3"));
 const FormulasWW4 = lazy(() => import("./pages/FormulasWW4"));
 const FormulasWQA = lazy(() => import("./pages/FormulasWQA"));
-
+const ContinuingEducation = lazy(() => import("./pages/ContinuingEducation"));
+const ContinuingEducationCourse = lazy(() => import("./pages/ContinuingEducationCourse"));
+const CeuOperatorLessonDemo = lazy(() => import("./pages/CeuOperatorLessonDemo"));
 // WPI Class 1
 const WpiClass1WaterQuiz = lazy(() => import("./pages/WpiClass1WaterQuiz"));
 const WpiClass1WaterMockExam = lazy(() => import("./pages/WpiClass1WaterMockExam"));
@@ -130,7 +141,20 @@ const WpiClass1WaterDistMockExam = lazy(() => import("./pages/WpiClass1WaterDist
 const WpiClass1WaterCollQuiz = lazy(() => import("./pages/WpiClass1WaterCollQuiz"));
 const WpiClass1WaterCollMockExam = lazy(() => import("./pages/WpiClass1WaterCollMockExam"));
 const FormulasWpiClass1 = lazy(() => import("./pages/FormulasWpiClass1"));
+const FormulasUsClass1 = lazy(() => import("./pages/FormulasUsClass1"));
 const FormulasWpiClass1Ww = lazy(() => import("./pages/FormulasWpiClass1Ww"));
+
+// US Class I (dedicated US-authored banks, separate from the Canadian WPI courses)
+const UsClass1WaterQuiz = lazy(() => import("./pages/UsClass1WaterQuiz"));
+const UsClass1WaterMockExam = lazy(() => import("./pages/UsClass1WaterMockExam"));
+const UsClass1WaterFlashcards = lazy(() => import("./pages/UsClass1WaterFlashcards"));
+const UsClass1WaterDistQuiz = lazy(() => import("./pages/UsClass1WaterDistQuiz"));
+const UsClass1WaterDistMockExam = lazy(() => import("./pages/UsClass1WaterDistMockExam"));
+const UsClass1WaterDistFlashcards = lazy(() => import("./pages/UsClass1WaterDistFlashcards"));
+const UsTexasClassDQuiz = lazy(() => import("./pages/UsTexasClassDQuiz"));
+const UsTexasClassDMockExam = lazy(() => import("./pages/UsTexasClassDMockExam"));
+const UsTexasClassDFlashcards = lazy(() => import("./pages/UsTexasClassDFlashcards"));
+const FormulasUsTexasClassD = lazy(() => import("./pages/FormulasUsTexasClassD"));
 
 // WPI Class 2
 const WpiClass2WaterQuiz = lazy(() => import("./pages/WpiClass2WaterQuiz"));
@@ -227,11 +251,8 @@ const Class4WastewaterCollFlashcards = lazy(() => import("./pages/Class4Wastewat
 // ── Page loading fallback ─────────────────────────────────────────────────────
 function PageLoader() {
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-      <div className="flex flex-col items-center gap-3">
-        <div className="w-8 h-8 border-2 border-teal-500 border-t-transparent rounded-full animate-spin" />
-        <p className="text-sm text-slate-500 font-medium">Loading…</p>
-      </div>
+    <div className="app-loading" role="status" aria-label="Loading page">
+      <span className="app-loading-spinner" aria-hidden="true" />
     </div>
   );
 }
@@ -240,10 +261,12 @@ function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Suspense fallback={<PageLoader />}>
+      <MarketingPageViewTracker />
       <Switch>
         <Route path={"/"} component={Landing} />
         <Route path={"/quiz"} component={Home} />
         <Route path={"/oit"} component={OitHub} />
+        <Route path={"/interactive-learning"} component={InteractiveLearning} />
         <Route path={"/guides"} component={Guides} />
         <Route path={"/process"} component={Process} />
         <Route path={"/wastewater"} component={Wastewater} />
@@ -254,6 +277,17 @@ function Router() {
         <Route path={"/chem-calc"} component={ChemCalc} />
         <Route path={"/math-practice"} component={MathPractice} />
         <Route path={"/lab"} component={Lab} />
+        <Route path={"/equipment-lab"} component={EquipmentLab} />
+        <Route path={"/equipment-lab/:slug"}>
+          {(params: { slug: string }) => {
+            const unit = findEquipment(params.slug);
+            return unit ? (
+              <EquipmentDetail equipment={unit} />
+            ) : (
+              <Redirect to="/equipment-lab" />
+            );
+          }}
+        </Route>
         <Route path={"/command"} component={IncidentCommand} />
         <Route path={"/formulas"} component={Formulas} />
         <Route path={"/about"} component={About} />
@@ -291,7 +325,18 @@ function Router() {
         <Route path={"/formulas-ww4"} component={FormulasWW4} />
         <Route path={"/wpi-class1-water"} component={WpiClass1WaterQuiz} />
         <Route path={"/wpi-class1-water-mock"} component={WpiClass1WaterMockExam} />
+        <Route path={"/us-class1-water"} component={UsClass1WaterQuiz} />
+        <Route path={"/us-class1-water-mock"} component={UsClass1WaterMockExam} />
+        <Route path={"/us-class1-water-flashcards"} component={UsClass1WaterFlashcards} />
+        <Route path={"/us-class1-water-dist"} component={UsClass1WaterDistQuiz} />
+        <Route path={"/us-class1-water-dist-mock"} component={UsClass1WaterDistMockExam} />
+        <Route path={"/us-class1-water-dist-flashcards"} component={UsClass1WaterDistFlashcards} />
+        <Route path={"/us-texas-class-d-water"} component={UsTexasClassDQuiz} />
+        <Route path={"/us-texas-class-d-water-mock"} component={UsTexasClassDMockExam} />
+        <Route path={"/us-texas-class-d-water-flashcards"} component={UsTexasClassDFlashcards} />
+        <Route path={"/formulas-us-texas-class-d-water"} component={FormulasUsTexasClassD} />
         <Route path={"/formulas-wpi-class1"} component={FormulasWpiClass1} />
+        <Route path={"/formulas-us-class1"} component={FormulasUsClass1} />
         <Route path={"/wpi-class2-water"} component={WpiClass2WaterQuiz} />
         <Route path={"/wpi-class2-water-mock"} component={WpiClass2WaterMockExam} />
         <Route path={"/wpi"} component={WpiLanding} />
@@ -403,6 +448,9 @@ function Router() {
         <Route path={"/electrician-309a-flashcards"} component={Electrician309AFlashcards} />
         <Route path={"/admin"} component={Admin} />
         <Route path={"/pricing"} component={Pricing} />
+        <Route path={"/continuing-education-demo"} component={CeuOperatorLessonDemo} />
+        <Route path={"/continuing-education/:courseKey"} component={ContinuingEducationCourse} />
+        <Route path={"/continuing-education"} component={ContinuingEducation} />
         <Route path={"/purchase-success"} component={PurchaseSuccess} />
         <Route path={"/subscription-success"} component={SubscriptionSuccess} />
         <Route path={"/account"} component={Account} />
@@ -426,6 +474,7 @@ function Router() {
         <Route path={"/terms"} component={Terms} />
         <Route path={"/refund"} component={Refund} />
         <Route path={"/faq"} component={FAQ} />
+        <Route path={"/courses/:courseKey/interactive"} component={CourseInteractiveLearning} />
         <Route path={"/courses/:courseKey"} component={SeoLandingPage} />
         <Route path={"/canada/:regionSlug"} component={SeoLandingPage} />
         {/* US Expansion routes */}
@@ -438,6 +487,31 @@ function Router() {
       </Switch>
     </Suspense>
   );
+}
+
+/** Keeps a Nova Scotia course context inside the published 2017 ABC exam scope. */
+function NovaScotiaCourseGuard() {
+  const [location, navigate] = useLocation();
+  const search = useSearch();
+  const { province: savedProvince } = useProvince();
+
+  useLayoutEffect(() => {
+    const routeProvince = funnelProvince(new URLSearchParams(search).get("province"));
+    const activeProvince = routeProvince ?? savedProvince?.toUpperCase();
+    if (activeProvince !== "NS") return;
+    if (!isNovaScotiaCourseSurface(location)) return;
+    if (!isNovaScotiaPathSupported(location)) {
+      navigate("/?province=NS#find-course", { replace: true });
+      return;
+    }
+    if (!routeProvince) {
+      const nextSearch = new URLSearchParams(search);
+      nextSearch.set("province", "NS");
+      navigate(`${location}?${nextSearch.toString()}`, { replace: true });
+    }
+  }, [location, navigate, savedProvince, search]);
+
+  return <Router />;
 }
 
 /**
@@ -460,19 +534,23 @@ function PhoneGate() {
 }
 
 function App() {
+  useLayoutEffect(() => {
+    window.dispatchEvent(new Event("echelon:app-ready"));
+  }, []);
+
   return (
-    <ErrorBoundary>
+    <ErrorBoundary recoverModuleErrors>
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
-          <div className="page-enter">
+          <GoogleAdsMeasurement />
+          <div className="echelon-system-shell page-enter">
             {/* <main> landmark for accessibility — required by WCAG 2.1 */}
             <main>
-              <Router />
+              <NovaScotiaCourseGuard />
             </main>
           </div>
           <PhoneGate />
-          <QuestionBankPrefetcher />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

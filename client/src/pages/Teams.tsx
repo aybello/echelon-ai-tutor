@@ -1,402 +1,276 @@
-/**
- * Teams.tsx — Public "Echelon for Teams" buy page.
- * Clean white premium theme — bold blue/teal hero, white body, Stripe-style.
- */
-
-import { useState, useMemo } from "react";
+import { useMemo, useState } from "react";
+import { useLocation } from "wouter";
+import { Building2, CheckCircle2, Users, FileText, FlaskConical, CalendarClock, ArrowRight } from "lucide-react";
 import {
   type TeamStreamTier,
-  TEAM_BASE_PRICE,
+  type TeamRegion,
+  TEAM_REGION_LABELS,
+  TEAM_REGION_VALUES,
+  isTeamRegion,
+  getTeamStreamDescription,
+  getTeamStreamLabel,
   TEAM_VOLUME_TIERS,
-  getTeamVolumeTier,
-  getTeamEffectiveSeatPriceCents,
+  formatTeamPriceCAD,
+  getTeamBasePriceCents,
   getTeamEffectiveDiscountPct,
+  getTeamEffectiveSeatPriceCents,
   getTeamSavingsCents,
   getTeamTotalPriceCents,
-  formatTeamPriceCAD,
+  getTeamVolumeTier,
 } from "@shared/teamPricing";
 import { trpc } from "@/lib/trpc";
+import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
+import { getMarketingAttribution } from "@/lib/marketingAnalytics";
+import { readCheckoutJurisdiction } from "@/lib/checkoutJurisdiction";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { useLocation, Link } from "wouter";
 import SiteNav from "@/components/SiteNav";
-import { Building2, CheckCircle2, Zap, Shield, BarChart3, Users, TrendingUp, Award } from "lucide-react";
+import { FlexOrderBuilder } from "@/components/FlexOrderBuilder";
+import { MUNICIPAL_CALLBACK_NOTICE } from "@shared/municipalCallback";
 
-const FEATURES = [
-  "Every certification stream and class level in your plan",
-  "AI Tutor with personalized coaching",
-  "Progress dashboard per operator",
-  "Manager dashboard with estimated study metrics",
-  "Exam date tracking and reminders",
-  "Progress-tracked flashcards",
-  "Proactive email nudges for inactive operators",
-  "Annual renewal — operator access can be deactivated and restored without losing progress",
+const ANNUAL_TIERS: TeamStreamTier[] = [
+  "stream-water",
+  "stream-wastewater",
+  "stream-water-dist",
+  "stream-wastewater-coll",
+  "all-access",
 ];
 
-import { FlexOrderBuilder } from "@/components/FlexOrderBuilder";
+const FEATURES = [
+  "Released question banks, mock exams, flashcards, and AI Tutor access",
+  "Manager dashboard for licence assignment and operator progress",
+  "Named-operator licensing with practical onboarding controls",
+  "Graduated volume pricing calculated before checkout",
+];
+
+/**
+ * A manager who already chose a province should not have to find it again on
+ * the team page. Nova Scotia and the western provinces share the WPI exam
+ * family but stay distinct regions, because Nova Scotia certifies a narrower
+ * set of distribution and collection classes.
+ */
+function readSavedTeamRegion(): TeamRegion {
+  if (typeof window === "undefined") return "ontario";
+  const jurisdiction = readCheckoutJurisdiction(window.location.search);
+  if (jurisdiction === "NS") return "nova-scotia";
+  if (jurisdiction && jurisdiction !== "ON") return "western";
+  return "ontario";
+}
 
 export default function Teams() {
-  const [planType, setPlanType] = useState<"annual" | "flex">("annual");
   const [location] = useLocation();
+  const [planType, setPlanType] = useState<"annual" | "flex">("annual");
+  const [region, setRegion] = useState<TeamRegion>(() => readSavedTeamRegion());
+  const [tier, setTier] = useState<TeamStreamTier>("all-access");
   const [seats, setSeats] = useState(5);
   const [seatInput, setSeatInput] = useState("5");
-  const [province, setProvince] = useState<"ontario" | "western">("ontario");
-  const tier: TeamStreamTier = "all-access"; // Annual Plan is always all-access at CA$399
-  const [orgName, setOrgName] = useState("");
+  const [organizationName, setOrganizationName] = useState("");
   const [managerEmail, setManagerEmail] = useState("");
-  const [loading, setLoading] = useState(false);
-
-  const volumeTier = useMemo(() => getTeamVolumeTier(seats), [seats]);
-  const seatPriceCents = useMemo(() => getTeamEffectiveSeatPriceCents(province, tier, seats), [province, seats]);
-  const effectiveDiscountPct = useMemo(() => getTeamEffectiveDiscountPct(province, tier, seats), [province, seats]);
-  const totalCents = useMemo(() => getTeamTotalPriceCents(province, tier, seats), [province, seats]);
-  const basePriceCents = 39900; // CA$399 unified price
-  const createCheckout = trpc.stripe.createTeamCheckout.useMutation();
-
-  const handleSeatsChange = (val: string) => setSeatInput(val);
-  const commitSeats = () => {
-    const n = parseInt(seatInput, 10);
-    if (!isNaN(n) && n >= 5 && n <= 500) {
-      setSeats(n);
-      setSeatInput(String(n));
+  const [inquiryOpen, setInquiryOpen] = useState<"quote" | "pilot" | null>(null);
+  const [contactName, setContactName] = useState("");
+  const [inquiryNotes, setInquiryNotes] = useState("");
+  const [callbackPhone, setCallbackPhone] = useState("");
+  const [callbackRequested, setCallbackRequested] = useState(false);
+  const [preferredCallbackTime, setPreferredCallbackTime] = useState("");
+  const [inquirySaved, setInquirySaved] = useState(false);
+  const [requestKey, setRequestKey] = useState(() => crypto.randomUUID());
+  const [honeypot, setHoneypot] = useState("");
+  const [requestReceipt, setRequestReceipt] = useState<number | null>(null);
+  const [confirmedBeforeTaxCents, setConfirmedBeforeTaxCents] = useState<number | null>(null);
+  const sendInquiry = trpc.municipal.request.useMutation({
+    onSuccess: data => {
+      setRequestReceipt(data.receiptId);
+      setConfirmedBeforeTaxCents(data.annualTotalBeforeTaxCents);
+      setInquirySaved(true);
+      toast.success("Request #" + data.receiptId + " received for staff review.");
+    },
+    onError: error => toast.error(error.message),
+  });
+  const requestInquiry = () => {
+    if (!inquiryOpen || !organizationName.trim() || !contactName.trim() || !managerEmail.includes("@")) {
+      return toast.error("Enter your organization, contact name and valid email.");
+    }
+    const common = {
+      requestKey,
+      name: contactName.trim(),
+      email: managerEmail.trim(),
+      organization: organizationName.trim().slice(0,128),
+      region,
+      notes: inquiryNotes.trim(),
+      website: honeypot,
+      phone: callbackPhone.trim(),
+      callbackRequested,
+      preferredCallbackTime: preferredCallbackTime.trim(),
+    };
+    if (inquiryOpen === "quote") {
+      sendInquiry.mutate({ ...common, kind: "quote", tier, seats });
     } else {
-      setSeatInput(String(seats));
+      sendInquiry.mutate({ ...common, kind: "pilot" });
     }
   };
 
-  const handleCheckout = async () => {
-    if (!orgName.trim()) { toast.error("Please enter your organization name."); return; }
-    if (!managerEmail.trim() || !managerEmail.includes("@")) { toast.error("Please enter a valid manager email."); return; }
-    if (seats < 5) { toast.error("Annual All-Access requires a minimum of 5 operators."); return; }
-    setLoading(true);
-    try {
-      const result = await createCheckout.mutateAsync({
-        orgName: orgName.trim(),
-        province,
-        tier,
-        seats,
-        managerEmail: managerEmail.trim().toLowerCase(),
-      });
-      if (result.url) window.location.href = result.url;
-    } catch (err: any) {
-      toast.error("Could not start checkout", { description: err.message ?? "Please try again." });
-      setLoading(false);
+  const createTeamCheckout = trpc.stripe.createTeamCheckout.useMutation({
+    onSuccess: (result) => { if (result.url) window.location.href = result.url; },
+    onError: (error) => toast.error(error.message),
+  });
+
+  const volumeTier = useMemo(() => getTeamVolumeTier(seats), [seats]);
+  const basePrice = getTeamBasePriceCents(region, tier);
+  const annualTotal = getTeamTotalPriceCents(region, tier, seats);
+  const averageSeatPrice = getTeamEffectiveSeatPriceCents(region, tier, seats);
+  const effectiveDiscount = getTeamEffectiveDiscountPct(region, tier, seats);
+  const savings = getTeamSavingsCents(region, tier, seats);
+
+  const commitSeats = () => {
+    const nextSeats = Number.parseInt(seatInput, 10);
+    if (!Number.isInteger(nextSeats) || nextSeats < 5 || nextSeats > 500) {
+      setSeatInput(String(seats));
+      toast.error("Annual Teams plans require 5 to 500 operator licences.");
+      return;
     }
+    setSeats(nextSeats);
+    setSeatInput(String(nextSeats));
+  };
+
+  const startAnnualCheckout = () => {
+    if (!organizationName.trim()) return toast.error("Enter your organization name.");
+    if (!managerEmail.trim() || !managerEmail.includes("@")) return toast.error("Enter a valid manager email.");
+    createTeamCheckout.mutate({
+      orgName: organizationName.trim(),
+      province: region,
+      tier,
+      seats,
+      managerEmail: managerEmail.trim().toLowerCase(),
+      analyticsContext: {
+        ...getMarketingAttribution("/teams"),
+        province: region,
+        visitorId: getAnonymousAnalyticsId(),
+      },
+    });
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-gray-900">
+    <div className="teams-redesign teams-redesign--public min-h-screen bg-slate-50 text-gray-900">
       <SiteNav currentPath={location} />
-
-      {/* Hero — bold gradient band */}
-      <section
-        className="px-6 pt-10 pb-14 text-center relative overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #1E3A5F 0%, #0E7490 100%)" }}
-      >
-        <div style={{
-          position: "absolute", inset: 0, pointerEvents: "none",
-          backgroundImage: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.07) 1px, transparent 0)",
-          backgroundSize: "32px 32px",
-        }} />
-        <div className="relative max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 mb-3 px-4 py-1.5 rounded-full text-sm font-semibold bg-white/15 text-white border border-white/25">
-            <Building2 className="w-3.5 h-3.5" />
-            Echelon for Teams
-          </div>
-          <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-3 text-white">
-            Train your entire crew.<br />
-            <span className="text-cyan-200">Track every operator.</span>
-          </h1>
-          <p className="text-base text-blue-100 max-w-2xl mx-auto leading-relaxed">
-            One team plan gives every operator at your utility access to Echelon's
-            question banks, AI Tutor, and progress tracking. You get a manager dashboard
-            to see who is ready and who needs attention.
-          </p>
-          <div className="flex flex-wrap justify-center gap-6 mt-6">
-            {[
-            { icon: <Users className="w-4 h-4" />, value: "Annual All-Access", label: "every stream and level" },
-            { icon: <Award className="w-4 h-4" />, value: "Course Passes", label: "3, 6, or 12 months" },
-            { icon: <TrendingUp className="w-4 h-4" />, value: "Team dashboard", label: "study progress and readiness" },
-            ].map((stat: { icon: React.ReactNode; value: string; label: string }) => (
-              <div key={stat.label} className="flex items-center gap-2 text-white/80">
-                <span className="text-cyan-200">{stat.icon}</span>
-                <span className="font-bold text-white text-lg">{stat.value}</span>
-                <span className="text-sm">{stat.label}</span>
-              </div>
-            ))}
-          </div>
-          {/* Product positioning */}
-          <div className="mt-4 flex justify-center">
-            <div className="flex items-center gap-3 bg-white/10 border border-white/20 rounded-full px-5 py-2.5 backdrop-blur-sm">
-              <Shield className="w-4 h-4 text-cyan-200" aria-hidden="true" />
-              <span className="text-white/90 text-sm font-medium">Built for <span className="font-bold text-white">utility training teams</span></span>
-            </div>
+      <section className="teams-redesign__hero px-6 text-center">
+        <div className="mx-auto max-w-4xl">
+          <div className="teams-hero-eyebrow"><Building2 aria-hidden="true" className="h-4 w-4" />Teams for utilities &amp; municipalities</div>
+          <h1>Train your crew. Track every operator.</h1>
+          <p className="teams-hero-intro">Flexible exam preparation for utilities and employers.</p>
+          <p className="teams-hero-assurance">Named operator licences · Stripe checkout and paid invoice</p>
+          <div className="teams-customer-proof">
+            <p className="teams-customer-proof-label text-sm font-semibold">Used by operators at</p>
+            <div className="teams-customer-proof-names"><strong>Utilities Kingston</strong><strong>City of Winnipeg</strong></div>
           </div>
         </div>
       </section>
 
-      {/* Main grid — white/slate body */}
-      {/* ── Plan Type Chooser ─── */}
-      <div className="max-w-4xl mx-auto px-6 pt-16 pb-8">
-        <h2 className="text-center text-2xl font-bold text-gray-900 mb-2">Choose Your Plan Type</h2>
-        <p className="text-center text-gray-500 mb-8">Select the option that fits your team's certification needs.</p>
-        <div className="grid md:grid-cols-2 gap-5">
-          <button
-            onClick={() => setPlanType("annual")}
-            className={`relative text-left p-6 rounded-2xl border-2 transition-all duration-200 ${
-              planType === "annual"
-                ? "border-[#1E3A5F] bg-[#EFF6FF] shadow-lg shadow-[#1E3A5F20]"
-                : "border-gray-200 bg-white hover:border-gray-300 hover:shadow-md"
-            }`}
-          >
-            {planType === "annual" && (
-              <div className="absolute top-4 right-4 w-6 h-6 bg-[#1E3A5F] rounded-full flex items-center justify-center">
-                <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
-              </div>
-            )}
-            <div className="text-lg font-bold text-gray-900 mb-1">Annual Plan</div>
-            <p className="text-sm text-gray-500 leading-relaxed">Every course, every stream. One price per operator per year. Best for ongoing training programs.</p>
-            <div className="mt-3 text-xs font-semibold text-[#1E3A5F] bg-blue-100 inline-block px-2.5 py-1 rounded-full">CA$399/operator/year · 5-seat minimum</div>
-          </button>
-          <button
-            onClick={() => setPlanType("flex")}
-            className={`relative text-left p-6 rounded-2xl border-2 transition-all duration-200 ${
-              planType === "flex"
-                ? "border-teal-600 bg-teal-50 shadow-lg shadow-teal-100"
-                : "border-gray-200 bg-white hover:border-gray-300 hover:shadow-md"
-            }`}
-          >
-            {planType === "flex" && (
-              <div className="absolute top-4 right-4 w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center">
-                <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
-              </div>
-            )}
-            <div className="text-lg font-bold text-gray-900 mb-1">Course Passes</div>
-            <p className="text-sm text-gray-500 leading-relaxed">Buy specific courses for specific operators. 3, 6, or 12 month terms. Best for targeted exam prep cohorts.</p>
-            <div className="mt-3 text-xs font-semibold text-teal-700 bg-teal-100 inline-block px-2.5 py-1 rounded-full">Price shown by course and term</div>
-          </button>
-        </div>
-      </div>
-
-      {planType === "flex" ? (
-        <div className="max-w-xl mx-auto px-6 pb-16">
-          <FlexOrderBuilder />
-        </div>
-      ) : (
-
-      <section className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-10 items-start">
-
-        {/* Left: Pricing calculator */}
-        <div className="bg-white rounded-2xl p-8 space-y-6 shadow-xl border border-gray-100">
-          <div>
-            <h2 className="text-xl font-bold mb-1 text-gray-900">Configure your plan</h2>
-            <p className="text-gray-500 text-sm">Graduated discounts apply only to seats inside each volume band.</p>
+      <main className="teams-redesign__content mx-auto max-w-6xl px-6 py-12">
+        <section className="teams-product-switch mx-auto mb-10">
+          <div className="teams-product-intro">
+            <h2>Choose the right team product</h2>
+            <p>Annual plans support ongoing workforce development. Flex is for a defined exam-prep cohort.</p>
           </div>
-
-          {/* Province */}
-          <div className="space-y-2">
-            <Label className="text-gray-700 font-medium">Province / Region</Label>
-            <Select value={province} onValueChange={v => setProvince(v as "ontario" | "western")}>
-              <SelectTrigger className="border-gray-300 text-gray-900 bg-white">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="ontario">Ontario (MOECP / OWWCO)</SelectItem>
-                <SelectItem value="western">Western Canada (WPI)</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          {/* All-Access badge */}
-          <div className="rounded-xl px-4 py-3 bg-gradient-to-r from-blue-50 to-teal-50 border border-blue-100">
-            <p className="text-sm font-semibold text-blue-800">All-Access — Every stream, every level</p>
-            <p className="text-xs text-gray-500 mt-0.5">Water Treatment, Wastewater Treatment, Water Distribution, Wastewater Collection — all 4 streams, Class 1–4.</p>
-          </div>
-
-          {/* Seats */}
-          <div className="space-y-2">
-            <Label className="text-gray-700 font-medium">Number of annual operator licences</Label>
-            <p className="text-xs text-gray-500 -mt-1">Each annual licence covers one operator during the contract year. Minimum 5 operators. Operator access can be deactivated and restored without losing progress.</p>
-            <div className="flex items-center gap-3">
-              <Input
-                type="number"
-                min={5}
-                max={500}
-                value={seatInput}
-                onChange={e => handleSeatsChange(e.target.value)}
-                onBlur={commitSeats}
-                onKeyDown={e => { if (e.key === "Enter") commitSeats(); }}
-                className="border-gray-300 text-gray-900 w-28"
-              />
-              <span className="text-gray-500 text-sm">operators</span>
-            </div>
-            <div className="flex gap-2 flex-wrap pt-1">
-              {[5, 10, 25, 50, 100].map(n => (
-                <button
-                  key={n}
-                  onClick={() => { setSeats(n); setSeatInput(String(n)); }}
-                  className={`px-3 py-1 rounded-full text-xs font-semibold border transition-all ${
-                    seats === n
-                      ? "text-white border-transparent"
-                      : "border-gray-200 text-gray-500 hover:border-blue-400 hover:text-[#1E3A5F]"
-                  }`}
-                  style={seats === n ? { background: "linear-gradient(135deg, #1E3A5F, #0E7490)" } : {}}
-                >
-                  {n}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Pricing display */}
-          <div className="rounded-xl p-5 space-y-3" style={{ background: "linear-gradient(135deg, #EFF6FF 0%, #ECFDF5 100%)", border: "1px solid #BFDBFE" }}>
-            <div className="flex items-center justify-between">
-              <span className="text-gray-600 text-sm">Average per operator / year</span>
-              <span className="text-2xl font-bold" style={{ color: "#0E7490" }}>{formatTeamPriceCAD(seatPriceCents)}</span>
-            </div>
-            <div className="flex items-center justify-between border-t border-blue-100 pt-3">
-              <span className="text-gray-600 text-sm">Total / year ({seats} annual licences)</span>
-              <span className="text-2xl font-bold text-gray-900">{formatTeamPriceCAD(totalCents)}</span>
-            </div>
-            {volumeTier.discountPct > 0 ? (
-              <div className="flex items-center gap-2 text-xs font-semibold text-teal-700">
-                <span className="inline-block w-2 h-2 rounded-full bg-teal-500" />
-                Blended order discount: {effectiveDiscountPct}% · the last seat is in the {volumeTier.label} band
-              </div>
-            ) : (
-              <div className="flex items-center gap-2 text-xs text-gray-400">
-                <span className="inline-block w-2 h-2 rounded-full bg-gray-300" />
-                Volume discounts begin at 10 licences and are calculated automatically.
-              </div>
-            )}
-          </div>
-
-          {/* Volume pricing table */}
-          <div className="space-y-1">
-            <p className="text-xs text-gray-400 uppercase tracking-wider font-semibold mb-2">Volume discounts</p>
-            {TEAM_VOLUME_TIERS.map(t => {
-              const discountedCents = Math.round(basePriceCents * (1 - t.discountPct / 100));
-              return (
-                <div
-                  key={t.label}
-                  className={`flex justify-between text-sm px-3 py-2 rounded-lg transition-colors ${
-                    t === volumeTier ? "font-semibold" : "text-gray-500"
-                  }`}
-                  style={t === volumeTier ? { background: "linear-gradient(135deg, #EFF6FF, #ECFDF5)", color: "#1E3A5F" } : {}}
-                >
-                  <span>Seats {t.min}{t.max === null ? "+" : `–${t.max}`}{t.discountPct > 0 ? ` (${t.discountPct}% off those seats)` : " (list price)"}</span>
-                  <span>{formatTeamPriceCAD(discountedCents)} / seat / yr</span>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Org details */}
-          <div className="space-y-3 pt-2 border-t border-gray-100">
-            <div className="space-y-2">
-              <Label className="text-gray-700 font-medium">Organization name</Label>
-              <Input
-                placeholder="e.g. Utilities Kingston"
-                value={orgName}
-                onChange={e => setOrgName(e.target.value)}
-                className="border-gray-300 text-gray-900 placeholder:text-gray-400"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label className="text-gray-700 font-medium">Manager email</Label>
-              <Input
-                type="email"
-                placeholder="you@utility.ca"
-                value={managerEmail}
-                onChange={e => setManagerEmail(e.target.value)}
-                className="border-gray-300 text-gray-900 placeholder:text-gray-400"
-              />
-              <p className="text-xs text-gray-400">You will use this email to log in to the manager dashboard.</p>
-            </div>
-          </div>
-
-          {/* CTA */}
-          <button
-            onClick={handleCheckout}
-            disabled={loading}
-            className="w-full py-4 text-base font-bold text-white rounded-xl transition-all active:scale-[0.98] disabled:opacity-60 shadow-lg hover:shadow-xl hover:opacity-95"
-            style={{ background: loading ? "#94A3B8" : "linear-gradient(135deg, #1E3A5F, #0E7490)" }}
-          >
-            {loading ? "Redirecting to checkout..." : `Start ${seats}-seat plan — ${formatTeamPriceCAD(totalCents)}/yr`}
-          </button>
-        </div>
-
-        {/* Right: Features + social proof */}
-        <div className="space-y-6">
-          {/* Everything included */}
-          <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 space-y-4">
-            <h3 className="text-lg font-bold flex items-center gap-2 text-gray-900">
-              <Zap className="w-5 h-5 text-teal-600" />
-              Everything included
-            </h3>
-            <ul className="space-y-3">
-              {FEATURES.map(f => (
-                <li key={f} className="flex items-start gap-3 text-gray-600">
-                  <CheckCircle2 className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" />
-                  <span>{f}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Manager dashboard preview — dark accent card */}
-          <div
-            className="rounded-2xl p-6 space-y-4 text-white shadow-lg"
-            style={{ background: "linear-gradient(135deg, #1E3A5F 0%, #0E7490 100%)" }}
-          >
-            <div className="flex items-center gap-2">
-              <BarChart3 className="w-5 h-5 text-cyan-300" />
-              <span className="font-bold">Manager Dashboard</span>
-            </div>
-            <p className="text-blue-100 text-sm">
-              See every operator's estimated study score, last activity, and exam date at a glance. Estimates are not official pass predictions.
-              Get early-warning alerts for operators who are stalled or at risk before their exam.
-            </p>
-            <div className="grid grid-cols-2 gap-3">
-              {[
-                { label: "Active Last Month", value: "15 / 19", color: "text-cyan-300" },
-                { label: "Questions Answered", value: "2,771", color: "text-sky-300" },
-                { label: "Courses Studied", value: "10", color: "text-emerald-300" },
-                { label: "Operators", value: "19", color: "text-amber-300" },
-              ].map(card => (
-                <div key={card.label} className="rounded-xl p-3 bg-white/10 border border-white/10">
-                  <div className={`text-xl font-bold ${card.color}`}>{card.value}</div>
-                  <div className="text-xs text-blue-200 mt-0.5">{card.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Security note */}
-          <div className="flex items-start gap-3 text-gray-400 text-sm">
-            <Shield className="w-5 h-5 text-gray-300 flex-shrink-0 mt-0.5" />
-            <span>Secure checkout via Stripe. Your receipt and paid invoice are emailed automatically. Annual billing; cancel or adjust seats through the manager dashboard.</span>
-          </div>
-
-          <div className="text-sm text-gray-400">
-            Already purchased?{" "}
-            <Link href="/account">
-              <span className="font-semibold cursor-pointer underline underline-offset-2" style={{ color: "#0E7490" }}>
-                Sign in to your dashboard
+          <div className="teams-plan-grid mt-6 grid gap-5 md:grid-cols-2">
+            <button type="button" aria-pressed={planType === "annual"} onClick={() => setPlanType("annual")} className={`teams-plan-card ${planType === "annual" ? "teams-plan-card--active" : ""} text-left transition`}>
+              <span className="teams-plan-icon" aria-hidden="true"><Users /></span>
+              <span className="teams-plan-copy">
+                <span className="teams-plan-title">Teams Annual</span>
+                <span className="teams-plan-description">Year-round access for a named operator across one stream or all streams. Best for workforce training programs.</span>
+                <span className="teams-plan-price">From CA$449 per operator / year · 5-seat minimum</span>
+                <span className="teams-plan-action">Explore annual <ArrowRight aria-hidden="true" /></span>
               </span>
-            </Link>
+            </button>
+            <button type="button" aria-pressed={planType === "flex"} onClick={() => setPlanType("flex")} className={`teams-plan-card ${planType === "flex" ? "teams-plan-card--active" : ""} text-left transition`}>
+              <span className="teams-plan-icon" aria-hidden="true"><CalendarClock /></span>
+              <span className="teams-plan-copy">
+                <span className="teams-plan-title">Teams Flex</span>
+                <span className="teams-plan-description">Course-specific licences for named operators. Combine 3- and 6-month licences in one order.</span>
+                <span className="teams-plan-price">From CA$39 per operator · one-time payment</span>
+                <span className="teams-plan-action">Explore Flex <ArrowRight aria-hidden="true" /></span>
+              </span>
+            </button>
           </div>
-        </div>
-      </section>
-      )}
+        </section>
+
+        {planType === "flex" ? <section className="mx-auto max-w-2xl"><FlexOrderBuilder initialRegion={region} /></section> : <section className="teams-annual-workspace grid items-start gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="teams-config-panel rounded-2xl border border-slate-200 bg-white p-7 shadow-xl shadow-slate-200/50">
+            <h2 className="text-xl font-bold text-slate-900">Configure an annual plan</h2>
+            <p className="mt-1 text-sm text-slate-600">One annual licence is assigned to one named operator. Licences have a five-seat minimum and renew yearly until cancelled.</p>
+            <div className="mt-6 space-y-5">
+              <div><Label htmlFor="annual-region">Province or region</Label><Select value={region} onValueChange={(value) => { if (isTeamRegion(value)) setRegion(value); }}><SelectTrigger id="annual-region" className="mt-2"><SelectValue /></SelectTrigger><SelectContent>{TEAM_REGION_VALUES.map((teamRegion) => <SelectItem key={teamRegion} value={teamRegion}>{TEAM_REGION_LABELS[teamRegion]}</SelectItem>)}</SelectContent></Select>{region === "nova-scotia" && <p className="mt-2 text-xs leading-relaxed text-slate-500">Nova Scotia operators prepare with the shared WPI exam content. The province certifies Water Treatment and Wastewater Treatment Classes I to IV, and Water Distribution and Wastewater Collection Classes I to III.</p>}</div>
+              <div><span id="annual-access-scope-label" className="flex items-center gap-2 text-sm leading-none font-medium select-none">Annual access scope</span><div role="group" aria-labelledby="annual-access-scope-label" className="mt-2 grid gap-2 sm:grid-cols-2">{ANNUAL_TIERS.map((annualTier) => <button key={annualTier} type="button" aria-pressed={tier === annualTier} onClick={() => setTier(annualTier)} className={`teams-tier-option ${tier === annualTier ? "teams-tier-option--active" : ""} rounded-xl border p-3 text-left transition ${tier === annualTier ? "border-blue-700 bg-blue-50 ring-1 ring-blue-700" : "border-slate-200 hover:border-slate-300"}`}><div className="flex items-center justify-between gap-2"><span className="text-sm font-bold text-slate-900">{getTeamStreamLabel(region, annualTier)}</span><span className="text-sm font-bold text-teal-700">{formatTeamPriceCAD(getTeamBasePriceCents(region, annualTier))}</span></div><p className="mt-1 text-xs leading-relaxed text-slate-500">{getTeamStreamDescription(region, annualTier)}</p></button>)}</div></div>
+              <div><Label htmlFor="annual-operator-licences">Annual operator licences</Label><p id="annual-operator-licences-hint" className="mt-1 text-xs text-slate-500">Graduated discounts apply only to licences in each volume band.</p><div className="mt-2 flex items-center gap-3"><Input id="annual-operator-licences" aria-describedby="annual-operator-licences-hint" type="number" min={5} max={500} value={seatInput} onChange={(event) => setSeatInput(event.target.value)} onBlur={commitSeats} onKeyDown={(event) => { if (event.key === "Enter") commitSeats(); }} className="w-28" /><span className="text-sm text-slate-500">named operators</span></div><div role="group" aria-label="Preset licence quantities" className="mt-3 flex flex-wrap gap-2">{[5, 10, 25, 50, 100].map((count) => <button key={count} type="button" aria-pressed={seats === count} onClick={() => { setSeats(count); setSeatInput(String(count)); }} className={`teams-seat-chip ${seats === count ? "teams-seat-chip--active" : ""} rounded-full border px-3 py-1 text-xs font-semibold ${seats === count ? "border-blue-900 bg-blue-900 text-white" : "border-slate-200 text-slate-600 hover:border-blue-300"}`}>{count}</button>)}</div></div>
+              <div className="teams-price-summary rounded-xl border border-blue-100 bg-gradient-to-br from-blue-50 to-teal-50 p-5"><div className="flex justify-between gap-5"><span className="text-sm text-slate-600">Average per operator / year</span><span className="text-xl font-bold text-teal-700">{formatTeamPriceCAD(averageSeatPrice)}</span></div><div className="mt-3 flex justify-between gap-5 border-t border-blue-100 pt-3"><span className="text-sm font-medium text-slate-700">Total before tax ({seats} licences)</span><span className="text-xl font-bold text-slate-900">{formatTeamPriceCAD(annualTotal)}</span></div>{savings > 0 && <p className="mt-3 text-xs font-semibold text-teal-700">Blended discount: {effectiveDiscount}% · you save {formatTeamPriceCAD(savings)} against list price.</p>}</div>
+
+              <div className="flex flex-wrap gap-2">
+                <Button type="button" variant="outline" onClick={() => {setInquirySaved(false);setRequestReceipt(null);setConfirmedBeforeTaxCents(null);setRequestKey(crypto.randomUUID());setInquiryOpen("quote");}}><FileText className="mr-2 h-4 w-4" /> Request official quote / PO</Button>
+                <Button type="button" variant="outline" onClick={() => {setInquirySaved(false);setRequestReceipt(null);setConfirmedBeforeTaxCents(null);setRequestKey(crypto.randomUUID());setInquiryOpen("pilot");}}><FlaskConical className="mr-2 h-4 w-4" /> Request 3-operator pilot</Button>
+              </div>
+              <p className="text-xs text-slate-500">Requests are manually reviewed. No automatic invoices or pilot entitlements are issued.</p>
+              <div className="space-y-1"><p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Volume pricing</p>{TEAM_VOLUME_TIERS.map((band) => <div key={band.label} className={`flex justify-between rounded-lg px-3 py-2 text-sm ${band === volumeTier ? "bg-blue-50 font-semibold text-blue-950" : "text-slate-600"}`}><span>{band.label}{band.discountPct ? ` · ${band.discountPct}% off those licences` : " · list price"}</span><span>{formatTeamPriceCAD(Math.round(basePrice * (1 - band.discountPct / 100)))}/yr</span></div>)}</div>
+              <div className="grid gap-4 sm:grid-cols-2"><div><Label htmlFor="annual-organization-name">Organization name</Label><Input id="annual-organization-name" value={organizationName} onChange={(event) => setOrganizationName(event.target.value)} placeholder="e.g. Utility name" className="mt-2" /></div><div><Label htmlFor="annual-manager-email">Manager email</Label><Input id="annual-manager-email" type="email" value={managerEmail} onChange={(event) => setManagerEmail(event.target.value)} placeholder="e.g. operations manager email" className="mt-2" /></div></div>
+              <Button onClick={startAnnualCheckout} disabled={createTeamCheckout.isPending} className="teams-checkout-button h-12 w-full bg-gradient-to-r from-blue-900 to-teal-700 text-base font-bold text-white hover:opacity-95">{createTeamCheckout.isPending ? "Opening secure checkout…" : `Start ${seats}-seat ${getTeamStreamLabel(region, tier)} plan — ${formatTeamPriceCAD(annualTotal)}/year`}</Button>
+            </div>
+          </div>
+          <aside className="space-y-5"><div className="teams-support-card rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"><h3 className="text-lg font-bold text-slate-900">Annual plan includes</h3><ul className="mt-4 space-y-3">{FEATURES.map((feature) => <li key={feature} className="flex gap-3 text-sm leading-relaxed text-slate-600"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />{feature}</li>)}</ul></div><div className="teams-support-card rounded-2xl border border-cyan-100 bg-cyan-50 p-6"><h3 className="text-base font-bold text-slate-900">Need a specific exam only?</h3><p className="mt-2 text-sm leading-relaxed text-slate-600">Use Teams Flex to buy 3- or 6-month Course Passes for the exact operators and courses in your cohort. Retake Extensions are available once per activated Course Pass.</p><Button variant="outline" onClick={() => setPlanType("flex")} className="mt-4 border-teal-600 text-teal-800 hover:bg-teal-100">Build a Flex order</Button></div><p className="px-1 text-xs leading-relaxed text-slate-500">Historical customer recovery is handled separately and is not changed by any new Team or Flex order.</p></aside>
+        </section>}
+        <div className="mt-10 text-center text-sm text-slate-600">Training one operator? Flex Course Passes are available for a single operator with supervisor reporting. Annual plans have a five-seat minimum.</div>
+
+      </main>
+      {inquiryOpen && <Dialog open onOpenChange={open => { if (!open) setInquiryOpen(null); }}>
+        <DialogContent className="teams-redesign-dialog w-[calc(100vw-2rem)] max-w-lg max-h-[90vh] overflow-y-auto bg-white">
+        <style>{`@media print {
+          @page { size: A4; margin: 16mm; }
+          body * { visibility: hidden !important; }
+          .municipal-pricing-summary, .municipal-pricing-summary * { visibility: visible !important; }
+          .municipal-pricing-summary { position: fixed !important; inset: 0; width: 100%; padding: 24px; background: white !important; border: 0 !important; }
+          .municipal-print-hidden { display: none !important; }
+        }`}</style>
+        <DialogHeader>
+          <DialogTitle>{inquiryOpen === "quote" ? "Municipal quotation request" : "14-day three-operator evaluation request"}</DialogTitle>
+          <DialogDescription>Send a nonbinding request to Echelon Institute for staff review. No operator access or payment is created.</DialogDescription>
+        </DialogHeader>
+          {inquirySaved ? <div className="mt-4 space-y-4">
+              <p className="text-sm">Request #{requestReceipt ?? "—"} received for staff review. No access or invoice has been issued.</p>
+              {inquiryOpen === "quote" && confirmedBeforeTaxCents !== null && (
+                <div className="municipal-pricing-summary rounded-lg border border-slate-200 bg-white p-5 text-sm">
+                  <div className="text-base font-bold text-slate-900">Echelon Institute — Municipal Pricing Estimate</div>
+                  <p className="mt-1 text-slate-600">Request reference: #{requestReceipt} · Status: Pending review</p>
+                  <div className="mt-4 space-y-1">
+                    <p>Organization: {organizationName}</p>
+                    <p>Region: {TEAM_REGION_LABELS[region]}</p>
+                    <p>Requested product: {getTeamStreamLabel(region, tier)}</p>
+                    <p>Named annual operator licences: {seats}</p>
+                    <p className="pt-2 font-semibold">Annual amount before applicable taxes: {formatTeamPriceCAD(confirmedBeforeTaxCents)}</p>
+                  </div>
+                  <p className="mt-4 border-t pt-3 text-xs text-slate-600">
+                    For budgeting only. This is NOT a signed or binding quotation, purchase order, invoice, proof of payment, or promise of entitlement.
+                    Taxes, procurement terms, and payment method require confirmation from Echelon Institute.
+                  </p>
+                  <Button type="button" className="municipal-print-hidden mt-3" variant="outline" onClick={() => window.print()}>Print / Save PDF summary</Button>
+                </div>
+              )}
+            </div> :
+            <form className="mt-4 space-y-3" onSubmit={event => {event.preventDefault();requestInquiry();}}>
+              <div><Label htmlFor="inquiry-organization">Organization</Label><Input id="inquiry-organization" required maxLength={200} value={organizationName} onChange={e=>setOrganizationName(e.target.value)} /></div>
+              <div><Label htmlFor="inquiry-contact-name">Contact name</Label><Input id="inquiry-contact-name" required maxLength={100} value={contactName} onChange={e=>setContactName(e.target.value)} /></div>
+              <div><Label htmlFor="inquiry-work-email">Work email</Label><Input id="inquiry-work-email" required type="email" maxLength={320} value={managerEmail} onChange={e=>setManagerEmail(e.target.value)} /></div>
+              <div><Label htmlFor="callback-phone">Phone for a callback (optional)</Label><Input id="callback-phone" type="tel" autoComplete="tel" maxLength={32} value={callbackPhone} onChange={e=>setCallbackPhone(e.target.value)} /></div>
+              <label className="flex items-start gap-2 text-sm text-slate-600"><input type="checkbox" checked={callbackRequested} onChange={e=>setCallbackRequested(e.target.checked)} className="mt-1" />{MUNICIPAL_CALLBACK_NOTICE}</label>
+              {callbackRequested && <div><Label htmlFor="callback-time">Preferred callback time and time zone (optional)</Label><Input id="callback-time" maxLength={120} value={preferredCallbackTime} onChange={e=>setPreferredCallbackTime(e.target.value)} placeholder="e.g. weekdays 9–11 a.m. Eastern" /></div>}
+              {inquiryOpen === "quote" && <p className="rounded-lg bg-slate-50 p-3 text-sm">{seats} annual {getTeamStreamLabel(region,tier)} seats: {formatTeamPriceCAD(annualTotal)} before tax (indicative, not a formal quote).</p>}
+              <div><Label htmlFor="inquiry-requirements">Requirements (optional)</Label><textarea id="inquiry-requirements" maxLength={500} rows={3} className="w-full rounded-lg border p-2" value={inquiryNotes} onChange={e=>setInquiryNotes(e.target.value)} /></div>
+              <div className="hidden" aria-hidden="true"><label htmlFor="request-website">Website (leave blank)</label><input id="request-website" type="text" tabIndex={-1} autoComplete="off" value={honeypot} onChange={e=>setHoneypot(e.target.value)} /></div>
+              <Button type="submit" disabled={sendInquiry.isPending}>{sendInquiry.isPending ? "Submitting…" : "Submit request"}</Button>
+            </form>}
+          <Button className="mt-3" type="button" variant="ghost" onClick={()=>setInquiryOpen(null)}>Close</Button>
+        </DialogContent>
+      </Dialog>}
     </div>
   );
 }

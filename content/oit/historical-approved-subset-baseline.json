@@ -1,0 +1,1869 @@
+{
+  "schemaVersion": 1,
+  "createdAtUtc": "2026-09-10T23:02:15.709Z",
+  "purpose": "Pre-update rollback snapshot for the approved historical OIT subset revision.",
+  "stagedPayloadChecksum": "517f82e130049583a61004c2fc8744f02db6890a70a923d378673be005dc8198",
+  "entries": [
+    {
+      "id": 35047,
+      "bankKey": "oit",
+      "questionNum": 22,
+      "reviewStatus": "unreviewed",
+      "contentHash": "77805506fb48000d3428b9ce3e0a1b632a74431129902ef3c3c6a0a962d15fbc",
+      "content": {
+        "module": "Disinfection",
+        "difficulty": "medium",
+        "question": "Under O. Reg. 170/03, what is the minimum free chlorine residual required within the distribution system?",
+        "options": [
+          "0.10 mg/L",
+          "0.05 mg/L",
+          "0.20 mg/L",
+          "0.25 mg/L"
+        ],
+        "correctIndex": 1,
+        "explanation": "O. Reg. 170/03 requires a minimum free chlorine residual of 0.05 mg/L at all points within the distribution system to maintain secondary disinfection.",
+        "steps": null,
+        "tip": "Review the Disinfection section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 2
+    },
+    {
+      "id": 35049,
+      "bankKey": "oit",
+      "questionNum": 24,
+      "reviewStatus": "unreviewed",
+      "contentHash": "f7df4546e6918b026bdd46f51eee426407c488bdac4df524db354d17cca41e98",
+      "content": {
+        "module": "Disinfection",
+        "difficulty": "medium",
+        "question": "What is the maximum acceptable concentration (MAC) for total trihalomethanes (THMs) in Ontario drinking water?",
+        "options": [
+          "0.100 mg/L",
+          "0.050 mg/L",
+          "0.080 mg/L",
+          "0.200 mg/L"
+        ],
+        "correctIndex": 0,
+        "explanation": "The Ontario Drinking Water Quality Standards (O. Reg. 169/03) set the MAC for total THMs at 0.100 mg/L, expressed as a running annual average.",
+        "steps": null,
+        "tip": "Review the Disinfection section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 4
+    },
+    {
+      "id": 35050,
+      "bankKey": "oit",
+      "questionNum": 25,
+      "reviewStatus": "unreviewed",
+      "contentHash": "8b93217dffd25e65ca51806898fb25d654e3be0a6b49754b0927b4792db7f307",
+      "content": {
+        "module": "Disinfection",
+        "difficulty": "medium",
+        "question": "If a water sample from the distribution system shows a free chlorine residual of 0.02 mg/L, what must the operator do?",
+        "options": [
+          "Nothing, it is within acceptable limits",
+          "Increase the flow rate",
+          "Report it as an Adverse Water Quality Incident (AWQI)",
+          "Add more fluoride"
+        ],
+        "correctIndex": 2,
+        "explanation": "A free chlorine residual below 0.05 mg/L in the distribution system is an Adverse Water Quality Incident (AWQI) under O. Reg. 170/03 and must be reported immediately.",
+        "steps": null,
+        "tip": "Review the Disinfection section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 0
+    },
+    {
+      "id": 35051,
+      "bankKey": "oit",
+      "questionNum": 26,
+      "reviewStatus": "unreviewed",
+      "contentHash": "782fc21a2ab9339234488f82b754503daa49daa08966ec48bb20fe184a2f024c",
+      "content": {
+        "module": "Disinfection",
+        "difficulty": "medium",
+        "question": "What is the minimum combined chlorine residual required within the distribution system under O. Reg. 170/03 if chloramination is used?",
+        "options": [
+          "0.05 mg/L",
+          "0.10 mg/L",
+          "0.25 mg/L",
+          "0.20 mg/L"
+        ],
+        "correctIndex": 2,
+        "explanation": "If a system uses chloramination, O. Reg. 170/03 requires a minimum combined chlorine residual of 0.25 mg/L at all points within the distribution system.",
+        "steps": null,
+        "tip": "Review the Disinfection section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 4
+    },
+    {
+      "id": 35052,
+      "bankKey": "oit",
+      "questionNum": 27,
+      "reviewStatus": "unreviewed",
+      "contentHash": "810844c2ae9ae73e52906e5b1270291a79a03f824a48b7e5848912ff865747e9",
+      "content": {
+        "module": "Disinfection",
+        "difficulty": "medium",
+        "question": "According to the Procedure for Disinfection of Drinking Water in Ontario, what is the primary purpose of primary disinfection?",
+        "options": [
+          "To maintain a residual in the distribution system",
+          "To oxidize iron and manganese",
+          "To remove taste and odor compounds",
+          "To achieve the required log removal/inactivation of pathogens before water reaches the first consumer"
+        ],
+        "correctIndex": 3,
+        "explanation": "Primary disinfection is designed to achieve the necessary log removal or inactivation of pathogens (like Giardia, Cryptosporidium, and viruses) before the water is delivered to the first consumer.",
+        "steps": null,
+        "tip": "Review the Disinfection section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 1
+    },
+    {
+      "id": 35053,
+      "bankKey": "oit",
+      "questionNum": 28,
+      "reviewStatus": "unreviewed",
+      "contentHash": "97ea8b666a2a31b053c9ad09e3587b14410c3104847fe76f6003c7048cf6a9e1",
+      "content": {
+        "module": "Disinfection",
+        "difficulty": "medium",
+        "question": "What is the reporting requirement for an adverse water quality incident (AWQI) related to low chlorine residual under O. Reg. 170/03?",
+        "options": [
+          "Report to the MECP within 7 days",
+          "Report to the Spills Action Centre (SAC) and the local Medical Officer of Health immediately",
+          "Report to the MECP within 24 hours",
+          "Report to the local health unit only"
+        ],
+        "correctIndex": 1,
+        "explanation": "For an AWQI, such as a low chlorine residual, O. Reg. 170/03 requires immediate verbal notification to the Spills Action Centre (SAC) and the local Medical Officer of Health, followed by written notice.",
+        "steps": null,
+        "tip": "Review the Disinfection section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 0
+    },
+    {
+      "id": 35055,
+      "bankKey": "oit",
+      "questionNum": 30,
+      "reviewStatus": "unreviewed",
+      "contentHash": "a9977d96a714f2fe4c20dd5c1261d33bc99882668dfc8f47b280ba2c699e8c3a",
+      "content": {
+        "module": "Disinfection",
+        "difficulty": "medium",
+        "question": "What is the required log inactivation for viruses in surface water systems according to Ontario regulations?",
+        "options": [
+          "4-log (99.99%)",
+          "3-log (99.9%)",
+          "2-log (99%)",
+          "5-log (99.999%)"
+        ],
+        "correctIndex": 0,
+        "explanation": "Ontario regulations require a minimum 4-log (99.99%) removal or inactivation of viruses for surface water treatment systems.",
+        "steps": null,
+        "tip": "Review the Disinfection section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 3
+    },
+    {
+      "id": 35057,
+      "bankKey": "oit",
+      "questionNum": 32,
+      "reviewStatus": "unreviewed",
+      "contentHash": "840c04a0a7a9d01781cd42043fbdd418559010416f68fb1e2fc098a312e7c8f6",
+      "content": {
+        "module": "Disinfection",
+        "difficulty": "medium",
+        "question": "If a watermain is repaired, what must be done before it is returned to service according to the Watermain Disinfection Procedure?",
+        "options": [
+          "It must be flushed with water only",
+          "It can be returned to service immediately if the repair was quick",
+          "It must be disinfected, flushed, and tested for bacteriological quality and chlorine residual",
+          "It must be painted on the inside"
+        ],
+        "correctIndex": 2,
+        "explanation": "The Watermain Disinfection Procedure requires that repaired watermains be properly disinfected, flushed, and tested for acceptable chlorine residual and bacteriological quality before being returned to service.",
+        "steps": null,
+        "tip": "Review the Disinfection section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 4
+    },
+    {
+      "id": 35059,
+      "bankKey": "oit",
+      "questionNum": 34,
+      "reviewStatus": "unreviewed",
+      "contentHash": "ec4b757faf3f13b5e447e1871fdd4562bdddc971b4cadfba9821834d5f56dec8",
+      "content": {
+        "module": "Disinfection",
+        "difficulty": "hard",
+        "question": "What is the maximum acceptable concentration (MAC) for Haloacetic Acids (HAAs) in Ontario drinking water?",
+        "options": [
+          "0.050 mg/L",
+          "0.120 mg/L",
+          "0.100 mg/L",
+          "0.080 mg/L"
+        ],
+        "correctIndex": 3,
+        "explanation": "The Ontario Drinking Water Quality Standards set the MAC for Haloacetic Acids (HAAs) at 0.080 mg/L, expressed as a running annual average.",
+        "steps": null,
+        "tip": "Review the Disinfection section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 4
+    },
+    {
+      "id": 35060,
+      "bankKey": "oit",
+      "questionNum": 35,
+      "reviewStatus": "unreviewed",
+      "contentHash": "32eb1cc3bd750e4c799c34770ad819bf240c60b5c0d5eed7d056389e0320f577",
+      "content": {
+        "module": "Disinfection",
+        "difficulty": "hard",
+        "question": "Under O. Reg. 170/03, what is the requirement for secondary disinfection in a municipal residential drinking water system?",
+        "options": [
+          "It is optional if primary disinfection is adequate",
+          "It is required to maintain a disinfectant residual throughout the distribution system",
+          "It is only required during the summer months",
+          "It is only required for systems using groundwater"
+        ],
+        "correctIndex": 1,
+        "explanation": "O. Reg. 170/03 mandates secondary disinfection for municipal residential systems to maintain a disinfectant residual (e.g., free chlorine or combined chlorine) throughout the distribution system to protect against recontamination.",
+        "steps": null,
+        "tip": "Review the Disinfection section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 2
+    },
+    {
+      "id": 35083,
+      "bankKey": "oit",
+      "questionNum": 58,
+      "reviewStatus": "unreviewed",
+      "contentHash": "ce39cb8eed87c901d8c635ea6e773c4e5424832b2b32608ceb130c8dce51953a",
+      "content": {
+        "module": "Hydraulics",
+        "difficulty": "medium",
+        "question": "Under Ontario regulations, what is the maximum allowable velocity in water mains to reduce pipe wear and energy costs?",
+        "options": [
+          "2 m/s",
+          "7 m/s",
+          "5 m/s",
+          "3 m/s"
+        ],
+        "correctIndex": 3,
+        "explanation": "Ontario guidelines generally recommend velocities not exceeding 3 m/s in water mains to reduce wear and energy consumption while maintaining effective flow.",
+        "steps": null,
+        "tip": "Review the Hydraulics section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 4
+    },
+    {
+      "id": 35096,
+      "bankKey": "oit",
+      "questionNum": 71,
+      "reviewStatus": "unreviewed",
+      "contentHash": "498b656f27225e87e8aece03065dbb552fbadbebed9d13b778273ae4e390d0d8",
+      "content": {
+        "module": "Hydraulics",
+        "difficulty": "medium",
+        "question": "In Ontario, what is a key regulatory requirement for pump stations in terms of emergency power?",
+        "options": [
+          "Must have a backup generator",
+          "Must be connected to two separate power grids",
+          "Must have manual override capabilities only",
+          "Must be inspected annually by a certified electrician"
+        ],
+        "correctIndex": 0,
+        "explanation": "Ontario regulations often require pump stations to have emergency power sources, such as backup generators, to ensure continuous operation during power outages and maintain water supply.",
+        "steps": null,
+        "tip": "Review the Hydraulics section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 3
+    },
+    {
+      "id": 35101,
+      "bankKey": "oit",
+      "questionNum": 76,
+      "reviewStatus": "unreviewed",
+      "contentHash": "13b4176a47c6482fb4b6b4f95ed0e1c22d66a60056db375df89dcd294415a06a",
+      "content": {
+        "module": "Hydraulics",
+        "difficulty": "hard",
+        "question": "Under Ontario regulations, what is the required frequency for routine inspection of critical pump station components?",
+        "options": [
+          "Quarterly",
+          "Monthly",
+          "Annually",
+          "Bi-annually"
+        ],
+        "correctIndex": 1,
+        "explanation": "Under Ontario Regulation 170/03 (Drinking Water Systems), many operational checks and inspections for critical components within a drinking water system, including those in pump stations, are specified to occur at least monthly. While specific components may have daily or weekly requirements, a general routine inspection frequency for many critical operational aspects often defaults to monthly. This frequency ensures consistent monitoring and maintenance to uphold water quality and system reliability, aligning with the regulatory intent for ongoing oversight.",
+        "steps": "[{\"l\":\"Step 1\",\"c\":\"Identify the relevant legislation for drinking water systems in Ontario. This is primarily the Safe Drinking Water Act (SDWA) and its regulations, such as O. Reg. 170/03 (Drinking Water Systems).\"},{\"l\":\"Step 2\",\"c\":\"Consult the specific regulation regarding operational checks and maintenance frequencies for critical components. While the regulation doesn't list every single component, it mandates comprehensive operational checks and maintenance programs to ensure the safe and reliable operation of the system.\"},{\"l\":\"Step 3\",\"c\":\"Recognize that for critical infrastructure like pump stations in drinking water systems, a monthly inspection frequency is a widely accepted and often mandated minimum standard in Ontario to ensure ongoing compliance, operational integrity, and public health protection. This is supported by best practices and general requirements for maintaining drinking water quality and quantity.\"},{\"l\":\"Step 4\",\"c\":\"Confirm that 'Monthly' aligns with the general regulatory expectation for routine checks of critical operational components to detect issues promptly and prevent failures.\"}]",
+        "tip": "Review the Hydraulics section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 4
+    },
+    {
+      "id": 35110,
+      "bankKey": "oit",
+      "questionNum": 85,
+      "reviewStatus": "unreviewed",
+      "contentHash": "af0e87a42df97054b53ddb07d663139f78adccd7d28aa8658de85a207ac143c4",
+      "content": {
+        "module": "Hydraulics",
+        "difficulty": "hard",
+        "question": "According to Ontario's Building Code, what is the minimum required pipe slope for gravity sanitary sewers to ensure self-cleansing velocities?",
+        "options": [
+          "1:100 (1%) for 100 mm pipe",
+          "1:200 (0.5%) for all pipe sizes",
+          "0.2% for all pipe sizes",
+          "0.1% for all pipe sizes"
+        ],
+        "correctIndex": 0,
+        "explanation": "The Ontario Building Code (OBC) does not specify a single minimum pipe slope for all gravity sanitary sewers. Instead, it provides a table of minimum slopes based on pipe diameter to ensure self-cleansing velocities. For a 100 mm (4 inch) pipe, the minimum slope required is 1:100, which is equivalent to 1%. Larger pipes can have shallower slopes; for example, a 300 mm pipe requires 1:200 (0.5%). Therefore, stating a single percentage like 0.2% for all pipe sizes is incorrect according to the OBC.",
+        "steps": "[{\"l\":\"Step 1\",\"c\":\"Review the Ontario Building Code (OBC) requirements for minimum pipe slopes in gravity sanitary sewers.\"},{\"l\":\"Step 2\",\"c\":\"Consult OBC Table 7.4.8.2. (1) 'Minimum Slopes for Drainage Pipes' or similar relevant sections.\"},{\"l\":\"Step 3\",\"c\":\"Identify that the OBC specifies different minimum slopes based on the nominal pipe size (diameter).\"},{\"l\":\"Step 4\",\"c\":\"Note that for a 100 mm (4 inch) drainage pipe, the minimum required slope is 1:100.\"},{\"l\":\"Step 5\",\"c\":\"Convert the slope ratio to a percentage: (1 / 100) * 100% = 1%.\"},{\"l\":\"Step 6\",\"c\":\"Recognize that other pipe sizes have different minimum slopes (e.g., 150 mm requires 1:150 or 0.67%, 300 mm requires 1:200 or 0.5%). This confirms that a single universal percentage is not applicable.\"},{\"l\":\"Step 7\",\"c\":\"Evaluate the given options in light of the OBC requirements. Option A (1:100 (1%) for 100 mm pipe) accurately reflects a specific requirement from the OBC, while the other options suggest a single slope for all pipe sizes, which is incorrect.\"}]",
+        "tip": "Review the Hydraulics section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 4
+    },
+    {
+      "id": 35119,
+      "bankKey": "oit",
+      "questionNum": 94,
+      "reviewStatus": "unreviewed",
+      "contentHash": "de52265411fcf29b5b8ad143ee6aee08d64dc298305c50b083612672560646c9",
+      "content": {
+        "module": "Hydraulics",
+        "difficulty": "medium",
+        "question": "Which Ontario regulation requires operators to maintain records of system pressure and flow to ensure safe drinking water distribution?",
+        "options": [
+          "Safe Drinking Water Act",
+          "Ontario Water Resources Act",
+          "Environmental Protection Act",
+          "Water Opportunities Act"
+        ],
+        "correctIndex": 0,
+        "explanation": "The Safe Drinking Water Act (SDWA) mandates operators to monitor and maintain records of system pressure and flow to ensure drinking water safety in Ontario's distribution systems.",
+        "steps": null,
+        "tip": "Review the Hydraulics section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 3
+    },
+    {
+      "id": 35126,
+      "bankKey": "oit",
+      "questionNum": 101,
+      "reviewStatus": "unreviewed",
+      "contentHash": "3b6f8477d690948ef3b2450942a9539ad94445a3f820403f21008b5fcc9464f4",
+      "content": {
+        "module": "Ontario Regulations",
+        "difficulty": "easy",
+        "question": "Under O. Reg. 170/03, which of the following is considered an adverse water quality incident (AWQI) that requires immediate notification to the Ministry of the Environment, Conservation and Parks (MECP) and the Medical Officer of Health?",
+        "options": [
+          "A minor leak in a non-potable water pipe within the treatment plant.",
+          "A slight increase in water turbidity below the regulatory limit.",
+          "A scheduled maintenance shutdown of a pumping station.",
+          "A confirmed E. coli presence in a drinking water sample."
+        ],
+        "correctIndex": 3,
+        "explanation": "A confirmed E. coli presence in a drinking water sample is a critical adverse water quality incident (AWQI) under O. Reg. 170/03. This requires immediate notification to both the MECP and the Medical Officer of Health due to the significant health risks associated with E. coli contamination.",
+        "steps": null,
+        "tip": "Review the Ontario Regulations section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 13
+    },
+    {
+      "id": 35127,
+      "bankKey": "oit",
+      "questionNum": 102,
+      "reviewStatus": "unreviewed",
+      "contentHash": "6cc5b11af6d310ea0af2f1be1ae63fc9f33ad2879b08471ca7e2d7daf28a9563",
+      "content": {
+        "module": "Ontario Regulations",
+        "difficulty": "easy",
+        "question": "Under O. Reg. 170/03, what is the primary purpose of an operator notifying the Ministry of the Environment, Conservation and Parks (MECP) about an adverse water quality incident?",
+        "options": [
+          "To ensure the public is immediately informed and appropriate action is taken to protect public health.",
+          "To request additional staffing for the treatment plant.",
+          "To document the incident for internal record-keeping only.",
+          "To apply for funding for system upgrades."
+        ],
+        "correctIndex": 0,
+        "explanation": "O. Reg. 170/03 mandates prompt reporting of adverse water quality incidents to the MECP. This is crucial for public health protection, as it triggers investigations and ensures necessary corrective actions are implemented quickly to mitigate risks to consumers.",
+        "steps": null,
+        "tip": "Review the Ontario Regulations section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 12
+    },
+    {
+      "id": 35128,
+      "bankKey": "oit",
+      "questionNum": 103,
+      "reviewStatus": "unreviewed",
+      "contentHash": "b945615975bfd1eb2ae362b5d853968c6a393dfab82b408b5f8caffa8e68b3aa",
+      "content": {
+        "module": "Ontario Regulations",
+        "difficulty": "easy",
+        "question": "Under O. Reg. 170/03, which of the following is an operator\\'s primary responsibility when an adverse water quality incident (AWQI) occurs?",
+        "options": [
+          "Take all reasonable steps to correct the situation and notify the MECP.",
+          "Collect additional water samples for independent testing.",
+          "Immediately notify the local media and public.",
+          "Wait for direction from the Medical Officer of Health before taking any action."
+        ],
+        "correctIndex": 0,
+        "explanation": "O. Reg. 170/03 mandates that operators, upon becoming aware of an adverse water quality incident, must take all reasonable steps to correct the situation and immediately notify the Ministry of the Environment, Conservation and and Parks (MECP). This ensures prompt action to protect public health and regulatory oversight.",
+        "steps": null,
+        "tip": "Review the Ontario Regulations section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 4
+    },
+    {
+      "id": 35130,
+      "bankKey": "oit",
+      "questionNum": 105,
+      "reviewStatus": "unreviewed",
+      "contentHash": "f84159e3db727f31b5ab78d66b5c251f4c1b7981b0e3827a63e38540800766fc",
+      "content": {
+        "module": "Ontario Regulations",
+        "difficulty": "easy",
+        "question": "Under O. Reg. 170/03, what is the primary purpose of requiring operators to report adverse water quality incidents?",
+        "options": [
+          "To inform the public about minor operational changes.",
+          "To ensure timely investigation and corrective action to protect public health.",
+          "To allow operators to practice their communication skills.",
+          "To track the number of incidents for statistical purposes only."
+        ],
+        "correctIndex": 1,
+        "explanation": "O. Reg. 170/03 mandates the reporting of adverse water quality incidents to ensure that potential threats to public health are promptly identified and addressed. This allows for immediate investigation by the Ministry of the Environment, Conservation and Parks (MECP) and the local Medical Officer of Health, and for necessary corrective actions to be implemented without delay to protect consumers.",
+        "steps": null,
+        "tip": "Review the Ontario Regulations section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 2
+    },
+    {
+      "id": 35131,
+      "bankKey": "oit",
+      "questionNum": 106,
+      "reviewStatus": "unreviewed",
+      "contentHash": "72c6a1fcdf1ca0356ae8ee4335539d8fe29b1f19f87c9cb37f694b4d40f29342",
+      "content": {
+        "module": "Ontario Regulations",
+        "difficulty": "easy",
+        "question": "Under O. Reg. 170/03, what is the primary purpose of the Safe Drinking Water Act, 2002?",
+        "options": [
+          "To regulate the discharge of industrial wastewater into the environment.",
+          "To protect human health by ensuring the safety of drinking water in Ontario.",
+          "To manage the allocation of water resources for agricultural use.",
+          "To establish guidelines for recreational water activities."
+        ],
+        "correctIndex": 1,
+        "explanation": "The Safe Drinking Water Act, 2002, and its associated regulations like O. Reg. 170/03, were enacted specifically to protect human health. Their primary goal is to ensure that drinking water provided to the public in Ontario is consistently safe and of high quality.",
+        "steps": null,
+        "tip": "Review the Ontario Regulations section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 7
+    },
+    {
+      "id": 35133,
+      "bankKey": "oit",
+      "questionNum": 108,
+      "reviewStatus": "unreviewed",
+      "contentHash": "1ec433767b52260fe45ca8fbf3e414f72486bea64c8391b3189146da9e617d98",
+      "content": {
+        "module": "Ontario Regulations",
+        "difficulty": "easy",
+        "question": "Under O. Reg. 170/03, which of the following is an immediate reporting requirement for an adverse water quality incident?",
+        "options": [
+          "Reporting to the owner of the drinking water system within 48 hours.",
+          "Reporting to the Ministry of the Environment, Conservation and Parks (MECP) and the Medical Officer of Health (MOH) immediately.",
+          "Reporting to the local municipality within 24 hours.",
+          "Reporting to the public via a press release within 7 days."
+        ],
+        "correctIndex": 1,
+        "explanation": "O. Reg. 170/03 mandates immediate reporting of adverse water quality incidents to both the MECP and the Medical Officer of Health. This ensures prompt action can be taken to protect public health. Other reporting requirements are typically for different stakeholders or have longer timelines.",
+        "steps": null,
+        "tip": "Review the Ontario Regulations section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 3
+    },
+    {
+      "id": 35134,
+      "bankKey": "oit",
+      "questionNum": 109,
+      "reviewStatus": "unreviewed",
+      "contentHash": "b17100770fbaf5bbf1da997967b7ad47fa9a855142c4092c2602fe482e5272a0",
+      "content": {
+        "module": "Ontario Regulations",
+        "difficulty": "easy",
+        "question": "Under O. Reg. 170/03, what is the primary purpose of reporting an adverse water quality incident (AWQI) to the Ministry of the Environment, Conservation and Parks (MECP) and the Medical Officer of Health?",
+        "options": [
+          "To inform them so they can take appropriate public health action and ensure the issue is addressed.",
+          "To request funding for system upgrades.",
+          "To document the incident for internal record-keeping only.",
+          "To notify the public directly before any other action."
+        ],
+        "correctIndex": 0,
+        "explanation": "O. Reg. 170/03 mandates immediate reporting of AWQIs to the MECP and the Medical Officer of Health. This allows these authorities to assess the risk to public health, direct necessary corrective actions, and issue public advisories if required, ensuring the safety of drinking water.",
+        "steps": null,
+        "tip": "Review the Ontario Regulations section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 5
+    },
+    {
+      "id": 35145,
+      "bankKey": "oit",
+      "questionNum": 120,
+      "reviewStatus": "unreviewed",
+      "contentHash": "067bcb50a3531b7f562a28e18f53b9ecd043f2553179f118d2a2f718d3b9bb52",
+      "content": {
+        "module": "Ontario Regulations",
+        "difficulty": "medium",
+        "question": "What is the main objective of the Safe Drinking Water Act, 2002, in Ontario?",
+        "options": [
+          "To ensure the safety of drinking water for human consumption.",
+          "To protect sources of drinking water.",
+          "To regulate industrial water usage.",
+          "To manage recreational water bodies."
+        ],
+        "correctIndex": 0,
+        "explanation": "The primary purpose of the Safe Drinking Water Act, 2002 (SDWA) in Ontario is to protect human health by ensuring that drinking water is safe. This Act establishes a comprehensive framework for managing drinking water systems, setting standards for water quality, and outlining responsibilities for owners and operators. While source water protection is addressed by other legislation like the Clean Water Act, 2006, and industrial water usage and recreational water bodies are covered by different regulations, the SDWA specifically focuses on the safety of water intended for consumption.",
+        "steps": null,
+        "tip": "Review the Ontario Regulations section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 2
+    },
+    {
+      "id": 35146,
+      "bankKey": "oit",
+      "questionNum": 121,
+      "reviewStatus": "unreviewed",
+      "contentHash": "de7ec7a176378ed16c80306d7f34e24fd10455b6bf74d59fea5205db19036344",
+      "content": {
+        "module": "Ontario Regulations",
+        "difficulty": "medium",
+        "question": "Under O. Reg. 170/03, if a drinking water system serves a designated facility and experiences a loss of pressure below 20 psi for more than 30 minutes, what is the immediate reporting requirement?",
+        "options": [
+          "Report to the owner within 24 hours.",
+          "No immediate reporting is required if water quality is not affected.",
+          "Report to the local municipality within 12 hours.",
+          "Report to the MECP and Medical Officer of Health immediately."
+        ],
+        "correctIndex": 3,
+        "explanation": "O. Reg. 170/03 specifies that a loss of pressure below 20 psi for more than 30 minutes in a system serving a designated facility is an adverse condition requiring immediate notification to the MECP and the Medical Officer of Health. This is critical for public health protection, as low pressure can lead to ingress of contaminants.",
+        "steps": null,
+        "tip": "Review the Ontario Regulations section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 4
+    },
+    {
+      "id": 35149,
+      "bankKey": "oit",
+      "questionNum": 124,
+      "reviewStatus": "unreviewed",
+      "contentHash": "304d3232f392950c4f6c8f103659aafb9bda4a41bd78f35bcf8e3e6e0092bf40",
+      "content": {
+        "module": "Ontario Regulations",
+        "difficulty": "medium",
+        "question": "Which of the following is a key responsibility of the Ministry of the Environment, Conservation and Parks (MECP) under the Safe Drinking Water Act, 2002?",
+        "options": [
+          "Directly operating all municipal drinking water systems.",
+          "Issuing building permits for new water infrastructure.",
+          "Setting drinking water quality standards and enforcing compliance.",
+          "Providing financial grants for private well owners."
+        ],
+        "correctIndex": 2,
+        "explanation": "Under the Safe Drinking Water Act, 2002, the MECP is responsible for establishing and enforcing drinking water quality standards. This includes developing regulations, conducting inspections, and taking enforcement actions to ensure the safety and quality of drinking water across Ontario.",
+        "steps": null,
+        "tip": "Review the Ontario Regulations section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 1
+    },
+    {
+      "id": 35153,
+      "bankKey": "oit",
+      "questionNum": 128,
+      "reviewStatus": "unreviewed",
+      "contentHash": "a0306cb211b0077f2cfd732658dc0167321fb410bf7234c2af86e0b7234df057",
+      "content": {
+        "module": "Ontario Regulations",
+        "difficulty": "medium",
+        "question": "Under the Safe Drinking Water Act, 2002, who is ultimately responsible for ensuring that a municipal drinking water system provides safe drinking water?",
+        "options": [
+          "A. The individual certified operators.",
+          "B. The Ministry of the Environment, Conservation and Parks (MECP).",
+          "C. The local Medical Officer of Health.",
+          "D. The owner of the municipal drinking water system."
+        ],
+        "correctIndex": 3,
+        "explanation": "Under Ontario's Safe Drinking Water Act, 2002, the owner of the municipal drinking water system holds the ultimate responsibility for ensuring the provision of safe drinking water. While certified operators are crucial for day-to-day operations and the MECP provides oversight and enforcement, and the Medical Officer of Health monitors public health, the legal accountability for the system's overall performance and water quality rests with the owner. This principle is fundamental to the regulatory framework in Ontario.",
+        "steps": null,
+        "tip": "Review the Ontario Regulations section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 3
+    },
+    {
+      "id": 35155,
+      "bankKey": "oit",
+      "questionNum": 130,
+      "reviewStatus": "unreviewed",
+      "contentHash": "314296f6bd8093086df9a91d88e85b19791ce5a7aa0c75a7e9a085e5d056e45e",
+      "content": {
+        "module": "Ontario Regulations",
+        "difficulty": "medium",
+        "question": "According to O. Reg. 128/04, what is the primary difference in responsibilities between an Overall Responsible Operator (ORO) and an Operator-in-Charge (OIC)?",
+        "options": [
+          "The ORO has overall accountability for compliance, while the OIC is responsible for operational decisions during a shift.",
+          "The ORO is responsible for daily operations, while the OIC handles administrative tasks.",
+          "The ORO works only in treatment plants, while the OIC works only in distribution systems.",
+          "The ORO requires more training hours than the OIC."
+        ],
+        "correctIndex": 0,
+        "explanation": "The Overall Responsible Operator (ORO) holds ultimate accountability for the operational performance and regulatory compliance of a drinking water system, as outlined in O. Reg. 128/04. In contrast, the Operator-in-Charge (OIC) is responsible for the direct supervision of the system's operation during their assigned shift, making immediate operational decisions to ensure safe and compliant water production and distribution. While both roles are critical, the ORO's responsibility is strategic and overarching, whereas the OIC's is tactical and shift-specific. Options B, C, and D misrepresent the distinct responsibilities and scope of these roles.",
+        "steps": null,
+        "tip": "Review the Ontario Regulations section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 3
+    },
+    {
+      "id": 35156,
+      "bankKey": "oit",
+      "questionNum": 131,
+      "reviewStatus": "unreviewed",
+      "contentHash": "5b6a330f41a1bf79fd571415db536f3b901b773362976ca9737e4c6846711b19",
+      "content": {
+        "module": "Ontario Regulations",
+        "difficulty": "medium",
+        "question": "Under O. Reg. 129/04, if a wastewater collection facility has a flow rate of 5,000 m³/day, what is the minimum class of operator license required for the Operator-in-Charge (OIC)?",
+        "options": [
+          "Class I.",
+          "Class IV.",
+          "Class III.",
+          "Class II."
+        ],
+        "correctIndex": 2,
+        "explanation": "Under O. Reg. 129/04, the classification of a wastewater collection facility is determined by its average daily design flow. A facility with an average daily design flow between 3,500 m³/day and 17,500 m³/day is classified as a Class III facility. Therefore, the Operator-in-Charge (OIC) for a wastewater collection facility with a flow rate of 5,000 m³/day must hold a minimum Class III operator license. Class I and Class II licenses are for smaller facilities, while a Class IV license is for much larger facilities.",
+        "steps": "[{\"l\":\"Step 1: Understand the Classification System\",\"c\":\"O. Reg. 129/04 classifies wastewater collection facilities using a point system. The total points determine the facility class, which in turn dictates the minimum operator license required for the OIC.\"},{\"l\":\"Step 2: Identify Points for Average Daily Flow\",\"c\":\"According to O. Reg. 129/04, points are awarded for average daily flow at a rate of 1 point for every 100 m³/day. The given flow rate is 5,000 m³/day.\"},{\"l\":\"Step 3: Calculate Points from Flow Rate\",\"c\":\"Points from flow = Average Daily Flow / 100 m³/day/point = 5,000 m³/day / 100 m³/day/point = 50 points.\"},{\"l\":\"Step 4: Determine Total Classification Points\",\"c\":\"The question only provides the flow rate. Assuming no other complexities (e.g., pumping stations, force mains) are present or contribute significantly to raise the score beyond the Class II threshold, the total classification points would be 50 points.\"},{\"l\":\"Step 5: Match Total Points to Facility Class\",\"c\":\"Referencing O. Reg. 129/04, a facility with 50 points falls into the Class II category (21-50 points). Class I is 0-20 points, Class III is 51-75 points, and Class IV is 76+ points.\"},{\"l\":\"Step 6: Determine Minimum OIC License\",\"c\":\"A Class II facility requires a minimum Class II operator license for the Operator-in-Charge.\"}]",
+        "tip": "Review the Ontario Regulations section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 2
+    },
+    {
+      "id": 35158,
+      "bankKey": "oit",
+      "questionNum": 133,
+      "reviewStatus": "unreviewed",
+      "contentHash": "f848117b41b4cdf355a73358cff82437512530912269371f479f5716bf629249",
+      "content": {
+        "module": "Ontario Regulations",
+        "difficulty": "medium",
+        "question": "Under O. Reg. 170/03, what is the required frequency for sampling and testing for E. coli in a large municipal residential drinking water system?",
+        "options": [
+          "A. Once per week.",
+          "B. Once per month.",
+          "C. Varies based on population served.",
+          "D. Daily."
+        ],
+        "correctIndex": 3,
+        "explanation": "Under O. Reg. 170/03, Schedule 10, Section 10-2, large municipal residential drinking water systems are required to sample and test for E. coli daily. This stringent frequency ensures immediate detection of potential fecal contamination, safeguarding public health. The option 'Varies based on population served' is incorrect for E. coli, as that applies to the overall number of distribution system samples, not the specific frequency for E. coli testing itself. Weekly and monthly frequencies are insufficient for E. coli monitoring in such systems.",
+        "steps": null,
+        "tip": "Review the Ontario Regulations section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 4
+    },
+    {
+      "id": 35166,
+      "bankKey": "oit",
+      "questionNum": 141,
+      "reviewStatus": "unreviewed",
+      "contentHash": "0587c37d09b5c821c3118c808582b8085fe2136652e84bd0d1ec71043304abd9",
+      "content": {
+        "module": "Ontario Regulations",
+        "difficulty": "hard",
+        "question": "A municipal drinking water system has a raw water turbidity of 5 NTU. After conventional treatment (coagulation, flocculation, sedimentation, filtration), the filtered water turbidity is consistently 0.1 NTU. According to O. Reg. 170/03, what is the minimum required percentage removal or inactivation of Giardia cysts for this system?",
+        "options": [
+          "99% (2-log removal).",
+          "99.999% (5-log removal).",
+          "99.99% (4-log removal).",
+          "99.9% (3-log removal)."
+        ],
+        "correctIndex": 3,
+        "explanation": "O. Reg. 170/03, referencing the Procedure for Disinfection of Drinking Water in Ontario, requires a minimum 3-log (99.9%) removal or inactivation of Giardia cysts for drinking water systems using conventional filtration. This is a critical multi-barrier approach to protect against waterborne pathogens.",
+        "steps": null,
+        "tip": "Log removal = -log10(Effluent Concentration / Influent Concentration)",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 3
+    },
+    {
+      "id": 35170,
+      "bankKey": "oit",
+      "questionNum": 145,
+      "reviewStatus": "unreviewed",
+      "contentHash": "370a8440b7791e96749b2d76c5ffaf48b16c87fd624679dbaa4a28b9bdcd076b",
+      "content": {
+        "module": "Ontario Regulations",
+        "difficulty": "hard",
+        "question": "Under O. Reg. 170/03, if a non-municipal year-round residential system serves a trailer park with 10 service connections, what is the minimum frequency for sampling and testing for total coliforms?",
+        "options": [
+          "Once every three months.",
+          "Once per month.",
+          "Once every two weeks.",
+          "Once per week."
+        ],
+        "correctIndex": 3,
+        "explanation": "O. Reg. 170/03 specifies different sampling frequencies based on the type and size of the drinking water system. For a non-municipal year-round residential system serving a trailer park with more than five service connections, the minimum frequency for total coliform sampling is once per week.",
+        "steps": null,
+        "tip": "Review the Ontario Regulations section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 4
+    },
+    {
+      "id": 35174,
+      "bankKey": "oit",
+      "questionNum": 149,
+      "reviewStatus": "unreviewed",
+      "contentHash": "6df71b82c52ba7569ffe59c67bc458fd3fab80d5ee005dc0371d2b03fe80ca1d",
+      "content": {
+        "module": "Ontario Regulations",
+        "difficulty": "hard",
+        "question": "Under O. Reg. 170/03, if a drinking water system is deemed to obtain water from a raw water supply that is ground water under the direct influence of surface water (GUDI), what additional treatment requirement is typically imposed?",
+        "options": [
+          "Conventional filtration or an equivalent technology.",
+          "Granular activated carbon filtration.",
+          "Enhanced coagulation.",
+          "Reverse osmosis."
+        ],
+        "correctIndex": 0,
+        "explanation": "For drinking water systems classified as Ground Water Under the Direct Influence of Surface Water (GUDI) under O. Reg. 170/03, the regulation typically mandates treatment equivalent to conventional filtration. This is to ensure adequate removal of pathogens that may be present in surface water sources.",
+        "steps": null,
+        "tip": "Review the Ontario Regulations section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 2
+    },
+    {
+      "id": 35282,
+      "bankKey": "oit",
+      "questionNum": 257,
+      "reviewStatus": "unreviewed",
+      "contentHash": "c7fb8c9eac5b95e33c7c54676d9ee669652b17f6ef65624ad8aadc1ebd878ffa",
+      "content": {
+        "module": "Water Treatment",
+        "difficulty": "medium",
+        "question": "Under O. Reg. 170/03, what is the maximum turbidity allowed in treated water entering the distribution system for a conventional surface water treatment plant?",
+        "options": [
+          "5 NTU",
+          "0.3 NTU in 95% of measurements and never exceeding 1 NTU",
+          "1 NTU",
+          "0.1 NTU at all times"
+        ],
+        "correctIndex": 1,
+        "explanation": "O. Reg. 170/03 requires that treated water turbidity not exceed 1 NTU at any time, and must be ≤0.3 NTU in at least 95% of measurements taken in any calendar month for conventional treatment plants.",
+        "steps": null,
+        "tip": "Know both the absolute maximum (1 NTU) and the 95th percentile standard (0.3 NTU) for turbidity under O. Reg. 170/03.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 1
+    },
+    {
+      "id": 35309,
+      "bankKey": "oit",
+      "questionNum": 284,
+      "reviewStatus": "unreviewed",
+      "contentHash": "06a92242ae662a1dbd0a33137b4f573c25a2c0abc570fca567368601899eabf8",
+      "content": {
+        "module": "Water Treatment",
+        "difficulty": "medium",
+        "question": "According to Ontario's Safe Drinking Water Act, 2002, what is the maximum allowable turbidity for filtered water entering the distribution system?",
+        "options": [
+          "A. 0.1 NTU",
+          "B. 0.3 NTU",
+          "C. 1.0 NTU",
+          "D. 5.0 NTU"
+        ],
+        "correctIndex": 1,
+        "explanation": "Ontario Regulation 170/03, Schedule 7, Section 7-2 (2) states that filtered water entering the distribution system must have a turbidity of 0.3 NTU or less in at least 95% of the measurements taken each month. While no single sample can exceed 1.0 NTU, the 0.3 NTU value represents the primary operational target for continuous compliance. Therefore, 0.3 NTU is the most appropriate answer for the 'maximum allowable' in the context of routine operational compliance.",
+        "steps": null,
+        "tip": "Review the Water Treatment section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 3
+    },
+    {
+      "id": 35319,
+      "bankKey": "oit",
+      "questionNum": 294,
+      "reviewStatus": "unreviewed",
+      "contentHash": "938cf91609e74f918b3976507ce6610afca47a3863524c34e99ea1b28d1086c6",
+      "content": {
+        "module": "Water Treatment",
+        "difficulty": "hard",
+        "question": "In Ontario, what is the specific requirement for the combined filter effluent turbidity for all filters in a conventional or direct filtration plant, as per O. Reg. 170/03?",
+        "options": [
+          "Less than or equal to 0.1 NTU in 95% of samples each month",
+          "Less than or equal to 0.3 NTU in 95% of samples each month",
+          "Less than or equal to 0.5 NTU in 95% of samples each month",
+          "Less than or equal to 1.0 NTU in 95% of samples each month"
+        ],
+        "correctIndex": 1,
+        "explanation": "Ontario Regulation 170/03 specifies that the turbidity of the combined filter effluent from all filters in a conventional or direct filtration plant must be less than or equal to 0.3 NTU in at least 95% of the samples taken in each calendar month.",
+        "steps": null,
+        "tip": "Review the Water Treatment section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 2
+    },
+    {
+      "id": 35320,
+      "bankKey": "oit",
+      "questionNum": 295,
+      "reviewStatus": "unreviewed",
+      "contentHash": "1ca3d98436fea413cd260484cdea854db505aa36f6d5960cbc4619418b80ccae",
+      "content": {
+        "module": "Water Treatment",
+        "difficulty": "hard",
+        "question": "According to Ontario\\'s Drinking Water Quality Management Standard (DWQMS), what is the significance of \\'critical control points\\' in water treatment processes?",
+        "options": [
+          "They are points where water samples are collected for routine testing",
+          "They are points where treated water is discharged",
+          "They are locations for chemical storage",
+          "They are stages where control measures are essential to prevent or eliminate drinking water hazards or reduce them to an acceptable level"
+        ],
+        "correctIndex": 3,
+        "explanation": "Critical control points (CCPs) are specific steps in the water treatment process where control measures can be applied to prevent, eliminate, or reduce a drinking water hazard to an acceptable level, ensuring the safety of the water supply. Monitoring and controlling these points are fundamental to DWQMS.",
+        "steps": null,
+        "tip": "Review the Water Treatment section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 0
+    },
+    {
+      "id": 35337,
+      "bankKey": "oit",
+      "questionNum": 312,
+      "reviewStatus": "unreviewed",
+      "contentHash": "55e7b95044579da9828abc9ee0f61bd9c2ff77dc4dbfa154636f495f47da42b5",
+      "content": {
+        "module": "Water Quality & Sampling",
+        "difficulty": "medium",
+        "question": "Under O. Reg. 170/03, what is the maximum turbidity allowed in treated water at the point of entry to the distribution system for a groundwater system using conventional filtration?",
+        "options": [
+          "1 NTU at all times",
+          "0.1 NTU at all times",
+          "5 NTU at all times",
+          "0.3 NTU in 95% of measurements and never exceeding 1 NTU"
+        ],
+        "correctIndex": 3,
+        "explanation": "O. Reg. 170/03 sets specific turbidity performance criteria for filtered water at the point of entry to the distribution system. For systems using conventional filtration, including groundwater systems under the direct influence of surface water (GUDI), the treated water turbidity must be less than or equal to 0.3 NTU in at least 95% of the measurements taken each month, and must never exceed 1.0 NTU. While the audit flag correctly notes that non-GUDI groundwater systems primarily rely on disinfection and do not have the same filtration requirements, the question specifically asks about a 'groundwater system using conventional filtration,' which implies a GUDI system or a non-GUDI system that has voluntarily implemented conventional filtration. In such cases, the turbidity limits for filtered water apply. Options A, B, and C do not align with the regulatory requirements for filtered water turbidity.",
+        "steps": null,
+        "tip": "Know both the 95th percentile standard (0.3 NTU) and the absolute maximum (1 NTU) for turbidity compliance.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 2
+    },
+    {
+      "id": 35347,
+      "bankKey": "oit",
+      "questionNum": 322,
+      "reviewStatus": "unreviewed",
+      "contentHash": "9f66f28c5a54e14e91b6e4e12dbd08a4a5cdedc54638e63f391e6b42fed8103d",
+      "content": {
+        "module": "Water Quality & Sampling",
+        "difficulty": "medium",
+        "question": "A distribution system sample tests positive for E. coli. Under O. Reg. 170/03, what is the required immediate response?",
+        "options": [
+          "Collect a repeat sample within 24 hours and wait for results before taking action",
+          "Notify the municipality and schedule a main flushing program within 72 hours",
+          "Increase the chlorine residual in the distribution system and collect a confirmation sample",
+          "Immediately notify the Medical Officer of Health and the Ministry, issue a Boil Water Advisory if directed, and begin corrective action"
+        ],
+        "correctIndex": 3,
+        "explanation": "Under O. Reg. 170/03, a positive E. coli result in a distribution system sample requires immediate notification of the Medical Officer of Health (MOH) and the Ministry of Environment. The MOH may direct the operator to issue a Boil Water Advisory. Corrective action and investigation must begin immediately — this is not a situation where you wait for confirmation before acting.",
+        "steps": null,
+        "tip": "E. coli in drinking water = immediate regulatory notification + potential Boil Water Advisory. Do not wait for confirmation before notifying authorities.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 1
+    },
+    {
+      "id": 35348,
+      "bankKey": "oit",
+      "questionNum": 323,
+      "reviewStatus": "unreviewed",
+      "contentHash": "73872f69090ea1bc7eb12b410ef3d37e3bdb307e6d83af73c5b5ce441dc15d89",
+      "content": {
+        "module": "Water Quality & Sampling",
+        "difficulty": "medium",
+        "question": "A distribution system sample tests positive for total coliforms but negative for E. coli. Under O. Reg. 170/03, what is the required response?",
+        "options": [
+          "No action required — total coliforms without E. coli are not a regulatory concern",
+          "Increase chlorine residual and collect a confirmation sample within 7 days",
+          "Immediately issue a Boil Water Advisory and notify the MOH",
+          "Collect a repeat sample within 24 hours; if the repeat is also positive, notify the MOH and investigate"
+        ],
+        "correctIndex": 3,
+        "explanation": "Under O. Reg. 170/03, a positive total coliform result (without E. coli) requires a repeat sample within 24 hours. If the repeat is also positive for total coliforms, the operator must notify the MOH and the Ministry and investigate the source of contamination. A Boil Water Advisory may be issued at the MOH's direction.",
+        "steps": null,
+        "tip": "Total coliform positive = repeat within 24 hours. E. coli positive = immediate notification. Know the difference in response requirements.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 0
+    },
+    {
+      "id": 35354,
+      "bankKey": "oit",
+      "questionNum": 329,
+      "reviewStatus": "unreviewed",
+      "contentHash": "d4d94c052dfd82b68cd6bd4d9d1e4fc87bfff671fdad0dd5057cd747ce2fa631",
+      "content": {
+        "module": "Water Quality & Sampling",
+        "difficulty": "medium",
+        "question": "What is an operator's immediate responsibility upon receiving an adverse drinking water test result (e.g., E. coli present)?",
+        "options": [
+          "Notify the Medical Officer of Health and the Ministry of the Environment, Conservation and Parks.",
+          "Wait for a re-test result.",
+          "Increase chlorine dosage without notification.",
+          "Inform only the system owner."
+        ],
+        "correctIndex": 0,
+        "explanation": "Upon receiving an adverse drinking water test result, such as E. coli presence, an operator's immediate and paramount responsibility is to notify the Medical Officer of Health and the Ministry of the Environment, Conservation and Parks. This is a critical requirement under Ontario Regulation 170/03 (Drinking Water Systems Regulation), which mandates prompt reporting of adverse test results to ensure public health protection and regulatory oversight. Waiting for a re-test, unilaterally increasing chlorine dosage, or informing only the system owner would delay crucial public health interventions and violate regulatory requirements.",
+        "steps": null,
+        "tip": "Review the Water Quality & Sampling section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 1
+    },
+    {
+      "id": 35371,
+      "bankKey": "oit",
+      "questionNum": 346,
+      "reviewStatus": "unreviewed",
+      "contentHash": "027be54e723096ef11fa27626660fd22574ddca93d4b26d7ed16b42e8ec94cbb",
+      "content": {
+        "module": "Water Quality & Sampling",
+        "difficulty": "hard",
+        "question": "According to O. Reg. 169/03, what is the maximum acceptable concentration (MAC) for lead in drinking water at the consumer’s tap?",
+        "options": [
+          "0.100 mg/L.",
+          "0.010 mg/L.",
+          "0.050 mg/L.",
+          "0.005 mg/L."
+        ],
+        "correctIndex": 3,
+        "explanation": "The maximum acceptable concentration (MAC) for lead in drinking water at the consumer's tap, as stipulated by O. Reg. 169/03 (Ontario Drinking Water Quality Standards), is 0.005 mg/L. This standard is in place to protect public health from the adverse effects of lead exposure. The other options represent values that are either higher than the current MAC or are not the established standard under this regulation.",
+        "steps": null,
+        "tip": "Review the Water Quality & Sampling section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 2
+    },
+    {
+      "id": 35378,
+      "bankKey": "oit",
+      "questionNum": 353,
+      "reviewStatus": "unreviewed",
+      "contentHash": "6330ab91b1d2f31bd588f95e19b45c878e3c606bb3d9b8c15fe0e454f15227b0",
+      "content": {
+        "module": "Water Quality & Sampling",
+        "difficulty": "hard",
+        "question": "For filtered surface water systems in Ontario, what is the operational guideline for turbidity in treated water?",
+        "options": [
+          "Less than or equal to 0.3 NTU in 95% of samples taken each month.",
+          "Less than or equal to 1.0 NTU in 95% of samples.",
+          "Less than or equal to 0.1 NTU at all times.",
+          "Less than or equal to 5.0 NTU at all times."
+        ],
+        "correctIndex": 0,
+        "explanation": "For filtered surface water systems in Ontario, the operational guideline for turbidity in treated water is that it must be less than or equal to 0.3 NTU in 95% of the samples taken each month. This guideline is critical for ensuring effective pathogen removal and disinfection.",
+        "steps": null,
+        "tip": "Review the Water Quality & Sampling section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 0
+    },
+    {
+      "id": 35391,
+      "bankKey": "oit",
+      "questionNum": 366,
+      "reviewStatus": "unreviewed",
+      "contentHash": "fee1160e63bda6171598ceab5cb2ab672a12b06d578d36d104fbf231aa6cc718",
+      "content": {
+        "module": "Pumping Systems",
+        "difficulty": "medium",
+        "question": "According to Ontario regulations, what is a key requirement for pump stations regarding emergency power?",
+        "options": [
+          "All pump stations must have a backup generator.",
+          "Pump stations must have an alternative power source or sufficient storage/redundancy to maintain service during power outages.",
+          "Emergency power is only required for stations serving over 10,000 people.",
+          "Emergency power is not required if manual bypass is available."
+        ],
+        "correctIndex": 1,
+        "explanation": "Ontario regulations emphasize the need for continuous operation. Pump stations must have provisions like alternative power, storage, or redundancy to ensure service during power interruptions.",
+        "steps": null,
+        "tip": "Review the Pumping Systems section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 2
+    },
+    {
+      "id": 35393,
+      "bankKey": "oit",
+      "questionNum": 368,
+      "reviewStatus": "unreviewed",
+      "contentHash": "d62b4d1850a9f2e86ba72a8664da9cea58159fab77771a1a4cf3cd184798f461",
+      "content": {
+        "module": "Pumping Systems",
+        "difficulty": "medium",
+        "question": "Under Ontario's O. Reg. 170/03 (Safe Drinking Water Act), what is a critical aspect of pump maintenance records?",
+        "options": [
+          "Only major repairs need to be recorded.",
+          "Records can be discarded after one year.",
+          "Maintenance records are only required for pumps in treatment plants, not distribution systems.",
+          "Records must include details of all maintenance, repairs, and inspections, including dates and personnel involved."
+        ],
+        "correctIndex": 3,
+        "explanation": "O. Reg. 170/03 requires comprehensive record-keeping for all equipment, including pumps. This ensures accountability, traceability, and helps in operational planning and compliance.",
+        "steps": null,
+        "tip": "Review the Pumping Systems section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 0
+    },
+    {
+      "id": 35433,
+      "bankKey": "oit",
+      "questionNum": 408,
+      "reviewStatus": "unreviewed",
+      "contentHash": "d54bb8fff8e6813d113ca2dc1bd4058c8e27ecaed0bf3e680781003613d729ba",
+      "content": {
+        "module": "Chemical Feed & Storage",
+        "difficulty": "easy",
+        "question": "Exit doors from chlorine rooms and storage areas should be hinged to open in which direction?",
+        "options": [
+          "Inwardly",
+          "Upwardly",
+          "Sliding",
+          "Outwardly"
+        ],
+        "correctIndex": 3,
+        "explanation": "Exit doors from chlorine rooms must open outwardly to allow for rapid evacuation in an emergency, especially if pressure builds up inside.",
+        "steps": null,
+        "tip": "Review the Chemical Feed & Storage section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 5
+    },
+    {
+      "id": 35449,
+      "bankKey": "oit",
+      "questionNum": 424,
+      "reviewStatus": "unreviewed",
+      "contentHash": "52d34cda5c0f148a5d65906633b8d9a533f4fb4c3abf151ef939b92a39eb2bc5",
+      "content": {
+        "module": "Chemical Feed & Storage",
+        "difficulty": "hard",
+        "question": "It is recommended that all doors in chemical rooms open in which direction?",
+        "options": [
+          "Outwardly",
+          "Inwardly",
+          "Sliding",
+          "Automatically"
+        ],
+        "correctIndex": 0,
+        "explanation": "Doors in chemical rooms should open outwardly to facilitate quick escape in an emergency and to prevent them from being jammed by internal pressure or spills.",
+        "steps": null,
+        "tip": "Review the Chemical Feed & Storage section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 4
+    },
+    {
+      "id": 35494,
+      "bankKey": "oit",
+      "questionNum": 469,
+      "reviewStatus": "unreviewed",
+      "contentHash": "70ed469c76baddcb9a94ce6bb80bcf2bf64281586fd02dde2ab9089f03e3ea94",
+      "content": {
+        "module": "Wastewater Treatment",
+        "difficulty": "medium",
+        "question": "According to typical effluent quality standards, what is the maximum allowable concentration for Total Suspended Solids (TSS) in treated wastewater discharged to receiving waters?",
+        "options": [
+          "5 mg/L",
+          "25 mg/L",
+          "10 mg/L",
+          "50 mg/L"
+        ],
+        "correctIndex": 1,
+        "explanation": "While specific limits can vary by permit and jurisdiction, a common effluent quality standard for Total Suspended Solids (TSS) in treated wastewater is 25 mg/L. This ensures that the discharged water does not excessively impact the clarity and ecological balance of receiving waters.",
+        "steps": null,
+        "tip": "Review the Wastewater Treatment section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 4
+    },
+    {
+      "id": 35495,
+      "bankKey": "oit",
+      "questionNum": 470,
+      "reviewStatus": "unreviewed",
+      "contentHash": "df4050fa2e3cd39cbcf7f6faefac525106561983f3dccb3905d37ac135460dec",
+      "content": {
+        "module": "Wastewater Treatment",
+        "difficulty": "hard",
+        "question": "Under Ontario's regulatory framework, what is a commonly applied monthly average limit for Total Phosphorus (TP) for a municipal sewage treatment plant discharging to a sensitive receiving water?",
+        "options": [
+          "0.5 mg/L",
+          "0.3 mg/L",
+          "0.1 mg/L",
+          "1.0 mg/L"
+        ],
+        "correctIndex": 0,
+        "explanation": "While Ontario Regulation 129/04 itself does not directly specify a universal monthly average limit for Total Phosphorus (TP), 0.5 mg/L is a widely recognized and frequently applied target or limit for municipal wastewater treatment plants discharging to sensitive receiving waters in Ontario. This value is often incorporated into Environmental Compliance Approvals (ECAs) based on the Ministry of the Environment, Conservation and Parks' (MECP) Phosphorus Management Strategy and site-specific receiving water assessments. The other options (0.3 mg/L, 0.1 mg/L, 1.0 mg/L) are less common as a general monthly average limit for TP in this context, although more stringent limits like 0.1 mg/L can be imposed for highly sensitive areas.",
+        "steps": null,
+        "tip": "Review the Wastewater Treatment section for this concept.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 3
+    },
+    {
+      "id": 35524,
+      "bankKey": "oit",
+      "questionNum": 499,
+      "reviewStatus": "unreviewed",
+      "contentHash": "db4388d98a4cfdab9846be7c0f3bd9c72cfb30c6acc7856743b87d4330b5ff52",
+      "content": {
+        "module": "Wastewater Treatment",
+        "difficulty": "medium",
+        "question": "What is the difference between Class B and Class A biosolids in Ontario?",
+        "options": [
+          "Class A has higher pathogen content than Class B",
+          "There is no difference - both classes have the same land application restrictions",
+          "Class B biosolids can be applied to vegetable gardens; Class A cannot",
+          "Class A biosolids have further reduced pathogens and can be applied to more land uses; Class B has reduced pathogens but has site restrictions"
+        ],
+        "correctIndex": 3,
+        "explanation": "Under Ontario Regulation 267/03, Class A biosolids have further reduced pathogens (FRP) and meet stricter standards, allowing application to a wider range of land uses with fewer site restrictions. Class B biosolids have reduced pathogens (RP) but require site restrictions such as setbacks from water bodies, waiting periods before grazing or harvesting, and cannot be applied to certain sensitive sites.",
+        "steps": null,
+        "tip": "Class A = better quality, fewer restrictions. Class B = more restrictions on land application sites and timing.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 0
+    },
+    {
+      "id": 35526,
+      "bankKey": "oit",
+      "questionNum": 501,
+      "reviewStatus": "unreviewed",
+      "contentHash": "8c49b9503a1210911398598c140e0922a8a696799cdc8cd6267e703d7a009491",
+      "content": {
+        "module": "Water Distribution",
+        "difficulty": "easy",
+        "question": "What is the minimum free chlorine residual required in a drinking water distribution system in Ontario under O. Reg. 170/03?",
+        "options": [
+          "0.05 mg/L",
+          "1.0 mg/L",
+          "0.5 mg/L",
+          "0.2 mg/L"
+        ],
+        "correctIndex": 0,
+        "explanation": "Ontario Regulation 170/03 requires a minimum free chlorine residual of 0.05 mg/L in the distribution system. A reading below 0.05 mg/L must be reported as an adverse water quality incident. Note: many utilities use 0.20 mg/L as an operational target, but the regulatory minimum is 0.05 mg/L.",
+        "steps": null,
+        "tip": "Remember: 0.2 mg/L minimum free Cl₂ in the distribution system — a common exam question.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 10
+    },
+    {
+      "id": 35535,
+      "bankKey": "oit",
+      "questionNum": 510,
+      "reviewStatus": "unreviewed",
+      "contentHash": "b952dda9ef847728f24e536bbe35696fab8f8a963f093b436cca81ccd3fdbb48",
+      "content": {
+        "module": "Water Distribution",
+        "difficulty": "medium",
+        "question": "A new water main has been installed and disinfected with chlorine. Before being put into service, what must the operator verify according to O. Reg. 170/03?",
+        "options": [
+          "The pipe must be pressure tested only — no water quality testing is required",
+          "Only visual inspection is required before placing the main in service",
+          "The main must be flushed for 24 hours continuously before sampling",
+          "A bacteriological sample must be collected and pass before the main is placed in service"
+        ],
+        "correctIndex": 3,
+        "explanation": "Before a new or repaired water main is placed in service in Ontario, bacteriological sampling (total coliform and E. coli) must be conducted and the results must be satisfactory. O. Reg. 170/03 requires this as part of the commissioning process to ensure the main is safe for distribution.",
+        "steps": null,
+        "tip": "New main commissioning: disinfect → flush → sample → satisfactory results → place in service.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 2
+    },
+    {
+      "id": 35547,
+      "bankKey": "oit",
+      "questionNum": 522,
+      "reviewStatus": "unreviewed",
+      "contentHash": "d515958a99bdd1111efc07f819728df168764e52f1f3d11e68f294872e087339",
+      "content": {
+        "module": "Water Distribution",
+        "difficulty": "hard",
+        "question": "A water main break occurs in a residential area. After the repair is completed and the main is recharged, what steps must the operator take before restoring service to customers, according to Ontario regulations?",
+        "options": [
+          "Simply reopen the valves and restore pressure — no additional steps are required",
+          "Notify customers to boil water for 24 hours, then restore service without sampling",
+          "Add extra chlorine to the main and restore service immediately",
+          "Flush the repaired section, collect bacteriological samples, and wait for satisfactory results before restoring service"
+        ],
+        "correctIndex": 3,
+        "explanation": "After a main break repair in Ontario, the operator must: (1) disinfect the repaired section per AWWA C651 procedures, (2) flush the main to remove debris and restore chlorine residual, (3) collect bacteriological samples (total coliform and E. coli), and (4) wait for satisfactory results before restoring service. A boil water advisory may be issued during this period depending on the nature of the break and system conditions.",
+        "steps": null,
+        "tip": "Main break protocol: repair → disinfect → flush → sample → satisfactory results → restore service. May require boil water advisory.",
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 2
+    },
+    {
+      "id": 60210,
+      "bankKey": "oit-ww",
+      "questionNum": 210,
+      "reviewStatus": "unreviewed",
+      "contentHash": "8435b8cc7971be991206c023b34572960539b6b2ebfdc5b1b9d866f843c0a35d",
+      "content": {
+        "module": "Solids Handling & Biosolids",
+        "difficulty": "medium",
+        "question": "According to O. Reg. 267/03, what is a key requirement for land application of biosolids (non-agricultural source materials - NASM)?",
+        "options": [
+          "The NASM must meet specific pathogen reduction and metal concentration limits.",
+          "Biosolids can only be applied to land during the winter months.",
+          "A permit is only required for applying liquid biosolids, not dewatered cake.",
+          "All land-applied biosolids must be Class A quality."
+        ],
+        "correctIndex": 0,
+        "explanation": "O. Reg. 267/03 sets out strict requirements for the land application of NASM, including biosolids. These regulations mandate specific pathogen reduction levels (e.g., Class A or Class B) and maximum allowable concentrations for various metals to protect human health and the environment. Not all biosolids must be Class A, and application timing depends on various factors.",
+        "steps": null,
+        "tip": null,
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 0
+    },
+    {
+      "id": 60219,
+      "bankKey": "oit-ww",
+      "questionNum": 219,
+      "reviewStatus": "unreviewed",
+      "contentHash": "135ec335952b92a555f892297af52b257dcb3f0cfd160bff82af8a0f2198fee7",
+      "content": {
+        "module": "Solids Handling & Biosolids",
+        "difficulty": "medium",
+        "question": "What are the Class A and Class B biosolids designations and how do they differ?",
+        "options": [
+          "Class A biosolids meet stringent pathogen reduction standards (essentially pathogen-free) allowing unrestricted land use; Class B has reduced pathogens but requires site restrictions",
+          "Class A is for agricultural use only while Class B is for landfill only",
+          "Class A contains more nutrients than Class B",
+          "The designations refer to the heavy metal content of the biosolids"
+        ],
+        "correctIndex": 0,
+        "explanation": "Class A biosolids undergo processes that reduce pathogens to below detectable levels (e.g., thermophilic digestion, composting, heat drying, or lime stabilization to pH >12 for >72 hours). They can be used with minimal restrictions. Class B biosolids have reduced but detectable pathogens (typically from mesophilic digestion) and require site restrictions such as buffer zones, crop harvesting delays, and public access limitations.",
+        "steps": null,
+        "tip": null,
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 0
+    },
+    {
+      "id": 60223,
+      "bankKey": "oit-ww",
+      "questionNum": 223,
+      "reviewStatus": "unreviewed",
+      "contentHash": "fd9b7ca85b71999c16aaf76d1946a66861383d5c7e839d244e7d46b3cd82c483",
+      "content": {
+        "module": "Solids Handling & Biosolids",
+        "difficulty": "medium",
+        "question": "Which of the following is a key characteristic of Class A biosolids, as defined by regulatory standards (e.g., USEPA 503, reflected in provincial guidelines)?",
+        "options": [
+          "Pathogen levels are reduced to below detectable limits, allowing for unrestricted public access and use.",
+          "Requires specific land application restrictions due to high heavy metal concentrations.",
+          "Can only be applied to agricultural land with restricted public access.",
+          "Is primarily used for energy recovery through incineration."
+        ],
+        "correctIndex": 0,
+        "explanation": "Class A biosolids have undergone extensive treatment to achieve very low pathogen levels, making them safe for unrestricted public contact and use, similar to a fertilizer. This allows for their use in lawns, gardens, and public parks, with minimal restrictions. This contrasts with Class B biosolids which have more stringent site access and harvesting restrictions.",
+        "steps": null,
+        "tip": null,
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 0
+    },
+    {
+      "id": 60233,
+      "bankKey": "oit-ww",
+      "questionNum": 233,
+      "reviewStatus": "unreviewed",
+      "contentHash": "05e04562cc6799480a4e44f873fc5ab3f6369bd091abd5cb788fc0050f7fc158",
+      "content": {
+        "module": "Solids Handling & Biosolids",
+        "difficulty": "medium",
+        "question": "What is the primary benefit of achieving Class A biosolids, as opposed to Class B biosolids, under regulatory guidelines like those in O. Reg. 267/03?",
+        "options": [
+          "Class A biosolids have significantly fewer restrictions on their use and application.",
+          "Class A biosolids are always incinerated, while Class B are landfilled.",
+          "Class A biosolids contain no heavy metals.",
+          "Class A biosolids are primarily used for energy generation."
+        ],
+        "correctIndex": 0,
+        "explanation": "Class A biosolids have undergone more extensive pathogen reduction and are considered 'pathogen-free' to a higher standard than Class B. This allows for fewer restrictions on their use, such as application to public access lands or as a soil amendment in residential areas, compared to Class B which has stricter setback and access limitations.",
+        "steps": null,
+        "tip": null,
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 0
+    },
+    {
+      "id": 60243,
+      "bankKey": "oit-ww",
+      "questionNum": 243,
+      "reviewStatus": "unreviewed",
+      "contentHash": "1f222dbefd92cbc20b485db934d749a600f75d2595a9ae5b2af032785fbec2b7",
+      "content": {
+        "module": "Solids Handling & Biosolids",
+        "difficulty": "hard",
+        "question": "A municipality is considering land applying biosolids. According to O. Reg. 267/03, what is the maximum allowable concentration of lead (Pb) in biosolids, on a dry weight basis, for unrestricted land application (Category 1 NASM)?",
+        "options": [
+          "150 mg/kg",
+          "500 mg/kg",
+          "300 mg/kg",
+          "1000 mg/kg"
+        ],
+        "correctIndex": 0,
+        "explanation": "According to Ontario Regulation 267/03, for Category 1 NASM (biosolids with the lowest metal concentrations, suitable for most land applications), the maximum allowable concentration for lead (Pb) is 150 mg/kg on a dry weight basis. Higher concentrations require more stringent management.",
+        "steps": null,
+        "tip": null,
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 0
+    },
+    {
+      "id": 60252,
+      "bankKey": "oit-ww",
+      "questionNum": 252,
+      "reviewStatus": "unreviewed",
+      "contentHash": "17d87533aecc08cb46edeaaabdcd3958a24c6897675f0dafce5ea1b1866e77ec",
+      "content": {
+        "module": "Solids Handling & Biosolids",
+        "difficulty": "medium",
+        "question": "What is Non-Agricultural Source Material (NASM) as defined by Ontario Regulation 267/03?",
+        "options": [
+          "Materials other than manure and agricultural crops that are applied to land for their nutrient value or to condition the soil.",
+          "Only biosolids produced from municipal wastewater treatment plants.",
+          "Any material that is composted on a farm.",
+          "Organic material specifically used for animal bedding."
+        ],
+        "correctIndex": 0,
+        "explanation": "NASM, under O. Reg. 267/03, refers to nutrient-containing materials from non-agricultural sources (like municipal biosolids, industrial sludges, or food processing wastes) that are applied to agricultural land. It excludes manure and agricultural crops, and its land application is strictly regulated to ensure environmental protection and public health.",
+        "steps": null,
+        "tip": null,
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 0
+    },
+    {
+      "id": 60265,
+      "bankKey": "oit-ww",
+      "questionNum": 265,
+      "reviewStatus": "unreviewed",
+      "contentHash": "c17917773550ca8856a6368e0cfeee06ee2eca543043cd983f42f637d13d6402",
+      "content": {
+        "module": "Wastewater Collection Systems",
+        "difficulty": "hard",
+        "question": "What is the minimum self-cleansing velocity generally recommended for sanitary sewers to prevent solids from settling and causing blockages?",
+        "options": [
+          "0.3 m/s",
+          "0.6 m/s",
+          "1.2 m/s",
+          "2.0 m/s"
+        ],
+        "correctIndex": 1,
+        "explanation": "A minimum self-cleansing velocity of approximately 0.6 m/s (2 feet per second) is generally considered necessary in sanitary sewers. This velocity helps keep solids entrained in the flow, preventing their deposition and accumulation, which could lead to blockages and the generation of odors and corrosive gases.",
+        "steps": null,
+        "tip": null,
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 0
+    },
+    {
+      "id": 60408,
+      "bankKey": "oit-ww",
+      "questionNum": 408,
+      "reviewStatus": "unreviewed",
+      "contentHash": "84137e7379f6982060220056890e8d2db160bb38886a3c33c26841e0b9471095",
+      "content": {
+        "module": "Ontario Regulations & Safety",
+        "difficulty": "medium",
+        "question": "What is the primary purpose of an Environmental Compliance Approval (ECA) for a wastewater treatment plant in Ontario?",
+        "options": [
+          "To provide a license for the operators working at the plant.",
+          "To specify the maximum effluent discharge limits and operational requirements for environmental protection.",
+          "To outline the plant's emergency response plan for chemical spills.",
+          "To certify the plant's equipment meets international manufacturing standards."
+        ],
+        "correctIndex": 1,
+        "explanation": "An Environmental Compliance Approval (ECA), formerly known as a Certificate of Approval (CofA), is issued by the Ministry of the Environment, Conservation and Parks (MECP). It legally authorizes the operation of a wastewater treatment plant and sets out specific conditions, including effluent discharge limits and operational requirements, to ensure environmental protection.",
+        "steps": null,
+        "tip": null,
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 0
+    },
+    {
+      "id": 60410,
+      "bankKey": "oit-ww",
+      "questionNum": 410,
+      "reviewStatus": "unreviewed",
+      "contentHash": "746d5b10da727f574a5e9cd785ee5d80f7855a8e6185e897e69ad60e7e8bf457",
+      "content": {
+        "module": "Ontario Regulations & Safety",
+        "difficulty": "medium",
+        "question": "Under what circumstances should a spill of untreated wastewater that could adversely affect the natural environment be reported to the Spills Action Centre (SAC) of the MOECC?",
+        "options": [
+          "Only if the spill volume exceeds 10,000 litres.",
+          "Only during regular business hours.",
+          "Immediately, regardless of volume, if it may cause an adverse effect.",
+          "Within 24 hours, after local cleanup efforts are complete."
+        ],
+        "correctIndex": 2,
+        "explanation": "Any spill of a pollutant that causes or is likely to cause an adverse effect to the natural environment must be reported immediately to the Spills Action Centre (SAC). This is a legal requirement under the Environmental Protection Act, regardless of the volume, specific time of day, or completion of cleanup.",
+        "steps": null,
+        "tip": null,
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 0
+    },
+    {
+      "id": 60447,
+      "bankKey": "oit-ww",
+      "questionNum": 447,
+      "reviewStatus": "unreviewed",
+      "contentHash": "06dce2d7209825d41afb0b974e78c2ee06a246e9d0f862fabf29d374409307e6",
+      "content": {
+        "module": "Ontario Regulations & Safety",
+        "difficulty": "medium",
+        "question": "When is an Environmental Compliance Approval (ECA) generally required for a new or modified wastewater treatment facility in Ontario?",
+        "options": [
+          "Only for facilities discharging directly to a lake",
+          "Before any construction or alteration begins that affects the facility's environmental impact",
+          "After the facility has been in operation for one year",
+          "Only for facilities serving a population greater than 10,000 people"
+        ],
+        "correctIndex": 1,
+        "explanation": "An Environmental Compliance Approval (ECA) is required for most industrial or commercial activities that discharge contaminants into the natural environment. For wastewater treatment facilities, an ECA is a critical regulatory instrument that must be obtained from the Ministry of the Environment, Conservation and Parks (MECP) before construction, modification, or expansion that could affect its environmental impact.",
+        "steps": null,
+        "tip": null,
+        "isCalc": "no",
+        "topic": null,
+        "cognitiveLevel": null,
+        "sourceTitle": null,
+        "sourceReference": null,
+        "sourceUrl": null,
+        "blueprintObjective": null
+      },
+      "attemptCount": 0
+    }
+  ],
+  "baselineChecksum": "6acd234a8d6f2c243d606c7a56190faed72e4dfcd780bda1188cdc8e1880dfc6"
+}

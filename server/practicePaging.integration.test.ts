@@ -1,0 +1,191 @@
+import { randomUUID } from "node:crypto";
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { and, eq, inArray } from "drizzle-orm";
+import { issueSubscriptionToken } from "./_core/subscriptionToken";
+import { resolveAccessForRequest } from "./_core/accessService";
+import { appRouter } from "./routers";
+import { getDb } from "./db";
+import { bookmarks, examResults, productAnalyticsEvents, questionAttempts, questions, purchases, studentProfiles } from "../drizzle/schema";
+import type { TrpcContext } from "./_core/context";
+import { hashAnalyticsEmail } from "./analytics";
+import { assertLearnerIntegrationDatabaseTarget } from "./learnerIntegrationGuard";
+
+const suffix = randomUUID();
+const email = `paging-${suffix}@echelon.test`, otherEmail = `other-${suffix}@echelon.test`;
+const bankKey = "class3-water-dist";
+const module = `Paging ${suffix}`;
+const ids = Array.from({ length: 125 }, (_, i) => 930001 + i);
+const ctx = (email?: string): TrpcContext => ({ user: null, studentEmail: email ?? null, req: { headers: {}, cookies: {} }, res: {} }) as TrpcContext;
+const learner = appRouter.createCaller(ctx(email));
+let db: NonNullable<Awaited<ReturnType<typeof getDb>>>;
+const suite = process.env.LEARNER_INTEGRATION_TEST_DB === "1" ? describe : describe.skip;
+suite("practice slices and mock retirement with a real database", () => {
+  beforeAll(async () => {
+    assertLearnerIntegrationDatabaseTarget(process.env.DATABASE_URL);
+    const connection = await getDb(); if (!connection) throw new Error("Test database required"); db = connection;
+    await db.insert(purchases).values({ email, productKey: bankKey, productName: "Paging QA", amountCAD: 29900, stripeSessionId: `cs_${suffix}` });
+    await db.insert(questions).values(ids.map((questionNum, i) => ({ bankKey, questionNum,
+      module: i < 80 ? module : `${module} rare`, difficulty: i % 2 ? "hard" as const : "easy" as const,
+      isCalc: i % 2 ? "yes" as const : "no" as const, question: `Paging QA ${questionNum}`,
+      options: '["A","B","C","D"]', correctIndex: 0, explanation: "Synthetic paging QA.", reviewStatus: "approved" as const,
+    })));
+  });
+  afterAll(async () => {
+    if (!db) return;
+    await db.delete(productAnalyticsEvents).where(inArray(productAnalyticsEvents.emailHash, [
+      hashAnalyticsEmail(email), hashAnalyticsEmail(otherEmail),
+    ]));
+    for (const table of [questionAttempts, bookmarks, examResults, studentProfiles]) await db.delete(table).where(inArray(table.studentEmail, [email, otherEmail]));
+    await db.delete(questions).where(and(eq(questions.bankKey, bankKey), inArray(questions.questionNum, ids)));
+    await db.delete(purchases).where(eq(purchases.email, email));
+  });
+  it("returns unseen questions from the selected module after the first 50 answers", async () => {
+    const first = await learner.quiz.getRandomQuestions({ bankKey, module, limit: 50 });
+    expect(first.questions).toHaveLength(50);
+    await db.insert(questionAttempts).values(first.questions.map(q => ({ studentEmail: email, examType: bankKey, bankKey, courseKey: bankKey,
+      questionId: q.id, correct: "yes" as const, topic: module })));
+    const second = await learner.quiz.getRandomQuestions({ bankKey, module, excludeIds: first.questions.map(q => q.id), limit: 50 });
+    expect(second.questions).toHaveLength(30);
+    expect(new Set([...first.questions, ...second.questions].map(q => q.id)).size).toBe(80);
+    expect(second.questions.every(q => q.module === module)).toBe(true);
+    expect(second.total).toBe(80);
+  });
+  it("applies calculation and difficulty filters before sampling, with no unrelated fallback", async () => {
+    const result = await learner.quiz.getRandomQuestions({ bankKey, module: `${module} rare`, calcOnly: true, difficulty: "hard" });
+    expect(result.questions.length).toBeGreaterThan(10);
+    expect(result.questions.every(q => q.module === `${module} rare` && q.isCalc && q.difficulty === "hard")).toBe(true);
+    expect((await learner.quiz.getRandomQuestions({ bankKey, module, calcOnly: true, difficulty: "easy" })).questions).toEqual([]);
+  });
+  it("retires only absent topics, preserving canonical diagnostic topics and empty valid slices", async () => {
+    const topic = `Canonical diagnostic ${suffix}`;
+    await db.update(questions).set({ topic }).where(and(eq(questions.bankKey, bankKey), eq(questions.questionNum, ids[0])));
+    const valid = await learner.quiz.getRandomQuestions({ bankKey, topic });
+    expect(valid.questions.map(q => q.id)).toEqual([ids[0]]);
+    expect(valid.topicUnavailable).toBe(false);
+    for (const slice of [{ calcOnly: true }, { reviewMode: "bookmarked" as const }, { excludeIds: [ids[0]] }, { module: `${module} rare` }]) {
+      const empty = await learner.quiz.getRandomQuestions({ bankKey, topic, ...slice });
+      expect(empty.questions).toEqual([]);
+      expect(empty.topicUnavailable).toBe(false);
+    }
+    const fallbackModuleTopic = await learner.quiz.getRandomQuestions({ bankKey, topic: `${module} rare` });
+    expect(fallbackModuleTopic.questions.length).toBeGreaterThan(0);
+    expect(fallbackModuleTopic.topicUnavailable).toBe(false);
+    const retired = await learner.quiz.getRandomQuestions({ bankKey, topic: `Retired ${suffix}` });
+    expect(retired.questions).toEqual([]);
+    expect(retired.topicUnavailable).toBe(true);
+  });
+  it("fetches the actual saved review questions with course, latest-attempt and identity isolation", async () => {
+    await db.insert(bookmarks).values([
+      { studentEmail: email, bankKey, questionId: ids[120] },
+      { studentEmail: otherEmail, bankKey, questionId: ids[121] },
+      { studentEmail: email, bankKey: "class4-water-dist", questionId: ids[122] },
+    ]);
+    const base = { studentEmail: email, examType: bankKey, bankKey, courseKey: bankKey, topic: module };
+    await db.insert(questionAttempts).values([
+      { ...base, questionId: ids[110], correct: "no", confidence: "low" },
+      { ...base, questionId: ids[111], correct: "no", confidence: "low" },
+      { ...base, questionId: ids[111], correct: "yes", confidence: "high" },
+      { ...base, questionId: ids[112], correct: "yes", confidence: "low" },
+      { ...base, studentEmail: otherEmail, questionId: ids[113], correct: "no", confidence: "low" },
+      { ...base, courseKey: "class4-water-dist", questionId: ids[114], correct: "no", confidence: "low" },
+    ]);
+    const get = async (reviewMode: "missed" | "bookmarked" | "low-confidence") =>
+      (await learner.quiz.getRandomQuestions({ bankKey, reviewMode })).questions.map(q => q.id).sort();
+    expect(await get("bookmarked")).toEqual([ids[120]]);
+    expect(await get("missed")).toEqual([ids[110]]);
+    expect(await get("low-confidence")).toEqual([ids[110], ids[112]]);
+    expect((await learner.quiz.getRandomQuestions({ bankKey, reviewMode: "bookmarked", excludeIds: [ids[120]] })).questions).toEqual([]);
+    await expect(appRouter.createCaller(ctx()).quiz.getRandomQuestions({ bankKey, reviewMode: "bookmarked" })).rejects.toThrow("Sign in");
+  }, 15_000);
+  it("keeps free previews fixed across exclusions, module and calculation changes", async () => {
+    const guest = appRouter.createCaller(ctx());
+    const preview = await guest.quiz.getRandomQuestions({ bankKey });
+    expect(preview.locked).toBe(true);
+    expect(preview.questions).toHaveLength(15);
+    const remaining = await guest.quiz.getRandomQuestions({ bankKey, excludeIds: preview.questions.map(q => q.id) });
+    expect(remaining.questions).toEqual([]);
+    const filtered = await guest.quiz.getRandomQuestions({ bankKey, module, calcOnly: true });
+    expect(filtered.questions.every(q => preview.questions.some(p => p.id === q.id))).toBe(true);
+  });
+  it("binds delivered practice to its learner and canonical course", async () => {
+    const issued = await learner.quiz.getRandomQuestions({ bankKey, module, limit: 1 });
+    const q = issued.questions[0];
+    const sessionId = randomUUID();
+    const input = { bankKey, examType: "wpi-class4-wastewater", questionId: q.id, selectedIndex: 0, attemptToken: q.attemptToken, sessionId };
+    for (const invalid of [{ ...input, attemptToken: undefined }, { ...input, attemptToken: q.attemptToken + "bad" },
+      { ...input, questionId: 99999999 }, { ...input, bankKey: "class4-water-dist" }]) {
+      expect(await learner.quiz.logAttempt(invalid)).toEqual({ success: false });
+    }
+    expect(await appRouter.createCaller(ctx(otherEmail)).quiz.logAttempt(input)).toEqual({ success: false });
+    expect(await db.select().from(questionAttempts).where(eq(questionAttempts.sessionId, sessionId))).toHaveLength(0);
+    expect(await learner.quiz.logAttempt(input)).toEqual({ success: true, correct: true });
+    const rows = await db.select().from(questionAttempts).where(eq(questionAttempts.sessionId, sessionId));
+    expect(rows).toHaveLength(1);
+    expect(rows[0]).toMatchObject({ studentEmail: email, examType: bankKey, courseKey: bankKey, bankKey, questionId: q.id });
+  });
+  it("rechecks refunds and visibility after a practice question was delivered", async () => {
+    const q = (await learner.quiz.getRandomQuestions({ bankKey, module, limit: 1 })).questions[0];
+    const sessionId = randomUUID();
+    const input = { bankKey, examType: bankKey, questionId: q.id, selectedIndex: 0, attemptToken: q.attemptToken, sessionId };
+    try {
+      await db.update(purchases).set({ status: "refunded" }).where(eq(purchases.email, email));
+      expect(await learner.quiz.logAttempt(input)).toEqual({ success: false });
+      await db.update(purchases).set({ status: "active" }).where(eq(purchases.email, email));
+      await db.update(questions).set({ reviewStatus: "rejected" }).where(and(eq(questions.bankKey, bankKey), eq(questions.questionNum, q.id)));
+      expect(await learner.quiz.logAttempt(input)).toEqual({ success: false });
+      expect(await db.select().from(questionAttempts).where(eq(questionAttempts.sessionId, sessionId))).toHaveLength(0);
+    } finally {
+      await db.update(purchases).set({ status: "active" }).where(eq(purchases.email, email));
+      await db.update(questions).set({ reviewStatus: "approved" }).where(and(eq(questions.bankKey, bankKey), eq(questions.questionNum, q.id)));
+    }
+  });
+  it("scores only issued guest previews without creating unowned history", async () => {
+    const guest = appRouter.createCaller(ctx());
+    const issued = await guest.quiz.getRandomQuestions({ bankKey });
+    const q = issued.questions[0];
+    const sessionId = randomUUID();
+    const input = { bankKey, examType: bankKey, questionId: q.id, selectedIndex: q.correctIndex, attemptToken: q.attemptToken, sessionId };
+    expect(await guest.quiz.logAttempt(input)).toEqual({ success: true, correct: true });
+    const outsidePreview = ids.find(id => !issued.questions.some(q => q.id === id))!;
+    expect(await guest.quiz.logAttempt({ ...input, questionId: outsidePreview })).toEqual({ success: false });
+    expect(await db.select().from(questionAttempts).where(eq(questionAttempts.sessionId, sessionId))).toHaveLength(0);
+  });
+  it("attributes token-only practice while preventing a token from overriding a different signed-in account", async () => {
+    const accessToken = await issueSubscriptionToken({ email, examTypes: [bankKey] });
+    const guest = appRouter.createCaller(ctx());
+    const q = (await guest.quiz.getRandomQuestions({ bankKey, module, limit: 1, accessToken })).questions[0];
+    const sessionId = randomUUID();
+    expect(await guest.quiz.logAttempt({ bankKey, examType: bankKey, questionId: q.id, selectedIndex: 0,
+      attemptToken: q.attemptToken, accessToken, sessionId })).toEqual({ success: true, correct: true });
+    const rows = await db.select().from(questionAttempts).where(eq(questionAttempts.sessionId, sessionId));
+    expect(rows).toHaveLength(1);
+    expect(rows[0].studentEmail).toBe(email);
+    expect(await resolveAccessForRequest(ctx(otherEmail), bankKey, { accessToken })).toBe(false);
+    const anotherAccount = await appRouter.createCaller(ctx(otherEmail)).quiz.getRandomQuestions({ bankKey, accessToken });
+    expect(anotherAccount.locked).toBe(true);
+  });
+  it("saves a full mock with retired questions and returns the same score on replay", async () => {
+    const issued = await learner.exam.startMock({ courseKey: bankKey });
+    expect(issued.questions).toHaveLength(100);
+    const retired = issued.questions.slice(0, 2).map(q => q.id);
+    try {
+      await db.update(questions).set({ reviewStatus: "in_review" }).where(and(eq(questions.bankKey, bankKey), inArray(questions.questionNum, retired)));
+      const submission = { sessionId: issued.sessionId, sessionToken: issued.token, examType: issued.examType, bankKey,
+        answers: issued.questions.map(q => ({ questionNum: q.id, selectedIndex: 0 })) };
+      const first = await learner.exam.submitMock(submission);
+      const expectedScore = first.review.filter(item => item.correctIndex === 0).length;
+      expect(first).toMatchObject({ score: expectedScore, total: 100, unavailableCount: 2, persisted: true });
+      const replay = await learner.exam.submitMock(submission);
+      expect(replay).toMatchObject({ score: expectedScore, total: 100, unavailableCount: 2, persisted: true });
+      const rows = await db.select().from(questionAttempts).where(eq(questionAttempts.sessionId, issued.sessionId));
+      expect(rows).toHaveLength(100);
+      expect(rows.filter(r => retired.includes(r.questionId)).every(r => r.correct === "no")).toBe(true);
+      expect(rows.filter(r => retired.includes(r.questionId))).toHaveLength(2);
+      expect(await learner.exam.getHistory({ sessionId: randomUUID(), examType: bankKey })).toEqual([
+        expect.objectContaining({ score: expectedScore, total: 100, moduleBreakdown: expect.objectContaining({ "Unavailable questions at submission": { correct: 0, total: 2 } }) }),
+      ]);
+    } finally {
+      await db.update(questions).set({ reviewStatus: "approved" }).where(and(eq(questions.bankKey, bankKey), inArray(questions.questionNum, retired)));
+    }
+  });
+});

@@ -16,8 +16,18 @@
 // Types
 // ---------------------------------------------------------------------------
 
-export type ExamFamily = "ontario" | "western";
-export type ProvinceOrRegion = "ontario" | "western";
+/**
+ * Regulatory exam families.
+ *
+ * "us-wpi" is a SEPARATE family from "western". Both reference WPI-aligned
+ * material, but US courses carry their own course keys, question bank keys,
+ * products and mock profile. "us-state" is a separate, state-specific US
+ * family. A Canadian bank is never reachable from a US course key, and a US
+ * bank is never reachable from a Canadian one. Any code branching on family
+ * must handle all four cases explicitly.
+ */
+export type ExamFamily = "ontario" | "western" | "us-wpi" | "us-state";
+export type ProvinceOrRegion = "ontario" | "western" | "united-states";
 export type TrackType =
   | "water-treatment"
   | "wastewater-treatment"
@@ -308,8 +318,8 @@ const REGISTRY: CourseEntry[] = [
   // ── Ontario Water Distribution ────────────────────────────────────────────
   {
     courseKey: "class1-water-dist",
-    displayName: "Class 1 Water Distribution",
-    shortName: "Class 1 Distribution",
+    displayName: "Class 1 Water Distribution and Supply",
+    shortName: "Class 1 Distribution & Supply",
     provinceOrRegion: "ontario",
     examFamily: "ontario",
     track: "water-distribution",
@@ -327,8 +337,8 @@ const REGISTRY: CourseEntry[] = [
   },
   {
     courseKey: "class2-water-dist",
-    displayName: "Class 2 Water Distribution",
-    shortName: "Class 2 Distribution",
+    displayName: "Class 2 Water Distribution and Supply",
+    shortName: "Class 2 Distribution & Supply",
     provinceOrRegion: "ontario",
     examFamily: "ontario",
     track: "water-distribution",
@@ -346,8 +356,8 @@ const REGISTRY: CourseEntry[] = [
   },
   {
     courseKey: "class3-water-dist",
-    displayName: "Class 3 Water Distribution",
-    shortName: "Class 3 Distribution",
+    displayName: "Class 3 Water Distribution and Supply",
+    shortName: "Class 3 Distribution & Supply",
     provinceOrRegion: "ontario",
     examFamily: "ontario",
     track: "water-distribution",
@@ -365,8 +375,8 @@ const REGISTRY: CourseEntry[] = [
   },
   {
     courseKey: "class4-water-dist",
-    displayName: "Class 4 Water Distribution",
-    shortName: "Class 4 Distribution",
+    displayName: "Class 4 Water Distribution and Supply",
+    shortName: "Class 4 Distribution & Supply",
     provinceOrRegion: "ontario",
     examFamily: "ontario",
     track: "water-distribution",
@@ -767,6 +777,71 @@ const REGISTRY: CourseEntry[] = [
     aliases: ["wpi-class4-wastewater-coll"],
     isActive: true,
   },
+  // ── United States Class I (held pending content approval) ─────────────────
+  // These carry their own question bank keys and products. They are inactive
+  // until father approves the reviewed US content, so they are excluded from
+  // every active-course listing, SEO page and purchasable catalogue.
+  {
+    courseKey: "us-class1-water",
+    displayName: "US Class I Water Treatment",
+    shortName: "US Class I Water",
+    provinceOrRegion: "united-states",
+    examFamily: "us-wpi",
+    track: "water-treatment",
+    classLevel: 1,
+    quizPath: "/us-class1-water",
+    mockExamPath: "/us-class1-water-mock",
+    flashcardPath: "/us-class1-water-flashcards",
+    formulaPath: "/formulas-us-class1",
+    productKey: "us-class1-water",
+    subscriptionTier: "class1",
+    questionBankKey: "us-class1-water",
+    teamAssignable: false,
+    aliases: [],
+    isActive: true,
+  },
+  {
+    courseKey: "us-class1-water-dist",
+    displayName: "US Class I Water Distribution",
+    shortName: "US Class I Distribution",
+    provinceOrRegion: "united-states",
+    examFamily: "us-wpi",
+    track: "water-distribution",
+    classLevel: 1,
+    quizPath: "/us-class1-water-dist",
+    mockExamPath: "/us-class1-water-dist-mock",
+    flashcardPath: "/us-class1-water-dist-flashcards",
+    formulaPath: "/formulas-us-class1",
+    productKey: "us-class1-water-dist",
+    subscriptionTier: "class1",
+    questionBankKey: "us-class1-water-dist",
+    teamAssignable: false,
+    aliases: [],
+    isActive: true,
+  },
+  // ── Texas Class D Water (state-specific, governed commercial release) ──
+  // Texas Class D is a combined entry credential spanning treatment and
+  // distribution. This separate family prevents it from inheriting any WPI or
+  // Canadian entitlement, bank, route or source claim.
+  {
+    courseKey: "us-texas-class-d-water",
+    displayName: "Texas Class D Water",
+    shortName: "Texas Class D Water",
+    provinceOrRegion: "united-states",
+    examFamily: "us-state",
+    track: "water-treatment",
+    classLevel: 0,
+    quizPath: "/us-texas-class-d-water",
+    mockExamPath: "/us-texas-class-d-water-mock",
+    flashcardPath: "/us-texas-class-d-water-flashcards",
+    formulaPath: "/formulas-us-texas-class-d-water",
+    productKey: "us-texas-class-d-water",
+    subscriptionTier: "all-access",
+    questionBankKey: "us-texas-class-d-water",
+    teamAssignable: false,
+    aliases: [],
+    isActive: true,
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -894,6 +969,26 @@ export function getAllActiveCourseKeysForFamily(family: ExamFamily): string[] {
   return REGISTRY.filter((e) => e.examFamily === family && e.isActive).map(
     (e) => e.courseKey,
   );
+}
+
+/**
+ * True when a course may be presented to a learner studying in the United
+ * States. Two different families qualify, and they are NOT interchangeable:
+ *
+ * - "us-wpi": a dedicated US Class I course with its own US question bank,
+ *   blueprint and formula sheet.
+ * - "western": the shared WPI-aligned Canadian course that US learners can
+ *   also buy, presented honestly as shared preparation.
+ * - "us-state": a dedicated state-specific US course with a state-owned bank
+ *   identity and no implied WPI match.
+ *
+ * Callers that need to distinguish the two must test `examFamily` directly.
+ * This helper exists only so US-context presentation (course bar labels,
+ * study-context links) covers both instead of silently falling back to an
+ * Ontario label.
+ */
+export function isUSPresentableFamily(family: ExamFamily | undefined): boolean {
+  return family === "us-wpi" || family === "us-state" || family === "western";
 }
 
 /**

@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
+  FULL_ACCESS_QUESTION_LIMIT,
   OIT_PREVIEW_CALC_MINIMUMS,
   OIT_PREVIEW_LIMITS,
+  buildFullAccessSample,
   buildPreviewSample,
   previewRowsForBank,
   previewLimitForRequest,
@@ -80,5 +82,20 @@ describe("server-owned OIT preview pools", () => {
       "Hydraulics",
     ]);
     expect(previewRowsForBank(rows, "oit-ww")).toEqual(rows);
+  });
+
+  it("returns a bounded, module-balanced paid working set", () => {
+    const rows = Array.from({ length: 1_050 }, (_, index) => ({
+      id: index + 1,
+      module: `Module ${(index % 10) + 1}`,
+      isCalc: index % 5 === 0 ? "yes" : "no",
+    }));
+
+    const sample = buildFullAccessSample(rows, FULL_ACCESS_QUESTION_LIMIT, () => 0.5);
+
+    expect(sample).toHaveLength(200);
+    expect(new Set(sample.map(row => row.id)).size).toBe(200);
+    expect(new Set(sample.map(row => row.module)).size).toBe(10);
+    expect(rows).toHaveLength(1_050);
   });
 });

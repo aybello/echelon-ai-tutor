@@ -1,55 +1,115 @@
-import { useEffect, useRef } from "react";
-import { trpc } from "@/lib/trpc";
+import { useEffect, useRef, useState } from "react";
+import { createTRPCClient, httpLink } from "@trpc/client";
+import superjson from "superjson";
+import type { AppRouter } from "../../../server/routers";
+import { createStudyRecorder, type StudyStatus } from "@/lib/studyRecorder";
 
-export type LearningActivityType = "quiz" | "mock_exam" | "flashcards" | "process_guide" | "ai_tutor";
-type Options = { courseKey: string; activityType: LearningActivityType; enabled: boolean; topic?: string | null; unitsCompleted?: number; score?: number; total?: number };
-
-/** Records only visible, recently-interacted study time. The server also caps elapsed time and rejects stale or duplicate heartbeats. */
-export function useLearningActivitySession(options: Options): void {
-  const startMutation = trpc.training.start.useMutation();
-  const heartbeatMutation = trpc.training.heartbeat.useMutation();
-  const completeMutation = trpc.training.complete.useMutation();
-  const valuesRef = useRef(options);
-  const mutationsRef = useRef({ startMutation, heartbeatMutation, completeMutation });
-  valuesRef.current = options;
-  mutationsRef.current = { startMutation, heartbeatMutation, completeMutation };
-
+export type LearningActivityType =
+  "quiz" | "mock_exam" | "flashcards" | "process_guide" | "ai_tutor";
+type Options = {
+  courseKey: string;
+  activityType: LearningActivityType;
+  enabled: boolean;
+  identityKey?: string;
+  topic?: string | null;
+  unitsCompleted?: number;
+  score?: number;
+  total?: number;
+};
+// A separate non-batched transport keeps each final request small and permits it
+// to finish during a page close. The normal verified cookies remain authoritative.
+const delivery = createTRPCClient<AppRouter>({
+  links: [
+    httpLink({
+      url: "/api/trpc",
+      transformer: superjson,
+      fetch: (input, init) =>
+        fetch(input, { ...init, credentials: "include", keepalive: true }),
+    }),
+  ],
+});
+export function useLearningActivitySession(options: Options) {
+  const [state, setState] = useState<{
+    status: StudyStatus;
+    unsavedSeconds: number;
+  }>({ status: "ready", unsavedSeconds: 0 });
+  const values = useRef(options);
+  values.current = options;
+  const retryRef = useRef(() => {});
   useEffect(() => {
-    if (!options.enabled || !options.courseKey) return;
-    let sessionKey = crypto.randomUUID(), startRequested = false, tracking = false, stopped = false, sequence = 0, pendingSeconds = 0;
-    let lastInteractionAt: number | null = null;
-    let writeChain: Promise<unknown> = Promise.resolve();
-    const recover = (error: unknown) => {
-      const code = (error as { data?: { code?: string } })?.data?.code;
-      if (code !== "BAD_REQUEST" && code !== "NOT_FOUND") return;
-      tracking = false; startRequested = false; sessionKey = crypto.randomUUID(); sequence = 0; pendingSeconds = 0;
+    if (!options.enabled || !options.courseKey) {
+      setState({ status: "ready", unsavedSeconds: 0 });
+      return;
+    }
+    let disposed = false;
+    const recorder = createStudyRecorder({
+      key: () => crypto.randomUUID(),
+      start: (sessionKey, startedAt) =>
+        delivery.training.start.mutate({
+          sessionKey,
+          startedAt,
+          courseKey: options.courseKey,
+          activityType: options.activityType,
+          topic: values.current.topic?.slice(0, 128) || undefined,
+        }),
+      write: (payload, complete) =>
+        complete
+          ? delivery.training.complete.mutate(payload)
+          : delivery.training.heartbeat.mutate(payload),
+      values: () => ({
+        unitsCompleted: Math.max(0, values.current.unitsCompleted ?? 0),
+        topic: values.current.topic?.slice(0, 128) || undefined,
+        score: values.current.score,
+        total: values.current.total,
+      }),
+      status: (status, unsavedSeconds) => {
+        if (!disposed) setState({ status, unsavedSeconds });
+      },
+    });
+    retryRef.current = () => void recorder.flush();
+    const interact = () => recorder.interact();
+    const flush = () => void recorder.flush();
+    const pagehide = (event: PageTransitionEvent) => {
+      if (event.persisted) flush();
+      else void recorder.stop();
     };
-    const begin = () => {
-      if (startRequested) return;
-      startRequested = true;
-      void mutationsRef.current.startMutation.mutateAsync({ sessionKey, courseKey: options.courseKey, activityType: options.activityType, topic: options.topic?.slice(0, 128) || undefined })
-        .then((result) => { tracking = result.tracking; })
-        .catch(() => { tracking = false; });
+    const visibility = () => {
+      if (document.visibilityState === "hidden") flush();
     };
-    const interact = () => { lastInteractionAt = Date.now(); begin(); };
-    const events: Array<keyof WindowEventMap> = ["pointerdown", "keydown", "scroll", "touchstart"];
-    events.forEach((event) => window.addEventListener(event, interact, { passive: true }));
-    const activeTimer = window.setInterval(() => {
-      if (tracking && lastInteractionAt && document.visibilityState === "visible" && Date.now() - lastInteractionAt <= 60_000) pendingSeconds = Math.min(45, pendingSeconds + 1);
-    }, 1_000);
-    const flush = () => {
-      if (!tracking || pendingSeconds <= 0) return;
-      const activeSeconds = pendingSeconds; pendingSeconds = 0; sequence += 1;
-      const current = valuesRef.current;
-      writeChain = writeChain.then(() => mutationsRef.current.heartbeatMutation.mutateAsync({ sessionKey, sequence, activeSeconds, unitsCompleted: Math.max(0, current.unitsCompleted ?? 0), topic: current.topic?.slice(0, 128) || undefined, score: current.score, total: current.total }))
-        .catch((error) => { recover(error); if (!stopped && lastInteractionAt && Date.now() - lastInteractionAt <= 60_000) begin(); });
-    };
-    const flushTimer = window.setInterval(flush, 30_000);
+    const events = ["pointerdown", "keydown", "scroll", "touchstart"] as const;
+    events.forEach(event =>
+      window.addEventListener(event, interact, { passive: true })
+    );
+    window.addEventListener("online", flush);
+    window.addEventListener("pagehide", pagehide);
+    document.addEventListener("visibilitychange", visibility);
+    const tick = window.setInterval(
+      () => recorder.tick(document.visibilityState === "visible"),
+      1000
+    );
+    const timer = window.setInterval(flush, 5000);
     return () => {
-      stopped = true; window.clearInterval(activeTimer); window.clearInterval(flushTimer); events.forEach((event) => window.removeEventListener(event, interact));
-      if (!tracking) return;
-      sequence += 1; const current = valuesRef.current;
-      writeChain = writeChain.then(() => mutationsRef.current.completeMutation.mutateAsync({ sessionKey, sequence, activeSeconds: pendingSeconds, unitsCompleted: Math.max(0, current.unitsCompleted ?? 0), topic: current.topic?.slice(0, 128) || undefined, score: current.score, total: current.total })).catch(() => undefined);
+      disposed = true;
+      window.clearInterval(tick);
+      window.clearInterval(timer);
+      events.forEach(event => window.removeEventListener(event, interact));
+      window.removeEventListener("online", flush);
+      window.removeEventListener("pagehide", pagehide);
+      document.removeEventListener("visibilitychange", visibility);
+      void recorder.stop();
+      // SPA navigation may race a response. Drain the same immutable queue for
+      // a bounded period rather than abandoning the outstanding final interval.
+      const drain = window.setInterval(() => {
+        if (recorder.finished) window.clearInterval(drain);
+        else void recorder.stop();
+      }, 5000);
+      window.setTimeout(() => window.clearInterval(drain), 60000);
     };
-  }, [options.activityType, options.courseKey, options.enabled]);
+  }, [
+    options.courseKey,
+    options.activityType,
+    options.enabled,
+    options.identityKey,
+  ]);
+  return { ...state, retry: () => retryRef.current() };
 }

@@ -1,0 +1,461 @@
+.interactive-drill {
+  color: #102338;
+  font-family: "Source Sans 3", "Source Sans Pro", sans-serif;
+  width: 100%;
+}
+
+.interactive-drill *, .interactive-drill *::before, .interactive-drill *::after {
+  box-sizing: border-box;
+}
+
+.interactive-drill button {
+  cursor: pointer;
+  font: inherit;
+}
+
+.interactive-drill button:focus-visible {
+  outline: 3px solid #1757b8;
+  outline-offset: 3px;
+}
+
+.interactive-drill__content h2:focus,
+.interactive-drill__round h3:focus,
+.interactive-drill__feedback-region:focus {
+  outline: 3px solid #1757b8;
+  outline-offset: 3px;
+}
+
+.interactive-drill button:disabled {
+  cursor: default;
+}
+
+.interactive-drill__layout {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.interactive-drill__nav {
+  display: flex;
+  gap: 8px;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 4px 4px 8px;
+}
+
+.interactive-drill__nav button {
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding: 9px 14px;
+  border: 1px solid #cbd9e8;
+  border-radius: 12px;
+  background: #fff;
+  color: #24394d;
+  font-weight: 700;
+  text-align: left;
+}
+
+.interactive-drill__nav button.is-active {
+  border-color: #1757b8;
+  background: #eaf2ff;
+  color: #104799;
+}
+
+.interactive-drill__nav small {
+  display: none;
+}
+
+.interactive-drill__activity, .interactive-drill__empty {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid #d9e3ef;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 15px 40px rgb(23 59 104 / 6%);
+}
+
+.interactive-drill__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: #34526c;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.interactive-drill__pill {
+  padding: 5px 10px;
+  border: 1px solid #d9e3ef;
+  border-radius: 999px;
+  background: #f7faff;
+}
+
+.interactive-drill__track {
+  height: 5px;
+  margin: 18px 0 24px;
+  overflow: hidden;
+  border-radius: 9px;
+  background: #e9f0f7;
+}
+
+.interactive-drill__track span {
+  display: block;
+  height: 100%;
+  background: #1757b8;
+  transition: width 0.2s ease;
+}
+
+.interactive-drill__content {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.interactive-drill__content h2 {
+  margin: 0 0 9px;
+  color: #102338;
+  font: 800 clamp(21px, 4vw, 29px)/1.25 Manrope, sans-serif;
+  letter-spacing: -0.025em;
+  overflow-wrap: anywhere;
+}
+
+.interactive-drill__instruction {
+  margin: 0 0 18px;
+  color: #40576a;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.interactive-drill__swipe {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  min-height: 95px;
+  margin-bottom: 12px;
+  padding: 18px;
+  border: 1px solid #cddff3;
+  border-radius: 14px;
+  background: #f1f6fc;
+  color: #25476a;
+  font-weight: 700;
+  text-align: center;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.interactive-drill__options, .interactive-drill__column {
+  display: grid;
+  gap: 10px;
+}
+
+.interactive-drill__options--ordering button {
+  text-align: left;
+}
+
+.interactive-drill__options--two, .interactive-drill__matching {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.interactive-drill__options button, .interactive-drill__column button {
+  min-width: 0;
+  min-height: 52px;
+  padding: 11px 12px;
+  border: 1.5px solid #aebfd1;
+  border-radius: 12px;
+  background: #fff;
+  color: #0d2339;
+  font-weight: 700;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.interactive-drill__options button:not(:disabled):hover,
+.interactive-drill__column button:not(:disabled):hover {
+  border-color: #1757b8;
+  background: #f5f9ff;
+}
+
+.interactive-drill__options button:disabled {
+  border-color: #d3dce5;
+  background: #f4f7fa;
+  color: #3f5366;
+}
+
+.interactive-drill__column button.is-selected {
+  border-color: #1757b8;
+  background: #eaf2ff;
+  color: #12428a;
+}
+
+.interactive-drill__column button.is-matched {
+  border-color: #6caa8f;
+  background: #eaf8f1;
+  color: #17583d;
+}
+
+.interactive-drill__matched-label {
+  font-size: 0.85em;
+}
+
+.interactive-drill__feedback {
+  margin-top: 16px;
+  padding: 13px 15px;
+  border: 1px solid #afd5c2;
+  border-radius: 12px;
+  background: #eff7f3;
+  color: #103e2e;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.interactive-drill__feedback.is-incorrect {
+  border-color: #efc2ae;
+  background: #fff4ef;
+  color: #753219;
+}
+
+.interactive-drill__feedback strong, .interactive-drill__feedback span {
+  display: block;
+}
+
+.interactive-drill__feedback strong {
+  margin-bottom: 3px;
+}
+
+.interactive-drill__invalid {
+  padding: 12px;
+  border-radius: 10px;
+  background: #fff4ef;
+  color: #753219;
+}
+
+.interactive-drill__controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.interactive-drill__primary, .interactive-drill__secondary {
+  min-height: 44px;
+  padding: 10px 18px;
+  border: 1px solid #1757b8;
+  border-radius: 999px;
+  font-weight: 700 !important;
+}
+
+.interactive-drill__primary {
+  background: #1757b8;
+  color: #fff;
+}
+
+.interactive-drill__primary:not(:disabled):hover {
+  background: #104799;
+}
+
+.interactive-drill__secondary {
+  background: #fff;
+  color: #104799;
+}
+
+.interactive-drill__primary:disabled, .interactive-drill__secondary:disabled {
+  border-color: #cad5df;
+  background: #edf1f5;
+  color: #53677a;
+}
+
+@media (min-width: 700px) {
+  .interactive-drill__layout {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+
+  .interactive-drill__nav {
+    flex-direction: column;
+    overflow: visible;
+  }
+
+  .interactive-drill__nav button {
+    width: 100%;
+    padding: 11px 13px;
+  }
+
+  .interactive-drill__nav small {
+    display: block;
+    margin-top: 2px;
+    color: #455e73;
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  .interactive-drill__activity {
+    min-height: 400px;
+    padding: 25px;
+    border-radius: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .interactive-drill__track span {
+    transition: none;
+  }
+}
+.interactive-drill__round-start { margin-bottom: 14px; }
+.interactive-drill__round { margin-top: 24px; }
+.interactive-drill__round h3 { overflow-wrap: anywhere; }
+.interactive-drill__round-end { margin-top: 16px; }
+.interactive-drill__review { padding-left: 24px; line-height: 1.5; }
+.interactive-drill__review li { margin-bottom: 14px; overflow-wrap: anywhere; }
+
+.interactive-drill__round-next { margin-top: 16px; margin-right: 10px; }
+
+/* Compact course workspace; do not change the shared demo's spacing or palette. */
+.course-interactive .interactive-drill { color: #000; }
+.course-interactive .interactive-drill__layout { gap: 12px; }
+.course-interactive .interactive-drill__nav { padding: 4px; }
+.course-interactive .interactive-drill__nav button,
+.course-interactive .interactive-drill__nav button.is-active,
+.course-interactive .interactive-drill__nav small,
+.course-interactive .interactive-drill__meta,
+.course-interactive .interactive-drill__content h2,
+.course-interactive .interactive-drill__instruction,
+.course-interactive .interactive-drill__swipe,
+.course-interactive .interactive-drill__options button,
+.course-interactive .interactive-drill__options button:disabled,
+.course-interactive .interactive-drill__column button,
+.course-interactive .interactive-drill__column button.is-selected,
+.course-interactive .interactive-drill__column button.is-matched,
+.course-interactive .interactive-drill__feedback,
+.course-interactive .interactive-drill__feedback.is-incorrect,
+.course-interactive .interactive-drill__invalid,
+.course-interactive .interactive-drill__primary,
+.course-interactive .interactive-drill__secondary,
+.course-interactive .interactive-drill__primary:disabled,
+.course-interactive .interactive-drill__secondary:disabled { color: #000; }
+
+.course-interactive .interactive-drill__nav button.is-active,
+.course-interactive .interactive-drill__column button.is-selected {
+  border-color: #1757b8;
+  background: #1757b8;
+  color: #fff;
+}
+.course-interactive .interactive-drill__nav button.is-active small,
+.course-interactive .interactive-drill__nav button.is-active .course-interactive__count { color: #fff; }
+.course-interactive .interactive-drill__activity {
+  min-height: auto;
+  padding: 18px;
+  border-radius: 16px;
+  border-color: #bfd3eb;
+  box-shadow: 0 12px 32px rgb(23 59 104 / 9%);
+}
+.course-interactive .interactive-drill__track { margin: 10px 0 14px; }
+.course-interactive .interactive-drill__content { max-width: 720px; }
+.course-interactive .interactive-drill__instruction { margin-bottom: 12px; }
+.course-interactive .interactive-drill__swipe { min-height: 60px; padding: 12px; }
+.course-interactive .interactive-drill__options,
+.course-interactive .interactive-drill__column,
+.course-interactive .interactive-drill__matching { gap: 8px; }
+.course-interactive .interactive-drill__options button,
+.course-interactive .interactive-drill__column button { min-height: 44px; padding: 9px 12px; }
+.course-interactive .interactive-drill__feedback {
+  margin-top: 12px;
+  padding: 10px 12px;
+  font-size: 16px;
+}
+.course-interactive .interactive-drill__controls { margin-top: 12px; flex-wrap: wrap; }
+.course-interactive .interactive-drill__primary { border-color: #1757b8; background: #1757b8; color: #fff; }
+.course-interactive .interactive-drill__primary:not(:disabled):hover { background: #104799; }
+.course-interactive .interactive-drill__secondary { border-color: #8db6dd; }
+.course-interactive .interactive-drill__primary:disabled,
+.course-interactive .interactive-drill__secondary:disabled { border-color: #cad5df; background: #edf1f5; }
+.course-interactive .interactive-drill__round-start { margin-bottom: 10px; }
+.course-interactive .interactive-drill__round { margin-top: 8px; }
+.course-interactive .interactive-drill__round h3 { margin: 12px 0 8px; font-size: 21px; line-height: 1.25; }
+.course-interactive .interactive-drill__round p { margin: 8px 0; }
+.course-interactive .interactive-drill__round .interactive-drill__swipe { min-height: 44px; padding: 8px; }
+.course-interactive .interactive-drill__round .interactive-drill__feedback { margin-top: 8px; }
+.course-interactive .interactive-drill__round-next,
+.course-interactive .interactive-drill__round-end { margin-top: 12px; }
+
+@media (min-width: 700px) {
+  .course-interactive .interactive-drill__layout { grid-template-columns: 200px minmax(0, 1fr); gap: 16px; }
+  .course-interactive .interactive-drill__nav button { padding: 9px 12px; }
+}
+
+@media (max-width: 699px) {
+  .course-interactive .interactive-drill__nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    overflow: visible;
+  }
+  .course-interactive .interactive-drill__nav button {
+    min-width: 0;
+    padding: 9px 6px;
+    text-align: center;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+  .course-interactive .interactive-drill__activity { padding: 14px; }
+  .course-interactive .interactive-drill__track { margin: 8px 0 12px; }
+}
+
+.course-interactive .interactive-drill__round {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.course-interactive .interactive-drill__round > :not(button) { grid-column: 1 / -1; margin: 0; }
+.course-interactive .interactive-drill__round > button { margin: 0; }
+.course-interactive .interactive-drill__round .interactive-drill__feedback { margin-top: 0; }
+
+.course-interactive .interactive-drill__round { white-space: normal; }
+.course-interactive .interactive-drill__round h3,
+.course-interactive .interactive-drill__round .interactive-drill__feedback span { white-space: pre-line; }
+@media (max-width: 699px) {
+  .course-interactive .interactive-drill__round { gap: 4px; }
+}
+
+@media (max-width: 699px) {
+  .course-interactive .interactive-drill__activity { padding: 12px; }
+  .course-interactive .interactive-drill__round { gap: 2px; }
+  .course-interactive .interactive-drill__round .interactive-drill__feedback { padding: 6px 12px; }
+  /* Fit short feedback states; long questions/options keep natural page scrolling. */
+  .course-interactive .interactive-drill { line-height: 1.25; }
+  .course-interactive .interactive-drill__layout { gap: 8px; }
+  .course-interactive .interactive-drill__nav button { padding: 1px 6px; }
+  .course-interactive .interactive-drill__activity { padding: 6px; }
+  .course-interactive .interactive-drill__track { margin: 6px 0 8px; }
+  .course-interactive .interactive-drill__content h2 { margin-bottom: 6px; }
+  .course-interactive .interactive-drill__instruction { margin-bottom: 8px; line-height: 1.2; }
+  .course-interactive .interactive-drill__options,
+  .course-interactive .interactive-drill__column,
+  .course-interactive .interactive-drill__matching { gap: 4px; }
+  .course-interactive .interactive-drill__column button { padding: 1px 4px; line-height: 1.2; }
+  .course-interactive .interactive-drill__matched-label { font-size: 16px; }
+  .course-interactive .interactive-drill__feedback { margin-top: 8px; padding: 6px 8px; line-height: 1.25; }
+  .course-interactive .interactive-drill__controls { margin-top: 8px; }
+}
+
+/* Controlled course sessions provide mode navigation outside the working set. */
+.interactive-drill__layout.interactive-drill__layout--activity-only {
+  display: flex;
+  flex-direction: column;
+}
+.interactive-drill__layout--activity-only > .interactive-drill__activity { width: 100%; }
+
+.interactive-drill__skip { margin-left: auto; }
+.course-interactive .interactive-drill__options button:not(:disabled):hover,
+.course-interactive .interactive-drill__column button:not(:disabled):hover { background: #eaf2ff; border-color: #1757b8; }
+.course-interactive .interactive-drill__column button.is-selected:not(:disabled):hover { background: #104799; }
+.course-interactive .interactive-drill__feedback.is-correct { border-color: #62a986; background: #eaf8f1; }
+.course-interactive .interactive-drill__feedback.is-incorrect { border-color: #dc876e; background: #fff0e9; }
+.course-interactive .interactive-drill__pill { background: #eaf2ff; border-color: #bfd3eb; }
+.course-interactive button { transition: background-color 140ms, border-color 140ms; }
+@media (prefers-reduced-motion: reduce) { .course-interactive button { transition: none; } }

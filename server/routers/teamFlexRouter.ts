@@ -1,3 +1,4 @@
+import { attemptCourseFilter, attemptIdentityFilter, flexActivityFilter } from "../courseActivityScope";
 /**
  * Teams Flex Router — Production-hardened
  * All manager procedures require authenticated session + verified org membership.
@@ -14,10 +15,9 @@ import {
   teamFlexOrderItems,
   teamFlexLicences,
   organizations,
-  organizationMembers,
   questionAttempts,
 } from "../../drizzle/schema";
-import { eq, and, sql } from "drizzle-orm";
+import { eq, and, desc, sql } from "drizzle-orm";
 import {
   TEAM_PRICES_CAD,
   getCourseKeyPricingBand,
@@ -27,6 +27,8 @@ import {
   type TeamFlexTermMonths,
 } from "../teams/teamFlexPricing";
 import { allowedCourseKeysForOrg } from "../stripe/subscriptionProducts";
+import { teamRegionExamFamily } from "../../shared/teamPricing";
+import { isNovaScotiaCourseSupported } from "../../shared/novaScotiaPreparation";
 import {
   inviteOperatorToLicence,
   resendFlexInvitation,
@@ -39,6 +41,13 @@ import {
   listOperatorFlexLicences,
 } from "../teams/flexLicenceService";
 import { resolveCourseKey } from "../../shared/courseRegistry";
+import { flexLicenceIsVisibleInManagerReport } from "../teams/flexReporting";
+import { ALL_PRODUCTS } from "../stripe/products";
+import {
+  getCommercialAvailability,
+  ORGANIZATION_COMMERCE_ENABLED,
+  ORGANIZATION_COMMERCE_HOLD_MESSAGE,
+} from "../commercialAvailability";
 import { calculateReadinessSnapshot } from "../readinessSnapshot";
 import {
   bulkInviteFlexOperators,
@@ -47,6 +56,43 @@ import {
 } from "../teams/flexBulkOnboardingService";
 import { buildProvisionalCoursePassOrganization } from "../teams/flexCheckoutOrganization";
 import { buildTeamFlexBillingDocumentOptions } from "../stripe/teamBillingDocuments";
+import { aggregateUtcDate, resolveOrgManager } from "./orgRouter";
+import { managerEmailForContext, resolveManagedOrganization } from "../teams/resolveManagerOrganization";
+import { normalizeEmail } from "../_core/access";
+import {
+  checkExtensionEligibility,
+  createRetakeExtensionCheckout,
+} from "../teams/flexExtensionService";
+
+// Normalize database timestamps to Dates before comparisons, queries or serialization.
+export function validTimestamp(value: Date | string | null | undefined): Date | null {
+  if (value == null) return null;
+  if (typeof value === "string") {
+    // Date parsing can silently normalize impossible ISO dates, including
+    // timestamps with a timezone. Validate their original calendar fields.
+    const isoTimestamp = value.trim().match(
+      /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::(\d{2})(?:\.(\d+))?)?(Z|[+-]\d{2}:?\d{2})?$/i,
+    );
+    if (isoTimestamp) {
+      const [, yearText, monthText, dayText, hourText, minuteText, secondText = "0", fractionText = "", zone] = isoTimestamp;
+      const year = Number(yearText), month = Number(monthText), day = Number(dayText);
+      const hour = Number(hourText), minute = Number(minuteText), second = Number(secondText);
+      const leapYear = year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
+      const daysInMonth = [31, leapYear ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+      if (month < 1 || month > 12 || day < 1 || day > daysInMonth[month - 1]
+        || hour > 24 || minute > 59 || second > 59
+        || (hour === 24 && (minute !== 0 || second !== 0 || /[1-9]/.test(fractionText)))) return null;
+      if (zone && zone.toUpperCase() !== "Z") {
+        const offset = zone.slice(1).replace(":", "");
+        if (Number(offset.slice(0, 2)) > 23 || Number(offset.slice(2)) > 59) return null;
+      }
+      // aggregateUtcDate handles MySQL timestamps as UTC, but a zone-less
+      // ISO timestamp without seconds would otherwise use the local timezone.
+      if (!zone) return aggregateUtcDate(`${value.trim()}Z`);
+    }
+  }
+  return aggregateUtcDate(value);
+}
 
 const flexBulkRowsSchema = z.array(z.object({
   clientRowId: z.string().min(1).max(64),
@@ -60,61 +106,18 @@ async function requireManagerOfOrg(
   ctx: { user: { id: number; email?: string | null } | null; studentEmail?: string | null },
   orgId: number,
 ): Promise<{ managerEmail: string }> {
-  const email = ctx.user?.email ?? ctx.studentEmail ?? null;
-  if (!email) {
-    throw new TRPCError({ code: "UNAUTHORIZED", message: "Authentication required." });
-  }
-  const db = await getDb();
-  if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-
-  const normalised = email.toLowerCase().trim();
-  const rows = await db
-    .select({ orgId: organizationMembers.orgId })
-    .from(organizationMembers)
-    .where(
-      and(
-        eq(organizationMembers.orgId, orgId),
-        eq(organizationMembers.email, normalised),
-        eq(organizationMembers.role, "manager"),
-        eq(organizationMembers.status, "assigned"),
-      ),
-    )
-    .limit(1);
-
-  if (rows.length === 0) {
+  const manager = await resolveOrgManager(ctx, orgId);
+  if (manager.orgId !== orgId) {
     throw new TRPCError({ code: "FORBIDDEN", message: "You are not a manager of this organization." });
   }
-  return { managerEmail: normalised };
+  return { managerEmail: manager.managerEmail };
 }
 
 /** Resolve the authenticated user's managed org. */
 async function resolveManagerOrg(
   ctx: { user: { id: number; email?: string | null } | null; studentEmail?: string | null },
 ): Promise<{ orgId: number; managerEmail: string }> {
-  const email = ctx.user?.email ?? ctx.studentEmail ?? null;
-  if (!email) {
-    throw new TRPCError({ code: "UNAUTHORIZED", message: "Authentication required." });
-  }
-  const db = await getDb();
-  if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-
-  const normalised = email.toLowerCase().trim();
-  const rows = await db
-    .select({ orgId: organizationMembers.orgId })
-    .from(organizationMembers)
-    .where(
-      and(
-        eq(organizationMembers.email, normalised),
-        eq(organizationMembers.role, "manager"),
-        eq(organizationMembers.status, "assigned"),
-      ),
-    )
-    .limit(1);
-
-  if (rows.length === 0) {
-    throw new TRPCError({ code: "FORBIDDEN", message: "No manager account found for this email." });
-  }
-  return { orgId: rows[0].orgId, managerEmail: normalised };
+  return resolveOrgManager(ctx);
 }
 
 function requireVerifiedOperator(
@@ -129,11 +132,13 @@ function requireVerifiedOperator(
 
 // ── Router ───────────────────────────────────────────────────────────────────
 export const teamFlexRouter = router({
+  checkoutIdentity: publicProcedure.query(({ ctx }) => ({ managerEmail: managerEmailForContext(ctx) || null })),
   // ─── Pricing info (public, no auth needed) ─────────────────────────────────
   getFlexPricing: publicProcedure
-    .input(z.object({ province: z.enum(["ontario", "western"]) }))
+    .input(z.object({ province: z.enum(["ontario", "western", "nova-scotia"]) }))
     .query(({ input }) => {
-      const prices = TEAM_PRICES_CAD[input.province];
+      // Nova Scotia uses the shared WPI exam family, so it reads western prices.
+      const prices = TEAM_PRICES_CAD[teamRegionExamFamily(input.province)];
       return {
         prices,
         volumeTiers: [
@@ -233,6 +238,21 @@ export const teamFlexRouter = router({
     return listOperatorFlexLicences(identity.email, identity.userId);
   }),
 
+  // ─── Retake Extension: a single, paid 90-day extension per Course Pass ───
+  getRetakeExtensionEligibility: publicProcedure
+    .input(z.object({ licenceId: z.number().int().positive() }))
+    .query(async ({ ctx, input }) => {
+      const identity = requireVerifiedOperator(ctx);
+      return checkExtensionEligibility(input.licenceId, identity);
+    }),
+
+  createRetakeExtensionCheckout: publicProcedure
+    .input(z.object({ licenceId: z.number().int().positive() }))
+    .mutation(async ({ ctx, input }) => {
+      const identity = requireVerifiedOperator(ctx);
+      return createRetakeExtensionCheckout(input.licenceId, identity);
+    }),
+
   // ─── Change course (pre-activation, same band) ─────────────────────────────
   changeCourse: publicProcedure
     .input(z.object({ licenceId: z.number().int(), newCourseKey: z.string().min(1), orgId: z.number().int() }))
@@ -245,52 +265,48 @@ export const teamFlexRouter = router({
   createOrder: publicProcedure
     .input(z.object({
       organizationName: z.string().trim().min(2).max(200),
+      orgId: z.number().int().positive().optional(),
       managerEmail: z.string().email().optional(),
       billingEmail: z.string().email().optional(),
-      province: z.enum(["ontario", "western"]),
+      province: z.enum(["ontario", "western", "nova-scotia"]),
       items: z.array(z.object({
         courseKey: z.string().min(1),
-        termMonths: z.union([z.literal(3), z.literal(6), z.literal(12)]),
+        termMonths: z.union([z.literal(3), z.literal(6)]),
         quantity: z.number().int().min(1).max(100),
       })).min(1).max(20),
       overlapAcknowledged: z.boolean().default(false),
     }))
     .mutation(async ({ ctx, input }) => {
-
-      // ── Checkout rule: all items must use the same duration ──────────────
-      const termSet = new Set(input.items.map(i => i.termMonths));
-      if (termSet.size > 1) {
+      if (!ORGANIZATION_COMMERCE_ENABLED) {
         throw new TRPCError({
-          code: "BAD_REQUEST",
-          message: "All Course Pass licences in one order must use the same duration.",
+          code: "PRECONDITION_FAILED",
+          message: ORGANIZATION_COMMERCE_HOLD_MESSAGE,
         });
       }
 
-      // ── Auth: accept OAuth, email-code session, OR input.managerEmail ──
-      let purchaserUserId: number | null = null;
-      let managerEmail: string;
-      let orgId: number | null = null;
-      const ctxEmail = (ctx.user?.email ?? ctx.studentEmail ?? "").toLowerCase().trim();
-      if (ctxEmail) {
-        purchaserUserId = ctx.user?.id ?? null;
-        managerEmail = ctxEmail;
-        try {
-          const mgr = await resolveManagerOrg(ctx);
-          orgId = mgr.orgId;
-        } catch { /* new manager, no org yet */ }
-      } else if (input.managerEmail) {
-        managerEmail = input.managerEmail.toLowerCase().trim();
-      } else {
-        throw new TRPCError({ code: "BAD_REQUEST", message: "Please provide your email address." });
+      const ctxEmail = managerEmailForContext(ctx);
+      const namedManager = normalizeEmail(input.managerEmail);
+      if (ctxEmail && namedManager && namedManager !== ctxEmail) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "Signed-in checkout must use your verified email as manager. To buy for a different manager, sign out and use guest procurement checkout. Existing organization ownership cannot be transferred here." });
       }
-      const billingEmail = (input.billingEmail ?? managerEmail).toLowerCase().trim();
+      if (!ctxEmail && input.orgId) throw new TRPCError({ code: "UNAUTHORIZED", message: "Sign in as the organization manager to add licences to an existing team." });
+      const purchaserUserId = ctx.user?.id ?? null;
+      const managerEmail = ctxEmail || namedManager;
+      if (!managerEmail) throw new TRPCError({ code: "BAD_REQUEST", message: "Please provide your manager email address." });
+      const ownedOrganization = ctxEmail ? await resolveManagedOrganization(ctx, { orgId: input.orgId, allowMissing: true, ownerOnly: true }) : null;
+      const orgId = ownedOrganization?.id ?? null;
+      const billingEmail = normalizeEmail(input.billingEmail ?? managerEmail);
 
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
 
+      const releasedCourseKeys = new Set(
+        (await getCommercialAvailability(db, ALL_PRODUCTS)).map((product) => product.key),
+      );
+
       const normalizedItems = input.items.map((item) => {
         const course = resolveCourseKey(item.courseKey);
-        if (!course?.isActive || !course.teamAssignable) {
+        if (!course?.isActive || !course.teamAssignable || !releasedCourseKeys.has(course.courseKey)) {
           throw new TRPCError({ code: "BAD_REQUEST", message: `Unknown or unavailable course: ${item.courseKey}` });
         }
         return { ...item, courseKey: course.courseKey };
@@ -327,19 +343,10 @@ export const teamFlexRouter = router({
 
       for (const item of normalizedItems) {
         if (!isValidFlexTerm(item.termMonths)) {
-          throw new TRPCError({ code: "BAD_REQUEST", message: `Invalid term: ${item.termMonths}. Must be 3, 6, or 12 months.` });
+          throw new TRPCError({ code: "BAD_REQUEST", message: `Invalid term: ${item.termMonths}. Choose 3 or 6 months.` });
         }
 
         const bandResult = getCourseKeyPricingBand(item.courseKey);
-        // Reject unknown courses — do NOT silently default to Ontario Class 1
-        if (bandResult.pricingBand === "class1" && bandResult.courseLevel === null && item.courseKey !== "oit" && item.courseKey !== "oit-ww" && item.courseKey !== "wqa") {
-          // The fallback case in getCourseKeyPricingBand returns class1/null for unknown keys
-          // Verify the course actually exists in the pricing table
-          const familyPrices = TEAM_PRICES_CAD[bandResult.examFamily];
-          if (!familyPrices || !familyPrices[bandResult.pricingBand]) {
-            throw new TRPCError({ code: "BAD_REQUEST", message: `Unknown course: ${item.courseKey}` });
-          }
-        }
         const { examFamily, pricingBand, courseLevel } = bandResult;
 
         // Validate province/family match
@@ -348,6 +355,14 @@ export const teamFlexRouter = router({
         }
         if (input.province === "western" && examFamily !== "western") {
           throw new TRPCError({ code: "BAD_REQUEST", message: `Course ${item.courseKey} is not available in Western Canada.` });
+        }
+        // Nova Scotia prepares operators with the shared WPI family, but the
+        // province certifies distribution and collection to Class III only, so
+        // uncertified courses are refused before any money is taken.
+        if (input.province === "nova-scotia") {
+          if (examFamily !== "western" || !isNovaScotiaCourseSupported(item.courseKey)) {
+            throw new TRPCError({ code: "BAD_REQUEST", message: `Course ${item.courseKey} is not available in Nova Scotia.` });
+          }
         }
 
         const listUnitPriceCents = getFlexListPrice(examFamily, pricingBand, item.termMonths);
@@ -377,37 +392,49 @@ export const teamFlexRouter = router({
       // That can violate foreign keys immediately and would attach paid licences
       // to a non-existent organization. A provisional organization is safe: it
       // has no manager membership or course access until Stripe confirms payment.
+      if (ownedOrganization && ownedOrganization.province !== input.province) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "Choose the region of the selected organization." });
+      }
       let orderId: number;
       try {
         orderId = await db.transaction(async (tx) => {
           let checkoutOrgId = orgId;
 
           if (!checkoutOrgId) {
-            const existingOrganizations = await tx
+            // A manager who retries checkout must not fragment their employer
+            // into a new organization each attempt. Live data showed one
+            // utility split across six rows because every abandoned attempt
+            // created another. Reuse is restricted to a provisional, unpaid
+            // organization created by this same manager email in the same
+            // province, so an unverified form still never attaches an order to
+            // a real paying employer.
+            const [reusable] = await tx
               .select({ id: organizations.id })
               .from(organizations)
-              .where(and(
-                eq(organizations.managerEmail, managerEmail),
-                eq(organizations.province, input.province),
-                eq(organizations.status, "active"),
-              ))
-              .limit(2);
+              .where(
+                and(
+                  eq(organizations.managerEmail, managerEmail),
+                  eq(organizations.province, input.province),
+                  eq(organizations.billingType, "course-pass"),
+                  eq(organizations.status, "pending"),
+                  eq(organizations.seatsTotal, 0),
+                ),
+              )
+              .orderBy(desc(organizations.id))
+              .limit(1);
 
-            // Reuse an unambiguous existing manager organization. If the same
-            // email manages multiple organizations, create a separate Course
-            // Pass organization instead of guessing which one owns the order.
-            if (existingOrganizations.length === 1) {
-              checkoutOrgId = existingOrganizations[0].id;
-            } else {
-              const [organizationResult] = await tx.insert(organizations).values(
-                buildProvisionalCoursePassOrganization({
-                  organizationName: input.organizationName,
-                  managerEmail,
-                  province: input.province,
-                }),
-              );
-              checkoutOrgId = Number(organizationResult.insertId);
+            if (reusable) {
+              checkoutOrgId = reusable.id;
             }
+          }
+
+          if (!checkoutOrgId) {
+            // Guest procurement creates an access-free new organization. An
+            // unverified form never attaches an order to an existing employer.
+            const [organizationResult] = await tx.insert(organizations).values(
+              buildProvisionalCoursePassOrganization({ organizationName: input.organizationName, managerEmail, province: input.province }),
+            );
+            checkoutOrgId = Number(organizationResult.insertId);
           }
 
           if (!checkoutOrgId || checkoutOrgId <= 0) {
@@ -519,42 +546,61 @@ export const teamFlexRouter = router({
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
 
-      // Get all active/assigned licences for this org
-      const licences = await db
+      // Keep expired passes in view only through their recorded reporting grace.
+      // Filtering after the org-scoped query also handles the small interval
+      // before the expiry job changes an elapsed active pass to "expired".
+      const now = new Date();
+      const licences = (await db
         .select()
         .from(teamFlexLicences)
         .where(and(
           eq(teamFlexLicences.organizationId, input.orgId),
-          sql`${teamFlexLicences.status} IN ('active', 'assigned', 'invited')`,
-        ));
+          sql`${teamFlexLicences.status} IN ('active', 'assigned', 'invited', 'expired')`,
+        )))
+        .filter(licence => flexLicenceIsVisibleInManagerReport({
+          ...licence,
+          accessEndsAt: validTimestamp(licence.accessEndsAt),
+          reportingEndsAt: validTimestamp(licence.reportingEndsAt),
+        }, now));
 
       if (licences.length === 0) return [];
 
-      // For each licence with an operatorUserId, fetch their study progress
+      // Claimed operators may use verified email without an OAuth account ID.
       const results = await Promise.all(
         licences.map(async (lic) => {
           const canonicalCourse = resolveCourseKey(lic.courseKey);
-          const progressExamType = canonicalCourse?.questionBankKey ?? lic.courseKey;
           const displayCourseKey = canonicalCourse?.courseKey ?? lic.courseKey;
-          if (!lic.operatorUserId || lic.status === "invited") {
+          const activatedAt = validTimestamp(lic.activatedAt);
+          const startsAt = validTimestamp(lic.startsAt);
+          const accessEndsAt = validTimestamp(lic.accessEndsAt);
+          const startTime = startsAt?.getTime() ?? NaN;
+          const endTime = accessEndsAt?.getTime() ?? NaN;
+          const validInterval = Number.isFinite(startTime) && Number.isFinite(endTime) && startTime < endTime;
+          if ((!lic.operatorUserId && !lic.invitedEmail?.trim()) || !["active", "expired"].includes(lic.status) || !activatedAt || !validInterval) {
             return {
               licenceId: lic.id,
               courseKey: displayCourseKey,
               termMonths: lic.termMonths,
               status: lic.status,
               operatorEmail: lic.invitedEmail,
-              activatedAt: lic.activatedAt,
-              accessEndsAt: lic.accessEndsAt,
+              operatorKey: lic.operatorUserId ? `user:${lic.operatorUserId}` : lic.invitedEmail?.trim() ? `email:${normalizeEmail(lic.invitedEmail)}` : null,
+              activatedAt,
+              accessEndsAt,
+              // Pre-activation licences have not started; incomplete active or
+              // expired licences cannot be safely queried and remain unknown.
+              activityAvailable: ["assigned", "invited"].includes(lic.status) && lic.activatedAt == null && lic.startsAt == null && lic.accessEndsAt == null,
               totalAttempts: 0,
               correctAttempts: 0,
               accuracy: 0,
               readinessScore: 0,
+              readinessAvailable: false,
               lastActiveAt: null,
               daysActive30: 0,
             };
           }
 
-          // Fetch attempts for this operator on this course
+          const flexScope = { orgId: input.orgId, licenceId: lic.id, startsAt: startsAt!, endsAt: accessEndsAt! };
+          // Fetch only attributable activity under this licence interval
           const [stats] = await db
             .select({
               total: sql<number>`COUNT(*)`,
@@ -564,8 +610,9 @@ export const teamFlexRouter = router({
             })
             .from(questionAttempts)
             .where(and(
-              eq(questionAttempts.userId, lic.operatorUserId),
-              eq(questionAttempts.examType, progressExamType),
+              attemptIdentityFilter(lic.operatorUserId, lic.invitedEmail),
+              attemptCourseFilter(displayCourseKey),
+              flexActivityFilter(flexScope),
             ));
 
           const total = Number(stats?.total ?? 0);
@@ -574,7 +621,8 @@ export const teamFlexRouter = router({
           const readinessResult = await calculateReadinessSnapshot(db, {
             userId: lic.operatorUserId,
             email: lic.invitedEmail,
-            examType: progressExamType,
+            examType: displayCourseKey,
+            flexScope,
           });
 
           return {
@@ -583,13 +631,16 @@ export const teamFlexRouter = router({
             termMonths: lic.termMonths,
             status: lic.status,
             operatorEmail: lic.invitedEmail,
-            activatedAt: lic.activatedAt,
-            accessEndsAt: lic.accessEndsAt,
+            operatorKey: lic.operatorUserId ? `user:${lic.operatorUserId}` : lic.invitedEmail?.trim() ? `email:${normalizeEmail(lic.invitedEmail)}` : null,
+            activatedAt,
+            accessEndsAt,
+            activityAvailable: true,
             totalAttempts: total,
             correctAttempts: correct,
             accuracy: Math.round(accuracy * 100),
             readinessScore: readinessResult.score,
-            lastActiveAt: stats?.lastActive ?? null,
+            readinessAvailable: readinessResult.hasData,
+            lastActiveAt: validTimestamp(stats?.lastActive),
             daysActive30: readinessResult.activeDaysLast30,
           };
         }),

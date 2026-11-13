@@ -1,45 +1,12 @@
+import { fileURLToPath } from "node:url";
+import { loadPrivateRecipients } from "./lib/privateRecipients.mjs";
 import nodemailer from "nodemailer";
 
-const RECIPIENTS = [
-  // Independent operators
-  "jtoneller@gmail.com",
-  "kelsey3601@gmail.com",
-  "matt.cooop@gmail.com",
-  "steeventremb@gmail.com",
-  "cdooher@utilitieskingston.com",
-  "dasminderdhillon@gmail.com",
-  "hasham0216@gmail.com",
-  "rfeng98@outlook.com",
-  "robin.mckenzie.southgate@gmail.com",
-  "shavare@gmail.com",
-  "tinduong87@gmail.com",
-  "tristahuggett@icloud.com",
-  // Utilities Kingston operators
-  "a.wilson@utilitieskingston.ca",
-  "ajrichard@utilitieskingston.com",
-  "azawada@utilitieskingston.com",
-  "bcurran@utilitieskingston.com",
-  "bknowles@utilitieskingston.com",
-  "cemon@utilitieskingston.com",
-  "civanleeuwen@utilitieskingston.com",
-  "d.garcia@utilitieskingston.ca",
-  "hmcveigh@utilitieskingston.com",
-  "irines@utilitieskingston.com",
-  "j.smith@utilitieskingston.ca",
-  "jflisikowski@utilitieskingston.com",
-  "kgowsell@utilitieskingston.com",
-  "lmhartwick@utilitieskingston.com",
-  "lnewman1@utilitieskingston.com",
-  "m.jones@utilitieskingston.ca",
-  "mturney@utilitieskingston.com",
-  "nduarte@utilitieskingston.com",
-  "pemon@utilitieskingston.com",
-  "r.patel@utilitieskingston.ca",
-  "s.chen@utilitieskingston.ca",
-  "t.brown@utilitieskingston.ca",
-  "tmcivor@utilitieskingston.com",
-  "zdillon@utilitieskingston.com",
-];
+const RECIPIENTS = loadPrivateRecipients({
+  path: process.env.PRIVATE_RECIPIENTS_FILE,
+  approval: process.env.OUTREACH_APPROVAL,
+  repoRoot: fileURLToPath(new URL("..", import.meta.url)),
+});
 
 const HTML_BODY = `
 <!DOCTYPE html>
@@ -135,12 +102,12 @@ async function main() {
         text: TEXT_BODY,
         html: HTML_BODY,
       });
-      console.log(`✅ Sent to ${email}`);
+      console.log("Recipient delivery completed.");
       sent++;
       // Small delay to avoid rate limiting
       await new Promise(r => setTimeout(r, 300));
     } catch (err) {
-      console.error(`❌ Failed to send to ${email}:`, err);
+      console.error("Recipient delivery failed; inspect private provider logs.");
       failed++;
     }
   }
@@ -148,4 +115,4 @@ async function main() {
   console.log(`\nDone. Sent: ${sent}, Failed: ${failed}`);
 }
 
-main().catch(console.error);
+main().catch(() => { console.error("Private outreach failed."); process.exitCode = 1; });

@@ -9,10 +9,15 @@ describe("tRPC rate-limit routing", () => {
     ["/api/trpc/incidentCommand.debrief", "command_debrief"],
     ["/api/trpc/incidentCommand.evaluateJudgment?batch=1", "command_debrief"],
     ["/api/trpc/contact.submit", "contact"],
+    ["/api/trpc/municipal.request", "contact"],
+    ["/api/trpc/dashboard.summary%2Cmunicipal.request?batch=1", "contact"],
     ["/api/trpc/auth.login", "auth"],
     ["/api/trpc/dashboardAuth.verifyOtp", "auth"],
+    ["/api/trpc/dashboardAuth.sendOtp", "auth"],
     ["/api/trpc/magicLink.requestMagicLink", "auth"],
     ["/api/trpc/emailOtp.request", "auth"],
+    ["/api/trpc/auth.me", "general"],
+    ["/api/trpc/dashboardAuth.me", "general"],
     ["/api/trpc/dashboard.summary", "general"],
   ] as const)("maps %s to %s", (url, expected) => {
     expect(getTrpcRateLimitPolicy(url)).toBe(expected);

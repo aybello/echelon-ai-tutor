@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { createPortal } from "react-dom";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { Dialog, DialogClose, DialogOverlay, DialogPortal, DialogTitle } from "@/components/ui/dialog";
 import { trpc } from "@/lib/trpc";
 import SiteNav from "@/components/SiteNav";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -42,7 +43,7 @@ type Job = {
   sourceUrl: string;
   sourceName: string | null;
   description: string | null;
-  postedAt: Date | null;
+  postedAt: Date | string | null;
   isFeatured: number | null;
 };
 
@@ -95,24 +96,24 @@ function ProvinceBadge({ province }: { province: string | null }) {
 
 // ─── Job Detail Modal ─────────────────────────────────────────────────────────
 
-function JobModal({ job, onClose }: { job: Job; onClose: () => void }) {
-  return createPortal(
-    <div
-      className="fixed inset-0 z-[9999] flex items-end sm:items-center justify-center p-0 sm:p-4"
-      onClick={e => {
-        if (e.target === e.currentTarget) onClose();
-      }}
-    >
-      {/* Backdrop */}
-      <div
-        className="absolute inset-0 bg-black/40 backdrop-blur-sm"
-        onClick={onClose}
-      />
-
-      {/* Modal panel */}
-      <div className="relative w-full sm:max-w-2xl max-h-[92vh] sm:max-h-[85vh] bg-white sm:rounded-2xl rounded-t-2xl shadow-2xl flex flex-col overflow-hidden">
+export function JobModal({ job, onClose, returnFocusTo }: { job: Job; onClose: () => void; returnFocusTo: HTMLButtonElement | null }) {
+  return (
+    <Dialog open onOpenChange={open => { if (!open) onClose(); }}>
+      <DialogPortal>
+        <DialogOverlay className="z-[9998] bg-black/40 backdrop-blur-sm" onClick={onClose} />
+        {/* Compose the existing primitives directly to retain the bottom sheet
+            and keep both overlay and content above the shared site navigation. */}
+        <DialogPrimitive.Content
+          aria-modal="true"
+          aria-describedby={undefined}
+          onCloseAutoFocus={event => {
+            event.preventDefault();
+            returnFocusTo?.focus({ preventScroll: true });
+          }}
+          className="public-redesign-dialog fixed bottom-0 left-1/2 z-[9999] w-full -translate-x-1/2 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 sm:max-w-2xl max-h-[92vh] sm:max-h-[85vh] bg-white sm:rounded-2xl rounded-t-2xl shadow-2xl flex flex-col overflow-hidden"
+        >
         {/* Header */}
-        <div className="flex items-start justify-between gap-3 p-5 border-b border-slate-100">
+        <div className="shrink-0 flex items-start justify-between gap-3 p-5 border-b border-slate-100">
           <div className="min-w-0">
             {job.isFeatured ? (
               <div className="flex items-center gap-1.5 text-xs font-semibold text-blue-600 mb-1.5">
@@ -120,9 +121,9 @@ function JobModal({ job, onClose }: { job: Job; onClose: () => void }) {
                 Featured
               </div>
             ) : null}
-            <h2 className="text-xl font-bold text-slate-900 leading-snug capitalize">
+            <DialogTitle className="text-xl font-bold text-slate-900 leading-snug capitalize">
               {job.title}
-            </h2>
+            </DialogTitle>
             {job.company && (
               <div className="flex items-center gap-1.5 mt-1 text-sm text-slate-600">
                 <Building2 className="w-4 h-4 text-slate-400 shrink-0" />
@@ -130,17 +131,16 @@ function JobModal({ job, onClose }: { job: Job; onClose: () => void }) {
               </div>
             )}
           </div>
-          <button
-            onClick={onClose}
+          <DialogClose
             className="shrink-0 p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
             aria-label="Close"
           >
             <X className="w-5 h-5" />
-          </button>
+          </DialogClose>
         </div>
 
         {/* Meta row */}
-        <div className="flex flex-wrap gap-x-4 gap-y-2 px-5 py-3 bg-slate-50 border-b border-slate-100">
+        <div className="shrink-0 flex flex-wrap gap-x-4 gap-y-2 px-5 py-3 bg-slate-50 border-b border-slate-100">
           {job.location && (
             <span className="flex items-center gap-1.5 text-sm text-slate-600">
               <MapPin className="w-4 h-4 text-slate-400" />
@@ -169,7 +169,7 @@ function JobModal({ job, onClose }: { job: Job; onClose: () => void }) {
         </div>
 
         {/* Body — description */}
-        <div className="flex-1 overflow-y-auto px-5 py-5">
+        <div className="min-h-0 flex-1 overflow-y-auto px-5 py-5">
           {job.description ? (
             <div className="text-sm text-slate-700 leading-relaxed whitespace-pre-line">
               {job.description}
@@ -189,7 +189,7 @@ function JobModal({ job, onClose }: { job: Job; onClose: () => void }) {
         </div>
 
         {/* Footer — source + apply CTA */}
-        <div className="border-t border-slate-100 px-5 py-4 bg-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div className="shrink-0 border-t border-slate-100 px-5 py-4 bg-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div className="text-xs text-slate-400">
             <span className="font-medium text-slate-500">
               {job.sourceName ?? "Job Bank Canada"}
@@ -206,15 +206,15 @@ function JobModal({ job, onClose }: { job: Job; onClose: () => void }) {
             <ExternalLink className="w-4 h-4" />
           </a>
         </div>
-      </div>
-    </div>,
-    document.body
+        </DialogPrimitive.Content>
+      </DialogPortal>
+    </Dialog>
   );
 }
 
 // ─── Job Card ─────────────────────────────────────────────────────────────────
 
-function JobCard({ job, onClick }: { job: Job; onClick: () => void }) {
+function JobCard({ job, onClick }: { job: Job; onClick: (event: MouseEvent<HTMLButtonElement>) => void }) {
   return (
     <button
       onClick={onClick}
@@ -277,7 +277,7 @@ function JobCard({ job, onClick }: { job: Job; onClick: () => void }) {
 
         <div className="flex items-center justify-between mt-3 pt-3 border-t border-slate-100">
           <span className="text-xs text-slate-400">
-            {job.sourceName ?? "Job Bank Canada"} · {timeAgo(job.postedAt)}
+            {job.sourceName ?? "Job Bank Canada"}{job.postedAt ? ` · Posted ${timeAgo(job.postedAt)}` : " · Source date unavailable"}
           </span>
           <span className="text-xs font-semibold text-blue-600 group-hover:text-blue-700">
             View details →
@@ -302,16 +302,23 @@ export default function Careers() {
   const [province, setProvince] = useState<Province>(null);
   const [page, setPage] = useState(1);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+  const jobTriggerRef = useRef<HTMLButtonElement | null>(null);
 
-  const { data, isLoading } = trpc.jobs.listJobs.useQuery(
+  const { data, isLoading, isError, isFetching, refetch } = trpc.jobs.listJobs.useQuery(
     { page, province },
-    { placeholderData: prev => prev }
+    { retry: 1 }
   );
-  const { data: stats } = trpc.jobs.stats.useQuery();
+  const { data: stats, isError: statsError, refetch: refetchStats } = trpc.jobs.stats.useQuery(undefined, { retry: 1 });
 
   const jobs = data?.jobs ?? [];
   const totalPages = data?.totalPages ?? 1;
   const total = data?.total ?? 0;
+
+  useEffect(() => {
+    if (data && !isError && !isFetching && page > Math.max(1, data.totalPages)) {
+      setPage(Math.max(1, data.totalPages));
+    }
+  }, [data, isError, isFetching, page]);
 
   function handleProvinceChange(p: Province) {
     setProvince(p);
@@ -319,12 +326,12 @@ export default function Careers() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="public-redesign public-redesign-careers min-h-screen bg-slate-50">
       <SiteNav currentPath="/jobs" />
 
       {/* Job detail modal */}
       {selectedJob && (
-        <JobModal job={selectedJob} onClose={() => setSelectedJob(null)} />
+        <JobModal job={selectedJob} onClose={() => setSelectedJob(null)} returnFocusTo={jobTriggerRef.current} />
       )}
 
       {/* Hero */}
@@ -342,7 +349,7 @@ export default function Careers() {
             across Ontario, BC, Alberta, Saskatchewan, and Manitoba. Refreshed
             automatically from Job Bank Canada, OWWA, and municipal employers.
           </p>
-          {stats && !stats.isStale && stats.total > 0 && (
+          {stats && !statsError && !stats.isStale && stats.total > 0 && (
             <div className="mt-4 inline-flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5 text-sm text-blue-700 font-medium">
               <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
               {stats.total} active posting{stats.total !== 1 ? "s" : ""} right
@@ -354,12 +361,14 @@ export default function Careers() {
               )}
             </div>
           )}
-          {stats?.isStale && (
+          {(statsError || stats?.isStale) && (
             <div className="mt-4 inline-flex items-start gap-2 bg-amber-50 border border-amber-200 rounded-lg px-4 py-2.5 text-sm text-amber-800">
               <AlertTriangle className="w-4 h-4 mt-0.5 shrink-0" />
               <span>
-                Job updates are temporarily delayed. Older unverified listings
-                have been hidden while the next refresh completes.
+                {statsError ? "Refresh status is temporarily unavailable." : "The latest refresh did not verify complete source coverage or is overdue."}
+                {stats && !statsError && <> Verified sources in the latest run: {stats.refreshedSourceCount} of {stats.expectedSourceCount}.</>}
+                {" "}Retained listings are not proof of a successful refresh. Please verify availability on the employer's site.
+                {statsError && <button type="button" onClick={() => void refetchStats()} className="ml-2 font-semibold underline">Retry status</button>}
               </span>
             </div>
           )}
@@ -372,6 +381,8 @@ export default function Careers() {
           {PROVINCES.map(p => (
             <button
               key={String(p.value)}
+              type="button"
+              aria-pressed={province === p.value}
               onClick={() => handleProvinceChange(p.value as Province)}
               className={`px-3.5 py-1.5 rounded-full text-sm font-medium border transition-all ${
                 province === p.value
@@ -411,8 +422,16 @@ export default function Careers() {
           </div>
         )}
 
+        {isError && (
+          <div role="alert" className="mb-6 rounded-xl border border-amber-200 bg-amber-50 p-5 text-amber-900">
+            <p className="font-semibold">Jobs are temporarily unavailable</p>
+            <p className="mt-1 text-sm">{jobs.length ? "Showing previously loaded postings. Availability has not been rechecked." : "We could not load postings. This is not an empty search result."}</p>
+            <button type="button" disabled={isFetching} onClick={() => void refetch()} className="mt-3 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white disabled:opacity-50">{isFetching ? "Retrying..." : "Retry"}</button>
+          </div>
+        )}
+
         {/* Empty state */}
-        {!isLoading && jobs.length === 0 && (
+        {!isLoading && !isError && data && jobs.length === 0 && (
           <div className="text-center py-20 text-slate-500">
             <div className="text-5xl mb-4">🔍</div>
             <p className="text-lg font-medium text-slate-700">
@@ -420,7 +439,7 @@ export default function Careers() {
             </p>
             <p className="text-sm mt-1 max-w-sm mx-auto">
               {stats?.isStale
-                ? "The automatic job feeds are refreshing. Please check back shortly."
+                ? "Job updates are delayed. Please check back later or visit the source job boards linked below."
                 : province
                   ? `No active postings in ${PROVINCES.find(p => p.value === province)?.label} right now. Try "All Provinces" or check back soon.`
                   : "No active postings right now. New verified listings will appear automatically."}
@@ -443,7 +462,10 @@ export default function Careers() {
               <JobCard
                 key={job.id}
                 job={job}
-                onClick={() => setSelectedJob(job)}
+                onClick={event => {
+                  jobTriggerRef.current = event.currentTarget;
+                  setSelectedJob(job);
+                }}
               />
             ))}
           </div>

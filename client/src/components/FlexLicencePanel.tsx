@@ -14,8 +14,10 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { prepareSingleInvitePreview, type SingleInvitePreview } from "@/lib/singleInvitePreview";
 import { courseKeyToLabel, resolveCourseKey } from "@shared/courseRegistry";
 import { toast } from "sonner";
+import { safeSupervisorCsvCell } from "@shared/supervisorActionPlan";
 
 interface FlexLicencePanelProps {
   orgId: number;
@@ -89,13 +91,13 @@ function parseBulkRows(text: string, defaultCourseKey: string): BulkRow[] {
 }
 
 function csvCell(value: unknown): string {
-  const text = value == null ? "" : String(value);
-  return /[",\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+  return safeSupervisorCsvCell(value == null ? "" : String(value));
 }
 
 export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
   const [inviteEmail, setInviteEmail] = useState<Record<number, string>>({});
   const [invitingId, setInvitingId] = useState<number | null>(null);
+  const [singleInvitePreview, setSingleInvitePreview] = useState<SingleInvitePreview | null>(null);
   const [bulkOpen, setBulkOpen] = useState(false);
   const [bulkText, setBulkText] = useState("");
   const [bulkRows, setBulkRows] = useState<BulkRow[]>([]);
@@ -107,6 +109,7 @@ export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
       toast.success("Invitation sent");
       licencesQuery.refetch();
       setInvitingId(null);
+      setSingleInvitePreview(null);
     },
     onError: (err) => toast.error(err.message),
   });
@@ -139,6 +142,36 @@ export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
   });
 
   const licences = licencesQuery.data ?? [];
+  const unusedCount = licences.filter(licence => licence.status === "unused").length;
+  const now = Date.now();
+  const withinDays = (value: Date | string | null, days: number) => {
+    if (!value) return false;
+    const remaining = new Date(value).getTime() - now;
+    return Number.isFinite(remaining) && remaining >= 0 && remaining <= days * 86_400_000;
+  };
+  const isOverdue = (value: Date | string | null) => {
+    if (!value) return false;
+    const remaining = new Date(value).getTime() - now;
+    return Number.isFinite(remaining) && remaining < 0;
+  };
+  const expiringAccessCount = licences.filter(licence =>
+    licence.status === "active" && withinDays(licence.accessEndsAt, 30)
+  ).length;
+  const invitedNearDeadline = licences.filter(licence =>
+    licence.status === "invited" && withinDays(licence.activationDeadline, 14)
+  ).length;
+  // An invitation already past its activation deadline previously matched
+  // neither card, so the most urgent seats disappeared from the panel.
+  const invitedOverdue = licences.filter(licence =>
+    licence.status === "invited" && isOverdue(licence.activationDeadline)
+  ).length;
+  // Each card must count a different seat. Urgent and overdue invitations are
+  // subsets of all invitations, so showing both totals made one invitation look
+  // like two and overstated how much work was outstanding.
+  const pendingCount =
+    licences.filter(licence => licence.status === "invited").length -
+    invitedNearDeadline -
+    invitedOverdue;
   const courseOptions = useMemo(() => {
     const options = new Map<string, string>();
     for (const licence of licences) {
@@ -199,10 +232,23 @@ export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
     const failedIds = new Set(failedRows.map((row) => row.clientRowId));
     sendBulkMutation.mutate({ orgId, rows: bulkRows.filter((row) => failedIds.has(row.clientRowId)) });
   };
+  const reviewSingleInvitation = (licenceId: number, courseName: string, termMonths: number) => {
+    const preview = prepareSingleInvitePreview({
+      licenceId,
+      operatorEmail: inviteEmail[licenceId] ?? "",
+      courseName,
+      termMonths,
+    });
+    if (!preview) {
+      toast.error("Enter an operator email before reviewing the invitation.");
+      return;
+    }
+    setSingleInvitePreview(preview);
+  };
 
   return (
     <>
-      <Card className="mt-6">
+      <Card className="teams-flex-licence-panel mt-6">
         <CardHeader className="gap-3 sm:flex-row sm:items-center sm:justify-between">
           <CardTitle className="flex flex-wrap items-center gap-2">
             <span>Course Passes</span>
@@ -216,6 +262,15 @@ export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
           </div>
         </CardHeader>
         <CardContent>
+          {(unusedCount > 0 || pendingCount > 0 || invitedNearDeadline > 0 || invitedOverdue > 0 || expiringAccessCount > 0) && (
+            <div className="mb-4 grid gap-2 sm:grid-cols-2" role="status" aria-label="Course Pass attention items">
+              {unusedCount > 0 && <p className="rounded-lg border border-blue-200 bg-blue-50 p-3 text-xs text-blue-900"><strong>{unusedCount} unused pass{unusedCount === 1 ? "" : "es"}</strong> ready for eligible operator invitations.</p>}
+              {pendingCount > 0 && <p className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-xs text-amber-900"><strong>{pendingCount} pending invitation{pendingCount === 1 ? "" : "s"}</strong>. Follow up before activation deadlines.</p>}
+              {invitedNearDeadline > 0 && <p className="rounded-lg border border-orange-200 bg-orange-50 p-3 text-xs text-orange-900"><strong>{invitedNearDeadline} invitation{invitedNearDeadline === 1 ? "" : "s"}</strong> with activation deadlines within 14 days.</p>}
+              {invitedOverdue > 0 && <p className="rounded-lg border border-red-200 bg-red-50 p-3 text-xs text-red-900"><strong>{invitedOverdue} invitation{invitedOverdue === 1 ? "" : "s"}</strong> past the activation deadline. Reissue these passes so the seats are not wasted.</p>}
+              {expiringAccessCount > 0 && <p className="rounded-lg border border-rose-200 bg-rose-50 p-3 text-xs text-rose-900"><strong>{expiringAccessCount} active pass{expiringAccessCount === 1 ? "" : "es"}</strong> reaching access end within 30 days. Review renewal or retake options.</p>}
+            </div>
+          )}
           <div className="overflow-x-auto">
             <table className="w-full min-w-[820px] text-sm">
               <thead><tr className="border-b text-left text-muted-foreground">
@@ -232,8 +287,8 @@ export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
                   <td className="py-2">
                     {licence.status === "unused" && (invitingId === licence.id ? (
                       <div className="flex items-center gap-1">
-                        <Input type="email" placeholder="operator@email.com" className="h-7 w-44 text-xs" value={inviteEmail[licence.id] ?? ""} onChange={(event) => setInviteEmail((current) => ({ ...current, [licence.id]: event.target.value }))} />
-                        <Button size="sm" className="h-7 text-xs" disabled={!inviteEmail[licence.id] || inviteMutation.isPending} onClick={() => inviteMutation.mutate({ licenceId: licence.id, operatorEmail: inviteEmail[licence.id] ?? "", orgId })}>Send</Button>
+                        <Input type="email" placeholder="Operator work email" className="h-7 w-44 text-xs" value={inviteEmail[licence.id] ?? ""} onChange={(event) => setInviteEmail((current) => ({ ...current, [licence.id]: event.target.value }))} />
+                        <Button size="sm" className="h-7 text-xs" disabled={!inviteEmail[licence.id] || inviteMutation.isPending} onClick={() => reviewSingleInvitation(licence.id, courseKeyToLabel(licence.courseKey), licence.termMonths)}>Review</Button>
                         <Button size="sm" variant="ghost" className="h-7 text-xs" onClick={() => setInvitingId(null)}>Cancel</Button>
                       </div>
                     ) : <Button size="sm" variant="outline" className="h-7 text-xs" onClick={() => setInvitingId(licence.id)}>Invite</Button>)}
@@ -249,6 +304,25 @@ export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
         </CardContent>
       </Card>
 
+      <Dialog open={!!singleInvitePreview} onOpenChange={(open) => { if (!open && !inviteMutation.isPending) setSingleInvitePreview(null); }}>
+        <DialogContent className="w-[calc(100vw-2rem)] max-w-lg bg-white">
+          <DialogHeader>
+            <DialogTitle>Review Course Pass invitation</DialogTitle>
+            <DialogDescription>One invitation will be emailed only after you confirm this recipient and licence assignment.</DialogDescription>
+          </DialogHeader>
+          {singleInvitePreview && <div className="space-y-3 rounded-lg border border-slate-200 bg-slate-50 p-4 text-sm">
+            <div className="flex items-center justify-between gap-4"><span className="text-slate-500">Recipient count</span><span className="font-semibold text-slate-950">1 operator</span></div>
+            <div className="flex items-center justify-between gap-4"><span className="text-slate-500">Recipient</span><span className="break-all text-right font-semibold text-slate-950">{singleInvitePreview.operatorEmail}</span></div>
+            <div className="flex items-center justify-between gap-4"><span className="text-slate-500">Course Pass</span><span className="text-right font-semibold text-slate-950">{singleInvitePreview.courseName}</span></div>
+            <div className="flex items-center justify-between gap-4"><span className="text-slate-500">Access term</span><span className="font-semibold text-slate-950">{singleInvitePreview.termMonths} months</span></div>
+          </div>}
+          <DialogFooter>
+            <Button variant="outline" disabled={inviteMutation.isPending} onClick={() => setSingleInvitePreview(null)}>Back</Button>
+            <Button disabled={!singleInvitePreview || inviteMutation.isPending} onClick={() => singleInvitePreview && inviteMutation.mutate({ licenceId: singleInvitePreview.licenceId, operatorEmail: singleInvitePreview.operatorEmail, orgId })}>{inviteMutation.isPending ? "Sending…" : "Send 1 invitation"}</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
       <Dialog open={bulkOpen} onOpenChange={setBulkOpen}>
         <DialogContent className="max-h-[92vh] w-[calc(100vw-2rem)] max-w-5xl overflow-y-auto overflow-x-hidden bg-white">
           <DialogHeader>
@@ -258,7 +332,7 @@ export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
 
           <div className="space-y-5 py-2">
             <div className="grid gap-3 lg:grid-cols-[1fr_auto]">
-              <Textarea value={bulkText} onChange={(event) => setBulkText(event.target.value)} placeholder={"operator1@utility.ca,wpi-class1-water-coll\noperator2@utility.ca,wpi-class2-water-coll"} rows={4} className="min-w-0 resize-none" />
+              <Textarea value={bulkText} onChange={(event) => setBulkText(event.target.value)} placeholder={"operator1@example.org,wpi-class1-water-coll\noperator2@example.org,wpi-class2-water-coll"} rows={4} className="min-w-0 resize-none" />
               <div className="flex flex-wrap content-start gap-2 lg:w-52 lg:flex-col">
                 <Button variant="outline" onClick={() => importText(bulkText)} disabled={!bulkText.trim()}><Plus className="mr-1.5 h-4 w-4" />Import pasted rows</Button>
                 <Button variant="outline" onClick={() => fileInputRef.current?.click()}><Upload className="mr-1.5 h-4 w-4" />Upload CSV</Button>
@@ -279,7 +353,7 @@ export function FlexLicencePanel({ orgId }: FlexLicencePanelProps) {
                   const sendResult = sendBulkMutation.data?.results.find((result) => result.clientRowId === row.clientRowId);
                   return <tr key={row.clientRowId} className="border-t border-slate-100 align-top">
                     <td className="p-3 text-slate-400">{index + 1}</td>
-                    <td className="p-3"><Input type="email" value={row.operatorEmail} onChange={(event) => updateBulkRow(row.clientRowId, { operatorEmail: event.target.value })} placeholder="operator@utility.ca" className="min-w-56" /></td>
+                    <td className="p-3"><Input type="email" value={row.operatorEmail} onChange={(event) => updateBulkRow(row.clientRowId, { operatorEmail: event.target.value })} placeholder="Operator work email" className="min-w-56" /></td>
                     <td className="p-3"><select value={row.courseKey} onChange={(event) => updateBulkRow(row.clientRowId, { courseKey: event.target.value })} className="h-9 min-w-64 rounded-md border border-input bg-transparent px-3 text-sm">
                       <option value="">Select course</option>{courseOptions.map((option) => <option key={option.key} value={option.key}>{option.label}</option>)}
                     </select></td>

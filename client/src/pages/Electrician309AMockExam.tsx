@@ -1,7 +1,7 @@
-import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
+import MockExamShell from "@/components/MockExamShell";
 import QuizSkeleton from "@/components/QuizSkeleton";
 import { Electrician309ADiagram, ELECTRICIAN_309A_DIAGRAMS, type Electrician309ADiagramId } from "@/components/electrician309a/Electrician309ADiagrams";
-import { useElectrician309ABank } from "@/hooks/useElectrician309ABank";
+import { useElectrician309AMockMetadata } from "@/hooks/useElectrician309ABank";
 
 const MODULE_COLORS = {
   "A. Performs common occupational skills": { bg: "#DBEAFE", color: "#1D4ED8" },
@@ -16,17 +16,7 @@ function isDiagramId(value: unknown): value is Electrician309ADiagramId {
 }
 
 export default function Electrician309AMockExam() {
-  const bank = useElectrician309ABank();
-  const pool: ExamQuestion[] = bank.questions.map((question) => ({
-    id: question.id,
-    module: question.module,
-    question: question.question,
-    options: question.options,
-    correct: question.correctIndex,
-    explanation: question.explanation,
-    diagramId: question.diagramId,
-    diagramAlt: question.diagramAlt,
-  }));
+  const bank = useElectrician309AMockMetadata();
   if (bank.isLoading) return <QuizSkeleton />;
   if (bank.dbUnavailable) return <QuizSkeleton dbUnavailable />;
   return <MockExamShell
@@ -38,7 +28,6 @@ export default function Electrician309AMockExam() {
     passThreshold={0.7}
     moduleTargets={bank.moduleTargets}
     moduleColors={MODULE_COLORS}
-    questionPool={pool}
     productKey="electrician-309a"
     scoreExamType="electrician-309a"
     productName="Ontario 309A Electrician"

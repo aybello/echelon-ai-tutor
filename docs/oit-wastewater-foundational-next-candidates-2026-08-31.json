@@ -1,0 +1,122 @@
+[
+  {
+    "questionNum": 239,
+    "question": "Why must operators recognize hydrogen sulfide hazards around wastewater and digester-gas areas?",
+    "options": [
+      "Hydrogen sulfide can be highly toxic, flammable, and able to accumulate in low-lying or confined spaces where it can create a serious inhalation hazard.",
+      "Hydrogen sulfide is a harmless odour indicator that remains only near the liquid surface, so standard ventilation and confined-space precautions are not needed.",
+      "Hydrogen sulfide affects only metal equipment and has no health or fire hazards, so the main concern is protecting pipes from corrosion over time.",
+      "Hydrogen sulfide is safely removed by opening any nearby door, allowing workers to enter the space before atmospheric testing or other controls are considered."
+    ],
+    "correctIndex": 0,
+    "explanation": "Hydrogen sulfide is highly toxic and flammable. It can accumulate in hazardous amounts in low-lying areas and confined spaces, creating a serious inhalation and fire hazard.",
+    "sourceTitle": "Canadian Centre for Occupational Health and Safety — Hydrogen Sulfide",
+    "sourceReference": "Emergency overview and handling guidance: hydrogen sulfide is highly toxic, flammable, and a confined-space hazard that can accumulate in low-lying areas.",
+    "sourceUrl": "https://www.ccohs.ca/oshanswers/chemicals/chem_profiles/hydrogen_sulfide.html"
+  },
+  {
+    "questionNum": 275,
+    "question": "What is the basic difference between a sanitary sewer overflow (SSO) and a combined sewer overflow (CSO)?",
+    "options": [
+      "An SSO is a release from a sanitary sewer system, while a CSO is associated with a combined sewer system that carries sewage together with stormwater.",
+      "An SSO carries only treated effluent from a treatment plant, while a CSO carries only groundwater collected from foundation drains during wet weather.",
+      "An SSO is a planned maintenance activity inside a sewer pipe, while a CSO is a laboratory sampling method used to measure flow and wastewater strength.",
+      "An SSO is a drinking-water distribution release, while a CSO is a wastewater-treatment unit that removes dissolved solids before secondary treatment."
+    ],
+    "correctIndex": 0,
+    "explanation": "Sanitary sewers collect wastewater and limited stormwater or groundwater, while combined sewers are designed to carry larger volumes of stormwater in addition to sewage and industrial wastewater. An SSO is a release from a sanitary sewer system; the terminology and reporting requirements depend on the applicable jurisdiction.",
+    "sourceTitle": "U.S. EPA — Sanitary Sewer Overflows",
+    "sourceReference": "EPA description distinguishing sanitary sewer systems from combined sewer systems and defining sanitary sewer overflows.",
+    "sourceUrl": "https://www.epa.gov/npdes/sanitary-sewer-overflows-ssos"
+  },
+  {
+    "questionNum": 276,
+    "question": "What is the primary purpose of a CCTV inspection of a sewer line?",
+    "options": [
+      "To inspect the inside condition of the sewer and identify issues such as defects, blockages, or locations that require maintenance or further investigation.",
+      "To disinfect the inside of the sewer remotely by applying ultraviolet light through the camera, eliminating the need for cleaning or physical maintenance work.",
+      "To measure the biochemical oxygen demand of wastewater inside the sewer, replacing the need for laboratory sampling or analysis of collected wastewater samples.",
+      "To increase the pumping capacity of a force main by locating areas where the pipe can be widened without considering hydraulic design or operating conditions."
+    ],
+    "correctIndex": 0,
+    "explanation": "CCTV inspection is a collection-system tool used to inspect sewer condition and investigate potential defects or blockages. Results inform maintenance decisions; the inspection itself does not disinfect the sewer, replace sampling, or change the hydraulic design.",
+    "sourceTitle": "U.S. EPA — Collection and Lift Station Maintenance",
+    "sourceReference": "Collection-system maintenance guidance identifies sewer camera inspection as a practice used to reduce risks associated with sewer overflows and inflow/infiltration.",
+    "sourceUrl": "https://www.epa.gov/compliance/collection-and-lift-station-maintenance-reducing-risk-sanitary-sewer-overflows"
+  },
+  {
+    "questionNum": 278,
+    "question": "What is a common purpose of smoke testing in a sanitary sewer system?",
+    "options": [
+      "To help identify locations where unwanted water may enter the sanitary sewer or where defects and improper connections need further investigation.",
+      "To remove odours from a sanitary sewer by burning accumulated gases inside the pipe, reducing the need for ventilation or a confined-space safety program.",
+      "To determine whether wastewater has completed secondary treatment by observing the colour of smoke, replacing laboratory testing of effluent quality and process performance.",
+      "To confirm that a sewer line can carry drinking water under pressure, allowing the same pipe to be used for both potable-water distribution and wastewater collection."
+    ],
+    "correctIndex": 0,
+    "explanation": "Smoke testing is used as a collection-system investigation tool. It can help identify locations associated with inflow and infiltration, defects, or improper connections that need follow-up. The facility’s procedures determine the appropriate testing method and response.",
+    "sourceTitle": "U.S. EPA — Collection and Lift Station Maintenance",
+    "sourceReference": "EPA collection-system maintenance guidance identifies smoke testing as an activity used to reduce the effects of inflow and infiltration.",
+    "sourceUrl": "https://www.epa.gov/compliance/collection-and-lift-station-maintenance-reducing-risk-sanitary-sewer-overflows"
+  },
+  {
+    "questionNum": 296,
+    "question": "Which action can help reduce inflow and infiltration in a sanitary sewer system?",
+    "options": [
+      "Investigate and repair sewer defects and improper connections that allow stormwater or groundwater to enter the sanitary collection system.",
+      "Increase stormwater connections to sanitary sewers during wet weather so treatment plants receive more consistent flow and fewer overloading risks.",
+      "Stop inspecting manholes, lift stations, and sewer lines once a flow problem occurs, because repairs cannot change groundwater or stormwater entry points.",
+      "Route all groundwater and surface drainage directly into sanitary sewers so downstream pumps can move those flows before they affect the collection system."
+    ],
+    "correctIndex": 0,
+    "explanation": "Inflow and infiltration can overload a sanitary collection system. Activities such as inspection, smoke testing, sewer-camera investigation, and corrective work can help identify defects and improper connections that permit stormwater or groundwater entry.",
+    "sourceTitle": "U.S. EPA — Collection and Lift Station Maintenance",
+    "sourceReference": "EPA guidance lists smoke testing and sewer camera inspection as practices used to reduce the effects of inflow and infiltration.",
+    "sourceUrl": "https://www.epa.gov/compliance/collection-and-lift-station-maintenance-reducing-risk-sanitary-sewer-overflows"
+  },
+  {
+    "questionNum": 305,
+    "question": "Why are air-release valves inspected and maintained on wastewater force mains?",
+    "options": [
+      "To help release trapped air and support reliable force-main operation, with the inspection program addressing conditions that could affect valve performance.",
+      "To disinfect wastewater inside the force main by injecting air directly into the pipe, making all later treatment processes and monitoring activities unnecessary.",
+      "To increase the amount of stormwater entering the collection system, ensuring the force main remains full during rainfall and eliminating the need for pump control.",
+      "To replace pump-station preventive maintenance by allowing valves alone to correct every electrical, mechanical, level-control, and flow-related operating problem."
+    ],
+    "correctIndex": 0,
+    "explanation": "Air-release valves are part of collection and lift-station maintenance. Routine inspection and cleaning help reduce failures and support force-main operation. The exact valve design and maintenance procedure depend on the facility’s equipment and operating manual.",
+    "sourceTitle": "U.S. EPA — Collection and Lift Station Maintenance",
+    "sourceReference": "EPA collection-system guidance includes the inspection of air-relief valves as part of collection and lift-station maintenance.",
+    "sourceUrl": "https://www.epa.gov/compliance/collection-and-lift-station-maintenance-reducing-risk-sanitary-sewer-overflows"
+  },
+  {
+    "questionNum": 429,
+    "question": "Under Ontario Regulation 129/04, which information must be recorded in a facility log for each operating shift?",
+    "options": [
+      "Any unusual or abnormal condition observed during the shift, the action taken, and any conclusions drawn from the observation.",
+      "Only routine equipment readings that remain within normal conditions, with no need to record abnormal conditions, actions, or special operating instructions.",
+      "The personal opinions of visitors about facility performance, even when they are not authorized by the owner or an operator-in-charge to make log entries.",
+      "Future capital-project schedules and procurement decisions, instead of shift times, operators on duty, unusual conditions, equipment outages, or corrective action."
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 129/04 requires logs or other record-keeping mechanisms for facility operations. For each operating shift, authorized persons record items including unusual or abnormal conditions, action taken, and conclusions drawn. Entries must be chronological and identify the person who made them.",
+    "sourceTitle": "Ontario Regulation 129/04 — Licensing of Sewage Works Operators",
+    "sourceReference": "Section 19(1)–(6), especially section 19(5)5: records for unusual or abnormal conditions, actions taken, and conclusions drawn during each operating shift.",
+    "sourceUrl": "https://www.ontario.ca/laws/regulation/040129"
+  },
+  {
+    "questionNum": 454,
+    "question": "What is a primary purpose of emergency response drills at a wastewater facility?",
+    "options": [
+      "To practice all or critical parts of the emergency plan and identify gaps that should be corrected before an actual emergency occurs.",
+      "To replace the written emergency plan permanently, since a successful drill means the facility no longer needs procedures, training, or periodic plan review.",
+      "To test only whether emergency equipment can be stored off site, without evaluating staff responsibilities, communication, evacuation, or response actions.",
+      "To delay corrective actions until after an emergency occurs, because the results of drills should not be used to improve procedures, training, or plan updates."
+    ],
+    "correctIndex": 0,
+    "explanation": "Exercises and drills allow a facility to practice all or critical parts of an emergency plan. A review after a drill can identify areas for improvement, and the plan should be revised when shortcomings become known.",
+    "sourceTitle": "Canadian Centre for Occupational Health and Safety — Emergency Planning",
+    "sourceReference": "Testing and revision guidance: drills may practice all or critical portions of an emergency plan, and review identifies areas requiring improvement.",
+    "sourceUrl": "https://www.ccohs.ca/oshanswers/hsprograms/planning.html"
+  }
+]

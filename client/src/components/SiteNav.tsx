@@ -1,32 +1,42 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { Link } from "wouter";
+import { Link, useSearch } from "wouter";
 import {
   BookOpen, ChevronDown, CircleUserRound, FileCheck2, FlaskConical,
   Gauge, GraduationCap, LayoutDashboard, Menu, MessageCircleQuestion,
-  NotebookTabs, Sigma, Sparkles, X, Zap,
+  NotebookTabs, ShieldCheck, Sigma, Sparkles, X, Zap,
 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { getActiveWorkspaceTab, getCourseForPath, getCourseWorkspaceTabs, getMobileWorkspaceTabs } from "@/lib/courseNavigation";
+import { buildPricingHref, courseProvinceHref, signInHref } from "@shared/funnelNavigation";
 import { resolveCourseKey } from "@shared/courseRegistry";
+import { readUSStudyContext, usCatalogueHref } from "@shared/usStudyContext";
 
-const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
+export const ECHELON_LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
 export const NAV_LINKS = [
   { label: "Courses", href: "/#courses" },
-  { label: "309A Electrician", href: "/electrician-309a" },
-  { label: "Process Guides", href: "/guides" },
-  { label: "WPI", href: "/wpi" },
+  { label: "Teams", href: "/teams" },
+  { label: "Partnerships", href: "/partnerships" },
+  { label: "Jobs", href: "/jobs" },
+  { label: "Blog", href: "/blog" },
   { label: "US", href: "/us" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "About", href: "/about" },
 ];
 
-const RESOURCE_LINKS = [
+export const COURSE_LINKS = [
+  { label: "Ontario courses", href: "/#courses", description: "Operator certification preparation" },
+  { label: "Western Canada", href: "/wpi", description: "WPI and provincial preparation" },
+  { label: "309A Electrician", href: "/electrician-309a", description: "Ontario Certificate of Qualification preparation" },
+];
+
+export const RESOURCE_LINKS = [
+  { label: "Continuing education", href: "/continuing-education", description: "Ontario operator learning paths" },
   { label: "Study guides", href: "/guides", description: "Water and wastewater process guides" },
+  { label: "Equipment Lab", href: "/equipment-lab", description: "Explore equipment and process flow" },
   { label: "Formula library", href: "/formulas", description: "Operator formulas and calculations" },
   { label: "Career map", href: "/career", description: "Plan your certification path" },
   { label: "Echelon Command", href: "/command", description: "Incident response practice" },
+  { label: "About Echelon", href: "/about", description: "Our learning approach" },
 ];
 
 const tabIcons = {
@@ -53,10 +63,15 @@ function isPathActive(currentPath: string, href: string): boolean {
   return href === "/" ? current === "/" : current === href || current.startsWith(`${href}/`);
 }
 
-function ResourcesMenu({ currentPath, onNavigate }: { currentPath: string; onNavigate?: () => void }) {
+function CoursesMenu({ currentPath }: { currentPath: string }) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
-  const active = RESOURCE_LINKS.some((item) => isPathActive(currentPath, item.href));
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const active = COURSE_LINKS.some((item) => isPathActive(currentPath, item.href));
+  const closeWithFocus = () => {
+    setOpen(false);
+    requestAnimationFrame(() => triggerRef.current?.focus());
+  };
 
   useEffect(() => {
     const close = (event: MouseEvent) => {
@@ -67,12 +82,49 @@ function ResourcesMenu({ currentPath, onNavigate }: { currentPath: string; onNav
   }, []);
 
   return (
-    <div className="echelon-resources" ref={rootRef}>
-      <button className={`echelon-nav-link${active ? " is-active" : ""}`} onClick={() => setOpen((value) => !value)} aria-expanded={open}>
+    <div className="echelon-courses" ref={rootRef} onKeyDown={(event) => { if (open && event.key === "Escape") { event.preventDefault(); closeWithFocus(); } }}>
+      <button ref={triggerRef} type="button" className={`echelon-nav-link${active ? " is-active" : ""}`} onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-controls={open ? "echelon-courses-menu" : undefined}>
+        Courses <ChevronDown size={14} aria-hidden="true" />
+      </button>
+      {open && (
+        <div id="echelon-courses-menu" className="echelon-courses-menu" aria-label="Course options">
+          {COURSE_LINKS.map((item) => (
+            <Link key={item.href} href={item.href} className="echelon-resource-link" onClick={() => setOpen(false)}>
+              <span>{item.label}</span>
+              <small>{item.description}</small>
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ResourcesMenu({ currentPath, onNavigate }: { currentPath: string; onNavigate?: () => void }) {
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const active = RESOURCE_LINKS.some((item) => isPathActive(currentPath, item.href));
+  const closeWithFocus = () => {
+    setOpen(false);
+    requestAnimationFrame(() => triggerRef.current?.focus());
+  };
+
+  useEffect(() => {
+    const close = (event: MouseEvent) => {
+      if (rootRef.current && !rootRef.current.contains(event.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", close);
+    return () => document.removeEventListener("mousedown", close);
+  }, []);
+
+  return (
+    <div className="echelon-resources" ref={rootRef} onKeyDown={(event) => { if (open && event.key === "Escape") { event.preventDefault(); closeWithFocus(); } }}>
+      <button ref={triggerRef} type="button" className={`echelon-nav-link${active ? " is-active" : ""}`} onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-controls={open ? "echelon-resources-menu" : undefined}>
         Resources <ChevronDown size={14} aria-hidden="true" />
       </button>
       {open && (
-        <div className="echelon-resources-menu">
+        <div id="echelon-resources-menu" className="echelon-resources-menu" aria-label="Resource options">
           {RESOURCE_LINKS.map((item) => (
             <Link key={item.href} href={item.href} className="echelon-resource-link" onClick={() => { setOpen(false); onNavigate?.(); }}>
               <span>{item.label}</span>
@@ -94,15 +146,33 @@ export default function SiteNav({
 }: SiteNavProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
-  const { isAuthenticated } = useAuth({ lazy: true });
+  // Resolve the server-backed role on a fresh page load, not only after a
+  // learner route has populated the auth cache. Email verification alone
+  // does not grant admin access.
+  const { user, isAuthenticated } = useAuth();
+  const isAdmin = user?.role === "admin";
   const dashboardMe = trpc.dashboardAuth.me.useQuery(undefined, { retry: false, staleTime: 5 * 60 * 1000 });
-  const progressCourseKey = currentPath.split("?")[0] === "/dashboard" && typeof window !== "undefined"
-    ? new URLSearchParams(window.location.search).get("course")
-    : null;
+  const search = useSearch();
+  const progressCourseKey = currentPath.split("?")[0] === "/dashboard" ? new URLSearchParams(search).get("course") : null;
   const course = getCourseForPath(currentPath) ?? (progressCourseKey ? resolveCourseKey(progressCourseKey) : undefined);
   const learningMode = variant === "learning" || (variant === "auto" && !!course);
   const isSignedIn = authenticatedOverride ?? (isAuthenticated || !!dashboardMe.data?.email);
-  const workspaceTabs = course ? getCourseWorkspaceTabs(course) : [];
+  const destination = `${currentPath.split("?")[0]}${search ? `?${search}` : ""}`;
+  const accountHref = isSignedIn ? "/account" : signInHref(destination);
+  const courseProvince = new URLSearchParams(search).get("province");
+  const usContext = readUSStudyContext(search);
+  // /teams is employer purchasing; /team contains manager workspaces. Keep
+  // learner account, activation and course routes on their individual funnel.
+  const isEmployerRoute = ["/teams", "/team"].some((href) => isPathActive(currentPath, href));
+  // A dedicated US course is always a US context. A shared WPI course only
+  // counts as US when the learner actually carries US study context, so a
+  // Canadian learner never sees US framing.
+  const isDedicatedUSCourse = course?.examFamily === "us-wpi" || course?.examFamily === "us-state";
+  const isSharedUSCourse = course?.examFamily === "western" && usContext.isUS;
+  const isUSCourse = isDedicatedUSCourse || isSharedUSCourse;
+  const dashboardHref = course ? courseProvinceHref(`/dashboard?course=${encodeURIComponent(course.courseKey)}`, course.courseKey, courseProvince, search) : "/dashboard";
+  const pricingHref = course ? buildPricingHref(course.courseKey, courseProvince, search) : "/pricing";
+  const workspaceTabs = course ? getCourseWorkspaceTabs(course).map(tab => ({ ...tab, href: courseProvinceHref(tab.href, course.courseKey, courseProvince, search) })) : [];
   const { primaryTabs: mobilePrimaryTabs, secondaryTabs: mobileSecondaryTabs } = getMobileWorkspaceTabs(workspaceTabs);
   const activeTab = course ? getActiveWorkspaceTab(currentPath, course) : null;
 
@@ -119,34 +189,43 @@ export default function SiteNav({
   return (
     <header className={`echelon-site-header${learningMode ? " is-learning" : ""}`}>
       <nav className="echelon-global-nav" aria-label="Global navigation">
-        <Link href="/" className="echelon-brand" aria-label="Echelon Institute home">
-          <img src={LOGO_URL} alt="" width={42} height={40} />
+        <Link href={isUSCourse ? "/us" : "/"} className="echelon-brand" aria-label="Echelon Institute home">
+          <img src={ECHELON_LOGO_URL} alt="Echelon Institute logo" width={42} height={40} />
           <span className="echelon-brand-copy">
             <strong>{brandName}</strong>
-            <small>{course?.courseKey === "electrician-309a" ? "309A electrician exam prep" : "Operator certification prep"}</small>
+            <small>Exam prep for skilled trades</small>
           </span>
         </Link>
 
         <div className="echelon-desktop-links">
-          <Link href="/#courses" className={`echelon-nav-link${isPathActive(currentPath, "/") ? " is-active" : ""}`}>Courses</Link>
-          <Link href="/electrician-309a" className={`echelon-nav-link${isPathActive(currentPath, "/electrician-309a") ? " is-active" : ""}`}>309A Electrician</Link>
-          <Link href="/wpi" className={`echelon-nav-link${isPathActive(currentPath, "/wpi") ? " is-active" : ""}`}>WPI</Link>
-          <Link href="/us" className={`echelon-nav-link${isPathActive(currentPath, "/us") ? " is-active" : ""}`}>US</Link>
-          <Link href="/pricing" className={`echelon-nav-link${isPathActive(currentPath, "/pricing") ? " is-active" : ""}`}>Pricing</Link>
+          {learningMode ? <Link href="/account" className="echelon-nav-link">My courses</Link> : <CoursesMenu currentPath={currentPath} />}
+          <Link href="/teams" className={`echelon-nav-link${isPathActive(currentPath, "/teams") ? " is-active" : ""}`} aria-current={isPathActive(currentPath, "/teams") ? "page" : undefined}>Teams</Link>
+          <Link href="/partnerships" className={`echelon-nav-link${isPathActive(currentPath, "/partnerships") ? " is-active" : ""}`} aria-current={isPathActive(currentPath, "/partnerships") ? "page" : undefined}>Partnerships</Link>
+          <Link href="/jobs" className={`echelon-nav-link${isPathActive(currentPath, "/jobs") ? " is-active" : ""}`} aria-current={isPathActive(currentPath, "/jobs") ? "page" : undefined}>Jobs</Link>
+          <Link href="/blog" className={`echelon-nav-link${isPathActive(currentPath, "/blog") ? " is-active" : ""}`} aria-current={isPathActive(currentPath, "/blog") ? "page" : undefined}>Blog</Link>
+          <Link href="/us" className={`echelon-nav-link${isPathActive(currentPath, "/us") ? " is-active" : ""}`} aria-current={isPathActive(currentPath, "/us") ? "page" : undefined}>US</Link>
           <ResourcesMenu currentPath={currentPath} />
         </div>
 
         <div className="echelon-nav-actions">
           {rightSlot}
-          <Link href="/dashboard" className="echelon-dashboard-link">
-            <LayoutDashboard size={16} aria-hidden="true" />
-            <span>Dashboard</span>
-          </Link>
-          <Link href="/account" className="echelon-account-link">
+          {!isEmployerRoute && <Link href={pricingHref} className={`echelon-pricing-link${isPathActive(currentPath, "/pricing") ? " is-active" : ""}`} aria-current={isPathActive(currentPath, "/pricing") ? "page" : undefined}>Pricing</Link>}
+          {isAdmin ? (
+            <Link href="/admin" className="echelon-dashboard-link echelon-admin-link" aria-label="Admin dashboard" aria-current={isPathActive(currentPath, "/admin") ? "page" : undefined}>
+              <ShieldCheck size={16} aria-hidden="true" />
+              <span>Admin</span>
+            </Link>
+          ) : (
+            <Link href={dashboardHref} className="echelon-dashboard-link" aria-label="Dashboard">
+              <LayoutDashboard size={16} aria-hidden="true" />
+              <span>Dashboard</span>
+            </Link>
+          )}
+          <Link href={accountHref} className="echelon-account-link" aria-label={isSignedIn ? "My account" : "Sign in"}>
             <CircleUserRound size={17} aria-hidden="true" />
             <span>{isSignedIn ? "My account" : "Sign in"}</span>
           </Link>
-          <button className="echelon-menu-button" onClick={() => setMenuOpen((value) => !value)} aria-expanded={menuOpen} aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}>
+          <button type="button" className="echelon-menu-button" onClick={() => setMenuOpen((value) => !value)} onKeyDown={(event) => { if (event.key === "Escape") setMenuOpen(false); }} aria-expanded={menuOpen} aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}>
             {menuOpen ? <X size={21} /> : <Menu size={21} />}
           </button>
         </div>
@@ -157,7 +236,11 @@ export default function SiteNav({
           <div className="echelon-course-identity">
             {course.courseKey === "electrician-309a" ? <Zap size={16} aria-hidden="true" /> : <FlaskConical size={16} aria-hidden="true" />}
             <span>{course.shortName}</span>
-            <small>{course.examFamily === "western" ? "WPI / Western Canada" : "Ontario"}</small>
+            <small>{isDedicatedUSCourse
+              ? course.examFamily === "us-state" ? "Texas / Class D Water" : `${usContext.state?.name ?? "United States"} / US Class I`
+              : isSharedUSCourse
+                ? `${usContext.state?.name ?? "US"} / Shared WPI`
+                : course.examFamily === "western" ? "WPI / Western Canada" : "Ontario"}</small>
           </div>
           <nav className="echelon-course-tabs echelon-course-tabs-desktop" aria-label={`${course.displayName} study tools`}>
             {workspaceTabs.map((tab) => {
@@ -213,24 +296,30 @@ export default function SiteNav({
 
       {menuOpen && (
         <>
-          <button className="echelon-menu-backdrop" onClick={() => setMenuOpen(false)} aria-label="Close navigation menu" />
-          <div className="echelon-mobile-menu">
+          <button type="button" className="echelon-menu-backdrop" onClick={() => setMenuOpen(false)} aria-label="Close navigation menu" />
+          <div className="echelon-mobile-menu" onClickCapture={(event) => { if ((event.target as Element).closest("a")) setMenuOpen(false); }}>
             <div className="echelon-mobile-menu-heading">
               <div><strong>Explore Echelon</strong><span>Everything you need, in one place.</span></div>
               <MessageCircleQuestion size={20} aria-hidden="true" />
             </div>
             <div className="echelon-mobile-links">
               {NAV_LINKS.map((item) => (
-                <a key={item.href} href={item.href} className={isPathActive(currentPath, item.href) ? "is-active" : ""}>{item.label}</a>
+                <a key={item.href} href={item.href === "/#courses" && isUSCourse ? usCatalogueHref(usContext.state?.code) : item.href} className={isPathActive(currentPath, item.href) ? "is-active" : ""} onClick={() => setMenuOpen(false)}>{item.label}</a>
               ))}
             </div>
             <div className="echelon-mobile-resources">
-              <span>Study resources</span>
-              {RESOURCE_LINKS.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}
+              <span>Course options</span>
+              {COURSE_LINKS.map((item) => <Link key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}</Link>)}
+            </div>
+            <div className="echelon-mobile-resources">
+              <span>Resources</span>
+              {RESOURCE_LINKS.map((item) => <Link key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}</Link>)}
             </div>
             <div className="echelon-mobile-actions">
-              <Link href="/dashboard"><LayoutDashboard size={17} /> Dashboard</Link>
-              <Link href="/account"><CircleUserRound size={17} /> {isSignedIn ? "My account" : "Sign in"}</Link>
+              {!isEmployerRoute && <Link href={pricingHref} className="echelon-mobile-pricing-link" onClick={() => setMenuOpen(false)}>Pricing</Link>}
+              <Link href={dashboardHref} onClick={() => setMenuOpen(false)}><LayoutDashboard size={17} /> Dashboard</Link>
+              {isAdmin && <Link href="/admin" className="echelon-admin-link" onClick={() => setMenuOpen(false)}><ShieldCheck size={17} aria-hidden="true" /> Admin dashboard</Link>}
+              <Link href={accountHref} onClick={() => setMenuOpen(false)}><CircleUserRound size={17} /> {isSignedIn ? "My account" : "Sign in"}</Link>
             </div>
           </div>
         </>

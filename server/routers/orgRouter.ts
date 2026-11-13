@@ -2,9 +2,8 @@
  * orgRouter — manager-scoped procedures for the Echelon for Teams dashboard.
  *
  * Authorization: every procedure uses requireOrgManager middleware, which reads
- * ctx.studentEmail (already verified + normalized by context.ts) and resolves it
- * to a manager membership row. The orgId is derived server-side — it is NEVER
- * accepted as client input.
+ * the verified manager identity and resolves an owned organization. An optional
+ * orgId selects among owned organizations; it never grants ownership.
  *
  * Seat lifecycle (Decision 2 from spec):
  *   Assign: insert organization_members row + upsert subscriptions row (orgId set,
@@ -36,12 +35,15 @@ import {
 } from "../../drizzle/schema";
 import { organizationTermUsage } from "../../drizzle/schema";
 import { normalizeEmail } from "../_core/access";
-import { sendTeamEnrollmentEmail, sendOperatorStudyReminderEmail } from "../email";
+import { sendTeamEnrollmentEmail, sendOperatorStudyReminderEmail, type TeamEnrollmentEmailPayload } from "../email";
 import { courseKeyToTierStrict, isValidCourseKey } from "../../shared/products";
-import { courseKeyToLabel, getExamTypesForCourseKey } from "../../shared/courseRegistry";
-import { allowedCourseKeysForOrg, isSubscriptionProvince, isSubscriptionTier, validateOrgCourseKeys } from "../stripe/subscriptionProducts";
+import { courseKeyToLabel, getExamTypesForCourseKey, resolveCourseKey } from "../../shared/courseRegistry";
+import { allowedCourseKeysForOrg, subscriptionProvinceForOrg, isSubscriptionTier, validateOrgCourseKeys } from "../stripe/subscriptionProducts";
 import { trackEvent } from "../analytics";
-import { selectCurrentManagerOrganization } from "../teams/managerOrganization";
+import { safeSupervisorCsvCell } from "../../shared/supervisorActionPlan";
+import { listManagedOrganizations, managerEmailForContext, resolveManagedOrganization } from "../teams/resolveManagerOrganization";
+import { calculateBaselinePracticeMetrics } from "../teams/baselinePracticeMetrics";
+import { changeDelegatedManager, DELEGATED_MANAGER_ROLE } from "../teams/delegatedManagers";
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
@@ -60,12 +62,62 @@ const STALLED_NEVER_STARTED_DAYS = 7;
 /** Days since last activity = "stalled (inactive)" */
 const STALLED_INACTIVE_DAYS = 14;
 
+function completedMockAccuracyByMemberId(
+  rows: Array<{ memberId: number | null; correct: number | null; total: number | null }>,
+) {
+  const totalsByMemberId = new Map<number, { correct: number; total: number }>();
+  for (const row of rows) {
+    if (row.memberId === null) continue;
+    const total = Number(row.total ?? 0);
+    if (total <= 0) continue;
+    const memberId = Number(row.memberId);
+    const totals = totalsByMemberId.get(memberId) ?? { correct: 0, total: 0 };
+    totals.correct += Number(row.correct ?? 0);
+    totals.total += total;
+    totalsByMemberId.set(memberId, totals);
+  }
+  return new Map(
+    Array.from(totalsByMemberId, ([memberId, totals]) => [memberId, totals.correct / totals.total]),
+  );
+}
+
+/** Raw MySQL MAX(timestamp) values may bypass Drizzle's Date mapping. */
+export function aggregateUtcDate(value: Date | string | null | undefined): Date | null {
+  if (!value) return null;
+  if (value instanceof Date) {
+    return Number.isNaN(value.getTime()) ? null : value;
+  }
+  const raw = value.trim();
+  const mySqlTimestamp = raw.match(
+    /^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}):(\d{2})(?:\.(\d+))?)?$/,
+  );
+  if (mySqlTimestamp) {
+    const [, yearText, monthText, dayText, hourText = "0", minuteText = "0", secondText = "0", fractionText = ""] = mySqlTimestamp;
+    const year = Number(yearText);
+    const month = Number(monthText);
+    const day = Number(dayText);
+    const hour = Number(hourText);
+    const minute = Number(minuteText);
+    const second = Number(secondText);
+    const millisecond = Number(`${fractionText}000`.slice(0, 3));
+    const parsed = new Date(Date.UTC(year, month - 1, day, hour, minute, second, millisecond));
+    const valid = parsed.getUTCFullYear() === year
+      && parsed.getUTCMonth() === month - 1
+      && parsed.getUTCDate() === day
+      && parsed.getUTCHours() === hour
+      && parsed.getUTCMinutes() === minute
+      && parsed.getUTCSeconds() === second;
+    return valid ? parsed : null;
+  }
+  const parsed = new Date(raw);
+  return Number.isNaN(parsed.getTime()) ? null : parsed;
+}
+
 // ── requireOrgManager middleware ─────────────────────────────────────────────
 
 /**
- * Organisation statuses that still grant manager access to the team dashboard.
- * Mirrors ORG_ACCESS_STATUSES in _core/access.ts, which governs operator access
- * to study material — a cancelled organisation loses both, not just one.
+ * Manager lifecycle is resolved separately from learner study entitlement.
+ * Paid Flex inventory and reporting windows do not extend Annual study terms.
  */
 /** One contract year, in milliseconds. */
 const ONE_TERM_MS = 365 * 24 * 60 * 60 * 1000;
@@ -85,80 +137,54 @@ function resolveTermStart(org: { termStart: Date | null; termEnd: Date }): Date 
 }
 
 /**
- * Resolves the manager's email from ctx.studentEmail (OTP session, already
- * verified by context.ts) and looks up their manager membership row.
- * Throws UNAUTHORIZED if no valid manager membership is found, or if the
- * organisation itself is no longer active.
+ * Resolves the verified manager identity to an organization owned by that email.
+ * Optional organization selection cannot grant ownership. The shared resolver
+ * enforces dashboard status and the current contract or paid Flex lifecycle.
+ * Annual learner writes additionally require requireCurrentAnnualTerm; reporting
+ * eligibility alone never grants permission to assign or reactivate Annual access.
  * Returns the orgId and managerEmail attached to the context.
  */
 export async function resolveOrgManager(ctx: {
   user: { id: number; email?: string | null } | null;
   studentEmail?: string | null;
-}): Promise<{ orgId: number; managerEmail: string }> {
-  const email = ctx.studentEmail ?? ctx.user?.email ?? null;
-  if (!email) {
-    throw new TRPCError({
-      code: "UNAUTHORIZED",
-      message: "Please sign in to access the team dashboard.",
-    });
+  selectedOrganizationId?: number;
+}, orgId = ctx.selectedOrganizationId): Promise<{ orgId: number; managerEmail: string }> {
+  const org = await resolveManagedOrganization(ctx, { orgId });
+  return { orgId: org!.id, managerEmail: managerEmailForContext(ctx) };
+}
+
+// Selection is request-scoped, never an identity or membership grant.
+const teamProcedure = publicProcedure
+  .input(z.object({ orgId: z.number().int().positive().optional() }).optional())
+  .use(({ ctx, input, next }) => next({ ctx: { ...ctx, selectedOrganizationId: input?.orgId } }));
+
+/** Dashboard/reporting eligibility must never authorize Annual learner writes. */
+function requireCurrentAnnualTerm(org: { status: string; termEnd: Date | null }) {
+  if (!["active", "past_due"].includes(org.status) || !org.termEnd || org.termEnd <= new Date()) {
+    throw new TRPCError({ code: "FORBIDDEN", message: "The Annual contract term has ended or is inactive. Renew before assigning or changing Annual learner access." });
   }
+}
 
-  const db = await getDb();
-  if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-
-  const normalised = normalizeEmail(email);
-
-  // Resolve every manager membership before choosing an organization. A
-  // previous checkout or contract can leave an older manager row behind; it
-  // must not hide a newer active organization for the same verified email.
-  const rows = await db
-    .select({
-      id: organizations.id,
-      orgId: organizationMembers.orgId,
-      status: organizations.status,
-      termEnd: organizations.termEnd,
-      createdAt: organizations.createdAt,
-    })
-    .from(organizationMembers)
-    .innerJoin(organizations, eq(organizationMembers.orgId, organizations.id))
-    .where(
-      and(
-        eq(organizationMembers.email, normalised),
-        eq(organizationMembers.role, "manager"),
-        eq(organizationMembers.status, "assigned"),
-      ),
-    );
-
-  if (rows.length === 0) {
-    throw new TRPCError({
-      code: "UNAUTHORIZED",
-      message: "No manager account found for this email.",
-    });
+type EnrollmentOutcome = { status: "sent" | "failed" | "not_requested" };
+function enrollmentPayload(org: { name: string; province: string }, email: string, managerEmail: string | undefined, keys: string[]): TeamEnrollmentEmailPayload {
+  return {
+    email, orgName: org.name,
+    managerEmail: managerEmail ?? process.env.SUPPORT_EMAIL ?? "abello@echeloninstitute.ca",
+    loginUrl: `${process.env.FRONTEND_URL ?? "https://echeloninstitute.ca"}/login`,
+    courseName: keys.length ? keys.map(k => courseKeyToLabel(k, org.province)).join(" & ") : undefined,
+  };
+}
+/** Observed SMTP result, not an inbox receipt. Explicit resend is safe for seat accounting.
+ * No suitable enrollment outbox exists; never reuse reminder consent/cooldown state. */
+async function deliverEnrollment(payload: TeamEnrollmentEmailPayload | null): Promise<EnrollmentOutcome> {
+  if (!payload) return { status: "not_requested" };
+  try {
+    await sendTeamEnrollmentEmail(payload);
+    return { status: "sent" };
+  } catch {
+    // Keep the committed assignment and surface a retryable delivery outcome.
+    return { status: "failed" };
   }
-
-  const org = selectCurrentManagerOrganization(rows);
-
-  // Lifecycle gate: manager access must expire on exactly the same terms as
-  // operator access in _core/access.ts, which requires an eligible status AND
-  // termEnd in the future. Without both checks a cancelled or lapsed account
-  // could still assign seats, export the full team roster and send reminder
-  // emails to operators who have themselves already lost access.
-  //
-  // Billing is deliberately not gated here: stripe.createBillingPortalSession
-  // is reachable from /account, so a lapsed manager can always still renew.
-  if (!org) {
-    const hasEligibleStatus = rows.some((row) =>
-      row.status === "active" || row.status === "past_due",
-    );
-    throw new TRPCError({
-      code: "FORBIDDEN",
-      message: hasEligibleStatus
-        ? "This team contract term has ended. Renew from your account page to regain access to the team dashboard."
-        : "This team subscription is no longer active. Renew from your account page to regain access to the team dashboard.",
-    });
-  }
-
-  return { orgId: org.orgId, managerEmail: normalised };
 }
 
 // ── Seat lifecycle helpers ────────────────────────────────────────────────────
@@ -174,7 +200,7 @@ export async function resolveOrgManager(ctx: {
  */
 async function grantSeat(
   db: Awaited<ReturnType<typeof getDb>>,
-  org: { id: number; province: string; termEnd: Date; termStart?: Date | null; name: string; tier: string },
+  org: { id: number; province: string; termEnd: Date; termStart?: Date | null; name: string; tier: string; status?: string },
   email: string,
   role: "manager" | "operator" = "operator",
   managerEmail?: string,
@@ -183,6 +209,7 @@ async function grantSeat(
   courseKeys?: string[],
 ) {
   if (!db) throw new Error("Database unavailable");
+  if (role === "operator") requireCurrentAnnualTerm({ ...org, status: org.status ?? "" });
 
   // Resolve the canonical list of course keys
   const resolvedKeys: string[] = courseKeys && courseKeys.length > 0
@@ -236,10 +263,7 @@ async function grantSeat(
   if (coursesToUpsert.length === 0 && role === "operator") {
     throw new Error("Select at least one course included in your team plan.");
   }
-  if (!isSubscriptionProvince(org.province)) {
-    throw new Error("Organization province is not supported for subscription access.");
-  }
-  const subscriptionProvince = org.province;
+  const subscriptionProvince = subscriptionProvinceForOrg(org.province);
 
   for (const ck of coursesToUpsert) {
     const tier = courseKeyToTierStrict(ck, org.province);
@@ -298,26 +322,10 @@ async function grantSeat(
   // Note: annual licence usage is recorded by consumeOrReuseAnnualLicence BEFORE grantSeat is called.
   // grantSeat no longer inserts into organizationTermUsage directly.
 
-  // Send enrollment email to new operators (or re-activated ones)
-  // Fire-and-forget — don't block the seat assignment if email fails
-  if (role === "operator" && (isNewMember || wasRevoked)) {
-    const origin = process.env.FRONTEND_URL ?? "https://echeloninstitute.ca";
-    const loginUrl = `${origin}/login`;
-    const supportEmail = process.env.SUPPORT_EMAIL ?? "abello@echeloninstitute.ca";
-    // Build course label: list all assigned courses, not just the primary one
-    const courseName = validatedKeys.length > 1
-      ? validatedKeys.map(k => courseKeyToLabel(k, org.province)).join(" & ")
-      : primaryCourseKey ? courseKeyToLabel(primaryCourseKey, org.province) : undefined;
-    sendTeamEnrollmentEmail({
-      email,
-      orgName: org.name,
-      managerEmail: managerEmail ?? supportEmail,
-      loginUrl,
-      courseName,
-    }).catch(err => {
-      console.error(`[Team Enrollment Email] Failed to send to ${email}:`, err);
-    });
-  }
+  // Return intent only: the caller MUST await delivery after transaction commit.
+  return role === "operator" && (isNewMember || wasRevoked)
+    ? enrollmentPayload(org, email, managerEmail, validatedKeys)
+    : null;
 }
 
 /**
@@ -377,6 +385,14 @@ async function consumeOrReuseAnnualLicence(
   // Pessimistic lock: serialize licence allocation for this organization
   await tx.execute(sql`SELECT id FROM organizations WHERE id = ${org.id} FOR UPDATE`);
 
+  // A manager-only identity must not become a course-bearing row through an
+  // ordinary single/bulk assignment. Check before any ledger/subscription write.
+  const [membership] = await tx.select({ role: organizationMembers.role }).from(organizationMembers)
+    .where(and(eq(organizationMembers.orgId, org.id), eq(organizationMembers.email, email))).limit(1);
+  if (membership?.role === DELEGATED_MANAGER_ROLE) {
+    throw new TRPCError({ code: "CONFLICT", message: "This email is a delegated manager. Use a separate operator identity; manager-only memberships cannot consume operator licences." });
+  }
+
   // Check if this email is already counted in the current term
   const existingUsage = await tx
     .select({ id: organizationTermUsage.id })
@@ -431,11 +447,39 @@ async function consumeOrReuseAnnualLicence(
 // ── Router ────────────────────────────────────────────────────────────────────
 
 export const orgRouter = router({
+  listManagedOrganizations: publicProcedure.query(async ({ ctx }) =>
+    (await listManagedOrganizations(ctx)).map(org => ({
+      id: org.id, name: org.name, status: org.status, termEnd: org.termEnd,
+    }))),
+  listDelegatedManagers: teamProcedure.query(async ({ ctx }) => {
+    const org = await resolveManagedOrganization(ctx, { orgId: ctx.selectedOrganizationId, ownerOnly: true });
+    const db = await getDb();
+    if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+    return db.select({ id: organizationMembers.id, email: organizationMembers.email, name: organizationMembers.name,
+      status: organizationMembers.status, assignedAt: organizationMembers.assignedAt, revokedAt: organizationMembers.revokedAt })
+      .from(organizationMembers).where(and(eq(organizationMembers.orgId, org!.id), eq(organizationMembers.role, DELEGATED_MANAGER_ROLE)));
+  }),
+  addDelegatedManager: teamProcedure
+    .input(z.object({ email: z.string().email(), name: z.string().trim().max(200).optional() }))
+    .mutation(async ({ ctx, input }) => {
+      const org = await resolveManagedOrganization(ctx, { orgId: ctx.selectedOrganizationId, ownerOnly: true });
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+      return changeDelegatedManager(db, org!.id, managerEmailForContext(ctx), normalizeEmail(input.email), "add", input.name);
+    }),
+  removeDelegatedManager: teamProcedure
+    .input(z.object({ email: z.string().email() }))
+    .mutation(async ({ ctx, input }) => {
+      const org = await resolveManagedOrganization(ctx, { orgId: ctx.selectedOrganizationId, ownerOnly: true });
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+      return changeDelegatedManager(db, org!.id, managerEmailForContext(ctx), normalizeEmail(input.email), "remove");
+    }),
   /**
    * getOrgOverview — four summary numbers for the dashboard header cards.
    * Seats assigned, active this week, average study indicator, strong indicators.
    */
-  getOrgOverview: publicProcedure.query(async ({ ctx }) => {
+  getOrgOverview: teamProcedure.query(async ({ ctx }) => {
     const { orgId } = await resolveOrgManager(ctx);
     const db = await getDb();
     if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
@@ -500,7 +544,7 @@ export const orgRouter = router({
     const oneWeekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
 
     // Phase 8: scope by orgId instead of email to prevent cross-org data leakage
-    const [accuracyRows, activeRows, mockRows] = await Promise.all([
+    const [accuracyRows, activeRows, mockAccuracyRows] = await Promise.all([
       db
         .select({
           memberId: questionAttempts.organizationMemberId,
@@ -509,14 +553,14 @@ export const orgRouter = router({
           lastActive: sql<Date | null>`MAX(${questionAttempts.createdAt})`,
         })
         .from(questionAttempts)
-        .where(eq(questionAttempts.orgId, orgId))
+        .where(and(eq(questionAttempts.orgId, orgId), inArray(questionAttempts.organizationMemberId, activeMembers.map(m => m.id))))
         .groupBy(questionAttempts.organizationMemberId),
       db
         .select({ memberId: questionAttempts.organizationMemberId })
         .from(questionAttempts)
         .where(
           and(
-            eq(questionAttempts.orgId, orgId),
+            and(eq(questionAttempts.orgId, orgId), inArray(questionAttempts.organizationMemberId, activeMembers.map(m => m.id))),
             gte(questionAttempts.createdAt, oneWeekAgo),
           ),
         )
@@ -524,10 +568,15 @@ export const orgRouter = router({
       db
         .select({
           memberId: examResults.organizationMemberId,
-          count: sql<number>`COUNT(*)`,
+          correct: sql<number>`SUM(${examResults.score})`,
+          total: sql<number>`SUM(${examResults.total})`,
         })
         .from(examResults)
-        .where(eq(examResults.orgId, orgId))
+        .where(and(
+          eq(examResults.orgId, orgId),
+          inArray(examResults.organizationMemberId, activeMembers.map(m => m.id)),
+          eq(examResults.calcOnly, "no"),
+        ))
         .groupBy(examResults.organizationMemberId),
     ]);
 
@@ -537,14 +586,10 @@ export const orgRouter = router({
         .map(r => [Number(r.memberId), {
           total: Number(r.total),
           correct: Number(r.correct),
-          lastActive: r.lastActive ? new Date(r.lastActive) : null,
+          lastActive: aggregateUtcDate(r.lastActive),
         }]),
     );
-    const mockCountByMemberId = new Map(
-      mockRows
-        .filter(r => r.memberId !== null)
-        .map(r => [Number(r.memberId), Number(r.count)]),
-    );
+    const mockAccuracyByMemberId = completedMockAccuracyByMemberId(mockAccuracyRows);
     const activeMemberIds = new Set(activeRows.filter(r => r.memberId !== null).map(r => Number(r.memberId)));
     const activeThisWeek = activeMemberIds.size;
     // Compute the same reduced-input study estimate used throughout manager views.
@@ -556,7 +601,7 @@ export const orgRouter = router({
       const score = computeManagerReadiness({
         accuracy: totalAttempts > 0 ? (stats?.correct ?? 0) / totalAttempts : 0,
         totalAttempts,
-        mockExamsCompleted: mockCountByMemberId.get(m.id) ?? 0,
+        mockAccuracy: mockAccuracyByMemberId.get(m.id) ?? 0,
         activeRecently: !!stats?.lastActive && stats.lastActive >= oneWeekAgo,
       });
       totalReadiness += score;
@@ -589,7 +634,7 @@ export const orgRouter = router({
   /**
    * listMembers — full operator roster with per-member stats.
    */
-  listMembers: publicProcedure.query(async ({ ctx }) => {
+  listMembers: teamProcedure.query(async ({ ctx }) => {
     const { orgId } = await resolveOrgManager(ctx);
     const db = await getDb();
     if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
@@ -649,7 +694,7 @@ export const orgRouter = router({
         .map(r => [Number(r.memberId), { total: Number(r.total), correct: Number(r.correct) }]),
     );
     const lastActiveByMemberId = new Map(
-      lastActiveRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), r.lastActive]),
+      lastActiveRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), aggregateUtcDate(r.lastActive)]),
     );
     const examDateByEmail = new Map(
       examDateRows.map(r => [r.email, r.examDate]),
@@ -729,7 +774,7 @@ export const orgRouter = router({
   /**
    * getAttention — early-warning list: at-risk-before-exam and stalled operators.
    */
-  getAttention: publicProcedure.query(async ({ ctx }) => {
+  getAttention: teamProcedure.query(async ({ ctx }) => {
     const { orgId } = await resolveOrgManager(ctx);
     const db = await getDb();
     if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
@@ -747,7 +792,7 @@ export const orgRouter = router({
 
     if (members.length === 0) return { atRisk: [], stalled: [] };
 
-    const memberEmails = members.map(m => m.email);
+    const memberIds = members.map(m => m.id);
 
     const now = new Date();
     const atRiskCutoff = new Date(now.getTime() + AT_RISK_EXAM_DAYS * 24 * 60 * 60 * 1000);
@@ -758,52 +803,92 @@ export const orgRouter = router({
       now.getTime() - STALLED_INACTIVE_DAYS * 24 * 60 * 60 * 1000,
     );
 
-    // Bug fix: replaced sql.raw(emailList) with inArray() to prevent SQL injection
-    const [accuracyRows, lastActiveRows, examDateRows] = await Promise.all([
+    // Keep every attention fact scoped to an assigned member of this organization.
+    const [courseAccuracyRows, lastActiveRows, examDateRows] = await Promise.all([
       db
         .select({
           memberId: questionAttempts.organizationMemberId,
+          examType: questionAttempts.examType,
           total: sql<number>`COUNT(*)`,
           correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
         })
         .from(questionAttempts)
-        .where(eq(questionAttempts.orgId, orgId))
-        .groupBy(questionAttempts.organizationMemberId),
+        .where(and(
+          eq(questionAttempts.orgId, orgId),
+          inArray(questionAttempts.organizationMemberId, memberIds),
+        ))
+        .groupBy(questionAttempts.organizationMemberId, questionAttempts.examType),
       db
         .select({
           memberId: questionAttempts.organizationMemberId,
           lastActive: sql<Date>`MAX(${questionAttempts.createdAt})`,
         })
         .from(questionAttempts)
-        .where(eq(questionAttempts.orgId, orgId))
+        .where(and(
+          eq(questionAttempts.orgId, orgId),
+          inArray(questionAttempts.organizationMemberId, memberIds),
+        ))
         .groupBy(questionAttempts.organizationMemberId),
       db
-        .select({ email: examDates.email, examDate: examDates.examDate })
+        .select({
+          memberId: examDates.organizationMemberId,
+          email: examDates.email,
+          courseKey: examDates.courseKey,
+          examDate: examDates.examDate,
+        })
         .from(examDates)
         .where(
           and(
             eq(examDates.orgId, orgId),
+            inArray(examDates.organizationMemberId, memberIds),
             lt(examDates.examDate, atRiskCutoff),
             gte(examDates.examDate, now),
           ),
         ),
     ]);
 
-    const accuracyByMemberId = new Map(
-      accuracyRows
-        .filter(r => r.memberId !== null)
-        .map(r => [Number(r.memberId), { total: Number(r.total), correct: Number(r.correct) }]),
-    );
+    const memberById = new Map(members.map(member => [member.id, member]));
+    const assignedCourseKeysByMemberId = new Map<number, Set<string>>();
+    for (const member of members) {
+      let storedCourseKeys: string[] = [];
+      if (member.courseKeys) {
+        try {
+          const parsed = JSON.parse(member.courseKeys as string);
+          if (Array.isArray(parsed)) storedCourseKeys = parsed.filter((key): key is string => typeof key === "string");
+        } catch {
+          // Fall back to the legacy primary assignment below.
+        }
+      }
+      if (storedCourseKeys.length === 0 && member.courseKey) storedCourseKeys = [member.courseKey];
+      assignedCourseKeysByMemberId.set(
+        member.id,
+        new Set(storedCourseKeys.map(key => resolveCourseKey(key)?.courseKey).filter((key): key is string => Boolean(key))),
+      );
+    }
+    const accuracyByMemberId = new Map<number, { total: number; correct: number }>();
+    const accuracyByMemberAndExamType = new Map<number, Map<string, { total: number; correct: number }>>();
+    for (const row of courseAccuracyRows) {
+      if (row.memberId === null) continue;
+      const memberId = Number(row.memberId);
+      const stats = { total: Number(row.total), correct: Number(row.correct) };
+      const totals = accuracyByMemberId.get(memberId) ?? { total: 0, correct: 0 };
+      totals.total += stats.total;
+      totals.correct += stats.correct;
+      accuracyByMemberId.set(memberId, totals);
+      const byExamType = accuracyByMemberAndExamType.get(memberId) ?? new Map();
+      byExamType.set(row.examType, stats);
+      accuracyByMemberAndExamType.set(memberId, byExamType);
+    }
     const lastActiveByMemberId = new Map(
-      lastActiveRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), r.lastActive]),
-    );
-    const upcomingExamByEmail = new Map(
-      examDateRows.map(r => [r.email, r.examDate]),
+      lastActiveRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), aggregateUtcDate(r.lastActive)]),
     );
 
     const atRisk: Array<{
+      memberId: number;
       email: string;
-      accuracy: number;
+      courseKey: string;
+      courseLabel: string;
+      courseAccuracy: number;
       examDate: Date;
       daysUntilExam: number;
     }> = [];
@@ -814,20 +899,53 @@ export const orgRouter = router({
       daysSinceActivity: number | null;
     }> = [];
 
+    const upcomingExamByMemberAndCourse = new Map<number, Map<string, Date>>();
+    for (const row of examDateRows) {
+      if (row.memberId === null) continue;
+      const memberId = Number(row.memberId);
+      const member = memberById.get(memberId);
+      const course = row.courseKey ? resolveCourseKey(row.courseKey) : undefined;
+      // SQL scopes the organization and assigned IDs; this additionally fails
+      // closed for malformed or no-longer-assigned course records.
+      if (!member || !course || !assignedCourseKeysByMemberId.get(memberId)?.has(course.courseKey)) continue;
+      const byCourse = upcomingExamByMemberAndCourse.get(memberId) ?? new Map<string, Date>();
+      const existing = byCourse.get(course.courseKey);
+      if (!existing || row.examDate < existing) byCourse.set(course.courseKey, row.examDate);
+      upcomingExamByMemberAndCourse.set(memberId, byCourse);
+    }
+
     for (const m of members) {
       const stats = accuracyByMemberId.get(m.id);
       const total = stats?.total ?? 0;
-      const correct = stats?.correct ?? 0;
-      const accuracy = total > 0 ? Math.round((correct / total) * 100) : 0;
       const lastActive = lastActiveByMemberId.get(m.id) ?? null;
-      const examDate = upcomingExamByEmail.get(m.email) ?? null;
 
-      // At risk: exam within 21 days AND accuracy below threshold
-      if (examDate && accuracy < ON_TRACK_THRESHOLD) {
-        const daysUntilExam = Math.ceil(
-          (examDate.getTime() - now.getTime()) / (24 * 60 * 60 * 1000),
-        );
-        atRisk.push({ email: m.email, accuracy, examDate, daysUntilExam });
+      // At risk: assess every upcoming assigned course only against its
+      // registry-defined question bank, never against the operator's other courses.
+      for (const [courseKey, examDate] of upcomingExamByMemberAndCourse.get(m.id) ?? []) {
+        const courseStats = accuracyByMemberAndExamType.get(m.id);
+        let courseTotal = 0;
+        let courseCorrect = 0;
+        for (const examType of getExamTypesForCourseKey(courseKey)) {
+          const examTypeStats = courseStats?.get(examType);
+          if (!examTypeStats) continue;
+          courseTotal += examTypeStats.total;
+          courseCorrect += examTypeStats.correct;
+        }
+        const courseAccuracy = courseTotal > 0 ? Math.round((courseCorrect / courseTotal) * 100) : 0;
+        if (courseAccuracy < ON_TRACK_THRESHOLD) {
+          const daysUntilExam = Math.ceil(
+            (examDate.getTime() - now.getTime()) / (24 * 60 * 60 * 1000),
+          );
+          atRisk.push({
+            memberId: m.id,
+            email: m.email,
+            courseKey,
+            courseLabel: courseKeyToLabel(courseKey),
+            courseAccuracy,
+            examDate,
+            daysUntilExam,
+          });
+        }
       }
 
       // Stalled: never started (assigned 7+ days ago, no attempts)
@@ -845,6 +963,11 @@ export const orgRouter = router({
       }
     }
 
+    atRisk.sort((a, b) =>
+      a.examDate.getTime() - b.examDate.getTime()
+      || a.email.localeCompare(b.email)
+      || a.courseKey.localeCompare(b.courseKey),
+    );
     return { atRisk, stalled };
   }),
 
@@ -853,7 +976,7 @@ export const orgRouter = router({
    * Enforces seat cap: active operators must be < seatsTotal.
    * Supports multiple courses via courseKeys array.
    */
-  assignSeat: publicProcedure
+  assignSeat: teamProcedure
     .input(z.object({
       email: z.string().email(),
       name: z.string().max(200).optional(),
@@ -872,6 +995,7 @@ export const orgRouter = router({
         .limit(1)
         .then(r => r[0]);
       if (!org) throw new TRPCError({ code: "NOT_FOUND", message: "Organization not found" });
+      requireCurrentAnnualTerm(org);
 
       const email = normalizeEmail(input.email);
       const name = input.name?.trim() || undefined;
@@ -879,16 +1003,16 @@ export const orgRouter = router({
       // Atomic seat cap check + grant inside a transaction to prevent race conditions.
       // Both the count read and the insert/update happen in the same transaction so
       // two concurrent requests cannot both pass the cap check and both write a new row.
-      await db.transaction(async (tx) => {
+      const enrollment = await db.transaction(async (tx) => {
         // consumeOrReuseAnnualLicence handles the full reactivation-vs-new-operator logic:
         // - Reactivation (previously counted this term): allowed even at full capacity
         // - New operator: blocked if all licences are consumed
         // - Pessimistic FOR UPDATE lock prevents concurrent oversubscription
         await consumeOrReuseAnnualLicence(tx, org, email);
 
-        await grantSeat(tx as any, org, email, "operator", managerEmail, name, input.courseKey, input.courseKeys);
+        return grantSeat(tx as any, org, email, "operator", managerEmail, name, input.courseKey, input.courseKeys);
       });
-      return { success: true, email };
+      return { success: true, email, enrollment: await deliverEnrollment(enrollment) };
     }),
 
   /**
@@ -896,7 +1020,7 @@ export const orgRouter = router({
    * Replaces all existing org-managed subscriptions for this operator with new ones.
    * Does NOT reset the term expiry — the year started at assignment.
    */
-  updateSeatCourse: publicProcedure
+  updateSeatCourse: teamProcedure
     .input(z.object({
       email: z.string().email(),
       courseKey: z.string().max(64).optional(),
@@ -914,6 +1038,7 @@ export const orgRouter = router({
         .limit(1)
         .then(r => r[0]);
       if (!org) throw new TRPCError({ code: "NOT_FOUND", message: "Organization not found" });
+      requireCurrentAnnualTerm(org);
 
       const email = normalizeEmail(input.email);
 
@@ -932,6 +1057,7 @@ export const orgRouter = router({
         .then(r => r[0]);
 
       if (!member) throw new TRPCError({ code: "NOT_FOUND", message: "Seat not found" });
+      if (member.status !== "assigned") throw new TRPCError({ code: "BAD_REQUEST", message: "Reactivate this operator before changing courses." });
 
       // Resolve canonical list
       const resolvedKeys: string[] = input.courseKeys && input.courseKeys.length > 0
@@ -948,10 +1074,7 @@ export const orgRouter = router({
 
       const primaryCourseKey = validatedKeys[0] ?? null;
       const courseKeysJson = validatedKeys.length > 0 ? JSON.stringify(validatedKeys) : null;
-      if (!isSubscriptionProvince(org.province)) {
-        throw new TRPCError({ code: "BAD_REQUEST", message: "Organization province is not supported for subscription access." });
-      }
-      const subscriptionProvince = org.province;
+      const subscriptionProvince = subscriptionProvinceForOrg(org.province);
 
       // Build tier map for subscription upserts (all keys validated above)
       const coursesToUpsert = validatedKeys;
@@ -1032,7 +1155,7 @@ export const orgRouter = router({
    * assignSeats — bulk assign seats to a list of operator emails.
    * Enforces seat cap across the entire batch before assigning any.
    */
-  assignSeats: publicProcedure
+  assignSeats: teamProcedure
     .input(z.object({
       emails: z.array(z.string().email()).min(1).max(100),
       courseKeys: z.array(z.string().max(64)).min(1).max(10),
@@ -1049,6 +1172,7 @@ export const orgRouter = router({
         .limit(1)
         .then(r => r[0]);
       if (!org) throw new TRPCError({ code: "NOT_FOUND", message: "Organization not found" });
+      requireCurrentAnnualTerm(org);
 
       // Validate the course keys against the org's entitlement BEFORE processing any emails
       let validatedCourseKeys: string[];
@@ -1063,25 +1187,55 @@ export const orgRouter = router({
 
       // All-or-nothing bulk assignment inside a single transaction.
       // consumeOrReuseAnnualLicence handles reactivation vs new-operator logic with a pessimistic lock.
-      const results: Array<{ email: string; success: boolean; error?: string }> = [];
+      const pending: Array<{ email: string; payload: TeamEnrollmentEmailPayload | null }> = [];
       await db.transaction(async (tx) => {
         for (const email of uniqueEmails) {
           // consumeOrReuseAnnualLicence throws if a new licence is needed but cap is reached.
           // It allows reactivation even at full capacity.
           await consumeOrReuseAnnualLicence(tx, org, email);
-          await grantSeat(tx as any, org, email, "operator", managerEmail, undefined, undefined, validatedCourseKeys);
-          results.push({ email, success: true });
+          const payload = await grantSeat(tx as any, org, email, "operator", managerEmail, undefined, undefined, validatedCourseKeys);
+          pending.push({ email, payload });
         }
       });
 
+      // No mail can escape a partially rolled-back bulk transaction. Await every result.
+      const results = [];
+      for (const { email, payload } of pending) {
+        results.push({ email, success: true, enrollment: await deliverEnrollment(payload) });
+      }
       return { results };
+    }),
+
+  /** Explicit transactional enrollment retry: no seat, subscription, or usage writes. */
+  resendEnrollment: teamProcedure
+    .input(z.object({ email: z.string().email() }))
+    .mutation(async ({ input, ctx }) => {
+      const { orgId, managerEmail } = await resolveOrgManager(ctx);
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+      const [org] = await db.select().from(organizations).where(eq(organizations.id, orgId)).limit(1);
+      if (!org) throw new TRPCError({ code: "NOT_FOUND", message: "Organization not found" });
+      requireCurrentAnnualTerm(org);
+      const email = normalizeEmail(input.email);
+      const [member] = await db.select().from(organizationMembers).where(and(
+        eq(organizationMembers.orgId, orgId), eq(organizationMembers.email, email),
+        eq(organizationMembers.role, "operator"), eq(organizationMembers.status, "assigned"),
+      )).limit(1);
+      if (!member) throw new TRPCError({ code: "NOT_FOUND", message: "Assigned operator not found in your organization" });
+      let keys: string[] = member.courseKey ? [member.courseKey] : [];
+      if (member.courseKeys) {
+        try { keys = z.array(z.string()).parse(JSON.parse(member.courseKeys)); }
+        catch { throw new TRPCError({ code: "BAD_REQUEST", message: "Assigned courses are invalid. Update the operator courses before resending." }); }
+      }
+      const validatedKeys = validateOrgCourseKeys(keys, org.tier, org.province, "operator");
+      return { email, enrollment: await deliverEnrollment(enrollmentPayload(org, email, managerEmail, validatedKeys)) };
     }),
 
   /**
    * revokeSeat — revoke a seat from an operator.
    * Sets member status = revoked and subscription status = expired.
    */
-  revokeSeat: publicProcedure
+  revokeSeat: teamProcedure
     .input(z.object({ email: z.string().email() }))
     .mutation(async ({ input, ctx }) => {
       const { orgId } = await resolveOrgManager(ctx);
@@ -1095,7 +1249,7 @@ export const orgRouter = router({
   /**
    * recordExamOutcome — manager records a pass/fail/no_show for an operator.
    */
-  recordExamOutcome: publicProcedure
+  recordExamOutcome: teamProcedure
     .input(z.object({
       memberEmail: z.string().email(),
       courseKey: z.string().min(1).max(64),
@@ -1164,24 +1318,35 @@ export const orgRouter = router({
         .from(questionAttempts)
         .where(and(
           eq(questionAttempts.studentEmail, memberEmail),
+          eq(questionAttempts.orgId, orgId),
+          eq(questionAttempts.organizationMemberId, member.id),
           outcomeExamTypes.length > 0 ? inArray(questionAttempts.examType, outcomeExamTypes) : undefined,
         ));
       const totalAttempts = Number(attemptRows[0]?.total ?? 0);
       const correctAttempts = Number(attemptRows[0]?.correct ?? 0);
-      const lastActive = attemptRows[0]?.lastActive ? new Date(attemptRows[0].lastActive) : null;
+      const lastActive = aggregateUtcDate(attemptRows[0]?.lastActive);
       const recentCutoff = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
       const mockRows = await db
-        .select({ count: sql<number>`COUNT(*)` })
+        .select({
+          correct: sql<number>`SUM(${examResults.score})`,
+          total: sql<number>`SUM(${examResults.total})`,
+        })
         .from(examResults)
         .where(and(
-          eq(examResults.studentEmail, memberEmail),
+          eq(examResults.orgId, orgId),
+          eq(examResults.organizationMemberId, member.id),
           eq(examResults.courseKey, input.courseKey),
+          eq(examResults.calcOnly, "no"),
         ));
+      const completedMockTotal = Number(mockRows[0]?.total ?? 0);
+      const mockAccuracy = completedMockTotal > 0
+        ? Number(mockRows[0]?.correct ?? 0) / completedMockTotal
+        : 0;
       const readinessScoreAtOutcome = totalAttempts > 0
         ? computeManagerReadiness({
             accuracy: correctAttempts / totalAttempts,
             totalAttempts,
-            mockExamsCompleted: Number(mockRows[0]?.count ?? 0),
+            mockAccuracy,
             activeRecently: !!lastActive && lastActive >= recentCutoff,
           })
         : null;
@@ -1202,7 +1367,7 @@ export const orgRouter = router({
   /**
    * getExamOutcomes — return all recorded outcomes for this org.
    */
-  getExamOutcomes: publicProcedure
+  getExamOutcomes: teamProcedure
     .query(async ({ ctx }) => {
       const { orgId } = await resolveOrgManager(ctx);
       const db = await getDb();
@@ -1216,9 +1381,10 @@ export const orgRouter = router({
     }),
 
   /**
-   * getPassRateSummary — first-time pass rate for the current term.
+   * getPassRateSummary — first recorded outcome per learner-course this term.
+   * Records do not establish a learner's first official exam attempt.
    */
-  getPassRateSummary: publicProcedure
+  getPassRateSummary: teamProcedure
     .query(async ({ ctx }) => {
       const { orgId } = await resolveOrgManager(ctx);
       const db = await getDb();
@@ -1262,7 +1428,7 @@ export const orgIntelRouter = router({
    * getTeamReadinessSummary — enhanced overview with readiness breakdown,
    * exam-ready count, at-risk count, inactive count, and top weak topics.
    */
-  getTeamReadinessSummary: publicProcedure.query(async ({ ctx }) => {
+  getTeamReadinessSummary: teamProcedure.query(async ({ ctx }) => {
     const { orgId } = await resolveOrgManager(ctx);
     const db = await getDb();
     if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
@@ -1281,58 +1447,69 @@ export const orgIntelRouter = router({
         learningActivated: 0, activationRate: 0, diagnosticCompleted: 0,
         diagnosticCompletionRate: 0, mockParticipants: 0, mockParticipationRate: 0,
         totalQuestions: 0, avgDiagnosticBaseline: null, avgPracticeAccuracy: null,
-        accuracyChange: null,
+        accuracyChange: null, matchedLearnerCourses: 0, matchedPracticeAttempts: 0,
       };
     }
     const memberEmails = activeMembers.map(m => m.email);
     const oneWeekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
     const twoWeeksAgo = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
     const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
-    const [accuracyRows, activeRows, topicRows, mockRows, onboardingRows, diagnosticRows, activeThirtyRows, practiceRows] = await Promise.all([
+    const [accuracyRows, activeRows, topicRows, mockRows, mockAccuracyRows, onboardingRows, diagnosticRows, activeThirtyRows, practiceRows] = await Promise.all([
       db.select({
           memberId: questionAttempts.organizationMemberId,
         total: sql<number>`COUNT(*)`,
         correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
         lastActive: sql<Date>`MAX(${questionAttempts.createdAt})`,
-      }).from(questionAttempts).where(eq(questionAttempts.orgId, orgId)).groupBy(questionAttempts.organizationMemberId),
+      }).from(questionAttempts).where(and(eq(questionAttempts.orgId, orgId), inArray(questionAttempts.organizationMemberId, activeMembers.map(m => m.id)))).groupBy(questionAttempts.organizationMemberId),
       db.select({ memberId: questionAttempts.organizationMemberId }).from(questionAttempts)
-        .where(and(eq(questionAttempts.orgId, orgId), gte(questionAttempts.createdAt, oneWeekAgo)))
+        .where(and(and(eq(questionAttempts.orgId, orgId), inArray(questionAttempts.organizationMemberId, activeMembers.map(m => m.id))), gte(questionAttempts.createdAt, oneWeekAgo)))
         .groupBy(questionAttempts.organizationMemberId),
       db.select({
         topic: questionAttempts.topic,
         total: sql<number>`COUNT(*)`,
         correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
-      }).from(questionAttempts).where(eq(questionAttempts.orgId, orgId))
+      }).from(questionAttempts).where(and(eq(questionAttempts.orgId, orgId), inArray(questionAttempts.organizationMemberId, activeMembers.map(m => m.id))))
         .groupBy(questionAttempts.topic).having(sql`COUNT(*) >= 5`),
       db.select({
         memberId: examResults.organizationMemberId,
         count: sql<number>`COUNT(*)`,
-      }).from(examResults).where(eq(examResults.orgId, orgId))
+      }).from(examResults).where(and(eq(examResults.orgId, orgId), inArray(examResults.organizationMemberId, activeMembers.map(m => m.id))))
         .groupBy(examResults.organizationMemberId),
+      db.select({
+        memberId: examResults.organizationMemberId,
+        correct: sql<number>`SUM(${examResults.score})`,
+        total: sql<number>`SUM(${examResults.total})`,
+      }).from(examResults).where(and(
+        eq(examResults.orgId, orgId),
+        inArray(examResults.organizationMemberId, activeMembers.map(m => m.id)),
+        eq(examResults.calcOnly, "no"),
+      )).groupBy(examResults.organizationMemberId),
       db.select({ memberId: learnerOnboarding.organizationMemberId })
         .from(learnerOnboarding)
-        .where(eq(learnerOnboarding.orgId, orgId))
+        .where(and(eq(learnerOnboarding.orgId, orgId), inArray(learnerOnboarding.organizationMemberId, activeMembers.map(m => m.id))))
         .groupBy(learnerOnboarding.organizationMemberId),
       db.select({
         memberId: diagnosticSessions.organizationMemberId,
-        score: sql<number>`MAX(${diagnosticSessions.score})`,
+        score: diagnosticSessions.score,
+        courseKey: diagnosticSessions.courseKey,
+        completedAt: diagnosticSessions.completedAt,
       }).from(diagnosticSessions)
-        .where(eq(diagnosticSessions.orgId, orgId))
-        .groupBy(diagnosticSessions.organizationMemberId),
+        .where(and(eq(diagnosticSessions.orgId, orgId), inArray(diagnosticSessions.organizationMemberId, activeMembers.map(m => m.id)))),
       db.select({ memberId: questionAttempts.organizationMemberId })
         .from(questionAttempts)
-        .where(and(eq(questionAttempts.orgId, orgId), gte(questionAttempts.createdAt, thirtyDaysAgo)))
+        .where(and(and(eq(questionAttempts.orgId, orgId), inArray(questionAttempts.organizationMemberId, activeMembers.map(m => m.id))), gte(questionAttempts.createdAt, thirtyDaysAgo)))
         .groupBy(questionAttempts.organizationMemberId),
       db.select({
         memberId: questionAttempts.organizationMemberId,
-        total: sql<number>`COUNT(*)`,
-        correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
+        courseKey: questionAttempts.courseKey, bankKey: questionAttempts.bankKey,
+        examType: questionAttempts.examType, quizMode: questionAttempts.quizMode,
+        correct: questionAttempts.correct, createdAt: questionAttempts.createdAt,
       }).from(questionAttempts)
         .where(and(
           eq(questionAttempts.orgId, orgId),
+          inArray(questionAttempts.organizationMemberId, activeMembers.map(m => m.id)),
           sql`(${questionAttempts.quizMode} <> 'diagnostic' OR ${questionAttempts.quizMode} IS NULL)`,
-        ))
-        .groupBy(questionAttempts.organizationMemberId),
+        )),
     ]);
     // PATCH 4: Also fetch exam dates to align at-risk count with exam-date risk
     const examDateRows = memberEmails.length > 0
@@ -1349,7 +1526,7 @@ export const orgIntelRouter = router({
       if (!existing || row.examDate < existing) examDateByEmail.set(row.email, row.examDate);
     }
     const accuracyByMemberId = new Map(
-      accuracyRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), { total: Number(r.total), correct: Number(r.correct), lastActive: r.lastActive }]),
+      accuracyRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), { total: Number(r.total), correct: Number(r.correct), lastActive: aggregateUtcDate(r.lastActive) }]),
     );
     const activeMemberIds = new Set(activeRows.filter(r => r.memberId !== null).map(r => Number(r.memberId)));
     const activeThirtyDayMemberIds = new Set(activeThirtyRows.filter(r => r.memberId !== null).map(r => Number(r.memberId)));
@@ -1361,6 +1538,7 @@ export const orgIntelRouter = router({
     const mockCountByMemberId = new Map(
       mockRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), Number(r.count)]),
     );
+    const mockAccuracyByMemberId = completedMockAccuracyByMemberId(mockAccuracyRows);
     let totalReadiness = 0, examReadyCount = 0, atRiskCount = 0, inactiveCount = 0;
     const now = new Date();
     for (const m of activeMembers) {
@@ -1372,7 +1550,7 @@ export const orgIntelRouter = router({
       const readinessScore = computeManagerReadiness({
         accuracy,
         totalAttempts: total,
-        mockExamsCompleted: mockCountByMemberId.get(m.id) ?? 0,
+        mockAccuracy: mockAccuracyByMemberId.get(m.id) ?? 0,
         activeRecently: !!lastActive && lastActive >= twoWeeksAgo,
       });
       totalReadiness += readinessScore;
@@ -1389,25 +1567,7 @@ export const orgIntelRouter = router({
     const topWeakTopics = topicRows
       .map(r => ({ topic: r.topic, accuracy: Number(r.total) > 0 ? Math.round((Number(r.correct) / Number(r.total)) * 100) : 0 }))
       .sort((a, b) => a.accuracy - b.accuracy).slice(0, 3).map(t => t.topic);
-    const diagnosticScores = diagnosticRows.map(row => Number(row.score)).filter(Number.isFinite);
-    const avgDiagnosticBaseline = diagnosticScores.length > 0
-      ? Math.round(diagnosticScores.reduce((sum, score) => sum + score, 0) / diagnosticScores.length)
-      : null;
-    const practiceAccuracyByMemberId = new Map(
-      practiceRows
-        .filter(row => row.memberId !== null && Number(row.total) > 0)
-        .map(row => [Number(row.memberId), Math.round((Number(row.correct) / Number(row.total)) * 100)]),
-    );
-    const practiceAccuracies = Array.from(practiceAccuracyByMemberId.values());
-    const avgPracticeAccuracy = practiceAccuracies.length > 0
-      ? Math.round(practiceAccuracies.reduce((sum, accuracy) => sum + accuracy, 0) / practiceAccuracies.length)
-      : null;
-    const diagnosticByMemberId = new Map(
-      diagnosticRows.filter(row => row.memberId !== null).map(row => [Number(row.memberId), Number(row.score)]),
-    );
-    const individualAccuracyChanges = Array.from(practiceAccuracyByMemberId.entries())
-      .filter(([memberId]) => diagnosticByMemberId.has(memberId))
-      .map(([memberId, practiceAccuracy]) => practiceAccuracy - diagnosticByMemberId.get(memberId)!);
+    const baselinePractice = calculateBaselinePracticeMetrics(diagnosticRows, practiceRows);
     const mockParticipants = Array.from(mockCountByMemberId.values()).filter(count => count > 0).length;
     return {
       orgName: org.name,
@@ -1427,22 +1587,22 @@ export const orgIntelRouter = router({
       mockParticipants,
       mockParticipationRate: Math.round((mockParticipants / totalAssigned) * 100),
       totalQuestions: accuracyRows.reduce((sum, row) => sum + Number(row.total), 0),
-      avgDiagnosticBaseline,
-      avgPracticeAccuracy,
-      accuracyChange: individualAccuracyChanges.length > 0
-        ? Math.round(individualAccuracyChanges.reduce((sum, change) => sum + change, 0) / individualAccuracyChanges.length)
-        : null,
+      avgDiagnosticBaseline: baselinePractice.avgDiagnosticBaseline,
+      avgPracticeAccuracy: baselinePractice.avgPracticeAccuracy,
+      accuracyChange: baselinePractice.accuracyChange,
+      matchedLearnerCourses: baselinePractice.cohorts.length,
+      matchedPracticeAttempts: baselinePractice.cohorts.reduce((sum, cohort) => sum + cohort.practiceAttemptCount, 0),
     };
   }),
 
   /**
    * getTeamWeakTopics — aggregate weak topics across all active operators.
    */
-  getTeamWeakTopics: publicProcedure.query(async ({ ctx }) => {
+  getTeamWeakTopics: teamProcedure.query(async ({ ctx }) => {
     const { orgId } = await resolveOrgManager(ctx);
     const db = await getDb();
     if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-    const activeMembers = await db.select({ email: organizationMembers.email }).from(organizationMembers)
+    const activeMembers = await db.select({ id: organizationMembers.id, email: organizationMembers.email }).from(organizationMembers)
       .where(and(eq(organizationMembers.orgId, orgId), eq(organizationMembers.role, "operator"), eq(organizationMembers.status, "assigned")));
     if (activeMembers.length === 0) return { topics: [] };
     const memberEmails = activeMembers.map(m => m.email);
@@ -1451,7 +1611,7 @@ export const orgIntelRouter = router({
       total: sql<number>`COUNT(*)`,
       correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
       operatorCount: sql<number>`COUNT(DISTINCT ${questionAttempts.studentEmail})`,
-    }).from(questionAttempts).where(eq(questionAttempts.orgId, orgId))
+    }).from(questionAttempts).where(and(eq(questionAttempts.orgId, orgId), inArray(questionAttempts.organizationMemberId, activeMembers.map(m => m.id))))
       .groupBy(questionAttempts.topic).having(sql`COUNT(*) >= 5`);
     const topics = topicRows
       .map(r => ({
@@ -1467,7 +1627,7 @@ export const orgIntelRouter = router({
   /**
    * getOperatorReadiness — per-operator readiness scores for the progress table.
    */
-  getOperatorReadiness: publicProcedure.query(async ({ ctx }) => {
+  getOperatorReadiness: teamProcedure.query(async ({ ctx }) => {
     const { orgId } = await resolveOrgManager(ctx);
     const db = await getDb();
     if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
@@ -1487,7 +1647,7 @@ export const orgIntelRouter = router({
         topic: questionAttempts.topic,
         total: sql<number>`COUNT(*)`,
         correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)`,
-      }).from(questionAttempts).where(eq(questionAttempts.orgId, orgId)).groupBy(questionAttempts.studentEmail, questionAttempts.topic),
+      }).from(questionAttempts).where(eq(questionAttempts.orgId, orgId)).groupBy(questionAttempts.organizationMemberId, questionAttempts.topic),
       db.select({
           memberId: questionAttempts.organizationMemberId,
         mockCount: sql<number>`COUNT(DISTINCT ${questionAttempts.sessionId})`,
@@ -1505,6 +1665,7 @@ export const orgIntelRouter = router({
         .groupBy(examDates.email),
       // Last 3 mock exam scores per operator from exam_results (persistent, linked to account)
       db.select({
+        memberId: examResults.organizationMemberId,
         email: examResults.studentEmail,
         score: examResults.score,
         total: examResults.total,
@@ -1522,10 +1683,15 @@ export const orgIntelRouter = router({
       accuracyRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), { total: Number(r.total), correct: Number(r.correct) }]),
     );
     const mockByMemberId = new Map(mockRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), Number(r.mockCount)]));
-    const lastActiveByMemberId = new Map(
-      lastActiveRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), r.lastActive]),
+    const mockAccuracyByMemberId = completedMockAccuracyByMemberId(
+      mockScoreRows.map(row => ({ memberId: row.memberId, correct: row.score, total: row.total })),
     );
-    const examDateByEmail = new Map(examDateRows.map(r => [r.email, r.examDate]));
+    const lastActiveByMemberId = new Map(
+      lastActiveRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), aggregateUtcDate(r.lastActive)]),
+    );
+    const examDateByEmail = new Map(
+      examDateRows.map(r => [r.email, aggregateUtcDate(r.examDate)]),
+    );
     // Build last 3 mock scores per operator email
     const mockScoresByEmail = new Map<string, Array<{ score: number; total: number; passed: string; createdAt: Date; examType: string }>>();
     for (const r of mockScoreRows) {
@@ -1550,7 +1716,12 @@ export const orgIntelRouter = router({
       const mockExamsCompleted = mockByMemberId.get(m.id) ?? 0;
       let readinessScore = 0;
       if (total > 0 && accuracy !== null) {
-        readinessScore = computeManagerReadiness({ accuracy: accuracy / 100, totalAttempts: total, mockExamsCompleted, activeRecently: !!(lastActive && lastActive >= twoWeeksAgo) });
+        readinessScore = computeManagerReadiness({
+          accuracy: accuracy / 100,
+          totalAttempts: total,
+          mockAccuracy: mockAccuracyByMemberId.get(m.id) ?? 0,
+          activeRecently: !!(lastActive && lastActive >= twoWeeksAgo),
+        });
       }
       const topics = topicsByMemberId.get(m.id) ?? [];
       const eligibleTopics = topics.filter(t => t.total >= 3);
@@ -1581,7 +1752,7 @@ export const orgIntelRouter = router({
   /**
    * exportTeamCSV — export team progress as CSV string.
    */
-  exportTeamCSV: publicProcedure.query(async ({ ctx }) => {
+  exportTeamCSV: teamProcedure.query(async ({ ctx }) => {
     const { orgId } = await resolveOrgManager(ctx);
     const db = await getDb();
     if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
@@ -1589,50 +1760,66 @@ export const orgIntelRouter = router({
     if (!org) throw new TRPCError({ code: "NOT_FOUND", message: "Organization not found" });
     const members = await db.select().from(organizationMembers)
       .where(and(eq(organizationMembers.orgId, orgId), eq(organizationMembers.role, "operator")));
-    const header = "Email,Name,Assigned Course,Readiness Score,Activation,Diagnostic Baseline,Practice Accuracy,Accuracy Change,Mock Exams,Questions Attempted,Last Active,Weakest Topic,Status";
+    const header = "Email,Name,Assigned Course,Readiness Score,Onboarding or Study Started,Matched Diagnostic Baseline,Same-Course Post-Baseline Practice Accuracy,Matched Accuracy Change,Matched Learner-Courses,Matched Practice Attempts,Mock Exams,Questions Attempted,Last Active,Weakest Topic,Status";
     if (members.length === 0) {
       await trackEvent("export_downloaded", { orgId, extra: { exportType: "team_learning_outcomes", rowCount: 0 } });
       return { csv: header + "\n", orgName: org.name };
     }
     const allEmails = members.map(m => m.email);
     const twoWeeksAgo = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
-    const [accuracyRows, practiceRows, topicRows, mockRows, lastActiveRows, onboardingRows, diagnosticRows] = await Promise.all([
+    const [accuracyRows, practiceRows, topicRows, mockRows, mockAccuracyRows, lastActiveRows, onboardingRows, diagnosticRows] = await Promise.all([
       db.select({ memberId: questionAttempts.organizationMemberId, total: sql<number>`COUNT(*)`, correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)` })
         .from(questionAttempts).where(eq(questionAttempts.orgId, orgId)).groupBy(questionAttempts.organizationMemberId),
-      db.select({ memberId: questionAttempts.organizationMemberId, total: sql<number>`COUNT(*)`, correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)` })
-        .from(questionAttempts)
+      db.select({
+        memberId: questionAttempts.organizationMemberId,
+        courseKey: questionAttempts.courseKey, bankKey: questionAttempts.bankKey,
+        examType: questionAttempts.examType, quizMode: questionAttempts.quizMode,
+        correct: questionAttempts.correct, createdAt: questionAttempts.createdAt,
+      }).from(questionAttempts)
         .where(and(
           eq(questionAttempts.orgId, orgId),
+          inArray(questionAttempts.organizationMemberId, members.map(m => m.id)),
           sql`(${questionAttempts.quizMode} <> 'diagnostic' OR ${questionAttempts.quizMode} IS NULL)`,
-        ))
-        .groupBy(questionAttempts.organizationMemberId),
+        )),
       db.select({ memberId: questionAttempts.organizationMemberId, topic: questionAttempts.topic, total: sql<number>`COUNT(*)`, correct: sql<number>`SUM(CASE WHEN ${questionAttempts.correct} = 'yes' THEN 1 ELSE 0 END)` })
         .from(questionAttempts).where(eq(questionAttempts.orgId, orgId)).groupBy(questionAttempts.organizationMemberId, questionAttempts.topic),
       db.select({ memberId: questionAttempts.organizationMemberId, mockCount: sql<number>`COUNT(DISTINCT ${questionAttempts.sessionId})` })
         .from(questionAttempts).where(and(eq(questionAttempts.orgId, orgId), eq(questionAttempts.quizMode, "mock"))).groupBy(questionAttempts.organizationMemberId),
+      db.select({
+        memberId: examResults.organizationMemberId,
+        correct: sql<number>`SUM(${examResults.score})`,
+        total: sql<number>`SUM(${examResults.total})`,
+      }).from(examResults).where(and(
+        eq(examResults.orgId, orgId),
+        inArray(examResults.organizationMemberId, members.map(m => m.id)),
+        eq(examResults.calcOnly, "no"),
+      )).groupBy(examResults.organizationMemberId),
       db.select({ memberId: questionAttempts.organizationMemberId, lastActive: sql<Date>`MAX(${questionAttempts.createdAt})` })
         .from(questionAttempts).where(eq(questionAttempts.orgId, orgId)).groupBy(questionAttempts.organizationMemberId),
       db.select({ memberId: learnerOnboarding.organizationMemberId })
         .from(learnerOnboarding).where(eq(learnerOnboarding.orgId, orgId)).groupBy(learnerOnboarding.organizationMemberId),
-      db.select({ memberId: diagnosticSessions.organizationMemberId, score: sql<number>`MAX(${diagnosticSessions.score})` })
-        .from(diagnosticSessions).where(eq(diagnosticSessions.orgId, orgId)).groupBy(diagnosticSessions.organizationMemberId),
+      db.select({ memberId: diagnosticSessions.organizationMemberId, score: diagnosticSessions.score,
+        courseKey: diagnosticSessions.courseKey, completedAt: diagnosticSessions.completedAt })
+        .from(diagnosticSessions).where(and(eq(diagnosticSessions.orgId, orgId),
+          inArray(diagnosticSessions.organizationMemberId, members.map(m => m.id)))),
     ]);
     const accuracyByMemberId = new Map(
       accuracyRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), { total: Number(r.total), correct: Number(r.correct) }]),
     );
-    const practiceByMemberId = new Map(
-      practiceRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), { total: Number(r.total), correct: Number(r.correct) }]),
-    );
+    const matchedMetricsByMemberId = new Map(members.map(member => [member.id,
+      calculateBaselinePracticeMetrics(
+        diagnosticRows.filter(row => row.memberId === member.id),
+        practiceRows.filter(row => row.memberId === member.id),
+      ),
+    ]));
     const activatedMemberIds = new Set([
       ...onboardingRows.filter(r => r.memberId !== null).map(r => Number(r.memberId)),
       ...accuracyRows.filter(r => r.memberId !== null && Number(r.total) > 0).map(r => Number(r.memberId)),
     ]);
-    const diagnosticByMemberId = new Map(
-      diagnosticRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), Number(r.score)]),
-    );
     const mockByMemberId = new Map(mockRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), Number(r.mockCount)]));
+    const mockAccuracyByMemberId = completedMockAccuracyByMemberId(mockAccuracyRows);
     const lastActiveByMemberId = new Map(
-      lastActiveRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), r.lastActive]),
+      lastActiveRows.filter(r => r.memberId !== null).map(r => [Number(r.memberId), aggregateUtcDate(r.lastActive)]),
     );
     const topicsByMemberId = new Map<number, Array<{ topic: string; accuracy: number; total: number }>>();
     for (const r of topicRows) {
@@ -1641,24 +1828,27 @@ export const orgIntelRouter = router({
       const acc = Number(r.total) > 0 ? Math.round((Number(r.correct) / Number(r.total)) * 100) : 0;
       topicsByMemberId.get(Number(r.memberId))!.push({ topic: r.topic, accuracy: acc, total: Number(r.total) });
     }
-    const escapeCSV = (v: string | null | undefined) => { if (v == null) return ""; const s = String(v); return s.includes(",") || s.includes("\"") || s.includes("\n") ? `"${s.replace(/"/g, '""')}"` : s; };
+    const escapeCSV = (value: string | null | undefined) => safeSupervisorCsvCell(value);
     const rows = members.map(m => {
       const stats = accuracyByMemberId.get(m.id);
       const total = stats?.total ?? 0;
       const correct = stats?.correct ?? 0;
       const accuracy = total > 0 ? Math.round((correct / total) * 100) : null;
-      const practiceStats = practiceByMemberId.get(m.id);
-      const practiceAccuracy = practiceStats && practiceStats.total > 0
-        ? Math.round((practiceStats.correct / practiceStats.total) * 100)
-        : null;
-      const diagnosticBaseline = diagnosticByMemberId.get(m.id) ?? null;
-      const accuracyChange = practiceAccuracy !== null && diagnosticBaseline !== null
-        ? practiceAccuracy - diagnosticBaseline
-        : null;
+      const matched = matchedMetricsByMemberId.get(m.id)!;
+      const practiceAccuracy = matched.avgPracticeAccuracy;
+      const diagnosticBaseline = matched.avgDiagnosticBaseline;
+      const accuracyChange = matched.accuracyChange;
       const lastActive = lastActiveByMemberId.get(m.id) ?? null;
       const mockExamsCompleted = mockByMemberId.get(m.id) ?? 0;
       let readinessScore = 0;
-      if (total > 0 && accuracy !== null) readinessScore = computeManagerReadiness({ accuracy: accuracy / 100, totalAttempts: total, mockExamsCompleted, activeRecently: !!(lastActive && lastActive >= twoWeeksAgo) });
+      if (total > 0 && accuracy !== null) {
+        readinessScore = computeManagerReadiness({
+          accuracy: accuracy / 100,
+          totalAttempts: total,
+          mockAccuracy: mockAccuracyByMemberId.get(m.id) ?? 0,
+          activeRecently: !!(lastActive && lastActive >= twoWeeksAgo),
+        });
+      }
       const topics = topicsByMemberId.get(m.id) ?? [];
       const eligibleTopics = topics.filter(t => t.total >= 3);
       const weakestTopic = eligibleTopics.length > 0 ? eligibleTopics.sort((a, b) => a.accuracy - b.accuracy)[0].topic : null;
@@ -1673,10 +1863,11 @@ export const orgIntelRouter = router({
       return [
         escapeCSV(m.email), escapeCSV(m.name), escapeCSV(courseLabel),
         readinessScore > 0 ? `${readinessScore}%` : "0%",
-        activatedMemberIds.has(m.id) ? "Activated" : "Not Started",
+        activatedMemberIds.has(m.id) ? "Onboarding or Study Started" : "Not Started",
         diagnosticBaseline === null ? "" : `${diagnosticBaseline}%`,
         practiceAccuracy === null ? "" : `${practiceAccuracy}%`,
         accuracyChange === null ? "" : `${accuracyChange >= 0 ? "+" : ""}${accuracyChange} pts`,
+        String(matched.cohorts.length), String(matched.cohorts.reduce((sum, cohort) => sum + cohort.practiceAttemptCount, 0)),
         String(mockExamsCompleted), String(total),
         lastActive ? lastActive.toISOString().split("T")[0] : "Never",
         escapeCSV(weakestTopic), status,
@@ -1689,7 +1880,7 @@ export const orgIntelRouter = router({
   /**
    * sendOperatorReminder — send a reminder email to an inactive operator.
    */
-  sendOperatorReminder: publicProcedure
+  sendOperatorReminder: teamProcedure
     .input(z.object({ email: z.string().email() }))
     .mutation(async ({ input, ctx }) => {
       const { orgId, managerEmail } = await resolveOrgManager(ctx);
@@ -1736,7 +1927,7 @@ export const orgIntelRouter = router({
   /**
    * sendBulkReminders — send reminders to all inactive operators in the org.
    */
-  sendBulkReminders: publicProcedure.mutation(async ({ ctx }) => {
+  sendBulkReminders: teamProcedure.mutation(async ({ ctx }) => {
     const { orgId, managerEmail } = await resolveOrgManager(ctx);
     const db = await getDb();
     if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
@@ -1781,7 +1972,7 @@ export const orgIntelRouter = router({
    * getCommandCohortSummary — aggregate Command Centre performance across org operators.
    * Returns: per-scenario completion counts, average scores, and most-missed steps.
    */
-  getCommandCohortSummary: publicProcedure.query(async ({ ctx }) => {
+  getCommandCohortSummary: teamProcedure.query(async ({ ctx }) => {
     const { orgId } = await resolveOrgManager(ctx);
     const db = await getDb();
     if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });

@@ -1,0 +1,17 @@
+[
+  {
+    "questionNum": 269,
+    "question": "What is the basic purpose of bedding material beneath a sewer pipe in a trench?",
+    "options": [
+      "To provide uniform support beneath the pipe and help avoid point loading on the pipe barrel.",
+      "To ensure that all groundwater is removed permanently from the trench after the sewer is installed.",
+      "To prevent every sewer from requiring maintenance regardless of pipe material or site conditions.",
+      "To raise the wastewater temperature before it enters the next wastewater collection-system component."
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario sewage-works guidance includes sewer bedding and anchoring as design considerations. This question uses the basic support concept as background only; it does not specify an installation method or engineering design requirement.",
+    "sourceTitle": "Ontario MECP — Design Guidelines for Sewage Works",
+    "sourceReference": "The Ontario Design Guidelines for Sewage Works identify sewer bedding and anchoring among collection-system design details. The uniform-support wording is a foundational technical paraphrase, not a quoted regulatory prescription.",
+    "sourceUrl": "https://www.ontario.ca/document/design-guidelines-sewage-works-0"
+  }
+]

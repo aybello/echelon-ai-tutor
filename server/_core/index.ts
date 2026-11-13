@@ -1,3 +1,7 @@
+import { registerManagedJobs, requireManagedJob } from "../jobs/managedJobs";
+import {
+  runPurchaseEmailDelivery,
+} from "../purchaseEmailOutbox";
 import "dotenv/config";
 import express from "express";
 import cookieParser from "cookie-parser";
@@ -15,17 +19,18 @@ import { registerBlogSsrRoutes, buildDynamicSitemap } from "../blogSsr";
 import { registerPageSsrRoutes } from "../pageSsr";
 import { registerStripeWebhook } from "../stripe/webhook";
 import { trpcRateLimitDispatcher } from "../trpcRateLimit";
-import { startReconciliationJob } from "../jobs/reconcile";
-import { startExamReminderJob } from "../jobs/examReminders";
-import { startTriggerEngineJob } from "../jobs/triggerEngine";
 import { fetchAndIngest } from "../scripts/fetchJobs.mjs";
+import { ensureJobBoardHeartbeat } from "../jobBoardSchedule";
 import { publicReleaseHealth, RELEASE_CAPABILITIES, RELEASE_ID } from "../release";
-import {
-  ensureWeeklyBlogHeartbeat,
-  generateWeeklyBlogPost,
-} from "../blogAutomation";
+import { ensureDurableBlogHeartbeat } from "../blogSchedule";
+import { registerBlogAutomationRoutes } from "../blogScheduler";
 import { connectWithRetry, startDbKeepAlive, getDb } from "../db";
 import { ENV } from "./env";
+import { cutoverStatusChallenge, databaseCutoverWriteFreeze, databaseWritesFrozen } from "./databaseCutover";
+import { frameAncestorsForEnvironment } from "../previewSecurity";
+import { analyticsCspOrigin, GOOGLE_ADS_SCRIPT_ORIGINS, GOOGLE_ADS_CONNECT_ORIGINS, GOOGLE_ADS_FRAME_ORIGINS } from "../analyticsCsp";
+import { assertIndividualPaymentSchemaReady } from "../stripe/paymentSchemaReadiness";
+import { interactiveContentNoStore } from "./interactiveContentCache";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -49,6 +54,7 @@ async function findAvailablePort(startPort: number = 3000): Promise<number> {
 async function startServer() {
   const app = express();
   const server = createServer(app);
+  const analyticsOrigins = analyticsCspOrigin(process.env.VITE_ANALYTICS_ENDPOINT);
 
   // Trust the first proxy (Cloudflare / load balancer) so req.ip reflects the real client IP
   app.set("trust proxy", 1);
@@ -58,7 +64,7 @@ async function startServer() {
       contentSecurityPolicy: {
         directives: {
           defaultSrc: ["'self'"],
-          scriptSrc: ["'self'", "'unsafe-inline'", "https://js.stripe.com"],
+          scriptSrc: ["'self'", "'unsafe-inline'", "https://js.stripe.com", ...analyticsOrigins, ...GOOGLE_ADS_SCRIPT_ORIGINS],
           styleSrc: [
             "'self'",
             "'unsafe-inline'",
@@ -70,18 +76,29 @@ async function startServer() {
             "'self'",
             "https://api.stripe.com",
             "https://*.oaiusercontent.com",
+            ...analyticsOrigins,
+            ...GOOGLE_ADS_CONNECT_ORIGINS,
           ],
-          frameSrc: ["https://js.stripe.com", "https://hooks.stripe.com"],
+          frameSrc: ["https://js.stripe.com", "https://hooks.stripe.com", ...GOOGLE_ADS_FRAME_ORIGINS],
           objectSrc: ["'none'"],
           baseUri: ["'self'"],
           formAction: ["'self'", "https://checkout.stripe.com"],
-          frameAncestors: ["'none'"],
+          frameAncestors: frameAncestorsForEnvironment(process.env.NODE_ENV),
           upgradeInsecureRequests:
             process.env.NODE_ENV === "production" ? [] : null,
         },
       },
     })
   );
+
+  // Protect the complete tRPC response, including early parser and gate errors.
+  app.use("/api/trpc", interactiveContentNoStore);
+
+  // A final external-database clone must have a stable source snapshot. When
+  // DATABASE_CUTOVER_MODE=freeze is set, this rejects every non-read request
+  // before Stripe, OAuth, tRPC, scheduled jobs, or bespoke route handlers can
+  // create a source-side write.
+  app.use(databaseCutoverWriteFreeze());
 
   // Register Stripe webhook BEFORE express.json() so raw body is preserved for signature verification
   registerStripeWebhook(app);
@@ -134,8 +151,22 @@ async function startServer() {
       const db = await getDb();
       checks.db = !!db;
       if (!db) overallOk = false;
+      if (db) {
+        try {
+          await assertIndividualPaymentSchemaReady(db);
+          checks.individualPaymentSchema = true;
+        } catch {
+          // Keep schema details private. A protected health caller can see the
+          // failed check; checkout itself will also refuse before Stripe.
+          checks.individualPaymentSchema = false;
+          overallOk = false;
+        }
+      } else {
+        checks.individualPaymentSchema = false;
+      }
     } catch {
       checks.db = false;
+      checks.individualPaymentSchema = false;
       overallOk = false;
     }
 
@@ -179,6 +210,20 @@ async function startServer() {
         capabilities: RELEASE_CAPABILITIES,
         ts: new Date().toISOString(),
       });
+  });
+
+  // The guarded external clone checks this status twice before it writes to a
+  // business-owned target. It is intentionally read-only and exposes only the
+  // current write-fence state, never secrets or database details.
+  app.get("/api/cutover/status", (req, res) => {
+    const challenge = cutoverStatusChallenge(req.query.challenge);
+    const writesFrozen = databaseWritesFrozen();
+    res.set("Cache-Control", "no-store");
+    return res.status(200).json({
+      writesFrozen,
+      mode: writesFrozen ? "freeze" : "normal",
+      challenge,
+    });
   });
 
   // ── FIX 4: One-click unsubscribe endpoint for reminder emails ────────────────
@@ -230,6 +275,114 @@ async function startServer() {
     }
   });
 
+  // ── One-click unsubscribe for captured-lead follow-up emails ────────────────
+  // Same pattern as /api/unsubscribe-reminder: the random token IS the
+  // credential, no login required, and the opt-out is permanent. The POST route
+  // serves RFC 8058 one-click unsubscribes sent by mail clients.
+  const handleLeadUnsubscribe = async (
+    req: express.Request,
+    res: express.Response
+  ) => {
+    const token =
+      typeof req.query.token === "string" ? req.query.token.trim() : "";
+    if (!token) {
+      return res
+        .status(400)
+        .send("<html><body><h2>Invalid unsubscribe link.</h2></body></html>");
+    }
+    try {
+      const db = await getDb();
+      if (!db)
+        return res
+          .status(503)
+          .send(
+            "<html><body><h2>Service temporarily unavailable. Please try again later.</h2></body></html>"
+          );
+      const { trialEmails } = await import("../../drizzle/schema");
+      const { eq } = await import("drizzle-orm");
+      const rows = await db
+        .select()
+        .from(trialEmails)
+        .where(eq(trialEmails.unsubscribeToken, token))
+        .limit(1);
+      if (rows.length === 0) {
+        return res
+          .status(404)
+          .send(
+            "<html><body><h2>Unsubscribe link not found or already used.</h2></body></html>"
+          );
+      }
+      await db
+        .update(trialEmails)
+        .set({ optOut: true })
+        .where(eq(trialEmails.unsubscribeToken, token));
+      return res.send(
+        `<html><head><meta charset='utf-8'><title>Unsubscribed</title><style>body{font-family:Arial,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#F1F5F9;}div{background:#fff;border-radius:12px;padding:40px;max-width:480px;text-align:center;box-shadow:0 2px 16px rgba(0,0,0,0.08);}h2{color:#15803D;margin:0 0 12px;}p{color:#475569;font-size:14px;line-height:1.6;}</style></head><body><div><div style='font-size:40px;margin-bottom:16px'>✅</div><h2>You've been unsubscribed</h2><p>You will no longer receive study follow-up emails from Echelon Institute. Your free practice access is not affected.</p><p style='margin-top:20px;font-size:12px;color:#94A3B8;'>If this was a mistake, contact <a href='mailto:abello@echeloninstitute.ca' style='color:#1D4ED8;'>abello@echeloninstitute.ca</a></p></div></body></html>`
+      );
+    } catch (err) {
+      console.error("[unsubscribe-lead] Error:", err);
+      return res
+        .status(500)
+        .send(
+          "<html><body><h2>An error occurred. Please try again later.</h2></body></html>"
+        );
+    }
+  };
+  app.get("/api/unsubscribe-lead", handleLeadUnsubscribe);
+  app.post("/api/unsubscribe-lead", handleLeadUnsubscribe);
+
+  // ── Abandoned cart unsubscribe (one click) ─────────────────────────────────
+  // Every recovery email carries this link and a List-Unsubscribe header. It
+  // must work without a login and without a confirmation step.
+  const handleCartUnsubscribe: express.RequestHandler = async (req, res) => {
+    const token = String(req.query.token ?? "").trim();
+    if (!token) {
+      return res
+        .status(400)
+        .send("<html><body><h2>Missing unsubscribe token.</h2></body></html>");
+    }
+    try {
+      const db = await getDb();
+      if (!db)
+        return res
+          .status(503)
+          .send(
+            "<html><body><h2>Service temporarily unavailable. Please try again later.</h2></body></html>"
+          );
+      const { abandonedCheckouts } = await import("../../drizzle/schema");
+      const { eq } = await import("drizzle-orm");
+      const rows = await db
+        .select()
+        .from(abandonedCheckouts)
+        .where(eq(abandonedCheckouts.unsubscribeToken, token))
+        .limit(1);
+      if (rows.length === 0) {
+        return res
+          .status(404)
+          .send(
+            "<html><body><h2>Unsubscribe link not found or already used.</h2></body></html>"
+          );
+      }
+      // Opt the person out everywhere this email appears, not just this cart.
+      await db
+        .update(abandonedCheckouts)
+        .set({ optOut: true })
+        .where(eq(abandonedCheckouts.email, rows[0].email));
+      return res.send(
+        `<html><head><meta charset='utf-8'><title>Unsubscribed</title><style>body{font-family:Arial,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#F1F5F9;}div{background:#fff;border-radius:12px;padding:40px;max-width:480px;text-align:center;box-shadow:0 2px 16px rgba(0,0,0,0.08);}h2{color:#15803D;margin:0 0 12px;}p{color:#475569;font-size:14px;line-height:1.6;}</style></head><body><div><div style='font-size:40px;margin-bottom:16px'>✅</div><h2>You've been unsubscribed</h2><p>You will no longer receive checkout reminder emails from Echelon Institute. Your free practice access is not affected and you can still buy any course at any time.</p><p style='margin-top:20px;font-size:12px;color:#94A3B8;'>If this was a mistake, contact <a href='mailto:abello@echeloninstitute.ca' style='color:#1D4ED8;'>abello@echeloninstitute.ca</a></p></div></body></html>`
+      );
+    } catch (err) {
+      console.error("[unsubscribe-cart] Error:", err);
+      return res
+        .status(500)
+        .send(
+          "<html><body><h2>An error occurred. Please try again later.</h2></body></html>"
+        );
+    }
+  };
+  app.get("/api/unsubscribe-cart", handleCartUnsubscribe);
+  app.post("/api/unsubscribe-cart", handleCartUnsubscribe);
+
   // ── CRON_SECRET middleware — protects all /api/scheduled/* endpoints ────────
   // Ticket 10: Authenticate scheduled requests via x-cron-secret header OR
   // platform Heartbeat SDK auth (cron_ session cookie). Both paths set
@@ -237,6 +390,7 @@ async function startServer() {
   app.use("/api/scheduled", async (req, res, next) => {
     // Path 1: x-cron-secret header matches ENV.cronSecret (legacy/manual triggers)
     if (scheduledSecretMatches(ENV.cronSecret, req.headers["x-cron-secret"])) {
+      res.locals.scheduledAuthenticated = true;
       return next();
     }
     // Path 2: Platform Heartbeat SDK auth (cron_ session cookie with taskUid)
@@ -264,6 +418,33 @@ async function startServer() {
     return res.status(401).json({ error: "Unauthorized scheduled request" });
   });
 
+  registerManagedJobs(app);
+
+  // ── Managed-job rejection diagnostics ───────────────────────────────────────
+  // The platform edge only admits cron-cookie requests to /api/scheduled/*, so
+  // operators cannot probe those routes directly during an incident. This
+  // read-only endpoint lives outside that path and requires the same shared
+  // secret. It reports which gate precondition rejected recent scheduled runs;
+  // it never returns secret values or task UIDs.
+  app.get("/api/ops/managed-job-rejections", async (req, res) => {
+    if (
+      !scheduledSecretMatches(ENV.cronSecret, req.headers["x-cron-secret"])
+    ) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+    const { getManagedJobRejections } = await import("../jobs/managedJobs");
+    return res.json({
+      ok: true,
+      envReady:
+        process.env.DEPLOYMENT_ENV === "production" &&
+        process.env.MANAGED_JOBS_ENABLED === "true" &&
+        Boolean(process.env.MANAGED_JOBS_ORIGIN) &&
+        Boolean(process.env.MANAGED_JOB_TASK_UIDS),
+      rejections: getManagedJobRejections(),
+      ts: new Date().toISOString(),
+    });
+  });
+
   // ── Platform-managed DB keep-alive endpoint ────────────────────────────────
   // This endpoint is called every 5 minutes by a Manus Heartbeat cron (set up
   // via manus-heartbeat CLI). Uses forceReconnect() which bypasses the cooldown
@@ -283,6 +464,151 @@ async function startServer() {
       return res
         .status(500)
         .json({ error: String(err), ts: new Date().toISOString() });
+    }
+  });
+
+  // ── AI Tutor health probe ─────────────────────────────────────────────────
+  // The tutor once failed silently in production and the first signal was a
+  // customer review. This runs the same provider path a learner uses and
+  // alerts the owner when the tutor cannot answer, or when it is only alive
+  // because the fallback provider is carrying it.
+  app.post("/api/scheduled/tutor-health", async (_req, res) => {
+    try {
+      const { checkTutorHealth } = await import("../jobs/tutorHealth");
+      const result = await checkTutorHealth();
+
+      if (!result.ok) {
+        console.error("[tutor-health] AI Tutor is not answering:", result.error);
+        try {
+          const { notifyOwner } = await import("./notification");
+          await notifyOwner({
+            title: "AI Tutor is down",
+            content:
+              "The AI Tutor could not answer a health probe, so learners cannot get explanations right now. " +
+              `Reason: ${result.error ?? "unknown"}. Check the AI provider account and credit balance.`,
+          });
+        } catch (notifyError) {
+          console.error("[tutor-health] owner alert failed", notifyError);
+        }
+        return res.status(503).json({
+          ok: false,
+          usedFallback: result.usedFallback,
+          latencyMs: result.latencyMs,
+          ts: new Date().toISOString(),
+        });
+      }
+
+      if (result.usedFallback) {
+        console.warn("[tutor-health] primary provider unavailable, fallback is serving learners");
+        try {
+          const { notifyOwner } = await import("./notification");
+          await notifyOwner({
+            title: "AI Tutor is running on its backup provider",
+            content:
+              "Learners can still use the AI Tutor, but the primary provider is unavailable and the backup provider is handling every request. " +
+              "Restore the primary provider so the backup stays a safety net rather than the main path.",
+          });
+        } catch (notifyError) {
+          console.error("[tutor-health] owner alert failed", notifyError);
+        }
+      }
+
+      return res.json({
+        ok: true,
+        usedFallback: result.usedFallback,
+        latencyMs: result.latencyMs,
+        ts: new Date().toISOString(),
+      });
+    } catch (err) {
+      console.error("[tutor-health] probe failed", err);
+      return res
+        .status(500)
+        .json({ ok: false, ts: new Date().toISOString() });
+    }
+  });
+
+  // ── Abandoned team order recovery (daily) ─────────────────────────────────
+  // A manager who configured licences and opened Stripe has already decided to
+  // buy. Live data showed nine team orders created and only two paid, with
+  // every unpaid one belonging to a named manager at a real water utility and
+  // nobody following up. These are the highest-value leads the business has.
+  app.post("/api/scheduled/recover-team-orders", async (_req, res) => {
+    try {
+      const { recoverAbandonedTeamOrders } = await import("../jobs/abandonedTeamOrders");
+      const result = await recoverAbandonedTeamOrders();
+
+      if (result.contacted > 0) {
+        console.log(
+          `[team-recovery] contacted ${result.contacted} of ${result.considered} abandoned team orders`,
+        );
+        try {
+          const { notifyOwner } = await import("./notification");
+          await notifyOwner({
+            title: "Abandoned team orders followed up",
+            content:
+              `${result.contacted} manager${result.contacted === 1 ? "" : "s"} who configured licences but did not pay ` +
+              "have been offered a purchase order or invoice. Replies come to your inbox directly.",
+          });
+        } catch (notifyError) {
+          console.error("[team-recovery] owner alert failed", notifyError);
+        }
+      }
+
+      return res.json({ ok: true, ...result, ts: new Date().toISOString() });
+    } catch (err) {
+      console.error("[team-recovery] run failed", err);
+      return res.status(500).json({ ok: false, ts: new Date().toISOString() });
+    }
+  });
+
+  // ── Captured-lead follow-ups (daily) ───────────────────────────────────────
+  // Leads captured at the quiz gate get exactly two bounded follow-ups: a
+  // study nudge at day 3 and a final offer at day 10. Buyers, opt-outs and
+  // synthetic addresses are suppressed; the sequence then goes permanently
+  // silent so a non-buyer is never drip-marketed.
+  app.post("/api/scheduled/lead-follow-ups", async (_req, res) => {
+    try {
+      const { runLeadFollowUps } = await import("../jobs/leadFollowUps");
+      const result = await runLeadFollowUps();
+
+      if (result.sent > 0) {
+        console.log(
+          `[lead-follow-up] sent ${result.sent} of ${result.considered} due follow-ups ` +
+            `(purchased ${result.suppressedPurchased}, opted out ${result.suppressedOptOut}, failed ${result.failed})`,
+        );
+      }
+
+      return res.json({ ok: true, ...result, ts: new Date().toISOString() });
+    } catch (err) {
+      console.error("[lead-follow-up] run failed", err);
+      return res.status(500).json({ ok: false, ts: new Date().toISOString() });
+    }
+  });
+
+  // ── Abandoned checkout recovery (every 6 hours) ───────────────────────────
+  // A learner who reached the Stripe payment page already chose a course and
+  // saw the price. Live data showed six individual checkouts started in two
+  // weeks and only two paid, with every abandoner anonymous because the email
+  // is typed on Stripe's page. Stripe now returns that email and a link that
+  // reopens the same cart, so each abandoned cart gets exactly one reminder.
+  app.post("/api/scheduled/recover-abandoned-checkouts", async (_req, res) => {
+    try {
+      const { runAbandonedCheckoutRecovery } = await import(
+        "../jobs/abandonedCheckoutRecovery"
+      );
+      const result = await runAbandonedCheckoutRecovery();
+
+      if (result.sent > 0) {
+        console.log(
+          `[abandoned-checkout] sent ${result.sent} of ${result.considered} due reminders ` +
+            `(purchased ${result.suppressedPurchased}, synthetic ${result.suppressedSynthetic}, failed ${result.failed})`,
+        );
+      }
+
+      return res.json({ ok: true, ...result, ts: new Date().toISOString() });
+    } catch (err) {
+      console.error("[abandoned-checkout] run failed", err);
+      return res.status(500).json({ ok: false, ts: new Date().toISOString() });
     }
   });
 
@@ -317,31 +643,30 @@ async function startServer() {
     }
   });
 
-  // ── Weekly researched blog article (Heartbeat cron) ─────────────────────
-  app.post("/api/scheduled/generate-blog", async (req, res) => {
+  registerBlogAutomationRoutes(app);
+
+  // ── Purchase confirmation delivery (Heartbeat cron, every minute) ────────
+  app.post("/api/scheduled/purchase-email-delivery", async (req, res) => {
+    if (!requireManagedJob(req, res, "purchase-email-delivery")) return;
+    const cronUser = res.locals.cronUser as AuthenticatedUser | undefined;
+    const taskUid =
+      cronUser?.taskUid ??
+      (req.headers["x-manus-cron-task-uid"] as string | undefined);
     try {
-      const cronUser = res.locals.cronUser as AuthenticatedUser | undefined;
-      const taskUid =
-        cronUser?.taskUid ??
-        (req.headers["x-manus-cron-task-uid"] as string | undefined);
-      const result = await generateWeeklyBlogPost();
+      const result = await runPurchaseEmailDelivery();
       console.log(
-        `[blog-automation] ${result.action} slug=${result.slug ?? "none"} | ` +
+        `[purchase-email] scheduled delivery sent=${result.sent} | ` +
           `taskUid=${taskUid ?? "manual"}`
       );
-      return res
-        .status(result.action === "article_published" ? 201 : 200)
-        .json({
-          ...result,
-          published: result.action === "article_published",
-          ts: new Date().toISOString(),
-        });
+      return res.json({ ok: true, ...result, ts: new Date().toISOString() });
     } catch (error) {
-      console.error("[blog-automation] scheduled article failed", error);
-      return res.status(503).json({
+      console.error("[purchase-email] scheduled delivery failed", error);
+      return res.status(500).json({
         ok: false,
         error: error instanceof Error ? error.message : String(error),
-        ts: new Date().toISOString(),
+        stack: error instanceof Error ? error.stack : undefined,
+        context: { url: req.originalUrl, taskUid: taskUid ?? "manual" },
+        timestamp: new Date().toISOString(),
       });
     }
   });
@@ -400,16 +725,22 @@ async function startServer() {
 
   server.listen(port, async () => {
     console.log(`Server running on http://localhost:${port}/`);
-    // Warm up the DB connection on startup so the first user request doesn't
-    // hit a cold TiDB Serverless cluster (which can take 5-10s to wake).
-    await connectWithRetry();
-    startDbKeepAlive();
-    // Start background jobs after server is listening
-    startReconciliationJob();
-    startExamReminderJob();
-    startTriggerEngineJob();
-    if (ENV.isProduction && ENV.forgeApiUrl && ENV.forgeApiKey) {
-      void ensureWeeklyBlogHeartbeat()
+    // A frozen source needs to serve only the explicit status and health reads.
+    // Do not open a database pool, run local background work, or create/refresh
+    // external automation until the clone and routing decision are complete.
+    if (databaseWritesFrozen()) {
+      console.log("[cutover] database and automation startup skipped while writes are frozen");
+    } else {
+      // Warm up the DB connection on startup so the first user request doesn't
+      // hit a cold TiDB Serverless cluster (which can take 5-10s to wake).
+      await connectWithRetry();
+      startDbKeepAlive();
+    }
+    if (!databaseWritesFrozen() && ENV.isProduction && ENV.forgeApiUrl && ENV.forgeApiKey) {
+      void ensureJobBoardHeartbeat()
+        .then(action => console.log(`[fetch-jobs] six-hour Heartbeat ${action}`))
+        .catch(error => console.error("[fetch-jobs] could not register Heartbeat", error));
+      void ensureDurableBlogHeartbeat()
         .then(action =>
           console.log(`[blog-automation] weekly Heartbeat ${action}`)
         )

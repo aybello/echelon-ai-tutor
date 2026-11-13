@@ -1,34 +1,8 @@
 /**
- * Test helper: generate a fresh OTP for pemon and return the plaintext code.
- * This bypasses the email and directly inserts a known code for testing.
+ * Retired one-off customer operation. No account selectors, credentials or
+ * historical recipients are kept in public source. Use the current guarded
+ * recovery/admin workflow with privately supplied, approved inputs instead.
+ * See docs/privacy-current-tree.md. This stub performs no I/O.
  */
-import { getDb } from '../server/db';
-import { dashboardOtps } from '../drizzle/schema';
-import { eq, and } from 'drizzle-orm';
-import crypto from 'crypto';
-
-const EMAIL = 'pemon@utilitieskingston.com';
-const TEST_CODE = '123456';
-
-async function main() {
-  const db = await getDb();
-  if (!db) { console.error('DB unavailable'); process.exit(1); }
-
-  const hash = crypto.createHash('sha256').update(TEST_CODE).digest('hex');
-  const expiresAt = new Date(Date.now() + 10 * 60 * 1000); // 10 min
-
-  // Delete existing unused OTPs for this email
-  await db.delete(dashboardOtps).where(eq(dashboardOtps.email, EMAIL));
-
-  // Insert known test OTP
-  await db.insert(dashboardOtps).values({
-    email: EMAIL,
-    codeHash: hash,
-    expiresAt,
-  });
-
-  console.log(`✅ Test OTP set for ${EMAIL}: ${TEST_CODE} (expires in 10 min)`);
-  process.exit(0);
-}
-
-main().catch(e => { console.error(e); process.exit(1); });
+throw new Error("Retired customer operation. Use a reviewed private-input workflow.");
+export {};

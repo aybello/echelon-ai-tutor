@@ -1,0 +1,17 @@
+[
+  {
+    "questionNum": 421,
+    "question": "Why must the atmosphere of a confined space be tested before entry?",
+    "options": [
+      "To identify hazards such as unsafe oxygen levels, toxic gases, or flammable atmospheres before entry.",
+      "To determine whether all process equipment can be operated without a written work permit or entry controls.",
+      "To prove that a confined space is safe to enter for the rest of the day without further monitoring.",
+      "To replace the need to review the entry plan and communicate with the attendant before workers enter."
+    ],
+    "correctIndex": 0,
+    "explanation": "Canadian confined-space guidance explains that atmospheric testing is used to identify oxygen, toxic, and flammability hazards before entry. This question does not provide a site-specific gas threshold or replace the facility's entry and monitoring procedures.",
+    "sourceTitle": "Canadian Centre for Occupational Health and Safety — Confined Space Program",
+    "sourceReference": "CCOHS identifies atmospheric hazards, including oxygen-deficient or enriched atmospheres, toxic substances, and flammable or explosive atmospheres, as confined-space entry hazards requiring assessment and control.",
+    "sourceUrl": "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace/confinedspace_program.html"
+  }
+]

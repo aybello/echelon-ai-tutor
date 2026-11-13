@@ -72,30 +72,24 @@ def check_homepage(page, base):
     except Exception as e:
         fail(name, str(e)[:200])
 
-# ── Journey 2: Pricing page loads with cards ──────────────────────────────────
+# ── Journey 2: Pricing page loads with current Individual Exam Pass picker ────
 def check_pricing(page, base):
-    name = "Pricing page — cards render"
+    name = "Pricing page — Individual Exam Pass picker renders"
     try:
         page.goto(f"{base}/pricing", timeout=TIMEOUT)
         page.wait_for_load_state("domcontentloaded", timeout=TIMEOUT)
-        # First verify subscriptions section loads
-        page.wait_for_selector("text=Annual All-Access", timeout=TIMEOUT)
-        # Click the toggle to expand individual practice passes (they are collapsed by default)
-        toggle = page.locator("text=View individual practice passes").first
-        if toggle.is_visible():
-            toggle.click()
-            page.wait_for_timeout(1500)  # wait for expand animation
-        # Now check for One-time badge
-        count = page.get_by_text("One-time · no subscription", exact=True).count()
-        if count == 0:
-            count = page.locator(":text('One-time')").count()
-        if count == 0:
-            raise AssertionError("'One-time · no subscription' badge not found after expanding individual passes")
-        # Also verify at least one price is shown
+        page.wait_for_selector("#individual-course-picker", state="visible", timeout=TIMEOUT)
+        page.wait_for_selector("text=Choose your Individual Exam Pass", state="visible", timeout=TIMEOUT)
+
+        oit_option = page.locator("#individual-course-picker option[value='oit']")
+        option_text = oit_option.text_content() or ""
+        if option_text.strip() != "OIT — CA$49":
+            raise AssertionError(f"Unexpected OIT Individual Exam Pass option: {option_text!r}")
+
         price_text = page.evaluate("() => document.body.innerText")
-        if "CA$" not in price_text and "49" not in price_text:
-            raise AssertionError("No prices found on pricing page")
-        ok(name, f"{count} cards with one-time badge")
+        if "12 months of access from successful payment" not in price_text:
+            raise AssertionError("Individual Exam Pass 12-month term is not visible on pricing page")
+        ok(name, "OIT CA$49 option and 12-month term visible")
     except Exception as e:
         fail(name, str(e)[:200])
 
@@ -220,12 +214,16 @@ def check_restore_access(page, base):
                 break
         else:
             raise AssertionError("Could not find sign-in/restore button on account page")
-        # After OTP migration: clicking the button redirects to /login/otp — wait for navigation
-        try:
-            page.wait_for_url("**/login/otp**", timeout=5000)
-        except Exception:
-            pass  # May not redirect if already on the right page
-        time.sleep(1)
+        # After OTP migration the redirect must finish before reading the next screen.
+        page.wait_for_url("**/login/otp**", timeout=TIMEOUT)
+        page.wait_for_load_state("domcontentloaded", timeout=TIMEOUT)
+        page.wait_for_function("""
+            () => {
+                const text = document.body.innerText.toLowerCase();
+                return text.includes('enter your email') || text.includes('6-digit') ||
+                    text.includes('sign-in code') || text.includes('verify');
+            }
+        """, timeout=TIMEOUT)
         page_text = page.inner_text("body")
         has_response = any(word in page_text.lower() for word in [
             "no purchases", "found", "pass", "access", "purchase",
@@ -244,7 +242,19 @@ def check_flashcards(page, base):
     try:
         page.goto(f"{base}/oit-water-flashcards", timeout=TIMEOUT)
         page.wait_for_load_state("domcontentloaded", timeout=TIMEOUT)
-        time.sleep(3)
+        # Wait for the asynchronous question-bank query instead of assuming a
+        # fixed response time from the production database. Static marketing
+        # copy is not enough: require a visible study card with prompt content.
+        study_card = page.get_by_test_id("flashcard-study-card")
+        study_card.wait_for(state="visible", timeout=TIMEOUT)
+        page.wait_for_function(
+            "selector => Boolean(document.querySelector(selector)?.textContent?.trim())",
+            arg="[data-testid='flashcard-prompt']",
+            timeout=TIMEOUT,
+        )
+        prompt = page.get_by_test_id("flashcard-prompt").inner_text(timeout=TIMEOUT).strip()
+        if not prompt:
+            raise AssertionError("Flashcard study card rendered without prompt content")
         page_text = page.inner_text("body").lower()
         has_content = any(word in page_text for word in [
             "flashcard", "flip", "card", "oit", "disinfection", "try free", "get oit", "practice"

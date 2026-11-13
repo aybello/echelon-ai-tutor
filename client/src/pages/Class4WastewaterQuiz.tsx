@@ -60,6 +60,9 @@ export default function Class4WastewaterQuiz() {
       calcOnly={session.calcOnly}
       noCalcQuestions={session.noCalcQuestions}
       onCalcOnlyToggle={session.handleCalcOnlyToggle}
+      questionStatus={session.questionStatus}
+      questionError={session.questionError}
+      onRetryQuestions={session.retryQuestions}
       current={session.current}
       selected={session.selected}
       confidence={session.confidence}
@@ -94,7 +97,7 @@ export default function Class4WastewaterQuiz() {
               settings={session.quizSettings}
               onApply={session.handleSettingsApply}
               onClose={() => session.setSettingsOpen(false)}
-              totalQuestions={allQuestions.length}
+              totalQuestions={session.availableQuestionCount}
               trialUnlocked={session.trialUnlocked}
             />
           )}

@@ -1,0 +1,18 @@
+{
+  "reviews": [
+    {
+      "questionNum": 75,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Claim that manually cleaned screens create ongoing labour and maintenance needs is directly supported by the cited Ontario design guideline text on maintenance and labour as screen-selection factors.",
+        "Safety-focused wording about an accessible platform for raking screenings safely is traceable to the cited sections and does not introduce additional unreferenced requirements.",
+        "Jurisdiction and regulatory scope are accurate: Ontario Ministry of the Environment design guidelines are correctly presented as design/technical guidance, not misrepresented as an OIT exam or legal code beyond their role.",
+        "The learning objective (recognizing a basic operational challenge of manual bar screens) is foundational and appropriate for an Ontario OIT-level learner, aligning with preliminary-treatment basics.",
+        "Exactly one option is correct; distractors are technically incorrect but plausible on their face and do not normalize unsafe operation, missed maintenance, or omission of required actions.",
+        "No universal or absolute claims are made beyond what the source supports; the item remains at a general recognition level without quantitative or prescriptive detail."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

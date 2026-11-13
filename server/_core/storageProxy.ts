@@ -1,4 +1,5 @@
 import type { Express } from "express";
+import { serviceJson, serviceFetch } from "./outboundHttp";
 import { ENV } from "./env";
 
 export function registerStorageProxy(app: Express) {
@@ -21,18 +22,17 @@ export function registerStorageProxy(app: Express) {
       );
       forgeUrl.searchParams.set("path", key);
 
-      const forgeResp = await fetch(forgeUrl, {
+      const forgeResp = await serviceFetch(forgeUrl, {
         headers: { Authorization: `Bearer ${ENV.forgeApiKey}` },
-      });
+      }, { service: "storage", timeoutMs: 10_000, retryRead: true });
 
       if (!forgeResp.ok) {
-        const body = await forgeResp.text().catch(() => "");
-        console.error(`[StorageProxy] forge error: ${forgeResp.status} ${body}`);
+        console.error(`[StorageProxy] Upstream error: ${forgeResp.status}`);
         res.status(502).send("Storage backend error");
         return;
       }
 
-      const { url } = (await forgeResp.json()) as { url: string };
+      const { url } = (await serviceJson<any>(forgeResp, "storage")) as { url: string };
       if (!url) {
         res.status(502).send("Empty signed URL from backend");
         return;

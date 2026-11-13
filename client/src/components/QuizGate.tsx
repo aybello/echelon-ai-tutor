@@ -1,12 +1,16 @@
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import { Link, useLocation } from "wouter";
+import { Link, useLocation, useSearch } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
-import CheckoutContactModal from "@/components/CheckoutContactModal";
+import { getMarketingAttribution } from "@/lib/marketingAnalytics";
 import { useGeoRegion } from "@/hooks/useGeoRegion";
-import { formatPriceCAD, formatPriceUSD, getProductByKey } from "@shared/products";
+import { resolveQuizGateOffer } from "@shared/checkoutOffer";
+import { resolveCourseKey } from "@shared/courseRegistry";
 import { buildPreviewDiagnostic } from "@shared/previewDiagnostic";
+import { buildAuthoritativeOfferFeatures } from "@/lib/courseOfferFeatures";
+import { buildPricingHref } from "@shared/funnelNavigation";
+import { readCheckoutJurisdiction } from "@/lib/checkoutJurisdiction";
 
 const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
 
@@ -16,9 +20,9 @@ interface QuizGateProps {
   onDismiss?: () => void; // optional: restart another free 15-question session
   /** If provided, the gate shows a Stripe upsell for this product key as the primary CTA */
   productKey?: string;
-  /** Human-readable product name shown in the upsell headline */
+  /** @deprecated Retained for caller compatibility. Quiz Gate accepts active catalogue products only. */
   productName?: string;
-  /** Price label shown on the Stripe CTA button, e.g. "CA$49" */
+  /** @deprecated Retained for caller compatibility. Quiz Gate accepts active catalogue products only. */
   priceLabel?: string;
   /** What the paid pass unlocks — shown as bullet points */
   paidFeatures?: string[];
@@ -26,6 +30,8 @@ interface QuizGateProps {
   examType?: string;
   /** The completed preview answers used to build a transparent diagnostic. */
   history?: Array<{ module?: string; correct?: boolean }>;
+  /** Disable score-derived diagnostics when correctness is intentionally server-held. */
+  diagnosticAvailable?: boolean;
   /** Label used in the completion headline, e.g. "mock-exam questions". */
   previewName?: string;
   /** Destination for closing the gate. Defaults to the homepage. */
@@ -70,20 +76,27 @@ export default function QuizGate({
   questionsAnswered,
   onDismiss,
   productKey,
-  productName,
-  priceLabel,
   paidFeatures,
   examType,
   history = [],
+  diagnosticAvailable = true,
   previewName = "questions",
   backPath = "/",
 }: QuizGateProps) {
   const [, navigate] = useLocation();
+  const searchString = useSearch();
+  const pricingHref = buildPricingHref(productKey, new URLSearchParams(searchString).get("province"), searchString);
+  const jurisdiction = readCheckoutJurisdiction(searchString);
   const { isUS } = useGeoRegion();
   const [checkoutError, setCheckoutError] = useState("");
   const [mounted, setMounted] = useState(false);
-  const [showCheckout, setShowCheckout] = useState(false);
   const diagnosticTracked = useRef(false);
+  // Second path for learners who are not ready to buy in this moment. Without
+  // it, everyone who does not buy right now is unreachable forever.
+  const [planEmail, setPlanEmail] = useState("");
+  const [planPhone, setPlanPhone] = useState("");
+  const [planError, setPlanError] = useState("");
+  const [planSent, setPlanSent] = useState(false);
 
   // Ensure portal target is available (SSR-safe)
   useEffect(() => {
@@ -97,12 +110,19 @@ export default function QuizGate({
     };
   }, []);
 
-  const product = productKey ? getProductByKey(productKey) : undefined;
-  const hasPaidOption = Boolean(product && productName);
-  const checkoutPriceLabel = product
-    ? isUS ? formatPriceUSD(product.priceUSD) : formatPriceCAD(product.priceCAD)
-    : priceLabel;
-  const diagnostic = buildPreviewDiagnostic(history, questionsAnswered);
+  const offer = resolveQuizGateOffer(productKey);
+  const course = productKey ? resolveCourseKey(productKey) : undefined;
+  const bankKey = course?.questionBankKey;
+  const bankMeta = trpc.quiz.getBankMeta.useQuery(
+    { bankKey: bankKey ?? "unknown-course" },
+    { enabled: Boolean(bankKey), staleTime: 60_000, retry: 1 },
+  );
+  const offerFeatures = buildAuthoritativeOfferFeatures({
+    courseLabel: course?.displayName ?? offer.productName,
+    totalQuestions: bankMeta.data?.totalQuestions,
+    suppliedFeatures: paidFeatures,
+  });
+  const diagnostic = diagnosticAvailable ? buildPreviewDiagnostic(history, questionsAnswered) : null;
 
   const createCheckout = trpc.stripe.createCheckoutSession.useMutation({
     onSuccess: data => {
@@ -113,12 +133,36 @@ export default function QuizGate({
     },
   });
   const trackDiagnostic = trpc.feedback.trackDiagnostic.useMutation();
+  const sendStudyPlan = trpc.trial.studyPlan.useMutation({
+    onSuccess: () => setPlanSent(true),
+    onError: () => setPlanError("We could not send your plan. Please try again."),
+  });
+
+  function handleSendPlan(event: React.FormEvent) {
+    event.preventDefault();
+    setPlanError("");
+    const email = planEmail.trim();
+    if (!email || !email.includes("@")) {
+      setPlanError("Please enter a valid email address.");
+      return;
+    }
+    if (!productKey || !diagnostic || diagnostic.total === 0) return;
+    sendStudyPlan.mutate({
+      email,
+      phone: planPhone.trim() || undefined,
+      productKey,
+      score: diagnostic.score,
+      correct: diagnostic.correct,
+      total: diagnostic.total,
+      weakTopics: diagnostic.weakTopics,
+    });
+  }
 
   useEffect(() => {
     if (
       diagnosticTracked.current ||
       !productKey ||
-      diagnostic.total === 0
+      !diagnostic || diagnostic.total === 0
     ) return;
     diagnosticTracked.current = true;
     trackDiagnostic.mutate({
@@ -130,17 +174,19 @@ export default function QuizGate({
     });
   }, [diagnostic, examType, productKey, trackDiagnostic]);
 
-  function handleCheckout(contact: { name: string; email: string; phone: string }) {
-    if (!productKey) return;
-    try { localStorage.setItem("echelon_trial_email", contact.email); } catch {}
+  function handleCheckout() {
+    if (!productKey || !offer.available) return;
     createCheckout.mutate({
       productKey,
-      email: contact.email,
-      name: contact.name,
-      phone: contact.phone,
-      currency: isUS ? "usd" : "cad",
+      currency: "cad",
+      province: jurisdiction,
       utmSource: "quiz-diagnostic",
       visitorId: getAnonymousAnalyticsId(),
+      analyticsContext: {
+        ...getMarketingAttribution(window.location.pathname),
+        province: isUS ? "western" : jurisdiction === "NS" ? "nova-scotia" : "ontario",
+        surface: "quiz-gate",
+      },
     });
   }
 
@@ -218,7 +264,7 @@ export default function QuizGate({
             ✓ {questionsAnswered} questions answered
           </div>
 
-          {diagnostic.total > 0 && (
+          {diagnostic && diagnostic.total > 0 && (
             <div style={{ background: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: 14, padding: "14px 16px", marginBottom: 14, textAlign: "left" }}>
               <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 12, marginBottom: 8 }}>
                 <div>
@@ -246,20 +292,15 @@ export default function QuizGate({
           )}
 
           {/* ── PAID PATH (primary) — shown when productKey is provided ── */}
-          {hasPaidOption ? (
+          {offer.available && offer.productName && offer.priceLabel ? (
             <>
               <div style={{ background: "linear-gradient(135deg, #EFF6FF 0%, #F0FDFA 100%)", border: "2px solid #BFDBFE", borderRadius: 16, padding: "18px 18px 16px", marginBottom: 14, textAlign: "left" }}>
                 <div style={{ marginBottom: 10 }}>
                   <div style={{ fontSize: 11, fontWeight: 700, color: "#1D4ED8", letterSpacing: "0.08em", marginBottom: 4 }}>UNLOCK FULL ACCESS</div>
-                  <div style={{ fontSize: 15, fontWeight: 800, color: "#0F172A", fontFamily: "Sora, sans-serif" }}>{productName}</div>
+                  <div style={{ fontSize: 15, fontWeight: 800, color: "#0F172A", fontFamily: "Sora, sans-serif" }}>{offer.productName}</div>
                 </div>
                 <ul style={{ margin: "0 0 14px", padding: "0 0 0 0", listStyle: "none" }}>
-                  {(paidFeatures ?? [
-                    "Full question bank — unlimited attempts",
-                    "Timed mock exam",
-                    "AI Tutor explanations on every question",
-                    "Score history & module breakdown",
-                  ]).map((f) => (
+                  {offerFeatures.map((f) => (
                     <li key={f} style={{ fontSize: 13, color: "#1E3A5F", marginBottom: 5, display: "flex", alignItems: "flex-start", gap: 8 }}>
                       <span style={{ color: "#059669", fontWeight: 700, flexShrink: 0 }}>✓</span>
                       <span>{f}</span>
@@ -267,7 +308,7 @@ export default function QuizGate({
                   ))}
                 </ul>
                 <button
-                    onClick={() => setShowCheckout(true)}
+                    onClick={handleCheckout}
                     disabled={createCheckout.isPending}
                     style={{
                       width: "100%",
@@ -285,16 +326,67 @@ export default function QuizGate({
                       opacity: createCheckout.isPending ? 0.7 : 1,
                     }}
                   >
-                    {createCheckout.isPending ? "Opening checkout…" : `Continue with 12-Month Exam Pass — ${checkoutPriceLabel} →`}
+                    {createCheckout.isPending ? "Opening checkout…" : `Continue with 12-Month Exam Pass - ${offer.priceLabel} →`}
                   </button>
                 {checkoutError && <p role="alert" style={{ color: "#B91C1C", fontSize: 11, marginTop: 8, textAlign: "center" }}>{checkoutError}</p>}
                 <p style={{ fontSize: 11, color: "#64748B", marginTop: 8, textAlign: "center" }}>
-                  One-time payment · 12 months of access · No subscription
+                  One-time payment · 12 months of access from successful payment · No subscription
                 </p>
               </div>
 
               {/* Escape options for paid path */}
               <div style={{ borderTop: "1px solid #E2E8F0", paddingTop: 12, marginTop: 4, display: "flex", flexDirection: "column", gap: 8 }}>
+                {/* Second path, deliberately placed after the offer so it never
+                    competes with the sale. A learner who is not buying today
+                    leaves us a way to reach them instead of disappearing. */}
+                {diagnostic && diagnostic.total > 0 && (
+                  planSent ? (
+                    <div role="status" style={{ background: "#F0FDF4", border: "1.5px solid #BBF7D0", borderRadius: 10, padding: "12px 14px", textAlign: "center" }}>
+                      <p style={{ margin: 0, fontSize: 13, fontWeight: 700, color: "#059669" }}>Your study plan is on its way</p>
+                      <p style={{ margin: "4px 0 0", fontSize: 11, color: "#475569" }}>Check your inbox for the topics to focus on first.</p>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleSendPlan} style={{ background: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: 10, padding: "12px 14px", textAlign: "left" }}>
+                      <label htmlFor="quiz-gate-plan-email" style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#0F172A", marginBottom: 2 }}>
+                        Not ready today? Get your free study plan
+                      </label>
+                      <p style={{ margin: "0 0 8px", fontSize: 11, color: "#64748B", lineHeight: 1.45 }}>
+                        We will email the topics to focus on first, based on the questions you just answered.
+                      </p>
+                      <div style={{ display: "flex", gap: 6 }}>
+                        <input
+                          id="quiz-gate-plan-email"
+                          type="email"
+                          value={planEmail}
+                          onChange={e => setPlanEmail(e.target.value)}
+                          placeholder="you@example.com"
+                          autoComplete="email"
+                          style={{ flex: 1, minWidth: 0, padding: "9px 11px", borderRadius: 8, border: "1.5px solid #CBD5E1", fontSize: 13, fontFamily: "inherit", color: "#0F172A" }}
+                        />
+                        <button
+                          type="submit"
+                          disabled={sendStudyPlan.isPending}
+                          style={{ padding: "9px 14px", borderRadius: 8, border: "none", background: "#0F172A", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", flexShrink: 0, opacity: sendStudyPlan.isPending ? 0.7 : 1, touchAction: "manipulation" }}
+                        >
+                          {sendStudyPlan.isPending ? "Sending…" : "Send it"}
+                        </button>
+                      </div>
+                      {/* Optional on purpose. Requiring it here would cost more
+                          leads than the extra channel is worth; phone is
+                          required at checkout where intent is already proven. */}
+                      <input
+                        type="tel"
+                        value={planPhone}
+                        onChange={e => setPlanPhone(e.target.value)}
+                        placeholder="Phone (optional, for exam reminders)"
+                        autoComplete="tel"
+                        aria-label="Phone number, optional"
+                        style={{ width: "100%", marginTop: 6, padding: "9px 11px", borderRadius: 8, border: "1.5px solid #CBD5E1", fontSize: 13, fontFamily: "inherit", color: "#0F172A", boxSizing: "border-box" }}
+                      />
+                      {planError && <p role="alert" style={{ color: "#B91C1C", fontSize: 11, margin: "7px 0 0" }}>{planError}</p>}
+                    </form>
+                  )
+                )}
                 {onDismiss && (
                   <button
                     onClick={onDismiss}
@@ -303,7 +395,7 @@ export default function QuizGate({
                     🔄 Try Another {questionsAnswered} Free Questions
                   </button>
                 )}
-                <Link href="/pricing">
+                <Link href={pricingHref}>
                   <button
                     style={{ width: "100%", padding: "10px 20px", borderRadius: 10, border: "1.5px solid #CBD5E1", background: "#F8FAFC", color: "#374151", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", touchAction: "manipulation" }}
                   >
@@ -329,7 +421,7 @@ export default function QuizGate({
             <div role="alert" style={{ color: "#475569", fontSize: 14, lineHeight: 1.6 }}>
               Checkout is temporarily unavailable for this course. Please choose
               the exact Exam Pass from the pricing page or contact support.
-              <Link href="/pricing">
+              <Link href={pricingHref}>
                 <button style={{ width: "100%", marginTop: 14, padding: "11px 20px", borderRadius: 10, border: "1.5px solid #CBD5E1", background: "#F8FAFC", color: "#1D4ED8", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
                   View Exam Passes →
                 </button>
@@ -349,16 +441,6 @@ export default function QuizGate({
   return createPortal(
     <>
       {gateContent}
-      {showCheckout && productKey && productName && (
-        <CheckoutContactModal
-          productName={productName}
-          priceLabel={checkoutPriceLabel}
-          prefillEmail={(() => { try { return localStorage.getItem("echelon_trial_email") ?? ""; } catch { return ""; } })()}
-          onSubmit={handleCheckout}
-          onClose={() => setShowCheckout(false)}
-          isLoading={createCheckout.isPending}
-        />
-      )}
     </>,
     document.body,
   );

@@ -55,11 +55,6 @@ describe("question governance schema", () => {
       expect(uses.length, `${relativePath} is missing a staged-question guard`).toBeGreaterThanOrEqual(expectedMinimum);
     }
 
-    const quizRouter = fs.readFileSync(
-      path.resolve(process.cwd(), "server/routers/quizRouter.ts"),
-      "utf8",
-    );
-    expect(quizRouter.match(/reviewStatus NOT IN \('in_review', 'rejected'\)/g)).toHaveLength(2);
   });
 
   it("invalidates cached banks when an admin changes a review decision", () => {

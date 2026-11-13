@@ -1,3 +1,5 @@
+import { repairPublishedArticle } from "./publishedArticleRepair";
+import { replaceAppRoot } from "./replaceAppRoot";
 /**
  * Server-Side Rendering for Blog Routes
  *
@@ -91,7 +93,7 @@ function buildBlogPostingJsonLd(post: {
   return JSON.stringify(schema);
 }
 
-function injectBlogPostMeta(
+export function injectBlogPostMeta(
   template: string,
   post: {
     title: string;
@@ -105,6 +107,7 @@ function injectBlogPostMeta(
     updatedAt: Date;
   }
 ): string {
+  post = repairPublishedArticle(post);
   const pageTitle = escapeHtml(post.metaTitle || post.title);
   const pageDesc = escapeHtml(post.metaDescription || post.excerpt);
   const postUrl = `${SITE_URL}/blog/${post.slug}`;
@@ -184,18 +187,9 @@ function injectBlogPostMeta(
       ${post.content}
     </article>`;
 
-  html = html.replace(
-    /(<div id="root">[\s\S]*?<\/h1>[\s\S]*?<\/div>)/,
-    `<div id="root">\n      ${articleHtml}\n    </div>`
-  );
-
-  // Fallback: if the above regex didn't match, inject after <div id="root">
-  if (!html.includes('id="ssr-blog-content"')) {
-    html = html.replace(
-      '<div id="root">',
-      `<div id="root">\n      ${articleHtml}`
-    );
-  }
+  // Replace the complete mount node, including its useful nested loading shell.
+  // Function replacement preserves literal dollar sequences in article copy.
+  html = replaceAppRoot(html, articleHtml);
 
   return html;
 }

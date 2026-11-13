@@ -17,8 +17,45 @@ export type AnalyticsEventName =
   | "restore_access_requested"
   | "restore_access_completed"
   | "pricing_viewed"
+  | "marketing_page_viewed"
   | "buyer_path_selected"
+  /**
+   * Genuine buy-button clicks only. A visitor firing this is committing to
+   * pay: checkout creation is attempted on the same click, with no price
+   * reveal or confirmation step in between.
+   *
+   * Do not emit this for browsing. Course pickers, course cards and "Start
+   * Studying" links previously shared this name, which made the purchase
+   * funnel look like it lost 88 buyers down to 11 when most of those people
+   * were exploring free content and never intended to buy on that click.
+   */
   | "product_selected"
+  /**
+   * Browsing a course: changing the course picker, clicking a course card, or
+   * following a link into free practice. Navigation interest, not purchase
+   * intent. Kept separate so the purchase funnel measures buying.
+   */
+  | "course_browsed"
+  /**
+   * A learner finished the free preview and asked for their study plan. This
+   * is the second path at the paywall for people not buying in that moment,
+   * and the measure of whether the paywall now retains them instead of
+   * losing them permanently.
+   */
+  | "preview_plan_requested"
+  /**
+   * The early study plan offer was shown partway through the free preview.
+   * Recorded separately from the request so the capture rate has an honest
+   * denominator: how many learners actually saw the offer, rather than how
+   * many reached a paywall that roughly four in five never get to.
+   */
+  | "preview_plan_offered"
+  /**
+   * A learner gave their exam date. The reminder engine only reaches learners
+   * with a date on file, so this counts the people who can now be reminded,
+   * and its rate against purchases measures the confirmation page prompt.
+   */
+  | "exam_date_set"
   | "checkout_started"
   | "checkout_completed"
   | "diagnostic_completed"
@@ -41,6 +78,10 @@ export type AnalyticsEventName =
   | "team_seat_revoked"
   | "operator_inactive_alert"
   | "export_downloaded"
+  | "training_session_started"
+  | "training_session_completed"
+  | "training_hours_exported"
+  | "training_record_attested"
   | "magic_link_requested"
   | "magic_link_consumed"
   | "otp_sent"

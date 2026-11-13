@@ -4,7 +4,7 @@ import { processRefund, type RefundPurchase } from "./processRefund";
 const purchase: RefundPurchase = {
   id: 77,
   userId: 11,
-  email: "operator@example.ca",
+  email: "fixture-84@example.com",
   productKey: "class1-water",
 };
 
@@ -45,7 +45,7 @@ describe("processRefund", () => {
     expect(deps.completeRefund).toHaveBeenCalledWith(expect.anything(), input, "claim-token");
   });
 
-  it("does not record another analytics event when Stripe replays a completed refund", async () => {
+  it("reasserts revocation when Stripe replays a completed refund", async () => {
     const deps = dependencies({
       claimEvent: vi.fn().mockResolvedValue({ state: "completed", event: {} }),
     });
@@ -53,7 +53,7 @@ describe("processRefund", () => {
     const result = await processRefund({} as any, input, deps);
 
     expect(result).toEqual({ state: "already_completed", purchase: null });
-    expect(deps.completeRefund).not.toHaveBeenCalled();
+    expect(deps.completeRefund).toHaveBeenCalledWith(expect.anything(), input, null);
   });
 
   it("marks a failed atomic refund for replay without emitting a partial result", async () => {

@@ -1,0 +1,83 @@
+{
+  "generatedAt": "2026-09-11T17:40:18.680Z",
+  "independentlyApprovedCueRevisions": 6,
+  "deterministicDisplayOnlyBalances": 3,
+  "resolution": [
+    {
+      "identity": "class1-water:2086",
+      "kind": "independently_approved_cue_revision"
+    },
+    {
+      "identity": "class1-wastewater:2067",
+      "kind": "independently_approved_cue_revision"
+    },
+    {
+      "identity": "class1-wastewater:2071",
+      "kind": "independently_approved_cue_revision"
+    },
+    {
+      "identity": "class1-wastewater:2118",
+      "kind": "independently_approved_cue_revision"
+    },
+    {
+      "identity": "class1-wastewater:2134",
+      "kind": "independently_approved_cue_revision"
+    },
+    {
+      "identity": "class1-wastewater:2179",
+      "kind": "independently_approved_cue_revision"
+    },
+    {
+      "identity": "class1-wastewater:2100",
+      "kind": "display_only_answer_position_balance",
+      "originalCorrectIndex": 0,
+      "finalCorrectIndex": 2
+    },
+    {
+      "identity": "class1-wastewater:2101",
+      "kind": "display_only_answer_position_balance",
+      "originalCorrectIndex": 0,
+      "finalCorrectIndex": 3
+    },
+    {
+      "identity": "class1-wastewater:2107",
+      "kind": "display_only_answer_position_balance",
+      "originalCorrectIndex": 0,
+      "finalCorrectIndex": 3
+    }
+  ],
+  "validation": {
+    "water": {
+      "positions": [
+        63,
+        64,
+        62,
+        61
+      ],
+      "cues": {
+        "conceptualCount": 200,
+        "longestRate": 0.235,
+        "shortestRate": 0.46,
+        "longTells": [],
+        "shortTells": [],
+        "qualifierTells": []
+      }
+    },
+    "wastewater": {
+      "positions": [
+        63,
+        63,
+        62,
+        62
+      ],
+      "cues": {
+        "conceptualCount": 200,
+        "longestRate": 0.225,
+        "shortestRate": 0.415,
+        "longTells": [],
+        "shortTells": [],
+        "qualifierTells": []
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import { getDb } from "../db";
 import { purchases, subscriptions, organizations, organizationMembers, teamFlexLicences } from "../../drizzle/schema";
 import type { User } from "../../drizzle/schema";
-import { eq, and, gt } from "drizzle-orm";
+import { eq, and, gt, inArray } from "drizzle-orm";
 import { getAllUnlockedExamTypes } from "../stripe/products";
 import {
   getAllSubscriptionExamTypes,
@@ -12,6 +12,9 @@ import { ENV } from "./env";
 import { resolveTeamAccess } from "../teams/resolveTeamAccess";
 import { resolveCourseKey } from "../../shared/courseRegistry";
 import { selectCurrentManagerOrganization } from "../teams/managerOrganization";
+import { isNovaScotiaCourseSupported } from "../../shared/novaScotiaPreparation";
+import { flexLicenceKeepsManagerAccess } from "../teams/flexReporting";
+import { DELEGATED_MANAGER_ROLE, listCurrentDelegatedOrganizations } from "../teams/delegatedManagers";
 
 /** Number of questions a non-entitled user may access per bank (free funnel). */
 export const FREE_TRIAL_LIMIT = 15;
@@ -29,9 +32,28 @@ export const FREE_EXAM_TYPES = new Set<string>(["electrician-309a"]);
  */
 export const FREE_AI_TUTOR = true;
 
-/** Canonical email form for storage AND comparison. */
+/**
+ * Canonical email form for storage AND comparison.
+ *
+ * Google sign-in returns the mailbox's base Gmail address, whereas customers
+ * sometimes enter a Gmail plus-address at checkout. Gmail delivers both forms
+ * to the same mailbox, so remove only the plus tag for Gmail-owned domains.
+ * Other providers retain their full local part because plus-address semantics
+ * are provider-specific and must not broaden entitlement matching.
+ */
 export function normalizeEmail(email: string | null | undefined): string {
-  return (email ?? "").trim().toLowerCase();
+  const normalized = (email ?? "").trim().toLowerCase();
+  const separator = normalized.lastIndexOf("@");
+  if (separator <= 0 || separator === normalized.length - 1) return normalized;
+
+  const localPart = normalized.slice(0, separator);
+  const domain = normalized.slice(separator + 1);
+  if (domain !== "gmail.com" && domain !== "googlemail.com") return normalized;
+
+  const plusIndex = localPart.indexOf("+");
+  if (plusIndex < 0) return normalized;
+
+  return `${localPart.slice(0, plusIndex)}@${domain}`;
 }
 
 /**
@@ -177,7 +199,7 @@ export async function resolveEntitlementsByEmail(
   const activePurchaseKeys = purchaseRows
     .filter((r) =>
       (!r.status || PURCHASE_ACCESS_STATUSES.has(r.status)) &&
-      (r.accessExpiresAt == null || r.accessExpiresAt >= now),
+      (r.accessExpiresAt == null || r.accessExpiresAt > now),
     )
     .map((r) => r.productKey);
 
@@ -219,6 +241,10 @@ export async function resolveEntitlementsByEmail(
   const activeSubscriptionRows: ResolvedEntitlements["activeSubscriptionRows"] = [];
 
   for (const row of eligibleSubRows) {
+    // Annual seat rows are not personal subscriptions: class-tier expansion would
+    // grant unassigned courses and streams. Resolve them only via active, exact
+    // organization assignments below (including organization term/status checks).
+    if (row.orgId != null) continue;
     try {
       const examTypes = getAllSubscriptionExamTypes([
         {
@@ -248,11 +274,19 @@ export async function resolveEntitlementsByEmail(
   // 3. Org seat entitlements — operator is a member of an active org
   // -------------------------------------------------------------------------
   let orgSeatExamTypes: string[] = [];
+  // A Nova Scotia organization keeps region "nova-scotia", but its seat rows are
+  // written into the subscriptions table as "western" because the subscriptions
+  // enum has no nova-scotia value. The western Class IV tier unlocks four exam
+  // banks, two of which are Class IV water distribution and wastewater
+  // collection. Nova Scotia certifies distribution and collection to Class III
+  // only, so those two banks must never be served to a Nova Scotia operator.
+  let belongsToNovaScotiaOrg = false;
   try {
     const seatRows = await db
       .select({
         courseKey: organizationMembers.courseKey,
         courseKeys: organizationMembers.courseKeys,
+        memberRole: organizationMembers.role,
         orgProvince: organizations.province,
         orgTier: organizations.tier,
         orgTermEnd: organizations.termEnd,
@@ -268,7 +302,10 @@ export async function resolveEntitlementsByEmail(
         ),
       );
     for (const seat of seatRows) {
+      // Even malformed manager-only rows must never provide learner entitlements.
+      if (seat.memberRole === DELEGATED_MANAGER_ROLE) continue;
       if (!ORG_ACCESS_STATUSES.has(seat.orgStatus ?? "active")) continue;
+      if (seat.orgProvince === "nova-scotia") belongsToNovaScotiaOrg = true;
       // Multi-course seat: courseKeys JSON array takes precedence
       if (seat.courseKeys) {
         try {
@@ -336,8 +373,26 @@ export async function resolveEntitlementsByEmail(
       .where(eq(organizations.managerEmail, normalised));
 
     const orgRow = selectCurrentManagerOrganization(orgRows, now);
+    const recoverableOrgIds = orgRows
+      .filter(row => ORG_ACCESS_STATUSES.has(row.status ?? ""))
+      .map(row => row.id);
+    let hasPaidFlexWindow = false;
+    if (!orgRow && recoverableOrgIds.length > 0) {
+      const paidInventory = await db.select({
+        status: teamFlexLicences.status,
+        activationDeadline: teamFlexLicences.activationDeadline,
+        accessEndsAt: teamFlexLicences.accessEndsAt,
+        reportingEndsAt: teamFlexLicences.reportingEndsAt,
+      }).from(teamFlexLicences)
+        .where(inArray(teamFlexLicences.organizationId, recoverableOrgIds));
+      hasPaidFlexWindow = paidInventory.some(licence => flexLicenceKeepsManagerAccess(licence, now));
+    }
 
-    if (orgRow) {
+    if (orgRow || hasPaidFlexWindow) {
+      isManager = true;
+      sources.push("org_manager");
+    }
+    if (!isManager && (await listCurrentDelegatedOrganizations(db, normalised, now)).length > 0) {
       isManager = true;
       sources.push("org_manager");
     }
@@ -353,10 +408,18 @@ export async function resolveEntitlementsByEmail(
     new Set([...purchaseExamTypes, ...subscriptionExamTypes, ...orgSeatExamTypes, ...flexExamTypes]),
   );
 
+  // Apply the provincial certification ceiling after every source is combined,
+  // so no current or future entitlement source can route around it.
+  const entitledExamTypes = belongsToNovaScotiaOrg
+    ? allExamTypes.filter(
+        examType => !examType.startsWith("wpi-") || isNovaScotiaCourseSupported(examType),
+      )
+    : allExamTypes;
+
   return {
     email: normalised,
-    hasAnyAccess: allExamTypes.length > 0 || isManager || hasFlexIdentity,
-    unlockedExamTypes: allExamTypes,
+    hasAnyAccess: entitledExamTypes.length > 0 || isManager || hasFlexIdentity,
+    unlockedExamTypes: entitledExamTypes,
     purchasedProductKeys: activePurchaseKeys,
     activeSubscriptionRows,
     isManager,
@@ -384,7 +447,7 @@ export async function resolveAccessByEmail(
 }
 
 export async function resolveAccess(
-  user: User | null,
+  user: (Pick<User, "id" | "email"> & Partial<Pick<User, "role" | "openId">>) | null,
   examType: string,
 ): Promise<AccessResult> {
   // Free exam types are always accessible — no purchase required

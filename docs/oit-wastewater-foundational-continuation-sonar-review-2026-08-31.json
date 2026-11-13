@@ -1,0 +1,78 @@
+{
+  "reviews": [
+    {
+      "questionNum": 226,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option matches EPA description that anaerobic digestion stabilizes organic matter in wastewater solids and converts part of the volatile-solids fraction to biogas, supporting solids management.",
+        "No universal or jurisdictional claims beyond the cited EPA process-purpose statement.",
+        "All distractors are clearly incorrect without normalizing unsafe practices or omitting required actions.",
+        "Difficulty and scope are appropriate for a foundational Ontario OIT learner (basic solids-treatment purpose)."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 246,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option matches EPA description that belt filter presses remove water from liquid wastewater residuals and produce a dewatered cake material.",
+        "No overstatement of performance, design details, or regulatory requirements; the claim is limited to basic function.",
+        "Distractors are implausible but not normalizing unsafe operation; they do not contradict cited sources.",
+        "Learning objective (basic purpose of belt filter press) is foundational and suitable for Ontario OIT scope."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 248,
+      "approved": true,
+      "severity": "minor",
+      "reasons": [
+        "Correct option aligns with EPA description that polymer conditioning is a basic belt-filter-press feature used to condition sludge to support dewatering performance.",
+        "Source support is adequate for stating that solids must be conditioned with polymer to support dewatering, but the current wording in the explanation could be read as an absolute prescription if taken out of context.",
+        "The explanation appropriately notes that specific polymer, dose, and procedures depend on facility equipment and procedures, keeping within non-universal, non-regulatory scope.",
+        "Distractors do not promote unsafe practices and clearly contradict the cited purpose of polymer use."
+      ],
+      "requiredChanges": [
+        "In the explanation, soften any implication of a universal requirement by adjusting phrasing such as \"must be conditioned with polymer\" to a non-absolute form (for example, \"are typically conditioned with polymer\" or similar) to avoid an unsupported universal operational prescription while keeping the core learning outcome intact."
+      ]
+    },
+    {
+      "questionNum": 432,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option matches WorkSafeNB description that a fall-arresting system arrests a worker’s fall before contacting a lower level or obstruction.",
+        "Item clearly treats WorkSafeNB as a general safety concept, not as an Ontario legal requirement, consistent with scoped use.",
+        "Explanation correctly notes that fall arrest does not replace training, hazard assessment, equipment inspection, or rescue planning, avoiding unsafe simplification.",
+        "Question is foundational safety knowledge appropriate for Ontario OIT learners and within jurisdictional guidance constraints."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 443,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option accurately reflects WorkSafeNB definitions: travel restraint prevents reaching an unguarded edge, while fall arrest arrests a fall before contact with a lower level.",
+        "No overextension into Ontario-specific regulatory requirements; the item remains at the level of general safety concepts as scoped.",
+        "Distractors do not normalize unsafe behavior and remain clearly incorrect relative to the cited definitions.",
+        "Learning objective compares two basic fall-protection concepts, appropriate for foundational OIT level."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 476,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option matches EPA QA/QC guidance that field duplicates and laboratory replicates are used to estimate or assess precision of sampling and/or laboratory measurements.",
+        "Item does not claim that duplicates guarantee accuracy or replace other QA/QC checks, which is consistent with the cited source and avoids overstatement.",
+        "Scope is foundational: introduces the concept of precision checks without detailed statistical treatment, appropriate for an Ontario OIT learner.",
+        "Distractors avoid unsafe operational normalization and clearly contradict QA/QC principles described in the source."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

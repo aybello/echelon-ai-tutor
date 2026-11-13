@@ -1,3 +1,4 @@
+import { useFlashcardPersistence } from "@/hooks/useFlashcardPersistence";
 // ECHELON AI TUTOR — FlashcardShell Component
 // Flip-card study mode derived from any question bank
 // Handles all field name variants: question/q/text, correct/correctAnswer/correctIndex
@@ -150,76 +151,16 @@ export default function FlashcardShell({ questions, examName, examType, backPath
   const verifiedEmailSession = trpc.dashboardAuth.me.useQuery(undefined, { retry: false, staleTime: 5 * 60 * 1000 });
   const email = user?.email || verifiedEmailSession.data?.email || "";
 
-  // ── Load saved progress on mount ──────────────────────────────────────────
-  const { data: savedProgress } = trpc.flashcard.getProgress.useQuery(
-    { examType },
-    {
-      enabled: !!email,
-      staleTime: Infinity,
-      retry: false,
-    }
-  );
-
-  // Reset and load the correct identity whenever the learner or course changes.
-  // Anonymous learners use local storage; signed-in learners use server progress.
+  const persistence = useFlashcardPersistence(email, examType, conceptualQuestions.length);
   useEffect(() => {
-    setKnown(new Set());
-    setProgressLoaded(false);
-    if (!email) {
-      setKnown(normalizeKnownFlashcardIds(loadGuestKnown(examType), conceptualQuestions));
-      setProgressLoaded(true);
-    }
-  }, [email, examType, conceptualQuestions]);
-
-  useEffect(() => {
-    if (email && savedProgress && !progressLoaded) {
-      setKnown(normalizeKnownFlashcardIds(savedProgress.knownIds ?? [], conceptualQuestions));
-      setProgressLoaded(true);
-    }
-  }, [email, savedProgress, progressLoaded, conceptualQuestions]);
-
-  // ── Save progress ──────────────────────────────────────────────────────────
-  // Serialize writes so rapid ratings cannot arrive out of order and overwrite
-  // a newer known/learning decision with an older snapshot.
-  const saveProgress = trpc.flashcard.saveProgress.useMutation();
-  const queuedSaveRef = useRef<{
-    examType: string;
-    knownIds: string[];
-    totalCards: number;
-  } | null>(null);
-  const saveInFlightRef = useRef(false);
-
-  const drainSaveQueue = useCallback(async () => {
-    if (saveInFlightRef.current) return;
-    saveInFlightRef.current = true;
-    try {
-      while (queuedSaveRef.current) {
-        const payload = queuedSaveRef.current;
-        queuedSaveRef.current = null;
-        try {
-          await saveProgress.mutateAsync(payload);
-        } catch {
-          // The next learner action queues the full latest state and retries it.
-          break;
-        }
-      }
-    } finally {
-      saveInFlightRef.current = false;
-    }
-  }, [saveProgress]);
-
-  const persistKnown = useCallback((nextKnown: Set<string>) => {
-    if (!email) {
-      saveGuestKnown(examType, nextKnown);
-      return;
-    }
-    queuedSaveRef.current = {
-      examType,
-      knownIds: Array.from(nextKnown),
-      totalCards: conceptualQuestions.length,
-    };
-    void drainSaveQueue();
-  }, [email, examType, conceptualQuestions.length, drainSaveQueue]);
+    if (email) setKnown(persistence.known);
+    else setKnown(new Set(loadGuestKnown(examType).map(String)));
+    setProgressLoaded(true);
+  }, [email, examType, persistence.known]);
+  const persistKnown = useCallback((nextKnown: Set<string>, id: string, value: boolean) => {
+    if (email) persistence.change(id, value);
+    else saveGuestKnown(examType, nextKnown);
+  }, [email, examType, persistence.change]);
 
   const selectedScope = useMemo(
     () => selectedModule ? conceptualQuestions.filter((question) => question.module === selectedModule) : conceptualQuestions,
@@ -304,7 +245,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
     const nextKnown = new Set(known);
     nextKnown.add(flashcardProgressKey(card.id));
     setKnown(nextKnown);
-    persistKnown(nextKnown);
+    persistKnown(nextKnown, flashcardProgressKey(card.id), true);
 
     if (reviewing) {
       const next = advanceReviewQueue(deck, index, "known");
@@ -322,7 +263,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
     const nextKnown = new Set(known);
     nextKnown.delete(flashcardProgressKey(card.id));
     setKnown(nextKnown);
-    persistKnown(nextKnown);
+    persistKnown(nextKnown, flashcardProgressKey(card.id), false);
 
     if (reviewing) {
       const next = advanceReviewQueue(deck, index, "learning");
@@ -359,8 +300,9 @@ export default function FlashcardShell({ questions, examName, examType, backPath
     const unknownCount = reviewing ? 0 : standardUnknownCount;
     const reviewedTotal = reviewing ? reviewStartCount : deck.length;
     return (
-      <div style={{ minHeight: "100vh", background: "var(--echelon-canvas)" }}>
+      <div className="learning-redesign flashcard-page--complete" style={{ minHeight: "100vh", background: "var(--echelon-canvas)" }}>
         <SiteNav currentPath={window.location.pathname} />
+        {email && persistence.status.startsWith("error") && <p role="status" className="p-3 text-center text-amber-800">Flashcard changes are waiting to save. <button onClick={persistence.retry} className="underline">Retry</button></p>}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", padding: "48px 24px" }}>
         <div style={{ background: "#fff", borderRadius: "18px", padding: "48px 40px", maxWidth: "480px", width: "100%", textAlign: "center", border: "1px solid var(--echelon-line)", boxShadow: "var(--echelon-shadow-md)" }}>
           <div style={{ fontSize: "56px", marginBottom: "16px" }}>🎉</div>
@@ -378,7 +320,8 @@ export default function FlashcardShell({ questions, examName, examType, backPath
           </div>
           {email && (
             <p style={{ color: "#94a3b8", fontSize: "12px", marginBottom: "16px" }}>
-              ✓ Progress saved for {email}
+              {persistence.status === "saved" ? `✓ Progress saved for ${email}` : persistence.status === "saving" ? "Saving progress…" : "Progress is not yet saved. Keep this page open and retry."}
+              {persistence.status.startsWith("error") && <button onClick={persistence.retry} className="ml-2 underline">Retry saving</button>}
             </p>
           )}
           <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
@@ -401,8 +344,9 @@ export default function FlashcardShell({ questions, examName, examType, backPath
   }
 
   return (
-    <div style={{ minHeight: "100vh", background: "var(--echelon-canvas)", fontFamily: "'Sora', sans-serif" }}>
+    <div className="flashcard-page learning-redesign" style={{ minHeight: "100vh", background: "var(--echelon-canvas)", fontFamily: "'Sora', sans-serif" }}>
       <SiteNav currentPath={window.location.pathname} />
+        {email && persistence.status.startsWith("error") && <p role="status" className="p-3 text-center text-amber-800">Flashcard changes are waiting to save. <button onClick={persistence.retry} className="underline">Retry</button></p>}
       <style>{`
         .fc-wrap { perspective: 1200px; width: 100%; max-width: 680px; margin: 0 auto 8px; }
         .fc-inner { position: relative; width: 100%; height: 240px; transform-style: preserve-3d; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); cursor: pointer; }
@@ -419,6 +363,16 @@ export default function FlashcardShell({ questions, examName, examType, backPath
         .fc-nav-btn { background: #fff; border: 1px solid var(--echelon-line); color: var(--echelon-ink); border-radius: 10px; padding: 10px 20px; font-size: 14px; font-weight: 650; cursor: pointer; transition: all 0.15s; }
         .fc-nav-btn:hover { border-color: #AFC5E3; background: #EEF4FB; color: #1E3A5F; }
         .fc-nav-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+        .fc-options { max-width: 880px; margin: 16px auto; background: #fff; border: 1px solid var(--echelon-line); border-radius: 14px; }
+        .fc-options > summary { display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 12px 16px; cursor: pointer; color: var(--echelon-ink); font-size: 14px; font-weight: 700; }
+        .fc-options > summary::after { content: '+'; margin-left: auto; font-size: 20px; color: var(--echelon-blue); }
+        .fc-options[open] > summary::after { content: '−'; }
+        .fc-options > summary span { color: var(--echelon-copy); font-size: 12px; font-weight: 400; }
+        .fc-options-controls { display: flex; gap: 8px; flex-wrap: wrap; padding: 0 16px 12px; }
+        .fc-options .fc-mod-tab { min-height: 44px; white-space: normal; text-align: left; }
+        .flashcard-page .fc-nav-btn { min-height: 44px; }
+        .flashcard-page :is(button, a, summary):focus-visible { outline: 3px solid var(--echelon-focus); outline-offset: 3px; }
+        @media (prefers-reduced-motion: reduce) { .fc-inner { transition: none; } }
         @media (max-width: 640px) {
           .fc-inner { height: 220px; }
           .fc-face { padding: 20px 18px; }
@@ -427,7 +381,9 @@ export default function FlashcardShell({ questions, examName, examType, backPath
           .fc-header { padding: 12px 16px !important; }
           .fc-header-title { font-size: 14px !important; }
           .fc-header-sub { font-size: 11px !important; }
-          .fc-module-row { padding: 8px 16px !important; flex-wrap: nowrap !important; overflow-x: auto !important; scrollbar-width: thin; scrollbar-color: #94A3B8 transparent; -webkit-overflow-scrolling: touch; }
+          .fc-options { margin: 12px 16px; }
+          .fc-options > summary { flex-wrap: wrap; gap: 8px; }
+          .fc-module-row { padding: 8px 16px !important; }
           .fc-progress-row { padding: 0 16px 6px !important; }
           .fc-card-area { padding: 12px 16px 6px !important; }
           .fc-actions-row { padding: 12px 16px 20px !important; }
@@ -450,19 +406,19 @@ export default function FlashcardShell({ questions, examName, examType, backPath
             <span style={{ color: "#22c55e", fontWeight: 700 }}>{scopeSummary.gotIt}</span> got it · {scopeSummary.stillLearning} still learning
             {email && <span style={{ color: "#475569", marginLeft: 6, fontSize: "11px" }}>· saved</span>}
           </span>
-          <button onClick={handleShuffle} style={{ background: "#EEF4FB", border: "1px solid #B8CAE2", color: "#1E3A5F", borderRadius: "8px", padding: "8px 14px", fontSize: "13px", fontWeight: 700, cursor: "pointer" }}>
-            Shuffle
-          </button>
         </div>
       </div>
 
-      <div style={{ padding: "10px 24px", background: "#F8FAFC", borderBottom: "1px solid var(--echelon-line)", display: "flex", justifyContent: "center", gap: "8px", flexWrap: "wrap" }}>
+      <details className="fc-options">
+        <summary>Flashcard options <span>{selectedModule ?? "All modules"} · {reviewing ? "Reviewing still-learning cards" : "Study deck"}</span></summary>
+      <div className="fc-options-controls">
         <button className="fc-nav-btn" onClick={handleStudyDeck} style={{ background: !reviewing ? "#E5EFF9" : "#fff", color: !reviewing ? "#1E3A5F" : undefined }}>
           Study deck
         </button>
         <button className="fc-nav-btn" onClick={handleReviewUnknown} disabled={scopeSummary.stillLearning === 0} style={{ background: reviewing ? "#FEE2E2" : "#fff", color: reviewing ? "#B91C1C" : undefined }}>
           Review {scopeSummary.stillLearning} still-learning
         </button>
+        <button className="fc-nav-btn" onClick={handleShuffle}>Shuffle</button>
       </div>
 
       {/* Module Filter */}
@@ -489,6 +445,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
           ))}
         </div>
       )}
+      </details>
 
       {/* Progress bar */}
       <div className="fc-progress-row" style={{ padding: "0 24px 8px" }}>
@@ -513,6 +470,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
             <button
               type="button"
               className={"fc-inner" + (flipped ? " flipped" : "")}
+              data-testid="flashcard-study-card"
               onClick={handleFlip}
               aria-pressed={flipped}
               aria-label={flipped ? "Hide answer" : "Reveal answer"}
@@ -543,7 +501,7 @@ export default function FlashcardShell({ questions, examName, examType, backPath
                     {frontSupplement}
                   </div>
                 )}
-                <div style={{ fontSize: projectedContent ? "15px" : "18px", fontWeight: projectedContent ? 500 : 600, color: "#0f172a", lineHeight: 1.5, flex: 1, display: "flex", alignItems: projectedContent ? "flex-start" : "center" }}>
+                <div data-testid="flashcard-prompt" style={{ fontSize: projectedContent ? "15px" : "18px", fontWeight: projectedContent ? 500 : 600, color: "#0f172a", lineHeight: 1.5, flex: 1, display: "flex", alignItems: projectedContent ? "flex-start" : "center" }}>
                   {displayPrompt}
                 </div>
                 <div style={{ marginTop: "12px", color: "#94a3b8", fontSize: "13px", textAlign: "center" }}>

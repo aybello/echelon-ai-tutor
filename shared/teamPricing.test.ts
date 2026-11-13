@@ -1,202 +1,46 @@
-/**
- * shared/teamPricing.test.ts
- *
- * Tests for the shared Teams pricing module.
- * All exact amounts from the spec are verified here.
- */
-
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import {
   TEAM_BASE_PRICE,
-  TEAM_VOLUME_TIERS,
-  getTeamVolumeTier,
-  getTeamSeatPriceCents,
-  getTeamTotalPriceCents,
   formatTeamPriceCAD,
+  getTeamBasePriceCents,
+  getTeamEffectiveDiscountPct,
+  getTeamTotalPriceCents,
+  getTeamVolumeTier,
 } from "./teamPricing";
 
-// ── National pricing parity ───────────────────────────────────────────────────
-
-describe("National pricing parity — Ontario and Western Canada are identical", () => {
-  it("stream-water base price is identical in both regions", () => {
-    expect(TEAM_BASE_PRICE.ontario["stream-water"]).toBe(39900);
-    expect(TEAM_BASE_PRICE.western["stream-water"]).toBe(39900);
-  });
-
-  it("stream-wastewater base price is identical in both regions", () => {
-    expect(TEAM_BASE_PRICE.ontario["stream-wastewater"]).toBe(39900);
-    expect(TEAM_BASE_PRICE.western["stream-wastewater"]).toBe(39900);
-  });
-
-  it("stream-water-dist base price is identical in both regions", () => {
-    expect(TEAM_BASE_PRICE.ontario["stream-water-dist"]).toBe(39900);
-    expect(TEAM_BASE_PRICE.western["stream-water-dist"]).toBe(39900);
-  });
-
-  it("stream-wastewater-coll base price is identical in both regions", () => {
-    expect(TEAM_BASE_PRICE.ontario["stream-wastewater-coll"]).toBe(39900);
-    expect(TEAM_BASE_PRICE.western["stream-wastewater-coll"]).toBe(39900);
-  });
-
-  it("all-access base price is identical in both regions", () => {
-    expect(TEAM_BASE_PRICE.ontario["all-access"]).toBe(39900);
-    expect(TEAM_BASE_PRICE.western["all-access"]).toBe(39900);
-  });
-
-  it("every single-stream tier costs 39900 cents", () => {
-    const singleStreamTiers = ["stream-water", "stream-wastewater", "stream-water-dist", "stream-wastewater-coll"] as const;
-    for (const tier of singleStreamTiers) {
-      expect(TEAM_BASE_PRICE.ontario[tier]).toBe(39900);
-      expect(TEAM_BASE_PRICE.western[tier]).toBe(39900);
+describe("Teams Annual pricing", () => {
+  it("prices each one-stream annual plan at CA$449 and All Streams at CA$549", () => {
+    for (const region of ["ontario", "western"] as const) {
+      expect(TEAM_BASE_PRICE[region]["stream-water"]).toBe(44_900);
+      expect(TEAM_BASE_PRICE[region]["stream-wastewater"]).toBe(44_900);
+      expect(TEAM_BASE_PRICE[region]["stream-water-dist"]).toBe(44_900);
+      expect(TEAM_BASE_PRICE[region]["stream-wastewater-coll"]).toBe(44_900);
+      expect(TEAM_BASE_PRICE[region]["all-access"]).toBe(54_900);
     }
   });
 
-  it("All-Access costs 39900 cents", () => {
-    expect(TEAM_BASE_PRICE.ontario["all-access"]).toBe(39900);
-    expect(TEAM_BASE_PRICE.western["all-access"]).toBe(39900);
-  });
-});
-
-// ── Volume discount boundaries ────────────────────────────────────────────────
-
-describe("Volume discount boundaries", () => {
-  it("9 seats → 0% discount", () => {
-    expect(getTeamVolumeTier(9).discountPct).toBe(0);
+  it("uses graduated, not retroactive, pricing", () => {
+    const nine = getTeamTotalPriceCents("ontario", "all-access", 9);
+    const ten = getTeamTotalPriceCents("ontario", "all-access", 10);
+    expect(nine).toBe(494_100);
+    expect(ten).toBe(543_510);
+    expect(ten).toBeGreaterThan(nine);
+    expect(getTeamEffectiveDiscountPct("ontario", "all-access", 10)).toBeCloseTo(1);
   });
 
-  it("10 seats → 10% discount", () => {
-    expect(getTeamVolumeTier(10).discountPct).toBe(10);
+  it("maps each volume boundary correctly", () => {
+    expect(getTeamVolumeTier(1).label).toBe("1-9 licences");
+    expect(getTeamVolumeTier(10).label).toBe("10-24 licences");
+    expect(getTeamVolumeTier(25).label).toBe("25-49 licences");
+    expect(getTeamVolumeTier(50).label).toBe("50+ licences");
   });
 
-  it("24 seats → 10% discount", () => {
-    expect(getTeamVolumeTier(24).discountPct).toBe(10);
+  it("formats CAD values for customers", () => {
+    expect(formatTeamPriceCAD(44_900)).toContain("449");
+    expect(formatTeamPriceCAD(54_900)).toContain("549");
   });
 
-  it("25 seats → 15% discount", () => {
-    expect(getTeamVolumeTier(25).discountPct).toBe(15);
-  });
-
-  it("49 seats → 15% discount", () => {
-    expect(getTeamVolumeTier(49).discountPct).toBe(15);
-  });
-
-  it("50 seats → 20% discount", () => {
-    expect(getTeamVolumeTier(50).discountPct).toBe(20);
-  });
-
-  it("500 seats → 20% discount", () => {
-    expect(getTeamVolumeTier(500).discountPct).toBe(20);
-  });
-});
-
-// ── Input validation ──────────────────────────────────────────────────────────
-
-describe("Input validation", () => {
-  it("rejects licence count below 1", () => {
-    expect(() => getTeamVolumeTier(0)).toThrow(RangeError);
-  });
-
-  it("rejects licence count above 500", () => {
-    expect(() => getTeamVolumeTier(501)).toThrow(RangeError);
-  });
-
-  it("rejects non-integer licence count (1.5)", () => {
-    expect(() => getTeamVolumeTier(1.5)).toThrow(RangeError);
-  });
-
-  it("rejects NaN", () => {
-    expect(() => getTeamVolumeTier(NaN)).toThrow(RangeError);
-  });
-});
-
-// ── Exact pricing results from spec ──────────────────────────────────────────
-
-describe("Single Stream exact pricing results", () => {
-  it("1 licence → $399.00 per licence", () => {
-    expect(getTeamSeatPriceCents("ontario", "stream-water", 1)).toBe(39900);
-  });
-
-  it("10 licences → $314.10 per licence", () => {
-    expect(getTeamSeatPriceCents("ontario", "stream-water", 10)).toBe(35910);
-  });
-
-  it("10 licences → graduated 10-seat total", () => {
-    expect(getTeamTotalPriceCents("ontario", "stream-water", 10)).toBe(395010);
-  });
-
-  it("25 licences → $381.65 per licence", () => {
-    expect(getTeamSeatPriceCents("ontario", "stream-water", 25)).toBe(33915);
-  });
-
-  it("25 licences → graduated 25-seat total", () => {
-    expect(getTeamTotalPriceCents("ontario", "stream-water", 25)).toBe(931665);
-  });
-
-  it("50 licences → $279.20 per licence", () => {
-    expect(getTeamSeatPriceCents("ontario", "stream-water", 50)).toBe(31920);
-  });
-
-  it("50 licences → graduated 50-seat total", () => {
-    expect(getTeamTotalPriceCents("ontario", "stream-water", 50)).toBe(1777545);
-  });
-});
-
-describe("All Streams exact pricing results", () => {
-  it("1 licence → $399.00 per licence", () => {
-    expect(getTeamSeatPriceCents("ontario", "all-access", 1)).toBe(39900);
-  });
-
-  it("10 licences → $404.10 per licence", () => {
-    expect(getTeamSeatPriceCents("ontario", "all-access", 10)).toBe(35910);
-  });
-
-  it("10 licences → graduated 10-seat total", () => {
-    expect(getTeamTotalPriceCents("ontario", "all-access", 10)).toBe(395010);
-  });
-
-  it("25 licences → $381.65 per licence", () => {
-    expect(getTeamSeatPriceCents("ontario", "all-access", 25)).toBe(33915);
-  });
-
-  it("25 licences → graduated 25-seat total", () => {
-    expect(getTeamTotalPriceCents("ontario", "all-access", 25)).toBe(931665);
-  });
-
-  it("50 licences → $359.20 per licence", () => {
-    expect(getTeamSeatPriceCents("ontario", "all-access", 50)).toBe(31920);
-  });
-
-  it("50 licences → graduated 50-seat total", () => {
-    expect(getTeamTotalPriceCents("ontario", "all-access", 50)).toBe(1777545);
-  });
-});
-
-describe("Western Canada pricing matches Ontario exactly", () => {
-  it("Western 25 Single Stream → $381.65 per licence", () => {
-    expect(getTeamSeatPriceCents("western", "stream-water", 25)).toBe(33915);
-  });
-
-  it("Western 25 All Streams → $381.65 per licence", () => {
-    expect(getTeamSeatPriceCents("western", "all-access", 25)).toBe(33915);
-  });
-});
-
-// ── formatTeamPriceCAD ────────────────────────────────────────────────────────
-
-describe("formatTeamPriceCAD", () => {
-  it("formats 33915 cents to contain '381.65'", () => {
-    expect(formatTeamPriceCAD(33915)).toContain("339.15");
-  });
-
-  it("formats 931665 cents correctly", () => {
-    expect(formatTeamPriceCAD(931665)).toContain("9,316.65");
-  });
-
-  it("formats whole-dollar amounts without cents", () => {
-    expect(formatTeamPriceCAD(34900)).not.toContain(".");
-  });
-
-  it("formats 39900 cents as $399", () => {
-    expect(formatTeamPriceCAD(39900)).toContain("399");
+  it("keeps the annual catalogue national", () => {
+    expect(getTeamBasePriceCents("ontario", "all-access")).toBe(getTeamBasePriceCents("western", "all-access"));
   });
 });

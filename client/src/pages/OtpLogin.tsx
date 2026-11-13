@@ -5,10 +5,11 @@
  * Step 2: Enter 6-digit code → verify → redirect to /quiz or /team
  */
 
-import { useState, useRef, useEffect } from "react";
-import { Link, useLocation } from "wouter";
+import { useState, useRef, useEffect, useLayoutEffect } from "react";
+import { Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import LandingNav from "@/components/LandingNav";
+import { notifyIdentityChange } from "@shared/identityChange";
 
 const LOGO_URL =
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663446228701/9KAR7mkGo7x7xavTEeEpiA/echelon-icon-v2_5c9ed3a7.webp";
@@ -16,7 +17,6 @@ const LOGO_URL =
 type Step = "email" | "code" | "success" | "error";
 
 export default function OtpLogin() {
-  const [, navigate] = useLocation();
   const [step, setStep] = useState<Step>("email");
   // Pre-fill email from ?email= URL param (set by /account redirect)
   // Read ?next= param — safe same-application relative paths only
@@ -58,13 +58,17 @@ export default function OtpLogin() {
     if (cooldownRef.current) clearInterval(cooldownRef.current);
   }, []);
 
+  // Focus as the code inputs mount, before the learner can type. A delayed
+  // timer can steal focus halfway through fast entry and drop an OTP digit.
+  useLayoutEffect(() => {
+    if (step === "code") inputRefs.current[0]?.focus();
+  }, [step]);
+
   const requestOtp = trpc.emailOtp.requestOtp.useMutation({
     onSuccess: () => {
       setStep("code");
       setErrorMsg("");
       startResendCooldown();
-      // Focus first code input after transition
-      setTimeout(() => inputRefs.current[0]?.focus(), 100);
     },
     onError: (error) => {
       setErrorMsg(error.message || "We couldn't send your login code. Please try again.");
@@ -75,21 +79,28 @@ export default function OtpLogin() {
     onSuccess: (data) => {
       if (data.valid) {
         // Store access in localStorage — same pattern as magic link
-        if (data.accessToken) {
-          localStorage.setItem("echelon_access_token", data.accessToken);
-        }
-        localStorage.setItem("echelon_subscription_email", data.email);
-        localStorage.setItem("echelon_trial_email", data.email);
-        localStorage.setItem("echelon_trial_unlocked", "true");
-        if (data.examTypes.length > 0) {
-          localStorage.setItem("echelon_subscription_exam_types", JSON.stringify(data.examTypes));
-          localStorage.setItem("echelon_purchased_products", JSON.stringify(data.examTypes));
-        }
+        try {
+          if (data.accessToken) {
+            localStorage.setItem("echelon_access_token", data.accessToken);
+          }
+          localStorage.setItem("echelon_subscription_email", data.email);
+          localStorage.setItem("echelon_trial_email", data.email);
+          localStorage.setItem("echelon_trial_unlocked", "true");
+          if (data.examTypes.length > 0) {
+            localStorage.setItem("echelon_subscription_exam_types", JSON.stringify(data.examTypes));
+            localStorage.setItem("echelon_purchased_products", JSON.stringify(data.examTypes));
+          }
+        } catch { /* session cookie remains valid without local storage */ }
+        notifyIdentityChange();
         setIsManager(!!data.isManager);
         setStep("success");
         const redirectPath = data.isManager ? "/team" : "/quiz";
         const finalPath = nextParam || redirectPath;
-        setTimeout(() => navigate(finalPath), 2500);
+        // A hard navigation makes the newly issued HttpOnly session cookie the
+        // source of truth for the next page. A client-side route transition can
+        // reuse an earlier anonymous dashboardAuth.me result and incorrectly
+        // tell a verified Course Pass operator that the invitation is invalid.
+        setTimeout(() => window.location.assign(finalPath), 2500);
       } else {
         if (data.reason === "expired") {
           setErrorMsg("This code has expired. Please request a new one.");
@@ -100,7 +111,7 @@ export default function OtpLogin() {
           setAttemptsLeft(left);
           setErrorMsg(`Incorrect code. ${left} attempt${left === 1 ? "" : "s"} remaining.`);
           setCode(["", "", "", "", "", ""]);
-          setTimeout(() => inputRefs.current[0]?.focus(), 50);
+          inputRefs.current[0]?.focus();
         } else {
           setErrorMsg("Verification failed. Please try again.");
         }
@@ -193,6 +204,7 @@ export default function OtpLogin() {
 
   return (
     <div
+      className="learner-redesign learner-auth-page"
       style={{
         fontFamily: "'Sora', sans-serif",
         background: "#F8FAFC",
@@ -204,6 +216,7 @@ export default function OtpLogin() {
     >
       <LandingNav currentPath="/login/otp" />
       <div
+        className="learner-auth-main"
         style={{
           flex: 1,
           display: "flex",
@@ -216,13 +229,13 @@ export default function OtpLogin() {
       >
         {/* Step 1: Email entry */}
         {step === "email" && (
-          <div style={cardStyle}>
+          <div className="learner-auth-card" style={cardStyle}>
             <img
               src={LOGO_URL}
               alt="Echelon Institute"
               style={{ height: 48, marginBottom: 20, objectFit: "contain" }}
             />
-            <div style={{ fontSize: 36, marginBottom: 12 }}>🔑</div>
+            <div className="learner-status-glyph" aria-hidden="true">01</div>
             <h1 style={{ fontSize: 22, fontWeight: 800, color: "#0F172A", margin: "0 0 8px" }}>
               Sign In with a Code
             </h1>
@@ -231,10 +244,11 @@ export default function OtpLogin() {
             </p>
             <form onSubmit={handleEmailSubmit}>
               <input
+                aria-label="Email address"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="your@email.com"
+                placeholder="you@example.com"
                 required
                 autoFocus
                 style={{
@@ -272,13 +286,13 @@ export default function OtpLogin() {
 
         {/* Step 2: Code entry */}
         {step === "code" && (
-          <div style={cardStyle}>
+          <div className="learner-auth-card" style={cardStyle}>
             <img
               src={LOGO_URL}
               alt="Echelon Institute"
               style={{ height: 48, marginBottom: 20, objectFit: "contain" }}
             />
-            <div style={{ fontSize: 36, marginBottom: 12 }}>📬</div>
+            <div className="learner-status-glyph" aria-hidden="true">02</div>
             <h1 style={{ fontSize: 22, fontWeight: 800, color: "#0F172A", margin: "0 0 8px" }}>
               Check Your Email
             </h1>
@@ -395,7 +409,7 @@ export default function OtpLogin() {
 
         {/* Step 3: Success */}
         {step === "success" && (
-          <div style={cardStyle}>
+          <div className="learner-auth-card" style={cardStyle}>
             <img
               src={LOGO_URL}
               alt="Echelon Institute"
@@ -432,7 +446,7 @@ export default function OtpLogin() {
 
         {/* Error state */}
         {step === "error" && (
-          <div style={cardStyle}>
+          <div className="learner-auth-card" style={cardStyle}>
             <img
               src={LOGO_URL}
               alt="Echelon Institute"

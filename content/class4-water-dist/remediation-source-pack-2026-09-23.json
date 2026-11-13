@@ -1,0 +1,64 @@
+{
+  "title": "Controlled source pack for Ontario Class 4 Water Distribution remediation",
+  "bankKey": "class4-water-dist",
+  "jurisdiction": "Ontario, Canada",
+  "reviewedAt": "2026-09-23",
+  "sources": [
+    {
+      "key": "ONTARIO_SDWA_2002",
+      "title": "Safe Drinking Water Act, 2002, S.O. 2002, c. 32",
+      "url": "https://www.ontario.ca/laws/statute/02s32",
+      "scope": "Binding statute. Use for owner, operating authority, operator, licensing, operational plan, enforcement, and general legal framework questions only when a specific section is supplied. Do not assign an owner duty to every individual operator without the cited provision."
+    },
+    {
+      "key": "ONTARIO_REG_170_03",
+      "title": "O. Reg. 170/03: Drinking Water Systems",
+      "url": "https://www.ontario.ca/laws/regulation/030170",
+      "scope": "Binding regulation. Use for named system categories, sampling, operational checks, residual monitoring, adverse-result notification and corrective action only with the applicable schedule or section and stated system scope. Licence, permit, order, or approval conditions can be more stringent."
+    },
+    {
+      "key": "ONTARIO_REG_169_03",
+      "title": "O. Reg. 169/03: Ontario Drinking Water Quality Standards",
+      "url": "https://www.ontario.ca/laws/regulation/030169",
+      "scope": "Binding regulation. Use for a named Ontario drinking-water quality standard only with its correct schedule, unit, analyte, and statistical basis. Do not call nonbinding aesthetic objectives a requirement under this regulation."
+    },
+    {
+      "key": "ONTARIO_REG_128_04",
+      "title": "O. Reg. 128/04: Certification of Drinking Water System Operators and Water Quality Analysts",
+      "url": "https://www.ontario.ca/laws/regulation/040128",
+      "scope": "Binding regulation. Use for operator or water quality analyst certification. Class 4 certification demonstrates qualifications; it does not by itself allocate owner or overall management duties."
+    },
+    {
+      "key": "ONTARIO_DISINFECTION_PROCEDURE",
+      "title": "Procedure for Disinfection of Drinking Water in Ontario",
+      "url": "https://www.ontario.ca/page/procedure-disinfection-drinking-water-ontario",
+      "scope": "Official ministry technical procedure. Use for primary disinfection, CT, T10, residual location, and post-repair disinfection concepts. Do not invent detailed AWWA dose, contact-time, sampling, or acceptance values. Residual maintenance is not a CT question."
+    },
+    {
+      "key": "ONTARIO_DISTRIBUTION_DESIGN_GUIDELINE",
+      "title": "Design Guidelines for Drinking-Water Systems: Instrumentation, Control and Distribution Systems",
+      "url": "https://www.ontario.ca/document/design-guidelines-drinking-water-systems/instrumentation-control-and-distribution-systems",
+      "scope": "Official ministry design guidance. Use for hydraulics, water age, pressure zones, transients, looped systems, flushing provisions, and design analysis. Label guidance as guidance, not as a universal legal duty."
+    },
+    {
+      "key": "ONTARIO_REG_632_05",
+      "title": "O. Reg. 632/05: Confined Spaces",
+      "url": "https://www.ontario.ca/laws/regulation/050632",
+      "scope": "Binding Ontario occupational-health-and-safety regulation. Use only after the stem establishes a confined-space scenario. Test assessment, plan, isolation, entry authorization, atmospheric testing, monitoring, rescue, and training without presenting a single detector reading as proof of safe entry."
+    },
+    {
+      "key": "ONTARIO_DWQMS_POCKET_GUIDE",
+      "title": "Ontario's Drinking Water Quality Management Standard Pocket Guide",
+      "url": "https://www.ontario.ca/page/ontarios-drinking-water-quality-management-standard-pocket-guide",
+      "scope": "Official explanatory guide for quality-management, risk-assessment, emergency-preparedness, and internal-audit concepts. It is a summary, not a substitute for the governing law, regulation, Director's Direction, or site-specific instrument."
+    }
+  ],
+  "authoringControls": [
+    "State Ontario and the system category whenever a legal duty, limit, frequency, or notification obligation is tested.",
+    "Distinguish a binding law or regulation from ministry guidance, a site-specific approval, or ordinary good practice.",
+    "Do not write a universal reporting, flushing, residual, pressure, disinfection, or operator-responsibility claim unless the source scope and facts support it.",
+    "Do not use a Class 4 certificate as proof of an assigned management role or personal legal duty.",
+    "For a calculation, provide all inputs, formula, units, assumptions, and a concise reproducible solution. Replace incomplete legacy calculations with non-calculation operational items.",
+    "Use four distinct, plausible options. Do not use all-of-the-above or none-of-the-above."
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "reviews": [
+    {
+      "questionNum": 266,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Claim about drop connection purpose (conveying flow from higher elevation toward invert to reduce free fall/turbulence) is directly traceable to Ontario Design Guidelines discussion of sewers entering manholes above invert and turbulence/odour concerns.",
+        "Question clearly uses Ontario Ministry of the Environment guidance, matching jurisdiction and non-regulatory technical scope appropriate for Ontario OIT.",
+        "Only one option is correct; distractors are plausible but do not normalize unsafe operation or suggest omitting required actions.",
+        "Learning objective (basic purpose of a drop connection in a manhole) is foundational collection-system knowledge suitable for OIT level."
+      ],
+      "requiredChanges": []
+    },
+    {
+      "questionNum": 453,
+      "approved": true,
+      "severity": "none",
+      "reasons": [
+        "Correct option accurately summarizes chlorine as a toxic, corrosive oxidizing gas under pressure and notes harm to workers, consistent with CCOHS chlorine chemical profile.",
+        "Jurisdiction and regulatory scope are appropriate: CCOHS is a Canadian occupational-safety source and the item confines itself to hazard recognition without prescribing emergency actions beyond facility procedures.",
+        "Only one option is correct; distractors are clearly incorrect but plausible misconceptions and do not normalize unsafe behaviour or omission of controls.",
+        "Learning objective (recognizing main workplace hazards of chlorine gas) is foundational safety knowledge suitable for Ontario OIT learners."
+      ],
+      "requiredChanges": []
+    }
+  ]
+}

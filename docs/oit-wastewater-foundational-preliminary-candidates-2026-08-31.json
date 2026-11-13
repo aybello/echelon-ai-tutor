@@ -1,0 +1,47 @@
+[
+  {
+    "questionNum": 51,
+    "question": "What is the primary purpose of preliminary treatment in a wastewater treatment plant?",
+    "options": [
+      "To remove debris and grit that could damage equipment or interfere with downstream wastewater treatment processes.",
+      "To use biological microorganisms to reduce biodegradable organic matter before the wastewater enters the primary clarifiers.",
+      "To disinfect treated wastewater before its final discharge so downstream water users receive a pathogen-free effluent.",
+      "To remove dissolved nutrients through chemical treatment before the wastewater reaches secondary biological treatment units."
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario guidance describes preliminary treatment at the headworks as screening, comminution, grinding, and grit removal. These processes remove debris and help protect equipment and downstream treatment processes.",
+    "sourceTitle": "Ontario Ministry of the Environment — Design Guidelines for Sewage Works, Chapter 10: Preliminary Treatment and Primary Sedimentation",
+    "sourceReference": "Chapter 10 describes preliminary treatment at the headworks as screening, comminution, grinding, and grit removal designed to remove debris from sewage and protect equipment and downstream processes.",
+    "sourceUrl": "https://www.ontario.ca/document/design-guidelines-sewage-works/preliminary-treatment-and-primary-sedimentation"
+  },
+  {
+    "questionNum": 61,
+    "question": "What is the primary function of a bar screen in a wastewater treatment plant?",
+    "options": [
+      "To remove large debris from influent wastewater so it does not block or physically damage downstream equipment.",
+      "To use chemical treatment to remove dissolved organic matter before biological treatment begins in the aeration process.",
+      "To provide a tank where suspended solids settle before the wastewater receives secondary biological treatment.",
+      "To oxidize odour-causing compounds by aerating wastewater before it reaches the plant’s final disinfection process."
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario guidance places screens at the headworks to remove debris that may harm process units. Coarse screens or bar screens protect pumps and other equipment from blockage or physical damage.",
+    "sourceTitle": "Ontario Ministry of the Environment — Design Guidelines for Sewage Works, Chapter 10: Preliminary Treatment and Primary Sedimentation",
+    "sourceReference": "Section 10.1 states that screens at the headworks remove debris that may harm other process units, and that coarse screens or bar screens protect pumps and other equipment against blockage or physical damage.",
+    "sourceUrl": "https://www.ontario.ca/document/design-guidelines-sewage-works/preliminary-treatment-and-primary-sedimentation"
+  },
+  {
+    "questionNum": 65,
+    "question": "Why is it important to remove grit in the preliminary treatment stage?",
+    "options": [
+      "Grit can settle and accumulate in equipment and pipes, and its abrasive particles can damage pumps and other machinery.",
+      "Grit provides a biological food source that microorganisms need before they can remove organic matter in secondary treatment.",
+      "Grit creates the chemical residual required to disinfect treated wastewater before the effluent is discharged from the plant.",
+      "Grit increases the amount of dissolved oxygen available to bacteria during biological treatment in the aeration process."
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario guidance notes that grit can damage pumps, comminutors, and other equipment, and may accumulate in treatment units. Removing it helps protect mechanical equipment and maintain treatment capacity.",
+    "sourceTitle": "Ontario Ministry of the Environment — Design Guidelines for Sewage Works, Chapter 10: Preliminary Treatment and Primary Sedimentation",
+    "sourceReference": "Section 10.3 notes the potential damaging effects of grit on pumps, comminutors, and other equipment, as well as the need to avoid grit accumulation in treatment units.",
+    "sourceUrl": "https://www.ontario.ca/document/design-guidelines-sewage-works/preliminary-treatment-and-primary-sedimentation"
+  }
+]

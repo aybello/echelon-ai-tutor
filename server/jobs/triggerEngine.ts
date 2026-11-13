@@ -1,3 +1,4 @@
+import { deliverOnce, workKey } from "./durableWork";
 /**
  * Agentic Trigger Engine — Phase 4
  * Runs nightly at 9:00 PM UTC (5 PM ET / 2 PM PT).
@@ -20,14 +21,12 @@ import {
   examDates,
   triggerLogs,
 } from "../../drizzle/schema";
-import { withRetry } from "./retry";
 import { eq, and, desc, gte, sql, or, isNull } from "drizzle-orm";
 import { invokeLLM } from "../_core/llm";
-import { notifyOwner } from "../_core/notification";
 import { ENV } from "../_core/env";
 import { resolveEntitlementsByEmail } from "../_core/access";
 import { resolvePrimaryStudyFocus } from "../_core/studyFocus";
-import nodemailer from "nodemailer";
+import nodemailer, { type Transporter, type SendMailOptions } from "nodemailer";
 
 // ── Trigger Definitions ──────────────────────────────────────────────────────
 
@@ -153,7 +152,9 @@ function evaluateTriggers(student: StudentData): TriggerResult | null {
         : "";
       return {
         type: "inactive",
-        subject: `We miss you! Your ${examLabel} prep is waiting`,
+        subject: examLabel === "your exam"
+          ? "We miss you! Your exam prep is waiting"
+          : `We miss you! Your ${examLabel} prep is waiting`,
         context: `Student ${student.name || "there"} hasn't studied in ${daysSince} days. They have ${profile.totalAttempts} total attempts and were studying ${examLabel}. ${streakMsg} ${examMsg} Gently encourage them to come back — even 10 questions a day makes a difference. Don't be pushy.`,
         cooldownDays: 10,
       };
@@ -214,6 +215,7 @@ async function generateEmailBody(
   studentName: string
 ): Promise<string> {
   const response = await invokeLLM({
+    maxTokens: 512,
     messages: [
       {
         role: "system",
@@ -242,13 +244,16 @@ RULES:
   );
 }
 
+export function escapeStudyEmail(value: string): string {
+  return value.replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[ch]!);
+}
 function wrapEmailHtml(body: string, subject: string): string {
   const paragraphs = body
     .split("\n\n")
     .filter(Boolean)
     .map(
       (p) =>
-        `<p style="margin:0 0 16px;font-size:14px;color:#334155;line-height:1.7;">${p.replace(/\n/g, "<br>")}</p>`
+        `<p style="margin:0 0 16px;font-size:14px;color:#334155;line-height:1.7;">${escapeStudyEmail(p).replace(/\n/g, "<br>")}</p>`
     )
     .join("");
 
@@ -262,7 +267,7 @@ function wrapEmailHtml(body: string, subject: string): string {
       <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
         <tr>
           <td style="background:linear-gradient(135deg,#1D4ED8 0%,#0E7490 100%);border-radius:12px 12px 0 0;padding:28px 32px;text-align:center;">
-            <h1 style="color:#ffffff;margin:0;font-size:20px;font-weight:700;line-height:1.3;">${subject}</h1>
+            <h1 style="color:#ffffff;margin:0;font-size:20px;font-weight:700;line-height:1.3;">${escapeStudyEmail(subject)}</h1>
           </td>
         </tr>
         <tr>
@@ -294,12 +299,13 @@ function wrapEmailHtml(body: string, subject: string): string {
 
 // ── SMTP Helper ─────────────────────────────────────────────────────────────
 
-function createTransporter(): nodemailer.Transporter {
+function createTransporter(): Transporter {
   if (ENV.smtpHost && ENV.smtpUser && ENV.smtpPass) {
     return nodemailer.createTransport({
       host: ENV.smtpHost,
       port: Number(ENV.smtpPort ?? 587),
       secure: Number(ENV.smtpPort ?? 587) === 465,
+      connectionTimeout: 10_000, greetingTimeout: 10_000, socketTimeout: 30_000,
       auth: { user: ENV.smtpUser, pass: ENV.smtpPass },
     });
   }
@@ -376,7 +382,7 @@ async function buildStudentList(
 
 // ── Main Runner ─────────────────────────────────────────────────────────────
 
-export async function runTriggerEngine(): Promise<{
+export async function runTriggerEngine(assertOwned: () => Promise<void> = async () => {}): Promise<{
   evaluated: number;
   triggered: number;
   sent: number;
@@ -386,7 +392,7 @@ export async function runTriggerEngine(): Promise<{
   const db = await getDb();
   if (!db) return { evaluated: 0, triggered: 0, sent: 0, skippedCooldown: 0, errors: ["Database unavailable"] };
 
-  let transporter: nodemailer.Transporter;
+  let transporter: Transporter;
   try {
     transporter = createTransporter();
   } catch {
@@ -406,6 +412,7 @@ export async function runTriggerEngine(): Promise<{
   const errors: string[] = [];
 
   for (const student of allStudents) {
+    await assertOwned();
     const { userId, email, name } = student;
     const studentEmail = userId ? null : email.toLowerCase();
 
@@ -578,6 +585,7 @@ export async function runTriggerEngine(): Promise<{
       const cooldownUntil = new Date(
         now.getTime() + trigger.cooldownDays * 24 * 60 * 60 * 1000
       );
+      await assertOwned();
       const [insertResult] = await db.insert(triggerLogs).values({
         userId: userId ?? null,
         studentEmail: studentEmail ?? null,
@@ -591,14 +599,16 @@ export async function runTriggerEngine(): Promise<{
 
       // Send email
       let sendError: Error | null = null;
+      let delivered = false;
       try {
-        await transporter.sendMail({
+        await assertOwned();
+        delivered = await deliverOnce(db, workKey("trigger-email", `${email.trim().toLowerCase()}:${now.toISOString().slice(0,10)}`), () => transporter.sendMail({
           from: `"Echelon Institute" <${ENV.smtpUser || "no-reply@echeloninstitute.ca"}>`,
           to: email,
           subject: trigger.subject,
           text: emailBody,
           html: emailHtml,
-        });
+        }));
       } catch (err) {
         sendError = err as Error;
       }
@@ -621,6 +631,7 @@ export async function runTriggerEngine(): Promise<{
         continue;
       }
 
+      if (!delivered) continue;
       sent++;
       console.log(
         `[TriggerEngine] Sent "${trigger.type}" email to ${email} (cooldown until ${cooldownUntil.toISOString().split("T")[0]})`
@@ -634,44 +645,6 @@ export async function runTriggerEngine(): Promise<{
   }
 
   return { evaluated, triggered, sent, skippedCooldown, errors };
-}
-
-// ── Cron Scheduler ──────────────────────────────────────────────────────────
-
-export function startTriggerEngineJob(): void {
-  import("node-cron")
-    .then(({ default: cron }) => {
-      // Run nightly at 9:00 PM UTC (5 PM ET / 2 PM PT)
-      cron.schedule("0 21 * * *", async () => {
-        console.log("[TriggerEngine] Running nightly trigger evaluation...");
-        try {
-          const result = await withRetry(() => runTriggerEngine(), "triggerEngine");
-          console.log(
-            `[TriggerEngine] Done — evaluated: ${result.evaluated}, triggered: ${result.triggered}, sent: ${result.sent}, skipped (cooldown): ${result.skippedCooldown}, errors: ${result.errors.length}`
-          );
-          if (result.sent > 0 || result.errors.length > 0) {
-            await notifyOwner({
-              title: `Trigger Engine: ${result.sent} emails sent`,
-              content: [
-                `Evaluated: ${result.evaluated} students`,
-                `Triggered: ${result.triggered}`,
-                `Sent: ${result.sent}`,
-                `Skipped (cooldown): ${result.skippedCooldown}`,
-                result.errors.length
-                  ? `Errors:\n${result.errors.slice(0, 5).join("\n")}`
-                  : "No errors",
-              ].join("\n"),
-            }).catch((err) => { console.error("[triggerEngine] notifyOwner failed:", err); });
-          }
-        } catch (err) {
-          console.error("[TriggerEngine] Job error:", err);
-        }
-      });
-      console.log("[TriggerEngine] Cron job scheduled — nightly at 9:00 PM UTC");
-    })
-    .catch((err) => {
-      console.error("[TriggerEngine] Failed to load node-cron:", err.message);
-    });
 }
 
 // ── Exported for testing ────────────────────────────────────────────────────

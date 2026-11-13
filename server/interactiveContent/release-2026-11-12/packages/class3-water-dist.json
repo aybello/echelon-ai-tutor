@@ -1,0 +1,1785 @@
+{
+  "courseKey": "class3-water-dist",
+  "status": "approved",
+  "version": "echelon-six-games-2026-11-12-final-candidate",
+  "previewIds": {
+    "rapid-swipe": "class3-water-dist-001",
+    "speed-match": "class3-water-dist-018",
+    "odd-one-out": "class3-water-dist-030",
+    "cause-effect": "class3-water-dist-047",
+    "tap-the-flaw": "class3-water-dist-065",
+    "before-after": "class3-water-dist-order-009"
+  },
+  "examples": [
+    {
+      "id": "class3-water-dist-001",
+      "mode": "rapid-swipe",
+      "prompt": "A pressure transient can follow a sudden pump shutdown.",
+      "correctAnswer": true,
+      "explanation": "An abrupt change in flow can generate a pressure surge or low-pressure transient."
+    },
+    {
+      "id": "class3-water-dist-002",
+      "mode": "rapid-swipe",
+      "prompt": "A negative pressure transient can create an intrusion risk at a pipe defect.",
+      "correctAnswer": true,
+      "explanation": "If surrounding contaminated water is at higher pressure, it may enter through a breach."
+    },
+    {
+      "id": "class3-water-dist-003",
+      "mode": "rapid-swipe",
+      "prompt": "A cross-connection exists only when backflow is already happening.",
+      "correctAnswer": false,
+      "explanation": "An actual or potential connection can create a cross-connection before reverse flow occurs."
+    },
+    {
+      "id": "class3-water-dist-004",
+      "mode": "rapid-swipe",
+      "prompt": "At the same location in a static elevated-tank system, a higher water surface generally gives higher pressure.",
+      "correctAnswer": true,
+      "explanation": "The water-surface elevation supplies more static head at that location."
+    },
+    {
+      "id": "class3-water-dist-005",
+      "mode": "rapid-swipe",
+      "prompt": "A closed isolation valve always proves that both sides are depressurized.",
+      "correctAnswer": false,
+      "explanation": "Either side can remain pressurized from another source or trapped pressure."
+    },
+    {
+      "id": "class3-water-dist-006",
+      "mode": "rapid-swipe",
+      "prompt": "A tank vent with a damaged screen can create a sanitary vulnerability.",
+      "correctAnswer": true,
+      "explanation": "The opening can admit contaminants or animals into stored finished water."
+    },
+    {
+      "id": "class3-water-dist-007",
+      "mode": "rapid-swipe",
+      "prompt": "Older water in a distribution system can have a lower disinfectant residual.",
+      "correctAnswer": true,
+      "explanation": "Residual can decay with time and reactions in the system; this is a risk, not a guaranteed result."
+    },
+    {
+      "id": "class3-water-dist-008",
+      "mode": "rapid-swipe",
+      "prompt": "A good chlorine residual proves that every possible chemical contaminant is absent.",
+      "correctAnswer": false,
+      "explanation": "A chlorine residual is not a general-purpose test for all chemical contaminants."
+    },
+    {
+      "id": "class3-water-dist-009",
+      "mode": "rapid-swipe",
+      "prompt": "During watermain work, soil or trench water contacting the pipe interior can contaminate it.",
+      "correctAnswer": true,
+      "explanation": "Soil and trench water can carry microbes into the drinking-water pipe."
+    },
+    {
+      "id": "class3-water-dist-010",
+      "mode": "rapid-swipe",
+      "prompt": "A check valve is intended to restrict reverse flow.",
+      "correctAnswer": true,
+      "explanation": "A check valve permits flow in its intended direction and closes against reversal."
+    },
+    {
+      "id": "class3-water-dist-011",
+      "mode": "rapid-swipe",
+      "prompt": "A flow rate is a volume per unit of time.",
+      "correctAnswer": true,
+      "explanation": "For example, cubic metres per hour measures volume passing a point each hour."
+    },
+    {
+      "id": "class3-water-dist-012",
+      "mode": "rapid-swipe",
+      "prompt": "A totalizer reading and an instantaneous flow rate are the same measurement.",
+      "correctAnswer": false,
+      "explanation": "A totalizer reports accumulated volume; flow rate reports volume per unit time."
+    },
+    {
+      "id": "class3-water-dist-013",
+      "mode": "rapid-swipe",
+      "prompt": "A storage facility may help meet demand peaks as well as provide emergency reserves.",
+      "correctAnswer": true,
+      "explanation": "Stored water can supplement supply during peaks or outages."
+    },
+    {
+      "id": "class3-water-dist-014",
+      "mode": "rapid-swipe",
+      "prompt": "In a fixed-length, fixed-diameter main carrying turbulent flow at a fixed rate, increased internal roughness generally increases friction loss.",
+      "correctAnswer": true,
+      "explanation": "For turbulent flow in the same pipe at the same flow rate, increased roughness generally increases resistance and friction loss."
+    },
+    {
+      "id": "class3-water-dist-015",
+      "mode": "rapid-swipe",
+      "prompt": "Customer colour complaints alone identify the exact cause of discoloured water.",
+      "correctAnswer": false,
+      "explanation": "Complaints are clues; location, history, operational conditions and appropriate testing support diagnosis."
+    },
+    {
+      "id": "class3-water-dist-016",
+      "mode": "rapid-swipe",
+      "prompt": "A fast valve closure can contribute to water hammer.",
+      "correctAnswer": true,
+      "explanation": "Rapidly changing flow can create a damaging pressure transient."
+    },
+    {
+      "id": "class3-water-dist-017",
+      "mode": "rapid-swipe",
+      "prompt": "A distribution model can help investigate how operational changes affect water movement.",
+      "correctAnswer": true,
+      "explanation": "Hydraulic models can simulate movement and support investigation; inputs and assumptions matter."
+    },
+    {
+      "id": "class3-water-dist-018",
+      "mode": "speed-match",
+      "prompt": "Match each valve to its principal function.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Isolation valve",
+          "right": "Shut off a pipe section"
+        },
+        {
+          "id": "pair-2",
+          "left": "Check valve",
+          "right": "Limit reverse flow"
+        },
+        {
+          "id": "pair-3",
+          "left": "Air release valve",
+          "right": "Release accumulated air at a high point"
+        }
+      ],
+      "explanation": "Each match: Isolation valve corresponds to Shut off a pipe section; Check valve corresponds to Limit reverse flow; Air release valve corresponds to Release accumulated air at a high point."
+    },
+    {
+      "id": "class3-water-dist-019",
+      "mode": "speed-match",
+      "prompt": "Match the distribution component to its role.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Pump",
+          "right": "Add energy to water"
+        },
+        {
+          "id": "pair-2",
+          "left": "Storage tank",
+          "right": "Hold water for later demand"
+        },
+        {
+          "id": "pair-3",
+          "left": "Customer service line",
+          "right": "Connect the main to a customer"
+        }
+      ],
+      "explanation": "Each match: Pump corresponds to Add energy to water; Storage tank corresponds to Hold water for later demand; Customer service line corresponds to Connect the main to a customer."
+    },
+    {
+      "id": "class3-water-dist-020",
+      "mode": "speed-match",
+      "prompt": "Match each pipe fitting to its characteristic use.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Bend",
+          "right": "Change pipe direction"
+        },
+        {
+          "id": "pair-2",
+          "left": "Tee",
+          "right": "Connect a branch at a junction"
+        },
+        {
+          "id": "pair-3",
+          "left": "Reducer",
+          "right": "Join different pipe diameters"
+        }
+      ],
+      "explanation": "Each match: Bend corresponds to Change pipe direction; Tee corresponds to Connect a branch at a junction; Reducer corresponds to Join different pipe diameters."
+    },
+    {
+      "id": "class3-water-dist-021",
+      "mode": "speed-match",
+      "prompt": "Match each hydraulic quantity to its unit.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Flow rate",
+          "right": "m³/s"
+        },
+        {
+          "id": "pair-2",
+          "left": "Pressure",
+          "right": "kPa"
+        },
+        {
+          "id": "pair-3",
+          "left": "Velocity",
+          "right": "m/s"
+        }
+      ],
+      "explanation": "Each match: Flow rate corresponds to m³/s; Pressure corresponds to kPa; Velocity corresponds to m/s."
+    },
+    {
+      "id": "class3-water-dist-022",
+      "mode": "speed-match",
+      "prompt": "Match the water-quality term to its definition.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Water age",
+          "right": "Time in the distribution system"
+        },
+        {
+          "id": "pair-2",
+          "left": "Disinfectant residual",
+          "right": "Disinfectant remaining after reactions"
+        },
+        {
+          "id": "pair-3",
+          "left": "Cross-connection",
+          "right": "Actual or potential link to a non-potable source"
+        }
+      ],
+      "explanation": "Each match: Water age corresponds to Time in the distribution system; Disinfectant residual corresponds to Disinfectant remaining after reactions; Cross-connection corresponds to Actual or potential link to a non-potable source."
+    },
+    {
+      "id": "class3-water-dist-023",
+      "mode": "speed-match",
+      "prompt": "Match each storage feature to its distinct inspection concern.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Tank vent with screen",
+          "right": "Air exchange while excluding entry"
+        },
+        {
+          "id": "pair-2",
+          "left": "Access hatch",
+          "right": "Personnel entry secured against intrusion"
+        },
+        {
+          "id": "pair-3",
+          "left": "Overflow",
+          "right": "Outlet for excess tank water protected against contamination"
+        }
+      ],
+      "explanation": "The screened vent permits air exchange while limiting entry; the hatch permits personnel access; the overflow carries excess water away."
+    },
+    {
+      "id": "class3-water-dist-024",
+      "mode": "speed-match",
+      "prompt": "Match each record to its most direct use.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Valve map",
+          "right": "Locate an isolation valve"
+        },
+        {
+          "id": "pair-2",
+          "left": "Pump run-time log",
+          "right": "Track accumulated operation time"
+        },
+        {
+          "id": "pair-3",
+          "left": "Customer complaint log",
+          "right": "Track reports of taste, odour or colour"
+        }
+      ],
+      "explanation": "Each match: Valve map corresponds to Locate an isolation valve; Pump run-time log corresponds to Track accumulated operation time; Customer complaint log corresponds to Track reports of taste, odour or colour."
+    },
+    {
+      "id": "class3-water-dist-025",
+      "mode": "speed-match",
+      "prompt": "Match each indicator to the quantity it reports.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Pressure gauge",
+          "right": "Local water pressure"
+        },
+        {
+          "id": "pair-2",
+          "left": "Flow totalizer",
+          "right": "Cumulative water volume"
+        },
+        {
+          "id": "pair-3",
+          "left": "Tank level indicator",
+          "right": "Stored water surface level"
+        }
+      ],
+      "explanation": "Each match: Pressure gauge corresponds to Local water pressure; Flow totalizer corresponds to Cumulative water volume; Tank level indicator corresponds to Stored water surface level."
+    },
+    {
+      "id": "class3-water-dist-026",
+      "mode": "speed-match",
+      "prompt": "Match each common network operation to its purpose.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Flushing",
+          "right": "Move water through mains to help remove deposits"
+        },
+        {
+          "id": "pair-2",
+          "left": "Isolation",
+          "right": "Separate a section from the network"
+        },
+        {
+          "id": "pair-3",
+          "left": "Leak survey",
+          "right": "Locate possible losses from the network"
+        }
+      ],
+      "explanation": "Each match: Flushing corresponds to Move water through mains to help remove deposits; Isolation corresponds to Separate a section from the network; Leak survey corresponds to Locate possible losses from the network."
+    },
+    {
+      "id": "class3-water-dist-027",
+      "mode": "speed-match",
+      "prompt": "Match each metric volume to its equivalent.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "1 m³",
+          "right": "1,000 L"
+        },
+        {
+          "id": "pair-2",
+          "left": "2 m³",
+          "right": "2,000 L"
+        },
+        {
+          "id": "pair-3",
+          "left": "3 m³",
+          "right": "3,000 L"
+        }
+      ],
+      "explanation": "Each match: 1 m³ corresponds to 1,000 L; 2 m³ corresponds to 2,000 L; 3 m³ corresponds to 3,000 L."
+    },
+    {
+      "id": "class3-water-dist-028",
+      "mode": "speed-match",
+      "prompt": "Match each basic calculation to its formula.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Rectangular volume",
+          "right": "Length × width × water depth"
+        },
+        {
+          "id": "pair-2",
+          "left": "Mean flow rate",
+          "right": "Volume ÷ elapsed time"
+        },
+        {
+          "id": "pair-3",
+          "left": "Concentration mass",
+          "right": "Concentration × volume with unit conversion"
+        }
+      ],
+      "explanation": "Each match: Rectangular volume corresponds to Length × width × water depth; Mean flow rate corresponds to Volume ÷ elapsed time; Concentration mass corresponds to Concentration × volume with unit conversion."
+    },
+    {
+      "id": "class3-water-dist-029",
+      "mode": "speed-match",
+      "prompt": "Match each safety planning activity to its immediate concern.",
+      "pairs": [
+        {
+          "id": "pair-1",
+          "left": "Trench protection",
+          "right": "Reduce worker exposure to cave-in injury"
+        },
+        {
+          "id": "pair-2",
+          "left": "Traffic control",
+          "right": "Separate road users from the work zone"
+        },
+        {
+          "id": "pair-3",
+          "left": "Facility security",
+          "right": "Restrict unauthorized access to water infrastructure"
+        }
+      ],
+      "explanation": "Trench protection reduces workers’ exposure to collapse injury; traffic control separates road users and the work zone; facility security restricts unauthorized entry."
+    },
+    {
+      "id": "class3-water-dist-030",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a pressure unit?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "kPa"
+        },
+        {
+          "id": "option-2",
+          "label": "psi"
+        },
+        {
+          "id": "option-3",
+          "label": "m³/h"
+        },
+        {
+          "id": "option-4",
+          "label": "Pa"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "m³/h is a volumetric flow-rate unit; the others measure pressure."
+    },
+    {
+      "id": "class3-water-dist-031",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a volume unit?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "m³"
+        },
+        {
+          "id": "option-2",
+          "label": "L"
+        },
+        {
+          "id": "option-3",
+          "label": "m³/h"
+        },
+        {
+          "id": "option-4",
+          "label": "ML"
+        }
+      ],
+      "correctOptionId": "option-3",
+      "explanation": "m³/h is a flow rate; m³, L and ML are volumes."
+    },
+    {
+      "id": "class3-water-dist-032",
+      "mode": "odd-one-out",
+      "prompt": "Which is not normally an isolation or flow-control component?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Gate valve"
+        },
+        {
+          "id": "option-2",
+          "label": "Butterfly valve"
+        },
+        {
+          "id": "option-3",
+          "label": "Pressure-reducing valve"
+        },
+        {
+          "id": "option-4",
+          "label": "pH meter"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A pH meter measures water chemistry; the others are valves."
+    },
+    {
+      "id": "class3-water-dist-033",
+      "mode": "odd-one-out",
+      "prompt": "Which item is not a pipe fitting?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Tee"
+        },
+        {
+          "id": "option-2",
+          "label": "Bend"
+        },
+        {
+          "id": "option-3",
+          "label": "Reducer"
+        },
+        {
+          "id": "option-4",
+          "label": "Pressure gauge"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A gauge measures pressure; a tee, bend and reducer are fittings."
+    },
+    {
+      "id": "class3-water-dist-034",
+      "mode": "odd-one-out",
+      "prompt": "Which one is not a water-storage facility?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Elevated tank"
+        },
+        {
+          "id": "option-2",
+          "label": "Ground reservoir"
+        },
+        {
+          "id": "option-3",
+          "label": "Standpipe"
+        },
+        {
+          "id": "option-4",
+          "label": "Flow totalizer"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A totalizer records a quantity passing through; it is not a storage vessel."
+    },
+    {
+      "id": "class3-water-dist-035",
+      "mode": "odd-one-out",
+      "prompt": "Which measurement is not normally a water-quality parameter?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "pH"
+        },
+        {
+          "id": "option-2",
+          "label": "Chlorine residual"
+        },
+        {
+          "id": "option-3",
+          "label": "Temperature"
+        },
+        {
+          "id": "option-4",
+          "label": "Pipe diameter"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Diameter describes infrastructure rather than the condition of the water sample."
+    },
+    {
+      "id": "class3-water-dist-036",
+      "mode": "odd-one-out",
+      "prompt": "Which is not an obvious open path for contamination into finished-water storage?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Open hatch"
+        },
+        {
+          "id": "option-2",
+          "label": "Damaged vent screen"
+        },
+        {
+          "id": "option-3",
+          "label": "Unprotected overflow"
+        },
+        {
+          "id": "option-4",
+          "label": "Closed, intact, properly sealed and locked hatch"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A properly sealed and closed hatch limits entry; the other openings can allow contaminants to enter."
+    },
+    {
+      "id": "class3-water-dist-037",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a source of sudden hydraulic pressure transients?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Rapid valve closure"
+        },
+        {
+          "id": "option-2",
+          "label": "Pump trip"
+        },
+        {
+          "id": "option-3",
+          "label": "Power failure affecting pumps"
+        },
+        {
+          "id": "option-4",
+          "label": "Slow recording of a gauge"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Recording a gauge does not itself abruptly change hydraulic flow."
+    },
+    {
+      "id": "class3-water-dist-038",
+      "mode": "odd-one-out",
+      "prompt": "Which action is not a way to learn where a system component is?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Read an up-to-date valve map"
+        },
+        {
+          "id": "option-2",
+          "label": "Check the as-built drawing"
+        },
+        {
+          "id": "option-3",
+          "label": "Use the system GIS"
+        },
+        {
+          "id": "option-4",
+          "label": "Assume every valve is open"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "An assumption about position neither locates nor verifies a particular valve."
+    },
+    {
+      "id": "class3-water-dist-039",
+      "mode": "odd-one-out",
+      "prompt": "Which does not belong in a chlorine-residual data record?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Sampling location"
+        },
+        {
+          "id": "option-2",
+          "label": "Sampling time"
+        },
+        {
+          "id": "option-3",
+          "label": "Measured residual"
+        },
+        {
+          "id": "option-4",
+          "label": "Worker shoe size"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Location, time and result provide useful context for a water-quality measurement."
+    },
+    {
+      "id": "class3-water-dist-040",
+      "mode": "odd-one-out",
+      "prompt": "Which is not an example of potable-water storage sanitary protection?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Secure access hatch"
+        },
+        {
+          "id": "option-2",
+          "label": "Protect overflow opening"
+        },
+        {
+          "id": "option-3",
+          "label": "Maintain vent screen"
+        },
+        {
+          "id": "option-4",
+          "label": "Leave the access hatch open"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "An open hatch can permit contamination and unauthorized access."
+    },
+    {
+      "id": "class3-water-dist-041",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a typical purpose of a distribution system?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Deliver drinking water"
+        },
+        {
+          "id": "option-2",
+          "label": "Supply fire flow where designed"
+        },
+        {
+          "id": "option-3",
+          "label": "Maintain service pressure"
+        },
+        {
+          "id": "option-4",
+          "label": "Treat wastewater sludge"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Wastewater sludge treatment is not a function of the drinking-water distribution network."
+    },
+    {
+      "id": "class3-water-dist-042",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a typical unit of flow?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "L/s"
+        },
+        {
+          "id": "option-2",
+          "label": "m³/day"
+        },
+        {
+          "id": "option-3",
+          "label": "m³/h"
+        },
+        {
+          "id": "option-4",
+          "label": "kPa"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "kPa is pressure; the other units represent a volume per time."
+    },
+    {
+      "id": "class3-water-dist-043",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a source of water-loss investigation data?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Supply meter totals"
+        },
+        {
+          "id": "option-2",
+          "label": "Customer meter totals"
+        },
+        {
+          "id": "option-3",
+          "label": "Recorded authorized flushing volume"
+        },
+        {
+          "id": "option-4",
+          "label": "Unrelated desk colour"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "Supply, consumption and authorized unbilled uses inform a water-balance investigation."
+    },
+    {
+      "id": "class3-water-dist-044",
+      "mode": "odd-one-out",
+      "prompt": "Which is not primarily an electrical instrument or unit of an electrical quantity?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Ammeter"
+        },
+        {
+          "id": "option-2",
+          "label": "Voltmeter"
+        },
+        {
+          "id": "option-3",
+          "label": "Ohm"
+        },
+        {
+          "id": "option-4",
+          "label": "Pressure gauge"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A pressure gauge measures pressure. An ammeter and voltmeter measure electrical quantities; an ohm is a unit of electrical resistance."
+    },
+    {
+      "id": "class3-water-dist-045",
+      "mode": "odd-one-out",
+      "prompt": "Which one does not directly describe an excavation hazard?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Unstable trench wall"
+        },
+        {
+          "id": "option-2",
+          "label": "Nearby traffic"
+        },
+        {
+          "id": "option-3",
+          "label": "Buried energized utility"
+        },
+        {
+          "id": "option-4",
+          "label": "Clean equipment label"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "The first three can threaten a work crew; a clean label is not itself such a hazard."
+    },
+    {
+      "id": "class3-water-dist-046",
+      "mode": "odd-one-out",
+      "prompt": "Which is not a main or service network asset?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Hydrant"
+        },
+        {
+          "id": "option-2",
+          "label": "Watermain"
+        },
+        {
+          "id": "option-3",
+          "label": "Service line"
+        },
+        {
+          "id": "option-4",
+          "label": "Wastewater digester"
+        }
+      ],
+      "correctOptionId": "option-4",
+      "explanation": "A digester is wastewater treatment equipment, not a drinking-water network component."
+    },
+    {
+      "id": "class3-water-dist-047",
+      "mode": "cause-effect",
+      "prompt": "A pressure-reducing valve loses control and downstream pressure rises. What is a possible consequence?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Greater stress on downstream plumbing"
+        },
+        {
+          "id": "option-2",
+          "label": "Guaranteed pathogen removal"
+        },
+        {
+          "id": "option-3",
+          "label": "Lower static head upstream"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Excess pressure can damage plumbing and increase water loss."
+    },
+    {
+      "id": "class3-water-dist-048",
+      "mode": "cause-effect",
+      "prompt": "A long dead-end main has little turnover. What water-quality trend is plausible?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Higher water age"
+        },
+        {
+          "id": "option-2",
+          "label": "Guaranteed higher chlorine residual"
+        },
+        {
+          "id": "option-3",
+          "label": "Instant elimination of deposits"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Slow turnover increases residence time and can allow residual to decay."
+    },
+    {
+      "id": "class3-water-dist-049",
+      "mode": "cause-effect",
+      "prompt": "A sudden pump trip causes a low-pressure transient near a leaking joint. What risk increases?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Contaminated groundwater may intrude"
+        },
+        {
+          "id": "option-2",
+          "label": "A leak must permanently seal"
+        },
+        {
+          "id": "option-3",
+          "label": "The tank always fills faster"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "If external pressure exceeds internal pressure, surrounding water can enter a defect."
+    },
+    {
+      "id": "class3-water-dist-050",
+      "mode": "cause-effect",
+      "prompt": "A tank roof hatch is left open near bird droppings. What risk increases?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Contaminants entering stored water"
+        },
+        {
+          "id": "option-2",
+          "label": "Automatic chlorine generation"
+        },
+        {
+          "id": "option-3",
+          "label": "Reduced tank capacity by geometry"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "An open hatch removes a physical barrier to contaminants."
+    },
+    {
+      "id": "class3-water-dist-051",
+      "mode": "cause-effect",
+      "prompt": "A main’s internal roughness increases. With the same turbulent flow, fluid, pipe length and diameter, what generally happens to friction head loss?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It tends to increase"
+        },
+        {
+          "id": "option-2",
+          "label": "It must become zero"
+        },
+        {
+          "id": "option-3",
+          "label": "It must decrease"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "For turbulent flow in the same pipe at the same flow rate, increased roughness generally increases resistance and friction loss."
+    },
+    {
+      "id": "class3-water-dist-052",
+      "mode": "cause-effect",
+      "prompt": "A higher-elevation customer is supplied by the same static tank as a lower customer. Ignoring losses, what differs?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The higher customer has lower static pressure"
+        },
+        {
+          "id": "option-2",
+          "label": "The higher customer has higher static pressure"
+        },
+        {
+          "id": "option-3",
+          "label": "Both have exactly the same static pressure"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The vertical distance from water surface to the higher customer is smaller."
+    },
+    {
+      "id": "class3-water-dist-053",
+      "mode": "cause-effect",
+      "prompt": "A check valve fails open and a pump stops. What may occur if discharge pressure exceeds suction pressure?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Reverse flow through the stopped pump"
+        },
+        {
+          "id": "option-2",
+          "label": "Guaranteed forward flow through the pump"
+        },
+        {
+          "id": "option-3",
+          "label": "Zero pressure everywhere"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The failed check valve no longer prevents reversal under that pressure difference."
+    },
+    {
+      "id": "class3-water-dist-054",
+      "mode": "cause-effect",
+      "prompt": "An unprotected temporary hose is submerged in a non-potable tank and the potable line loses pressure. What may happen?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Non-potable water may backflow"
+        },
+        {
+          "id": "option-2",
+          "label": "The tank water becomes sterile"
+        },
+        {
+          "id": "option-3",
+          "label": "The hose automatically becomes an air gap"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The submerged connection can allow reverse flow when the pressure gradient reverses."
+    },
+    {
+      "id": "class3-water-dist-055",
+      "mode": "cause-effect",
+      "prompt": "A flowmeter totalizer is read at the start and end of a day, with no reset or rollover. What can their difference show?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Volume that passed during the day"
+        },
+        {
+          "id": "option-2",
+          "label": "Instantaneous pressure at noon"
+        },
+        {
+          "id": "option-3",
+          "label": "Exact number of leaks"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The difference between cumulative readings is the volume accumulated over the interval."
+    },
+    {
+      "id": "class3-water-dist-056",
+      "mode": "cause-effect",
+      "prompt": "A disinfectant feed pump stops while water continues to flow. What trend is possible downstream?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Residual can decline"
+        },
+        {
+          "id": "option-2",
+          "label": "Residual must rise"
+        },
+        {
+          "id": "option-3",
+          "label": "Flow becomes pH"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "With no disinfectant being added, residual can be consumed or diluted."
+    },
+    {
+      "id": "class3-water-dist-057",
+      "mode": "cause-effect",
+      "prompt": "Flow increases through the same main while roughness and diameter remain fixed. What generally happens to friction loss?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It increases"
+        },
+        {
+          "id": "option-2",
+          "label": "It becomes zero"
+        },
+        {
+          "id": "option-3",
+          "label": "It reverses the pipe slope"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Friction losses rise as velocity and flow increase through the same pipe."
+    },
+    {
+      "id": "class3-water-dist-058",
+      "mode": "cause-effect",
+      "prompt": "A vent screen blocks with debris during tank filling. What should the operator investigate?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Restricted air movement and tank venting"
+        },
+        {
+          "id": "option-2",
+          "label": "An automatic increase in pipe diameter"
+        },
+        {
+          "id": "option-3",
+          "label": "Whether flow equals pH"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The vent must accommodate air movement as the water level changes."
+    },
+    {
+      "id": "class3-water-dist-059",
+      "mode": "cause-effect",
+      "prompt": "A watermain break occurs with standing trench water above the pipe. Why is intrusion a concern?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Outside water can contact or enter the open main"
+        },
+        {
+          "id": "option-2",
+          "label": "Trench water proves the pipe is sterile"
+        },
+        {
+          "id": "option-3",
+          "label": "Pressure units become volume units"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Trench water may carry contamination into the damaged pipe."
+    },
+    {
+      "id": "class3-water-dist-060",
+      "mode": "cause-effect",
+      "prompt": "Two identical pumps each deliver 0.02 m³/s to a common main. Assuming independent rates are maintained, what is total flow?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "0.04 m³/s"
+        },
+        {
+          "id": "option-2",
+          "label": "0.01 m³/s"
+        },
+        {
+          "id": "option-3",
+          "label": "0.4 m³/s"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Add simultaneous flows: 0.02 + 0.02 = 0.04 m³/s. Real pump flow depends on the system curve."
+    },
+    {
+      "id": "class3-water-dist-061",
+      "mode": "cause-effect",
+      "prompt": "A tank receives 120 m³/h and discharges 90 m³/h for 2 hours. Assuming sufficient available capacity and no overflow or other flows, how does stored volume change?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "It rises by 60 m³"
+        },
+        {
+          "id": "option-2",
+          "label": "It falls by 60 m³"
+        },
+        {
+          "id": "option-3",
+          "label": "It stays constant"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Net inflow is 30 m³/h; over 2 hours the increase is 60 m³."
+    },
+    {
+      "id": "class3-water-dist-062",
+      "mode": "cause-effect",
+      "prompt": "A tank initially contains 100 m³ and discharges at a constant 20 m³/h with no inflow. Assuming the full volume is usable, what is the ideal emptying time?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "5 h"
+        },
+        {
+          "id": "option-2",
+          "label": "0.2 h"
+        },
+        {
+          "id": "option-3",
+          "label": "120 h"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Volume divided by flow is 100 ÷ 20 = 5 hours, ignoring unusable volume."
+    },
+    {
+      "id": "class3-water-dist-063",
+      "mode": "cause-effect",
+      "prompt": "A system supplies 1,000 m³/day and accounts for 850 m³/day of metered and authorized use. What is the unaccounted balance before further adjustments?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "150 m³/day"
+        },
+        {
+          "id": "option-2",
+          "label": "1,850 m³/day"
+        },
+        {
+          "id": "option-3",
+          "label": "15 m³/day"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Subtract accounted use from supply: 1,000 − 850 = 150 m³/day; meter error and other uses require investigation."
+    },
+    {
+      "id": "class3-water-dist-064",
+      "mode": "cause-effect",
+      "prompt": "If residual drops from 1.0 to 0.6 mg/L across a defined contact period, what was the decrease?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "0.4 mg/L"
+        },
+        {
+          "id": "option-2",
+          "label": "1.6 mg/L"
+        },
+        {
+          "id": "option-3",
+          "label": "0.6 mg/L"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The decrease is 1.0 − 0.6 = 0.4 mg/L; this does not alone identify why residual changed."
+    },
+    {
+      "id": "class3-water-dist-065",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker says: “The potable line pressure is lower than the pressure in a connected non-potable system, so backflow into the potable line cannot occur.” What is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Pressure can drive reverse flow toward the lower-pressure side"
+        },
+        {
+          "id": "option-2",
+          "label": "A cross-connection is a flow meter"
+        },
+        {
+          "id": "option-3",
+          "label": "Pressure never affects flow"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Backflow can occur when the non-potable side is at higher pressure than the potable side."
+    },
+    {
+      "id": "class3-water-dist-066",
+      "mode": "tap-the-flaw",
+      "prompt": "A crew says: “The tank water looks clear, so the broken vent screen can wait indefinitely.” What is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Appearance does not remove the entry risk"
+        },
+        {
+          "id": "option-2",
+          "label": "A screen is a pump impeller"
+        },
+        {
+          "id": "option-3",
+          "label": "Clear water proves all risks absent"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A broken screen leaves a sanitary opening even when water appears clear."
+    },
+    {
+      "id": "class3-water-dist-067",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator assumes a low disinfectant residual identifies the exact contaminant. What is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Residual is not a specific contaminant identification test"
+        },
+        {
+          "id": "option-2",
+          "label": "Residual is measured as tank height"
+        },
+        {
+          "id": "option-3",
+          "label": "Residual means accumulated volume"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Investigate operational conditions and use appropriate tests to determine the cause."
+    },
+    {
+      "id": "class3-water-dist-068",
+      "mode": "tap-the-flaw",
+      "prompt": "A planner says: “Close one valve and every watermain repair is isolated.” What is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A looped network may feed the section from several directions"
+        },
+        {
+          "id": "option-2",
+          "label": "Valves cannot stop water"
+        },
+        {
+          "id": "option-3",
+          "label": "All mains have only one connection"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Use current maps and verify the actual isolation plan; network paths differ."
+    },
+    {
+      "id": "class3-water-dist-069",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker finds a new pipe open to soil and proposes installing it without cleaning. What is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Soil in the pipe can introduce contamination"
+        },
+        {
+          "id": "option-2",
+          "label": "Soil is an approved disinfectant"
+        },
+        {
+          "id": "option-3",
+          "label": "The pipe has automatically flushed itself"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Keep pipe interiors clean and follow the applicable sanitary construction and disinfection procedure."
+    },
+    {
+      "id": "class3-water-dist-070",
+      "mode": "tap-the-flaw",
+      "prompt": "A supervisor proposes entering an unassessed chamber to look at a valve. What is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Potential confined-space hazards are not assessed or controlled"
+        },
+        {
+          "id": "option-2",
+          "label": "A chamber is never a workplace"
+        },
+        {
+          "id": "option-3",
+          "label": "A valve chamber cannot contain hazardous air"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Follow the applicable confined-space program and do not enter until required controls are in place."
+    },
+    {
+      "id": "class3-water-dist-071",
+      "mode": "tap-the-flaw",
+      "prompt": "A crew starts excavation without checking for buried utilities. What is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Underground services may be struck"
+        },
+        {
+          "id": "option-2",
+          "label": "Pipe size guarantees no cables"
+        },
+        {
+          "id": "option-3",
+          "label": "A road cannot contain utilities"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Locate and coordinate underground utilities before excavation under the applicable program."
+    },
+    {
+      "id": "class3-water-dist-072",
+      "mode": "tap-the-flaw",
+      "prompt": "A technician reports 30 m³ as the flow rate for the last hour. What is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The reported number lacks a time unit for a rate"
+        },
+        {
+          "id": "option-2",
+          "label": "m³ cannot measure volume"
+        },
+        {
+          "id": "option-3",
+          "label": "An hour is a pressure unit"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "30 m³ is a volume; over one hour the average rate is 30 m³/h."
+    },
+    {
+      "id": "class3-water-dist-073",
+      "mode": "tap-the-flaw",
+      "prompt": "A report claims a tank level increase always means inflow is greater than outflow even when the sensor is faulty. What is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The instrument reading may not represent the actual level"
+        },
+        {
+          "id": "option-2",
+          "label": "Inflow can never exceed outflow"
+        },
+        {
+          "id": "option-3",
+          "label": "Tank level cannot be measured"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Check sensor calibration and field conditions before interpreting an unexpected indication."
+    },
+    {
+      "id": "class3-water-dist-074",
+      "mode": "tap-the-flaw",
+      "prompt": "A crew rapidly closes a large valve to reduce service pressure. What is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Rapid closure can create a pressure transient"
+        },
+        {
+          "id": "option-2",
+          "label": "Closing any valve always removes all pressure"
+        },
+        {
+          "id": "option-3",
+          "label": "Valve motion changes chlorine into oxygen"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A fast change in velocity can cause water hammer; follow the approved operating procedure."
+    },
+    {
+      "id": "class3-water-dist-075",
+      "mode": "tap-the-flaw",
+      "prompt": "A manager discards a customer colour complaint because the treatment plant reading is normal. What is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Distribution conditions can differ by location"
+        },
+        {
+          "id": "option-2",
+          "label": "Customer location never matters"
+        },
+        {
+          "id": "option-3",
+          "label": "Colour cannot be observed"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Investigate location, timing and distribution conditions; one plant reading does not characterize every endpoint."
+    },
+    {
+      "id": "class3-water-dist-076",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker states that a 1% mass-per-volume disinfectant solution means 1 mg/L. What is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "The two concentration scales differ"
+        },
+        {
+          "id": "option-2",
+          "label": "Percent is a unit of pressure"
+        },
+        {
+          "id": "option-3",
+          "label": "mg/L is a unit of time"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "A 1% mass-per-volume solution contains 1 g per 100 mL, or 10,000 mg/L. A mass-per-mass percentage would also require density for conversion to mg/L."
+    },
+    {
+      "id": "class3-water-dist-081",
+      "mode": "tap-the-flaw",
+      "prompt": "A worker equates a flowmeter totalizer of 500 m³ with a current rate of 500 m³/h. What is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "A cumulative reading is not an instantaneous rate"
+        },
+        {
+          "id": "option-2",
+          "label": "The totalizer measures pH"
+        },
+        {
+          "id": "option-3",
+          "label": "A rate cannot have a time unit"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Compare totalizer readings over a known time to calculate average flow."
+    },
+    {
+      "id": "class3-water-dist-082",
+      "mode": "tap-the-flaw",
+      "prompt": "An operator uses a small flowmeter calibration error to declare a water balance exact. What is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Meter uncertainty can affect the apparent water-loss balance"
+        },
+        {
+          "id": "option-2",
+          "label": "Volume cannot be measured"
+        },
+        {
+          "id": "option-3",
+          "label": "Customer use must be zero"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Investigate meter accuracy and authorized uses before treating a balance as physical leakage."
+    },
+    {
+      "id": "class3-water-dist-top-001",
+      "mode": "cause-effect",
+      "prompt": "A vertical cylindrical reservoir has an inside diameter of 8 m and a water depth of 3 m. Using 0.785 for π/4, approximately how much water does it contain?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "150.72 m³"
+        },
+        {
+          "id": "option-2",
+          "label": "75.36 m³"
+        },
+        {
+          "id": "option-3",
+          "label": "603.12 m³"
+        },
+        {
+          "id": "option-4",
+          "label": "24.00 m³"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Cylindrical volume = (π/4) × diameter² × water depth. With diameter 8 m and depth 3 m, volume = 0.785 × (8 m)² × 3 m = 0.785 × 64 m² × 3 m = 150.72 m³. This is the water volume, assuming vertical sides and no volume displaced by internal structures."
+    },
+    {
+      "id": "class3-water-dist-top-002",
+      "mode": "cause-effect",
+      "prompt": "Water flows through a full main with an inside diameter of 0.20 m at an average velocity of 1.2 m/s. Using 0.785 for π/4, what is the approximate flow in L/s?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "37.68 L/s"
+        },
+        {
+          "id": "option-2",
+          "label": "3.768 L/s"
+        },
+        {
+          "id": "option-3",
+          "label": "150.72 L/s"
+        },
+        {
+          "id": "option-4",
+          "label": "15.7 L/s"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Flow Q = cross-sectional area A × average velocity v, and A = 0.785 × diameter². Thus A = 0.785 × (0.20 m)² = 0.0314 m²; Q = 0.0314 m² × 1.2 m/s = 0.03768 m³/s. Multiplying by 1,000 L/m³ gives 37.68 L/s. The calculation assumes a full pipe and uses inside diameter."
+    },
+    {
+      "id": "class3-water-dist-top-003",
+      "mode": "cause-effect",
+      "prompt": "The water surface in an open tank is 24 m above a gauge connected to it. With water at rest and negligible other pressure effects, approximate the gauge pressure using 9.8 kPa per metre of water.",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "235.2 kPa"
+        },
+        {
+          "id": "option-2",
+          "label": "24.0 kPa"
+        },
+        {
+          "id": "option-3",
+          "label": "2.45 kPa"
+        },
+        {
+          "id": "option-4",
+          "label": "470.4 kPa"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Static gauge pressure = vertical water head × pressure per metre of water. Head is 24 m and the given factor is 9.8 kPa/m, so pressure = 24 m × 9.8 kPa/m = 235.2 kPa. This is gauge, not absolute, pressure and excludes flow-related losses."
+    },
+    {
+      "id": "class3-water-dist-top-004",
+      "mode": "cause-effect",
+      "prompt": "A pump delivers 0.040 m³/s against a total dynamic head of 30 m at 75% pump efficiency. Using 9.8 kN/m³ as the specific weight of water, what is its approximate brake power at the pump shaft?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "15.68 kW"
+        },
+        {
+          "id": "option-2",
+          "label": "11.76 kW"
+        },
+        {
+          "id": "option-3",
+          "label": "8.82 kW"
+        },
+        {
+          "id": "option-4",
+          "label": "156.8 kW"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Water power = specific weight × flow × total dynamic head = 9.8 kN/m³ × 0.040 m³/s × 30 m = 11.76 kN·m/s = 11.76 kW. Brake shaft power = water power ÷ pump efficiency expressed as a decimal = 11.76 kW ÷ 0.75 = 15.68 kW. Electrical input would also depend on motor efficiency."
+    },
+    {
+      "id": "class3-water-dist-top-005",
+      "mode": "cause-effect",
+      "prompt": "For an ideal feed calculation, 2,400 m³/day of water needs an additional dose of 1.5 mg/L as available chlorine. The chemical product is 12% available chlorine by mass. How many kilograms of product are needed per day?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "30 kg/day"
+        },
+        {
+          "id": "option-2",
+          "label": "3.6 kg/day"
+        },
+        {
+          "id": "option-3",
+          "label": "43.2 kg/day"
+        },
+        {
+          "id": "option-4",
+          "label": "300 kg/day"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "First find active chlorine mass: 2,400 m³/day × 1,000 L/m³ × 1.5 mg/L = 3,600,000 mg/day = 3.6 kg/day. Product mass = active mass ÷ mass fraction = 3.6 kg/day ÷ 0.12 = 30 kg/day. This ideal estimate assumes the stated product strength and no feed losses; it is not a site dosing instruction."
+    },
+    {
+      "id": "class3-water-dist-top-006",
+      "mode": "cause-effect",
+      "prompt": "Two simultaneously flowing streams are completely mixed: 70 m³/h has a free chlorine residual of 0.8 mg/L and 30 m³/h has a free chlorine residual of 0.2 mg/L, both expressed as Cl₂. Assuming no reaction or decay, what is the mixed residual?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "0.62 mg/L"
+        },
+        {
+          "id": "option-2",
+          "label": "0.50 mg/L"
+        },
+        {
+          "id": "option-3",
+          "label": "1.00 mg/L"
+        },
+        {
+          "id": "option-4",
+          "label": "0.38 mg/L"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "The ideal flow-weighted concentration is (C₁Q₁ + C₂Q₂) ÷ (Q₁ + Q₂). Substituting compatible units gives [(0.8 mg/L × 70 m³/h) + (0.2 mg/L × 30 m³/h)] ÷ (70 + 30 m³/h) = (56 + 6) ÷ 100 = 0.62 mg/L as Cl₂. Identical flow units cancel; actual residual may differ if the streams react or decay."
+    },
+    {
+      "id": "class3-water-dist-top-007",
+      "mode": "cause-effect",
+      "prompt": "A hydrant is flushed at a measured constant 18 L/s for 25 minutes. Approximately what volume was discharged?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "27 m³"
+        },
+        {
+          "id": "option-2",
+          "label": "450 m³"
+        },
+        {
+          "id": "option-3",
+          "label": "7.5 m³"
+        },
+        {
+          "id": "option-4",
+          "label": "2.7 m³"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Volume = flow × elapsed time. Convert 25 min × 60 s/min = 1,500 s. Then 18 L/s × 1,500 s = 27,000 L; divide by 1,000 L/m³ to obtain 27 m³. This estimate assumes constant flow. Whether the discharge is authorized is a separate determination."
+    },
+    {
+      "id": "class3-water-dist-top-008",
+      "mode": "cause-effect",
+      "prompt": "A chloraminated distribution zone shows a persistent loss of residual and rising nitrite. Which process best explains both observations and should the operator investigate as a possibility?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Nitrification"
+        },
+        {
+          "id": "option-2",
+          "label": "Dilution with low-residual water"
+        },
+        {
+          "id": "option-3",
+          "label": "Disinfectant demand from pipe deposits"
+        },
+        {
+          "id": "option-4",
+          "label": "Chlorine loss by volatilization"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Nitrification can occur in chloraminated systems and is associated with nitrite formation and accelerated residual loss. These observations warrant investigation but do not alone prove the cause; follow the utility's monitoring and response procedures."
+    },
+    {
+      "id": "class3-water-dist-top-009",
+      "mode": "tap-the-flaw",
+      "prompt": "A supervisor says: ‘Because disinfectant is present in the bulk water, microorganisms attached inside the main cannot be protected from it.’ What is flawed?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "Biofilm or sediment can shelter microorganisms from disinfection"
+        },
+        {
+          "id": "option-2",
+          "label": "A bulk-water residual confirms that biofilm is absent"
+        },
+        {
+          "id": "option-3",
+          "label": "Attached organisms are always exposed to the same disinfectant concentration as the bulk water"
+        },
+        {
+          "id": "option-4",
+          "label": "Deposits necessarily cause disinfectant residual to increase"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Biofilms and sediment can protect embedded microorganisms and can contribute to loss of disinfectant residual. Bulk-water residual by itself does not establish that every organism in deposits has been inactivated."
+    },
+    {
+      "id": "class3-water-dist-top-010",
+      "mode": "cause-effect",
+      "prompt": "A water system produces 1,800 m³ in one day for a served population of 6,000. What is the average water produced per person per day?",
+      "options": [
+        {
+          "id": "option-1",
+          "label": "300 L/person/day"
+        },
+        {
+          "id": "option-2",
+          "label": "30 L/person/day"
+        },
+        {
+          "id": "option-3",
+          "label": "3,000 L/person/day"
+        },
+        {
+          "id": "option-4",
+          "label": "0.3 L/person/day"
+        }
+      ],
+      "correctOptionId": "option-1",
+      "explanation": "Per-capita production = daily water produced ÷ served population. Convert 1,800 m³/day × 1,000 L/m³ = 1,800,000 L/day. Divide by 6,000 people: 1,800,000 L/day ÷ 6,000 people = 300 L/person/day. Production can include non-residential use and losses, so it is not necessarily individual household consumption."
+    },
+    {
+      "id": "class3-water-dist-order-009",
+      "mode": "before-after",
+      "prompt": "For routine microbiological grab sampling from a distribution tap with a removable aerator, under Ontario’s supervised-person training guidance, is removal of the aerator before or after collecting the sample?",
+      "correctAnswer": "before",
+      "explanation": "The training guidance calls for removing aerators and other attachments to provide a clear sample path. It also says laboratory directions take precedence if they differ."
+    },
+    {
+      "id": "class3-water-dist-order-011",
+      "mode": "before-after",
+      "prompt": "For a drinking-water sample preserved to a target pH where pH is checked using Ontario’s recommended equilibration practice, is the pH-paper check before or after the two-minute equilibration period?",
+      "correctAnswer": "after",
+      "explanation": "The Ontario guidance recommends gently swirling the preserved sample, allowing it to equilibrate for two minutes, and then checking the pH. Preservative choice and handling are analyte- and laboratory-specific."
+    },
+    {
+      "id": "class3-water-dist-order-017",
+      "mode": "before-after",
+      "prompt": "In the Pennsylvania training manual’s typical customer-service connection, for normal flow from the distribution main, is the corporation stop encountered before or after the customer meter?",
+      "correctAnswer": "before",
+      "explanation": "The manual describes the corporation stop at the main connection, the curb stop near the property line and the meter downstream of the curb stop. This is a typical illustrative configuration, not a universal plumbing layout."
+    },
+    {
+      "id": "class3-water-dist-order-019",
+      "mode": "before-after",
+      "prompt": "In the Pennsylvania distribution operator training example, where a protective backfill layer is placed over the pipe, is haunching before or after placing that layer?",
+      "correctAnswer": "before",
+      "explanation": "The example places and compacts haunching material to the pipe centreline, then places and compacts a further protective layer above the pipe. Actual specifications vary with pipe, soils and local requirements."
+    }
+  ]
+}

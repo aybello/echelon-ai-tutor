@@ -1,0 +1,23 @@
+{
+  "baselineSha256": "6a93fe375a2216cffbd6aa3768482657641ecd211668beeb6af2a01e2176035e",
+  "mode": "offline-read-only",
+  "banks": [
+    {
+      "bankKey": "class1-water",
+      "existingCount": 555,
+      "candidateCount": 250,
+      "occupiedIds": [],
+      "exactStemMatches": [],
+      "lexicalNearMatches": []
+    },
+    {
+      "bankKey": "class1-wastewater",
+      "existingCount": 565,
+      "candidateCount": 250,
+      "occupiedIds": [],
+      "exactStemMatches": [],
+      "lexicalNearMatches": []
+    }
+  ],
+  "limitations": "Snapshot comparison only; not current production verification or exhaustive semantic deduplication."
+}

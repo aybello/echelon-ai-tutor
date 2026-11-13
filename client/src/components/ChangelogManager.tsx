@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { trpc } from "@/lib/trpc";
+import { toast } from "sonner";
 
 type ChangelogForm = {
   date: string;
@@ -56,13 +57,14 @@ export default function ChangelogManager() {
   };
 
   const createEntry = trpc.changelog.create.useMutation({
-    onSuccess: async () => {
+    onSuccess: async (_result, values) => {
       resetForm();
       await refreshLists();
+      toast.success(values.visible ? "Platform update published." : "Platform update saved as hidden.");
     },
   });
   const updateEntry = trpc.changelog.update.useMutation({
-    onSuccess: refreshLists,
+    onSuccess: async () => { await refreshLists(); toast.success("Change saved."); },
   });
   const deleteEntry = trpc.changelog.delete.useMutation({
     onSuccess: refreshLists,
@@ -87,6 +89,7 @@ export default function ChangelogManager() {
   };
 
   const edit = (entry: NonNullable<typeof entriesQ.data>[number]) => {
+    if (entry.origin === "bundled") return;
     setEditingId(entry.id);
     setForm({
       date: entry.date,
@@ -100,6 +103,7 @@ export default function ChangelogManager() {
   };
 
   const moveToTop = (id: number) => {
+    if (id <= 0) return;
     const minimum = Math.min(...(entriesQ.data ?? []).map(entry => entry.sortOrder), 0);
     updateEntry.mutate({ id, sortOrder: minimum - 1 });
   };
@@ -158,11 +162,11 @@ export default function ChangelogManager() {
 
       <div style={{ background: "#F8FAFC", borderRadius: 16, border: "1px solid #E2E8F0", overflow: "hidden" }}>
         <div style={{ padding: "15px 20px", borderBottom: "1px solid #E2E8F0", fontSize: 13, fontWeight: 800, color: "#0F172A" }}>
-          Published history {entriesQ.data ? `(${entriesQ.data.length})` : ""}
+          Platform history {entriesQ.data ? `(${entriesQ.data.length})` : ""}
         </div>
         {entriesQ.isLoading && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 12 }}>Loading platform updates…</div>}
-        {entriesQ.error && <div style={{ padding: 20, color: "#B91C1C", fontSize: 12 }}>{entriesQ.error.message}</div>}
-        {entriesQ.data?.length === 0 && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 12 }}>No changelog entries yet.</div>}
+        {entriesQ.error && <div style={{ padding: 20, color: "#B91C1C", fontSize: 12 }}>{entriesQ.error.message} <button type="button" onClick={() => entriesQ.refetch()} style={{ marginLeft: 8, textDecoration: "underline" }}>Retry</button></div>}
+        {entriesQ.data?.length === 0 && <div style={{ padding: 32, textAlign: "center", color: "#64748B", fontSize: 12 }}>No platform updates yet. Retry if you expected a published item.</div>}
         {entriesQ.data?.map(entry => (
           <div key={entry.id} style={{ padding: "16px 20px", borderTop: "1px solid #E2E8F0", display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 16, flexWrap: "wrap", opacity: entry.visible ? 1 : 0.6 }}>
             <div style={{ flex: "1 1 520px" }}>
@@ -170,18 +174,19 @@ export default function ChangelogManager() {
                 <span style={{ fontSize: 10, fontWeight: 800, color: "#64748B", textTransform: "uppercase" }}>{entry.date}</span>
                 {entry.badge && <span style={{ padding: "2px 7px", borderRadius: 20, background: entry.badgeColor, color: "#FFFFFF", fontSize: 9, fontWeight: 800, textTransform: "uppercase" }}>{entry.badge}</span>}
                 <span style={{ padding: "2px 7px", borderRadius: 20, background: entry.visible ? "#DCFCE7" : "#E2E8F0", color: entry.visible ? "#166534" : "#475569", fontSize: 9, fontWeight: 800 }}>{entry.visible ? "VISIBLE" : "HIDDEN"}</span>
+                {entry.origin === "bundled" && <span style={{ fontSize: 10, color: "#1E40AF", background: "#DBEAFE", padding: "3px 8px", borderRadius: 12 }}>SHIPPED WITH CODE · READ-ONLY</span>}
               </div>
               <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>{entry.title}</div>
               <div style={{ fontSize: 11, color: "#64748B", lineHeight: 1.6 }}>{entry.body}</div>
             </div>
-            <div style={{ display: "flex", gap: 7, flexWrap: "wrap" }}>
+            {entry.origin === "database" ? <div style={{ display: "flex", gap: 7, flexWrap: "wrap" }}>
               <button type="button" onClick={() => moveToTop(entry.id)} disabled={updateEntry.isPending} style={{ border: "1px solid #CBD5E1", background: "#FFFFFF", borderRadius: 20, padding: "6px 10px", color: "#475569", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>Move to top</button>
               <button type="button" onClick={() => updateEntry.mutate({ id: entry.id, visible: !entry.visible })} disabled={updateEntry.isPending} style={{ border: "1px solid #CBD5E1", background: "#FFFFFF", borderRadius: 20, padding: "6px 10px", color: "#475569", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>{entry.visible ? "Hide" : "Publish"}</button>
               <button type="button" onClick={() => edit(entry)} style={{ border: "1px solid #BFDBFE", background: "#EFF6FF", borderRadius: 20, padding: "6px 10px", color: "#1D4ED8", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>Edit</button>
               <button type="button" onClick={() => {
                 if (window.confirm(`Delete “${entry.title}”? This cannot be undone.`)) deleteEntry.mutate({ id: entry.id });
               }} disabled={deleteEntry.isPending} style={{ border: "1px solid #FECACA", background: "#FEF2F2", borderRadius: 20, padding: "6px 10px", color: "#B91C1C", fontSize: 10, fontWeight: 700, cursor: "pointer" }}>Delete</button>
-            </div>
+            </div> : <div style={{ fontSize: 11, color: "#64748B" }}>To edit this bundled update, change the repository release notes.</div>}
           </div>
         ))}
       </div>

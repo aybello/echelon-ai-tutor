@@ -78,7 +78,7 @@ function CourseCard({ course }: { course: CourseSeoPage }) {
       </p>
       <div className="mt-5 flex items-center justify-between border-t border-slate-100 pt-4">
         <span className="font-bold text-slate-900">
-          {formatCad(course.priceCAD)} / 12 months
+          {formatCad(course.priceCAD)} · 12 months from successful payment
         </span>
         <Link
           href={course.path}
@@ -145,7 +145,7 @@ function RegionPage({ page }: { page: RegionSeoPage }) {
   );
 
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900">
+    <main className="public-redesign public-redesign-seo min-h-screen bg-slate-50 text-slate-900">
       <SiteNav currentPath={page.path} variant="marketing" />
       <section className="border-b border-slate-200 bg-gradient-to-br from-slate-950 via-blue-950 to-teal-900 text-white">
         <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
@@ -363,7 +363,7 @@ function CoursePage({ course }: { course: CourseSeoPage }) {
                 {formatCad(course.priceCAD)}
               </p>
               <p className="mt-1 text-sm text-slate-600">
-                One course · 12 months · one-time payment
+                One course · 12 months from successful payment · one-time payment
               </p>
               <div className="mt-5 border-t border-slate-200 pt-5 text-sm leading-6 text-slate-600">
                 Need licences for a utility or municipality?{" "}

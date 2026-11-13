@@ -7,24 +7,24 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 
 export default function Class4WaterDistFlashcards() {
   usePageMeta({
-    title: "Ontario Class 4 Water Distribution Flashcards",
-    description: "Flashcards for the Ontario Class 4 Water Distribution operator certification exam.",
+    title: "Ontario Class 4 Water Distribution and Supply Flashcards",
+    description: "Flashcards for the Ontario Class 4 Water Distribution and Supply operator certification exam.",
     noindex: true
   });
   const { questions, modules, isLoading, dbUnavailable } = useQuestionBank("class4-water-dist");
   if (isLoading) return <QuizSkeleton />;
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
   return (
-    <FlashcardErrorBoundary examName="Ontario Class 4 Water Distribution" backPath="/class4-water-dist">
+    <FlashcardErrorBoundary examName="Ontario Class 4 Water Distribution and Supply" backPath="/class4-water-dist">
       <PurchaseGate
         examType="class4-water-dist"
         productKey="class4-water-dist"
-        productName="Ontario Class 4 Water Distribution Practice Pass"
+        productName="Ontario Class 4 Water Distribution and Supply Practice Pass"
         price={99}
       >
         <FlashcardShell
           questions={questions as unknown as FlashcardQuestion[]}
-          examName="Ontario Class 4 Water Distribution"
+          examName="Ontario Class 4 Water Distribution and Supply"
           examType="class4-water-dist"
           backPath="/class4-water-dist"
           modules={modules as unknown as string[]}

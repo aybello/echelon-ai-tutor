@@ -168,7 +168,7 @@ export function summariseAnswerLengthBias(questions: BiasCheckQuestion[]): BankB
  */
 export function targetDistractorLength(correctLength: number): { min: number; max: number } {
   return {
-    min: Math.max(1, Math.round(correctLength * 0.85)),
+    min: Math.max(1, Math.round(correctLength * 0.95)),
     max: Math.round(correctLength * 1.15),
   };
 }

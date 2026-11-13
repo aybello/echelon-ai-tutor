@@ -20,6 +20,7 @@ import {
   ALL_INDIVIDUAL_EXAM_TYPES,
   ALL_PRODUCTS,
   BUNDLES,
+  getActiveIndividualProductByKey,
   getUnlockedExamTypes,
 } from "../shared/products";
 
@@ -73,6 +74,11 @@ const EXPECTED_PRICES: Record<string, number> = {
   "class2-wastewater-coll": 14900,
   "class3-wastewater-coll": 24900,
   "class4-wastewater-coll": 29900,
+  // United States — Class I (WPI need-to-know aligned)
+  "us-class1-water":        14900,
+  "us-class1-water-dist":   14900,
+  // United States — Texas Class D
+  "us-texas-class-d-water": 14900,
 };
 
 describe("shared/products.ts — price-change audit", () => {
@@ -126,6 +132,7 @@ describe("shared/products.ts — price-change audit", () => {
     const saleKeys = new Set(ALL_PRODUCTS.map(product => product.key));
     for (const bundle of BUNDLES) {
       expect(saleKeys.has(bundle.key), `${bundle.key} must remain retired`).toBe(false);
+      expect(getActiveIndividualProductByKey(bundle.key), `${bundle.key} must not start a new individual checkout`).toBeUndefined();
     }
   });
 

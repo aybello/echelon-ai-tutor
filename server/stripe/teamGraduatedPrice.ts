@@ -1,86 +1,57 @@
 /**
- * server/stripe/teamGraduatedPrice.ts
+ * Resolves the Stripe Price used for Echelon Teams Annual plans.
  *
- * Resolves the Stripe Price used for Teams All-Access annual subscriptions.
- *
- * Teams volume discounts are GRADUATED — seats 1–9 always pay full price, only
- * seats 10+ attract a discount. That cannot be expressed as a single
- * `unit_amount × quantity` line item, so we use a Stripe Price with
- * `billing_scheme: "tiered"` and `tiers_mode: "graduated"`. Stripe then applies
- * exactly the arithmetic in `calculateGraduatedTotal`, which means the amount
- * charged always equals the amount quoted on /pricing and /teams.
- *
- * Keeping ONE line item (rather than one per band) also preserves `quantity`
- * semantics, so seat upgrades via `updateTeamSeats` and Stripe's proration
- * continue to work unchanged.
- *
- * The Price is created on first use and then reused. The lookup key embeds the
- * catalogue version and list price, so changing either produces a NEW Price
- * rather than silently repricing existing subscribers.
+ * Annual plans use graduated volume pricing. A price is scoped to its stream
+ * tier as well as its list price, so a one-stream checkout can never reuse an
+ * All Streams Stripe product merely because the numeric price matches.
  */
 
 import type Stripe from "stripe";
 import { stripe } from "./stripe";
-import {
-  CATALOGUE_VERSION,
-  TEAMS_ALL_ACCESS_PRICE_CENTS,
-  getGraduatedStripeTiers,
-} from "../../shared/pricingCatalogue";
+import { CATALOGUE_VERSION, getGraduatedStripeTiers } from "../../shared/pricingCatalogue";
+import { type TeamStreamTier, TEAM_STREAM_TIER_LABELS } from "../../shared/teamPricing";
 
-/** Stable identifier for the current pricing configuration. */
 export function buildLookupKey(
-  listPriceCents: number = TEAMS_ALL_ACCESS_PRICE_CENTS,
+  tier: TeamStreamTier,
+  listPriceCents: number,
   version: string = CATALOGUE_VERSION,
 ): string {
-  return `echelon_teams_all_access_annual_${listPriceCents}_${version.replace(/-/g, "")}`;
+  return `echelon_teams_annual_${tier}_${listPriceCents}_${version.replace(/-/g, "")}`;
 }
 
-/**
- * Stripe tier payload for the given list price.
- * Exported so tests can assert it against `calculateGraduatedTotal`.
- */
 export function buildGraduatedTiers(
-  listPriceCents: number = TEAMS_ALL_ACCESS_PRICE_CENTS,
+  listPriceCents: number,
 ): Array<{ up_to: number | "inf"; unit_amount: number }> {
   return getGraduatedStripeTiers(listPriceCents);
 }
 
-/** Module-level cache so we do not hit Stripe on every checkout. */
-let cachedPriceId: string | null = null;
-let cachedLookupKey: string | null = null;
+const cachedPriceIds = new Map<string, string>();
 
-/** Test seam — clears the memoised Price id. */
+/** Test seam that clears the per-tier Stripe Price cache. */
 export function resetTeamPriceCache(): void {
-  cachedPriceId = null;
-  cachedLookupKey = null;
+  cachedPriceIds.clear();
 }
 
 /**
- * Find (or create) the graduated Stripe Price for Teams All-Access.
- * Safe to call concurrently: if two checkouts race, Stripe's lookup_key
- * uniqueness means the second create fails and we re-read the existing Price.
+ * Find or create the durable annual Price for a selected stream tier.
+ * Stripe lookup-key uniqueness makes concurrent creation safe: a loser reads
+ * the winner's price after a failed create attempt.
  */
-export async function getOrCreateTeamAllAccessPrice(
-  listPriceCents: number = TEAMS_ALL_ACCESS_PRICE_CENTS,
+export async function getOrCreateTeamAnnualPrice(
+  tier: TeamStreamTier,
+  listPriceCents: number,
 ): Promise<string> {
-  const lookupKey = buildLookupKey(listPriceCents);
+  const lookupKey = buildLookupKey(tier, listPriceCents);
+  const cached = cachedPriceIds.get(lookupKey);
+  if (cached) return cached;
 
-  if (cachedPriceId && cachedLookupKey === lookupKey) return cachedPriceId;
-
-  const existing = await stripe.prices.list({
-    lookup_keys: [lookupKey],
-    active: true,
-    limit: 1,
-  });
-
+  const existing = await stripe.prices.list({ lookup_keys: [lookupKey], active: true, limit: 1 });
   if (existing.data.length > 0) {
-    cachedPriceId = existing.data[0].id;
-    cachedLookupKey = lookupKey;
-    return cachedPriceId;
+    cachedPriceIds.set(lookupKey, existing.data[0].id);
+    return existing.data[0].id;
   }
 
   const tiers = buildGraduatedTiers(listPriceCents) as unknown as Stripe.PriceCreateParams.Tier[];
-
   try {
     const price = await stripe.prices.create({
       currency: "cad",
@@ -90,30 +61,23 @@ export async function getOrCreateTeamAllAccessPrice(
       tiers,
       lookup_key: lookupKey,
       product_data: {
-        name: "Echelon for Teams — All-Access (annual, per operator)",
+        name: `Echelon for Teams — ${TEAM_STREAM_TIER_LABELS[tier]} (annual, per operator)`,
       },
       metadata: {
         catalogue_version: CATALOGUE_VERSION,
+        stream_tier: tier,
         list_price_cents: String(listPriceCents),
         discount_model: "graduated",
       },
     });
-
-    cachedPriceId = price.id;
-    cachedLookupKey = lookupKey;
+    cachedPriceIds.set(lookupKey, price.id);
     return price.id;
-  } catch (err) {
-    // Lost a create race — the Price now exists, so read it back.
-    const retry = await stripe.prices.list({
-      lookup_keys: [lookupKey],
-      active: true,
-      limit: 1,
-    });
+  } catch (error) {
+    const retry = await stripe.prices.list({ lookup_keys: [lookupKey], active: true, limit: 1 });
     if (retry.data.length > 0) {
-      cachedPriceId = retry.data[0].id;
-      cachedLookupKey = lookupKey;
-      return cachedPriceId;
+      cachedPriceIds.set(lookupKey, retry.data[0].id);
+      return retry.data[0].id;
     }
-    throw err;
+    throw error;
   }
 }

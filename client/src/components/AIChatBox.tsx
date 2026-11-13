@@ -5,6 +5,16 @@ import { cn } from "@/lib/utils";
 import { Loader2, Send, User, Sparkles } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { Streamdown } from "streamdown";
+import { createMathPlugin } from "@streamdown/math";
+import "katex/dist/katex.min.css";
+
+/**
+ * Keep the Tutor's renderer deliberately small. Math is required for operator
+ * calculations; Mermaid remains disabled so diagram source stays inert.
+ */
+export const AI_TUTOR_MARKDOWN_PLUGINS = {
+  math: createMathPlugin({ singleDollarTextMath: true }),
+} as const;
 
 /**
  * Message type matching server-side LLM Message interface
@@ -262,7 +272,9 @@ export function AIChatBox({
                     >
                       {message.role === "assistant" ? (
                         <div className="prose prose-sm dark:prose-invert max-w-none">
-                          <Streamdown>{message.content}</Streamdown>
+                          <Streamdown plugins={AI_TUTOR_MARKDOWN_PLUGINS}>
+                            {message.content}
+                          </Streamdown>
                         </div>
                       ) : (
                         <p className="whitespace-pre-wrap text-sm">

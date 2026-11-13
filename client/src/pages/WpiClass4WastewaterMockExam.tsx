@@ -1,5 +1,5 @@
-import MockExamShell, { type ExamQuestion } from "@/components/MockExamShell";
-import { useQuestionBank, type DBQuestion } from "@/hooks/useQuestionBank";
+import MockExamShell from "@/components/MockExamShell";
+import { useMockExamMetadata } from "@/hooks/useQuestionBank";
 import QuizSkeleton from "@/components/QuizSkeleton";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
@@ -19,15 +19,8 @@ export default function WpiClass4WastewaterMockExam() {
     noindex: true
   });
 
-  const { questions: dbQuestions, moduleTargets: dbModuleTargets, isLoading: bankLoading, dbUnavailable } = useQuestionBank("wpi-class4-wastewater");
+  const { moduleTargets: dbModuleTargets, totalQuestions, isLoading: bankLoading, dbUnavailable } = useMockExamMetadata("wpi-class4-wastewater");
   
-  const POOL: ExamQuestion[] = (dbQuestions as any[]).map((q: any) => ({
-    id: q.id, module: q.module,
-    question: q.question ?? q.text ?? "",
-    options: q.options,
-    correct: q.correctIndex ?? q.correct ?? q.correctAnswer ?? 0,
-    explanation: q.explanation,
-  }));
 
   if (bankLoading) return <QuizSkeleton />;
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
@@ -36,14 +29,13 @@ export default function WpiClass4WastewaterMockExam() {
     <MockExamShell
       title="WPI Class IV Wastewater Treatment Mock Exam"
       badge="WPI CLASS IV · WASTEWATER TREATMENT"
-      metaDescription="100-question timed mock exam for the WPI Class IV Wastewater Treatment certification. 3-hour timer, 70% pass threshold."
+      metaDescription="110-question timed mock exam (100 scored and 10 unscored practice items) for the WPI Class IV Wastewater Treatment certification. 3-hour timer, 70% pass threshold."
       metaKeywords="WPI Class IV wastewater treatment mock exam, ABC WPI exam prep, BC EOCP Level IV, Alberta AWWOA Class IV, US wastewater operator exam"
-      examQuestions={100}
+      examQuestions={110}
       examDuration={3 * 60 * 60}
       passThreshold={0.7}
       moduleTargets={dbModuleTargets ?? {}}
       moduleColors={MODULE_COLORS}
-      questionPool={POOL}
       productKey="wpi-class4-wastewater"
       productName="WPI Class IV Wastewater Practice Pass"
       price={299}
@@ -52,7 +44,7 @@ export default function WpiClass4WastewaterMockExam() {
       practiceLabel="Class IV Wastewater Practice"
       showProvinceSelector={false}
       currentPath="/wpi-class4-wastewater-mock"
-      infoLine={`${POOL.length} questions · Canada & US · ABC/WPI Standard · Class IV`}
+      infoLine="110 questions · 100 scored + 10 unscored practice items · 3 hours · WPI Class IV"
       stream="wastewater"
       accentColor="#0F766E"
     />

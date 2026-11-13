@@ -18,6 +18,7 @@ const state = vi.hoisted(() => ({
   selectedId: null as number | null,
   lastInsertedHash: null as string | null,
   hasAccess: true,
+  billingOwner: false,
   sendOtpEmail: vi.fn(),
   issueSession: vi.fn(async () => undefined),
   trackEvent: vi.fn(async () => undefined),
@@ -29,6 +30,8 @@ function hashCode(code: string): string {
 
 function createMockDb() {
   return {
+    // This fixture covers delivery/resend behavior, not database concurrency.
+    transaction: async (run: (tx: unknown) => Promise<unknown>) => run(createMockDb()),
     insert: () => ({
       values: async (values: Pick<OtpRow, "email" | "codeHash" | "expiresAt">) => {
         const id = state.nextId++;
@@ -45,10 +48,10 @@ function createMockDb() {
     update: () => ({
       set: (values: Partial<Pick<OtpRow, "usedAt" | "attempts">>) => ({
         where: async () => {
-          if (typeof values.attempts === "number" && state.selectedId !== null) {
+          if (values.attempts !== undefined && state.selectedId !== null) {
             const selected = state.rows.find((row) => row.id === state.selectedId);
-            if (selected) selected.attempts = values.attempts;
-            return;
+            if (selected) selected.attempts += 1;
+            return [{ affectedRows: 1 }];
           }
 
           if (values.usedAt) {
@@ -61,6 +64,7 @@ function createMockDb() {
               }
             }
           }
+          return [{ affectedRows: 1 }];
         },
       }),
     }),
@@ -73,13 +77,14 @@ function createMockDb() {
       from: () => ({
         where: () => ({
           orderBy: () => ({
-            limit: async () => {
-              const [latest] = state.rows
-                .filter((row) => !row.usedAt && row.expiresAt.getTime() > Date.now())
-                .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime() || b.id - a.id);
-              state.selectedId = latest?.id ?? null;
-              return latest ? [latest] : [];
-            },
+            limit: () => ({
+              for: async () => {
+                const [latest] = [...state.rows]
+                  .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime() || b.id - a.id);
+                state.selectedId = latest?.id ?? null;
+                return latest ? [latest] : [];
+              },
+            }),
           }),
         }),
       }),
@@ -102,6 +107,10 @@ vi.mock("./_core/access", () => ({
     activeSubscriptionRows: [],
     sources: state.hasAccess ? ["org_manager"] : [],
   })),
+}));
+
+vi.mock("./teams/billingIdentity", () => ({
+  hasRecoverableTeamBilling: vi.fn(async () => state.billingOwner),
 }));
 
 vi.mock("./email", () => ({
@@ -137,6 +146,7 @@ beforeEach(() => {
   state.selectedId = null;
   state.lastInsertedHash = null;
   state.hasAccess = true;
+  state.billingOwner = false;
   state.sendOtpEmail.mockReset().mockResolvedValue(undefined);
   state.issueSession.mockClear();
   state.trackEvent.mockClear();
@@ -151,7 +161,7 @@ describe("emailOtp router delivery and resend safety", () => {
 
     const caller = emailOtpRouter.createCaller(makeCtx());
     let settled = false;
-    const request = caller.requestOtp({ email: "Manager@Winnipeg.ca" })
+    const request = caller.requestOtp({ email: "Manager@Example.Test" })
       .finally(() => { settled = true; });
 
     await vi.waitFor(() => expect(state.sendOtpEmail).toHaveBeenCalledOnce());
@@ -165,8 +175,8 @@ describe("emailOtp router delivery and resend safety", () => {
   it("invalidates earlier unused codes when a new code is requested", async () => {
     const caller = emailOtpRouter.createCaller(makeCtx());
 
-    await caller.requestOtp({ email: "manager@winnipeg.ca" });
-    await caller.requestOtp({ email: "manager@winnipeg.ca" });
+    await caller.requestOtp({ email: "manager@example.test" });
+    await caller.requestOtp({ email: "manager@example.test" });
 
     expect(state.rows).toHaveLength(2);
     expect(state.rows.filter((row) => row.usedAt === null)).toHaveLength(1);
@@ -178,7 +188,7 @@ describe("emailOtp router delivery and resend safety", () => {
     state.sendOtpEmail.mockRejectedValueOnce(new Error("SMTP rejected recipient"));
     const caller = emailOtpRouter.createCaller(makeCtx());
 
-    await expect(caller.requestOtp({ email: "manager@winnipeg.ca" }))
+    await expect(caller.requestOtp({ email: "manager@example.test" }))
       .rejects.toMatchObject({
         code: "INTERNAL_SERVER_ERROR",
         message: "We couldn't send your login code. Please try again in a moment.",
@@ -191,7 +201,7 @@ describe("emailOtp router delivery and resend safety", () => {
     state.rows.push(
       {
         id: 1,
-        email: "manager@winnipeg.ca",
+        email: "manager@example.test",
         codeHash: hashCode("111111"),
         expiresAt,
         usedAt: null,
@@ -200,7 +210,7 @@ describe("emailOtp router delivery and resend safety", () => {
       },
       {
         id: 2,
-        email: "manager@winnipeg.ca",
+        email: "manager@example.test",
         codeHash: hashCode("222222"),
         expiresAt,
         usedAt: null,
@@ -210,11 +220,23 @@ describe("emailOtp router delivery and resend safety", () => {
     );
 
     const caller = emailOtpRouter.createCaller(makeCtx());
-    const result = await caller.verifyOtp({ email: "manager@winnipeg.ca", code: "222222" });
+    const result = await caller.verifyOtp({ email: "manager@example.test", code: "222222" });
 
-    expect(result).toMatchObject({ valid: true, email: "manager@winnipeg.ca", isManager: true });
+    expect(result).toMatchObject({ valid: true, email: "manager@example.test", isManager: true });
     expect(state.rows[0].usedAt).toBeNull();
     expect(state.rows[1].usedAt).toBeInstanceOf(Date);
+    expect(state.issueSession).toHaveBeenCalledOnce();
+  });
+
+  it("lets a lapsed billing owner complete OTP without restoring expired learner access", async () => {
+    state.hasAccess = false;
+    state.billingOwner = true;
+    const caller = emailOtpRouter.createCaller(makeCtx());
+    await expect(caller.requestOtp({ email: "lapsed-manager@example.test" })).resolves.toEqual({ sent: true });
+    expect(state.sendOtpEmail).toHaveBeenCalledOnce();
+    const sentCode = state.sendOtpEmail.mock.calls[0][0].code;
+    const result = await caller.verifyOtp({ email: "lapsed-manager@example.test", code: sentCode });
+    expect(result).toMatchObject({ valid: true, isManager: true, examTypes: [], accessToken: "" });
     expect(state.issueSession).toHaveBeenCalledOnce();
   });
 

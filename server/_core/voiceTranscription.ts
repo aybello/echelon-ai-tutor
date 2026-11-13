@@ -25,9 +25,11 @@
  * });
  * ```
  */
+import { serviceJson, serviceFetch, OutboundError } from "./outboundHttp";
 import { ENV } from "./env";
 
 export type TranscribeOptions = {
+  signal?: AbortSignal;
   audioUrl: string; // URL to the audio file (e.g., S3 URL)
   language?: string; // Optional: specify language code (e.g., "en", "es", "zh")
   prompt?: string; // Optional: custom prompt for the transcription
@@ -94,12 +96,12 @@ export async function transcribeAudio(
     let audioBuffer: Buffer;
     let mimeType: string;
     try {
-      const response = await fetch(options.audioUrl);
+      const response = await serviceFetch(options.audioUrl, { signal: options.signal }, { service: "audio", timeoutMs: 20_000, maxResponseBytes: 16 * 1024 * 1024, retryRead: true });
       if (!response.ok) {
         return {
           error: "Failed to download audio file",
           code: "INVALID_FORMAT",
-          details: `HTTP ${response.status}: ${response.statusText}`
+          details: `HTTP ${response.status}`
         };
       }
       
@@ -116,6 +118,7 @@ export async function transcribeAudio(
         };
       }
     } catch (error) {
+      if (error instanceof OutboundError && error.kind === "too_large") return { error: "Audio exceeds the 16 MB limit", code: "FILE_TOO_LARGE" };
       return {
         error: "Failed to fetch audio file",
         code: "SERVICE_ERROR",
@@ -152,26 +155,26 @@ export async function transcribeAudio(
       baseUrl
     ).toString();
 
-    const response = await fetch(fullUrl, {
+    const response = await serviceFetch(fullUrl, {
       method: "POST",
       headers: {
         authorization: `Bearer ${ENV.forgeApiKey}`,
         "Accept-Encoding": "identity",
       },
       body: formData,
-    });
+      signal: options.signal,
+    }, { service: "transcription", timeoutMs: 60_000, maxResponseBytes: 2 * 1024 * 1024 });
 
     if (!response.ok) {
-      const errorText = await response.text().catch(() => "");
       return {
         error: "Transcription service request failed",
         code: "TRANSCRIPTION_FAILED",
-        details: `${response.status} ${response.statusText}${errorText ? `: ${errorText}` : ""}`
+        details: `Upstream status ${response.status}`
       };
     }
 
     // Step 5: Parse and return the transcription result
-    const whisperResponse = await response.json() as WhisperResponse;
+    const whisperResponse = await serviceJson<any>(response, "transcription") as WhisperResponse;
     
     // Validate response structure
     if (!whisperResponse.text || typeof whisperResponse.text !== 'string') {

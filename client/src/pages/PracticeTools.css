@@ -1,0 +1,130 @@
+/* Presentation layer for Math Practice and Chemical Feed Calculator only. */
+.practice-tools {
+  background: #f3f7fc !important;
+  color: #000000;
+  font-family: "Source Sans 3", "Source Sans Pro", Arial, sans-serif !important;
+}
+.practice-tools :is(h1, h2, h3) {
+  font-family: Manrope, Arial, sans-serif !important;
+  letter-spacing: -.025em;
+}
+.practice-tools :is(a, button, input, select):focus-visible {
+  outline: 3px solid #1757b8 !important;
+  outline-offset: 3px;
+}
+
+/* Math hub */
+.math-practice .math-hero {
+  background: #eaf2fc !important;
+  border-bottom: 1px solid #d9e3ef;
+  padding: 64px 24px 48px !important;
+}
+.math-practice .math-kicker {
+  background: #fff !important;
+  border: 1px solid #c7d9ed !important;
+  border-radius: 6px !important;
+  color: #1757b8 !important;
+}
+.math-practice .math-hero h1,
+.math-practice .math-hero h1 span {
+  color: #000000 !important;
+  background: none !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+.math-practice .math-hero h1 span { color: #1757b8 !important; }
+.math-practice .math-hero p { color: #000000 !important; }
+.math-practice .math-stats { gap: 0 !important; }
+.math-practice .math-stats > div { padding: 0 28px; }
+.math-practice .math-stats > div + div { border-left: 1px solid #c7d9ed; }
+.math-practice .math-stats > div > div:first-child { color: #000000 !important; }
+.math-practice .math-stats > div > div:last-child { color: #000000 !important; }
+.math-practice .math-content { max-width: 1020px !important; }
+.math-practice .math-section-label { color: #000000 !important; }
+.math-practice .math-tip,
+.math-practice .math-course {
+  background: #fff !important;
+  border: 1px solid #d9e3ef !important;
+  border-radius: 10px !important;
+  box-shadow: 0 1px 2px rgba(16,37,63,.04), 0 8px 24px rgba(16,37,63,.04);
+}
+.math-practice .math-tip > div:nth-child(2),
+.math-practice .math-course > div:first-child > div:first-child { color: #000000 !important; }
+.math-practice .math-tip > div:last-child,
+.math-practice .math-course > div:first-child > div:last-child { color: #000000 !important; }
+.math-practice .math-course > div:last-child > div:last-child { color: #1757b8 !important; }
+.math-practice .math-count { background: #eaf2fc !important; color: #1757b8 !important; }
+.math-practice .math-course:hover { border-color: #91b5df !important; }
+.math-practice .math-cta {
+  background: #eaf2fc !important;
+  border: 1px solid #cbdced !important;
+  border-radius: 12px !important;
+}
+.math-practice .math-cta > div:first-child { color: #1757b8 !important; }
+.math-practice .math-cta button { background: #1757b8 !important; border-radius: 6px !important; }
+.math-practice .math-cta button:hover { background: #104894 !important; }
+
+/* Chemical calculator */
+.chemcalc-page .chemcalc-main { max-width: 900px !important; animation: practice-tools-fade-up .3s ease both !important; }
+.chemcalc-page .chemcalc-hero {
+  background: #eaf2fc !important;
+  border: 1px solid #d2e1f0;
+  border-radius: 12px !important;
+  color: #000000 !important;
+}
+.chemcalc-page .chemcalc-hero h1 {
+  color: #000000 !important;
+  background: none !important;
+  -webkit-text-fill-color: currentColor !important;
+  font-size: clamp(24px, 3vw, 32px) !important;
+}
+.chemcalc-page .chemcalc-hero p { color: #000000 !important; opacity: 1 !important; font-size: 15px !important; }
+.chemcalc-page .chemcalc-tabs button {
+  min-height: 44px;
+  background: #fff !important;
+  border: 1px solid #d9e3ef !important;
+  color: #000000 !important;
+  border-radius: 6px !important;
+}
+.chemcalc-page .chemcalc-tabs button.is-active {
+  background: #eaf2fc !important;
+  border-color: #1757b8 !important;
+  color: #1757b8 !important;
+}
+.chemcalc-page .chemcalc-tabs button:hover { border-color: #1757b8 !important; }
+.chemcalc-page .chemcalc-card {
+  border: 1px solid #d9e3ef;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 2px rgba(16,37,63,.04), 0 10px 24px rgba(16,37,63,.05) !important;
+  animation-name: practice-tools-fade-up !important;
+}
+.chemcalc-page .chemcalc-card h2 { color: #000000 !important; }
+.chemcalc-page .chemcalc-card label { color: #000000 !important; font-size: 12px !important; }
+.chemcalc-page .chemcalc-card :is(input, select) { border: 1px solid #627d98 !important; min-height: 44px; }
+.chemcalc-page .chemcalc-card :is(input, select):focus-visible { border-color: #1757b8 !important; }
+.chemcalc-page .chemcalc-result {
+  background: #f3f7fc !important;
+  border: 1px solid #d9e3ef !important;
+  border-radius: 10px !important;
+}
+.chemcalc-page .chemcalc-result > div:first-child { color: #000000 !important; font-size: 12px !important; }
+/* Keep each calculated metric's existing inline semantic colour. */
+.chemcalc-page .chemcalc-result > div:nth-child(2) { overflow-wrap: anywhere; }
+.chemcalc-page .chemcalc-result > div:last-child { color: #000000 !important; font-size: 11px !important; }
+.chemcalc-page :is(.chemcalc-grid-2, .chemcalc-grid-3) > * { min-width: 0; overflow-wrap: anywhere; }
+.chemcalc-page .chemcalc-table-wrap { max-width: 100%; overflow-x: auto; }
+@keyframes practice-tools-fade-up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 640px) {
+  .math-practice .math-hero { padding: 42px 20px 36px !important; }
+  .math-practice .math-stats > div { padding: 0 14px; }
+  .math-practice .math-content { padding: 32px 16px 0 !important; }
+  .math-practice .math-cta { padding: 24px 18px !important; }
+  .chemcalc-page .chemcalc-main { padding: 16px 14px 60px !important; }
+  .chemcalc-page :is(.chemcalc-grid-2, .chemcalc-grid-3) { grid-template-columns: 1fr !important; }
+  .chemcalc-page .chemcalc-card { padding: 20px 16px !important; }
+  .chemcalc-page .chemcalc-hero { padding: 22px 18px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .practice-tools :is(.chemcalc-main, .chemcalc-card) { animation: none !important; }
+  .practice-tools :is(button, .math-course) { transition: none !important; }
+}
