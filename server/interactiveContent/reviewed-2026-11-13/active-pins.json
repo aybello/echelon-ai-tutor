@@ -1,0 +1,10 @@
+{
+  "oit": {
+    "approvalId": "oit-ai-reviewed-20261113-v1",
+    "manifestSha256": "dd4714d3201aebae9165a6e06ba1ad778a355d9094084e192a990f3ecd885f2c"
+  },
+  "oit-ww": {
+    "approvalId": "oit-ai-reviewed-20261113-v1",
+    "manifestSha256": "4acac45d0023abd613d9d01ea8dffc708d18fda2a7792c50f8fd9c4fee6e9ec1"
+  }
+}

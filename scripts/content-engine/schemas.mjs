@@ -35,7 +35,19 @@ export const ConceptSchema = z.object({
   variantFamilies: z.array(z.object({ variantFamilyId: text, intent: text, parameterDefinitions: z.record(z.string(), text) }).strict()).min(1),
 }).strict();
 export const REVIEW_POLICY_VERSION = 'risk-based-carbon-v1';
-export const ReviewPolicySchema = z.object({ policyVersion: z.literal(REVIEW_POLICY_VERSION), enabled: z.literal(true) }).strict();
+export const OWNER_AI_OIT_POLICY_VERSION = 'owner-authorized-ai-oit-v1';
+export const OwnerAIReviewPolicySchema = z.object({
+  policyVersion: z.literal(OWNER_AI_OIT_POLICY_VERSION), enabled: z.literal(true),
+  ownerAuthorization: z.object({
+    reviewAuthority: z.literal('owner-policy-declared'), owner: z.literal('father'),
+    authorizedAt: z.string().datetime({ offset: true }).refine(v => v.startsWith('2026-11-13T'), 'Requires the actual owner authorization date'),
+    scopeCourseKeys: z.tuple([z.literal('oit'), z.literal('oit-ww')]), evidence,
+  }).strict(),
+}).strict();
+export const ReviewPolicySchema = z.union([
+  z.object({ policyVersion: z.literal(REVIEW_POLICY_VERSION), enabled: z.literal(true) }).strict(),
+  OwnerAIReviewPolicySchema,
+]);
 const reviewBinding = z.object({ courseKey: z.enum(COURSES), exerciseId: text, payloadHash: sha256, subjectHash: sha256, reviewBindingsHash: sha256 }).strict();
 export const BatchAuditSchema = z.object({
   schemaVersion: z.literal('batch-audit-v1'), policyVersion: z.literal(REVIEW_POLICY_VERSION), batchId: id,
@@ -54,12 +66,30 @@ export const ReviewSchema = z.object({
   // These are declarations, never independently authenticated by this module.
   authorityEvidence: evidence.nullable(), reviewedAt: z.string().datetime({ offset: true }),
   payloadHash: sha256, subjectHash: sha256, evidence: z.array(evidence).min(1),
-  policyVersion: z.literal(REVIEW_POLICY_VERSION).optional(),
+  policyVersion: z.enum([REVIEW_POLICY_VERSION, OWNER_AI_OIT_POLICY_VERSION]).optional(),
+  policyBindingHash: sha256.optional(),
   independentAI: z.object({ generatorIdentity: text, independenceEvidence: evidence,
     riskScope: z.literal('routine-non-operational-concept'), correctnessEvidence: evidence,
     sourceCheckEvidence: evidence, blueprintAlignmentEvidence: evidence, duplicateCheckEvidence: evidence,
+    sourceBindingsHash: sha256.optional(), duplicateContextHash: sha256.optional(),
   }).strict().optional(),
-}).strict().refine(r => !r.independentAI || (r.kind === 'ai' && r.policyVersion === REVIEW_POLICY_VERSION), 'Independent AI evidence requires an AI review bound to the opt-in policy version');
+}).strict().superRefine((r, ctx) => {
+  const invalid = message => ctx.addIssue({ code: z.ZodIssueCode.custom, message });
+  if (r.policyVersion === OWNER_AI_OIT_POLICY_VERSION) {
+    if (!r.policyBindingHash || r.authorityEvidence === null) invalid('Owner-policy reviews require policy and authority evidence bindings');
+    if (['ai', 'coverage-diversity'].includes(r.kind)) {
+      if (r.reviewerAuthority !== 'ai-model-declared' || !['gpt-6.1-sol', 'gemini-4-carbon'].includes(r.reviewer) ||
+        r.independentAI?.generatorIdentity !== 'gemini-4-argon' || !r.independentAI?.sourceBindingsHash || !r.independentAI?.duplicateContextHash)
+        invalid('Owner-policy AI reviews require exact independent model identities and source/duplicate bindings');
+    } else if (r.kind !== 'software-release' || r.reviewerAuthority !== 'software-release-declared' || r.independentAI)
+      invalid('Owner-policy review is AI, AI diversity, or software release; never human technical approval');
+  } else {
+    if (r.policyBindingHash || r.independentAI?.sourceBindingsHash || r.independentAI?.duplicateContextHash)
+      invalid('Owner-policy bindings cannot be used outside the owner policy');
+    if (r.independentAI && !(r.kind === 'ai' && r.policyVersion === REVIEW_POLICY_VERSION))
+      invalid('Independent AI evidence requires an AI review bound to the opt-in policy version');
+  }
+});
 const RationalSchema = z.object({ numerator: z.string().regex(/^-?\d{1,100}$/), denominator: z.string().regex(/^[1-9]\d{0,99}$/) }).strict();
 const ExpressionSchema = z.lazy(() => z.union([
   z.object({ op: z.literal('quantity'), value: RationalSchema, unit: text }).strict(),

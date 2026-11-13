@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { build } from "esbuild";
-import { compileLegacyRelease } from "../server/interactiveContent/engine/compiler";
+import { compileApprovedOrLegacyRelease } from "./content-engine/committed-release";
 import { compilePrivateInput } from "./content-engine/compile-checked";
 import { writeInteractiveArtifactManifest } from "./interactiveArtifactFingerprint";
 import {
@@ -173,7 +173,7 @@ if (
   if (checkedName !== undefined && !checkedName) throw new Error("Empty checked document name");
   const staging = checkedName === undefined ? undefined : mkdtempSync(resolve(tmpdir(), "interactive-checked-build-"));
   try {
-    const interactiveArtifacts = checkedName === undefined ? compileLegacyRelease() : compilePrivateInput(checkedName, staging!);
+    const interactiveArtifacts = checkedName === undefined ? compileApprovedOrLegacyRelease() : compilePrivateInput(checkedName, staging!);
     await build({
       entryPoints: ["server/_core/index.ts"],
       platform: "node",

@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { existsSync, readFileSync, rmSync, unlinkSync, symlinkSync, writeFileSync, mkdtempSync } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
@@ -11,13 +11,21 @@ import { interactiveModes, interactiveStartSessionInputSchema, interactiveCatalo
 import { fixture, syntheticLegacy, syntheticExample, changeManifest, writeJson } from "./testFixtures";
 import { activeCheckedReleases, approvedCorpora } from "../../../scripts/content-engine/trusted-corpora";
 
+// Legacy unit fixtures deliberately have no active checked release. The real shipped
+// OIT bank and prior approval/pin bindings are covered by shippedReviewedRelease.test.ts.
+vi.mock("../../../scripts/content-engine/trusted-corpora", async importOriginal => ({
+  ...await importOriginal<typeof import("../../../scripts/content-engine/trusted-corpora")>(),
+  approvedCorpora: Object.freeze({}), activeCheckedReleases: Object.freeze({}),
+  trustedApproval: () => undefined, activeCheckedRelease: () => undefined,
+}));
+
 const roots: string[] = [];
 const make = (options: Parameters<typeof fixture>[0] = {}) => { const result = fixture(options); roots.push(result.root); return result; };
 const input = (overrides: Record<string, unknown> = {}) => interactiveStartSessionInputSchema.parse({ courseKey: "class1-water", mode: "rapid-swipe", ...overrides });
 afterEach(() => { for (const root of roots.splice(0)) rmSync(root, { recursive: true, force: true }); });
 
 describe("private indexed interactive engine", () => {
-  it("ships no checked approvals or active checked pins", () => {
+  it("isolates immutable-legacy fixtures from active reviewed release approvals", () => {
     expect(Object.keys(approvedCorpora)).toEqual([]);
     expect(Object.keys(activeCheckedReleases)).toEqual([]);
   });
