@@ -4,14 +4,16 @@ import type { Socket } from "node:net";
 import express from "express";
 import cookieParser from "cookie-parser";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { publicProcedure, router } from "./_core/trpc";
+import { resolveAccessForRequest } from "./_core/accessService";
 import { interactiveRouter } from "./routers/interactiveRouter";
 import { interactiveModes } from "./interactiveContent/schema";
 import { validateInteractivePackage } from "./interactiveContent/loader";
 import { getInteractiveContentEngine, type InteractiveContentEngine } from "./interactiveContent/engine/loader";
 
 vi.mock("./db", () => ({ getDb: vi.fn(async () => null) }));
+vi.mock("./_core/accessService", () => ({ resolveAccessForRequest: vi.fn() }));
 vi.mock("./interactiveContent/engine/loader", () => ({ getInteractiveContentEngine: vi.fn() }));
 const examples = interactiveModes.flatMap(mode => ["preview", "paid"].map(kind => {
   const base = { id: `${kind}-${mode}`, mode, prompt: "Synthetic prompt" };
@@ -71,41 +73,44 @@ beforeEach(() => {
   if (!pkg) throw new Error("Synthetic interactive package failed validation");
   vi.mocked(getInteractiveContentEngine).mockReturnValue(sessionEngine as unknown as InteractiveContentEngine);
 });
+afterEach(() => expect(resolveAccessForRequest).not.toHaveBeenCalled());
 
 describe("interactive HTTP batches through Express", () => {
-  it("batches answer-free catalogs and a bounded fixed preview session with response-wide no-store", async () => {
+  it("batches answer-free public catalogs and a bounded full session with response-wide no-store", async () => {
     const response = await request("interactive.getCatalog,interactive.startSession?batch=1", JSON.stringify({ 0: envelope({ courseKey: "class1-water" }), 1: envelope(valid) }));
     expect(response.status).toBe(200);
     expect(response.cache).toBe("private, no-store");
     const [catalog, session] = response.json().map((item: any) => item.result.data.json);
-    expect(catalog).toMatchObject({ courseKey: "class1-water", available: true, locked: true, version: "http-fixture" });
+    expect(catalog).toMatchObject({ courseKey: "class1-water", available: true, locked: false, version: "http-fixture" });
     expect(catalog.modes.map((item: any) => item.mode)).toEqual(interactiveModes);
     expect(catalog.modes.every((item: any) => item.totalCount === 2)).toBe(true);
     expect(JSON.stringify(catalog)).not.toMatch(/examples|correctAnswer|paid-/);
-    expect(session).toMatchObject({ mode: "rapid-swipe", totalAvailableCount: 1, filters: { topicId: null, difficulty: null, requestedSize: 20 } });
-    expect(session.examples.map((item: any) => item.id)).toEqual(["preview-rapid-swipe"]);
-    expect(response.body).not.toContain("paid-");
+    expect(session).toMatchObject({ locked: false, mode: "rapid-swipe", totalAvailableCount: 2, filters: { topicId: null, difficulty: null, requestedSize: 20 } });
+    expect(session.examples).toEqual(pkg!.examples.filter(example => example.mode === "rapid-swipe"));
+    expect(sessionEngine.getCatalog).toHaveBeenCalledWith("class1-water", true);
+    expect(sessionEngine.startSession).toHaveBeenCalledWith(valid, true);
   });
-  it("returns separately indexed previews for a batch and sets response-wide private no-store", async () => {
+  it("returns separately indexed full sessions for a batch and sets response-wide private no-store", async () => {
     const response = await request(path, JSON.stringify({ 0: envelope(valid), 1: envelope(valid) }));
     expect(response.status).toBe(200);
     expect(response.cache).toBe("private, no-store");
     const result = response.json();
     expect(result).toHaveLength(2);
     for (const item of result) {
-      expect(item.result.data.json).toMatchObject({ available: true, locked: true, version: "http-fixture" });
-      expect(item.result.data.json.examples.map((x: { id: string }) => x.id)).toEqual(["preview-rapid-swipe"]);
+      expect(item.result.data.json).toMatchObject({ available: true, locked: false, version: "http-fixture", totalAvailableCount: 2 });
+      expect(item.result.data.json.examples).toEqual(pkg!.examples.filter(example => example.mode === "rapid-swipe"));
     }
   });
-  it("isolates a schema-invalid sibling without exposing paid examples and marks the whole response no-store", async () => {
+  it("isolates a schema-invalid sibling while returning the public full session and marks the whole response no-store", async () => {
     const response = await request(path, JSON.stringify({ 0: envelope(valid), 1: envelope({ ...valid, email: "foreign@example.test" }) }));
     expect(response.status).toBe(207);
     expect(response.cache).toBe("private, no-store");
     const result = response.json();
-    expect(result[0].result.data.json.locked).toBe(true);
-    expect(result[0].result.data.json.examples).toHaveLength(1);
+    expect(result[0].result.data.json.locked).toBe(false);
+    expect(result[0].result.data.json.examples).toHaveLength(2);
     expect(result[1].error.json.data.code).toBe("BAD_REQUEST");
-    expect(response.body).not.toContain("paid-");
+    expect(result[1]).not.toHaveProperty("result");
+    expect(JSON.stringify(result[1])).not.toContain("paid-");
     expect(getInteractiveContentEngine).toHaveBeenCalledTimes(1);
   });
   it("covers an unrelated successful sibling with the interactive response's no-store header", async () => {
@@ -113,14 +118,14 @@ describe("interactive HTTP batches through Express", () => {
     expect(response.status).toBe(200);
     expect(response.cache).toBe("private, no-store");
     expect(response.json()[0].result.data.json).toEqual({ ok: true });
-    expect(response.json()[1].result.data.json.locked).toBe(true);
+    expect(response.json()[1].result.data.json.locked).toBe(false);
   });
-  it("returns an unavailable locked response with no-store for an absent package", async () => {
-    vi.mocked(getInteractiveContentEngine).mockReturnValue({ startSession: () => ({ courseKey: "class1-water", available: false, locked: true, version: null, sessionId: "synthetic-absent", mode: "rapid-swipe", totalAvailableCount: 0, examples: [], filters: { topicId: null, difficulty: null, requestedSize: 20 } }) } as unknown as InteractiveContentEngine);
+  it("returns an unavailable public response with no-store for an absent package", async () => {
+    vi.mocked(getInteractiveContentEngine).mockReturnValue({ startSession: () => ({ courseKey: "class1-water", available: false, locked: false, version: null, sessionId: "synthetic-absent", mode: "rapid-swipe", totalAvailableCount: 0, examples: [], filters: { topicId: null, difficulty: null, requestedSize: 20 } }) } as unknown as InteractiveContentEngine);
     const response = await request("interactive.startSession", JSON.stringify(envelope(valid)));
     expect(response.status).toBe(200);
     expect(response.cache).toBe("private, no-store");
-    expect(response.json().result.data.json).toEqual({ courseKey: "class1-water", available: false, locked: true, version: null, sessionId: "synthetic-absent", mode: "rapid-swipe", totalAvailableCount: 0, examples: [], filters: { topicId: null, difficulty: null, requestedSize: 20 } });
+    expect(response.json().result.data.json).toEqual({ courseKey: "class1-water", available: false, locked: false, version: null, sessionId: "synthetic-absent", mode: "rapid-swipe", totalAvailableCount: 0, examples: [], filters: { topicId: null, difficulty: null, requestedSize: 20 } });
   });
   it("fails closed with no-store for an invalid registered package", async () => {
     vi.mocked(getInteractiveContentEngine).mockReturnValue({ startSession: () => { throw new Error("private-artifact-error"); } } as unknown as InteractiveContentEngine);

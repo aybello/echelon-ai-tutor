@@ -222,7 +222,7 @@ function CoursePractice({ course }: { course: CourseEntry }) {
         <button type="button" className="interactive-drill__primary course-interactive__new-round" disabled={!catalog?.available || !online || authBusy || !catalogMode?.totalCount || Boolean(missingFilter) || sessionQuery.fetchStatus !== "idle"} onClick={newRound}>{catalog?.locked ? "Replay preview" : "New round"}</button>
       </div>
       <div className="course-interactive__session" ref={sessionElement}>
-        <div className="course-interactive__session-heading"><span>{DRILL_MODES.find(item => item.id === mode)?.label}</span><small>{catalog?.locked ? "Free preview" : "Practice round"}</small></div>
+        <div className="course-interactive__session-heading"><span>{DRILL_MODES.find(item => item.id === mode)?.label}</span><small>{catalog?.locked ? "Free preview" : "Free practice"}</small></div>
         {catalog?.locked && <p className="course-interactive__preview">You’re practising with the available free preview. Course access determines which activities are available.</p>}
         {session && <p className="course-interactive__inventory">{session.examples.length} in this round · {session.totalAvailableCount} available with these filters · progress not saved</p>}
         {status}
@@ -278,7 +278,7 @@ export default function CourseInteractiveLearning() {
           <h1 id="course-interactive-title">{course ? course.displayName : "Course unavailable"}</h1>
           {course ? <details className="course-interactive__details">
             <summary>Practice details · progress not saved</summary>
-            <p className="interactive-learning__description">Course-specific exercises for interactive exam practice.</p>
+            <p className="interactive-learning__description">All published game exercises are free to practise. No account or course purchase is required for these games.</p>
             <p className="interactive-learning__note">Your answers and progress stay on this page and are not saved to your account or quiz history. Switching activities or rechecking access resets your temporary session. Returning to this tab rechecks access and resets your round.</p>
             <p>Exam practice, not operating instructions or regulatory advice.</p>
           </details> : <p className="interactive-learning__description">This course could not be found or is not currently active.</p>}

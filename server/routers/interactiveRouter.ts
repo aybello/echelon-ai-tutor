@@ -4,12 +4,11 @@ import {
   interactiveCatalogInputSchema, interactiveCatalogResponseSchema,
   interactiveStartSessionInputSchema, interactiveSessionResponseSchema,
 } from "../../shared/interactiveSessions";
-import { resolveAccessForRequest } from "../_core/accessService";
 import { publicProcedure, router } from "../_core/trpc";
 import { getInteractiveContentEngine } from "../interactiveContent/engine/loader";
 
-const privateProcedure = publicProcedure.use(({ ctx, next }) => {
-  // Runs before parsing, authorization, or content reads, including errors.
+const noStoreProcedure = publicProcedure.use(({ ctx, next }) => {
+  // Runs before validation or content reads, including errors.
   ctx.res.setHeader("Cache-Control", "private, no-store");
   return next();
 });
@@ -25,30 +24,25 @@ function unavailable(): never {
   // Never log authored answers, tokens, paths, or malformed artifact details.
   throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Interactive content is unavailable." });
 }
+// Full access to published games is public by the founder's explicit policy.
+// This flag is local to these game endpoints, never to quiz/mock/paid guards.
+// The content engine still rejects unregistered, corrupt or unreleased content.
+const FULL_PUBLIC_GAME_ACCESS = true;
 export const interactiveRouter = router({
-  getContent: privateProcedure.input(interactiveCatalogInputSchema).mutation(async ({ ctx, input }) => {
+  getContent: noStoreProcedure.input(interactiveCatalogInputSchema).mutation(async ({ input }) => {
     const course = canonicalCourse(input.courseKey);
-    const hasAccess = await resolveAccessForRequest(ctx, course.courseKey, {
-      accessToken: input.accessToken, privilegedInteractiveAccess: true,
-    });
     // Only the frozen legacy <=300 package can reach this compatibility endpoint.
-    try { return getInteractiveContentEngine().getLegacyContent(course.courseKey, hasAccess); }
+    try { return getInteractiveContentEngine().getLegacyContent(course.courseKey, FULL_PUBLIC_GAME_ACCESS); }
     catch { return unavailable(); }
   }),
-  getCatalog: privateProcedure.input(interactiveCatalogInputSchema).output(interactiveCatalogResponseSchema).mutation(async ({ ctx, input }) => {
+  getCatalog: noStoreProcedure.input(interactiveCatalogInputSchema).output(interactiveCatalogResponseSchema).mutation(async ({ input }) => {
     const course = canonicalCourse(input.courseKey);
-    const hasAccess = await resolveAccessForRequest(ctx, course.courseKey, {
-      accessToken: input.accessToken, privilegedInteractiveAccess: true,
-    });
-    try { return getInteractiveContentEngine().getCatalog(course.courseKey, hasAccess); }
+    try { return getInteractiveContentEngine().getCatalog(course.courseKey, FULL_PUBLIC_GAME_ACCESS); }
     catch { return unavailable(); }
   }),
-  startSession: privateProcedure.input(interactiveStartSessionInputSchema).output(interactiveSessionResponseSchema).mutation(async ({ ctx, input }) => {
+  startSession: noStoreProcedure.input(interactiveStartSessionInputSchema).output(interactiveSessionResponseSchema).mutation(async ({ input }) => {
     const course = canonicalCourse(input.courseKey);
-    const hasAccess = await resolveAccessForRequest(ctx, course.courseKey, {
-      accessToken: input.accessToken, privilegedInteractiveAccess: true,
-    });
-    try { return getInteractiveContentEngine().startSession(input, hasAccess); }
+    try { return getInteractiveContentEngine().startSession(input, FULL_PUBLIC_GAME_ACCESS); }
     catch { return unavailable(); }
   }),
 });

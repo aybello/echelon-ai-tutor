@@ -239,7 +239,7 @@ describe("bounded course session UI (synthetic isolated fixtures)", () => {
     });
   });
 
-  it("offers Skip without marking an answer and requests a fresh session at the end in every mode", async () => {
+  it("lets Next skip without marking an answer and requests a fresh session at the end in every mode", async () => {
     await fixture(async page => {
       await waitForActivity(page);
       await page.evaluate(() => { (window as any).__multi = true; });
@@ -247,10 +247,11 @@ describe("bounded course session UI (synthetic isolated fixtures)", () => {
       for (const label of labels) {
         await nav.getByRole("button", { name: new RegExp(`^${label}`) }).click();
         await waitForActivity(page);
-        expect(await page.getByRole("button", { name: "Next activity →", exact: true }).isDisabled()).toBe(true);
-        await page.getByRole("button", { name: "Skip activity →", exact: true }).click();
+        expect(await page.getByRole("button", { name: "Next activity →", exact: true }).isEnabled()).toBe(true);
+        await page.getByRole("button", { name: "Next activity →", exact: true }).click();
         await activity(page).getByRole("heading", { level: 2 }).filter({ hasText: /second$/ }).waitFor();
         expect(await page.getByText("Correct", { exact: true }).count()).toBe(0);
+        expect(await page.getByText("Not quite", { exact: true }).count()).toBe(0);
         const before = (await calls(page, "session")).length;
         await page.getByRole("button", { name: "Next round →", exact: true }).click();
         await expect.poll(async () => (await calls(page, "session")).length).toBeGreaterThan(before);
