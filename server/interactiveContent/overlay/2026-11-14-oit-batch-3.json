@@ -1,0 +1,4698 @@
+{
+ "format": "interactive-overlay-v1",
+ "overlayId": "og-oit-3",
+ "scope": "Reviewed original game activities for oit: 172 items from authoring tables.",
+ "additions": [
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0001",
+    "prompt": "Corrosion is the gradual wearing away of metal by chemical reactions.",
+    "correctAnswer": true,
+    "explanation": "Corrosion slowly damages metal pipes and fittings through chemical reactions with water and air.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0002",
+    "prompt": "Corrosion is the buildup of clean sand in a basin.",
+    "correctAnswer": false,
+    "explanation": "Corrosion is a chemical attack on metal. Sand buildup is a different problem.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0003",
+    "prompt": "Water with a low pH tends to be more corrosive to metal pipes.",
+    "correctAnswer": true,
+    "explanation": "Acidic water can attack metal and dissolve it more readily.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0004",
+    "prompt": "Water with a high pH is the same as water with a low pH in corrosion.",
+    "correctAnswer": false,
+    "explanation": "Low pH water is usually more aggressive toward metal than neutral or mildly basic water.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0005",
+    "prompt": "A hydrometer or similar instrument can measure a property of a liquid.",
+    "correctAnswer": true,
+    "explanation": "Simple instruments measure properties such as density.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0006",
+    "prompt": "A meter that reads in gallons per minute is showing flow rate.",
+    "correctAnswer": true,
+    "explanation": "Gallons per minute is a rate of flow.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0007",
+    "prompt": "A meter that reads in gallons per minute is showing pressure.",
+    "correctAnswer": false,
+    "explanation": "Pressure is shown in units such as psi.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0008",
+    "prompt": "Grease on moving parts helps reduce friction and wear.",
+    "correctAnswer": true,
+    "explanation": "Lubricants lower friction between moving surfaces.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0009",
+    "prompt": "A motor that smells hot or sounds strange should be reported.",
+    "correctAnswer": true,
+    "explanation": "Unusual heat, noise and smells are early signs of trouble.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0010",
+    "prompt": "A small leak at a pump seal is a reason to ignore the pump for a month.",
+    "correctAnswer": false,
+    "explanation": "Leaks can grow worse, so they should be reported and tracked.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0011",
+    "prompt": "Clean water that looks clear can still contain harmful microbes.",
+    "correctAnswer": true,
+    "explanation": "Clear water can still carry organisms that cannot be seen.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0012",
+    "prompt": "If water looks clear, it is safe to drink without further checks.",
+    "correctAnswer": false,
+    "explanation": "Looks do not show whether disease-causing microbes are present.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0013",
+    "prompt": "A hose connected to a chemical tank can create a safety hazard if it leaks.",
+    "correctAnswer": true,
+    "explanation": "A leaking chemical hose can expose workers and the environment.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0014",
+    "prompt": "Lifting with the legs and keeping the back straight can reduce back injury.",
+    "correctAnswer": true,
+    "explanation": "Good lifting posture lowers strain on the back.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0015",
+    "prompt": "Bending at the waist to lift a heavy load is a good way to protect the back.",
+    "correctAnswer": false,
+    "explanation": "Bending at the waist strains the back. Use legs and good posture.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0016",
+    "prompt": "Hardness in water can leave scale on pipes and heaters.",
+    "correctAnswer": true,
+    "explanation": "Calcium and magnesium can form scale when water is heated.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0017",
+    "prompt": "Soft water tends to leave heavy scale on heaters.",
+    "correctAnswer": false,
+    "explanation": "Hard water leaves scale. Soft water has little calcium and magnesium.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0018",
+    "prompt": "Total dissolved solids can be estimated from conductivity.",
+    "correctAnswer": true,
+    "explanation": "More dissolved ions let water carry more electrical current.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0019",
+    "prompt": "A higher conductivity reading suggests fewer dissolved ions.",
+    "correctAnswer": false,
+    "explanation": "Higher conductivity suggests more dissolved ions.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0020",
+    "prompt": "Pressure in a pipe at a low point is higher than at a high point in the same system.",
+    "correctAnswer": true,
+    "explanation": "Water at a lower elevation carries more pressure from the water above it.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0021",
+    "prompt": "Pressure in a tank-fed system rises as the water level in the tank falls.",
+    "correctAnswer": false,
+    "explanation": "A lower tank level reduces the pressure it supplies.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0022",
+    "prompt": "A flow meter reading can be used with time to find the volume that passed.",
+    "correctAnswer": true,
+    "explanation": "Flow multiplied by time gives volume.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0023",
+    "prompt": "Preventive maintenance is done on a schedule to avoid breakdowns.",
+    "correctAnswer": true,
+    "explanation": "Scheduled care catches wear before equipment fails.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0024",
+    "prompt": "Preventive maintenance is repair done after equipment has already failed.",
+    "correctAnswer": false,
+    "explanation": "Repair after failure is corrective maintenance.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0025",
+    "prompt": "Recording a pump's runtime helps decide when it needs service.",
+    "correctAnswer": true,
+    "explanation": "Runtime logs help plan lubrication, inspection and replacement.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0026",
+    "prompt": "Static pressure is the pressure in a pipe when water is not moving.",
+    "correctAnswer": true,
+    "explanation": "Static pressure is measured with no flow.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0027",
+    "prompt": "Residual pressure is the pressure measured while water is standing still.",
+    "correctAnswer": false,
+    "explanation": "That is static pressure. Residual pressure is measured while water is flowing.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0028",
+    "prompt": "Algae growth in a source can add taste and odor to water.",
+    "correctAnswer": true,
+    "explanation": "Algae can release compounds that change taste and odor.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0029",
+    "prompt": "Algae growth in a source tends to improve the taste of water.",
+    "correctAnswer": false,
+    "explanation": "Algae tend to add unpleasant taste and odor.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0030",
+    "prompt": "Activated carbon can adsorb some compounds that cause taste and odor.",
+    "correctAnswer": true,
+    "explanation": "Carbon surfaces hold onto certain organic compounds.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0031",
+    "prompt": "Activated carbon works mainly by killing bacteria through a chemical reaction.",
+    "correctAnswer": false,
+    "explanation": "Carbon works by adsorption, not by killing bacteria.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0032",
+    "prompt": "Pressure at the bottom of a tank depends on the height of water above it.",
+    "correctAnswer": true,
+    "explanation": "Pressure increases with the depth of water above a point.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0033",
+    "prompt": "Pressure at the bottom of a tank depends mainly on the width of the tank.",
+    "correctAnswer": false,
+    "explanation": "Pressure depends on height of water, not tank width.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0034",
+    "prompt": "A pump's discharge pressure often rises when a discharge valve is partly closed.",
+    "correctAnswer": true,
+    "explanation": "Throttling the discharge increases the pressure the pump develops.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0035",
+    "prompt": "A pump's flow tends to fall when a discharge valve is partly closed.",
+    "correctAnswer": true,
+    "explanation": "Throttling reduces flow through the system.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0036",
+    "prompt": "A pump's flow tends to rise when a discharge valve is partly closed.",
+    "correctAnswer": false,
+    "explanation": "Throttling restricts flow, so flow falls.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0037",
+    "prompt": "Corrosion control often involves adjusting pH and alkalinity.",
+    "correctAnswer": true,
+    "explanation": "Water chemistry affects how aggressive water is toward metal.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0038",
+    "prompt": "Corrosion control is unrelated to water chemistry and depends on pipe color.",
+    "correctAnswer": false,
+    "explanation": "Water chemistry strongly affects corrosion, and pipe color has no effect.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0039",
+    "prompt": "A trend of slowly rising amperage on a motor can signal growing mechanical wear.",
+    "correctAnswer": true,
+    "explanation": "Rising load over time can point to wear or binding.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0040",
+    "prompt": "A motor drawing less current than usual is proof of improved efficiency.",
+    "correctAnswer": false,
+    "explanation": "Lower amperage can also mean low load or a problem, so it should be checked.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0041",
+    "prompt": "A turbidity spike that matches a recent backwash may reflect the filter not yet ripened.",
+    "correctAnswer": true,
+    "explanation": "A freshly washed filter can pass more particles until it ripens.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0042",
+    "prompt": "Water treated with too little coagulant may carry more particles to the filters.",
+    "correctAnswer": true,
+    "explanation": "Poor coagulation lets fine particles pass through settling.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0043",
+    "prompt": "Water treated with too little coagulant will be cleaner at the filters.",
+    "correctAnswer": false,
+    "explanation": "Too little coagulant lets more particles pass, so water is not cleaner.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0044",
+    "prompt": "A representative sample for a chemical feed check should be taken after the chemical has mixed.",
+    "correctAnswer": true,
+    "explanation": "Sampling before mixing may not show the true concentration.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0045",
+    "prompt": "Taking a sample right at the chemical injection point gives a good picture of the mixed dose.",
+    "correctAnswer": false,
+    "explanation": "At the injection point the chemical is not yet mixed, so the reading is not representative.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0046",
+    "prompt": "A flow-paced chemical feed adjusts the dose rate as flow changes.",
+    "correctAnswer": true,
+    "explanation": "Flow pacing keeps the dose steadier when flow rises or falls.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0047",
+    "prompt": "A flow-paced feed keeps the same feed rate even when flow changes a lot.",
+    "correctAnswer": false,
+    "explanation": "A fixed feed rate does that. Flow pacing changes the feed rate with flow.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0048",
+    "prompt": "A graduated cylinder is used to weigh a sample.",
+    "correctAnswer": false,
+    "explanation": "A graduated cylinder measures volume. A balance weighs a sample.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0049",
+    "prompt": "Pitting in a metal pipe is a sign of corrosion attack.",
+    "correctAnswer": true,
+    "explanation": "Small pits can form where corrosion eats into the metal.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0050",
+    "prompt": "A gauge on a pipe shows how much chlorine is in the water.",
+    "correctAnswer": false,
+    "explanation": "A pressure gauge shows pressure. A chlorine test shows chlorine.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0051",
+    "prompt": "Elevation head is the sideways width of a pipe.",
+    "correctAnswer": false,
+    "explanation": "Elevation head is the height of water above a reference point.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0052",
+    "prompt": "Friction loss is energy gained as water moves through a pipe.",
+    "correctAnswer": false,
+    "explanation": "Friction loss is energy lost as water rubs against pipe walls.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0053",
+    "prompt": "A calibration record shows how much water a pump moved.",
+    "correctAnswer": false,
+    "explanation": "A calibration record shows an instrument was checked against a standard.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0054",
+    "prompt": "Voltage is the flow of electricity through a wire.",
+    "correctAnswer": false,
+    "explanation": "Current is the flow. Voltage is the electrical pressure.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0055",
+    "prompt": "Ground fault protection turns up the power when current leaks.",
+    "correctAnswer": false,
+    "explanation": "Ground fault protection cuts power when current leaks.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0056",
+    "prompt": "Raising pH as far as possible is the best corrosion fix for a system.",
+    "correctAnswer": false,
+    "explanation": "Very high pH may cause other problems, and corrosion control depends on balance.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-rapid-swipe-0057",
+    "prompt": "Flow pacing is used to keep the feed rate fixed when flow rises.",
+    "correctAnswer": false,
+    "explanation": "Flow pacing raises the feed rate as flow rises so the dose stays steady.",
+    "mode": "rapid-swipe"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-speed-match-0058",
+    "prompt": "Match each property to what it describes in water.",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Turbidity",
+      "right": "Cloudiness"
+     },
+     {
+      "id": "p2",
+      "left": "Hardness",
+      "right": "Calcium and magnesium"
+     },
+     {
+      "id": "p3",
+      "left": "Alkalinity",
+      "right": "Resistance to pH change"
+     },
+     {
+      "id": "p4",
+      "left": "Conductivity",
+      "right": "Ability to carry current"
+     },
+     {
+      "id": "p5",
+      "left": "pH",
+      "right": "Acid or base level"
+     },
+     {
+      "id": "p6",
+      "left": "Color",
+      "right": "Visible tint of water"
+     }
+    ],
+    "mode": "speed-match"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-speed-match-0059",
+    "prompt": "Match each maintenance word to its meaning.",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Lubricate",
+      "right": "Reduce friction"
+     },
+     {
+      "id": "p2",
+      "left": "Inspect",
+      "right": "Look for wear or damage"
+     },
+     {
+      "id": "p3",
+      "left": "Calibrate",
+      "right": "Adjust to a standard"
+     },
+     {
+      "id": "p4",
+      "left": "Replace",
+      "right": "Install a new part"
+     },
+     {
+      "id": "p5",
+      "left": "Clean",
+      "right": "Remove buildup"
+     },
+     {
+      "id": "p6",
+      "left": "Tighten",
+      "right": "Secure a loose fitting"
+     }
+    ],
+    "mode": "speed-match"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-speed-match-0060",
+    "prompt": "Match each lab tool to its use.",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Beaker",
+      "right": "Holds and mixes liquids"
+     },
+     {
+      "id": "p2",
+      "left": "Graduated cylinder",
+      "right": "Measures volume"
+     },
+     {
+      "id": "p3",
+      "left": "pH meter",
+      "right": "Reads pH"
+     },
+     {
+      "id": "p4",
+      "left": "Turbidimeter",
+      "right": "Reads cloudiness"
+     },
+     {
+      "id": "p5",
+      "left": "Pipette",
+      "right": "Transfers small volumes"
+     },
+     {
+      "id": "p6",
+      "left": "Balance",
+      "right": "Weighs a sample"
+     }
+    ],
+    "mode": "speed-match"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-speed-match-0061",
+    "prompt": "Match each hydraulic term to its meaning.",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Static pressure",
+      "right": "Pressure with no flow"
+     },
+     {
+      "id": "p2",
+      "left": "Residual pressure",
+      "right": "Pressure during flow"
+     },
+     {
+      "id": "p3",
+      "left": "Elevation head",
+      "right": "Height of water above a point"
+     },
+     {
+      "id": "p4",
+      "left": "Friction loss",
+      "right": "Energy lost to pipe walls"
+     },
+     {
+      "id": "p5",
+      "left": "Flow rate",
+      "right": "Volume per unit time"
+     },
+     {
+      "id": "p6",
+      "left": "Velocity",
+      "right": "Speed of water in a pipe"
+     }
+    ],
+    "mode": "speed-match"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-speed-match-0062",
+    "prompt": "Match each treatment problem to a possible cause.",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Taste and odor",
+      "right": "Algae in the source"
+     },
+     {
+      "id": "p2",
+      "left": "Scale on heaters",
+      "right": "Hard water"
+     },
+     {
+      "id": "p3",
+      "left": "Red water",
+      "right": "Corroding iron pipes"
+     },
+     {
+      "id": "p4",
+      "left": "Cloudy water",
+      "right": "Particles passing treatment"
+     },
+     {
+      "id": "p5",
+      "left": "Low residual",
+      "right": "High chlorine demand"
+     },
+     {
+      "id": "p6",
+      "left": "Low pressure",
+      "right": "High demand or a leak"
+     }
+    ],
+    "mode": "speed-match"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-speed-match-0063",
+    "prompt": "Match each record to its purpose.",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Daily log",
+      "right": "Track readings over time"
+     },
+     {
+      "id": "p2",
+      "left": "Maintenance record",
+      "right": "Track equipment service"
+     },
+     {
+      "id": "p3",
+      "left": "Calibration record",
+      "right": "Show instruments were checked"
+     },
+     {
+      "id": "p4",
+      "left": "Chain of custody",
+      "right": "Track who held a sample"
+     },
+     {
+      "id": "p5",
+      "left": "Lab bench sheet",
+      "right": "Record test results"
+     },
+     {
+      "id": "p6",
+      "left": "Incident report",
+      "right": "Document an event"
+     }
+    ],
+    "mode": "speed-match"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-speed-match-0064",
+    "prompt": "Match each electrical safety term to its meaning.",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Lockout",
+      "right": "Lock isolating an energy source"
+     },
+     {
+      "id": "p2",
+      "left": "Tagout",
+      "right": "Tag warning not to operate"
+     },
+     {
+      "id": "p3",
+      "left": "Ground fault protection",
+      "right": "Cuts power when current leaks"
+     },
+     {
+      "id": "p4",
+      "left": "Breaker",
+      "right": "Protects a circuit from overload"
+     },
+     {
+      "id": "p5",
+      "left": "Voltage",
+      "right": "Electrical pressure"
+     },
+     {
+      "id": "p6",
+      "left": "Current",
+      "right": "Flow of electricity"
+     }
+    ],
+    "mode": "speed-match"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-speed-match-0065",
+    "prompt": "Match each control strategy to what it adjusts.",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Flow pacing",
+      "right": "Chemical feed with flow"
+     },
+     {
+      "id": "p2",
+      "left": "Residual control",
+      "right": "Feed based on measured residual"
+     },
+     {
+      "id": "p3",
+      "left": "Level control",
+      "right": "Pump based on tank level"
+     },
+     {
+      "id": "p4",
+      "left": "Pressure control",
+      "right": "Pump based on line pressure"
+     },
+     {
+      "id": "p5",
+      "left": "Timer control",
+      "right": "Operation at set times"
+     },
+     {
+      "id": "p6",
+      "left": "Manual control",
+      "right": "Operator sets output"
+     }
+    ],
+    "mode": "speed-match"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-speed-match-0066",
+    "prompt": "Match each observation to the most useful first check.",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Rising amperage",
+      "right": "Look for mechanical binding"
+     },
+     {
+      "id": "p2",
+      "left": "Turbidity spike after backwash",
+      "right": "Check filter ripening"
+     },
+     {
+      "id": "p3",
+      "left": "Falling flow at a pump",
+      "right": "Check suction conditions"
+     },
+     {
+      "id": "p4",
+      "left": "Dropping residual",
+      "right": "Check feed and demand"
+     },
+     {
+      "id": "p5",
+      "left": "Pressure swings",
+      "right": "Check valve and pump operation"
+     },
+     {
+      "id": "p6",
+      "left": "Odd reading",
+      "right": "Check calibration and sample"
+     }
+    ],
+    "mode": "speed-match"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-speed-match-0067",
+    "prompt": "Match each water chemistry change to its likely effect.",
+    "pairs": [
+     {
+      "id": "p1",
+      "left": "Lower pH",
+      "right": "More aggressive toward metal"
+     },
+     {
+      "id": "p2",
+      "left": "Higher hardness",
+      "right": "More scale"
+     },
+     {
+      "id": "p3",
+      "left": "Lower alkalinity",
+      "right": "Less pH stability"
+     },
+     {
+      "id": "p4",
+      "left": "Higher conductivity",
+      "right": "More dissolved ions"
+     },
+     {
+      "id": "p5",
+      "left": "Warmer water",
+      "right": "Faster reactions"
+     },
+     {
+      "id": "p6",
+      "left": "Colder water",
+      "right": "Slower settling"
+     }
+    ],
+    "mode": "speed-match"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0068",
+    "prompt": "Which is not a laboratory tool?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Balance"
+     },
+     {
+      "id": "option-2",
+      "label": "Turbidimeter"
+     },
+     {
+      "id": "option-3",
+      "label": "Cylinder"
+     },
+     {
+      "id": "option-4",
+      "label": "Hydrant"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Hydrant is a system component, not a lab tool.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0069",
+    "prompt": "Which is not a laboratory tool?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Turbidimeter"
+     },
+     {
+      "id": "option-2",
+      "label": "Pipette"
+     },
+     {
+      "id": "option-3",
+      "label": "Cylinder"
+     },
+     {
+      "id": "option-4",
+      "label": "Valve"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Valve is a system component, not a lab tool.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0070",
+    "prompt": "Which is not a laboratory tool?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Turbidimeter"
+     },
+     {
+      "id": "option-2",
+      "label": "Cylinder"
+     },
+     {
+      "id": "option-3",
+      "label": "Beaker"
+     },
+     {
+      "id": "option-4",
+      "label": "Tank"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Tank is a system component, not a lab tool.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0071",
+    "prompt": "Which is not a laboratory tool?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Balance"
+     },
+     {
+      "id": "option-2",
+      "label": "Pipe"
+     },
+     {
+      "id": "option-3",
+      "label": "Pipette"
+     },
+     {
+      "id": "option-4",
+      "label": "Beaker"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Pipe is a system component, not a lab tool.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0072",
+    "prompt": "Which is not a laboratory tool?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Pipette"
+     },
+     {
+      "id": "option-2",
+      "label": "Balance"
+     },
+     {
+      "id": "option-3",
+      "label": "Cylinder"
+     },
+     {
+      "id": "option-4",
+      "label": "Hydrant"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Hydrant is a system component, not a lab tool.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0073",
+    "prompt": "Which is not a laboratory tool?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Beaker"
+     },
+     {
+      "id": "option-2",
+      "label": "Pipette"
+     },
+     {
+      "id": "option-3",
+      "label": "Valve"
+     },
+     {
+      "id": "option-4",
+      "label": "Turbidimeter"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Valve is a system component, not a lab tool.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0074",
+    "prompt": "Which is not a kind of maintenance task?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Lubricating"
+     },
+     {
+      "id": "option-2",
+      "label": "Replacing parts"
+     },
+     {
+      "id": "option-3",
+      "label": "Inspecting"
+     },
+     {
+      "id": "option-4",
+      "label": "Flowing"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Flowing is a process, not a maintenance task.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0075",
+    "prompt": "Which is not a kind of maintenance task?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Lubricating"
+     },
+     {
+      "id": "option-2",
+      "label": "Tightening"
+     },
+     {
+      "id": "option-3",
+      "label": "Settling"
+     },
+     {
+      "id": "option-4",
+      "label": "Replacing parts"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Settling is a process, not a maintenance task.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0076",
+    "prompt": "Which is not a kind of maintenance task?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Replacing parts"
+     },
+     {
+      "id": "option-2",
+      "label": "Tightening"
+     },
+     {
+      "id": "option-3",
+      "label": "Inspecting"
+     },
+     {
+      "id": "option-4",
+      "label": "Dosing"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Dosing is a process, not a maintenance task.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0077",
+    "prompt": "Which is not a kind of maintenance task?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Tightening"
+     },
+     {
+      "id": "option-2",
+      "label": "Flowing"
+     },
+     {
+      "id": "option-3",
+      "label": "Cleaning"
+     },
+     {
+      "id": "option-4",
+      "label": "Inspecting"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Flowing is a process, not a maintenance task.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0078",
+    "prompt": "Which is not a kind of maintenance task?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Inspecting"
+     },
+     {
+      "id": "option-2",
+      "label": "Cleaning"
+     },
+     {
+      "id": "option-3",
+      "label": "Settling"
+     },
+     {
+      "id": "option-4",
+      "label": "Lubricating"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Settling is a process, not a maintenance task.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0079",
+    "prompt": "Which is not a kind of maintenance task?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Replacing parts"
+     },
+     {
+      "id": "option-2",
+      "label": "Cleaning"
+     },
+     {
+      "id": "option-3",
+      "label": "Dosing"
+     },
+     {
+      "id": "option-4",
+      "label": "Tightening"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Dosing is a process, not a maintenance task.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0080",
+    "prompt": "Which is not a sign of corrosion?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Clear water"
+     },
+     {
+      "id": "option-2",
+      "label": "Blue-green stains"
+     },
+     {
+      "id": "option-3",
+      "label": "Rust scale"
+     },
+     {
+      "id": "option-4",
+      "label": "Pitted metal"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Clear water does not suggest corrosion.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0081",
+    "prompt": "Which is not a sign of corrosion?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Blue-green stains"
+     },
+     {
+      "id": "option-2",
+      "label": "Red water"
+     },
+     {
+      "id": "option-3",
+      "label": "Smooth metal"
+     },
+     {
+      "id": "option-4",
+      "label": "Pinhole leaks"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Smooth metal does not suggest corrosion.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0082",
+    "prompt": "Which is not a sign of corrosion?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Clear water"
+     },
+     {
+      "id": "option-2",
+      "label": "Pinhole leaks"
+     },
+     {
+      "id": "option-3",
+      "label": "Pitted metal"
+     },
+     {
+      "id": "option-4",
+      "label": "Rust scale"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Clear water does not suggest corrosion.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0083",
+    "prompt": "Which is not a sign of corrosion?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Blue-green stains"
+     },
+     {
+      "id": "option-2",
+      "label": "Smooth metal"
+     },
+     {
+      "id": "option-3",
+      "label": "Pinhole leaks"
+     },
+     {
+      "id": "option-4",
+      "label": "Rust scale"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Smooth metal does not suggest corrosion.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0084",
+    "prompt": "Which is not a sign of corrosion?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Red water"
+     },
+     {
+      "id": "option-2",
+      "label": "Clear water"
+     },
+     {
+      "id": "option-3",
+      "label": "Blue-green stains"
+     },
+     {
+      "id": "option-4",
+      "label": "Rust scale"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Clear water does not suggest corrosion.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0085",
+    "prompt": "Which is not a hydraulic quantity?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Pressure"
+     },
+     {
+      "id": "option-2",
+      "label": "Flow rate"
+     },
+     {
+      "id": "option-3",
+      "label": "Head"
+     },
+     {
+      "id": "option-4",
+      "label": "pH"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "pH is a water chemistry property, not a hydraulic quantity.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0086",
+    "prompt": "Which is not a hydraulic quantity?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Velocity"
+     },
+     {
+      "id": "option-2",
+      "label": "Color"
+     },
+     {
+      "id": "option-3",
+      "label": "Pressure"
+     },
+     {
+      "id": "option-4",
+      "label": "Head"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Color is a water chemistry property, not a hydraulic quantity.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0087",
+    "prompt": "Which is not a hydraulic quantity?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Pressure"
+     },
+     {
+      "id": "option-2",
+      "label": "Flow rate"
+     },
+     {
+      "id": "option-3",
+      "label": "Velocity"
+     },
+     {
+      "id": "option-4",
+      "label": "pH"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "pH is a water chemistry property, not a hydraulic quantity.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0088",
+    "prompt": "Which is not a hydraulic quantity?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Flow rate"
+     },
+     {
+      "id": "option-2",
+      "label": "Color"
+     },
+     {
+      "id": "option-3",
+      "label": "Velocity"
+     },
+     {
+      "id": "option-4",
+      "label": "Head"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Color is a water chemistry property, not a hydraulic quantity.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0089",
+    "prompt": "Which is not a cause of taste and odor?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Some chemicals"
+     },
+     {
+      "id": "option-2",
+      "label": "Decaying plants"
+     },
+     {
+      "id": "option-3",
+      "label": "Fresh water"
+     },
+     {
+      "id": "option-4",
+      "label": "Algae growth"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Fresh water is not a cause of taste and odor.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0090",
+    "prompt": "Which is not a cause of taste and odor?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Some chemicals"
+     },
+     {
+      "id": "option-2",
+      "label": "Algae growth"
+     },
+     {
+      "id": "option-3",
+      "label": "Clean sand"
+     },
+     {
+      "id": "option-4",
+      "label": "Stagnant water"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Clean sand is not a cause of taste and odor.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0091",
+    "prompt": "Which is not a cause of taste and odor?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Fresh water"
+     },
+     {
+      "id": "option-2",
+      "label": "Stagnant water"
+     },
+     {
+      "id": "option-3",
+      "label": "Decaying plants"
+     },
+     {
+      "id": "option-4",
+      "label": "Algae growth"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Fresh water is not a cause of taste and odor.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0092",
+    "prompt": "Which is not a cause of taste and odor?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Stagnant water"
+     },
+     {
+      "id": "option-2",
+      "label": "Clean sand"
+     },
+     {
+      "id": "option-3",
+      "label": "Some chemicals"
+     },
+     {
+      "id": "option-4",
+      "label": "Decaying plants"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Clean sand is not a cause of taste and odor.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0093",
+    "prompt": "Which is not a reason for rising pump amperage?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Low load"
+     },
+     {
+      "id": "option-2",
+      "label": "Mechanical binding"
+     },
+     {
+      "id": "option-3",
+      "label": "Clogged impeller"
+     },
+     {
+      "id": "option-4",
+      "label": "A bearing problem"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Low load would not explain rising amperage.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0094",
+    "prompt": "Which is not a reason for rising pump amperage?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "A bearing problem"
+     },
+     {
+      "id": "option-2",
+      "label": "Mechanical binding"
+     },
+     {
+      "id": "option-3",
+      "label": "Free shaft"
+     },
+     {
+      "id": "option-4",
+      "label": "A tight packing"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Free shaft would not explain rising amperage.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0095",
+    "prompt": "Which is not a reason for rising pump amperage?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "A tight packing"
+     },
+     {
+      "id": "option-2",
+      "label": "A bearing problem"
+     },
+     {
+      "id": "option-3",
+      "label": "Low load"
+     },
+     {
+      "id": "option-4",
+      "label": "Clogged impeller"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Low load would not explain rising amperage.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0096",
+    "prompt": "Which is not a reason for rising pump amperage?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Free shaft"
+     },
+     {
+      "id": "option-2",
+      "label": "Mechanical binding"
+     },
+     {
+      "id": "option-3",
+      "label": "Clogged impeller"
+     },
+     {
+      "id": "option-4",
+      "label": "A tight packing"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Free shaft would not explain rising amperage.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0097",
+    "prompt": "Which is not a way to reduce corrosion in a system?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Using lined pipe"
+     },
+     {
+      "id": "option-2",
+      "label": "Lowering pH a lot"
+     },
+     {
+      "id": "option-3",
+      "label": "Adjusting pH"
+     },
+     {
+      "id": "option-4",
+      "label": "Adjusting alkalinity"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Lowering pH a lot would not reduce corrosion.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0098",
+    "prompt": "Which is not a way to reduce corrosion in a system?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Adjusting pH"
+     },
+     {
+      "id": "option-2",
+      "label": "Adjusting alkalinity"
+     },
+     {
+      "id": "option-3",
+      "label": "Adding a corrosion inhibitor"
+     },
+     {
+      "id": "option-4",
+      "label": "Skipping tests"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Skipping tests would not reduce corrosion.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0099",
+    "prompt": "Which is not a way to reduce corrosion in a system?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Lowering pH a lot"
+     },
+     {
+      "id": "option-2",
+      "label": "Adjusting alkalinity"
+     },
+     {
+      "id": "option-3",
+      "label": "Using lined pipe"
+     },
+     {
+      "id": "option-4",
+      "label": "Adding a corrosion inhibitor"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Lowering pH a lot would not reduce corrosion.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-odd-one-out-0100",
+    "prompt": "Which is not a way to reduce corrosion in a system?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Adding a corrosion inhibitor"
+     },
+     {
+      "id": "option-2",
+      "label": "Skipping tests"
+     },
+     {
+      "id": "option-3",
+      "label": "Using lined pipe"
+     },
+     {
+      "id": "option-4",
+      "label": "Adjusting pH"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Skipping tests would not reduce corrosion.",
+    "mode": "odd-one-out"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-before-after-0101",
+    "prompt": "In a normal pump check, which step comes earlier?",
+    "options": [
+     "Check the readings",
+     "Report problems"
+    ],
+    "correctAnswer": "Check the readings",
+    "explanation": "Observation comes before recording and reporting. Check the readings comes before Report problems.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-before-after-0102",
+    "prompt": "In a normal pump check, which step comes later?",
+    "options": [
+     "Check the seal",
+     "Look and listen"
+    ],
+    "correctAnswer": "Check the seal",
+    "explanation": "Observation comes before recording and reporting. Look and listen comes before Check the seal.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-before-after-0103",
+    "prompt": "In a normal pump check, which step comes earlier?",
+    "options": [
+     "Report problems",
+     "Look and listen"
+    ],
+    "correctAnswer": "Look and listen",
+    "explanation": "Observation comes before recording and reporting. Look and listen comes before Report problems.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-before-after-0104",
+    "prompt": "In a normal pump check, which step comes later?",
+    "options": [
+     "Report problems",
+     "Record the findings"
+    ],
+    "correctAnswer": "Report problems",
+    "explanation": "Observation comes before recording and reporting. Record the findings comes before Report problems.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-before-after-0105",
+    "prompt": "In a normal pump check, which step comes earlier?",
+    "options": [
+     "Check the readings",
+     "Check the seal"
+    ],
+    "correctAnswer": "Check the seal",
+    "explanation": "Observation comes before recording and reporting. Check the seal comes before Check the readings.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-before-after-0106",
+    "prompt": "In a normal pump check, which step comes later?",
+    "options": [
+     "Record the findings",
+     "Look and listen"
+    ],
+    "correctAnswer": "Record the findings",
+    "explanation": "Observation comes before recording and reporting. Look and listen comes before Record the findings.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-before-after-0107",
+    "prompt": "In a normal pump check, which step comes earlier?",
+    "options": [
+     "Record the findings",
+     "Check the readings"
+    ],
+    "correctAnswer": "Check the readings",
+    "explanation": "Observation comes before recording and reporting. Check the readings comes before Record the findings.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-before-after-0108",
+    "prompt": "In a normal pump check, which step comes later?",
+    "options": [
+     "Record the findings",
+     "Check the seal"
+    ],
+    "correctAnswer": "Record the findings",
+    "explanation": "Observation comes before recording and reporting. Check the seal comes before Record the findings.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-before-after-0109",
+    "prompt": "In a calibration check, which step comes earlier?",
+    "options": [
+     "Read the standard",
+     "Adjust the meter"
+    ],
+    "correctAnswer": "Read the standard",
+    "explanation": "The standard is read before adjusting, and results are recorded last. Read the standard comes before Adjust the meter.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-before-after-0110",
+    "prompt": "In a calibration check, which step comes later?",
+    "options": [
+     "Record the result",
+     "Read the standard"
+    ],
+    "correctAnswer": "Record the result",
+    "explanation": "The standard is read before adjusting, and results are recorded last. Read the standard comes before Record the result.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-before-after-0111",
+    "prompt": "In a calibration check, which step comes earlier?",
+    "options": [
+     "Record the result",
+     "Adjust the meter"
+    ],
+    "correctAnswer": "Adjust the meter",
+    "explanation": "The standard is read before adjusting, and results are recorded last. Adjust the meter comes before Record the result.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-before-after-0112",
+    "prompt": "In a calibration check, which step comes later?",
+    "options": [
+     "Prepare the standard",
+     "Rinse the probe"
+    ],
+    "correctAnswer": "Rinse the probe",
+    "explanation": "The standard is read before adjusting, and results are recorded last. Prepare the standard comes before Rinse the probe.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-before-after-0113",
+    "prompt": "In a calibration check, which step comes earlier?",
+    "options": [
+     "Adjust the meter",
+     "Prepare the standard"
+    ],
+    "correctAnswer": "Prepare the standard",
+    "explanation": "The standard is read before adjusting, and results are recorded last. Prepare the standard comes before Adjust the meter.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-before-after-0114",
+    "prompt": "In a calibration check, which step comes later?",
+    "options": [
+     "Rinse the probe",
+     "Adjust the meter"
+    ],
+    "correctAnswer": "Adjust the meter",
+    "explanation": "The standard is read before adjusting, and results are recorded last. Rinse the probe comes before Adjust the meter.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-before-after-0115",
+    "prompt": "In a calibration check, which step comes earlier?",
+    "options": [
+     "Record the result",
+     "Prepare the standard"
+    ],
+    "correctAnswer": "Prepare the standard",
+    "explanation": "The standard is read before adjusting, and results are recorded last. Prepare the standard comes before Record the result.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-before-after-0116",
+    "prompt": "In a calibration check, which step comes later?",
+    "options": [
+     "Prepare the standard",
+     "Read the standard"
+    ],
+    "correctAnswer": "Read the standard",
+    "explanation": "The standard is read before adjusting, and results are recorded last. Prepare the standard comes before Read the standard.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-before-after-0117",
+    "prompt": "In a calibration check, which step comes earlier?",
+    "options": [
+     "Read the standard",
+     "Rinse the probe"
+    ],
+    "correctAnswer": "Rinse the probe",
+    "explanation": "The standard is read before adjusting, and results are recorded last. Rinse the probe comes before Read the standard.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-before-after-0118",
+    "prompt": "In a calibration check, which step comes later?",
+    "options": [
+     "Rinse the probe",
+     "Record the result"
+    ],
+    "correctAnswer": "Record the result",
+    "explanation": "The standard is read before adjusting, and results are recorded last. Rinse the probe comes before Record the result.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-before-after-0119",
+    "prompt": "In responding to a chemical spill, which step comes earlier?",
+    "options": [
+     "Check the safety data sheet",
+     "Use proper protection"
+    ],
+    "correctAnswer": "Check the safety data sheet",
+    "explanation": "Safety and information come before cleanup. Check the safety data sheet comes before Use proper protection.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-before-after-0120",
+    "prompt": "In responding to a chemical spill, which step comes later?",
+    "options": [
+     "Stay clear",
+     "Use proper protection"
+    ],
+    "correctAnswer": "Use proper protection",
+    "explanation": "Safety and information come before cleanup. Stay clear comes before Use proper protection.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-before-after-0121",
+    "prompt": "In responding to a chemical spill, which step comes earlier?",
+    "options": [
+     "Stay clear",
+     "Alert others"
+    ],
+    "correctAnswer": "Alert others",
+    "explanation": "Safety and information come before cleanup. Alert others comes before Stay clear.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-before-after-0122",
+    "prompt": "In responding to a chemical spill, which step comes later?",
+    "options": [
+     "Use proper protection",
+     "Contain and clean up"
+    ],
+    "correctAnswer": "Contain and clean up",
+    "explanation": "Safety and information come before cleanup. Use proper protection comes before Contain and clean up.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-before-after-0123",
+    "prompt": "In responding to a chemical spill, which step comes earlier?",
+    "options": [
+     "Contain and clean up",
+     "Alert others"
+    ],
+    "correctAnswer": "Alert others",
+    "explanation": "Safety and information come before cleanup. Alert others comes before Contain and clean up.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-before-after-0124",
+    "prompt": "In responding to a chemical spill, which step comes later?",
+    "options": [
+     "Alert others",
+     "Use proper protection"
+    ],
+    "correctAnswer": "Use proper protection",
+    "explanation": "Safety and information come before cleanup. Alert others comes before Use proper protection.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-before-after-0125",
+    "prompt": "In responding to a chemical spill, which step comes earlier?",
+    "options": [
+     "Check the safety data sheet",
+     "Alert others"
+    ],
+    "correctAnswer": "Alert others",
+    "explanation": "Safety and information come before cleanup. Alert others comes before Check the safety data sheet.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-before-after-0126",
+    "prompt": "In responding to a chemical spill, which step comes later?",
+    "options": [
+     "Contain and clean up",
+     "Check the safety data sheet"
+    ],
+    "correctAnswer": "Contain and clean up",
+    "explanation": "Safety and information come before cleanup. Check the safety data sheet comes before Contain and clean up.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-before-after-0127",
+    "prompt": "In responding to a chemical spill, which step comes earlier?",
+    "options": [
+     "Stay clear",
+     "Check the safety data sheet"
+    ],
+    "correctAnswer": "Stay clear",
+    "explanation": "Safety and information come before cleanup. Stay clear comes before Check the safety data sheet.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-before-after-0128",
+    "prompt": "In responding to a chemical spill, which step comes later?",
+    "options": [
+     "Stay clear",
+     "Contain and clean up"
+    ],
+    "correctAnswer": "Contain and clean up",
+    "explanation": "Safety and information come before cleanup. Stay clear comes before Contain and clean up.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-before-after-0129",
+    "prompt": "In setting up flow paced chemical feed, which step comes earlier?",
+    "options": [
+     "Check the residual",
+     "Choose a target dose"
+    ],
+    "correctAnswer": "Choose a target dose",
+    "explanation": "Flow and target dose come before setting and tuning the feed. Choose a target dose comes before Check the residual.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-before-after-0130",
+    "prompt": "In setting up flow paced chemical feed, which step comes later?",
+    "options": [
+     "Check the residual",
+     "Measure the flow"
+    ],
+    "correctAnswer": "Check the residual",
+    "explanation": "Flow and target dose come before setting and tuning the feed. Measure the flow comes before Check the residual.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-before-after-0131",
+    "prompt": "In setting up flow paced chemical feed, which step comes earlier?",
+    "options": [
+     "Measure the flow",
+     "Choose a target dose"
+    ],
+    "correctAnswer": "Measure the flow",
+    "explanation": "Flow and target dose come before setting and tuning the feed. Measure the flow comes before Choose a target dose.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-before-after-0132",
+    "prompt": "In setting up flow paced chemical feed, which step comes later?",
+    "options": [
+     "Check the residual",
+     "Set the feed rate"
+    ],
+    "correctAnswer": "Check the residual",
+    "explanation": "Flow and target dose come before setting and tuning the feed. Set the feed rate comes before Check the residual.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-before-after-0133",
+    "prompt": "In setting up flow paced chemical feed, which step comes earlier?",
+    "options": [
+     "Set the feed rate",
+     "Fine tune the setting"
+    ],
+    "correctAnswer": "Set the feed rate",
+    "explanation": "Flow and target dose come before setting and tuning the feed. Set the feed rate comes before Fine tune the setting.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-before-after-0134",
+    "prompt": "In setting up flow paced chemical feed, which step comes later?",
+    "options": [
+     "Choose a target dose",
+     "Fine tune the setting"
+    ],
+    "correctAnswer": "Fine tune the setting",
+    "explanation": "Flow and target dose come before setting and tuning the feed. Choose a target dose comes before Fine tune the setting.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-before-after-0135",
+    "prompt": "In setting up flow paced chemical feed, which step comes earlier?",
+    "options": [
+     "Measure the flow",
+     "Set the feed rate"
+    ],
+    "correctAnswer": "Measure the flow",
+    "explanation": "Flow and target dose come before setting and tuning the feed. Measure the flow comes before Set the feed rate.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-before-after-0136",
+    "prompt": "In setting up flow paced chemical feed, which step comes later?",
+    "options": [
+     "Set the feed rate",
+     "Choose a target dose"
+    ],
+    "correctAnswer": "Set the feed rate",
+    "explanation": "Flow and target dose come before setting and tuning the feed. Choose a target dose comes before Set the feed rate.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-before-after-0137",
+    "prompt": "In setting up flow paced chemical feed, which step comes earlier?",
+    "options": [
+     "Check the residual",
+     "Fine tune the setting"
+    ],
+    "correctAnswer": "Check the residual",
+    "explanation": "Flow and target dose come before setting and tuning the feed. Check the residual comes before Fine tune the setting.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-before-after-0138",
+    "prompt": "In setting up flow paced chemical feed, which step comes later?",
+    "options": [
+     "Fine tune the setting",
+     "Measure the flow"
+    ],
+    "correctAnswer": "Fine tune the setting",
+    "explanation": "Flow and target dose come before setting and tuning the feed. Measure the flow comes before Fine tune the setting.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-before-after-0139",
+    "prompt": "In investigating a turbidity spike, which step comes earlier?",
+    "options": [
+     "Adjust the process",
+     "Check the instrument"
+    ],
+    "correctAnswer": "Check the instrument",
+    "explanation": "Confirming data comes before changes to the process. Check the instrument comes before Adjust the process.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-before-after-0140",
+    "prompt": "In investigating a turbidity spike, which step comes later?",
+    "options": [
+     "Check the filters",
+     "Check the instrument"
+    ],
+    "correctAnswer": "Check the filters",
+    "explanation": "Confirming data comes before changes to the process. Check the instrument comes before Check the filters.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-before-after-0141",
+    "prompt": "In investigating a turbidity spike, which step comes earlier?",
+    "options": [
+     "Check the filters",
+     "Check chemical feed"
+    ],
+    "correctAnswer": "Check chemical feed",
+    "explanation": "Confirming data comes before changes to the process. Check chemical feed comes before Check the filters.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-before-after-0142",
+    "prompt": "In investigating a turbidity spike, which step comes later?",
+    "options": [
+     "Check the instrument",
+     "Check chemical feed"
+    ],
+    "correctAnswer": "Check chemical feed",
+    "explanation": "Confirming data comes before changes to the process. Check the instrument comes before Check chemical feed.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-before-after-0143",
+    "prompt": "In investigating a turbidity spike, which step comes earlier?",
+    "options": [
+     "Check chemical feed",
+     "Adjust the process"
+    ],
+    "correctAnswer": "Check chemical feed",
+    "explanation": "Confirming data comes before changes to the process. Check chemical feed comes before Adjust the process.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-before-after-0144",
+    "prompt": "In investigating a turbidity spike, which step comes later?",
+    "options": [
+     "Check chemical feed",
+     "Confirm the reading"
+    ],
+    "correctAnswer": "Check chemical feed",
+    "explanation": "Confirming data comes before changes to the process. Confirm the reading comes before Check chemical feed.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-before-after-0145",
+    "prompt": "In investigating a turbidity spike, which step comes earlier?",
+    "options": [
+     "Check the filters",
+     "Adjust the process"
+    ],
+    "correctAnswer": "Check the filters",
+    "explanation": "Confirming data comes before changes to the process. Check the filters comes before Adjust the process.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-before-after-0146",
+    "prompt": "In investigating a turbidity spike, which step comes later?",
+    "options": [
+     "Confirm the reading",
+     "Check the instrument"
+    ],
+    "correctAnswer": "Check the instrument",
+    "explanation": "Confirming data comes before changes to the process. Confirm the reading comes before Check the instrument.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-before-after-0147",
+    "prompt": "In investigating a turbidity spike, which step comes earlier?",
+    "options": [
+     "Confirm the reading",
+     "Adjust the process"
+    ],
+    "correctAnswer": "Confirm the reading",
+    "explanation": "Confirming data comes before changes to the process. Confirm the reading comes before Adjust the process.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-before-after-0148",
+    "prompt": "In investigating a turbidity spike, which step comes later?",
+    "options": [
+     "Confirm the reading",
+     "Check the filters"
+    ],
+    "correctAnswer": "Check the filters",
+    "explanation": "Confirming data comes before changes to the process. Confirm the reading comes before Check the filters.",
+    "mode": "before-after"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-cause-effect-0149",
+    "prompt": "The water temperature rises. What happens to the rate of chemical reactions?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Reactions generally run faster in warmer water.",
+    "mode": "cause-effect"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-cause-effect-0150",
+    "prompt": "A pump is lubricated well. What happens to the friction in its bearings?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Lubricant reduces contact between moving surfaces.",
+    "mode": "cause-effect"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-cause-effect-0151",
+    "prompt": "The tank water level falls. What happens to the pressure supplied by the tank?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Less height of water above the outlet means less pressure.",
+    "mode": "cause-effect"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-cause-effect-0152",
+    "prompt": "A pipe has stable flow and nothing else changes. What happens to the flow rate reading?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Stable flow means the reading stays steady.",
+    "mode": "cause-effect"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-cause-effect-0153",
+    "prompt": "A discharge valve is partly closed on a pump. What happens to the pump flow?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Throttling restricts flow.",
+    "mode": "cause-effect"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-cause-effect-0154",
+    "prompt": "A discharge valve is partly closed on a pump. What happens to the pump discharge pressure?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Throttling increases the pressure the pump develops.",
+    "mode": "cause-effect"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-cause-effect-0155",
+    "prompt": "Water pH falls while alkalinity stays low. What happens to the corrosiveness of the water?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "More acidic water attacks metal more readily.",
+    "mode": "cause-effect"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-cause-effect-0156",
+    "prompt": "Algae grow in a reservoir in warm weather. What happens to taste and odor complaints?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Algae can add taste and odor compounds.",
+    "mode": "cause-effect"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-cause-effect-0157",
+    "prompt": "Activated carbon is added at the right dose. What happens to taste and odor compounds in the water?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Carbon adsorbs many compounds that cause taste and odor.",
+    "mode": "cause-effect"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-cause-effect-0158",
+    "prompt": "A flow paced feed system sees flow double. What happens to the chemical feed rate?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "The system raises the feed rate to keep the dose steady.",
+    "mode": "cause-effect"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-cause-effect-0159",
+    "prompt": "A flow paced feed system sees flow double. What happens to the chemical dose in mg/L?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Flow pacing keeps the dose steady by raising the feed rate.",
+    "mode": "cause-effect"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-cause-effect-0160",
+    "prompt": "A filter has not yet ripened after a backwash. What happens to the filtered water turbidity?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Newly cleaned media can pass more particles at first.",
+    "mode": "cause-effect"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-cause-effect-0161",
+    "prompt": "Too little coagulant is fed on a turbid raw water. What happens to the turbidity reaching the filters?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Poor coagulation lets more particles pass settling.",
+    "mode": "cause-effect"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-cause-effect-0162",
+    "prompt": "Hardness in the water increases and the water is heated. What happens to scale formation?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "More calcium and magnesium means more scale when heated.",
+    "mode": "cause-effect"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-cause-effect-0163",
+    "prompt": "Water is colder than usual in a basin. What happens to the settling rate of particles?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It increases"
+     },
+     {
+      "id": "option-2",
+      "label": "It decreases"
+     },
+     {
+      "id": "option-3",
+      "label": "It stays the same"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Colder water is denser and more viscous, so particles settle more slowly.",
+    "mode": "cause-effect"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-tap-the-flaw-0164",
+    "prompt": "Which statement about corrosion is wrong?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Red water can point to corroding pipe"
+     },
+     {
+      "id": "option-2",
+      "label": "Corrosion is sand buildup"
+     },
+     {
+      "id": "option-3",
+      "label": "Low pH water can be more corrosive"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Corrosion is a chemical attack on metal, not sand buildup.",
+    "mode": "tap-the-flaw"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-tap-the-flaw-0165",
+    "prompt": "Which statement about clear water is wrong?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Clear means safe to drink"
+     },
+     {
+      "id": "option-2",
+      "label": "Clear water can still carry microbes"
+     },
+     {
+      "id": "option-3",
+      "label": "Disinfection helps control microbes"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Clear water can still contain harmful microbes.",
+    "mode": "tap-the-flaw"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "easy",
+   "example": {
+    "id": "og-oit-b3-tap-the-flaw-0166",
+    "prompt": "Which statement about lifting is wrong?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Ask for help with a heavy load"
+     },
+     {
+      "id": "option-2",
+      "label": "Bend at the waist"
+     },
+     {
+      "id": "option-3",
+      "label": "Lift with your legs"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Bending at the waist strains the back.",
+    "mode": "tap-the-flaw"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-tap-the-flaw-0167",
+    "prompt": "Which statement about maintenance is wrong?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Preventive maintenance follows a schedule"
+     },
+     {
+      "id": "option-2",
+      "label": "Lubrication can reduce wear"
+     },
+     {
+      "id": "option-3",
+      "label": "Preventive means repair after failure"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Repair after failure is corrective maintenance.",
+    "mode": "tap-the-flaw"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-tap-the-flaw-0168",
+    "prompt": "Which statement about pressure is wrong?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Lower points have higher pressure"
+     },
+     {
+      "id": "option-2",
+      "label": "Static pressure means no flow"
+     },
+     {
+      "id": "option-3",
+      "label": "Tank width sets bottom pressure"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Pressure depends on the height of water, not the width of the tank.",
+    "mode": "tap-the-flaw"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "medium",
+   "example": {
+    "id": "og-oit-b3-tap-the-flaw-0169",
+    "prompt": "Which statement about taste and odor is wrong?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Algae improve water taste"
+     },
+     {
+      "id": "option-2",
+      "label": "Algae can add taste and odor"
+     },
+     {
+      "id": "option-3",
+      "label": "Carbon can adsorb some compounds"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Algae tend to add unpleasant taste and odor.",
+    "mode": "tap-the-flaw"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-tap-the-flaw-0170",
+    "prompt": "Which statement about pump operation is wrong?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Throttling raises pump flow"
+     },
+     {
+      "id": "option-2",
+      "label": "Throttling reduces pump flow"
+     },
+     {
+      "id": "option-3",
+      "label": "Binding can raise amperage"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Throttling restricts flow, so flow falls.",
+    "mode": "tap-the-flaw"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-tap-the-flaw-0171",
+    "prompt": "Which statement about chemical feed is wrong?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Flow pacing keeps one feed rate"
+     },
+     {
+      "id": "option-2",
+      "label": "Flow pacing follows changing flow"
+     },
+     {
+      "id": "option-3",
+      "label": "Sampling should come after mixing"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Flow pacing changes the feed rate to follow flow.",
+    "mode": "tap-the-flaw"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "oit",
+   "topicId": "unclassified",
+   "difficulty": "hard",
+   "example": {
+    "id": "og-oit-b3-tap-the-flaw-0172",
+    "prompt": "Which statement about filter performance is wrong?",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "A fresh filter is best"
+     },
+     {
+      "id": "option-2",
+      "label": "Turbidity can spike after backwash"
+     },
+     {
+      "id": "option-3",
+      "label": "Poor coagulation raises filter load"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "A freshly washed filter can pass more particles until it ripens.",
+    "mode": "tap-the-flaw"
+   },
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
+   }
+  }
+ ],
+ "replacements": []
+}

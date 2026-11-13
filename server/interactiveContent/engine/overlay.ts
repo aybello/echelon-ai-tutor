@@ -9,9 +9,10 @@ import optionLengthClass2Ww from "../overlay/2026-11-14-option-length-class2-ww.
 import optionLengthBatch2 from "../overlay/2026-11-14-option-length-batch-2.json";
 import oitBatch1 from "../overlay/2026-11-14-oit-batch-1.json";
 import oitBatch2 from "../overlay/2026-11-14-oit-batch-2.json";
+import oitBatch3 from "../overlay/2026-11-14-oit-batch-3.json";
 
 // Every committed overlay, in application order. Add new reviewed batches here.
-const COMMITTED_OVERLAYS: readonly unknown[] = [rapidSwipeBalance, optionLengthClass2Ww, optionLengthBatch2, oitBatch1, oitBatch2];
+const COMMITTED_OVERLAYS: readonly unknown[] = [rapidSwipeBalance, optionLengthClass2Ww, optionLengthBatch2, oitBatch1, oitBatch2, oitBatch3];
 
 /**
  * Committed, server-only content overlays on the published game bank.
