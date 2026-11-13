@@ -46,10 +46,10 @@ function rng(seed: string) { let s = createHash("sha256").update(seed).digest().
 function shuffled<T>(items: readonly T[], seed: string): T[] { const r = rng(seed), a = [...items]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
 const notLongest = (labels: string[], correct: number) => { const l = labels.map(x => x.length); return !(l[correct] === Math.max(...l) && new Set(l).size > 1); };
 
-export function buildItems(data: CourseData) {
+export function buildItems(data: CourseData, tag = "") {
   const { courseKey } = data; const errors: string[] = []; let n = 0;
   const out: { difficulty: string; example: Record<string, unknown> }[] = [];
-  const add = (d: Level, example: Record<string, unknown>, mode: string) => { out.push({ difficulty: LEVEL[d], example: { id: `og-${courseKey}-${mode}-${String(++n).padStart(4, "0")}`, ...example, mode } }); };
+  const add = (d: Level, example: Record<string, unknown>, mode: string) => { out.push({ difficulty: LEVEL[d], example: { id: `og-${courseKey}-${tag}${mode}-${String(++n).padStart(4, "0")}`, ...example, mode } }); };
   // Rapid swipe
   for (const [d, statement, truth, explanation] of data.facts) {
     if (ABSOLUTE.test(statement)) errors.push(`fact uses absolute wording: ${statement}`);
@@ -105,7 +105,7 @@ export function buildItems(data: CourseData) {
 }
 
 export function buildOverlay(data: CourseData, overlayId: string) {
-  const { items, errors } = buildItems(data);
+  const { items, errors } = buildItems(data, `${overlayId.replace(/^og-[a-z0-9-]*?-(\d+)$/, "b$1")}-`);
   const doc = { format: "interactive-overlay-v1", overlayId, scope: `Reviewed original game activities for ${data.courseKey}: ${items.length} items from authoring tables.`,
     additions: items.map(i => ({ courseKey: data.courseKey, topicId: "unclassified", difficulty: i.difficulty, example: i.example, review: REVIEW })), replacements: [] };
   return { doc, errors };
