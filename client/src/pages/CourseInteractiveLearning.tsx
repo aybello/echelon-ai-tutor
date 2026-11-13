@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { flushSync } from "react-dom";
 import { onlineManager, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getQueryKey } from "@trpc/react-query";
@@ -61,6 +61,9 @@ function CoursePractice({ course }: { course: CourseEntry }) {
   const [sessionSize, setSessionSize] = useState<10 | 20 | 30 | 50>(20);
   const [timerSeconds, setTimerSeconds] = useState<30 | 60 | 90 | null>(30);
   const [roundRevision, setRoundRevision] = useState(0);
+  const [settingsOpen, setSettingsOpen] = useState(() => typeof window !== "undefined" && window.matchMedia("(min-width: 700px)").matches);
+  const sessionElement = useRef<HTMLDivElement>(null);
+  const focusNextRound = useRef(false);
   const prefix = useMemo(() => ["course-interactive-session-engine", course.courseKey] as const, [course.courseKey]);
   const observedPaths = useMemo(() => [
     getQueryKey(trpc.auth.me, undefined, "query")[0],
@@ -131,6 +134,7 @@ function CoursePractice({ course }: { course: CourseEntry }) {
   const refresh = useCallback(() => {
     // Gate synchronously before cancellation or a fast/late transport completion.
     // Both query identities change even when a cookie sign-in keeps the same token.
+    focusNextRound.current = false;
     const obsolete = new Set(queryClient.getQueryCache().findAll({ queryKey: prefix }));
     flushSync(() => setAuthority(previous => ({ accessToken: readAccessToken(), revision: previous.revision + 1 })));
     void queryClient.cancelQueries({ queryKey: prefix, predicate: query => obsolete.has(query) });
@@ -170,9 +174,15 @@ function CoursePractice({ course }: { course: CourseEntry }) {
     void queryClient.cancelQueries({ queryKey: [...prefix, "session"] });
     flushSync(() => { change(); setRoundRevision(previous => previous + 1); });
   };
+  const newRound = () => { focusNextRound.current = true; changeSession(() => {}); };
   const session = catalogReady && !missingFilter && Boolean(catalog?.available && catalogMode?.totalCount) &&
     !sessionQuery.isError && sessionQuery.fetchStatus === "idle" && !sessionQuery.isPending
     ? sessionQuery.data : undefined;
+  useEffect(() => {
+    if (!session || !focusNextRound.current) return;
+    const heading = sessionElement.current?.querySelector<HTMLElement>(".interactive-drill__content h2");
+    if (heading) { focusNextRound.current = false; heading.focus(); }
+  }, [session, roundRevision]);
   let status: React.ReactNode;
   if (!online || catalogQuery.fetchStatus === "paused" || sessionQuery.fetchStatus === "paused") {
     status = <div className="course-interactive__status" role="alert"><p>Practice activities are unavailable while offline. Check your connection and try again.</p><button type="button" onClick={refresh}>Try again</button></div>;
@@ -193,7 +203,7 @@ function CoursePractice({ course }: { course: CourseEntry }) {
   } else {
     const drillKey = JSON.stringify([course.courseKey, authority.revision, session.version, session.mode, session.filters,
       locked ? 30 : timerSeconds, roundRevision, session.sessionId, sessionQuery.dataUpdatedAt]);
-    status = <div style={{ whiteSpace: "pre-line" }}><InteractiveDrill key={drillKey} examples={session.examples} selectedMode={mode} hideModeNavigation timerSeconds={locked ? 30 : timerSeconds} onNewRound={locked ? undefined : () => changeSession(() => {})} /></div>;
+    status = <div style={{ whiteSpace: "pre-line" }}><InteractiveDrill key={drillKey} examples={session.examples} selectedMode={mode} hideModeNavigation timerSeconds={locked ? 30 : timerSeconds} onNewRound={locked ? undefined : newRound} /></div>;
   }
 
   return (
@@ -209,6 +219,15 @@ function CoursePractice({ course }: { course: CourseEntry }) {
             </button>;
           })}
         </nav>
+        <button type="button" className="interactive-drill__primary course-interactive__new-round" disabled={!catalog?.available || !online || authBusy || !catalogMode?.totalCount || Boolean(missingFilter) || sessionQuery.fetchStatus !== "idle"} onClick={newRound}>{catalog?.locked ? "Replay preview" : "New round"}</button>
+      </div>
+      <div className="course-interactive__session" ref={sessionElement}>
+        <div className="course-interactive__session-heading"><span>{DRILL_MODES.find(item => item.id === mode)?.label}</span><small>{catalog?.locked ? "Free preview" : "Practice round"}</small></div>
+        {catalog?.locked && <p className="course-interactive__preview">You’re practising with the available free preview. Course access determines which activities are available.</p>}
+        {session && <p className="course-interactive__inventory">{session.examples.length} in this round · {session.totalAvailableCount} available with these filters · progress not saved</p>}
+        {status}
+        <details className="course-interactive__settings-panel" open={settingsOpen} onToggle={event => setSettingsOpen(event.currentTarget.open)}>
+          <summary>Round settings <small>{catalog?.locked ? "1 preview example" : `Up to ${sessionSize} activities`}</small></summary>
         <fieldset className="course-interactive__settings" disabled={locked || !catalog?.available} aria-describedby="course-session-settings-note">
           <legend>Round settings</legend>
           <label>Topic<select aria-label="Topic" disabled={!hasTopicFilters && !topicId} value={locked ? "" : topicId} onChange={event => changeSession(() => setTopicId(event.target.value))}>
@@ -229,13 +248,7 @@ function CoursePractice({ course }: { course: CourseEntry }) {
           </select>{!locked && mode !== "rapid-swipe" && <small>Rapid Swipe only</small>}</label>
         </fieldset>
         <p id="course-session-settings-note" className="course-interactive__settings-note">{catalog?.locked ? "Free preview: one fixed example per mode. Round settings require course access." : "Available settings apply immediately. Rounds use only published activities, so smaller banks may contain fewer than your selected size. Progress is not saved."}</p>
-        <button type="button" className="interactive-drill__primary course-interactive__new-round" disabled={!catalog?.available || !online || authBusy || !catalogMode?.totalCount || Boolean(missingFilter) || sessionQuery.fetchStatus !== "idle"} onClick={() => changeSession(() => {})}>{catalog?.locked ? "Replay preview" : "New round"}</button>
-      </div>
-      <div className="course-interactive__session">
-        <div className="course-interactive__session-heading"><span>{DRILL_MODES.find(item => item.id === mode)?.label}</span><small>{catalog?.locked ? "Free preview" : "Practice round"}</small></div>
-        {catalog?.locked && <p className="course-interactive__preview">You’re practising with the available free preview. Course access determines which activities are available.</p>}
-        {session && <p className="course-interactive__inventory">{session.examples.length} in this round · {session.totalAvailableCount} available with these filters · progress not saved</p>}
-        {status}
+        </details>
       </div>
     </div>
   );

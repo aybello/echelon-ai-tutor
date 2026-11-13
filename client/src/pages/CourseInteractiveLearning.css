@@ -187,9 +187,17 @@
 }
 .course-interactive__session-heading span { font: 800 20px/1.25 Manrope, sans-serif; color: #000; }
 .course-interactive__session-heading small { font-size: 13px; padding: 6px 10px; border-radius: 999px; background: #d7eaff; color: #000; white-space: nowrap; }
+.course-interactive__settings-panel { margin-bottom: 12px; border: 1px solid #bfd3eb; border-radius: 12px; background: #f7fbff; padding: 0 12px; }
+.course-interactive__settings-panel summary { min-height: 44px; padding: 12px 0; cursor: pointer; color: #000; font-weight: 700; }
+.course-interactive__settings-panel summary small { margin-left: 10px; font-size: 14px; font-weight: 400; }
+.course-interactive__settings-panel summary:focus-visible { outline: 3px solid #1757b8; outline-offset: 3px; border-radius: 4px; }
+.course-interactive__settings-panel .course-interactive__settings { border: 0; margin: 0; padding: 0; }
+.course-interactive__settings-panel .course-interactive__settings legend { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); }
+.course-interactive__settings-panel .course-interactive__settings-note { margin: 10px 0 12px; }
 @media (min-width: 700px) {
   .course-interactive__workspace { grid-template-columns: 240px minmax(0, 1fr); gap: 16px; }
   .course-interactive__controls .interactive-drill__nav { flex-direction: column; }
+  .course-interactive__settings { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 @media (max-width: 699px) {
   .course-interactive__settings { grid-template-columns: repeat(4, minmax(0, 1fr)); }

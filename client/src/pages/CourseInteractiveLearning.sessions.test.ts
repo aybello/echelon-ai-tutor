@@ -256,7 +256,21 @@ describe("bounded course session UI (synthetic isolated fixtures)", () => {
         await expect.poll(async () => (await calls(page, "session")).length).toBeGreaterThan(before);
         await waitForActivity(page);
         expect(await activity(page).getByRole("heading", { level: 2 }).textContent()).not.toMatch(/second$/);
+        await expect.poll(() => activity(page).getByRole("heading", { level: 2 }).evaluate(el => el === document.activeElement)).toBe(true);
       }
+    });
+  });
+
+  it("preserves a keyboard user's focus intent while a fresh round is loading", async () => {
+    await fixture(async page => {
+      await waitForActivity(page);
+      await page.evaluate(() => { (window as any).__hold = "session"; });
+      await page.getByRole("button", { name: "Next round →", exact: true }).focus();
+      await page.keyboard.press("Enter");
+      await page.getByRole("status").filter({ hasText: /Loading your practice round/ }).waitFor();
+      await page.evaluate(() => { const state = window as any; state.__hold = ""; state.__pending.splice(0).forEach((p: any) => p.release()); });
+      await waitForActivity(page);
+      await expect.poll(() => activity(page).getByRole("heading", { level: 2 }).evaluate(el => el === document.activeElement)).toBe(true);
     });
   });
 

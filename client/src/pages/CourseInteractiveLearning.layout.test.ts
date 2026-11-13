@@ -40,7 +40,7 @@ beforeAll(async () => {
 }, 30000);
 afterAll(async () => { await browser?.close(); });
 
-for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 }]) {
+for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 }, { width: 320, height: 568 }]) {
   describe(`course layout ${viewport.width}x${viewport.height}`, () => {
     it("fits short activities and feedback, retains targets and allows expanded content to scroll", async () => {
       const page = await browser.newPage({ viewport });
@@ -57,6 +57,12 @@ for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 
         await page.addStyleTag({ content: css });
         await page.addScriptTag({ content: script });
         await page.locator(".interactive-drill__activity").waitFor();
+        const settings = page.locator(".course-interactive__settings-panel");
+        expect(await settings.evaluate(el => (el as HTMLDetailsElement).open)).toBe(viewport.width >= 700);
+        if (viewport.width < 700) await settings.locator("summary").click();
+        expect(await page.getByLabel("Session size", { exact: true }).isVisible()).toBe(true);
+        expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(viewport.width);
+        if (viewport.width < 700) await settings.locator("summary").click();
         const assertFits = async () => {
           // New catalog/settings controls precede the activity on mobile. Keep
           // the compact activity/feedback fit intent after natural page scrolling,
@@ -95,7 +101,7 @@ for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 
         await page.getByRole("button", { name: "Yes", exact: true }).click();
         await page.locator(".interactive-drill__feedback").waitFor();
         await assertFits();
-        await page.locator("summary").click();
+        await page.locator(".course-interactive__details > summary").click();
         expect(await page.getByText("Exam practice, not operating instructions or regulatory advice.").isVisible()).toBe(true);
         await page.evaluate(() => {
           const prompt = document.querySelector(".interactive-drill__content h2")!;
