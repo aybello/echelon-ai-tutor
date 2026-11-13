@@ -6,6 +6,7 @@ import { pathToFileURL } from "node:url";
 import { build } from "esbuild";
 import { compileLegacyRelease } from "../server/interactiveContent/engine/compiler";
 import { compilePrivateInput } from "./content-engine/compile-checked";
+import { writeInteractiveArtifactManifest } from "./interactiveArtifactFingerprint";
 import {
   computeSourceFingerprint,
   isSourceFingerprintPath,
@@ -163,6 +164,8 @@ if (
   process.argv[1] &&
   import.meta.url === pathToFileURL(resolve(process.argv[1])).href
 ) {
+  // A failed or partial rebuild must not leave a stale private attestation behind.
+  rmSync(resolve("dist/interactive-content-build-manifest.json"), { force: true });
   const identity = buildReleaseIdentity();
   // Opt-in input is a relative filename under the fixed private authoring root.
   // Compile into an isolated private staging directory, never into client assets.
@@ -187,6 +190,7 @@ if (
     // Private answers stay adjacent to the server, never in dist/public or public.
     rmSync(resolve("dist/interactive-content"), { recursive: true, force: true });
     cpSync(interactiveArtifacts.outputDir, resolve("dist/interactive-content"), { recursive: true });
+    writeInteractiveArtifactManifest(resolve("dist/interactive-content"), resolve("dist/interactive-content-build-manifest.json"));
   } finally {
     if (staging) rmSync(staging, { recursive: true, force: true });
   }

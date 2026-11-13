@@ -7,6 +7,7 @@ import { join } from "node:path";
 import { compileCheckedRelease, compilePrivateInput } from "../../../scripts/content-engine/compile-checked";
 import { InteractiveContentEngine } from "./loader";
 import { interactiveModes, interactiveStartSessionInputSchema } from "../../../shared/interactiveSessions";
+import { computeInteractiveArtifactFingerprint } from "../../../scripts/interactiveArtifactFingerprint";
 // @ts-expect-error Synthetic JS fixtures only.
 import { completeFixture, attachReview, attachPolicyReviews, attachBatchAudit } from "../../../scripts/content-engine/fixtures.mjs";
 // @ts-expect-error Offline JS hash helper.
@@ -24,6 +25,25 @@ function checked() { const doc = completeFixture(); attachReview(doc, "human-tec
 afterEach(() => { delete approvals.fixture; for (const r of roots.splice(0)) rmSync(r, { recursive: true, force: true }); });
 
 describe("private checked authoring compiler", () => {
+  it("distinguishes different synthetic checked runtime content built from the same source", () => {
+    const doc = checked();
+    const first = root();
+    const repeat = root();
+    compileCheckedRelease(request(doc), first);
+    compileCheckedRelease(request(doc), repeat);
+    const before = computeInteractiveArtifactFingerprint(first);
+    expect(computeInteractiveArtifactFingerprint(repeat)).toBe(before);
+    const changed = checked();
+    changed.exercises[0].item.prompt += " A synthetic variation.";
+    changed.exercises[0].contentHash = hash(changed.exercises[0].item);
+    changed.exercises[0].reviews = [];
+    attachReview(changed, "human-technical"); attachReview(changed, "software-release");
+    const second = root();
+    compileCheckedRelease(request(changed), second);
+    expect(computeInteractiveArtifactFingerprint(second)).not.toBe(before);
+    expect(new InteractiveContentEngine(first).getCatalog("class1-water", false).version).toBe("checked-v1");
+    expect(new InteractiveContentEngine(second).getCatalog("class1-water", false).version).toBe("checked-v1");
+  });
   it("fails closed without separately pinned prior full-corpus evidence", () => {
     const doc = checked(); const out = root();
     expect(() => compileCheckedRelease({ approvalId: "missing", corpus: doc, selected: [{ courseKey: doc.exercises[0].courseKey, exerciseId: doc.exercises[0].exerciseId }] }, out)).toThrow("prior full-corpus approval");
@@ -76,6 +96,13 @@ describe("private checked authoring compiler", () => {
     const manifest = JSON.parse(readFileSync(join(out, "class1-water/manifest.json"), "utf8"));
     expect(manifest.classification).toBe("legacy_plus_checked");
     expect(manifest.version).toMatch(/^checked-/);
+    for (const access of [false, true]) {
+      const catalog = engine.getCatalog("class1-water", access);
+      const session = engine.startSession(input, access);
+      expect(catalog.version).toBe("checked-v1");
+      expect(session.version).toBe("checked-v1");
+      expect(JSON.stringify([catalog, session])).not.toContain(manifest.version);
+    }
     const files = readdirSync(join(out, "class1-water"));
     const serialized = files.map(f => readFileSync(join(out, "class1-water", f), "utf8")).join("\n");
     expect(serialized).not.toContain("Synthetic publisher");

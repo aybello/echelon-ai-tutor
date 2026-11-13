@@ -13,6 +13,8 @@ export class InteractiveEngineError extends Error {
 const fail = (): never => { throw new InteractiveEngineError(); };
 const hash = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
 const json = (value: unknown) => JSON.stringify(value);
+// Checked versions are payload-derived and must stay on the private side of the wire.
+const publicVersion = (manifest: EngineManifest) => manifest.classification === "legacy_plus_checked" ? "checked-v1" : manifest.version;
 function freeze<T>(value: T): T {
   if (value && typeof value === "object" && !Object.isFrozen(value)) {
     for (const child of Object.values(value)) freeze(child);
@@ -154,7 +156,7 @@ export class InteractiveContentEngine {
           difficulties: (["easy", "medium", "hard", "unclassified"] as const).map(id => ({ id, count: entries.filter(entry => entry.difficulty === id).length })).filter(d => d.count > 0),
         };
       });
-      return interactiveCatalogResponseSchema.parse({ courseKey, available: true, locked: !hasAccess, version: manifest.version, modes });
+      return interactiveCatalogResponseSchema.parse({ courseKey, available: true, locked: !hasAccess, version: publicVersion(manifest), modes });
     });
   }
   startSession(input: InteractiveStartSessionInput, hasAccess: boolean): InteractiveSessionResponse {
@@ -190,7 +192,7 @@ export class InteractiveContentEngine {
       }
       selected = selected.slice(0, count);
       const examples = this.examples(manifest, selected);
-      const response = interactiveSessionResponseSchema.parse({ ...common, available: true, version: manifest.version, totalAvailableCount, examples });
+      const response = interactiveSessionResponseSchema.parse({ ...common, available: true, version: publicVersion(manifest), totalAvailableCount, examples });
       if (Buffer.byteLength(json(response)) > ENGINE_LIMITS.responseBytes) fail();
       return response;
     });
