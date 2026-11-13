@@ -77,9 +77,17 @@ export interface InteractiveDrillProps {
   /** Parent-provided content only. Examples are grouped by mode in their original order. */
   examples: readonly DrillExample[];
   className?: string;
+  /** Optional controlled mode; never substitutes another mode's examples. */
+  selectedMode?: DrillMode;
+  onModeChange?: (mode: DrillMode) => void;
+  /** Navigation can advertise modes independent of a single-mode working set. */
+  availableModes?: readonly DrillMode[];
+  hideModeNavigation?: boolean;
+  /** null disables timed swipe rounds; omitted retains the introductory 30s round. */
+  timerSeconds?: 30 | 60 | 90 | null;
 }
 
-const MODES: readonly { id: DrillMode; label: string; description: string }[] = [
+export const DRILL_MODES: readonly { id: DrillMode; label: string; description: string }[] = [
   { id: "rapid-swipe", label: "Rapid Swipe", description: "Make a quick call" },
   { id: "speed-match", label: "Speed-Match", description: "Connect the right pairs" },
   { id: "odd-one-out", label: "Odd-One-Out", description: "Spot what does not belong" },
@@ -153,10 +161,11 @@ interface ActivityProps {
   onNext: () => void;
   onRestart: () => void;
   onStartRound: () => void;
+  timerSeconds: 30 | 60 | 90 | null;
   focusHeadingIfRequested: (heading: HTMLHeadingElement | null) => void;
 }
 
-function Activity({ example, index, count, onPrevious, onNext, onRestart, onStartRound, focusHeadingIfRequested }: ActivityProps) {
+function Activity({ example, index, count, onPrevious, onNext, onRestart, onStartRound, timerSeconds, focusHeadingIfRequested }: ActivityProps) {
   const titleId = useId();
   const instructionId = useId();
   const [feedback, setFeedback] = useState<Feedback | null>(null);
@@ -284,7 +293,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onStar
           <p className="interactive-drill__invalid" role="status">This activity is unavailable because its content is incomplete or ambiguous.</p>
         ) : example.mode === "rapid-swipe" ? (
           <>
-            <button type="button" className="interactive-drill__round-start interactive-drill__secondary" onClick={onStartRound}>Start 30-second round</button>
+            {timerSeconds !== null && <button type="button" className="interactive-drill__round-start interactive-drill__secondary" onClick={onStartRound}>Start {timerSeconds}-second round</button>}
             <div className="interactive-drill__swipe" onPointerDown={handleSwipeStart} onPointerUp={handleSwipeEnd} onPointerCancel={handleSwipeCancel} onLostPointerCapture={handleSwipeCancel}>
               <span aria-hidden="true">← No</span>
               <span>Swipe to choose</span>
@@ -346,19 +355,18 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onStar
 }
 
 type RoundAnswer = { example: RapidSwipeExample; choice: boolean; correct: boolean };
-const ROUND_MS = 30_000;
 /** Timed rounds never invent material: they cycle through the supplied statements. */
-function RapidSwipeRound({ examples, onExit }: { examples: readonly RapidSwipeExample[]; onExit: () => void }) {
+function RapidSwipeRound({ examples, onExit, timerSeconds }: { examples: readonly RapidSwipeExample[]; onExit: () => void; timerSeconds: 30 | 60 | 90 }) {
   type Phase = "answer" | "feedback" | "finished";
   const [phase, setPhase] = useState<Phase>("answer");
-  const [remaining, setRemaining] = useState(30);
+  const [remaining, setRemaining] = useState<number>(timerSeconds);
   const [answers, setAnswers] = useState<RoundAnswer[]>([]);
   const [streak, setStreak] = useState(0);
   const [bestStreak, setBestStreak] = useState(0);
   const [lastAnswer, setLastAnswer] = useState<RoundAnswer | null>(null);
   // Mutable clock and phase guard are updated synchronously, before React renders.
   const clock = useRef<{ phase: Phase; left: number; started: number | null }>({
-    phase: "answer", left: ROUND_MS, started: document.hidden ? null : performance.now(),
+    phase: "answer", left: timerSeconds * 1000, started: document.hidden ? null : performance.now(),
   });
   const headingRef = useRef<HTMLHeadingElement>(null);
   const promptRef = useRef<HTMLHeadingElement>(null);
@@ -484,7 +492,7 @@ function RapidSwipeRound({ examples, onExit }: { examples: readonly RapidSwipeEx
     }}>
       <div className="interactive-drill__meta"><span>Rapid Swipe round</span><span className="interactive-drill__pill">Practice · not saved</span></div>
       <div className="interactive-drill__content interactive-drill__round">
-        <h2 id={titleId} ref={headingRef} tabIndex={-1}>{phase === "finished" ? "Round complete" : "30-second round"}</h2>
+        <h2 id={titleId} ref={headingRef} tabIndex={-1}>{phase === "finished" ? "Round complete" : `${timerSeconds}-second round`}</h2>
         <p>Time: {remaining}s · Correct: {correctCount}/{answers.length} · Streak: {streak} · Best combo: {bestStreak}</p>
         {phase === "finished" ? <>
           <p role="status">Round complete. {correctCount} correct out of {answers.length} answered. Best combo: {bestStreak}.</p>
@@ -517,14 +525,16 @@ function RapidSwipeRound({ examples, onExit }: { examples: readonly RapidSwipeEx
 }
 
 /** A local-only practice UI. Switching activities resets their temporary state. */
-export function InteractiveDrill({ examples, className }: InteractiveDrillProps) {
-  const availableModes = MODES.filter(mode => examples.some(example => example.mode === mode.id));
+export function InteractiveDrill({ examples, className, selectedMode, onModeChange, availableModes: suppliedModes, hideModeNavigation = false, timerSeconds = 30 }: InteractiveDrillProps) {
+  const availableModes = DRILL_MODES.filter(mode => suppliedModes ? suppliedModes.includes(mode.id) : examples.some(example => example.mode === mode.id));
   const [requestedMode, setRequestedMode] = useState<DrillMode | null>(null);
   const [requestedIndex, setRequestedIndex] = useState(0);
   const [attempt, setAttempt] = useState(0);
   const [round, setRound] = useState(false);
   const headingFocusRequested = useRef(false);
-  const activeMode = availableModes.find(mode => mode.id === requestedMode) ?? availableModes[0];
+  const activeMode = selectedMode !== undefined
+    ? DRILL_MODES.find(mode => mode.id === selectedMode)
+    : availableModes.find(mode => mode.id === requestedMode) ?? availableModes[0];
   const modeExamples = activeMode ? examples.filter(example => example.mode === activeMode.id) : [];
   const index = Math.min(requestedIndex, Math.max(0, modeExamples.length - 1));
   const example = modeExamples[index];
@@ -535,6 +545,7 @@ export function InteractiveDrill({ examples, className }: InteractiveDrillProps)
     setRequestedMode(mode);
     setRequestedIndex(0);
     setAttempt(value => value + 1);
+    onModeChange?.(mode);
   };
   const changeIndex = (next: number) => {
     headingFocusRequested.current = true;
@@ -550,24 +561,20 @@ export function InteractiveDrill({ examples, className }: InteractiveDrillProps)
 
   return (
     <div className={["interactive-drill", className].filter(Boolean).join(" ")}>
-      {availableModes.length === 0 || !example ? (
-        <p className="interactive-drill__empty">No practice activities are available yet.</p>
-      ) : (
-        <div className="interactive-drill__layout">
-          <nav className="interactive-drill__nav" aria-label="Choose a practice mode">
+        <div className={`interactive-drill__layout${hideModeNavigation ? " interactive-drill__layout--activity-only" : ""}`}>
+          {!hideModeNavigation && <nav className="interactive-drill__nav" aria-label="Choose a practice mode">
             {availableModes.map(mode => (
-              <button type="button" key={mode.id} className={mode.id === activeMode.id ? "is-active" : ""} aria-current={mode.id === activeMode.id ? "true" : undefined} onClick={() => chooseMode(mode.id)}>
+              <button type="button" key={mode.id} className={mode.id === activeMode?.id ? "is-active" : ""} aria-current={mode.id === activeMode?.id ? "true" : undefined} onClick={() => chooseMode(mode.id)}>
                 <span>{mode.label}</span><small>{mode.description}</small>
               </button>
             ))}
-          </nav>
-          {round && activeMode.id === "rapid-swipe" ? (
-            <RapidSwipeRound key={JSON.stringify(modeExamples)} examples={modeExamples.filter((item): item is RapidSwipeExample => item.mode === "rapid-swipe")} onExit={() => { setRound(false); changeIndex(0); }} />
+          </nav>}
+          {!example ? <p className="interactive-drill__empty" role="status">No practice activities are available yet.</p> : round && activeMode?.id === "rapid-swipe" && timerSeconds !== null ? (
+            <RapidSwipeRound key={JSON.stringify([modeExamples, timerSeconds])} timerSeconds={timerSeconds} examples={modeExamples.filter((item): item is RapidSwipeExample => item.mode === "rapid-swipe")} onExit={() => { setRound(false); changeIndex(0); }} />
           ) : (
-            <Activity key={`${example.id}-${attempt}`} example={example} index={index} count={modeExamples.length} onPrevious={() => changeIndex(index - 1)} onNext={() => changeIndex(index + 1)} onRestart={() => changeIndex(0)} onStartRound={() => setRound(true)} focusHeadingIfRequested={focusHeadingIfRequested} />
+            <Activity key={`${selectedMode ?? activeMode?.id}-${example.id}-${attempt}-${timerSeconds}`} timerSeconds={timerSeconds} example={example} index={index} count={modeExamples.length} onPrevious={() => changeIndex(index - 1)} onNext={() => changeIndex(index + 1)} onRestart={() => changeIndex(0)} onStartRound={() => setRound(true)} focusHeadingIfRequested={focusHeadingIfRequested} />
           )}
         </div>
-      )}
     </div>
   );
 }

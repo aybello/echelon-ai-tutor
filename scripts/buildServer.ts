@@ -1,8 +1,9 @@
 import { execFileSync } from "node:child_process";
-import { existsSync, readFileSync } from "node:fs";
+import { cpSync, existsSync, readFileSync, rmSync } from "node:fs";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { build } from "esbuild";
+import { compileLegacyRelease } from "../server/interactiveContent/engine/compiler";
 import {
   computeSourceFingerprint,
   isSourceFingerprintPath,
@@ -161,6 +162,7 @@ if (
   import.meta.url === pathToFileURL(resolve(process.argv[1])).href
 ) {
   const identity = buildReleaseIdentity();
+  const interactiveArtifacts = compileLegacyRelease();
   await build({
     entryPoints: ["server/_core/index.ts"],
     platform: "node",
@@ -174,4 +176,7 @@ if (
     },
     logLevel: "info",
   });
+  // Private answers stay adjacent to the server, never in dist/public or public.
+  rmSync(resolve("dist/interactive-content"), { recursive: true, force: true });
+  cpSync(interactiveArtifacts.outputDir, resolve("dist/interactive-content"), { recursive: true });
 }

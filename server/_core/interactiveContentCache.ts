@@ -8,7 +8,7 @@ export const interactiveContentNoStore: RequestHandler = (req, res, next) => {
   const segment = req.path.slice(req.path.lastIndexOf("/") + 1);
   const escaped = segment.replace(/\+/g, "%2B").replace(/&/g, "%26");
   const decoded = new URLSearchParams(`path=${escaped}`).get("path") ?? "";
-  if (decoded.split(",").some(path => path === "interactive.getContent" || path === "quiz.getInteractiveQuestions")) {
+  if (decoded.split(",").some(path => path === "interactive.getContent" || path === "interactive.getCatalog" || path === "interactive.startSession" || path === "quiz.getInteractiveQuestions")) {
     res.setHeader("Cache-Control", "private, no-store");
   }
   next();

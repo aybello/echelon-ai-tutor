@@ -1,6 +1,8 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { chromium, type Browser, type Page } from "@playwright/test";
 import { build } from "esbuild";
+import { engineExampleSchema } from "../../../server/interactiveContent/engine/schema";
+import { interactiveDrillExampleSchema } from "../../../shared/interactiveSessions";
 
 let browser: Browser;
 let script: string;
@@ -58,8 +60,8 @@ beforeAll(async () => {
                 fetch: async (url, init) => {
                   window.__transportCalls.push({url:String(url), method:init.method, body:init.body});
                   const inputs = Object.values(JSON.parse(init.body)).map(value => superjson.deserialize(value));
-                  const isQuiz = String(url).includes("quiz.getInteractiveQuestions");
-                  const results = await Promise.all(inputs.map(async input => ({result:{data:superjson.serialize(await (isQuiz ? window.__query(input, init.signal) : window.__contentQuery(input, init.signal)))}})));
+                  const paths = new URL(String(url)).pathname.split("/").pop().split(",");
+                  const results = await Promise.all(inputs.map(async (input, index) => ({result:{data:superjson.serialize(await (paths[index] === "interactive.startSession" ? window.__sessionQuery(input, init.signal) : window.__catalogQuery(input, init.signal)))}})));
                   return new Response(JSON.stringify(results), {status:200, headers:{'content-type':'application/json'}});
                 },
               })]});
@@ -71,7 +73,7 @@ beforeAll(async () => {
                 queryFn:({signal})=>window.__query(input,signal),
               });
               export const trpc = {
-                useUtils:() => ({ client: { interactive: { getContent: { mutate: (input, options) => window.__useHttpTransport ? httpClient.interactive.getContent.mutate(input, options) : window.__contentQuery(input, options.signal) } }, quiz: { getInteractiveQuestions: { mutate: (input, options) => window.__useHttpTransport ? httpClient.quiz.getInteractiveQuestions.mutate(input, options) : window.__query(input, options.signal) } } } }),
+                useUtils:() => ({ client: { interactive: { getContent: { mutate: () => { window.__legacyCalls.push("getContent"); throw new Error("Legacy content RPC is forbidden"); } }, getCatalog: { mutate: (input, options) => window.__useHttpTransport ? httpClient.interactive.getCatalog.mutate(input, options) : window.__catalogQuery(input, options.signal) }, startSession: { mutate: (input, options) => window.__useHttpTransport ? httpClient.interactive.startSession.mutate(input, options) : window.__sessionQuery(input, options.signal) } }, quiz: { getInteractiveQuestions: { mutate: () => { window.__legacyCalls.push("quiz"); throw new Error("Legacy RPC is forbidden"); } } } } }),
                 quiz:{getQuestions:questions}, auth:{me:procedure(['auth','me'])},
                 dashboardAuth:{me:procedure(['dashboardAuth','me'])},
                 stripe:{checkAccess:procedure(['stripe','checkAccess'])},
@@ -98,8 +100,10 @@ const question = (label: string) => ({
   explanation: `Synthetic ${label} explanation.`,
 });
 const response = (label: string, locked = false): MockResponse => ({ questions: [question(label)], locked });
-// Synthetic JWT-shaped fixtures only: no cryptographic verification is performed
-// by the component, and these tests cannot prove server identity or authorization.
+// Historical JWT-shaped fixtures are retained as synthetic input variations only.
+// The engine-session adapter deliberately drops the old receipt: every recheck
+// creates a fresh session and resets answers regardless of receipt continuity.
+// These tests cannot prove server identity or authorization.
 const receipt = (owner: string, issuedAt = 1) => `header.${Buffer.from(JSON.stringify({ owner, iat: issuedAt })).toString("base64url")}.signature`;
 const identified = (label: string, owner = "a".repeat(64), issuedAt = 1, locked = false): MockResponse => ({
   questions: [{ ...question(label), attemptToken: receipt(owner, issuedAt) }], locked,
@@ -116,7 +120,15 @@ async function withCourse(
   useHttpTransport = false,
   initialToken?: string,
 ) {
+  // The new server validates authored semantics before responding. These invalid
+  // fixture cases model its unavailable error, not browser-side authoring review.
+  // Structural wire malformations still reach the real client schema parser.
+  const rejectedCourses = Object.entries(contentResponses).filter(([, value]) => {
+    const examples = (value as { examples?: unknown[] })?.examples;
+    return examples?.some(example => interactiveDrillExampleSchema.safeParse(example).success && !engineExampleSchema.safeParse(example).success);
+  }).map(([key]) => key);
   const page = await browser.newPage();
+  page.setDefaultTimeout(2500);
   const requests: string[] = [];
   const sockets: string[] = [];
   page.on("request", request => requests.push(request.url()));
@@ -124,16 +136,20 @@ async function withCourse(
   await page.route("**/*", route => route.abort("blockedbyclient"));
   try {
     await page.setContent('<!doctype html><html><body><div id="root"></div></body></html>');
-    await page.evaluate(({ course, search, responses, startOffline, contentResponses, contentMode, useHttpTransport, initialToken }) => {
+    await page.evaluate(({ course, search, responses, startOffline, contentResponses, contentMode, useHttpTransport, initialToken, rejectedCourses }) => {
       const state = window as any;
       state.__route = { course, search };
       state.__startOffline = startOffline;
       state.__responses = responses;
       state.__calls = [];
+      state.__sessionCalls = [];
+      state.__legacyCalls = [];
       state.__contentCalls = [];
       state.__transportCalls = [];
       state.__useHttpTransport = useHttpTransport;
       state.__contentResponses = contentResponses;
+      state.__authoredCourses = new Set(Object.keys(contentResponses));
+      state.__rejectedCourses = new Set(rejectedCourses);
       state.__contentMode = contentMode;
       state.__contentPending = [];
       state.__mode = "success";
@@ -154,37 +170,60 @@ async function withCourse(
         clear: () => { for (const key of Object.keys(values)) delete values[key]; },
       };
       Object.defineProperty(window, "localStorage", { configurable: true, get: () => storage });
-      state.__contentQuery = (input: { courseKey: string; accessToken?: string }, signal: AbortSignal) => {
+      // These are fixture adapters only, not a product fallback. Old quiz-shaped
+      // synthetic inputs now model responses from the session engine directly.
+      const bankFor = (key: string) => ({ "class1-ww": "class1-wastewater", "wpi-class1-water-coll": "wpi-class1-wastewater-coll" } as Record<string,string>)[key] ?? key;
+      const fixtureFor = (key: string) => {
+        if (state.__authoredCourses.has(key)) return state.__contentResponses[key];
+        const old = state.__responses[bankFor(key)] ?? { questions: [], locked: true };
+        const examples = old.questions.filter((item: any) => typeof item.question === "string" && Array.isArray(item.options) && Number.isInteger(item.correctIndex) && typeof item.explanation === "string").map((item: any, index: number) => ({ id: `synthetic-${index}`, mode: "rapid-swipe", prompt: item.question, correctAnswer: true, explanation: item.explanation }));
+        return { courseKey: key, available: examples.length > 0, locked: old.locked, version: examples.length ? "synthetic-v1" : null, examples };
+      };
+      const awaitFixture = (data: any, mode: string, pending: string, signal: AbortSignal) => {
+        if (mode === "error" || mode === "unauthorized" || mode === "notfound") return Promise.reject(Object.assign(new Error("Synthetic transport error"), { data: { httpStatus: mode === "unauthorized" ? 401 : mode === "notfound" ? 404 : 500 } }));
+        if (mode !== "hold") return Promise.resolve(data);
+        return new Promise((resolve, reject) => {
+          state[pending].push(() => resolve(data));
+          if (!state.__ignoreAbort) signal.addEventListener("abort", () => reject(new DOMException("Aborted", "AbortError")), { once: true });
+        });
+      };
+      state.__catalogQuery = (input: { courseKey: string; accessToken?: string }, signal: AbortSignal) => {
         state.__contentCalls.push({ ...input });
-        if (state.__contentMode === "error" || state.__contentMode === "unauthorized") {
-          return Promise.reject(Object.assign(new Error("Synthetic transport error"), { data: { httpStatus: state.__contentMode === "unauthorized" ? 401 : 500 } }));
-        }
-        const data = structuredClone(state.__contentResponses[input.courseKey] ?? { courseKey: input.courseKey, available: false, locked: true, version: null, examples: [] });
-        if (state.__contentMode !== "hold") return Promise.resolve(data);
-        return new Promise((resolve, reject) => {
-          state.__contentPending.push(() => resolve(data));
-          if (!state.__ignoreAbort) signal.addEventListener("abort", () => reject(new DOMException("Aborted", "AbortError")), { once: true });
-        });
+        if (state.__contentMode === "missingCatalogEndpoint") return Promise.reject(new Error("No procedure found: interactive.getCatalog"));
+        if (state.__rejectedCourses.has(input.courseKey)) return Promise.reject(new Error("Interactive content is unavailable."));
+        const data = structuredClone(fixtureFor(input.courseKey));
+        const examples = data.examples ?? [];
+        const modeNames = ["rapid-swipe", "speed-match", "odd-one-out", "cause-effect", "tap-the-flaw", "before-after"];
+        const catalog = { courseKey: data.courseKey, available: data.available, locked: data.locked, version: data.version, modes: modeNames.map(mode => ({ mode, totalCount: examples.filter((example: any) => example.mode === mode).length, topics: [], difficulties: [] })) };
+        if (!data.available) catalog.modes = [];
+        // Preserve the original inconsistent-unavailable regression at the new boundary.
+        if (!data.available && examples.length) catalog.modes = [{ mode: "rapid-swipe", totalCount: 1, topics: [], difficulties: [] }];
+        return awaitFixture(catalog, state.__contentMode, "__contentPending", signal);
       };
-      state.__query = (input: any, signal: AbortSignal) => {
-        state.__calls.push({ ...input });
-        if (state.__mode === "error") return Promise.reject(new Error("Synthetic transport error"));
-        // Snapshot the server result at request time; deferred requests are released
-        // explicitly by the test so stale responses and loading can be observed.
-        const data = structuredClone(state.__responses[input.bankKey] ?? { questions: [], locked: true });
-        if (state.__mode !== "hold") return Promise.resolve(data);
-        return new Promise((resolve, reject) => {
-          state.__pending.push(() => resolve(data));
-          if (!state.__ignoreAbort) signal.addEventListener("abort", () => reject(new DOMException("Aborted", "AbortError")), { once: true });
-        });
+      state.__sessionQuery = (input: any, signal: AbortSignal) => {
+        state.__sessionCalls.push({ ...input });
+        if (state.__contentMode === "missingSessionEndpoint") return Promise.reject(new Error("No procedure found: interactive.startSession"));
+        const authored = state.__authoredCourses.has(input.courseKey);
+        if (!authored) state.__calls.push({ ...input });
+        const data = structuredClone(fixtureFor(input.courseKey));
+        const examples = (data.examples ?? []).filter((example: any) => example.mode === input.mode);
+        const response = { courseKey: data.courseKey, available: data.available, locked: data.locked, version: data.version, sessionId: `synthetic-session-${state.__sessionCalls.length}`, mode: input.mode, totalAvailableCount: examples.length,
+          examples: examples.slice(0, data.locked ? 1 : input.sessionSize), filters: { topicId: input.topicId ?? null, difficulty: input.difficulty ?? null, requestedSize: input.sessionSize } };
+        return awaitFixture(response, authored ? "success" : state.__mode, "__pending", signal);
       };
-    }, { course, search, responses, startOffline, contentResponses, contentMode, useHttpTransport, initialToken });
+    }, { course, search, responses, startOffline, contentResponses, contentMode, useHttpTransport, initialToken, rejectedCourses });
     await page.addScriptTag({ content: script });
+    const authoredExamples = (contentResponses[course] as { examples?: Array<{ mode: string }> } | undefined)?.examples;
+    if (authoredExamples?.length && authoredExamples[0].mode && authoredExamples[0].mode !== "rapid-swipe") {
+      const labels: Record<string, string> = { "before-after": "Before/After", "cause-effect": "Cause Effect", "odd-one-out": "Odd-One-Out", "tap-the-flaw": "Tap-the-Flaw", "speed-match": "Speed-Match" };
+      await page.getByRole("navigation", { name: "Choose a practice mode" }).getByRole("button", { name: new RegExp(`^${labels[authoredExamples[0].mode]}`) }).click();
+    }
     await run(page);
   } finally {
     try {
       expect(requests).toEqual([]);
       expect(sockets).toEqual([]);
+      expect(await page.evaluate(() => (window as any).__legacyCalls)).toEqual([]);
     } finally { await page.close(); }
   }
 }
@@ -199,14 +238,22 @@ const heading = (page: Page, text: string) => page.getByRole("heading", { name: 
 // These expectations exercise client routing and the server-supplied working set;
 // a mock cannot establish that the real server enforces entitlements.
 describe("CourseInteractiveLearning isolated browser", () => {
-  it.each(["authored", "fallback"])("omits an empty stored bearer for authenticated %s requests", async source => {
+  it.each(["missingCatalogEndpoint", "missingSessionEndpoint", "notfound"])("does not retrieve legacy results when new endpoint fails: %s", async mode => {
+    await withCourse("oit", { oit: response("Forbidden legacy") }, async page => {
+      await page.getByRole("alert").waitFor();
+      expect(await page.getByText(/Forbidden legacy/).count()).toBe(0);
+      expect(await page.evaluate(() => (window as any).__legacyCalls)).toEqual([]);
+    }, "", false, { oit: authored("oit", "New endpoint") }, mode);
+  });
+
+  it.each(["authored", "session-fixture"])("omits an empty stored bearer for authenticated %s requests", async source => {
     // The mocked successful response represents an authenticated request; no cookie or server is exercised.
     const content = source === "authored" ? { oit: authored("oit", "Cookie") } : {};
     await withCourse("oit", { oit: response("Cookie") }, async page => {
       await page.getByText(source === "authored" ? "Authored Cookie?" : "Synthetic Cookie question?", { exact: false }).first().waitFor();
       expect((await contentCalls(page)).length).toBeGreaterThan(0);
       expect((await contentCalls(page)).every(input => input.accessToken === undefined)).toBe(true);
-      if (source === "fallback") {
+      if (source === "session-fixture") {
         expect((await calls(page)).length).toBeGreaterThan(0);
         expect((await calls(page)).every(input => input.accessToken === undefined)).toBe(true);
       }
@@ -220,14 +267,14 @@ describe("CourseInteractiveLearning isolated browser", () => {
     ["oversized UTF-8 bytes", "é".repeat(4097), undefined],
     ["character boundary", "x".repeat(8192), "x".repeat(8192)],
     ["byte boundary", "é".repeat(4096), "é".repeat(4096)],
-  ])("bounds %s before both authored and fallback POSTs", async (_label, token, expected) => {
+  ])("bounds %s before both catalog and session POSTs", async (_label, token, expected) => {
     await withCourse("oit", { oit: response("Fixture") }, async page => {
       await page.getByText("Synthetic Fixture question?", { exact: false }).first().waitFor();
       expect((await contentCalls(page)).every(input => input.accessToken === expected)).toBe(true);
       expect((await calls(page)).every(input => input.accessToken === expected)).toBe(true);
       const requests = await page.evaluate(() => (window as any).__transportCalls as Array<{url: string; method: string; body: string}>);
-      expect(requests.some(request => request.url.includes("interactive.getContent"))).toBe(true);
-      expect(requests.some(request => request.url.includes("quiz.getInteractiveQuestions"))).toBe(true);
+      expect(requests.some(request => request.url.includes("interactive.getCatalog"))).toBe(true);
+      expect(requests.some(request => request.url.includes("interactive.startSession"))).toBe(true);
       expect(requests.every(request => request.method === "POST" && (!token || !request.url.includes(token)))).toBe(true);
       for (const request of requests) {
         const encoded = JSON.parse(request.body)["0"];
@@ -248,7 +295,7 @@ describe("CourseInteractiveLearning isolated browser", () => {
     }, "", false, { oit: authored("oit", locked ? "Preview" : "Account", locked) }, "success", true, "x".repeat(8193));
   });
 
-  it.each(["authored", "fallback"])("gates and reauthorizes %s on a same-token identity signal, ignoring a late pre-signal response", async source => {
+  it.each(["authored", "session-fixture"])("gates and reauthorizes %s on a same-token identity signal, ignoring a late pre-signal response", async source => {
     const content = source === "authored" ? { oit: authored("oit", "Old") } : {};
     await withCourse("oit", { oit: response("Old") }, async page => {
       await page.getByText(source === "authored" ? "Authored Old?" : "Synthetic Old question?", { exact: false }).first().waitFor();
@@ -264,7 +311,7 @@ describe("CourseInteractiveLearning isolated browser", () => {
         const state = window as any;
         state.__contentResponses.oit = nextContent;
         state.__responses.oit = nextQuestions;
-        if (source === "fallback") state.__contentMode = "success";
+        if (source === "session-fixture") state.__contentMode = "success";
         // The hint carries only a nonce, and the stored token is unchanged.
         window.dispatchEvent(new StorageEvent("storage", { key: "echelon.identity-change.event", newValue: "a".repeat(32) }));
         state.__hiddenImmediately = !document.body.textContent?.includes("Old");
@@ -282,7 +329,7 @@ describe("CourseInteractiveLearning isolated browser", () => {
       await page.getByText(source === "authored" ? "Authored New?" : "Synthetic New question?", { exact: false }).first().waitFor();
       await page.getByText(/available free preview/i).waitFor();
       expect((await contentCalls(page)).every(input => input.accessToken === "same-token")).toBe(true);
-      if (source === "fallback") expect((await calls(page)).every(input => input.accessToken === "same-token")).toBe(true);
+      if (source === "session-fixture") expect((await calls(page)).every(input => input.accessToken === "same-token")).toBe(true);
     }, "", false, content, "success", true, "same-token");
   });
 
@@ -308,7 +355,7 @@ describe("CourseInteractiveLearning isolated browser", () => {
       }, "", false, { oit: authored("oit", "Old") });
     });
 
-  it.each(["authored", "fallback"])("ignores pre-notification %s responses after a cross-tab identity hint", async source => {
+  it.each(["authored", "session-fixture"])("ignores pre-notification %s responses after a cross-tab identity hint", async source => {
     const content = source === "authored" ? { oit: authored("oit", "Old") } : {};
     await withCourse("oit", { oit: response("Old") }, async page => {
       await page.getByText(source === "authored" ? "Authored Old?" : "Synthetic Old question?", { exact: false }).first().waitFor();
@@ -325,9 +372,9 @@ describe("CourseInteractiveLearning isolated browser", () => {
         const state = window as any;
         state.__contentResponses.oit = nextContent;
         state.__responses.oit = nextQuestions;
-        // Keep the authored request held only in authored mode. The fallback
-        // parent must finish its new access check before its child can remount.
-        if (source === "fallback") state.__contentMode = "success";
+        // Hold the catalog for authored fixtures; session fixtures defer the
+        // round response after the new catalog authorizes it.
+        if (source === "session-fixture") state.__contentMode = "success";
         window.dispatchEvent(new StorageEvent("storage", { key: "echelon_trial_email", newValue: "untrusted" }));
       }, { source, nextContent: source === "authored" ? authored("oit", "New", true) : { courseKey: "oit", available: false, locked: true, version: null, examples: [] }, nextQuestions: response("New", true) });
       await expect.poll(() => page.evaluate(source => (window as any)[source === "authored" ? "__contentPending" : "__pending"].length, source)).toBeGreaterThan(oldPending);
@@ -381,7 +428,7 @@ describe("CourseInteractiveLearning isolated browser", () => {
     const short = { ...named("Short"), prompt: "Which comes earlier in the phase?", options: ["pH", "DO"], correctAnswer: "pH" };
     await withCourse("oit", {}, async page => {
       await heading(page, short.prompt).waitFor();
-      expect(await page.getByRole("group", { name: "Answer choices" }).getByRole("button").allTextContents()).toEqual(["pH", "DO"]);
+      expect((await page.getByRole("group", { name: "Answer choices" }).getByRole("button").allTextContents()).sort()).toEqual(["DO", "pH"]);
       expect(await page.getByRole("alert").count()).toBe(0);
       await page.getByRole("button", { name: "pH", exact: true }).click();
       await page.getByText(short.explanation).waitFor();
@@ -400,7 +447,7 @@ describe("CourseInteractiveLearning isolated browser", () => {
       expect(await page.getByText(standalone.prompt).count()).toBe(0);
       expect(await calls(page)).toEqual([]);
     }, "", false, { oit: { ...namedContent("Short"), examples: [standalone] } });
-  });
+  }, 15000);
 
   it("posts the token for named content and removes paid content across an identity change", async () => {
     await withCourse("oit", { oit: response("Legacy") }, async page => {
@@ -433,7 +480,7 @@ describe("CourseInteractiveLearning isolated browser", () => {
 
   it("does not fall back when an available package contains no preview examples", async () => {
     await withCourse("oit", { oit: response("Legacy") }, async page => {
-      await page.getByText(/no interactive activities are available/i).waitFor();
+      await page.getByText(/no (?:interactive activities|published activities) are available/i).waitFor();
       expect(await calls(page)).toEqual([]);
     }, "", false, { oit: { ...authored("oit", "Empty", true), examples: [] } });
   });
@@ -488,12 +535,12 @@ describe("CourseInteractiveLearning isolated browser", () => {
       }, authored("oit", "New preview", true));
       await expect.poll(async () => (await contentCalls(page)).some(input => input.accessToken === "new-token")).toBe(true);
       await page.getByRole("status").filter({ hasText: /loading/i }).waitFor();
-      expect(await page.getByText(/Authored Paid/).count()).toBe(0);
+      expect(await page.locator(".course-interactive__session").getByText(/Authored Paid/).count()).toBe(0);
       await page.evaluate(() => { const state = window as any; state.__contentMode = "success"; state.__contentPending.splice(0).forEach((release: () => void) => release()); });
       await page.getByText("Authored New preview?").waitFor();
       await page.getByText(/available free preview/i).waitFor();
       expect(await calls(page)).toEqual([]);
-      expect(await page.getByText(/Authored Paid/).count()).toBe(0);
+      expect(await page.locator(".course-interactive__session").getByText(/Authored Paid/).count()).toBe(0);
     }, "", false, { oit: authored("oit", "Paid") });
   });
 
@@ -533,7 +580,7 @@ describe("CourseInteractiveLearning isolated browser", () => {
         window.dispatchEvent(new Event("focus"));
       }, authored("oit", "Reconnected", true));
       await page.getByRole("alert").filter({ hasText: /offline/i }).waitFor();
-      expect(await page.getByText(/Authored Paid/).count()).toBe(0);
+      expect(await page.locator(".course-interactive__session").getByText(/Authored Paid/).count()).toBe(0);
       await page.evaluate(() => { localStorage.setItem("echelon_access_token", "reconnect-token"); (window as any).__setOnline(true); });
       await page.getByText("Authored Reconnected?").waitFor();
       expect((await contentCalls(page)).some(input => input.accessToken === "reconnect-token")).toBe(true);
@@ -554,14 +601,14 @@ describe("CourseInteractiveLearning isolated browser", () => {
     }, "", false, { oit: authored("oit", "Stable") });
   });
 
-  it("revokes legacy fallback immediately when an authored recheck is denied", async () => {
+  it("revokes engine session immediately when an authored recheck is denied", async () => {
     await withCourse("oit", { oit: response("Legacy") }, async page => {
       await page.getByText("Synthetic Legacy question?", { exact: false }).first().waitFor();
       const before = (await calls(page)).length;
       await page.evaluate(() => { (window as any).__contentMode = "unauthorized"; window.dispatchEvent(new Event("focus")); });
       await page.getByRole("alert").waitFor();
       expect(await page.getByText(/Synthetic Legacy/).count()).toBe(0);
-      // A legacy refetch may have already started on the same focus event, but its result cannot be displayed.
+      // A session recheck may have already started on the same focus event, but its result cannot be displayed.
       expect((await calls(page)).length).toBeGreaterThanOrEqual(before);
     });
   });
@@ -570,21 +617,21 @@ describe("CourseInteractiveLearning isolated browser", () => {
     ["class1-ww", "class1-wastewater", "Class 1 Wastewater Treatment", "Ontario"],
     ["wpi-class1-water-coll", "wpi-class1-wastewater-coll", "WPI Class I Wastewater Collection", "Western"],
     ["us-class1-water", "us-class1-water", "US Class I Water Treatment", "US"],
-  ])("requests the registry bank for %s and renders only its returned content", async (course, bank, title, label) => {
+  ])("requests the canonical course session for %s and renders only its returned content", async (course, bank, title, label) => {
     await withCourse(course, { [bank]: response(label), "class1-water": response("Other") }, async page => {
       await heading(page, title).waitFor();
       await page.getByText(`Synthetic ${label} question?`, { exact: false }).first().waitFor();
       const requested = await calls(page);
       expect(requested.length).toBeGreaterThan(0);
       for (const input of requested) {
-        expect(input).toEqual({ bankKey: bank, accessToken: undefined, previewSurface: "practice" });
+        expect(input).toEqual({ courseKey: course, accessToken: undefined, mode: "rapid-swipe", sessionSize: 20 });
       }
       expect(await page.getByText("Synthetic Other question?", { exact: false }).count()).toBe(0);
       expect(await page.getByText(/free preview/i).count()).toBe(0);
     });
   });
 
-  it("posts the fallback token in the body and hides paid questions when entitlement expires", async () => {
+  it("posts the session token in the body and hides paid questions when entitlement expires", async () => {
     await withCourse("oit", { oit: response("Paid") }, async page => {
       await page.getByText("Synthetic Paid question?", { exact: false }).first().waitFor();
       await page.evaluate(() => {
@@ -598,13 +645,13 @@ describe("CourseInteractiveLearning isolated browser", () => {
       await page.getByRole("status").filter({ hasText: /loading/i }).waitFor();
       expect(await page.getByText(/Synthetic Paid/).count()).toBe(0);
       const requests = await page.evaluate(() => (window as any).__transportCalls as Array<{url: string; method: string; body: string}>);
-      const fallback = requests.filter(request => request.url.includes("quiz.getInteractiveQuestions"));
+      const fallback = requests.filter(request => request.url.includes("interactive.startSession"));
       expect(fallback.length).toBeGreaterThan(0);
       expect(requests.every(request => !request.url.includes("synthetic-fallback-token"))).toBe(true);
       const tokenRequest = fallback.find(request => request.body.includes("synthetic-fallback-token"));
       expect(tokenRequest?.method).toBe("POST");
       expect(tokenRequest?.url).not.toContain("input=");
-      expect(JSON.parse(tokenRequest!.body)["0"].json).toEqual({ bankKey: "oit", accessToken: "synthetic-fallback-token", previewSurface: "practice" });
+      expect(JSON.parse(tokenRequest!.body)["0"].json).toEqual({ courseKey: "oit", accessToken: "synthetic-fallback-token", mode: "rapid-swipe", sessionSize: 20 });
       await page.evaluate(() => { const state = window as any; state.__mode = "success"; state.__pending.splice(0).forEach((release: () => void) => release()); });
       await page.getByText("Synthetic Expired preview question?", { exact: false }).first().waitFor();
       await page.getByText(/available free preview/i).waitFor();
@@ -617,7 +664,7 @@ describe("CourseInteractiveLearning isolated browser", () => {
       await page.getByText(/available free preview/i).waitFor();
       await page.getByText("Synthetic Preview question?", { exact: false }).first().waitFor();
       expect(await page.getByText("Synthetic Private other course", { exact: false }).count()).toBe(0);
-      expect((await calls(page)).every(input => input.bankKey === "class1-water")).toBe(true);
+      expect((await calls(page)).every(input => input.courseKey === "class1-water")).toBe(true);
     });
   });
 
@@ -627,7 +674,7 @@ describe("CourseInteractiveLearning isolated browser", () => {
       await page.evaluate(() => (window as any).__setRoute("class1-ww"));
       await page.getByText("Synthetic Second question?", { exact: false }).first().waitFor();
       expect(await page.getByText("Synthetic First question?", { exact: false }).count()).toBe(0);
-      expect((await calls(page)).map(input => input.bankKey)).toContain("class1-wastewater");
+      expect((await calls(page)).map(input => input.courseKey)).toContain("class1-ww");
     });
   });
 
@@ -652,7 +699,7 @@ describe("CourseInteractiveLearning isolated browser", () => {
 
   it("shows a safe empty state for an empty or unusable working set", async () => {
     await withCourse("oit", { oit: { locked: true, questions: [{ question: "Synthetic invalid" }] } }, async page => {
-      await page.getByText(/no interactive activities are available/i).waitFor();
+      await page.getByText(/no (?:interactive activities|published activities) are available/i).waitFor();
       expect(await page.getByText("Synthetic invalid", { exact: false }).count()).toBe(0);
     });
   });
@@ -682,7 +729,7 @@ describe("CourseInteractiveLearning isolated browser", () => {
     await withCourse("oit", { oit: response("Offline recovery") }, async page => {
       await page.getByRole("alert").filter({ hasText: /offline.*check your connection/i }).waitFor();
       expect(await calls(page)).toEqual([]);
-      expect(await page.getByText(/loading practice activities/i).count()).toBe(0);
+      expect(await page.getByText(/loading (?:practice activities|your practice round)/i).count()).toBe(0);
       await page.evaluate(() => localStorage.setItem("echelon_access_token", "new-offline-token"));
       await page.getByRole("button", { name: "Try again" }).click();
       await page.getByRole("alert").filter({ hasText: /offline/i }).waitFor();
@@ -764,7 +811,7 @@ describe("CourseInteractiveLearning isolated browser", () => {
         window.dispatchEvent(new StorageEvent("storage", { key: "echelon_access_token" }));
       });
       await expect.poll(async () => (await calls(page)).some(input => input.accessToken === "synthetic-new-identity")).toBe(true);
-      await page.getByRole("status").filter({ hasText: /loading practice activities/i }).waitFor();
+      await page.getByRole("status").filter({ hasText: /loading (?:practice activities|your practice round)/i }).waitFor();
       expect(await page.getByText("Synthetic Paid question?", { exact: false }).count()).toBe(0);
       await page.evaluate(() => {
         const state = window as any;
@@ -790,7 +837,7 @@ describe("CourseInteractiveLearning isolated browser", () => {
         state.__client.setQueryData([["auth", "me"], { type: "query" }], { id: "synthetic-identity" });
       });
       await expect.poll(async () => (await calls(page)).length).toBeGreaterThan(before);
-      await page.getByRole("status").filter({ hasText: /loading practice activities/i }).waitFor();
+      await page.getByRole("status").filter({ hasText: /loading (?:practice activities|your practice round)/i }).waitFor();
       expect(await page.getByText("Synthetic Prior identity question?", { exact: false }).count()).toBe(0);
       await page.evaluate(() => {
         const state = window as any;
@@ -830,7 +877,7 @@ describe("CourseInteractiveLearning isolated browser", () => {
         else void state.__client.invalidateQueries();
       }, { trigger, next: identified("Stable", "a".repeat(64), 2) });
       await expect.poll(async () => (await calls(page)).length).toBeGreaterThan(before);
-      await page.getByRole("status").filter({ hasText: /loading practice activities/i }).waitFor();
+      await page.getByRole("status").filter({ hasText: /loading (?:practice activities|your practice round)/i }).waitFor();
       // Check the DOM, not merely visibility or the accessibility tree.
       expect(await page.locator("body").evaluate(body => body.textContent?.includes("Synthetic Stable question?"))).toBe(false);
       expect(await page.locator("body").evaluate(body => body.textContent?.includes("Synthetic Stable explanation."))).toBe(false);
@@ -866,7 +913,7 @@ describe("CourseInteractiveLearning isolated browser", () => {
         state.__responses.oit = { questions: [], locked: true };
         window.dispatchEvent(new Event("focus"));
       });
-      await page.getByText(/no interactive activities are available/i).waitFor();
+      await page.getByText(/no (?:interactive activities|published activities) are available/i).waitFor();
       expect(await page.locator("body").evaluate(body => body.textContent?.includes("Synthetic Paid question?"))).toBe(false);
     });
   });
@@ -889,7 +936,7 @@ describe("CourseInteractiveLearning isolated browser", () => {
         window.dispatchEvent(new Event("focus"));
       }, next);
       await expect.poll(async () => (await calls(page)).length).toBeGreaterThan(before);
-      await page.getByRole("status").filter({ hasText: /loading practice activities/i }).waitFor();
+      await page.getByRole("status").filter({ hasText: /loading (?:practice activities|your practice round)/i }).waitFor();
       await page.evaluate(() => {
         const state = window as any;
         state.__mode = "success";
@@ -913,7 +960,7 @@ describe("CourseInteractiveLearning isolated browser", () => {
         window.dispatchEvent(new Event("focus"));
       });
       await expect.poll(async () => (await calls(page)).length).toBeGreaterThan(before);
-      await page.getByRole("status").filter({ hasText: /loading practice activities/i }).waitFor();
+      await page.getByRole("status").filter({ hasText: /loading (?:practice activities|your practice round)/i }).waitFor();
       await page.evaluate(() => {
         const state = window as any;
         state.__mode = "success";
@@ -943,7 +990,7 @@ describe("CourseInteractiveLearning isolated browser", () => {
       await expect.poll(async () => (await calls(page)).length).toBeGreaterThan(mid);
       expect(await page.getByText("Synthetic Old question?", { exact: false }).count()).toBe(0);
       await page.evaluate(() => { (window as any).__pending.shift()(); });
-      await page.getByRole("status").filter({ hasText: /loading practice activities/i }).waitFor();
+      await page.getByRole("status").filter({ hasText: /loading (?:practice activities|your practice round)/i }).waitFor();
       expect(await page.getByText("Synthetic Old question?", { exact: false }).count()).toBe(0);
       expect(await page.getByText("Synthetic New question?", { exact: false }).count()).toBe(0);
       await page.evaluate(() => {

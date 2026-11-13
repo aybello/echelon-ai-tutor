@@ -8,12 +8,11 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { publicProcedure, router } from "./_core/trpc";
 import { interactiveRouter } from "./routers/interactiveRouter";
 import { interactiveModes } from "./interactiveContent/schema";
-import { loadInteractivePackage, validateInteractivePackage } from "./interactiveContent/loader";
+import { validateInteractivePackage } from "./interactiveContent/loader";
+import { getInteractiveContentEngine, type InteractiveContentEngine } from "./interactiveContent/engine/loader";
 
 vi.mock("./db", () => ({ getDb: vi.fn(async () => null) }));
-vi.mock("./interactiveContent/loader", async original => ({
-  ...await original<typeof import("./interactiveContent/loader")>(), loadInteractivePackage: vi.fn(),
-}));
+vi.mock("./interactiveContent/engine/loader", () => ({ getInteractiveContentEngine: vi.fn() }));
 const examples = interactiveModes.flatMap(mode => ["preview", "paid"].map(kind => {
   const base = { id: `${kind}-${mode}`, mode, prompt: "Synthetic prompt" };
   if (mode === "rapid-swipe") return { ...base, correctAnswer: true, explanation: "Synthetic" };
@@ -27,6 +26,16 @@ const pkg = validateInteractivePackage("class1-water", { approved: true, content
   courseKey: "class1-water", status: "approved", version: "http-fixture", examples,
   previewIds: Object.fromEntries(interactiveModes.map(mode => [mode, `preview-${mode}`])),
 } });
+// Synthetic engine only: no artifact discovery or real DB connections.
+const sessionEngine = {
+  getCatalog: vi.fn((courseKey: string, hasAccess: boolean) => ({ courseKey, available: true, locked: !hasAccess, version: pkg!.version, modes: interactiveModes.map(mode => ({ mode, totalCount: pkg!.examples.filter(example => example.mode === mode).length, topics: [], difficulties: [] })) })),
+  startSession: vi.fn((input: { courseKey: string; mode: typeof interactiveModes[number]; sessionSize: number }, hasAccess: boolean) => {
+    const selected = pkg!.examples.filter(example => example.mode === input.mode && (hasAccess || example.id.startsWith("preview-")));
+    return { courseKey: input.courseKey, available: true, locked: !hasAccess, version: pkg!.version,
+      sessionId: "synthetic-session", mode: input.mode, totalAvailableCount: selected.length, examples: selected.slice(0, input.sessionSize),
+      filters: { topicId: null, difficulty: null, requestedSize: input.sessionSize } };
+  }),
+};
 const testRouter = router({ interactive: interactiveRouter, other: publicProcedure.mutation(() => ({ ok: true })) });
 const app = express();
 // Mirrors the relevant production order; no listener or network connection is made.
@@ -55,15 +64,28 @@ async function request(path: string, body: string, method = "POST") {
   return { status: res.statusCode, cache: res.getHeader("Cache-Control"), body: content, json: () => JSON.parse(content) };
 }
 const envelope = (input: unknown) => ({ json: input });
-const path = "interactive.getContent,interactive.getContent?batch=1";
-const valid = { courseKey: "class1-water" };
+const path = "interactive.startSession,interactive.startSession?batch=1";
+const valid = { courseKey: "class1-water", mode: "rapid-swipe", sessionSize: 20 };
 beforeEach(() => {
   vi.clearAllMocks();
   if (!pkg) throw new Error("Synthetic interactive package failed validation");
-  vi.mocked(loadInteractivePackage).mockReturnValue({ status: "valid", package: pkg });
+  vi.mocked(getInteractiveContentEngine).mockReturnValue(sessionEngine as unknown as InteractiveContentEngine);
 });
 
 describe("interactive HTTP batches through Express", () => {
+  it("batches answer-free catalogs and a bounded fixed preview session with response-wide no-store", async () => {
+    const response = await request("interactive.getCatalog,interactive.startSession?batch=1", JSON.stringify({ 0: envelope({ courseKey: "class1-water" }), 1: envelope(valid) }));
+    expect(response.status).toBe(200);
+    expect(response.cache).toBe("private, no-store");
+    const [catalog, session] = response.json().map((item: any) => item.result.data.json);
+    expect(catalog).toMatchObject({ courseKey: "class1-water", available: true, locked: true, version: "http-fixture" });
+    expect(catalog.modes.map((item: any) => item.mode)).toEqual(interactiveModes);
+    expect(catalog.modes.every((item: any) => item.totalCount === 2)).toBe(true);
+    expect(JSON.stringify(catalog)).not.toMatch(/examples|correctAnswer|paid-/);
+    expect(session).toMatchObject({ mode: "rapid-swipe", totalAvailableCount: 1, filters: { topicId: null, difficulty: null, requestedSize: 20 } });
+    expect(session.examples.map((item: any) => item.id)).toEqual(["preview-rapid-swipe"]);
+    expect(response.body).not.toContain("paid-");
+  });
   it("returns separately indexed previews for a batch and sets response-wide private no-store", async () => {
     const response = await request(path, JSON.stringify({ 0: envelope(valid), 1: envelope(valid) }));
     expect(response.status).toBe(200);
@@ -72,7 +94,7 @@ describe("interactive HTTP batches through Express", () => {
     expect(result).toHaveLength(2);
     for (const item of result) {
       expect(item.result.data.json).toMatchObject({ available: true, locked: true, version: "http-fixture" });
-      expect(item.result.data.json.examples.map((x: { id: string }) => x.id)).toEqual(interactiveModes.map(mode => `preview-${mode}`));
+      expect(item.result.data.json.examples.map((x: { id: string }) => x.id)).toEqual(["preview-rapid-swipe"]);
     }
   });
   it("isolates a schema-invalid sibling without exposing paid examples and marks the whole response no-store", async () => {
@@ -81,35 +103,36 @@ describe("interactive HTTP batches through Express", () => {
     expect(response.cache).toBe("private, no-store");
     const result = response.json();
     expect(result[0].result.data.json.locked).toBe(true);
-    expect(result[0].result.data.json.examples).toHaveLength(interactiveModes.length);
+    expect(result[0].result.data.json.examples).toHaveLength(1);
     expect(result[1].error.json.data.code).toBe("BAD_REQUEST");
     expect(response.body).not.toContain("paid-");
-    expect(loadInteractivePackage).toHaveBeenCalledTimes(1);
+    expect(getInteractiveContentEngine).toHaveBeenCalledTimes(1);
   });
   it("covers an unrelated successful sibling with the interactive response's no-store header", async () => {
-    const response = await request("other,interactive.getContent?batch=1", JSON.stringify({ 0: envelope(null), 1: envelope(valid) }));
+    const response = await request("other,interactive.startSession?batch=1", JSON.stringify({ 0: envelope(null), 1: envelope(valid) }));
     expect(response.status).toBe(200);
     expect(response.cache).toBe("private, no-store");
     expect(response.json()[0].result.data.json).toEqual({ ok: true });
     expect(response.json()[1].result.data.json.locked).toBe(true);
   });
   it("returns an unavailable locked response with no-store for an absent package", async () => {
-    vi.mocked(loadInteractivePackage).mockReturnValue({ status: "absent" });
-    const response = await request("interactive.getContent", JSON.stringify(envelope(valid)));
+    vi.mocked(getInteractiveContentEngine).mockReturnValue({ startSession: () => ({ courseKey: "class1-water", available: false, locked: true, version: null, sessionId: "synthetic-absent", mode: "rapid-swipe", totalAvailableCount: 0, examples: [], filters: { topicId: null, difficulty: null, requestedSize: 20 } }) } as unknown as InteractiveContentEngine);
+    const response = await request("interactive.startSession", JSON.stringify(envelope(valid)));
     expect(response.status).toBe(200);
     expect(response.cache).toBe("private, no-store");
-    expect(response.json().result.data.json).toEqual({ courseKey: "class1-water", available: false, locked: true, version: null, examples: [] });
+    expect(response.json().result.data.json).toEqual({ courseKey: "class1-water", available: false, locked: true, version: null, sessionId: "synthetic-absent", mode: "rapid-swipe", totalAvailableCount: 0, examples: [], filters: { topicId: null, difficulty: null, requestedSize: 20 } });
   });
   it("fails closed with no-store for an invalid registered package", async () => {
-    vi.mocked(loadInteractivePackage).mockReturnValue({ status: "invalid" });
+    vi.mocked(getInteractiveContentEngine).mockReturnValue({ startSession: () => { throw new Error("private-artifact-error"); } } as unknown as InteractiveContentEngine);
     const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
     try {
-      const response = await request("interactive.getContent", JSON.stringify(envelope(valid)));
+      const response = await request("interactive.startSession", JSON.stringify(envelope(valid)));
       expect(response.status).toBe(500);
       expect(response.cache).toBe("private, no-store");
       expect(response.json().error.json.data.code).toBe("INTERNAL_SERVER_ERROR");
       expect(response.body).not.toContain("paid-");
-      expect(warn).toHaveBeenCalledWith("Interactive content is unavailable due to a configuration error.");
+      expect(warn).not.toHaveBeenCalled();
+      expect(response.body).not.toContain("private-artifact-error");
     } finally {
       warn.mockRestore();
     }
@@ -118,10 +141,10 @@ describe("interactive HTTP batches through Express", () => {
     const response = await request(path, "{");
     expect(response.status).toBe(400);
     expect(response.cache).toBeUndefined();
-    expect(loadInteractivePackage).not.toHaveBeenCalled();
+    expect(getInteractiveContentEngine).not.toHaveBeenCalled();
   });
   it("documents GET rejection before interactive procedure middleware", async () => {
-    const response = await request("interactive.getContent", "", "GET");
+    const response = await request("interactive.startSession", "", "GET");
     expect(response.status).toBe(405);
     expect(response.cache).toBeUndefined();
   });

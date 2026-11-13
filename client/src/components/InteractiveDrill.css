@@ -437,3 +437,10 @@
   .course-interactive .interactive-drill__feedback { margin-top: 8px; padding: 6px 8px; line-height: 1.25; }
   .course-interactive .interactive-drill__controls { margin-top: 8px; }
 }
+
+/* Controlled course sessions provide mode navigation outside the working set. */
+.interactive-drill__layout.interactive-drill__layout--activity-only {
+  display: flex;
+  flex-direction: column;
+}
+.interactive-drill__layout--activity-only > .interactive-drill__activity { width: 100%; }
