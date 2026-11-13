@@ -4,8 +4,12 @@
  * inventory/scope and approval record. Never populate from the compilation request,
  * environment, an automatic self-hash, or an unreviewed private file.
  * A documentary declaration is not authentication or proof of actual completeness.
- * No genuine full-corpus approval is available yet: checked builds fail closed.
+ * Only the separately reviewed, owner-authorized OIT AI release is active.
+ * This is documentary AI approval, never a human technical-review claim.
  */
+import oitApproval from "../../server/interactiveContent/reviewed-2026-11-13/approval.json";
+import oitPins from "../../server/interactiveContent/reviewed-2026-11-13/active-pins.json";
+
 export type CorpusApproval = Readonly<{
   corpusSha256: string;
   scope: string;
@@ -19,13 +23,15 @@ export type CorpusApproval = Readonly<{
   selected: readonly string[];
   checkedVersions: Readonly<Record<string, string>>;
 }>;
-export const approvedCorpora: Readonly<Record<string, CorpusApproval>> = Object.freeze({});
+export const approvedCorpora: Readonly<Record<string, CorpusApproval>> = Object.freeze({
+  [oitApproval.approvalId]: Object.freeze(oitApproval.approval),
+});
 
 /** Separately reviewed exact compiled manifest bytes, one active checked release per
  * course. The manifest commits to full shard and legacy bytes. Never derive these
  * pins automatically from mutable output or from a compilation request. */
 export type ActiveCheckedRelease = Readonly<{ approvalId: string; manifestSha256: string }>;
-export const activeCheckedReleases: Readonly<Record<string, ActiveCheckedRelease>> = Object.freeze({});
+export const activeCheckedReleases: Readonly<Record<string, ActiveCheckedRelease>> = Object.freeze(oitPins);
 
 export function activeCheckedRelease(courseKey: string): ActiveCheckedRelease | undefined {
   if (!Object.hasOwn(activeCheckedReleases, courseKey)) return undefined;

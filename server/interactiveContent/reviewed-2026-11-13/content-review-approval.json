@@ -1,0 +1,54 @@
+{
+  "model": "gpt-6.1-sol",
+  "reviewRecord": {
+    "status": "COMPLETE",
+    "startedAt": "2026-11-13T19:43:28.328376+00:00",
+    "model": "gpt-6.1-sol",
+    "commit": "59f149fb0fb5b7c7b13532f4104bb6b4a53e62ed",
+    "requestSha256": "5da747c00d46583b4c43828a64337662d404ded932e164d01273ff6014f4ba5a",
+    "completedAt": "2026-11-13T19:44:55.058009+00:00",
+    "responseSha256": "ac9faf75e805b1c3ed73f9925a4c0fb695f65d6208b292d2e8e31f491ef723a4"
+  },
+  "verdict": {
+    "verdict": "approved",
+    "corpusSha256": "d580a3684537e575a2061b5b91fca66d94520f2b6fac5dd01ee61863fe292473",
+    "codeCommit": "59f149fb0fb5b7c7b13532f4104bb6b4a53e62ed",
+    "selectedCount": 671,
+    "plannedManifestHashes": {
+      "oit": "dd4714d3201aebae9165a6e06ba1ad778a355d9094084e192a990f3ecd885f2c",
+      "oit-ww": "4acac45d0023abd613d9d01ea8dffc708d18fda2a7792c50f8fd9c4fee6e9ec1"
+    },
+    "blockers": [],
+    "advisories": [
+      "Inventory totals reconcile: 374 new water exercises and 297 new wastewater exercises. Adding the immutable 103/107 legacy items gives intended course inventories of 477/404, not 100 items in every mode or completion of the broader coverage target.",
+      "Shared science and repeated concepts across courses and modes are intentional instructional reuse, not evidence of distinct scientific objectives. The supplied inventory does not establish a material contradictory answer for equivalent stated conditions; exercise counts must not be marketed as unique-concept counts.",
+      "Many stored multiple-choice answers occupy the same option position. Preserve presentation randomization so storage order does not become an answer cue; the relevant client presentation implementation was not supplied.",
+      "Some source rightsBasis descriptions retain older wording that retrievedAt is null, while the current field and docLocator explicitly identify local snapshot retrieval. Clean up this stale prose without inventing original remote retrieval dates.",
+      "Empty committed approval and active-pin registries correctly leave the proposed release inactive. Subsequent activation must separately commit the exact selection, checked versions, unique release token, committed-bank byte hash, approval evidence and the two approved manifest pins. This verdict does not authorize automatically trusting planner output or changing those pins."
+    ],
+    "limitations": [
+      "This is documentary full-corpus and supplied-source software approval. No repository checkout, test execution, independent artifact hashing or primary-source retrieval was performed in this interface.",
+      "Private excerpts and source snapshots were intentionally omitted. Their reported local text/hash checks are documentary evidence, not independently verified source support or copyright-expression comparison by this reviewer.",
+      "Provider call identifiers, model labels, request/response hashes and extracted passing decisions document prior independent review. Without original request/response bytes or authenticated provider records, their authenticity and exact bindings cannot be independently recomputed here.",
+      "The private-input compiler, runtime loader, client renderer and complete serving configuration were not supplied. Privacy conclusions are limited to the fixed server-only bank adapter, build paths, unchanged compiler and supplied tests.",
+      "Approval is not human technical review, calibrated difficulty validation, official Ontario exam alignment, legal rights clearance, deployment confirmation or a statement about current production."
+    ],
+    "summary": "Approved for the exact documentary scope and bindings above. The explicit owner policy is confined to the two OIT courses and is not represented as human technical approval. The supplied policy code retains the conservative and sampled-human routes and rejects supplied negative or stale decisions. The committed-bank adapter obtains trust from committed registries, checks exact bank bytes, selection, course scope and checked versions, and retains the unchanged compiler's exact manifest enforcement. The planner's serialization, ordering, sharding and manifest construction match that compiler for the stated valid inputs. Runtime bank structure excludes authoring sources and provider evidence, and build output remains outside client assets. No proven release-blocking content/software defect or unresolved material contradiction was identified within the stated limitations. This approval does not activate or deploy the release."
+  },
+  "ownerPolicy": "Owner2026-11-13requestedCarbonorSol6.1contentreviewandrelease;not human technical approval.",
+  "newCount": 671,
+  "humanTechnicalReviews": 0,
+  "privateSourcesNotIncluded": true,
+  "softwareProof": {
+    "focusedTests": 271,
+    "corpusValidation": {
+      "corpusSha256": "d580a3684537e575a2061b5b91fca66d94520f2b6fac5dd01ee61863fe292473",
+      "count": 671,
+      "testLogSha256": "adf3c7810450095cd4c4db400d9f78a2fce5aed654300effc75fd88dd0757239",
+      "softwareReviewAt": "2026-11-13T19:41:22.130Z",
+      "humanTechnicalReviews": 0
+    }
+  },
+  "withheldRiskOrLegalItems": 54,
+  "excludedLaterNPSHConcern": true
+}
