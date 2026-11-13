@@ -30,7 +30,7 @@ beforeAll(async () => {
       builder.onLoad({ filter: /.*/, namespace: "fixture" }, args => ({ loader: "js", resolveDir: process.cwd(), contents: {
         wouter: `import React from 'react'; export const useRoute=()=>[true,{courseKey:'oit'}]; export const useSearch=()=>''; export const Link=({children,...props})=>React.createElement('a',props,children);`,
         "@/hooks/usePageMeta": `export const usePageMeta=()=>{};`,
-        "@/lib/trpc": `const p=path=>({_def:()=>({path})}); export const trpc={useUtils:()=>({client:{interactive:{getContent:{mutate:async()=>window.__content}}}}),auth:{me:p(['auth','me'])},dashboardAuth:{me:p(['dashboardAuth','me'])},stripe:{checkAccess:p(['stripe','checkAccess'])},access:{auditMyEntitlements:p(['access','auditMyEntitlements'])}};`,
+        "@/lib/trpc": `const p=path=>({_def:()=>({path})}); export const trpc={useUtils:()=>({client:{interactive:{getCatalog:{mutate:async()=>({courseKey:"oit",available:true,locked:false,version:"synthetic-layout",modes:window.__content.examples.map(example=>({mode:example.mode,totalCount:1,topics:[],difficulties:[]}))})},startSession:{mutate:async input=>({courseKey:"oit",available:true,locked:false,version:"synthetic-layout",sessionId:"synthetic-layout-session",mode:input.mode,totalAvailableCount:1,examples:window.__content.examples.filter(example=>example.mode===input.mode),filters:{topicId:null,difficulty:null,requestedSize:input.sessionSize}})}}}}),auth:{me:p(['auth','me'])},dashboardAuth:{me:p(['dashboardAuth','me'])},stripe:{checkAccess:p(['stripe','checkAccess'])},access:{auditMyEntitlements:p(['access','auditMyEntitlements'])}};`,
       }[args.path]! }));
     } }],
   });
@@ -44,6 +44,7 @@ for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 
   describe(`course layout ${viewport.width}x${viewport.height}`, () => {
     it("fits short activities and feedback, retains targets and allows expanded content to scroll", async () => {
       const page = await browser.newPage({ viewport });
+      page.setDefaultTimeout(3000);
       const requests: string[] = [];
       page.on("request", request => requests.push(request.url()));
       await page.route("**/*", route => route.abort());
@@ -57,19 +58,25 @@ for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 
         await page.addScriptTag({ content: script });
         await page.locator(".interactive-drill__activity").waitFor();
         const assertFits = async () => {
+          // New catalog/settings controls precede the activity on mobile. Keep
+          // the compact activity/feedback fit intent after natural page scrolling,
+          // rather than incorrectly requiring the entire controls+round above fold.
+          if (viewport.width < 600) await page.locator(".interactive-drill__activity").scrollIntoViewIfNeeded();
           const metrics = await page.evaluate(() => ({
             bottom: document.querySelector(".interactive-drill__activity")!.getBoundingClientRect().bottom,
+            activityHeight: document.querySelector(".interactive-drill__activity")!.getBoundingClientRect().height,
             width: document.documentElement.scrollWidth,
             text: getComputedStyle(document.querySelector(".interactive-drill__content h2")!).color,
             targets: [...document.querySelectorAll(".course-interactive button, .course-interactive summary, .course-interactive nav a")].map(el => el.getBoundingClientRect().height),
           }));
-          expect(metrics.bottom, JSON.stringify(await page.locator(".interactive-drill__round > *").evaluateAll(els => els.map(el => ({ tag: el.tagName, text: el.textContent?.slice(0, 30), h: el.getBoundingClientRect().height, mt: getComputedStyle(el).marginTop, mb: getComputedStyle(el).marginBottom }))))).toBeLessThanOrEqual(viewport.height);
+          expect(viewport.width < 600 ? metrics.activityHeight : metrics.bottom, JSON.stringify(await page.locator(".interactive-drill__round > *").evaluateAll(els => els.map(el => ({ tag: el.tagName, text: el.textContent?.slice(0, 30), h: el.getBoundingClientRect().height, mt: getComputedStyle(el).marginTop, mb: getComputedStyle(el).marginBottom }))))).toBeLessThanOrEqual(viewport.height);
           expect(metrics.width).toBeLessThanOrEqual(viewport.width);
           expect(metrics.text).toBe("rgb(0, 0, 0)");
           expect(metrics.targets.every(height => height >= 44)).toBe(true);
         };
         for (const name of ["Rapid Swipe", "Speed-Match", "Odd-One-Out", "Cause Effect", "Tap-the-Flaw", "Before/After"]) {
           await page.getByRole("navigation", { name: "Choose a practice mode" }).getByRole("button", { name: new RegExp(`^${name}`) }).click();
+          await page.locator(".interactive-drill__activity").waitFor();
           await assertFits();
           if (name === "Speed-Match") {
             for (const n of [1, 2, 3]) {
@@ -82,6 +89,7 @@ for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 
           expect(await page.locator(".interactive-drill__feedback").evaluate(el => getComputedStyle(el).color)).toBe("rgb(0, 0, 0)");
         }
         await page.getByRole("navigation", { name: "Choose a practice mode" }).getByRole("button", { name: /^Rapid Swipe/ }).click();
+        await page.locator(".interactive-drill__activity").waitFor();
         await page.getByRole("button", { name: "Start 30-second round" }).click();
         await assertFits();
         await page.getByRole("button", { name: "Yes", exact: true }).click();

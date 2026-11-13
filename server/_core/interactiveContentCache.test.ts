@@ -50,7 +50,11 @@ async function request(app: express.Express, url: string, options: {
 
 const t = initTRPC.create();
 const router = t.router({
-  interactive: t.router({ getContent: t.procedure.input(z.object({ courseKey: z.string() })).mutation(({ input }) => input) }),
+  interactive: t.router({
+    getContent: t.procedure.input(z.object({ courseKey: z.string() })).mutation(({ input }) => input),
+    getCatalog: t.procedure.input(z.object({ courseKey: z.string() })).mutation(({ input }) => input),
+    startSession: t.procedure.input(z.object({ courseKey: z.string(), mode: z.string() })).mutation(({ input }) => input),
+  }),
   quiz: t.router({ getInteractiveQuestions: t.procedure.input(z.object({ bankKey: z.string() })).mutation(({ input }) => input) }),
   other: t.router({ get: t.procedure.query(() => "ok") }),
   tutor: t.router({ chat: t.procedure.mutation(() => "ok") }),
@@ -104,6 +108,32 @@ describe("interactive getContent response caching", () => {
     }
   });
 
+  it.each(["interactive.getCatalog", "interactive.startSession"])("protects %s before JSON parsing and GET rejection", async procedure => {
+    const app = appWithStack();
+    const path = `/api/trpc/${procedure}`;
+    const input = { courseKey: "test", ...(procedure.endsWith("startSession") ? { mode: "rapid-swipe" } : {}) };
+    const cases: Array<[string, { method?: string; body?: string; contentType?: string }, number]> = [
+      [path, { ...json, body: JSON.stringify(input) }, 200],
+      [path, { ...json, body: '{}' }, 400],
+      [path, {}, 405],
+      [path, { method: "HEAD" }, 204],
+      [`${path}?input=%7Bnot-json`, {}, 405],
+      [path, { ...json, body: '{' }, 400],
+      [path, { ...json, body: JSON.stringify({ x: "x".repeat(1_048_577) }) }, 413],
+      [`/api/trpc/${procedure},other.get?batch=1`, { ...json, body: '{' }, 400],
+      [`/api/trpc/${procedure.replace(".", "%2E")}%2Cother.get?batch=1`, {}, 400],
+      [`/api/trpc/other.get,${procedure},%ZZ?batch=1`, {}, 500],
+    ];
+    for (const [url, options, status] of cases) {
+      const response = await request(app, url, options);
+      expect(response.status, url).toBe(status);
+      expect(response.cache, url).toBe("private, no-store");
+    }
+    for (const url of [`${path}Extra`, `/api/trpc/other.get?input=${procedure}`, `/api/trpc/other.get,${procedure}Extra?batch=1`]) {
+      expect((await request(app, url)).cache, url).toBeUndefined();
+    }
+  });
+
   it("protects fallback POSTs, batches, and parser failures without broadening cache policy", async () => {
     const app = appWithStack();
     const path = "/api/trpc/quiz.getInteractiveQuestions";
@@ -146,6 +176,11 @@ describe("interactive getContent response caching", () => {
     const frozenFallback = await request(app, '/api/trpc/quiz.getInteractiveQuestions', { ...json, body: '{}' });
     expect(frozenFallback.status).toBe(503);
     expect(frozenFallback.cache).toBe("private, no-store");
+    for (const procedure of ["interactive.getCatalog", "interactive.startSession"]) {
+      const frozenEngine = await request(app, `/api/trpc/${procedure}`, { ...json, body: '{' });
+      expect(frozenEngine.status).toBe(503);
+      expect(frozenEngine.cache).toBe("private, no-store");
+    }
     delete process.env.DATABASE_CUTOVER_MODE;
     // The tutor member selects the existing strict AI limiter (15/minute).
     let limited: Awaited<ReturnType<typeof request>> | undefined;
@@ -157,6 +192,11 @@ describe("interactive getContent response caching", () => {
     const limitedFallback = await request(app, '/api/trpc/tutor.chat,quiz.getInteractiveQuestions?batch=1', { ...json, body: '{}' });
     expect(limitedFallback.status).toBe(429);
     expect(limitedFallback.cache).toBe("private, no-store");
+    for (const procedure of ["interactive.getCatalog", "interactive.startSession"]) {
+      const limitedEngine = await request(app, `/api/trpc/tutor.chat,${procedure}?batch=1`, { ...json, body: '{}' });
+      expect(limitedEngine.status).toBe(429);
+      expect(limitedEngine.cache).toBe("private, no-store");
+    }
   });
 
   it("does not change unrelated tRPC or commerce cache policies", async () => {

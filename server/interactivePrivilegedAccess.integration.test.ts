@@ -10,7 +10,7 @@ import { router } from "./_core/trpc";
 import { issueSubscriptionToken } from "./_core/subscriptionToken";
 import { assertAccess, hasAccessToExam, resolveAccessForRequest } from "./_core/accessService";
 import { getDb } from "./db";
-import { loadInteractivePackage } from "./interactiveContent/loader";
+import { getInteractiveContentEngine, type InteractiveContentEngine } from "./interactiveContent/engine/loader";
 
 // No real DB, network, or registered content. Access resolution, token
 // verification, tRPC routers, question sampling, and receipts remain real.
@@ -19,9 +19,7 @@ vi.mock("./_core/env", async original => ({
   ...await original<typeof import("./_core/env")>(),
   ENV: { ...(await original<typeof import("./_core/env")>()).ENV, cookieSecret: "test-only-not-for-production", ownerOpenId: "fixture-owner-openid" },
 }));
-vi.mock("./interactiveContent/loader", async original => ({
-  ...await original<typeof import("./interactiveContent/loader")>(), loadInteractivePackage: vi.fn(),
-}));
+vi.mock("./interactiveContent/engine/loader", () => ({ getInteractiveContentEngine: vi.fn() }));
 // Attribution is downstream of access, and is deliberately not under test.
 vi.mock("./teams/attemptAttribution", () => ({ resolveAttemptAttribution: vi.fn(async () => undefined), validateIssuedAttribution: vi.fn() }));
 
@@ -38,6 +36,15 @@ const packageFixture = validateInteractivePackage("class1-water", { approved: tr
   courseKey: "class1-water", status: "approved", version: "synthetic-v1", examples,
   previewIds: Object.fromEntries(interactiveModes.map(mode => [mode, `preview-${mode}`])),
 } });
+// Synthetic engine only: no artifact discovery or real DB connections.
+const sessionEngine = {
+  startSession: vi.fn((input: { courseKey: string; mode: typeof interactiveModes[number]; sessionSize: number }, hasAccess: boolean) => {
+    const selected = packageFixture!.examples.filter(example => example.mode === input.mode && (hasAccess || example.id.startsWith("preview-")));
+    return { courseKey: input.courseKey, available: true, locked: !hasAccess, version: packageFixture!.version,
+      sessionId: "synthetic-session", mode: input.mode, totalAvailableCount: selected.length, examples: selected.slice(0, input.sessionSize),
+      filters: { topicId: null, difficulty: null, requestedSize: input.sessionSize } };
+  }),
+};
 const rows = Array.from({ length: 30 }, (_, i) => ({
   id: i + 1, bankKey: "class1-water", questionNum: i + 1, module: "Synthetic module", difficulty: "medium",
   question: `Synthetic question ${i + 1}`, options: '["a","b","c","d"]', correctIndex: 0,
@@ -72,9 +79,10 @@ function fakeDb(purchaseRows: object[] = [], entitledEmail?: string) {
   vi.mocked(getDb).mockResolvedValue({ select } as never);
 }
 async function expectContent(c: ReturnType<typeof caller>, locked: boolean, accessToken?: string) {
-  const content = await c.interactive.getContent({ courseKey: "class1-water", ...(accessToken ? { accessToken } : {}) });
+  const content = await c.interactive.startSession({ courseKey: "class1-water", mode: "rapid-swipe", sessionSize: 20, ...(accessToken ? { accessToken } : {}) });
   expect(content).toMatchObject({ available: true, locked, version: "synthetic-v1" });
-  expect(content.examples.map(x => x.id)).toEqual(examples.filter(x => !locked || x.id.startsWith("preview-")).map(x => x.id));
+  expect(content.examples.map(x => x.id)).toEqual(examples.filter(x => x.mode === "rapid-swipe" && (!locked || x.id.startsWith("preview-"))).map(x => x.id));
+  expect(content).toMatchObject({ mode: "rapid-swipe", totalAvailableCount: locked ? 1 : 2, filters: { topicId: null, difficulty: null, requestedSize: 20 } });
 }
 async function expectQuiz(c: ReturnType<typeof caller>, locked: boolean, accessToken?: string) {
   const quiz = await c.quiz.getInteractiveQuestions({ bankKey: "class1-water", ...(accessToken ? { accessToken } : {}) });
@@ -89,15 +97,15 @@ async function expectBoth(c: ReturnType<typeof caller>, locked: boolean, accessT
 beforeEach(() => {
   vi.clearAllMocks(); reads.length = 0;
   if (!packageFixture) throw new Error("Synthetic package validation failed");
-  vi.mocked(loadInteractivePackage).mockReturnValue({ status: "valid", package: packageFixture });
+  vi.mocked(getInteractiveContentEngine).mockReturnValue(sessionEngine as unknown as InteractiveContentEngine);
   fakeDb();
 });
 
 describe("privileged OAuth access is confined to an explicit interactive opt-in", () => {
   it.each([
-    ["admin", "interactive.getContent", user("admin"), expectContent],
+    ["admin", "interactive.startSession", user("admin"), expectContent],
     ["admin", "quiz.getInteractiveQuestions", user("admin"), expectQuiz],
-    ["owner with non-admin role", "interactive.getContent", user("user", "fixture-owner-openid"), expectContent],
+    ["owner with non-admin role", "interactive.startSession", user("user", "fixture-owner-openid"), expectContent],
     ["owner with non-admin role", "quiz.getInteractiveQuestions", user("user", "fixture-owner-openid"), expectQuiz],
   ] as const)("unlocks %s on %s via the trusted OAuth identity", async (_label, _route, oauth, check) => {
     await check(caller(oauth), false);
@@ -117,11 +125,11 @@ describe("privileged OAuth access is confined to an explicit interactive opt-in"
   it.each(["electrician-309a", "electrician-309a-demo"])("rejects %s even for privileged users", async courseKey => {
     for (const oauth of [user("admin"), user("user", "fixture-owner-openid")]) {
       const c = caller(oauth);
-      await expect(c.interactive.getContent({ courseKey })).rejects.toMatchObject({ code: "BAD_REQUEST" });
+      await expect(c.interactive.startSession({ courseKey, mode: "rapid-swipe", sessionSize: 20 })).rejects.toMatchObject({ code: "BAD_REQUEST" });
       await expect(c.quiz.getInteractiveQuestions({ bankKey: courseKey })).rejects.toMatchObject({ code: "FORBIDDEN" });
     }
     expect(getDb).not.toHaveBeenCalled();
-    expect(loadInteractivePackage).not.toHaveBeenCalled();
+    expect(getInteractiveContentEngine).not.toHaveBeenCalled();
   });
   it.each([user("admin"), user("user", "fixture-owner-openid")])("does not grant shared guards privileged access", async oauth => {
     const ctx = { user: oauth, studentEmail: null } as TrpcContext;
@@ -150,7 +158,7 @@ describe("privileged OAuth access is confined to an explicit interactive opt-in"
   });
   it("does not accept a client-supplied privileged opt-in", async () => {
     for (const c of [caller(null), caller(user("user"))]) {
-      await expect(c.interactive.getContent({ courseKey: "class1-water", privilegedInteractiveAccess: true, role: "admin", openId: "fixture-owner-openid" } as never)).rejects.toMatchObject({ code: "BAD_REQUEST" });
+      await expect(c.interactive.startSession({ courseKey: "class1-water", mode: "rapid-swipe", sessionSize: 20, privilegedInteractiveAccess: true, role: "admin", openId: "fixture-owner-openid" } as never)).rejects.toMatchObject({ code: "BAD_REQUEST" });
       // Quiz strips unknown fields; they cannot change either route's access.
       const input = { bankKey: "class1-water", privilegedInteractiveAccess: true, role: "admin", openId: "fixture-owner-openid" } as never;
       expect((await c.quiz.getInteractiveQuestions(input)).locked).toBe(true);

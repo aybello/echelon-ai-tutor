@@ -9,15 +9,27 @@ import { inspectInteractiveRegistration, loadInteractivePackage, validateInterac
 import { releasePackages } from "./interactiveContent/release-2026-11-12/registry";
 import releaseMetadata from "./interactiveContent/release-2026-11-12/release-metadata.json";
 import { interactiveModes } from "./interactiveContent/schema";
+import { getInteractiveContentEngine, InteractiveContentEngine } from "./interactiveContent/engine/loader";
 import { interactiveRouter } from "./routers/interactiveRouter";
 // @ts-expect-error The standalone offline converter is plain JavaScript.
 import { validatePack } from "../scripts/validate-interactive-drafts.mjs";
 
 vi.mock("./_core/accessService", () => ({ resolveAccessForRequest: vi.fn() }));
-vi.mock("./interactiveContent/loader", async original => ({
-  ...await original<typeof import("./interactiveContent/loader")>(),
-  loadInteractivePackage: vi.fn(),
+vi.mock("./interactiveContent/engine/loader", async original => ({
+  ...await original<typeof import("./interactiveContent/engine/loader")>(),
+  getInteractiveContentEngine: vi.fn(),
 }));
+// Compatibility-only fixture adapter: the router delegates to getLegacyContent.
+// Model its frozen legacy response, including absent versus corrupt registration.
+const loadRegistration = vi.fn<typeof loadInteractivePackage>();
+const legacyEngine = { getLegacyContent: vi.fn((courseKey: string, hasAccess: boolean) => {
+  const loaded = loadRegistration(courseKey);
+  if (loaded.status === "invalid") throw new Error("Interactive content is unavailable.");
+  if (loaded.status === "absent") return { courseKey, available: false, locked: !hasAccess, version: null, examples: [] };
+  const pkg = loaded.package;
+  const previews = new Set(Object.values(pkg.previewIds));
+  return { courseKey, available: true, locked: !hasAccess, version: pkg.version, examples: hasAccess ? pkg.examples : pkg.examples.filter(example => previews.has(example.id)) };
+}) };
 
 const setHeader = vi.fn();
 const ctx: TrpcContext = { user: null, studentEmail: null, req: { headers: {} } as TrpcContext["req"], res: { setHeader } as unknown as TrpcContext["res"] };
@@ -45,9 +57,10 @@ const previewIds = interactiveModes.map(mode => `preview-${mode}`);
 const validated = (content: unknown) => validateInteractivePackage("class1-water", { approved: true, content });
 
 beforeEach(() => {
-  vi.resetAllMocks();
+  vi.clearAllMocks();
   vi.mocked(resolveAccessForRequest).mockResolvedValue(false);
-  vi.mocked(loadInteractivePackage).mockImplementation(key => key === fixture.courseKey ? inspectInteractiveRegistration(key, approved) : { status: "absent" });
+  vi.mocked(getInteractiveContentEngine).mockReturnValue(legacyEngine as unknown as InteractiveContentEngine);
+  vi.mocked(loadRegistration).mockImplementation(key => key === fixture.courseKey ? inspectInteractiveRegistration(key, approved) : { status: "absent" });
 });
 
 describe("interactive.getContent", () => {
@@ -57,6 +70,8 @@ describe("interactive.getContent", () => {
     expect(first).toEqual(second);
     expect(first).toMatchObject({ courseKey: "class1-water", available: true, locked: true, version: "test-only-v1" });
     expect(first.examples.map(x => x.id)).toEqual(previewIds);
+    expect(getInteractiveContentEngine).toHaveBeenCalledTimes(2);
+    expect(legacyEngine.getLegacyContent).toHaveBeenNthCalledWith(1, "class1-water", false);
     expect(resolveAccessForRequest).toHaveBeenCalledWith(ctx, "class1-water", { accessToken: undefined, privilegedInteractiveAccess: true });
     for (const extra of [{ mode: "rapid-swipe" }, { id: "paid-rapid-swipe" }, { page: 2 }, { limit: 100 }, { email: "victim@example.test" }]) {
       await expect(caller.getContent({ courseKey: "class1-water", ...extra } as never)).rejects.toMatchObject({ code: "BAD_REQUEST" });
@@ -66,6 +81,7 @@ describe("interactive.getContent", () => {
     vi.mocked(resolveAccessForRequest).mockResolvedValue(true);
     const result = await caller.getContent({ courseKey: "class1-water", accessToken: "token" });
     expect(result.locked).toBe(false);
+    expect(legacyEngine.getLegacyContent).toHaveBeenCalledWith("class1-water", true);
     expect(result.examples.map(x => x.id)).toEqual(fixture.examples.map(x => x.id));
     expect(resolveAccessForRequest).toHaveBeenCalledWith(ctx, "class1-water", { accessToken: "token", privilegedInteractiveAccess: true });
   });
@@ -84,7 +100,7 @@ describe("interactive.getContent", () => {
   it("does not convert resolver errors into access or content", async () => {
     vi.mocked(resolveAccessForRequest).mockRejectedValue(new Error("resolver unavailable"));
     await expect(caller.getContent({ courseKey: "class1-water" })).rejects.toThrow("resolver unavailable");
-    expect(loadInteractivePackage).not.toHaveBeenCalled();
+    expect(loadRegistration).not.toHaveBeenCalled();
     expect(setHeader).toHaveBeenCalledWith("Cache-Control", "private, no-store");
   });
   it("bounds bearer tokens consistently with existing quiz endpoints", async () => {
@@ -105,17 +121,15 @@ describe("interactive.getContent", () => {
   ])("fails closed for a registered %s pack instead of returning the fallback signal", async (_label, registration) => {
     const warning = vi.spyOn(console, "warn").mockImplementation(() => {});
     try {
-      vi.mocked(loadInteractivePackage).mockImplementation(key => inspectInteractiveRegistration(key, registration));
+      vi.mocked(loadRegistration).mockImplementation(key => inspectInteractiveRegistration(key, registration));
       for (const hasAccess of [false, true]) {
         vi.mocked(resolveAccessForRequest).mockResolvedValue(hasAccess);
         await expect(caller.getContent({ courseKey: "class1-water", accessToken: "secret-token" })).rejects.toMatchObject({
           code: "INTERNAL_SERVER_ERROR", message: "Interactive content is unavailable.",
         });
       }
-      expect(warning.mock.calls).toEqual([
-        ["Interactive content is unavailable due to a configuration error."],
-        ["Interactive content is unavailable due to a configuration error."],
-      ]);
+      // Current engine/router intentionally emits no artifact diagnostics.
+      expect(warning.mock.calls).toEqual([]);
       expect(setHeader).toHaveBeenCalledWith("Cache-Control", "private, no-store");
     } finally { warning.mockRestore(); }
   });
@@ -125,7 +139,7 @@ describe("interactive.getContent", () => {
       await expect(caller.getContent({ courseKey })).rejects.toMatchObject({ code: "BAD_REQUEST" });
     }
     expect(resolveAccessForRequest).not.toHaveBeenCalled();
-    expect(loadInteractivePackage).not.toHaveBeenCalled();
+    expect(loadRegistration).not.toHaveBeenCalled();
   });
   it("rejects a known but inactive canonical course", async () => {
     const course = courseRegistry.getCourseByKey("class1-water")!;
@@ -133,7 +147,7 @@ describe("interactive.getContent", () => {
     try {
       await expect(caller.getContent({ courseKey: "class1-water" })).rejects.toMatchObject({ code: "BAD_REQUEST" });
       expect(resolveAccessForRequest).not.toHaveBeenCalled();
-      expect(loadInteractivePackage).not.toHaveBeenCalled();
+      expect(loadRegistration).not.toHaveBeenCalled();
     } finally { spy.mockRestore(); }
   });
 });
@@ -184,7 +198,8 @@ describe("AI-source-reviewed software release package validation", () => {
   });
   it("exposes only the six immutable previews without exact-course access, and all examples with access", async () => {
     const actual = await vi.importActual<typeof import("./interactiveContent/loader")>("./interactiveContent/loader");
-    vi.mocked(loadInteractivePackage).mockImplementation(actual.loadInteractivePackage);
+    // Exercise the real private engine legacy wrapper, not a v2 full-bank response.
+    vi.mocked(getInteractiveContentEngine).mockReturnValue(new InteractiveContentEngine());
     for (const key of Object.keys(releasePackages)) {
       const result = actual.loadInteractivePackage(key);
       if (result.status !== "valid") throw new Error(`Invalid release: ${key}`);
@@ -199,6 +214,7 @@ describe("AI-source-reviewed software release package validation", () => {
       const full = await caller.getContent({ courseKey: key, accessToken: "token" });
       expect(full.locked).toBe(false);
       expect(full.examples).toEqual(result.package.examples);
+      expect(full.examples.length).toBeLessThanOrEqual(300);
       expect(Object.keys(full).sort()).toEqual(["available", "courseKey", "examples", "locked", "version"]);
       const serialized = JSON.stringify(full);
       for (const secretField of ["sourceSha256", "provenance", "reviewReferences", "originalBytes", "reviewers"]) expect(serialized).not.toContain(secretField);
@@ -348,7 +364,7 @@ describe("HTTP transport", () => {
       expect(absent.statusCode).toBe(200);
       const absentBody = Buffer.concat(absent.chunks).toString();
       expect(absentBody).toContain('"available":false');
-      vi.mocked(loadInteractivePackage).mockImplementation(key => inspectInteractiveRegistration(key, {
+      vi.mocked(loadRegistration).mockImplementation(key => inspectInteractiveRegistration(key, {
         approved: true, content: { ...fixture, status: "draft", version: "private-version", examples: [{ answer: "private-answer" }] },
       }));
       const invalid = await httpRequest("POST", { courseKey: "class1-water", accessToken: "private-token" });
@@ -357,7 +373,7 @@ describe("HTTP transport", () => {
       expect(invalid.headers.get("cache-control")).toBe("private, no-store");
       expect(body).toContain("Interactive content is unavailable.");
       for (const secret of ["private-version", "private-answer", "private-token", '"available":false', '"examples"']) expect(body).not.toContain(secret);
-      expect(warning).toHaveBeenCalledWith("Interactive content is unavailable due to a configuration error.");
+      expect(warning).not.toHaveBeenCalled();
     } finally { warning.mockRestore(); }
   });
   it("sets no-store for malformed JSON but documents GET rejection before middleware", async () => {

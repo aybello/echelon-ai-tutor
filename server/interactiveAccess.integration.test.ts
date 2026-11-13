@@ -11,14 +11,11 @@ vi.mock("./_core/env", async original => ({
   ...await original<typeof import("./_core/env")>(),
   ENV: { ...(await original<typeof import("./_core/env")>()).ENV, cookieSecret: "test-only-not-for-production", ownerOpenId: "" },
 }));
-// Production has no approved package. Validate a fully synthetic package through
-// the production validator; only registration/loading is replaced.
-vi.mock("./interactiveContent/loader", async original => ({
-  ...await original<typeof import("./interactiveContent/loader")>(),
-  loadInteractivePackage: vi.fn(),
-}));
+// Validate a fully synthetic legacy-shaped source package through
+// the legacy validator; the runtime engine factory is replaced with a bounded fixture.
+vi.mock("./interactiveContent/engine/loader", () => ({ getInteractiveContentEngine: vi.fn() }));
 import { getDb } from "./db";
-import { loadInteractivePackage } from "./interactiveContent/loader";
+import { getInteractiveContentEngine, type InteractiveContentEngine } from "./interactiveContent/engine/loader";
 
 const examples = interactiveModes.flatMap(mode => ["preview", "paid"].map(kind => {
   const base = { id: `${kind}-${mode}`, mode, prompt: "Synthetic prompt" };
@@ -34,6 +31,15 @@ const fixture = { courseKey: "class1-water", status: "approved", version: "synth
 const packageFixture = validateInteractivePackage("class1-water", { approved: true, content: fixture });
 const preview = examples.filter(x => x.id.startsWith("preview-")).map(x => x.id);
 const all = examples.map(x => x.id);
+// Synthetic engine only: no artifact discovery or real DB connections.
+const sessionEngine = {
+  startSession: vi.fn((input: { courseKey: string; mode: typeof interactiveModes[number]; sessionSize: number }, hasAccess: boolean) => {
+    const selected = packageFixture!.examples.filter(example => example.mode === input.mode && (hasAccess || example.id.startsWith("preview-")));
+    return { courseKey: input.courseKey, available: true, locked: !hasAccess, version: packageFixture!.version,
+      sessionId: "synthetic-session", mode: input.mode, totalAvailableCount: selected.length, examples: selected.slice(0, input.sessionSize),
+      filters: { topicId: null, difficulty: null, requestedSize: input.sessionSize } };
+  }),
+};
 const past = () => new Date(Date.now() - 60_000);
 const future = () => new Date(Date.now() + 60_000);
 
@@ -74,9 +80,10 @@ function caller(user: "anonymous" | "otp" | "oauth", email = "alice@example.test
   return interactiveRouter.createCaller(ctx);
 }
 async function check(user: "anonymous" | "otp" | "oauth", locked: boolean, token?: string, email?: string, both = false) {
-  const response = await caller(user, email, both).getContent({ courseKey: "class1-water", ...(token ? { accessToken: token } : {}) });
+  const response = await caller(user, email, both).startSession({ courseKey: "class1-water", mode: "rapid-swipe", sessionSize: 20, ...(token ? { accessToken: token } : {}) });
   expect(response).toMatchObject({ available: true, locked, version: "synthetic-v1" });
-  expect(response.examples.map(x => x.id)).toEqual(locked ? preview : all);
+  expect(response.examples.map(x => x.id)).toEqual((locked ? preview : all).filter(id => id.endsWith("rapid-swipe")));
+  expect(response).toMatchObject({ mode: "rapid-swipe", totalAvailableCount: locked ? 1 : 2, filters: { topicId: null, difficulty: null, requestedSize: 20 } });
 }
 const purchase = (productKey = "class1-water", status = "active", accessExpiresAt: Date | null = null) => ({ productKey, status, accessExpiresAt });
 const seat = (overrides: object = {}) => ({ courseKey: "class1-water", courseKeys: null, orgProvince: "ontario", orgTier: "stream-water", orgTermEnd: future(), orgStatus: "active", ...overrides });
@@ -85,13 +92,11 @@ const flex = (overrides: object = {}) => ({ courseKey: "class1-water", status: "
 beforeEach(() => {
   vi.clearAllMocks();
   if (!packageFixture) throw new Error("Synthetic interactive package failed validation");
-  vi.mocked(loadInteractivePackage).mockImplementation(key => key === "class1-water"
-    ? { status: "valid", package: packageFixture }
-    : { status: "absent" });
+  vi.mocked(getInteractiveContentEngine).mockReturnValue(sessionEngine as unknown as InteractiveContentEngine);
   fakeDb();
 });
 
-describe("interactive.getContent with real access resolution", () => {
+describe("interactive.startSession with real access resolution", () => {
   it.each(["oauth", "otp"] as const)("unlocks an exact-course purchase for a verified %s identity", async user => {
     fakeDb({ purchase: [purchase()] });
     await check(user, false, undefined, "  ALICE@EXAMPLE.TEST  ");

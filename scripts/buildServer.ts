@@ -1,8 +1,12 @@
 import { execFileSync } from "node:child_process";
-import { existsSync, readFileSync } from "node:fs";
+import { cpSync, existsSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { build } from "esbuild";
+import { compileLegacyRelease } from "../server/interactiveContent/engine/compiler";
+import { compilePrivateInput } from "./content-engine/compile-checked";
+import { writeInteractiveArtifactManifest } from "./interactiveArtifactFingerprint";
 import {
   computeSourceFingerprint,
   isSourceFingerprintPath,
@@ -160,18 +164,34 @@ if (
   process.argv[1] &&
   import.meta.url === pathToFileURL(resolve(process.argv[1])).href
 ) {
+  // A failed or partial rebuild must not leave a stale private attestation behind.
+  rmSync(resolve("dist/interactive-content-build-manifest.json"), { force: true });
   const identity = buildReleaseIdentity();
-  await build({
-    entryPoints: ["server/_core/index.ts"],
-    platform: "node",
-    packages: "external",
-    bundle: true,
-    format: "esm",
-    outdir: "dist",
-    define: {
-      __BUILD_RELEASE_ID__: JSON.stringify(identity.release),
-      __BUILD_RELEASE_KIND__: JSON.stringify(identity.releaseKind),
-    },
-    logLevel: "info",
-  });
+  // Opt-in input is a relative filename under the fixed private authoring root.
+  // Compile into an isolated private staging directory, never into client assets.
+  const checkedName = process.env.INTERACTIVE_CHECKED_DOCUMENT;
+  if (checkedName !== undefined && !checkedName) throw new Error("Empty checked document name");
+  const staging = checkedName === undefined ? undefined : mkdtempSync(resolve(tmpdir(), "interactive-checked-build-"));
+  try {
+    const interactiveArtifacts = checkedName === undefined ? compileLegacyRelease() : compilePrivateInput(checkedName, staging!);
+    await build({
+      entryPoints: ["server/_core/index.ts"],
+      platform: "node",
+      packages: "external",
+      bundle: true,
+      format: "esm",
+      outdir: "dist",
+      define: {
+        __BUILD_RELEASE_ID__: JSON.stringify(identity.release),
+        __BUILD_RELEASE_KIND__: JSON.stringify(identity.releaseKind),
+      },
+      logLevel: "info",
+    });
+    // Private answers stay adjacent to the server, never in dist/public or public.
+    rmSync(resolve("dist/interactive-content"), { recursive: true, force: true });
+    cpSync(interactiveArtifacts.outputDir, resolve("dist/interactive-content"), { recursive: true });
+    writeInteractiveArtifactManifest(resolve("dist/interactive-content"), resolve("dist/interactive-content-build-manifest.json"));
+  } finally {
+    if (staging) rmSync(staging, { recursive: true, force: true });
+  }
 }

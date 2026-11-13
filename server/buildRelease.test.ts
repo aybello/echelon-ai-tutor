@@ -1,10 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { execFileSync } from "node:child_process";
 import {
+  cpSync,
   mkdirSync,
   mkdtempSync,
   readFileSync,
   rmSync,
+  statSync,
   symlinkSync,
   writeFileSync,
 } from "node:fs";
@@ -17,6 +19,7 @@ import {
   buildReleaseIdentity,
 } from "../scripts/buildServer";
 import { computeSourceFingerprint } from "../scripts/sourceFingerprint";
+import { computeInteractiveArtifactFingerprint } from "../scripts/interactiveArtifactFingerprint";
 import { assertProductionRelease } from "./release";
 const sha = "a".repeat(40);
 const fingerprint = "c".repeat(64);
@@ -476,6 +479,7 @@ describe("build release provenance", () => {
     const git = (args: string[]) =>
       execFileSync("git", ["-C", checkout, ...args], {
         stdio: ["ignore", "pipe", "pipe"],
+        maxBuffer: 128 * 1024 * 1024,
       });
     try {
       for (const [path, bytes] of Object.entries({
@@ -490,9 +494,15 @@ describe("build release provenance", () => {
       for (const path of [
         "scripts/buildServer.ts",
         "scripts/sourceFingerprint.ts",
+        "scripts/interactiveArtifactFingerprint.ts",
+        "scripts/echelonsix-legal-screen.mjs",
         "server/release.ts",
       ]) {
         put(checkout, path, readFileSync(path, "utf8"));
+      }
+      // Exercise the real compiler and frozen release, not a stubbed build path.
+      for (const path of ["shared", "scripts/content-engine", "server/interactiveContent"]) {
+        cpSync(path, join(checkout, path), { recursive: true });
       }
       git(["init", "--quiet"]);
       git(["add", "."]);
@@ -558,6 +568,15 @@ describe("build release provenance", () => {
         release: expected,
         releaseKind: "source-sha256",
       });
+      const manifestPath = join(exported, "dist/interactive-content-build-manifest.json");
+      const privateManifest = JSON.parse(readFileSync(manifestPath, "utf8"));
+      expect(privateManifest).toEqual({
+        version: 1,
+        kind: "interactive-artifact-sha256-v1",
+        sha256: computeInteractiveArtifactFingerprint(join(exported, "dist/interactive-content")),
+      });
+      expect(statSync(manifestPath).mode & 0o777).toBe(0o600);
+      expect(JSON.stringify(health)).not.toContain(privateManifest.sha256);
     } finally {
       for (const path of [checkout, exported])
         rmSync(path, { recursive: true, force: true });
