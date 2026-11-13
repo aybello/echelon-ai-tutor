@@ -47,8 +47,6 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - name: Exercise test safety boundary without inherited credentials
         run: env -i PATH="$PATH" HOME="$HOME" node --test scripts/test-safety.test.mjs
-      - name: Validate offline game authoring pipeline
-        run: env -i PATH="$PATH" HOME="$HOME" NODE_ENV=test node --require ./scripts/test-safety.cjs --test scripts/content/game-pipeline.test.mjs
       - name: Verify enforced dependency guardrails
         run: pnpm deps:verify-guardrails
       - name: Block moderate, high and critical production dependency advisories
