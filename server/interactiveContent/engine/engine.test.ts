@@ -9,6 +9,7 @@ import { compileCourse, compileLegacyRelease, canonicalJson } from "./compiler";
 import { ENGINE_LIMITS } from "./schema";
 import { interactiveModes, interactiveStartSessionInputSchema, interactiveCatalogResponseSchema, interactiveSessionResponseSchema, interactiveDrillExampleSchema } from "../../../shared/interactiveSessions";
 import { fixture, syntheticLegacy, syntheticExample, changeManifest, writeJson } from "./testFixtures";
+import { activeCheckedReleases, approvedCorpora } from "../../../scripts/content-engine/trusted-corpora";
 
 const roots: string[] = [];
 const make = (options: Parameters<typeof fixture>[0] = {}) => { const result = fixture(options); roots.push(result.root); return result; };
@@ -16,6 +17,10 @@ const input = (overrides: Record<string, unknown> = {}) => interactiveStartSessi
 afterEach(() => { for (const root of roots.splice(0)) rmSync(root, { recursive: true, force: true }); });
 
 describe("private indexed interactive engine", () => {
+  it("ships no checked approvals or active checked pins", () => {
+    expect(Object.keys(approvedCorpora)).toEqual([]);
+    expect(Object.keys(activeCheckedReleases)).toEqual([]);
+  });
   it("preserves every original preview and bounds compatibility content to legacy", () => {
     const { root, legacy } = make({ perMode: 1001 });
     const engine = new InteractiveContentEngine(root);

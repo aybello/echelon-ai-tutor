@@ -19,6 +19,20 @@ export type CorpusApproval = Readonly<{
 }>;
 export const approvedCorpora: Readonly<Record<string, CorpusApproval>> = Object.freeze({});
 
+/** Separately reviewed exact compiled manifest bytes, one active checked release per
+ * course. The manifest commits to full shard and legacy bytes. Never derive these
+ * pins automatically from mutable output or from a compilation request. */
+export type ActiveCheckedRelease = Readonly<{ approvalId: string; manifestSha256: string }>;
+export const activeCheckedReleases: Readonly<Record<string, ActiveCheckedRelease>> = Object.freeze({});
+
+export function activeCheckedRelease(courseKey: string): ActiveCheckedRelease | undefined {
+  if (!Object.hasOwn(activeCheckedReleases, courseKey)) return undefined;
+  const pin = activeCheckedReleases[courseKey];
+  if (!pin || typeof pin.approvalId !== "string" || !pin.approvalId || !/^[a-f0-9]{64}$/.test(pin.manifestSha256) || !trustedApproval(pin.approvalId))
+    throw new Error("Invalid active checked release binding");
+  return pin;
+}
+
 // This validates syntax and uniqueness, not the provenance or randomness of a token.
 export const releaseTokenPattern = /^checked-[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
 export function validateTrustedApproval(id: string, approvedCorpora: Readonly<Record<string, CorpusApproval>>): CorpusApproval | undefined {

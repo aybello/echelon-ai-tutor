@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import { getCourseByKey, getAllActiveCourseKeys } from "../../../shared/courseRegistry";
 import { interactiveModes, interactiveCatalogResponseSchema, interactiveSessionResponseSchema, type InteractiveCatalogResponse, type InteractiveDrillExample, type InteractiveMode, type InteractiveSessionResponse, type InteractiveStartSessionInput } from "../../../shared/interactiveSessions";
 import { interactivePackageSchema, type InteractivePackage } from "../schema";
-import { trustedApproval } from "../../../scripts/content-engine/trusted-corpora";
+import { activeCheckedRelease, trustedApproval } from "../../../scripts/content-engine/trusted-corpora";
 import { ENGINE_LIMITS, engineRegistrationSchema, engineManifestSchema, engineShardSchema, type ArtifactDescriptor, type EngineManifest, type EngineIndexEntry } from "./schema";
 
 export class InteractiveEngineError extends Error {
@@ -57,7 +57,7 @@ export class InteractiveContentEngine {
     if (realpathSync(path) !== resolve(realRoot, rel)) fail();
     return path;
   }
-  private read<T>(file: string, limit: number, parse: (input: unknown) => T, descriptor?: ArtifactDescriptor, context = ""): T {
+  private read<T>(file: string, limit: number, parse: (input: unknown) => T, descriptor?: ArtifactDescriptor, context = "", fresh = false): T {
     const path = this.path(file);
     const fd = openSync(path, constants.O_RDONLY | constants.O_NOFOLLOW);
     try {
@@ -66,14 +66,20 @@ export class InteractiveContentEngine {
       const stamp = `${stat.ino}:${stat.size}:${stat.mtimeMs}:${stat.ctimeMs}`;
       const fingerprint = `${descriptor ? `${descriptor.bytes}:${descriptor.sha256}` : "registry"}:${context}`;
       const previous = this.cache.get(file);
-      if (previous?.stamp === stamp && previous.fingerprint === fingerprint) {
+      if (!fresh && previous?.stamp === stamp && previous.fingerprint === fingerprint) {
         this.cache.delete(file); this.cache.set(file, previous);
         return previous.value as T;
       }
-      if (previous) { this.cacheCost -= previous.cost; this.cache.delete(file); }
       const content = readFileSync(fd);
       this.diskReads++;
       if (content.byteLength !== stat.size || content.byteLength > limit || (descriptor && hash(content) !== descriptor.sha256)) fail();
+      // For checked resources, cache parsed objects only after authenticating the
+      // current bytes against the trusted manifest chain, not filesystem metadata.
+      if (fresh && descriptor && previous?.fingerprint === fingerprint) {
+        this.cache.delete(file); this.cache.set(file, { ...previous, stamp });
+        return previous.value as T;
+      }
+      if (previous) { this.cacheCost -= previous.cost; this.cache.delete(file); }
       const value = freeze(parse(JSON.parse(content.toString("utf8"))));
       // Conservative decoded-object accounting, not just file bytes.
       const cost = content.byteLength * 4;
@@ -104,13 +110,16 @@ export class InteractiveContentEngine {
       return registry;
     });
     const descriptor = registration.courses[courseKey];
+    const pin = activeCheckedRelease(courseKey);
     if (!descriptor) return null;
+    if (pin && descriptor.sha256 !== pin.manifestSha256) fail();
     return this.read(descriptor.file, ENGINE_LIMITS.manifestBytes, input => {
       const manifest = engineManifestSchema.parse(input);
       if (manifest.classification === "legacy_plus_checked") {
         const approval = trustedApproval(manifest.approvalId!);
-        if (!approval || approval.releaseToken !== manifest.publicVersion || approval.checkedVersions[courseKey] !== manifest.version) fail();
+        if (!pin || pin.approvalId !== manifest.approvalId || !approval || approval.releaseToken !== manifest.publicVersion || approval.checkedVersions[courseKey] !== manifest.version) fail();
       }
+      if (pin && manifest.classification !== "legacy_plus_checked") fail();
       if (manifest.classification === "legacy_release" && manifest.version !== manifest.sourceVersion) fail();
       if (manifest.courseKey !== courseKey || manifest.legacy.file !== `${courseKey}/legacy.json` || manifest.legacy.bytes > ENGINE_LIMITS.legacyBytes) fail();
       const ids = new Set<string>();
@@ -128,7 +137,7 @@ export class InteractiveContentEngine {
       if (manifest.shards.reduce((sum, shard) => sum + shard.count, 0) !== manifest.entries.length || new Set(Object.values(manifest.previewIds)).size !== 6) fail();
       for (const mode of interactiveModes) if (!manifest.entries.some(entry => entry.id === manifest.previewIds[mode] && entry.mode === mode)) fail();
       return manifest;
-    }, descriptor);
+    }, descriptor, pin ? `checked:${pin.approvalId}:${pin.manifestSha256}` : "", !!pin);
   }
   private examples(manifest: EngineManifest, selected: EngineIndexEntry[]): InteractiveDrillExample[] {
     // Group reads so a request parses each selected shard only once even after LRU eviction.
@@ -145,7 +154,7 @@ export class InteractiveContentEngine {
           if (!example || example.id !== entry.id || example.mode !== entry.mode || Buffer.byteLength(json(example)) !== entry.bytes || hash(json(example)) !== entry.sha256) fail();
         }
         return data;
-      }, descriptor, context);
+      }, descriptor, context, manifest.classification === "legacy_plus_checked");
       for (const entry of selected.filter(entry => entry.shard === index)) result.set(entry.id, shard.examples[entry.offset]);
     }
     return selected.map(entry => result.get(entry.id)!);
@@ -212,7 +221,7 @@ export class InteractiveContentEngine {
         const legacy = interactivePackageSchema.parse(input);
         if (legacy.courseKey !== courseKey || legacy.version !== manifest.sourceVersion || hash(json(legacy)) !== manifest.sourceSha256 || json(legacy.previewIds) !== json(manifest.previewIds)) fail();
         return legacy;
-      }, manifest.legacy, hash(json(manifest)));
+      }, manifest.legacy, hash(json(manifest)), manifest.classification === "legacy_plus_checked");
       const previewIds = new Set(Object.values(pkg.previewIds));
       return { courseKey, available: true as const, locked: !hasAccess, version: pkg.version, examples: hasAccess ? pkg.examples : pkg.examples.filter(example => previewIds.has(example.id)) };
     });

@@ -6,7 +6,7 @@ import ts from "typescript";
 import { getAllActiveCourseKeys, getCourseByKey } from "../../../shared/courseRegistry";
 import { interactiveModes, type InteractiveDrillExample, type InteractiveDifficulty } from "../../../shared/interactiveSessions";
 import { interactivePackageSchema, type InteractivePackage } from "../schema";
-import { trustedApproval } from "../../../scripts/content-engine/trusted-corpora";
+import { activeCheckedRelease, trustedApproval } from "../../../scripts/content-engine/trusted-corpora";
 import { ENGINE_LIMITS, engineExampleSchema, engineManifestSchema, engineRegistrationSchema, engineShardSchema, type ArtifactDescriptor, type EngineManifest } from "./schema";
 
 export const digest = (data: string | Buffer) => createHash("sha256").update(data).digest("hex");
@@ -79,7 +79,19 @@ export function compileCourse(root: string, legacyInput: unknown, records?: Clas
     format: "interactive-course-v1", courseKey: legacy.courseKey, version, classification: expandedVersion ? "legacy_plus_checked" : "legacy_release",
     ...(checkedRelease ?? {}), sourceVersion: legacy.version, sourceSha256, previewIds: legacy.previewIds, topics, legacy: legacyDescriptor, shards, entries,
   });
-  return artifact(root, `${legacy.courseKey}/manifest.json`, manifest, ENGINE_LIMITS.manifestBytes);
+  const descriptor = artifact(root, `${legacy.courseKey}/manifest.json`, manifest, ENGINE_LIMITS.manifestBytes);
+  if (checkedRelease) {
+    const pin = activeCheckedRelease(legacy.courseKey);
+    if (!pin || pin.approvalId !== checkedRelease.approvalId || pin.manifestSha256 !== descriptor.sha256)
+      throw new Error("Compiled checked manifest does not match trusted active release");
+    // Verify the actual private bytes after writing, not merely the intended buffers.
+    for (const resource of [descriptor, legacyDescriptor, ...shards]) {
+      const bytes = readFileSync(join(root, resource.file));
+      if (bytes.length !== resource.bytes || digest(bytes) !== resource.sha256)
+        throw new Error("Compiled private resource checksum mismatch");
+    }
+  }
+  return descriptor;
 }
 
 /** Build-time only: parse the frozen registry as data; never import or evaluate it. */
@@ -140,6 +152,10 @@ export function compileLegacyRelease(options: { sourceDir?: string; outputDir?: 
   const canonical = eligibleCourseKeys();
   if (canonicalJson(approved) !== canonicalJson(canonical) || approved.length !== 38 || metadata.counts?.courses !== 38 || metadata.courses?.length !== 38) throw new Error("Approved legacy registration must match the 38 canonical eligible courses");
   if (options.additionalRecords && [...options.additionalRecords.keys()].some(key => !approved.includes(key))) throw new Error("Additional records outside eligible scope");
+  for (const key of approved) {
+    if (activeCheckedRelease(key) && !options.additionalRecords?.get(key)?.length)
+      throw new Error("Active checked release missing from compilation");
+  }
   mkdirSync(outputDir, { recursive: true, mode: 0o700 });
   const courses: Record<string, ArtifactDescriptor> = {};
   let itemCount = 0;

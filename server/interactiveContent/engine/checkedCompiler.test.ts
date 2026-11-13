@@ -1,8 +1,12 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-const { approvals } = vi.hoisted(() => ({ approvals: {} as Record<string, any> }));
+const { approvals, pins } = vi.hoisted(() => ({ approvals: {} as Record<string, any>, pins: {} as Record<string, any> }));
 vi.mock("../../../scripts/content-engine/trusted-corpora", async (original) => {
   const actual = await original<typeof import("../../../scripts/content-engine/trusted-corpora")>();
-  return { ...actual, approvedCorpora: approvals, trustedApproval: (id: string) => actual.validateTrustedApproval(id, approvals) };
+  return { ...actual, approvedCorpora: approvals, trustedApproval: (id: string) => actual.validateTrustedApproval(id, approvals), activeCheckedRelease: (key: string) => {
+    const pin = pins[key];
+    if (pin && (!actual.validateTrustedApproval(pin.approvalId, approvals) || !/^[a-f0-9]{64}$/.test(pin.manifestSha256))) throw new Error("Invalid active checked release binding");
+    return pin;
+  } };
 });
 import { mkdtempSync, readFileSync, writeFileSync, rmSync, readdirSync } from "node:fs";
 import { randomUUID, createHash } from "node:crypto";
@@ -33,16 +37,29 @@ function request(doc: any, selected = doc.exercises.map((e: any) => ({ courseKey
   approvals[id] = { corpusSha256: hash(doc), scope: "synthetic full corpus", inventoryEvidence: "fixture inventory", approvalEvidence: "fixture approval", releaseToken: approvals[id]?.releaseToken ?? `checked-${randomUUID()}`, selected: keys, checkedVersions: versions };
   return { approvalId: id, corpus: doc, selected };
 }
+// Test-only two-pass fixture provisioning: never used by production approval code.
+function compileFixture(input: any, output: string) {
+  const staging = root();
+  try { compileCheckedRelease(input, staging); } catch (error) {
+    if (!(error instanceof Error) || !error.message.includes("Compiled checked manifest")) throw error;
+  }
+  for (const course of Object.keys(approvals[input.approvalId].checkedVersions)) {
+    const bytes = readFileSync(join(staging, course, "manifest.json"));
+    pins[course] = { approvalId: input.approvalId, manifestSha256: createHash("sha256").update(bytes).digest("hex") };
+  }
+  return compileCheckedRelease(input, output);
+}
 function checked() { const doc = completeFixture(); attachReview(doc, "human-technical"); attachReview(doc, "software-release"); return doc; }
-afterEach(() => { for (const key of Object.keys(approvals)) delete approvals[key]; for (const r of roots.splice(0)) rmSync(r, { recursive: true, force: true }); });
+afterEach(() => { for (const key of Object.keys(approvals)) delete approvals[key]; for (const key of Object.keys(pins)) delete pins[key]; for (const r of roots.splice(0)) rmSync(r, { recursive: true, force: true }); });
 
 describe("private checked authoring compiler", () => {
   it("distinguishes different synthetic checked runtime content built from the same source", () => {
     const doc = checked();
     const first = root();
     const repeat = root();
-    compileCheckedRelease(request(doc), first);
-    compileCheckedRelease(request(doc), repeat);
+    compileFixture(request(doc), first);
+    const firstPin = { ...pins["class1-water"] };
+    compileFixture(request(doc), repeat);
     const before = computeInteractiveArtifactFingerprint(first);
     expect(computeInteractiveArtifactFingerprint(repeat)).toBe(before);
     const changed = checked();
@@ -51,12 +68,16 @@ describe("private checked authoring compiler", () => {
     changed.exercises[0].reviews = [];
     attachReview(changed, "human-technical"); attachReview(changed, "software-release");
     const second = root();
-    compileCheckedRelease(request(changed, undefined, "other"), second);
+    compileFixture(request(changed, undefined, "other"), second);
+    const secondPin = { ...pins["class1-water"] };
     expect(computeInteractiveArtifactFingerprint(second)).not.toBe(before);
     const a = new InteractiveContentEngine(first); const a2 = new InteractiveContentEngine(repeat); const b = new InteractiveContentEngine(second);
     const input = interactiveStartSessionInputSchema.parse({ courseKey: "class1-water", mode: "rapid-swipe", sessionSize: 5 });
+    pins["class1-water"] = firstPin;
     const catalog = a.getCatalog("class1-water", false);
-    const sessionA = a2.startSession(input, false); const sessionB = b.startSession(input, false);
+    const sessionA = a2.startSession(input, false);
+    pins["class1-water"] = secondPin;
+    const sessionB = b.startSession(input, false);
     expect(catalog.version).toBe(approvals.fixture.releaseToken);
     expect(sessionA.version).toBe(catalog.version);
     expect(sessionB.version).toBe(approvals.other.releaseToken);
@@ -67,6 +88,11 @@ describe("private checked authoring compiler", () => {
     const doc = checked(); const out = root();
     expect(() => compileCheckedRelease({ approvalId: "missing", corpus: doc, selected: [{ courseKey: doc.exercises[0].courseKey, exerciseId: doc.exercises[0].exerciseId }] }, out)).toThrow("prior full-corpus approval");
     expect(readdirSync(out)).toEqual([]);
+  });
+  it("does not treat corpus approval alone as a compiled artifact approval", () => {
+    const doc = checked(); const out = root(); const input = request(doc);
+    expect(() => compileCheckedRelease(input, out)).toThrow("Compiled checked manifest");
+    expect(() => new InteractiveContentEngine(out).getCatalog("class1-water", true)).toThrow();
   });
   it("refuses missing, malformed, reused and caller-selected tokens or changed selections before writing", () => {
     const doc = checked(); const input = request(doc); const out = root();
@@ -86,7 +112,7 @@ describe("private checked authoring compiler", () => {
     expect(readdirSync(out)).toEqual([]);
   });
   it("rejects missing or changed manifest tokens even when registry checksums are recomputed", () => {
-    const doc = checked(); const out = root(); compileCheckedRelease(request(doc), out);
+    const doc = checked(); const out = root(); compileFixture(request(doc), out);
     const manifestPath = join(out, "class1-water/manifest.json"); const registryPath = join(out, "registry.json");
     const original = JSON.parse(readFileSync(manifestPath, "utf8"));
     for (const altered of [undefined, `checked-${randomUUID()}`]) {
@@ -100,6 +126,50 @@ describe("private checked authoring compiler", () => {
       expect(() => engine.getCatalog("class1-water", false)).toThrow();
       expect(() => engine.startSession(interactiveStartSessionInputSchema.parse({ courseKey: "class1-water", mode: "rapid-swipe", sessionSize: 5 }), false)).toThrow();
     }
+  });
+  it("rejects a checked item altered with every mutable hash recomputed", () => {
+    const doc = checked(); const out = root(); compileFixture(request(doc), out);
+    const engine = new InteractiveContentEngine(out);
+    const input = interactiveStartSessionInputSchema.parse({ courseKey: "class1-water", mode: "rapid-swipe", difficulty: "easy", sessionSize: 5 });
+    expect(engine.startSession(input, true).examples).toEqual([doc.exercises[0].item]);
+    const manifestPath = join(out, "class1-water/manifest.json");
+    const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
+    const entry = manifest.entries.find((e: any) => e.id === doc.exercises[0].item.id);
+    const descriptor = manifest.shards[entry.shard];
+    const shardPath = join(out, descriptor.file);
+    const shard = JSON.parse(readFileSync(shardPath, "utf8"));
+    shard.examples[entry.offset].prompt += " Forged.";
+    const item = JSON.stringify(shard.examples[entry.offset]);
+    entry.sha256 = createHash("sha256").update(item).digest("hex"); entry.bytes = Buffer.byteLength(item);
+    const shardBytes = JSON.stringify(shard) + "\n"; writeFileSync(shardPath, shardBytes);
+    descriptor.sha256 = createHash("sha256").update(shardBytes).digest("hex"); descriptor.bytes = Buffer.byteLength(shardBytes);
+    const manifestBytes = JSON.stringify(manifest) + "\n"; writeFileSync(manifestPath, manifestBytes);
+    const registryPath = join(out, "registry.json"); const registry = JSON.parse(readFileSync(registryPath, "utf8"));
+    registry.courses["class1-water"].sha256 = createHash("sha256").update(manifestBytes).digest("hex");
+    registry.courses["class1-water"].bytes = Buffer.byteLength(manifestBytes);
+    writeFileSync(registryPath, JSON.stringify(registry) + "\n");
+    expect(() => engine.getCatalog("class1-water", true)).toThrow();
+    expect(() => engine.startSession(input, true)).toThrow();
+    expect(() => new InteractiveContentEngine(out).startSession(input, true)).toThrow();
+  });
+  it("rejects changes to a previously cached selected shard and prevents legacy downgrade", () => {
+    const doc = checked(); const out = root(); compileFixture(request(doc), out);
+    const engine = new InteractiveContentEngine(out);
+    const input = interactiveStartSessionInputSchema.parse({ courseKey: "class1-water", mode: "rapid-swipe", difficulty: "easy", sessionSize: 5 });
+    engine.startSession(input, true);
+    const manifestPath = join(out, "class1-water/manifest.json");
+    const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
+    const entry = manifest.entries.find((e: any) => e.id === doc.exercises[0].item.id);
+    const shardPath = join(out, manifest.shards[entry.shard].file);
+    writeFileSync(shardPath, readFileSync(shardPath, "utf8").replace(doc.exercises[0].item.prompt, "X".repeat(doc.exercises[0].item.prompt.length)));
+    expect(() => engine.startSession(input, true)).toThrow();
+    manifest.classification = "legacy_release"; manifest.version = manifest.sourceVersion;
+    delete manifest.approvalId; delete manifest.publicVersion;
+    const bytes = JSON.stringify(manifest) + "\n"; writeFileSync(manifestPath, bytes);
+    const registryPath = join(out, "registry.json"); const registry = JSON.parse(readFileSync(registryPath, "utf8"));
+    registry.courses["class1-water"].sha256 = createHash("sha256").update(bytes).digest("hex"); registry.courses["class1-water"].bytes = Buffer.byteLength(bytes);
+    writeFileSync(registryPath, JSON.stringify(registry) + "\n");
+    expect(() => engine.getCatalog("class1-water", false)).toThrow();
   });
   it("uses the pinned complete corpus for quarantine even when selecting one item", () => {
     const doc = checked(); const duplicate = structuredClone(doc.exercises[0]);
@@ -118,7 +188,7 @@ describe("private checked authoring compiler", () => {
     other.item.prompt = "A different synthetic concept."; other.contentHash = hash(other.item);
     other.variantFamilyId = "unselected-family"; doc.exercises.push(other);
     const out = root();
-    expect(compileCheckedRelease(request(doc, [{ courseKey: doc.exercises[0].courseKey, exerciseId: doc.exercises[0].exerciseId }]), out).newItemCount).toBe(1);
+    expect(compileFixture(request(doc, [{ courseKey: doc.exercises[0].courseKey, exerciseId: doc.exercises[0].exerciseId }]), out).newItemCount).toBe(1);
   });
   it("refuses absolute and escaping private input names without output", () => {
     const out = root();
@@ -129,7 +199,7 @@ describe("private checked authoring compiler", () => {
   });
   it("serves an approved synthetic record only in paid indexed sessions and preserves all fixed previews and legacy compatibility", () => {
     const doc = checked(); const out = root();
-    expect(compileCheckedRelease(request(doc), out)).toMatchObject({ courseCount: 38, itemCount: 3821, newItemCount: 1 });
+    expect(compileFixture(request(doc), out)).toMatchObject({ courseCount: 38, itemCount: 3821, newItemCount: 1 });
     const engine = new InteractiveContentEngine(out);
     const legacy = engine.getLegacyContent("class1-water", true);
     const freeLegacy = engine.getLegacyContent("class1-water", false);
@@ -149,12 +219,13 @@ describe("private checked authoring compiler", () => {
     expect(manifest.classification).toBe("legacy_plus_checked");
     expect(manifest.version).toMatch(/^checked-/);
     for (const access of [false, true]) {
-      const catalog = engine.getCatalog("class1-water", access);
+    const catalog = engine.getCatalog("class1-water", access);
       const session = engine.startSession(input, access);
       expect(catalog.version).toBe(approvals.fixture.releaseToken);
       expect(session.version).toBe(approvals.fixture.releaseToken);
       expect(JSON.stringify([catalog, session])).not.toContain(manifest.version);
       expect(JSON.stringify([catalog, session])).not.toContain(approvals.fixture.corpusSha256);
+      expect(JSON.stringify([catalog, session])).not.toContain(pins["class1-water"].manifestSha256);
       for (const entry of manifest.entries) expect(JSON.stringify([catalog, session])).not.toContain(entry.sha256);
     }
     const files = readdirSync(join(out, "class1-water"));
@@ -164,10 +235,19 @@ describe("private checked authoring compiler", () => {
     expect(serialized).not.toContain("fixture authority declaration");
     expect(JSON.stringify(engine.getCatalog("class1-water", true))).not.toMatch(/correctAnswer|explanation/);
   });
+  it("rehashes only the checked manifest and selected shard on warm session requests", () => {
+    const doc = checked(); const out = root(); compileFixture(request(doc), out);
+    const engine = new InteractiveContentEngine(out);
+    const input = interactiveStartSessionInputSchema.parse({ courseKey: "class1-water", mode: "rapid-swipe", difficulty: "easy", sessionSize: 5 });
+    engine.startSession(input, true);
+    const before = engine.diagnostics().diskReads;
+    engine.startSession(input, true);
+    expect(engine.diagnostics().diskReads - before).toBe(2);
+  });
   it("honors the existing opt-in audited policy and refuses an invalidated batch", () => {
     const doc = completeFixture(); attachPolicyReviews(doc); attachBatchAudit(doc);
     const out = root();
-    expect(compileCheckedRelease(request(doc), out).newItemCount).toBe(1);
+    expect(compileFixture(request(doc), out).newItemCount).toBe(1);
     doc.batchAudits[0].status = "rejected";
     const rejected = root();
     expect(() => compileCheckedRelease(request(doc), rejected)).toThrow();
