@@ -1,7 +1,8 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { join, resolve } from "node:path";
+import { execFileSync } from "node:child_process";
 import { compileApprovedOrLegacyRelease, committedReleasePath, committedReleaseSchema } from "../../../scripts/content-engine/committed-release";
 import { activeCheckedReleases, trustedApproval } from "../../../scripts/content-engine/trusted-corpora";
 import { compileLegacyRelease } from "./compiler";
@@ -44,6 +45,14 @@ describe("genuine shipped AI-reviewed OIT release", () => {
       expect(new Set(session.examples.map(e => e.id)).size).toBe(session.examples.length);
       expect(session.examples.every(e => e.mode === mode)).toBe(true);
     }
+  });
+  it("default offline CLI includes the active pinned bank", () => {
+    const destination = mkdtempSync(join(tmpdir(), "echelon-oit-cli-"));
+    try {
+      const script = `import {compileInteractiveEngine} from './scripts/compile-interactive-engine.mjs'; const result=await compileInteractiveEngine({outputDir:${JSON.stringify(destination)}}); console.log(JSON.stringify({newItemCount:result.newItemCount,courseCount:result.courseCount}));`;
+      const output = execFileSync(process.execPath, ["--require", resolve("scripts/test-safety.cjs"), "--input-type=module", "-e", script], { encoding: "utf8", env: process.env });
+      expect(JSON.parse(output.trim())).toEqual({ newItemCount: 671, courseCount: 38 });
+    } finally { rmSync(destination, { recursive: true, force: true }); }
   });
   it("keeps other courses unchanged and excludes 309A", () => {
     for (const key of ["class1-water", "class1-ww", "wqa"]) {
