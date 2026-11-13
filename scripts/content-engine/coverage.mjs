@@ -3,7 +3,8 @@ import { DocumentSchema, ExerciseSchema, SourceSchema, ConceptSchema, ReviewSche
 import { hash, identity, subjectHash } from './identity.mjs';
 import { checkCalculation } from './calculations.mjs';
 import { legalScreen } from '../echelonsix-legal-screen.mjs';
-import { policyBlockers, DEFAULT_REVIEW_POLICY_VERSION } from './review-policy.mjs';
+import { policyBlockers, DEFAULT_REVIEW_POLICY_VERSION, OWNER_AI_OIT_POLICY_VERSION,
+  ownerAIReviewCurrent, ownerPolicyBindingHash } from './review-policy.mjs';
 const text = v => typeof v === 'string' && v.trim().length > 0;
 const uniqueIds = (array, field) => new Set(array.map(x => x[field])).size === array.length;
 const emptyDocument = () => ({ sources: [], concepts: [], exercises: [] });
@@ -43,13 +44,21 @@ const authorities = { ai: 'ai-model-declared', 'human-technical': 'human-technic
 export function reviewState(exercise, document, kind) {
   const reviews = exercise.reviews.filter(r => r.kind === kind);
   // A conflicting/rejected/stale review cannot be hidden by a later approved row.
-  return reviews.length > 0 && reviews.every(r => ReviewSchema.safeParse(r).success && r.status === 'approved' && r.reviewerAuthority === authorities[kind] &&
-    r.payloadHash === hash(exercise.item) && r.subjectHash === subjectHash(exercise, document) &&
-    (kind === 'ai' || r.authorityEvidence !== null));
+  return reviews.length > 0 && reviews.every(r => {
+    if (r.policyVersion === OWNER_AI_OIT_POLICY_VERSION) {
+      if (['ai', 'coverage-diversity'].includes(kind)) return ownerAIReviewCurrent(exercise, document, r);
+      if (!ownerPolicyBindingHash(document) || r.policyBindingHash !== ownerPolicyBindingHash(document)) return false;
+    } else if (document.reviewPolicy?.policyVersion === OWNER_AI_OIT_POLICY_VERSION && ['ai', 'coverage-diversity'].includes(kind)) return false;
+    return ReviewSchema.safeParse(r).success && r.status === 'approved' && r.reviewerAuthority === authorities[kind] &&
+      r.payloadHash === hash(exercise.item) && r.subjectHash === subjectHash(exercise, document) &&
+      (kind === 'ai' || r.authorityEvidence !== null);
+  });
 }
 export function blockers(exercise, document) {
   const issues = metadataIssues(exercise, document);
-  if (!reviewState(exercise, document, 'human-technical')) {
+  if (document.reviewPolicy?.policyVersion === OWNER_AI_OIT_POLICY_VERSION) {
+    issues.push(...policyBlockers(exercise, document, { reviewState, metadataIssues }));
+  } else if (!reviewState(exercise, document, 'human-technical')) {
     // Opt-in never hides a supplied rejected/stale human decision or relaxes high-risk gates.
     if (document.reviewPolicy && !exercise.reviews.some(r => r.kind === 'human-technical')) {
       issues.push(...policyBlockers(exercise, document, { reviewState, metadataIssues }));
@@ -66,9 +75,11 @@ export function blockers(exercise, document) {
 }
 export function coverage(document) {
   DocumentSchema.parse(document);
+  const ownerPolicy = document.reviewPolicy?.policyVersion === OWNER_AI_OIT_POLICY_VERSION;
   const rows = COURSES.flatMap(courseKey => MODES.map(mode => ({ courseKey, mode, target: TARGET,
     raw: 0, unique: 0, duplicate: 0, conflict: 0, quarantined: 0, nearDuplicateFlagged: 0,
     metadataComplete: 0, AIreviewed: 0, humanReviewed: 0, riskPolicyAccepted: 0, releasableAccepted: 0,
+    ...(ownerPolicy ? { ownerAIpolicyAccepted: 0 } : {}),
     legacyInventory: 0, legacyAIReviewDeclared: 0, legacySoftwareReleased: 0, unclassifiedDifficulty: 0,
     remainingGap: TARGET })));
   const quarantines = [];
@@ -115,12 +126,15 @@ export function coverage(document) {
       if (reviewState(e, document, 'human-technical')) row.humanReviewed++;
       if (!blockers(e, document).length) {
         row.releasableAccepted++;
-        if (!reviewState(e, document, 'human-technical')) row.riskPolicyAccepted++;
+        if (document.reviewPolicy?.policyVersion === OWNER_AI_OIT_POLICY_VERSION) row.ownerAIpolicyAccepted++;
+        else if (!reviewState(e, document, 'human-technical')) row.riskPolicyAccepted++;
       }
     }
     row.remainingGap = Math.max(0, TARGET - row.releasableAccepted);
   }
   return { schemaVersion: document.schemaVersion, reviewPolicyVersion: document.reviewPolicy?.policyVersion ?? DEFAULT_REVIEW_POLICY_VERSION,
-    notice: 'Documentary evidence/completeness checks only: reviewer identity, independence, authority and audit calibration are declared, not authenticated. Sampled batch authorization is not per-item human review. Legacy release and AI declarations are not current hash-bound technical approval. No activation. Semantic similarity/embeddings are not solved.',
+    notice: 'Documentary evidence/completeness checks only: reviewer identity, independence, authority and audit calibration are declared, not authenticated. ' +
+      (ownerPolicy ? 'Owner policy authorization is not human technical content approval. ' : '') +
+      'Sampled batch authorization is not per-item human review. Legacy release and AI declarations are not current hash-bound technical approval. No activation. Semantic similarity/embeddings are not solved.',
     rows, quarantines, duplicateReferenceIds: !uniqueIds(document.sources, 'sourceId') || !uniqueIds(document.concepts, 'conceptId') };
 }

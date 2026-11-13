@@ -11,6 +11,8 @@ export type CorpusApproval = Readonly<{
   scope: string;
   inventoryEvidence: string;
   approvalEvidence: string;
+  // Required by the committed-bank adapter, optional for private legacy inputs.
+  committedBankSha256?: string;
   // Public, randomly generated UUIDv4. Never reuse for a changed release.
   releaseToken: string;
   // Exact sorted courseKey/exerciseId selections, and private checked versions.
@@ -40,6 +42,7 @@ export function validateTrustedApproval(id: string, approvedCorpora: Readonly<Re
   const approval = approvedCorpora[id];
   if (!approval || ![approval.scope, approval.inventoryEvidence, approval.approvalEvidence].every(v => typeof v === "string" && v.trim().length > 0) ||
       !/^[a-f0-9]{64}$/.test(approval.corpusSha256) || typeof approval.releaseToken !== "string" || !releaseTokenPattern.test(approval.releaseToken) ||
+      (approval.committedBankSha256 !== undefined && !/^[a-f0-9]{64}$/.test(approval.committedBankSha256)) ||
       !Array.isArray(approval.selected) || !approval.selected.length || approval.selected.some(v => typeof v !== "string" || !/^[a-z0-9-]+\/[a-zA-Z0-9_-]+$/.test(v)) ||
       new Set(approval.selected).size !== approval.selected.length || JSON.stringify([...approval.selected].sort()) !== JSON.stringify(approval.selected) ||
       !approval.checkedVersions || typeof approval.checkedVersions !== "object" || Array.isArray(approval.checkedVersions) ||
