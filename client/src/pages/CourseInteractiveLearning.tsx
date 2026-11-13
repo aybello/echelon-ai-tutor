@@ -97,6 +97,8 @@ function CoursePractice({ course }: { course: CourseEntry }) {
   const catalog = catalogReady ? catalogQuery.data : undefined;
   const catalogMode = catalog?.modes.find(item => item.mode === mode);
   const locked = !catalog || catalog.locked;
+  const hasTopicFilters = Boolean(catalogMode?.topics.some(topic => topic.id !== "unclassified"));
+  const hasDifficultyFilters = Boolean(catalogMode?.difficulties.some(level => level.id !== "unclassified"));
   const missingFilter = !locked && ((topicId !== "" && !catalogMode?.topics.some(topic => topic.id === topicId)) ||
     (difficulty !== "" && !catalogMode?.difficulties.some(level => level.id === difficulty)));
   // The API accepts 5..50; free access is a server-fixed single example, not a
@@ -191,7 +193,7 @@ function CoursePractice({ course }: { course: CourseEntry }) {
   } else {
     const drillKey = JSON.stringify([course.courseKey, authority.revision, session.version, session.mode, session.filters,
       locked ? 30 : timerSeconds, roundRevision, session.sessionId, sessionQuery.dataUpdatedAt]);
-    status = <div style={{ whiteSpace: "pre-line" }}><InteractiveDrill key={drillKey} examples={session.examples} selectedMode={mode} hideModeNavigation timerSeconds={locked ? 30 : timerSeconds} /></div>;
+    status = <div style={{ whiteSpace: "pre-line" }}><InteractiveDrill key={drillKey} examples={session.examples} selectedMode={mode} hideModeNavigation timerSeconds={locked ? 30 : timerSeconds} onNewRound={locked ? undefined : () => changeSession(() => {})} /></div>;
   }
 
   return (
@@ -209,27 +211,28 @@ function CoursePractice({ course }: { course: CourseEntry }) {
         </nav>
         <fieldset className="course-interactive__settings" disabled={locked || !catalog?.available} aria-describedby="course-session-settings-note">
           <legend>Round settings</legend>
-          <label>Topic<select aria-label="Topic" value={locked ? "" : topicId} onChange={event => changeSession(() => setTopicId(event.target.value))}>
+          <label>Topic<select aria-label="Topic" disabled={!hasTopicFilters && !topicId} value={locked ? "" : topicId} onChange={event => changeSession(() => setTopicId(event.target.value))}>
             <option value="">All topics</option>
             {!locked && topicId && !catalogMode?.topics.some(topic => topic.id === topicId) && <option value={topicId} disabled>Selected topic unavailable</option>}
             {catalogMode?.topics.map(topic => <option key={topic.id} value={topic.id}>{topic.id === "unclassified" ? "Unclassified (not tagged)" : topic.label} ({topic.count})</option>)}
-          </select></label>
-          <label>Difficulty<select aria-label="Difficulty" value={locked ? "" : difficulty} onChange={event => changeSession(() => setDifficulty(event.target.value as InteractiveDifficulty | ""))}>
+          </select>{!locked && !hasTopicFilters && <small>Topic filters not available yet</small>}</label>
+          <label>Difficulty<select aria-label="Difficulty" disabled={!hasDifficultyFilters && !difficulty} value={locked ? "" : difficulty} onChange={event => changeSession(() => setDifficulty(event.target.value as InteractiveDifficulty | ""))}>
             <option value="">All difficulties</option>
             {!locked && difficulty && !catalogMode?.difficulties.some(level => level.id === difficulty) && <option value={difficulty} disabled>Selected difficulty unavailable</option>}
             {catalogMode?.difficulties.map(level => <option key={level.id} value={level.id}>{level.id === "unclassified" ? "Unclassified (not rated)" : `${level.id[0].toUpperCase()}${level.id.slice(1)}`} ({level.count})</option>)}
-          </select></label>
+          </select>{!locked && !hasDifficultyFilters && <small>Difficulty filters not available yet</small>}</label>
           <label>Session size<select aria-label="Session size" value={locked ? 1 : sessionSize} onChange={event => changeSession(() => setSessionSize(Number(event.target.value) as 10 | 20 | 30 | 50))}>
-            {locked ? <option value={1}>1 preview example</option> : [10, 20, 30, 50].map(size => <option key={size} value={size}>{size} activities</option>)}
+            {locked ? <option value={1}>1 preview example</option> : [10, 20, 30, 50].map(size => <option key={size} value={size}>Up to {size} activities</option>)}
           </select></label>
-          <label>Swipe timer<select aria-label="Swipe timer" value={locked ? 30 : timerSeconds ?? "off"} onChange={event => changeSession(() => setTimerSeconds(event.target.value === "off" ? null : Number(event.target.value) as 30 | 60 | 90))}>
+          <label>Swipe timer<select aria-label="Swipe timer" disabled={mode !== "rapid-swipe"} value={locked ? 30 : timerSeconds ?? "off"} onChange={event => changeSession(() => setTimerSeconds(event.target.value === "off" ? null : Number(event.target.value) as 30 | 60 | 90))}>
             <option value="off">Off</option>{[30, 60, 90].map(seconds => <option key={seconds} value={seconds}>{seconds} seconds</option>)}
-          </select></label>
+          </select>{!locked && mode !== "rapid-swipe" && <small>Rapid Swipe only</small>}</label>
         </fieldset>
-        <p id="course-session-settings-note" className="course-interactive__settings-note">{catalog?.locked ? "Free preview: one fixed example per mode. Round settings require course access." : "Topics and difficulty reflect published tags only. The timer applies to Rapid Swipe. Progress is not saved."}</p>
-        <button type="button" className="interactive-drill__secondary course-interactive__new-round" disabled={!catalog?.available || !online || authBusy || !catalogMode?.totalCount || Boolean(missingFilter)} onClick={() => changeSession(() => {})}>New round</button>
+        <p id="course-session-settings-note" className="course-interactive__settings-note">{catalog?.locked ? "Free preview: one fixed example per mode. Round settings require course access." : "Available settings apply immediately. Rounds use only published activities, so smaller banks may contain fewer than your selected size. Progress is not saved."}</p>
+        <button type="button" className="interactive-drill__primary course-interactive__new-round" disabled={!catalog?.available || !online || authBusy || !catalogMode?.totalCount || Boolean(missingFilter) || sessionQuery.fetchStatus !== "idle"} onClick={() => changeSession(() => {})}>{catalog?.locked ? "Replay preview" : "New round"}</button>
       </div>
       <div className="course-interactive__session">
+        <div className="course-interactive__session-heading"><span>{DRILL_MODES.find(item => item.id === mode)?.label}</span><small>{catalog?.locked ? "Free preview" : "Practice round"}</small></div>
         {catalog?.locked && <p className="course-interactive__preview">You’re practising with the available free preview. Course access determines which activities are available.</p>}
         {session && <p className="course-interactive__inventory">{session.examples.length} in this round · {session.totalAvailableCount} available with these filters · progress not saved</p>}
         {status}

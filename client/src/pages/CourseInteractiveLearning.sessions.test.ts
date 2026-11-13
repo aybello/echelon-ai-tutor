@@ -95,7 +95,7 @@ async function fixture(run: (page: Page) => Promise<void>, locked = false, topic
         } : {
           courseKey: input.courseKey, available: true, locked: state.__locked, version: state.__version,
           sessionId: "same-synthetic-session-id", mode: input.mode, totalAvailableCount: state.__empty ? 0 : 17,
-          examples: state.__empty ? [] : [example],
+          examples: state.__empty ? [] : state.__multi ? [example, { ...example, id: "second-synthetic-id", prompt: `${example.prompt} second` }] : [example],
           filters: { topicId: input.topicId ?? null, difficulty: input.difficulty ?? null, requestedSize: input.sessionSize },
         };
         if (kind === "catalog" && state.__badCatalog) Object.assign(data, state.__badCatalog);
@@ -173,6 +173,11 @@ describe("bounded course session UI (synthetic isolated fixtures)", () => {
       await waitForActivity(page);
       expect(await page.getByLabel("Topic", { exact: true }).locator("option").allTextContents()).toEqual(["All topics"]);
       expect(await page.getByLabel("Difficulty", { exact: true }).locator("option").allTextContents()).toEqual(["All difficulties"]);
+      expect(await page.getByLabel("Topic", { exact: true }).isDisabled()).toBe(true);
+      expect(await page.getByLabel("Difficulty", { exact: true }).isDisabled()).toBe(true);
+      await page.getByText("Topic filters not available yet").waitFor();
+      await page.getByText("Difficulty filters not available yet").waitFor();
+      expect(await page.getByLabel("Session size", { exact: true }).isEnabled()).toBe(true);
       expect((await calls(page, "session")).at(-1)).not.toHaveProperty("topicId");
       expect((await calls(page, "session")).at(-1)).not.toHaveProperty("difficulty");
     }, false, false);
@@ -210,7 +215,49 @@ describe("bounded course session UI (synthetic isolated fixtures)", () => {
         expect(input).not.toHaveProperty("topicId"); expect(input).not.toHaveProperty("difficulty");
       }
       expect(await page.getByRole("button", { name: /checkout|unlock|buy/i }).count()).toBe(0);
+      expect(await page.getByRole("button", { name: "Replay preview", exact: true }).isEnabled()).toBe(true);
+      expect(await page.getByRole("button", { name: "Next round →", exact: true }).count()).toBe(0);
     }, true);
+  });
+
+  it("only enables the timer for Rapid Swipe and keeps the chosen timer when returning", async () => {
+    await fixture(async page => {
+      await waitForActivity(page);
+      await page.getByLabel("Swipe timer", { exact: true }).selectOption("60");
+      await waitForActivity(page);
+      const nav = page.getByRole("navigation", { name: "Choose a practice mode" });
+      for (const label of labels.slice(1)) {
+        await nav.getByRole("button", { name: new RegExp(`^${label}`) }).click();
+        await waitForActivity(page);
+        expect(await page.getByLabel("Swipe timer", { exact: true }).isDisabled()).toBe(true);
+        await page.getByText("Rapid Swipe only", { exact: true }).waitFor();
+      }
+      await nav.getByRole("button", { name: /^Rapid Swipe/ }).click();
+      await waitForActivity(page);
+      expect(await page.getByLabel("Swipe timer", { exact: true }).isEnabled()).toBe(true);
+      expect(await page.getByLabel("Swipe timer", { exact: true }).inputValue()).toBe("60");
+    });
+  });
+
+  it("offers Skip without marking an answer and requests a fresh session at the end in every mode", async () => {
+    await fixture(async page => {
+      await waitForActivity(page);
+      await page.evaluate(() => { (window as any).__multi = true; });
+      const nav = page.getByRole("navigation", { name: "Choose a practice mode" });
+      for (const label of labels) {
+        await nav.getByRole("button", { name: new RegExp(`^${label}`) }).click();
+        await waitForActivity(page);
+        expect(await page.getByRole("button", { name: "Next activity →", exact: true }).isDisabled()).toBe(true);
+        await page.getByRole("button", { name: "Skip activity →", exact: true }).click();
+        await activity(page).getByRole("heading", { level: 2 }).filter({ hasText: /second$/ }).waitFor();
+        expect(await page.getByText("Correct", { exact: true }).count()).toBe(0);
+        const before = (await calls(page, "session")).length;
+        await page.getByRole("button", { name: "Next round →", exact: true }).click();
+        await expect.poll(async () => (await calls(page, "session")).length).toBeGreaterThan(before);
+        await waitForActivity(page);
+        expect(await activity(page).getByRole("heading", { level: 2 }).textContent()).not.toMatch(/second$/);
+      }
+    });
   });
 
   it("resets answers on New round even if session ID, content version and example IDs repeat", async () => {

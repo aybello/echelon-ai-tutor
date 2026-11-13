@@ -341,13 +341,18 @@
 
 .course-interactive .interactive-drill__nav button.is-active,
 .course-interactive .interactive-drill__column button.is-selected {
-  border-color: #8db6dd;
-  background: #d7eaff;
+  border-color: #1757b8;
+  background: #1757b8;
+  color: #fff;
 }
+.course-interactive .interactive-drill__nav button.is-active small,
+.course-interactive .interactive-drill__nav button.is-active .course-interactive__count { color: #fff; }
 .course-interactive .interactive-drill__activity {
   min-height: auto;
   padding: 18px;
   border-radius: 16px;
+  border-color: #bfd3eb;
+  box-shadow: 0 12px 32px rgb(23 59 104 / 9%);
 }
 .course-interactive .interactive-drill__track { margin: 10px 0 14px; }
 .course-interactive .interactive-drill__content { max-width: 720px; }
@@ -364,8 +369,8 @@
   font-size: 16px;
 }
 .course-interactive .interactive-drill__controls { margin-top: 12px; flex-wrap: wrap; }
-.course-interactive .interactive-drill__primary { border-color: #8db6dd; background: #d7eaff; }
-.course-interactive .interactive-drill__primary:not(:disabled):hover { background: #c5e0ff; }
+.course-interactive .interactive-drill__primary { border-color: #1757b8; background: #1757b8; color: #fff; }
+.course-interactive .interactive-drill__primary:not(:disabled):hover { background: #104799; }
 .course-interactive .interactive-drill__secondary { border-color: #8db6dd; }
 .course-interactive .interactive-drill__primary:disabled,
 .course-interactive .interactive-drill__secondary:disabled { border-color: #cad5df; background: #edf1f5; }
@@ -444,3 +449,13 @@
   flex-direction: column;
 }
 .interactive-drill__layout--activity-only > .interactive-drill__activity { width: 100%; }
+
+.interactive-drill__skip { margin-left: auto; }
+.course-interactive .interactive-drill__options button:not(:disabled):hover,
+.course-interactive .interactive-drill__column button:not(:disabled):hover { background: #eaf2ff; border-color: #1757b8; }
+.course-interactive .interactive-drill__column button.is-selected:not(:disabled):hover { background: #104799; }
+.course-interactive .interactive-drill__feedback.is-correct { border-color: #62a986; background: #eaf8f1; }
+.course-interactive .interactive-drill__feedback.is-incorrect { border-color: #dc876e; background: #fff0e9; }
+.course-interactive .interactive-drill__pill { background: #eaf2ff; border-color: #bfd3eb; }
+.course-interactive button { transition: background-color 140ms, border-color 140ms; }
+@media (prefers-reduced-motion: reduce) { .course-interactive button { transition: none; } }

@@ -85,6 +85,8 @@ export interface InteractiveDrillProps {
   hideModeNavigation?: boolean;
   /** null disables timed swipe rounds; omitted retains the introductory 30s round. */
   timerSeconds?: 30 | 60 | 90 | null;
+  /** Ask the course parent for a fresh server-selected round after the last activity. */
+  onNewRound?: () => void;
 }
 
 export const DRILL_MODES: readonly { id: DrillMode; label: string; description: string }[] = [
@@ -160,12 +162,13 @@ interface ActivityProps {
   onPrevious: () => void;
   onNext: () => void;
   onRestart: () => void;
+  onNewRound?: () => void;
   onStartRound: () => void;
   timerSeconds: 30 | 60 | 90 | null;
   focusHeadingIfRequested: (heading: HTMLHeadingElement | null) => void;
 }
 
-function Activity({ example, index, count, onPrevious, onNext, onRestart, onStartRound, timerSeconds, focusHeadingIfRequested }: ActivityProps) {
+function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewRound, onStartRound, timerSeconds, focusHeadingIfRequested }: ActivityProps) {
   const titleId = useId();
   const instructionId = useId();
   const [feedback, setFeedback] = useState<Feedback | null>(null);
@@ -343,10 +346,11 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onStar
         </div>
         <div className="interactive-drill__controls">
           <button type="button" className="interactive-drill__secondary" disabled={index === 0} onClick={onPrevious}>Previous</button>
+          {!answered && valid && index + 1 < count && <button type="button" className="interactive-drill__secondary interactive-drill__skip" onClick={onNext}>Skip activity →</button>}
           {index + 1 < count ? (
             <button type="button" className="interactive-drill__primary" disabled={!answered && valid} onClick={onNext}>Next activity →</button>
           ) : (
-            <button type="button" className="interactive-drill__primary" onClick={onRestart}>Start again</button>
+            <button type="button" className="interactive-drill__primary" onClick={onNewRound ?? onRestart}>{onNewRound ? "Next round →" : "Start again"}</button>
           )}
         </div>
       </div>
@@ -525,7 +529,7 @@ function RapidSwipeRound({ examples, onExit, timerSeconds }: { examples: readonl
 }
 
 /** A local-only practice UI. Switching activities resets their temporary state. */
-export function InteractiveDrill({ examples, className, selectedMode, onModeChange, availableModes: suppliedModes, hideModeNavigation = false, timerSeconds = 30 }: InteractiveDrillProps) {
+export function InteractiveDrill({ examples, className, selectedMode, onModeChange, availableModes: suppliedModes, hideModeNavigation = false, timerSeconds = 30, onNewRound }: InteractiveDrillProps) {
   const availableModes = DRILL_MODES.filter(mode => suppliedModes ? suppliedModes.includes(mode.id) : examples.some(example => example.mode === mode.id));
   const [requestedMode, setRequestedMode] = useState<DrillMode | null>(null);
   const [requestedIndex, setRequestedIndex] = useState(0);
@@ -572,7 +576,7 @@ export function InteractiveDrill({ examples, className, selectedMode, onModeChan
           {!example ? <p className="interactive-drill__empty" role="status">No practice activities are available yet.</p> : round && activeMode?.id === "rapid-swipe" && timerSeconds !== null ? (
             <RapidSwipeRound key={JSON.stringify([modeExamples, timerSeconds])} timerSeconds={timerSeconds} examples={modeExamples.filter((item): item is RapidSwipeExample => item.mode === "rapid-swipe")} onExit={() => { setRound(false); changeIndex(0); }} />
           ) : (
-            <Activity key={`${selectedMode ?? activeMode?.id}-${example.id}-${attempt}-${timerSeconds}`} timerSeconds={timerSeconds} example={example} index={index} count={modeExamples.length} onPrevious={() => changeIndex(index - 1)} onNext={() => changeIndex(index + 1)} onRestart={() => changeIndex(0)} onStartRound={() => setRound(true)} focusHeadingIfRequested={focusHeadingIfRequested} />
+            <Activity key={`${selectedMode ?? activeMode?.id}-${example.id}-${attempt}-${timerSeconds}`} timerSeconds={timerSeconds} example={example} index={index} count={modeExamples.length} onPrevious={() => changeIndex(index - 1)} onNext={() => changeIndex(index + 1)} onRestart={() => changeIndex(0)} onNewRound={onNewRound} onStartRound={() => setRound(true)} focusHeadingIfRequested={focusHeadingIfRequested} />
           )}
         </div>
     </div>
