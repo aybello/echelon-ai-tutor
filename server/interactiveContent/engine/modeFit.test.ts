@@ -8,7 +8,7 @@ import { committedModeFitExclusions, computeModeFitExclusions, isExcludedFromMod
 
 const here = dirname(fileURLToPath(import.meta.url));
 const courseKeys = Object.keys((JSON.parse(readFileSync(join(here, "release-v1/registry.json"), "utf8")) as { courses: Record<string, unknown> }).courses);
-const engine = new InteractiveContentEngine();
+const engine = new InteractiveContentEngine(undefined, []);
 
 describe("published Cause and Effect mode fit", () => {
   it("keeps the committed exclusion list identical to the mode-fit rule over the stored bank", () => {

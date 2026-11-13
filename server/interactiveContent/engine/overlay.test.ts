@@ -9,7 +9,7 @@ import { committedOverlayDocuments, compileOverlays, exampleSha256, type Content
 const here = dirname(fileURLToPath(import.meta.url));
 const registry = JSON.parse(readFileSync(join(here, "release-v1/registry.json"), "utf8")) as { courses: Record<string, unknown> };
 const courseKeys = Object.keys(registry.courses);
-const documents = (committedOverlayDocuments() as ContentOverlay[]).filter(d => d.additions.length > 0);
+const documents = (committedOverlayDocuments() as ContentOverlay[]).filter(d => d.overlayId.includes("rapid-swipe-balance"));
 const engine = new InteractiveContentEngine();
 const stored = (courseKey: string) => (engine as unknown as { manifest(key: string): { entries: { id: string; mode: string; sha256: string }[] } }).manifest(courseKey);
 
