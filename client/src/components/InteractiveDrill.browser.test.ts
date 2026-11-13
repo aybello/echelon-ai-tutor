@@ -293,12 +293,42 @@ describe("InteractiveDrill in an isolated browser", () => {
     await expectFeedback(page, "The correct answer is Yes.");
   }));
 
+  it("does not use a fixed positional matching shortcut across boards", async () => {
+    const orders: string[] = [];
+    for (let i = 0; i < 8; i++) {
+      await withDrill(async page => {
+        orders.push((await page.getByRole("group", { name: "Second items" }).getByRole("button").allTextContents()).join("|"));
+      }, [{ id: `board-${i}`, mode: "speed-match", prompt: "Synthetic board", pairs: [
+        { id: "a", left: "Left A", right: "Right A" },
+        { id: "b", left: "Left B", right: "Right B" },
+        { id: "c", left: "Left C", right: "Right C" },
+        { id: "d", left: "Left D", right: "Right D" },
+      ] }]);
+    }
+    expect(new Set(orders).size).toBeGreaterThan(2);
+    expect(orders.some(order => order !== "Right B|Right C|Right D|Right A")).toBe(true);
+  });
+
+  it("refuses ambiguous duplicate matching labels rather than scoring arbitrary IDs", async () => {
+    for (const side of ["left", "right"] as const) {
+      const pairs = [
+        { id: "a", left: "Left A", right: "Right A" },
+        { id: "b", left: "Left B", right: "Right B" },
+      ];
+      pairs[1][side] = `  ${pairs[0][side].toUpperCase()}  `;
+      await withDrill(async page => {
+        await page.getByText("This activity is unavailable because its content is incomplete or ambiguous.").waitFor();
+        expect(await page.getByRole("group", { name: "Second items" }).count()).toBe(0);
+      }, [{ id: "ambiguous", mode: "speed-match", prompt: "Synthetic ambiguous board", pairs }]);
+    }
+  });
+
   it("handles matching selection, mismatch, partial progress, completion, and reset", async () => withDrill(async page => {
     await chooseMode(page, "Speed-Match");
     await expectHeading(page, "Synthetic matching");
     const left = page.getByRole("group", { name: "First items" });
     const right = page.getByRole("group", { name: "Second items" });
-    expect(await right.getByRole("button").allTextContents()).toEqual(["Synthetic right B", "Synthetic right A"]);
+    expect((await right.getByRole("button").allTextContents()).sort()).toEqual(["Synthetic right A", "Synthetic right B"]);
     const leftA = left.getByRole("button", { name: "Synthetic left A", exact: true });
     await leftA.click();
     expect(await leftA.getAttribute("aria-pressed")).toBe("true");

@@ -17,27 +17,39 @@ const choices = (examples: readonly DrillExample[]): ChoiceDrillExample[] => exa
 const ordering = (examples: readonly DrillExample[]): BeforeAfterExample[] => examples.filter((item): item is BeforeAfterExample => item.mode === "before-after");
 
 describe("adaptCourseQuestionsToInteractiveDrills", () => {
-  it("alternates keyed and non-keyed options, preserving all original text and explanations", () => {
+  it("selects candidates without an index pattern, preserving original text and explanations", () => {
     const a = first();
     const b = second();
     const c = source("Which object belongs in the fictional green box?", "A striped paper cone");
     const result = adaptCourseQuestionsToInteractiveDrills([a, b, c]);
     const items = swipe(result.examples);
     expect(result.validQuestionCount).toBe(3);
-    expect(items.map(item => item.correctAnswer)).toEqual([true, false, true]);
     expect(items[0].prompt).toContain(a.question);
     expect(items[0].prompt).toContain(a.options[a.correctIndex]);
     expect(items[1].prompt).toContain(b.question);
-    expect(items[1].prompt).toContain("Is option A the correct answer?");
     for (const [index, item] of items.entries()) {
       const original = [a, b, c][index];
-      expect(item.prompt).toBe(`${original.question}\n\n${original.options.map((option, optionIndex) => `${String.fromCharCode(65 + optionIndex)}. ${option}`).join("  |  ")}\n\nIs option ${index % 2 === 0 ? "B" : "A"} the correct answer?`);
+      const candidateLabel = /Is option ([A-Z]) the correct answer\?/.exec(item.prompt)![1];
+      const candidateIndex = candidateLabel.charCodeAt(0) - 65;
+      expect(candidateIndex).toBeGreaterThanOrEqual(0);
+      expect(candidateIndex).toBeLessThan(original.options.length);
+      expect(item.correctAnswer).toBe(candidateIndex === original.correctIndex);
+      expect(item.prompt).toBe(`${original.question}\n\n${original.options.map((option, optionIndex) => `${String.fromCharCode(65 + optionIndex)}. ${option}`).join("  |  ")}\n\nIs option ${candidateLabel} the correct answer?`);
       expect(item.explanation).toContain(original.options[original.correctIndex]);
       expect(item.explanation).toContain(original.explanation);
     }
     expect(result.examples.every(item => item.mode === "rapid-swipe")).toBe(true);
     expect(adaptCourseQuestionsToInteractiveDrills([a, b, c])).toEqual(result);
     expect(new Set(result.examples.map(item => item.id)).size).toBe(result.examples.length);
+  });
+
+  it("keeps candidate choice independent of source order and covers both truth values", () => {
+    const bank = Array.from({ length: 40 }, (_, i) => source(`Which fictional object fits crate ${i}?`, "A painted cube"));
+    const items = swipe(adaptCourseQuestionsToInteractiveDrills(bank).examples);
+    const reversed = swipe(adaptCourseQuestionsToInteractiveDrills([...bank].reverse()).examples).reverse();
+    expect(items.map(item => item.prompt)).toEqual(reversed.map(item => item.prompt));
+    expect(new Set(items.map(item => item.correctAnswer)).size).toBe(2);
+    expect(items.some((item, i) => i > 0 && item.correctAnswer === items[i - 1].correctAnswer)).toBe(true);
   });
 
   it("supports observed q/correct aliases but refuses conflicting or inferred keys", () => {
@@ -81,11 +93,13 @@ describe("adaptCourseQuestionsToInteractiveDrills", () => {
     expect(JSON.stringify(result)).not.toContain("A painted wooden cube");
   });
 
-  it("skips malformed entries before alternating, and handles empty input", () => {
+  it("skips malformed entries without changing candidate selection, and handles empty input", () => {
     expect(adaptCourseQuestionsToInteractiveDrills([])).toEqual({ examples: [], validQuestionCount: 0 });
     const result = adaptCourseQuestionsToInteractiveDrills([first(), { ...second(), correctIndex: undefined }, second()]);
     expect(result.validQuestionCount).toBe(2);
-    expect(swipe(result.examples).map(item => item.correctAnswer)).toEqual([true, false]);
+    expect(swipe(result.examples).map(item => item.prompt)).toEqual(
+      swipe(adaptCourseQuestionsToInteractiveDrills([first(), second()]).examples).map(item => item.prompt),
+    );
   });
 
   it("rejects positional and cross-choice references anywhere in a source record", () => {

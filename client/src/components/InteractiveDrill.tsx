@@ -122,7 +122,10 @@ const containsVisibleLabel = (visible: string, label: string) => {
 
 function isValidExample(example: DrillExample): boolean {
   if (example.mode === "speed-match") {
-    return example.pairs.length >= 2 && new Set(example.pairs.map(pair => pair.id)).size === example.pairs.length;
+    return example.pairs.length >= 2 && new Set(example.pairs.map(pair => pair.id)).size === example.pairs.length &&
+      example.pairs.every(pair => pair.left.trim() && pair.right.trim()) &&
+      new Set(example.pairs.map(pair => normalizedLabel(pair.left))).size === example.pairs.length &&
+      new Set(example.pairs.map(pair => normalizedLabel(pair.right))).size === example.pairs.length;
   }
   if (example.mode === "rapid-swipe") return true;
   if (example.mode === "before-after") {
@@ -253,9 +256,10 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onStar
     }
   };
 
-  // Rotate the right column so answers are not presented in matching row order.
+  // Independently permute each board: a fixed one-row rotation gives every
+  // answer away once the learner notices the pattern. Pair IDs still grade it.
   const rightPairs = example.mode === "speed-match" && example.pairs.length > 1
-    ? [...example.pairs.slice(1), example.pairs[0]]
+    ? shuffleChoices(example.pairs, example.mode, `${example.id}:right`)
     : [];
 
   return (
