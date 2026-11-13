@@ -7,6 +7,7 @@ import { interactiveModes, interactiveCatalogResponseSchema, interactiveSessionR
 import { interactivePackageSchema, type InteractivePackage } from "../schema";
 import { activeCheckedRelease, trustedApproval } from "../../../scripts/content-engine/trusted-corpora";
 import { isExcludedFromMode, presentCauseEffect } from "./modeFit";
+import { compileOverlays, committedOverlayDocuments, type CourseOverlay, type OverlayItem } from "./overlay";
 import { ENGINE_LIMITS, engineRegistrationSchema, engineManifestSchema, engineShardSchema, type ArtifactDescriptor, type EngineManifest, type EngineIndexEntry } from "./schema";
 
 export class InteractiveEngineError extends Error {
@@ -33,12 +34,19 @@ export function resolveEngineRoot(moduleUrl = import.meta.url): string {
   throw new InteractiveEngineError();
 }
 type CacheEntry = { stamp: string; fingerprint: string; cost: number; value: unknown };
+// One playable item: a verified stored entry, or a committed reviewed overlay item.
+type Candidate = { id: string; mode: string; topicId: string; difficulty: string; bytes: number; stored?: EngineIndexEntry; overlay?: OverlayItem };
 export class InteractiveContentEngine {
   private readonly root: string;
   private readonly cache = new Map<string, CacheEntry>();
   private cacheCost = 0;
   private diskReads = 0;
-  constructor(root: string = resolveEngineRoot()) { this.root = resolve(root); }
+  private readonly overlays: ReadonlyMap<string, CourseOverlay>;
+  /** Overlays default to the committed reviewed set. Fixture roots pass their own list, including none. */
+  constructor(root: string = resolveEngineRoot(), overlays: readonly unknown[] = committedOverlayDocuments()) {
+    this.root = resolve(root);
+    this.overlays = compileOverlays(overlays);
+  }
   /** Test/build observability only; this is not returned by public procedures. */
   diagnostics() { return { diskReads: this.diskReads, cachedEntries: this.cache.size, cachedBytes: this.cacheCost }; }
   private path(file: string) {
@@ -160,12 +168,34 @@ export class InteractiveContentEngine {
     }
     return selected.map(entry => result.get(entry.id)!);
   }
+  /**
+   * The playable pool for a course: stored entries less mode-fit exclusions, with
+   * reviewed revisions substituted and reviewed additions appended. A revision is
+   * served only while the stored bytes it supersedes are exactly unchanged.
+   */
+  private pool(courseKey: string, manifest: EngineManifest): Candidate[] {
+    const overlay = this.overlays.get(courseKey) ?? { additions: [], replacements: new Map() };
+    const stored = new Map(manifest.entries.map(entry => [entry.id, entry]));
+    for (const addition of overlay.additions) if (stored.has(addition.id)) fail();
+    for (const [id, replacement] of overlay.replacements) {
+      if (stored.get(id)?.sha256 !== replacement.sha256 || stored.has(replacement.item.id)) fail();
+    }
+    const candidates: Candidate[] = [];
+    for (const entry of manifest.entries) {
+      if (isExcludedFromMode(courseKey, entry.mode, entry.id)) continue;
+      const replacement = overlay.replacements.get(entry.id)?.item;
+      candidates.push(replacement ? { ...replacement, overlay: replacement } : { id: entry.id, mode: entry.mode, topicId: entry.topicId, difficulty: entry.difficulty, bytes: entry.bytes, stored: entry });
+    }
+    for (const addition of overlay.additions) candidates.push({ ...addition, overlay: addition });
+    return candidates;
+  }
   getCatalog(courseKey: string, hasAccess: boolean): InteractiveCatalogResponse {
     return this.guarded(() => {
       const manifest = this.manifest(courseKey);
       if (!manifest) return { courseKey, available: false, locked: !hasAccess, version: null, modes: [] };
+      const pool = this.pool(courseKey, manifest);
       const modes = interactiveModes.map(mode => {
-        const entries = manifest.entries.filter(entry => entry.mode === mode && !isExcludedFromMode(courseKey, mode, entry.id));
+        const entries = pool.filter(entry => entry.mode === mode);
         return {
           mode, totalCount: entries.length,
           topics: manifest.topics.map(topic => ({ ...topic, count: entries.filter(entry => entry.topicId === topic.id).length })).filter(topic => topic.count > 0),
@@ -185,10 +215,13 @@ export class InteractiveContentEngine {
       const common = { courseKey, locked: !hasAccess, sessionId: randomUUID(), mode, filters };
       if (!manifest) return { ...common, available: false, version: null, totalAvailableCount: 0, examples: [] };
       // Mode-fit exclusions apply to full sessions; the fixed locked preview is unchanged.
-      const eligible = manifest.entries.filter(entry => entry.mode === mode && !isExcludedFromMode(courseKey, mode, entry.id) && (filters.topicId === null || entry.topicId === filters.topicId) && (filters.difficulty === null || entry.difficulty === filters.difficulty));
+      const eligible = this.pool(courseKey, manifest).filter(entry => entry.mode === mode && (filters.topicId === null || entry.topicId === filters.topicId) && (filters.difficulty === null || entry.difficulty === filters.difficulty));
       const totalAvailableCount = hasAccess ? eligible.length : 1;
-      let selected: EngineIndexEntry[];
-      if (!hasAccess) selected = [manifest.entries.find(entry => entry.id === manifest.previewIds[mode] && entry.mode === mode)!];
+      let selected: Candidate[];
+      if (!hasAccess) {
+        const preview = manifest.entries.find(entry => entry.id === manifest.previewIds[mode] && entry.mode === mode)!;
+        selected = [{ id: preview.id, mode: preview.mode, topicId: preview.topicId, difficulty: preview.difficulty, bytes: preview.bytes, stored: preview }];
+      }
       else {
         // Partial Fisher-Yates: exact intersection, without replacement; no whole bank read.
         const candidates = [...eligible];
@@ -209,7 +242,8 @@ export class InteractiveContentEngine {
       }
       selected = selected.slice(0, count);
       // Stored bytes are verified first; directional items are then presented with direction controls.
-      const examples = this.examples(manifest, selected).map(presentCauseEffect);
+      const storedExamples = new Map(this.examples(manifest, selected.flatMap(entry => entry.stored ? [entry.stored] : [])).map(example => [example.id, example]));
+      const examples = selected.map(entry => entry.overlay ? entry.overlay.example : storedExamples.get(entry.id)!).map(presentCauseEffect);
       const response = interactiveSessionResponseSchema.parse({ ...common, available: true, version: publicVersion(manifest), totalAvailableCount, examples });
       if (Buffer.byteLength(json(response)) > ENGINE_LIMITS.responseBytes) fail();
       return response;

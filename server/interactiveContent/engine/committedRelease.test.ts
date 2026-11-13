@@ -117,7 +117,7 @@ describe("fixed server-only committed reviewed release", () => {
   it("compiles exact pinned synthetic OIT banks with unchanged legacy compatibility and previews", () => {
     const bank = provision(); const out = root();
     expect(compileApprovedOrLegacyRelease(out)).toMatchObject({ courseCount: 38, itemCount: 3821, newItemCount: 2 });
-    const engine = new InteractiveContentEngine(out);
+    const engine = new InteractiveContentEngine(out, []);
     for (const row of bank.records) {
       const pkg = legacy(row.courseKey);
       expect(engine.getLegacyContent(row.courseKey, true).examples).toEqual(pkg.examples);

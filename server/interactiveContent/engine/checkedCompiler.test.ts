@@ -72,7 +72,7 @@ describe("private checked authoring compiler", () => {
     compileFixture(request(changed, undefined, "other"), second);
     const secondPin = { ...pins["class1-water"] };
     expect(computeInteractiveArtifactFingerprint(second)).not.toBe(before);
-    const a = new InteractiveContentEngine(first); const a2 = new InteractiveContentEngine(repeat); const b = new InteractiveContentEngine(second);
+    const a = new InteractiveContentEngine(first, []); const a2 = new InteractiveContentEngine(repeat, []); const b = new InteractiveContentEngine(second, []);
     const input = interactiveStartSessionInputSchema.parse({ courseKey: "class1-water", mode: "rapid-swipe", sessionSize: 5 });
     pins["class1-water"] = firstPin;
     const catalog = a.getCatalog("class1-water", false);
@@ -93,7 +93,7 @@ describe("private checked authoring compiler", () => {
   it("does not treat corpus approval alone as a compiled artifact approval", () => {
     const doc = checked(); const out = root(); const input = request(doc);
     expect(() => compileCheckedRelease(input, out)).toThrow("Compiled checked manifest");
-    expect(() => new InteractiveContentEngine(out).getCatalog("class1-water", true)).toThrow();
+    expect(() => new InteractiveContentEngine(out, []).getCatalog("class1-water", true)).toThrow();
   });
   it("refuses missing, malformed, reused and caller-selected tokens or changed selections before writing", () => {
     const doc = checked(); const input = request(doc); const out = root();
@@ -123,14 +123,14 @@ describe("private checked authoring compiler", () => {
       registry.courses["class1-water"].sha256 = createHash("sha256").update(content).digest("hex");
       registry.courses["class1-water"].bytes = Buffer.byteLength(content);
       writeFileSync(registryPath, JSON.stringify(registry) + "\n");
-      const engine = new InteractiveContentEngine(out);
+      const engine = new InteractiveContentEngine(out, []);
       expect(() => engine.getCatalog("class1-water", false)).toThrow();
       expect(() => engine.startSession(interactiveStartSessionInputSchema.parse({ courseKey: "class1-water", mode: "rapid-swipe", sessionSize: 5 }), false)).toThrow();
     }
   });
   it("rejects a checked item altered with every mutable hash recomputed", () => {
     const doc = checked(); const out = root(); compileFixture(request(doc), out);
-    const engine = new InteractiveContentEngine(out);
+    const engine = new InteractiveContentEngine(out, []);
     const input = interactiveStartSessionInputSchema.parse({ courseKey: "class1-water", mode: "rapid-swipe", difficulty: "easy", sessionSize: 5 });
     expect(engine.startSession(input, true).examples).toEqual([doc.exercises[0].item]);
     const manifestPath = join(out, "class1-water/manifest.json");
@@ -151,11 +151,11 @@ describe("private checked authoring compiler", () => {
     writeFileSync(registryPath, JSON.stringify(registry) + "\n");
     expect(() => engine.getCatalog("class1-water", true)).toThrow();
     expect(() => engine.startSession(input, true)).toThrow();
-    expect(() => new InteractiveContentEngine(out).startSession(input, true)).toThrow();
+    expect(() => new InteractiveContentEngine(out, []).startSession(input, true)).toThrow();
   });
   it("rejects changes to a previously cached selected shard and prevents legacy downgrade", () => {
     const doc = checked(); const out = root(); compileFixture(request(doc), out);
-    const engine = new InteractiveContentEngine(out);
+    const engine = new InteractiveContentEngine(out, []);
     const input = interactiveStartSessionInputSchema.parse({ courseKey: "class1-water", mode: "rapid-swipe", difficulty: "easy", sessionSize: 5 });
     engine.startSession(input, true);
     const manifestPath = join(out, "class1-water/manifest.json");
@@ -201,7 +201,7 @@ describe("private checked authoring compiler", () => {
   it("serves an approved synthetic record only in paid indexed sessions and preserves all fixed previews and legacy compatibility", () => {
     const doc = checked(); const out = root();
     expect(compileFixture(request(doc), out)).toMatchObject({ courseCount: 38, itemCount: 3821, newItemCount: 1 });
-    const engine = new InteractiveContentEngine(out);
+    const engine = new InteractiveContentEngine(out, []);
     const legacy = engine.getLegacyContent("class1-water", true);
     const freeLegacy = engine.getLegacyContent("class1-water", false);
     for (const mode of interactiveModes) {
@@ -239,7 +239,7 @@ describe("private checked authoring compiler", () => {
   });
   it("rehashes only the checked manifest and selected shard on warm session requests", () => {
     const doc = checked(); const out = root(); compileFixture(request(doc), out);
-    const engine = new InteractiveContentEngine(out);
+    const engine = new InteractiveContentEngine(out, []);
     const input = interactiveStartSessionInputSchema.parse({ courseKey: "class1-water", mode: "rapid-swipe", difficulty: "easy", sessionSize: 5 });
     engine.startSession(input, true);
     const before = engine.diagnostics().diskReads;

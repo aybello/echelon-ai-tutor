@@ -1,5 +1,7 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { isExcludedFromMode } from "./modeFit";
+import { committedOverlayDocuments, type ContentOverlay } from "./overlay";
+const overlayAdditions = (committedOverlayDocuments() as ContentOverlay[]).flatMap(doc => doc.additions);
 import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
@@ -40,7 +42,8 @@ describe("genuine shipped AI-reviewed OIT release", () => {
     for (const mode of interactiveModes) {
       // Cause and Effect calculation items stay stored but are withheld from this mode.
       const expected = legacy.examples.filter(e => e.mode === mode && !isExcludedFromMode(courseKey, mode, e.id)).length
-        + bank.records.filter(r => r.courseKey === courseKey && r.example.mode === mode && !isExcludedFromMode(courseKey, mode, r.example.id)).length;
+        + bank.records.filter(r => r.courseKey === courseKey && r.example.mode === mode && !isExcludedFromMode(courseKey, mode, r.example.id)).length
+        + overlayAdditions.filter(a => a.courseKey === courseKey && a.example.mode === mode).length;
       expect(catalog.modes.find(m => m.mode === mode)?.totalCount).toBe(expected);
       const session = engine.startSession(interactiveStartSessionInputSchema.parse({ courseKey, mode, sessionSize: 50 }), true);
       expect(session.totalAvailableCount).toBe(expected);

@@ -27,7 +27,7 @@ function request(method: "GET" | "POST", procedure: string, input: unknown) {
 beforeEach(() => {
   vi.clearAllMocks();
   const result = fixture({ perMode: 31, secondCourse: true }); root = result.root; records = result.records;
-  vi.mocked(getInteractiveContentEngine).mockReturnValue(new InteractiveContentEngine(root));
+  vi.mocked(getInteractiveContentEngine).mockReturnValue(new InteractiveContentEngine(root, []));
   vi.mocked(resolveAccessForRequest).mockResolvedValue(false);
 });
 afterEach(() => {
