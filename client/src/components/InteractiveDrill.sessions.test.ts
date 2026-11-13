@@ -31,6 +31,13 @@ describe("controlled drill session API", () => {
     expect(html).toContain("No practice activities are available yet.");
   });
 
+  it("retains explicitly advertised modes when the working set is empty", () => {
+    const html = render({ examples: [], selectedMode: "before-after", availableModes: DRILL_MODES.map(mode => mode.id) });
+    for (const mode of DRILL_MODES) expect(html).toContain(mode.label);
+    expect(html).toContain("Choose a practice mode");
+    expect(html).toContain("No practice activities are available yet.");
+  });
+
   it("allows the parent to own mode navigation without changing the activity", () => {
     const html = render({ selectedMode: "rapid-swipe", hideModeNavigation: true });
     expect(html).not.toContain("Choose a practice mode");

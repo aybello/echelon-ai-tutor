@@ -562,7 +562,7 @@ export function InteractiveDrill({ examples, className, selectedMode, onModeChan
   return (
     <div className={["interactive-drill", className].filter(Boolean).join(" ")}>
         <div className={`interactive-drill__layout${hideModeNavigation ? " interactive-drill__layout--activity-only" : ""}`}>
-          {!hideModeNavigation && <nav className="interactive-drill__nav" aria-label="Choose a practice mode">
+          {!hideModeNavigation && availableModes.length > 0 && <nav className="interactive-drill__nav" aria-label="Choose a practice mode">
             {availableModes.map(mode => (
               <button type="button" key={mode.id} className={mode.id === activeMode?.id ? "is-active" : ""} aria-current={mode.id === activeMode?.id ? "true" : undefined} onClick={() => chooseMode(mode.id)}>
                 <span>{mode.label}</span><small>{mode.description}</small>
