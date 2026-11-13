@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { causeEffectDirections } from "./interactiveCauseEffect";
 
 // Client-safe wire validation only. No authored examples, server code, or access logic.
 export const interactiveModes = ["rapid-swipe", "speed-match", "odd-one-out", "cause-effect", "tap-the-flaw", "before-after"] as const;
@@ -11,6 +12,9 @@ const text = z.string().trim().min(1).max(4000);
 const base = { id: interactiveSafeIdSchema, prompt: text, instruction: text.optional() };
 const option = z.object({ id: interactiveSafeIdSchema, label: text }).strict();
 const pair = z.object({ id: interactiveSafeIdSchema, left: text, right: text }).strict();
+// Dedicated Cause and Effect payload: a stated change, then the direction of each named parameter.
+export const interactiveCauseEffectDirectionSchema = z.enum(causeEffectDirections);
+const effect = z.object({ id: interactiveSafeIdSchema, parameter: text.max(200), direction: interactiveCauseEffectDirectionSchema, explanation: text }).strict();
 const normalize = (value: string) => value.normalize("NFKC").trim().replace(/\s+/gu, " ").toLowerCase();
 const rendererLabel = (value: string) => value.trim().replace(/\s+/g, " ").toLowerCase();
 const unique = (values: string[]) => new Set(values.map(normalize)).size === values.length;
@@ -38,6 +42,18 @@ export const interactiveDrillExampleSchema = z.union([
   }
 });
 export type InteractiveDrillExample = z.infer<typeof interactiveDrillExampleSchema>;
+// Delivered only: a stated change with direction controls for each named parameter.
+// Stored bank records keep the shapes above; the engine presents directional
+// cause-effect records in this shape after verifying their stored bytes.
+export const interactiveCauseEffectExampleSchema = z.object({
+  ...base, mode: z.literal("cause-effect"), assumptions: text.optional(), effects: z.array(effect).min(1).max(4),
+}).strict().superRefine((item, ctx) => {
+  if (new Set(item.effects.map(e => e.id)).size !== item.effects.length || !unique(item.effects.map(e => e.parameter)))
+    ctx.addIssue({ code: "custom", message: "Invalid cause and effect parameters" });
+});
+export type InteractiveCauseEffectExample = z.infer<typeof interactiveCauseEffectExampleSchema>;
+export const interactiveSessionExampleSchema = z.union([interactiveDrillExampleSchema, interactiveCauseEffectExampleSchema]);
+export type InteractiveSessionExample = z.infer<typeof interactiveSessionExampleSchema>;
 export type DrillExample = InteractiveDrillExample;
 
 const courseKey = z.string().min(1).max(64);
@@ -64,7 +80,7 @@ export const interactiveCatalogResponseSchema = z.object({
 export const interactiveSessionResponseSchema = z.object({
   courseKey, available: z.boolean(), locked: z.boolean(), version,
   sessionId: z.string().min(1).max(80), mode: interactiveModeSchema,
-  totalAvailableCount: count, examples: z.array(interactiveDrillExampleSchema).max(50),
+  totalAvailableCount: count, examples: z.array(interactiveSessionExampleSchema).max(50),
   filters: z.object({
     topicId: interactiveSafeIdSchema.nullable(), difficulty: interactiveDifficultySchema.nullable(),
     requestedSize: z.number().int().min(5).max(50),

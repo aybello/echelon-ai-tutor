@@ -1,4 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { presentCauseEffect } from "./modeFit";
 const { approvals, pins } = vi.hoisted(() => ({ approvals: {} as Record<string, any>, pins: {} as Record<string, any> }));
 vi.mock("../../../scripts/content-engine/trusted-corpora", async (original) => {
   const actual = await original<typeof import("../../../scripts/content-engine/trusted-corpora")>();
@@ -207,8 +208,9 @@ describe("private checked authoring compiler", () => {
       const input = interactiveStartSessionInputSchema.parse({ courseKey: "class1-water", mode, sessionSize: 50 });
       const free = engine.startSession(input, false);
       expect(free.examples).toHaveLength(1);
-      expect(freeLegacy.examples).toContainEqual(free.examples[0]);
-      expect(legacy.examples).toContainEqual(free.examples[0]);
+      // The stored preview is unchanged; directional Cause and Effect is delivered with direction controls.
+      expect(freeLegacy.examples.map(presentCauseEffect)).toContainEqual(free.examples[0]);
+      expect(legacy.examples.map(presentCauseEffect)).toContainEqual(free.examples[0]);
     }
     const input = interactiveStartSessionInputSchema.parse({ courseKey: "class1-water", mode: "rapid-swipe", difficulty: "easy", sessionSize: 50 });
     const paid = engine.startSession(input, true);

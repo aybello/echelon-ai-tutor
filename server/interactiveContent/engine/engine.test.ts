@@ -1,4 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { isExcludedFromMode, presentCauseEffect } from "./modeFit";
 import { existsSync, readFileSync, rmSync, unlinkSync, symlinkSync, writeFileSync, mkdtempSync } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
@@ -253,9 +254,11 @@ describe("private indexed interactive engine", () => {
     for (const key of Object.keys(registry.courses)) {
       const catalog = engine.getCatalog(key, false);
       const legacy = engine.getLegacyContent(key, true);
-      expect(catalog.modes.reduce((n, mode) => n + mode.totalCount, 0)).toBe(legacy.examples.length);
+      // Cause and Effect calculation items stay stored but are withheld from catalogs (mode fit).
+      const withheld = legacy.examples.filter(e => isExcludedFromMode(key, e.mode, e.id)).length;
+      expect(catalog.modes.reduce((n, mode) => n + mode.totalCount, 0)).toBe(legacy.examples.length - withheld);
       const manifest = JSON.parse(readFileSync(join(root, `${key}/manifest.json`), "utf8"));
-      for (const mode of interactiveModes) expect(engine.startSession(input({ courseKey: key, mode }), false).examples[0]).toEqual(legacy.examples.find(e => e.id === manifest.previewIds[mode]));
+      for (const mode of interactiveModes) expect(engine.startSession(input({ courseKey: key, mode }), false).examples[0]).toEqual(presentCauseEffect(legacy.examples.find(e => e.id === manifest.previewIds[mode])!));
       expect(manifest.classification).toBe("legacy_release");
       expect(manifest.entries.every((e: { topicId: string; difficulty: string }) => e.topicId === "unclassified" && e.difficulty === "unclassified")).toBe(true);
       expect(Object.keys(manifest)).not.toContain("humanApproval");

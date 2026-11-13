@@ -6,6 +6,7 @@ import { getCourseByKey, getAllActiveCourseKeys } from "../../../shared/courseRe
 import { interactiveModes, interactiveCatalogResponseSchema, interactiveSessionResponseSchema, type InteractiveCatalogResponse, type InteractiveDrillExample, type InteractiveMode, type InteractiveSessionResponse, type InteractiveStartSessionInput } from "../../../shared/interactiveSessions";
 import { interactivePackageSchema, type InteractivePackage } from "../schema";
 import { activeCheckedRelease, trustedApproval } from "../../../scripts/content-engine/trusted-corpora";
+import { isExcludedFromMode, presentCauseEffect } from "./modeFit";
 import { ENGINE_LIMITS, engineRegistrationSchema, engineManifestSchema, engineShardSchema, type ArtifactDescriptor, type EngineManifest, type EngineIndexEntry } from "./schema";
 
 export class InteractiveEngineError extends Error {
@@ -164,7 +165,7 @@ export class InteractiveContentEngine {
       const manifest = this.manifest(courseKey);
       if (!manifest) return { courseKey, available: false, locked: !hasAccess, version: null, modes: [] };
       const modes = interactiveModes.map(mode => {
-        const entries = manifest.entries.filter(entry => entry.mode === mode);
+        const entries = manifest.entries.filter(entry => entry.mode === mode && !isExcludedFromMode(courseKey, mode, entry.id));
         return {
           mode, totalCount: entries.length,
           topics: manifest.topics.map(topic => ({ ...topic, count: entries.filter(entry => entry.topicId === topic.id).length })).filter(topic => topic.count > 0),
@@ -183,7 +184,8 @@ export class InteractiveContentEngine {
       const filters = { topicId: hasAccess ? input.topicId ?? null : null, difficulty: hasAccess ? input.difficulty ?? null : null, requestedSize: sessionSize };
       const common = { courseKey, locked: !hasAccess, sessionId: randomUUID(), mode, filters };
       if (!manifest) return { ...common, available: false, version: null, totalAvailableCount: 0, examples: [] };
-      const eligible = manifest.entries.filter(entry => entry.mode === mode && (filters.topicId === null || entry.topicId === filters.topicId) && (filters.difficulty === null || entry.difficulty === filters.difficulty));
+      // Mode-fit exclusions apply to full sessions; the fixed locked preview is unchanged.
+      const eligible = manifest.entries.filter(entry => entry.mode === mode && !isExcludedFromMode(courseKey, mode, entry.id) && (filters.topicId === null || entry.topicId === filters.topicId) && (filters.difficulty === null || entry.difficulty === filters.difficulty));
       const totalAvailableCount = hasAccess ? eligible.length : 1;
       let selected: EngineIndexEntry[];
       if (!hasAccess) selected = [manifest.entries.find(entry => entry.id === manifest.previewIds[mode] && entry.mode === mode)!];
@@ -206,7 +208,8 @@ export class InteractiveContentEngine {
         count++;
       }
       selected = selected.slice(0, count);
-      const examples = this.examples(manifest, selected);
+      // Stored bytes are verified first; directional items are then presented with direction controls.
+      const examples = this.examples(manifest, selected).map(presentCauseEffect);
       const response = interactiveSessionResponseSchema.parse({ ...common, available: true, version: publicVersion(manifest), totalAvailableCount, examples });
       if (Buffer.byteLength(json(response)) > ENGINE_LIMITS.responseBytes) fail();
       return response;

@@ -459,3 +459,26 @@
 .course-interactive .interactive-drill__pill { background: #eaf2ff; border-color: #bfd3eb; }
 .course-interactive button { transition: background-color 140ms, border-color 140ms; }
 @media (prefers-reduced-motion: reduce) { .course-interactive button { transition: none; } }
+
+/* Cause and Effect: one row of direction controls per named parameter. */
+.interactive-drill__effects { display: grid; gap: 14px; }
+.interactive-drill__assumptions { margin: 0; color: #0d2339; line-height: 1.4; }
+.interactive-drill__effect { display: grid; gap: 8px; }
+.interactive-drill__effect-parameter { margin: 0; font-weight: 800; color: #0d2339; overflow-wrap: anywhere; }
+.interactive-drill__effect-parameter .is-correct { color: #17583d; }
+.interactive-drill__effect-parameter .is-incorrect { color: #9a3412; }
+.interactive-drill__options--directions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.interactive-drill__options--directions button { min-height: 48px; }
+.interactive-drill__options--directions button.is-selected,
+.course-interactive .interactive-drill__options--directions button.is-selected,
+.course-interactive .interactive-drill__options--directions button.is-selected:disabled {
+  border-color: #1757b8;
+  background: #1757b8;
+  color: #fff;
+}
+.interactive-drill__check { justify-self: start; }
+.course-interactive .interactive-drill__effect-parameter,
+.course-interactive .interactive-drill__assumptions { color: #000; }
+@media (min-width: 720px) {
+  .interactive-drill__options--directions { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}

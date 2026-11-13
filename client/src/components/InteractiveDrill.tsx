@@ -1,5 +1,6 @@
 import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import type { PointerEvent } from "react";
+import { CAUSE_EFFECT_DIRECTION_LABELS, causeEffectDirections, scoreCauseEffect, type CauseEffectDirection, type CauseEffectEffect } from "@shared/interactiveCauseEffect";
 import "./InteractiveDrill.css";
 
 /** Each item needs a stable, unique id across the examples array. */
@@ -53,6 +54,15 @@ export interface ChoiceDrillExample extends DrillBase {
   explanation: string;
 }
 
+/** A stated change, then the direction of each explicitly named parameter. */
+export interface CauseEffectExample extends DrillBase {
+  mode: "cause-effect";
+  /** Operating assumptions, including what is held constant. */
+  assumptions?: string;
+  /** One to four parameters; every one must be answered to score the activity. */
+  effects: readonly CauseEffectEffect[];
+}
+
 interface BeforeAfterBase extends DrillBase {
   mode: "before-after";
   explanation: string;
@@ -71,6 +81,7 @@ export type DrillExample =
   | RapidSwipeExample
   | SpeedMatchExample
   | ChoiceDrillExample
+  | CauseEffectExample
   | BeforeAfterExample;
 
 export interface InteractiveDrillProps {
@@ -93,13 +104,14 @@ export const DRILL_MODES: readonly { id: DrillMode; label: string; description: 
   { id: "rapid-swipe", label: "Rapid Swipe", description: "Make a quick call" },
   { id: "speed-match", label: "Speed-Match", description: "Connect the right pairs" },
   { id: "odd-one-out", label: "Odd-One-Out", description: "Spot what does not belong" },
-  { id: "cause-effect", label: "Cause Effect", description: "Predict what happens next" },
+  { id: "cause-effect", label: "Cause Effect", description: "Predict how a parameter responds" },
   { id: "tap-the-flaw", label: "Tap-the-Flaw", description: "Find the incorrect statement" },
   { id: "before-after", label: "Before/After", description: "Put things in order" },
 ];
 
 type Feedback = { correct: boolean; text: string };
 type Selection = { side: "left" | "right"; pairId: string };
+const DIRECTION_SYMBOLS: Record<CauseEffectDirection, string> = { increase: "↑", decrease: "↓", unchanged: "＝", depends: "?" };
 
 const normalizeLabel = (value: string) => value.trim().replace(/\s+/g, " ").toLowerCase();
 const normalizedLabel = (value: string) => value.normalize("NFKC").trim().replace(/\s+/gu, " ").toLowerCase();
@@ -150,6 +162,12 @@ function isValidExample(example: DrillExample): boolean {
       example.options.every(label => !containsVisibleLabel(visiblePrompt, normalizeLabel(label)) &&
         !containsVisibleLabel(visibleConservative, normalizedLabel(label)));
   }
+  if ("effects" in example) {
+    return example.effects.length >= 1 && example.effects.length <= 4 &&
+      new Set(example.effects.map(effect => effect.id)).size === example.effects.length &&
+      new Set(example.effects.map(effect => normalizedLabel(effect.parameter))).size === example.effects.length &&
+      example.effects.every(effect => effect.parameter.trim() && effect.explanation.trim() && causeEffectDirections.includes(effect.direction));
+  }
   return example.options.length >= 2 &&
     new Set(example.options.map(option => option.id)).size === example.options.length &&
     example.options.some(option => option.id === example.correctOptionId);
@@ -176,6 +194,8 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
   const answeredRef = useRef(false);
   const [selected, setSelected] = useState<Selection | null>(null);
   const [matched, setMatched] = useState<string[]>([]);
+  const [directions, setDirections] = useState<Record<string, CauseEffectDirection>>({});
+  const [effectResults, setEffectResults] = useState<Record<string, boolean> | null>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const feedbackRef = useRef<HTMLDivElement>(null);
   const focusFeedback = useRef(false);
@@ -213,6 +233,20 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
     setFeedback({
       correct,
       text: correct ? explanation : `The correct answer is ${correctLabel}. ${explanation}`,
+    });
+    setAnswered(true);
+  };
+
+  // Every listed parameter must be answered; the activity is correct only when all match.
+  const checkEffects = () => {
+    if (!("effects" in example) || answeredRef.current || example.effects.some(effect => !directions[effect.id])) return;
+    const score = scoreCauseEffect(example.effects, directions);
+    answeredRef.current = true;
+    focusFeedback.current = true;
+    setEffectResults(Object.fromEntries(score.results.map(result => [result.id, result.correct])));
+    setFeedback({
+      correct: score.correct,
+      text: example.effects.map(effect => `${effect.parameter}: ${CAUSE_EFFECT_DIRECTION_LABELS[effect.direction]}. ${effect.explanation}`).join("\n"),
     });
     setAnswered(true);
   };
@@ -290,7 +324,9 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
             ? "Swipe left for No or right for Yes, or choose a button."
             : example.mode === "speed-match"
               ? "Choose one item from each column to make a pair."
-              : "Choose one answer.")}
+              : "effects" in example
+                ? "Choose how each listed parameter responds, then check your answer."
+                : "Choose one answer.")}
         </p>
         {!valid ? (
           <p className="interactive-drill__invalid" role="status">This activity is unavailable because its content is incomplete or ambiguous.</p>
@@ -333,6 +369,26 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
                 answer(correct, correctLabel, example.explanation);
               }}>{choice}</button>
             ))}
+          </div>
+        ) : "effects" in example ? (
+          <div className="interactive-drill__effects" aria-describedby={instructionId}>
+            {example.assumptions && <p className="interactive-drill__assumptions"><strong>Assume:</strong> {example.assumptions}</p>}
+            {example.effects.map(effect => (
+              <div key={effect.id} className="interactive-drill__effect" role="group" aria-label={`${effect.parameter}: choose a direction`}>
+                <p className="interactive-drill__effect-parameter">
+                  {effect.parameter}
+                  {effectResults && <span className={effectResults[effect.id] ? "is-correct" : "is-incorrect"}> · {effectResults[effect.id] ? "Correct" : "Not quite"}</span>}
+                </p>
+                <div className="interactive-drill__options interactive-drill__options--directions">
+                  {causeEffectDirections.map(direction => (
+                    <button key={direction} type="button" disabled={answered} aria-pressed={directions[effect.id] === direction} className={directions[effect.id] === direction ? "is-selected" : ""} onClick={() => setDirections(previous => ({ ...previous, [effect.id]: direction }))}>
+                      <span aria-hidden="true">{DIRECTION_SYMBOLS[direction]} </span>{CAUSE_EFFECT_DIRECTION_LABELS[direction]}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <button type="button" className="interactive-drill__primary interactive-drill__check" disabled={answered || example.effects.some(effect => !directions[effect.id])} onClick={checkEffects}>Check answer</button>
           </div>
         ) : (
           <div className="interactive-drill__options" aria-describedby={instructionId}>
