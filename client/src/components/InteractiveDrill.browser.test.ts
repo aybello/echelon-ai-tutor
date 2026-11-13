@@ -126,7 +126,7 @@ describe("InteractiveDrill in an isolated browser", () => {
     expect(await feedback(page).getAttribute("aria-live")).toBe("polite");
     expect(await feedback(page).getAttribute("aria-atomic")).toBe("true");
     expect(await button(page, "Previous").isDisabled()).toBe(true);
-    expect(await button(page, "Next activity →").isDisabled()).toBe(true);
+    expect(await button(page, "Next activity →").isEnabled()).toBe(true);
     expect(await page.getByText("Practice · not saved").count()).toBe(1);
     await button(page, "Yes").focus();
     await page.keyboard.press("Enter");
@@ -135,6 +135,19 @@ describe("InteractiveDrill in an isolated browser", () => {
     expect(await button(page, "Yes").isDisabled()).toBe(true);
     expect(await button(page, "No").isDisabled()).toBe(true);
     expect(await button(page, "Next activity →").isDisabled()).toBe(false);
+  }));
+
+  it("lets Next advance an unanswered activity without grading and preserves keyboard focus", async () => withDrill(async page => {
+    await expectHeading(page, "Synthetic swipe one");
+    await button(page, "Next activity →").focus();
+    await page.keyboard.press("Enter");
+    await expectHeading(page, "Synthetic swipe two");
+    expect((await feedback(page).innerText()).trim()).toBe("");
+    expect(await page.getByRole("heading", { name: "Synthetic swipe two", exact: true }).evaluate(el => el === document.activeElement)).toBe(true);
+    await button(page, "Previous").click();
+    await expectHeading(page, "Synthetic swipe one");
+    expect(await button(page, "Yes").isEnabled()).toBe(true);
+    expect((await feedback(page).innerText()).trim()).toBe("");
   }));
 
   it("keeps initial focus and moves keyboard focus through answers and navigation", async () => withDrill(async page => {
@@ -224,7 +237,8 @@ describe("InteractiveDrill in an isolated browser", () => {
     await gesture(180, 100, "touch", true);
     await gesture(180, 100, "mouse");
     expect((await feedback(page).innerText()).trim()).toBe("");
-    expect(await button(page, "Next activity →").isDisabled()).toBe(true);
+    expect(await button(page, "Yes").isEnabled()).toBe(true);
+    expect(await button(page, "Next activity →").isEnabled()).toBe(true);
     await gesture(180, 100);
     await expectFeedback(page, "Correct");
     await button(page, "Next activity →").click();

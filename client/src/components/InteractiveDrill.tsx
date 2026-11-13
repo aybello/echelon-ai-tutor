@@ -346,9 +346,8 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
         </div>
         <div className="interactive-drill__controls">
           <button type="button" className="interactive-drill__secondary" disabled={index === 0} onClick={onPrevious}>Previous</button>
-          {!answered && valid && index + 1 < count && <button type="button" className="interactive-drill__secondary interactive-drill__skip" onClick={onNext}>Skip activity →</button>}
           {index + 1 < count ? (
-            <button type="button" className="interactive-drill__primary" disabled={!answered && valid} onClick={onNext}>Next activity →</button>
+            <button type="button" className="interactive-drill__primary" title={!answered ? "Continue without answering this activity" : undefined} onClick={onNext}>Next activity →</button>
           ) : (
             <button type="button" className="interactive-drill__primary" onClick={onNewRound ?? onRestart}>{onNewRound ? "Next round →" : "Start again"}</button>
           )}
