@@ -307,3 +307,17 @@ test('offline payload schema matches the new shared pure wire-schema exports wit
   const result = spawnSync(process.execPath, ['--import', 'tsx', '--input-type=module', '-e', code], { cwd: repoRoot, encoding: 'utf8' });
   assert.equal(result.status, 0, result.stderr);
 });
+
+test('legal screening includes instruction for per-item and risk-based reviewed records', () => {
+  for (const policy of [false, true]) {
+    for (const instruction of ['OSHA regulation requires a permit.', 'Comply with Ontario regulation 170.', 'Use lockout before servicing.']) {
+      const doc = completeFixture(); const e = doc.exercises[0];
+      if (instruction.includes('lockout')) doc.sources[0].url = 'https://www.osha.gov/confined-spaces';
+      e.item.instruction = instruction; e.contentHash = hash(e.item);
+      if (policy) { attachPolicyReviews(doc); attachBatchAudit(doc); }
+      else { attachReview(doc, 'human-technical'); attachReview(doc, 'software-release'); }
+      assert.ok(blockers(e, doc).includes('existing-statutory-safety-release-screen-blocked'));
+      assert.equal(cell(doc).releasableAccepted, 0);
+    }
+  }
+});

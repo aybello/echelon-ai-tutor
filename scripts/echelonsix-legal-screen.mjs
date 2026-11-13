@@ -23,7 +23,7 @@ export const missingAuthorityEvidenceIds = Object.freeze([
 ]);
 const missingAuthorityEvidence = new Set(missingAuthorityEvidenceIds);
 export function legalScreen(item) {
-  const text = JSON.stringify({ prompt: item.prompt, options: item.options, answer: item.answer, pairs: item.pairs, explanation: item.explanation });
+  const text = JSON.stringify({ prompt: item.prompt, instruction: item.instruction, options: item.options, answer: item.answer, pairs: item.pairs, explanation: item.explanation });
   const sources = (item.sources || []).join(' ');
   const reasons = [];
   if (authority.test(text)) reasons.push('legal-or-authority-language');
