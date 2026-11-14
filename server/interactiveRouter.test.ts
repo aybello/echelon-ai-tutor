@@ -10,6 +10,8 @@ import { releasePackages } from "./interactiveContent/release-2026-11-12/registr
 import releaseMetadata from "./interactiveContent/release-2026-11-12/release-metadata.json";
 import { interactiveModes } from "./interactiveContent/schema";
 import { getInteractiveContentEngine, InteractiveContentEngine } from "./interactiveContent/engine/loader";
+import { isReleaseExcluded } from "./interactiveContent/engine/modeFit";
+import { committedOverlayDocuments, type ContentOverlay } from "./interactiveContent/engine/overlay";
 import { interactiveRouter } from "./routers/interactiveRouter";
 // @ts-expect-error The standalone offline converter is plain JavaScript.
 import { validatePack } from "../scripts/validate-interactive-drafts.mjs";
@@ -199,19 +201,44 @@ describe("AI-source-reviewed software release package validation", () => {
   it("exposes all 38 published legacy packs anonymously and with tokens within the existing compatibility budget", async () => {
     const actual = await vi.importActual<typeof import("./interactiveContent/loader")>("./interactiveContent/loader");
     // Exercise the real private engine legacy wrapper, not a v2 full-bank response.
-    vi.mocked(getInteractiveContentEngine).mockReturnValue(new InteractiveContentEngine());
+    const engine = new InteractiveContentEngine();
+    vi.mocked(getInteractiveContentEngine).mockReturnValue(engine);
+    const overlays = committedOverlayDocuments() as ContentOverlay[];
+    expect(Object.keys(releasePackages)).toHaveLength(38);
     for (const key of Object.keys(releasePackages)) {
       const result = actual.loadInteractivePackage(key);
       if (result.status !== "valid") throw new Error(`Invalid release: ${key}`);
+      // Independently resolve the intended compatibility view: retain legacy order,
+      // apply exact reviewed replacements and release exclusions, never additions.
+      const replacements = new Map(overlays.flatMap(doc => doc.replacements)
+        .filter(item => item.courseKey === key).map(item => [item.replacesId, item.example]));
+      const expectedExamples = result.package.examples
+        .filter(example => !isReleaseExcluded(key, example.mode, example.id))
+        .map(example => replacements.get(example.id) ?? example)
+        .filter(example => !isReleaseExcluded(key, example.mode, example.id));
+      const resolved = engine.getLegacyContent(key, true);
+      expect(resolved.examples, key).toEqual(expectedExamples);
       const anonymous = await caller.getContent({ courseKey: key });
+      expect(anonymous, key).toEqual(resolved);
       expect(anonymous).toEqual(await caller.getContent({ courseKey: key }));
       expect(anonymous).toMatchObject({ courseKey: key, available: true, locked: false });
-      expect(anonymous.examples).toEqual(result.package.examples);
+      expect(anonymous.examples.map(example => example.id), key).toEqual(expectedExamples.map(example => example.id));
+      expect(anonymous.examples, key).toEqual(expectedExamples);
+      const servedIds = new Set(anonymous.examples.map(example => example.id));
+      for (const original of result.package.examples) {
+        if (replacements.has(original.id) || isReleaseExcluded(key, original.mode, original.id)) {
+          expect(servedIds.has(original.id), `${key}: no original fallback for ${original.id}`).toBe(false);
+        }
+      }
+      for (const addition of overlays.flatMap(doc => doc.additions).filter(item => item.courseKey === key)) {
+        expect(servedIds.has(addition.example.id), `${key}: no additions in compatibility response`).toBe(false);
+      }
       expect(new Set(anonymous.examples.map(x => x.mode))).toEqual(new Set(interactiveModes));
       const full = await caller.getContent({ courseKey: key, accessToken: "token" });
       expect(full).toEqual(anonymous);
       expect(full.locked).toBe(false);
-      expect(full.examples).toEqual(result.package.examples);
+      expect(full.examples, key).toEqual(expectedExamples);
+      expect(full.examples.length).toBeLessThanOrEqual(result.package.examples.length);
       expect(full.examples.length).toBeLessThanOrEqual(300);
       expect(Object.keys(full).sort()).toEqual(["available", "courseKey", "examples", "locked", "version"]);
       const serialized = JSON.stringify(full);
