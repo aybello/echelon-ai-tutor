@@ -71,7 +71,12 @@ describe("selective release effective view", () => {
     const view = engine as unknown as { manifest(key: string): any; pool(key: string, manifest: any): { id: string }[] };
     const poolIds = new Set(view.pool("oit", view.manifest("oit")).map(e => e.id));
     for (const id of ids) expect(poolIds.has(id), id).toBe(false);
-    expect(all.filter(a => poolIds.has(a.example.id))).toHaveLength(715);
+    const excludedIds = new Set(ids);
+    expect(all).toHaveLength(2464);
+    const expectedAvailable = all.filter(a => !excludedIds.has(a.example.id)).map(a => a.example.id);
+    const actualAvailable = all.filter(a => poolIds.has(a.example.id)).map(a => a.example.id);
+    expect(actualAvailable).toHaveLength(2339);
+    expect(new Set(actualAvailable)).toEqual(new Set(expectedAvailable));
     expect(poolIds.has("og-oit-b2-before-after-0134")).toBe(true);
     for (const access of [false, true]) for (const mode of interactiveModes) {
       const result = engine.startSession({ courseKey: "oit", mode, sessionSize: 50 }, access);
