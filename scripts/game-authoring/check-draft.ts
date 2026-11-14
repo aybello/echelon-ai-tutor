@@ -3,6 +3,8 @@
 //   env -i PATH="$PATH" HOME=/tmp NODE_ENV=test node --require ./scripts/test-safety.cjs --import tsx \
 //     scripts/game-authoring/check-draft.ts <table-file> <batchTag, e.g. 6>
 import { pathToFileURL } from "node:url";
+import { readdirSync } from "node:fs";
+import { basename } from "node:path";
 import { resolve } from "node:path";
 import { InteractiveContentEngine } from "../../server/interactiveContent/engine/loader";
 import { committedOverlayDocuments, type ContentOverlay } from "../../server/interactiveContent/engine/overlay";
@@ -20,6 +22,14 @@ const engine = new InteractiveContentEngine() as any;
 const manifest = engine.manifest(data.courseKey); const stored: any[] = [];
 for (let i = 0; i < manifest.entries.length; i += 50) stored.push(...engine.examples(manifest, manifest.entries.slice(i, i + 50)));
 for (const d of committedOverlayDocuments() as ContentOverlay[]) for (const a of d.additions) if (a.courseKey === data.courseKey) stored.push(a.example);
+// Other draft tables for the same course also count as existing, so parallel writers do not duplicate each other.
+const dataDir = resolve(file, "..");
+for (const other of readdirSync(dataDir)) {
+  if (!other.endsWith(".ts") || other === basename(file)) continue;
+  const table = (await import(pathToFileURL(resolve(dataDir, other)).href)).default as CourseData;
+  if (table.courseKey !== data.courseKey) continue;
+  for (const item of buildItems(table, `x-${other}-`).items) stored.push(item.example);
+}
 const existing = stored.map(e => ({ prompt: e.prompt, key: norm(JSON.stringify(e.options ?? e.pairs ?? e.correctAnswer)) }));
 const { errors, stats } = validate(doc, existing);
 const byMode: Record<string, number> = {}; for (const a of doc.additions) byMode[(a.example as any).mode] = (byMode[(a.example as any).mode] ?? 0) + 1;
