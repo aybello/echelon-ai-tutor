@@ -74,7 +74,7 @@ const data: CourseData = {
   ],
   sequences: [
     { d: "e", process: "preparing to dig", steps: ["Request a locate", "Wait for markings", "Review the markings", "Begin digging"], why: "Utilities are located and reviewed before excavation begins.", max: 6 },
-    { d: "m", process: "an excavation setup", steps: ["Plan the dig", "Install protection", "Place the spoil back", "Enter the trench"], why: "Protection is in place before workers enter.", max: 6 },
+    { d: "m", process: "an excavation setup", steps: ["Plan the dig", "Install protection", "Set the spoil back from the edge", "Enter the trench"], why: "Protection is in place before workers enter.", max: 6 },
     { d: "h", process: "tracking a customer complaint", steps: ["Receive the complaint", "Record it", "Investigate the cause", "Respond to the customer", "Review for patterns"], why: "A complaint is recorded and investigated before the response and review.", max: 10 },
   ],
   relations: [
@@ -98,7 +98,7 @@ const data: CourseData = {
   flaws: [
     { d: "e", prompt: "Which statement about fittings is wrong?", flawed: "A reducer joins equal sizes", goods: ["A tee joins three pipes", "An elbow changes direction", "A coupling joins equal sizes"], explanation: "A reducer joins pipes of different sizes." },
     { d: "e", prompt: "Which statement about trenches is wrong?", flawed: "Loose backfill is best", goods: ["Backfill is compacted", "Bedding supports the pipe", "Locates come before digging"], explanation: "Backfill is placed and compacted to support the pipe." },
-    { d: "e", prompt: "Which statement about meters is wrong?", flawed: "Meters read pressure", goods: ["Meters measure volume", "Meters support billing", "Meters can find water loss"], explanation: "Water meters measure the volume of water, not just pressure." },
+    { d: "e", prompt: "Which statement about meters is wrong?", flawed: "Meters read pressure", goods: ["Meters measure volume", "Meters support billing", "Meters can find water loss"], explanation: "Water meters measure the volume of water passing through, not pressure." },
     { d: "e", prompt: "Which statement about tanks is wrong?", flawed: "Vents stay unscreened", goods: ["A vent should be screened", "Overflow is a safety feature", "A hatch gives access"], explanation: "A tank vent should be screened to protect water quality." },
     { d: "e", prompt: "Which statement about complaints is wrong?", flawed: "Skip minor complaints", goods: ["Record each complaint", "Follow up on the cause", "Review for patterns"], explanation: "Each complaint should be recorded and checked." },
     { d: "m", prompt: "Which statement about corrosion is wrong?", flawed: "Tuberculation smooths a pipe", goods: ["Tuberculation roughens a pipe", "Anodes protect the pipe", "Pitting forms small holes"], explanation: "Tuberculation roughens the pipe and lowers capacity." },

@@ -19,7 +19,7 @@ const data: CourseData = {
     ["m", "The volume of a cylindrical tank uses pi times radius squared times height.", true, "A cylinder's volume is the base area times height."],
     ["m", "The volume of a cylindrical tank uses pi times diameter times height.", false, "The formula uses radius squared, not diameter."],
     ["m", "A flow rate in gallons per minute can be converted to gallons per day by multiplying by 1,440.", true, "There are 1,440 minutes in a day."],
-    ["m", "A flow rate in gallons per minute can be converted to gallons per day by multiplying by 24.", false, "Multiplying by 24 gives gallons per hour from gallons per minute only if minutes were hours. Use 1,440 minutes per day."],
+    ["m", "A flow rate in gallons per minute can be converted to gallons per day by multiplying by 24.", false, "A day has 1,440 minutes, so gallons per minute is multiplied by 1,440 to get gallons per day. Multiplying by 24 would be the hours-per-day factor."],
     ["m", "A graph with time on one axis can show how a reading changes over time.", true, "Time-based graphs show trends."],
     ["m", "A sample's pH is found by tasting it.", false, "pH is measured with a meter or test method, never by tasting."],
     ["h", "Doubling the radius of a round tank multiplies its base area by four.", true, "Area depends on radius squared."],

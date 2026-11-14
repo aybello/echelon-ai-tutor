@@ -42,7 +42,7 @@ const data: CourseData = {
     ["h", "A 3-log removal corresponds to 30 percent removal.", false, "Three logs is 99.9 percent removal."],
     ["h", "Feeding more chemical per day at the same flow raises the dose in mg/L.", true, "More chemical in the same volume gives a higher concentration."],
     ["h", "Feeding more chemical per day at the same flow lowers the dose in mg/L.", false, "More chemical at the same flow raises the dose."],
-    ["h", "Mixing two water streams of different concentrations gives a result between the two values.", true, "A blend lies between the two concentrations, closer to the larger stream."],
+    ["h", "Mixing two water streams of different concentrations gives a result between the two values.", true, "A blend lies between the two concentrations, closer to the concentration of the stream with the larger flow."],
     ["h", "Mixing two water streams of different concentrations can give a value above both of them.", false, "A simple blend falls between the two concentrations."],
     ["h", "A gas monitor reading in a space shows conditions at the sensor location at that moment.", true, "Conditions can differ in other places and change over time."],
     ["h", "A single clear gas monitor reading proves the whole space will stay safe.", false, "Conditions can change, so monitoring must continue."],

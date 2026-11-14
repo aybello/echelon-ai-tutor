@@ -29,7 +29,7 @@ const data: CourseData = {
     ["m", "Hard water contains a large amount of dissolved calcium and magnesium.", true, "These minerals define hardness."],
     ["m", "Free chlorine works better at a lower pH than at a higher pH.", true, "More of the chlorine is in the stronger disinfecting form at lower pH."],
     ["h", "High turbidity can shield microbes from a disinfectant.", true, "Particles can surround microbes and keep disinfectant away from them."],
-    ["m", "Fluoride is usually added near the end of the treatment train.", true, "It is fed late so that earlier processes do not disturb the dose."],
+    ["m", "Fluoride is usually added near the end of the treatment train.", true, "It is fed late so that it does not react with or get removed by earlier treatment chemicals and processes."],
     ["m", "Geosmin and MIB are compounds that cause earthy or musty smells.", true, "They are often linked to algae and bacteria in the source."],
     ["e", "Groundwater is exposed to more surface runoff than a river is.", false, "A river receives runoff directly. Groundwater is protected by soil above the aquifer."],
     ["e", "A coarse intake screen removes bacteria from the water.", false, "Screens catch large debris. Bacteria pass through and are handled by filtration and disinfection."],
