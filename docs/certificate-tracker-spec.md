@@ -6,7 +6,18 @@ Status: draft for Manus to review and build. Written 2026-11-14.
 
 Let a manager see and manage the certificates of every operator in the organization: class, expiry, training hours and exam plans. It is a tracker the manager keeps up to date. It is not an official record and must not claim compliance.
 
-## Ontario facts this spec relies on
+## Canada-wide scope
+
+The product serves all of Canada, so the tracker must not hard-code Ontario rules. Certification systems differ by province and territory: levels, certificate terms, renewal and continuing education requirements, and exam bodies. Version 1 therefore stores the following per organization and per certificate:
+
+- A jurisdiction field (province or territory) on every certificate and on every organization.
+- A rule set per jurisdiction, kept as data and not code: certificate term in years, renewal notice lead time, annual training hours target (may be empty), and the level names used there (for example OIT, Class 1 to 4, or Level I to IV).
+- Version 1 ships with the Ontario rule set only. Other provinces start with an empty rule set, which means the tracker shows expiry and reminders from the dates the manager enters and shows no training-hours target until a rule set is added.
+- A certificate held in one province may be recognized in another. Store the issuing jurisdiction separately from the jurisdiction where the operator works.
+
+Rule sets for other provinces must be researched and confirmed from each province's own certification authority before they are added. Do not copy the Ontario numbers to another province.
+
+## Ontario facts this spec relies on (the Ontario rule set)
 
 These come from the Ministry of the Environment pages for operator licensing, read on 2026-11-14.
 
