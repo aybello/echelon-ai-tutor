@@ -1,21 +1,23 @@
-// Builds an unreviewed game-content draft from authoring tables.
+// Builds game content; publication requires an explicit exact-payload review declaration.
 //
 //   env -i PATH="$PATH" HOME=/tmp NODE_ENV=test node --require ./scripts/test-safety.cjs --import tsx \
-//     scripts/game-authoring/build.ts <course-data-file> <output-overlay.json> <overlayId> [--check]
+//     scripts/game-authoring/build.ts <course-data-file> <output-overlay.json> <overlayId> [--check] --review-declaration <declaration.json>
 //
 // Each table row is one concept. The builder turns rows into playable activities
 // for the six modes, then rejects the batch if it is not safe to publish:
 // schema errors, duplicates of stored or new items, an answer given away by
 // option length or absolute wording, unbalanced true/false, or a calculation in
 // Cause and Effect. A draft is not evidence of owner-authorized AI review and
-// this command must not publish one until a trusted receipt gate exists.
+// this command binds explicit owner-authorized review to the exact payload and checks.
 import { createHash } from "node:crypto";
-import { writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import { resolve } from "node:path";
 import { InteractiveContentEngine } from "../../server/interactiveContent/engine/loader";
-import { compileOverlays, committedOverlayDocuments, type ContentOverlay } from "../../server/interactiveContent/engine/overlay";
+import { compileOverlays, draftOverlaySchema, committedOverlayDocuments, type ContentOverlay } from "../../server/interactiveContent/engine/overlay";
 import { toCauseEffectEffects, causeEffectFit, type CauseEffectChoiceItem } from "../../shared/interactiveCauseEffect";
+
+import { batchSha256, canonicalSha256, CHECKS, educationalSha256, reviewDeclarationSchema, type ReviewDeclaration } from "../../server/interactiveContent/engine/reviewReceipt";
 
 export type Level = "e" | "m" | "h";
 export type CourseData = {
@@ -105,12 +107,30 @@ export function buildOverlay(data: CourseData, overlayId: string) {
   const { items, errors } = buildItems(data, `${overlayId.replace(/^og-[a-z0-9-]*?-(\d+)$/, "b$1")}-`);
   const doc = { format: "interactive-overlay-v1", overlayId, scope: `Unreviewed draft game activities for ${data.courseKey}: ${items.length} items from authoring tables.`,
     additions: items.map(i => ({ courseKey: data.courseKey, topicId: "unclassified", difficulty: i.difficulty, example: i.example })), replacements: [] };
-  return { doc, errors: [...errors, "Publication disabled: generated content has no verified, payload-bound AI review receipts"] };
+  return { doc, errors };
 }
 
-export function validate(doc: ContentOverlay, existing: { prompt: string; key: string }[]) {
+export function registerReviewedOverlay(doc: ReturnType<typeof buildOverlay>["doc"], declarationInput: unknown, result: ReturnType<typeof validate>, registeredAt = new Date().toISOString()): ContentOverlay {
+  const declaration = reviewDeclarationSchema.parse(declarationInput);
+  if (result.errors.length) throw new Error(`Builder checks failed: ${result.errors.join("; ")}`);
+  const entries = [...doc.additions, ...doc.replacements];
+  if (Object.keys(declaration.payloadSha256).length !== entries.length) throw new Error("Review declaration item coverage mismatch");
+  for (const entry of entries) if (declaration.payloadSha256[entry.example.id as string] !== educationalSha256(entry)) throw new Error(`Review declaration does not cover exact payload: ${entry.example.id}`);
+  const builderResults = { checks: [...CHECKS], errors: [], stats: result.stats, batchSha256: batchSha256(doc) };
+  const bind = (entry: (typeof entries)[number]) => ({ ...entry, review: { verdict: "approved", reviewer: declaration.model, model: declaration.model, reviewAuthority: declaration.reviewAuthority, reviewedAt: declaration.reviewedAt, notes: declaration.attestation, registeredAt, payloadSha256: educationalSha256(entry), builderResultsSha256: canonicalSha256(builderResults) } });
+  const reviewed = { ...doc, format: "interactive-overlay-v2", scope: `Owner-authorized AI-reviewed game activities: ${doc.additions.length} items.`, additions: doc.additions.map(bind), replacements: doc.replacements.map(bind), receipt: { declaration, registeredAt, builderResults } };
+  compileOverlays([reviewed]);
+  return reviewed as unknown as ContentOverlay;
+}
+
+export function assertDestination(outFile: string, doc: ContentOverlay, bytes: string) {
+  for (const existing of committedOverlayDocuments() as ContentOverlay[]) if (existing.overlayId === doc.overlayId && canonicalSha256(existing) !== canonicalSha256(doc)) throw new Error(`Refusing changed committed overlay ID ${doc.overlayId}; use an explicit new overlay`);
+  if (existsSync(outFile) && readFileSync(outFile, "utf8") !== bytes) throw new Error(`Refusing changed destination ${outFile}; use an explicit new overlay`);
+}
+
+export function validate(doc: { additions: any[]; replacements: any[]; overlayId: string; [key: string]: unknown }, existing: { prompt: string; key: string }[]) {
   const errors: string[] = [];
-  try { compileOverlays([...committedOverlayDocuments().filter((d): d is ContentOverlay => (d as ContentOverlay).overlayId !== doc.overlayId), doc]); } catch (e) { errors.push(`schema: ${(e as Error).message}`); }
+  try { draftOverlaySchema.parse({ ...doc, format: "interactive-overlay-v1", additions: doc.additions.map(({ review, ...entry }) => entry), replacements: doc.replacements.map(({ review, ...entry }) => entry) }); } catch (e) { errors.push(`schema: ${(e as Error).message}`); }
   const seen = new Map<string, string>();
   const bank = existing.map(e => ({ ...e, norm: norm(e.prompt) }));
   let longest = 0, options = 0; const swipe = { t: 0, f: 0 }; const dirs = { increase: 0, decrease: 0, unchanged: 0 };
@@ -118,7 +138,9 @@ export function validate(doc: ContentOverlay, existing: { prompt: string; key: s
     const key = norm(`${ex.prompt} ${JSON.stringify(ex.options ?? ex.pairs ?? ex.correctAnswer)}`);
     if (seen.has(key)) errors.push(`duplicate within batch: ${ex.prompt}`); seen.set(key, ex.id);
     for (const e of bank) { if (e.norm === norm(ex.prompt) && e.key === norm(JSON.stringify(ex.options ?? ex.pairs ?? ex.correctAnswer))) errors.push(`duplicate of stored item: ${ex.prompt}`); else if (ex.mode === "rapid-swipe" && jaccard(e.prompt, ex.prompt) >= 0.8) errors.push(`near-duplicate of stored statement: ${ex.prompt} ~ ${e.prompt}`); }
-    if (ex.mode === "rapid-swipe") ex.correctAnswer ? swipe.t++ : swipe.f++;
+    if (ex.mode === "rapid-swipe") { ex.correctAnswer ? swipe.t++ : swipe.f++; if (ABSOLUTE.test(ex.prompt)) errors.push(`fact uses absolute wording: ${ex.prompt}`); }
+    if (ex.mode === "tap-the-flaw") for (const option of ex.options) if (ABSOLUTE.test(option.label)) errors.push(`flaw option uses absolute wording: ${option.label}`);
+    if (seen.has(`id:${ex.id}`)) errors.push(`duplicate id: ${ex.id}`); seen.set(`id:${ex.id}`, ex.id);
     if (ex.options && ex.correctOptionId && ex.mode !== "before-after") { options++; const l = ex.options.map((o: any) => o.label.length); const c = ex.options.find((o: any) => o.id === ex.correctOptionId).label.length; if (c === Math.max(...l) && new Set(l).size > 1) longest++; }
     if (ex.mode === "cause-effect") { if (causeEffectFit(ex as CauseEffectChoiceItem) === "calculation") errors.push(`calculation in cause-effect: ${ex.prompt}`); const t = toCauseEffectEffects(ex as CauseEffectChoiceItem); if (!t) errors.push(`cause-effect not directional: ${ex.prompt}`); else dirs[t.effects[0].direction as keyof typeof dirs]++; }
     void courseKey;
@@ -139,11 +161,20 @@ async function main() {
   for (let i = 0; i < manifest.entries.length; i += 50) stored.push(...engine.examples(manifest, manifest.entries.slice(i, i + 50)));
   for (const d of committedOverlayDocuments() as ContentOverlay[]) if (d.overlayId !== overlayId) for (const a of d.additions) if (a.courseKey === data.courseKey) stored.push(a.example);
   const existing = stored.map(e => ({ prompt: e.prompt, key: norm(JSON.stringify(e.options ?? e.pairs ?? e.correctAnswer)) }));
-  const { errors, stats } = validate(doc as unknown as ContentOverlay, existing);
+  const result = validate(doc, existing);
+  const { errors, stats } = result;
   const all = [...buildErrors, ...errors];
   const byMode: Record<string, number> = {}; for (const a of doc.additions) byMode[(a.example as any).mode] = (byMode[(a.example as any).mode] ?? 0) + 1;
   console.log(`${data.courseKey}: ${doc.additions.length} items`, JSON.stringify(byMode), JSON.stringify(stats));
+  const reviewFlag = flags.indexOf("--review-declaration");
+  if (reviewFlag < 0 || !flags[reviewFlag + 1]) all.push("Publication disabled: explicit --review-declaration required; builder validation is not AI review");
   if (all.length) { for (const e of all.slice(0, 40)) console.log("ERROR", e); console.log(`${all.length} problem(s)`); process.exit(1); }
-  if (!flags.includes("--check")) { writeFileSync(outFile, `${JSON.stringify(doc, null, 1)}\n`); console.log("wrote", outFile); }
+  const declaration = JSON.parse(readFileSync(flags[reviewFlag + 1], "utf8"));
+  const registered = existsSync(outFile) ? JSON.parse(readFileSync(outFile, "utf8"))?.receipt?.registeredAt : undefined;
+  const reviewed = registerReviewedOverlay(doc, declaration, result, registered);
+  const bytes = `${JSON.stringify(reviewed, null, 1)}\n`;
+  assertDestination(outFile, reviewed, bytes);
+  compileOverlays([...committedOverlayDocuments().filter(d => (d as ContentOverlay).overlayId !== overlayId), reviewed]);
+  if (!flags.includes("--check")) { writeFileSync(outFile, bytes, { flag: existsSync(outFile) ? "w" : "wx" }); console.log("wrote", outFile); }
 }
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main();
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main().catch(error => { console.error((error as Error).message); process.exitCode = 1; });

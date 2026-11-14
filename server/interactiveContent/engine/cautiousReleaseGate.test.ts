@@ -1,3 +1,4 @@
+import { syntheticReceipt } from "./reviewTestFixtures";
 import { readFileSync, rmSync } from "node:fs";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
@@ -18,12 +19,12 @@ function setup() {
     additions: [{ courseKey: "class1-water", topicId: "unclassified", difficulty: "unclassified", example: syntheticExample("rapid-swipe", "test-addition"), review }],
     replacements: [{ courseKey: "class1-water", replacesId: preview.id, replacesSha256: preview.sha256, topicId: "unclassified", difficulty: "unclassified", example: syntheticExample("rapid-swipe", "test-revision"), reason: "Correction", review }],
   };
-  return { ...f, doc };
+  return { ...f, doc: syntheticReceipt(doc) };
 }
 describe("selective release effective view", () => {
   it("applies the same exact-bound revision to sessions, fixed previews and legacy without adding content to compatibility", () => {
     const { root, doc, legacy } = setup();
-    const engine = new InteractiveContentEngine(root, [doc]);
+    const engine = new InteractiveContentEngine(root, [syntheticReceipt(doc)]);
     const input = { courseKey: "class1-water", mode: "rapid-swipe" as const, sessionSize: 50 };
     expect(engine.startSession(input, false).examples).toEqual([doc.replacements[0].example]);
     const session = engine.startSession(input, true);
@@ -40,7 +41,7 @@ describe("selective release effective view", () => {
   });
   it("refuses stale target hashes on all delivery paths instead of falling back", () => {
     const { root, doc } = setup(); doc.replacements[0].replacesSha256 = "0".repeat(64);
-    const engine = new InteractiveContentEngine(root, [doc]);
+    const engine = new InteractiveContentEngine(root, [syntheticReceipt(doc)]);
     for (const access of [false, true]) {
       expect(() => engine.getCatalog("class1-water", access)).toThrow();
       expect(() => engine.startSession({ courseKey: "class1-water", mode: "rapid-swipe", sessionSize: 5 }, access)).toThrow();
@@ -49,7 +50,7 @@ describe("selective release effective view", () => {
   });
   it("rejects cross-course targets even when their hashes are unchanged", () => {
     const { root, doc } = setup(); doc.replacements[0].courseKey = "class2-water";
-    const engine = new InteractiveContentEngine(root, [doc]);
+    const engine = new InteractiveContentEngine(root, [syntheticReceipt(doc)]);
     expect(() => engine.getLegacyContent("class2-water", true)).toThrow();
   });
   it("excludes only documented exact IDs and keeps the reviewed confined-space correction", () => {
@@ -70,7 +71,7 @@ describe("selective release effective view", () => {
     const view = engine as unknown as { manifest(key: string): any; pool(key: string, manifest: any): { id: string }[] };
     const poolIds = new Set(view.pool("oit", view.manifest("oit")).map(e => e.id));
     for (const id of ids) expect(poolIds.has(id), id).toBe(false);
-    expect(all.filter(a => poolIds.has(a.example.id))).toHaveLength(550);
+    expect(all.filter(a => poolIds.has(a.example.id))).toHaveLength(715);
     expect(poolIds.has("og-oit-b2-before-after-0134")).toBe(true);
     for (const access of [false, true]) for (const mode of interactiveModes) {
       const result = engine.startSession({ courseKey: "oit", mode, sessionSize: 50 }, access);

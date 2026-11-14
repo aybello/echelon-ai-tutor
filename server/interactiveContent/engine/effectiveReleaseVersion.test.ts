@@ -1,3 +1,4 @@
+import { syntheticReceipt } from "./reviewTestFixtures";
 import { afterEach, describe, expect, it } from "vitest";
 import { createHash } from "node:crypto";
 import { readFileSync, rmSync } from "node:fs";
@@ -18,7 +19,7 @@ function setup() {
   const addition: ContentOverlay["additions"][number] = { courseKey: "class1-water", topicId: "unclassified", difficulty: "unclassified", example: syntheticExample("rapid-swipe", "synthetic-added"), review };
   const replacement: ContentOverlay["replacements"][number] = { courseKey: "class1-water", topicId: "unclassified", difficulty: "unclassified", replacesId: target.id, replacesSha256: target.sha256, example: syntheticExample("rapid-swipe", "synthetic-revised"), reason: "Synthetic revision", review };
   const doc: ContentOverlay = { format: "interactive-overlay-v1", overlayId: "synthetic-overlay", scope: "Synthetic test", additions: [addition], replacements: [replacement] };
-  return { ...f, manifest, doc };
+  return { ...f, manifest, doc: syntheticReceipt(doc) };
 }
 
 describe("effective interactive release version", () => {
@@ -82,7 +83,7 @@ describe("effective interactive release version", () => {
 
   it("binds the actual loader, overlay, selection, schema and presentation behavior sources", () => {
     const hash = createHash("sha256");
-    for (const path of ["server/interactiveContent/engine/loader.ts", "server/interactiveContent/engine/overlay.ts", "server/interactiveContent/engine/modeFit.ts", "server/interactiveContent/engine/schema.ts", "server/interactiveContent/schema.ts", "shared/interactiveCauseEffect.ts", "shared/interactiveSessions.ts", "shared/courseRegistry.ts"]) {
+    for (const path of ["server/interactiveContent/engine/loader.ts", "server/interactiveContent/engine/overlay.ts", "server/interactiveContent/engine/reviewReceipt.ts", "server/interactiveContent/engine/modeFit.ts", "server/interactiveContent/engine/schema.ts", "server/interactiveContent/schema.ts", "shared/interactiveCauseEffect.ts", "shared/interactiveSessions.ts", "shared/courseRegistry.ts"]) {
       let source = readFileSync(path, "utf8");
       if (path.endsWith("/loader.ts")) {
         const pattern = /export const BEHAVIOR_POLICY_SHA256 = "[a-f0-9]{64}";/g;

@@ -1,3 +1,4 @@
+import { boundReviewSchema, receiptSchema, verifyReceipt, canonicalSha256 } from "./reviewReceipt";
 import { createHash } from "node:crypto";
 import { z } from "zod";
 import { getCourseByKey } from "../../../shared/courseRegistry";
@@ -10,10 +11,11 @@ import optionLengthBatch2 from "../overlay/2026-11-14-option-length-batch-2.json
 import oitBatch1 from "../overlay/2026-11-14-oit-batch-1.json";
 import oitBatch2 from "../overlay/2026-11-14-oit-batch-2.json";
 import oitBatch3 from "../overlay/2026-11-14-oit-batch-3.json";
+import oitBatch5 from "../overlay/2026-11-14-oit-batch-5.json";
 import oitBatch4 from "../overlay/2026-11-14-oit-batch-4.json";
 
 // Committed owner-authorized AI-reviewed overlays, in application order.
-const COMMITTED_OVERLAYS: readonly unknown[] = [rapidSwipeBalance, optionLengthClass2Ww, optionLengthBatch2, oitBatch1, oitBatch2, oitBatch3, oitBatch4];
+const COMMITTED_OVERLAYS: readonly unknown[] = [rapidSwipeBalance, optionLengthClass2Ww, optionLengthBatch2, oitBatch1, oitBatch2, oitBatch3, oitBatch4, oitBatch5];
 
 /**
  * Committed, server-only content overlays on the published game bank.
@@ -25,11 +27,11 @@ const COMMITTED_OVERLAYS: readonly unknown[] = [rapidSwipeBalance, optionLengthC
  * closed rather than serving a revision of different content.
  *
  * The metadata claims owner-authorized AI review. It is not human technical review.
- * IMPORTANT: the v1 review object below validates metadata shape only. It does
- * not authenticate a reviewer receipt or bind that receipt to the payload.
- * Do not treat a successful compile as evidence of review or use it to approve
- * newly generated content. Selected exact-ID exclusions are applied by the shared
- * runtime view; see docs/pr63-release-review.md for the real Sol review evidence.
+ * Historical v1 metadata is accepted only for seven exact pinned documents.
+ * New v2 documents require an explicit owner review declaration bound to each
+ * educational payload and successful builder results. Neither metadata nor
+ * local integrity hashes authenticate a provider identity. Selected exact-ID
+ * exclusions remain unchanged; see docs/pr63-release-review.md for policy.
  */
 const text = z.string().trim().min(1).max(4000);
 const review = z.object({
@@ -40,7 +42,7 @@ const review = z.object({
   notes: text,
 }).strict();
 const courseKey = z.string().regex(/^[a-z0-9][a-z0-9-]{0,63}$/);
-export const overlaySchema = z.object({
+const historicalOverlaySchema = z.object({
   format: z.literal("interactive-overlay-v1"),
   overlayId: interactiveSafeIdSchema,
   scope: text,
@@ -54,7 +56,34 @@ export const overlaySchema = z.object({
     example: interactiveDrillExampleSchema, reason: text, review,
   }).strict()).max(38 * 2000),
 }).strict();
-export type ContentOverlay = z.infer<typeof overlaySchema>;
+const additionShape = historicalOverlaySchema.shape.additions.element.omit({ review: true });
+const replacementShape = historicalOverlaySchema.shape.replacements.element.omit({ review: true });
+export const draftOverlaySchema = historicalOverlaySchema.extend({ additions: z.array(additionShape), replacements: z.array(replacementShape) });
+const receiptOverlaySchema = historicalOverlaySchema.extend({
+  format: z.literal("interactive-overlay-v2"), receipt: receiptSchema,
+  additions: z.array(additionShape.extend({ review: boundReviewSchema })).max(38 * 2000),
+  replacements: z.array(replacementShape.extend({ review: boundReviewSchema })).max(38 * 2000),
+});
+export const overlaySchema = z.discriminatedUnion("format", [historicalOverlaySchema, receiptOverlaySchema]);
+type HistoricalOverlay = z.infer<typeof historicalOverlaySchema>;
+type BoundReview = z.infer<typeof boundReviewSchema>;
+export type ContentOverlay = Omit<HistoricalOverlay, "format" | "additions" | "replacements"> & {
+  format: "interactive-overlay-v1" | "interactive-overlay-v2";
+  additions: (Omit<HistoricalOverlay["additions"][number], "review"> & { review: HistoricalOverlay["additions"][number]["review"] | BoundReview })[];
+  replacements: (Omit<HistoricalOverlay["replacements"][number], "review"> & { review: HistoricalOverlay["replacements"][number]["review"] | BoundReview })[];
+  receipt?: z.infer<typeof receiptSchema>;
+};
+
+// Exact immutable historical exceptions only. New or changed v1 documents fail closed.
+const HISTORICAL_SHA256: Record<string, string> = {
+  "rapid-swipe-balance-20261114": "52bf5b1dfc2770d471f43caf6c638dc7ec2a6fb56b6fe5d1f505bf994341e33f",
+  "option-length-class2-ww-20261114": "74350072691cf043f04a04ba17c4fceebbcc54bd8ea1ee6094e8d42b8a2342c6",
+  "option-length-batch-2-20261114": "9b71be7b3ad9842ebc2263a1e5bd7753b5a3944aa066e8f304aca72f25664d4f",
+  "og-oit-1": "63078449fd7acb2c2cf8d56229689a2f1a9f86d610d57df7e693f056d46af776",
+  "og-oit-2": "66d2bf9d1fdfa36d632c58c6778e09d11c88aa9acf24a2b80c32cc76a5771115",
+  "og-oit-3": "1f374818da29b5bdb87a1e65c2196583ecbb80e36effc9c705d064243222917e",
+  "og-oit-4": "73eff70967dc05d60dc33b407b14f46bda84afaac171d87e345e6f206f32777d",
+};
 
 export type OverlayItem = { id: string; mode: InteractiveDrillExample["mode"]; topicId: string; difficulty: InteractiveDifficulty; bytes: number; example: InteractiveDrillExample };
 export type CourseOverlay = { additions: OverlayItem[]; replacements: Map<string, { sha256: string; item: OverlayItem }> };
@@ -109,6 +138,8 @@ export function compileOverlays(overlays: readonly unknown[]): ReadonlyMap<strin
       claim(replacement.courseKey, `replaces:${replacement.replacesId}`);
       target.replacements.set(replacement.replacesId, { sha256: replacement.replacesSha256, item: item(replacement.example, replacement.topicId, replacement.difficulty) });
     }
+    if (overlay.format === "interactive-overlay-v2") verifyReceipt(overlay);
+    else if (HISTORICAL_SHA256[overlay.overlayId] !== canonicalSha256(overlay)) throw new Error(`Only exact historical v1 overlays are allowed: ${overlay.overlayId}`);
   }
   return deepFreeze(courses);
 }
