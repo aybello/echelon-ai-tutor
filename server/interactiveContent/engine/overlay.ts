@@ -11,10 +11,9 @@ import oitBatch1 from "../overlay/2026-11-14-oit-batch-1.json";
 import oitBatch2 from "../overlay/2026-11-14-oit-batch-2.json";
 import oitBatch3 from "../overlay/2026-11-14-oit-batch-3.json";
 import oitBatch4 from "../overlay/2026-11-14-oit-batch-4.json";
-import oitBatch5 from "../overlay/2026-11-14-oit-batch-5.json";
 
-// Every committed overlay, in application order. Add new reviewed batches here.
-const COMMITTED_OVERLAYS: readonly unknown[] = [rapidSwipeBalance, optionLengthClass2Ww, optionLengthBatch2, oitBatch1, oitBatch2, oitBatch3, oitBatch4, oitBatch5];
+// Committed owner-authorized AI-reviewed overlays, in application order.
+const COMMITTED_OVERLAYS: readonly unknown[] = [rapidSwipeBalance, optionLengthClass2Ww, optionLengthBatch2, oitBatch1, oitBatch2, oitBatch3, oitBatch4];
 
 /**
  * Committed, server-only content overlays on the published game bank.
@@ -25,7 +24,12 @@ const COMMITTED_OVERLAYS: readonly unknown[] = [rapidSwipeBalance, optionLengthC
  * example it supersedes; if the stored bytes ever differ, the engine fails
  * closed rather than serving a revision of different content.
  *
- * Review here is owner-authorized AI review. It is not human technical review.
+ * The metadata claims owner-authorized AI review. It is not human technical review.
+ * IMPORTANT: the v1 review object below validates metadata shape only. It does
+ * not authenticate a reviewer receipt or bind that receipt to the payload.
+ * Do not treat a successful compile as evidence of review or use it to approve
+ * newly generated content. Selected exact-ID exclusions are applied by the shared
+ * runtime view; see docs/pr63-release-review.md for the real Sol review evidence.
  */
 const text = z.string().trim().min(1).max(4000);
 const review = z.object({

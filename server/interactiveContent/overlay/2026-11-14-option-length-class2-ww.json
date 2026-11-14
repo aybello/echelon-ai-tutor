@@ -97,7 +97,7 @@
     "options": [
      {
       "id": "option-1",
-      "label": "Fill with influent"
+      "label": "Filtration"
      },
      {
       "id": "option-2",
@@ -105,7 +105,7 @@
      },
      {
       "id": "option-3",
-      "label": "Filtration"
+      "label": "Fill with influent"
      },
      {
       "id": "option-4",
@@ -115,13 +115,13 @@
     "correctOptionId": "option-1",
     "explanation": "Filtration is not one of the five listed batch phases."
    },
-   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "reason": "Correct the keyed option to match the original filtration answer and rebalance option wording.",
    "review": {
     "verdict": "approved",
     "reviewer": "claude-sonnet-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+    "notes": "Historical original owner-authorized AI review predates the subsequent correction. The corrected exercise later received a real gpt-6.1-sol review returning issues: []; see docs/pr63-release-review.md and the non-OIT reconciliation for exact request evidence. Source status unverified; no human technical review."
    }
   },
   {
@@ -349,19 +349,19 @@
      },
      {
       "id": "option-4",
-      "label": "Flow transmitter signal"
+      "label": "Flow transmitter"
      }
     ],
     "correctOptionId": "option-2",
     "explanation": "The lamp disinfects; the other components measure or record flow."
    },
-   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
    "review": {
     "verdict": "approved",
     "reviewer": "claude-sonnet-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -605,11 +605,11 @@
     "options": [
      {
       "id": "option-1",
-      "label": "Its label becomes a calibration standard for the lab"
+      "label": "Its sample label becomes a calibration standard for laboratory instruments"
      },
      {
       "id": "option-2",
-      "label": "The result may no longer match site conditions"
+      "label": "The result may no longer represent conditions at collection"
      },
      {
       "id": "option-3",
@@ -619,13 +619,13 @@
     "correctOptionId": "option-2",
     "explanation": "Unstable constituents can change during storage; follow the method and laboratory instructions."
    },
-   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
    "review": {
     "verdict": "approved",
     "reviewer": "claude-sonnet-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -821,7 +821,7 @@
     "options": [
      {
       "id": "option-1",
-      "label": "Investigate sampling and analytical handling"
+      "label": "Investigate sampling and analytical handling for possible contamination"
      },
      {
       "id": "option-2",
@@ -829,19 +829,19 @@
      },
      {
       "id": "option-3",
-      "label": "Ignore it because blanks do not matter"
+      "label": "Ignore the positive result and release the affected data"
      }
     ],
     "correctOptionId": "option-3",
     "explanation": "A positive blank can indicate contamination or an analytical artifact."
    },
-   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
    "review": {
     "verdict": "approved",
     "reviewer": "claude-sonnet-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -1113,23 +1113,23 @@
      },
      {
       "id": "option-2",
-      "label": "Check that the flow instrument is working"
+      "label": "Check that the flow instrument is working and reporting a reliable signal"
      },
      {
       "id": "option-3",
-      "label": "Take equal volumes at fixed time intervals"
+      "label": "Take equal aliquots at fixed intervals as flow varies"
      }
     ],
     "correctOptionId": "option-3",
     "explanation": "Equal time and volume aliquots form a time composite, not necessarily flow proportional."
    },
-   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
    "review": {
     "verdict": "approved",
     "reviewer": "claude-sonnet-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -1181,7 +1181,7 @@
     "options": [
      {
       "id": "option-1",
-      "label": "Record the alarm and the response taken"
+      "label": "Record the alarm and the response taken during the shift"
      },
      {
       "id": "option-2",
@@ -1189,19 +1189,19 @@
      },
      {
       "id": "option-3",
-      "label": "Leave out an alarm that later cleared"
+      "label": "Omit an abnormal alarm because it later cleared"
      }
     ],
     "correctOptionId": "option-3",
     "explanation": "A clear record of abnormal conditions and responses supports troubleshooting and handover."
    },
-   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
    "review": {
     "verdict": "approved",
     "reviewer": "claude-sonnet-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   }
  ]

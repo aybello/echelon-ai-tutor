@@ -69,6 +69,8 @@ async function fixture(run: (page: Page) => Promise<void>, locked = false, topic
       state.__error = "";
       state.__empty = false;
       state.__version = "synthetic-v1";
+      state.__available = true;
+      state.__sessionOverrides = [];
       state.__signals = [];
       const values: Record<string, string> = {};
       Object.defineProperty(window, "localStorage", { configurable: true, value: {
@@ -87,11 +89,11 @@ async function fixture(run: (page: Page) => Promise<void>, locked = false, topic
         else if (input.mode === "before-after") example.correctAnswer = "before";
         else { example.options = [{ id: "a", label: "Synthetic first" }, { id: "b", label: "Synthetic second" }]; example.correctOptionId = "a"; }
         const data = kind === "catalog" ? {
-          courseKey: input.courseKey, available: true, locked: state.__locked, version: state.__version,
-          modes: modes.map(mode => ({ mode, totalCount: 17,
+          courseKey: input.courseKey, available: state.__available, locked: state.__locked, version: state.__available ? state.__version : null,
+          modes: state.__available ? modes.map(mode => ({ mode, totalCount: 17,
             topics: state.__topics ? [{ id: "synthetic-topic", label: "Synthetic topic", count: 12 }, { id: "unclassified", label: "Unclassified", count: 5 }] : [],
             difficulties: state.__topics ? [{ id: "easy", count: 8 }, { id: "unclassified", count: 9 }] : [],
-          })),
+          })) : [],
         } : {
           courseKey: input.courseKey, available: true, locked: state.__locked, version: state.__version,
           sessionId: "same-synthetic-session-id", mode: input.mode, totalAvailableCount: state.__empty ? 0 : 17,
@@ -100,6 +102,12 @@ async function fixture(run: (page: Page) => Promise<void>, locked = false, topic
         };
         if (kind === "catalog" && state.__badCatalog) Object.assign(data, state.__badCatalog);
         if (kind === "session" && state.__badSession) Object.assign(data, state.__badSession);
+        if (kind === "session" && state.__mismatchRemaining > 0) { data.version = "rolling-other-version"; state.__mismatchRemaining--; }
+        if (kind === "session" && state.__sessionOverrides.length) Object.assign(data, state.__sessionOverrides.shift());
+        if (kind === "session" && state.__afterSessionChanges) {
+          Object.assign(state, state.__afterSessionChanges);
+          state.__afterSessionChanges = null;
+        }
         if (state.__hold !== kind && state.__hold !== "both") return Promise.resolve(data);
         return new Promise(resolve => {
           state.__pending.push({ kind, release: () => resolve(data) });
@@ -410,6 +418,118 @@ describe("bounded course session UI (synthetic isolated fixtures)", () => {
       await expect.poll(async () => (await calls(page, "session")).length).toBeGreaterThan(beforeSession);
       await expect.poll(() => page.getByRole("button", { name: "Yes", exact: true }).isEnabled()).toBe(true);
       expect(await page.getByText("Synthetic explanation", { exact: true }).count()).toBe(0);
+    });
+  });
+
+  it("refreshes both requests once on a transient version mismatch", async () => {
+    await fixture(async page => {
+      await waitForActivity(page);
+      const beforeCatalog = (await calls(page, "catalog")).length;
+      const beforeSession = (await calls(page, "session")).length;
+      await page.evaluate(() => { (window as any).__mismatchRemaining = 1; window.dispatchEvent(new Event("focus")); });
+      await expect.poll(async () => (await calls(page, "session")).length).toBe(beforeSession + 2);
+      await waitForActivity(page);
+      expect((await calls(page, "catalog")).length).toBe(beforeCatalog + 2);
+      expect(await page.getByRole("alert").count()).toBe(0);
+    });
+  });
+
+  it("fails closed after one refresh when rolling versions keep disagreeing", async () => {
+    await fixture(async page => {
+      await waitForActivity(page);
+      const beforeCatalog = (await calls(page, "catalog")).length;
+      const beforeSession = (await calls(page, "session")).length;
+      await page.evaluate(() => { (window as any).__mismatchRemaining = 100; window.dispatchEvent(new Event("focus")); });
+      await page.getByRole("alert").filter({ hasText: /couldn’t load/ }).waitFor();
+      await page.waitForTimeout(300);
+      expect((await calls(page, "catalog")).length).toBe(beforeCatalog + 2);
+      expect((await calls(page, "session")).length).toBe(beforeSession + 2);
+      expect(await activity(page).count()).toBe(0);
+    });
+  });
+
+  it("refreshes before parsing an incompatible release and applies a changed lock", async () => {
+    await fixture(async page => {
+      await waitForActivity(page);
+      const beforeCatalog = (await calls(page, "catalog")).length;
+      const beforeSession = (await calls(page, "session")).length;
+      await page.evaluate(() => {
+        const state = window as any;
+        state.__sessionOverrides = [{ version: "synthetic-v2", locked: true, examples: [{ newReleaseShape: true }], filters: null }];
+        state.__afterSessionChanges = { __version: "synthetic-v2", __locked: true };
+        window.dispatchEvent(new Event("focus"));
+      });
+      await expect.poll(async () => (await calls(page, "session")).length).toBe(beforeSession + 2);
+      await waitForActivity(page);
+      expect((await calls(page, "catalog")).length).toBe(beforeCatalog + 2);
+      expect(await page.getByLabel("Topic", { exact: true }).isDisabled()).toBe(true);
+      await page.getByText(/one fixed example per mode/).waitFor();
+    });
+  });
+
+  it("refreshes a version mismatch to unavailable without rendering its malformed session", async () => {
+    await fixture(async page => {
+      await waitForActivity(page);
+      const beforeCatalog = (await calls(page, "catalog")).length;
+      const beforeSession = (await calls(page, "session")).length;
+      await page.evaluate(() => {
+        const state = window as any;
+        state.__sessionOverrides = [{ version: null, available: false, examples: "incompatible" }];
+        state.__afterSessionChanges = { __available: false };
+        window.dispatchEvent(new Event("focus"));
+      });
+      await page.getByText(/No interactive activities are available for this course/).waitFor();
+      expect((await calls(page, "catalog")).length).toBe(beforeCatalog + 2);
+      expect((await calls(page, "session")).length).toBe(beforeSession + 1);
+      expect(await activity(page).count()).toBe(0);
+    });
+  });
+
+  it("gives manual retries, mode changes, and identity changes independent one-refresh budgets", async () => {
+    await fixture(async page => {
+      await waitForActivity(page);
+      let catalogCount = (await calls(page, "catalog")).length;
+      let sessionCount = (await calls(page, "session")).length;
+      await page.evaluate(() => { (window as any).__mismatchRemaining = 100; window.dispatchEvent(new Event("focus")); });
+      const assertExhausted = async (catalogDelta: number) => {
+        catalogCount += catalogDelta; sessionCount += 2;
+        await expect.poll(async () => (await calls(page, "session")).length).toBe(sessionCount);
+        await page.getByRole("alert").filter({ hasText: /couldn’t load/ }).waitFor();
+        await page.waitForTimeout(150);
+        expect((await calls(page, "catalog")).length).toBe(catalogCount);
+        expect((await calls(page, "session")).length).toBe(sessionCount);
+        expect(await activity(page).count()).toBe(0);
+      };
+      await assertExhausted(2);
+      await page.getByRole("button", { name: "Try again" }).click();
+      await assertExhausted(2);
+      await page.getByRole("navigation", { name: "Choose a practice mode" }).getByRole("button", { name: /^Speed-Match/ }).click();
+      await assertExhausted(1);
+      await page.evaluate(() => {
+        localStorage.setItem("echelon_access_token", "synthetic-new-identity");
+        window.dispatchEvent(new StorageEvent("storage", { key: "echelon_access_token" }));
+      });
+      await assertExhausted(2);
+      expect((await calls(page, "session")).at(-1)).toMatchObject({ mode: "speed-match", accessToken: "synthetic-new-identity" });
+    });
+  });
+
+  it.each([null, "", "x".repeat(81), 42])("does not retry malformed or matching-version session data (%s)", async version => {
+    await fixture(async page => {
+      await waitForActivity(page);
+      const beforeCatalog = (await calls(page, "catalog")).length;
+      const beforeSession = (await calls(page, "session")).length;
+      // Null is a valid wire version and means unavailable; use the matching
+      // version instead to exercise invalid same-release content here.
+      await page.evaluate(version => {
+        (window as any).__badSession = { version: version ?? "synthetic-v1", examples: "invalid" };
+        window.dispatchEvent(new Event("focus"));
+      }, version);
+      await page.getByRole("alert").filter({ hasText: /couldn’t load/ }).waitFor();
+      await page.waitForTimeout(150);
+      expect((await calls(page, "catalog")).length).toBe(beforeCatalog + 1);
+      expect((await calls(page, "session")).length).toBe(beforeSession + 1);
+      expect(await activity(page).count()).toBe(0);
     });
   });
 

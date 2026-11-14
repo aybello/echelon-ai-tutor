@@ -79,9 +79,9 @@ describe("private checked authoring compiler", () => {
     const sessionA = a2.startSession(input, false);
     pins["class1-water"] = secondPin;
     const sessionB = b.startSession(input, false);
-    expect(catalog.version).toBe(approvals.fixture.releaseToken);
+    expect(catalog.version).toMatch(/^effective-[a-f0-9]{64}$/);
     expect(sessionA.version).toBe(catalog.version);
-    expect(sessionB.version).toBe(approvals.other.releaseToken);
+    expect(sessionB.version).toMatch(/^effective-[a-f0-9]{64}$/);
     expect(sessionB.version).not.toBe(catalog.version); // client rejects this mixed pair
     expect(b.getCatalog("class1-water", false).version).toBe(sessionB.version);
   });
@@ -223,8 +223,8 @@ describe("private checked authoring compiler", () => {
     for (const access of [false, true]) {
     const catalog = engine.getCatalog("class1-water", access);
       const session = engine.startSession(input, access);
-      expect(catalog.version).toBe(approvals.fixture.releaseToken);
-      expect(session.version).toBe(approvals.fixture.releaseToken);
+      expect(catalog.version).toMatch(/^effective-[a-f0-9]{64}$/);
+      expect(session.version).toBe(catalog.version);
       expect(JSON.stringify([catalog, session])).not.toContain(manifest.version);
       expect(JSON.stringify([catalog, session])).not.toContain(approvals.fixture.corpusSha256);
       expect(JSON.stringify([catalog, session])).not.toContain(pins["class1-water"].manifestSha256);

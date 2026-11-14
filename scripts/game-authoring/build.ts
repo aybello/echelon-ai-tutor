@@ -1,4 +1,4 @@
-// Builds a reviewed game-content overlay from authoring tables and validates it.
+// Builds an unreviewed game-content draft from authoring tables.
 //
 //   env -i PATH="$PATH" HOME=/tmp NODE_ENV=test node --require ./scripts/test-safety.cjs --import tsx \
 //     scripts/game-authoring/build.ts <course-data-file> <output-overlay.json> <overlayId> [--check]
@@ -7,9 +7,10 @@
 // for the six modes, then rejects the batch if it is not safe to publish:
 // schema errors, duplicates of stored or new items, an answer given away by
 // option length or absolute wording, unbalanced true/false, or a calculation in
-// Cause and Effect. Review is recorded per item as owner-authorized AI review.
+// Cause and Effect. A draft is not evidence of owner-authorized AI review and
+// this command must not publish one until a trusted receipt gate exists.
 import { createHash } from "node:crypto";
-import { readFileSync, writeFileSync } from "node:fs";
+import { writeFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import { resolve } from "node:path";
 import { InteractiveContentEngine } from "../../server/interactiveContent/engine/loader";
@@ -33,10 +34,6 @@ export type CourseData = {
 };
 
 const LEVEL = { e: "easy", m: "medium", h: "hard" } as const;
-const REVIEW = {
-  verdict: "approved", reviewer: "claude-sonnet-5-5", reviewAuthority: "owner-authorized-ai-review", reviewedAt: "2026-11-14T00:00:00Z",
-  notes: "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review.",
-} as const;
 const ABSOLUTE = /\b(always|never|automatically|guarantee[sd]?|cannot|must|completely|entirely|any|solely|only|all|every|none|nothing)\b/i;
 const norm = (s: string) => s.normalize("NFKC").toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
 const words = (s: string) => new Set(norm(s).split(" ").filter(w => w.length > 2));
@@ -106,9 +103,9 @@ export function buildItems(data: CourseData, tag = "") {
 
 export function buildOverlay(data: CourseData, overlayId: string) {
   const { items, errors } = buildItems(data, `${overlayId.replace(/^og-[a-z0-9-]*?-(\d+)$/, "b$1")}-`);
-  const doc = { format: "interactive-overlay-v1", overlayId, scope: `Reviewed original game activities for ${data.courseKey}: ${items.length} items from authoring tables.`,
-    additions: items.map(i => ({ courseKey: data.courseKey, topicId: "unclassified", difficulty: i.difficulty, example: i.example, review: REVIEW })), replacements: [] };
-  return { doc, errors };
+  const doc = { format: "interactive-overlay-v1", overlayId, scope: `Unreviewed draft game activities for ${data.courseKey}: ${items.length} items from authoring tables.`,
+    additions: items.map(i => ({ courseKey: data.courseKey, topicId: "unclassified", difficulty: i.difficulty, example: i.example })), replacements: [] };
+  return { doc, errors: [...errors, "Publication disabled: generated content has no verified, payload-bound AI review receipts"] };
 }
 
 export function validate(doc: ContentOverlay, existing: { prompt: string; key: string }[]) {

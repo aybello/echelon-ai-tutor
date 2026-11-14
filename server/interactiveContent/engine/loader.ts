@@ -6,8 +6,8 @@ import { getCourseByKey, getAllActiveCourseKeys } from "../../../shared/courseRe
 import { interactiveModes, interactiveCatalogResponseSchema, interactiveSessionResponseSchema, type InteractiveCatalogResponse, type InteractiveDrillExample, type InteractiveMode, type InteractiveSessionResponse, type InteractiveStartSessionInput } from "../../../shared/interactiveSessions";
 import { interactivePackageSchema, type InteractivePackage } from "../schema";
 import { activeCheckedRelease, trustedApproval } from "../../../scripts/content-engine/trusted-corpora";
-import { isExcludedFromMode, presentCauseEffect } from "./modeFit";
-import { compileOverlays, committedOverlayDocuments, type CourseOverlay, type OverlayItem } from "./overlay";
+import { committedModeFitExclusions, committedReleaseExclusions, isReleaseExcluded, isExcludedFromMode, presentCauseEffect, type ModeFitExclusions } from "./modeFit";
+import { compileOverlays, committedOverlayDocuments, overlaySchema, type ContentOverlay, type CourseOverlay, type OverlayItem } from "./overlay";
 import { ENGINE_LIMITS, engineRegistrationSchema, engineManifestSchema, engineShardSchema, type ArtifactDescriptor, type EngineManifest, type EngineIndexEntry } from "./schema";
 
 export class InteractiveEngineError extends Error {
@@ -16,8 +16,32 @@ export class InteractiveEngineError extends Error {
 const fail = (): never => { throw new InteractiveEngineError(); };
 const hash = (value: string | Buffer) => createHash("sha256").update(value).digest("hex");
 const json = (value: unknown) => JSON.stringify(value);
-// The private content-derived version never crosses the wire.
-const publicVersion = (manifest: EngineManifest) => manifest.classification === "legacy_plus_checked" ? manifest.publicVersion! : manifest.version;
+// Fingerprint of the public runtime behavior sources, including this file with
+// this constant normalized to zeros (see regression test). Changing behavior
+// requires restamping it. It is not an approval of the effective release.
+export const BEHAVIOR_POLICY_SHA256 = "828d7c7e32a658707f008dc01e532edd3e6427e26ef121928332ef45210c114a";
+const canonical = (value: unknown): string => {
+  if (Array.isArray(value)) return `[${value.map(canonical).join(",")}]`;
+  if (value !== null && typeof value === "object") return `{${Object.entries(value).filter(([, v]) => v !== undefined).sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0).map(([k, v]) => `${json(k)}:${canonical(v)}`).join(",")}}`;
+  return json(value);
+};
+/** Runtime identity only, separate from and not an approval of the base release.
+ * Never hash checked manifest fields: the random trusted publicVersion is the
+ * checked identity. Legacy version is the existing non-private wire identity. */
+export function effectiveReleaseVersion(manifest: EngineManifest, documents: readonly ContentOverlay[], exclusions: ModeFitExclusions = committedModeFitExclusions(), behaviorPolicy = BEHAVIOR_POLICY_SHA256): string {
+  const courseKey = manifest.courseKey;
+  const base = manifest.classification === "legacy_plus_checked" ? manifest.publicVersion : manifest.version;
+  if (!base) fail();
+  const overlays = documents.map(doc => ({
+    format: doc.format, overlayId: doc.overlayId, scope: doc.scope,
+    additions: doc.additions.filter(item => item.courseKey === courseKey),
+    replacements: doc.replacements.filter(item => item.courseKey === courseKey),
+  })).filter(doc => doc.additions.length || doc.replacements.length);
+  return `effective-${hash(canonical({ format: "interactive-effective-v2", courseKey, classification: manifest.classification, base, overlays,
+    modeFit: { version: exclusions.version, mode: exclusions.mode, reason: exclusions.reason, ids: [...(exclusions.courses[courseKey] ?? [])].sort() },
+    releaseExclusions: committedReleaseExclusions().groups.filter(group => group.courseKey === courseKey), behaviorPolicy,
+  }))}`;
+}
 function freeze<T>(value: T): T {
   if (value && typeof value === "object" && !Object.isFrozen(value)) {
     for (const child of Object.values(value)) freeze(child);
@@ -42,10 +66,12 @@ export class InteractiveContentEngine {
   private cacheCost = 0;
   private diskReads = 0;
   private readonly overlays: ReadonlyMap<string, CourseOverlay>;
-  /** Overlays default to the committed reviewed set. Fixture roots pass their own list, including none. */
+  private readonly overlayDocuments: readonly ContentOverlay[];
+  /** Committed overlays have owner-authorized AI review; metadata alone is not a review receipt. */
   constructor(root: string = resolveEngineRoot(), overlays: readonly unknown[] = committedOverlayDocuments()) {
     this.root = resolve(root);
-    this.overlays = compileOverlays(overlays);
+    this.overlayDocuments = freeze(overlays.map(document => overlaySchema.parse(document)));
+    this.overlays = compileOverlays(this.overlayDocuments);
   }
   /** Test/build observability only; this is not returned by public procedures. */
   diagnostics() { return { diskReads: this.diskReads, cachedEntries: this.cache.size, cachedBytes: this.cacheCost }; }
@@ -168,11 +194,8 @@ export class InteractiveContentEngine {
     }
     return selected.map(entry => result.get(entry.id)!);
   }
-  /**
-   * The playable pool for a course: stored entries less mode-fit exclusions, with
-   * reviewed revisions substituted and reviewed additions appended. A revision is
-   * served only while the stored bytes it supersedes are exactly unchanged.
-   */
+  /** Shared effective view: exact-bound revisions, selected exclusions, then additions.
+   * A stale revision fails closed instead of silently exposing its old target. */
   private pool(courseKey: string, manifest: EngineManifest): Candidate[] {
     const overlay = this.overlays.get(courseKey) ?? { additions: [], replacements: new Map() };
     const stored = new Map(manifest.entries.map(entry => [entry.id, entry]));
@@ -184,9 +207,10 @@ export class InteractiveContentEngine {
     for (const entry of manifest.entries) {
       if (isExcludedFromMode(courseKey, entry.mode, entry.id)) continue;
       const replacement = overlay.replacements.get(entry.id)?.item;
+      if (replacement && isExcludedFromMode(courseKey, replacement.mode, replacement.id)) continue;
       candidates.push(replacement ? { ...replacement, overlay: replacement } : { id: entry.id, mode: entry.mode, topicId: entry.topicId, difficulty: entry.difficulty, bytes: entry.bytes, stored: entry });
     }
-    for (const addition of overlay.additions) candidates.push({ ...addition, overlay: addition });
+    for (const addition of overlay.additions) if (!isExcludedFromMode(courseKey, addition.mode, addition.id)) candidates.push({ ...addition, overlay: addition });
     return candidates;
   }
   getCatalog(courseKey: string, hasAccess: boolean): InteractiveCatalogResponse {
@@ -202,7 +226,7 @@ export class InteractiveContentEngine {
           difficulties: (["easy", "medium", "hard", "unclassified"] as const).map(id => ({ id, count: entries.filter(entry => entry.difficulty === id).length })).filter(d => d.count > 0),
         };
       });
-      return interactiveCatalogResponseSchema.parse({ courseKey, available: true, locked: !hasAccess, version: publicVersion(manifest), modes });
+      return interactiveCatalogResponseSchema.parse({ courseKey, available: true, locked: !hasAccess, version: effectiveReleaseVersion(manifest, this.overlayDocuments), modes });
     });
   }
   startSession(input: InteractiveStartSessionInput, hasAccess: boolean): InteractiveSessionResponse {
@@ -214,14 +238,18 @@ export class InteractiveContentEngine {
       const filters = { topicId: hasAccess ? input.topicId ?? null : null, difficulty: hasAccess ? input.difficulty ?? null : null, requestedSize: sessionSize };
       const common = { courseKey, locked: !hasAccess, sessionId: randomUUID(), mode, filters };
       if (!manifest) return { ...common, available: false, version: null, totalAvailableCount: 0, examples: [] };
-      // Mode-fit exclusions apply to full sessions; the fixed locked preview is unchanged.
-      const eligible = this.pool(courseKey, manifest).filter(entry => entry.mode === mode && (filters.topicId === null || entry.topicId === filters.topicId) && (filters.difficulty === null || entry.difficulty === filters.difficulty));
-      const totalAvailableCount = hasAccess ? eligible.length : 1;
+      const pool = this.pool(courseKey, manifest);
+      const eligible = pool.filter(entry => entry.mode === mode && (filters.topicId === null || entry.topicId === filters.topicId) && (filters.difficulty === null || entry.difficulty === filters.difficulty));
+      const previewId = manifest.previewIds[mode];
+      const revisionId = this.overlays.get(courseKey)?.replacements.get(previewId)?.item.id;
+      const storedPreview = manifest.entries.find(entry => entry.id === previewId && entry.mode === mode)!;
+      // Preserve historical fixed calculation previews (mode-fit is a paid-pool rule),
+      // but never bypass an exact safety exclusion or a bound correction.
+      const preview = pool.find(entry => entry.id === (revisionId ?? previewId)) ??
+        (!revisionId && !isReleaseExcluded(courseKey, mode, previewId) ? { id: storedPreview.id, mode, topicId: storedPreview.topicId, difficulty: storedPreview.difficulty, bytes: storedPreview.bytes, stored: storedPreview } : undefined);
+      const totalAvailableCount = hasAccess ? eligible.length : preview ? 1 : 0;
       let selected: Candidate[];
-      if (!hasAccess) {
-        const preview = manifest.entries.find(entry => entry.id === manifest.previewIds[mode] && entry.mode === mode)!;
-        selected = [{ id: preview.id, mode: preview.mode, topicId: preview.topicId, difficulty: preview.difficulty, bytes: preview.bytes, stored: preview }];
-      }
+      if (!hasAccess) selected = preview ? [preview] : [];
       else {
         // Partial Fisher-Yates: exact intersection, without replacement; no whole bank read.
         const candidates = [...eligible];
@@ -244,23 +272,33 @@ export class InteractiveContentEngine {
       // Stored bytes are verified first; directional items are then presented with direction controls.
       const storedExamples = new Map(this.examples(manifest, selected.flatMap(entry => entry.stored ? [entry.stored] : [])).map(example => [example.id, example]));
       const examples = selected.map(entry => entry.overlay ? entry.overlay.example : storedExamples.get(entry.id)!).map(presentCauseEffect);
-      const response = interactiveSessionResponseSchema.parse({ ...common, available: true, version: publicVersion(manifest), totalAvailableCount, examples });
+      const response = interactiveSessionResponseSchema.parse({ ...common, available: true, version: effectiveReleaseVersion(manifest, this.overlayDocuments), totalAvailableCount, examples });
       if (Buffer.byteLength(json(response)) > ENGINE_LIMITS.responseBytes) fail();
       return response;
     });
   }
-  /** Compatibility endpoint only; always the original <=300 legacy package, never v2. */
+  /** Compatibility stays bounded to legacy IDs, with the same revisions and exclusions; no additions or v2 bank. */
   getLegacyContent(courseKey: string, hasAccess: boolean) {
     return this.guarded(() => {
       const manifest = this.manifest(courseKey);
       if (!manifest) return { courseKey, available: false as const, locked: !hasAccess, version: null, examples: [] as InteractiveDrillExample[] };
+      // Validate target bindings on compatibility requests too.
+      this.pool(courseKey, manifest);
       const pkg: InteractivePackage = this.read(manifest.legacy.file, ENGINE_LIMITS.legacyBytes, input => {
         const legacy = interactivePackageSchema.parse(input);
         if (legacy.courseKey !== courseKey || legacy.version !== manifest.sourceVersion || hash(json(legacy)) !== manifest.sourceSha256 || json(legacy.previewIds) !== json(manifest.previewIds)) fail();
         return legacy;
       }, manifest.legacy, hash(json(manifest)), manifest.classification === "legacy_plus_checked");
       const previewIds = new Set(Object.values(pkg.previewIds));
-      return { courseKey, available: true as const, locked: !hasAccess, version: pkg.version, examples: hasAccess ? pkg.examples : pkg.examples.filter(example => previewIds.has(example.id)) };
+      const revisions = this.overlays.get(courseKey)?.replacements;
+      const effective = pkg.examples.filter(example => !isReleaseExcluded(courseKey, example.mode, example.id)).flatMap(example => {
+        const revision = revisions?.get(example.id)?.item;
+        return revision && isReleaseExcluded(courseKey, revision.mode, revision.id) ? [] : [{ originalId: example.id, example: revision?.example ?? example }];
+      });
+      const examples = effective.filter(row => hasAccess || previewIds.has(row.originalId)).map(row => row.example);
+      const changed = effective.length !== pkg.examples.length || effective.some(row => row.originalId !== row.example.id);
+      return { courseKey, available: true as const, locked: !hasAccess, version: changed ? effectiveReleaseVersion(manifest, this.overlayDocuments) : pkg.version, examples };
+
     });
   }
 }
