@@ -26,7 +26,7 @@ const data: CourseData = {
     ["m", "A 1 percent solution contains about 100 mg/L of the substance.", false, "One percent is 10,000 mg/L."],
     ["m", "When a strong solution is diluted, the amount of substance stays the same while concentration falls.", true, "The same mass is spread over more volume."],
     ["m", "When a strong solution is diluted, the amount of substance in it drops to zero.", false, "Dilution lowers concentration. The substance is still there."],
-    ["m", "The DPD method is a common test for chlorine residual.", true, "DPD reacts with chlorine to produce a pink color."],
+    ["m", "The DPD method is a common test for chlorine residual.", true, "DPD reacts with chlorine to produce a pink to red color."],
     ["m", "The DPD method is a test for the hardness of water.", false, "DPD is used for chlorine. Hardness is measured by other methods."],
     ["m", "Bacteriological sample bottles can contain a chemical that stops chlorine from acting after collection.", true, "A dechlorinating agent such as sodium thiosulfate prevents continued disinfection in the bottle."],
     ["m", "A jar test helps choose a coagulant dose by comparing results from several doses.", true, "Jars are dosed differently to see which gives the best floc and settling."],
