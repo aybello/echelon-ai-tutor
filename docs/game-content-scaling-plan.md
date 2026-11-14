@@ -31,9 +31,15 @@ Status as of 2026-11-14. This is a planning note, not a commitment. Counts are a
 | 150 per mode, top 6 courses | about 5,400 | about 10 |
 | Shared pool across classes, 150 per mode | roughly half of the 150 plan | about 30 |
 
+## Decision (2026-11-14)
+
+The owner chose a target of **150 per mode per course**. The two OIT courses already exceed it counting drafts, so the work is the other 36 courses.
+
+Measured gap against 150 (served items only, before this decision's writing starts): about 5,000 playable items now across 38 courses against a 150-per-mode target of about 34,000, so roughly 29,000 items remain. Speed match is the thinnest mode, at about 10 per course. Each non-OIT course has roughly 80 to 120 served items in total, spread over six modes.
+
 ## Open decisions
 
 - Which exams does Utilities Kingston need, and for how many operators each?
-- Which target applies to each course: 150, 300 or 500 per mode?
+- Which courses, if any, should later go above 150 per mode?
 - Which books can be supplied as text, especially the OIT study manual, the distribution books, and the Need-to-Know documents?
 - When does the publishing step land so served content can be counted?
