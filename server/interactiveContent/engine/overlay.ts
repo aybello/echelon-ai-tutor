@@ -11,9 +11,10 @@ import oitBatch1 from "../overlay/2026-11-14-oit-batch-1.json";
 import oitBatch2 from "../overlay/2026-11-14-oit-batch-2.json";
 import oitBatch3 from "../overlay/2026-11-14-oit-batch-3.json";
 import oitBatch4 from "../overlay/2026-11-14-oit-batch-4.json";
+import oitBatch5 from "../overlay/2026-11-14-oit-batch-5.json";
 
 // Every committed overlay, in application order. Add new reviewed batches here.
-const COMMITTED_OVERLAYS: readonly unknown[] = [rapidSwipeBalance, optionLengthClass2Ww, optionLengthBatch2, oitBatch1, oitBatch2, oitBatch3, oitBatch4];
+const COMMITTED_OVERLAYS: readonly unknown[] = [rapidSwipeBalance, optionLengthClass2Ww, optionLengthBatch2, oitBatch1, oitBatch2, oitBatch3, oitBatch4, oitBatch5];
 
 /**
  * Committed, server-only content overlays on the published game bank.
