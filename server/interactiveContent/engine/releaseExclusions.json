@@ -294,6 +294,18 @@
         "og-oit-b4-speed-match-0051",
         "og-oit-b3-speed-match-0061"
       ]
+    },
+    {
+      "name": "spring box source classification",
+      "courseKey": "oit",
+      "mode": "odd-one-out",
+      "reason": "These four exercises incorrectly classify a spring box as a surface-water intake. Withhold pending source-grounded correction and renewed exact-payload review; original overlays and receipts remain unchanged.",
+      "ids": [
+        "og-oit-b12-odd-one-out-0107",
+        "og-oit-b12-odd-one-out-0108",
+        "og-oit-b12-odd-one-out-0110",
+        "og-oit-b12-odd-one-out-0112"
+      ]
     }
   ]
 }

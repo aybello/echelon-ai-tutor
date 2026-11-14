@@ -58,7 +58,7 @@ describe("selective release effective view", () => {
     const all = docs.flatMap(d => d.additions).filter(a => a.courseKey === "oit" && a.example.id.startsWith("og-oit-"));
     const groups = committedReleaseExclusions().groups;
     const ids = groups.flatMap(g => g.ids);
-    expect(ids).toHaveLength(125);
+    expect(ids).toHaveLength(129);
     expect(new Set(ids).size).toBe(ids.length);
     for (const group of groups) for (const id of group.ids) {
       const item = all.find(a => a.example.id === id);
@@ -75,7 +75,7 @@ describe("selective release effective view", () => {
     expect(all).toHaveLength(2464);
     const expectedAvailable = all.filter(a => !excludedIds.has(a.example.id)).map(a => a.example.id);
     const actualAvailable = all.filter(a => poolIds.has(a.example.id)).map(a => a.example.id);
-    expect(actualAvailable).toHaveLength(2339);
+    expect(actualAvailable).toHaveLength(2335);
     expect(new Set(actualAvailable)).toEqual(new Set(expectedAvailable));
     expect(poolIds.has("og-oit-b2-before-after-0134")).toBe(true);
     for (const access of [false, true]) for (const mode of interactiveModes) {

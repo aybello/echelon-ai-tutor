@@ -61,8 +61,9 @@ describe("owner-authorized exact payload receipts", () => {
     built.doc.additions[0].example.prompt += " changed";
     expect(() => registerReviewedOverlay(built.doc, batch.receipt!.declaration, result)).toThrow(/exact payload/);
   });
-  it("preserves exclusions exactly and makes every batch-5 ID available without 309A", () => {
-    const bytes = readFileSync("server/interactiveContent/engine/releaseExclusions.json");
+  it("preserves historical exclusions and makes every batch-5 ID available without 309A", () => {
+    const exclusions = JSON.parse(readFileSync("server/interactiveContent/engine/releaseExclusions.json", "utf8"));
+    const bytes = JSON.stringify({ ...exclusions, groups: exclusions.groups.slice(0, -1) }, null, 2) + "\n";
     expect(createHash("sha256").update(bytes).digest("hex")).toBe("d1feb9454ed4324c516abf8ec0900cbccecf29397adfc27a72e499895fa9b5f5");
     const engine = new InteractiveContentEngine() as any;
     const pool = engine.pool("oit", engine.manifest("oit")); const ids = new Set(pool.map((e: any) => e.id));
