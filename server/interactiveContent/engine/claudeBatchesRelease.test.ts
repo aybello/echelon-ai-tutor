@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import { describe, expect, it } from "vitest";
 import { InteractiveContentEngine } from "./loader";
 import { committedOverlayDocuments, compileOverlays, type ContentOverlay } from "./overlay";
+import { isReleaseExcluded } from "./modeFit";
 import { batchSha256, verifyReceipt } from "./reviewReceipt";
 import { buildOverlay, type CourseData } from "../../../scripts/game-authoring/build";
 import { interactiveModes } from "../../../shared/interactiveSessions";
@@ -45,14 +46,14 @@ describe("pinned sixteen Claude batches release", () => {
     expect(declaration).toEqual(doc.receipt!.declaration);
     const pool = (engine as any).pool(course, (engine as any).manifest(course)) as { id: string }[];
     const poolIds = new Set(pool.map(e => e.id));
-    for (const a of doc.additions) expect(poolIds.has(a.example.id), a.example.id).toBe(true);
+    for (const a of doc.additions) expect(poolIds.has(a.example.id), a.example.id).toBe(!isReleaseExcluded(course, a.example.mode, a.example.id));
   });
   for (const course of ["oit", "oit-ww"]) it(`${course}: exact catalog and session delta in every mode, no legacy changes`, () => {
     const catalog = engine.getCatalog(course, true);
     const old = before.getCatalog(course, true);
     expect(catalog.version).not.toBe(old.version);
     for (const mode of interactiveModes) {
-      const added = released.flatMap(d => d.additions).filter(a => a.courseKey === course && a.example.mode === mode).length;
+      const added = released.flatMap(d => d.additions).filter(a => a.courseKey === course && a.example.mode === mode && !isReleaseExcluded(course, mode, a.example.id)).length;
       const total = catalog.modes.find(m => m.mode === mode)!.totalCount;
       expect(total).toBe(old.modes.find(m => m.mode === mode)!.totalCount + added);
       const session = engine.startSession({ courseKey: course, mode, sessionSize: 50 }, true);
@@ -67,8 +68,9 @@ describe("pinned sixteen Claude batches release", () => {
     expect(pool.filter(e => oldIds.has(e.id))).toEqual(earlier);
     expect(engine.getLegacyContent(course, true)).toEqual(before.getLegacyContent(course, true));
   });
-  it("preserves the exact 125 exclusions and rejects 309A", () => {
-    expect(sha(readFileSync("server/interactiveContent/engine/releaseExclusions.json"))).toBe("d1feb9454ed4324c516abf8ec0900cbccecf29397adfc27a72e499895fa9b5f5");
+  it("preserves the original 125 exclusions before the narrow spring-box hold and rejects 309A", () => {
+    const exclusions = JSON.parse(readFileSync("server/interactiveContent/engine/releaseExclusions.json", "utf8"));
+    expect(sha(Buffer.from(JSON.stringify({ ...exclusions, groups: exclusions.groups.slice(0, -1) }, null, 2) + "\n"))).toBe("d1feb9454ed4324c516abf8ec0900cbccecf29397adfc27a72e499895fa9b5f5");
     expect(() => engine.getCatalog("electrician-309a", true)).toThrow();
     expect(() => engine.startSession({ courseKey: "electrician-309a", mode: "rapid-swipe", sessionSize: 5 }, true)).toThrow();
   });
