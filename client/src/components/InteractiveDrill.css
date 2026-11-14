@@ -482,3 +482,101 @@
 @media (min-width: 720px) {
   .interactive-drill__options--directions { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
+
+/* ---- Design pass: per-mode accent, live swipe, answer marks ---------------------------------
+   Additive only. Heights are unchanged so the compact course layout and its fit tests still hold.
+   Colour is never the only signal: right and wrong answers also carry a check or cross mark. */
+.interactive-drill__activity { --accent: #1757b8; --accent-soft: #eaf2ff; }
+.interactive-drill .interactive-drill__activity { border-top: 4px solid var(--accent); }
+.interactive-drill__activity[data-mode="speed-match"] { --accent: #0e7490; --accent-soft: #e6f6fa; }
+.interactive-drill__activity[data-mode="odd-one-out"] { --accent: #b45309; --accent-soft: #fdf1e3; }
+.interactive-drill__activity[data-mode="cause-effect"] { --accent: #6d28d9; --accent-soft: #f1ebfd; }
+.interactive-drill__activity[data-mode="tap-the-flaw"] { --accent: #be123c; --accent-soft: #fdebf0; }
+.interactive-drill__activity[data-mode="before-after"] { --accent: #a21caf; --accent-soft: #f9e9fb; }
+
+.interactive-drill .interactive-drill__track { height: 8px; background: var(--accent-soft); }
+.interactive-drill .interactive-drill__track span { background: var(--accent); border-radius: 9px; }
+.interactive-drill .interactive-drill__pill { background: var(--accent-soft); border-color: transparent; color: var(--accent); }
+
+/* Rapid swipe: the token follows the finger and the zone tints toward Yes (green) or No (red). */
+.interactive-drill .interactive-drill__swipe {
+  --pull: 0;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border-color: color-mix(in srgb, var(--accent) 28%, #fff);
+  background: var(--accent-soft);
+}
+.interactive-drill__swipe::before, .interactive-drill__swipe::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 120ms;
+}
+.interactive-drill__swipe::before { background: linear-gradient(90deg, rgb(214 69 69 / 38%), transparent 75%); opacity: clamp(0, calc(var(--pull) * -1), 1); }
+.interactive-drill__swipe::after { background: linear-gradient(270deg, rgb(31 157 107 / 38%), transparent 75%); opacity: clamp(0, var(--pull), 1); }
+.interactive-drill__swipe > span { transition: transform 160ms ease-out, color 120ms; }
+.interactive-drill__swipe > span:first-child { transform: scale(calc(1 + clamp(0, calc(var(--pull) * -1), 1) * 0.25)); transform-origin: left center; }
+.interactive-drill__swipe > span:last-child { transform: scale(calc(1 + clamp(0, var(--pull), 1) * 0.25)); transform-origin: right center; }
+.interactive-drill__swipe-token {
+  padding: 6px 14px;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, #fff);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 4px 14px rgb(16 35 56 / 14%);
+  transform: translateX(calc(var(--drag, 0px) * 0.4)) rotate(calc(var(--pull) * 5deg));
+}
+.interactive-drill__swipe[data-picked="no"] > span:first-child, .interactive-drill__swipe[data-picked="yes"] > span:last-child { transform: scale(1.2); }
+.interactive-drill__activity[data-outcome="correct"] .interactive-drill__swipe { border-color: #1f9d6b; }
+.interactive-drill__activity[data-outcome="incorrect"] .interactive-drill__swipe { border-color: #d64545; }
+
+/* Answer buttons: Yes and No carry their own hue; the answer shows a mark as well as colour. */
+.interactive-drill .interactive-drill__options button[data-choice="no"] { border-color: #e2a3a3; }
+.interactive-drill .interactive-drill__options button[data-choice="yes"] { border-color: #97cdb4; }
+.interactive-drill .interactive-drill__options button[data-state] { position: relative; }
+.interactive-drill .interactive-drill__options button[data-state="correct"],
+.interactive-drill .interactive-drill__options button[data-state="correct"]:disabled {
+  border-color: #1f9d6b;
+  background: #e8f7f0;
+  color: #0f4d34;
+}
+.interactive-drill .interactive-drill__options button[data-state="wrong"],
+.interactive-drill .interactive-drill__options button[data-state="wrong"]:disabled {
+  border-color: #d64545;
+  background: #fdecec;
+  color: #7a1f1f;
+}
+.interactive-drill .interactive-drill__options button[data-state="correct"]::after { content: " \2713" / ""; font-weight: 800; }
+.interactive-drill .interactive-drill__options button[data-state="wrong"]::after { content: " \2715" / ""; font-weight: 800; }
+
+/* Feedback: a coloured edge and a mark beside the verdict. */
+.interactive-drill .interactive-drill__feedback { border-left-width: 5px; }
+.interactive-drill .interactive-drill__feedback.is-correct { border-left-color: #1f9d6b; }
+.interactive-drill .interactive-drill__feedback.is-incorrect { border-left-color: #d64545; }
+.interactive-drill .interactive-drill__feedback strong::before { content: "\2713  "; }
+.interactive-drill .interactive-drill__feedback.is-incorrect strong::before { content: "\2715  "; }
+
+/* A short pop on the verdict. Skipped for reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .interactive-drill__feedback { animation: drill-pop 220ms ease-out; }
+  .interactive-drill__activity[data-outcome="incorrect"] .interactive-drill__options button[data-state="wrong"] { animation: drill-shake 260ms ease-in-out; }
+}
+@keyframes drill-pop { from { transform: translateY(6px) scale(0.98); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes drill-shake { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+@media (prefers-reduced-motion: reduce) {
+  .interactive-drill__swipe::before, .interactive-drill__swipe::after, .interactive-drill__swipe > span { transition: none; }
+}
+
+/* Keyboard users keep a clear heading ring; mouse and touch users no longer see a box after switching mode. */
+.interactive-drill__content h2:focus:not(:focus-visible),
+.interactive-drill__feedback-region:focus:not(:focus-visible) { outline: none; }
+
+/* Speed match: each matched pair shares a colour and the same number, so linked cards are easy to see. */
+.interactive-drill .interactive-drill__column button[data-pair="0"], .course-interactive .interactive-drill__column button[data-pair="0"]:disabled { border-color: #1f9d6b; background: #e8f7f0; color: #0f4d34; }
+.interactive-drill .interactive-drill__column button[data-pair="1"], .course-interactive .interactive-drill__column button[data-pair="1"]:disabled { border-color: #2f7de1; background: #e6f1ff; color: #123e7a; }
+.interactive-drill .interactive-drill__column button[data-pair="2"], .course-interactive .interactive-drill__column button[data-pair="2"]:disabled { border-color: #d9822b; background: #fdf1e3; color: #7a4410; }
+.interactive-drill .interactive-drill__column button[data-pair="3"], .course-interactive .interactive-drill__column button[data-pair="3"]:disabled { border-color: #8b5cf6; background: #f1ebfd; color: #4c2a99; }
+.interactive-drill .interactive-drill__column button[data-pair="4"], .course-interactive .interactive-drill__column button[data-pair="4"]:disabled { border-color: #e0577b; background: #fdebf0; color: #7a1f3a; }
+.interactive-drill .interactive-drill__column button[data-pair="5"], .course-interactive .interactive-drill__column button[data-pair="5"]:disabled { border-color: #2aa3bd; background: #e6f6fa; color: #0c4a5a; }

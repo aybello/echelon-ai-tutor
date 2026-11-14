@@ -191,6 +191,8 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
   const instructionId = useId();
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [answered, setAnswered] = useState(false);
+  const [picked, setPicked] = useState<string | null>(null);
+  const [outcome, setOutcome] = useState<"correct" | "incorrect" | null>(null);
   const answeredRef = useRef(false);
   const [selected, setSelected] = useState<Selection | null>(null);
   const [matched, setMatched] = useState<string[]>([]);
@@ -217,6 +219,8 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
     const start = swipeStart.current;
     swipeStart.current = null;
     if (start) {
+      start.element.style.removeProperty("--drag");
+      start.element.style.removeProperty("--pull");
       try {
         if (start.element.hasPointerCapture(start.id)) start.element.releasePointerCapture(start.id);
       } catch {
@@ -225,11 +229,13 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
     }
   };
 
-  const answer = (correct: boolean, correctLabel: string, explanation: string) => {
+  const answer = (correct: boolean, correctLabel: string, explanation: string, pickedKey?: string) => {
     if (answeredRef.current) return;
     answeredRef.current = true;
     focusFeedback.current = true;
     clearSwipe();
+    setPicked(pickedKey ?? null);
+    setOutcome(correct ? "correct" : "incorrect");
     setFeedback({
       correct,
       text: correct ? explanation : `The correct answer is ${correctLabel}. ${explanation}`,
@@ -243,6 +249,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
     const score = scoreCauseEffect(example.effects, directions);
     answeredRef.current = true;
     focusFeedback.current = true;
+    setOutcome(score.correct ? "correct" : "incorrect");
     setEffectResults(Object.fromEntries(score.results.map(result => [result.id, result.correct])));
     setFeedback({
       correct: score.correct,
@@ -271,8 +278,17 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
     const dy = event.clientY - start.y;
     if (Math.abs(dx) >= 55 && Math.abs(dx) > Math.abs(dy)) {
       const choice = dx > 0;
-      answer(choice === example.correctAnswer, example.correctAnswer ? "Yes" : "No", example.explanation);
+      answer(choice === example.correctAnswer, example.correctAnswer ? "Yes" : "No", example.explanation, choice ? "yes" : "no");
     }
+  };
+
+  // Live drag: the token follows the finger and the zone tints toward Yes or No. Grading still happens only on release.
+  const handleSwipeMove = (event: PointerEvent<HTMLDivElement>) => {
+    const start = swipeStart.current;
+    if (!start || start.id !== event.pointerId) return;
+    const dx = event.clientX - start.x;
+    start.element.style.setProperty("--drag", `${Math.max(-120, Math.min(120, dx))}px`);
+    start.element.style.setProperty("--pull", String(Math.max(-1, Math.min(1, dx / 90))));
   };
 
   const handleSwipeCancel = (event: PointerEvent<HTMLDivElement>) => {
@@ -302,6 +318,10 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
     }
   };
 
+  /** Marks the right answer once answered, and the learner's wrong pick, so colour and a mark can show both. */
+  const choiceState = (key: string, correctKey: string): "correct" | "wrong" | undefined =>
+    !answered ? undefined : key === correctKey ? "correct" : key === picked ? "wrong" : undefined;
+
   // Independently permute each board: a fixed one-row rotation gives every
   // answer away once the learner notices the pattern. Pair IDs still grade it.
   const rightPairs = example.mode === "speed-match" && example.pairs.length > 1
@@ -309,7 +329,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
     : [];
 
   return (
-    <section className="interactive-drill__activity" aria-labelledby={titleId}>
+    <section className="interactive-drill__activity" data-mode={example.mode} data-outcome={outcome ?? undefined} aria-labelledby={titleId}>
       <div className="interactive-drill__meta">
         <span>Activity {index + 1} of {count}</span>
         <span className="interactive-drill__pill">Practice · not saved</span>
@@ -333,28 +353,28 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
         ) : example.mode === "rapid-swipe" ? (
           <>
             {timerSeconds !== null && <button type="button" className="interactive-drill__round-start interactive-drill__secondary" onClick={onStartRound}>Start {timerSeconds}-second round</button>}
-            <div className="interactive-drill__swipe" onPointerDown={handleSwipeStart} onPointerUp={handleSwipeEnd} onPointerCancel={handleSwipeCancel} onLostPointerCapture={handleSwipeCancel}>
+            <div className="interactive-drill__swipe" data-picked={picked ?? undefined} onPointerDown={handleSwipeStart} onPointerMove={handleSwipeMove} onPointerUp={handleSwipeEnd} onPointerCancel={handleSwipeCancel} onLostPointerCapture={handleSwipeCancel}>
               <span aria-hidden="true">← No</span>
-              <span>Swipe to choose</span>
+              <span className="interactive-drill__swipe-token">Swipe to choose</span>
               <span aria-hidden="true">Yes →</span>
             </div>
             <div className="interactive-drill__options interactive-drill__options--two" aria-describedby={instructionId}>
-              <button type="button" disabled={answered} onClick={() => answer(!example.correctAnswer, example.correctAnswer ? "Yes" : "No", example.explanation)}>No</button>
-              <button type="button" disabled={answered} onClick={() => answer(example.correctAnswer, example.correctAnswer ? "Yes" : "No", example.explanation)}>Yes</button>
+              <button type="button" data-choice="no" data-state={choiceState("no", example.correctAnswer ? "yes" : "no")} disabled={answered} onClick={() => answer(!example.correctAnswer, example.correctAnswer ? "Yes" : "No", example.explanation, "no")}>No</button>
+              <button type="button" data-choice="yes" data-state={choiceState("yes", example.correctAnswer ? "yes" : "no")} disabled={answered} onClick={() => answer(example.correctAnswer, example.correctAnswer ? "Yes" : "No", example.explanation, "yes")}>Yes</button>
             </div>
           </>
         ) : example.mode === "speed-match" ? (
           <div className="interactive-drill__matching" aria-describedby={instructionId}>
             <div className="interactive-drill__column" role="group" aria-label="First items">
               {example.pairs.map(pair => (
-                <button key={pair.id} type="button" className={matched.includes(pair.id) ? "is-matched" : selected?.side === "left" && selected.pairId === pair.id ? "is-selected" : ""} disabled={matched.includes(pair.id)} aria-pressed={selected?.side === "left" && selected.pairId === pair.id} onClick={() => selectPair("left", pair.id)}>
+                <button key={pair.id} type="button" data-pair={matched.includes(pair.id) ? matched.indexOf(pair.id) % 6 : undefined} className={matched.includes(pair.id) ? "is-matched" : selected?.side === "left" && selected.pairId === pair.id ? "is-selected" : ""} disabled={matched.includes(pair.id)} aria-pressed={selected?.side === "left" && selected.pairId === pair.id} onClick={() => selectPair("left", pair.id)}>
                   {pair.left}{matched.includes(pair.id) && <span className="interactive-drill__matched-label"> · Matched</span>}
                 </button>
               ))}
             </div>
             <div className="interactive-drill__column" role="group" aria-label="Second items">
               {rightPairs.map(pair => (
-                <button key={pair.id} type="button" className={matched.includes(pair.id) ? "is-matched" : selected?.side === "right" && selected.pairId === pair.id ? "is-selected" : ""} disabled={matched.includes(pair.id)} aria-pressed={selected?.side === "right" && selected.pairId === pair.id} onClick={() => selectPair("right", pair.id)}>
+                <button key={pair.id} type="button" data-pair={matched.includes(pair.id) ? matched.indexOf(pair.id) % 6 : undefined} className={matched.includes(pair.id) ? "is-matched" : selected?.side === "right" && selected.pairId === pair.id ? "is-selected" : ""} disabled={matched.includes(pair.id)} aria-pressed={selected?.side === "right" && selected.pairId === pair.id} onClick={() => selectPair("right", pair.id)}>
                   {pair.right}{matched.includes(pair.id) && <span className="interactive-drill__matched-label"> · Matched</span>}
                 </button>
               ))}
@@ -363,10 +383,10 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
         ) : example.mode === "before-after" ? (
           <div className={`interactive-drill__options ${example.options ? "interactive-drill__options--ordering" : "interactive-drill__options--two"}`} role="group" aria-label="Answer choices" aria-describedby={instructionId}>
             {(example.options ? shuffleChoices(example.options, example.mode, example.id) : ["Before", "After"]).map(choice => (
-              <button key={choice} type="button" disabled={answered} onClick={() => {
+              <button key={choice} type="button" data-state={choiceState(normalizeLabel(choice), normalizeLabel(example.correctAnswer))} disabled={answered} onClick={() => {
                 const correct = normalizeLabel(choice) === normalizeLabel(example.correctAnswer);
                 const correctLabel = (example.options ?? ["Before", "After"]).find(label => normalizeLabel(label) === normalizeLabel(example.correctAnswer)) ?? "";
-                answer(correct, correctLabel, example.explanation);
+                answer(correct, correctLabel, example.explanation, normalizeLabel(choice));
               }}>{choice}</button>
             ))}
           </div>
@@ -393,7 +413,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
         ) : (
           <div className="interactive-drill__options" aria-describedby={instructionId}>
             {shuffleChoices(example.options, example.mode, example.id).map(option => (
-              <button key={option.id} type="button" disabled={answered} onClick={() => answer(option.id === example.correctOptionId, example.options.find(item => item.id === example.correctOptionId)?.label ?? "", example.explanation)}>{option.label}</button>
+              <button key={option.id} type="button" data-state={choiceState(option.id, example.correctOptionId)} disabled={answered} onClick={() => answer(option.id === example.correctOptionId, example.options.find(item => item.id === example.correctOptionId)?.label ?? "", example.explanation, option.id)}>{option.label}</button>
             ))}
           </div>
         )}
