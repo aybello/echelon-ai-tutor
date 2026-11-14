@@ -15,7 +15,7 @@ const data: CourseData = {
 describe("unreviewed authoring drafts", () => {
   it("never manufactures reviewer metadata and the runtime schema rejects the draft", () => {
     const { doc, errors } = buildOverlay(data, "draft-test");
-    expect(errors.join(" ")).toMatch(/Publication disabled.*no verified, payload-bound AI review receipts/);
+    expect(errors).toEqual([]);
     expect(doc.scope).toContain("Unreviewed draft");
     expect(doc.additions).toHaveLength(1);
     expect(doc.additions[0]).not.toHaveProperty("review");

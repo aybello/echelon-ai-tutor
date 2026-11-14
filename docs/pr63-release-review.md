@@ -41,7 +41,22 @@ Catalog and paid sessions use the same effective pool. The pool checks replaceme
 
 Legacy compatibility remains bounded to original legacy slots: it applies those same bound corrections and safety exclusions, never imports additions or the v2 reviewed bank, and never silently falls back on a stale replacement target. Stored source bytes stay untouched. Catalog/session identities bind base public identity, course overlays, exclusions and presentation/selection behavior without exposing private checked manifest fingerprints. The client refreshes catalog/session once on a release mismatch and then fails closed if disagreement persists; manual retry, mode and identity changes get independent budgets.
 
-The source builder no longer invents reviewer metadata. It produces unreviewed draft objects and refuses publication or overwriting committed content, including `--check`, until actual review is supplied through a future deliberate authoring action. Older authoring tables do not have stable-ID parity with reviewed overlay fixes and must not be regenerated over them.
+The source builder never invents reviewer metadata. New publication requires an explicit `--review-declaration <file.json>` containing `reviewAuthority: "owner-authorized-ai-review"`, model name, review date (or explicit null when unknown), owner attestation, and a map from every item ID to its exact educational-payload SHA-256. Passing builder checks alone is not review. The owner accepts Claude's own review; no independent AI or expert sign-off is required. Do not carry approval forward to changed content: obtain a new explicit review or hold that item.
+
+New overlays use `interactive-overlay-v2`, with a batch receipt binding successful builder check results and each exact educational identity (course, topic, difficulty, complete example and replacement target/hash/reason when present). Recursive object keys use stable lexical order; array order remains significant. Receipts and review metadata are excluded from the educational hash to avoid self-reference. Runtime verifies every item, declaration coverage, batch identity and check-result hash, failing closed on missing/stale/tampered receipts. SHA-256 provides local content integrity, not cryptographic proof of provider identity or evidence that a provider API was called. Review declarations remain owner assertions; no provider receipt is required. Seven exact-hash-pinned historical v1 overlays remain compatible; future or modified v1 overlays cannot bypass receipt requirements.
+
+Batch 5 registers all 165 exact items from upstream `9234bceb6159a895ecbc5fb7cc87e097dbdeddc5`. The owner attests Claude authored and reviewed that draft. The artifact records `Claude (owner-provided; exact model unspecified)` and `reviewedAt: null`; the review date/version are unknown, not fabricated. `registeredAt` is the actual registration time, not the review date. No new model call or second content review occurred, and no educational payload changed. Its educational batch hash is `06dff4f7c84598f2f884cbcd380c19cbb7fdfeec5423bfe77bd81afb410f5c7f`. All 125 historical exclusions and every previous correction remain unchanged. OIT additions now total 840, with 715 available (550 historical plus 165 new).
+
+Authoring usage (all 38 eligible courses, excluding 309A):
+
+```sh
+env -i PATH="$PATH" HOME=/tmp NODE_ENV=test node --require ./scripts/test-safety.cjs --import tsx \
+  scripts/game-authoring/build.ts scripts/game-authoring/data/oit-batch5.ts \
+  server/interactiveContent/overlay/2026-11-14-oit-batch-5.json og-oit-5 \
+  --review-declaration scripts/game-authoring/drafts/oit-batch-5.review.json --check
+```
+
+Omit `--check` to write a new destination, then explicitly register its import in `overlay.ts`. Repeating identical bytes is permitted; changed destinations or changed committed overlay IDs are refused, even with `--check`. Older authoring tables do not have stable-ID parity with reviewed corrections and must not overwrite them. Use an explicit new overlay for new reviewed revisions. To prepare a declaration, hash each reviewed draft entry with exported `educationalSha256(entry)` and preserve the attested exact draft; never infer review from the generated hash or check success.
 
 ## Validation
 

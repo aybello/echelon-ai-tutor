@@ -1,3 +1,4 @@
+import { syntheticReceipt } from "./reviewTestFixtures";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -39,7 +40,7 @@ describe("reviewed rapid-swipe balance overlay", () => {
   it("serves a reviewed revision only while the stored bytes it supersedes are exactly unchanged", () => {
     const target = stored("class1-water").entries.find(e => e.mode === "rapid-swipe")!;
     const review = documents[0].additions[0].review;
-    const revision = (sha: string): ContentOverlay => ({
+    const revision = (sha: string): ContentOverlay => syntheticReceipt({
       format: "interactive-overlay-v1", overlayId: "test-revision", scope: "test",
       additions: [],
       replacements: [{
