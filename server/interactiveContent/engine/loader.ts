@@ -19,7 +19,7 @@ const json = (value: unknown) => JSON.stringify(value);
 // Fingerprint of the public runtime behavior sources, including this file with
 // this constant normalized to zeros (see regression test). Changing behavior
 // requires restamping it. It is not an approval of the effective release.
-export const BEHAVIOR_POLICY_SHA256 = "aea3e2430faf509cbf4b414ef0e7cc00d7746f4dae098572452e0b2bfff7dc1b";
+export const BEHAVIOR_POLICY_SHA256 = "c9358fbddda7aba4878b1d787c8cf54c738b3881dc9b9a4bf52b08e1a06398f1";
 const canonical = (value: unknown): string => {
   if (Array.isArray(value)) return `[${value.map(canonical).join(",")}]`;
   if (value !== null && typeof value === "object") return `{${Object.entries(value).filter(([, v]) => v !== undefined).sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0).map(([k, v]) => `${json(k)}:${canonical(v)}`).join(",")}}`;

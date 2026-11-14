@@ -13,9 +13,27 @@ import oitBatch2 from "../overlay/2026-11-14-oit-batch-2.json";
 import oitBatch3 from "../overlay/2026-11-14-oit-batch-3.json";
 import oitBatch5 from "../overlay/2026-11-14-oit-batch-5.json";
 import oitBatch4 from "../overlay/2026-11-14-oit-batch-4.json";
+import oitBatch6 from "../overlay/2026-11-14-oit-batch-6.json";
+import oitBatch7 from "../overlay/2026-11-14-oit-batch-7.json";
+import oitBatch8 from "../overlay/2026-11-14-oit-batch-8.json";
+import oitBatch9 from "../overlay/2026-11-14-oit-batch-9.json";
+import oitBatch10 from "../overlay/2026-11-14-oit-batch-10.json";
+import oitBatch11 from "../overlay/2026-11-14-oit-batch-11.json";
+import oitBatch12 from "../overlay/2026-11-14-oit-batch-12.json";
+import oitBatch13 from "../overlay/2026-11-14-oit-batch-13.json";
+import oitWwBatch1 from "../overlay/2026-11-14-oit-ww-batch-1.json";
+import oitWwBatch2 from "../overlay/2026-11-14-oit-ww-batch-2.json";
+import oitWwBatch3 from "../overlay/2026-11-14-oit-ww-batch-3.json";
+import oitWwBatch4 from "../overlay/2026-11-14-oit-ww-batch-4.json";
+import oitWwBatch5 from "../overlay/2026-11-14-oit-ww-batch-5.json";
+import oitWwBatch6 from "../overlay/2026-11-14-oit-ww-batch-6.json";
+import oitWwBatch7 from "../overlay/2026-11-14-oit-ww-batch-7.json";
+import oitWwBatch8 from "../overlay/2026-11-14-oit-ww-batch-8.json";
 
 // Committed owner-authorized AI-reviewed overlays, in application order.
-const COMMITTED_OVERLAYS: readonly unknown[] = [rapidSwipeBalance, optionLengthClass2Ww, optionLengthBatch2, oitBatch1, oitBatch2, oitBatch3, oitBatch4, oitBatch5];
+const COMMITTED_OVERLAYS: readonly unknown[] = [rapidSwipeBalance, optionLengthClass2Ww, optionLengthBatch2, oitBatch1, oitBatch2, oitBatch3, oitBatch4, oitBatch5,
+  oitBatch6, oitBatch7, oitBatch8, oitBatch9, oitBatch10, oitBatch11, oitBatch12, oitBatch13,
+  oitWwBatch1, oitWwBatch2, oitWwBatch3, oitWwBatch4, oitWwBatch5, oitWwBatch6, oitWwBatch7, oitWwBatch8];
 
 /**
  * Committed, server-only content overlays on the published game bank.
