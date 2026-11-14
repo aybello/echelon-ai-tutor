@@ -287,5 +287,5 @@ describe("private indexed interactive engine", () => {
     const bundled = await import(/* @vite-ignore */ pathToFileURL(join(production, "index.js")).href);
     // The default root resolves beside the bundle; no overlay, because this bank is synthetic.
     expect(new bundled.InteractiveContentEngine(undefined, []).getCatalog("class1-water", false).available).toBe(true);
-  });
+  }, 60_000); // Expanded server-only overlays make this real bundle exceed Vitest's 5s default.
 });
