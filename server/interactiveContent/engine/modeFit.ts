@@ -1,6 +1,7 @@
 import { causeEffectFit, toCauseEffectEffects, type CauseEffectChoiceItem } from "../../../shared/interactiveCauseEffect";
 import type { InteractiveDrillExample, InteractiveSessionExample } from "../../../shared/interactiveSessions";
 import committed from "./modeFitExclusions.json";
+import releaseExclusions from "./releaseExclusions.json";
 
 /**
  * Reversible mode-fit control for the published Cause and Effect bank.
@@ -17,11 +18,16 @@ export type ModeFitExclusions = { version: 1; mode: "cause-effect"; reason: "cal
 const exclusions = committed as ModeFitExclusions;
 const excluded = new Map(Object.entries(exclusions.courses).map(([courseKey, ids]) => [courseKey, new Set(ids)]));
 
+export const committedReleaseExclusions = () => releaseExclusions;
+const releaseExcluded = new Set(releaseExclusions.groups.flatMap(group => group.ids.map(id => `${group.courseKey}\0${group.mode}\0${id}`)));
+
 export const committedModeFitExclusions = (): ModeFitExclusions => exclusions;
+
+export const isReleaseExcluded = (courseKey: string, mode: string, id: string): boolean => releaseExcluded.has(`${courseKey}\0${mode}\0${id}`);
 
 /** True when a stored item is withheld from its mode for this course. */
 export function isExcludedFromMode(courseKey: string, mode: string, id: string): boolean {
-  return mode === exclusions.mode && excluded.get(courseKey)?.has(id) === true;
+  return (mode === exclusions.mode && excluded.get(courseKey)?.has(id) === true) || releaseExcluded.has(`${courseKey}\0${mode}\0${id}`);
 }
 
 /** IDs of stored cause-effect items that are calculation practice, in stored order. */

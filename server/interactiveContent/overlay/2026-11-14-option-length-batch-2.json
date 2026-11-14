@@ -217,19 +217,19 @@
      },
      {
       "id": "option-3",
-      "label": "Low chlorine demand in the treated water"
+      "label": "A chlorine residual produced by the filter"
      }
     ],
     "correctOptionId": "option-1",
     "explanation": "Pretreatment can reduce cloudiness that interferes with UV."
    },
-   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
    "review": {
     "verdict": "approved",
     "reviewer": "claude-sonnet-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -257,15 +257,15 @@
      }
     ],
     "correctOptionId": "option-1",
-    "explanation": "Ontario notes sediment plugging can increase cartridge replacement frequency."
+    "explanation": "Sediment plugging can increase cartridge replacement frequency."
    },
-   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
    "review": {
     "verdict": "approved",
     "reviewer": "claude-sonnet-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -325,19 +325,19 @@
      },
      {
       "id": "option-3",
-      "label": "Filters also remove dissolved chemicals"
+      "label": "Every filter removes every dissolved chemical"
      }
     ],
     "correctOptionId": "option-3",
     "explanation": "Removal depends on contaminant and filter technology; ordinary filtration is not universal chemical removal."
    },
-   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "reason": "Restore the original universal claim so the keyed statement is unambiguously flawed.",
    "review": {
     "verdict": "approved",
     "reviewer": "claude-sonnet-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+    "notes": "Historical original owner-authorized AI review predates the subsequent correction. The corrected exercise later received a real gpt-6.1-sol review returning issues: []; see docs/pr63-release-review.md and the non-OIT reconciliation for exact request evidence. Source status unverified; no human technical review."
    }
   },
   {
@@ -397,19 +397,19 @@
      },
      {
       "id": "option-3",
-      "label": "Estimate a missing laboratory result"
+      "label": "Invent a missing laboratory result"
      }
     ],
     "correctOptionId": "option-3",
     "explanation": "Results must be measured and documented accurately, not invented."
    },
-   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
    "review": {
     "verdict": "approved",
     "reviewer": "claude-sonnet-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -533,7 +533,7 @@
     "options": [
      {
       "id": "option-1",
-      "label": "Rapid mix disperses the coagulant within seconds"
+      "label": "Rapid mix disperses the coagulant"
      },
      {
       "id": "option-2",
@@ -547,13 +547,13 @@
     "correctOptionId": "option-3",
     "explanation": "Flocculation promotes, rather than prevents, collisions between destabilized particles."
    },
-   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
    "review": {
     "verdict": "approved",
     "reviewer": "claude-sonnet-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -845,7 +845,7 @@
      },
      {
       "id": "option-3",
-      "label": "Consistent time units for both values"
+      "label": "Compatible volume units for tank volume and volumetric flow rate"
      },
      {
       "id": "option-4",
@@ -855,13 +855,13 @@
     "correctOptionId": "option-4",
     "explanation": "Theoretical detention time is volume divided by volumetric flow."
    },
-   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
    "review": {
     "verdict": "approved",
     "reviewer": "claude-sonnet-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -961,7 +961,7 @@
      },
      {
       "id": "option-2",
-      "label": "Toxic by inhalation at high levels"
+      "label": "Toxic by inhalation"
      },
      {
       "id": "option-3",
@@ -973,15 +973,15 @@
      }
     ],
     "correctOptionId": "option-4",
-    "explanation": "Hydrogen sulfide can dull smell, so odour is not a reliable detector."
+    "explanation": "Hydrogen sulfide can dull smell, so odour is not a reliable detector and must not be used to assess exposure safety."
    },
-   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
    "review": {
     "verdict": "approved",
     "reviewer": "claude-sonnet-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -1141,15 +1141,15 @@
      }
     ],
     "correctOptionId": "option-1",
-    "explanation": "The EPA notes significant sulfite overdosing can suppress dissolved oxygen."
+    "explanation": "Excess sulfite can consume dissolved oxygen and lower effluent dissolved oxygen."
    },
-   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
    "review": {
     "verdict": "approved",
     "reviewer": "claude-sonnet-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -1229,23 +1229,23 @@
     "options": [
      {
       "id": "option-1",
-      "label": "Inspect the bearing"
+      "label": "Inspect under the maintenance procedure"
      },
      {
       "id": "option-2",
-      "label": "Conclude the bearing is fine"
+      "label": "Conclude that the bearing is fine without further investigation"
      }
     ],
     "correctOptionId": "option-1",
-    "explanation": "Condition monitoring identifies changes that may warrant investigation."
+    "explanation": "Condition monitoring identifies changes that may warrant investigation. Follow the maintenance procedure and applicable equipment-safety requirements."
    },
-   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
    "review": {
     "verdict": "approved",
     "reviewer": "claude-sonnet-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -1293,7 +1293,7 @@
     "options": [
      {
       "id": "option-1",
-      "label": "A closed valve alone is enough isolation"
+      "label": "A closed valve alone always guarantees isolation"
      },
      {
       "id": "option-2",
@@ -1301,15 +1301,15 @@
      }
     ],
     "correctOptionId": "option-1",
-    "explanation": "CCOHS warns that closing valves alone is insufficient for pipe isolation in this context."
+    "explanation": "A closed valve alone does not always guarantee safe isolation. Use the isolation method established by the hazard assessment and applicable requirements."
    },
-   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
    "review": {
     "verdict": "approved",
     "reviewer": "claude-sonnet-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -1493,15 +1493,15 @@
      }
     ],
     "correctOptionId": "option-4",
-    "explanation": "The manual calls for clean, unscratched vials free of fingerprints."
+    "explanation": "Clean, unscratched vials free of fingerprints help avoid sampling-cell problems; follow the instrument instructions."
    },
-   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
    "review": {
     "verdict": "approved",
     "reviewer": "claude-sonnet-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -1517,7 +1517,7 @@
     "options": [
      {
       "id": "option-1",
-      "label": "hose left submerged in a non-potable tank"
+      "label": "hose connected to drinking water and submerged in a non-potable tank without appropriate backflow protection"
      },
      {
       "id": "option-2",
@@ -1535,13 +1535,13 @@
     "correctOptionId": "option-4",
     "explanation": "A sealed bottle disconnected from the system provides no flow path into the main; the other choices can provide intrusion or backflow paths."
    },
-   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
    "review": {
     "verdict": "approved",
     "reviewer": "claude-sonnet-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -1749,19 +1749,19 @@
      },
      {
       "id": "option-3",
-      "label": "Remove the need for storage tanks"
+      "label": "Eliminate the need for pipes"
      }
     ],
     "correctOptionId": "option-1",
     "explanation": "Pump energy can lift water to a higher elevation."
    },
-   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
    "review": {
     "verdict": "approved",
     "reviewer": "claude-sonnet-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -2253,19 +2253,19 @@
      },
      {
       "id": "option-3",
-      "label": "Handle the vial by its clean surfaces"
+      "label": "Handle the vial by its designated grip area, avoiding optical surfaces"
      }
     ],
     "correctOptionId": "option-1",
     "explanation": "Bubbles can affect readings; use the method’s prescribed technique."
    },
-   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
    "review": {
     "verdict": "approved",
     "reviewer": "claude-sonnet-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -2281,11 +2281,11 @@
     "options": [
      {
       "id": "option-1",
-      "label": "Name a cause before checking records"
+      "label": "Conclude the cause without checking relevant records or conditions"
      },
      {
       "id": "option-2",
-      "label": "Record the customer's location and concern"
+      "label": "Record the customer's location, pressure concern and time of the complaint"
      },
      {
       "id": "option-3",
@@ -2295,13 +2295,13 @@
     "correctOptionId": "option-1",
     "explanation": "A complaint has multiple possible causes and should be investigated."
    },
-   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
    "review": {
     "verdict": "approved",
     "reviewer": "claude-sonnet-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -2561,7 +2561,7 @@
      },
      {
       "id": "option-3",
-      "label": "Motor winding resistance"
+      "label": "Motor insulation resistance"
      },
      {
       "id": "option-4",
@@ -2571,13 +2571,13 @@
     "correctOptionId": "option-3",
     "explanation": "A sewer camera can show interior pipe conditions, not test motor insulation."
    },
-   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "reason": "Restore insulation to the keyed measurement so it matches the original answer and explanation.",
    "review": {
     "verdict": "approved",
     "reviewer": "claude-sonnet-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+    "notes": "Historical original owner-authorized AI review predates the subsequent correction. The corrected exercise later received a real gpt-6.1-sol review returning issues: []; see docs/pr63-release-review.md and the non-OIT reconciliation for exact request evidence. Source status unverified; no human technical review."
    }
   },
   {
@@ -2729,15 +2729,15 @@
      }
     ],
     "correctOptionId": "option-2",
-    "explanation": "The first three observations describe station operating conditions."
+    "explanation": "Liquid level, pump status and alarm condition describe station operating conditions; street tree species does not."
    },
-   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "reason": "Clarify the explanation to match the keyed choice and the listed station observations.",
    "review": {
     "verdict": "approved",
     "reviewer": "claude-sonnet-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+    "notes": "Historical original owner-authorized AI review predates the subsequent correction. The corrected exercise later received a real gpt-6.1-sol review returning issues: []; see docs/pr63-release-review.md and the non-OIT reconciliation for exact request evidence. Source status unverified; no human technical review."
    }
   },
   {
@@ -2897,7 +2897,7 @@
     "options": [
      {
       "id": "option-1",
-      "label": "To reduce later inspection work"
+      "label": "To avoid all further inspection"
      },
      {
       "id": "option-2",
@@ -2911,13 +2911,13 @@
     "correctOptionId": "option-2",
     "explanation": "Asset identifiers tie observations to the correct location and history."
    },
-   "reason": "Option wording rebalanced so the correct option is not the longest or the only plausible one.",
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
    "review": {
     "verdict": "approved",
     "reviewer": "claude-sonnet-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review."
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length, by absurdity or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {

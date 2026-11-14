@@ -50,14 +50,14 @@
     "prompt": "Hydrogen sulfide is lighter than air, so it tends to collect near manhole openings rather than low in a confined space.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "Hydrogen sulfide is heavier than air (specific gravity about 1.19) and tends to accumulate in low areas of a confined space."
+    "explanation": "Hydrogen sulfide is heavier than air and can accumulate in low areas, but mixing can distribute it elsewhere. Elevation does not establish safety; follow the applicable confined-space atmospheric testing procedure."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -69,14 +69,14 @@
     "prompt": "Methane in a sewer atmosphere is heavier than air and settles at low points.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "Methane is lighter than air (specific gravity about 0.55) and tends to rise; it is also flammable."
+    "explanation": "Methane is lighter than air and flammable; it can rise, but mixing can distribute it elsewhere. Elevation does not establish safety; follow the applicable confined-space atmospheric testing procedure."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -107,14 +107,14 @@
     "prompt": "A gravity sewer velocity of about 0.1 m/s is the usual design target for keeping solids in suspension.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "A minimum self-cleansing velocity of roughly 0.6 m/s is a common design guide; 0.1 m/s lets solids settle."
+    "explanation": "Very low velocity increases the risk of solids deposition. Sewer design velocity depends on the applicable design criteria and hydraulic conditions."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -164,14 +164,14 @@
     "prompt": "The pump run-hours shown on a lift-station controller report the volume of wastewater pumped.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "Run-hours record operating time. Volume needs a flow meter, or run time multiplied by a verified pumping rate."
+    "explanation": "Run-hours record operating time, not volume. A flow meter can measure flow; run time multiplied by a pumping rate verified for representative conditions estimates volume."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -259,14 +259,14 @@
     "prompt": "Smoke testing is used mainly to measure the flow rate in a sewer.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "Smoke testing locates defects and illegal connections, such as roof drains, that let inflow into a sewer."
+    "explanation": "Smoke testing helps locate defects and inflow connections, including roof drains improperly connected to sanitary sewers where prohibited."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -351,17 +351,17 @@
    "difficulty": "unclassified",
    "example": {
     "id": "rsb-class1-water-005",
-    "prompt": "Filter backwashing pushes water downward through the media in the normal filtration direction.",
+    "prompt": "In a conventional downflow granular-media filter, backwashing pushes water downward through the media in the normal filtration direction.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "Backwash water flows upward through the media to expand the bed and release trapped particles."
+    "explanation": "In this filter, backwash water flows upward through the media to expand the bed and release trapped particles."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -867,14 +867,14 @@
     "prompt": "Dissolved oxygen in an aeration basin is commonly kept near 0 mg/L to promote nitrification.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "Nitrifying bacteria need oxygen. Aeration basins are commonly held near 2 mg/L dissolved oxygen."
+    "explanation": "Nitrifying bacteria need oxygen. About 2 mg/L dissolved oxygen is a general reference, not a universal target; process conditions and facility requirements determine the appropriate target."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -981,14 +981,14 @@
     "prompt": "Hydraulic jetting cleans a sewer by pulling a rotating cable with cutting blades through the pipe.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "That describes power rodding. Hydraulic jetting uses a high-velocity water stream."
+    "explanation": "Hydraulic jetting uses a high-velocity water stream, not a rotating cable with blades."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -1000,14 +1000,14 @@
     "prompt": "A CCTV inspection measures the flow rate in a sewer.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "CCTV inspection records the visible condition of the pipe interior. Flow rate needs a flow meter."
+    "explanation": "CCTV inspection records the visible condition of the pipe interior. Flow rate requires a separate measurement method."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -1339,17 +1339,17 @@
    "difficulty": "unclassified",
    "example": {
     "id": "rsb-class2-water-dist-001",
-    "prompt": "True or false: Backsiphonage happens when the non-potable side is at higher pressure than the supply.",
+    "prompt": "True or false: Backsiphonage occurs when elevated downstream pressure pushes non-potable water backward into the supply.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "That is backpressure. Backsiphonage happens when supply pressure drops low or negative and draws water backward."
+    "explanation": "Elevated downstream pressure driving reverse flow is backpressure. Backsiphonage results from reduced supply pressure drawing water backward through a cross-connection."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -1456,14 +1456,14 @@
     "prompt": "True or false: A double check valve assembly is a suitable device for a high-hazard cross-connection.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "High-hazard connections need a reduced pressure principle assembly or an air gap. A double check suits lower hazards."
+    "explanation": "A double check assembly is not generally suitable for a high-hazard connection. Required protection depends on the application and governing requirements; an air gap may be required. Use the approved protection for the specific connection."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -1475,14 +1475,14 @@
     "prompt": "True or false: Soil from a trench wall is light enough that a shallow cave-in rarely injures a worker.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "Soil is very heavy, about 1.5 to 2 tonnes per cubic metre, so even a shallow collapse can injure or trap a worker."
+    "explanation": "Soil is heavy, so even a shallow collapse can injure or trap a worker."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -1491,17 +1491,17 @@
    "difficulty": "unclassified",
    "example": {
     "id": "rsb-class2-water-dist-009",
-    "prompt": "True or false: Oxygen-deficient air in a confined space is generally considered to start below about 23.5% oxygen.",
+    "prompt": "True or false: Under the U.S. OSHA confined-space definitions, air below 23.5% oxygen is oxygen-deficient.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "Oxygen deficiency is generally below about 19.5%. Levels above about 23.5% are oxygen-enriched."
+    "explanation": "Under U.S. OSHA definitions, oxygen-deficient means below 19.5% oxygen; oxygen-enriched means above 23.5%. Oxygen within these limits alone does not establish a safe atmosphere or authorize entry."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -1513,14 +1513,14 @@
     "prompt": "True or false: A storage tank's overflow pipe should discharge directly into a sanitary sewer without an air gap.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "Overflows need an air gap or other protection so contaminated water cannot enter the tank."
+    "explanation": "Do not connect the overflow directly to a sanitary sewer. Use an approved, physically separated overflow discharge arrangement meeting applicable requirements; an air gap does not by itself authorize discharge to a sanitary sewer."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -1551,14 +1551,14 @@
     "prompt": "True or false: Exercising a valve means replacing it on a fixed schedule.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "Exercising means operating the valve through its range to confirm it works and to keep it free."
+    "explanation": "Exercising means controlled valve operation under the approved valve-specific procedure and system constraints, to check operation and help keep the valve free."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -1589,14 +1589,14 @@
     "prompt": "Nitrification raises the alkalinity of the mixed liquor.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "Nitrification consumes alkalinity, about 7.1 mg as CaCO₃ per mg of ammonia-nitrogen oxidized."
+    "explanation": "Complete nitrification to nitrate theoretically consumes approximately 7.1 mg of alkalinity as CaCO₃ per mg of ammonia-nitrogen oxidized. Actual process needs depend on conditions."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -1624,17 +1624,17 @@
    "difficulty": "unclassified",
    "example": {
     "id": "rsb-class2-ww-004",
-    "prompt": "A flow-proportional composite takes equal sample volumes at equal time intervals regardless of flow.",
+    "prompt": "A flow-proportional composite always takes equal sample volumes at equal time intervals, even when flow varies.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "That is a time composite. A flow-proportional composite weights each portion by the flow at the time."
+    "explanation": "Flow-proportional composite contributions represent wastewater volume. They can use variable-volume aliquots at fixed time intervals or equal-volume aliquots after equal increments of cumulative flow."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -1700,10 +1700,10 @@
    "difficulty": "unclassified",
    "example": {
     "id": "rsb-class3-wastewater-coll-002",
-    "prompt": "Slowing a pump's stop sequence tends to increase the pressure surge in a force main.",
+    "prompt": "A longer pump-stop time is sufficient to control force-main surge without considering check-valve closure.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "Gradual stops and controlled valve closure reduce surges. Sudden stops cause them."
+    "explanation": "Slower changes in flow may reduce some surges, but pump and check-valve behavior, main profile and timing affect transients. Use a system-specific engineering assessment; do not change settings based on this item."
    },
    "review": {
     "verdict": "approved",
@@ -1757,7 +1757,7 @@
    "difficulty": "unclassified",
    "example": {
     "id": "rsb-class3-water-001",
-    "prompt": "In Ontario's described conventional filtration process, rapid sand filtration comes before sedimentation.",
+    "prompt": "In conventional filtration, rapid sand filtration comes before sedimentation.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
     "explanation": "In conventional filtration, coagulation, flocculation and sedimentation come before filtration."
@@ -1767,7 +1767,7 @@
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -1931,14 +1931,14 @@
     "prompt": "Fire flow reserves are usually excluded from the storage volume planned for a distribution system.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "Storage is usually sized for equalization, fire flow and emergency reserves together."
+    "explanation": "Distribution storage planning considers equalization and emergency needs and, where applicable, fire-flow needs. Requirements and how allowances are combined depend on the system."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -1947,10 +1947,10 @@
    "difficulty": "unclassified",
    "example": {
     "id": "rsb-class3-water-dist-006",
-    "prompt": "Raising pressure at a service connection usually increases backflow risk from that connection.",
+    "prompt": "Maintaining positive public-supply pressure at a service connection eliminates the need for cross-connection protection.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "Maintaining adequate supply pressure lowers backflow risk. Low or negative pressure raises it."
+    "explanation": "Low supply pressure can cause backsiphonage; customer-side pressure exceeding supply pressure can cause backpressure backflow. Maintain required cross-connection protection even when supply pressure is positive."
    },
    "review": {
     "verdict": "approved",
@@ -2330,14 +2330,14 @@
     "prompt": "A sludge volume index of 50 mL/g usually indicates poorly settling, bulking sludge.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "A low SVI, around 50 to 150 mL/g, indicates good settling. High values, above about 150 to 200 mL/g, suggest bulking."
+    "explanation": "SVI ranges are approximate screening guides. Higher values can suggest bulking, but interpret SVI alongside settling observations and effluent solids; low SVI alone does not guarantee clear effluent."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -2745,17 +2745,17 @@
    "difficulty": "unclassified",
    "example": {
     "id": "rsb-wqa-001",
-    "prompt": "A composite sample represents water at a single moment.",
+    "prompt": "A time-composite sample represents water at a single moment.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "A grab sample represents a single moment. A composite combines portions collected over a period."
+    "explanation": "A grab sample represents a single moment. A time-composite sample combines portions collected over a period."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -2957,14 +2957,14 @@
     "prompt": "Cation exchange softening removes hardness by adding calcium and magnesium to the water.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "Cation exchange removes calcium and magnesium, usually exchanging them for sodium or hydrogen ions."
+    "explanation": "In sodium-cycle softening, cation exchange removes calcium and magnesium by exchanging them for sodium ions."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -3258,17 +3258,17 @@
    "difficulty": "unclassified",
    "example": {
     "id": "rsb-wpi-class1-water-coll-008",
-    "prompt": "A sewer pipe 8 inches in diameter has a larger flow area than a 12-inch pipe.",
+    "prompt": "A circular sewer pipe 8 inches in diameter has a larger full internal cross-sectional area than a circular 12-inch pipe.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "Area rises with the square of diameter. A 12-inch pipe has about 2.25 times the area of an 8-inch pipe."
+    "explanation": "Full internal area rises with the square of diameter. A 12-inch circular pipe has about 2.25 times the area of an 8-inch pipe."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -3277,7 +3277,7 @@
    "difficulty": "unclassified",
    "example": {
     "id": "rsb-wpi-class1-water-coll-009",
-    "prompt": "A pump rated at 200 gpm that runs for 3 hours pumps about 6,000 gallons.",
+    "prompt": "A pump delivering a constant 200 gpm for 3 hours pumps about 6,000 gallons.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
     "explanation": "200 gpm × 180 minutes = 36,000 gallons."
@@ -3287,7 +3287,7 @@
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -3866,17 +3866,17 @@
    "difficulty": "unclassified",
    "example": {
     "id": "rsb-wpi-class2-water-009",
-    "prompt": "True or false: A falling differential pressure across a filter is the usual sign that it is clogging.",
+    "prompt": "True or false: At comparable flow, a falling differential pressure across a filter is the usual sign that it is clogging.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "Clogging raises the differential pressure across a filter."
+    "explanation": "At comparable flow, clogging generally raises differential pressure. Interpret pressure alongside flow, which may change."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -4018,17 +4018,17 @@
    "difficulty": "unclassified",
    "example": {
     "id": "rsb-wpi-class2-water-coll-005",
-    "prompt": "A 10-inch sewer has about twice the flow area of a 5-inch sewer.",
+    "prompt": "A circular 10-inch sewer has about twice the full internal cross-sectional area of a circular 5-inch sewer.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "Area scales with diameter squared, so a 10-inch sewer has four times the area of a 5-inch sewer."
+    "explanation": "Full circular area scales with diameter squared, so the 10-inch sewer has four times the full internal area of the 5-inch sewer."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -4116,14 +4116,14 @@
     "prompt": "True or false: A water balance compares system input with the treated water quality.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "A water balance compares system input volume with billed and authorized use to reveal losses."
+    "explanation": "A water balance accounts for system input volume, billed and unbilled authorized consumption, and water losses."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -4477,14 +4477,14 @@
     "prompt": "Turbidity measures the amount of dissolved salts in water.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "Turbidity measures cloudiness from suspended particles. Dissolved salts are measured as TDS or conductivity."
+    "explanation": "Turbidity measures cloudiness from suspended particles. TDS measures dissolved solids; conductivity measures electrical conductance and can estimate TDS using an appropriate water-specific relationship."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -5009,14 +5009,14 @@
     "prompt": "Hydrogen sulfide tends to collect near the top of a sewer space because it is lighter than air.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "Hydrogen sulfide is heavier than air and accumulates in low areas."
+    "explanation": "Hydrogen sulfide is heavier than air and can accumulate in low areas, but mixing can distribute it elsewhere. Elevation alone cannot establish safety; follow the applicable confined-space atmospheric testing procedure."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -5123,14 +5123,14 @@
     "prompt": "Dry-weather flow data alone is the best way to identify inflow problems.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "Inflow appears during wet weather, so wet-weather data compared with a dry-weather baseline is needed."
+    "explanation": "Comparing wet-weather flow with a dry-weather baseline helps identify rainfall-derived inflow; inflow can also have other sources."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {
@@ -5139,17 +5139,17 @@
    "difficulty": "unclassified",
    "example": {
     "id": "rsb-wpi-class4-water-coll-009",
-    "prompt": "An 18-inch sewer has about 1.5 times the flow area of a 12-inch sewer.",
+    "prompt": "A circular 18-inch sewer has about 1.5 times the full internal cross-sectional area of a circular 12-inch sewer.",
     "mode": "rapid-swipe",
     "correctAnswer": false,
-    "explanation": "Area scales with diameter squared: (18 ÷ 12)² = 2.25 times."
+    "explanation": "Full circular area scales with diameter squared: (18 ÷ 12)² = 2.25 times."
    },
    "review": {
     "verdict": "approved",
     "reviewer": "claude-opus-5-5",
     "reviewAuthority": "owner-authorized-ai-review",
     "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review."
+    "notes": "Written and reviewed as an original false statement on a standard operator concept. The statement is wrong on one fact, definition or computed value and uses no absolute wording; the explanation states the correct fact. Numeric values were recomputed. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
    }
   },
   {

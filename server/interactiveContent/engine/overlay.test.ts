@@ -131,16 +131,61 @@ describe("every committed revision", () => {
     return (engine as unknown as { examples(m: unknown, s: unknown[]): Choice[] }).examples(manifest, [entry])[0];
   };
 
-  it("keeps each question's option ids, keyed answer and explanation, and states no absolute wording", () => {
+  it("keeps option ids and keys, pins corrected explanations, and limits absolute wording", () => {
     expect(replacements.length).toBeGreaterThanOrEqual(124);
-    const absolute = /\b(always|never|automatically|guarantee[sd]?|cannot|must|completely|entirely|any|solely|only)\b/i;
+    expect(replacements.filter(r => r.courseKey === "class1-wastewater-coll" && r.replacesId === "class1-wastewater-coll-045")).toHaveLength(1);
+    const absolute = /\b(always|never|automatically|guarantee[sd]?|cannot|must|completely|entirely|any|solely|only|every)\b/i;
+    const correctedExplanations: Record<string, [string, string]> = {
+      "class1-water-056": ["Ontario notes sediment plugging can increase cartridge replacement frequency.", "Sediment plugging can increase cartridge replacement frequency."],
+      "class1-ww-046": ["Hydrogen sulfide can dull smell, so odour is not a reliable detector.", "Hydrogen sulfide can dull smell, so odour is not a reliable detector and must not be used to assess exposure safety."],
+      "class1-ww-061": ["The EPA notes significant sulfite overdosing can suppress dissolved oxygen.", "Excess sulfite can consume dissolved oxygen and lower effluent dissolved oxygen."],
+      "class1-ww-065": ["Condition monitoring identifies changes that may warrant investigation.", "Condition monitoring identifies changes that may warrant investigation. Follow the maintenance procedure and applicable equipment-safety requirements."],
+      "class1-ww-072": ["CCOHS warns that closing valves alone is insufficient for pipe isolation in this context.", "A closed valve alone does not always guarantee safe isolation. Use the isolation method established by the hazard assessment and applicable requirements."],
+      "class1-water-dist-037": ["The manual calls for clean, unscratched vials free of fingerprints.", "Clean, unscratched vials free of fingerprints help avoid sampling-cell problems; follow the instrument instructions."],
+      "class1-wastewater-coll-045": ["The first three observations describe station operating conditions.", "Liquid level, pump status and alarm condition describe station operating conditions; street tree species does not."],
+    };
     for (const r of replacements) {
       const before = storedExample(r.courseKey, r.replacesId);
       const after = r.example as unknown as Choice;
       expect(after.options.map(o => o.id), r.replacesId).toEqual(before.options.map(o => o.id));
       expect(after.correctOptionId, r.replacesId).toBe(before.correctOptionId);
-      expect(after.explanation, r.replacesId).toBe(before.explanation);
-      for (const o of after.options) expect(absolute.test(o.label), `${r.replacesId}: ${o.label}`).toBe(false);
+      expect(after.options.filter(o => o.id === after.correctOptionId), r.replacesId).toHaveLength(1);
+      if (Object.hasOwn(correctedExplanations, r.replacesId)) {
+        expect(before.explanation, r.replacesId).toBe(correctedExplanations[r.replacesId][0]);
+        expect(after.explanation, r.replacesId).toBe(correctedExplanations[r.replacesId][1]);
+      } else {
+        expect(after.explanation, r.replacesId).toBe(before.explanation);
+      }
+      for (const o of after.options) {
+        if (r.courseKey === "class1-water" && r.replacesId === "class1-water-068" && o.id === "option-3") {
+          expect(o.label).toBe("Every filter removes every dissolved chemical");
+          expect(after.correctOptionId).toBe(o.id);
+        } else if (r.courseKey === "class1-ww" && r.replacesId === "class1-ww-072" && o.id === "option-1") {
+          // The universal claim is the hazardous misconception to identify.
+          expect(o.label).toBe("A closed valve alone always guarantees isolation");
+          expect(after.correctOptionId).toBe(o.id);
+        } else {
+          expect(absolute.test(o.label), `${r.replacesId}: ${o.label}`).toBe(false);
+        }
+      }
+    }
+  });
+
+  it("keeps the corrected choices aligned with their keys and explanations", () => {
+    const corrected = [
+      { courseKey: "class2-ww", id: "class2-ww-032", key: "option-1", label: "Filtration", otherId: "option-3", otherLabel: "Fill with influent", explanation: /Filtration is not one of the five listed batch phases/i },
+      { courseKey: "class1-water", id: "class1-water-068", key: "option-3", label: "Every filter removes every dissolved chemical", explanation: /depends on contaminant and filter technology/i },
+      { courseKey: "class1-wastewater-coll", id: "class1-wastewater-coll-040", key: "option-3", label: "Motor insulation resistance", explanation: /not test motor insulation/i },
+      { courseKey: "class1-wastewater-coll", id: "class1-wastewater-coll-045", key: "option-2", label: "Street tree species", explanation: /liquid level, pump status and alarm condition.*street tree species does not/i },
+    ];
+    for (const item of corrected) {
+      const matches = replacements.filter(r => r.courseKey === item.courseKey && r.replacesId === item.id);
+      expect(matches, item.id).toHaveLength(1);
+      const after = matches[0].example as unknown as Choice;
+      expect(after.correctOptionId, item.id).toBe(item.key);
+      expect(after.options.find(o => o.id === item.key)?.label, item.id).toBe(item.label);
+      if (item.otherId) expect(after.options.find(o => o.id === item.otherId)?.label, item.id).toBe(item.otherLabel);
+      expect(after.explanation, item.id).toMatch(item.explanation);
     }
   });
 
