@@ -129,6 +129,12 @@ function containsLabel(visible, label) {
   const escaped = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   return new RegExp(`(?:^|[^\\p{L}\\p{M}\\p{N}_])${escaped}(?=$|[^\\p{L}\\p{M}\\p{N}_])`, 'u').test(visible);
 }
+// Mirrors shared/interactiveCauseEffect.ts isQuantityLabel; a guarded test compares them.
+const QUANTITY = /^(?:(?:about|approximately|approx\.?|roughly|nearly)\s+|[~≈]\s*)?[-+]?\$?\d[\d,]*(?:\.\d+)?(?:$|[\s%/-])/u;
+export function isQuantityLabel(label) {
+  const value = label.normalize('NFKC').trim().replace(/\s+/gu, ' ');
+  return value.length <= 60 && QUANTITY.test(value);
+}
 export function payloadIssues(item, serverPayloadSchema = null) {
   const parsed = (serverPayloadSchema ?? PayloadSchema).safeParse(item);
   if (!parsed.success) return ['payload-schema-invalid'];
@@ -138,6 +144,8 @@ export function payloadIssues(item, serverPayloadSchema = null) {
   }
   if (['odd-one-out', 'cause-effect', 'tap-the-flaw'].includes(item.mode)) {
     if (new Set(item.options.map(o => o.id)).size !== item.options.length || !unique(item.options.map(o => o.label)) || !item.options.some(o => o.id === item.correctOptionId)) issues.push('options-or-answer-invalid');
+    // Mode fit: a computed quantity is arithmetic practice, not cause and effect.
+    else if (item.mode === 'cause-effect' && item.options.every(o => isQuantityLabel(o.label))) issues.push('cause-effect-calculation-not-mode-fit');
   }
   if (item.mode === 'before-after') {
     const visible = `${item.prompt} ${item.instruction ?? ''}`;

@@ -27,7 +27,7 @@ function request(method: "GET" | "POST", procedure: string, input: unknown) {
 beforeEach(() => {
   vi.clearAllMocks();
   const result = fixture({ perMode: 31, secondCourse: true }); root = result.root; records = result.records;
-  vi.mocked(getInteractiveContentEngine).mockReturnValue(new InteractiveContentEngine(root));
+  vi.mocked(getInteractiveContentEngine).mockReturnValue(new InteractiveContentEngine(root, []));
   vi.mocked(resolveAccessForRequest).mockResolvedValue(false);
 });
 afterEach(() => {
@@ -40,11 +40,13 @@ describe("interactive engine public POST contract", () => {
     const catalog = await request("POST", "getCatalog", { courseKey: payload.courseKey });
     expect(catalog.status).toBe(200);
     const catalogData = (await catalog.json()).result.data.json;
-    expect(catalogData).toMatchObject({ courseKey: payload.courseKey, available: true, locked: false, version: "synthetic-v1" });
+    expect(catalogData).toMatchObject({ courseKey: payload.courseKey, available: true, locked: false });
+    expect(catalogData.version).toMatch(/^effective-[a-f0-9]{64}$/);
     expect(catalogData.modes.every((mode: { totalCount: number }) => mode.totalCount === 31)).toBe(true);
     const session = await request("POST", "startSession", payload);
     expect(session.status).toBe(200);
     const data = (await session.json()).result.data.json;
+    expect(data.version).toBe(catalogData.version);
     expect(data).toMatchObject({ locked: false, totalAvailableCount: 31, filters: { topicId: null, difficulty: null, requestedSize: 20 } });
     expect(data.examples).toHaveLength(20);
     const content = await request("POST", "getContent", { courseKey: payload.courseKey });

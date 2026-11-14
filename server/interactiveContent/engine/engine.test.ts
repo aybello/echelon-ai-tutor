@@ -1,4 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { isExcludedFromMode, presentCauseEffect } from "./modeFit";
 import { existsSync, readFileSync, rmSync, unlinkSync, symlinkSync, writeFileSync, mkdtempSync } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
@@ -31,7 +32,7 @@ describe("private indexed interactive engine", () => {
   });
   it("preserves every original preview and bounds compatibility content to legacy", () => {
     const { root, legacy } = make({ perMode: 1001 });
-    const engine = new InteractiveContentEngine(root);
+    const engine = new InteractiveContentEngine(root, []);
     const seen = new Set<string>();
     for (let refresh = 0; refresh < 3; refresh++) {
       for (const mode of interactiveModes) {
@@ -51,7 +52,7 @@ describe("private indexed interactive engine", () => {
 
   it("catalog reads only registration and one manifest for a 6006-item bank; session loads only selected shards", () => {
     const { root } = make({ perMode: 1001 });
-    const engine = new InteractiveContentEngine(root);
+    const engine = new InteractiveContentEngine(root, []);
     expect(engine.diagnostics().diskReads).toBe(0);
     const catalog = engine.getCatalog("class1-water", true);
     expect(catalog.modes.map(m => m.totalCount)).toEqual([1001, 1001, 1001, 1001, 1001, 1001]);
@@ -72,7 +73,7 @@ describe("private indexed interactive engine", () => {
 
   it("samples exactly the mode/topic/difficulty intersection without replacement and exposes truthful counts", () => {
     const { root, records } = make({ perMode: 80 });
-    const engine = new InteractiveContentEngine(root);
+    const engine = new InteractiveContentEngine(root, []);
     for (const mode of interactiveModes) {
       const expected = records.filter(r => r.example.mode === mode && r.topicId === "alpha" && r.difficulty === "easy");
       const result = engine.startSession(input({ mode, topicId: "alpha", difficulty: "easy", sessionSize: 50 }), true);
@@ -89,7 +90,7 @@ describe("private indexed interactive engine", () => {
 
   it("returns an honest empty selection for nonexistent topics or empty intersections", () => {
     const { root } = make();
-    const engine = new InteractiveContentEngine(root);
+    const engine = new InteractiveContentEngine(root, []);
     for (const filters of [{ topicId: "missing" }, { topicId: "alpha", difficulty: "medium" }]) {
       const result = engine.startSession(input(filters), true);
       expect(result).toMatchObject({ available: true, locked: false, totalAvailableCount: 0, examples: [] });
@@ -106,7 +107,7 @@ describe("private indexed interactive engine", () => {
 
   it("enforces the response byte budget without admitting items outside the intersection", () => {
     const { root } = make({ perMode: 101, huge: true });
-    const engine = new InteractiveContentEngine(root);
+    const engine = new InteractiveContentEngine(root, []);
     const result = engine.startSession(input({ topicId: "alpha", difficulty: "easy", sessionSize: 50 }), true);
     expect(result.totalAvailableCount).toBe(33);
     expect(result.examples.length).toBeGreaterThan(0);
@@ -118,7 +119,7 @@ describe("private indexed interactive engine", () => {
 
   it("refuses 309A, aliases, traversal, unknown courses, and cross-course artifacts", () => {
     const { root } = make({ secondCourse: true });
-    const engine = new InteractiveContentEngine(root);
+    const engine = new InteractiveContentEngine(root, []);
     for (const key of ["electrician-309a", "electrician-309a-demo", "class1", "../class1-water", "unknown"]) expect(() => engine.getCatalog(key, true)).toThrow(InteractiveEngineError);
     expect(engine.startSession(input({ courseKey: "class2-water" }), false).examples[0].id).toMatch(/^class2-water-/);
     changeManifest(root, m => { m.courseKey = "class2-water"; });
@@ -127,7 +128,7 @@ describe("private indexed interactive engine", () => {
 
   it.each(["missing-manifest", "missing-shard", "hash", "invalid-json", "oversize", "symlink"])("fails closed on %s, with no legacy fallback", kind => {
     const { root } = make();
-    const engine = new InteractiveContentEngine(root);
+    const engine = new InteractiveContentEngine(root, []);
     const file = join(root, kind === "missing-manifest" ? "class1-water/manifest.json" : "class1-water/shard-0000.json");
     if (kind === "missing-manifest" || kind === "missing-shard") unlinkSync(file);
     else if (kind === "hash") { const data = readFileSync(file, "utf8"); writeFileSync(file, data.replace("Synthetic question", "Tampered! question")); }
@@ -145,13 +146,13 @@ describe("private indexed interactive engine", () => {
       if (kind === "bad-offset") m.entries[0].offset = 99;
       if (kind === "bad-item-hash") m.entries[0].sha256 = "0".repeat(64);
     });
-    const engine = new InteractiveContentEngine(root);
+    const engine = new InteractiveContentEngine(root, []);
     expect(() => engine.startSession(input(), false)).toThrow(InteractiveEngineError);
   });
 
   it("invalidates validated cache on content changes and prevents caller mutation", () => {
     const { root } = make();
-    const engine = new InteractiveContentEngine(root);
+    const engine = new InteractiveContentEngine(root, []);
     const first = engine.getLegacyContent("class1-water", true);
     expect(() => { first.examples[0].prompt = "Changed by caller"; }).toThrow();
     engine.startSession(input(), false);
@@ -165,12 +166,12 @@ describe("private indexed interactive engine", () => {
     const registry = JSON.parse(readFileSync(join(root, "registry.json"), "utf8"));
     delete registry.courses["class1-water"];
     writeJson(root, "registry.json", registry);
-    expect(() => new InteractiveContentEngine(root).getCatalog("class1-water", false)).toThrow(InteractiveEngineError);
+    expect(() => new InteractiveContentEngine(root, []).getCatalog("class1-water", false)).toThrow(InteractiveEngineError);
   });
 
   it("revalidates a cached shard after a checksummed manifest changes its item hash", () => {
     const { root } = make();
-    const engine = new InteractiveContentEngine(root);
+    const engine = new InteractiveContentEngine(root, []);
     engine.startSession(input(), false);
     changeManifest(root, m => { m.entries[0].sha256 = "0".repeat(64); });
     expect(() => engine.startSession(input(), false)).toThrow(InteractiveEngineError);
@@ -248,14 +249,16 @@ describe("private indexed interactive engine", () => {
     const result = compileLegacyRelease({ outputDir: root });
     expect(result).toMatchObject({ courseCount: 38, itemCount: 3821 });
     const original = readFileSync(join(root, "registry.json"), "utf8");
-    const engine = new InteractiveContentEngine(root);
+    const engine = new InteractiveContentEngine(root, []);
     const registry = JSON.parse(original);
     for (const key of Object.keys(registry.courses)) {
       const catalog = engine.getCatalog(key, false);
       const legacy = engine.getLegacyContent(key, true);
-      expect(catalog.modes.reduce((n, mode) => n + mode.totalCount, 0)).toBe(legacy.examples.length);
+      // Cause and Effect calculation items stay stored but are withheld from catalogs (mode fit).
+      const withheld = legacy.examples.filter(e => isExcludedFromMode(key, e.mode, e.id)).length;
+      expect(catalog.modes.reduce((n, mode) => n + mode.totalCount, 0)).toBe(legacy.examples.length - withheld);
       const manifest = JSON.parse(readFileSync(join(root, `${key}/manifest.json`), "utf8"));
-      for (const mode of interactiveModes) expect(engine.startSession(input({ courseKey: key, mode }), false).examples[0]).toEqual(legacy.examples.find(e => e.id === manifest.previewIds[mode]));
+      for (const mode of interactiveModes) expect(engine.startSession(input({ courseKey: key, mode }), false).examples[0]).toEqual(presentCauseEffect(legacy.examples.find(e => e.id === manifest.previewIds[mode])!));
       expect(manifest.classification).toBe("legacy_release");
       expect(manifest.entries.every((e: { topicId: string; difficulty: string }) => e.topicId === "unclassified" && e.difficulty === "unclassified")).toBe(true);
       expect(Object.keys(manifest)).not.toContain("humanApproval");
@@ -274,7 +277,7 @@ describe("private indexed interactive engine", () => {
     const production = join(root, "dist");
     // A tiny isolated bundle proves import.meta.url works after bundling, no server launch.
     const entry = join(root, "entry.ts");
-    writeFileSync(entry, `export { getInteractiveContentEngine } from ${JSON.stringify(join(process.cwd(), "server/interactiveContent/engine/loader.ts"))};`);
+    writeFileSync(entry, `export { InteractiveContentEngine } from ${JSON.stringify(join(process.cwd(), "server/interactiveContent/engine/loader.ts"))};`);
     const { cpSync, mkdirSync } = await import("node:fs");
     mkdirSync(production);
     cpSync(root + "/class1-water", production + "/interactive-content/class1-water", { recursive: true });
@@ -282,6 +285,7 @@ describe("private indexed interactive engine", () => {
     const bundle = await build({ entryPoints: [entry], outfile: join(production, "index.js"), platform: "node", format: "esm", bundle: true, logLevel: "silent", metafile: true });
     expect(Object.keys(bundle.metafile!.inputs).some(file => file.includes("typescript/") || file.endsWith("/compiler.ts"))).toBe(false);
     const bundled = await import(/* @vite-ignore */ pathToFileURL(join(production, "index.js")).href);
-    expect(bundled.getInteractiveContentEngine().getCatalog("class1-water", false).available).toBe(true);
+    // The default root resolves beside the bundle; no overlay, because this bank is synthetic.
+    expect(new bundled.InteractiveContentEngine(undefined, []).getCatalog("class1-water", false).available).toBe(true);
   });
 });

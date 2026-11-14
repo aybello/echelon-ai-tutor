@@ -1,0 +1,1208 @@
+{
+ "format": "interactive-overlay-v1",
+ "overlayId": "option-length-class2-ww-20261114",
+ "scope": "Reviewed revisions of 32 class2-ww items whose correct option was the longest.",
+ "additions": [],
+ "replacements": [
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-030",
+   "replacesSha256": "32b4e2689ed69b8d7617614111bf64d33fdf6cd9524d73154dd1135fdd77068b",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-030-r1",
+    "prompt": "Which material is not normally described as grit?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Coarse gravel particles"
+     },
+     {
+      "id": "option-2",
+      "label": "Fine cinder particles"
+     },
+     {
+      "id": "option-3",
+      "label": "Dissolved nitrate"
+     },
+     {
+      "id": "option-4",
+      "label": "Heavy sand grains"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Grit comprises relatively heavy particles; dissolved nitrate is not a grit particle."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-031",
+   "replacesSha256": "dd4dcb5799d9c93b93b03c015b52d21233f89b31f3671721544bb0a3f064c038",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-031-r1",
+    "prompt": "Which is not an attached-growth biological process?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Trickling filter with plastic media"
+     },
+     {
+      "id": "option-2",
+      "label": "Rotating biological contactor"
+     },
+     {
+      "id": "option-3",
+      "label": "Biotower with fixed media"
+     },
+     {
+      "id": "option-4",
+      "label": "Conventional activated sludge"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Conventional activated sludge is suspended growth; the others use attached growth."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-032",
+   "replacesSha256": "c59f9cc1447d7a69848a0926c1835e456cea7d4cb14b94f205397e07fdf168c6",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-032-r1",
+    "prompt": "Which term is not an SBR phase in the specified cycle fill → react → settle → decant → idle?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Filtration"
+     },
+     {
+      "id": "option-2",
+      "label": "React with aeration"
+     },
+     {
+      "id": "option-3",
+      "label": "Fill with influent"
+     },
+     {
+      "id": "option-4",
+      "label": "Decant of clear liquid"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Filtration is not one of the five listed batch phases."
+   },
+   "reason": "Correct the keyed option to match the original filtration answer and rebalance option wording.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Historical original owner-authorized AI review predates the subsequent correction. The corrected exercise later received a real gpt-6.1-sol review returning issues: []; see docs/pr63-release-review.md and the non-OIT reconciliation for exact request evidence. Source status unverified; no human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-034",
+   "replacesSha256": "74247cde80838b2c096914b808e11244012cf85a89b9ddf17b9c007171fae175",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-034-r1",
+    "prompt": "Which is normally a clarified liquid stream rather than a removed-solids stream?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Primary sludge from the settling tank"
+     },
+     {
+      "id": "option-2",
+      "label": "Waste activated sludge from the system"
+     },
+     {
+      "id": "option-3",
+      "label": "Screenings removed from the bar screen"
+     },
+     {
+      "id": "option-4",
+      "label": "Clarified secondary effluent"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "Clarified secondary effluent is the liquid leaving secondary clarification, although it may still contain residual suspended solids. The other options are removed solids or sludge."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-035",
+   "replacesSha256": "018420a0b2386f16abecb6820f5fafdff59dd139f8a2c364b3eea046856e1302",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-035-r1",
+    "prompt": "Which of these is not a nutrient?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Organic carbon"
+     },
+     {
+      "id": "option-2",
+      "label": "Plastic rag"
+     },
+     {
+      "id": "option-3",
+      "label": "Ammonia nitrogen"
+     },
+     {
+      "id": "option-4",
+      "label": "Phosphorus"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Nitrogen, phosphorus and carbon are nutrients; a plastic rag is debris."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-036",
+   "replacesSha256": "e1f5f2bdd90a1c968c1f55b601593e6913c463b0561f8fe858571f86855bd3a8",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-036-r1",
+    "prompt": "Which does not directly identify a particular sample?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Pump bearing colour"
+     },
+     {
+      "id": "option-2",
+      "label": "Collection time and date"
+     },
+     {
+      "id": "option-3",
+      "label": "Sampling location"
+     },
+     {
+      "id": "option-4",
+      "label": "Sample ID number"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "The other details identify when and where the sample was collected and its ID."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-037",
+   "replacesSha256": "4062e36731e576fb553db355e5e64409203483e800c66fa36b8988aed4252d83",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-037-r1",
+    "prompt": "Which is not a sample quality-control check?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Field blank sample"
+     },
+     {
+      "id": "option-2",
+      "label": "Rinsate blank sample"
+     },
+     {
+      "id": "option-3",
+      "label": "Field duplicate sample"
+     },
+     {
+      "id": "option-4",
+      "label": "Bar-screen rake"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "A rake cleans a screen; the other items check aspects of sampling quality."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-038",
+   "replacesSha256": "5d1df60d4cf0fdadc965fb64e34f1251a9ab0856f8291f09bba1f1e959c1804e",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-038-r1",
+    "prompt": "Which item is not a confined-space atmospheric hazard?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Toxic gas such as hydrogen sulfide"
+     },
+     {
+      "id": "option-2",
+      "label": "Flammable gas such as methane"
+     },
+     {
+      "id": "option-3",
+      "label": "Unfiled office receipt"
+     },
+     {
+      "id": "option-4",
+      "label": "Oxygen deficiency"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Toxic gas, flammable gas, and oxygen deficiency are atmospheric hazards; an unfiled office receipt is not."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-039",
+   "replacesSha256": "308fa6de906055dca4d5c52e92baff8bd51a6c396240ff78fb666bf3d7b9f1a1",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-039-r1",
+    "prompt": "Which is not a flow measurement component?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Flow totalizer register"
+     },
+     {
+      "id": "option-2",
+      "label": "UV disinfection lamp"
+     },
+     {
+      "id": "option-3",
+      "label": "Flow sensor in the pipe"
+     },
+     {
+      "id": "option-4",
+      "label": "Flow transmitter"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "The lamp disinfects; the other components measure or record flow."
+   },
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-040",
+   "replacesSha256": "c72abb10011d34cc974edad31a9bf94f54e2879619cb959343737e9874d8b5ca",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-040-r1",
+    "prompt": "Which unit is not a concentration unit?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "mg/L (milligrams per litre)"
+     },
+     {
+      "id": "option-2",
+      "label": "g/L (grams per litre)"
+     },
+     {
+      "id": "option-3",
+      "label": "µg/L (micrograms per litre)"
+     },
+     {
+      "id": "option-4",
+      "label": "m³/day"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "m³/day expresses volumetric flow, not mass per liquid volume."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-042",
+   "replacesSha256": "85757fa3d949833761553333dc1613c1d5d0bf813fd2c1fac18a02c30cb9b067",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-042-r1",
+    "prompt": "Which item is not an example of energy that may need control before confined-space work?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Hydraulic pressure"
+     },
+     {
+      "id": "option-2",
+      "label": "Pneumatic pressure"
+     },
+     {
+      "id": "option-3",
+      "label": "Sample ID number"
+     },
+     {
+      "id": "option-4",
+      "label": "Stored electrical charge"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "An identification number is documentation, not a hazardous energy source."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-043",
+   "replacesSha256": "a6ab503597e7c1888647334a1b85bf875fdd7c028e4c6f5bfc3ce6820253e3ab",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-043-r1",
+    "prompt": "Which observation is not a direct reading of wastewater conditions?",
+    "mode": "odd-one-out",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Water temperature reading"
+     },
+     {
+      "id": "option-2",
+      "label": "Dissolved oxygen reading"
+     },
+     {
+      "id": "option-3",
+      "label": "pH of the sample"
+     },
+     {
+      "id": "option-4",
+      "label": "Motor serial number"
+     }
+    ],
+    "correctOptionId": "option-4",
+    "explanation": "A serial number identifies equipment, not wastewater quality."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-045",
+   "replacesSha256": "e6cf44d6da951be9055a3358cf95c94fed564dd89fc846805ae8519d5417c628",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-045-r1",
+    "prompt": "A bar screen becomes heavily obstructed at the same flow. What is a likely immediate effect?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Automatic disinfection of the screen"
+     },
+     {
+      "id": "option-2",
+      "label": "Higher head loss"
+     },
+     {
+      "id": "option-3",
+      "label": "Lower head loss across the screen"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Obstruction restricts flow and can increase upstream water level and head loss."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-049",
+   "replacesSha256": "bd1b9877730838920e5b427a1e77dff9c8ee256d4beb888af2efd120d14f3fbd",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-049-r1",
+    "prompt": "A secondary clarifier loses solids over its weir. Which downstream measurement is likely to rise?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Effluent suspended solids"
+     },
+     {
+      "id": "option-2",
+      "label": "Screen bar spacing in the headworks"
+     },
+     {
+      "id": "option-3",
+      "label": "Tank design volume of the clarifier"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Escaping biological solids raise suspended solids in the clarified effluent."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-055",
+   "replacesSha256": "417ef5fdde09bea3a0fb501990777288beb87e9220275102589621f71b022c73",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-055-r1",
+    "prompt": "Anoxic denitrification is effective in a nitrate-bearing mixed liquor. Which gas can form?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Nitrogen gas"
+     },
+     {
+      "id": "option-2",
+      "label": "Oxygen gas from aeration"
+     },
+     {
+      "id": "option-3",
+      "label": "Chlorine gas from disinfection"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Denitrifying bacteria reduce nitrate to gaseous nitrogen."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-057",
+   "replacesSha256": "77fd9ff02e71c7a856326b0b918d96fd7014b039bddd450e44dd7220bd418cfc",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-057-r1",
+    "prompt": "A sample sits too long before analysis. What can happen?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Its sample label becomes a calibration standard for laboratory instruments"
+     },
+     {
+      "id": "option-2",
+      "label": "The result may no longer represent conditions at collection"
+     },
+     {
+      "id": "option-3",
+      "label": "The original sample returns to its collected state"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Unstable constituents can change during storage; follow the method and laboratory instructions."
+   },
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-058",
+   "replacesSha256": "d3e6cb19223124584c3ddaca1cb91c588681359f47fbf8930576af80dbc02a5a",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-058-r1",
+    "prompt": "A field blank contains the analyte being investigated. What should be considered?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Possible contamination during handling"
+     },
+     {
+      "id": "option-2",
+      "label": "A confirmed failure of the treatment process"
+     },
+     {
+      "id": "option-3",
+      "label": "A sign that the influent is clean"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "A contaminated blank signals a potential artifact that needs investigation."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-061",
+   "replacesSha256": "b65b2638de024438a0eac97d40f0a6bf04bcacf319880624e2beda03658f1d32",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-061-r1",
+    "prompt": "Nitrifying microorganisms lose sufficient oxygen. What may happen to ammonia conversion?",
+    "mode": "cause-effect",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Nitrification may slow down"
+     },
+     {
+      "id": "option-2",
+      "label": "Nitrification may speed up sharply"
+     },
+     {
+      "id": "option-3",
+      "label": "Ammonia may settle out as grit"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Nitrification is an aerobic biological process and needs sufficient oxygen."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-064",
+   "replacesSha256": "60c6f8fe03207090d00abfa44f6f4c1dc11d06767480c1031882fe740fd81a02",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-064-r1",
+    "prompt": "A tank may be a confined space. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "A clean smell means no test is needed"
+     },
+     {
+      "id": "option-2",
+      "label": "Assess hazards before entry begins"
+     },
+     {
+      "id": "option-3",
+      "label": "Consider whether the work can be done from outside"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Odour is not a reliable substitute for a hazard assessment and atmospheric testing."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-066",
+   "replacesSha256": "7c16b142f7666cc704cdbf8e8ba0b819d382c77cdbba014d7391b57562caec57",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-066-r1",
+    "prompt": "A confined-space monitor alarms during entry. Which response is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Notify the attendant of the alarm"
+     },
+     {
+      "id": "option-2",
+      "label": "Finish the task before leaving"
+     },
+     {
+      "id": "option-3",
+      "label": "Leave the space immediately and follow the site procedure"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "An alarm signals a possible hazard. Leave immediately and follow the site emergency procedure; do not wait to finish the task."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-067",
+   "replacesSha256": "9ce4a5e7fe62ea816701929dff06ba8389e7db63c8ba9deaae4991237ad9163f",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-067-r1",
+    "prompt": "A sample must represent conditions over a shift. Which reasoning is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "One grab sample represents the whole shift"
+     },
+     {
+      "id": "option-2",
+      "label": "Choose a suitable composite if the method permits"
+     },
+     {
+      "id": "option-3",
+      "label": "Document the collection period"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "A grab represents the time collected, not an entire variable period."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-068",
+   "replacesSha256": "e54f7b286e03bfa19f5ef5b8015178451d5f92308a80311f02c76d0681755963",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-068-r1",
+    "prompt": "A field blank is positive. Which response is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Investigate sampling and analytical handling for possible contamination"
+     },
+     {
+      "id": "option-2",
+      "label": "Document the finding and notify the lab"
+     },
+     {
+      "id": "option-3",
+      "label": "Ignore the positive result and release the affected data"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "A positive blank can indicate contamination or an analytical artifact."
+   },
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-070",
+   "replacesSha256": "543054d1e99ae1eebc7daf961e16c067695725f4a681061baafe3e3fd8eff2e3",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-070-r1",
+    "prompt": "A bottle arrives without a sample identifier. Which conclusion is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Guess its identity from the liquid colour"
+     },
+     {
+      "id": "option-2",
+      "label": "Investigate how the identifier went missing"
+     },
+     {
+      "id": "option-3",
+      "label": "Document the issue and tell the lab"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Visual appearance does not reliably establish sample identity or location."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-071",
+   "replacesSha256": "1b72efee3e2758deef0dbf49a30d9053bd7cb60b6c5559d2ca5a7cc3d74d09ba",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-071-r1",
+    "prompt": "A clarifier effluent looks cloudy. Which diagnosis is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Check operating and laboratory trends together"
+     },
+     {
+      "id": "option-2",
+      "label": "Investigate potential solids carryover"
+     },
+     {
+      "id": "option-3",
+      "label": "Appearance alone shows the exact cause"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Cloudiness is a symptom, not a uniquely identifying diagnosis."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-072",
+   "replacesSha256": "53090c2ba9d4673bb5b7dcad78da84dc63888d1cc4b507fa52ea0d18d0e4e479",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-072-r1",
+    "prompt": "A mixed liquor basin has low dissolved oxygen. Which action is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Verify the reading against the operating trend"
+     },
+     {
+      "id": "option-2",
+      "label": "Assume a failed blower without checking"
+     },
+     {
+      "id": "option-3",
+      "label": "Check the aeration system and diffusers"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Low DO can have multiple causes; verify the reading and equipment before diagnosing."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-073",
+   "replacesSha256": "9974f93a05d3793144ef42d0ecddfd0144201831ec397c88fe98f0ab12b49ce1",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-073-r1",
+    "prompt": "A grinder is installed upstream of treatment. Which claim is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "It removes all debris from the plant"
+     },
+     {
+      "id": "option-2",
+      "label": "It can reduce the size of large solids"
+     },
+     {
+      "id": "option-3",
+      "label": "Shredded material may continue downstream"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Grinding reduces size and does not necessarily remove material from the flow."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-074",
+   "replacesSha256": "de9e0308e8babd5403e78b4b650281907bb31a7f59a1bd82550ee77c9ed5af12",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-074-r1",
+    "prompt": "A UV unit disinfects effluent. Which statement is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "UV uses radiation to treat the effluent"
+     },
+     {
+      "id": "option-2",
+      "label": "Deposits may obstruct light transmission"
+     },
+     {
+      "id": "option-3",
+      "label": "UV adds a chlorine residual downstream"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "UV does not add chlorine; its action is physical irradiation."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-075",
+   "replacesSha256": "f83e6af9c664bc1a69638bcbece9f51a55277c9dc624e34e7eb9379fe6f89fea",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-075-r1",
+    "prompt": "A primary clarifier is operating. Which expectation is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Some suspended solids can settle in the tank"
+     },
+     {
+      "id": "option-2",
+      "label": "Dissolved substances settle out by gravity"
+     },
+     {
+      "id": "option-3",
+      "label": "Settleable solids may accumulate as sludge"
+     }
+    ],
+    "correctOptionId": "option-2",
+    "explanation": "Dissolved pollutants do not settle like particles in ordinary clarification."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-076",
+   "replacesSha256": "fb28d5f2097f5807b57e45d126606bc9328deb5e30eaac3483042e07761e33af",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-076-r1",
+    "prompt": "A nitrification process is being evaluated. Which shortcut is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Assume conversion needs no oxygen"
+     },
+     {
+      "id": "option-2",
+      "label": "Check dissolved oxygen in the basin"
+     },
+     {
+      "id": "option-3",
+      "label": "Review ammonia trends over several days"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Nitrification is an aerobic process; inadequate oxygen can impair it."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-077",
+   "replacesSha256": "92b1c9bf4a0f1350a3c25320f5c2b22b1ab48143d8a115533959e260f0bdf306",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-077-r1",
+    "prompt": "A flow-proportional composite is needed. Which proposed setup is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Use a flow signal to determine aliquot timing or volume"
+     },
+     {
+      "id": "option-2",
+      "label": "Check that the flow instrument is working and reporting a reliable signal"
+     },
+     {
+      "id": "option-3",
+      "label": "Take equal aliquots at fixed intervals as flow varies"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "Equal time and volume aliquots form a time composite, not necessarily flow proportional."
+   },
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-079",
+   "replacesSha256": "b101f44f8267a1587c1378d61a49baa637f2b1f538265b414964975551b3cbf5",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-079-r1",
+    "prompt": "A plant changes WAS withdrawal. Which conclusion is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "The change will not affect solids inventory"
+     },
+     {
+      "id": "option-2",
+      "label": "Track solids and operating trends after the change"
+     },
+     {
+      "id": "option-3",
+      "label": "Follow the plant operating procedure"
+     }
+    ],
+    "correctOptionId": "option-1",
+    "explanation": "Wasting removes biomass and can change inventory and solids retention."
+   },
+   "reason": "Option wording rebalanced so the correct option is not the longest.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review."
+   }
+  },
+  {
+   "courseKey": "class2-ww",
+   "replacesId": "class2-ww-080",
+   "replacesSha256": "8d20890be20fc96206eecdfa70536b824c9f712638286326ad40df6ece1005eb",
+   "topicId": "unclassified",
+   "difficulty": "unclassified",
+   "example": {
+    "id": "class2-ww-080-r1",
+    "prompt": "A shift report is being prepared. Which practice is flawed?",
+    "mode": "tap-the-flaw",
+    "options": [
+     {
+      "id": "option-1",
+      "label": "Record the alarm and the response taken during the shift"
+     },
+     {
+      "id": "option-2",
+      "label": "Include relevant observations and times"
+     },
+     {
+      "id": "option-3",
+      "label": "Omit an abnormal alarm because it later cleared"
+     }
+    ],
+    "correctOptionId": "option-3",
+    "explanation": "A clear record of abnormal conditions and responses supports troubleshooting and handover."
+   },
+   "reason": "Correct the identified semantic, ambiguity, safety, or explanation issue while retaining the original learning target.",
+   "review": {
+    "verdict": "approved",
+    "reviewer": "claude-sonnet-5-5",
+    "reviewAuthority": "owner-authorized-ai-review",
+    "reviewedAt": "2026-11-14T00:00:00Z",
+    "notes": "Reviewed revision of a stored item. The question, the keyed answer's meaning and the explanation are unchanged; options were reworded so the correct option is not distinguishable by length or by absolute wording. Owner-authorized AI review, not human technical review. Original AI review predates subsequent content corrections; those corrections were not separately reviewed at the original review time. No human technical review."
+   }
+  }
+ ]
+}

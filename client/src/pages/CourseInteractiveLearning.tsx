@@ -50,6 +50,8 @@ function isIdentityStorageHint(event: StorageEvent): boolean {
     event.key === "echelon_trial_email" || event.key === "echelon_subscription_email";
 }
 
+class PracticeVersionMismatch extends Error {}
+
 /** Course sessions are temporary and never contribute to quiz history/readiness. */
 function CoursePractice({ course }: { course: CourseEntry }) {
   const queryClient = useQueryClient();
@@ -64,6 +66,7 @@ function CoursePractice({ course }: { course: CourseEntry }) {
   const [settingsOpen, setSettingsOpen] = useState(() => typeof window !== "undefined" && window.matchMedia("(min-width: 700px)").matches);
   const sessionElement = useRef<HTMLDivElement>(null);
   const focusNextRound = useRef(false);
+  const retriedMismatch = useRef(false);
   const prefix = useMemo(() => ["course-interactive-session-engine", course.courseKey] as const, [course.courseKey]);
   const observedPaths = useMemo(() => [
     getQueryKey(trpc.auth.me, undefined, "query")[0],
@@ -117,8 +120,15 @@ function CoursePractice({ course }: { course: CourseEntry }) {
   const sessionQuery = useQuery({
     queryKey: sessionKey,
     queryFn: async ({ signal }) => {
-      const data = interactiveSessionResponseSchema.parse(await client.interactive.startSession.mutate(input, { signal }));
-      if (data.courseKey !== course.courseKey || data.mode !== mode || data.version !== catalog?.version ||
+      const raw: unknown = await client.interactive.startSession.mutate(input, { signal });
+      // Only recognize a valid wire version here. A different release may have
+      // a shape that this client cannot parse; never use that payload as data.
+      if (raw !== null && typeof raw === "object" && !Array.isArray(raw) && Object.hasOwn(raw, "version")) {
+        const version = interactiveSessionResponseSchema.shape.version.safeParse((raw as { version: unknown }).version);
+        if (version.success && version.data !== catalog?.version) throw new PracticeVersionMismatch("Practice release changed");
+      }
+      const data = interactiveSessionResponseSchema.parse(raw);
+      if (data.courseKey !== course.courseKey || data.mode !== mode ||
           data.available !== catalog?.available || data.locked !== catalog?.locked ||
           data.filters.topicId !== (input.topicId ?? null) || data.filters.difficulty !== (input.difficulty ?? null) ||
           data.filters.requestedSize !== input.sessionSize || data.examples.some(example => example.mode !== mode) ||
@@ -131,7 +141,7 @@ function CoursePractice({ course }: { course: CourseEntry }) {
     refetchOnReconnect: false, retry: false,
   });
 
-  const refresh = useCallback(() => {
+  const refreshQueries = useCallback(() => {
     // Gate synchronously before cancellation or a fast/late transport completion.
     // Both query identities change even when a cookie sign-in keeps the same token.
     focusNextRound.current = false;
@@ -140,6 +150,18 @@ function CoursePractice({ course }: { course: CourseEntry }) {
     void queryClient.cancelQueries({ queryKey: prefix, predicate: query => obsolete.has(query) });
     queryClient.removeQueries({ queryKey: prefix, predicate: query => query.getObserversCount() === 0 });
   }, [prefix, queryClient]);
+
+  const refresh = useCallback(() => {
+    retriedMismatch.current = false;
+    refreshQueries();
+  }, [refreshQueries]);
+
+  useEffect(() => {
+    if (catalogReady && sessionQuery.error instanceof PracticeVersionMismatch && !retriedMismatch.current) {
+      retriedMismatch.current = true;
+      refreshQueries();
+    }
+  }, [catalogReady, refreshQueries, sessionQuery.error]);
 
   useEffect(() => {
     const unsubscribe = queryClient.getQueryCache().subscribe(event => {
@@ -171,6 +193,7 @@ function CoursePractice({ course }: { course: CourseEntry }) {
   }, [refresh, queryClient, observedPaths, prefix]);
 
   const changeSession = (change: () => void) => {
+    retriedMismatch.current = false;
     void queryClient.cancelQueries({ queryKey: [...prefix, "session"] });
     flushSync(() => { change(); setRoundRevision(previous => previous + 1); });
   };

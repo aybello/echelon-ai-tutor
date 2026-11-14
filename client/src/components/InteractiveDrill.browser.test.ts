@@ -713,4 +713,51 @@ describe("InteractiveDrill in an isolated browser", () => {
     { id: "invalid", mode: "odd-one-out", prompt: "Synthetic invalid choice", options: [{ id: "only", label: "Synthetic only" }], correctOptionId: "only", explanation: "Synthetic invalid explanation." },
     { id: "valid", mode: "odd-one-out", prompt: "Synthetic valid choice", options: [{ id: "a", label: "Synthetic valid A" }, { id: "b", label: "Synthetic valid B" }], correctOptionId: "a", explanation: "Synthetic valid explanation." },
   ]));
+  it("asks for a direction per named parameter, needs every answer and scores them all", async () => withDrill(async page => {
+    await expectHeading(page, "Synthetic flow doubles");
+    expect(await page.getByText("Assume: Synthetic volume is fixed.").count()).toBe(1);
+    const time = page.getByRole("group", { name: "Synthetic detention time: choose a direction" });
+    const volume = page.getByRole("group", { name: "Synthetic volume: choose a direction" });
+    expect(await time.getByRole("button").allTextContents()).toEqual(["↑ Increases", "↓ Decreases", "＝ No change", "? Depends / not enough information"]);
+    const check = button(page, "Check answer");
+    expect(await check.isDisabled()).toBe(true);
+    // Keyboard: Tab to a direction and press Space; aria-pressed records the choice.
+    await time.getByRole("button", { name: "Decreases" }).focus();
+    await page.keyboard.press("Space");
+    expect(await time.getByRole("button", { name: "Decreases" }).getAttribute("aria-pressed")).toBe("true");
+    expect(await check.isDisabled()).toBe(true);
+    await volume.getByRole("button", { name: "Increases" }).click();
+    await check.click();
+    await expectFeedback(page, "Not quite");
+    await expectFeedback(page, "Synthetic detention time: Decreases. Synthetic V over Q.");
+    await expectFeedback(page, "Synthetic volume: No change. Synthetic volume is held.");
+    expect(await time.getByText("· Correct").count()).toBe(1);
+    expect(await volume.getByText("· Not quite").count()).toBe(1);
+    expect(await volume.getByRole("button", { name: "No change" }).isDisabled()).toBe(true);
+    expect(await check.isDisabled()).toBe(true);
+    await button(page, "Next activity →").click();
+    await expectHeading(page, "Synthetic demand rises");
+    await page.getByRole("group", { name: "Synthetic residual: choose a direction" }).getByRole("button", { name: "Depends / not enough information" }).click();
+    await button(page, "Check answer").click();
+    await expectFeedback(page, "Correct");
+  }, [
+    { id: "ce-two", mode: "cause-effect", prompt: "Synthetic flow doubles", assumptions: "Synthetic volume is fixed.", effects: [
+      { id: "time", parameter: "Synthetic detention time", direction: "decrease", explanation: "Synthetic V over Q." },
+      { id: "volume", parameter: "Synthetic volume", direction: "unchanged", explanation: "Synthetic volume is held." },
+    ] },
+    { id: "ce-depends", mode: "cause-effect", prompt: "Synthetic demand rises", effects: [
+      { id: "residual", parameter: "Synthetic residual", direction: "depends", explanation: "Synthetic dose is not stated." },
+    ] },
+  ]));
+
+  it("rejects an ambiguous cause and effect payload instead of rendering controls", async () => withDrill(async page => {
+    await expectHeading(page, "Synthetic duplicate parameters");
+    expect(await page.getByText("This activity is unavailable because its content is incomplete or ambiguous.").count()).toBe(1);
+    expect(await page.getByRole("button", { name: "Check answer" }).count()).toBe(0);
+  }, [
+    { id: "ce-bad", mode: "cause-effect", prompt: "Synthetic duplicate parameters", effects: [
+      { id: "a", parameter: "Synthetic level", direction: "increase", explanation: "Synthetic one." },
+      { id: "b", parameter: " synthetic  LEVEL ", direction: "decrease", explanation: "Synthetic two." },
+    ] },
+  ]));
 });

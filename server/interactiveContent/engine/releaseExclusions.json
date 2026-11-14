@@ -1,0 +1,299 @@
+{
+  "version": 1,
+  "scope": "Selected OIT procedural safety and demonstrably ambiguous/incorrect exercises; not a blanket AI-verdict gate.",
+  "groups": [
+    {
+      "name": "routine sample collection",
+      "courseKey": "oit",
+      "mode": "before-after",
+      "reason": "Sample type, analyte, laboratory instructions and the particular sequence are missing. Flush, first-draw, labeling, preservation and record/storage steps vary by test; one generic universal sequence is not established.",
+      "ids": [
+        "og-oit-before-after-0112",
+        "og-oit-before-after-0113",
+        "og-oit-before-after-0114",
+        "og-oit-before-after-0115",
+        "og-oit-before-after-0116",
+        "og-oit-before-after-0117",
+        "og-oit-before-after-0118",
+        "og-oit-before-after-0119"
+      ]
+    },
+    {
+      "name": "equipment failure",
+      "courseKey": "oit",
+      "mode": "before-after",
+      "reason": "Unconditional sequencing of isolation, notification, protection and documentation is not supported without scenario, urgency and equipment-specific procedure. Emergency protective actions and reporting may be simultaneous; do not defer safe action.",
+      "ids": [
+        "og-oit-before-after-0120",
+        "og-oit-before-after-0121",
+        "og-oit-before-after-0122",
+        "og-oit-before-after-0123",
+        "og-oit-before-after-0124",
+        "og-oit-before-after-0125",
+        "og-oit-before-after-0126",
+        "og-oit-before-after-0127"
+      ]
+    },
+    {
+      "name": "pump maintenance",
+      "courseKey": "oit",
+      "mode": "before-after",
+      "reason": "Pump hazards may include electrical, hydraulic, pneumatic, mechanical and stored energy. A power lock or stop alone is not an adequate isolation program. Generic supervisor order is not universally established. Follow authorized equipment-specific hazardous-energy procedures.",
+      "ids": [
+        "og-oit-b2-before-after-0121",
+        "og-oit-b2-before-after-0122",
+        "og-oit-b2-before-after-0123",
+        "og-oit-b2-before-after-0124",
+        "og-oit-b2-before-after-0125",
+        "og-oit-b2-before-after-0126",
+        "og-oit-b2-before-after-0127",
+        "og-oit-b2-before-after-0128",
+        "og-oit-b2-before-after-0129",
+        "og-oit-b2-before-after-0130"
+      ]
+    },
+    {
+      "name": "confined space",
+      "courseKey": "oit",
+      "mode": "before-after",
+      "reason": "Permit preparation versus issuance, ventilation, testing and attendant assignment are not universally ordered as stated. Entry is contingent on the full applicable plan and controls. The prior revised 0134 has limited review and remains held for human safety signoff.",
+      "ids": [
+        "og-oit-b2-before-after-0131",
+        "og-oit-b2-before-after-0132",
+        "og-oit-b2-before-after-0133",
+        "og-oit-b2-before-after-0135",
+        "og-oit-b2-before-after-0136",
+        "og-oit-b2-before-after-0137",
+        "og-oit-b2-before-after-0138",
+        "og-oit-b2-before-after-0139",
+        "og-oit-b2-before-after-0140"
+      ]
+    },
+    {
+      "name": "filter backwash",
+      "courseKey": "oit",
+      "mode": "before-after",
+      "reason": "Cycle endpoints, repeated events and filter-specific operation can change the order. A generic backwash sequence is not an operating procedure; confirm equipment-specific context and all pairs under a stated filter procedure.",
+      "ids": [
+        "og-oit-b2-before-after-0151",
+        "og-oit-b2-before-after-0152",
+        "og-oit-b2-before-after-0153",
+        "og-oit-b2-before-after-0154",
+        "og-oit-b2-before-after-0155",
+        "og-oit-b2-before-after-0156",
+        "og-oit-b2-before-after-0157",
+        "og-oit-b2-before-after-0158",
+        "og-oit-b2-before-after-0159",
+        "og-oit-b2-before-after-0160"
+      ]
+    },
+    {
+      "name": "chemical spill",
+      "courseKey": "oit",
+      "mode": "before-after",
+      "reason": "PPE or consulting an SDS alone does not authorize cleanup. Workers without training or with an uncontrolled spill must leave, alert and seek help per applicable emergency plan; protective actions can be concurrent.",
+      "ids": [
+        "og-oit-b3-before-after-0119",
+        "og-oit-b3-before-after-0120",
+        "og-oit-b3-before-after-0121",
+        "og-oit-b3-before-after-0122",
+        "og-oit-b3-before-after-0123",
+        "og-oit-b3-before-after-0124",
+        "og-oit-b3-before-after-0125",
+        "og-oit-b3-before-after-0126",
+        "og-oit-b3-before-after-0127",
+        "og-oit-b3-before-after-0128"
+      ]
+    },
+    {
+      "name": "safety concern reporting",
+      "courseKey": "oit",
+      "mode": "before-after",
+      "reason": "The explanation imposes a universal reporting versus protection sequence. Immediate warning, leaving or emergency notification may be concurrent or urgency-dependent; only actual dependencies should be assessed.",
+      "ids": [
+        "og-oit-b4-before-after-0092",
+        "og-oit-b4-before-after-0093",
+        "og-oit-b4-before-after-0094",
+        "og-oit-b4-before-after-0095",
+        "og-oit-b4-before-after-0096",
+        "og-oit-b4-before-after-0097"
+      ]
+    },
+    {
+      "name": "adverse coliform follow-up",
+      "courseKey": "oit",
+      "mode": "before-after",
+      "reason": "Result receipt, recording, immediate regulatory reporting, repeat samples and system review are distinct. The generic result and system type do not justify this universal internal-notification order, and documentation can begin before the response is complete.",
+      "ids": [
+        "og-oit-b4-before-after-0098",
+        "og-oit-b4-before-after-0099",
+        "og-oit-b4-before-after-0100",
+        "og-oit-b4-before-after-0101",
+        "og-oit-b4-before-after-0102",
+        "og-oit-b4-before-after-0103",
+        "og-oit-b4-before-after-0104",
+        "og-oit-b4-before-after-0105",
+        "og-oit-b4-before-after-0106",
+        "og-oit-b4-before-after-0107"
+      ]
+    },
+    {
+      "name": "chemical feed start",
+      "courseKey": "oit",
+      "mode": "before-after",
+      "reason": "Chemical and exposure are unspecified; protection, remote inspection and baseline vs post-start residual checks can have different ordering. An SDS alone does not authorize operation. Define the chemical and approved plant procedure.",
+      "ids": [
+        "og-oit-b4-before-after-0108",
+        "og-oit-b4-before-after-0109",
+        "og-oit-b4-before-after-0110",
+        "og-oit-b4-before-after-0111",
+        "og-oit-b4-before-after-0112",
+        "og-oit-b4-before-after-0113",
+        "og-oit-b4-before-after-0114",
+        "og-oit-b4-before-after-0115",
+        "og-oit-b4-before-after-0116",
+        "og-oit-b4-before-after-0117"
+      ]
+    },
+    {
+      "name": "flow-paced feed sequence",
+      "courseKey": "oit",
+      "mode": "before-after",
+      "reason": "Generic chemical feed sequence does not name chlorine or distinguish baseline from post-adjustment residual; the arbitrary flow-before-dose order is not established.",
+      "ids": [
+        "og-oit-b3-before-after-0129",
+        "og-oit-b3-before-after-0130",
+        "og-oit-b3-before-after-0131",
+        "og-oit-b3-before-after-0132",
+        "og-oit-b3-before-after-0133",
+        "og-oit-b3-before-after-0134",
+        "og-oit-b3-before-after-0135",
+        "og-oit-b3-before-after-0136",
+        "og-oit-b3-before-after-0137",
+        "og-oit-b3-before-after-0138"
+      ]
+    },
+    {
+      "name": "turbidity incident sequence",
+      "courseKey": "oit",
+      "mode": "before-after",
+      "reason": "Mandatory diagnostic order can defer immediate protective action; feed and filter checks have no universal order.",
+      "ids": [
+        "og-oit-b3-before-after-0139",
+        "og-oit-b3-before-after-0140",
+        "og-oit-b3-before-after-0141",
+        "og-oit-b3-before-after-0142",
+        "og-oit-b3-before-after-0143",
+        "og-oit-b3-before-after-0144",
+        "og-oit-b3-before-after-0145",
+        "og-oit-b3-before-after-0146",
+        "og-oit-b3-before-after-0147",
+        "og-oit-b3-before-after-0148"
+      ]
+    },
+    {
+      "name": "ambiguous filter cycle",
+      "courseKey": "oit",
+      "mode": "before-after",
+      "reason": "Same recurring cycle is not identified and filtration overlaps headloss buildup; these particular comparisons have no unique order. Corrected post-backwash items remain available.",
+      "ids": [
+        "og-oit-before-after-0128",
+        "og-oit-before-after-0129",
+        "og-oit-before-after-0131",
+        "og-oit-before-after-0132",
+        "og-oit-before-after-0133"
+      ]
+    },
+    {
+      "name": "ambiguous membrane cycle",
+      "courseKey": "oit",
+      "mode": "before-after",
+      "reason": "Production, fouling and rinse lack a common run/cleaning boundary, giving opposing plausible orderings. Corrected scoped comparisons remain available.",
+      "ids": [
+        "og-oit-b4-before-after-0128",
+        "og-oit-b4-before-after-0129",
+        "og-oit-b4-before-after-0135",
+        "og-oit-b4-before-after-0137"
+      ]
+    },
+    {
+      "name": "incomplete confined-space control board",
+      "courseKey": "oit",
+      "mode": "speed-match",
+      "reason": "Testing identifies hazardous atmosphere but does not control toxic gas or authorize entry; the board presents testing as the best hazard control.",
+      "ids": [
+        "og-oit-b2-speed-match-0075"
+      ]
+    },
+    {
+      "name": "underspecified PPE board",
+      "courseKey": "oit",
+      "mode": "speed-match",
+      "reason": "Generic gloves and eye protection are not necessarily suitable chemical protection; ventilation alone is not an entry safeguard.",
+      "ids": [
+        "og-oit-speed-match-0067"
+      ]
+    },
+    {
+      "name": "unsafe first-check framing",
+      "courseKey": "oit",
+      "mode": "speed-match",
+      "reason": "Mechanical-binding first-check language omits required isolation and immediate protective actions.",
+      "ids": [
+        "og-oit-b3-speed-match-0066"
+      ]
+    },
+    {
+      "name": "unqualified DBP operating changes",
+      "courseKey": "oit",
+      "mode": "odd-one-out",
+      "reason": "Presents lowering chlorine contact or switching disinfectant as blanket beneficial changes without maintaining disinfection or assessing alternative byproducts.",
+      "ids": [
+        "og-oit-b4-odd-one-out-0088",
+        "og-oit-b4-odd-one-out-0089",
+        "og-oit-b4-odd-one-out-0090",
+        "og-oit-b4-odd-one-out-0091"
+      ]
+    },
+    {
+      "name": "unqualified storage reduction",
+      "courseKey": "oit",
+      "mode": "odd-one-out",
+      "reason": "Lowering storage levels is presented without approved reserve and pressure constraints.",
+      "ids": [
+        "og-oit-b2-odd-one-out-0107",
+        "og-oit-b2-odd-one-out-0109"
+      ]
+    },
+    {
+      "name": "unqualified pump throttling",
+      "courseKey": "oit",
+      "mode": "tap-the-flaw",
+      "reason": "Throttling behavior is not universal across pump types; positive-displacement pumps require a different safety analysis.",
+      "ids": [
+        "og-oit-b3-tap-the-flaw-0170"
+      ]
+    },
+    {
+      "name": "incorrect nitrification mechanism",
+      "courseKey": "oit",
+      "mode": "cause-effect",
+      "reason": "Explanation conflates ammonia consumption with chloramine breakdown and omits nitrite disinfectant demand.",
+      "ids": [
+        "og-oit-b4-cause-effect-0147"
+      ]
+    },
+    {
+      "name": "non-unique matching and wrong elevation definition",
+      "courseKey": "oit",
+      "mode": "speed-match",
+      "reason": "0045 uses overlapping bacterial/protozoan/pathogen traits; 0048 assigns nonexclusive on-site/residual traits; 0051 duplicates flow-per-area answers; 0061 defines elevation head as water depth instead of elevation above a datum. Exact boards withheld rather than inventing new concepts.",
+      "ids": [
+        "og-oit-b4-speed-match-0045",
+        "og-oit-b4-speed-match-0048",
+        "og-oit-b4-speed-match-0051",
+        "og-oit-b3-speed-match-0061"
+      ]
+    }
+  ]
+}
