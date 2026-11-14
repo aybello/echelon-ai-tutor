@@ -30,10 +30,23 @@ import oitWwBatch6 from "../overlay/2026-11-14-oit-ww-batch-6.json";
 import oitWwBatch7 from "../overlay/2026-11-14-oit-ww-batch-7.json";
 import oitWwBatch8 from "../overlay/2026-11-14-oit-ww-batch-8.json";
 
+import claudeNewBatch1 from "../overlay/2026-11-14-oit-batch-14.json";
+import claudeNewBatch2 from "../overlay/2026-11-14-oit-batch-15.json";
+import claudeNewBatch3 from "../overlay/2026-11-14-oit-ww-batch-9.json";
+import claudeNewBatch4 from "../overlay/2026-11-14-oit-ww-batch-10.json";
+import claudeNewBatch5 from "../overlay/2026-11-14-oit-ww-batch-11.json";
+import claudeNewBatch6 from "../overlay/2026-11-14-oit-ww-batch-12.json";
+import claudeNewBatch7 from "../overlay/2026-11-14-class1-water-batch-1.json";
+import claudeNewBatch8 from "../overlay/2026-11-14-class1-water-batch-2.json";
+import claudeNewBatch9 from "../overlay/2026-11-14-class1-ww-batch-1.json";
+import claudeNewBatch10 from "../overlay/2026-11-14-class1-ww-batch-2.json";
+import claudeNewBatch11 from "../overlay/2026-11-14-class1-wastewater-coll-batch-1.json";
+
 // Committed owner-authorized AI-reviewed overlays, in application order.
 const COMMITTED_OVERLAYS: readonly unknown[] = [rapidSwipeBalance, optionLengthClass2Ww, optionLengthBatch2, oitBatch1, oitBatch2, oitBatch3, oitBatch4, oitBatch5,
   oitBatch6, oitBatch7, oitBatch8, oitBatch9, oitBatch10, oitBatch11, oitBatch12, oitBatch13,
-  oitWwBatch1, oitWwBatch2, oitWwBatch3, oitWwBatch4, oitWwBatch5, oitWwBatch6, oitWwBatch7, oitWwBatch8];
+  oitWwBatch1, oitWwBatch2, oitWwBatch3, oitWwBatch4, oitWwBatch5, oitWwBatch6, oitWwBatch7, oitWwBatch8,
+  claudeNewBatch1, claudeNewBatch2, claudeNewBatch3, claudeNewBatch4, claudeNewBatch5, claudeNewBatch6, claudeNewBatch7, claudeNewBatch8, claudeNewBatch9, claudeNewBatch10, claudeNewBatch11];
 
 /**
  * Committed, server-only content overlays on the published game bank.

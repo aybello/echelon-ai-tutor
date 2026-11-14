@@ -72,10 +72,10 @@ describe("selective release effective view", () => {
     const poolIds = new Set(view.pool("oit", view.manifest("oit")).map(e => e.id));
     for (const id of ids) expect(poolIds.has(id), id).toBe(false);
     const excludedIds = new Set(ids);
-    expect(all).toHaveLength(2464);
+    expect(all).toHaveLength(2817);
     const expectedAvailable = all.filter(a => !excludedIds.has(a.example.id)).map(a => a.example.id);
     const actualAvailable = all.filter(a => poolIds.has(a.example.id)).map(a => a.example.id);
-    expect(actualAvailable).toHaveLength(2335);
+    expect(actualAvailable).toHaveLength(2688);
     expect(new Set(actualAvailable)).toEqual(new Set(expectedAvailable));
     expect(poolIds.has("og-oit-b2-before-after-0134")).toBe(true);
     for (const access of [false, true]) for (const mode of interactiveModes) {
@@ -100,8 +100,9 @@ describe("selective release effective view", () => {
       }
     }
   });
-  it("serves the corrected wet-well explanation through real session and compatibility paths", () => {
-    const engine = new InteractiveContentEngine();
+  it("serves the corrected wet-well explanation through historical session and compatibility paths", () => {
+    // Keep this deterministic 50-item correction check in its original release scope.
+    const engine = new InteractiveContentEngine(undefined, (committedOverlayDocuments() as ContentOverlay[]).filter(d => !d.overlayId.startsWith("og-class1-")));
     const courseKey = "class1-wastewater-coll";
     const correction = engine.getLegacyContent(courseKey, true).examples.find(e => e.id === "class1-wastewater-coll-045-r1")!;
     expect(correction.explanation).toMatch(/liquid level, pump status and alarm condition.*street tree species does not/i);

@@ -14,16 +14,18 @@ const specs = [
 ];
 const ids = specs.map(s => `og-${s.course}-${s.n}`);
 const docs = committedOverlayDocuments() as ContentOverlay[];
-const prior = docs.filter(d => !ids.includes(d.overlayId));
+// Pin the historical sixteen-batch regression to its original release scope.
+const historical = docs.slice(0, docs.findIndex(d => d.overlayId === ids[0]) + ids.length);
+const prior = historical.filter(d => !ids.includes(d.overlayId));
 const released = docs.filter(d => ids.includes(d.overlayId));
-const engine = new InteractiveContentEngine();
+const engine = new InteractiveContentEngine(undefined, historical);
 const before = new InteractiveContentEngine(undefined, prior);
 const sha = (bytes: Buffer) => createHash("sha256").update(bytes).digest("hex");
 
 describe("pinned sixteen Claude batches release", () => {
   it("registers exactly 3113 additions in normal order, preserving the earlier overlays", () => {
     expect(released.map(d => d.overlayId)).toEqual(ids);
-    expect(docs.slice(0, prior.length)).toEqual(prior);
+    expect(historical.slice(0, prior.length)).toEqual(prior);
     expect(prior.map(d => d.overlayId)).toEqual(["rapid-swipe-balance-20261114", "option-length-class2-ww-20261114", "option-length-batch-2-20261114", "og-oit-1", "og-oit-2", "og-oit-3", "og-oit-4", "og-oit-5"]);
     expect(released.reduce((n, d) => n + d.additions.length, 0)).toBe(3113);
     expect(released.flatMap(d => d.replacements)).toEqual([]);
