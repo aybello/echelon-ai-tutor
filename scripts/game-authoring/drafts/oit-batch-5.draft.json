@@ -1,7 +1,7 @@
 {
  "format": "interactive-overlay-v1",
  "overlayId": "og-oit-5",
- "scope": "Reviewed original game activities for oit: 165 items from authoring tables.",
+ "scope": "Unreviewed draft: original game activities for oit: 165 items from authoring tables.",
  "additions": [
   {
    "courseKey": "oit",
@@ -13,13 +13,6 @@
     "correctAnswer": true,
     "explanation": "A commonly used value for the weight of a gallon of water is 8.34 pounds.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -32,13 +25,6 @@
     "correctAnswer": false,
     "explanation": "A gallon of water weighs about 8.34 pounds.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -51,13 +37,6 @@
     "correctAnswer": true,
     "explanation": "Percent is a ratio out of 100.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -70,13 +49,6 @@
     "correctAnswer": true,
     "explanation": "Ten percent is one tenth.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -89,13 +61,6 @@
     "correctAnswer": true,
     "explanation": "Dividing by 10 moves the decimal one place left.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -108,13 +73,6 @@
     "correctAnswer": false,
     "explanation": "Multiplying by 10 moves the decimal one place to the right.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -127,13 +85,6 @@
     "correctAnswer": true,
     "explanation": "Area for a rectangle equals length multiplied by width.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -146,13 +97,6 @@
     "correctAnswer": false,
     "explanation": "Area is length multiplied by width, not added.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -165,13 +109,6 @@
     "correctAnswer": true,
     "explanation": "Volume equals the product of the three dimensions.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -184,13 +121,6 @@
     "correctAnswer": true,
     "explanation": "Values of .5 or more round up.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -203,13 +133,6 @@
     "correctAnswer": true,
     "explanation": "For dilute water solutions, one mg/L is close to one ppm.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -222,13 +145,6 @@
     "correctAnswer": false,
     "explanation": "One mg/L is about one ppm, and one ppb is about one microgram per liter.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -241,13 +157,6 @@
     "correctAnswer": true,
     "explanation": "That is the arithmetic mean.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -260,13 +169,6 @@
     "correctAnswer": false,
     "explanation": "The average divides the sum by the number of readings.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -279,13 +181,6 @@
     "correctAnswer": true,
     "explanation": "A cylinder's volume is the base area times height.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -298,13 +193,6 @@
     "correctAnswer": false,
     "explanation": "The formula uses radius squared, not diameter.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -317,13 +205,6 @@
     "correctAnswer": true,
     "explanation": "There are 1,440 minutes in a day.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -336,13 +217,6 @@
     "correctAnswer": false,
     "explanation": "Multiplying by 24 gives gallons per hour from gallons per minute only if minutes were hours. Use 1,440 minutes per day.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -355,13 +229,6 @@
     "correctAnswer": true,
     "explanation": "Time-based graphs show trends.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -374,13 +241,6 @@
     "correctAnswer": false,
     "explanation": "pH is measured with a meter or test method, never by tasting.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -393,13 +253,6 @@
     "correctAnswer": true,
     "explanation": "Area depends on radius squared.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -412,13 +265,6 @@
     "correctAnswer": false,
     "explanation": "Area depends on radius squared, so it is multiplied by four.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -431,13 +277,6 @@
     "correctAnswer": true,
     "explanation": "More volume at the same flow takes more time.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -450,13 +289,6 @@
     "correctAnswer": false,
     "explanation": "More volume at the same flow takes more time.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -469,13 +301,6 @@
     "correctAnswer": true,
     "explanation": "One percent is one part in 100, which equals 10,000 mg/L.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -488,13 +313,6 @@
     "correctAnswer": false,
     "explanation": "One percent is 10,000 mg/L.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -507,13 +325,6 @@
     "correctAnswer": true,
     "explanation": "Reading at an angle can shift the apparent value.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -526,13 +337,6 @@
     "correctAnswer": true,
     "explanation": "They communicate the precision of a measurement.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -545,13 +349,6 @@
     "correctAnswer": false,
     "explanation": "Results should reflect the precision of the measurements used.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -564,13 +361,6 @@
     "correctAnswer": true,
     "explanation": "A conversion factor equals one, so it changes the units but not the amount.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -583,13 +373,6 @@
     "correctAnswer": false,
     "explanation": "Values below .5 round down, so 4.4 rounds to 4.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -602,13 +385,6 @@
     "correctAnswer": false,
     "explanation": "A level checks for flatness. A tape measure measures length.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -621,13 +397,6 @@
     "correctAnswer": false,
     "explanation": "There are 1,440 minutes in a day.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -640,13 +409,6 @@
     "correctAnswer": false,
     "explanation": "The median is the middle value.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -659,13 +421,6 @@
     "correctAnswer": false,
     "explanation": "A service line connects a main to a customer. Mains are the large pipes.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -678,13 +433,6 @@
     "correctAnswer": false,
     "explanation": "A spike has a known amount of the substance added to check recovery.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -697,13 +445,6 @@
     "correctAnswer": false,
     "explanation": "Volume increases with radius, so a larger radius gives a larger volume.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -716,13 +457,6 @@
     "correctAnswer": false,
     "explanation": "A clean blank should read near zero.",
     "mode": "rapid-swipe"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -765,13 +499,6 @@
      }
     ],
     "mode": "speed-match"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -814,13 +541,6 @@
      }
     ],
     "mode": "speed-match"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -863,13 +583,6 @@
      }
     ],
     "mode": "speed-match"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -912,13 +625,6 @@
      }
     ],
     "mode": "speed-match"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -961,13 +667,6 @@
      }
     ],
     "mode": "speed-match"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1010,13 +709,6 @@
      }
     ],
     "mode": "speed-match"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1059,13 +751,6 @@
      }
     ],
     "mode": "speed-match"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1108,13 +793,6 @@
      }
     ],
     "mode": "speed-match"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1157,13 +835,6 @@
      }
     ],
     "mode": "speed-match"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1206,13 +877,6 @@
      }
     ],
     "mode": "speed-match"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1255,13 +919,6 @@
      }
     ],
     "mode": "speed-match"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1304,13 +961,6 @@
      }
     ],
     "mode": "speed-match"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1353,13 +1003,6 @@
      }
     ],
     "mode": "speed-match"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1402,13 +1045,6 @@
      }
     ],
     "mode": "speed-match"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1439,13 +1075,6 @@
     "correctOptionId": "option-4",
     "explanation": "Cup does not measure length.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1476,13 +1105,6 @@
     "correctOptionId": "option-1",
     "explanation": "Ton does not measure length.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1513,13 +1135,6 @@
     "correctOptionId": "option-3",
     "explanation": "Day does not measure length.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1550,13 +1165,6 @@
     "correctOptionId": "option-4",
     "explanation": "Cup does not measure length.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1587,13 +1195,6 @@
     "correctOptionId": "option-3",
     "explanation": "Ton does not measure length.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1624,13 +1225,6 @@
     "correctOptionId": "option-1",
     "explanation": "Day does not measure length.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1661,13 +1255,6 @@
     "correctOptionId": "option-1",
     "explanation": "Pump is not a hand tool.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1698,13 +1285,6 @@
     "correctOptionId": "option-3",
     "explanation": "Valve is not a hand tool.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1735,13 +1315,6 @@
     "correctOptionId": "option-3",
     "explanation": "Tank is not a hand tool.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1772,13 +1345,6 @@
     "correctOptionId": "option-2",
     "explanation": "Pump is not a hand tool.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1809,13 +1375,6 @@
     "correctOptionId": "option-2",
     "explanation": "Valve is not a hand tool.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1846,13 +1405,6 @@
     "correctOptionId": "option-3",
     "explanation": "Tank is not a hand tool.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1883,13 +1435,6 @@
     "correctOptionId": "option-3",
     "explanation": "Pound does not measure volume.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1920,13 +1465,6 @@
     "correctOptionId": "option-3",
     "explanation": "Foot does not measure volume.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1957,13 +1495,6 @@
     "correctOptionId": "option-2",
     "explanation": "Minute does not measure volume.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -1994,13 +1525,6 @@
     "correctOptionId": "option-4",
     "explanation": "Pound does not measure volume.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2031,13 +1555,6 @@
     "correctOptionId": "option-2",
     "explanation": "Foot does not measure volume.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2068,13 +1585,6 @@
     "correctOptionId": "option-3",
     "explanation": "Minute does not measure volume.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2105,13 +1615,6 @@
     "correctOptionId": "option-4",
     "explanation": "Range describes spread rather than the center.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2142,13 +1645,6 @@
     "correctOptionId": "option-1",
     "explanation": "Spread describes spread rather than the center.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2179,13 +1675,6 @@
     "correctOptionId": "option-3",
     "explanation": "Range describes spread rather than the center.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2216,13 +1705,6 @@
     "correctOptionId": "option-2",
     "explanation": "Spread describes spread rather than the center.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2253,13 +1735,6 @@
     "correctOptionId": "option-4",
     "explanation": "Jar is lab glassware, not distribution infrastructure.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2290,13 +1765,6 @@
     "correctOptionId": "option-3",
     "explanation": "Beaker is lab glassware, not distribution infrastructure.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2327,13 +1795,6 @@
     "correctOptionId": "option-1",
     "explanation": "Burette is lab glassware, not distribution infrastructure.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2364,13 +1825,6 @@
     "correctOptionId": "option-3",
     "explanation": "Jar is lab glassware, not distribution infrastructure.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2401,13 +1855,6 @@
     "correctOptionId": "option-3",
     "explanation": "Beaker is lab glassware, not distribution infrastructure.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2438,13 +1885,6 @@
     "correctOptionId": "option-3",
     "explanation": "Burette is lab glassware, not distribution infrastructure.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2475,13 +1915,6 @@
     "correctOptionId": "option-4",
     "explanation": "Backwash is not a quality control sample type.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2512,13 +1945,6 @@
     "correctOptionId": "option-1",
     "explanation": "Grab bag is not a quality control sample type.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2549,13 +1975,6 @@
     "correctOptionId": "option-4",
     "explanation": "Backwash is not a quality control sample type.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2586,13 +2005,6 @@
     "correctOptionId": "option-3",
     "explanation": "Checking units helps prevent errors.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2623,13 +2035,6 @@
     "correctOptionId": "option-1",
     "explanation": "Writing steps down helps prevent errors.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2660,13 +2065,6 @@
     "correctOptionId": "option-3",
     "explanation": "Checking units helps prevent errors.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2697,13 +2095,6 @@
     "correctOptionId": "option-2",
     "explanation": "Writing steps down helps prevent errors.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2734,13 +2125,6 @@
     "correctOptionId": "option-4",
     "explanation": "Stable readings suggests the instrument is working well.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2771,13 +2155,6 @@
     "correctOptionId": "option-1",
     "explanation": "Matching lab suggests the instrument is working well.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2808,13 +2185,6 @@
     "correctOptionId": "option-4",
     "explanation": "Stable readings suggests the instrument is working well.",
     "mode": "odd-one-out"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2831,13 +2201,6 @@
     "correctAnswer": "Read the problem",
     "explanation": "Understanding the problem comes before calculating and checking. Read the problem comes before Check the units.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2854,13 +2217,6 @@
     "correctAnswer": "Do the math",
     "explanation": "Understanding the problem comes before calculating and checking. Read the problem comes before Do the math.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2877,13 +2233,6 @@
     "correctAnswer": "Do the math",
     "explanation": "Understanding the problem comes before calculating and checking. Do the math comes before Check the units.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2900,13 +2249,6 @@
     "correctAnswer": "Do the math",
     "explanation": "Understanding the problem comes before calculating and checking. Write the known values comes before Do the math.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2923,13 +2265,6 @@
     "correctAnswer": "Write the known values",
     "explanation": "Understanding the problem comes before calculating and checking. Write the known values comes before Choose the formula.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2946,13 +2281,6 @@
     "correctAnswer": "Do the math",
     "explanation": "Understanding the problem comes before calculating and checking. Choose the formula comes before Do the math.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2969,13 +2297,6 @@
     "correctAnswer": "Choose the formula",
     "explanation": "Understanding the problem comes before calculating and checking. Choose the formula comes before Check the units.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -2992,13 +2313,6 @@
     "correctAnswer": "Write the known values",
     "explanation": "Understanding the problem comes before calculating and checking. Read the problem comes before Write the known values.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3015,13 +2329,6 @@
     "correctAnswer": "Check the units",
     "explanation": "Reading and checking come before recording and reporting. Check the units comes before Compare with the last reading.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3038,13 +2345,6 @@
     "correctAnswer": "Record it",
     "explanation": "Reading and checking come before recording and reporting. Read the meter comes before Record it.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3061,13 +2361,6 @@
     "correctAnswer": "Compare with the last reading",
     "explanation": "Reading and checking come before recording and reporting. Compare with the last reading comes before Report anything unusual.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3084,13 +2377,6 @@
     "correctAnswer": "Report anything unusual",
     "explanation": "Reading and checking come before recording and reporting. Check the units comes before Report anything unusual.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3107,13 +2393,6 @@
     "correctAnswer": "Record it",
     "explanation": "Reading and checking come before recording and reporting. Record it comes before Report anything unusual.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3130,13 +2409,6 @@
     "correctAnswer": "Compare with the last reading",
     "explanation": "Reading and checking come before recording and reporting. Read the meter comes before Compare with the last reading.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3153,13 +2425,6 @@
     "correctAnswer": "Read the meter",
     "explanation": "Reading and checking come before recording and reporting. Read the meter comes before Check the units.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3176,13 +2441,6 @@
     "correctAnswer": "Record it",
     "explanation": "Reading and checking come before recording and reporting. Compare with the last reading comes before Record it.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3199,13 +2457,6 @@
     "correctAnswer": "Read the meter",
     "explanation": "Reading and checking come before recording and reporting. Read the meter comes before Report anything unusual.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3222,13 +2473,6 @@
     "correctAnswer": "Record it",
     "explanation": "Reading and checking come before recording and reporting. Check the units comes before Record it.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3245,13 +2489,6 @@
     "correctAnswer": "Measure the standard",
     "explanation": "Preparation comes first and labeling finishes the job. Measure the standard comes before Dilute to the mark.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3268,13 +2505,6 @@
     "correctAnswer": "Dilute to the mark",
     "explanation": "Preparation comes first and labeling finishes the job. Gather clean glassware comes before Dilute to the mark.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3291,13 +2521,6 @@
     "correctAnswer": "Gather clean glassware",
     "explanation": "Preparation comes first and labeling finishes the job. Gather clean glassware comes before Mix well.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3314,13 +2537,6 @@
     "correctAnswer": "Label the solution",
     "explanation": "Preparation comes first and labeling finishes the job. Measure the standard comes before Label the solution.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3337,13 +2553,6 @@
     "correctAnswer": "Gather clean glassware",
     "explanation": "Preparation comes first and labeling finishes the job. Gather clean glassware comes before Measure the standard.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3360,13 +2569,6 @@
     "correctAnswer": "Mix well",
     "explanation": "Preparation comes first and labeling finishes the job. Measure the standard comes before Mix well.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3383,13 +2585,6 @@
     "correctAnswer": "Gather clean glassware",
     "explanation": "Preparation comes first and labeling finishes the job. Gather clean glassware comes before Label the solution.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3406,13 +2601,6 @@
     "correctAnswer": "Label the solution",
     "explanation": "Preparation comes first and labeling finishes the job. Mix well comes before Label the solution.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3429,13 +2617,6 @@
     "correctAnswer": "Dilute to the mark",
     "explanation": "Preparation comes first and labeling finishes the job. Dilute to the mark comes before Mix well.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3452,13 +2633,6 @@
     "correctAnswer": "Label the solution",
     "explanation": "Preparation comes first and labeling finishes the job. Dilute to the mark comes before Label the solution.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3475,13 +2649,6 @@
     "correctAnswer": "Record the complaint",
     "explanation": "Facts are gathered before a response is given. Record the complaint comes before Test the sample.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3498,13 +2665,6 @@
     "correctAnswer": "Test the sample",
     "explanation": "Facts are gathered before a response is given. Visit and sample comes before Test the sample.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3521,13 +2681,6 @@
     "correctAnswer": "Record the complaint",
     "explanation": "Facts are gathered before a response is given. Record the complaint comes before Compare with the system.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3544,13 +2697,6 @@
     "correctAnswer": "Respond to the customer",
     "explanation": "Facts are gathered before a response is given. Test the sample comes before Respond to the customer.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3567,13 +2713,6 @@
     "correctAnswer": "Record the complaint",
     "explanation": "Facts are gathered before a response is given. Record the complaint comes before Respond to the customer.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3590,13 +2729,6 @@
     "correctAnswer": "Respond to the customer",
     "explanation": "Facts are gathered before a response is given. Visit and sample comes before Respond to the customer.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3613,13 +2745,6 @@
     "correctAnswer": "Compare with the system",
     "explanation": "Facts are gathered before a response is given. Compare with the system comes before Respond to the customer.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3636,13 +2761,6 @@
     "correctAnswer": "Compare with the system",
     "explanation": "Facts are gathered before a response is given. Test the sample comes before Compare with the system.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3659,13 +2777,6 @@
     "correctAnswer": "Visit and sample",
     "explanation": "Facts are gathered before a response is given. Visit and sample comes before Compare with the system.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3682,13 +2793,6 @@
     "correctAnswer": "Visit and sample",
     "explanation": "Facts are gathered before a response is given. Record the complaint comes before Visit and sample.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3705,13 +2809,6 @@
     "correctAnswer": "Make the change",
     "explanation": "Changes follow data review and are checked after a delay. Make the change comes before Wait for results.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3728,13 +2825,6 @@
     "correctAnswer": "Make the change",
     "explanation": "Changes follow data review and are checked after a delay. Review the data comes before Make the change.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3751,13 +2841,6 @@
     "correctAnswer": "Make the change",
     "explanation": "Changes follow data review and are checked after a delay. Make the change comes before Check the new data.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3774,13 +2857,6 @@
     "correctAnswer": "Wait for results",
     "explanation": "Changes follow data review and are checked after a delay. Review the data comes before Wait for results.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3797,13 +2873,6 @@
     "correctAnswer": "Review the data",
     "explanation": "Changes follow data review and are checked after a delay. Review the data comes before Pick a small change.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3820,13 +2889,6 @@
     "correctAnswer": "Check the new data",
     "explanation": "Changes follow data review and are checked after a delay. Review the data comes before Check the new data.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3843,13 +2905,6 @@
     "correctAnswer": "Pick a small change",
     "explanation": "Changes follow data review and are checked after a delay. Pick a small change comes before Wait for results.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3866,13 +2921,6 @@
     "correctAnswer": "Make the change",
     "explanation": "Changes follow data review and are checked after a delay. Pick a small change comes before Make the change.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3889,13 +2937,6 @@
     "correctAnswer": "Wait for results",
     "explanation": "Changes follow data review and are checked after a delay. Wait for results comes before Check the new data.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3912,13 +2953,6 @@
     "correctAnswer": "Check the new data",
     "explanation": "Changes follow data review and are checked after a delay. Pick a small change comes before Check the new data.",
     "mode": "before-after"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3945,13 +2979,6 @@
     "correctOptionId": "option-1",
     "explanation": "Volume depends on radius squared, so it grows.",
     "mode": "cause-effect"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -3978,13 +3005,6 @@
     "correctOptionId": "option-1",
     "explanation": "Volume equals flow times time.",
     "mode": "cause-effect"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4011,13 +3031,6 @@
     "correctOptionId": "option-3",
     "explanation": "No change in the value keeps the trend flat.",
     "mode": "cause-effect"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4044,13 +3057,6 @@
     "correctOptionId": "option-2",
     "explanation": "Volume equals length times width times depth.",
     "mode": "cause-effect"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4077,13 +3083,6 @@
     "correctOptionId": "option-2",
     "explanation": "Volume divided by flow gives a shorter time.",
     "mode": "cause-effect"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4110,13 +3109,6 @@
     "correctOptionId": "option-1",
     "explanation": "Volume divided by flow gives a longer time.",
     "mode": "cause-effect"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4143,13 +3135,6 @@
     "correctOptionId": "option-1",
     "explanation": "Overflow rate is flow divided by area.",
     "mode": "cause-effect"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4176,13 +3161,6 @@
     "correctOptionId": "option-2",
     "explanation": "Overflow rate is flow divided by area.",
     "mode": "cause-effect"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4209,13 +3187,6 @@
     "correctOptionId": "option-1",
     "explanation": "Fresh standards give a better reference.",
     "mode": "cause-effect"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4242,13 +3213,6 @@
     "correctOptionId": "option-2",
     "explanation": "A poor standard gives a poor reference.",
     "mode": "cause-effect"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4275,13 +3239,6 @@
     "correctOptionId": "option-1",
     "explanation": "Rounding early adds error that carries through.",
     "mode": "cause-effect"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4308,13 +3265,6 @@
     "correctOptionId": "option-2",
     "explanation": "The result may be off by a large factor.",
     "mode": "cause-effect"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4341,13 +3291,6 @@
     "correctOptionId": "option-2",
     "explanation": "Parallax can shift the apparent reading.",
     "mode": "cause-effect"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4374,13 +3317,6 @@
     "correctOptionId": "option-1",
     "explanation": "Close agreement suggests good precision.",
     "mode": "cause-effect"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4407,13 +3343,6 @@
     "correctOptionId": "option-2",
     "explanation": "A high blank points to contamination in the method or supplies.",
     "mode": "cause-effect"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4440,13 +3369,6 @@
     "correctOptionId": "option-1",
     "explanation": "Good recovery suggests the method is accurate.",
     "mode": "cause-effect"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4473,13 +3395,6 @@
     "correctOptionId": "option-2",
     "explanation": "The same weight spread over more water gives a lower concentration.",
     "mode": "cause-effect"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4506,13 +3421,6 @@
     "correctOptionId": "option-1",
     "explanation": "A stronger solution delivers more chemical per volume fed.",
     "mode": "cause-effect"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4539,13 +3447,6 @@
     "correctOptionId": "option-3",
     "explanation": "Volume multiplies the dimensions. It does not add them.",
     "mode": "tap-the-flaw"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4572,13 +3473,6 @@
     "correctOptionId": "option-1",
     "explanation": "A gallon measures volume, not length.",
     "mode": "tap-the-flaw"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4605,13 +3499,6 @@
     "correctOptionId": "option-3",
     "explanation": "Units matter, and should be written with the reading.",
     "mode": "tap-the-flaw"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4638,13 +3525,6 @@
     "correctOptionId": "option-2",
     "explanation": "An average divides the sum by the number of readings.",
     "mode": "tap-the-flaw"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4671,13 +3551,6 @@
     "correctOptionId": "option-3",
     "explanation": "A high blank suggests contamination and needs follow-up.",
     "mode": "tap-the-flaw"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4704,13 +3577,6 @@
     "correctOptionId": "option-3",
     "explanation": "mg/L is about ppm. ppb is a thousand times smaller.",
     "mode": "tap-the-flaw"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4737,13 +3603,6 @@
     "correctOptionId": "option-2",
     "explanation": "Rounding early adds error to later steps.",
     "mode": "tap-the-flaw"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4770,13 +3629,6 @@
     "correctOptionId": "option-1",
     "explanation": "Area depends on radius squared, so doubling the radius gives four times the area.",
     "mode": "tap-the-flaw"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   },
   {
@@ -4803,13 +3655,6 @@
     "correctOptionId": "option-2",
     "explanation": "Drift is a sign the instrument may need attention.",
     "mode": "tap-the-flaw"
-   },
-   "review": {
-    "verdict": "approved",
-    "reviewer": "claude-sonnet-5-5",
-    "reviewAuthority": "owner-authorized-ai-review",
-    "reviewedAt": "2026-11-14T00:00:00Z",
-    "notes": "Original practice item written from standard operator concepts and reviewed as one claim with one defensible answer, accurate wording, an explanation that states the correct fact, and no operating, regulatory or safety instruction. Owner-authorized AI review, not human technical review."
    }
   }
  ],
