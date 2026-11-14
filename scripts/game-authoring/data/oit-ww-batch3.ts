@@ -55,7 +55,7 @@ const data: CourseData = {
     ["m", "An equalization basin is meant to hold flow forever.", false, "It stores flow temporarily and releases it to the plant."],
     ["m", "A biofilter treats odorous air by passing it over a bed of media with microbes.", true, "Microbes on the media break down odour compounds."],
     ["m", "Covers on tanks make odours worse because they trap fresh air.", false, "Covers help contain odours so the air can be collected and treated."],
-    ["m", "A diurnal flow pattern is a rise and fall in flow over a day.", true, "Flow often peaks in the morning and evening and drops overnight."],
+    ["m", "A diurnal flow pattern is a rise and fall in flow over a day.", true, "Flow usually peaks during the day and is lowest in the early morning."],
     ["m", "A diurnal flow pattern means the flow stays steady through the day.", false, "A diurnal pattern is a daily rise and fall."],
     ["m", "A force main is a pipe that flows by gravity alone.", false, "A force main is pressurized by pumps."],
     ["h", "Sulfide control chemicals increase the formation of hydrogen sulfide.", false, "They are used to reduce sulfide formation or release."],
