@@ -47,3 +47,15 @@ The README treats samples of 100 as rough: a true rate could be a few points eit
 2. Rewrite or exclude the 14 unclear items. The notes say how to fix each one.
 3. A person in the field checks this review, especially the three `WRONG` calls and about 30 `OK` items picked at random.
 4. Draw a second sample of about 100 items each for Classes 1 to 3, as the thresholds suggest: `python3 -I scripts/game-authoring/make-spot-check.py . 20261201`.
+
+## The wrong items are copied into other courses
+
+All three wrong items come from the Class 1 collection tables. The shared-pool approach copied them into the Class 2, 3 and 4 collection courses and the four western collection courses. Excluding one ID leaves the copies live.
+
+| Wrong statement | Live overlays on main (all four need the exclusion) | Draft tables holding it (not yet released) |
+|---|---|---|
+| Sonar maps above and below the water line | `2026-11-15-class1-wastewater-coll-batch2.json`, and the class2-s, class3-s and class4-s `wastewater-coll-batch2` overlays | `class1-wastewater-coll-batch2.ts`, `class{2,3,4}-s-wastewater-coll-batch2.ts`, `wpi-class{1-4}-water-coll-t2.ts` |
+| Force-main board pairing condition with pump calibration | the same four `batch2` overlays | the same eight tables |
+| A restriction raises motor current | `2026-11-14-class1-wastewater-coll-batch-1.json`, and the class2-s, class3-s and class4-s `wastewater-coll-batch1` overlays | `class1-wastewater-coll-batch1.ts`, `class{2,3,4}-s-wastewater-coll-batch1.ts`, `wpi-class{1-4}-water-coll-t1.ts` |
+
+The live item IDs differ per overlay. To find them, search each overlay for the statement text. The draft tables can be corrected at the source, and the western copies before they are released.
