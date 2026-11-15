@@ -195,6 +195,13 @@ describe("forward-only migration safety", () => {
         standaloneApply: { tables: ["blog_automation_run_archives"] },
         verifierAllowMissingTables: ["blog_automation_run_archives"],
       }),
+      expect.objectContaining({
+        version: 82,
+        tag: "0082_interactive_saved_results",
+        proposedOnly: true,
+        standaloneApply: { tables: ["interactive_item_progress", "interactive_daily_activity"] },
+        verifierAllowMissingTables: ["interactive_item_progress", "interactive_daily_activity"],
+      }),
     ]);
     const baseline = await loadSchemaContract(manifest.baseline.contract);
     const baselineRaw = await readFile(
@@ -945,7 +952,7 @@ describe("forward-only migration safety", () => {
 
     expect(
       planForwardMigrations(manifest, rows).map(migration => migration.version)
-    ).toEqual([59, 60, 61, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81]);
+    ).toEqual([59, 60, 61, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82]);
   });
 });
 
