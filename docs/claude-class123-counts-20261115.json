@@ -1,0 +1,1587 @@
+{
+  "main": "053ac23e3541ac6b18bcdf1aa0d2aebab0eb3d8b",
+  "source": "3b7e9fb205d4504e8e41f349eb58ddbd81693fd4",
+  "ownerInstruction": "2026-11-14T23:33:47-05:00",
+  "courses": [
+    "class1-wastewater-coll",
+    "class1-water",
+    "class1-water-dist",
+    "class1-ww",
+    "class2-wastewater-coll",
+    "class2-water",
+    "class2-water-dist",
+    "class2-ww",
+    "class3-water",
+    "class3-ww",
+    "class3-wastewater-coll",
+    "class3-water-dist"
+  ],
+  "priorOverlayIds": [
+    "rapid-swipe-balance-20261114",
+    "option-length-class2-ww-20261114",
+    "option-length-batch-2-20261114",
+    "og-oit-1",
+    "og-oit-2",
+    "og-oit-3",
+    "og-oit-4",
+    "og-oit-5",
+    "og-oit-6",
+    "og-oit-7",
+    "og-oit-8",
+    "og-oit-9",
+    "og-oit-10",
+    "og-oit-11",
+    "og-oit-12",
+    "og-oit-13",
+    "og-oit-ww-1",
+    "og-oit-ww-2",
+    "og-oit-ww-3",
+    "og-oit-ww-4",
+    "og-oit-ww-5",
+    "og-oit-ww-6",
+    "og-oit-ww-7",
+    "og-oit-ww-8",
+    "og-oit-14",
+    "og-oit-15",
+    "og-oit-ww-9",
+    "og-oit-ww-10",
+    "og-oit-ww-11",
+    "og-oit-ww-12",
+    "og-class1-water-1",
+    "og-class1-water-2",
+    "og-class1-ww-1",
+    "og-class1-ww-2",
+    "og-class1-wastewater-coll-1"
+  ],
+  "passed": [
+    {
+      "table": "scripts/game-authoring/data/class1-wastewater-coll-batch2.ts",
+      "stem": "class1-wastewater-coll-batch2",
+      "course": "class1-wastewater-coll",
+      "sourceSha256": "31babade1121d00acb115cf71c2750421d5f52358915a8dbd227ed99f8719000",
+      "id": "og-class1-wastewater-coll-2",
+      "declaration": "scripts/game-authoring/drafts/class1-wastewater-coll-batch2-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class1-wastewater-coll-batch2.json",
+      "count": 351,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 46,
+        "speed-match": 45,
+        "odd-one-out": 84,
+        "before-after": 72,
+        "cause-effect": 53,
+        "tap-the-flaw": 51
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class1-wastewater-coll-batch3.ts",
+      "stem": "class1-wastewater-coll-batch3",
+      "course": "class1-wastewater-coll",
+      "sourceSha256": "b4ffe29a46e5d6872f237467df7ee858b180fa9c6fbeb75d255535a7c983cb37",
+      "id": "og-class1-wastewater-coll-3",
+      "declaration": "scripts/game-authoring/drafts/class1-wastewater-coll-batch3-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class1-wastewater-coll-batch3.json",
+      "count": 165,
+      "buildErrors": [],
+      "byMode": {
+        "speed-match": 60,
+        "cause-effect": 55,
+        "tap-the-flaw": 50
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class1-water-batch3.ts",
+      "stem": "class1-water-batch3",
+      "course": "class1-water",
+      "sourceSha256": "45d280c936bdf43f1b8ba10b5ed2e9c1240100795932e7b7a1c81309d12c4906",
+      "id": "og-class1-water-3",
+      "declaration": "scripts/game-authoring/drafts/class1-water-batch3-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class1-water-batch3.json",
+      "count": 177,
+      "buildErrors": [],
+      "byMode": {
+        "speed-match": 51,
+        "cause-effect": 63,
+        "tap-the-flaw": 63
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class1-water-dist-batch1.ts",
+      "stem": "class1-water-dist-batch1",
+      "course": "class1-water-dist",
+      "sourceSha256": "6ba2665f616874fc46fd30e0186a187ca830bc6d35e1f11373c008cde8bc219f",
+      "id": "og-class1-water-dist-1",
+      "declaration": "scripts/game-authoring/drafts/class1-water-dist-batch1-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class1-water-dist-batch1.json",
+      "count": 358,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 73,
+        "speed-match": 34,
+        "odd-one-out": 90,
+        "before-after": 66,
+        "cause-effect": 45,
+        "tap-the-flaw": 50
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class1-water-dist-batch2.ts",
+      "stem": "class1-water-dist-batch2",
+      "course": "class1-water-dist",
+      "sourceSha256": "e8b665dffa03aa8bfd902d339b1093a9555bdef3e2efaa31770287e6b619b275",
+      "id": "og-class1-water-dist-2",
+      "declaration": "scripts/game-authoring/drafts/class1-water-dist-batch2-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class1-water-dist-batch2.json",
+      "count": 379,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 65,
+        "speed-match": 47,
+        "odd-one-out": 92,
+        "before-after": 66,
+        "cause-effect": 49,
+        "tap-the-flaw": 60
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class1-water-dist-batch3.ts",
+      "stem": "class1-water-dist-batch3",
+      "course": "class1-water-dist",
+      "sourceSha256": "1e52c454c44a05b91528c7083586c1d6ca4bc382fb4c6f8b906ed9bcecae62db",
+      "id": "og-class1-water-dist-3",
+      "declaration": "scripts/game-authoring/drafts/class1-water-dist-batch3-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class1-water-dist-batch3.json",
+      "count": 166,
+      "buildErrors": [],
+      "byMode": {
+        "speed-match": 71,
+        "cause-effect": 56,
+        "tap-the-flaw": 39
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class1-ww-batch3.ts",
+      "stem": "class1-ww-batch3",
+      "course": "class1-ww",
+      "sourceSha256": "9c2495e4ad3842c1889250cf9e24f8a0aa5a8b49995f9606bf72f65c94f88c60",
+      "id": "og-class1-ww-3",
+      "declaration": "scripts/game-authoring/drafts/class1-ww-batch3-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class1-ww-batch3.json",
+      "count": 191,
+      "buildErrors": [],
+      "byMode": {
+        "speed-match": 63,
+        "cause-effect": 69,
+        "tap-the-flaw": 59
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class2-wastewater-coll-batch1.ts",
+      "stem": "class2-wastewater-coll-batch1",
+      "course": "class2-wastewater-coll",
+      "sourceSha256": "2ae865b4cfeadfdd266eae20eefc2b1783bfdce42e180d99f1dffdb3810eadd0",
+      "id": "og-class2-wastewater-coll-1",
+      "declaration": "scripts/game-authoring/drafts/class2-wastewater-coll-batch1-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class2-wastewater-coll-batch1.json",
+      "count": 316,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 51,
+        "speed-match": 35,
+        "odd-one-out": 80,
+        "before-after": 48,
+        "cause-effect": 52,
+        "tap-the-flaw": 50
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class2-water-batch1.ts",
+      "stem": "class2-water-batch1",
+      "course": "class2-water",
+      "sourceSha256": "6e7281b9899bdaf6ec9afc43e83dbd9da8ab208f565bf393702343e3610201ba",
+      "id": "og-class2-water-1",
+      "declaration": "scripts/game-authoring/drafts/class2-water-batch1-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class2-water-batch1.json",
+      "count": 359,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 50,
+        "speed-match": 35,
+        "odd-one-out": 82,
+        "before-after": 90,
+        "cause-effect": 53,
+        "tap-the-flaw": 49
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class2-water-dist-batch1.ts",
+      "stem": "class2-water-dist-batch1",
+      "course": "class2-water-dist",
+      "sourceSha256": "b4da4553550270d01f3cedfaf7aafc47cfafd1231e431aa10d2746a178535054",
+      "id": "og-class2-water-dist-1",
+      "declaration": "scripts/game-authoring/drafts/class2-water-dist-batch1-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class2-water-dist-batch1.json",
+      "count": 353,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 50,
+        "speed-match": 35,
+        "odd-one-out": 94,
+        "before-after": 72,
+        "cause-effect": 52,
+        "tap-the-flaw": 50
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class2-ww-batch1.ts",
+      "stem": "class2-ww-batch1",
+      "course": "class2-ww",
+      "sourceSha256": "a56aa2de56838b465eb04ce9be23b856068a0e635dc11140345d649908cb4d47",
+      "id": "og-class2-ww-1",
+      "declaration": "scripts/game-authoring/drafts/class2-ww-batch1-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class2-ww-batch1.json",
+      "count": 350,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 50,
+        "speed-match": 34,
+        "odd-one-out": 90,
+        "before-after": 72,
+        "cause-effect": 51,
+        "tap-the-flaw": 53
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class3-water-batch1.ts",
+      "stem": "class3-water-batch1",
+      "course": "class3-water",
+      "sourceSha256": "2c4829f3dda9e8fdb6b6f4f4fc895b875168d3578e3335bfd0128916015e34d8",
+      "id": "og-class3-water-1",
+      "declaration": "scripts/game-authoring/drafts/class3-water-batch1-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class3-water-batch1.json",
+      "count": 402,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 63,
+        "speed-match": 44,
+        "odd-one-out": 102,
+        "before-after": 90,
+        "cause-effect": 52,
+        "tap-the-flaw": 51
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class3-ww-batch1.ts",
+      "stem": "class3-ww-batch1",
+      "course": "class3-ww",
+      "sourceSha256": "e0aff624fc94da17d7dd40c2727b0d0fc762ae39a108d3cb7788f41ed82d1399",
+      "id": "og-class3-ww-1",
+      "declaration": "scripts/game-authoring/drafts/class3-ww-batch1-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class3-ww-batch1.json",
+      "count": 362,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 55,
+        "speed-match": 39,
+        "odd-one-out": 96,
+        "before-after": 72,
+        "cause-effect": 50,
+        "tap-the-flaw": 50
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class2-s-wastewater-coll-batch1.ts",
+      "stem": "class2-s-wastewater-coll-batch1",
+      "course": "class2-wastewater-coll",
+      "sourceSha256": "996ee045564a682108a60eed98665ba1c076f62a812fdf356196a1471723c628",
+      "id": "og-class2-wastewater-coll-101",
+      "declaration": "scripts/game-authoring/drafts/class2-s-wastewater-coll-batch1-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class2-s-wastewater-coll-batch1.json",
+      "count": 361,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 69,
+        "speed-match": 35,
+        "odd-one-out": 96,
+        "before-after": 70,
+        "cause-effect": 42,
+        "tap-the-flaw": 49
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class2-s-wastewater-coll-batch2.ts",
+      "stem": "class2-s-wastewater-coll-batch2",
+      "course": "class2-wastewater-coll",
+      "sourceSha256": "d2a5bf3121840687707bd60a4c636b291abcf4ca03285aa8bba4f16524a94b6b",
+      "id": "og-class2-wastewater-coll-102",
+      "declaration": "scripts/game-authoring/drafts/class2-s-wastewater-coll-batch2-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class2-s-wastewater-coll-batch2.json",
+      "count": 351,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 46,
+        "speed-match": 45,
+        "odd-one-out": 84,
+        "before-after": 72,
+        "cause-effect": 53,
+        "tap-the-flaw": 51
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class2-s-wastewater-coll-batch3.ts",
+      "stem": "class2-s-wastewater-coll-batch3",
+      "course": "class2-wastewater-coll",
+      "sourceSha256": "2b5f25a4fc18f502f20cf9c1a8f325ccc171f239417f94dc65e35403e84015c6",
+      "id": "og-class2-wastewater-coll-103",
+      "declaration": "scripts/game-authoring/drafts/class2-s-wastewater-coll-batch3-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class2-s-wastewater-coll-batch3.json",
+      "count": 164,
+      "buildErrors": [],
+      "byMode": {
+        "speed-match": 60,
+        "cause-effect": 55,
+        "tap-the-flaw": 49
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class2-s-water-batch1.ts",
+      "stem": "class2-s-water-batch1",
+      "course": "class2-water",
+      "sourceSha256": "c2087c44d179594907455a396b4b790ee29823fc944ae77a8f154cfbac42a97d",
+      "id": "og-class2-water-101",
+      "declaration": "scripts/game-authoring/drafts/class2-s-water-batch1-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class2-s-water-batch1.json",
+      "count": 331,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 60,
+        "speed-match": 34,
+        "odd-one-out": 86,
+        "before-after": 68,
+        "cause-effect": 42,
+        "tap-the-flaw": 41
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class2-s-water-batch2.ts",
+      "stem": "class2-s-water-batch2",
+      "course": "class2-water",
+      "sourceSha256": "924df96f4ed087f7e527ee06d5087348efc18802d85e7a4f04132c26cf106de1",
+      "id": "og-class2-water-102",
+      "declaration": "scripts/game-authoring/drafts/class2-s-water-batch2-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class2-s-water-batch2.json",
+      "count": 335,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 61,
+        "speed-match": 36,
+        "odd-one-out": 63,
+        "before-after": 78,
+        "cause-effect": 45,
+        "tap-the-flaw": 52
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class2-s-water-batch3.ts",
+      "stem": "class2-s-water-batch3",
+      "course": "class2-water",
+      "sourceSha256": "6fb5a216aafb9bd4e6a9d0c2f1fe4f5e3ed480a7d44725c4cd579ec2882b63a3",
+      "id": "og-class2-water-103",
+      "declaration": "scripts/game-authoring/drafts/class2-s-water-batch3-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class2-s-water-batch3.json",
+      "count": 174,
+      "buildErrors": [],
+      "byMode": {
+        "speed-match": 50,
+        "cause-effect": 63,
+        "tap-the-flaw": 61
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class2-s-water-dist-batch1.ts",
+      "stem": "class2-s-water-dist-batch1",
+      "course": "class2-water-dist",
+      "sourceSha256": "d929f0d786ace16076aa3e3f29cf63bf2e8df539a264bb07c79a30c5faaa4063",
+      "id": "og-class2-water-dist-101",
+      "declaration": "scripts/game-authoring/drafts/class2-s-water-dist-batch1-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class2-s-water-dist-batch1.json",
+      "count": 358,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 73,
+        "speed-match": 34,
+        "odd-one-out": 90,
+        "before-after": 66,
+        "cause-effect": 45,
+        "tap-the-flaw": 50
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class2-s-water-dist-batch2.ts",
+      "stem": "class2-s-water-dist-batch2",
+      "course": "class2-water-dist",
+      "sourceSha256": "70282aa6908782405af325dae267b10a936849da26be2ba9f4917d04507e8e32",
+      "id": "og-class2-water-dist-102",
+      "declaration": "scripts/game-authoring/drafts/class2-s-water-dist-batch2-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class2-s-water-dist-batch2.json",
+      "count": 379,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 65,
+        "speed-match": 47,
+        "odd-one-out": 92,
+        "before-after": 66,
+        "cause-effect": 49,
+        "tap-the-flaw": 60
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class2-s-water-dist-batch3.ts",
+      "stem": "class2-s-water-dist-batch3",
+      "course": "class2-water-dist",
+      "sourceSha256": "893d5229952024db422f2165f66d4c4621e37674e267eba14febd84492c5c3c0",
+      "id": "og-class2-water-dist-103",
+      "declaration": "scripts/game-authoring/drafts/class2-s-water-dist-batch3-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class2-s-water-dist-batch3.json",
+      "count": 166,
+      "buildErrors": [],
+      "byMode": {
+        "speed-match": 71,
+        "cause-effect": 56,
+        "tap-the-flaw": 39
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class2-s-ww-batch1.ts",
+      "stem": "class2-s-ww-batch1",
+      "course": "class2-ww",
+      "sourceSha256": "7738fae8235dfe2a103fc0c6261b3658c4d10c8f9765d1b4f6ce4da91d79cee4",
+      "id": "og-class2-ww-101",
+      "declaration": "scripts/game-authoring/drafts/class2-s-ww-batch1-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class2-s-ww-batch1.json",
+      "count": 348,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 66,
+        "speed-match": 35,
+        "odd-one-out": 92,
+        "before-after": 68,
+        "cause-effect": 45,
+        "tap-the-flaw": 42
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class2-s-ww-batch2.ts",
+      "stem": "class2-s-ww-batch2",
+      "course": "class2-ww",
+      "sourceSha256": "7f4c859746e909b7e5695d32111eba6813d6b031e412ef412d9f1f2166702e85",
+      "id": "og-class2-ww-102",
+      "declaration": "scripts/game-authoring/drafts/class2-s-ww-batch2-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class2-s-ww-batch2.json",
+      "count": 387,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 70,
+        "speed-match": 51,
+        "odd-one-out": 79,
+        "before-after": 80,
+        "cause-effect": 41,
+        "tap-the-flaw": 66
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class2-s-ww-batch3.ts",
+      "stem": "class2-s-ww-batch3",
+      "course": "class2-ww",
+      "sourceSha256": "c40ac43fd64cccd112e983e1f4759c9193de210273806f05778e3cb1709d0e09",
+      "id": "og-class2-ww-103",
+      "declaration": "scripts/game-authoring/drafts/class2-s-ww-batch3-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class2-s-ww-batch3.json",
+      "count": 191,
+      "buildErrors": [],
+      "byMode": {
+        "speed-match": 63,
+        "cause-effect": 69,
+        "tap-the-flaw": 59
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class3-s-wastewater-coll-batch1.ts",
+      "stem": "class3-s-wastewater-coll-batch1",
+      "course": "class3-wastewater-coll",
+      "sourceSha256": "5c3e57983aa85ba034bcbd0e6565187546bdc6d8c642a4a454105dbe2e469e80",
+      "id": "og-class3-wastewater-coll-101",
+      "declaration": "scripts/game-authoring/drafts/class3-s-wastewater-coll-batch1-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class3-s-wastewater-coll-batch1.json",
+      "count": 268,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 60,
+        "speed-match": 30,
+        "odd-one-out": 60,
+        "before-after": 40,
+        "cause-effect": 34,
+        "tap-the-flaw": 44
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class3-s-wastewater-coll-batch2.ts",
+      "stem": "class3-s-wastewater-coll-batch2",
+      "course": "class3-wastewater-coll",
+      "sourceSha256": "9c8609c89b24f4134cd808b7cc4b9276c2941ee6974186c312196aa084ff1e75",
+      "id": "og-class3-wastewater-coll-102",
+      "declaration": "scripts/game-authoring/drafts/class3-s-wastewater-coll-batch2-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class3-s-wastewater-coll-batch2.json",
+      "count": 289,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 39,
+        "speed-match": 37,
+        "odd-one-out": 48,
+        "before-after": 72,
+        "cause-effect": 44,
+        "tap-the-flaw": 49
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class3-s-wastewater-coll-batch3.ts",
+      "stem": "class3-s-wastewater-coll-batch3",
+      "course": "class3-wastewater-coll",
+      "sourceSha256": "d3670eeef3c4f08877b51caecf65b16385d4f7cc886edfdf7430eec8ba6b0a2c",
+      "id": "og-class3-wastewater-coll-103",
+      "declaration": "scripts/game-authoring/drafts/class3-s-wastewater-coll-batch3-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class3-s-wastewater-coll-batch3.json",
+      "count": 134,
+      "buildErrors": [],
+      "byMode": {
+        "speed-match": 49,
+        "cause-effect": 43,
+        "tap-the-flaw": 42
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class3-s-wastewater-coll-depth2.ts",
+      "stem": "class3-s-wastewater-coll-depth2",
+      "course": "class3-wastewater-coll",
+      "sourceSha256": "f9ebab3f20d2c3214586c68a7d43c006acf1319af3392e02e1e95994c61f3a5e",
+      "id": "og-class3-wastewater-coll-202",
+      "declaration": "scripts/game-authoring/drafts/class3-s-wastewater-coll-depth2-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class3-s-wastewater-coll-depth2.json",
+      "count": 316,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 51,
+        "speed-match": 35,
+        "odd-one-out": 80,
+        "before-after": 48,
+        "cause-effect": 52,
+        "tap-the-flaw": 50
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class3-s-water-batch1.ts",
+      "stem": "class3-s-water-batch1",
+      "course": "class3-water",
+      "sourceSha256": "5ec55b6510401dafa6aa0db1309e66ee1df2f8076b1a3d91a8c75bb8bf285e0d",
+      "id": "og-class3-water-101",
+      "declaration": "scripts/game-authoring/drafts/class3-s-water-batch1-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class3-s-water-batch1.json",
+      "count": 231,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 46,
+        "speed-match": 22,
+        "odd-one-out": 52,
+        "before-after": 52,
+        "cause-effect": 32,
+        "tap-the-flaw": 27
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class3-s-water-batch2.ts",
+      "stem": "class3-s-water-batch2",
+      "course": "class3-water",
+      "sourceSha256": "c7651076318ff5c6eb44e538e0107d20fbf6b80239498e34750d79edab9ed13f",
+      "id": "og-class3-water-102",
+      "declaration": "scripts/game-authoring/drafts/class3-s-water-batch2-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class3-s-water-batch2.json",
+      "count": 231,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 42,
+        "speed-match": 23,
+        "odd-one-out": 35,
+        "before-after": 62,
+        "cause-effect": 32,
+        "tap-the-flaw": 37
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class3-s-water-batch3.ts",
+      "stem": "class3-s-water-batch3",
+      "course": "class3-water",
+      "sourceSha256": "e0bac7c0c92546d7ccaef59f371d6503b8e166195403cd51628840df44bdd878",
+      "id": "og-class3-water-103",
+      "declaration": "scripts/game-authoring/drafts/class3-s-water-batch3-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class3-s-water-batch3.json",
+      "count": 122,
+      "buildErrors": [],
+      "byMode": {
+        "speed-match": 32,
+        "cause-effect": 49,
+        "tap-the-flaw": 41
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class3-s-water-depth2.ts",
+      "stem": "class3-s-water-depth2",
+      "course": "class3-water",
+      "sourceSha256": "24ca0b17463c0ca5ef3c9a551a2611acd0947cb25b1a5498020738e76ca9d59f",
+      "id": "og-class3-water-202",
+      "declaration": "scripts/game-authoring/drafts/class3-s-water-depth2-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class3-s-water-depth2.json",
+      "count": 359,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 50,
+        "speed-match": 35,
+        "odd-one-out": 82,
+        "before-after": 90,
+        "cause-effect": 53,
+        "tap-the-flaw": 49
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class3-s-water-dist-batch1.ts",
+      "stem": "class3-s-water-dist-batch1",
+      "course": "class3-water-dist",
+      "sourceSha256": "efd1ba6e998dd07313ed0a5815c8ac217c79b60cc382cad2ccc521583575e73d",
+      "id": "og-class3-water-dist-101",
+      "declaration": "scripts/game-authoring/drafts/class3-s-water-dist-batch1-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class3-s-water-dist-batch1.json",
+      "count": 281,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 64,
+        "speed-match": 24,
+        "odd-one-out": 74,
+        "before-after": 44,
+        "cause-effect": 36,
+        "tap-the-flaw": 39
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class3-s-water-dist-batch2.ts",
+      "stem": "class3-s-water-dist-batch2",
+      "course": "class3-water-dist",
+      "sourceSha256": "f25f2fbd20e9a9bdcbcabadace25fbc7120f50a4e8a7cb126446f6524aad6a9c",
+      "id": "og-class3-water-dist-102",
+      "declaration": "scripts/game-authoring/drafts/class3-s-water-dist-batch2-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class3-s-water-dist-batch2.json",
+      "count": 366,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 60,
+        "speed-match": 45,
+        "odd-one-out": 92,
+        "before-after": 66,
+        "cause-effect": 49,
+        "tap-the-flaw": 54
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class3-s-water-dist-batch3.ts",
+      "stem": "class3-s-water-dist-batch3",
+      "course": "class3-water-dist",
+      "sourceSha256": "d08ede69ce642072bdd346b5b3823cc107000b6fab5940268468ff7664bbd05f",
+      "id": "og-class3-water-dist-103",
+      "declaration": "scripts/game-authoring/drafts/class3-s-water-dist-batch3-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class3-s-water-dist-batch3.json",
+      "count": 130,
+      "buildErrors": [],
+      "byMode": {
+        "speed-match": 63,
+        "cause-effect": 39,
+        "tap-the-flaw": 28
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class3-s-water-dist-depth2.ts",
+      "stem": "class3-s-water-dist-depth2",
+      "course": "class3-water-dist",
+      "sourceSha256": "76c7671fe84473f94ffee70e34669e67aa8158a0082c87d5f776273660dc8029",
+      "id": "og-class3-water-dist-202",
+      "declaration": "scripts/game-authoring/drafts/class3-s-water-dist-depth2-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class3-s-water-dist-depth2.json",
+      "count": 353,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 50,
+        "speed-match": 35,
+        "odd-one-out": 94,
+        "before-after": 72,
+        "cause-effect": 52,
+        "tap-the-flaw": 50
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class3-s-ww-batch1.ts",
+      "stem": "class3-s-ww-batch1",
+      "course": "class3-ww",
+      "sourceSha256": "d6d093b1e4f0eed4236abc40d182df67c698ef6176797ee8bb1e52e44a29fb84",
+      "id": "og-class3-ww-101",
+      "declaration": "scripts/game-authoring/drafts/class3-s-ww-batch1-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class3-s-ww-batch1.json",
+      "count": 253,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 51,
+        "speed-match": 25,
+        "odd-one-out": 58,
+        "before-after": 54,
+        "cause-effect": 34,
+        "tap-the-flaw": 31
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class3-s-ww-batch2.ts",
+      "stem": "class3-s-ww-batch2",
+      "course": "class3-ww",
+      "sourceSha256": "f9accb548f9f98366d1098b359ba852a45cceb9ad8b3666b8c095b026c90b185",
+      "id": "og-class3-ww-102",
+      "declaration": "scripts/game-authoring/drafts/class3-s-ww-batch2-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class3-s-ww-batch2.json",
+      "count": 307,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 56,
+        "speed-match": 38,
+        "odd-one-out": 62,
+        "before-after": 64,
+        "cause-effect": 30,
+        "tap-the-flaw": 57
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class3-s-ww-batch3.ts",
+      "stem": "class3-s-ww-batch3",
+      "course": "class3-ww",
+      "sourceSha256": "d216c5ff1c8e2a84db89e485eb65d8cdb2111b6a11cee3bd52c63fce8a023437",
+      "id": "og-class3-ww-103",
+      "declaration": "scripts/game-authoring/drafts/class3-s-ww-batch3-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class3-s-ww-batch3.json",
+      "count": 171,
+      "buildErrors": [],
+      "byMode": {
+        "speed-match": 57,
+        "cause-effect": 62,
+        "tap-the-flaw": 52
+      },
+      "status": "passed",
+      "exit": 0
+    },
+    {
+      "table": "scripts/game-authoring/data/class3-s-ww-depth2.ts",
+      "stem": "class3-s-ww-depth2",
+      "course": "class3-ww",
+      "sourceSha256": "9a30b0f3afbdf414aa129ac269556d0374069a8fabda19e81819ec642cf9df95",
+      "id": "og-class3-ww-202",
+      "declaration": "scripts/game-authoring/drafts/class3-s-ww-depth2-20261115.review.json",
+      "overlay": "server/interactiveContent/overlay/2026-11-15-class3-s-ww-depth2.json",
+      "count": 350,
+      "buildErrors": [],
+      "byMode": {
+        "rapid-swipe": 50,
+        "speed-match": 34,
+        "odd-one-out": 90,
+        "before-after": 72,
+        "cause-effect": 51,
+        "tap-the-flaw": 53
+      },
+      "status": "passed",
+      "exit": 0
+    }
+  ],
+  "held": [],
+  "tables": 41,
+  "passedTables": 41,
+  "heldTables": 0,
+  "added": 11635,
+  "baselineTotal": 2961,
+  "rows": [
+    {
+      "course": "class1-wastewater-coll",
+      "mode": "rapid-swipe",
+      "baseline": 103,
+      "added": 46,
+      "total": 149,
+      "sessionCount": 149
+    },
+    {
+      "course": "class1-wastewater-coll",
+      "mode": "speed-match",
+      "baseline": 44,
+      "added": 105,
+      "total": 149,
+      "sessionCount": 149
+    },
+    {
+      "course": "class1-wastewater-coll",
+      "mode": "odd-one-out",
+      "baseline": 111,
+      "added": 84,
+      "total": 195,
+      "sessionCount": 195
+    },
+    {
+      "course": "class1-wastewater-coll",
+      "mode": "cause-effect",
+      "baseline": 59,
+      "added": 108,
+      "total": 167,
+      "sessionCount": 167
+    },
+    {
+      "course": "class1-wastewater-coll",
+      "mode": "tap-the-flaw",
+      "baseline": 64,
+      "added": 101,
+      "total": 165,
+      "sessionCount": 165
+    },
+    {
+      "course": "class1-wastewater-coll",
+      "mode": "before-after",
+      "baseline": 86,
+      "added": 72,
+      "total": 158,
+      "sessionCount": 158
+    },
+    {
+      "course": "class1-water",
+      "mode": "rapid-swipe",
+      "baseline": 149,
+      "added": 0,
+      "total": 149,
+      "sessionCount": 149
+    },
+    {
+      "course": "class1-water",
+      "mode": "speed-match",
+      "baseline": 81,
+      "added": 51,
+      "total": 132,
+      "sessionCount": 132
+    },
+    {
+      "course": "class1-water",
+      "mode": "odd-one-out",
+      "baseline": 163,
+      "added": 0,
+      "total": 163,
+      "sessionCount": 163
+    },
+    {
+      "course": "class1-water",
+      "mode": "cause-effect",
+      "baseline": 100,
+      "added": 63,
+      "total": 163,
+      "sessionCount": 163
+    },
+    {
+      "course": "class1-water",
+      "mode": "tap-the-flaw",
+      "baseline": 110,
+      "added": 63,
+      "total": 173,
+      "sessionCount": 173
+    },
+    {
+      "course": "class1-water",
+      "mode": "before-after",
+      "baseline": 164,
+      "added": 0,
+      "total": 164,
+      "sessionCount": 164
+    },
+    {
+      "course": "class1-water-dist",
+      "mode": "rapid-swipe",
+      "baseline": 46,
+      "added": 138,
+      "total": 184,
+      "sessionCount": 184
+    },
+    {
+      "course": "class1-water-dist",
+      "mode": "speed-match",
+      "baseline": 10,
+      "added": 152,
+      "total": 162,
+      "sessionCount": 162
+    },
+    {
+      "course": "class1-water-dist",
+      "mode": "odd-one-out",
+      "baseline": 13,
+      "added": 182,
+      "total": 195,
+      "sessionCount": 195
+    },
+    {
+      "course": "class1-water-dist",
+      "mode": "cause-effect",
+      "baseline": 20,
+      "added": 150,
+      "total": 170,
+      "sessionCount": 170
+    },
+    {
+      "course": "class1-water-dist",
+      "mode": "tap-the-flaw",
+      "baseline": 15,
+      "added": 149,
+      "total": 164,
+      "sessionCount": 164
+    },
+    {
+      "course": "class1-water-dist",
+      "mode": "before-after",
+      "baseline": 12,
+      "added": 132,
+      "total": 144,
+      "sessionCount": 144
+    },
+    {
+      "course": "class1-ww",
+      "mode": "rapid-swipe",
+      "baseline": 166,
+      "added": 0,
+      "total": 166,
+      "sessionCount": 166
+    },
+    {
+      "course": "class1-ww",
+      "mode": "speed-match",
+      "baseline": 98,
+      "added": 63,
+      "total": 161,
+      "sessionCount": 161
+    },
+    {
+      "course": "class1-ww",
+      "mode": "odd-one-out",
+      "baseline": 191,
+      "added": 0,
+      "total": 191,
+      "sessionCount": 191
+    },
+    {
+      "course": "class1-ww",
+      "mode": "cause-effect",
+      "baseline": 105,
+      "added": 69,
+      "total": 174,
+      "sessionCount": 174
+    },
+    {
+      "course": "class1-ww",
+      "mode": "tap-the-flaw",
+      "baseline": 128,
+      "added": 59,
+      "total": 187,
+      "sessionCount": 187
+    },
+    {
+      "course": "class1-ww",
+      "mode": "before-after",
+      "baseline": 169,
+      "added": 0,
+      "total": 169,
+      "sessionCount": 169
+    },
+    {
+      "course": "class2-wastewater-coll",
+      "mode": "rapid-swipe",
+      "baseline": 32,
+      "added": 166,
+      "total": 198,
+      "sessionCount": 198
+    },
+    {
+      "course": "class2-wastewater-coll",
+      "mode": "speed-match",
+      "baseline": 9,
+      "added": 175,
+      "total": 184,
+      "sessionCount": 184
+    },
+    {
+      "course": "class2-wastewater-coll",
+      "mode": "odd-one-out",
+      "baseline": 15,
+      "added": 260,
+      "total": 275,
+      "sessionCount": 275
+    },
+    {
+      "course": "class2-wastewater-coll",
+      "mode": "cause-effect",
+      "baseline": 18,
+      "added": 202,
+      "total": 220,
+      "sessionCount": 220
+    },
+    {
+      "course": "class2-wastewater-coll",
+      "mode": "tap-the-flaw",
+      "baseline": 19,
+      "added": 199,
+      "total": 218,
+      "sessionCount": 218
+    },
+    {
+      "course": "class2-wastewater-coll",
+      "mode": "before-after",
+      "baseline": 10,
+      "added": 190,
+      "total": 200,
+      "sessionCount": 200
+    },
+    {
+      "course": "class2-water",
+      "mode": "rapid-swipe",
+      "baseline": 28,
+      "added": 171,
+      "total": 199,
+      "sessionCount": 199
+    },
+    {
+      "course": "class2-water",
+      "mode": "speed-match",
+      "baseline": 9,
+      "added": 155,
+      "total": 164,
+      "sessionCount": 164
+    },
+    {
+      "course": "class2-water",
+      "mode": "odd-one-out",
+      "baseline": 8,
+      "added": 231,
+      "total": 239,
+      "sessionCount": 239
+    },
+    {
+      "course": "class2-water",
+      "mode": "cause-effect",
+      "baseline": 8,
+      "added": 203,
+      "total": 211,
+      "sessionCount": 211
+    },
+    {
+      "course": "class2-water",
+      "mode": "tap-the-flaw",
+      "baseline": 8,
+      "added": 203,
+      "total": 211,
+      "sessionCount": 211
+    },
+    {
+      "course": "class2-water",
+      "mode": "before-after",
+      "baseline": 21,
+      "added": 236,
+      "total": 257,
+      "sessionCount": 257
+    },
+    {
+      "course": "class2-water-dist",
+      "mode": "rapid-swipe",
+      "baseline": 32,
+      "added": 188,
+      "total": 220,
+      "sessionCount": 220
+    },
+    {
+      "course": "class2-water-dist",
+      "mode": "speed-match",
+      "baseline": 7,
+      "added": 187,
+      "total": 194,
+      "sessionCount": 194
+    },
+    {
+      "course": "class2-water-dist",
+      "mode": "odd-one-out",
+      "baseline": 15,
+      "added": 276,
+      "total": 291,
+      "sessionCount": 291
+    },
+    {
+      "course": "class2-water-dist",
+      "mode": "cause-effect",
+      "baseline": 15,
+      "added": 202,
+      "total": 217,
+      "sessionCount": 217
+    },
+    {
+      "course": "class2-water-dist",
+      "mode": "tap-the-flaw",
+      "baseline": 17,
+      "added": 199,
+      "total": 216,
+      "sessionCount": 216
+    },
+    {
+      "course": "class2-water-dist",
+      "mode": "before-after",
+      "baseline": 2,
+      "added": 204,
+      "total": 206,
+      "sessionCount": 206
+    },
+    {
+      "course": "class2-ww",
+      "mode": "rapid-swipe",
+      "baseline": 24,
+      "added": 186,
+      "total": 210,
+      "sessionCount": 210
+    },
+    {
+      "course": "class2-ww",
+      "mode": "speed-match",
+      "baseline": 10,
+      "added": 183,
+      "total": 193,
+      "sessionCount": 193
+    },
+    {
+      "course": "class2-ww",
+      "mode": "odd-one-out",
+      "baseline": 16,
+      "added": 261,
+      "total": 277,
+      "sessionCount": 277
+    },
+    {
+      "course": "class2-ww",
+      "mode": "cause-effect",
+      "baseline": 17,
+      "added": 206,
+      "total": 223,
+      "sessionCount": 223
+    },
+    {
+      "course": "class2-ww",
+      "mode": "tap-the-flaw",
+      "baseline": 16,
+      "added": 220,
+      "total": 236,
+      "sessionCount": 236
+    },
+    {
+      "course": "class2-ww",
+      "mode": "before-after",
+      "baseline": 16,
+      "added": 220,
+      "total": 236,
+      "sessionCount": 236
+    },
+    {
+      "course": "class3-water",
+      "mode": "rapid-swipe",
+      "baseline": 22,
+      "added": 201,
+      "total": 223,
+      "sessionCount": 223
+    },
+    {
+      "course": "class3-water",
+      "mode": "speed-match",
+      "baseline": 13,
+      "added": 156,
+      "total": 169,
+      "sessionCount": 169
+    },
+    {
+      "course": "class3-water",
+      "mode": "odd-one-out",
+      "baseline": 3,
+      "added": 271,
+      "total": 274,
+      "sessionCount": 274
+    },
+    {
+      "course": "class3-water",
+      "mode": "cause-effect",
+      "baseline": 20,
+      "added": 218,
+      "total": 238,
+      "sessionCount": 238
+    },
+    {
+      "course": "class3-water",
+      "mode": "tap-the-flaw",
+      "baseline": 11,
+      "added": 205,
+      "total": 216,
+      "sessionCount": 216
+    },
+    {
+      "course": "class3-water",
+      "mode": "before-after",
+      "baseline": 18,
+      "added": 294,
+      "total": 312,
+      "sessionCount": 312
+    },
+    {
+      "course": "class3-ww",
+      "mode": "rapid-swipe",
+      "baseline": 28,
+      "added": 212,
+      "total": 240,
+      "sessionCount": 240
+    },
+    {
+      "course": "class3-ww",
+      "mode": "speed-match",
+      "baseline": 10,
+      "added": 193,
+      "total": 203,
+      "sessionCount": 203
+    },
+    {
+      "course": "class3-ww",
+      "mode": "odd-one-out",
+      "baseline": 15,
+      "added": 306,
+      "total": 321,
+      "sessionCount": 321
+    },
+    {
+      "course": "class3-ww",
+      "mode": "cause-effect",
+      "baseline": 12,
+      "added": 227,
+      "total": 239,
+      "sessionCount": 239
+    },
+    {
+      "course": "class3-ww",
+      "mode": "tap-the-flaw",
+      "baseline": 20,
+      "added": 243,
+      "total": 263,
+      "sessionCount": 263
+    },
+    {
+      "course": "class3-ww",
+      "mode": "before-after",
+      "baseline": 19,
+      "added": 262,
+      "total": 281,
+      "sessionCount": 281
+    },
+    {
+      "course": "class3-wastewater-coll",
+      "mode": "rapid-swipe",
+      "baseline": 24,
+      "added": 150,
+      "total": 174,
+      "sessionCount": 174
+    },
+    {
+      "course": "class3-wastewater-coll",
+      "mode": "speed-match",
+      "baseline": 12,
+      "added": 151,
+      "total": 163,
+      "sessionCount": 163
+    },
+    {
+      "course": "class3-wastewater-coll",
+      "mode": "odd-one-out",
+      "baseline": 15,
+      "added": 188,
+      "total": 203,
+      "sessionCount": 203
+    },
+    {
+      "course": "class3-wastewater-coll",
+      "mode": "cause-effect",
+      "baseline": 18,
+      "added": 173,
+      "total": 191,
+      "sessionCount": 191
+    },
+    {
+      "course": "class3-wastewater-coll",
+      "mode": "tap-the-flaw",
+      "baseline": 20,
+      "added": 185,
+      "total": 205,
+      "sessionCount": 205
+    },
+    {
+      "course": "class3-wastewater-coll",
+      "mode": "before-after",
+      "baseline": 15,
+      "added": 160,
+      "total": 175,
+      "sessionCount": 175
+    },
+    {
+      "course": "class3-water-dist",
+      "mode": "rapid-swipe",
+      "baseline": 24,
+      "added": 174,
+      "total": 198,
+      "sessionCount": 198
+    },
+    {
+      "course": "class3-water-dist",
+      "mode": "speed-match",
+      "baseline": 12,
+      "added": 167,
+      "total": 179,
+      "sessionCount": 179
+    },
+    {
+      "course": "class3-water-dist",
+      "mode": "odd-one-out",
+      "baseline": 17,
+      "added": 260,
+      "total": 277,
+      "sessionCount": 277
+    },
+    {
+      "course": "class3-water-dist",
+      "mode": "cause-effect",
+      "baseline": 15,
+      "added": 176,
+      "total": 191,
+      "sessionCount": 191
+    },
+    {
+      "course": "class3-water-dist",
+      "mode": "tap-the-flaw",
+      "baseline": 15,
+      "added": 171,
+      "total": 186,
+      "sessionCount": 186
+    },
+    {
+      "course": "class3-water-dist",
+      "mode": "before-after",
+      "baseline": 4,
+      "added": 182,
+      "total": 186,
+      "sessionCount": 186
+    }
+  ],
+  "totals": {
+    "class1-wastewater-coll": 983,
+    "class1-water": 944,
+    "class1-water-dist": 1019,
+    "class1-ww": 1048,
+    "class2-wastewater-coll": 1295,
+    "class2-water": 1281,
+    "class2-water-dist": 1344,
+    "class2-ww": 1375,
+    "class3-water": 1432,
+    "class3-ww": 1547,
+    "class3-wastewater-coll": 1111,
+    "class3-water-dist": 1217
+  },
+  "total": 14596,
+  "exclusions": {
+    "count": 129,
+    "sha256": "8040a4b366a73d13f44cf29746e9bbedb14eb20304519d1c2e2b6ba04273525b"
+  },
+  "protectedHashes": {
+    "scripts/game-authoring/data/class1-wastewater-coll-batch1.ts": "3e430f1e762aae2136b6f923539f3c42749294cb4ccd31c44cf5f6c0dba8c726",
+    "scripts/game-authoring/data/class1-water-batch1.ts": "ec1ab72b12370db6ebcbc6722b114bbeb219160388f376735b6b802242d39003",
+    "scripts/game-authoring/data/class1-water-batch2.ts": "ee9c0931506d6059f2944719b21d2b2027ee24fb5037f5ac8d69393537547b3c",
+    "scripts/game-authoring/data/class1-ww-batch1.ts": "567b936254cbeedb1085d6c5f6ccc2bdee9a7702904b05de5ff82774d660be63",
+    "scripts/game-authoring/data/class1-ww-batch2.ts": "ef3a096fe5709ee2599b3f8d58e53a15672c2b1466561754bad576155735d0f6",
+    "scripts/game-authoring/data/oit-batch1.ts": "b37f930ff294538717ff00f805361df16131a9046f33d80459eb4d21ecef88d2",
+    "scripts/game-authoring/data/oit-batch10.ts": "cd6537a446861b53e89b8653e7641f3e72163d25896436dd875cb357f770724b",
+    "scripts/game-authoring/data/oit-batch11.ts": "6c2e8a0c75b3fc229dd84ad35abf7024024cdab8e0c557f06fd0c53a5aeda30e",
+    "scripts/game-authoring/data/oit-batch12.ts": "563bea9c8cebc2621506b074b20ea64bdd9b4e4317b7ff9d81e9b303a58a70ef",
+    "scripts/game-authoring/data/oit-batch13.ts": "4857a0b93e6ca3abac55dd75b239301e5a44576dc9635d3d0b1a4532a1bb936a",
+    "scripts/game-authoring/data/oit-batch14.ts": "f4ef0078e8ebe2396be55b2354768264501890fa891857d902f6747e96520566",
+    "scripts/game-authoring/data/oit-batch15.ts": "161571cce89e35bbdad4857dd87fe2913a657bc45b28545e70a58d4e10e0bfd6",
+    "scripts/game-authoring/data/oit-batch2.ts": "43af01280a4850e410a148278151da082b40cb7ff6b92d6d1985eace051725fe",
+    "scripts/game-authoring/data/oit-batch3.ts": "a6ebc7ed1386f553381eb171d0ff03df30a894f8f59e6d113c39e0c99f105f26",
+    "scripts/game-authoring/data/oit-batch4.ts": "ad3b4096e023f62e3aaa2bbcd4d10106184c7571687d5f67c465afc9770ee322",
+    "scripts/game-authoring/data/oit-batch5.ts": "7799a08a6ce8eceb3595192978bde793c04a928b2a2db4d0bdaff02bdb1f543d",
+    "scripts/game-authoring/data/oit-batch6.ts": "a8b0ce2ebc27b9b2225c147d7be94a597084515859531398e1e0138cb6632055",
+    "scripts/game-authoring/data/oit-batch7.ts": "075f57fa651d38d27b2062cbc5d8127372e8d8004d0823bba5a20de8074a4de7",
+    "scripts/game-authoring/data/oit-batch8.ts": "63dfb0d9245f9a87c4d2781898fe96c43efcdfc2ed911d154b3daf9617fbd3c8",
+    "scripts/game-authoring/data/oit-batch9.ts": "ce4cf3cd77cf6f38c2169dd1b45c85869056aed896bb0458b4409d455ecd0976",
+    "scripts/game-authoring/data/oit-ww-batch1.ts": "6341f210aba427adf86b03962ebdcb0d9bd23486a148187a4788437a330fa32e",
+    "scripts/game-authoring/data/oit-ww-batch10.ts": "ad1fa0210dd81c508fa32e1315b9a906353b6b1f7098690518f6f6f0b33f2343",
+    "scripts/game-authoring/data/oit-ww-batch11.ts": "3a2d71fe81739b883a1b385df2b679f168ec52a406f79ad839621ff826d3089a",
+    "scripts/game-authoring/data/oit-ww-batch12.ts": "d23a84ceefad3095fa029febfd0b630eac791fdc043da2c57d72a047a6e55418",
+    "scripts/game-authoring/data/oit-ww-batch2.ts": "a3451d6f1958bfa5b91250236b9f2109b2e35c917d80d184e03fc15d3d180450",
+    "scripts/game-authoring/data/oit-ww-batch3.ts": "eab0e484573429a20d7a946be6ea7e23798aeb0751d2ad0db026dfa36fcb00d4",
+    "scripts/game-authoring/data/oit-ww-batch4.ts": "0343bbb2e789ad3856dd2c409063828bc43583bccd3aa051d3a64ce8e32379ed",
+    "scripts/game-authoring/data/oit-ww-batch5.ts": "cf4fbe8cf6abf8c9f3f48b92ede1ab9094af4b9f9ea9163fc5b903139a372dd8",
+    "scripts/game-authoring/data/oit-ww-batch6.ts": "81e1bda4baf7f0846821def285d2972013115b628f45a40d81fb4b229f367e23",
+    "scripts/game-authoring/data/oit-ww-batch7.ts": "3df09b6f72ec11af4d1e6d89246a5a1013d4f38a6f33952dad321ff67bef425e",
+    "scripts/game-authoring/data/oit-ww-batch8.ts": "bae66a129ee9bf1cf6d5c149de0f002642591aa8396ef156cfe69bf85b91c4c1",
+    "scripts/game-authoring/data/oit-ww-batch9.ts": "958961f99e6a59472a67ddf81b7936684add866accbc39b5f5f32e8baa529b2e",
+    "scripts/game-authoring/drafts/class1-wastewater-coll-batch-1.review.json": "f901eebe1df43d73ef6c83708be39a2d44f2cd64e0f40c7abbe5c6e831cd5260",
+    "scripts/game-authoring/drafts/class1-water-batch-1.review.json": "cf875144c7a847e6ee8d255904961622570c4c41c4aae178304e9c33c460e20b",
+    "scripts/game-authoring/drafts/class1-water-batch-2.review.json": "28ac49422342420d870b99da3570b886bcf27f06cfe2440dcb2c8bf827305be7",
+    "scripts/game-authoring/drafts/class1-ww-batch-1.review.json": "9510bb91d88841b27dc3e9dbfd8d80aa0bf91dbd4c479a6be3ef53f8321d112a",
+    "scripts/game-authoring/drafts/class1-ww-batch-2.review.json": "8426ef546f43ec40020afe11d0b7c862d9b77a7aeaf006f85e835b68dc113898",
+    "scripts/game-authoring/drafts/oit-batch-10.review.json": "d79d84fe04180db3fc2ea42c85a184248e9f8ab63a1a347ea20270722b2d787e",
+    "scripts/game-authoring/drafts/oit-batch-11.review.json": "ee72fa15ce74f0cdbe379daf02683c65aacefd4cf4c09cc3799717341915b79d",
+    "scripts/game-authoring/drafts/oit-batch-12.review.json": "9b3d500581e52b843c179da209b4f0ead9c0358be393da5d5ba71f3488968487",
+    "scripts/game-authoring/drafts/oit-batch-13.review.json": "8a34c4f91ccd52ee29fb2b9bbee737678ca371a7c68a7a39b473852333c82ecf",
+    "scripts/game-authoring/drafts/oit-batch-14.review.json": "867af6c32b06ca9343a4ccb011158f080458f10bf3b5a31b419fdfb3c28dc1d4",
+    "scripts/game-authoring/drafts/oit-batch-15.review.json": "9e45967f887b25e0128c2cc835a9fb318469ed934660504437a3c77d4367e87f",
+    "scripts/game-authoring/drafts/oit-batch-5.draft.json": "5eab458a9b004a76822fe88a70cff6e0f4560abd178a24b78c729a93a1a87efe",
+    "scripts/game-authoring/drafts/oit-batch-5.review.json": "ac6906a37041783f94a5e40234012e4c4ac4e7ec3f5bee59420f8156958006ec",
+    "scripts/game-authoring/drafts/oit-batch-6.review.json": "59f4eb1307e73d6a02fec748ee6d6602e919bfdaec1da3c41ec11a4a3e52ee8c",
+    "scripts/game-authoring/drafts/oit-batch-7.review.json": "788f5db37d36ec28f59721eed9ef089f176ad63bcc454bc8999771eb9828eb9d",
+    "scripts/game-authoring/drafts/oit-batch-8.review.json": "b480bd5c45b56890d9ba8318ef147ec41ac42ed9f6f7e7ce8b4aefbacdea020f",
+    "scripts/game-authoring/drafts/oit-batch-9.review.json": "2688aa9396db15768386c3b70987cd0b94ab7f2dff26e1990a4a158e50647a7d",
+    "scripts/game-authoring/drafts/oit-ww-batch-1.review.json": "628a412faee7fa3b3e32bfcec9a555fde5126f95cbfe5942ee9309f7c0c5fdbb",
+    "scripts/game-authoring/drafts/oit-ww-batch-10.review.json": "c2a04a1ef4cd07ff3888e58e34d0281324109a6804af53ae57534b6d8a4fe8f5",
+    "scripts/game-authoring/drafts/oit-ww-batch-11.review.json": "d768896e0e0810ac53ed93eb13b45e5e3364c0907862f3bc74d5b2179201d57f",
+    "scripts/game-authoring/drafts/oit-ww-batch-12.review.json": "4a61c99b054bc1a2a78ef0067ef55fd86afd08ae937d1a500027dad718328731",
+    "scripts/game-authoring/drafts/oit-ww-batch-2.review.json": "d514cbbdb57bdbe3e53b6b0586fb8671c9201229bf2c48682f2eb0f909598eed",
+    "scripts/game-authoring/drafts/oit-ww-batch-3.review.json": "faf76549a889cc584981def7b3e7463f9e2d6bc12d67c242f43b6133d3ca0484",
+    "scripts/game-authoring/drafts/oit-ww-batch-4.review.json": "281dcff1cf415f0614e9a575ab0fc79474b1799b5537a6410cb3fc27bf8be15e",
+    "scripts/game-authoring/drafts/oit-ww-batch-5.review.json": "293947bca44828141511f6b577eab89fb143397f88b9bf24044a1b1c190bc406",
+    "scripts/game-authoring/drafts/oit-ww-batch-6.review.json": "2c9103f61fe54e25f86ecff203d2b025351700c18f085efd500f2831926083d8",
+    "scripts/game-authoring/drafts/oit-ww-batch-7.review.json": "0bb6a2aaa1296efd79a94f6c217f4b88aa187e00d74702a381af5456b3f223d0",
+    "scripts/game-authoring/drafts/oit-ww-batch-8.review.json": "218eeea99e31fa93e8198754b869601d24826fce8c7ead778d2d3b86645c3c47",
+    "scripts/game-authoring/drafts/oit-ww-batch-9.review.json": "d65b79e04e2b1fb4ae7a6ffec842d136c96827b038ce31c7fb8d2a34ccf2fc6c",
+    "server/interactiveContent/engine/releaseExclusions.json": "8040a4b366a73d13f44cf29746e9bbedb14eb20304519d1c2e2b6ba04273525b",
+    "server/interactiveContent/overlay/2026-11-14-class1-wastewater-coll-batch-1.json": "e9384492ae32f5344d65512d9c24c802715eebe13655e3856e95b4f5744c7f2f",
+    "server/interactiveContent/overlay/2026-11-14-class1-water-batch-1.json": "c2886a826a486eb1243fa533d27e154e1e1e08217d7948983f8bccfd59126b76",
+    "server/interactiveContent/overlay/2026-11-14-class1-water-batch-2.json": "192dffb6aa90666919bdffbf5cb84a8909cb50c8533aaf511a208d71f067d55a",
+    "server/interactiveContent/overlay/2026-11-14-class1-ww-batch-1.json": "200089e119321dd7e99088d6232eb1e22409041a1de781a7c68e136baf1eb5e7",
+    "server/interactiveContent/overlay/2026-11-14-class1-ww-batch-2.json": "e970a443bcdc68d9a97686af87d5089e2cb6ed75eab32fbffe9e2e5ab438eb33",
+    "server/interactiveContent/overlay/2026-11-14-oit-batch-1.json": "d970d0fb3c8041a64068040b7ef8e656c7a8a447c1f3cb990ec7315d72bdf6d9",
+    "server/interactiveContent/overlay/2026-11-14-oit-batch-10.json": "3603b110c1df78ce27a11d43343e6a521f77125e9c4a8cdc353e010f98c0dec2",
+    "server/interactiveContent/overlay/2026-11-14-oit-batch-11.json": "e33564740e0de9568525cec0072cfcbfbb066ef18348f2cea90da85373c16173",
+    "server/interactiveContent/overlay/2026-11-14-oit-batch-12.json": "0ebfa7946386eb0df056c891c01ffde0b4be82b5446e6c55d880cd9089b1b841",
+    "server/interactiveContent/overlay/2026-11-14-oit-batch-13.json": "4d0412ee35b8dd892ee67fd0d16ceaa98c994d7a1312f35199e98e6cd16eaad4",
+    "server/interactiveContent/overlay/2026-11-14-oit-batch-14.json": "f858ca7790ffcc54e4153b1cf44d9a18e39d548f1f68727d929e15c10be55765",
+    "server/interactiveContent/overlay/2026-11-14-oit-batch-15.json": "d5a0811bdda5a9216c7f1cb6e48e91790c6fc7c0e2cfb324326e05ccf27256fd",
+    "server/interactiveContent/overlay/2026-11-14-oit-batch-2.json": "5b7c0a9065473600fde9a4320c685aa3f000f52e34c519de42275928aa836865",
+    "server/interactiveContent/overlay/2026-11-14-oit-batch-3.json": "dbc814d84847e57c1d0a4cc66b6817037afcdb471fd8522b0be546f4b21667d0",
+    "server/interactiveContent/overlay/2026-11-14-oit-batch-4.json": "032354ba16db350abffe10ba0995565217e8c4d40205d96a2471fae5c7caf51e",
+    "server/interactiveContent/overlay/2026-11-14-oit-batch-5.json": "483d9e5b1438b2aa73978bfb3a21436e7c353df34a139fae4e73d7a0e4965d58",
+    "server/interactiveContent/overlay/2026-11-14-oit-batch-6.json": "85d7051bc2c4d356a266db14cfe2235a9391337997dbdb3dbe2b89ea240126cd",
+    "server/interactiveContent/overlay/2026-11-14-oit-batch-7.json": "0271fa0b459c3e570e21e8e857fafacd343a796c6329f7e8680570b1d036ccd2",
+    "server/interactiveContent/overlay/2026-11-14-oit-batch-8.json": "3cc2fbbd74f1e075077324d492d80d45cf6600508a191f6913a98bda43abb137",
+    "server/interactiveContent/overlay/2026-11-14-oit-batch-9.json": "424ea3d4d09cd70ca344473994eb591778c3bae42f177951fd39c157e70b242c",
+    "server/interactiveContent/overlay/2026-11-14-oit-ww-batch-1.json": "5070779e88442abebb742cd2e06b78486247dbda24f1a45a323bf95070aeb4d1",
+    "server/interactiveContent/overlay/2026-11-14-oit-ww-batch-10.json": "c47a92446acf7f7ccb46ced9c9cfce1c23d1acb7219b220e0a23756bbd18c74e",
+    "server/interactiveContent/overlay/2026-11-14-oit-ww-batch-11.json": "c107e48ab568480baf7cd8c1df77d45432b58898337d244f50825eff8cea8443",
+    "server/interactiveContent/overlay/2026-11-14-oit-ww-batch-12.json": "5571127de0229302e2fc27d7a4a7579d8154b503539b095eedb45568d0617c0a",
+    "server/interactiveContent/overlay/2026-11-14-oit-ww-batch-2.json": "6447a0028b207e63f838435e11e624482c837a5c8aaaf71f89a840b7e0d45903",
+    "server/interactiveContent/overlay/2026-11-14-oit-ww-batch-3.json": "f4a95c8cc0804e8757b1c8d84e03fc15721df10d7fd2375463edc1d48be06a8e",
+    "server/interactiveContent/overlay/2026-11-14-oit-ww-batch-4.json": "c34e27c918e560546a8ff64af3579d7a71235f29cc65420af1f15b80cc5a116c",
+    "server/interactiveContent/overlay/2026-11-14-oit-ww-batch-5.json": "265a1261cf51dfd80d332d5d66561a2be51bc7efe67b1fce8b44f65a486daf2c",
+    "server/interactiveContent/overlay/2026-11-14-oit-ww-batch-6.json": "4022ef929e949ed7b6d1d75cc7af23e0e62f57b822e539392025f765895667c9",
+    "server/interactiveContent/overlay/2026-11-14-oit-ww-batch-7.json": "8170c0b57400e8c12ca0e9fe1e2794c6ea49c2e74e4a07975fb6007315c4f6b5",
+    "server/interactiveContent/overlay/2026-11-14-oit-ww-batch-8.json": "7191311d539b408fdd93c8efe3a1294cb116f214471995d4ff12d8a54261d90b",
+    "server/interactiveContent/overlay/2026-11-14-oit-ww-batch-9.json": "53ab3e1b833d8ab01cd03a07d24d7d1b244c31250d602009cc16e4233ddc0ae5",
+    "server/interactiveContent/overlay/2026-11-14-option-length-batch-2.json": "1f3b5682ac541700bfd1817e147666b092bfb2c7a7ee52395707ee5dbb030b0d",
+    "server/interactiveContent/overlay/2026-11-14-option-length-class2-ww.json": "b165a2fefc6324d250db249e722ae94dfc156e9a1421df3afbed6b63050b22c6",
+    "server/interactiveContent/overlay/2026-11-14-rapid-swipe-balance.json": "b64944d708f350a6ba99e1f9a03e1369dc3be2666aa34b3832dc85f7556b4f08"
+  },
+  "protectedFilesUnchanged": true,
+  "newSourceFilesUnchanged": true
+}

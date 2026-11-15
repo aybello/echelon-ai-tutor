@@ -42,11 +42,53 @@ import claudeNewBatch9 from "../overlay/2026-11-14-class1-ww-batch-1.json";
 import claudeNewBatch10 from "../overlay/2026-11-14-class1-ww-batch-2.json";
 import claudeNewBatch11 from "../overlay/2026-11-14-class1-wastewater-coll-batch-1.json";
 
+import class123Release0 from "../overlay/2026-11-15-class1-wastewater-coll-batch2.json";
+import class123Release1 from "../overlay/2026-11-15-class1-wastewater-coll-batch3.json";
+import class123Release2 from "../overlay/2026-11-15-class1-water-batch3.json";
+import class123Release3 from "../overlay/2026-11-15-class1-water-dist-batch1.json";
+import class123Release4 from "../overlay/2026-11-15-class1-water-dist-batch2.json";
+import class123Release5 from "../overlay/2026-11-15-class1-water-dist-batch3.json";
+import class123Release6 from "../overlay/2026-11-15-class1-ww-batch3.json";
+import class123Release7 from "../overlay/2026-11-15-class2-wastewater-coll-batch1.json";
+import class123Release8 from "../overlay/2026-11-15-class2-water-batch1.json";
+import class123Release9 from "../overlay/2026-11-15-class2-water-dist-batch1.json";
+import class123Release10 from "../overlay/2026-11-15-class2-ww-batch1.json";
+import class123Release11 from "../overlay/2026-11-15-class3-water-batch1.json";
+import class123Release12 from "../overlay/2026-11-15-class3-ww-batch1.json";
+import class123Release13 from "../overlay/2026-11-15-class2-s-wastewater-coll-batch1.json";
+import class123Release14 from "../overlay/2026-11-15-class2-s-wastewater-coll-batch2.json";
+import class123Release15 from "../overlay/2026-11-15-class2-s-wastewater-coll-batch3.json";
+import class123Release16 from "../overlay/2026-11-15-class2-s-water-batch1.json";
+import class123Release17 from "../overlay/2026-11-15-class2-s-water-batch2.json";
+import class123Release18 from "../overlay/2026-11-15-class2-s-water-batch3.json";
+import class123Release19 from "../overlay/2026-11-15-class2-s-water-dist-batch1.json";
+import class123Release20 from "../overlay/2026-11-15-class2-s-water-dist-batch2.json";
+import class123Release21 from "../overlay/2026-11-15-class2-s-water-dist-batch3.json";
+import class123Release22 from "../overlay/2026-11-15-class2-s-ww-batch1.json";
+import class123Release23 from "../overlay/2026-11-15-class2-s-ww-batch2.json";
+import class123Release24 from "../overlay/2026-11-15-class2-s-ww-batch3.json";
+import class123Release25 from "../overlay/2026-11-15-class3-s-wastewater-coll-batch1.json";
+import class123Release26 from "../overlay/2026-11-15-class3-s-wastewater-coll-batch2.json";
+import class123Release27 from "../overlay/2026-11-15-class3-s-wastewater-coll-batch3.json";
+import class123Release28 from "../overlay/2026-11-15-class3-s-wastewater-coll-depth2.json";
+import class123Release29 from "../overlay/2026-11-15-class3-s-water-batch1.json";
+import class123Release30 from "../overlay/2026-11-15-class3-s-water-batch2.json";
+import class123Release31 from "../overlay/2026-11-15-class3-s-water-batch3.json";
+import class123Release32 from "../overlay/2026-11-15-class3-s-water-depth2.json";
+import class123Release33 from "../overlay/2026-11-15-class3-s-water-dist-batch1.json";
+import class123Release34 from "../overlay/2026-11-15-class3-s-water-dist-batch2.json";
+import class123Release35 from "../overlay/2026-11-15-class3-s-water-dist-batch3.json";
+import class123Release36 from "../overlay/2026-11-15-class3-s-water-dist-depth2.json";
+import class123Release37 from "../overlay/2026-11-15-class3-s-ww-batch1.json";
+import class123Release38 from "../overlay/2026-11-15-class3-s-ww-batch2.json";
+import class123Release39 from "../overlay/2026-11-15-class3-s-ww-batch3.json";
+import class123Release40 from "../overlay/2026-11-15-class3-s-ww-depth2.json";
+
 // Committed owner-authorized AI-reviewed overlays, in application order.
 const COMMITTED_OVERLAYS: readonly unknown[] = [rapidSwipeBalance, optionLengthClass2Ww, optionLengthBatch2, oitBatch1, oitBatch2, oitBatch3, oitBatch4, oitBatch5,
   oitBatch6, oitBatch7, oitBatch8, oitBatch9, oitBatch10, oitBatch11, oitBatch12, oitBatch13,
   oitWwBatch1, oitWwBatch2, oitWwBatch3, oitWwBatch4, oitWwBatch5, oitWwBatch6, oitWwBatch7, oitWwBatch8,
-  claudeNewBatch1, claudeNewBatch2, claudeNewBatch3, claudeNewBatch4, claudeNewBatch5, claudeNewBatch6, claudeNewBatch7, claudeNewBatch8, claudeNewBatch9, claudeNewBatch10, claudeNewBatch11];
+  claudeNewBatch1, claudeNewBatch2, claudeNewBatch3, claudeNewBatch4, claudeNewBatch5, claudeNewBatch6, claudeNewBatch7, claudeNewBatch8, claudeNewBatch9, claudeNewBatch10, claudeNewBatch11, class123Release0, class123Release1, class123Release2, class123Release3, class123Release4, class123Release5, class123Release6, class123Release7, class123Release8, class123Release9, class123Release10, class123Release11, class123Release12, class123Release13, class123Release14, class123Release15, class123Release16, class123Release17, class123Release18, class123Release19, class123Release20, class123Release21, class123Release22, class123Release23, class123Release24, class123Release25, class123Release26, class123Release27, class123Release28, class123Release29, class123Release30, class123Release31, class123Release32, class123Release33, class123Release34, class123Release35, class123Release36, class123Release37, class123Release38, class123Release39, class123Release40];
 
 /**
  * Committed, server-only content overlays on the published game bank.

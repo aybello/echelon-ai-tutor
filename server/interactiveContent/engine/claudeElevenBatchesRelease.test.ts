@@ -19,8 +19,10 @@ const specs = [
 const ids = specs.map(s => `og-${s.course}-${s.n}`);
 const docs = committedOverlayDocuments() as ContentOverlay[];
 const released = docs.filter(d => ids.includes(d.overlayId));
-const prior = docs.filter(d => !ids.includes(d.overlayId));
-const engine = new InteractiveContentEngine();
+// Preserve this release's historical counts; later additions have their own regression.
+const historical = docs.slice(0, docs.findIndex(d => d.overlayId === ids[0]) + ids.length);
+const prior = historical.filter(d => !ids.includes(d.overlayId));
+const engine = new InteractiveContentEngine(undefined, historical);
 const before = new InteractiveContentEngine(undefined, prior);
 const sha = (bytes: Buffer) => createHash("sha256").update(bytes).digest("hex");
 const pool = (e: InteractiveContentEngine, course: string) => {

@@ -116,6 +116,59 @@ async function expectHeading(page: Page, title: string) {
 }
 
 describe("InteractiveDrill in an isolated browser", () => {
+  it("keeps Claude answer marks and matched-pair colours with black course text", async () => withDrill(async page => {
+    await expectHeading(page, "Synthetic swipe one");
+    await page.locator("#root").evaluate(element => element.classList.add("course-interactive"));
+    await button(page, "No").click();
+    await expectFeedback(page, "Not quite");
+    expect(await button(page, "No").getAttribute("data-state")).toBe("wrong");
+    expect(await button(page, "Yes").getAttribute("data-state")).toBe("correct");
+    for (const name of ["No", "Yes"]) {
+      expect(await button(page, name).evaluate(element => getComputedStyle(element).color)).toBe("rgb(0, 0, 0)");
+      expect(await button(page, name).evaluate(element => getComputedStyle(element, "::after").content)).not.toBe("none");
+    }
+    await chooseMode(page, "Speed-Match");
+    await button(page, "Synthetic left A").click();
+    await button(page, "Synthetic right A").click();
+    const pair = page.locator('.interactive-drill__column button[data-pair="0"]');
+    expect(await pair.count()).toBe(2);
+    expect(await pair.evaluateAll(elements => elements.map(element => getComputedStyle(element).color))).toEqual(["rgb(0, 0, 0)", "rgb(0, 0, 0)"]);
+    await expect.poll(() => pair.evaluateAll(elements => elements.map(element => getComputedStyle(element).backgroundColor))).toEqual(["rgb(232, 247, 240)", "rgb(232, 247, 240)"]);
+    await chooseMode(page, "Rapid Swipe");
+    expect(await page.locator(".interactive-drill__activity").getAttribute("data-outcome")).toBeNull();
+    expect(await button(page, "Yes").getAttribute("data-state")).toBeNull();
+  }));
+
+  it("previews only horizontal swipe intent and clears live drag on cancellation and release", async () => withDrill(async page => {
+    await page.setViewportSize({ width: 320, height: 568 });
+    await expectHeading(page, "Synthetic swipe one");
+    const swipe = page.locator(".interactive-drill__swipe");
+    const base = { pointerId: 12, isPrimary: true, pointerType: "touch", button: 0 };
+    const drag = () => swipe.evaluate(element => (element as HTMLElement).style.getPropertyValue("--drag"));
+    expect(await swipe.evaluate(element => getComputedStyle(element).touchAction)).toBe("pan-y");
+    await swipe.dispatchEvent("pointerdown", { ...base, clientX: 100, clientY: 100 });
+    await swipe.dispatchEvent("pointermove", { ...base, clientX: 130, clientY: 200 });
+    expect(await drag()).toBe("");
+    await swipe.dispatchEvent("pointermove", { ...base, pointerId: 13, clientX: 190, clientY: 100 });
+    expect(await drag()).toBe("");
+    await swipe.dispatchEvent("pointermove", { ...base, clientX: 190, clientY: 105 });
+    expect(await drag()).toBe("90px");
+    expect((await feedback(page).innerText()).trim()).toBe("");
+    await swipe.dispatchEvent("pointercancel", base);
+    expect(await drag()).toBe("");
+    expect(await swipe.evaluate(element => (element as HTMLElement).style.getPropertyValue("--pull"))).toBe("");
+    await swipe.dispatchEvent("pointerup", { ...base, clientX: 190, clientY: 105 });
+    expect((await feedback(page).innerText()).trim()).toBe("");
+    await swipe.dispatchEvent("pointerdown", { ...base, clientX: 100, clientY: 100 });
+    await swipe.dispatchEvent("pointermove", { ...base, clientX: 190, clientY: 105 });
+    await swipe.dispatchEvent("pointerup", { ...base, clientX: 190, clientY: 105 });
+    await expectFeedback(page, "Correct");
+    expect(await drag()).toBe("");
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    expect(await page.locator(".interactive-drill__swipe-token").evaluate(element => getComputedStyle(element).transitionDuration)).toBe("0s");
+  }));
+
   it("exposes named mode buttons, an accessible activity and live feedback", async () => withDrill(async page => {
     await expectHeading(page, "Synthetic swipe one");
     const nav = page.getByRole("navigation", { name: "Choose a practice mode" });
