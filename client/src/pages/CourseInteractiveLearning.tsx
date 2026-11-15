@@ -3,7 +3,7 @@ import { flushSync } from "react-dom";
 import { onlineManager, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getQueryKey } from "@trpc/react-query";
 import { Link, useRoute, useSearch } from "wouter";
-import { DRILL_MODES, InteractiveDrill, type DrillMode } from "@/components/InteractiveDrill";
+import { DRILL_MODES, InteractiveDrill, type DrillMode, type DrillResult } from "@/components/InteractiveDrill";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { LOGOUT_EVENT_KEY } from "@/lib/logout";
 import { trpc } from "@/lib/trpc";
@@ -12,6 +12,7 @@ import { funnelProvince } from "@shared/funnelNavigation";
 import { watchIdentityChanges } from "@shared/identityChange";
 import {
   interactiveCatalogResponseSchema,
+  interactiveProgressResponseSchema,
   interactiveSessionResponseSchema,
   type InteractiveDifficulty,
 } from "@shared/interactiveSessions";
@@ -52,6 +53,13 @@ function isIdentityStorageHint(event: StorageEvent): boolean {
 
 class PracticeVersionMismatch extends Error {}
 
+/** The learner's own calendar day, so a late-night session counts for the day they are in. */
+function localDateString(): string {
+  const now = new Date();
+  const pad = (value: number) => String(value).padStart(2, "0");
+  return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+}
+
 /** Course sessions are temporary and never contribute to quiz history/readiness. */
 function CoursePractice({ course }: { course: CourseEntry }) {
   const queryClient = useQueryClient();
@@ -63,6 +71,10 @@ function CoursePractice({ course }: { course: CourseEntry }) {
   const [sessionSize, setSessionSize] = useState<10 | 20 | 30 | 50>(20);
   const [timerSeconds, setTimerSeconds] = useState<30 | 60 | 90 | null>(30);
   const [roundRevision, setRoundRevision] = useState(0);
+  const [replay, setReplay] = useState(false);
+  const [savedTick, setSavedTick] = useState(0);
+  const pendingResults = useRef<DrillResult[]>([]);
+  const flushTimer = useRef<number | undefined>(undefined);
   const [settingsOpen, setSettingsOpen] = useState(() => typeof window !== "undefined" && window.matchMedia("(min-width: 700px)").matches);
   const sessionElement = useRef<HTMLDivElement>(null);
   const focusNextRound = useRef(false);
@@ -114,9 +126,10 @@ function CoursePractice({ course }: { course: CourseEntry }) {
     sessionSize: locked ? 20 : sessionSize,
     ...(!locked && topicId ? { topicId } : {}),
     ...(!locked && difficulty ? { difficulty } : {}),
+    ...(!locked && replay ? { focus: "review" as const } : {}),
   };
   const sessionKey = [...prefix, "session", authority.accessToken, authority.revision, catalog?.version ?? null,
-    mode, input.topicId ?? null, input.difficulty ?? null, input.sessionSize, locked ? 30 : timerSeconds, roundRevision] as const;
+    mode, input.topicId ?? null, input.difficulty ?? null, input.sessionSize, locked ? 30 : timerSeconds, roundRevision, replay] as const;
   const sessionQuery = useQuery({
     queryKey: sessionKey,
     queryFn: async ({ signal }) => {
@@ -140,6 +153,43 @@ function CoursePractice({ course }: { course: CourseEntry }) {
     staleTime: 0, gcTime: 0, refetchOnMount: "always", refetchOnWindowFocus: false,
     refetchOnReconnect: false, retry: false,
   });
+
+  // Saved results. Only signed-in learners are stored; for everyone else this stays empty and the page is unchanged.
+  const progressQuery = useQuery({
+    queryKey: [...prefix, "progress", authority.revision, savedTick] as const,
+    queryFn: async ({ signal }) => interactiveProgressResponseSchema.parse(
+      await client.interactive.getProgress.mutate({ courseKey: course.courseKey, localDate: localDateString() }, { signal })),
+    enabled: tokenMatches && !authBusy && online,
+    staleTime: 0, gcTime: 0, refetchOnMount: "always", refetchOnWindowFocus: false, refetchOnReconnect: false, retry: false,
+  });
+  const progress = progressQuery.data?.stored ? progressQuery.data : undefined;
+  const flushResults = useCallback(() => {
+    window.clearTimeout(flushTimer.current);
+    flushTimer.current = undefined;
+    const results = pendingResults.current.splice(0);
+    if (!results.length) return;
+    // Fire and forget: a storage problem must never interrupt practice.
+    void client.interactive.recordResults.mutate({
+      courseKey: course.courseKey,
+      results: results.map(({ exampleId, mode: resultMode, correct }) => ({ itemId: exampleId, mode: resultMode, correct })),
+      localDate: localDateString(),
+    }).then(() => setSavedTick(value => value + 1)).catch(() => undefined);
+  }, [client, course.courseKey]);
+  const recordResult = useCallback((result: DrillResult) => {
+    pendingResults.current.push(result);
+    if (pendingResults.current.length >= 5) flushResults();
+    else if (flushTimer.current === undefined) flushTimer.current = window.setTimeout(flushResults, 4000);
+  }, [flushResults]);
+  useEffect(() => {
+    const onHide = () => { if (document.visibilityState === "hidden") flushResults(); };
+    document.addEventListener("visibilitychange", onHide);
+    window.addEventListener("pagehide", flushResults);
+    return () => {
+      document.removeEventListener("visibilitychange", onHide);
+      window.removeEventListener("pagehide", flushResults);
+      flushResults();
+    };
+  }, [flushResults]);
 
   const refreshQueries = useCallback(() => {
     // Gate synchronously before cancellation or a fast/late transport completion.
@@ -226,7 +276,7 @@ function CoursePractice({ course }: { course: CourseEntry }) {
   } else {
     const drillKey = JSON.stringify([course.courseKey, authority.revision, session.version, session.mode, session.filters,
       locked ? 30 : timerSeconds, roundRevision, session.sessionId, sessionQuery.dataUpdatedAt]);
-    status = <div style={{ whiteSpace: "pre-line" }}><InteractiveDrill key={drillKey} examples={session.examples} selectedMode={mode} hideModeNavigation timerSeconds={locked ? 30 : timerSeconds} onNewRound={locked ? undefined : newRound} /></div>;
+    status = <div style={{ whiteSpace: "pre-line" }}><InteractiveDrill key={drillKey} examples={session.examples} selectedMode={mode} hideModeNavigation timerSeconds={locked ? 30 : timerSeconds} onNewRound={locked ? undefined : newRound} onResult={progress ? recordResult : undefined} saveNote={progress ? "Progress saved" : undefined} /></div>;
   }
 
   return (
@@ -236,7 +286,7 @@ function CoursePractice({ course }: { course: CourseEntry }) {
           {DRILL_MODES.map(item => {
             const count = catalog?.modes.find(entry => entry.mode === item.id)?.totalCount;
             return <button type="button" key={item.id} className={mode === item.id ? "is-active" : ""} aria-current={mode === item.id ? "true" : undefined}
-              onClick={() => changeSession(() => { setMode(item.id); setTopicId(""); setDifficulty(""); })}>
+              onClick={() => changeSession(() => { setMode(item.id); setTopicId(""); setDifficulty(""); setReplay(false); })}>
               <span>{item.label}</span><small>{item.description}</small>
               <span className="course-interactive__count">{catalog ? `${count ?? 0} published` : "Published count unavailable"}</span>
             </button>;
@@ -246,8 +296,19 @@ function CoursePractice({ course }: { course: CourseEntry }) {
       </div>
       <div className="course-interactive__session" ref={sessionElement}>
         <div className="course-interactive__session-heading"><span>{DRILL_MODES.find(item => item.id === mode)?.label}</span><small>{catalog?.locked ? "Free preview" : "Free practice"}</small></div>
+        {progress && <div className="course-interactive__progress" role="status" aria-label="Your saved progress">
+          <div className="course-interactive__goal">
+            <span>Today {Math.min(progress.today.answered, progress.today.goal)} of {progress.today.goal}</span>
+            <span className="course-interactive__goal-bar" aria-hidden="true"><span style={{ width: `${Math.min(100, (progress.today.answered / progress.today.goal) * 100)}%` }} /></span>
+          </div>
+          <span>{progress.streakDays} day streak</span>
+          <span>{progress.dueCount} due for review</span>
+          {replay
+            ? <button type="button" className="interactive-drill__secondary" onClick={() => changeSession(() => setReplay(false))}>Back to mixed practice</button>
+            : progress.dueCount > 0 && <button type="button" className="interactive-drill__secondary" onClick={() => changeSession(() => setReplay(true))}>Review missed</button>}
+        </div>}
         {catalog?.locked && <p className="course-interactive__preview">You’re practising with the available free preview. Course access determines which activities are available.</p>}
-        {session && <p className="course-interactive__inventory">{session.examples.length} in this round · {session.totalAvailableCount} available with these filters · progress not saved</p>}
+        {session && <p className="course-interactive__inventory">{session.examples.length} in this round · {session.totalAvailableCount} available with these filters · {progress ? (replay ? "replaying items due for review" : "progress saved") : "progress not saved"}</p>}
         {status}
         <details className="course-interactive__settings-panel" open={settingsOpen} onToggle={event => setSettingsOpen(event.currentTarget.open)}>
           <summary>Round settings <small>{catalog?.locked ? "1 preview example" : `Up to ${sessionSize} activities`}</small></summary>
@@ -284,7 +345,7 @@ export default function CourseInteractiveLearning() {
   const course = candidate?.isActive ? candidate : undefined;
   usePageMeta({
     title: course ? `${course.displayName} Interactive Practice` : "Interactive Practice",
-    description: "Practise with interactive activities from your course. Progress is not saved.",
+    description: "Practise with interactive activities from your course. Signed-in learners can save results and review missed items.",
     noindex: true,
   });
   return (
@@ -300,9 +361,9 @@ export default function CourseInteractiveLearning() {
           <p className="interactive-learning__eyebrow">Interactive practice</p>
           <h1 id="course-interactive-title">{course ? course.displayName : "Course unavailable"}</h1>
           {course ? <details className="course-interactive__details">
-            <summary>Practice details · progress not saved</summary>
+            <summary>Practice details</summary>
             <p className="interactive-learning__description">All published game exercises are free to practise. No account or course purchase is required for these games.</p>
-            <p className="interactive-learning__note">Your answers and progress stay on this page and are not saved to your account or quiz history. Switching activities or rechecking access resets your temporary session. Returning to this tab rechecks access and resets your round.</p>
+            <p className="interactive-learning__note">If you are not signed in, your answers stay on this page and are not saved. If you are signed in, your results are saved so missed items can come back for review. Game results do not count toward quiz history or your readiness score. Switching activities or rechecking access resets your current round. Returning to this tab rechecks access and resets your round.</p>
             <p>Exam practice, not operating instructions or regulatory advice.</p>
           </details> : <p className="interactive-learning__description">This course could not be found or is not currently active.</p>}
         </section>

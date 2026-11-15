@@ -98,7 +98,14 @@ export interface InteractiveDrillProps {
   timerSeconds?: 30 | 60 | 90 | null;
   /** Ask the course parent for a fresh server-selected round after the last activity. */
   onNewRound?: () => void;
+  /** Called once per finished activity so a parent can save it. Not called for skipped activities. */
+  onResult?: (result: DrillResult) => void;
+  /** Replaces the "Practice · not saved" pill text, for example when results are being saved. */
+  saveNote?: string;
 }
+
+/** One finished activity. For speed match, correct means every pair was matched without a wrong pick. */
+export interface DrillResult { exampleId: string; mode: DrillMode; correct: boolean }
 
 export const DRILL_MODES: readonly { id: DrillMode; label: string; description: string }[] = [
   { id: "rapid-swipe", label: "Rapid Swipe", description: "Make a quick call" },
@@ -182,11 +189,13 @@ interface ActivityProps {
   onRestart: () => void;
   onNewRound?: () => void;
   onStartRound: () => void;
+  onResult?: (result: DrillResult) => void;
+  saveNote?: string;
   timerSeconds: 30 | 60 | 90 | null;
   focusHeadingIfRequested: (heading: HTMLHeadingElement | null) => void;
 }
 
-function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewRound, onStartRound, timerSeconds, focusHeadingIfRequested }: ActivityProps) {
+function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewRound, onStartRound, onResult, saveNote, timerSeconds, focusHeadingIfRequested }: ActivityProps) {
   const titleId = useId();
   const instructionId = useId();
   const [feedback, setFeedback] = useState<Feedback | null>(null);
@@ -194,6 +203,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
   const [picked, setPicked] = useState<string | null>(null);
   const [outcome, setOutcome] = useState<"correct" | "incorrect" | null>(null);
   const answeredRef = useRef(false);
+  const wrongPairs = useRef(0);
   const [selected, setSelected] = useState<Selection | null>(null);
   const [matched, setMatched] = useState<string[]>([]);
   const [directions, setDirections] = useState<Record<string, CauseEffectDirection>>({});
@@ -236,6 +246,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
     clearSwipe();
     setPicked(pickedKey ?? null);
     setOutcome(correct ? "correct" : "incorrect");
+    onResult?.({ exampleId: example.id, mode: example.mode, correct });
     setFeedback({
       correct,
       text: correct ? explanation : `The correct answer is ${correctLabel}. ${explanation}`,
@@ -250,6 +261,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
     answeredRef.current = true;
     focusFeedback.current = true;
     setOutcome(score.correct ? "correct" : "incorrect");
+    onResult?.({ exampleId: example.id, mode: example.mode, correct: score.correct });
     setEffectResults(Object.fromEntries(score.results.map(result => [result.id, result.correct])));
     setFeedback({
       correct: score.correct,
@@ -304,6 +316,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
     }
     setSelected(null);
     if (selected.pairId !== pairId) {
+      wrongPairs.current += 1;
       setFeedback({ correct: false, text: "Those do not match. Try another pair." });
       return;
     }
@@ -312,6 +325,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
     setMatched(nextMatched);
     if (nextMatched.length === example.pairs.length) {
       setAnswered(true);
+      onResult?.({ exampleId: example.id, mode: example.mode, correct: wrongPairs.current === 0 });
       setFeedback({ correct: true, text: example.explanation || "You matched all the pairs." });
     } else {
       setFeedback({ correct: true, text: "Pair matched. Keep going." });
@@ -332,7 +346,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
     <section className="interactive-drill__activity" data-mode={example.mode} data-outcome={outcome ?? undefined} aria-labelledby={titleId}>
       <div className="interactive-drill__meta">
         <span>Activity {index + 1} of {count}</span>
-        <span className="interactive-drill__pill">Practice · not saved</span>
+        <span className="interactive-drill__pill">{saveNote ?? "Practice · not saved"}</span>
       </div>
       <div className="interactive-drill__track" aria-hidden="true">
         <span style={{ width: `${((index + 1) / count) * 100}%` }} />
@@ -435,7 +449,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
 
 type RoundAnswer = { example: RapidSwipeExample; choice: boolean; correct: boolean };
 /** Timed rounds never invent material: they cycle through the supplied statements. */
-function RapidSwipeRound({ examples, onExit, timerSeconds }: { examples: readonly RapidSwipeExample[]; onExit: () => void; timerSeconds: 30 | 60 | 90 }) {
+function RapidSwipeRound({ examples, onExit, timerSeconds, onResult, saveNote }: { examples: readonly RapidSwipeExample[]; onExit: () => void; timerSeconds: 30 | 60 | 90; onResult?: (result: DrillResult) => void; saveNote?: string }) {
   type Phase = "answer" | "feedback" | "finished";
   const [phase, setPhase] = useState<Phase>("answer");
   const [remaining, setRemaining] = useState<number>(timerSeconds);
@@ -519,6 +533,7 @@ function RapidSwipeRound({ examples, onExit, timerSeconds }: { examples: readonl
     state.started = null;
     clearSwipe();
     const correct = choice === current.correctAnswer;
+    onResult?.({ exampleId: current.id, mode: "rapid-swipe", correct });
     const result = { example: current, choice, correct };
     const nextStreak = correct ? streak + 1 : 0;
     setAnswers(previous => [...previous, result]);
@@ -584,7 +599,7 @@ function RapidSwipeRound({ examples, onExit, timerSeconds }: { examples: readonl
         if (clock.current.phase === "answer") choose(event.key === "ArrowRight");
       }
     }}>
-      <div className="interactive-drill__meta"><span>Rapid Swipe round</span><span className="interactive-drill__pill">Practice · not saved</span></div>
+      <div className="interactive-drill__meta"><span>Rapid Swipe round</span><span className="interactive-drill__pill">{saveNote ?? "Practice · not saved"}</span></div>
       {phase !== "finished" && <div className="interactive-drill__track interactive-drill__track--timer" aria-hidden="true" data-low={remaining <= 5 ? "true" : undefined}><span style={{ width: `${Math.max(0, Math.min(100, (remaining / timerSeconds) * 100))}%` }} /></div>}
       <div className="interactive-drill__content interactive-drill__round">
         <h2 id={titleId} ref={headingRef} tabIndex={-1}>{phase === "finished" ? "Round complete" : `${timerSeconds}-second round`}</h2>
@@ -625,7 +640,7 @@ function RapidSwipeRound({ examples, onExit, timerSeconds }: { examples: readonl
 }
 
 /** A local-only practice UI. Switching activities resets their temporary state. */
-export function InteractiveDrill({ examples, className, selectedMode, onModeChange, availableModes: suppliedModes, hideModeNavigation = false, timerSeconds = 30, onNewRound }: InteractiveDrillProps) {
+export function InteractiveDrill({ examples, className, selectedMode, onModeChange, availableModes: suppliedModes, hideModeNavigation = false, timerSeconds = 30, onNewRound, onResult, saveNote }: InteractiveDrillProps) {
   const availableModes = DRILL_MODES.filter(mode => suppliedModes ? suppliedModes.includes(mode.id) : examples.some(example => example.mode === mode.id));
   const [requestedMode, setRequestedMode] = useState<DrillMode | null>(null);
   const [requestedIndex, setRequestedIndex] = useState(0);
@@ -670,9 +685,9 @@ export function InteractiveDrill({ examples, className, selectedMode, onModeChan
             ))}
           </nav>}
           {!example ? <p className="interactive-drill__empty" role="status">No practice activities are available yet.</p> : round && activeMode?.id === "rapid-swipe" && timerSeconds !== null ? (
-            <RapidSwipeRound key={JSON.stringify([modeExamples, timerSeconds])} timerSeconds={timerSeconds} examples={modeExamples.filter((item): item is RapidSwipeExample => item.mode === "rapid-swipe")} onExit={() => { setRound(false); changeIndex(0); }} />
+            <RapidSwipeRound key={JSON.stringify([modeExamples, timerSeconds])} timerSeconds={timerSeconds} onResult={onResult} saveNote={saveNote} examples={modeExamples.filter((item): item is RapidSwipeExample => item.mode === "rapid-swipe")} onExit={() => { setRound(false); changeIndex(0); }} />
           ) : (
-            <Activity key={`${selectedMode ?? activeMode?.id}-${example.id}-${attempt}-${timerSeconds}`} timerSeconds={timerSeconds} example={example} index={index} count={modeExamples.length} onPrevious={() => changeIndex(index - 1)} onNext={() => changeIndex(index + 1)} onRestart={() => changeIndex(0)} onNewRound={onNewRound} onStartRound={() => setRound(true)} focusHeadingIfRequested={focusHeadingIfRequested} />
+            <Activity key={`${selectedMode ?? activeMode?.id}-${example.id}-${attempt}-${timerSeconds}`} timerSeconds={timerSeconds} example={example} index={index} count={modeExamples.length} onPrevious={() => changeIndex(index - 1)} onNext={() => changeIndex(index + 1)} onRestart={() => changeIndex(0)} onNewRound={onNewRound} onResult={onResult} saveNote={saveNote} onStartRound={() => setRound(true)} focusHeadingIfRequested={focusHeadingIfRequested} />
           )}
         </div>
     </div>
