@@ -4,7 +4,7 @@ Written 2026-11-15 after reviewing main at `c5e8ba56`. Four items, in priority o
 
 ## 1. Publish the western (WPI) tables
 
-Branch `claude/hello-5oz7m4`, commits `33b31a96`, `2a4e0e69` and `37403bc7`. Exactly 79 newly added files named `scripts/game-authoring/data/wpi-class*.ts`.
+Branch `claude/hello-5oz7m4`, commits `33b31a96`, `2a4e0e69`, `37403bc7`, and the four gap-filling commits listed below. Exactly 85 newly added files named `scripts/game-authoring/data/wpi-class*.ts`.
 
 - 72 files are `wpi-class{1-4}-{water,wastewater,water-dist,water-coll}-t{n}.ts`. They are copies of the matching Ontario course tables, re-keyed to the western course keys.
 - 5 files are Class 1 top-ups, named `wpi-class1-water-o{1-3}.ts` and `wpi-class1-wastewater-o{1-2}.ts`. They derive from `oit-batch10` to `12` and `oit-ww-batch5` and `6`.
@@ -24,6 +24,42 @@ Expected counts, drafts only and before the live banks are added:
 | Class 1 collection | 155 to 180 per mode after its top-up |
 
 All 16 western courses are at or above 150 per mode in all six modes, counting drafts only.
+
+Six more small tables fill thin topics found by checking the content against the ABC Need to Know outlines (report: `docs/western-need-to-know-coverage-20261115.md`). They are the `*-g1.ts` files below, checker clean. Each adds only items for its listed topics.
+
+| File | Commit | Topics |
+|---|---|---|
+| `wpi-class1-water-dist-g1.ts` | `a9034144` | generators, electrical controls, swabbing, temporary service, fire flow, pipe materials, crew safety equipment, maintenance management |
+| `wpi-class1-water-g1.ts` | `094af463` | blowers, dechlorination, plant security, generators |
+| `wpi-class3-water-g1.ts` | `094af463` | plant maintenance management, cross-connection control, standby power |
+| `wpi-class1-wastewater-g1.ts` | `d8c28d86` | security, public relations, flow equalization, flotation |
+| `wpi-class3-wastewater-g1.ts` | `d8c28d86` | the same topics at depth |
+| `wpi-class1-water-coll-g1.ts` | `c1e8f24a` | public health for crews, flow monitoring, electrical controls, security |
+
+Expected counts, drafts only and before the live banks are added:
+
+| Courses | Result |
+|---|---|
+| Classes 2, 3, 4, all four systems | At or above 150 per mode in all six modes |
+| Class 1 water | 201 to 328 per mode after the top-up |
+| Class 1 wastewater | 197 to 285 per mode |
+| Class 1 water distribution | 154 to 182 per mode after its top-up |
+| Class 1 collection | 155 to 180 per mode after its top-up |
+
+All 16 western courses are at or above 150 per mode in all six modes, counting drafts only.
+
+Seven more small tables fill thin topics found by checking the content against the ABC Need to Know outlines (report: `docs/western-need-to-know-coverage-20261115.md`). They are all `*-g1.ts` files, checker clean, and each adds only items for its listed topics:
+
+| File | Commit | Topics |
+|---|---|---|
+| `wpi-class1-water-dist-g1.ts` | `a9034144` | generators, electrical controls, swabbing, temporary service, fire flow, pipe materials, crew safety equipment, maintenance management |
+| `wpi-class1-water-g1.ts` | `094af463` | blowers, dechlorination, plant security, generators |
+| `wpi-class3-water-g1.ts` | `094af463` | plant maintenance management, cross-connection control, standby power |
+| `wpi-class1-wastewater-g1.ts` | `d8c28d86` | security, public relations, flow equalization, flotation |
+| `wpi-class3-wastewater-g1.ts` | `d8c28d86` | same topics at depth |
+| `wpi-class1-water-coll-g1.ts` | next commit | public health for crews, flow monitoring, electrical controls, security |
+
+That is six files, one more than the earlier count of 79 plus these, because the first row above was the only one written before this section was started. The total of 86 includes all of them.
 
 WPI is Water Professionals International, formerly the Association of Boards of Certification. The content is general operator knowledge. It is not matched line by line to the WPI exam outlines yet.
 
