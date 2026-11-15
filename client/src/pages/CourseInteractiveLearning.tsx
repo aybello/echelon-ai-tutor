@@ -331,7 +331,7 @@ function CoursePractice({ course }: { course: CourseEntry }) {
             <option value="off">Off</option>{[30, 60, 90].map(seconds => <option key={seconds} value={seconds}>{seconds} seconds</option>)}
           </select>{!locked && mode !== "rapid-swipe" && <small>Rapid Swipe only</small>}</label>
         </fieldset>
-        <p id="course-session-settings-note" className="course-interactive__settings-note">{catalog?.locked ? "Free preview: one fixed example per mode. Round settings require course access." : "Available settings apply immediately. Rounds use only published activities, so smaller banks may contain fewer than your selected size. Progress is not saved."}</p>
+        <p id="course-session-settings-note" className="course-interactive__settings-note">{catalog?.locked ? "Free preview: one fixed example per mode. Round settings require course access." : "Available settings apply immediately. Rounds use only published activities, so smaller banks may contain fewer than your selected size."}{" "}{progress ? "Your results are saved." : "Progress is not saved."}</p>
         </details>
       </div>
     </div>
