@@ -16,7 +16,7 @@ import mysql from "mysql2/promise";
 import { activeScriptConnection } from "./lib/activeScriptConnection.mjs";
 import { AUTOMATED_BLOG_TAG, evaluateBlogAutomationHealth, readBlogHeartbeatSnapshot } from "./lib/blogAutomationHealth.mjs";
 import {
-  isolatedTestEnv, isolatedBrowserTestEnv, ciDeterministicExcludes, isolatedVitestArgs, runCommand, commandProblem, evaluateVitest, createAuditBudget,
+  isolatedTestEnv, isolatedBrowserTestEnv, ciDeterministicExcludes, ciEngineTestSelectors, isolatedVitestArgs, runCommand, commandProblem, evaluateVitest, createAuditBudget,
   validateQuizReply, validateQuestion, classifyTutorReply, evaluateTutorSequence,
   tutorHistoryAssessment, validateJourneyReport, evaluateServingReleaseIdentity, summarizeResults,
 } from "./lib/dailyAudit.mjs";
@@ -172,19 +172,29 @@ try {
 
   if (values["skip-unit"]) record("Deterministic unit and acceptance tests", "skipped", "Explicit --skip-unit. No unit coverage established.");
   else await check("Deterministic unit and acceptance tests", async () => {
-    const excludes = ciDeterministicExcludes(await readFile(resolve(ROOT, ".github/workflows/quality.yml"), "utf8"));
+    const workflow = await readFile(resolve(ROOT, ".github/workflows/quality.yml"), "utf8");
+    const excludes = ciDeterministicExcludes(workflow);
+    const engineSelectors = ciEngineTestSelectors(workflow);
     await writeFile(resolve(outputDir, "unit-exclusions.json"), JSON.stringify(excludes, null, 2), { mode: 0o600 });
     const reportPath = resolve(outputDir, "vitest.json");
     // Vite can load .env.local even after process.env is sanitized. Disable that
     // path too, using an untracked wrapper around the real repository config.
     const configPath = resolve(outputDir, "isolated-vitest.config.mjs");
     await writeFile(configPath, `import base from ${JSON.stringify(pathToFileURL(resolve(ROOT, "vitest.config.ts")).href)};\nexport default { ...base, envFile: false, envDir: ${JSON.stringify(testHome)} };\n`, { mode: 0o600 });
+    await check("Engine and interactive router tests", async () => {
+      const engineReportPath = resolve(outputDir, "vitest-engine.json");
+      const engineArgs = isolatedVitestArgs(ROOT, configPath, [], engineReportPath, engineSelectors);
+      const engineRun = await command("unit-engine", "node", engineArgs, 12 * 60_000, { ...isolatedBrowserTestEnv(process.env, testHome), TSX_DISABLE_CACHE: "1" });
+      let engineReport = null;
+      try { engineReport = await readJson(engineReportPath); } catch { /* Missing evidence is blocked. */ }
+      return { ...evaluateVitest(engineRun, engineReport), evidence: { artifact: engineReportPath, log: engineRun.logPath, exitCode: engineRun.exitCode } };
+    });
     const args = isolatedVitestArgs(ROOT, configPath, excludes, reportPath);
     const run = await command("unit", "node", args, 12 * 60_000, isolatedBrowserTestEnv(process.env, testHome));
     let report = null;
     try { report = await readJson(reportPath); } catch { /* Evaluator reports missing/malformed evidence. */ }
     const evaluated = evaluateVitest(run, report);
-    record("Database-backed integration coverage", "skipped", `${excludes.length} CI exclusion patterns, plus any pending specs in vitest.json. Requires disposable CI MySQL. No production database or credentials supplied to tests.`, { artifact: resolve(outputDir, "unit-exclusions.json") });
+    record("Database-backed integration coverage", "skipped", `${excludes.length} generic CI exclusion patterns: ${engineSelectors.length} selectors run separately above; remaining database exclusions and pending specs require disposable CI MySQL. No production database or credentials supplied to tests.`, { artifact: resolve(outputDir, "unit-exclusions.json") });
     // Explicit existing regression guards, not table-name counts masquerading as reconciliation.
     for (const file of ["server/revenueCompleteness.test.ts", "server/aiTutorPolicy.test.ts", "server/courseRegistry.test.ts"]) {
       const suite = report?.testResults?.find(suite => suite.name?.endsWith(`/${file}`));
