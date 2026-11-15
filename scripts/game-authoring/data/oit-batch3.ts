@@ -7,8 +7,6 @@ const data: CourseData = {
     ["e", "Water with a low pH tends to be more corrosive to metal pipes.", true, "Acidic water can attack metal and dissolve it more readily."],
     ["e", "Water with a high pH is the same as water with a low pH in corrosion.", false, "Low pH water is usually more aggressive toward metal than neutral or mildly basic water."],
     ["e", "A hydrometer or similar instrument can measure a property of a liquid.", true, "Simple instruments measure properties such as density."],
-    ["e", "A meter that reads in gallons per minute is showing flow rate.", true, "Gallons per minute is a rate of flow."],
-    ["e", "A meter that reads in gallons per minute is showing pressure.", false, "Pressure is shown in units such as psi."],
     ["e", "Grease on moving parts helps reduce friction and wear.", true, "Lubricants lower friction between moving surfaces."],
     ["e", "A motor that smells hot or sounds strange should be reported.", true, "Unusual heat, noise and smells are early signs of trouble."],
     ["e", "A small leak at a pump seal is a reason to ignore the pump for a month.", false, "Leaks can grow worse, so they should be reported and tracked."],

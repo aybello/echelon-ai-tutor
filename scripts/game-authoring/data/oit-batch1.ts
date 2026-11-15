@@ -67,7 +67,6 @@ const data: CourseData = {
   ],
   boards: [
     { d: "e", prompt: "Match each water treatment term to its best description.", pairs: [["Coagulation", "Clumping fine particles together"], ["Sedimentation", "Letting particles settle out"], ["Filtration", "Passing water through media"], ["Disinfection", "Inactivating pathogens"], ["Screening", "Catching large debris"], ["Backwash", "Cleaning a filter with reverse flow"]] },
-    { d: "e", prompt: "Match each unit to what it measures.", pairs: [["mg/L", "Concentration"], ["NTU", "Turbidity"], ["pH units", "Acidity or basicity"], ["gpm", "Flow rate"], ["psi", "Pressure"], ["°C", "Temperature"]] },
     { d: "e", prompt: "Match each piece of equipment to its job.", pairs: [["Pump", "Adds energy to move water"], ["Valve", "Starts, stops or throttles flow"], ["Flow meter", "Measures how much water moves"], ["Strainer", "Protects equipment from debris"], ["Tank", "Stores water"], ["Chemical feeder", "Doses a treatment chemical"]] },
     { d: "m", prompt: "Match each lab or field test to what it tells you.", pairs: [["Jar test", "Best coagulant dose"], ["Chlorine residual test", "Disinfectant left in water"], ["Alkalinity test", "Buffering capacity"], ["Turbidimeter reading", "Cloudiness of water"], ["Conductivity reading", "Dissolved ion content"], ["Total coliform test", "Indicator of bacterial presence"]] },
     { d: "m", prompt: "Match each safety practice to the hazard it controls.", pairs: [["Lockout and tagout", "Unexpected energy release"], ["Eye protection", "Chemical splashes"], ["Ventilation", "Harmful gases in a space"], ["Handrails and covers", "Falls into basins"], ["Gloves", "Skin contact with chemicals"], ["Hearing protection", "Loud equipment noise"]] },
@@ -75,7 +74,6 @@ const data: CourseData = {
   ],
   oddSets: [
     { d: "e", rule: "a step that removes particles from water", members: ["Coagulation", "Sedimentation", "Filtration", "Flocculation", "Screening"], intruders: ["Logging", "Sampling", "Charting"], why: "{odd} supports the work but does not remove particles from water." },
-    { d: "e", rule: "a unit of measurement", members: ["Milligrams per liter", "Gallons per minute", "Pounds per square inch", "Degrees Celsius", "Turbidity units"], intruders: ["Floc", "Sludge", "Alum"], why: "{odd} is a process or material, not a unit of measurement." },
     { d: "e", rule: "a type of personal protective equipment", members: ["Safety glasses", "Gloves", "Hard hat", "Hearing protection", "Steel-toed boots"], intruders: ["Flow meter", "Valve", "Strainer"], why: "{odd} is process equipment, not protective gear." },
     { d: "m", rule: "a physical property of water", members: ["Temperature", "Turbidity", "Color", "Odor", "Taste"], intruders: ["pH", "Coliforms", "Chlorine"], why: "{odd} is a biological or chemical property, not a physical one.", max: 5 },
     { d: "m", rule: "a chemical used in water treatment", members: ["Coagulant", "Chlorine", "Fluoride", "Polymer", "Lime"], intruders: ["Pump", "Valve", "Meter", "Screen"], why: "{odd} is equipment, not a treatment chemical." },

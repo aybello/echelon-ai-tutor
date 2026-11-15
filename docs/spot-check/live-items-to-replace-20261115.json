@@ -644,6 +644,1206 @@
    "courseKey": "class4-wastewater-coll",
    "overlay": "2026-11-15-class4-s-wastewater-coll-batch1.json",
    "issue": "septic odd set"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b1-rapid-swipe-0024",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-14-class1-wastewater-coll-batch-1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b1-rapid-swipe-0025",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-14-class1-wastewater-coll-batch-1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b1-rapid-swipe-0027",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-14-class1-wastewater-coll-batch-1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b1-speed-match-0077",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-14-class1-wastewater-coll-batch-1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b1-speed-match-0103",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-14-class1-wastewater-coll-batch-1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b1-tap-the-flaw-0315",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-14-class1-wastewater-coll-batch-1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class1-water-b2-speed-match-0085",
+   "courseKey": "class1-water",
+   "overlay": "2026-11-14-class1-water-batch-2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class1-water-b2-speed-match-0088",
+   "courseKey": "class1-water",
+   "overlay": "2026-11-14-class1-water-batch-2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class1-water-b2-odd-one-out-0146",
+   "courseKey": "class1-water",
+   "overlay": "2026-11-14-class1-water-batch-2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class1-water-b2-odd-one-out-0147",
+   "courseKey": "class1-water",
+   "overlay": "2026-11-14-class1-water-batch-2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class1-water-b2-odd-one-out-0149",
+   "courseKey": "class1-water",
+   "overlay": "2026-11-14-class1-water-batch-2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class1-water-b2-tap-the-flaw-0325",
+   "courseKey": "class1-water",
+   "overlay": "2026-11-14-class1-water-batch-2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-speed-match-0064",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-odd-one-out-0076",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-odd-one-out-0077",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-odd-one-out-0078",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-odd-one-out-0079",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-odd-one-out-0080",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b13-rapid-swipe-0020",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-13.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b13-rapid-swipe-0024",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-13.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b13-rapid-swipe-0046",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-13.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b13-speed-match-0060",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-13.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b13-speed-match-0061",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-13.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b13-speed-match-0068",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-13.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b13-speed-match-0071",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-13.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b13-tap-the-flaw-0203",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-13.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b13-tap-the-flaw-0204",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-13.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b13-tap-the-flaw-0218",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-13.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b14-speed-match-0014",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-14.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b2-rapid-swipe-0011",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b2-rapid-swipe-0014",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b2-rapid-swipe-0019",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b3-rapid-swipe-0006",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-3.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b3-rapid-swipe-0007",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-3.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b5-rapid-swipe-0001",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-5.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b5-rapid-swipe-0002",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-5.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b5-rapid-swipe-0017",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-5.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b5-rapid-swipe-0018",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-5.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b5-rapid-swipe-0023",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-5.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b5-rapid-swipe-0024",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-5.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b5-speed-match-0040",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-5.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b5-speed-match-0041",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-5.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b5-speed-match-0044",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-5.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b5-speed-match-0049",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-5.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b5-odd-one-out-0053",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-5.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b5-odd-one-out-0054",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-5.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b5-odd-one-out-0055",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-5.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b5-odd-one-out-0056",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-5.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b5-odd-one-out-0057",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-5.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b5-odd-one-out-0058",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-5.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b5-odd-one-out-0065",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-5.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b5-odd-one-out-0066",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-5.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b5-odd-one-out-0067",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-5.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b5-odd-one-out-0068",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-5.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b5-odd-one-out-0069",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-5.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b5-odd-one-out-0070",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-5.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b5-tap-the-flaw-0158",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-5.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b7-rapid-swipe-0015",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-7.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b7-rapid-swipe-0016",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-7.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-b7-speed-match-0052",
+   "courseKey": "oit",
+   "overlay": "2026-11-14-oit-batch-7.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-ww-b1-rapid-swipe-0038",
+   "courseKey": "oit-ww",
+   "overlay": "2026-11-14-oit-ww-batch-1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-ww-b11-speed-match-0024",
+   "courseKey": "oit-ww",
+   "overlay": "2026-11-14-oit-ww-batch-11.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-ww-b11-speed-match-0028",
+   "courseKey": "oit-ww",
+   "overlay": "2026-11-14-oit-ww-batch-11.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-ww-b11-speed-match-0033",
+   "courseKey": "oit-ww",
+   "overlay": "2026-11-14-oit-ww-batch-11.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-ww-b12-speed-match-0001",
+   "courseKey": "oit-ww",
+   "overlay": "2026-11-14-oit-ww-batch-12.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-ww-b12-speed-match-0003",
+   "courseKey": "oit-ww",
+   "overlay": "2026-11-14-oit-ww-batch-12.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-ww-b12-speed-match-0018",
+   "courseKey": "oit-ww",
+   "overlay": "2026-11-14-oit-ww-batch-12.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-ww-b12-speed-match-0019",
+   "courseKey": "oit-ww",
+   "overlay": "2026-11-14-oit-ww-batch-12.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-ww-b12-cause-effect-0071",
+   "courseKey": "oit-ww",
+   "overlay": "2026-11-14-oit-ww-batch-12.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-ww-b12-cause-effect-0073",
+   "courseKey": "oit-ww",
+   "overlay": "2026-11-14-oit-ww-batch-12.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-ww-b12-tap-the-flaw-0145",
+   "courseKey": "oit-ww",
+   "overlay": "2026-11-14-oit-ww-batch-12.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-ww-b4-speed-match-0058",
+   "courseKey": "oit-ww",
+   "overlay": "2026-11-14-oit-ww-batch-4.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-oit-ww-b8-speed-match-0052",
+   "courseKey": "oit-ww",
+   "overlay": "2026-11-14-oit-ww-batch-8.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-us-class1-water-004",
+   "courseKey": "us-class1-water",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-us-class1-water-dist-005",
+   "courseKey": "us-class1-water-dist",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-us-class1-water-dist-006",
+   "courseKey": "us-class1-water-dist",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-us-texas-class-d-water-003",
+   "courseKey": "us-texas-class-d-water",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-us-texas-class-d-water-004",
+   "courseKey": "us-texas-class-d-water",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-wpi-class1-wastewater-006",
+   "courseKey": "wpi-class1-wastewater",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-wpi-class1-water-coll-008",
+   "courseKey": "wpi-class1-water-coll",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-wpi-class1-water-coll-009",
+   "courseKey": "wpi-class1-water-coll",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-wpi-class1-water-dist-007",
+   "courseKey": "wpi-class1-water-dist",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-wpi-class1-water-dist-008",
+   "courseKey": "wpi-class1-water-dist",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-wpi-class1-water-dist-009",
+   "courseKey": "wpi-class1-water-dist",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-wpi-class2-wastewater-003",
+   "courseKey": "wpi-class2-wastewater",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-wpi-class2-water-001",
+   "courseKey": "wpi-class2-water",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-wpi-class2-water-002",
+   "courseKey": "wpi-class2-water",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-wpi-class2-water-003",
+   "courseKey": "wpi-class2-water",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-wpi-class2-water-004",
+   "courseKey": "wpi-class2-water",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-wpi-class2-water-006",
+   "courseKey": "wpi-class2-water",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-wpi-class2-water-coll-005",
+   "courseKey": "wpi-class2-water-coll",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-wpi-class2-water-dist-006",
+   "courseKey": "wpi-class2-water-dist",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-wpi-class3-wastewater-006",
+   "courseKey": "wpi-class3-wastewater",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-wpi-class3-water-004",
+   "courseKey": "wpi-class3-water",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-wpi-class3-water-coll-007",
+   "courseKey": "wpi-class3-water-coll",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-wpi-class3-water-coll-008",
+   "courseKey": "wpi-class3-water-coll",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-wpi-class4-wastewater-006",
+   "courseKey": "wpi-class4-wastewater",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-wpi-class4-water-coll-005",
+   "courseKey": "wpi-class4-water-coll",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-wpi-class4-water-coll-006",
+   "courseKey": "wpi-class4-water-coll",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-wpi-class4-water-coll-009",
+   "courseKey": "wpi-class4-water-coll",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-wpi-class4-water-dist-001",
+   "courseKey": "wpi-class4-water-dist",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "rsb-wpi-class4-water-dist-006",
+   "courseKey": "wpi-class4-water-dist",
+   "overlay": "2026-11-14-rapid-swipe-balance.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b2-rapid-swipe-0036",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-15-class1-wastewater-coll-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b2-rapid-swipe-0041",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-15-class1-wastewater-coll-batch2.json",
+   "issue": "sonar (round 2)"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b2-odd-one-out-0166",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-15-class1-wastewater-coll-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b2-odd-one-out-0167",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-15-class1-wastewater-coll-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b2-odd-one-out-0168",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-15-class1-wastewater-coll-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b2-cause-effect-0257",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-15-class1-wastewater-coll-batch2.json",
+   "issue": "sonar (round 2)"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b2-tap-the-flaw-0315",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-15-class1-wastewater-coll-batch2.json",
+   "issue": "sonar (round 2)"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b3-speed-match-0027",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-15-class1-wastewater-coll-batch3.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class1-water-b3-speed-match-0017",
+   "courseKey": "class1-water",
+   "overlay": "2026-11-15-class1-water-batch3.json",
+   "issue": "calcium pair"
+  },
+  {
+   "itemId": "og-class1-water-b3-speed-match-0036",
+   "courseKey": "class1-water",
+   "overlay": "2026-11-15-class1-water-batch3.json",
+   "issue": "OIT rows in Class 1"
+  },
+  {
+   "itemId": "og-class1-water-b3-tap-the-flaw-0154",
+   "courseKey": "class1-water",
+   "overlay": "2026-11-15-class1-water-batch3.json",
+   "issue": "OIT rows in Class 1"
+  },
+  {
+   "itemId": "og-class1-water-dist-b2-speed-match-0075",
+   "courseKey": "class1-water-dist",
+   "overlay": "2026-11-15-class1-water-dist-batch2.json",
+   "issue": "rechlorination board"
+  },
+  {
+   "itemId": "og-class1-water-dist-b2-speed-match-0083",
+   "courseKey": "class1-water-dist",
+   "overlay": "2026-11-15-class1-water-dist-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class1-water-dist-b3-speed-match-0003",
+   "courseKey": "class1-water-dist",
+   "overlay": "2026-11-15-class1-water-dist-batch3.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class1-water-dist-b3-tap-the-flaw-0152",
+   "courseKey": "class1-water-dist",
+   "overlay": "2026-11-15-class1-water-dist-batch3.json",
+   "issue": "hydrant colours"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b101-rapid-swipe-0024",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b101-rapid-swipe-0025",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b101-rapid-swipe-0027",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b101-speed-match-0077",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b101-speed-match-0103",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b101-tap-the-flaw-0315",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b102-rapid-swipe-0036",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b102-rapid-swipe-0041",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch2.json",
+   "issue": "sonar (round 2)"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b102-odd-one-out-0166",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b102-odd-one-out-0167",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b102-odd-one-out-0168",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b102-cause-effect-0257",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch2.json",
+   "issue": "sonar (round 2)"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b102-tap-the-flaw-0315",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch2.json",
+   "issue": "sonar (round 2)"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b103-speed-match-0027",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch3.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class2-water-b102-speed-match-0085",
+   "courseKey": "class2-water",
+   "overlay": "2026-11-15-class2-s-water-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class2-water-b102-speed-match-0088",
+   "courseKey": "class2-water",
+   "overlay": "2026-11-15-class2-s-water-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class2-water-b102-odd-one-out-0146",
+   "courseKey": "class2-water",
+   "overlay": "2026-11-15-class2-s-water-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class2-water-b102-odd-one-out-0147",
+   "courseKey": "class2-water",
+   "overlay": "2026-11-15-class2-s-water-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class2-water-b102-odd-one-out-0149",
+   "courseKey": "class2-water",
+   "overlay": "2026-11-15-class2-s-water-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class2-water-b102-tap-the-flaw-0325",
+   "courseKey": "class2-water",
+   "overlay": "2026-11-15-class2-s-water-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class2-water-b103-speed-match-0017",
+   "courseKey": "class2-water",
+   "overlay": "2026-11-15-class2-s-water-batch3.json",
+   "issue": "calcium pair"
+  },
+  {
+   "itemId": "og-class2-water-dist-b102-speed-match-0075",
+   "courseKey": "class2-water-dist",
+   "overlay": "2026-11-15-class2-s-water-dist-batch2.json",
+   "issue": "rechlorination board"
+  },
+  {
+   "itemId": "og-class2-water-dist-b102-speed-match-0083",
+   "courseKey": "class2-water-dist",
+   "overlay": "2026-11-15-class2-s-water-dist-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class2-water-dist-b103-speed-match-0003",
+   "courseKey": "class2-water-dist",
+   "overlay": "2026-11-15-class2-s-water-dist-batch3.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class2-water-dist-b103-tap-the-flaw-0152",
+   "courseKey": "class2-water-dist",
+   "overlay": "2026-11-15-class2-s-water-dist-batch3.json",
+   "issue": "hydrant colours"
+  },
+  {
+   "itemId": "og-class2-water-b1-before-after-0219",
+   "courseKey": "class2-water",
+   "overlay": "2026-11-15-class2-water-batch1.json",
+   "issue": "scale sequence"
+  },
+  {
+   "itemId": "og-class2-water-b1-before-after-0224",
+   "courseKey": "class2-water",
+   "overlay": "2026-11-15-class2-water-batch1.json",
+   "issue": "scale sequence"
+  },
+  {
+   "itemId": "og-class2-water-b1-before-after-0225",
+   "courseKey": "class2-water",
+   "overlay": "2026-11-15-class2-water-batch1.json",
+   "issue": "scale sequence"
+  },
+  {
+   "itemId": "og-class2-water-b1-before-after-0227",
+   "courseKey": "class2-water",
+   "overlay": "2026-11-15-class2-water-batch1.json",
+   "issue": "scale sequence"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b101-rapid-swipe-0021",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b101-rapid-swipe-0023",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b101-speed-match-0066",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b101-speed-match-0089",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b101-tap-the-flaw-0227",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b102-rapid-swipe-0032",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b102-rapid-swipe-0036",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch2.json",
+   "issue": "sonar (round 2)"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b102-odd-one-out-0115",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b102-odd-one-out-0116",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b102-odd-one-out-0117",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b102-cause-effect-0204",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch2.json",
+   "issue": "sonar (round 2)"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b102-tap-the-flaw-0255",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch2.json",
+   "issue": "sonar (round 2)"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b103-speed-match-0020",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch3.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class3-water-b102-speed-match-0058",
+   "courseKey": "class3-water",
+   "overlay": "2026-11-15-class3-s-water-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class3-water-b103-speed-match-0012",
+   "courseKey": "class3-water",
+   "overlay": "2026-11-15-class3-s-water-batch3.json",
+   "issue": "calcium pair"
+  },
+  {
+   "itemId": "og-class3-water-b202-before-after-0219",
+   "courseKey": "class3-water",
+   "overlay": "2026-11-15-class3-s-water-depth2.json",
+   "issue": "scale sequence"
+  },
+  {
+   "itemId": "og-class3-water-b202-before-after-0224",
+   "courseKey": "class3-water",
+   "overlay": "2026-11-15-class3-s-water-depth2.json",
+   "issue": "scale sequence"
+  },
+  {
+   "itemId": "og-class3-water-b202-before-after-0225",
+   "courseKey": "class3-water",
+   "overlay": "2026-11-15-class3-s-water-depth2.json",
+   "issue": "scale sequence"
+  },
+  {
+   "itemId": "og-class3-water-b202-before-after-0227",
+   "courseKey": "class3-water",
+   "overlay": "2026-11-15-class3-s-water-depth2.json",
+   "issue": "scale sequence"
+  },
+  {
+   "itemId": "og-class3-water-dist-b102-speed-match-0069",
+   "courseKey": "class3-water-dist",
+   "overlay": "2026-11-15-class3-s-water-dist-batch2.json",
+   "issue": "rechlorination board"
+  },
+  {
+   "itemId": "og-class3-water-dist-b102-speed-match-0077",
+   "courseKey": "class3-water-dist",
+   "overlay": "2026-11-15-class3-s-water-dist-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class3-water-dist-b103-speed-match-0003",
+   "courseKey": "class3-water-dist",
+   "overlay": "2026-11-15-class3-s-water-dist-batch3.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class3-water-dist-b103-tap-the-flaw-0122",
+   "courseKey": "class3-water-dist",
+   "overlay": "2026-11-15-class3-s-water-dist-batch3.json",
+   "issue": "hydrant colours"
+  },
+  {
+   "itemId": "og-class3-ww-b1-before-after-0223",
+   "courseKey": "class3-ww",
+   "overlay": "2026-11-15-class3-ww-batch1.json",
+   "issue": "step feed sequence"
+  },
+  {
+   "itemId": "og-class3-ww-b1-before-after-0225",
+   "courseKey": "class3-ww",
+   "overlay": "2026-11-15-class3-ww-batch1.json",
+   "issue": "step feed sequence"
+  },
+  {
+   "itemId": "og-class3-ww-b1-before-after-0227",
+   "courseKey": "class3-ww",
+   "overlay": "2026-11-15-class3-ww-batch1.json",
+   "issue": "step feed sequence"
+  },
+  {
+   "itemId": "og-class3-ww-b1-before-after-0230",
+   "courseKey": "class3-ww",
+   "overlay": "2026-11-15-class3-ww-batch1.json",
+   "issue": "step feed sequence"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b101-rapid-swipe-0021",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b101-rapid-swipe-0023",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b101-speed-match-0066",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b101-speed-match-0089",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b101-tap-the-flaw-0227",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch1.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b102-rapid-swipe-0032",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b102-rapid-swipe-0036",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch2.json",
+   "issue": "sonar (round 2)"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b102-odd-one-out-0115",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b102-odd-one-out-0116",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b102-odd-one-out-0117",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b102-cause-effect-0204",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch2.json",
+   "issue": "sonar (round 2)"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b102-tap-the-flaw-0255",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch2.json",
+   "issue": "sonar (round 2)"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b103-speed-match-0020",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch3.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class4-water-b102-speed-match-0058",
+   "courseKey": "class4-water",
+   "overlay": "2026-11-15-class4-s-water-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class4-water-b103-speed-match-0012",
+   "courseKey": "class4-water",
+   "overlay": "2026-11-15-class4-s-water-batch3.json",
+   "issue": "calcium pair"
+  },
+  {
+   "itemId": "og-class4-water-b202-before-after-0219",
+   "courseKey": "class4-water",
+   "overlay": "2026-11-15-class4-s-water-depth2.json",
+   "issue": "scale sequence"
+  },
+  {
+   "itemId": "og-class4-water-b202-before-after-0224",
+   "courseKey": "class4-water",
+   "overlay": "2026-11-15-class4-s-water-depth2.json",
+   "issue": "scale sequence"
+  },
+  {
+   "itemId": "og-class4-water-b202-before-after-0225",
+   "courseKey": "class4-water",
+   "overlay": "2026-11-15-class4-s-water-depth2.json",
+   "issue": "scale sequence"
+  },
+  {
+   "itemId": "og-class4-water-b202-before-after-0227",
+   "courseKey": "class4-water",
+   "overlay": "2026-11-15-class4-s-water-depth2.json",
+   "issue": "scale sequence"
+  },
+  {
+   "itemId": "og-class4-water-dist-b102-speed-match-0069",
+   "courseKey": "class4-water-dist",
+   "overlay": "2026-11-15-class4-s-water-dist-batch2.json",
+   "issue": "rechlorination board"
+  },
+  {
+   "itemId": "og-class4-water-dist-b102-speed-match-0077",
+   "courseKey": "class4-water-dist",
+   "overlay": "2026-11-15-class4-s-water-dist-batch2.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class4-water-dist-b103-speed-match-0003",
+   "courseKey": "class4-water-dist",
+   "overlay": "2026-11-15-class4-s-water-dist-batch3.json",
+   "issue": "US units"
+  },
+  {
+   "itemId": "og-class4-water-dist-b103-tap-the-flaw-0122",
+   "courseKey": "class4-water-dist",
+   "overlay": "2026-11-15-class4-s-water-dist-batch3.json",
+   "issue": "hydrant colours"
+  },
+  {
+   "itemId": "og-class4-ww-b203-before-after-0223",
+   "courseKey": "class4-ww",
+   "overlay": "2026-11-15-class4-s-ww-depth3.json",
+   "issue": "step feed sequence"
+  },
+  {
+   "itemId": "og-class4-ww-b203-before-after-0225",
+   "courseKey": "class4-ww",
+   "overlay": "2026-11-15-class4-s-ww-depth3.json",
+   "issue": "step feed sequence"
+  },
+  {
+   "itemId": "og-class4-ww-b203-before-after-0227",
+   "courseKey": "class4-ww",
+   "overlay": "2026-11-15-class4-s-ww-depth3.json",
+   "issue": "step feed sequence"
+  },
+  {
+   "itemId": "og-class4-ww-b203-before-after-0230",
+   "courseKey": "class4-ww",
+   "overlay": "2026-11-15-class4-s-ww-depth3.json",
+   "issue": "step feed sequence"
   }
  ]
 }

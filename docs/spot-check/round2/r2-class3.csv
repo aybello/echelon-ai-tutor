@@ -1,0 +1,320 @@
+﻿sample_id,course,system,mode,difficulty,item_id,source_overlay,prompt,options_or_pairs,marked_correct,explanation,verdict,correction_or_note,reviewer
+R2-CLASS3-001,class3-water-dist,Water distribution,Before or after (which comes first),medium,og-class3-water-dist-b202-before-after-0251,2026-11-15-class3-s-water-dist-depth2.json,"In changing out a customer meter, which step comes later?","1) Record the old meter reading
+2) Record the new meter details",Record the new meter details,"The old reading is captured and the line shut before work, then the new meter is installed, checked and recorded. Record the old meter reading comes before Record the new meter details.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-002,class3-water,Water treatment,Odd one out,hard,og-class3-water-b202-odd-one-out-0151,2026-11-15-class3-s-water-depth2.json,Which is not a corrosion index or test?,"1) Soil resistivity test
+2) Aggressive index
+3) Fecal count
+4) Corrosion coupon",Fecal count,Fecal count is not a corrosion test.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-003,class3-water,Water treatment,Speed match,medium,og-class3-water-b103-speed-match-0012,2026-11-15-class3-s-water-batch3.json,Match each lime softening term to its role.,"Lime  ->  Raises pH so calcium carbonate precipitates
+Soda ash  ->  Adds carbonate when bicarbonate is short
+Excess lime  ->  Used to precipitate magnesium
+Recarbonation  ->  Carbon dioxide lowers the high pH afterward
+Lime sludge  ->  Bulky residual that is costly to dispose of
+Calcium removal range  ->  About pH 9 to 9.5",Every pair above is meant to be a correct match,,UNCLEAR,'Calcium removal range: about pH 9 to 9.5' is disputed. Lime softening for calcium usually runs near pH 10. Fixed: pair replaced with stabilization.,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-004,class3-ww,Wastewater treatment,Cause and effect,hard,og-class3-ww-b1-cause-effect-0312,2026-11-15-class3-ww-batch1.json,A large industrial customer releases a batch at a steady rate from an equalization tank. What happens to the peak load on the biology?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Smoothing the discharge avoids a sudden shock.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-005,class3-water,Water treatment,Speed match,hard,og-class3-water-b1-speed-match-0065,2026-11-15-class3-water-batch1.json,Match each streaming current monitor symptom to its likely cause.,"Signal drifts slowly in one direction  ->  Coating or fouling on the sensor
+Signal swings wildly  ->  Air in the sample line
+Flat signal that ignores dose changes  ->  Blocked sample line or failed sensor
+Setpoint gives poor results after a storm  ->  Raw water character has changed
+Dose control keeps chasing the signal  ->  Control tuning too aggressive
+Response arrives long after a dose change  ->  Delay from a long sample line",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-006,class3-ww,Wastewater treatment,Odd one out,hard,og-class3-ww-b202-odd-one-out-0124,2026-11-15-class3-s-ww-depth2.json,Which is not a way a lagoon cell loses treatment capacity?,"1) Dense duckweed mats on the surface
+2) Ice cover over the winter
+3) Short-circuiting through the cell
+4) Mild summer",Mild summer,Mild summer would help rather than reduce lagoon capacity.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-007,class3-wastewater-coll,Wastewater collection,Cause and effect,medium,og-class3-wastewater-coll-b101-cause-effect-0196,2026-11-15-class3-s-wastewater-coll-batch1.json,Roof drains are disconnected from a sanitary sewer. What happens to the peak wet-weather flow reaching the plant?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Removing a direct stormwater connection cuts the surge.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-008,class3-wastewater-coll,Wastewater collection,Odd one out,hard,og-class3-wastewater-coll-b202-odd-one-out-0132,2026-11-15-class3-s-wastewater-coll-depth2.json,Which is not a clue to an inflow and infiltration problem?,"1) Plant flows rising in storms
+2) High night flow in wet seasons
+3) Flow spikes in rain
+4) Steady dry flow",Steady dry flow,Steady dry flow does not suggest extra clear water entering the system.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-009,class3-ww,Wastewater treatment,Rapid swipe (true or false),hard,og-class3-ww-b1-rapid-swipe-0040,2026-11-15-class3-ww-batch1.json,Feeding thicker sludge to a digester at the same volume per day shortens its hydraulic detention time.,Yes (true) / No (false),No (false),"Hydraulic detention time depends on volume fed, so only the solids loading rises.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-010,class3-ww,Wastewater treatment,Tap the flaw (find the wrong statement),hard,og-class3-ww-b202-tap-the-flaw-0305,2026-11-15-class3-s-ww-depth2.json,Which statement about return sludge rate is wrong?,"1) Too little RAS can leave a septic return
+2) More RAS deepens the blanket
+3) Too much RAS shortens aeration time",More RAS deepens the blanket,A higher RAS rate pulls sludge out of the clarifier faster.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-011,class3-water,Water treatment,Odd one out,hard,og-class3-water-b202-odd-one-out-0112,2026-11-15-class3-s-water-depth2.json,Which is not a cause of poor settled water quality?,"1) Overloaded basin
+2) Sludge buildup
+3) Good baffles
+4) Density currents",Good baffles,Good baffles would help settled water quality.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-012,class3-wastewater-coll,Wastewater collection,Tap the flaw (find the wrong statement),medium,og-class3-wastewater-coll-b103-tap-the-flaw-0126,2026-11-15-class3-s-wastewater-coll-batch3.json,Which statement about organization of a collection system is wrong?,"1) Job descriptions list duties and needed qualifications
+2) Job descriptions are optional for experienced crews
+3) Operations and maintenance staff ideally report to the same supervisor",Job descriptions are optional for experienced crews,Up-to-date job descriptions let every employee know the job responsibilities and credentials needed.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-013,class3-water,Water treatment,Before or after (which comes first),medium,og-class3-water-b1-before-after-0275,2026-11-15-class3-water-batch1.json,"In verifying an online analyzer in service, which step comes later?","1) Adjust and log the result
+2) Check the sample flow",Adjust and log the result,Good flow and a representative grab come before any comparison or adjustment. Check the sample flow comes before Adjust and log the result.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-014,class3-water,Water treatment,Tap the flaw (find the wrong statement),hard,og-class3-water-b202-tap-the-flaw-0312,2026-11-15-class3-s-water-depth2.json,Which statement about coagulant overdose is wrong?,"1) Extra dose keeps cutting turbidity
+2) Cloudier water can follow an overdose
+3) Too much can restabilize particles",Extra dose keeps cutting turbidity,"Beyond the optimum, extra coagulant can make the water worse.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-015,class3-water,Water treatment,Cause and effect,medium,og-class3-water-b101-cause-effect-0175,2026-11-15-class3-s-water-batch1.json,Water temperature falls. What happens to the oxygen saturation level of the water?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,Cold water can dissolve more oxygen.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-016,class3-water-dist,Water distribution,Rapid swipe (true or false),hard,og-class3-water-dist-b1-rapid-swipe-0032,2026-11-15-class3-water-dist-batch1.json,Partial replacement of a lead service line removes the lead risk at the property.,Yes (true) / No (false),No (false),"The remaining lead pipe can shed particles after the disturbance, so the risk stays until the whole line is gone.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-017,class3-ww,Wastewater treatment,Before or after (which comes first),medium,og-class3-ww-b1-before-after-0249,2026-11-15-class3-ww-batch1.json,"In handling an out-of-control quality control result, which step comes earlier?","1) Check the calculations and the standards
+2) Hold the affected results from reporting",Hold the affected results from reporting,"Results are held, the cause is traced and fixed, and the record is closed last. Hold the affected results from reporting comes before Check the calculations and the standards.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-018,class3-ww,Wastewater treatment,Before or after (which comes first),hard,og-class3-ww-b1-before-after-0223,2026-11-15-class3-ww-batch1.json,"In operating through a wet weather peak, which step comes earlier?","1) Switch to step feed to move solids to later passes
+2) Bring standby clarifiers and channels into service",Switch to step feed to move solids to later passes,"Preparation comes first, then the storm settings, and the plant is eased back to normal afterwards. Switch to step feed to move solids to later passes comes before Bring standby clarifiers and channels into service.",WRONG,Says step feed moves solids to later passes. Step feed moves the feed and keeps solids in the early passes. Its explanation also contradicted its own order. Fixed: sequence rewritten.,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-019,class3-ww,Wastewater treatment,Rapid swipe (true or false),medium,og-class3-ww-b102-rapid-swipe-0031,2026-11-15-class3-s-ww-batch2.json,"Blanks, duplicates and standards are used to check the quality of laboratory results.",Yes (true) / No (false),Yes (true),"They test for contamination, repeatability and accuracy.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-020,class3-water-dist,Water distribution,Cause and effect,hard,og-class3-water-dist-b202-cause-effect-0268,2026-11-15-class3-s-water-dist-depth2.json,A centrifugal pump is slowed by its variable frequency drive. What happens to the head the pump produces?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Head falls with the square of speed.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-021,class3-wastewater-coll,Wastewater collection,Cause and effect,medium,og-class3-wastewater-coll-b102-cause-effect-0233,2026-11-15-class3-s-wastewater-coll-batch2.json,A cross connection found by smoke testing is disconnected. What happens to the stormwater entering the sanitary sewer?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Removing the connection stops the direct entry.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-022,class3-water,Water treatment,Before or after (which comes first),medium,og-class3-water-b202-before-after-0212,2026-11-15-class3-s-water-depth2.json,"In checking an online analyzer against the lab, which step comes earlier?","1) Adjust the analyzer if they differ
+2) Test it with a bench method",Test it with a bench method,A grab is collected and tested before the readings are compared and any adjustment is made. Test it with a bench method comes before Adjust the analyzer if they differ.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-023,class3-wastewater-coll,Wastewater collection,Cause and effect,medium,og-class3-wastewater-coll-b101-cause-effect-0204,2026-11-15-class3-s-wastewater-coll-batch1.json,Septic wastewater is churned in a junction structure. What happens to the release of hydrogen sulfide gas?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,Turbulence releases dissolved gas.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-024,class3-wastewater-coll,Wastewater collection,Speed match,medium,og-class3-wastewater-coll-b101-speed-match-0061,2026-11-15-class3-s-wastewater-coll-batch1.json,Match each collection system fitting to its job.,"Backflow preventer  ->  Stops wastewater backing into a building
+Building sewer cleanout  ->  Access to clear a stoppage
+Vent trap  ->  Blocks sewer gas from the building
+Drop manhole  ->  Handles a large invert difference
+Weir board  ->  Regulates how flow divides
+Air jumper  ->  Keeps air moving past a full siphon",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-025,class3-water-dist,Water distribution,Speed match,medium,og-class3-water-dist-b1-speed-match-0081,2026-11-15-class3-water-dist-batch1.json,Match each emergency response plan component to its purpose.,"Contact roster  ->  Reaches staff and agencies quickly
+Priority customer list  ->  Tells crews who needs water first
+Alternate supply arrangement  ->  Provides water when the main supply fails
+Isolation maps  ->  Show which valves close a break
+Message templates  ->  Speed up clear public notices
+Exercise schedule  ->  Tests whether the plan works",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-026,class3-ww,Wastewater treatment,Speed match,medium,og-class3-ww-b102-speed-match-0059,2026-11-15-class3-s-ww-batch2.json,Match each anaerobic digestion term to its meaning.,"Acid formers  ->  Turn organic matter into volatile acids
+Methane formers  ->  Turn volatile acids into methane gas
+Volatile acids  ->  Intermediate products of digestion
+Alkalinity  ->  Buffer that resists pH change
+Seed sludge  ->  Active digested sludge left to restart the process
+Digester supernatant  ->  Liquid layer drawn off from settled solids",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-027,class3-water,Water treatment,Speed match,hard,og-class3-water-b202-speed-match-0085,2026-11-15-class3-s-water-depth2.json,Match each chemical combination or hazard to its concern.,"Hypochlorite with acid  ->  Chlorine gas release
+Aluminum with strong caustic  ->  Hydrogen gas generation
+Chlorine with oil or grease  ->  Fire risk
+Fluorosilicic acid  ->  Corrosive to skin and some materials
+Spilled polymer solution  ->  Very slippery surfaces
+Lime dust  ->  Irritates eyes and lungs",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-028,class3-water-dist,Water distribution,Before or after (which comes first),medium,og-class3-water-dist-b202-before-after-0244,2026-11-15-class3-s-water-dist-depth2.json,"In changing out a customer meter, which step comes earlier?","1) Record the new meter details
+2) Remove the old meter",Remove the old meter,"The old reading is captured and the line shut before work, then the new meter is installed, checked and recorded. Remove the old meter comes before Record the new meter details.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-029,class3-ww,Wastewater treatment,Tap the flaw (find the wrong statement),hard,og-class3-ww-b202-tap-the-flaw-0325,2026-11-15-class3-s-ww-depth2.json,Which statement about sulfite dechlorination is wrong?,"1) Sulfur dioxide can lower the pH slightly
+2) Sulfite overdose lowers dissolved oxygen
+3) Sulfite overdose raises oxygen",Sulfite overdose raises oxygen,Excess sulfite consumes dissolved oxygen.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-030,class3-wastewater-coll,Wastewater collection,Tap the flaw (find the wrong statement),hard,og-class3-wastewater-coll-b1-tap-the-flaw-0280,2026-11-15-class3-wastewater-coll-batch1.json,Which statement about analysing rainfall-derived I/I is wrong?,"1) The dry weather pattern is subtracted from the wet record
+2) Results are compared by rainfall depth and intensity
+3) Dry flow is added to the wet record",Dry flow is added to the wet record,The dry weather pattern is removed from the wet record to show the storm-driven part.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-031,class3-water-dist,Water distribution,Speed match,hard,og-class3-water-dist-b1-speed-match-0055,2026-11-15-class3-water-dist-batch1.json,Match each tank turnover problem to a suitable remedy.,"Tank never drawn down far  ->  Widen the operating level range
+Fill and draw through one shared pipe  ->  Add separate inlet and outlet piping
+Temperature layers in a tall tank  ->  Install a mixing system
+Residual falls inside the tank  ->  Boost chlorine at the tank site
+Tank far larger than the demand needs  ->  Take a cell out of service
+Sediment piles up on the floor  ->  Clean and inspect the tank",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-032,class3-water-dist,Water distribution,Odd one out,medium,og-class3-water-dist-b101-odd-one-out-0111,2026-11-15-class3-s-water-dist-batch1.json,Which is not a material used for water mains or services?,"1) Steel
+2) Ductile iron
+3) Bolt
+4) Copper",Bolt,Bolt is not a pipe material.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-033,class3-water-dist,Water distribution,Cause and effect,hard,og-class3-water-dist-b1-cause-effect-0259,2026-11-15-class3-water-dist-batch1.json,A leak is repaired in a metered district with a fixed boundary. What happens to the minimum night flow into the district?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,"Leakage dominates night flow, so removing a leak lowers it.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-034,class3-water-dist,Water distribution,Rapid swipe (true or false),hard,og-class3-water-dist-b1-rapid-swipe-0019,2026-11-15-class3-water-dist-batch1.json,Trihalomethane levels tend to rise with water age as long as chlorine and precursors remain in the water.,Yes (true) / No (false),Yes (true),"Formation continues while reactants are present, so the oldest water often has the highest values.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-035,class3-water-dist,Water distribution,Tap the flaw (find the wrong statement),hard,og-class3-water-dist-b202-tap-the-flaw-0353,2026-11-15-class3-s-water-dist-depth2.json,Which statement about recoating a steel tank is wrong?,"1) Solvent vapours are harmless in a tank
+2) Old paint can contain lead needing containment
+3) Ventilation and monitoring continue during coating work",Solvent vapours are harmless in a tank,Solvent vapours can be flammable and toxic in an enclosed tank.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-036,class3-wastewater-coll,Wastewater collection,Rapid swipe (true or false),medium,og-class3-wastewater-coll-b101-rapid-swipe-0035,2026-11-15-class3-s-wastewater-coll-batch1.json,Reactive maintenance usually costs more over time than a scheduled preventive program.,Yes (true) / No (false),Yes (true),"Neglect brings blockages, overflows, shorter pipe life and early rehabilitation.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-037,class3-water-dist,Water distribution,Rapid swipe (true or false),medium,og-class3-water-dist-b202-rapid-swipe-0022,2026-11-15-class3-s-water-dist-depth2.json,A centrifugal pump running backwards because of wrong motor rotation delivers its full flow and head.,Yes (true) / No (false),No (false),"Reverse rotation gives much less flow and head, so rotation is checked at start-up.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-038,class3-wastewater-coll,Wastewater collection,Odd one out,medium,og-class3-wastewater-coll-b1-odd-one-out-0107,2026-11-15-class3-wastewater-coll-batch1.json,Which is not a structural defect rather than a maintenance defect?,"1) Loose debris
+2) Large joint displacement
+3) Pipe collapse
+4) Missing pipe wall",Loose debris,"Loose debris affects flow and is dealt with by cleaning, not by structural repair.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-039,class3-ww,Wastewater treatment,Odd one out,hard,og-class3-ww-b1-odd-one-out-0158,2026-11-15-class3-ww-batch1.json,Which is not a cause of poor oxygen transfer in fine bubble aeration?,"1) Biofouled membranes
+2) High surfactant load
+3) Shallow diffuser submergence
+4) Added depth",Added depth,Added depth improves oxygen transfer instead of reducing it.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-040,class3-wastewater-coll,Wastewater collection,Speed match,medium,og-class3-wastewater-coll-b103-speed-match-0044,2026-11-15-class3-s-wastewater-coll-batch3.json,Match each emergency plan part to what it provides.,"Contact list  ->  Phone numbers for crews, fire department and ambulance
+Hazard identification  ->  Marks sites such as chemical storage
+Vulnerability analysis  ->  Lists emergencies that could occur, like floods or power loss
+Response procedures  ->  Steps staff follow in an emergency
+Risk reduction methods  ->  Ways to lower the chance of an emergency
+Staff responsibilities  ->  Who does what during an emergency",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-041,class3-water-dist,Water distribution,Tap the flaw (find the wrong statement),medium,og-class3-water-dist-b202-tap-the-flaw-0350,2026-11-15-class3-s-water-dist-depth2.json,Which statement about district night flow is wrong?,"1) Step tests narrow down the leaking section
+2) Night flow is mostly leakage
+3) Night flow is mostly customer use",Night flow is mostly customer use,"At night customer use is small, so most remaining flow is leakage.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-042,class3-water,Water treatment,Cause and effect,medium,og-class3-water-b103-cause-effect-0074,2026-11-15-class3-s-water-batch3.json,The check valve on a pump discharge fails to seat when the pump stops. What happens to the backflow through the pump?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,A working check valve closes to stop reverse flow.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-043,class3-water,Water treatment,Odd one out,hard,og-class3-water-b202-odd-one-out-0139,2026-11-15-class3-s-water-depth2.json,Which is not a way to cut disinfection byproduct formation?,"1) Longer storage
+2) Later chlorination
+3) Shorter water age
+4) Chloramine residual",Longer storage,Longer storage would tend to raise byproduct formation.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-044,class3-water,Water treatment,Odd one out,medium,og-class3-water-b101-odd-one-out-0089,2026-11-15-class3-s-water-batch1.json,Which is not a positively charged ion?,"1) Magnesium
+2) Calcium
+3) Sodium
+4) Nitrate",Nitrate,Nitrate carries a negative charge.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-045,class3-wastewater-coll,Wastewater collection,Before or after (which comes first),hard,og-class3-wastewater-coll-b1-before-after-0177,2026-11-15-class3-wastewater-coll-batch1.json,"In a lift station power loss response, which step comes later?","1) Review the event and test records
+2) Confirm the alarm and the loss of utility power",Review the event and test records,"The event is confirmed and the risk is sized first, power is restored, recovery is checked and the review comes last. Confirm the alarm and the loss of utility power comes before Review the event and test records.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-046,class3-ww,Wastewater treatment,Cause and effect,hard,og-class3-ww-b101-cause-effect-0213,2026-11-15-class3-s-ww-batch1.json,"A trickling filter carries a very thick, dark slime layer. What happens to the likelihood of ponding and odours?","1) It increases
+2) It decreases
+3) It stays the same",It increases,Heavy slime blocks voids and goes anaerobic.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-047,class3-wastewater-coll,Wastewater collection,Odd one out,hard,og-class3-wastewater-coll-b1-odd-one-out-0146,2026-11-15-class3-wastewater-coll-batch1.json,Which is not a feature of a sound hauled waste receiving program?,"1) Sampling of each load
+2) Anonymous haulers
+3) Screening before release
+4) Metered, supervised discharge",Anonymous haulers,Anonymous haulers defeats the purpose of controlled receiving.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-048,class3-water,Water treatment,Tap the flaw (find the wrong statement),hard,og-class3-water-b202-tap-the-flaw-0328,2026-11-15-class3-s-water-depth2.json,Which statement about chlorine gas and hypochlorite is wrong?,"1) Hypochlorite tends to raise the pH
+2) Hypochlorite lowers the pH
+3) Chlorine gas tends to lower the pH",Hypochlorite lowers the pH,Hypochlorite is alkaline and raises the pH.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-049,class3-ww,Wastewater treatment,Odd one out,medium,og-class3-ww-b102-odd-one-out-0114,2026-11-15-class3-s-ww-batch2.json,Which is not a way to keep a sample representative?,"1) Use a clean container
+2) Label with time and place
+3) Skim the surface
+4) Mix before pouring",Skim the surface,Skim the surface would make the sample less representative.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-050,class3-water,Water treatment,Rapid swipe (true or false),medium,og-class3-water-b202-rapid-swipe-0046,2026-11-15-class3-s-water-depth2.json,Flow pacing makes the chemical feed rate follow plant flow so the dose stays steady.,Yes (true) / No (false),Yes (true),"Feed rises and falls with flow, which holds the concentration in the water.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-051,class3-wastewater-coll,Wastewater collection,Tap the flaw (find the wrong statement),hard,og-class3-wastewater-coll-b1-tap-the-flaw-0313,2026-11-15-class3-wastewater-coll-batch1.json,Which statement about industrial discharge control is wrong?,"1) Low-pH or hot discharge damages pipes and manholes
+2) Limits protect the plant but not the pipes
+3) Slug loads upset downstream treatment processes",Limits protect the plant but not the pipes,"Discharge limits also protect sewers, pumps and the workers who enter them.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-052,class3-ww,Wastewater treatment,Rapid swipe (true or false),medium,og-class3-ww-b101-rapid-swipe-0002,2026-11-15-class3-s-ww-batch1.json,A comminutor chops solids into smaller pieces instead of removing them from the flow.,Yes (true) / No (false),Yes (true),The shredded material stays in the wastewater for removal later in the plant.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-053,class3-water-dist,Water distribution,Before or after (which comes first),hard,og-class3-water-dist-b1-before-after-0199,2026-11-15-class3-water-dist-batch1.json,"In putting a new booster chlorine feed into service, which step comes later?","1) Adjust the feed and set the alarms
+2) Record the settings and train staff",Record the settings and train staff,"Equipment is checked and calibrated, the feed is started cautiously, results guide adjustment, and settings are recorded last. Adjust the feed and set the alarms comes before Record the settings and train staff.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-054,class3-wastewater-coll,Wastewater collection,Rapid swipe (true or false),hard,og-class3-wastewater-coll-b202-rapid-swipe-0038,2026-11-15-class3-s-wastewater-coll-depth2.json,Spring-loaded silent check valves are the usual choice for raw wastewater with rags.,Yes (true) / No (false),No (false),"Their small passages and springs foul with rags, so swing or ball checks are used.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-055,class3-water-dist,Water distribution,Odd one out,hard,og-class3-water-dist-b202-odd-one-out-0157,2026-11-15-class3-s-water-dist-depth2.json,Which is not a check that helps find a leak in a metered district?,"1) Step testing
+2) Acoustic listening
+3) Map update
+4) Pressure logging",Map update,Map update does not help locate a physical leak.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-056,class3-water,Water treatment,Odd one out,hard,og-class3-water-b1-odd-one-out-0169,2026-11-15-class3-water-batch1.json,Which is not a factor that cuts the effective contact time of a basin?,"1) Lower flow
+2) Dead zones
+3) Low water level
+4) Higher flow",Lower flow,Lower flow would lengthen the effective contact time.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-057,class3-water-dist,Water distribution,Odd one out,medium,og-class3-water-dist-b1-odd-one-out-0155,2026-11-15-class3-water-dist-batch1.json,Which is not an item in a water emergency response plan?,"1) Rate table
+2) Isolation valve maps
+3) Contact list
+4) Priority customer list",Rate table,Rate table is not part of an emergency response plan.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-058,class3-ww,Wastewater treatment,Before or after (which comes first),hard,og-class3-ww-b1-before-after-0200,2026-11-15-class3-ww-batch1.json,"In phosphorus removal in a biological plant, which step comes later?","1) Fatty acids reach the anaerobic zone
+2) Phosphorus leaves with the waste sludge",Phosphorus leaves with the waste sludge,"Release in the anaerobic zone sets up the larger uptake in the aerobic zone, and wasting removes it. Fatty acids reach the anaerobic zone comes before Phosphorus leaves with the waste sludge.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-059,class3-water-dist,Water distribution,Tap the flaw (find the wrong statement),medium,og-class3-water-dist-b102-tap-the-flaw-0350,2026-11-15-class3-s-water-dist-batch2.json,Which statement about stored pipe is wrong?,"1) Stockpiled pipe needs no protection
+2) Pipe interiors are kept free of foreign matter
+3) Pipe ends are capped during storage",Stockpiled pipe needs no protection,Stored pipe is capped and kept clean to avoid contamination before installation.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-060,class3-water,Water treatment,Cause and effect,hard,og-class3-water-b1-cause-effect-0304,2026-11-15-class3-water-batch1.json,More flow is sent through a settling basin of fixed surface area. What happens to the size of the smallest particle that is fully removed?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,A higher overflow rate means only faster-settling particles are caught.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-061,class3-water,Water treatment,Rapid swipe (true or false),hard,og-class3-water-b102-rapid-swipe-0017,2026-11-15-class3-s-water-batch2.json,Open flames are safe near chlorine equipment because chlorine gas does not support burning.,Yes (true) / No (false),No (false),"Chlorine does not burn but it supports combustion, so flames are kept away.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-062,class3-ww,Wastewater treatment,Rapid swipe (true or false),hard,og-class3-ww-b1-rapid-swipe-0018,2026-11-15-class3-ww-batch1.json,Channel velocity matters little in an oxidation ditch once the rotors are running.,Yes (true) / No (false),No (false),A minimum velocity is needed to keep solids from settling in the channel.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-063,class3-wastewater-coll,Wastewater collection,Rapid swipe (true or false),medium,og-class3-wastewater-coll-b102-rapid-swipe-0005,2026-11-15-class3-s-wastewater-coll-batch2.json,A bucket machine pulls a steel bucket along a cable between two manholes to scrape debris out of the pipe.,Yes (true) / No (false),Yes (true),The jaws at the front scrape deposits into the bucket for removal.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-064,class3-water-dist,Water distribution,Odd one out,hard,og-class3-water-dist-b101-odd-one-out-0135,2026-11-15-class3-s-water-dist-batch1.json,Which is not a cause of low chlorine residual at a dead end?,"1) Low circulation
+2) Nitrification
+3) Slow tank turnover
+4) Looped mains",Looped mains,Looped mains would tend to keep the residual up rather than lower it.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-065,class3-water,Water treatment,Rapid swipe (true or false),hard,og-class3-water-b202-rapid-swipe-0013,2026-11-15-class3-s-water-depth2.json,Extra polymer is harmless to filters because it simply passes through the media.,Yes (true) / No (false),No (false),Excess polymer can coat and blind filter media and shorten filter runs.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-066,class3-wastewater-coll,Wastewater collection,Odd one out,medium,og-class3-wastewater-coll-b1-odd-one-out-0164,2026-11-15-class3-wastewater-coll-batch1.json,Which is not an item on a daily trench inspection?,"1) Cracks near the edge
+2) Invoice totals
+3) Spoil set back
+4) Ladder placement",Invoice totals,Invoice totals has nothing to do with trench safety.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-067,class3-wastewater-coll,Wastewater collection,Before or after (which comes first),medium,og-class3-wastewater-coll-b1-before-after-0192,2026-11-15-class3-wastewater-coll-batch1.json,"In designing a cleaning program from system history, which step comes earlier?","1) Gather stoppage and overflow records
+2) Map problem lines and their causes",Gather stoppage and overflow records,"History is gathered and mapped before frequencies are set, work is scheduled, and results feed the next cycle. Gather stoppage and overflow records comes before Map problem lines and their causes.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-068,class3-water,Water treatment,Tap the flaw (find the wrong statement),medium,og-class3-water-b1-tap-the-flaw-0364,2026-11-15-class3-water-batch1.json,Which statement about backwash design is wrong?,"1) Air scour loosens solids from grains
+2) Air scour raises the water needed
+3) Air scour can cut wash water volume",Air scour raises the water needed,Air scour usually reduces the wash water needed.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-069,class3-wastewater-coll,Wastewater collection,Speed match,hard,og-class3-wastewater-coll-b102-speed-match-0066,2026-11-15-class3-s-wastewater-coll-batch2.json,Match each trenchless point to its effect.,"Pipe bursting  ->  Can increase the new pipe diameter
+Slip lining  ->  Reduces the pipe diameter
+Smooth plastic liner  ->  Lowers pipe wall roughness
+Shorter installation time  ->  Less pump-around needed
+Work only at access points  ->  Fewer traffic detours
+Nearby underground utilities  ->  A reason to avoid digging",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-070,class3-wastewater-coll,Wastewater collection,Cause and effect,hard,og-class3-wastewater-coll-b1-cause-effect-0250,2026-11-15-class3-wastewater-coll-batch1.json,Every alarm at a station goes to the on-call phone with the same priority. What happens to the chance that the urgent call is acted on first?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Urgent calls are lost among the routine ones.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-071,class3-water,Water treatment,Tap the flaw (find the wrong statement),hard,og-class3-water-b102-tap-the-flaw-0195,2026-11-15-class3-s-water-batch2.json,Which statement about breakpoint chlorination is wrong?,"1) Beyond it, residual is combined
+2) At the dip, chloramines are being destroyed
+3) Beyond it, added chlorine builds free residual","Beyond it, residual is combined",Beyond the breakpoint the extra chlorine appears as free residual.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-072,class3-water,Water treatment,Before or after (which comes first),medium,og-class3-water-b202-before-after-0247,2026-11-15-class3-s-water-depth2.json,"In bringing a metering pump back after a long idle period, which step comes later?","1) Prime the pump head
+2) Check the day tank level",Prime the pump head,"Supply and prime come first, then the rate is set and checked by measured output. Check the day tank level comes before Prime the pump head.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-073,class3-ww,Wastewater treatment,Tap the flaw (find the wrong statement),medium,og-class3-ww-b103-tap-the-flaw-0162,2026-11-15-class3-s-ww-batch3.json,Which statement about fire and explosion hazards is wrong?,"1) Fire needs fuel, oxygen and an ignition source
+2) Intrinsically safe devices are built not to ignite gas
+3) Fire needs fuel without oxygen",Fire needs fuel without oxygen,"Fuel, oxygen and an ignition source are all needed for a fire.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-074,class3-water,Water treatment,Before or after (which comes first),hard,og-class3-water-b202-before-after-0169,2026-11-15-class3-s-water-depth2.json,"In putting a freshly cleaned unit back on line, which step comes later?","1) Send the first water to waste
+2) Backwash the bed",Send the first water to waste,"The bed is cleaned and settled, and the poor early water is discarded before the unit feeds the clearwell. Backwash the bed comes before Send the first water to waste.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-075,class3-water-dist,Water distribution,Cause and effect,medium,og-class3-water-dist-b101-cause-effect-0220,2026-11-15-class3-s-water-dist-batch1.json,A new main is flushed before it is chlorinated. What happens to the dirt and debris left in the main?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Preliminary flushing removes foreign material first.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-076,class3-water-dist,Water distribution,Cause and effect,hard,og-class3-water-dist-b1-cause-effect-0233,2026-11-15-class3-water-dist-batch1.json,A mixer is installed in a tall tank that stratifies in summer. What happens to the temperature difference between the top and bottom of the tank?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Mixing blends the layers into one temperature.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-077,class3-ww,Wastewater treatment,Speed match,medium,og-class3-ww-b202-speed-match-0064,2026-11-15-class3-s-ww-depth2.json,Match each lagoon operating practice to its purpose.,"Baffle curtains  ->  Reduce short-circuiting
+Level control at the outlet  ->  Control retention and depth
+Weed and duckweed removal  ->  Restore light and wind action
+Riprap on dikes  ->  Limit erosion from waves
+Dike inspection  ->  Spot seepage and slumping
+Controlled discharge schedule  ->  Time release to a safe flow in the stream",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-078,class3-water-dist,Water distribution,Tap the flaw (find the wrong statement),medium,og-class3-water-dist-b101-tap-the-flaw-0281,2026-11-15-class3-s-water-dist-batch1.json,Which statement about excavation safety is wrong?,"1) Wet soil around a leak is stable
+2) Utilities are located and marked before digging
+3) Shoring and bracing protect workers",Wet soil around a leak is stable,Soil saturated by a leak is unstable and can cave in.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-079,class3-water-dist,Water distribution,Rapid swipe (true or false),hard,og-class3-water-dist-b1-rapid-swipe-0030,2026-11-15-class3-water-dist-batch1.json,"Unbilled authorized use, such as flushing and firefighting, counts as a real loss.",Yes (true) / No (false),No (false),"It is authorized consumption, so it is separated from real losses in the audit even when it is not billed.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-080,class3-ww,Wastewater treatment,Tap the flaw (find the wrong statement),hard,og-class3-ww-b202-tap-the-flaw-0303,2026-11-15-class3-s-ww-depth2.json,Which statement about foam on an aeration basin is wrong?,"1) Detergents can create foam in a healthy basin
+2) Thick dark foam can point to old sludge
+3) White foam means old sludge",White foam means old sludge,White billowing foam is typical of young sludge or low solids.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-081,class3-ww,Wastewater treatment,Cause and effect,medium,og-class3-ww-b202-cause-effect-0283,2026-11-15-class3-s-ww-depth2.json,Sulfur dioxide is fed for dechlorination. What happens to the pH of the effluent?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,The gas forms a weak acid in water.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-082,class3-ww,Wastewater treatment,Odd one out,medium,og-class3-ww-b102-odd-one-out-0156,2026-11-15-class3-s-ww-batch2.json,Which is not an effect of overfeeding an anaerobic digester?,"1) Reduced gas production
+2) Rising volatile acids
+3) Falling pH
+4) Rising pH",Rising pH,Rising pH does not follow from overloading a digester.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-083,class3-water,Water treatment,Rapid swipe (true or false),hard,og-class3-water-b202-rapid-swipe-0005,2026-11-15-class3-s-water-depth2.json,"Cold raw water tends to give slower floc growth and smaller, weaker floc.",Yes (true) / No (false),Yes (true),Temperature is a key factor in how long floc takes to form.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-084,class3-water-dist,Water distribution,Speed match,medium,og-class3-water-dist-b101-speed-match-0088,2026-11-15-class3-s-water-dist-batch1.json,Match each confined space hazard or test to its description.,"Hydrogen sulfide  ->  Rotten-egg odour that dulls the sense of smell
+Carbon monoxide  ->  Colourless, odourless gas that starves blood of oxygen
+Chlorine  ->  Greenish-yellow gas that irritates eyes and lungs
+Methane  ->  Flammable gas lighter than air
+Low oxygen  ->  Atmosphere left by poor ventilation or oxygen use
+Combustible gas indicator  ->  Instrument that tests for explosive atmospheres",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-085,class3-water-dist,Water distribution,Before or after (which comes first),medium,og-class3-water-dist-b102-before-after-0250,2026-11-15-class3-s-water-dist-batch2.json,"In a premises hazard survey, which step comes earlier?","1) Start at the service entrance
+2) Request as-built drawings",Request as-built drawings,"The survey is introduced, the use of water is learned, the inspection works inward from the entrance, and a report follows. Request as-built drawings comes before Start at the service entrance.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-086,class3-wastewater-coll,Wastewater collection,Before or after (which comes first),medium,og-class3-wastewater-coll-b1-before-after-0198,2026-11-15-class3-wastewater-coll-batch1.json,"In an overflow call from report to closure, which step comes later?","1) Complete the written report
+2) Stop or reduce the release",Complete the written report,"The release is stopped and cleaned up first, and the report and lessons follow once conditions are safe. Stop or reduce the release comes before Complete the written report.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-087,class3-water-dist,Water distribution,Before or after (which comes first),medium,og-class3-water-dist-b102-before-after-0227,2026-11-15-class3-s-water-dist-batch2.json,"In a preliminary water audit, which step comes later?","1) Subtract to get water losses
+2) Estimate apparent losses",Estimate apparent losses,"Input and consumption give losses, and apparent losses are taken off to leave real losses. Subtract to get water losses comes before Estimate apparent losses.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-088,class3-wastewater-coll,Wastewater collection,Tap the flaw (find the wrong statement),medium,og-class3-wastewater-coll-b103-tap-the-flaw-0105,2026-11-15-class3-s-wastewater-coll-batch3.json,Which statement about manhole cones is wrong?,"1) An eccentric cone keeps one side nearly vertical
+2) An eccentric cone is perfectly symmetrical
+3) A concentric cone tapers evenly from barrel to cover",An eccentric cone is perfectly symmetrical,An eccentric cone tapers unevenly with one side usually vertical. A concentric cone tapers evenly.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-089,class3-wastewater-coll,Wastewater collection,Speed match,medium,og-class3-wastewater-coll-b202-speed-match-0081,2026-11-15-class3-s-wastewater-coll-depth2.json,Match each excavation term to its meaning.,"Shoring  ->  Braced supports that hold the trench walls
+Trench shield  ->  Box that protects workers but does not hold the walls
+Sloping  ->  Cutting the walls back at an angle
+Benching  ->  Cutting the walls into steps
+Spoil pile  ->  Excavated soil set back from the edge
+Competent person  ->  Inspector with authority to stop work",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-090,class3-ww,Wastewater treatment,Speed match,medium,og-class3-ww-b101-speed-match-0057,2026-11-15-class3-s-ww-batch1.json,Match each pond problem to its likely cause.,"Odours  ->  Organic overload
+High effluent suspended solids  ->  Algal bloom
+Short-circuiting  ->  Poor inlet and outlet arrangement
+Low dissolved oxygen  ->  Heavy loading or poor light
+Burrowing animals  ->  Food supply and bank conditions
+Floating weeds  ->  Poor circulation and shallow water",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-091,class3-water,Water treatment,Speed match,hard,og-class3-water-b202-speed-match-0061,2026-11-15-class3-s-water-depth2.json,Match each chloramine term to its feature.,"Monochloramine  ->  Preferred form of combined residual
+Dichloramine  ->  Less stable, odour-forming intermediate
+Trichloramine  ->  Forms at a very high chlorine dose to ammonia
+Free ammonia  ->  Feeds nitrifying bacteria
+Nitrite  ->  Sign that nitrification is under way
+Breakpoint  ->  Ammonia oxidized and free chlorine forms",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-092,class3-ww,Wastewater treatment,Cause and effect,medium,og-class3-ww-b102-cause-effect-0223,2026-11-15-class3-s-ww-batch2.json,Sludge withdrawal from a gravity thickener is set far too high. What happens to the solids concentration of the thickened sludge?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Pulling too fast draws off thin sludge.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-093,class3-ww,Wastewater treatment,Speed match,hard,og-class3-ww-b202-speed-match-0080,2026-11-15-class3-s-ww-depth2.json,Match each loading term to its expression.,"Organic loading rate  ->  BOD mass per day per unit of volume
+Hydraulic loading rate  ->  Flow per unit of area
+Solids loading rate  ->  Solids mass per day per unit of area
+Weir overflow rate  ->  Flow per unit of weir length
+Mass loading  ->  Concentration multiplied by flow
+Detention time  ->  Volume divided by flow",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-094,class3-wastewater-coll,Wastewater collection,Speed match,medium,og-class3-wastewater-coll-b101-speed-match-0079,2026-11-15-class3-s-wastewater-coll-batch1.json,Match each confined space hazard to an example.,"Oxygen deficiency  ->  Too little oxygen to support breathing
+Toxic gas  ->  Hydrogen sulfide in a wet well
+Explosive atmosphere  ->  Methane trapped in a pipe
+Engulfment  ->  Sudden release of flow or soil
+Physical hazard  ->  Rotating blades or agitators
+Heat stress  ->  Protective gear in a hot space",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-095,class3-ww,Wastewater treatment,Before or after (which comes first),medium,og-class3-ww-b102-before-after-0208,2026-11-15-class3-s-ww-batch2.json,"In progressive failure from a lack of lubrication, which step comes later?","1) Vibration and noise increase
+2) The bearing seizes",The bearing seizes,"Friction heats the bearing, wear brings vibration and noise, and failure follows. Vibration and noise increase comes before The bearing seizes.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-096,class3-wastewater-coll,Wastewater collection,Rapid swipe (true or false),medium,og-class3-wastewater-coll-b101-rapid-swipe-0053,2026-11-15-class3-s-wastewater-coll-batch1.json,"Hydrogen sulfide production rises in warm months where retention is long, such as force mains and lift stations.",Yes (true) / No (false),Yes (true),Warm weather speeds bacterial activity.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-097,class3-wastewater-coll,Wastewater collection,Before or after (which comes first),hard,og-class3-wastewater-coll-b1-before-after-0227,2026-11-15-class3-wastewater-coll-batch1.json,"In an open-cut pipe repair job, which step comes earlier?","1) Excavate and install the protective system
+2) Complete the repair and test it",Excavate and install the protective system,"Locates and traffic control precede digging, protection goes in before work below grade, and restoration closes the job. Excavate and install the protective system comes before Complete the repair and test it.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-098,class3-ww,Wastewater treatment,Cause and effect,hard,og-class3-ww-b1-cause-effect-0290,2026-11-15-class3-ww-batch1.json,MLSS in an MBR rises well above design. What happens to the oxygen transfer efficiency?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Thicker mixed liquor is more viscous and slows transfer.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-099,class3-water-dist,Water distribution,Speed match,hard,og-class3-water-dist-b202-speed-match-0062,2026-11-15-class3-s-water-dist-depth2.json,Match each booster station control to its purpose.,"Low suction cutoff  ->  Stops pumps before they pull the suction main down
+High discharge shutdown  ->  Protects piping when a downstream valve is shut
+Discharge check valve  ->  Prevents reverse flow through a stopped pump
+Variable speed pressure control  ->  Holds steady discharge by changing pump speed
+Lead-lag alternation  ->  Spreads run time and wear among pumps
+Pressure relief valve  ->  Vents excess pressure during a surge",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS3-100,class3-water,Water treatment,Cause and effect,medium,og-class3-water-b1-cause-effect-0346,2026-11-15-class3-water-batch1.json,The alarm deadband on a level alarm is widened. What happens to the number of repeated alarm messages?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,A wider band ignores small swings around the limit.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"

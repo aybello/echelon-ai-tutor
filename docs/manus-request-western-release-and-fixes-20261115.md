@@ -91,11 +91,11 @@ The code is off unless `INTERACTIVE_SAVED_PROGRESS_ENABLED=true`. Good. Before e
 
 ## 5. Replace live items the spot-check found wrong or unclear
 
-An AI review of a 500-item sample (`docs/spot-check/RESULTS-2026-11-15-ai-review.md`) found 3 wrong and 14 unclear items. Most of them are copied across several courses by the shared pool, so the live copies add up to 107 items on main.
+An AI review of a 500-item sample (`docs/spot-check/RESULTS-2026-11-15-ai-review.md`) found 3 wrong and 14 unclear items. Most of them are copied across several courses by the shared pool. A second sample of 300 (`docs/spot-check/round2/RESULTS-round2.md`) found the same rate, about 2%, and showed that the same mistakes recur in unsampled rows. So the fixes were swept across all tables, and every row using US units (about 1% of rows) was removed from the Canadian tables. The live items affected now total 307.
 
 - The exact live item IDs, courses and overlay files are in `docs/spot-check/live-items-to-replace-20261115.json`.
-- Please exclude all 107 by exact ID in `releaseExclusions.json`.
-- The corrected versions are already in the draft tables on `claude/hello-5oz7m4`, in 59 files, all checker clean. That covers the Ontario Class 1 to 4 source and shared tables, `oit-ww-batch6.ts`, and the unreleased western copies. Please publish the corrected rows through the normal receipt path as replacements. A wrong item should not stay live while its fix waits.
+- Please exclude all 307 by exact ID in `releaseExclusions.json`.
+- The corrected versions are already in the draft tables on `claude/hello-5oz7m4`, all checker clean. That covers the Ontario Class 1 to 4 source and shared tables, `oit-ww-batch6.ts`, and the unreleased western copies. Please publish the corrected rows through the normal receipt path as replacements. A wrong item should not stay live while its fix waits.
 - The fixes: sonar now says it maps the underwater part only. The force-main board pairs condition checks with inspection and wall testing. The motor current item is replaced with a correct one about throttling. US units are converted to metric (kilometres, kg/d, cubic metres). Each unclear item is reworded as the CSV notes say.
 
 ## What I will not do without a go-ahead

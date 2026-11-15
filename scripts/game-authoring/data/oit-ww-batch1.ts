@@ -39,7 +39,6 @@ const data: CourseData = {
     ["h", "Wasting too little sludge can lead to a crowded, older solids inventory.", true, "Less wasting raises the amount of solids kept in the system."],
     ["h", "Wasting too much sludge can leave too few microbes to treat the load.", true, "Excess wasting reduces the biological solids available to work."],
     ["h", "Hydraulic loading is the volume of flow per unit of surface area.", true, "Hydraulic loading compares flow to the area of a unit."],
-    ["h", "Organic loading is the flow rate of a pump measured in gallons per minute.", false, "Organic loading is the amount of organic matter, such as BOD, applied to a process."],
     ["h", "A peak flow after a storm can shorten the time wastewater spends in a basin.", true, "Higher flow means shorter detention time."],
     ["e", "A grit chamber is where microbes are fed oxygen to treat the water.", false, "Grit chambers remove sand and grit. Aeration basins supply oxygen to microbes."],
     ["e", "A primary clarifier is used to disinfect the treated water.", false, "Primary clarifiers settle solids. Disinfection comes later."],

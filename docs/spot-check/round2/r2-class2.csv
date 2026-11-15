@@ -1,0 +1,320 @@
+﻿sample_id,course,system,mode,difficulty,item_id,source_overlay,prompt,options_or_pairs,marked_correct,explanation,verdict,correction_or_note,reviewer
+R2-CLASS2-001,class2-wastewater-coll,Wastewater collection,Tap the flaw (find the wrong statement),medium,og-class2-wastewater-coll-b102-tap-the-flaw-0315,2026-11-15-class2-s-wastewater-coll-batch2.json,Which statement about sonar inspection is wrong?,"1) Sonar can map pipe both above and below the water
+2) Sonar sees just above water
+3) Sonar suits flooded or inaccessible sections",Sonar sees just above water,Sonar can map the pipe above and below the flow.,WRONG,A good option says sonar maps a pipe above and below the water. Sonar sees only the submerged part. Fixed in all copies.,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-002,class2-water,Water treatment,Speed match,medium,og-class2-water-b103-speed-match-0012,2026-11-15-class2-s-water-batch3.json,Match each lead and copper fact to its topic.,"Lead in tap water  ->  Mostly comes from corroding pipe and solder
+Lead exposure  ->  Is especially harmful to young children
+Copper corrosion  ->  Causes blue-green staining
+Customer faucet sample  ->  Best way to find lead and copper problems
+Water chemistry adjustment  ->  Reduces lead leaching from plumbing
+Lead service line  ->  Source that may be replaced to cut lead",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-003,class2-water,Water treatment,Tap the flaw (find the wrong statement),medium,og-class2-water-b103-tap-the-flaw-0123,2026-11-15-class2-s-water-batch3.json,Which statement about buried pipe corrosion is wrong?,"1) Low resistivity soil is gentle on pipe
+2) High resistivity soil is less likely to corrode pipe
+3) Soil resistivity measures how corrosive soil is",Low resistivity soil is gentle on pipe,Low soil resistivity means soil that is more corrosive.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-004,class2-water-dist,Water distribution,Before or after (which comes first),medium,og-class2-water-dist-b101-before-after-0262,2026-11-15-class2-s-water-dist-batch1.json,"In working out the loss percentage, which step comes earlier?","1) Subtract used from available
+2) Express the result as a percent",Subtract used from available,"The two volumes are found first, then the difference is divided by the available volume. Subtract used from available comes before Express the result as a percent.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-005,class2-ww,Wastewater treatment,Odd one out,easy,og-class2-ww-b101-odd-one-out-0118,2026-11-15-class2-s-ww-batch1.json,Which is not a kind of grit?,"1) Cinders
+2) Gravel
+3) Rags
+4) Metal filings",Rags,Rags is not heavy inorganic grit.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-006,class2-ww,Wastewater treatment,Tap the flaw (find the wrong statement),medium,og-class2-ww-b102-tap-the-flaw-0352,2026-11-15-class2-s-ww-batch2.json,Which statement about laboratory quality control is wrong?,"1) Standards of known strength check accuracy
+2) Duplicates detect contamination
+3) Blanks are used to check for contamination",Duplicates detect contamination,Blanks check contamination. Duplicates check repeatability.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-007,class2-wastewater-coll,Wastewater collection,Tap the flaw (find the wrong statement),medium,og-class2-wastewater-coll-b102-tap-the-flaw-0321,2026-11-15-class2-s-wastewater-coll-batch2.json,Which statement about predictive maintenance is wrong?,"1) It looks for early warning signs of failure
+2) It depends on good record keeping for baselines
+3) It waits for the failure",It waits for the failure,Predictive maintenance acts on early signs so failures are avoided.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-008,class2-water-dist,Water distribution,Cause and effect,medium,og-class2-water-dist-b103-cause-effect-0082,2026-11-15-class2-s-water-dist-batch3.json,A smaller wire is used to carry the same load. What happens to the resistance of the wire?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,"Resistance is higher in smaller wires, which can make them hot.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-009,class2-wastewater-coll,Wastewater collection,Speed match,medium,og-class2-wastewater-coll-b101-speed-match-0102,2026-11-15-class2-s-wastewater-coll-batch1.json,Match each pump motor check to what it reveals.,"Stethoscope  ->  Bearing whine or grating
+Ammeter  ->  Sudden changes in pumping load
+Phase current comparison  ->  Loss of one phase
+Thermal control device  ->  Stops an overheated motor
+Temperature detector  ->  Warns of overheating in windings or bearings
+Vibration sensor  ->  Shows bearing or shaft vibration",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-010,class2-water-dist,Water distribution,Before or after (which comes first),medium,og-class2-water-dist-b1-before-after-0243,2026-11-15-class2-water-dist-batch1.json,"In responding to suspected nitrification, which step comes later?","1) Flush the affected area
+2) Track recovery with follow-up tests",Track recovery with follow-up tests,"The signs are confirmed by testing before the response is chosen, carried out and followed up. Flush the affected area comes before Track recovery with follow-up tests.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-011,class2-water,Water treatment,Odd one out,medium,og-class2-water-b1-odd-one-out-0153,2026-11-15-class2-water-batch1.json,Which is not a field signal sent to SCADA?,"1) Jar test
+2) Pump status
+3) Valve position
+4) Level signal",Jar test,Jar test is not an automatic field signal.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-012,class2-wastewater-coll,Wastewater collection,Cause and effect,easy,og-class2-wastewater-coll-b103-cause-effect-0079,2026-11-15-class2-s-wastewater-coll-batch3.json,A level sensor is added to an off-line storage tank. What happens to the volume of wet weather flow that a storm produces?,"1) It increases
+2) It decreases
+3) It stays the same",It stays the same,The sensor records the tank level. The storm still produces the same flow.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-013,class2-water,Water treatment,Rapid swipe (true or false),easy,og-class2-water-b101-rapid-swipe-0039,2026-11-15-class2-s-water-batch1.json,Flocculation is the step where coagulant is dispersed by violent mixing.,Yes (true) / No (false),No (false),"Rapid mix disperses the coagulant. Flocculation uses slow, gentle mixing.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-014,class2-wastewater-coll,Wastewater collection,Odd one out,medium,og-class2-wastewater-coll-b102-odd-one-out-0125,2026-11-15-class2-s-wastewater-coll-batch2.json,Which is not an alternative collection system?,"1) Grinder pump system
+2) Small diameter gravity sewer
+3) Vacuum system
+4) Combined sewer",Combined sewer,"Combined sewer is part of a conventional gravity system, not an alternative system.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-015,class2-ww,Wastewater treatment,Speed match,medium,og-class2-ww-b103-speed-match-0028,2026-11-15-class2-s-ww-batch3.json,Match each nitrification problem to its likely cause.,"Alkalinity falls as ammonia is converted  ->  Buffer is used up by nitrification
+Sudden pH drop at the plant influent  ->  Acidic industrial discharge
+Less nitrification in winter  ->  Cold slows the nitrifying bacteria
+Incomplete nitrification with low oxygen readings  ->  Too little oxygen supplied
+Few nitrifiers left in the system  ->  Too much wasting or loss of solids
+Nitrification stops after a spill  ->  Nitrifiers are sensitive to toxic material",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-016,class2-water,Water treatment,Speed match,medium,og-class2-water-b102-speed-match-0064,2026-11-15-class2-s-water-batch2.json,Match each part of the breakpoint curve to what is happening.,"Initial demand  ->  Chlorine consumed with no residual yet
+Rising section  ->  Chloramines forming as combined residual
+Falling section  ->  Chloramines being destroyed
+Breakpoint  ->  Low point after which free chlorine builds
+Past breakpoint  ->  Added chlorine appears as free residual
+Dip above zero  ->  Some nitrogen compounds left unoxidized",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-017,class2-wastewater-coll,Wastewater collection,Speed match,hard,og-class2-wastewater-coll-b1-speed-match-0063,2026-11-15-class2-wastewater-coll-batch1.json,Match each odour control technology to its mechanism.,"Activated carbon unit  ->  Adsorbs gas onto a carbon surface
+Biofilter  ->  Microbes on moist media digest the gas
+Chemical wet scrubber  ->  Absorbs gas into a chemical solution
+Vent stack  ->  Dilutes and disperses gas high above the ground
+Sealed cover  ->  Keeps gas inside the structure
+Foul air blower  ->  Draws gas out of the structure to a treatment unit",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-018,class2-water,Water treatment,Cause and effect,medium,og-class2-water-b102-cause-effect-0252,2026-11-15-class2-s-water-batch2.json,A hypochlorinator is wired to the well pump and the pump stops. What happens to the chlorine solution fed to the pipe?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Feed stops with the pump so the pipe is not dosed without flow.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-019,class2-water-dist,Water distribution,Rapid swipe (true or false),easy,og-class2-water-dist-b101-rapid-swipe-0072,2026-11-15-class2-s-water-dist-batch1.json,Power to a motor is locked out before maintenance so it is not started by accident.,Yes (true) / No (false),Yes (true),Locking out the supply protects the worker.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-020,class2-water-dist,Water distribution,Cause and effect,hard,og-class2-water-dist-b103-cause-effect-0088,2026-11-15-class2-s-water-dist-batch3.json,A main is replaced by pipe bursting using a larger-diameter pipe. What happens to the flow capacity of the main?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,Pipe bursting can install a replacement of the same or a larger diameter.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-021,class2-wastewater-coll,Wastewater collection,Speed match,hard,og-class2-wastewater-coll-b102-speed-match-0059,2026-11-15-class2-s-wastewater-coll-batch2.json,Match each sewer test to a condition for using it well.,"Smoke test  ->  Low groundwater and calm dry weather
+Air test  ->  Plugs at both ends and on service connections
+Hydrostatic test  ->  Water level kept below the lowest basement
+Dyed water test  ->  Dye added at the suspect source, then manholes watched
+CCTV  ->  Low flow in the pipe during the survey
+Visual manhole check  ->  Done at low flow for the best view",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-022,class2-water-dist,Water distribution,Odd one out,easy,og-class2-water-dist-b101-odd-one-out-0114,2026-11-15-class2-s-water-dist-batch1.json,Which is not a valve used in a distribution system?,"1) Check valve
+2) Meter
+3) Air release valve
+4) Butterfly valve",Meter,Meter is not a valve.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-023,class2-wastewater-coll,Wastewater collection,Before or after (which comes first),hard,og-class2-wastewater-coll-b102-before-after-0229,2026-11-15-class2-s-wastewater-coll-batch2.json,"In scouring a pressure main with a foam swab, which step comes later?","1) Arrange bypass pumping or storage for incoming flow
+2) Pressurize the water behind it",Pressurize the water behind it,"Flow handling comes first, then launch, propulsion, scouring, and recovery with debris disposal. Arrange bypass pumping or storage for incoming flow comes before Pressurize the water behind it.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-024,class2-ww,Wastewater treatment,Odd one out,medium,og-class2-ww-b102-odd-one-out-0159,2026-11-15-class2-s-ww-batch2.json,Which is not a cause of motor overheating?,"1) Low supply voltage
+2) Blocked cooling air
+3) Cool air
+4) An overloaded pump",Cool air,Cool air would help keep a motor cool.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-025,class2-water-dist,Water distribution,Rapid swipe (true or false),medium,og-class2-water-dist-b101-rapid-swipe-0029,2026-11-15-class2-s-water-dist-batch1.json,A coliform sample can be taken from a faucet that has an aerator or a swivel.,Yes (true) / No (false),No (false),The sample faucet should have no aerator and no swivel.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-026,class2-wastewater-coll,Wastewater collection,Rapid swipe (true or false),hard,og-class2-wastewater-coll-b1-rapid-swipe-0001,2026-11-15-class2-wastewater-coll-batch1.json,"In a circular sewer with constant roughness, the velocity at half depth is about the same as the velocity when the pipe runs full.",Yes (true) / No (false),Yes (true),"Hydraulic radius is the same at half depth and at full depth, so the Manning velocity matches.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-027,class2-water,Water treatment,Tap the flaw (find the wrong statement),hard,og-class2-water-b101-tap-the-flaw-0329,2026-11-15-class2-s-water-batch1.json,Which statement about ion exchange is wrong?,"1) Turbid water can plug the resin bed
+2) Breakthrough means hardness appears in the effluent
+3) Used resin is renewed with acid",Used resin is renewed with acid,Exhausted resin is regenerated with a concentrated sodium chloride solution.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-028,class2-water-dist,Water distribution,Speed match,medium,og-class2-water-dist-b103-speed-match-0056,2026-11-15-class2-s-water-dist-batch3.json,Match each complaint record item to what it shows.,"Date  ->  When the complaint came in
+Complainant name  ->  Who raised the concern
+Nature of complaint  ->  What the problem was
+Action taken  ->  What the utility did to resolve it
+Year-end summary  ->  Types, monthly numbers and outcomes
+Pattern review  ->  Reveals recurring problems in an area",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-029,class2-ww,Wastewater treatment,Cause and effect,medium,og-class2-ww-b102-cause-effect-0321,2026-11-15-class2-s-ww-batch2.json,Cold winter weather chills an unheated digester. What happens to the rate of digestion?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Biological activity slows as temperature falls.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-030,class2-water,Water treatment,Rapid swipe (true or false),hard,og-class2-water-b1-rapid-swipe-0031,2026-11-15-class2-water-batch1.json,A falling total chlorine residual with rising nitrite in a chloraminated system points to nitrification.,Yes (true) / No (false),Yes (true),"Nitrite is a product of the bacterial reaction, and the residual is consumed.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-031,class2-water-dist,Water distribution,Tap the flaw (find the wrong statement),medium,og-class2-water-dist-b102-tap-the-flaw-0350,2026-11-15-class2-s-water-dist-batch2.json,Which statement about responding to backflow is wrong?,"1) Sampling continues inside and outside the area
+2) Cleanup stops when flushing ends
+3) The pressure difference is reversed if possible",Cleanup stops when flushing ends,Water is retested after cleaning to confirm it is acceptable.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-032,class2-wastewater-coll,Wastewater collection,Rapid swipe (true or false),medium,og-class2-wastewater-coll-b102-rapid-swipe-0007,2026-11-15-class2-s-wastewater-coll-batch2.json,Bucket machines are a good choice for routine cleaning because they are light and quick to set up.,Yes (true) / No (false),No (false),"They are heavy, slow to set up and costly to run, so they are kept for heavy debris or cleanup after a break.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-033,class2-water,Water treatment,Odd one out,medium,og-class2-water-b102-odd-one-out-0160,2026-11-15-class2-s-water-batch2.json,Which is not a source of chlorine demand in water?,"1) Ammonia
+2) Pure water
+3) Manganese
+4) Organic matter",Pure water,Pure water adds no real demand for chlorine.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-034,class2-water,Water treatment,Before or after (which comes first),hard,og-class2-water-b1-before-after-0170,2026-11-15-class2-water-batch1.json,"In putting a freshly cleaned unit back on line, which step comes earlier?","1) Backwash the bed
+2) Open to the clearwell",Backwash the bed,"The bed is cleaned and settled, and the poor early water is discarded before the unit feeds the clearwell. Backwash the bed comes before Open to the clearwell.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-035,class2-ww,Wastewater treatment,Odd one out,hard,og-class2-ww-b101-odd-one-out-0163,2026-11-15-class2-s-ww-batch1.json,Which is not an effect of wasting too much activated sludge?,"1) Older sludge
+2) Shorter MCRT
+3) Younger sludge
+4) Lower MLSS",Older sludge,"Older sludge results from wasting too little, not too much.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-036,class2-water-dist,Water distribution,Odd one out,medium,og-class2-water-dist-b101-odd-one-out-0141,2026-11-15-class2-s-water-dist-batch1.json,Which is not a physical backflow prevention device or method?,"1) Reduced pressure assembly
+2) Atmospheric vacuum breaker
+3) Pressure vacuum breaker
+4) Pump",Pump,Pump does not protect against backflow.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-037,class2-water-dist,Water distribution,Rapid swipe (true or false),medium,og-class2-water-dist-b102-rapid-swipe-0022,2026-11-15-class2-s-water-dist-batch2.json,A sudden stop in flowing water turns kinetic energy into a pressure surge.,Yes (true) / No (false),Yes (true),An abrupt change in velocity sends a pressure wave through the pipe.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-038,class2-water,Water treatment,Before or after (which comes first),medium,og-class2-water-b1-before-after-0257,2026-11-15-class2-water-batch1.json,"In tracing a red water complaint in the network, which step comes later?","1) Flush the nearby main
+2) Log the call",Flush the nearby main,"The complaint is logged and the likely disturbance reviewed before flushing, testing and pattern review. Log the call comes before Flush the nearby main.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-039,class2-wastewater-coll,Wastewater collection,Tap the flaw (find the wrong statement),medium,og-class2-wastewater-coll-b101-tap-the-flaw-0315,2026-11-15-class2-s-wastewater-coll-batch1.json,Which statement about self-cleaning velocity is wrong?,"1) Grit starts to settle as velocity drops below that level
+2) About two feet per second keeps typical solids moving
+3) Half a foot per second moves solids",Half a foot per second moves solids,A velocity near two feet per second is needed. At half a foot per second large amounts of solids settle.,UNCLEAR,US units (feet per second). Fixed: removed.,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-040,class2-water,Water treatment,Speed match,hard,og-class2-water-b101-speed-match-0072,2026-11-15-class2-s-water-batch1.json,Match each well record to what it documents.,"Well log  ->  Borehole materials and construction
+Pump record  ->  Model, installation and maintenance
+Water level record  ->  Static and pumping levels
+Meter record  ->  Volumes pumped
+Quality record  ->  Chemical and bacteriological results
+Specific capacity record  ->  Productivity over time",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-041,class2-ww,Wastewater treatment,Rapid swipe (true or false),medium,og-class2-ww-b102-rapid-swipe-0060,2026-11-15-class2-s-ww-batch2.json,Locking out and tagging an energy source protects workers from unexpected startup.,Yes (true) / No (false),Yes (true),The equipment cannot be energized while the lock is on.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-042,class2-wastewater-coll,Wastewater collection,Before or after (which comes first),medium,og-class2-wastewater-coll-b102-before-after-0237,2026-11-15-class2-s-wastewater-coll-batch2.json,"In a restaurant district blockage event, which step comes later?","1) The crew clears the stoppage
+2) Wastewater overflows to the surface",The crew clears the stoppage,"Buildup leads to a backup and overflow, then response, reporting and a schedule change follow. Wastewater overflows to the surface comes before The crew clears the stoppage.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-043,class2-wastewater-coll,Wastewater collection,Before or after (which comes first),medium,og-class2-wastewater-coll-b1-before-after-0208,2026-11-15-class2-wastewater-coll-batch1.json,"In building a new gravity sewer in an open trench, which step comes later?","1) Backfill and compact the trench
+2) Excavate to grade with protection in place",Backfill and compact the trench,"The trench is prepared and bedded before the pipe goes in, and backfill and surface restoration follow the embedment. Excavate to grade with protection in place comes before Backfill and compact the trench.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-044,class2-ww,Wastewater treatment,Before or after (which comes first),medium,og-class2-ww-b101-before-after-0229,2026-11-15-class2-s-ww-batch1.json,"In treatment of settled wastewater by a fixed-film bed, which step comes later?","1) Slime removes the organic matter
+2) Wastewater trickles over the media",Slime removes the organic matter,"The water is applied, treated by the slime, collected and then clarified. Wastewater trickles over the media comes before Slime removes the organic matter.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-045,class2-water-dist,Water distribution,Odd one out,hard,og-class2-water-dist-b1-odd-one-out-0176,2026-11-15-class2-water-dist-batch1.json,Which is not a source of an oxygen-deficient atmosphere?,"1) Fermenting sediment
+2) Fuel burning in the space
+3) Ventilation duct
+4) Inert gas displacing air",Ventilation duct,Ventilation duct supplies or restores oxygen.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-046,class2-wastewater-coll,Wastewater collection,Tap the flaw (find the wrong statement),hard,og-class2-wastewater-coll-b1-tap-the-flaw-0285,2026-11-15-class2-wastewater-coll-batch1.json,Which statement about hydraulic jetting is wrong?,"1) A vacuum truck at the downstream manhole removes debris
+2) Loosened debris is left to travel down the line
+3) Nozzle size is matched to the pipe diameter",Loosened debris is left to travel down the line,Debris is captured at the downstream manhole so it does not settle again.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-047,class2-water-dist,Water distribution,Speed match,medium,og-class2-water-dist-b102-speed-match-0075,2026-11-15-class2-s-water-dist-batch2.json,Match each rechlorination term to its feature.,"Batch chlorination  ->  A dose added to restore the residual in the tank
+Continuous rechlorination  ->  Automated feed that can over- or under-dose
+Outlet feed  ->  Normally preferred over feeding at the inlet
+Inlet feed  ->  Used when the residual is nearly gone on arrival
+Remote booster station  ->  Raises the residual in a far part of the system
+Chloramine boost  ->  Needs the ammonia balance watched",Every pair above is meant to be a correct match,,UNCLEAR,The board repeats the contested claim that outlet feed is normally preferred over inlet feed. Fixed: those two pairs replaced with tank mixing and residual monitoring.,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-048,class2-water,Water treatment,Odd one out,hard,og-class2-water-b1-odd-one-out-0131,2026-11-15-class2-water-batch1.json,Which is not a result of high ammonia in raw water?,"1) Higher chlorine demand
+2) Combined chlorine forming
+3) Instant free chlorine
+4) A breakpoint dose needed",Instant free chlorine,Instant free chlorine does not follow from ammonia in the raw water.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-049,class2-water-dist,Water distribution,Cause and effect,medium,og-class2-water-dist-b103-cause-effect-0078,2026-11-15-class2-s-water-dist-batch3.json,Grout is pumped into the space around a new well casing from the bottom up. What happens to the chance of surface water traveling down along the casing?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Grout seals the space around the casing and protects the aquifer.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-050,class2-ww,Wastewater treatment,Before or after (which comes first),medium,og-class2-ww-b102-before-after-0244,2026-11-15-class2-s-ww-batch2.json,"In a routine repair job on a pump, which step comes later?","1) Test the equipment
+2) Complete the repair",Test the equipment,"Inspection and planning come before the repair, and testing and record updates follow it. Complete the repair comes before Test the equipment.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-051,class2-wastewater-coll,Wastewater collection,Odd one out,hard,og-class2-wastewater-coll-b1-odd-one-out-0113,2026-11-15-class2-wastewater-coll-batch1.json,Which is not a sign of a pump problem in a lift station?,"1) Steady amps
+2) Falling discharge pressure
+3) Rising amperage
+4) Heavy vibration",Steady amps,Steady amps points to a pump running as it should.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-052,class2-water-dist,Water distribution,Tap the flaw (find the wrong statement),easy,og-class2-water-dist-b101-tap-the-flaw-0310,2026-11-15-class2-s-water-dist-batch1.json,Which statement about dead ends is wrong?,"1) Looping mains helps reduce dead ends
+2) Dead ends improve circulation
+3) Flushing devices help at dead ends",Dead ends improve circulation,Dead ends reduce circulation and can hold old water.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-053,class2-ww,Wastewater treatment,Rapid swipe (true or false),medium,og-class2-ww-b1-rapid-swipe-0010,2026-11-15-class2-ww-batch1.json,"Nitrifying bacteria grow slowly, so a sludge age that is too short washes them out of the system.",Yes (true) / No (false),Yes (true),Nitrifiers need a long enough MCRT to build up and stay in the basin.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-054,class2-ww,Wastewater treatment,Cause and effect,medium,og-class2-ww-b103-cause-effect-0125,2026-11-15-class2-s-ww-batch3.json,A ground fault interrupter is fitted to an outlet in a wet area. What happens to the risk of electric shock?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,It cuts power quickly when current leaks to ground.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-055,class2-ww,Wastewater treatment,Odd one out,hard,og-class2-ww-b1-odd-one-out-0155,2026-11-15-class2-ww-batch1.json,Which is not a test best run on site or promptly after sampling?,"1) Hardness
+2) Chlorine residual
+3) Sulfite residual
+4) pH of the sample",Hardness,Hardness tolerates holding time better than the others.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-056,class2-water,Water treatment,Cause and effect,easy,og-class2-water-b102-cause-effect-0264,2026-11-15-class2-s-water-batch2.json,More titrant is needed to reach the endpoint in a hardness test. What happens to the hardness measured?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,More titrant means more calcium and magnesium were present.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-057,class2-wastewater-coll,Wastewater collection,Cause and effect,medium,og-class2-wastewater-coll-b101-cause-effect-0283,2026-11-15-class2-s-wastewater-coll-batch1.json,A pressure sewer replaces a gravity sewer in an area with high groundwater. What happens to the infiltration entering the collection system?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Tight pressure mains have no cracks or access manholes to let water in.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-058,class2-ww,Wastewater treatment,Cause and effect,medium,og-class2-ww-b101-cause-effect-0296,2026-11-15-class2-s-ww-batch1.json,"Cold, windy weather hits a trickling filter that has high recirculation. What happens to the heat lost from the wastewater?","1) It increases
+2) It decreases
+3) It stays the same",It increases,Spray and extra recirculation increase cooling.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-059,class2-ww,Wastewater treatment,Rapid swipe (true or false),medium,og-class2-ww-b1-rapid-swipe-0001,2026-11-15-class2-ww-batch1.json,"At the same organic load, holding more solids in the system lowers the F/M ratio and raises the MCRT.",Yes (true) / No (false),Yes (true),"The same food is shared among more organisms, and solids stay in the system longer.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-060,class2-water-dist,Water distribution,Tap the flaw (find the wrong statement),hard,og-class2-water-dist-b1-tap-the-flaw-0307,2026-11-15-class2-water-dist-batch1.json,Which statement about asbestos-cement pipe is wrong?,"1) Soft water has no effect on it
+2) Handling follows local occupational safety rules
+3) Dry cutting can release fibres into the air",Soft water has no effect on it,"Soft, aggressive water can dissolve the cement matrix and weaken the pipe.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-061,class2-wastewater-coll,Wastewater collection,Speed match,medium,og-class2-wastewater-coll-b102-speed-match-0083,2026-11-15-class2-s-wastewater-coll-batch2.json,Match each legal tool to its purpose.,"Sewer use ordinance  ->  Rules on what may enter the sewer
+Grease control ordinance  ->  Grease interceptors and upkeep
+Pretreatment program  ->  Controls industrial discharges
+Satellite agreement  ->  Limits flow from a neighbouring system
+Connection permit  ->  Inspection and approval of new laterals
+Stormwater connection ban  ->  Keeps inflow out of the sanitary sewer",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-062,class2-water-dist,Water distribution,Before or after (which comes first),medium,og-class2-water-dist-b101-before-after-0218,2026-11-15-class2-s-water-dist-batch1.json,"In proving that a new pipeline is tight, which step comes earlier?","1) Hold pressure and record makeup water
+2) Let concrete blocking cure",Let concrete blocking cure,Blocking is cured and air removed before the full test pressure is held and leakage measured. Let concrete blocking cure comes before Hold pressure and record makeup water.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-063,class2-water-dist,Water distribution,Odd one out,hard,og-class2-water-dist-b1-odd-one-out-0130,2026-11-15-class2-water-dist-batch1.json,Which is not a factor that raises intrusion risk?,"1) Frequent main breaks
+2) Pressure transients
+3) Nearby leaking sewers
+4) Tight joints",Tight joints,Tight joints reduces the risk of intrusion.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-064,class2-ww,Wastewater treatment,Before or after (which comes first),medium,og-class2-ww-b1-before-after-0219,2026-11-15-class2-ww-batch1.json,"In a five-day oxygen demand test, which step comes earlier?","1) Adjust pH and remove any chlorine
+2) Prepare seeded dilutions",Adjust pH and remove any chlorine,The sample is prepared and incubated before the final oxygen reading is taken. Adjust pH and remove any chlorine comes before Prepare seeded dilutions.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-065,class2-ww,Wastewater treatment,Rapid swipe (true or false),medium,og-class2-ww-b102-rapid-swipe-0058,2026-11-15-class2-s-ww-batch2.json,Guards on rotating equipment protect people from entanglement.,Yes (true) / No (false),Yes (true),"Shafts, belts and couplings can catch clothing and hair.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-066,class2-wastewater-coll,Wastewater collection,Cause and effect,medium,og-class2-wastewater-coll-b102-cause-effect-0271,2026-11-15-class2-s-wastewater-coll-batch2.json,The cleaning interval is lengthened in a restaurant district. What happens to the risk of grease blockages?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,Grease builds up faster than the longer interval allows for.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-067,class2-ww,Wastewater treatment,Speed match,medium,og-class2-ww-b102-speed-match-0108,2026-11-15-class2-s-ww-batch2.json,Match each mechanical problem to its description.,"Cavitation  ->  Vapour bubbles collapse and pit metal
+Water hammer  ->  Pressure surge from sudden flow stop
+Corrosion  ->  Metal wasting from chemical reaction
+Misalignment  ->  Shafts not in line, causing wear
+Overheating  ->  Heat from friction or poor cooling
+Abrasion  ->  Wear caused by grit in the flow",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-068,class2-wastewater-coll,Wastewater collection,Before or after (which comes first),medium,og-class2-wastewater-coll-b101-before-after-0258,2026-11-15-class2-s-wastewater-coll-batch1.json,"In one service on a vacuum system, which step comes later?","1) Atmospheric pressure forces it into the branch
+2) Gravity pipe brings wastewater to the interface unit",Atmospheric pressure forces it into the branch,The unit stores flow until its valve opens and air pressure pushes it toward the vacuum pumps. Gravity pipe brings wastewater to the interface unit comes before Atmospheric pressure forces it into the branch.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-069,class2-water-dist,Water distribution,Speed match,medium,og-class2-water-dist-b103-speed-match-0003,2026-11-15-class2-s-water-dist-batch3.json,Match each valve to its job in a distribution system.,"Butterfly valve  ->  Disc turns a quarter turn for isolation or throttling
+Globe valve  ->  Positive shutoff for frequent operation, mostly in small sizes
+Inserting valve  ->  Installed into a main that is in service under pressure
+Bypass valve  ->  Small valve that equalizes pressure before a large valve opens
+Foot valve  ->  Check valve at the foot of a pump suction pipe
+Air-and-vacuum relief valve  ->  Lets air in as a pipe drains and out as it fills",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-070,class2-water,Water treatment,Tap the flaw (find the wrong statement),medium,og-class2-water-b103-tap-the-flaw-0161,2026-11-15-class2-s-water-batch3.json,Which statement about repeat coliform samples is wrong?,"1) A positive result needs no follow-up
+2) Repeat samples follow a positive result
+3) Repeat samples include the original tap",A positive result needs no follow-up,A positive routine sample triggers repeat sampling.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-071,class2-ww,Wastewater treatment,Cause and effect,hard,og-class2-ww-b1-cause-effect-0284,2026-11-15-class2-ww-batch1.json,UV lamps age after many hours of use. What happens to the UV output of the lamps?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Output drops with lamp age.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-072,class2-water,Water treatment,Cause and effect,medium,og-class2-water-b103-cause-effect-0067,2026-11-15-class2-s-water-batch3.json,Dissolved iron is oxidized from the ferrous to the ferric state. What happens to the solubility of the iron in the water?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Ferric iron forms an insoluble precipitate.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-073,class2-water,Water treatment,Speed match,medium,og-class2-water-b102-speed-match-0096,2026-11-15-class2-s-water-batch2.json,Match each disinfection method to its feature.,"Ultraviolet light  ->  Damages microbial DNA
+Ozone  ->  Powerful oxidant made on site
+Chloramine  ->  Longer lasting but weaker residual
+Chlorine dioxide  ->  Oxidant that can form chlorite
+Chlorine gas  ->  Supplied as a liquefied gas
+Sodium hypochlorite  ->  Liquid supplied as bleach solution",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-074,class2-wastewater-coll,Wastewater collection,Speed match,medium,og-class2-wastewater-coll-b102-speed-match-0081,2026-11-15-class2-s-wastewater-coll-batch2.json,Match each cause of a sanitary sewer overflow to the problem behind it.,"Deteriorating sewer  ->  Rehabilitation not planned or funded
+Infiltration and inflow  ->  Excess rain and groundwater in the pipe
+Undersized system  ->  Growth beyond design capacity
+Pump station failure  ->  Pump failure, power loss or small wet well
+Vandalism or construction  ->  Line breaks or damaged pumps
+Blockage  ->  Grease or roots in the pipe",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-075,class2-water,Water treatment,Cause and effect,hard,og-class2-water-b102-cause-effect-0275,2026-11-15-class2-s-water-batch2.json,A pipe narrows while the flow rate stays the same. What happens to the water velocity?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,"Flow is area times velocity, so smaller area means faster water.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-076,class2-water-dist,Water distribution,Cause and effect,hard,og-class2-water-dist-b103-cause-effect-0125,2026-11-15-class2-s-water-dist-batch3.json,"The water level at a pump's source drops, increasing the suction lift. What happens to the risk of cavitation?","1) It increases
+2) It decreases
+3) It stays the same",It increases,Greater lift leaves less suction pressure margin above the vapor pressure of water.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-077,class2-wastewater-coll,Wastewater collection,Cause and effect,medium,og-class2-wastewater-coll-b102-cause-effect-0287,2026-11-15-class2-s-wastewater-coll-batch2.json,A roof leader is connected to a sanitary sewer. What happens to the inflow entering the sewer in a storm?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,A direct stormwater connection adds flow during rain.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-078,class2-wastewater-coll,Wastewater collection,Rapid swipe (true or false),medium,og-class2-wastewater-coll-b101-rapid-swipe-0008,2026-11-15-class2-s-wastewater-coll-batch1.json,A grinder pump shreds solids so they do not plug the small pipes of a low pressure system.,Yes (true) / No (false),Yes (true),Grinding and pressurizing are the two jobs of the grinder pump.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-079,class2-ww,Wastewater treatment,Cause and effect,hard,og-class2-ww-b1-cause-effect-0258,2026-11-15-class2-ww-batch1.json,Nutrients are in short supply while a high-carbon waste enters the basin. What happens to the risk of filamentous bulking?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,Filaments cope with nutrient shortage better than floc formers.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-080,class2-water-dist,Water distribution,Tap the flaw (find the wrong statement),medium,og-class2-water-dist-b103-tap-the-flaw-0152,2026-11-15-class2-s-water-dist-batch3.json,Which statement about hydrant markings is wrong?,"1) Light blue tops mark the highest capacity
+2) Red tops mark the highest capacity
+3) Private hydrants are painted to stand out",Red tops mark the highest capacity,Red tops mark the lowest capacity class. Light blue marks the highest.,UNCLEAR,Hydrant top colours follow a US (NFPA) scheme that not every Canadian city uses. Fixed: removed.,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-081,class2-ww,Wastewater treatment,Speed match,medium,og-class2-ww-b103-speed-match-0026,2026-11-15-class2-s-ww-batch3.json,Match each form of nitrogen to how it is removed.,"Ammonia nitrogen  ->  Converted to nitrate by nitrification
+Nitrate nitrogen  ->  Converted to nitrogen gas by denitrification
+Particulate organic nitrogen  ->  Removed with solids by settling or filtration
+Soluble organic nitrogen  ->  Not removed by common biological processes
+Total nitrogen  ->  Sum of ammonia, nitrate, nitrite and organic forms
+Nitrogen gas  ->  Form that escapes to the air after denitrification",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-082,class2-ww,Wastewater treatment,Tap the flaw (find the wrong statement),medium,og-class2-ww-b103-tap-the-flaw-0156,2026-11-15-class2-s-ww-batch3.json,Which statement about aeration system symptoms is wrong?,"1) Rising pressure means clean diffusers
+2) Dead spots can result from low mixing energy
+3) Uneven bubbles can mean a broken diffuser",Rising pressure means clean diffusers,Rising blower pressure suggests fouled or scaled diffusers.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-083,class2-ww,Wastewater treatment,Tap the flaw (find the wrong statement),easy,og-class2-ww-b101-tap-the-flaw-0312,2026-11-15-class2-s-ww-batch1.json,Which statement about ponds is wrong?,"1) Facultative ponds have two layers
+2) Anaerobic ponds hold oxygen
+3) Fences keep people away from ponds",Anaerobic ponds hold oxygen,Anaerobic ponds have no oxygen present.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-084,class2-water,Water treatment,Rapid swipe (true or false),hard,og-class2-water-b1-rapid-swipe-0035,2026-11-15-class2-water-batch1.json,Ozone leaves a lasting residual that protects water in the distribution system.,Yes (true) / No (false),No (false),"Ozone decays within minutes, so a secondary disinfectant is needed for the system.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-085,class2-ww,Wastewater treatment,Speed match,medium,og-class2-ww-b103-speed-match-0019,2026-11-15-class2-s-ww-batch3.json,Match each extended aeration package plant part to its role.,"Screen or grinder  ->  Deals with large solids at the start
+Aeration chamber  ->  Holds the mixed liquor while air is supplied
+Clarifier  ->  Settles the organisms so they can be returned
+Return line  ->  Sends settled organisms back to the start
+Waste sludge line  ->  Removes excess sludge for treatment and disposal
+Effluent weir and channel  ->  Collects clarified water on the way to disinfection",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-086,class2-water,Water treatment,Before or after (which comes first),medium,og-class2-water-b101-before-after-0202,2026-11-15-class2-s-water-batch1.json,"In a bench dose trial, which step comes later?","1) Fill each container with sample
+2) Mix rapidly",Mix rapidly,"The chemical is added and mixed fast, then slowly, before settling and judging. Fill each container with sample comes before Mix rapidly.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-087,class2-ww,Wastewater treatment,Tap the flaw (find the wrong statement),hard,og-class2-ww-b1-tap-the-flaw-0344,2026-11-15-class2-ww-batch1.json,Which statement about coliform sampling is wrong?,"1) Sterile bottles prevent contamination
+2) Chlorinated samples need no thiosulfate
+3) Thiosulfate neutralizes residual chlorine",Chlorinated samples need no thiosulfate,Residual chlorine would continue to kill bacteria unless it is neutralized.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-088,class2-wastewater-coll,Wastewater collection,Odd one out,hard,og-class2-wastewater-coll-b1-odd-one-out-0126,2026-11-15-class2-wastewater-coll-batch1.json,Which is not a cause of surge in a force main?,"1) Rapid valve closure
+2) Slow closure
+3) Check valve slam
+4) Column separation",Slow closure,Slow closure tends to reduce surge.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-089,class2-wastewater-coll,Wastewater collection,Rapid swipe (true or false),medium,og-class2-wastewater-coll-b101-rapid-swipe-0038,2026-11-15-class2-s-wastewater-coll-batch1.json,Combined sewers are now the usual choice for new collection systems.,Yes (true) / No (false),No (false),Combined sewers are generally not designed today because stormwater carries pollutants and overloads plants.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-090,class2-ww,Wastewater treatment,Before or after (which comes first),medium,og-class2-ww-b102-before-after-0214,2026-11-15-class2-s-ww-batch2.json,"In the biological chain inside a sealed digester, which step comes later?","1) Gas is collected for use
+2) Acid formers make volatile acids",Gas is collected for use,Organic matter must be broken down to acids before methane can form and be collected. Acid formers make volatile acids comes before Gas is collected for use.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-091,class2-wastewater-coll,Wastewater collection,Odd one out,easy,og-class2-wastewater-coll-b101-odd-one-out-0105,2026-11-15-class2-s-wastewater-coll-batch1.json,Which is not a part of a manhole?,"1) Channel and bench
+2) Barrel section
+3) Impeller
+4) Frame and cover",Impeller,Impeller is not a manhole part.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-092,class2-water,Water treatment,Rapid swipe (true or false),hard,og-class2-water-b102-rapid-swipe-0030,2026-11-15-class2-s-water-batch2.json,A sodium fluoride saturator makes a solution of nearly constant strength.,Yes (true) / No (false),Yes (true),Sodium fluoride has nearly constant solubility at normal water temperatures.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-093,class2-water,Water treatment,Tap the flaw (find the wrong statement),medium,og-class2-water-b103-tap-the-flaw-0146,2026-11-15-class2-s-water-batch3.json,Which statement about ultraviolet and ozone disinfection is wrong?,"1) Ozone is a strong oxidant made on site
+2) A secondary disinfectant adds a residual
+3) Ultraviolet light leaves a residual",Ultraviolet light leaves a residual,"Ultraviolet light leaves no residual, so a secondary disinfectant is added.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-094,class2-water-dist,Water distribution,Cause and effect,medium,og-class2-water-dist-b101-cause-effect-0285,2026-11-15-class2-s-water-dist-batch1.json,A thermal expansion tank is added between a water heater and a backflow preventer. What happens to the pressure rise from heated water expanding?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,The tank gives expanding water somewhere to go.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-095,class2-water,Water treatment,Before or after (which comes first),hard,og-class2-water-b1-before-after-0227,2026-11-15-class2-water-batch1.json,"In building a protective scale layer in a pipe network, which step comes later?","1) A thin film coats the pipe
+2) Calcium carbonate starts to deposit",A thin film coats the pipe,"Water chemistry is adjusted first, then film forms and the operator follows up with monitoring. Calcium carbonate starts to deposit comes before A thin film coats the pipe.",UNCLEAR,"'Calcium carbonate starts to deposit' and 'a thin film coats the pipe' are the same event, so the order cannot be judged. Fixed: merged into one step.","Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-096,class2-water-dist,Water distribution,Before or after (which comes first),medium,og-class2-water-dist-b102-before-after-0246,2026-11-15-class2-s-water-dist-batch2.json,"In returning a repaired main section to normal use, which step comes later?","1) Return valves to normal positions
+2) Check the water is clear and the residual restored",Return valves to normal positions,Water is run through the repair and checked before valves return to normal. Check the water is clear and the residual restored comes before Return valves to normal positions.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-097,class2-water,Water treatment,Odd one out,hard,og-class2-water-b1-odd-one-out-0162,2026-11-15-class2-water-batch1.json,Which is not a feed system problem that reduces the delivered dose?,"1) Worn check valve
+2) Air lock
+3) Proper prime
+4) Crystallized line",Proper prime,Proper prime would not reduce the delivered dose.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-098,class2-water-dist,Water distribution,Rapid swipe (true or false),medium,og-class2-water-dist-b102-rapid-swipe-0055,2026-11-15-class2-s-water-dist-batch2.json,A gauge pressure reading of zero means a perfect vacuum.,Yes (true) / No (false),No (false),Zero gauge pressure equals atmospheric pressure. A perfect vacuum is far lower.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-099,class2-water-dist,Water distribution,Speed match,medium,og-class2-water-dist-b103-speed-match-0016,2026-11-15-class2-s-water-dist-batch3.json,Match each hydrant part to its job.,"Bonnet  ->  Removable top cover of the upper section
+Outlet nozzle  ->  Threaded outlet for a hose line
+Nozzle cap  ->  Cover that protects the outlet from damage and misuse
+Operating nut  ->  Turned with a wrench to open the hydrant valve
+Main valve  ->  Valve in the base that pressurizes the barrel
+Main rod  ->  Connects the main valve to the operating nut",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+R2-CLASS2-100,class2-water,Water treatment,Cause and effect,medium,og-class2-water-b101-cause-effect-0275,2026-11-15-class2-s-water-batch1.json,Septic systems fail near a shallow well. What happens to the nitrate in the well water?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,Septic leachate carries nitrates and microbes.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
