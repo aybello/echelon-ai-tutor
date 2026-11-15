@@ -56,6 +56,7 @@ Not confirmed and out of scope for version 1: which class an operator in charge 
 
 - Certificate class suggests the next course: OIT leads to Class 1 and Class 1 to Class 2, within the same system.
 - Readiness score from the existing dashboard appears next to each operator and next to each exam date.
+- Game results are private to the learner. They are saved for the learner's own replay, streak and daily goal, and are not shown to managers or counted in the readiness score. Decision by the owner, 2026-11-15.
 - Existing operator management and licence counts stay as they are. This adds records on top of them.
 
 ## Phases
