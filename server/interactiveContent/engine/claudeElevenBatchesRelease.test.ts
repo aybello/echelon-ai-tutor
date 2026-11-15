@@ -25,6 +25,10 @@ const prior = historical.filter(d => !ids.includes(d.overlayId));
 const engine = new InteractiveContentEngine(undefined, historical);
 const before = new InteractiveContentEngine(undefined, prior);
 const sha = (bytes: Buffer) => createHash("sha256").update(bytes).digest("hex");
+// The later exact-ID explanation hold is separately covered by westernGamesRelease.test.ts.
+// Preserve the complete, byte-equivalent original 129-ID exclusion baseline here.
+const historicalExclusions = { ...committedReleaseExclusions(), groups: committedReleaseExclusions().groups.slice(0, 22) };
+const historicalExclusionBytes = Buffer.from(JSON.stringify(historicalExclusions, null, 2) + "\n");
 const pool = (e: InteractiveContentEngine, course: string) => {
   const view = e as unknown as { pool(c: string, manifest: unknown): { id: string; mode: string }[]; manifest(c: string): unknown };
   return view.pool(course, view.manifest(course));
@@ -73,21 +77,23 @@ describe("pinned eleven Claude batches release", () => {
     expect(engine.getLegacyContent(course, true).examples).toEqual(before.getLegacyContent(course, true).examples);
     for (const mode of interactiveModes) {
       const expected = counts.rows.find(r => r.course === course && r.mode === mode)!;
-      expect(oldCatalog.modes.find(m => m.mode === mode)!.totalCount).toBe(expected.baseline);
-      expect(catalog.modes.find(m => m.mode === mode)!.totalCount).toBe(expected.total);
-      expect(currentPool.filter(e => e.mode === mode)).toHaveLength(expected.total);
+      // One pre-existing OIT rapid-swipe item is now held; preserve every original count with its exact -1 delta.
+      const laterHold = course === "oit" && mode === "rapid-swipe" ? 1 : 0;
+      expect(oldCatalog.modes.find(m => m.mode === mode)!.totalCount).toBe(expected.baseline - laterHold);
+      expect(catalog.modes.find(m => m.mode === mode)!.totalCount).toBe(expected.total - laterHold);
+      expect(currentPool.filter(e => e.mode === mode)).toHaveLength(expected.total - laterHold);
       const session = engine.startSession({ courseKey: course, mode, sessionSize: 50 }, true);
-      expect(session.totalAvailableCount).toBe(expected.total);
+      expect(session.totalAvailableCount).toBe(expected.total - laterHold);
       expect(session.version).toBe(catalog.version);
-      expect(session.examples).toHaveLength(Math.min(50, expected.total));
+      expect(session.examples).toHaveLength(Math.min(50, expected.total - laterHold));
       expect(new Set(session.examples.map(e => e.id)).size).toBe(session.examples.length);
       for (const example of session.examples) expect(isExcludedFromMode(course, mode, example.id)).toBe(false);
       expect(engine.startSession({ courseKey: course, mode, sessionSize: 50 }, false).examples).toEqual(before.startSession({ courseKey: course, mode, sessionSize: 50 }, false).examples);
     }
   });
   it("preserves all 129 exclusions including four spring-box IDs and rejects 309A", () => {
-    expect(sha(readFileSync("server/interactiveContent/engine/releaseExclusions.json"))).toBe(counts.exclusions.sha256);
-    const groups = committedReleaseExclusions().groups;
+    expect(sha(historicalExclusionBytes)).toBe(counts.exclusions.sha256);
+    const groups = historicalExclusions.groups;
     expect(groups.flatMap(g => g.ids)).toHaveLength(129);
     const live = new Set(pool(engine, "oit").map(e => e.id));
     const spring = groups.find(g => g.name === "spring box source classification")!;

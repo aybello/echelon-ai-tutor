@@ -306,6 +306,15 @@
         "og-oit-b12-odd-one-out-0110",
         "og-oit-b12-odd-one-out-0112"
       ]
+    },
+    {
+      "name": "gallons per minute to gallons per day explanation",
+      "courseKey": "oit",
+      "mode": "rapid-swipe",
+      "reason": "The statement is correctly keyed false, but the explanation confuses the time-unit conversion. Withhold this exact item pending a corrected explanation and renewed exact-payload review; original overlay and receipt remain unchanged.",
+      "ids": [
+        "og-oit-b5-rapid-swipe-0018"
+      ]
     }
   ]
 }

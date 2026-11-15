@@ -140,10 +140,26 @@ jobs:
             pnpm db:migrate:status
       - name: Install the browser-test runtime before browser-backed unit tests
         run: pnpm exec playwright install --with-deps chromium
+      # Overlay receipt validation materializes the growing committed corpus.
+      # Size the Node CLI heap, not NODE_OPTIONS (reserved by test-safety), and
+      # bound this group to one worker instead of multiplying peak engine RSS.
+      - name: Engine and interactive router tests (one bounded worker)
+        run: >-
+          node --max-old-space-size=8192 --require ./scripts/test-safety.cjs ./node_modules/vitest/vitest.mjs run --maxWorkers 1 --minWorkers 1
+          server/interactiveContent/engine
+          server/interactiveRouter.test.ts
+          server/interactiveProgress.router.test.ts
+        env:
+          NODE_ENV: test
+          TSX_DISABLE_CACHE: "1"
+          JWT_SECRET: test-only-not-for-production
       - name: Deterministic unit and acceptance tests
         run: >-
           node --require ./scripts/test-safety.cjs ./node_modules/vitest/vitest.mjs run --maxWorkers 2 --minWorkers 1
           --exclude '**/*.integration.test.ts'
+          --exclude 'server/interactiveContent/engine/**'
+          --exclude server/interactiveRouter.test.ts
+          --exclude server/interactiveProgress.router.test.ts
           --exclude server/_core/access.test.ts
           --exclude server/accessService.test.ts
           --exclude server/emailOtp.test.ts

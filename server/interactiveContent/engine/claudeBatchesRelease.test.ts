@@ -72,7 +72,7 @@ describe("pinned sixteen Claude batches release", () => {
   });
   it("preserves the original 125 exclusions before the narrow spring-box hold and rejects 309A", () => {
     const exclusions = JSON.parse(readFileSync("server/interactiveContent/engine/releaseExclusions.json", "utf8"));
-    expect(sha(Buffer.from(JSON.stringify({ ...exclusions, groups: exclusions.groups.slice(0, -1) }, null, 2) + "\n"))).toBe("d1feb9454ed4324c516abf8ec0900cbccecf29397adfc27a72e499895fa9b5f5");
+    expect(sha(Buffer.from(JSON.stringify({ ...exclusions, groups: exclusions.groups.slice(0, 21) }, null, 2) + "\n"))).toBe("d1feb9454ed4324c516abf8ec0900cbccecf29397adfc27a72e499895fa9b5f5");
     expect(() => engine.getCatalog("electrician-309a", true)).toThrow();
     expect(() => engine.startSession({ courseKey: "electrician-309a", mode: "rapid-swipe", sessionSize: 5 }, true)).toThrow();
   });

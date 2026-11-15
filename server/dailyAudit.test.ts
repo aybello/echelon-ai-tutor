@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 // @ts-ignore Standalone ESM audit helpers are tested directly without a build step.
-import { isolatedTestEnv, isolatedBrowserTestEnv, ciDeterministicExcludes, isolatedVitestArgs, runCommand, evaluateVitest, combineTestAttempts, parseTrpc, validateQuestion, validateQuizReply, classifyTutorReply, evaluateTutorSequence, tutorHistoryAssessment, importJourneyResults, validateJourneyReport, evaluateServingReleaseIdentity, createAuditBudget, summarizeResults } from "../scripts/lib/dailyAudit.mjs";
+import { isolatedTestEnv, isolatedBrowserTestEnv, ciDeterministicExcludes, ciEngineTestSelectors, isolatedVitestArgs, runCommand, evaluateVitest, combineTestAttempts, parseTrpc, validateQuestion, validateQuizReply, classifyTutorReply, evaluateTutorSequence, tutorHistoryAssessment, importJourneyResults, validateJourneyReport, evaluateServingReleaseIdentity, createAuditBudget, summarizeResults } from "../scripts/lib/dailyAudit.mjs";
 
 const envelope = (data: unknown) => JSON.stringify([{ result: { data: { json: data } } }]);
 const trpcError = (code: string) => JSON.stringify([{ error: { json: { message: "test error", data: { code } } } }]);
@@ -53,7 +53,8 @@ describe("daily audit test isolation and full JSON evidence", () => {
     const yaml = await readFile(".github/workflows/quality.yml", "utf8");
     const excludes = ciDeterministicExcludes(yaml);
     expect(excludes).toEqual([
-      "**/*.integration.test.ts", "server/_core/access.test.ts", "server/accessService.test.ts", "server/emailOtp.test.ts",
+      "**/*.integration.test.ts", "server/interactiveContent/engine/**", "server/interactiveRouter.test.ts",
+      "server/interactiveProgress.router.test.ts", "server/_core/access.test.ts", "server/accessService.test.ts", "server/emailOtp.test.ts",
       "server/ki001.otp.test.ts", "server/purchase.flow.test.ts", "server/subscription.flow.test.ts", "server/org.teams.test.ts",
       "server/quiz.serverScoring.test.ts", "server/exam.submitMock.test.ts", "server/stripe/individualExamPass.test.ts",
       "server/stripe/validateOneTimeCheckout.test.ts", "server/stripe/webhook.handler.test.ts", "server/webhook.integration.test.ts",
@@ -87,8 +88,43 @@ describe("daily audit test isolation and full JSON evidence", () => {
     expect(ciDeterministicExcludes(equals)).toEqual(ciDeterministicExcludes(yaml));
     expect(() => ciDeterministicExcludes(yaml.replace(line, `${line}\n          --exclude=`))).toThrow();
     expect(() => ciDeterministicExcludes(yaml.replace(line, `${line}\n          --exclude **/*.test.ts`))).toThrow();
-    const inline = yaml.replace("        run: >-\n          ", "        run: ");
+    const inline = yaml.replace("      - name: Deterministic unit and acceptance tests\n        run: >-\n          ",
+      "      - name: Deterministic unit and acceptance tests\n        run: ");
     expect(() => ciDeterministicExcludes(inline)).toThrow();
+  });
+  it("proves every moved exclusion runs in the guarded one-worker engine group", async () => {
+    const yaml = await readFile(".github/workflows/quality.yml", "utf8");
+    const selectors = ciEngineTestSelectors(yaml);
+    expect(selectors).toEqual(["server/interactiveContent/engine", "server/interactiveRouter.test.ts", "server/interactiveProgress.router.test.ts"]);
+    const args = isolatedVitestArgs("/repo", "/isolated/config.mjs", [], "/isolated/engine.json", selectors);
+    expect(args.slice(0, 5)).toEqual(["--max-old-space-size=8192", "--require", "/repo/scripts/test-safety.cjs", "--import", "tsx"]);
+    expect(args.slice(args.indexOf("--maxWorkers"), args.indexOf("--maxWorkers") + 4)).toEqual(["--maxWorkers", "1", "--minWorkers", "1"]);
+    expect(selectors.every((selector: string) => args.includes(selector))).toBe(true);
+    expect(args).not.toContain("--exclude");
+    expect(() => isolatedVitestArgs("/repo", "/config", [], "/report", selectors.slice(1))).toThrow();
+  });
+  it.each([
+    ["missing group", "      - name: Engine and interactive router tests (one bounded worker)", "      - name: Removed engine tests"],
+    ["missing engine directory", "          server/interactiveContent/engine\n", ""],
+    ["missing content router", "          server/interactiveRouter.test.ts\n", ""],
+    ["missing progress router", "          server/interactiveProgress.router.test.ts\n", ""],
+    ["missing preload", "--max-old-space-size=8192 --require ./scripts/test-safety.cjs", "--max-old-space-size=8192"],
+    ["invalid worker count", "run --maxWorkers 1 --minWorkers 1", "run --maxWorkers 2 --minWorkers 1"],
+    ["invalid minimum workers", "run --maxWorkers 1 --minWorkers 1", "run --maxWorkers 1 --minWorkers 0"],
+    ["missing heap", "--max-old-space-size=8192 ", ""],
+    ["invalid heap", "--max-old-space-size=8192", "--max-old-space-size=4096"],
+    ["hidden tests", "          server/interactiveContent/engine\n", "          server/interactiveContent/engine --exclude server/interactiveContent/engine/hidden.test.ts\n"],
+    ["bypassed failure", "          server/interactiveProgress.router.test.ts\n", "          server/interactiveProgress.router.test.ts || true\n"],
+    ["conditional execution", "      - name: Engine and interactive router tests (one bounded worker)\n", "      - name: Engine and interactive router tests (one bounded worker)\n        if: false\n"],
+    ["ignored failure", "      - name: Engine and interactive router tests (one bounded worker)\n", "      - name: Engine and interactive router tests (one bounded worker)\n        continue-on-error: true\n"],
+    ["unsafe environment", '          TSX_DISABLE_CACHE: "1"', '          NODE_OPTIONS: "--max-old-space-size=8192"'],
+    ["missing test environment", '          TSX_DISABLE_CACHE: "1"', '          NODE_ENV: production'],
+    ["unsafe credential", '          TSX_DISABLE_CACHE: "1"', '          DATABASE_URL: mysql://production'],
+    ["overlapping generic group", "          --exclude 'server/interactiveContent/engine/**'\n", ""],
+  ])("rejects a moved CI group with %s", async (_name, before, after) => {
+    const yaml = await readFile(".github/workflows/quality.yml", "utf8");
+    expect(yaml).toContain(before);
+    expect(() => ciDeterministicExcludes(yaml.replace(before, after))).toThrow();
   });
   it("runs the actual isolated audit Vitest invocation with its safety preload", async () => {
     const dir = await mkdtemp(join(tmpdir(), "daily-audit-vitest-"));

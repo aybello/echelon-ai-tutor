@@ -47,9 +47,13 @@ export function isolatedBrowserTestEnv(parent = process.env, home = "/tmp/echelo
   return { ...isolatedTestEnv(parent, home), PLAYWRIGHT_BROWSERS_PATH: browserPath };
 }
 
-/** Read the exact deterministic CI exclusions. Fail closed if the step changes shape. */
-export function ciDeterministicExcludes(yaml) {
-  const steps = yaml.split(/\n(?= {6}- )/).filter(step => step.startsWith("      - name: Deterministic unit and acceptance tests\n"));
+const ENGINE_STEP = "Engine and interactive router tests (one bounded worker)";
+const ENGINE_SELECTORS = ["server/interactiveContent/engine", "server/interactiveRouter.test.ts", "server/interactiveProgress.router.test.ts"];
+const ENGINE_EXCLUDES = ["server/interactiveContent/engine/**", ...ENGINE_SELECTORS.slice(1)];
+
+/** Parse one named step, never the first run scalar elsewhere in the workflow. */
+function ciVitestCommand(yaml, name) {
+  const steps = yaml.split(/\n(?= {6}- )/).filter(step => step.startsWith(`      - name: ${name}\n`));
   if (steps.length !== 1) throw new Error("Cannot locate CI deterministic Vitest command");
   const fail = () => { throw new Error("Cannot safely parse CI deterministic Vitest command"); };
   const lines = steps[0].split("\n");
@@ -90,6 +94,30 @@ export function ciDeterministicExcludes(yaml) {
     words.push(match[0].replace(/'([^']*)'|"([^"]*)"/g, (_, single, double) => single ?? double));
     pos = token.lastIndex;
   }
+  return { words, lines, runIndex: runs[0] };
+}
+
+/** Newly excluded tests must run explicitly, with the same safety boundary. */
+export function ciEngineTestSelectors(yaml) {
+  const { words, lines, runIndex } = ciVitestCommand(yaml, ENGINE_STEP);
+  const expected = ["node", "--max-old-space-size=8192", "--require", "./scripts/test-safety.cjs",
+    "./node_modules/vitest/vitest.mjs", "run", "--maxWorkers", "1", "--minWorkers", "1", ...ENGINE_SELECTORS];
+  if (JSON.stringify(words) !== JSON.stringify(expected)) throw new Error("CI engine test coverage or guarded worker/heap contract changed");
+  // No conditions, continue-on-error, custom shell, NODE_OPTIONS or inherited service credentials.
+  const expectedEnv = ["        env:", "          NODE_ENV: test", '          TSX_DISABLE_CACHE: "1"',
+    "          JWT_SECRET: test-only-not-for-production"];
+  if (runIndex !== 1 || JSON.stringify(lines.slice(-expectedEnv.length)) !== JSON.stringify(expectedEnv)
+    || lines.filter(line => /^ {8}[A-Za-z_][\w-]*:/.test(line)).length !== 2) {
+    throw new Error("CI engine test step environment or execution restrictions changed");
+  }
+  return [...ENGINE_SELECTORS];
+}
+
+/** Read the exact generic CI exclusions only after proving the moved group runs. */
+export function ciDeterministicExcludes(yaml) {
+  ciEngineTestSelectors(yaml);
+  const { words } = ciVitestCommand(yaml, "Deterministic unit and acceptance tests");
+  const fail = () => { throw new Error("Cannot safely parse CI deterministic Vitest command"); };
   const guarded = ["node", "--require", "./scripts/test-safety.cjs", "./node_modules/vitest/vitest.mjs", "run"];
   const legacy = ["pnpm", "exec", "vitest", "run"];
   const prefix = [guarded, legacy].find(parts => parts.every((part, i) => words[i] === part));
@@ -112,13 +140,19 @@ export function ciDeterministicExcludes(yaml) {
   if (!excludes.includes("**/*.integration.test.ts") || excludes.length < 2) {
     throw new Error("CI deterministic exclusion list missing or unrecognized");
   }
+  if (ENGINE_EXCLUDES.some(pattern => !excludes.includes(pattern))) {
+    throw new Error("CI engine test group must be excluded from the generic worker group");
+  }
   return [...new Set(excludes)];
 }
 
 /** Keep the guard first in Node's preloads, as required by the repository Vitest config. */
-export function isolatedVitestArgs(root, configPath, excludes, reportPath) {
-  return ["--require", resolve(root, "scripts/test-safety.cjs"), "--import", "tsx", resolve(root, "node_modules/vitest/vitest.mjs"),
-    "run", "--config", configPath, "--maxWorkers", "2", "--minWorkers", "1", ...excludes.flatMap(pattern => ["--exclude", pattern]),
+export function isolatedVitestArgs(root, configPath, excludes, reportPath, engineSelectors = null) {
+  if (engineSelectors && JSON.stringify(engineSelectors) !== JSON.stringify(ENGINE_SELECTORS)) {
+    throw new Error("Unrecognized isolated engine test selectors");
+  }
+  return [...(engineSelectors ? ["--max-old-space-size=8192"] : []), "--require", resolve(root, "scripts/test-safety.cjs"), "--import", "tsx", resolve(root, "node_modules/vitest/vitest.mjs"),
+    "run", "--config", configPath, "--maxWorkers", engineSelectors ? "1" : "2", "--minWorkers", "1", ...(engineSelectors ?? []), ...excludes.flatMap(pattern => ["--exclude", pattern]),
     "--reporter=json", `--outputFile=${reportPath}`];
 }
 

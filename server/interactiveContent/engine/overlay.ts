@@ -111,11 +111,89 @@ import class34Release23 from "../overlay/2026-11-15-class4-water-batch1.json";
 import class34Release24 from "../overlay/2026-11-15-class4-water-dist-batch1.json";
 import class34Release25 from "../overlay/2026-11-15-class4-ww-batch1.json";
 
+import westernRelease0 from "../overlay/western-wpi-class1-wastewater-o1-20261115.json";
+import westernRelease1 from "../overlay/western-wpi-class1-wastewater-o2-20261115.json";
+import westernRelease2 from "../overlay/western-wpi-class1-wastewater-t1-20261115.json";
+import westernRelease3 from "../overlay/western-wpi-class1-wastewater-t2-20261115.json";
+import westernRelease4 from "../overlay/western-wpi-class1-wastewater-t3-20261115.json";
+import westernRelease5 from "../overlay/western-wpi-class1-water-coll-t1-20261115.json";
+import westernRelease6 from "../overlay/western-wpi-class1-water-coll-t2-20261115.json";
+import westernRelease7 from "../overlay/western-wpi-class1-water-coll-t3-20261115.json";
+import westernRelease8 from "../overlay/western-wpi-class1-water-dist-t1-20261115.json";
+import westernRelease9 from "../overlay/western-wpi-class1-water-dist-t2-20261115.json";
+import westernRelease10 from "../overlay/western-wpi-class1-water-dist-t3-20261115.json";
+import westernRelease11 from "../overlay/western-wpi-class1-water-o1-20261115.json";
+import westernRelease12 from "../overlay/western-wpi-class1-water-o2-20261115.json";
+import westernRelease13 from "../overlay/western-wpi-class1-water-o3-20261115.json";
+import westernRelease14 from "../overlay/western-wpi-class1-water-t1-20261115.json";
+import westernRelease15 from "../overlay/western-wpi-class1-water-t2-20261115.json";
+import westernRelease16 from "../overlay/western-wpi-class1-water-t3-20261115.json";
+import westernRelease17 from "../overlay/western-wpi-class2-wastewater-t1-20261115.json";
+import westernRelease18 from "../overlay/western-wpi-class2-wastewater-t2-20261115.json";
+import westernRelease19 from "../overlay/western-wpi-class2-wastewater-t3-20261115.json";
+import westernRelease20 from "../overlay/western-wpi-class2-wastewater-t4-20261115.json";
+import westernRelease21 from "../overlay/western-wpi-class2-water-coll-t1-20261115.json";
+import westernRelease22 from "../overlay/western-wpi-class2-water-coll-t2-20261115.json";
+import westernRelease23 from "../overlay/western-wpi-class2-water-coll-t3-20261115.json";
+import westernRelease24 from "../overlay/western-wpi-class2-water-coll-t4-20261115.json";
+import westernRelease25 from "../overlay/western-wpi-class2-water-dist-t1-20261115.json";
+import westernRelease26 from "../overlay/western-wpi-class2-water-dist-t2-20261115.json";
+import westernRelease27 from "../overlay/western-wpi-class2-water-dist-t3-20261115.json";
+import westernRelease28 from "../overlay/western-wpi-class2-water-dist-t4-20261115.json";
+import westernRelease29 from "../overlay/western-wpi-class2-water-t1-20261115.json";
+import westernRelease30 from "../overlay/western-wpi-class2-water-t2-20261115.json";
+import westernRelease31 from "../overlay/western-wpi-class2-water-t3-20261115.json";
+import westernRelease32 from "../overlay/western-wpi-class2-water-t4-20261115.json";
+import westernRelease33 from "../overlay/western-wpi-class3-wastewater-t1-20261115.json";
+import westernRelease34 from "../overlay/western-wpi-class3-wastewater-t2-20261115.json";
+import westernRelease35 from "../overlay/western-wpi-class3-wastewater-t3-20261115.json";
+import westernRelease36 from "../overlay/western-wpi-class3-wastewater-t4-20261115.json";
+import westernRelease37 from "../overlay/western-wpi-class3-wastewater-t5-20261115.json";
+import westernRelease38 from "../overlay/western-wpi-class3-water-coll-t1-20261115.json";
+import westernRelease39 from "../overlay/western-wpi-class3-water-coll-t2-20261115.json";
+import westernRelease40 from "../overlay/western-wpi-class3-water-coll-t3-20261115.json";
+import westernRelease41 from "../overlay/western-wpi-class3-water-coll-t4-20261115.json";
+import westernRelease42 from "../overlay/western-wpi-class3-water-coll-t5-20261115.json";
+import westernRelease43 from "../overlay/western-wpi-class3-water-dist-t1-20261115.json";
+import westernRelease44 from "../overlay/western-wpi-class3-water-dist-t2-20261115.json";
+import westernRelease45 from "../overlay/western-wpi-class3-water-dist-t3-20261115.json";
+import westernRelease46 from "../overlay/western-wpi-class3-water-dist-t4-20261115.json";
+import westernRelease47 from "../overlay/western-wpi-class3-water-dist-t5-20261115.json";
+import westernRelease48 from "../overlay/western-wpi-class3-water-t1-20261115.json";
+import westernRelease49 from "../overlay/western-wpi-class3-water-t2-20261115.json";
+import westernRelease50 from "../overlay/western-wpi-class3-water-t3-20261115.json";
+import westernRelease51 from "../overlay/western-wpi-class3-water-t4-20261115.json";
+import westernRelease52 from "../overlay/western-wpi-class3-water-t5-20261115.json";
+import westernRelease53 from "../overlay/western-wpi-class4-wastewater-t1-20261115.json";
+import westernRelease54 from "../overlay/western-wpi-class4-wastewater-t2-20261115.json";
+import westernRelease55 from "../overlay/western-wpi-class4-wastewater-t3-20261115.json";
+import westernRelease56 from "../overlay/western-wpi-class4-wastewater-t4-20261115.json";
+import westernRelease57 from "../overlay/western-wpi-class4-wastewater-t5-20261115.json";
+import westernRelease58 from "../overlay/western-wpi-class4-wastewater-t6-20261115.json";
+import westernRelease59 from "../overlay/western-wpi-class4-water-coll-t1-20261115.json";
+import westernRelease60 from "../overlay/western-wpi-class4-water-coll-t2-20261115.json";
+import westernRelease61 from "../overlay/western-wpi-class4-water-coll-t3-20261115.json";
+import westernRelease62 from "../overlay/western-wpi-class4-water-coll-t4-20261115.json";
+import westernRelease63 from "../overlay/western-wpi-class4-water-coll-t5-20261115.json";
+import westernRelease64 from "../overlay/western-wpi-class4-water-coll-t6-20261115.json";
+import westernRelease65 from "../overlay/western-wpi-class4-water-dist-t1-20261115.json";
+import westernRelease66 from "../overlay/western-wpi-class4-water-dist-t2-20261115.json";
+import westernRelease67 from "../overlay/western-wpi-class4-water-dist-t3-20261115.json";
+import westernRelease68 from "../overlay/western-wpi-class4-water-dist-t4-20261115.json";
+import westernRelease69 from "../overlay/western-wpi-class4-water-dist-t5-20261115.json";
+import westernRelease70 from "../overlay/western-wpi-class4-water-dist-t6-20261115.json";
+import westernRelease71 from "../overlay/western-wpi-class4-water-t1-20261115.json";
+import westernRelease72 from "../overlay/western-wpi-class4-water-t2-20261115.json";
+import westernRelease73 from "../overlay/western-wpi-class4-water-t3-20261115.json";
+import westernRelease74 from "../overlay/western-wpi-class4-water-t4-20261115.json";
+import westernRelease75 from "../overlay/western-wpi-class4-water-t5-20261115.json";
+import westernRelease76 from "../overlay/western-wpi-class4-water-t6-20261115.json";
+
 // Committed owner-authorized AI-reviewed overlays, in application order.
 const COMMITTED_OVERLAYS: readonly unknown[] = [rapidSwipeBalance, optionLengthClass2Ww, optionLengthBatch2, oitBatch1, oitBatch2, oitBatch3, oitBatch4, oitBatch5,
   oitBatch6, oitBatch7, oitBatch8, oitBatch9, oitBatch10, oitBatch11, oitBatch12, oitBatch13,
   oitWwBatch1, oitWwBatch2, oitWwBatch3, oitWwBatch4, oitWwBatch5, oitWwBatch6, oitWwBatch7, oitWwBatch8,
-  claudeNewBatch1, claudeNewBatch2, claudeNewBatch3, claudeNewBatch4, claudeNewBatch5, claudeNewBatch6, claudeNewBatch7, claudeNewBatch8, claudeNewBatch9, claudeNewBatch10, claudeNewBatch11, class123Release0, class123Release1, class123Release2, class123Release3, class123Release4, class123Release5, class123Release6, class123Release7, class123Release8, class123Release9, class123Release10, class123Release11, class123Release12, class123Release13, class123Release14, class123Release15, class123Release16, class123Release17, class123Release18, class123Release19, class123Release20, class123Release21, class123Release22, class123Release23, class123Release24, class123Release25, class123Release26, class123Release27, class123Release28, class123Release29, class123Release30, class123Release31, class123Release32, class123Release33, class123Release34, class123Release35, class123Release36, class123Release37, class123Release38, class123Release39, class123Release40, class34Release0, class34Release1, class34Release2, class34Release3, class34Release4, class34Release5, class34Release6, class34Release7, class34Release8, class34Release9, class34Release10, class34Release11, class34Release12, class34Release13, class34Release14, class34Release15, class34Release16, class34Release17, class34Release18, class34Release19, class34Release20, class34Release21, class34Release22, class34Release23, class34Release24, class34Release25];
+  claudeNewBatch1, claudeNewBatch2, claudeNewBatch3, claudeNewBatch4, claudeNewBatch5, claudeNewBatch6, claudeNewBatch7, claudeNewBatch8, claudeNewBatch9, claudeNewBatch10, claudeNewBatch11, class123Release0, class123Release1, class123Release2, class123Release3, class123Release4, class123Release5, class123Release6, class123Release7, class123Release8, class123Release9, class123Release10, class123Release11, class123Release12, class123Release13, class123Release14, class123Release15, class123Release16, class123Release17, class123Release18, class123Release19, class123Release20, class123Release21, class123Release22, class123Release23, class123Release24, class123Release25, class123Release26, class123Release27, class123Release28, class123Release29, class123Release30, class123Release31, class123Release32, class123Release33, class123Release34, class123Release35, class123Release36, class123Release37, class123Release38, class123Release39, class123Release40, class34Release0, class34Release1, class34Release2, class34Release3, class34Release4, class34Release5, class34Release6, class34Release7, class34Release8, class34Release9, class34Release10, class34Release11, class34Release12, class34Release13, class34Release14, class34Release15, class34Release16, class34Release17, class34Release18, class34Release19, class34Release20, class34Release21, class34Release22, class34Release23, class34Release24, class34Release25, westernRelease0, westernRelease1, westernRelease2, westernRelease3, westernRelease4, westernRelease5, westernRelease6, westernRelease7, westernRelease8, westernRelease9, westernRelease10, westernRelease11, westernRelease12, westernRelease13, westernRelease14, westernRelease15, westernRelease16, westernRelease17, westernRelease18, westernRelease19, westernRelease20, westernRelease21, westernRelease22, westernRelease23, westernRelease24, westernRelease25, westernRelease26, westernRelease27, westernRelease28, westernRelease29, westernRelease30, westernRelease31, westernRelease32, westernRelease33, westernRelease34, westernRelease35, westernRelease36, westernRelease37, westernRelease38, westernRelease39, westernRelease40, westernRelease41, westernRelease42, westernRelease43, westernRelease44, westernRelease45, westernRelease46, westernRelease47, westernRelease48, westernRelease49, westernRelease50, westernRelease51, westernRelease52, westernRelease53, westernRelease54, westernRelease55, westernRelease56, westernRelease57, westernRelease58, westernRelease59, westernRelease60, westernRelease61, westernRelease62, westernRelease63, westernRelease64, westernRelease65, westernRelease66, westernRelease67, westernRelease68, westernRelease69, westernRelease70, westernRelease71, westernRelease72, westernRelease73, westernRelease74, westernRelease75, westernRelease76];
 
 /**
  * Committed, server-only content overlays on the published game bank.
