@@ -19,7 +19,7 @@ vi.mock("./interactiveProgress", async original => ({
 const setHeader = vi.fn();
 const anonymous = { user: null, studentEmail: null, req: { headers: {} }, res: { setHeader } } as unknown as TrpcContext;
 const account = { user: { id: 42 }, studentEmail: null, req: { headers: {} }, res: { setHeader } } as unknown as TrpcContext;
-const emailStudent = { user: null, studentEmail: "learner@example.ca", req: { headers: {} }, res: { setHeader } } as unknown as TrpcContext;
+const emailStudent = { user: null, studentEmail: "learner@example.test", req: { headers: {} }, res: { setHeader } } as unknown as TrpcContext;
 const httpRouter = router({ interactive: interactiveRouter });
 let root: string;
 let engine: InteractiveContentEngine;
@@ -88,7 +88,7 @@ describe("recordResults", () => {
     const [id] = idsFor("odd-one-out");
     vi.mocked(saveResults).mockResolvedValue({ saved: 1 });
     await call("recordResults", { courseKey: course, results: [{ itemId: id, mode: "odd-one-out", correct: true }] }, emailStudent);
-    expect(vi.mocked(saveResults).mock.calls[0][0]).toBe("email:learner@example.ca");
+    expect(vi.mocked(saveResults).mock.calls[0][0]).toBe("email:learner@example.test");
   });
 
   it("drops unknown items and items filed under the wrong mode", async () => {

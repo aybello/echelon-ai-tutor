@@ -6,8 +6,8 @@ const day = 24 * 60 * 60 * 1000;
 
 describe("learnerKeyFrom", () => {
   it("prefers the account and falls back to a verified email, lowercased", () => {
-    expect(learnerKeyFrom({ user: { id: 7 }, studentEmail: "A@B.CA" })).toBe("user:7");
-    expect(learnerKeyFrom({ user: null, studentEmail: "  Learner@Example.CA " })).toBe("email:learner@example.ca");
+    expect(learnerKeyFrom({ user: { id: 7 }, studentEmail: "Other@Example.TEST" })).toBe("user:7");
+    expect(learnerKeyFrom({ user: null, studentEmail: "  Learner@Example.TEST " })).toBe("email:learner@example.test");
   });
   it("returns null for anonymous play so nothing is stored", () => {
     expect(learnerKeyFrom({ user: null, studentEmail: null })).toBeNull();

@@ -68,6 +68,8 @@ export const DATA_EXPLORER_DATASETS: readonly DataExplorerDataset[] = [
   { key: "flashcard-progress", tableName: "flashcard_progress", label: "Flashcard progress", description: "Legacy flashcard progress records", category: "Learning", orderBy: "updatedAt" },
   { key: "flashcard-progress-state", tableName: "flashcard_progress_state", label: "Flashcard progress state", description: "Current course-wide flashcard state", category: "Learning", orderBy: "id" },
   { key: "flashcard-progress-operations", tableName: "flashcard_progress_operations", label: "Flashcard operation ledger", description: "Idempotent flashcard operation records", category: "Learning", orderBy: "createdAt" },
+  { key: "interactive-item-progress", tableName: "interactive_item_progress", label: "Game progress metadata", description: "Course and mode metadata only; learner identity, item history and results remain private", category: "Learning", orderBy: "id" },
+  { key: "interactive-daily-activity", tableName: "interactive_daily_activity", label: "Game activity metadata", description: "Storage row identifiers only; learner identity, activity dates and results remain private", category: "Learning", orderBy: "id" },
   { key: "bookmarks", tableName: "bookmarks", label: "Bookmarks", description: "Learner question bookmarks", category: "Learning", orderBy: "createdAt" },
   { key: "qotd-completions", tableName: "qotd_completions", label: "Question of the Day", description: "Daily question completions", category: "Learning", orderBy: "createdAt" },
   { key: "ai-chat-sessions", tableName: "ai_chat_sessions", label: "AI tutor sessions", description: "Tutor session summaries and usage", category: "Learning", orderBy: "sessionEnd" },
