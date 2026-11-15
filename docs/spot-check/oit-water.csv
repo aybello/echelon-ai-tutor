@@ -1,0 +1,157 @@
+﻿sample_id,course,system,mode,difficulty,item_id,source_overlay,prompt,options_or_pairs,marked_correct,explanation,verdict,correction_or_note,reviewer
+OIT-WATER-001,oit,OIT water,Odd one out,medium,og-oit-b9-odd-one-out-0107,2026-11-14-oit-batch-9.json,Which is not a way to control taste and odour?,"1) Aeration
+2) Activated carbon
+3) Ozone
+4) Bar screen",Bar screen,Bar screen does not address taste and odour.,,,
+OIT-WATER-002,oit,OIT water,Rapid swipe (true or false),easy,og-oit-b11-rapid-swipe-0055,2026-11-14-oit-batch-11.json,A curb stop connects directly to the water main.,Yes (true) / No (false),No (false),A corporation stop is at the main. A curb stop is on the service line near the property line.,,,
+OIT-WATER-003,oit,OIT water,Speed match,hard,og-oit-b11-speed-match-0098,2026-11-14-oit-batch-11.json,Match each customer complaint to a likely distribution cause.,"Milky water that clears from the bottom  ->  Dissolved air
+Blue-green stains on fixtures  ->  Copper corrosion in plumbing
+Strong chlorine taste  ->  High disinfectant residual
+Stale taste at a rarely used tap  ->  Stagnation near a dead end
+Dirty water after a hydrant is used  ->  Disturbed sediment
+Musty slime-like odour  ->  Microbial growth",Every pair above is meant to be a correct match,,,,
+OIT-WATER-004,oit,OIT water,Speed match,easy,og-oit-b5-speed-match-0039,2026-11-14-oit-batch-5.json,Match each shape to its area or volume idea.,"Rectangle area  ->  Length times width
+Rectangular tank volume  ->  Length times width times depth
+Circle area  ->  Pi times radius squared
+Cylinder volume  ->  Base area times height
+Triangle area  ->  Half of base times height
+Cube volume  ->  Side times side times side",Every pair above is meant to be a correct match,,,,
+OIT-WATER-005,oit,OIT water,Odd one out,hard,og-oit-b7-odd-one-out-0094,2026-11-14-oit-batch-7.json,Which is not a cause of an unrepresentative sample?,"1) Sampling before mixing
+2) A stagnant line
+3) A late test
+4) A labeled bottle",A labeled bottle,A labeled bottle supports a representative sample.,,,
+OIT-WATER-006,oit,OIT water,Cause and effect,hard,og-oit-b2-cause-effect-0174,2026-11-14-oit-batch-2.json,A sample is held beyond its limit before testing. What happens to the reliability of the result?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,"The sample may change as it sits, so the result is less reliable.",,,
+OIT-WATER-007,oit,OIT water,Rapid swipe (true or false),medium,og-oit-b4-rapid-swipe-0020,2026-11-14-oit-batch-4.json,Ion exchange can be used to soften hard water.,Yes (true) / No (false),Yes (true),Ion exchange swaps hardness ions for sodium or another ion.,,,
+OIT-WATER-008,oit,OIT water,Before or after (which comes first),easy,og-oit-b11-before-after-0186,2026-11-14-oit-batch-11.json,"In water travelling from plant to customer, which step comes later?","1) Meter records the use
+2) Distribution main feeds the street",Meter records the use,Water moves from large pipes to smaller ones and then to the meter. Distribution main feeds the street comes before Meter records the use.,,,
+OIT-WATER-009,oit,OIT water,Speed match,medium,og-oit-b9-speed-match-0057,2026-11-14-oit-batch-9.json,Match each basin problem to its description.,"Short-circuiting  ->  Water rushes through a shortcut
+Density current  ->  Heavier water flows along the bottom
+Floc carryover  ->  Solids spill over the weir
+Sludge buildup  ->  Reduces the usable basin volume
+Algae growth  ->  Green growth on walls in sunlight
+Wind effect  ->  Surface currents push water to one side",Every pair above is meant to be a correct match,,,,
+OIT-WATER-010,oit,OIT water,Odd one out,medium,og-oit-b6-odd-one-out-0093,2026-11-14-oit-batch-6.json,Which is not a form of backflow protection?,"1) Gate valve
+2) Vacuum breaker
+3) Double check assembly
+4) Air gap",Gate valve,Gate valve does not prevent backflow on its own.,,,
+OIT-WATER-011,oit,OIT water,Cause and effect,medium,og-oit-b12-cause-effect-0196,2026-11-14-oit-batch-12.json,Alum is added during a coagulation test. What happens to the pH of the water?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Alum is acidic and lowers pH as the dose rises.,,,
+OIT-WATER-012,oit,OIT water,Odd one out,medium,og-oit-b13-odd-one-out-0104,2026-11-14-oit-batch-13.json,Which is not a positive displacement pump?,"1) Reciprocating pump
+2) Peristaltic pump
+3) Turbine pump
+4) Piston pump",Turbine pump,"Turbine pump is a centrifugal type, not positive displacement.",,,
+OIT-WATER-013,oit,OIT water,Tap the flaw (find the wrong statement),medium,og-oit-b15-tap-the-flaw-0131,2026-11-14-oit-batch-15.json,Which statement about turbidity in treatment is wrong?,"1) Turbidity helps disinfection
+2) Filter effluent turbidity shows filtration performance
+3) Turbidity can shield microbes from disinfectant",Turbidity helps disinfection,Turbidity can shield microbes from the disinfectant.,,,
+OIT-WATER-014,oit,OIT water,Speed match,hard,og-oit-b15-speed-match-0025,2026-11-14-oit-batch-15.json,Match each nutrient point to its detail.,"Phosphorus  ->  In short supply in most fresh water so small rises spur growth
+Nitrate  ->  Dissolves readily and reaches streams quickly
+Orthophosphate  ->  The form that can be tested directly
+Ascorbic acid method  ->  Blue colour in proportion to orthophosphate
+Conventional treatment  ->  Does not remove nitrate
+Nitrate with phosphorus  ->  Speeds eutrophication of a source",Every pair above is meant to be a correct match,,,,
+OIT-WATER-015,oit,OIT water,Speed match,hard,og-oit-b14-speed-match-0020,2026-11-14-oit-batch-14.json,Match each energy head term to its meaning.,"Elevation head  ->  Height of water above a reference plane
+Pressure head  ->  Column height a pressure can support
+Velocity head  ->  Energy carried by the moving water
+Total energy head  ->  Sum of elevation, pressure and velocity heads
+Constriction in a pipe  ->  Higher velocity and lower pressure
+Friction losses  ->  Left out of the simple Bernoulli equation",Every pair above is meant to be a correct match,,,,
+OIT-WATER-016,oit,OIT water,Tap the flaw (find the wrong statement),medium,og-oit-b14-tap-the-flaw-0111,2026-11-14-oit-batch-14.json,Which statement about flanged joints is wrong?,"1) Flanges are ideal for buried pipe
+2) Flanged joints suit exposed locations like pump stations
+3) A raised-face flange should not be joined to a plain-face flange",Flanges are ideal for buried pipe,Flanged joints are not normally used for buried pipe because they lack flexibility.,,,
+OIT-WATER-017,oit,OIT water,Rapid swipe (true or false),hard,og-oit-b2-rapid-swipe-0039,2026-11-14-oit-batch-2.json,A pump running dry stays cool because no water is moving through it.,Yes (true) / No (false),No (false),"Without water the pump overheats, because water carries heat away.",,,
+OIT-WATER-018,oit,OIT water,Rapid swipe (true or false),medium,og-oit-b10-rapid-swipe-0029,2026-11-14-oit-batch-10.json,An ultrasonic level sensor works by touching the water surface.,Yes (true) / No (false),No (false),"It is mounted above the surface and sends sound down, so it does not touch the water.",,,
+OIT-WATER-019,oit,OIT water,Tap the flaw (find the wrong statement),easy,og-oit-b7-tap-the-flaw-0142,2026-11-14-oit-batch-7.json,Which statement about log removal is wrong?,"1) Two-log is 99 percent
+2) One-log is 90 percent
+3) Two-log is 20 percent",Two-log is 20 percent,Two-log removal is 99 percent.,,,
+OIT-WATER-020,oit,OIT water,Before or after (which comes first),easy,og-oit-b3-before-after-0103,2026-11-14-oit-batch-3.json,"In a normal pump check, which step comes earlier?","1) Report problems
+2) Look and listen",Look and listen,Observation comes before recording and reporting. Look and listen comes before Report problems.,,,
+OIT-WATER-021,oit,OIT water,Cause and effect,easy,og-oit-b15-cause-effect-0066,2026-11-14-oit-batch-15.json,More alum is dissolved in the same volume of water. What happens to the percent strength of the solution?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,A larger share of the solution is chemical.,,,
+OIT-WATER-022,oit,OIT water,Tap the flaw (find the wrong statement),medium,og-oit-b13-tap-the-flaw-0223,2026-11-14-oit-batch-13.json,Which statement about strainers is wrong?,"1) Strainers are placed ahead of pumps and valves
+2) Strainers sit after the pump
+3) A strainer screen catches large particles",Strainers sit after the pump,Strainers are installed upstream of the equipment they protect.,,,
+OIT-WATER-023,oit,OIT water,Cause and effect,hard,og-oit-b5-cause-effect-0152,2026-11-14-oit-batch-5.json,Duplicate samples agree closely. What happens to confidence in the repeatability of results?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,Close agreement suggests good precision.,,,
+OIT-WATER-024,oit,OIT water,Before or after (which comes first),easy,og-oit-b11-before-after-0179,2026-11-14-oit-batch-11.json,"In water travelling from plant to customer, which step comes earlier?","1) Treated water leaves the plant
+2) Transmission main carries it",Treated water leaves the plant,Water moves from large pipes to smaller ones and then to the meter. Treated water leaves the plant comes before Transmission main carries it.,,,
+OIT-WATER-025,oit,OIT water,Tap the flaw (find the wrong statement),medium,og-oit-b14-tap-the-flaw-0141,2026-11-14-oit-batch-14.json,Which statement about sewer connections is wrong?,"1) Wyes and tees make branch connections without breaking the pipe
+2) Wye and tee fittings keep sewer connections watertight
+3) Breaking sewer pipe makes a fine tap",Breaking sewer pipe makes a fine tap,Breaking the pipe for a connection is poor practice because the joint is seldom properly sealed.,,,
+OIT-WATER-026,oit,OIT water,Tap the flaw (find the wrong statement),hard,og-oit-b13-tap-the-flaw-0217,2026-11-14-oit-batch-13.json,Which statement about pumps in series and parallel is wrong?,"1) Series pumps raise discharge head
+2) Series pumping adds flow
+3) One parallel pump can be stopped at low demand",Series pumping adds flow,Series pumping raises head. Parallel pumping adds flow.,,,
+OIT-WATER-027,oit,OIT water,Cause and effect,medium,og-oit-b8-cause-effect-0113,2026-11-14-oit-batch-8.json,Cathodic protection is installed on a buried steel main. What happens to the rate of external corrosion?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,The protection makes the pipe the cathode.,,,
+OIT-WATER-028,oit,OIT water,Cause and effect,medium,og-oit-b15-cause-effect-0097,2026-11-14-oit-batch-15.json,A well is chlorinated and sealed properly before it is abandoned. What happens to the risk the old well harms the aquifer?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Proper abandonment protects the aquifer.,,,
+OIT-WATER-029,oit,OIT water,Speed match,hard,og-oit-b15-speed-match-0020,2026-11-14-oit-batch-15.json,Match each factor to its effect on dissolved oxygen in a source.,"Cold water  ->  Can hold more dissolved oxygen
+Thermal discharge  ->  Warms the water and lowers its oxygen
+Riffles and spillways  ->  Mix in air and tend to raise oxygen
+Decomposing organic matter  ->  Uses oxygen as microbes break it down
+Aquatic plants in daylight  ->  Add oxygen by photosynthesis
+High altitude  ->  Water holds less oxygen",Every pair above is meant to be a correct match,,,,
+OIT-WATER-030,oit,OIT water,Rapid swipe (true or false),easy,og-oit-b6-rapid-swipe-0015,2026-11-14-oit-batch-6.json,Lead is a recommended modern material for water mains.,Yes (true) / No (false),No (false),Lead is not used for modern mains because of health concerns.,,,
+OIT-WATER-031,oit,OIT water,Odd one out,easy,og-oit-b7-odd-one-out-0067,2026-11-14-oit-batch-7.json,Which is not a piece of lab glassware?,"1) Pump
+2) Burette
+3) Cylinder
+4) Pipette",Pump,Pump is not lab glassware.,,,
+OIT-WATER-032,oit,OIT water,Cause and effect,medium,og-oit-b5-cause-effect-0143,2026-11-14-oit-batch-5.json,The flow into a basin increases while its volume stays the same. What happens to the detention time?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Volume divided by flow gives a shorter time.,,,
+OIT-WATER-033,oit,OIT water,Rapid swipe (true or false),hard,og-oit-b7-rapid-swipe-0039,2026-11-14-oit-batch-7.json,Mixing two water streams of different concentrations can give a value above both of them.,Yes (true) / No (false),No (false),A simple blend falls between the two concentrations.,,,
+OIT-WATER-034,oit,OIT water,Rapid swipe (true or false),medium,og-oit-rapid-swipe-0028,2026-11-14-oit-batch-1.json,Warmer water generally speeds up chemical reactions such as disinfection.,Yes (true) / No (false),Yes (true),Reaction rates generally increase as temperature rises.,,,
+OIT-WATER-035,oit,OIT water,Cause and effect,hard,og-oit-b2-cause-effect-0170,2026-11-14-oit-batch-2.json,"A tank is cycled more, with more water moving in and out. What happens to the water age in the tank?","1) It increases
+2) It decreases
+3) It stays the same",It decreases,More turnover replaces old water sooner.,,,
+OIT-WATER-036,oit,OIT water,Before or after (which comes first),easy,og-oit-b6-before-after-0121,2026-11-14-oit-batch-6.json,"In the journey of water from its origin to a customer, which step comes earlier?","1) Service line
+2) Storage",Storage,"Water is collected, treated, stored and then delivered. Storage comes before Service line.",,,
+OIT-WATER-037,oit,OIT water,Rapid swipe (true or false),medium,og-oit-rapid-swipe-0033,2026-11-14-oit-batch-1.json,Adding a strongly acidic coagulant tends to lower the alkalinity of the water.,Yes (true) / No (false),Yes (true),Acidic coagulants consume alkalinity as they react in the water.,,,
+OIT-WATER-038,oit,OIT water,Speed match,easy,og-oit-b11-speed-match-0089,2026-11-14-oit-batch-11.json,Match each storage type to its description.,"Elevated tank  ->  Raised tank giving pressure by gravity
+Standpipe  ->  Tall cylindrical ground-level tank
+Ground reservoir  ->  Low-profile storage fed to pumps
+Hydropneumatic tank  ->  Pressurized tank with an air cushion
+Clearwell  ->  Treated water storage at the plant
+Equalization storage  ->  Meets peaks in demand",Every pair above is meant to be a correct match,,,,
+OIT-WATER-039,oit,OIT water,Odd one out,easy,og-oit-b6-odd-one-out-0073,2026-11-14-oit-batch-6.json,Which is not a valve type?,"1) Butterfly valve
+2) Check valve
+3) Ball valve
+4) Hydrant",Hydrant,Hydrant is not a valve type.,,,
+OIT-WATER-040,oit,OIT water,Speed match,medium,og-oit-b12-speed-match-0070,2026-11-14-oit-batch-12.json,Match each intake screen to how it works.,"Bar screen  ->  Coarse bars stop large debris
+Fine screen  ->  Small openings catch leaves and twigs
+Traveling screen  ->  Mesh trays lifted and sprayed clean
+Trash rake  ->  Removes debris collected on the bars
+Submerged intake  ->  Inlet placed below the surface
+Floating intake  ->  Inlet carried on a float",Every pair above is meant to be a correct match,,,,
+OIT-WATER-041,oit,OIT water,Tap the flaw (find the wrong statement),easy,og-oit-b15-tap-the-flaw-0127,2026-11-14-oit-batch-15.json,Which statement about composite samples is wrong?,"1) A composite combines grab portions over time
+2) Composites show one moment
+3) Portions are mixed in proportion to flow",Composites show one moment,A composite blends portions collected over time to show average conditions.,,,
+OIT-WATER-042,oit,OIT water,Odd one out,medium,og-oit-b2-odd-one-out-0098,2026-11-14-oit-batch-2.json,Which is not a safe sampling habit?,"1) Touch the inside
+2) Wash hands first
+3) Label the bottle
+4) Use the right bottle",Touch the inside,Touch the inside is not a safe sampling habit.,,,
+OIT-WATER-043,oit,OIT water,Odd one out,medium,og-oit-b6-odd-one-out-0098,2026-11-14-oit-batch-6.json,Which is not a part of a hydrant?,"1) Turbidimeter
+2) Operating nut
+3) Barrel
+4) Main valve",Turbidimeter,Turbidimeter is not a part of a hydrant.,,,
+OIT-WATER-044,oit,OIT water,Tap the flaw (find the wrong statement),easy,og-oit-b10-tap-the-flaw-0205,2026-11-14-oit-batch-10.json,Which statement about pump motors is wrong?,"1) Heat is harmless to motors
+2) Overload protection guards a motor
+3) The nameplate lists the motor ratings",Heat is harmless to motors,Excess heat damages winding insulation and shortens motor life.,,,
+OIT-WATER-045,oit,OIT water,Before or after (which comes first),easy,og-oit-b7-before-after-0103,2026-11-14-oit-batch-7.json,"In the main steps of conventional treatment, which step comes later?","1) Coagulation
+2) Sedimentation",Sedimentation,"Particles are clumped, settled and filtered before disinfection. Coagulation comes before Sedimentation.",,,
+OIT-WATER-046,oit,OIT water,Before or after (which comes first),hard,og-oit-b12-before-after-0185,2026-11-14-oit-batch-12.json,"In one run of a rapid sand filter, which step comes earlier?","1) Run ends on head loss or turbidity
+2) Media are backwashed",Run ends on head loss or turbidity,"A filter runs until clogging or turbidity ends the run, then backwash restores it. Run ends on head loss or turbidity comes before Media are backwashed.",,,
+OIT-WATER-047,oit,OIT water,Rapid swipe (true or false),medium,og-oit-b13-rapid-swipe-0042,2026-11-14-oit-batch-13.json,Cavitation is harmless noise that does not damage a pump.,Yes (true) / No (false),No (false),Collapsing vapor pockets cause vibration and can damage the impeller.,,,
+OIT-WATER-048,oit,OIT water,Tap the flaw (find the wrong statement),hard,og-oit-b8-tap-the-flaw-0138,2026-11-14-oit-batch-8.json,Which statement about system design is wrong?,"1) Loops improve flow
+2) Larger mains lower velocity
+3) Dead ends improve flow",Dead ends improve flow,Dead ends reduce circulation and can hold old water.,,,
+OIT-WATER-049,oit,OIT water,Before or after (which comes first),hard,og-oit-b12-before-after-0180,2026-11-14-oit-batch-12.json,"In the breakpoint chlorine curve as chlorine is added, which step comes later?","1) Combined residual forms
+2) Initial demand is satisfied",Combined residual forms,"Chlorine first meets demand, then combines with ammonia, then oxidizes those compounds before a free residual appears. Initial demand is satisfied comes before Combined residual forms.",,,
+OIT-WATER-050,oit,OIT water,Before or after (which comes first),medium,og-oit-b10-before-after-0174,2026-11-14-oit-batch-10.json,"In keeping an equipment history, which step comes earlier?","1) History file is updated
+2) Problem is noticed",Problem is noticed,"Work is requested before it is done, and the history is updated once it is finished. Problem is noticed comes before History file is updated.",,,

@@ -1,0 +1,157 @@
+﻿sample_id,course,system,mode,difficulty,item_id,source_overlay,prompt,options_or_pairs,marked_correct,explanation,verdict,correction_or_note,reviewer
+OIT-WASTEWATER-001,oit-ww,OIT wastewater,Odd one out,easy,og-oit-ww-b5-odd-one-out-0091,2026-11-14-oit-ww-batch-5.json,Which is not a secondary treatment process?,"1) Oxidation ditch
+2) Bar screen
+3) Rotating contactor
+4) Activated sludge",Bar screen,Bar screen is not a secondary biological process.,,,
+OIT-WASTEWATER-002,oit-ww,OIT wastewater,Speed match,medium,og-oit-ww-b9-speed-match-0004,2026-11-14-oit-ww-batch-9.json,Match each nonmetallic pipe to a fact about it.,"Vitrified clay  ->  Glass-like and extremely corrosion proof
+Nonreinforced concrete  ->  Used for small sewers and culverts
+Reinforced concrete  ->  Standard in the larger sizes
+Prestressed concrete  ->  Built-in compression for high pressure
+Asbestos-cement  ->  Smooth bore with excellent hydraulics
+PVC  ->  Most common plastic pipe for water",Every pair above is meant to be a correct match,,,,
+OIT-WASTEWATER-003,oit-ww,OIT wastewater,Tap the flaw (find the wrong statement),medium,og-oit-ww-b10-tap-the-flaw-0129,2026-11-14-oit-ww-batch-10.json,Which statement about ultraviolet disinfection is wrong?,"1) Turbidity is the main weakness of UV disinfection
+2) UV lamps need regular cleaning and checks
+3) Turbidity helps UV work",Turbidity helps UV work,Turbidity blocks UV light and lowers its effectiveness.,,,
+OIT-WASTEWATER-004,oit-ww,OIT wastewater,Odd one out,medium,og-oit-ww-b5-odd-one-out-0108,2026-11-14-oit-ww-batch-5.json,Which is not a nutrient of concern in effluent?,"1) Nitrogen
+2) Sand
+3) Nitrite
+4) Ammonia",Sand,Sand is not a nutrient.,,,
+OIT-WASTEWATER-005,oit-ww,OIT wastewater,Before or after (which comes first),medium,og-oit-ww-b3-before-after-0116,2026-11-14-oit-ww-batch-3.json,"In wastewater moving from a building to the plant, which step comes later?","1) Sewer main
+2) Lateral",Sewer main,Flow goes from small lines to larger ones and then to the plant. Lateral comes before Sewer main.,,,
+OIT-WASTEWATER-006,oit-ww,OIT wastewater,Rapid swipe (true or false),hard,og-oit-ww-b2-rapid-swipe-0038,2026-11-14-oit-ww-batch-2.json,"Odor control can include chemical addition, covers and ventilation treatment.",Yes (true) / No (false),Yes (true),Several tools can lower odor release.,,,
+OIT-WASTEWATER-007,oit-ww,OIT wastewater,Odd one out,easy,og-oit-ww-b6-odd-one-out-0079,2026-11-14-oit-ww-batch-6.json,Which is not a sewer pipe material?,"1) Foam
+2) Concrete
+3) Fibreglass
+4) Vitrified clay",Foam,Foam is not a sewer pipe material.,,,
+OIT-WASTEWATER-008,oit-ww,OIT wastewater,Tap the flaw (find the wrong statement),hard,og-oit-ww-b2-tap-the-flaw-0138,2026-11-14-oit-ww-batch-2.json,Which statement about batch reactors is wrong?,"1) Settling needs quiet water
+2) Settling needs hard mixing
+3) Decant draws off clear water",Settling needs hard mixing,Mixing is stopped so solids can settle.,,,
+OIT-WASTEWATER-009,oit-ww,OIT wastewater,Cause and effect,medium,og-oit-ww-b12-cause-effect-0077,2026-11-14-oit-ww-batch-12.json,The sludge pump runs the same minutes per day at the same rate. What happens to the gallons of sludge pumped per day?,"1) It increases
+2) It decreases
+3) It stays the same",It stays the same,Gallons per day follow operating time and pump rate.,,,
+OIT-WASTEWATER-010,oit-ww,OIT wastewater,Before or after (which comes first),medium,og-oit-ww-b2-before-after-0100,2026-11-14-oit-ww-batch-2.json,"In one batch treatment cycle in a single tank, which step comes earlier?","1) Fill
+2) Settle",Fill,"The tank fills, treats, settles and then clear water is drawn off. Fill comes before Settle.",,,
+OIT-WASTEWATER-011,oit-ww,OIT wastewater,Before or after (which comes first),medium,og-oit-ww-b11-before-after-0157,2026-11-14-oit-ww-batch-11.json,"In disinfecting effluent with chlorine, which step comes later?","1) The residual is checked
+2) The flow spends time in the contact tank",The residual is checked,"Chlorine is added, mixed and given contact time before checking and release. The flow spends time in the contact tank comes before The residual is checked.",,,
+OIT-WASTEWATER-012,oit-ww,OIT wastewater,Tap the flaw (find the wrong statement),easy,og-oit-ww-b6-tap-the-flaw-0203,2026-11-14-oit-ww-batch-6.json,Which statement about sewer cleaning is wrong?,"1) Jetting works without water
+2) Rodding drives a cutting head along the pipe
+3) Jetting uses high-pressure water to scour pipe walls",Jetting works without water,Jetting depends on pressurized water to scour the pipe.,,,
+OIT-WASTEWATER-013,oit-ww,OIT wastewater,Cause and effect,medium,og-oit-ww-b10-cause-effect-0078,2026-11-14-oit-ww-batch-10.json,Effluent weirs on a clarifier are levelled. What happens to the evenness of flow over the weirs?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,Level weirs spread flow uniformly.,,,
+OIT-WASTEWATER-014,oit-ww,OIT wastewater,Cause and effect,medium,og-oit-ww-b12-cause-effect-0117,2026-11-14-oit-ww-batch-12.json,Metal rings are worn while working near energized equipment. What happens to the risk of shock or burns?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,Metal objects can conduct current.,,,
+OIT-WASTEWATER-015,oit-ww,OIT wastewater,Odd one out,hard,og-oit-ww-b5-odd-one-out-0125,2026-11-14-oit-ww-batch-5.json,Which is not a way to remove phosphorus?,"1) Grit removal
+2) Settling of chemical floc
+3) Chemical precipitation
+4) Biological phosphorus removal",Grit removal,Grit removal does not remove phosphorus.,,,
+OIT-WASTEWATER-016,oit-ww,OIT wastewater,Tap the flaw (find the wrong statement),hard,og-oit-ww-b7-tap-the-flaw-0228,2026-11-14-oit-ww-batch-7.json,Which statement about instrument readings is wrong?,"1) A stuck reading may point to a failed sensor
+2) Uncalibrated readings are fine
+3) Field checks confirm a SCADA reading is right",Uncalibrated readings are fine,"Readings depend on calibrated, working sensors and need periodic checks.",,,
+OIT-WASTEWATER-017,oit-ww,OIT wastewater,Speed match,medium,og-oit-ww-b9-speed-match-0038,2026-11-14-oit-ww-batch-9.json,Match each flange fact to its meaning.,"Raised face  ->  Common on steel flanges
+Flat face  ->  Common on iron flanges
+Raised mated to plain  ->  Should not be joined together
+Gasket  ->  Sits between bolted flange faces
+Buried pipe  ->  Flanges lack flexibility for ground movement
+Exposed locations  ->  Where rigid, tight flanged joints work well",Every pair above is meant to be a correct match,,,,
+OIT-WASTEWATER-018,oit-ww,OIT wastewater,Before or after (which comes first),medium,og-oit-ww-b7-before-after-0149,2026-11-14-oit-ww-batch-7.json,"In a typical solids train, which step comes earlier?","1) Thicken the sludge
+2) Dewater the digested sludge",Thicken the sludge,"Sludge is usually thickened before digestion, dewatered afterward, and then hauled. Thicken the sludge comes before Dewater the digested sludge.",,,
+OIT-WASTEWATER-019,oit-ww,OIT wastewater,Speed match,medium,og-oit-ww-b4-speed-match-0057,2026-11-14-oit-ww-batch-4.json,Match each activated sludge control term to its meaning.,"MLSS  ->  Solids in the aeration basin
+SVI  ->  Settling quality of sludge
+F/M  ->  Food compared with microbes
+Sludge age  ->  Solids retention time
+RAS rate  ->  Flow of returned sludge
+WAS rate  ->  Flow of wasted sludge",Every pair above is meant to be a correct match,,,,
+OIT-WASTEWATER-020,oit-ww,OIT wastewater,Rapid swipe (true or false),hard,og-oit-ww-b6-rapid-swipe-0037,2026-11-14-oit-ww-batch-6.json,Smoother pipe walls reduce the capacity of a gravity sewer at a set slope.,Yes (true) / No (false),No (false),"Smoother walls cut friction, so capacity rises.",,,
+OIT-WASTEWATER-021,oit-ww,OIT wastewater,Before or after (which comes first),hard,og-oit-ww-b4-before-after-0124,2026-11-14-oit-ww-batch-4.json,"In tracking a lab result into a decision, which step comes earlier?","1) Record the result
+2) Review the trend",Record the result,Results are verified and trended before decisions are made. Record the result comes before Review the trend.,,,
+OIT-WASTEWATER-022,oit-ww,OIT wastewater,Rapid swipe (true or false),medium,og-oit-ww-b1-rapid-swipe-0047,2026-11-14-oit-ww-batch-1.json,Dewatering adds moisture so sludge flows more easily.,Yes (true) / No (false),No (false),Dewatering removes water from sludge.,,,
+OIT-WASTEWATER-023,oit-ww,OIT wastewater,Rapid swipe (true or false),medium,og-oit-ww-b7-rapid-swipe-0022,2026-11-14-oit-ww-batch-7.json,Lime stabilization raises sludge pH to help reduce pathogens and odours.,Yes (true) / No (false),Yes (true),A high pH makes conditions hard for many organisms and slows odour formation.,,,
+OIT-WASTEWATER-024,oit-ww,OIT wastewater,Speed match,medium,og-oit-ww-b10-speed-match-0035,2026-11-14-oit-ww-batch-10.json,Match each UV system check to what it catches.,"Bulb burnout check  ->  A dark lamp that stops disinfecting
+Quartz sleeve inspection  ->  Solids film cutting light output
+UV intensity reading  ->  Overall lamp output and aging
+Effluent turbidity trend  ->  Light-blocking solids shielding the organisms
+Periodic acid wash  ->  Chemical scale on the tubes
+Spare lamps on hand  ->  Avoids downtime when lamps fail",Every pair above is meant to be a correct match,,,,
+OIT-WASTEWATER-025,oit-ww,OIT wastewater,Odd one out,medium,og-oit-ww-b11-odd-one-out-0052,2026-11-14-oit-ww-batch-11.json,Which is not a natural dewatering method?,"1) Phragmites reed bed
+2) Centrifuge
+3) Biosolids lagoon
+4) Sand drying bed",Centrifuge,"Centrifuge is a mechanical method, not a natural one.",,,
+OIT-WASTEWATER-026,oit-ww,OIT wastewater,Odd one out,hard,og-oit-ww-b6-odd-one-out-0132,2026-11-14-oit-ww-batch-6.json,Which is not an effect of excess inflow and infiltration?,"1) Higher pumping cost
+2) Sewer overflows
+3) Plant overload in storms
+4) Lower cost",Lower cost,Lower cost is not an effect of excess inflow and infiltration.,,,
+OIT-WASTEWATER-027,oit-ww,OIT wastewater,Rapid swipe (true or false),hard,og-oit-ww-b6-rapid-swipe-0047,2026-11-14-oit-ww-batch-6.json,As-built drawings are prepared before construction begins.,Yes (true) / No (false),No (false),As-builts are prepared after construction to record the pipes as installed.,,,
+OIT-WASTEWATER-028,oit-ww,OIT wastewater,Odd one out,medium,og-oit-ww-b11-odd-one-out-0079,2026-11-14-oit-ww-batch-11.json,Which is not a beneficial use of treated biosolids?,"1) Mine site reclamation
+2) Pool chemical
+3) Farm field soil amendment
+4) Topsoil blend ingredient",Pool chemical,Pool chemical is not a use for treated biosolids.,,,
+OIT-WASTEWATER-029,oit-ww,OIT wastewater,Cause and effect,medium,og-oit-ww-b12-cause-effect-0083,2026-11-14-oit-ww-batch-12.json,More chemicals are added ahead of a clarifier to capture solids. What happens to the quantity of sludge produced?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,Chemical addition forms heavier solids and more sludge.,,,
+OIT-WASTEWATER-030,oit-ww,OIT wastewater,Before or after (which comes first),medium,og-oit-ww-b11-before-after-0216,2026-11-14-oit-ww-batch-11.json,"In dewatering with a centrifuge, which step comes earlier?","1) Spinning throws the solids against the bowl wall
+2) Dewatered cake drops out",Spinning throws the solids against the bowl wall,"Feed enters, solids are thrown out, conveyed and discharged. Spinning throws the solids against the bowl wall comes before Dewatered cake drops out.",,,
+OIT-WASTEWATER-031,oit-ww,OIT wastewater,Rapid swipe (true or false),easy,og-oit-ww-b5-rapid-swipe-0024,2026-11-14-oit-ww-batch-5.json,Rotating biological contactor discs stay fully underwater while they turn.,Yes (true) / No (false),No (false),The discs are partly submerged so that the biofilm alternately contacts wastewater and air.,,,
+OIT-WASTEWATER-032,oit-ww,OIT wastewater,Tap the flaw (find the wrong statement),medium,og-oit-ww-b12-tap-the-flaw-0169,2026-11-14-oit-ww-batch-12.json,Which statement about land application exposure is wrong?,"1) Crop uptake is not a route
+2) Contaminated crops are an indirect route
+3) Dust can carry microbes during spreading",Crop uptake is not a route,Consuming crops grown on amended soil is an indirect exposure route.,,,
+OIT-WASTEWATER-033,oit-ww,OIT wastewater,Cause and effect,easy,og-oit-ww-b12-cause-effect-0115,2026-11-14-oit-ww-batch-12.json,Spilled polymer is cleaned up promptly. What happens to the slip hazard on the floor?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Wet polymer is very slippery.,,,
+OIT-WASTEWATER-034,oit-ww,OIT wastewater,Rapid swipe (true or false),medium,og-oit-ww-b2-rapid-swipe-0046,2026-11-14-oit-ww-batch-2.json,Fecal coliform tests show the exact level of nitrogen in effluent.,Yes (true) / No (false),No (false),"They indicate possible fecal contamination, not nitrogen.",,,
+OIT-WASTEWATER-035,oit-ww,OIT wastewater,Before or after (which comes first),medium,og-oit-ww-b1-before-after-0112,2026-11-14-oit-ww-batch-1.json,"In solids handling from clarifier to disposal, which step comes earlier?","1) Sludge is dewatered
+2) Solids are hauled away",Sludge is dewatered,Solids are concentrated and stabilized before final handling. Sludge is dewatered comes before Solids are hauled away.,,,
+OIT-WASTEWATER-036,oit-ww,OIT wastewater,Odd one out,medium,og-oit-ww-b6-odd-one-out-0114,2026-11-14-oit-ww-batch-6.json,Which is not a part of a pump station?,"1) Standby generator
+2) Wet well
+3) Sludge
+4) Alarm panel",Sludge,Sludge is not a part of a pump station.,,,
+OIT-WASTEWATER-037,oit-ww,OIT wastewater,Tap the flaw (find the wrong statement),medium,og-oit-ww-b7-tap-the-flaw-0206,2026-11-14-oit-ww-batch-7.json,Which statement about digester gas is wrong?,"1) Digester gas can be burned in a flare or used as fuel
+2) Digester gas contains methane and carbon dioxide
+3) Digester gas is nonflammable",Digester gas is nonflammable,"Digester gas contains methane, which is flammable.",,,
+OIT-WASTEWATER-038,oit-ww,OIT wastewater,Tap the flaw (find the wrong statement),medium,og-oit-ww-b10-tap-the-flaw-0126,2026-11-14-oit-ww-batch-10.json,Which statement about chloramines is wrong?,"1) Chloramines do not disinfect
+2) They count in the combined residual test
+3) They disinfect less strongly than free chlorine",Chloramines do not disinfect,"Chloramines have disinfecting ability, though weaker than free chlorine.",,,
+OIT-WASTEWATER-039,oit-ww,OIT wastewater,Cause and effect,medium,og-oit-ww-b12-cause-effect-0069,2026-11-14-oit-ww-batch-12.json,The pumping rate from a well is raised. What happens to the drawdown in the well?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,Faster withdrawal pulls the pumping level lower.,,,
+OIT-WASTEWATER-040,oit-ww,OIT wastewater,Tap the flaw (find the wrong statement),medium,og-oit-ww-b9-tap-the-flaw-0149,2026-11-14-oit-ww-batch-9.json,Which statement about Ontario exam eligibility is wrong?,"1) A Class 2 operator may write the Class 3 exam
+2) Exams may be two classes up
+3) Waiting periods apply between attempts",Exams may be two classes up,Operators may write only one class above their current certificate.,,,
+OIT-WASTEWATER-041,oit-ww,OIT wastewater,Rapid swipe (true or false),medium,og-oit-ww-b5-rapid-swipe-0032,2026-11-14-oit-ww-batch-5.json,Return activated sludge is pumped from the secondary clarifier back to the aeration basin.,Yes (true) / No (false),Yes (true),Returning settled microbes maintains the solids inventory in the biological stage.,,,
+OIT-WASTEWATER-042,oit-ww,OIT wastewater,Speed match,medium,og-oit-ww-b7-speed-match-0086,2026-11-14-oit-ww-batch-7.json,Match each data term to its meaning.,"Transcription error  ->  Wrong value copied from one place to another
+Units  ->  Tell what a number measures
+Trend  ->  Direction readings move over time
+Outlier  ->  Value far from the others
+Average  ->  Typical value from a set of readings
+Data gap  ->  Period with no reading",Every pair above is meant to be a correct match,,,,
+OIT-WASTEWATER-043,oit-ww,OIT wastewater,Cause and effect,medium,og-oit-ww-b7-cause-effect-0182,2026-11-14-oit-ww-batch-7.json,Blower intake filters become clogged. What happens to the airflow reaching the basins?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,A restricted intake limits the air supplied.,,,
+OIT-WASTEWATER-044,oit-ww,OIT wastewater,Rapid swipe (true or false),medium,og-oit-ww-b6-rapid-swipe-0033,2026-11-14-oit-ww-batch-6.json,Iron salts added to wastewater can bind sulfide and reduce odours.,Yes (true) / No (false),Yes (true),The sulfide is converted to a solid that stays in the water.,,,
+OIT-WASTEWATER-045,oit-ww,OIT wastewater,Tap the flaw (find the wrong statement),medium,og-oit-ww-b8-tap-the-flaw-0197,2026-11-14-oit-ww-batch-8.json,Which statement about digestion is wrong?,"1) Digestion helps reduce disease organisms
+2) Digestion adds odour potential
+3) Digestion reduces volatile solids",Digestion adds odour potential,Digestion stabilizes sludge and reduces odour potential.,,,
+OIT-WASTEWATER-046,oit-ww,OIT wastewater,Before or after (which comes first),hard,og-oit-ww-b6-before-after-0163,2026-11-14-oit-ww-batch-6.json,"In a wet well pumping cycle, which step comes later?","1) The pump stops at the low level
+2) Wastewater fills the well",The pump stops at the low level,"The level rises and triggers the pump, which then draws the level back down. Wastewater fills the well comes before The pump stops at the low level.",,,
+OIT-WASTEWATER-047,oit-ww,OIT wastewater,Speed match,easy,og-oit-ww-b5-speed-match-0066,2026-11-14-oit-ww-batch-5.json,Match each secondary process to how it is built.,"Activated sludge  ->  Suspended growth in an aerated tank
+Trickling filter  ->  Biofilm on fixed media
+Rotating contactor  ->  Biofilm on turning discs
+Aerated lagoon  ->  Basin with mechanical aeration
+Facultative lagoon  ->  Aerobic top and anaerobic bottom
+Oxidation ditch  ->  Looped channel with aerators",Every pair above is meant to be a correct match,,,,
+OIT-WASTEWATER-048,oit-ww,OIT wastewater,Speed match,medium,og-oit-ww-b10-speed-match-0030,2026-11-14-oit-ww-batch-10.json,Match each chlorine step in wastewater to what happens.,"Chlorine demand  ->  Chlorine used up by sulfide, nitrite, iron or thiosulfate
+Combined residual  ->  Chloramines formed with ammonia and organics
+Free residual  ->  Chlorine left after all demands are met
+Breakpoint chlorination  ->  Feed that converts ammonium to nitrogen gas
+Contact time  ->  Minutes the flow spends in the contact tank
+Dechlorination  ->  Removes chlorine and chloramines before discharge",Every pair above is meant to be a correct match,,,,
+OIT-WASTEWATER-049,oit-ww,OIT wastewater,Cause and effect,medium,og-oit-ww-b3-cause-effect-0131,2026-11-14-oit-ww-batch-3.json,An equalization basin is put into service. What happens to the peak flow to the plant?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Stored flow is released more evenly.,,,
+OIT-WASTEWATER-050,oit-ww,OIT wastewater,Speed match,medium,og-oit-ww-b7-speed-match-0069,2026-11-14-oit-ww-batch-7.json,Match each sludge measurement to what it describes.,"Percent solids  ->  Solids as a share of sludge weight
+Volatile solids  ->  Part that burns off and is mostly organic
+Fixed solids  ->  Mineral part left after burning
+Moisture content  ->  Share of the sludge that is water
+Capture rate  ->  Share of feed solids kept by the dewatering unit
+Solids loading  ->  Mass of solids fed to a unit",Every pair above is meant to be a correct match,,,,

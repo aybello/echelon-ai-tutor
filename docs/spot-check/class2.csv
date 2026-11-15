@@ -1,0 +1,320 @@
+﻿sample_id,course,system,mode,difficulty,item_id,source_overlay,prompt,options_or_pairs,marked_correct,explanation,verdict,correction_or_note,reviewer
+CLASS2-001,class2-wastewater-coll,Wastewater collection,Cause and effect,easy,og-class2-wastewater-coll-b103-cause-effect-0109,2026-11-15-class2-s-wastewater-coll-batch3.json,Spilled polymer is left on a walkway. What happens to the chance of a slip?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,"Wet polymer makes a very slippery surface, so spills are cleaned up at once.",,,
+CLASS2-002,class2-water-dist,Water distribution,Tap the flaw (find the wrong statement),hard,og-class2-water-dist-b1-tap-the-flaw-0349,2026-11-15-class2-water-dist-batch1.json,Which statement about meter accuracy testing is wrong?,"1) Test results guide a replacement cycle
+2) One mid-range test covers the range
+3) Low flows often show the largest wear error",One mid-range test covers the range,"Wear usually shows first at low flows, so several test flows are used.",,,
+CLASS2-003,class2-ww,Wastewater treatment,Speed match,medium,og-class2-ww-b102-speed-match-0119,2026-11-15-class2-s-ww-batch2.json,Match each infection control practice to its reason.,"Hand washing  ->  Removes germs before eating or smoking
+Vaccination  ->  Builds protection against some diseases
+Covering cuts  ->  Keeps wastewater out of wounds
+Eating in clean areas  ->  Keeps contamination away from food
+Showers and clean clothes  ->  Avoids carrying germs home
+Disposable gloves  ->  Barrier against skin contact",Every pair above is meant to be a correct match,,,,
+CLASS2-004,class2-wastewater-coll,Wastewater collection,Rapid swipe (true or false),easy,og-class2-wastewater-coll-b101-rapid-swipe-0001,2026-11-15-class2-s-wastewater-coll-batch1.json,Lateral and branch sewers form the upper ends of the street sewer network.,Yes (true) / No (false),Yes (true),They collect flow from building sewers and pass it on to main sewers.,,,
+CLASS2-005,class2-water,Water treatment,Rapid swipe (true or false),medium,og-class2-water-b101-rapid-swipe-0047,2026-11-15-class2-s-water-batch1.json,Short-circuiting in a sedimentation basin shortens the effective settling time.,Yes (true) / No (false),Yes (true),Some water rushes through without enough time to settle.,,,
+CLASS2-006,class2-water-dist,Water distribution,Rapid swipe (true or false),unclassified,rsb-class2-water-dist-006,2026-11-14-rapid-swipe-balance.json,True or false: Higher water age usually lowers disinfection byproduct formation.,Yes (true) / No (false),No (false),Longer contact between disinfectant and organic matter usually raises byproduct formation.,,,
+CLASS2-007,class2-water,Water treatment,Rapid swipe (true or false),medium,og-class2-water-b102-rapid-swipe-0061,2026-11-15-class2-s-water-batch2.json,A confirmed positive E. coli result is a routine result needing no action.,Yes (true) / No (false),No (false),A confirmed positive E. coli result is an adverse water quality incident needing immediate corrective action.,,,
+CLASS2-008,class2-water,Water treatment,Cause and effect,medium,og-class2-water-b101-cause-effect-0263,2026-11-15-class2-s-water-batch1.json,A coarse screen becomes clogged with debris. What happens to the head loss across the screen?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,Blocked openings resist the flow.,,,
+CLASS2-009,class2-water-dist,Water distribution,Tap the flaw (find the wrong statement),hard,og-class2-water-dist-b101-tap-the-flaw-0337,2026-11-15-class2-s-water-dist-batch1.json,Which statement about the Langelier index is wrong?,"1) An index near zero is about balanced
+2) A negative index means scale forming
+3) A negative index means corrosive tendency",A negative index means scale forming,"A negative index means undersaturated, corrosive water. A positive index means scale can form.",,,
+CLASS2-010,class2-water-dist,Water distribution,Cause and effect,hard,og-class2-water-dist-b1-cause-effect-0292,2026-11-15-class2-water-dist-batch1.json,Sulfate-reducing bacteria colonize a deposit on an iron main. What happens to the pitting rate under the deposit?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,Their activity creates aggressive local chemistry beneath the deposit.,,,
+CLASS2-011,class2-ww,Wastewater treatment,Before or after (which comes first),medium,og-class2-ww-b1-before-after-0216,2026-11-15-class2-ww-batch1.json,"In a five-day oxygen demand test, which step comes later?","1) Adjust pH and remove any chlorine
+2) Collect and cool the sample",Adjust pH and remove any chlorine,The sample is prepared and incubated before the final oxygen reading is taken. Collect and cool the sample comes before Adjust pH and remove any chlorine.,,,
+CLASS2-012,class2-ww,Wastewater treatment,Tap the flaw (find the wrong statement),medium,og-class2-ww-b101-tap-the-flaw-0320,2026-11-15-class2-s-ww-batch1.json,Which statement about sludge volume index is wrong?,"1) A high SVI means dense sludge
+2) A low SVI can mean old sludge
+3) A rising SVI trend needs attention",A high SVI means dense sludge,A high SVI means light sludge that settles and compacts poorly.,,,
+CLASS2-013,class2-ww,Wastewater treatment,Rapid swipe (true or false),hard,og-class2-ww-b1-rapid-swipe-0015,2026-11-15-class2-ww-batch1.json,Straggler floc leaving with very clear effluent suggests a sludge age slightly below the target.,Yes (true) / No (false),Yes (true),Small buoyant clumps are typical of slightly young sludge and fast new growth.,,,
+CLASS2-014,class2-ww,Wastewater treatment,Cause and effect,hard,og-class2-ww-b1-cause-effect-0271,2026-11-15-class2-ww-batch1.json,Baffle curtains are installed in a lagoon cell. What happens to the amount of short-circuiting?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,The flow path is made longer and more uniform.,,,
+CLASS2-015,class2-ww,Wastewater treatment,Odd one out,easy,og-class2-ww-b102-odd-one-out-0125,2026-11-15-class2-s-ww-batch2.json,Which is not a sludge thickening method?,"1) Flotation thickener
+2) Centrifuge thickener
+3) Belt thickener
+4) Bar screen",Bar screen,Bar screen is not used to thicken sludge.,,,
+CLASS2-016,class2-wastewater-coll,Wastewater collection,Tap the flaw (find the wrong statement),medium,og-class2-wastewater-coll-b103-tap-the-flaw-0141,2026-11-15-class2-s-wastewater-coll-batch3.json,Which statement about vortex pumps is wrong?,"1) It handles solids that would clog a conventional impeller
+2) The whole flow is pushed through the impeller
+3) It is somewhat less efficient than a conventional pump",The whole flow is pushed through the impeller,"Most of the flow does not touch the recessed impeller, which is why solids pass without clogging.",,,
+CLASS2-017,class2-water,Water treatment,Before or after (which comes first),hard,og-class2-water-b1-before-after-0206,2026-11-15-class2-water-batch1.json,"In a flow-paced chemical feed loop, which step comes earlier?","1) Meter reads plant flow
+2) Pump speed changes",Meter reads plant flow,"Flow sets the feed, and the downstream analyzer then confirms the outcome. Meter reads plant flow comes before Pump speed changes.",,,
+CLASS2-018,class2-water-dist,Water distribution,Tap the flaw (find the wrong statement),hard,og-class2-water-dist-b1-tap-the-flaw-0318,2026-11-15-class2-water-dist-batch1.json,Which statement about a hydraulic grade line is wrong?,"1) It rises along a pipe with friction
+2) It shows the level water would rise to
+3) It falls more steeply in small pipe",It rises along a pipe with friction,Friction makes the grade line slope downward in the direction of flow.,,,
+CLASS2-019,class2-wastewater-coll,Wastewater collection,Cause and effect,medium,og-class2-wastewater-coll-b1-cause-effect-0233,2026-11-15-class2-wastewater-coll-batch1.json,Rain falls on a neighbourhood served by a fully separated storm sewer with no illegal connections. What happens to the flow in the sanitary sewer?,"1) It increases
+2) It decreases
+3) It stays the same",It stays the same,"The storm sewer carries the runoff, so the sanitary sewer sees no change.",,,
+CLASS2-020,class2-ww,Wastewater treatment,Odd one out,easy,og-class2-ww-b102-odd-one-out-0129,2026-11-15-class2-s-ww-batch2.json,Which is not a sludge stabilization process?,"1) Aerobic digestion
+2) Screening
+3) Composting
+4) Anaerobic digestion",Screening,Screening is not a sludge stabilization process.,,,
+CLASS2-021,class2-wastewater-coll,Wastewater collection,Rapid swipe (true or false),medium,og-class2-wastewater-coll-b102-rapid-swipe-0017,2026-11-15-class2-s-wastewater-coll-batch2.json,"Sonar can map a pipe both above and below the water level, so it suits flooded or inaccessible sections.",Yes (true) / No (false),Yes (true),The trade-off is heavier and more costly equipment than a CCTV camera.,,,
+CLASS2-022,class2-water,Water treatment,Odd one out,medium,og-class2-water-b1-odd-one-out-0102,2026-11-15-class2-water-batch1.json,Which is not a way to check filter performance?,"1) Tank level
+2) Head loss
+3) Run length
+4) Wash water clarity",Tank level,Tank level is not a direct check of filter performance.,,,
+CLASS2-023,class2-wastewater-coll,Wastewater collection,Cause and effect,medium,og-class2-wastewater-coll-b102-cause-effect-0269,2026-11-15-class2-s-wastewater-coll-batch2.json,System maps are not updated after changes found in the field. What happens to the time crews spend locating structures?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,Wrong maps send crews to the wrong places.,,,
+CLASS2-024,class2-water,Water treatment,Speed match,easy,og-class2-water-b103-speed-match-0039,2026-11-15-class2-s-water-batch3.json,Match each customer water quality complaint to a likely cause.,"Milky water that clears from the bottom up  ->  Tiny air bubbles
+Rotten egg smell  ->  Hydrogen sulfide
+Earthy musty taste  ->  Algae compounds such as geosmin
+Strong swimming pool smell  ->  High chlorine residual
+Brown water after a main break  ->  Disturbed sediment and corrosion products
+White flakes in a water heater  ->  Hardness scale",Every pair above is meant to be a correct match,,,,
+CLASS2-025,class2-wastewater-coll,Wastewater collection,Speed match,medium,og-class2-wastewater-coll-b1-speed-match-0052,2026-11-15-class2-wastewater-coll-batch1.json,Match each sewer pipe material to a characteristic concern.,"Vitrified clay  ->  Brittle under point loads
+Unlined concrete  ->  Crown loss to acid in septic flow
+PVC  ->  Smooth wall that cracks from impact in cold weather
+HDPE  ->  Heat-fused joints and high flexibility
+Fibreglass reinforced pipe  ->  Light, corrosion-resistant wall of glass and resin
+Ductile iron  ->  Needs lining in aggressive septic flow",Every pair above is meant to be a correct match,,,,
+CLASS2-026,class2-water-dist,Water distribution,Speed match,medium,og-class2-water-dist-b1-speed-match-0057,2026-11-15-class2-water-dist-batch1.json,Match each hydrant problem to a likely cause.,"Water standing in the barrel  ->  Plugged drain or leaking main valve seat
+Stiff operation  ->  Dry or corroded stem threads
+Leak at an outlet cap  ->  Worn cap gasket
+Weeping at the bonnet  ->  Worn O-rings or packing
+Poor flow in a test  ->  Partly closed valve or restricted main
+Broken traffic flange  ->  Vehicle impact taken by the breakaway design",Every pair above is meant to be a correct match,,,,
+CLASS2-027,class2-ww,Wastewater treatment,Before or after (which comes first),hard,og-class2-ww-b1-before-after-0246,2026-11-15-class2-ww-batch1.json,"In setting up sulfite dosing at an outfall, which step comes later?","1) Work out the sulfite dose needed
+2) Measure the chlorine leaving the contact tank",Work out the sulfite dose needed,The load is measured and the dose is calculated before it is set and verified by sampling. Measure the chlorine leaving the contact tank comes before Work out the sulfite dose needed.,,,
+CLASS2-028,class2-wastewater-coll,Wastewater collection,Rapid swipe (true or false),hard,og-class2-wastewater-coll-b1-rapid-swipe-0005,2026-11-15-class2-wastewater-coll-batch1.json,"A sewer that scours well at peak flow can still deposit solids at night, when flow and depth are low.",Yes (true) / No (false),Yes (true),"Cleaning force depends on depth as well as slope, so a pipe running shallow at night loses its scouring action.",,,
+CLASS2-029,class2-ww,Wastewater treatment,Odd one out,hard,og-class2-ww-b1-odd-one-out-0164,2026-11-15-class2-ww-batch1.json,Which is not an advantage of UV over chlorine for disinfection?,"1) Ignores turbidity
+2) Safer for staff
+3) No chemical storage on site
+4) No chlorine residual to remove",Ignores turbidity,Ignores turbidity is not an advantage of UV.,,,
+CLASS2-030,class2-water,Water treatment,Odd one out,medium,og-class2-water-b101-odd-one-out-0159,2026-11-15-class2-s-water-batch1.json,Which is not a factor that affects coagulation?,"1) Weir
+2) Polymer use
+3) Raw turbidity
+4) Water pH",Weir,Weir does not affect coagulation.,,,
+CLASS2-031,class2-wastewater-coll,Wastewater collection,Odd one out,hard,og-class2-wastewater-coll-b1-odd-one-out-0121,2026-11-15-class2-wastewater-coll-batch1.json,Which is not a feature that helps a wet well work well?,"1) Pump inlets clear of the inflow stream
+2) Falling inflow
+3) Access for lifting equipment
+4) Sloped floor toward the pump inlets",Falling inflow,Falling inflow causes trouble in a wet well.,,,
+CLASS2-032,class2-water,Water treatment,Tap the flaw (find the wrong statement),medium,og-class2-water-b101-tap-the-flaw-0296,2026-11-15-class2-s-water-batch1.json,Which statement about infiltration galleries is wrong?,"1) Collected water flows to a caisson by gravity or pump
+2) Galleries add turbidity
+3) A gallery uses perforated pipe in the streambed",Galleries add turbidity,An infiltration gallery reduces turbidity by passing water through graded gravel.,,,
+CLASS2-033,class2-ww,Wastewater treatment,Cause and effect,easy,og-class2-ww-b101-cause-effect-0263,2026-11-15-class2-s-ww-batch1.json,Screenings are cleared from a manual screen more often. What happens to the buildup that blocks the screen?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Frequent cleaning keeps openings clear.,,,
+CLASS2-034,class2-wastewater-coll,Wastewater collection,Speed match,hard,og-class2-wastewater-coll-b103-speed-match-0048,2026-11-15-class2-s-wastewater-coll-batch3.json,Match each flow figure to how it was obtained.,"Measured flow  ->  Found by physically measuring the flow
+Estimated flow  ->  Rough guess of the amount
+Computed contribution  ->  Calculated from the expected discharges of the sources
+Flow recording  ->  Record of time, velocity and amount at a point
+Net wastewater contribution  ->  What the system would carry if I/I and exfiltration were removed
+Net wastewater flow  ->  Flow reaching the plant, including I/I but not exfiltration losses",Every pair above is meant to be a correct match,,,,
+CLASS2-035,class2-water-dist,Water distribution,Cause and effect,easy,og-class2-water-dist-b103-cause-effect-0122,2026-11-15-class2-s-water-dist-batch3.json,A fence and a locked gate are added around a tank site. What happens to the chance of unauthorized access?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Barriers make entry harder.,,,
+CLASS2-036,class2-wastewater-coll,Wastewater collection,Before or after (which comes first),medium,og-class2-wastewater-coll-b101-before-after-0213,2026-11-15-class2-s-wastewater-coll-batch1.json,"In a tracer dye velocity check, which step comes earlier?","1) Time until the dye is no longer visible
+2) Divide the manhole distance by the average time",Time until the dye is no longer visible,"Both appearance times are needed before the average, and the distance is divided by that average last. Time until the dye is no longer visible comes before Divide the manhole distance by the average time.",,,
+CLASS2-037,class2-water,Water treatment,Rapid swipe (true or false),hard,og-class2-water-b1-rapid-swipe-0027,2026-11-15-class2-water-batch1.json,"Monochloramine is the chloramine form operators aim for, since dichloramine and trichloramine bring strong odours.",Yes (true) / No (false),Yes (true),Higher chlorine to ammonia ratios push the chemistry toward the poorer forms.,,,
+CLASS2-038,class2-water,Water treatment,Rapid swipe (true or false),hard,og-class2-water-b1-rapid-swipe-0007,2026-11-15-class2-water-batch1.json,Tapering mixing energy through successive flocculation stages helps floc grow without being sheared.,Yes (true) / No (false),Yes (true),"Large floc is fragile, so later stages use less energy than the first.",,,
+CLASS2-039,class2-water,Water treatment,Speed match,easy,og-class2-water-b101-speed-match-0061,2026-11-15-class2-s-water-batch1.json,Match each source water term to its meaning.,"Surface water  ->  Open to the air, from runoff
+Groundwater  ->  Held in saturated rock below ground
+Watershed  ->  Land that drains to a stream
+Recharge area  ->  Where water enters an aquifer
+Aquifer  ->  Underground layer that stores water
+Spring  ->  Groundwater reaching the surface",Every pair above is meant to be a correct match,,,,
+CLASS2-040,class2-wastewater-coll,Wastewater collection,Rapid swipe (true or false),medium,og-class2-wastewater-coll-b1-rapid-swipe-0029,2026-11-15-class2-wastewater-coll-batch1.json,Turbulence at drops and force main discharges strips dissolved sulfide out of wastewater as gas.,Yes (true) / No (false),Yes (true),Mixing and air contact release hydrogen sulfide where flow is disturbed.,,,
+CLASS2-041,class2-wastewater-coll,Wastewater collection,Tap the flaw (find the wrong statement),medium,og-class2-wastewater-coll-b102-tap-the-flaw-0323,2026-11-15-class2-s-wastewater-coll-batch2.json,Which statement about corrective maintenance is wrong?,"1) It is scheduled before a defect exists
+2) A work order directs it to the right crew
+3) It can crowd out planned maintenance when it dominates",It is scheduled before a defect exists,Corrective work follows a problem that has already been found.,,,
+CLASS2-042,class2-water,Water treatment,Odd one out,hard,og-class2-water-b101-odd-one-out-0178,2026-11-15-class2-s-water-batch1.json,Which is not a possible cause of falling well yield?,"1) Screen incrustation
+2) Heavy recharge
+3) Overdraft
+4) Aquifer depletion",Heavy recharge,Heavy recharge would tend to help well yield.,,,
+CLASS2-043,class2-water-dist,Water distribution,Cause and effect,hard,og-class2-water-dist-b101-cause-effect-0286,2026-11-15-class2-s-water-dist-batch1.json,The pH of a corrosive water is raised. What happens to the corrosivity of the water?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Low pH is the strongest contributor to corrosivity.,,,
+CLASS2-044,class2-ww,Wastewater treatment,Tap the flaw (find the wrong statement),medium,og-class2-ww-b101-tap-the-flaw-0334,2026-11-15-class2-s-ww-batch1.json,Which statement about chlorine terms is wrong?,"1) Demand is chlorine used by reactions
+2) Demand is the chlorine left over
+3) Residual is chlorine left after demand",Demand is the chlorine left over,Residual is what is left over. Demand is what reactions use up.,,,
+CLASS2-045,class2-water-dist,Water distribution,Tap the flaw (find the wrong statement),medium,og-class2-water-dist-b1-tap-the-flaw-0334,2026-11-15-class2-water-dist-batch1.json,Which statement about preserving a coliform sample is wrong?,"1) Thiosulfate in the bottle stops residual chlorine acting
+2) The sample is kept cool in transit
+3) Neutralizer is left out of chlorinated samples",Neutralizer is left out of chlorinated samples,Neutralizer is added so residual chlorine does not kill bacteria in the bottle.,,,
+CLASS2-046,class2-water,Water treatment,Tap the flaw (find the wrong statement),hard,og-class2-water-b101-tap-the-flaw-0331,2026-11-15-class2-s-water-batch1.json,Which statement about chemical feeding is wrong?,"1) Feeding both at one point reduces the effect of each
+2) Feed chlorine and carbon together
+3) Operators test raw water to adjust the dose",Feed chlorine and carbon together,"Carbon adsorbs the chlorine, so feeding them together weakens both.",,,
+CLASS2-047,class2-water-dist,Water distribution,Odd one out,medium,og-class2-water-dist-b102-odd-one-out-0149,2026-11-15-class2-s-water-dist-batch2.json,Which is not a cause of backsiphonage?,"1) Pump suction pulling a vacuum
+2) Sudden shutdown of supply
+3) Pressure drop from a main break
+4) Boiler steam",Boiler steam,"Boiler steam produces backpressure, which is not backsiphonage.",,,
+CLASS2-048,class2-wastewater-coll,Wastewater collection,Odd one out,easy,og-class2-wastewater-coll-b102-odd-one-out-0148,2026-11-15-class2-s-wastewater-coll-batch2.json,Which is not portable emergency equipment for a collection crew?,"1) Sewer rodder
+2) Bypass pump
+3) Digester
+4) Gas testing equipment",Digester,"Digester is a treatment plant unit, not portable crew equipment.",,,
+CLASS2-049,class2-water-dist,Water distribution,Before or after (which comes first),hard,og-class2-water-dist-b1-before-after-0217,2026-11-15-class2-water-dist-batch1.json,"In a surge after a station outage, which step comes later?","1) A high-pressure wave travels along the main
+2) The check valve slams shut",A high-pressure wave travels along the main,"The downsurge comes first, then flow reversal, then the upsurge as the check valve closes. The check valve slams shut comes before A high-pressure wave travels along the main.",,,
+CLASS2-050,class2-ww,Wastewater treatment,Tap the flaw (find the wrong statement),hard,og-class2-ww-b1-tap-the-flaw-0342,2026-11-15-class2-ww-batch1.json,Which statement about suspended solids testing is wrong?,"1) The sample is mixed before measuring
+2) The residue is dried to constant weight
+3) Filters are weighed wet",Filters are weighed wet,The filter and residue are dried and weighed to get a dry mass.,,,
+CLASS2-051,class2-water,Water treatment,Tap the flaw (find the wrong statement),medium,og-class2-water-b1-tap-the-flaw-0334,2026-11-15-class2-water-batch1.json,Which statement about the breakpoint reaction is wrong?,"1) Free chlorine rises past breakpoint
+2) Ammonia is untouched at breakpoint
+3) Residual dips before breakpoint",Ammonia is untouched at breakpoint,At breakpoint most of the ammonia and nitrogen compounds have been oxidized.,,,
+CLASS2-052,class2-wastewater-coll,Wastewater collection,Speed match,hard,og-class2-wastewater-coll-b1-speed-match-0072,2026-11-15-class2-wastewater-coll-batch1.json,Match each force main problem to a likely cause.,"Falling flow at the same pump speed  ->  Air pocket or solids deposits raising head loss
+Pipe hammer after a pump trip  ->  Surge from flow reversal and check valve closure
+Odour burst at the discharge manhole  ->  Sulfide built up during long detention
+Corrosion at the crown of a partly full main  ->  Air in the pipe with gas and moisture
+Leak at a bend  ->  Joint movement from missing thrust restraint
+Gradual rise in discharge pressure  ->  Grease or scale narrowing the bore",Every pair above is meant to be a correct match,,,,
+CLASS2-053,class2-ww,Wastewater treatment,Tap the flaw (find the wrong statement),medium,og-class2-ww-b101-tap-the-flaw-0339,2026-11-15-class2-s-ww-batch1.json,Which statement about primary sludge is wrong?,"1) Plugged lines cause pumping problems
+2) Slow removal can make sludge septic
+3) Overpumping makes thick sludge",Overpumping makes thick sludge,"Overpumping draws in extra water, so the sludge is thin.",,,
+CLASS2-054,class2-wastewater-coll,Wastewater collection,Before or after (which comes first),medium,og-class2-wastewater-coll-b1-before-after-0177,2026-11-15-class2-wastewater-coll-batch1.json,"In responding to a sewer backup on a street, which step comes earlier?","1) Find the full manhole and the last free-flowing manhole
+2) Set up traffic control and test the air",Find the full manhole and the last free-flowing manhole,"The location and safe work area come first, then the clearing, and cleanup and reporting follow once flow is restored. Find the full manhole and the last free-flowing manhole comes before Set up traffic control and test the air.",,,
+CLASS2-055,class2-ww,Wastewater treatment,Rapid swipe (true or false),hard,og-class2-ww-b1-rapid-swipe-0045,2026-11-15-class2-ww-batch1.json,A chlorinated sample set up for BOD without removing the residual can give a falsely low result.,Yes (true) / No (false),Yes (true),Chlorine kills the organisms that would otherwise use the oxygen.,,,
+CLASS2-056,class2-water-dist,Water distribution,Before or after (which comes first),medium,og-class2-water-dist-b101-before-after-0207,2026-11-15-class2-s-water-dist-batch1.json,"In fixing a leaking pipeline, which step comes later?","1) Document the work
+2) Backfill and compact",Document the work,"Crews locate utilities before digging, repair with clean parts, flush, then restore and record. Backfill and compact comes before Document the work.",,,
+CLASS2-057,class2-water,Water treatment,Odd one out,medium,og-class2-water-b102-odd-one-out-0134,2026-11-15-class2-s-water-batch2.json,Which is not a cause of low chlorine residual at the plant outlet?,"1) Falling demand
+2) Plugged injector line
+3) Rising chlorine demand
+4) Feed pump losing prime",Falling demand,Falling demand would tend to raise the residual.,,,
+CLASS2-058,class2-wastewater-coll,Wastewater collection,Odd one out,hard,og-class2-wastewater-coll-b1-odd-one-out-0087,2026-11-15-class2-wastewater-coll-batch1.json,Which is not a cause of a sag in a gravity sewer?,"1) Steep grade
+2) Washout of the bedding
+3) Poor bedding under the pipe
+4) Heavy surface loads over the pipe",Steep grade,Steep grade does not tend to make a pipe settle below grade.,,,
+CLASS2-059,class2-water-dist,Water distribution,Odd one out,medium,og-class2-water-dist-b102-odd-one-out-0173,2026-11-15-class2-s-water-dist-batch2.json,Which is not a role a meter can play?,"1) Component meter
+2) Temporary meter
+3) District meter
+4) Check valve",Check valve,Check valve is not a metering role.,,,
+CLASS2-060,class2-water,Water treatment,Tap the flaw (find the wrong statement),hard,og-class2-water-b1-tap-the-flaw-0359,2026-11-15-class2-water-batch1.json,Which statement about ammonia in raw water is wrong?,"1) Ammonia raises chlorine demand
+2) It forms combined chlorine first
+3) Ammonia lowers chlorine demand",Ammonia lowers chlorine demand,Ammonia consumes chlorine and increases demand.,,,
+CLASS2-061,class2-water-dist,Water distribution,Rapid swipe (true or false),medium,og-class2-water-dist-b1-rapid-swipe-0007,2026-11-15-class2-water-dist-batch1.json,Cutting asbestos-cement pipe dry with an abrasive saw is acceptable if the job is outdoors.,Yes (true) / No (false),No (false),"Dry cutting releases fibres. Wet methods and dust controls are used, following local occupational safety rules.",,,
+CLASS2-062,class2-water-dist,Water distribution,Rapid swipe (true or false),hard,og-class2-water-dist-b101-rapid-swipe-0038,2026-11-15-class2-s-water-dist-batch1.json,A positive Langelier Saturation Index points to water that tends to dissolve calcium carbonate.,Yes (true) / No (false),No (false),"A positive index means oversaturation, so scale can form.",,,
+CLASS2-063,class2-ww,Wastewater treatment,Cause and effect,hard,og-class2-ww-b1-cause-effect-0274,2026-11-15-class2-ww-batch1.json,Recirculation is raised on a trickling filter at low night flow. What happens to the wetting of the media?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,More liquid is applied over the bed.,,,
+CLASS2-064,class2-ww,Wastewater treatment,Cause and effect,easy,og-class2-ww-b102-cause-effect-0317,2026-11-15-class2-s-ww-batch2.json,An operator washes their hands before eating. What happens to the chance of swallowing germs?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Washing removes germs from the hands.,,,
+CLASS2-065,class2-water-dist,Water distribution,Speed match,medium,og-class2-water-dist-b102-speed-match-0067,2026-11-15-class2-s-water-dist-batch2.json,Match each flushing planning step to its purpose.,"Review discharge rules  ->  Meets local requirements for disposing of flushed water
+Set water quality goals  ->  Defines what the flushing should achieve
+Check hydraulic capacity  ->  Confirms there is enough flow and pressure to support it
+Coordinate with valve work  ->  Saves effort by testing equipment together
+Update maps and procedures  ->  Keeps crews working from current information
+Notify customers  ->  Warns of possible discoloured water",Every pair above is meant to be a correct match,,,,
+CLASS2-066,class2-ww,Wastewater treatment,Speed match,hard,og-class2-ww-b1-speed-match-0072,2026-11-15-class2-ww-batch1.json,Match each digester indicator to what it tells the operator.,"Volatile acids to alkalinity ratio  ->  Buffer condition and early warning
+Methane share of the gas  ->  Health of the methane formers
+Temperature of the sludge  ->  Stability of the heated process
+Volatile solids reduction  ->  How much the sludge is stabilized
+Gas production per volatile solid destroyed  ->  Efficiency of the digestion
+Supernatant pH  ->  Condition of the liquid layer",Every pair above is meant to be a correct match,,,,
+CLASS2-067,class2-water-dist,Water distribution,Cause and effect,hard,og-class2-water-dist-b1-cause-effect-0271,2026-11-15-class2-water-dist-batch1.json,A pump runs far to the left of its best efficiency point at very low flow. What happens to the heat building up in the pump casing water?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,Most of the input energy is not carried away by the flow and turns into heat.,,,
+CLASS2-068,class2-wastewater-coll,Wastewater collection,Cause and effect,medium,og-class2-wastewater-coll-b1-cause-effect-0264,2026-11-15-class2-wastewater-coll-batch1.json,A bypass pump is set up around a blocked sewer. What happens to the volume overflowing from upstream manholes?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Flow is carried past the stoppage instead of backing up.,,,
+CLASS2-069,class2-ww,Wastewater treatment,Odd one out,hard,og-class2-ww-b1-odd-one-out-0172,2026-11-15-class2-ww-batch1.json,Which is not an input to the mean cell residence time calculation?,"1) Effluent pH
+2) Aeration tank volume
+3) Waste sludge flow rate
+4) Concentration of the waste sludge",Effluent pH,Effluent pH is not used to calculate the MCRT.,,,
+CLASS2-070,class2-wastewater-coll,Wastewater collection,Speed match,medium,og-class2-wastewater-coll-b101-speed-match-0088,2026-11-15-class2-s-wastewater-coll-batch1.json,Match each force main item to its purpose.,"Air relief valve  ->  Prevents air locking at high points
+Vacuum relief valve  ->  Relieves negative pressure
+Surge protection  ->  Limits water hammer
+Cleansing velocity  ->  Keeps solids moving
+Check valve  ->  Blocks reverse flow
+Shut-off valve  ->  Isolates equipment for repair",Every pair above is meant to be a correct match,,,,
+CLASS2-071,class2-wastewater-coll,Wastewater collection,Before or after (which comes first),medium,og-class2-wastewater-coll-b102-before-after-0198,2026-11-15-class2-s-wastewater-coll-batch2.json,"In an inflow search using smoke, which step comes earlier?","1) Watch for smoke leaving connections
+2) Plug the ends of the sewer reach",Plug the ends of the sewer reach,"The reach is sealed before smoke is added, smoke is watched for, and findings are documented afterward. Plug the ends of the sewer reach comes before Watch for smoke leaving connections.",,,
+CLASS2-072,class2-ww,Wastewater treatment,Speed match,medium,og-class2-ww-b103-speed-match-0046,2026-11-15-class2-s-ww-batch3.json,Match each dissolved oxygen testing term to its meaning.,"Membrane probe  ->  Reads oxygen through a membrane as an electrical signal
+Winkler method  ->  Chemical titration that gives dissolved oxygen
+Probe calibration  ->  Adjusting the reading against a known standard
+Fouled membrane  ->  Coating that gives slow or wrong readings
+Air saturation  ->  Most oxygen the water holds at a given temperature
+Temperature compensation  ->  Corrects the reading for water temperature",Every pair above is meant to be a correct match,,,,
+CLASS2-073,class2-ww,Wastewater treatment,Tap the flaw (find the wrong statement),medium,og-class2-ww-b103-tap-the-flaw-0181,2026-11-15-class2-s-ww-batch3.json,Which statement about asphyxiant gases is wrong?,"1) Other gases can displace oxygen in a closed space
+2) Carbon dioxide rises to the ceiling
+3) An oxygen-poor atmosphere can overcome a worker quickly",Carbon dioxide rises to the ceiling,Carbon dioxide is heavier than air and collects in low areas.,,,
+CLASS2-074,class2-water-dist,Water distribution,Speed match,hard,og-class2-water-dist-b101-speed-match-0100,2026-11-15-class2-s-water-dist-batch1.json,Match each control term to its description.,"SCADA  ->  Supervisory system that gathers remote data
+RTU  ->  Field unit that scans sensor inputs
+Telemetry  ->  Sends readings from remote sites
+Feed-forward loop  ->  Reacts to flow measured ahead of the feed point
+Feedback loop  ->  Reacts to a residual measured downstream
+Deadband  ->  Range around the set point with no action",Every pair above is meant to be a correct match,,,,
+CLASS2-075,class2-ww,Wastewater treatment,Before or after (which comes first),medium,og-class2-ww-b102-before-after-0215,2026-11-15-class2-s-ww-batch2.json,"In the biological chain inside a sealed digester, which step comes earlier?","1) Large organic molecules break into soluble compounds
+2) Methane formers convert the acids to gas",Large organic molecules break into soluble compounds,Organic matter must be broken down to acids before methane can form and be collected. Large organic molecules break into soluble compounds comes before Methane formers convert the acids to gas.,,,
+CLASS2-076,class2-wastewater-coll,Wastewater collection,Tap the flaw (find the wrong statement),medium,og-class2-wastewater-coll-b1-tap-the-flaw-0314,2026-11-15-class2-wastewater-coll-batch1.json,Which statement about trench protection is wrong?,"1) Spoil is set back from the trench edge
+2) Clay walls stand upright when deep
+3) Vibration and rain reduce wall stability",Clay walls stand upright when deep,"Clay can fail suddenly, so deep trenches are protected.",,,
+CLASS2-077,class2-water,Water treatment,Before or after (which comes first),easy,og-class2-water-b101-before-after-0190,2026-11-15-class2-s-water-batch1.json,"In the water cycle, which step comes later?","1) Infiltration
+2) Condensation",Infiltration,"Water rises, forms clouds, falls and then moves into and down through the ground. Condensation comes before Infiltration.",,,
+CLASS2-078,class2-water-dist,Water distribution,Before or after (which comes first),medium,og-class2-water-dist-b102-before-after-0239,2026-11-15-class2-s-water-dist-batch2.json,"In a planned hydrant discharge program, which step comes earlier?","1) Set water quality goals
+2) Carry out the work",Set water quality goals,"Goals and capacity checks come first, customers are told, then the work is done and records are updated. Set water quality goals comes before Carry out the work.",,,
+CLASS2-079,class2-ww,Wastewater treatment,Rapid swipe (true or false),medium,og-class2-ww-b1-rapid-swipe-0034,2026-11-15-class2-ww-batch1.json,Sulfur dioxide used for dechlorination tends to lower the pH of the effluent slightly.,Yes (true) / No (false),Yes (true),Sulfur dioxide forms an acid in water and consumes a little alkalinity.,,,
+CLASS2-080,class2-water-dist,Water distribution,Before or after (which comes first),medium,og-class2-water-dist-b102-before-after-0231,2026-11-15-class2-s-water-dist-batch2.json,"In a preliminary water audit, which step comes earlier?","1) Estimate apparent losses
+2) Find the water put into the system",Find the water put into the system,"Input and consumption give losses, and apparent losses are taken off to leave real losses. Find the water put into the system comes before Estimate apparent losses.",,,
+CLASS2-081,class2-water-dist,Water distribution,Odd one out,medium,og-class2-water-dist-b101-odd-one-out-0186,2026-11-15-class2-s-water-dist-batch1.json,Which is not a reason to keep distribution records?,"1) Justify main replacement
+2) Hide errors
+3) Support reports
+4) Show repair history",Hide errors,Hide errors is not a purpose of records.,,,
+CLASS2-082,class2-water,Water treatment,Cause and effect,hard,og-class2-water-b1-cause-effect-0294,2026-11-15-class2-water-batch1.json,Orthophosphate is fed steadily to a system with old lead plumbing. What happens to the lead release from the plumbing?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,A protective phosphate film lowers metal solubility.,,,
+CLASS2-083,class2-water-dist,Water distribution,Rapid swipe (true or false),hard,og-class2-water-dist-b1-rapid-swipe-0023,2026-11-15-class2-water-dist-batch1.json,A low suction cutoff at a booster station protects the supply main from being pulled down to very low pressure.,Yes (true) / No (false),Yes (true),"Stopping the pumps keeps suction pressure up, which also guards against backsiphonage.",,,
+CLASS2-084,class2-wastewater-coll,Wastewater collection,Speed match,medium,og-class2-wastewater-coll-b1-speed-match-0069,2026-11-15-class2-wastewater-coll-batch1.json,Match each lift station alarm to what it reports.,"High wet well level  ->  Water above the normal start level
+Low wet well level  ->  Level near the pump intake
+Seal failure  ->  Water detected in the motor or seal chamber
+Power failure  ->  Utility supply lost
+High motor temperature  ->  Winding or bearing overheating
+Entry alarm  ->  Station door opened",Every pair above is meant to be a correct match,,,,
+CLASS2-085,class2-water,Water treatment,Before or after (which comes first),medium,og-class2-water-b102-before-after-0206,2026-11-15-class2-s-water-batch2.json,"In a hardness test by titration, which step comes later?","1) Calculate the result
+2) Add buffer and indicator",Calculate the result,"The sample is prepared before titrating, and the calculation comes after the endpoint. Add buffer and indicator comes before Calculate the result.",,,
+CLASS2-086,class2-water,Water treatment,Before or after (which comes first),hard,og-class2-water-b102-before-after-0180,2026-11-15-class2-s-water-batch2.json,"In adding chlorine in rising amounts to water that contains ammonia, which step comes later?","1) Free residual builds
+2) Initial demand uses chlorine",Free residual builds,"Demand is met, chloramines form and are then oxidized before free chlorine builds. Initial demand uses chlorine comes before Free residual builds.",,,
+CLASS2-087,class2-water,Water treatment,Cause and effect,hard,og-class2-water-b1-cause-effect-0262,2026-11-15-class2-water-batch1.json,Raw water gets colder while the flocculation time stays the same. What happens to the turbidity of the settled water?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,"Cold water slows floc growth, so less is formed in the same time.",,,
+CLASS2-088,class2-water,Water treatment,Cause and effect,hard,og-class2-water-b1-cause-effect-0296,2026-11-15-class2-water-batch1.json,Flow in a main reverses after a valve change. What happens to the chance of colour complaints?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,Reversed flow can lift deposits from pipe walls.,,,
+CLASS2-089,class2-water-dist,Water distribution,Speed match,easy,og-class2-water-dist-b101-speed-match-0077,2026-11-15-class2-s-water-dist-batch1.json,Match each hydrant term to its meaning.,"Dry barrel  ->  Main valve at the bottom with a drain hole
+Wet barrel  ->  Main valve at the top, barrel kept full
+Breakaway unions  ->  Let a struck hydrant break cleanly
+Out-of-service log  ->  Records when a hydrant is shut off and who was told
+Hydrant size  ->  Set by the valve opening size
+Nozzle height  ->  Leaves room to turn a wrench",Every pair above is meant to be a correct match,,,,
+CLASS2-090,class2-water,Water treatment,Speed match,hard,og-class2-water-b1-speed-match-0060,2026-11-15-class2-water-batch1.json,Match each backwash element to its role.,"Backwash rate  ->  Sets how far the bed expands
+Surface wash  ->  Jets that scour the top of the bed
+Air scour  ->  Air bubbles that scrub media grains
+Wash duration  ->  Time until wash water runs clear
+Wash water turbidity  ->  Shows how clean the media has become
+Terminal head loss  ->  Level that triggers a wash",Every pair above is meant to be a correct match,,,,
+CLASS2-091,class2-water,Water treatment,Speed match,easy,og-class2-water-b102-speed-match-0077,2026-11-15-class2-s-water-batch2.json,Match each centrifugal pump part to its job.,"Impeller  ->  Adds speed to the water
+Volute  ->  Converts velocity to pressure
+Shaft  ->  Carries power from the motor
+Bearings  ->  Reduce friction as the shaft turns
+Packing  ->  Seals around the shaft
+Wearing ring  ->  Protects impeller and casing from wear",Every pair above is meant to be a correct match,,,,
+CLASS2-092,class2-ww,Wastewater treatment,Rapid swipe (true or false),medium,og-class2-ww-b101-rapid-swipe-0048,2026-11-15-class2-s-ww-batch1.json,A thick duckweed cover improves oxygen transfer to a pond.,Yes (true) / No (false),No (false),Duckweed blocks light and surface oxygen transfer.,,,
+CLASS2-093,class2-water,Water treatment,Odd one out,hard,og-class2-water-b1-odd-one-out-0140,2026-11-15-class2-water-batch1.json,Which is not a factor that raises the corrosion rate?,"1) High dissolved oxygen
+2) Low alkalinity
+3) Protective film
+4) Low hardness",Protective film,Protective film would tend to slow corrosion.,,,
+CLASS2-094,class2-wastewater-coll,Wastewater collection,Tap the flaw (find the wrong statement),hard,og-class2-wastewater-coll-b1-tap-the-flaw-0297,2026-11-15-class2-wastewater-coll-batch1.json,Which statement about air at pump intakes is wrong?,"1) Low water cover over the intake invites a vortex
+2) Air in the flow causes noise and vibration
+3) High water cover causes vortexing",High water cover causes vortexing,Vortices form when water cover is low.,,,
+CLASS2-095,class2-water-dist,Water distribution,Before or after (which comes first),medium,og-class2-water-dist-b102-before-after-0224,2026-11-15-class2-s-water-dist-batch2.json,"In controlling water loss, which step comes later?","1) Judge results with performance indicators
+2) Complete a water audit",Judge results with performance indicators,"The audit comes first, then intervention to find and fix losses, then evaluation. Complete a water audit comes before Judge results with performance indicators.",,,
+CLASS2-096,class2-ww,Wastewater treatment,Before or after (which comes first),medium,og-class2-ww-b101-before-after-0211,2026-11-15-class2-s-ww-batch1.json,"In the activated sludge cycle, which step comes later?","1) Settled sludge is drawn off the bottom
+2) Solids settle in the secondary clarifier",Settled sludge is drawn off the bottom,Mixed liquor must form and settle before sludge can be drawn off and returned. Solids settle in the secondary clarifier comes before Settled sludge is drawn off the bottom.,,,
+CLASS2-097,class2-water-dist,Water distribution,Odd one out,medium,og-class2-water-dist-b101-odd-one-out-0126,2026-11-15-class2-s-water-dist-batch1.json,Which is not a purpose of distribution storage?,"1) Hold pressure steady
+2) Remove sludge
+3) Supply fire flow
+4) Meet peak demand",Remove sludge,Remove sludge is not a purpose of distribution storage.,,,
+CLASS2-098,class2-ww,Wastewater treatment,Speed match,easy,og-class2-ww-b103-speed-match-0011,2026-11-15-class2-s-ww-batch3.json,Match each screenings handling term to its meaning.,"Screenings  ->  Material trapped on a bar screen
+Screenings washer  ->  Rinses organic matter off the screenings
+Compactor  ->  Squeezes out water to cut the volume
+Rake  ->  Hand tool for pulling screenings off the bars
+Covered container  ->  Holds screenings between hauls to limit odour
+Landfill  ->  Common final destination for dewatered screenings",Every pair above is meant to be a correct match,,,,
+CLASS2-099,class2-wastewater-coll,Wastewater collection,Before or after (which comes first),hard,og-class2-wastewater-coll-b1-before-after-0187,2026-11-15-class2-wastewater-coll-batch1.json,"In acid damage to a concrete sewer crown, which step comes earlier?","1) Wastewater turns septic and sulfide builds up
+2) Turbulence releases hydrogen sulfide gas",Wastewater turns septic and sulfide builds up,"Sulfide must form and escape before the gas reaches the wall, where bacteria produce the acid that does the damage. Wastewater turns septic and sulfide builds up comes before Turbulence releases hydrogen sulfide gas.",,,
+CLASS2-100,class2-wastewater-coll,Wastewater collection,Odd one out,medium,og-class2-wastewater-coll-b101-odd-one-out-0191,2026-11-15-class2-s-wastewater-coll-batch1.json,Which is not a sign of septic wastewater?,"1) Fresh smell
+2) Rotten-egg odour
+3) Black septic sludge
+4) Long travel time",Fresh smell,"Fresh smell points to fresh wastewater, not septic wastewater.",,,
