@@ -626,3 +626,14 @@
   .interactive-drill .interactive-drill__nav button[data-mode] { border-left-width: 1.5px; box-shadow: inset 0 -3px 0 var(--m); }
   .interactive-drill .interactive-drill__nav button[data-mode]::before { content: none; }
 }
+
+/* Cause and Effect: the chosen direction uses the mode colour; after checking, the right direction and a wrong pick are marked. */
+.interactive-drill .interactive-drill__activity[data-mode="cause-effect"] .interactive-drill__options--directions button.is-selected,
+.course-interactive .interactive-drill__activity[data-mode="cause-effect"] .interactive-drill__options--directions button.is-selected,
+.course-interactive .interactive-drill__activity[data-mode="cause-effect"] .interactive-drill__options--directions button.is-selected:disabled { border-color: var(--accent); background: var(--accent); color: #fff; }
+.course-interactive .interactive-drill__options--directions button[data-state="correct"],
+.course-interactive .interactive-drill__options--directions button[data-state="correct"]:disabled,
+.course-interactive .interactive-drill__options--directions button.is-selected[data-state="correct"]:disabled { border-color: #1f9d6b; background: #e8f7f0; color: #0f4d34; }
+.course-interactive .interactive-drill__options--directions button[data-state="wrong"],
+.course-interactive .interactive-drill__options--directions button[data-state="wrong"]:disabled,
+.course-interactive .interactive-drill__options--directions button.is-selected[data-state="wrong"]:disabled { border-color: #d64545; background: #fdecec; color: #7a1f1f; }

@@ -401,7 +401,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
                 </p>
                 <div className="interactive-drill__options interactive-drill__options--directions">
                   {causeEffectDirections.map(direction => (
-                    <button key={direction} type="button" disabled={answered} aria-pressed={directions[effect.id] === direction} className={directions[effect.id] === direction ? "is-selected" : ""} onClick={() => setDirections(previous => ({ ...previous, [effect.id]: direction }))}>
+                    <button key={direction} type="button" data-state={effectResults ? (direction === effect.direction ? "correct" : directions[effect.id] === direction ? "wrong" : undefined) : undefined} disabled={answered} aria-pressed={directions[effect.id] === direction} className={directions[effect.id] === direction ? "is-selected" : ""} onClick={() => setDirections(previous => ({ ...previous, [effect.id]: direction }))}>
                       <span aria-hidden="true">{DIRECTION_SYMBOLS[direction]} </span>{CAUSE_EFFECT_DIRECTION_LABELS[direction]}
                     </button>
                   ))}
