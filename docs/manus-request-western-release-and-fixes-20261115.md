@@ -4,7 +4,7 @@ Written 2026-11-15 after reviewing main at `c5e8ba56`. Four items, in priority o
 
 ## 1. Publish the western (WPI) tables
 
-Branch `claude/hello-5oz7m4`, commits `33b31a96`, `2a4e0e69`, `37403bc7`, and the four gap-filling commits listed below. Exactly 85 newly added files named `scripts/game-authoring/data/wpi-class*.ts`.
+Branch `claude/hello-5oz7m4`, commits `33b31a96`, `2a4e0e69`, `37403bc7`, and the gap-filling commits listed below. Exactly 91 newly added files named `scripts/game-authoring/data/wpi-class*.ts`.
 
 - 72 files are `wpi-class{1-4}-{water,wastewater,water-dist,water-coll}-t{n}.ts`. They are copies of the matching Ontario course tables, re-keyed to the western course keys.
 - 5 files are Class 1 top-ups, named `wpi-class1-water-o{1-3}.ts` and `wpi-class1-wastewater-o{1-2}.ts`. They derive from `oit-batch10` to `12` and `oit-ww-batch5` and `6`.
@@ -25,7 +25,7 @@ Expected counts, drafts only and before the live banks are added:
 
 All 16 western courses are at or above 150 per mode in all six modes, counting drafts only.
 
-Six more small tables fill thin topics found by checking the content against the ABC Need to Know outlines (report: `docs/western-need-to-know-coverage-20261115.md`). They are the `*-g1.ts` files below, checker clean. Each adds only items for its listed topics.
+Twelve more small tables fill thin topics found by checking the content against the ABC Need to Know outlines (report: `docs/western-need-to-know-coverage-20261115.md`). They are the `*-g1.ts` files below, checker clean. Each adds only items for its listed topics.
 
 | File | Commit | Topics |
 |---|---|---|
@@ -35,6 +35,9 @@ Six more small tables fill thin topics found by checking the content against the
 | `wpi-class1-wastewater-g1.ts` | `d8c28d86` | security, public relations, flow equalization, flotation |
 | `wpi-class3-wastewater-g1.ts` | `d8c28d86` | the same topics at depth |
 | `wpi-class1-water-coll-g1.ts` | `c1e8f24a` | public health for crews, flow monitoring, electrical controls, security |
+| `wpi-class2-water-g1.ts`, `wpi-class4-water-g1.ts` | `2bb6129a` | water treatment Class 2 and Class 4: blowers, dechlorination, security, generators, maintenance management, cross-connection control, electrical controls, cathodic protection |
+| `wpi-class2-water-dist-g1.ts`, `wpi-class4-water-dist-g1.ts` | `7a71969f` | distribution Class 2 and Class 4: electrical controls, generators, maintenance management, temporary service, swabbing, thawing, cold weather planning |
+| `wpi-class2-wastewater-g1.ts`, `wpi-class4-wastewater-g1.ts` | `2b3b1d21` | wastewater treatment Class 2 and Class 4: security, public relations, flow equalization, flotation, standby power, communication |
 
 Expected counts, drafts only and before the live banks are added:
 
