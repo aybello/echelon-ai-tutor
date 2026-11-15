@@ -1,4 +1,5 @@
 import { syntheticReceipt } from "./reviewTestFixtures";
+import { createHash } from "node:crypto";
 import { readFileSync, rmSync } from "node:fs";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
@@ -56,9 +57,14 @@ describe("selective release effective view", () => {
   it("excludes only documented exact IDs and keeps the reviewed confined-space correction", () => {
     const docs = committedOverlayDocuments() as ContentOverlay[];
     const all = docs.flatMap(d => d.additions).filter(a => a.courseKey === "oit" && a.example.id.startsWith("og-oit-"));
-    const groups = committedReleaseExclusions().groups;
+    const exclusions = committedReleaseExclusions();
+    const groups = exclusions.groups;
+    const historical = { ...exclusions, groups: groups.slice(0, -1) };
+    expect(createHash("sha256").update(JSON.stringify(historical, null, 2) + "\n").digest("hex")).toBe("8040a4b366a73d13f44cf29746e9bbedb14eb20304519d1c2e2b6ba04273525b");
+    expect(historical.groups.flatMap(g => g.ids)).toHaveLength(129);
+    expect(groups.at(-1)).toMatchObject({ courseKey: "oit", mode: "rapid-swipe", ids: ["og-oit-b5-rapid-swipe-0018"] });
     const ids = groups.flatMap(g => g.ids);
-    expect(ids).toHaveLength(129);
+    expect(ids).toHaveLength(130);
     expect(new Set(ids).size).toBe(ids.length);
     for (const group of groups) for (const id of group.ids) {
       const item = all.find(a => a.example.id === id);
@@ -75,7 +81,7 @@ describe("selective release effective view", () => {
     expect(all).toHaveLength(2817);
     const expectedAvailable = all.filter(a => !excludedIds.has(a.example.id)).map(a => a.example.id);
     const actualAvailable = all.filter(a => poolIds.has(a.example.id)).map(a => a.example.id);
-    expect(actualAvailable).toHaveLength(2688);
+    expect(actualAvailable).toHaveLength(2687);
     expect(new Set(actualAvailable)).toEqual(new Set(expectedAvailable));
     expect(poolIds.has("og-oit-b2-before-after-0134")).toBe(true);
     for (const access of [false, true]) for (const mode of interactiveModes) {
