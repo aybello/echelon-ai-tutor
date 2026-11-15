@@ -141,7 +141,7 @@ const data: CourseData = {
     { d: "m", process: "one filter cycle", steps: ["Clean filter starts a run", "Particles collect in the media", "Head loss climbs", "Operator backwashes the filter"], why: "Solids build up during a run, raising head loss until cleaning is needed.", max: 6 },
     { d: "h", process: "chemical hardness removal", steps: ["Add lime to raise pH", "Hardness forms solids", "Solids settle out", "Add carbon dioxide to lower pH", "Filter the water"], why: "Hardness is precipitated and settled first, then the pH is stabilized before filtering.", max: 8 },
     { d: "h", process: "build-up of larger particles", steps: ["Coagulant is mixed in rapidly", "Particle charges are reduced", "Particles collide in slow mixing", "Larger floc forms", "Floc settles in the basin"], why: "Charge reduction comes before collisions, growth and settling.", max: 8 },
-    { d: "h", process: "pumping effects near a water table well", steps: ["Pumping starts", "Water flows toward the well", "The water table sags", "A cone of depression forms"], why: "Pumping draws water inward, which lowers the water table into a cone.", max: 6 },
+    { d: "h", process: "pumping effects near a water table well", steps: ["Pumping starts", "The water level in the well drops", "Water flows toward the well", "A cone of depression forms"], why: "Pumping lowers the level in the well first, which draws water toward it and shapes the water table into a cone.", max: 6 },
   ],
   relations: [
     // Handbook ch 13, 18, 20

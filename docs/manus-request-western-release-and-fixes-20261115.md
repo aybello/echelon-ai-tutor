@@ -89,6 +89,15 @@ The code is off unless `INTERACTIVE_SAVED_PROGRESS_ENABLED=true`. Good. Before e
 - If memory is tight, loading overlays per course on first use is the obvious fix. I have not started on it and will not without a go-ahead.
 - Leaving the course games page within 4 seconds of an answer drops up to four unsent answers. This is by design in the current client, to avoid writing under the wrong identity. It is low severity.
 
+## 5. Replace live items the spot-check found wrong or unclear
+
+An AI review of a 500-item sample (`docs/spot-check/RESULTS-2026-11-15-ai-review.md`) found 3 wrong and 14 unclear items. Most of them are copied across several courses by the shared pool, so the live copies add up to 107 items on main.
+
+- The exact live item IDs, courses and overlay files are in `docs/spot-check/live-items-to-replace-20261115.json`.
+- Please exclude all 107 by exact ID in `releaseExclusions.json`.
+- The corrected versions are already in the draft tables on `claude/hello-5oz7m4`, in 59 files, all checker clean. That covers the Ontario Class 1 to 4 source and shared tables, `oit-ww-batch6.ts`, and the unreleased western copies. Please publish the corrected rows through the normal receipt path as replacements. A wrong item should not stay live while its fix waits.
+- The fixes: sonar now says it maps the underwater part only. The force-main board pairs condition checks with inspection and wall testing. The motor current item is replaced with a correct one about throttling. US units are converted to metric (kilometres, kg/d, cubic metres). Each unclear item is reworded as the CSV notes say.
+
 ## What I will not do without a go-ahead
 
 Apply migrations, set environment flags, change the release gates, or open a pull request. All changes stay on `claude/hello-5oz7m4`.

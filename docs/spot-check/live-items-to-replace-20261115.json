@@ -1,0 +1,649 @@
+{
+ "generated": "2026-11-15",
+ "main": "c5e8ba56",
+ "reason": "Spot-check found these wrong or unclear; corrected versions are in the draft tables on claude/hello-5oz7m4",
+ "items": [
+  {
+   "itemId": "og-class1-wastewater-coll-b1-rapid-swipe-0053",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-14-class1-wastewater-coll-batch-1.json",
+   "issue": "motor current"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b1-cause-effect-0298",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-14-class1-wastewater-coll-batch-1.json",
+   "issue": "fixed-rate float"
+  },
+  {
+   "itemId": "og-class1-water-b1-before-after-0245",
+   "courseKey": "class1-water",
+   "overlay": "2026-11-14-class1-water-batch-1.json",
+   "issue": "well sequence"
+  },
+  {
+   "itemId": "og-class1-water-b1-before-after-0246",
+   "courseKey": "class1-water",
+   "overlay": "2026-11-14-class1-water-batch-1.json",
+   "issue": "well sequence"
+  },
+  {
+   "itemId": "og-class1-water-b1-before-after-0247",
+   "courseKey": "class1-water",
+   "overlay": "2026-11-14-class1-water-batch-1.json",
+   "issue": "well sequence"
+  },
+  {
+   "itemId": "og-class1-water-b2-cause-effect-0267",
+   "courseKey": "class1-water",
+   "overlay": "2026-11-14-class1-water-batch-2.json",
+   "issue": "throttling load"
+  },
+  {
+   "itemId": "og-class1-water-b2-tap-the-flaw-0327",
+   "courseKey": "class1-water",
+   "overlay": "2026-11-14-class1-water-batch-2.json",
+   "issue": "US units dosing"
+  },
+  {
+   "itemId": "og-class1-ww-b1-speed-match-0098",
+   "courseKey": "class1-ww",
+   "overlay": "2026-11-14-class1-ww-batch-1.json",
+   "issue": "sampling board"
+  },
+  {
+   "itemId": "og-oit-ww-b12-cause-effect-0077",
+   "courseKey": "oit-ww",
+   "overlay": "2026-11-14-oit-ww-batch-12.json",
+   "issue": "US units gallons"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b2-rapid-swipe-0017",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-15-class1-wastewater-coll-batch2.json",
+   "issue": "sonar"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b2-speed-match-0068",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-15-class1-wastewater-coll-batch2.json",
+   "issue": "US units miles"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b2-speed-match-0078",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-15-class1-wastewater-coll-batch2.json",
+   "issue": "pump calibration pair"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b2-odd-one-out-0164",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-15-class1-wastewater-coll-batch2.json",
+   "issue": "US units miles"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b2-odd-one-out-0165",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-15-class1-wastewater-coll-batch2.json",
+   "issue": "US units miles"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b2-odd-one-out-0169",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-15-class1-wastewater-coll-batch2.json",
+   "issue": "US units miles"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b2-cause-effect-0256",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-15-class1-wastewater-coll-batch2.json",
+   "issue": "CCTV waterline"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b2-tap-the-flaw-0330",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-15-class1-wastewater-coll-batch2.json",
+   "issue": "US units miles"
+  },
+  {
+   "itemId": "og-class1-water-dist-b2-tap-the-flaw-0328",
+   "courseKey": "class1-water-dist",
+   "overlay": "2026-11-15-class1-water-dist-batch2.json",
+   "issue": "rechlorination"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b101-rapid-swipe-0053",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch1.json",
+   "issue": "motor current"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b101-cause-effect-0298",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch1.json",
+   "issue": "fixed-rate float"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b102-rapid-swipe-0017",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch2.json",
+   "issue": "sonar"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b102-speed-match-0068",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch2.json",
+   "issue": "US units miles"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b102-speed-match-0078",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch2.json",
+   "issue": "pump calibration pair"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b102-odd-one-out-0164",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch2.json",
+   "issue": "US units miles"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b102-odd-one-out-0165",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch2.json",
+   "issue": "US units miles"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b102-odd-one-out-0169",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch2.json",
+   "issue": "US units miles"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b102-cause-effect-0256",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch2.json",
+   "issue": "CCTV waterline"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b102-tap-the-flaw-0330",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch2.json",
+   "issue": "US units miles"
+  },
+  {
+   "itemId": "og-class2-water-b101-before-after-0245",
+   "courseKey": "class2-water",
+   "overlay": "2026-11-15-class2-s-water-batch1.json",
+   "issue": "well sequence"
+  },
+  {
+   "itemId": "og-class2-water-b101-before-after-0246",
+   "courseKey": "class2-water",
+   "overlay": "2026-11-15-class2-s-water-batch1.json",
+   "issue": "well sequence"
+  },
+  {
+   "itemId": "og-class2-water-b101-before-after-0247",
+   "courseKey": "class2-water",
+   "overlay": "2026-11-15-class2-s-water-batch1.json",
+   "issue": "well sequence"
+  },
+  {
+   "itemId": "og-class2-water-b102-cause-effect-0267",
+   "courseKey": "class2-water",
+   "overlay": "2026-11-15-class2-s-water-batch2.json",
+   "issue": "throttling load"
+  },
+  {
+   "itemId": "og-class2-water-b102-tap-the-flaw-0327",
+   "courseKey": "class2-water",
+   "overlay": "2026-11-15-class2-s-water-batch2.json",
+   "issue": "US units dosing"
+  },
+  {
+   "itemId": "og-class2-water-dist-b102-tap-the-flaw-0328",
+   "courseKey": "class2-water-dist",
+   "overlay": "2026-11-15-class2-s-water-dist-batch2.json",
+   "issue": "rechlorination"
+  },
+  {
+   "itemId": "og-class2-ww-b101-speed-match-0098",
+   "courseKey": "class2-ww",
+   "overlay": "2026-11-15-class2-s-ww-batch1.json",
+   "issue": "sampling board"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b1-speed-match-0072",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-wastewater-coll-batch1.json",
+   "issue": "force main board"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b1-odd-one-out-0118",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-wastewater-coll-batch1.json",
+   "issue": "wet well odd set"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b1-odd-one-out-0121",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-wastewater-coll-batch1.json",
+   "issue": "wet well odd set"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b1-before-after-0174",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-wastewater-coll-batch1.json",
+   "issue": "backup order"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b1-before-after-0176",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-wastewater-coll-batch1.json",
+   "issue": "backup order"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b1-before-after-0177",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-wastewater-coll-batch1.json",
+   "issue": "backup order"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b101-rapid-swipe-0046",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch1.json",
+   "issue": "motor current"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b101-cause-effect-0215",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch1.json",
+   "issue": "fixed-rate float"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b102-rapid-swipe-0015",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch2.json",
+   "issue": "sonar"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b102-speed-match-0059",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch2.json",
+   "issue": "US units miles"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b102-speed-match-0068",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch2.json",
+   "issue": "pump calibration pair"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b102-odd-one-out-0113",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch2.json",
+   "issue": "US units miles"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b102-odd-one-out-0114",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch2.json",
+   "issue": "US units miles"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b102-odd-one-out-0118",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch2.json",
+   "issue": "US units miles"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b102-cause-effect-0203",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch2.json",
+   "issue": "CCTV waterline"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b102-tap-the-flaw-0270",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch2.json",
+   "issue": "US units miles"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b202-speed-match-0072",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-depth2.json",
+   "issue": "force main board"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b202-odd-one-out-0118",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-depth2.json",
+   "issue": "wet well odd set"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b202-odd-one-out-0121",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-depth2.json",
+   "issue": "wet well odd set"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b202-before-after-0174",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-depth2.json",
+   "issue": "backup order"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b202-before-after-0176",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-depth2.json",
+   "issue": "backup order"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b202-before-after-0177",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-depth2.json",
+   "issue": "backup order"
+  },
+  {
+   "itemId": "og-class3-water-b101-before-after-0169",
+   "courseKey": "class3-water",
+   "overlay": "2026-11-15-class3-s-water-batch1.json",
+   "issue": "well sequence"
+  },
+  {
+   "itemId": "og-class3-water-b101-before-after-0170",
+   "courseKey": "class3-water",
+   "overlay": "2026-11-15-class3-s-water-batch1.json",
+   "issue": "well sequence"
+  },
+  {
+   "itemId": "og-class3-water-b101-before-after-0171",
+   "courseKey": "class3-water",
+   "overlay": "2026-11-15-class3-s-water-batch1.json",
+   "issue": "well sequence"
+  },
+  {
+   "itemId": "og-class3-water-b102-cause-effect-0183",
+   "courseKey": "class3-water",
+   "overlay": "2026-11-15-class3-s-water-batch2.json",
+   "issue": "throttling load"
+  },
+  {
+   "itemId": "og-class3-water-b102-tap-the-flaw-0226",
+   "courseKey": "class3-water",
+   "overlay": "2026-11-15-class3-s-water-batch2.json",
+   "issue": "US units dosing"
+  },
+  {
+   "itemId": "og-class3-water-dist-b102-tap-the-flaw-0319",
+   "courseKey": "class3-water-dist",
+   "overlay": "2026-11-15-class3-s-water-dist-batch2.json",
+   "issue": "rechlorination"
+  },
+  {
+   "itemId": "og-class3-ww-b101-speed-match-0073",
+   "courseKey": "class3-ww",
+   "overlay": "2026-11-15-class3-s-ww-batch1.json",
+   "issue": "sampling board"
+  },
+  {
+   "itemId": "og-class3-ww-b1-rapid-swipe-0046",
+   "courseKey": "class3-ww",
+   "overlay": "2026-11-15-class3-ww-batch1.json",
+   "issue": "step feed"
+  },
+  {
+   "itemId": "og-class3-ww-b1-speed-match-0089",
+   "courseKey": "class3-ww",
+   "overlay": "2026-11-15-class3-ww-batch1.json",
+   "issue": "step feed board"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b101-rapid-swipe-0046",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch1.json",
+   "issue": "motor current"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b101-cause-effect-0215",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch1.json",
+   "issue": "fixed-rate float"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b102-rapid-swipe-0015",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch2.json",
+   "issue": "sonar"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b102-speed-match-0059",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch2.json",
+   "issue": "US units miles"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b102-speed-match-0068",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch2.json",
+   "issue": "pump calibration pair"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b102-odd-one-out-0113",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch2.json",
+   "issue": "US units miles"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b102-odd-one-out-0114",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch2.json",
+   "issue": "US units miles"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b102-odd-one-out-0118",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch2.json",
+   "issue": "US units miles"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b102-cause-effect-0203",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch2.json",
+   "issue": "CCTV waterline"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b102-tap-the-flaw-0270",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch2.json",
+   "issue": "US units miles"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b202-speed-match-0072",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-depth2.json",
+   "issue": "force main board"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b202-odd-one-out-0118",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-depth2.json",
+   "issue": "wet well odd set"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b202-odd-one-out-0121",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-depth2.json",
+   "issue": "wet well odd set"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b202-before-after-0174",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-depth2.json",
+   "issue": "backup order"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b202-before-after-0176",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-depth2.json",
+   "issue": "backup order"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b202-before-after-0177",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-depth2.json",
+   "issue": "backup order"
+  },
+  {
+   "itemId": "og-class4-water-b101-before-after-0169",
+   "courseKey": "class4-water",
+   "overlay": "2026-11-15-class4-s-water-batch1.json",
+   "issue": "well sequence"
+  },
+  {
+   "itemId": "og-class4-water-b101-before-after-0170",
+   "courseKey": "class4-water",
+   "overlay": "2026-11-15-class4-s-water-batch1.json",
+   "issue": "well sequence"
+  },
+  {
+   "itemId": "og-class4-water-b101-before-after-0171",
+   "courseKey": "class4-water",
+   "overlay": "2026-11-15-class4-s-water-batch1.json",
+   "issue": "well sequence"
+  },
+  {
+   "itemId": "og-class4-water-b102-cause-effect-0183",
+   "courseKey": "class4-water",
+   "overlay": "2026-11-15-class4-s-water-batch2.json",
+   "issue": "throttling load"
+  },
+  {
+   "itemId": "og-class4-water-b102-tap-the-flaw-0226",
+   "courseKey": "class4-water",
+   "overlay": "2026-11-15-class4-s-water-batch2.json",
+   "issue": "US units dosing"
+  },
+  {
+   "itemId": "og-class4-water-dist-b102-tap-the-flaw-0319",
+   "courseKey": "class4-water-dist",
+   "overlay": "2026-11-15-class4-s-water-dist-batch2.json",
+   "issue": "rechlorination"
+  },
+  {
+   "itemId": "og-class4-ww-b101-speed-match-0073",
+   "courseKey": "class4-ww",
+   "overlay": "2026-11-15-class4-s-ww-batch1.json",
+   "issue": "sampling board"
+  },
+  {
+   "itemId": "og-class4-ww-b203-rapid-swipe-0046",
+   "courseKey": "class4-ww",
+   "overlay": "2026-11-15-class4-s-ww-depth3.json",
+   "issue": "step feed"
+  },
+  {
+   "itemId": "og-class4-ww-b203-speed-match-0089",
+   "courseKey": "class4-ww",
+   "overlay": "2026-11-15-class4-s-ww-depth3.json",
+   "issue": "step feed board"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b1-odd-one-out-0190",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-14-class1-wastewater-coll-batch-1.json",
+   "issue": "septic odd set"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b1-odd-one-out-0191",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-14-class1-wastewater-coll-batch-1.json",
+   "issue": "septic odd set"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b1-odd-one-out-0193",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-14-class1-wastewater-coll-batch-1.json",
+   "issue": "septic odd set"
+  },
+  {
+   "itemId": "og-class1-wastewater-coll-b1-odd-one-out-0194",
+   "courseKey": "class1-wastewater-coll",
+   "overlay": "2026-11-14-class1-wastewater-coll-batch-1.json",
+   "issue": "septic odd set"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b101-odd-one-out-0190",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch1.json",
+   "issue": "septic odd set"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b101-odd-one-out-0191",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch1.json",
+   "issue": "septic odd set"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b101-odd-one-out-0193",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch1.json",
+   "issue": "septic odd set"
+  },
+  {
+   "itemId": "og-class2-wastewater-coll-b101-odd-one-out-0194",
+   "courseKey": "class2-wastewater-coll",
+   "overlay": "2026-11-15-class2-s-wastewater-coll-batch1.json",
+   "issue": "septic odd set"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b101-odd-one-out-0140",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch1.json",
+   "issue": "septic odd set"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b101-odd-one-out-0141",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch1.json",
+   "issue": "septic odd set"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b101-odd-one-out-0143",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch1.json",
+   "issue": "septic odd set"
+  },
+  {
+   "itemId": "og-class3-wastewater-coll-b101-odd-one-out-0144",
+   "courseKey": "class3-wastewater-coll",
+   "overlay": "2026-11-15-class3-s-wastewater-coll-batch1.json",
+   "issue": "septic odd set"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b101-odd-one-out-0140",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch1.json",
+   "issue": "septic odd set"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b101-odd-one-out-0141",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch1.json",
+   "issue": "septic odd set"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b101-odd-one-out-0143",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch1.json",
+   "issue": "septic odd set"
+  },
+  {
+   "itemId": "og-class4-wastewater-coll-b101-odd-one-out-0144",
+   "courseKey": "class4-wastewater-coll",
+   "overlay": "2026-11-15-class4-s-wastewater-coll-batch1.json",
+   "issue": "septic odd set"
+  }
+ ]
+}

@@ -97,7 +97,7 @@ const data: CourseData = {
     ["m", "A clarifier is built with a larger surface area for the same flow.", "the surface overflow rate", "decrease", "Flow per unit of surface area falls."],
     ["h", "Recirculated flow is added to a clarifier.", "the surface overflow rate", "unchanged", "Surface overflow rate counts plant flow only and leaves out recirculated flow."],
     ["m", "Solids build up on the plate of an orifice meter in a sewage line.", "the accuracy of the meter", "decrease", "Solids catching on the plate throw off the reading."],
-    ["m", "The sludge pump runs the same minutes per day at the same rate.", "the gallons of sludge pumped per day", "unchanged", "Gallons per day follow operating time and pump rate."],
+    ["m", "The sludge pump runs the same minutes per day at the same rate.", "the cubic metres of sludge pumped per day", "unchanged", "Volume per day follows operating time and pump rate."],
     ["m", "The percent solids of the sludge being pumped rises while the solids load stays the same.", "the volume of sludge to be pumped", "decrease", "Thicker sludge carries the same solids in less volume."],
     ["m", "Water is drawn out of waste sludge in a gravity thickener.", "the solids concentration of the sludge", "increase", "Removing water concentrates the solids that remain."],
     ["m", "A thickener loses little solids in its overflow while water is removed.", "the mass of solids in the sludge stream", "unchanged", "Solids in roughly equal solids out."],
