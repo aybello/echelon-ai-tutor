@@ -98,7 +98,14 @@ export interface InteractiveDrillProps {
   timerSeconds?: 30 | 60 | 90 | null;
   /** Ask the course parent for a fresh server-selected round after the last activity. */
   onNewRound?: () => void;
+  /** Called once per finished activity so a parent can save it. Not called for skipped activities. */
+  onResult?: (result: DrillResult) => void;
+  /** Replaces the "Practice · not saved" pill text, for example when results are being saved. */
+  saveNote?: string;
 }
+
+/** One finished activity. For speed match, correct means every pair was matched without a wrong pick. */
+export interface DrillResult { exampleId: string; mode: DrillMode; correct: boolean }
 
 export const DRILL_MODES: readonly { id: DrillMode; label: string; description: string }[] = [
   { id: "rapid-swipe", label: "Rapid Swipe", description: "Make a quick call" },
@@ -182,11 +189,13 @@ interface ActivityProps {
   onRestart: () => void;
   onNewRound?: () => void;
   onStartRound: () => void;
+  onResult?: (result: DrillResult) => void;
+  saveNote?: string;
   timerSeconds: 30 | 60 | 90 | null;
   focusHeadingIfRequested: (heading: HTMLHeadingElement | null) => void;
 }
 
-function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewRound, onStartRound, timerSeconds, focusHeadingIfRequested }: ActivityProps) {
+function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewRound, onStartRound, onResult, saveNote, timerSeconds, focusHeadingIfRequested }: ActivityProps) {
   const titleId = useId();
   const instructionId = useId();
   const [feedback, setFeedback] = useState<Feedback | null>(null);
@@ -194,6 +203,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
   const [picked, setPicked] = useState<string | null>(null);
   const [outcome, setOutcome] = useState<"correct" | "incorrect" | null>(null);
   const answeredRef = useRef(false);
+  const wrongPairs = useRef(0);
   const [selected, setSelected] = useState<Selection | null>(null);
   const [matched, setMatched] = useState<string[]>([]);
   const [directions, setDirections] = useState<Record<string, CauseEffectDirection>>({});
@@ -236,6 +246,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
     clearSwipe();
     setPicked(pickedKey ?? null);
     setOutcome(correct ? "correct" : "incorrect");
+    onResult?.({ exampleId: example.id, mode: example.mode, correct });
     setFeedback({
       correct,
       text: correct ? explanation : `The correct answer is ${correctLabel}. ${explanation}`,
@@ -250,6 +261,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
     answeredRef.current = true;
     focusFeedback.current = true;
     setOutcome(score.correct ? "correct" : "incorrect");
+    onResult?.({ exampleId: example.id, mode: example.mode, correct: score.correct });
     setEffectResults(Object.fromEntries(score.results.map(result => [result.id, result.correct])));
     setFeedback({
       correct: score.correct,
@@ -311,6 +323,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
     }
     setSelected(null);
     if (selected.pairId !== pairId) {
+      wrongPairs.current += 1;
       setFeedback({ correct: false, text: "Those do not match. Try another pair." });
       return;
     }
@@ -319,6 +332,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
     setMatched(nextMatched);
     if (nextMatched.length === example.pairs.length) {
       setAnswered(true);
+      onResult?.({ exampleId: example.id, mode: example.mode, correct: wrongPairs.current === 0 });
       setFeedback({ correct: true, text: example.explanation || "You matched all the pairs." });
     } else {
       setFeedback({ correct: true, text: "Pair matched. Keep going." });
@@ -339,7 +353,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
     <section className="interactive-drill__activity" data-mode={example.mode} data-outcome={outcome ?? undefined} aria-labelledby={titleId}>
       <div className="interactive-drill__meta">
         <span>Activity {index + 1} of {count}</span>
-        <span className="interactive-drill__pill">Practice · not saved</span>
+        <span className="interactive-drill__pill">{saveNote ?? "Practice · not saved"}</span>
       </div>
       <div className="interactive-drill__track" aria-hidden="true">
         <span style={{ width: `${((index + 1) / count) * 100}%` }} />
@@ -408,7 +422,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
                 </p>
                 <div className="interactive-drill__options interactive-drill__options--directions">
                   {causeEffectDirections.map(direction => (
-                    <button key={direction} type="button" disabled={answered} aria-pressed={directions[effect.id] === direction} className={directions[effect.id] === direction ? "is-selected" : ""} onClick={() => setDirections(previous => ({ ...previous, [effect.id]: direction }))}>
+                    <button key={direction} type="button" data-state={effectResults ? (direction === effect.direction ? "correct" : directions[effect.id] === direction ? "wrong" : undefined) : undefined} disabled={answered} aria-pressed={directions[effect.id] === direction} className={directions[effect.id] === direction ? "is-selected" : ""} onClick={() => setDirections(previous => ({ ...previous, [effect.id]: direction }))}>
                       <span aria-hidden="true">{DIRECTION_SYMBOLS[direction]} </span>{CAUSE_EFFECT_DIRECTION_LABELS[direction]}
                     </button>
                   ))}
@@ -442,7 +456,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
 
 type RoundAnswer = { example: RapidSwipeExample; choice: boolean; correct: boolean };
 /** Timed rounds never invent material: they cycle through the supplied statements. */
-function RapidSwipeRound({ examples, onExit, timerSeconds }: { examples: readonly RapidSwipeExample[]; onExit: () => void; timerSeconds: 30 | 60 | 90 }) {
+function RapidSwipeRound({ examples, onExit, timerSeconds, onResult, saveNote }: { examples: readonly RapidSwipeExample[]; onExit: () => void; timerSeconds: 30 | 60 | 90; onResult?: (result: DrillResult) => void; saveNote?: string }) {
   type Phase = "answer" | "feedback" | "finished";
   const [phase, setPhase] = useState<Phase>("answer");
   const [remaining, setRemaining] = useState<number>(timerSeconds);
@@ -465,6 +479,8 @@ function RapidSwipeRound({ examples, onExit, timerSeconds }: { examples: readonl
     const start = swipeStart.current;
     swipeStart.current = null;
     if (start) {
+      start.element.style.removeProperty("--drag");
+      start.element.style.removeProperty("--pull");
       try { if (start.element.hasPointerCapture(start.id)) start.element.releasePointerCapture(start.id); } catch { /* Pointer already ended. */ }
     }
   };
@@ -524,6 +540,7 @@ function RapidSwipeRound({ examples, onExit, timerSeconds }: { examples: readonl
     state.started = null;
     clearSwipe();
     const correct = choice === current.correctAnswer;
+    onResult?.({ exampleId: current.id, mode: "rapid-swipe", correct });
     const result = { example: current, choice, correct };
     const nextStreak = correct ? streak + 1 : 0;
     setAnswers(previous => [...previous, result]);
@@ -559,9 +576,22 @@ function RapidSwipeRound({ examples, onExit, timerSeconds }: { examples: readonl
     if (Math.abs(dx) >= 55 && Math.abs(dx) > Math.abs(dy)) choose(dx > 0);
   };
   const onSwipeCancel = (event: PointerEvent<HTMLDivElement>) => { if (swipeStart.current?.id === event.pointerId) clearSwipe(); };
+  const onSwipeMove = (event: PointerEvent<HTMLDivElement>) => {
+    const start = swipeStart.current;
+    if (!start || start.id !== event.pointerId) return;
+    const dx = event.clientX - start.x;
+    start.element.style.setProperty("--drag", `${Math.max(-120, Math.min(120, dx))}px`);
+    start.element.style.setProperty("--pull", String(Math.max(-1, Math.min(1, dx / 90))));
+  };
+  /** Marks the right answer and a wrong pick once feedback shows. Decorative styling only. */
+  const roundState = (key: "yes" | "no"): "correct" | "wrong" | undefined => {
+    if (phase !== "feedback" || !lastAnswer) return undefined;
+    if ((key === "yes") === lastAnswer.example.correctAnswer) return "correct";
+    return (key === "yes") === lastAnswer.choice ? "wrong" : undefined;
+  };
   const correctCount = answers.filter(answer => answer.correct).length;
   return (
-    <section className="interactive-drill__activity" aria-labelledby={titleId} onPointerDownCapture={event => {
+    <section className="interactive-drill__activity" data-mode="rapid-swipe" data-outcome={phase === "feedback" && lastAnswer ? (lastAnswer.correct ? "correct" : "incorrect") : undefined} aria-labelledby={titleId} onPointerDownCapture={event => {
       if (event.detail > 1) {
         event.preventDefault();
         if (clock.current.phase === "feedback") feedbackRef.current?.focus();
@@ -576,12 +606,18 @@ function RapidSwipeRound({ examples, onExit, timerSeconds }: { examples: readonl
         if (clock.current.phase === "answer") choose(event.key === "ArrowRight");
       }
     }}>
-      <div className="interactive-drill__meta"><span>Rapid Swipe round</span><span className="interactive-drill__pill">Practice · not saved</span></div>
+      <div className="interactive-drill__meta"><span>Rapid Swipe round</span><span className="interactive-drill__pill">{saveNote ?? "Practice · not saved"}</span></div>
+      {phase !== "finished" && <div className="interactive-drill__track interactive-drill__track--timer" aria-hidden="true" data-low={remaining <= 5 ? "true" : undefined}><span style={{ width: `${Math.max(0, Math.min(100, (remaining / timerSeconds) * 100))}%` }} /></div>}
       <div className="interactive-drill__content interactive-drill__round">
         <h2 id={titleId} ref={headingRef} tabIndex={-1}>{phase === "finished" ? "Round complete" : `${timerSeconds}-second round`}</h2>
         <p>Time: {remaining}s · Correct: {correctCount}/{answers.length} · Streak: {streak} · Best combo: {bestStreak}</p>
         {phase === "finished" ? <>
           <p role="status">Round complete. {correctCount} correct out of {answers.length} answered. Best combo: {bestStreak}.</p>
+          <div className="interactive-drill__stats" aria-hidden="true">
+            <div><strong>{answers.length ? Math.round((correctCount / answers.length) * 100) : 0}%</strong><span>accuracy</span></div>
+            <div><strong>{correctCount}</strong><span>correct</span></div>
+            <div><strong>{bestStreak}</strong><span>best combo</span></div>
+          </div>
           {answers.length > 0 && <><h3>Answer review</h3><ol className="interactive-drill__review">{answers.map((answer, index) => <li key={index}>
             <strong>{answer.example.prompt}</strong><br />
             {answer.correct ? "Correct" : "Not quite"} · Your answer: {answer.choice ? "Yes" : "No"} · Correct answer: {answer.example.correctAnswer ? "Yes" : "No"}. {answer.example.explanation}
@@ -592,11 +628,11 @@ function RapidSwipeRound({ examples, onExit, timerSeconds }: { examples: readonl
           <>
             <h3 ref={promptRef} tabIndex={-1}>{current.prompt}</h3>
             {current.instruction && <p>{current.instruction}</p>}
-            <div className="interactive-drill__swipe" onPointerDown={onSwipeStart} onPointerUp={onSwipeEnd} onPointerCancel={onSwipeCancel} onLostPointerCapture={onSwipeCancel}>
-              <span aria-hidden="true">← No</span><span>Swipe to choose</span><span aria-hidden="true">Yes →</span>
+            <div className="interactive-drill__swipe" data-picked={phase === "feedback" && lastAnswer ? (lastAnswer.choice ? "yes" : "no") : undefined} onPointerDown={onSwipeStart} onPointerMove={onSwipeMove} onPointerUp={onSwipeEnd} onPointerCancel={onSwipeCancel} onLostPointerCapture={onSwipeCancel}>
+              <span aria-hidden="true">← No</span><span className="interactive-drill__swipe-token">Swipe to choose</span><span aria-hidden="true">Yes →</span>
             </div>
             <div className="interactive-drill__options interactive-drill__options--two">
-              <button type="button" disabled={phase !== "answer"} onClick={event => { if (event.detail <= 1) choose(false); }}>No</button><button type="button" disabled={phase !== "answer"} onClick={event => { if (event.detail <= 1) choose(true); }}>Yes</button>
+              <button type="button" data-choice="no" data-state={roundState("no")} disabled={phase !== "answer"} onClick={event => { if (event.detail <= 1) choose(false); }}>No</button><button type="button" data-choice="yes" data-state={roundState("yes")} disabled={phase !== "answer"} onClick={event => { if (event.detail <= 1) choose(true); }}>Yes</button>
             </div>
           </>
           <div ref={feedbackRef} tabIndex={-1} role="status" aria-live="polite" aria-atomic="true" className="interactive-drill__feedback-region">
@@ -611,7 +647,7 @@ function RapidSwipeRound({ examples, onExit, timerSeconds }: { examples: readonl
 }
 
 /** A local-only practice UI. Switching activities resets their temporary state. */
-export function InteractiveDrill({ examples, className, selectedMode, onModeChange, availableModes: suppliedModes, hideModeNavigation = false, timerSeconds = 30, onNewRound }: InteractiveDrillProps) {
+export function InteractiveDrill({ examples, className, selectedMode, onModeChange, availableModes: suppliedModes, hideModeNavigation = false, timerSeconds = 30, onNewRound, onResult, saveNote }: InteractiveDrillProps) {
   const availableModes = DRILL_MODES.filter(mode => suppliedModes ? suppliedModes.includes(mode.id) : examples.some(example => example.mode === mode.id));
   const [requestedMode, setRequestedMode] = useState<DrillMode | null>(null);
   const [requestedIndex, setRequestedIndex] = useState(0);
@@ -650,15 +686,15 @@ export function InteractiveDrill({ examples, className, selectedMode, onModeChan
         <div className={`interactive-drill__layout${hideModeNavigation ? " interactive-drill__layout--activity-only" : ""}`}>
           {!hideModeNavigation && availableModes.length > 0 && <nav className="interactive-drill__nav" aria-label="Choose a practice mode">
             {availableModes.map(mode => (
-              <button type="button" key={mode.id} className={mode.id === activeMode?.id ? "is-active" : ""} aria-current={mode.id === activeMode?.id ? "true" : undefined} onClick={() => chooseMode(mode.id)}>
+              <button type="button" key={mode.id} data-mode={mode.id} className={mode.id === activeMode?.id ? "is-active" : ""} aria-current={mode.id === activeMode?.id ? "true" : undefined} onClick={() => chooseMode(mode.id)}>
                 <span>{mode.label}</span><small>{mode.description}</small>
               </button>
             ))}
           </nav>}
           {!example ? <p className="interactive-drill__empty" role="status">No practice activities are available yet.</p> : round && activeMode?.id === "rapid-swipe" && timerSeconds !== null ? (
-            <RapidSwipeRound key={JSON.stringify([modeExamples, timerSeconds])} timerSeconds={timerSeconds} examples={modeExamples.filter((item): item is RapidSwipeExample => item.mode === "rapid-swipe")} onExit={() => { setRound(false); changeIndex(0); }} />
+            <RapidSwipeRound key={JSON.stringify([modeExamples, timerSeconds])} timerSeconds={timerSeconds} onResult={onResult} saveNote={saveNote} examples={modeExamples.filter((item): item is RapidSwipeExample => item.mode === "rapid-swipe")} onExit={() => { setRound(false); changeIndex(0); }} />
           ) : (
-            <Activity key={`${selectedMode ?? activeMode?.id}-${example.id}-${attempt}-${timerSeconds}`} timerSeconds={timerSeconds} example={example} index={index} count={modeExamples.length} onPrevious={() => changeIndex(index - 1)} onNext={() => changeIndex(index + 1)} onRestart={() => changeIndex(0)} onNewRound={onNewRound} onStartRound={() => setRound(true)} focusHeadingIfRequested={focusHeadingIfRequested} />
+            <Activity key={`${selectedMode ?? activeMode?.id}-${example.id}-${attempt}-${timerSeconds}`} timerSeconds={timerSeconds} example={example} index={index} count={modeExamples.length} onPrevious={() => changeIndex(index - 1)} onNext={() => changeIndex(index + 1)} onRestart={() => changeIndex(0)} onNewRound={onNewRound} onResult={onResult} saveNote={saveNote} onStartRound={() => setRound(true)} focusHeadingIfRequested={focusHeadingIfRequested} />
           )}
         </div>
     </div>

@@ -1676,3 +1676,36 @@ export const blogAutomationRunArchives = mysqlTable("blog_automation_run_archive
   uniqueIndex("blog_run_archive_source_unique").on(table.sourceRunId, table.sourceRunKey),
   index("blog_run_archive_archived_idx").on(table.archivedAt),
 ]);
+
+/**
+ * Saved game results, one row per learner and item. learnerKey is "user:<id>" for a signed-in account or
+ * "email:<address>" for a verified email-code student. Anonymous play is never stored.
+ * box is a Leitner box from 0 (missed, review now) to 4 (solid); dueAt is when the item should come back.
+ */
+export const interactiveItemProgress = mysqlTable("interactive_item_progress", {
+  id: int("id").autoincrement().primaryKey(),
+  learnerKey: varchar("learnerKey", { length: 330 }).notNull(),
+  courseKey: varchar("courseKey", { length: 64 }).notNull(),
+  itemId: varchar("itemId", { length: 80 }).notNull(),
+  mode: varchar("mode", { length: 24 }).notNull(),
+  attempts: int("attempts").default(0).notNull(),
+  correctCount: int("correctCount").default(0).notNull(),
+  box: int("box").default(0).notNull(),
+  lastCorrect: boolean("lastCorrect").notNull(),
+  lastAttemptAt: timestamp("lastAttemptAt").defaultNow().notNull(),
+  dueAt: timestamp("dueAt").defaultNow().notNull(),
+}, table => [
+  uniqueIndex("iip_learner_item_unique").on(table.learnerKey, table.courseKey, table.itemId),
+  index("iip_learner_due_idx").on(table.learnerKey, table.courseKey, table.dueAt),
+]);
+
+/** Per learner per local day, for the daily goal and streak. activityDate is "YYYY-MM-DD". */
+export const interactiveDailyActivity = mysqlTable("interactive_daily_activity", {
+  id: int("id").autoincrement().primaryKey(),
+  learnerKey: varchar("learnerKey", { length: 330 }).notNull(),
+  activityDate: varchar("activityDate", { length: 10 }).notNull(),
+  answered: int("answered").default(0).notNull(),
+  correct: int("correct").default(0).notNull(),
+}, table => [
+  uniqueIndex("ida_learner_day_unique").on(table.learnerKey, table.activityDate),
+]);

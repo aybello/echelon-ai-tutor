@@ -19,7 +19,7 @@ const json = (value: unknown) => JSON.stringify(value);
 // Fingerprint of the public runtime behavior sources, including this file with
 // this constant normalized to zeros (see regression test). Changing behavior
 // requires restamping it. It is not an approval of the effective release.
-export const BEHAVIOR_POLICY_SHA256 = "3caf25e576057e50d406e8e9b7cff33648c86d63a657348c55c4cb7237924f10";
+export const BEHAVIOR_POLICY_SHA256 = "4ad2326a4ba3f050300632127f6b38337f2c9065aa223de60f98975ffbaa9823";
 const canonical = (value: unknown): string => {
   if (Array.isArray(value)) return `[${value.map(canonical).join(",")}]`;
   if (value !== null && typeof value === "object") return `{${Object.entries(value).filter(([, v]) => v !== undefined).sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0).map(([k, v]) => `${json(k)}:${canonical(v)}`).join(",")}}`;
@@ -229,7 +229,16 @@ export class InteractiveContentEngine {
       return interactiveCatalogResponseSchema.parse({ courseKey, available: true, locked: !hasAccess, version: effectiveReleaseVersion(manifest, this.overlayDocuments), modes });
     });
   }
-  startSession(input: InteractiveStartSessionInput, hasAccess: boolean): InteractiveSessionResponse {
+  /** Id to mode for every item a learner could be served in this course, after revisions and exclusions. */
+  knownItems(courseKey: string): Map<string, InteractiveMode> {
+    return this.guarded(() => {
+      const manifest = this.manifest(courseKey);
+      if (!manifest) return new Map<string, InteractiveMode>();
+      return new Map(this.pool(courseKey, manifest).map(entry => [entry.id, entry.mode as InteractiveMode]));
+    });
+  }
+  /** `preferIds` (replay items for a signed-in learner) are served first when eligible; the rest is the usual random sample. */
+  startSession(input: InteractiveStartSessionInput, hasAccess: boolean, preferIds: readonly string[] = []): InteractiveSessionResponse {
     return this.guarded(() => {
       const { courseKey, mode, sessionSize } = input;
       const manifest = this.manifest(courseKey);
@@ -251,10 +260,18 @@ export class InteractiveContentEngine {
       let selected: Candidate[];
       if (!hasAccess) selected = preview ? [preview] : [];
       else {
-        // Partial Fisher-Yates: exact intersection, without replacement; no whole bank read.
-        const candidates = [...eligible];
-        selected = [];
-        for (let i = 0; i < Math.min(sessionSize, candidates.length); i++) {
+        // Replay items first (only those still eligible, in the order given), then a partial
+        // Fisher-Yates over the rest: exact intersection, without replacement; no whole bank read.
+        const byId = new Map(eligible.map(entry => [entry.id, entry]));
+        const preferred: Candidate[] = [];
+        for (const id of preferIds) {
+          const entry = byId.get(id);
+          if (entry && !preferred.includes(entry) && preferred.length < sessionSize) preferred.push(entry);
+        }
+        const taken = new Set(preferred.map(entry => entry.id));
+        const candidates = eligible.filter(entry => !taken.has(entry.id));
+        selected = [...preferred];
+        for (let i = 0; i < Math.min(sessionSize - preferred.length, candidates.length); i++) {
           const j = randomInt(i, candidates.length);
           [candidates[i], candidates[j]] = [candidates[j], candidates[i]];
           selected.push(candidates[i]);

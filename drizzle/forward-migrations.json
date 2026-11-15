@@ -516,6 +516,23 @@
       "verifierAllowMissingTables": [
         "blog_automation_run_archives"
       ]
+    },
+    {
+      "version": 82,
+      "tag": "0082_interactive_saved_results",
+      "file": "drizzle/0082_interactive_saved_results.sql",
+      "sha256": "90d85902559112e1189c98caaa30d7f43048fcf1aeee81ce27f7e503e6b138b7",
+      "proposedOnly": true,
+      "standaloneApply": {
+        "tables": [
+          "interactive_item_progress",
+          "interactive_daily_activity"
+        ]
+      },
+      "verifierAllowMissingTables": [
+        "interactive_item_progress",
+        "interactive_daily_activity"
+      ]
     }
   ]
 }
