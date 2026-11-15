@@ -74,14 +74,16 @@ describe("reviewed rapid-swipe balance overlay", () => {
 
 describe("reviewed option-length revisions for class2-ww", () => {
   const modes = ["odd-one-out", "tap-the-flaw", "cause-effect"] as const;
-  const served = () => modes.flatMap(mode => engine.startSession({ courseKey: "class2-ww", mode, sessionSize: 50 }, true).examples);
+  // Isolate the historical revision cohort from later additive publications.
+  const revisionEngine = new InteractiveContentEngine(undefined, (committedOverlayDocuments() as ContentOverlay[]).filter(d => d.replacements.some(r => r.courseKey === "class2-ww")));
+  const served = () => modes.flatMap(mode => revisionEngine.startSession({ courseKey: "class2-ww", mode, sessionSize: 50 }, true).examples);
   const revisions = (committedOverlayDocuments() as ContentOverlay[]).flatMap(d => d.replacements).filter(r => r.courseKey === "class2-ww");
 
   it("serves each revision instead of its stored original, with unchanged pool counts", () => {
     expect(revisions).toHaveLength(32);
     const plain = new InteractiveContentEngine(undefined, []);
     for (const mode of modes) {
-      const withOverlay = engine.getCatalog("class2-ww", true).modes.find(m => m.mode === mode)!.totalCount;
+      const withOverlay = revisionEngine.getCatalog("class2-ww", true).modes.find(m => m.mode === mode)!.totalCount;
       expect(withOverlay).toBe(plain.getCatalog("class2-ww", true).modes.find(m => m.mode === mode)!.totalCount);
     }
     const ids = new Set(served().map(e => e.id));
