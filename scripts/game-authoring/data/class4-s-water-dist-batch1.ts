@@ -135,7 +135,7 @@ const data: CourseData = {
   sequences: [
     // Sources: [WV] disinfection of water mains (flush, chlorinate, final flush and test); [FG] testing and disinfecting new mains
     // Source: [FG] AWWA pipe repair checklist
-    { d: "m", process: "fixing a leaking pipeline", steps: ["Locate and mark buried utilities", "Expose the damaged section", "Install clean, disinfected parts", "Flush the repaired section", "Backfill and compact", "Document the work"], why: "Crews locate utilities before digging, repair with clean parts, flush, then restore and record.", max: 8 },
+    { d: "m", process: "fixing a leaking pipeline", steps: ["Locate and mark buried utilities", "Expose the damaged section", "Install clean, disinfected parts", "Check the repair for leaks under pressure", "Backfill and compact", "Document the work"], why: "Crews locate utilities before digging, repair with clean parts, prove the repair is tight with the trench open, then backfill and record.", max: 8 },
     // Source: [FG] testing, leaks, and flushing (general procedures for testing of pipe)
     { d: "m", process: "proving that a new pipeline is tight", steps: ["Let concrete blocking cure", "Fill with water and vent the air", "Apply partial pressure and check for air", "Raise pressure to the test level", "Hold pressure and record makeup water"], why: "Blocking is cured and air removed before the full test pressure is held and leakage measured.", max: 8 },
     // Source: [WV] customer complaints and public relations

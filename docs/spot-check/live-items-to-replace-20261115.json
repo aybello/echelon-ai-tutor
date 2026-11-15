@@ -1844,6 +1844,150 @@
    "courseKey": "class4-ww",
    "overlay": "2026-11-15-class4-s-ww-depth3.json",
    "issue": "step feed sequence"
+  },
+  {
+   "itemId": "og-class1-water-dist-b1-before-after-0208",
+   "courseKey": "class1-water-dist",
+   "overlay": "2026-11-15-class1-water-dist-batch1.json",
+   "issue": "main repair order: flushing before backfill was arguable; step replaced by a pressure leak check (round 3)"
+  },
+  {
+   "itemId": "og-class1-water-dist-b1-before-after-0210",
+   "courseKey": "class1-water-dist",
+   "overlay": "2026-11-15-class1-water-dist-batch1.json",
+   "issue": "main repair order: flushing before backfill was arguable; step replaced by a pressure leak check (round 3)"
+  },
+  {
+   "itemId": "og-class1-water-dist-b1-before-after-0211",
+   "courseKey": "class1-water-dist",
+   "overlay": "2026-11-15-class1-water-dist-batch1.json",
+   "issue": "main repair order: flushing before backfill was arguable; step replaced by a pressure leak check (round 3)"
+  },
+  {
+   "itemId": "og-class1-water-dist-b1-before-after-0213",
+   "courseKey": "class1-water-dist",
+   "overlay": "2026-11-15-class1-water-dist-batch1.json",
+   "issue": "main repair order: flushing before backfill was arguable; step replaced by a pressure leak check (round 3)"
+  },
+  {
+   "itemId": "og-class1-water-dist-b3-speed-match-0006",
+   "courseKey": "class1-water-dist",
+   "overlay": "2026-11-15-class1-water-dist-batch3.json",
+   "issue": "pump power board used the uncommon term 'Racking'; renamed to 'Short cycling' (round 3)"
+  },
+  {
+   "itemId": "og-class1-water-dist-b3-cause-effect-0096",
+   "courseKey": "class1-water-dist",
+   "overlay": "2026-11-15-class1-water-dist-batch3.json",
+   "issue": "pump power board used the uncommon term 'Racking'; renamed to 'Short cycling' (round 3)"
+  },
+  {
+   "itemId": "og-class2-water-dist-b101-before-after-0208",
+   "courseKey": "class2-water-dist",
+   "overlay": "2026-11-15-class2-s-water-dist-batch1.json",
+   "issue": "main repair order: flushing before backfill was arguable; step replaced by a pressure leak check (round 3)"
+  },
+  {
+   "itemId": "og-class2-water-dist-b101-before-after-0210",
+   "courseKey": "class2-water-dist",
+   "overlay": "2026-11-15-class2-s-water-dist-batch1.json",
+   "issue": "main repair order: flushing before backfill was arguable; step replaced by a pressure leak check (round 3)"
+  },
+  {
+   "itemId": "og-class2-water-dist-b101-before-after-0211",
+   "courseKey": "class2-water-dist",
+   "overlay": "2026-11-15-class2-s-water-dist-batch1.json",
+   "issue": "main repair order: flushing before backfill was arguable; step replaced by a pressure leak check (round 3)"
+  },
+  {
+   "itemId": "og-class2-water-dist-b101-before-after-0213",
+   "courseKey": "class2-water-dist",
+   "overlay": "2026-11-15-class2-s-water-dist-batch1.json",
+   "issue": "main repair order: flushing before backfill was arguable; step replaced by a pressure leak check (round 3)"
+  },
+  {
+   "itemId": "og-class2-water-dist-b103-speed-match-0006",
+   "courseKey": "class2-water-dist",
+   "overlay": "2026-11-15-class2-s-water-dist-batch3.json",
+   "issue": "pump power board used the uncommon term 'Racking'; renamed to 'Short cycling' (round 3)"
+  },
+  {
+   "itemId": "og-class2-water-dist-b103-cause-effect-0096",
+   "courseKey": "class2-water-dist",
+   "overlay": "2026-11-15-class2-s-water-dist-batch3.json",
+   "issue": "pump power board used the uncommon term 'Racking'; renamed to 'Short cycling' (round 3)"
+  },
+  {
+   "itemId": "og-class3-water-dist-b101-before-after-0165",
+   "courseKey": "class3-water-dist",
+   "overlay": "2026-11-15-class3-s-water-dist-batch1.json",
+   "issue": "main repair order: flushing before backfill was arguable; step replaced by a pressure leak check (round 3)"
+  },
+  {
+   "itemId": "og-class3-water-dist-b101-before-after-0167",
+   "courseKey": "class3-water-dist",
+   "overlay": "2026-11-15-class3-s-water-dist-batch1.json",
+   "issue": "main repair order: flushing before backfill was arguable; step replaced by a pressure leak check (round 3)"
+  },
+  {
+   "itemId": "og-class3-water-dist-b101-before-after-0168",
+   "courseKey": "class3-water-dist",
+   "overlay": "2026-11-15-class3-s-water-dist-batch1.json",
+   "issue": "main repair order: flushing before backfill was arguable; step replaced by a pressure leak check (round 3)"
+  },
+  {
+   "itemId": "og-class3-water-dist-b101-before-after-0170",
+   "courseKey": "class3-water-dist",
+   "overlay": "2026-11-15-class3-s-water-dist-batch1.json",
+   "issue": "main repair order: flushing before backfill was arguable; step replaced by a pressure leak check (round 3)"
+  },
+  {
+   "itemId": "og-class3-water-dist-b103-speed-match-0005",
+   "courseKey": "class3-water-dist",
+   "overlay": "2026-11-15-class3-s-water-dist-batch3.json",
+   "issue": "pump power board used the uncommon term 'Racking'; renamed to 'Short cycling' (round 3)"
+  },
+  {
+   "itemId": "og-class3-water-dist-b103-cause-effect-0084",
+   "courseKey": "class3-water-dist",
+   "overlay": "2026-11-15-class3-s-water-dist-batch3.json",
+   "issue": "pump power board used the uncommon term 'Racking'; renamed to 'Short cycling' (round 3)"
+  },
+  {
+   "itemId": "og-class4-water-dist-b101-before-after-0165",
+   "courseKey": "class4-water-dist",
+   "overlay": "2026-11-15-class4-s-water-dist-batch1.json",
+   "issue": "main repair order: flushing before backfill was arguable; step replaced by a pressure leak check (round 3)"
+  },
+  {
+   "itemId": "og-class4-water-dist-b101-before-after-0167",
+   "courseKey": "class4-water-dist",
+   "overlay": "2026-11-15-class4-s-water-dist-batch1.json",
+   "issue": "main repair order: flushing before backfill was arguable; step replaced by a pressure leak check (round 3)"
+  },
+  {
+   "itemId": "og-class4-water-dist-b101-before-after-0168",
+   "courseKey": "class4-water-dist",
+   "overlay": "2026-11-15-class4-s-water-dist-batch1.json",
+   "issue": "main repair order: flushing before backfill was arguable; step replaced by a pressure leak check (round 3)"
+  },
+  {
+   "itemId": "og-class4-water-dist-b101-before-after-0170",
+   "courseKey": "class4-water-dist",
+   "overlay": "2026-11-15-class4-s-water-dist-batch1.json",
+   "issue": "main repair order: flushing before backfill was arguable; step replaced by a pressure leak check (round 3)"
+  },
+  {
+   "itemId": "og-class4-water-dist-b103-speed-match-0005",
+   "courseKey": "class4-water-dist",
+   "overlay": "2026-11-15-class4-s-water-dist-batch3.json",
+   "issue": "pump power board used the uncommon term 'Racking'; renamed to 'Short cycling' (round 3)"
+  },
+  {
+   "itemId": "og-class4-water-dist-b103-cause-effect-0084",
+   "courseKey": "class4-water-dist",
+   "overlay": "2026-11-15-class4-s-water-dist-batch3.json",
+   "issue": "pump power board used the uncommon term 'Racking'; renamed to 'Short cycling' (round 3)"
   }
  ]
 }

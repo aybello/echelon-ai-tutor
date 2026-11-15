@@ -1,0 +1,280 @@
+﻿sample_id,course,system,mode,difficulty,item_id,source_overlay,prompt,options_or_pairs,marked_correct,explanation,verdict,correction_or_note,reviewer
+WPI-001,wpi-class1-water-dist,wpi-class1-water-dist-g1.ts,Before or after (which comes first),medium,og-wpi-class1-water-dist-s-wpi-class1-water-dist-g1.ts-before-after-0068,wpi-class1-water-dist-g1.ts,"In a tracked maintenance job, which step comes later?","1) Plan the job and assign a crew
+2) Carry out the work",Carry out the work,"The job is opened, planned, done and recorded, and last of all closed with the history updated. Plan the job and assign a crew comes before Carry out the work.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-002,wpi-class4-water,wpi-class4-water-g1.ts,Cause and effect,hard,og-wpi-class4-water-s-wpi-class4-water-g1.ts-cause-effect-0053,wpi-class4-water-g1.ts,A rectifier on an impressed current system sits switched off for weeks without notice. What happens to the corrosion rate of the protected pipe?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,Without protective current the steel corrodes at its natural rate.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-003,wpi-class1-water-dist,wpi-class1-water-dist-w1.ts,Cause and effect,medium,og-wpi-class1-water-dist-s-wpi-class1-water-dist-w1.ts-cause-effect-0107,wpi-class1-water-dist-w1.ts,A larger pipe replaces a smaller one carrying the same flow. What happens to the pressure lost to friction along the pipe?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Slower water in a wider pipe rubs less on the wall.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-004,wpi-class1-water-dist,wpi-class1-water-dist-w1.ts,Before or after (which comes first),medium,og-wpi-class1-water-dist-s-wpi-class1-water-dist-w1.ts-before-after-0063,wpi-class1-water-dist-w1.ts,"In stopping the flow from a broken main, which step comes later?","1) Record which valves were closed
+2) Close the valves around the break slowly",Record which valves were closed,"The break is located, the valves are found on the map, closed slowly, the result is checked, and the closed valves are recorded so they can be reopened. Close the valves around the break slowly comes before Record which valves were closed.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-005,wpi-class2-water,wpi-class2-water-g1.ts,Tap the flaw (find the wrong statement),medium,og-wpi-class2-water-s-wpi-class2-water-g1.ts-tap-the-flaw-0061,wpi-class2-water-g1.ts,Which statement about chemical delivery security is wrong?,"1) Fill connections are locked when no delivery is under way
+2) Fill connection caps stay off between deliveries
+3) The storage and fill area is checked after each delivery",Fill connection caps stay off between deliveries,"Open fill connections invite tampering and wrong-tank deliveries, so they are capped and locked.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-006,wpi-class4-water-dist,wpi-class4-water-dist-g1.ts,Cause and effect,medium,og-wpi-class4-water-dist-s-wpi-class4-water-dist-g1.ts-cause-effect-0035,wpi-class4-water-dist-g1.ts,Critical users such as dialysis units are contacted well before a shutdown. What happens to the risk of harm to those users?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,They have time to arrange alternate supply.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-007,wpi-class4-water,wpi-class4-water-g1.ts,Cause and effect,hard,og-wpi-class4-water-s-wpi-class4-water-g1.ts-cause-effect-0042,wpi-class4-water-g1.ts,An equalization tank is added to smooth the release of filter backwash water. What happens to the peak flow reaching the discharge point?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,The tank holds the surge and releases it at a steadier rate.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-008,wpi-class2-water,wpi-class2-water-g1.ts,Cause and effect,medium,og-wpi-class2-water-s-wpi-class2-water-g1.ts-cause-effect-0052,wpi-class2-water-g1.ts,Parts used and labour hours are recorded on each closed work order. What happens to the usefulness of the maintenance history for spotting repeat problems?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,Detailed records show which equipment fails often and why.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-009,wpi-class1-water-dist,wpi-class1-water-dist-w1.ts,Speed match,easy,og-wpi-class1-water-dist-s-wpi-class1-water-dist-w1.ts-speed-match-0051,wpi-class1-water-dist-w1.ts,Match each main installation task to its purpose.,"Tracer wire  ->  Lets the pipe be found later
+Pipe bedding  ->  Supports the pipe along its length
+Joint restraint  ->  Holds fittings against thrust
+Plugging pipe ends  ->  Keeps dirt out of the pipe
+Compacting backfill  ->  Prevents settling of the ground above
+Warning tape  ->  Alerts later diggers to the pipe below",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-010,wpi-class4-water,wpi-class4-water-g1.ts,Odd one out,hard,og-wpi-class4-water-s-wpi-class4-water-g1.ts-odd-one-out-0034,wpi-class4-water-g1.ts,Which is not a measured condition used in condition-based maintenance?,"1) Motor current
+2) Oil analysis
+3) Run hours
+4) Thermal image",Run hours,"Run hours is a time or usage basis for preventive work, not a measured condition.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-011,wpi-class1-water-coll,wpi-class1-water-coll-w1.ts,Before or after (which comes first),medium,og-wpi-class1-water-coll-s-wpi-class1-water-coll-w1.ts-before-after-0082,wpi-class1-water-coll-w1.ts,"In checking a lift station after a high-level alarm, which step comes later?","1) Confirm the wet well level is dropping
+2) Find and clear the cause, such as a clogged pump or a tripped breaker",Confirm the wet well level is dropping,"The alarm is read, the station is looked over, the cause is found and cleared, the result is confirmed, and the alarm is reset and logged. Find and clear the cause, such as a clogged pump or a tripped breaker comes before Confirm the wet well level is dropping.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-012,wpi-class2-water-dist,wpi-class2-water-dist-g1.ts,Odd one out,medium,og-wpi-class2-water-dist-s-wpi-class2-water-dist-g1.ts-odd-one-out-0036,wpi-class2-water-dist-g1.ts,Which is not an item checked on a standby engine before a test run?,"1) Engine oil level
+2) Battery charge
+3) Impeller
+4) Air filter",Impeller,"Impeller is a pump part, not an engine check.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-013,wpi-class2-water,wpi-class2-water-g1.ts,Rapid swipe (true or false),medium,og-wpi-class2-water-s-wpi-class2-water-g1.ts-rapid-swipe-0032,wpi-class2-water-g1.ts,"Backflow assembly choice depends on pipe size, not on the degree of hazard.",Yes (true) / No (false),No (false),"The hazard at the connection decides the protection level, and size is just a matter of fit.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-014,wpi-class1-water-coll,wpi-class1-water-coll-g1.ts,Odd one out,medium,og-wpi-class1-water-coll-s-wpi-class1-water-coll-g1.ts-odd-one-out-0032,wpi-class1-water-coll-g1.ts,Which is not a device that measures or records wastewater flow?,"1) Gas detector
+2) Parshall flume
+3) Portable flow logger
+4) Area-velocity meter",Gas detector,Gas detector is used for inspection or safety work and does not measure flow.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-015,wpi-class1-water-coll,wpi-class1-water-coll-w1.ts,Rapid swipe (true or false),medium,og-wpi-class1-water-coll-s-wpi-class1-water-coll-w1.ts-rapid-swipe-0015,wpi-class1-water-coll-w1.ts,A sag in a sewer holds water and lets solids settle out.,Yes (true) / No (false),Yes (true),"The low spot slows the flow, so heavier material drops to the bottom.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-016,wpi-class4-water,wpi-class4-water-g1.ts,Cause and effect,hard,og-wpi-class4-water-s-wpi-class4-water-g1.ts-cause-effect-0054,wpi-class4-water-g1.ts,Potential readings are logged on a program and a downward trend triggers inspection. What happens to the chance that a protection failure goes undetected?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,"Trends show a failing anode, connection or coating early.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-017,wpi-class2-water-dist,wpi-class2-water-dist-g1.ts,Speed match,medium,og-wpi-class2-water-dist-s-wpi-class2-water-dist-g1.ts-speed-match-0032,wpi-class2-water-dist-g1.ts,Match each station electrical item to what it does.,"Run-time meter  ->  Shows the hours a pump has run
+Phase monitor  ->  Trips the motor on a lost or reversed phase
+Control relay  ->  Passes a small signal to switch another circuit
+Ammeter  ->  Shows the current a motor is drawing
+Surge protector  ->  Limits damage from voltage spikes
+Alarm dialer  ->  Calls out to an operator when a fault occurs",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-018,wpi-class1-water-dist,wpi-class1-water-dist-w1.ts,Before or after (which comes first),medium,og-wpi-class1-water-dist-s-wpi-class1-water-dist-w1.ts-before-after-0068,wpi-class1-water-dist-w1.ts,"In disinfecting a new main by the continuous feed method, which step comes earlier?","1) Fill the main with chlorinated water at a steady rate
+2) Release the main for use after good results",Fill the main with chlorinated water at a steady rate,"The pipe is cleaned first, filled and held with chlorine, flushed out, then sampled before it is released. Fill the main with chlorinated water at a steady rate comes before Release the main for use after good results.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-019,wpi-class1-water-dist,wpi-class1-water-dist-w1.ts,Before or after (which comes first),medium,og-wpi-class1-water-dist-s-wpi-class1-water-dist-w1.ts-before-after-0076,wpi-class1-water-dist-w1.ts,"In digging a repair trench safely, which step comes earlier?","1) Climb down by the ladder
+2) Excavate with the spoil kept back from the edge",Excavate with the spoil kept back from the edge,"Utilities are marked and traffic is controlled before digging, and protection goes in before anyone enters. Excavate with the spoil kept back from the edge comes before Climb down by the ladder.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-020,wpi-class3-wastewater,wpi-class3-wastewater-g1.ts,Tap the flaw (find the wrong statement),hard,og-wpi-class3-wastewater-s-wpi-class3-wastewater-g1.ts-tap-the-flaw-0048,wpi-class3-wastewater-g1.ts,Which statement about air-to-solids ratio is wrong?,"1) Recycle flow and pressure both change the air supplied
+2) A higher solids load needs less air to hold it
+3) Heavier solids loads call for more air",A higher solids load needs less air to hold it,"More solids need more air, so the supply is raised as the load rises.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-021,wpi-class2-wastewater,wpi-class2-wastewater-g1.ts,Speed match,medium,og-wpi-class2-wastewater-s-wpi-class2-wastewater-g1.ts-speed-match-0028,wpi-class2-wastewater-g1.ts,Match each public contact situation to the best response.,"Caller asks about health risk  ->  Refer to the person responsible for such questions
+Reporter asks who is to blame  ->  Pass to the designated spokesperson
+Neighbour reports an odour  ->  Log the time, place and what was smelled
+School asks for a visit  ->  Arrange a guided tour with a safety briefing
+Complainant is waiting for news  ->  Call back with what was found
+Overflow reaches a public area  ->  Post a plain-language notice at the site",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-022,wpi-class1-water-coll,wpi-class1-water-coll-w1.ts,Before or after (which comes first),medium,og-wpi-class1-water-coll-s-wpi-class1-water-coll-w1.ts-before-after-0072,wpi-class1-water-coll-w1.ts,"In responding to a basement backup call, which step comes later?","1) Tell the customer what was found and what happens next
+2) Record the cause and the work done",Record the cause and the work done,"The call is logged, the street sewer is checked, the cause is dealt with, the customer is told, and the paperwork closes the job. Tell the customer what was found and what happens next comes before Record the cause and the work done.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-023,wpi-class3-wastewater,wpi-class3-wastewater-g1.ts,Speed match,medium,og-wpi-class3-wastewater-s-wpi-class3-wastewater-g1.ts-speed-match-0024,wpi-class3-wastewater-g1.ts,Match each communication tool to what it provides.,"Pre-written message templates  ->  Speed up notices during an upset
+Spokesperson briefing  ->  Keeps one voice for the media
+Shoreline warning sign  ->  Warns people away from affected water
+Front desk call script  ->  Gives staff consistent answers to callers
+After-event summary  ->  Explains the cause and the fixes to the community
+Agency contact list  ->  Lets staff notify partners quickly",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-024,wpi-class2-wastewater,wpi-class2-wastewater-g1.ts,Speed match,medium,og-wpi-class2-wastewater-s-wpi-class2-wastewater-g1.ts-speed-match-0029,wpi-class2-wastewater-g1.ts,Match each equalization problem or feature to its effect.,"Floor solids buildup  ->  Storage volume shrinks over time
+Basin full before a storm  ->  Little room is left for the peak
+Pump-back set too high  ->  Peak load passes on to the plant
+Aeration in the basin  ->  Keeps the contents fresh
+High level alarm  ->  Warns before the basin overflows
+Cover and ventilation  ->  Collects odorous air for treatment",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-025,wpi-class2-water-dist,wpi-class2-water-dist-g1.ts,Rapid swipe (true or false),medium,og-wpi-class2-water-dist-s-wpi-class2-water-dist-g1.ts-rapid-swipe-0028,wpi-class2-water-dist-g1.ts,Frozen services are most common where the cover over the pipe is shallow or the ground is bare.,Yes (true) / No (false),Yes (true),"Frost reaches shallow pipe sooner, and snow cover insulates the ground when it is present.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-026,wpi-class2-water-dist,wpi-class2-water-dist-g1.ts,Tap the flaw (find the wrong statement),medium,og-wpi-class2-water-dist-s-wpi-class2-water-dist-g1.ts-tap-the-flaw-0058,wpi-class2-water-dist-g1.ts,Which statement about preparing a swab run is wrong?,"1) Valves on the route are left as found
+2) The disposal of flush water is planned before the run
+3) The route is checked for closed or partly closed valves",Valves on the route are left as found,"A closed or partly closed valve can stop the swab, so the valves along the route are checked first.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-027,wpi-class2-water-dist,wpi-class2-water-dist-g1.ts,Rapid swipe (true or false),hard,og-wpi-class2-water-dist-s-wpi-class2-water-dist-g1.ts-rapid-swipe-0020,wpi-class2-water-dist-g1.ts,"Chlorine residual in a temporary supply line is checked at the customer end, not just at the connection.",Yes (true) / No (false),Yes (true),"Residual can fade along a long hose, so the far end shows what customers receive.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-028,wpi-class4-water,wpi-class4-water-g1.ts,Speed match,hard,og-wpi-class4-water-s-wpi-class4-water-g1.ts-speed-match-0031,wpi-class4-water-g1.ts,Match each security layer or action to its role.,"Deterrence  ->  Visible signs and lighting that discourage attempts
+Detection  ->  Alarms, cameras and rounds that reveal an intrusion
+Delay  ->  Locks, doors and barriers that slow entry
+Response  ->  Trained staff and agencies acting on an alert
+Network segmentation  ->  Limits the spread of a cyber intrusion
+Recovery  ->  Restoring operations and learning after an event",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-029,wpi-class1-water-dist,wpi-class1-water-dist-g1.ts,Odd one out,medium,og-wpi-class1-water-dist-s-wpi-class1-water-dist-g1.ts-odd-one-out-0055,wpi-class1-water-dist-g1.ts,Which is not a metal pipe material?,"1) Ductile iron
+2) PVC
+3) Cast iron
+4) Galvanized steel",PVC,"PVC is a plastic pipe, not a metal one.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-030,wpi-class3-water,wpi-class3-water-g1.ts,Rapid swipe (true or false),hard,og-wpi-class3-water-s-wpi-class3-water-g1.ts-rapid-swipe-0010,wpi-class3-water-g1.ts,A chemical feed line that discharges into a pressurized pipe needs backflow protection at the injection point.,Yes (true) / No (false),Yes (true),"Without it, process water can be pushed or drawn back into the chemical line and tank.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-031,wpi-class1-water-coll,wpi-class1-water-coll-w1.ts,Speed match,medium,og-wpi-class1-water-coll-s-wpi-class1-water-coll-w1.ts-speed-match-0063,wpi-class1-water-coll-w1.ts,Match each routine lift station task to the trouble it prevents.,"Testing the floats  ->  Pumps that fail to start unnoticed
+Cleaning the wet well  ->  A grease cap and strong odour
+Exercising the standby generator  ->  Failure during a power outage
+Checking run times and amps  ->  Missed signs of pump wear
+Testing the alarms  ->  Silent failures
+Locking the hatch  ->  Unwanted entry and falls",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-032,wpi-class2-water-dist,wpi-class2-water-dist-g1.ts,Speed match,medium,og-wpi-class2-water-dist-s-wpi-class2-water-dist-g1.ts-speed-match-0033,wpi-class2-water-dist-g1.ts,Match each maintenance record to the question it answers.,"Hydrant inspection sheet  ->  Is this hydrant ready for use?
+Valve exercising log  ->  When was this valve last operated?
+Equipment history  ->  How often has this pump failed?
+Spare parts list  ->  Is a replacement on the shelf?
+Work order  ->  Has this repair been assigned and closed?
+Preventive maintenance schedule  ->  What work is due next month?",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-033,wpi-class2-wastewater,wpi-class2-wastewater-g1.ts,Cause and effect,hard,og-wpi-class2-wastewater-s-wpi-class2-wastewater-g1.ts-cause-effect-0038,wpi-class2-wastewater-g1.ts,The basin is drawn down at the end of each wet-weather event. What happens to the empty volume ready for the next peak?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,Emptying restores the storage that the next surge needs.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-034,wpi-class1-water-dist,wpi-class1-water-dist-w1.ts,Before or after (which comes first),medium,og-wpi-class1-water-dist-s-wpi-class1-water-dist-w1.ts-before-after-0060,wpi-class1-water-dist-w1.ts,"In stopping the flow from a broken main, which step comes earlier?","1) Record which valves were closed
+2) Check that the flow at the break has stopped",Check that the flow at the break has stopped,"The break is located, the valves are found on the map, closed slowly, the result is checked, and the closed valves are recorded so they can be reopened. Check that the flow at the break has stopped comes before Record which valves were closed.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-035,wpi-class2-water,wpi-class2-water-g1.ts,Speed match,medium,og-wpi-class2-water-s-wpi-class2-water-g1.ts-speed-match-0042,wpi-class2-water-g1.ts,Match each backflow protection item to its description.,"Air gap  ->  Open space between a fill pipe and the tank water level
+Hose-end vacuum breaker  ->  Screws onto a hose tap to guard against backsiphonage
+Reduced pressure assembly  ->  Two checks and a relief valve for high-hazard connections
+Double check assembly  ->  Two checks in series for lower-hazard connections
+Test cock  ->  Port where gauges attach for testing
+Injection point check valve  ->  Keeps chemical solution from backing up the feed line",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-036,wpi-class4-water-dist,wpi-class4-water-dist-g1.ts,Tap the flaw (find the wrong statement),hard,og-wpi-class4-water-dist-s-wpi-class4-water-dist-g1.ts-tap-the-flaw-0046,wpi-class4-water-dist-g1.ts,Which statement about a temporary supply for a large area is wrong?,"1) Residual is checked at the connection and not at the far end
+2) Hose and fittings are approved for drinking water and cleaned
+3) Backflow protection is installed at each connection",Residual is checked at the connection and not at the far end,"Residual fades along the line, so the far end shows what customers actually receive.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-037,wpi-class1-water-dist,wpi-class1-water-dist-w1.ts,Before or after (which comes first),medium,og-wpi-class1-water-dist-s-wpi-class1-water-dist-w1.ts-before-after-0079,wpi-class1-water-dist-w1.ts,"In digging a repair trench safely, which step comes later?","1) Climb down by the ladder
+2) Install trench protection before anyone enters",Climb down by the ladder,"Utilities are marked and traffic is controlled before digging, and protection goes in before anyone enters. Install trench protection before anyone enters comes before Climb down by the ladder.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-038,wpi-class4-wastewater,wpi-class4-wastewater-g1.ts,Tap the flaw (find the wrong statement),medium,og-wpi-class4-wastewater-s-wpi-class4-wastewater-g1.ts-tap-the-flaw-0037,wpi-class4-wastewater-g1.ts,Which statement about working with neighbours and agencies is wrong?,"1) Contact lists are updated after a major event
+2) Concerns raised are recorded with the response given
+3) Commitments made to neighbours are tracked and kept",Contact lists are updated after a major event,"Lists go stale between events, so they are checked on a schedule and not left to follow a crisis.",WRONG,"The keyed flaw 'Contact lists are updated after a major event' describes good practice, so it is not a wrong statement. Changed to 'Contact lists wait for a crisis to be checked'.","Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-039,wpi-class4-wastewater,wpi-class4-wastewater-g1.ts,Speed match,hard,og-wpi-class4-wastewater-s-wpi-class4-wastewater-g1.ts-speed-match-0019,wpi-class4-wastewater-g1.ts,Match each flotation management term to what it describes.,"Recycle ratio  ->  Share of clarified flow returned to supply the air
+Air-to-solids ratio  ->  Compares the air supplied with the solids load
+Jar test  ->  Selects the chemical and dose that give strong floc
+Float solids  ->  Dryness of the skimmed layer
+Saturator pressure  ->  Sets how much air dissolves in the recycle water
+Surface loading  ->  Feed flow per unit of tank area",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-040,wpi-class3-water,wpi-class3-water-g1.ts,Tap the flaw (find the wrong statement),medium,og-wpi-class3-water-s-wpi-class3-water-g1.ts-tap-the-flaw-0038,wpi-class3-water-g1.ts,Which statement about air gaps is wrong?,"1) The fill pipe dips into the tank water
+2) An air gap has open air between pipe and water
+3) The fill pipe ends above the tank overflow level",The fill pipe dips into the tank water,A pipe that dips into the water removes the air gap and gives backflow a path.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-041,wpi-class1-water-coll,wpi-class1-water-coll-g1.ts,Tap the flaw (find the wrong statement),medium,og-wpi-class1-water-coll-s-wpi-class1-water-coll-g1.ts-tap-the-flaw-0051,wpi-class1-water-coll-g1.ts,Which statement about security at collection sites is wrong?,"1) Vandalism and dumping are reported so sites can be secured
+2) Alarms alert staff when someone enters a station without permission
+3) A stranger at a station is best ignored",A stranger at a station is best ignored,"Unfamiliar people near equipment are reported to a supervisor, and crews avoid confronting them.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-042,wpi-class1-wastewater,wpi-class1-wastewater-g1.ts,Tap the flaw (find the wrong statement),medium,og-wpi-class1-wastewater-s-wpi-class1-wastewater-g1.ts-tap-the-flaw-0041,wpi-class1-wastewater-g1.ts,Which statement about operating an equalization basin is wrong?,"1) Air supply keeps the contents fresh and limits odour
+2) Grit is left to build up on the floor
+3) Mixing keeps solids from settling on the floor",Grit is left to build up on the floor,"Grit takes up storage volume and turns septic, so the basin is cleaned regularly.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-043,wpi-class4-water-dist,wpi-class4-water-dist-g1.ts,Rapid swipe (true or false),hard,og-wpi-class4-water-dist-s-wpi-class4-water-dist-g1.ts-rapid-swipe-0013,wpi-class4-water-dist-g1.ts,Water quality risk in a long bypass grows with the time water spends in the temporary line.,Yes (true) / No (false),Yes (true),"Residual fades and water warms in standing hose, so residual and temperature are watched.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-044,wpi-class1-water-coll,wpi-class1-water-coll-w1.ts,Cause and effect,easy,og-wpi-class1-water-coll-s-wpi-class1-water-coll-w1.ts-cause-effect-0110,wpi-class1-water-coll-w1.ts,A manhole cover is left off during work and heavy rain starts. What happens to the stormwater entering the sewer?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,Runoff can pour straight into the open manhole.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-045,wpi-class1-water-dist,wpi-class1-water-dist-g1.ts,Tap the flaw (find the wrong statement),easy,og-wpi-class1-water-dist-s-wpi-class1-water-dist-g1.ts-tap-the-flaw-0088,wpi-class1-water-dist-g1.ts,Which statement about plastic pipe is wrong?,"1) Sunlight makes plastic pipe stronger
+2) Plastic pipe is much lighter than iron pipe
+3) Plastic pipe does not rust the way iron does",Sunlight makes plastic pipe stronger,"Long sunlight exposure can weaken some plastic pipe, so stored pipe is kept covered.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-046,wpi-class1-water-coll,wpi-class1-water-coll-g1.ts,Cause and effect,medium,og-wpi-class1-water-coll-s-wpi-class1-water-coll-g1.ts-cause-effect-0038,wpi-class1-water-coll-g1.ts,A worker covers a cut with a waterproof dressing and wears gloves before wastewater work. What happens to the chance of germs entering through the skin?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,The dressing and gloves block contact between the wound and wastewater.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-047,wpi-class1-water-coll,wpi-class1-water-coll-w1.ts,Cause and effect,medium,og-wpi-class1-water-coll-s-wpi-class1-water-coll-w1.ts-cause-effect-0104,wpi-class1-water-coll-w1.ts,A sewer in a root-prone area is cleaned on a regular schedule. What happens to the chance of a root stoppage?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Regular cutting keeps roots from filling the pipe.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-048,wpi-class1-water-dist,wpi-class1-water-dist-w1.ts,Cause and effect,medium,og-wpi-class1-water-dist-s-wpi-class1-water-dist-w1.ts-cause-effect-0099,wpi-class1-water-dist-w1.ts,Pipe ends are left open in the trench overnight. What happens to the chance of dirt and animals getting into the pipe?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,Open ends give debris and animals a way in.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-049,wpi-class1-water-dist,wpi-class1-water-dist-g1.ts,Cause and effect,medium,og-wpi-class1-water-dist-s-wpi-class1-water-dist-g1.ts-cause-effect-0080,wpi-class1-water-dist-g1.ts,A gas monitor is left in the truck while a worker enters a valve vault. What happens to the chance that a hazardous atmosphere goes unnoticed?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,"Without the monitor, low oxygen or harmful gas gives no warning.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-050,wpi-class1-water-coll,wpi-class1-water-coll-w1.ts,Rapid swipe (true or false),easy,og-wpi-class1-water-coll-s-wpi-class1-water-coll-w1.ts-rapid-swipe-0044,wpi-class1-water-coll-w1.ts,"A service request record notes the caller, address, time and the work done.",Yes (true) / No (false),Yes (true),Those details let crews follow up and spot patterns.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-051,wpi-class4-water-dist,wpi-class4-water-dist-g1.ts,Speed match,hard,og-wpi-class4-water-dist-s-wpi-class4-water-dist-g1.ts-speed-match-0023,wpi-class4-water-dist-g1.ts,Match each cleaning program concern to the planning response.,"Chlorinated flush water  ->  Dechlorination before discharge
+Sediment in flush water  ->  Settling or filtering before it reaches a stream
+Low pressure during the run  ->  Work in lower demand and watch zone pressure
+Colour complaints  ->  Notice to customers on the route
+A swab lodging in the main  ->  Valve and pipe condition checks beforehand
+No way to show results  ->  Baseline and follow-up readings",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-052,wpi-class3-wastewater,wpi-class3-wastewater-g1.ts,Rapid swipe (true or false),hard,og-wpi-class3-wastewater-s-wpi-class3-wastewater-g1.ts-rapid-swipe-0012,wpi-class3-wastewater-g1.ts,"An in-line basin receives the whole flow, so it evens out strength as well as flow, while a side-line basin diverts the excess above a set rate and smooths load less.",Yes (true) / No (false),Yes (true),"In-line operation blends the entire flow, whereas side-line operation leaves part of it untouched.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-053,wpi-class1-water-dist,wpi-class1-water-dist-g1.ts,Tap the flaw (find the wrong statement),medium,og-wpi-class1-water-dist-s-wpi-class1-water-dist-g1.ts-tap-the-flaw-0086,wpi-class1-water-dist-g1.ts,Which statement about a temporary supply during a main repair is wrong?,"1) Hose and fittings are approved for drinking water
+2) Hose is covered or ramped where traffic crosses it
+3) An old garden hose is fine for the supply",An old garden hose is fine for the supply,"Hose for drinking water is a suitable type and is cleaned first, so water quality is protected.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-054,wpi-class1-water,wpi-class1-water-g1.ts,Cause and effect,medium,og-wpi-class1-water-s-wpi-class1-water-g1.ts-cause-effect-0031,wpi-class1-water-g1.ts,The chlorine dose ahead of the dechlorination point is raised and the dechlorination feed stays the same. What happens to the chlorine left in the discharge?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,"The feed no longer matches the chlorine present, so some passes through.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-055,wpi-class2-water,wpi-class2-water-g1.ts,Speed match,medium,og-wpi-class2-water-s-wpi-class2-water-g1.ts-speed-match-0040,wpi-class2-water-g1.ts,Match each dechlorination item to its role.,"Residual analyzer  ->  Checks for chlorine left after the feed point
+Flow pacing  ->  Matches the chemical feed to the water flow
+Mixing zone  ->  Gives the chemical contact and time to react
+Dissolved oxygen meter  ->  Shows the oxygen effect of the dose
+Gas eductor  ->  Uses water flow to draw sulfur dioxide into solution
+Containment curb  ->  Holds spilled chemical around storage tanks",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-056,wpi-class3-water,wpi-class3-water-g1.ts,Rapid swipe (true or false),medium,og-wpi-class3-water-s-wpi-class3-water-g1.ts-rapid-swipe-0020,wpi-class3-water-g1.ts,Diesel fuel that looks clear is safe for a long outage without testing.,Yes (true) / No (false),No (false),"Water, microbes and sediment are hard to see, so stored fuel is tested and polished.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-057,wpi-class2-water,wpi-class2-water-g1.ts,Tap the flaw (find the wrong statement),hard,og-wpi-class2-water-s-wpi-class2-water-g1.ts-tap-the-flaw-0066,wpi-class2-water-g1.ts,Which statement about hose connections at a plant is wrong?,"1) Hose taps on potable lines carry a vacuum breaker
+2) A valve on the tap lets a hose rest in a tank
+3) Signs mark water outlets that are not for drinking",A valve on the tap lets a hose rest in a tank,"A valve does not stop backflow, so a hose end is kept out of liquid and the tap is protected.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-058,wpi-class1-water-coll,wpi-class1-water-coll-w1.ts,Before or after (which comes first),easy,og-wpi-class1-water-coll-s-wpi-class1-water-coll-w1.ts-before-after-0094,wpi-class1-water-coll-w1.ts,"In digging a trench for a sewer repair, which step comes later?","1) Backfill in layers and compact the soil
+2) Install trench protection or slope the walls",Backfill in layers and compact the soil,"Utilities are located before digging, the walls are protected before anyone enters, and backfilling follows the repair. Install trench protection or slope the walls comes before Backfill in layers and compact the soil.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-059,wpi-class1-wastewater,wpi-class1-wastewater-g1.ts,Rapid swipe (true or false),medium,og-wpi-class1-wastewater-s-wpi-class1-wastewater-g1.ts-rapid-swipe-0014,wpi-class1-wastewater-g1.ts,A mixer in an equalization basin keeps solids suspended so the stored wastewater stays uniform.,Yes (true) / No (false),Yes (true),"Without mixing, solids settle out and the water leaving the basin changes in strength.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-060,wpi-class1-water,wpi-class1-water-g1.ts,Rapid swipe (true or false),medium,og-wpi-class1-water-s-wpi-class1-water-g1.ts-rapid-swipe-0018,wpi-class1-water-g1.ts,Computer control systems need no password protection because they sit inside the plant fence.,Yes (true) / No (false),No (false),"A fence does not stop network threats, so logins and passwords protect the controls.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-061,wpi-class1-wastewater,wpi-class1-wastewater-g1.ts,Tap the flaw (find the wrong statement),medium,og-wpi-class1-wastewater-s-wpi-class1-wastewater-g1.ts-tap-the-flaw-0042,wpi-class1-wastewater-g1.ts,Which statement about air in a flotation unit is wrong?,"1) Bubbles form as pressure builds in the tank
+2) Bubbles form as pressure drops at the release valve
+3) Float is skimmed from the surface of the tank",Bubbles form as pressure builds in the tank,"Bubbles form when the pressure is released, not when it is raised.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-062,wpi-class1-water-dist,wpi-class1-water-dist-w1.ts,Tap the flaw (find the wrong statement),medium,og-wpi-class1-water-dist-s-wpi-class1-water-dist-w1.ts-tap-the-flaw-0122,wpi-class1-water-dist-w1.ts,Which statement about pressure is wrong?,"1) Pressure is measured in kilopascals
+2) Pressure falls as the point of use gets higher above the tank
+3) Residual pressure is read with no flow",Residual pressure is read with no flow,Residual pressure is read while water is flowing. Static pressure is read with no flow.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-063,wpi-class4-water,wpi-class4-water-g1.ts,Rapid swipe (true or false),hard,og-wpi-class4-water-s-wpi-class4-water-g1.ts-rapid-swipe-0019,wpi-class4-water-g1.ts,A maintenance budget set as a fixed share of last year's spending suits the needs of ageing assets.,Yes (true) / No (false),No (false),"Asset condition and risk change, so budgets are built from needs and priorities.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-064,wpi-class1-water-dist,wpi-class1-water-dist-g1.ts,Speed match,hard,og-wpi-class1-water-dist-s-wpi-class1-water-dist-g1.ts-speed-match-0045,wpi-class1-water-dist-g1.ts,Match each pipe material to a weakness.,"Cast iron  ->  Brittle and cracks under shock
+Steel  ->  Rusts without coating or protection
+PVC  ->  Weakened by long sunlight exposure
+Concrete pressure pipe  ->  Heavy and awkward to handle
+HDPE  ->  Joints need fusion equipment and a trained crew
+Lead  ->  Dissolves into drinking water",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-065,wpi-class1-water-dist,wpi-class1-water-dist-w1.ts,Before or after (which comes first),medium,og-wpi-class1-water-dist-s-wpi-class1-water-dist-w1.ts-before-after-0086,wpi-class1-water-dist-w1.ts,"In following up a discoloured water complaint, which step comes earlier?","1) Run the cold tap and test the residual and colour
+2) Check the records for recent main work or breaks nearby",Check the records for recent main work or breaks nearby,"The details are logged, records are checked for a cause, the tap is tested, the main is flushed if needed, and the customer is contacted last. Check the records for recent main work or breaks nearby comes before Run the cold tap and test the residual and colour.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-066,wpi-class4-water,wpi-class4-water-g1.ts,Rapid swipe (true or false),hard,og-wpi-class4-water-s-wpi-class4-water-g1.ts-rapid-swipe-0009,wpi-class4-water-g1.ts,A security risk assessment ranks threats by their likelihood and by their consequence to water quality and supply.,Yes (true) / No (false),Yes (true),Ranking points money and effort at the threats that matter most.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-067,wpi-class1-water-coll,wpi-class1-water-coll-w1.ts,Tap the flaw (find the wrong statement),medium,og-wpi-class1-water-coll-s-wpi-class1-water-coll-w1.ts-tap-the-flaw-0130,wpi-class1-water-coll-w1.ts,Which statement about basement backup calls is wrong?,"1) Check the street sewer before blaming the private line
+2) Treat the call as urgent because of the health risk
+3) Guess at the cause when talking to the customer",Guess at the cause when talking to the customer,"The cause is confirmed by checking the sewer, not guessed at on the phone.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-068,wpi-class1-water-dist,wpi-class1-water-dist-w1.ts,Before or after (which comes first),easy,og-wpi-class1-water-dist-s-wpi-class1-water-dist-w1.ts-before-after-0097,wpi-class1-water-dist-w1.ts,"In testing a water sample for chlorine with a colour test, which step comes later?","1) Fill the cell to the mark
+2) Add the reagent powder",Add the reagent powder,"The cell is rinsed and filled, the meter is zeroed on the plain sample, then reagent is added, mixed, timed and read. Fill the cell to the mark comes before Add the reagent powder.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-069,wpi-class1-water-dist,wpi-class1-water-dist-w1.ts,Speed match,medium,og-wpi-class1-water-dist-s-wpi-class1-water-dist-w1.ts-speed-match-0055,wpi-class1-water-dist-w1.ts,Match each confined space role or item to its job.,"Entrant  ->  Goes in and watches for signs of trouble
+Attendant  ->  Stays outside and keeps contact with the entrant
+Entry supervisor  ->  Approves the entry and checks the safeguards
+Rescue team  ->  Ready to retrieve a worker in trouble
+Gas detector  ->  Tests for oxygen level and harmful gases
+Blower  ->  Moves fresh air into the space",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-070,wpi-class4-water-dist,wpi-class4-water-dist-g1.ts,Tap the flaw (find the wrong statement),hard,og-wpi-class4-water-dist-s-wpi-class4-water-dist-g1.ts-tap-the-flaw-0042,wpi-class4-water-dist-g1.ts,Which statement about designing a valve exercising program is wrong?,"1) Valves that control large areas are ranked high
+2) Valves that fail to close are flagged for repair or replacement
+3) Side street valves are exercised before trunk valves",Side street valves are exercised before trunk valves,"Valves that isolate critical areas matter most, so they are ranked first.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-071,wpi-class1-wastewater,wpi-class1-wastewater-g1.ts,Rapid swipe (true or false),easy,og-wpi-class1-wastewater-s-wpi-class1-wastewater-g1.ts-rapid-swipe-0019,wpi-class1-wastewater-g1.ts,"Dissolved air flotation lifts suspended solids, oil and grease to the surface with very fine air bubbles.",Yes (true) / No (false),Yes (true),"Bubbles attach to particles, making them lighter than water so they float.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-072,wpi-class1-water-coll,wpi-class1-water-coll-w1.ts,Before or after (which comes first),easy,og-wpi-class1-water-coll-s-wpi-class1-water-coll-w1.ts-before-after-0093,wpi-class1-water-coll-w1.ts,"In digging a trench for a sewer repair, which step comes earlier?","1) Dig the trench with the spoil piled back from the edge
+2) Backfill in layers and compact the soil",Dig the trench with the spoil piled back from the edge,"Utilities are located before digging, the walls are protected before anyone enters, and backfilling follows the repair. Dig the trench with the spoil piled back from the edge comes before Backfill in layers and compact the soil.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-073,wpi-class4-water-dist,wpi-class4-water-dist-g1.ts,Tap the flaw (find the wrong statement),hard,og-wpi-class4-water-dist-s-wpi-class4-water-dist-g1.ts-tap-the-flaw-0047,wpi-class4-water-dist-g1.ts,Which statement about planning a swabbing program is wrong?,"1) Disposal is planned before the work begins
+2) Routes are chosen using valve and pipe condition records
+3) Disposal of flush water is decided during the run",Disposal of flush water is decided during the run,"Flush water has to go somewhere safe, so the discharge is planned before the run starts.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-074,wpi-class4-water-dist,wpi-class4-water-dist-g1.ts,Odd one out,hard,og-wpi-class4-water-dist-s-wpi-class4-water-dist-g1.ts-odd-one-out-0025,wpi-class4-water-dist-g1.ts,Which is not an item in a valve program record?,"1) Pump hours
+2) Valve size and type
+3) Turns to close
+4) Condition notes",Pump hours,"Pump hours belongs to another asset record, not to the valve record.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-075,wpi-class1-water-dist,wpi-class1-water-dist-g1.ts,Odd one out,medium,og-wpi-class1-water-dist-s-wpi-class1-water-dist-g1.ts-odd-one-out-0047,wpi-class1-water-dist-g1.ts,Which is not a part of a standby generator set-up?,"1) Battery charger
+2) Transfer switch
+3) Starting battery
+4) Hydrant",Hydrant,"Hydrant belongs to the water system, not to the generator set-up.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-076,wpi-class2-water-dist,wpi-class2-water-dist-g1.ts,Tap the flaw (find the wrong statement),medium,og-wpi-class2-water-dist-s-wpi-class2-water-dist-g1.ts-tap-the-flaw-0054,wpi-class2-water-dist-g1.ts,Which statement about generator load priorities is wrong?,"1) Comfort loads come back before pumps do
+2) Large loads are stepped on one at a time to avoid overload
+3) Pumps and controls needed for service are restored first",Comfort loads come back before pumps do,"Water supply loads come first, and comfort loads wait until capacity is available.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-077,wpi-class1-water-coll,wpi-class1-water-coll-w1.ts,Before or after (which comes first),easy,og-wpi-class1-water-coll-s-wpi-class1-water-coll-w1.ts-before-after-0098,wpi-class1-water-coll-w1.ts,"In following up a sewer odour complaint, which step comes later?","1) Call the customer back to confirm the odour is gone
+2) Record the caller's address and what the odour is like",Call the customer back to confirm the odour is gone,"The details are logged, the odour is confirmed, the source is found and corrected, and the customer is contacted last. Record the caller's address and what the odour is like comes before Call the customer back to confirm the odour is gone.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-078,wpi-class3-water,wpi-class3-water-g1.ts,Odd one out,medium,og-wpi-class3-water-s-wpi-class3-water-g1.ts-odd-one-out-0023,wpi-class3-water-g1.ts,Which is not a measured condition used in predictive maintenance?,"1) Thermal imaging
+2) Bearing temperature
+3) Calendar date
+4) Motor current",Calendar date,"Calendar date is a time basis for preventive work, not a measured condition.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-079,wpi-class1-water-coll,wpi-class1-water-coll-w1.ts,Before or after (which comes first),medium,og-wpi-class1-water-coll-s-wpi-class1-water-coll-w1.ts-before-after-0079,wpi-class1-water-coll-w1.ts,"In checking a lift station after a high-level alarm, which step comes earlier?","1) Read the alarm message and note its time
+2) Confirm the wet well level is dropping",Read the alarm message and note its time,"The alarm is read, the station is looked over, the cause is found and cleared, the result is confirmed, and the alarm is reset and logged. Read the alarm message and note its time comes before Confirm the wet well level is dropping.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-080,wpi-class1-wastewater,wpi-class1-wastewater-g1.ts,Rapid swipe (true or false),medium,og-wpi-class1-wastewater-s-wpi-class1-wastewater-g1.ts-rapid-swipe-0020,wpi-class1-wastewater-g1.ts,"In a flotation unit, air is dissolved in water under pressure and fine bubbles form when the pressure is released.",Yes (true) / No (false),Yes (true),The sudden drop in pressure turns dissolved air into a cloud of tiny bubbles.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-081,wpi-class1-water-coll,wpi-class1-water-coll-w1.ts,Before or after (which comes first),easy,og-wpi-class1-water-coll-s-wpi-class1-water-coll-w1.ts-before-after-0097,wpi-class1-water-coll-w1.ts,"In following up a sewer odour complaint, which step comes earlier?","1) Correct the cause, such as cleaning grease or reseating a cover
+2) Record the caller's address and what the odour is like",Record the caller's address and what the odour is like,"The details are logged, the odour is confirmed, the source is found and corrected, and the customer is contacted last. Record the caller's address and what the odour is like comes before Correct the cause, such as cleaning grease or reseating a cover.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-082,wpi-class1-water-coll,wpi-class1-water-coll-w1.ts,Speed match,easy,og-wpi-class1-water-coll-s-wpi-class1-water-coll-w1.ts-speed-match-0050,wpi-class1-water-coll-w1.ts,Match each blockage material to its usual source.,"Grease  ->  Cooking fat poured down drains
+Roots  ->  Trees seeking moisture at joints
+Wipes and rags  ->  Items flushed down toilets
+Concrete and mortar  ->  Building work near the sewer
+Sand and gravel  ->  Washed in through broken pipe or open covers
+Bottles and toys  ->  Objects dropped into toilets or drains",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-083,wpi-class2-water-dist,wpi-class2-water-dist-g1.ts,Rapid swipe (true or false),hard,og-wpi-class2-water-dist-s-wpi-class2-water-dist-g1.ts-rapid-swipe-0006,wpi-class2-water-dist-g1.ts,A low-level alarm switch is set below the normal pump-start level of a reservoir.,Yes (true) / No (false),Yes (true),"If the level falls to the alarm point, the pumps are not keeping up and operators are warned early.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-084,wpi-class1-water-dist,wpi-class1-water-dist-g1.ts,Cause and effect,easy,og-wpi-class1-water-dist-s-wpi-class1-water-dist-g1.ts-cause-effect-0075,wpi-class1-water-dist-g1.ts,Customers are notified well ahead of a planned shutdown. What happens to the number of surprised complaints on the day?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,Advance notice lets people prepare.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-085,wpi-class1-water-coll,wpi-class1-water-coll-w1.ts,Cause and effect,easy,og-wpi-class1-water-coll-s-wpi-class1-water-coll-w1.ts-cause-effect-0113,wpi-class1-water-coll-w1.ts,A lift station float switch becomes coated in grease. What happens to the accuracy of the level signal?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,A coated float may stick and send a false level.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-086,wpi-class3-water,wpi-class3-water-g1.ts,Rapid swipe (true or false),medium,og-wpi-class3-water-s-wpi-class3-water-g1.ts-rapid-swipe-0012,wpi-class3-water-g1.ts,A hose left lying in a chemical tank or drain while joined to a plant water tap creates a cross-connection.,Yes (true) / No (false),Yes (true),A pressure drop can pull the tank liquid back into the water supply.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-087,wpi-class1-water-dist,wpi-class1-water-dist-w1.ts,Before or after (which comes first),medium,og-wpi-class1-water-dist-s-wpi-class1-water-dist-w1.ts-before-after-0071,wpi-class1-water-dist-w1.ts,"In disinfecting a new main by the continuous feed method, which step comes later?","1) Hold the chlorinated water for the contact time
+2) Flush the strong chlorine out to a safe discharge point",Flush the strong chlorine out to a safe discharge point,"The pipe is cleaned first, filled and held with chlorine, flushed out, then sampled before it is released. Hold the chlorinated water for the contact time comes before Flush the strong chlorine out to a safe discharge point.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-088,wpi-class3-wastewater,wpi-class3-wastewater-g1.ts,Cause and effect,medium,og-wpi-class3-wastewater-s-wpi-class3-wastewater-g1.ts-cause-effect-0032,wpi-class3-wastewater-g1.ts,Drills and tabletop exercises of the security response plan are held on a regular basis. What happens to the time staff take to respond to a real event?,"1) It increases
+2) It decreases
+3) It stays the same",It decreases,"Practice exposes gaps and builds familiarity, so people act faster when it counts.",OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-089,wpi-class2-water,wpi-class2-water-g1.ts,Cause and effect,medium,og-wpi-class2-water-s-wpi-class2-water-g1.ts-cause-effect-0049,wpi-class2-water-g1.ts,The password for the control system is written on a note stuck to the control room monitor. What happens to the chance of unauthorized access to the controls?,"1) It increases
+2) It decreases
+3) It stays the same",It increases,Anyone who walks in can read the password and log on.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-090,wpi-class3-wastewater,wpi-class3-wastewater-g1.ts,Odd one out,medium,og-wpi-class3-wastewater-s-wpi-class3-wastewater-g1.ts-odd-one-out-0029,wpi-class3-wastewater-g1.ts,Which is not a benefit of equalizing flow?,"1) Stable chemical dosing
+2) Steadier clarifier loading
+3) Higher flow peaks
+4) Even load on blowers",Higher flow peaks,Higher flow peaks is the opposite of what equalization gives.,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"
+WPI-091,wpi-class1-water-dist,wpi-class1-water-dist-w1.ts,Speed match,medium,og-wpi-class1-water-dist-s-wpi-class1-water-dist-w1.ts-speed-match-0054,wpi-class1-water-dist-w1.ts,Match each main break sign to what it suggests.,"Water surfacing in the street  ->  A leak or break close to the surface
+Sudden pressure drop across an area  ->  A large flow leaving the system
+Muddy water at taps nearby  ->  Sediment stirred by a change in flow
+Sinkhole in the pavement  ->  Soil washed out from under the road
+Roar of rushing water  ->  Water escaping under pressure
+Tank level falling faster than normal  ->  Loss greater than the pumped input",Every pair above is meant to be a correct match,,OK,,"Claude Opus 5.5 (AI review, 2026-11-15)"

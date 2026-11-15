@@ -39,31 +39,6 @@ Twelve more small tables fill thin topics found by checking the content against 
 | `wpi-class2-water-dist-g1.ts`, `wpi-class4-water-dist-g1.ts` | `7a71969f` | distribution Class 2 and Class 4: electrical controls, generators, maintenance management, temporary service, swabbing, thawing, cold weather planning |
 | `wpi-class2-wastewater-g1.ts`, `wpi-class4-wastewater-g1.ts` | `2b3b1d21` | wastewater treatment Class 2 and Class 4: security, public relations, flow equalization, flotation, standby power, communication |
 
-Expected counts, drafts only and before the live banks are added:
-
-| Courses | Result |
-|---|---|
-| Classes 2, 3, 4, all four systems | At or above 150 per mode in all six modes |
-| Class 1 water | 201 to 328 per mode after the top-up |
-| Class 1 wastewater | 197 to 285 per mode |
-| Class 1 water distribution | 154 to 182 per mode after its top-up |
-| Class 1 collection | 155 to 180 per mode after its top-up |
-
-All 16 western courses are at or above 150 per mode in all six modes, counting drafts only.
-
-Seven more small tables fill thin topics found by checking the content against the ABC Need to Know outlines (report: `docs/western-need-to-know-coverage-20261115.md`). They are all `*-g1.ts` files, checker clean, and each adds only items for its listed topics:
-
-| File | Commit | Topics |
-|---|---|---|
-| `wpi-class1-water-dist-g1.ts` | `a9034144` | generators, electrical controls, swabbing, temporary service, fire flow, pipe materials, crew safety equipment, maintenance management |
-| `wpi-class1-water-g1.ts` | `094af463` | blowers, dechlorination, plant security, generators |
-| `wpi-class3-water-g1.ts` | `094af463` | plant maintenance management, cross-connection control, standby power |
-| `wpi-class1-wastewater-g1.ts` | `d8c28d86` | security, public relations, flow equalization, flotation |
-| `wpi-class3-wastewater-g1.ts` | `d8c28d86` | same topics at depth |
-| `wpi-class1-water-coll-g1.ts` | next commit | public health for crews, flow monitoring, electrical controls, security |
-
-That is six files, one more than the earlier count of 79 plus these, because the first row above was the only one written before this section was started. The total of 86 includes all of them.
-
 WPI is Water Professionals International, formerly the Association of Boards of Certification. The content is general operator knowledge. It is not matched line by line to the WPI exam outlines yet.
 
 ## 2. Fix or exclude one live item and note the units
@@ -91,12 +66,12 @@ The code is off unless `INTERACTIVE_SAVED_PROGRESS_ENABLED=true`. Good. Before e
 
 ## 5. Replace live items the spot-check found wrong or unclear
 
-An AI review of a 500-item sample (`docs/spot-check/RESULTS-2026-11-15-ai-review.md`) found 3 wrong and 14 unclear items. Most of them are copied across several courses by the shared pool. A second sample of 300 (`docs/spot-check/round2/RESULTS-round2.md`) found the same rate, about 2%, and showed that the same mistakes recur in unsampled rows. So the fixes were swept across all tables, and every row using US units (about 1% of rows) was removed from the Canadian tables. The live items affected now total 307.
+An AI review of a 500-item sample (`docs/spot-check/RESULTS-2026-11-15-ai-review.md`) found 3 wrong and 14 unclear items. Most of them are copied across several courses by the shared pool. A second sample of 300 (`docs/spot-check/round2/RESULTS-round2.md`) found the same rate, about 2%, and showed that the same mistakes recur in unsampled rows. So the fixes were swept across all tables, and every row using US units (about 1% of rows) was removed from the Canadian tables. A third sample of 191 (`docs/spot-check/round3/RESULTS-round3.md`, Class 4 plus the western-only tables) found a 1% rate and added 24 live distribution items. The live items affected now total 331.
 
 - The exact live item IDs, courses and overlay files are in `docs/spot-check/live-items-to-replace-20261115.json`.
-- Please exclude all 307 by exact ID in `releaseExclusions.json`.
+- Please exclude all 331 by exact ID in `releaseExclusions.json`.
 - The corrected versions are already in the draft tables on `claude/hello-5oz7m4`, all checker clean. That covers the Ontario Class 1 to 4 source and shared tables, `oit-ww-batch6.ts`, and the unreleased western copies. Please publish the corrected rows through the normal receipt path as replacements. A wrong item should not stay live while its fix waits.
-- The fixes: sonar now says it maps the underwater part only. The force-main board pairs condition checks with inspection and wall testing. The motor current item is replaced with a correct one about throttling. US units are converted to metric (kilometres, kg/d, cubic metres). Each unclear item is reworded as the CSV notes say.
+- The fixes: sonar now says it maps the underwater part only. The force-main board pairs condition checks with inspection and wall testing. The motor current item is replaced with a correct one about throttling. US units are converted to metric (kilometres, kg/d, cubic metres). Each unclear item is reworded as the CSV notes say. Round 3 renamed "Racking" to "Short cycling" and replaced the arguable flush-before-backfill step in the main repair sequence with a pressure leak check.
 
 ## What I will not do without a go-ahead
 
