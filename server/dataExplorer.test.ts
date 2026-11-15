@@ -152,6 +152,32 @@ describe("admin Data Explorer catalog", () => {
     expect(page.rows[0]).not.toHaveProperty("guestToken");
   });
 
+  it.each([
+    { key: "interactive-item-progress", readable: { id: 1, courseKey: "oit", mode: "rapid-swipe" }, privateValues: {
+      learnerKey: "email:learner@example.test", itemId: "synthetic-item", attempts: 4,
+      correctCount: 3, box: 2, lastCorrect: true, lastAttemptAt: new Date(), dueAt: new Date(),
+    } },
+    { key: "interactive-daily-activity", readable: { id: 2 }, privateValues: {
+      learnerKey: "user:42", activityDate: "2026-11-15", answered: 4, correct: 3,
+    } },
+  ])("keeps $key learner identity and game history private even from admin metadata pages", async ({ key, readable, privateValues }) => {
+    const dataset = getDataExplorerDataset(key)!;
+    expect(dataset).not.toBeNull();
+    expect(getDataExplorerColumnClassification(dataset).readable).toEqual(Object.keys(readable));
+    expect(getDataExplorerColumnClassification(dataset).restricted).toEqual(Object.keys(privateValues));
+    const statements = buildDataExplorerStatements(dataset, 1, 25);
+    for (const column of Object.keys(privateValues)) expect(statements.rowsSql).not.toContain(`\`${column}\``);
+    const execute = vi.fn()
+      .mockResolvedValueOnce([[{ total: "1" }]])
+      .mockResolvedValueOnce([[{ ...readable, ...privateValues }]]);
+    const page = await readDataExplorerPage({ execute } as never, dataset, 1, 25);
+    expect(page.rows).toEqual([readable]);
+    for (const role of [null, "user"] as const) {
+      await expect(createCaller(role).getDataExplorerPage({ datasetKey: key, page: 1, pageSize: 25 }))
+        .rejects.toMatchObject({ code: "FORBIDDEN" });
+    }
+  });
+
   it("fails closed for unknown datasets and enforces admin-only access", async () => {
     expect(getDataExplorerDataset("purchases; DROP TABLE users")).toBeNull();
     await expect(createCaller(null).getDataExplorerCatalog())

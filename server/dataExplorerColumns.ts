@@ -38,6 +38,8 @@ export const DATA_EXPLORER_COLUMN_CLASSIFICATIONS: Record<string, DataExplorerCo
   "flashcard-progress": { readable: ["id", "email", "examType", "knownIds", "totalCards", "updatedAt"], restricted: [] },
   "flashcard-progress-state": { readable: ["id", "email", "examType", "knownIds", "totalCards"], restricted: [] },
   "flashcard-progress-operations": { readable: ["operationId", "email", "examType", "createdAt"], restricted: ["payloadHash"] },
+  "interactive-item-progress": { readable: ["id", "courseKey", "mode"], restricted: ["learnerKey", "itemId", "attempts", "correctCount", "box", "lastCorrect", "lastAttemptAt", "dueAt"] },
+  "interactive-daily-activity": { readable: ["id"], restricted: ["learnerKey", "activityDate", "answered", "correct"] },
   "bookmarks": { readable: ["id", "userId", "studentEmail", "bankKey", "questionId", "createdAt"], restricted: [] },
   "qotd-completions": { readable: ["id", "userId", "examType", "questionId", "dateKey", "correct", "createdAt"], restricted: ["guestToken"] },
   "ai-chat-sessions": { readable: ["id", "userId", "examType", "messageCount", "topicsCovered", "sessionStart", "sessionEnd", "studentEmail"], restricted: ["summary", "resourcesSurfaced"] },

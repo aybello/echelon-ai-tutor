@@ -293,7 +293,7 @@ describe("bounded course session UI (synthetic isolated fixtures)", () => {
       await expect.poll(async () => (await calls(page, "session")).length).toBeGreaterThan(before);
       await expect.poll(() => page.getByRole("button", { name: "Yes", exact: true }).isEnabled()).toBe(true);
       expect(await page.getByText("Synthetic explanation", { exact: true }).count()).toBe(0);
-      expect(await page.getByText(/progress not saved/).count()).toBeGreaterThan(0);
+      expect(await page.locator(".course-interactive__inventory").textContent()).toContain("Progress not saved");
     });
   });
 

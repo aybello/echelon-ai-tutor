@@ -10,11 +10,13 @@ import { interactiveModes } from "../../../shared/interactiveSessions";
 import rawCounts from "../../../docs/claude-class123-counts-20261115.json";
 // An all-passing release has [], but held-table checks still need the table shape.
 const counts = { ...rawCounts, held: rawCounts.held as (typeof rawCounts.passed)[number][] };
-const docs = committedOverlayDocuments() as ContentOverlay[];
+// Preserve this historical 41-table release snapshot; later releases have their own effective-bank regression.
+const historicalIds = new Set([...counts.priorOverlayIds, ...counts.passed.map(b => b.id)]);
+const docs = (committedOverlayDocuments() as ContentOverlay[]).filter(d => historicalIds.has(d.overlayId));
 const ids = counts.passed.map(b => b.id);
 const released = docs.filter(d => ids.includes(d.overlayId));
 const prior = docs.slice(0, counts.priorOverlayIds.length);
-const engine = new InteractiveContentEngine();
+const engine = new InteractiveContentEngine(undefined, docs);
 const before = new InteractiveContentEngine(undefined, prior);
 const sha = (bytes: Buffer) => createHash("sha256").update(bytes).digest("hex");
 const norm = (s: string) => s.normalize("NFKC").toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
