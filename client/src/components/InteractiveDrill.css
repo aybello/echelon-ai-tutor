@@ -580,3 +580,49 @@
 .interactive-drill .interactive-drill__column button[data-pair="3"], .course-interactive .interactive-drill__column button[data-pair="3"]:disabled { border-color: #8b5cf6; background: #f1ebfd; color: #4c2a99; }
 .interactive-drill .interactive-drill__column button[data-pair="4"], .course-interactive .interactive-drill__column button[data-pair="4"]:disabled { border-color: #e0577b; background: #fdebf0; color: #7a1f3a; }
 .interactive-drill .interactive-drill__column button[data-pair="5"], .course-interactive .interactive-drill__column button[data-pair="5"]:disabled { border-color: #2aa3bd; background: #e6f6fa; color: #0c4a5a; }
+
+/* ---- Design pass 2: timed round and mode picker ------------------------------------------- */
+/* Timer bar: drains as time runs out and turns red in the last five seconds. */
+.interactive-drill__track--timer span { transition: width 1s linear; }
+.interactive-drill .interactive-drill__track--timer[data-low="true"] { background: #fdecec; }
+.interactive-drill .interactive-drill__track--timer[data-low="true"] span { background: #d64545; }
+
+/* End of round: three stat tiles. The sentence above them carries the same facts for screen readers. */
+.interactive-drill__stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 10px 0 14px; }
+.interactive-drill__stats div { padding: 10px 6px; border-radius: 12px; background: var(--accent-soft); text-align: center; }
+.interactive-drill__stats strong { display: block; color: var(--accent); font: 800 clamp(22px, 6vw, 30px)/1.1 Manrope, sans-serif; }
+.interactive-drill__stats span { display: block; margin-top: 2px; color: #40576a; font-size: 13px; font-weight: 700; }
+
+/* Mode picker: each mode keeps its own colour and a small icon. Icons are drawn in CSS with empty alt text,
+   so button names and text stay as they were. */
+.interactive-drill .interactive-drill__nav button[data-mode] { --m: #1757b8; --m-soft: #eaf2ff; border-left: 5px solid var(--m); }
+.interactive-drill .interactive-drill__nav button[data-mode="speed-match"] { --m: #0e7490; --m-soft: #e6f6fa; }
+.interactive-drill .interactive-drill__nav button[data-mode="odd-one-out"] { --m: #b45309; --m-soft: #fdf1e3; }
+.interactive-drill .interactive-drill__nav button[data-mode="cause-effect"] { --m: #6d28d9; --m-soft: #f1ebfd; }
+.interactive-drill .interactive-drill__nav button[data-mode="tap-the-flaw"] { --m: #be123c; --m-soft: #fdebf0; }
+.interactive-drill .interactive-drill__nav button[data-mode="before-after"] { --m: #a21caf; --m-soft: #f9e9fb; }
+.interactive-drill .interactive-drill__nav button[data-mode]::before { margin-right: 6px; color: var(--m); font-weight: 800; }
+.interactive-drill .interactive-drill__nav button[data-mode="rapid-swipe"]::before { content: "\2194" / ""; }
+.interactive-drill .interactive-drill__nav button[data-mode="speed-match"]::before { content: "\21C4" / ""; }
+.interactive-drill .interactive-drill__nav button[data-mode="odd-one-out"]::before { content: "\2260" / ""; }
+.interactive-drill .interactive-drill__nav button[data-mode="cause-effect"]::before { content: "\2191" / ""; }
+.interactive-drill .interactive-drill__nav button[data-mode="tap-the-flaw"]::before { content: "\2715" / ""; }
+.interactive-drill .interactive-drill__nav button[data-mode="before-after"]::before { content: "\21C5" / ""; }
+.interactive-drill .interactive-drill__nav button[data-mode].is-active,
+.course-interactive .interactive-drill__nav button[data-mode].is-active { border-color: var(--m); background: var(--m); color: #fff; }
+.interactive-drill .interactive-drill__nav button[data-mode].is-active::before { color: #fff; }
+.interactive-drill .interactive-drill__nav button[data-mode]:not(.is-active):hover { background: var(--m-soft); }
+
+/* The timer bar lies over the card's top edge, so the round takes no extra height. */
+.interactive-drill .interactive-drill__activity:has(> .interactive-drill__track--timer) { position: relative; border-top-width: 1px; }
+.interactive-drill .interactive-drill__activity > .interactive-drill__track--timer { position: absolute; top: 0; left: 4px; right: 4px; height: 6px; margin: 0; border-radius: 0 0 6px 6px; }
+.interactive-drill .interactive-drill__activity > .interactive-drill__track--timer span { border-radius: 0; }
+
+/* Compact course layout: the swipe token must not make the swipe zone taller than before. */
+.course-interactive .interactive-drill__swipe-token { padding: 0 12px; border: 0; line-height: inherit; box-shadow: 0 2px 8px rgb(16 35 56 / 20%); }
+
+/* Narrow screens: the picker is a tight grid, so the colour is an inset line (no layout) and the icon is hidden. */
+@media (max-width: 699px) {
+  .interactive-drill .interactive-drill__nav button[data-mode] { border-left-width: 1.5px; box-shadow: inset 0 -3px 0 var(--m); }
+  .interactive-drill .interactive-drill__nav button[data-mode]::before { content: none; }
+}

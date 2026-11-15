@@ -458,6 +458,8 @@ function RapidSwipeRound({ examples, onExit, timerSeconds }: { examples: readonl
     const start = swipeStart.current;
     swipeStart.current = null;
     if (start) {
+      start.element.style.removeProperty("--drag");
+      start.element.style.removeProperty("--pull");
       try { if (start.element.hasPointerCapture(start.id)) start.element.releasePointerCapture(start.id); } catch { /* Pointer already ended. */ }
     }
   };
@@ -552,9 +554,22 @@ function RapidSwipeRound({ examples, onExit, timerSeconds }: { examples: readonl
     if (Math.abs(dx) >= 55 && Math.abs(dx) > Math.abs(dy)) choose(dx > 0);
   };
   const onSwipeCancel = (event: PointerEvent<HTMLDivElement>) => { if (swipeStart.current?.id === event.pointerId) clearSwipe(); };
+  const onSwipeMove = (event: PointerEvent<HTMLDivElement>) => {
+    const start = swipeStart.current;
+    if (!start || start.id !== event.pointerId) return;
+    const dx = event.clientX - start.x;
+    start.element.style.setProperty("--drag", `${Math.max(-120, Math.min(120, dx))}px`);
+    start.element.style.setProperty("--pull", String(Math.max(-1, Math.min(1, dx / 90))));
+  };
+  /** Marks the right answer and a wrong pick once feedback shows. Decorative styling only. */
+  const roundState = (key: "yes" | "no"): "correct" | "wrong" | undefined => {
+    if (phase !== "feedback" || !lastAnswer) return undefined;
+    if ((key === "yes") === lastAnswer.example.correctAnswer) return "correct";
+    return (key === "yes") === lastAnswer.choice ? "wrong" : undefined;
+  };
   const correctCount = answers.filter(answer => answer.correct).length;
   return (
-    <section className="interactive-drill__activity" aria-labelledby={titleId} onPointerDownCapture={event => {
+    <section className="interactive-drill__activity" data-mode="rapid-swipe" data-outcome={phase === "feedback" && lastAnswer ? (lastAnswer.correct ? "correct" : "incorrect") : undefined} aria-labelledby={titleId} onPointerDownCapture={event => {
       if (event.detail > 1) {
         event.preventDefault();
         if (clock.current.phase === "feedback") feedbackRef.current?.focus();
@@ -570,11 +585,17 @@ function RapidSwipeRound({ examples, onExit, timerSeconds }: { examples: readonl
       }
     }}>
       <div className="interactive-drill__meta"><span>Rapid Swipe round</span><span className="interactive-drill__pill">Practice · not saved</span></div>
+      {phase !== "finished" && <div className="interactive-drill__track interactive-drill__track--timer" aria-hidden="true" data-low={remaining <= 5 ? "true" : undefined}><span style={{ width: `${Math.max(0, Math.min(100, (remaining / timerSeconds) * 100))}%` }} /></div>}
       <div className="interactive-drill__content interactive-drill__round">
         <h2 id={titleId} ref={headingRef} tabIndex={-1}>{phase === "finished" ? "Round complete" : `${timerSeconds}-second round`}</h2>
         <p>Time: {remaining}s · Correct: {correctCount}/{answers.length} · Streak: {streak} · Best combo: {bestStreak}</p>
         {phase === "finished" ? <>
           <p role="status">Round complete. {correctCount} correct out of {answers.length} answered. Best combo: {bestStreak}.</p>
+          <div className="interactive-drill__stats" aria-hidden="true">
+            <div><strong>{answers.length ? Math.round((correctCount / answers.length) * 100) : 0}%</strong><span>accuracy</span></div>
+            <div><strong>{correctCount}</strong><span>correct</span></div>
+            <div><strong>{bestStreak}</strong><span>best combo</span></div>
+          </div>
           {answers.length > 0 && <><h3>Answer review</h3><ol className="interactive-drill__review">{answers.map((answer, index) => <li key={index}>
             <strong>{answer.example.prompt}</strong><br />
             {answer.correct ? "Correct" : "Not quite"} · Your answer: {answer.choice ? "Yes" : "No"} · Correct answer: {answer.example.correctAnswer ? "Yes" : "No"}. {answer.example.explanation}
@@ -585,11 +606,11 @@ function RapidSwipeRound({ examples, onExit, timerSeconds }: { examples: readonl
           <>
             <h3 ref={promptRef} tabIndex={-1}>{current.prompt}</h3>
             {current.instruction && <p>{current.instruction}</p>}
-            <div className="interactive-drill__swipe" onPointerDown={onSwipeStart} onPointerUp={onSwipeEnd} onPointerCancel={onSwipeCancel} onLostPointerCapture={onSwipeCancel}>
-              <span aria-hidden="true">← No</span><span>Swipe to choose</span><span aria-hidden="true">Yes →</span>
+            <div className="interactive-drill__swipe" data-picked={phase === "feedback" && lastAnswer ? (lastAnswer.choice ? "yes" : "no") : undefined} onPointerDown={onSwipeStart} onPointerMove={onSwipeMove} onPointerUp={onSwipeEnd} onPointerCancel={onSwipeCancel} onLostPointerCapture={onSwipeCancel}>
+              <span aria-hidden="true">← No</span><span className="interactive-drill__swipe-token">Swipe to choose</span><span aria-hidden="true">Yes →</span>
             </div>
             <div className="interactive-drill__options interactive-drill__options--two">
-              <button type="button" disabled={phase !== "answer"} onClick={event => { if (event.detail <= 1) choose(false); }}>No</button><button type="button" disabled={phase !== "answer"} onClick={event => { if (event.detail <= 1) choose(true); }}>Yes</button>
+              <button type="button" data-choice="no" data-state={roundState("no")} disabled={phase !== "answer"} onClick={event => { if (event.detail <= 1) choose(false); }}>No</button><button type="button" data-choice="yes" data-state={roundState("yes")} disabled={phase !== "answer"} onClick={event => { if (event.detail <= 1) choose(true); }}>Yes</button>
             </div>
           </>
           <div ref={feedbackRef} tabIndex={-1} role="status" aria-live="polite" aria-atomic="true" className="interactive-drill__feedback-region">
@@ -643,7 +664,7 @@ export function InteractiveDrill({ examples, className, selectedMode, onModeChan
         <div className={`interactive-drill__layout${hideModeNavigation ? " interactive-drill__layout--activity-only" : ""}`}>
           {!hideModeNavigation && availableModes.length > 0 && <nav className="interactive-drill__nav" aria-label="Choose a practice mode">
             {availableModes.map(mode => (
-              <button type="button" key={mode.id} className={mode.id === activeMode?.id ? "is-active" : ""} aria-current={mode.id === activeMode?.id ? "true" : undefined} onClick={() => chooseMode(mode.id)}>
+              <button type="button" key={mode.id} data-mode={mode.id} className={mode.id === activeMode?.id ? "is-active" : ""} aria-current={mode.id === activeMode?.id ? "true" : undefined} onClick={() => chooseMode(mode.id)}>
                 <span>{mode.label}</span><small>{mode.description}</small>
               </button>
             ))}
