@@ -66,6 +66,8 @@ export const interactiveStartSessionInputSchema = z.object({
   sessionSize: z.number().int().min(5).max(50).default(20),
   topicId: interactiveSafeIdSchema.optional(),
   difficulty: interactiveDifficultySchema.optional(),
+  /** "review" puts the signed-in learner's due items first. Anonymous learners get the usual random sample. */
+  focus: z.literal("review").optional(),
   accessToken,
 }).strict();
 export const interactiveCatalogModeSchema = z.object({
@@ -94,3 +96,22 @@ export type InteractiveSessionResponse = z.infer<typeof interactiveSessionRespon
 export const interactiveGetCatalogInputSchema = interactiveCatalogInputSchema;
 export const interactiveGetCatalogResponseSchema = interactiveCatalogResponseSchema;
 export const interactiveStartSessionResponseSchema = interactiveSessionResponseSchema;
+
+// Saved results. Only signed-in accounts and verified email students are stored.
+const localDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional();
+export const interactiveRecordResultsInputSchema = z.object({
+  courseKey,
+  results: z.array(z.object({ itemId: interactiveSafeIdSchema, mode: interactiveModeSchema, correct: z.boolean() }).strict()).min(1).max(50),
+  localDate,
+}).strict();
+export const interactiveRecordResultsResponseSchema = z.object({ stored: z.boolean(), saved: count, ignored: count }).strict();
+export const interactiveProgressInputSchema = z.object({ courseKey, localDate }).strict();
+export const interactiveProgressResponseSchema = z.object({
+  stored: z.boolean(),
+  today: z.object({ answered: count, correct: count, goal: count }).strict(),
+  streakDays: count,
+  dueCount: count,
+  modes: z.array(z.object({ mode: interactiveModeSchema, seen: count, solid: count, due: count, attempts: count, correct: count }).strict()).max(6),
+}).strict();
+export type InteractiveRecordResultsInput = z.infer<typeof interactiveRecordResultsInputSchema>;
+export type InteractiveProgressResponse = z.infer<typeof interactiveProgressResponseSchema>;
