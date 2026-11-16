@@ -11,13 +11,13 @@ export default function GamesCard({ courseKey, courseName }: { courseKey: string
   if (!href) return null;
   const open = () => { writeGamesNewSeen(); setSeen(true); };
   return (
-    <section aria-label="Games" className="mb-6 flex items-center gap-3 rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-5">
+    <section aria-label="Games" className={`mb-6 flex flex-wrap items-center gap-3 rounded-2xl border p-4 shadow-sm sm:p-5 ${seen ? "border-border bg-card" : "border-primary bg-primary/5"}`}>
       <Gamepad2 size={28} aria-hidden="true" className="shrink-0 text-primary" />
       <div className="min-w-0 flex-1">
         <p className="text-base font-bold leading-tight">
           Play games{!seen && <span className="ml-2 rounded-full bg-primary px-2 py-0.5 align-middle text-xs font-semibold text-primary-foreground">New</span>}
         </p>
-        <p className="text-sm text-muted-foreground">Short games to practise{courseName ? ` ${courseName}` : ""} in a different way.</p>
+        <p className="text-sm text-muted-foreground">{seen ? `Short games to practise${courseName ? ` ${courseName}` : ""} in a different way.` : `New: games are now available${courseName ? ` for ${courseName}` : ""}. Try a short round.`}</p>
       </div>
       <Link href={href} onClick={open} className="inline-flex min-h-11 shrink-0 items-center rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground hover:opacity-90">Play</Link>
       {!seen && (

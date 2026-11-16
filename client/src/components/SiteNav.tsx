@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link, useSearch } from "wouter";
 import {
-  BookOpen, ChevronDown, CircleUserRound, FileCheck2, FlaskConical,
+  BookOpen, ChevronDown, CircleUserRound, FileCheck2, FlaskConical, Gamepad2,
   Gauge, GraduationCap, LayoutDashboard, Menu, MessageCircleQuestion,
   NotebookTabs, ShieldCheck, Sigma, Sparkles, X, Zap,
 } from "lucide-react";
@@ -43,6 +43,7 @@ const tabIcons = {
   practice: BookOpen,
   mock: FileCheck2,
   flashcards: GraduationCap,
+  games: Gamepad2,
   notes: NotebookTabs,
   formulas: Sigma,
   tutor: Sparkles,
