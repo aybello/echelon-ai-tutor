@@ -22,13 +22,13 @@ describe("course workspace navigation", () => {
 
     const tabs = getCourseWorkspaceTabs(course!);
     expect(tabs.map((tab) => tab.kind)).toEqual([
-      "practice", "mock", "flashcards", "notes", "formulas", "tutor", "progress",
+      "practice", "mock", "flashcards", "games", "notes", "formulas", "tutor", "progress",
     ]);
     expect(tabs.find((tab) => tab.kind === "progress")?.href).toBe("/dashboard?course=class2-water");
 
     const mobileTabs = getMobileWorkspaceTabs(tabs);
     expect(mobileTabs.primaryTabs.map((tab) => tab.kind)).toEqual(["practice", "mock", "flashcards"]);
-    expect(mobileTabs.secondaryTabs.map((tab) => tab.kind)).toEqual(["notes", "formulas", "tutor", "progress"]);
+    expect(mobileTabs.secondaryTabs.map((tab) => tab.kind)).toEqual(["games", "notes", "formulas", "tutor", "progress"]);
   });
 
   it("resolves WPI distribution routes without colliding with water treatment", () => {

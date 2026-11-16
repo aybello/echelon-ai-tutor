@@ -95,6 +95,7 @@ export default function WpiClass2WaterQuiz() {
       onTutorOpen={() => session.setTutorOpen(true)}
       onTutorClose={() => session.setTutorOpen(false)}
       onResetSession={session.resetSession}
+      onModeChange={session.handleModeChange}
       timedSeconds={session.quizSettings.timedMode ? session.quizSettings.timedSeconds : 0}
       onTimeUp={session.handleTimeUp}
       mockExamHref="/wpi-class2-water-mock"

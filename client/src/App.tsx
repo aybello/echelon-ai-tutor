@@ -55,6 +55,7 @@ const WpiLanding = lazy(() => import("./pages/WpiLanding"));
 const OitHub = lazy(() => import("./pages/OitHub"));
 const InteractiveLearning = lazy(() => import("./pages/InteractiveLearning"));
 const CourseInteractiveLearning = lazy(() => import("./pages/CourseInteractiveLearning"));
+const Quick10 = lazy(() => import("./pages/Quick10"));
 const MagicLinkConsume = lazy(() => import("./pages/MagicLinkConsume"));
 const OtpLogin = lazy(() => import("./pages/OtpLogin"));
 const Teams = lazy(() => import("./pages/Teams"));
@@ -462,6 +463,7 @@ function Router() {
         <Route path={"/auth/magic"} component={MagicLinkConsume} />
         <Route path={"/login/otp"} component={OtpLogin} />
         <Route path={"/dashboard"} component={StudentDashboard} />
+        <Route path={"/quick-10"} component={Quick10} />
         <Route path={"/training-hours"} component={TrainingHours} />
         <Route path={"/training-hours/records/:reportId"} component={AttestedTrainingRecord} />
         <Route path={"/teams"} component={Teams} />

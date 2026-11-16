@@ -86,6 +86,7 @@ export default function Class4WaterQuiz() {
       onTutorOpen={() => session.setTutorOpen(true)}
       onTutorClose={() => session.setTutorOpen(false)}
       onResetSession={session.resetSession}
+      onModeChange={session.handleModeChange}
       timedSeconds={session.quizSettings.timedMode ? session.quizSettings.timedSeconds : 0}
       onTimeUp={session.handleTimeUp}
       mockExamHref="/class4-water-mock"

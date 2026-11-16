@@ -24,7 +24,10 @@ for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 
       const heading = root.locator("h1").first();
       await expect(heading, route).toBeVisible();
       const inGradient = await heading.evaluate(el => !!el.closest('[style*="linear-gradient"]'));
-      if (inGradient) {
+      if (route === "/formulas") {
+        await expect(heading, route).toHaveCSS("color", "rgb(0, 0, 0)");
+        await expect(page.locator(".formulas-intro"), route).toHaveCSS("background-color", "rgb(255, 255, 255)");
+      } else if (inGradient) {
         await expect(heading, route).toHaveCSS("color", "rgb(255, 255, 255)");
         const hero = heading.locator('xpath=ancestor::*[contains(@style, "linear-gradient")][1]');
         const paragraphs = hero.locator("p");
@@ -53,3 +56,21 @@ test("mobile pricing and account actions keep white text on their dark backgroun
   await page.locator(".echelon-menu-button").click();
   await expect(pricing).toHaveCount(0);
 });
+
+for (const width of [390, 1440]) {
+  test(`formula library search and categories work with keyboard at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/formulas");
+    const search = page.getByPlaceholder("Search formulas, e.g. 'CT value', 'SVI', 'flow rate'");
+    await search.focus();
+    await page.keyboard.type("zz-synthetic-no-formula");
+    await expect(page.getByText("No formulas found", { exact: false })).toBeVisible();
+    await search.fill("");
+    const category = page.getByRole("group", { name: "Formula categories" }).getByRole("button").nth(1);
+    await category.focus();
+    await page.keyboard.press("Enter");
+    await expect(category).not.toHaveCSS("background-color", "rgb(255, 255, 255)");
+    await page.getByRole("button", { name: "Expand all", exact: true }).click();
+    await expect(page.getByRole("button", { name: "Collapse all", exact: true })).toBeVisible();
+  });
+}

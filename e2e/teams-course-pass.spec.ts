@@ -402,7 +402,7 @@ test("paid practice continues past 50 questions and loads saved review slices", 
       expect(seen.has(id)).toBe(false);
       expect(Number(id)).toBeLessThan(960076);
       seen.add(id);
-      await page.getByRole("button", { name: /^A\. Correct practice answer/ }).click();
+      await page.getByRole("button", { name: "Correct practice answer", exact: true }).click();
       // A confidence rating is optional; do not manufacture one for these answers.
       await page.getByRole("button", { name: "Confirm Answer", exact: true }).click();
       await page.getByRole("button", { name: "Next Question →", exact: true }).click();

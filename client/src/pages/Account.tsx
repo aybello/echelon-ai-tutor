@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { Link, useSearch } from "wouter";
+import GamesPassButton from "@/components/GamesPassButton";
 import { trpc } from "@/lib/trpc";
 import { managerAccountDestination } from "@/lib/managerAccountRoute";
 import { getAllUnlockedExamTypes } from "@shared/products";
@@ -544,6 +545,7 @@ export default function Account() {
                                     <span className="pass-btn" style={{ background: "#F0FDF4", color: "#15803D" }}>📐 Formulas</span>
                                   </Link>
                                 )}
+                                <GamesPassButton courseKey={examType} />
                               </div>
                             </div>
                             {meta.flashcardPath && flashcardMastery[examType] && (
@@ -607,6 +609,7 @@ export default function Account() {
                                     <span className="pass-btn" style={{ background: "#F0FDF4", color: "#15803D" }}>📐 Formulas</span>
                                   </Link>
                                 )}
+                                <GamesPassButton courseKey={examType} />
                               </div>
                             </div>
                             {meta.flashcardPath && flashcardMastery[examType] && (
@@ -670,6 +673,7 @@ export default function Account() {
                                     <span className="pass-btn" style={{ background: "#F0FDF4", color: "#15803D" }}>📐 Formulas</span>
                                   </Link>
                                 )}
+                                <GamesPassButton courseKey={examType} />
                               </div>
                             </div>
                             {meta.flashcardPath && flashcardMastery[examType] && (

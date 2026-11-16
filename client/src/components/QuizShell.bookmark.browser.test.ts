@@ -11,6 +11,7 @@ type SetupOptions = {
   bookmarks?: Bookmark[];
   manualRead?: boolean;
   readError?: boolean;
+  completedAction?: { type: "missed-questions" } | { type: "topic-practice"; module: string };
 };
 
 beforeAll(async () => {
@@ -33,14 +34,14 @@ beforeAll(async () => {
         ];
         function App() {
           const [index, setIndex] = useState(0);
-          const [course, setCourse] = useState('audit-course');
+          const [course, setCourse] = useState(window.auditConfig.completedAction ? 'class1-water' : 'audit-course');
           window.showQuestion = id => setIndex(questions.findIndex(question => question.id === id));
           window.showCourse = value => setCourse(value);
           return <QuizShell currentPath={'/' + course} courseLabel="Audit" courseTitle="Practice" history={[{questionId:17},{questionId:29}]}
             correctCount={2} wrongCount={0} selectedModule={null} onModuleChange={()=>{}} calcOnly={false} onCalcOnlyToggle={()=>{}}
-            current={questions[index]} selected={0} confidence={50} confirmed={true} showSteps={false} tutorOpen={false}
+            current={window.auditConfig.completedAction ? undefined : questions[index]} selected={0} confidence={50} confirmed={true} showSteps={false} tutorOpen={false}
             onSelect={()=>{}} onConfirm={()=>{}} onNext={()=>setIndex(1)} onGoBack={()=>setIndex(0)} onConfidenceChange={()=>{}}
-            onToggleSteps={()=>{}} onTutorOpen={()=>{}} onTutorClose={()=>{}} onResetSession={()=>{}} examType={course} />;
+            onToggleSteps={()=>{}} onTutorOpen={()=>{}} onTutorClose={()=>{}} onResetSession={()=>{}} onModeChange={mode=>window.changedMode=mode} examType={course} />;
         }
         createRoot(document.getElementById('root')).render(<App/>);
       `,
@@ -49,13 +50,21 @@ beforeAll(async () => {
     plugins: [{
       name: "isolated-quiz-shell",
       setup(builder) {
-        builder.onResolve({ filter: /^sonner$|^wouter$|^@\/components\/|^@\/lib\/|^@shared\// }, args => ({ path: args.path, namespace: "mock" }));
+        builder.onResolve({ filter: /^sonner$|^wouter$|^@\/components\/|^@\/lib\/|^@shared\// }, args => {
+          if (["@/components/NextStepCard", "@/lib/nextStepHref", "@/lib/readAccessToken", "@shared/courseRegistry", "@shared/usStudyContext"].includes(args.path)) return;
+          return { path: args.path, namespace: "mock" };
+        });
         builder.onLoad({ filter: /.*/, namespace: "mock" }, args => {
+          if (args.path === "@/lib/nextStepHref") return { contents: `export const isQuick10Eligible=key=>key && key!=="electrician-309a"; export const quick10Href=(key,search)=>"/quick-10?course="+key;` };
           if (args.path === "sonner") return { contents: `
             window.toasts=[];
             export const toast=Object.assign(message=>window.toasts.push(message), {error(message){window.toasts.push(message)},warning(message){window.toasts.push(message)}});
           ` };
-          if (args.path === "wouter") return { contents: "export const useSearch=()=>location.search;export const Link=({children})=>children;" };
+          if (args.path === "wouter") return { loader: "tsx", resolveDir: process.cwd(), contents: `
+            import React from 'react';
+            export const useSearch=()=>location.search;
+            export const Link=({href,children,...props})=><a href={href} {...props} onClick={event=>{event.preventDefault();history.pushState({},'',href)}}>{children}</a>;
+          ` };
           if (args.path === "@/lib/courseNavigation") return { contents: `
             export const getCourseInteractiveHref=(courseKey,search='')=>{
               if (!courseKey || courseKey==='electrician-309a') return undefined;
@@ -91,7 +100,8 @@ beforeAll(async () => {
               if (!window.auditConfig.manualRead) queueMicrotask(()=>window.auditConfig.readError ? reject(new Error('synthetic read failure')) : resolve(window.auditConfig.bookmarks));
               return promise;
             };
-            export const trpc={useUtils:()=>({client:{dashboard:{bookmarkedQuestions:{query}}},dashboard:{bookmarkedQuestions:{invalidate:async input=>{window.invalidations.push(input)}}}}),dashboard:{
+            export const trpc={quiz:{getMissedQuestions:{useQuery:()=>({data:{total:2}})}},useUtils:()=>({client:{dashboard:{bookmarkedQuestions:{query}}},dashboard:{bookmarkedQuestions:{invalidate:async input=>{window.invalidations.push(input)}}}}),dashboard:{
+              nextStep:{useQuery:()=>({data:{step:{message:'Start your next practice',buttonLabel:'Start next practice',action:window.auditConfig.completedAction}}})},
               bookmarkedQuestions:{useQuery:(input,options)=>{useAuditState();window.queryCalls.push({input,options});return window.auditConfig.readError
                 ? {isLoading:false,isFetching:false,isError:true,isSuccess:false}
                 : window.auditConfig.manualRead
@@ -100,7 +110,7 @@ beforeAll(async () => {
               toggleBookmark:{useMutation:options=>({isPending:false,mutate:input=>{const context=options.onMutate?.(input);let resolve,reject;const promise=new Promise((yes,no)=>{resolve=yes;reject=no});window.mutations.push({input,resolve,reject});promise.then(data=>options.onSuccess(data,input,context),error=>options.onError?.(error,input,context));}})}
             }};
           `, resolveDir: process.cwd() };
-          return { contents: `export default function Stub(){return null}; export const TutorPanelPlacement={Provider:({children})=>children}; export const readUSStudyContext=()=>({isUS:false}); export const withUSStudyContext=x=>x; export const resolveCourseKey=value=>value?{courseKey:value,examFamily:'western'}:null; export const resolveStudyNotesTopics=()=>({initialTopic:null}); export const shouldShowReviewPrompt=()=>false; export const GOOGLE_REVIEW_URL=''; export const markReviewPromptShown=()=>{}; export const markAsReviewed=()=>{}; export const getPracticeGuidePath=()=>null; export const class1OptionOrder=(_e,_i,n)=>Array.from({length:n},(_,i)=>i); export const class1DisplayLetter=()=> 'A';` };
+          return { contents: `export default function Stub(){return null}; export const TutorPanelPlacement={Provider:({children})=>children}; export const readUSStudyContext=()=>({isUS:false}); export const withUSStudyContext=x=>x; export const resolveCourseKey=value=>value?{courseKey:value,examFamily:'western'}:null; export const resolveStudyNotesTopics=()=>({initialTopic:null}); export const shouldShowReviewPrompt=()=>false; export const GOOGLE_REVIEW_URL=''; export const markReviewPromptShown=()=>{}; export const markAsReviewed=()=>{}; export const getPracticeGuidePath=()=>null; export const buildPricingHref=()=>'/pricing'; export const class1OptionOrder=(_e,_i,n)=>Array.from({length:n},(_,i)=>i); export const class1DisplayLetter=()=> 'A';` };
         });
       },
     }],
@@ -114,18 +124,19 @@ afterAll(async () => { await browser?.close(); });
 
 async function setup(options: SetupOptions = {}) {
   const page = await browser.newPage();
-  await page.route("**/*", route => route.request().url() === "https://practice.echelon.test/"
+  await page.route("**/*", route => route.request().url().startsWith("https://practice.echelon.test/")
     ? route.fulfill({ contentType: "text/html", body: '<div id="root"></div>' })
     : route.abort("blockedbyclient"));
-  await page.goto("https://practice.echelon.test/");
+  await page.goto(`https://practice.echelon.test/${options.completedAction ? "class1-water" : ""}`);
   await page.evaluate(config => { (window as any).auditConfig = config; }, {
     scope: options.scope === undefined ? { identity: "user:7", courseKey: "audit-course" } : options.scope,
     bookmarks: options.bookmarks ?? [{ questionId: 17 }, { questionId: 31 }],
     manualRead: options.manualRead ?? false,
     readError: options.readError ?? false,
+    completedAction: options.completedAction,
   });
   await page.addScriptTag({ content: script });
-  await page.getByText("Saved synthetic question").waitFor();
+  await page.getByText(options.completedAction ? "Session Complete!" : "Saved synthetic question").waitFor();
   return page;
 }
 
@@ -138,6 +149,38 @@ async function expectBookmarkText(page: Page, text: string) {
 }
 
 describe("QuizShell saved bookmark state in an isolated browser", () => {
+  for (const action of [{ type: "missed-questions" }, { type: "topic-practice", module: "Pumps & Motors / Drives" }] as const) {
+    it(`starts ${action.type} from a completed quiz with a fresh document`, async () => {
+      const page = await setup({ completedAction: action });
+      try {
+        const link = page.getByRole("link", { name: "Start next practice" });
+        const href = action.type === "missed-questions" ? "/class1-water?mode=missed" : "/class1-water?module=Pumps%20%26%20Motors%20%2F%20Drives";
+        expect(await link.evaluate(element => element.tagName)).toBe("A");
+        expect(await link.getAttribute("href")).toBe(href);
+        await page.evaluate(() => { (window as any).oldCompletedDocument = true; });
+        const navigation = page.waitForRequest(request => request.isNavigationRequest() && request.url() === `https://practice.echelon.test${href}`);
+        await link.click();
+        expect((await navigation).resourceType()).toBe("document");
+        await page.waitForLoadState();
+        expect(await page.evaluate(() => (window as any).oldCompletedDocument)).toBeUndefined();
+        expect(await page.getByText("Session Complete!").count()).toBe(0);
+        const destination = new URL(page.url());
+        expect(destination.pathname).toBe("/class1-water");
+        expect(destination.searchParams.get(action.type === "missed-questions" ? "mode" : "module")).toBe(action.type === "missed-questions" ? "missed" : action.module);
+      } finally { await page.close(); }
+    });
+  }
+
+  it("runs Retry and 309A ordinary Quick 10 through the active session handler", async () => {
+    const page = await setup();
+    try {
+      await page.getByRole("button", {name: /Retry 2 mistakes/}).click();
+      expect(await page.evaluate(() => (window as any).changedMode)).toBe("missed");
+      await page.evaluate(() => (window as any).showCourse("electrician-309a"));
+      await page.getByRole("button", {name: /Quick 10/}).click();
+      expect(await page.evaluate(() => (window as any).changedMode)).toBe("quick10");
+    } finally { await page.close(); }
+  });
   it("renders the durable bookmark for each displayed question", async () => {
     const page = await setup();
     try {

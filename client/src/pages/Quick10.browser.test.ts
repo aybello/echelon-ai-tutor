@@ -1,0 +1,81 @@
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { chromium, type Browser } from "@playwright/test";
+import { build } from "esbuild";
+let browser: Browser;
+let script: string;
+beforeAll(async () => {
+  const result = await build({ bundle: true, write: false, format: "iife", jsx: "automatic",
+    alias: { "@": `${process.cwd()}/client/src`, "@shared": `${process.cwd()}/shared` },
+    stdin: { resolveDir: process.cwd(), loader: "tsx", contents: `
+      import React from 'react'; import {createRoot} from 'react-dom/client';
+      import Quick10 from './client/src/pages/Quick10';
+      import Quick10Button from './client/src/components/Quick10Button';
+      import NextStepCard from './client/src/components/NextStepCard';
+      createRoot(document.getElementById('root')).render(window.fixture==='cta'
+        ? <><Quick10Button enabled={true} preferredCourseKey="electrician-309a"/><NextStepCard courseKey="electrician-309a"/></>
+        : <Quick10/>);
+    ` },
+    plugins: [{ name: "synthetic-quick10", setup(builder) {
+      builder.onResolve({filter:/^wouter$|^@\/lib\/trpc$|^@\/hooks\/usePageMeta$|^@\/components\/QuizGate$/}, args=>({path:args.path,namespace:"fixture"}));
+      builder.onLoad({filter:/.*/,namespace:"fixture"}, args=>({loader:"tsx",resolveDir:process.cwd(),contents: args.path==='wouter' ? `
+        import React,{useState,useEffect} from 'react';
+        const go=href=>{history.pushState({},'',href);dispatchEvent(new Event('popstate'))};
+        export const Link=({href,children,...props})=><a href={href} {...props} onClick={e=>{e.preventDefault();go(href)}}>{children}</a>;
+        export function useSearch(){const [s,set]=useState(location.search);useEffect(()=>{const fn=()=>set(location.search);addEventListener('popstate',fn);return()=>removeEventListener('popstate',fn)},[]);return s}
+        export const useLocation=()=>[location.pathname,go];
+      ` : args.path==='@/lib/trpc' ? `
+        window.saves=[];window.starts=[];window.nextQueries=[];
+        const courses=[{courseKey:'class1-water',shortName:'Water',displayName:'Water'},{courseKey:'class2-water',shortName:'Water II',displayName:'Water II'}];
+        export const trpc={quick10:{courses:{useQuery:()=>({data:{courses:window.noCourses?[]:courses,currentCourseKey:window.noCourses?'electrician-309a':'class1-water'}})},
+          start:{useMutation:()=>({mutateAsync:async input=>{window.starts.push(input);return {courseKey:input.courseKey||'class1-water',courseName:'Synthetic water',locked:false,attemptToken:'synthetic-receipt',questions:Array.from({length:10},(_,i)=>({id:i+1,module:'Safety',isCalc:false,question:'Synthetic question '+(i+1),options:['Synthetic correct','Synthetic wrong']}))}}})},
+          answer:{useMutation:()=>({mutateAsync:async input=>{window.saves.push(input);return {saved:true,correct:input.selectedIndex===0,correctIndex:0,explanation:'Synthetic saved explanation'}}})}},
+          dashboard:{nextStep:{useQuery:(input,options)=>{window.nextQueries.push({input,options});return {data:{step:{message:'Continue with missed questions',buttonLabel:'Retry mistakes',action:{type:'missed-questions'}}}}}}}};
+      ` : args.path==='@/components/QuizGate' ? 'export default function Gate(){return null}' : 'export const usePageMeta=()=>{};' }));
+    }}],
+  });
+  script=result.outputFiles[0].text;
+  browser=await chromium.launch({headless:true});
+},30000);
+afterAll(async()=>{await browser?.close()});
+async function setup(width:number, fixture="quiz", noCourses=false){
+  const page=await browser.newPage({viewport:{width,height:900}});
+  await page.route('**/*',route=>route.request().url().startsWith('https://synthetic.echelon.test/')?route.fulfill({contentType:'text/html',body:'<div id="root"></div>'}):route.abort());
+  await page.goto('https://synthetic.echelon.test/quick-10?course=class1-water');
+  await page.evaluate(({fixture,noCourses})=>Object.assign(window,{fixture,noCourses}),{fixture,noCourses});
+  await page.addScriptTag({content:script});return page;
+}
+describe('Quick 10 synthetic browser interactions',()=>{
+  for(const width of [390,1440]) it(`chooses a course, saves ten answers and follows the next step at ${width}px`,async()=>{
+    const page=await setup(width);
+    try{
+      await page.getByText('Synthetic question 1',{exact:true}).waitFor();
+      await page.getByRole('combobox').selectOption('class2-water');
+      await expect.poll(()=>page.evaluate(()=>(window as any).starts.at(-1).courseKey)).toBe('class2-water');
+      for(let i=0;i<10;i++){
+        await page.getByText(`Synthetic question ${i+1}`,{exact:true}).waitFor();
+        await page.getByRole('button',{name:/Synthetic correct/}).focus();
+        await page.keyboard.press('Enter');
+        await page.getByText('Synthetic saved explanation',{exact:true}).waitFor();
+        const next=page.getByRole('button',{name:i===9?'See my result':'Next question'});
+        await expect.poll(()=>next.evaluate(el=>el===document.activeElement)).toBe(true);
+        await page.keyboard.press('Enter');
+      }
+      await page.getByText('10 of 10',{exact:true}).waitFor();
+      expect(await page.evaluate(()=>(window as any).saves.length)).toBe(10);
+      await page.getByRole('link',{name:/Retry mistakes/}).click();
+      expect(new URL(page.url()).pathname).toBe('/class2-water');
+      expect(new URL(page.url()).searchParams.get('mode')).toBe('missed');
+    }finally{await page.close()}
+  },30000);
+  it('falls back from selected 309A and suppresses its unsupported next-step flow',async()=>{
+    const page=await setup(390,'cta');
+    try{
+      await page.getByRole('link',{name:/Quick 10/}).waitFor();
+      expect(await page.getByRole('link',{name:/Quick 10/}).getAttribute('href')).toContain('course=class1-water');
+      expect(await page.getByRole('region',{name:'What next'}).count()).toBe(0);
+      expect(await page.evaluate(()=>(window as any).nextQueries.every((q:any)=>q.options.enabled===false))).toBe(true);
+    }finally{await page.close()}
+    const empty=await setup(390,'cta',true);
+    try{await empty.waitForTimeout(50);expect(await empty.getByRole('link',{name:/Quick 10/}).count()).toBe(0)}finally{await empty.close()}
+  });
+});

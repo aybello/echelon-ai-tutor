@@ -24,6 +24,8 @@ import ReportErrorModal from "@/components/ReportErrorModal";
 import FeedbackModal from "@/components/FeedbackModal";
 import { shouldShowReviewPrompt, GOOGLE_REVIEW_URL, markReviewPromptShown, markAsReviewed } from "@/lib/reviewFunnel";
 import { Link, useSearch } from "wouter";
+import PracticeSessionRail from "@/components/PracticeSessionRail";
+import { buildPricingHref } from "@shared/funnelNavigation";
 import { readUSStudyContext, withUSStudyContext } from "@shared/usStudyContext";
 import { resolveCourseKey } from "@shared/courseRegistry";
 import { trpc } from "@/lib/trpc";
@@ -33,11 +35,15 @@ import PracticeSaveStatus, { useVerifiedPracticeSaveScope } from "@/components/P
 import PracticeOptions from "@/components/PracticeOptions";
 import { getPracticeGuidePath } from "@/lib/practiceResources";
 import { getCourseInteractiveHref } from "@/lib/courseNavigation";
+import NextStepCard from "@/components/NextStepCard";
 import StudyNotesTopics from "@/components/StudyNotesTopics";
 import PreviewStudyPlanPrompt from "@/components/PreviewStudyPlanPrompt";
 import { resolveStudyNotesTopics } from "@/lib/studyNotesTopics";
 import "./StudyWorkspace.css";
 import "./PracticeWorkspace.css";
+import "./QuizPage.css";
+import type { QuizMode } from "./QuizModeBar";
+import { isQuick10Eligible, quick10Href } from "@/lib/nextStepHref";
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 
@@ -119,6 +125,7 @@ export interface QuizShellProps {
   onTutorOpen: () => void;
   onTutorClose: () => void;
   onResetSession: () => void;
+  onModeChange?: (mode: QuizMode) => void;
 
   // AI Tutor render prop (optional — caller renders its own AITutor)
   renderAITutor?: (onDismiss: () => void) => ReactNode;
@@ -254,6 +261,7 @@ export default function QuizShell({
   onTutorOpen,
   onTutorClose,
   onResetSession,
+  onModeChange,
   mockExamHref,
   formulaLinks,
   extraContent,
@@ -310,6 +318,12 @@ export default function QuizShell({
   const activeBookmarkTargetRef = useRef({ questionId: current?.id as number | undefined, bankKey: examType, scopeKey: bookmarkScopeKey });
   activeBookmarkTargetRef.current = { questionId: current?.id, bankKey: examType, scopeKey: bookmarkScopeKey };
   const bookmarkUtils = trpc.useUtils();
+  // Same query the session hook uses, so it is shared from the cache, not fetched twice.
+  const missedForShortcut = trpc.quiz.getMissedQuestions.useQuery(
+    { examType: examType ?? "", limit: 50 },
+    { enabled: Boolean(examType), refetchOnWindowFocus: false },
+  );
+  const missedCount = missedForShortcut.data?.total ?? 0;
   const bookmarkReadGeneration = useRef(0);
   const [bookmarkRead, setBookmarkRead] = useState<{
     scopeKey: string | null;
@@ -508,7 +522,7 @@ export default function QuizShell({
   if (shouldShowPracticeQuestionStatus(questionStatus)) {
     return <><SiteNav currentPath={currentPath} /><PracticeSaveStatus courseKey={examType} /><main className="mx-auto max-w-3xl p-6 text-slate-900">
       <h1 className="text-xl font-bold">{courseTitle}</h1>
-      {interactiveHref && <Link href={interactiveHref} className="practice-interactive-link">Interactive activities</Link>}
+      {interactiveHref && <Link href={interactiveHref} className="practice-interactive-link">🎮 Play games</Link>}
       <PracticeQuestionStatus status={questionStatus} error={questionError} answerCount={history.length}
         modules={modules} selectedModule={selectedModule} calcOnly={calcOnly} hasCalcOnly={hasCalcOnly}
         onModuleChange={onModuleChange} onCalcOnlyToggle={onCalcOnlyToggle}
@@ -555,7 +569,8 @@ export default function QuizShell({
               {correctCount} correct · {wrongCount} incorrect
               {sessionSize ? ` · ${sessionSize} questions` : ""}
             </p>
-            {interactiveHref && <Link href={interactiveHref} className="practice-interactive-link">Interactive activities</Link>}
+            {canonicalCourse?.courseKey && <NextStepCard courseKey={canonicalCourse.courseKey} className="mb-4 text-left" forceDocumentNavigation />}
+            {interactiveHref && <Link href={interactiveHref} className="practice-interactive-link">🎮 Play games</Link>}
             {/* Google Review prompt — shown when user scores 70%+ AND review prompt budget allows */}
             {pct >= 70 && shouldShowReviewPrompt() && (
               <a
@@ -711,14 +726,29 @@ export default function QuizShell({
             <span className="workspace-eyebrow">{courseLabel}</span>
             <h1>{courseTitle}</h1>
             {displaySubtitle && <p>{displaySubtitle}</p>}
-            {interactiveHref && <Link href={interactiveHref} className="practice-interactive-link">Interactive activities</Link>}
+            {interactiveHref && <Link href={interactiveHref} className="practice-interactive-link">🎮 Play games</Link>}
           </div></div>
           <div className="practice-session-stats" aria-live="polite">
             <span><strong>{confirmed ? history.length : history.length + 1}{sessionSize ? ` / ${sessionSize}` : ""}</strong> questions</span>
             <span><strong>{correctCount}</strong> correct</span>
             {accuracy !== null && <span><strong>{accuracy}%</strong> accuracy</span>}
           </div>
-          {isFreePreview && <p className="practice-preview">Free preview · {Math.min(history.length, freeLimit)} of {freeLimit} questions used</p>}
+          {sessionSize ? (
+            <div className="practice-progress" role="progressbar" aria-valuemin={0} aria-valuemax={sessionSize} aria-valuenow={history.length} aria-label="Session progress">
+              <span style={{ width: `${progress}%` }} />
+            </div>
+          ) : null}
+          {isFreePreview && (
+            <div className="practice-preview-banner" role="note">
+              <p><strong>Free preview</strong> · {Math.min(history.length, freeLimit)} of {freeLimit} questions used</p>
+              <Link href={buildPricingHref(canonicalCourse?.courseKey ?? "", null, search)} className="practice-preview-unlock">Unlock all questions</Link>
+            </div>
+          )}
+          <div className="practice-quick-links" aria-label="Quick ways to practise">
+            {interactiveHref && <Link href={interactiveHref} className="practice-interactive-link">🎮 Play games</Link>}
+            {isQuick10Eligible(canonicalCourse?.courseKey) ? <Link href={quick10Href(canonicalCourse!.courseKey, search)}>⚡ Quick 10</Link> : onModeChange && <button type="button" className="practice-mode-shortcut" onClick={() => onModeChange("quick10")}>⚡ Quick 10</button>}
+            {missedCount > 0 && onModeChange && <button type="button" className="practice-mode-shortcut" onClick={() => onModeChange("missed")}>🔁 Retry {missedCount} {missedCount === 1 ? "mistake" : "mistakes"}</button>}
+          </div>
           <PracticeOptions modules={modules} selectedModule={selectedModule} onModuleChange={onModuleChange}
             hasCalcOnly={hasCalcOnly} calcOnly={calcOnly} onCalcOnlyToggle={onCalcOnlyToggle}>
             {headerExtra}
@@ -909,16 +939,17 @@ export default function QuizShell({
               return (
                 <button
                   key={idx}
+                  className="qs-option"
                   aria-pressed={isSelected}
                   onClick={() => !confirmed && !isQuestionLoading && onSelect(idx)}
                   disabled={confirmed || isQuestionLoading}
                   style={{
-                    padding: "10px 14px",
-                    borderRadius: 10,
+                    padding: "12px 14px",
+                    borderRadius: 12,
                     border: `1.5px solid ${border}`,
                     background: bg,
                     color,
-                    fontSize: 13,
+                    fontSize: 15,
                     fontWeight: isSelected || isCorrect ? 700 : 500,
                     cursor: confirmed ? "default" : "pointer",
                     textAlign: "left",
@@ -930,8 +961,8 @@ export default function QuizShell({
                     gap: 8,
                   }}
                 >
-                  <span style={{ opacity: 0.55, fontSize: 12, fontWeight: 800, flexShrink: 0, paddingTop: 1 }}>
-                    {String.fromCharCode(65 + displayIndex)}.
+                  <span className="qs-option-letter" aria-hidden="true">
+                    {String.fromCharCode(65 + displayIndex)}
                   </span>
                   <span style={{ flex: 1 }}>{opt}</span>
                   {isCorrect && <span style={{ flexShrink: 0 }}>✓</span>}
@@ -992,7 +1023,7 @@ export default function QuizShell({
                     minWidth: 0,
                   }}
                 >
-                  Confirm Answer
+                  {selected === null ? "Choose an answer" : "Confirm Answer"}
                 </button>
               ) : (
                 <button
@@ -1166,6 +1197,9 @@ export default function QuizShell({
         <TutorPanelPlacement.Provider value="workspace">
           <div className="practice-tutor-slot">{renderAITutor(dismissTutor)}</div>
         </TutorPanelPlacement.Provider>
+      )}
+      {!(tutorOpen && renderAITutor) && !gate && (
+        <PracticeSessionRail history={history as Array<{ module?: string; correct?: boolean }>} missedCount={missedCount} />
       )}
 
       {/* ── Report Error modal ── */}
