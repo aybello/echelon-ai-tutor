@@ -1,15 +1,15 @@
 {
  "export": "docs/exam-bank-export/2026-11-16 (commit d118897a)",
- "chunksDone": 90,
+ "chunksDone": 100,
  "chunksTotal": 174,
- "questionsReviewed": 12685,
+ "questionsReviewed": 14056,
  "questionsTotal": 24350,
- "problems": 770,
+ "problems": 808,
  "byVerdict": {
-  "UNCLEAR": 228,
-  "WRONG": 383,
-  "JURISDICTION": 102,
-  "UNITS": 50,
+  "UNCLEAR": 244,
+  "WRONG": 397,
+  "JURISDICTION": 109,
+  "UNITS": 51,
   "OFF-TOPIC": 7
  },
  "byBank": {
@@ -30,7 +30,8 @@
   "class4-wastewater-coll": 71,
   "class4-water": 48,
   "class4-water-dist": 78,
-  "oit": 56
+  "oit": 56,
+  "oit-ww": 38
  },
  "chunks": [
   "chunk-001",
@@ -122,7 +123,17 @@
   "chunk-087",
   "chunk-088",
   "chunk-089",
-  "chunk-090"
+  "chunk-090",
+  "chunk-091",
+  "chunk-092",
+  "chunk-093",
+  "chunk-094",
+  "chunk-095",
+  "chunk-096",
+  "chunk-097",
+  "chunk-098",
+  "chunk-099",
+  "chunk-100"
  ],
  "corrections": [
   {
@@ -27769,6 +27780,1413 @@
       "c": "Option A matches: real + apparent losses = 1,100 m³/day; NRW = 24%."
      }
     ]
+   }
+  },
+  {
+   "id": 60002,
+   "bankKey": "oit-ww",
+   "questionNum": 2,
+   "verdict": "UNCLEAR",
+   "note": "Option A (industrial wastewater often has more consistent flow and strength) is defensible for continuously operating industries; the explanation itself concedes industrial patterns vary. Replace A with a clearly false statement.",
+   "original": {
+    "question": "In a municipal wastewater treatment plant, what is a typical characteristic that distinguishes domestic wastewater from industrial wastewater?",
+    "options": [
+     "Industrial wastewater often has a more consistent flow and strength throughout the day.",
+     "Domestic wastewater typically contains a higher concentration of heavy metals.",
+     "Industrial wastewater usually has a lower temperature than domestic wastewater.",
+     "Domestic wastewater exhibits significant diurnal (daily) flow and strength variations."
+    ],
+    "correctIndex": 3,
+    "explanation": "Domestic wastewater flow and strength are heavily influenced by human activity patterns, leading to peaks in the morning and evening and lower flows overnight. Industrial wastewater characteristics are more dependent on specific production schedules and processes, which may or may not show diurnal patterns, but domestic always does. Industrial wastewater can also have highly variable characteristics depending on the industry, often containing specific pollutants not found in domestic waste."
+   },
+   "fix": {
+    "question": "In a municipal wastewater treatment plant, what is a typical characteristic that distinguishes domestic wastewater from industrial wastewater?",
+    "options": [
+     "Industrial wastewater always follows the same morning and evening flow peaks as domestic wastewater.",
+     "Domestic wastewater typically contains a higher concentration of heavy metals.",
+     "Industrial wastewater usually has a lower temperature than domestic wastewater.",
+     "Domestic wastewater exhibits significant diurnal (daily) flow and strength variations."
+    ],
+    "correctIndex": 3,
+    "explanation": "Domestic wastewater flow and strength are heavily influenced by human activity patterns, leading to peaks in the morning and evening and lower flows overnight. Industrial wastewater characteristics depend on specific production schedules and processes and often contain specific pollutants (such as heavy metals) not found in domestic waste.",
+    "steps": null
+   }
+  },
+  {
+   "id": 60038,
+   "bankKey": "oit-ww",
+   "questionNum": 38,
+   "verdict": "UNCLEAR",
+   "note": "A COD:BOD5 ratio of 2:1 (400/200) is typical of raw domestic wastewater, which is considered readily biodegradable, so 'easily biodegradable' (B) is also defensible. Use a clearly high ratio so only C is right.",
+   "original": {
+    "question": "A wastewater sample has a Chemical Oxygen Demand (COD) of 400 mg/L and a five-day Biochemical Oxygen Demand (BOD5) of 200 mg/L. What does this suggest about the wastewater?",
+    "options": [
+     "It contains primarily inorganic pollutants.",
+     "It is easily biodegradable.",
+     "It contains a significant portion of non-biodegradable organic matter.",
+     "The sample is likely from a highly treated effluent."
+    ],
+    "correctIndex": 2,
+    "explanation": "COD measures both biodegradable and non-biodegradable organic matter, while BOD5 measures only biodegradable organic matter. If COD is significantly higher than BOD5 (as in this case, 400 vs. 200), it indicates that a substantial portion of the organic matter present is resistant to biological degradation. This is common in industrial wastewater or older domestic wastewater."
+   },
+   "fix": {
+    "question": "A wastewater sample has a Chemical Oxygen Demand (COD) of 1,200 mg/L and a five-day Biochemical Oxygen Demand (BOD5) of 200 mg/L. What does this suggest about the wastewater?",
+    "options": [
+     "It contains primarily inorganic pollutants.",
+     "It is easily biodegradable.",
+     "It contains a significant portion of non-biodegradable organic matter.",
+     "The sample is likely from a highly treated effluent."
+    ],
+    "correctIndex": 2,
+    "explanation": "COD measures both biodegradable and non-biodegradable organic matter, while BOD5 measures only the biodegradable fraction. A COD:BOD5 ratio of 6:1 (1,200 vs. 200) indicates that a substantial portion of the organic matter is resistant to biological degradation. Raw domestic wastewater typically has a ratio of about 2:1.",
+    "steps": null
+   }
+  },
+  {
+   "id": 60088,
+   "bankKey": "oit-ww",
+   "questionNum": 88,
+   "verdict": "WRONG",
+   "note": "Answer 4.8 h is arithmetically right, but the explanation says it is 'within the typical range for primary clarifiers (1.5-2.5 hours)' and that long detention 'generally improves settling'. 4.8 h is well outside that range and long detention risks septic conditions.",
+   "original": {
+    "question": "A primary clarifier has a volume of 1200 m³ and an average daily flow of 6000 m³/day. What is the hydraulic detention time (DT) of the clarifier in hours?",
+    "options": [
+     "4.8 hours",
+     "2.4 hours",
+     "0.2 hours",
+     "20.0 hours"
+    ],
+    "correctIndex": 0,
+    "explanation": "Detention time = Volume / Flow = 1,200 m³ / (6,000 m³/day ÷ 24 hours/day) = 1,200 / 250 = 4.8 hours. This detention time is within the typical range for primary clarifiers (1.5-2.5 hours at average flow), though slightly on the high side, which generally improves settling performance."
+   },
+   "fix": {
+    "question": "A primary clarifier has a volume of 1200 m³ and an average daily flow of 6000 m³/day. What is the hydraulic detention time (DT) of the clarifier in hours?",
+    "options": [
+     "4.8 hours",
+     "2.4 hours",
+     "0.2 hours",
+     "20.0 hours"
+    ],
+    "correctIndex": 0,
+    "explanation": "Detention time = Volume / Flow = 1,200 m³ / (6,000 m³/day ÷ 24 hours/day) = 1,200 / 250 = 4.8 hours. This is longer than the typical primary clarifier range (about 1.5-2.5 hours at average flow), and very long detention can allow septic conditions to develop.",
+    "steps": [
+     {
+      "l": "Step 1: Identify the given values.",
+      "c": "Volume (V) = 1200 m³; Flow Rate (Q) = 6000 m³/day."
+     },
+     {
+      "l": "Step 2: State the formula for Hydraulic Detention Time (DT).",
+      "c": "DT = Volume / Flow Rate"
+     },
+     {
+      "l": "Step 3: Calculate the detention time in days.",
+      "c": "DT = 1200 m³ / 6000 m³/day = 0.2 days"
+     },
+     {
+      "l": "Step 4: Convert the detention time from days to hours.",
+      "c": "DT (hours) = DT (days) * 24 hours/day = 0.2 days * 24 hours/day = 4.8 hours"
+     }
+    ]
+   }
+  },
+  {
+   "id": 60103,
+   "bankKey": "oit-ww",
+   "questionNum": 103,
+   "verdict": "UNCLEAR",
+   "note": "Two options are correct: 0.25 days (option A) equals 6.0 hours (option C, the key). Replace option A with a clearly wrong value.",
+   "original": {
+    "question": "A wastewater treatment plant has an influent flow of 10,000 m³/day and an aeration tank volume of 2,500 m³. The Mixed Liquor Suspended Solids (MLSS) concentration is 3,000 mg/L. What is the hydraulic retention time (HRT) of the aeration tank?",
+    "options": [
+     "0.25 days",
+     "4.0 days",
+     "6.0 hours",
+     "2.4 hours"
+    ],
+    "correctIndex": 2,
+    "explanation": "Hydraulic Retention Time (HRT) is calculated as the tank volume divided by the flow rate. HRT = Volume / Flow = 2,500 m³ / 10,000 m³/day = 0.25 days. To convert to hours, 0.25 days * 24 hours/day = 6.0 hours. The MLSS concentration is extra information not needed for HRT calculation."
+   },
+   "fix": {
+    "question": "A wastewater treatment plant has an influent flow of 10,000 m³/day and an aeration tank volume of 2,500 m³. The Mixed Liquor Suspended Solids (MLSS) concentration is 3,000 mg/L. What is the hydraulic retention time (HRT) of the aeration tank?",
+    "options": [
+     "2.5 days",
+     "4.0 days",
+     "6.0 hours",
+     "2.4 hours"
+    ],
+    "correctIndex": 2,
+    "explanation": "Hydraulic Retention Time (HRT) is calculated as the tank volume divided by the flow rate. HRT = Volume / Flow = 2,500 m³ / 10,000 m³/day = 0.25 days. To convert to hours, 0.25 days * 24 hours/day = 6.0 hours. The MLSS concentration is extra information not needed for HRT calculation.",
+    "steps": [
+     {
+      "l": "State the formula for Hydraulic Retention Time (HRT)",
+      "c": "HRT = Volume / Flow"
+     },
+     {
+      "l": "Substitute the given volume and flow into the formula",
+      "c": "HRT = 2,500 m^3 / 10,000 m^3/day"
+     },
+     {
+      "l": "Calculate the HRT in days",
+      "c": "2,500 / 10,000 = 0.25 days"
+     },
+     {
+      "l": "Convert the HRT from days to hours",
+      "c": "0.25 days * 24 hours/day = 6.0 hours"
+     },
+     {
+      "l": "Note the extra data",
+      "c": "MLSS of 3,000 mg/L is not used in an HRT calculation; it applies to F/M and MCRT."
+     },
+     {
+      "l": "Check the answer",
+      "c": "The calculated HRT is 6.0 hours, matching the keyed option."
+     }
+    ]
+   }
+  },
+  {
+   "id": 60115,
+   "bankKey": "oit-ww",
+   "questionNum": 115,
+   "verdict": "WRONG",
+   "note": "The steps belong to a different question (filamentous bulking, options A-D about DO/F:M) and do not explain SVI or reach the marked answer. Steps should be null for this conceptual question.",
+   "original": {
+    "question": "What is the Sludge Volume Index (SVI) and how is it used operationally?",
+    "options": [
+     "SVI is the volume (mL) occupied by 1 gram of settled sludge after 30 minutes; it indicates settling quality — lower values mean better settling",
+     "SVI measures the oxygen uptake rate of the activated sludge",
+     "SVI is the ratio of volatile to total suspended solids in the mixed liquor",
+     "SVI measures the age of the sludge in the system"
+    ],
+    "correctIndex": 0,
+    "explanation": "SVI is calculated by dividing the 30-minute settled sludge volume (mL/L from a settleometer test) by the MLSS concentration (g/L). Good settling sludge has SVI of 50-150 mL/g. Values above 150 indicate bulking (poor settling), while values below 50 may indicate pin floc or old sludge. Operators use SVI trends to detect settling problems early."
+   },
+   "fix": {
+    "question": "What is the Sludge Volume Index (SVI) and how is it used operationally?",
+    "options": [
+     "SVI is the volume (mL) occupied by 1 gram of settled sludge after 30 minutes; it indicates settling quality — lower values mean better settling",
+     "SVI measures the oxygen uptake rate of the activated sludge",
+     "SVI is the ratio of volatile to total suspended solids in the mixed liquor",
+     "SVI measures the age of the sludge in the system"
+    ],
+    "correctIndex": 0,
+    "explanation": "SVI is calculated by dividing the 30-minute settled sludge volume (mL/L from a settleometer test) by the MLSS concentration (g/L). Good settling sludge has SVI of 50-150 mL/g. Values above 150 indicate bulking (poor settling), while values below 50 may indicate pin floc or old sludge. Operators use SVI trends to detect settling problems early.",
+    "steps": null
+   }
+  },
+  {
+   "id": 60138,
+   "bankKey": "oit-ww",
+   "questionNum": 138,
+   "verdict": "WRONG",
+   "note": "Steps are from a different question: they evaluate options about increasing MLSS, decreasing DO, increasing F:M and a coagulant, and conclude 'increase the F:M ratio', contradicting the marked answer (increase aeration/DO). Steps should be removed.",
+   "original": {
+    "question": "An operator identifies low dissolved oxygen as the cause of filamentous bulking in the aeration tank. What is the most appropriate corrective action?",
+    "options": [
+     "Increase the aeration rate to maintain DO above 2.0 mg/L throughout the aeration tank",
+     "Decrease the RAS flow rate to concentrate the sludge",
+     "Add more influent flow to increase the organic loading",
+     "Reduce the MLSS by increasing WAS rate"
+    ],
+    "correctIndex": 0,
+    "explanation": "When low DO is identified as the cause of filamentous growth (organisms like Type 1701, S. natans), the direct corrective action is to increase aeration to maintain DO above 2.0 mg/L. This removes the competitive advantage that filamentous organisms have at low oxygen levels. Additional measures may include checking diffuser condition, verifying blower capacity, and ensuring even air distribution."
+   },
+   "fix": {
+    "question": "An operator identifies low dissolved oxygen as the cause of filamentous bulking in the aeration tank. What is the most appropriate corrective action?",
+    "options": [
+     "Increase the aeration rate to maintain DO above 2.0 mg/L throughout the aeration tank",
+     "Decrease the RAS flow rate to concentrate the sludge",
+     "Add more influent flow to increase the organic loading",
+     "Reduce the MLSS by increasing WAS rate"
+    ],
+    "correctIndex": 0,
+    "explanation": "When low DO is identified as the cause of filamentous growth (organisms like Type 1701, S. natans), the direct corrective action is to increase aeration to maintain DO above 2.0 mg/L. This removes the competitive advantage that filamentous organisms have at low oxygen levels. Additional measures may include checking diffuser condition, verifying blower capacity, and ensuring even air distribution.",
+    "steps": null
+   }
+  },
+  {
+   "id": 60158,
+   "bankKey": "oit-ww",
+   "questionNum": 158,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 129/04 is the Ontario regulation on licensing of sewage works operators; it does not set effluent E. coli limits. Effluent limits come from the plant's Environmental Compliance Approval (ECA; formerly Certificate of Approval). A 200 E. coli/100 mL monthly geometric mean is a typical ECA objective/limit, so the answer is fine but the source cited is wrong.",
+   "original": {
+    "question": "An OIT is performing routine effluent quality checks. What is the typical regulatory limit for E. coli in treated wastewater effluent in Ontario, as per O. Reg. 129/04 (if not specified otherwise by CofA)?",
+    "options": [
+     "200 E. coli per 100 mL sample, based on monthly geometric mean",
+     "2500 E. coli per 100 mL sample, based on monthly geometric mean",
+     "10 E. coli per 100 mL sample, based on monthly geometric mean",
+     "Not detectable in any 100 mL sample"
+    ],
+    "correctIndex": 0,
+    "explanation": "Under O. Reg. 129/04, for most municipal sewage treatment plants in Ontario, the treated effluent quality standard for E. coli is typically a monthly geometric mean concentration not exceeding 200 E. coli per 100 mL of sample. It's crucial for operators to be aware of these specific regulatory limits to ensure compliance and protect public health. This standard is designed to ensure adequate disinfection."
+   },
+   "fix": {
+    "question": "An OIT is performing routine effluent quality checks. What is a typical E. coli effluent limit for a municipal sewage treatment plant in Ontario, as set in the plant's Environmental Compliance Approval (ECA)?",
+    "options": [
+     "200 E. coli per 100 mL sample, based on monthly geometric mean",
+     "2500 E. coli per 100 mL sample, based on monthly geometric mean",
+     "10 E. coli per 100 mL sample, based on monthly geometric mean",
+     "Not detectable in any 100 mL sample"
+    ],
+    "correctIndex": 0,
+    "explanation": "Effluent limits for Ontario municipal sewage treatment plants are set in the plant's ECA, not in O. Reg. 129/04 (which covers operator licensing). A typical E. coli limit is a monthly geometric mean not exceeding 200 E. coli per 100 mL of sample, which ensures adequate disinfection.",
+    "steps": null
+   }
+  },
+  {
+   "id": 60165,
+   "bankKey": "oit-ww",
+   "questionNum": 165,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 129/04 (operator licensing) does not set effluent pH. Effluent pH limits are written into the ECA; 6.0 to 9.5 is the typical Ontario range. Answer is fine, citation is wrong.",
+   "original": {
+    "question": "According to Ontario regulations (e.g., O. Reg. 129/04), what is the typical pH range required for treated wastewater effluent discharged to the environment?",
+    "options": [
+     "5.0 to 9.0",
+     "6.0 to 9.5",
+     "7.0 to 8.0",
+     "6.5 to 8.5"
+    ],
+    "correctIndex": 1,
+    "explanation": "Ontario regulations, such as O. Reg. 129/04, generally specify that the pH of treated effluent discharged to the environment must be maintained within a range to protect aquatic life and the receiving water body's ecosystem. A common acceptable range is 6.0 to 9.5, though specific Certificates of Approval may have tighter limits. Operators must regularly monitor and adjust pH if necessary."
+   },
+   "fix": {
+    "question": "According to typical Ontario Environmental Compliance Approval (ECA) limits for municipal sewage treatment plants, what is the usual pH range required for treated effluent discharged to the environment?",
+    "options": [
+     "5.0 to 9.0",
+     "6.0 to 9.5",
+     "7.0 to 8.0",
+     "6.5 to 8.5"
+    ],
+    "correctIndex": 1,
+    "explanation": "Effluent pH limits are set in the plant's ECA (not in O. Reg. 129/04, which covers operator licensing). A typical Ontario range is 6.0 to 9.5 to protect aquatic life, though a specific ECA may set tighter limits. Operators must monitor and adjust pH if necessary.",
+    "steps": null
+   }
+  },
+  {
+   "id": 60168,
+   "bankKey": "oit-ww",
+   "questionNum": 168,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 128/04 is the Ontario regulation on certification of drinking water operators and water labs; it does not set wastewater effluent E. coli limits. Those are in the ECA. The '500 m3/day' qualifier and 'at least five samples' detail are not from that regulation.",
+   "original": {
+    "question": "According to O. Reg. 128/04, what is the typical requirement for E. coli in wastewater effluent discharged to a surface water body, for a plant with an average daily flow exceeding 500 m³/day?",
+    "options": [
+     "Less than 200 E. coli per 100 mL, based on a geometric mean of samples.",
+     "No more than 50 E. coli per 100 mL in any single sample.",
+     "Less than 250 E. coli per 100 mL, based on the arithmetic mean.",
+     "Zero E. coli detected in 90% of samples."
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 128/04 typically specifies a limit of 200 E. coli per 100 mL, based on the geometric mean of at least five samples taken over a 30-day period for larger plants. This standard ensures public health protection in receiving waters."
+   },
+   "fix": {
+    "question": "What E. coli limit is typically set in the Environmental Compliance Approval (ECA) of an Ontario municipal sewage treatment plant discharging to a surface water body?",
+    "options": [
+     "200 E. coli per 100 mL, based on a monthly geometric mean of samples.",
+     "No more than 50 E. coli per 100 mL in any single sample.",
+     "Less than 250 E. coli per 100 mL, based on the arithmetic mean.",
+     "Zero E. coli detected in 90% of samples."
+    ],
+    "correctIndex": 0,
+    "explanation": "Effluent E. coli limits for Ontario sewage treatment plants are set in the ECA, not in O. Reg. 128/04 (which covers drinking water operator certification). A typical limit is a monthly geometric mean of 200 E. coli per 100 mL.",
+    "steps": null
+   }
+  },
+  {
+   "id": 60175,
+   "bankKey": "oit-ww",
+   "questionNum": 175,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 128/04 is drinking-water operator certification, not effluent quality. Effluent pH limits come from the ECA, typically 6.0 to 9.5 in Ontario; the stated target of 6.5 to 8.5 is a receiving-water objective (PWQO), not a typical effluent limit, and the explanation itself equivocates (6.5-8.5 or 6.0-9.0). The pH 5.5 is below any of these ranges so action is required, but the marked option misstates the range.",
+   "original": {
+    "question": "A wastewater treatment plant's effluent pH is consistently measured at 5.5. According to typical Ontario effluent quality guidelines (e.g., O. Reg. 128/04), what action is likely required?",
+    "options": [
+     "Adjust the pH of the effluent to fall within the range of 6.5 to 8.5.",
+     "Increase the chlorine dose to compensate for the low pH.",
+     "Reduce the aeration rate in the activated sludge process.",
+     "No action is required as this pH is acceptable for discharge."
+    ],
+    "correctIndex": 0,
+    "explanation": "Typical effluent quality guidelines in Ontario (and generally) require pH to be maintained within a specific range, usually 6.5 to 8.5 or 6.0 to 9.0. A pH of 5.5 is outside this acceptable range and could be harmful to aquatic life in the receiving water body, requiring adjustment."
+   },
+   "fix": {
+    "question": "A wastewater treatment plant's effluent pH is consistently measured at 5.5. According to typical Ontario ECA effluent limits (usually pH 6.0 to 9.5), what action is likely required?",
+    "options": [
+     "Adjust the pH of the effluent so it falls within the ECA range (typically 6.0 to 9.5).",
+     "Increase the chlorine dose to compensate for the low pH.",
+     "Reduce the aeration rate in the activated sludge process.",
+     "No action is required as this pH is acceptable for discharge."
+    ],
+    "correctIndex": 0,
+    "explanation": "Effluent pH limits are set in the plant's ECA, typically 6.0 to 9.5 in Ontario. A pH of 5.5 is below the lower limit and could harm aquatic life in the receiving water, so the operator must find the cause and adjust the pH.",
+    "steps": null
+   }
+  },
+  {
+   "id": 60178,
+   "bankKey": "oit-ww",
+   "questionNum": 178,
+   "verdict": "UNCLEAR",
+   "note": "'Maximum permissible average CBOD5' typical for Ontario municipal plants is 25 mg/L (federal Wastewater Systems Effluent Regulations, and the usual conventional secondary ECA limit); 5 mg/L is a stringent advanced-treatment limit found only in some ECAs. Key of 5 mg/L is not 'typical'.",
+   "original": {
+    "question": "According to typical Ontario regulatory requirements for municipal wastewater treatment plants, what is the maximum permissible average concentration for Carbonaceous Biochemical Oxygen Demand (CBOD5) in final effluent?",
+    "options": [
+     "5 mg/L",
+     "10 mg/L",
+     "25 mg/L",
+     "50 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "Many Certificates of Approval (CofA) for municipal wastewater treatment plants in Ontario specify a monthly average CBOD5 limit of 5 mg/L to protect receiving waters. This is a very common stringent limit for advanced treatment facilities."
+   },
+   "fix": {
+    "question": "Under the federal Wastewater Systems Effluent Regulations (which apply to Ontario municipal wastewater systems), what is the maximum average CBOD5 concentration in final effluent?",
+    "options": [
+     "5 mg/L",
+     "10 mg/L",
+     "25 mg/L",
+     "50 mg/L"
+    ],
+    "correctIndex": 2,
+    "explanation": "The federal Wastewater Systems Effluent Regulations set a maximum average CBOD5 of 25 mg/L (and 25 mg/L suspended solids). Some Ontario ECAs set stricter limits (e.g. 5 to 15 mg/L) for sensitive receivers, but 25 mg/L is the baseline secondary-treatment standard.",
+    "steps": null
+   }
+  },
+  {
+   "id": 60188,
+   "bankKey": "oit-ww",
+   "questionNum": 188,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 129/04 is operator licensing and sets no effluent TSS limit. The baseline secondary-treatment TSS limit (federal WSER, and the usual conventional-plant ECA limit) is 25 mg/L average; 15 mg/L is only a tighter ECA limit for some plants, so the key of 15 is not 'typical for a conventional plant'.",
+   "original": {
+    "question": "According to O. Reg. 129/04, what is the typical daily average effluent limit for Total Suspended Solids (TSS) for a conventional wastewater treatment plant in Ontario?",
+    "options": [
+     "15 mg/L",
+     "5 mg/L",
+     "25 mg/L",
+     "30 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 129/04 sets out effluent quality standards for municipal wastewater treatment plants. For a conventional plant, the daily average effluent limit for Total Suspended Solids (TSS) is typically 15 mg/L. It's crucial for operators to be aware of these regulatory limits."
+   },
+   "fix": {
+    "question": "Under the federal Wastewater Systems Effluent Regulations (applicable to Ontario municipal plants), what is the maximum average effluent concentration for total suspended solids for a conventional secondary treatment plant?",
+    "options": [
+     "15 mg/L",
+     "5 mg/L",
+     "25 mg/L",
+     "30 mg/L"
+    ],
+    "correctIndex": 2,
+    "explanation": "The federal Wastewater Systems Effluent Regulations limit average effluent TSS (and CBOD5) to 25 mg/L. O. Reg. 129/04 covers operator licensing and does not set effluent limits; individual ECAs may impose stricter limits such as 15 or 10 mg/L.",
+    "steps": null
+   }
+  },
+  {
+   "id": 60193,
+   "bankKey": "oit-ww",
+   "questionNum": 193,
+   "verdict": "WRONG",
+   "note": "Typical Ontario effluent pH limits in ECAs are 6.0 to 9.5 (MECP guideline F-5-1 range), not 6.5 to 9.0. Inconsistent with other items in the bank (60165 uses 6.0-9.5).",
+   "original": {
+    "question": "An effluent pH limit for discharge to a receiving water body in Ontario typically falls within which range?",
+    "options": [
+     "6.5 to 9.0",
+     "5.0 to 7.0",
+     "7.5 to 10.0",
+     "4.0 to 11.0"
+    ],
+    "correctIndex": 0,
+    "explanation": "Effluent pH limits are set to protect aquatic life and the overall health of the receiving water body. In Ontario, regulatory requirements for wastewater effluent typically mandate a pH range between 6.5 and 9.0 to ensure compatibility with natural aquatic environments."
+   },
+   "fix": {
+    "question": "An effluent pH limit for discharge to a receiving water body in Ontario (as set in an ECA) typically falls within which range?",
+    "options": [
+     "6.0 to 9.5",
+     "5.0 to 7.0",
+     "7.5 to 10.0",
+     "4.0 to 11.0"
+    ],
+    "correctIndex": 0,
+    "explanation": "Effluent pH limits are set to protect aquatic life and the receiving water. Ontario ECAs for sewage works typically require effluent pH between 6.0 and 9.5 (some ECAs set tighter limits).",
+    "steps": null
+   }
+  },
+  {
+   "id": 60196,
+   "bankKey": "oit-ww",
+   "questionNum": 196,
+   "verdict": "WRONG",
+   "note": "Key 417 L/day is right (trade percent = g available chlorine per 100 mL, so 12% = 120 g/L; 50 kg / 0.12 kg/L = 417 L/day), but the explanation first computes 347 L/day using density x concentration, which is a different (and for 'trade percent' incorrect) method, and then calls 417 a 'simplified' answer. Explanation contradicts itself and should be fixed.",
+   "original": {
+    "question": "A wastewater plant uses sodium hypochlorite (NaOCl) for disinfection. The solution has a trade percent of 12%. How many litres of solution are needed per day to dose 5 mg/L to a flow of 10,000 m³/day?",
+    "options": [
+     "417 L/day",
+     "500 L/day",
+     "600 L/day",
+     "833 L/day"
+    ],
+    "correctIndex": 0,
+    "explanation": "Mass of chlorine needed = Flow × Dose = 10,000 m³/day × 5 mg/L × (1 kg/1,000,000 mg) × (1,000 L/m³) = 50 kg/day. Volume of 12% solution = Mass / (Density × Concentration) = 50 / (1.2 kg/L × 0.12) = 50 / 0.144 = 347 L/day. Using simplified calculation: 50 kg / (0.12 × 1.0 kg/L) = 417 L/day (assuming specific gravity of 1.0 for simplified calculation)."
+   },
+   "fix": {
+    "question": "A wastewater plant uses sodium hypochlorite (NaOCl) for disinfection. The solution has a trade percent of 12%. How many litres of solution are needed per day to dose 5 mg/L to a flow of 10,000 m³/day?",
+    "options": [
+     "417 L/day",
+     "500 L/day",
+     "600 L/day",
+     "833 L/day"
+    ],
+    "correctIndex": 0,
+    "explanation": "Chlorine needed = 10,000 m³/day x 5 mg/L / 1,000 = 50 kg/day. Trade percent is expressed as grams of available chlorine per 100 mL, so a 12% solution contains 120 g/L = 0.12 kg/L. Volume = 50 kg/day / 0.12 kg/L = 417 L/day.",
+    "steps": null
+   }
+  },
+  {
+   "id": 60197,
+   "bankKey": "oit-ww",
+   "questionNum": 197,
+   "verdict": "UNCLEAR",
+   "note": "Typical Ontario ECA effluent pH range is 6.0 to 9.5, not 6.0 to 9.0 (and 60181's explanation says 6.0-9.5). Stated regulation range is not verifiable as 6.0-9.0.",
+   "original": {
+    "question": "What is the typical acceptable pH range for treated wastewater effluent discharged to the environment in Ontario, as specified by environmental regulations?",
+    "options": [
+     "6.0 to 9.0",
+     "4.0 to 6.0",
+     "9.0 to 11.0",
+     "7.0 to 8.0"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario regulations for wastewater effluent typically specify a pH range of 6.0 to 9.0. This range ensures that the discharged water is not overly acidic or alkaline, which could harm aquatic life and disrupt the natural pH balance of receiving waters."
+   },
+   "fix": {
+    "question": "What is the typical acceptable pH range for treated wastewater effluent discharged to the environment in Ontario, as specified in a plant's ECA?",
+    "options": [
+     "6.0 to 9.5",
+     "4.0 to 6.0",
+     "9.0 to 11.0",
+     "7.0 to 8.0"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario ECAs for sewage works typically specify an effluent pH range of 6.0 to 9.5. This ensures the discharge is not overly acidic or alkaline, which could harm aquatic life and disrupt the receiving water's pH balance.",
+    "steps": null
+   }
+  },
+  {
+   "id": 60224,
+   "bankKey": "oit-ww",
+   "questionNum": 224,
+   "verdict": "WRONG",
+   "note": "Increasing the differential speed (bowl vs scroll) shortens solids residence time in the bowl and conveys solids faster, producing a wetter cake, so it would worsen low cake solids. To improve cake dryness the differential speed is decreased (and/or polymer optimized). The explanation states the opposite.",
+   "original": {
+    "question": "An operator is monitoring the dewatered cake from a centrifuge. If the cake solids concentration decreases from 25% to 18% while the feed sludge concentration remains constant, what is the most likely operational adjustment needed?",
+    "options": [
+     "Increase the differential speed between the bowl and the scroll.",
+     "Decrease the polymer dose.",
+     "Increase the feed sludge flow rate.",
+     "Reduce the bowl speed."
+    ],
+    "correctIndex": 0,
+    "explanation": "A decrease in cake solids concentration indicates less efficient dewatering. Increasing the differential speed between the bowl and the scroll allows for a longer dewatering time for the solids before discharge, improving cake dryness. Other options would likely worsen dewatering performance or increase solids in the centrate."
+   },
+   "fix": {
+    "question": "An operator is monitoring the dewatered cake from a centrifuge. If the cake solids concentration decreases from 25% to 18% while the feed sludge concentration remains constant, what is the most likely operational adjustment needed?",
+    "options": [
+     "Decrease the differential speed between the bowl and the scroll.",
+     "Increase the differential speed between the bowl and the scroll.",
+     "Increase the feed sludge flow rate.",
+     "Reduce the bowl speed."
+    ],
+    "correctIndex": 0,
+    "explanation": "A lower differential speed between the bowl and scroll increases the solids residence time in the bowl, giving more time for compaction and producing a drier cake. Increasing differential speed, increasing feed rate, or reducing bowl speed all reduce residence time or centrifugal force and would give a wetter cake.",
+    "steps": null
+   }
+  },
+  {
+   "id": 60236,
+   "bankKey": "oit-ww",
+   "questionNum": 236,
+   "verdict": "JURISDICTION",
+   "note": "'Class A' is US 40 CFR 503 terminology; Ontario (O. Reg. 267/03) uses NASM Categories and CM/CP classifications, and other bank questions (60210, 60219, 60233) explicitly say Class A/B must not be presented as Ontario terminology. Also alkaline (lime) stabilization with sufficient pH/temperature/drying can meet the highest US pathogen class, so 'lime stabilization' is arguably defensible.",
+   "original": {
+    "question": "Which of the following biosolids treatment processes is primarily designed to reduce pathogens to Class A levels, making the material suitable for unrestricted use, including application to food crops?",
+    "options": [
+     "Composting",
+     "Anaerobic digestion",
+     "Aerobic digestion",
+     "Lime stabilization"
+    ],
+    "correctIndex": 0,
+    "explanation": "Composting is a common method to achieve Class A biosolids, where high temperatures (typically over 55°C) are maintained for a specific duration, effectively destroying pathogens. While other processes like anaerobic digestion can achieve Class B, Class A requires more stringent pathogen reduction, often involving thermophilic conditions."
+   },
+   "fix": {
+    "question": "Which of the following biosolids treatment processes uses sustained high temperatures (typically above 55°C) to achieve the highest level of pathogen reduction (referred to as 'Class A' in US terminology)?",
+    "options": [
+     "Composting",
+     "Anaerobic digestion at mesophilic temperatures",
+     "Aerobic digestion at ambient temperature",
+     "Lime addition without heat or drying"
+    ],
+    "correctIndex": 0,
+    "explanation": "Composting maintains high temperatures (typically over 55°C) for a specified duration, destroying pathogens. Mesophilic anaerobic digestion, ambient aerobic digestion and simple lime addition give less pathogen reduction. Note that 'Class A/B' is US terminology; Ontario's O. Reg. 267/03 uses CP1/CP2 pathogen classifications.",
+    "steps": null
+   }
+  },
+  {
+   "id": 60254,
+   "bankKey": "oit-ww",
+   "questionNum": 254,
+   "verdict": "JURISDICTION",
+   "note": "'Class A pathogen reduction standards' is US EPA 40 CFR 503 terminology, not Ontario regulatory language (O. Reg. 267/03 uses CP1/CP2). Presented as a general standard in an Ontario bank, contradicting 60219/60233.",
+   "original": {
+    "question": "To achieve Class A pathogen reduction standards for biosolids, which of the following processes is generally required?",
+    "options": [
+     "Composting, heat drying, or thermophilic anaerobic digestion.",
+     "Gravity thickening followed by dewatering.",
+     "Mesophilic anaerobic digestion for at least 15 days.",
+     "Chemical conditioning with polymer only."
+    ],
+    "correctIndex": 0,
+    "explanation": "Class A biosolids have very low levels of pathogens and can be used with fewer restrictions. Achieving Class A typically requires more aggressive treatment processes like composting at elevated temperatures, heat drying, or thermophilic anaerobic digestion, which effectively destroy a wider range of pathogens compared to Class B processes."
+   },
+   "fix": {
+    "question": "Under US EPA 'Class A' biosolids pathogen reduction terminology (not used in Ontario's O. Reg. 267/03, which uses CP1/CP2), which processes are generally used to achieve Class A?",
+    "options": [
+     "Composting, heat drying, or thermophilic anaerobic digestion.",
+     "Gravity thickening followed by dewatering.",
+     "Mesophilic anaerobic digestion for at least 15 days.",
+     "Chemical conditioning with polymer only."
+    ],
+    "correctIndex": 0,
+    "explanation": "US Class A biosolids have very low pathogen levels. They typically require aggressive treatment such as composting at elevated temperatures, heat drying, or thermophilic anaerobic digestion. Ontario does not use Class A/B terminology; O. Reg. 267/03 uses CP1/CP2 pathogen classifications.",
+    "steps": null
+   }
+  },
+  {
+   "id": 60293,
+   "bankKey": "oit-ww",
+   "questionNum": 293,
+   "verdict": "WRONG",
+   "note": "Key 0.61 m/s is arithmetically correct (R = D/4 = 0.075 m; 76.92 x 0.1775 x 0.04472 = 0.609 m/s), but step 7 of the steps says '0.8 m/s is the closest', which is not an option and contradicts the key. The question wording ('simplified approach', 'without calculating hydraulic radius precisely') is also confusing since R = D/4 is exact for half-full flow.",
+   "original": {
+    "question": "A sewer pipe is 300 mm in diameter and has a slope of 0.002 m/m. If the pipe is flowing half full, calculate the approximate flow velocity using a simplified approach (e.g., assuming n=0.013 for Manning's, but without calculating hydraulic radius precisely for half-full).",
+    "options": [
+     "0.61 m/s",
+     "0.4 m/s",
+     "1.2 m/s",
+     "0.2 m/s"
+    ],
+    "correctIndex": 0,
+    "explanation": "Using Manning's equation with n=0.013, a hydraulic radius (R) of D/4 = 0.075 m for a half-full 300 mm pipe, and a slope (S) of 0.002 m/m: V = (1/n) × R^(2/3) × S^(1/2) = (1/0.013) × (0.075)^(2/3) × (0.002)^(1/2) ≈ 76.92 × 0.178 × 0.0447 ≈ 0.61 m/s. This velocity is above the minimum self-cleansing velocity of 0.6 m/s."
+   },
+   "fix": {
+    "question": "A 300 mm diameter sewer pipe has a slope of 0.002 m/m and is flowing half full. Using Manning's equation with n = 0.013, what is the approximate flow velocity?",
+    "options": [
+     "0.61 m/s",
+     "0.4 m/s",
+     "1.2 m/s",
+     "0.2 m/s"
+    ],
+    "correctIndex": 0,
+    "explanation": "For a half-full circular pipe the hydraulic radius is R = D/4 = 0.075 m. V = (1/n) x R^(2/3) x S^(1/2) = (1/0.013) x (0.075)^(2/3) x (0.002)^(1/2) ≈ 76.92 x 0.1775 x 0.04472 ≈ 0.61 m/s. This is just above the 0.6 m/s minimum self-cleansing velocity.",
+    "steps": [
+     {
+      "l": "Step 1: Convert pipe diameter to meters.",
+      "c": "Diameter (D) = 300 mm = 0.3 m"
+     },
+     {
+      "l": "Step 2: Calculate the hydraulic radius (R) for a pipe flowing half full.",
+      "c": "For a pipe flowing half full, the hydraulic radius (R) is D/4. R = 0.3 m / 4 = 0.075 m"
+     },
+     {
+      "l": "Step 3: State the given Manning's roughness coefficient (n) and slope (S).",
+      "c": "n = 0.013, S = 0.002 m/m"
+     },
+     {
+      "l": "Step 4: Apply Manning's equation to calculate the flow velocity (V).",
+      "c": "Manning's Equation: V = (1/n) * R^(2/3) * S^(1/2) V = (1 / 0.013) * (0.075 m)^(2/3) * (0.002)^(1/2)"
+     },
+     {
+      "l": "Step 5: Calculate the terms in the equation.",
+      "c": "1/n = 1 / 0.013 ≈ 76.923 R^(2/3) = (0.075)^(2/3) ≈ 0.1775 S^(1/2) = (0.002)^(1/2) ≈ 0.04472"
+     },
+     {
+      "l": "Step 6: Multiply the terms to find the velocity.",
+      "c": "V ≈ 76.923 * 0.1775 * 0.04472 ≈ 0.609 m/s"
+     },
+     {
+      "l": "Step 7: Compare the calculated velocity to the given options.",
+      "c": "The calculated velocity of about 0.61 m/s matches the first option, 0.61 m/s."
+     }
+    ]
+   }
+  },
+  {
+   "id": 60313,
+   "bankKey": "oit-ww",
+   "questionNum": 313,
+   "verdict": "UNCLEAR",
+   "note": "The MECP Design Guidelines for Sewage Works use about 0.075 kg BOD5/capita/day (75 g), not 0.077 as the Ontario standard; 0.077 is not a clearly established Ontario figure. Not confirmed by search, so marked UNCLEAR. Also inconsistent with Q 60324 which uses 0.08.",
+   "original": {
+    "question": "A population equivalent (PE) for a wastewater treatment plant is typically based on an average BOD₅ contribution per person per day. In Ontario, what is the commonly used value for BOD₅ contribution per person per day for population equivalent calculations?",
+    "options": [
+     "0.077 kg BOD₅/person/day",
+     "0.060 kg BOD₅/person/day",
+     "0.085 kg BOD₅/person/day",
+     "0.050 kg BOD₅/person/day"
+    ],
+    "correctIndex": 0,
+    "explanation": "In Ontario, the standard value for BOD₅ contribution per person per day used in population equivalent (PE) calculations is 0.077 kg BOD₅/person/day (or 77 g/person/day). This value is used to convert the total BOD₅ load of industrial or commercial wastewater into an equivalent number of people."
+   },
+   "fix": {
+    "question": "A population equivalent (PE) for a wastewater treatment plant is typically based on an average BOD5 contribution per person per day. In Ontario design practice (MECP Design Guidelines for Sewage Works), what is the commonly used value for BOD5 per person per day?",
+    "options": [
+     "0.075 kg BOD5/person/day",
+     "0.060 kg BOD5/person/day",
+     "0.095 kg BOD5/person/day",
+     "0.050 kg BOD5/person/day"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario design guidelines commonly use about 0.075 kg (75 g) BOD5 per capita per day to convert a BOD5 load into a population equivalent. Other values (roughly 0.06 to 0.08) appear in different references, so operators should use the figure specified in the approval or design basis.",
+    "steps": null
+   }
+  },
+  {
+   "id": 60353,
+   "bankKey": "oit-ww",
+   "questionNum": 353,
+   "verdict": "WRONG",
+   "note": "Key and arithmetic are right (1,080/7,500 = 0.144 and option A is 0.144), but the steps contradict the answer: Step 3 uses a bad factor (1,100,000 mg) and Step 5 says option A is 0.12 and 'closest', which is false. Steps need correcting.",
+   "original": {
+    "question": "The mixed liquor suspended solids (MLSS) in an aeration tank is 3,000 mg/L. The aeration tank volume is 2,500 m³. If the influent BOD to the aeration tank is 180 mg/L at a flow of 6,000 m³/day, what is the Food-to-Microorganism (F/M) ratio?",
+    "options": [
+     "0.144 kg BOD/kg MLSS/day",
+     "0.06 kg BOD/kg MLSS/day",
+     "0.18 kg BOD/kg MLSS/day",
+     "0.24 kg BOD/kg MLSS/day"
+    ],
+    "correctIndex": 0,
+    "explanation": "F/M ratio = BOD load (kg/d) ÷ MLSS mass (kg)\n\nStep 1 — Calculate daily BOD load:\n  6,000 m³/d × 180 mg/L ÷ 1,000 = 1,080 kg BOD/d\n\nStep 2 — Calculate total MLSS mass in the aeration tank:\n  2,500 m³ × 3,000 mg/L ÷ 1,000 = 7,500 kg MLSS\n\nStep 3 — Calculate F/M ratio:\n  F/M = 1,080 kg BOD/d ÷ 7,500 kg MLSS\n  F/M = 0.144 kg BOD/kg MLSS/day\n\nThe answer is 0.144 kg BOD/kg MLSS/day.\nTypical F/M range for conventional activated sludge: 0.05–0.20 kg BOD/kg MLSS/day."
+   },
+   "fix": {
+    "question": "The mixed liquor suspended solids (MLSS) in an aeration tank is 3,000 mg/L. The aeration tank volume is 2,500 m³. If the influent BOD to the aeration tank is 180 mg/L at a flow of 6,000 m³/day, what is the Food-to-Microorganism (F/M) ratio?",
+    "options": [
+     "0.144 kg BOD/kg MLSS/day",
+     "0.06 kg BOD/kg MLSS/day",
+     "0.18 kg BOD/kg MLSS/day",
+     "0.24 kg BOD/kg MLSS/day"
+    ],
+    "correctIndex": 0,
+    "explanation": "F/M = BOD load (kg/d) / MLSS mass (kg). BOD load = 6,000 m³/d x 180 mg/L / 1,000 = 1,080 kg/d. MLSS mass = 2,500 m³ x 3,000 mg/L / 1,000 = 7,500 kg. F/M = 1,080 / 7,500 = 0.144 kg BOD/kg MLSS/day.",
+    "steps": [
+     {
+      "l": "Step 1: State the F/M ratio formula",
+      "c": "F/M = (Mass of BOD applied per day) / (Mass of MLSS in the aeration tank)"
+     },
+     {
+      "l": "Step 2: Calculate the BOD load (food)",
+      "c": "BOD Load (kg/day) = Flow (m³/day) x BOD (mg/L) / 1,000 = 6,000 x 180 / 1,000 = 1,080 kg BOD/day"
+     },
+     {
+      "l": "Step 3: Calculate the MLSS mass (microorganisms)",
+      "c": "MLSS Mass (kg) = Volume (m³) x MLSS (mg/L) / 1,000 = 2,500 x 3,000 / 1,000 = 7,500 kg MLSS"
+     },
+     {
+      "l": "Step 4: Calculate F/M",
+      "c": "F/M = 1,080 kg BOD/day / 7,500 kg MLSS = 0.144 kg BOD/kg MLSS/day"
+     },
+     {
+      "l": "Step 5: Check the answer",
+      "c": "0.144 kg BOD/kg MLSS/day matches option A exactly."
+     }
+    ]
+   }
+  },
+  {
+   "id": 60355,
+   "bankKey": "oit-ww",
+   "questionNum": 355,
+   "verdict": "UNCLEAR",
+   "note": "Question data are self-contradictory. It says a 12 mg/L dose is needed to get a 0.5 mg/L residual, yet also says the demand was 5 mg/L (dose = demand + residual would be 5.5 mg/L, not 12). The key (12 mg/L) treats the demand as a 'distractor' while the explanation itself computes a demand of 11.5 mg/L, which conflicts with the stated 5 mg/L. Option 5.5 mg/L is equally defensible. Rewritten so there is one reading.",
+   "original": {
+    "question": "A wastewater sample requires a chlorine dose of 12 mg/L to achieve a desired residual of 0.5 mg/L after 30 minutes. If the initial chlorine demand was 5 mg/L, what would be the total chlorine dose required?",
+    "options": [
+     "5.5 mg/L",
+     "12 mg/L",
+     "6.5 mg/L",
+     "7.5 mg/L"
+    ],
+    "correctIndex": 1,
+    "explanation": "The question states that a chlorine dose of 12 mg/L was required to achieve a desired residual of 0.5 mg/L. This means the 12 mg/L is the total chlorine dose. Chlorine demand is the difference between the dose and the residual (12 mg/L - 0.5 mg/L = 11.5 mg/L). The 5 mg/L given as 'initial chlorine demand' is a distractor as the total dose is already provided."
+   },
+   "fix": {
+    "question": "A wastewater sample has a chlorine demand of 5 mg/L. A residual of 0.5 mg/L is required after 30 minutes of contact. What total chlorine dose is required?",
+    "options": [
+     "5.5 mg/L",
+     "12 mg/L",
+     "6.5 mg/L",
+     "7.5 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "Chlorine dose = chlorine demand + desired residual = 5 mg/L + 0.5 mg/L = 5.5 mg/L.",
+    "steps": null
+   }
+  },
+  {
+   "id": 60356,
+   "bankKey": "oit-ww",
+   "questionNum": 356,
+   "verdict": "UNCLEAR",
+   "note": "Question and options contain a corrupted control character (U+0013) where the cubic-metre superscript should be, so units display as garbage. Arithmetic (500/1,440 x 30 = 10.42 m³) is correct.",
+   "original": {
+    "question": "A wastewater pump station has an inflow rate of 500 m\u0013/day. If the wet well is designed for a 30-minute detention time at this average flow, what is the required volume of the wet well in cubic meters?",
+    "options": [
+     "10.42 m\u0013",
+     "20.83 m\u0013",
+     "41.67 m\u0013",
+     "83.33 m\u0013"
+    ],
+    "correctIndex": 0,
+    "explanation": "First, convert the daily flow to flow per minute: 500 m\u0013/day ÷ 24 hours/day ÷ 60 minutes/hour = 0.3472 m\u0013/minute. Then, multiply this by the desired detention time: 0.3472 m\u0013/minute × 30 minutes = 10.416 m\u0013. This calculation ensures the wet well can hold the specified volume for the given detention time."
+   },
+   "fix": {
+    "question": "A wastewater pump station has an inflow rate of 500 m³/day. If the wet well is designed for a 30-minute detention time at this average flow, what is the required volume of the wet well in cubic meters?",
+    "options": [
+     "10.42 m³",
+     "20.83 m³",
+     "41.67 m³",
+     "83.33 m³"
+    ],
+    "correctIndex": 0,
+    "explanation": "First, convert the daily flow to flow per minute: 500 m³/day ÷ 24 hours/day ÷ 60 minutes/hour = 0.3472 m³/minute. Then, multiply this by the desired detention time: 0.3472 m³/minute × 30 minutes = 10.416 m³. This calculation ensures the wet well can hold the specified volume for the given detention time.",
+    "steps": [
+     {
+      "l": "State the formula for required wet well volume",
+      "c": "Volume = Flow Rate x Detention Time (consistent time units)"
+     },
+     {
+      "l": "Convert the daily flow to flow per minute",
+      "c": "Flow Rate = 500 m³/day ÷ (24 h/day x 60 min/h) = 500 ÷ 1,440"
+     },
+     {
+      "l": "Calculate the flow per minute",
+      "c": "Flow Rate = 0.3472 m³/min"
+     },
+     {
+      "l": "Substitute into the volume formula",
+      "c": "Volume = 0.3472 m³/min x 30 min"
+     },
+     {
+      "l": "Calculate the final volume",
+      "c": "Volume = 10.416 m³, which rounds to 10.42 m³"
+     },
+     {
+      "l": "Answer check",
+      "c": "10.42 m³ matches the correct option."
+     }
+    ]
+   }
+  },
+  {
+   "id": 60361,
+   "bankKey": "oit-ww",
+   "questionNum": 361,
+   "verdict": "UNCLEAR",
+   "note": "Options, explanation and steps contain a corrupted control character (U+0013) in place of the cubic-metre superscript. Arithmetic (250 L/s x 21,600 s = 5,400 m³) is correct.",
+   "original": {
+    "question": "A pump delivers 250 L/s of wastewater. If the pump operates for 6 hours per day, what is the total volume pumped per day in cubic meters?",
+    "options": [
+     "5400 m\u0013/day",
+     "900 m\u0013/day",
+     "1500 m\u0013/day",
+     "2160 m\u0013/day"
+    ],
+    "correctIndex": 0,
+    "explanation": "To determine the total volume pumped per day, first calculate the total operating time in seconds. Then, multiply the flow rate in L/s by the total operating time in seconds to find the total volume in Liters. Finally, convert the total volume from Liters to cubic meters by dividing by 1000. The calculation shows that 5,400,000 L/day is equivalent to 5400 m\u0013/day."
+   },
+   "fix": {
+    "question": "A pump delivers 250 L/s of wastewater. If the pump operates for 6 hours per day, what is the total volume pumped per day in cubic meters?",
+    "options": [
+     "5400 m³/day",
+     "900 m³/day",
+     "1500 m³/day",
+     "2160 m³/day"
+    ],
+    "correctIndex": 0,
+    "explanation": "To determine the total volume pumped per day, first calculate the total operating time in seconds. Then, multiply the flow rate in L/s by the total operating time in seconds to find the total volume in Liters. Finally, convert the total volume from Liters to cubic meters by dividing by 1000. The calculation shows that 5,400,000 L/day is equivalent to 5400 m³/day.",
+    "steps": [
+     {
+      "l": "Step 1: Calculate the total operating time in seconds per day.",
+      "c": "Operating time = 6 hours/day * 60 minutes/hour * 60 seconds/minute = 21,600 seconds/day"
+     },
+     {
+      "l": "Step 2: Calculate the total volume pumped in Liters per day.",
+      "c": "Total volume (L/day) = Flow rate (L/s) * Operating time (s/day) = 250 L/s * 21,600 s/day = 5,400,000 L/day"
+     },
+     {
+      "l": "Step 3: Convert the total volume from Liters per day to cubic meters per day.",
+      "c": "Total volume (m³/day) = 5,400,000 L/day / 1000 L/m³ = 5400 m³/day"
+     }
+    ]
+   }
+  },
+  {
+   "id": 60362,
+   "bankKey": "oit-ww",
+   "questionNum": 362,
+   "verdict": "UNCLEAR",
+   "note": "Explanation contains corrupted control characters (U+0013) where the exponent 3 should be, making the cube law unreadable. The answer (1 - 0.8^3 = 48.8%) is correct.",
+   "original": {
+    "question": "A Variable Frequency Drive (VFD) is used to control a wastewater pump. If the VFD reduces the motor speed by 20%, what effect will this have on the power consumption of the pump?",
+    "options": [
+     "Power consumption will decrease by approximately 20%",
+     "Power consumption will decrease by approximately 40%",
+     "Power consumption will decrease by approximately 48.8%",
+     "Power consumption will decrease by approximately 60%"
+    ],
+    "correctIndex": 2,
+    "explanation": "According to the pump affinity laws, power consumption is proportional to the cube of the speed ratio (P2 = P1 * (N2/N1)\u0013). If speed is reduced by 20%, the new speed is 80% of the original (N2/N1 = 0.8). So, new power is (0.8)\u0013 = 0.512, or 51.2% of the original power. This means power consumption decreases by 100% - 51.2% = 48.8%."
+   },
+   "fix": {
+    "question": "A Variable Frequency Drive (VFD) is used to control a wastewater pump. If the VFD reduces the motor speed by 20%, what effect will this have on the power consumption of the pump?",
+    "options": [
+     "Power consumption will decrease by approximately 20%",
+     "Power consumption will decrease by approximately 40%",
+     "Power consumption will decrease by approximately 48.8%",
+     "Power consumption will decrease by approximately 60%"
+    ],
+    "correctIndex": 2,
+    "explanation": "According to the pump affinity laws, power consumption is proportional to the cube of the speed ratio (P2 = P1 x (N2/N1)^3). If speed is reduced by 20%, the new speed is 80% of the original (N2/N1 = 0.8). So, new power is (0.8)^3 = 0.512, or 51.2% of the original power. This means power consumption decreases by 100% - 51.2% = 48.8%.",
+    "steps": [
+     {
+      "l": "State the pump affinity law for power.",
+      "c": "Formula: P2 = P1 * (N2 / N1)^3"
+     },
+     {
+      "l": "Determine the new speed ratio (N2 / N1).",
+      "c": "Speed is reduced by 20%, so the new speed is 80% of the original: N2 / N1 = 0.80."
+     },
+     {
+      "l": "Calculate the new power ratio.",
+      "c": "P2 / P1 = (0.80)^3 = 0.512, or 51.2% of original power"
+     },
+     {
+      "l": "Determine the percentage decrease in power consumption.",
+      "c": "Decrease = (1.000 - 0.512) * 100% = 48.8%"
+     },
+     {
+      "l": "Verify the final answer.",
+      "c": "Power consumption decreases by approximately 48.8%, matching the correct option."
+     }
+    ]
+   }
+  },
+  {
+   "id": 60374,
+   "bankKey": "oit-ww",
+   "questionNum": 374,
+   "verdict": "WRONG",
+   "note": "Arithmetic wrong. hf = 10.67 x 500 x 0.15^1.852 / (100^1.852 x 0.3^4.87) = 10.67 x 500 x 0.02979 / (5058 x 0.002842) = 11.06 m, not 12.76 m. The steps use wrong values (100^1.852 is 5,058, not 5,770.81; 0.15^1.852 is 0.02979; 0.3^4.87 is 0.002842). Explanation also contains leaked editing text.",
+   "original": {
+    "question": "A force main is 500 m long with a diameter of 300 mm. If the flow rate is 0.15 m3/s and the Hazen-Williams 'C' factor is 100, calculate the head loss due to friction in meters using the approximate formula: hf = (10.67 * L * Q^1.852) / (C^1.852 * D^4.87).",
+    "options": [
+     "12.76 m",
+     "2.55 m",
+     "7.23 m",
+     "1.98 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "The original calculation was correct, yielding 12.76 m. The issue was that this value was not an option. Therefore, the options have been updated to include the correct calculated value. The Hazen-Williams formula for head loss in metric units is applied by substituting the given values for length (L), flow rate (Q), Hazen-Williams coefficient (C), and diameter (D). The calculation involves raising Q, C, and D to their respective powers and then performing the multiplication and division as per the formula."
+   },
+   "fix": {
+    "question": "A force main is 500 m long with a diameter of 300 mm. If the flow rate is 0.15 m³/s and the Hazen-Williams 'C' factor is 100, calculate the head loss due to friction in meters using the approximate formula: hf = (10.67 * L * Q^1.852) / (C^1.852 * D^4.87).",
+    "options": [
+     "11.06 m",
+     "2.55 m",
+     "7.23 m",
+     "1.98 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "Substitute L = 500 m, Q = 0.15 m³/s, C = 100 and D = 0.3 m into the Hazen-Williams formula. Q^1.852 = 0.02979, C^1.852 = 5,058 and D^4.87 = 0.002842. hf = (10.67 x 500 x 0.02979) / (5,058 x 0.002842) = 158.9 / 14.37 = 11.06 m.",
+    "steps": [
+     {
+      "l": "Step 1: Identify the given values and the formula.",
+      "c": "Given: L = 500 m, Q = 0.15 m³/s, C = 100, D = 300 mm = 0.3 m. Formula: hf = (10.67 * L * Q^1.852) / (C^1.852 * D^4.87)."
+     },
+     {
+      "l": "Step 2: Calculate the terms with exponents.",
+      "c": "Q^1.852 = (0.15)^1.852 = 0.02979. C^1.852 = (100)^1.852 = 5,058. D^4.87 = (0.3)^4.87 = 0.002842."
+     },
+     {
+      "l": "Step 3: Calculate the numerator.",
+      "c": "Numerator = 10.67 * 500 * 0.02979 = 158.9"
+     },
+     {
+      "l": "Step 4: Calculate the denominator.",
+      "c": "Denominator = 5,058 * 0.002842 = 14.37"
+     },
+     {
+      "l": "Step 5: Calculate the head loss (hf).",
+      "c": "hf = 158.9 / 14.37 = 11.06 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 60384,
+   "bankKey": "oit-ww",
+   "questionNum": 384,
+   "verdict": "UNCLEAR",
+   "note": "Two options are defensible. New PVC is commonly given as C = 140 to 150 (often 150), so 120-140 and 150-160 both overlap the accepted range, and design practice for sewage force mains often uses lower values. Rewritten with a single clear range.",
+   "original": {
+    "question": "What is the typical range of C-factor (Hazen-Williams coefficient) for new, smooth PVC pipe used in wastewater applications?",
+    "options": [
+     "60-80",
+     "90-100",
+     "120-140",
+     "150-160"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Hazen-Williams C-factor represents the roughness of a pipe material. Higher C-factors indicate smoother pipes and lower friction losses. For new, smooth PVC pipe, the C-factor typically ranges from 120 to 140, indicating excellent hydraulic efficiency. Older or rougher pipes like cast iron have much lower C-factors."
+   },
+   "fix": {
+    "question": "What is the typical Hazen-Williams C-factor range for new, smooth PVC pipe?",
+    "options": [
+     "60-80",
+     "90-110",
+     "140-150",
+     "170-190"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Hazen-Williams C-factor represents pipe roughness. Higher values indicate smoother pipes and lower friction losses. New, smooth PVC pipe typically has C of about 140 to 150, whereas older cast iron is much lower. Designers often use a lower value to allow for aging and slime build-up.",
+    "steps": null
+   }
+  },
+  {
+   "id": 60386,
+   "bankKey": "oit-ww",
+   "questionNum": 386,
+   "verdict": "UNCLEAR",
+   "note": "Key and arithmetic are correct (0.150 x 64,800 = 9,720 m³). The explanation contains leaked editing text ('The previously marked answer B was incorrect') that would confuse students.",
+   "original": {
+    "question": "A wastewater treatment plant is pumping 150 L/s of effluent. If the pump operates for 18 hours per day, what is the total volume pumped in cubic meters per day?",
+    "options": [
+     "9720 m³/day",
+     "2700 m³/day",
+     "150 m³/day",
+     "1500 m³/day"
+    ],
+    "correctIndex": 0,
+    "explanation": "To calculate the total volume pumped in cubic meters per day, first convert the flow rate from L/s to m³/s. Then, calculate the total operating time in seconds for the 18 hours the pump operates per day. Finally, multiply the flow rate in m³/s by the total operating time in seconds to get the total volume in m³/day. The calculation shows 9720 m³/day, which corresponds to option A. The previously marked answer B was incorrect."
+   },
+   "fix": {
+    "question": "A wastewater treatment plant is pumping 150 L/s of effluent. If the pump operates for 18 hours per day, what is the total volume pumped in cubic meters per day?",
+    "options": [
+     "9720 m³/day",
+     "2700 m³/day",
+     "150 m³/day",
+     "1500 m³/day"
+    ],
+    "correctIndex": 0,
+    "explanation": "To calculate the total volume pumped per day, first convert the flow rate from L/s to m³/s (0.150 m³/s). Then calculate the operating time in seconds (18 h x 3,600 s/h = 64,800 s). Multiply the flow rate by the time: 0.150 m³/s x 64,800 s = 9,720 m³/day.",
+    "steps": [
+     {
+      "l": "Step 1: Convert the flow rate from L/s to m³/s.",
+      "c": "Flow rate (m³/s) = Flow rate (L/s) / 1000 L/m³\nFlow rate = 150 L/s / 1000 L/m³ = 0.150 m³/s"
+     },
+     {
+      "l": "Step 2: Calculate the total operating time in seconds per day.",
+      "c": "Operating time (seconds) = Operating hours * 60 minutes/hour * 60 seconds/minute\nOperating time = 18 hours * 60 min/hour * 60 s/min = 64,800 seconds"
+     },
+     {
+      "l": "Step 3: Calculate the total volume pumped in m³/day.",
+      "c": "Total Volume (m³/day) = Flow rate (m³/s) * Operating time (seconds)\nTotal Volume = 0.150 m³/s * 64,800 s = 9720 m³"
+     }
+    ]
+   }
+  },
+  {
+   "id": 60405,
+   "bankKey": "oit-ww",
+   "questionNum": 405,
+   "verdict": "WRONG",
+   "note": "Arithmetic wrong. With Q = 0.3 m³/s, D = 0.3 m, C = 100, L = 500 m: hf = 10.67 x 500 x 0.3^1.852 / (100^1.852 x 0.3^4.87) = 573.5 / 14.37 = about 39.9 m = about 392 kPa. The marked 150 kPa is not reachable from the data, and the steps themselves show 539 kPa and then admit the key does not match. No option matches the correct value.",
+   "original": {
+    "question": "A wastewater force main is 500 m long with a diameter of 300 mm. If the flow rate is 300 L/s and the Hazen-Williams 'C' factor is 100, what is the approximate friction loss in kPa? (Use a simplified constant where applicable, or recognize the relationship).",
+    "options": [
+     "Approximately 150 kPa",
+     "Approximately 50 kPa",
+     "Approximately 300 kPa",
+     "Approximately 10 kPa"
+    ],
+    "correctIndex": 0,
+    "explanation": "The Hazen-Williams formula for head loss is Hf = (10.67 * L * Q^1.85) / (C^1.85 * D^4.87). After converting the flow rate to m³/s and diameter to meters, we calculate the friction head (Hf) in meters. The calculated friction head is approximately 15.3 m. To convert this head loss to pressure in kPa, we multiply by the conversion factor of 9.81 kPa/m, which yields approximately 150 kPa. The original calculation in the flagged explanation was correct, but the user's recalculation had a numerical error in the exponentiation of 0.3, leading to a significantly different result."
+   },
+   "fix": {
+    "question": "A wastewater force main is 500 m long with a diameter of 300 mm. If the flow rate is 300 L/s and the Hazen-Williams 'C' factor is 100, what is the approximate friction loss in kPa? (Use hf = 10.67 x L x Q^1.852 / (C^1.852 x D^4.87), with 1 m of head = 9.81 kPa.)",
+    "options": [
+     "Approximately 400 kPa",
+     "Approximately 150 kPa",
+     "Approximately 50 kPa",
+     "Approximately 10 kPa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Convert Q = 300 L/s = 0.3 m³/s and D = 0.3 m. Q^1.852 = 0.1075, C^1.852 = 5,058, D^4.87 = 0.002842. hf = (10.67 x 500 x 0.1075) / (5,058 x 0.002842) = 573.5 / 14.37 = about 39.9 m. Pressure loss = 39.9 m x 9.81 kPa/m = about 392 kPa, or approximately 400 kPa.",
+    "steps": [
+     {
+      "l": "Step 1: Convert units.",
+      "c": "L = 500 m, D = 300 mm = 0.3 m, Q = 300 L/s = 0.3 m³/s, C = 100"
+     },
+     {
+      "l": "Step 2: State the Hazen-Williams formula.",
+      "c": "hf = (10.67 * L * Q^1.852) / (C^1.852 * D^4.87)"
+     },
+     {
+      "l": "Step 3: Calculate the exponent terms.",
+      "c": "Q^1.852 = 0.3^1.852 = 0.1075; C^1.852 = 100^1.852 = 5,058; D^4.87 = 0.3^4.87 = 0.002842"
+     },
+     {
+      "l": "Step 4: Calculate the head loss.",
+      "c": "hf = (10.67 * 500 * 0.1075) / (5,058 * 0.002842) = 573.5 / 14.37 = 39.9 m"
+     },
+     {
+      "l": "Step 5: Convert head to pressure.",
+      "c": "Pressure = 39.9 m x 9.81 kPa/m = about 392 kPa, approximately 400 kPa"
+     }
+    ]
+   }
+  },
+  {
+   "id": 60416,
+   "bankKey": "oit-ww",
+   "questionNum": 416,
+   "verdict": "WRONG",
+   "note": "Key (Class III licence) and explanation are correct per O. Reg. 129/04 (ORO must hold a licence of the same class or higher as the facility). The steps contradict the key: they claim s.22(1) requires a certificate one class higher (Class 4), which is not in the regulation. Steps must be corrected.",
+   "original": {
+    "question": "Under O. Reg. 129/04, what is the minimum licence class for an overall responsible operator of a Class III wastewater treatment facility?",
+    "options": [
+     "A Class III wastewater treatment operator licence.",
+     "A Class II wastewater treatment operator licence.",
+     "A Class IV wastewater treatment operator licence only.",
+     "An operator-in-training wastewater treatment licence."
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 129/04 requires an overall responsible operator to hold a licence applicable to the facility type and of the same class as or higher than the facility. Therefore, the minimum for a Class III wastewater treatment facility is a Class III wastewater treatment operator licence."
+   },
+   "fix": {
+    "question": "Under O. Reg. 129/04, what is the minimum licence class for an overall responsible operator of a Class III wastewater treatment facility?",
+    "options": [
+     "A Class III wastewater treatment operator licence.",
+     "A Class II wastewater treatment operator licence.",
+     "A Class IV wastewater treatment operator licence only.",
+     "An operator-in-training wastewater treatment licence."
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 129/04 requires an overall responsible operator to hold a licence applicable to the facility type and of the same class as or higher than the facility. Therefore, the minimum for a Class III wastewater treatment facility is a Class III wastewater treatment operator licence.",
+    "steps": [
+     {
+      "l": "Step 1: Identify the role in the question.",
+      "c": "The operator in charge of the facility is the overall responsible operator (ORO) under O. Reg. 129/04."
+     },
+     {
+      "l": "Step 2: Recall the ORO licence requirement.",
+      "c": "The owner must designate as ORO an operator who holds a licence applicable to that type of facility and of the same class as or higher than the class of the facility."
+     },
+     {
+      "l": "Step 3: Apply it to a Class III facility.",
+      "c": "The minimum is a Class III wastewater treatment operator licence; a Class IV licence would also qualify but is not required."
+     },
+     {
+      "l": "Step 4: Rule out the other options.",
+      "c": "A Class II licence is lower than the facility class, and an operator-in-training cannot be designated as ORO."
+     },
+     {
+      "l": "Step 5: Select the answer.",
+      "c": "A Class III wastewater treatment operator licence."
+     }
+    ]
+   }
+  },
+  {
+   "id": 60430,
+   "bankKey": "oit-ww",
+   "questionNum": 430,
+   "verdict": "UNCLEAR",
+   "note": "Misleading sequence and two defensible answers. Isolation/lockout is normally done before atmospheric testing, not 'after atmospheric testing', and the explanation admits that a designated rescue/standby arrangement is also required before entry (Ontario Reg. 632/05 requires rescue procedures and an attendant). Rewritten to ask a single question.",
+   "original": {
+    "question": "Before entering a confined space to perform maintenance, what is the critical step that must be completed after atmospheric testing and before entry, according to Ontario regulations?",
+    "options": [
+     "Notifying all plant personnel that you are entering the confined space.",
+     "Ensuring proper lockout/tagout procedures have been applied to all energy sources.",
+     "Collecting all necessary tools and equipment for the task.",
+     "Having a designated rescue team on standby outside the confined space."
+    ],
+    "correctIndex": 1,
+    "explanation": "Before entering a confined space, atmospheric testing is crucial, but equally critical is ensuring that all energy sources (electrical, mechanical, hydraulic, etc.) are de-energized and locked out/tagged out. This prevents accidental activation of equipment that could injure the entrant. A designated rescue team is also required, but lockout/tagout is a pre-entry safety control."
+   },
+   "fix": {
+    "question": "Before entry into a confined space for maintenance, which control specifically prevents accidental start-up of equipment that could injure the entrant?",
+    "options": [
+     "Notifying all plant personnel that you are entering the confined space.",
+     "Ensuring proper lockout/tagout procedures have been applied to all energy sources.",
+     "Collecting all necessary tools and equipment for the task.",
+     "Having the entry permit filed in the plant office."
+    ],
+    "correctIndex": 1,
+    "explanation": "Lockout/tagout of all energy sources (electrical, mechanical, hydraulic, etc.) prevents accidental activation of equipment while the entrant is inside. Atmospheric testing, an attendant, and rescue arrangements are also required for entry, but lockout/tagout is the control that addresses unexpected energization.",
+    "steps": null
+   }
+  },
+  {
+   "id": 60433,
+   "bankKey": "oit-ww",
+   "questionNum": 433,
+   "verdict": "UNCLEAR",
+   "note": "Could not verify. O. Reg. 128/04 is the drinking-water operator certification regulation; wastewater licensing is O. Reg. 129/04, so the citation is wrong for a wastewater question. I could not find a prescribed daily ORO visit requirement for a Class 4 wastewater facility in O. Reg. 129/04 (searched but the regulation text was not retrievable). Treat the key as unverified.",
+   "original": {
+    "question": "According to O. Reg. 128/04, how often must the overall responsible operator for a Class 4 wastewater treatment plant visit the facility?",
+    "options": [
+     "At least once per day",
+     "At least once every 48 hours",
+     "At least once every 72 hours",
+     "At least once every 96 hours"
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 128/04 specifies that for a Class 4 wastewater treatment plant, the overall responsible operator must visit the plant at least once every day. This regulation ensures regular oversight and management of the most complex facilities to maintain operational integrity and compliance."
+   },
+   "fix": null
+  },
+  {
+   "id": 60446,
+   "bankKey": "oit-ww",
+   "questionNum": 446,
+   "verdict": "WRONG",
+   "note": "Key is wrong. Under O. Reg. 129/04 the facility owner must ensure every operator employed at the facility is given at least 40 hours of training every year (records kept by the owner; averaging over three years allowed since 2022). It is not a 'every 3 years' requirement. Explanation and steps also contain errors and leaked editing text: they say O. Reg. 129/04 covers drinking water and 128/04 wastewater (reversed), and that the certificate is renewed every 5 years (the licence is issued for 3 years).",
+   "original": {
+    "question": "Under O. Reg. 129/04, how often must operators employed at a wastewater facility complete a specified amount of training to maintain their certificate?",
+    "options": [
+     "Every 3 years",
+     "Annually",
+     "Every 5 years",
+     "Every 2 years"
+    ],
+    "correctIndex": 0,
+    "explanation": "Under O. Reg. 129/04, operators must complete a specified amount of training every 36 months (3 years) to maintain their certificate and be eligible for renewal. While the certificate itself is renewed every 5 years, the training requirement is specifically tied to a 3-year cycle. This ensures operators regularly update their knowledge and skills throughout their certification period. The previous explanation incorrectly conflated the training frequency with the certificate renewal period."
+   },
+   "fix": {
+    "question": "Under O. Reg. 129/04, how much training must the owner of a wastewater facility ensure each employed operator receives?",
+    "options": [
+     "At least 40 hours of training every year (averaging over three years is permitted from 2022)",
+     "At least 40 hours of training every five years",
+     "At least 10 hours of training every year",
+     "No training is required once the operator is licensed"
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 129/04 requires the facility owner to ensure that every operator employed in the facility is given at least 40 hours of training every year, and to keep records of the training. Averaging of the 40 hours over a three-year period is permitted from 2022. Operator licences are issued for three years and are renewed on application.",
+    "steps": null
+   }
+  },
+  {
+   "id": 60449,
+   "bankKey": "oit-ww",
+   "questionNum": 449,
+   "verdict": "UNCLEAR",
+   "note": "Flawed premise. Ontario Reg. 833 lists hydrogen sulphide at TWA 10 ppm and STEL 15 ppm (checked Ontario.ca table); the explanation's claim that the limit is 1 ppm TWA / 5 ppm STEL is wrong for Ontario, so 10 ppm H2S is at the TWA limit, not above it. Also 19.5% O2 is at the accepted minimum (19.5 to 23%), and the key asks to ventilate until O2 is 20.9% and H2S below 1 ppm, which is not an Ontario requirement. Rewritten with clearly unacceptable readings.",
+   "original": {
+    "question": "You are about to enter a confined space for routine inspection. Atmospheric testing reveals 19.5% oxygen, 10 ppm H2S, and 0% LEL. What is the most appropriate next step?",
+    "options": [
+     "Proceed with entry as conditions are safe",
+     "Ventilate the space until oxygen levels are within the safe range (20.9%) and H2S is below 1 ppm",
+     "Enter with a supplied air respirator due to H2S presence",
+     "Re-calibrate the gas detector and re-test immediately"
+    ],
+    "correctIndex": 1,
+    "explanation": "According to Ontario regulations, safe oxygen levels for confined space entry are typically between 19.5% and 23.5%. While 19.5% is on the low end, 10 ppm H2S is above the permissible exposure limit (PEL) which is 1 ppm (TWA) or 5 ppm (STEL) in many jurisdictions for confined spaces. Ventilation is required to bring these levels to a safe state before entry without supplied air."
+   },
+   "fix": {
+    "question": "You are about to enter a confined space for routine inspection. Atmospheric testing reveals 17.5% oxygen, 25 ppm H2S, and 0% LEL. What is the most appropriate next step?",
+    "options": [
+     "Proceed with entry as conditions are safe",
+     "Ventilate the space and re-test until oxygen is within 19.5 to 23% and H2S is within the exposure limits before entry",
+     "Enter wearing a dust mask and a hard hat",
+     "Re-calibrate the gas detector and enter if the same readings appear again"
+    ],
+    "correctIndex": 1,
+    "explanation": "Oxygen of 17.5% is below the accepted 19.5% minimum, and 25 ppm H2S exceeds Ontario's short-term exposure limit of 15 ppm (TWA 10 ppm). The atmosphere is unacceptable, so the space must be ventilated and re-tested until it is within acceptable limits (or the entry must be managed with appropriate respiratory protection under the entry plan) before anyone enters.",
+    "steps": null
+   }
+  },
+  {
+   "id": 60474,
+   "bankKey": "oit-ww",
+   "questionNum": 474,
+   "verdict": "UNCLEAR",
+   "note": "Key is pH and DO, but the steps conclude that ammonia and nitrate are the answer, and the explanation itself says ammonia and nitrate are the direct indicators. 'Monitor to diagnose and control' makes both pairs defensible; key and steps contradict each other. Reworded to ask for the direct indicators of nitrification performance, answer ammonia and nitrate.",
+   "original": {
+    "question": "A wastewater treatment plant is experiencing issues with nitrification. Which two parameters are most critical to monitor closely to diagnose and control this process?",
+    "options": [
+     "Ammonia and Nitrate",
+     "Biochemical Oxygen Demand (BOD) and Chemical Oxygen Demand (COD)",
+     "Total Suspended Solids (TSS) and Volatile Suspended Solids (VSS)",
+     "pH and Dissolved Oxygen (DO)"
+    ],
+    "correctIndex": 3,
+    "explanation": "While ammonia and nitrate are direct indicators of nitrification performance, pH and dissolved oxygen (DO) are the most critical operational parameters for diagnosing and controlling the nitrification process. Nitrifying bacteria are highly sensitive to pH fluctuations, with optimal activity typically between 7.0 and 8.5, and require sufficient dissolved oxygen (typically >1.0-2.0 mg/L) to convert ammonia to nitrite and then nitrate. Insufficient levels of either pH or DO will severely inhibit or cease nitrification, as outlined in best practices for biological nutrient removal in Canadian wastewater treatment plants."
+   },
+   "fix": {
+    "question": "A wastewater treatment plant is experiencing issues with nitrification. Which two parameters are the most direct indicators of how well nitrification is proceeding?",
+    "options": [
+     "Ammonia and Nitrate",
+     "Biochemical Oxygen Demand (BOD) and Chemical Oxygen Demand (COD)",
+     "Total Suspended Solids (TSS) and Volatile Suspended Solids (VSS)",
+     "pH and Dissolved Oxygen (DO)"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ammonia is the substrate consumed and nitrate is the end product of nitrification, so tracking both shows directly whether, and how completely, nitrification is occurring. pH (with alkalinity) and dissolved oxygen are important operating conditions that influence nitrification, but they are not direct measures of its progress. BOD/COD and TSS/VSS relate to organic load and solids, not specifically nitrification.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Understand the process: ammonia (NH3/NH4+) is oxidized to nitrite (NO2-) by ammonia-oxidizing bacteria, then nitrite is oxidized to nitrate (NO3-) by nitrite-oxidizing bacteria."
+     },
+     {
+      "l": "Step 2",
+      "c": "Direct indicators are the substances consumed or produced: ammonia is the substrate and nitrate is the final product."
+     },
+     {
+      "l": "Step 3",
+      "c": "pH and DO influence the rate of nitrification but do not directly measure its progress. BOD/COD relate to organic load and TSS/VSS to solids and biomass."
+     },
+     {
+      "l": "Step 4",
+      "c": "Conclusion: ammonia and nitrate show directly whether nitrification is occurring and how efficiently."
+     }
+    ]
+   }
+  },
+  {
+   "id": 60543,
+   "bankKey": "oit-ww",
+   "questionNum": 543,
+   "verdict": "WRONG",
+   "note": "Key (excessive energy consumption) is reasonable, but the steps are for a different question: they argue CO2 stripping reduces nitrification and refer to options B/C/D with different wording ('Increased growth of nitrifying bacteria', 'Higher rate of denitrification'), and never reach the keyed answer. Steps must be rewritten to match the key.",
+   "original": {
+    "question": "An operator notices that the dissolved oxygen (DO) in the aeration tank is consistently maintained at 6.0 mg/L, well above the optimal range of 1.5-3.5 mg/L. What is the most significant operational consequence of maintaining such high DO levels?",
+    "options": [
+     "Excessive energy consumption from over-aeration",
+     "Improved nitrification rates",
+     "Reduced sludge production",
+     "Better settling in the secondary clarifier"
+    ],
+    "correctIndex": 0,
+    "explanation": "Maintaining dissolved oxygen levels well above the optimal range (1.5-3.5 mg/L) results in excessive energy consumption because the blowers are running harder than necessary to dissolve more oxygen than the biomass can use. Aeration typically accounts for 40-60% of a wastewater treatment plant's total energy costs, so over-aeration represents a significant waste of energy and operating budget without proportional treatment benefit."
+   },
+   "fix": {
+    "question": "An operator notices that the dissolved oxygen (DO) in the aeration tank is consistently maintained at 6.0 mg/L, well above the optimal range of 1.5-3.5 mg/L. What is the most significant operational consequence of maintaining such high DO levels?",
+    "options": [
+     "Excessive energy consumption from over-aeration",
+     "Improved nitrification rates",
+     "Reduced sludge production",
+     "Better settling in the secondary clarifier"
+    ],
+    "correctIndex": 0,
+    "explanation": "Maintaining dissolved oxygen levels well above the optimal range (1.5-3.5 mg/L) results in excessive energy consumption because the blowers run harder than necessary to dissolve more oxygen than the biomass can use. Aeration typically accounts for a large share (often 40-60%) of a plant's total energy use, so over-aeration wastes energy and operating budget without proportional treatment benefit.",
+    "steps": [
+     {
+      "l": "Step 1: Identify the target DO range.",
+      "c": "The optimal DO for activated sludge is about 1.5-3.5 mg/L; 6.0 mg/L is well above it."
+     },
+     {
+      "l": "Step 2: Relate DO to blower operation.",
+      "c": "Holding a higher DO requires more air from the blowers, and blower power is the largest energy user in an activated sludge plant."
+     },
+     {
+      "l": "Step 3: Assess the benefit.",
+      "c": "Above the optimal range there is little added treatment benefit: nitrification does not meaningfully improve, sludge production is not reduced, and excessive turbulence/over-aeration can harm floc and settling."
+     },
+     {
+      "l": "Step 4: Conclusion.",
+      "c": "The most significant consequence is excessive energy consumption from over-aeration."
+     }
+    ]
+   }
+  },
+  {
+   "id": 60548,
+   "bankKey": "oit-ww",
+   "questionNum": 548,
+   "verdict": "WRONG",
+   "note": "Key (473.7 kg/day) and explanation are correct for 12 mg/L, but the steps use 120 mg/L and end at 4737 kg/day ('adjusting dosage to match the intended answer'), contradicting the key. Steps must be corrected to 12 mg/L -> 180 kg/d -> 473.7 kg/d.",
+   "original": {
+    "question": "A wastewater treatment plant uses ferric chloride for chemical phosphorus removal. If the plant treats a flow of 15,000 m³/day and the target dosage of ferric chloride (as FeCl3) is 12 mg/L, how many kilograms of ferric chloride solution (assuming a 38% pure solution by weight) are required per day?",
+    "options": [
+     "473.7 kg/day",
+     "1800 kg/day",
+     "4737 kg/day",
+     "18000 kg/day"
+    ],
+    "correctIndex": 0,
+    "explanation": "Chemical solution dosing: mass of solution = (flow × dose) ÷ purity\n\nStep 1 — Mass of pure FeCl₃ required per day:\n  15,000 m³/d × 12 mg/L ÷ 1,000 = 180 kg pure FeCl₃/d\n\nStep 2 — Mass of 38% solution required:\n  180 kg/d ÷ 0.38 = 473.7 kg solution/d\n\nThe answer is 473.7 kg/day.\n\nNote: The 38% solution contains only 38 g of FeCl₃ per 100 g of solution, so you need more total solution mass to deliver the required dose of pure FeCl₃."
+   },
+   "fix": {
+    "question": "A wastewater treatment plant uses ferric chloride for chemical phosphorus removal. If the plant treats a flow of 15,000 m³/day and the target dosage of ferric chloride (as FeCl3) is 12 mg/L, how many kilograms of ferric chloride solution (assuming a 38% pure solution by weight) are required per day?",
+    "options": [
+     "473.7 kg/day",
+     "1800 kg/day",
+     "4737 kg/day",
+     "18000 kg/day"
+    ],
+    "correctIndex": 0,
+    "explanation": "Chemical solution dosing: mass of solution = (flow x dose) / purity\n\nStep 1: Mass of pure FeCl3 required per day: 15,000 m³/d x 12 mg/L / 1,000 = 180 kg pure FeCl3/d\n\nStep 2: Mass of 38% solution required: 180 kg/d / 0.38 = 473.7 kg solution/d\n\nThe answer is 473.7 kg/day.\n\nNote: The 38% solution contains only 38 g of FeCl3 per 100 g of solution, so you need more total solution mass to deliver the required dose of pure FeCl3.",
+    "steps": [
+     {
+      "l": "Step 1: Convert flow rate from m³/day to L/day.",
+      "c": "Flow (L/day) = 15,000 m³/day x 1000 L/m³ = 15,000,000 L/day"
+     },
+     {
+      "l": "Step 2: Determine the pure FeCl3 dosage in kg/day.",
+      "c": "Mass of pure FeCl3 (kg/day) = 15,000,000 L/day x 12 mg/L x (1 kg / 1,000,000 mg) = 180 kg/day"
+     },
+     {
+      "l": "Step 3: Calculate the mass of 38% ferric chloride solution required per day.",
+      "c": "Mass of solution (kg/day) = 180 kg/day / 0.38 = 473.7 kg/day"
+     },
+     {
+      "l": "Step 4: Round the result.",
+      "c": "Mass of solution is approximately 473.7 kg/day"
+     }
+    ]
+   }
+  },
+  {
+   "id": 60549,
+   "bankKey": "oit-ww",
+   "questionNum": 549,
+   "verdict": "UNITS",
+   "note": "Canadian (Ontario) bank: option 0 gives a psi conversion in parentheses (0.7-4.3 psi). US customary units should be removed; kPa only.",
+   "original": {
+    "question": "What is the typical transmembrane pressure (TMP) operating range for a submerged MBR, and what does rising TMP indicate?",
+    "options": [
+     "Normal TMP is 5-30 kPa (0.7-4.3 psi); rising TMP indicates membrane fouling and the need for cleaning",
+     "Normal TMP is 500-1000 kPa; rising TMP is normal operation",
+     "TMP should always be zero for proper operation",
+     "TMP only matters for pressurized MBR systems, not submerged"
+    ],
+    "correctIndex": 0,
+    "explanation": "Submerged MBRs typically operate at 5-30 kPa TMP (the pressure difference across the membrane driving filtration). As fouling accumulates, more pressure is needed to maintain the same flux, so TMP rises. Operators monitor TMP trends: gradual rise indicates normal fouling (managed by routine cleaning); sudden rise may indicate a problem (broken air diffuser, chemical upset, or membrane damage). Maximum TMP before cleaning is typically 30-40 kPa."
+   },
+   "fix": {
+    "question": "What is the typical transmembrane pressure (TMP) operating range for a submerged MBR, and what does rising TMP indicate?",
+    "options": [
+     "Normal TMP is 5-30 kPa; rising TMP indicates membrane fouling and the need for cleaning",
+     "Normal TMP is 500-1000 kPa; rising TMP is normal operation",
+     "TMP should always be zero for proper operation",
+     "TMP only matters for pressurized MBR systems, not submerged"
+    ],
+    "correctIndex": 0,
+    "explanation": "Submerged MBRs typically operate at 5-30 kPa TMP (the pressure difference across the membrane driving filtration). As fouling accumulates, more pressure is needed to maintain the same flux, so TMP rises. Operators monitor TMP trends: gradual rise indicates normal fouling (managed by routine cleaning); sudden rise may indicate a problem (broken air diffuser, chemical upset, or membrane damage). Maximum TMP before cleaning is typically 30-40 kPa.",
+    "steps": null
    }
   }
  ]
