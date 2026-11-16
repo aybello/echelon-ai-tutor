@@ -568,13 +568,13 @@ Structural condition drives priority. A collapse can stop flow and undermine the
 What does hydraulic cleaning, or jetting, do?
 
 - **A.** Uses a rotating blade on a cable to cut roots from joints
-- **B.** Uses high-pressure water from a nozzle to scour the pipe and flush debris
-- **C.** Uses chemicals poured into the manhole to dissolve all the solids
-- **D.** Uses a scraper bucket to drag heavy solids to a manhole
+- **B.** Uses high-pressure water from a nozzle to scour the pipe walls
+- **C.** Uses a scraper bucket to drag heavy solids to a manhole
+- **D.** Uses chemicals poured into the manhole to dissolve the solids
 
-**Answer: B. Uses high-pressure water from a nozzle to scour the pipe and flush debris**
+**Answer: B. Uses high-pressure water from a nozzle to scour the pipe walls**
 
-A jet nozzle sprays water backward as it is pulled upstream, which scours walls and pushes loosened debris toward the downstream manhole.
+Rear-facing jets drive the nozzle upstream. As the hose is reeled back, the jets scour the pipe walls and wash loosened debris toward the downstream manhole, where it can be removed.
 
 ### 45: Cleaning: hydraulic, mechanical and chemical methods, risk-based frequency, signs of a blockage (easy)
 
@@ -2879,16 +2879,16 @@ Average of the readings, then peak divided by average. Substitute the stated val
 
 ### 222: Percent calculations in collection work (medium)
 
-A grit sample weighs 480 g wet and 36 g after drying. What is the percent solids?
+A crew inspected 480 manholes in a year and found 36 with signs of inflow through the cover or frame. What percent of the inspected manholes showed inflow signs?
 
-- **A.** 0.1 %
+- **A.** 13.3 %
 - **B.** 92.5 %
-- **C.** 13.3 %
+- **C.** 0.1 %
 - **D.** 7.5 %
 
 **Answer: D. 7.5 %**
 
-Percent solids = dry weight divided by wet weight times 100. Substitute the stated values: 36 ÷ 480 × 100 = 7.5 %. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
+Percent = part ÷ total × 100. Substitute the stated values: 36 ÷ 480 × 100 = 7.5 %. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
 ### 223: Percent calculations in collection work (medium)
 

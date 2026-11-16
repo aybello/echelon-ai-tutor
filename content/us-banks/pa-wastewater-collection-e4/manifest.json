@@ -14,7 +14,7 @@
   "file": "questions/bank-250.json",
   "count": 250,
   "calculations": 72,
-  "sha256": "ec8dd19698eb0d907bc578421e514361a0a86f65fd8483f7a550919423b6d914",
+  "sha256": "b68fef5e291d620b426c73d6e2ed6364fc447b741b4fcfa57fe7f89f37fb09c0",
   "modules": {
     "Collection systems": 75,
     "Pumping stations": 37,

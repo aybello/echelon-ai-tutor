@@ -54,7 +54,7 @@ Weekday flow averaged 1.4 MGD for 5 days, and weekend flow averaged 0.9 MGD for 
 The maximum day flow was 3.9 MGD and the average day flow was 1.5 MGD. What is the maximum day factor?|Factor = maximum day flow divided by average day flow|3.9/1.5|ratio|2|0.38,2.4,5.4|m
 Hourly flows at a meter were 310, 280, 260, 350, 520, 780 and 690 gpm. Treat these seven readings as the record. What is the peaking factor (peak divided by average)?|Average of the readings, then peak divided by average|780/((310+280+260+350+520+780+690)/7)|ratio|2|2.79,0.58,4.09|h
 @Flow, hydraulics and math|PADEP23|Percent calculations in collection work
-A grit sample weighs 480 g wet and 36 g after drying. What is the percent solids?|Percent solids = dry weight divided by wet weight times 100|36/480*100|%|1|13.3,92.5,0.1|m
+A crew inspected 480 manholes in a year and found 36 with signs of inflow through the cover or frame. What percent of the inspected manholes showed inflow signs?|Percent = part ÷ total × 100|36/480*100|%|1|0.1,92.5,13.3|m
 A utility logged 85 blockages in a year and 34 were caused by grease. What percent were caused by grease?|Percent = part divided by total times 100|34/85*100|%|1|2.5,60,28.6|m
 After lining, measured infiltration in a basin fell from 120,000 gpd to 78,000 gpd. What is the percent reduction?|Percent reduction = decrease divided by the original times 100|(120000-78000)/120000*100|%|1|53.8,65,42000|m
 A utility has 52 miles of sewer. Crews cleaned 61,000 ft in a year. Use 5,280 ft per mile. What percent of the system was cleaned?|Convert miles to feet, then percent = cleaned divided by total times 100|61000/(52*5280)*100|%|1|117.3,0.2,11.6|h
