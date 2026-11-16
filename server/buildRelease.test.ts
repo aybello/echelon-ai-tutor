@@ -496,6 +496,7 @@ describe("build release provenance", () => {
         "scripts/sourceFingerprint.ts",
         "scripts/interactiveArtifactFingerprint.ts",
         "scripts/echelonsix-legal-screen.mjs",
+        "scripts/game-authoring/overlayDescriptors.ts",
         "server/release.ts",
       ]) {
         put(checkout, path, readFileSync(path, "utf8"));

@@ -7,7 +7,8 @@ import { interactiveModes, interactiveCatalogResponseSchema, interactiveSessionR
 import { interactivePackageSchema, type InteractivePackage } from "../schema";
 import { activeCheckedRelease, trustedApproval } from "../../../scripts/content-engine/trusted-corpora";
 import { committedModeFitExclusions, committedReleaseExclusions, isReleaseExcluded, isExcludedFromMode, presentCauseEffect, type ModeFitExclusions } from "./modeFit";
-import { compileOverlays, committedOverlayDocuments, overlaySchema, type ContentOverlay, type CourseOverlay, type OverlayItem } from "./overlay";
+import { compileOverlays, type ContentOverlay, type CourseOverlay, type OverlayItem } from "./overlay";
+import { CourseOverlayStore } from "./overlayStore";
 import { ENGINE_LIMITS, engineRegistrationSchema, engineManifestSchema, engineShardSchema, type ArtifactDescriptor, type EngineManifest, type EngineIndexEntry } from "./schema";
 
 export class InteractiveEngineError extends Error {
@@ -19,7 +20,7 @@ const json = (value: unknown) => JSON.stringify(value);
 // Fingerprint of the public runtime behavior sources, including this file with
 // this constant normalized to zeros (see regression test). Changing behavior
 // requires restamping it. It is not an approval of the effective release.
-export const BEHAVIOR_POLICY_SHA256 = "daf1a1ea05cf92d89dc7722ee6b98415d786d6523c137ab8e68da23660ced942";
+export const BEHAVIOR_POLICY_SHA256 = "572ec44a6a1eb15cff5b11c4b1f931313ba54e819c1da28a45cd7dac6e01b9b7";
 const canonical = (value: unknown): string => {
   if (Array.isArray(value)) return `[${value.map(canonical).join(",")}]`;
   if (value !== null && typeof value === "object") return `{${Object.entries(value).filter(([, v]) => v !== undefined).sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0).map(([k, v]) => `${json(k)}:${canonical(v)}`).join(",")}}`;
@@ -65,16 +66,24 @@ export class InteractiveContentEngine {
   private readonly cache = new Map<string, CacheEntry>();
   private cacheCost = 0;
   private diskReads = 0;
-  private readonly overlays: ReadonlyMap<string, CourseOverlay>;
-  private readonly overlayDocuments: readonly ContentOverlay[];
+  private readonly overlays?: ReadonlyMap<string, CourseOverlay>;
+  private readonly overlayStore = new CourseOverlayStore();
+  private readonly overlayDocuments?: readonly ContentOverlay[];
   /** Committed overlays have owner-authorized AI review; metadata alone is not a review receipt. */
-  constructor(root: string = resolveEngineRoot(), overlays: readonly unknown[] = committedOverlayDocuments()) {
+  constructor(root: string = resolveEngineRoot(), overlays?: readonly unknown[]) {
     this.root = resolve(root);
-    this.overlayDocuments = freeze(overlays.map(document => overlaySchema.parse(document)));
-    this.overlays = compileOverlays(this.overlayDocuments);
+    if (overlays) {
+      const documents: ContentOverlay[] = [];
+      this.overlays = compileOverlays(overlays, undefined, doc => documents.push(doc));
+      this.overlayDocuments = freeze(documents);
+    }
   }
   /** Test/build observability only; this is not returned by public procedures. */
-  diagnostics() { return { diskReads: this.diskReads, cachedEntries: this.cache.size, cachedBytes: this.cacheCost }; }
+  diagnostics() { return { ...this.overlayStore.diagnostics(), diskReads: this.diskReads, cachedEntries: this.cache.size, cachedBytes: this.cacheCost }; }
+  private courseOverlay(manifest: EngineManifest) {
+    if (this.overlays) return { overlay: this.overlays.get(manifest.courseKey) ?? { additions: [], replacements: new Map() }, version: effectiveReleaseVersion(manifest, this.overlayDocuments!) };
+    return this.overlayStore.get(manifest.courseKey, documents => effectiveReleaseVersion(manifest, documents), hash(json(manifest)));
+  }
   private path(file: string) {
     // Paths originate exclusively from canonical registrations and validated descriptors.
     if (!/^[a-z0-9][a-z0-9/-]*\.json$/.test(file) || file.includes("..")) fail();
@@ -197,7 +206,7 @@ export class InteractiveContentEngine {
   /** Shared effective view: exact-bound revisions, selected exclusions, then additions.
    * A stale revision fails closed instead of silently exposing its old target. */
   private pool(courseKey: string, manifest: EngineManifest): Candidate[] {
-    const overlay = this.overlays.get(courseKey) ?? { additions: [], replacements: new Map() };
+    const overlay = this.courseOverlay(manifest).overlay;
     const stored = new Map(manifest.entries.map(entry => [entry.id, entry]));
     for (const addition of overlay.additions) if (stored.has(addition.id)) fail();
     for (const [id, replacement] of overlay.replacements) {
@@ -226,7 +235,7 @@ export class InteractiveContentEngine {
           difficulties: (["easy", "medium", "hard", "unclassified"] as const).map(id => ({ id, count: entries.filter(entry => entry.difficulty === id).length })).filter(d => d.count > 0),
         };
       });
-      return interactiveCatalogResponseSchema.parse({ courseKey, available: true, locked: !hasAccess, version: effectiveReleaseVersion(manifest, this.overlayDocuments), modes });
+      return interactiveCatalogResponseSchema.parse({ courseKey, available: true, locked: !hasAccess, version: this.courseOverlay(manifest).version, modes });
     });
   }
   /** Id to mode for every item a learner could be served in this course, after revisions and exclusions. */
@@ -250,7 +259,7 @@ export class InteractiveContentEngine {
       const pool = this.pool(courseKey, manifest);
       const eligible = pool.filter(entry => entry.mode === mode && (filters.topicId === null || entry.topicId === filters.topicId) && (filters.difficulty === null || entry.difficulty === filters.difficulty));
       const previewId = manifest.previewIds[mode];
-      const revisionId = this.overlays.get(courseKey)?.replacements.get(previewId)?.item.id;
+      const revisionId = this.courseOverlay(manifest).overlay.replacements.get(previewId)?.item.id;
       const storedPreview = manifest.entries.find(entry => entry.id === previewId && entry.mode === mode)!;
       // Preserve historical fixed calculation previews (mode-fit is a paid-pool rule),
       // but never bypass an exact safety exclusion or a bound correction.
@@ -289,7 +298,7 @@ export class InteractiveContentEngine {
       // Stored bytes are verified first; directional items are then presented with direction controls.
       const storedExamples = new Map(this.examples(manifest, selected.flatMap(entry => entry.stored ? [entry.stored] : [])).map(example => [example.id, example]));
       const examples = selected.map(entry => entry.overlay ? entry.overlay.example : storedExamples.get(entry.id)!).map(presentCauseEffect);
-      const response = interactiveSessionResponseSchema.parse({ ...common, available: true, version: effectiveReleaseVersion(manifest, this.overlayDocuments), totalAvailableCount, examples });
+      const response = interactiveSessionResponseSchema.parse({ ...common, available: true, version: this.courseOverlay(manifest).version, totalAvailableCount, examples });
       if (Buffer.byteLength(json(response)) > ENGINE_LIMITS.responseBytes) fail();
       return response;
     });
@@ -307,14 +316,14 @@ export class InteractiveContentEngine {
         return legacy;
       }, manifest.legacy, hash(json(manifest)), manifest.classification === "legacy_plus_checked");
       const previewIds = new Set(Object.values(pkg.previewIds));
-      const revisions = this.overlays.get(courseKey)?.replacements;
+      const revisions = this.courseOverlay(manifest).overlay.replacements;
       const effective = pkg.examples.filter(example => !isReleaseExcluded(courseKey, example.mode, example.id)).flatMap(example => {
         const revision = revisions?.get(example.id)?.item;
         return revision && isReleaseExcluded(courseKey, revision.mode, revision.id) ? [] : [{ originalId: example.id, example: revision?.example ?? example }];
       });
       const examples = effective.filter(row => hasAccess || previewIds.has(row.originalId)).map(row => row.example);
       const changed = effective.length !== pkg.examples.length || effective.some(row => row.originalId !== row.example.id);
-      return { courseKey, available: true as const, locked: !hasAccess, version: changed ? effectiveReleaseVersion(manifest, this.overlayDocuments) : pkg.version, examples };
+      return { courseKey, available: true as const, locked: !hasAccess, version: changed ? this.courseOverlay(manifest).version : pkg.version, examples };
 
     });
   }

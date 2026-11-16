@@ -9,6 +9,7 @@
 // option length or absolute wording, unbalanced true/false, or a calculation in
 // Cause and Effect. A draft is not evidence of owner-authorized AI review and
 // this command binds explicit owner-authorized review to the exact payload and checks.
+import { registerDescriptor } from "./overlayDescriptors";
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
@@ -175,6 +176,6 @@ async function main() {
   const bytes = `${JSON.stringify(reviewed, null, 1)}\n`;
   assertDestination(outFile, reviewed, bytes);
   compileOverlays([...committedOverlayDocuments().filter(d => (d as ContentOverlay).overlayId !== overlayId), reviewed]);
-  if (!flags.includes("--check")) { writeFileSync(outFile, bytes, { flag: existsSync(outFile) ? "w" : "wx" }); console.log("wrote", outFile); }
+  if (!flags.includes("--check")) { writeFileSync(outFile, bytes, { flag: existsSync(outFile) ? "w" : "wx" }); registerDescriptor(outFile, reviewed); console.log("wrote", outFile); }
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main().catch(error => { console.error((error as Error).message); process.exitCode = 1; });
