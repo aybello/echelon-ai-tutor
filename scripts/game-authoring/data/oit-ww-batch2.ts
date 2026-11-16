@@ -10,7 +10,7 @@ const data: CourseData = {
     ["e", "Pumps in a lift station move wastewater from a low area to a higher one.", true, "Lift stations raise wastewater so it can continue by gravity."],
     ["e", "A wet well is a tank that holds wastewater before it is pumped.", true, "Wet wells collect flow until pumps lift it."],
     ["e", "A manhole gives access to a sewer pipe for inspection and cleaning.", true, "Manholes allow workers to reach and service the line."],
-    ["e", "Sewer lines are meant to carry rainwater, soil and trash from streets.", false, "Sanitary sewers are meant for wastewater, and extra water and debris cause problems."],
+    ["e", "Sanitary sewer lines are meant to carry rainwater, soil and trash from streets.", false, "Sanitary sewers are meant for wastewater, and extra water and debris cause problems."],
     ["e", "Grease poured down drains can build up and block sewer pipes.", true, "Grease cools and sticks to pipe walls."],
     ["e", "Flushing wipes labeled flushable is a good way to protect sewer pumps.", false, "Wipes can tangle and clog pumps even when labeled flushable."],
     ["e", "A sewer smell can point to a problem with a vent or a trap.", true, "Odors can escape when traps dry out or vents are blocked."],
@@ -105,7 +105,7 @@ const data: CourseData = {
   flaws: [
     { d: "e", prompt: "Which statement about sewers is wrong?", flawed: "Wipes protect pumps", goods: ["Wipes can clog pumps", "Grease can block a pipe", "Roots can enter cracks"], explanation: "Wipes can tangle and clog pumps, even when labeled flushable." },
     { d: "e", prompt: "Which statement about nitrogen is wrong?", flawed: "Nutrients clear a river", goods: ["Nutrients can cause algae growth", "Ammonia is a form of nitrogen", "Nitrate is an oxidized nitrogen"], explanation: "Nutrients feed algae and can harm water quality." },
-    { d: "e", prompt: "Which statement about collection systems is wrong?", flawed: "Sewers carry stormwater", goods: ["Manholes give access", "Lift stations raise flow", "Force mains carry pumped flow"], explanation: "Sanitary sewers are meant for wastewater, not stormwater." },
+    { d: "e", prompt: "Which statement about collection systems is wrong?", flawed: "Sanitary sewers are built for stormwater", goods: ["Manholes give crews access to the sewer line", "Lift stations raise flow", "Force mains carry pumped flow"], explanation: "Sanitary sewers are meant for wastewater, not stormwater." },
     { d: "m", prompt: "Which statement about nitrification is wrong?", flawed: "It adds alkalinity", goods: ["It consumes alkalinity", "It needs oxygen", "It converts ammonia"], explanation: "Nitrification consumes alkalinity." },
     { d: "m", prompt: "Which statement about disinfection is wrong?", flawed: "UV adds a chlorine residual", goods: ["UV disinfects with light", "Chlorine may need removal", "Indicators track disinfection"], explanation: "UV does not add chlorine." },
     { d: "m", prompt: "Which statement about hydrogen sulfide is wrong?", flawed: "It needs lots of oxygen", goods: ["It forms in low oxygen", "It causes rotten egg odors", "It can corrode concrete"], explanation: "Hydrogen sulfide forms under low oxygen conditions." },

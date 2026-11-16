@@ -64,14 +64,17 @@ The code is off unless `INTERACTIVE_SAVED_PROGRESS_ENABLED=true`. Good. Before e
 - If memory is tight, loading overlays per course on first use is the obvious fix. I have not started on it and will not without a go-ahead.
 - Leaving the course games page within 4 seconds of an answer drops up to four unsent answers. This is by design in the current client, to avoid writing under the wrong identity. It is low severity.
 
-## 5. Replace live items the spot-check found wrong or unclear
+## 5. Replace live items the full review found wrong, unclear or in US units
 
-An AI review of a 500-item sample (`docs/spot-check/RESULTS-2026-11-15-ai-review.md`) found 3 wrong and 14 unclear items. Most of them are copied across several courses by the shared pool. A second sample of 300 (`docs/spot-check/round2/RESULTS-round2.md`) found the same rate, about 2%, and showed that the same mistakes recur in unsampled rows. So the fixes were swept across all tables, and every row using US units (about 1% of rows) was removed from the Canadian tables. A third sample of 191 (`docs/spot-check/round3/RESULTS-round3.md`, Class 4 plus the western-only tables) found a 1% rate and added 24 live distribution items. The live items affected now total 331.
+Every game item was reviewed by Claude models (`docs/spot-check/full-review/RESULTS-full-review.md`): 13,669 distinct units covering all 29,943 live items and every table row. 72 planted errors were all caught. 432 units had a problem (17 wrong, 143 unclear, 268 US units in Canadian courses, 4 jurisdiction). The earlier samples (`round1` to `round3`) found about 2 percent; the full review found 1.5 percent in the authoring tables and 6.7 percent in the older base bank.
 
-- The exact live item IDs, courses and overlay files are in `docs/spot-check/live-items-to-replace-20261115.json`.
-- Please exclude all 331 by exact ID in `releaseExclusions.json`.
-- The corrected versions are already in the draft tables on `claude/hello-5oz7m4`, all checker clean. That covers the Ontario Class 1 to 4 source and shared tables, `oit-ww-batch6.ts`, and the unreleased western copies. Please publish the corrected rows through the normal receipt path as replacements. A wrong item should not stay live while its fix waits.
-- The fixes: sonar now says it maps the underwater part only. The force-main board pairs condition checks with inspection and wall testing. The motor current item is replaced with a correct one about throttling. US units are converted to metric (kilometres, kg/d, cubic metres). Each unclear item is reworded as the CSV notes say. Round 3 renamed "Racking" to "Short cycling" and replaced the arguable flush-before-backfill step in the main repair sequence with a pressure leak check.
+- The exact live item IDs, courses and overlay files are in `docs/spot-check/live-items-to-replace-20261115.json`. It now lists **1,379** items.
+- Please exclude all 1,379 by exact ID in `releaseExclusions.json`. A wrong item should not stay live while its fix waits.
+- **Corrected rows from the draft tables.** About 1,000 of the items come from rows in the authoring tables. The corrected rows are already in the 152 edited tables on `claude/hello-5oz7m4`, all checker clean. Please publish the corrected tables through the normal receipt path, including the Ontario Class 1 to 4 source and shared tables, `oit-ww-batch*`, and the western tables listed above.
+- **Four new top-up tables** (Ontario Class 1, generic metric rows from the matching western Class 1 tables) keep these courses at 150 or more per mode after the exclusions: `class1-water-r4.ts`, `class1-water-r4b.ts`, `class1-wastewater-coll-r4.ts` and `class1-water-dist-r4.ts`. They pass the checker.
+- **Older base-bank items.** 380 live copies of 288 older items come from no table. Their corrected versions are in `docs/spot-check/full-review/replacement-items.json`: 281 with a corrected item and 7 with none (exclude only). Each entry lists the live IDs it replaces. Please publish the corrected items as a new overlay through the same receipt path. If that is not practical, excluding them alone is safe, since every course stays at or above 150 per mode (lowest 152).
+- After the exclusions and the new tables, every Ontario Class 1 to 4 course and every western course is at or above 150 items in each of the six modes, counting drafts.
+- The fixes include: two Ontario chlorine-residual rules under O. Reg. 170/03 that were stated wrongly, the Gould sludge age definition, a settleometer reading, two pump power items, US units converted to metric across the western and Ontario tables, and swappable steps removed from sequences.
 
 ## What I will not do without a go-ahead
 

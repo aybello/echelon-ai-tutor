@@ -118,7 +118,7 @@ const data: CourseData = {
   oddSets: [
     // Handbook ch 20.9
     { d: "h", rule: "a cause of short filter runs", members: ["Poor floc carryover", "High loading rate", "Weak coagulation upstream", "Heavy algae in raw water", "Insufficient backwash"], intruders: ["Low turbidity", "Slow rate", "Strong floc"], why: "{odd} would tend to lengthen filter runs." },
-    { d: "h", rule: "a possible cause of high filter effluent turbidity", members: ["Weak floc from upstream", "Poor backwash", "Loading rate too high", "Breakthrough at high head loss", "No filter aid"], intruders: ["A clean bed", "Strong floc", "Ripe media"], why: "{odd} would tend to keep effluent turbidity low." },
+    { d: "h", rule: "a possible cause of high filter effluent turbidity", members: ["Weak floc from upstream", "Poor backwash", "Loading rate too high", "Breakthrough at high head loss", "No filter aid"], intruders: ["Strong floc", "Ripe media"], why: "{odd} would tend to keep effluent turbidity low." },
     { d: "m", rule: "a way to check filter performance", members: ["Head loss", "Effluent turbidity", "Run length", "Bed expansion", "Wash water clarity"], intruders: ["Raw pH", "Tank level", "Cylinder scale"], why: "{odd} is not a direct check of filter performance." },
     // Handbook ch 20.7 and 20.8
     { d: "h", rule: "a cause of floc breakup", members: ["Excess mixing energy", "Fast transfer channel", "Sudden flow surges", "Abrupt pump starts"], intruders: ["Gentle mixing", "Even flow", "Calm entry"], why: "{odd} protects floc instead of breaking it.", max: 4 },
@@ -150,11 +150,11 @@ const data: CourseData = {
     // Handbook ch 20.5.3.10 (corrosion control chemistry)
     { d: "h", process: "building a protective scale layer in a pipe network", steps: ["Raise pH and alkalinity toward saturation", "A thin calcium carbonate film coats the pipe", "Corrosion rate falls", "Operator monitors the stability index"], why: "Water chemistry is adjusted first, then film forms and the operator follows up with monitoring.", max: 10 },
     // Handbook ch 20.8 (sedimentation, temperature effects)
-    { d: "h", process: "a settling upset from a sudden temperature change", steps: ["Colder water enters the basin", "A density current forms", "Flow runs along the bottom", "Effective detention time drops", "Settled turbidity rises"], why: "The temperature difference sets up a current that shortens effective time and worsens clarity.", max: 10 },
+    { d: "h", process: "a settling upset from a sudden temperature change", steps: ["Colder water enters the basin", "A density current runs along the bottom", "Effective detention time drops", "Settled turbidity rises"], why: "The temperature difference sets up a bottom current that shortens effective time and worsens clarity.", max: 10 },
     // General knowledge (feed pump restart)
-    { d: "m", process: "bringing a metering pump back after a long idle period", steps: ["Check the day tank level", "Prime the pump head", "Start the pump", "Set the feed rate", "Verify output with a drawdown"], why: "Supply and prime come first, then the rate is set and checked by measured output.", max: 10 },
+    { d: "m", process: "bringing a metering pump back after a long idle period", steps: ["Check the day tank level", "Prime the pump head", "Start the pump", "Verify output with a drawdown"], why: "Supply and prime come first, then the pump is started and checked by measured output.", max: 10 },
     // General knowledge (complaint response)
-    { d: "m", process: "tracing a red water complaint in the network", steps: ["Log the call", "Check recent flow changes", "Flush the nearby main", "Test residual and colour", "Review for a pattern"], why: "The complaint is logged and the likely disturbance reviewed before flushing, testing and pattern review.", max: 10 },
+    { d: "m", process: "tracing a red water complaint in the network", steps: ["Log the call", "Check recent flow changes", "Flush the nearby main", "Test residual and colour of the flushed water", "Review for a pattern"], why: "The complaint is logged and the likely disturbance reviewed before flushing, testing the flushed water and pattern review.", max: 10 },
   ],
   relations: [
     // Handbook ch 20.6 to 20.8 (coagulation, flocculation, sedimentation)

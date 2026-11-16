@@ -56,8 +56,8 @@ const data: CourseData = {
     { d: "h", rule: "a sign that an instrument needs attention", members: ["Drifting readings", "No reading", "Noisy readings", "Slow response"], intruders: ["Stable readings", "Matching lab"], why: "{odd} suggests the instrument is working well.", max: 4 },
   ],
   sequences: [
-    { d: "e", process: "solving a plant math problem", steps: ["Read the problem", "Write the known values", "Choose the formula", "Do the math", "Check the units"], why: "Understanding the problem comes before calculating and checking.", max: 8 },
-    { d: "m", process: "taking a meter reading for the log", steps: ["Read the meter", "Check the units", "Compare with the last reading", "Record it", "Report anything unusual"], why: "Reading and checking come before recording and reporting.", max: 10 },
+    { d: "e", process: "solving a plant math problem", steps: ["Read the problem", "Write the known values", "Do the math", "Check the answer and units"], why: "Understanding the problem comes before calculating and checking." },
+    { d: "m", process: "taking a meter reading for the log", steps: ["Read the meter", "Record it", "Report anything unusual"], why: "Reading comes before recording and reporting." },
     { d: "m", process: "preparing a standard solution", steps: ["Gather clean glassware", "Measure the standard", "Dilute to the mark", "Mix well", "Label the solution"], why: "Preparation comes first and labeling finishes the job.", max: 10 },
     { d: "h", process: "investigating a customer taste complaint", steps: ["Record the complaint", "Visit and sample", "Test the sample", "Compare with the system", "Respond to the customer"], why: "Facts are gathered before a response is given.", max: 10 },
     { d: "h", process: "adjusting a chemical feed by data", steps: ["Review the data", "Pick a small change", "Make the change", "Wait for results", "Check the new data"], why: "Changes follow data review and are checked after a delay.", max: 10 },

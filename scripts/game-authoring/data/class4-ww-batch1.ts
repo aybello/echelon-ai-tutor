@@ -217,7 +217,7 @@ const data: CourseData = {
     ["h", "Cross-training is introduced among operators at a large plant.", "the risk when one skilled operator is absent", "decrease", "Others can cover the tasks."],
     ["h", "An experienced process engineer leaves without handing over settings and reasoning.", "the risk of repeated process mistakes", "increase", "Lessons and the reasons behind settings are lost."],
     ["m", "Operating records are kept consistently by each shift.", "the ability to find the cause of an upset afterwards", "increase", "A complete record shows what changed and when."],
-    ["h", "A proficiency test sample is analyzed and the result sits well outside the acceptable range.", "the urgency of a method review in that laboratory", "decrease", "The result points to a bias or method problem that calls for review."],
+    ["h", "A proficiency test sample is analyzed and the result sits well outside the acceptable range.", "the urgency of a method review in that laboratory", "increase", "The result points to a bias or method problem that calls for review."],
     ["m", "A laboratory improves a method so its detection limit falls.", "the lowest concentration reported reliably", "decrease", "The method now detects smaller amounts."],
     ["m", "A rolling seven-day average replaces single daily values on a performance dashboard.", "the visibility of slow trends", "increase", "Averaging removes daily noise that hides gradual change."],
     ["h", "An effluent heat pump recovers heat for plant buildings.", "the temperature of the effluent leaving the heat exchanger", "decrease", "Heat is taken out of the treated water."],

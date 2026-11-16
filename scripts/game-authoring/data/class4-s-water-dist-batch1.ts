@@ -52,7 +52,7 @@ const data: CourseData = {
     // ---- Operating and maintaining equipment. Sources: [WV] valves, hydrants, pumps, pump and motor maintenance, instrumentation, SCADA ----
     ["m", "Valves are best opened and closed as fast as possible.", false, "Rapid operation causes a quick rise and fall of pressure, or water hammer."],
     ["m", "A hydrant can be left partly open to throttle the flow during flushing.", false, "A hydrant is opened fully and closed fully, not used for throttling."],
-    ["m", "A wet barrel hydrant keeps its barrel full of water and has its main valve at the top.", true, "A dry barrel hydrant has the valve at the bottom and a drain hole."],
+    ["m", "A wet barrel hydrant keeps its barrel full of water, with a separate valve at each outlet above ground.", true, "A dry barrel hydrant has its main valve at the bottom, below the frost line, and a drain hole."],
     ["m", "A dry barrel hydrant has its main valve at the top of the barrel.", false, "The main valve of a dry barrel hydrant is at the bottom, below ground."],
     ["m", "Centrifugal pumps are the most common type of pump in water systems.", true, "They adjust well to varying head and flow conditions."],
     ["m", "Chemical feed pumps are usually large centrifugal units.", false, "They are usually small positive displacement pumps, diaphragm or piston types."],
@@ -147,7 +147,7 @@ const data: CourseData = {
     { d: "m", process: "returning a reservoir to use", steps: ["Drain and clean the interior", "Disinfect the interior surfaces", "Test bacteriological samples", "Place the facility in service"], why: "A facility is cleaned, disinfected and shown to be satisfactory by sampling before use.", max: 6 },
     // Source: [FG] bacteriological sampling guidelines
     // Source: [WV] unaccounted-for water, basic calculation
-    { d: "m", process: "working out the loss percentage", steps: ["Find water available for sale", "Find water sold or used", "Subtract used from available", "Divide the difference by available", "Express the result as a percent"], why: "The two volumes are found first, then the difference is divided by the available volume.", max: 8 },
+    { d: "m", process: "working out the loss percentage", steps: ["Find water available and water sold", "Subtract sold from available", "Divide the difference by available", "Express the result as a percent"], why: "Both volumes are found first, then the difference is divided by the available volume and expressed as a percent.", max: 8 },
   ],
   relations: [
     // ---- System design. Sources: [WV] storage, water mains; [HB] Ch 9 hydraulics ----
@@ -221,7 +221,7 @@ const data: CourseData = {
     { d: "m", prompt: "Which statement about corrosion protection is wrong?", flawed: "Sacrificial anodes need no maintenance", goods: ["Anodes corrode in place of the metal", "Cathodic systems get at least annual checks", "Phosphate films protect pipe walls"], explanation: "Cathodic protection systems need scheduled maintenance by qualified people, at least annually." },
     { d: "m", prompt: "Which statement about customer complaints is wrong?", flawed: "Complaint records are not worth keeping", goods: ["Records show the date and the action taken", "Several complaints from one area can point to a leak", "Review of records can show patterns"], explanation: "Complaint records help locate problems and show what was done." },
     // ---- Operating and maintaining equipment. Sources: [WV] valves, hydrants, pump and motor maintenance, SCADA ----
-    { d: "m", prompt: "Which statement about valve maintenance is wrong?", flawed: "Valves wear from heavy use", goods: ["Valves suffer mainly from lack of operation", "Exercising keeps valve seats clear", "Valves are operated slowly to avoid surges"], explanation: "Valves normally suffer from lack of operation, not wear." },
+    { d: "m", prompt: "Which statement about valve maintenance is wrong?", flawed: "Exercising a valve causes most failures", goods: ["Valves suffer mainly from lack of operation", "Exercising keeps valve seats clear", "Valves are operated slowly to avoid surges"], explanation: "Valves normally fail from lack of operation, not from being exercised." },
     { d: "m", prompt: "Which statement about hydrant operation is wrong?", flawed: "Partly open hydrants are fine for throttling", goods: ["Open a hydrant slowly and fully", "Close hydrants slowly to limit surges", "Hydrants are not used to fill tanks regularly"], explanation: "Hydrants are opened fully and operated slowly, not used for throttling." },
     { d: "m", prompt: "Which statement about a pump coupling is wrong?", flawed: "Rigid couplings correct misalignment", goods: ["Flexible couplings tolerate small misalignment", "Couplings carry motor torque to the pump", "Misalignment damages bearings and couplings"], explanation: "Rigid couplings do not compensate for misalignment." },
     { d: "m", prompt: "Which statement about pump lubrication is wrong?", flawed: "Extra grease is harmless", goods: ["Too much lubricant can cause heat", "Too little lubricant increases wear", "The manufacturer states the lubricant and amount"], explanation: "Too much lubricant causes heat, and too little causes wear." },

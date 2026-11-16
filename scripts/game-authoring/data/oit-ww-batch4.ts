@@ -83,7 +83,7 @@ const data: CourseData = {
   sequences: [
     { d: "e", process: "a BOD sample from collection to result", steps: ["Collect the sample", "Set up the dilutions", "Incubate for five days", "Read the final oxygen", "Calculate the result"], why: "The sample is collected and set up before incubation, then read and calculated.", max: 10 },
     { d: "m", process: "solids moving through the activated sludge system", steps: ["Mixed liquor in aeration", "Clarifier settling", "Return or waste", "Return to aeration"], why: "Solids are settled and then returned or wasted.", max: 6 },
-    { d: "h", process: "tracking a lab result into a decision", steps: ["Run the test", "Check quality controls", "Record the result", "Review the trend", "Adjust the process"], why: "Results are verified and trended before decisions are made.", max: 10 },
+    { d: "h", process: "tracking a lab result into a decision", steps: ["Run the test with its quality control samples", "Record the result", "Review the trend", "Adjust the process"], why: "Results are checked and recorded, then trended before a decision is made.", max: 10 },
   ],
   relations: [
     ["e", "More solids carry over a clarifier weir.", "the effluent TSS", "increase", "Solids carried over show up in the effluent."],

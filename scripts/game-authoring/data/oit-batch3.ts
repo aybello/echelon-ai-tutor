@@ -80,11 +80,11 @@ const data: CourseData = {
     { d: "h", rule: "a way to reduce corrosion in a system", members: ["Adjusting pH", "Adjusting alkalinity", "Adding a corrosion inhibitor", "Using lined pipe"], intruders: ["Lowering pH a lot", "Skipping tests"], why: "{odd} would not reduce corrosion.", max: 4 },
   ],
   sequences: [
-    { d: "e", process: "a normal pump check", steps: ["Look and listen", "Check the seal", "Check the readings", "Record the findings", "Report problems"], why: "Observation comes before recording and reporting.", max: 8 },
-    { d: "m", process: "a calibration check", steps: ["Prepare the standard", "Rinse the probe", "Read the standard", "Adjust the meter", "Record the result"], why: "The standard is read before adjusting, and results are recorded last.", max: 10 },
-    { d: "m", process: "responding to a chemical spill", steps: ["Alert others", "Stay clear", "Check the safety data sheet", "Use proper protection", "Contain and clean up"], why: "Safety and information come before cleanup.", max: 10 },
-    { d: "h", process: "setting up flow paced chemical feed", steps: ["Measure the flow", "Choose a target dose", "Set the feed rate", "Check the residual", "Fine tune the setting"], why: "Flow and target dose come before setting and tuning the feed.", max: 10 },
-    { d: "h", process: "investigating a turbidity spike", steps: ["Confirm the reading", "Check the instrument", "Check chemical feed", "Check the filters", "Adjust the process"], why: "Confirming data comes before changes to the process.", max: 10 },
+    { d: "e", process: "a normal pump check", steps: ["Look, listen and check the readings", "Record the findings", "Report problems"], why: "Observation comes before recording and reporting." },
+    { d: "m", process: "a calibration check", steps: ["Prepare the standard", "Read the standard", "Adjust the meter", "Record the result"], why: "The standard is read before adjusting, and results are recorded last." },
+    { d: "m", process: "responding to a chemical spill", steps: ["Alert others and stay clear", "Check the safety data sheet", "Use proper protection", "Contain and clean up"], why: "Safety and information come before cleanup." },
+    { d: "h", process: "setting up flow paced chemical feed", steps: ["Measure the flow and choose a target dose", "Set the feed rate", "Check the residual", "Fine tune the setting"], why: "Flow and target dose come before setting and tuning the feed." },
+    { d: "h", process: "investigating a turbidity spike", steps: ["Confirm the reading on a checked instrument", "Find the cause in the process", "Adjust the process", "Watch the turbidity trend"], why: "Confirming data comes before changes to the process, and results are watched afterward." },
   ],
   relations: [
     ["e", "The water temperature rises.", "the rate of chemical reactions", "increase", "Reactions generally run faster in warmer water."],

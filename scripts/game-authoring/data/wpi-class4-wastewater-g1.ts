@@ -22,7 +22,7 @@ const data: CourseData = {
     ["h", "Wear in the recycle pump and saturator has little effect on performance until the unit fails outright.", false, "Falling pressure and flow reduce dissolved air gradually, so performance slips well before failure."],
     // General knowledge (equalization and wet-weather operation as a plant strategy)
     ["m", "Sizing storage means comparing records of peak flows and loads with what the process can accept, rather than relying on averages.", true, "Averages hide the peaks that cause washout and shock loads."],
-    ["h", "A return strategy that empties the basin quickly after an event protects the plant better against a second storm.", true, "A basin that is still full offers little protection when the next peak arrives."],
+    ["h", "A return strategy that empties the basin as fast as the plant can safely accept after an event protects the plant better against a second storm.", true, "A basin that is still full offers little protection when the next peak arrives, but release is still held within the plant's capacity."],
     ["h", "Odour from an equalization basin is a detail to settle after construction at little cost.", false, "Covers, ventilation and air supply are far harder to add later, so odour is part of the design."],
     ["h", "Past flow records are a sufficient basis for sizing with no allowance for growth or changing rainfall patterns.", false, "Growth and shifting rainfall alter future peaks, so the design looks ahead."],
     // General knowledge (communication and public trust)

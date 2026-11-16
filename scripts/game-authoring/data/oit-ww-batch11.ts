@@ -98,7 +98,7 @@ const data: CourseData = {
     { d: "m", process: "building a composite sample", steps: ["Set the collection interval", "Draw flow-proportioned portions", "Combine them in a cooled container", "Mix the container before pouring off", "Pour off the lab sample"], why: "Portions are collected and combined, then mixed before a lab portion is taken.", max: 8 },
     { d: "m", process: "a jar test for chemical dose", steps: ["Add chemical doses to the jars", "Mix rapidly", "Mix slowly to grow floc", "Let the floc settle", "Compare the clarity of the jars"], why: "Chemical is dispersed, floc grows, settles and the results are compared.", max: 8 },
     { d: "m", process: "dewatering with a centrifuge", steps: ["Conditioned sludge is fed into the bowl", "Spinning throws the solids against the bowl wall", "A scroll conveys the solids to the discharge end", "Dewatered cake drops out"], why: "Feed enters, solids are thrown out, conveyed and discharged.", max: 6 },
-    { d: "m", process: "climbing the Ontario wastewater licence ladder", steps: ["Operator-in-training", "Class 1", "Class 2", "Class 3", "Class 4"], why: "Operators write one class above their current certificate, so the classes are reached in order.", max: 8 },
+    { d: "m", process: "climbing the Ontario wastewater licence ladder", steps: ["Operator-in-training", "Class 1", "Class 2", "Class 3", "Class 4"], why: "Each higher class needs more experience and education, so the classes are reached in order.", max: 8 },
   ],
   relations: [],
   flaws: [],

@@ -4,7 +4,7 @@ Drawn 2026-11-15 from the live game content on `main` at `c5e8ba56`. The aim is 
 
 ## Why
 
-The new items (OIT batches 14 and 15, OIT wastewater 9 to 12, and the Class 1 to 4 tables) are mostly written from general operator knowledge. A script checked their structure, such as duplicates and balance. A script cannot check whether a statement is true. The release notes say plainly that it is Claude self-review the owner authorized, not independent verification. This sample is the independent check.
+The new items (OIT batches 14 and 15, OIT wastewater 9 to 12, and the Class 1 to 4 tables) are mostly written from general operator knowledge. A script checked their structure, such as duplicates and balance. A script cannot check whether a statement is true. The owner has since decided (2026-11-15) that review by Claude models, with web and textbook checks where needed, is the verification authority. The samples in this folder were the first step; a full review of every item followed in `full-review/`.
 
 ## What is in the sample
 

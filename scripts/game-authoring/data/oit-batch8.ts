@@ -38,7 +38,7 @@ const data: CourseData = {
     ["e", "A hydrant wrench is used to cut pipe.", false, "A hydrant wrench opens hydrants. A pipe cutter cuts pipe."],
     ["e", "A tank outlet is where water enters the tank.", false, "The inlet is where water enters. The outlet is where it leaves."],
     ["m", "A leak correlator uses a flow meter to find a leak by measuring chlorine.", false, "A correlator locates a leak using sound sensors."],
-    ["m", "A sacrificial anode is attached to a pipe so that it corrodes faster than the anode.", false, "The anode corrodes in place of the pipe."],
+    ["m", "A sacrificial anode is attached to a pipe so that the pipe corrodes in place of the anode.", false, "The anode corrodes in place of the pipe, protecting it."],
     ["m", "A valve exercise log tracks customer complaints.", false, "It tracks valve operation. Complaints have their own record."],
     ["m", "A trench box is a tool used to tap into a main.", false, "A trench box shields workers. A tapping machine taps a main."],
     ["h", "Water age in a tank decreases when it is cycled less often.", false, "Less cycling increases water age."],
@@ -74,7 +74,7 @@ const data: CourseData = {
   ],
   sequences: [
     { d: "e", process: "preparing to dig", steps: ["Request a locate", "Wait for markings", "Review the markings", "Begin digging"], why: "Utilities are located and reviewed before excavation begins.", max: 6 },
-    { d: "m", process: "an excavation setup", steps: ["Plan the dig", "Install protection", "Set the spoil back from the edge", "Enter the trench"], why: "Protection is in place before workers enter.", max: 6 },
+    { d: "m", process: "an excavation setup", steps: ["Plan the dig", "Install protection", "Enter the trench"], why: "Protection is in place before workers enter." },
     { d: "h", process: "tracking a customer complaint", steps: ["Receive the complaint", "Record it", "Investigate the cause", "Respond to the customer", "Review for patterns"], why: "A complaint is recorded and investigated before the response and review.", max: 10 },
   ],
   relations: [

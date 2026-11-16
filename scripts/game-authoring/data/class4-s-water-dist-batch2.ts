@@ -151,7 +151,7 @@ const data: CourseData = {
   oddSets: [
     // ---- Flushing and water age. Sources: [EPA-TB] Flushing, Water Age Management ----
     { d: "m", rule: "a flushing approach", members: ["Conventional flushing", "Unidirectional flushing", "Spot flushing", "Targeted flushing", "Bulk turnover flushing"], intruders: ["Pipe lining", "Meter reading", "Valve repair"], why: "{odd} is not a way of flushing a system." },
-    { d: "m", rule: "a measure that lowers water age", members: ["Mixing a tank", "Looping dead ends", "Venting trapped air", "Right-sizing mains", "Drawing tanks down further"], intruders: ["Extra storage", "A closed valve", "Oversized pipe"], why: "{odd} tends to raise water age rather than lower it." },
+    { d: "m", rule: "a measure that lowers water age", members: ["Mixing a tank", "Looping dead ends", "Right-sizing mains", "Drawing tanks down further"], intruders: ["Extra storage", "A closed valve", "Oversized pipe"], why: "{odd} tends to raise water age rather than lower it." },
     { d: "m", rule: "a sign of nitrification", members: ["Falling chloramine residual", "Rising nitrite", "Falling dissolved oxygen", "Falling pH and alkalinity", "Rising plate counts"], intruders: ["Rising residual", "Higher oxygen", "Colder tank"], why: "{odd} does not point to nitrification." },
     // ---- Storage. Sources: [WP-ST]; [EPA-PM] tank inspection ----
     { d: "m", rule: "a sanitary defect in a storage tank", members: ["Unscreened vent", "Unlocked hatch", "Gap around a roof fixture", "Torn floating cover", "Unscreened overflow"], intruders: ["Locked hatch", "Screened vent", "Sealed roof"], why: "{odd} protects the tank rather than being a defect." },
@@ -164,7 +164,7 @@ const data: CourseData = {
     // ---- Meters and water loss. Sources: [EPA-WL] ch 3 and 4, fact sheet ----
     { d: "m", rule: "a velocity-based meter", members: ["Turbine meter", "Propeller meter", "Magnetic meter", "Ultrasonic meter", "Multijet meter"], intruders: ["Nutating disk", "Piston meter"], why: "{odd} is a positive displacement meter, not a velocity meter." },
     { d: "m", rule: "a positive displacement meter", members: ["Nutating disk meter", "Piston meter", "Rotary vane meter", "Rotary gear meter"], intruders: ["Turbine", "Venturi"], why: "{odd} does not work by separating flow into known volumes.", max: 4 },
-    { d: "m", rule: "a role a meter can play", members: ["Master meter", "District meter", "Service meter", "Temporary meter", "Component meter"], intruders: ["Check valve", "Hose bibb"], why: "{odd} is not a metering role." },
+    { d: "m", rule: "a role a meter can play", members: ["Master meter", "District meter", "Service meter", "Temporary meter"], intruders: ["Check valve", "Hose bibb"], why: "{odd} is not a metering role." },
     { d: "m", rule: "a real loss", members: ["Leakage from mains", "Overflow from a tank", "Leakage at service connections", "Seepage from a tank"], intruders: ["Theft", "Meter error", "Billing error"], why: "{odd} is an apparent loss, not a physical loss.", max: 4 },
     { d: "m", rule: "an apparent loss", members: ["Unauthorized consumption", "Customer meter inaccuracy", "Billing data errors", "Meter reading mistakes"], intruders: ["Main leak", "Tank overflow"], why: "{odd} is a physical loss, not an apparent loss.", max: 4 },
     { d: "m", rule: "a leak detection tool", members: ["Listening rod", "Geophone", "Hydrophone", "Leak noise correlator", "Tracer gas detector"], intruders: ["Hydrant cap", "Curb box", "Corp stop"], why: "{odd} does not help locate leaks." },
@@ -175,21 +175,21 @@ const data: CourseData = {
   ],
   sequences: [
     // Source: [ON-WMD] general repair ideas (keep flow until an air gap forms, dewater, disinfect parts, install, flush)
-    { d: "m", process: "an emergency main break repair", steps: ["Keep water flowing from the break", "Excavate to expose the break", "Disinfect the repair parts", "Install the repair parts", "Flush through the repair"], why: "Flow is kept up while the break is exposed, parts are disinfected before installation, and flushing follows.", max: 8 },
+    { d: "m", process: "an emergency main break repair", steps: ["Keep water flowing from the break", "Excavate to expose the break", "Install disinfected repair parts", "Flush through the repair"], why: "Flow is kept up while the break is exposed, disinfected parts are installed, and flushing follows.", max: 8 },
     // Source: [EPA-HS] hydrant sampler procedure
     { d: "m", process: "taking water from a dry barrel hydrant for a sample", steps: ["Work out the flush time", "Connect the sampler to the hydrant", "Open the hydrant slowly and fully", "Flush for the planned time", "Collect the sample", "Close the hydrant slowly"], why: "The flush time is planned, the sampler is attached, the hydrant is opened slowly, flushed, sampled, and closed slowly.", max: 8 },
     // Source: [EPA-WL] three-step water loss control program
     { d: "m", process: "controlling water loss", steps: ["Complete a water audit", "Locate hidden leaks", "Repair or replace the pipe", "Judge results with performance indicators"], why: "The audit comes first, then intervention to find and fix losses, then evaluation.", max: 6 },
     // Source: [EPA-WL] preliminary water audit steps
-    { d: "m", process: "a preliminary water audit", steps: ["Find the water put into the system", "Find authorized consumption", "Subtract to get water losses", "Estimate apparent losses", "Subtract apparent losses to find real losses"], why: "Input and consumption give losses, and apparent losses are taken off to leave real losses.", max: 8 },
+    { d: "m", process: "a preliminary water audit", steps: ["Find system input and authorized consumption", "Subtract to get water losses", "Estimate apparent losses", "Subtract apparent losses to find real losses"], why: "Input and consumption give losses, and apparent losses are taken off to leave real losses.", max: 8 },
     // Source: [EPA-TB] Flushing, planning a flushing program
     { d: "m", process: "a planned hydrant discharge program", steps: ["Set water quality goals", "Check system hydraulic capacity", "Notify customers", "Carry out the work", "Update maps and procedures"], why: "Goals and capacity checks come first, customers are told, then the work is done and records are updated.", max: 8 },
     // Source: [ON-WMD] post-repair flushing and return to service, general idea
     { d: "m", process: "returning a repaired main section to normal use", steps: ["Complete the repair", "Run water through the repair to a discharge point", "Check the water is clear and the residual restored", "Return valves to normal positions"], why: "Water is run through the repair and checked before valves return to normal.", max: 6 },
     // Source: [EPA-TB] Cross-Connection Control, incident response
-    { d: "m", process: "responding to a backflow incident", steps: ["Reverse the pressure difference", "Remove the cross-connection or fit a device", "Clean the affected area carefully", "Retest the water"], why: "The cause is stopped first, then the system is cleaned and retested.", max: 6 },
+    { d: "m", process: "responding to a backflow incident", steps: ["Find the cross-connection", "Remove it or fit a backflow device", "Flush and clean the affected area", "Retest the water"], why: "The cause is found and stopped first, then the system is cleaned and retested.", max: 6 },
     // Source: [EPA-CCM] ch 6, cross-connection survey objectives
-    { d: "m", process: "a premises hazard survey", steps: ["Explain the purpose of the visit", "Ask how water is used on site", "Request as-built drawings", "Start at the service entrance", "Sketch areas needing protection", "Send a written report"], why: "The survey is introduced, the use of water is learned, the inspection works inward from the entrance, and a report follows.", max: 8 },
+    { d: "m", process: "a premises hazard survey", steps: ["Explain the purpose of the visit", "Ask how water is used on site", "Start at the service entrance", "Sketch areas needing protection", "Send a written report"], why: "The survey is introduced, the use of water is learned, the inspection works inward from the entrance, and a report follows.", max: 8 },
     // Source: [EPA-PM] valve exercising notes (March and September tasks)
     { d: "m", process: "exercising a mainline gate valve", steps: ["Find the valve on the map", "Close it fully", "Reopen it fully", "Record turns and condition", "Schedule repair for failures"], why: "The valve is located, worked through its travel, recorded, and any failure is scheduled for repair.", max: 8 }
   ],
@@ -216,7 +216,7 @@ const data: CourseData = {
     ["m", "A hydrant sampler is flushed for far too long in a small main.", "the chance of drawing water from another part of the system", "increase", "Over-flushing can pull water from farther away."],
     // ---- Cross-connections and surges. Sources: [EPA-CCM]; [WP-IN]; [WP-INF] ----
     ["m", "Supply pressure falls below the pressure in a connected irrigation system.", "the chance of backflow into the main", "increase", "Reverse flow follows a reversed pressure difference."],
-    ["m", "A reduced pressure assembly develops a fouled second check.", "the discharge from its relief port", "increase", "Leakage back into the middle zone makes the relief valve open."],
+    ["m", "A reduced pressure assembly with a fouled second check is put under backpressure.", "the discharge from its relief port", "increase", "Water leaks back past the second check into the middle zone, so the relief valve opens."],
     ["m", "The supply pipe of an air gap is pushed into the receiving funnel.", "the protection that the air gap gives", "decrease", "Reducing the open space defeats the air gap."],
     ["m", "Backflow devices are tested on a regular schedule.", "the chance of an unnoticed failed device", "decrease", "Testing finds fouled checks before they matter."],
     ["m", "A survey finds and removes hazards at industrial premises.", "the risk of backflow contamination", "decrease", "Fewer unprotected connections mean fewer ways in."],

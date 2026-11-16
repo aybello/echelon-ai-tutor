@@ -81,7 +81,7 @@ const data: CourseData = {
     { d: "e", rule: "stored in the ground or on it", members: ["Aquifer", "River", "Lake", "Spring", "Reservoir"], intruders: ["Valve", "Pump", "Meter"], why: "{odd} is equipment, not a water source or storage." },
     { d: "e", rule: "a part of a pump system", members: ["Impeller", "Motor", "Suction line", "Discharge line", "Seal"], intruders: ["Floc", "Algae", "Sludge"], why: "{odd} is not a part of a pump system." },
     { d: "e", rule: "a way to move water", members: ["Pump", "Gravity", "Pressure", "Siphon"], intruders: ["Label", "Log", "Gown"], why: "{odd} does not move water.", max: 4 },
-    { d: "m", rule: "a sign of a clogged filter", members: ["Rising headloss", "Shorter run times", "Falling flow", "Higher turbidity"], intruders: ["Clean media", "Low headloss"], why: "{odd} points to a clean filter, not a clogged one.", max: 4 },
+    { d: "m", rule: "a sign of a clogged filter", members: ["Rising headloss", "Shorter run times", "Falling flow", "Reaching terminal headloss sooner"], intruders: ["Clean media", "Low headloss"], why: "{odd} points to a clean filter, not a clogged one.", max: 4 },
     { d: "m", rule: "a safe sampling habit", members: ["Label the bottle", "Wash hands first", "Use the right bottle", "Note time and place", "Keep it cool"], intruders: ["Reuse a dirty jar", "Skip the label", "Touch the inside"], why: "{odd} is not a safe sampling habit." },
     { d: "m", rule: "a cause of water hammer", members: ["Fast valve closing", "Sudden pump stop", "Fast pump start", "Rapid hydrant closing"], intruders: ["Slow valve closing", "Gradual start"], why: "{odd} tends to limit surges rather than cause them.", max: 4 },
     { d: "h", rule: "a way to reduce water age", members: ["Flushing a main", "Lowering tank storage", "Cycling a tank", "Removing a dead end"], intruders: ["Adding a dead end", "Idling a tank"], why: "{odd} does not reduce water age.", max: 4 },
@@ -90,8 +90,8 @@ const data: CourseData = {
   sequences: [
     { d: "e", process: "washing and drying before sampling", steps: ["Wash hands", "Put on gloves", "Open the bottle", "Fill the bottle", "Cap and label it"], why: "Cleanliness comes first, then filling and labeling.", max: 8 },
     { d: "m", process: "preparing to work on a pump", steps: ["Tell the supervisor", "Stop the pump", "Lock out the power", "Test for no energy", "Begin the work"], why: "Energy must be isolated and verified before work begins.", max: 10 },
-    { d: "m", process: "entering a confined space", steps: ["Get a permit", "Test the air", "Set up ventilation", "Station an attendant", "Enter the space"], why: "Permits, testing and safeguards come before entry.", max: 10 },
-    { d: "h", process: "a jar test", steps: ["Fill the jars", "Add coagulant", "Mix rapidly", "Mix slowly", "Let floc settle", "Check the water"], why: "Dose, rapid mix, slow mix and settling follow a set order.", max: 10 },
+    { d: "m", process: "entering a confined space", steps: ["Test the air", "Ventilate the space", "Retest the air", "Enter with an attendant posted"], why: "The first test shows the hazards, ventilation clears them, and a retest confirms safe air before entry." },
+    { d: "h", process: "a jar test", steps: ["Fill the jars", "Add coagulant during rapid mixing", "Mix slowly", "Let floc settle", "Check the water"], why: "Dose and rapid mix, slow mix and settling follow a set order." },
     { d: "h", process: "a filter backwash", steps: ["Stop filtering", "Lower the water level", "Start the wash flow", "Rinse the media", "Return to service"], why: "The filter is taken offline and cleaned before it returns to service.", max: 10 },
   ],
   relations: [

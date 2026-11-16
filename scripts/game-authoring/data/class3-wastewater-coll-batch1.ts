@@ -158,7 +158,7 @@ const data: CourseData = {
   ],
   sequences: [
     // General knowledge (cured-in-place lining)
-    { d: "h", process: "a cured-in-place lining job", steps: ["Clean and inspect the host pipe", "Set up bypass pumping", "Install the resin-soaked liner", "Cure the liner", "Reopen the service connections", "Run a final CCTV survey"], why: "The pipe is prepared and flow is diverted first, the liner is installed and cured, and the connections and results are checked last.", max: 7 },
+    { d: "h", process: "a cured-in-place lining job", steps: ["Clean and inspect the host pipe", "Install the resin-soaked liner", "Cure the liner", "Reopen the service connections", "Run a final CCTV survey"], why: "The pipe is prepared first, the liner is installed and cured, and the connections and results are checked last.", max: 7 },
     // General knowledge (lift station power failure)
     { d: "h", process: "a lift station power loss response", steps: ["Confirm the alarm and the loss of utility power", "Check the wet well level and time to overflow", "Start standby power or connect a portable unit", "Confirm the pumps restart in sequence", "Review the event and test records"], why: "The event is confirmed and the risk is sized first, power is restored, recovery is checked and the review comes last.", max: 7 },
     // General knowledge (I/I investigation)
@@ -166,7 +166,7 @@ const data: CourseData = {
     // General knowledge (cleaning program design)
     { d: "m", process: "designing a cleaning program from system history", steps: ["Gather stoppage and overflow records", "Map problem lines and their causes", "Assign cleaning frequencies by risk", "Schedule crews and equipment", "Review results and adjust"], why: "History is gathered and mapped before frequencies are set, work is scheduled, and results feed the next cycle.", max: 7 },
     // General knowledge (overflow response)
-    { d: "m", process: "an overflow call from report to closure", steps: ["Receive the report and dispatch a crew", "Stop or reduce the release", "Contain and clean up the spill", "Complete the written report", "Review the cause and plan prevention"], why: "The release is stopped and cleaned up first, and the report and lessons follow once conditions are safe.", max: 7 },
+    { d: "m", process: "an overflow call from report to closure", steps: ["Receive the report and dispatch a crew", "Stop or reduce the release", "Clean up the spill area", "Complete the written report", "Review the cause and plan prevention"], why: "The release is stopped and cleaned up first, and the report and lessons follow once conditions are safe.", max: 7 },
     // General knowledge (confined-space program)
     { d: "h", process: "one permit-space entry cycle", steps: ["Identify and classify the space", "Prepare the rescue plan and equipment", "Issue the permit once hazards are controlled", "Entrants work under attendant watch", "Cancel the permit and review the entry"], why: "The space is assessed and rescue is planned before the permit is issued, work follows, and the permit is closed out afterward.", max: 7 },
     // General knowledge (asset renewal)

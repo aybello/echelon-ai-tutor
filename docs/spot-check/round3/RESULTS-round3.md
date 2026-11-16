@@ -1,6 +1,6 @@
 # Spot-check round 3: Class 4 and the western courses
 
-Reviewed 2026-11-15 by Claude Opus 5.5 (AI review, not a field review).
+Reviewed 2026-11-15 by Claude Opus 5.5. The owner has decided that review by Claude models is the verification authority for this content.
 
 ## What was sampled
 
@@ -46,4 +46,4 @@ The two Class 4 fixes change rows that are live in all four Ontario distribution
 | 2 | 300 | 2 | 7 | 1.8% |
 | 3 | 191 | 1 | 2 | 1.0% |
 
-The rate is falling because each round's fixes were swept across the whole bank. This is still AI review. A field review by a certified operator is the remaining independent check.
+The rate is falling because each round's fixes were swept across the whole bank. After round 3 the owner directed a full review of every item by Claude models in place of further sampling. Its results are in `docs/spot-check/full-review/`.

@@ -49,7 +49,7 @@ const data: CourseData = {
   ],
   oddSets: [
     // General knowledge (flow monitoring devices)
-    { d: "m", rule: "a device that measures or records wastewater flow", members: ["Area-velocity meter", "Portable flow logger", "Parshall flume", "V-notch weir", "Depth sensor", "Velocity sensor"], intruders: ["Pipe camera", "Gas detector", "Pipe locator"], why: "{odd} is used for inspection or safety work and does not measure flow.", max: 5 }
+    { d: "m", rule: "a device that measures or records wastewater flow", members: ["Area-velocity meter", "Portable flow logger", "Parshall flume", "V-notch weir"], intruders: ["Pipe camera", "Gas detector", "Pipe locator"], why: "{odd} is used for inspection or safety work and does not measure flow.", max: 5 }
   ],
   sequences: [],
   relations: [

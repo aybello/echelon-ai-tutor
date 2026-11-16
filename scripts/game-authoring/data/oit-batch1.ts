@@ -73,7 +73,7 @@ const data: CourseData = {
     { d: "h", prompt: "Match each process problem to its most likely cause.", pairs: [["Cloudy filtered water", "Filter media or chemical feed issue"], ["Fast loss of filter capacity", "Heavy particle load on media"], ["Low chlorine residual", "High chlorine demand"], ["Pump losing prime", "Air in the suction line"], ["Floc breaking apart", "Excess mixing energy"], ["Sludge rising in basin", "Solids held too long"]] },
   ],
   oddSets: [
-    { d: "e", rule: "a step that removes particles from water", members: ["Coagulation", "Sedimentation", "Filtration", "Flocculation", "Screening"], intruders: ["Logging", "Sampling", "Charting"], why: "{odd} supports the work but does not remove particles from water." },
+    { d: "e", rule: "a step that removes particles from water", members: ["Sedimentation", "Filtration", "Screening"], intruders: ["Logging", "Sampling", "Charting"], why: "{odd} supports the work but does not remove particles from water." },
     { d: "e", rule: "a type of personal protective equipment", members: ["Safety glasses", "Gloves", "Hard hat", "Hearing protection", "Steel-toed boots"], intruders: ["Flow meter", "Valve", "Strainer"], why: "{odd} is process equipment, not protective gear." },
     { d: "m", rule: "a physical property of water", members: ["Temperature", "Turbidity", "Color", "Odor", "Taste"], intruders: ["pH", "Coliforms", "Chlorine"], why: "{odd} is a biological or chemical property, not a physical one.", max: 5 },
     { d: "m", rule: "a chemical used in water treatment", members: ["Coagulant", "Chlorine", "Fluoride", "Polymer", "Lime"], intruders: ["Pump", "Valve", "Meter", "Screen"], why: "{odd} is equipment, not a treatment chemical." },
@@ -82,7 +82,7 @@ const data: CourseData = {
   sequences: [
     { d: "e", process: "conventional surface water treatment", steps: ["Screening", "Coagulation", "Flocculation", "Sedimentation", "Filtration", "Disinfection"], why: "Larger solids come out first and disinfection follows particle removal.", max: 10 },
     { d: "m", process: "collecting a routine sample", steps: ["Label the container", "Let water flow to clear the line", "Fill the container", "Record the time and place", "Store the sample as directed"], why: "Preparation and flushing come before filling, and records and storage follow.", max: 8 },
-    { d: "m", process: "responding to equipment failure", steps: ["Notice the problem", "Make the area safe", "Notify the supervisor", "Isolate the equipment", "Record what happened"], why: "Safety and notification come before repair and paperwork.", max: 8 },
+    { d: "m", process: "responding to equipment failure", steps: ["Notice the problem", "Make the area safe and isolate the equipment", "Notify the supervisor", "Record what happened"], why: "Safety comes first, then notification, then paperwork." },
     { d: "h", process: "a filter run cycle", steps: ["Filter ripens", "Filter produces water", "Headloss builds", "Backwash starts", "Filter returns to service"], why: "A filter run moves through production and clogging before it is cleaned and returned.", max: 8 },
   ],
   relations: [
