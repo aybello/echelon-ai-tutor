@@ -12,14 +12,14 @@ Review of every row of the production `questions` table, using the read-only exp
 
 ## Findings
 
-**1,803 of 24,350 questions (7.4%) have a problem.** The export has 24,140 distinct questions; 176 appear in two banks and 17 in three, and each copy was reviewed on its own.
+**1,827 of 24,350 questions (7.5%) have a problem.** The export has 24,140 distinct questions; 176 appear in two banks and 17 in three, and each copy was reviewed on its own.
 
 | Verdict | Questions | Meaning |
 |---|---:|---|
-| WRONG | 669 | Wrong key, wrong arithmetic, wrong fact, or explanation that contradicts the key |
+| WRONG | 670 | Wrong key, wrong arithmetic, wrong fact, or explanation that contradicts the key |
 | UNCLEAR | 515 | Two defensible answers, misleading wording, or a claim that could not be confirmed |
 | JURISDICTION | 334 | Another place's rule used: US EPA/OSHA rules or Ontario terms (ECA, O. Reg. 128/04 and 129/04, OHSA) in a western or Ontario bank |
-| UNITS | 278 | US units in a Canadian bank (answers recalculated in the fix) |
+| UNITS | 301 | US units in a Canadian bank (answers recalculated in the fix) |
 | OFF-TOPIC | 7 | Not about the operator's field |
 
 34 findings could not be repaired by the reviewer (off-topic, ill-posed, or dependent on a figure that could not be confirmed). For those, a new replacement question was written on the same topic area (marked `"replacement": true`, also listed in `replacements.json`). The replacements avoid regulatory figures and are model-written like the other fixes, so they still need the same spot-check.
@@ -80,7 +80,7 @@ Review of every row of the production `questions` table, using the read-only exp
 
 - **No second check of the fixes.** The reviewers' corrected questions are model output. Spot-check them, especially JURISDICTION fixes, before they go live.
 - **Facts reviewers could not confirm online.** Many reviewers ran no web search. `needs-source-check.txt` lists what to confirm before applying, including Ontario sampling frequencies (Schedule 6 and 10), holding times, the lead limit (the Ontario bank fixes assume 0.010 mg/L, the western banks use Health Canada's 0.005 mg/L, so check which figure applies where), Health Canada manganese and iron values, and several OPSS and MECP citations.
-- **US-unit coverage is incomplete in one place.** The reviewer of chunk 170 said it left several unflagged. A text scan of the Canadian banks found 144 more questions with US-unit terms that no reviewer flagged (`units-unflagged-candidates.json`). These are pattern matches only: some are incidental (a pipe size in inches), so each needs a quick read.
+- **US-unit follow-up (done).** The reviewer of chunk 170 said it left several US-unit questions unflagged, so a text scan found 144 more Canadian-bank questions with US-unit terms. A reviewer read all 144: 24 were real problems (23 units, 1 wrong) and are now in `corrections.json` (`"source": "units-followup"`); 120 were judged fine, mostly metric values with a US equivalent in brackets (for example "140 kPa (20 psi)"), which was left as is. If the policy is metric only, those bracketed values could also be removed.
 - **Visibility was not considered.** The export includes every row; `reviewStatus` is `unreviewed` or `approved` for all of them, so none are hidden by the review-status filter. Whether a learner currently sees a bank depends on course and access rules outside this export.
 - **The three US banks and `wqa`** were read with the same brief, but US rules were not matched against each state's own outline.
 - **309A** (electrician) is not in this export.
@@ -91,7 +91,7 @@ Review of every row of the production `questions` table, using the read-only exp
 - `delete-list.json`: the 34 questions that could not be repaired and should be deleted from the table (by id).
 - `replacements.json`: the 34 new questions written for them, optional to add.
 - `needs-source-check.txt`: findings that rest on unconfirmed facts.
-- `units-unflagged-candidates.json`: question ids per bank with US-unit terms that no reviewer flagged.
+- `units-unflagged-candidates.json`: the 144 question ids that were scanned and then reviewed (24 became findings).
 - `MANUS-REQUEST.md`: what Manus should do with these.
 
 ## Spot-check of the fixes

@@ -4,12 +4,12 @@
  "chunksTotal": 174,
  "questionsReviewed": 24350,
  "questionsTotal": 24350,
- "problems": 1803,
+ "problems": 1827,
  "byVerdict": {
   "UNCLEAR": 515,
-  "WRONG": 669,
+  "WRONG": 670,
   "JURISDICTION": 334,
-  "UNITS": 278,
+  "UNITS": 301,
   "OFF-TOPIC": 7
  },
  "byBank": {
@@ -17,11 +17,11 @@
   "class1-wastewater": 7,
   "class1-wastewater-coll": 2,
   "class1-water": 6,
-  "class1-water-dist": 9,
+  "class1-water-dist": 12,
   "class2-wastewater": 63,
   "class2-wastewater-coll": 59,
   "class2-water": 30,
-  "class2-water-dist": 73,
+  "class2-water-dist": 76,
   "class3-wastewater": 49,
   "class3-wastewater-coll": 73,
   "class3-water": 48,
@@ -30,7 +30,7 @@
   "class4-wastewater-coll": 71,
   "class4-water": 48,
   "class4-water-dist": 78,
-  "oit": 56,
+  "oit": 58,
   "oit-ww": 38,
   "wpi-class1-wastewater": 92,
   "wpi-class1-wastewater-coll": 32,
@@ -43,11 +43,11 @@
   "wpi-class3-wastewater": 32,
   "wpi-class3-wastewater-coll": 10,
   "wpi-class3-water": 47,
-  "wpi-class3-water-dist": 89,
+  "wpi-class3-water-dist": 98,
   "wpi-class4-wastewater": 4,
-  "wpi-class4-wastewater-coll": 7,
+  "wpi-class4-wastewater-coll": 8,
   "wpi-class4-water": 79,
-  "wpi-class4-water-dist": 140,
+  "wpi-class4-water-dist": 146,
   "wqa": 64
  },
  "chunks": [
@@ -1721,6 +1721,46 @@
    }
   },
   {
+   "id": 154520,
+   "bankKey": "class1-water-dist",
+   "questionNum": 170,
+   "verdict": "UNITS",
+   "note": "US gpm to L/s conversion; Canadian exam should use metric quantities",
+   "original": {
+    "question": "A pump is delivering water at a rate of 200 US gallons per minute. What is this flow rate in liters per second?",
+    "options": [
+     "7.57 L/s",
+     "12.62 L/s",
+     "15.14 L/s",
+     "20.00 L/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "1 US gallon = 3.78541 liters. 1 minute = 60 seconds. (200 US gal/min) * (3.78541 L/1 US gal) / (60 s/1 min) = 12.618 L/s."
+   },
+   "fix": {
+    "question": "A pump is delivering water at a rate of 750 L/min. What is this flow rate in litres per second?",
+    "options": [
+     "6.25 L/s",
+     "12.5 L/s",
+     "25.0 L/s",
+     "45.0 L/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "1 minute = 60 seconds, so divide litres per minute by 60: 750 L/min / 60 s/min = 12.5 L/s.",
+    "steps": [
+     {
+      "l": "State the time conversion.",
+      "c": "1 min = 60 s"
+     },
+     {
+      "l": "Convert L/min to L/s.",
+      "c": "750 L/min / 60 s/min = 12.5 L/s"
+     }
+    ]
+   },
+   "source": "units-followup"
+  },
+  {
    "id": 154536,
    "bankKey": "class1-water-dist",
    "questionNum": 186,
@@ -1749,6 +1789,50 @@
     "explanation": "Typical distribution pressures are roughly 275-550 kPa. Use the system's approved pressure range and investigate deviations; a textbook typical range is not a universal Ontario legal range.",
     "steps": null
    }
+  },
+  {
+   "id": 154547,
+   "bankKey": "class1-water-dist",
+   "questionNum": 197,
+   "verdict": "UNITS",
+   "note": "Pressure given in psi; convert from kPa to metres of head",
+   "original": {
+    "question": "A water distribution system has a constant pressure of 60 psi. What is this pressure in meters of head?",
+    "options": [
+     "28.1 m",
+     "42.2 m",
+     "56.3 m",
+     "70.4 m"
+    ],
+    "correctIndex": 1,
+    "explanation": "To convert psi to meters of head, use the conversion factor: 1 psi = 0.704 m of head.\n\n60 psi × 0.704 m/psi = 42.24 m\n\nAlternatively: 1 psi = 2.31 ft of water, and 1 ft = 0.3048 m, so 60 × 2.31 × 0.3048 = 42.25 m.\n\nThe correct answer is 42.2 m."
+   },
+   "fix": {
+    "question": "A water distribution system has a constant pressure of 420 kPa. What is this pressure in metres of head? (1 m of water = 9.81 kPa)",
+    "options": [
+     "21.4 m",
+     "42.8 m",
+     "64.2 m",
+     "85.6 m"
+    ],
+    "correctIndex": 1,
+    "explanation": "Head (m) = pressure (kPa) / 9.81 kPa per m = 420 / 9.81 = 42.8 m.",
+    "steps": [
+     {
+      "l": "Identify the conversion factor.",
+      "c": "1 m of water head = 9.81 kPa"
+     },
+     {
+      "l": "Divide the pressure by the factor.",
+      "c": "420 kPa / 9.81 kPa/m = 42.81 m"
+     },
+     {
+      "l": "Round and match the option.",
+      "c": "42.8 m (option B)"
+     }
+    ]
+   },
+   "source": "units-followup"
   },
   {
    "id": 184008,
@@ -1929,6 +2013,46 @@
     "explanation": "Maintaining water pressure of roughly 275-550 kPa is generally considered acceptable for residential and commercial service; design guidance commonly sets about 275 kPa as the minimum under normal operating conditions.",
     "steps": null
    }
+  },
+  {
+   "id": 240157,
+   "bankKey": "class1-water-dist",
+   "questionNum": 519,
+   "verdict": "UNITS",
+   "note": "kPa to psi conversion; Canadian operators work in kPa and metres of head",
+   "original": {
+    "question": "A pressure gauge reads 350 kPa. What is this pressure in psi, using 1 psi = 6.895 kPa?",
+    "options": [
+     "24.2 psi",
+     "350 psi",
+     "50.8 psi",
+     "57.9 psi"
+    ],
+    "correctIndex": 2,
+    "explanation": "Convert kilopascals to psi by dividing by 6.895 kPa per psi."
+   },
+   "fix": {
+    "question": "A pressure gauge reads 350 kPa. What is this pressure expressed as metres of water head? (1 m of water = 9.81 kPa)",
+    "options": [
+     "3.57 m",
+     "35.7 m",
+     "50.8 m",
+     "57.9 m"
+    ],
+    "correctIndex": 1,
+    "explanation": "Divide the pressure in kPa by 9.81 kPa per metre of head: 350 / 9.81 = 35.7 m.",
+    "steps": [
+     {
+      "l": "Step 1 - Apply the conversion",
+      "c": "Head (m) = 350 kPa / 9.81 kPa/m"
+     },
+     {
+      "l": "Step 2 - Calculate head",
+      "c": "350 / 9.81 = 35.7 m"
+     }
+    ]
+   },
+   "source": "units-followup"
   },
   {
    "id": 181705,
@@ -7278,6 +7402,46 @@
    }
   },
   {
+   "id": 154660,
+   "bankKey": "class2-water-dist",
+   "questionNum": 10,
+   "verdict": "UNITS",
+   "note": "US gpm to L/s conversion",
+   "original": {
+    "question": "A water distribution system has a flow rate of 500 US GPM. Convert this flow rate to Litres per Second (L/s). (1 US Gallon = 3.785 Litres)",
+    "options": [
+     "31.5 L/s",
+     "37.85 L/s",
+     "42.1 L/s",
+     "50.0 L/s"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculation: 500 US GPM * 3.785 L/US Gallon / 60 seconds/minute = 31.54 L/s. Therefore, 31.5 L/s is the closest answer."
+   },
+   "fix": {
+    "question": "A water distribution system has a flow rate of 1,890 L/min. Convert this flow rate to litres per second (L/s).",
+    "options": [
+     "31.5 L/s",
+     "37.8 L/s",
+     "42.1 L/s",
+     "50.0 L/s"
+    ],
+    "correctIndex": 0,
+    "explanation": "1,890 L/min / 60 s/min = 31.5 L/s.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "1 minute = 60 seconds."
+     },
+     {
+      "l": "Step 2",
+      "c": "Flow (L/s) = 1,890 L/min / 60 s/min = 31.5 L/s."
+     }
+    ]
+   },
+   "source": "units-followup"
+  },
+  {
    "id": 154679,
    "bankKey": "class2-water-dist",
    "questionNum": 29,
@@ -7558,6 +7722,46 @@
     "explanation": "When several customers in one area lose pressure, a partly or fully closed distribution valve is a common and easily rectified cause. Checking valve records and system maps is a logical early step.",
     "steps": null
    }
+  },
+  {
+   "id": 154724,
+   "bankKey": "class2-water-dist",
+   "questionNum": 74,
+   "verdict": "UNITS",
+   "note": "US gpm to m3/h conversion",
+   "original": {
+    "question": "A pump delivers water at a rate of 500 US GPM. What is this flow rate in cubic meters per hour (m³/h)? (1 US GPM = 3.785 L/min)",
+    "options": [
+     "94.6 m³/h",
+     "113.6 m³/h",
+     "189.3 m³/h",
+     "227.1 m³/h"
+    ],
+    "correctIndex": 1,
+    "explanation": "500 US GPM * 3.785 L/min = 1892.5 L/min. Convert L/min to m³/h: 1892.5 L/min * (1 m³/1000 L) * (60 min/1 hour) = 113.55 m³/h."
+   },
+   "fix": {
+    "question": "A pump delivers water at a rate of 1,900 L/min. What is this flow rate in cubic metres per hour (m³/h)?",
+    "options": [
+     "57.0 m³/h",
+     "114.0 m³/h",
+     "190.0 m³/h",
+     "227.1 m³/h"
+    ],
+    "correctIndex": 1,
+    "explanation": "1,900 L/min x 60 min/h = 114,000 L/h; 114,000 L/h / 1,000 L/m³ = 114.0 m³/h.",
+    "steps": [
+     {
+      "l": "Convert L/min to L/h.",
+      "c": "1,900 L/min x 60 min/h = 114,000 L/h"
+     },
+     {
+      "l": "Convert L/h to m³/h.",
+      "c": "114,000 L/h / 1,000 L/m³ = 114.0 m³/h"
+     }
+    ]
+   },
+   "source": "units-followup"
   },
   {
    "id": 154735,
@@ -7877,6 +8081,46 @@
     "explanation": "PRVs maintain constant downstream pressure regardless of upstream pressure or flow changes. Used at: zone boundaries (high-to-low pressure), building entries (above about 550 kPa), and to create pressure zones in hilly terrain. Types: direct-acting, pilot-operated.",
     "steps": null
    }
+  },
+  {
+   "id": 154798,
+   "bankKey": "class2-water-dist",
+   "questionNum": 148,
+   "verdict": "UNITS",
+   "note": "US gpm to L/s conversion",
+   "original": {
+    "question": "A pump delivers 1,200 US gallons per minute (USgpm). What is this flow rate approximately in Liters per second (L/s)?",
+    "options": [
+     "75.7 L/s",
+     "4.54 L/s",
+     "264.2 L/s",
+     "120.0 L/s"
+    ],
+    "correctIndex": 0,
+    "explanation": "1 US gallon = 3.78541 Liters. 1 minute = 60 seconds. So, 1200 USgpm * 3.78541 L/USgal / 60 s/min = 75.7082 L/s."
+   },
+   "fix": {
+    "question": "A pump delivers 4,500 litres per minute (L/min). What is this flow rate in litres per second (L/s)?",
+    "options": [
+     "4.5 L/s",
+     "75.0 L/s",
+     "270.0 L/s",
+     "120.0 L/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "4,500 L/min / 60 s/min = 75.0 L/s.",
+    "steps": [
+     {
+      "l": "State the time conversion.",
+      "c": "1 minute = 60 seconds"
+     },
+     {
+      "l": "Convert to L/s.",
+      "c": "4,500 L/min / 60 s/min = 75.0 L/s"
+     }
+    ]
+   },
+   "source": "units-followup"
   },
   {
    "id": 154809,
@@ -26235,6 +26479,50 @@
    }
   },
   {
+   "id": 35081,
+   "bankKey": "oit",
+   "questionNum": 56,
+   "verdict": "UNITS",
+   "note": "MGD to m3/d conversion; replace with metric unit conversion",
+   "original": {
+    "question": "Convert a flow rate of 2 million gallons per day (MGD) to cubic meters per day (m³/d). (1 US gallon = 3.785 L)",
+    "options": [
+     "15,142 m³/d",
+     "5,678 m³/d",
+     "10,000 m³/d",
+     "7,570 m³/d"
+    ],
+    "correctIndex": 3,
+    "explanation": "2 MGD = 2,000,000 gallons/day. 1 gallon = 3.785 L = 0.003785 m³, so 2,000,000 × 0.003785 = 7,570 m³/d."
+   },
+   "fix": {
+    "question": "Convert a flow rate of 7,500 cubic metres per day (m³/d) to litres per second (L/s).",
+    "options": [
+     "8.68 L/s",
+     "86.8 L/s",
+     "312.5 L/s",
+     "5,208 L/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "7,500 m³/d x 1,000 L/m³ = 7,500,000 L/d; 1 day = 86,400 s; 7,500,000 / 86,400 = 86.8 L/s.",
+    "steps": [
+     {
+      "l": "Convert m³ to litres.",
+      "c": "7,500 m³/d x 1,000 L/m³ = 7,500,000 L/d"
+     },
+     {
+      "l": "Convert days to seconds.",
+      "c": "1 d = 24 x 60 x 60 = 86,400 s"
+     },
+     {
+      "l": "Divide.",
+      "c": "7,500,000 L/d / 86,400 s/d = 86.8 L/s"
+     }
+    ]
+   },
+   "source": "units-followup"
+  },
+  {
    "id": 35088,
    "bankKey": "oit",
    "questionNum": 63,
@@ -27900,6 +28188,37 @@
     "explanation": "The minimum line size for chemical feed lines is 12 mm, but larger sizes are recommended for scale-forming chemicals to prevent blockages.",
     "steps": null
    }
+  },
+  {
+   "id": 35480,
+   "bankKey": "oit",
+   "questionNum": 455,
+   "verdict": "UNITS",
+   "note": "Withdrawal rate stated primarily in lb/day; Canadian operators expect kg/d",
+   "original": {
+    "question": "What is the maximum recommended withdrawal rate for a one-ton chlorine cylinder?",
+    "options": [
+     "400 lbs/day (180 kg/day)",
+     "200 lbs/day (90 kg/day)",
+     "100 lbs/day (45 kg/day)",
+     "50 lbs/day (23 kg/day)"
+    ],
+    "correctIndex": 0,
+    "explanation": "The maximum recommended continuous withdrawal rate for a one-ton (2000 lb) chlorine cylinder is approximately 400 lbs/day (180 kg/day). Exceeding this rate can cause the liquid chlorine to cool excessively, reducing the vapour pressure and potentially causing reliquefaction in the feed lines. For 150-lb cylinders, the maximum rate is approximately 40 lbs/day. If higher feed rates are needed, multiple cylinders must be manifolded together."
+   },
+   "fix": {
+    "question": "What is the maximum recommended continuous withdrawal rate for a one-tonne chlorine container (ton container)?",
+    "options": [
+     "180 kg/d",
+     "90 kg/d",
+     "45 kg/d",
+     "23 kg/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "The maximum recommended continuous withdrawal rate for a ton container is approximately 180 kg/d. Exceeding this rate can cause the liquid chlorine to cool excessively, reducing the vapour pressure and potentially causing reliquefaction in the feed lines. For 68 kg cylinders the maximum rate is approximately 18 kg/d. If higher feed rates are needed, multiple containers must be manifolded together.",
+    "steps": null
+   },
+   "source": "units-followup"
   },
   {
    "id": 35486,
@@ -50734,6 +51053,172 @@
    }
   },
   {
+   "id": 46523,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 3,
+   "verdict": "UNITS",
+   "note": "Explanation gives pressure range only in psi",
+   "original": {
+    "question": "What is a pressure zone and why are they used in distribution systems?",
+    "options": [
+     "A zone where water pressure is measured",
+     "A zone with special water quality requirements",
+     "A zone with high water demand",
+     "A portion of the distribution system served at a specific pressure range, created using pressure reducing valves or separate pumping systems to maintain appropriate pressures throughout hilly or large service areas"
+    ],
+    "correctIndex": 3,
+    "explanation": "Pressure zones divide distribution systems into areas served at specific pressure ranges (typically 40-80 psi). They are needed when: terrain elevation differences would cause excessive pressure in low areas or inadequate pressure in high areas, system size makes single-zone pressure management impractical, or different customer types have different pressure requirements. Pressure zones are separated by: pressure reducing valves (PRVs) that reduce pressure from high to low zones, pressure sustaining valves (PSVs) that maintain minimum pressure in high zones, and separate pumping systems for high-pressure zones."
+   },
+   "fix": {
+    "question": "What is a pressure zone and why are they used in distribution systems?",
+    "options": [
+     "A zone where water pressure is measured",
+     "A zone with special water quality requirements",
+     "A zone with high water demand",
+     "A portion of the distribution system served at a specific pressure range, created using pressure reducing valves or separate pumping systems to maintain appropriate pressures throughout hilly or large service areas"
+    ],
+    "correctIndex": 3,
+    "explanation": "Pressure zones divide distribution systems into areas served at specific pressure ranges (typically 275-550 kPa). They are needed when: terrain elevation differences would cause excessive pressure in low areas or inadequate pressure in high areas, system size makes single-zone pressure management impractical, or different customer types have different pressure requirements. Pressure zones are separated by: pressure reducing valves (PRVs) that reduce pressure from high to low zones, pressure sustaining valves (PSVs) that maintain minimum pressure in high zones, and separate pumping systems for high-pressure zones.",
+    "steps": null
+   },
+   "source": "units-followup"
+  },
+  {
+   "id": 46528,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 8,
+   "verdict": "UNITS",
+   "note": "Flushing velocity given in ft/s only",
+   "original": {
+    "question": "What is the purpose of a distribution system flushing program?",
+    "options": [
+     "To test pipe strength",
+     "To remove sediment, biofilm, and aged water from distribution mains, restore disinfectant residuals, and improve water quality",
+     "To test meter accuracy",
+     "To reduce water pressure"
+    ],
+    "correctIndex": 1,
+    "explanation": "Distribution system flushing programs: remove accumulated sediment and biofilm, restore disinfectant residuals in low-flow areas, improve taste and odor, reduce water age in dead-end mains, and verify system hydraulics. Unidirectional flushing (UDF) is more effective than conventional flushing — it uses a systematic sequence of valve closures to create high-velocity flow (2.5-5 ft/s) in one direction, scouring the pipe. UDF uses less water and is more effective than conventional flushing. Flushing should be documented and tracked."
+   },
+   "fix": {
+    "question": "What is the purpose of a distribution system flushing program?",
+    "options": [
+     "To test pipe strength",
+     "To remove sediment, biofilm, and aged water from distribution mains, restore disinfectant residuals, and improve water quality",
+     "To test meter accuracy",
+     "To reduce water pressure"
+    ],
+    "correctIndex": 1,
+    "explanation": "Distribution system flushing programs: remove accumulated sediment and biofilm, restore disinfectant residuals in low-flow areas, improve taste and odour, reduce water age in dead-end mains, and verify system hydraulics. Unidirectional flushing (UDF) is more effective than conventional flushing: it uses a systematic sequence of valve closures to create high-velocity flow (0.75-1.5 m/s) in one direction, scouring the pipe. UDF uses less water and is more effective than conventional flushing. Flushing should be documented and tracked.",
+    "steps": null
+   },
+   "source": "units-followup"
+  },
+  {
+   "id": 46531,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 11,
+   "verdict": "UNITS",
+   "note": "Steps use gallons per year",
+   "original": {
+    "question": "What is the Infrastructure Leakage Index (ILI) and how is it used?",
+    "options": [
+     "A measure of pipe age",
+     "A measure of pump efficiency",
+     "A measure of pipe material quality",
+     "A performance indicator that compares actual real losses to the unavoidable annual real losses (UARL) for a system — ILI = Current Annual Real Losses / UARL"
+    ],
+    "correctIndex": 3,
+    "explanation": "The Infrastructure Leakage Index (ILI) = Current Annual Real Losses (CARL) / Unavoidable Annual Real Losses (UARL). UARL represents the minimum leakage achievable with current technology and best practices. ILI = 1.0 means the system is performing at the best achievable level. ILI > 1.0 means there is recoverable leakage. ILI is used to: benchmark system performance, set leakage reduction targets, and prioritize investment in leakage control. ILI < 2 is considered excellent; ILI > 8 indicates significant leakage problems requiring urgent attention."
+   },
+   "fix": {
+    "question": "What is the Infrastructure Leakage Index (ILI) and how is it used?",
+    "options": [
+     "A measure of pipe age",
+     "A measure of pump efficiency",
+     "A measure of pipe material quality",
+     "A performance indicator that compares actual real losses to the unavoidable annual real losses (UARL) for a system - ILI = Current Annual Real Losses / UARL"
+    ],
+    "correctIndex": 3,
+    "explanation": "The Infrastructure Leakage Index (ILI) = Current Annual Real Losses (CARL) / Unavoidable Annual Real Losses (UARL). UARL represents the minimum leakage achievable with current technology and best practices. ILI = 1.0 means the system is performing at the best achievable level. ILI > 1.0 means there is recoverable leakage. ILI is used to: benchmark system performance, set leakage reduction targets, and prioritize investment in leakage control. ILI < 2 is considered excellent; ILI > 8 indicates significant leakage problems requiring urgent attention.",
+    "steps": [
+     {
+      "l": "Identify the formula",
+      "c": "ILI = CARL / UARL, where CARL = Current Annual Real Losses (actual physical leakage) and UARL = Unavoidable Annual Real Losses (the minimum leakage achievable with current technology and best practice)."
+     },
+     {
+      "l": "Check the units",
+      "c": "Both terms are volumes per year (for example ML/yr), so the ratio is dimensionless. An ILI has no units, which is why it can be used to compare systems of different size and pressure."
+     },
+     {
+      "l": "Worked example",
+      "c": "If CARL = 200 ML/yr and UARL = 100 ML/yr, then ILI = 200 / 100 = 2.0, meaning the system is losing twice the unavoidable minimum and about 100 ML/yr is potentially recoverable."
+     },
+     {
+      "l": "Interpret the result",
+      "c": "ILI = 1.0 is the best technically achievable level; ILI below 2 is considered excellent; ILI above 8 signals serious leakage needing urgent action. It is used to benchmark performance, set leakage reduction targets, and prioritize leak control investment."
+     },
+     {
+      "l": "Select the answer",
+      "c": "The correct option is the performance indicator comparing actual real losses to UARL (ILI = Current Annual Real Losses / UARL). Pipe age, pump efficiency, and material quality are unrelated."
+     }
+    ]
+   },
+   "source": "units-followup"
+  },
+  {
+   "id": 46537,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 17,
+   "verdict": "UNITS",
+   "note": "Flushing velocity and worked flow calculation in ft/s, ft2, gpm",
+   "original": {
+    "question": "What is the purpose of a distribution system flushing velocity requirement?",
+    "options": [
+     "To test pipe strength",
+     "To ensure sufficient velocity (typically 2.5-5 ft/s or 0.76-1.52 m/s) to scour sediment and biofilm from pipe walls during flushing operations",
+     "To test meter accuracy",
+     "To test pressure relief valves"
+    ],
+    "correctIndex": 1,
+    "explanation": "Flushing velocity requirements ensure effective cleaning: minimum 2.5 ft/s (0.76 m/s) to mobilize sediment; 5 ft/s (1.52 m/s) or higher for effective scouring. Required flushing flow can be calculated: Q = V × A, where A is pipe cross-sectional area. For a 6-inch pipe (A = 0.196 ft²): Q = 2.5 × 0.196 = 0.49 ft³/s = 220 gpm. Unidirectional flushing achieves higher velocities with less water than conventional flushing by directing flow in one direction using valve sequencing."
+   },
+   "fix": {
+    "question": "What is the purpose of a distribution system flushing velocity requirement?",
+    "options": [
+     "To test pipe strength",
+     "To ensure sufficient velocity (typically 0.75-1.5 m/s) to scour sediment and biofilm from pipe walls during flushing operations",
+     "To test meter accuracy",
+     "To test pressure relief valves"
+    ],
+    "correctIndex": 1,
+    "explanation": "Flushing velocity requirements ensure effective cleaning: minimum 0.75 m/s to mobilize sediment; 1.5 m/s or higher for effective scouring. Required flushing flow can be calculated: Q = V x A, where A is the pipe cross-sectional area. For a 150 mm pipe (A = 0.0177 m²): Q = 0.75 x 0.0177 = 0.0133 m³/s = 13.3 L/s. Unidirectional flushing achieves higher velocities with less water than conventional flushing by directing flow in one direction using valve sequencing.",
+    "steps": [
+     {
+      "l": "State the requirement",
+      "c": "Flushing must move water fast enough to lift and carry settled sediment and shear loose biofilm: minimum about 0.75 m/s to mobilize deposits, and 1.5 m/s or more for effective scouring."
+     },
+     {
+      "l": "Compute pipe area",
+      "c": "For a 150 mm main, D = 0.15 m. A = 0.785 x D^2 = 0.785 x (0.15)^2 = 0.0177 m²."
+     },
+     {
+      "l": "Compute required flow",
+      "c": "Q = V x A = 0.75 m/s x 0.0177 m² = 0.0133 m³/s = 13.3 L/s at the minimum scouring velocity."
+     },
+     {
+      "l": "Apply in the field",
+      "c": "The operator checks that the available hydrant or blowoff can actually pass this flow; unidirectional flushing with planned valve sequencing reaches the target velocity using less water than conventional flushing."
+     },
+     {
+      "l": "Select the answer",
+      "c": "The purpose is to ensure sufficient velocity (about 0.75 to 1.5 m/s) to scour sediment and biofilm from pipe walls. Flushing is not a pipe strength, meter accuracy, or relief valve test."
+     }
+    ]
+   },
+   "source": "units-followup"
+  },
+  {
    "id": 46546,
    "bankKey": "wpi-class3-water-dist",
    "questionNum": 26,
@@ -50873,6 +51358,182 @@
     "explanation": "Chlorine residual monitoring programs: verify compliance with the residual requirements set by the applicable provincial or territorial authority and the system's permit or operating plan, identify low-residual areas (requiring flushing or booster disinfection), detect water quality deterioration (sudden residual loss may indicate contamination or main break), and optimize disinfection (minimize DBP formation while maintaining adequate residual). Monitoring should cover: entry points, storage facilities, extremities, dead-ends, and high water age areas.",
     "steps": null
    }
+  },
+  {
+   "id": 46562,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 42,
+   "verdict": "UNITS",
+   "note": "Efficiency worked example in gpm, ft, hp",
+   "original": {
+    "question": "What is the purpose of a pump efficiency testing program?",
+    "options": [
+     "To test pump speed only",
+     "To test pump pressure only",
+     "To test pump flow rate only",
+     "To measure actual pump efficiency and compare to design efficiency — identifying pumps that have degraded due to wear, impeller damage, or seal leakage — enabling targeted maintenance or replacement to reduce energy costs"
+    ],
+    "correctIndex": 3,
+    "explanation": "Pump efficiency testing: measures flow rate (using flow meter or ultrasonic meter), head (using pressure gauges), and power input (using power meter). Wire-to-water efficiency = (Flow × Head × specific weight of water) / Power input. Comparing actual to design efficiency: identifies degraded pumps (worn impellers, excessive clearances, seal leakage), quantifies energy waste, and prioritizes maintenance or replacement. A 10% efficiency reduction on a large pump can cost thousands of dollars per year in excess energy. Efficiency testing is typically done annually for major pumps."
+   },
+   "fix": {
+    "question": "What is the purpose of a pump efficiency testing program?",
+    "options": [
+     "To test pump speed only",
+     "To test pump pressure only",
+     "To test pump flow rate only",
+     "To measure actual pump efficiency and compare to design efficiency - identifying pumps that have degraded due to wear, impeller damage, or seal leakage - enabling targeted maintenance or replacement to reduce energy costs"
+    ],
+    "correctIndex": 3,
+    "explanation": "Pump efficiency testing: measures flow rate (using flow meter or ultrasonic meter), head (using pressure gauges), and power input (using power meter). Wire-to-water efficiency = (Flow x Head x specific weight of water) / Power input. Comparing actual to design efficiency: identifies degraded pumps (worn impellers, excessive clearances, seal leakage), quantifies energy waste, and prioritizes maintenance or replacement. A 10% efficiency reduction on a large pump can cost thousands of dollars per year in excess energy. Efficiency testing is typically done annually for major pumps.",
+    "steps": [
+     {
+      "l": "Identify the measurements",
+      "c": "Efficiency testing records flow (in-line or ultrasonic meter), total dynamic head from suction and discharge gauges, and electrical power input at the motor."
+     },
+     {
+      "l": "State the formula",
+      "c": "Water power (kW) = 9.81 x Q (m³/s) x H (m). Wire-to-water efficiency = water power / input power x 100%."
+     },
+     {
+      "l": "Worked example",
+      "c": "At 63 L/s (0.063 m³/s) and 45 m TDH: water power = 9.81 x 0.063 x 45 = 27.8 kW. If the measured electrical input is 44 kW, wire-to-water efficiency = 27.8/44 = 63%."
+     },
+     {
+      "l": "Compare to design",
+      "c": "If the design wire-to-water efficiency was 75%, the 12 point drop points to worn impellers or wear rings, excessive clearances, or seal leakage, and quantifies the wasted energy used to justify repair or replacement."
+     },
+     {
+      "l": "Select the answer",
+      "c": "The correct option is measuring actual efficiency against design efficiency to find degraded pumps and target maintenance or replacement for energy savings, not testing speed, pressure, or flow alone."
+     }
+    ]
+   },
+   "source": "units-followup"
+  },
+  {
+   "id": 46567,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 47,
+   "verdict": "UNITS",
+   "note": "Hydrant colour-code flow classes given in gpm",
+   "original": {
+    "question": "What is the purpose of a hydrant maintenance program?",
+    "options": [
+     "To paint hydrants regularly",
+     "To test hydrant flow rates only",
+     "To ensure fire hydrants are operable, properly maintained, and accessible — through regular inspection, lubrication, flushing, and repair — so they are available for fire suppression and system flushing",
+     "To replace old hydrants only"
+    ],
+    "correctIndex": 2,
+    "explanation": "Hydrant maintenance programs: inspect all hydrants annually (check for damage, proper drainage, accessibility), operate hydrants (open and close fully to verify operability), lubricate operating nuts and caps, flush hydrants (remove sediment, verify flow), paint hydrants (color-coding for flow capacity), repair or replace defective hydrants, and document maintenance history in GIS. NFPA 291 provides hydrant color-coding standards: Class AA (>1500 gpm) — light blue; Class A (1000-1499 gpm) — green; Class B (500-999 gpm) — orange; Class C (<500 gpm) — red. Hydrant maintenance is critical for fire protection."
+   },
+   "fix": {
+    "question": "What is the purpose of a hydrant maintenance program?",
+    "options": [
+     "To paint hydrants regularly",
+     "To test hydrant flow rates only",
+     "To ensure fire hydrants are operable, properly maintained, and accessible - through regular inspection, lubrication, flushing, and repair - so they are available for fire suppression and system flushing",
+     "To replace old hydrants only"
+    ],
+    "correctIndex": 2,
+    "explanation": "Hydrant maintenance programs: inspect all hydrants annually (check for damage, proper drainage, accessibility), operate hydrants (open and close fully to verify operability), lubricate operating nuts and caps, flush hydrants (remove sediment, verify flow), paint hydrants (color-coding for flow capacity), repair or replace defective hydrants, and document maintenance history in GIS. NFPA 291 provides hydrant color-coding standards: Class AA (5,700 L/min or more) - light blue; Class A (3,800-5,699 L/min) - green; Class B (1,900-3,799 L/min) - orange; Class C (less than 1,900 L/min) - red. Hydrant maintenance is critical for fire protection.",
+    "steps": null
+   },
+   "source": "units-followup"
+  },
+  {
+   "id": 46572,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 52,
+   "verdict": "UNITS",
+   "note": "Initial backfill depth given in inches",
+   "original": {
+    "question": "What is the purpose of a distribution system pipe bedding and backfill procedure?",
+    "options": [
+     "To save excavation costs",
+     "To reduce pipe costs",
+     "To speed up installation",
+     "To provide proper support for buried pipes — preventing differential settlement, protecting pipe from point loads, and ensuring long-term structural integrity — using specified bedding and backfill materials and compaction"
+    ],
+    "correctIndex": 3,
+    "explanation": "Pipe bedding and backfill procedures: bedding zone (below and around pipe) — granular material (sand, crushed stone) compacted to provide uniform support; initial backfill (above pipe to 12 inches) — granular material carefully placed and compacted to avoid pipe damage; final backfill (above initial backfill) — native material or specified fill, compacted to required density. Compaction requirements: typically 95% Standard Proctor density in traffic areas. Proper bedding prevents: differential settlement (causing joint separation), point loads (causing pipe cracking), and pipe flotation in high groundwater areas."
+   },
+   "fix": {
+    "question": "What is the purpose of a distribution system pipe bedding and backfill procedure?",
+    "options": [
+     "To save excavation costs",
+     "To reduce pipe costs",
+     "To speed up installation",
+     "To provide proper support for buried pipes - preventing differential settlement, protecting pipe from point loads, and ensuring long-term structural integrity - using specified bedding and backfill materials and compaction"
+    ],
+    "correctIndex": 3,
+    "explanation": "Pipe bedding and backfill procedures: bedding zone (below and around pipe) - granular material (sand, crushed stone) compacted to provide uniform support; initial backfill (above pipe to 300 mm) - granular material carefully placed and compacted to avoid pipe damage; final backfill (above initial backfill) - native material or specified fill, compacted to required density. Compaction requirements: typically 95% Standard Proctor density in traffic areas. Proper bedding prevents: differential settlement (causing joint separation), point loads (causing pipe cracking), and pipe flotation in high groundwater areas.",
+    "steps": null
+   },
+   "source": "units-followup"
+  },
+  {
+   "id": 46575,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 55,
+   "verdict": "UNITS",
+   "note": "Meter test flow rates given in GPM",
+   "original": {
+    "question": "What is the purpose of a distribution system meter testing and calibration program?",
+    "options": [
+     "To replace meters regularly",
+     "To install new meters",
+     "To read meters remotely",
+     "To verify meter accuracy by testing meters against a known standard — identifying meters that under-register (causing revenue loss) or over-register (causing customer billing disputes) — and calibrating or replacing inaccurate meters"
+    ],
+    "correctIndex": 3,
+    "explanation": "Meter testing programs: test meters at multiple flow rates (low flow — 1/4 GPM, intermediate — 1 GPM, high flow — maximum rated flow), compare to known standard (certified test bench), calculate accuracy at each flow rate, and determine if meter is within acceptable accuracy range (typically ±2% at all flow rates). Meters that under-register: cause revenue loss (most common — meters wear over time and under-register at low flows). Meters that over-register: cause customer billing disputes (rare). Testing frequency: based on meter age, size, and type. Positive displacement meters: test every 5-10 years; turbine meters: test every 2-5 years."
+   },
+   "fix": {
+    "question": "What is the purpose of a distribution system meter testing and calibration program?",
+    "options": [
+     "To replace meters regularly",
+     "To install new meters",
+     "To read meters remotely",
+     "To verify meter accuracy by testing meters against a known standard - identifying meters that under-register (causing revenue loss) or over-register (causing customer billing disputes) - and calibrating or replacing inaccurate meters"
+    ],
+    "correctIndex": 3,
+    "explanation": "Meter testing programs: test meters at multiple flow rates (low flow - about 1 L/min, intermediate - about 4 L/min, high flow - maximum rated flow), compare to known standard (certified test bench), calculate accuracy at each flow rate, and determine if meter is within acceptable accuracy range (typically +/-2% at all flow rates). Meters that under-register: cause revenue loss (most common - meters wear over time and under-register at low flows). Meters that over-register: cause customer billing disputes (rare). Testing frequency: based on meter age, size, and type. Positive displacement meters: test every 5-10 years; turbine meters: test every 2-5 years.",
+    "steps": null
+   },
+   "source": "units-followup"
+  },
+  {
+   "id": 46580,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 60,
+   "verdict": "UNITS",
+   "note": "Pipe sample length given in inches",
+   "original": {
+    "question": "What is the purpose of a distribution system pipe condition assessment using pipe sampling?",
+    "options": [
+     "To test water quality in pipes",
+     "To test pipe installation quality",
+     "To physically remove pipe samples for laboratory analysis — measuring wall thickness, corrosion depth, tuberculation, and material properties — to assess remaining service life and inform rehabilitation or replacement decisions",
+     "To test pipe joint integrity"
+    ],
+    "correctIndex": 2,
+    "explanation": "Pipe sampling programs: remove pipe sections (typically 12-24 inch samples) from representative locations during main breaks or planned excavations, conduct laboratory analysis (wall thickness measurement, corrosion pit depth, tensile strength testing, microstructure analysis), calculate remaining wall thickness and estimated remaining service life, and use results to calibrate deterioration models. Pipe sampling provides: direct evidence of pipe condition, validation of non-destructive assessment methods, and data for replacement prioritization. Results should be documented in GIS with pipe age, material, soil conditions, and break history."
+   },
+   "fix": {
+    "question": "What is the purpose of a distribution system pipe condition assessment using pipe sampling?",
+    "options": [
+     "To test water quality in pipes",
+     "To test pipe installation quality",
+     "To physically remove pipe samples for laboratory analysis - measuring wall thickness, corrosion depth, tuberculation, and material properties - to assess remaining service life and inform rehabilitation or replacement decisions",
+     "To test pipe joint integrity"
+    ],
+    "correctIndex": 2,
+    "explanation": "Pipe sampling programs: remove pipe sections (typically 300-600 mm long samples) from representative locations during main breaks or planned excavations, conduct laboratory analysis (wall thickness measurement, corrosion pit depth, tensile strength testing, microstructure analysis), calculate remaining wall thickness and estimated remaining service life, and use results to calibrate deterioration models. Pipe sampling provides: direct evidence of pipe condition, validation of non-destructive assessment methods, and data for replacement prioritization. Results should be documented in GIS with pipe age, material, soil conditions, and break history.",
+    "steps": null
+   },
+   "source": "units-followup"
   },
   {
    "id": 46629,
@@ -54140,6 +54801,54 @@
     "explanation": "O&M programs demonstrate to regulators that the collection system is properly managed, operated, and maintained to prevent overflows and meet approval conditions.",
     "steps": null
    }
+  },
+  {
+   "id": 48446,
+   "bankKey": "wpi-class4-wastewater-coll",
+   "questionNum": 228,
+   "verdict": "WRONG",
+   "note": "0.22% does not give 0.6 m/s in a 200 mm pipe (Manning n=0.013 gives about 0.49 m/s); about 0.4% is needed, which is also the value used in other items. Also removes imperial label emphasis.",
+   "original": {
+    "question": "Minimum slope for a 200 mm (8-inch) sewer to achieve self-cleansing is approximately:",
+    "options": [
+     "0.08%",
+     "2.0%",
+     "1.0%",
+     "0.22% (1:450)"
+    ],
+    "correctIndex": 3,
+    "explanation": "For a 200 mm sewer, minimum slope of approximately 0.22% achieves self-cleansing velocity of 0.6 m/s at design flow."
+   },
+   "fix": {
+    "question": "Minimum slope for a 200 mm sewer to achieve self-cleansing is approximately:",
+    "options": [
+     "0.08%",
+     "2.0%",
+     "1.0%",
+     "0.40% (1:250)"
+    ],
+    "correctIndex": 3,
+    "explanation": "For a 200 mm sewer, a minimum slope of approximately 0.40% achieves a self-cleansing velocity of about 0.6 m/s (Manning n = 0.013).",
+    "steps": [
+     {
+      "l": "Identify what is asked.",
+      "c": "The question asks for the approximate minimum slope for a 200 mm sewer to remain self-cleansing."
+     },
+     {
+      "l": "State the governing criterion.",
+      "c": "Self-cleansing requires a velocity of about 0.6 m/s at design flow, found from Manning's equation V = (1/n) R^(2/3) S^(1/2) with R = D/4 = 0.05 m for a full 200 mm pipe and n = 0.013."
+     },
+     {
+      "l": "Check the standard slope.",
+      "c": "S = 0.004: V = (1/0.013) x 0.05^(2/3) x 0.004^(1/2) = 76.9 x 0.1357 x 0.0632 = 0.66 m/s, which meets 0.6 m/s. At S = 0.0022, V is only about 0.49 m/s."
+     },
+     {
+      "l": "Select the answer.",
+      "c": "The accepted design figure is about 0.40% (1:250). 0.08% is far too flat, while 1.0% and 2.0% are much steeper than needed, so option D is correct."
+     }
+    ]
+   },
+   "source": "units-followup"
   },
   {
    "id": 48470,
@@ -60837,6 +61546,37 @@
    }
   },
   {
+   "id": 91343,
+   "bankKey": "wpi-class4-water-dist",
+   "questionNum": 487,
+   "verdict": "UNITS",
+   "note": "Plant capacity in MGD",
+   "original": {
+    "question": "A Class 4 operator is overseeing the commissioning of a new 20 MGD treatment plant that utilizes granular activated carbon (GAC) contactors for taste, odor, and DBP precursor removal, followed by free chlorine disinfection. During the initial operational phase, the operator observes a sudden, unexpected increase in total trihalomethane (TTHM) concentrations at the first compliance monitoring point downstream of the plant, despite maintaining optimal GAC empty bed contact time (EBCT) and chlorine dosages. What is the most probable cause for this observation, assuming all other process parameters are stable?",
+    "options": [
+     "Insufficient free chlorine residual leaving the plant",
+     "Breakthrough of organic precursors from the GAC contactors",
+     "Increased water temperature in the distribution system",
+     "Formation of haloacetic acids (HAAs) instead of TTHMs"
+    ],
+    "correctIndex": 1,
+    "explanation": "An unexpected increase in TTHMs despite optimal GAC EBCT and chlorine dosages strongly suggests that the GAC has reached its adsorption capacity for organic precursors, leading to breakthrough. This means the GAC is no longer effectively removing the organic matter that reacts with chlorine to form TTHMs. Insufficient chlorine would likely lead to lower TTHMs or microbiological issues, while increased water temperature would contribute to DBP formation but is less likely to be 'sudden and unexpected' if other parameters are stable. HAA formation is related to DBP formation but a sudden increase in TTHMs points to precursor breakthrough."
+   },
+   "fix": {
+    "question": "A Class 4 operator is overseeing the commissioning of a new 75 ML/d treatment plant that utilizes granular activated carbon (GAC) contactors for taste, odor, and DBP precursor removal, followed by free chlorine disinfection. During the initial operational phase, the operator observes a sudden, unexpected increase in total trihalomethane (TTHM) concentrations at the first compliance monitoring point downstream of the plant, despite maintaining optimal GAC empty bed contact time (EBCT) and chlorine dosages. What is the most probable cause for this observation, assuming all other process parameters are stable?",
+    "options": [
+     "Insufficient free chlorine residual leaving the plant",
+     "Breakthrough of organic precursors from the GAC contactors",
+     "Increased water temperature in the distribution system",
+     "Formation of haloacetic acids (HAAs) instead of TTHMs"
+    ],
+    "correctIndex": 1,
+    "explanation": "An unexpected increase in TTHMs despite optimal GAC EBCT and chlorine dosages strongly suggests that the GAC has reached its adsorption capacity for organic precursors, leading to breakthrough. This means the GAC is no longer effectively removing the organic matter that reacts with chlorine to form TTHMs. Insufficient chlorine would likely lead to lower TTHMs or microbiological issues, while increased water temperature would contribute to DBP formation but is less likely to be sudden and unexpected if other parameters are stable. HAA formation is related to DBP formation but a sudden increase in TTHMs points to precursor breakthrough.",
+    "steps": []
+   },
+   "source": "units-followup"
+  },
+  {
    "id": 91346,
    "bankKey": "wpi-class4-water-dist",
    "questionNum": 490,
@@ -60865,6 +61605,68 @@
     "explanation": "Enhanced coagulation is designed to maximize removal of TOC, the primary precursor for THMs and HAAs. Slow sand filtration is for pathogen removal, aeration for volatiles and iron/manganese oxidation, and UV does not remove DBP precursors.",
     "steps": []
    }
+  },
+  {
+   "id": 91348,
+   "bankKey": "wpi-class4-water-dist",
+   "questionNum": 492,
+   "verdict": "UNITS",
+   "note": "Design flow in MGD",
+   "original": {
+    "question": "A Class 4 operator is tasked with evaluating the economic feasibility and long-term sustainability of upgrading an existing granular activated carbon (GAC) filtration system for taste and odor control and removal of synthetic organic compounds (SOCs). The current GAC media has an empty bed contact time (EBCT) of 10 minutes at a design flow of 20 MGD. The proposed upgrade involves replacing the media with a new, more efficient type that promises a 25% increase in adsorption capacity. What critical capital project management consideration, beyond initial media cost, must be thoroughly assessed to determine the true life-cycle cost and operational impact of this upgrade?",
+    "options": [
+     "The impact on backwash frequency and volume, including associated water and energy costs, and spent media disposal fees.",
+     "The aesthetic appeal of the new GAC media to the public.",
+     "The marketing strategy for the improved water quality.",
+     "The number of public complaints received regarding taste and odor in the past year."
+    ],
+    "correctIndex": 0,
+    "explanation": "When evaluating the life-cycle cost of a GAC media upgrade, it's crucial to consider not just the initial media cost but also the long-term operational impacts. A more efficient media might reduce the frequency of replacement, but changes in its physical properties could significantly alter backwash frequency, requiring more water and energy, and increasing the volume and cost of spent media disposal. These factors represent significant operational expenditures that directly impact the overall economic feasibility and sustainability of the project."
+   },
+   "fix": {
+    "question": "A Class 4 operator is tasked with evaluating the economic feasibility and long-term sustainability of upgrading an existing granular activated carbon (GAC) filtration system for taste and odor control and removal of synthetic organic compounds (SOCs). The current GAC media has an empty bed contact time (EBCT) of 10 minutes at a design flow of 75 ML/d. The proposed upgrade involves replacing the media with a new, more efficient type that promises a 25% increase in adsorption capacity. What critical capital project management consideration, beyond initial media cost, must be thoroughly assessed to determine the true life-cycle cost and operational impact of this upgrade?",
+    "options": [
+     "The impact on backwash frequency and volume, including associated water and energy costs, and spent media disposal fees.",
+     "The aesthetic appeal of the new GAC media to the public.",
+     "The marketing strategy for the improved water quality.",
+     "The number of public complaints received regarding taste and odor in the past year."
+    ],
+    "correctIndex": 0,
+    "explanation": "When evaluating the life-cycle cost of a GAC media upgrade, it is crucial to consider not just the initial media cost but also the long-term operational impacts. A more efficient media might reduce the frequency of replacement, but changes in its physical properties could significantly alter backwash frequency, requiring more water and energy, and increasing the volume and cost of spent media disposal. These factors represent significant operational expenditures that directly impact the overall economic feasibility and sustainability of the project.",
+    "steps": []
+   },
+   "source": "units-followup"
+  },
+  {
+   "id": 91350,
+   "bankKey": "wpi-class4-water-dist",
+   "questionNum": 494,
+   "verdict": "UNITS",
+   "note": "Tank volume in million gallons",
+   "original": {
+    "question": "A water utility is considering the construction of a new 5-million-gallon elevated storage tank in a rapidly developing area to improve system pressure and fire flow. The proposed site is adjacent to a residential neighborhood. Which of the following is the most significant risk assessment factor that must be thoroughly evaluated during the planning and design phase to ensure public safety and long-term operational integrity?",
+    "options": [
+     "Seismic vulnerability and liquefaction potential of the underlying soil, especially in an earthquake-prone region.",
+     "The aesthetic impact of the tank's paint color on property values.",
+     "The cost of landscaping around the tank to blend with the neighborhood.",
+     "The availability of local contractors for construction."
+    ],
+    "correctIndex": 0,
+    "explanation": "For a large infrastructure project like an elevated storage tank, especially one near a residential area, seismic vulnerability and liquefaction potential are critical risk assessment factors. A structural failure due to seismic activity could have catastrophic consequences, including loss of water supply, extensive property damage, and potential loss of life. These engineering considerations are paramount for public safety and operational integrity, far outweighing aesthetic or contractor availability concerns."
+   },
+   "fix": {
+    "question": "A water utility is considering the construction of a new 20 ML elevated storage tank in a rapidly developing area to improve system pressure and fire flow. The proposed site is adjacent to a residential neighborhood. Which of the following is the most significant risk assessment factor that must be thoroughly evaluated during the planning and design phase to ensure public safety and long-term operational integrity?",
+    "options": [
+     "Seismic vulnerability and liquefaction potential of the underlying soil, especially in an earthquake-prone region.",
+     "The aesthetic impact of the tank's paint color on property values.",
+     "The cost of landscaping around the tank to blend with the neighborhood.",
+     "The availability of local contractors for construction."
+    ],
+    "correctIndex": 0,
+    "explanation": "For a large infrastructure project like an elevated storage tank, especially one near a residential area, seismic vulnerability and liquefaction potential are critical risk assessment factors. A structural failure due to seismic activity could have catastrophic consequences, including loss of water supply, extensive property damage, and potential loss of life. These engineering considerations are paramount for public safety and operational integrity, far outweighing aesthetic or contractor availability concerns.",
+    "steps": []
+   },
+   "source": "units-followup"
   },
   {
    "id": 91367,
@@ -60938,6 +61740,54 @@
     "explanation": "ML predictive models use break history, pipe age/material/diameter, soil type and corrosivity, cathodic protection status, pressure zone, traffic loading and climate data to predict annual failure probability per segment, giving prioritized replacement lists and optimized capital budgets.",
     "steps": []
    }
+  },
+  {
+   "id": 91383,
+   "bankKey": "wpi-class4-water-dist",
+   "questionNum": 527,
+   "verdict": "UNITS",
+   "note": "RPBA relief-valve differential in psi",
+   "original": {
+    "question": "During a routine cross-connection control program audit, a certified backflow prevention assembly tester identifies that a Reduced Pressure Principle Assembly (RPBA) protecting a hospital's dialysis unit consistently shows a differential pressure below the minimum 2.0 PSI required across the relief valve. Which of the following is the most probable cause and immediate corrective action?",
+    "options": [
+     "Fouled or damaged check valve seats allowing leakage; the RPBA must be immediately removed from service and repaired or replaced.",
+     "Normal operating condition due to high demand; no immediate action is required, but monitor for future changes.",
+     "Insufficient upstream pressure to maintain the differential; increase the system pressure at the main entry point.",
+     "A malfunctioning pressure gauge on the test kit; recalibrate the test kit before retesting."
+    ],
+    "correctIndex": 0,
+    "explanation": "A differential pressure below 2.0 PSI across the relief valve indicates that the relief valve is not functioning correctly to prevent backpressure or backsiphonage, signifying a failure of the RPBA. Given the critical nature of a dialysis unit (health hazard), the device is no longer providing adequate protection and must be immediately removed from service and repaired or replaced to prevent contamination."
+   },
+   "fix": {
+    "question": "During a routine cross-connection control program audit, a certified backflow prevention assembly tester identifies that a Reduced Pressure Principle Assembly (RPBA) protecting a hospital's dialysis unit consistently shows a differential pressure below the minimum 14 kPa required across the relief valve. Which of the following is the most probable cause and immediate corrective action?",
+    "options": [
+     "Fouled or damaged check valve seats allowing leakage; the RPBA must be immediately removed from service and repaired or replaced.",
+     "Normal operating condition due to high demand; no immediate action is required, but monitor for future changes.",
+     "Insufficient upstream pressure to maintain the differential; increase the system pressure at the main entry point.",
+     "A malfunctioning pressure gauge on the test kit; recalibrate the test kit before retesting."
+    ],
+    "correctIndex": 0,
+    "explanation": "A differential pressure below 14 kPa across the relief valve indicates that the relief valve is not functioning correctly to prevent backpressure or backsiphonage, signifying a failure of the RPBA. Given the critical nature of a dialysis unit (health hazard), the device is no longer providing adequate protection and must be immediately removed from service and repaired or replaced to prevent contamination.",
+    "steps": [
+     {
+      "l": "Analyze the test result",
+      "c": "The RPBA relief valve differential is consistently below the 14 kPa minimum required between the supply pressure and the zone between the checks."
+     },
+     {
+      "l": "Interpret the failure",
+      "c": "Loss of that differential is typically caused by fouled or damaged first check seats that leak into the relief zone, so the assembly can no longer maintain the required pressure drop."
+     },
+     {
+      "l": "Assess the hazard level",
+      "c": "The assembly protects a hospital dialysis unit, a high health hazard where backflow could cause acute harm."
+     },
+     {
+      "l": "Determine the immediate action",
+      "c": "Since the device fails the test and no longer provides protection, it must be taken out of service immediately and repaired or replaced, with the connection isolated until it passes a retest (option A). High demand does not excuse a failed test, raising supply pressure masks the defect, and a gauge error would not give a consistent repeatable result."
+     }
+    ]
+   },
+   "source": "units-followup"
   },
   {
    "id": 91388,
@@ -61030,6 +61880,89 @@
     "explanation": "The RP assembly keeps the zone between the checks at a pressure at least 14 kPa (2 psi) lower than the supply. If check valve leakage or a pressure change reduces this differential to 14 kPa or less, the relief valve opens and discharges to atmosphere, preventing contamination of the supply (CSA B64.4).",
     "steps": null
    }
+  },
+  {
+   "id": 91399,
+   "bankKey": "wpi-class4-water-dist",
+   "questionNum": 543,
+   "verdict": "UNITS",
+   "note": "DCVA differential in psi",
+   "original": {
+    "question": "During the annual testing of a Double Check Valve Assembly (DCVA) protecting a moderate hazard industrial connection, the certified tester observes that the differential pressure across the second check valve is consistently less than 1.0 psi, and the first check valve shows evidence of minor leakage. What immediate action is required by the operator overseeing the cross-connection control program?",
+    "options": [
+     "Schedule a retest in 30 days to see if the condition improves.",
+     "Immediately remove the assembly from service and replace it with a new one.",
+     "Initiate repairs or replacement of the failed components within a specified timeframe, typically 24-72 hours, and retest.",
+     "Adjust the system pressure to compensate for the leakage and document the observation."
+    ],
+    "correctIndex": 2,
+    "explanation": "A DCVA failing to meet the minimum differential pressure across its checks or showing leakage indicates a compromised assembly that is no longer providing adequate protection. While immediate replacement might be ideal, the standard procedure is to initiate repairs or replacement of the failed components within a short, specified timeframe (e.g., 24-72 hours, as per local regulations and industry best practices) and then retest the assembly to ensure proper function. Scheduling a retest without repair or adjusting system pressure are unacceptable responses to a failed assembly."
+   },
+   "fix": {
+    "question": "During the annual testing of a Double Check Valve Assembly (DCVA) protecting a moderate hazard industrial connection, the certified tester observes that the differential pressure across the second check valve is consistently less than 7 kPa, and the first check valve shows evidence of minor leakage. What immediate action is required by the operator overseeing the cross-connection control program?",
+    "options": [
+     "Schedule a retest in 30 days to see if the condition improves.",
+     "Immediately remove the assembly from service and replace it with a new one.",
+     "Initiate repairs or replacement of the failed components within a specified timeframe, typically 24-72 hours, and retest.",
+     "Adjust the system pressure to compensate for the leakage and document the observation."
+    ],
+    "correctIndex": 2,
+    "explanation": "A DCVA failing to meet the minimum differential pressure across its checks or showing leakage indicates a compromised assembly that is no longer providing adequate protection. While immediate replacement might be ideal, the standard procedure is to initiate repairs or replacement of the failed components within a short, specified timeframe (e.g., 24-72 hours, as per local regulations and industry best practices) and then retest the assembly to ensure proper function. Scheduling a retest without repair or adjusting system pressure are unacceptable responses to a failed assembly.",
+    "steps": [
+     {
+      "l": "Evaluate the test results",
+      "c": "The second check holds less than the 7 kPa minimum differential and the first check leaks, so the DCVA fails the test and no longer provides the required two independent barriers."
+     },
+     {
+      "l": "Rule out improper actions",
+      "c": "A 30-day retest leaves the moderate hazard connection unprotected, and adjusting system pressure does not repair the leaking check."
+     },
+     {
+      "l": "Determine the standard protocol",
+      "c": "Standard cross-connection practice for a failed assembly is to initiate repair or replacement of the failed components within the regulator's specified timeframe, commonly 24 to 72 hours."
+     },
+     {
+      "l": "Conclude the final step",
+      "c": "After repair or replacement, the assembly must be retested and documented as passing before it is returned to service (option C)."
+     },
+     {
+      "l": "Note on outright replacement",
+      "c": "Immediate full replacement is acceptable but not required; a DCVA with repairable checks is normally rebuilt, so the repair-and-retest timeframe is the correct required action."
+     }
+    ]
+   },
+   "source": "units-followup"
+  },
+  {
+   "id": 91412,
+   "bankKey": "wpi-class4-water-dist",
+   "questionNum": 556,
+   "verdict": "UNITS",
+   "note": "Pressure given in PSI; also US-style state regulator reference",
+   "original": {
+    "question": "A large industrial facility connected to the municipal distribution system is experiencing frequent, unannounced pressure fluctuations, sometimes dropping to near zero PSI. The facility has several interconnected process lines, including a high-pressure boiler feed system and a chemical injection system, both utilizing auxiliary water supplies. As the distribution system manager, what is your immediate and most comprehensive course of action regarding cross-connection control in this scenario?",
+    "options": [
+     "Issue an immediate boil water advisory for the industrial facility and surrounding service area, then dispatch a crew to isolate the facility's connection.",
+     "Require the industrial facility to install a reduced pressure zone (RPZ) assembly at their main service connection and conduct a comprehensive cross-connection survey of their internal plumbing.",
+     "Conduct a detailed hydraulic analysis of the distribution system to identify potential causes of pressure fluctuations before addressing cross-connection concerns.",
+     "Notify the state regulatory agency of a potential contamination event and recommend a temporary shutdown of the industrial facility until the pressure issues are resolved."
+    ],
+    "correctIndex": 1,
+    "explanation": "Frequent and severe pressure fluctuations, especially near zero PSI, significantly increase the risk of back-siphonage and back-pressure events at an industrial facility with auxiliary supplies. A comprehensive approach involves immediate protection with an RPZ at the service connection and a thorough internal survey to identify and mitigate all potential cross-connections."
+   },
+   "fix": {
+    "question": "A large industrial facility connected to the municipal distribution system is experiencing frequent, unannounced pressure fluctuations, sometimes dropping to near zero kPa. The facility has several interconnected process lines, including a high-pressure boiler feed system and a chemical injection system, both utilizing auxiliary water supplies. As the distribution system manager, what is your immediate and most comprehensive course of action regarding cross-connection control in this scenario?",
+    "options": [
+     "Issue an immediate boil water advisory for the industrial facility and surrounding service area, then dispatch a crew to isolate the facility's connection.",
+     "Require the industrial facility to install a reduced pressure zone (RPZ) assembly at their main service connection and conduct a comprehensive cross-connection survey of their internal plumbing.",
+     "Conduct a detailed hydraulic analysis of the distribution system to identify potential causes of pressure fluctuations before addressing cross-connection concerns.",
+     "Notify the provincial regulatory agency of a potential contamination event and recommend a temporary shutdown of the industrial facility until the pressure issues are resolved."
+    ],
+    "correctIndex": 1,
+    "explanation": "Frequent and severe pressure fluctuations, especially near zero kPa, significantly increase the risk of back-siphonage and back-pressure events at an industrial facility with auxiliary supplies. A comprehensive approach involves immediate protection with an RPZ at the service connection and a thorough internal survey to identify and mitigate all potential cross-connections.",
+    "steps": []
+   },
+   "source": "units-followup"
   },
   {
    "id": 91419,
@@ -63438,5 +64371,6 @@
   }
  ],
  "replacements": 34,
- "deleteList": 34
+ "deleteList": 34,
+ "unitsFollowup": 24
 }

@@ -15,7 +15,7 @@ Written from the review in `docs/exam-bank-review/RESULTS.md`. Nothing below has
 - **Delete 34 questions** (`delete-list.json`, also `replacement: true` in `corrections.json`): these could not be repaired. Delete these rows by `id`. Their new replacement questions are in `replacements.json` (`fix` field); add them as new rows if you want to keep the bank size, or skip them if you only want the deletions.
 - Where a question appears in several banks (176 appear in two, 17 in three), apply the fix to every copy; each copy has its own finding.
 - Before applying, check the items in `needs-source-check.txt` against the current regulation or guideline. If you cannot, hold those items.
-- Read and decide on the 144 candidates in `units-unflagged-candidates.json`.
+- The 144 US-unit candidates have been reviewed; the 24 real ones are in `corrections.json` (`source: units-followup`), so there is nothing extra to read.
 - Keep the question-governance and receipt path you use for other content. The review did not touch any file with a hash or receipt.
 
 ## Not asked
