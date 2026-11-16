@@ -7,26 +7,26 @@
   "label": "California Collection System Maintenance, Grade 1 (CWEA)",
   "numberRange": {
     "start": 1,
-    "end": 250,
+    "end": 295,
     "status": "proposed-not-reserved-in-production"
   },
   "purpose": "Practice questions for the California Water Environment Association (CWEA) Collection System Maintenance Grade 1 certification. Original items in US units. Not an official exam blueprint.",
-  "file": "questions/bank-250.json",
-  "count": 250,
-  "calculations": 40,
-  "sha256": "b83a90da1cf478a4f526c0c02d9056396672c966b51484dbb12c7c49f51550f0",
+  "file": "questions/bank-295.json",
+  "count": 295,
+  "calculations": 45,
+  "sha256": "5dd8df2c347b08f1357ff2513674ab013af7bba51660be356052143a3b669f6e",
   "modules": {
-    "Operations and maintenance": 71,
-    "Tools and equipment": 50,
-    "Mapping": 12,
-    "Safety and regulations": 65,
+    "Operations and maintenance": 91,
+    "Tools and equipment": 58,
+    "Mapping": 14,
+    "Safety and regulations": 75,
     "Administration": 27,
-    "Math": 25
+    "Math": 30
   },
   "difficulty": {
-    "easy": 82,
-    "medium": 123,
-    "hard": 45
+    "easy": 97,
+    "medium": 146,
+    "hard": 52
   },
   "topics": {
     "Types of collection systems and their parts": 6,
@@ -63,6 +63,22 @@
     "Customer service and public communication": 6,
     "Documentation and reports": 6,
     "Workplace basics": 6,
+    "Mechanical cleaning equipment in gravity lines": 3,
+    "Principles of root control": 2,
+    "Repair of gravity systems": 6,
+    "Pump removal and bypass pumping": 3,
+    "Spills and emergency response": 6,
+    "Pneumatic plugs and their hazards": 2,
+    "Tools for clearing vegetation": 2,
+    "Shoring equipment": 2,
+    "Vehicles and heavy equipment": 2,
+    "Map discrepancies in the field": 2,
+    "Underground Service Alert and 811": 2,
+    "Traffic control devices": 2,
+    "Trenching methods": 2,
+    "Bloodborne pathogens and first aid": 1,
+    "Heat-related illness": 2,
+    "Cal-OSHA and job-site hazards": 1,
     "Slope, flow, volume and travel time": 8,
     "Equipment calculations": 4,
     "Time, materials and records arithmetic": 3,
@@ -70,23 +86,25 @@
     "Area and volume": 5,
     "Flow and velocity": 5,
     "Slope and grade": 5,
-    "Percentages, averages and rates": 5
+    "Percentages, averages and rates": 5,
+    "Spill calculations": 3,
+    "Distance and elevation": 2
   },
   "validation": {
     "valid": true,
     "errors": [],
-    "count": 250,
-    "calculations": 40,
+    "count": 295,
+    "calculations": 45,
     "answerPositions": [
-      63,
-      63,
-      62,
-      62
+      74,
+      73,
+      74,
+      74
     ],
     "answerCues": {
-      "conceptualCount": 210,
-      "longestRate": 0.3380952380952381,
-      "shortestRate": 0.12857142857142856,
+      "conceptualCount": 250,
+      "longestRate": 0.348,
+      "shortestRate": 0.164,
       "longTells": [],
       "shortTells": [],
       "qualifierTells": []

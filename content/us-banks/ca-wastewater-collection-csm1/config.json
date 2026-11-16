@@ -7,10 +7,10 @@
   "stream": "wastewater-collection",
   "label": "California Collection System Maintenance, Grade 1 (CWEA)",
   "startNumber": 1,
-  "count": 250,
-  "calcCount": 40,
+  "count": 295,
+  "calcCount": 45,
   "purpose": "Practice questions for the California Water Environment Association (CWEA) Collection System Maintenance Grade 1 certification. Original items in US units. Not an official exam blueprint.",
-  "reviewIntro": "250 original practice questions: 210 conceptual and 40 calculations, in US customary units, following the six domains of the CWEA CSM Grade 1 outline (operations and maintenance 28%, tools and equipment 20%, mapping 5%, safety and regulations 26%, administration 11%, math 10%). This is the first release size; more questions can be added later at the end of the source files. This is a local content package, not proof of a production import.",
+  "reviewIntro": "295 original practice questions: 250 conceptual and 45 calculations, in US customary units, following the six domains of the CWEA CSM Grade 1 outline (operations and maintenance 28%, tools and equipment 20%, mapping 5%, safety and regulations 26%, administration 11%, math 10%). The first 250 were written to that outline's weights; a fifth batch of 45 was added after the bank was compared with the official Grade 1 exam content outline (handbook v2025.01) and found to be missing several sub-domains. More questions can be added later at the end of the source files. This is a local content package, not proof of a production import.",
   "sources": {
     "CWEAHB": [
       "CWEA Collection System Maintenance Candidate Handbook, Version 2025.01 (Grade 1 examination content outline and domain weights)",

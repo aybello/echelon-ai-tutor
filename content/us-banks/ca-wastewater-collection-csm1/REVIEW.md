@@ -1,6 +1,6 @@
-# California Collection System Maintenance, Grade 1 (CWEA): 250-question review
+# California Collection System Maintenance, Grade 1 (CWEA): 295-question review
 
-250 original practice questions: 210 conceptual and 40 calculations, in US customary units, following the six domains of the CWEA CSM Grade 1 outline (operations and maintenance 28%, tools and equipment 20%, mapping 5%, safety and regulations 26%, administration 11%, math 10%). This is the first release size; more questions can be added later at the end of the source files. This is a local content package, not proof of a production import.
+295 original practice questions: 250 conceptual and 45 calculations, in US customary units, following the six domains of the CWEA CSM Grade 1 outline (operations and maintenance 28%, tools and equipment 20%, mapping 5%, safety and regulations 26%, administration 11%, math 10%). The first 250 were written to that outline's weights; a fifth batch of 45 was added after the bank was compared with the official Grade 1 exam content outline (handbook v2025.01) and found to be missing several sub-domains. More questions can be added later at the end of the source files. This is a local content package, not proof of a production import.
 
 Correct answers are shown beneath each item. See README.md for scope, sources and limits.
 
@@ -2734,155 +2734,675 @@ A coworker suggests skipping a step to save time, but the supervisor directed th
 
 Direct supervision means following the supervisor's instructions. Concerns can be raised respectfully without changing the assigned method.
 
-### 211: Slope, flow, volume and travel time (medium)
+### 211: Mechanical cleaning equipment in gravity lines (easy)
+
+A crew pushes a rotating cutter on a long flexible rod through a line to cut through root masses. Which equipment is this?
+
+- **A.** A bucket machine on winch cables
+- **B.** A rodding machine with a cutter head
+- **C.** A pneumatic plug in the pipe
+- **D.** A balling device pushed by flow
+
+**Answer: B. A rodding machine with a cutter head**
+
+A rodding machine turns sectional or continuous rod with a cutter on the end, which makes it suited to cutting roots and loosening blockages.
+
+### 212: Mechanical cleaning equipment in gravity lines (medium)
+
+Which equipment is winched back and forth between two manholes to pull out heavy deposits like sand and gravel?
+
+- **A.** A root saw on a long rod
+- **B.** A chain flail on a rotating shaft
+- **C.** A rubber cleaning ball and line
+- **D.** Bucket machine
+
+**Answer: D. Bucket machine**
+
+A bucket machine is dragged between two access points and brings out settled debris that lighter tools cannot move.
+
+### 213: Mechanical cleaning equipment in gravity lines (medium)
+
+A crew uses a spinning shaft with swinging lengths of chain to scour grease and scale off the inside wall of a pipe. What is this tool called?
+
+- **A.** Bucket machine on cables
+- **B.** Chain flail
+- **C.** Pipe plug on a hose
+- **D.** Balling tool for flushing
+
+**Answer: B. Chain flail**
+
+A chain flail spins chains against the pipe wall to clean off hardened grease and scale, and it can also trim small roots.
+
+### 214: Principles of root control (easy)
+
+What condition in a pipe lets small roots find a way into a sewer line?
+
+- **A.** Cracks or open joints that let moisture escape
+- **B.** A smooth interior wall that guides roots along the pipe
+- **C.** Fast flow that carries seeds into the pipe from upstream
+- **D.** A steep slope that pulls roots downward into the line
+
+**Answer: A. Cracks or open joints that let moisture escape**
+
+Roots follow moisture and nutrients, so defects in the pipe let them get inside and grow.
+
+### 215: Principles of root control (medium)
+
+After roots are cut out of a line, why is a follow-up inspection and repeat cleaning schedule important?
+
+- **A.** The cutter leaves metal shavings that corrode the pipe wall
+- **B.** The slope of the line changes after the roots are cut
+- **C.** Cut roots turn into grease farther downstream
+- **D.** Roots regrow from the stubs at the defect
+
+**Answer: D. Roots regrow from the stubs at the defect**
+
+Cutting removes the root mass but not the opening, so regrowth is expected and the line should be rechecked and cleaned again on a schedule.
+
+### 216: Repair of gravity systems (easy)
+
+How can a crew best find the exact section of a lateral that is damaged?
+
+- **A.** Ask the neighbors where they think the pipe might run
+- **B.** Dig along the entire lateral until damage appears
+- **C.** Use a camera inspection to see the defect
+- **D.** Pour dye in the cleanout and wait a day
+
+**Answer: C. Use a camera inspection to see the defect**
+
+Camera inspection shows the location and type of defect so the repair can be limited to the damaged section.
+
+### 217: Repair of gravity systems (medium)
+
+Why does a repair crew judge how severe a pipe defect is before choosing how to fix it?
+
+- **A.** Severe damage can be left alone until it gets worse
+- **B.** Minor defects must be fixed with a larger pipe
+- **C.** The type of repair depends on the extent of the damage
+- **D.** Severity decides which manhole lid will be used
+
+**Answer: C. The type of repair depends on the extent of the damage**
+
+A small crack and a collapsed pipe call for different repair methods, so the crew assesses damage first.
+
+### 218: Repair of gravity systems (medium)
+
+Which information does a crew need to order materials for a main-line repair?
+
+- **A.** The age of the nearest tree and the soil color
+- **B.** The color of the paint on the manhole cover
+- **C.** The name of the last crew that cleaned the line
+- **D.** Pipe size, material and depth of the existing line
+
+**Answer: D. Pipe size, material and depth of the existing line**
+
+Replacement pipe and fittings must match the existing pipe in diameter and material, and depth affects excavation and shoring needs.
+
+### 219: Repair of gravity systems (easy)
+
+What is a basic reason for marking and preparing the site before excavation starts?
+
+- **A.** To make the spoil pile look neater for the neighbors
+- **B.** To protect the crew, utilities and public
+- **C.** To reduce the length of pipe that must be ordered
+- **D.** To avoid having to look at the map again later
+
+**Answer: B. To protect the crew, utilities and public**
+
+Site preparation sets up traffic control, utility locations and work areas so digging is done safely.
+
+### 220: Repair of gravity systems (medium)
+
+Why do crews use shoring or a trench shield when a repair excavation is deep?
+
+- **A.** The walls could cave in on workers in the trench
+- **B.** Dirt must be sorted by color before backfilling
+- **C.** Groundwater is kept out of the pipe by the shield
+- **D.** The pipe needs support from the sides while it cures
+
+**Answer: A. The walls could cave in on workers in the trench**
+
+Trench walls can collapse without warning, and protective systems keep workers from being buried.
+
+### 221: Repair of gravity systems (hard)
+
+Why are repair couplings tightened to a set torque value?
+
+- **A.** Higher torque gives a longer service life for the fitting
+- **B.** Too little leaves a leak and too much can crack the fitting
+- **C.** A set torque is needed to color-code the coupling
+- **D.** The torque value tells the crew how deep the pipe is
+
+**Answer: B. Too little leaves a leak and too much can crack the fitting**
+
+The manufacturer's torque spreads clamping force evenly, which seals the joint without damaging the coupling or the pipe.
+
+### 222: Pump removal and bypass pumping (medium)
+
+A crew is about to lift a submersible pump out of a wet well with a hoist. Why do hand signals and rigging matter?
+
+- **A.** They are needed for the wet well to be pumped dry
+- **B.** They let the crew skip inspecting the lifting chain
+- **C.** They tell the pump how fast to run when restarted
+- **D.** They keep the load controlled and the crew clear
+
+**Answer: D. They keep the load controlled and the crew clear**
+
+Suspended loads can swing or drop, so correct rigging and clear signals help the operator and crew move the pump safely.
+
+### 223: Pump removal and bypass pumping (easy)
+
+A section of main is blocked and sewage is rising upstream. How can a portable pump help while the line is cleared?
+
+- **A.** It moves sewage around the blockage to a point downstream
+- **B.** It lets the crew skip cleaning the line once the pump is running
+- **C.** It lowers the sewage level by cooling the sewage in the pipe
+- **D.** It breaks up the blockage by pushing water backward through the pipe
+
+**Answer: A. It moves sewage around the blockage to a point downstream**
+
+Bypass pumping carries flow around a blocked or damaged section so it does not back up or spill.
+
+### 224: Pump removal and bypass pumping (medium)
+
+Why are wet wells cleaned and pumps checked for rags and debris during maintenance?
+
+- **A.** Clean wet wells make the pumps run backward at startup
+- **B.** It lets the station avoid using a float switch for control
+- **C.** Buildup can clog pumps and cut output
+- **D.** Debris is needed to keep the pumps lubricated between services
+
+**Answer: C. Buildup can clog pumps and cut output**
+
+Solids and rags collect in wet wells and plug impellers, so cleaning protects pump performance.
+
+### 225: Spills and emergency response (easy)
+
+Why do most collection agencies keep an emergency response plan?
+
+- **A.** It replaces the need for any worker training program
+- **B.** It describes how to design new treatment plant tanks
+- **C.** It lists the price of pipe and fittings for each project
+- **D.** It sets out how the agency responds to a spill or emergency
+
+**Answer: D. It sets out how the agency responds to a spill or emergency**
+
+A response plan prepares staff in advance so action is organized when a spill or other emergency happens.
+
+### 226: Spills and emergency response (easy)
+
+What is the main purpose of containing a sewage spill, for example with sandbags or by blocking a storm drain inlet?
+
+- **A.** To make the sewage dry out more quickly on the pavement
+- **B.** To keep sewage from reaching waterways
+- **C.** To make the clean-up area look much larger
+- **D.** To raise the water level in the sewer upstream
+
+**Answer: B. To keep sewage from reaching waterways**
+
+Containment holds the spill in a small area so it does not enter storm drains or creeks while the cause is dealt with.
+
+### 227: Spills and emergency response (medium)
+
+After a spill is contained, which clean-up idea fits the job?
+
+- **A.** Cover the area with soil and leave it in place
+- **B.** Let the next rain wash the area clean
+- **C.** Recover the sewage, then wash down and disinfect the area
+- **D.** Spray the sewage into the nearest drain inlet
+
+**Answer: C. Recover the sewage, then wash down and disinfect the area**
+
+Recovering the spilled wastewater and cleaning and disinfecting the surface limits public contact and harm to the environment.
+
+### 228: Spills and emergency response (medium)
+
+Spills are often grouped into categories. What general idea separates one category from another?
+
+- **A.** How much reached the environment and where it went
+- **B.** The color of the work truck used to respond to the call
+- **C.** The number of workers on the crew that responded
+- **D.** The brand of the cleaning equipment used on the site
+
+**Answer: A. How much reached the environment and where it went**
+
+Categories reflect the seriousness of a spill, such as whether it reached a waterway, because that affects how it is handled and reported.
+
+### 229: Spills and emergency response (medium)
+
+What is a statewide sewer system management plan intended to do?
+
+- **A.** Replace each agency's own emergency response plan
+- **B.** Set the wage scale for collection system workers and crews
+- **C.** Choose which treatment process a city will use
+- **D.** Help an agency reduce blockages and spills
+
+**Answer: D. Help an agency reduce blockages and spills**
+
+A management plan sets out maintenance, response and other programs so agencies work to prevent and respond to overflows.
+
+### 230: Spills and emergency response (hard)
+
+What do the statewide general discharge requirements for sanitary sewer systems provide?
+
+- **A.** A schedule of work hours for collection system crew members
+- **B.** A shared set of rules for agencies on managing sewers and spills
+- **C.** A design standard for the tanks at a treatment plant
+- **D.** A list of approved vendors for sewer equipment and supplies
+
+**Answer: B. A shared set of rules for agencies on managing sewers and spills**
+
+These requirements apply statewide to collection agencies so spill prevention, response and reporting are handled under shared rules.
+
+### 231: Pneumatic plugs and their hazards (easy)
+
+What is an inflatable pneumatic plug used for in a sewer line?
+
+- **A.** To scrape grease from the inside pipe wall
+- **B.** To measure the slope of a pipe run
+- **C.** To temporarily block flow in a pipe
+- **D.** To mark where a pipe was repaired
+
+**Answer: C. To temporarily block flow in a pipe**
+
+A plug is placed in the pipe and inflated to hold back flow, for example while a repair is made.
+
+### 232: Pneumatic plugs and their hazards (medium)
+
+Which hazard is linked to a pneumatic plug holding back flow in a pipe?
+
+- **A.** The plug can shoot out or fail under pressure
+- **B.** The plug makes the sewage much hotter
+- **C.** The plug can change the diameter of the pipe
+- **D.** The plug can start a gas leak in the street
+
+**Answer: A. The plug can shoot out or fail under pressure**
+
+Backed-up flow pushes on the plug, and an improperly installed or overloaded plug can slip or burst with force.
+
+### 233: Tools for clearing vegetation (easy)
+
+Which tool is suited to cutting brush along an easement so equipment can reach a manhole?
+
+- **A.** Chain saw or brush cutter
+- **B.** Manhole hook and pry bar
+- **C.** Pipe wrench and tamping rod
+- **D.** Torque wrench and hand level
+
+**Answer: A. Chain saw or brush cutter**
+
+Chain saws and brush cutters clear vegetation so crews can reach manholes and lines.
+
+### 234: Tools for clearing vegetation (medium)
+
+Why do workers wear eye, face and leg protection when running a brush cutter?
+
+- **A.** Protective gear makes the cutter run more quietly
+- **B.** The gear is needed to keep work clothes clean
+- **C.** Flying debris and blades can cause serious injuries
+- **D.** The gear keeps the cutter from overheating in use
+
+**Answer: C. Flying debris and blades can cause serious injuries**
+
+Cutting tools throw chips and can kick back, so protective equipment guards against cuts and flying objects.
+
+### 235: Shoring equipment (medium)
+
+What is a trench shield, sometimes called a trench box, designed to do?
+
+- **A.** Pump groundwater out of the trench
+- **B.** Mark the limits of the work zone for traffic
+- **C.** Hold the pipe in place while a joint is made
+- **D.** Protect workers inside it if trench walls collapse
+
+**Answer: D. Protect workers inside it if trench walls collapse**
+
+A shield does not hold the soil back but gives workers a protected space if the walls move.
+
+### 236: Shoring equipment (hard)
+
+How does hydraulic or timber shoring differ from sloping a trench wall?
+
+- **A.** Shoring lays the wall back at a gentle angle
+- **B.** Shoring braces the wall with supports
+- **C.** Shoring is a cover placed over the open trench
+- **D.** Shoring is a way to measure the trench depth
+
+**Answer: B. Shoring braces the wall with supports**
+
+Shoring uses braces, panels and struts to support the wall, while sloping cuts the wall back to a safer angle.
+
+### 237: Vehicles and heavy equipment (easy)
+
+Why do operators check vehicles and heavy equipment before use, such as tires, lights and fluids?
+
+- **A.** To find problems that could cause a breakdown or accident
+- **B.** To record the weather conditions for the day
+- **C.** To decide which route is shortest to the job
+- **D.** To make the vehicle ready for a different driver
+
+**Answer: A. To find problems that could cause a breakdown or accident**
+
+A quick inspection catches defects before they cause harm or downtime on the job.
+
+### 238: Vehicles and heavy equipment (medium)
+
+A worker notices that the brakes on a work truck feel soft. What should the worker do?
+
+- **A.** Drive carefully and mention it to the supervisor next week
+- **B.** Pump the pedal and keep working through the shift
+- **C.** Add brake fluid from the first can found in the shop
+- **D.** Report the problem so the truck can be repaired
+
+**Answer: D. Report the problem so the truck can be repaired**
+
+A truck with faulty brakes is unsafe, and needed repairs should be reported promptly so the truck can be serviced.
+
+### 239: Map discrepancies in the field (easy)
+
+A crew finds that the pipe size in the field does not match what the map shows. What is the correct action?
+
+- **A.** Cover the manhole and keep the difference quiet
+- **B.** Report the difference so the map can be corrected
+- **C.** Ignore it because the map is the final authority
+- **D.** Change the pipe size on the map during the shift
+
+**Answer: B. Report the difference so the map can be corrected**
+
+Maps stay useful when differences found in the field are reported so records can be checked and updated.
+
+### 240: Map discrepancies in the field (medium)
+
+Why does it matter to report a map that shows a manhole in the wrong place?
+
+- **A.** It saves the cost of printing a new map set
+- **B.** Manholes move after they are installed in the ground
+- **C.** Other crews could work from bad information
+- **D.** Wrong locations make the pipe grow in diameter
+
+**Answer: C. Other crews could work from bad information**
+
+Accurate maps help crews find structures, plan work and respond to emergencies, so mistakes should be corrected.
+
+### 241: Underground Service Alert and 811 (easy)
+
+Why do crews contact 811 before digging?
+
+- **A.** To ask for the sewer map to be printed out
+- **B.** To order a trench shield for the repair job
+- **C.** To have buried utility lines located and marked
+- **D.** To get a permit to close the street to traffic
+
+**Answer: C. To have buried utility lines located and marked**
+
+The service notifies utility owners, who mark their buried lines so crews can avoid hitting them.
+
+### 242: Underground Service Alert and 811 (medium)
+
+Marked colors on the ground, such as paint or flags, communicate what at a general level?
+
+- **A.** The date a pipe was first installed
+- **B.** The depth at which crews are allowed to dig the trench
+- **C.** Who owns the surface of the property
+- **D.** The type of buried utility in that location
+
+**Answer: D. The type of buried utility in that location**
+
+Different colors stand for different kinds of utilities, such as gas or electric, so crews know what may be below.
+
+### 243: Traffic control devices (easy)
+
+Which device is placed ahead of a work area to tell drivers what is coming?
+
+- **A.** Advance warning sign
+- **B.** Pipe plug marker tag
+- **C.** Manhole hook and handle
+- **D.** Torque wrench display
+
+**Answer: A. Advance warning sign**
+
+Advance warning signs give drivers time to slow down and prepare before they reach the work area.
+
+### 244: Traffic control devices (medium)
+
+What is a temporary traffic control zone?
+
+- **A.** The space inside a trench shield
+- **B.** The area where signs and devices guide traffic around work
+- **C.** The spot where crews park their trucks overnight
+- **D.** The section of pipe being repaired
+
+**Answer: B. The area where signs and devices guide traffic around work**
+
+The zone is set up with signs, cones and other devices so drivers and workers are protected around the job.
+
+### 245: Trenching methods (easy)
+
+A trench wall is cut back at an angle rather than straight down. Which protective method is this?
+
+- **A.** Bypassing the wall
+- **B.** Plugging the wall
+- **C.** Sloping
+- **D.** Priming the wall
+
+**Answer: C. Sloping**
+
+Sloping lays the wall back at a safe angle, and benching cuts steps into the wall for the same purpose of preventing collapse.
+
+### 246: Trenching methods (hard)
+
+What is the role of whalers in a trench protection system?
+
+- **A.** They measure the slope of the pipe in the trench
+- **B.** They hold the shoring panels or sheeting against the wall
+- **C.** They lift the pipe down into place
+- **D.** They drain water from the trench floor
+
+**Answer: B. They hold the shoring panels or sheeting against the wall**
+
+Whalers run along the trench and brace the sheeting or planks, which spreads the load and holds the wall.
+
+### 247: Bloodborne pathogens and first aid (medium)
+
+A worker gets a cut while handling debris from a sewer. Why is first-aid awareness important?
+
+- **A.** Small cuts heal fastest when they are left uncovered
+- **B.** Sewer debris is safe to touch with a minor wound
+- **C.** Reporting is needed just for deep cuts
+- **D.** Cleaning and reporting a wound lowers the chance of infection
+
+**Answer: D. Cleaning and reporting a wound lowers the chance of infection**
+
+Wastewater can carry germs, so wounds should be cleaned, covered and reported rather than ignored.
+
+### 248: Heat-related illness (easy)
+
+Which of these is a warning sign of heat-related illness?
+
+- **A.** Heavy sweating, dizziness and headache
+- **B.** A sudden urge to work faster than usual
+- **C.** Cold hands and a stuffy nose
+- **D.** Better focus than usual on a hot day
+
+**Answer: A. Heavy sweating, dizziness and headache**
+
+Dizziness, headache, nausea and heavy sweating can signal heat illness, and workers should rest and report it.
+
+### 249: Heat-related illness (medium)
+
+Which action helps prevent heat illness on a hot work day?
+
+- **A.** Drink water regularly and take shaded rest breaks
+- **B.** Skip the breaks to finish the job sooner in the heat
+- **C.** Wear extra layers to stay protected from the sun
+- **D.** Wait until thirsty before drinking anything at all
+
+**Answer: A. Drink water regularly and take shaded rest breaks**
+
+Regular fluids and rest in a cool area help the body cope with heat before symptoms start.
+
+### 250: Cal-OSHA and job-site hazards (medium)
+
+Easements often cross private yards. Which hazard might a crew meet there?
+
+- **A.** Fixed lighting and paved walkways
+- **B.** Dogs, uneven ground and brush
+- **C.** Marked lane closures and flaggers
+- **D.** A maintained road with a curb and gutter
+
+**Answer: B. Dogs, uneven ground and brush**
+
+Private property can hold hazards like animals, slopes and brush that crews should recognize before working.
+
+### 251: Slope, flow, volume and travel time (medium)
 
 A sewer drops 2.4 ft over a run of 600 ft. What is the slope as a percent?
 
-- **A.** 0.0 %
-- **B.** 0.4 %
-- **C.** 40.0 %
-- **D.** 250.0 %
+- **A.** 250.0 %
+- **B.** 0.0 %
+- **C.** 0.4 %
+- **D.** 40.0 %
 
-**Answer: B. 0.4 %**
+**Answer: C. 0.4 %**
 
 Slope percent = fall divided by length times 100. Substitute the stated values: 2.4 ÷ 600 × 100 = 0.4 %. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 212: Slope, flow, volume and travel time (hard)
+### 252: Slope, flow, volume and travel time (hard)
 
 A full 18-in sewer (1.5 ft diameter) has a velocity of 2.0 ft/s. Use area = 0.785 × D² and 1 cfs = 448.8 gpm. What is the flow in gpm?
 
-- **A.** 4 gpm
-- **B.** 396 gpm
-- **C.** 1,346 gpm
+- **A.** 1,346 gpm
+- **B.** 4 gpm
+- **C.** 396 gpm
 - **D.** 1,585 gpm
 
 **Answer: D. 1,585 gpm**
 
 Flow in cfs = area times velocity, then convert to gpm. Substitute the stated values: 0.785 × 1.5 × 1.5 × 2 × 448.8 = 1,585 gpm. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 213: Slope, flow, volume and travel time (medium)
+### 253: Slope, flow, volume and travel time (medium)
 
 A round manhole is 4 ft in diameter and holds 9 ft of water. Use volume = 0.785 × D² × depth and 1 ft³ = 7.48 gal. How many gallons does it hold?
 
 - **A.** 113 gal
-- **B.** 846 gal
-- **C.** 1,077 gal
+- **B.** 1,077 gal
+- **C.** 846 gal
 - **D.** 211 gal
 
-**Answer: B. 846 gal**
+**Answer: C. 846 gal**
 
 Gallons = 0.785 times diameter squared times depth times 7.48. Substitute the stated values: 0.785 × 4 × 4 × 9 × 7.48 = 846 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 214: Slope, flow, volume and travel time (medium)
+### 254: Slope, flow, volume and travel time (medium)
 
 Flow travels through 2,400 ft of sewer at an average velocity of 3.0 ft/s. How many minutes does it take to travel that distance?
 
-- **A.** 13.3 min
-- **B.** 800.0 min
-- **C.** 48,000.0 min
-- **D.** 0.1 min
+- **A.** 0.1 min
+- **B.** 13.3 min
+- **C.** 800.0 min
+- **D.** 48,000.0 min
 
-**Answer: A. 13.3 min**
+**Answer: B. 13.3 min**
 
 Minutes = length divided by velocity, divided by 60. Substitute the stated values: 2400 ÷ 3 ÷ 60 = 13.3 min. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 215: Slope, flow, volume and travel time (medium)
+### 255: Slope, flow, volume and travel time (medium)
 
 A basin averages 288,000 gallons per day. Use 1,440 min/day. What is the average flow in gpm?
 
-- **A.** 4,800 gpm
-- **B.** 415 gpm
-- **C.** 12,000 gpm
-- **D.** 200 gpm
+- **A.** 200 gpm
+- **B.** 12,000 gpm
+- **C.** 4,800 gpm
+- **D.** 415 gpm
 
-**Answer: D. 200 gpm**
+**Answer: A. 200 gpm**
 
 gpm = gallons per day divided by 1,440. Substitute the stated values: 288000 ÷ 1440 = 200 gpm. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 216: Slope, flow, volume and travel time (medium)
+### 256: Slope, flow, volume and travel time (medium)
 
 A 10-in sewer (0.833 ft diameter) is 400 ft long. Use volume = 0.785 × D² × length and 1 ft³ = 7.48 gal. How many gallons does the pipe hold when full?
 
-- **A.** 234,872 gal
-- **B.** 408 gal
-- **C.** 1,630 gal
-- **D.** 218 gal
+- **A.** 408 gal
+- **B.** 218 gal
+- **C.** 234,872 gal
+- **D.** 1,630 gal
 
-**Answer: C. 1,630 gal**
+**Answer: D. 1,630 gal**
 
 Gallons = 0.785 times diameter squared times length times 7.48. Substitute the stated values: 0.785 × 0.833 × 0.833 × 400 × 7.48 = 1,630 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 217: Slope, flow, volume and travel time (hard)
+### 257: Slope, flow, volume and travel time (hard)
 
 A jetting nozzle uses 70 gpm and the crew cleans 1,200 ft of sewer at 20 ft/min. How many gallons of water are used?
 
-- **A.** 343 gal
-- **B.** 84,000 gal
+- **A.** 84,000 gal
+- **B.** 17 gal
 - **C.** 4,200 gal
-- **D.** 17 gal
+- **D.** 343 gal
 
 **Answer: C. 4,200 gal**
 
 Gallons = (length divided by pace) times gpm. Substitute the stated values: 1200 ÷ 20 × 70 = 4,200 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 218: Slope, flow, volume and travel time (hard)
+### 258: Slope, flow, volume and travel time (hard)
 
 A circular wet well is 6 ft in diameter. With the pumps off, the level rises 2.0 ft in 10 minutes. Use volume = 0.785 × D² × H and 1 ft³ = 7.48 gal. What is the inflow in gpm?
 
 - **A.** 423 gpm
-- **B.** 11 gpm
+- **B.** 42 gpm
 - **C.** 6 gpm
-- **D.** 42 gpm
+- **D.** 11 gpm
 
-**Answer: D. 42 gpm**
+**Answer: B. 42 gpm**
 
 Inflow = volume gained divided by time. Substitute the stated values: 0.785 × 6 × 6 × 2 × 7.48 ÷ 10 = 42 gpm. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 219: Equipment calculations (medium)
+### 259: Equipment calculations (medium)
 
 A pump fills a 30 gal container in 45 seconds. What is the pump flow in gpm?
 
-- **A.** 1 gpm
-- **B.** 40 gpm
+- **A.** 40 gpm
+- **B.** 90 gpm
 - **C.** 1,350 gpm
-- **D.** 90 gpm
+- **D.** 1 gpm
 
-**Answer: B. 40 gpm**
+**Answer: A. 40 gpm**
 
 gpm = gallons divided by seconds, times 60. Substitute the stated values: 30 ÷ 45 × 60 = 40 gpm. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 220: Equipment calculations (hard)
+### 260: Equipment calculations (hard)
 
 A 4-in discharge hose (0.333 ft diameter) is 100 ft long. Use volume = 0.785 × D² × length and 1 ft³ = 7.48 gal. How many gallons does the full hose hold?
 
-- **A.** 65 gal
-- **B.** 260 gal
-- **C.** 9 gal
-- **D.** 9,396 gal
+- **A.** 9 gal
+- **B.** 9,396 gal
+- **C.** 260 gal
+- **D.** 65 gal
 
-**Answer: A. 65 gal**
+**Answer: D. 65 gal**
 
 Gallons = 0.785 times diameter squared times length times 7.48. Substitute the stated values: 0.785 × 0.333 × 0.333 × 100 × 7.48 = 65 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 221: Equipment calculations (hard)
+### 261: Equipment calculations (hard)
 
 A jetting truck carries a 1,500 gal water tank. The crew keeps 10 percent of the tank in reserve, and the jetter uses 60 gpm. How many minutes can the jetter run before the tank is down to the reserve?
 
-- **A.** 27.8 min
-- **B.** 22.5 min
-- **C.** 2.5 min
-- **D.** 25.0 min
+- **A.** 22.5 min
+- **B.** 25.0 min
+- **C.** 27.8 min
+- **D.** 2.5 min
 
-**Answer: B. 22.5 min**
+**Answer: A. 22.5 min**
 
 Minutes = tank times 0.9 divided by gpm. Substitute the stated values: 1500 × 0.9 ÷ 60 = 22.5 min. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 222: Equipment calculations (medium)
+### 262: Equipment calculations (medium)
 
 A trash pump moves 900 gpm. Use 1 cfs = 448.8 gpm. What is the flow in cfs?
 
-- **A.** 120.32 cfs
-- **B.** 15.00 cfs
+- **A.** 15.00 cfs
+- **B.** 120.32 cfs
 - **C.** 403,920.00 cfs
 - **D.** 2.01 cfs
 
@@ -2890,85 +3410,85 @@ A trash pump moves 900 gpm. Use 1 cfs = 448.8 gpm. What is the flow in cfs?
 
 cfs = gpm divided by 448.8. Substitute the stated values: 900 ÷ 448.8 = 2.01 cfs. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 223: Time, materials and records arithmetic (medium)
+### 263: Time, materials and records arithmetic (medium)
 
 A 3-person crew works 6.5 hours each on a cleaning job. How many labor-hours (total hours worked by all crew members) should be recorded for the job?
 
-- **A.** 19.5 labor-hours
-- **B.** 195.0 labor-hours
-- **C.** 2.2 labor-hours
-- **D.** 9.5 labor-hours
+- **A.** 195.0 labor-hours
+- **B.** 9.5 labor-hours
+- **C.** 19.5 labor-hours
+- **D.** 2.2 labor-hours
 
-**Answer: A. 19.5 labor-hours**
+**Answer: C. 19.5 labor-hours**
 
 Labor-hours = number of workers times hours worked. Substitute the stated values: 3 × 6.5 = 19.5 labor-hours. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 224: Time, materials and records arithmetic (hard)
+### 264: Time, materials and records arithmetic (hard)
 
 A stockroom has 480 ft of pipe. One job uses 6 sections that are each 20 ft long, and a second job uses 4 sections that are each 20 ft long. How many feet of pipe remain?
 
-- **A.** 200 ft
-- **B.** 360 ft
-- **C.** 280 ft
-- **D.** 400 ft
+- **A.** 400 ft
+- **B.** 280 ft
+- **C.** 360 ft
+- **D.** 200 ft
 
-**Answer: C. 280 ft**
+**Answer: B. 280 ft**
 
 Remaining = starting feet minus the feet used on both jobs. Substitute the stated values: 480-(6 × 20+4 × 20) = 280 ft. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 225: Time, materials and records arithmetic (medium)
+### 265: Time, materials and records arithmetic (medium)
 
 A work truck odometer reads 45230 miles at the start of a shift and 45312 miles at the end. The truck uses 1 gallon of fuel for every 8 miles. How many gallons were used?
 
 - **A.** 0.10 gal
-- **B.** 74.00 gal
-- **C.** 656.00 gal
-- **D.** 10.25 gal
+- **B.** 656.00 gal
+- **C.** 10.25 gal
+- **D.** 74.00 gal
 
-**Answer: D. 10.25 gal**
+**Answer: C. 10.25 gal**
 
 Gallons = (end reading minus start reading) divided by miles per gallon. Substitute the stated values: (45312-45230) ÷ 8 = 10.25 gal. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 226: Unit conversions (medium)
+### 266: Unit conversions (medium)
 
 A pump delivers 450 gpm. Use 1 MGD = 694.4 gpm. What is the flow in MGD?
 
-- **A.** 312,480.000 MGD
-- **B.** 0.648 MGD
-- **C.** 1.543 MGD
-- **D.** 290.890 MGD
+- **A.** 0.648 MGD
+- **B.** 1.543 MGD
+- **C.** 290.890 MGD
+- **D.** 312,480.000 MGD
 
-**Answer: B. 0.648 MGD**
+**Answer: A. 0.648 MGD**
 
 MGD = gpm divided by 694.4. Substitute the stated values: 450 ÷ 694.4 = 0.648 MGD. Round only the final result to 3 decimal place(s). The result uses the assumptions stated in the question.
 
-### 227: Unit conversions (medium)
+### 267: Unit conversions (medium)
 
 A line carries 1.8 cfs. Use 1 cfs = 448.8 gpm. What is the flow in gpm?
 
-- **A.** 249 gpm
-- **B.** 1,250 gpm
-- **C.** 808 gpm
-- **D.** 8,078 gpm
+- **A.** 8,078 gpm
+- **B.** 808 gpm
+- **C.** 1,250 gpm
+- **D.** 249 gpm
 
-**Answer: C. 808 gpm**
+**Answer: B. 808 gpm**
 
 gpm = cfs times 448.8. Substitute the stated values: 1.8 × 448.8 = 808 gpm. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 228: Unit conversions (medium)
+### 268: Unit conversions (medium)
 
 A sewer run measures 238 ft 6 in. Use 12 in = 1 ft. What is the length in feet?
 
-- **A.** 238.5 ft
-- **B.** 244.0 ft
-- **C.** 2,862.0 ft
-- **D.** 1,428.0 ft
+- **A.** 1,428.0 ft
+- **B.** 2,862.0 ft
+- **C.** 244.0 ft
+- **D.** 238.5 ft
 
-**Answer: A. 238.5 ft**
+**Answer: D. 238.5 ft**
 
 Feet = whole feet plus inches divided by 12. Substitute the stated values: 238+6 ÷ 12 = 238.5 ft. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 229: Unit conversions (hard)
+### 269: Unit conversions (hard)
 
 A basin averages 0.36 MGD. Use 1 MGD = 1,000,000 gal per day and 1,440 min per day. What is the average flow in gpm?
 
@@ -2981,275 +3501,340 @@ A basin averages 0.36 MGD. Use 1 MGD = 1,000,000 gal per day and 1,440 min per d
 
 gpm = MGD times 1,000,000 divided by 1,440. Substitute the stated values: 0.36 × 1000000 ÷ 1440 = 250 gpm. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 230: Unit conversions (hard)
+### 270: Unit conversions (hard)
 
 A line carries a steady 2.4 cfs for 3 hours. Use 3,600 sec per hour and 1 ft³ = 7.48 gal. How many gallons pass in that time?
 
 - **A.** 25,920 gal
-- **B.** 193,882 gal
-- **C.** 3,465 gal
+- **B.** 3,465 gal
+- **C.** 193,882 gal
 - **D.** 3,232 gal
 
-**Answer: B. 193,882 gal**
+**Answer: C. 193,882 gal**
 
 Gallons = cfs times seconds times 7.48. Substitute the stated values: 2.4 × 3 × 3600 × 7.48 = 193,882 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 231: Area and volume (medium)
+### 271: Area and volume (medium)
 
 A round manhole has a diameter of 4 ft. Use area = 0.785 × D². What is the floor area in square feet?
 
-- **A.** 50.24 ft²
-- **B.** 3.14 ft²
-- **C.** 12.56 ft²
+- **A.** 12.56 ft²
+- **B.** 50.24 ft²
+- **C.** 3.14 ft²
 - **D.** 6.28 ft²
 
-**Answer: C. 12.56 ft²**
+**Answer: A. 12.56 ft²**
 
 Area = 0.785 times diameter squared. Substitute the stated values: 0.785 × 4 × 4 = 12.56 ft². Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 232: Area and volume (medium)
+### 272: Area and volume (medium)
 
 A rectangular vault is 8 ft long and 6 ft wide and holds 3.5 ft of water. Use 1 ft³ = 7.48 gal. How many gallons are in the vault?
 
-- **A.** 1,257 gal
-- **B.** 131 gal
-- **C.** 22 gal
-- **D.** 168 gal
+- **A.** 22 gal
+- **B.** 1,257 gal
+- **C.** 168 gal
+- **D.** 131 gal
 
-**Answer: A. 1,257 gal**
+**Answer: B. 1,257 gal**
 
 Gallons = length times width times depth times 7.48. Substitute the stated values: 8 × 6 × 3.5 × 7.48 = 1,257 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 233: Area and volume (medium)
+### 273: Area and volume (medium)
 
 A 12-in sewer (1.0 ft diameter) is 300 ft long. Use volume = 0.785 × D² × length and 1 ft³ = 7.48 gal. How many gallons does the pipe hold when full?
 
-- **A.** 1,762 gal
+- **A.** 7,046 gal
 - **B.** 440 gal
-- **C.** 7,046 gal
-- **D.** 236 gal
+- **C.** 236 gal
+- **D.** 1,762 gal
 
-**Answer: A. 1,762 gal**
+**Answer: D. 1,762 gal**
 
 Gallons = 0.785 times diameter squared times length times 7.48. Substitute the stated values: 0.785 × 1 × 1 × 300 × 7.48 = 1,762 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 234: Area and volume (hard)
+### 274: Area and volume (hard)
 
 A 4-ft diameter manhole has 7.5 ft of water standing in it. Use volume = 0.785 × D² × depth and 1 ft³ = 7.48 gal. How many gallons must be pumped out?
 
-- **A.** 94 gal
-- **B.** 176 gal
-- **C.** 705 gal
-- **D.** 2,818 gal
+- **A.** 176 gal
+- **B.** 705 gal
+- **C.** 2,818 gal
+- **D.** 94 gal
 
-**Answer: C. 705 gal**
+**Answer: B. 705 gal**
 
 Gallons = 0.785 times diameter squared times depth times 7.48. Substitute the stated values: 0.785 × 4 × 4 × 7.5 × 7.48 = 705 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 235: Area and volume (hard)
+### 275: Area and volume (hard)
 
 A 15-in sewer (1.25 ft diameter) is 400 ft long. Use volume = 0.785 × D² × length and 1 ft³ = 7.48 gal. How many gallons does the full pipe hold?
 
-- **A.** 2,936 gal
-- **B.** 491 gal
-- **C.** 14,680 gal
-- **D.** 3,670 gal
+- **A.** 3,670 gal
+- **B.** 14,680 gal
+- **C.** 2,936 gal
+- **D.** 491 gal
 
-**Answer: D. 3,670 gal**
+**Answer: A. 3,670 gal**
 
 Gallons = 0.785 times diameter squared times length times 7.48. Substitute the stated values: 0.785 × 1.25 × 1.25 × 400 × 7.48 = 3,670 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 236: Flow and velocity (medium)
+### 276: Flow and velocity (medium)
 
 A full 12-in pipe has a flow area of 0.785 ft² and a velocity of 2.5 ft/s. Use Q = A × V. What is the flow in cfs?
 
-- **A.** 0.31 cfs
-- **B.** 1.96 cfs
-- **C.** 3.29 cfs
-- **D.** 4.91 cfs
+- **A.** 3.29 cfs
+- **B.** 4.91 cfs
+- **C.** 1.96 cfs
+- **D.** 0.31 cfs
 
-**Answer: B. 1.96 cfs**
+**Answer: C. 1.96 cfs**
 
 Flow in cfs = area times velocity. Substitute the stated values: 0.785 × 2.5 = 1.96 cfs. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 237: Flow and velocity (medium)
+### 277: Flow and velocity (medium)
 
 Flow moves through a 300 ft pipe run at an average velocity of 2.5 ft/s. How many minutes does it take to travel the run?
 
-- **A.** 2.0 min
-- **B.** 0.5 min
-- **C.** 120.0 min
+- **A.** 120.0 min
+- **B.** 2.0 min
+- **C.** 0.5 min
 - **D.** 750.0 min
 
-**Answer: A. 2.0 min**
+**Answer: B. 2.0 min**
 
 Minutes = length divided by velocity, divided by 60. Substitute the stated values: 300 ÷ 2.5 ÷ 60 = 2.0 min. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 238: Flow and velocity (hard)
+### 278: Flow and velocity (hard)
 
 A 15-in pipe has a flow area of 1.23 ft² and a velocity of 3.0 ft/s. Use Q = A × V and 1 cfs = 448.8 gpm. What is the flow in gpm?
 
-- **A.** 4 gpm
-- **B.** 28 gpm
-- **C.** 2,562 gpm
-- **D.** 1,656 gpm
+- **A.** 1,656 gpm
+- **B.** 2,562 gpm
+- **C.** 4 gpm
+- **D.** 28 gpm
 
-**Answer: D. 1,656 gpm**
+**Answer: A. 1,656 gpm**
 
 Flow in cfs = area times velocity, then convert to gpm. Substitute the stated values: 1.23 × 3 × 448.8 = 1,656 gpm. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 239: Flow and velocity (hard)
+### 279: Flow and velocity (hard)
 
 A flow of 2.0 cfs moves through an 18-in pipe with a flow area of 1.77 ft². Use V = Q ÷ A. What is the velocity in ft/s?
 
-- **A.** 1.33 ft/s
-- **B.** 1.13 ft/s
+- **A.** 0.89 ft/s
+- **B.** 1.33 ft/s
 - **C.** 3.54 ft/s
-- **D.** 0.89 ft/s
+- **D.** 1.13 ft/s
 
-**Answer: B. 1.13 ft/s**
+**Answer: D. 1.13 ft/s**
 
 Velocity = flow divided by area. Substitute the stated values: 2 ÷ 1.77 = 1.13 ft/s. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 240: Flow and velocity (hard)
+### 280: Flow and velocity (hard)
 
 Flow passes through a 220 ft reach at 2.0 ft/s and then a 180 ft reach at 1.5 ft/s. How many minutes does it take to travel both reaches?
 
-- **A.** 3.33 min
+- **A.** 3.81 min
 - **B.** 230.00 min
 - **C.** 3.83 min
-- **D.** 3.81 min
+- **D.** 3.33 min
 
 **Answer: C. 3.83 min**
 
 Minutes = (time in reach one plus time in reach two) divided by 60. Substitute the stated values: (220 ÷ 2+180 ÷ 1.5) ÷ 60 = 3.83 min. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 241: Slope and grade (medium)
+### 281: Slope and grade (medium)
 
 A sewer drops 1.6 ft over a 200 ft run. What is the slope as a percent?
 
-- **A.** 80.0 %
+- **A.** 125.0 %
 - **B.** 0.4 %
-- **C.** 0.8 %
-- **D.** 125.0 %
+- **C.** 80.0 %
+- **D.** 0.8 %
 
-**Answer: C. 0.8 %**
+**Answer: D. 0.8 %**
 
 Slope percent = fall divided by length times 100. Substitute the stated values: 1.6 ÷ 200 × 100 = 0.8 %. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 242: Slope and grade (medium)
+### 282: Slope and grade (medium)
 
 The upstream invert is 104.20 ft and the downstream invert is 103.40 ft. The manholes are 160 ft apart. What is the slope in ft/ft?
 
-- **A.** 0.050 ft/ft
+- **A.** 0.005 ft/ft
 - **B.** 0.500 ft/ft
 - **C.** 200.000 ft/ft
-- **D.** 0.005 ft/ft
+- **D.** 0.050 ft/ft
 
-**Answer: D. 0.005 ft/ft**
+**Answer: A. 0.005 ft/ft**
 
 Slope = (upstream invert minus downstream invert) divided by length. Substitute the stated values: (104.2-103.4) ÷ 160 = 0.005 ft/ft. Round only the final result to 3 decimal place(s). The result uses the assumptions stated in the question.
 
-### 243: Slope and grade (hard)
+### 283: Slope and grade (hard)
 
 The invert out of one manhole is 98.40 ft. The next manhole is 220 ft away and the pipe is laid at a 0.5 percent slope. What is the invert elevation at the downstream manhole?
 
-- **A.** 97.30 ft
-- **B.** 99.50 ft
-- **C.** -11.60 ft
+- **A.** 99.50 ft
+- **B.** -11.60 ft
+- **C.** 97.30 ft
 - **D.** 98.29 ft
 
-**Answer: A. 97.30 ft**
+**Answer: C. 97.30 ft**
 
 Downstream invert = upstream invert minus (length times percent divided by 100). Substitute the stated values: 98.4-220 × 0.5 ÷ 100 = 97.30 ft. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 244: Slope and grade (medium)
+### 284: Slope and grade (medium)
 
 The upstream invert is 101.75 ft and the downstream invert is 100.95 ft, with 250 ft between manholes. What is the slope as a percent?
 
-- **A.** 0.64 %
+- **A.** 312.50 %
 - **B.** 0.32 %
-- **C.** 312.50 %
+- **C.** 0.64 %
 - **D.** 3.20 %
 
 **Answer: B. 0.32 %**
 
 Slope percent = fall divided by length times 100. Substitute the stated values: (101.75-100.95) ÷ 250 × 100 = 0.32 %. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 245: Slope and grade (medium)
+### 285: Slope and grade (medium)
 
 A new 300 ft sewer must be laid at a minimum slope of 0.4 percent. What is the minimum fall in feet over the run?
 
-- **A.** 12.0 ft
-- **B.** 120.0 ft
-- **C.** 1.2 ft
+- **A.** 1.2 ft
+- **B.** 12.0 ft
+- **C.** 120.0 ft
 - **D.** 750.0 ft
 
-**Answer: C. 1.2 ft**
+**Answer: A. 1.2 ft**
 
 Fall = length times percent divided by 100. Substitute the stated values: 300 × 0.4 ÷ 100 = 1.2 ft. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 246: Percentages, averages and rates (medium)
+### 286: Percentages, averages and rates (medium)
 
 A crew plans to clean 2,500 ft of sewer and has finished 1,850 ft. What percent of the planned footage has been cleaned?
 
-- **A.** 26 %
-- **B.** 74 %
-- **C.** 650 %
-- **D.** 135 %
+- **A.** 650 %
+- **B.** 135 %
+- **C.** 74 %
+- **D.** 26 %
 
-**Answer: B. 74 %**
+**Answer: C. 74 %**
 
 Percent = footage cleaned divided by footage planned times 100. Substitute the stated values: 1850 ÷ 2500 × 100 = 74 %. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 247: Percentages, averages and rates (medium)
+### 287: Percentages, averages and rates (medium)
 
 Four velocity readings are 4.2, 3.8, 4.6 and 4.0 ft/s. What is the average reading?
 
-- **A.** 16.60 ft/s
-- **B.** 4.60 ft/s
-- **C.** 5.53 ft/s
+- **A.** 5.53 ft/s
+- **B.** 16.60 ft/s
+- **C.** 4.60 ft/s
 - **D.** 4.15 ft/s
 
 **Answer: D. 4.15 ft/s**
 
 Average = sum of readings divided by number of readings. Substitute the stated values: (4.2+3.8+4.6+4.0) ÷ 4 = 4.15 ft/s. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 248: Percentages, averages and rates (medium)
+### 288: Percentages, averages and rates (medium)
 
 A crew cleans 1,260 ft of sewer in 4.5 hours. How many feet are cleaned per hour?
 
-- **A.** 280 ft/hr
-- **B.** 5,670 ft/hr
-- **C.** 1,256 ft/hr
-- **D.** 840 ft/hr
+- **A.** 1,256 ft/hr
+- **B.** 280 ft/hr
+- **C.** 840 ft/hr
+- **D.** 5,670 ft/hr
 
-**Answer: A. 280 ft/hr**
+**Answer: B. 280 ft/hr**
 
 Feet per hour = footage divided by hours. Substitute the stated values: 1260 ÷ 4.5 = 280 ft/hr. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 249: Percentages, averages and rates (hard)
+### 289: Percentages, averages and rates (hard)
 
 A service area has 18,000 people and an average flow of 1.35 MGD. Use 1 MGD = 1,000,000 gal per day. What is the flow in gallons per person per day?
 
 - **A.** 75 gal/person/day
-- **B.** 1,350,000 gal/person/day
-- **C.** 7,500 gal/person/day
-- **D.** 13,333 gal/person/day
+- **B.** 13,333 gal/person/day
+- **C.** 1,350,000 gal/person/day
+- **D.** 7,500 gal/person/day
 
 **Answer: A. 75 gal/person/day**
 
 Gallons per person per day = flow in gallons per day divided by population. Substitute the stated values: 1.35 × 1000000 ÷ 18000 = 75 gal/person/day. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 250: Percentages, averages and rates (hard)
+### 290: Percentages, averages and rates (hard)
 
 Dry-weather flow in a basin is 0.8 MGD and the peak wet-weather flow is 2.0 MGD. By what percent does the peak exceed the dry-weather flow?
 
-- **A.** 60 %
+- **A.** 40 %
 - **B.** 150 %
-- **C.** 250 %
-- **D.** 40 %
+- **C.** 60 %
+- **D.** 250 %
 
 **Answer: B. 150 %**
 
 Percent increase = (peak minus dry) divided by dry times 100. Substitute the stated values: (2.0-0.8) ÷ 0.8 × 100 = 150 %. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
+
+### 291: Spill calculations (medium)
+
+A broken main spills at a steady 30 gpm for 2.5 hours. How many gallons spilled?
+
+- **A.** 75 gal
+- **B.** 9,000 gal
+- **C.** 450 gal
+- **D.** 4,500 gal
+
+**Answer: D. 4,500 gal**
+
+Gallons = flow in gpm times minutes (2.5 hr x 60). Substitute the stated values: 30 × 2.5 × 60 = 4,500 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
+
+### 292: Spill calculations (hard)
+
+A manhole is 4 ft in diameter and the sewage rose 1.5 ft above the normal level before overflowing and stopping. Use 0.785 for the area factor and 7.48 gal per cubic ft. How many gallons were held in that 1.5 ft depth?
+
+- **A.** 19 gal
+- **B.** 2,250 gal
+- **C.** 141 gal
+- **D.** 563 gal
+
+**Answer: C. 141 gal**
+
+Gallons = 0.785 x D squared x depth x 7.48. Substitute the stated values: 0.785 × 4 × 4 × 1.5 × 7.48 = 141 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
+
+### 293: Spill calculations (hard)
+
+Sewage covers a flat paved area of 20 ft by 15 ft to an average depth of 0.1 ft. Use 7.48 gal per cubic ft. About how many gallons spilled?
+
+- **A.** 2,244 gal
+- **B.** 22,440 gal
+- **C.** 30 gal
+- **D.** 224 gal
+
+**Answer: D. 224 gal**
+
+Gallons = length x width x depth x 7.48. Substitute the stated values: 20 × 15 × 0.1 × 7.48 = 224 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
+
+### 294: Distance and elevation (medium)
+
+A sewer starts at station 4+50 and ends at station 7+25. Stations are in feet, so 4+50 means 450 ft. How long is the sewer in feet?
+
+- **A.** 275 ft
+- **B.** 1,175 ft
+- **C.** 175 ft
+- **D.** 375 ft
+
+**Answer: A. 275 ft**
+
+Length = ending station minus starting station. Substitute the stated values: (725-450) = 275 ft. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
+
+### 295: Distance and elevation (hard)
+
+A level reads 4.62 ft on a rod at point A and 7.18 ft on a rod at point B. Point A has an elevation of 100.00 ft. A higher rod reading means lower ground. What is the elevation of point B in feet?
+
+- **A.** 102.56 ft
+- **B.** 107.18 ft
+- **C.** 97.44 ft
+- **D.** 111.80 ft
+
+**Answer: C. 97.44 ft**
+
+Elevation B = A elevation plus rod A minus rod B. Substitute the stated values: 100+4.62-7.18 = 97.44 ft. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
