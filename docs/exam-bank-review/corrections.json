@@ -1,15 +1,15 @@
 {
  "export": "docs/exam-bank-export/2026-11-16 (commit d118897a)",
- "chunksDone": 80,
+ "chunksDone": 85,
  "chunksTotal": 174,
- "questionsReviewed": 11217,
+ "questionsReviewed": 11935,
  "questionsTotal": 24350,
- "problems": 636,
+ "problems": 736,
  "byVerdict": {
-  "UNCLEAR": 181,
-  "WRONG": 313,
-  "JURISDICTION": 92,
-  "UNITS": 43,
+  "UNCLEAR": 210,
+  "WRONG": 370,
+  "JURISDICTION": 102,
+  "UNITS": 47,
   "OFF-TOPIC": 7
  },
  "byBank": {
@@ -28,7 +28,9 @@
   "class3-water-dist": 12,
   "class4-wastewater": 56,
   "class4-wastewater-coll": 71,
-  "class4-water": 48
+  "class4-water": 48,
+  "class4-water-dist": 78,
+  "oit": 22
  },
  "chunks": [
   "chunk-001",
@@ -110,7 +112,12 @@
   "chunk-077",
   "chunk-078",
   "chunk-079",
-  "chunk-080"
+  "chunk-080",
+  "chunk-081",
+  "chunk-082",
+  "chunk-083",
+  "chunk-084",
+  "chunk-085"
  ],
  "corrections": [
   {
@@ -23038,6 +23045,3604 @@
       "c": "5,160 ÷ 24,000 = 0.215 kWh/m³"
      }
     ]
+   }
+  },
+  {
+   "id": 155878,
+   "bankKey": "class4-water-dist",
+   "questionNum": 28,
+   "verdict": "WRONG",
+   "note": "Explanation says 0.001 mg/L, contradicting the marked key (0.010 mg/L) and the steps. Ontario's lead MAC is 0.010 mg/L, and the standard sits in O. Reg. 169/03 (Ontario Drinking Water Quality Standards), not 170/03. Explanation and citation corrected.",
+   "original": {
+    "question": "Under O. Reg. 170/03, what is the maximum permissible lead concentration in a drinking water sample collected from a distribution system?",
+    "options": [
+     "0.001 mg/L",
+     "0.005 mg/L",
+     "0.010 mg/L",
+     "0.015 mg/L"
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 170/03 sets the maximum acceptable concentration for lead in drinking water at 0.001 mg/L (1 µg/L), reflecting the health risks associated with lead exposure."
+   },
+   "fix": {
+    "question": "Under the Ontario Drinking Water Quality Standards (O. Reg. 169/03), what is the maximum acceptable concentration for lead in a drinking water sample?",
+    "options": [
+     "0.001 mg/L",
+     "0.005 mg/L",
+     "0.010 mg/L",
+     "0.015 mg/L"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Ontario Drinking Water Quality Standards (O. Reg. 169/03) set the maximum acceptable concentration for lead at 0.010 mg/L (10 ug/L). Lead sampling and corrective-action requirements for distribution systems are in O. Reg. 170/03.",
+    "steps": [
+     {
+      "l": "Identify the standard",
+      "c": "Lead is a health-related chemical parameter with a maximum acceptable concentration in the Ontario Drinking Water Quality Standards (O. Reg. 169/03)."
+     },
+     {
+      "l": "State the limit",
+      "c": "The maximum acceptable concentration for lead in drinking water is 0.010 mg/L (10 ug/L)."
+     },
+     {
+      "l": "Check the distractors",
+      "c": "0.001 and 0.005 mg/L are below the standard, and 0.015 mg/L exceeds it."
+     },
+     {
+      "l": "Select answer",
+      "c": "0.010 mg/L (index 2)"
+     }
+    ]
+   }
+  },
+  {
+   "id": 155885,
+   "bankKey": "class4-water-dist",
+   "questionNum": 35,
+   "verdict": "WRONG",
+   "note": "O. Reg. 170/03 Schedule 10 requires at least eight distribution samples per month for large municipal residential systems (more with population served); 4 per month is not the minimum for a Class 4 (large) system. Source: O. Reg. 170/03 Sched. 10 via inspection reports found in search.",
+   "original": {
+    "question": "Under O. Reg. 170/03, what is the required frequency for collecting bacteriological samples from a Class 4 water distribution system?",
+    "options": [
+     "At least once per month.",
+     "At least once per week.",
+     "Based on population served, with a minimum of 4 samples per month.",
+     "Only when there is a suspected contamination event."
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 170/03 specifies that the number of bacteriological samples collected from the distribution system is based on the population served, with a minimum of 4 samples per month for smaller systems and increasing with population size."
+   },
+   "fix": {
+    "question": "Under O. Reg. 170/03, what is the required frequency for collecting bacteriological samples from a large municipal residential distribution system?",
+    "options": [
+     "At least once per month.",
+     "At least once per week.",
+     "Based on population served, with a minimum of 8 samples per month.",
+     "Only when there is a suspected contamination event."
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 170/03 (Schedule 10) sets the number of distribution microbiological samples by population served, with a minimum of eight samples per month for large municipal residential systems, and the number increases with population.",
+    "steps": null
+   }
+  },
+  {
+   "id": 155905,
+   "bankKey": "class4-water-dist",
+   "questionNum": 55,
+   "verdict": "JURISDICTION",
+   "note": "DWQMS is required under Part III.1 of the Safe Drinking Water Act, 2002 and O. Reg. 188/07, not O. Reg. 170/03. Citation corrected.",
+   "original": {
+    "question": "Under O. Reg. 170/03, what is the primary responsibility of a Class 4 operator regarding the overall management of a large water distribution system's operational plan?",
+    "options": [
+     "Ensuring that all operational activities comply with the Drinking Water Quality Management Standard (DWQMS).",
+     "Directly performing all routine maintenance and repair tasks on critical infrastructure components.",
+     "Developing and implementing the annual budget for capital expenditures and infrastructure upgrades.",
+     "Reporting all adverse water quality incidents directly to the local public health unit within 24 hours."
+    ],
+    "correctIndex": 0,
+    "explanation": "Class 4 operators, due to their senior role, are responsible for the overall management and oversight of the system's operational plan, ensuring compliance with regulatory frameworks like DWQMS, which is mandated by O. Reg. 170/03 for municipal drinking water systems."
+   },
+   "fix": {
+    "question": "Under the Safe Drinking Water Act, 2002 and O. Reg. 188/07, what is the primary responsibility of a Class 4 operator regarding the overall management of a large water distribution system's operational plan?",
+    "options": [
+     "Ensuring that all operational activities comply with the Drinking Water Quality Management Standard (DWQMS).",
+     "Directly performing all routine maintenance and repair tasks on critical infrastructure components.",
+     "Developing and implementing the annual budget for capital expenditures and infrastructure upgrades.",
+     "Reporting all adverse water quality incidents directly to the local public health unit within 24 hours."
+    ],
+    "correctIndex": 0,
+    "explanation": "Municipal drinking water systems must operate under a quality management system based on the DWQMS, required by Part III.1 of the Safe Drinking Water Act, 2002 and O. Reg. 188/07. Operators with overall responsibility ensure operations conform to the operational plan.",
+    "steps": null
+   }
+  },
+  {
+   "id": 155928,
+   "bankKey": "class4-water-dist",
+   "questionNum": 78,
+   "verdict": "UNITS",
+   "note": "Explanation uses psi and cites AWWA +/-5 psi in an Ontario bank; convert to kPa (5 psi is about 35 kPa).",
+   "original": {
+    "question": "What is 'model calibration' for water distribution systems?",
+    "options": [
+     "Calibrating the computer screen",
+     "Adjusting model parameters to match field measurements: pipe roughness (C-factor), demand distribution, valve/pump settings, and tank operations — until model predictions agree with measured pressures and flows within acceptable tolerances (typically ±5% pressure, ±10% flow)",
+     "Models dont need calibration",
+     "Only one measurement point is needed"
+    ],
+    "correctIndex": 1,
+    "explanation": "Calibration process: data collection (pressure measurements at multiple locations, flow measurements at key points, tank levels, pump status — during specific demand conditions), parameter adjustment (pipe roughness — primary calibration parameter; demand allocation — spatial distribution; valve status — open/closed/throttled; boundary conditions — tank levels, source pressures), acceptance criteria (AWWA: ±5 psi or ±5% at 95% of test points for pressure; ±10% for flow), and validation (test calibrated model against independent dataset not used in calibration). Frequency: recalibrate after major system changes or every 3-5 years."
+   },
+   "fix": {
+    "question": "What is 'model calibration' for water distribution systems?",
+    "options": [
+     "Calibrating the computer screen",
+     "Adjusting model parameters to match field measurements: pipe roughness (C-factor), demand distribution, valve/pump settings, and tank operations — until model predictions agree with measured pressures and flows within acceptable tolerances (typically ±5% pressure, ±10% flow)",
+     "Models dont need calibration",
+     "Only one measurement point is needed"
+    ],
+    "correctIndex": 1,
+    "explanation": "Calibration process: data collection (pressure measurements at multiple locations, flow measurements at key points, tank levels, pump status — during specific demand conditions), parameter adjustment (pipe roughness — primary calibration parameter; demand allocation — spatial distribution; valve status — open/closed/throttled; boundary conditions — tank levels, source pressures), acceptance criteria (typical guidance: within about ±35 kPa or ±5% at 95% of test points for pressure; ±10% for flow), and validation (test calibrated model against independent dataset not used in calibration). Frequency: recalibrate after major system changes or every 3-5 years.",
+    "steps": null
+   }
+  },
+  {
+   "id": 155936,
+   "bankKey": "class4-water-dist",
+   "questionNum": 86,
+   "verdict": "UNITS",
+   "note": "US units (psi) in an Ontario question and explanation. Ontario design guidance uses 140 kPa minimum residual during fire flow.",
+   "original": {
+    "question": "What is 'fire flow analysis' methodology for Class 4 systems?",
+    "options": [
+     "Analyzing the flow of fire",
+     "Determining available fire flow at each node: running hydraulic model with fire demand added to peak day demand — available fire flow is maximum additional demand that maintains 20 psi (140 kPa) residual pressure at the fire node and 20 psi throughout the system; identifies deficient areas needing improvement",
+     "Fire flow is always adequate in large systems",
+     "Only the fire department determines fire flow"
+    ],
+    "correctIndex": 1,
+    "explanation": "Fire flow analysis: setup (peak day demand + fire flow at test node — conservative scenario), criteria (maintain 20 psi residual at fire node, maintain 20 psi minimum throughout system during fire, and required fire flow per Insurance Services Office/local fire code — based on building construction, size, occupancy), procedure (incrementally increase demand at node until pressure drops to 20 psi — that flow is available fire flow; compare to required), output (map of available vs required — identifies deficient areas), and improvements (looping dead ends, upsizing mains, adding supply, or reducing required through building sprinklers)."
+   },
+   "fix": {
+    "question": "What is 'fire flow analysis' methodology for Class 4 systems?",
+    "options": [
+     "Analyzing the flow of fire",
+     "Determining available fire flow at each node: running hydraulic model with fire demand added to maximum day demand — available fire flow is the maximum additional demand that maintains 140 kPa residual pressure at the fire node and 140 kPa throughout the system; identifies deficient areas needing improvement",
+     "Fire flow is always adequate in large systems",
+     "Only the fire department determines fire flow"
+    ],
+    "correctIndex": 1,
+    "explanation": "Fire flow analysis: setup (maximum day demand + fire flow at test node — conservative scenario), criteria (maintain 140 kPa residual at the fire node and 140 kPa minimum throughout the system during fire, and required fire flow per Fire Underwriters Survey/local fire code — based on building construction, size, occupancy), procedure (incrementally increase demand at node until pressure drops to 140 kPa — that flow is available fire flow; compare to required), output (map of available vs required — identifies deficient areas), and improvements (looping dead ends, upsizing mains, adding supply, or reducing required flow through building sprinklers).",
+    "steps": null
+   }
+  },
+  {
+   "id": 155948,
+   "bankKey": "class4-water-dist",
+   "questionNum": 98,
+   "verdict": "UNCLEAR",
+   "note": "Explanation says a 60-70 m elevation range keeps pressure at 275-700 kPa, but 700-275 = 425 kPa is only about 43 m of head; the numbers are inconsistent.",
+   "original": {
+    "question": "What is 'pressure zone management' in large distribution systems?",
+    "options": [
+     "Managing the pressure of work zones",
+     "Dividing the distribution system into distinct hydraulic zones based on elevation: each zone has defined pressure range (typically 275-700 kPa), separated by PRVs or closed boundaries, with independent supply (tank/pump station per zone) — prevents: excessive pressure in low areas and inadequate pressure in high areas",
+     "One pressure zone is adequate for any system",
+     "Pressure zones are only for mountainous areas"
+    ],
+    "correctIndex": 1,
+    "explanation": "Pressure zone management: purpose (elevation variation in service area means single HGL cannot serve all — too high pressure at low elevations, too low at high), design (each zone: 60-70m elevation range — keeps pressure 275-700 kPa; boundary at elevation where pressure would exceed/fall below limits), supply (each zone needs: storage — tank at appropriate elevation, supply — pump station from lower zone or gravity from higher source), interconnection (PRVs — allow flow from higher to lower zone for emergencies; normally closed valves — emergency interconnection), and operations (monitor each zone independently — pressure, flow, storage level)."
+   },
+   "fix": {
+    "question": "What is 'pressure zone management' in large distribution systems?",
+    "options": [
+     "Managing the pressure of work zones",
+     "Dividing the distribution system into distinct hydraulic zones based on elevation: each zone has defined pressure range (typically 275-700 kPa), separated by PRVs or closed boundaries, with independent supply (tank/pump station per zone) — prevents: excessive pressure in low areas and inadequate pressure in high areas",
+     "One pressure zone is adequate for any system",
+     "Pressure zones are only for mountainous areas"
+    ],
+    "correctIndex": 1,
+    "explanation": "Pressure zone management: purpose (elevation variation in service area means a single HGL cannot serve all — too high pressure at low elevations, too low at high), design (each zone spans roughly 40 m of elevation, since 275-700 kPa is about 28-71 m of head; boundary set where pressure would exceed/fall below limits), supply (each zone needs: storage — tank at appropriate elevation, supply — pump station from lower zone or gravity from higher source), interconnection (PRVs — allow flow from higher to lower zone for emergencies; normally closed valves — emergency interconnection), and operations (monitor each zone independently — pressure, flow, storage level).",
+    "steps": null
+   }
+  },
+  {
+   "id": 155959,
+   "bankKey": "class4-water-dist",
+   "questionNum": 109,
+   "verdict": "WRONG",
+   "note": "O. Reg. 170/03 has no Schedule 16 requirement to flush dead-end mains once a year; the regulation does not prescribe flushing frequency. Flushing frequency is set by the owner's operational plan/water quality monitoring. Question rewritten.",
+   "original": {
+    "question": "Under O. Reg. 170/03, Schedule 16, what is the specific requirement for a Class 4 water distribution system regarding the frequency of flushing dead-end water mains?",
+    "options": [
+     "Dead-end water mains must be flushed at least once every three months to maintain water quality.",
+     "Dead-end water mains must be flushed at least twice a year to prevent sediment accumulation.",
+     "Dead-end water mains must be flushed at least once a year to remove stagnant water and sediment.",
+     "Dead-end water mains must be flushed as needed, based on water quality monitoring results."
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 170/03, Schedule 16, requires that dead-end water mains be flushed at least once a year to remove stagnant water and accumulated sediment, which can degrade water quality. This is a specific regulatory requirement."
+   },
+   "fix": {
+    "question": "In an Ontario distribution system, what should determine how often dead-end water mains are flushed?",
+    "options": [
+     "A fixed once-a-year flush prescribed by O. Reg. 170/03.",
+     "A fixed quarterly flush prescribed by O. Reg. 170/03.",
+     "A fixed twice-a-year flush prescribed by O. Reg. 170/03.",
+     "Water quality monitoring results (chlorine residual, turbidity, water age, complaints) as set out in the system's operational plan."
+    ],
+    "correctIndex": 3,
+    "explanation": "O. Reg. 170/03 does not prescribe a flushing frequency for dead-end mains. Frequency is set by the owner/operating authority based on monitoring results such as chlorine residual, turbidity, water age and complaint history.",
+    "steps": null
+   }
+  },
+  {
+   "id": 155966,
+   "bankKey": "class4-water-dist",
+   "questionNum": 116,
+   "verdict": "UNCLEAR",
+   "note": "Key (eight per month plus population-based) is acceptable, but the schedule is mis-cited (microbiological sampling is Schedule 10, not 17) and the explanation invents a 'one per 1,000 over 10,000' formula that I could not verify.",
+   "original": {
+    "question": "Under O. Reg. 170/03, Schedule 17, what is the specific requirement for a Class 4 water distribution system regarding the frequency of collecting bacteriological samples?",
+    "options": [
+     "At least one sample per week for every 1,000 people served by the system.",
+     "A minimum of four samples per month, regardless of the population served.",
+     "At least one sample per month for every 5,000 people served by the system.",
+     "A minimum of eight samples per month, plus additional samples based on population."
+    ],
+    "correctIndex": 3,
+    "explanation": "O. Reg. 170/03, Schedule 17, specifies that a minimum of eight bacteriological samples must be collected per month, plus an additional sample for every 1,000 people served by the system, or part thereof, over 10,000. This is a specific regulatory requirement for larger systems."
+   },
+   "fix": {
+    "question": "Under O. Reg. 170/03, Schedule 10, what is the requirement for a large municipal residential distribution system regarding the frequency of collecting bacteriological samples?",
+    "options": [
+     "At least one sample per week for every 1,000 people served by the system.",
+     "A minimum of four samples per month, regardless of the population served.",
+     "At least one sample per month for every 5,000 people served by the system.",
+     "A minimum of eight samples per month, plus additional samples based on population."
+    ],
+    "correctIndex": 3,
+    "explanation": "O. Reg. 170/03, Schedule 10, requires a minimum of eight distribution samples per month for large municipal residential systems, with the number increasing with the population served.",
+    "steps": null
+   }
+  },
+  {
+   "id": 155971,
+   "bankKey": "class4-water-dist",
+   "questionNum": 121,
+   "verdict": "UNCLEAR",
+   "note": "Correct option says the valve 'prevents backflow from tank when system pressure exceeds tank HGL'; flow leaves the tank when system pressure is below tank HGL, so the statement is reversed.",
+   "original": {
+    "question": "What is 'altitude valve' operation for distribution system tanks?",
+    "options": [
+     "A valve that only works at high altitude",
+     "A valve that prevents tank overflow by closing when tank reaches maximum level — allows flow into tank (filling) but closes at high level; also prevents backflow from tank when system pressure exceeds tank HGL; maintains tank within operating range without operator intervention",
+     "Altitude valves are obsolete",
+     "Tanks dont need level control"
+    ],
+    "correctIndex": 1,
+    "explanation": "Altitude valve: function (controls flow to/from tank based on tank level — closes at high level to prevent overflow, opens to allow filling when level drops below setpoint), types (single-acting — closes on high level, tank cannot discharge back through valve; double-acting — allows both fill and discharge through same valve based on system pressure vs tank level), application (floating tanks — tank level floats with system HGL; altitude valve prevents overfilling while allowing tank to supply during high demand), and alternatives (SCADA-controlled valve — more flexible, can implement complex operating strategies; pump-filled tanks — pump controlled by level)."
+   },
+   "fix": {
+    "question": "What is 'altitude valve' operation for distribution system tanks?",
+    "options": [
+     "A valve that only works at high altitude",
+     "A valve that prevents tank overflow by closing when tank reaches maximum level — allows flow into tank (filling) but closes at high level; a single-acting valve also prevents the tank discharging back into the system when system pressure falls below tank HGL; maintains tank within operating range without operator intervention",
+     "Altitude valves are obsolete",
+     "Tanks dont need level control"
+    ],
+    "correctIndex": 1,
+    "explanation": "Altitude valve: function (controls flow to/from tank based on tank level — closes at high level to prevent overflow, opens to allow filling when level drops below setpoint), types (single-acting — closes on high level, tank cannot discharge back through valve; double-acting — allows both fill and discharge through same valve based on system pressure vs tank level), application (floating tanks — tank level floats with system HGL; altitude valve prevents overfilling while allowing tank to supply during high demand), and alternatives (SCADA-controlled valve — more flexible, can implement complex operating strategies; pump-filled tanks — pump controlled by level).",
+    "steps": null
+   }
+  },
+  {
+   "id": 155981,
+   "bankKey": "class4-water-dist",
+   "questionNum": 131,
+   "verdict": "UNCLEAR",
+   "note": "Schedule 10 of O. Reg. 170/03 covers microbiological sampling, not the distribution chlorine residual minimum; the schedule number could not be verified. The 0.05 mg/L value is correct. Remove the schedule citation.",
+   "original": {
+    "question": "Under O. Reg. 170/03, Schedule 10, what is the specific requirement for a Class 4 water distribution system regarding the minimum free chlorine residual at the furthest point in the distribution network?",
+    "options": [
+     "A minimum free chlorine residual of 0.05 mg/L at all points in the distribution system.",
+     "A minimum free chlorine residual of 0.20 mg/L at all points in the distribution system.",
+     "A minimum free chlorine residual of 0.50 mg/L at the entry point to the distribution system.",
+     "A minimum free chlorine residual of 0.10 mg/L at all points in the distribution system."
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 170/03, Schedule 10, specifies that a free chlorine residual of at least 0.05 mg/L must be maintained at all points in the distribution system. This ensures continued disinfection throughout the network. It's important to note this is a minimum, and many systems aim for higher."
+   },
+   "fix": {
+    "question": "Under O. Reg. 170/03, what is the requirement for a Class 4 water distribution system regarding the minimum free chlorine residual at the furthest point in the distribution network?",
+    "options": [
+     "A minimum free chlorine residual of 0.05 mg/L at all points in the distribution system.",
+     "A minimum free chlorine residual of 0.20 mg/L at all points in the distribution system.",
+     "A minimum free chlorine residual of 0.50 mg/L at the entry point to the distribution system.",
+     "A minimum free chlorine residual of 0.10 mg/L at all points in the distribution system."
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 170/03 requires that a free chlorine residual of at least 0.05 mg/L be maintained at all points in the distribution system (0.25 mg/L combined chlorine if chloraminated). This is a minimum, and many systems aim for higher.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156007,
+   "bankKey": "class4-water-dist",
+   "questionNum": 157,
+   "verdict": "WRONG",
+   "note": "Approvals for establishing or altering municipal drinking water systems are in Part V of the Safe Drinking Water Act, 2002 (Municipal Drinking Water Systems: s.31 requirement for permit/licence/approval), not Part II. Checked Ontario e-Laws consolidation structure.",
+   "original": {
+    "question": "A Class 4 Water Distribution operator is reviewing a proposed major modification to a municipal water distribution system. Which of the following is the primary regulatory document that must be consulted regarding the approval process for such modifications in Ontario?",
+    "options": [
+     "Ontario Regulation 170/03 (Drinking Water Systems) under the Safe Drinking Water Act, 2002",
+     "Ontario Regulation 169/03 (Drinking Water Quality Standards) under the Safe Drinking Water Act, 2002",
+     "Part II of the Safe Drinking Water Act, 2002, specifically regarding approval of drinking water systems",
+     "The Environmental Protection Act, R.S.O. 1990, c. E.19, for environmental assessment requirements"
+    ],
+    "correctIndex": 2,
+    "explanation": "Part II of the Safe Drinking Water Act, 2002, outlines the requirements for obtaining approvals for new or altered drinking water systems, which includes major modifications to existing distribution systems. O. Reg. 170/03 deals with operational requirements, and O. Reg. 169/03 with water quality standards."
+   },
+   "fix": {
+    "question": "A Class 4 Water Distribution operator is reviewing a proposed major modification to a municipal water distribution system. Which of the following is the primary regulatory document that must be consulted regarding the approval process for such modifications in Ontario?",
+    "options": [
+     "Ontario Regulation 170/03 (Drinking Water Systems) under the Safe Drinking Water Act, 2002",
+     "Ontario Regulation 169/03 (Drinking Water Quality Standards) under the Safe Drinking Water Act, 2002",
+     "Part V (Municipal Drinking Water Systems) of the Safe Drinking Water Act, 2002, specifically regarding approvals, permits and licences for municipal systems",
+     "The Environmental Protection Act, R.S.O. 1990, c. E.19, for environmental assessment requirements"
+    ],
+    "correctIndex": 2,
+    "explanation": "Part V of the Safe Drinking Water Act, 2002 sets out the requirements for approvals, drinking water works permits and licences for establishing or altering municipal drinking water systems, which includes major modifications to existing distribution systems. O. Reg. 170/03 deals with operational requirements, and O. Reg. 169/03 with water quality standards.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156026,
+   "bankKey": "class4-water-dist",
+   "questionNum": 176,
+   "verdict": "UNCLEAR",
+   "note": "Question asks about reducing energy consumption, but keyed answer (scheduling by tariff) reduces cost, not kWh consumed; VFDs and higher-efficiency pumps (also listed) reduce consumption. Two defensible answers as worded. Reworded to ask about cost.",
+   "original": {
+    "question": "When conducting a comprehensive energy audit of a large pumping station, a Class 4 operator identifies significant opportunities for efficiency improvements. What is the most impactful long-term strategy for reducing energy consumption in pumping operations?",
+    "options": [
+     "Implementing variable frequency drives (VFDs) on all major pump motors",
+     "Regularly cleaning pump impellers and casings to reduce friction losses",
+     "Optimizing pump scheduling based on real-time demand and electricity tariffs",
+     "Replacing older, less efficient pumps with new, higher-efficiency models"
+    ],
+    "correctIndex": 2,
+    "explanation": "Optimizing pump scheduling based on real-time demand and electricity tariffs (time-of-use rates) is often the most impactful long-term strategy. It allows the utility to run pumps when energy is cheapest and most efficient for the system's hydraulic conditions, minimizing overall energy costs."
+   },
+   "fix": {
+    "question": "When conducting a comprehensive energy audit of a large pumping station, a Class 4 operator identifies significant opportunities for efficiency improvements. What is the most impactful long-term strategy for reducing electricity COST in pumping operations?",
+    "options": [
+     "Implementing variable frequency drives (VFDs) on all major pump motors",
+     "Regularly cleaning pump impellers and casings to reduce friction losses",
+     "Optimizing pump scheduling based on real-time demand and electricity tariffs",
+     "Replacing older, less efficient pumps with new, higher-efficiency models"
+    ],
+    "correctIndex": 2,
+    "explanation": "Optimizing pump scheduling based on real-time demand and electricity tariffs (time-of-use rates) is often the most impactful strategy for reducing electricity cost. It lets the utility run pumps when energy is cheapest, using storage to shift pumping, and also reduces demand charges.",
+    "steps": [
+     {
+      "l": "Define the goal",
+      "c": "Reduce long-term electricity cost at a large pumping station."
+     },
+     {
+      "l": "Recall the cost relationship",
+      "c": "Pumping energy cost = kW x hours of operation x rate per kWh, so both run time and the tariff period affect the result."
+     },
+     {
+      "l": "Compare the strategies",
+      "c": "VFDs, impeller cleaning, and higher-efficiency pumps improve the kW term only. Scheduling against real-time demand and time-of-use tariffs reduces both run hours at peak and the rate paid, using available storage to shift pumping."
+     },
+     {
+      "l": "Select the answer",
+      "c": "Optimizing pump scheduling based on real-time demand and electricity tariffs is the keyed most impactful strategy (Option C)."
+     }
+    ]
+   }
+  },
+  {
+   "id": 156032,
+   "bankKey": "class4-water-dist",
+   "questionNum": 182,
+   "verdict": "UNCLEAR",
+   "note": "For an Ontario system, the most significant and widespread natural hazard to buried mains is frost penetration and freeze-thaw (winter main-break peaks), not seismic activity (low seismic risk in most of Ontario). Keyed answer (seismic) is not defensible for the jurisdiction.",
+   "original": {
+    "question": "A Class 4 operator is conducting a review of the distribution system's vulnerability to natural hazards. Which natural hazard poses the most significant and widespread risk to underground water main infrastructure?",
+    "options": [
+     "High winds causing damage to above-ground appurtenances",
+     "Extreme cold causing frost penetration and pipe freezing/bursting",
+     "Heavy rainfall leading to localized flooding and soil erosion",
+     "Seismic activity causing ground movement and pipe displacement"
+    ],
+    "correctIndex": 3,
+    "explanation": "Seismic activity (earthquakes) poses the most significant and widespread risk to underground water main infrastructure due to ground movement, liquefaction, and fault rupture, which can lead to extensive pipe damage and system outages over large areas."
+   },
+   "fix": {
+    "question": "A Class 4 operator in Ontario is conducting a review of the distribution system's vulnerability to natural hazards. Which natural hazard poses the most significant and widespread recurring risk to underground water main infrastructure?",
+    "options": [
+     "High winds causing damage to above-ground appurtenances",
+     "Extreme cold causing frost penetration, freeze-thaw ground movement and pipe freezing/breaking",
+     "Heavy rainfall leading to localized flooding and soil erosion",
+     "Seismic activity causing ground movement and pipe displacement"
+    ],
+    "correctIndex": 1,
+    "explanation": "In Ontario, deep frost penetration and freeze-thaw cycles cause ground movement, pipe stress and service freezing, and produce the highest and most widespread number of main breaks each winter. Seismic risk is low in most of the province, and wind and rain mainly affect above-ground or localized assets.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156036,
+   "bankKey": "class4-water-dist",
+   "questionNum": 186,
+   "verdict": "UNCLEAR",
+   "note": "O. Reg. 170/03 has no 'Part VI (Operating Authority Responsibilities)'; and 'Schedule 2' is not 'Water Quality Standards' (standards are in O. Reg. 169/03). The structure cited is invented. Adverse test result reporting is in Schedule 16 (confirmed via Ministry form 4444 reference to Schedule 16 of O. Reg. 170/03). Rewritten to a verifiable question.",
+   "original": {
+    "question": "A Class 4 operator is mentoring a junior operator on the importance of regulatory compliance. Which section of O. Reg. 170/03 specifically outlines the responsibilities of an operating authority for maintaining a drinking water system?",
+    "options": [
+     "Schedule 1 (Prescribed Amount of Water)",
+     "Part VI (Operating Authority Responsibilities)",
+     "Schedule 2 (Water Quality Standards)",
+     "Part X (Adverse Test Results and Other Problems)"
+    ],
+    "correctIndex": 1,
+    "explanation": "Part VI of O. Reg. 170/03 (Operating Authority Responsibilities) specifically outlines the duties and responsibilities of the operating authority for the management, operation, and maintenance of a drinking water system."
+   },
+   "fix": {
+    "question": "A Class 4 operator is mentoring a junior operator on regulatory compliance. Which part of O. Reg. 170/03 sets out the requirements for reporting adverse test results and other problems?",
+    "options": [
+     "Schedule 1 (Microbiological Sampling and Testing)",
+     "Schedule 2 (Chemical Sampling and Testing)",
+     "Schedule 16 (Reporting of Adverse Test Results and Other Problems)",
+     "Schedule 10 (Large Municipal Residential Systems)"
+    ],
+    "correctIndex": 2,
+    "explanation": "Schedule 16 of O. Reg. 170/03 sets out immediate reporting and notification requirements for adverse test results and other problems, and the Notice of Issue Resolution that follows. Sampling and testing requirements are in other schedules, and water quality standards are in O. Reg. 169/03.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156055,
+   "bankKey": "class4-water-dist",
+   "questionNum": 205,
+   "verdict": "JURISDICTION",
+   "note": "Explanation cites America's Water Infrastructure Act (US federal) as the regulatory requirement; not applicable in Ontario. Key is fine; explanation corrected.",
+   "original": {
+    "question": "What is 'vulnerability assessment' for water distribution systems?",
+    "options": [
+     "Assessing how vulnerable workers feel",
+     "Systematic identification of system weaknesses that could be exploited or cause failure: physical security (facilities, access points), cyber security (SCADA, networks), contamination vulnerability (access to system, detection capability), and natural hazard exposure (seismic, flood, wildfire) — resulting in prioritized mitigation recommendations",
+     "Water systems have no vulnerabilities",
+     "Only physical security matters"
+    ],
+    "correctIndex": 1,
+    "explanation": "Vulnerability assessment: methodology (asset characterization — identify critical assets; threat assessment — identify credible threats; consequence analysis — what happens if asset compromised; vulnerability analysis — how easily could threat succeed; risk prioritization — highest consequence × highest vulnerability = priority), areas (physical — fence, locks, cameras, lighting at all facilities; cyber — network security, access controls, monitoring; contamination — system access points, detection capability, response time; natural — seismic zone, flood plain, wildfire interface), and output (prioritized list of vulnerabilities with recommended countermeasures, cost estimates, and implementation timeline). Regulatory: America's Water Infrastructure Act requires assessment every 5 years for systems serving >3,300."
+   },
+   "fix": {
+    "question": "What is 'vulnerability assessment' for water distribution systems?",
+    "options": [
+     "Assessing how vulnerable workers feel",
+     "Systematic identification of system weaknesses that could be exploited or cause failure: physical security (facilities, access points), cyber security (SCADA, networks), contamination vulnerability (access to system, detection capability), and natural hazard exposure (seismic, flood, wildfire) — resulting in prioritized mitigation recommendations",
+     "Water systems have no vulnerabilities",
+     "Only physical security matters"
+    ],
+    "correctIndex": 1,
+    "explanation": "Vulnerability assessment: methodology (asset characterization — identify critical assets; threat assessment — identify credible threats; consequence analysis — what happens if asset compromised; vulnerability analysis — how easily could threat succeed; risk prioritization — highest consequence × highest vulnerability = priority), areas (physical — fence, locks, cameras, lighting at all facilities; cyber — network security, access controls, monitoring; contamination — system access points, detection capability, response time; natural — flood plain, ice storm, wildfire interface), and output (prioritized list of vulnerabilities with recommended countermeasures, cost estimates, and implementation timeline). In Ontario, risk assessment and emergency management are also part of the Drinking Water Quality Management Standard (DWQMS) operational plan.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156066,
+   "bankKey": "class4-water-dist",
+   "questionNum": 216,
+   "verdict": "WRONG",
+   "note": "Keyed option states continuous feed at 1-2 mg/L for 24 h and slug at 300 mg/L for 3 h. AWWA C651 / Ontario watermain disinfection procedure: continuous feed 25 mg/L (min 10 mg/L after 24 h contact); slug 100 mg/L for 3 h. The option contradicts its own explanation (25-50 mg/L).",
+   "original": {
+    "question": "What is 'main disinfection' procedure for new or repaired water mains?",
+    "options": [
+     "Disinfecting the main office",
+     "Chlorinating new or repaired pipe before placing in service: methods include continuous feed (1-2 mg/L flowing through for 24 hours), slug method (300 mg/L for 3 hours), and tablet method (calcium hypochlorite tablets placed in pipe during construction) — followed by bacteriological testing to confirm safe before connection",
+     "New pipes dont need disinfection",
+     "Only boiling water disinfects pipes"
+    ],
+    "correctIndex": 1,
+    "explanation": "Main disinfection (AWWA C651): methods (continuous feed — 25-50 mg/L applied, maintain >10 mg/L throughout pipe for 24 hours; slug — 300 mg/L concentration, 3-hour contact minimum; tablet — Ca(OCl)₂ tablets in pipe during construction, filled slowly to dissolve), procedure (isolate section, flush/swab to remove debris, fill with chlorinated water, maintain contact time, test chlorine residual at far end — must maintain minimum throughout contact period), testing (after contact: flush until chlorine <1 mg/L, collect bacteriological samples — total coliform and HPC; two consecutive satisfactory samples 24 hours apart required), and connection (only after satisfactory bacteriological results — connect to live system). Failed test: re-chlorinate and retest."
+   },
+   "fix": {
+    "question": "What is 'main disinfection' procedure for new or repaired water mains?",
+    "options": [
+     "Disinfecting the main office",
+     "Chlorinating new or repaired pipe before placing in service: methods include continuous feed (about 25 mg/L, with at least 10 mg/L remaining after 24 hours contact), slug method (100 mg/L for 3 hours), and tablet method (calcium hypochlorite tablets placed in pipe during construction) — followed by bacteriological testing to confirm safe before connection",
+     "New pipes dont need disinfection",
+     "Only boiling water disinfects pipes"
+    ],
+    "correctIndex": 1,
+    "explanation": "Main disinfection (AWWA C651 / Ontario watermain disinfection procedure): methods (continuous feed — 25 mg/L applied, maintain at least 10 mg/L throughout pipe after 24 hours; slug — 100 mg/L concentration, 3-hour contact minimum; tablet — Ca(OCl)₂ tablets in pipe during construction, filled slowly to dissolve), procedure (isolate section, flush/swab to remove debris, fill with chlorinated water, maintain contact time, test chlorine residual at far end), testing (after contact: flush until chlorine returns to normal system residual, collect bacteriological samples — total coliform and E. coli/HPC; two consecutive satisfactory sample sets 24 hours apart), and connection (only after satisfactory bacteriological results). Failed test: re-chlorinate and retest.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156070,
+   "bankKey": "class4-water-dist",
+   "questionNum": 220,
+   "verdict": "WRONG",
+   "note": "Explanation gives allowable leakage as N×D×√P/148,000 L/h with N=joints, D mm, P kPa. AWWA C600 formula L = S·D·√P/148,000 is gal/h with S = length of pipe (ft), D in inches, P in psi; metric equivalent is L/h = S·D·√P/794,797 (S in m, D in mm, P in kPa), based on pipe length not joint count. Key itself is fine.",
+   "original": {
+    "question": "What is 'pressure testing' requirements for new water mains?",
+    "options": [
+     "Testing how much pressure workers can handle",
+     "Verifying new pipe installation integrity before placing in service: pressurize to 1.5× working pressure (or test pressure per specification) for minimum 2 hours — measure leakage (must be below allowable rate based on pipe material, diameter, and length); identifies: joint leaks, fitting failures, and pipe defects before burial",
+     "Pressure testing is optional",
+     "Only visual inspection is needed"
+    ],
+    "correctIndex": 1,
+    "explanation": "Pressure testing: procedure (fill main slowly — remove air at high points; pressurize to test pressure — typically 1.5× maximum working pressure or 1000 kPa minimum; hold for 2 hours minimum; measure pressure drop and makeup water volume), acceptance (allowable leakage varies by pipe material and joint type — AWWA C600: DI with push-on joints, allowable = N×D×√P / 148,000 L/hr where N=joints, D=diameter mm, P=pressure kPa; PVC typically zero allowable leakage), failure response (locate leak — often at joints or fittings; repair; retest), and documentation (test pressure, duration, makeup water volume, ambient temperature, and pass/fail determination). Timing: after backfill (tests joints under load) but before final restoration."
+   },
+   "fix": {
+    "question": "What is 'pressure testing' requirements for new water mains?",
+    "options": [
+     "Testing how much pressure workers can handle",
+     "Verifying new pipe installation integrity before placing in service: pressurize to 1.5× working pressure (or test pressure per specification) for minimum 2 hours — measure leakage (must be below allowable rate based on pipe material, diameter, and length); identifies: joint leaks, fitting failures, and pipe defects before burial",
+     "Pressure testing is optional",
+     "Only visual inspection is needed"
+    ],
+    "correctIndex": 1,
+    "explanation": "Pressure testing: procedure (fill main slowly — remove air at high points; pressurize to test pressure — typically 1.5× maximum working pressure or 1000 kPa minimum; hold for 2 hours minimum; measure pressure drop and makeup water volume), acceptance (allowable leakage varies by pipe material and joint type — AWWA C600 for ductile iron: L = S × D × √P / 794,797 where L = allowable leakage in L/h, S = length of pipe tested in m, D = nominal diameter in mm, P = average test pressure in kPa; PVC typically zero allowable leakage), failure response (locate leak — often at joints or fittings; repair; retest), and documentation (test pressure, duration, makeup water volume, ambient temperature, and pass/fail determination). Timing: after backfill (tests joints under load) but before final restoration.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156072,
+   "bankKey": "class4-water-dist",
+   "questionNum": 222,
+   "verdict": "UNITS",
+   "note": "US units (20 psi residual, gpm colour-code ranges) in an Ontario question. Metric: 140 kPa residual; NFPA 291 colour classes approx. blue >=5700 L/min, green 3800-5699, orange 1900-3799, red <1900 L/min.",
+   "original": {
+    "question": "What is 'hydrant maintenance program' for Class 4 distribution systems?",
+    "options": [
+     "Painting hydrants pretty colors",
+     "Systematic inspection and maintenance of fire hydrants: annual inspection (operation, drainage, condition), flow testing (capacity measurement — available flow at 20 psi residual), winterization (drain, antifreeze where required), and records (condition, flow data, GPS location) — ensures fire protection readiness and provides system capacity data",
+     "Hydrants maintain themselves",
+     "Only the fire department maintains hydrants"
+    ],
+    "correctIndex": 1,
+    "explanation": "Hydrant maintenance: annual inspection (operate — open/close, verify smooth operation; drain — verify barrel drains after closing; condition — caps, chains, nozzles, paint, visibility; accessibility — clear of obstructions, snow markers), flow testing (pitot gauge on flowing hydrant — measure flow at 20 psi residual; data used for: fire flow mapping, model calibration, and insurance rating), winterization (verify drain operates — standing water freezes and damages barrel; pump out if drain blocked; inspect drain gravel), painting (color coding per NFPA — indicates flow capacity: blue >1500 gpm, green 1000-1499, orange 500-999, red <500), and records (GPS location, make/model, condition, flow test results, maintenance history)."
+   },
+   "fix": {
+    "question": "What is 'hydrant maintenance program' for Class 4 distribution systems?",
+    "options": [
+     "Painting hydrants pretty colors",
+     "Systematic inspection and maintenance of fire hydrants: annual inspection (operation, drainage, condition), flow testing (capacity measurement — available flow at 140 kPa residual), winterization (drain, antifreeze where required), and records (condition, flow data, GPS location) — ensures fire protection readiness and provides system capacity data",
+     "Hydrants maintain themselves",
+     "Only the fire department maintains hydrants"
+    ],
+    "correctIndex": 1,
+    "explanation": "Hydrant maintenance: annual inspection (operate — open/close, verify smooth operation; drain — verify barrel drains after closing; condition — caps, chains, nozzles, paint, visibility; accessibility — clear of obstructions, snow markers), flow testing (pitot gauge on flowing hydrant — measure flow at 140 kPa residual; data used for: fire flow mapping, model calibration, and insurance rating), winterization (verify drain operates — standing water freezes and damages barrel; pump out if drain blocked; inspect drain gravel), painting (bonnet colour coding per NFPA 291 — indicates flow capacity: blue >=5700 L/min, green 3800-5699 L/min, orange 1900-3799 L/min, red <1900 L/min), and records (GPS location, make/model, condition, flow test results, maintenance history).",
+    "steps": null
+   }
+  },
+  {
+   "id": 156073,
+   "bankKey": "class4-water-dist",
+   "questionNum": 223,
+   "verdict": "JURISDICTION",
+   "note": "Explanation uses US-style values: residual target >0.2 mg/L free or >1.0 combined and monthly coliform sampling. Ontario O. Reg. 170/03 minimums in distribution are 0.05 mg/L free chlorine or 0.25 mg/L combined, with distribution microbiological sampling at least weekly scaled to population (Schedule 10). Key option is fine.",
+   "original": {
+    "question": "What is 'water quality monitoring' strategy for Class 4 distribution systems?",
+    "options": [
+     "Monitoring the quality of monitoring",
+     "Comprehensive sampling program to verify water quality throughout distribution: regulatory compliance (bacteriological, DBPs, lead/copper), operational (chlorine residual, turbidity, pH), and investigative (customer complaints, main breaks, new connections) — with: fixed sampling locations, frequency based on population served, and online continuous monitoring at key points",
+     "Only treatment plant monitoring matters",
+     "Test at one point and assume system is uniform"
+    ],
+    "correctIndex": 1,
+    "explanation": "Monitoring strategy: regulatory (total coliform/E. coli — monthly, number of samples based on population; DBPs — quarterly at worst-case locations; lead/copper — per schedule at high-risk taps), operational (chlorine residual — daily at multiple points, target >0.2 mg/L free or >1.0 mg/L combined; turbidity — at entry points and distribution; pH — corrosion control verification), continuous online (chlorine analyzers at key locations — tank outlets, system extremities; turbidity — detect main breaks/contamination; pressure — detect anomalies), and investigative (customer complaints — taste, odor, color; post-repair — bacteriological clearance; new connections — verify quality). Data management: LIMS, trending, and regulatory reporting."
+   },
+   "fix": {
+    "question": "What is 'water quality monitoring' strategy for Class 4 distribution systems?",
+    "options": [
+     "Monitoring the quality of monitoring",
+     "Comprehensive sampling program to verify water quality throughout distribution: regulatory compliance (bacteriological, DBPs, lead/copper), operational (chlorine residual, turbidity, pH), and investigative (customer complaints, main breaks, new connections) — with: fixed sampling locations, frequency based on population served, and online continuous monitoring at key points",
+     "Only treatment plant monitoring matters",
+     "Test at one point and assume system is uniform"
+    ],
+    "correctIndex": 1,
+    "explanation": "Monitoring strategy: regulatory (total coliform/E. coli and HPC — at least weekly with the number of samples based on population served, per O. Reg. 170/03; THMs/HAAs — quarterly at locations reflecting highest DBP levels; lead/copper — per the regulation's sampling schedule), operational (free chlorine residual measured at multiple points in distribution — O. Reg. 170/03 minimum 0.05 mg/L free or 0.25 mg/L combined, with utility targets typically higher; turbidity at entry points; pH for corrosion control verification), continuous online (chlorine analyzers at key locations — tank outlets, system extremities; turbidity — detect main breaks/contamination; pressure — detect anomalies), and investigative (customer complaints — taste, odor, color; post-repair — bacteriological clearance; new connections — verify quality). Data management: LIMS, trending, and regulatory reporting.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156076,
+   "bankKey": "class4-water-dist",
+   "questionNum": 226,
+   "verdict": "UNCLEAR",
+   "note": "O. Reg. 170/03 does not mandate a cross-connection control program; backflow prevention in Ontario comes from the Ontario Building Code / CSA B64 standards and municipal by-laws. 'As mandated by O. Reg. 170/03' is an unsupported claim (key itself is correct).",
+   "original": {
+    "question": "What is the primary objective of a comprehensive cross-connection control program in a Class 4 water distribution system, according to O. Reg. 170/03?",
+    "options": [
+     "To ensure adequate water pressure is maintained throughout the system.",
+     "To prevent the backflow of non-potable water into the potable water supply.",
+     "To accurately meter water consumption for all industrial customers.",
+     "To reduce the overall volume of non-revenue water (NRW)."
+    ],
+    "correctIndex": 1,
+    "explanation": "The primary objective of a cross-connection control program is to prevent the backflow of non-potable water or contaminants from private systems into the public potable water supply, thereby protecting public health, as mandated by O. Reg. 170/03 and other regulations."
+   },
+   "fix": {
+    "question": "What is the primary objective of a comprehensive cross-connection control program in a Class 4 water distribution system?",
+    "options": [
+     "To ensure adequate water pressure is maintained throughout the system.",
+     "To prevent the backflow of non-potable water into the potable water supply.",
+     "To accurately meter water consumption for all industrial customers.",
+     "To reduce the overall volume of non-revenue water (NRW)."
+    ],
+    "correctIndex": 1,
+    "explanation": "The primary objective of a cross-connection control program is to prevent the backflow of non-potable water or contaminants from private systems into the public potable water supply, thereby protecting public health. In Ontario it is implemented through municipal by-laws, the Ontario Building Code and CSA B64 backflow prevention standards.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156079,
+   "bankKey": "class4-water-dist",
+   "questionNum": 229,
+   "verdict": "JURISDICTION",
+   "note": "Explanation cites the US EPA Lead and Copper Rule Revisions as the regulatory driver. In Ontario, lead sampling, corrosion control and related requirements are in O. Reg. 170/03 (e.g. Schedule 15.1, Part on lead), not the LCR. Key is fine.",
+   "original": {
+    "question": "What is 'lead service line replacement' program management?",
+    "options": [
+     "Replacing lead pencils",
+     "Systematic program to remove lead pipes connecting water mains to buildings: inventory (identify all lead services — records, predictive modeling, verification), prioritization (highest risk first — schools, daycares, high-use), replacement (full replacement — main to building; partial replacement avoided — can temporarily increase lead levels), and communication (public notification, sampling, and interim measures)",
+     "Lead pipes are safe if water is treated",
+     "Only partial replacement is needed"
+    ],
+    "correctIndex": 1,
+    "explanation": "LSL replacement program: inventory (locate all lead services — historical records, material verification at curb stop/meter, predictive modeling using: age, neighborhood, construction records; GIS mapping), prioritization (schools/daycares — highest priority; high blood lead areas; customer requests; planned capital work — coordinate with main replacement), replacement (full — utility portion + private portion; avoid partial — disturbs pipe, temporarily increases lead release; customer communication — explain process, timeline, interim measures), interim measures (while awaiting replacement — optimized corrosion control, flushing instructions, pitcher filters, water quality monitoring), and regulatory (Lead and Copper Rule Revisions — mandatory inventory, replacement rate requirements, and trigger level compliance)."
+   },
+   "fix": {
+    "question": "What is 'lead service line replacement' program management?",
+    "options": [
+     "Replacing lead pencils",
+     "Systematic program to remove lead pipes connecting water mains to buildings: inventory (identify all lead services — records, predictive modeling, verification), prioritization (highest risk first — schools, daycares, high-use), replacement (full replacement — main to building; partial replacement avoided — can temporarily increase lead levels), and communication (public notification, sampling, and interim measures)",
+     "Lead pipes are safe if water is treated",
+     "Only partial replacement is needed"
+    ],
+    "correctIndex": 1,
+    "explanation": "LSL replacement program: inventory (locate all lead services — historical records, material verification at curb stop/meter, predictive modeling using: age, neighborhood, construction records; GIS mapping), prioritization (schools/daycares — highest priority; high blood lead areas; customer requests; planned capital work — coordinate with main replacement), replacement (full — utility portion + private portion; avoid partial — disturbs pipe, temporarily increases lead release; customer communication — explain process, timeline, interim measures), interim measures (while awaiting replacement — optimized corrosion control, flushing instructions, pitcher filters certified to NSF/ANSI 53, water quality monitoring), and regulatory (Ontario: O. Reg. 170/03 lead sampling and corrosion control requirements, and the Ontario lead standard of 0.005 mg/L in O. Reg. 169/03).",
+    "steps": null
+   }
+  },
+  {
+   "id": 156100,
+   "bankKey": "class4-water-dist",
+   "questionNum": 250,
+   "verdict": "JURISDICTION",
+   "note": "Explanation cites the US Lead and Copper Rule and US-specific details (brass >8% lead). In Ontario, tap sampling for lead is under O. Reg. 170/03, and plumbing material limits fall under the Ontario Building Code / NSF/ANSI 61 and 372. Key fine.",
+   "original": {
+    "question": "What is 'premise plumbing' influence on distribution system water quality?",
+    "options": [
+     "Plumbing on the premise of a theory",
+     "The building plumbing between the service connection and tap: affects water quality through: stagnation (overnight standing — lead/copper release), temperature (hot water heater — Legionella growth), cross-connections (backflow from building systems), and materials (lead solder, brass fittings — metal release); utility responsibility extends to service connection but quality at tap depends on both",
+     "Premise plumbing doesnt affect water quality",
+     "Utilities control premise plumbing"
+    ],
+    "correctIndex": 1,
+    "explanation": "Premise plumbing effects: stagnation (water sits in building pipes overnight — contact time with lead solder, brass fittings, lead services increases metal release; first-draw samples highest), temperature (dead legs, hot water systems — Legionella proliferates 25-42°C; cooling towers, hot water tanks, and complex plumbing create risk), materials (pre-1990 lead solder, brass with >8% lead, galvanized iron — all release metals; newer: lead-free requirements), and cross-connections (building systems — irrigation, boilers, medical equipment — potential backflow into distribution through service). Utility role: corrosion control (reduce metal release from premise plumbing), public education (flushing, temperature, maintenance), and regulatory (Lead and Copper Rule — sampling at customer taps)."
+   },
+   "fix": {
+    "question": "What is 'premise plumbing' influence on distribution system water quality?",
+    "options": [
+     "Plumbing on the premise of a theory",
+     "The building plumbing between the service connection and tap: affects water quality through: stagnation (overnight standing — lead/copper release), temperature (hot water heater — Legionella growth), cross-connections (backflow from building systems), and materials (lead solder, brass fittings — metal release); utility responsibility extends to service connection but quality at tap depends on both",
+     "Premise plumbing doesnt affect water quality",
+     "Utilities control premise plumbing"
+    ],
+    "correctIndex": 1,
+    "explanation": "Premise plumbing effects: stagnation (water sits in building pipes overnight — contact time with lead solder, brass fittings, lead services increases metal release; first-draw samples highest), temperature (dead legs, hot water systems — Legionella proliferates 25-42°C; cooling towers, hot water tanks, and complex plumbing create risk), materials (older lead solder, leaded brass, galvanized iron — all release metals; newer fixtures must meet low-lead certification such as NSF/ANSI 61 and 372), and cross-connections (building systems — irrigation, boilers, medical equipment — potential backflow into distribution through service). Utility role: corrosion control (reduce metal release from premise plumbing), public education (flushing, temperature, maintenance), and regulatory (Ontario O. Reg. 170/03 — lead sampling at customer taps and corrosion control requirements).",
+    "steps": null
+   }
+  },
+  {
+   "id": 156103,
+   "bankKey": "class4-water-dist",
+   "questionNum": 253,
+   "verdict": "JURISDICTION",
+   "note": "Explanation cites the US 'Stage 2 DBPR' and locational running annual averages; in Ontario, THM and HAA standards (O. Reg. 169/03) are assessed as a running annual average of quarterly samples under O. Reg. 170/03. Key fine.",
+   "original": {
+    "question": "What is 'total organic carbon' (TOC) significance in distribution system water quality?",
+    "options": [
+     "Counting carbon atoms in the office",
+     "TOC is the precursor for disinfection byproduct (DBP) formation: higher TOC + chlorine contact time = more THMs and HAAs; also: provides nutrient for biofilm growth, increases chlorine demand (reduces residual), and indicates source water vulnerability; managed through: treatment optimization, source protection, and blending",
+     "TOC doesnt matter in distribution",
+     "Only turbidity indicates water quality"
+    ],
+    "correctIndex": 1,
+    "explanation": "TOC in distribution: DBP formation (TOC reacts with chlorine over time → THMs, HAAs; distribution system provides extended contact time — DBPs increase from entry point to system extremities), chlorine demand (organic matter consumes chlorine — higher TOC = faster residual decay = harder to maintain residual at extremities), biofilm (organic carbon is nutrient for heterotrophic bacteria — higher TOC supports more biofilm growth, which harbors pathogens and increases chlorine demand), and management (treatment — enhanced coagulation, GAC, membranes to reduce TOC before distribution; operations — minimize water age to limit DBP formation time; monitoring — track TOC at entry and throughout system). Regulatory: Stage 2 DBPR — compliance based on locational running annual averages."
+   },
+   "fix": {
+    "question": "What is 'total organic carbon' (TOC) significance in distribution system water quality?",
+    "options": [
+     "Counting carbon atoms in the office",
+     "TOC is the precursor for disinfection byproduct (DBP) formation: higher TOC + chlorine contact time = more THMs and HAAs; also: provides nutrient for biofilm growth, increases chlorine demand (reduces residual), and indicates source water vulnerability; managed through: treatment optimization, source protection, and blending",
+     "TOC doesnt matter in distribution",
+     "Only turbidity indicates water quality"
+    ],
+    "correctIndex": 1,
+    "explanation": "TOC in distribution: DBP formation (TOC reacts with chlorine over time → THMs, HAAs; distribution system provides extended contact time — DBPs increase from entry point to system extremities), chlorine demand (organic matter consumes chlorine — higher TOC = faster residual decay = harder to maintain residual at extremities), biofilm (organic carbon is nutrient for heterotrophic bacteria — higher TOC supports more biofilm growth, which harbors pathogens and increases chlorine demand), and management (treatment — enhanced coagulation, GAC, membranes to reduce TOC before distribution; operations — minimize water age to limit DBP formation time; monitoring — track TOC at entry and throughout system). Regulatory (Ontario): THM and HAA standards in O. Reg. 169/03 are assessed as a running annual average of quarterly samples collected in the distribution system under O. Reg. 170/03.",
+    "steps": null
+   }
+  },
+  {
+   "id": 184560,
+   "bankKey": "class4-water-dist",
+   "questionNum": 303,
+   "verdict": "WRONG",
+   "note": "CFD is not used for pipe network analysis; it models detailed 3-D flow in a single component (tank, valve, junction). Distribution system hydraulic performance is analysed with a calibrated network hydraulic model (EPANET-type). The marked answer is wrong and the correct technique is not offered.",
+   "original": {
+    "question": "A Class 4 operator is tasked with optimizing the hydraulic performance of an aging water distribution system. Which advanced modeling technique would be most beneficial for identifying system inefficiencies and potential improvements?",
+    "options": [
+     "Statistical regression analysis of historical flow data.",
+     "Computational Fluid Dynamics (CFD) for pipe network analysis.",
+     "Geographic Information System (GIS) for mapping asset locations.",
+     "SCADA system alarm logging and trend analysis."
+    ],
+    "correctIndex": 1,
+    "explanation": "Computational Fluid Dynamics (CFD) provides detailed insights into fluid flow dynamics within the pipe network, allowing for precise identification of hydraulic inefficiencies and optimization opportunities."
+   },
+   "fix": {
+    "question": "A Class 4 operator is tasked with optimizing the hydraulic performance of an aging water distribution system. Which advanced modeling technique would be most beneficial for identifying system inefficiencies and potential improvements?",
+    "options": [
+     "Statistical regression analysis of historical flow data.",
+     "Calibrated hydraulic network modeling (e.g., EPANET-type extended-period simulation).",
+     "Geographic Information System (GIS) for mapping asset locations.",
+     "SCADA system alarm logging and trend analysis."
+    ],
+    "correctIndex": 1,
+    "explanation": "A calibrated hydraulic network model simulates pressures, flows, tank levels and water age under different demand and operating scenarios, identifying bottlenecks, excess pressure and inefficiencies. Computational fluid dynamics is used for detailed flow in individual structures, not for whole-network analysis.",
+    "steps": null
+   }
+  },
+  {
+   "id": 184568,
+   "bankKey": "class4-water-dist",
+   "questionNum": 311,
+   "verdict": "JURISDICTION",
+   "note": "Ontario drinking water quality standards (total coliform 0 per 100 mL) are in O. Reg. 169/03 (Ontario Drinking Water Quality Standards), not O. Reg. 170/03 Schedule 1. The 0 CFU/100 mL value is correct; the citation in the explanation and steps is wrong.",
+   "original": {
+    "question": "A Class 4 operator is analyzing water quality data for compliance with O. Reg. 170/03. What is the maximum acceptable concentration for total coliforms in a treated water sample entering the distribution system?",
+    "options": [
+     "10 CFU/100 mL.",
+     "5 CFU/100 mL.",
+     "0 CFU/100 mL.",
+     "1 CFU/100 mL."
+    ],
+    "correctIndex": 2,
+    "explanation": "Under O. Reg. 170/03, Schedule 1, the maximum acceptable concentration for total coliforms in treated drinking water entering the distribution system is 0 CFU/100 mL, indicating the absence of these bacteria."
+   },
+   "fix": {
+    "question": "A Class 4 operator is analyzing water quality data for compliance. What is the maximum acceptable concentration for total coliforms in a treated water sample entering the distribution system?",
+    "options": [
+     "10 CFU/100 mL.",
+     "5 CFU/100 mL.",
+     "0 CFU/100 mL.",
+     "1 CFU/100 mL."
+    ],
+    "correctIndex": 2,
+    "explanation": "Under O. Reg. 169/03 (Ontario Drinking Water Quality Standards), the maximum acceptable concentration for total coliforms in drinking water is 0 CFU/100 mL, indicating the absence of these bacteria.",
+    "steps": [
+     {
+      "l": "Identify what is being asked",
+      "c": "This is a regulatory limit recall item: the maximum acceptable concentration of total coliforms in treated water entering the distribution system."
+     },
+     {
+      "l": "Apply the Ontario standard",
+      "c": "O. Reg. 169/03 (Ontario Drinking Water Quality Standards) requires absence of total coliforms, that is 0 CFU/100 mL."
+     },
+     {
+      "l": "Eliminate the distractors",
+      "c": "Any detectable count (1, 5, or 10 CFU/100 mL) is a standard exceedance and triggers reporting and corrective action under O. Reg. 170/03, so none of these can be the maximum acceptable concentration."
+     },
+     {
+      "l": "Conclude",
+      "c": "Correct answer: 0 CFU/100 mL."
+     }
+    ]
+   }
+  },
+  {
+   "id": 184575,
+   "bankKey": "class4-water-dist",
+   "questionNum": 318,
+   "verdict": "UNCLEAR",
+   "note": "Ontario has no single fixed 1.5 m minimum. MECP watermain design criteria require cover greater than the depth of frost penetration; municipal standards in Ontario are typically 1.7 to 2.1 m or more (e.g., Markham 1.75 m, Vaughan 2.0-2.1 m). 'Ontario requires 1.5 m' is an unstated/unsupported local rule.",
+   "original": {
+    "question": "What is the recommended minimum depth of cover for water mains in Ontario?",
+    "options": [
+     "1.5 metres below finished grade",
+     "0.3 metres below finished grade",
+     "3.0 metres below finished grade",
+     "5.0 metres below finished grade"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario requires minimum 1.5 m (approximately 5 feet) depth of cover for water mains to protect against frost penetration and mechanical damage from surface loads."
+   },
+   "fix": {
+    "question": "What is the basic requirement for minimum depth of cover for water mains in Ontario?",
+    "options": [
+     "Cover must exceed the local frost penetration depth (commonly about 1.7 to 2.0 m or more below finished grade)",
+     "0.3 metres below finished grade",
+     "3.0 metres below finished grade",
+     "5.0 metres below finished grade"
+    ],
+    "correctIndex": 0,
+    "explanation": "MECP watermain design criteria require cover greater than the depth of frost penetration, and municipal standards in Ontario typically specify about 1.7 to 2.1 m or more depending on location, to protect against freezing and surface loads.",
+    "steps": null
+   }
+  },
+  {
+   "id": 184580,
+   "bankKey": "class4-water-dist",
+   "questionNum": 323,
+   "verdict": "UNCLEAR",
+   "note": "O. Reg. 128/04 governs certification of drinking water operators and licensing of labs; it does not assign a preventive maintenance program duty to Class 4 operators. Maintenance programs come under the Drinking Water Quality Management Standard (infrastructure maintenance element) and the municipal drinking water licence. The regulation cited is misattributed.",
+   "original": {
+    "question": "Under O. Reg. 128/04, what is the primary responsibility of a Class 4 operator concerning the maintenance of water distribution system components?",
+    "options": [
+     "To ensure all maintenance is performed by external contractors only.",
+     "To develop and implement a comprehensive preventive maintenance program for all assets.",
+     "To only perform maintenance when a component completely fails.",
+     "To delegate all maintenance decisions to the municipal finance department."
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 128/04 emphasizes the importance of proper operation and maintenance. A Class 4 operator is responsible for developing and implementing a comprehensive preventive maintenance program to ensure system reliability and compliance."
+   },
+   "fix": {
+    "question": "Under the Drinking Water Quality Management Standard (DWQMS), what is expected of the operating authority regarding maintenance of water distribution system components?",
+    "options": [
+     "To ensure all maintenance is performed by external contractors only.",
+     "To establish and implement a documented preventive maintenance program for infrastructure and equipment.",
+     "To only perform maintenance when a component completely fails.",
+     "To delegate all maintenance decisions to the municipal finance department."
+    ],
+    "correctIndex": 1,
+    "explanation": "The DWQMS infrastructure maintenance, rehabilitation and renewal element requires a documented program to maintain, rehabilitate and renew infrastructure so that the system operates reliably and in compliance.",
+    "steps": null
+   }
+  },
+  {
+   "id": 184589,
+   "bankKey": "class4-water-dist",
+   "questionNum": 332,
+   "verdict": "UNITS",
+   "note": "Canadian bank: explanation gives the test pressure floor in psi only ('minimum 150 psi'). Convert to kPa (150 psi = about 1035 kPa).",
+   "original": {
+    "question": "What is the recommended approach for distribution system pressure testing of new installations?",
+    "options": [
+     "Hydrostatically test at 1.5 times working pressure for 2 hours with allowable leakage per AWWA C600",
+     "Test at normal operating pressure for 15 minutes",
+     "Visual inspection only without pressure testing",
+     "Test at maximum system pressure for 30 minutes"
+    ],
+    "correctIndex": 0,
+    "explanation": "New mains are hydrostatically tested at 1.5× working pressure (minimum 150 psi) for 2 hours per AWWA C600. Allowable leakage depends on pipe diameter, length, and number of joints."
+   },
+   "fix": {
+    "question": "What is the recommended approach for distribution system pressure testing of new installations?",
+    "options": [
+     "Hydrostatically test at 1.5 times working pressure for 2 hours with allowable leakage per AWWA C600",
+     "Test at normal operating pressure for 15 minutes",
+     "Visual inspection only without pressure testing",
+     "Test at maximum system pressure for 30 minutes"
+    ],
+    "correctIndex": 0,
+    "explanation": "New mains are hydrostatically tested at 1.5x working pressure (commonly not less than about 1035 kPa) for 2 hours in accordance with AWWA C600. Allowable leakage depends on pipe diameter, length, and number of joints.",
+    "steps": null
+   }
+  },
+  {
+   "id": 184612,
+   "bankKey": "class4-water-dist",
+   "questionNum": 355,
+   "verdict": "UNCLEAR",
+   "note": "CPM is a scheduling technique, not a project management methodology as the question frames it; Waterfall (sequential phases, detailed upfront planning) is the standard defensible answer for a construction project, so two options are defensible.",
+   "original": {
+    "question": "A Class 4 operator is tasked with leading a major capital project for a new water main installation. Which project management methodology is most suitable for ensuring efficient resource allocation and risk mitigation?",
+    "options": [
+     "Agile methodology, focusing on iterative development and rapid adaptation to changes.",
+     "Waterfall methodology, emphasizing sequential phases with detailed planning upfront.",
+     "Lean methodology, prioritizing the elimination of waste and continuous process improvement.",
+     "Critical Path Method (CPM), identifying the longest sequence of tasks to determine project duration."
+    ],
+    "correctIndex": 3,
+    "explanation": "The Critical Path Method (CPM) is a project management technique that helps identify critical tasks and their dependencies, allowing for efficient scheduling, resource allocation, and risk management to ensure projects are completed on time."
+   },
+   "fix": {
+    "question": "A Class 4 operator is leading a major capital project for a new water main installation. Which scheduling technique identifies the longest sequence of dependent tasks to determine project duration and where delay risk is highest?",
+    "options": [
+     "Agile sprint planning",
+     "Gantt chart without task dependencies",
+     "Lean value-stream mapping",
+     "Critical Path Method (CPM)"
+    ],
+    "correctIndex": 3,
+    "explanation": "The Critical Path Method maps task dependencies and durations, identifies the longest (critical) sequence that sets overall project duration, and shows float on non-critical tasks so resources and contingency can be focused where delay risk is highest.",
+    "steps": null
+   }
+  },
+  {
+   "id": 184614,
+   "bankKey": "class4-water-dist",
+   "questionNum": 357,
+   "verdict": "UNCLEAR",
+   "note": "Under current AWWA C900 the DR18 PVC pressure class is 235 psi (about 1620 kPa), not 150 psi; the 150 psi figure comes from the older C900 class designation. Ontario municipal specifications commonly use DR18 as 1620 kPa. The marked answer reflects an obsolete rating.",
+   "original": {
+    "question": "What is the maximum allowable working pressure for standard DR18 PVC water main?",
+    "options": [
+     "1035 kPa (150 psi)",
+     "500 kPa (72 psi)",
+     "2000 kPa (290 psi)",
+     "3500 kPa (507 psi)"
+    ],
+    "correctIndex": 0,
+    "explanation": "DR18 PVC pipe (C900) has a maximum working pressure rating of 1035 kPa (150 psi). Higher pressure ratings require lower DR values (thicker walls). DR18 is the most common for municipal distribution."
+   },
+   "fix": {
+    "question": "What is the pressure class of standard DR18 PVC water main (AWWA C900)?",
+    "options": [
+     "1620 kPa (235 psi)",
+     "500 kPa (72 psi)",
+     "1035 kPa (150 psi)",
+     "3500 kPa (507 psi)"
+    ],
+    "correctIndex": 0,
+    "explanation": "Under current AWWA C900, DR18 PVC pipe has a pressure class of 235 psi (about 1620 kPa). Lower DR values (thicker walls) give higher pressure ratings; DR18 is the most common for municipal distribution.",
+    "steps": [
+     {
+      "l": "Identify what is being asked",
+      "c": "The pressure class of standard DR18 PVC water main."
+     },
+     {
+      "l": "Recall the rating",
+      "c": "DR is outside diameter divided by wall thickness; a lower DR means a thicker wall and higher pressure class. Under AWWA C900, DR25 is 165 psi, DR18 is 235 psi and DR14 is 305 psi."
+     },
+     {
+      "l": "Convert the units",
+      "c": "235 psi x 6.895 kPa/psi = about 1620 kPa."
+     },
+     {
+      "l": "Conclude",
+      "c": "Correct answer: 1620 kPa (235 psi)."
+     }
+    ]
+   }
+  },
+  {
+   "id": 184626,
+   "bankKey": "class4-water-dist",
+   "questionNum": 369,
+   "verdict": "WRONG",
+   "note": "MECP Procedure F-6-1 requires 2.5 m clear horizontal separation and a minimum 0.5 m (500 mm) vertical separation with the watermain above the sewer, not 450 mm. Verified at ontario.ca F-6-1. Also 'required' is a guideline/procedure rather than a regulation.",
+   "original": {
+    "question": "What minimum separation distance is required between a water main and a sanitary sewer in Ontario?",
+    "options": [
+     "2.5 metres horizontal, 450mm vertical with water above sewer",
+     "0.5 metres in any direction",
+     "5.0 metres horizontal minimum",
+     "No separation required if pipes are different materials"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario Design Guidelines require minimum 2.5m horizontal separation between water mains and sanitary sewers, with the water main at least 450mm above the sewer crown to prevent contamination during leaks."
+   },
+   "fix": {
+    "question": "What minimum separation does MECP Procedure F-6-1 specify between a water main and a sanitary sewer in Ontario?",
+    "options": [
+     "2.5 metres horizontal, 0.5 metre vertical with water main above the sewer",
+     "1.0 metre horizontal, 0.15 metre vertical in any direction",
+     "5.0 metres horizontal minimum",
+     "No separation required if pipes are different materials"
+    ],
+    "correctIndex": 0,
+    "explanation": "Procedure F-6-1 requires a minimum 2.5 m clear horizontal separation (separate trenches) and, at crossings, a minimum 0.5 m vertical separation with the water main above the sewer. Where this cannot be achieved the sewer must meet watermain construction standards and be pressure tested.",
+    "steps": [
+     {
+      "l": "Identify the question type.",
+      "c": "This is a design standard question on separation distances, not a calculation."
+     },
+     {
+      "l": "State the horizontal separation requirement.",
+      "c": "A minimum 2.5 m clear horizontal separation between a water main and a sewer, in separate trenches."
+     },
+     {
+      "l": "State the vertical separation requirement.",
+      "c": "At crossings the water main is at least 0.5 m above the sewer."
+     },
+     {
+      "l": "Match both requirements to the options.",
+      "c": "Only one option states both: 2.5 m horizontal, 0.5 m vertical with water main above."
+     }
+    ]
+   }
+  },
+  {
+   "id": 184659,
+   "bankKey": "class4-water-dist",
+   "questionNum": 402,
+   "verdict": "WRONG",
+   "note": "NFPA 291 hydrant colour coding: Blue (Class AA) 1500 USgpm or more (about 5700 L/min), Green (A) 1000-1499 gpm (3800-5700 L/min), Orange (B) 500-999 gpm (1900-3800 L/min), Red (C) under 500 gpm (under 1900 L/min). The stated scheme (green highest, orange middle, red lowest at <3800) is wrong, and the option 'blue highest, red lowest' is closer to the NFPA convention. Also not mandated by Ontario law; NFPA 291 is a recommended practice.",
+   "original": {
+    "question": "What is the standard colour coding for fire hydrants based on available flow in Ontario?",
+    "options": [
+     "Green (>5700 L/min), Orange (3800-5700), Red (<3800)",
+     "All hydrants are painted yellow regardless of flow",
+     "Blue indicates highest flow, red indicates lowest",
+     "No standard colour coding exists in Ontario"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario follows NFPA 291 colour coding: green caps/bonnets for >5700 L/min (1500 USgpm), orange for 3800-5700 L/min (1000-1500), and red for <3800 L/min (<1000). This helps firefighters identify flow capacity quickly."
+   },
+   "fix": {
+    "question": "Under the NFPA 291 colour coding recommended for fire hydrants (commonly followed in Ontario), which scheme correctly relates colour to available flow?",
+    "options": [
+     "Blue (5700 L/min or more), Green (3800-5700), Orange (1900-3800), Red (less than 1900)",
+     "Green (more than 5700 L/min), Orange (3800-5700), Red (less than 3800)",
+     "All hydrants are painted yellow regardless of flow",
+     "Red indicates highest flow, blue indicates lowest"
+    ],
+    "correctIndex": 0,
+    "explanation": "NFPA 291 classifies hydrants by flow: Class AA blue (1500 USgpm or more, about 5700 L/min), Class A green (1000-1499 gpm, 3800-5700 L/min), Class B orange (500-999 gpm, 1900-3800 L/min) and Class C red (under 500 gpm, under 1900 L/min).",
+    "steps": null
+   }
+  },
+  {
+   "id": 184665,
+   "bankKey": "class4-water-dist",
+   "questionNum": 408,
+   "verdict": "JURISDICTION",
+   "note": "Schedule 16 of O. Reg. 170/03 covers reporting, notice and corrective action, not the quality standard. The total coliform standard (0 per 100 mL) is in O. Reg. 169/03 (Ontario Drinking Water Quality Standards). Answer 0 is correct, citation is wrong.",
+   "original": {
+    "question": "According to O. Reg. 170/03, Schedule 16, what is the maximum allowable concentration for total coliforms in a treated water sample from a distribution system?",
+    "options": [
+     "0 organisms per 100 mL",
+     "1 organism per 100 mL",
+     "5 organisms per 100 mL",
+     "10 organisms per 100 mL"
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 170/03, Schedule 16, states that for total coliforms, the treated water must contain 'no organisms per 100 mL'. Any detection is considered an adverse water quality incident."
+   },
+   "fix": {
+    "question": "According to the Ontario Drinking Water Quality Standards (O. Reg. 169/03), what is the maximum acceptable concentration for total coliforms in a treated water sample from a distribution system?",
+    "options": [
+     "0 organisms per 100 mL",
+     "1 organism per 100 mL",
+     "5 organisms per 100 mL",
+     "10 organisms per 100 mL"
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 169/03 sets the total coliform standard at no detectable organisms per 100 mL. Any detection is an adverse result that must be reported under O. Reg. 170/03, Schedule 16.",
+    "steps": [
+     {
+      "l": "Identify the question type.",
+      "c": "Regulatory compliance question; no calculation."
+     },
+     {
+      "l": "State the treated water standard for total coliforms.",
+      "c": "Treated water in the distribution system must contain no detectable total coliform organisms per 100 mL sample (O. Reg. 169/03)."
+     },
+     {
+      "l": "Note the consequence of any detection.",
+      "c": "Any total coliform detection is an adverse result requiring immediate reporting and corrective action under O. Reg. 170/03, Schedule 16."
+     },
+     {
+      "l": "Select the correct option.",
+      "c": "0 organisms per 100 mL."
+     }
+    ]
+   }
+  },
+  {
+   "id": 184672,
+   "bankKey": "class4-water-dist",
+   "questionNum": 415,
+   "verdict": "UNCLEAR",
+   "note": "The 0.05 mg/L free chlorine figure is the operating minimum at any location in the distribution system (and 0.25 mg/L combined), not a required residual at the entry point; the 0.2 mg/L figure relates to treatment equipment design capability. The item also conflicts with 184669 as worded and the explanation cites Schedule 1 inaccurately. Searches did not confirm an entry-point 0.05 mg/L requirement.",
+   "original": {
+    "question": "According to O. Reg. 170/03, what is the required minimum free available chlorine residual at the entry point to a distribution system?",
+    "options": [
+     "0.05 mg/L",
+     "0.10 mg/L",
+     "0.20 mg/L",
+     "0.50 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 170/03, Schedule 1, specifies a minimum free available chlorine residual of 0.05 mg/L at the entry point to the distribution system."
+   },
+   "fix": {
+    "question": "According to O. Reg. 170/03 and the Ontario Procedure for Disinfection of Drinking Water, what is the minimum free chlorine residual that must be maintained at any location in a chlorinated distribution system?",
+    "options": [
+     "0.05 mg/L",
+     "0.10 mg/L",
+     "0.20 mg/L",
+     "0.50 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "The free chlorine residual in a chlorinated distribution system must never fall below 0.05 mg/L at any location (0.25 mg/L combined chlorine where chloramination is used). 0.20 mg/L is the design capability for secondary disinfection equipment, not the operating minimum.",
+    "steps": [
+     {
+      "l": "Identify the question type.",
+      "c": "Regulatory requirement question; no calculation."
+     },
+     {
+      "l": "State the requirement.",
+      "c": "Free chlorine residual must be at least 0.05 mg/L at any location in the distribution system."
+     },
+     {
+      "l": "Distinguish from other listed values.",
+      "c": "0.20 mg/L is the design capability of secondary disinfection equipment; 0.10 and 0.50 mg/L are operating targets, not the regulated minimum."
+     },
+     {
+      "l": "Select the correct option.",
+      "c": "0.05 mg/L."
+     }
+    ]
+   }
+  },
+  {
+   "id": 184680,
+   "bankKey": "class4-water-dist",
+   "questionNum": 423,
+   "verdict": "UNCLEAR",
+   "note": "Duplicate of 186086 with a different key (24 hours vs 6 hours). Schedule 10 does not set a 24 hour holding time; Ontario practice is analysis within 48 hours of collection (not confirmed online). The two items cannot both be correct.",
+   "original": {
+    "question": "According to O. Reg. 170/03, what is the maximum holding time for a water sample collected for microbiological analysis before it must be analyzed?",
+    "options": [
+     "6 hours",
+     "12 hours",
+     "24 hours",
+     "30 hours"
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 170/03, Schedule 10, specifies that a water sample collected for microbiological analysis must be analyzed within 24 hours of being collected."
+   },
+   "fix": {
+    "question": "According to Ontario drinking water testing requirements, what is the maximum time between collection of a microbiological drinking water sample and its analysis?",
+    "options": [
+     "6 hours",
+     "12 hours",
+     "24 hours",
+     "48 hours"
+    ],
+    "correctIndex": 3,
+    "explanation": "Microbiological drinking water samples in Ontario must be analyzed by a licensed laboratory within 48 hours of collection; samples are kept cool and delivered promptly. Verify the exact limit against the current lab requirements.",
+    "steps": [
+     {
+      "l": "Identify the question type.",
+      "c": "Procedural/regulatory question on sample holding time; no calculation."
+     },
+     {
+      "l": "State the maximum holding time.",
+      "c": "The sample must be analyzed within 48 hours of collection."
+     },
+     {
+      "l": "Note good practice during transport.",
+      "c": "Samples are kept cool and delivered promptly, since late analysis invalidates the result."
+     },
+     {
+      "l": "Select the correct option.",
+      "c": "48 hours."
+     }
+    ]
+   }
+  },
+  {
+   "id": 184703,
+   "bankKey": "class4-water-dist",
+   "questionNum": 446,
+   "verdict": "WRONG",
+   "note": "In Ontario any total coliform detection in treated drinking water is an adverse result requiring immediate notification to the Medical Officer of Health and MECP (Spills Action Centre) under O. Reg. 170/03 Schedule 16, plus resampling and corrective action; notification is not deferred until a result is 'confirmed'. The MOE name is also outdated (MECP). Marked answer delays reporting.",
+   "original": {
+    "question": "What is the recommended approach when a distribution system experiences a confirmed total coliform positive result?",
+    "options": [
+     "Resample within 24 hours, investigate potential causes, and notify the MOE if confirmed",
+     "Ignore single positive results as they are common",
+     "Immediately issue a boil water advisory",
+     "Flush the entire system"
+    ],
+    "correctIndex": 0,
+    "explanation": "A total coliform positive triggers resampling within 24 hours at the same location plus upstream/downstream. If confirmed, investigate causes (main break, low residual, cross-connection), correct the issue, and notify the MOE as required."
+   },
+   "fix": {
+    "question": "What is the required approach when a distribution system sample is positive for total coliform in Ontario?",
+    "options": [
+     "Immediately notify the Medical Officer of Health and MECP, take resamples (at the site, upstream and downstream) and investigate and correct the cause",
+     "Ignore single positive results as they are common",
+     "Resample in 24 hours and notify MECP only if the resample is also positive",
+     "Flush the entire system and take no further action"
+    ],
+    "correctIndex": 0,
+    "explanation": "Any total coliform detection is an adverse result under O. Reg. 170/03 Schedule 16: it must be reported immediately to the Medical Officer of Health and MECP, resamples are taken, and the cause (main break, low residual, cross-connection) is investigated and corrected.",
+    "steps": null
+   }
+  },
+  {
+   "id": 184710,
+   "bankKey": "class4-water-dist",
+   "questionNum": 453,
+   "verdict": "WRONG",
+   "note": "Unit conversion is wrong: 50 L/s is about 660 IGPM (800 IGPM is about 61 L/s). Fire flow requirements are also not set by the Ontario Fire Code; Ontario design practice uses MECP Design Guidelines for Drinking-Water Systems and Fire Underwriters Survey methods.",
+   "original": {
+    "question": "What is the recommended minimum fire flow for a residential area in Ontario?",
+    "options": [
+     "50 L/s (800 IGPM) for 2 hours",
+     "10 L/s for 30 minutes",
+     "200 L/s for 4 hours",
+     "500 L/s for 8 hours"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario Fire Code and municipal standards typically require minimum 50 L/s (approximately 800 IGPM) for 2 hours duration for residential areas, with higher requirements for commercial and industrial zones."
+   },
+   "fix": {
+    "question": "What is a commonly used minimum fire flow for a residential area in Ontario water system design?",
+    "options": [
+     "50 L/s for 2 hours",
+     "10 L/s for 30 minutes",
+     "200 L/s for 4 hours",
+     "500 L/s for 8 hours"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario municipal design practice (MECP Design Guidelines for Drinking-Water Systems, Fire Underwriters Survey) commonly uses a minimum of about 50 L/s for 2 hours for low-density residential areas, with higher flows for commercial and industrial zones.",
+    "steps": [
+     {
+      "l": "Identify the nature of the question",
+      "c": "This item asks for a typical design fire flow, not a calculation."
+     },
+     {
+      "l": "State the standard",
+      "c": "Typical minimum residential design fire flow is about 50 L/s sustained for 2 hours."
+     },
+     {
+      "l": "Conclusion",
+      "c": "The correct answer is 50 L/s for 2 hours."
+     }
+    ]
+   }
+  },
+  {
+   "id": 184733,
+   "bankKey": "class4-water-dist",
+   "questionNum": 476,
+   "verdict": "WRONG",
+   "note": "O. Reg. 170/03 Schedule 10-2 does not use '1 per 1,000 plus 4'. For large municipal residential systems it requires at least 8 samples per month plus 1 per 1,000 population (up to 100,000 population), and for systems over 100,000 population at least 100 samples per month plus 1 additional per 10,000 population above 100,000, with at least 3 per week (per CanLII consolidation). The keyed option is not in the regulation.",
+   "original": {
+    "question": "Under O. Reg. 170/03, what is the minimum frequency for collecting bacteriological samples from a Class 4 water distribution system that serves a population of 100,001 or more?",
+    "options": [
+     "At least 8 samples per month.",
+     "At least 100 samples per month.",
+     "At least 1 sample per 1,000 population per month, plus 4 additional samples.",
+     "At least 25 samples per week."
+    ],
+    "correctIndex": 2,
+    "explanation": "For systems serving 100,001 or more, O. Reg. 170/03 requires at least 1 sample per 1,000 population per month, plus 4 additional samples, for bacteriological analysis."
+   },
+   "fix": {
+    "question": "Under O. Reg. 170/03, what is the minimum monthly number of distribution bacteriological samples for a municipal residential system serving more than 100,000 people?",
+    "options": [
+     "At least 8 samples per month.",
+     "At least 100 samples per month, plus 1 additional sample for each 10,000 people above 100,000.",
+     "At least 1 sample per 1,000 population per month, plus 4 additional samples.",
+     "At least 25 samples per week."
+    ],
+    "correctIndex": 1,
+    "explanation": "Schedule 10-2 of O. Reg. 170/03 requires systems serving more than 100,000 people to collect at least 100 distribution samples per month, plus one more for each 10,000 people above 100,000, with at least 3 samples in each week.",
+    "steps": null
+   }
+  },
+  {
+   "id": 184745,
+   "bankKey": "class4-water-dist",
+   "questionNum": 488,
+   "verdict": "UNCLEAR",
+   "note": "Accredited operating authority audits come from the Drinking Water Quality Management Standard (DWQMS) under the Safe Drinking Water Act and the municipal drinking water licence, not O. Reg. 128/04 (operator certification). The audit also does not depend on a 'Class 4' system. Accreditation is for a three-year term with re-accreditation; external surveillance audits are annual, so 'how often' is ambiguous. Not verified by search.",
+   "original": {
+    "question": "Under O. Reg. 128/04, how often must the operating authority of a Class 4 water distribution system ensure that an accredited operating authority audit is conducted?",
+    "options": [
+     "At least once every five years.",
+     "Annually.",
+     "At least once every three years.",
+     "Only when requested by the Ministry of the Environment, Conservation and Parks."
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 128/04 requires an accredited operating authority audit to be conducted at least once every three years for Class 4 water distribution systems."
+   },
+   "fix": {
+    "question": "Under the Ontario Drinking Water Quality Management Standard (DWQMS), how often must an operating authority undergo a full external re-accreditation audit to keep its accredited status?",
+    "options": [
+     "At least once every five years.",
+     "Annually.",
+     "At least once every three years.",
+     "Only when requested by the Ministry of the Environment, Conservation and Parks."
+    ],
+    "correctIndex": 2,
+    "explanation": "Under the DWQMS accreditation program, an operating authority's accreditation runs for three years and must be renewed by a full re-accreditation audit, with surveillance audits in between.",
+    "steps": [
+     {
+      "l": "Identify the nature of the question",
+      "c": "This is a regulatory/program frequency question, not a calculation."
+     },
+     {
+      "l": "State the requirement",
+      "c": "DWQMS accreditation is renewed through a full audit about every three years."
+     },
+     {
+      "l": "Conclusion",
+      "c": "The correct answer is at least once every three years."
+     }
+    ]
+   }
+  },
+  {
+   "id": 240851,
+   "bankKey": "class4-water-dist",
+   "questionNum": 501,
+   "verdict": "WRONG",
+   "note": "170/9.807 = 17.33 m; 155 - 17.33 = 137.67 m, which is not 138.68 m (the steps themselves give 137.67 and then claim 'rounded 138.68').",
+   "original": {
+    "question": "A water distribution network has two elevated storage tanks at different elevations. Tank 1 (elevation 140 m, pressure 220 kPa) and Tank 2 (elevation 160 m, pressure 280 kPa) feed a common junction. If the hydraulic grade line (HGL) at the junction is 155 m and the pressure at that point is 170 kPa, what is the elevation of this junction?",
+    "options": [
+     "138.68 m",
+     "157.32 m",
+     "145.32 m",
+     "162.24 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "The elevation at the junction is calculated by subtracting the pressure head from the HGL."
+   },
+   "fix": {
+    "question": "A water distribution network has two elevated storage tanks at different elevations. Tank 1 (elevation 140 m, pressure 220 kPa) and Tank 2 (elevation 160 m, pressure 280 kPa) feed a common junction. If the hydraulic grade line (HGL) at the junction is 155 m and the pressure at that point is 170 kPa, what is the elevation of this junction?",
+    "options": [
+     "137.67 m",
+     "157.32 m",
+     "145.32 m",
+     "162.24 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "Elevation = HGL minus pressure head. Pressure head = 170 / 9.807 = 17.33 m, so elevation = 155 - 17.33 = 137.67 m.",
+    "steps": [
+     {
+      "l": "Step 1 — Convert pressure to metres:",
+      "c": "Pressure head (m) = 170 kPa / 9.807 = 17.33 m"
+     },
+     {
+      "l": "Step 2 — Subtract pressure head from HGL:",
+      "c": "Elevation = 155 m - 17.33 m = 137.67 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240853,
+   "bankKey": "class4-water-dist",
+   "questionNum": 503,
+   "verdict": "WRONG",
+   "note": "Energy = 1000 x 9.807 x 4800 x 28 / 0.68 J = about 1.94e9 J = 538 kWh. 54,462 kWh is off by a factor of about 100 and the steps show the confusion.",
+   "original": {
+    "question": "A booster pump station is equipped with a VFD to optimize energy use. Over a 24-hour period, the pump delivers an average of 4,800 m³ at a total dynamic head (TDH) of 28 m. The average wire-to-water efficiency is 68%. What is the total electrical energy consumed, in kWh?",
+    "options": [
+     "37,735 kWh",
+     "31,885 kWh",
+     "54,462 kWh",
+     "78,625 kWh"
+    ],
+    "correctIndex": 2,
+    "explanation": "Calculated total energy = (flow × head × 9.807) / (efficiency × 3600)"
+   },
+   "fix": {
+    "question": "A booster pump station is equipped with a VFD to optimize energy use. Over a 24-hour period, the pump delivers an average of 4,800 m3 at a total dynamic head (TDH) of 28 m. The average wire-to-water efficiency is 68%. What is the total electrical energy consumed, in kWh?",
+    "options": [
+     "37,735 kWh",
+     "31,885 kWh",
+     "538 kWh",
+     "78,625 kWh"
+    ],
+    "correctIndex": 2,
+    "explanation": "Energy (kWh) = (volume x head x 9.807) / (efficiency x 3,600) = (4,800 x 28 x 9.807) / (0.68 x 3,600) = 538 kWh.",
+    "steps": [
+     {
+      "l": "Step 1 — Water energy in kJ:",
+      "c": "4,800 m3 x 28 m x 9.807 = 1,318,061 kJ"
+     },
+     {
+      "l": "Step 2 — Adjust for efficiency:",
+      "c": "1,318,061 / 0.68 = 1,938,325 kJ"
+     },
+     {
+      "l": "Step 3 — Convert to kWh:",
+      "c": "1,938,325 / 3,600 = 538.4 kWh"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240854,
+   "bankKey": "class4-water-dist",
+   "questionNum": 504,
+   "verdict": "WRONG",
+   "note": "P/A (25 yr, 4%) = 15.622; savings PV = 781,105; NPV = 781,105 - 1,800,000 = -1,018,896. The keyed +$125,558 is not derivable and the steps contradict it.",
+   "original": {
+    "question": "A utility wants to analyze the Net Present Value (NPV) of rehabilitating a 3 km water main. The initial capital cost is $1,800,000. Annual maintenance savings are expected to be $50,000 for 25 years. If the discount rate is 4%, what is the NPV of the project?",
+    "options": [
+     "$820,000",
+     "$500,000",
+     "$125,558",
+     "$1,180,000"
+    ],
+    "correctIndex": 2,
+    "explanation": "NPV = -Initial Cost + (annual savings × P/A factor for 25 yrs, 4%)"
+   },
+   "fix": {
+    "question": "A utility wants to analyze the Net Present Value (NPV) of rehabilitating a 3 km water main. The initial capital cost is $1,800,000. Annual maintenance savings are expected to be $50,000 for 25 years. If the discount rate is 4%, what is the NPV of the project?",
+    "options": [
+     "-$1,018,896",
+     "$500,000",
+     "$125,558",
+     "$1,180,000"
+    ],
+    "correctIndex": 0,
+    "explanation": "NPV = -initial cost + annual savings x P/A factor = -1,800,000 + 50,000 x 15.622 = -$1,018,896. The project does not pay back on maintenance savings alone.",
+    "steps": [
+     {
+      "l": "Step 1 — P/A factor:",
+      "c": "[1 - (1.04)^-25] / 0.04 = 15.622"
+     },
+     {
+      "l": "Step 2 — PV of savings:",
+      "c": "$50,000 x 15.622 = $781,105"
+     },
+     {
+      "l": "Step 3 — NPV:",
+      "c": "$781,105 - $1,800,000 = -$1,018,896"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240855,
+   "bankKey": "class4-water-dist",
+   "questionNum": 505,
+   "verdict": "WRONG",
+   "note": "Using the stated method, Q_new = 110 x sqrt(1/1.4) = 92.97 L/s (about 93.0), not 87.5 L/s. The steps admit they pick the 'most plausible' option. Premise also muddled (parallel pumps).",
+   "original": {
+    "question": "A city operates two parallel pumps, each rated at 110 L/s against a TDH of 34 m. If one pump fails, the head loss in the remaining pump increases by 40%. What is the new flow rate through the operating pump, assuming head loss varies with the square of flow (H ∝ Q²)?",
+    "options": [
+     "110 L/s",
+     "87.5 L/s",
+     "78.0 L/s",
+     "95.0 L/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "Since head increases by 40%, new Q = old Q × sqrt(1/1.4)"
+   },
+   "fix": {
+    "question": "A pump delivers 110 L/s against a system head of 34 m. The head the pump must overcome rises by 40% while the pump head-flow relationship is such that head varies with the square of flow (H proportional to Q^2). Assuming the same conditions otherwise, what is the new flow rate?",
+    "options": [
+     "110 L/s",
+     "87.5 L/s",
+     "78.0 L/s",
+     "93.0 L/s"
+    ],
+    "correctIndex": 3,
+    "explanation": "With H proportional to Q^2, Q_new = Q_old x sqrt(H_old/H_new) = 110 x sqrt(1/1.4) = 93.0 L/s.",
+    "steps": [
+     {
+      "l": "Step 1 — Find ratio:",
+      "c": "Q_new = 110 x sqrt(1/1.4)"
+     },
+     {
+      "l": "Step 2 — Calculate:",
+      "c": "sqrt(1/1.4) = 0.8452, so Q_new = 110 x 0.8452 = 93.0 L/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240856,
+   "bankKey": "class4-water-dist",
+   "questionNum": 506,
+   "verdict": "WRONG",
+   "note": "Average flow 171 L/s x 10,800 s = 1,846.8 m3, not 1,728 m3. Also 'volume lost' is ambiguous: the figures are total flow readings, not leak flow.",
+   "original": {
+    "question": "During a SCADA-reported overnight leak, flow readings drop steadily from 180 L/s to 162 L/s over 3 hours. What is the total volume lost during this event in cubic metres?",
+    "options": [
+     "1,728 m³",
+     "1,458 m³",
+     "972 m³",
+     "1,296 m³"
+    ],
+    "correctIndex": 0,
+    "explanation": "Average flow × time"
+   },
+   "fix": {
+    "question": "During a SCADA-reported overnight event, flow readings drop steadily from 180 L/s to 162 L/s over 3 hours. Assuming a linear decline, what is the total volume of water delivered during this period, in cubic metres?",
+    "options": [
+     "1,847 m3",
+     "1,458 m3",
+     "972 m3",
+     "1,296 m3"
+    ],
+    "correctIndex": 0,
+    "explanation": "Average flow = (180 + 162)/2 = 171 L/s. Volume = 171 L/s x 10,800 s = 1,846,800 L = 1,847 m3.",
+    "steps": [
+     {
+      "l": "Step 1 — Average flow:",
+      "c": "(180 + 162)/2 = 171 L/s"
+     },
+     {
+      "l": "Step 2 — Seconds:",
+      "c": "3 x 3,600 = 10,800 s"
+     },
+     {
+      "l": "Step 3 — Volume:",
+      "c": "171 x 10,800 = 1,846,800 L = 1,846.8 m3"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240857,
+   "bankKey": "class4-water-dist",
+   "questionNum": 507,
+   "verdict": "WRONG",
+   "note": "Hazen-Williams (SI) with Q = 0.035 m3/s, d = 0.3 m, L = 900 m, C = 120 gives hL = 0.96 m (about 9.4 kPa), so supply pressure is about 359 kPa. 406 kPa is not supported (the steps mix units and use the wrong exponent math).",
+   "original": {
+    "question": "A water main must maintain a minimum residual pressure of 350 kPa at the furthest point during peak demand. The pipeline is 900 m in length, has a C-factor of 120, inner diameter 300 mm, and delivers 35 L/s. What is the minimum pressure required at the supply to ensure 350 kPa at the end (ignore minor losses)?",
+    "options": [
+     "406 kPa",
+     "390 kPa",
+     "382 kPa",
+     "375 kPa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Find head loss using Hazen-Williams, add to desired residual pressure."
+   },
+   "fix": {
+    "question": "A water main must maintain a minimum residual pressure of 350 kPa at the furthest point during peak demand. The pipeline is 900 m in length, has a C-factor of 120, inner diameter 300 mm, and delivers 35 L/s. What is the minimum pressure required at the supply to ensure 350 kPa at the end (ignore minor losses and elevation change)?",
+    "options": [
+     "359 kPa",
+     "390 kPa",
+     "382 kPa",
+     "375 kPa"
+    ],
+    "correctIndex": 0,
+    "explanation": "hL = 10.67 x L x Q^1.852 / (C^1.852 x d^4.87), with Q in m3/s and d in m = 10.67 x 900 x 0.035^1.852 / (120^1.852 x 0.3^4.87) = 0.96 m = 9.4 kPa. Supply pressure = 350 + 9.4 = about 359 kPa.",
+    "steps": [
+     {
+      "l": "Step 1 — Head loss (SI units):",
+      "c": "hL = 10.67 x 900 x 0.035^1.852 / (120^1.852 x 0.3^4.87) = 0.96 m"
+     },
+     {
+      "l": "Step 2 — Convert to kPa:",
+      "c": "0.96 m x 9.807 = 9.4 kPa"
+     },
+     {
+      "l": "Step 3 — Supply pressure:",
+      "c": "350 + 9.4 = 359 kPa"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240858,
+   "bankKey": "class4-water-dist",
+   "questionNum": 508,
+   "verdict": "WRONG",
+   "note": "The question gives no valve cost, the keyed answer is chosen 'closest' in the steps, and the cycling cost is never used. Not answerable as written. Repaired with an explicit valve cost: capital recovery difference at 3% (24 vs 20 years) = about $204/yr, plus $2,900 O&M = $3,104.",
+   "original": {
+    "question": "A distribution manager analyzes a major main valve that cycles on/off 3 times per day. Each cycle costs $19.50 in electrical cost and increases expected annual O&M by $2,900. If the valve’s life expectancy drops from 24 to 20 years, what is the annualized cost impact (discount rate 3%)?",
+    "options": [
+     "$2,230",
+     "$3,307",
+     "$4,480",
+     "$ 2,900"
+    ],
+    "correctIndex": 1,
+    "explanation": "Present worth method for annualizing life difference; add annual O&M over new term."
+   },
+   "fix": {
+    "question": "A major main valve costs $25,000. Frequent cycling increases annual O&M by $2,900 and cuts the valve's life from 24 to 20 years. At a 3% discount rate, what is the total annualized cost impact?",
+    "options": [
+     "$3,104",
+     "$2,230",
+     "$4,480",
+     "$2,900"
+    ],
+    "correctIndex": 0,
+    "explanation": "Annualized capital at 3%: 25,000 x CRF(20 yr) = $1,680 vs 25,000 x CRF(24 yr) = $1,476, a difference of about $204/yr. Adding $2,900 O&M gives about $3,104/yr.",
+    "steps": [
+     {
+      "l": "Step 1 — Capital recovery factors:",
+      "c": "CRF(3%,20) = 0.06722; CRF(3%,24) = 0.05905"
+     },
+     {
+      "l": "Step 2 — Annualized capital difference:",
+      "c": "25,000 x (0.06722 - 0.05905) = $204"
+     },
+     {
+      "l": "Step 3 — Add O&M:",
+      "c": "$2,900 + $204 = $3,104"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240859,
+   "bankKey": "class4-water-dist",
+   "questionNum": 509,
+   "verdict": "WRONG",
+   "note": "Q = 0.264 m3/s; hL = 10.67 x 1200 x 0.264^1.852 / (130^1.852 x 0.4^4.87) = 11.4 m, not 4.99 m (steps never compute it).",
+   "original": {
+    "question": "A 400 mm ductile iron pipeline, 1200 m long, conveys water at 2.1 m/s. The Hazen-Williams C is 130. Calculate the head loss in metres across the main.",
+    "options": [
+     "6.45 m",
+     "3.25 m",
+     "4.99 m",
+     "8.30 m"
+    ],
+    "correctIndex": 2,
+    "explanation": "Use Hazen-Williams head loss formula, convert velocity to flow."
+   },
+   "fix": {
+    "question": "A 400 mm ductile iron pipeline, 1200 m long, conveys water at 2.1 m/s. The Hazen-Williams C is 130. Calculate the head loss in metres across the main.",
+    "options": [
+     "6.45 m",
+     "3.25 m",
+     "11.45 m",
+     "8.30 m"
+    ],
+    "correctIndex": 2,
+    "explanation": "Q = 2.1 x 0.1257 = 0.264 m3/s. hL = 10.67 x L x Q^1.852 / (C^1.852 x d^4.87) = 10.67 x 1200 x 0.264^1.852 / (130^1.852 x 0.4^4.87) = about 11.4 m.",
+    "steps": [
+     {
+      "l": "Step 1 — Flow:",
+      "c": "Q = 2.1 x 0.1257 = 0.264 m3/s"
+     },
+     {
+      "l": "Step 2 — Hazen-Williams (m3/s, m):",
+      "c": "hL = 10.67 x 1200 x 0.264^1.852 / (130^1.852 x 0.4^4.87)"
+     },
+     {
+      "l": "Step 3 — Result:",
+      "c": "hL = 11.4 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240861,
+   "bankKey": "class4-water-dist",
+   "questionNum": 511,
+   "verdict": "WRONG",
+   "note": "P/A (50 yr, 5%) = 18.256, not 17.159. PW = 8,075 x 18.256 = $147,417; the keyed $117,155 matches nothing.",
+   "original": {
+    "question": "A 3.2 km transmission main must be replaced. The current average annual maintenance cost is $9,500. If a new pipe will reduce this by 85% for 50 years, and the LCCA discount rate is 5%, what is the present worth of the maintenance savings?",
+    "options": [
+     "$93,495",
+     "$80,240",
+     "$117,155",
+     "$151,050"
+    ],
+    "correctIndex": 2,
+    "explanation": "Present worth = annual saving × P/A factor"
+   },
+   "fix": {
+    "question": "A 3.2 km transmission main must be replaced. The current average annual maintenance cost is $9,500. If a new pipe will reduce this by 85% for 50 years, and the LCCA discount rate is 5%, what is the present worth of the maintenance savings?",
+    "options": [
+     "$93,495",
+     "$80,240",
+     "$147,417",
+     "$151,050"
+    ],
+    "correctIndex": 2,
+    "explanation": "Annual saving = 9,500 x 0.85 = $8,075. P/A (50 yr, 5%) = 18.256. Present worth = 8,075 x 18.256 = $147,417.",
+    "steps": [
+     {
+      "l": "Step 1 — Annual saving:",
+      "c": "$9,500 x 0.85 = $8,075"
+     },
+     {
+      "l": "Step 2 — P/A (50 yrs, 5%):",
+      "c": "[1 - 1.05^-50]/0.05 = 18.256"
+     },
+     {
+      "l": "Step 3 — Present worth:",
+      "c": "$8,075 x 18.256 = $147,417"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240862,
+   "bankKey": "class4-water-dist",
+   "questionNum": 512,
+   "verdict": "WRONG",
+   "note": "Power = 440 kPa x 0.065 m3/s = 28.6 kW; the keyed 2.48 kW is off by an order of magnitude and the steps admit the mismatch.",
+   "original": {
+    "question": "A PRV reduces upstream pressure from 950 kPa to 510 kPa through a 250 mm main at a steady flow of 65 L/s. What is the power dissipated by the PRV (in kW)?",
+    "options": [
+     "4.20 kW",
+     "2.48 kW",
+     "3.75 kW",
+     "6.31 kW"
+    ],
+    "correctIndex": 1,
+    "explanation": "Power = ΔP × Q"
+   },
+   "fix": {
+    "question": "A PRV reduces upstream pressure from 950 kPa to 510 kPa through a 250 mm main at a steady flow of 65 L/s. What is the power dissipated by the PRV (in kW)?",
+    "options": [
+     "4.20 kW",
+     "28.6 kW",
+     "3.75 kW",
+     "6.31 kW"
+    ],
+    "correctIndex": 1,
+    "explanation": "Power = pressure drop x flow = 440 kPa x 0.065 m3/s = 28.6 kW.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Pressure drop = 950 - 510 = 440 kPa"
+     },
+     {
+      "l": "Step 2",
+      "c": "Q = 65 L/s = 0.065 m3/s"
+     },
+     {
+      "l": "Step 3",
+      "c": "Power = 440 x 0.065 = 28.6 kW"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240864,
+   "bankKey": "class4-water-dist",
+   "questionNum": 514,
+   "verdict": "WRONG",
+   "note": "Steps give 1,800/85 = 21.18, not 3.53, and admit the numbers were changed. Also UARL is normally annual; here it is given per day, which is acceptable. Repaired by changing the night loss to 150 m3 (daily 300 m3), giving 3.53.",
+   "original": {
+    "question": "A district metered area (DMA) loses 900 m³ over a night (12 hours). The average pressure is 460 kPa. What is the ILI (Infrastructure Leakage Index) if the system’s Unavoidable Annual Real Losses (UARL) is 85 m³/day?",
+    "options": [
+     "4.11",
+     "5.23",
+     "2.90",
+     "3.53"
+    ],
+    "correctIndex": 3,
+    "explanation": "ILI = CARL / UARL. Night loss × 2 = daily average loss, then divide by UARL."
+   },
+   "fix": {
+    "question": "A district metered area loses 150 m3 over a night (12 hours) and the loss rate is representative of the whole day, so the daily real loss is 300 m3/day. If the system's Unavoidable Annual Real Losses (UARL) is 85 m3/day, what is the ILI (Infrastructure Leakage Index)?",
+    "options": [
+     "4.11",
+     "5.23",
+     "2.90",
+     "3.53"
+    ],
+    "correctIndex": 3,
+    "explanation": "ILI = CARL / UARL. Daily real loss = 150 x 2 = 300 m3/day; ILI = 300 / 85 = 3.53.",
+    "steps": [
+     {
+      "l": "Step 1 — Daily loss:",
+      "c": "150 x 2 = 300 m3/day"
+     },
+     {
+      "l": "Step 2 — ILI:",
+      "c": "300 / 85 = 3.53"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240866,
+   "bankKey": "class4-water-dist",
+   "questionNum": 516,
+   "verdict": "WRONG",
+   "note": "(300 - 260)/260 = 0.154, not 0.38 (steps agree 0.153). Also 'N+1 redundancy' is wrong: with one pump out, firm capacity is 200 L/s, below 260 L/s peak. Repaired to ask for reserve capacity ratio.",
+   "original": {
+    "question": "A water utility must meet a peak hour demand of 260 L/s. It operates three identical constant-speed pumps on a common header. If each pump has a maximum capacity of 100 L/s, what is the required redundancy factor (as a decimal) for N+1 redundancy?",
+    "options": [
+     "0.38",
+     "0.63",
+     "0.54",
+     "0.24"
+    ],
+    "correctIndex": 0,
+    "explanation": "Redundancy = (installed capacity - required) / required"
+   },
+   "fix": {
+    "question": "A water utility must meet a peak hour demand of 260 L/s. It operates three identical constant-speed pumps on a common header, each with a maximum capacity of 100 L/s. With all three pumps running, what is the reserve capacity ratio (installed capacity minus peak demand, divided by peak demand)?",
+    "options": [
+     "0.38",
+     "0.15",
+     "0.54",
+     "0.24"
+    ],
+    "correctIndex": 1,
+    "explanation": "Reserve ratio = (300 - 260) / 260 = 0.154, about 0.15. Note this is not N+1 redundancy: with one pump out of service, firm capacity is only 200 L/s.",
+    "steps": [
+     {
+      "l": "Step 1 — Installed capacity:",
+      "c": "3 x 100 = 300 L/s"
+     },
+     {
+      "l": "Step 2 — Reserve ratio:",
+      "c": "(300 - 260)/260 = 0.154"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240868,
+   "bankKey": "class4-water-dist",
+   "questionNum": 518,
+   "verdict": "WRONG",
+   "note": "Round trip 2 x 1,190 / 3.4 = 700 m/s (the steps say so). The key marks 350 m/s.",
+   "original": {
+    "question": "During pump startup, transient analysis shows a reflected pressure wave reaches the station in 3.4 seconds within a 1,190 m pipeline. What is the approximate wave speed (m/s)?",
+    "options": [
+     "500 m/s",
+     "350 m/s",
+     "700 m/s",
+     "400 m/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "Wave speed = distance / time"
+   },
+   "fix": {
+    "question": "During pump startup, transient analysis shows a reflected pressure wave reaches the station in 3.4 seconds within a 1,190 m pipeline. What is the approximate wave speed (m/s)?",
+    "options": [
+     "500 m/s",
+     "350 m/s",
+     "700 m/s",
+     "400 m/s"
+    ],
+    "correctIndex": 2,
+    "explanation": "The reflected wave travels out and back, so wave speed = 2L / t = 2 x 1,190 / 3.4 = 700 m/s.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Speed = 2 x pipe length / travel time"
+     },
+     {
+      "l": "Step 2",
+      "c": "2 x 1,190 / 3.4 = 700 m/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240871,
+   "bankKey": "class4-water-dist",
+   "questionNum": 521,
+   "verdict": "WRONG",
+   "note": "With a 35 L/s demand over 4 s, volume = 140 L (steps say so); the keyed 2,180 L is unsupported and the steps admit it. The pressure figures are irrelevant. Repaired to ask the directly computable value.",
+   "original": {
+    "question": "A water distribution system records an instantaneous drop in pressure from 620 kPa to 470 kPa at a control point in 4 seconds. If the system demand is 35 L/s, estimate the volume of water lost during this transient event assuming a linear pressure drop profile.",
+    "options": [
+     "4,060 L",
+     "7,200 L",
+     "560 L",
+     "2,180 L"
+    ],
+    "correctIndex": 3,
+    "explanation": "Average flow can be calculated as the system demand, and the duration of the pressure drop event gives the total volume lost."
+   },
+   "fix": {
+    "question": "A water distribution system records a drop in pressure from 620 kPa to 470 kPa at a control point over 4 seconds. If the system demand stays constant at 35 L/s during the event, what volume of water is delivered to customers during the event?",
+    "options": [
+     "4,060 L",
+     "7,200 L",
+     "140 L",
+     "2,180 L"
+    ],
+    "correctIndex": 2,
+    "explanation": "Volume = flow x time = 35 L/s x 4 s = 140 L. The pressure change does not alter the constant demand.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Duration = 4 s"
+     },
+     {
+      "l": "Step 2",
+      "c": "Demand = 35 L/s"
+     },
+     {
+      "l": "Step 3",
+      "c": "Volume = 35 x 4 = 140 L"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240872,
+   "bankKey": "class4-water-dist",
+   "questionNum": 522,
+   "verdict": "WRONG",
+   "note": "75 x 32 x 9.81 = 23,544 (not 23,520); 23,544/720 = 32.70 kW per pump, total 65.4 kW, not 65.3 kW. Minor rounding.",
+   "original": {
+    "question": "A booster pump station with two identical pumps is used to maintain pressure in a district. Each pump delivers 75 L/s against a head of 32 m and operates with an efficiency of 72%. What is the total power consumption in kW when both pumps are running?",
+    "options": [
+     "80.5 kW",
+     "48.6 kW",
+     "33.6 kW",
+     "65.3 kW"
+    ],
+    "correctIndex": 3,
+    "explanation": "The pump power is calculated using the formula: Power (kW) = (Flow rate (L/s) × Head (m) × 9.81) / (Efficiency × 1000)."
+   },
+   "fix": {
+    "question": "A booster pump station with two identical pumps is used to maintain pressure in a district. Each pump delivers 75 L/s against a head of 32 m and operates with an efficiency of 72%. What is the total power consumption in kW when both pumps are running?",
+    "options": [
+     "80.5 kW",
+     "48.6 kW",
+     "33.6 kW",
+     "65.4 kW"
+    ],
+    "correctIndex": 3,
+    "explanation": "Power per pump = (75 x 32 x 9.81) / (0.72 x 1000) = 32.7 kW. Two pumps = 65.4 kW.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "One pump: (75 x 32 x 9.81)/(0.72 x 1000) = 23,544/720 = 32.70 kW"
+     },
+     {
+      "l": "Step 2",
+      "c": "Two pumps: 65.4 kW"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240873,
+   "bankKey": "class4-water-dist",
+   "questionNum": 523,
+   "verdict": "WRONG",
+   "note": "Sample SD = sqrt(0.083/4) = 0.1441 mg/L, not 0.142 (steps round 0.144 to 0.142).",
+   "original": {
+    "question": "A SCADA system trend shows fluctuating chlorine residuals at the far end of a distribution network, with readings: 1.20, 1.05, 0.90, 0.85, and 1.10 mg/L over a 5-hour period. What is the standard deviation of the chlorine residuals?",
+    "options": [
+     "0.340 mg/L",
+     "0.089 mg/L",
+     "0.142 mg/L",
+     "0.213 mg/L"
+    ],
+    "correctIndex": 2,
+    "explanation": "Standard deviation is calculated as the square root of the variance of the sample."
+   },
+   "fix": {
+    "question": "A SCADA system trend shows fluctuating chlorine residuals at the far end of a distribution network, with readings: 1.20, 1.05, 0.90, 0.85, and 1.10 mg/L over a 5-hour period. What is the sample standard deviation of the chlorine residuals?",
+    "options": [
+     "0.340 mg/L",
+     "0.089 mg/L",
+     "0.144 mg/L",
+     "0.213 mg/L"
+    ],
+    "correctIndex": 2,
+    "explanation": "Mean = 1.02 mg/L; sum of squared deviations = 0.083; variance (n-1) = 0.02075; SD = 0.144 mg/L.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Mean = 5.10/5 = 1.02 mg/L"
+     },
+     {
+      "l": "Step 2",
+      "c": "Sum of squared differences = 0.0830"
+     },
+     {
+      "l": "Step 3",
+      "c": "0.0830/4 = 0.02075; sqrt = 0.144 mg/L"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240875,
+   "bankKey": "class4-water-dist",
+   "questionNum": 525,
+   "verdict": "WRONG",
+   "note": "With the stated formula (exponent 1.85) hL = 10.67 x 2500 x 1.4^1.85 / (110^1.85 x 0.9^4.87) = 13.9 m (13.8 m with 1.852), not 13.3 m. The steps compute 0.426 m with wrong unit handling and then force the key.",
+   "original": {
+    "question": "A transmission main is 2,500 m long and 900 mm in diameter. The internal roughness coefficient (Hazen-Williams, C) is 110. If the flow is 1,400 L/s, what is the head loss due to friction (in meters)? (Use Hazen-Williams: hL = 10.67×L×Q^1.85 / (C^1.85×d^4.87), L in m, Q in L/s, d in mm)",
+    "options": [
+     "8.4 m",
+     "21.5 m",
+     "36.8 m",
+     "13.3 m"
+    ],
+    "correctIndex": 3,
+    "explanation": "Plug values into the Hazen-Williams formula."
+   },
+   "fix": {
+    "question": "A transmission main is 2,500 m long and 900 mm in diameter. The internal roughness coefficient (Hazen-Williams, C) is 110. If the flow is 1,400 L/s, what is the head loss due to friction (in metres)? (Use SI Hazen-Williams: hL = 10.67 x L x Q^1.85 / (C^1.85 x d^4.87), with L in m, Q in m3/s, d in m)",
+    "options": [
+     "8.4 m",
+     "21.5 m",
+     "36.8 m",
+     "13.9 m"
+    ],
+    "correctIndex": 3,
+    "explanation": "Q = 1.4 m3/s, d = 0.9 m. hL = 10.67 x 2,500 x 1.4^1.85 / (110^1.85 x 0.9^4.87) = 13.9 m.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Q = 1,400 L/s = 1.4 m3/s; d = 0.9 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "hL = 10.67 x 2,500 x 1.4^1.85 / (110^1.85 x 0.9^4.87)"
+     },
+     {
+      "l": "Step 3",
+      "c": "hL = 13.9 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240879,
+   "bankKey": "class4-water-dist",
+   "questionNum": 529,
+   "verdict": "WRONG",
+   "note": "6,000 x 0.14 = 840 m3/day, not 847; no option matches and the steps admit it.",
+   "original": {
+    "question": "A district metered area supplied by two reservoirs in parallel receives 2,750 m³/day from Reservoir A and 3,250 m³/day from Reservoir B. If the non-revenue water loss is 14% of total input, how many m³/day is lost?",
+    "options": [
+     "910 m³/day",
+     "658 m³/day",
+     "847 m³/day",
+     "770 m³/day"
+    ],
+    "correctIndex": 2,
+    "explanation": "Add both reservoir flows to get total input; multiply by 14%."
+   },
+   "fix": {
+    "question": "A district metered area supplied by two reservoirs in parallel receives 2,750 m3/day from Reservoir A and 3,250 m3/day from Reservoir B. If the non-revenue water loss is 14% of total input, how many m3/day is lost?",
+    "options": [
+     "910 m3/day",
+     "658 m3/day",
+     "840 m3/day",
+     "770 m3/day"
+    ],
+    "correctIndex": 2,
+    "explanation": "Total input = 2,750 + 3,250 = 6,000 m3/day; loss = 6,000 x 0.14 = 840 m3/day.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "2,750 + 3,250 = 6,000 m3/day"
+     },
+     {
+      "l": "Step 2",
+      "c": "6,000 x 0.14 = 840 m3/day"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240881,
+   "bankKey": "class4-water-dist",
+   "questionNum": 531,
+   "verdict": "WRONG",
+   "note": "1,800 x 0.41 + 4,400 x 0.29 = 738 + 1,276 = 2,014 kWh; the keyed 1,876 kWh is unsupported.",
+   "original": {
+    "question": "A variable speed pump operates over a daily cycle between 45 L/s and 110 L/s. The manufacturer provides specific energy uses: 0.41 kWh/m³ at 45 L/s and 0.29 kWh/m³ at 110 L/s. The station delivers 1,800 m³/day at 45 L/s and 4,400 m³/day at 110 L/s. What is the total daily energy consumption in kWh?",
+    "options": [
+     "2,940 kWh",
+     "1,876 kWh",
+     "1,340 kWh",
+     "2,450 kWh"
+    ],
+    "correctIndex": 1,
+    "explanation": "Total kWh = (volume at low flow × specific energy) + (volume at high flow × specific energy)"
+   },
+   "fix": {
+    "question": "A variable speed pump operates over a daily cycle between 45 L/s and 110 L/s. The manufacturer provides specific energy uses: 0.41 kWh/m3 at 45 L/s and 0.29 kWh/m3 at 110 L/s. The station delivers 1,800 m3/day at 45 L/s and 4,400 m3/day at 110 L/s. What is the total daily energy consumption in kWh?",
+    "options": [
+     "2,940 kWh",
+     "2,014 kWh",
+     "1,340 kWh",
+     "2,450 kWh"
+    ],
+    "correctIndex": 1,
+    "explanation": "Total = 1,800 x 0.41 + 4,400 x 0.29 = 738 + 1,276 = 2,014 kWh.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Low flow: 1,800 x 0.41 = 738 kWh"
+     },
+     {
+      "l": "Step 2",
+      "c": "High flow: 4,400 x 0.29 = 1,276 kWh"
+     },
+     {
+      "l": "Step 3",
+      "c": "Total = 2,014 kWh"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240882,
+   "bankKey": "class4-water-dist",
+   "questionNum": 532,
+   "verdict": "WRONG",
+   "note": "Power = 0.083 m3/s x 180 kPa = 14.94 kW, not 15.48 kW.",
+   "original": {
+    "question": "A pressure reducing valve (PRV) is set to maintain 340 kPa downstream. If upstream pressure is 520 kPa and the flow is 83 L/s, what is the energy (kW) dissipated across the PRV?",
+    "options": [
+     "15.48 kW",
+     "18.55 kW",
+     "13.68 kW",
+     "11.84 kW"
+    ],
+    "correctIndex": 0,
+    "explanation": "Power dissipated = Q × ΔP; Q in m³/s and ΔP in kPa gives kW directly."
+   },
+   "fix": {
+    "question": "A pressure reducing valve (PRV) is set to maintain 340 kPa downstream. If upstream pressure is 520 kPa and the flow is 83 L/s, what is the energy (kW) dissipated across the PRV?",
+    "options": [
+     "14.94 kW",
+     "18.55 kW",
+     "13.68 kW",
+     "11.84 kW"
+    ],
+    "correctIndex": 0,
+    "explanation": "Power dissipated = Q x delta P; Q in m3/s and delta P in kPa gives kW directly. 0.083 x 180 = 14.94 kW.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "delta P = 520 - 340 = 180 kPa"
+     },
+     {
+      "l": "Step 2",
+      "c": "Q = 83 L/s = 0.083 m3/s"
+     },
+     {
+      "l": "Step 3",
+      "c": "Power = 0.083 x 180 = 14.94 kW"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240884,
+   "bankKey": "class4-water-dist",
+   "questionNum": 534,
+   "verdict": "WRONG",
+   "note": "Ill-posed: parallel pumps share the same head, 'headloss factor 2.25 under dual operation' is not tied to a flow ratio (2.25 = 1.5^2, but flow doubles from 65 to 130 which would give factor 4), and the steps never derive 38.5 m. Not repairable without inventing system data.",
+   "original": {
+    "question": "For a system with two duty pumps in parallel, each rated at 65 L/s at a head of 38 m, the system curve at dual-pump operation indicates total flow of 130 L/s. If system headlosses increase by a factor of 2.25 under dual operation, what is the resulting head per pump?",
+    "options": [
+     "48.2 m",
+     "34.2 m",
+     "45.0 m",
+     "38.5 m"
+    ],
+    "correctIndex": 3,
+    "explanation": "Head per pump increases by the square of the flow ratio according to system curve."
+   },
+   "fix": null
+  },
+  {
+   "id": 240889,
+   "bankKey": "class4-water-dist",
+   "questionNum": 539,
+   "verdict": "WRONG",
+   "note": "(1.03)^-60 = 0.1697, factor = 27.676; PMT = 465,000 / 27.676 = $16,800, not $22,600 (steps themselves get ~$16,792 and then pick the key).",
+   "original": {
+    "question": "A city’s distribution life cycle cost analysis finds a present value of maintenance costs at $465,000 for a pipe with a design life of 60 years. If interest rate is 3% and annual maintenance is constant, what is the annual maintenance cost (rounded to nearest $10)? (Use present value of an annuity formula: PV = PMT × [(1–(1+r)⁻ⁿ)/r])",
+    "options": [
+     "$14,410",
+     "$95,300",
+     "$38,800",
+     "$22,600"
+    ],
+    "correctIndex": 3,
+    "explanation": "Rearrange the present value annuity formula to solve for PMT."
+   },
+   "fix": {
+    "question": "A city's distribution life cycle cost analysis finds a present value of maintenance costs at $465,000 for a pipe with a design life of 60 years. If interest rate is 3% and annual maintenance is constant, what is the annual maintenance cost (rounded to nearest $100)? (Use PV = PMT x [(1-(1+r)^-n)/r])",
+    "options": [
+     "$14,410",
+     "$95,300",
+     "$38,800",
+     "$16,800"
+    ],
+    "correctIndex": 3,
+    "explanation": "Annuity factor = (1 - 1.03^-60)/0.03 = 27.676. PMT = 465,000 / 27.676 = $16,800.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "(1.03)^-60 = 0.1697"
+     },
+     {
+      "l": "Step 2",
+      "c": "Factor = (1 - 0.1697)/0.03 = 27.68"
+     },
+     {
+      "l": "Step 3",
+      "c": "PMT = 465,000 / 27.68 = $16,800"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240891,
+   "bankKey": "class4-water-dist",
+   "questionNum": 541,
+   "verdict": "WRONG",
+   "note": "SI Hazen-Williams: Q = 0.35 m3/s, d = 0.4 m, C = 130, L = 1,200 m gives hL = 19.3 m, not 5.9 m (steps contain arithmetic nonsense).",
+   "original": {
+    "question": "A 1,200 m length of 400 mm diameter ductile iron pipe is conveying water at a flow rate of 350 L/s. Using the Hazen-Williams equation with C = 130, what is the total head loss (in metres) over this section?",
+    "options": [
+     "7.4",
+     "9.8",
+     "5.9",
+     "2.6"
+    ],
+    "correctIndex": 2,
+    "explanation": "Apply Hazen-Williams equation for head loss and use appropriate conversions."
+   },
+   "fix": {
+    "question": "A 1,200 m length of 400 mm diameter ductile iron pipe is conveying water at a flow rate of 350 L/s. Using the Hazen-Williams equation with C = 130, what is the total head loss (in metres) over this section?",
+    "options": [
+     "7.4",
+     "9.8",
+     "19.3",
+     "2.6"
+    ],
+    "correctIndex": 2,
+    "explanation": "hL = 10.67 x 1200 x 0.35^1.852 / (130^1.852 x 0.4^4.87) = 19.3 m.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Q = 0.35 m3/s, d = 0.4 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "hL = 10.67 x 1200 x 0.35^1.852 / (130^1.852 x 0.4^4.87)"
+     },
+     {
+      "l": "Step 3",
+      "c": "hL = 19.3 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240893,
+   "bankKey": "class4-water-dist",
+   "questionNum": 543,
+   "verdict": "WRONG",
+   "note": "P = Q x delta P / efficiency = 0.1667 m3/s x 250 kPa / 0.78 = 53.4 kW. The keyed 69.0 kW is not supported; the steps compute 53.4-53.5 and then select the key.",
+   "original": {
+    "question": "A pump station must increase the pressure by 250 kPa to deliver flow to a high zone. If the pump has an efficiency of 78% and supplies 600 m³/h, what is the required power input to the pump (in kW)?",
+    "options": [
+     "56.9",
+     "51.2",
+     "69.0",
+     "84.7"
+    ],
+    "correctIndex": 2,
+    "explanation": "Use the formula: Power = (Q × ΔP) / (η × 1000), with Q in L/s and ΔP in kPa."
+   },
+   "fix": {
+    "question": "A pump station must increase the pressure by 250 kPa to deliver flow to a high zone. If the pump has an efficiency of 78% and supplies 600 m3/h, what is the required power input to the pump (in kW)?",
+    "options": [
+     "56.9",
+     "51.2",
+     "53.4",
+     "84.7"
+    ],
+    "correctIndex": 2,
+    "explanation": "Power = (Q x delta P) / efficiency with Q in m3/s and delta P in kPa. Q = 600/3,600 = 0.1667 m3/s. Power = 0.1667 x 250 / 0.78 = 53.4 kW.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Q = 600 / 3,600 = 0.1667 m3/s"
+     },
+     {
+      "l": "Step 2",
+      "c": "Hydraulic power = 0.1667 x 250 = 41.7 kW"
+     },
+     {
+      "l": "Step 3",
+      "c": "Input power = 41.7 / 0.78 = 53.4 kW"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240894,
+   "bankKey": "class4-water-dist",
+   "questionNum": 544,
+   "verdict": "WRONG",
+   "note": "The steps compute 3.81 L/s and then keep 2.67. Also the premise (pressure falls in proportion to stored volume) is not valid for a pressure zone. Repaired as a reservoir level-drop problem: 40/700 x 180 m3 = 10.3 m3 over 2,700 s = 3.81 L/s.",
+   "original": {
+    "question": "You observe a drop in pressure from 700 kPa to 660 kPa over 45 minutes in a pressure zone with a static volume of 180 m³. What is the average rate of water loss (L/s) during this period?",
+    "options": [
+     "2.67",
+     "0.91",
+     "1.44",
+     "5.00"
+    ],
+    "correctIndex": 0,
+    "explanation": "Change in pressure relates to change in volume, so loss = ΔV / time."
+   },
+   "fix": {
+    "question": "A cylindrical reservoir holds 180 m3 at a water depth of 7.00 m. With no inflow, the level falls to 6.60 m in 45 minutes. What is the average outflow rate (L/s) during this period?",
+    "options": [
+     "3.81",
+     "0.91",
+     "1.44",
+     "5.00"
+    ],
+    "correctIndex": 0,
+    "explanation": "Volume lost = 180 x (0.40/7.00) = 10.29 m3 = 10,290 L. Time = 45 x 60 = 2,700 s. Rate = 10,290 / 2,700 = 3.81 L/s.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Fraction lost = 0.40/7.00 = 0.0571"
+     },
+     {
+      "l": "Step 2",
+      "c": "Volume = 0.0571 x 180 = 10.29 m3 = 10,290 L"
+     },
+     {
+      "l": "Step 3",
+      "c": "Rate = 10,290 / 2,700 = 3.81 L/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240896,
+   "bankKey": "class4-water-dist",
+   "questionNum": 546,
+   "verdict": "WRONG",
+   "note": "Assuming 500 m3 at 5.7 m depth, volume lost = 500 x 0.9/5.7 = 78.9 m3 over 2,400 s = 32.9 L/s, not 187.5 L/s (steps say so).",
+   "original": {
+    "question": "A 500 m³ reservoir is monitored by SCADA. The water level drops from 5.7 m to 4.8 m in 40 minutes. What is the outflow rate in L/s?",
+    "options": [
+     "75.0",
+     "24.5",
+     "187.5",
+     "112.5"
+    ],
+    "correctIndex": 2,
+    "explanation": "Volume change/time gives flow; convert units as required."
+   },
+   "fix": {
+    "question": "A reservoir with vertical walls holds 500 m3 at a depth of 5.7 m and is monitored by SCADA. The water level drops from 5.7 m to 4.8 m in 40 minutes. What is the average outflow rate in L/s?",
+    "options": [
+     "75.0",
+     "24.5",
+     "32.9",
+     "112.5"
+    ],
+    "correctIndex": 2,
+    "explanation": "Volume lost = 500 x (0.9/5.7) = 78.95 m3 = 78,950 L over 2,400 s = 32.9 L/s.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Level drop = 5.7 - 4.8 = 0.9 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "Volume = 500 x 0.9/5.7 = 78.95 m3"
+     },
+     {
+      "l": "Step 3",
+      "c": "Rate = 78,950 L / 2,400 s = 32.9 L/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240899,
+   "bankKey": "class4-water-dist",
+   "questionNum": 549,
+   "verdict": "WRONG",
+   "note": "128,500/31/780 = 5.316 m3/d = 5,316 L, not 5,401 L.",
+   "original": {
+    "question": "A district meter records 128,500 m³ through a zone over 31 days. The zone has 780 service connections. What is the average daily consumption per connection (to nearest L)?",
+    "options": [
+     "4,995",
+     "6,100",
+     "5,401",
+     "5,801"
+    ],
+    "correctIndex": 2,
+    "explanation": "Divide total consumption by days, then by connections."
+   },
+   "fix": {
+    "question": "A district meter records 128,500 m3 through a zone over 31 days. The zone has 780 service connections. What is the average daily consumption per connection (to nearest L)?",
+    "options": [
+     "4,995",
+     "6,100",
+     "5,316",
+     "5,801"
+    ],
+    "correctIndex": 2,
+    "explanation": "128,500 / 31 = 4,145.2 m3/d; / 780 = 5.316 m3/d = 5,316 L per connection per day.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "128,500 / 31 = 4,145.2 m3/d"
+     },
+     {
+      "l": "Step 2",
+      "c": "4,145.2 / 780 = 5.316 m3/d"
+     },
+     {
+      "l": "Step 3",
+      "c": "5.316 x 1,000 = 5,316 L"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240900,
+   "bankKey": "class4-water-dist",
+   "questionNum": 550,
+   "verdict": "UNCLEAR",
+   "note": "'Apparent real loss' is contradictory (apparent losses are meter error and unauthorized use; real losses are physical leakage). The 4.3 L/s is excess (burst) leakage after removing legitimate use and background leakage.",
+   "original": {
+    "question": "A PRV zone experiences a night minimum inflow of 8.7 L/s. Estimated legitimate night use is 2.9 L/s and background leakage is 1.5 L/s. What is the apparent real loss rate (in L/s)?",
+    "options": [
+     "6.5",
+     "2.1",
+     "4.3",
+     "5.8"
+    ],
+    "correctIndex": 2,
+    "explanation": "Subtract legitimate and background from night inflow."
+   },
+   "fix": {
+    "question": "A PRV zone experiences a night minimum inflow of 8.7 L/s. Estimated legitimate night use is 2.9 L/s and background leakage is 1.5 L/s. What is the excess (burst) leakage rate in L/s?",
+    "options": [
+     "6.5",
+     "2.1",
+     "4.3",
+     "5.8"
+    ],
+    "correctIndex": 2,
+    "explanation": "Excess leakage = night inflow - legitimate night use - background leakage = 8.7 - 2.9 - 1.5 = 4.3 L/s.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Excess leakage = 8.7 - 2.9 - 1.5 = 4.3 L/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240902,
+   "bankKey": "class4-water-dist",
+   "questionNum": 552,
+   "verdict": "WRONG",
+   "note": "42 kPa = 4.28 m total over 2,800 m = 0.153 m per 100 m, not 1.5 m (the steps show 0.153 then keep 1.5). Also elevation difference is unstated; assumed level.",
+   "original": {
+    "question": "A 2,800 m length of 450 mm pipeline has a Hazen-Williams C of 120. If the static pressure at point A is 640 kPa and at point B (downstream) it is 598 kPa, what is the head loss per 100 m (in metres)?",
+    "options": [
+     "1.5",
+     "2.4",
+     "0.9",
+     "3.2"
+    ],
+    "correctIndex": 0,
+    "explanation": "Find total head loss, convert kPa to m, then per 100 m."
+   },
+   "fix": {
+    "question": "A 2,800 m length of 450 mm pipeline has a Hazen-Williams C of 120. The pipe is level. If the pressure at point A is 640 kPa and at point B (downstream) it is 598 kPa, what is the head loss per 100 m (in metres)?",
+    "options": [
+     "0.15",
+     "2.4",
+     "0.9",
+     "3.2"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pressure difference = 42 kPa = 42/9.807 = 4.28 m of head. Per 100 m: 4.28 / 28 = 0.15 m.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "640 - 598 = 42 kPa"
+     },
+     {
+      "l": "Step 2",
+      "c": "42 / 9.807 = 4.28 m"
+     },
+     {
+      "l": "Step 3",
+      "c": "4.28 / (2,800/100) = 0.15 m per 100 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240903,
+   "bankKey": "class4-water-dist",
+   "questionNum": 553,
+   "verdict": "WRONG",
+   "note": "Uses psi (62.5 psi) in a Canadian bank, and the key is wrong: 62.5 psi = 431 kPa; 431 - 285 = 146 kPa = 14.9 m, not 20.6 m (steps get ~15 m and then keep the key). Repaired in kPa.",
+   "original": {
+    "question": "A variable-speed booster supplies a zone with a fluctuating demand between 200 and 750 m³/h. If the minimum required zone pressure is 62.5 psi, and the incoming pressure is 285 kPa, what is the minimum head the booster must supply (in metres)?",
+    "options": [
+     "28.1",
+     "17.3",
+     "34.8",
+     "20.6"
+    ],
+    "correctIndex": 3,
+    "explanation": "Convert pressure to metres, subtract incoming head."
+   },
+   "fix": {
+    "question": "A variable-speed booster supplies a zone with a fluctuating demand between 200 and 750 m3/h. If the minimum required zone pressure is 430 kPa, and the incoming pressure is 285 kPa, what is the minimum head the booster must supply (in metres)?",
+    "options": [
+     "28.1",
+     "17.3",
+     "34.8",
+     "14.8"
+    ],
+    "correctIndex": 3,
+    "explanation": "Required pressure rise = 430 - 285 = 145 kPa. Head = 145 / 9.807 = 14.8 m.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "430 - 285 = 145 kPa"
+     },
+     {
+      "l": "Step 2",
+      "c": "145 / 9.807 = 14.8 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240905,
+   "bankKey": "class4-water-dist",
+   "questionNum": 555,
+   "verdict": "WRONG",
+   "note": "1,100 x 0.83 = 913 m3 over 16,200 s = 56.4 L/s, not 63.0 L/s (steps admit it).",
+   "original": {
+    "question": "A 1,100 m³ clearwell must be emptied from full to 17% volume in exactly 4.5 hours during a SCADA test. What constant outflow rate (in L/s) should be set?",
+    "options": [
+     "63.0",
+     "125.0",
+     "71.5",
+     "47.0"
+    ],
+    "correctIndex": 0,
+    "explanation": "Find the required outflow for the designated drop."
+   },
+   "fix": {
+    "question": "A 1,100 m3 clearwell must be emptied from full to 17% volume in exactly 4.5 hours during a SCADA test. What constant outflow rate (in L/s) should be set?",
+    "options": [
+     "56.4",
+     "125.0",
+     "71.5",
+     "47.0"
+    ],
+    "correctIndex": 0,
+    "explanation": "Volume to draw down = 1,100 x (1 - 0.17) = 913 m3. Time = 16,200 s. Rate = 913,000 / 16,200 = 56.4 L/s.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "1,100 x 0.83 = 913 m3"
+     },
+     {
+      "l": "Step 2",
+      "c": "4.5 x 3,600 = 16,200 s"
+     },
+     {
+      "l": "Step 3",
+      "c": "913,000 L / 16,200 s = 56.4 L/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240907,
+   "bankKey": "class4-water-dist",
+   "questionNum": 557,
+   "verdict": "WRONG",
+   "note": "(950,000 - 75,000)/35 + 32,000 = 25,000 + 32,000 = $57,000/yr; the keyed $28,143 is unsupported (steps show 57,000).",
+   "original": {
+    "question": "A pump system upgrade will cost $950,000 with a forecasted annual operating cost of $32,000 and a salvage value of $75,000 at the end of its 35-year life. What is the average annualized cost (ignoring interest)?",
+    "options": [
+     "28,143",
+     "21,952",
+     "25,417",
+     "31,286"
+    ],
+    "correctIndex": 0,
+    "explanation": "Annualized cost: (Initial cost – salvage)/life + annual operating."
+   },
+   "fix": {
+    "question": "A pump system upgrade will cost $950,000 with a forecasted annual operating cost of $32,000 and a salvage value of $75,000 at the end of its 35-year life. What is the average annualized cost (ignoring interest)?",
+    "options": [
+     "57,000",
+     "21,952",
+     "25,417",
+     "31,286"
+    ],
+    "correctIndex": 0,
+    "explanation": "Annualized cost = (initial cost - salvage)/life + annual operating cost = (950,000 - 75,000)/35 + 32,000 = 25,000 + 32,000 = $57,000.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "(950,000 - 75,000)/35 = $25,000"
+     },
+     {
+      "l": "Step 2",
+      "c": "25,000 + 32,000 = $57,000"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240908,
+   "bankKey": "class4-water-dist",
+   "questionNum": 558,
+   "verdict": "WRONG",
+   "note": "n = ln(8.3/6.5)/ln(62/55) = 0.2445/0.1198 = 2.04, not 1.38 (steps compute 2.04). Also 2.00 option would be near-correct, so replaced.",
+   "original": {
+    "question": "A pressure managed zone’s average night pressure is reduced from 62 m to 55 m, reducing leakage from 8.3 L/s to 6.5 L/s. What is the leakage exponent n (rounded to 2 decimal places)?",
+    "options": [
+     "1.38",
+     "0.85",
+     "2.00",
+     "1.12"
+    ],
+    "correctIndex": 0,
+    "explanation": "n = log(Q1/Q2) / log(P1/P2)"
+   },
+   "fix": {
+    "question": "A pressure managed zone's average night pressure is reduced from 62 m to 55 m, reducing leakage from 8.3 L/s to 6.5 L/s. What is the leakage exponent n (rounded to 2 decimal places)?",
+    "options": [
+     "2.04",
+     "0.85",
+     "1.38",
+     "1.12"
+    ],
+    "correctIndex": 0,
+    "explanation": "n = log(Q1/Q2) / log(P1/P2) = log(1.277) / log(1.127) = 2.04.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Q1/Q2 = 8.3/6.5 = 1.277; P1/P2 = 62/55 = 1.127"
+     },
+     {
+      "l": "Step 2",
+      "c": "n = ln(1.277)/ln(1.127) = 0.2445/0.1198 = 2.04"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240909,
+   "bankKey": "class4-water-dist",
+   "questionNum": 559,
+   "verdict": "WRONG",
+   "note": "Question wording is ambiguous (operating range 4.5 m vs lowest elevation 1.1 m) and the key 25.0 h matches neither reading (3.4 m x 2,600 = 8,840 m3 / 432 = 20.5 h; 4.5 m range = 27.1 h). Repaired with high level 4.5 m and low level 1.1 m.",
+   "original": {
+    "question": "A service reservoir has an operating range of 4.5 m and an area of 2,600 m². If the lowest allowed water elevation is 1.1 m, how many hours of storage are provided at a constant outflow of 120 L/s?",
+    "options": [
+     "18.5",
+     "11.4",
+     "25.0",
+     "9.3"
+    ],
+    "correctIndex": 2,
+    "explanation": "Volume between max and min elevation, then divide by outflow rate."
+   },
+   "fix": {
+    "question": "A service reservoir has a maximum water level of 4.5 m and a lowest allowed water level of 1.1 m. Its area is 2,600 m2. How many hours of storage are provided between these levels at a constant outflow of 120 L/s?",
+    "options": [
+     "18.5",
+     "11.4",
+     "20.5",
+     "9.3"
+    ],
+    "correctIndex": 2,
+    "explanation": "Usable depth = 4.5 - 1.1 = 3.4 m; usable volume = 3.4 x 2,600 = 8,840 m3. Outflow = 120 x 3,600 = 432 m3/h. Storage time = 8,840 / 432 = 20.5 h.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Usable depth = 3.4 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "Volume = 3.4 x 2,600 = 8,840 m3"
+     },
+     {
+      "l": "Step 3",
+      "c": "Outflow = 432 m3/h"
+     },
+     {
+      "l": "Step 4",
+      "c": "8,840 / 432 = 20.5 h"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240911,
+   "bankKey": "class4-water-dist",
+   "questionNum": 561,
+   "verdict": "WRONG",
+   "note": "Minimum diameter D = sqrt(4 x 0.2 / pi) = 0.5046 m = 505 mm (steps round 504.6 to 507 'as closest option'). Minor; 505 mm is the exact minimum.",
+   "original": {
+    "question": "What would be the required internal diameter (in mm) of a circular main conveying 520 L/s, if velocity must not exceed 2.60 m/s?",
+    "options": [
+     "412",
+     "381",
+     "615",
+     "507"
+    ],
+    "correctIndex": 3,
+    "explanation": "Q = v × A; rearrange for diameter."
+   },
+   "fix": {
+    "question": "What would be the required internal diameter (in mm) of a circular main conveying 520 L/s, if velocity must not exceed 2.60 m/s?",
+    "options": [
+     "412",
+     "381",
+     "615",
+     "505"
+    ],
+    "correctIndex": 3,
+    "explanation": "A = Q/v = 0.52/2.6 = 0.2 m2. D = sqrt(4A/pi) = sqrt(0.2546) = 0.505 m = 505 mm.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Q = 0.52 m3/s"
+     },
+     {
+      "l": "Step 2",
+      "c": "A = 0.52 / 2.6 = 0.2 m2"
+     },
+     {
+      "l": "Step 3",
+      "c": "D = sqrt(4 x 0.2 / pi) = 0.505 m = 505 mm"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240912,
+   "bankKey": "class4-water-dist",
+   "questionNum": 562,
+   "verdict": "WRONG",
+   "note": "Solving the stated formula (SI, Q = 0.45 m3/s, D = 0.6 m, L = 1,200 m, hL = 9 m) gives C = about 87, not 144. The steps' intermediate numbers (numerator 5,614) are miscalculated.",
+   "original": {
+    "question": "A primary transmission main (1,200 m long) delivers 450 L/s to a zone, with a measured head loss of 9 m along the pipe. What is the Hazen-Williams C-value for this pipeline? (D = 600 mm). Use the formula: hL = 10.67 × L × Q^1.852 / (C^1.852 × D^4.87).",
+    "options": [
+     "144",
+     "156",
+     "139",
+     "128"
+    ],
+    "correctIndex": 0,
+    "explanation": "Rearrange the Hazen-Williams formula to solve for C. Substitute the given values and solve."
+   },
+   "fix": {
+    "question": "A primary transmission main (1,200 m long) delivers 450 L/s to a zone, with a measured head loss of 9 m along the pipe. What is the Hazen-Williams C-value for this pipeline? (D = 600 mm). Use the SI formula: hL = 10.67 x L x Q^1.852 / (C^1.852 x D^4.87), with Q in m3/s and D in m.",
+    "options": [
+     "87",
+     "144",
+     "156",
+     "128"
+    ],
+    "correctIndex": 0,
+    "explanation": "Rearranging: C = [10.67 x L x Q^1.852 / (hL x D^4.87)]^(1/1.852) = [10.67 x 1,200 x 0.45^1.852 / (9 x 0.6^4.87)]^(0.54) = about 87.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Q = 0.45 m3/s, D = 0.6 m, L = 1,200 m, hL = 9 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "C^1.852 = 10.67 x 1,200 x 0.45^1.852 / (9 x 0.6^4.87) = 3,902"
+     },
+     {
+      "l": "Step 3",
+      "c": "C = 3,902^(1/1.852) = 87"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240913,
+   "bankKey": "class4-water-dist",
+   "questionNum": 563,
+   "verdict": "WRONG",
+   "note": "O&M is a cost and must be subtracted. NPV = -1,200,000 - 30,000 x 12.462 + 100,000 x 0.3769 = -$1,536,177. The keyed -$667,815 is not derivable (the stated formula as written gives -$788,445, which wrongly adds costs).",
+   "original": {
+    "question": "A water distribution utility is analyzing the Net Present Value (NPV) for replacing a pump station. The initial cost is $1,200,000. Annual O&M costs are $30,000. Salvage value at year 20 is $100,000. The discount rate is 5%. What is the NPV of this project? (NPV = -Initial cost + Σ[Annual O&M × PVF] + [Salvage × PVF_end]; PVF = Present Value Factor)",
+    "options": [
+     "-$667,815",
+     "-$600,127",
+     "-$675,420",
+     "-$750,000"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculate present value of O&M (as an annuity), add the present value of the salvage, subtract initial cost."
+   },
+   "fix": {
+    "question": "A water distribution utility is analyzing the Net Present Value (NPV) for replacing a pump station. The initial cost is $1,200,000. Annual O&M costs are $30,000 for 20 years. Salvage value at year 20 is $100,000. The discount rate is 5%. What is the NPV of this project (costs only, so NPV is negative)?",
+    "options": [
+     "-$1,536,177",
+     "-$600,127",
+     "-$675,420",
+     "-$750,000"
+    ],
+    "correctIndex": 0,
+    "explanation": "NPV = -initial cost - PV of O&M + PV of salvage = -1,200,000 - 30,000 x 12.462 + 100,000 x 0.3769 = -$1,536,177.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "PV of O&M = 30,000 x 12.462 = $373,866"
+     },
+     {
+      "l": "Step 2",
+      "c": "PV of salvage = 100,000 x 0.3769 = $37,689"
+     },
+     {
+      "l": "Step 3",
+      "c": "NPV = -1,200,000 - 373,866 + 37,689 = -$1,536,177"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240915,
+   "bankKey": "class4-water-dist",
+   "questionNum": 565,
+   "verdict": "UNCLEAR",
+   "note": "A PRV set to 490 kPa maintains 490 kPa at the valve; 'downstream pressure at the valve' is therefore 490 kPa, and the keyed 560 kPa is the static pressure at a point 7 m lower. The question is misleading as worded.",
+   "original": {
+    "question": "A pressure reducing valve (PRV) must control pressure from 750 kPa down to 490 kPa. If the elevation change downstream is 7 m lower than the upstream side, what is the downstream pressure at the valve (in kPa), assuming static conditions and ignoring loss through the valve?",
+    "options": [
+     "420 kPa",
+     "700 kPa",
+     "620 kPa",
+     "560 kPa"
+    ],
+    "correctIndex": 3,
+    "explanation": "Calculate gain in pressure due to decrease in elevation (every 1 m drop increases pressure by 9.81 kPa)."
+   },
+   "fix": {
+    "question": "A pressure reducing valve (PRV) holds a downstream setpoint of 490 kPa at the valve. A hydrant 7 m lower in elevation on the downstream side is connected by a main with no flow (static conditions). What is the static pressure at the hydrant (in kPa)?",
+    "options": [
+     "420 kPa",
+     "700 kPa",
+     "620 kPa",
+     "560 kPa"
+    ],
+    "correctIndex": 3,
+    "explanation": "Every 1 m of elevation drop adds 9.807 kPa. 7 m x 9.807 = 68.7 kPa. Pressure = 490 + 68.7 = 559 kPa, about 560 kPa.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "7 m x 9.807 kPa/m = 68.7 kPa"
+     },
+     {
+      "l": "Step 2",
+      "c": "490 + 68.7 = 558.7 kPa, about 560 kPa"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240918,
+   "bankKey": "class4-water-dist",
+   "questionNum": 568,
+   "verdict": "WRONG",
+   "note": "P = 0.105 x 9.81 x 41.2 / 0.78 = 54.4 kW; the keyed 57.7 kW is unsupported (steps compute 54.4 and then select the 'closest' key).",
+   "original": {
+    "question": "A booster pump operates at 78% efficiency and must deliver 105 L/s with a total dynamic head (TDH) of 41.2 m. What power (in kW) must the motor supply? (Use: Power = (Flow in m³/s × g × TDH × ρ) / (efficiency × 1,000); g = 9.81 m/s², ρ = 1,000 kg/m³)",
+    "options": [
+     "57.7 kW",
+     "45.1 kW",
+     "74.5 kW",
+     "68.2 kW"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculate theoretical power, account for efficiency."
+   },
+   "fix": {
+    "question": "A booster pump operates at 78% efficiency and must deliver 105 L/s with a total dynamic head (TDH) of 41.2 m. What power (in kW) must the motor supply? (Use: Power = (Flow in m3/s x g x TDH x rho) / (efficiency x 1,000); g = 9.81 m/s2, rho = 1,000 kg/m3)",
+    "options": [
+     "54.4 kW",
+     "45.1 kW",
+     "74.5 kW",
+     "68.2 kW"
+    ],
+    "correctIndex": 0,
+    "explanation": "Power = (0.105 x 9.81 x 41.2 x 1,000) / (0.78 x 1,000) = 54.4 kW.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Q = 0.105 m3/s"
+     },
+     {
+      "l": "Step 2",
+      "c": "Hydraulic power = 0.105 x 9.81 x 41.2 = 42.44 kW"
+     },
+     {
+      "l": "Step 3",
+      "c": "Motor power = 42.44 / 0.78 = 54.4 kW"
+     }
+    ]
+   }
+  },
+  {
+   "id": 35048,
+   "bankKey": "oit",
+   "questionNum": 23,
+   "verdict": "WRONG",
+   "note": "Self-contradictory: 0.08 mg/L is above 0.05 mg/L so the explanation's 'out of compliance' claim is false. Residual at entry to distribution is judged against the CT-required primary-disinfection residual, not 0.05 mg/L. The '24 hours notify the Director' rule is invented; adverse results under O. Reg. 170/03 Schedule 16 / SDWA s.18 are reported immediately to the MOH and the MECP Spills Action Centre, with corrective action per Schedule 17.",
+   "original": {
+    "question": "Under O. Reg. 170/03, a water treatment plant operator discovers that the chlorine residual at the entry to the distribution system has dropped to 0.08 mg/L. What is the required action?",
+    "options": [
+     "Immediately investigate the cause, take corrective action, and notify the Director if the problem cannot be resolved within 24 hours",
+     "Log the result and continue monitoring — 0.08 mg/L is above zero",
+     "Increase the chlorine dose and collect a confirmation sample within 7 days",
+     "Issue a Boil Water Advisory immediately"
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 170/03 requires a minimum free chlorine residual of 0.05 mg/L at the entry to the distribution system. At 0.08 mg/L, the system is out of compliance. The operator must immediately investigate, take corrective action, and notify the Director if the adverse condition cannot be corrected within 24 hours."
+   },
+   "fix": {
+    "question": "Under O. Reg. 170/03, a distribution-system sample from a chlorinated system shows a free chlorine residual of 0.03 mg/L. What is the required reporting?",
+    "options": [
+     "Notify the Medical Officer of Health and the MECP Spills Action Centre immediately and take corrective action",
+     "Log the result and recheck at the next routine sample",
+     "Notify the MECP only if the result persists for 24 hours",
+     "Report it in the annual report only"
+    ],
+    "correctIndex": 0,
+    "explanation": "A free chlorine residual below 0.05 mg/L in distribution is an adverse test result under Schedule 16 of O. Reg. 170/03 and s.18 of the SDWA. It must be reported immediately to the local Medical Officer of Health and the MECP Spills Action Centre, and corrective action (e.g. flushing, increasing dose, resampling) must follow.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35088,
+   "bankKey": "oit",
+   "questionNum": 63,
+   "verdict": "JURISDICTION",
+   "note": "Ontario regulations do not set a 10 m (about 98 kPa) minimum static pressure. The MECP Design Guidelines for Drinking-Water Systems (guidance, not regulation) call for at least 140 kPa (20 psi) at ground level at all points under all flow conditions including fire flow, with about 275 kPa normal minimum. Confirmed via MECP-based watermain design criteria (140 kPa at max day plus fire flow).",
+   "original": {
+    "question": "According to Ontario regulations, what is the minimum static pressure that must be maintained in a municipal water distribution system?",
+    "options": [
+     "20 meters of water column",
+     "15 meters of water column",
+     "10 meters of water column",
+     "5 meters of water column"
+    ],
+    "correctIndex": 2,
+    "explanation": "Ontario regulations require a minimum static pressure of 10 meters of water column in municipal water distribution systems to ensure adequate flow and service."
+   },
+   "fix": {
+    "question": "According to the MECP Design Guidelines for Drinking-Water Systems, what minimum pressure should a distribution system maintain at ground level at all points, including during maximum day demand plus fire flow?",
+    "options": [
+     "70 kPa",
+     "140 kPa",
+     "275 kPa",
+     "550 kPa"
+    ],
+    "correctIndex": 1,
+    "explanation": "The MECP design guidance calls for at least 140 kPa (about 14 m of water, 20 psi) at ground level under maximum day demand plus fire flow. About 275 kPa is the usual minimum under normal conditions. This is design guidance, not a regulatory limit.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35101,
+   "bankKey": "oit",
+   "questionNum": 76,
+   "verdict": "UNCLEAR",
+   "note": "Answer is right, but the steps are unrelated (monthly pump-station inspections under O. Reg. 170/03, drinking water) and would mislead a learner on a sewage-works design question.",
+   "original": {
+    "question": "According to Ontario's Design Guidelines for Sewage Works, how should a sewage pumping station with two pump units be configured for reliable service?",
+    "options": [
+     "Use two same-size units and provide firm capacity with one unit out of service",
+     "Use two different-size units and require both to operate to provide firm capacity",
+     "Use two same-size units but calculate firm capacity on the assumption that both are available",
+     "Use any two pump sizes, provided that a high-level alarm is installed"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario sewage-works design guidance states that where two pumping units are provided, they should be the same size and should provide firm capacity with one unit out of service. This is engineering design guidance; applicable approvals and legal requirements take precedence."
+   },
+   "fix": {
+    "question": "According to Ontario's Design Guidelines for Sewage Works, how should a sewage pumping station with two pump units be configured for reliable service?",
+    "options": [
+     "Use two same-size units and provide firm capacity with one unit out of service",
+     "Use two different-size units and require both to operate to provide firm capacity",
+     "Use two same-size units but calculate firm capacity on the assumption that both are available",
+     "Use any two pump sizes, provided that a high-level alarm is installed"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario sewage-works design guidance states that where two pumping units are provided, they should be the same size and should provide firm capacity with one unit out of service. This is engineering design guidance; applicable approvals and legal requirements take precedence.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35107,
+   "bankKey": "oit",
+   "questionNum": 82,
+   "verdict": "UNCLEAR",
+   "note": "Answer 194 kPa is correct, but the explanation is truncated and contains editing leakage ('original explanation ... not B as').",
+   "original": {
+    "question": "Water flows through a horizontal pipe. At point A, the velocity is 2 m/s and the pressure is 200 kPa. At point B, the velocity increases to 4 m/s. What is the pressure at point B, according to Bernoulli\\'s principle? (Assume water density = 1000 kg/m³)",
+    "options": [
+     "194 kPa",
+     "188 kPa",
+     "182 kPa",
+     "176 kPa"
+    ],
+    "correctIndex": 0,
+    "explanation": "The calculation in the original explanation is correct. Using Bernoulli's principle for a horizontal pipe, the pressure at point B (P2) can be calculated as P1 + 0.5ρ(V1² - V2²). Plugging in the given values, P2 = 200,000 Pa + 0.5 × 1000 kg/m³ × ((2 m/s)² - (4 m/s)²) = 194,000 Pa, which converts to 194 kPa. Therefore, option A is the correct answer, not B as"
+   },
+   "fix": {
+    "question": "Water flows through a horizontal pipe. At point A, the velocity is 2 m/s and the pressure is 200 kPa. At point B, the velocity increases to 4 m/s. What is the pressure at point B, according to Bernoulli's principle? (Assume water density = 1000 kg/m3)",
+    "options": [
+     "194 kPa",
+     "188 kPa",
+     "182 kPa",
+     "176 kPa"
+    ],
+    "correctIndex": 0,
+    "explanation": "For a horizontal pipe, P2 = P1 + 0.5 x rho x (V1^2 - V2^2) = 200,000 + 0.5 x 1000 x (4 - 16) = 200,000 - 6,000 = 194,000 Pa = 194 kPa.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35108,
+   "bankKey": "oit",
+   "questionNum": 83,
+   "verdict": "UNCLEAR",
+   "note": "Answer 5.73 m is correct, but the explanation contains editing leakage ('The options have been corrected to include the calculated value').",
+   "original": {
+    "question": "A 500-meter long pipe with a diameter of 0.2 m has a friction factor of 0.02. If water flows at 1.5 m/s, calculate the head loss due to friction using the Darcy-Weisbach equation. (g = 9.81 m/s²)",
+    "options": [
+     "5.73 m",
+     "11.47 m",
+     "12.47 m",
+     "13.47 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "The head loss due to friction is calculated using the Darcy-Weisbach equation: hf = f × (L/D) × (V²/2g). Plugging in the given values: hf = 0.02 × (500 m / 0.2 m) × ((1.5 m/s)² / (2 × 9.81 m/s²)). This simplifies to 0.02 × 2500 × (2.25 / 19.62), which results in 50 × 0.1146789 ≈ 5.73 m. The options have been corrected to include the calculated value."
+   },
+   "fix": {
+    "question": "A 500-meter long pipe with a diameter of 0.2 m has a friction factor of 0.02. If water flows at 1.5 m/s, calculate the head loss due to friction using the Darcy-Weisbach equation. (g = 9.81 m/s2)",
+    "options": [
+     "5.73 m",
+     "11.47 m",
+     "12.47 m",
+     "13.47 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "hf = f x (L/D) x (V^2/2g) = 0.02 x (500/0.2) x (2.25/19.62) = 0.02 x 2500 x 0.11468 = 5.73 m.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35110,
+   "bankKey": "oit",
+   "questionNum": 85,
+   "verdict": "UNCLEAR",
+   "note": "Answer 0.6 m/s is consistent with the sewage-works guideline for forcemains, but the steps are about OBC minimum slopes of building drainage pipes and are unrelated.",
+   "original": {
+    "question": "According to Ontario's Design Guidelines for Sewage Works, what minimum velocity is identified for a sewage-pumping-station forcemain at the stated firm-capacity design condition?",
+    "options": [
+     "0.3 m/s",
+     "0.6 m/s",
+     "1.0 m/s",
+     "1.5 m/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "The sewage pumping-station guideline identifies a minimum forcemain velocity of 0.6 m/s under its stated firm-capacity design condition. This value applies to the scoped forcemain guidance; it is not a universal slope or velocity rule for municipal gravity sewers or building plumbing."
+   },
+   "fix": {
+    "question": "According to Ontario's Design Guidelines for Sewage Works, what minimum velocity is identified for a sewage-pumping-station forcemain at the stated firm-capacity design condition?",
+    "options": [
+     "0.3 m/s",
+     "0.6 m/s",
+     "1.0 m/s",
+     "1.5 m/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "The sewage pumping-station guideline identifies a minimum forcemain velocity of 0.6 m/s under its stated firm-capacity design condition. This value applies to the scoped forcemain guidance; it is not a universal slope or velocity rule for municipal gravity sewers or building plumbing.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35111,
+   "bankKey": "oit",
+   "questionNum": 86,
+   "verdict": "WRONG",
+   "note": "Steps substitute L = 10 m (and L/D = 66.67) instead of the stated 100 m; with those numbers hf would be about 0.109 m, not 1.088 m. Correct arithmetic: V = 1.132 m/s, hf = 0.025 x 666.67 x 0.06529 = 1.088 m, which rounds to 1.1 m; the key of 1.0 m is only the nearest option.",
+   "original": {
+    "question": "A pump is installed 5 meters above a clearwell. The suction pipe is 100 meters long with a diameter of 0.15 m. If the flow rate is 0.02 m³/s and the friction factor is 0.025, calculate the friction head loss in the suction pipe. (g = 9.81 m/s²)",
+    "options": [
+     "0.5 m",
+     "2.0 m",
+     "1.5 m",
+     "1.0 m"
+    ],
+    "correctIndex": 3,
+    "explanation": "Use the Darcy-Weisbach equation: hf = f × (L/D) × (V²/2g)\n\nStep 1 — Calculate pipe cross-sectional area:\nA = π/4 × D² = π/4 × (0.15)² = 0.01767 m²\n\nStep 2 — Calculate flow velocity:\nV = Q/A = 0.02 / 0.01767 = 1.132 m/s\n\nStep 3 — Apply Darcy-Weisbach:\nhf = 0.025 × (100/0.15) × (1.132²/(2 × 9.81))\nhf = 0.025 × 666.67 × (1.281/19.62)\nhf = 0.025 × 666.67 × 0.06529\nhf ≈ 1.088 m ≈ 1.0 m\n\nThe friction head loss is approximately 1.0 m."
+   },
+   "fix": {
+    "question": "A pump is installed 5 meters above a clearwell. The suction pipe is 100 meters long with a diameter of 0.15 m. If the flow rate is 0.02 m3/s and the friction factor is 0.025, calculate the friction head loss in the suction pipe. (g = 9.81 m/s2)",
+    "options": [
+     "0.5 m",
+     "1.1 m",
+     "1.5 m",
+     "2.0 m"
+    ],
+    "correctIndex": 1,
+    "explanation": "hf = f x (L/D) x (V^2/2g). A = pi/4 x 0.15^2 = 0.01767 m2; V = 0.02/0.01767 = 1.132 m/s; hf = 0.025 x (100/0.15) x (1.281/19.62) = 0.025 x 666.67 x 0.06529 = 1.09 m, about 1.1 m.",
+    "steps": [
+     {
+      "l": "Cross-sectional area",
+      "c": "A = pi x (0.15/2)^2 = 0.01767 m2"
+     },
+     {
+      "l": "Velocity",
+      "c": "V = Q/A = 0.02 / 0.01767 = 1.132 m/s"
+     },
+     {
+      "l": "Apply Darcy-Weisbach",
+      "c": "hf = 0.025 x (100 m / 0.15 m) x (1.132^2 / (2 x 9.81)) = 0.025 x 666.67 x 0.06529"
+     },
+     {
+      "l": "Result",
+      "c": "hf = 1.09 m, about 1.1 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 35121,
+   "bankKey": "oit",
+   "questionNum": 96,
+   "verdict": "WRONG",
+   "note": "P = 250,000 Pa x 0.008333 m3/s = 2,083 W = 2.08 kW; the marked option 2.05 kW does not match the stated explanation value of 2.083 kW (option should read 2.08 kW).",
+   "original": {
+    "question": "If a pump delivers 500 L/min at a pressure of 250 kPa, what is the approximate power output of the pump in kilowatts (kW)? (Assuming water density = 1000 kg/m³ and gravity = 9.81 m/s²).",
+    "options": [
+     "0.82 kW",
+     "3.06 kW",
+     "1.22 kW",
+     "2.05 kW"
+    ],
+    "correctIndex": 3,
+    "explanation": "Power (W) = Pressure (Pa) × Flow rate (m³/s). Convert units: 250 kPa = 250,000 Pa, 500 L/min = 0.00833 m³/s. Power = 250,000 × 0.00833 = 2083 W = 2.083 kW."
+   },
+   "fix": {
+    "question": "If a pump delivers 500 L/min at a pressure of 250 kPa, what is the approximate power output of the pump in kilowatts (kW)? (Assuming water density = 1000 kg/m3 and gravity = 9.81 m/s2).",
+    "options": [
+     "0.82 kW",
+     "3.06 kW",
+     "1.22 kW",
+     "2.08 kW"
+    ],
+    "correctIndex": 3,
+    "explanation": "Power (W) = Pressure (Pa) x Flow (m3/s) = 250,000 x 0.008333 = 2,083 W = 2.08 kW.",
+    "steps": [
+     {
+      "l": "Convert pressure",
+      "c": "250 kPa = 250,000 Pa"
+     },
+     {
+      "l": "Convert flow",
+      "c": "500 L/min / 1000 / 60 = 0.008333 m3/s"
+     },
+     {
+      "l": "Power",
+      "c": "250,000 x 0.008333 = 2,083 W"
+     },
+     {
+      "l": "To kW",
+      "c": "2,083 W / 1000 = 2.08 kW"
+     }
+    ]
+   }
+  },
+  {
+   "id": 35122,
+   "bankKey": "oit",
+   "questionNum": 97,
+   "verdict": "WRONG",
+   "note": "O. Reg. 169/03 does not list a 0.2 mg/L aesthetic objective for free chlorine; the explanation also invents an MAC and the steps contradict the key (they argue for 0.5 mg/L). 0.2 mg/L is the capability/target figure from O. Reg. 170/03 and the disinfection procedure, not an AO. Also off-module (Hydraulics).",
+   "original": {
+    "question": "Under Ontario's Drinking Water Quality Standards (O. Reg. 169/03), what is the aesthetic objective (AO) for free chlorine in drinking water?",
+    "options": [
+     "0.5 mg/L",
+     "0.2 mg/L",
+     "2.0 mg/L",
+     "4.0 mg/L"
+    ],
+    "correctIndex": 1,
+    "explanation": "The aesthetic objective (AO) for free chlorine in Ontario drinking water is ≤0.2 mg/L. This is not a health-based standard but rather a guideline to minimize taste and odour complaints. The maximum acceptable concentration (MAC) for chlorine is 2.0 mg/L based on health considerations. Operators must balance maintaining adequate disinfection residual (minimum 0.05 mg/L in distribution) while keeping levels below the AO to minimize customer complaints."
+   },
+   "fix": {
+    "question": "Under O. Reg. 170/03, secondary-disinfection equipment must be designed to be capable of achieving what free chlorine residual at all locations in the distribution system?",
+    "options": [
+     "0.05 mg/L",
+     "0.20 mg/L",
+     "0.50 mg/L",
+     "2.0 mg/L"
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 170/03 requires secondary-disinfection equipment to be designed to be capable of achieving a free chlorine residual of 0.20 mg/L at all distribution locations. The minimum that must be maintained at all times in a chlorinated system is lower (0.05 mg/L).",
+    "steps": null
+   }
+  },
+  {
+   "id": 35125,
+   "bankKey": "oit",
+   "questionNum": 100,
+   "verdict": "UNCLEAR",
+   "note": "Circular question (answer repeats the name in the stem). OWWCO is the MECP branch that administers certification; MECP is therefore also defensible. Under O. Reg. 128/04 certificates are issued by the Director.",
+   "original": {
+    "question": "Which organization is responsible for certifying water distribution operators in Ontario under the Ontario Water and Wastewater Certification Office (OWWCO)?",
+    "options": [
+     "Ontario Water and Wastewater Certification Office (OWWCO)",
+     "Ontario Clean Water Agency (OCWA)",
+     "Ontario Ministry of Environment, Conservation and Parks (MECP)",
+     "Environmental Commissioner of Ontario (ECO)"
+    ],
+    "correctIndex": 0,
+    "explanation": "The Ontario Water and Wastewater Certification Office (OWWCO) is the specific organization mandated to certify water distribution operators in Ontario. While the Ministry of the Environment, Conservation and Parks (MECP) establishes the regulatory framework and oversees the certification program under O. Reg. 128/04 (Certification of Drinking Water System Operators and Water Quality Analysts), OWWCO is the body that directly administers the certification exams, issues certificates, and maintains operator records. The Ontario Clean Water Agency (OCWA) is an operational agency, and the Environmental Commissioner of Ontario (ECO) is an independent officer of the Legislature, neither of which are certifying bodies for operators."
+   },
+   "fix": {
+    "question": "Which Ontario body administers operator certification for drinking-water operators under O. Reg. 128/04?",
+    "options": [
+     "The MECP, through its Ontario Water and Wastewater Certification Office (OWWCO)",
+     "Ontario Clean Water Agency (OCWA)",
+     "Environmental Commissioner of Ontario (ECO)",
+     "The local Medical Officer of Health"
+    ],
+    "correctIndex": 0,
+    "explanation": "Operator certification under O. Reg. 128/04 is administered by the MECP through the Ontario Water and Wastewater Certification Office. OCWA is an operating agency, the ECO is an independent legislative officer, and the Medical Officer of Health is a public-health authority.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35132,
+   "bankKey": "oit",
+   "questionNum": 107,
+   "verdict": "WRONG",
+   "note": "Key points to 'Control water pricing' (index 2). Correct answer is option 0, protecting public health through a framework of standards, testing and accountability.",
+   "original": {
+    "question": "What is the primary purpose of the Safe Drinking Water Act (SDWA) in Ontario?",
+    "options": [
+     "Protect public health by establishing a comprehensive framework for drinking water quality standards, testing requirements, and accountability measures for all municipal drinking water systems",
+     "Regulate wastewater discharge",
+     "Control water pricing",
+     "Manage water conservation"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Safe Drinking Water Act, 2002 (SDWA) was enacted following the Walkerton tragedy to provide a multi-barrier approach to drinking water safety. It establishes: drinking water quality standards (O. Reg. 169/03), testing and reporting requirements (O. Reg. 170/03), licensing of municipal systems, mandatory operator certification, and legal accountability for owners and operators. The Act ensures that every person in Ontario has access to safe drinking water."
+   },
+   "fix": {
+    "question": "What is the primary purpose of the Safe Drinking Water Act (SDWA) in Ontario?",
+    "options": [
+     "Protect public health by establishing a comprehensive framework for drinking water quality standards, testing requirements, and accountability measures for all municipal drinking water systems",
+     "Regulate wastewater discharge",
+     "Control water pricing",
+     "Manage water conservation"
+    ],
+    "correctIndex": 0,
+    "explanation": "The Safe Drinking Water Act, 2002 was enacted after the Walkerton tragedy to protect human health and prevent drinking-water health hazards through regulation of drinking-water systems and testing. Wastewater discharge, pricing and conservation are governed elsewhere.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35137,
+   "bankKey": "oit",
+   "questionNum": 112,
+   "verdict": "WRONG",
+   "note": "O. Reg. 128/04 (drinking water) does not set a flat 40 hours per year; training hours vary by class and are tallied over the three-year certificate period (MECP renewal guidance). The flat 40 hours per calendar year is the O. Reg. 129/04 (wastewater) requirement.",
+   "original": {
+    "question": "According to O. Reg. 128/04, what is the minimum training requirement for a certified drinking water system operator in Ontario?",
+    "options": [
+     "A. 40 hours of training per year.",
+     "B. 20 hours of training per year.",
+     "C. 10 hours of training per year.",
+     "D. No specific annual training hours are mandated."
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario Regulation 128/04, specifically Section 23, mandates that every certified operator of a drinking water system must complete at least 40 hours of approved training during each 12-month period. This requirement ensures operators maintain and enhance their competency in managing drinking water systems, which is crucial for public health protection. Options B, C, and D are incorrect as they do not align with the specific training hours stipulated in the regulation."
+   },
+   "fix": {
+    "question": "Under O. Reg. 129/04, how many hours of annual training must an owner ensure each wastewater operator receives each calendar year?",
+    "options": [
+     "40 hours",
+     "20 hours",
+     "10 hours",
+     "No specific hours are mandated"
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 129/04 requires owners to ensure operators receive at least 40 hours of annual training every calendar year (with limited exceptions for short employment). Drinking-water training hours under O. Reg. 128/04 are set differently and counted over the certificate period.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35138,
+   "bankKey": "oit",
+   "questionNum": 113,
+   "verdict": "WRONG",
+   "note": "O. Reg. 128/04 does not require 40 hours per year for Class 1-4; required hours vary and are counted over the three-year certificate period (the 40-hour figure belongs to O. Reg. 129/04 wastewater).",
+   "original": {
+    "question": "Under O. Reg. 128/04, a certified water treatment operator's licence is about to expire. What must the operator do to maintain their certification?",
+    "options": [
+     "Complete the required annual training hours (40 hours for Class 1-4) and submit a renewal application",
+     "Write the certification exam again",
+     "Apply for a new OIT designation and restart the certification process",
+     "Certification does not expire — no action is required"
+    ],
+    "correctIndex": 0,
+    "explanation": "Under O. Reg. 128/04, certified operators must complete 40 hours of approved training per year (averaged over the licence period) and submit a renewal application with proof of training to maintain their certification. Failure to meet training requirements results in licence expiry and the operator cannot legally operate the facility."
+   },
+   "fix": {
+    "question": "Under O. Reg. 128/04, a certified drinking-water operator's certificate is approaching expiry. What must the operator do to renew it?",
+    "options": [
+     "Complete the required training hours for the certificate period and submit a renewal application",
+     "Write the certification exam again",
+     "Apply for a new OIT designation and restart the certification process",
+     "Certification does not expire, so no action is required"
+    ],
+    "correctIndex": 0,
+    "explanation": "Under O. Reg. 128/04 a certificate is renewed by completing the required training for the certificate period (including the mandatory renewal course) and applying for renewal before expiry. Certificates do expire and an exam rewrite is not the renewal route.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35140,
+   "bankKey": "oit",
+   "questionNum": 115,
+   "verdict": "UNCLEAR",
+   "note": "O. Reg. 128/04 does not make the supervising operator the one who 'bears primary regulatory responsibility'; under the SDWA the owner and operating authority are responsible for compliance, so option C (the municipality as owner) is also defensible.",
+   "original": {
+    "question": "An OIT at a water treatment plant makes an operational decision that results in a regulatory violation. Under O. Reg. 128/04, who bears primary regulatory responsibility?",
+    "options": [
+     "The OIT — they made the decision",
+     "The Ministry of Environment — for approving the OIT program",
+     "The municipality — as the owner of the facility",
+     "The certified supervising operator — they are responsible for the OIT's actions and decisions"
+    ],
+    "correctIndex": 3,
+    "explanation": "Under O. Reg. 128/04, the certified supervising operator bears primary regulatory responsibility for an OIT's actions. The OIT is working under the supervision of the certified operator, who is responsible for ensuring the OIT's work meets regulatory requirements. This is why adequate supervision is a legal requirement, not just a best practice."
+   },
+   "fix": {
+    "question": "An OIT at a water treatment plant makes an operational decision that results in a regulatory violation. Who remains accountable under the Safe Drinking Water Act, 2002 for the system's compliance?",
+    "options": [
+     "The OIT alone",
+     "The Ministry of the Environment, Conservation and Parks",
+     "The system owner and operating authority",
+     "No one, because OITs are exempt"
+    ],
+    "correctIndex": 2,
+    "explanation": "Under the SDWA the owner and operating authority are accountable for system compliance, and operators also carry duties of care. An OIT works under the supervision of a certified operator, but responsibility does not rest on the OIT alone.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35148,
+   "bankKey": "oit",
+   "questionNum": 123,
+   "verdict": "UNCLEAR",
+   "note": "Key (Class IV at 76 points) is right but the steps are an unrelated 55-point illustrative calculation that concludes Class III, contradicting the key.",
+   "original": {
+    "question": "Under O. Reg. 129/04, a wastewater treatment facility has 76 classification points. What is the minimum class of wastewater treatment operator licence required for the Overall Responsible Operator (ORO)?",
+    "options": [
+     "Class I",
+     "Class II",
+     "Class III",
+     "Class IV"
+    ],
+    "correctIndex": 3,
+    "explanation": "O. Reg. 129/04 classifies wastewater treatment facilities using facility points. A facility with 76 or more points is Class IV. The ORO must hold the operator licence class required for the facility, so the minimum licence class is Class IV."
+   },
+   "fix": {
+    "question": "Under O. Reg. 129/04, a wastewater treatment facility has 76 classification points. What is the minimum class of wastewater treatment operator licence required for the Overall Responsible Operator (ORO)?",
+    "options": [
+     "Class I",
+     "Class II",
+     "Class III",
+     "Class IV"
+    ],
+    "correctIndex": 3,
+    "explanation": "O. Reg. 129/04 classifies wastewater treatment facilities using facility points. A facility with 76 or more points is Class IV. The ORO must hold the operator licence class required for the facility, so the minimum licence class is Class IV.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35152,
+   "bankKey": "oit",
+   "questionNum": 127,
+   "verdict": "WRONG",
+   "note": "Explanation wrongly says O. Reg. 129/04 is 'now O. Reg. 170/03 for drinking water and O. Reg. 128/04 for wastewater'. O. Reg. 129/04 is the current wastewater operator licensing regulation; 128/04 is drinking water. Answer itself is fine.",
+   "original": {
+    "question": "Under O. Reg. 129/04, what is the primary responsibility of the Overall Responsible Operator (ORO) for a wastewater facility?",
+    "options": [
+     "To ensure the facility is operated in compliance with all regulatory requirements.",
+     "To perform all daily operational tasks.",
+     "To manage the facility's budget and financial records.",
+     "To design and construct new wastewater infrastructure."
+    ],
+    "correctIndex": 0,
+    "explanation": "The primary responsibility of the Overall Responsible Operator (ORO) under O. Reg. 129/04 (now O. Reg. 170/03 for drinking water systems and O. Reg. 128/04 for wastewater facilities, though the principle remains consistent) is to ensure that the facility is operated in compliance with all applicable regulatory requirements. This includes overseeing operational activities, ensuring proper maintenance, and maintaining records to demonstrate compliance. While OROs delegate daily tasks and are not typically involved in budgeting or design, their ultimate accountability lies with regulatory adherence."
+   },
+   "fix": {
+    "question": "Under O. Reg. 129/04, what is the primary responsibility of the Overall Responsible Operator (ORO) for a wastewater facility?",
+    "options": [
+     "To ensure the facility is operated in compliance with all regulatory requirements.",
+     "To perform all daily operational tasks.",
+     "To manage the facility's budget and financial records.",
+     "To design and construct new wastewater infrastructure."
+    ],
+    "correctIndex": 0,
+    "explanation": "Under O. Reg. 129/04 the ORO is the licensed operator with overall responsibility for the operation of the facility, including ensuring it is operated in compliance with applicable requirements. The ORO may delegate daily tasks and is not responsible for budgeting or design.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35156,
+   "bankKey": "oit",
+   "questionNum": 131,
+   "verdict": "UNCLEAR",
+   "note": "Key is acceptable, but the steps relate to a different question (classification of a collection facility at 5,000 m3/day, Class II, OIC licence) and do not support the answer.",
+   "original": {
+    "question": "Under O. Reg. 129/04, which licence relationship normally applies to the Overall Responsible Operator of a wastewater facility?",
+    "options": [
+     "A licence applicable to the facility type, at the facility class or a higher class",
+     "A licence applicable to the facility type, exactly one class below the facility class",
+     "A wastewater licence from any facility type or class, without a class relationship",
+     "An Operator-in-Training licence for the facility type, regardless of facility class"
+    ],
+    "correctIndex": 0,
+    "explanation": "The Overall Responsible Operator normally must hold a licence applicable to the wastewater facility type and of the same class as the facility or a higher class. O. Reg. 129/04 also contains specified temporary and emergency arrangements, so the normal rule should not be stated as exceptionless."
+   },
+   "fix": {
+    "question": "Under O. Reg. 129/04, which licence relationship normally applies to the Overall Responsible Operator of a wastewater facility?",
+    "options": [
+     "A licence applicable to the facility type, at the facility class or a higher class",
+     "A licence applicable to the facility type, exactly one class below the facility class",
+     "A wastewater licence from any facility type or class, without a class relationship",
+     "An Operator-in-Training licence for the facility type, regardless of facility class"
+    ],
+    "correctIndex": 0,
+    "explanation": "The Overall Responsible Operator normally must hold a licence applicable to the wastewater facility type and of the same class as the facility or a higher class. O. Reg. 129/04 also contains specified temporary and emergency arrangements, so the normal rule should not be stated as exceptionless.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35162,
+   "bankKey": "oit",
+   "questionNum": 137,
+   "verdict": "UNCLEAR",
+   "note": "OWWCO is a branch of the MECP, not a separate body to which the MECP 'delegates' issuance; certificates under O. Reg. 128/04 are issued by the Director. Option B (MECP issues certificates) is therefore also defensible.",
+   "original": {
+    "question": "According to O. Reg. 128/04, what is the role of the Ministry of the Environment, Conservation and Parks (MECP) in the certification of drinking water operators?",
+    "options": [
+     "The MECP directly trains all operators.",
+     "The MECP issues all operator certificates.",
+     "The MECP sets the standards and oversees the certification process, often delegating issuance to OWWCO.",
+     "The MECP is not involved in operator certification."
+    ],
+    "correctIndex": 2,
+    "explanation": "While the Ontario Water Wastewater Certification Office (OWWCO) is responsible for issuing certificates, O. Reg. 128/04 outlines that the MECP sets the overall standards, requirements, and framework for operator certification. The MECP maintains oversight to ensure the integrity and effectiveness of the certification program."
+   },
+   "fix": {
+    "question": "According to O. Reg. 128/04, which statement best describes the role of the Ministry of the Environment, Conservation and Parks (MECP) in drinking-water operator certification?",
+    "options": [
+     "The MECP directly trains all operators.",
+     "The MECP sets the requirements and, through the Director and its certification office, administers and issues certificates.",
+     "The MECP delegates all certification to municipalities.",
+     "The MECP is not involved in operator certification."
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 128/04 sets the classes, education, experience, exam and training requirements, and the Director (through the MECP's Ontario Water and Wastewater Certification Office) issues and renews certificates. The MECP does not deliver all operator training.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35165,
+   "bankKey": "oit",
+   "questionNum": 140,
+   "verdict": "UNCLEAR",
+   "note": "Could not verify that O. Reg. 128/04 provides a 'conditional operator's certificate' with a one-year maximum, or that s.10(1) says so; the regulation's certificate types are OIT and Classes 1 to 4. Likely fabricated detail.",
+   "original": {
+    "question": "Under O. Reg. 128/04, what is the maximum duration a conditional operator's certificate can be issued for?",
+    "options": [
+     "6 months.",
+     "2 years.",
+     "1 year.",
+     "3 years."
+    ],
+    "correctIndex": 2,
+    "explanation": "Under Ontario Regulation 128/04, Section 10(1), a conditional operator's certificate may be issued for a maximum period of one year. This provision allows individuals to gain the necessary experience or complete specific training requirements while working in a water or wastewater facility. The one-year duration provides a reasonable timeframe for operators to meet the conditions for a full certificate, ensuring public health and environmental protection through qualified personnel. Other durations like 6 months, 2 years, or 3 years are not specified as the maximum for a conditional certificate under this regulation."
+   },
+   "fix": null
+  },
+  {
+   "id": 35168,
+   "bankKey": "oit",
+   "questionNum": 143,
+   "verdict": "UNCLEAR",
+   "note": "Could not verify an owner duty under O. Reg. 129/04 to 'immediately apply for reclassification' on a change in flow. Classification of facilities is by the Director per the regulation's point system; the notification mechanism and timing stated are unsupported.",
+   "original": {
+    "question": "Under O. Reg. 129/04, a wastewater treatment facility is classified as Class III. If the facility\\'s average daily flow increases by 25% and its complexity points increase, potentially pushing it into a Class IV category, what is the owner\\'s immediate obligation?",
+    "options": [
+     "The owner must hire additional Class III operators within 6 months.",
+     "The owner must immediately apply for a reclassification of the facility.",
+     "The owner must notify the MECP within 30 days of the change.",
+     "No action is required until the current operating license expires."
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 129/04 requires that if there is a change in a wastewater facility's characteristics that could affect its classification, the owner must immediately apply for a reclassification of the facility. This ensures that the facility is always operated by appropriately licensed operators for its current complexity and capacity."
+   },
+   "fix": null
+  },
+  {
+   "id": 35171,
+   "bankKey": "oit",
+   "questionNum": 146,
+   "verdict": "UNCLEAR",
+   "note": "Explanation admits both B (diploma) and C (degree) satisfy the 'or' requirement, so two options are correct; the steps are also editing leakage ('Original option C ...'). Exact education requirement for Class 4 was not verified.",
+   "original": {
+    "question": "According to O. Reg. 128/04, what is the specific educational requirement for an individual to qualify for a Class IV Water Treatment Operator certificate, in addition to experience?",
+    "options": [
+     "A. High school diploma.",
+     "B. Post-secondary diploma in a related field.",
+     "C. University degree in a related field.",
+     "D. Specific courses approved by the Director."
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 128/04, Schedule 1, Table 1, specifies that for a Class IV Water Treatment Operator certificate, the educational requirement is a post-secondary diploma or a university degree in a related field. While both B and C are technically correct based on the 'or' condition, option B, 'Post-secondary diploma in a related field,' represents the minimum post-secondary educational requirement. Option C, a university degree, is also acceptable but is a higher level of education than the minimum specified. Therefore, B is the most accurate representation of the minimum specific educational requirement among the choices provided."
+   },
+   "fix": null
+  },
+  {
+   "id": 35172,
+   "bankKey": "oit",
+   "questionNum": 147,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 129/04 governs wastewater operator licensing; it contains no power-outage reporting requirement. Reporting of bypasses/spills comes from the Environmental Protection Act (Part X, O. Reg. 675/98) and the facility's Environmental Compliance Approval, with reports to the MECP Spills Action Centre.",
+   "original": {
+    "question": "Under O. Reg. 129/04, if a Class IV wastewater treatment facility experiences a prolonged power outage exceeding 4 hours, what is the immediate reporting requirement to the MECP?",
+    "options": [
+     "Report within 24 hours.",
+     "Report within 12 hours.",
+     "Report immediately (as soon as reasonably possible).",
+     "No reporting is required if backup power systems are functional."
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 129/04 mandates immediate reporting to the MECP for any event that may impair the proper operation of a sewage works, including prolonged power outages that could affect treatment processes. This ensures timely intervention to prevent environmental contamination."
+   },
+   "fix": {
+    "question": "A Class IV wastewater treatment plant loses power for several hours and untreated sewage bypasses to a watercourse. What is the required reporting?",
+    "options": [
+     "Report immediately to the MECP Spills Action Centre",
+     "Report within 24 hours in writing only",
+     "Report in the next annual performance report",
+     "No reporting is required if standby power is installed"
+    ],
+    "correctIndex": 0,
+    "explanation": "A discharge of untreated or partially treated sewage to the natural environment is a reportable spill under the Environmental Protection Act and must be reported immediately to the MECP Spills Action Centre, as well as meeting any conditions in the facility's Environmental Compliance Approval.",
+    "steps": null
    }
   }
  ]
