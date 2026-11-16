@@ -1,0 +1,431 @@
+{
+  "formatVersion": 1,
+  "exportStartedAtUtc": "2026-11-16T02:16:18.282Z",
+  "exportCompletedAtUtc": "2026-11-16T02:16:20.913Z",
+  "source": "Authoritative running-app external cutover target; connection details intentionally omitted",
+  "sourceCodeRevision": "c79be21ddb530e32773a48700fa647b939af0ecb",
+  "sourceCodeFileSha256": {
+    "server/db.ts": "9e1d27928fa2df70a475af2c9796a9af336c8df0547c4778f133fac55de3d5b7",
+    "server/_core/databaseTls.ts": "d40f8993462ec8a59cba71b16a39136359b487abea389f7cb859bb2a580ef0b9",
+    "server/questionGovernance.ts": "6e9bed3a979dd5d567ca0b79c7fed7317d08082fcfef47e7c34870aa20ad1b3e",
+    "shared/questionVisibility.mjs": "03402886b095e60384c0e520dd82d189704b3aa30ddf128f2de9ae8462b74d0e",
+    "server/routers/quizRouter.ts": "fd223a25509325536b7b985b05cc063939957d1aa5bdfd4d54c75fae88514db6",
+    "server/courseActivityScope.ts": "3d980eea009564377cabdb17b0bedff10245d4689d471ba19368b3cbf5a7d26f",
+    "shared/courseRegistry.ts": "4fabcb1061345cb735e05326cf5e62a4489fa0b2514e6077585011ae9a040611"
+  },
+  "claudeBaseRevision": "b486eb7091b7f4e28d92f60e93de517e82f8ec63",
+  "table": "questions",
+  "selectedColumns": [
+    "id",
+    "bankKey",
+    "questionNum",
+    "module",
+    "difficulty",
+    "question",
+    "options",
+    "correctIndex",
+    "explanation",
+    "steps",
+    "tip",
+    "isCalc",
+    "topic",
+    "cognitiveLevel",
+    "reviewStatus"
+  ],
+  "actualQuestionColumns": [
+    "id",
+    "bankKey",
+    "questionNum",
+    "module",
+    "difficulty",
+    "question",
+    "correctIndex",
+    "explanation",
+    "steps",
+    "tip",
+    "isCalc",
+    "topic",
+    "options",
+    "cognitiveLevel",
+    "sourceTitle",
+    "sourceReference",
+    "sourceUrl",
+    "blueprintObjective",
+    "reviewStatus",
+    "reviewedBy",
+    "reviewedAt"
+  ],
+  "omittedQuestionColumns": [
+    "sourceTitle",
+    "sourceReference",
+    "sourceUrl",
+    "blueprintObjective",
+    "reviewedBy",
+    "reviewedAt"
+  ],
+  "totalRows": 24350,
+  "bankCount": 39,
+  "reviewStatusCounts": {
+    "unreviewed": 22147,
+    "approved": 2203
+  },
+  "snapshotMethod": "One ordered streaming SELECT, without WHERE or JOIN; no per-bank database reads. No explicit transaction: single-statement consistency only; not independently verified beyond the authoritative server statement semantics.",
+  "query": "SELECT `id`, `bankKey`, `questionNum`, `module`, `difficulty`, `question`, `options`, `correctIndex`, `explanation`, `steps`, `tip`, `isCalc`, `topic`, `cognitiveLevel`, `reviewStatus` FROM `questions` ORDER BY `bankKey`, `questionNum`, `id`",
+  "banks": [
+    {
+      "bankKey": "class1",
+      "file": "bank-class1.json",
+      "rowCount": 250,
+      "sha256": "6ce05f39e0a62e4018a99d9308545e70032158320ceffb4b1ef47a67a12c2c5e",
+      "reviewStatusCounts": {
+        "unreviewed": 250
+      }
+    },
+    {
+      "bankKey": "class1-wastewater",
+      "file": "bank-class1-wastewater.json",
+      "rowCount": 815,
+      "sha256": "1ce4721344c63b6cd3fa2b8492dbade68af8a1627ba501ba170913a5bbde9e98",
+      "reviewStatusCounts": {
+        "unreviewed": 815
+      }
+    },
+    {
+      "bankKey": "class1-wastewater-coll",
+      "file": "bank-class1-wastewater-coll.json",
+      "rowCount": 974,
+      "sha256": "25a05c2c777183fe34e214dfddf28d7165d8ef5d07cacb8a23d2c28599ac1e43",
+      "reviewStatusCounts": {
+        "unreviewed": 974
+      }
+    },
+    {
+      "bankKey": "class1-water",
+      "file": "bank-class1-water.json",
+      "rowCount": 805,
+      "sha256": "2d00700c2c4aa044adae6fdad9f9619c7f7f6b87ed81ae550f9155d84cb58942",
+      "reviewStatusCounts": {
+        "unreviewed": 805
+      }
+    },
+    {
+      "bankKey": "class1-water-dist",
+      "file": "bank-class1-water-dist.json",
+      "rowCount": 966,
+      "sha256": "be018c573f9e04f11403ecd5e3c777259357babb1e66e8e99e6417edc54658c0",
+      "reviewStatusCounts": {
+        "unreviewed": 966
+      }
+    },
+    {
+      "bankKey": "class2-wastewater",
+      "file": "bank-class2-wastewater.json",
+      "rowCount": 796,
+      "sha256": "a8f93d1356269ddc8ca4b075ee82570e149fc8f7cdca1dbe245b376e0d2a3665",
+      "reviewStatusCounts": {
+        "unreviewed": 796
+      }
+    },
+    {
+      "bankKey": "class2-wastewater-coll",
+      "file": "bank-class2-wastewater-coll.json",
+      "rowCount": 810,
+      "sha256": "aed53e1f633ca19b182c4b9583ced6034c036c5d53046759c50f41fa1fb6b736",
+      "reviewStatusCounts": {
+        "unreviewed": 810
+      }
+    },
+    {
+      "bankKey": "class2-water",
+      "file": "bank-class2-water.json",
+      "rowCount": 753,
+      "sha256": "a0ce798c806d0217808bfb541c66d277a74367411091fbb800e116b5a52ebada",
+      "reviewStatusCounts": {
+        "unreviewed": 753
+      }
+    },
+    {
+      "bankKey": "class2-water-dist",
+      "file": "bank-class2-water-dist.json",
+      "rowCount": 785,
+      "sha256": "51a2dcf8dc609e60f85118a49bf9a00c84dda2b1f90ed41f5ea1f25974c73cd6",
+      "reviewStatusCounts": {
+        "unreviewed": 785
+      }
+    },
+    {
+      "bankKey": "class3-wastewater",
+      "file": "bank-class3-wastewater.json",
+      "rowCount": 580,
+      "sha256": "a5f9a2951ad7d2de175d18bb6d79d29e3a5f18e3ce0daedc86ac2fa8ea3b9f91",
+      "reviewStatusCounts": {
+        "unreviewed": 580
+      }
+    },
+    {
+      "bankKey": "class3-wastewater-coll",
+      "file": "bank-class3-wastewater-coll.json",
+      "rowCount": 572,
+      "sha256": "25eb6075b97e46f0d6a72784f2f1ed4241bb5ce310a07d24f0f356662c2b49c8",
+      "reviewStatusCounts": {
+        "unreviewed": 572
+      }
+    },
+    {
+      "bankKey": "class3-water",
+      "file": "bank-class3-water.json",
+      "rowCount": 563,
+      "sha256": "4fee82ca21b0d59c7d56b280955b2b229783b127f8ddc1fdd576966df7783b3b",
+      "reviewStatusCounts": {
+        "unreviewed": 563
+      }
+    },
+    {
+      "bankKey": "class3-water-dist",
+      "file": "bank-class3-water-dist.json",
+      "rowCount": 821,
+      "sha256": "fa1d418daa3bf326fd53dce3be5ee2584edc2f66c2384e628b24c9d868a57b1d",
+      "reviewStatusCounts": {
+        "approved": 374,
+        "unreviewed": 447
+      }
+    },
+    {
+      "bankKey": "class4-wastewater",
+      "file": "bank-class4-wastewater.json",
+      "rowCount": 588,
+      "sha256": "7f1ee445573ad4f7b8b7bc32dd3d64c69cdf06480b65ed13bd8a56e896775c74",
+      "reviewStatusCounts": {
+        "unreviewed": 588
+      }
+    },
+    {
+      "bankKey": "class4-wastewater-coll",
+      "file": "bank-class4-wastewater-coll.json",
+      "rowCount": 570,
+      "sha256": "d981e30d8fbd319901314b5ffae9d509f0d98f3a4366a88b7d43d67f6cc1f7a1",
+      "reviewStatusCounts": {
+        "unreviewed": 570
+      }
+    },
+    {
+      "bankKey": "class4-water",
+      "file": "bank-class4-water.json",
+      "rowCount": 569,
+      "sha256": "91998c49368ccdf14eb1879cddc345a24673abae906c1b1efffee5f61f5cae14",
+      "reviewStatusCounts": {
+        "unreviewed": 569
+      }
+    },
+    {
+      "bankKey": "class4-water-dist",
+      "file": "bank-class4-water-dist.json",
+      "rowCount": 568,
+      "sha256": "cb95f1ae3989105b66cbe021b1e7fb0ecf67e5c72420e55c450c99fccae8a39c",
+      "reviewStatusCounts": {
+        "unreviewed": 568
+      }
+    },
+    {
+      "bankKey": "oit",
+      "file": "bank-oit.json",
+      "rowCount": 1038,
+      "sha256": "160b22229c65a320ba51fb2117abe752437fd90bf20af4ad037f5e11249f1957",
+      "reviewStatusCounts": {
+        "unreviewed": 523,
+        "approved": 515
+      }
+    },
+    {
+      "bankKey": "oit-ww",
+      "file": "bank-oit-ww.json",
+      "rowCount": 1033,
+      "sha256": "18315c0566e325c132555c043b8954f2d18a6a112b166b3e26c9299100f15e1a",
+      "reviewStatusCounts": {
+        "unreviewed": 487,
+        "approved": 546
+      }
+    },
+    {
+      "bankKey": "us-class1-water",
+      "file": "bank-us-class1-water.json",
+      "rowCount": 200,
+      "sha256": "925ef107fddd2a95f9a142194d46f4103580c750378d5ffd1160aeeaa00bf68c",
+      "reviewStatusCounts": {
+        "approved": 200
+      }
+    },
+    {
+      "bankKey": "us-class1-water-dist",
+      "file": "bank-us-class1-water-dist.json",
+      "rowCount": 198,
+      "sha256": "79ccded5bf97cabc75723fed9f7421cadeb26de45797dd8a44c8f49501bdd10b",
+      "reviewStatusCounts": {
+        "approved": 198
+      }
+    },
+    {
+      "bankKey": "us-texas-class-d-water",
+      "file": "bank-us-texas-class-d-water.json",
+      "rowCount": 120,
+      "sha256": "bb0a7c84ffb2da27531d1cbea77cba71ee30a971aca3194fe2fac0f323a7e00f",
+      "reviewStatusCounts": {
+        "approved": 120
+      }
+    },
+    {
+      "bankKey": "wpi-class1-wastewater",
+      "file": "bank-wpi-class1-wastewater.json",
+      "rowCount": 594,
+      "sha256": "bc84900ba7975aa655c273b5e55aedf78309293e8683756250713da545be1caa",
+      "reviewStatusCounts": {
+        "unreviewed": 594
+      }
+    },
+    {
+      "bankKey": "wpi-class1-wastewater-coll",
+      "file": "bank-wpi-class1-wastewater-coll.json",
+      "rowCount": 499,
+      "sha256": "18b202c8082237cebe6ae0a83487477e6847cd59c501476a7c5df702f5b18bfe",
+      "reviewStatusCounts": {
+        "unreviewed": 499
+      }
+    },
+    {
+      "bankKey": "wpi-class1-water",
+      "file": "bank-wpi-class1-water.json",
+      "rowCount": 598,
+      "sha256": "e4c43e44d704b05d1e0235ca6054ecfcb74db1fe9ca64b6b9215e79f573a0aa8",
+      "reviewStatusCounts": {
+        "unreviewed": 598
+      }
+    },
+    {
+      "bankKey": "wpi-class1-water-dist",
+      "file": "bank-wpi-class1-water-dist.json",
+      "rowCount": 500,
+      "sha256": "eb6afadf4f97badd352f580a2d6c1d2bb8c2dc126b380eb63d6894567f16e91c",
+      "reviewStatusCounts": {
+        "unreviewed": 500
+      }
+    },
+    {
+      "bankKey": "wpi-class2-wastewater",
+      "file": "bank-wpi-class2-wastewater.json",
+      "rowCount": 599,
+      "sha256": "03b842c6db1dc832b67effcea1d448b176c6e6bec5c4a7a3dd079855b75471cb",
+      "reviewStatusCounts": {
+        "unreviewed": 599
+      }
+    },
+    {
+      "bankKey": "wpi-class2-wastewater-coll",
+      "file": "bank-wpi-class2-wastewater-coll.json",
+      "rowCount": 503,
+      "sha256": "6607639a9d7b3d754c0f642412aff3c4325111b56c6745757c02fac0aa68a47d",
+      "reviewStatusCounts": {
+        "unreviewed": 503
+      }
+    },
+    {
+      "bankKey": "wpi-class2-water",
+      "file": "bank-wpi-class2-water.json",
+      "rowCount": 598,
+      "sha256": "2843f128e28f54e0cb7662d2c0e854069a30d834c87e42239629dfa71b4f5363",
+      "reviewStatusCounts": {
+        "unreviewed": 598
+      }
+    },
+    {
+      "bankKey": "wpi-class2-water-dist",
+      "file": "bank-wpi-class2-water-dist.json",
+      "rowCount": 595,
+      "sha256": "938332bfd10709c7be38d1ea02b6952cb173c5557132096c4d13011e64b9f679",
+      "reviewStatusCounts": {
+        "unreviewed": 595
+      }
+    },
+    {
+      "bankKey": "wpi-class3-wastewater",
+      "file": "bank-wpi-class3-wastewater.json",
+      "rowCount": 607,
+      "sha256": "02d4c9abc0a85f98b455d7fe80b682b1e9b960cd003ef2bf53a20d68d139893d",
+      "reviewStatusCounts": {
+        "unreviewed": 607
+      }
+    },
+    {
+      "bankKey": "wpi-class3-wastewater-coll",
+      "file": "bank-wpi-class3-wastewater-coll.json",
+      "rowCount": 503,
+      "sha256": "d3226598016d53ee58fd81dbd94c21c57b848e58ae755637b880cee06b71b5e7",
+      "reviewStatusCounts": {
+        "unreviewed": 503
+      }
+    },
+    {
+      "bankKey": "wpi-class3-water",
+      "file": "bank-wpi-class3-water.json",
+      "rowCount": 561,
+      "sha256": "afc0832b9a92c39fff8b65c7cd3892cf2b9bbe93ddb2f881119361af42a3d078",
+      "reviewStatusCounts": {
+        "unreviewed": 561
+      }
+    },
+    {
+      "bankKey": "wpi-class3-water-dist",
+      "file": "bank-wpi-class3-water-dist.json",
+      "rowCount": 611,
+      "sha256": "fdbe7ee955265ac07e27790d84c7ba82a42d6f339e02e6f4efae92770cac77ea",
+      "reviewStatusCounts": {
+        "unreviewed": 611
+      }
+    },
+    {
+      "bankKey": "wpi-class4-wastewater",
+      "file": "bank-wpi-class4-wastewater.json",
+      "rowCount": 907,
+      "sha256": "55eab1bccc5f551d5d54762b0dfa8c2f04f2b0f149c7a90e4f08b89118fd5400",
+      "reviewStatusCounts": {
+        "unreviewed": 657,
+        "approved": 250
+      }
+    },
+    {
+      "bankKey": "wpi-class4-wastewater-coll",
+      "file": "bank-wpi-class4-wastewater-coll.json",
+      "rowCount": 503,
+      "sha256": "0316d2a8267427d625f285b5aec7978a341c9f86789ee5fb91b048ec6b5dbc42",
+      "reviewStatusCounts": {
+        "unreviewed": 503
+      }
+    },
+    {
+      "bankKey": "wpi-class4-water",
+      "file": "bank-wpi-class4-water.json",
+      "rowCount": 678,
+      "sha256": "1e409443dd96a5600bea4a5e4c0fb72935e6724de25bbd4f4cd9cd313c846495",
+      "reviewStatusCounts": {
+        "unreviewed": 678
+      }
+    },
+    {
+      "bankKey": "wpi-class4-water-dist",
+      "file": "bank-wpi-class4-water-dist.json",
+      "rowCount": 620,
+      "sha256": "2e439299a3c8aeb306c97e94bb8b05f8dee378aef3fb825921c5fd4ac39f5457",
+      "reviewStatusCounts": {
+        "unreviewed": 620
+      }
+    },
+    {
+      "bankKey": "wqa",
+      "file": "bank-wqa.json",
+      "rowCount": 500,
+      "sha256": "682099adfeb192168dc12160c475e8569b9e053a33668b1ee7dd3935a8d72705",
+      "reviewStatusCounts": {
+        "unreviewed": 500
+      }
+    }
+  ]
+}
