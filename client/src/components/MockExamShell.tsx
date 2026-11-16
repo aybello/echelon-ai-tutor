@@ -10,6 +10,8 @@ import { toast } from "sonner";
 import SiteNav from "@/components/SiteNav";
 import PurchaseGate from "@/components/PurchaseGate";
 import QuizGate from "@/components/QuizGate";
+import NextStepCard from "@/components/NextStepCard";
+import { resolveCourseKey } from "@shared/courseRegistry";
 import ReportErrorModal from "@/components/ReportErrorModal";
 import ScoreHistory from "@/components/ScoreHistory";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -956,6 +958,11 @@ export default function MockExamShell({
               </Link>
             </div>
           </div>
+
+          {/* What next: shown once the result is saved, so a mock exam just finished is counted */}
+          {saveStatus === "saved" && resolveCourseKey(productKey)?.courseKey && (
+            <NextStepCard courseKey={resolveCourseKey(productKey)!.courseKey} className="mb-5" />
+          )}
 
           {/* Stats grid */}
           <div className="mes-stats-4" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginBottom: 24 }}>

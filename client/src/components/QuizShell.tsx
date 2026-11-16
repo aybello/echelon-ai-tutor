@@ -33,6 +33,7 @@ import PracticeSaveStatus, { useVerifiedPracticeSaveScope } from "@/components/P
 import PracticeOptions from "@/components/PracticeOptions";
 import { getPracticeGuidePath } from "@/lib/practiceResources";
 import { getCourseInteractiveHref } from "@/lib/courseNavigation";
+import NextStepCard from "@/components/NextStepCard";
 import StudyNotesTopics from "@/components/StudyNotesTopics";
 import PreviewStudyPlanPrompt from "@/components/PreviewStudyPlanPrompt";
 import { resolveStudyNotesTopics } from "@/lib/studyNotesTopics";
@@ -555,6 +556,7 @@ export default function QuizShell({
               {correctCount} correct · {wrongCount} incorrect
               {sessionSize ? ` · ${sessionSize} questions` : ""}
             </p>
+            {canonicalCourse?.courseKey && <NextStepCard courseKey={canonicalCourse.courseKey} className="mb-4 text-left" />}
             {interactiveHref && <Link href={interactiveHref} className="practice-interactive-link">Interactive activities</Link>}
             {/* Google Review prompt — shown when user scores 70%+ AND review prompt budget allows */}
             {pct >= 70 && shouldShowReviewPrompt() && (
