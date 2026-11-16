@@ -827,10 +827,10 @@ Raw wastewater carries pathogens and pollutants. Overflows can harm people and w
 
 Which hand tool is used to lift a manhole cover out of its frame?
 
-- **A.** A plumb bob in everyday maintenance work
-- **B.** A chain vise on most crew assignments
+- **A.** A plumb bob lowered through the pick hole
+- **B.** A chain vise set across the cover opening
 - **C.** A manhole hook or pick
-- **D.** A pipe wrench during routine field work
+- **D.** A pipe wrench clamped to the frame rim
 
 **Answer: C. A manhole hook or pick**
 
@@ -854,9 +854,9 @@ A pipe wrench has serrated jaws that bite into round stock. Other wrenches are m
 What is a pry bar commonly used for?
 
 - **A.** Prying up or shifting heavy objects a small distance
-- **B.** Tightening hose clamps to a set value on most crew assignments
-- **C.** Cutting through steel pipe in everyday maintenance work
-- **D.** Measuring the depth of a manhole during routine field work
+- **B.** Tightening hose clamps to a specified torque value
+- **C.** Cutting through steel pipe before a repair is made
+- **D.** Measuring the depth of a manhole from rim to invert with a tape
 
 **Answer: A. Prying up or shifting heavy objects a small distance**
 
@@ -931,10 +931,10 @@ Suction lets crews remove loosened debris and wastewater, and the tank holds it 
 
 What is the purpose of a debris basket or screen placed in a downstream manhole during cleaning?
 
-- **A.** To lower the water level in the manhole on most crew assignments
-- **B.** To seal the pipe so it holds water in typical collection work and similar tasks
+- **A.** To lower the water level in the manhole while the line is being cleaned
+- **B.** To measure how much grease is leaving the cleaned section
 - **C.** To catch loosened debris before it moves farther down the system
-- **D.** To measure the flow velocity in everyday maintenance work and similar tasks
+- **D.** To slow the flow so the nozzle gains more pressure
 
 **Answer: C. To catch loosened debris before it moves farther down the system**
 
@@ -957,10 +957,10 @@ Jet nozzles come in different styles, and a root-cutting type uses spinning or f
 
 A jetter hose reel is found on which kind of equipment?
 
-- **A.** A portable gas meter on most crew assignments
-- **B.** A concrete saw on most crew assignments
+- **A.** A portable multi-gas meter used at manhole entry
+- **B.** A concrete saw used for pavement cuts
 - **C.** A truck or trailer mounted jetting unit
-- **D.** A hand-held pipe locator during routine field work
+- **D.** A hand-held pipe locator receiver unit
 
 **Answer: C. A truck or trailer mounted jetting unit**
 
@@ -970,10 +970,10 @@ The reel stores the long high-pressure hose that is fed into the sewer from the 
 
 Why might a crew choose a bucket machine over a jetter for a line packed with sand and stones?
 
-- **A.** The bucket makes the pipe slope steeper in everyday maintenance work
+- **A.** The bucket restores lost pipe slope by scraping the invert smooth
 - **B.** The bucket scoops and drags out heavy material the jet may only move
-- **C.** The bucket cleans with chemical foam in typical collection work
-- **D.** The bucket needs no access to the pipe on most crew assignments
+- **C.** The bucket pushes debris downstream faster than a jet nozzle can move it
+- **D.** The bucket dissolves hardened grease with heated chemical foam
 
 **Answer: B. The bucket scoops and drags out heavy material the jet may only move**
 
@@ -1022,9 +1022,9 @@ With no daylight in the pipe, lights are needed to show cracks, joints and debri
 
 What does a smoke blower do during smoke testing?
 
-- **A.** Warms the pipe so roots stop growing during routine field work
-- **B.** Pulls air out of the pipe in typical collection work and similar tasks
-- **C.** Measures the slope between manholes on most crew assignments
+- **A.** Warms the pipe so roots stop growing back in the joints
+- **B.** Pulls air out of the pipe to dry the walls before the smoke is introduced
+- **C.** Measures the slope between manholes by reading smoke drift
 - **D.** Forces smoke into the sewer so leaks show at the surface
 
 **Answer: D. Forces smoke into the sewer so leaks show at the surface**
@@ -1035,10 +1035,10 @@ Smoke travels with the air and rises where there are cracks or illegal connectio
 
 What is a dye test used for?
 
-- **A.** To find the depth of a manhole in typical collection work
+- **A.** To find the depth of a manhole by watching the dye sink
 - **B.** To show where water from a fixture or drain travels
-- **C.** To measure pipe wall thickness during routine field work
-- **D.** To clear grease from a lateral as crews commonly use it
+- **C.** To measure pipe wall thickness near a corroded joint
+- **D.** To find the depth of a manhole by watching how fast the dye sinks
 
 **Answer: B. To show where water from a fixture or drain travels**
 
@@ -1048,10 +1048,10 @@ Colored dye is added to a drain or storm inlet, and its appearance in a sewer sh
 
 What does a multi-gas detector at the entry to a structure report?
 
-- **A.** The wet weather flow rate during routine field work and similar tasks
-- **B.** The pipe slope as crews commonly use it and similar tasks
+- **A.** Wet weather flow rate and velocity entering the manhole
+- **B.** Pipe slope and depth between two structures
 - **C.** Oxygen level and the presence of flammable or toxic gases
-- **D.** The pipe material and age in typical collection work and similar tasks
+- **D.** Pipe material, wall age and joint condition inside the structure
 
 **Answer: C. Oxygen level and the presence of flammable or toxic gases**
 
@@ -1074,10 +1074,10 @@ Iron and steel castings attract a magnetic response, so a magnetic locator can p
 
 What are the two main parts of a typical electronic pipe locator?
 
-- **A.** A nozzle and a hose on most crew assignments
+- **A.** A nozzle and a hose
 - **B.** A transmitter and a receiver
-- **C.** A hook and a chain in typical collection work
-- **D.** A float and a switch on most crew assignments
+- **C.** A probe rod and a carrying handle
+- **D.** A float and a switch
 
 **Answer: B. A transmitter and a receiver**
 
@@ -1087,9 +1087,9 @@ The transmitter puts a signal on a pipe or line, and the receiver picks it up at
 
 What is a sonde?
 
-- **A.** A pump priming device as crews commonly use it and similar tasks
-- **B.** A hand tool for lifting covers during routine field work
-- **C.** A camera lens cleaning kit in typical collection work and similar tasks
+- **A.** A priming device that fills a pump suction line
+- **B.** A hand tool for lifting covers from their frames and from the stands
+- **C.** A lens cleaning kit used on pipe inspection cameras
 - **D.** A small transmitter placed in a pipe so it can be located from above
 
 **Answer: D. A small transmitter placed in a pipe so it can be located from above**
@@ -1113,10 +1113,10 @@ A locator follows a signal on a conductor. Nonmetal pipe needs a tracer wire or 
 
 What is a probe rod used for in locating work?
 
-- **A.** Measuring gas in a manhole as crews commonly use it and similar tasks
-- **B.** Cleaning grease from a lateral in typical collection work and similar tasks
+- **A.** Measuring gas concentration in a manhole atmosphere
+- **B.** Cleaning grease from a lateral by scraping the pipe wall with a blade
 - **C.** Pushing into soil by hand to feel for a buried object
-- **D.** Pulling a hose through a pipe in typical collection work
+- **D.** Pulling a hose through a pipe between two manholes
 
 **Answer: C. Pushing into soil by hand to feel for a buried object**
 
@@ -1127,9 +1127,9 @@ A thin rod pushed into the ground can feel a lid, pipe or other buried object, s
 Why are marks from a locator treated as approximate?
 
 - **A.** Depth and position readings can be off, so the object may need to be exposed
-- **B.** The marks fade quickly in sunlight on most crew assignments and similar tasks
-- **C.** Locators work only in dry weather as crews commonly use it and similar tasks
-- **D.** Locators measure only pipe diameter as crews commonly use it and similar tasks
+- **B.** The marks fade quickly when exposed to bright sunlight, rain and heavy traffic
+- **C.** Locator readings are filed as the legal record of the line
+- **D.** Locators report pipe diameter but give no sense of position
 
 **Answer: A. Depth and position readings can be off, so the object may need to be exposed**
 
@@ -1139,9 +1139,9 @@ Signals can bend or be distorted by other utilities, so a locator gives a good e
 
 What is the purpose of bypass pumping?
 
-- **A.** To thicken wastewater before treatment during routine field work
-- **B.** To inspect a pipe with video as crews commonly use it
-- **C.** To measure the slope between two manholes in everyday maintenance work
+- **A.** To thicken wastewater before it reaches the treatment plant
+- **B.** To inspect a pipe with video while the line is full
+- **C.** To measure the slope between two manholes by comparing the flow rates
 - **D.** To move flow around a section that is blocked or being worked on
 
 **Answer: D. To move flow around a section that is blocked or being worked on**
@@ -1165,10 +1165,10 @@ A trash pump has a large passage and open impeller that lets sand, gravel and sm
 
 Why is a suction hose built with stiff reinforcement?
 
-- **A.** To make the flow turn faster in everyday maintenance work
-- **B.** To let it carry electricity as crews commonly use it
+- **A.** To make the flow turn faster as it enters the pump
+- **B.** To let it carry electric current to the pump motor
 - **C.** To keep it from collapsing when the pump pulls a vacuum
-- **D.** To make it float on the surface as crews commonly use it
+- **D.** To make it float on the surface of the wet well and follow the level
 
 **Answer: C. To keep it from collapsing when the pump pulls a vacuum**
 
@@ -1191,10 +1191,10 @@ Engine exhaust holds a poisonous gas that can build up in enclosed space, so the
 
 What does a self-priming pump do?
 
-- **A.** Fills itself with chemicals before use in everyday maintenance work
+- **A.** Fills itself with chemicals before the pump is used for the first time
 - **B.** Removes air from its suction line on its own to start pumping
-- **C.** Runs in either direction during routine field work and similar tasks
-- **D.** Starts by itself when it rains during routine field work and similar tasks
+- **C.** Runs in either direction without changing the motor wiring
+- **D.** Starts itself when the wet well level rises
 
 **Answer: B. Removes air from its suction line on its own to start pumping**
 
@@ -1217,10 +1217,10 @@ Water moves with less resistance in a larger hose, so the pump works against a s
 
 What is a tripod with a winch or hoist used for at a manhole?
 
-- **A.** Spraying water for cleaning in everyday maintenance work
-- **B.** Marking pipe locations on pavement during routine field work
+- **A.** Spraying water to clean the manhole walls
+- **B.** Marking pipe locations on the pavement surface
 - **C.** Lowering and raising equipment through the opening
-- **D.** Measuring the depth of flow on most crew assignments
+- **D.** Measuring the depth of flow in the lower pipe with a staff gauge
 
 **Answer: C. Lowering and raising equipment through the opening**
 
@@ -1243,10 +1243,10 @@ Slings, hoists and cranes are built for a stated load. Going over it can break t
 
 What is a truck-mounted boom or crane often used for in collection work?
 
-- **A.** Reading pipe slope as crews commonly use it and similar tasks
+- **A.** Reading pipe slope between two structures
 - **B.** Setting heavy items such as pumps or pipe sections
-- **C.** Creating suction for debris as crews commonly use it and similar tasks
-- **D.** Tracing buried lines during routine field work
+- **C.** Measuring flow velocity in a large trunk sewer
+- **D.** Tracing buried lines by sending a signal along the pipe wall
 
 **Answer: B. Setting heavy items such as pumps or pipe sections**
 
@@ -1256,9 +1256,9 @@ A boom gives a vehicle reach and lifting power for loads too heavy to move by ha
 
 What does an arrow board on a work vehicle do?
 
-- **A.** It heats the jetter water as crews commonly use it and similar tasks
-- **B.** It gives power to hand tools as crews commonly use it
-- **C.** It shows crews which way flow is moving on most crew assignments
+- **A.** It heats the jetter water before cleaning begins
+- **B.** It supplies power to hand tools at the site
+- **C.** It shows crews which way flow is moving in the pipe below the street
 - **D.** It signals approaching traffic to shift or slow near the work area
 
 **Answer: D. It signals approaching traffic to shift or slow near the work area**
@@ -1269,10 +1269,10 @@ Arrow boards give drivers advance warning of a lane closure or shift, which is p
 
 What is the purpose of a pre-trip inspection of a work vehicle?
 
-- **A.** To measure fuel economy for a year during routine field work and similar tasks
-- **B.** To clean hoses on most crew assignments and similar tasks
+- **A.** To measure fuel economy for the vehicle over a full year of service
+- **B.** To log the weight of the tools carried on board
 - **C.** To find defects in tires, lights and fluids before use
-- **D.** To record the sewer slope in typical collection work and similar tasks
+- **D.** To record sewer slope at the next job site
 
 **Answer: C. To find defects in tires, lights and fluids before use**
 
@@ -1282,10 +1282,10 @@ A quick check before driving catches problems such as worn tires or failed light
 
 How does a trailer-mounted jetter usually differ from a truck-mounted unit?
 
-- **A.** It cleans pipe by suction only in everyday maintenance work
+- **A.** It cleans pipe by suction rather than by water jets
 - **B.** It is towed and often smaller, with less water and hose capacity
-- **C.** It uses no water at all as crews commonly use it
-- **D.** It must run on rails on most crew assignments and similar tasks
+- **C.** It uses a higher pressure pump and a larger water tank on a heavier frame
+- **D.** It must be mounted on rails to move between manholes
 
 **Answer: B. It is towed and often smaller, with less water and hose capacity**
 
@@ -1296,9 +1296,9 @@ A trailer unit is lighter and easier to bring into tight spots, while a truck un
 Why should jet nozzles be cleaned after use?
 
 - **A.** Debris can clog the small openings and reduce performance
-- **B.** Clean nozzles are heavier in everyday maintenance work and similar tasks
-- **C.** The cleaning makes the water hotter during routine field work
-- **D.** The nozzle must dry in sunlight during routine field work and similar tasks
+- **B.** Clean nozzles give a heavier stream at the same pump pressure setting
+- **C.** Cleaning makes the water leaving the nozzle hotter
+- **D.** The nozzle metal must dry in sunlight to harden
 
 **Answer: A. Debris can clog the small openings and reduce performance**
 
@@ -1308,10 +1308,10 @@ Jet nozzle orifices are small. Grit and grease left in them can block flow and c
 
 Why check hoses for worn spots before use?
 
-- **A.** A worn hose reduces fuel use in everyday maintenance work
-- **B.** A worn hose pumps faster in typical collection work
+- **A.** A worn hose reduces fuel use during pumping
+- **B.** A worn hose pumps faster than a new one
 - **C.** A weak spot can leak or burst under pressure
-- **D.** A worn hose measures flow during routine field work
+- **D.** A worn hose gives a more accurate flow reading
 
 **Answer: C. A weak spot can leak or burst under pressure**
 
@@ -1321,9 +1321,9 @@ High pressure stresses a weak hose wall, and a failure can cause injury or equip
 
 What should be done with a damaged tool that is found during an inspection?
 
-- **A.** Hide it at the back of the truck in everyday maintenance work
-- **B.** Lend it to another crew in everyday maintenance work
-- **C.** Keep using it carefully until the job ends as crews commonly use it
+- **A.** Hide it at the back of the truck for later
+- **B.** Lend it to another crew that needs one
+- **C.** Keep using it carefully until the job is finished and then report it
 - **D.** Tag it as out of service so it is not used until repaired
 
 **Answer: D. Tag it as out of service so it is not used until repaired**
@@ -1334,10 +1334,10 @@ A tag-out prevents others from using unsafe gear until it is repaired or replace
 
 Why should a camera cable and head be rinsed and cleaned after use?
 
-- **A.** To warm the lens for storage in typical collection work
+- **A.** To warm the lens so it does not fog in storage
 - **B.** To remove wastewater residue that can damage and spread germs
-- **C.** To increase pipe slope on most crew assignments and similar tasks
-- **D.** To raise the suction in everyday maintenance work and similar tasks
+- **C.** To reset the footage counter before the next inspection is started
+- **D.** To loosen the cable so it coils flatter on the reel
 
 **Answer: B. To remove wastewater residue that can damage and spread germs**
 
@@ -1348,9 +1348,9 @@ Residue can corrode parts and carry bacteria, so cleaning protects both the equi
 Why is a cracked wooden tool handle a problem?
 
 - **A.** It can split or break under force and cause an injury
-- **B.** It makes the tool lighter as crews commonly use it and similar tasks
-- **C.** It increases the tool length in everyday maintenance work and similar tasks
-- **D.** It improves the grip as crews commonly use it and similar tasks
+- **B.** It makes the tool lighter and easier to swing over a long shift
+- **C.** It increases the tool length and the leverage available
+- **D.** It improves the grip by giving the hand more texture
 
 **Answer: A. It can split or break under force and cause an injury**
 
@@ -1360,9 +1360,9 @@ A weak handle can fail under load, so damaged handles are replaced rather than u
 
 A pressure gauge on a jetter reads in which units?
 
-- **A.** Degrees of slope in typical collection work
-- **B.** Cubic yards as crews commonly use it
-- **C.** Feet per second in typical collection work
+- **A.** Degrees of slope (deg)
+- **B.** Cubic yards (yd3)
+- **C.** Feet per second (fps) of water velocity
 - **D.** Pounds per square inch (psi)
 
 **Answer: D. Pounds per square inch (psi)**
@@ -1412,10 +1412,10 @@ A rate reading, such as gpm, is instantaneous, while a totalizer adds up the gal
 
 What does a gas meter alarm tell the user?
 
-- **A.** The work is complete as crews commonly use it and similar tasks
-- **B.** The meter battery is fully charged on most crew assignments
+- **A.** The work area is clear and the job is complete
+- **B.** The meter battery is fully charged and the unit is ready for use
 - **C.** The atmosphere has reached a set warning level
-- **D.** The pipe is full of water as crews commonly use it and similar tasks
+- **D.** The pipe ahead is full of water
 
 **Answer: C. The atmosphere has reached a set warning level**
 
@@ -1439,9 +1439,9 @@ Arrows on gravity mains point downstream, the way wastewater moves from one manh
 What is the difference between rim elevation and invert elevation at a manhole?
 
 - **A.** Rim is the top of the frame, and invert is the lowest inside point of the pipe
-- **B.** Rim is the flow rate, and invert is the depth as crews commonly use it and similar tasks
-- **C.** They mean the same thing in typical collection work and similar tasks
-- **D.** Rim is the pipe size, and invert is the slope during routine field work
+- **B.** Rim is the flow rate, and invert is the depth of the structure below grade level
+- **C.** Rim is the pipe bottom, and invert is the ground-level frame top
+- **D.** Rim is the pipe size, and invert is the pipe slope in percent
 
 **Answer: A. Rim is the top of the frame, and invert is the lowest inside point of the pipe**
 
@@ -1516,10 +1516,10 @@ Grid letters and numbers on a street index point to the page that covers a locat
 
 What does an as-built drawing show?
 
-- **A.** Only the contractor schedule on most crew assignments and similar tasks
+- **A.** The contractor work schedule for the project
 - **B.** What was actually constructed, including changes made during work
-- **C.** The cost of the project as crews commonly use it and similar tasks
-- **D.** The planned design before bidding in everyday maintenance work
+- **C.** The cost breakdown for the completed project, listed by pay item and phase
+- **D.** The planned design as drawn before the project went out to bid
 
 **Answer: B. What was actually constructed, including changes made during work**
 
@@ -1530,9 +1530,9 @@ Plans often change in the field. As-builts are updated to record the final pipe,
 Why should a crew report a manhole that is not shown on the map?
 
 - **A.** So records can be corrected for everyone who uses them
-- **B.** So the map scale is changed as crews commonly use it
-- **C.** So the manhole is given a new cover as crews commonly use it
-- **D.** So the manhole is taken out of service in everyday maintenance work
+- **B.** So the map scale can be changed to fit it
+- **C.** So the manhole is fitted with a new cover
+- **D.** So the manhole can be taken out of service until it is mapped
 
 **Answer: A. So records can be corrected for everyone who uses them**
 
@@ -1542,10 +1542,10 @@ Missing or wrong features cause delays and mistakes later, so corrections are pa
 
 What does GIS do for a collection system?
 
-- **A.** Generates the power for pumps as crews commonly use it and similar tasks
-- **B.** Cleans pipes by suction as crews commonly use it and similar tasks
+- **A.** Generates electric power for pump stations
+- **B.** Cleans pipes by suction between two manholes using a vacuum hose
 - **C.** Links map features to data such as pipe size, material and age
-- **D.** Replaces the need for inspection as crews commonly use it and similar tasks
+- **D.** Replaces field inspection with satellite photos
 
 **Answer: C. Links map features to data such as pipe size, material and age**
 
@@ -1555,9 +1555,9 @@ A geographic information system stores features with their attributes, so crews 
 
 What is a tie or offset measurement used for?
 
-- **A.** To label the pipe color in typical collection work and similar tasks
-- **B.** To measure gas in a manhole during routine field work and similar tasks
-- **C.** To set the pump speed on most crew assignments and similar tasks
+- **A.** To label the color of a pipe on the map
+- **B.** To measure gas concentration inside a manhole before anyone enters it
+- **C.** To set the speed of a pump from its measured flow reading and head
 - **D.** To locate a buried structure from fixed points such as a curb or building corner
 
 **Answer: D. To locate a buried structure from fixed points such as a curb or building corner**
@@ -2528,14 +2528,14 @@ Listening first shows respect and allows the employee to pass along an accurate 
 
 ### 195: Customer service and public communication (medium)
 
-A resident asks why a truck is parked at the manhole in front of the house. What is a good reply?
+The crew is doing scheduled sewer cleaning. A resident asks why a truck is parked at the manhole in front of the house. What is a good reply?
 
 - **A.** Suggest the resident ask the neighbors instead
-- **B.** Explain that the crew is doing routine sewer maintenance
+- **B.** Briefly explain that the crew is doing scheduled sewer cleaning
 - **C.** Say that crew work is private and ask the resident to step back
 - **D.** Tell the resident that a problem with the sewer was found
 
-**Answer: B. Explain that the crew is doing routine sewer maintenance**
+**Answer: B. Briefly explain that the crew is doing scheduled sewer cleaning**
 
 A short, plain explanation of the work builds trust. Guessing about problems or brushing the resident off creates worry or frustration.
 
