@@ -41,11 +41,11 @@ In open-channel flow measurement, what does a weir use to indicate how much wate
 
 **Answer: A. The height of water above the weir crest**
 
-Water flowing over a weir rises in proportion to the flow, so a measured head above the crest can be converted to a flow rate.
+Water depth over a weir crest increases as flow increases, following the weir's head-discharge relationship, so a measured head above the crest can be converted to a flow rate.
 
 ### 4: Flow measurement and water level devices (medium)
 
-A pressure sensor near the bottom of a tank reports the water level. Pressure at that point depends on what?
+A pressure sensor near the bottom of a tank reports the water level. Assuming constant water density and constant air pressure above the water, pressure at that point depends on what?
 
 - **A.** The temperature of the stored water
 - **B.** The depth of water above the sensor
@@ -188,12 +188,12 @@ Lower yield per foot of drawdown points to lost well efficiency, such as screen 
 
 ### 15: Drawdown, specific capacity and abnormal well operation (hard)
 
-Sand begins to appear in water from a well that ran clear for years. Which cause is most likely?
+Sand begins to appear in water from a well that ran clear for years. Pump depth and pumping rate have not changed. Which cause is most likely?
 
 - **A.** A failing screen or filter pack that passes formation material
-- **B.** Pumping at a rate slightly below the usual setting
+- **B.** Scale flaking off the discharge piping and mixing with the water
 - **C.** A small rise in the aquifer static level over the season
-- **D.** A pump set a little deeper in the casing than before
+- **D.** A new chlorine feed point installed at the wellhead
 
 **Answer: A. A failing screen or filter pack that passes formation material**
 
@@ -327,7 +327,7 @@ Which chemical is commonly added to raise alkalinity?
 
 **Answer: C. Soda ash**
 
-Soda ash is sodium carbonate and adds carbonate alkalinity. Chlorine gas, carbon dioxide and sulfuric acid all lower pH and use up alkalinity.
+Soda ash is sodium carbonate and adds carbonate alkalinity. Carbon dioxide lowers pH and shifts the carbonate balance without directly changing total alkalinity, while chlorine gas and sulfuric acid are acids that use up alkalinity.
 
 ### 26: Alkalinity, hardness and hard water problems (medium)
 
@@ -360,9 +360,9 @@ Heating drives calcium and magnesium out of solution as scale, which insulates t
 Which statement about alkalinity and hardness is correct?
 
 - **A.** Water rich in sodium bicarbonate can have high alkalinity and low hardness
-- **B.** Hardness and alkalinity come from the same laboratory test, so they match
-- **C.** High alkalinity is a sure sign of high hardness in the water
-- **D.** Alkalinity is a measure of how bitter the water tastes to a drinker
+- **B.** Adding sodium to water raises its hardness in the same way calcium does
+- **C.** Alkalinity comes from calcium and magnesium, while hardness comes from carbonate and bicarbonate
+- **D.** Hardness is the ability of water to resist a change in pH
 
 **Answer: A. Water rich in sodium bicarbonate can have high alkalinity and low hardness**
 
@@ -470,7 +470,7 @@ Which reading is a sign of abnormal well operation?
 
 **Answer: D. A pumping level deeper than usual for the same flow**
 
-A deeper pumping level at an unchanged rate means more drawdown, which can show screen plugging or a falling water supply.
+A deeper pumping level at an unchanged rate may reflect a lower static water level or more drawdown. Comparing static and pumping levels shows which, and either can point to screen plugging or a declining supply.
 
 ### 37: Abnormal water conditions and reservoir warning signs (hard)
 
@@ -487,16 +487,16 @@ Certain algae produce toxins, and many produce compounds with earthy or musty ta
 
 ### 38: Security risks and storage disinfection (medium)
 
-Which condition is a potential security risk at a well site?
+Which observation at a well site most suggests that someone gained unauthorized access?
 
-- **A.** A flow meter housed inside the building
-- **B.** A broken lock on the well house door
-- **C.** A pressure gauge that reads in psi
-- **D.** A pump that runs during daytime hours
+- **A.** A chart recorder with faded ink and an old date
+- **B.** A cut fence chain and a forced lock on the well house door
+- **C.** A leaking packing gland dripping at the pump
+- **D.** A utility truck parked at the site during a scheduled visit
 
-**Answer: B. A broken lock on the well house door**
+**Answer: B. A cut fence chain and a forced lock on the well house door**
 
-Damaged locks, gates and fences let unauthorized people reach equipment, so they should be reported and repaired quickly.
+Cut or forced locks and fences show that access control was defeated, so they should be reported and repaired quickly. Scheduled visits and ordinary equipment wear are not signs of intrusion.
 
 ### 39: Security risks and storage disinfection (medium)
 
@@ -515,12 +515,12 @@ Cut fences and pry marks on hatches show forced entry. Those signs should be rep
 
 Why is a storage tank disinfected after cleaning or repair before it returns to service?
 
-- **A.** Disinfection removes scale from the interior walls
-- **B.** Disinfection tests the tank for leaks
-- **C.** Disinfection lowers the dissolved iron in the water
-- **D.** Workers and tools can leave bacteria behind
+- **A.** To loosen scale that has built up on the interior walls
+- **B.** To check the tank walls and seams for leaks
+- **C.** To lower the dissolved iron in the stored water
+- **D.** To kill bacteria that workers and tools can leave behind
 
-**Answer: D. Workers and tools can leave bacteria behind**
+**Answer: D. To kill bacteria that workers and tools can leave behind**
 
 People, equipment and debris bring organisms into a tank. A chlorine contact step treats the surfaces before the water is delivered.
 
@@ -528,14 +528,14 @@ People, equipment and debris bring organisms into a tank. A chlorine contact ste
 
 After a well is disinfected and flushed, why is a bacteriological sample collected?
 
-- **A.** The sample finds the drawdown at the new pumping rate
-- **B.** The result shows how much chlorine remains in the casing
-- **C.** Lab results confirm the water is free of coliform before service
-- **D.** The test sets the chlorine dose for the next disinfection cycle
+- **A.** To find the drawdown at the new pumping rate of the well
+- **B.** To measure how much chlorine remains in the well casing
+- **C.** To check for detectable coliform before the well returns to service
+- **D.** To set the chlorine dose for the next disinfection cycle
 
-**Answer: C. Lab results confirm the water is free of coliform before service**
+**Answer: C. To check for detectable coliform before the well returns to service**
 
-Disinfection is not accepted on trust. A passing bacteriological sample shows that the treatment worked before water goes into the system.
+Disinfection is not accepted on trust. A sample with no detectable coliform helps verify satisfactory bacteriological quality before water goes into the system.
 
 ### 42: What causes turbidity (easy)
 
@@ -606,10 +606,10 @@ Turbidimeters report scattered light in NTU. Color units and mg/L describe other
 
 How does a nephelometric turbidimeter measure turbidity?
 
-- **A.** The weight of the residue left after a sample is dried
-- **B.** The time particles take to settle in a measuring tube
+- **A.** By weighing the residue left after a sample is dried
+- **B.** By timing how long particles take to settle in a tube
 - **C.** By sensing light scattered by the particles
-- **D.** The amount of light that passes straight through the sample
+- **D.** By measuring how much light passes straight through the sample
 
 **Answer: C. By sensing light scattered by the particles**
 
@@ -619,14 +619,14 @@ The instrument shines a light and detects the part scattered sideways. More part
 
 Filter effluent turbidity creeps upward over several hours while the flow is steady. What does this trend most likely signal?
 
-- **A.** The raw water has become softer, so less is needed
-- **B.** The turbidimeter has drifted and the readings can be ignored
+- **A.** The filter bed is still ripening, which is normal and needs no follow-up
+- **B.** The clearwell is mixing with older water, so the filter itself is fine
 - **C.** The disinfectant demand has dropped in the meantime
 - **D.** The filter may be losing its ability to hold back particles
 
 **Answer: D. The filter may be losing its ability to hold back particles**
 
-A steady rise at constant flow points to declining filter performance, so the trend should be investigated. Assuming instrument drift without checking could miss a real problem.
+A steady rise at constant flow points to declining filter performance, so the trend should be investigated. Ripening happens just after a backwash, and instrument drift should be checked rather than assumed.
 
 ### 49: Interpreting turbidity information (hard)
 
@@ -723,12 +723,12 @@ Higher pH favors the hypochlorite ion over hypochlorous acid, which makes chlori
 
 Which description fits free chlorine in a water sample?
 
-- **A.** Chlorine still sitting in the cylinder awaiting feed
-- **B.** Chlorine attached to ammonia or to organic nitrogen
-- **C.** Chlorine that has reacted with the water and been used up
-- **D.** Chlorine as HOCl and hypochlorite ion
+- **A.** Chlorine held in the cylinder before it is fed
+- **B.** Chlorine bonded to ammonia or organic nitrogen
+- **C.** Chlorine that reacted with the water and was used up
+- **D.** Chlorine present as hypochlorous acid and hypochlorite ion
 
-**Answer: D. Chlorine as HOCl and hypochlorite ion**
+**Answer: D. Chlorine present as hypochlorous acid and hypochlorite ion**
 
 Free chlorine is the unreacted, active portion. Chlorine bound to ammonia is combined chlorine, and used-up chlorine is part of the demand.
 
@@ -762,12 +762,12 @@ At the breakpoint, the added chlorine has oxidized the ammonia and chloramines, 
 
 On a breakpoint curve, why does the measured residual dip after its first rise?
 
-- **A.** Chlorine oxidizes chloramines
-- **B.** Alkalinity neutralizes the chlorine residual over time
-- **C.** Chlorine gas escapes from the water surface
-- **D.** Free chlorine converts into combined chlorine
+- **A.** Added chlorine destroys the chloramines formed earlier
+- **B.** Alkalinity neutralizes the chlorine residual as the dose rises
+- **C.** Chlorine gas escapes from the water surface as the dose rises
+- **D.** Free chlorine converts into combined chlorine as the dose rises
 
-**Answer: A. Chlorine oxidizes chloramines**
+**Answer: A. Added chlorine destroys the chloramines formed earlier**
 
 The dip happens because extra chlorine destroys the chloramines formed earlier. Once that reaction is done, the residual climbs again.
 
@@ -788,10 +788,10 @@ Beyond the breakpoint the ammonia has been oxidized, so each extra increment sta
 
 Water contains ammonia. Which describes the residual as chlorine dose is raised from a low value?
 
-- **A.** Combined residual climbs steadily with no dip at any dose, since ammonia keeps being replaced
+- **A.** A free residual forms at once and stays level, then a combined residual appears at higher doses
 - **B.** Demand uses chlorine first, a combined residual forms, it falls at breakpoint, then free residual rises
 - **C.** Free residual appears first, then converts into combined residual as ammonia reacts with the chlorine
-- **D.** Residual stays flat until the dose has doubled, then jumps straight to a free residual
+- **D.** Demand uses chlorine first, then free residual rises, and a combined residual forms at the breakpoint
 
 **Answer: B. Demand uses chlorine first, a combined residual forms, it falls at breakpoint, then free residual rises**
 
@@ -814,12 +814,12 @@ Demand is chlorine used up by organics, metals, ammonia and other substances. Do
 
 Why is a measurable disinfectant residual maintained in the distribution system?
 
-- **A.** It lowers turbidity in the distribution mains
-- **B.** It prevents corrosion by raising the water pH
-- **C.** It removes hardness before the water reaches the tap
-- **D.** Lasting protection after treatment
+- **A.** To clear sediment out of the mains over time
+- **B.** To raise the pH so the pipes corrode less
+- **C.** To soften the water before it reaches the tap
+- **D.** To keep protecting the water after it leaves the plant
 
-**Answer: D. Lasting protection after treatment**
+**Answer: D. To keep protecting the water after it leaves the plant**
 
 A residual keeps working after the plant, helping control microbial regrowth or small intrusions. It does not remove particles, hardness or corrosion.
 
@@ -834,7 +834,7 @@ In principle, what does an acceptable residual mean?
 
 **Answer: A. Protection without exceeding the maximum or causing complaints**
 
-An acceptable residual balances protection against upper limits and customer acceptance. The residual is what remains after demand, so it is lower than the dose.
+An acceptable residual balances protection against upper limits and customer acceptance. The residual equals the dose minus the demand, so it is lower than the dose whenever demand is positive.
 
 ### 65: Chlorine demand and residual (medium)
 
@@ -931,12 +931,12 @@ Soft, acidic water with little buffering dissolves metal and protective films. H
 
 Why can connecting two different metals in plumbing speed up corrosion?
 
-- **A.** They remove the chlorine residual from the water
-- **B.** They shift the water pH toward neutral
-- **C.** They form a galvanic cell
-- **D.** They add turbulence that scours the pipe walls
+- **A.** They strip the chlorine residual out of the water
+- **B.** They shift the water pH toward a neutral value
+- **C.** They create a galvanic cell where one metal gives way
+- **D.** They add turbulence that scours the inside of the pipe
 
-**Answer: C. They form a galvanic cell**
+**Answer: C. They create a galvanic cell where one metal gives way**
 
 Dissimilar metals in water act like a battery, and the more active metal corrodes faster.
 
@@ -970,23 +970,23 @@ Caustic soda is a strong base that raises pH. Alum, chlorine gas and carbon diox
 
 What is the main aim of adjusting pH and alkalinity for corrosion control?
 
-- **A.** A protective mineral film on the pipe wall
-- **B.** To remove dissolved metals at the treatment plant
-- **C.** To make the water taste softer to customers
-- **D.** To dissolve existing deposits so the pipe stays bare
+- **A.** To limit pipe attack and metal release through balanced water chemistry
+- **B.** To strip dissolved metals from the water at the treatment plant
+- **C.** To make the water taste softer and smoother to customers
+- **D.** To dissolve existing deposits so the pipe wall is left bare
 
-**Answer: A. A protective mineral film on the pipe wall**
+**Answer: A. To limit pipe attack and metal release through balanced water chemistry**
 
-A stable water lets a thin protective layer build on the inside of pipes, which limits metal release.
+Balanced pH and alkalinity make the water less aggressive toward pipe materials, which reduces metal release. A protective film may form in some systems, but the goal is limiting corrosion.
 
 ### 76: pH adjustment for corrosion control (medium)
 
-What downside can come from raising pH too high for corrosion control?
+Raising pH too high for corrosion control has what downside for free-chlorine disinfection?
 
 - **A.** Chloramines form from the added chemical
 - **B.** The pipe lining dissolves faster than before
 - **C.** Free chlorine turns into a weaker disinfectant
-- **D.** Turbidity in the system increases sharply
+- **D.** Chlorine demand drops to zero in the mains
 
 **Answer: C. Free chlorine turns into a weaker disinfectant**
 
@@ -1007,16 +1007,16 @@ Alkalinity buffers pH. With little of it, a small overfeed or underfeed moves th
 
 ### 78: Taste and odor (easy)
 
-Which gas gives water a rotten-egg smell?
+Which condition commonly produces hydrogen sulfide in groundwater?
 
-- **A.** Hydrogen sulfide
-- **B.** Ammonia
-- **C.** Methane
-- **D.** Carbon dioxide
+- **A.** Bacteria that thrive without oxygen and use sulfur compounds
+- **B.** High flow velocity stirring up bottom sediment
+- **C.** Calcium carbonate dissolving from the aquifer rock
+- **D.** Excess dissolved oxygen reacting with the well casing
 
-**Answer: A. Hydrogen sulfide**
+**Answer: A. Bacteria that thrive without oxygen and use sulfur compounds**
 
-Hydrogen sulfide produces the rotten-egg odor often found in groundwater or stagnant lines. Methane and carbon dioxide have no smell.
+In oxygen-poor groundwater, certain bacteria use sulfur compounds and release hydrogen sulfide gas, which smells like rotten eggs. Oxygen-rich conditions do not favor it.
 
 ### 79: Taste and odor (medium)
 
@@ -1049,24 +1049,24 @@ Chlorine reacting with certain organics forms compounds that taste and smell med
 Which treatment is commonly used to adsorb taste and odor compounds?
 
 - **A.** Plain sedimentation in a long basin
-- **B.** Sand filtration used as the sole step
-- **C.** Activated carbon
+- **B.** Sand filtration used as a stand-alone step
+- **C.** Powdered or granular activated carbon
 - **D.** Raising the pH with caustic soda
 
-**Answer: C. Activated carbon**
+**Answer: C. Powdered or granular activated carbon**
 
-Powdered or granular activated carbon holds taste and odor compounds on its surface. Settling and ordinary sand do not capture dissolved organics well.
+Activated carbon holds taste and odor compounds on its surface. Settling and ordinary sand filtration do not capture dissolved organics well.
 
 ### 82: Taste and odor (hard)
 
 Why can aeration reduce some taste and odor problems?
 
-- **A.** Oxygen raises pH and neutralizes the chlorine
-- **B.** Air warms the water and boils the compounds off
-- **C.** Air bubbles carry compounds to the surface where they settle
-- **D.** Gases like hydrogen sulfide leave the water
+- **A.** Oxygen raises the pH and neutralizes the chlorine residual
+- **B.** Air makes the compounds precipitate as a sludge that settles out
+- **C.** Air bubbles make the compounds stick to the basin walls and settle
+- **D.** Gases such as hydrogen sulfide pass out of the water into the air
 
-**Answer: D. Gases like hydrogen sulfide leave the water**
+**Answer: D. Gases such as hydrogen sulfide pass out of the water into the air**
 
 Aeration strips volatile gases out of water. It works for gases but not for most dissolved organic compounds.
 
@@ -1098,16 +1098,16 @@ Manganese oxidizes to dark solids that stain fixtures and laundry black or brown
 
 ### 85: Recognizing iron and manganese problems (medium)
 
-Where is an iron or manganese problem most expected?
+Which complaint is typically linked to iron and manganese in tap water?
 
-- **A.** Well-aerated surface streams in open channels
-- **B.** Water that has recently been softened
-- **C.** Chlorinated storage tanks that are kept full
-- **D.** Groundwater low in oxygen
+- **A.** A rotten-egg odor at the faucet
+- **B.** Cloudiness from tiny trapped air bubbles
+- **C.** A bitter taste from high alkalinity
+- **D.** Brown or black staining of fixtures and laundry
 
-**Answer: D. Groundwater low in oxygen**
+**Answer: D. Brown or black staining of fixtures and laundry**
 
-Without oxygen, iron and manganese stay dissolved in groundwater, then oxidize and stain once the water is pumped and exposed to air.
+Dissolved iron and manganese oxidize on contact with air or chlorine and form brown or black particles that generally stain fixtures and laundry.
 
 ### 86: Best available technology and health effects (easy)
 
@@ -1133,7 +1133,7 @@ High copper in drinking water over a short time is most associated with what?
 
 **Answer: B. Stomach cramps and nausea**
 
-Short-term copper exposure at high levels irritates the stomach. Lead and nitrate have the other listed effects.
+Short-term copper exposure at high levels irritates the stomach. Nitrate is linked to impaired oxygen transport in infants and lead to neurological effects, so those are not the short-term copper effect.
 
 ### 88: Best available technology and health effects (medium)
 
@@ -1159,7 +1159,7 @@ In drinking water rules, what is a best available technology (BAT)?
 
 **Answer: D. A treatment method shown able to meet a contaminant limit**
 
-A BAT is the method regulators identify as capable of meeting a contaminant limit. It is about proven effectiveness, not cost or novelty.
+A BAT is a treatment technology that regulators identify as demonstrated to achieve compliance with a contaminant limit, with cost taken into consideration. Being new, cheap or already installed does not make a process a BAT.
 
 ### 90: Chemical feeder types and components (easy)
 
@@ -1306,7 +1306,7 @@ These pumps move a fixed volume per cycle, so a closed discharge makes pressure 
 
 ### 101: Pump types and uses (medium)
 
-Which pump is set below the water surface in a well and pushes water up the casing?
+Which pump is set below the water surface in a well and pushes water to the surface through a discharge pipe?
 
 - **A.** Self-priming end-suction pump
 - **B.** Submersible turbine pump
@@ -1488,16 +1488,16 @@ Air rises and collects at high points, where a release valve lets it escape and 
 
 ### 115: Water meter types and reading (easy)
 
-What does the totalizer on a flow meter show?
+A meter's running volume display reads 4,812,000 gal today. How is the volume for the past day found?
 
-- **A.** Cumulative volume that has passed through the meter
-- **B.** Instant rate of flow at this moment
-- **C.** Pressure drop across the metering element
-- **D.** Temperature of the water in the line
+- **A.** Subtract the reading taken at the same time yesterday
+- **B.** Multiply the reading by the hours in a day
+- **C.** Divide the reading by the average flow rate
+- **D.** Add the reading to the lowest recorded flow rate
 
-**Answer: A. Cumulative volume that has passed through the meter**
+**Answer: A. Subtract the reading taken at the same time yesterday**
 
-A totalizer works like an odometer for water, adding up volume over time. The rate display shows current flow.
+A running total only increases, so the difference between two readings is the volume passed in between. Rate readings show flow at one moment and cannot be combined this way.
 
 ### 116: Water meter types and reading (medium)
 
@@ -1653,7 +1653,7 @@ Which tap is the best choice for a sample meant to represent water in a main?
 
 **Answer: A. A clean tap fed directly by the main with no device attached**
 
-A representative sample comes from a fixture that passes untreated main water through clean fittings. Hoses and treatment devices change what the water contains.
+A representative sample comes from a fixture that passes unaltered main water through clean fittings. Hoses and treatment devices change what the water contains.
 
 ### 128: Sampling sites and collection (medium)
 
@@ -1672,14 +1672,14 @@ Water that has been standing in the tap and short pipe may differ from the water
 
 Why is a chain of custody form kept with a sample if its result is later questioned?
 
-- **A.** It shows who held the sample and that it was not tampered with
-- **B.** It confirms the lab meter was calibrated before the run
+- **A.** It documents sample identity and who collected, handled and received it
+- **B.** It confirms the lab meter was calibrated before the analysis run
 - **C.** It records the pH and temperature of the sample at the source
-- **D.** It proves the test method was approved for the parameter
+- **D.** It proves the test method was approved for the parameter being measured
 
-**Answer: A. It shows who held the sample and that it was not tampered with**
+**Answer: A. It documents sample identity and who collected, handled and received it**
 
-The form records each hand-off from collection to analysis. That record supports the result as belonging to the sample taken and not altered along the way.
+The form records each hand-off from collection to analysis. That record supports traceability and sample integrity, although it does not by itself prove nothing happened to the sample.
 
 ### 130: Chain of custody, containers and holding times (medium)
 
@@ -1698,14 +1698,14 @@ Chlorine left in the bottle would keep disinfecting during transport and could h
 
 Why are some samples chilled and delivered for analysis within a set time after collection?
 
-- **A.** To keep bottle labels from smudging during transport
-- **B.** To let suspended particles settle before the test begins
-- **C.** To meet a carrier rule about shipping temperatures
+- **A.** To sterilize the sample so no changes can occur
+- **B.** To concentrate the analyte so the lab can detect it more easily
+- **C.** To let suspended particles settle before the test begins
 - **D.** To slow biological and chemical changes that shift the result
 
 **Answer: D. To slow biological and chemical changes that shift the result**
 
-Microbes grow or die and dissolved chemicals react as a sample ages. Preservation and holding limits keep the measured value close to the value in the source water.
+Microbes grow or die and dissolved chemicals react as a sample ages. Preservation and holding limits keep the measured value close to the value in the source water, although chilling slows these changes rather than stopping them.
 
 ### 132: Well sampling and laboratory chemical hazards (medium)
 
@@ -1748,27 +1748,27 @@ A safety data sheet lists hazards, protective equipment and first-aid measures f
 
 ### 135: Chlorine analysis and colorimeters (easy)
 
-Free chlorine in a sample refers to chlorine present in which form?
+Which measurement equals free chlorine plus combined chlorine?
 
-- **A.** Chlorine bound to ammonia in chloramines
-- **B.** Chloride ions left over after chlorine reacted
-- **C.** Chlorine already consumed by organic matter
-- **D.** Hypochlorous acid and hypochlorite ion ready to disinfect
+- **A.** The chlorine demand of the water
+- **B.** The chlorine dose applied at the feeder
+- **C.** The chloride content of the sample
+- **D.** The total chlorine residual
 
-**Answer: D. Hypochlorous acid and hypochlorite ion ready to disinfect**
+**Answer: D. The total chlorine residual**
 
-Free chlorine is the uncombined, active portion. Combined chlorine and chloride are weaker or inactive as disinfectants.
+Total chlorine is the sum of free and combined chlorine. Demand is dose minus residual, and the dose is what is fed rather than what is measured.
 
 ### 136: Chlorine analysis and colorimeters (medium)
 
 Why do operators use an approved analytical method and fresh reagents for compliance chlorine readings?
 
-- **A.** They remove the need to calibrate the instrument
-- **B.** Approved methods give results regulators accept as reliable
-- **C.** They keep the residual in range once the sample is collected
-- **D.** They let the operator skip recording the time of analysis
+- **A.** They let the instrument skip its routine calibration check
+- **B.** They make results comparable and defensible to regulators
+- **C.** They keep the residual from changing after collection
+- **D.** They remove color and turbidity interference from the sample
 
-**Answer: B. Approved methods give results regulators accept as reliable**
+**Answer: B. They make results comparable and defensible to regulators**
 
 Using a recognized method with good reagents makes results comparable and defensible. It does not control the actual residual or replace calibration and records.
 
@@ -1776,10 +1776,10 @@ Using a recognized method with good reagents makes results comparable and defens
 
 A colorimeter is zeroed with an untreated portion of the sample before the reagent is added. What is the reason?
 
-- **A.** To convert the display from mg/L into NTU
-- **B.** To supply the reagent amount the chemistry needs
+- **A.** To cancel the color of the reagent itself
+- **B.** To correct for lamp drift that builds up during the test
 - **C.** To remove the sample's own color and cloudiness from the reading
-- **D.** To bring the lamp to its brightest output for the test
+- **D.** To check that the calibration still matches a known standard
 
 **Answer: C. To remove the sample's own color and cloudiness from the reading**
 
@@ -1861,7 +1861,7 @@ A turbidity reading climbs while tiny bubbles cling to the inside of the sample 
 
 **Answer: A. The bubbles scatter light much as particles do**
 
-Gas bubbles scatter light and add false turbidity. Letting a sample settle briefly or degassing it gives a reading that reflects the particles.
+Gas bubbles scatter light and add false turbidity. Remove them with the instrument-approved method without letting particles settle, so the reading reflects the particles in the water.
 
 ### 144: Hardness and taste and odor analysis (medium)
 
@@ -1930,7 +1930,7 @@ Coliforms are easy to detect and indicate that outside material may have entered
 
 ### 149: Microbiological analysis (medium)
 
-Which pair of organisms is a protozoan concern in raw surface water?
+Which pair of organisms is a concern in raw surface water because their cysts and oocysts resist ordinary disinfection?
 
 - **A.** Giardia and Cryptosporidium
 - **B.** Norovirus and rotavirus
@@ -1939,7 +1939,7 @@ Which pair of organisms is a protozoan concern in raw surface water?
 
 **Answer: A. Giardia and Cryptosporidium**
 
-Giardia and Cryptosporidium are protozoa shed by animals and people into surface sources. The other pairs are bacteria or viruses.
+Giardia and Cryptosporidium are shed by animals and people into surface sources and resist ordinary disinfection. The other pairs are bacteria or viruses that disinfection controls more readily.
 
 ### 150: Unit processes and water quality reports (easy)
 
@@ -2017,7 +2017,7 @@ How does a primary drinking water standard differ from a secondary standard?
 
 **Answer: D. A primary standard protects health, while a secondary standard addresses aesthetics like taste and color**
 
-Primary standards are health based and enforceable. Secondary standards guide issues such as taste, odor, color and staining.
+Primary standards address health, while secondary standards address aesthetic and related qualities such as taste, odor, color and staining. In California secondary standards are also enforceable.
 
 ### 156: Standards, MCLs and Waterworks Standards (medium)
 
@@ -2049,7 +2049,7 @@ The standards are state rules that public water system facilities must meet so t
 
 What is the main purpose of the Consumer Confidence Report?
 
-- **A.** To list the chemicals purchased by the utility each year
+- **A.** To explain the utility's rates and planned capital projects
 - **B.** To record each operator's work schedule for the utility
 - **C.** To tell customers where their water comes from and what it contains
 - **D.** To list the chemicals that the utility bought and fed during the year
@@ -2129,12 +2129,12 @@ What is the purpose of the Surface Water Treatment Rule?
 
 - **A.** To limit the amount of chlorine that may be fed at the treatment plant
 - **B.** To set the schedule for flushing hydrants throughout a water system
-- **C.** To require filtration and disinfection of surface water to control pathogens
+- **C.** To require disinfection and generally filtration of surface water
 - **D.** To require that wells are sealed against surface runoff and flooding
 
-**Answer: C. To require filtration and disinfection of surface water to control pathogens**
+**Answer: C. To require disinfection and generally filtration of surface water**
 
-Surface sources carry pathogens, so the rule sets treatment expectations for filtration and disinfection.
+Surface sources carry pathogens, so the rule requires disinfection and generally filtration, unless a system meets the criteria for avoiding filtration.
 
 ### 165: Named drinking water rules (hard)
 
@@ -2179,14 +2179,14 @@ Oocysts tolerate normal chlorine doses, so physical removal through good filtrat
 
 Which illness is a typical waterborne disease concern from fecal contamination?
 
-- **A.** Chronic kidney stones from hard water
-- **B.** Seasonal allergic reactions to pollen
-- **C.** Skin sunburn after swimming outdoors
+- **A.** Nerve damage from lead in old plumbing
+- **B.** Mottled teeth from excess fluoride
+- **C.** Liver damage from a spilled solvent
 - **D.** Gastroenteritis with diarrhea and cramps
 
 **Answer: D. Gastroenteritis with diarrhea and cramps**
 
-Fecal pathogens in water commonly cause stomach and intestinal illness, which is why disinfection is required.
+Fecal pathogens in water commonly cause stomach and intestinal illness, which is why disinfection is required. The other effects come from chemical contaminants, not fecal organisms.
 
 ### 169: Pathogens, violations and corrective action (medium)
 
@@ -2194,12 +2194,12 @@ A system learns it has violated a drinking water standard. What is a sound gener
 
 - **A.** Wait for the next scheduled sample to see whether the result repeats
 - **B.** Find the cause, fix it, and notify the regulator and customers
-- **C.** Change the sample location until a passing result is obtained
-- **D.** Quietly adjust the records so the average meets the standard
+- **C.** Notify the regulator but leave customer notice for the annual report
+- **D.** Treat the result as a lab error and resample without further action
 
 **Answer: B. Find the cause, fix it, and notify the regulator and customers**
 
-Violations call for investigating the cause, fixing it and following the notice and reporting duties. Hiding or avoiding the result is improper.
+Violations call for investigating the cause, fixing it and following the notice and reporting duties. Waiting or delaying notice leaves the problem and the duties unaddressed.
 
 ### 170: Safe work habits, hazards and PPE (medium)
 
@@ -2283,9 +2283,9 @@ Many chemicals react dangerously with each other. Separate storage prevents mixi
 
 A hypochlorite solution is accidentally mixed with an acid in a feed area. What is the main danger?
 
-- **A.** Production of a sweet smell that makes the water cloudy
-- **B.** Rapid cooling of the tank to below freezing
-- **C.** Formation of a harmless salt and water
+- **A.** Formation of a thick sludge that clogs the feed line
+- **B.** Release of hydrogen gas that can burn or explode
+- **C.** Neutralization into salt and water with no hazard
 - **D.** Release of chlorine gas that irritates the lungs and eyes
 
 **Answer: D. Release of chlorine gas that irritates the lungs and eyes**
@@ -2311,7 +2311,7 @@ Why are some spaces such as tanks and vaults treated as confined spaces?
 
 - **A.** They hold equipment that is powered by electricity
 - **B.** They are located below ground level and have a depth beyond waist height
-- **C.** They are located below the level of the ground
+- **C.** They are marked with warning signs and kept locked by the utility
 - **D.** They have limited entry and exit and may hold a bad atmosphere
 
 **Answer: D. They have limited entry and exit and may hold a bad atmosphere**
@@ -2336,7 +2336,7 @@ Locks and tags keep energy sources isolated so the machine cannot start unexpect
 Why is water near electrical equipment a hazard?
 
 - **A.** Water conducts current and raises the chance of shock
-- **B.** Water makes the equipment run at a higher speed
+- **B.** Water insulates the wiring and makes wet equipment safer to handle
 - **C.** Water cools wiring and slows the current flow
 - **D.** Water makes the equipment run at a higher speed than it normally would
 
@@ -2355,20 +2355,20 @@ A weighted tape is lowered in a well until the tape goes slack on the floor of t
 
 **Answer: B. The total depth of the well from the measuring point**
 
-Slack tape means the weight has come to rest at the end of the well, so the marked tape gives total depth. Depth to water is read where the tape first meets the water.
+Slack tape means the weight has come to rest at the end of the well, so the marked tape gives total depth. Depth to water needs a different method, such as a wetted-tape or electric water-level measurement.
 
 ### 182: Well total depth sounding (hard)
 
-How does a total depth sounding differ from a depth-to-water reading taken with the same marked tape?
+How does a total depth sounding differ from a depth-to-water reading taken with an electric water-level indicator?
 
-- **A.** The sounding is taken with the pump running to keep the tape straight
-- **B.** The tape is read at the pump base rather than at the marked measuring point
-- **C.** The weight goes down to the well floor instead of stopping at the water
-- **D.** A heavier weight is needed because water pushes the tape upward
+- **A.** A sounding needs a heavier weight because water pushes the tape upward
+- **B.** A sounding is read at the pump base, while the indicator is read at the wellhead
+- **C.** A sounding runs the tape to the well floor, while the indicator stops at the water
+- **D.** A sounding needs the pump running to keep the tape straight, while the indicator does not
 
-**Answer: C. The weight goes down to the well floor instead of stopping at the water**
+**Answer: C. A sounding runs the tape to the well floor, while the indicator stops at the water**
 
-Both readings start from the same measuring point, but a depth sounding continues past the water to the end of the well. The difference is where the tape stops.
+Both readings start from a measuring point at the wellhead, but a sounding continues past the water to the well floor, while an electric indicator signals at the water surface.
 
 ### 183: Measuring static and pumping levels (easy)
 
@@ -2387,14 +2387,14 @@ Static level is the resting water level with no pumping influence. The pumping l
 
 How should static and pumping levels be taken so the drawdown figure is meaningful?
 
-- **A.** With the same tool from the same reference point on the well
-- **B.** With a sounder for the static level and a pressure gauge for the pumping level
-- **C.** From the ground surface for one reading and the pump base for the other
-- **D.** With a wet tape for one reading and a dry tape for the other
+- **A.** From one fixed reference point, using accurate and comparable methods
+- **B.** From the ground surface for one reading and the pump base for the other
+- **C.** Using the driller's original static level and a fresh pumping level
+- **D.** Taking the pumping level just after the pump starts instead of once it settles
 
-**Answer: A. With the same tool from the same reference point on the well**
+**Answer: A. From one fixed reference point, using accurate and comparable methods**
 
-Drawdown is the difference between two levels, so both must be measured the same way. A changed tool or starting point would look like extra drawdown.
+Drawdown is the difference between two levels, so both need the same reference datum and accurate, comparable measurements. Using the same tool is good practice, but a different calibrated instrument is acceptable when readings stay comparable.
 
 ### 185: Cleaning and disinfecting a storage tank (medium)
 
@@ -2426,9 +2426,9 @@ A bacteriological test confirms the cleaning and disinfection worked. Water shou
 
 A worn diaphragm on a chemical feeder is being replaced. Which pair of reasons explains the isolation step and the choice of the new part?
 
-- **A.** Isolation cools the pump head; the part needs to carry the same rated voltage
-- **B.** Isolation protects the chemical from air; the part needs to fit the housing
-- **C.** Isolation keeps the feed rate steady; the part needs to match the old part's color
+- **A.** Isolation lets the pump cool down; the part needs to be the same thickness as the old one
+- **B.** Isolation keeps the feed rate steady; the part needs to match the pump's pressure rating
+- **C.** Isolation protects the chemical from air; the part needs to fit the housing dimensions
 - **D.** Isolation stops chemical escaping; the part must resist that chemical
 
 **Answer: D. Isolation stops chemical escaping; the part must resist that chemical**
@@ -2479,9 +2479,9 @@ Documented control shows the sample was not swapped or altered. Cooling and fast
 Why do labs call for different containers for different tests?
 
 - **A.** Material and preservative must suit the analyte and not alter it
-- **B.** Container size sets the holding time allowed for that test
-- **C.** Each test method needs its own bottle supplier approved
-- **D.** Colored lids are required by the state to sort samples
+- **B.** Any clean bottle works because analytes do not react with containers
+- **C.** Preservative is added to sample bottles just to stop bacterial growth
+- **D.** Bigger containers hold a more representative sample of the source
 
 **Answer: A. Material and preservative must suit the analyte and not alter it**
 
@@ -2528,16 +2528,16 @@ Chlorine is reactive and also lost to light and agitation. A delayed reading wou
 
 ### 195: Using a colorimeter correctly (easy)
 
-Before samples are read, a colorimeter is zeroed with a blank. What is the blank?
+Before chlorine samples are read on a colorimeter, the instrument is zeroed with a blank. What is that blank under the usual method?
 
 - **A.** A cell left empty so no light reaches the sensor
-- **B.** A cell of clear water without the color-forming chemical added
+- **B.** The same sample without the color-forming reagent added
 - **C.** A cell filled with sample after the reagent has developed
 - **D.** A cell holding a standard of known concentration
 
-**Answer: B. A cell of clear water without the color-forming chemical added**
+**Answer: B. The same sample without the color-forming reagent added**
 
-The blank sets the instrument to zero for the water itself. Color from the reagent is then measured against that baseline.
+In common chlorine colorimetry the unreagented sample sets the instrument to zero for the water's own color and clarity, subject to the analytical method. Color from the reagent is then measured against that baseline.
 
 ### 196: Using a colorimeter correctly (medium)
 
@@ -2580,29 +2580,29 @@ Leftover liquid would mix into the next sample. Gentle stirring keeps the liquid
 
 ### 199: Turbidity cell handling (easy)
 
-Why are turbidity sample cells wiped clean and checked for scratches before use?
+Why are cells for an optical turbidity test wiped clean and inspected before use?
 
-- **A.** Scratches in the glass change the sample temperature during the reading
-- **B.** Dirty cells absorb the light so the reading comes out low
-- **C.** Smudges on the cell react with the water and shift its pH
-- **D.** Marks and scratches scatter light and read as extra turbidity
+- **A.** Smudges on the cell react with the water and shift its pH
+- **B.** Scratches in the glass change the sample temperature during the reading
+- **C.** Marks on the cell change the calibration standards stored in the meter
+- **D.** Fingerprints, dirt and scratches can bias the reading
 
-**Answer: D. Marks and scratches scatter light and read as extra turbidity**
+**Answer: D. Fingerprints, dirt and scratches can bias the reading**
 
-A turbidimeter measures scattered light, so marks on the glass add to it. Clean, matched cells keep the result from reflecting the cell.
+A turbidimeter measures light, so marks, dirt and scratches on the glass can bias the reading by scattering or absorbing light. Clean, matched cells keep the result reflecting the sample.
 
 ### 200: Turbidity cell handling (medium)
 
-Why is a turbidity sample inverted gently and left briefly to release trapped air before it is read?
+Why should a turbidity sample be read soon after collection?
 
-- **A.** Bubbles scatter light like particles, so they push the reading up
-- **B.** Air in the sample changes the instrument's calibration standard
-- **C.** Air bubbles absorb light and push the reading lower
-- **D.** Hard mixing breaks up particles and lowers the true turbidity
+- **A.** Particles can settle, clump or break apart as the sample ages
+- **B.** Chlorine in the sample fades and lowers the particle count
+- **C.** Dissolved gases escape and leave the sample clearer than the source
+- **D.** The glass cell slowly absorbs the particles from the water
 
-**Answer: A. Bubbles scatter light like particles, so they push the reading up**
+**Answer: A. Particles can settle, clump or break apart as the sample ages**
 
-Gas bubbles scatter light and read as turbidity that is not in the water. Gentle mixing suspends particles evenly without adding air.
+Particles in a stored sample can settle, clump or break apart, so the reading drifts away from the source water. Prompt reading keeps it representative.
 
 ### 201: Groundwater Rule purpose (easy)
 
@@ -2671,7 +2671,7 @@ A permit space has hazards such as bad air or engulfment. Entry is controlled by
 
 ### 206: Permit-required confined spaces (medium)
 
-Why is the air tested before entry and an attendant posted outside a confined space?
+Why is the air tested before entry and an attendant posted outside a permit-required confined space under the entry program?
 
 - **A.** Testing protects the equipment inside, and the attendant keeps others away
 - **B.** Testing confirms the tank is empty, and the attendant keeps the time record
@@ -2728,7 +2728,7 @@ An 8-inch main (8/12 ft) carries 450 gpm. Use area = 0.785 × D² and 1 cfs = 44
 - **A.** 1.00 ft/s
 - **B.** 2.87 ft/s
 - **C.** 0.72 ft/s
-- **D.** 1,289.80 ft/s
+- **D.** 0.35 ft/s
 
 **Answer: B. 2.87 ft/s**
 
@@ -2752,7 +2752,7 @@ Flow in gpm = width times depth times velocity times 448.8. Substitute the state
 A 6-inch main (0.5 ft) carries 250 gpm. Use area = 0.785 × D², 1 ft³ = 7.48 gal and 60 s per min. What is the velocity in ft/s?
 
 - **A.** 0.71 ft/s
-- **B.** 170.30 ft/s
+- **B.** 1.42 ft/s
 - **C.** 2.84 ft/s
 - **D.** 0.35 ft/s
 
@@ -2765,7 +2765,7 @@ Velocity = flow in gpm divided by (7.48 times 60 times area). Substitute the sta
 Water moves at 2 ft/s through a 3000 ft pipeline. How many minutes does it take a drop of water to travel the full length?
 
 - **A.** 50.0 min
-- **B.** 90,000.0 min
+- **B.** 0.4 min
 - **C.** 25.0 min
 - **D.** 1,500.0 min
 
@@ -2801,9 +2801,9 @@ Volume = length times width times depth times 7.48. Substitute the stated values
 
 ### 216: Storage volume and detention time (hard)
 
-A 0.75 MG tank is filled and drained at a steady 500 gpm. Use 1 MG = 1,000,000 gal. What is the detention time in hours?
+A 0.75 MG tank holds its full volume with steady, simultaneous inflow and outflow of 500 gpm. Use 1 MG = 1,000,000 gal. What is the theoretical detention time in hours?
 
-- **A.** 1,500.0 hr
+- **A.** 0.4 hr
 - **B.** 1.0 hr
 - **C.** 62.5 hr
 - **D.** 25.0 hr
@@ -2856,7 +2856,7 @@ Drawdown = pumping level minus static level. Substitute the stated values: 132-8
 A well pumps 360 gpm with 24 ft of drawdown. What is its specific capacity in gpm per ft of drawdown?
 
 - **A.** 15.00 gpm/ft
-- **B.** 8,640.00 gpm/ft
+- **B.** 336.00 gpm/ft
 - **C.** 384.00 gpm/ft
 - **D.** 0.07 gpm/ft
 
@@ -2985,7 +2985,7 @@ Cubic feet = gallons divided by 7.48. Substitute the stated values: 85000 ÷ 7.4
 
 A reservoir holds 12 acre-ft. Use 1 acre-ft = 43,560 ft³, 1 ft³ = 7.48 gal and 1 MG = 1,000,000 gal. How many MG is that?
 
-- **A.** 3,909,945.60 MG
+- **A.** 39.10 MG
 - **B.** 89.76 MG
 - **C.** 3.91 MG
 - **D.** 0.52 MG
@@ -3074,7 +3074,7 @@ Pounds of product = chlorine needed divided by the decimal strength. Substitute 
 
 ### 237: Hypochlorite quantity for a stated strength (hard)
 
-A plant treats 0.8 MGD at a chlorine dose of 2.5 mg/L using 12 percent sodium hypochlorite. Use 8.34 lb/gal for the solution and lb/day = flow × dose × 8.34. How many gallons per day of solution are needed?
+A plant treats 0.8 MGD at a chlorine dose of 2.5 mg/L using a hypochlorite solution that is 12 percent available chlorine by weight. Use 8.34 lb/gal for the solution and lb/day = flow × dose × 8.34. How many gallons per day of solution are needed?
 
 - **A.** 16.7 gal/day
 - **B.** 2.0 gal/day
@@ -3181,7 +3181,7 @@ lb/day of demand = flow times (dose minus residual) times 8.34. Substitute the s
 A calibration cylinder shows a feeder delivering 125 mL per minute. Use 3,785 mL per gal and 1,440 min per day. What is this feed rate in gal/day?
 
 - **A.** 328.6 gal/day
-- **B.** 180,000.0 gal/day
+- **B.** 2.0 gal/day
 - **C.** 47.6 gal/day
 - **D.** 5.7 gal/day
 
@@ -3194,7 +3194,7 @@ gal/day = mL/min times 1,440 divided by 3,785. Substitute the stated values: 125
 A feeder pumps 240 mL in 4 min during a calibration test. Use 3,785 mL per gal and 1,440 min per day. What is the feed rate in gal/day?
 
 - **A.** 22.8 gal/day
-- **B.** 86,400.0 gal/day
+- **B.** 91.3 gal/day
 - **C.** 190.4 gal/day
 - **D.** 157.7 gal/day
 
@@ -3204,16 +3204,16 @@ mL/min = volume divided by time; gal/day = mL/min times 1,440 divided by 3,785. 
 
 ### 247: Feeder calibration and feed rate (hard)
 
-A feeder delivers 30 gal/day of a 12 percent hypochlorite solution. Use 8.34 lb/gal for the solution and 12 percent available chlorine by weight. How many lb/day of available chlorine are fed?
+A feeder delivers 40 gal/day of a 10 percent hypochlorite solution. Use 8.34 lb/gal for the solution and 10 percent available chlorine by weight. How many lb/day of available chlorine are fed?
 
-- **A.** 3.6 lb/day
-- **B.** 30.0 lb/day
-- **C.** 2,085.0 lb/day
-- **D.** 250.2 lb/day
+- **A.** 333.6 lb/day
+- **B.** 33.4 lb/day
+- **C.** 3,336.0 lb/day
+- **D.** 4.0 lb/day
 
-**Answer: B. 30.0 lb/day**
+**Answer: B. 33.4 lb/day**
 
-lb/day = gal/day times 8.34 times strength as a decimal. Substitute the stated values: 30 × 8.34 × 0.12 = 30.0 lb/day. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
+lb/day = gal/day times 8.34 times strength as a decimal. Substitute the stated values: 40 × 8.34 × 0.10 = 33.4 lb/day. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
 ### 248: Feeder calibration and feed rate (medium)
 
@@ -3221,7 +3221,7 @@ A feeder is to deliver 38 gal/day. Use 3,785 mL per gal and 1,440 min per day. W
 
 - **A.** 14.5 mL/min
 - **B.** 2,397.2 mL/min
-- **C.** 143,830.0 mL/min
+- **C.** 5,993.0 mL/min
 - **D.** 99.9 mL/min
 
 **Answer: D. 99.9 mL/min**
@@ -3230,7 +3230,7 @@ mL/min = gal/day times 3,785 divided by 1,440. Substitute the stated values: 38 
 
 ### 249: Feeder calibration and feed rate (hard)
 
-A plant treats 0.5 MGD and wants a 2 mg/L chlorine dose from a 10 percent solution weighing 8.9 lb/gal. Use lb/day = flow × dose × 8.34. How many gal/day of solution must be fed?
+A plant treats 0.5 MGD and wants a 2 mg/L chlorine dose from a solution that is 10 percent available chlorine by weight and weighs 8.9 lb/gal. Use lb/day = flow × dose × 8.34. How many gal/day of solution must be fed?
 
 - **A.** 10.0 gal/day
 - **B.** 9.4 gal/day
@@ -3243,7 +3243,7 @@ gal/day = lb/day needed divided by (lb/gal times strength as a decimal). Substit
 
 ### 250: Feeder calibration and feed rate (hard)
 
-A dry chemical that is 80 percent pure is fed at a 3 mg/L dose to 2.4 MGD. Use lb/day = flow × dose × 8.34. How many lb/day of the dry product are fed?
+A dry chemical product is 80 percent pure. The required dose is 3 mg/L of active chemical at a flow of 2.4 MGD. Use lb/day = flow × dose × 8.34. How many lb/day of the dry product are fed?
 
 - **A.** 75.1 lb/day
 - **B.** 9.0 lb/day
@@ -3285,7 +3285,7 @@ Gallons = (end minus start) times 100. Substitute the stated values: (4987-4512)
 A meter shows 18,600 gal passed in 45 min. What is the average flow in gpm?
 
 - **A.** 413.3 gpm
-- **B.** 837,000.0 gpm
+- **B.** 24,800.0 gpm
 - **C.** 6.9 gpm
 - **D.** 310.0 gpm
 
@@ -3334,7 +3334,7 @@ psi = head divided by 2.31. Substitute the stated values: 150 ÷ 2.31 = 64.9 psi
 
 ### 257: Pressure and head of water (hard)
 
-A pump discharge gauge reads 62 psi and the suction gauge reads 8 psi, both at the same elevation. Use 2.31 ft per psi. What is the total head the pump adds in feet?
+A pump discharge gauge reads 62 psi and the suction gauge reads 8 psi, both at the same elevation on pipes of equal diameter, so the velocity head difference is negligible. Use 2.31 ft per psi. What is the total head the pump adds in feet?
 
 - **A.** 143.2 ft
 - **B.** 54.0 ft
@@ -3401,10 +3401,10 @@ mg/L = (grams times 1000) divided by (mL divided by 1000). Substitute the stated
 
 A solution holds 18 g of salt in 600 mL. Use 1 L = 1,000 mL. What is the concentration in g/L?
 
-- **A.** 10,800.0 g/L
+- **A.** 3.0 g/L
 - **B.** 30.0 g/L
-- **C.** 3.0 g/L
-- **D.** 0.0 g/L
+- **C.** 18.0 g/L
+- **D.** 10.8 g/L
 
 **Answer: B. 30.0 g/L**
 
@@ -3529,7 +3529,7 @@ Average = sum of readings divided by number of readings. Substitute the stated v
 
 ### 272: Percent strength and replicate averages (hard)
 
-Four free chlorine readings are 0.8, 1.1, 0.9 and 1.0 mg/L. A total chlorine reading is 1.45 mg/L. Use combined = total minus the average free chlorine. What is the combined chlorine in mg/L?
+Four replicate free chlorine readings on the same sample are 0.8, 1.1, 0.9 and 1.0 mg/L, and a total chlorine reading on that sample is 1.45 mg/L. Use combined = total minus the average free chlorine. What is the combined chlorine in mg/L?
 
 - **A.** 0.95 mg/L
 - **B.** 2.40 mg/L
@@ -3585,7 +3585,7 @@ A cylindrical drum is 2 ft in diameter and 3 ft high. Use volume = 0.785 x D squ
 
 - **A.** 70 gal
 - **B.** 18 gal
-- **C.** 71 gal
+- **C.** 9 gal
 - **D.** 141 gal
 
 **Answer: A. 70 gal**
@@ -3612,7 +3612,7 @@ Use 1 percent = 10,000 mg/L. A spill-cleanup solution must be diluted from 5 per
 - **A.** 18 gal
 - **B.** 20 gal
 - **C.** 10 gal
-- **D.** 19 gal
+- **D.** 22 gal
 
 **Answer: A. 18 gal**
 
@@ -3620,7 +3620,7 @@ Added water = (C1 times V1 divided by C2) minus V1. Substitute the stated values
 
 ### 279: Well head pressure and feet of head (medium)
 
-A gauge on a well head reads 48 psi. Use 2.31 ft of water per psi and 0.433 psi per ft. How many feet of head does the gauge reading equal?
+A gauge on a well head reads 48 psi. Use 2.31 ft of water per psi. How many feet of head does the gauge reading equal?
 
 - **A.** 48.0 ft
 - **B.** 110.9 ft

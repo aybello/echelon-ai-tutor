@@ -14,7 +14,7 @@
   "file": "questions/bank-280.json",
   "count": 280,
   "calculations": 72,
-  "sha256": "9e3c58ee72a92a79731259ac94cf6d5690f9efd4fe071cb6768af9e76b4c01a2",
+  "sha256": "14e2698cf7ec7b516c57ec003bc1a9a2e8aac026e086ad92a4803c32d71160fa",
   "modules": {
     "Source water": 71,
     "Water treatment processes": 62,
@@ -121,8 +121,8 @@
     ],
     "answerCues": {
       "conceptualCount": 208,
-      "longestRate": 0.34615384615384615,
-      "shortestRate": 0.22115384615384615,
+      "longestRate": 0.3269230769230769,
+      "shortestRate": 0.21153846153846154,
       "longTells": [],
       "shortTells": [],
       "qualifierTells": []
