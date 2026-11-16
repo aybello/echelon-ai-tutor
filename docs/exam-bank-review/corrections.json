@@ -1,13 +1,13 @@
 {
  "export": "docs/exam-bank-export/2026-11-16 (commit d118897a)",
- "chunksDone": 60,
+ "chunksDone": 65,
  "chunksTotal": 174,
- "questionsReviewed": 8406,
+ "questionsReviewed": 9119,
  "questionsTotal": 24350,
- "problems": 418,
+ "problems": 449,
  "byVerdict": {
-  "UNCLEAR": 125,
-  "WRONG": 189,
+  "UNCLEAR": 129,
+  "WRONG": 216,
   "JURISDICTION": 58,
   "UNITS": 39,
   "OFF-TOPIC": 7
@@ -24,7 +24,7 @@
   "class2-water-dist": 73,
   "class3-wastewater": 49,
   "class3-wastewater-coll": 73,
-  "class3-water": 17
+  "class3-water": 48
  },
  "chunks": [
   "chunk-001",
@@ -86,7 +86,12 @@
   "chunk-057",
   "chunk-058",
   "chunk-059",
-  "chunk-060"
+  "chunk-060",
+  "chunk-061",
+  "chunk-062",
+  "chunk-063",
+  "chunk-064",
+  "chunk-065"
  ],
  "corrections": [
   {
@@ -14966,6 +14971,1268 @@
     "correctIndex": 1,
     "explanation": "Maintaining a uniform filtration rate ensures that all filters are operating under similar conditions, leading to consistent effluent quality and predictable filter run times.",
     "steps": null
+   }
+  },
+  {
+   "id": 183592,
+   "bankKey": "class3-water",
+   "questionNum": 335,
+   "verdict": "WRONG",
+   "note": "UFRV is Unit Filter Run Volume (m3 of water filtered per m2 of filter area per run), a filter-performance indicator, not a 'uniform filtration rate' target. Question mis-defines the term and the keyed purpose does not fit it.",
+   "original": {
+    "question": "What is the primary purpose of using a uniform filtration rate (UFRV) target in filter performance optimization?",
+    "options": [
+     "To minimize the total volume of backwash water consumed during filter cleaning.",
+     "To ensure consistent filter effluent quality and maximize particle removal efficiency.",
+     "To reduce the overall energy consumption of the filter backwash pumps.",
+     "To extend the filter run times by reducing the frequency of backwash cycles."
+    ],
+    "correctIndex": 1,
+    "explanation": "Maintaining a UFRV ensures that the filter operates within its optimal hydraulic loading, preventing excessive loading that could lead to premature breakthrough and compromised effluent quality."
+   },
+   "fix": {
+    "question": "What is the primary purpose of tracking unit filter run volume (UFRV) in filter performance optimization?",
+    "options": [
+     "To measure the electrical energy used by the backwash pumps.",
+     "To express the volume of water filtered per unit of filter area in each run, so filter runs can be compared and optimized.",
+     "To set the coagulant dose for each filter.",
+     "To determine the media depth required in each filter."
+    ],
+    "correctIndex": 1,
+    "explanation": "UFRV is the volume of water produced per unit of filter surface area between backwashes (m3/m2). Tracking it lets operators compare runs, judge the effect of pretreatment and backwash changes, and optimize filter performance.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183620,
+   "bankKey": "class3-water",
+   "questionNum": 363,
+   "verdict": "WRONG",
+   "note": "Key fine; explanation's schedule numbers are wrong (it says Schedules 1-4 are system types, Schedule 5 is adverse WQI reporting, Schedule 8 treatment, Schedules 9-10 reporting). Schedule 6 is general operational checks/sampling/testing, Schedule 7 is operational checks, Schedule 22 is summary reports.",
+   "original": {
+    "question": "What is 'O. Reg. 170/03' (Drinking Water Systems Regulation)?",
+    "options": [
+     "A regulation about water pricing",
+     "Ontario's comprehensive drinking water regulation specifying: treatment requirements, monitoring frequency, reporting obligations, adverse water quality incident procedures, and operational requirements for all drinking water systems",
+     "Only for private wells",
+     "An outdated regulation"
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 170/03: Schedule 1-4 (system types), Schedule 5 (adverse WQI reporting), Schedule 6 (sampling — bacteriological, chemical, radiological), Schedule 7 (operational checks — turbidity, chlorine residual, UV), Schedule 8 (treatment requirements by source type), and Schedule 9-10 (reporting, record keeping). Cornerstone of Ontario drinking water regulation."
+   },
+   "fix": {
+    "question": "What is 'O. Reg. 170/03' (Drinking Water Systems Regulation)?",
+    "options": [
+     "A regulation about water pricing",
+     "Ontario's comprehensive drinking water regulation specifying: treatment requirements, monitoring frequency, reporting obligations, adverse water quality incident procedures, and operational requirements for all drinking water systems",
+     "Only for private wells",
+     "An outdated regulation"
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 170/03 (under the Safe Drinking Water Act, 2002) sets out treatment requirements, operational checks (Schedules 6 and 7), microbiological, chemical and radiological sampling and testing schedules, adverse result reporting and corrective action, annual reports (s.11) and municipal summary reports (Schedule 22). It is a cornerstone of Ontario drinking water regulation.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183626,
+   "bankKey": "class3-water",
+   "questionNum": 369,
+   "verdict": "WRONG",
+   "note": "Under O. Reg. 170/03 the Schedule 22 Summary Report is delivered to members of municipal council (by March 31), not to MECP. The annual report (s.11) is the public-facing report.",
+   "original": {
+    "question": "What is 'annual report' and 'summary report' requirements for drinking water systems?",
+    "options": [
+     "Only financial reports",
+     "Mandatory public reporting: Annual Report (system performance, water quality results, to consumers) and Summary Report (to MECP — compliance, adverse events, corrective actions) — promoting transparency and accountability",
+     "Reports are optional",
+     "Only report problems"
+    ],
+    "correctIndex": 1,
+    "explanation": "Annual Report (to public): system description, source water, treatment, water quality results (all parameters), and any non-compliance. Available free to consumers. Summary Report (to MECP): regulatory compliance, adverse events, corrective actions, and system changes. Due dates specified in licence. Promotes: public confidence, transparency, and accountability."
+   },
+   "fix": {
+    "question": "What is 'annual report' and 'summary report' requirements for drinking water systems?",
+    "options": [
+     "Only financial reports",
+     "Mandatory reporting: Annual Report (s.11 — system description, water quality results and non-compliance, made available to consumers) and Summary Report (Schedule 22 — to members of municipal council, covering compliance and corrective actions)",
+     "Reports are optional",
+     "Only report problems"
+    ],
+    "correctIndex": 1,
+    "explanation": "Annual Report (s.11, O. Reg. 170/03): system description, treatment, water quality results and any non-compliance, available free to consumers. Summary Report (Schedule 22): for municipal systems, delivered to members of council by March 31 for the previous calendar year, covering compliance, adverse events and corrective actions. Both promote transparency and accountability.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183636,
+   "bankKey": "class3-water",
+   "questionNum": 379,
+   "verdict": "WRONG",
+   "note": "Key fine; explanation cites Element 3, but Element 3 is Commitment and Endorsement. QMS Representative is Element 4 (DWQMS 2.0).",
+   "original": {
+    "question": "What is 'water quality management system' (QMS) representative role?",
+    "options": [
+     "Any employee",
+     "A designated person responsible for: maintaining the QMS operational plan, ensuring DWQMS compliance, coordinating internal audits, reporting to top management, and serving as the primary QMS contact",
+     "Only the plant manager",
+     "QMS representative is optional"
+    ],
+    "correctIndex": 1,
+    "explanation": "QMS representative (DWQMS Element 3): designated by top management, responsible for: establishing/maintaining QMS, reporting QMS performance to top management, ensuring awareness of QMS throughout organization, coordinating internal audits, and serving as liaison with external auditors. Must have: authority, competence, and organizational access to fulfill role."
+   },
+   "fix": {
+    "question": "What is 'water quality management system' (QMS) representative role?",
+    "options": [
+     "Any employee",
+     "A designated person responsible for: maintaining the QMS operational plan, ensuring DWQMS compliance, coordinating internal audits, reporting to top management, and serving as the primary QMS contact",
+     "Only the plant manager",
+     "QMS representative is optional"
+    ],
+    "correctIndex": 1,
+    "explanation": "QMS representative (DWQMS Element 4): designated by top management, responsible for: establishing/maintaining QMS, reporting QMS performance to top management, ensuring awareness of QMS throughout organization, coordinating internal audits, and serving as liaison with external auditors. Must have: authority, competence, and organizational access to fulfill role.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183661,
+   "bankKey": "class3-water",
+   "questionNum": 404,
+   "verdict": "WRONG",
+   "note": "Key fine; explanation cites Element 7, but Competencies is Element 10 (Element 7 is Risk Assessment). Also 'Annual review' claim is not a DWQMS requirement for this element.",
+   "original": {
+    "question": "What is 'competency' requirements under DWQMS?",
+    "options": [
+     "Only certification",
+     "Ensuring all personnel performing duties affecting water quality have: appropriate education, training, certification, skills, and experience — documented through competency assessments and addressed through training plans",
+     "Only the ORO needs competency",
+     "Competency is assumed with certification"
+    ],
+    "correctIndex": 1,
+    "explanation": "Competency (DWQMS Element 7): identify competency needs for each role, assess current competency, provide training to address gaps, evaluate training effectiveness, and maintain records. Beyond certification: includes site-specific knowledge, equipment operation, emergency response, and QMS awareness. Annual review and update."
+   },
+   "fix": {
+    "question": "What is 'competency' requirements under DWQMS?",
+    "options": [
+     "Only certification",
+     "Ensuring all personnel performing duties affecting water quality have: appropriate education, training, certification, skills, and experience — documented through competency assessments and addressed through training plans",
+     "Only the ORO needs competency",
+     "Competency is assumed with certification"
+    ],
+    "correctIndex": 1,
+    "explanation": "Competency (DWQMS Element 10): identify competency needs for each role, assess current competency, provide training to address gaps, evaluate training effectiveness, and maintain records. Beyond certification: includes site-specific knowledge, equipment operation, emergency response, and QMS awareness.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183665,
+   "bankKey": "class3-water",
+   "questionNum": 408,
+   "verdict": "WRONG",
+   "note": "Key fine; explanation cites Element 15, but Sampling, Testing and Monitoring is Element 16 (Element 15 is Infrastructure Maintenance, Rehabilitation and Renewal).",
+   "original": {
+    "question": "What is 'sampling, testing, and monitoring' requirements under DWQMS?",
+    "options": [
+     "Only regulatory minimum sampling",
+     "A comprehensive monitoring program exceeding regulatory minimums — including: process control sampling, distribution system monitoring, source water surveillance, and equipment calibration/verification",
+     "Only what O. Reg. 170/03 requires",
+     "Monitoring is the lab's responsibility"
+    ],
+    "correctIndex": 1,
+    "explanation": "Monitoring (DWQMS Element 15): regulatory compliance sampling (O. Reg. 170/03), operational monitoring (process control — jar tests, filter performance), distribution system surveillance (residual, bacteriological, DBPs), source water monitoring (trends, early warning), and equipment verification (calibration, maintenance). Documented procedures, trained samplers, and accredited labs."
+   },
+   "fix": {
+    "question": "What is 'sampling, testing, and monitoring' requirements under DWQMS?",
+    "options": [
+     "Only regulatory minimum sampling",
+     "A comprehensive monitoring program exceeding regulatory minimums — including: process control sampling, distribution system monitoring, source water surveillance, and equipment calibration/verification",
+     "Only what O. Reg. 170/03 requires",
+     "Monitoring is the lab's responsibility"
+    ],
+    "correctIndex": 1,
+    "explanation": "Sampling, Testing and Monitoring (DWQMS Element 16): regulatory compliance sampling (O. Reg. 170/03), operational monitoring (process control — jar tests, filter performance), distribution system surveillance (residual, bacteriological, DBPs), source water monitoring (trends, early warning), and equipment verification. Documented procedures, trained samplers, and accredited labs.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183666,
+   "bankKey": "class3-water",
+   "questionNum": 409,
+   "verdict": "WRONG",
+   "note": "Key fine; explanation cites Element 16, but this is Element 17 (16 is Sampling, Testing and Monitoring).",
+   "original": {
+    "question": "What is 'measurement and recording equipment' calibration under DWQMS?",
+    "options": [
+     "Only buying new equipment",
+     "Ensuring all instruments used for monitoring and control are: properly calibrated at defined intervals, maintained, and records kept — to ensure measurement accuracy and regulatory compliance",
+     "Calibration is optional",
+     "Only lab equipment needs calibration"
+    ],
+    "correctIndex": 1,
+    "explanation": "Calibration (DWQMS Element 16): identify all critical instruments (turbidimeters, chlorine analyzers, pH meters, flow meters, UV sensors), establish calibration frequency (manufacturer recommendation + experience), use traceable standards, document results, define acceptance criteria, and corrective action for out-of-tolerance instruments."
+   },
+   "fix": {
+    "question": "What is 'measurement and recording equipment' calibration under DWQMS?",
+    "options": [
+     "Only buying new equipment",
+     "Ensuring all instruments used for monitoring and control are: properly calibrated at defined intervals, maintained, and records kept — to ensure measurement accuracy and regulatory compliance",
+     "Calibration is optional",
+     "Only lab equipment needs calibration"
+    ],
+    "correctIndex": 1,
+    "explanation": "Measurement and Recording Equipment Calibration and Maintenance (DWQMS Element 17): identify all critical instruments (turbidimeters, chlorine analyzers, pH meters, flow meters, UV sensors), establish calibration frequency (manufacturer recommendation + experience), use traceable standards, document results, define acceptance criteria, and corrective action for out-of-tolerance instruments.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183697,
+   "bankKey": "class3-water",
+   "questionNum": 440,
+   "verdict": "UNCLEAR",
+   "note": "Option 2 ('quantifies the percentage reduction of specific pathogens') is also defensible: log removal is routinely converted to percent reduction, and the explanation itself says 1-log = 90%. Option 3 should be the only defensible choice.",
+   "original": {
+    "question": "When calculating disinfection credit for a multi-barrier treatment system, what is the significance of the 'log removal' concept?",
+    "options": [
+     "It represents the total volume of water treated by each disinfection stage.",
+     "It quantifies the percentage reduction of specific pathogens by a treatment process.",
+     "It describes the exponential reduction in pathogen concentration achieved by a process.",
+     "It measures the overall cost-effectiveness of different disinfection technologies."
+    ],
+    "correctIndex": 2,
+    "explanation": "Log removal (e.g., 2-log, 3-log) is a logarithmic scale used to express the effectiveness of a treatment process in reducing the concentration of microorganisms. A 1-log removal means a 90% reduction, 2-log means 99%, and so on, representing an exponential reduction."
+   },
+   "fix": {
+    "question": "When calculating disinfection credit for a multi-barrier treatment system, what is the significance of the 'log removal' concept?",
+    "options": [
+     "It represents the total volume of water treated by each disinfection stage.",
+     "It states the final pathogen concentration remaining in the treated water.",
+     "It describes the exponential (base-10) reduction in pathogen concentration achieved by a process.",
+     "It measures the overall cost-effectiveness of different disinfection technologies."
+    ],
+    "correctIndex": 2,
+    "explanation": "Log removal (e.g., 2-log, 3-log) is a logarithmic scale used to express the effectiveness of a treatment process in reducing the concentration of microorganisms. Each additional log is a tenfold reduction: 1-log means 90%, 2-log means 99%, and so on.",
+    "steps": [
+     {
+      "l": "Identify what is asked",
+      "c": "The significance of the log removal concept in a multi-barrier treatment system."
+     },
+     {
+      "l": "Check the calculation requirement",
+      "c": "No pathogen counts are supplied, so the item tests the meaning of the log scale."
+     },
+     {
+      "l": "Define log removal",
+      "c": "Log removal equals log base 10 of influent concentration divided by effluent concentration. 1-log is 90 percent, 2-log is 99 percent, 3-log is 99.9 percent."
+     },
+     {
+      "l": "Conclusion",
+      "c": "Option 3: log removal describes the exponential reduction in pathogen concentration achieved by a process; it is not a final concentration, a volume or a cost measure."
+     }
+    ]
+   }
+  },
+  {
+   "id": 240630,
+   "bankKey": "class3-water",
+   "questionNum": 501,
+   "verdict": "WRONG",
+   "note": "420 kg alum / 0.48 = 875 kg of solution, so the steps give 875 L (at 1 kg/L), not 8,750 L; the marked key is 10x too large. Liquid alum is also about 1.33 kg/L, so the 1 kg/L assumption is unrealistic. Fixed by stating the density: 875 kg / 1.33 kg/L = 658 L.",
+   "original": {
+    "question": "A conventional water treatment plant treats 12,000 m³ of water per day. Alum (as liquid at 48% concentration) is dosed at 35 mg/L. What is the total volume of liquid alum (in litres) required per day?",
+    "options": [
+     "14000 L",
+     "8750 L",
+     "5250 L",
+     "4200 L"
+    ],
+    "correctIndex": 1,
+    "explanation": "First, calculate the total mass of alum needed per day. Then adjust for the alum solution's concentration to get the liquid volume."
+   },
+   "fix": {
+    "question": "A conventional water treatment plant treats 12,000 m³ of water per day. Liquid alum (48% by mass, density 1.33 kg/L) is dosed at 35 mg/L. What is the volume of liquid alum required per day (in litres)?",
+    "options": [
+     "658 L",
+     "875 L",
+     "8,750 L",
+     "420 L"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculate the mass of alum needed per day, adjust for the 48% strength to get the mass of solution, then divide by density to get volume.",
+    "steps": [
+     {
+      "l": "Step 1 — Calculate total alum needed (mg)",
+      "c": "12,000 m³ × 1,000 L/m³ × 35 mg/L = 420,000,000 mg"
+     },
+     {
+      "l": "Step 2 — Convert mg to kg",
+      "c": "420,000,000 mg ÷ 1,000,000 = 420 kg"
+     },
+     {
+      "l": "Step 3 — Adjust for 48% concentration",
+      "c": "420 kg ÷ 0.48 = 875 kg of solution"
+     },
+     {
+      "l": "Step 4 — Convert kg to litres",
+      "c": "875 kg ÷ 1.33 kg/L = 658 L"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240631,
+   "bankKey": "class3-water",
+   "questionNum": 502,
+   "verdict": "WRONG",
+   "note": "0.7×7 + 0.3×150 = 4.9 + 45 = 49.9 mg/L. The key 48.1 mg/L is not the result of the arithmetic (the step itself admits an 'option error correction').",
+   "original": {
+    "question": "You blend two water sources: Source A at 7 mg/L hardness (as CaCO₃) and Source B at 150 mg/L. If you blend 70% Source A with 30% Source B to supply 10,000 m³/d, what is the finished water’s average hardness (mg/L as CaCO₃)?",
+    "options": [
+     "48.1 mg/L",
+     "31.5 mg/L",
+     "71.3 mg/L",
+     "112.7 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "Multiply each source’s concentration by its fraction of blend, then sum for final blend."
+   },
+   "fix": {
+    "question": "You blend two water sources: Source A at 7 mg/L hardness (as CaCO₃) and Source B at 150 mg/L. If you blend 70% Source A with 30% Source B to supply 10,000 m³/d, what is the finished water's average hardness (mg/L as CaCO₃)?",
+    "options": [
+     "49.9 mg/L",
+     "31.5 mg/L",
+     "71.3 mg/L",
+     "112.7 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "Multiply each source's concentration by its fraction of the blend, then sum for the final blend.",
+    "steps": [
+     {
+      "l": "Step 1 — Calculate blend contributions",
+      "c": "(0.7 × 7 mg/L) + (0.3 × 150 mg/L)"
+     },
+     {
+      "l": "Step 2 — Calculate",
+      "c": "4.9 mg/L + 45 mg/L = 49.9 mg/L"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240637,
+   "bankKey": "class3-water",
+   "questionNum": 508,
+   "verdict": "WRONG",
+   "note": "480 kg / 1.3 kg/L = 369 L/d, not 3.7 L ('round for answer style' is wrong, a 100-fold error). None of the options is correct.",
+   "original": {
+    "question": "A sodium hydroxide (NaOH) solution is dosed at 12 mg/L to treat 10,000 m³/day. If the strength is 25% w/w and density is 1.3 kg/L, how many litres per day are needed?",
+    "options": [
+     "37 L",
+     "12 L",
+     "3.7 L",
+     "48 L"
+    ],
+    "correctIndex": 2,
+    "explanation": "First determine the total NaOH mass needed. Then find required volume at given concentration and density."
+   },
+   "fix": {
+    "question": "A sodium hydroxide (NaOH) solution is dosed at 12 mg/L to treat 10,000 m³/day. If the strength is 25% w/w and density is 1.3 kg/L, how many litres per day are needed?",
+    "options": [
+     "369 L",
+     "37 L",
+     "3.7 L",
+     "1,200 L"
+    ],
+    "correctIndex": 0,
+    "explanation": "First determine the total NaOH mass needed. Then find required volume at given concentration and density.",
+    "steps": [
+     {
+      "l": "Step 1 — Mass needed per day",
+      "c": "10,000 m³ × 1,000 L/m³ × 12 mg/L = 120,000,000 mg = 120 kg/d"
+     },
+     {
+      "l": "Step 2 — Adjust for 25% strength",
+      "c": "120 kg ÷ 0.25 = 480 kg of solution"
+     },
+     {
+      "l": "Step 3 — Find volume needed",
+      "c": "480 kg ÷ 1.3 kg/L = 369 L/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240639,
+   "bankKey": "class3-water",
+   "questionNum": 510,
+   "verdict": "WRONG",
+   "note": "Steps give 201.6 kg, but the key says 201,600 kg (1,000x too large). The premise is also muddled (resin volume equated to water treated, and ion exchange does not remove TDS in general). Rewritten with a stated treatable volume.",
+   "original": {
+    "question": "A plant uses 4 parallel ion exchange units, each rated at 160 m³ resin capacity. If raw water TDS is 350 mg/L and breakthrough is at 90% exhaustion, how many total kg of TDS can all units treat before regeneration?",
+    "options": [
+     "201,600 kg",
+     "201,600,000 kg",
+     "56,000 kg",
+     "2,240 kg"
+    ],
+    "correctIndex": 0,
+    "explanation": "Find the total water processed before exhaustion per unit, sum for all units, and convert mg/L to kg."
+   },
+   "fix": {
+    "question": "A plant uses 4 parallel ion exchange units. Each unit can treat 144 m³ of water before breakthrough. If the influent contains 350 mg/L of exchangeable ions, how many kg of ions can all units remove before regeneration?",
+    "options": [
+     "201.6 kg",
+     "201,600 kg",
+     "56 kg",
+     "2.24 kg"
+    ],
+    "correctIndex": 0,
+    "explanation": "Find the total water treated by all units, then convert mg/L to kg.",
+    "steps": [
+     {
+      "l": "Step 1 — Water treated by all units",
+      "c": "144 m³ × 4 = 576 m³"
+     },
+     {
+      "l": "Step 2 — Mass removed",
+      "c": "576 m³ × 1,000 L/m³ × 350 mg/L = 201,600,000 mg"
+     },
+     {
+      "l": "Step 3 — Convert mg to kg",
+      "c": "201,600,000 mg ÷ 1,000,000 = 201.6 kg"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240640,
+   "bankKey": "class3-water",
+   "questionNum": 511,
+   "verdict": "UNCLEAR",
+   "note": "The stated ratio of 1.2 mg NaOH per mg CO2 is chemically wrong. CO2 + NaOH -> NaHCO3 needs 40/44 = 0.91 mg NaOH per mg CO2. Fixed with the correct stoichiometric ratio.",
+   "original": {
+    "question": "A plant raises pH from 6.8 to 7.8 by adding caustic. The finished water contains 40 mg/L free CO₂. If it takes 1.2 mg/L NaOH to consume 1 mg/L of free CO₂, what is the theoretical NaOH dose (mg/L)?",
+    "options": [
+     "40 mg/L",
+     "33 mg/L",
+     "48 mg/L",
+     "12 mg/L"
+    ],
+    "correctIndex": 2,
+    "explanation": "Dose requirement is calculated as 1.2 mg NaOH per 1 mg CO₂ present."
+   },
+   "fix": {
+    "question": "A plant raises pH from 6.8 to 7.8 by adding caustic. The finished water contains 40 mg/L free CO₂. If it takes 0.91 mg/L NaOH (40/44) to consume 1 mg/L of free CO₂, what is the theoretical NaOH dose (mg/L) to neutralize all of the CO₂?",
+    "options": [
+     "36 mg/L",
+     "40 mg/L",
+     "48 mg/L",
+     "12 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "CO₂ + NaOH → NaHCO₃, so 1 mg/L CO₂ needs 40/44 = 0.91 mg/L NaOH.",
+    "steps": [
+     {
+      "l": "Step 1 — Multiply CO₂ by NaOH ratio",
+      "c": "40 mg/L × 0.91 = 36.4 mg/L ≈ 36 mg/L NaOH"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240642,
+   "bankKey": "class3-water",
+   "questionNum": 513,
+   "verdict": "WRONG",
+   "note": "Molar mass of NaMnO4 is about 142 g/mol, not 110. It is not used in the answer (10.4 kg is correct) but is a factual error. Removed the molar mass.",
+   "original": {
+    "question": "Sodium permanganate (NaMnO₄, 110 g/mol) is to be dosed at 1.6 mg/L. The flow is 6,500 m³/d. How many kilograms do you need per day?",
+    "options": [
+     "9.1 kg",
+     "5.2 kg",
+     "10.4 kg",
+     "16.8 kg"
+    ],
+    "correctIndex": 2,
+    "explanation": "Total mass = concentration × volume."
+   },
+   "fix": {
+    "question": "Sodium permanganate (NaMnO₄) is to be dosed at 1.6 mg/L. The flow is 6,500 m³/d. How many kilograms do you need per day?",
+    "options": [
+     "9.1 kg",
+     "5.2 kg",
+     "10.4 kg",
+     "16.8 kg"
+    ],
+    "correctIndex": 2,
+    "explanation": "Total mass = concentration × volume.",
+    "steps": [
+     {
+      "l": "Step 1 — Total volume",
+      "c": "6,500 m³ × 1,000 L/m³ = 6,500,000 L"
+     },
+     {
+      "l": "Step 2 — Total needed",
+      "c": "6,500,000 L × 1.6 mg/L = 10,400,000 mg"
+     },
+     {
+      "l": "Step 3 — Convert to kg",
+      "c": "10,400,000 mg ÷ 1,000,000 = 10.4 kg"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240645,
+   "bankKey": "class3-water",
+   "questionNum": 516,
+   "verdict": "WRONG",
+   "note": "1,280 m2 × 45 L/m2·h × 24 h = 1,382,400 L = 1,382.4 m3/day. The key 138,240 m3 is 100x too large; the step even says 'adjust option list'.",
+   "original": {
+    "question": "A membrane plant runs at flux 45 L/m²·h on four racks with 320 m² each. What is the total volume (in m³) produced per day?",
+    "options": [
+     "138,240 m³",
+     "25,600 m³",
+     "57,600 m³",
+     "22,800 m³"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculate total membrane area, then multiply by flux and time."
+   },
+   "fix": {
+    "question": "A membrane plant runs at flux 45 L/m²·h on four racks with 320 m² each. What is the total volume (in m³) produced per day?",
+    "options": [
+     "1,382.4 m³",
+     "138.2 m³",
+     "13,824 m³",
+     "57.6 m³"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculate total membrane area, then multiply by flux and time.",
+    "steps": [
+     {
+      "l": "Step 1 — Total area",
+      "c": "4 × 320 m² = 1,280 m²"
+     },
+     {
+      "l": "Step 2 — Total hourly volume",
+      "c": "1,280 m² × 45 L/m²·h = 57,600 L/h"
+     },
+     {
+      "l": "Step 3 — Total daily volume",
+      "c": "57,600 L/h × 24 h = 1,382,400 L/day = 1,382.4 m³/day"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240649,
+   "bankKey": "class3-water",
+   "questionNum": 520,
+   "verdict": "UNCLEAR",
+   "note": "Data are inconsistent: 1.2 m3 of media at 220 m3/d gives EBCT of about 7.9 min, not 18 min, and 'actual contact time is 9 min less than theoretical' is not a real GAC concept. Rewritten as a straightforward EBCT calculation.",
+   "original": {
+    "question": "A GAC filter is loaded at 220 m³/d with 18 min EBCT and 1.2 m³ of media. Actual contact time is 9 min less than theoretical. What is the actual EBCT?",
+    "options": [
+     "12 min",
+     "15 min",
+     "9 min",
+     "18 min"
+    ],
+    "correctIndex": 2,
+    "explanation": "Subtract 9 min of shortfall from theoretical EBCT."
+   },
+   "fix": {
+    "question": "A GAC contactor has an empty bed volume of 1.2 m³ and treats 220 m³/d. What is the empty bed contact time (EBCT) in minutes?",
+    "options": [
+     "7.9 min",
+     "18 min",
+     "9 min",
+     "12 min"
+    ],
+    "correctIndex": 0,
+    "explanation": "EBCT = empty bed volume ÷ flow rate.",
+    "steps": [
+     {
+      "l": "Step 1 — Convert flow to m³/min",
+      "c": "220 m³/d ÷ 1,440 min/d = 0.1528 m³/min"
+     },
+     {
+      "l": "Step 2 — EBCT",
+      "c": "1.2 m³ ÷ 0.1528 m³/min = 7.9 min"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240656,
+   "bankKey": "class3-water",
+   "questionNum": 527,
+   "verdict": "UNCLEAR",
+   "note": "Capacity given as kg 'Na+' but compared directly with hardness as CaCO3; units are not equivalent (80 kg Na+ is about 174 kg as CaCO3). The result also truncates 666.67 to 666. Fixed by stating capacity as CaCO3 and rounding correctly.",
+   "original": {
+    "question": "A softener bed has an ion exchange capacity of 80 kg Na+ per regeneration. If the influent water contains 120 mg/L hardness as CaCO₃, how many cubic metres of water can be softened per cycle before breakthrough?",
+    "options": [
+     "666 m³",
+     "600 m³",
+     "800 m³",
+     "1,000 m³"
+    ],
+    "correctIndex": 0,
+    "explanation": "Volume treated = (Total capacity in mg) / (hardness mg/L)."
+   },
+   "fix": {
+    "question": "A softener bed has an ion exchange capacity of 80 kg (as CaCO₃) per regeneration. If the influent water contains 120 mg/L hardness as CaCO₃, how many cubic metres of water can be softened per cycle before breakthrough?",
+    "options": [
+     "667 m³",
+     "600 m³",
+     "800 m³",
+     "1,000 m³"
+    ],
+    "correctIndex": 0,
+    "explanation": "Volume treated = (Total capacity in mg) / (hardness mg/L).",
+    "steps": [
+     {
+      "l": "Step 1 — Convert kg to mg",
+      "c": "80 kg = 80,000,000 mg"
+     },
+     {
+      "l": "Step 2 — Calculate max volume",
+      "c": "80,000,000 mg / 120 mg/L = 666,667 L"
+     },
+     {
+      "l": "Step 3 — Convert L to m³",
+      "c": "666,667 L ÷ 1,000 = 667 m³"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240659,
+   "bankKey": "class3-water",
+   "questionNum": 530,
+   "verdict": "WRONG",
+   "note": "3.8 mg/L × 9,500 m3 = 36.1 kg Cl2; at 12% and 1.0 kg/L that is 300.8 L (about 301 L). The key 273 L is not what the arithmetic gives (the steps admit 'minor math adjustment'), and none of the options is correct.",
+   "original": {
+    "question": "To obtain a target chlorine residual of 2.1 mg/L in a pipeline, you measure a demand of 1.7 mg/L and use sodium hypochlorite (12%). How many litres are needed to treat 9,500 m³ of water?",
+    "options": [
+     "273 L",
+     "1,297 L",
+     "350 L",
+     "159 L"
+    ],
+    "correctIndex": 0,
+    "explanation": "Total dose = demand + residual; then compute total Cl₂ and adjust for strength and volume treated."
+   },
+   "fix": {
+    "question": "To obtain a target chlorine residual of 2.1 mg/L in a pipeline, you measure a demand of 1.7 mg/L and use sodium hypochlorite (12% available chlorine, assume density 1.0 kg/L). How many litres are needed to treat 9,500 m³ of water?",
+    "options": [
+     "301 L",
+     "273 L",
+     "350 L",
+     "159 L"
+    ],
+    "correctIndex": 0,
+    "explanation": "Total dose = demand + residual; then compute total Cl₂ and adjust for strength.",
+    "steps": [
+     {
+      "l": "Step 1 — Total Cl₂ dose needed",
+      "c": "1.7 + 2.1 = 3.8 mg/L"
+     },
+     {
+      "l": "Step 2 — Total mass to apply",
+      "c": "3.8 mg/L × 9,500 m³ × 1,000 L/m³ = 36,100,000 mg = 36.1 kg"
+     },
+     {
+      "l": "Step 3 — Solution needed (12% NaOCl)",
+      "c": "36.1 kg ÷ (0.12 × 1.0 kg/L) = 300.8 L ≈ 301 L"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240664,
+   "bankKey": "class3-water",
+   "questionNum": 535,
+   "verdict": "WRONG",
+   "note": "The steps compute 45.65 L, not 378 L, and then say 'if calculation corrects to match options'. Also fluoride is only about 79% of H2SiF6 by mass (F 114 / 144). Correct: 12.6 kg F / 0.79 = 15.95 kg acid; / 0.23 = 69.3 kg solution; / 1.2 kg/L = 57.8 L.",
+   "original": {
+    "question": "A utility must maintain a fluoride residual of 0.7 mg/L. The plant flow is 18,000 m³/day and the product is a 23% hydrofluorosilicic acid (density = 1.2 kg/L). How many litres are needed per day?",
+    "options": [
+     "548 L",
+     "635 L",
+     "378 L",
+     "452 L"
+    ],
+    "correctIndex": 2,
+    "explanation": "Calculate daily required dose, then use concentration and density to back-calculate solution volume."
+   },
+   "fix": {
+    "question": "A utility must add fluoride at 0.7 mg/L to a flow of 18,000 m³/day using 23% (by mass) hydrofluorosilicic acid, H₂SiF₆, with density 1.2 kg/L. Fluoride is 79% of the H₂SiF₆ by mass. How many litres of acid solution are needed per day?",
+    "options": [
+     "58 L",
+     "46 L",
+     "378 L",
+     "548 L"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculate the fluoride mass required, convert to H₂SiF₆, then to solution mass and volume.",
+    "steps": [
+     {
+      "l": "Step 1 — Daily fluoride mass required",
+      "c": "0.7 mg/L × 18,000 m³ × 1,000 L/m³ = 12,600,000 mg = 12.6 kg"
+     },
+     {
+      "l": "Step 2 — H₂SiF₆ required",
+      "c": "12.6 kg ÷ 0.79 = 15.95 kg"
+     },
+     {
+      "l": "Step 3 — Solution mass (23%)",
+      "c": "15.95 kg ÷ 0.23 = 69.3 kg"
+     },
+     {
+      "l": "Step 4 — Volume",
+      "c": "69.3 kg ÷ 1.2 kg/L = 57.8 L ≈ 58 L"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240666,
+   "bankKey": "class3-water",
+   "questionNum": 537,
+   "verdict": "WRONG",
+   "note": "Area = pi × 3² = 28.27 m2; 12 m3/min ÷ 28.27 m2 = 0.42 m/min. The marked 4.24 m/min is 10x too large (the steps admit the mismatch).",
+   "original": {
+    "question": "A backwash uses 120 m³ water for 10 minutes through a filter 6 m in diameter. What is the average backwash velocity in m/min?",
+    "options": [
+     "2.12 m/min",
+     "6.37 m/min",
+     "8.21 m/min",
+     "4.24 m/min"
+    ],
+    "correctIndex": 3,
+    "explanation": "Velocity = Q / area = (volume/time)/area."
+   },
+   "fix": {
+    "question": "A backwash uses 120 m³ water for 10 minutes through a filter 6 m in diameter. What is the average backwash velocity in m/min?",
+    "options": [
+     "0.42 m/min",
+     "4.2 m/min",
+     "2.1 m/min",
+     "0.85 m/min"
+    ],
+    "correctIndex": 0,
+    "explanation": "Velocity = Q / area = (volume/time)/area.",
+    "steps": [
+     {
+      "l": "Step 1 — Calculate filter area",
+      "c": "Area = π × (6/2)² = π × 9 = 28.27 m²"
+     },
+     {
+      "l": "Step 2 — Calculate Q",
+      "c": "120 m³ / 10 min = 12 m³/min"
+     },
+     {
+      "l": "Step 3 — Velocity",
+      "c": "12 m³/min ÷ 28.27 m² = 0.42 m/min"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240667,
+   "bankKey": "class3-water",
+   "questionNum": 538,
+   "verdict": "WRONG",
+   "note": "(66×340 + 34×190)/100 = 28,900/100 = 289 µS/cm; the key 283 is wrong.",
+   "original": {
+    "question": "A plant must blend two sources: Source A (340 μS/cm, 66 L/s) and Source B (190 μS/cm, 34 L/s). What is the expected blended conductivity?",
+    "options": [
+     "283 μS/cm",
+     "265 μS/cm",
+     "305 μS/cm",
+     "240 μS/cm"
+    ],
+    "correctIndex": 0,
+    "explanation": "Weighted average formula is used for blending."
+   },
+   "fix": {
+    "question": "A plant must blend two sources: Source A (340 μS/cm, 66 L/s) and Source B (190 μS/cm, 34 L/s). What is the expected blended conductivity?",
+    "options": [
+     "289 μS/cm",
+     "283 μS/cm",
+     "265 μS/cm",
+     "305 μS/cm"
+    ],
+    "correctIndex": 0,
+    "explanation": "Weighted average formula is used for blending.",
+    "steps": [
+     {
+      "l": "Step 1 — Calculate total flow",
+      "c": "66 + 34 = 100 L/s"
+     },
+     {
+      "l": "Step 2 — Find sum of (rate × value)",
+      "c": "66×340 + 34×190 = 22,440 + 6,460 = 28,900"
+     },
+     {
+      "l": "Step 3 — Blended value",
+      "c": "28,900 / 100 = 289 μS/cm"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240669,
+   "bankKey": "class3-water",
+   "questionNum": 540,
+   "verdict": "WRONG",
+   "note": "6,030,000 mg / 90 L = 67,000 mg per litre of resin; the key says 67 mg/L, which is 1,000x too small.",
+   "original": {
+    "question": "An ion exchange column removes 0.9 mg/L nitrate from 6,700 m³ before exhaustion. If each resin bed contains 90 L of media, what is the specific removal in mg nitrate per litre of resin?",
+    "options": [
+     "102 mg/L",
+     "83 mg/L",
+     "80 mg/L",
+     "67 mg/L"
+    ],
+    "correctIndex": 3,
+    "explanation": "Specific removal = total nitrate removed / volume of resin."
+   },
+   "fix": {
+    "question": "An ion exchange column removes 0.9 mg/L nitrate from 6,700 m³ before exhaustion. If each resin bed contains 90 L of media, what is the specific removal in mg nitrate per litre of resin?",
+    "options": [
+     "67,000 mg/L",
+     "67 mg/L",
+     "6,700 mg/L",
+     "670 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "Specific removal = total nitrate removed / volume of resin.",
+    "steps": [
+     {
+      "l": "Step 1 — Total mass removed",
+      "c": "0.9 mg/L × 6,700 m³ × 1,000 L/m³ = 6,030,000 mg"
+     },
+     {
+      "l": "Step 2 — Per litre of resin",
+      "c": "6,030,000 mg ÷ 90 L = 67,000 mg/L of resin (67 g/L)"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240670,
+   "bankKey": "class3-water",
+   "questionNum": 541,
+   "verdict": "WRONG",
+   "note": "(4,500×8 + 3,000×3)/7,500 = 45,000/7,500 = 6.0 NTU, as the steps show; the key 5.36 NTU is wrong and 6.0 is not offered.",
+   "original": {
+    "question": "A water treatment plant uses two different raw water sources. Source A has a flow rate of 4,500 m³/day and a turbidity of 8.0 NTU. Source B has a flow rate of 3,000 m³/day and a turbidity of 3.0 NTU. What will be the blended turbidity (in NTU) when the two sources are mixed?",
+    "options": [
+     "3.86 NTU",
+     "5.00 NTU",
+     "4.50 NTU",
+     "5.36 NTU"
+    ],
+    "correctIndex": 3,
+    "explanation": "Blended turbidity is the weighted average based on flow: [(A flow × A turbidity) + (B flow × B turbidity)] / (A flow + B flow)."
+   },
+   "fix": {
+    "question": "A water treatment plant uses two different raw water sources. Source A has a flow rate of 4,500 m³/day and a turbidity of 8.0 NTU. Source B has a flow rate of 3,000 m³/day and a turbidity of 3.0 NTU. What will be the blended turbidity (in NTU) when the two sources are mixed?",
+    "options": [
+     "6.0 NTU",
+     "5.00 NTU",
+     "4.50 NTU",
+     "5.36 NTU"
+    ],
+    "correctIndex": 0,
+    "explanation": "Blended turbidity is the weighted average based on flow: [(A flow × A turbidity) + (B flow × B turbidity)] / (A flow + B flow).",
+    "steps": [
+     {
+      "l": "Step 1 — Multiply each source's flow by its turbidity",
+      "c": "A: 4,500 × 8.0 = 36,000; B: 3,000 × 3.0 = 9,000"
+     },
+     {
+      "l": "Step 2 — Add the products",
+      "c": "36,000 + 9,000 = 45,000"
+     },
+     {
+      "l": "Step 3 — Add total flows",
+      "c": "4,500 + 3,000 = 7,500 m³/day"
+     },
+     {
+      "l": "Step 4 — Divide the sum by total flow",
+      "c": "45,000 / 7,500 = 6.0 NTU"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240675,
+   "bankKey": "class3-water",
+   "questionNum": 546,
+   "verdict": "WRONG",
+   "note": "1,260 kg alum / 0.08 = 15,750 kg of solution = 15,750 L at 1 kg/L, as the steps show. The key 6,562.5 L/day is wrong and no option is correct.",
+   "original": {
+    "question": "A coagulant (alum) is dosed at 35 mg/L for a flow of 1,500 m³/hr. If the alum solution is 8% by weight, how many litres of solution are required per day (24 h) to maintain dosing?",
+    "options": [
+     "8,125.0 L/day",
+     "6,562.5 L/day",
+     "5,625.0 L/day",
+     "4,687.5 L/day"
+    ],
+    "correctIndex": 1,
+    "explanation": "Find daily mass needed, convert to 8% solution volume."
+   },
+   "fix": {
+    "question": "A coagulant (alum) is dosed at 35 mg/L for a flow of 1,500 m³/hr. If the alum solution is 8% by weight (assume density 1 kg/L), how many litres of solution are required per day (24 h) to maintain dosing?",
+    "options": [
+     "15,750 L/day",
+     "6,562.5 L/day",
+     "8,125 L/day",
+     "4,687.5 L/day"
+    ],
+    "correctIndex": 0,
+    "explanation": "Find daily mass needed, convert to 8% solution volume.",
+    "steps": [
+     {
+      "l": "Step 1 — Daily volume treated",
+      "c": "1,500 m³/hr × 24 = 36,000 m³/day"
+     },
+     {
+      "l": "Step 2 — Total alum in mg",
+      "c": "35 mg/L × 36,000,000 L = 1,260,000,000 mg"
+     },
+     {
+      "l": "Step 3 — Convert mg to kg",
+      "c": "1,260,000,000 mg ÷ 1,000,000 = 1,260 kg"
+     },
+     {
+      "l": "Step 4 — Solution mass (8%)",
+      "c": "1,260 kg ÷ 0.08 = 15,750 kg"
+     },
+     {
+      "l": "Step 5 — Volume at 1 kg/L",
+      "c": "15,750 L/day"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240681,
+   "bankKey": "class3-water",
+   "questionNum": 552,
+   "verdict": "WRONG",
+   "note": "129.6 g / 40 g/L = 3.24 L, as the steps show; the key marks 0.81 L.",
+   "original": {
+    "question": "You need to dose potassium permanganate at 1.8 mg/L to oxidize iron in a 120 L/min flow. The permanganate is supplied as a 4% solution. How many litres of solution are required per 10 hours?",
+    "options": [
+     "3.24 L",
+     "0.81 L",
+     "1.62 L",
+     "2.40 L"
+    ],
+    "correctIndex": 1,
+    "explanation": "Calculate total permanganate mass, convert to solution volume using percent concentration."
+   },
+   "fix": {
+    "question": "You need to dose potassium permanganate at 1.8 mg/L in a 120 L/min flow. The permanganate is supplied as a 4% solution. How many litres of solution are required per 10 hours?",
+    "options": [
+     "3.24 L",
+     "0.81 L",
+     "1.62 L",
+     "2.40 L"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculate total permanganate mass, convert to solution volume using percent concentration.",
+    "steps": [
+     {
+      "l": "Step 1 — Total volume treated",
+      "c": "120 L/min × 60 × 10 = 72,000 L"
+     },
+     {
+      "l": "Step 2 — Total permanganate needed",
+      "c": "1.8 mg/L × 72,000 L = 129,600 mg = 129.6 g"
+     },
+     {
+      "l": "Step 3 — Amount in 4% solution",
+      "c": "4% = 40 g/L; 129.6 g ÷ 40 g/L = 3.24 L"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240682,
+   "bankKey": "class3-water",
+   "questionNum": 553,
+   "verdict": "WRONG",
+   "note": "Steps are self-contradictory: initial mass is 13,856 kg (25.19 m3 × 550) yet 22,000 kg is said to be removed, then 27,500 is introduced from nowhere giving 20%, while the key is 8.0%. Bed volume per filter is also 12.60 m3 (not 12.619). Rewritten with 12,750 kg recovered, giving 8.0%.",
+   "original": {
+    "question": "After GAC exhaustion, the total mass of GAC removed from two filters (each 2.7 m diameter, 2.2 m bed depth) is 22,000 kg. If the bulk density is 550 kg/m³, what percent of the initial carbon is lost during backwashing and transport?",
+    "options": [
+     "5.0%",
+     "6.2%",
+     "8.0%",
+     "10.5%"
+    ],
+    "correctIndex": 2,
+    "explanation": "Find initial volume × density, subtract remaining, compute loss percent."
+   },
+   "fix": {
+    "question": "After GAC exhaustion, the total mass of GAC recovered from two filters (each 2.7 m diameter, 2.2 m bed depth) is 12,750 kg. If the bulk density is 550 kg/m³, what percent of the initial carbon is lost during backwashing and transport?",
+    "options": [
+     "5.0%",
+     "6.2%",
+     "8.0%",
+     "10.5%"
+    ],
+    "correctIndex": 2,
+    "explanation": "Find initial volume × density, subtract the mass recovered, then compute loss percent.",
+    "steps": [
+     {
+      "l": "Step 1 — Volume per filter",
+      "c": "π × (1.35)² × 2.2 = 12.60 m³"
+     },
+     {
+      "l": "Step 2 — Total volume",
+      "c": "12.60 × 2 = 25.19 m³"
+     },
+     {
+      "l": "Step 3 — Initial mass",
+      "c": "25.19 × 550 = 13,856 kg"
+     },
+     {
+      "l": "Step 4 — Percent lost",
+      "c": "(13,856 − 12,750) ÷ 13,856 × 100 = 8.0%"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240684,
+   "bankKey": "class3-water",
+   "questionNum": 555,
+   "verdict": "WRONG",
+   "note": "108 m3 / 0.9 m3/min = 120 min; × 0.7 = 84 min, as the steps show. The key 6.0 min is wrong and no option is correct.",
+   "original": {
+    "question": "A contact tank has a volume of 108 m³. If flow is 900 L/min and baffling factor is 0.7, what is the effective contact time (minutes)?",
+    "options": [
+     "6.0 min",
+     "8.0 min",
+     "10.0 min",
+     "7.0 min"
+    ],
+    "correctIndex": 0,
+    "explanation": "Effective time = (Tank volume / flow) × baffling factor."
+   },
+   "fix": {
+    "question": "A contact tank has a volume of 108 m³. If flow is 900 L/min and baffling factor is 0.7, what is the effective contact time (minutes)?",
+    "options": [
+     "84 min",
+     "120 min",
+     "8.4 min",
+     "60 min"
+    ],
+    "correctIndex": 0,
+    "explanation": "Effective time = (Tank volume / flow) × baffling factor.",
+    "steps": [
+     {
+      "l": "Step 1 — Flow in m³/min",
+      "c": "900 L/min ÷ 1,000 = 0.9 m³/min"
+     },
+     {
+      "l": "Step 2 — Theoretical detention",
+      "c": "108 ÷ 0.9 = 120 min"
+     },
+     {
+      "l": "Step 3 — Apply baffling factor",
+      "c": "120 × 0.7 = 84 min"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240685,
+   "bankKey": "class3-water",
+   "questionNum": 556,
+   "verdict": "WRONG",
+   "note": "G = sqrt(P/(mu·V)) = sqrt(1,250/(0.001×2.5)) = sqrt(500,000) = 707 s^-1, as the steps show; the key 10 s^-1 is wrong and no option is correct.",
+   "original": {
+    "question": "A rapid mix chamber has a volume of 2.5 m³. If it is completely mixed in 40 seconds, what is the average velocity gradient (G) in s⁻¹, given the mixing energy input is 1,250 Watts and water viscosity is 0.001 Pa·s?",
+    "options": [
+     "10 s⁻¹",
+     "15 s⁻¹",
+     "25 s⁻¹",
+     "40 s⁻¹"
+    ],
+    "correctIndex": 0,
+    "explanation": "G = sqrt(P / (μ × V))"
+   },
+   "fix": {
+    "question": "A rapid mix chamber has a volume of 2.5 m³. If the mixing energy input is 1,250 Watts and water viscosity is 0.001 Pa·s, what is the average velocity gradient (G) in s⁻¹?",
+    "options": [
+     "707 s⁻¹",
+     "500 s⁻¹",
+     "1,000 s⁻¹",
+     "250 s⁻¹"
+    ],
+    "correctIndex": 0,
+    "explanation": "G = sqrt(P / (μ × V))",
+    "steps": [
+     {
+      "l": "Step 1 — Identify values",
+      "c": "P = 1,250 W, μ = 0.001 Pa·s, V = 2.5 m³"
+     },
+     {
+      "l": "Step 2 — Compute denominator",
+      "c": "0.001 × 2.5 = 0.0025"
+     },
+     {
+      "l": "Step 3 — Divide power by denominator",
+      "c": "1,250 ÷ 0.0025 = 500,000"
+     },
+     {
+      "l": "Step 4 — Take square root",
+      "c": "sqrt(500,000) = 707 s⁻¹"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240689,
+   "bankKey": "class3-water",
+   "questionNum": 560,
+   "verdict": "WRONG",
+   "note": "Steps give 1,054,167 L/h ÷ 625 = 1,686.7 m2 (about 1,687 m2); the key 1,694 m2 does not match the arithmetic.",
+   "original": {
+    "question": "A treatment plant must produce 22,000 m³/d from two membrane racks (each designed for max 625 L/m²/h flux). What is the minimum total membrane area (m²) required if peak demand is 15% above average?",
+    "options": [
+     "1,892 m²",
+     "1,254 m²",
+     "1,694 m²",
+     "1,544 m²"
+    ],
+    "correctIndex": 2,
+    "explanation": "Find peak flow; area = peak flow / flux."
+   },
+   "fix": {
+    "question": "A treatment plant must produce 22,000 m³/d from two membrane racks (each designed for max 625 L/m²/h flux). What is the minimum total membrane area (m²) required if peak demand is 15% above average?",
+    "options": [
+     "1,687 m²",
+     "1,892 m²",
+     "1,254 m²",
+     "1,544 m²"
+    ],
+    "correctIndex": 0,
+    "explanation": "Find peak flow; area = peak flow / flux.",
+    "steps": [
+     {
+      "l": "Step 1 — Daily average flow",
+      "c": "22,000 m³/d × 1,000 = 22,000,000 L/d"
+     },
+     {
+      "l": "Step 2 — Peak demand",
+      "c": "22,000,000 × 1.15 = 25,300,000 L/d"
+     },
+     {
+      "l": "Step 3 — Convert to L/h",
+      "c": "25,300,000 ÷ 24 = 1,054,167 L/h"
+     },
+     {
+      "l": "Step 4 — Area required",
+      "c": "1,054,167 ÷ 625 = 1,686.7 m² ≈ 1,687 m²"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240690,
+   "bankKey": "class3-water",
+   "questionNum": 561,
+   "verdict": "WRONG",
+   "note": "44,600 / 5,000 = 8.92 mg/L (about 8.9); the key 8.6 is not what the arithmetic gives.",
+   "original": {
+    "question": "A water treatment plant blends two source waters to meet a regulatory maximum of 10 mg/L nitrate in the finished water. Source A flows at 1,200 m³/day with 15 mg/L nitrate, and Source B flows at 3,800 m³/day with 7 mg/L nitrate. What is the blended nitrate concentration in the finished water (in mg/L)?",
+    "options": [
+     "8.6",
+     "10.4",
+     "9.3",
+     "7.8"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculate the flow-weighted average concentration."
+   },
+   "fix": {
+    "question": "A water treatment plant blends two source waters to meet a regulatory maximum of 10 mg/L nitrate in the finished water. Source A flows at 1,200 m³/day with 15 mg/L nitrate, and Source B flows at 3,800 m³/day with 7 mg/L nitrate. What is the blended nitrate concentration in the finished water (in mg/L)?",
+    "options": [
+     "8.9",
+     "10.4",
+     "9.3",
+     "7.8"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculate the flow-weighted average concentration.",
+    "steps": [
+     {
+      "l": "Step 1 — Find total flow",
+      "c": "1,200 + 3,800 = 5,000 m³/day"
+     },
+     {
+      "l": "Step 2 — Find total nitrate load",
+      "c": "(1,200 × 15) + (3,800 × 7) = 18,000 + 26,600 = 44,600 g/day"
+     },
+     {
+      "l": "Step 3 — Calculate blended concentration",
+      "c": "44,600 ÷ 5,000 = 8.92 mg/L ≈ 8.9 mg/L"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240691,
+   "bankKey": "class3-water",
+   "questionNum": 562,
+   "verdict": "WRONG",
+   "note": "Question as written lacks the total adsorptive capacity, and the steps wander through several failed attempts (7.08 days, 42.5 days) with no route to the key of 177. Rewritten with an explicit capacity of 25 kg/m3: 0.85 × 25 × 25 = 531.25 kg; 531.25 ÷ 3.0 kg/d = 177 days.",
+   "original": {
+    "question": "A GAC filter is removing a target contaminant at a loading rate of 0.12 kg/m³ GAC per day. If a filter contains 25 m³ of GAC, and the target effluent breakthrough point is at 85% of the total capacity, after how many days should the GAC be replaced?",
+    "options": [
+     "177",
+     "98",
+     "152",
+     "212"
+    ],
+    "correctIndex": 0,
+    "explanation": "First, calculate total contaminant mass removed at breakthrough, then divide by daily removal."
+   },
+   "fix": {
+    "question": "A GAC filter removes a target contaminant at a loading of 0.12 kg per m³ of GAC per day. The filter contains 25 m³ of GAC with an adsorptive capacity of 25 kg of contaminant per m³ of GAC. If the GAC is replaced when 85% of the total capacity is used, after how many days should it be replaced?",
+    "options": [
+     "177",
+     "98",
+     "152",
+     "212"
+    ],
+    "correctIndex": 0,
+    "explanation": "Total capacity at breakthrough divided by the daily mass removed gives the days to replacement.",
+    "steps": [
+     {
+      "l": "Step 1 — Total capacity",
+      "c": "25 m³ × 25 kg/m³ = 625 kg"
+     },
+     {
+      "l": "Step 2 — Capacity at 85%",
+      "c": "0.85 × 625 kg = 531.25 kg"
+     },
+     {
+      "l": "Step 3 — Daily mass removed",
+      "c": "0.12 kg/m³/d × 25 m³ = 3.0 kg/d"
+     },
+     {
+      "l": "Step 4 — Days to replacement",
+      "c": "531.25 ÷ 3.0 = 177 days"
+     }
+    ]
    }
   }
  ]
