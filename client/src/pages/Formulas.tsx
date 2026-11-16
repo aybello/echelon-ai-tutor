@@ -3,10 +3,11 @@ import FormulaSourceNotes from "@/components/FormulaSourceNotes";
 // Ontario Water & Wastewater Operator Exam Reference
 // Design: Professional SaaS — Clean Dark-Accent (Sora, blue/teal brand)
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import SiteNav from "@/components/SiteNav";
+import { getAllCourses } from "@shared/courseRegistry";
 
 // ── TYPES ────────────────────────────────────────────────────────────────────
 interface Formula {
@@ -557,6 +558,31 @@ const CATEGORIES: FormulaCategory[] = [
   },
 ];
 
+const STARRED_KEY = "echelon_formula_stars_v1";
+
+/** Every course formula sheet, grouped by region, built from the course registry so new sheets show up here. */
+const SHEET_GROUPS: { label: string; note: string; families: string[] }[] = [
+  { label: "Ontario", note: "metric units", families: ["ontario"] },
+  { label: "Western Canada (BC, AB, SK, MB)", note: "metric units", families: ["western"] },
+  { label: "United States", note: "US customary units: gpm, lb/day, psi", families: ["us-wpi", "us-state"] },
+];
+function formulaSheetsFor(families: string[]) {
+  const sheets = new Map<string, { label: string; tracks: Set<string> }>();
+  for (const c of getAllCourses()) {
+    if (!c.isActive || !c.formulaPath || !families.includes(c.examFamily)) continue;
+    const entry = sheets.get(c.formulaPath) ?? { label: c.displayName, tracks: new Set<string>() };
+    entry.tracks.add(c.track ?? "");
+    sheets.set(c.formulaPath, entry);
+  }
+  // One sheet can serve several courses (for example treatment and distribution); say so in the label.
+  return Array.from(sheets, ([href, { label, tracks }]) => ({
+    href,
+    label: label
+      + (tracks.has("water-distribution") ? " + Distribution" : "")
+      + (tracks.has("wastewater-collection") ? " + Collection" : ""),
+  }));
+}
+
 // ── FORMULA CARD ─────────────────────────────────────────────────────────────
 function FormulaCard({ formula, color, bg }: { formula: Formula; color: string; bg: string }) {
   const [expanded, setExpanded] = useState(false);
@@ -718,18 +744,27 @@ function FormulaCard({ formula, color, bg }: { formula: Formula; color: string; 
 // ── MAIN PAGE ────────────────────────────────────────────────────────────────
 export default function Formulas() {
   usePageMeta({
-    title: "Ontario Operator Exam Formula Sheet",
-    description: "33 Ontario water and wastewater operator exam formulas with worked examples and exam tips. CT values, SVI, chlorine dose, flow calculations, and more.",
+    title: "Operator Exam Formula Library",
+    description: `${CATEGORIES.reduce((sum, c) => sum + c.formulas.length, 0)} core water and wastewater operator exam formulas (metric units) with worked examples and exam tips, plus links to the Ontario, western Canada and US formula sheets.`,
     path: "/formulas",
     noindex: true
   });
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [expandAll, setExpandAll] = useState(false);
+  const [onlyStarred, setOnlyStarred] = useState(false);
+  const [starred, setStarred] = useState<string[]>(() => {
+    try { const raw = JSON.parse(localStorage.getItem(STARRED_KEY) ?? "[]"); return Array.isArray(raw) ? raw.filter((x): x is string => typeof x === "string") : []; } catch { return []; }
+  });
+  useEffect(() => {
+    try { localStorage.setItem(STARRED_KEY, JSON.stringify(starred)); } catch { /* storage unavailable: stars last for this visit only */ }
+  }, [starred]);
+  const toggleStar = (name: string) => setStarred(prev => prev.includes(name) ? prev.filter(n => n !== name) : [...prev, name]);
 
   const filteredCategories = CATEGORIES.map(cat => ({
     ...cat,
     formulas: cat.formulas.filter(f => {
+      if (onlyStarred && !starred.includes(f.name)) return false;
       if (!searchQuery) return true;
       const q = searchQuery.toLowerCase();
       return (
@@ -753,6 +788,10 @@ export default function Formulas() {
         @keyframes fadeDown { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
         .cat-chip:hover { opacity: 0.85; transform: translateY(-1px); }
         .search-input:focus { outline: none; border-color: #3B82F6 !important; box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
+        @media print {
+          .echelon-site-header, .formulas-filter, .formula-star, .formulas-intro a { display: none !important; }
+          .formulas-page { background: #fff !important; }
+        }
         @media (max-width: 640px) {
           .formulas-content { padding: 16px 14px 60px !important; }
           .formulas-category-filter { padding: 10px 14px !important; }
@@ -763,135 +802,78 @@ export default function Formulas() {
 
       <SiteNav currentPath="/formulas" />
 
-      <FormulaSourceNotes />
-      {/* ── HERO BANNER ── */}
-      <div className="formulas-hero" style={{
-        background: "linear-gradient(135deg, #0F172A 0%, #1E3A5F 60%, #0E7490 100%)",
-        padding: "40px 24px",
-        textAlign: "center",
-      }}>
-        <div style={{ maxWidth: 700, margin: "0 auto" }}>
-          <div style={{
-            display: "inline-flex", alignItems: "center", gap: 8,
-            background: "rgba(255,255,255,0.1)", borderRadius: 20,
-            padding: "5px 14px", marginBottom: 16,
-            border: "1px solid rgba(255,255,255,0.15)",
-          }}>
-            <span style={{ fontSize: 12 }}>📐</span>
-            <span style={{ fontSize: 11, color: "rgba(255,255,255,0.85)", fontWeight: 600 }}>
-              Ontario Water & Wastewater Operator Exam Reference
-            </span>
-          </div>
-          <h1 style={{
-            fontSize: "clamp(22px, 4vw, 36px)",
-            fontWeight: 800, color: "#FFFFFF",
-            letterSpacing: "-0.02em", margin: "0 0 12px 0",
-          }}>
-            Formula Sheet
-          </h1>
-          <p style={{
-            fontSize: 14, color: "rgba(255,255,255,0.7)",
-            lineHeight: 1.7, margin: "0 0 24px",
-          }}>
-            All the formulas you need for the OIT, Class 1–4, and WQA exams — with worked examples and exam tips.
-            Click any formula to expand the full solution.
+      {/* ── COMPACT HEADER ── */}
+      <header className="formulas-intro" style={{ background: "#fff", borderBottom: "1px solid #E5E7EB", padding: "20px 24px 14px" }}>
+        <div style={{ maxWidth: 960, margin: "0 auto" }}>
+          <p style={{ margin: 0, fontSize: 13, fontWeight: 700, color: "#1757B8", letterSpacing: "0.06em", textTransform: "uppercase" }}>Canada and the United States</p>
+          <h1 style={{ fontSize: "clamp(24px, 4vw, 32px)", fontWeight: 800, color: "#000", margin: "4px 0 6px" }}>Formula library</h1>
+          <p style={{ margin: 0, fontSize: 15, color: "#000", lineHeight: 1.5 }}>
+            Find the formula sheet for your exam below. The core formulas on this page use metric units and come with worked examples.
           </p>
-
-          {/* Search */}
-          <div style={{ position: "relative", maxWidth: 480, margin: "0 auto" }}>
-            <span style={{
-              position: "absolute", left: 14, top: "50%",
-              transform: "translateY(-50%)", fontSize: 14, pointerEvents: "none",
-            }}>🔍</span>
-            <input
-              className="search-input"
-              type="text"
-              placeholder="Search formulas, e.g. 'CT value', 'SVI', 'flow rate'…"
-              value={searchQuery}
-              onChange={e => setSearchQuery(e.target.value)}
-              style={{
-                width: "100%",
-                padding: "12px 16px 12px 40px",
-                borderRadius: 12,
-                border: "1px solid rgba(255,255,255,0.2)",
-                background: "rgba(255,255,255,0.1)",
-                color: "#fff",
-                fontSize: 13,
-                fontFamily: "inherit",
-                backdropFilter: "blur(8px)",
-                boxSizing: "border-box",
-              }}
-            />
-          </div>
+          <details className="formula-sheet-picker" style={{ marginTop: 12 }}>
+            <summary style={{ cursor: "pointer", fontWeight: 700, fontSize: 15, color: "#1757B8", minHeight: 44, display: "flex", alignItems: "center" }}>Find the formula sheet for your exam</summary>
+            <div style={{ display: "grid", gap: 14, padding: "6px 0 10px" }}>
+              {SHEET_GROUPS.map(group => (
+                <div key={group.label}>
+                  <p style={{ margin: "0 0 6px", fontSize: 14, color: "#000" }}><strong>{group.label}</strong> · {group.note}</p>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                    {formulaSheetsFor(group.families).map(sheet => (
+                      <Link key={sheet.href} href={sheet.href} style={{ display: "inline-flex", alignItems: "center", minHeight: 40, padding: "0 12px", borderRadius: 999, border: "1.5px solid #CBD5E1", background: "#fff", color: "#000", fontWeight: 600, fontSize: 14, textDecoration: "none" }}>{sheet.label}</Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </details>
+          <p style={{ margin: "6px 0 0", fontSize: 15 }}>
+            <Link href="/math-practice" style={{ color: "#1757B8", fontWeight: 700 }}>Practise calculation questions →</Link>
+          </p>
         </div>
-      </div>
+      </header>
 
-      {/* ── CATEGORY FILTER ── */}
+      {/* ── SEARCH AND CATEGORY BAR (stays in view while scrolling) ── */}
       <div className="formulas-filter" style={{
+        position: "sticky", top: 0, zIndex: 20,
         background: "#fff",
         borderBottom: "1px solid #E5E7EB",
-        padding: "14px 24px",
-        display: "flex",
-        alignItems: "center",
-        gap: 8,
-        flexWrap: "wrap",
-        overflowX: "auto",
+        padding: "12px 24px",
       }}>
-        <span style={{ fontSize: 10, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.08em", flexShrink: 0 }}>
-          CATEGORY:
-        </span>
-        <button
-          className="cat-chip"
-          onClick={() => setActiveCategory(null)}
-          style={{
-            padding: "6px 14px", borderRadius: 20,
-            border: `1.5px solid ${!activeCategory ? "#1D4ED8" : "#E5E7EB"}`,
-            background: !activeCategory ? "#EFF6FF" : "transparent",
-            color: !activeCategory ? "#1D4ED8" : "#64748B",
-            fontSize: 11, fontWeight: 700, cursor: "pointer",
-            fontFamily: "inherit", transition: "all 0.15s", flexShrink: 0,
-          }}
-        >
-          All ({totalFormulas})
-        </button>
-        {CATEGORIES.map(cat => (
-          <button
-            key={cat.id}
-            className="cat-chip"
-            onClick={() => setActiveCategory(activeCategory === cat.id ? null : cat.id)}
-            style={{
-              padding: "6px 14px", borderRadius: 20,
-              border: `1.5px solid ${activeCategory === cat.id ? cat.color : "#E5E7EB"}`,
-              background: activeCategory === cat.id ? cat.bg : "transparent",
-              color: activeCategory === cat.id ? cat.color : "#64748B",
-              fontSize: 11, fontWeight: 700, cursor: "pointer",
-              fontFamily: "inherit", transition: "all 0.15s", flexShrink: 0,
-              display: "flex", alignItems: "center", gap: 5,
-            }}
-          >
-            <span>{cat.icon}</span>
-            <span>{cat.label}</span>
-            <span style={{
-              background: activeCategory === cat.id ? cat.color : "#E5E7EB",
-              color: activeCategory === cat.id ? "#fff" : "#64748B",
-              borderRadius: 10, padding: "1px 6px",
-              fontSize: 9, fontWeight: 800,
-            }}>{cat.formulas.length}</span>
-          </button>
-        ))}
-
-        <div style={{ marginLeft: "auto", flexShrink: 0 }}>
-          <button
-            onClick={() => setExpandAll(!expandAll)}
-            style={{
-              padding: "6px 14px", borderRadius: 20,
-              border: "1px solid #E5E7EB", background: "transparent",
-              color: "#64748B", fontSize: 10, fontWeight: 700,
-              cursor: "pointer", fontFamily: "inherit",
-            }}
-          >
-            {expandAll ? "▲ Collapse All" : "▼ Expand All"}
-          </button>
+        <div style={{ maxWidth: 960, margin: "0 auto", display: "flex", flexDirection: "column", gap: 10 }}>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
+            <input
+              className="search-input"
+              type="search"
+              aria-label="Search formulas"
+              placeholder="Search formulas, e.g. 'CT value', 'SVI', 'flow rate'"
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+              style={{ flex: "1 1 240px", minHeight: 44, padding: "8px 14px", borderRadius: 10, border: "1.5px solid #CBD5E1", background: "#fff", color: "#000", fontSize: 15, fontFamily: "inherit", boxSizing: "border-box" }}
+            />
+            <button type="button" aria-pressed={onlyStarred} onClick={() => setOnlyStarred(!onlyStarred)} className="formula-tool-btn"
+              style={{ minHeight: 44, padding: "0 14px", borderRadius: 10, border: "1.5px solid #1757B8", background: onlyStarred ? "#1757B8" : "#fff", color: onlyStarred ? "#fff" : "#1757B8", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}>
+              ★ Starred ({starred.length})
+            </button>
+            <button type="button" onClick={() => setExpandAll(!expandAll)} className="formula-tool-btn"
+              style={{ minHeight: 44, padding: "0 14px", borderRadius: 10, border: "1.5px solid #CBD5E1", background: "#fff", color: "#000", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}>
+              {expandAll ? "Collapse all" : "Expand all"}
+            </button>
+            <button type="button" onClick={() => window.print()} className="formula-tool-btn"
+              style={{ minHeight: 44, padding: "0 14px", borderRadius: 10, border: "1.5px solid #CBD5E1", background: "#fff", color: "#000", fontWeight: 700, fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}>
+              Print
+            </button>
+          </div>
+          <div style={{ display: "flex", gap: 8, flexWrap: "nowrap", overflowX: "auto", paddingBottom: 2 }} role="group" aria-label="Formula categories">
+            <button className="cat-chip" onClick={() => setActiveCategory(null)}
+              style={{ minHeight: 40, padding: "0 14px", borderRadius: 20, border: `1.5px solid ${!activeCategory ? "#1757B8" : "#CBD5E1"}`, background: !activeCategory ? "#EFF6FF" : "#fff", color: !activeCategory ? "#1757B8" : "#000", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", flexShrink: 0 }}>
+              All ({totalFormulas})
+            </button>
+            {CATEGORIES.map(cat => (
+              <button key={cat.id} className="cat-chip" onClick={() => setActiveCategory(activeCategory === cat.id ? null : cat.id)}
+                style={{ minHeight: 40, padding: "0 14px", borderRadius: 20, border: `1.5px solid ${activeCategory === cat.id ? cat.color : "#CBD5E1"}`, background: activeCategory === cat.id ? cat.bg : "#fff", color: activeCategory === cat.id ? cat.color : "#000", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", flexShrink: 0, display: "flex", alignItems: "center", gap: 6, whiteSpace: "nowrap" }}>
+                <span>{cat.icon}</span><span>{cat.label}</span><span style={{ color: "#475569", fontWeight: 600 }}>{cat.formulas.length}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -907,10 +889,10 @@ export default function Formulas() {
               No formulas found
             </div>
             <div style={{ fontSize: 12, color: "#94A3B8" }}>
-              Try a different search term or clear the filter
+              {onlyStarred && starred.length === 0 ? "Tap the star on a formula to keep it here." : "Try a different search term or clear the filter"}
             </div>
             <button
-              onClick={() => { setSearchQuery(""); setActiveCategory(null); }}
+              onClick={() => { setSearchQuery(""); setActiveCategory(null); setOnlyStarred(false); }}
               style={{
                 marginTop: 16, padding: "8px 20px", borderRadius: 8,
                 border: "1px solid #1D4ED8", background: "#EFF6FF",
@@ -924,6 +906,7 @@ export default function Formulas() {
         ) : (
           filteredCategories.map(cat => (
             <div key={cat.id} style={{ marginBottom: 36, animation: "fadeUp 0.3s ease both" }}>
+              {cat.id === "disinfection" && <FormulaSourceNotes />}
               {/* Category header */}
               <div style={{
                 display: "flex", alignItems: "center", gap: 10,
@@ -953,6 +936,8 @@ export default function Formulas() {
                     color={cat.color}
                     bg={cat.bg}
                     forceExpand={expandAll}
+                    starred={starred.includes(f.name)}
+                    onToggleStar={() => toggleStar(f.name)}
                   />
                 ))}
               </div>
@@ -1013,9 +998,9 @@ export default function Formulas() {
 
 // Wrapper to support forceExpand
 function FormulaCardWrapper({
-  formula, color, bg, forceExpand,
+  formula, color, bg, forceExpand, starred, onToggleStar,
 }: {
-  formula: Formula; color: string; bg: string; forceExpand: boolean;
+  formula: Formula; color: string; bg: string; forceExpand: boolean; starred: boolean; onToggleStar: () => void;
 }) {
   const [localExpand, setLocalExpand] = useState(false);
   const isExpanded = forceExpand || localExpand;
@@ -1044,8 +1029,16 @@ function FormulaCardWrapper({
         }}
       >
         <div style={{ flex: 1 }}>
-          <div style={{ fontSize: 12, fontWeight: 800, color: "#0F172A", marginBottom: 6 }}>
-            {formula.name}
+          <div style={{ fontSize: 15, fontWeight: 800, color: "#0F172A", marginBottom: 6, display: "flex", alignItems: "center", gap: 8 }}>
+            <span style={{ flex: 1 }}>{formula.name}</span>
+            <button
+              type="button"
+              className="formula-star"
+              aria-pressed={starred}
+              aria-label={starred ? `Remove ${formula.name} from starred formulas` : `Star ${formula.name}`}
+              onClick={event => { event.stopPropagation(); onToggleStar(); }}
+              style={{ minWidth: 36, minHeight: 36, border: "none", background: "transparent", cursor: "pointer", fontSize: 20, lineHeight: 1, color: starred ? "#1757B8" : "#475569" }}
+            >{starred ? "★" : "☆"}</button>
           </div>
           <div style={{
             fontFamily: "'JetBrains Mono', 'Fira Code', 'Courier New', monospace",
@@ -1061,14 +1054,14 @@ function FormulaCardWrapper({
             {formula.formula}
           </div>
           {formula.units && (
-            <div style={{ fontSize: 10, color: "#94A3B8", marginTop: 4, fontWeight: 600 }}>
+            <div style={{ fontSize: 13, color: "#475569", marginTop: 4, fontWeight: 600 }}>
               Units: {formula.units}
             </div>
           )}
         </div>
         <div style={{
-          fontSize: 11,
-          color: isExpanded ? color : "#94A3B8",
+          fontSize: 13,
+          color: isExpanded ? color : "#475569",
           fontWeight: 700,
           flexShrink: 0,
           marginTop: 2,
@@ -1084,7 +1077,7 @@ function FormulaCardWrapper({
           {/* Variables */}
           {formula.variables && formula.variables.length > 0 && (
             <div style={{ marginBottom: 14 }}>
-              <div style={{ fontSize: 9, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", marginBottom: 8 }}>
+              <div style={{ fontSize: 12, fontWeight: 700, color: "#475569", letterSpacing: "0.1em", marginBottom: 8 }}>
                 VARIABLES
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
@@ -1098,7 +1091,7 @@ function FormulaCardWrapper({
                       minWidth: 60,
                       flexShrink: 0,
                     }}>{v.sym}</span>
-                    <span style={{ fontSize: 11, color: "#374151" }}>{v.desc}</span>
+                    <span style={{ fontSize: 13, color: "#374151" }}>{v.desc}</span>
                   </div>
                 ))}
               </div>
@@ -1114,15 +1107,15 @@ function FormulaCardWrapper({
               marginBottom: 12,
               border: "1px solid #E5E7EB",
             }}>
-              <div style={{ fontSize: 9, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.1em", marginBottom: 8 }}>
+              <div style={{ fontSize: 12, fontWeight: 700, color: "#475569", letterSpacing: "0.1em", marginBottom: 8 }}>
                 WORKED EXAMPLE
               </div>
-              <div style={{ fontSize: 11, fontWeight: 600, color: "#0F172A", marginBottom: 10, lineHeight: 1.5 }}>
+              <div style={{ fontSize: 13, fontWeight: 600, color: "#0F172A", marginBottom: 10, lineHeight: 1.5 }}>
                 {formula.example.problem}
               </div>
               <div style={{
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: 11,
+                fontSize: 13,
                 color: "#374151",
                 background: "#fff",
                 borderRadius: 8,
@@ -1142,7 +1135,7 @@ function FormulaCardWrapper({
                 color: color,
                 padding: "5px 12px",
                 borderRadius: 20,
-                fontSize: 11,
+                fontSize: 13,
                 fontWeight: 800,
               }}>
                 ✓ Answer: {formula.example.answer}
@@ -1157,7 +1150,7 @@ function FormulaCardWrapper({
               borderRadius: 8,
               padding: "10px 14px",
               borderLeft: "3px solid #3B82F6",
-              fontSize: 11,
+              fontSize: 13,
               color: "#1E3A5F",
               lineHeight: 1.6,
             }}>
