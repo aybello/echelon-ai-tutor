@@ -1,15 +1,15 @@
 {
  "export": "docs/exam-bank-export/2026-11-16 (commit d118897a)",
- "chunksDone": 44,
+ "chunksDone": 49,
  "chunksTotal": 174,
- "questionsReviewed": 6016,
+ "questionsReviewed": 6769,
  "questionsTotal": 24350,
- "problems": 206,
+ "problems": 279,
  "byVerdict": {
-  "UNCLEAR": 67,
-  "WRONG": 85,
-  "JURISDICTION": 31,
-  "UNITS": 18,
+  "UNCLEAR": 84,
+  "WRONG": 120,
+  "JURISDICTION": 35,
+  "UNITS": 35,
   "OFF-TOPIC": 5
  },
  "byBank": {
@@ -20,7 +20,8 @@
   "class1-water-dist": 9,
   "class2-wastewater": 63,
   "class2-wastewater-coll": 59,
-  "class2-water": 30
+  "class2-water": 30,
+  "class2-water-dist": 73
  },
  "chunks": [
   "chunk-001",
@@ -66,7 +67,12 @@
   "chunk-041",
   "chunk-042",
   "chunk-043",
-  "chunk-044"
+  "chunk-044",
+  "chunk-045",
+  "chunk-046",
+  "chunk-047",
+  "chunk-048",
+  "chunk-049"
  ],
  "corrections": [
   {
@@ -7065,6 +7071,2940 @@
     "correctIndex": 2,
     "explanation": "O. Reg. 170/03 Schedule 7-2 requires a large municipal residential system with chlorine secondary disinfection to take at least seven distribution samples each week and test them for free chlorine residual (small municipal residential systems: at least two per week).",
     "steps": null
+   }
+  },
+  {
+   "id": 154679,
+   "bankKey": "class2-water-dist",
+   "questionNum": 29,
+   "verdict": "UNITS",
+   "note": "US customary units (US GPM, feet, HP, lb) in an Ontario bank. Converted to metric: 100 L/s, 40 m head, 75% efficiency; motor power = 9.81 x 0.100 x 40 / 0.75 = 52.3 kW. (Original arithmetic: 45.45 / 0.75 = 60.6 HP, not 60.7.)",
+   "original": {
+    "question": "A pump delivers 1500 US GPM against a total head of 120 feet. If the pump efficiency is 75%, what is the motor horsepower required? (1 HP = 33,000 ft-lb/min, 1 US Gallon = 8.34 lbs)",
+    "options": [
+     "45.5 HP",
+     "54.6 HP",
+     "60.7 HP",
+     "72.9 HP"
+    ],
+    "correctIndex": 2,
+    "explanation": "Calculation: Water Horsepower (WHP) = (Flow (GPM) * Head (ft) * Specific Gravity) / 3960. Assuming specific gravity of water = 1. WHP = (1500 GPM * 120 ft * 1) / 3960 = 45.45 HP. Motor Horsepower (BHP) = WHP / Efficiency = 45.45 HP / 0.75 = 60.6 HP. Closest answer is 60.7 HP."
+   },
+   "fix": {
+    "question": "A pump delivers 100 L/s against a total head of 40 m. If the overall pump efficiency is 75%, what motor power is required? (Water power in kW = 9.81 x Q in m³/s x head in m)",
+    "options": [
+     "29.4 kW",
+     "39.2 kW",
+     "52.3 kW",
+     "65.4 kW"
+    ],
+    "correctIndex": 2,
+    "explanation": "Water power = 9.81 x 0.100 m³/s x 40 m = 39.24 kW. Motor power = 39.24 kW / 0.75 = 52.32 kW, about 52.3 kW.",
+    "steps": [
+     {
+      "l": "Convert the flow.",
+      "c": "100 L/s = 0.100 m³/s"
+     },
+     {
+      "l": "Calculate water power.",
+      "c": "Water power = 9.81 x 0.100 x 40 = 39.24 kW"
+     },
+     {
+      "l": "Correct for efficiency.",
+      "c": "Motor power = 39.24 / 0.75 = 52.32 kW"
+     },
+     {
+      "l": "Select the option.",
+      "c": "52.3 kW"
+     }
+    ]
+   }
+  },
+  {
+   "id": 154700,
+   "bankKey": "class2-water-dist",
+   "questionNum": 50,
+   "verdict": "UNCLEAR",
+   "note": "The key (maximize aesthetic quality) is a secondary benefit, while the primary purpose of good turnover is to keep disinfectant residual and limit microbial regrowth, nitrification and DBP formation. Option B is also partly defensible (it mentions minimizing DBP formation), although 'sufficient contact time' is backwards since long water age increases DBP formation. Two options defensible and the wording 'adequate water age' is misleading.",
+   "original": {
+    "question": "What is the primary purpose of maintaining adequate water age (turnover) in distribution system reservoirs and tanks?",
+    "options": [
+     "To allow for the complete sedimentation of all suspended solids.",
+     "To ensure sufficient contact time for secondary disinfection and minimize DBP formation.",
+     "To maximize the aesthetic quality of the water by reducing taste and odour issues.",
+     "To prolong the life of the reservoir lining materials."
+    ],
+    "correctIndex": 2,
+    "explanation": "Maintaining optimal water age is crucial. Excessive water age can lead to reduced disinfectant residuals, increased DBP formation, taste and odour complaints, and potential microbial regrowth. Optimizing turnover helps maintain water quality."
+   },
+   "fix": {
+    "question": "What is the primary purpose of maintaining good turnover (limiting water age) in distribution system reservoirs and tanks?",
+    "options": [
+     "To allow complete sedimentation of all suspended solids",
+     "To let the disinfectant residual decay so that less chlorine is needed",
+     "To maintain the disinfectant residual and prevent microbial regrowth and taste and odour problems caused by stagnant water",
+     "To prolong the life of the reservoir lining materials"
+    ],
+    "correctIndex": 2,
+    "explanation": "Excessive water age leads to loss of disinfectant residual, increased DBP formation, nitrification, microbial regrowth and taste and odour complaints. Good turnover keeps the water fresh and the residual intact.",
+    "steps": null
+   }
+  },
+  {
+   "id": 154703,
+   "bankKey": "class2-water-dist",
+   "questionNum": 53,
+   "verdict": "UNCLEAR",
+   "note": "An air gap is the highest level of backflow protection and is acceptable for high-hazard connections, so option B is as defensible as the keyed RPPA for 'most effective'. Reworded to ask about mechanical assemblies suitable for high hazard.",
+   "original": {
+    "question": "Which of the following is the most effective method for preventing backflow into a potable water distribution system from a high-hazard industrial connection?",
+    "options": [
+     "Installing a double check valve assembly (DCVA) at the service connection.",
+     "Relying on an air gap separation between the potable and non-potable systems.",
+     "Utilizing a pressure vacuum breaker (PVB) on the cross-connection.",
+     "Implementing a reduced pressure principle assembly (RPPA) at the point of connection."
+    ],
+    "correctIndex": 3,
+    "explanation": "A Reduced Pressure Principle Assembly (RPPA) is designed to protect against both backpressure and backsiphonage, even under continuous backpressure, and is suitable for high-hazard situations."
+   },
+   "fix": {
+    "question": "Which of the following mechanical backflow prevention assemblies is suitable for protecting a potable water system from a high-hazard connection subject to both backpressure and backsiphonage?",
+    "options": [
+     "Double check valve assembly (DCVA)",
+     "Single swing check valve",
+     "Pressure vacuum breaker (PVB)",
+     "Reduced pressure principle assembly (RPPA)"
+    ],
+    "correctIndex": 3,
+    "explanation": "A reduced pressure principle assembly protects against both backpressure and backsiphonage and is suitable for high-hazard (health hazard) connections. A DCVA is for low-hazard use only, a PVB protects only against backsiphonage and cannot handle backpressure, and a single check valve is not an approved backflow preventer.",
+    "steps": null
+   }
+  },
+  {
+   "id": 154706,
+   "bankKey": "class2-water-dist",
+   "questionNum": 56,
+   "verdict": "WRONG",
+   "note": "Key (106.0 L/s) is correct, but the explanation contains stray self-correction text ('There seems to be an error in the provided correct answer...', 'Let's correct the explanation and correctIndex') that contradicts the answer and would confuse students. Replace with a clean explanation.",
+   "original": {
+    "question": "A water distribution system has a pipe with a diameter of 300 mm and water flowing at a velocity of 1.5 m/s. Calculate the flow rate in litres per second (L/s).",
+    "options": [
+     "106.0 L/s",
+     "127.2 L/s",
+     "159.0 L/s",
+     "188.5 L/s"
+    ],
+    "correctIndex": 0,
+    "explanation": "Area (A) = π * (Diameter/2)^2 = π * (0.300 m / 2)^2 = π * (0.15 m)^2 = 0.070686 m². Flow Rate (Q) = A * V = 0.070686 m² * 1.5 m/s = 0.106029 m³/s. Convert to L/s: 0.106029 m³/s * 1000 L/m³ = 106.029 L/s. (Rounding error in options, 127.2 L/s is closer to a common calculation for 300mm pipe at 1.5m/s if diameter was slightly different, let's recheck calculation: A = pi * (0.3/2)^2 = 0.070686 m^2. Q = 0.070686 m^2 * 1.5 m/s = 0.106029 m^3/s = 106.03 L/s.  There seems to be an error in the provided correct answer or options. Let's assume the question intended a different diameter or velocity if 127.2 L/s is the correct answer. Re-calculating for 127.2 L/s: 127.2 L/s = 0.1272 m^3/s. A = Q/V = 0.1272 m^3/s / 1.5 m/s = 0.0848 m^2. Diameter = sqrt(A/pi) * 2 = sqrt(0.0848/pi) * 2 = 0.328 m = 328 mm. Given the options, 106.0 L/s is the correct calculation for a 300 mm pipe. Let's re-evaluate the correctIndex based on the calculation.  The closest option to 106.03 L/s is 106.0 L/s. So, the correctIndex should be 0.  Let's correct the explanation and correctIndex. \nArea (A) = π * (Diameter/2)^2 = π * (0.300 m / 2)^2 = π * (0.15 m)^2 = 0.070686 m². Flow Rate (Q) = A * V = 0.070686 m² * 1.5 m/s = 0.106029 m³/s. Convert to L/s: 0.106029 m³/s * 1000 L/m³ = 106.03 L/s."
+   },
+   "fix": {
+    "question": "A water distribution system has a pipe with a diameter of 300 mm and water flowing at a velocity of 1.5 m/s. Calculate the flow rate in litres per second (L/s).",
+    "options": [
+     "106.0 L/s",
+     "127.2 L/s",
+     "159.0 L/s",
+     "188.5 L/s"
+    ],
+    "correctIndex": 0,
+    "explanation": "Area = π x (0.300 m / 2)^2 = 0.070686 m². Flow rate Q = A x V = 0.070686 m² x 1.5 m/s = 0.10603 m³/s = 106.0 L/s.",
+    "steps": [
+     {
+      "l": "State flow rate formula",
+      "c": "Q = A x V"
+     },
+     {
+      "l": "Find radius in metres",
+      "c": "300 mm = 0.300 m, so r = 0.15 m"
+     },
+     {
+      "l": "Calculate area",
+      "c": "A = π x (0.15 m)^2 = 0.070686 m²"
+     },
+     {
+      "l": "Calculate flow in m³/s",
+      "c": "Q = 0.070686 x 1.5 = 0.10603 m³/s"
+     },
+     {
+      "l": "Convert to L/s",
+      "c": "0.10603 m³/s x 1000 L/m³ = 106.0 L/s, option A"
+     }
+    ]
+   }
+  },
+  {
+   "id": 154716,
+   "bankKey": "class2-water-dist",
+   "questionNum": 66,
+   "verdict": "WRONG",
+   "note": "Key (157.1 m3) is correct, but the explanation contains stray self-correction text ('Let's recheck the options. If the correct index is 1...') contradicting the answer. Replace with a clean explanation.",
+   "original": {
+    "question": "A water storage tank has a diameter of 20 meters and is filled to a depth of 8 meters. If the water level drops by 0.5 meters, what volume of water, in cubic meters, has been used?",
+    "options": [
+     "157.1 m³",
+     "314.2 m³",
+     "628.3 m³",
+     "2513.3 m³"
+    ],
+    "correctIndex": 0,
+    "explanation": "Volume (V) = Area * Height. Area (A) = π * (Diameter/2)^2 = π * (20 m / 2)^2 = π * (10 m)^2 = 314.159 m². Volume used = A * Change in Height = 314.159 m² * 0.5 m = 157.0795 m³. The closest option is 157.1 m³.  Let's recheck the options. If the correct index is 1, then the value is 314.2 m³. This would imply a change in height of 1 meter. Let's re-evaluate the question and options.  If the correct answer is 314.2 m³, then the calculation should be: Volume used = 314.159 m² * 1 m = 314.159 m³. This contradicts the 'drops by 0.5 meters'.  Let's assume the correct answer should be 157.1 m³ and adjust the correctIndex."
+   },
+   "fix": {
+    "question": "A water storage tank has a diameter of 20 meters and is filled to a depth of 8 meters. If the water level drops by 0.5 meters, what volume of water, in cubic meters, has been used?",
+    "options": [
+     "157.1 m³",
+     "314.2 m³",
+     "628.3 m³",
+     "2513.3 m³"
+    ],
+    "correctIndex": 0,
+    "explanation": "Area = π x (20 m / 2)^2 = 314.16 m². Volume used = area x drop in level = 314.16 m² x 0.5 m = 157.08 m³, about 157.1 m³. The starting depth of 8 m is not needed.",
+    "steps": [
+     {
+      "l": "State volume formula",
+      "c": "Volume used = A x h, where h is the drop in water level. The starting depth is not needed."
+     },
+     {
+      "l": "Calculate radius",
+      "c": "r = 20 m / 2 = 10 m"
+     },
+     {
+      "l": "Calculate area",
+      "c": "A = π x (10 m)^2 = 314.159 m²"
+     },
+     {
+      "l": "Calculate volume used",
+      "c": "V = 314.159 x 0.5 = 157.08 m³"
+     },
+     {
+      "l": "Select matching option",
+      "c": "157.1 m³, option A."
+     }
+    ]
+   }
+  },
+  {
+   "id": 154720,
+   "bankKey": "class2-water-dist",
+   "questionNum": 70,
+   "verdict": "UNCLEAR",
+   "note": "Internally inconsistent: the question asks about the entry point, the key is 0.05 mg/L, the explanation says 0.05 mg/L at all locations in the distribution system, and the steps say 0.20 mg/L (index 2). The 0.05 mg/L free chlorine minimum in O. Reg. 170/03 applies in the distribution system, not at the entry point. I could not confirm an entry-point statutory value via search. Reworded to the distribution system, where 0.05 mg/L is the well-known minimum.",
+   "original": {
+    "question": "According to O. Reg. 170/03, what is the minimum required free chlorine residual at the entry point to a distribution system for a municipal residential drinking water system?",
+    "options": [
+     "0.05 mg/L",
+     "0.10 mg/L",
+     "0.20 mg/L",
+     "0.50 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "For a chlorinated system that does not use chloramination, O. Reg. 170/03 requires the free chlorine residual to be at least 0.05 mg/L at all times and at all locations in the distribution system. The 0.20 mg/L value is a common operating target, not the statutory minimum."
+   },
+   "fix": {
+    "question": "According to O. Reg. 170/03, what is the minimum free chlorine residual that must be maintained at all points in the distribution system of a chlorinated municipal residential drinking water system?",
+    "options": [
+     "0.05 mg/L",
+     "0.10 mg/L",
+     "0.20 mg/L",
+     "0.50 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "For a chlorinated system that does not use chloramination, O. Reg. 170/03 requires a free chlorine residual of at least 0.05 mg/L at all times and at all locations in the distribution system; below this is an adverse water quality incident. The 0.20 mg/L value is a common operating target, not the regulatory minimum.",
+    "steps": [
+     {
+      "l": "Identify the rule",
+      "c": "O. Reg. 170/03 sets minimum disinfectant residuals for municipal residential drinking water systems."
+     },
+     {
+      "l": "Distribution system requirement",
+      "c": "Free chlorine residual of at least 0.05 mg/L in the distribution system at all times (combined chlorine at least 0.25 mg/L where chloramination is used)."
+     },
+     {
+      "l": "Select the matching option",
+      "c": "0.05 mg/L, option A (index 0)."
+     }
+    ]
+   }
+  },
+  {
+   "id": 154723,
+   "bankKey": "class2-water-dist",
+   "questionNum": 73,
+   "verdict": "UNCLEAR",
+   "note": "'First step' on a single customer low-pressure complaint is normally to check the customer's side (internal plumbing, PRV, shutoffs, test at an outside tap) to separate utility from private problems, so option B is defensible. Reworded so the closed-valve answer is unambiguous.",
+   "original": {
+    "question": "When responding to a customer complaint about low water pressure, what is the first step an operator should typically investigate?",
+    "options": [
+     "Checking the pressure at the nearest fire hydrant.",
+     "Inspecting the customer's internal plumbing for blockages.",
+     "Verifying the operational status of the nearest booster pump station.",
+     "Reviewing system maps for closed valves in the vicinity."
+    ],
+    "correctIndex": 3,
+    "explanation": "A common and easily rectifiable cause of localized low pressure is a partially or fully closed valve in the distribution system. Checking valve status on system maps is a logical first step."
+   },
+   "fix": {
+    "question": "Several customers in the same area report sudden low water pressure. Which of the following is a common, easily corrected cause an operator should check early?",
+    "options": [
+     "Blockages in each customer's internal plumbing",
+     "A partially or fully closed valve in the distribution system near the area, found by reviewing system maps and valve records",
+     "A fault in the nearest hydrant barrel",
+     "Excessive chlorine residual in the area"
+    ],
+    "correctIndex": 1,
+    "explanation": "When several customers in one area lose pressure, a partly or fully closed distribution valve is a common and easily rectified cause. Checking valve records and system maps is a logical early step.",
+    "steps": null
+   }
+  },
+  {
+   "id": 154735,
+   "bankKey": "class2-water-dist",
+   "questionNum": 85,
+   "verdict": "UNCLEAR",
+   "note": "Could not verify. The citation 'Schedule 1-1, Section 1-1 (1)' does not match the structure of O. Reg. 170/03 (Schedule 1 is treatment equipment; alarm and operational-check provisions are elsewhere), and I could not confirm a 30-minute attendance requirement. Likely a fabricated citation and time limit. Cannot be repaired without the exact regulation text.",
+   "original": {
+    "question": "According to O. Reg. 170/03, what is the required response time for an operator to attend to an alarm indicating a critical operational parameter deviation in a municipal residential drinking water system?",
+    "options": [
+     "Within 30 minutes of the alarm being received.",
+     "Within 2 hours of the alarm being received.",
+     "Within 4 hours of the alarm being received.",
+     "Within 24 hours of the alarm being received."
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 170/03 Schedule 1-1, Section 1-1 (1) states that an operator must attend at the drinking water system within 30 minutes after becoming aware of an alarm."
+   },
+   "fix": null
+  },
+  {
+   "id": 154738,
+   "bankKey": "class2-water-dist",
+   "questionNum": 88,
+   "verdict": "UNCLEAR",
+   "note": "Lubricating the operating nut and caps is a standard maintenance step for operation and longevity (AWWA M17), so option A is as defensible as the keyed D. Reworded to a question that only D answers.",
+   "original": {
+    "question": "When performing routine maintenance on a fire hydrant, what is the critical step to ensure its proper operation and longevity?",
+    "options": [
+     "Lubricating the operating nut and nozzle caps.",
+     "Repainting the hydrant barrel for aesthetic purposes.",
+     "Tightening all bolts on the bonnet and nozzles.",
+     "Checking the main valve for full opening and proper seating."
+    ],
+    "correctIndex": 3,
+    "explanation": "Ensuring the main valve fully opens and properly seats is crucial for the hydrant's ability to deliver water for fire suppression and to prevent leaks when closed."
+   },
+   "fix": {
+    "question": "During routine hydrant maintenance, which check confirms that the hydrant can deliver water and shut off without leaking?",
+    "options": [
+     "Lubricating the operating nut and nozzle caps",
+     "Repainting the hydrant barrel",
+     "Tightening all bolts on the bonnet and nozzles",
+     "Checking the main valve for full opening and proper seating"
+    ],
+    "correctIndex": 3,
+    "explanation": "Confirming that the main valve opens fully and seats properly shows the hydrant can deliver its flow for fire suppression and will not leak when closed.",
+    "steps": null
+   }
+  },
+  {
+   "id": 154749,
+   "bankKey": "class2-water-dist",
+   "questionNum": 99,
+   "verdict": "WRONG",
+   "note": "Answer (0 per 100 mL) is correct, but the citation is wrong. The Ontario Drinking Water Quality Standards (maximum acceptable concentrations for total coliforms and E. coli) are in O. Reg. 169/03, not O. Reg. 170/03 Schedule 2 Table 1.",
+   "original": {
+    "question": "According to O. Reg. 170/03, what is the maximum acceptable concentration for Total Coliforms in a distribution system sample?",
+    "options": [
+     "0 organisms per 100 mL",
+     "1 organism per 100 mL",
+     "5 organisms per 100 mL",
+     "10 organisms per 100 mL"
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 170/03 Schedule 2, Table 1, Item 1 specifies that the maximum acceptable concentration for Total Coliforms in drinking water is 0 organisms per 100 mL."
+   },
+   "fix": {
+    "question": "According to the Ontario Drinking Water Quality Standards (O. Reg. 169/03), what is the maximum acceptable concentration for Total Coliforms in a distribution system sample?",
+    "options": [
+     "0 organisms per 100 mL",
+     "1 organism per 100 mL",
+     "5 organisms per 100 mL",
+     "10 organisms per 100 mL"
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 169/03 (Ontario Drinking Water Quality Standards) sets the maximum acceptable concentration for Total Coliforms in drinking water at 0 organisms per 100 mL; any detection must be reported under O. Reg. 170/03.",
+    "steps": [
+     {
+      "l": "Identify the governing standard.",
+      "c": "O. Reg. 169/03, the Ontario Drinking Water Quality Standards, sets the microbiological standards."
+     },
+     {
+      "l": "Recall the Total Coliform limit.",
+      "c": "The maximum acceptable concentration is 0 organisms per 100 mL; any detection triggers adverse water quality reporting under O. Reg. 170/03."
+     },
+     {
+      "l": "Select the answer.",
+      "c": "0 organisms per 100 mL."
+     }
+    ]
+   }
+  },
+  {
+   "id": 154754,
+   "bankKey": "class2-water-dist",
+   "questionNum": 104,
+   "verdict": "UNITS",
+   "note": "Correct option and explanation give psi (20 psi, 40-80 psi, 80-100 psi) in an Ontario bank. Convert to kPa only (140 kPa minimum; 275-550 kPa normal).",
+   "original": {
+    "question": "What is 'minimum pressure' requirement in a water distribution system?",
+    "options": [
+     "No minimum is required",
+     "The minimum pressure that must be maintained at all points during all demand conditions — typically 20 psi (140 kPa) minimum at ground level during peak demand plus fire flow",
+     "Only important at the treatment plant",
+     "Minimum pressure at the pump discharge"
+    ],
+    "correctIndex": 1,
+    "explanation": "Ontario minimum: 20 psi (140 kPa) at ground level during peak hour + fire flow. Normal operating: 40-80 psi (275-550 kPa). Maximum: typically 80-100 psi (may need PRVs). Low pressure risks: inadequate service, potential contamination through cross-connections."
+   },
+   "fix": {
+    "question": "What is 'minimum pressure' requirement in a water distribution system?",
+    "options": [
+     "No minimum is required",
+     "The minimum pressure that must be maintained at all points during all demand conditions — typically 140 kPa at ground level during peak demand plus fire flow",
+     "Only important at the treatment plant",
+     "Minimum pressure at the pump discharge"
+    ],
+    "correctIndex": 1,
+    "explanation": "Ontario design guidance: minimum 140 kPa at ground level during maximum day demand plus fire flow and at least 275 kPa under normal operating conditions in typical design; normal operating range about 275-550 kPa; maximum typically 550-700 kPa (PRVs may be needed). Low pressure risks inadequate service and contamination through cross-connections.",
+    "steps": null
+   }
+  },
+  {
+   "id": 154755,
+   "bankKey": "class2-water-dist",
+   "questionNum": 105,
+   "verdict": "JURISDICTION",
+   "note": "The Insurance Advisory Organization (IAO) is a US body (now ISO/Verisk). In Canada fire flow is determined with the Fire Underwriters Survey (FUS) Water Supply for Public Fire Protection method (or MECP design guidelines).",
+   "original": {
+    "question": "What is 'fire flow' requirement and how is it determined?",
+    "options": [
+     "The flow of water during a fire",
+     "The additional flow rate that must be available for firefighting while maintaining minimum system pressure — determined by building type, size, construction, and separation distance",
+     "Only the fire department's responsibility",
+     "A fixed value for all areas"
+    ],
+    "correctIndex": 1,
+    "explanation": "Fire flow determination: Insurance Advisory Organization (IAO) or equivalent method based on: building construction (combustible vs non-combustible), area, occupancy, exposure, and sprinkler protection. Typical: residential 50-75 L/s, commercial 100-250 L/s, industrial 150-400+ L/s."
+   },
+   "fix": {
+    "question": "What is 'fire flow' requirement and how is it determined?",
+    "options": [
+     "The flow of water during a fire",
+     "The additional flow rate that must be available for firefighting while maintaining minimum system pressure — determined by building type, size, construction, and separation distance",
+     "Only the fire department's responsibility",
+     "A fixed value for all areas"
+    ],
+    "correctIndex": 1,
+    "explanation": "Fire flow is determined using the Fire Underwriters Survey (FUS) method or equivalent, based on building construction (combustible vs non-combustible), area, occupancy, exposure, and sprinkler protection. Typical: residential 50-75 L/s, commercial 100-250 L/s, industrial 150-400+ L/s.",
+    "steps": null
+   }
+  },
+  {
+   "id": 154758,
+   "bankKey": "class2-water-dist",
+   "questionNum": 108,
+   "verdict": "UNITS",
+   "note": "Explanation uses US units (20 psi residual). Ontario residual for available fire flow is 140 kPa.",
+   "original": {
+    "question": "What is 'fire hydrant flow testing' and what does it determine?",
+    "options": [
+     "Testing if hydrants produce fire",
+     "Measuring flow and pressure at hydrants to determine: available fire flow, system capacity, C-factor, and identify weak areas — using a residual hydrant and flow hydrant",
+     "Testing hydrant paint colour",
+     "Only done by the fire department"
+    ],
+    "correctIndex": 1,
+    "explanation": "Flow test procedure: record static pressure (residual hydrant), open flow hydrant(s), record residual pressure and pitot flow. Calculate available fire flow at 20 psi residual using: Q_available = Q_test × ((P_static - 20)/(P_static - P_residual))^0.54."
+   },
+   "fix": {
+    "question": "What is 'fire hydrant flow testing' and what does it determine?",
+    "options": [
+     "Testing if hydrants produce fire",
+     "Measuring flow and pressure at hydrants to determine: available fire flow, system capacity, C-factor, and identify weak areas — using a residual hydrant and flow hydrant",
+     "Testing hydrant paint colour",
+     "Only done by the fire department"
+    ],
+    "correctIndex": 1,
+    "explanation": "Flow test procedure: record static pressure (residual hydrant), open flow hydrant(s), record residual pressure and pitot flow. Calculate available fire flow at 140 kPa residual using: Q_available = Q_test × ((P_static - 140)/(P_static - P_residual))^0.54, with pressures in kPa.",
+    "steps": null
+   }
+  },
+  {
+   "id": 154768,
+   "bankKey": "class2-water-dist",
+   "questionNum": 118,
+   "verdict": "UNITS",
+   "note": "55 psi in an Ontario bank. Converted to 380 kPa; head = 380 / 9.81 = 38.7 m, keeping the same answer.",
+   "original": {
+    "question": "A water distribution system operates at an average pressure of 55 psi. What is this pressure approximately in meters of head?",
+    "options": [
+     "38.7 meters",
+     "25.3 meters",
+     "12.7 meters",
+     "55.0 meters"
+    ],
+    "correctIndex": 0,
+    "explanation": "1 psi = 0.704 meters of head. Therefore, 55 psi * 0.704 m/psi = 38.72 meters of head."
+   },
+   "fix": {
+    "question": "A water distribution system operates at an average pressure of 380 kPa. What is this pressure approximately in metres of head?",
+    "options": [
+     "38.7 metres",
+     "25.3 metres",
+     "12.7 metres",
+     "55.0 metres"
+    ],
+    "correctIndex": 0,
+    "explanation": "Head (m) = pressure (kPa) / 9.81 kPa per metre = 380 / 9.81 = 38.7 m.",
+    "steps": [
+     {
+      "l": "State conversion factor",
+      "c": "1 m of water head = 9.81 kPa"
+     },
+     {
+      "l": "Set up the conversion",
+      "c": "Head (m) = Pressure (kPa) / 9.81"
+     },
+     {
+      "l": "Calculate result",
+      "c": "380 / 9.81 = 38.74 m"
+     },
+     {
+      "l": "Select matching option",
+      "c": "38.7 metres, option A."
+     }
+    ]
+   }
+  },
+  {
+   "id": 154774,
+   "bankKey": "class2-water-dist",
+   "questionNum": 124,
+   "verdict": "UNITS",
+   "note": "Answer requested in psi in an Ontario bank. Converted to kPa: 40 m x 9.81 = 392 kPa.",
+   "original": {
+    "question": "A water distribution system has a reservoir at an elevation of 150 meters and a customer connection at an elevation of 110 meters. Assuming no friction losses, what is the static pressure at the customer connection in psi?",
+    "options": [
+     "56.8 psi",
+     "40.0 psi",
+     "17.3 psi",
+     "110.0 psi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Head difference = 150 m - 110 m = 40 m. Pressure (psi) = Head (m) * 1.4223 psi/m = 40 m * 1.4223 psi/m = 56.892 psi."
+   },
+   "fix": {
+    "question": "A water distribution system has a reservoir at an elevation of 150 meters and a customer connection at an elevation of 110 meters. Assuming no friction losses, what is the static pressure at the customer connection in kPa?",
+    "options": [
+     "392 kPa",
+     "40 kPa",
+     "1,079 kPa",
+     "1,471 kPa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Head difference = 150 m - 110 m = 40 m. Pressure = 40 m x 9.81 kPa/m = 392.4 kPa.",
+    "steps": [
+     {
+      "l": "Find the elevation difference (static head).",
+      "c": "Head = 150 m - 110 m = 40 m"
+     },
+     {
+      "l": "State the conversion.",
+      "c": "1 m of head = 9.81 kPa"
+     },
+     {
+      "l": "Convert head to pressure.",
+      "c": "40 m x 9.81 kPa/m = 392.4 kPa"
+     },
+     {
+      "l": "Match the result.",
+      "c": "392 kPa, option A."
+     }
+    ]
+   }
+  },
+  {
+   "id": 154790,
+   "bankKey": "class2-water-dist",
+   "questionNum": 140,
+   "verdict": "UNITS",
+   "note": "Explanation uses psi ('building entries (>80 psi)') in an Ontario bank; convert to kPa (about 550 kPa).",
+   "original": {
+    "question": "What is 'pressure reducing valve' (PRV) and when is it needed?",
+    "options": [
+     "A valve that reduces water volume",
+     "A valve that automatically reduces downstream pressure to a set point — used where elevation differences or system pressures would cause excessive pressure in lower zones",
+     "Only used at the treatment plant",
+     "A valve that reduces flow rate"
+    ],
+    "correctIndex": 1,
+    "explanation": "PRVs maintain constant downstream pressure regardless of upstream pressure or flow changes. Used at: zone boundaries (high-to-low pressure), building entries (>80 psi), and to create pressure zones in hilly terrain. Types: direct-acting, pilot-operated."
+   },
+   "fix": {
+    "question": "What is 'pressure reducing valve' (PRV) and when is it needed?",
+    "options": [
+     "A valve that reduces water volume",
+     "A valve that automatically reduces downstream pressure to a set point — used where elevation differences or system pressures would cause excessive pressure in lower zones",
+     "Only used at the treatment plant",
+     "A valve that reduces flow rate"
+    ],
+    "correctIndex": 1,
+    "explanation": "PRVs maintain constant downstream pressure regardless of upstream pressure or flow changes. Used at: zone boundaries (high-to-low pressure), building entries (above about 550 kPa), and to create pressure zones in hilly terrain. Types: direct-acting, pilot-operated.",
+    "steps": null
+   }
+  },
+  {
+   "id": 154809,
+   "bankKey": "class2-water-dist",
+   "questionNum": 159,
+   "verdict": "UNITS",
+   "note": "US GPM in a Ontario bank. The key (908.5 m3) is arithmetically right for 500 US GPM x 8 h, but the explanation is a garbled stream of self-corrections that wrongly says the options are incorrect and suggests 113.56 m3. Converted to metric and cleaned up.",
+   "original": {
+    "question": "A water distribution system has a pump delivering 500 US GPM. If the pump operates for 8 hours, what is the total volume of water delivered in cubic meters? (1 US GPM = 0.00378541 m³/min)",
+    "options": [
+     "908.50 m³",
+     "113.56 m³",
+     "181.70 m³",
+     "227.12 m³"
+    ],
+    "correctIndex": 0,
+    "explanation": "Volume = Flow Rate × Time\nFlow Rate = 500 US GPM = 500 × 0.00378541 m³/min = 1.892705 m³/min\nTime = 8 hours = 8 × 60 minutes = 480 minutes\nVolume = 1.892705 m³/min × 480 min = 908.4984 m³ (Correction: Calculation error in explanation, should be 1.892705 m³/min * 480 min = 908.4984 m³. Options are off by a factor of 8. Let's re-calculate with options in mind. 500 GPM * 60 min/hr * 8 hr = 240,000 Gallons. 240,000 Gallons * 3.78541 L/Gallon = 908,498.4 L. 908,498.4 L / 1000 L/m³ = 908.4984 m³. The options are incorrect for this calculation. Let's assume the question meant 500 L/min. No, it says US GPM. Let's re-evaluate the options and the expected answer. If it's 500 GPM for 8 hours. 500 GPM * 60 min/hr * 8 hr = 240,000 gallons. 240,000 gallons * 0.00378541 m³/gallon = 908.4984 m³. None of the options are close to 908.4984. Let's assume there's a typo in the question or options. Let's try to work backwards from options. If 113.56 m³ is correct, then 113.56 / (500 * 0.00378541) = 113.56 / 1.892705 = 60 minutes. So it would be for 1 hour. This question has an issue. Let's assume the question meant 500 L/min for 8 hours. 500 L/min * 60 min/hr * 8 hr = 240,000 L = 240 m³. This is not an option. Let's assume 500 US GPM for 1 hour. 500 GPM * 60 min = 30,000 gallons. 30,000 gallons * 0.00378541 m³/gallon = 113.56 m³. So the question implies 1 hour, not 8 hours. Given the options, the most plausible scenario is that the question implicitly asks for volume delivered in 1 hour if one of the options is correct. Let's assume the question meant 'for 1 hour' instead of 'for 8 hours'. If for 1 hour: 500 US GPM * 60 min/hr * 0.00378541 m³/min = 113.56 m³. This matches option B. Let's proceed with this assumption for the purpose of generating the JSON, but flag this as a potentially problematic question if it were for a real exam."
+   },
+   "fix": {
+    "question": "A pump delivers 1,900 L/min for 8 hours. What is the total volume of water delivered, in cubic metres?",
+    "options": [
+     "912 m³",
+     "114 m³",
+     "182 m³",
+     "228 m³"
+    ],
+    "correctIndex": 0,
+    "explanation": "Volume = flow x time. 8 hours = 480 minutes. 1,900 L/min x 480 min = 912,000 L. 912,000 L / 1,000 L/m³ = 912 m³.",
+    "steps": [
+     {
+      "l": "Convert time to minutes",
+      "c": "8 h x 60 min/h = 480 min"
+     },
+     {
+      "l": "Volume in litres",
+      "c": "1,900 L/min x 480 min = 912,000 L"
+     },
+     {
+      "l": "Convert to cubic metres",
+      "c": "912,000 L / 1,000 L/m³ = 912 m³"
+     }
+    ]
+   }
+  },
+  {
+   "id": 154811,
+   "bankKey": "class2-water-dist",
+   "questionNum": 161,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 170/03 does not set a review frequency for an operational plan; operational plans belong to the Drinking Water Quality Management Standard (DWQMS) under the Safe Drinking Water Act, where management review of the QMS is required at least once per calendar year. 'Every five years' and 'by a licensed engineer' are not requirements. Conflicts with id 154875 (two years). I could not locate the exact plan-review wording by search, so the fix uses the annual management review, which I am confident of from DWQMS Element 21.",
+   "original": {
+    "question": "Under O. Reg. 170/03, how often must a water distribution system's operational plan be reviewed and updated?",
+    "options": [
+     "Annually by the operating authority.",
+     "Every two years by a licensed engineer.",
+     "At least every five years by the operating authority.",
+     "Only when significant changes to the system occur."
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 170/03 requires that the operational plan for a drinking water system be reviewed and updated at least once every five years by the operating authority."
+   },
+   "fix": {
+    "question": "Under Ontario's Drinking Water Quality Management Standard (DWQMS), at least how often must top management review the quality management system, including the operational plan?",
+    "options": [
+     "At least once every calendar year",
+     "Every two years by a licensed engineer",
+     "At least every five years",
+     "Only when significant changes to the system occur"
+    ],
+    "correctIndex": 0,
+    "explanation": "The DWQMS requires top management to conduct a management review of the quality management system at least once each calendar year. This is a DWQMS requirement, not an O. Reg. 170/03 requirement.",
+    "steps": null
+   }
+  },
+  {
+   "id": 154814,
+   "bankKey": "class2-water-dist",
+   "questionNum": 164,
+   "verdict": "WRONG",
+   "note": "Key (1.59 m/s, index 2) is correct: 0.05 / 0.031416 = 1.59 m/s. The explanation, however, contradicts itself, says 'the correct option is 2.55 m/s' and describes a correction to the key. Explanation must be cleaned.",
+   "original": {
+    "question": "A water main is 300 meters long with an internal diameter of 200 mm. If the flow rate is 0.05 m³/s, what is the average velocity of water in the pipe in m/s? (Area = πr²)",
+    "options": [
+     "0.80 m/s",
+     "1.27 m/s",
+     "1.59 m/s",
+     "2.55 m/s"
+    ],
+    "correctIndex": 2,
+    "explanation": "Area (A) = π * (radius)² = π * (0.1 m)² = 0.0314159 m²\nVelocity (V) = Flow Rate (Q) / Area (A)\nV = 0.05 m³/s / 0.0314159 m² = 1.5915 m/s. (Correction: Let's re-check the calculation. Diameter = 200 mm = 0.2 m. Radius = 0.1 m. Area = pi * (0.1)^2 = 0.0314159 m^2. Velocity = 0.05 m^3/s / 0.0314159 m^2 = 1.5915 m/s. The correct option is 2.55 m/s. This means there's a calculation error or a typo in the question's options/parameters. Let's try to work backwards. If 2.55 m/s is correct, then Q = V * A = 2.55 m/s * 0.0314159 m^2 = 0.0801 m^3/s. This is not 0.05 m^3/s. Let's assume the correct answer should be 1.59 m/s. This is option C. Let's correct the correctIndex to 2 and explanation. My apologies for the repeated calculation errors, this is a critical part of the task. Let's ensure precision for all calculations.)\nArea (A) = π * (radius)² = π * (0.1 m)² = 0.0314159 m²\nVelocity (V) = Flow Rate (Q) / Area (A)\nV = 0.05 m³/s / 0.0314159 m² = 1.5915 m/s. Rounded to two decimal places, this is 1.59 m/s."
+   },
+   "fix": {
+    "question": "A water main is 300 metres long with an internal diameter of 200 mm. If the flow rate is 0.05 m³/s, what is the average velocity of water in the pipe in m/s? (Area = πr²)",
+    "options": [
+     "0.80 m/s",
+     "1.27 m/s",
+     "1.59 m/s",
+     "2.55 m/s"
+    ],
+    "correctIndex": 2,
+    "explanation": "Radius = 0.1 m. Area = π x (0.1 m)² = 0.031416 m². Velocity = Q / A = 0.05 m³/s / 0.031416 m² = 1.59 m/s. The 300 m length is not needed.",
+    "steps": [
+     {
+      "l": "State velocity formula",
+      "c": "V = Q / A. The 300 m pipe length is extra information and is not used."
+     },
+     {
+      "l": "Find radius",
+      "c": "200 mm = 0.200 m, so r = 0.100 m."
+     },
+     {
+      "l": "Calculate area",
+      "c": "A = π x (0.100 m)² ≈ 0.031416 m²."
+     },
+     {
+      "l": "Calculate velocity",
+      "c": "V = 0.05 / 0.031416 ≈ 1.59 m/s, option 3 (index 2)."
+     }
+    ]
+   }
+  },
+  {
+   "id": 154832,
+   "bankKey": "class2-water-dist",
+   "questionNum": 182,
+   "verdict": "UNITS",
+   "note": "Pressure given in psi in an Ontario bank. Arithmetic (60 x 0.704 = 42.24 m) was right but should be metric (kPa). Recalculated: 400 kPa / 9.81 = 40.8 m.",
+   "original": {
+    "question": "A pump is operating with a discharge pressure of 60 psi. What is this pressure in meters of head? (1 psi = 0.704 meters of head)",
+    "options": [
+     "28.16 m",
+     "35.20 m",
+     "42.24 m",
+     "49.28 m"
+    ],
+    "correctIndex": 2,
+    "explanation": "Head (m) = Pressure (psi) × 0.704 m/psi\nHead = 60 psi × 0.704 m/psi = 42.24 m."
+   },
+   "fix": {
+    "question": "A pump is operating with a discharge pressure of 400 kPa. What is this pressure in metres of head? (1 m of head = 9.81 kPa)",
+    "options": [
+     "4.08 m",
+     "20.4 m",
+     "40.8 m",
+     "81.6 m"
+    ],
+    "correctIndex": 2,
+    "explanation": "Head (m) = Pressure (kPa) / 9.81 kPa/m = 400 / 9.81 = 40.8 m.",
+    "steps": [
+     {
+      "l": "State the conversion",
+      "c": "1 m of head = 9.81 kPa"
+     },
+     {
+      "l": "Divide",
+      "c": "Head = 400 kPa / 9.81 kPa/m = 40.77 m"
+     },
+     {
+      "l": "Round",
+      "c": "40.8 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 154838,
+   "bankKey": "class2-water-dist",
+   "questionNum": 188,
+   "verdict": "UNCLEAR",
+   "note": "Vitrified clay pipe (short lengths, many joints) is the classic case of root intrusion; asbestos cement with rubber-gasketed couplings is not the most root-susceptible, and its cited brittleness is not about roots. Key defensible as stated only weakly. Reworded to the standard root-intrusion fact.",
+   "original": {
+    "question": "Which of the following pipe materials is most susceptible to external damage from tree roots?",
+    "options": [
+     "Ductile iron pipe",
+     "Polyethylene (PE) pipe",
+     "Asbestos cement pipe",
+     "Vitrified clay pipe"
+    ],
+    "correctIndex": 2,
+    "explanation": "Asbestos cement pipe, particularly older sections, can be more brittle and susceptible to cracking, allowing tree roots to penetrate and cause blockages or damage."
+   },
+   "fix": {
+    "question": "Which of the following pipe materials is most susceptible to root intrusion at its joints?",
+    "options": [
+     "Ductile iron pipe",
+     "Polyethylene (PE) pipe",
+     "Asbestos cement pipe",
+     "Vitrified clay pipe"
+    ],
+    "correctIndex": 3,
+    "explanation": "Vitrified clay pipe is laid in short lengths with many joints, which roots readily penetrate. Fused PE and gasketed ductile iron joints resist root entry.",
+    "steps": null
+   }
+  },
+  {
+   "id": 154861,
+   "bankKey": "class2-water-dist",
+   "questionNum": 211,
+   "verdict": "UNITS",
+   "note": "US GPM in an Ontario bank. Key (340.7, index 1) is right for 1500 US GPM but the explanation is a long garbled self-correction that also says 'provided correctIndex was 2'. Converted to metric: 5,700 L/min = 342 m3/h.",
+   "original": {
+    "question": "A water distribution system has a flow rate of 1500 US GPM. What is this flow rate in cubic meters per hour (m³/h)? (1 US gallon = 3.785 litres)",
+    "options": [
+     "204.3 m³/h",
+     "340.7 m³/h",
+     "378.5 m³/h",
+     "567.8 m³/h"
+    ],
+    "correctIndex": 1,
+    "explanation": "1500 US GPM * 3.785 L/US gallon = 5677.5 L/min. 5677.5 L/min * 60 min/hour = 340650 L/hour. 340650 L/hour / 1000 L/m³ = 340.65 m³/h. (Note: The provided options are slightly off for a direct calculation, but option 2 is the closest. Let's re-evaluate calculation for exactness based on options. 1500 GPM * 3.785 L/gal = 5677.5 L/min. 5677.5 L/min * 60 min/hr = 340650 L/hr. 340650 L/hr / 1000 L/m3 = 340.65 m3/hr. Option 2 is 340.7 m3/hr. Let's recheck the question and options. If 1 US gallon = 3.785 liters, then 1500 GPM = 1500 * 3.785 L/min = 5677.5 L/min. To convert to m3/hr: 5677.5 L/min * (60 min/hr) * (1 m3/1000 L) = 340.65 m3/hr. Option 2 is 340.7 m3/hr. The provided correct index was 2, which is 378.5 m³/h. This is incorrect based on the conversion factor. Let's re-calculate with the assumption that the question or options might be slightly off. If 1 US gallon = 3.785 L. 1500 GPM = 1500 * 3.785 L/min = 5677.5 L/min. 5677.5 L/min * 60 min/hr = 340650 L/hr. 340650 L/hr / 1000 L/m3 = 340.65 m3/hr. So option 2 is correct. Let's assume there was a typo in the provided solution. If we assume the question meant 100 GPM * 3.785 L/gal * 60 min/hr / 1000 L/m3 = 22.71 m3/hr. Let's re-examine the options and question. The calculation should be: 1500 GPM * 3.785 L/gal * (1 m^3 / 1000 L) * (60 min / 1 hr) = 340.65 m^3/hr. So 340.7 m^3/hr is the correct answer. The provided correctIndex was 2, which corresponds to 378.5 m³/h. This is incorrect. Let's correct the correctIndex to 1.  Let's re-calculate to ensure no error. 1500 US GPM * (3.785 L / 1 US gallon) * (60 min / 1 hour) * (1 m^3 / 1000 L) = 340.65 m^3/hour. Therefore, 340.7 m^3/h is the correct answer. The correct index should be 1. Let's assume the question intended to have 378.5 as an answer, it would mean 1 GPM = 0.252 L/s which is not standard. Let's stick to the standard conversion. The correct answer is 340.65 m³/h, which is option 1."
+   },
+   "fix": {
+    "question": "A water distribution system has a flow rate of 5,700 L/min. What is this flow rate in cubic metres per hour (m³/h)?",
+    "options": [
+     "34.2 m³/h",
+     "342 m³/h",
+     "570 m³/h",
+     "95 m³/h"
+    ],
+    "correctIndex": 1,
+    "explanation": "5,700 L/min x 60 min/h = 342,000 L/h. 342,000 L/h / 1,000 L/m³ = 342 m³/h.",
+    "steps": [
+     {
+      "l": "Convert to L/h",
+      "c": "5,700 L/min x 60 min/h = 342,000 L/h"
+     },
+     {
+      "l": "Convert to m³/h",
+      "c": "342,000 / 1,000 = 342 m³/h"
+     }
+    ]
+   }
+  },
+  {
+   "id": 154863,
+   "bankKey": "class2-water-dist",
+   "questionNum": 213,
+   "verdict": "UNCLEAR",
+   "note": "The explanation cites 'Schedule 10-2.1'; adverse test result reporting and corrective actions are in Schedule 16 of O. Reg. 170/03 (SDWA s.18). In Ontario the owner/operator must immediately notify the MOH and the MECP and take corrective actions; a boil water advisory is issued as directed by the Medical Officer of Health, not automatically 'immediately' by the operator. Id 154940 treats 'issue a BWA without further investigation' as wrong, so the two items are inconsistent. Reworded to the defensible requirement.",
+   "original": {
+    "question": "In Ontario, under O. Reg. 170/03, what action must be taken if a water sample from the distribution system tests positive for E. coli?",
+    "options": [
+     "Increase the chlorine residual in the affected area and re-sample within 24 hours.",
+     "Issue a boil water advisory immediately and notify the Medical Officer of Health.",
+     "Flush the affected water main thoroughly and then collect another sample.",
+     "Collect three more samples from the same location within 48 hours for confirmation."
+    ],
+    "correctIndex": 1,
+    "explanation": "A positive E. coli result is an adverse water quality incident (AWQI) requiring immediate notification to the Medical Officer of Health and the Ministry of the Environment, Conservation and Parks (MECP), and typically triggers a boil water advisory, as per O. Reg. 170/03, Schedule 10-2.1."
+   },
+   "fix": {
+    "question": "In Ontario, under O. Reg. 170/03, what must be done immediately when a distribution system sample tests positive for E. coli?",
+    "options": [
+     "Notify the Medical Officer of Health and the MECP immediately and take the required corrective actions, including resampling",
+     "Increase the chlorine residual and resample within 24 hours without notifying anyone",
+     "Flush the main thoroughly and collect another sample before reporting the result",
+     "Wait for three further samples within 48 hours before reporting"
+    ],
+    "correctIndex": 0,
+    "explanation": "A positive E. coli result is an adverse test result under O. Reg. 170/03 (Schedule 16). The owner/operating authority must immediately notify the local Medical Officer of Health and the MECP and take corrective actions, including resampling and any steps (such as a boil water advisory) directed by the Medical Officer of Health.",
+    "steps": null
+   }
+  },
+  {
+   "id": 154865,
+   "bankKey": "class2-water-dist",
+   "questionNum": 215,
+   "verdict": "UNCLEAR",
+   "note": "The option and explanation claim lead service line replacement is 'required under Ontario regulations' and that Ontario has 'mandatory inventory and replacement programs'. O. Reg. 170/03 requires lead sampling and corrosion control/corrective measures (Schedule 15.1), not a general mandatory replacement program. Could not verify; claim removed.",
+   "original": {
+    "question": "What is 'lead service line' replacement and why is it a priority?",
+    "options": [
+     "Replacing the lead operator",
+     "Removing and replacing lead pipes connecting water mains to buildings to eliminate the primary source of lead exposure in drinking water — required under Ontario regulations",
+     "Only needed if lead is detected",
+     "Lead pipes are no longer a concern"
+    ],
+    "correctIndex": 1,
+    "explanation": "Lead services (pre-1955 installations): primary source of lead at the tap. Partial replacement (utility side only) can temporarily increase lead levels (galvanic corrosion at connection). Full replacement (utility + private side) is most effective. Ontario: mandatory inventory and replacement programs."
+   },
+   "fix": {
+    "question": "What is 'lead service line' replacement and why is it a priority?",
+    "options": [
+     "Replacing the lead operator",
+     "Removing and replacing lead pipes connecting water mains to buildings to eliminate the primary source of lead exposure in drinking water",
+     "Only needed if lead is detected",
+     "Lead pipes are no longer a concern"
+    ],
+    "correctIndex": 1,
+    "explanation": "Lead services (typically pre-1955 installations) are a primary source of lead at the tap. Partial replacement (utility side only) can temporarily increase lead levels (galvanic corrosion at the connection). Full replacement (utility and private side) is most effective. Ontario regulates lead through sampling and corrosion control requirements (O. Reg. 170/03, Schedule 15.1).",
+    "steps": null
+   }
+  },
+  {
+   "id": 154867,
+   "bankKey": "class2-water-dist",
+   "questionNum": 217,
+   "verdict": "UNCLEAR",
+   "note": "Current AWWA C651 continuous feed method specifies 25 mg/L for a minimum 24 hours (slug: 100 mg/L for 3 hours). A 50 mg/L / 24 h pairing is from older editions, so the item does not match the current standard; also id 154888 states 25-50 mg/L. Fixed to the current wording.",
+   "original": {
+    "question": "When disinfecting a new water main, what is the minimum contact time required for a chlorine solution of 50 mg/L, according to AWWA C651?",
+    "options": [
+     "1 hour",
+     "6 hours",
+     "12 hours",
+     "24 hours"
+    ],
+    "correctIndex": 3,
+    "explanation": "AWWA C651, 'Disinfecting Water Mains,' specifies that for a chlorine concentration of 50 mg/L, a minimum contact time of 24 hours is required to achieve adequate disinfection."
+   },
+   "fix": {
+    "question": "When disinfecting a new water main by the continuous feed method, what minimum contact time is required for a chlorine solution of 25 mg/L, according to AWWA C651?",
+    "options": [
+     "1 hour",
+     "6 hours",
+     "12 hours",
+     "24 hours"
+    ],
+    "correctIndex": 3,
+    "explanation": "AWWA C651 continuous feed: fill the main with water at a minimum of 25 mg/L free chlorine and hold for at least 24 hours, after which a measurable chlorine residual must remain.",
+    "steps": null
+   }
+  },
+  {
+   "id": 154875,
+   "bankKey": "class2-water-dist",
+   "questionNum": 225,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 170/03 Schedule 1 does not require operational plans to be reviewed every two years; operational plans are under the DWQMS, where management review is required at least once per calendar year. This item also conflicts with id 154811 (five years). Exact plan-review wording could not be confirmed by search.",
+   "original": {
+    "question": "According to O. Reg. 170/03, how often must a water distribution system's operational plans be reviewed and updated?",
+    "options": [
+     "Annually",
+     "Every two years",
+     "Every three years",
+     "Every five years"
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 170/03, Schedule 1, requires that the operational plans for a drinking water system be reviewed and updated at least once every two years."
+   },
+   "fix": {
+    "question": "Under Ontario's Drinking Water Quality Management Standard (DWQMS), at least how often must top management review the quality management system, including the operational plan?",
+    "options": [
+     "At least once every calendar year",
+     "Every two years",
+     "Every three years",
+     "Every five years"
+    ],
+    "correctIndex": 0,
+    "explanation": "The DWQMS requires top management to conduct a management review of the quality management system at least once each calendar year. This is a DWQMS requirement, not an O. Reg. 170/03 requirement.",
+    "steps": null
+   }
+  },
+  {
+   "id": 154881,
+   "bankKey": "class2-water-dist",
+   "questionNum": 231,
+   "verdict": "WRONG",
+   "note": "Key (84.8 L/s, index 1) is correct (0.0706858 m2 x 1.2 m/s = 0.0848 m3/s). The explanation is a garbled self-correction claiming the provided index was 2. Clean explanation needed.",
+   "original": {
+    "question": "A water main has a diameter of 300 mm and is flowing at a velocity of 1.2 m/s. What is the flow rate in liters per second (L/s)? (Area of circle = πr²)",
+    "options": [
+     "42.4 L/s",
+     "84.8 L/s",
+     "127.2 L/s",
+     "254.5 L/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "Diameter = 300 mm = 0.3 m. Radius = 0.3 m / 2 = 0.15 m. Area = π * (0.15 m)² = 3.14 * 0.0225 m² = 0.07065 m². Flow rate (Q) = Area * Velocity = 0.07065 m² * 1.2 m/s = 0.08478 m³/s. Convert to L/s: 0.08478 m³/s * 1000 L/m³ = 84.78 L/s.  Let's recheck the options and calculation. Area = pi * (0.15 m)^2 = 0.070685 m^2. Flow = 0.070685 m^2 * 1.2 m/s = 0.084822 m^3/s. Convert to L/s: 0.084822 m^3/s * 1000 L/m^3 = 84.822 L/s. Option 2 is 84.8 L/s. The provided correctIndex was 2, which is 127.2 L/s. This is incorrect. Let's correct the correctIndex to 1.  Let's re-calculate to ensure no error. Diameter = 300 mm = 0.3 m. Radius = 0.15 m. Area = π * (0.15 m)^2 = 0.0706858 m^2. Flow rate = Area * Velocity = 0.0706858 m^2 * 1.2 m/s = 0.08482296 m^3/s. Convert to L/s: 0.08482296 m^3/s * 1000 L/m^3 = 84.82 L/s. So option 1 is correct. The provided correctIndex was 2, which corresponds to 127.2 L/s. This is incorrect. The correct index should be 1."
+   },
+   "fix": {
+    "question": "A water main has a diameter of 300 mm and is flowing at a velocity of 1.2 m/s. What is the flow rate in litres per second (L/s)? (Area of circle = πr²)",
+    "options": [
+     "42.4 L/s",
+     "84.8 L/s",
+     "127.2 L/s",
+     "254.5 L/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "Radius = 0.15 m. Area = π x (0.15 m)² = 0.070686 m². Q = A x V = 0.070686 x 1.2 = 0.08482 m³/s = 84.8 L/s.",
+    "steps": [
+     {
+      "l": "Radius",
+      "c": "300 mm = 0.3 m, r = 0.15 m"
+     },
+     {
+      "l": "Area",
+      "c": "A = π x 0.15² ≈ 0.070686 m²"
+     },
+     {
+      "l": "Flow",
+      "c": "Q = 0.070686 x 1.2 ≈ 0.08482 m³/s"
+     },
+     {
+      "l": "Convert",
+      "c": "0.08482 m³/s x 1000 = 84.8 L/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 154889,
+   "bankKey": "class2-water-dist",
+   "questionNum": 239,
+   "verdict": "UNITS",
+   "note": "Answer given in horsepower in a metric bank, and the exact result (65.4 kW = 87.7 HP) does not equal the keyed 89 HP. Recast in kW so the answer is exact.",
+   "original": {
+    "question": "A pump is delivering water at a rate of 100 L/s against a total head of 50 meters. If the pump efficiency is 75%, what is the approximate motor horsepower required? (1 HP = 746 Watts; 1 m = 9.81 kPa)",
+    "options": [
+     "45 HP",
+     "67 HP",
+     "89 HP",
+     "118 HP"
+    ],
+    "correctIndex": 2,
+    "explanation": "Power (kW) = (Flow (m³/s) * Head (m) * 9.81) / Efficiency. Flow = 100 L/s = 0.1 m³/s. Power (kW) = (0.1 m³/s * 50 m * 9.81) / 0.75 = 65.4 kW. Convert to HP: 65.4 kW * (1000 W/kW) / 746 W/HP = 87.67 HP. Option 2 is 89 HP."
+   },
+   "fix": {
+    "question": "A pump is delivering water at a rate of 100 L/s against a total head of 50 metres. If the pump efficiency is 75%, what is the approximate input power required, in kW? (1 m of head = 9.81 kPa)",
+    "options": [
+     "49.1 kW",
+     "65.4 kW",
+     "87.7 kW",
+     "98.1 kW"
+    ],
+    "correctIndex": 1,
+    "explanation": "Water power = 0.1 m³/s x 50 m x 9.81 = 49.05 kW. Input power = 49.05 / 0.75 = 65.4 kW.",
+    "steps": [
+     {
+      "l": "Convert flow",
+      "c": "100 L/s = 0.1 m³/s"
+     },
+     {
+      "l": "Water power",
+      "c": "0.1 x 50 x 9.81 = 49.05 kW"
+     },
+     {
+      "l": "Divide by efficiency",
+      "c": "49.05 / 0.75 = 65.4 kW"
+     }
+    ]
+   }
+  },
+  {
+   "id": 154914,
+   "bankKey": "class2-water-dist",
+   "questionNum": 264,
+   "verdict": "UNCLEAR",
+   "note": "The Ontario regulatory minimum is a free chlorine residual of at least 0.05 mg/L (combined 0.25 mg/L) in the distribution system (O. Reg. 170/03), as stated in ids 154818 and 154854. 'At least 0.20 mg/L at the furthest point' is a utility/design target, and 'between 0.05 and 0.20' is also defensible, so the item is ambiguous and conflicts with other items. Reworded to the regulatory minimum.",
+   "original": {
+    "question": "What is the typical residual chlorine level that should be maintained throughout a water distribution system to ensure disinfection?",
+    "options": [
+     "Less than 0.05 mg/L free chlorine.",
+     "Between 0.05 mg/L and 0.20 mg/L free chlorine.",
+     "At least 0.20 mg/L free chlorine at the furthest point in the system.",
+     "Greater than 5.0 mg/L total chlorine."
+    ],
+    "correctIndex": 2,
+    "explanation": "To ensure effective disinfection and protection against microbial regrowth, a minimum free chlorine residual of 0.20 mg/L is generally maintained throughout the distribution system, especially at the furthest points."
+   },
+   "fix": {
+    "question": "Under O. Reg. 170/03, what is the minimum free chlorine residual that must be maintained throughout the distribution system?",
+    "options": [
+     "Less than 0.05 mg/L free chlorine.",
+     "0.05 mg/L free chlorine (or 0.25 mg/L combined chlorine).",
+     "0.50 mg/L free chlorine.",
+     "Greater than 5.0 mg/L total chlorine."
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 170/03 requires a free chlorine residual of at least 0.05 mg/L, or a combined chlorine residual of at least 0.25 mg/L, in the distribution system. Many utilities target higher values as an operating practice.",
+    "steps": null
+   }
+  },
+  {
+   "id": 154940,
+   "bankKey": "class2-water-dist",
+   "questionNum": 290,
+   "verdict": "WRONG",
+   "note": "Key is correct, but the explanation cites 'Schedule 10'; adverse result notification is in Schedule 16 of O. Reg. 170/03 (SDWA s.18). Citation corrected.",
+   "original": {
+    "question": "If a water sample shows a positive result for E. coli, what is the immediate regulatory requirement under O. Reg. 170/03?",
+    "options": [
+     "Notify the Medical Officer of Health and the Ministry of the Environment, Conservation and Parks immediately.",
+     "Resample the location within 24 hours and continue routine monitoring.",
+     "Issue a boil water advisory without further investigation.",
+     "Increase chlorine dosage at the treatment plant and flush the system."
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 170/03, Schedule 10, mandates immediate notification to the Medical Officer of Health and the Ministry of the Environment, Conservation and Parks upon receiving a positive E. coli result, as it indicates a serious adverse water quality incident."
+   },
+   "fix": {
+    "question": "If a water sample shows a positive result for E. coli, what is the immediate regulatory requirement under O. Reg. 170/03?",
+    "options": [
+     "Notify the Medical Officer of Health and the Ministry of the Environment, Conservation and Parks immediately.",
+     "Resample the location within 24 hours and continue routine monitoring.",
+     "Issue a boil water advisory without further investigation.",
+     "Increase chlorine dosage at the treatment plant and flush the system."
+    ],
+    "correctIndex": 0,
+    "explanation": "A positive E. coli result is an adverse test result. Under O. Reg. 170/03 (Schedule 16) and SDWA s.18, the owner/operator must immediately notify the Medical Officer of Health and the MECP, then take corrective actions as required.",
+    "steps": null
+   }
+  },
+  {
+   "id": 154945,
+   "bankKey": "class2-water-dist",
+   "questionNum": 295,
+   "verdict": "UNCLEAR",
+   "note": "O. Reg. 170/03 Schedule 10 does not list 'date, time, location, free chlorine residual and temperature' as a required record for each sample. The regulation requires a chlorine residual to be tested at the same time and location as a distribution microbiological sample, but temperature is not specified. Rewritten without the unverifiable schedule claim.",
+   "original": {
+    "question": "What information must be recorded by an operator when collecting a routine bacteriological sample from the distribution system, as per O. Reg. 170/03?",
+    "options": [
+     "The operator's shift schedule and next planned sample date.",
+     "The exact GPS coordinates of the sampling point and pipe material.",
+     "The date, time, location, free chlorine residual, and temperature.",
+     "The type of sample bottle used and the laboratory technician's name."
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 170/03, Schedule 10, specifies that for each sample, the operator must record the date, time, location, free chlorine residual, and temperature of the water at the time of sampling."
+   },
+   "fix": {
+    "question": "Which information should an operator record when collecting a routine bacteriological sample from the distribution system?",
+    "options": [
+     "The operator's shift schedule and next planned sample date.",
+     "The exact GPS coordinates of the sampling point and pipe material.",
+     "The date, time, sample location, and the chlorine residual measured at the time of sampling.",
+     "The type of sample bottle used and the laboratory technician's name."
+    ],
+    "correctIndex": 2,
+    "explanation": "Sample date, time and location identify the sample, and a chlorine residual is tested at the same time and location as the microbiological sample (O. Reg. 170/03).",
+    "steps": null
+   }
+  },
+  {
+   "id": 184172,
+   "bankKey": "class2-water-dist",
+   "questionNum": 315,
+   "verdict": "WRONG",
+   "note": "Key (4032 m3) is arithmetically correct (1200 x 60 x 8 x 7 = 4,032,000 L), but the explanation is a long rambling self-correction that ends by claiming 403.2 m3 is correct and the options are wrong, contradicting the key. Explanation must be rewritten.",
+   "original": {
+    "question": "A pump delivers water at a rate of 1200 L/min. If it operates for 8 hours per day, how many cubic meters of water does it pump in a week?",
+    "options": [
+     "4032 m³",
+     "67.2 m³",
+     "40.32 m³",
+     "672 m³"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculate daily pumping volume: 1200 L/min * 60 min/hr * 8 hr/day = 576,000 L/day. Convert to m³/day: 576,000 L/day / 1000 L/m³ = 576 m³/day. Calculate weekly volume: 576 m³/day * 7 days/week = 4032 m³/week. (Correction: 1200 L/min * 60 min/hr * 8 hr/day = 576,000 L/day. 576,000 L/day / 1000 L/m³ = 576 m³/day. 576 m³/day * 7 days/week = 4032 m³/week. The options provided are incorrect for this calculation. Let's recheck the calculation and options. Assuming 1200 L/min * 8 hours/day * 60 min/hour * 7 days/week = 4,032,000 L/week = 4032 m³/week. The correct option from the given choices is 403.2 m³. Let's re-evaluate the question and options to ensure consistency. If the question intended 120 L/min, then 403.2 m³ would be correct. Given the options, there might be a typo in the question or options. Let's assume the question meant 120 L/min to match option A. 120 L/min * 60 min/hr * 8 hr/day * 7 days/week = 403,200 L/week = 403.2 m³/week. If the original 1200 L/min is correct, then none of the options are correct. Let's adjust the question to match the correct answer from options. Let's assume the question meant 120 L/min. Then: 120 L/min * 60 min/hr * 8 hr/day * 7 days/week = 403,200 L/week = 403.2 m³/week. If the question was intended to be 1200 L/min, then the answer is 4032 m³/week, which is not an option. Let's re-evaluate the options and correct answer to align with the provided options. Let's assume the question is 1200 L/min and the correct answer is 403.2 m³. This means there is a factor of 10 error in the options or calculation. Let's re-calculate assuming the intended answer is 403.2 m³. If 403.2 m³ is the answer, then 403,200 L/week. 403,200 L/week / 7 days/week = 57,600 L/day. 57,600 L/day / 8 hours/day = 7200 L/hour. 7200 L/hour / 60 min/hour = 120 L/min. So, if the pump rate was 120 L/min, the answer would be 403.2 m³. Given the options, and assuming a typo in the question, let's proceed with the calculation for 1200 L/min and point out the discrepancy. Calculation for 1200 L/min: 1200 L/min * 60 min/hr * 8 hr/day = 576,000 L/day. 576,000 L/day * 7 days/week = 4,032,000 L/week. 4,032,000 L/week / 1000 L/m³ = 4032 m³/week. Since 4032 m³/week is not an option, there is an issue with the question or options. Let's assume the correct answer is 403.2 m³ and work backward to find the correct flow rate for the question to be valid. If the answer is 403.2 m³, then the weekly volume is 403,200 L. Daily volume = 403,200 L / 7 days = 57,600 L/day. Hourly volume = 57,600 L / 8 hours = 7,200 L/hour. Minutely volume = 7,200 L / 60 minutes = 120 L/min. So, if the pump delivers 120 L/min, then option A is correct. Let's adjust the question to 120 L/min.  If the question is 'A pump delivers water at a rate of 120 L/min. If it operates for 8 hours per day, how many cubic meters of water does it pump in a week?', then the answer is 403.2 m³. Let's use the original question and assume the intended answer was 4032 m³ and one of the options had a decimal error. Let's re-evaluate the options. If the question is 1200 L/min, then the answer is 4032 m³. None of the options are 4032. Let's assume the question meant a different flow rate or the options are incorrect. Let's pick the closest option, which would be 403.2 if we assume a typo in the question (120 L/min instead of 1200 L/min). Given the constraint to provide a valid JSON, I must choose one. Let's assume the question is 1200 L/min and the correct answer should be 4032 m³, but due to a typo in options, 403.2 m³ is the closest. This is a problematic question. Let's try to make the question match one of the options perfectly. Let's assume the question meant 'how many cubic meters does it pump in a day?' Then 576 m³/day. Not an option. Let's assume the question meant 'how many cubic meters does it pump in 10 hours?' Then 1200 L/min * 60 min/hr * 10 hr = 720,000 L = 720 m³. Not an option. Let's assume the question meant 'how many cubic meters does it pump in a 24-hour day?' Then 1200 L/min * 60 min/hr * 24 hr = 1,728,000 L = 1728 m³. Not an option. Let's assume the question meant 'how many cubic meters does it pump in 1 hour?' Then 1200 L/min * 60 min/hr = 72,000 L = 72 m³. Not an option. Let's assume the question meant 'how many cubic meters does it pump in 1 minute?' Then 1.2 m³. Not an option. Let's assume the question meant 'how many cubic meters does it pump in 1 week if it runs continuously?' 1200 L/min * 60 min/hr * 24 hr/day * 7 days/week = 12,096,000 L/week = 12,096 m³/week. Not an option.  Given the options, and to make one of them correct, let's rephrase the question slightly or assume a different flow rate. Let's assume the question should have been: A pump delivers water at a rate of 120 L/min. If it operates for 8 hours per day, how many cubic meters of water does it pump in a week? Then: 120 L/min * 60 min/hr * 8 hr/day * 7 days/week = 403,200 L/week = 403.2 m³/week. This makes option A correct. I will proceed with this assumption for the sake of generating a valid question. The original question (1200 L/min) would lead to 4032 m³/week, which is not an option. To make the provided options valid, I will assume the question intended a flow rate of 120 L/min.  Calculation for 120 L/min: Volume per day = 120 L/min * 60 min/hr * 8 hr/day = 57,600 L/day. Volume per week = 57,600 L/day * 7 days/week = 403,200 L/week. Convert to cubic meters: 403,200 L / 1000 L/m³ = 403.2 m³."
+   },
+   "fix": {
+    "question": "A pump delivers water at a rate of 1200 L/min. If it operates for 8 hours per day, how many cubic meters of water does it pump in a week?",
+    "options": [
+     "4032 m³",
+     "67.2 m³",
+     "40.32 m³",
+     "672 m³"
+    ],
+    "correctIndex": 0,
+    "explanation": "Daily volume: 1200 L/min x 60 min/h x 8 h = 576,000 L = 576 m³/day. Weekly volume: 576 m³/day x 7 days = 4032 m³.",
+    "steps": [
+     {
+      "l": "Given",
+      "c": "1200 L/min, 8 hours per day, 7 days per week. Find cubic metres per week."
+     },
+     {
+      "l": "Daily volume",
+      "c": "1200 L/min x 60 min/hr x 8 hr/day = 576,000 L/day = 576 m3/day."
+     },
+     {
+      "l": "Weekly volume",
+      "c": "576 m3/day x 7 days = 4032 m3."
+     },
+     {
+      "l": "Answer",
+      "c": "4032 m3 per week, which is option A."
+     }
+    ]
+   }
+  },
+  {
+   "id": 184177,
+   "bankKey": "class2-water-dist",
+   "questionNum": 320,
+   "verdict": "UNITS",
+   "note": "Canadian bank asks for static pressure in psi. Converted to kPa: 40 m x 9.81 kPa/m = 392 kPa.",
+   "original": {
+    "question": "A water tower has a height of 40 meters. What is the approximate static pressure (in psi) at the base of the tower due to the water column?",
+    "options": [
+     "56.8 psi",
+     "40.0 psi",
+     "17.3 psi",
+     "80.0 psi"
+    ],
+    "correctIndex": 0,
+    "explanation": "To convert meters of head to psi, use the conversion factor: 1 meter of water column ≈ 1.422 psi. So, 40 meters * 1.422 psi/meter = 56.88 psi. (Alternatively, 1 psi ≈ 0.704 meters of water column, so 40 m / 0.704 m/psi = 56.81 psi)."
+   },
+   "fix": {
+    "question": "A water tower has a height of 40 metres of water above its base. What is the approximate static pressure (in kPa) at the base of the tower due to the water column?",
+    "options": [
+     "392 kPa",
+     "200 kPa",
+     "170 kPa",
+     "800 kPa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pressure = ρ g h = 1000 kg/m³ x 9.81 m/s² x 40 m = 392,400 Pa, or about 392 kPa (1 m of water head = 9.81 kPa).",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "1 m of water column = 9.81 kPa."
+     },
+     {
+      "l": "Step 2",
+      "c": "Pressure (kPa) = Head (m) x 9.81 kPa/m"
+     },
+     {
+      "l": "Step 3",
+      "c": "Pressure = 40 m x 9.81 kPa/m = 392.4 kPa"
+     },
+     {
+      "l": "Step 4",
+      "c": "Answer: about 392 kPa."
+     }
+    ]
+   }
+  },
+  {
+   "id": 184179,
+   "bankKey": "class2-water-dist",
+   "questionNum": 322,
+   "verdict": "UNCLEAR",
+   "note": "Explanation example has missing dollar amounts ('.50/m³', '.00/m³', '.00/m³'), making the example unreadable. Key is correct.",
+   "original": {
+    "question": "What is \"inclining block rate\" structure for water billing?",
+    "options": [
+     "A flat rate for all usage",
+     "A pricing structure where the unit cost of water increases with consumption volume — encourages conservation by making high usage progressively more expensive",
+     "Decreasing rates for high users",
+     "Only charging for peak usage"
+    ],
+    "correctIndex": 1,
+    "explanation": "Inclining blocks: first block (basic needs) at lowest rate, subsequent blocks at progressively higher rates. Example: 0-10 m³ at .50/m³, 10-30 m³ at .00/m³, >30 m³ at .00/m³. Encourages conservation while keeping basic water affordable. Revenue-neutral design maintains utility income."
+   },
+   "fix": {
+    "question": "What is \"inclining block rate\" structure for water billing?",
+    "options": [
+     "A flat rate for all usage",
+     "A pricing structure where the unit cost of water increases with consumption volume — encourages conservation by making high usage progressively more expensive",
+     "Decreasing rates for high users",
+     "Only charging for peak usage"
+    ],
+    "correctIndex": 1,
+    "explanation": "Inclining blocks: first block (basic needs) at lowest rate, subsequent blocks at progressively higher rates. Example: 0-10 m³ at $1.50/m³, 10-30 m³ at $2.00/m³, >30 m³ at $3.00/m³. Encourages conservation while keeping basic water affordable.",
+    "steps": null
+   }
+  },
+  {
+   "id": 184182,
+   "bankKey": "class2-water-dist",
+   "questionNum": 325,
+   "verdict": "WRONG",
+   "note": "Correct answer is 0.785 kg / 0.65 = 1.21 kg (1.208 kg with exact pi). Marked option 1.23 kg is not the right number; the explanation itself says 'closest option'. Option changed to 1.21 kg (other options doubled/halved accordingly).",
+   "original": {
+    "question": "A section of water main is 500 meters long with a diameter of 200 mm. If it needs to be disinfected with a 50 mg/L chlorine solution, how many kilograms of 65% available chlorine (HTH) are needed? (Density of water = 1000 kg/m³)",
+    "options": [
+     "2.45 kg",
+     "1.23 kg",
+     "4.90 kg",
+     "0.61 kg"
+    ],
+    "correctIndex": 1,
+    "explanation": "1. Calculate pipe volume: Area = π * (0.1 m)² = 0.0314 m². Volume = 0.0314 m² * 500 m = 15.7 m³. 2. Calculate chlorine required: 15.7 m³ * 1000 L/m³ = 15,700 L. Chlorine mass = 15,700 L * 50 mg/L = 785,000 mg = 0.785 kg. 3. Calculate HTH needed: 0.785 kg / 0.65 (for 65% available chlorine) = 1.207 kg. Closest option is 1.23 kg."
+   },
+   "fix": {
+    "question": "A section of water main is 500 meters long with a diameter of 200 mm. If it needs to be disinfected with a 50 mg/L chlorine solution, how many kilograms of 65% available chlorine (HTH) are needed? (Density of water = 1000 kg/m³)",
+    "options": [
+     "2.42 kg",
+     "1.21 kg",
+     "4.84 kg",
+     "0.61 kg"
+    ],
+    "correctIndex": 1,
+    "explanation": "1. Pipe volume: π x (0.1 m)² x 500 m = 15.7 m³ = 15,700 L. 2. Pure chlorine: 15,700 L x 50 mg/L = 785,000 mg = 0.785 kg. 3. HTH needed: 0.785 kg / 0.65 = 1.21 kg.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Find the pipe radius: 200 mm / 2 = 100 mm = 0.1 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "Cross-sectional area = pi x (0.1 m)^2 = 0.0314 m^2"
+     },
+     {
+      "l": "Step 3",
+      "c": "Volume = 0.0314 m^2 x 500 m = 15.7 m^3 = 15,700 L"
+     },
+     {
+      "l": "Step 4",
+      "c": "Pure chlorine = 15,700 L x 50 mg/L = 785,000 mg = 0.785 kg"
+     },
+     {
+      "l": "Step 5",
+      "c": "HTH = 0.785 kg / 0.65 = 1.21 kg"
+     }
+    ]
+   }
+  },
+  {
+   "id": 184187,
+   "bankKey": "class2-water-dist",
+   "questionNum": 330,
+   "verdict": "WRONG",
+   "note": "Key 8.8 HP is correct (4905 W / 0.75 = 6540 W = 8.77 HP) but the explanation is a long rambling self-correction that ends by selecting 7.6 HP, which is not an option and contradicts the key.",
+   "original": {
+    "question": "A centrifugal pump has an efficiency of 75%. If it is pumping 1000 L/min against a total head of 30 meters, what is the approximate motor horsepower required? (1 HP = 746 W, Water density = 1000 kg/m³, g = 9.81 m/s²)",
+    "options": [
+     "4.3 HP",
+     "5.7 HP",
+     "3.2 HP",
+     "8.8 HP"
+    ],
+    "correctIndex": 3,
+    "explanation": "1. Calculate water horsepower (WHp): Flow rate (Q) = 1000 L/min = 0.01667 m³/s. Head (H) = 30 m. WHp = (Q * H * ρ * g) / 746 = (0.01667 m³/s * 30 m * 1000 kg/m³ * 9.81 m/s²) / 746 = 6.57 HP. 2. Calculate motor horsepower (MHp): MHp = WHp / Efficiency = 6.57 HP / 0.75 = 8.76 HP. (Recheck options and calculation. Let's use the common formula: HP = (GPM * Head in feet) / (3960 * Eff). 1000 L/min = 264.17 GPM. 30 m = 98.425 ft. HP = (264.17 * 98.425) / (3960 * 0.75) = 26000 / 2970 = 8.75 HP. None of the options are 8.75 HP. Let's recheck the formula using SI units. Power (W) = Q * ρ * g * H = 0.01667 m³/s * 1000 kg/m³ * 9.81 m/s² * 30 m = 4903.2 W. Motor Power = Power / Efficiency = 4903.2 W / 0.75 = 6537.6 W. Convert to HP: 6537.6 W / 746 W/HP = 8.76 HP.  There is an issue with the options provided. Let's assume there's a slight difference in conversion factors or a rounding in the question's intended answer. If we assume the answer is 7.6 HP, and work backwards: 7.6 HP * 746 W/HP = 5669.6 W. 5669.6 W * 0.75 = 4252.2 W. Q * ρ * g * H = 4252.2 W. 0.01667 * 1000 * 9.81 * H = 4252.2. 163.5 * H = 4252.2. H = 26 m. So if the head was 26m instead of 30m, 7.6 HP would be correct. Let's try another approach: If 7.6 HP is the answer, and 30m head, what is the efficiency? 6.57 HP / 7.6 HP = 0.86 = 86%. This is plausible. Let's assume the question is designed to have 7.6 HP as the correct answer. Let's re-calculate to see if any rounding makes sense. (1000 L/min * 30m) / (75% * 102 (constant for L/s, m, kW)) = (16.67 L/s * 30m) / (0.75 * 102) = 500 / 76.5 = 6.53 kW. 6.53 kW * 1.341 HP/kW = 8.76 HP.  Let's assume the question meant 25m head. Then 6.53 * (25/30) = 5.44 kW. 5.44 * 1.341 = 7.3 HP. This is close to 7.6 HP. Given the options, and the need to select one, there's likely a slight discrepancy in the question's values or the options provided. Let's re-evaluate the options and correct answer to align with the provided options. Let's assume the question is as stated and 7.6 HP is the intended answer. This implies a slightly different head or efficiency was used in generating the options. Let's use the formula: HP = (Flow in GPM * Head in feet) / (3960 * Pump Efficiency). Flow = 1000 L/min = 264.17 GPM. Head = 30 m = 98.425 ft. HP = (264.17 GPM * 98.425 ft) / (3960 * 0.75) = 26000 / 2970 = 8.75 HP.  Let's assume the question intended a different head or efficiency to yield 7.6 HP. If the answer is 7.6 HP, then 7.6 = (264.17 * H) / (3960 * 0.75). 7.6 * 2970 = 264.17 * H. 22572 = 264.17 * H. H = 85.45 ft = 26.04 m. So, if the head was 26.04 meters, then 7.6 HP would be correct. Given the options, and to provide a valid answer, I will select 7.6 HP, acknowledging the discrepancy in the exact calculation with 30m head."
+   },
+   "fix": {
+    "question": "A centrifugal pump has an efficiency of 75%. If it is pumping 1000 L/min against a total head of 30 meters, what is the approximate motor horsepower required? (1 HP = 746 W, Water density = 1000 kg/m³, g = 9.81 m/s²)",
+    "options": [
+     "4.3 HP",
+     "5.7 HP",
+     "3.2 HP",
+     "8.8 HP"
+    ],
+    "correctIndex": 3,
+    "explanation": "Q = 1000 L/min = 0.01667 m³/s. Water power = ρ g Q H = 1000 x 9.81 x 0.01667 x 30 = 4905 W. Input power = 4905 / 0.75 = 6540 W. HP = 6540 / 746 = 8.8 HP.",
+    "steps": [
+     {
+      "l": "Given",
+      "c": "Q = 1000 L/min, H = 30 m, pump efficiency = 75%, g = 9.81 m/s2, water density 1000 kg/m3, 1 HP = 746 W."
+     },
+     {
+      "l": "Convert flow",
+      "c": "1000 L/min / 60,000 = 0.01667 m3/s."
+     },
+     {
+      "l": "Water power",
+      "c": "P = 1000 x 9.81 x 0.01667 x 30 = 4905 W."
+     },
+     {
+      "l": "Apply efficiency",
+      "c": "Input power = 4905 W / 0.75 = 6540 W."
+     },
+     {
+      "l": "Convert to horsepower",
+      "c": "6540 W / 746 W/HP = 8.8 HP, which is option D."
+     }
+    ]
+   }
+  },
+  {
+   "id": 184204,
+   "bankKey": "class2-water-dist",
+   "questionNum": 347,
+   "verdict": "WRONG",
+   "note": "Key 3.6 L is correct (19.635 m3 x 25 mg/L = 0.4909 kg Cl2; /0.12 = 4.09 kg; /1.15 = 3.56 L) but the explanation is a long rambling self-correction that never settles on the key (suggests 3.0 L, 6.1 L, 14.7 L), and the steps are placeholder text.",
+   "original": {
+    "question": "A water main is being disinfected using a chlorine solution. If the main is 400 meters long and 250 mm in diameter, and the target chlorine concentration is 25 mg/L, how much 12% sodium hypochlorite solution (density 1.15 kg/L) is needed? (Assume 1L = 1kg for water volume calculation)",
+    "options": [
+     "14.7 L",
+     "6.1 L",
+     "29.4 L",
+     "3.6 L"
+    ],
+    "correctIndex": 3,
+    "explanation": "1. Calculate pipe volume: Radius = 0.125 m. Area = π * (0.125 m)² = 0.049087 m². Volume = 0.049087 m² * 400 m = 19.635 m³. 2. Convert volume to liters: 19.635 m³ * 1000 L/m³ = 19,635 L. 3. Calculate chlorine mass needed: 19,635 L * 25 mg/L = 490,875 mg = 0.490875 kg. 4. Calculate sodium hypochlorite solution needed: 0.490875 kg / 0.12 (for 12% available chlorine) = 4.09 kg of solution. 5. Convert mass of solution to volume: Volume = Mass / Density = 4.09 kg / 1.15 kg/L = 3.56 L. (Recheck calculation as options are not matching. Let's assume the question meant 12% available chlorine by weight, and the density of the solution is used to convert mass to volume. Let's re-calculate step 4 and 5. If 0.490875 kg of pure chlorine is needed, and the solution is 12% by weight, then the mass of the solution needed is 0.490875 kg / 0.12 = 4.09 kg. If the density of the solution is 1.15 kg/L, then the volume of solution is 4.09 kg / 1.15 kg/L = 3.56 L. This is not matching any option. Let's re-evaluate the problem statement and options. Let's assume the question meant 200 mm diameter. Then Radius = 0.1 m. Area = pi * (0.1)^2 = 0.0314 m^2. Volume = 0.0314 m^2 * 400 m = 12.56 m^3. Volume in L = 12,560 L. Chlorine needed = 12,560 L * 25 mg/L = 314,000 mg = 0.314 kg. Sodium hypochlorite solution needed (by mass) = 0.314 kg / 0.12 = 2.616 kg. Volume of solution = 2.616 kg / 1.15 kg/L = 2.27 L. Still not matching. Let's assume the question meant a different diameter or target concentration. Let's re-examine the options and try to work backward from them. If the answer is 6.1 L, then Mass of solution = 6.1 L * 1.15 kg/L = 7.015 kg. Mass of pure chlorine = 7.015 kg * 0.12 = 0.8418 kg. Volume of water = 0.8418 kg / (25 mg/L * 1 kg / 1,000,000 mg) = 33,672 L = 33.67 m³. If the volume is 33.67 m³ and length is 400m, then Area = 33.67 / 400 = 0.084 m². Radius = sqrt(0.084/pi) = 0.163 m = 326 mm diameter. This is a very different diameter.  Let's assume the original calculation was correct for 250 mm diameter, and there is a typo in the options. 3.56 L was the result. The closest option is 3.0 L. This is a hard question with potentially problematic options. Let's re-evaluate the problem and options to ensure consistency. Let's assume the question implies a common simplification or a different interpretation of the density. If we assume 1 L of solution is 1 kg for simplicity, then 4.09 kg of solution = 4.09 L. Still not matching. Let's re-check the calculation for 250 mm diameter. Volume = 19.635 m³. Chlorine mass = 0.490875 kg. Solution mass = 0.490875 / 0.12 = 4.09 kg. Volume of solution = 4.09 kg / 1.15 kg/L = 3.56 L.  Given the options, and to make one of them correct, let's assume the question intended a different value for the percentage or density, or there's a typo in the options. Let's assume the answer is 6.1 L and work backward to see what percentage or density would make it correct. If 6.1 L is correct, then 6.1 L * 1.15 kg/L = 7.015 kg of solution. Then 0.490875 kg (chlorine needed) / 7.015 kg (solution mass) = 0.07 = 7% available chlorine. So if the solution was 7% instead of 12%, then 6.1 L would be correct. This implies a significant discrepancy. Let's assume there is a typo in the question's diameter and it should be 300 mm. Radius = 0.15 m. Area = pi * (0.15)^2 = 0.07068 m^2. Volume = 0.07068 * 400 = 28.27 m^3 = 28,270 L. Chlorine needed = 28,270 * 25 mg/L = 706,750 mg = 0.70675 kg. Solution mass = 0.70675 / 0.12 = 5.889 kg. Solution volume = 5.889 kg / 1.15 kg/L = 5.12 L. Still not 6.1 L. Let's assume the question meant 350 mm diameter. Radius = 0.175 m. Area = pi * (0.175)^2 = 0.0962 m^2. Volume = 0.0962 * 400 = 38.48 m^3 = 38,480 L. Chlorine needed = 38,480 * 25 mg/L = 962,000 mg = 0.962 kg. Solution mass = 0.962 / 0.12 = 8.01 kg. Solution volume = 8.01 kg / 1.15 kg/L = 6.96 L. This is close to 6.1 L. Let's re-evaluate the options and correct answer to align with the provided options. Let's assume the question is as stated and 6.1 L is the intended answer. This implies a slightly different diameter or percentage was used in generating the options. Let's pick 6.1 L as the closest plausible answer if there's a slight error in the question's parameters or the options. Let's re-calculate using 250mm diameter and 25 mg/L target, and assume 100% available chlorine for a moment to see the 'pure' amount. 0.490875 kg. If 12% solution, then 0.490875 / 0.12 = 4.09 kg of solution. If density is 1.15 kg/L, then 4.09 / 1.15 = 3.56 L. The options are 14.7, 6.1, 29.4, 3.0. None are 3.56 L. Let's assume the question meant 50 mg/L chlorine. Then 0.98175 kg chlorine. Solution mass = 0.98175 / 0.12 = 8.18 kg. Solution volume = 8.18 / 1.15 = 7.11 L. Still not 6.1 L. Let's assume the question meant 100 mg/L chlorine. Then 1.9635 kg chlorine. Solution mass = 1.9635 / 0.12 = 16.36 kg. Solution volume = 16.36 / 1.15 = 14.23 L. This is close to 14.7 L. Let's assume the question intended 100 mg/L target chlorine. Then 14.7 L is the closest option. Let's adjust the question to 100 mg/L target chlorine.  If the target chlorine concentration is 100 mg/L: 1. Calculate pipe volume: Radius = 0.125 m. Area = π * (0.125 m)² = 0.049087 m². Volume = 0.049087 m² * 400 m = 19.635 m³. 2. Convert volume to liters: 19.635 m³ * 1000 L/m³ = 19,635 L. 3. Calculate chlorine mass needed: 19,635 L * 100 mg/L = 1,963,500 mg = 1.9635 kg. 4. Calculate sodium hypochlorite solution needed (by mass): 1.9635 kg / 0.12 (for 12% available chlorine) = 16.36 kg of solution. 5. Convert mass of solution to volume: Volume = Mass / Density = 16.36 kg / 1.15 kg/L = 14.23 L. This is very close to 14.7 L. Let's use this interpretation."
+   },
+   "fix": {
+    "question": "A water main is being disinfected using a chlorine solution. If the main is 400 meters long and 250 mm in diameter, and the target chlorine concentration is 25 mg/L, how much 12% sodium hypochlorite solution (density 1.15 kg/L) is needed? (Assume 1L = 1kg for water volume calculation)",
+    "options": [
+     "14.7 L",
+     "6.1 L",
+     "29.4 L",
+     "3.6 L"
+    ],
+    "correctIndex": 3,
+    "explanation": "Pipe volume = π x (0.125 m)² x 400 m = 19.635 m³ = 19,635 L. Chlorine needed = 19,635 L x 25 mg/L = 490,875 mg = 0.491 kg. Solution mass = 0.491 / 0.12 = 4.09 kg. Solution volume = 4.09 kg / 1.15 kg/L = 3.56 L, about 3.6 L.",
+    "steps": [
+     {
+      "l": "Pipe volume",
+      "c": "π x (0.125 m)^2 x 400 m = 19.635 m3 = 19,635 L"
+     },
+     {
+      "l": "Chlorine mass",
+      "c": "19,635 L x 25 mg/L = 490,875 mg = 0.491 kg"
+     },
+     {
+      "l": "Solution mass",
+      "c": "0.491 kg / 0.12 = 4.09 kg of solution"
+     },
+     {
+      "l": "Final Volume",
+      "c": "4.09 kg / 1.15 kg/L = 3.56 L, which rounds to 3.6 L."
+     }
+    ]
+   }
+  },
+  {
+   "id": 184207,
+   "bankKey": "class2-water-dist",
+   "questionNum": 350,
+   "verdict": "UNITS",
+   "note": "Canadian bank asks for typical operating pressure in psi. Converted to kPa (30-80 psi = about 205-550 kPa; Ontario guidelines give a normal range of roughly 350-550 kPa with a minimum of 140 kPa).",
+   "original": {
+    "question": "What is the typical operating pressure range (in psi) for most municipal water distribution systems?",
+    "options": [
+     "10-20 psi",
+     "30-80 psi",
+     "100-150 psi",
+     "200-300 psi"
+    ],
+    "correctIndex": 1,
+    "explanation": "Most municipal water distribution systems are designed to operate within a pressure range of 30 to 80 psi (207 to 552 kPa) to provide adequate service to customers without causing excessive leaks or damage."
+   },
+   "fix": {
+    "question": "What is the typical operating pressure range (in kPa) for most municipal water distribution systems?",
+    "options": [
+     "70-140 kPa",
+     "205-550 kPa",
+     "700-1,000 kPa",
+     "1,400-2,000 kPa"
+    ],
+    "correctIndex": 1,
+    "explanation": "Most municipal water distribution systems are designed to operate within about 205 to 550 kPa to provide adequate service without causing excessive leaks or damage.",
+    "steps": [
+     {
+      "l": "Item type",
+      "c": "Standards recall question, not a calculation."
+     },
+     {
+      "l": "Operating standard",
+      "c": "Municipal distribution systems are normally kept in about the 205 to 550 kPa range at the customer connection."
+     },
+     {
+      "l": "Why the other ranges fail",
+      "c": "70 to 140 kPa is too low for adequate service and risks contamination from backsiphonage; 700 kPa and above accelerates leaks and main breaks and normally requires pressure reducing valves."
+     },
+     {
+      "l": "Answer",
+      "c": "205 to 550 kPa, option B."
+     }
+    ]
+   }
+  },
+  {
+   "id": 184214,
+   "bankKey": "class2-water-dist",
+   "questionNum": 357,
+   "verdict": "WRONG",
+   "note": "Key (57,600 m3) is correct but the explanation devolves into a long self-correction that proposes changing the question to one pump and option D, contradicting the key.",
+   "original": {
+    "question": "A pump station has three pumps, each rated at 500 L/s. If two pumps are operating for 16 hours a day, what is the total daily volume pumped in cubic meters?",
+    "options": [
+     "57,600 m³",
+     "9,600 m³",
+     "1,600 m³",
+     "28,800 m³"
+    ],
+    "correctIndex": 0,
+    "explanation": "Total flow rate of two pumps = 2 * 500 L/s = 1000 L/s. Convert to L/hour: 1000 L/s * 3600 s/hr = 3,600,000 L/hr. Total daily volume = 3,600,000 L/hr * 16 hr/day = 57,600,000 L/day. Convert to m³/day: 57,600,000 L/day / 1000 L/m³ = 57,600 m³/day. (Recheck options and calculation. If 1000 L/s * 16 hours * 3600 s/hr = 57,600,000 L. This is 57,600 m³. So option A is correct. Let's re-evaluate the options and correct answer to align with the provided options. Let's assume the question meant 100 L/s per pump. Then 2 * 100 L/s = 200 L/s. 200 L/s * 3600 s/hr * 16 hr/day = 11,520,000 L/day = 11,520 m³/day. Not matching. Let's re-examine the options. Let's assume the question meant 500 L/min per pump. Then 2 * 500 L/min = 1000 L/min. 1000 L/min * 60 min/hr * 16 hr/day = 960,000 L/day = 960 m³/day. Not matching. Let's assume the question meant 500 L/hour per pump. Then 2 * 500 L/hr = 1000 L/hr. 1000 L/hr * 16 hr/day = 16,000 L/day = 16 m³/day. Not matching.  Let's assume the correct option is 9,600 m³. If 9,600 m³ is the answer, then 9,600,000 L/day. 9,600,000 L/day / 16 hr/day = 600,000 L/hr. 600,000 L/hr / 3600 s/hr = 166.67 L/s. If two pumps, then 83.33 L/s per pump. This is not 500 L/s.  There is a significant discrepancy. Let's assume the question meant 500 L/s per pump, and the answer should be 57,600 m³. Let's re-evaluate the options. If the options are fixed, then the question must be adjusted. Let's assume the question meant 500 L/min per pump and 2 pumps operate for 16 hours a day. Then 2 * 500 L/min = 1000 L/min. 1000 L/min * 60 min/hr * 16 hr/day = 960,000 L/day = 960 m³/day. Still not matching.  Let's assume the question meant 500 L/s per pump, but only one pump operates. Then 500 L/s * 3600 s/hr * 16 hr/day = 28,800,000 L/day = 28,800 m³/day. This matches option D. Let's adjust the question to 'If one pump is operating for 16 hours a day'.  A pump station has a pump rated at 500 L/s. If one pump is operating for 16 hours a day, what is the total daily volume pumped in cubic meters?"
+   },
+   "fix": {
+    "question": "A pump station has three pumps, each rated at 500 L/s. If two pumps are operating for 16 hours a day, what is the total daily volume pumped in cubic meters?",
+    "options": [
+     "57,600 m³",
+     "9,600 m³",
+     "1,600 m³",
+     "28,800 m³"
+    ],
+    "correctIndex": 0,
+    "explanation": "Two pumps: 2 x 500 L/s = 1000 L/s. Run time = 16 h x 3600 s/h = 57,600 s. Volume = 1000 L/s x 57,600 s = 57,600,000 L = 57,600 m³.",
+    "steps": [
+     {
+      "l": "Given",
+      "c": "Three pumps rated 500 L/s each; two pumps run 16 hours per day."
+     },
+     {
+      "l": "Combined flow",
+      "c": "2 x 500 L/s = 1,000 L/s."
+     },
+     {
+      "l": "Run time in seconds",
+      "c": "16 hr x 3,600 s/hr = 57,600 s/day."
+     },
+     {
+      "l": "Daily volume in litres",
+      "c": "1,000 L/s x 57,600 s = 57,600,000 L/day."
+     },
+     {
+      "l": "Convert to cubic metres",
+      "c": "57,600,000 L / 1,000 = 57,600 m3."
+     },
+     {
+      "l": "Answer",
+      "c": "57,600 m3 (option A)."
+     }
+    ]
+   }
+  },
+  {
+   "id": 184218,
+   "bankKey": "class2-water-dist",
+   "questionNum": 361,
+   "verdict": "WRONG",
+   "note": "O. Reg. 170/03 sets 0.05 mg/L free chlorine as the minimum in the distribution system (sample location, any point, at all times), not at the entry point; the entry point/secondary disinfection target is 0.2 mg/L free chlorine. Also cited 'Schedule 2' is not the source. Checked Ontario e-Laws and MOE technical guidance via search. Question reworded to the distribution system.",
+   "original": {
+    "question": "According to O. Reg. 170/03, what is the minimum free chlorine residual required at the entry point to a distribution system for a municipal residential drinking water system?",
+    "options": [
+     "0.05 mg/L",
+     "0.20 mg/L",
+     "0.50 mg/L",
+     "1.00 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 170/03, Schedule 2, requires that the concentration of free chlorine at the entry point to the distribution system must be at least 0.05 milligrams per litre."
+   },
+   "fix": {
+    "question": "According to O. Reg. 170/03, what is the minimum free chlorine residual that must be maintained at all times in samples taken from the distribution system of a chlorinated municipal residential drinking water system?",
+    "options": [
+     "0.05 mg/L",
+     "0.20 mg/L",
+     "0.50 mg/L",
+     "1.00 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 170/03 requires a free chlorine residual of at least 0.05 mg/L (or 0.25 mg/L combined chlorine for chloramination) at all times in the distribution system. A residual below 0.05 mg/L is an adverse result.",
+    "steps": [
+     {
+      "l": "Item type",
+      "c": "Regulatory recall question, not a calculation."
+     },
+     {
+      "l": "Requirement",
+      "c": "Free chlorine in the distribution system must be at least 0.05 mg/L (0.25 mg/L combined chlorine where chloramine is used)."
+     },
+     {
+      "l": "Answer",
+      "c": "0.05 mg/L, option A."
+     }
+    ]
+   }
+  },
+  {
+   "id": 184225,
+   "bankKey": "class2-water-dist",
+   "questionNum": 368,
+   "verdict": "WRONG",
+   "note": "Key (240) is correct but the explanation ends with a long 'recheck' ramble that should be removed.",
+   "original": {
+    "question": "A water distribution system has a total of 150 hydrants. If 20% of the hydrants are inspected quarterly, and the remaining are inspected annually, how many hydrant inspections are performed per year?",
+    "options": [
+     "150 inspections",
+     "180 inspections",
+     "210 inspections",
+     "240 inspections"
+    ],
+    "correctIndex": 3,
+    "explanation": "Quarterly inspections: 150 hydrants * 0.20 = 30 hydrants. These 30 hydrants are inspected 4 times a year: 30 * 4 = 120 inspections. Annual inspections: 150 hydrants - 30 hydrants = 120 hydrants. These 120 hydrants are inspected once a year: 120 * 1 = 120 inspections. Total annual inspections = 120 + 120 = 240 inspections. (Recheck calculation against options. 30 * 4 = 120. 120 * 1 = 120. Total = 240. Option D is 240. Let's re-evaluate the options and correct answer to align with the provided options. My calculation shows 240. Let's check if there's an error in my calculation or the options. 150 hydrants. 20% = 30 hydrants. These are inspected quarterly (4 times/year). So 30 * 4 = 120 inspections. Remaining = 150 - 30 = 120 hydrants. These are inspected annually (1 time/year). So 120 * 1 = 120 inspections. Total = 120 + 120 = 240 inspections. Option D is 240. So my initial check was correct, and 240 is the correct answer."
+   },
+   "fix": {
+    "question": "A water distribution system has a total of 150 hydrants. If 20% of the hydrants are inspected quarterly, and the remaining are inspected annually, how many hydrant inspections are performed per year?",
+    "options": [
+     "150 inspections",
+     "180 inspections",
+     "210 inspections",
+     "240 inspections"
+    ],
+    "correctIndex": 3,
+    "explanation": "Quarterly group: 150 x 0.20 = 30 hydrants x 4 inspections = 120. Annual group: 150 - 30 = 120 hydrants x 1 inspection = 120. Total = 120 + 120 = 240 inspections per year.",
+    "steps": [
+     {
+      "l": "Given",
+      "c": "150 hydrants; 20 percent inspected quarterly, the rest annually."
+     },
+     {
+      "l": "Split the hydrants",
+      "c": "Quarterly group = 30 hydrants; annual group = 120 hydrants."
+     },
+     {
+      "l": "Quarterly inspections",
+      "c": "30 x 4 = 120 inspections."
+     },
+     {
+      "l": "Annual inspections",
+      "c": "120 x 1 = 120 inspections."
+     },
+     {
+      "l": "Total",
+      "c": "120 + 120 = 240 inspections per year (option D)."
+     }
+    ]
+   }
+  },
+  {
+   "id": 184234,
+   "bankKey": "class2-water-dist",
+   "questionNum": 377,
+   "verdict": "UNITS",
+   "note": "Canadian bank gives pressure in psi. Converted: 414 kPa / 9.81 kPa/m = 42.2 m.",
+   "original": {
+    "question": "A water distribution system has a pressure of 60 psi at a certain point. What is this pressure in meters of head?",
+    "options": [
+     "35.2 meters.",
+     "42.2 meters.",
+     "51.8 meters.",
+     "65.1 meters."
+    ],
+    "correctIndex": 1,
+    "explanation": "To convert psi to meters of head, use the conversion factor: 1 psi = 0.704 meters of head. Therefore, 60 psi * 0.704 m/psi = 42.24 meters."
+   },
+   "fix": {
+    "question": "A water distribution system has a pressure of 414 kPa at a certain point. What is this pressure in meters of head?",
+    "options": [
+     "35.2 meters.",
+     "42.2 meters.",
+     "51.8 meters.",
+     "65.1 meters."
+    ],
+    "correctIndex": 1,
+    "explanation": "Head (m) = Pressure (kPa) / 9.81 kPa per m = 414 / 9.81 = 42.2 m.",
+    "steps": [
+     {
+      "l": "Relationship",
+      "c": "1 m of water head = 9.81 kPa."
+     },
+     {
+      "l": "Calculate",
+      "c": "Head = 414 kPa / 9.81 kPa/m = 42.2 m."
+     },
+     {
+      "l": "Answer",
+      "c": "42.2 m, option B."
+     }
+    ]
+   }
+  },
+  {
+   "id": 184243,
+   "bankKey": "class2-water-dist",
+   "questionNum": 386,
+   "verdict": "UNCLEAR",
+   "note": "Duplicate of 185797. Key (annually) is the usual practice (AWWA M17) but O. Reg. 170/03 does not set a hydrant inspection frequency, so attributing it to the regulation is incorrect, and the 'bi-annually'/'permit' options are ambiguous.",
+   "original": {
+    "question": "According to O. Reg. 170/03, how often must an operator inspect all hydrants in the distribution system?",
+    "options": [
+     "Annually.",
+     "Bi-annually.",
+     "Every three years.",
+     "As required by the Drinking Water Works Permit."
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 170/03 requires that all hydrants in a distribution system be inspected and operated at least once annually."
+   },
+   "fix": {
+    "question": "What is the commonly recommended minimum frequency (e.g., AWWA M17) for inspecting and operating all hydrants in a distribution system?",
+    "options": [
+     "Annually.",
+     "Every three years.",
+     "Every five years.",
+     "Only when used by the fire department."
+    ],
+    "correctIndex": 0,
+    "explanation": "Industry practice (AWWA M17) is to inspect and operate all hydrants at least once per year. O. Reg. 170/03 does not itself set a hydrant inspection frequency.",
+    "steps": [
+     {
+      "l": "Identify question type",
+      "c": "Maintenance frequency recall item, not a calculation."
+     },
+     {
+      "l": "Apply the accepted frequency",
+      "c": "The accepted minimum frequency is once per year."
+     },
+     {
+      "l": "Select the answer",
+      "c": "Annually (option A)."
+     }
+    ]
+   }
+  },
+  {
+   "id": 184249,
+   "bankKey": "class2-water-dist",
+   "questionNum": 392,
+   "verdict": "WRONG",
+   "note": "Explanation states bottled water at '72L/person/day minimum', which is wrong (emergency drinking water planning is about 2 L/person/day for drinking, roughly 4 L with cooking/hygiene; 72 hours is the self-sufficiency period). Key is correct.",
+   "original": {
+    "question": "What is \"emergency water supply\" planning?",
+    "options": [
+     "Only storing bottled water",
+     "Planning for alternative water supply during extended outages: tanker trucks, portable treatment, emergency interconnections, bottled water distribution, and temporary piping",
+     "Emergencies never last long enough to need this",
+     "Only the province provides emergency water"
+    ],
+    "correctIndex": 1,
+    "explanation": "Emergency water supply options: emergency interconnections (fastest), tanker trucks to fill system/distribution points, portable treatment units, bottled water distribution (72L/person/day minimum for drinking/cooking), and temporary above-ground piping. Plan must address: quantity, quality, distribution logistics."
+   },
+   "fix": {
+    "question": "What is \"emergency water supply\" planning?",
+    "options": [
+     "Only storing bottled water",
+     "Planning for alternative water supply during extended outages: tanker trucks, portable treatment, emergency interconnections, bottled water distribution, and temporary piping",
+     "Emergencies never last long enough to need this",
+     "Only the province provides emergency water"
+    ],
+    "correctIndex": 1,
+    "explanation": "Emergency water supply options: emergency interconnections (fastest), tanker trucks to fill system or distribution points, portable treatment units, bottled water distribution (plan for at least about 2 L per person per day for drinking, more for cooking and hygiene), and temporary above-ground piping. Plan must address quantity, quality, and distribution logistics.",
+    "steps": null
+   }
+  },
+  {
+   "id": 184254,
+   "bankKey": "class2-water-dist",
+   "questionNum": 397,
+   "verdict": "UNITS",
+   "note": "Canadian bank option states 'minimum 150 psi' and explanation uses US allowable-leakage formula (N x D x sqrt(P)/7400 with psi and inches). Converted to kPa (150 psi = about 1035 kPa).",
+   "original": {
+    "question": "What is \"pressure testing\" of new water mains (AWWA C600)?",
+    "options": [
+     "Testing water pressure at taps",
+     "Pressurizing new main to 1.5× working pressure (minimum 150 psi) for 2 hours and measuring leakage — must not exceed allowable leakage rate based on pipe diameter and number of joints",
+     "Only testing at normal pressure",
+     "Pressure testing is optional"
+    ],
+    "correctIndex": 1,
+    "explanation": "AWWA C600 pressure test: fill main, bleed air, pressurize to 1.5× WP (min 150 psi/1034 kPa), hold 2 hours, measure makeup water. Allowable leakage = N×D×√P / 7400 (US) where N=joints, D=diameter(in), P=test pressure(psi). Excessive leakage requires repair and retest."
+   },
+   "fix": {
+    "question": "What is \"pressure testing\" of new water mains (AWWA C600)?",
+    "options": [
+     "Testing water pressure at taps",
+     "Pressurizing new main to 1.5× working pressure (minimum 1,035 kPa) for 2 hours and measuring leakage — must not exceed allowable leakage rate based on pipe diameter and number of joints",
+     "Only testing at normal pressure",
+     "Pressure testing is optional"
+    ],
+    "correctIndex": 1,
+    "explanation": "AWWA C600 pressure test: fill main, bleed air, pressurize to 1.5× working pressure (minimum 1,035 kPa), hold 2 hours, measure makeup water. Allowable leakage depends on pipe diameter, number of joints (or length) and test pressure. Excessive leakage requires repair and retest.",
+    "steps": null
+   }
+  },
+  {
+   "id": 184257,
+   "bankKey": "class2-water-dist",
+   "questionNum": 400,
+   "verdict": "WRONG",
+   "note": "Key (106.0 L/s) is correct but the explanation contains stray 'let's re-check the correctIndex' text that must be removed.",
+   "original": {
+    "question": "A water main has a diameter of 300 mm and water is flowing at a velocity of 1.5 m/s. What is the flow rate in liters per second?",
+    "options": [
+     "56.5 L/s.",
+     "106.0 L/s.",
+     "159.0 L/s.",
+     "212.0 L/s."
+    ],
+    "correctIndex": 1,
+    "explanation": "Area = π * (diameter/2)² = 3.14159 * (0.3 m / 2)² = 3.14159 * (0.15 m)² = 3.14159 * 0.0225 m² = 0.070685 m². Flow rate (Q) = Area * Velocity = 0.070685 m² * 1.5 m/s = 0.1060275 m³/s. Convert to L/s: 0.1060275 m³/s * 1000 L/m³ = 106.0275 L/s. Let's re-check the correctIndex. If the correctIndex is 2, the answer is 159.0 L/s. This implies a different calculation. Let's re-calculate to see if I made an error. Diameter = 300 mm = 0.3 m. Radius = 0.15 m. Area = pi * (0.15)^2 = 0.0706858 m^2. Flow = Area * Velocity = 0.0706858 m^2 * 1.5 m/s = 0.1060287 m^3/s. 0.1060287 m^3/s * 1000 L/m^3 = 106.0287 L/s. The correct option should be 106.0 L/s. Let's adjust the correctIndex to 1."
+   },
+   "fix": {
+    "question": "A water main has a diameter of 300 mm and water is flowing at a velocity of 1.5 m/s. What is the flow rate in liters per second?",
+    "options": [
+     "56.5 L/s.",
+     "106.0 L/s.",
+     "159.0 L/s.",
+     "212.0 L/s."
+    ],
+    "correctIndex": 1,
+    "explanation": "Area = π x (0.15 m)² = 0.07069 m². Q = A x V = 0.07069 m² x 1.5 m/s = 0.1060 m³/s = 106.0 L/s.",
+    "steps": [
+     {
+      "l": "Given",
+      "c": "Pipe diameter 300 mm = 0.3 m; velocity 1.5 m/s."
+     },
+     {
+      "l": "Cross-sectional area",
+      "c": "A = 3.14159 x (0.15 m)^2 = 0.07069 m2."
+     },
+     {
+      "l": "Flow rate",
+      "c": "Q = 0.07069 x 1.5 = 0.1060 m3/s."
+     },
+     {
+      "l": "Convert to L/s",
+      "c": "0.1060 m3/s x 1,000 = 106.0 L/s (option B)."
+     }
+    ]
+   }
+  },
+  {
+   "id": 184270,
+   "bankKey": "class2-water-dist",
+   "questionNum": 413,
+   "verdict": "WRONG",
+   "note": "Key (27.5 m/s) is correct but the explanation contains stray 'let's re-check the correctIndex' text that must be removed.",
+   "original": {
+    "question": "A water distribution system has a pump operating at 1,750 rpm. If the pump impeller diameter is 30 cm, what is the tip speed of the impeller in m/s?",
+    "options": [
+     "18.3 m/s.",
+     "27.5 m/s.",
+     "36.7 m/s.",
+     "55.0 m/s."
+    ],
+    "correctIndex": 1,
+    "explanation": "Tip speed (v) = π * Diameter * RPM / 60. Diameter = 30 cm = 0.3 m. v = 3.14159 * 0.3 m * 1750 rpm / 60 s/min = 27.48 m/s. Let's re-check the correctIndex. If the correctIndex is 2, the answer is 36.7 m/s. This implies a different calculation. Let's re-calculate. Tip speed = (pi * D * N) / 60, where D is diameter in meters and N is RPM. Tip speed = (3.14159 * 0.3 m * 1750 rpm) / 60 s/min = 27.48 m/s. The closest option is 27.5 m/s. Let's adjust the correctIndex to 1."
+   },
+   "fix": {
+    "question": "A water distribution system has a pump operating at 1,750 rpm. If the pump impeller diameter is 30 cm, what is the tip speed of the impeller in m/s?",
+    "options": [
+     "18.3 m/s.",
+     "27.5 m/s.",
+     "36.7 m/s.",
+     "55.0 m/s."
+    ],
+    "correctIndex": 1,
+    "explanation": "Tip speed = π x D x N / 60 = 3.14159 x 0.3 m x 1750 / 60 = 27.5 m/s.",
+    "steps": [
+     {
+      "l": "Given",
+      "c": "Impeller diameter 30 cm = 0.3 m; speed 1,750 rpm."
+     },
+     {
+      "l": "Circumference",
+      "c": "pi x 0.3 m = 0.9425 m per revolution."
+     },
+     {
+      "l": "Compute",
+      "c": "0.9425 m x 1,750 rev/min = 1,649.3 m/min; / 60 = 27.5 m/s."
+     },
+     {
+      "l": "Answer",
+      "c": "27.5 m/s (option B)."
+     }
+    ]
+   }
+  },
+  {
+   "id": 184276,
+   "bankKey": "class2-water-dist",
+   "questionNum": 419,
+   "verdict": "UNITS",
+   "note": "Canadian bank uses US gpm, feet and HP. Converted to SI: 30 L/s against 45 m head, 75% efficiency. P = 1000 x 9.81 x 0.030 x 45 = 13.24 kW hydraulic; /0.75 = 17.7 kW. Explanation of original also contained stray 're-check correctIndex' text.",
+   "original": {
+    "question": "A water distribution system has a pump that delivers 500 US GPM against a total head of 150 feet. If the pump efficiency is 75%, what is the motor horsepower required?",
+    "options": [
+     "25.3 HP.",
+     "31.6 HP.",
+     "42.1 HP.",
+     "50.5 HP."
+    ],
+    "correctIndex": 0,
+    "explanation": "Motor HP = (Flow (GPM) * Head (ft)) / (3960 * Efficiency). Motor HP = (500 GPM * 150 ft) / (3960 * 0.75) = 75000 / 2970 = 25.25 HP. Let's re-check the correctIndex. If the correctIndex is 2, the answer is 42.1 HP. This implies a different calculation. Let's re-calculate. Motor HP = (Q * H) / (3960 * Eff). Q = 500 GPM, H = 150 ft, Eff = 0.75. Motor HP = (500 * 150) / (3960 * 0.75) = 75000 / 2970 = 25.25 HP. The closest option is 25.3 HP. Let's adjust the correctIndex to 0."
+   },
+   "fix": {
+    "question": "A water distribution system has a pump that delivers 30 L/s against a total head of 45 meters. If the pump efficiency is 75%, what is the motor power required? (Water density = 1000 kg/m³, g = 9.81 m/s²)",
+    "options": [
+     "17.7 kW",
+     "13.2 kW",
+     "23.6 kW",
+     "35.3 kW"
+    ],
+    "correctIndex": 0,
+    "explanation": "Water power = ρ g Q H = 1000 x 9.81 x 0.030 m³/s x 45 m = 13,243 W = 13.24 kW. Motor power = 13.24 / 0.75 = 17.7 kW.",
+    "steps": [
+     {
+      "l": "Given",
+      "c": "Flow 30 L/s = 0.030 m3/s, head 45 m, efficiency 75 percent."
+     },
+     {
+      "l": "Water power",
+      "c": "1000 x 9.81 x 0.030 x 45 = 13,243 W = 13.24 kW."
+     },
+     {
+      "l": "Apply efficiency",
+      "c": "13.24 kW / 0.75 = 17.7 kW."
+     },
+     {
+      "l": "Answer",
+      "c": "17.7 kW (option A)."
+     }
+    ]
+   }
+  },
+  {
+   "id": 184289,
+   "bankKey": "class2-water-dist",
+   "questionNum": 432,
+   "verdict": "WRONG",
+   "note": "Key (628,318 L) is correct: pi x 5^2 x 8 = 628.3 m3 = 628,318 L. Explanation wrongly states 628.3185 x 1000 = 6,283,185 L, contradicting the key.",
+   "original": {
+    "question": "Calculate the volume (in litres) of a cylindrical water storage tank with a diameter of 10 meters and a height of 8 meters.",
+    "options": [
+     "628,318 litres",
+     "800,000 litres",
+     "6,283,185 litres",
+     "8,000,000 litres"
+    ],
+    "correctIndex": 0,
+    "explanation": "Volume of cylinder = π * (radius)^2 * height. Radius = 10m / 2 = 5m. Volume = 3.14159 * (5m)^2 * 8m = 628.3185 cubic meters. 1 cubic meter = 1000 litres. So, 628.3185 * 1000 = 6,283,185 litres."
+   },
+   "fix": {
+    "question": "Calculate the volume (in litres) of a cylindrical water storage tank with a diameter of 10 meters and a height of 8 meters.",
+    "options": [
+     "628,318 litres",
+     "800,000 litres",
+     "6,283,185 litres",
+     "8,000,000 litres"
+    ],
+    "correctIndex": 0,
+    "explanation": "Volume = π x r² x h = 3.14159 x (5 m)² x 8 m = 628.3 m³. 628.3185 m³ x 1000 L/m³ = 628,318 L.",
+    "steps": [
+     {
+      "l": "Given",
+      "c": "Cylindrical tank, diameter 10 m, height 8 m."
+     },
+     {
+      "l": "Radius",
+      "c": "10 m / 2 = 5 m."
+     },
+     {
+      "l": "Compute volume",
+      "c": "3.14159 x 25 m2 x 8 m = 628.32 m3."
+     },
+     {
+      "l": "Convert to litres",
+      "c": "628.32 m3 x 1,000 = 628,318 L."
+     },
+     {
+      "l": "Answer",
+      "c": "628,318 litres (option A)."
+     }
+    ]
+   }
+  },
+  {
+   "id": 184293,
+   "bankKey": "class2-water-dist",
+   "questionNum": 436,
+   "verdict": "UNCLEAR",
+   "note": "Two defensible first steps: checking the customer's shut-off valve and for visible leaks (option B) is the standard first check to separate a customer-side problem from a system problem; reviewing system pressure/valve status (D) is also defensible. Reworded to remove ambiguity.",
+   "original": {
+    "question": "When responding to a 'no water' complaint from a customer, what should be the first step in troubleshooting?",
+    "options": [
+     "Immediately dispatch a crew to excavate the service line.",
+     "Check the customer's main shut-off valve and look for visible leaks.",
+     "Contact the local fire department to check hydrant pressure.",
+     "Review system pressure and valve status in the immediate area."
+    ],
+    "correctIndex": 3,
+    "explanation": "The first step should be to check system-wide conditions to determine if it's an isolated issue or a broader problem, such as a closed valve, main break, or pump failure affecting the area."
+   },
+   "fix": {
+    "question": "A customer calls to report 'no water'. Before visiting the property, what should the operator check first to determine whether the problem is system-wide or isolated?",
+    "options": [
+     "Immediately dispatch a crew to excavate the service line.",
+     "Check the customer's main shut-off valve and look for visible leaks.",
+     "Contact the local fire department to check hydrant pressure.",
+     "Review system pressure and valve status in the immediate area."
+    ],
+    "correctIndex": 3,
+    "explanation": "The first step is to check system conditions (pressure, closed valves, main breaks, pump failures) to determine whether the problem is isolated or affects the wider area, before dispatching a crew.",
+    "steps": null
+   }
+  },
+  {
+   "id": 184295,
+   "bankKey": "class2-water-dist",
+   "questionNum": 438,
+   "verdict": "UNITS",
+   "note": "Distractor uses 'below 20 psi' in a Canadian (metric) bank. Replaced with a metric, clearly non-adverse option.",
+   "original": {
+    "question": "Which of the following would be considered an adverse water quality incident under O. Reg. 170/03 that requires immediate notification?",
+    "options": [
+     "A slight increase in water hardness reported by a customer.",
+     "A confirmed E. coli presence in a distribution system sample.",
+     "A temporary drop in water pressure below 20 psi during peak demand.",
+     "A customer complaint about discolored water due to flushing."
+    ],
+    "correctIndex": 1,
+    "explanation": "A confirmed E. coli presence indicates fecal contamination and is a critical adverse water quality incident requiring immediate notification to the MECP and the Medical Officer of Health, as per O. Reg. 170/03."
+   },
+   "fix": {
+    "question": "Which of the following would be considered an adverse water quality incident under O. Reg. 170/03 that requires immediate notification?",
+    "options": [
+     "A slight increase in water hardness reported by a customer.",
+     "A confirmed E. coli presence in a distribution system sample.",
+     "A slight, short-lived pressure fluctuation of about 20 kPa during peak demand.",
+     "A customer complaint about discolored water due to flushing."
+    ],
+    "correctIndex": 1,
+    "explanation": "A confirmed E. coli presence indicates fecal contamination and is an adverse result requiring immediate notification to the MECP and the Medical Officer of Health, as per O. Reg. 170/03.",
+    "steps": null
+   }
+  },
+  {
+   "id": 184304,
+   "bankKey": "class2-water-dist",
+   "questionNum": 447,
+   "verdict": "WRONG",
+   "note": "Red water in iron mains comes from corrosion and release of iron from tubercles/scale; the primary control is stable water chemistry (pH/alkalinity, corrosion control) and stable residual (option B). Polyphosphate sequestering is used for dissolved iron from the source and can actually dissolve scale and worsen red water in corroding iron mains. Key moved to B.",
+   "original": {
+    "question": "What is the most effective way to prevent 'red water' complaints in a distribution system with iron pipes?",
+    "options": [
+     "Increasing the velocity of water flow through the pipes.",
+     "Maintaining a stable disinfectant residual and pH to minimize corrosion.",
+     "Periodically reversing the flow direction in the mains.",
+     "Adding a sequestering agent to bind dissolved iron."
+    ],
+    "correctIndex": 3,
+    "explanation": "Adding a sequestering agent (like polyphosphate) can bind with dissolved iron and manganese, keeping them in solution and preventing them from precipitating and causing discolored water (red water). Maintaining stable water chemistry also helps."
+   },
+   "fix": {
+    "question": "What is the most effective way to prevent 'red water' complaints in a distribution system with iron pipes?",
+    "options": [
+     "Increasing the velocity of water flow through the pipes.",
+     "Maintaining a stable disinfectant residual and pH to minimize corrosion.",
+     "Periodically reversing the flow direction in the mains.",
+     "Adding a sequestering agent to bind dissolved iron."
+    ],
+    "correctIndex": 1,
+    "explanation": "Red water in cast/ductile iron mains results from corrosion and release of iron scale. Controlling corrosion with stable pH, alkalinity and disinfectant residual, and avoiding flow reversals/hydraulic disturbances, addresses the cause. Sequestering agents mainly address dissolved iron from the source and do not stop pipe corrosion.",
+    "steps": null
+   }
+  },
+  {
+   "id": 184309,
+   "bankKey": "class2-water-dist",
+   "questionNum": 452,
+   "verdict": "UNCLEAR",
+   "note": "Ontario has no single provincial minimum; MECP design guidance and most municipal standards specify about 1.7 m of cover, not 1.5 m. Question states it as a fixed minimum and is tagged as a calculation.",
+   "original": {
+    "question": "When installing a new water service line, what is the minimum required depth of cover to protect against freezing in Ontario?",
+    "options": [
+     "0.6 meters (2 feet)",
+     "0.9 meters (3 feet)",
+     "1.2 meters (4 feet)",
+     "1.5 meters (5 feet)"
+    ],
+    "correctIndex": 3,
+    "explanation": "While specific depths can vary by municipality and local frost lines, a minimum of 1.5 meters (5 feet) of cover is a common standard in Ontario to protect water mains and service lines from freezing."
+   },
+   "fix": {
+    "question": "What minimum depth of cover is commonly specified in Ontario municipal standards and MECP design guidance for water mains and services to protect against frost?",
+    "options": [
+     "0.6 m",
+     "1.2 m",
+     "1.7 m",
+     "2.4 m"
+    ],
+    "correctIndex": 2,
+    "explanation": "Ontario frost penetration is deep enough that municipal standards and the MECP Design Guidelines for Drinking-Water Systems commonly require about 1.7 m of cover over water mains and services. Local standards may vary.",
+    "steps": null
+   }
+  },
+  {
+   "id": 184318,
+   "bankKey": "class2-water-dist",
+   "questionNum": 461,
+   "verdict": "UNCLEAR",
+   "note": "Question is internally inconsistent ('filled twice and emptied once' does not define what the tank supplies); explanation contains self-correcting 'Wait' text and first computes 2,000 then 1,500. Reworded so one reading exists.",
+   "original": {
+    "question": "Calculate the average daily water usage (in m³/day) for a community if a 500,000-litre storage tank is filled twice a day and emptied once a day, with an additional 1,000 m³ supplied directly from the treatment plant daily.",
+    "options": [
+     "1,500 m³/day",
+     "2,000 m³/day",
+     "1,250 m³/day",
+     "1,750 m³/day"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tank fills twice: 2 * 500,000 L = 1,000,000 L = 1,000 m³. Additional supply = 1,000 m³. Total daily usage = 1,000 m³ (from tank fills) + 1,000 m³ (direct supply) = 2,000 m³/day. Wait, the tank is filled twice and emptied once, meaning 500,000 L is used from the tank. So, 500,000 L (from tank) + 1,000,000 L (direct supply) = 1,500,000 L = 1,500 m³/day. The tank volume is 500,000L. If it's filled twice and emptied once, it means 500,000L is drawn from the tank. So, 500 m³ (from tank) + 1,000 m³ (direct) = 1,500 m³/day."
+   },
+   "fix": {
+    "question": "A community's 500,000 L storage tank is drawn down and refilled twice per day, supplying customers each time, while an additional 1,000 m³/day is supplied directly from the treatment plant to the distribution system. What is the average daily water usage?",
+    "options": [
+     "1,500 m³/day",
+     "2,000 m³/day",
+     "1,250 m³/day",
+     "1,750 m³/day"
+    ],
+    "correctIndex": 1,
+    "explanation": "Tank supply: 2 x 500,000 L = 1,000,000 L = 1,000 m³/day. Direct supply = 1,000 m³/day. Total = 2,000 m³/day.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Tank volume supplied per day = 2 x 500,000 L = 1,000,000 L = 1,000 m³."
+     },
+     {
+      "l": "Step 2",
+      "c": "Direct supply = 1,000 m³/day."
+     },
+     {
+      "l": "Step 3",
+      "c": "Total = 1,000 + 1,000 = 2,000 m³/day."
+     }
+    ]
+   }
+  },
+  {
+   "id": 184326,
+   "bankKey": "class2-water-dist",
+   "questionNum": 469,
+   "verdict": "WRONG",
+   "note": "MECP 'Practices for Collection and Handling of Drinking Water Samples' and Public Health Ontario give a 48 hour maximum holding time for total coliform/E. coli (start of analysis within 48 h of collection). 24 h is not the limit, and 48 is not offered. Schedule 10 citation also unverified (the hold time is in MECP guidance, not Sched. 10).",
+   "original": {
+    "question": "According to O. Reg. 170/03, what is the maximum holding time for a water sample collected for microbiological analysis before it must be analyzed?",
+    "options": [
+     "6 hours",
+     "12 hours",
+     "24 hours",
+     "30 hours"
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 170/03, Schedule 10, specifies that water samples collected for microbiological analysis (E. coli and total coliforms) must be analyzed within 24 hours of collection."
+   },
+   "fix": {
+    "question": "According to MECP drinking water sample handling guidance, what is the maximum holding time between collection and the start of microbiological analysis (total coliforms and E. coli)?",
+    "options": [
+     "12 hours",
+     "24 hours",
+     "48 hours",
+     "72 hours"
+    ],
+    "correctIndex": 2,
+    "explanation": "MECP guidance and Public Health Ontario specify that microbiological analysis must begin within 48 hours of sample collection; results outside the hold time are not valid for regulatory purposes. Samples should be kept cool and delivered to the lab as soon as possible.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "This is a recall item, no calculation."
+     },
+     {
+      "l": "Step 2",
+      "c": "MECP handling guidance sets the maximum holding time for total coliform and E. coli at 48 hours."
+     },
+     {
+      "l": "Step 3",
+      "c": "Correct answer: 48 hours."
+     }
+    ]
+   }
+  },
+  {
+   "id": 184337,
+   "bankKey": "class2-water-dist",
+   "questionNum": 480,
+   "verdict": "JURISDICTION",
+   "note": "Answer is fine, but the explanation cites the Sustainable Water and Sewage Systems Act, 2002, which was never proclaimed and was repealed by the Water Opportunities Act, 2010. Current Ontario basis is the Safe Drinking Water Act, 2002 Part III (financial plans) and O. Reg. 453/07.",
+   "original": {
+    "question": "What is \"full cost recovery\" for water services?",
+    "options": [
+     "Recovering the full cost of water treatment chemicals",
+     "Setting water rates to cover all costs: operations, maintenance, administration, debt service, capital replacement (depreciation), and regulatory compliance — sustainable utility financing",
+     "Only recovering operating costs",
+     "Government subsidies cover all costs"
+    ],
+    "correctIndex": 1,
+    "explanation": "Full cost recovery (Sustainable Water and Sewage Systems Act): rates must cover: O&M (operations, maintenance), administration, debt service, capital renewal/replacement (based on asset management), source protection, and regulatory compliance. Prevents infrastructure deficit accumulation."
+   },
+   "fix": {
+    "question": "What is \"full cost recovery\" for water services?",
+    "options": [
+     "Recovering the full cost of water treatment chemicals",
+     "Setting water rates to cover all costs: operations, maintenance, administration, debt service, capital replacement (depreciation), and regulatory compliance — sustainable utility financing",
+     "Only recovering operating costs",
+     "Government subsidies cover all costs"
+    ],
+    "correctIndex": 1,
+    "explanation": "Full cost recovery (Ontario: Safe Drinking Water Act, 2002 Part III and O. Reg. 453/07 financial plans): rates must cover O&M, administration, debt service, capital renewal/replacement (based on asset management), source protection, and regulatory compliance. Prevents infrastructure deficit accumulation.",
+    "steps": null
+   }
+  },
+  {
+   "id": 184342,
+   "bankKey": "class2-water-dist",
+   "questionNum": 485,
+   "verdict": "UNITS",
+   "note": "US customary units (GPM, feet, HP, lb/gal) in an Ontario bank; explanation is also a long self-contradicting scratch calculation. Converted to metric: P = rho g Q H / eta = 9.81 x 0.030 x 35 / 0.75 = 13.7 kW.",
+   "original": {
+    "question": "A pump is delivering 500 GPM against a total head of 120 feet. If the pump efficiency is 75%, what is the brake horsepower required at the pump shaft? (Assume water density = 8.34 lbs/gallon)",
+    "options": [
+     "20.2 HP",
+     "25.7 HP",
+     "30.5 HP",
+     "38.1 HP"
+    ],
+    "correctIndex": 0,
+    "explanation": "Horsepower (HP) = (Flow (GPM) x Head (ft) x Specific Gravity) / (3960 x Efficiency). For water, Specific Gravity is 1. HP = (500 GPM x 120 ft) / (3960 x 0.75) = 60000 / 2970 = 20.2 HP. This is the water horsepower. Motor HP = Water HP / Efficiency = 20.2 / 0.75 = 26.9 HP. Let's re-calculate using the direct formula for motor HP. Motor HP = (GPM x Head) / (3960 x Efficiency) = (500 GPM * 120 ft) / (3960 * 0.75) = 60000 / 2970 = 20.2 HP. This is the water horsepower. The question asks for motor horsepower. Motor HP = (GPM x Head) / (3960 x Efficiency) = (500 x 120) / (3960 x 0.75) = 60000 / 2970 = 20.20 HP. This is the water horsepower. The motor horsepower is the water horsepower divided by the motor efficiency. Motor HP = 20.20 / 1 (assuming 100% motor efficiency, but pump efficiency is given). The formula for Brake Horsepower (BHP), which is the motor's output, is (Flow (GPM) * Head (feet)) / (3960 * Pump Efficiency). So, BHP = (500 GPM * 120 ft) / (3960 * 0.75) = 60000 / 2970 = 20.20 HP. Re-evaluating the options. Let's assume the question meant Brake Horsepower. The closest option is 20.2 HP. Let's re-check the calculation. Water HP = (500 GPM * 120 ft) / 3960 = 60000 / 3960 = 15.15 HP. Brake HP (motor output) = Water HP / Pump Efficiency = 15.15 / 0.75 = 20.2 HP. The options are a bit off if this is the case. Let's assume the question is asking for the input power to the motor, which would be Brake HP / Motor Efficiency. However, only pump efficiency is given. Let's re-evaluate the calculation based on the options provided. If the answer is 30.5 HP, then (500 * 120) / (3960 * Efficiency) = 30.5. 60000 / (3960 * Efficiency) = 30.5. 3960 * Efficiency = 60000 / 30.5 = 1967.2. Efficiency = 1967.2 / 3960 = 0.496. This is not 75%. Let's assume the question means 'wire to water' efficiency, or the overall efficiency. If 75% is the overall efficiency, then Motor HP = (500 * 120) / (3960 * 0.75) = 60000 / 2970 = 20.2 HP. This is not among the options as a correct answer. Let's re-examine the question and options. If the question is asking for the 'input' horsepower to the pump (i.e., the motor's output or Brake Horsepower), then: BHP = (Flow (GPM) x Head (ft)) / (3960 x Pump Efficiency) = (500 GPM x 120 ft) / (3960 x 0.75) = 60000 / 2970 = 20.20 HP. This is option A. Let's re-check the provided correct answer of 2. If the answer is 25.7 HP, then 25.7 = (500 * 120) / (3960 * Eff). 25.7 = 60000 / (3960 * Eff). 3960 * Eff = 60000 / 25.7 = 2334.6. Eff = 2334.6 / 3960 = 0.59. Not 75%. Let's assume the correct answer is 30.5 HP. This implies a different formula or interpretation. Let's use the formula: Motor HP = (GPM * Head * Specific Gravity) / (3960 * Pump Efficiency). Assuming Specific Gravity = 1. Motor HP = (500 GPM * 120 ft * 1) / (3960 * 0.75) = 60000 / 2970 = 20.20 HP. This is still 20.2 HP. Let's consider if the 8.34 lbs/gallon is used. Water HP = (500 gal/min * 8.34 lbs/gal * 120 ft) / 33000 ft-lbs/min-HP = 500040 / 33000 = 15.15 HP. Motor HP = 15.15 HP / 0.75 = 20.2 HP. There seems to be a discrepancy with the provided correct answer of 2 (25.7 HP). Let's assume the question implicitly asks for the input power to the motor, which would be the Brake Horsepower (BHP). BHP = (Flow (GPM) * Head (ft)) / (3960 * Pump Efficiency). BHP = (500 GPM * 120 ft) / (3960 * 0.75) = 60000 / 2970 = 20.20 HP. This is option A. If the correct answer is indeed 2 (25.7 HP), then the efficiency would be different. Let's recalculate assuming the provided answer is correct, and see what efficiency it implies. 25.7 HP = (500 GPM * 120 ft) / (3960 * Efficiency). 25.7 = 60000 / (3960 * Efficiency). 3960 * Efficiency = 60000 / 25.7 = 2334.6. Efficiency = 2334.6 / 3960 = 0.59 (59%). This contradicts the given 75% efficiency. Let's assume there's a typo in the options or the intended answer. Given the calculation, 20.2 HP is the correct result based on the provided data. However, if the question is designed to have 30.5 HP as the answer, then there must be a different set of input values or an error in the question's premise. Let's assume the question meant 'motor input power' and the 75% was 'overall efficiency'. If the question is asking for the motor horsepower required, it is usually referring to the brake horsepower (BHP) of the pump. BHP = (Q * H * SG) / (3960 * Eff). BHP = (500 GPM * 120 ft * 1) / (3960 * 0.75) = 60000 / 2970 = 20.20 HP.  Let's re-check the options and the correct index. If the correct index is 2, meaning 30.5 HP. Let's work backwards. If Motor HP = 30.5, then 30.5 = (500 * 120) / (3960 * Eff). 30.5 = 60000 / (3960 * Eff). 3960 * Eff = 60000 / 30.5 = 1967.2. Eff = 1967.2 / 3960 = 0.496 or 49.6%. This is not 75%. There is a definite mismatch between the question's parameters and the provided correct answer index. I will assume the question asks for the Brake Horsepower (BHP) and use the given efficiency. BHP = (Flow (GPM) x Head (ft)) / (3960 x Pump Efficiency) = (500 GPM x 120 ft) / (3960 x 0.75) = 60000 / 2970 = 20.20 HP. Given the options, and the typical way these questions are phrased, 20.2 HP is the calculated answer. I will set the correct index to 0 for 20.2 HP based on calculation. If the intent was for 30.5 HP, the efficiency or head would need to be different. Let's assume the question is asking for the motor horsepower (BHP) and the calculation is as follows: BHP = (Flow (GPM) × Head (ft)) / (3960 × Pump Efficiency) = (500 GPM × 120 ft) / (3960 × 0.75) = 60000 / 2970 = 20.20 HP. Given the options, and the common practice in these exams, the closest and most accurate calculation is 20.2 HP. I will adjust the correct index to reflect this calculation. Let's try to find a way to get 30.5 HP. If the efficiency was lower, say 50%, then (500*120)/(3960*0.5) = 60000/1980 = 30.3 HP. This is very close to 30.5 HP. It's possible the efficiency was intended to be 50% or there's a slight rounding in the options. However, since 75% is given, I must stick to that. If the correct answer is indeed 30.5 HP, it implies an efficiency of approximately 50%. I will proceed with the calculation based on the given 75% efficiency and select the closest option or adjust the correct index to match the calculation.  Let's re-evaluate the options and the provided 'correctIndex'. If the correctIndex is 2 (30.5 HP), then the calculation must yield 30.5 HP. Let's work backward. If 30.5 HP is the answer, and HP = (GPM * Head) / (3960 * Efficiency), then 30.5 = (500 * 120) / (3960 * Efficiency). 30.5 = 60000 / (3960 * Efficiency). 3960 * Efficiency = 60000 / 30.5 = 1967.2. Efficiency = 1967.2 / 3960 = 0.4967 or 49.67%. This contradicts the given 75% efficiency. There is a clear discrepancy. I will assume the question intends for the calculation to be based on the given 75% efficiency, and the correct option should reflect that. Therefore, 20.2 HP is the calculated answer. I will set the correctIndex to 0. If the question was designed for 30.5 HP, the efficiency given would need to be around 50%. I must follow the given parameters.  Let's make a final decision. Given the prompt rules, I need to provide a correct calculation. The formula for Brake Horsepower (BHP), which is the motor horsepower required to drive the pump, is: BHP = (Flow (GPM) × Head (ft)) / (3960 × Pump Efficiency).  BHP = (500 GPM × 120 ft) / (3960 × 0.75) = 60000 / 2970 = 20.20 HP.  Therefore, option A (20.2 HP) is the mathematically correct answer based on the provided information. I will set the correctIndex to 0."
+   },
+   "fix": {
+    "question": "A pump delivers 30 L/s against a total head of 35 m. If the pump efficiency is 75%, what is the power required at the pump shaft (brake power)?",
+    "options": [
+     "10.3 kW",
+     "13.7 kW",
+     "18.3 kW",
+     "7.7 kW"
+    ],
+    "correctIndex": 1,
+    "explanation": "Water power = 9.81 x 0.030 m³/s x 35 m = 10.3 kW. Brake power = water power / pump efficiency = 10.3 / 0.75 = 13.7 kW.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Q = 30 L/s = 0.030 m³/s"
+     },
+     {
+      "l": "Step 2",
+      "c": "Water power = 9.81 x 0.030 x 35 = 10.3 kW"
+     },
+     {
+      "l": "Step 3",
+      "c": "Brake power = 10.3 / 0.75 = 13.7 kW"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240368,
+   "bankKey": "class2-water-dist",
+   "questionNum": 501,
+   "verdict": "WRONG",
+   "note": "Hazen-Williams (SI, Q in m³/s, D in m) gives 8.98 m (about 9.0 m), not 2.8 m; no option is correct. The steps admit 'missing units scaling' and force 2.8.",
+   "original": {
+    "question": "A 500 m length of 200 mm diameter ductile iron pipe carries water at a flow rate of 60 L/s. Using a Hazen-Williams coefficient (C) of 130, what is the head loss (in metres) through the pipe? (Use the Hazen-Williams formula: hL = 10.67 x L x Q^1.852 / (C^1.852 x D^4.87), where L = length in m, Q = flow in L/s, D = diameter in mm.)",
+    "options": [
+     "4.2",
+     "2.8",
+     "5.6",
+     "7.5"
+    ],
+    "correctIndex": 1,
+    "explanation": "Plug the values into the Hazen-Williams formula and solve for the head loss."
+   },
+   "fix": {
+    "question": "A 500 m length of 200 mm diameter ductile iron pipe carries water at 60 L/s. Using a Hazen-Williams coefficient (C) of 130, what is the head loss (in metres)? (hL = 10.67 x L x Q^1.852 / (C^1.852 x D^4.87), with L in m, Q in m³/s, D in m)",
+    "options": [
+     "4.2",
+     "9.0",
+     "5.6",
+     "7.5"
+    ],
+    "correctIndex": 1,
+    "explanation": "hL = 10.67 x 500 x 0.06^1.852 / (130^1.852 x 0.2^4.87) = 29.1 / 3.24 = 9.0 m.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Q = 0.060 m³/s; D = 0.200 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "Q^1.852 = 0.005459; C^1.852 = 8,223; D^4.87 = 3.945 x 10^-4"
+     },
+     {
+      "l": "Step 3",
+      "c": "Numerator = 10.67 x 500 x 0.005459 = 29.1; denominator = 8,223 x 3.945 x 10^-4 = 3.24"
+     },
+     {
+      "l": "Step 4",
+      "c": "hL = 29.1 / 3.24 = 9.0 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240369,
+   "bankKey": "class2-water-dist",
+   "questionNum": 502,
+   "verdict": "WRONG",
+   "note": "140 + 9.81 x 10 = 238.1 kPa, not 239; rounding in the key and steps is wrong. Option should read 238 kPa.",
+   "original": {
+    "question": "A fire hydrant requires a minimum flow of 80 L/s at 140 kPa. If the main is at ground elevation and the hydrant is 10 m above main elevation, what is the minimum static pressure required at the main?",
+    "options": [
+     "140 kPa",
+     "185 kPa",
+     "239 kPa",
+     "1850 kPa"
+    ],
+    "correctIndex": 2,
+    "explanation": "Account for elevation: 10 m × 9.81 kPa/m ≈ 98 kPa pressure loss, add to hydrant pressure."
+   },
+   "fix": {
+    "question": "A fire hydrant requires a minimum flow of 80 L/s at 140 kPa. If the main is at ground elevation and the hydrant is 10 m above main elevation, what is the minimum static pressure required at the main?",
+    "options": [
+     "140 kPa",
+     "185 kPa",
+     "238 kPa",
+     "1850 kPa"
+    ],
+    "correctIndex": 2,
+    "explanation": "Elevation pressure: 10 m x 9.81 kPa/m = 98.1 kPa; add to hydrant pressure: 140 + 98.1 = 238.1, about 238 kPa.",
+    "steps": [
+     {
+      "l": "Step 1 — Elevation pressure",
+      "c": "10 m x 9.81 kPa/m = 98.1 kPa"
+     },
+     {
+      "l": "Step 2 — Add",
+      "c": "140 + 98.1 = 238.1 kPa"
+     },
+     {
+      "l": "Step 3 — Round",
+      "c": "About 238 kPa"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240370,
+   "bankKey": "class2-water-dist",
+   "questionNum": 503,
+   "verdict": "WRONG",
+   "note": "P = 9.81 x 0.035 x 28 / 0.8 = 12.02 kW; x 24 h = 288.4 kWh; x $0.15 = $43.26. Marked $53.09 is wrong and the steps are incoherent (0.334 kW, $1.20, $15.07, then 'matches $53.09').",
+   "original": {
+    "question": "A pump delivers 35 L/s of water against a total dynamic head of 28 m. If the pump operates at 80% efficiency and the electricity cost is $0.15 per kWh, what is the daily energy cost for 24 hours of operation?",
+    "options": [
+     "$42.32",
+     "$21.43",
+     "$74.10",
+     "$53.09"
+    ],
+    "correctIndex": 3,
+    "explanation": "Calculate power (kW), multiply by hours, and by electricity rate."
+   },
+   "fix": {
+    "question": "A pump delivers 35 L/s of water against a total dynamic head of 28 m. If the pump operates at 80% efficiency and electricity costs $0.15 per kWh, what is the daily energy cost for 24 hours of operation?",
+    "options": [
+     "$42.32",
+     "$21.43",
+     "$43.26",
+     "$74.10"
+    ],
+    "correctIndex": 2,
+    "explanation": "Power = 9.81 x 0.035 x 28 / 0.80 = 12.02 kW; energy = 12.02 x 24 = 288.4 kWh; cost = 288.4 x 0.15 = $43.26.",
+    "steps": [
+     {
+      "l": "Step 1 — Power",
+      "c": "P = 9.81 x 0.035 m³/s x 28 m / 0.80 = 12.02 kW"
+     },
+     {
+      "l": "Step 2 — Energy",
+      "c": "12.02 kW x 24 h = 288.4 kWh"
+     },
+     {
+      "l": "Step 3 — Cost",
+      "c": "288.4 x $0.15 = $43.26"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240372,
+   "bankKey": "class2-water-dist",
+   "questionNum": 505,
+   "verdict": "WRONG",
+   "note": "Hazen-Williams SI gives 11.8 m, not 11.2 m (steps contradict themselves: computes 0.00003 then 'approximately 11.2').",
+   "original": {
+    "question": "A pipe segment is 900 m long, has a diameter of 250 mm, and flows at 70 L/s. If Hazen-Williams C = 100, what is the head loss (in metres)? (Use hL = 10.67 × L × Q^1.852 / (C^1.852 × D^4.87))",
+    "options": [
+     "19.8",
+     "7.5",
+     "24.6",
+     "11.2"
+    ],
+    "correctIndex": 3,
+    "explanation": "Plug into the Hazen-Williams equation and solve."
+   },
+   "fix": {
+    "question": "A pipe segment is 900 m long, has a diameter of 250 mm, and flows at 70 L/s. If Hazen-Williams C = 100, what is the head loss (in metres)? (hL = 10.67 x L x Q^1.852 / (C^1.852 x D^4.87), Q in m³/s, D in m)",
+    "options": [
+     "19.8",
+     "7.5",
+     "24.6",
+     "11.8"
+    ],
+    "correctIndex": 3,
+    "explanation": "hL = 10.67 x 900 x 0.07^1.852 / (100^1.852 x 0.25^4.87) = 69.7 / 5.92 = 11.8 m.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Q = 0.070 m³/s; D = 0.250 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "Q^1.852 = 0.007263; C^1.852 = 5,058; D^4.87 = 1.169 x 10^-3"
+     },
+     {
+      "l": "Step 3",
+      "c": "Numerator = 10.67 x 900 x 0.007263 = 69.7; denominator = 5,058 x 1.169 x 10^-3 = 5.92"
+     },
+     {
+      "l": "Step 4",
+      "c": "hL = 69.7 / 5.92 = 11.8 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240374,
+   "bankKey": "class2-water-dist",
+   "questionNum": 507,
+   "verdict": "WRONG",
+   "note": "101 - 4 x 9.81 = 61.76 kPa, about 61.8; the marked 62.8 does not follow from the steps ('about 62.8').",
+   "original": {
+    "question": "Water is being delivered through a pump with a suction side at 101 kPa (atmospheric) and a static suction lift of 4 m. What is the absolute pressure (kPa) at the pump eye?",
+    "options": [
+     "40.2",
+     "62.8",
+     "120.3",
+     "101"
+    ],
+    "correctIndex": 1,
+    "explanation": "Each metre lift reduces pressure by ~9.81 kPa."
+   },
+   "fix": {
+    "question": "Water is being delivered through a pump with a suction side at 101 kPa (atmospheric) and a static suction lift of 4 m. What is the absolute pressure (kPa) at the pump eye, ignoring losses?",
+    "options": [
+     "40.2",
+     "61.8",
+     "120.3",
+     "101"
+    ],
+    "correctIndex": 1,
+    "explanation": "Each metre of lift reduces pressure by 9.81 kPa: 4 x 9.81 = 39.2 kPa; 101 - 39.2 = 61.8 kPa absolute.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "4 m x 9.81 kPa/m = 39.24 kPa"
+     },
+     {
+      "l": "Step 2",
+      "c": "101 - 39.24 = 61.76 kPa"
+     },
+     {
+      "l": "Step 3",
+      "c": "About 61.8 kPa absolute"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240377,
+   "bankKey": "class2-water-dist",
+   "questionNum": 510,
+   "verdict": "WRONG",
+   "note": "Hazen-Williams SI gives hL = 22.9 m = 225 kPa, not 14.2 kPa (steps contradict: computes 0.00056 m then 'chart value 1.45 m').",
+   "original": {
+    "question": "What is the friction loss (in kPa) from a 350 m run of 100 mm pipe with a flow rate of 18 L/s, Hazen-Williams C = 120? (1 m head = 9.81 kPa)",
+    "options": [
+     "33.0",
+     "7.8",
+     "14.2",
+     "22.7"
+    ],
+    "correctIndex": 2,
+    "explanation": "Calculate hL using Hazen-Williams, then multiply by 9.81 for kPa."
+   },
+   "fix": {
+    "question": "What is the friction loss (in kPa) from a 350 m run of 100 mm pipe with a flow rate of 18 L/s, Hazen-Williams C = 120? (1 m head = 9.81 kPa; hL = 10.67 x L x Q^1.852 / (C^1.852 x D^4.87), Q in m³/s, D in m)",
+    "options": [
+     "33.0",
+     "7.8",
+     "225",
+     "22.7"
+    ],
+    "correctIndex": 2,
+    "explanation": "hL = 10.67 x 350 x 0.018^1.852 / (120^1.852 x 0.1^4.87) = 22.9 m; 22.9 x 9.81 = 225 kPa.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Q = 0.018 m³/s; D = 0.100 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "Numerator = 10.67 x 350 x 5.872 x 10^-4 = 2.193; denominator = 7,090 x 1.349 x 10^-5 = 0.0956"
+     },
+     {
+      "l": "Step 3",
+      "c": "hL = 2.193 / 0.0956 = 22.9 m"
+     },
+     {
+      "l": "Step 4",
+      "c": "22.9 x 9.81 = 225 kPa"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240379,
+   "bankKey": "class2-water-dist",
+   "questionNum": 512,
+   "verdict": "WRONG",
+   "note": "Hazen-Williams SI gives 56.8 m (about 6.4 m/s in a 150 mm pipe); marked 9.1 is wrong, steps compute 0.001 and then 'correct' to 9.1.",
+   "original": {
+    "question": "A fire flow required at a site is 90 L/s. If water must travel 270 m through a 150 mm, C=110 main, what is the approximate head loss (in m) using Hazen-Williams?",
+    "options": [
+     "5.4",
+     "12.6",
+     "17.1",
+     "9.1"
+    ],
+    "correctIndex": 3,
+    "explanation": "Plug values into the Hazen-Williams formula."
+   },
+   "fix": {
+    "question": "A fire flow required at a site is 90 L/s. If water must travel 270 m through a 150 mm, C = 110 main, what is the approximate head loss (in m) using Hazen-Williams? (Q in m³/s, D in m)",
+    "options": [
+     "5.4",
+     "12.6",
+     "17.1",
+     "56.8"
+    ],
+    "correctIndex": 3,
+    "explanation": "hL = 10.67 x 270 x 0.09^1.852 / (110^1.852 x 0.15^4.87) = 33.3 / 0.586 = 56.8 m.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Q = 0.090 m³/s; D = 0.150 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "Q^1.852 = 0.011568; C^1.852 = 6,035; D^4.87 = 9.718 x 10^-5"
+     },
+     {
+      "l": "Step 3",
+      "c": "Numerator = 10.67 x 270 x 0.011568 = 33.3; denominator = 6,035 x 9.718 x 10^-5 = 0.586"
+     },
+     {
+      "l": "Step 4",
+      "c": "hL = 56.8 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240383,
+   "bankKey": "class2-water-dist",
+   "questionNum": 516,
+   "verdict": "WRONG",
+   "note": "Hazen-Williams SI gives 6.2 m, not 2.1 m (steps compute 0.000313 m then 'practical error adjustment').",
+   "original": {
+    "question": "A service lateral is 30 m long, 25 mm diameter, Hazen-Williams C = 110, with a flow rate of 0.8 L/s. Find the head loss in the lateral (in metres).",
+    "options": [
+     "1.2",
+     "2.1",
+     "4.1",
+     "5.8"
+    ],
+    "correctIndex": 1,
+    "explanation": "Apply Hazen-Williams with small diameter pipe."
+   },
+   "fix": {
+    "question": "A service lateral is 30 m long, 25 mm diameter, Hazen-Williams C = 110, with a flow rate of 0.8 L/s. Find the head loss in the lateral (in metres). (Q in m³/s, D in m)",
+    "options": [
+     "1.2",
+     "2.1",
+     "4.1",
+     "6.2"
+    ],
+    "correctIndex": 3,
+    "explanation": "hL = 10.67 x 30 x 0.0008^1.852 / (110^1.852 x 0.025^4.87) = 6.18 m.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Q = 0.0008 m³/s; D = 0.025 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "Q^1.852 = 1.839 x 10^-6; C^1.852 = 6,035; D^4.87 = 1.577 x 10^-8"
+     },
+     {
+      "l": "Step 3",
+      "c": "Numerator = 10.67 x 30 x 1.839 x 10^-6 = 5.886 x 10^-4; denominator = 9.52 x 10^-5"
+     },
+     {
+      "l": "Step 4",
+      "c": "hL = 6.2 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240384,
+   "bankKey": "class2-water-dist",
+   "questionNum": 517,
+   "verdict": "WRONG",
+   "note": "Same question as 186225: velocity head = 1.59²/19.62 = 0.129 m, not 0.80 m (steps even show 1.59²/19.62 'approx 0.80').",
+   "original": {
+    "question": "A 200 mm main (C = 120) is 400 m long and flows at 50 L/s. What is the velocity head (in m) at pipe outlet? (Velocity head h = v²/2g)",
+    "options": [
+     "0.80",
+     "3.23",
+     "2.44",
+     "1.60"
+    ],
+    "correctIndex": 0,
+    "explanation": "First calculate velocity, then velocity head."
+   },
+   "fix": {
+    "question": "A 200 mm main (C = 120) is 400 m long and flows at 50 L/s. What is the velocity head (in m) at pipe outlet? (Velocity head h = v²/2g)",
+    "options": [
+     "0.13",
+     "3.23",
+     "2.44",
+     "1.60"
+    ],
+    "correctIndex": 0,
+    "explanation": "Velocity = 1.59 m/s; velocity head = 1.59²/(2 x 9.81) = 0.13 m.",
+    "steps": [
+     {
+      "l": "Step 1 — Area",
+      "c": "A = π(0.2/2)² = 0.0314 m²"
+     },
+     {
+      "l": "Step 2 — Velocity",
+      "c": "v = 0.05/0.0314 = 1.59 m/s"
+     },
+     {
+      "l": "Step 3 — Velocity head",
+      "c": "h = 1.59²/(2 x 9.81) = 2.53/19.62 = 0.13 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240389,
+   "bankKey": "class2-water-dist",
+   "questionNum": 522,
+   "verdict": "WRONG",
+   "note": "Hazen-Williams SI with Q = 1.5 x 0.01767 = 0.02651 m³/s gives 4.0 m, not 2.25 m; steps use wrong intermediate values (130^1.852 = 8,223 not 7,303, 0.15^4.87 = 9.72e-5 not 0.00095).",
+   "original": {
+    "question": "A 250 m long section of 150 mm diameter ductile iron pipe carries water at a velocity of 1.5 m/s. Using a Hazen-Williams coefficient (C) of 130, what is the head loss due to friction in this section? (Use the Hazen-Williams formula: hL = 10.67 × L × Q^1.852 / (C^1.852 × D^4.87), with Q in m³/s, D in m, and L in m)",
+    "options": [
+     "4.87 m",
+     "2.25 m",
+     "1.42 m",
+     "0.78 m"
+    ],
+    "correctIndex": 1,
+    "explanation": "Hazen-Williams formula is applied stepwise, first converting all units and then calculating each value as per the formula."
+   },
+   "fix": {
+    "question": "A 250 m long section of 150 mm diameter ductile iron pipe carries water at a velocity of 1.5 m/s. Using a Hazen-Williams coefficient (C) of 130, what is the head loss due to friction in this section? (hL = 10.67 x L x Q^1.852 / (C^1.852 x D^4.87), with Q in m³/s, D in m, L in m)",
+    "options": [
+     "4.87 m",
+     "4.0 m",
+     "1.42 m",
+     "0.78 m"
+    ],
+    "correctIndex": 1,
+    "explanation": "Q = 1.5 x 0.01767 = 0.02651 m³/s; hL = 10.67 x 250 x 0.02651^1.852 / (130^1.852 x 0.15^4.87) = 3.21 / 0.799 = 4.0 m.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "D = 0.15 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "Q = 1.5 x π x 0.075² = 0.02651 m³/s"
+     },
+     {
+      "l": "Step 3",
+      "c": "Q^1.852 = 1.202 x 10^-3; C^1.852 = 8,223; D^4.87 = 9.718 x 10^-5"
+     },
+     {
+      "l": "Step 4",
+      "c": "Numerator = 3.21; denominator = 0.799; hL = 4.0 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240391,
+   "bankKey": "class2-water-dist",
+   "questionNum": 524,
+   "verdict": "WRONG",
+   "note": "Hazen-Williams SI gives 1.95 m, not 1.54 m (steps get 1.24 then 'correct value is approximately 1.54').",
+   "original": {
+    "question": "A 300 mm PVC water main, 600 m long, must carry 80 L/s. If the main has a Hazen-Williams C of 150, what is the friction head loss? (Use Hazen-Williams formula and Q in m³/s, D in m)",
+    "options": [
+     "3.05 m",
+     "0.92 m",
+     "5.98 m",
+     "1.54 m"
+    ],
+    "correctIndex": 3,
+    "explanation": "Units are converted, and the Hazen-Williams formula is applied."
+   },
+   "fix": {
+    "question": "A 300 mm PVC water main, 600 m long, must carry 80 L/s. If the main has a Hazen-Williams C of 150, what is the friction head loss? (Q in m³/s, D in m)",
+    "options": [
+     "3.05 m",
+     "0.92 m",
+     "5.98 m",
+     "1.95 m"
+    ],
+    "correctIndex": 3,
+    "explanation": "hL = 10.67 x 600 x 0.08^1.852 / (150^1.852 x 0.3^4.87) = 59.5 / 30.5 = 1.95 m.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Q = 0.08 m³/s; D = 0.3 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "Q^1.852 = 9.301 x 10^-3; C^1.852 = 10,718; D^4.87 = 2.842 x 10^-3"
+     },
+     {
+      "l": "Step 3",
+      "c": "Numerator = 59.5; denominator = 30.46"
+     },
+     {
+      "l": "Step 4",
+      "c": "hL = 1.95 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240393,
+   "bankKey": "class2-water-dist",
+   "questionNum": 526,
+   "verdict": "WRONG",
+   "note": "P = 9.81 x 0.12 x 25 / 0.85 = 34.62 kW; at $0.12/kWh the cost is $4.15/hr. None of the options is right; the steps themselves arrive at $4.15 and then keep $15.29.",
+   "original": {
+    "question": "A water utility uses a pump that delivers 120 L/s at a total dynamic head of 25 m. If the pump operates at 85% efficiency and electricity is $0.12 per kWh, what is the hourly energy cost to run the pump?",
+    "options": [
+     "$11.43/hr",
+     "$18.94/hr",
+     "$12.35/hr",
+     "$15.29/hr"
+    ],
+    "correctIndex": 3,
+    "explanation": "Convert flow and head to kW, account for efficiency, and multiply by cost."
+   },
+   "fix": {
+    "question": "A water utility uses a pump that delivers 120 L/s at a total dynamic head of 25 m. If the pump operates at 85% efficiency and electricity is $0.12 per kWh, what is the hourly energy cost to run the pump?",
+    "options": [
+     "$11.43/hr",
+     "$18.94/hr",
+     "$12.35/hr",
+     "$4.15/hr"
+    ],
+    "correctIndex": 3,
+    "explanation": "Power = 9.81 x 0.12 x 25 / 0.85 = 34.6 kW; cost = 34.6 kWh x $0.12 = $4.15 per hour.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Q = 0.12 m³/s; H = 25 m; efficiency = 0.85"
+     },
+     {
+      "l": "Step 2",
+      "c": "P = 9.81 x 0.12 x 25 / 0.85 = 34.62 kW"
+     },
+     {
+      "l": "Step 3",
+      "c": "Cost per hour = 34.62 x $0.12 = $4.15"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240398,
+   "bankKey": "class2-water-dist",
+   "questionNum": 531,
+   "verdict": "WRONG",
+   "note": "Hazen-Williams SI gives 5.51 m, not 4.88 m (steps divide by 3.55 after computing a denominator of 12.98 - inconsistent).",
+   "original": {
+    "question": "During peak demand, a 200 mm main is carrying 48 L/s over a distance of 400 m with a Hazen-Williams C of 120. What is the head loss?",
+    "options": [
+     "8.95 m",
+     "7.10 m",
+     "2.64 m",
+     "4.88 m"
+    ],
+    "correctIndex": 3,
+    "explanation": "Apply Hazen-Williams, convert units, and solve."
+   },
+   "fix": {
+    "question": "During peak demand, a 200 mm main is carrying 48 L/s over a distance of 400 m with a Hazen-Williams C of 120. What is the head loss? (Q in m³/s, D in m)",
+    "options": [
+     "8.95 m",
+     "7.10 m",
+     "2.64 m",
+     "5.51 m"
+    ],
+    "correctIndex": 3,
+    "explanation": "hL = 10.67 x 400 x 0.048^1.852 / (120^1.852 x 0.2^4.87) = 15.41 / 2.797 = 5.51 m.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Q = 0.048 m³/s; D = 0.2 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "Q^1.852 = 3.611 x 10^-3; C^1.852 = 7,090; D^4.87 = 3.945 x 10^-4"
+     },
+     {
+      "l": "Step 3",
+      "c": "Numerator = 15.41; denominator = 2.797"
+     },
+     {
+      "l": "Step 4",
+      "c": "hL = 5.51 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240400,
+   "bankKey": "class2-water-dist",
+   "questionNum": 533,
+   "verdict": "WRONG",
+   "note": "Hazen-Williams SI gives 10.43 m, not 17.23 m (steps divide by 24.43 then use 3.62).",
+   "original": {
+    "question": "A 500 m length of 250 mm pipe with a Hazen-Williams C of 100 delivers a flow of 90 L/s. What is the friction loss in metres?",
+    "options": [
+     "12.10 m",
+     "17.23 m",
+     "7.61 m",
+     "21.84 m"
+    ],
+    "correctIndex": 1,
+    "explanation": "Use Hazen-Williams, converting all units, and solve."
+   },
+   "fix": {
+    "question": "A 500 m length of 250 mm pipe with a Hazen-Williams C of 100 delivers a flow of 90 L/s. What is the friction loss in metres? (Q in m³/s, D in m)",
+    "options": [
+     "12.10 m",
+     "10.43 m",
+     "7.61 m",
+     "21.84 m"
+    ],
+    "correctIndex": 1,
+    "explanation": "hL = 10.67 x 500 x 0.09^1.852 / (100^1.852 x 0.25^4.87) = 61.7 / 5.92 = 10.4 m.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Q = 0.09 m³/s; D = 0.25 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "Q^1.852 = 0.011568; C^1.852 = 5,058; D^4.87 = 1.169 x 10^-3"
+     },
+     {
+      "l": "Step 3",
+      "c": "Numerator = 61.7; denominator = 5.92"
+     },
+     {
+      "l": "Step 4",
+      "c": "hL = 10.4 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240401,
+   "bankKey": "class2-water-dist",
+   "questionNum": 534,
+   "verdict": "WRONG",
+   "note": "(200/150)^4.87 = 4.06, not 7.6. Ratio of head losses is about 4.1 : 1.",
+   "original": {
+    "question": "You are comparing two pipes, one with a diameter of 150 mm and the other with 200 mm. At a flow rate of 0.08 m³/s, and both with Hazen-Williams C = 110, what is the ratio of the head losses for the 150 mm pipe to the 200 mm pipe over the same length?",
+    "options": [
+     "7.6 : 1",
+     "11.2 : 1",
+     "2.5 : 1",
+     "3.3 : 1"
+    ],
+    "correctIndex": 0,
+    "explanation": "Since hL ∝ 1/D^4.87 at constant Q and C, calculate the ratio."
+   },
+   "fix": {
+    "question": "You are comparing two pipes, one with a diameter of 150 mm and the other with 200 mm. At the same flow rate of 0.08 m³/s, and both with Hazen-Williams C = 110, what is the ratio of the head losses for the 150 mm pipe to the 200 mm pipe over the same length?",
+    "options": [
+     "2.5 : 1",
+     "11.2 : 1",
+     "4.1 : 1",
+     "7.6 : 1"
+    ],
+    "correctIndex": 2,
+    "explanation": "At constant Q, C and L, hL is proportional to 1/D^4.87, so ratio = (200/150)^4.87 = 1.333^4.87 = 4.06, about 4.1 : 1.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "hL1/hL2 = (D2/D1)^4.87"
+     },
+     {
+      "l": "Step 2",
+      "c": "(0.2/0.15)^4.87 = 1.333^4.87"
+     },
+     {
+      "l": "Step 3",
+      "c": "= 4.06, about 4.1 : 1"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240402,
+   "bankKey": "class2-water-dist",
+   "questionNum": 535,
+   "verdict": "WRONG",
+   "note": "Hazen-Williams SI gives 72.9 m, not 64.1 m. Also 'total daily friction loss' is meaningless: head loss is not cumulative over operating hours (12 h is a distractor that makes the question ambiguous).",
+   "original": {
+    "question": "A pumping station operates a booster pump for 12 hours each day, moving water at 82 L/s through a 175 mm diameter pipe for 800 m. If the Hazen-Williams C is 105, what is the total daily friction loss, in metres?",
+    "options": [
+     "27.9 m",
+     "45.6 m",
+     "64.1 m",
+     "102.3 m"
+    ],
+    "correctIndex": 2,
+    "explanation": "Apply Hazen-Williams for total head loss and multiply if multiple pipes or steps were required."
+   },
+   "fix": {
+    "question": "A booster pump moves water at 82 L/s through 800 m of 175 mm diameter pipe. If the Hazen-Williams C is 105, what is the friction head loss in the pipe while the pump is running? (Q in m³/s, D in m)",
+    "options": [
+     "27.9 m",
+     "45.6 m",
+     "72.9 m",
+     "102.3 m"
+    ],
+    "correctIndex": 2,
+    "explanation": "hL = 10.67 x 800 x 0.082^1.852 / (105^1.852 x 0.175^4.87) = 83.1 / 1.140 = 72.9 m.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Q = 0.082 m³/s; D = 0.175 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "Q^1.852 = 9.736 x 10^-3; C^1.852 = 5,537; D^4.87 = 2.059 x 10^-4"
+     },
+     {
+      "l": "Step 3",
+      "c": "Numerator = 83.1; denominator = 1.140"
+     },
+     {
+      "l": "Step 4",
+      "c": "hL = 72.9 m"
+     }
+    ]
    }
   }
  ]
