@@ -91,7 +91,7 @@ beforeAll(async () => {
               if (!window.auditConfig.manualRead) queueMicrotask(()=>window.auditConfig.readError ? reject(new Error('synthetic read failure')) : resolve(window.auditConfig.bookmarks));
               return promise;
             };
-            export const trpc={useUtils:()=>({client:{dashboard:{bookmarkedQuestions:{query}}},dashboard:{bookmarkedQuestions:{invalidate:async input=>{window.invalidations.push(input)}}}}),dashboard:{
+            export const trpc={quiz:{getMissedQuestions:{useQuery:()=>({data:{total:0}})}},useUtils:()=>({client:{dashboard:{bookmarkedQuestions:{query}}},dashboard:{bookmarkedQuestions:{invalidate:async input=>{window.invalidations.push(input)}}}}),dashboard:{
               bookmarkedQuestions:{useQuery:(input,options)=>{useAuditState();window.queryCalls.push({input,options});return window.auditConfig.readError
                 ? {isLoading:false,isFetching:false,isError:true,isSuccess:false}
                 : window.auditConfig.manualRead
@@ -100,7 +100,7 @@ beforeAll(async () => {
               toggleBookmark:{useMutation:options=>({isPending:false,mutate:input=>{const context=options.onMutate?.(input);let resolve,reject;const promise=new Promise((yes,no)=>{resolve=yes;reject=no});window.mutations.push({input,resolve,reject});promise.then(data=>options.onSuccess(data,input,context),error=>options.onError?.(error,input,context));}})}
             }};
           `, resolveDir: process.cwd() };
-          return { contents: `export default function Stub(){return null}; export const TutorPanelPlacement={Provider:({children})=>children}; export const readUSStudyContext=()=>({isUS:false}); export const withUSStudyContext=x=>x; export const resolveCourseKey=value=>value?{courseKey:value,examFamily:'western'}:null; export const resolveStudyNotesTopics=()=>({initialTopic:null}); export const shouldShowReviewPrompt=()=>false; export const GOOGLE_REVIEW_URL=''; export const markReviewPromptShown=()=>{}; export const markAsReviewed=()=>{}; export const getPracticeGuidePath=()=>null; export const class1OptionOrder=(_e,_i,n)=>Array.from({length:n},(_,i)=>i); export const class1DisplayLetter=()=> 'A';` };
+          return { contents: `export default function Stub(){return null}; export const TutorPanelPlacement={Provider:({children})=>children}; export const readUSStudyContext=()=>({isUS:false}); export const withUSStudyContext=x=>x; export const resolveCourseKey=value=>value?{courseKey:value,examFamily:'western'}:null; export const resolveStudyNotesTopics=()=>({initialTopic:null}); export const shouldShowReviewPrompt=()=>false; export const GOOGLE_REVIEW_URL=''; export const markReviewPromptShown=()=>{}; export const markAsReviewed=()=>{}; export const getPracticeGuidePath=()=>null; export const buildPricingHref=()=>'/pricing'; export const class1OptionOrder=(_e,_i,n)=>Array.from({length:n},(_,i)=>i); export const class1DisplayLetter=()=> 'A';` };
         });
       },
     }],

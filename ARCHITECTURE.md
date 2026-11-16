@@ -128,6 +128,7 @@ Before building anything new, check these first:
 | Component | Path | Use for |
 |---|---|---|
 | NextStepCard / Quick10Button | `client/src/components/NextStepCard.tsx`, `Quick10Button.tsx` | "What next" suggestion on quiz, Quick 10 and mock results (server-picked, rule in `shared/nextStep.ts`); one-tap Quick 10 button on the dashboard |
+| PracticeSessionRail | `client/src/components/PracticeSessionRail.tsx` | Desktop side panel on the practice page: this session's accuracy by topic and the missed-question count |
 | `SiteNav` | `components/SiteNav.tsx` | Top navigation bar — used on all public pages |
 | `MobileBottomNav` | `components/MobileBottomNav.tsx` | Mobile nav — used on all public pages |
 | `DashboardLayout` | `components/DashboardLayout.tsx` | Admin/dashboard sidebar layout |
