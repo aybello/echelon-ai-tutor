@@ -1,0 +1,27 @@
+@Source water|CAT1|Flow rate and water velocity
+A 12-inch pipe (1.0 ft diameter) carries water at 2.5 ft/s. Use area = 0.785 × D², 1 ft³ = 7.48 gal and 60 s per min. What is the flow in gpm?|Flow in gpm = area times velocity times 7.48 times 60|0.785*1*1*2.5*7.48*60|gpm|1|14.7,2.0,1122.0|m
+An 8-inch main (8/12 ft) carries 450 gpm. Use area = 0.785 × D² and 1 cfs = 448.8 gpm. What is the velocity in ft/s?|Velocity = flow in cfs divided by pipe area|450/448.8/(0.785*(8/12)*(8/12))|ft/s|2|0.72,1.00,1289.80|h
+A rectangular channel is 4 ft wide with water 1.5 ft deep moving at 2 ft/s. Use 1 cfs = 448.8 gpm. What is the flow in gpm?|Flow in gpm = width times depth times velocity times 448.8|4*1.5*2*448.8|gpm|0|12,2693,90|m
+A 6-inch main (0.5 ft) carries 250 gpm. Use area = 0.785 × D², 1 ft³ = 7.48 gal and 60 s per min. What is the velocity in ft/s?|Velocity = flow in gpm divided by (7.48 times 60 times area)|250/7.48/60/(0.785*0.5*0.5)|ft/s|2|170.30,0.71,0.35|h
+Water moves at 2 ft/s through a 3000 ft pipeline. How many minutes does it take a drop of water to travel the full length?|Time in minutes = length divided by velocity divided by 60|3000/2/60|min|1|1500.0,90000.0,50.0|m
+@Source water|CAT1|Storage volume and detention time
+A cylindrical tank is 50 ft in diameter and holds water 20 ft deep. Use volume = 0.785 × D² × depth × 7.48 gal/ft³. How many gallons does it hold?|Volume = 0.785 times diameter squared times depth times 7.48|0.785*50*50*20*7.48|gal|0|39250,374000,5872|m
+A rectangular reservoir is 80 ft long and 45 ft wide, with water 14 ft deep. Use 1 ft³ = 7.48 gal. How many gallons does it hold?|Volume = length times width times depth times 7.48|80*45*14*7.48|gal|0|50400,26928,1040|m
+A 0.75 MG tank is filled and drained at a steady 500 gpm. Use 1 MG = 1,000,000 gal. What is the detention time in hours?|Hours = volume in gallons divided by flow in gpm divided by 60|0.75*1000000/500/60|hr|1|1500.0,62.5,1.0|h
+A circular basin is 30 ft in diameter and 12 ft deep and runs full. Flow through it is 400 gpm. Use 0.785 × D² × depth × 7.48 gal/ft³. What is the detention time in minutes?|Minutes = basin volume in gallons divided by flow in gpm|0.785*30*30*12*7.48/400|min|1|21.2,2.6,202.0|h
+A 0.2 MG basin receives 2.4 MGD. Use 1,440 min per day. What is the detention time in minutes?|Minutes = volume divided by flow in MGD times 1440|0.2/2.4*1440|min|0|17280,691,2|m
+@Source water|CAT1|Well drawdown and specific capacity
+The static water level in a well is 85 ft below the measuring point. While pumping, the level is 132 ft below that point. What is the drawdown in ft?|Drawdown = pumping level minus static level|132-85|ft|0|217,132,85|m
+A well pumps 360 gpm with 24 ft of drawdown. What is its specific capacity in gpm per ft of drawdown?|Specific capacity = flow divided by drawdown|360/24|gpm/ft|2|8640.00,0.07,384.00|m
+A well has a static level of 62 ft and, while pumping 580 gpm, a pumping level of 91 ft, both measured below the same point. What is the specific capacity in gpm per ft?|Specific capacity = flow divided by (pumping level minus static level)|580/(91-62)|gpm/ft|2|6.37,9.35,0.05|h
+A well has a specific capacity of 12 gpm per ft of drawdown. If the drawdown is held at 35 ft, what yield in gpm is expected?|Yield = specific capacity times drawdown|12*35|gpm|0|3,47,23|h
+@Source water|CAT1|Pressure, head and well head pressure
+A gauge reads 54 psi. Use 1 psi = 2.31 ft of water. How many feet of head does that equal?|Feet of head = psi times 2.31|54*2.31|ft|1|56.3,23.4,249.5|m
+A pressure gauge on a closed well head sits at elevation 1240 ft and reads 31 psi. Use 1 psi = 2.31 ft of water. What is the water elevation in ft?|Water elevation = gauge elevation plus psi times 2.31|1240+31*2.31|ft|1|1271.0,1168.4,71.6|h
+The water surface in a tank is 112 ft above a gauge. Use 1 psi = 2.31 ft of water. What is the static pressure in psi?|Psi = feet of head divided by 2.31|112/2.31|psi|2|258.72,109.69,0.02|m
+A gauge at the base of a tank reads 65 psi. A second gauge 40 ft higher on the riser reads lower by the weight of the water between them. Use 0.433 psi per ft. What does the upper gauge read in psi?|Upper psi = lower psi minus height times 0.433|65-40*0.433|psi|2|25.00,82.32,28.15|h
+@Source water|CAT1|Unit conversions
+A well pumps 720 gpm. Use 1,440 min per day and 1 MG = 1,000,000 gal. What is the flow in MGD?|MGD = gpm times 1440 divided by 1000000|720*1440/1000000|MGD|2|0.50,1036.80,43.20|m
+A plant treats 3.6 MGD. Use 1,440 min per day and 1 MG = 1,000,000 gal. What is the flow in gpm?|gpm = MGD times 1000000 divided by 1440|3.6*1000000/1440|gpm|0|5184,3600,150000|h
+A tank holds 85000 gal. Use 1 ft³ = 7.48 gal. How many cubic feet of water is that?|Cubic feet = gallons divided by 7.48|85000/7.48|ft³|0|635800,10192,1136|m
+A reservoir holds 12 acre-ft. Use 1 acre-ft = 43,560 ft³, 1 ft³ = 7.48 gal and 1 MG = 1,000,000 gal. How many MG is that?|MG = acre-ft times 43560 times 7.48 divided by 1000000|12*43560*7.48/1000000|MG|2|0.52,89.76,3909945.60|h
