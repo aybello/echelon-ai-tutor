@@ -1,0 +1,274 @@
+[
+ {
+  "id": 155456,
+  "bankKey": "class2-wastewater-coll",
+  "questionNum": 206,
+  "verdict": "OFF-TOPIC",
+  "question": "According to O. Reg. 170/03, what action must be taken if an adverse water quality incident is detected in a drinking water system due to a wastewater collection system failure?",
+  "why": "Drinking water adverse-incident reporting under O. Reg. 170/03 is not a wastewater collection operator topic; the stem is also contrived (a collection system failure causing an adverse drinking water incident)."
+ },
+ {
+  "id": 155470,
+  "bankKey": "class2-wastewater-coll",
+  "questionNum": 220,
+  "verdict": "OFF-TOPIC",
+  "question": "According to O. Reg. 170/03, what is the maximum allowable turbidity for water leaving a conventional filtration plant?",
+  "why": "Drinking water filtration turbidity under O. Reg. 170/03 is not in the scope of a wastewater collection exam; the explanation itself admits this."
+ },
+ {
+  "id": 155507,
+  "bankKey": "class2-wastewater-coll",
+  "questionNum": 257,
+  "verdict": "OFF-TOPIC",
+  "question": "Under O. Reg. 170/03, what is the required frequency for bacteriological sampling in a small drinking water system serving a population of 100 people?",
+  "why": "Drinking water sampling frequency under O. Reg. 170/03 is not a wastewater collection topic; the explanation itself admits this and hedges ('typically weekly')."
+ },
+ {
+  "id": 155525,
+  "bankKey": "class2-wastewater-coll",
+  "questionNum": 275,
+  "verdict": "OFF-TOPIC",
+  "question": "According to O. Reg. 170/03, what action must an operator take immediately upon discovering an adverse condition in a drinking water system?",
+  "why": "Drinking water adverse-condition reporting under O. Reg. 170/03 is not an operator topic for a wastewater collection exam."
+ },
+ {
+  "id": 154735,
+  "bankKey": "class2-water-dist",
+  "questionNum": 85,
+  "verdict": "UNCLEAR",
+  "question": "According to O. Reg. 170/03, what is the required response time for an operator to attend to an alarm indicating a critical operational parameter deviation in a municipal residential drinking water system?",
+  "why": "Could not verify. The citation 'Schedule 1-1, Section 1-1 (1)' does not match the structure of O. Reg. 170/03 (Schedule 1 is treatment equipment; alarm and operational-check provisions are elsewhere), and I could not confirm a 30-minute att"
+ },
+ {
+  "id": 185229,
+  "bankKey": "class3-wastewater-coll",
+  "questionNum": 372,
+  "verdict": "OFF-TOPIC",
+  "question": "Under O. Reg. 170/03, what is the operator's responsibility regarding adverse water quality incidents in a drinking water system?",
+  "why": "Asks about O. Reg. 170/03 adverse water quality incidents in a drinking water system; this is drinking water regulation, not wastewater collection. Also isCalc true wrongly. Not repairable within the bank scope."
+ },
+ {
+  "id": 185239,
+  "bankKey": "class3-wastewater-coll",
+  "questionNum": 382,
+  "verdict": "OFF-TOPIC",
+  "question": "According to O. Reg. 170/03, how often must a drinking water system typically collect samples for E. coli and total coliforms from the distribution system?",
+  "why": "Drinking water microbiological sampling under O. Reg. 170/03 Schedule 10 is outside the wastewater collection scope. Also the key's explanation is inaccurate: sampling frequencies for distribution E. coli/total coliform are set in the regul"
+ },
+ {
+  "id": 240884,
+  "bankKey": "class4-water-dist",
+  "questionNum": 534,
+  "verdict": "WRONG",
+  "question": "For a system with two duty pumps in parallel, each rated at 65 L/s at a head of 38 m, the system curve at dual-pump operation indicates total flow of 130 L/s. If system headlosses increase by a factor of 2.25 under dual operation, what is the resulting head per pump?",
+  "why": "Ill-posed: parallel pumps share the same head, 'headloss factor 2.25 under dual operation' is not tied to a flow ratio (2.25 = 1.5^2, but flow doubles from 65 to 130 which would give factor 4), and the steps never derive 38.5 m. Not repaira"
+ },
+ {
+  "id": 35147,
+  "bankKey": "oit",
+  "questionNum": 122,
+  "verdict": "UNCLEAR",
+  "question": "According to O. Reg. 128/04, what is the maximum period an Operator-in-Training (OIT) certificate is valid before renewal or upgrade is required?",
+  "why": "Could not verify a 5-year OIT certificate validity; the explanation cites s.10(1) for this and q35165 cites the same s.10(1) for a conditional-certificate duration (conditional certificates are s.11), so the citations are inconsistent. A se"
+ },
+ {
+  "id": 35165,
+  "bankKey": "oit",
+  "questionNum": 140,
+  "verdict": "UNCLEAR",
+  "question": "Under O. Reg. 128/04, what is the maximum duration a conditional operator's certificate can be issued for?",
+  "why": "Could not verify 'maximum one year' for a conditional certificate; conditional certificates are s.11 of O. Reg. 128/04, not s.10(1) as cited (s.10 is OIT certificates), and a secondary source says conditional certificates are not issued to "
+ },
+ {
+  "id": 35171,
+  "bankKey": "oit",
+  "questionNum": 146,
+  "verdict": "UNCLEAR",
+  "question": "According to O. Reg. 128/04, what is the specific educational requirement for an individual to qualify for a Class IV Water Treatment Operator certificate, in addition to experience?",
+  "why": "The explanation itself states the regulation allows a post-secondary diploma OR a university degree, so options B and C are both correct; the question has two defensible answers. Steps also refer to 'original options' that are not shown. Co"
+ },
+ {
+  "id": 35434,
+  "bankKey": "oit",
+  "questionNum": 409,
+  "verdict": "UNCLEAR",
+  "question": "What is the maximum recommended capacity for chemical day tanks, in terms of chemical consumption?",
+  "why": "Key and explanation say 24 hours but the steps say the maximum recommended is 30 hours; they contradict each other. Both 24 and 30 h are listed as options. Could not open Ontario Design Guidelines (Chapter 20) to confirm the figure."
+ },
+ {
+  "id": 60433,
+  "bankKey": "oit-ww",
+  "questionNum": 433,
+  "verdict": "UNCLEAR",
+  "question": "According to O. Reg. 128/04, how often must the overall responsible operator for a Class 4 wastewater treatment plant visit the facility?",
+  "why": "Could not verify. O. Reg. 128/04 is the drinking-water operator certification regulation; wastewater licensing is O. Reg. 129/04, so the citation is wrong for a wastewater question. I could not find a prescribed daily ORO visit requirement "
+ },
+ {
+  "id": 44264,
+  "bankKey": "wpi-class2-wastewater",
+  "questionNum": 192,
+  "verdict": "UNCLEAR",
+  "question": "What is the typical permit frequency for effluent nutrient monitoring at a Class II BNR facility?",
+  "why": "Monitoring frequency for effluent nutrients is set in each facility's approval/permit and varies (weekly, monthly, composite schedules by size); the question states no such rule so weekly vs monthly vs daily are all defensible."
+ },
+ {
+  "id": 44266,
+  "bankKey": "wpi-class2-wastewater",
+  "questionNum": 194,
+  "verdict": "UNCLEAR",
+  "question": "What is the typical minimum DO requirement in the effluent for receiving water protection?",
+  "why": "Effluent DO minimums are site-specific permit conditions; 2 mg/L is not a typical universal requirement (post-aeration targets of 5-6 mg/L are also common for sensitive receiving waters), so option C (5 mg/L) is defensible. Depends on an un"
+ },
+ {
+  "id": 45025,
+  "bankKey": "wpi-class3-wastewater",
+  "questionNum": 354,
+  "verdict": "UNCLEAR",
+  "question": "The Environmental Effects Monitoring (EEM) program under WSER requires studies to be conducted:",
+  "why": "Could not confirm that WSER (Wastewater Systems Effluent Regulations, 2012) contains an Environmental Effects Monitoring program with fixed 3-6 year study cycles; federal EEM is established under other regulations (pulp and paper, metal and"
+ },
+ {
+  "id": 42742,
+  "bankKey": "wpi-class3-water",
+  "questionNum": 387,
+  "verdict": "UNCLEAR",
+  "question": "What CT value is required for 3-log (99.9%) inactivation of Giardia with free chlorine at pH 7 and 10°C?",
+  "why": "Free chlorine CT for Giardia depends on the chlorine residual (and pH, temperature); the question gives only pH and temperature, so no single CT is defined. Published 3-log values at 10°C, pH 7 vary with residual (roughly 140-170 mg·min/L) "
+ },
+ {
+  "id": 42755,
+  "bankKey": "wpi-class3-water",
+  "questionNum": 400,
+  "verdict": "UNCLEAR",
+  "question": "A plant adds 20 mg/L of PAC with a geosmin adsorption capacity of 200 μg geosmin/mg PAC. The raw water geosmin concentration is 50 ng/L. What fraction of geosmin is removed?",
+  "why": "Treats PAC capacity as a stoichiometric sink (200 ug/mg x 20 mg/L), which ignores adsorption isotherm behaviour at ng/L concentrations and competition from NOM; 100% removal is not defensible, real geosmin removal at 20 mg/L PAC is typicall"
+ },
+ {
+  "id": 42941,
+  "bankKey": "wpi-class4-water",
+  "questionNum": 55,
+  "verdict": "JURISDICTION",
+  "question": "Under Ontario's O. Reg. 170/03, what is the required sampling frequency for total coliform and E. coli in a large municipal residential system (>100,000 population)?",
+  "why": "Ontario O. Reg. 170/03 sampling schedule in a Western Canada bank. The explanation also contradicts itself (a monthly minimum of 100+ samples is not 'weekly' sampling)."
+ },
+ {
+  "id": 43298,
+  "bankKey": "wpi-class4-water",
+  "questionNum": 412,
+  "verdict": "JURISDICTION",
+  "question": "Which of the following is a key requirement of the Ontario Safe Drinking Water Act (SDWA)?",
+  "why": "Ontario SDWA in a Western Canada bank; and the marked option is generic, not a specific SDWA requirement, while the explanation overreaches (DWQMS)."
+ },
+ {
+  "id": 43307,
+  "bankKey": "wpi-class4-water",
+  "questionNum": 421,
+  "verdict": "UNCLEAR",
+  "question": "What is the primary purpose of a comprehensive UV disinfection system validation and monitoring program in a Class 4 facility?",
+  "why": "Steps are for an unrelated question (source water protection plan, options A-D) and do not support the marked answer."
+ },
+ {
+  "id": 43308,
+  "bankKey": "wpi-class4-water",
+  "questionNum": 422,
+  "verdict": "UNCLEAR",
+  "question": "In a Class 4 water treatment facility, what is the significance of the facility's process control philosophy for consistent water quality?",
+  "why": "Steps are for an unrelated question (WHPA). Explanation also cites 1.0 NTU as 'regulatory' turbidity, outdated for conventional/direct filtration in Western Canada (0.3 NTU in 95% of samples under GCDWQ)."
+ },
+ {
+  "id": 270003,
+  "bankKey": "wpi-class4-water",
+  "questionNum": 595,
+  "verdict": "UNCLEAR",
+  "question": "A plant is required to achieve 3-log Giardia inactivation using a multi-barrier approach. The ozone system provides 1.5-log credit and UV provides 0.5-log credit. What Ct value (mg·min/L) must the chlorine contact basin achieve at 10°C and pH 7.0 to meet the remaining inactivation requirement?",
+  "why": "The CT for 1-log Giardia depends on the free chlorine residual (tables differ by concentration), which is not stated; at 1 mg/L, 10 C, pH 7.0 the tabulated 1-log value is roughly 40-45 mg-min/L, not clearly 49, and 1-log is not a listed tab"
+ },
+ {
+  "id": 91395,
+  "bankKey": "wpi-class4-water-dist",
+  "questionNum": 539,
+  "verdict": "UNCLEAR",
+  "question": "A new industrial customer requires a 12-inch dedicated fire line and a 6-inch domestic service. Both services will be connected to the public water main. Based on ABC/WPI standards for Class 4 operators and considering the potential hazards, what is the most appropriate backflow prevention strategy at the service connection point for these two lines?",
+  "why": "Depends on unstated hazard classification: a DCDA on a fire line is correct only for a non-hazardous fire line, and an RPDA is a fire-line detector assembly (not normally used for a domestic service). Option C (RPDA on fire line) is defensi"
+ },
+ {
+  "id": 91422,
+  "bankKey": "wpi-class4-water-dist",
+  "questionNum": 566,
+  "verdict": "JURISDICTION",
+  "question": "A Class 4 water distribution system operator in Ontario is reviewing a proposed capital improvement project for a new 600 mm transmission main. The project includes a comprehensive environmental impact assessment, public consultation, and securing easements across private property. Which of the following regulatory frameworks is MOST likely to be the primary driver for these specific project components?",
+  "why": "Ontario-specific acts (Ontario EA Act, OWRA, SDWA 2002) in a Western Canada bank; also flagged isCalc though no calculation. Not repairable without choosing a province."
+ },
+ {
+  "id": 420019,
+  "bankKey": "wpi-class4-water-dist",
+  "questionNum": 619,
+  "verdict": "JURISDICTION",
+  "question": "A Class IV distribution system manager is reviewing the system's vulnerability assessment. The assessment identifies 45 cross-connections that have not been protected with backflow prevention devices. What is the regulatory requirement for cross-connection control in Ontario?",
+  "why": "Ontario O. Reg. 170/03 cited as the cross-connection requirement in a Western Canada bank; cross-connection control is in provincial plumbing/building codes and utility bylaws, so option D is also arguably right."
+ },
+ {
+  "id": 40849,
+  "bankKey": "wqa",
+  "questionNum": 165,
+  "verdict": "UNCLEAR",
+  "question": "Under O. Reg. 170/03, what is the required frequency for microbiological sampling in a large municipal residential system (population > 100,000)?",
+  "why": "Explanation contradicts itself ('7 samples per week ... translates to daily ... regulation specifies a weekly minimum'). Schedule 10 distribution sampling is based on population served, with minimums per month/week, not simply 'daily'; coul"
+ },
+ {
+  "id": 40863,
+  "bankKey": "wqa",
+  "questionNum": 179,
+  "verdict": "UNCLEAR",
+  "question": "A small groundwater system serves 200 people and uses chlorination only. Under O. Reg. 170/03, what is the minimum CT value (mg·min/L) required to achieve 99.99% (4-log) inactivation of Giardia at 10°C?",
+  "why": "O. Reg. 170/03 itself does not specify CT tables; Ontario's disinfection procedure requires 4-log virus (not 4-log Giardia) for groundwater. A 165 mg·min/L CT for 4-log Giardia at 10 C is not a verifiable table value (and 165 is reused as a"
+ },
+ {
+  "id": 40878,
+  "bankKey": "wqa",
+  "questionNum": 194,
+  "verdict": "UNCLEAR",
+  "question": "Which Ontario regulation requires water systems to have an Emergency Response Plan?",
+  "why": "Could not confirm that SDWA 2002 s.30 requires an Emergency Response Plan; emergency management is addressed through the DWQMS (element 17) and the Emergency Management and Civil Protection Act. Unverified citation."
+ },
+ {
+  "id": 40925,
+  "bankKey": "wqa",
+  "questionNum": 241,
+  "verdict": "UNCLEAR",
+  "question": "A water plant achieves a CT of 120 mg·min/L with free chlorine at pH 7.5 and 10°C. Using the CT tables, this achieves approximately what log inactivation of Giardia?",
+  "why": "Steps cite a nonexistent 'MECP Water Treatment Plant Design manual Table 8-2' with CT values (1.0-log=65, 2.0-log=130) not matching the usual US EPA/Health Canada table for 10 C pH 7.5 (2-log is roughly 100, 3-log about 145). Could not veri"
+ },
+ {
+  "id": 40936,
+  "bankKey": "wqa",
+  "questionNum": 252,
+  "verdict": "UNCLEAR",
+  "question": "What is the maximum holding time for a water sample collected for microbiological analysis?",
+  "why": "Ontario guidance for drinking water microbiological samples is analysis within 48 hours (lab receipt within 48 h) at 4 C; the 24-hour/6-hour key is not the Ontario rule. Could not confirm; 24 h vs 48 h both used by different sources."
+ },
+ {
+  "id": 40962,
+  "bankKey": "wqa",
+  "questionNum": 278,
+  "verdict": "UNCLEAR",
+  "question": "A laboratory receives a water sample for lead analysis. The sample was collected as a 'first draw' sample after 6 hours of stagnation. The result is 12 μg/L. The Ontario MAC for lead is 10 μg/L. What action is required?",
+  "why": "Unstated local rule: Ontario lead compliance is not assessed by a single 6-hour first-draw result under O. Reg. 170/03 (it uses the plumbing sampling program, standing and flushed samples); also Health Canada's lead MAC is now 5 µg/L. Optio"
+ },
+ {
+  "id": 40965,
+  "bankKey": "wqa",
+  "questionNum": 281,
+  "verdict": "UNCLEAR",
+  "question": "What is the holding time for a water sample collected for total coliform analysis when preserved at 4°C?",
+  "why": "Same as Q40936: Ontario drinking water practice allows up to 48 hours for total coliform samples at 4 C; unstated local rule and could not confirm 24 h."
+ },
+ {
+  "id": 41013,
+  "bankKey": "wqa",
+  "questionNum": 329,
+  "verdict": "WRONG",
+  "question": "Under O. Reg. 170/03, what is the required sampling frequency for total coliform and E. coli in a large municipal residential system (serving >10,000 people)?",
+  "why": "O. Reg. 170/03 Schedule 10 sets fixed minimum distribution sampling frequencies (formula based on population served) for large municipal residential systems; it is not a site-specific plan approved by the Director. Explanation also wrongly "
+ }
+]

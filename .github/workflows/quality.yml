@@ -58,6 +58,16 @@ jobs:
         run: node scripts/release-oit-question-banks.mjs
       - name: Validate governed Class IV exam releases
         run: node --test scripts/collectionReview.test.mjs scripts/export-wpi-class4-collection-review.test.mjs scripts/recovery/releaseWpiClass4Collection.test.mjs scripts/recovery/releaseWpiClass4Treatment.test.mjs
+      - name: Validate exact exam-review inputs and guarded release transactions
+        shell: bash
+        run: |
+          # Full export/review objects are needed by git show; do not fetch all history.
+          git fetch --no-tags --depth=1 origin \
+            d118897a0b63abe0ca4e3a0bf1539c233323787c \
+            7730062d4d0cfcccbca17560211c45f9e76e366c
+          env -i PATH="$PATH" HOME=/tmp NODE_ENV=test \
+            ECHELON_TEST_DATABASE=I_UNDERSTAND_THIS_IS_A_DISPOSABLE_LOCAL_DATABASE \
+            node --require ./scripts/test-safety.cjs --test scripts/exam-review-release.test.mjs
       - name: Validate blog binding recovery guards
         run: node --test scripts/blogBindingRecovery.test.mjs
       - name: Validate Class III distribution repair content
