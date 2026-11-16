@@ -22,6 +22,9 @@ import { getCourseByKey, resolveCourseKey } from "../../shared/courseRegistry";
 import { learnerVisibleQuestionFilter } from "../questionGovernance";
 import { calculateReadinessSnapshot } from "../readinessSnapshot";
 import { attemptCourseFilter, examCourseFilter } from "../courseActivityScope";
+import { assertAccess } from "../_core/accessService";
+import { gatherNextStepInput } from "../nextStepData";
+import { suggestNextStep, type NextStepInput } from "../../shared/nextStep";
 
 /**
  * Resolves the dashboard identity from the tRPC context.
@@ -955,4 +958,33 @@ export const dashboardRouter = router({
       formulaPath: course?.formulaPath ?? null,
     };
   }),
+
+  /**
+   * The one "What next" suggestion shown after a quiz, Quick 10 or mock exam.
+   * Needs a verified learner and access to the course. The rules live in shared/nextStep.ts.
+   */
+  nextStep: publicProcedure
+    .input(z.object({
+      courseKey: z.string().min(1).max(64).optional(),
+      /** The browser's Date.getTimezoneOffset(), so "today" is the learner's own day. */
+      timezoneOffsetMinutes: z.number().int().min(-840).max(840).default(0),
+      accessToken: z.string().max(8192).optional(),
+    }).optional())
+    .query(async ({ ctx, input }) => {
+      const identity = resolveDashboardIdentity(ctx);
+      const entitlements = identity.email ? await resolveEntitlementsByEmail(identity.email) : null;
+      const requested = input?.courseKey
+        ?? (await resolvePrimaryStudyFocus({ email: identity.email, unlockedExamTypes: entitlements?.unlockedExamTypes ?? [] })).courseKey;
+      const course = requested ? resolveCourseKey(requested) : null;
+      // No course to look at yet: the default suggestion needs no data.
+      if (!course) {
+        const calm: NextStepInput = { currentStreakDays: 0, practisedToday: false, missedQuestionCount: 0, modules: [], daysUntilExam: null, daysSinceLastMock: null };
+        return { courseKey: null, courseName: null, step: suggestNextStep(calm) };
+      }
+      await assertAccess(ctx, course.courseKey, { accessToken: input?.accessToken });
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+      const data = await gatherNextStepInput(db, identity, course.courseKey, { timezoneOffsetMinutes: input?.timezoneOffsetMinutes ?? 0 });
+      return { courseKey: course.courseKey, courseName: course.displayName, step: suggestNextStep(data) };
+    }),
 });

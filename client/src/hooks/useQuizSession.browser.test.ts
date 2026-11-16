@@ -47,7 +47,7 @@ beforeAll(async () => {
           );
           builder.onLoad({ filter: /.*/, namespace: "mock" }, args => {
             const modules: Record<string, string> = {
-              wouter: `export const useSearch=()=>location.search;`,
+              wouter: `export const useSearch=()=>location.search;export const useLocation=()=>[location.pathname,()=>{}];`,
               sonner: `export const toast=Object.assign(()=>{}, {error(){},warning(){}});`,
               "@/components/QuizGate": `export const setTrialUnlocked=()=>{};`,
               "@/components/QuizModeBar": `export const useAttemptLogger=()=>input=>window.attempts.push(input);`,
