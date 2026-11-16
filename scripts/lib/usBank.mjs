@@ -85,7 +85,10 @@ export function parseSources(config) {
 export function buildBank(config) {
   const { raw, problems } = parseSources(config);
   if (problems.length) throw new Error(`Source problems:\n${problems.join('\n')}`);
-  const positions = shuffle(Array.from({ length: raw.length }, (_, i) => i % 4), config.bankKey);
+  // Answer positions are balanced in blocks of four, and each block depends only on its own number. Adding
+  // questions at the end of the source files therefore never changes the position of an existing answer.
+  const blockOrder = block => shuffle([0, 1, 2, 3], `${config.bankKey}:block:${block}`);
+  const positions = raw.map((_, i) => blockOrder(Math.floor(i / 4))[i % 4]);
   return raw.map((item, i) => {
     const { wrong, source, level, where, ...content } = item;
     const options = shuffle(wrong, `${config.bankKey}:${i}:wrong`);

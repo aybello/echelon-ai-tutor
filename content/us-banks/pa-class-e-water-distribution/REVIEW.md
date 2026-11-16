@@ -8,12 +8,12 @@ Correct answers are shown beneath each item. See README.md for scope, sources an
 
 Which type of pipe is used mainly to carry large volumes of finished water from a plant or source to storage or to the edge of a distribution grid?
 
-- **A.** Transmission main
-- **B.** Neighborhood street main
-- **C.** Hydrant lateral
+- **A.** Neighborhood street main
+- **B.** Hydrant lateral
+- **C.** Transmission main
 - **D.** Service main
 
-**Answer: A. Transmission main**
+**Answer: C. Transmission main**
 
 A transmission main is a large-diameter line that moves bulk water between major facilities, usually with few or no direct customer connections.
 
@@ -21,12 +21,12 @@ A transmission main is a large-diameter line that moves bulk water between major
 
 Which description best fits the smaller mains that run along streets in a community?
 
-- **A.** They supply service connections and hydrants along the street
-- **B.** They move bulk water from the plant to a storage tank outside town
-- **C.** They return surplus flow from tanks to the source
-- **D.** They carry untreated water from the intake to the plant
+- **A.** They move bulk water from the plant to a storage tank outside town
+- **B.** They return surplus flow from tanks to the source
+- **C.** They carry untreated water from the intake to the plant
+- **D.** They supply service connections and hydrants along the street
 
-**Answer: A. They supply service connections and hydrants along the street**
+**Answer: D. They supply service connections and hydrants along the street**
 
 Distribution mains lie in the streets and feed customer service lines and fire hydrants, unlike transmission mains that move bulk water.
 
@@ -35,11 +35,11 @@ Distribution mains lie in the streets and feed customer service lines and fire h
 What is a dead end in a distribution system?
 
 - **A.** A valve that has been closed during a repair
-- **B.** A pipe that has been abandoned and drained
-- **C.** A main end not tied to another main, fed from one direction
+- **B.** A main end not tied to another main, fed from one direction
+- **C.** A pipe that has been abandoned and drained
 - **D.** A point where two mains meet and flow splits in half
 
-**Answer: C. A main end not tied to another main, fed from one direction**
+**Answer: B. A main end not tied to another main, fed from one direction**
 
 A dead-end main is fed from only one side. Water in it moves only as customers draw it, which matters for quality and for fire flow.
 
@@ -47,12 +47,12 @@ A dead-end main is fed from only one side. Water in it moves only as customers d
 
 What is the main hydraulic advantage of a looped grid over a branched layout?
 
-- **A.** Pumps are no longer needed in a loop
-- **B.** Water can reach a point from more than one direction
+- **A.** Water can reach a point from more than one direction
+- **B.** Pumps are no longer needed in a loop
 - **C.** Pressure rises in each pipe that forms the loop, since flow is shared
 - **D.** Smaller pipes can carry the demand at a higher velocity in a loop
 
-**Answer: B. Water can reach a point from more than one direction**
+**Answer: A. Water can reach a point from more than one direction**
 
 In a loop, flow divides between paths and a break can be bypassed. Looping does not create pressure on its own, and elevation still decides whether pumping is needed.
 
@@ -60,12 +60,12 @@ In a loop, flow divides between paths and a break can be bypassed. Looping does 
 
 Why do dead-end mains often produce taste, odor or discolored-water complaints?
 
-- **A.** Water moves so fast that it scours the wall clean
-- **B.** Water sits long, so disinfectant fades and solids settle out
+- **A.** Water sits long, so disinfectant fades and solids settle out
+- **B.** Water moves so fast that it scours the wall clean
 - **C.** The pipe material dissolves faster near the end of a long line
 - **D.** Pressure at the end of the line is high and shakes deposits loose
 
-**Answer: B. Water sits long, so disinfectant fades and solids settle out**
+**Answer: A. Water sits long, so disinfectant fades and solids settle out**
 
 Low demand at a dead end means long residence time. The disinfectant residual decays and solids drop out, so the water ages.
 
@@ -74,11 +74,11 @@ Low demand at a dead end means long residence time. The disinfectant residual de
 An operator wants to reduce stagnant water at the end of a dead-end main. Which fixture is commonly placed there for that purpose?
 
 - **A.** A pressure-reducing valve fitted at the end of that pipe
-- **B.** An altitude valve sized for the end of that pipe
-- **C.** A corporation stop fitted at the end of that pipe
-- **D.** A hydrant or blow-off fitted at the end to flush it
+- **B.** A hydrant or blow-off fitted at the end to flush it
+- **C.** An altitude valve sized for the end of that pipe
+- **D.** A corporation stop fitted at the end of that pipe
 
-**Answer: D. A hydrant or blow-off fitted at the end to flush it**
+**Answer: B. A hydrant or blow-off fitted at the end to flush it**
 
 A hydrant or blow-off at the end of a line lets crews flush out old water and sediment on a schedule.
 
@@ -88,10 +88,10 @@ In a branched (tree) system, what happens to customers downstream of a main brea
 
 - **A.** They are switched at once to supply from the nearest tank
 - **B.** They are fed through a second path with no change in service
-- **C.** They lose service until the broken section is repaired
-- **D.** They receive higher pressure from the remaining pipes
+- **C.** They receive higher pressure from the remaining pipes
+- **D.** They lose service until the broken section is repaired
 
-**Answer: C. They lose service until the broken section is repaired**
+**Answer: D. They lose service until the broken section is repaired**
 
 A branched layout offers a single path to each branch. A break cuts off everything beyond it unless a connection or storage supplies that area.
 
@@ -99,12 +99,12 @@ A branched layout offers a single path to each branch. A break cuts off everythi
 
 Why are isolation valves installed at intervals around a looped grid?
 
-- **A.** To shut off a short section for repair and keep most customers served
-- **B.** To raise pressure in the section that stays open during repair work
-- **C.** To measure the flow passing through each loop of the grid
+- **A.** To raise pressure in the section that stays open during repair work
+- **B.** To measure the flow passing through each loop of the grid
+- **C.** To shut off a short section for repair and keep most customers served
 - **D.** To stop water flowing back toward the plant after a repair is done
 
-**Answer: A. To shut off a short section for repair and keep most customers served**
+**Answer: C. To shut off a short section for repair and keep most customers served**
 
 Closely spaced valves limit the number of customers affected by a repair. They do not boost pressure or meter flow.
 
@@ -125,12 +125,12 @@ A closed loop valve removes the second path, so flow reaches the area from one s
 
 Two layouts use the same pipe sizes, one looped and one branched. Why does the looped layout usually deliver more flow to a hydrant at the same residual pressure?
 
-- **A.** Flow splits between paths, lowering velocity and friction loss
-- **B.** Loops hold a larger stored volume than branches can hold
-- **C.** Friction loss does not occur in a pipe that is part of a loop
-- **D.** Looped pipes have a larger internal diameter than branched pipes do
+- **A.** Loops hold a larger stored volume than branches can hold
+- **B.** Friction loss does not occur in a pipe that is part of a loop
+- **C.** Looped pipes have a larger internal diameter than branched pipes do
+- **D.** Flow splits between paths, lowering velocity and friction loss
 
-**Answer: A. Flow splits between paths, lowering velocity and friction loss**
+**Answer: D. Flow splits between paths, lowering velocity and friction loss**
 
 With two paths feeding a hydrant, each carries part of the flow. Lower velocity means less head loss, leaving more pressure at the hydrant.
 
@@ -140,10 +140,10 @@ Why is ductile iron pipe commonly supplied with a cement-mortar lining?
 
 - **A.** To stop the pipe from conducting electric current in the soil
 - **B.** To make the pipe walls thicker so it needs no outer coating at all
-- **C.** To let the pipe bend around curves with no fittings at all
-- **D.** To protect the iron from internal corrosion and keep the bore smooth
+- **C.** To protect the iron from internal corrosion and keep the bore smooth
+- **D.** To let the pipe bend around curves with no fittings at all
 
-**Answer: D. To protect the iron from internal corrosion and keep the bore smooth**
+**Answer: C. To protect the iron from internal corrosion and keep the bore smooth**
 
 Cement lining isolates the iron from the water, limiting internal corrosion and tuberculation and keeping friction low.
 
@@ -152,11 +152,11 @@ Cement lining isolates the iron from the water, limiting internal corrosion and 
 What is a major reason PVC pipe is widely used for distribution mains?
 
 - **A.** It can be tapped without any special tools or fittings
-- **B.** It is not affected by long exposure to strong sunlight
-- **C.** It is stronger than steel pipe at very large diameters
-- **D.** It does not rust away like metal pipe in soil
+- **B.** It does not rust away like metal pipe in soil
+- **C.** It is not affected by long exposure to strong sunlight
+- **D.** It is stronger than steel pipe at very large diameters
 
-**Answer: D. It does not rust away like metal pipe in soil**
+**Answer: B. It does not rust away like metal pipe in soil**
 
 PVC is a plastic and does not corrode the way metal pipe does. It still needs protection from sunlight and the correct fittings and tapping tools.
 
@@ -166,10 +166,10 @@ How are lengths of HDPE pipe usually joined into one continuous line?
 
 - **A.** By push-on gaskets seated in a bell socket on each length
 - **B.** By threaded couplings screwed onto the pipe ends
-- **C.** By bolted flanges on each length of the pipe
-- **D.** By heat fusion that welds the pipe ends together
+- **C.** By heat fusion that welds the pipe ends together
+- **D.** By bolted flanges on each length of the pipe
 
-**Answer: D. By heat fusion that welds the pipe ends together**
+**Answer: C. By heat fusion that welds the pipe ends together**
 
 HDPE joints are normally butt-fused or electrofused, giving a joint that is as strong as the pipe and free of gasket seats.
 
@@ -178,11 +178,11 @@ HDPE joints are normally butt-fused or electrofused, giving a joint that is as s
 Why is loose polyethylene encasement often placed around ductile iron pipe in corrosive soil?
 
 - **A.** It keeps the water inside the pipe cooler in the summer
-- **B.** It keeps soil moisture and salts off the metal
-- **C.** It removes the need for any joint restraint on the line
-- **D.** It adds strength so the pipe wall can be made much thinner
+- **B.** It removes the need for any joint restraint on the line
+- **C.** It adds strength so the pipe wall can be made much thinner
+- **D.** It keeps soil moisture and salts off the metal
 
-**Answer: B. It keeps soil moisture and salts off the metal**
+**Answer: D. It keeps soil moisture and salts off the metal**
 
 The sleeve limits contact between the iron and the corrosive soil electrolyte. It does not change the pressure rating or the need for restraint.
 
@@ -191,11 +191,11 @@ The sleeve limits contact between the iron and the corrosive soil electrolyte. I
 For which use is steel pipe most often chosen in a water system?
 
 - **A.** Small residential service lines under a driveway or street
-- **B.** Short hydrant leads where no coating is needed on the pipe
-- **C.** Drain lines carrying untreated water away from the tanks
-- **D.** Large-diameter transmission lines needing strength and flexibility
+- **B.** Large-diameter transmission lines needing strength and flexibility
+- **C.** Short hydrant leads where no coating is needed on the pipe
+- **D.** Drain lines carrying untreated water away from the tanks
 
-**Answer: D. Large-diameter transmission lines needing strength and flexibility**
+**Answer: B. Large-diameter transmission lines needing strength and flexibility**
 
 Steel offers high strength at large diameters, but it needs lining and coating, and often cathodic protection, to control corrosion.
 
@@ -203,12 +203,12 @@ Steel offers high strength at large diameters, but it needs lining and coating, 
 
 Which is a typical handling concern with large concrete pressure pipe?
 
-- **A.** Its tendency to shrink when it is left in the sun for a week
-- **B.** Its brittle ends that crack whenever gaskets are lubricated
-- **C.** Its weight, and impact damage to the coating
+- **A.** Its weight, and impact damage to the coating
+- **B.** Its tendency to shrink when it is left in the sun for a week
+- **C.** Its brittle ends that crack whenever gaskets are lubricated
 - **D.** Its high stretch makes it hard to hold
 
-**Answer: C. Its weight, and impact damage to the coating**
+**Answer: A. Its weight, and impact damage to the coating**
 
 Concrete pressure pipe is heavy and its coating can be chipped or cracked by rough handling, so lifting equipment and care are needed.
 
@@ -217,11 +217,11 @@ Concrete pressure pipe is heavy and its coating can be chipped or cracked by rou
 What is the purpose of a tracer wire installed along a buried PVC or HDPE main?
 
 - **A.** It supplies cathodic protection to the plastic pipe wall
-- **B.** It grounds the pipe against lightning strikes in the area
-- **C.** It carries the signal used to read the customer meters
-- **D.** It lets crews locate the nonmetallic pipe with a locator
+- **B.** It lets crews locate the nonmetallic pipe with a locator
+- **C.** It grounds the pipe against lightning strikes in the area
+- **D.** It carries the signal used to read the customer meters
 
-**Answer: D. It lets crews locate the nonmetallic pipe with a locator**
+**Answer: B. It lets crews locate the nonmetallic pipe with a locator**
 
 Plastic pipe cannot be found with an electromagnetic locator unless a conductive wire is laid with it.
 
@@ -229,12 +229,12 @@ Plastic pipe cannot be found with an electromagnetic locator unless a conductive
 
 What happens when two dissimilar metals are joined and buried in wet soil without isolation?
 
-- **A.** The soil moisture dries out around the joint over time
-- **B.** Both metals corrode at the same slow rate
-- **C.** The more active metal tends to corrode faster
+- **A.** The more active metal tends to corrode faster
+- **B.** The soil moisture dries out around the joint over time
+- **C.** Both metals corrode at the same slow rate
 - **D.** The less active metal tends to corrode faster than before
 
-**Answer: C. The more active metal tends to corrode faster**
+**Answer: A. The more active metal tends to corrode faster**
 
 Galvanic corrosion attacks the more active metal, which acts as the anode. Insulating kits or coatings are used to prevent it.
 
@@ -243,11 +243,11 @@ Galvanic corrosion attacks the more active metal, which acts as the anode. Insul
 What is tuberculation in an old unlined iron main?
 
 - **A.** Gas pockets that collect along the top of the pipe
-- **B.** Rust nodules on the inner wall that cut the flow area
-- **C.** A thin cement coat that builds up inside the pipe over years
+- **B.** A thin cement coat that builds up inside the pipe over years
+- **C.** Rust nodules on the inner wall that cut the flow area
 - **D.** A crack running along the length of the pipe barrel
 
-**Answer: B. Rust nodules on the inner wall that cut the flow area**
+**Answer: C. Rust nodules on the inner wall that cut the flow area**
 
 Tubercles are mounds of rust that narrow the bore, raise friction loss and can release red or brown water.
 
@@ -255,12 +255,12 @@ Tubercles are mounds of rust that narrow the bore, raise friction loss and can r
 
 A PVC main is rated well above normal operating pressure but still fails during repeated pump starts. Which is the most likely reason?
 
-- **A.** Pressure surges added to working pressure and used up the safety margin
-- **B.** The pipe had corroded from the inside over several years
-- **C.** The pipe was too smooth, so the water slipped through too fast
-- **D.** The pipe wall had thinned from the chlorine in the water
+- **A.** The pipe had corroded from the inside over several years
+- **B.** The pipe was too smooth, so the water slipped through too fast
+- **C.** The pipe wall had thinned from the chlorine in the water
+- **D.** Pressure surges added to working pressure and used up the safety margin
 
-**Answer: A. Pressure surges added to working pressure and used up the safety margin**
+**Answer: D. Pressure surges added to working pressure and used up the safety margin**
 
 The pressure class must cover working pressure plus surge allowances. Repeated surges can fatigue plastic pipe even when steady pressure is low.
 
@@ -269,11 +269,11 @@ The pressure class must cover working pressure plus surge allowances. Repeated s
 What makes a push-on joint seal against pressure in a ductile iron main?
 
 - **A.** A threaded collar that is screwed over the spigot end of the pipe
-- **B.** A layer of sealant paste spread over the pipe barrel
-- **C.** A rubber gasket squeezed between spigot and bell
+- **B.** A rubber gasket squeezed between spigot and bell
+- **C.** A layer of sealant paste spread over the pipe barrel
 - **D.** A lead and oakum packing driven into the bell by hand
 
-**Answer: C. A rubber gasket squeezed between spigot and bell**
+**Answer: B. A rubber gasket squeezed between spigot and bell**
 
 In a push-on joint the spigot slides into a bell that holds a rubber gasket. Water pressure presses the gasket tighter against the pipe.
 
@@ -295,11 +295,11 @@ A sleeve or coupling joins plain pipe ends of equal size. A reducer changes size
 Why do bends, tees, caps and hydrant connections need thrust restraint?
 
 - **A.** The pipe wall grows heavier at a fitting and sinks the line
-- **B.** Pressure pushes on a fitting where flow turns or ends
-- **C.** Soil expands around fittings and squeezes the joints apart
-- **D.** Water hammer occurs at fittings and loosens bolts on the line
+- **B.** Soil expands around fittings and squeezes the joints apart
+- **C.** Water hammer occurs at fittings and loosens bolts on the line
+- **D.** Pressure pushes on a fitting where flow turns or ends
 
-**Answer: B. Pressure pushes on a fitting where flow turns or ends**
+**Answer: D. Pressure pushes on a fitting where flow turns or ends**
 
 Internal pressure acts on the unbalanced area at a bend or end, trying to push the pipe apart at its joints. Restraint resists that force.
 
@@ -308,11 +308,11 @@ Internal pressure acts on the unbalanced area at a bend or end, trying to push t
 How does a concrete thrust block hold a bend in place?
 
 - **A.** It adds enough weight that the soil drags along the pipe
-- **B.** It spreads the push of the fitting over undisturbed soil
-- **C.** It seals the joint so that pressure has no effect on the bend
+- **B.** It seals the joint so that pressure has no effect on the bend
+- **C.** It spreads the push of the fitting over undisturbed soil
 - **D.** It pins the fitting to the pipe wall using embedded steel rods
 
-**Answer: B. It spreads the push of the fitting over undisturbed soil**
+**Answer: C. It spreads the push of the fitting over undisturbed soil**
 
 The block bears against solid ground and spreads the thrust over enough area for the soil to resist it. It depends on the strength of that soil.
 
@@ -321,11 +321,11 @@ The block bears against solid ground and spreads the thrust over enough area for
 Why should thrust blocking be poured against undisturbed trench wall rather than loose backfill?
 
 - **A.** Loose soil drains water away from the block too fast to cure
-- **B.** Undisturbed soil bonds chemically to the concrete poured on it
-- **C.** Loose soil gives way under the thrust load
+- **B.** Loose soil gives way under the thrust load
+- **C.** Undisturbed soil bonds chemically to the concrete poured on it
 - **D.** Backfill would crack the concrete as it dries out over time
 
-**Answer: C. Loose soil gives way under the thrust load**
+**Answer: B. Loose soil gives way under the thrust load**
 
 A thrust block only works if the soil behind it can resist the load. Backfilled or disturbed soil compresses and lets the fitting move.
 
@@ -347,11 +347,11 @@ Restrained joints use locking rings or glands. The restrained length of pipe res
 Thrust at a dead end depends mainly on which two quantities?
 
 - **A.** Soil moisture and the depth of the trench cover above
-- **B.** Internal pressure and the cross-sectional area of the pipe
-- **C.** Pipe length and the age of the pipe wall at that point
+- **B.** Pipe length and the age of the pipe wall at that point
+- **C.** Internal pressure and the cross-sectional area of the pipe
 - **D.** Flow rate and the thickness of the pipe lining inside
 
-**Answer: B. Internal pressure and the cross-sectional area of the pipe**
+**Answer: C. Internal pressure and the cross-sectional area of the pipe**
 
 Thrust equals pressure times area, so higher pressure or a larger pipe produces more force. Length of the run does not change it.
 
@@ -359,12 +359,12 @@ Thrust equals pressure times area, so higher pressure or a larger pipe produces 
 
 Where are flanged joints most commonly used?
 
-- **A.** Between lengths of buried plastic pipe in the trench
-- **B.** At each service connection made on the street
-- **C.** Along long runs of buried main between line valves
-- **D.** At pumps, meters and valves in vaults and pump stations
+- **A.** At pumps, meters and valves in vaults and pump stations
+- **B.** Between lengths of buried plastic pipe in the trench
+- **C.** At each service connection made on the street
+- **D.** Along long runs of buried main between line valves
 
-**Answer: D. At pumps, meters and valves in vaults and pump stations**
+**Answer: A. At pumps, meters and valves in vaults and pump stations**
 
 Flanges are bolted faces with a gasket between them. They suit equipment connections that may have to be removed, not long buried runs.
 
@@ -373,11 +373,11 @@ Flanges are bolted faces with a gasket between them. They suit equipment connect
 What does a tapping sleeve and valve let crews do?
 
 - **A.** Seal off a broken main without using any other valves
-- **B.** Reduce the main to a smaller size in the middle of a run
-- **C.** Connect a new branch to a main that stays in service
+- **B.** Connect a new branch to a main that stays in service
+- **C.** Reduce the main to a smaller size in the middle of a run
 - **D.** Measure the pressure inside the main with a built-in gauge
 
-**Answer: C. Connect a new branch to a main that stays in service**
+**Answer: B. Connect a new branch to a main that stays in service**
 
 A tapping sleeve clamps around the main and a valve is bolted to it. A cutter then passes through the valve to make the opening without shutting down the main.
 
@@ -385,12 +385,12 @@ A tapping sleeve clamps around the main and a valve is bolted to it. A cutter th
 
 Soon after a line with a new bend is filled, the unrestrained push-on joints near the bend pull apart. What is the most likely cause?
 
-- **A.** The gaskets were made from the wrong kind of rubber
-- **B.** The thrust at the bend was not resisted by blocks or restraint
+- **A.** The thrust at the bend was not resisted by blocks or restraint
+- **B.** The gaskets were made from the wrong kind of rubber
 - **C.** The pipe was too smooth to hold the water pressure
 - **D.** The bend was set too deep below the frost line
 
-**Answer: B. The thrust at the bend was not resisted by blocks or restraint**
+**Answer: A. The thrust at the bend was not resisted by blocks or restraint**
 
 Unbalanced thrust at a bend pushes the pipe out of its bells. Without blocking or restrained joints, nothing holds the fitting against that force.
 
@@ -398,12 +398,12 @@ Unbalanced thrust at a bend pushes the pipe out of its bells. Without blocking o
 
 What is the main job of a gate valve on a distribution main?
 
-- **A.** To isolate a section of main, usually fully open or closed
-- **B.** To keep the flow moving in one direction in the pipe
-- **C.** To hold downstream pressure at a steady lower setting
+- **A.** To keep the flow moving in one direction in the pipe
+- **B.** To hold downstream pressure at a steady lower setting
+- **C.** To isolate a section of main, usually fully open or closed
 - **D.** To vent air that collects at high points in the main
 
-**Answer: A. To isolate a section of main, usually fully open or closed**
+**Answer: C. To isolate a section of main, usually fully open or closed**
 
 Gate valves shut off sections for repair or control. They are normally left fully open and are not meant to regulate flow or pressure.
 
@@ -411,12 +411,12 @@ Gate valves shut off sections for repair or control. They are normally left full
 
 What does a check valve do?
 
-- **A.** It lets water pass one way and blocks reverse flow
-- **B.** It lets a tank fill while the pump is idle
-- **C.** It opens when the pressure rises above a set limit
-- **D.** It reduces high pressure to a lower setting
+- **A.** It lets a tank fill while the pump is idle
+- **B.** It opens when the pressure rises above a set limit
+- **C.** It reduces high pressure to a lower setting
+- **D.** It lets water pass one way and blocks reverse flow
 
-**Answer: A. It lets water pass one way and blocks reverse flow**
+**Answer: D. It lets water pass one way and blocks reverse flow**
 
 A check valve has a flap or disc that opens with forward flow and closes when flow tries to reverse, as at a pump discharge.
 
@@ -424,12 +424,12 @@ A check valve has a flap or disc that opens with forward flow and closes when fl
 
 Where is an air release valve normally installed on a transmission main?
 
-- **A.** Just downstream of each service tap
-- **B.** At low points where sediment settles
-- **C.** At high points where air collects
+- **A.** At high points where air collects
+- **B.** Just downstream of each service tap
+- **C.** At low points where sediment settles
 - **D.** At the outlet of each fire hydrant
 
-**Answer: C. At high points where air collects**
+**Answer: A. At high points where air collects**
 
 Air rises to the high points of a pipeline. A release valve there vents it, so pockets do not restrict flow or cause surges.
 
@@ -437,12 +437,12 @@ Air rises to the high points of a pipeline. A release valve there vents it, so p
 
 How does a butterfly valve differ in operation from a gate valve?
 
-- **A.** It closes with a quarter turn of a disc
-- **B.** It closes by pushing a ball against a seat
+- **A.** It closes by pushing a ball against a seat
+- **B.** It closes with a quarter turn of a disc
 - **C.** It closes by lowering a wedge across the pipe
 - **D.** It closes only when reverse flow slams a flap shut
 
-**Answer: A. It closes with a quarter turn of a disc**
+**Answer: B. It closes with a quarter turn of a disc**
 
 A butterfly disc rotates about 90 degrees on its shaft. Even when open, the disc sits in the flow path and adds some head loss.
 
@@ -451,11 +451,11 @@ A butterfly disc rotates about 90 degrees on its shaft. Even when open, the disc
 What is the main reason for a regular valve exercising program?
 
 - **A.** To clean the inside walls of the pipe near each valve
-- **B.** To keep valves working and find stuck or buried ones
-- **C.** To lower the pressure in the main during the winter
-- **D.** To calibrate the meters that are located nearby
+- **B.** To lower the pressure in the main during the winter
+- **C.** To calibrate the meters that are located nearby
+- **D.** To keep valves working and find stuck or buried ones
 
-**Answer: B. To keep valves working and find stuck or buried ones**
+**Answer: D. To keep valves working and find stuck or buried ones**
 
 Valves left unused can seize or get buried. Turning them through their range confirms they work before an emergency and updates the records.
 
@@ -465,10 +465,10 @@ A pressure-reducing valve is most often used for what purpose?
 
 - **A.** To prevent reverse flow from a customer's building
 - **B.** To keep the water in a tank from overflowing
-- **C.** To raise pressure in a zone that is too high
-- **D.** To give customers in a low zone a lower, steadier pressure
+- **C.** To give customers in a low zone a lower, steadier pressure
+- **D.** To raise pressure in a zone that is too high
 
-**Answer: D. To give customers in a low zone a lower, steadier pressure**
+**Answer: C. To give customers in a low zone a lower, steadier pressure**
 
 A PRV holds a set downstream pressure when upstream pressure is higher, as in low areas fed by a high tank or pump.
 
@@ -477,11 +477,11 @@ A PRV holds a set downstream pressure when upstream pressure is higher, as in lo
 What does an altitude valve do at a ground-level tank?
 
 - **A.** It reduces the tank pressure to the setting needed by the zone
-- **B.** It vents air from the top of the tank as it fills with water
-- **C.** It shuts the outlet when the level falls too low in the tank
-- **D.** It shuts the inlet when the tank is full
+- **B.** It shuts the inlet when the tank is full
+- **C.** It vents air from the top of the tank as it fills with water
+- **D.** It shuts the outlet when the level falls too low in the tank
 
-**Answer: D. It shuts the inlet when the tank is full**
+**Answer: B. It shuts the inlet when the tank is full**
 
 An altitude valve senses tank level and closes the inlet when the tank reaches its high level, which prevents overflow. Some are two-way valves that also let water flow back out to the system when pressure drops; other installations return water through a separate line with a check valve.
 
@@ -490,11 +490,11 @@ An altitude valve senses tank level and closes the inlet when the tank reaches i
 Why should large valves be closed slowly?
 
 - **A.** To make the valve seat wear evenly on both sides
-- **B.** To limit pressure surges that can damage the system
-- **C.** To allow the disc to dry before it seats
+- **B.** To allow the disc to dry before it seats
+- **C.** To limit pressure surges that can damage the system
 - **D.** To let air enter the main during the closing
 
-**Answer: B. To limit pressure surges that can damage the system**
+**Answer: C. To limit pressure surges that can damage the system**
 
 Quick closure stops moving water suddenly, producing a pressure surge. Slow operation lets the flow slow down gradually.
 
@@ -502,12 +502,12 @@ Quick closure stops moving water suddenly, producing a pressure surge. Slow oper
 
 Why is a gate valve a poor choice for continuous throttling?
 
-- **A.** Partly open, the gate vibrates and wears away
-- **B.** The gate valve adds more friction than any other valve
-- **C.** Throttling traps air under the gate and cracks the stem
-- **D.** A gate valve is unable to hold any pressure at all
+- **A.** The gate valve adds more friction than any other valve
+- **B.** Throttling traps air under the gate and cracks the stem
+- **C.** A gate valve is unable to hold any pressure at all
+- **D.** Partly open, the gate vibrates and wears away
 
-**Answer: A. Partly open, the gate vibrates and wears away**
+**Answer: D. Partly open, the gate vibrates and wears away**
 
 Gate valves are designed to be fully open or shut. Partially open, the flow tears at the gate and seat, so a valve built for throttling is better.
 
@@ -529,11 +529,11 @@ A valve that turns freely without stopping flow usually has a broken or stripped
 How does a dry-barrel hydrant protect itself in freezing weather?
 
 - **A.** Its barrel is filled with antifreeze in the autumn each year
-- **B.** Its nozzles are heated by the water in the main nearby
-- **C.** Its main valve sits below the frost line and the barrel drains
+- **B.** Its main valve sits below the frost line and the barrel drains
+- **C.** Its nozzles are heated by the water in the main nearby
 - **D.** Its outlets hold a separate valve that is set to trickle
 
-**Answer: C. Its main valve sits below the frost line and the barrel drains**
+**Answer: B. Its main valve sits below the frost line and the barrel drains**
 
 In a dry-barrel hydrant the main valve is deep underground. When it is closed, the barrel above drains out through a small drain port.
 
@@ -543,10 +543,10 @@ What describes a wet-barrel hydrant?
 
 - **A.** The hydrant draws its water only from a nearby storage tank
 - **B.** The barrel holds air that is pushed out as it fills up
-- **C.** The barrel stays full of water and each outlet has its own valve
-- **D.** The barrel drains whenever the main valve is shut off tight
+- **C.** The barrel drains whenever the main valve is shut off tight
+- **D.** The barrel stays full of water and each outlet has its own valve
 
-**Answer: C. The barrel stays full of water and each outlet has its own valve**
+**Answer: D. The barrel stays full of water and each outlet has its own valve**
 
 A wet-barrel hydrant keeps water in the barrel at all times, so it is used in climates where freezing is not a concern.
 
@@ -555,11 +555,11 @@ A wet-barrel hydrant keeps water in the barrel at all times, so it is used in cl
 In systems that use a common color scheme, what does the color on a hydrant bonnet or cap usually tell firefighters?
 
 - **A.** The year the hydrant was put into service
-- **B.** The flow it can be expected to deliver
-- **C.** The size of the main valve inside the base
+- **B.** The size of the main valve inside the base
+- **C.** The flow it can be expected to deliver
 - **D.** The brand that made the hydrant barrel
 
-**Answer: B. The flow it can be expected to deliver**
+**Answer: C. The flow it can be expected to deliver**
 
 Many utilities paint hydrant tops by their rated flow class, so crews can quickly judge which hydrants to use. It is not a record of age or maker.
 
@@ -567,12 +567,12 @@ Many utilities paint hydrant tops by their rated flow class, so crews can quickl
 
 Why should a dry-barrel hydrant be opened fully when it is flowing?
 
-- **A.** The barrel needs full flow to keep any water from freezing inside
-- **B.** A partly open valve leaves the drain port open and the water leaks away
+- **A.** A partly open valve leaves the drain port open and the water leaks away
+- **B.** The barrel needs full flow to keep any water from freezing inside
 - **C.** A partly open valve makes the water cloudy and discolored
 - **D.** Full opening lowers the pressure in the main in that area
 
-**Answer: B. A partly open valve leaves the drain port open and the water leaks away**
+**Answer: A. A partly open valve leaves the drain port open and the water leaks away**
 
 The drain port closes only when the main valve is well open. A partly open hydrant lets water escape through the drain and wash out the soil around the base.
 
@@ -581,11 +581,11 @@ The drain port closes only when the main valve is well open. A partly open hydra
 After a hydrant has been used in cold weather, what should be checked?
 
 - **A.** That the paint on the barrel has dried evenly after use
-- **B.** That the main valve has been left partly open to trickle
-- **C.** That the nozzle threads are wet with fresh water
-- **D.** That the barrel has drained of water
+- **B.** That the barrel has drained of water
+- **C.** That the main valve has been left partly open to trickle
+- **D.** That the nozzle threads are wet with fresh water
 
-**Answer: D. That the barrel has drained of water**
+**Answer: B. That the barrel has drained of water**
 
 Water left in a dry-barrel hydrant can freeze and crack the barrel, so crews confirm that it drains, often with a suction check at the nozzle.
 
@@ -593,12 +593,12 @@ Water left in a dry-barrel hydrant can freeze and crack the barrel, so crews con
 
 In a hydrant flow test, what is the residual pressure?
 
-- **A.** The pressure at the test hydrant while another one flows
-- **B.** The pressure at the nozzle of the flowing hydrant
-- **C.** The highest pressure measured during a day of testing at the site
-- **D.** The pressure in the main before any hydrant is opened
+- **A.** The pressure at the nozzle of the flowing hydrant
+- **B.** The highest pressure measured during a day of testing at the site
+- **C.** The pressure in the main before any hydrant is opened
+- **D.** The pressure at the test hydrant while another one flows
 
-**Answer: A. The pressure at the test hydrant while another one flows**
+**Answer: D. The pressure at the test hydrant while another one flows**
 
 The static reading is taken before flow. Residual is read at the test hydrant while the flow hydrant discharges, showing how much pressure the system keeps under that flow.
 
@@ -606,12 +606,12 @@ The static reading is taken before flow. Residual is read at the test hydrant wh
 
 What does a pitot gauge measure during a flow test?
 
-- **A.** The velocity pressure in the stream
-- **B.** The temperature of the water in the discharge stream
-- **C.** The inside diameter of the hydrant nozzle outlet
+- **A.** The temperature of the water in the discharge stream
+- **B.** The inside diameter of the hydrant nozzle outlet
+- **C.** The velocity pressure in the stream
 - **D.** The static pressure inside the main before the test
 
-**Answer: A. The velocity pressure in the stream**
+**Answer: C. The velocity pressure in the stream**
 
 The pitot tube is held in the center of the stream, and its gauge reading is used in a formula to estimate the flow from that nozzle.
 
@@ -619,12 +619,12 @@ The pitot tube is held in the center of the stream, and its gauge reading is use
 
 Which task belongs in routine hydrant maintenance?
 
-- **A.** Painting the inside of the barrel with a sealant coat
-- **B.** Removing the main valve each year so that it can be polished
-- **C.** Replacing the lead pipe to the main every season
-- **D.** Lubricating the stem and nut, and checking caps and gaskets
+- **A.** Lubricating the stem and nut, and checking caps and gaskets
+- **B.** Painting the inside of the barrel with a sealant coat
+- **C.** Removing the main valve each year so that it can be polished
+- **D.** Replacing the lead pipe to the main every season
 
-**Answer: D. Lubricating the stem and nut, and checking caps and gaskets**
+**Answer: A. Lubricating the stem and nut, and checking caps and gaskets**
 
 Routine care keeps a hydrant easy to open and leak free. This includes lubrication, cap and gasket inspection and checking for drainage.
 
@@ -632,12 +632,12 @@ Routine care keeps a hydrant easy to open and leak free. This includes lubricati
 
 What should be done when a hydrant is found to be out of service?
 
-- **A.** Open it fully to flush it clean until it starts flowing
-- **B.** Remove its caps so that the problem can be seen from the street
-- **C.** Leave it alone, since the next crew will find the fault later
-- **D.** Mark it so it is not relied on, and tell the fire department
+- **A.** Mark it so it is not relied on, and tell the fire department
+- **B.** Open it fully to flush it clean until it starts flowing
+- **C.** Remove its caps so that the problem can be seen from the street
+- **D.** Leave it alone, since the next crew will find the fault later
 
-**Answer: D. Mark it so it is not relied on, and tell the fire department**
+**Answer: A. Mark it so it is not relied on, and tell the fire department**
 
 An out-of-service hydrant should be marked so that firefighters do not count on it, and the fire department should be told.
 
@@ -658,12 +658,12 @@ A big drop at modest flow means the supply path cannot deliver much water. Cause
 
 What is a corporation stop?
 
-- **A.** The valve fitted where the service line taps the main
-- **B.** The valve placed on the customer's inside plumbing
-- **C.** The shutoff valve set in a box at the property line
+- **A.** The valve placed on the customer's inside plumbing
+- **B.** The shutoff valve set in a box at the property line
+- **C.** The valve fitted where the service line taps the main
 - **D.** The check valve used on a meter that has been removed
 
-**Answer: A. The valve fitted where the service line taps the main**
+**Answer: C. The valve fitted where the service line taps the main**
 
 The corporation stop is installed directly into the main, at the start of the service line. It is generally left open and is not operated routinely.
 
@@ -684,12 +684,12 @@ A curb stop sits on the service line near the curb or property line and is turne
 
 What is a service line?
 
-- **A.** The pipe that returns unused water from a building to the main
-- **B.** The main that runs along a street and feeds hydrants
-- **C.** The line that connects a hydrant to its isolation valve
-- **D.** The pipe from the main to a customer's building
+- **A.** The pipe from the main to a customer's building
+- **B.** The pipe that returns unused water from a building to the main
+- **C.** The main that runs along a street and feeds hydrants
+- **D.** The line that connects a hydrant to its isolation valve
 
-**Answer: D. The pipe from the main to a customer's building**
+**Answer: A. The pipe from the main to a customer's building**
 
 The service line runs from the corporation stop on the main to the customer's meter or building, and carries only that customer's supply.
 
@@ -698,11 +698,11 @@ The service line runs from the corporation stop on the main to the customer's me
 Why is a curb stop installed in a curb box?
 
 - **A.** So the meter can be read through the lid of the box
-- **B.** So the valve can be locked open for the customer to use
-- **C.** So the valve is kept dry by the soil packed around the box
-- **D.** So crews can operate it from the surface with a key
+- **B.** So crews can operate it from the surface with a key
+- **C.** So the valve can be locked open for the customer to use
+- **D.** So the valve is kept dry by the soil packed around the box
 
-**Answer: D. So crews can operate it from the surface with a key**
+**Answer: B. So crews can operate it from the surface with a key**
 
 The box is a pipe sleeve that extends to ground level. A long key passes through it to turn the buried curb stop without digging.
 
@@ -711,11 +711,11 @@ The box is a pipe sleeve that extends to ground level. A long key passes through
 Which best describes a meter setting?
 
 - **A.** The pit that is dug to bury a damaged service line
-- **B.** The fittings and valves that hold a meter in place
-- **C.** The tool used to test the accuracy of a meter on a bench
+- **B.** The tool used to test the accuracy of a meter on a bench
+- **C.** The fittings and valves that hold a meter in place
 - **D.** The record kept of each customer's monthly water use over time
 
-**Answer: B. The fittings and valves that hold a meter in place**
+**Answer: C. The fittings and valves that hold a meter in place**
 
 A setting, often a yoke or a meter box, positions the meter at the right height and alignment, with valves to isolate it for removal or testing.
 
@@ -724,11 +724,11 @@ A setting, often a yoke or a meter box, positions the meter at the right height 
 Why is a service saddle often used when tapping certain mains?
 
 - **A.** It acts as a backflow device for the new service line
-- **B.** It reinforces the main around the tap
-- **C.** It lets the tap be made without any drilling of the pipe
-- **D.** It keeps the corporation stop from needing to be opened
+- **B.** It lets the tap be made without any drilling of the pipe
+- **C.** It keeps the corporation stop from needing to be opened
+- **D.** It reinforces the main around the tap
 
-**Answer: B. It reinforces the main around the tap**
+**Answer: D. It reinforces the main around the tap**
 
 A saddle clamps around the pipe and spreads the load at the tap, which helps where the pipe wall is thin or the threads would not hold alone.
 
@@ -751,10 +751,10 @@ Why do utilities keep an inventory of service line materials?
 
 - **A.** To measure how fast the water flows in each of the lines
 - **B.** To mark which hydrants are closest to each of the homes
-- **C.** To find old lead or galvanized lines and plan their replacement
-- **D.** To set the water rates for each of the customer classes served
+- **C.** To set the water rates for each of the customer classes served
+- **D.** To find old lead or galvanized lines and plan their replacement
 
-**Answer: C. To find old lead or galvanized lines and plan their replacement**
+**Answer: D. To find old lead or galvanized lines and plan their replacement**
 
 Knowing the material of every service line helps a utility find those that may need to be replaced and track the work in its records.
 
@@ -763,11 +763,11 @@ Knowing the material of every service line helps a utility find those that may n
 One house reports weak flow while neighbors on the same main have normal pressure. What is a likely service-side cause?
 
 - **A.** A closed valve that is located at the treatment plant itself
-- **B.** A partly closed curb stop or a restricted service line
-- **C.** A main break on the far side of the town from the house
+- **B.** A main break on the far side of the town from the house
+- **C.** A partly closed curb stop or a restricted service line
 - **D.** A hydrant that someone left open at the end of the street
 
-**Answer: B. A partly closed curb stop or a restricted service line**
+**Answer: C. A partly closed curb stop or a restricted service line**
 
 Since the main supplies neighbors normally, the problem is likely on that customer's own service line, such as a half-closed stop or a clogged or corroded pipe.
 
@@ -775,12 +775,12 @@ Since the main supplies neighbors normally, the problem is likely on that custom
 
 Water is surfacing above a service line, yet closing the curb stop does not stop the leak. Where is the leak most likely located?
 
-- **A.** On the wall of a nearby storage tank
-- **B.** On the meter that sits inside the house
-- **C.** On the pipe between the main and the curb stop
+- **A.** On the pipe between the main and the curb stop
+- **B.** On the wall of a nearby storage tank
+- **C.** On the meter that sits inside the house
 - **D.** On the customer's piping after the meter
 
-**Answer: C. On the pipe between the main and the curb stop**
+**Answer: A. On the pipe between the main and the curb stop**
 
 The curb stop isolates only what is downstream of it. A leak that continues after it is closed is still fed from the main, so it lies on the line between them.
 
@@ -801,12 +801,12 @@ Customer meters record the water delivered, which supports fair billing and lets
 
 Which meter type is most common on small residential services?
 
-- **A.** A propeller meter set in the main
-- **B.** A magnetic meter on a trunk line
-- **C.** A positive displacement meter
+- **A.** A positive displacement meter
+- **B.** A propeller meter set in the main
+- **C.** A magnetic meter on a trunk line
 - **D.** A venturi meter in a vault
 
-**Answer: C. A positive displacement meter**
+**Answer: A. A positive displacement meter**
 
 Positive displacement meters trap and count fixed volumes of water, and they stay accurate at the low flows typical of homes.
 
@@ -828,11 +828,11 @@ A compound meter uses a small meter for low flows and a larger one for high flow
 What is a likely result of installing a meter that is much too large for the customer's usage?
 
 - **A.** The meter will wear out within a few weeks
-- **B.** The meter will raise the pressure on the line
-- **C.** Low flows pass without being fully recorded
+- **B.** Low flows pass without being fully recorded
+- **C.** The meter will raise the pressure on the line
 - **D.** The meter will record more water than was used
 
-**Answer: C. Low flows pass without being fully recorded**
+**Answer: B. Low flows pass without being fully recorded**
 
 Large meters often need a minimum flow to start turning. A customer who uses a small flow most of the time may have much of it missed by an oversized meter.
 
@@ -881,10 +881,10 @@ A meter has a dial marked with a multiplier of 10. How is consumption found from
 
 - **A.** Add 10 to the difference in the reads
 - **B.** Divide the difference in the reads by 10
-- **C.** Multiply the difference in the reads by 10
-- **D.** Subtract 10 from the difference in the reads
+- **C.** Subtract 10 from the difference in the reads
+- **D.** Multiply the difference in the reads by 10
 
-**Answer: C. Multiply the difference in the reads by 10**
+**Answer: D. Multiply the difference in the reads by 10**
 
 The multiplier on the dial scales the register to the true volume. If the register shows 5 units of use, the actual use is 50 units.
 
@@ -892,12 +892,12 @@ The multiplier on the dial scales the register to the true volume. If the regist
 
 A service line with air in it is filled again, and the meter register spins quickly for a short time. Why might the customer see extra use on the bill?
 
-- **A.** Air lowers the pressure and that increases the billed rate
-- **B.** The meter divides by a larger number when air is present
-- **C.** Air thickens the water so more of it is counted
-- **D.** Moving air turns the meter and is counted as water
+- **A.** Moving air turns the meter and is counted as water
+- **B.** Air lowers the pressure and that increases the billed rate
+- **C.** The meter divides by a larger number when air is present
+- **D.** Air thickens the water so more of it is counted
 
-**Answer: D. Moving air turns the meter and is counted as water**
+**Answer: A. Moving air turns the meter and is counted as water**
 
 A meter measures movement, not content. Air rushing through can spin the register and add apparent volume, which is why lines are vented and refilled slowly.
 
@@ -919,11 +919,11 @@ The main line stays open for large fire flows. The small bypass meter registers 
 What is the usual purpose of a booster pump station in a distribution system?
 
 - **A.** To store water so it can be used during a fire
-- **B.** To prevent water from flowing backward into the main
-- **C.** To raise pressure or lift water to a higher zone or tank
+- **B.** To raise pressure or lift water to a higher zone or tank
+- **C.** To prevent water from flowing backward into the main
 - **D.** To remove sediment from the water before it reaches homes
 
-**Answer: C. To raise pressure or lift water to a higher zone or tank**
+**Answer: B. To raise pressure or lift water to a higher zone or tank**
 
 A booster station adds energy to water that is already in the system, so higher ground or distant areas get adequate pressure.
 
@@ -931,12 +931,12 @@ A booster station adds energy to water that is already in the system, so higher 
 
 How does a centrifugal pump add energy to the water?
 
-- **A.** A spinning impeller throws the water outward at higher speed
-- **B.** A float rises and drains the water into the discharge
-- **C.** A heated coil expands the water until it moves forward
+- **A.** A float rises and drains the water into the discharge
+- **B.** A heated coil expands the water until it moves forward
+- **C.** A spinning impeller throws the water outward at higher speed
 - **D.** A piston pushes the water ahead in measured amounts
 
-**Answer: A. A spinning impeller throws the water outward at higher speed**
+**Answer: C. A spinning impeller throws the water outward at higher speed**
 
 In a centrifugal pump, the impeller spins and flings the water outward into the casing, where the speed is turned into pressure.
 
@@ -944,12 +944,12 @@ In a centrifugal pump, the impeller spins and flings the water outward into the 
 
 Which side of a pump brings water into it?
 
-- **A.** The suction side
-- **B.** The check valve side
+- **A.** The check valve side
+- **B.** The suction side
 - **C.** The volute outlet side
 - **D.** The discharge side
 
-**Answer: A. The suction side**
+**Answer: B. The suction side**
 
 Water enters a pump through the suction connection and leaves through the discharge, which carries the added pressure.
 
@@ -959,10 +959,10 @@ What does a pump curve show?
 
 - **A.** How much a pump costs for each hour it runs
 - **B.** How pipe diameter affects the pump motor size
-- **C.** How the head a pump produces changes as flow changes
-- **D.** How long a pump will last before it wears out
+- **C.** How long a pump will last before it wears out
+- **D.** How the head a pump produces changes as flow changes
 
-**Answer: C. How the head a pump produces changes as flow changes**
+**Answer: D. How the head a pump produces changes as flow changes**
 
 A typical pump curve plots head against flow. As flow increases, the head the pump can develop drops, which is why a pump matches a system at one point.
 
@@ -970,12 +970,12 @@ A typical pump curve plots head against flow. As flow increases, the head the pu
 
 Where does a pump operate on its curve in a given system?
 
-- **A.** At the point where the pump head is lowest
-- **B.** At the highest flow shown on the pump curve
-- **C.** Where the pump curve crosses the system curve
+- **A.** Where the pump curve crosses the system curve
+- **B.** At the point where the pump head is lowest
+- **C.** At the highest flow shown on the pump curve
 - **D.** At the point where the motor draws the least power
 
-**Answer: C. Where the pump curve crosses the system curve**
+**Answer: A. Where the pump curve crosses the system curve**
 
 The system curve shows the head needed at each flow. The pump runs where the head it makes equals the head the system needs.
 
@@ -984,11 +984,11 @@ The system curve shows the head needed at each flow. The pump runs where the hea
 What is cavitation in a pump?
 
 - **A.** The motor speed rises above its rated value under load
-- **B.** Vapor bubbles form at low pressure, then collapse on metal
-- **C.** Water freezes in the casing and blocks the impeller
+- **B.** Water freezes in the casing and blocks the impeller
+- **C.** Vapor bubbles form at low pressure, then collapse on metal
 - **D.** Air is pulled into the casing and the pump stops turning
 
-**Answer: B. Vapor bubbles form at low pressure, then collapse on metal**
+**Answer: C. Vapor bubbles form at low pressure, then collapse on metal**
 
 Low pressure at the impeller eye lets water flash into vapor. The bubbles collapse on metal surfaces, causing noise, vibration and pitting.
 
@@ -1009,12 +1009,12 @@ Without a check valve, water in the discharge line could run backward through th
 
 How can a variable frequency drive help a booster pump station?
 
-- **A.** It changes pump speed to match demand and saves energy
-- **B.** It increases the pump's rated capacity beyond its design
-- **C.** It filters out sediment as the pump speeds up
-- **D.** It removes the need for any pressure control
+- **A.** It increases the pump's rated capacity beyond its design
+- **B.** It filters out sediment as the pump speeds up
+- **C.** It removes the need for any pressure control
+- **D.** It changes pump speed to match demand and saves energy
 
-**Answer: A. It changes pump speed to match demand and saves energy**
+**Answer: D. It changes pump speed to match demand and saves energy**
 
 A drive changes motor speed, so the pump can match demand instead of running at full speed and throttling the excess flow with a valve.
 
@@ -1022,12 +1022,12 @@ A drive changes motor speed, so the pump can match demand instead of running at 
 
 Why is it a concern if a pump runs far away from its best efficiency point?
 
-- **A.** It will raise the water temperature in the main
-- **B.** It wastes power and causes more wear and vibration
+- **A.** It wastes power and causes more wear and vibration
+- **B.** It will raise the water temperature in the main
 - **C.** It will force the pump to make more head than needed
 - **D.** It will leave air in the water that is pumped
 
-**Answer: B. It wastes power and causes more wear and vibration**
+**Answer: A. It wastes power and causes more wear and vibration**
 
 Operating far from the best efficiency point means the flow does not match the design of the impeller, which wastes energy and loads the bearings and seals.
 
@@ -1049,11 +1049,11 @@ With no flow, the power from the motor turns into heat in the water trapped in t
 What is backflow?
 
 - **A.** Flow that moves from a storage tank up to a high zone
-- **B.** Flow that is measured by a meter after a repair is done
-- **C.** Flow that runs back to a pump after it has stopped
-- **D.** Reverse flow of water or other substances into the supply
+- **B.** Reverse flow of water or other substances into the supply
+- **C.** Flow that is measured by a meter after a repair is done
+- **D.** Flow that runs back to a pump after it has stopped
 
-**Answer: D. Reverse flow of water or other substances into the supply**
+**Answer: B. Reverse flow of water or other substances into the supply**
 
 Backflow is any flow in the opposite direction of the normal supply, and it can carry contaminants from a customer's system into the distribution main.
 
@@ -1061,12 +1061,12 @@ Backflow is any flow in the opposite direction of the normal supply, and it can 
 
 What commonly causes backsiphonage?
 
-- **A.** A new meter that has been installed in the backward way
-- **B.** A customer pump that pushes water back into the main
-- **C.** A closed valve at the far end of a dead-end main
-- **D.** A sudden loss of supply pressure that creates suction
+- **A.** A sudden loss of supply pressure that creates suction
+- **B.** A new meter that has been installed in the backward way
+- **C.** A customer pump that pushes water back into the main
+- **D.** A closed valve at the far end of a dead-end main
 
-**Answer: D. A sudden loss of supply pressure that creates suction**
+**Answer: A. A sudden loss of supply pressure that creates suction**
 
 When supply pressure drops sharply, as with a main break or heavy fire flow, a vacuum can pull water back from connected piping.
 
@@ -1074,12 +1074,12 @@ When supply pressure drops sharply, as with a main break or heavy fire flow, a v
 
 What is an air gap?
 
-- **A.** A vertical open space between a supply outlet and a vessel's rim
-- **B.** An air-filled chamber that is placed ahead of the meter
-- **C.** A slot cut in a valve body to let air pass through it
+- **A.** An air-filled chamber that is placed ahead of the meter
+- **B.** A slot cut in a valve body to let air pass through it
+- **C.** A vertical open space between a supply outlet and a vessel's rim
 - **D.** A pocket of air trapped under the cap of a fire hydrant
 
-**Answer: A. A vertical open space between a supply outlet and a vessel's rim**
+**Answer: C. A vertical open space between a supply outlet and a vessel's rim**
 
 An air gap is a physical separation with nothing between the faucet or pipe and the flood level of the tank, so water cannot be drawn back.
 
@@ -1087,12 +1087,12 @@ An air gap is a physical separation with nothing between the faucet or pipe and 
 
 What does a reduced-pressure principle assembly consist of?
 
-- **A.** Two checks with a relief valve between them
-- **B.** A vacuum breaker followed by a pressure regulator
-- **C.** A float and a single diaphragm held in a brass housing
-- **D.** Two gate valves with a test gauge fitted between them
+- **A.** A vacuum breaker followed by a pressure regulator
+- **B.** A float and a single diaphragm held in a brass housing
+- **C.** Two gate valves with a test gauge fitted between them
+- **D.** Two checks with a relief valve between them
 
-**Answer: A. Two checks with a relief valve between them**
+**Answer: D. Two checks with a relief valve between them**
 
 The relief valve between the checks opens to the atmosphere if the pressure there rises toward supply, so leakage is dumped instead of passing back.
 
@@ -1113,12 +1113,12 @@ A double check has two checks in series but no relief port. It suits lower-hazar
 
 Which limit applies to an atmospheric vacuum breaker?
 
-- **A.** It protects against backsiphonage and not backpressure
-- **B.** It protects against backsiphonage as well as backpressure
-- **C.** It is rated to be kept under constant line pressure
+- **A.** It protects against backsiphonage as well as backpressure
+- **B.** It is rated to be kept under constant line pressure
+- **C.** It protects against backsiphonage and not backpressure
 - **D.** It is meant to be set below the highest downstream outlet
 
-**Answer: A. It protects against backsiphonage and not backpressure**
+**Answer: C. It protects against backsiphonage and not backpressure**
 
 An atmospheric vacuum breaker uses a float that drops to open air in a vacuum. It is not for backpressure or continuous pressure, and it must be above the outlets.
 
@@ -1128,10 +1128,10 @@ How does a pressure vacuum breaker differ from an atmospheric vacuum breaker?
 
 - **A.** It can be put below the outlet and still do its job well
 - **B.** It needs no testing and almost no maintenance work
-- **C.** It can stay under pressure, but is for backsiphonage only
-- **D.** It also gives protection from backpressure on the line itself
+- **C.** It also gives protection from backpressure on the line itself
+- **D.** It can stay under pressure, but is for backsiphonage only
 
-**Answer: C. It can stay under pressure, but is for backsiphonage only**
+**Answer: D. It can stay under pressure, but is for backsiphonage only**
 
 A pressure vacuum breaker has a spring-loaded check and an air inlet, so it can have shutoff valves downstream, but it still protects only against backsiphonage.
 
@@ -1139,12 +1139,12 @@ A pressure vacuum breaker has a spring-loaded check and an air inlet, so it can 
 
 Why do backflow prevention assemblies need periodic testing?
 
-- **A.** The seals are made of paper and dry out after a year or so
-- **B.** The assembly stops working after it has been tested once
-- **C.** The test sets the water pressure for the whole building
-- **D.** Checks and relief valves can foul, and a test shows they hold
+- **A.** Checks and relief valves can foul, and a test shows they hold
+- **B.** The seals are made of paper and dry out after a year or so
+- **C.** The assembly stops working after it has been tested once
+- **D.** The test sets the water pressure for the whole building
 
-**Answer: D. Checks and relief valves can foul, and a test shows they hold**
+**Answer: A. Checks and relief valves can foul, and a test shows they hold**
 
 Debris and wear can keep check valves from sealing. Testing by a qualified tester shows that the assembly still does its job.
 
@@ -1153,11 +1153,11 @@ Debris and wear can keep check valves from sealing. Testing by a qualified teste
 A plant mixes toxic chemicals and has a connection to the water system. Which protection is appropriate for that high hazard?
 
 - **A.** A vacuum breaker on a hose bib outside the plant
-- **B.** An air gap or a reduced-pressure assembly
-- **C.** A single check valve fitted on the line itself
+- **B.** A single check valve fitted on the line itself
+- **C.** An air gap or a reduced-pressure assembly
 - **D.** A gate valve kept in the closed position at all times
 
-**Answer: B. An air gap or a reduced-pressure assembly**
+**Answer: C. An air gap or a reduced-pressure assembly**
 
 The hazard level decides the device. A toxic substance calls for the strongest protection, an air gap or a reduced-pressure principle assembly.
 
@@ -1165,12 +1165,12 @@ The hazard level decides the device. A toxic substance calls for the strongest p
 
 A reduced-pressure assembly is installed in a pit with no drain, and the pit floods. Why is that a problem?
 
-- **A.** The relief port can be submerged and draw dirty water in
-- **B.** The check valves will weld themselves shut in the water
-- **C.** The assembly will deliver less flow than it did before
-- **D.** The pressure in the main will rise above its set value
+- **A.** The check valves will weld themselves shut in the water
+- **B.** The assembly will deliver less flow than it did before
+- **C.** The pressure in the main will rise above its set value
+- **D.** The relief port can be submerged and draw dirty water in
 
-**Answer: A. The relief port can be submerged and draw dirty water in**
+**Answer: D. The relief port can be submerged and draw dirty water in**
 
 The relief port must discharge to open air. If it is under water, the assembly can lose its air-gap protection and pull contaminated water in.
 
@@ -1191,12 +1191,12 @@ A distribution map lets crews find the pipes and fittings they must operate or r
 
 Which item belongs in a valve inventory record?
 
-- **A.** The chemical dose that is being fed at the treatment plant
-- **B.** The daily rainfall that was measured near the valve box
-- **C.** The customer's name and the billing address for the account
-- **D.** Valve location, size, type, and turns needed to operate it
+- **A.** Valve location, size, type, and turns needed to operate it
+- **B.** The chemical dose that is being fed at the treatment plant
+- **C.** The daily rainfall that was measured near the valve box
+- **D.** The customer's name and the billing address for the account
 
-**Answer: D. Valve location, size, type, and turns needed to operate it**
+**Answer: A. Valve location, size, type, and turns needed to operate it**
 
 An inventory lists each valve with details that crews need, such as how many turns it takes to close and when it was last exercised.
 
@@ -1204,12 +1204,12 @@ An inventory lists each valve with details that crews need, such as how many tur
 
 What do as-built drawings show?
 
-- **A.** The pipes and fittings as they were actually installed
-- **B.** The cost of the project at each of the stages of work
+- **A.** The cost of the project at each of the stages of work
+- **B.** The pipes and fittings as they were actually installed
 - **C.** The pipes and fittings that were planned before construction began
 - **D.** The names of the crews that worked on the job site
 
-**Answer: A. The pipes and fittings as they were actually installed**
+**Answer: B. The pipes and fittings as they were actually installed**
 
 As-builts record what was really put in the ground, including changes made during construction, so they are better for later locating than the original design.
 
@@ -1219,10 +1219,10 @@ How does a geographic information system (GIS) help a distribution utility?
 
 - **A.** It controls the pumps in the system from the central office computer
 - **B.** It removes the need to keep valve exercising records on file
-- **C.** It links map features to data on pipe age, material and breaks
-- **D.** It records the readings from every meter set at the curb
+- **C.** It records the readings from every meter set at the curb
+- **D.** It links map features to data on pipe age, material and breaks
 
-**Answer: C. It links map features to data on pipe age, material and breaks**
+**Answer: D. It links map features to data on pipe age, material and breaks**
 
 GIS stores each pipe, valve and hydrant as a mapped feature with attached data, so operators can view patterns such as where breaks cluster.
 
@@ -1230,12 +1230,12 @@ GIS stores each pipe, valve and hydrant as a mapped feature with attached data, 
 
 Why should maps and records be updated soon after a repair or new installation?
 
-- **A.** So that the pipe will be able to carry more flow than before
-- **B.** So that the meters on the line will read with better accuracy
-- **C.** So that the pressure zones can be merged together later on
-- **D.** So later crews find the right pipes and valves without delay
+- **A.** So later crews find the right pipes and valves without delay
+- **B.** So that the pipe will be able to carry more flow than before
+- **C.** So that the meters on the line will read with better accuracy
+- **D.** So that the pressure zones can be merged together later on
 
-**Answer: D. So later crews find the right pipes and valves without delay**
+**Answer: A. So later crews find the right pipes and valves without delay**
 
 An outdated map can send crews to the wrong spot or lead them to close the wrong valves, which wastes time and affects more customers than planned.
 
@@ -1245,10 +1245,10 @@ What are tie measurements used for in valve records?
 
 - **A.** They show how tight the valve nut must be turned by the crew
 - **B.** They record the length of the pipe between each pair of valves
-- **C.** They note the time of day that valves are normally exercised
-- **D.** They locate a buried valve from fixed landmarks nearby
+- **C.** They locate a buried valve from fixed landmarks nearby
+- **D.** They note the time of day that valves are normally exercised
 
-**Answer: D. They locate a buried valve from fixed landmarks nearby**
+**Answer: C. They locate a buried valve from fixed landmarks nearby**
 
 Distances from fixed features, such as a pole or building corner, let crews find a valve box that has been buried by paving or soil.
 
@@ -1256,12 +1256,12 @@ Distances from fixed features, such as a pole or building corner, let crews find
 
 Which of these is a typical item in a hydrant inventory?
 
-- **A.** Hydrant ID, location, type, and last flow test and service dates
-- **B.** The pipe wall thickness of each main in the surrounding area
-- **C.** The chlorine level that was seen at the nearest dead end
-- **D.** The meter reading history of the nearest customer on the street
+- **A.** The pipe wall thickness of each main in the surrounding area
+- **B.** The chlorine level that was seen at the nearest dead end
+- **C.** The meter reading history of the nearest customer on the street
+- **D.** Hydrant ID, location, type, and last flow test and service dates
 
-**Answer: A. Hydrant ID, location, type, and last flow test and service dates**
+**Answer: D. Hydrant ID, location, type, and last flow test and service dates**
 
 A hydrant inventory identifies each hydrant and holds the details needed to plan inspections, repairs and the use of its flow data.
 
@@ -1269,12 +1269,12 @@ A hydrant inventory identifies each hydrant and holds the details needed to plan
 
 What does a pressure zone map show?
 
-- **A.** The areas where meters are most often read after the due date
-- **B.** The areas that are served by the oldest pipes in town
-- **C.** The areas that are served at the same hydraulic grade
+- **A.** The areas that are served at the same hydraulic grade
+- **B.** The areas where meters are most often read after the due date
+- **C.** The areas that are served by the oldest pipes in town
 - **D.** The areas where hydrants have been painted the same color
 
-**Answer: C. The areas that are served at the same hydraulic grade**
+**Answer: A. The areas that are served at the same hydraulic grade**
 
 Zones are set by tank levels and pumps. A zone map tells crews which valves and stations affect which customers' pressure.
 
@@ -1283,11 +1283,11 @@ Zones are set by tank levels and pumps. A zone map tells crews which valves and 
 How can a missing valve record lengthen a main shutdown?
 
 - **A.** Crews can reach the repair site more quickly than before
-- **B.** Crews will skip the step of isolating the main before the work
-- **C.** Crews will need fewer valves to be closed in the area
-- **D.** Crews must search for valves and may close more than needed
+- **B.** Crews must search for valves and may close more than needed
+- **C.** Crews will skip the step of isolating the main before the work
+- **D.** Crews will need fewer valves to be closed in the area
 
-**Answer: D. Crews must search for valves and may close more than needed**
+**Answer: B. Crews must search for valves and may close more than needed**
 
 Without records, valves may be found late or not at all, and the shutdown may have to be made wider, so more customers lose service.
 
@@ -1296,11 +1296,11 @@ Without records, valves may be found late or not at all, and the shutdown may ha
 Break records show one older main with four breaks in three years, while most others have none. What is the best use of this information?
 
 - **A.** Assume that all four breaks were the result of the same cause
-- **B.** Flag that main for review, to repair or to replace it
-- **C.** Remove that main from the map so crews do not use it
+- **B.** Remove that main from the map so crews do not use it
+- **C.** Flag that main for review, to repair or to replace it
 - **D.** Lower the pressure on the whole system to prevent more breaks
 
-**Answer: B. Flag that main for review, to repair or to replace it**
+**Answer: C. Flag that main for review, to repair or to replace it**
 
 Repeated breaks on one main point to a failing pipe. Records help the utility to rank mains for rehabilitation before more breaks occur.
 
@@ -1308,12 +1308,12 @@ Repeated breaks on one main point to a failing pipe. Records help the utility to
 
 What is non-revenue water?
 
-- **A.** Water that is sold to a neighboring utility at a discount
-- **B.** Water that is treated a second time before it is delivered
-- **C.** Water that is held in a storage tank during the night hours
-- **D.** Water that is produced but not billed to a customer
+- **A.** Water that is produced but not billed to a customer
+- **B.** Water that is sold to a neighboring utility at a discount
+- **C.** Water that is treated a second time before it is delivered
+- **D.** Water that is held in a storage tank during the night hours
 
-**Answer: D. Water that is produced but not billed to a customer**
+**Answer: A. Water that is produced but not billed to a customer**
 
 Non-revenue water includes leaks, unmetered or unbilled use and meter errors. It is the gap between water put into the system and water billed.
 
@@ -1321,12 +1321,12 @@ Non-revenue water includes leaks, unmetered or unbilled use and meter errors. It
 
 Which of these is an apparent loss rather than a real loss?
 
-- **A.** Customer meters that record less than the water delivered
-- **B.** A service line that has broken off at the curb stop
-- **C.** A main that leaks into the soil under a roadway
-- **D.** A storage tank that overflows during the night hours
+- **A.** A service line that has broken off at the curb stop
+- **B.** A main that leaks into the soil under a roadway
+- **C.** A storage tank that overflows during the night hours
+- **D.** Customer meters that record less than the water delivered
 
-**Answer: A. Customer meters that record less than the water delivered**
+**Answer: D. Customer meters that record less than the water delivered**
 
 Apparent losses are water that was used but not measured or billed, such as meter under-registration. Real losses are physical leakage and overflows.
 
@@ -1335,11 +1335,11 @@ Apparent losses are water that was used but not measured or billed, such as mete
 Which tool do crews hold on a valve or hydrant to hear the sound of a leak in the main?
 
 - **A.** A portable chlorine test kit
-- **B.** A pressure recorder with a chart
-- **C.** An acoustic listening device
+- **B.** An acoustic listening device
+- **C.** A pressure recorder with a chart
 - **D.** A pitot gauge for measuring flow
 
-**Answer: C. An acoustic listening device**
+**Answer: B. An acoustic listening device**
 
 Water escaping a pipe makes noise that travels along the pipe. Listening devices placed on contact points pick it up so crews can narrow the search.
 
@@ -1347,12 +1347,12 @@ Water escaping a pipe makes noise that travels along the pipe. Listening devices
 
 Why do small hidden leaks add up to a large loss over time?
 
-- **A.** They run day and night until someone finds them
-- **B.** They grow much faster when the pressure is lowered
-- **C.** They are repaired too quickly to be noticed in the records
+- **A.** They grow much faster when the pressure is lowered
+- **B.** They are repaired too quickly to be noticed in the records
+- **C.** They run day and night until someone finds them
 - **D.** They make customer meters run slower during the night
 
-**Answer: A. They run day and night until someone finds them**
+**Answer: C. They run day and night until someone finds them**
 
 A leak that does not surface may run for months. Even a small flow, steady over many days, adds up to a large volume.
 
@@ -1374,11 +1374,11 @@ Two sensors on either side of the leak receive the noise at different times. The
 How does lowering pressure in a system affect leakage?
 
 - **A.** Leak flow stops until the pressure is restored again
-- **B.** Leak flow rises because the pipe has more room to move
-- **C.** Leak flow stays the same as long as the pipe is sound
-- **D.** Leak flow falls because it depends on the pressure
+- **B.** Leak flow falls because it depends on the pressure
+- **C.** Leak flow rises because the pipe has more room to move
+- **D.** Leak flow stays the same as long as the pipe is sound
 
-**Answer: D. Leak flow falls because it depends on the pressure**
+**Answer: B. Leak flow falls because it depends on the pressure**
 
 Water escapes a hole faster at higher pressure. Pressure management is one tool for reducing real losses, though service levels must be kept.
 
@@ -1388,10 +1388,10 @@ Why is minimum night flow into a metered zone useful in finding leakage?
 
 - **A.** Pressure falls to zero in most zones during the night
 - **B.** Meters stop working when the temperature falls at night
-- **C.** Customer use is lowest then, so leaks stand out in the flow
-- **D.** Water is cheaper for the utility to produce at night
+- **C.** Water is cheaper for the utility to produce at night
+- **D.** Customer use is lowest then, so leaks stand out in the flow
 
-**Answer: C. Customer use is lowest then, so leaks stand out in the flow**
+**Answer: D. Customer use is lowest then, so leaks stand out in the flow**
 
 At about 2 to 4 in the morning customer demand is small. Flow into the zone then is mostly leakage, so a high night flow signals losses.
 
@@ -1399,12 +1399,12 @@ At about 2 to 4 in the morning customer demand is small. Flow into the zone then
 
 What does a water audit do for a utility?
 
-- **A.** It tests the accuracy of every one of the hydrant gauges
-- **B.** It sorts water into billed use, unbilled use and losses
+- **A.** It sorts water into billed use, unbilled use and losses
+- **B.** It tests the accuracy of every one of the hydrant gauges
 - **C.** It confirms that each valve has been exercised on schedule
 - **D.** It measures the hardness of the water supplied in each zone
 
-**Answer: B. It sorts water into billed use, unbilled use and losses**
+**Answer: A. It sorts water into billed use, unbilled use and losses**
 
 A water audit balances the water that enters the system against what is billed, used for authorized unbilled purposes, or lost, so the losses can be sized.
 
@@ -1412,12 +1412,12 @@ A water audit balances the water that enters the system against what is billed, 
 
 Why is it often harder to hear a leak on plastic pipe than on metal pipe?
 
-- **A.** Metal pipe holds water more tightly than plastic does
-- **B.** Plastic absorbs the noise, so it fades quickly along the pipe
+- **A.** Plastic absorbs the noise, so it fades quickly along the pipe
+- **B.** Metal pipe holds water more tightly than plastic does
 - **C.** Plastic pipe leaks make a much louder noise than iron
 - **D.** Plastic pipe is too smooth to leak under normal pressure
 
-**Answer: B. Plastic absorbs the noise, so it fades quickly along the pipe**
+**Answer: A. Plastic absorbs the noise, so it fades quickly along the pipe**
 
 Leak noise carries well along metal pipe but fades quickly in plastic, so sensors must be set closer together on plastic mains.
 
@@ -1426,11 +1426,11 @@ Leak noise carries well along metal pipe but fades quickly in plastic, so sensor
 Water is seen coming up in a street, but the leak is found some distance away. Why can this happen?
 
 - **A.** The meter shifts the leak to a new place along the main
-- **B.** The leak travels in the same direction as the flow in the main
-- **C.** The pipe slides along the trench by itself over a few weeks
-- **D.** The water can follow the pipe trench or a soil path before surfacing
+- **B.** The water can follow the pipe trench or a soil path before surfacing
+- **C.** The leak travels in the same direction as the flow in the main
+- **D.** The pipe slides along the trench by itself over a few weeks
 
-**Answer: D. The water can follow the pipe trench or a soil path before surfacing**
+**Answer: B. The water can follow the pipe trench or a soil path before surfacing**
 
 Water takes the path of least resistance through loose backfill or along the pipe, so the wet spot may be well away from the hole in the pipe.
 
@@ -1440,10 +1440,10 @@ What is the purpose of bedding placed under and around a new pipe?
 
 - **A.** To allow the pipe to shift freely from side to side underground
 - **B.** To prevent the water inside from touching the pipe wall
-- **C.** To give the pipe even support along its length
-- **D.** To keep the pipe warm so that it does not freeze in winter
+- **C.** To keep the pipe warm so that it does not freeze in winter
+- **D.** To give the pipe even support along its length
 
-**Answer: C. To give the pipe even support along its length**
+**Answer: D. To give the pipe even support along its length**
 
 Even bedding avoids hard spots that would load the pipe unevenly. Rocks or uneven support can cause stress and later breaks.
 
@@ -1465,11 +1465,11 @@ Pipe and fittings can pick up soil and other contaminants during installation, s
 What does flushing a new or repaired main accomplish?
 
 - **A.** It makes the pipe walls smoother so the water flows better
-- **B.** It carries out dirt and debris that got into the pipe
-- **C.** It tests the valve operating nuts for wear and for leaks
-- **D.** It lowers the pressure that the pipe is going to carry
+- **B.** It tests the valve operating nuts for wear and for leaks
+- **C.** It lowers the pressure that the pipe is going to carry
+- **D.** It carries out dirt and debris that got into the pipe
 
-**Answer: B. It carries out dirt and debris that got into the pipe**
+**Answer: D. It carries out dirt and debris that got into the pipe**
 
 Flushing moves water through the pipe at a good velocity to carry out soil, sand and other loose material left from construction or repair.
 
@@ -1477,12 +1477,12 @@ Flushing moves water through the pipe at a good velocity to carry out soil, sand
 
 Why is a new main pressure tested before it is connected for service?
 
-- **A.** To work out the number of customers that the pipe can serve
-- **B.** To pack the soil around the new pipe a little more tightly
-- **C.** To find leaks and weak joints while the line is exposed
+- **A.** To find leaks and weak joints while the line is exposed
+- **B.** To work out the number of customers that the pipe can serve
+- **C.** To pack the soil around the new pipe a little more tightly
 - **D.** To fill the main with disinfectant at the right strength
 
-**Answer: C. To find leaks and weak joints while the line is exposed**
+**Answer: A. To find leaks and weak joints while the line is exposed**
 
 A pressure test holds the line at a set pressure for a time. Leaks and weak joints show up as a pressure drop, when they are still easy to reach.
 
@@ -1504,11 +1504,11 @@ Samples taken from the main show whether the disinfection and flushing worked. T
 A short section of main with a break is cut out. Which fitting is commonly used to reconnect the pipe?
 
 - **A.** A reducer that steps down the pipe size
-- **B.** A tapping saddle clamped around the barrel
-- **C.** A corporation stop threaded into the wall
-- **D.** A repair coupling or sleeve
+- **B.** A repair coupling or sleeve
+- **C.** A tapping saddle clamped around the barrel
+- **D.** A corporation stop threaded into the wall
 
-**Answer: D. A repair coupling or sleeve**
+**Answer: B. A repair coupling or sleeve**
 
 After the damaged piece is removed, a coupling or sleeve joins the plain ends and closes the gap, with restraint as needed for the pressure.
 
@@ -1543,11 +1543,11 @@ Layered, compacted backfill supports the pipe and surface above it. Dumping soil
 When a repaired main is put back in service, why are the valves opened slowly while air is vented?
 
 - **A.** To keep the meters on the line from turning during the fill
-- **B.** To avoid trapped air and pressure surges
-- **C.** To stop the pressure from reaching its normal value
+- **B.** To stop the pressure from reaching its normal value
+- **C.** To avoid trapped air and pressure surges
 - **D.** To let the chlorine form properly inside of the pipe
 
-**Answer: B. To avoid trapped air and pressure surges**
+**Answer: C. To avoid trapped air and pressure surges**
 
 Filling too fast pushes pockets of air along the pipe and can create strong surges. A slow fill with venting lets the air out and the pipe fill smoothly.
 
@@ -1568,12 +1568,12 @@ If pressure in the live main drops while filling, the water in the new main or h
 
 What does static pressure describe in a distribution main?
 
-- **A.** The pressure lost to friction along a long main
-- **B.** The pressure a pump makes at its best efficiency point
-- **C.** The pressure at a hydrant while it discharges wide open
-- **D.** The pressure in the water while it is standing still
+- **A.** The pressure in the water while it is standing still
+- **B.** The pressure lost to friction along a long main
+- **C.** The pressure a pump makes at its best efficiency point
+- **D.** The pressure at a hydrant while it discharges wide open
 
-**Answer: D. The pressure in the water while it is standing still**
+**Answer: A. The pressure in the water while it is standing still**
 
 Static pressure is the pressure of standing water, set mainly by the height of water above the point. It does not include any loss from movement.
 
@@ -1582,11 +1582,11 @@ Static pressure is the pressure of standing water, set mainly by the height of w
 Where is residual pressure read during a hydrant flow test?
 
 - **A.** At a pump suction after the pump has been switched off
-- **B.** At a nearby hydrant that stays closed while another one flows
-- **C.** At the nozzle of the flowing hydrant with a pitot gauge
+- **B.** At the nozzle of the flowing hydrant with a pitot gauge
+- **C.** At a nearby hydrant that stays closed while another one flows
 - **D.** At the storage tank outlet while the tank is overflowing
 
-**Answer: B. At a nearby hydrant that stays closed while another one flows**
+**Answer: C. At a nearby hydrant that stays closed while another one flows**
 
 The residual gauge sits on a closed hydrant near the flow, so it shows the pressure left in the system while water is being drawn.
 
@@ -1607,12 +1607,12 @@ One psi equals 2.31 ft of water. The numbers 0.433, 7.48 and 8.34 belong to othe
 
 In a main with no flow, how does pressure change for each foot of ground elevation gained?
 
-- **A.** It falls by about 0.433 psi
-- **B.** It rises by about 0.433 psi
-- **C.** It stays the same because the water is standing still
-- **D.** It falls by about 2.31 psi
+- **A.** It rises by about 0.433 psi
+- **B.** It stays the same because the water is standing still
+- **C.** It falls by about 2.31 psi
+- **D.** It falls by about 0.433 psi
 
-**Answer: A. It falls by about 0.433 psi**
+**Answer: D. It falls by about 0.433 psi**
 
 Each foot of lift removes a foot of water column, and a foot of water is about 0.433 psi.
 
@@ -1620,12 +1620,12 @@ Each foot of lift removes a foot of water column, and a foot of water is about 0
 
 Why do homes on low ground in a zone usually see higher pressure than homes on high ground?
 
-- **A.** Their service lines are smaller in diameter
-- **B.** Their water travelled a shorter distance
-- **C.** The water column above them is taller
+- **A.** The water column above them is taller
+- **B.** Their service lines are smaller in diameter
+- **C.** Their water travelled a shorter distance
 - **D.** Gravity empties the pipes on the hills
 
-**Answer: C. The water column above them is taller**
+**Answer: A. The water column above them is taller**
 
 Pressure follows the difference between the water surface and the point. Lower ground sits farther below the surface that sets pressure.
 
@@ -1634,11 +1634,11 @@ Pressure follows the difference between the water surface and the point. Lower g
 How does pressure at a point in a main usually compare when customers are drawing heavily with when there is no draw?
 
 - **A.** It is higher at first and then falls to the static value
-- **B.** It is lower during heavy draw because friction uses up some head
-- **C.** It is equal, since the tank level sets pressure
-- **D.** It is higher during heavy draw because moving water pushes harder
+- **B.** It is equal, since the tank level sets pressure
+- **C.** It is higher during heavy draw because moving water pushes harder
+- **D.** It is lower during heavy draw because friction uses up some head
 
-**Answer: B. It is lower during heavy draw because friction uses up some head**
+**Answer: D. It is lower during heavy draw because friction uses up some head**
 
 Flow brings friction loss, so some of the available head is spent moving the water and the pressure at the point drops.
 
@@ -1646,12 +1646,12 @@ Flow brings friction loss, so some of the available head is spent moving the wat
 
 Why are large service areas often divided into pressure zones?
 
-- **A.** Elevation differences would give very high pressure low and poor pressure high
-- **B.** Each zone can then use a different brand of meter and register type
-- **C.** Zones reduce the total miles of main that a utility must own
+- **A.** Each zone can then use a different brand of meter and register type
+- **B.** Zones reduce the total miles of main that a utility must own
+- **C.** Elevation differences would give very high pressure low and poor pressure high
 - **D.** Zones keep chlorine levels equal across the whole service area
 
-**Answer: A. Elevation differences would give very high pressure low and poor pressure high**
+**Answer: C. Elevation differences would give very high pressure low and poor pressure high**
 
 A single grade would overpressure low ground or starve high ground. Zones hold pressures in a workable range for everyone.
 
@@ -1685,12 +1685,12 @@ The 46 ft rise removes about 46 x 0.433 = 20 psi, leaving about 35 psi. Subtract
 
 Why do operators often express pressure as feet of head?
 
-- **A.** It can be added to elevation to find the hydraulic grade
-- **B.** It is the only scale that pressure gauges can display
-- **C.** It converts the pressure directly into a flow in gpm
+- **A.** It is the only scale that pressure gauges can display
+- **B.** It converts the pressure directly into a flow in gpm
+- **C.** It can be added to elevation to find the hydraulic grade
 - **D.** It removes the effect of water temperature on gauges
 
-**Answer: A. It can be added to elevation to find the hydraulic grade**
+**Answer: C. It can be added to elevation to find the hydraulic grade**
 
 Head in feet and elevation in feet share a unit, so they can be added to locate the level water would reach.
 
@@ -1700,10 +1700,10 @@ In a closed main with no flow, a gauge at elevation 700 ft reads 62 psi. About w
 
 - **A.** About 385 psi
 - **B.** About 62 psi
-- **C.** About 123 psi
-- **D.** About 1 psi
+- **C.** About 1 psi
+- **D.** About 123 psi
 
-**Answer: C. About 123 psi**
+**Answer: D. About 123 psi**
 
 The point is 140 ft lower, which adds about 140 x 0.433 = 61 psi to the 62 psi reading.
 
@@ -1712,11 +1712,11 @@ The point is 140 ft lower, which adds about 140 x 0.433 = 61 psi to the 62 psi r
 A customer's gauge reads 95 psi at night but 62 psi at 7 a.m., although the tank level has not changed. What is the most likely cause?
 
 - **A.** Pipe diameter shrinks slightly as the morning air warms up
-- **B.** Water became denser during the night hours
-- **C.** Morning demand raises friction loss on the supply route
+- **B.** Morning demand raises friction loss on the supply route
+- **C.** Water became denser during the night hours
 - **D.** The elevation of the house changed after sunrise
 
-**Answer: C. Morning demand raises friction loss on the supply route**
+**Answer: B. Morning demand raises friction loss on the supply route**
 
 With the supply level fixed, extra flow increases friction loss along the path, so less pressure is left at the customer.
 
@@ -1724,12 +1724,12 @@ With the supply level fixed, extra flow increases friction loss along the path, 
 
 Which unit is commonly used to state the total daily output of a utility?
 
-- **A.** Million gallons per day
-- **B.** Pounds per square inch
-- **C.** Feet per second
-- **D.** Gallons per foot
+- **A.** Pounds per square inch
+- **B.** Feet per second
+- **C.** Gallons per foot
+- **D.** Million gallons per day
 
-**Answer: A. Million gallons per day**
+**Answer: D. Million gallons per day**
 
 MGD reports large daily volumes in a convenient number. The other units describe pressure, speed or volume per length.
 
@@ -1738,11 +1738,11 @@ MGD reports large daily volumes in a convenient number. The other units describe
 How is flow rate in a full pipe found?
 
 - **A.** By dividing pipe diameter by friction loss
-- **B.** By multiplying flow area by water velocity
-- **C.** By multiplying velocity by the pressure head
+- **B.** By multiplying velocity by the pressure head
+- **C.** By multiplying flow area by water velocity
 - **D.** By multiplying pipe length by system pressure
 
-**Answer: B. By multiplying flow area by water velocity**
+**Answer: C. By multiplying flow area by water velocity**
 
 The continuity relation is Q = A x V. Flow equals the cross-sectional area times how fast the water moves.
 
@@ -1751,11 +1751,11 @@ The continuity relation is Q = A x V. Flow equals the cross-sectional area times
 If the flow stays steady and a main narrows from 12 inches to 8 inches, what happens to velocity in the smaller pipe?
 
 - **A.** It stays the same
-- **B.** It falls to zero
-- **C.** It increases
+- **B.** It increases
+- **C.** It falls to zero
 - **D.** It decreases
 
-**Answer: C. It increases**
+**Answer: B. It increases**
 
 The same volume per second must pass through less area, so the water moves faster.
 
@@ -1763,12 +1763,12 @@ The same volume per second must pass through less area, so the water moves faste
 
 How many gallons are in one cubic foot of water?
 
-- **A.** About 2.31 gal
-- **B.** About 8.34 gal
-- **C.** About 62.4 gal
-- **D.** About 7.48 gal
+- **A.** About 7.48 gal
+- **B.** About 2.31 gal
+- **C.** About 8.34 gal
+- **D.** About 62.4 gal
 
-**Answer: D. About 7.48 gal**
+**Answer: A. About 7.48 gal**
 
 One cubic foot holds about 7.48 gal. The 8.34 figure is pounds per gallon and 62.4 is pounds per cubic foot.
 
@@ -1776,12 +1776,12 @@ One cubic foot holds about 7.48 gal. The 8.34 figure is pounds per gallon and 62
 
 Which flow is about equal to 1 MGD?
 
-- **A.** About 1,440 gpm
-- **B.** About 60 gpm
-- **C.** About 449 gpm
-- **D.** About 694 gpm
+- **A.** About 694 gpm
+- **B.** About 1,440 gpm
+- **C.** About 60 gpm
+- **D.** About 449 gpm
 
-**Answer: D. About 694 gpm**
+**Answer: A. About 694 gpm**
 
 A million gallons over 1,440 minutes is about 694 gpm. 1,440 is minutes in a day and 449 is gpm per cfs.
 
@@ -1789,12 +1789,12 @@ A million gallons over 1,440 minutes is about 694 gpm. 1,440 is minutes in a day
 
 What happens to the flow area of a round pipe if its diameter doubles?
 
-- **A.** It becomes four times larger
-- **B.** It grows by half
-- **C.** It doubles
-- **D.** It becomes eight times larger
+- **A.** It grows by half
+- **B.** It doubles
+- **C.** It becomes eight times larger
+- **D.** It becomes four times larger
 
-**Answer: A. It becomes four times larger**
+**Answer: D. It becomes four times larger**
 
 Area depends on the square of diameter, so doubling the diameter gives four times the area.
 
@@ -1803,11 +1803,11 @@ Area depends on the square of diameter, so doubling the diameter gives four time
 Why does water velocity in a distribution main matter?
 
 - **A.** Velocity sets the pressure rating of the pipe wall, so it decides which pipe class is bought
-- **B.** Velocity determines what a customer is billed because meters read the water speed
-- **C.** Faster water gives disinfectant more contact time in the main, so higher is better
-- **D.** Low velocity lets sediment settle and slows turnover; high velocity raises losses and surge risk
+- **B.** Low velocity lets sediment settle and slows turnover; high velocity raises losses and surge risk
+- **C.** Velocity determines what a customer is billed because meters read the water speed
+- **D.** Faster water gives disinfectant more contact time in the main, so higher is better
 
-**Answer: D. Low velocity lets sediment settle and slows turnover; high velocity raises losses and surge risk**
+**Answer: B. Low velocity lets sediment settle and slows turnover; high velocity raises losses and surge risk**
 
 Velocity affects water quality, wear, friction and transients, so mains are kept within a workable range.
 
@@ -1817,10 +1817,10 @@ Which statement describes continuity for steady flow in a pipe with no leaks or 
 
 - **A.** The pressure is the same at each section
 - **B.** The head is the same in each section
-- **C.** Velocity is the same in each section whatever its diameter
-- **D.** The same volume of water passes each section every second
+- **C.** The same volume of water passes each section every second
+- **D.** Velocity is the same in each section whatever its diameter
 
-**Answer: D. The same volume of water passes each section every second**
+**Answer: C. The same volume of water passes each section every second**
 
 Continuity is conservation of volume flow. With fixed Q, changing area changes velocity, and pressure also varies.
 
@@ -1828,12 +1828,12 @@ Continuity is conservation of volume flow. With fixed Q, changing area changes v
 
 A main carries 1,800 gpm upstream of a tee and one branch takes 700 gpm. What does the other branch carry?
 
-- **A.** 700 gpm
-- **B.** 900 gpm
-- **C.** 1,100 gpm
+- **A.** 1,100 gpm
+- **B.** 700 gpm
+- **C.** 900 gpm
 - **D.** 2,500 gpm
 
-**Answer: C. 1,100 gpm**
+**Answer: A. 1,100 gpm**
 
 Flow in equals flow out at the junction, so 1,800 minus 700 leaves 1,100 gpm.
 
@@ -1868,11 +1868,11 @@ Moving water meets resistance from the wall and from internal turbulence, which 
 If the flow through a given pipe is doubled, what happens to friction loss?
 
 - **A.** It doubles, in step with the flow
-- **B.** It is cut in half
-- **C.** It rises by much more than double
+- **B.** It rises by much more than double
+- **C.** It is cut in half
 - **D.** It falls because water speeds up
 
-**Answer: C. It rises by much more than double**
+**Answer: B. It rises by much more than double**
 
 Friction loss grows faster than flow, roughly with the flow raised to a power near 2, so doubling flow gives about 3.5 to 4 times the loss.
 
@@ -1880,12 +1880,12 @@ Friction loss grows faster than flow, roughly with the flow raised to a power ne
 
 At the same flow, what does a larger pipe diameter do to friction loss?
 
-- **A.** It lowers it because velocity is lower
-- **B.** It raises it because more water is in the pipe
-- **C.** It raises it because there is more wall area
-- **D.** It has no effect
+- **A.** It raises it because more water is in the pipe
+- **B.** It raises it because there is more wall area
+- **C.** It has no effect
+- **D.** It lowers it because velocity is lower
 
-**Answer: A. It lowers it because velocity is lower**
+**Answer: D. It lowers it because velocity is lower**
 
 A larger area means slower water, and loss falls steeply as velocity falls.
 
@@ -1894,11 +1894,11 @@ A larger area means slower water, and loss falls steeply as velocity falls.
 What are minor losses in a pipeline?
 
 - **A.** Losses from very small leaks that go undetected
-- **B.** Losses at fittings, valves, bends and entrances
-- **C.** Losses in the smallest-diameter pipes of a network
+- **B.** Losses in the smallest-diameter pipes of a network
+- **C.** Losses at fittings, valves, bends and entrances
 - **D.** Losses in the customers' service lines
 
-**Answer: B. Losses at fittings, valves, bends and entrances**
+**Answer: C. Losses at fittings, valves, bends and entrances**
 
 Minor losses come from turbulence where flow is disturbed by fittings and valves. They can be large in short, fitting-heavy lines.
 
@@ -1906,12 +1906,12 @@ Minor losses come from turbulence where flow is disturbed by fittings and valves
 
 For two pipes of the same diameter and flow, how does a longer pipe compare in friction loss?
 
-- **A.** It loses more head
-- **B.** It loses less head
+- **A.** It loses less head
+- **B.** It loses more head
 - **C.** It loses the same head
 - **D.** It loses more only at night
 
-**Answer: A. It loses more head**
+**Answer: B. It loses more head**
 
 Friction loss accumulates along the length, so a longer run loses proportionally more head.
 
@@ -1946,11 +1946,11 @@ Corrosion roughens and narrows the bore, which lowers the C factor and raises fr
 At equal diameter and flow, which pipe usually has the lowest friction loss?
 
 - **A.** Poorly lined rough concrete
-- **B.** Heavily tuberculated cast iron
-- **C.** Old scaled steel
-- **D.** New PVC pipe
+- **B.** New PVC pipe
+- **C.** Heavily tuberculated cast iron
+- **D.** Old scaled steel
 
-**Answer: D. New PVC pipe**
+**Answer: B. New PVC pipe**
 
 Smooth new plastic has a very high C factor. Rough, scaled or tuberculated walls cost far more head.
 
@@ -1958,12 +1958,12 @@ Smooth new plastic has a very high C factor. Rough, scaled or tuberculated walls
 
 Why can a partly closed valve cause a large minor loss?
 
-- **A.** It lengthens the effective pipe and adds wall area
-- **B.** It squeezes flow through a small opening, creating turbulence
+- **A.** It squeezes flow through a small opening, creating turbulence
+- **B.** It lengthens the effective pipe and adds wall area
 - **C.** It raises the C factor of the main it is in
 - **D.** It adds elevation to the line that the water must climb
 
-**Answer: B. It squeezes flow through a small opening, creating turbulence**
+**Answer: A. It squeezes flow through a small opening, creating turbulence**
 
 A throttled valve causes a sharp velocity change and strong turbulence, which turns a lot of head into lost energy.
 
@@ -1997,12 +1997,12 @@ Roughness is a bigger factor than a slight loss of diameter in an old tuberculat
 
 A cleaning program raises a long main's C factor. What happens with the same pump head?
 
-- **A.** Flow must be cut back to hold the same pressure
-- **B.** More flow can be delivered, or less head is needed
+- **A.** More flow can be delivered, or less head is needed
+- **B.** Flow must be cut back to hold the same pressure
 - **C.** The pressure rating of the pipe rises with the cleaning
 - **D.** Water age at the dead ends in the area rises
 
-**Answer: B. More flow can be delivered, or less head is needed**
+**Answer: A. More flow can be delivered, or less head is needed**
 
 Less friction loss leaves more head available, which can be taken as extra flow or as lower pumping head.
 
@@ -2010,12 +2010,12 @@ Less friction loss leaves more head available, which can be taken as extra flow 
 
 How is average day demand found?
 
-- **A.** Annual water use divided by 365 days
-- **B.** The highest water use in any one day
-- **C.** The highest rate of use in any one hour
+- **A.** The highest water use in any one day
+- **B.** The highest rate of use in any one hour
+- **C.** Annual water use divided by 365 days
 - **D.** The lowest flow seen during the night
 
-**Answer: A. Annual water use divided by 365 days**
+**Answer: C. Annual water use divided by 365 days**
 
 Average day demand spreads the annual total evenly over the days. Peak figures describe the highest periods.
 
@@ -2023,12 +2023,12 @@ Average day demand spreads the annual total evenly over the days. Peak figures d
 
 What is maximum day demand?
 
-- **A.** The most water used in a single day
-- **B.** The highest rate of use in any one hour
+- **A.** The highest rate of use in any one hour
+- **B.** The most water used in a single day
 - **C.** The average use during the summer months
 - **D.** The flow needed to fight a large fire
 
-**Answer: A. The most water used in a single day**
+**Answer: B. The most water used in a single day**
 
 Maximum day is the largest total for one 24-hour day, usually in hot dry weather.
 
@@ -2049,12 +2049,12 @@ Peak hour is the busiest single hour, often in the morning or evening, and is mu
 
 In many systems, what most often drives the maximum day?
 
-- **A.** A routine hydrant flushing program
-- **B.** Hot, dry weather with heavy lawn watering
+- **A.** Hot, dry weather with heavy lawn watering
+- **B.** A routine hydrant flushing program
 - **C.** Very low temperature
 - **D.** Winter heating
 
-**Answer: B. Hot, dry weather with heavy lawn watering**
+**Answer: A. Hot, dry weather with heavy lawn watering**
 
 Outdoor irrigation grows with heat and dryness, so the highest daily totals usually come in summer.
 
@@ -2062,12 +2062,12 @@ Outdoor irrigation grows with heat and dryness, so the highest daily totals usua
 
 What is the typical shape of daily demand in a residential area?
 
-- **A.** Peaks in the morning and evening, low at night
-- **B.** One flat line with little change through the day
+- **A.** One flat line with little change through the day
+- **B.** Peaks in the morning and evening, low at night
 - **C.** One large peak around noon with a dip at night
 - **D.** A single big peak near midnight each day
 
-**Answer: A. Peaks in the morning and evening, low at night**
+**Answer: B. Peaks in the morning and evening, low at night**
 
 People use water on waking and on returning home, and little during sleep, giving the diurnal pattern.
 
@@ -2076,11 +2076,11 @@ People use water on waking and on returning home, and little during sleep, givin
 What is a peaking factor?
 
 - **A.** The ratio of system pressure to the flow in a main
-- **B.** The ratio of a demand period to average day demand
-- **C.** The percentage of water lost to leaks each month
+- **B.** The percentage of water lost to leaks each month
+- **C.** The ratio of a demand period to average day demand
 - **D.** The ratio of pipe diameter to the length of a main
 
-**Answer: B. The ratio of a demand period to average day demand**
+**Answer: C. The ratio of a demand period to average day demand**
 
 A peaking factor multiplies average day demand to estimate the maximum day or peak hour, for example 1.8 or 3.0.
 
@@ -2088,12 +2088,12 @@ A peaking factor multiplies average day demand to estimate the maximum day or pe
 
 Why do small systems usually have higher peaking factors than large ones?
 
-- **A.** Fewer customers, so their uses line up in time
-- **B.** Their pumps run longer hours each day
+- **A.** Their pumps run longer hours each day
+- **B.** Fewer customers, so their uses line up in time
 - **C.** Their pipes are smaller than those in large systems
 - **D.** Their meters are less accurate at low flows
 
-**Answer: A. Fewer customers, so their uses line up in time**
+**Answer: B. Fewer customers, so their uses line up in time**
 
 With few customers, individual habits do not average out, so peaks stand out more against the average.
 
@@ -2101,12 +2101,12 @@ With few customers, individual habits do not average out, so peaks stand out mor
 
 How is fire flow treated as a demand on the system?
 
-- **A.** As a demand spread evenly over the year
-- **B.** As a replacement for the peak hour demand
-- **C.** As a large, short-lived demand added to normal use
+- **A.** As a large, short-lived demand added to normal use
+- **B.** As a demand spread evenly over the year
+- **C.** As a replacement for the peak hour demand
 - **D.** As a share of the average day demand each year
 
-**Answer: C. As a large, short-lived demand added to normal use**
+**Answer: A. As a large, short-lived demand added to normal use**
 
 A fire draws a big flow for a limited time while customers still use water, so it adds to existing demand.
 
@@ -2114,12 +2114,12 @@ A fire draws a big flow for a limited time while customers still use water, so i
 
 Which demand is normally used to judge whether the system holds pressure in routine service?
 
-- **A.** Peak hour demand
-- **B.** Average day demand
-- **C.** The annual average
-- **D.** The lowest night demand
+- **A.** Average day demand
+- **B.** The annual average
+- **C.** The lowest night demand
+- **D.** Peak hour demand
 
-**Answer: A. Peak hour demand**
+**Answer: D. Peak hour demand**
 
 Pressures are most stressed when the rate of use is greatest, which is in the peak hour.
 
@@ -2140,12 +2140,12 @@ Both factors use average day as the base, so divide 3.0 by 1.8 and get about 1.7
 
 Why do pressures usually dip in a zone during the morning demand peak?
 
-- **A.** Higher flow raises friction loss on supply routes
-- **B.** Customers' pipes grow narrow when used more
-- **C.** Water becomes denser in the busy hours
+- **A.** Customers' pipes grow narrow when used more
+- **B.** Water becomes denser in the busy hours
+- **C.** Higher flow raises friction loss on supply routes
 - **D.** The tank gets taller as the day goes on
 
-**Answer: A. Higher flow raises friction loss on supply routes**
+**Answer: C. Higher flow raises friction loss on supply routes**
 
 Higher flow increases head lost on the way, so less pressure is left at points of use.
 
@@ -2153,12 +2153,12 @@ Higher flow increases head lost on the way, so less pressure is left at points o
 
 Why is fire flow often checked together with maximum day demand rather than average day demand?
 
-- **A.** A fire may start on a heavy-use day, when supply is already stretched
-- **B.** Fires break out mainly in summer, when use is at its yearly high
+- **A.** Fires break out mainly in summer, when use is at its yearly high
+- **B.** A fire may start on a heavy-use day, when supply is already stretched
 - **C.** Average day demand is too large a figure to use in tests
 - **D.** Maximum day has the lowest pressures of the year, so fire is added
 
-**Answer: A. A fire may start on a heavy-use day, when supply is already stretched**
+**Answer: B. A fire may start on a heavy-use day, when supply is already stretched**
 
 Combining the two tests the system under a realistic hard case instead of an easy one.
 
@@ -2166,12 +2166,12 @@ Combining the two tests the system under a realistic hard case instead of an eas
 
 What is water horsepower?
 
-- **A.** The power lost to friction inside the pump casing
-- **B.** The power delivered to the water by its flow and head
+- **A.** The power delivered to the water by its flow and head
+- **B.** The power lost to friction inside the pump casing
 - **C.** The power at the motor's own shaft going to the pump
 - **D.** The power drawn from the electric meter by the motor
 
-**Answer: B. The power delivered to the water by its flow and head**
+**Answer: A. The power delivered to the water by its flow and head**
 
 Water horsepower is the useful output, calculated from flow and head.
 
@@ -2181,10 +2181,10 @@ What is brake horsepower?
 
 - **A.** The power in the water leaving the pump
 - **B.** The power billed at the electric meter
-- **C.** The power supplied to the pump shaft
-- **D.** The power that the VFD removes
+- **C.** The power that the VFD removes
+- **D.** The power supplied to the pump shaft
 
-**Answer: C. The power supplied to the pump shaft**
+**Answer: D. The power supplied to the pump shaft**
 
 Brake horsepower is what the motor puts into the pump, which is more than the water receives.
 
@@ -2207,10 +2207,10 @@ Why is brake horsepower larger than water horsepower?
 
 - **A.** The water absorbs extra energy as it heats up
 - **B.** Gauges on the discharge read higher than true
-- **C.** The motor adds more head than the pump can use
-- **D.** Pump friction and leakage inside the pump take some power
+- **C.** Pump friction and leakage inside the pump take some power
+- **D.** The motor adds more head than the pump can use
 
-**Answer: D. Pump friction and leakage inside the pump take some power**
+**Answer: C. Pump friction and leakage inside the pump take some power**
 
 No pump is perfect. Part of the shaft power becomes heat and turbulence instead of useful head.
 
@@ -2219,11 +2219,11 @@ No pump is perfect. Part of the shaft power becomes heat and turbulence instead 
 A pump's discharge head requirement increases, for example because a tank fills. What typically happens to pump flow?
 
 - **A.** It rises as the pump moves to a higher head
-- **B.** It doubles as the pump speeds up
-- **C.** It stays exactly the same at any head
-- **D.** It falls as the pump moves up its curve
+- **B.** It falls as the pump moves up its curve
+- **C.** It doubles as the pump speeds up
+- **D.** It stays exactly the same at any head
 
-**Answer: D. It falls as the pump moves up its curve**
+**Answer: B. It falls as the pump moves up its curve**
 
 A centrifugal pump delivers less flow at higher head, so the operating point moves to a lower flow.
 
@@ -2232,11 +2232,11 @@ A centrifugal pump delivers less flow at higher head, so the operating point mov
 What does the term shutoff head mean for a centrifugal pump?
 
 - **A.** The head lost at the suction
-- **B.** The head it produces at zero flow
-- **C.** The head at maximum flow
-- **D.** The head at its best efficiency
+- **B.** The head at maximum flow
+- **C.** The head at its best efficiency
+- **D.** The head it produces at zero flow
 
-**Answer: B. The head it produces at zero flow**
+**Answer: D. The head it produces at zero flow**
 
 Shutoff head is the top point of the pump curve, where flow is zero.
 
@@ -2244,12 +2244,12 @@ Shutoff head is the top point of the pump curve, where flow is zero.
 
 Cavitation risk goes up when what happens?
 
-- **A.** The motor is replaced with a larger one at the same speed
-- **B.** Discharge pressure falls below the pump's rated value
-- **C.** Suction pressure falls close to the vapor pressure of the water
+- **A.** Suction pressure falls close to the vapor pressure of the water
+- **B.** The motor is replaced with a larger one at the same speed
+- **C.** Discharge pressure falls below the pump's rated value
 - **D.** The discharge pipe is made wider than the suction pipe
 
-**Answer: C. Suction pressure falls close to the vapor pressure of the water**
+**Answer: A. Suction pressure falls close to the vapor pressure of the water**
 
 Low suction pressure lets vapor pockets form, which then collapse and cause damage and noise.
 
@@ -2259,10 +2259,10 @@ What do two similar pumps operating in parallel add together?
 
 - **A.** Their efficiencies
 - **B.** Their heads at the same flow
-- **C.** Their flows at about the same head
-- **D.** Their shutoff pressures
+- **C.** Their shutoff pressures
+- **D.** Their flows at about the same head
 
-**Answer: C. Their flows at about the same head**
+**Answer: D. Their flows at about the same head**
 
 Parallel pumps share the load, so flow adds while head stays near that of a single pump.
 
@@ -2270,12 +2270,12 @@ Parallel pumps share the load, so flow adds while head stays near that of a sing
 
 What do two pumps in series add together?
 
-- **A.** Their heads
-- **B.** Their flows
+- **A.** Their flows
+- **B.** Their heads
 - **C.** Their speeds
 - **D.** Their efficiencies
 
-**Answer: A. Their heads**
+**Answer: B. Their heads**
 
 In series the second pump lifts the water further, so heads add at about the same flow.
 
@@ -2285,10 +2285,10 @@ Which is a typical sign of cavitation in a running pump?
 
 - **A.** A quiet, smooth hum with steady discharge pressure
 - **B.** Cold bearings and a very cool discharge pipe
-- **C.** Rising efficiency at the lowest flows of the pump
-- **D.** A crackling, gravel-like noise with vibration
+- **C.** A crackling, gravel-like noise with vibration
+- **D.** Rising efficiency at the lowest flows of the pump
 
-**Answer: D. A crackling, gravel-like noise with vibration**
+**Answer: C. A crackling, gravel-like noise with vibration**
 
 Collapsing vapor bubbles sound like gravel and shake the pump casing.
 
@@ -2296,12 +2296,12 @@ Collapsing vapor bubbles sound like gravel and shake the pump casing.
 
 A pump operates far to the right of its curve, at high flow and low head. What is the likely risk?
 
-- **A.** Water hammer from a closed valve
-- **B.** Cavitation and motor overload
+- **A.** Cavitation and motor overload
+- **B.** Water hammer from a closed valve
 - **C.** Low suction velocity
 - **D.** Excess head at shutoff
 
-**Answer: B. Cavitation and motor overload**
+**Answer: A. Cavitation and motor overload**
 
 Running out the curve demands high power and low suction pressure, which invite cavitation and high amps.
 
@@ -2310,11 +2310,11 @@ Running out the curve demands high power and low suction pressure, which invite 
 Why do two identical pumps in parallel deliver less than twice the flow of one pump?
 
 - **A.** The pumps interfere with each other on the suction side
-- **B.** Electric power from the supply is divided between them
-- **C.** Each motor slows to half of its rated speed
-- **D.** More flow adds friction, raising the head each pump works against
+- **B.** More flow adds friction, raising the head each pump works against
+- **C.** Electric power from the supply is divided between them
+- **D.** Each motor slows to half of its rated speed
 
-**Answer: D. More flow adds friction, raising the head each pump works against**
+**Answer: B. More flow adds friction, raising the head each pump works against**
 
 The system curve climbs with flow, so the combined point lies where both pumps face higher head and make less each.
 
@@ -2323,11 +2323,11 @@ The system curve climbs with flow, so the combined point lies where both pumps f
 What is water hammer?
 
 - **A.** The noise made by a corroding pipe wall
-- **B.** A pressure surge from a sudden change in flow velocity
-- **C.** A steady rise in pressure over many hours of the day
-- **D.** Air bubbles that come out at a customer's tap
+- **B.** A steady rise in pressure over many hours of the day
+- **C.** Air bubbles that come out at a customer's tap
+- **D.** A pressure surge from a sudden change in flow velocity
 
-**Answer: B. A pressure surge from a sudden change in flow velocity**
+**Answer: D. A pressure surge from a sudden change in flow velocity**
 
 When moving water is stopped or sped up quickly, its momentum causes a sharp pressure wave.
 
@@ -2348,12 +2348,12 @@ A fast closure stops the water abruptly, which creates the surge.
 
 What can follow a sudden pump stop after a power loss?
 
-- **A.** Pressure surges and pressure drops in the line
-- **B.** A steady rise in the grade line over several hours
-- **C.** Flow reversal with no pressure change at all
+- **A.** A steady rise in the grade line over several hours
+- **B.** Flow reversal with no pressure change at all
+- **C.** Pressure surges and pressure drops in the line
 - **D.** A gain in flow through the stopped pump
 
-**Answer: A. Pressure surges and pressure drops in the line**
+**Answer: C. Pressure surges and pressure drops in the line**
 
 When a pump trips the flow slows rapidly, and the pressure waves can go both above and below normal.
 
@@ -2387,12 +2387,12 @@ Surge devices give water to the line or release it so the pressure does not chan
 
 How fast do pressure waves travel in a water-filled pipe?
 
-- **A.** At about the speed of sound in the pipe
-- **B.** At the speed of the water that is flowing
-- **C.** At the speed that the pump runs
-- **D.** At a few feet per minute along the pipe
+- **A.** At the speed of the water that is flowing
+- **B.** At the speed that the pump runs
+- **C.** At a few feet per minute along the pipe
+- **D.** At about the speed of sound in the pipe
 
-**Answer: A. At about the speed of sound in the pipe**
+**Answer: D. At about the speed of sound in the pipe**
 
 Waves travel at some thousands of feet per second, far faster than the water itself moves.
 
@@ -2414,11 +2414,11 @@ A pressure wave is followed by a drop, which can vaporize water or let outside w
 Which pipe tends to produce the larger surge for the same velocity change?
 
 - **A.** A pipe with a rough lining on the inner wall
-- **B.** A short service line of small diameter
-- **C.** A stiff pipe such as steel or ductile iron
+- **B.** A stiff pipe such as steel or ductile iron
+- **C.** A short service line of small diameter
 - **D.** A flexible plastic pipe such as HDPE
 
-**Answer: C. A stiff pipe such as steel or ductile iron**
+**Answer: B. A stiff pipe such as steel or ductile iron**
 
 Stiffer pipe walls give a faster wave and a higher surge. Flexible walls absorb part of the shock.
 
@@ -2441,10 +2441,10 @@ Why does a higher flow velocity before a closure produce a larger surge?
 
 - **A.** Pipe walls get thicker when flow is higher
 - **B.** A faster flow has a lower C factor in the pipe
-- **C.** Faster water is heavier than slower water
-- **D.** Surge rise grows with the size of the velocity change
+- **C.** Surge rise grows with the size of the velocity change
+- **D.** Faster water is heavier than slower water
 
-**Answer: D. Surge rise grows with the size of the velocity change**
+**Answer: C. Surge rise grows with the size of the velocity change**
 
 The pressure rise is proportional to the velocity change, so stopping faster water gives a bigger surge.
 
@@ -2453,11 +2453,11 @@ The pressure rise is proportional to the velocity change, so stopping faster wat
 What does the hydraulic grade line (HGL) represent?
 
 - **A.** The slope of the ground surface above the main
-- **B.** The level water would reach in an open tube there
-- **C.** The total length of pipe in the service area
+- **B.** The total length of pipe in the service area
+- **C.** The level water would reach in an open tube there
 - **D.** The center line elevation of the pipe itself
 
-**Answer: B. The level water would reach in an open tube there**
+**Answer: C. The level water would reach in an open tube there**
 
 HGL is elevation plus pressure head. It shows the level that water would reach in a standpipe.
 
@@ -2465,12 +2465,12 @@ HGL is elevation plus pressure head. It shows the level that water would reach i
 
 Where does the HGL sit for an open tank?
 
-- **A.** At the tank bottom
-- **B.** At the water surface
+- **A.** At the water surface
+- **B.** At the tank bottom
 - **C.** At the ground elevation
 - **D.** At the pipe centerline
 
-**Answer: B. At the water surface**
+**Answer: A. At the water surface**
 
 An open tank has atmospheric pressure at its surface, so the grade line is the water surface.
 
@@ -2479,11 +2479,11 @@ An open tank has atmospheric pressure at its surface, so the grade line is the w
 In a pipe with flowing water, how does the HGL slope?
 
 - **A.** It follows the slope of the ground surface
-- **B.** It stays flat along the whole length of pipe
-- **C.** It slopes down in the flow direction because of friction
+- **B.** It slopes down in the flow direction because of friction
+- **C.** It stays flat along the whole length of pipe
 - **D.** It slopes upward in the direction of the flow
 
-**Answer: C. It slopes down in the flow direction because of friction**
+**Answer: B. It slopes down in the flow direction because of friction**
 
 Friction takes away head along the way, so the grade falls from source toward the end.
 
@@ -2492,11 +2492,11 @@ Friction takes away head along the way, so the grade falls from source toward th
 What does it mean if the HGL falls below the pipe elevation at a point?
 
 - **A.** The pipe is full of air at that point
-- **B.** The pressure there is below atmospheric
-- **C.** The pressure there is higher than the static value
-- **D.** The pipe is oversized for the flow
+- **B.** The pressure there is higher than the static value
+- **C.** The pipe is oversized for the flow
+- **D.** The pressure there is below atmospheric
 
-**Answer: B. The pressure there is below atmospheric**
+**Answer: D. The pressure there is below atmospheric**
 
 A grade line below the pipe means negative gauge pressure, which can allow contamination to be drawn in.
 
@@ -2504,12 +2504,12 @@ A grade line below the pipe means negative gauge pressure, which can allow conta
 
 A recorder on a hydrant shows pressure dipping each afternoon at the same time. What is the likely reason?
 
-- **A.** Daily peak demand raises friction loss
-- **B.** The gauge drifts as it warms during the day
-- **C.** The tank fills each afternoon at that time
+- **A.** The gauge drifts as it warms during the day
+- **B.** The tank fills each afternoon at that time
+- **C.** Daily peak demand raises friction loss
 - **D.** Pipes expand in the afternoon heat
 
-**Answer: A. Daily peak demand raises friction loss**
+**Answer: C. Daily peak demand raises friction loss**
 
 Predictable repeating dips match the usual daily use pattern.
 
@@ -2517,12 +2517,12 @@ Predictable repeating dips match the usual daily use pattern.
 
 Which flow test result suggests the main has plenty of capacity?
 
-- **A.** The pitot reading is low at the flowing hydrant
-- **B.** Residual falls only slightly from static at a large flow
+- **A.** Residual falls only slightly from static at a large flow
+- **B.** The pitot reading is low at the flowing hydrant
 - **C.** Static pressure is high at the test hydrant
 - **D.** Residual pressure falls to about half of static
 
-**Answer: B. Residual falls only slightly from static at a large flow**
+**Answer: A. Residual falls only slightly from static at a large flow**
 
 A small drop at a big flow means little head is lost, so the main can supply much more.
 
@@ -2530,12 +2530,12 @@ A small drop at a big flow means little head is lost, so the main can supply muc
 
 Why is pressure monitoring at a high point in a zone useful?
 
-- **A.** It usually shows the lowest pressures in the zone
-- **B.** It shows the highest pressures in the zone
-- **C.** It replaces the need for customer meters
-- **D.** It measures the flow from the source
+- **A.** It shows the highest pressures in the zone
+- **B.** It replaces the need for customer meters
+- **C.** It measures the flow from the source
+- **D.** It usually shows the lowest pressures in the zone
 
-**Answer: A. It usually shows the lowest pressures in the zone**
+**Answer: D. It usually shows the lowest pressures in the zone**
 
 The high ground has the least pressure, so if it is adequate there it is likely adequate elsewhere.
 
@@ -2544,11 +2544,11 @@ The high ground has the least pressure, so if it is adequate there it is likely 
 How does a SCADA record of pressure and flow help operators?
 
 - **A.** It reveals the age of each pipe in the system
-- **B.** It sets the C factor of each main at the site
-- **C.** It shows trends and unusual changes like a main break
+- **B.** It shows trends and unusual changes like a main break
+- **C.** It sets the C factor of each main at the site
 - **D.** It cleans the main as the water flows by
 
-**Answer: C. It shows trends and unusual changes like a main break**
+**Answer: B. It shows trends and unusual changes like a main break**
 
 Continuous records let staff spot unusual changes quickly and compare to normal patterns.
 
@@ -2569,12 +2569,12 @@ More flow with less pressure points to water leaving the system faster than norm
 
 Why can one hydrant flow test fail to represent conditions in a distant part of the system?
 
-- **A.** Grade line and losses vary along the network
-- **B.** Test water is warmer
+- **A.** Test water is warmer
+- **B.** Grade line and losses vary along the network
 - **C.** Gauges differ in each zone
 - **D.** Hydrants of different colors give different readings
 
-**Answer: A. Grade line and losses vary along the network**
+**Answer: B. Grade line and losses vary along the network**
 
 The test shows local conditions, and they change with distance, pipe size and nearby demand.
 
@@ -2582,12 +2582,12 @@ The test shows local conditions, and they change with distance, pipe size and ne
 
 To find HGL from a gauge reading, what is added to the pressure head?
 
-- **A.** The elevation of the gauge
-- **B.** The diameter of the pipe
-- **C.** The length of the pipe
-- **D.** The flow in the pipe
+- **A.** The diameter of the pipe
+- **B.** The length of the pipe
+- **C.** The flow in the pipe
+- **D.** The elevation of the gauge
 
-**Answer: A. The elevation of the gauge**
+**Answer: D. The elevation of the gauge**
 
 HGL equals elevation plus pressure converted to feet of head.
 
@@ -2596,11 +2596,11 @@ HGL equals elevation plus pressure converted to feet of head.
 A PRV station separates zones whose grade lines are 1,200 ft and 1,000 ft. About what pressure drop is taken across the valve?
 
 - **A.** About 200 psi
-- **B.** About 87 psi
-- **C.** About 460 psi
+- **B.** About 460 psi
+- **C.** About 87 psi
 - **D.** About 9 psi
 
-**Answer: B. About 87 psi**
+**Answer: C. About 87 psi**
 
 The 200 ft difference times 0.433 psi per ft is about 87 psi. Using 200 as psi or dividing wrongly gives the other values.
 
@@ -2609,11 +2609,11 @@ The 200 ft difference times 0.433 psi per ft is about 87 psi. Using 200 as psi o
 Which job does equalizing storage do for a distribution system?
 
 - **A.** It lifts system pressure above what the pumps can deliver at shutoff
-- **B.** It improves the taste of water while the water waits in the tank
-- **C.** It covers the gap when demand runs above the steady supply rate
+- **B.** It covers the gap when demand runs above the steady supply rate
+- **C.** It improves the taste of water while the water waits in the tank
 - **D.** It lowers the total volume of water that customers choose to use
 
-**Answer: C. It covers the gap when demand runs above the steady supply rate**
+**Answer: B. It covers the gap when demand runs above the steady supply rate**
 
 Equalizing storage fills when demand is low and drains when demand is high, so the source can deliver at a steadier rate.
 
@@ -2634,12 +2634,12 @@ Fire reserve is sized from a fire flow and how long it must last, and routine op
 
 Water held to carry customers through a source outage or a major pipe failure is called what?
 
-- **A.** Emergency storage held for outages
-- **B.** Equalizing storage used for daily peaks
-- **C.** Dead storage in the lowest part of the tank
+- **A.** Equalizing storage used for daily peaks
+- **B.** Dead storage in the lowest part of the tank
+- **C.** Emergency storage held for outages
 - **D.** Surge storage used for pressure transients
 
-**Answer: A. Emergency storage held for outages**
+**Answer: C. Emergency storage held for outages**
 
 Emergency storage covers supply interruptions, unlike equalizing storage, which smooths daily demand swings.
 
@@ -2647,12 +2647,12 @@ Emergency storage covers supply interruptions, unlike equalizing storage, which 
 
 In a tank, what is dead storage?
 
-- **A.** Water below the level that can be delivered at usable pressure
-- **B.** Water that is held back for use when a fire occurs nearby
-- **C.** Water that has stayed in the tank for the longest time span
-- **D.** Water kept above the overflow as a cushion against ice damage in winter
+- **A.** Water that is held back for use when a fire occurs nearby
+- **B.** Water that has stayed in the tank for the longest time span
+- **C.** Water kept above the overflow as a cushion against ice damage in winter
+- **D.** Water below the level that can be delivered at usable pressure
 
-**Answer: A. Water below the level that can be delivered at usable pressure**
+**Answer: D. Water below the level that can be delivered at usable pressure**
 
 Dead storage sits too low to flow out at adequate pressure, so it does not count as useful volume.
 
@@ -2661,11 +2661,11 @@ Dead storage sits too low to flow out at adequate pressure, so it does not count
 How does a floating tank help keep pressure steady in the zone it serves?
 
 - **A.** Its walls compress the water to hold a set pressure in the zone
-- **B.** Its vent forces air into the mains during the peak hour of water use
-- **C.** Its water surface fixes the grade line, so pressures change little
+- **B.** Its water surface fixes the grade line, so pressures change little
+- **C.** Its vent forces air into the mains during the peak hour of water use
 - **D.** Its pump adds head each time the tank begins to refill with water
 
-**Answer: C. Its water surface fixes the grade line, so pressures change little**
+**Answer: B. Its water surface fixes the grade line, so pressures change little**
 
 A tank open to the system holds the hydraulic grade near its water surface elevation, which steadies pressure through demand swings.
 
@@ -2701,10 +2701,10 @@ A tank holds 1.0 MG at overflow, and 0.2 MG of that sits below the level that gi
 
 - **A.** 1.0 MG of the stored volume
 - **B.** 1.2 MG of the stored volume
-- **C.** 0.8 MG of the stored volume
-- **D.** 0.2 MG of the stored volume
+- **C.** 0.2 MG of the stored volume
+- **D.** 0.8 MG of the stored volume
 
-**Answer: C. 0.8 MG of the stored volume**
+**Answer: D. 0.8 MG of the stored volume**
 
 Useful storage is the total volume minus the dead storage, so 1.0 MG minus 0.2 MG leaves 0.8 MG.
 
@@ -2713,11 +2713,11 @@ Useful storage is the total volume minus the dead storage, so 1.0 MG minus 0.2 M
 Why do many utilities keep routine tank cycling above the fire reserve level?
 
 - **A.** So the water in the reserve stays fit to drink for another day
-- **B.** So the reserved water is still in the tank if a fire occurs
-- **C.** So a wall can physically separate it from the operating water
-- **D.** So drawing it down does not damage the roof of the steel tank
+- **B.** So a wall can physically separate it from the operating water
+- **C.** So drawing it down does not damage the roof of the steel tank
+- **D.** So the reserved water is still in the tank if a fire occurs
 
-**Answer: B. So the reserved water is still in the tank if a fire occurs**
+**Answer: D. So the reserved water is still in the tank if a fire occurs**
 
 A reserve only helps if it is present when the event happens, so daily cycling is set to stay above it.
 
@@ -2751,12 +2751,12 @@ The two reserves answer different events: a fire demand for a set time and a los
 
 A tank is kept nearly full at all times to protect the fire reserve. What problem does this tend to create?
 
-- **A.** The tank spills during the night because the level is high
-- **B.** The zone pressure drops because the grade line has risen
-- **C.** Little turnover, so water age rises and residual can fall
+- **A.** Little turnover, so water age rises and residual can fall
+- **B.** The tank spills during the night because the level is high
+- **C.** The zone pressure drops because the grade line has risen
 - **D.** The pump starts more often because the level is so high
 
-**Answer: C. Little turnover, so water age rises and residual can fall**
+**Answer: A. Little turnover, so water age rises and residual can fall**
 
 A tank that is rarely drawn down exchanges little water, so the water ages and the disinfectant residual decays.
 
@@ -2764,12 +2764,12 @@ A tank that is rarely drawn down exchanges little water, so the water ages and t
 
 Which type of storage uses a tower to give system pressure by gravity?
 
-- **A.** Hydropneumatic tank
-- **B.** Elevated tank
+- **A.** Elevated tank
+- **B.** Hydropneumatic tank
 - **C.** Pump suction well
 - **D.** Ground-level reservoir
 
-**Answer: B. Elevated tank**
+**Answer: A. Elevated tank**
 
 An elevated tank lifts the water surface well above the customers, so gravity supplies the pressure.
 
@@ -2791,11 +2791,11 @@ A standpipe is a tall ground-supported tank, and just the upper part of its wate
 What does a hydropneumatic tank hold in addition to water?
 
 - **A.** A standpipe that raises the water surface of the tank
-- **B.** A cushion of compressed air that pushes the water out
-- **C.** A float that sets the pump speed as the level changes
-- **D.** A chlorine charge that doses the water as it leaves
+- **B.** A float that sets the pump speed as the level changes
+- **C.** A chlorine charge that doses the water as it leaves
+- **D.** A cushion of compressed air that pushes the water out
 
-**Answer: B. A cushion of compressed air that pushes the water out**
+**Answer: D. A cushion of compressed air that pushes the water out**
 
 The air cushion is squeezed as water enters and pushes water into the system as the pressure falls.
 
@@ -2803,12 +2803,12 @@ The air cushion is squeezed as water enters and pushes water into the system as 
 
 What does the pressure from an elevated tank depend on most?
 
-- **A.** The height of its water surface above the customer
-- **B.** The diameter of the riser pipe at its base near the ground
-- **C.** The thickness of the steel shell around the water
+- **A.** The diameter of the riser pipe at its base near the ground
+- **B.** The thickness of the steel shell around the water
+- **C.** The height of its water surface above the customer
 - **D.** Its total capacity in gallons of stored water
 
-**Answer: A. The height of its water surface above the customer**
+**Answer: C. The height of its water surface above the customer**
 
 Pressure is set by head, the vertical height of the water surface, not by how much water the tank holds.
 
@@ -2816,12 +2816,12 @@ Pressure is set by head, the vertical height of the water surface, not by how mu
 
 Two tanks have the same water surface elevation, but one holds twice the volume. How do the static pressures at a customer compare?
 
-- **A.** The larger tank gives higher pressure
-- **B.** The larger tank gives lower pressure
-- **C.** They are the same for both tanks
+- **A.** They are the same for both tanks
+- **B.** The larger tank gives higher pressure
+- **C.** The larger tank gives lower pressure
 - **D.** The larger tank gives twice the pressure
 
-**Answer: C. They are the same for both tanks**
+**Answer: A. They are the same for both tanks**
 
 Static pressure follows the elevation of the water surface, so extra volume adds storage but not pressure.
 
@@ -2830,11 +2830,11 @@ Static pressure follows the elevation of the water surface, so extra volume adds
 Why is the lower part of a tall standpipe often poor at supplying the zone by gravity?
 
 - **A.** Water there gathers sediment that blocks the outlet pipe
-- **B.** Water there is drawn out first and must be replaced at once
-- **C.** Water there is colder than the rest and passes the outlet poorly
-- **D.** Water there sits too low to give the pressure the zone needs
+- **B.** Water there sits too low to give the pressure the zone needs
+- **C.** Water there is drawn out first and must be replaced at once
+- **D.** Water there is colder than the rest and passes the outlet poorly
 
-**Answer: D. Water there sits too low to give the pressure the zone needs**
+**Answer: B. Water there sits too low to give the pressure the zone needs**
 
 Only water high enough above the customers gives adequate pressure, so the lower volume may be unusable by gravity or need pumping.
 
@@ -2844,10 +2844,10 @@ How does a hydropneumatic tank mainly affect system pressure?
 
 - **A.** Its height above ground sets a constant pressure for the zone
 - **B.** It lowers the pressure of the zone during the night hours
-- **C.** It holds the pressure perfectly steady at any demand level
-- **D.** Air pressure pushes water out within a range set by pump controls
+- **C.** Air pressure pushes water out within a range set by pump controls
+- **D.** It holds the pressure perfectly steady at any demand level
 
-**Answer: D. Air pressure pushes water out within a range set by pump controls**
+**Answer: C. Air pressure pushes water out within a range set by pump controls**
 
 The pressure follows the air cushion, rising as the pump runs and falling as water is drawn until the pump starts again.
 
@@ -2868,12 +2868,12 @@ When elevation is not available, a pressurized tank can provide system pressure,
 
 Why is the usable volume of a hydropneumatic tank small compared with its size?
 
-- **A.** Air fills part of the shell, and water leaves between pump start and stop pressures
-- **B.** Water is held back to protect the air cushion from the pump when it runs
-- **C.** The shell is built thicker so that less water can be added to the tank at once
+- **A.** Water is held back to protect the air cushion from the pump when it runs
+- **B.** The shell is built thicker so that less water can be added to the tank at once
+- **C.** Air fills part of the shell, and water leaves between pump start and stop pressures
 - **D.** The outlet sits near the top of the shell above the water, so little can leave
 
-**Answer: A. Air fills part of the shell, and water leaves between pump start and stop pressures**
+**Answer: C. Air fills part of the shell, and water leaves between pump start and stop pressures**
 
 Water is delivered as the pressure moves between the pump start and stop settings, so most of the shell volume is air or held water.
 
@@ -2881,12 +2881,12 @@ Water is delivered as the pressure moves between the pump start and stop setting
 
 A ground-level reservoir has a water surface lower than the zone needs, and a booster pump feeds the zone. What happens to zone pressure if the pump stops?
 
-- **A.** It stays the same, because the reservoir still holds the water for the zone
-- **B.** It drops, since the reservoir does not give the grade by gravity
+- **A.** It drops, since the reservoir does not give the grade by gravity
+- **B.** It stays the same, because the reservoir still holds the water for the zone
 - **C.** It rises, because the flow in the mains has come to a stop in the zone
 - **D.** It surges upward, because the reservoir pushes its water out by itself
 
-**Answer: B. It drops, since the reservoir does not give the grade by gravity**
+**Answer: A. It drops, since the reservoir does not give the grade by gravity**
 
 Without the pump there is no head to lift water to the zone grade, so pressure falls toward what the low water surface provides.
 
@@ -2908,11 +2908,11 @@ Static pressure follows the shared water surface elevation, so a second tank add
 Why can a hydropneumatic tank that has lost its air cushion cause the pump to cycle often?
 
 - **A.** The tank rises in elevation as the air escapes through the shell
-- **B.** With little air, pressure swings fast, so the pump starts and stops often
-- **C.** Extra air raises the pump's rated head and makes it run longer
-- **D.** The pressure switch is pushed to a higher setting by the water
+- **B.** Extra air raises the pump's rated head and makes it run longer
+- **C.** The pressure switch is pushed to a higher setting by the water
+- **D.** With little air, pressure swings fast, so the pump starts and stops often
 
-**Answer: B. With little air, pressure swings fast, so the pump starts and stops often**
+**Answer: D. With little air, pressure swings fast, so the pump starts and stops often**
 
 A waterlogged tank has too little cushion to buffer demand, so the pressure range is crossed within a short time.
 
@@ -2921,11 +2921,11 @@ A waterlogged tank has too little cushion to buffer demand, so the pressure rang
 What does a float switch in a tank report to a pump controller?
 
 - **A.** The water temperature
-- **B.** The flow rate in the main
-- **C.** The water level
+- **B.** The water level
+- **C.** The flow rate in the main
 - **D.** The chlorine residual
 
-**Answer: C. The water level**
+**Answer: B. The water level**
 
 A float rides on the water surface and signals when the level reaches a set high or low point.
 
@@ -2946,12 +2946,12 @@ The overflow gives excess water a path out so the tank is not damaged by overfil
 
 What is the job of a tank drain line?
 
-- **A.** To let air into the tank as the level falls
-- **B.** To empty the tank for cleaning or repair
+- **A.** To empty the tank for cleaning or repair
+- **B.** To let air into the tank as the level falls
 - **C.** To protect the tank from being overfilled
 - **D.** To carry the fire flow out of the tank
 
-**Answer: B. To empty the tank for cleaning or repair**
+**Answer: A. To empty the tank for cleaning or repair**
 
 The drain is a deliberate outlet at the low point used when the tank must be emptied.
 
@@ -2972,12 +2972,12 @@ Set points hold the level between a top that avoids spilling and a bottom that k
 
 How does a pressure-based level control work?
 
-- **A.** A sensor low in the tank turns water pressure into a level reading
-- **B.** A sensor on the pump records the hours it has operated
-- **C.** A sensor on the vent counts how often the air moves in and out
-- **D.** A sensor in the main measures how fast the water is flowing
+- **A.** A sensor on the pump records the hours it has operated
+- **B.** A sensor on the vent counts how often the air moves in and out
+- **C.** A sensor in the main measures how fast the water is flowing
+- **D.** A sensor low in the tank turns water pressure into a level reading
 
-**Answer: A. A sensor low in the tank turns water pressure into a level reading**
+**Answer: D. A sensor low in the tank turns water pressure into a level reading**
 
 Pressure at the tank base rises with the depth of water, so it can be converted to level for the controls.
 
@@ -2986,11 +2986,11 @@ Pressure at the tank base rises with the depth of water, so it can be converted 
 Why is the pump start level set above the fire reserve level?
 
 - **A.** So the pump keeps on running through the whole day and the night
-- **B.** So the tank spills at the top if the level controls should fail
-- **C.** So the reserve volume remains in the tank when the pump starts
+- **B.** So the reserve volume remains in the tank when the pump starts
+- **C.** So the tank spills at the top if the level controls should fail
 - **D.** So the water in the reserve stays above freezing in winter months
 
-**Answer: C. So the reserve volume remains in the tank when the pump starts**
+**Answer: B. So the reserve volume remains in the tank when the pump starts**
 
 Setting start above the reserve keeps the pump from letting the level fall into water that is held for emergencies.
 
@@ -2998,12 +2998,12 @@ Setting start above the reserve keeps the pump from letting the level fall into 
 
 What happens if the pump start and stop levels are set very close together?
 
-- **A.** The tank overflows each night
-- **B.** The pump starts and stops often
+- **A.** The pump starts and stops often
+- **B.** The tank overflows each night
 - **C.** The system pressure slowly falls
 - **D.** The pump runs for days at a time
 
-**Answer: B. The pump starts and stops often**
+**Answer: A. The pump starts and stops often**
 
 A narrow level band is crossed quickly, so the pump short cycles and wears its starter and motor.
 
@@ -3026,10 +3026,10 @@ Why do many systems fill a tank during the night?
 
 - **A.** The pumps need less head at night
 - **B.** Chlorine lasts longer in a full tank
-- **C.** Low demand leaves surplus supply to refill it
-- **D.** The mains are larger in the night hours
+- **C.** The mains are larger in the night hours
+- **D.** Low demand leaves surplus supply to refill it
 
-**Answer: C. Low demand leaves surplus supply to refill it**
+**Answer: D. Low demand leaves surplus supply to refill it**
 
 With demand low, the pumps deliver more than customers use, and the surplus raises the level.
 
@@ -3037,12 +3037,12 @@ With demand low, the pumps deliver more than customers use, and the surplus rais
 
 Which change makes a pump run longer in each cycle?
 
-- **A.** Widening the gap between start and stop levels
-- **B.** Raising the start level toward the stop level
+- **A.** Raising the start level toward the stop level
+- **B.** Widening the gap between start and stop levels
 - **C.** Narrowing the gap between start and stop levels
 - **D.** Lowering the overflow elevation of the tank
 
-**Answer: A. Widening the gap between start and stop levels**
+**Answer: B. Widening the gap between start and stop levels**
 
 A larger level band holds more water, so the pump needs more time to refill it and starts less often.
 
@@ -3050,12 +3050,12 @@ A larger level band holds more water, so the pump needs more time to refill it a
 
 In the evening a tank level keeps falling while its pump is running. What does this show?
 
-- **A.** Demand is greater than the pump's output
-- **B.** The pump is larger than the zone needs
-- **C.** The float switch is stuck in the high position
+- **A.** The pump is larger than the zone needs
+- **B.** The float switch is stuck in the high position
+- **C.** Demand is greater than the pump's output
 - **D.** The overflow valve has opened by itself
 
-**Answer: A. Demand is greater than the pump's output**
+**Answer: C. Demand is greater than the pump's output**
 
 The net flow into the tank is negative when customers draw more than the pump delivers.
 
@@ -3063,12 +3063,12 @@ The net flow into the tank is negative when customers draw more than the pump de
 
 A level transmitter is on a pipe that carries flow instead of at the tank wall. Why might its reading mislead?
 
-- **A.** The transmitter adds the height of the tank vent to its reading
-- **B.** It may include dynamic pressure from pumps, not depth alone
+- **A.** It may include dynamic pressure from pumps, not depth alone
+- **B.** The transmitter adds the height of the tank vent to its reading
 - **C.** Water in a moving pipe has a different density than in the tank
 - **D.** The reading stays the same whatever the water level does
 
-**Answer: B. It may include dynamic pressure from pumps, not depth alone**
+**Answer: A. It may include dynamic pressure from pumps, not depth alone**
 
 A sensor on a flowing line can see pressure effects of velocity or pump discharge, so it may not match the true level.
 
@@ -3076,12 +3076,12 @@ A sensor on a flowing line can see pressure effects of velocity or pump discharg
 
 What does water age mean?
 
-- **A.** The time water has spent in the system since it entered
-- **B.** The age of the pipe that the water moves through each day
-- **C.** The time since the tank interior was last painted by crews
-- **D.** The years that the tank has been in service for the utility
+- **A.** The age of the pipe that the water moves through each day
+- **B.** The time since the tank interior was last painted by crews
+- **C.** The years that the tank has been in service for the utility
+- **D.** The time water has spent in the system since it entered
 
-**Answer: A. The time water has spent in the system since it entered**
+**Answer: D. The time water has spent in the system since it entered**
 
 Water age is the time since the water entered the system, and older water has usually lost more residual.
 
@@ -3089,12 +3089,12 @@ Water age is the time since the water entered the system, and older water has us
 
 What does turnover mean for a tank?
 
-- **A.** Rotating the tank on its foundation after it has been leak tested
-- **B.** Replacing the stored water with fresh by filling and draining
+- **A.** Replacing the stored water with fresh by filling and draining
+- **B.** Rotating the tank on its foundation after it has been leak tested
 - **C.** Recoating the inside surface of the tank after an inspection
 - **D.** Reading the level of the tank at the start of each working day
 
-**Answer: B. Replacing the stored water with fresh by filling and draining**
+**Answer: A. Replacing the stored water with fresh by filling and draining**
 
 Turnover is the exchange of old stored water with new, and good turnover keeps water fresher.
 
@@ -3103,11 +3103,11 @@ Turnover is the exchange of old stored water with new, and good turnover keeps w
 Why can long storage hurt water quality?
 
 - **A.** The pipes shrink as the water sits still
-- **B.** The pressure falls below the needed minimum
-- **C.** Residual decays and the water age grows
+- **B.** Residual decays and the water age grows
+- **C.** The pressure falls below the needed minimum
 - **D.** The water becomes heavier and sinks in the main
 
-**Answer: C. Residual decays and the water age grows**
+**Answer: B. Residual decays and the water age grows**
 
 The longer water sits, the more residual it loses, which leaves it open to quality problems.
 
@@ -3116,11 +3116,11 @@ The longer water sits, the more residual it loses, which leaves it open to quali
 What is short circuiting in a tank?
 
 - **A.** Water spills through the overflow when the tank has been overfilled
-- **B.** Water moves straight from inlet to outlet, leaving other water
-- **C.** Electric current leaks into the steel shell of the tank and corrodes it
+- **B.** Electric current leaks into the steel shell of the tank and corrodes it
+- **C.** Water moves straight from inlet to outlet, leaving other water
 - **D.** Water leaves through the drain line each time that it is opened
 
-**Answer: B. Water moves straight from inlet to outlet, leaving other water**
+**Answer: C. Water moves straight from inlet to outlet, leaving other water**
 
 Short circuiting leaves parts of the tank unmixed, and that water ages while the rest turns over.
 
@@ -3129,11 +3129,11 @@ Short circuiting leaves parts of the tank unmixed, and that water ages while the
 What is thermal stratification in a tank?
 
 - **A.** Layers of sediment that build up on the tank floor
-- **B.** Layers of ice that form at the water surface
-- **C.** Layers of paint put on the inside of the tank
-- **D.** Layers of different temperature water that mix poorly
+- **B.** Layers of different temperature water that mix poorly
+- **C.** Layers of ice that form at the water surface
+- **D.** Layers of paint put on the inside of the tank
 
-**Answer: D. Layers of different temperature water that mix poorly**
+**Answer: B. Layers of different temperature water that mix poorly**
 
 Warmer water is lighter, so layers can form and stay apart when inflow does not mix them.
 
@@ -3154,12 +3154,12 @@ Fresh water entering through a single pipe may mix poorly with the volume farthe
 
 How can mixing in a tank help water quality?
 
-- **A.** It adds new disinfectant to the stored water as it moves around
-- **B.** It raises the pressure in the zone by moving water about
-- **C.** It lowers the water level of the tank by a few feet or so
-- **D.** It spreads fresh water and residual through the stored volume
+- **A.** It spreads fresh water and residual through the stored volume
+- **B.** It adds new disinfectant to the stored water as it moves around
+- **C.** It raises the pressure in the zone by moving water about
+- **D.** It lowers the water level of the tank by a few feet or so
 
-**Answer: D. It spreads fresh water and residual through the stored volume**
+**Answer: A. It spreads fresh water and residual through the stored volume**
 
 Mixing reduces stagnant zones, so residual and temperature are more even throughout the tank.
 
@@ -3168,11 +3168,11 @@ Mixing reduces stagnant zones, so residual and temperature are more even through
 Why might the chlorine residual in a tank be lower than in the mains feeding it?
 
 - **A.** The vent lets chlorine escape out of the stored water
-- **B.** Residual decays over the time the water sits in the tank
-- **C.** The tank sends chlorine to the nearest hydrant first
-- **D.** The tank adds iron that raises the demand at once
+- **B.** The tank sends chlorine to the nearest hydrant first
+- **C.** The tank adds iron that raises the demand at once
+- **D.** Residual decays over the time the water sits in the tank
 
-**Answer: B. Residual decays over the time the water sits in the tank**
+**Answer: D. Residual decays over the time the water sits in the tank**
 
 Water that sits in a tank has more time for residual to react and decay than water moving in the mains.
 
@@ -3180,12 +3180,12 @@ Water that sits in a tank has more time for residual to react and decay than wat
 
 Which operating change usually shortens water age in a tank?
 
-- **A.** Widening the level swing so more is drawn and refilled
-- **B.** Raising the overflow elevation of the tank by a few feet
-- **C.** Closing the inlet valve for long periods during each week
-- **D.** Holding the level close to the overflow all through the year
+- **A.** Raising the overflow elevation of the tank by a few feet
+- **B.** Closing the inlet valve for long periods during each week
+- **C.** Holding the level close to the overflow all through the year
+- **D.** Widening the level swing so more is drawn and refilled
 
-**Answer: A. Widening the level swing so more is drawn and refilled**
+**Answer: D. Widening the level swing so more is drawn and refilled**
 
 A larger fill and draw swing exchanges more of the volume each day, so average age falls.
 
@@ -3207,11 +3207,11 @@ Higher temperatures speed the loss of disinfectant and make conditions better fo
 A tank fills and drains within a narrow band near its top. What is the likely effect on water at the bottom?
 
 - **A.** It warms faster than the top water
-- **B.** It stays as fresh as the water in the main
-- **C.** It turns over slowly and ages
+- **B.** It turns over slowly and ages
+- **C.** It stays as fresh as the water in the main
 - **D.** It is flushed out by each fill
 
-**Answer: C. It turns over slowly and ages**
+**Answer: B. It turns over slowly and ages**
 
 Water below the active band is not exchanged much, so it can sit for a long time while the top water cycles.
 
@@ -3219,12 +3219,12 @@ Water below the active band is not exchanged much, so it can sit for a long time
 
 What does a tank vent do?
 
-- **A.** Releases chlorine from the stored water
-- **B.** Raises the air pressure to push the water out
-- **C.** Drains the water out for cleaning
-- **D.** Lets air move in and out as the water level changes
+- **A.** Lets air move in and out as the water level changes
+- **B.** Releases chlorine from the stored water
+- **C.** Raises the air pressure to push the water out
+- **D.** Drains the water out for cleaning
 
-**Answer: D. Lets air move in and out as the water level changes**
+**Answer: A. Lets air move in and out as the water level changes**
 
 As the tank fills air must leave, and as it drains air must enter, so the vent keeps the pressure balanced.
 
@@ -3232,12 +3232,12 @@ As the tank fills air must leave, and as it drains air must enter, so the vent k
 
 Why are tank vents covered with screens?
 
-- **A.** To keep insects, birds and debris out of the water
-- **B.** To keep air from moving through the vent opening
+- **A.** To keep air from moving through the vent opening
+- **B.** To keep insects, birds and debris out of the water
 - **C.** To add disinfectant to the air that comes in
 - **D.** To filter dissolved minerals out of the passing air
 
-**Answer: A. To keep insects, birds and debris out of the water**
+**Answer: B. To keep insects, birds and debris out of the water**
 
 A screened vent lets air pass but limits what can get into the stored water.
 
@@ -3246,11 +3246,11 @@ A screened vent lets air pass but limits what can get into the stored water.
 Why is a tank access hatch kept locked?
 
 - **A.** To keep ice from forming on the roof of the tank
-- **B.** To keep unauthorized people out and protect the water
-- **C.** To hold the air pressure that builds inside the tank
+- **B.** To hold the air pressure that builds inside the tank
+- **C.** To keep unauthorized people out and protect the water
 - **D.** To stop the stored water from warming in the sun
 
-**Answer: B. To keep unauthorized people out and protect the water**
+**Answer: C. To keep unauthorized people out and protect the water**
 
 A locked hatch is part of tank security, since the stored water goes to customers.
 
@@ -3258,12 +3258,12 @@ A locked hatch is part of tank security, since the stored water goes to customer
 
 What can happen if a vent is blocked by ice or debris while the tank is draining?
 
-- **A.** A vacuum can form and stress the roof or shell
-- **B.** The tank overflows through the roof
-- **C.** The stored water becomes warmer
-- **D.** The pump stalls from too much suction
+- **A.** The tank overflows through the roof
+- **B.** The stored water becomes warmer
+- **C.** The pump stalls from too much suction
+- **D.** A vacuum can form and stress the roof or shell
 
-**Answer: A. A vacuum can form and stress the roof or shell**
+**Answer: D. A vacuum can form and stress the roof or shell**
 
 Without air coming in, the falling water leaves a partial vacuum that can pull on and damage the structure.
 
@@ -3297,12 +3297,12 @@ Ice can scrape coatings, strain roof and wall members and foul floats and sensor
 
 How is a roof hatch commonly protected from contamination?
 
-- **A.** A flat plate set flush with the roof surface
-- **B.** A raised curb with an overlapping, gasketed cover
+- **A.** A raised curb with an overlapping, gasketed cover
+- **B.** A flat plate set flush with the roof surface
 - **C.** A wide gap that lets the air circulate freely
 - **D.** A hinge fixed in place without any lid or cover
 
-**Answer: B. A raised curb with an overlapping, gasketed cover**
+**Answer: A. A raised curb with an overlapping, gasketed cover**
 
 A raised curb and overlapping lid keep rain, dirt and runoff from running into the opening.
 
@@ -3310,12 +3310,12 @@ A raised curb and overlapping lid keep rain, dirt and runoff from running into t
 
 Why are tank sites often fenced and monitored?
 
-- **A.** To deter tampering, since the stored water reaches customers
-- **B.** To limit the ice that builds up on the ladder in the winter
+- **A.** To limit the ice that builds up on the ladder in the winter
+- **B.** To deter tampering, since the stored water reaches customers
 - **C.** To keep the soil around the tank from settling under its weight
 - **D.** To reduce the noise made by the pumps during the night hours
 
-**Answer: A. To deter tampering, since the stored water reaches customers**
+**Answer: B. To deter tampering, since the stored water reaches customers**
 
 Tanks are a vulnerable point where contamination or damage could affect many customers.
 
@@ -3323,12 +3323,12 @@ Tanks are a vulnerable point where contamination or damage could affect many cus
 
 Why should the area around a tank overflow discharge be kept clear?
 
-- **A.** So the discharge drains away freely and stays open
-- **B.** So the pipe warms up and avoids freezing in the winter
-- **C.** So the ground nearby stays dry in the summer months of the year
+- **A.** So the pipe warms up and avoids freezing in the winter
+- **B.** So the ground nearby stays dry in the summer months of the year
+- **C.** So the discharge drains away freely and stays open
 - **D.** So the water is hidden from view of the nearby public road
 
-**Answer: A. So the discharge drains away freely and stays open**
+**Answer: C. So the discharge drains away freely and stays open**
 
 A clear outlet lets overflow leave without erosion or flooding and without being obstructed.
 
@@ -3336,12 +3336,12 @@ A clear outlet lets overflow leave without erosion or flooding and without being
 
 What do cathodic protection systems in some steel tanks do?
 
-- **A.** Slow corrosion of the steel with a protective current
-- **B.** Add chlorine to the water as it enters the tank
+- **A.** Add chlorine to the water as it enters the tank
+- **B.** Slow corrosion of the steel with a protective current
 - **C.** Heat the water to stop ice from forming in winter
 - **D.** Reduce the airflow that moves through the vent
 
-**Answer: A. Slow corrosion of the steel with a protective current**
+**Answer: B. Slow corrosion of the steel with a protective current**
 
 Cathodic protection makes the steel the protected side of an electrical circuit, which reduces metal loss.
 
@@ -3362,12 +3362,12 @@ If the pipe cannot pass the full fill rate, the level keeps rising and the tank 
 
 Why are tanks inspected on a regular schedule?
 
-- **A.** To find damage and contamination before they cause harm
-- **B.** To count how many customers a tank serves
-- **C.** To decide what water rates should be charged
+- **A.** To count how many customers a tank serves
+- **B.** To decide what water rates should be charged
+- **C.** To find damage and contamination before they cause harm
 - **D.** To measure the daily water demand of the zone
 
-**Answer: A. To find damage and contamination before they cause harm**
+**Answer: C. To find damage and contamination before they cause harm**
 
 Regular inspection catches small problems early, when they are cheaper to fix and less likely to affect water quality.
 
@@ -3375,12 +3375,12 @@ Regular inspection catches small problems early, when they are cheaper to fix an
 
 What is a common sign of coating failure on a steel tank?
 
-- **A.** Rust spots, blistering or peeling paint
-- **B.** A rise in the temperature of the water
-- **C.** A high level shown on the level gauge
-- **D.** A chlorine smell near the vent opening
+- **A.** A rise in the temperature of the water
+- **B.** A high level shown on the level gauge
+- **C.** A chlorine smell near the vent opening
+- **D.** Rust spots, blistering or peeling paint
 
-**Answer: A. Rust spots, blistering or peeling paint**
+**Answer: D. Rust spots, blistering or peeling paint**
 
 Coatings that are failing blister, peel or let rust show through, exposing the steel.
 
@@ -3403,10 +3403,10 @@ Why is a tank often disinfected before it returns to service after cleaning?
 
 - **A.** To make the stored water age more slowly in the tank
 - **B.** To adjust the pressure in the zone that the tank serves
-- **C.** To raise the level in the tank faster than the pump can
-- **D.** The work may have exposed the tank to contamination
+- **C.** The work may have exposed the tank to contamination
+- **D.** To raise the level in the tank faster than the pump can
 
-**Answer: D. The work may have exposed the tank to contamination**
+**Answer: C. The work may have exposed the tank to contamination**
 
 Disinfection reduces the chance that the work introduced contamination to the tank or the water.
 
@@ -3414,12 +3414,12 @@ Disinfection reduces the chance that the work introduced contamination to the ta
 
 Why is the water in a tank often tested for bacteria after cleaning and before service?
 
-- **A.** To confirm the water is safe to supply
-- **B.** To find the best pump start setting
-- **C.** To measure the volume the tank holds
-- **D.** To check the accuracy of the level control
+- **A.** To find the best pump start setting
+- **B.** To measure the volume the tank holds
+- **C.** To check the accuracy of the level control
+- **D.** To confirm the water is safe to supply
 
-**Answer: A. To confirm the water is safe to supply**
+**Answer: D. To confirm the water is safe to supply**
 
 Testing shows whether disinfection worked before the tank supplies customers.
 
@@ -3427,12 +3427,12 @@ Testing shows whether disinfection worked before the tank supplies customers.
 
 What can an interior inspection look at besides the coating?
 
-- **A.** The exercise cycle of the system valves
-- **B.** The condition of welds, roof, vents and ladders
+- **A.** The condition of welds, roof, vents and ladders
+- **B.** The exercise cycle of the system valves
 - **C.** The size of the nearest fire hydrant
 - **D.** The accuracy of the customer meters
 
-**Answer: B. The condition of welds, roof, vents and ladders**
+**Answer: A. The condition of welds, roof, vents and ladders**
 
 An inspection looks at the structure and fittings as well as the coating and the water.
 
@@ -3441,11 +3441,11 @@ An inspection looks at the structure and fittings as well as the coating and the
 Why must some tank inspections be done with the tank taken out of service?
 
 - **A.** The water must be wasted so that it can be measured
-- **B.** The floor, walls and submerged parts must be seen and reached
-- **C.** The roof must be raised so that crews can look inside
-- **D.** The pump must be rested between its fill cycles
+- **B.** The roof must be raised so that crews can look inside
+- **C.** The pump must be rested between its fill cycles
+- **D.** The floor, walls and submerged parts must be seen and reached
 
-**Answer: B. The floor, walls and submerged parts must be seen and reached**
+**Answer: D. The floor, walls and submerged parts must be seen and reached**
 
 Submerged surfaces cannot be examined directly unless the tank is lowered or emptied or other methods are used.
 
@@ -3467,11 +3467,11 @@ Pitting is localized, creating deep holes that can reduce wall strength more tha
 Why should coatings that touch stored drinking water be made for that use?
 
 - **A.** They must reduce the noise coming from the vent
-- **B.** They must match the color of buildings nearby
-- **C.** They must keep the stored water warm in winter
-- **D.** They must not release harmful substances into the water
+- **B.** They must not release harmful substances into the water
+- **C.** They must match the color of buildings nearby
+- **D.** They must keep the stored water warm in winter
 
-**Answer: D. They must not release harmful substances into the water**
+**Answer: B. They must not release harmful substances into the water**
 
 A coating inside a tank is in contact with the water that customers drink, so it must be suitable for that contact.
 
@@ -3479,12 +3479,12 @@ A coating inside a tank is in contact with the water that customers drink, so it
 
 A tank shows a quickly dropping residual and sediment on the floor. Which step most directly addresses both?
 
-- **A.** Adding a larger screen over the vent
-- **B.** Raising the overflow elevation of the tank
-- **C.** Painting the outside of the tank roof
-- **D.** Cleaning the floor and improving turnover
+- **A.** Cleaning the floor and improving turnover
+- **B.** Adding a larger screen over the vent
+- **C.** Raising the overflow elevation of the tank
+- **D.** Painting the outside of the tank roof
 
-**Answer: D. Cleaning the floor and improving turnover**
+**Answer: A. Cleaning the floor and improving turnover**
 
 Cleaning removes settled material, and better turnover reduces the age and residual loss that go with long storage.
 
@@ -3518,12 +3518,12 @@ Gallons per foot depend on the area of the tank, which is greater in the wide ta
 
 The level in a straight-walled cylindrical tank falls by half. What fraction of the volume has been removed?
 
-- **A.** Three quarters
-- **B.** Twice the volume
-- **C.** One half
+- **A.** One half
+- **B.** Three quarters
+- **C.** Twice the volume
 - **D.** One quarter
 
-**Answer: C. One half**
+**Answer: A. One half**
 
 The cross-section is constant, so volume changes in proportion to the level.
 
@@ -3533,10 +3533,10 @@ What does drawdown mean for a tank?
 
 - **A.** The act of filling the tank from the main
 - **B.** The rise in pressure when the pump starts
-- **C.** The test that checks the condition of the coating
-- **D.** The fall in water level as water is drawn out
+- **C.** The fall in water level as water is drawn out
+- **D.** The test that checks the condition of the coating
 
-**Answer: D. The fall in water level as water is drawn out**
+**Answer: C. The fall in water level as water is drawn out**
 
 Drawdown is the drop in level, and it can be converted to volume with the tank's gallons per foot.
 
@@ -3544,12 +3544,12 @@ Drawdown is the drop in level, and it can be converted to volume with the tank's
 
 What is gallons per foot of depth in a straight-walled cylindrical tank proportional to?
 
-- **A.** The square of its diameter
-- **B.** Its diameter measured across the tank
+- **A.** Its diameter measured across the tank
+- **B.** The square of its diameter
 - **C.** Its perimeter measured around the shell
 - **D.** Its height from the floor to the overflow
 
-**Answer: A. The square of its diameter**
+**Answer: B. The square of its diameter**
 
 The area depends on the diameter squared, so doubling the diameter gives four times as many gallons per foot.
 
@@ -3559,10 +3559,10 @@ What happens to gallons per foot as water rises in a straight-walled cylinder?
 
 - **A.** It doubles near the top
 - **B.** It decreases with depth
-- **C.** It increases with depth
-- **D.** It stays the same
+- **C.** It stays the same
+- **D.** It increases with depth
 
-**Answer: D. It stays the same**
+**Answer: C. It stays the same**
 
 The cross-section does not change with height, so each foot holds the same volume.
 
@@ -3572,10 +3572,10 @@ Why can a level reading not be turned into volume with one gallons-per-foot figu
 
 - **A.** The water density changes with depth
 - **B.** The sensor reads different values near the wall
-- **C.** The cross-section area changes with depth
-- **D.** The vent changes the tank pressure
+- **C.** The vent changes the tank pressure
+- **D.** The cross-section area changes with depth
 
-**Answer: C. The cross-section area changes with depth**
+**Answer: D. The cross-section area changes with depth**
 
 With tapered walls each foot holds a different volume, so volume depends on the depth in a non-uniform way.
 
@@ -3583,12 +3583,12 @@ With tapered walls each foot holds a different volume, so volume depends on the 
 
 What is compared when estimating the equalizing volume from a daily demand pattern?
 
-- **A.** The count of hydrants against the number of customers served
-- **B.** The length of each main against its age
-- **C.** The demand over the day against the steady supply rate
+- **A.** The demand over the day against the steady supply rate
+- **B.** The count of hydrants against the number of customers served
+- **C.** The length of each main against its age
 - **D.** The pressure at each hydrant against the main size
 
-**Answer: C. The demand over the day against the steady supply rate**
+**Answer: A. The demand over the day against the steady supply rate**
 
 The equalizing volume is the accumulated gap between supply and demand during the hours that demand is higher.
 
@@ -3596,12 +3596,12 @@ The equalizing volume is the accumulated gap between supply and demand during th
 
 Why must fire storage be considered along with equalizing volume?
 
-- **A.** Routine cycling uses water that a fire would need if the level is low
-- **B.** Fire storage is measured in feet of level rather than in gallons
+- **A.** Fire storage is measured in feet of level rather than in gallons
+- **B.** Routine cycling uses water that a fire would need if the level is low
 - **C.** A fire demand is zero whenever the tank is cycled each day
 - **D.** Equalizing water is fit just for drinking and not for other uses
 
-**Answer: A. Routine cycling uses water that a fire would need if the level is low**
+**Answer: B. Routine cycling uses water that a fire would need if the level is low**
 
 Fire flow draws from what is in the tank, so the routine operating band should leave the fire volume untouched.
 
@@ -3609,12 +3609,12 @@ Fire flow draws from what is in the tank, so the routine operating band should l
 
 Why do a tank's pump cycles get longer and less frequent if the operating level band is made larger?
 
-- **A.** The pump motor is made larger when the band is widened by operators
-- **B.** More volume lies between start and stop, so refilling takes longer
+- **A.** More volume lies between start and stop, so refilling takes longer
+- **B.** The pump motor is made larger when the band is widened by operators
 - **C.** The overflow carries off more water as the band widens
 - **D.** The pump moves less water per minute as the band widens
 
-**Answer: B. More volume lies between start and stop, so refilling takes longer**
+**Answer: A. More volume lies between start and stop, so refilling takes longer**
 
 A larger operating volume takes longer to fill and to draw down, so the pump starts less often.
 
@@ -3623,11 +3623,11 @@ A larger operating volume takes longer to fill and to draw down, so the pump sta
 A tank is made larger but the daily demand stays the same. What happens to water age?
 
 - **A.** It falls, since the pressure in the zone rises with the volume
-- **B.** It rises, since the same daily draw replaces a smaller share
-- **C.** It stays the same because the demand has not changed at all
+- **B.** It stays the same because the demand has not changed at all
+- **C.** It rises, since the same daily draw replaces a smaller share
 - **D.** It falls, because there is more water in the tank to mix together
 
-**Answer: B. It rises, since the same daily draw replaces a smaller share**
+**Answer: C. It rises, since the same daily draw replaces a smaller share**
 
 Water age tends to follow volume divided by throughput, so a larger tank with the same draw holds water longer.
 
@@ -3636,11 +3636,11 @@ Water age tends to follow volume divided by throughput, so a larger tank with th
 A tall narrow tank and a short wide tank hold the same volume. Which statement is correct for the same draw?
 
 - **A.** Both have the same level change
-- **B.** The tall tank has the larger level and pressure change
-- **C.** Neither tank changes its pressure when drawn
-- **D.** The wide tank has the larger level and pressure change
+- **B.** Neither tank changes its pressure when drawn
+- **C.** The wide tank has the larger level and pressure change
+- **D.** The tall tank has the larger level and pressure change
 
-**Answer: B. The tall tank has the larger level and pressure change**
+**Answer: D. The tall tank has the larger level and pressure change**
 
 The same gallons are a bigger level change in the narrow tank, so its water surface and pressure move more.
 
@@ -3648,12 +3648,12 @@ The same gallons are a bigger level change in the narrow tank, so its water surf
 
 Why do utilities try to keep a disinfectant residual in the distribution system after treatment?
 
-- **A.** To limit microbial growth and give a margin against small intrusions
-- **B.** To remove sediment that has settled in the pipes and storage tanks
+- **A.** To remove sediment that has settled in the pipes and storage tanks
+- **B.** To limit microbial growth and give a margin against small intrusions
 - **C.** To raise the pH of the water as it moves through the pipes
 - **D.** To stop leakage at joints and service connections in older mains
 
-**Answer: A. To limit microbial growth and give a margin against small intrusions**
+**Answer: B. To limit microbial growth and give a margin against small intrusions**
 
 A residual gives continuing protection after the plant, helping hold down regrowth and offering a buffer if a small intrusion occurs. It does not clear sediment, adjust pH or seal leaks.
 
@@ -3661,12 +3661,12 @@ A residual gives continuing protection after the plant, helping hold down regrow
 
 Which statement best describes free chlorine?
 
-- **A.** Chlorine already combined with ammonia in a slow-acting form
-- **B.** Chlorine present as hypochlorous acid and hypochlorite
+- **A.** Chlorine present as hypochlorous acid and hypochlorite
+- **B.** Chlorine already combined with ammonia in a slow-acting form
 - **C.** Chlorine that has been fully used up by organic matter present
 - **D.** Chlorine held in the pipe wall coating instead of the water
 
-**Answer: B. Chlorine present as hypochlorous acid and hypochlorite**
+**Answer: A. Chlorine present as hypochlorous acid and hypochlorite**
 
 Free chlorine is the uncombined fraction, mostly hypochlorous acid and hypochlorite ion, and it reacts faster than combined forms.
 
@@ -3676,10 +3676,10 @@ What is chloramine?
 
 - **A.** A gas released when water is heated in a customer's tank
 - **B.** A salt added to water to harden it before it enters the mains
-- **C.** A disinfectant formed when chlorine is combined with ammonia
-- **D.** A coating applied to the inside of cast iron pipe
+- **C.** A coating applied to the inside of cast iron pipe
+- **D.** A disinfectant formed when chlorine is combined with ammonia
 
-**Answer: C. A disinfectant formed when chlorine is combined with ammonia**
+**Answer: D. A disinfectant formed when chlorine is combined with ammonia**
 
 Chloramines form when chlorine and ammonia react. They are slower-acting than free chlorine but tend to hold up longer in a distribution system.
 
@@ -3689,10 +3689,10 @@ Compared with free chlorine, how does chloramine usually behave in a distributio
 
 - **A.** It gives a stronger smell of chlorine at the tap in most homes
 - **B.** It reacts faster with the pipe wall and leaves a heavier film
-- **C.** It breaks down more quickly and reaches fewer of the customers
-- **D.** It breaks down more slowly and tends to persist farther out
+- **C.** It breaks down more slowly and tends to persist farther out
+- **D.** It breaks down more quickly and reaches fewer of the customers
 
-**Answer: D. It breaks down more slowly and tends to persist farther out**
+**Answer: C. It breaks down more slowly and tends to persist farther out**
 
 Chloramine is less reactive than free chlorine, so a residual tends to last longer through large or old systems, though it is a weaker and slower disinfectant.
 
@@ -3714,11 +3714,11 @@ Residual is consumed in reactions with the pipe wall, deposits and organic mater
 How does warm water usually affect chlorine residual decay?
 
 - **A.** Decay is slower at higher temperature
-- **B.** Decay is faster at higher temperature
-- **C.** Decay rate depends on temperature only in cast iron pipes
-- **D.** Temperature has no link to decay rate
+- **B.** Decay rate depends on temperature only in cast iron pipes
+- **C.** Temperature has no link to decay rate
+- **D.** Decay is faster at higher temperature
 
-**Answer: B. Decay is faster at higher temperature**
+**Answer: D. Decay is faster at higher temperature**
 
 Chemical reactions generally speed up as water warms, so residuals tend to drop more quickly in summer than in winter.
 
@@ -3726,12 +3726,12 @@ Chemical reactions generally speed up as water warms, so residuals tend to drop 
 
 A portable colorimeter is used to read residual at a hydrant. What is the main reason the sample reading should be taken right away?
 
-- **A.** The sample gains hardness as it sits in the bottle for a time
-- **B.** The pipe wall coats the vial within a few seconds of drawing
-- **C.** The instrument drifts when a sample is left at rest in it
-- **D.** The residual can change quickly after the sample is drawn
+- **A.** The residual can change quickly after the sample is drawn
+- **B.** The sample gains hardness as it sits in the bottle for a time
+- **C.** The pipe wall coats the vial within a few seconds of drawing
+- **D.** The instrument drifts when a sample is left at rest in it
 
-**Answer: D. The residual can change quickly after the sample is drawn**
+**Answer: A. The residual can change quickly after the sample is drawn**
 
 Residual is reactive and can fall or shift between sampling and testing, so field tests are read promptly after collection.
 
@@ -3739,12 +3739,12 @@ Residual is reactive and can fall or shift between sampling and testing, so fiel
 
 Why is a total chlorine reading used when checking a chloraminated system?
 
-- **A.** Most of the active disinfectant is in combined form
-- **B.** Total chlorine reflects the age of the pipe more reliably
-- **C.** Free chlorine reads higher than total chlorine in that system
+- **A.** Total chlorine reflects the age of the pipe more reliably
+- **B.** Free chlorine reads higher than total chlorine in that system
+- **C.** Most of the active disinfectant is in combined form
 - **D.** Total chlorine also measures the hardness of the water
 
-**Answer: A. Most of the active disinfectant is in combined form**
+**Answer: C. Most of the active disinfectant is in combined form**
 
 In chloraminated water most of the residual is combined chlorine, so the total chlorine test shows the disinfectant that is present.
 
@@ -3754,10 +3754,10 @@ A residual that is steady at the plant but low at several far points most often 
 
 - **A.** A failed gauge on the plant outlet that reads too high
 - **B.** A rise in static pressure at the high-service pump station
-- **C.** Long travel time or high demand for disinfectant
-- **D.** A change in the color of the water leaving the plant
+- **C.** A change in the color of the water leaving the plant
+- **D.** Long travel time or high demand for disinfectant
 
-**Answer: C. Long travel time or high demand for disinfectant**
+**Answer: D. Long travel time or high demand for disinfectant**
 
 If the source residual is steady and the far points are low, the loss lies in the system, often from long residence time, reactive pipe surfaces or both.
 
@@ -3766,11 +3766,11 @@ If the source residual is steady and the far points are low, the loss lies in th
 A residual that drops sharply in one part of a system that was steady before may point to which of these?
 
 - **A.** A new reading on the plant flow meter at the main pump station
-- **B.** A change in flow pattern or a new source of contamination there
-- **C.** A rise in the number of fire hydrants painted in that zone
+- **B.** A rise in the number of fire hydrants painted in that zone
+- **C.** A change in flow pattern or a new source of contamination there
 - **D.** A change in the label printed on the sample bottles in use
 
-**Answer: B. A change in flow pattern or a new source of contamination there**
+**Answer: C. A change in flow pattern or a new source of contamination there**
 
 A sudden local loss can signal a change such as new contamination, reversed or stagnant flow or a closed valve, and it deserves follow-up.
 
@@ -3778,12 +3778,12 @@ A sudden local loss can signal a change such as new contamination, reversed or s
 
 Why can adding more disinfectant at the plant be a poor fix for low residuals at far ends?
 
-- **A.** It removes any need to sample the far ends of the system again
-- **B.** It lowers the pipe capacity near the point where the feed enters
-- **C.** It raises levels near the plant and does not cure long water age
+- **A.** It raises levels near the plant and does not cure long water age
+- **B.** It removes any need to sample the far ends of the system again
+- **C.** It lowers the pipe capacity near the point where the feed enters
 - **D.** It lowers the pH so far-end customers see no real change at all
 
-**Answer: C. It raises levels near the plant and does not cure long water age**
+**Answer: A. It raises levels near the plant and does not cure long water age**
 
 Raising the dose treats the symptom. Near-plant customers see more chlorine and byproducts, while the cause at the far end, often age or deposits, remains.
 
@@ -3792,11 +3792,11 @@ Raising the dose treats the symptom. Near-plant customers see more chlorine and 
 When free chlorine falls to near zero in part of a system, why does that raise concern about regrowth?
 
 - **A.** Free chlorine is what keeps the pipe walls smooth and clean
-- **B.** Bacteria in the pipes need some chlorine in order to grow well
-- **C.** Low chlorine makes the pressure fall in the affected pipes
-- **D.** Surviving bacteria can multiply with no residual to oppose them
+- **B.** Surviving bacteria can multiply with no residual to oppose them
+- **C.** Bacteria in the pipes need some chlorine in order to grow well
+- **D.** Low chlorine makes the pressure fall in the affected pipes
 
-**Answer: D. Surviving bacteria can multiply with no residual to oppose them**
+**Answer: B. Surviving bacteria can multiply with no residual to oppose them**
 
 With little or no residual, any organisms in biofilm or entering the system face less opposition, and regrowth becomes more likely.
 
@@ -3817,12 +3817,12 @@ Residence time, also called water age, is the elapsed time since water entered t
 
 Which part of a system is most likely to have the oldest water?
 
-- **A.** The far end of a dead-end main with few customers
-- **B.** A main directly beside a busy hydrant used for firefighting
-- **C.** A large transmission main carrying steady heavy flow
-- **D.** A main fed directly from a busy pump station
+- **A.** A main directly beside a busy hydrant used for firefighting
+- **B.** A large transmission main carrying steady heavy flow
+- **C.** A main fed directly from a busy pump station
+- **D.** The far end of a dead-end main with few customers
 
-**Answer: A. The far end of a dead-end main with few customers**
+**Answer: D. The far end of a dead-end main with few customers**
 
 Little water moves through a lightly used dead end, so a given parcel of water may sit there for many days.
 
@@ -3830,12 +3830,12 @@ Little water moves through a lightly used dead end, so a given parcel of water m
 
 Why does a larger-diameter main in a low-demand area tend to raise water age?
 
-- **A.** The same use is drawn from a larger volume held in the pipe
-- **B.** A bigger pipe holds back more pressure than a smaller pipe does
+- **A.** A bigger pipe holds back more pressure than a smaller pipe does
+- **B.** The same use is drawn from a larger volume held in the pipe
 - **C.** A bigger pipe pushes the water past the customers more quickly
 - **D.** A bigger pipe coats itself faster with scale than a small one
 
-**Answer: A. The same use is drawn from a larger volume held in the pipe**
+**Answer: B. The same use is drawn from a larger volume held in the pipe**
 
 Water age follows volume divided by flow. When demand is low, a large pipe holds a lot of water relative to how fast it is replaced.
 
@@ -3857,11 +3857,11 @@ Closing a loop gives water another path, so flow moves through the pipe instead 
 A subdivision was planned for many homes but only a few have been built. How can this affect water quality in the mains serving it?
 
 - **A.** Pressure rises in the pipes until it is too high for the homes
-- **B.** Disinfectant lasts longer because the water moves more slowly
-- **C.** The pipes build less deposit because they carry so little water
-- **D.** Demand is low for the pipe size, so water age may rise
+- **B.** Demand is low for the pipe size, so water age may rise
+- **C.** Disinfectant lasts longer because the water moves more slowly
+- **D.** The pipes build less deposit because they carry so little water
 
-**Answer: D. Demand is low for the pipe size, so water age may rise**
+**Answer: B. Demand is low for the pipe size, so water age may rise**
 
 Mains sized for future demand carry too little flow in the early years, so water sits longer and the residual falls.
 
@@ -3869,12 +3869,12 @@ Mains sized for future demand carry too little flow in the early years, so water
 
 Which condition tends to shorten water age in a system?
 
-- **A.** Using more of the water in the area served by the pipe
-- **B.** Adding a larger tank that is rarely drawn down
-- **C.** Closing valves to isolate parts of the grid for long periods
+- **A.** Adding a larger tank that is rarely drawn down
+- **B.** Closing valves to isolate parts of the grid for long periods
+- **C.** Using more of the water in the area served by the pipe
 - **D.** Oversizing the mains for future growth that has not arrived
 
-**Answer: A. Using more of the water in the area served by the pipe**
+**Answer: C. Using more of the water in the area served by the pipe**
 
 When customers draw more water, each parcel moves through faster and is replaced sooner, so the average age falls.
 
@@ -3896,11 +3896,11 @@ Longer time lets the disinfectant react and decay, while bacteria, taste and odo
 Why does the seasonal use of a pipe in a summer camp or park raise concern for water quality?
 
 - **A.** Meters count the unused water incorrectly during the break
-- **B.** Water may sit unused for months and lose its residual
-- **C.** The pipe walls absorb dissolved minerals from the water
-- **D.** Pipes expand and crack when they are left empty
+- **B.** The pipe walls absorb dissolved minerals from the water
+- **C.** Pipes expand and crack when they are left empty
+- **D.** Water may sit unused for months and lose its residual
 
-**Answer: B. Water may sit unused for months and lose its residual**
+**Answer: D. Water may sit unused for months and lose its residual**
 
 If the line is not used during the off season, the water in it stagnates and the disinfectant can fall to nothing, so it needs attention before the season starts.
 
@@ -3934,12 +3934,12 @@ Turnover in a tank says nothing about whether water moves in a side main. The de
 
 Why may reducing the pipe size when a main is replaced improve water quality at a dead end?
 
-- **A.** The smaller pipe has fewer joints that can leak into the main
-- **B.** The smaller pipe sheds less scale from the pipe wall
-- **C.** A smaller volume of water is held in the pipe for the same demand
+- **A.** A smaller volume of water is held in the pipe for the same demand
+- **B.** The smaller pipe has fewer joints that can leak into the main
+- **C.** The smaller pipe sheds less scale from the pipe wall
 - **D.** The smaller pipe makes the pressure at the dead end much higher
 
-**Answer: C. A smaller volume of water is held in the pipe for the same demand**
+**Answer: A. A smaller volume of water is held in the pipe for the same demand**
 
 Less volume per customer means water is replaced faster and age falls, as long as the new size still meets fire and peak flow needs.
 
@@ -3973,12 +3973,12 @@ Dead ends and slow-moving areas hold the oldest water, so flushing points are pl
 
 What is a blow-off?
 
-- **A.** A fitting at a dead end that lets water be discharged from the main
-- **B.** A device that clears air from a customer's plumbing system
-- **C.** A pump that moves water between two pressure zones
+- **A.** A device that clears air from a customer's plumbing system
+- **B.** A pump that moves water between two pressure zones
+- **C.** A fitting at a dead end that lets water be discharged from the main
 - **D.** A valve that shuts off flow when pressure is too high
 
-**Answer: A. A fitting at a dead end that lets water be discharged from the main**
+**Answer: C. A fitting at a dead end that lets water be discharged from the main**
 
 A blow-off is a connection on a main, often at a dead end, used to flush water out of the pipe.
 
@@ -3986,12 +3986,12 @@ A blow-off is a connection on a main, often at a dead end, used to flush water o
 
 What is conventional flushing?
 
-- **A.** Closing valves to push water in one direction along a planned route
-- **B.** Running chlorine at a high dose through the lines for a day
-- **C.** Pushing a foam swab through the main with water
-- **D.** Opening a hydrant and letting water run until it looks and tests clean
+- **A.** Opening a hydrant and letting water run until it looks and tests clean
+- **B.** Closing valves to push water in one direction along a planned route
+- **C.** Running chlorine at a high dose through the lines for a day
+- **D.** Pushing a foam swab through the main with water
 
-**Answer: D. Opening a hydrant and letting water run until it looks and tests clean**
+**Answer: A. Opening a hydrant and letting water run until it looks and tests clean**
 
 Conventional flushing means opening a hydrant or blow-off, often without isolating the pipe, and running it until the water is acceptable.
 
@@ -4000,11 +4000,11 @@ Conventional flushing means opening a hydrant or blow-off, often without isolati
 How does unidirectional flushing differ from conventional flushing?
 
 - **A.** A tank is drained before flushing begins so the flow is steadier
-- **B.** The hydrant is opened wider so the pump curve sets the flow rate
-- **C.** The flushing is carried out at night when system pressure is higher
-- **D.** Valves are closed so water is pushed one way through a section
+- **B.** Valves are closed so water is pushed one way through a section
+- **C.** The hydrant is opened wider so the pump curve sets the flow rate
+- **D.** The flushing is carried out at night when system pressure is higher
 
-**Answer: D. Valves are closed so water is pushed one way through a section**
+**Answer: B. Valves are closed so water is pushed one way through a section**
 
 By isolating a section and sending water in one direction, unidirectional flushing can scour the pipe wall better and use less water than conventional flushing.
 
@@ -4012,12 +4012,12 @@ By isolating a section and sending water in one direction, unidirectional flushi
 
 Why can flushing at a higher velocity clean a pipe better than slow flushing?
 
-- **A.** Higher speed raises the pH of the water as it passes the wall
-- **B.** Higher speed makes the disinfectant react faster with the deposit
-- **C.** Greater scouring force lifts deposits that low flow leaves behind
+- **A.** Greater scouring force lifts deposits that low flow leaves behind
+- **B.** Higher speed raises the pH of the water as it passes the wall
+- **C.** Higher speed makes the disinfectant react faster with the deposit
 - **D.** Higher speed makes the water denser and heavier in the pipe
 
-**Answer: C. Greater scouring force lifts deposits that low flow leaves behind**
+**Answer: A. Greater scouring force lifts deposits that low flow leaves behind**
 
 Deposits need enough shear at the wall to be moved. Slow flushing mostly pushes old water out without removing what is stuck to the pipe.
 
@@ -4040,10 +4040,10 @@ What can an operator watch to judge when to stop flushing a hydrant?
 
 - **A.** The time that has passed since the hydrant cap was removed
 - **B.** The volume of water that has run into the nearby storm drain
-- **C.** The static pressure shown on a gauge at the plant outlet
-- **D.** Clear, colorless water with a stable residual
+- **C.** Clear, colorless water with a stable residual
+- **D.** The static pressure shown on a gauge at the plant outlet
 
-**Answer: D. Clear, colorless water with a stable residual**
+**Answer: C. Clear, colorless water with a stable residual**
 
 Cleaning is judged by the water itself, with clear water and a residual close to the system value showing that old water has been replaced.
 
@@ -4065,11 +4065,11 @@ Flushed water often holds disinfectant and loose solids, so planning includes ho
 Why might a utility prefer a flushing program with records over ad hoc flushing?
 
 - **A.** Records are needed before the water can run clear again
-- **B.** Records allow hydrants to be opened without checking valves
-- **C.** Records replace the need to sample water after it is flushed
-- **D.** Records let results be compared and the program improved
+- **B.** Records let results be compared and the program improved
+- **C.** Records allow hydrants to be opened without checking valves
+- **D.** Records replace the need to sample water after it is flushed
 
-**Answer: D. Records let results be compared and the program improved**
+**Answer: B. Records let results be compared and the program improved**
 
 A log of locations, times, volumes and results helps judge whether flushing is working and where problems keep returning.
 
@@ -4079,10 +4079,10 @@ A flushing program shows the same dead end needs flushing every few weeks. What 
 
 - **A.** The residual at the plant has been set higher than it should be
 - **B.** Flushing is working so well that no change is required
-- **C.** A longer-term fix such as looping may be needed there
-- **D.** The hydrant at that point has probably been set too low
+- **C.** The hydrant at that point has probably been set too low
+- **D.** A longer-term fix such as looping may be needed there
 
-**Answer: C. A longer-term fix such as looping may be needed there**
+**Answer: D. A longer-term fix such as looping may be needed there**
 
 Repeated flushing at one spot shows a standing problem, such as a long dead end, and suggests a fix like looping, a smaller pipe or an automatic flusher.
 
@@ -4092,10 +4092,10 @@ Why are samples taken from the distribution system and not just at the plant?
 
 - **A.** Plant samples are tested by a different method than field samples
 - **B.** Plant samples are rejected as evidence of water quality at the tap
-- **C.** Pipes add disinfectant to the water as it passes through them
-- **D.** Quality can change as water travels through pipes and storage
+- **C.** Quality can change as water travels through pipes and storage
+- **D.** Pipes add disinfectant to the water as it passes through them
 
-**Answer: D. Quality can change as water travels through pipes and storage**
+**Answer: C. Quality can change as water travels through pipes and storage**
 
 Water that was fine when it left the plant can pick up bacteria, lose residual or gain metals in the pipes, so sampling in the system shows what customers receive.
 
@@ -4103,12 +4103,12 @@ Water that was fine when it left the plant can pick up bacteria, lose residual o
 
 In general terms, how should distribution sample sites be chosen?
 
-- **A.** Grouped near the plant where the water quality is most consistent
-- **B.** Spread across the system to cover different zones and water ages
+- **A.** Spread across the system to cover different zones and water ages
+- **B.** Grouped near the plant where the water quality is most consistent
 - **C.** Chosen at random each day at whatever tap is nearest the truck
 - **D.** Placed at the oldest buildings in the service area to save travel
 
-**Answer: B. Spread across the system to cover different zones and water ages**
+**Answer: A. Spread across the system to cover different zones and water ages**
 
 A sample plan should cover the system, including far ends, low-use areas and different sources or zones, so problems are not hidden.
 
@@ -4130,11 +4130,11 @@ Flushing the tap brings water from the main instead of water that sat in the ser
 Why is a sample bottle for a bacteriological test often supplied with a dechlorinating agent already in it?
 
 - **A.** It clears the sample so the lab can judge the color of the water
-- **B.** It prevents the bottle from cracking when it is packed in a cooler
-- **C.** It stops residual from killing bacteria between the tap and the lab
+- **B.** It stops residual from killing bacteria between the tap and the lab
+- **C.** It prevents the bottle from cracking when it is packed in a cooler
 - **D.** It adds a small dose of disinfectant to keep the water fresh
 
-**Answer: C. It stops residual from killing bacteria between the tap and the lab**
+**Answer: B. It stops residual from killing bacteria between the tap and the lab**
 
 Without dechlorination, remaining disinfectant could keep acting in the bottle and give a falsely low count of bacteria.
 
@@ -4143,11 +4143,11 @@ Without dechlorination, remaining disinfectant could keep acting in the bottle a
 Why should the inside of a sample bottle cap not be touched during collection?
 
 - **A.** The cap tightens poorly if it is touched while it is wet
-- **B.** Fingers or surfaces can add bacteria and mislead the result
-- **C.** The cap may leave a residue that clouds the sample in the bottle
+- **B.** The cap may leave a residue that clouds the sample in the bottle
+- **C.** Fingers or surfaces can add bacteria and mislead the result
 - **D.** Oils from skin lower the pH of the sample while it is held
 
-**Answer: B. Fingers or surfaces can add bacteria and mislead the result**
+**Answer: C. Fingers or surfaces can add bacteria and mislead the result**
 
 Any contact can introduce organisms, so clean hands and a sterile container protect the sample from outside contamination.
 
@@ -4168,12 +4168,12 @@ Holding time and temperature limits keep the bottle contents close to what was i
 
 Why is a sample usually not taken from a leaking tap or a tap with a hose attached?
 
-- **A.** A hose changes the temperature of the water by too many degrees
-- **B.** A tap with a hose attached has no way to be flushed out
-- **C.** Water on the outside of the fitting can add contamination
+- **A.** Water on the outside of the fitting can add contamination
+- **B.** A hose changes the temperature of the water by too many degrees
+- **C.** A tap with a hose attached has no way to be flushed out
 - **D.** A leaking tap lowers the pressure too much to fill a bottle
 
-**Answer: C. Water on the outside of the fitting can add contamination**
+**Answer: A. Water on the outside of the fitting can add contamination**
 
 Drips, hoses and dirty fittings can add bacteria that do not come from the main, so a clean fixture is chosen.
 
@@ -4182,11 +4182,11 @@ Drips, hoses and dirty fittings can add bacteria that do not come from the main,
 A routine sample shows a positive result for total coliform bacteria. What does this generally mean?
 
 - **A.** The disinfectant residual at the plant is much too high
-- **B.** An indicator group was found, so a pathway may exist
-- **C.** The pipe has a lining that needs replacing right away
-- **D.** The water holds disease-causing organisms at harmful levels
+- **B.** The pipe has a lining that needs replacing right away
+- **C.** The water holds disease-causing organisms at harmful levels
+- **D.** An indicator group was found, so a pathway may exist
 
-**Answer: B. An indicator group was found, so a pathway may exist**
+**Answer: D. An indicator group was found, so a pathway may exist**
 
 Coliforms are indicators. A positive result shows that conditions may allow contamination or regrowth and calls for follow-up, not a conclusion about harm.
 
@@ -4195,11 +4195,11 @@ Coliforms are indicators. A positive result shows that conditions may allow cont
 What is the general next step after a positive routine bacteriological result?
 
 - **A.** Increase the dose at the plant and skip any further testing
-- **B.** Wait for the next scheduled routine sample before taking action
-- **C.** Discard the lab result if the residual looks normal in the field
-- **D.** Follow up with repeat samples and look for a cause
+- **B.** Follow up with repeat samples and look for a cause
+- **C.** Wait for the next scheduled routine sample before taking action
+- **D.** Discard the lab result if the residual looks normal in the field
 
-**Answer: D. Follow up with repeat samples and look for a cause**
+**Answer: B. Follow up with repeat samples and look for a cause**
 
 A positive result is followed by repeat and nearby samples and a search for the cause, such as a loss of pressure, a break or a poor sample.
 
@@ -4221,11 +4221,11 @@ Heterotrophic bacteria are common, and the count is a rough sign of regrowth or 
 Why is a result of no coliform not by itself proof that the water is safe?
 
 - **A.** The result counts if the sample was taken at the plant, not the tap
-- **B.** A single sample covers one place and time and tests for few things
-- **C.** Coliform tests are known to miss bacteria that grow at low temperature
+- **B.** Coliform tests are known to miss bacteria that grow at low temperature
+- **C.** A single sample covers one place and time and tests for few things
 - **D.** Absence of coliforms means the disinfectant residual is too low
 
-**Answer: B. A single sample covers one place and time and tests for few things**
+**Answer: C. A single sample covers one place and time and tests for few things**
 
 One sample shows a small slice of the system, so it is read with the residual, pressure records and other results.
 
@@ -4233,12 +4233,12 @@ One sample shows a small slice of the system, so it is read with the residual, p
 
 Why do operators record the residual, temperature and pH at the time of sampling?
 
-- **A.** The values are needed to calibrate the pump at the plant outlet
-- **B.** The values make the sample count as a routine sample for the day
-- **C.** The values set how often the sample bottle must be re-filled
-- **D.** The readings help explain the lab result and trace a cause
+- **A.** The readings help explain the lab result and trace a cause
+- **B.** The values are needed to calibrate the pump at the plant outlet
+- **C.** The values make the sample count as a routine sample for the day
+- **D.** The values set how often the sample bottle must be re-filled
 
-**Answer: D. The readings help explain the lab result and trace a cause**
+**Answer: A. The readings help explain the lab result and trace a cause**
 
 Field data gives context, such as a low residual at a positive site, which helps decide where to look and what to do.
 
@@ -4247,11 +4247,11 @@ Field data gives context, such as a low residual at a positive site, which helps
 What is a cross-connection?
 
 - **A.** A pipe that carries water from a tank back to a pump suction
-- **B.** A place where two public mains of the same system meet at a valve
-- **C.** A link between drinking water plumbing and a possible contaminant
+- **B.** A link between drinking water plumbing and a possible contaminant
+- **C.** A place where two public mains of the same system meet at a valve
 - **D.** A fitting that joins two lengths of pipe of unequal size
 
-**Answer: C. A link between drinking water plumbing and a possible contaminant**
+**Answer: B. A link between drinking water plumbing and a possible contaminant**
 
 A cross-connection is any actual or possible link through which a non-drinking substance could enter the potable supply.
 
@@ -4287,10 +4287,10 @@ Why does a utility often survey customer premises for cross-connections?
 
 - **A.** To test the pipe material under the street outside the property
 - **B.** To read the meter and compare it with the billing record held
-- **C.** To find hazards and decide what protection is needed
-- **D.** To measure the water pressure at every fixture in the building
+- **C.** To measure the water pressure at every fixture in the building
+- **D.** To find hazards and decide what protection is needed
 
-**Answer: C. To find hazards and decide what protection is needed**
+**Answer: D. To find hazards and decide what protection is needed**
 
 A survey identifies how water is used on a property, so the right protection can be required and kept in place.
 
@@ -4311,12 +4311,12 @@ If the customer's second supply were joined to the public plumbing and the publi
 
 Why might a utility require protection at the service connection and not just at each hazard inside the building?
 
-- **A.** It guards the public main if inside protection is missing
-- **B.** It raises the pressure at the meter so fixtures run better
+- **A.** It raises the pressure at the meter so fixtures run better
+- **B.** It guards the public main if inside protection is missing
 - **C.** It lets the customer skip a survey of the building plumbing
 - **D.** It makes the meter read the same amount in both flow directions
 
-**Answer: A. It guards the public main if inside protection is missing**
+**Answer: B. It guards the public main if inside protection is missing**
 
 Protection at the service line is a second line of defense that contains a hazard from reaching the public system, whatever is done inside.
 
@@ -4324,12 +4324,12 @@ Protection at the service line is a second line of defense that contains a hazar
 
 Who should test a backflow prevention assembly, in general terms?
 
-- **A.** A plumber who has not been trained in the test method
-- **B.** Any customer who owns the building where it is installed
-- **C.** A person trained and certified to do the test
+- **A.** A person trained and certified to do the test
+- **B.** A plumber who has not been trained in the test method
+- **C.** Any customer who owns the building where it is installed
 - **D.** The meter reader on the next scheduled route
 
-**Answer: C. A person trained and certified to do the test**
+**Answer: A. A person trained and certified to do the test**
 
 Testing requires knowledge of the test kit and the method, so a trained, qualified tester is expected to do it and report the result.
 
@@ -4350,12 +4350,12 @@ Records show the status of each protected connection and flag overdue tests or f
 
 What does a failed test on an assembly call for in general terms?
 
-- **A.** Repair or replacement and a retest before it is trusted again
-- **B.** Noting the result and waiting to act until a complaint comes in
-- **C.** Closing the customer's meter for the remainder of the season
+- **A.** Noting the result and waiting to act until a complaint comes in
+- **B.** Closing the customer's meter for the remainder of the season
+- **C.** Repair or replacement and a retest before it is trusted again
 - **D.** Leaving the unit in place until the next yearly test comes due
 
-**Answer: A. Repair or replacement and a retest before it is trusted again**
+**Answer: C. Repair or replacement and a retest before it is trusted again**
 
 A failed assembly may not stop backflow, so it must be fixed and shown to pass before it is trusted.
 
@@ -4364,11 +4364,11 @@ A failed assembly may not stop backflow, so it must be fixed and shown to pass b
 Why is a high-hazard connection kept under closer attention than a low-hazard one?
 
 - **A.** A high-hazard line carries water at much higher pressure
-- **B.** Backflow from it would be more harmful to health
-- **C.** Low-hazard connections are exempt from any form of protection
-- **D.** High-hazard connections use less water than the other types
+- **B.** Low-hazard connections are exempt from any form of protection
+- **C.** High-hazard connections use less water than the other types
+- **D.** Backflow from it would be more harmful to health
 
-**Answer: B. Backflow from it would be more harmful to health**
+**Answer: D. Backflow from it would be more harmful to health**
 
 Protection and follow-up are matched to the harm that backflow could cause, so the higher the possible harm, the closer the attention.
 
@@ -4377,11 +4377,11 @@ Protection and follow-up are matched to the harm that backflow could cause, so t
 What is swabbing a water main?
 
 - **A.** Pouring chlorine into the pipe and leaving it in place for a day
-- **B.** Pushing a foam swab through the pipe with water to scrub the wall
-- **C.** Bolting a patch over a hole in the wall of the pipe
+- **B.** Bolting a patch over a hole in the wall of the pipe
+- **C.** Pushing a foam swab through the pipe with water to scrub the wall
 - **D.** Draining the main and drying the wall with warm air blowers
 
-**Answer: B. Pushing a foam swab through the pipe with water to scrub the wall**
+**Answer: C. Pushing a foam swab through the pipe with water to scrub the wall**
 
 A swab is a foam plug driven along the main by water pressure. It scours loose deposits and carries them to an outlet.
 
@@ -4389,12 +4389,12 @@ A swab is a foam plug driven along the main by water pressure. It scours loose d
 
 How does pigging differ from conventional flushing?
 
-- **A.** The valves are closed so the water in the pipe stays still for a day
-- **B.** The main is filled with air and left to settle for a few hours
-- **C.** A chemical is fed continuously at the plant to clean the pipes
-- **D.** A device scrapes the wall as it travels through the pipe
+- **A.** A device scrapes the wall as it travels through the pipe
+- **B.** The valves are closed so the water in the pipe stays still for a day
+- **C.** The main is filled with air and left to settle for a few hours
+- **D.** A chemical is fed continuously at the plant to clean the pipes
 
-**Answer: D. A device scrapes the wall as it travels through the pipe**
+**Answer: A. A device scrapes the wall as it travels through the pipe**
 
 A pig can be foam or have a harder surface, and it scrapes deposits from the wall in a way that flowing water alone may not.
 
@@ -4403,11 +4403,11 @@ A pig can be foam or have a harder surface, and it scrapes deposits from the wal
 What does cleaning a main address best?
 
 - **A.** A main that is too small to carry the current fire flow
-- **B.** Loose deposits and sediment that reduce quality and flow
-- **C.** A joint that leaks at the bell and spigot of the pipe
-- **D.** A pipe wall that is thin from corrosion or has cracked
+- **B.** A joint that leaks at the bell and spigot of the pipe
+- **C.** A pipe wall that is thin from corrosion or has cracked
+- **D.** Loose deposits and sediment that reduce quality and flow
 
-**Answer: B. Loose deposits and sediment that reduce quality and flow**
+**Answer: D. Loose deposits and sediment that reduce quality and flow**
 
 Cleaning removes material from the inside of the pipe but does not add strength or fix a structural defect.
 
@@ -4416,11 +4416,11 @@ Cleaning removes material from the inside of the pipe but does not add strength 
 What does lining an old main address that cleaning does not?
 
 - **A.** It replaces a main that has collapsed in the ground
-- **B.** It raises the water pressure delivered from the pump station
-- **C.** It covers a rough, corroding wall and slows later buildup
+- **B.** It covers a rough, corroding wall and slows later buildup
+- **C.** It raises the water pressure delivered from the pump station
 - **D.** It restores the strength of a pipe whose walls have broken
 
-**Answer: C. It covers a rough, corroding wall and slows later buildup**
+**Answer: B. It covers a rough, corroding wall and slows later buildup**
 
 A new lining separates the water from the old metal and gives a smoother surface, but it relies on the host pipe still having enough structure.
 
@@ -4443,10 +4443,10 @@ Why is a main usually cleaned before it is lined?
 
 - **A.** The cleaning gives the lining the strength to carry pressure
 - **B.** The cleaning prepares the pipe for a larger valve to be fitted
-- **C.** Lining material is unable to be applied to a wet pipe at any time
-- **D.** Rust and scale on the wall would keep the lining from bonding
+- **C.** Rust and scale on the wall would keep the lining from bonding
+- **D.** Lining material is unable to be applied to a wet pipe at any time
 
-**Answer: D. Rust and scale on the wall would keep the lining from bonding**
+**Answer: C. Rust and scale on the wall would keep the lining from bonding**
 
 Rust and scale left on the wall can stop a lining from bonding, so the surface is cleaned first.
 
@@ -4467,12 +4467,12 @@ Scouring loosens iron and sediment, so some color is common until the pipe has b
 
 Why might a cleaned main need renewed attention to its disinfectant residual?
 
-- **A.** Removing deposits and biofilm changes how fast the residual is used
-- **B.** The main is smaller after cleaning and carries the residual poorly
+- **A.** The main is smaller after cleaning and carries the residual poorly
+- **B.** Removing deposits and biofilm changes how fast the residual is used
 - **C.** Cleaning raises the pH of the water by a full unit
 - **D.** Cleaning leaves chemicals that react with the disinfectant
 
-**Answer: A. Removing deposits and biofilm changes how fast the residual is used**
+**Answer: B. Removing deposits and biofilm changes how fast the residual is used**
 
 A clean wall uses less disinfectant than a heavily tuberculated one, so residual patterns often improve, and monitoring shows by how much.
 
@@ -4480,12 +4480,12 @@ A clean wall uses less disinfectant than a heavily tuberculated one, so residual
 
 Why is main renewal often planned with a leak and break history?
 
-- **A.** Renewal is best done where breaks have not yet occurred
-- **B.** Leak records show how much water each customer buys in a year
-- **C.** Areas with frequent failures are strong candidates
+- **A.** Areas with frequent failures are strong candidates
+- **B.** Renewal is best done where breaks have not yet occurred
+- **C.** Leak records show how much water each customer buys in a year
 - **D.** Break records show which pipes in the system are the newest
 
-**Answer: C. Areas with frequent failures are strong candidates**
+**Answer: A. Areas with frequent failures are strong candidates**
 
 Repeated breaks suggest a pipe is near the end of its life, so history helps rank which mains to renew first.
 
@@ -4507,11 +4507,11 @@ Cleaning improves wall condition and flow but does not cure low demand, so age a
 Why do renewal projects often include replacing old service lines?
 
 - **A.** A new main is unable to be tied to an older service line
-- **B.** Service lines in the street must match the size of the house plumbing
-- **C.** Old service lines remove the chlorine from the new main
-- **D.** Old lines can leave corrosion products and leaks that spoil the benefit
+- **B.** Old lines can leave corrosion products and leaks that spoil the benefit
+- **C.** Service lines in the street must match the size of the house plumbing
+- **D.** Old service lines remove the chlorine from the new main
 
-**Answer: D. Old lines can leave corrosion products and leaks that spoil the benefit**
+**Answer: B. Old lines can leave corrosion products and leaks that spoil the benefit**
 
 Replacing service lines during main renewal avoids leaving older lines that corrode or leak and spoil the benefit of the new main.
 
@@ -4533,11 +4533,11 @@ Customers are everywhere in the system and report color, taste, odor and pressur
 What is a common cause of brown or reddish water reported after a hydrant is used nearby?
 
 - **A.** A rise in the water temperature caused by the flushing flow
-- **B.** A flow change that stirs iron and sediment off the pipe wall
-- **C.** A drop in the chlorine residual at the tap of the customer
-- **D.** A change in the hardness of the water held in the main
+- **B.** A drop in the chlorine residual at the tap of the customer
+- **C.** A change in the hardness of the water held in the main
+- **D.** A flow change that stirs iron and sediment off the pipe wall
 
-**Answer: B. A flow change that stirs iron and sediment off the pipe wall**
+**Answer: D. A flow change that stirs iron and sediment off the pipe wall**
 
 Opening a hydrant speeds up flow and can lift loose deposits and corrosion products, which tint the water until it clears.
 
@@ -4545,12 +4545,12 @@ Opening a hydrant speeds up flow and can lift loose deposits and corrosion produ
 
 A cluster of complaints about brown water in one neighborhood is more likely to point to which cause?
 
-- **A.** A local pipe condition or flow change in that area
-- **B.** A change in the source water used at the plant
-- **C.** A change in the pump schedule at the main pump station
+- **A.** A change in the source water used at the plant
+- **B.** A change in the pump schedule at the main pump station
+- **C.** A local pipe condition or flow change in that area
 - **D.** A failed meter at one of the homes in the neighborhood
 
-**Answer: A. A local pipe condition or flow change in that area**
+**Answer: C. A local pipe condition or flow change in that area**
 
 Complaints grouped in a small area suggest something local, like deposits, a valve change or a main break, not a plant-wide cause.
 
@@ -4558,12 +4558,12 @@ Complaints grouped in a small area suggest something local, like deposits, a val
 
 Water that smells like chlorine at one tap and not at others most likely reflects what?
 
-- **A.** A failure of the filters at the plant in the past week
-- **B.** A blockage in the sewer line of the building at that tap
-- **C.** A high level of hardness in the pipes serving that tap
-- **D.** A difference in residual or water age between the locations
+- **A.** A difference in residual or water age between the locations
+- **B.** A failure of the filters at the plant in the past week
+- **C.** A blockage in the sewer line of the building at that tap
+- **D.** A high level of hardness in the pipes serving that tap
 
-**Answer: D. A difference in residual or water age between the locations**
+**Answer: A. A difference in residual or water age between the locations**
 
 Chlorine odor varies with how much residual remains, and that depends on how old the water is and what it has reacted with on the way.
 
@@ -4572,11 +4572,11 @@ Chlorine odor varies with how much residual remains, and that depends on how old
 Why do complaints of a musty or earthy taste in a low-use area suggest a concern?
 
 - **A.** The chlorine residual in the area is higher than at the plant
-- **B.** Pressure in the area is too high for the class of pipe used
-- **C.** Stagnant water can support growth that makes odor compounds
+- **B.** Stagnant water can support growth that makes odor compounds
+- **C.** Pressure in the area is too high for the class of pipe used
 - **D.** The pipes in the area have been coated with a new paint
 
-**Answer: C. Stagnant water can support growth that makes odor compounds**
+**Answer: B. Stagnant water can support growth that makes odor compounds**
 
 Water that sits can lose its residual and support biofilm or algae-related compounds, which give musty tastes and odors.
 
@@ -4584,12 +4584,12 @@ Water that sits can lose its residual and support biofilm or algae-related compo
 
 What is a possible cause of rotten egg odor at hot water taps only?
 
-- **A.** A residual that is too high at the meter of the building
-- **B.** A plastic pipe in the building that has aged in service
-- **C.** A sewer gas leak that has entered the street main
-- **D.** Reactions inside the water heater, not the street main
+- **A.** Reactions inside the water heater, not the street main
+- **B.** A residual that is too high at the meter of the building
+- **C.** A plastic pipe in the building that has aged in service
+- **D.** A sewer gas leak that has entered the street main
 
-**Answer: D. Reactions inside the water heater, not the street main**
+**Answer: A. Reactions inside the water heater, not the street main**
 
 Odors limited to the hot side often come from bacteria and the anode in the heater, so the complaint points to the house plumbing.
 
@@ -4598,11 +4598,11 @@ Odors limited to the hot side often come from bacteria and the anode in the heat
 Low pressure complaints from a single customer on a street most often point to what?
 
 - **A.** A pump failure at a station several miles away
-- **B.** A major leak in the main serving the whole street
-- **C.** A change in the water rate that applies to the street
-- **D.** A problem on that property, such as a partly closed valve
+- **B.** A problem on that property, such as a partly closed valve
+- **C.** A major leak in the main serving the whole street
+- **D.** A change in the water rate that applies to the street
 
-**Answer: D. A problem on that property, such as a partly closed valve**
+**Answer: B. A problem on that property, such as a partly closed valve**
 
 One customer with low pressure while neighbors are normal suggests a local restriction, such as a service line, valve, filter or fixture.
 
@@ -4612,10 +4612,10 @@ Low pressure complaints from many customers across a zone suggest which kind of 
 
 - **A.** A change in the color of the coatings on the pipes
 - **B.** A mismatch between meter readings and the bills sent
-- **C.** A problem with the tap at the sink of each customer
-- **D.** A shared cause such as high demand or a closed valve
+- **C.** A shared cause such as high demand or a closed valve
+- **D.** A problem with the tap at the sink of each customer
 
-**Answer: D. A shared cause such as high demand or a closed valve**
+**Answer: C. A shared cause such as high demand or a closed valve**
 
 When many customers are affected at once, the cause is shared, and may be high demand, a valve out of position or a loss of supply.
 
@@ -4637,11 +4637,11 @@ Mapped complaints reveal clusters and trends, such as a dead end that keeps retu
 A rise in white or cloudy water complaints in cold months is often tied to what?
 
 - **A.** A rise in the amount of iron that has built up in the main
-- **B.** A change in the color of the pipe that tints the water
-- **C.** A rise in disinfectant dosage that is applied in winter
-- **D.** Fine air bubbles that clear from the bottom of the glass up
+- **B.** Fine air bubbles that clear from the bottom of the glass up
+- **C.** A change in the color of the pipe that tints the water
+- **D.** A rise in disinfectant dosage that is applied in winter
 
-**Answer: D. Fine air bubbles that clear from the bottom of the glass up**
+**Answer: B. Fine air bubbles that clear from the bottom of the glass up**
 
 Cold water holds more dissolved air, and when pressure drops at the tap, the air forms fine bubbles that clear from the bottom up.
 
@@ -4675,12 +4675,12 @@ Corrosion is the chemical or electrochemical attack on the pipe material, and it
 
 What is scale in a water pipe?
 
-- **A.** A mineral deposit that forms on the pipe wall
-- **B.** A layer of living organisms that grows on the pipe wall
-- **C.** A rust-colored stain that appears on the outside of the pipe
+- **A.** A layer of living organisms that grows on the pipe wall
+- **B.** A rust-colored stain that appears on the outside of the pipe
+- **C.** A mineral deposit that forms on the pipe wall
 - **D.** A coating of paint that is applied to the inside of a pipe
 
-**Answer: A. A mineral deposit that forms on the pipe wall**
+**Answer: C. A mineral deposit that forms on the pipe wall**
 
 Scale is a hard layer, often calcium carbonate or iron compounds, that builds up on the inside of the pipe and can narrow the bore.
 
@@ -4689,11 +4689,11 @@ Scale is a hard layer, often calcium carbonate or iron compounds, that builds up
 What is biofilm in a distribution system?
 
 - **A.** A film of oil that is carried into the mains from a pump seal
-- **B.** A slimy community of microorganisms attached to the pipe wall
-- **C.** A thin sheet of plastic that is placed inside a new main
-- **D.** A chemical coating that is applied to protect a steel pipe
+- **B.** A thin sheet of plastic that is placed inside a new main
+- **C.** A chemical coating that is applied to protect a steel pipe
+- **D.** A slimy community of microorganisms attached to the pipe wall
 
-**Answer: B. A slimy community of microorganisms attached to the pipe wall**
+**Answer: D. A slimy community of microorganisms attached to the pipe wall**
 
 Bacteria and other organisms stick to pipe surfaces and form a protective layer that can shelter them from some disinfectant.
 
@@ -4702,11 +4702,11 @@ Bacteria and other organisms stick to pipe surfaces and form a protective layer 
 Why can biofilm be hard to control even when a residual is present?
 
 - **A.** The disinfectant makes the film thicker each time it is added
-- **B.** The film grows when the pressure falls below a certain level
-- **C.** The pipe wall stops the residual from entering the water flow
-- **D.** The outer layers shield the organisms from the residual
+- **B.** The outer layers shield the organisms from the residual
+- **C.** The film grows when the pressure falls below a certain level
+- **D.** The pipe wall stops the residual from entering the water flow
 
-**Answer: D. The outer layers shield the organisms from the residual**
+**Answer: B. The outer layers shield the organisms from the residual**
 
 Disinfectant reacts with the outer film layers, so organisms deeper in it may survive, and the film can regrow if conditions allow.
 
@@ -4714,12 +4714,12 @@ Disinfectant reacts with the outer film layers, so organisms deeper in it may su
 
 How can corrosion affect the disinfectant residual?
 
-- **A.** Corrosion has no link to the residual that remains in a system
-- **B.** Corrosion makes the disinfectant stronger as the water ages
-- **C.** Corrosion adds chlorine to the water from the wall of the pipe
-- **D.** Corrosion products and iron react with the disinfectant
+- **A.** Corrosion products and iron react with the disinfectant
+- **B.** Corrosion has no link to the residual that remains in a system
+- **C.** Corrosion makes the disinfectant stronger as the water ages
+- **D.** Corrosion adds chlorine to the water from the wall of the pipe
 
-**Answer: D. Corrosion products and iron react with the disinfectant**
+**Answer: A. Corrosion products and iron react with the disinfectant**
 
 Iron and other corrosion products react with chlorine and chloramine, so heavily corroded pipe can be a large sink for the residual.
 
@@ -4741,11 +4741,11 @@ Aggressive water attacks metal and dissolves protective layers, so water chemist
 What does tuberculation inside an iron main refer to?
 
 - **A.** A layer of slime on the inside wall of a plastic pipe
-- **B.** Hard lumps of corrosion that build up on the wall and narrow the bore
-- **C.** A chain of joints that has moved out of line in the trench
+- **B.** A chain of joints that has moved out of line in the trench
+- **C.** Hard lumps of corrosion that build up on the wall and narrow the bore
 - **D.** A fitting that connects the pipe to a fire hydrant
 
-**Answer: B. Hard lumps of corrosion that build up on the wall and narrow the bore**
+**Answer: C. Hard lumps of corrosion that build up on the wall and narrow the bore**
 
 Tubercles are mounds of corrosion product that build up on iron pipe, reduce capacity and give a rough surface that shelters organisms.
 
@@ -4753,12 +4753,12 @@ Tubercles are mounds of corrosion product that build up on iron pipe, reduce cap
 
 Why can a change in the source or treatment of water lead to colored water complaints?
 
-- **A.** The new water has a different color in the pipes by nature
-- **B.** The new chemistry can loosen old scale and deposits
+- **A.** The new chemistry can loosen old scale and deposits
+- **B.** The new water has a different color in the pipes by nature
 - **C.** The change lowers the pressure in the mains of the system
 - **D.** Customers change how they use water whenever a source changes
 
-**Answer: B. The new chemistry can loosen old scale and deposits**
+**Answer: A. The new chemistry can loosen old scale and deposits**
 
 Deposits are stable under the old water chemistry, and a change can destabilize them so that iron and other material is released.
 
@@ -4766,12 +4766,12 @@ Deposits are stable under the old water chemistry, and a change can destabilize 
 
 How can a loss of flow or a long stagnant period encourage biofilm growth?
 
-- **A.** There is less scouring and the residual may fall
-- **B.** Pressure rises when flow is low and holds the organisms back
-- **C.** Still water holds more disinfectant than moving water does
-- **D.** The pipe wall is cleaned by water that is standing still
+- **A.** Pressure rises when flow is low and holds the organisms back
+- **B.** Still water holds more disinfectant than moving water does
+- **C.** The pipe wall is cleaned by water that is standing still
+- **D.** There is less scouring and the residual may fall
 
-**Answer: A. There is less scouring and the residual may fall**
+**Answer: D. There is less scouring and the residual may fall**
 
 Low flow and a falling residual leave organisms undisturbed, which gives them a better chance to attach and multiply on the wall.
 
@@ -4779,12 +4779,12 @@ Low flow and a falling residual leave organisms undisturbed, which gives them a 
 
 How might lead or copper in tap water relate to the distribution system and plumbing?
 
-- **A.** Corrosion of pipes, solder or fittings can release metals into water that sits
-- **B.** The metals arrive in the water from the source of supply
+- **A.** The metals arrive in the water from the source of supply
+- **B.** Corrosion of pipes, solder or fittings can release metals into water that sits
 - **C.** The metals are added at the plant to improve the taste of the water
 - **D.** The metals come from the chlorine that is added to the main
 
-**Answer: A. Corrosion of pipes, solder or fittings can release metals into water that sits**
+**Answer: B. Corrosion of pipes, solder or fittings can release metals into water that sits**
 
 Water that stays in contact with metal plumbing can pick up metals, and water chemistry strongly affects how much is released.
 
@@ -4793,11 +4793,11 @@ Water that stays in contact with metal plumbing can pick up metals, and water ch
 What does a corrosion coupon or test section help an operator learn?
 
 - **A.** How much pressure is held at the bottom of a storage tank
-- **B.** How fast a metal sample corrodes in the system water
-- **C.** How much water a customer has used since the last meter read
+- **B.** How much water a customer has used since the last meter read
+- **C.** How fast a metal sample corrodes in the system water
 - **D.** How large a leak is in a main that has been found
 
-**Answer: B. How fast a metal sample corrodes in the system water**
+**Answer: C. How fast a metal sample corrodes in the system water**
 
 Coupons are small pieces of pipe material placed in the flow and weighed over time, giving a rate of corrosion.
 
@@ -4805,12 +4805,12 @@ Coupons are small pieces of pipe material placed in the flow and weighed over ti
 
 Why is cement-mortar lining often used on iron mains with regard to corrosion?
 
-- **A.** It makes the water harder as it passes through the pipe
-- **B.** It allows the pipe to be left empty for long periods of time
-- **C.** It separates the metal from the water and slows corrosion
+- **A.** It separates the metal from the water and slows corrosion
+- **B.** It makes the water harder as it passes through the pipe
+- **C.** It allows the pipe to be left empty for long periods of time
 - **D.** It adds chlorine to the water as the water flows past it
 
-**Answer: C. It separates the metal from the water and slows corrosion**
+**Answer: A. It separates the metal from the water and slows corrosion**
 
 A lining of cement mortar acts as a barrier and also raises the pH near the wall, which helps protect the iron beneath it.
 
@@ -4845,11 +4845,11 @@ When nitrification takes place, the residual falls and more bacteria can grow, s
 Which condition favors nitrification in a distribution system?
 
 - **A.** Short water age with cold water and a high residual
-- **B.** Fast flow with a high and steady residual
-- **C.** Cold water in a pipe with frequent turnover
-- **D.** Long water age with warm water and a low residual
+- **B.** Long water age with warm water and a low residual
+- **C.** Fast flow with a high and steady residual
+- **D.** Cold water in a pipe with frequent turnover
 
-**Answer: D. Long water age with warm water and a low residual**
+**Answer: B. Long water age with warm water and a low residual**
 
 Old, warm water allows chloramine to break down and release ammonia, and the bacteria that use it multiply when the residual is low.
 
@@ -4870,12 +4870,12 @@ A fall in total chlorine together with rising nitrite is a recognized sign of ni
 
 Which measurement can help detect nitrification in a system?
 
-- **A.** A rising hardness reading at the tap of a customer
-- **B.** A rising temperature reading at the outlet of the plant
-- **C.** A falling pressure reading at a fire hydrant on the main
-- **D.** Rising nitrite along with falling total chlorine
+- **A.** Rising nitrite along with falling total chlorine
+- **B.** A rising hardness reading at the tap of a customer
+- **C.** A rising temperature reading at the outlet of the plant
+- **D.** A falling pressure reading at a fire hydrant on the main
 
-**Answer: D. Rising nitrite along with falling total chlorine**
+**Answer: A. Rising nitrite along with falling total chlorine**
 
 Nitrite and total chlorine, tracked together, show whether ammonia is being converted in the pipes.
 
@@ -4883,12 +4883,12 @@ Nitrite and total chlorine, tracked together, show whether ammonia is being conv
 
 Which action can help control nitrification in a general sense?
 
-- **A.** Reduce water age and maintain an adequate residual
-- **B.** Allow water to sit in dead ends so it can settle
-- **C.** Raise the water temperature in storage tanks
+- **A.** Allow water to sit in dead ends so it can settle
+- **B.** Raise the water temperature in storage tanks
+- **C.** Reduce water age and maintain an adequate residual
 - **D.** Replace chloramine with a lower residual of any kind
 
-**Answer: A. Reduce water age and maintain an adequate residual**
+**Answer: C. Reduce water age and maintain an adequate residual**
 
 Shorter age and a steady residual limit the time and the room that nitrifying bacteria have, and flushing or turnover helps in problem areas.
 
@@ -4898,10 +4898,10 @@ Why can adding more ammonia to a system make nitrification worse?
 
 - **A.** Ammonia raises the free chlorine level in the pipes
 - **B.** Ammonia lowers the water temperature in the main
-- **C.** Free ammonia gives the bacteria more food
-- **D.** Ammonia makes the chloramine react with the pipe wall
+- **C.** Ammonia makes the chloramine react with the pipe wall
+- **D.** Free ammonia gives the bacteria more food
 
-**Answer: C. Free ammonia gives the bacteria more food**
+**Answer: D. Free ammonia gives the bacteria more food**
 
 Free ammonia is the food for nitrifying organisms, so an excess in the chloramine feed or a release from decay supports their growth.
 
@@ -4910,11 +4910,11 @@ Free ammonia is the food for nitrifying organisms, so an excess in the chloramin
 Where in a chloraminated system is nitrification most likely to be noticed first?
 
 - **A.** Right at the point where the water leaves the plant
-- **B.** In pipes carrying the highest and steadiest flow
-- **C.** At fresh hydrants on a large transmission main
-- **D.** At far ends and in storage where water age is high
+- **B.** At far ends and in storage where water age is high
+- **C.** In pipes carrying the highest and steadiest flow
+- **D.** At fresh hydrants on a large transmission main
 
-**Answer: D. At far ends and in storage where water age is high**
+**Answer: B. At far ends and in storage where water age is high**
 
 Nitrification needs time and a falling residual, which are found at remote points and in tanks with poor turnover.
 
@@ -4923,11 +4923,11 @@ Nitrification needs time and a falling residual, which are found at remote point
 What can happen to chloramine as it decays, which is relevant to nitrification?
 
 - **A.** It can raise the free chlorine at the plant
-- **B.** It can release ammonia that bacteria then use
-- **C.** It can become a mineral scale on the pipe
+- **B.** It can become a mineral scale on the pipe
+- **C.** It can release ammonia that bacteria then use
 - **D.** It can turn into pure chlorine in the main
 
-**Answer: B. It can release ammonia that bacteria then use**
+**Answer: C. It can release ammonia that bacteria then use**
 
 As chloramine breaks down, ammonia is released, and in warm old water that ammonia can fuel nitrifying organisms.
 
@@ -4935,12 +4935,12 @@ As chloramine breaks down, ammonia is released, and in warm old water that ammon
 
 Why might a utility switch temporarily to free chlorine in a chloraminated system with nitrification?
 
-- **A.** Free chlorine is a weaker disinfectant than chloramine is
-- **B.** Free chlorine raises the pH to a level that stops corrosion
-- **C.** Free chlorine can reduce the nitrifying bacteria that have built up
+- **A.** Free chlorine can reduce the nitrifying bacteria that have built up
+- **B.** Free chlorine is a weaker disinfectant than chloramine is
+- **C.** Free chlorine raises the pH to a level that stops corrosion
 - **D.** Free chlorine adds ammonia that the pipes then absorb
 
-**Answer: C. Free chlorine can reduce the nitrifying bacteria that have built up**
+**Answer: A. Free chlorine can reduce the nitrifying bacteria that have built up**
 
 A temporary switch to free chlorine is a recognized way to suppress nitrifying organisms, usually combined with flushing and followed by a return to chloramine.
 
@@ -4961,12 +4961,12 @@ Velocity = flow in cfs divided by pipe area. Substitute the stated values: 1400 
 
 A 16-inch transmission main (1.333 ft diameter) is 2,500 ft long. Use area = 0.785 × D² and 1 ft³ = 7.48 gal. How many gallons does the main hold?
 
-- **A.** 6,524 gal
-- **B.** 104,388 gal
-- **C.** 3,489 gal
-- **D.** 26,084 gal
+- **A.** 26,084 gal
+- **B.** 6,524 gal
+- **C.** 104,388 gal
+- **D.** 3,489 gal
 
-**Answer: D. 26,084 gal**
+**Answer: A. 26,084 gal**
 
 Volume = 0.785 × D² × length × 7.48. Substitute the stated values: 0.785 × 1.333 × 1.333 × 2500 × 7.48 = 26,084 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5001,11 +5001,11 @@ Weight = lb per ft times length of each pipe times number of pipes. Substitute t
 A pipe is rated for 150 psi. The water surface in a tank is 210 ft above the main. Use 0.433 psi per ft of head and a surge allowance of 35 psi. How many psi of margin remain after adding the static pressure and the surge allowance?
 
 - **A.** 59.07 psi
-- **B.** 24.07 psi
-- **C.** 94.07 psi
-- **D.** 10.00 psi
+- **B.** 94.07 psi
+- **C.** 10.00 psi
+- **D.** 24.07 psi
 
-**Answer: B. 24.07 psi**
+**Answer: D. 24.07 psi**
 
 Margin = rating minus static pressure minus surge allowance. Substitute the stated values: 150-210 × 0.433-35 = 24.07 psi. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5015,10 +5015,10 @@ An 8-inch main ends at a capped dead end with a pressure of 90 psi. Use thrust =
 
 - **A.** 1,130 lb
 - **B.** 18,086 lb
-- **C.** 565 lb
-- **D.** 4,522 lb
+- **C.** 4,522 lb
+- **D.** 565 lb
 
-**Answer: D. 4,522 lb**
+**Answer: C. 4,522 lb**
 
 Thrust = pressure × 0.785 × diameter squared. Substitute the stated values: 90 × 0.785 × 8 × 8 = 4,522 lb. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5027,11 +5027,11 @@ Thrust = pressure × 0.785 × diameter squared. Substitute the stated values: 90
 A thrust block must resist 6,000 lb of thrust. The soil can safely carry 1,500 lb per ft² of contact area. What bearing area is needed in ft²?
 
 - **A.** 9,000,000.00 ft²
-- **B.** 0.25 ft²
-- **C.** 4.00 ft²
+- **B.** 4.00 ft²
+- **C.** 0.25 ft²
 - **D.** 4,500.00 ft²
 
-**Answer: C. 4.00 ft²**
+**Answer: B. 4.00 ft²**
 
 Area = thrust divided by soil bearing capacity. Substitute the stated values: 6000 ÷ 1500 = 4.00 ft². Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5052,12 +5052,12 @@ Area = thrust divided by soil bearing capacity. Substitute the stated values: 2 
 
 The water level in a tank is 240 ft above a low-lying zone. Use 0.433 psi per ft. A pressure-reducing valve will be set to 70 psi. How many psi must the valve take off the static pressure?
 
-- **A.** 33.92 psi
-- **B.** 484.40 psi
-- **C.** 103.92 psi
+- **A.** 484.40 psi
+- **B.** 103.92 psi
+- **C.** 33.92 psi
 - **D.** 73.61 psi
 
-**Answer: A. 33.92 psi**
+**Answer: C. 33.92 psi**
 
 Pressure reduction = static pressure minus setting. Substitute the stated values: 240 × 0.433-70 = 33.92 psi. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5065,12 +5065,12 @@ Pressure reduction = static pressure minus setting. Substitute the stated values
 
 A system has 1,260 valves. The program is to exercise 20% of them each year, and a crew can exercise 8 valves per working day. How many working days are needed per year?
 
-- **A.** 31.5 days
-- **B.** 157.5 days
+- **A.** 157.5 days
+- **B.** 31.5 days
 - **C.** 63.0 days
 - **D.** 252.0 days
 
-**Answer: A. 31.5 days**
+**Answer: B. 31.5 days**
 
 Days = valves in program divided by valves per day. Substitute the stated values: 1260 × 0.2 ÷ 8 = 31.5 days. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5080,10 +5080,10 @@ Use Q = 29.83 × c × d² × √p, where c = 0.9, d = 2.5 in and the pitot readi
 
 - **A.** 403 gpm
 - **B.** 6,041 gpm
-- **C.** 1,007 gpm
-- **D.** 1,119 gpm
+- **C.** 1,119 gpm
+- **D.** 1,007 gpm
 
-**Answer: C. 1,007 gpm**
+**Answer: D. 1,007 gpm**
 
 Flow = 29.83 × coefficient × nozzle diameter squared × square root of pressure. Substitute the stated values: 29.83 × 0.9 × 2.5 × 2.5 × 6 = 1,007 gpm. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5091,12 +5091,12 @@ Flow = 29.83 × coefficient × nozzle diameter squared × square root of pressur
 
 A flow test records a static pressure of 68 psi and a residual pressure of 51 psi. What is the percent drop in pressure?
 
-- **A.** 75.0 %
-- **B.** 25.0 %
+- **A.** 25.0 %
+- **B.** 75.0 %
 - **C.** 17.0 %
 - **D.** 33.3 %
 
-**Answer: B. 25.0 %**
+**Answer: A. 25.0 %**
 
 Percent drop = (static minus residual) divided by static times 100. Substitute the stated values: (68-51) ÷ 68 × 100 = 25.0 %. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5105,11 +5105,11 @@ Percent drop = (static minus residual) divided by static times 100. Substitute t
 A dead-end 8-inch main (8/12 ft) is 1,200 ft long. Use volume = 0.785 × D² × length × 7.48. A flushing plan calls for three main volumes to be discharged at 750 gpm. How many minutes is that?
 
 - **A.** 4.18 min
-- **B.** 1,803.82 min
-- **C.** 12.53 min
+- **B.** 12.53 min
+- **C.** 1,803.82 min
 - **D.** 1.67 min
 
-**Answer: C. 12.53 min**
+**Answer: B. 12.53 min**
 
 Time = number of volumes times volume in gal divided by flow. Substitute the stated values: 3 × 0.785 × (8 ÷ 12) × (8 ÷ 12) × 1200 × 7.48 ÷ 750 = 12.53 min. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5118,11 +5118,11 @@ Time = number of volumes times volume in gal divided by flow. Substitute the sta
 A 1-inch service line (1/12 ft diameter) is 80 ft long. Use volume = 0.785 × D² × length × 7.48 gal per ft³. How many gallons does it hold?
 
 - **A.** 0.44 gal
-- **B.** 3.26 gal
-- **C.** 0.82 gal
+- **B.** 0.82 gal
+- **C.** 3.26 gal
 - **D.** 469.74 gal
 
-**Answer: B. 3.26 gal**
+**Answer: C. 3.26 gal**
 
 Volume = 0.785 × D² × length × 7.48. Substitute the stated values: 0.785 × (1 ÷ 12) × (1 ÷ 12) × 80 × 7.48 = 3.26 gal. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5132,10 +5132,10 @@ The pressure at the main is 72 psi. A house service enters 18 ft below the main,
 
 - **A.** 53.38 psi
 - **B.** 75.03 psi
-- **C.** 68.97 psi
-- **D.** 61.18 psi
+- **C.** 61.18 psi
+- **D.** 68.97 psi
 
-**Answer: C. 68.97 psi**
+**Answer: D. 68.97 psi**
 
 Pressure = main pressure minus 0.433 times the net rise above the main. Substitute the stated values: 72-(25-18) × 0.433 = 68.97 psi. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5143,12 +5143,12 @@ Pressure = main pressure minus 0.433 times the net rise above the main. Substitu
 
 A meter test passes 10 gal of water through the meter, and the meter registers 9.6 gal. What is the meter accuracy in percent?
 
-- **A.** 4.0 %
-- **B.** 1.0 %
-- **C.** 96.0 %
+- **A.** 96.0 %
+- **B.** 4.0 %
+- **C.** 1.0 %
 - **D.** 104.2 %
 
-**Answer: C. 96.0 %**
+**Answer: A. 96.0 %**
 
 Accuracy = registered volume divided by actual volume times 100. Substitute the stated values: 9.6 ÷ 10 × 100 = 96.0 %. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5158,10 +5158,10 @@ A meter read 48,215 ft³ last month and reads 49,068 ft³ now. Use 7.48 gal per 
 
 - **A.** 114 gal
 - **B.** 7,114 gal
-- **C.** 853 gal
-- **D.** 6,380 gal
+- **C.** 6,380 gal
+- **D.** 853 gal
 
-**Answer: D. 6,380 gal**
+**Answer: C. 6,380 gal**
 
 Gallons = (current read minus previous read) times 7.48. Substitute the stated values: (49068-48215) × 7.48 = 6,380 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5170,11 +5170,11 @@ Gallons = (current read minus previous read) times 7.48. Substitute the stated v
 A meter that is known to register 94% of the true flow shows 120,000 gal for a month. What is the actual volume used in gal?
 
 - **A.** 7,200 gal
-- **B.** 112,800 gal
-- **C.** 127,200 gal
-- **D.** 127,660 gal
+- **B.** 127,660 gal
+- **C.** 112,800 gal
+- **D.** 127,200 gal
 
-**Answer: D. 127,660 gal**
+**Answer: B. 127,660 gal**
 
 Actual = registered volume divided by the accuracy fraction. Substitute the stated values: 120000 ÷ 0.94 = 127,660 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5184,10 +5184,10 @@ A booster pump delivers 800 gpm against a total head of 120 ft. Use water horsep
 
 - **A.** 2.91 hp
 - **B.** 29.09 hp
-- **C.** 24.24 hp
-- **D.** 96,000.00 hp
+- **C.** 96,000.00 hp
+- **D.** 24.24 hp
 
-**Answer: C. 24.24 hp**
+**Answer: D. 24.24 hp**
 
 Water horsepower = flow times head divided by 3,960. Substitute the stated values: 800 × 120 ÷ 3960 = 24.24 hp. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5195,12 +5195,12 @@ Water horsepower = flow times head divided by 3,960. Substitute the stated value
 
 A pump delivers 800 gpm at 120 ft of head. Use water horsepower = flow × head ÷ 3,960, a pump efficiency of 75% and a motor efficiency of 90%. What motor horsepower is drawn from the power line?
 
-- **A.** 16.36 hp
-- **B.** 32.32 hp
-- **C.** 26.93 hp
-- **D.** 35.91 hp
+- **A.** 35.91 hp
+- **B.** 16.36 hp
+- **C.** 32.32 hp
+- **D.** 26.93 hp
 
-**Answer: D. 35.91 hp**
+**Answer: A. 35.91 hp**
 
 Input horsepower = water horsepower divided by pump efficiency and by motor efficiency. Substitute the stated values: 800 × 120 ÷ 3960 ÷ 0.75 ÷ 0.9 = 35.91 hp. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5210,10 +5210,10 @@ A booster station must add 35 psi of pressure to the water. Use 2.31 ft of head 
 
 - **A.** 161.70 ft
 - **B.** 15.15 ft
-- **C.** 242.55 ft
-- **D.** 80.85 ft
+- **C.** 80.85 ft
+- **D.** 242.55 ft
 
-**Answer: D. 80.85 ft**
+**Answer: C. 80.85 ft**
 
 Head in feet = pressure rise times 2.31. Substitute the stated values: 35 × 2.31 = 80.85 ft. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5222,11 +5222,11 @@ Head in feet = pressure rise times 2.31. Substitute the stated values: 35 × 2.3
 The pressure in a main drops to 0 psi during a break. A fixture is 14 ft above the main. Use 0.433 psi per ft. How many psi of vacuum (suction) does the fixture see?
 
 - **A.** 14.00 psi
-- **B.** 6.06 psi
-- **C.** 32.34 psi
-- **D.** 7.00 psi
+- **B.** 32.34 psi
+- **C.** 7.00 psi
+- **D.** 6.06 psi
 
-**Answer: B. 6.06 psi**
+**Answer: D. 6.06 psi**
 
 Vacuum = 0.433 times the height above the main. Substitute the stated values: 14 × 0.433 = 6.06 psi. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5247,12 +5247,12 @@ Excess = 0.433 times height minus supply pressure. Substitute the stated values:
 
 A map is drawn at a scale of 1 inch = 200 ft. A main measures 4.5 inches on the map. What is its real length in ft?
 
-- **A.** 1,800 ft
-- **B.** 205 ft
-- **C.** 44 ft
-- **D.** 900 ft
+- **A.** 900 ft
+- **B.** 1,800 ft
+- **C.** 205 ft
+- **D.** 44 ft
 
-**Answer: D. 900 ft**
+**Answer: A. 900 ft**
 
 Length = map distance times scale. Substitute the stated values: 4.5 × 200 = 900 ft. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5274,11 +5274,11 @@ Days = hydrants in program divided by hydrants per day. Substitute the stated va
 A system put 62.0 million gallons into the network in a month and billed 51.8 million gallons. What is non-revenue water as a percent of water produced?
 
 - **A.** 10.2 %
-- **B.** 16.5 %
-- **C.** 83.5 %
-- **D.** 19.7 %
+- **B.** 83.5 %
+- **C.** 19.7 %
+- **D.** 16.5 %
 
-**Answer: B. 16.5 %**
+**Answer: D. 16.5 %**
 
 Percent = (produced minus billed) divided by produced times 100. Substitute the stated values: (62-51.8) ÷ 62 × 100 = 16.5 %. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5299,12 +5299,12 @@ Loss = flow times minutes per day times days. Substitute the stated values: 3.5 
 
 A leak runs at 8 gpm for 45 days. Water costs the utility $0.95 per 1,000 gal to produce. Use 1,440 minutes per day. What is the cost of the water lost, in dollars?
 
-- **A.** 492.48 dollars
-- **B.** 20.52 dollars
-- **C.** 492,480.00 dollars
+- **A.** 20.52 dollars
+- **B.** 492,480.00 dollars
+- **C.** 492.48 dollars
 - **D.** 518,400.00 dollars
 
-**Answer: A. 492.48 dollars**
+**Answer: C. 492.48 dollars**
 
 Cost = flow times 1,440 times days divided by 1,000 times cost per 1,000 gal. Substitute the stated values: 8 × 1440 × 45 ÷ 1000 × 0.95 = 492.48 dollars. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5312,12 +5312,12 @@ Cost = flow times 1,440 times days divided by 1,000 times cost per 1,000 gal. Su
 
 A new main holds 4,200 gal. It will be disinfected at a dose of 25 mg/L. Use lb = volume (MG) × dose (mg/L) × 8.34. How many pounds of chlorine are needed?
 
-- **A.** 0.876 lb
-- **B.** 0.105 lb
-- **C.** 875.700 lb
-- **D.** 8.757 lb
+- **A.** 0.105 lb
+- **B.** 875.700 lb
+- **C.** 8.757 lb
+- **D.** 0.876 lb
 
-**Answer: A. 0.876 lb**
+**Answer: D. 0.876 lb**
 
 Pounds = volume in million gallons times dose times 8.34. Substitute the stated values: 4200 ÷ 1000000 × 25 × 8.34 = 0.876 lb. Round only the final result to 3 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5325,12 +5325,12 @@ Pounds = volume in million gallons times dose times 8.34. Substitute the stated 
 
 A 6-inch main (0.5 ft diameter) is 2,000 ft long. Use volume = 0.785 × D² × length × 7.48 gal per ft³. It is filled at 120 gpm. How many minutes does filling take?
 
-- **A.** 3.27 min
-- **B.** 6.12 min
-- **C.** 3,523.08 min
-- **D.** 24.47 min
+- **A.** 24.47 min
+- **B.** 3.27 min
+- **C.** 6.12 min
+- **D.** 3,523.08 min
 
-**Answer: D. 24.47 min**
+**Answer: A. 24.47 min**
 
 Time = pipe volume in gallons divided by fill rate. Substitute the stated values: 0.785 × 0.5 × 0.5 × 2000 × 7.48 ÷ 120 = 24.47 min. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5339,11 +5339,11 @@ Time = pipe volume in gallons divided by fill rate. Substitute the stated values
 A gauge reads 65 psi. Use 2.31 ft of head per psi. What is this pressure in feet of head?
 
 - **A.** 67.31 ft
-- **B.** 28.14 ft
-- **C.** 150.15 ft
+- **B.** 150.15 ft
+- **C.** 28.14 ft
 - **D.** 346.77 ft
 
-**Answer: C. 150.15 ft**
+**Answer: B. 150.15 ft**
 
 Head = psi x 2.31. Substitute the stated values: 65 × 2.31 = 150.15 ft. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5377,12 +5377,12 @@ Pressure = 72 minus (40 x 0.433). Substitute the stated values: 72-40 × 0.433 =
 
 A high-zone tank water surface is 1,120 ft and a customer sits at 760 ft elevation. Use 0.433 psi per ft. A pressure reducing valve is set to hold 75 psi on the low side. How many psi must the valve take off the static pressure?
 
-- **A.** 285.00 psi
-- **B.** 230.88 psi
-- **C.** 80.88 psi
+- **A.** 80.88 psi
+- **B.** 285.00 psi
+- **C.** 230.88 psi
 - **D.** 756.60 psi
 
-**Answer: C. 80.88 psi**
+**Answer: A. 80.88 psi**
 
 Static psi = elevation difference x 0.433, then subtract the outlet setting. Substitute the stated values: (1120-760) × 0.433-75 = 80.88 psi. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5404,11 +5404,11 @@ Percent drop = (static - residual) / static x 100. Substitute the stated values:
 A point on a main is at elevation 610 ft and must have 55 psi of pressure. Use 2.31 ft of head per psi. What water surface elevation will give this pressure with no flow?
 
 - **A.** 482.95 ft
-- **B.** 737.05 ft
-- **C.** 127.05 ft
+- **B.** 127.05 ft
+- **C.** 737.05 ft
 - **D.** 633.82 ft
 
-**Answer: B. 737.05 ft**
+**Answer: C. 737.05 ft**
 
 Surface elevation = point elevation + psi x 2.31. Substitute the stated values: 610+55 × 2.31 = 737.05 ft. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5418,10 +5418,10 @@ A tank overflow is at 1,050 ft and a customer is at 760 ft. Use 0.433 psi per ft
 
 - **A.** 329.08 psi
 - **B.** 669.90 psi
-- **C.** 125.57 psi
-- **D.** 454.65 psi
+- **C.** 454.65 psi
+- **D.** 125.57 psi
 
-**Answer: C. 125.57 psi**
+**Answer: D. 125.57 psi**
 
 Pressure = elevation difference x 0.433. Substitute the stated values: (1050-760) × 0.433 = 125.57 psi. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5456,11 +5456,11 @@ Pressure change = level change x 0.433. Substitute the stated values: (32-21) ×
 A plant sends out 1.8 MGD. Use 1 MGD = 694.4 gpm. What is the average flow in gpm?
 
 - **A.** 3 gpm
-- **B.** 1 gpm
-- **C.** 30,000 gpm
-- **D.** 1,250 gpm
+- **B.** 1,250 gpm
+- **C.** 1 gpm
+- **D.** 30,000 gpm
 
-**Answer: D. 1,250 gpm**
+**Answer: B. 1,250 gpm**
 
 gpm = MGD x 694.4. Substitute the stated values: 1.8 × 694.4 = 1,250 gpm. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5468,12 +5468,12 @@ gpm = MGD x 694.4. Substitute the stated values: 1.8 × 694.4 = 1,250 gpm. Round
 
 A line carries 2,400 gpm. Use 1 cfs = 448.8 gpm. What is the flow in cfs?
 
-- **A.** 5.35 cfs
-- **B.** 1,077,120.00 cfs
-- **C.** 299.20 cfs
+- **A.** 1,077,120.00 cfs
+- **B.** 299.20 cfs
+- **C.** 5.35 cfs
 - **D.** 320.86 cfs
 
-**Answer: A. 5.35 cfs**
+**Answer: C. 5.35 cfs**
 
 cfs = gpm / 448.8. Substitute the stated values: 2400 ÷ 448.8 = 5.35 cfs. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5481,12 +5481,12 @@ cfs = gpm / 448.8. Substitute the stated values: 2400 ÷ 448.8 = 5.35 cfs. Round
 
 A pipe carries 3.6 cfs. Use 1 cfs = 448.8 gpm. What is the flow in gpm?
 
-- **A.** 27 gpm
-- **B.** 1,616 gpm
+- **A.** 1,616 gpm
+- **B.** 27 gpm
 - **C.** 6 gpm
 - **D.** 96,941 gpm
 
-**Answer: B. 1,616 gpm**
+**Answer: A. 1,616 gpm**
 
 gpm = cfs x 448.8. Substitute the stated values: 3.6 × 448.8 = 1,616 gpm. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5509,10 +5509,10 @@ An 8-inch main (8/12 ft) carries 500 gpm. Use 1 cfs = 448.8 gpm and area = 0.785
 
 - **A.** 1,433.12 fps
 - **B.** 0.39 fps
-- **C.** 3.19 fps
-- **D.** 0.80 fps
+- **C.** 0.80 fps
+- **D.** 3.19 fps
 
-**Answer: C. 3.19 fps**
+**Answer: D. 3.19 fps**
 
 Velocity = flow in cfs / area. Substitute the stated values: (500 ÷ 448.8) ÷ (0.785 × (8 ÷ 12) × (8 ÷ 12)) = 3.19 fps. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5547,11 +5547,11 @@ Flow = area x velocity x 448.8. Substitute the stated values: 0.785 × (8 ÷ 12)
 A tank holding 120,000 gal is filled at a steady 400 gpm. How many hours does it take?
 
 - **A.** 0.2 hr
-- **B.** 5.0 hr
-- **C.** 18,000.0 hr
-- **D.** 300.0 hr
+- **B.** 18,000.0 hr
+- **C.** 300.0 hr
+- **D.** 5.0 hr
 
-**Answer: B. 5.0 hr**
+**Answer: D. 5.0 hr**
 
 Hours = gallons / gpm / 60. Substitute the stated values: 120000 ÷ 400 ÷ 60 = 5.0 hr. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5560,11 +5560,11 @@ Hours = gallons / gpm / 60. Substitute the stated values: 120000 ÷ 400 ÷ 60 = 
 An 8-inch main (8/12 ft) is 2,400 ft long. Use volume = 0.785 x D squared x length x 7.48 gal per ft cubed. How many gallons does the pipe hold?
 
 - **A.** 9,395 gal
-- **B.** 837 gal
-- **C.** 6,263 gal
+- **B.** 6,263 gal
+- **C.** 837 gal
 - **D.** 112 gal
 
-**Answer: C. 6,263 gal**
+**Answer: B. 6,263 gal**
 
 Volume = area x length x 7.48. Substitute the stated values: 0.785 × (8 ÷ 12) × (8 ÷ 12) × 2400 × 7.48 = 6,263 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5573,11 +5573,11 @@ Volume = area x length x 7.48. Substitute the stated values: 0.785 × (8 ÷ 12) 
 A reservoir drains at a steady 2.5 cfs for 3 hours. Use 1 ft cubed = 7.48 gal. How many gallons leave the reservoir?
 
 - **A.** 3,610 gal
-- **B.** 27,000 gal
-- **C.** 201,960 gal
+- **B.** 201,960 gal
+- **C.** 27,000 gal
 - **D.** 3,366 gal
 
-**Answer: C. 201,960 gal**
+**Answer: B. 201,960 gal**
 
 Gallons = cfs x seconds x 7.48. Substitute the stated values: 2.5 × 3 × 3600 × 7.48 = 201,960 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5587,10 +5587,10 @@ A 6-inch main (0.5 ft) carries 350 gpm during flushing. Use 1 cfs = 448.8 gpm an
 
 - **A.** 0.99 fps
 - **B.** 0.15 fps
-- **C.** 3.97 fps
-- **D.** 1,783.44 fps
+- **C.** 1,783.44 fps
+- **D.** 3.97 fps
 
-**Answer: C. 3.97 fps**
+**Answer: D. 3.97 fps**
 
 Velocity = flow in cfs / area. Substitute the stated values: (350 ÷ 448.8) ÷ (0.785 × 0.5 × 0.5) = 3.97 fps. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5600,10 +5600,10 @@ A 12-inch main carries water at 2.0 ft/s and reduces to an 8-inch main with no l
 
 - **A.** 3.00 fps
 - **B.** 0.89 fps
-- **C.** 6.75 fps
-- **D.** 4.50 fps
+- **C.** 4.50 fps
+- **D.** 6.75 fps
 
-**Answer: D. 4.50 fps**
+**Answer: C. 4.50 fps**
 
 V2 = V1 x (D1 / D2) squared. Substitute the stated values: 2 × (12 × 12) ÷ (8 × 8) = 4.50 fps. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5611,12 +5611,12 @@ V2 = V1 x (D1 / D2) squared. Substitute the stated values: 2 × (12 × 12) ÷ (8
 
 A main loses 4.2 ft of head per 1,000 ft of pipe, and the run is 3,500 ft. Use 0.433 psi per ft. What is the pressure lost to friction in psi?
 
-- **A.** 14.70 psi
-- **B.** 33.96 psi
-- **C.** 6.37 psi
+- **A.** 6.37 psi
+- **B.** 14.70 psi
+- **C.** 33.96 psi
 - **D.** 6,365.10 psi
 
-**Answer: C. 6.37 psi**
+**Answer: A. 6.37 psi**
 
 Pressure loss = (4.2 x length/1000) x 0.433. Substitute the stated values: 4.2 × 3.5 × 0.433 = 6.37 psi. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5624,12 +5624,12 @@ Pressure loss = (4.2 x length/1000) x 0.433. Substitute the stated values: 4.2 �
 
 The pressure at the start of a flat main is 70 psi. The main loses 6.2 ft of head per 1,000 ft and is 2,800 ft long. Use 0.433 psi per ft. What is the pressure at the far end?
 
-- **A.** 62.48 psi
-- **B.** 52.64 psi
-- **C.** 77.52 psi
+- **A.** 52.64 psi
+- **B.** 77.52 psi
+- **C.** 62.48 psi
 - **D.** 29.90 psi
 
-**Answer: A. 62.48 psi**
+**Answer: C. 62.48 psi**
 
 Pressure = 70 minus friction loss in psi. Substitute the stated values: 70-6.2 × 2.8 × 0.433 = 62.48 psi. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5676,12 +5676,12 @@ Max day = average day x factor. Substitute the stated values: 2.4 × 1.8 = 4.32 
 
 Average day demand is 2.0 MGD and the maximum day was 3.6 MGD. What is the maximum day peaking factor?
 
-- **A.** 1.80 times
-- **B.** 0.56 times
-- **C.** 1.60 times
+- **A.** 0.56 times
+- **B.** 1.60 times
+- **C.** 1.80 times
 - **D.** 7.20 times
 
-**Answer: A. 1.80 times**
+**Answer: C. 1.80 times**
 
 Factor = max day / average day. Substitute the stated values: 3.6 ÷ 2.0 = 1.80 times. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5690,11 +5690,11 @@ Factor = max day / average day. Substitute the stated values: 3.6 ÷ 2.0 = 1.80 
 Average day demand is 1.5 MGD and the peak hour factor is 3.0. Use 1 MGD = 694.4 gpm. What is the peak hour flow in gpm?
 
 - **A.** 6,480 gpm
-- **B.** 5 gpm
-- **C.** 1,042 gpm
-- **D.** 3,125 gpm
+- **B.** 3,125 gpm
+- **C.** 5 gpm
+- **D.** 1,042 gpm
 
-**Answer: D. 3,125 gpm**
+**Answer: B. 3,125 gpm**
 
 Peak flow = MGD x 694.4 x factor. Substitute the stated values: 1.5 × 694.4 × 3.0 = 3,125 gpm. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5729,11 +5729,11 @@ Max day = connections x gpd x factor / 1,000,000. Substitute the stated values: 
 On a maximum day the system uses 2,100,000 gal. A fire flow of 3,500 gpm also runs for 3 hours. How many gallons are needed that day in total?
 
 - **A.** 2,310,000 gal
-- **B.** 2,110,500 gal
-- **C.** 630,000 gal
-- **D.** 2,730,000 gal
+- **B.** 2,730,000 gal
+- **C.** 2,110,500 gal
+- **D.** 630,000 gal
 
-**Answer: D. 2,730,000 gal**
+**Answer: B. 2,730,000 gal**
 
 Total = max day gallons + fire gpm x 60 x hours. Substitute the stated values: 2100000+3500 × 60 × 3 = 2,730,000 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5741,12 +5741,12 @@ Total = max day gallons + fire gpm x 60 x hours. Substitute the stated values: 2
 
 Maximum day demand is 2.1 MGD and a fire flow of 3,500 gpm is added. Use 1 MGD = 694.4 gpm. What is the total flow the system must supply in gpm?
 
-- **A.** 3,502 gpm
-- **B.** 4,958 gpm
+- **A.** 4,958 gpm
+- **B.** 3,502 gpm
 - **C.** 1,458 gpm
 - **D.** 6,524 gpm
 
-**Answer: B. 4,958 gpm**
+**Answer: A. 4,958 gpm**
 
 Total gpm = MGD x 694.4 + fire gpm. Substitute the stated values: 2.1 × 694.4+3500 = 4,958 gpm. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5755,11 +5755,11 @@ Total gpm = MGD x 694.4 + fire gpm. Substitute the stated values: 2.1 × 694.4+3
 Between 5:00 and 7:00 a.m. the system flow rises from 600 gpm to 1,500 gpm. What is the average increase in gpm per hour?
 
 - **A.** 3 gpm per hr
-- **B.** 450 gpm per hr
-- **C.** 900 gpm per hr
-- **D.** 1,050 gpm per hr
+- **B.** 900 gpm per hr
+- **C.** 1,050 gpm per hr
+- **D.** 450 gpm per hr
 
-**Answer: B. 450 gpm per hr**
+**Answer: D. 450 gpm per hr**
 
 Rate of rise = (1,500 - 600) / 2. Substitute the stated values: (1500-600) ÷ 2 = 450 gpm per hr. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5768,11 +5768,11 @@ Rate of rise = (1,500 - 600) / 2. Substitute the stated values: (1500-600) ÷ 2 
 A system delivered 62 MG in a 31-day month, and its highest day was 3.5 MG. What is the maximum day peaking factor against the average day?
 
 - **A.** 7.00 times
-- **B.** 1.75 times
-- **C.** 0.57 times
+- **B.** 0.57 times
+- **C.** 1.75 times
 - **D.** 0.06 times
 
-**Answer: B. 1.75 times**
+**Answer: C. 1.75 times**
 
 Factor = max day / (monthly total / days). Substitute the stated values: 3.5 ÷ (62 ÷ 31) = 1.75 times. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5793,12 +5793,12 @@ gpcd = gallons per day / population. Substitute the stated values: 1850000 ÷ 14
 
 A fire demand is 2,500 gpm for 2 hours. How many gallons does the fire use?
 
-- **A.** 5,000 gal
-- **B.** 7,200,000 gal
-- **C.** 40,107 gal
-- **D.** 300,000 gal
+- **A.** 300,000 gal
+- **B.** 5,000 gal
+- **C.** 7,200,000 gal
+- **D.** 40,107 gal
 
-**Answer: D. 300,000 gal**
+**Answer: A. 300,000 gal**
 
 Gallons = gpm x 60 x hours. Substitute the stated values: 2500 × 60 × 2 = 300,000 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5821,10 +5821,10 @@ A pump moves 600 gpm against 150 ft of head. Use water horsepower = flow x head 
 
 - **A.** 90,000.00 hp
 - **B.** 17.05 hp
-- **C.** 22.73 hp
-- **D.** 30.30 hp
+- **C.** 30.30 hp
+- **D.** 22.73 hp
 
-**Answer: C. 22.73 hp**
+**Answer: D. 22.73 hp**
 
 WHP = gpm x ft / 3,960. Substitute the stated values: 600 × 150 ÷ 3960 = 22.73 hp. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5846,11 +5846,11 @@ BHP = WHP / efficiency. Substitute the stated values: 900 × 110 ÷ 3960 ÷ 0.72
 A pump develops 40 water horsepower from 52 brake horsepower. What is its efficiency in percent?
 
 - **A.** 43.5 %
-- **B.** 76.9 %
-- **C.** 12.0 %
+- **B.** 12.0 %
+- **C.** 76.9 %
 - **D.** 130.0 %
 
-**Answer: B. 76.9 %**
+**Answer: C. 76.9 %**
 
 Efficiency = WHP / BHP x 100. Substitute the stated values: 40 ÷ 52 × 100 = 76.9 %. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5884,12 +5884,12 @@ Input kW = bhp x 0.746 / efficiency. Substitute the stated values: 30 × 0.746 �
 
 A pump takes 25 kW and runs 14 hours per day. Power costs $0.11 per kWh. What is the daily power cost in dollars?
 
-- **A.** 38.50 $
-- **B.** 2.75 $
+- **A.** 2.75 $
+- **B.** 38.50 $
 - **C.** 66.00 $
 - **D.** 350.00 $
 
-**Answer: A. 38.50 $**
+**Answer: B. 38.50 $**
 
 Cost = kW x hours x rate. Substitute the stated values: 25 × 14 × 0.11 = 38.50 $. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5897,12 +5897,12 @@ Cost = kW x hours x rate. Substitute the stated values: 25 × 14 × 0.11 = 38.50
 
 A pump must supply 33 water horsepower. The pump efficiency is 78% and the motor efficiency is 90%. What input horsepower does the motor draw?
 
-- **A.** 19.6 hp
-- **B.** 42.3 hp
-- **C.** 23.2 hp
-- **D.** 47.0 hp
+- **A.** 47.0 hp
+- **B.** 19.6 hp
+- **C.** 42.3 hp
+- **D.** 23.2 hp
 
-**Answer: D. 47.0 hp**
+**Answer: A. 47.0 hp**
 
 Input hp = WHP / pump efficiency / motor efficiency. Substitute the stated values: 33 ÷ 0.78 ÷ 0.9 = 47.0 hp. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5910,12 +5910,12 @@ Input hp = WHP / pump efficiency / motor efficiency. Substitute the stated value
 
 A pump delivers 500 gpm and runs for 22 hours. How many gallons does it deliver?
 
-- **A.** 660,000 gal
-- **B.** 720,000 gal
-- **C.** 88,235 gal
+- **A.** 720,000 gal
+- **B.** 88,235 gal
+- **C.** 660,000 gal
 - **D.** 11,000 gal
 
-**Answer: A. 660,000 gal**
+**Answer: C. 660,000 gal**
 
 Gallons = gpm x 60 x hours. Substitute the stated values: 500 × 60 × 22 = 660,000 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5925,10 +5925,10 @@ A pump at 1,750 rpm delivers 800 gpm. Use flow proportional to speed. What flow 
 
 - **A.** 450 gpm
 - **B.** 512 gpm
-- **C.** 640 gpm
-- **D.** 1,000 gpm
+- **C.** 1,000 gpm
+- **D.** 640 gpm
 
-**Answer: C. 640 gpm**
+**Answer: D. 640 gpm**
 
 Q2 = Q1 x (N2 / N1). Substitute the stated values: 800 × 1400 ÷ 1750 = 640 gpm. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5949,12 +5949,12 @@ H2 = H1 x (N2 / N1) squared. Substitute the stated values: 120 × (1400 ÷ 1750)
 
 A gauge on a main at 700 ft elevation reads 62 psi. Use 2.31 ft of head per psi. What is the hydraulic grade line elevation at that point?
 
-- **A.** 843.22 ft
-- **B.** 762.00 ft
+- **A.** 762.00 ft
+- **B.** 843.22 ft
 - **C.** 143.22 ft
 - **D.** 726.85 ft
 
-**Answer: A. 843.22 ft**
+**Answer: B. 843.22 ft**
 
 HGL = elevation + psi x 2.31. Substitute the stated values: 700+62 × 2.31 = 843.22 ft. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5975,12 +5975,12 @@ Loss per 1,000 ft = (880 - 862) / (3,000 / 1,000). Substitute the stated values:
 
 A flow test shows 62 psi static and 50 psi residual with 1,150 gpm flowing. What is the pressure drop per 100 gpm of flow in psi?
 
-- **A.** 1.04 psi
-- **B.** 0.01 psi
-- **C.** 4.35 psi
-- **D.** 5.39 psi
+- **A.** 0.01 psi
+- **B.** 4.35 psi
+- **C.** 5.39 psi
+- **D.** 1.04 psi
 
-**Answer: A. 1.04 psi**
+**Answer: D. 1.04 psi**
 
 Drop per 100 gpm = (static - residual) / (gpm / 100). Substitute the stated values: (62-50) ÷ (1150 ÷ 100) = 1.04 psi. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -5988,12 +5988,12 @@ Drop per 100 gpm = (static - residual) / (gpm / 100). Substitute the stated valu
 
 A fire flow of 3,000 gpm must be supplied for 3 hours. How many gallons of fire storage are needed?
 
-- **A.** 540,000 gal
-- **B.** 9,000 gal
-- **C.** 150 gal
-- **D.** 180,000 gal
+- **A.** 9,000 gal
+- **B.** 150 gal
+- **C.** 180,000 gal
+- **D.** 540,000 gal
 
-**Answer: A. 540,000 gal**
+**Answer: D. 540,000 gal**
 
 Gallons = gpm x 60 x hours. Substitute the stated values: 3000 × 60 × 3 = 540,000 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6001,12 +6001,12 @@ Gallons = gpm x 60 x hours. Substitute the stated values: 3000 × 60 × 3 = 540,
 
 An equalizing volume is taken as 25% of a maximum day demand of 600,000 gal. Fire storage is a flow of 2,000 gpm for 2 hours. How many gallons are needed for both together?
 
-- **A.** 154,000 gal
-- **B.** 390,000 gal
+- **A.** 390,000 gal
+- **B.** 154,000 gal
 - **C.** 840,000 gal
 - **D.** 240,000 gal
 
-**Answer: B. 390,000 gal**
+**Answer: A. 390,000 gal**
 
 Total = 0.25 x demand + gpm x 60 x hours. Substitute the stated values: 0.25 × 600000+2000 × 60 × 2 = 390,000 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6014,12 +6014,12 @@ Total = 0.25 x demand + gpm x 60 x hours. Substitute the stated values: 0.25 × 
 
 A tank is 36 ft in diameter. Its outlet sits 3 ft above the floor, so the water below the outlet is dead storage. Use 0.785 for the area constant and 7.48 gal per ft3. How many gallons are dead storage?
 
-- **A.** 22,829.6 gal
-- **B.** 7,609.9 gal
+- **A.** 7,609.9 gal
+- **B.** 22,829.6 gal
 - **C.** 3,052.1 gal
 - **D.** 5,707.4 gal
 
-**Answer: A. 22,829.6 gal**
+**Answer: B. 22,829.6 gal**
 
 Gallons = 0.785 x D squared x depth x 7.48. Substitute the stated values: 0.785 × 36 × 36 × 3 × 7.48 = 22,829.6 gal. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6028,11 +6028,11 @@ Gallons = 0.785 x D squared x depth x 7.48. Substitute the stated values: 0.785 
 A system needs equalizing storage of 100,000 gal, fire storage for 2,500 gpm for 2 hours, and an emergency reserve of 50,000 gal. How many gallons are needed in total?
 
 - **A.** 750,000 gal
-- **B.** 450,000 gal
-- **C.** 150,000 gal
+- **B.** 150,000 gal
+- **C.** 450,000 gal
 - **D.** 155,000 gal
 
-**Answer: B. 450,000 gal**
+**Answer: C. 450,000 gal**
 
 Total = equalizing + (gpm x 60 x hours) + emergency. Substitute the stated values: 100000+2500 × 60 × 2+50000 = 450,000 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6040,12 +6040,12 @@ Total = equalizing + (gpm x 60 x hours) + emergency. Substitute the stated value
 
 A customer's ground is 140 ft below the bottom of an elevated tank, and the tank holds 28 ft of water. Use 0.433 psi per ft. What is the static pressure at full level?
 
-- **A.** 60.6 psi
-- **B.** 388.0 psi
-- **C.** 72.7 psi
+- **A.** 72.7 psi
+- **B.** 60.6 psi
+- **C.** 388.0 psi
 - **D.** 12.1 psi
 
-**Answer: C. 72.7 psi**
+**Answer: A. 72.7 psi**
 
 Pressure = (drop to the tank bottom + water depth) x 0.433. Substitute the stated values: (140+28) × 0.433 = 72.7 psi. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6053,12 +6053,12 @@ Pressure = (drop to the tank bottom + water depth) x 0.433. Substitute the state
 
 A hydropneumatic tank system starts its pump at 40 psi and stops it at 60 psi. Use 2.31 ft of head per psi. What is that pressure range in feet of head?
 
-- **A.** 46.2 ft
-- **B.** 8.7 ft
+- **A.** 8.7 ft
+- **B.** 46.2 ft
 - **C.** 92.4 ft
 - **D.** 138.6 ft
 
-**Answer: A. 46.2 ft**
+**Answer: B. 46.2 ft**
 
 Range in feet = (stop psi - start psi) x 2.31. Substitute the stated values: (60-40) × 2.31 = 46.2 ft. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6081,10 +6081,10 @@ A tank is 24 ft in diameter. The pump starts when the level is 18 ft and stops a
 
 - **A.** 6,330.2 gal
 - **B.** 11,837.5 gal
-- **C.** 108,226.2 gal
-- **D.** 47,350.2 gal
+- **C.** 47,350.2 gal
+- **D.** 108,226.2 gal
 
-**Answer: D. 47,350.2 gal**
+**Answer: C. 47,350.2 gal**
 
 Gallons = 0.785 x D squared x (stop - start) x 7.48. Substitute the stated values: 0.785 × 24 × 24 × (32-18) × 7.48 = 47,350.2 gal. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6106,11 +6106,11 @@ Hours = volume / (inflow - demand) / 60. Substitute the stated values: 36000 ÷ 
 A tank is 210,000 gal short of full. The pump adds 900 gpm and customers draw 400 gpm. How many hours does it take to fill?
 
 - **A.** 2.7 hr
-- **B.** 7.0 hr
-- **C.** 3.9 hr
+- **B.** 3.9 hr
+- **C.** 7.0 hr
 - **D.** 420.0 hr
 
-**Answer: B. 7.0 hr**
+**Answer: C. 7.0 hr**
 
 Hours = volume / (inflow - outflow) / 60. Substitute the stated values: 210000 ÷ (900-400) ÷ 60 = 7.0 hr. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6131,12 +6131,12 @@ Days = volume / daily exchange. Substitute the stated values: 1.2 ÷ 0.3 = 4.0 d
 
 A tank holds 500,000 gal and the zone uses 250,000 gal per day. Treat the tank as fully mixed, and give the average time in hours for the volume to turn over.
 
-- **A.** 48.0 hr
-- **B.** 2.0 hr
+- **A.** 2.0 hr
+- **B.** 48.0 hr
 - **C.** 12.0 hr
 - **D.** 1,152.0 hr
 
-**Answer: A. 48.0 hr**
+**Answer: B. 48.0 hr**
 
 Hours = volume / daily use x 24. Substitute the stated values: 500000 ÷ 250000 × 24 = 48.0 hr. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6145,11 +6145,11 @@ Hours = volume / daily use x 24. Substitute the stated values: 500000 ÷ 250000 
 A tank holds 150,000 gal. It is drained at a steady 500 gpm with no inflow. How many hours does it take to drain?
 
 - **A.** 18,000.0 hr
-- **B.** 300.0 hr
-- **C.** 5.0 hr
+- **B.** 5.0 hr
+- **C.** 300.0 hr
 - **D.** 0.2 hr
 
-**Answer: C. 5.0 hr**
+**Answer: B. 5.0 hr**
 
 Hours = gallons / gpm / 60. Substitute the stated values: 150000 ÷ 500 ÷ 60 = 5.0 hr. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6157,12 +6157,12 @@ Hours = gallons / gpm / 60. Substitute the stated values: 150000 ÷ 500 ÷ 60 = 
 
 A tank is 40 ft in diameter and holds water 30 ft deep. Use 0.785 for the area constant and 7.48 gal per ft3. How many gallons does it hold?
 
-- **A.** 70,461.6 gal
-- **B.** 37,680.0 gal
-- **C.** 7,046.2 gal
-- **D.** 281,846.4 gal
+- **A.** 281,846.4 gal
+- **B.** 70,461.6 gal
+- **C.** 37,680.0 gal
+- **D.** 7,046.2 gal
 
-**Answer: D. 281,846.4 gal**
+**Answer: A. 281,846.4 gal**
 
 Gallons = 0.785 x D squared x depth x 7.48. Substitute the stated values: 0.785 × 40 × 40 × 30 × 7.48 = 281,846.4 gal. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6184,11 +6184,11 @@ Gallons = 0.785 x D squared x drop x 7.48. Substitute the stated values: 0.785 �
 A tank holds 400,000 gal when full, and 90,000 gal have been drawn out. What percent of the full volume has been removed?
 
 - **A.** 444.4 %
-- **B.** 22.5 %
-- **C.** 77.5 %
-- **D.** 4.4 %
+- **B.** 77.5 %
+- **C.** 4.4 %
+- **D.** 22.5 %
 
-**Answer: B. 22.5 %**
+**Answer: D. 22.5 %**
 
 Percent = removed / full x 100. Substitute the stated values: 90000 ÷ 400000 × 100 = 22.5 %. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6196,12 +6196,12 @@ Percent = removed / full x 100. Substitute the stated values: 90000 ÷ 400000 ×
 
 A tank is 50 ft in diameter. Use 0.785 for the area constant and 7.48 gal per ft3. How many gallons does each foot of depth hold?
 
-- **A.** 293.6 gal
-- **B.** 1,962.5 gal
-- **C.** 3,669.9 gal
-- **D.** 14,679.5 gal
+- **A.** 14,679.5 gal
+- **B.** 293.6 gal
+- **C.** 1,962.5 gal
+- **D.** 3,669.9 gal
 
-**Answer: D. 14,679.5 gal**
+**Answer: A. 14,679.5 gal**
 
 Gallons per foot = 0.785 x D squared x 7.48. Substitute the stated values: 0.785 × 50 × 50 × 7.48 = 14,679.5 gal. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6223,11 +6223,11 @@ Feet per hour = (gpm x 60) / (0.785 x D squared x 7.48). Substitute the stated v
 A 30 ft diameter tank drops from 25 ft deep to 15 ft deep at a steady 400 gpm draw with no inflow. Use 0.785 for the area constant and 7.48 gal per ft3. How many hours does that take?
 
 - **A.** 5.5 hr
-- **B.** 132.1 hr
-- **C.** 0.6 hr
-- **D.** 2.2 hr
+- **B.** 2.2 hr
+- **C.** 132.1 hr
+- **D.** 0.6 hr
 
-**Answer: D. 2.2 hr**
+**Answer: B. 2.2 hr**
 
 Hours = 0.785 x D squared x drop x 7.48 / gpm / 60. Substitute the stated values: 0.785 × 30 × 30 × (25-15) × 7.48 ÷ 400 ÷ 60 = 2.2 hr. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6261,12 +6261,12 @@ Pounds per day = flow times dose times 8.34. Substitute the stated values: 1.5 �
 
 Eight pounds of chlorine are mixed into 400,000 gal of water. Use mg/L = pounds ÷ (million gallons × 8.34). What is the resulting concentration in mg/L?
 
-- **A.** 20.00 mg/L
-- **B.** 2.40 mg/L
+- **A.** 2.40 mg/L
+- **B.** 20.00 mg/L
 - **C.** 166.80 mg/L
 - **D.** 0.24 mg/L
 
-**Answer: B. 2.40 mg/L**
+**Answer: A. 2.40 mg/L**
 
 mg/L = pounds divided by (MG times 8.34). Substitute the stated values: 8 ÷ (0.4 × 8.34) = 2.40 mg/L. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6275,11 +6275,11 @@ mg/L = pounds divided by (MG times 8.34). Substitute the stated values: 8 ÷ (0.
 A feed pump must supply 12 lb/day of available chlorine. The hypochlorite solution is 12.5% available chlorine (0.125) and weighs 8.34 lb/gal. How many gallons of solution are needed per day?
 
 - **A.** 96.00 gal/day
-- **B.** 0.18 gal/day
-- **C.** 11.51 gal/day
+- **B.** 11.51 gal/day
+- **C.** 0.18 gal/day
 - **D.** 1.44 gal/day
 
-**Answer: C. 11.51 gal/day**
+**Answer: B. 11.51 gal/day**
 
 Gallons = pounds needed / (strength x 8.34). Substitute the stated values: 12 ÷ (0.125 × 8.34) = 11.51 gal/day. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6289,10 +6289,10 @@ Water leaves a source with 1.8 mg/L free chlorine. Assume the residual falls 0.1
 
 - **A.** 0.90 mg/L
 - **B.** 1.60 mg/L
-- **C.** 1.50 mg/L
-- **D.** 1.30 mg/L
+- **C.** 1.30 mg/L
+- **D.** 1.50 mg/L
 
-**Answer: D. 1.30 mg/L**
+**Answer: C. 1.30 mg/L**
 
 Residual = start minus first-period loss minus later loss. Substitute the stated values: 1.8-0.15 × 2-0.05 × 4 = 1.30 mg/L. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6301,11 +6301,11 @@ Residual = start minus first-period loss minus later loss. Substitute the stated
 A dead-end main holds 12,000 gal and the customers on it use a total of 3,000 gal per day. Treat the main as one plug of water and give the average water age in days as volume divided by daily use.
 
 - **A.** 36,000,000.0 days
-- **B.** 4.0 days
-- **C.** 0.3 days
-- **D.** 96.0 days
+- **B.** 0.3 days
+- **C.** 96.0 days
+- **D.** 4.0 days
 
-**Answer: B. 4.0 days**
+**Answer: D. 4.0 days**
 
 Age in days = volume / daily use. Substitute the stated values: 12000 ÷ 3000 = 4.0 days. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6314,11 +6314,11 @@ Age in days = volume / daily use. Substitute the stated values: 12000 ÷ 3000 = 
 An 8-inch main (0.667 ft diameter) runs 1,800 ft to a single customer who uses 250 gal per day. Use volume = 0.785 × D² × length × 7.48 gal per ft³ and treat the main as one plug. How many days does the water sit in the main?
 
 - **A.** 2.5 days
-- **B.** 75.2 days
-- **C.** 18.8 days
+- **B.** 18.8 days
+- **C.** 75.2 days
 - **D.** 0.6 days
 
-**Answer: C. 18.8 days**
+**Answer: B. 18.8 days**
 
 Days = pipe volume divided by daily use. Substitute the stated values: 0.785 × 0.667 × 0.667 × 1800 × 7.48 ÷ 250 = 18.8 days. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6326,12 +6326,12 @@ Days = pipe volume divided by daily use. Substitute the stated values: 0.785 × 
 
 A looped area is fed by two sources. Source A supplies 2 MGD with a chlorine residual of 1.0 mg/L and source B supplies 1 MGD at 0.4 mg/L. Assuming full mixing, what is the blended residual in mg/L?
 
-- **A.** 0.60 mg/L
-- **B.** 0.70 mg/L
-- **C.** 2.40 mg/L
-- **D.** 0.80 mg/L
+- **A.** 0.80 mg/L
+- **B.** 0.60 mg/L
+- **C.** 0.70 mg/L
+- **D.** 2.40 mg/L
 
-**Answer: D. 0.80 mg/L**
+**Answer: A. 0.80 mg/L**
 
 Blend = sum of flow times concentration divided by total flow. Substitute the stated values: (2 × 1.0+1 × 0.4) ÷ (2+1) = 0.80 mg/L. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6352,12 +6352,12 @@ Gallons = two times pipe volume. Substitute the stated values: 0.785 × 0.5 × 0
 
 A main section holds 4,500 gal and the plan is to pass 3 pipe volumes through it. A hydrant flows at 750 gpm. How many minutes of flushing are needed?
 
-- **A.** 10,125,000.0 min
-- **B.** 0.5 min
-- **C.** 18.0 min
+- **A.** 18.0 min
+- **B.** 10,125,000.0 min
+- **C.** 0.5 min
 - **D.** 6.0 min
 
-**Answer: C. 18.0 min**
+**Answer: A. 18.0 min**
 
 Minutes = volume times number of volumes divided by flow. Substitute the stated values: 4500 × 3 ÷ 750 = 18.0 min. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6365,12 +6365,12 @@ Minutes = volume times number of volumes divided by flow. Substitute the stated 
 
 A hydrant flushes an 8-inch main (0.667 ft diameter) at 900 gpm. Use 1 cfs = 448.8 gpm and area = 0.785 × D². What is the velocity in the main in ft/s?
 
-- **A.** 5.74 ft/s
-- **B.** 1.44 ft/s
-- **C.** 3.83 ft/s
-- **D.** 2,577.30 ft/s
+- **A.** 1.44 ft/s
+- **B.** 3.83 ft/s
+- **C.** 2,577.30 ft/s
+- **D.** 5.74 ft/s
 
-**Answer: A. 5.74 ft/s**
+**Answer: D. 5.74 ft/s**
 
 Velocity = flow in cfs divided by area. Substitute the stated values: 900 ÷ 448.8 ÷ (0.785 × 0.667 × 0.667) = 5.74 ft/s. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6379,11 +6379,11 @@ Velocity = flow in cfs divided by area. Substitute the stated values: 900 ÷ 448
 A utility took 60 routine distribution samples. In this exercise the target is a residual of at least 0.2 mg/L, and 47 samples met it. What percent of samples met the target?
 
 - **A.** 0.8 percent
-- **B.** 127.7 percent
-- **C.** 78.3 percent
+- **B.** 78.3 percent
+- **C.** 127.7 percent
 - **D.** 21.7 percent
 
-**Answer: C. 78.3 percent**
+**Answer: B. 78.3 percent**
 
 Percent = samples meeting target / total x 100. Substitute the stated values: 47 ÷ 60 × 100 = 78.3 percent. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6391,12 +6391,12 @@ Percent = samples meeting target / total x 100. Substitute the stated values: 47
 
 Chlorine residuals at six sample sites were 0.9, 0.5, 0.3, 0.1, 0.6 and 0.4 mg/L. What is the average residual in mg/L?
 
-- **A.** 0.47 mg/L
-- **B.** 2.80 mg/L
-- **C.** 0.50 mg/L
+- **A.** 2.80 mg/L
+- **B.** 0.50 mg/L
+- **C.** 0.47 mg/L
 - **D.** 0.56 mg/L
 
-**Answer: A. 0.47 mg/L**
+**Answer: C. 0.47 mg/L**
 
 Average = sum divided by number of sites. Substitute the stated values: (0.9+0.5+0.3+0.1+0.6+0.4) ÷ 6 = 0.47 mg/L. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6444,11 +6444,11 @@ Percent = passed / tested x 100. Substitute the stated values: 172 ÷ 190 × 100
 A pig will be pushed by water through 2,400 ft of 10-inch main (0.833 ft diameter). Use volume = 0.785 × D² × length × 7.48 gal per ft³. How many gallons does the pipe hold, and so about how much water follows the pig through it?
 
 - **A.** 39,117 gal
-- **B.** 9,779 gal
-- **C.** 2,445 gal
-- **D.** 1,307 gal
+- **B.** 2,445 gal
+- **C.** 1,307 gal
+- **D.** 9,779 gal
 
-**Answer: B. 9,779 gal**
+**Answer: D. 9,779 gal**
 
 Volume = 0.785 x D squared x length x 7.48. Substitute the stated values: 0.785 × 0.833 × 0.833 × 2400 × 7.48 = 9,779 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6471,10 +6471,10 @@ Customers on a zone of 12,000 connections made complaints at a rate of 4.0 per 1
 
 - **A.** 2 complaints
 - **B.** 66 complaints
-- **C.** 18 complaints
-- **D.** 18,000 complaints
+- **C.** 18,000 complaints
+- **D.** 18 complaints
 
-**Answer: C. 18 complaints**
+**Answer: D. 18 complaints**
 
 Extra complaints = rate change x customers / 1000. Substitute the stated values: (5.5-4.0) × 12000 ÷ 1000 = 18 complaints. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6483,11 +6483,11 @@ Extra complaints = rate change x customers / 1000. Substitute the stated values:
 A corrosion coupon lost 18 mg of metal over 90 days. Assuming a steady rate, how many mg would it lose in 365 days?
 
 - **A.** 0.2 mg
-- **B.** 73.0 mg
-- **C.** 1,620.0 mg
+- **B.** 1,620.0 mg
+- **C.** 73.0 mg
 - **D.** 4.4 mg
 
-**Answer: B. 73.0 mg**
+**Answer: C. 73.0 mg**
 
 Annual loss = loss per day x 365. Substitute the stated values: 18 ÷ 90 × 365 = 73.0 mg. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
@@ -6495,11 +6495,11 @@ Annual loss = loss per day x 365. Substitute the stated values: 18 ÷ 90 × 365 
 
 A chloramine residual measures 3.0 mg/L leaving a reservoir and 1.2 mg/L at a far point. By what percent did the residual fall?
 
-- **A.** 40.0 percent
-- **B.** 150.0 percent
-- **C.** 60.0 percent
+- **A.** 60.0 percent
+- **B.** 40.0 percent
+- **C.** 150.0 percent
 - **D.** 1.8 percent
 
-**Answer: C. 60.0 percent**
+**Answer: A. 60.0 percent**
 
 Percent fall = (start - end) / start x 100. Substitute the stated values: (3.0-1.2) ÷ 3.0 × 100 = 60.0 percent. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.

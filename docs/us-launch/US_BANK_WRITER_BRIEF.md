@@ -4,7 +4,7 @@ For anyone, human or model, writing a state exam bank under `content/us-banks/<b
 
 ## What you are writing
 
-Original multiple-choice practice questions for one state exam, in US customary units (gpm, psi, ft, gal, MGD, lb/day, mg/L). Each question has one correct answer and three wrong options. A bank has 500 questions, about three quarters conceptual and one quarter calculation. Nothing here is imported, activated or shown to learners. The questions are drafts for review.
+Original multiple-choice practice questions for one state exam, in US customary units (gpm, psi, ft, gal, MGD, lb/day, mg/L). Each question has one correct answer and three wrong options. A bank has 250 questions at first release, about 70% conceptual and 30% calculation. The size is set in the bank's `config.json`. More questions are added later. Nothing here is imported, activated or shown to learners. The questions are drafts for review.
 
 ## Files
 
@@ -28,6 +28,10 @@ Question text with every assumption stated|Formula in words|expression|unit|deci
 - `level` is `e`, `m` or `h`. Conceptual rows default to `e` if you leave it out. Calculation rows default to `m`.
 - The `expression` is numbers and `+ - * / ( )` only. The builder computes the correct answer from it. Give the wrong values as plain numbers with no units and no thousands separators. The builder formats them the same way as the answer.
 - Never use the `|` character inside a field.
+
+## Adding questions later
+
+Append new rows at the end of the source files and raise `count` and `calcCount` in `config.json`. **Never insert, reorder or delete a row in a bank that has been reviewed or imported**: question numbers and answer positions follow the order of the rows, and the builder keeps existing ones unchanged only if the earlier rows stay where they are. Each new batch still needs a review.
 
 ## Checking your work
 
