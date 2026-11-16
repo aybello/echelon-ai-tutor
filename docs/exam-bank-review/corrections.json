@@ -1,15 +1,15 @@
 {
  "export": "docs/exam-bank-export/2026-11-16 (commit d118897a)",
- "chunksDone": 49,
+ "chunksDone": 54,
  "chunksTotal": 174,
- "questionsReviewed": 6769,
+ "questionsReviewed": 7534,
  "questionsTotal": 24350,
- "problems": 279,
+ "problems": 328,
  "byVerdict": {
-  "UNCLEAR": 84,
-  "WRONG": 120,
-  "JURISDICTION": 35,
-  "UNITS": 35,
+  "UNCLEAR": 98,
+  "WRONG": 145,
+  "JURISDICTION": 44,
+  "UNITS": 36,
   "OFF-TOPIC": 5
  },
  "byBank": {
@@ -21,7 +21,8 @@
   "class2-wastewater": 63,
   "class2-wastewater-coll": 59,
   "class2-water": 30,
-  "class2-water-dist": 73
+  "class2-water-dist": 73,
+  "class3-wastewater": 49
  },
  "chunks": [
   "chunk-001",
@@ -72,7 +73,12 @@
   "chunk-046",
   "chunk-047",
   "chunk-048",
-  "chunk-049"
+  "chunk-049",
+  "chunk-050",
+  "chunk-051",
+  "chunk-052",
+  "chunk-053",
+  "chunk-054"
  ],
  "corrections": [
   {
@@ -10003,6 +10009,1706 @@
      {
       "l": "Step 4",
       "c": "hL = 72.9 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 182230,
+   "bankKey": "class3-wastewater",
+   "questionNum": 30,
+   "verdict": "UNCLEAR",
+   "note": "No MECP document titled 'Guidelines for the Design of Water Treatment and Wastewater Treatment Facilities' could be confirmed; MECP's design documents are the 'Design Guidelines for Sewage Works' and 'Design Guidelines for Drinking-Water Systems', and Ontario has no single binding reuse guideline with this requirement. Claim about a stated requirement is unverified.",
+   "original": {
+    "question": "When considering water reuse and reclamation in Ontario, what is a key requirement outlined in the MECP's 'Guidelines for the Design of Water Treatment and Wastewater Treatment Facilities'?",
+    "options": [
+     "All reclaimed water must be used for direct potable consumption.",
+     "A risk assessment must be conducted to identify potential hazards and establish treatment goals.",
+     "Reclaimed water can only be used for industrial cooling, not irrigation.",
+     "Disinfection is not required if the reclaimed water is used for toilet flushing."
+    ],
+    "correctIndex": 1,
+    "explanation": "The MECP guidelines emphasize the need for a comprehensive risk assessment for water reuse projects to ensure that the treated water quality is appropriate for its intended end-use and protects public health and the environment."
+   },
+   "fix": {
+    "question": "When planning a water reuse project in Ontario, which principle is consistent with good practice for protecting public health?",
+    "options": [
+     "All reclaimed water must be used for direct potable consumption.",
+     "A risk assessment should be conducted to identify potential hazards and establish treatment goals for the intended end use.",
+     "Reclaimed water can only be used for industrial cooling, not irrigation.",
+     "Disinfection is not required if the reclaimed water is used for toilet flushing."
+    ],
+    "correctIndex": 1,
+    "explanation": "Reuse projects should begin with a risk assessment that identifies hazards for the intended end use and sets treatment and monitoring goals that protect public health and the environment. Non-potable uses such as irrigation and toilet flushing still require appropriate disinfection.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182235,
+   "bankKey": "class3-wastewater",
+   "questionNum": 35,
+   "verdict": "JURISDICTION",
+   "note": "'Equivalent Quality (EQ)' is not a defined Ontario designation (EQ is US EPA 'Exceptional Quality'; 182302 defines it differently). 'Unrestricted use' is also overstated for Ontario, where NASM Category/CP1 material still has site and application rules under O. Reg. 267/03.",
+   "original": {
+    "question": "When managing an advanced biosolids land application program, what is the significance of the 'Equivalent Quality' (EQ) biosolids designation?",
+    "options": [
+     "It indicates that the biosolids can only be used on non-agricultural land.",
+     "It signifies biosolids that meet stringent pathogen and metal limits for unrestricted use.",
+     "It means the biosolids have undergone only primary treatment and lime stabilization.",
+     "It refers to biosolids that are suitable for incineration only, not land application."
+    ],
+    "correctIndex": 1,
+    "explanation": "EQ biosolids meet the highest standards for pathogen reduction and metal concentrations, allowing for their unrestricted use, similar to commercial fertilizers, with minimal public health concerns."
+   },
+   "fix": {
+    "question": "When managing a biosolids land application program in Ontario, what is the significance of the highest pathogen category (Class A/CP1) designation?",
+    "options": [
+     "It indicates that the biosolids can only be used on non-agricultural land.",
+     "It signifies biosolids that meet the most stringent pathogen limits, so they face the fewest use restrictions.",
+     "It means the biosolids have undergone only primary treatment and lime stabilization.",
+     "It refers to biosolids that are suitable for incineration only, not land application."
+    ],
+    "correctIndex": 1,
+    "explanation": "The highest pathogen category is reserved for biosolids processed to reduce pathogens to very low levels, so they carry the fewest handling and use restrictions. Metal limits and nutrient management requirements under O. Reg. 267/03 still apply.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182262,
+   "bankKey": "class3-wastewater",
+   "questionNum": 62,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 588/00 is not the Ontario biosolids/NASM regulation, and the claim that it is 'now part of O. Reg. 267/03' is fabricated. Land application of biosolids (non-agricultural source material) is governed by the Nutrient Management Act and O. Reg. 267/03. Also the NASM/nutrient plans are not 'approved by the MECP' (NMA is administered by OMAFRA/OMAFA, with MECP involved for NASM from sewage works).",
+   "original": {
+    "question": "Under Ontario Regulation 588/00, what is a critical requirement for a wastewater treatment plant seeking to implement a land application program for biosolids?",
+    "options": [
+     "The biosolids must meet Class B pathogen reduction standards only.",
+     "The land application site must be located within 1 km of the treatment facility.",
+     "A nutrient management plan (NMP) must be developed and approved by the MECP.",
+     "The biosolids must be dewatered to at least 50% total solids content."
+    ],
+    "correctIndex": 2,
+    "explanation": "Ontario Regulation 588/00 (now part of O. Reg. 267/03 under the Nutrient Management Act) specifies requirements for the land application of biosolids. A key requirement is the development and approval of a Nutrient Management Plan (NMP) to ensure sustainable and environmentally sound application practices."
+   },
+   "fix": {
+    "question": "Under Ontario's Nutrient Management Act and O. Reg. 267/03, what is a key requirement for land application of biosolids (a non-agricultural source material)?",
+    "options": [
+     "The biosolids must meet Class B pathogen reduction standards only.",
+     "The land application site must be located within 1 km of the treatment facility.",
+     "Application must follow a nutrient management plan (NASM plan) so nutrient application does not exceed crop needs or environmental limits.",
+     "The biosolids must be dewatered to at least 50% total solids content."
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 267/03 under the Nutrient Management Act requires that application of nutrient-containing materials such as biosolids follow a nutrient management plan or NASM plan, limiting application to crop nutrient needs and protecting water quality. There is no 1 km siting rule or 50% solids requirement.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182265,
+   "bankKey": "class3-wastewater",
+   "questionNum": 65,
+   "verdict": "WRONG",
+   "note": "Process order is wrong. UCT is anaerobic-anoxic-aerobic (same order as A2O); it is not anoxic-then-anaerobic. What distinguishes UCT is that RAS is returned to the anoxic zone (not the anaerobic zone) and anoxic mixed liquor is recycled to the anaerobic zone, keeping nitrate out of the anaerobic zone. Explanation's 'anoxic zone before the anaerobic zone' is incorrect as a description of zone order.",
+   "original": {
+    "question": "Which advanced biological nutrient removal (BNR) process design incorporates an anoxic zone followed by an anaerobic zone, then an aerobic zone, to enhance phosphorus release and uptake?",
+    "options": [
+     "A2O process",
+     "Bardenpho process",
+     "University of Cape Town (UCT) process",
+     "Virginia Initiative Plant (VIP) process"
+    ],
+    "correctIndex": 2,
+    "explanation": "The UCT process is a modification of the A2O process that includes an anoxic zone before the anaerobic zone to prevent nitrates from entering the anaerobic zone, which can inhibit phosphorus release by PAOs."
+   },
+   "fix": {
+    "question": "Which biological nutrient removal (BNR) process returns RAS to the anoxic zone rather than the anaerobic zone, and recycles nitrate-depleted anoxic mixed liquor to the anaerobic zone, to protect phosphorus release from nitrate?",
+    "options": [
+     "A2O process",
+     "Bardenpho process",
+     "University of Cape Town (UCT) process",
+     "Conventional extended aeration"
+    ],
+    "correctIndex": 2,
+    "explanation": "In the UCT process the zones run anaerobic, anoxic, aerobic, but RAS is returned to the anoxic zone and a recycle from the anoxic zone feeds the anaerobic zone. This keeps nitrate away from the anaerobic zone, which would otherwise inhibit phosphorus release by PAOs.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182290,
+   "bankKey": "class3-wastewater",
+   "questionNum": 90,
+   "verdict": "UNCLEAR",
+   "note": "Question describes contaminants associated with personal care products, pharmaceuticals and industrial chemicals (i.e., trace organic contaminants / PPCPs), but PPCPs are not offered and microplastics are not 'associated with pharmaceuticals'; conventional plants actually remove most microplastics into sludge. Heavy metals are also associated with industrial chemicals and personal care products, so the key is not defensible as worded.",
+   "original": {
+    "question": "Which category of emerging contaminants is often associated with personal care products, pharmaceuticals, and industrial chemicals, and can be difficult to remove by conventional wastewater treatment?",
+    "options": [
+     "Heavy metals",
+     "Microplastics",
+     "Nutrients (nitrogen and phosphorus)",
+     "Pathogens"
+    ],
+    "correctIndex": 1,
+    "explanation": "Microplastics, along with pharmaceuticals and personal care products (PPCPs), are examples of emerging contaminants. Microplastics, due to their small size and inert nature, are particularly challenging for conventional treatment processes to remove effectively."
+   },
+   "fix": {
+    "question": "Which category of emerging contaminants includes pharmaceuticals, personal care product ingredients and many industrial chemicals, and can be difficult to remove by conventional wastewater treatment?",
+    "options": [
+     "Settleable solids",
+     "Trace organic contaminants (e.g., PPCPs and endocrine-disrupting compounds)",
+     "Nutrients (nitrogen and phosphorus)",
+     "Coliform bacteria"
+    ],
+    "correctIndex": 1,
+    "explanation": "Trace organic contaminants such as pharmaceuticals, personal care product ingredients and endocrine-disrupting compounds occur at very low concentrations and are often only partly removed by conventional treatment, so advanced processes such as activated carbon or advanced oxidation may be needed.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182302,
+   "bankKey": "class3-wastewater",
+   "questionNum": 102,
+   "verdict": "JURISDICTION",
+   "note": "'EQ (Exceptional Quality)' biosolids is US EPA 40 CFR Part 503 terminology, not an Ontario regulatory designation, yet the question is in an Ontario bank. It also conflicts with id 182235, which defines EQ as 'Equivalent Quality'. Ontario regulates biosolids under O. Reg. 267/03 (NMA) using pathogen categories (e.g., CP1/CP2).",
+   "original": {
+    "question": "What is the primary objective of 'enhanced biosolids' (EQ biosolids) as defined by regulatory standards?",
+    "options": [
+     "Biosolids with a higher moisture content for easier pumping.",
+     "Biosolids that meet stringent pathogen reduction and vector attraction reduction requirements for unrestricted use.",
+     "Biosolids with elevated levels of heavy metals for agricultural benefits.",
+     "Biosolids that are only suitable for landfill disposal."
+    ],
+    "correctIndex": 1,
+    "explanation": "EQ (Exceptional Quality) biosolids, often referred to as Class A biosolids, meet the highest standards for pathogen reduction and vector attraction reduction, making them safe for unrestricted use, including public contact sites and home gardens."
+   },
+   "fix": {
+    "question": "Which description best fits the highest-quality biosolids category (commonly called Class A or CP1) used in land application programs?",
+    "options": [
+     "Biosolids with a higher moisture content for easier pumping.",
+     "Biosolids that meet stringent pathogen reduction and vector attraction reduction requirements, allowing the least restrictive use.",
+     "Biosolids with elevated levels of heavy metals for agricultural benefits.",
+     "Biosolids that are only suitable for landfill disposal."
+    ],
+    "correctIndex": 1,
+    "explanation": "The highest-quality biosolids category has undergone processes that reduce pathogens to very low levels and meet vector attraction reduction and metal limits, so it faces the fewest use restrictions. 'Exceptional Quality' is a US EPA term; Ontario uses its own categories under O. Reg. 267/03.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182313,
+   "bankKey": "class3-wastewater",
+   "questionNum": 113,
+   "verdict": "UNCLEAR",
+   "note": "'Class A' is US EPA 503 terminology; Ontario's O. Reg. 267/03 uses pathogen categories (CP1/CP2). Class A does not require pathogens 'below detectable limits' (US Class A is fecal coliform <1,000 MPN/g TS or Salmonella <3 MPN/4 g, plus a vector attraction reduction option), so the marked wording and its explanation overstate the requirement.",
+   "original": {
+    "question": "According to Ontario regulations, what is a key requirement for biosolids to be classified as 'Class A' for unrestricted land application?",
+    "options": [
+     "Pathogen reduction to below detectable limits and vector attraction reduction",
+     "Moisture content below 80% and pH between 6.0 and 9.0",
+     "Volatile solids reduction of at least 38% and low heavy metal concentrations",
+     "Stabilization through lime addition and dewatering to 20% solids"
+    ],
+    "correctIndex": 0,
+    "explanation": "Class A biosolids require stringent pathogen reduction (e.g., fecal coliforms below detection limits) and vector attraction reduction to ensure safety for unrestricted public contact and land application."
+   },
+   "fix": {
+    "question": "What is a key requirement for biosolids to qualify for the highest pathogen reduction category (Class A / CP1) for the least restricted land application?",
+    "options": [
+     "Pathogen reduction to very low specified limits (e.g., fecal coliform below 1,000 MPN/g dry solids) together with vector attraction reduction",
+     "Moisture content below 80% and pH between 6.0 and 9.0",
+     "Volatile solids reduction of at least 38% and low heavy metal concentrations",
+     "Stabilization through lime addition and dewatering to 20% solids"
+    ],
+    "correctIndex": 0,
+    "explanation": "The highest pathogen category requires demonstrated reduction of pathogens to very low specified limits (for example fecal coliform below 1,000 MPN/g dry solids) and vector attraction reduction, so the material is safe for the least restricted use.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182333,
+   "bankKey": "class3-wastewater",
+   "questionNum": 133,
+   "verdict": "UNCLEAR",
+   "note": "More than one option fits. Composting (e.g., 55 C or higher for 3 days in-vessel) and thermophilic aerobic digestion (55-60 C for 10 days) are also recognized Class A processes that heat biosolids to a specified temperature for a defined time, often in a reactor; heat drying is distinguished by evaporating water to produce a dried product.",
+   "original": {
+    "question": "Which method for Class A pathogen reduction in biosolids involves heating the biosolids to a specific temperature for a defined period, often in a reactor?",
+    "options": [
+     "Composting",
+     "Alkaline stabilization",
+     "Heat drying",
+     "Thermophilic aerobic digestion"
+    ],
+    "correctIndex": 2,
+    "explanation": "Heat drying processes involve heating biosolids to temperatures sufficient to reduce pathogen levels to Class A standards, often coupled with moisture reduction."
+   },
+   "fix": {
+    "question": "Which Class A pathogen reduction method uses direct or indirect heat to evaporate water from biosolids, producing a dried, often pelletized product of roughly 90% total solids or more?",
+    "options": [
+     "Composting",
+     "Alkaline stabilization",
+     "Heat drying",
+     "Thermophilic aerobic digestion"
+    ],
+    "correctIndex": 2,
+    "explanation": "Heat drying applies direct or indirect heat to evaporate moisture, reducing pathogens to Class A levels and yielding a dried product (typically 90% total solids or more).",
+    "steps": null
+   }
+  },
+  {
+   "id": 182367,
+   "bankKey": "class3-wastewater",
+   "questionNum": 167,
+   "verdict": "WRONG",
+   "note": "In O. Reg. 267/03 (Nutrient Management Act, 2002) NASM Categories 1/2/3 classify the source material (Cat 1 unprocessed plant material, Cat 2 processed plant material, Cat 3 includes sewage biosolids), not pathogen/vector-attraction performance. Vector attraction reduction is a US EPA Part 503 concept. Checked ontario.ca NASM pages via search.",
+   "original": {
+    "question": "Under Ontario's O. Reg. 267/03, what is a key requirement for biosolids to be classified as 'Category 1' or 'Category 2' for land application?",
+    "options": [
+     "The biosolids must be dewatered to at least 20% solids content.",
+     "Pathogen reduction and vector attraction reduction requirements must be met.",
+     "The biosolids must be composted for a minimum of 180 days.",
+     "The phosphorus content must be below 1% on a dry weight basis."
+    ],
+    "correctIndex": 1,
+    "explanation": "Ontario's O. Reg. 267/03 (General Regulation under the Nutrient Management Act, 2002) specifies that biosolids must meet certain pathogen reduction and vector attraction reduction criteria to be categorized for land application, ensuring public health and environmental safety."
+   },
+   "fix": {
+    "question": "Under Ontario's O. Reg. 267/03 (Nutrient Management Act, 2002), into which NASM (non-agricultural source material) category do sewage biosolids fall?",
+    "options": [
+     "Category 1 (unprocessed plant-based material)",
+     "Category 2 (processed plant-based material)",
+     "Category 3",
+     "They are exempt from the regulation"
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 267/03 classifies NASM by source: Category 1 is generally unprocessed plant material, Category 2 is processed plant material, and Category 3 includes sewage biosolids and some animal-based materials. Category 3 material requires a NASM plan and analysis before land application (subject to the regulation's exemptions and thresholds).",
+    "steps": null
+   }
+  },
+  {
+   "id": 182371,
+   "bankKey": "class3-wastewater",
+   "questionNum": 171,
+   "verdict": "UNCLEAR",
+   "note": "Ontario's MECP document is titled 'Design Guidelines for Sewage Works' (2008); 'Guidelines for the Design of Wastewater Treatment Facilities' is not an Ontario title, and the claimed specific reuse requirement could not be tied to it.",
+   "original": {
+    "question": "According to Ontario's 'Guidelines for the Design of Wastewater Treatment Facilities,' what is a key consideration for the treatment requirements of municipal wastewater intended for non-potable reuse applications like irrigation?",
+    "options": [
+     "Treatment to primary effluent standards with basic disinfection.",
+     "Achieving secondary treatment with advanced disinfection and turbidity limits.",
+     "Complete removal of all dissolved solids and heavy metals.",
+     "Meeting drinking water quality standards with multiple barriers."
+    ],
+    "correctIndex": 1,
+    "explanation": "For non-potable reuse applications such as irrigation, Ontario guidelines typically require municipal wastewater to undergo secondary treatment, followed by advanced disinfection and meeting specific turbidity limits to ensure public health protection."
+   },
+   "fix": {
+    "question": "For non-potable reuse of municipal wastewater such as irrigation, what treatment is generally expected before reuse in Ontario?",
+    "options": [
+     "Treatment to primary effluent standards with basic disinfection.",
+     "Secondary treatment with advanced disinfection and turbidity limits.",
+     "Complete removal of all dissolved solids and heavy metals.",
+     "Meeting drinking water quality standards with multiple barriers."
+    ],
+    "correctIndex": 1,
+    "explanation": "For non-potable reuse such as irrigation, reclaimed water is generally expected to receive at least secondary treatment, followed by advanced disinfection and turbidity control to protect public health, with specific requirements set in the facility's Environmental Compliance Approval.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182383,
+   "bankKey": "class3-wastewater",
+   "questionNum": 183,
+   "verdict": "WRONG",
+   "note": "UCT is not 'anoxic then anaerobic then aerobic'. The UCT sequence is anaerobic-anoxic-aerobic; RAS is returned to the anoxic zone and an internal recycle from the anoxic zone feeds the anaerobic zone to keep nitrate out. The only common process with an anoxic zone ahead of the anaerobic zone is the Johannesburg process, which is not offered.",
+   "original": {
+    "question": "Which advanced BNR process incorporates an anoxic zone followed by an anaerobic zone and then an aerobic zone, often used for enhanced biological phosphorus and nitrogen removal?",
+    "options": [
+     "A2O (Anaerobic-Anoxic-Oxic) process",
+     "Modified Ludzack-Ettinger (MLE) process",
+     "University of Cape Town (UCT) process",
+     "Oxidation Ditch process"
+    ],
+    "correctIndex": 2,
+    "explanation": "The University of Cape Town (UCT) process is a modification of the A2O process that includes an anoxic zone upstream of the anaerobic zone, followed by the aerobic zone. This configuration is designed to improve biological phosphorus removal by minimizing nitrate recycle to the anaerobic zone."
+   },
+   "fix": {
+    "question": "Which BNR process returns RAS to the anoxic zone and recycles mixed liquor from the anoxic zone to the anaerobic zone to keep nitrate out of the anaerobic zone?",
+    "options": [
+     "A2O (Anaerobic-Anoxic-Oxic) process",
+     "Modified Ludzack-Ettinger (MLE) process",
+     "University of Cape Town (UCT) process",
+     "Oxidation Ditch process"
+    ],
+    "correctIndex": 2,
+    "explanation": "The UCT process is a modification of A2O: RAS goes to the anoxic zone (not the anaerobic zone) and a separate anoxic-to-anaerobic recycle supplies the anaerobic zone, minimizing nitrate there and improving biological phosphorus removal.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182386,
+   "bankKey": "class3-wastewater",
+   "questionNum": 186,
+   "verdict": "WRONG",
+   "note": "55 C for 3 days in an in-vessel or aerated static pile is the classic composting PFRP time-temperature criterion (40 CFR 503 Appendix B / Ontario compost standards). Thermophilic aerobic digestion is not the process defined by this criterion; also 'Class A' is US EPA terminology, not Ontario.",
+   "original": {
+    "question": "Which Class A pathogen reduction process for biosolids involves maintaining a specific temperature for a defined period, typically 55°C for 3 days, with continuous mixing?",
+    "options": [
+     "Anaerobic digestion (mesophilic)",
+     "Composting (aerobic static pile)",
+     "Heat drying (thermal treatment)",
+     "Thermophilic aerobic digestion"
+    ],
+    "correctIndex": 3,
+    "explanation": "Thermophilic aerobic digestion is a process that achieves Class A pathogen reduction by maintaining biosolids at elevated temperatures (e.g., 55-60°C) for a specific duration, combined with aeration and mixing, effectively destroying pathogens."
+   },
+   "fix": {
+    "question": "Which biosolids treatment process is recognized for high-level pathogen reduction by holding the material at 55 C or higher for at least 3 days in an enclosed vessel or aerated static pile?",
+    "options": [
+     "Anaerobic digestion (mesophilic)",
+     "Composting (in-vessel or aerated static pile)",
+     "Heat drying (thermal treatment)",
+     "Thermophilic aerobic digestion"
+    ],
+    "correctIndex": 1,
+    "explanation": "Composting in an in-vessel or aerated static pile system must maintain 55 C or higher for at least 3 days to achieve high-level pathogen reduction. Mesophilic anaerobic digestion only gives lower-level reduction, and heat drying and thermophilic digestion use different time-temperature criteria.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182405,
+   "bankKey": "class3-wastewater",
+   "questionNum": 205,
+   "verdict": "JURISDICTION",
+   "note": "'Exceptional Quality' is a US EPA Part 503 term, not Ontario. The marked option says 'restricted public access' while the explanation says 'unrestricted', so key and explanation disagree and the option is misleading.",
+   "original": {
+    "question": "What is the primary objective of a land application program for biosolids that meets 'Exceptional Quality' (EQ) standards?",
+    "options": [
+     "To minimize the nutrient content of the biosolids for disposal.",
+     "To ensure the biosolids are safe for restricted public access and use as a soil amendment.",
+     "To require extensive pre-treatment to remove all organic matter.",
+     "To facilitate direct discharge of biosolids into surface waters."
+    ],
+    "correctIndex": 1,
+    "explanation": "Exceptional Quality (EQ) biosolids meet stringent pathogen reduction and vector attraction reduction requirements, along with low heavy metal concentrations. The primary objective is to ensure they are safe for unrestricted public access and can be used as a high-quality soil amendment."
+   },
+   "fix": {
+    "question": "What is the main purpose of producing high-quality biosolids with very low pathogen and metal levels for land application?",
+    "options": [
+     "To minimize the nutrient content of the biosolids for disposal.",
+     "To allow safe use as a soil amendment with few use restrictions.",
+     "To require extensive pre-treatment to remove all organic matter.",
+     "To facilitate direct discharge of biosolids into surface waters."
+    ],
+    "correctIndex": 1,
+    "explanation": "Biosolids with very low pathogen and metal concentrations can be safely used as a nutrient-rich soil amendment with few restrictions on use. Discharge to surface waters is not a land application practice, and organic matter and nutrients are the beneficial components.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182413,
+   "bankKey": "class3-wastewater",
+   "questionNum": 213,
+   "verdict": "UNCLEAR",
+   "note": "Option C (reduced oxygen solubility at higher temperature, less efficient aeration) is also a true effect and the explanation itself states it, so two options are defensible.",
+   "original": {
+    "question": "What is a primary impact of increased water temperatures, potentially exacerbated by climate change, on biological nutrient removal (BNR) processes?",
+    "options": [
+     "Decreased rates of biological reactions, requiring longer detention times.",
+     "Enhanced rates of nitrification and denitrification, but potentially increased oxygen demand.",
+     "Reduced solubility of oxygen, making aeration less efficient.",
+     "Increased stability of sludge settling in secondary clarifiers."
+    ],
+    "correctIndex": 1,
+    "explanation": "Increased water temperatures generally enhance the rates of biological reactions, including nitrification and denitrification, potentially allowing for smaller reactor volumes or higher loading rates. However, higher temperatures also reduce oxygen solubility, making aeration less efficient and potentially increasing oxygen demand."
+   },
+   "fix": {
+    "question": "What is a primary impact of increased water temperatures, potentially exacerbated by climate change, on biological nutrient removal (BNR) processes?",
+    "options": [
+     "Decreased rates of biological reactions, requiring longer detention times.",
+     "Enhanced rates of nitrification and denitrification, but potentially increased oxygen demand.",
+     "Increased solubility of oxygen, making aeration more efficient.",
+     "Increased stability of sludge settling in secondary clarifiers."
+    ],
+    "correctIndex": 1,
+    "explanation": "Higher water temperatures generally increase the rates of biological reactions, including nitrification and denitrification, but they also reduce oxygen solubility and increase oxygen demand, making aeration more demanding.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182419,
+   "bankKey": "class3-wastewater",
+   "questionNum": 219,
+   "verdict": "JURISDICTION",
+   "note": "'Class A' and fecal coliform limits are US EPA 40 CFR 503 terms; O. Reg. 267/03 does not use Class A and does not set these limits (it uses NASM categories and E. coli/Salmonella based pathogen sub-categories). Attributing Class A to O. Reg. 267/03 is wrong.",
+   "original": {
+    "question": "For Class A biosolids pathogen reduction under Ontario's O. Reg. 267/03, what is a common method used to achieve the required fecal coliform limits?",
+    "options": [
+     "Anaerobic digestion at mesophilic temperatures for 20 days",
+     "Composting at 55 degrees Celsius for a minimum of 3 days",
+     "Aerobic digestion for 60 days at ambient temperatures",
+     "Lime stabilization to a pH of 9.0 for 24 hours"
+    ],
+    "correctIndex": 1,
+    "explanation": "Composting at elevated temperatures (e.g., 55°C for 3 days) is a recognized process for achieving Class A pathogen reduction in biosolids, meeting the requirements of O. Reg. 267/03."
+   },
+   "fix": {
+    "question": "Which of the following is a common method for achieving high-level pathogen reduction in biosolids before beneficial use?",
+    "options": [
+     "Anaerobic digestion at mesophilic temperatures for 20 days",
+     "Composting at 55 degrees Celsius for a minimum of 3 days",
+     "Aerobic digestion for 60 days at ambient temperatures",
+     "Lime stabilization to a pH of 9.0 for 24 hours"
+    ],
+    "correctIndex": 1,
+    "explanation": "Composting at 55 C or higher for at least 3 days (in-vessel or aerated static pile) is a recognized high-level pathogen reduction process. The other options give only lower-level reduction. ('Class A' is US EPA terminology; Ontario's O. Reg. 267/03 uses NASM categories and pathogen sub-categories.)",
+    "steps": null
+   }
+  },
+  {
+   "id": 182423,
+   "bankKey": "class3-wastewater",
+   "questionNum": 223,
+   "verdict": "JURISDICTION",
+   "note": "Class A/Class B are US EPA 40 CFR 503 terms; Ontario (O. Reg. 267/03) uses NASM categories and pathogen sub-categories. The question should state it is US terminology.",
+   "original": {
+    "question": "What is 'Class A' versus 'Class B' biosolids?",
+    "options": [
+     "Quality grades like school marks",
+     "Pathogen reduction classifications: Class A (virtually pathogen-free — unrestricted use, meets strict time-temperature or treatment criteria) versus Class B (reduced pathogens — restricted use, site restrictions, crop restrictions)",
+     "Only Class A exists",
+     "No difference in quality"
+    ],
+    "correctIndex": 1,
+    "explanation": "Class A: fecal coliform <1000 MPN/g or Salmonella <3 MPN/4g, achieved by: thermophilic digestion, composting (55°C/3 days), thermal drying, pasteurization, or lime stabilization (pH>12, 72h). Unrestricted land application. Class B: fecal coliform <2×10⁶ MPN/g (geometric mean), achieved by: mesophilic digestion (15d SRT). Restricted: buffer distances, crop restrictions, public access limits."
+   },
+   "fix": {
+    "question": "What do the US EPA terms 'Class A' and 'Class B' biosolids describe? (Ontario's O. Reg. 267/03 uses NASM categories instead.)",
+    "options": [
+     "Quality grades like school marks",
+     "Pathogen reduction classifications: Class A (virtually pathogen-free, meets strict time-temperature or treatment criteria, minimal use restrictions) versus Class B (reduced pathogens, with site and crop restrictions)",
+     "Only Class A exists",
+     "No difference in quality"
+    ],
+    "correctIndex": 1,
+    "explanation": "Class A: fecal coliform <1000 MPN/g or Salmonella <3 MPN/4 g, achieved by thermophilic digestion, composting (55 C/3 days), thermal drying, pasteurization, or lime stabilization (pH>12, 72 h). Class B: fecal coliform <2x10^6 MPN/g (geometric mean), achieved by mesophilic digestion (15 d SRT), with buffer distance, crop and public access restrictions.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182445,
+   "bankKey": "class3-wastewater",
+   "questionNum": 245,
+   "verdict": "WRONG",
+   "note": "DSVI is the Diluted Sludge Volume Index (see question 182478), not 'Dissolved Solids Volume Index'. The explanation about 'non-settleable solids' is also wrong: the dilution removes the effect of high solids concentration on hindered settling.",
+   "original": {
+    "question": "In the context of advanced activated sludge optimization, what does the Dissolved Solids Volume Index (DSVI) specifically indicate?",
+    "options": [
+     "The concentration of dissolved solids in the mixed liquor",
+     "The settling characteristics of the activated sludge after 30 minutes, normalized for solids concentration",
+     "The volume of sludge produced per unit of BOD removed",
+     "The rate of oxygen consumption by the microbial population"
+    ],
+    "correctIndex": 1,
+    "explanation": "DSVI is a modification of SVI that normalizes for the non-settleable solids, providing a more accurate measure of the inherent settling characteristics of the activated sludge floc, particularly useful for systems with high inert suspended solids."
+   },
+   "fix": {
+    "question": "In the context of advanced activated sludge optimization, what does the Diluted Sludge Volume Index (DSVI) specifically indicate?",
+    "options": [
+     "The concentration of dissolved solids in the mixed liquor",
+     "The settling characteristics of the activated sludge after 30 minutes, measured on a diluted sample so the result is not distorted by solids concentration",
+     "The volume of sludge produced per unit of BOD removed",
+     "The rate of oxygen consumption by the microbial population"
+    ],
+    "correctIndex": 1,
+    "explanation": "DSVI is a modification of the SVI test in which the sludge is diluted with effluent so that the settled volume at 30 minutes is within about 250 mL/L. This removes the influence of high MLSS (hindered settling) and gives a more comparable measure of the sludge's settling characteristics.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182465,
+   "bankKey": "class3-wastewater",
+   "questionNum": 265,
+   "verdict": "UNCLEAR",
+   "note": "Enhanced biological P removal does not favour a 'long' SRT; PAO systems typically run at moderate SRT (about 5-20 days depending on temperature), and excessive SRT reduces P removal per unit of sludge wasted, as the step text itself admits. 'Long SRT' is misleading.",
+   "original": {
+    "question": "Which of the following is the most effective strategy for optimizing the Solids Retention Time (SRT) in an activated sludge system to achieve enhanced biological phosphorus removal?",
+    "options": [
+     "Maintaining a very short SRT to encourage rapid biomass growth and nutrient uptake.",
+     "Operating with a long SRT to promote the growth of phosphorus-accumulating organisms (PAOs).",
+     "Varying the SRT frequently to shock the microbial population and improve phosphorus release.",
+     "Keeping the SRT constant and low to minimize sludge production and disposal costs."
+    ],
+    "correctIndex": 1,
+    "explanation": "A long SRT is crucial for the selection and growth of phosphorus-accumulating organisms (PAOs) in biological phosphorus removal systems. This allows sufficient time for PAOs to cycle through anaerobic and aerobic conditions, leading to enhanced phosphorus uptake."
+   },
+   "fix": {
+    "question": "Which is the most effective strategy for optimizing the Solids Retention Time (SRT) in an activated sludge system to achieve enhanced biological phosphorus removal?",
+    "options": [
+     "Maintaining a very short SRT to encourage rapid biomass growth and nutrient uptake.",
+     "Operating at a controlled SRT long enough to retain PAOs, but not so long that excess sludge age reduces phosphorus removal.",
+     "Varying the SRT frequently to shock the microbial population and improve phosphorus release.",
+     "Keeping the SRT constant and low to minimize sludge production and disposal costs."
+    ],
+    "correctIndex": 1,
+    "explanation": "PAOs must be retained in the system, so the SRT must exceed their minimum washout SRT, but EBPR depends on wasting P-rich sludge, so SRT should be moderate rather than maximized.",
+    "steps": [
+     {
+      "l": "Identify the question type",
+      "c": "This asks which SRT strategy best supports enhanced biological phosphorus removal (EBPR). It is conceptual, not a calculation."
+     },
+     {
+      "l": "Recall how EBPR works",
+      "c": "Phosphorus-accumulating organisms (PAOs) must cycle repeatedly between anaerobic conditions (VFA uptake and phosphorus release) and aerobic or anoxic conditions (luxury phosphorus uptake), then be removed with the waste sludge."
+     },
+     {
+      "l": "Apply SRT control",
+      "c": "The SRT must be long enough to keep PAOs from washing out, but P is removed only by wasting P-rich sludge, so excessive SRT reduces phosphorus removal."
+     },
+     {
+      "l": "Eliminate the distractors",
+      "c": "A very short SRT washes out PAOs, deliberately varying SRT destabilizes the population, and a constant low SRT is chosen for cost rather than phosphorus removal. Option B is the best choice."
+     }
+    ]
+   }
+  },
+  {
+   "id": 182470,
+   "bankKey": "class3-wastewater",
+   "questionNum": 270,
+   "verdict": "JURISDICTION",
+   "note": "Ontario has no 'Category 1 unrestricted' biosolids class defined by Class A pathogen and vector attraction reduction (US EPA 40 CFR 503 concepts). Under O. Reg. 267/03 sewage biosolids are Category 3 NASM; Category 1 is unprocessed plant material.",
+   "original": {
+    "question": "Under Ontario's regulatory framework, what is a key requirement for biosolids to be classified as 'Category 1' for unrestricted land application?",
+    "options": [
+     "Meeting specific pathogen reduction and vector attraction reduction requirements.",
+     "Being dewatered to at least 20% total solids content.",
+     "Being generated from a facility with a tertiary treatment process.",
+     "Undergoing a minimum of 30 days of aerobic digestion."
+    ],
+    "correctIndex": 0,
+    "explanation": "For biosolids to be classified as Category 1 for unrestricted land application in Ontario, they must meet stringent pathogen reduction (e.g., Class A) and vector attraction reduction requirements as outlined in O. Reg. 267/03 (General) under the Nutrient Management Act, 2002."
+   },
+   "fix": {
+    "question": "Under O. Reg. 267/03, what analysis is required of sewage biosolids (Category 3 NASM) before they are land applied?",
+    "options": [
+     "Analysis for metals and pathogens such as E. coli and Salmonella",
+     "Dewatering to at least 20% total solids content",
+     "Generation at a facility with a tertiary treatment process",
+     "A minimum of 30 days of aerobic digestion"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sewage biosolids are Category 3 NASM under O. Reg. 267/03 and must be analysed (including metals and pathogen indicators such as E. coli and Salmonella) before land application. Solids content, tertiary treatment and fixed digestion times are not the criteria.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182474,
+   "bankKey": "class3-wastewater",
+   "questionNum": 274,
+   "verdict": "WRONG",
+   "note": "Key (OWRA) is acceptable, but the explanation is wrong: O. Reg. 170/03 is made under the Safe Drinking Water Act, 2002, not OWRA, and O. Reg. 525/98 is the Approval Exemptions regulation. Sewage works ECAs are issued under OWRA s.53 and EPA Part II.1.",
+   "original": {
+    "question": "What is the primary regulatory document that outlines the requirements for municipal wastewater treatment and discharge in Ontario?",
+    "options": [
+     "The Occupational Health and Safety Act.",
+     "The Ontario Water Resources Act (OWRA) and its associated regulations.",
+     "The Safe Drinking Water Act, 2002.",
+     "The Environmental Assessment Act."
+    ],
+    "correctIndex": 1,
+    "explanation": "The Ontario Water Resources Act (OWRA) and its associated regulations (e.g., O. Reg. 525/98 for approvals, O. Reg. 170/03 for drinking water) are the primary legal framework governing municipal wastewater treatment and discharge in Ontario, including Environmental Compliance Approvals (ECAs)."
+   },
+   "fix": {
+    "question": "Which Ontario statute, with its regulations, is the primary legal framework for approvals of municipal sewage works and discharge to waters?",
+    "options": [
+     "The Occupational Health and Safety Act.",
+     "The Ontario Water Resources Act (OWRA) and its associated regulations.",
+     "The Safe Drinking Water Act, 2002.",
+     "The Environmental Assessment Act."
+    ],
+    "correctIndex": 1,
+    "explanation": "The Ontario Water Resources Act (s.53 approvals, issued as Environmental Compliance Approvals) together with the Environmental Protection Act governs municipal sewage works and their discharges. The Safe Drinking Water Act, 2002 (and O. Reg. 170/03) governs drinking water systems, not wastewater.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182499,
+   "bankKey": "class3-wastewater",
+   "questionNum": 299,
+   "verdict": "UNCLEAR",
+   "note": "Option B ('remove phosphorus without chemicals') is also a correct statement of the objective of a biological P removal system, so B and D are both defensible.",
+   "original": {
+    "question": "What is the primary objective of implementing an advanced biological phosphorus removal (BPR) system like A2O or UCT?",
+    "options": [
+     "To reduce the overall energy consumption of the plant.",
+     "To remove phosphorus from wastewater without the use of chemicals.",
+     "To enhance the settling characteristics of activated sludge.",
+     "To achieve both nitrogen and phosphorus removal biologically."
+    ],
+    "correctIndex": 3,
+    "explanation": "Advanced BPR systems like A2O and UCT are designed to achieve both biological nitrogen removal (nitrification/denitrification) and biological phosphorus removal, often reducing or eliminating the need for chemical phosphorus precipitation."
+   },
+   "fix": {
+    "question": "What is the primary objective of implementing an advanced biological phosphorus removal (BPR) system like A2O or UCT?",
+    "options": [
+     "To reduce the overall energy consumption of the plant.",
+     "To remove phosphorus by chemical precipitation only.",
+     "To enhance the settling characteristics of activated sludge.",
+     "To achieve both nitrogen and phosphorus removal biologically."
+    ],
+    "correctIndex": 3,
+    "explanation": "Advanced BPR systems like A2O and UCT are designed to achieve both biological nitrogen removal (nitrification/denitrification) and biological phosphorus removal, often reducing the need for chemical phosphorus precipitation.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182508,
+   "bankKey": "class3-wastewater",
+   "questionNum": 308,
+   "verdict": "WRONG",
+   "note": "Chlorine reacts with ammonia to form chloramines almost instantly, so good mixing and a short contact time cannot prevent chloramine formation in ammonia-bearing wastewater. The accepted way to eliminate combined chlorine is breakpoint chlorination (dose past the breakpoint so ammonia is oxidised to N2). Marked answer is not valid.",
+   "original": {
+    "question": "What is a key operational strategy to prevent the formation of chloramines when using chlorine for disinfection in a wastewater treatment plant?",
+    "options": [
+     "Maintaining a high chlorine residual throughout the contact chamber.",
+     "Ensuring adequate mixing and a short contact time with ammonia.",
+     "Increasing the pH of the wastewater prior to chlorination.",
+     "Adding a dechlorinating agent before chlorine addition."
+    ],
+    "correctIndex": 1,
+    "explanation": "To prevent or minimize chloramine formation, it's crucial to ensure rapid and thorough mixing of chlorine with wastewater and to minimize the contact time between free chlorine and ammonia. This allows free chlorine to react with other compounds before forming chloramines."
+   },
+   "fix": {
+    "question": "In chlorine disinfection of wastewater containing ammonia, what is the operational approach used to eliminate chloramines (combined chlorine) rather than simply forming them?",
+    "options": [
+     "Use a very short contact time so ammonia cannot react",
+     "Breakpoint chlorination: dosing chlorine past the breakpoint so ammonia is oxidised and free chlorine residual develops",
+     "Lower the pH of the wastewater before chlorination",
+     "Add a dechlorinating agent before the chlorine"
+    ],
+    "correctIndex": 1,
+    "explanation": "Chlorine reacts with ammonia within seconds to form chloramines (combined chlorine). Chloramines are destroyed by breakpoint chlorination, where enough chlorine is added to oxidise the ammonia (largely to nitrogen gas) so that a free chlorine residual appears. Mixing and contact time do not prevent the reaction, and dechlorinating agents remove chlorine rather than prevent chloramines.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182519,
+   "bankKey": "class3-wastewater",
+   "questionNum": 319,
+   "verdict": "UNCLEAR",
+   "note": "In the Vesilind equation (v = v0 e^(-nX)), n is the settling-decay coefficient, not a 'compression constant'. A higher n means velocity drops faster with rising concentration, i.e. poorer settleability; option 'highly dispersed and poor settling' can also be defended. Wording should state the effect precisely.",
+   "original": {
+    "question": "When applying Vesilind settling velocity principles to a secondary clarifier, what does a higher 'n' value in the Vesilind equation typically indicate about the sludge?",
+    "options": [
+     "The sludge has excellent settling characteristics and compacts well.",
+     "The sludge exhibits significant hindered settling at lower solids concentrations.",
+     "The sludge is highly dispersed and has poor settling properties.",
+     "The sludge is primarily composed of inorganic solids with high density."
+    ],
+    "correctIndex": 1,
+    "explanation": "In the Vesilind equation, a higher 'n' value (compression constant) indicates that the sludge experiences significant hindered settling and compression effects, particularly at higher solids concentrations."
+   },
+   "fix": {
+    "question": "In the Vesilind settling equation v = v0·e^(-nX), what does a higher value of n indicate about the sludge?",
+    "options": [
+     "The sludge settles very well and compacts easily at all concentrations",
+     "Settling velocity falls off more steeply as solids concentration increases (poorer hindered settling)",
+     "Settling velocity is independent of solids concentration",
+     "The sludge has a higher maximum (initial) settling velocity v0"
+    ],
+    "correctIndex": 1,
+    "explanation": "In v = v0·e^(-nX), n describes how quickly settling velocity declines as solids concentration X rises. A larger n means hindered settling becomes severe at lower concentrations, so the sludge settles and thickens less well.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182553,
+   "bankKey": "class3-wastewater",
+   "questionNum": 353,
+   "verdict": "UNCLEAR",
+   "note": "Unverified claims: OIC must hold 'Class 2+' (one class below facility), Class 3 needs '4+ years', and CEUs. O. Reg. 129/04 example states the ORO of a Class III wastewater treatment facility must hold a Class III or Class IV licence; the OIC class rule could not be confirmed (sources conflict). Restrict the item to the verified ORO rule.",
+   "original": {
+    "question": "What is 'operator certification' requirements for Class 3 wastewater treatment?",
+    "options": [
+     "Any operator can run a Class 3 plant",
+     "Class 3 WWTP requires: ORO with Class 3+ WT certification, OIC with Class 2+ WT certification, and all operators performing duties must hold appropriate certification — per O. Reg. 129/04",
+     "Only one certified operator needed",
+     "Certification is voluntary"
+    ],
+    "correctIndex": 1,
+    "explanation": "Class 3 WWTP (O. Reg. 129/04): ORO ≥ Class 3 WWT certification, OIC ≥ Class 2 WWT (one class below facility). All operators: must hold certification appropriate to duties performed. Requirements for certification: education (Grade 12 minimum), experience (varies by class — Class 3 needs 4+ years), examination (OWWCO), and continuing education (CEUs for renewal every 3 years)."
+   },
+   "fix": {
+    "question": "Under O. Reg. 129/04, what wastewater treatment licence must the overall responsible operator (ORO) of a Class 3 wastewater treatment facility hold?",
+    "options": [
+     "A Class 1 wastewater treatment operator licence",
+     "A Class 3 or Class 4 wastewater treatment operator licence",
+     "An operator-in-training licence",
+     "No licence is required if the plant is municipally owned"
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 129/04 requires the overall responsible operator of a Class 3 wastewater treatment facility to hold a Class 3 or Class 4 wastewater treatment operator licence.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182556,
+   "bankKey": "class3-wastewater",
+   "questionNum": 356,
+   "verdict": "UNCLEAR",
+   "note": "Explanation asserts the OIC need only hold a licence one class below the facility; I could not confirm this against O. Reg. 129/04 (sources conflict). The marked option's ORO/OIC role distinction is fine, but the explanation's licence-class claim is unverified.",
+   "original": {
+    "question": "What is 'overall responsible operator' (ORO) versus 'operator-in-charge' (OIC)?",
+    "options": [
+     "They are the same role",
+     "ORO: overall responsibility for facility operation and maintenance (may not be on-site at all times). OIC: person in charge during a specific shift/period (must be available to respond). Both must hold appropriate certification",
+     "Only ORO is needed",
+     "OIC is always on-site"
+    ],
+    "correctIndex": 1,
+    "explanation": "ORO (O. Reg. 129/04): designated by owner, overall responsibility for operation/maintenance, ensures: adequate staffing, procedures followed, compliance maintained, and training provided. Certification ≥ facility class. OIC: designated for each operating period, responsible for: operational decisions during their period, must be reachable and able to respond. Certification ≥ one class below facility. Both: documented designation."
+   },
+   "fix": {
+    "question": "What is 'overall responsible operator' (ORO) versus 'operator-in-charge' (OIC)?",
+    "options": [
+     "They are the same role",
+     "ORO: overall responsibility for facility operation and maintenance (may not be on-site at all times). OIC: person in charge during a specific shift/period (must be available to respond). Both must hold appropriate certification",
+     "Only ORO is needed",
+     "OIC is always on-site"
+    ],
+    "correctIndex": 1,
+    "explanation": "ORO (O. Reg. 129/04): designated by the owner, with overall responsibility for operation and maintenance, ensuring adequate staffing, procedures followed, compliance maintained and training provided. OIC: designated for each operating period, responsible for operational decisions during that period and must be reachable and able to respond. Both must hold licences appropriate to the facility and be formally designated.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182571,
+   "bankKey": "class3-wastewater",
+   "questionNum": 371,
+   "verdict": "JURISDICTION",
+   "note": "Ontario's O. Reg. 267/03 (NASM) does not use 'Class A' pathogen reduction; that is US EPA 40 CFR 503 terminology. Ontario classifies material by metals (CM1/CM2) and pathogens (CP1/CP2) and tests sewage biosolids for E. coli. Source: ontario.ca analysis requirements for NASM.",
+   "original": {
+    "question": "According to Ontario's Biosolids Management requirements, what is a key characteristic of Class A pathogen reduction biosolids?",
+    "options": [
+     "They can be land applied without public access restrictions after treatment",
+     "They must meet specific vector attraction reduction requirements only",
+     "They are only suitable for use in agricultural applications with crop harvesting restrictions",
+     "They require a minimum of 2 years of storage before land application"
+    ],
+    "correctIndex": 0,
+    "explanation": "Class A biosolids have undergone treatment to significantly reduce pathogens, allowing for land application with fewer restrictions on public access and crop harvesting, similar to fertilizers."
+   },
+   "fix": {
+    "question": "Under Ontario's O. Reg. 267/03 (NASM), what are the pathogen sub-categories of non-agricultural source material called?",
+    "options": [
+     "Class A and Class B",
+     "CP1 and CP2",
+     "CM1 and CM2",
+     "Grade 1 and Grade 2"
+    ],
+    "correctIndex": 1,
+    "explanation": "Under O. Reg. 267/03, NASM is classed by metal content as CM1 or CM2 and by pathogen content as CP1 or CP2. 'Class A/Class B' is US EPA Part 503 terminology, not Ontario's.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182582,
+   "bankKey": "class3-wastewater",
+   "questionNum": 382,
+   "verdict": "WRONG",
+   "note": "Explanation cites O. Reg. 453/07 (financial plans) as governing wastewater full-cost recovery. O. Reg. 453/07 is under the Safe Drinking Water Act, 2002 and applies to municipal drinking water systems, not wastewater. Marked answer is right; the explanation's regulatory claim is wrong.",
+   "original": {
+    "question": "What is 'full-cost recovery' for wastewater services?",
+    "options": [
+     "Recovering costs from spills",
+     "Setting user rates to cover all costs of providing wastewater service: operations, maintenance, administration, debt service, capital reserves (asset renewal), and regulatory compliance — ensuring long-term financial sustainability",
+     "Only operating costs need recovery",
+     "Government should pay all costs"
+    ],
+    "correctIndex": 1,
+    "explanation": "Full-cost recovery (O. Reg. 453/07 — financial plans): operating costs (staff, energy, chemicals, maintenance), capital costs (debt service, reserves for asset renewal/replacement), and regulatory costs (monitoring, reporting, compliance). Rate structure: flat rate, volumetric, or combination. Financial plan: 6-year projection, demonstrate sustainability. Without full-cost recovery: infrastructure deterioration, service decline, and regulatory non-compliance."
+   },
+   "fix": {
+    "question": "What is 'full-cost recovery' for wastewater services?",
+    "options": [
+     "Recovering costs from spills",
+     "Setting user rates to cover all costs of providing wastewater service: operations, maintenance, administration, debt service, capital reserves (asset renewal), and regulatory compliance — ensuring long-term financial sustainability",
+     "Only operating costs need recovery",
+     "Government should pay all costs"
+    ],
+    "correctIndex": 1,
+    "explanation": "Full-cost recovery means rates cover operating costs (staff, energy, chemicals, maintenance), capital costs (debt service, reserves for asset renewal/replacement), and regulatory costs (monitoring, reporting, compliance). Rate structure may be flat, volumetric or a combination. Without full-cost recovery: infrastructure deterioration, service decline, and regulatory non-compliance.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182611,
+   "bankKey": "class3-wastewater",
+   "questionNum": 411,
+   "verdict": "UNITS",
+   "note": "US units (35,000°F) in a Canadian bank. 35,000°F is about 19,400°C.",
+   "original": {
+    "question": "What is 'arc flash' hazard at wastewater treatment plants?",
+    "options": [
+     "A camera flash in dark areas",
+     "An explosive release of energy from an electrical fault — causing: extreme heat (up to 35,000°F), pressure wave, molten metal, and intense light; requiring: arc flash analysis, proper PPE (rated clothing), and safe work practices",
+     "Only high voltage is dangerous",
+     "Arc flash cannot occur in wastewater plants"
+    ],
+    "correctIndex": 1,
+    "explanation": "Arc flash: electrical fault creates plasma arc — releases enormous energy in milliseconds. WWTP risk: MCCs, switchgear, transformers, VFDs, and panel boards. Requirements: arc flash study (calculate incident energy at each panel), labeling (PPE category, flash boundary), PPE (arc-rated clothing — cal/cm² rating), and safe work practices (de-energize when possible, maintain working distance, use insulated tools). NFPA 70E compliance."
+   },
+   "fix": {
+    "question": "What is 'arc flash' hazard at wastewater treatment plants?",
+    "options": [
+     "A camera flash in dark areas",
+     "An explosive release of energy from an electrical fault — causing: extreme heat (up to about 19,000°C), pressure wave, molten metal, and intense light; requiring: arc flash analysis, proper PPE (rated clothing), and safe work practices",
+     "Only high voltage is dangerous",
+     "Arc flash cannot occur in wastewater plants"
+    ],
+    "correctIndex": 1,
+    "explanation": "Arc flash: electrical fault creates plasma arc — releases enormous energy in milliseconds. WWTP risk: MCCs, switchgear, transformers, VFDs, and panel boards. Requirements: arc flash study (calculate incident energy at each panel), labeling (PPE category, flash boundary), PPE (arc-rated clothing — cal/cm² rating), and safe work practices (de-energize when possible, maintain working distance, use insulated tools). CSA Z462 / NFPA 70E compliance.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182625,
+   "bankKey": "class3-wastewater",
+   "questionNum": 425,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 267/03 has no 'Class A' biosolids classification (US EPA Part 503 term). Ontario requires sewage biosolids to be tested for E. coli, with a maximum of 2 million CFU per gram total solids (dry weight) for non-aqueous material, or 2 million CFU/100 mL for aqueous material. Source: ontario.ca analysis requirements for NASM.",
+   "original": {
+    "question": "For biosolids to be classified as Class A under Ontario's O. Reg. 267/03, what is the primary requirement regarding pathogen reduction?",
+    "options": [
+     "Pathogen levels must be reduced to below detectable limits for all indicator organisms.",
+     "The biosolids must meet specific limits for fecal coliforms or Salmonella sp. density.",
+     "A minimum of 90% reduction in total coliforms must be achieved.",
+     "The biosolids must be free of all viruses and protozoa before land application."
+    ],
+    "correctIndex": 1,
+    "explanation": "Ontario's O. Reg. 267/03 sets specific pathogen reduction requirements for Class A biosolids, typically involving limits on fecal coliforms or Salmonella sp. density, ensuring a high level of pathogen destruction suitable for broader land application."
+   },
+   "fix": {
+    "question": "Under Ontario's O. Reg. 267/03, which pathogen indicator must sewage biosolids be tested for before land application, and what is the maximum for non-aqueous material?",
+    "options": [
+     "Salmonella; no detectable organisms",
+     "E. coli; 2 million CFU per gram total solids (dry weight)",
+     "Total coliforms; 90% reduction",
+     "Fecal streptococci; 1,000 CFU per gram"
+    ],
+    "correctIndex": 1,
+    "explanation": "Sewage biosolids must be tested for E. coli, and cannot be land applied if E. coli exceeds 2 million CFU per gram of total solids (dry weight) for non-aqueous material (2 million CFU/100 mL for aqueous material).",
+    "steps": null
+   }
+  },
+  {
+   "id": 182663,
+   "bankKey": "class3-wastewater",
+   "questionNum": 463,
+   "verdict": "UNCLEAR",
+   "note": "Under Ontario NASM/biosolids rules (O. Reg. 267/03 and the associated nutrient management framework) storage is required mainly to hold material during periods when land application is not permitted or practical (frozen/snow-covered ground, saturated soils, crop timing). Any pathogen reduction in storage is incidental, and pathogen/stability criteria are met by the treatment process or by NASM category limits. 'Primary purpose = further pathogen reduction' as 'per Ontario regulations' is not supported.",
+   "original": {
+    "question": "What is the primary purpose of a 'lagooning' or 'storage' period for biosolids in a land application program, as per Ontario regulations?",
+    "options": [
+     "To reduce the volume of biosolids through evaporation alone",
+     "To allow for further pathogen reduction and stabilization before land application",
+     "To increase the moisture content of the biosolids for easier pumping",
+     "To facilitate the recovery of valuable metals from the biosolids"
+    ],
+    "correctIndex": 1,
+    "explanation": "Lagooning or extended storage of biosolids can contribute to further pathogen reduction and stabilization through natural processes, making them safer and more suitable for land application according to regulatory requirements."
+   },
+   "fix": {
+    "question": "What is the primary purpose of a storage facility (e.g. biosolids storage tank or lagoon) in an Ontario land application program?",
+    "options": [
+     "To reduce the volume of biosolids through evaporation alone",
+     "To hold biosolids during periods when land application is not permitted or practical, such as frozen or snow-covered ground",
+     "To increase the moisture content of the biosolids for easier pumping",
+     "To facilitate the recovery of valuable metals from the biosolids"
+    ],
+    "correctIndex": 1,
+    "explanation": "Storage provides the capacity to hold biosolids when land application cannot take place (winter, frozen or saturated soils, crop growth periods) so that application occurs only when agronomic and regulatory conditions are met. Some stabilization may occur in storage, but that is not its primary purpose.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182671,
+   "bankKey": "class3-wastewater",
+   "questionNum": 471,
+   "verdict": "WRONG",
+   "note": "Key (VFAs in anaerobic zone) is the best answer, but the explanation is backwards: in the anaerobic zone PAOs take up VFAs and RELEASE orthophosphate; in the aerobic zone they take up phosphorus in excess (luxury uptake). The explanation says phosphorus is taken up in the anaerobic zone and released in the aerobic zone. Option text also corrected.",
+   "original": {
+    "question": "Which of the following is a key operational challenge in optimizing an A2O (Anaerobic-Anoxic-Oxic) biological nutrient removal system?",
+    "options": [
+     "Maintaining an optimal dissolved oxygen concentration in the anoxic zone for denitrification.",
+     "Ensuring sufficient volatile fatty acids (VFAs) in the anaerobic zone for phosphorus uptake.",
+     "Preventing nitrification in the aerobic zone to avoid nitrate recycle to the anaerobic zone.",
+     "Achieving complete solids separation in the secondary clarifier after the anoxic zone."
+    ],
+    "correctIndex": 1,
+    "explanation": "In A2O systems, sufficient volatile fatty acids (VFAs) are crucial in the anaerobic zone for phosphorus accumulating organisms (PAOs) to take up soluble orthophosphate, which is then released in the aerobic zone. Lack of VFAs can impair biological phosphorus removal."
+   },
+   "fix": {
+    "question": "Which of the following is a key operational challenge in optimizing an A2O (Anaerobic-Anoxic-Oxic) biological nutrient removal system?",
+    "options": [
+     "Maintaining an optimal dissolved oxygen concentration in the anoxic zone for denitrification.",
+     "Ensuring sufficient volatile fatty acids (VFAs) in the anaerobic zone so phosphorus-accumulating organisms can release phosphorus and later take it up in excess.",
+     "Preventing nitrification in the aerobic zone to avoid nitrate recycle to the anaerobic zone.",
+     "Achieving complete solids separation in the secondary clarifier after the anoxic zone."
+    ],
+    "correctIndex": 1,
+    "explanation": "In A2O systems, sufficient VFAs must be available in the anaerobic zone so phosphorus accumulating organisms (PAOs) can take up VFAs, store them as PHA and release orthophosphate. In the aerobic zone the PAOs then take up phosphorus in excess of their needs. Lack of VFAs (or nitrate carried into the anaerobic zone) impairs biological phosphorus removal.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182688,
+   "bankKey": "class3-wastewater",
+   "questionNum": 488,
+   "verdict": "WRONG",
+   "note": "Key is right but the explanation says selectors create 'low F/M'. Selectors work by creating a HIGH substrate concentration / high F/M gradient (aerobic, anoxic or anaerobic) that favours floc formers over filaments (kinetic selection).",
+   "original": {
+    "question": "What is the primary function of a selector reactor in an activated sludge system?",
+    "options": [
+     "To increase the overall hydraulic retention time of the system.",
+     "To promote the growth of floc-forming bacteria over filamentous organisms.",
+     "To enhance nitrification by providing a high dissolved oxygen environment.",
+     "To facilitate the removal of refractory organic compounds through advanced oxidation."
+    ],
+    "correctIndex": 1,
+    "explanation": "Selector reactors create specific environmental conditions (e.g., low F/M, anoxic or anaerobic) that favour the growth of desirable floc-forming bacteria, thereby improving sludge settleability and preventing bulking."
+   },
+   "fix": {
+    "question": "What is the primary function of a selector reactor in an activated sludge system?",
+    "options": [
+     "To increase the overall hydraulic retention time of the system.",
+     "To promote the growth of floc-forming bacteria over filamentous organisms.",
+     "To enhance nitrification by providing a high dissolved oxygen environment.",
+     "To facilitate the removal of refractory organic compounds through advanced oxidation."
+    ],
+    "correctIndex": 1,
+    "explanation": "Selector reactors create a high substrate concentration (high F/M) gradient at the head of the process, under aerobic, anoxic or anaerobic conditions, which favours fast-growing floc-forming bacteria over filamentous organisms, improving settleability and preventing bulking.",
+    "steps": null
+   }
+  },
+  {
+   "id": 240479,
+   "bankKey": "class3-wastewater",
+   "questionNum": 501,
+   "verdict": "WRONG",
+   "note": "Question is unanswerable as posed: no wasting data given, V/Q = 2,100/9,000 = 0.233 d (that is HRT, not SRT) and 0.73 d matches nothing; the steps text admits the question is improperly posed. Replaced with a complete SRT question (SRT = 3,200 x 2,100 / (120 x 7,000) = 8.0 d).",
+   "original": {
+    "question": "A plug-flow aeration basin is treating 9,000 m³/d of wastewater with a mixed liquor suspended solids (MLSS) of 3,200 mg/L. The basin volume is 2,100 m³. What is the mean cell residence time (MCRT/SRT) in days?",
+    "options": [
+     "1.1 days",
+     "1.5 days",
+     "2.8 days",
+     "0.73 days"
+    ],
+    "correctIndex": 3,
+    "explanation": "SRT = (MLSS × basin volume) ÷ (Wasted Sludge + Effluent solids removed per day)"
+   },
+   "fix": {
+    "question": "A plug-flow aeration basin has a volume of 2,100 m³ and a mixed liquor suspended solids (MLSS) of 3,200 mg/L. Waste activated sludge is removed at 120 m³/d with a concentration of 7,000 mg/L. Assuming effluent solids are negligible, what is the mean cell residence time (MCRT/SRT) in days?",
+    "options": [
+     "5.6 days",
+     "8.0 days",
+     "11.4 days",
+     "17.5 days"
+    ],
+    "correctIndex": 1,
+    "explanation": "SRT = (MLSS × basin volume) ÷ (mass of solids wasted per day).",
+    "steps": [
+     {
+      "l": "Step 1 — Solids in basin",
+      "c": "3,200 mg/L × 2,100 m³ = 3,200 g/m³ × 2,100 m³ = 6,720,000 g = 6,720 kg"
+     },
+     {
+      "l": "Step 2 — Solids wasted per day",
+      "c": "120 m³/d × 7,000 g/m³ = 840,000 g/d = 840 kg/d"
+     },
+     {
+      "l": "Step 3 — SRT",
+      "c": "6,720 kg / 840 kg/d = 8.0 days"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240487,
+   "bankKey": "class3-wastewater",
+   "questionNum": 509,
+   "verdict": "WRONG",
+   "note": "(7.5 - 0.7) x 14,500 m3/d x 1/1000 = 98.6 kg/d. Marked 110.2 is wrong; the steps themselves compute 98.6 and then say 'let's adjust to match'. 98.6 is not an option.",
+   "original": {
+    "question": "The influent total phosphorus (TP) is 7.5 mg/L and the effluent TP must be ≤ 0.7 mg/L. If the plant treats 14,500 m³/d, how many kilograms of phosphorus must be removed per day?",
+    "options": [
+     "102.0 kg/d",
+     "85.0 kg/d",
+     "95.7 kg/d",
+     "110.2 kg/d"
+    ],
+    "correctIndex": 3,
+    "explanation": "Phosphorus removed = (influent TP - effluent TP) × flow × 1,000 / 1,000,000"
+   },
+   "fix": {
+    "question": "The influent total phosphorus (TP) is 7.5 mg/L and the effluent TP must be ≤ 0.7 mg/L. If the plant treats 14,500 m³/d, how many kilograms of phosphorus must be removed per day?",
+    "options": [
+     "102.0 kg/d",
+     "85.0 kg/d",
+     "95.7 kg/d",
+     "98.6 kg/d"
+    ],
+    "correctIndex": 3,
+    "explanation": "Phosphorus removed = (influent TP - effluent TP) × flow × 1,000 / 1,000,000",
+    "steps": [
+     {
+      "l": "Step 1 — TP removed",
+      "c": "7.5 - 0.7 = 6.8 mg/L"
+     },
+     {
+      "l": "Step 2 — Calculate mass",
+      "c": "6.8 mg/L × 14,500 m³/d = 98,600 g/d"
+     },
+     {
+      "l": "Step 3 — Convert",
+      "c": "98,600 g/d / 1,000 = 98.6 kg/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240488,
+   "bankKey": "class3-wastewater",
+   "questionNum": 510,
+   "verdict": "UNCLEAR",
+   "note": "Arithmetic is consistent (0.55 t x 92 = 50.6) but the premise is unrealistic: digester gas yield is about 0.75-1.1 m3 per kg VS destroyed (750-1,100 m3 per tonne), not 92 m3 per tonne. Appears to be a factor-of-10 data error. Corrected to 920 m3/tonne giving 506 m3/d.",
+   "original": {
+    "question": "If a digester produces 92 m³ of gas per tonne of volatile solids destroyed, and the plant destroys 550 kg VS daily, how many cubic metres of digester gas are produced per day?",
+    "options": [
+     "50.6 m³/d",
+     "920 m³/d",
+     "755 m³/d",
+     "1,113 m³/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "Gas produced = (kg VS destroyed per day ÷ 1,000) × gas produced per tonne VS"
+   },
+   "fix": {
+    "question": "If a digester produces 920 m³ of gas per tonne of volatile solids destroyed, and the plant destroys 550 kg VS daily, how many cubic metres of digester gas are produced per day?",
+    "options": [
+     "506 m³/d",
+     "92 m³/d",
+     "755 m³/d",
+     "1,113 m³/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "Gas produced = (kg VS destroyed per day ÷ 1,000) × gas produced per tonne VS",
+    "steps": [
+     {
+      "l": "Step 1 — Convert kg VS destroyed to tonnes",
+      "c": "550 kg ÷ 1,000 = 0.55 tonnes"
+     },
+     {
+      "l": "Step 2 — Multiply by gas produced per tonne",
+      "c": "0.55 × 920 = 506 m³/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240489,
+   "bankKey": "class3-wastewater",
+   "questionNum": 511,
+   "verdict": "WRONG",
+   "note": "Q = F/M x MLSS x V / S0 = 0.18 x 3,200 x 1,300 / 95 = 7,882 m3/d. Marked 784 is wrong (steps admit it). Also wording 'removes 95 mg/L BOD' is ambiguous; F/M uses influent BOD, so reworded.",
+   "original": {
+    "question": "A treatment plant removes 95 mg/L BOD and operates at an F/M ratio of 0.18 d⁻¹. If the MLSS is 3,200 mg/L, and the aeration tank volume is 1,300 m³, what is the daily influent flow rate (m³/d)?",
+    "options": [
+     "2,340 m³/d",
+     "1,590 m³/d",
+     "784 m³/d",
+     "7,540 m³/d"
+    ],
+    "correctIndex": 2,
+    "explanation": "F/M = (Q × S₀) / (MLSS × V)"
+   },
+   "fix": {
+    "question": "A plant has an influent BOD of 95 mg/L and operates at an F/M ratio of 0.18 d⁻¹. If the MLSS is 3,200 mg/L and the aeration tank volume is 1,300 m³, what is the daily influent flow rate (m³/d)?",
+    "options": [
+     "2,340 m³/d",
+     "1,590 m³/d",
+     "7,880 m³/d",
+     "784 m³/d"
+    ],
+    "correctIndex": 2,
+    "explanation": "F/M = (Q × S₀) / (MLSS × V)",
+    "steps": [
+     {
+      "l": "Step 1 — Rearrange equation",
+      "c": "Q = F/M × MLSS × V / S₀"
+     },
+     {
+      "l": "Step 2 — Substitute values",
+      "c": "Q = 0.18 × 3,200 × 1,300 / 95"
+     },
+     {
+      "l": "Step 3 — Numerator",
+      "c": "0.18 × 3,200 × 1,300 = 748,800"
+     },
+     {
+      "l": "Step 4 — Divide",
+      "c": "748,800 / 95 = 7,882 ≈ 7,880 m³/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240498,
+   "bankKey": "class3-wastewater",
+   "questionNum": 520,
+   "verdict": "WRONG",
+   "note": "10 mg/L x 4,800 m3/d = 48 kg/d N; x 2.86 = 137.3 kg/d. Marked 135.8 does not match the item's own steps (137.28).",
+   "original": {
+    "question": "For denitrification, a plant needs to reduce NO₃⁻-N from 12 mg/L to <2 mg/L. Influent flow is 4,800 m³/d. C₆H₁₂O₆ (glucose, MW=180) is dosed at 2.86 g per g NO₃⁻-N removed. How many kg of glucose are required daily?",
+    "options": [
+     "191.2 kg/d",
+     "268.3 kg/d",
+     "135.8 kg/d",
+     "82.2 kg/d"
+    ],
+    "correctIndex": 2,
+    "explanation": "Calculate N removed, then glucose required."
+   },
+   "fix": {
+    "question": "For denitrification, a plant needs to reduce NO₃⁻-N from 12 mg/L to <2 mg/L. Influent flow is 4,800 m³/d. C₆H₁₂O₆ (glucose, MW=180) is dosed at 2.86 g per g NO₃⁻-N removed. How many kg of glucose are required daily?",
+    "options": [
+     "191.2 kg/d",
+     "268.3 kg/d",
+     "137.3 kg/d",
+     "82.2 kg/d"
+    ],
+    "correctIndex": 2,
+    "explanation": "Calculate N removed, then glucose required.",
+    "steps": [
+     {
+      "l": "Step 1 — N removed per L",
+      "c": "12 − 2 = 10 mg/L"
+     },
+     {
+      "l": "Step 2 — Total N removed",
+      "c": "10 × 4,800 × 1,000 = 48,000,000 mg/d = 48 kg/d"
+     },
+     {
+      "l": "Step 3 — Glucose required",
+      "c": "48 × 2.86 = 137.28 ≈ 137.3 kg/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240499,
+   "bankKey": "class3-wastewater",
+   "questionNum": 521,
+   "verdict": "WRONG",
+   "note": "26 mg/L x (18,500 x 8/24 = 6,166.7 m3) = 160.3 kg. Marked 402 kg is wrong; the steps compute 160.33 kg and then ramble. 160 kg is not an option.",
+   "original": {
+    "question": "The TSS in a secondary clarifier effluent has increased from 12 mg/L to 38 mg/L after a storm. Storm flow was 18,500 m³/d for 8 h. How many kg of additional solids were discharged during the storm?",
+    "options": [
+     "698 kg",
+     "317 kg",
+     "580 kg",
+     "402 kg"
+    ],
+    "correctIndex": 3,
+    "explanation": "Calculate additional loading: (final - initial) TSS × flow × duration."
+   },
+   "fix": {
+    "question": "The TSS in a secondary clarifier effluent has increased from 12 mg/L to 38 mg/L after a storm. Storm flow was 18,500 m³/d for 8 h. How many kg of additional solids were discharged during the storm?",
+    "options": [
+     "698 kg",
+     "317 kg",
+     "580 kg",
+     "160 kg"
+    ],
+    "correctIndex": 3,
+    "explanation": "Calculate additional loading: (final - initial) TSS × flow × duration.",
+    "steps": [
+     {
+      "l": "Step 1 — TSS increase",
+      "c": "38 - 12 = 26 mg/L"
+     },
+     {
+      "l": "Step 2 — Storm flow during 8 h",
+      "c": "18,500 m³/d × (8/24) = 6,166.7 m³"
+     },
+     {
+      "l": "Step 3 — Additional solids",
+      "c": "26 g/m³ × 6,166.7 m³ = 160,333 g = 160 kg"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240515,
+   "bankKey": "class3-wastewater",
+   "questionNum": 537,
+   "verdict": "UNCLEAR",
+   "note": "8,200/2,700 = 3.04 cycles, so 3 cycles would leave about 100 m3/d unprocessed and 4 complete cycles would be needed; a 6 h cycle allows max 4 cycles/d. Key of 3 is therefore not defensible. Also ignores that an SBR decant volume is only a fraction of tank volume. Corrected flow to 8,100 m3/d so that exactly 3 cycles are needed.",
+   "original": {
+    "question": "An advanced SBR (sequencing batch reactor) must treat a flow of 8,200 m³/d with a cycle time of 6 hours. Each SBR tank is 2,700 m³. How many complete cycles per day are needed in one tank to process the daily flow?",
+    "options": [
+     "2 cycles",
+     "5 cycles",
+     "3 cycles",
+     "4 cycles"
+    ],
+    "correctIndex": 2,
+    "explanation": "Number of cycles = total flow / tank volume. Check if partial cycles apply."
+   },
+   "fix": {
+    "question": "An SBR (sequencing batch reactor) must treat a flow of 8,100 m³/d. Each cycle decants 2,700 m³ from the tank. How many complete cycles per day are needed in one tank to process the daily flow?",
+    "options": [
+     "2 cycles",
+     "5 cycles",
+     "3 cycles",
+     "4 cycles"
+    ],
+    "correctIndex": 2,
+    "explanation": "Number of cycles = total daily flow / volume treated per cycle.",
+    "steps": [
+     {
+      "l": "Step 1 — Calculate cycles",
+      "c": "8,100 m³/d / 2,700 m³ per cycle = 3.0 cycles/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240516,
+   "bankKey": "class3-wastewater",
+   "questionNum": 538,
+   "verdict": "WRONG",
+   "note": "522 - 133.4 = 388.6 kg/d. Marked 389.4 does not equal the computed value (steps say 'rounded to 389.4', which is not rounding). 388.6 not among options.",
+   "original": {
+    "question": "A trickling filter has an influent BOD₅ of 180 mg/L at 2,900 m³/d. If effluent BOD₅ is 46 mg/L, what is the loading reduction in kg/d?",
+    "options": [
+     "391.4 kg/d",
+     "396.0 kg/d",
+     "387.9 kg/d",
+     "389.4 kg/d"
+    ],
+    "correctIndex": 3,
+    "explanation": "Calculate influent and effluent loads (kg/d), then find their difference."
+   },
+   "fix": {
+    "question": "A trickling filter has an influent BOD₅ of 180 mg/L at 2,900 m³/d. If effluent BOD₅ is 46 mg/L, what is the loading reduction in kg/d?",
+    "options": [
+     "391.4 kg/d",
+     "396.0 kg/d",
+     "387.9 kg/d",
+     "388.6 kg/d"
+    ],
+    "correctIndex": 3,
+    "explanation": "Calculate influent and effluent loads (kg/d), then find their difference.",
+    "steps": [
+     {
+      "l": "Step 1 — Influent load",
+      "c": "2,900 × 0.18 = 522 kg/d"
+     },
+     {
+      "l": "Step 2 — Effluent load",
+      "c": "2,900 × 0.046 = 133.4 kg/d"
+     },
+     {
+      "l": "Step 3 — Difference",
+      "c": "522 – 133.4 = 388.6 kg/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240529,
+   "bankKey": "class3-wastewater",
+   "questionNum": 551,
+   "verdict": "WRONG",
+   "note": "SRT = 4,750 kg / 483.6 kg/d = 9.82 d. Marked 7.69 d is wrong (steps give 9.82). 9.82 not an option.",
+   "original": {
+    "question": "An activated sludge system has an MLSS of 3,800 mg/L and an aeration basin volume of 1,250 m³. The WAS flow is 78 m³/d and contains 6,200 mg/L solids. What is the solids retention time (SRT) in days? Assume no RAS wastage.",
+    "options": [
+     "6.12 d",
+     "12.4 d",
+     "7.69 d",
+     "4.98 d"
+    ],
+    "correctIndex": 2,
+    "explanation": "SRT = (Mass in aeration) / (Mass wasted per day)."
+   },
+   "fix": {
+    "question": "An activated sludge system has an MLSS of 3,800 mg/L and an aeration basin volume of 1,250 m³. The WAS flow is 78 m³/d and contains 6,200 mg/L solids. What is the solids retention time (SRT) in days? Assume effluent solids are negligible.",
+    "options": [
+     "6.12 d",
+     "12.4 d",
+     "9.82 d",
+     "4.98 d"
+    ],
+    "correctIndex": 2,
+    "explanation": "SRT = (Mass in aeration) / (Mass wasted per day).",
+    "steps": [
+     {
+      "l": "Step 1 — Find mass in aeration",
+      "c": "1,250,000 L x 3,800 mg/L = 4,750,000,000 mg = 4,750 kg"
+     },
+     {
+      "l": "Step 2 — Calculate mass solids wasted/day",
+      "c": "78,000 L x 6,200 mg/L = 483,600,000 mg = 483.6 kg/d"
+     },
+     {
+      "l": "Step 3 — SRT = mass in aeration / mass wasted",
+      "c": "4,750 / 483.6 = 9.82 d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240531,
+   "bankKey": "class3-wastewater",
+   "questionNum": 553,
+   "verdict": "WRONG",
+   "note": "MCRT = 7,250 / (315 + 85) = 18.1 d. Marked 6.98 d is wrong (the steps give 18.13 d). 18.1 not an option.",
+   "original": {
+    "question": "Calculate the aeration tank mean cell residence time (MCRT) if the mass of solids under aeration is 7,250 kg, daily effluent flow is 17,500 m³/d with 18 mg/L TSS, and 85 kg/d is wasted. Assume all effluent TSS is from aeration.",
+    "options": [
+     "3.87 d",
+     "12.8 d",
+     "6.98 d",
+     "9.47 d"
+    ],
+    "correctIndex": 2,
+    "explanation": "MCRT = (Solids in aeration) / (Total solids leaving per day)."
+   },
+   "fix": {
+    "question": "Calculate the aeration tank mean cell residence time (MCRT) if the mass of solids under aeration is 7,250 kg, daily effluent flow is 17,500 m³/d with 18 mg/L TSS, and 85 kg/d is wasted. Assume all effluent TSS is from aeration.",
+    "options": [
+     "3.87 d",
+     "12.8 d",
+     "18.1 d",
+     "9.47 d"
+    ],
+    "correctIndex": 2,
+    "explanation": "MCRT = (Solids in aeration) / (Total solids leaving per day).",
+    "steps": [
+     {
+      "l": "Step 1 — Effluent solids/day",
+      "c": "17,500,000 L x 18 mg/L = 315,000,000 mg = 315 kg/d"
+     },
+     {
+      "l": "Step 2 — Total solids leaving/day",
+      "c": "315 + 85 = 400 kg/d"
+     },
+     {
+      "l": "Step 3 — MCRT",
+      "c": "7,250 / 400 = 18.1 d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240532,
+   "bankKey": "class3-wastewater",
+   "questionNum": 554,
+   "verdict": "WRONG",
+   "note": "Duplicate of 186571 with a different key. Detention time = 2,835 m3 / 8.33 m3/min = 340 min. Marked 34.1 min is wrong by a factor of 10 (and contradicts its own steps).",
+   "original": {
+    "question": "A plug-flow aeration tank is 90 m long, 7 m wide, and has a liquid depth of 4.5 m. How many minutes is the hydraulic detention time if the flow is 12,000 m³/d?",
+    "options": [
+     "63.0 min",
+     "5.68 min",
+     "34.1 min",
+     "151 min"
+    ],
+    "correctIndex": 2,
+    "explanation": "Detention time = Volume / Flow. Convert units to minutes."
+   },
+   "fix": {
+    "question": "A plug-flow aeration tank is 90 m long, 7 m wide, and has a liquid depth of 4.5 m. How many minutes is the hydraulic detention time if the flow is 12,000 m³/d?",
+    "options": [
+     "63.0 min",
+     "5.68 min",
+     "340 min",
+     "151 min"
+    ],
+    "correctIndex": 2,
+    "explanation": "Detention time = Volume / Flow. Convert units to minutes.",
+    "steps": [
+     {
+      "l": "Step 1 — Find tank volume",
+      "c": "90 x 7 x 4.5 = 2,835 m³"
+     },
+     {
+      "l": "Step 2 — Flow per minute",
+      "c": "12,000 m³/d / 1,440 min/d = 8.33 m³/min"
+     },
+     {
+      "l": "Step 3 — Detention time",
+      "c": "2,835 / 8.33 = 340 min"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240533,
+   "bankKey": "class3-wastewater",
+   "questionNum": 555,
+   "verdict": "WRONG",
+   "note": "Area = pi x 9^2 = 254.47 m2; x 32 = 8,143 m3/d. Marked 8,147 is off (digit error, and contradicts its own steps).",
+   "original": {
+    "question": "A clarifier has a diameter of 18 m. If the overflow rate must not exceed 32 m³/m²·d, what is the maximum allowable flow in m³/d?",
+    "options": [
+     "1,624 m³/d",
+     "8,147 m³/d",
+     "5,084 m³/d",
+     "3,240 m³/d"
+    ],
+    "correctIndex": 1,
+    "explanation": "Overflow rate = Flow / Surface Area. Find area of circle then multiply by overflow rate."
+   },
+   "fix": {
+    "question": "A clarifier has a diameter of 18 m. If the overflow rate must not exceed 32 m³/m²·d, what is the maximum allowable flow in m³/d?",
+    "options": [
+     "1,624 m³/d",
+     "8,143 m³/d",
+     "5,084 m³/d",
+     "3,240 m³/d"
+    ],
+    "correctIndex": 1,
+    "explanation": "Overflow rate = Flow / Surface Area. Find area of circle then multiply by overflow rate.",
+    "steps": [
+     {
+      "l": "Step 1 — Clarifier surface area",
+      "c": "Area = π x (9)² = 254.47 m²"
+     },
+     {
+      "l": "Step 2 — Max flow",
+      "c": "32 x 254.47 = 8,143 m³/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240538,
+   "bankKey": "class3-wastewater",
+   "questionNum": 560,
+   "verdict": "WRONG",
+   "note": "13,700 x 34.2 / 1,000 = 468.54 kg/d. Marked 468.84 is a digit error (steps give 468.54).",
+   "original": {
+    "question": "A plant treats 13,700 m³/d of wastewater with primary effluent TKN of 45 mg/L. 76% of TKN is converted to nitrate. How many kg/d of nitrate-N are produced?",
+    "options": [
+     "468.84 kg/d",
+     "516.38 kg/d",
+     "361.12 kg/d",
+     "934.51 kg/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculate the TKN amount converted, then find the mass."
+   },
+   "fix": {
+    "question": "A plant treats 13,700 m³/d of wastewater with primary effluent TKN of 45 mg/L. 76% of TKN is converted to nitrate. How many kg/d of nitrate-N are produced?",
+    "options": [
+     "468.54 kg/d",
+     "516.38 kg/d",
+     "361.12 kg/d",
+     "934.51 kg/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculate the TKN amount converted, then find the mass.",
+    "steps": [
+     {
+      "l": "Step 1 — TKN converted per L",
+      "c": "45 mg/L x 0.76 = 34.2 mg/L"
+     },
+     {
+      "l": "Step 2 — Flow in litres",
+      "c": "13,700 m³/d x 1,000 = 13,700,000 L/d"
+     },
+     {
+      "l": "Step 3 — Mass produced",
+      "c": "13,700,000 x 34.2 = 468,540,000 mg/d"
+     },
+     {
+      "l": "Step 4 — Convert mg to kg",
+      "c": "468,540,000 / 1,000,000 = 468.54 kg/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240539,
+   "bankKey": "class3-wastewater",
+   "questionNum": 561,
+   "verdict": "WRONG",
+   "note": "Using P atomic weight 31: 3.0/31 = 0.0968 mmol/L x 1.7 x 56 = 9.2 mg/L Fe. Marked 8.5 is wrong (steps admit 9.2 and call 8.5 the 'nearest plausible distractor'). Also the stem says PO4 3- while the calculation treats 3.0 mg/L as P; reworded to PO4-P.",
+   "original": {
+    "question": "A phosphorus removal process requires a chemical dose of 1.7 molar equivalents of Fe³⁺ per molar equivalent of PO₄³⁻. Influent contains 3.0 mg/L PO₄³⁻ (P atomic weight = 31, Fe atomic weight = 56). How many mg/L of Fe³⁺ are required?",
+    "options": [
+     "5.1 mg/L",
+     "3.0 mg/L",
+     "8.5 mg/L",
+     "15.7 mg/L"
+    ],
+    "correctIndex": 2,
+    "explanation": "Convert mg/L P to moles, multiply by stoichiometric ratio, then convert to mg/L Fe³⁺."
+   },
+   "fix": {
+    "question": "A phosphorus removal process requires a chemical dose of 1.7 mol of Fe³⁺ per mol of phosphate-P. Influent contains 3.0 mg/L phosphate as P (P atomic weight = 31, Fe atomic weight = 56). How many mg/L of Fe³⁺ are required?",
+    "options": [
+     "5.1 mg/L",
+     "3.0 mg/L",
+     "9.2 mg/L",
+     "15.7 mg/L"
+    ],
+    "correctIndex": 2,
+    "explanation": "Convert mg/L P to mmol/L, multiply by the molar ratio, then convert to mg/L Fe.",
+    "steps": [
+     {
+      "l": "Step 1 — mmol P per litre",
+      "c": "3.0 mg P/L / 31 mg/mmol = 0.0968 mmol/L"
+     },
+     {
+      "l": "Step 2 — Multiply by Fe³⁺ ratio",
+      "c": "0.0968 x 1.7 = 0.1645 mmol/L Fe³⁺"
+     },
+     {
+      "l": "Step 3 — Convert to mg/L Fe³⁺",
+      "c": "0.1645 mmol/L x 56 mg/mmol = 9.2 mg/L"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240553,
+   "bankKey": "class3-wastewater",
+   "questionNum": 575,
+   "verdict": "WRONG",
+   "note": "16,800 kg / 1,134 kg/d = 14.81 d, i.e. 14.8 d, not 14.6 d (steps 'round' 14.8 to 14.6). 14.8 not an option.",
+   "original": {
+    "question": "The SRT (solids retention time) for an activated sludge system is:\nAeration tank volume is 4,800 m³, MLSS is 3,500 mg/L. Total flow wasted and lost in effluent per day is 405 m³/d at 2,800 mg/L. What is the SRT in days?",
+    "options": [
+     "14.6 d",
+     "4.1 d",
+     "5.6 d",
+     "8.3 d"
+    ],
+    "correctIndex": 0,
+    "explanation": "SRT = Total solids in system / solids wasted per day"
+   },
+   "fix": {
+    "question": "The SRT (solids retention time) for an activated sludge system is:\nAeration tank volume is 4,800 m³, MLSS is 3,500 mg/L. Total flow wasted and lost in effluent per day is 405 m³/d at 2,800 mg/L. What is the SRT in days?",
+    "options": [
+     "14.8 d",
+     "4.1 d",
+     "5.6 d",
+     "8.3 d"
+    ],
+    "correctIndex": 0,
+    "explanation": "SRT = Total solids in system / solids wasted per day",
+    "steps": [
+     {
+      "l": "Step 1 — Calculate solids in system",
+      "c": "4,800 m³ x 1,000 x 3,500 mg/L = 16,800,000,000 mg = 16,800 kg"
+     },
+     {
+      "l": "Step 2 — Calculate solids wasted per day",
+      "c": "405 m³ x 1,000 x 2,800 mg/L = 1,134,000,000 mg = 1,134 kg/d"
+     },
+     {
+      "l": "Step 3 — Divide solids in system by wasted/d",
+      "c": "16,800 kg / 1,134 kg/d = 14.8 days"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240554,
+   "bankKey": "class3-wastewater",
+   "questionNum": 576,
+   "verdict": "WRONG",
+   "note": "MLSS = SRT x mass wasted / V = 9 x 900 kg / 5,300 m3 = 1.528 kg/m3 = 1,528 mg/L. Marked 1,916 mg/L is wrong (steps admit 1,528 and invent a volume of 4,230). 1,528 not an option. BOD and flow data are irrelevant distractors.",
+   "original": {
+    "question": "A BNR (biological nutrient removal) plant’s aeration tank operates at 20°C and receives 12,600 m³/d, with 310 mg/L BOD. If the minimum SRT for complete nitrification is 9 days, and the tank volume is 5,300 m³, what is the MLSS concentration (mg/L) required for a 9-day SRT if the total mass wasted daily is 900 kg?",
+    "options": [
+     "1,916 mg/L",
+     "4,700 mg/L",
+     "4,520 mg/L",
+     "2,110 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "SRT = Mass in system / mass wasted per day. Rearrange to solve for MLSS."
+   },
+   "fix": {
+    "question": "A BNR (biological nutrient removal) plant's aeration tank operates at 20°C and receives 12,600 m³/d, with 310 mg/L BOD. If the minimum SRT for complete nitrification is 9 days, and the tank volume is 5,300 m³, what is the MLSS concentration (mg/L) required for a 9-day SRT if the total mass wasted daily is 900 kg?",
+    "options": [
+     "1,528 mg/L",
+     "4,700 mg/L",
+     "4,520 mg/L",
+     "2,110 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "SRT = Mass in system / mass wasted per day. Rearrange to solve for MLSS.",
+    "steps": [
+     {
+      "l": "Step 1 — Required mass in system",
+      "c": "SRT x mass wasted per day = 9 d x 900 kg/d = 8,100 kg"
+     },
+     {
+      "l": "Step 2 — MLSS",
+      "c": "8,100 kg / 5,300 m³ = 1.528 kg/m³"
+     },
+     {
+      "l": "Step 3 — Convert",
+      "c": "1.528 kg/m³ = 1,528 mg/L"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240555,
+   "bankKey": "class3-wastewater",
+   "questionNum": 577,
+   "verdict": "WRONG",
+   "note": "1.072^-8 = 0.573 (not 0.535); k = 0.14 x 0.573 = 0.080 d-1. Marked 0.075 is wrong.",
+   "original": {
+    "question": "During winter (12°C), nitrification rate is reduced. If normal rate constant (k) is 0.14 d⁻¹ at 20°C and θ = 1.072, what is the adjusted rate constant (k) for 12°C?",
+    "options": [
+     "0.075 d⁻¹",
+     "0.14 d⁻¹",
+     "0.117 d⁻¹",
+     "0.062 d⁻¹"
+    ],
+    "correctIndex": 0,
+    "explanation": "k = k20 × θ^(T-20); with T = 12°C"
+   },
+   "fix": {
+    "question": "During winter (12°C), nitrification rate is reduced. If normal rate constant (k) is 0.14 d⁻¹ at 20°C and θ = 1.072, what is the adjusted rate constant (k) for 12°C?",
+    "options": [
+     "0.080 d⁻¹",
+     "0.14 d⁻¹",
+     "0.117 d⁻¹",
+     "0.062 d⁻¹"
+    ],
+    "correctIndex": 0,
+    "explanation": "k = k20 × θ^(T-20); with T = 12°C",
+    "steps": [
+     {
+      "l": "Step 1 — Find ΔT",
+      "c": "T - 20 = 12 - 20 = -8"
+     },
+     {
+      "l": "Step 2 — Calculate θ^(ΔT)",
+      "c": "1.072^(-8) = 0.573"
+     },
+     {
+      "l": "Step 3 — Calculate k",
+      "c": "0.14 x 0.573 = 0.080 d⁻¹"
      }
     ]
    }
