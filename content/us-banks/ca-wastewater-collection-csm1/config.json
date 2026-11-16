@@ -1,0 +1,28 @@
+{
+  "id": "ca-wastewater-collection-csm1",
+  "bankKey": "ca-wastewater-collection-csm1",
+  "itemPrefix": "CA-CSM1",
+  "version": "2026-11-16-v1",
+  "state": "CA",
+  "stream": "wastewater-collection",
+  "label": "California Collection System Maintenance, Grade 1 (CWEA)",
+  "startNumber": 1,
+  "count": 295,
+  "calcCount": 45,
+  "purpose": "Practice questions for the California Water Environment Association (CWEA) Collection System Maintenance Grade 1 certification. Original items in US units. Not an official exam blueprint.",
+  "reviewIntro": "295 original practice questions: 250 conceptual and 45 calculations, in US customary units, following the six domains of the CWEA CSM Grade 1 outline (operations and maintenance 28%, tools and equipment 20%, mapping 5%, safety and regulations 26%, administration 11%, math 10%). The first 250 were written to that outline's weights; a fifth batch of 45 was added after the bank was compared with the official Grade 1 exam content outline (handbook v2025.01) and found to be missing several sub-domains. More questions can be added later at the end of the source files. This is a local content package, not proof of a production import.",
+  "sources": {
+    "CWEAHB": [
+      "CWEA Collection System Maintenance Candidate Handbook, Version 2025.01 (Grade 1 examination content outline and domain weights)",
+      "https://cweawebstorage1.blob.core.windows.net/cwea-website/cert/CWEA%20Certification%20Handbook_CSM.pdf"
+    ],
+    "CWEACSM": [
+      "CWEA Collection System Maintenance Certification program page",
+      "https://www.cwea.org/certification/collection-systems-maintenance-certification/"
+    ],
+    "CMOM": [
+      "US EPA, CMOM Guide for Sanitary Sewer Collection Systems",
+      "https://www.epa.gov/sites/default/files/2015-10/documents/cmom_guide_for_collection_systems.pdf"
+    ]
+  }
+}
