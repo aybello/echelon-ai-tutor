@@ -4,6 +4,7 @@ import { getCourseInteractiveHref } from "../client/src/lib/courseNavigation";
 import { classifyAppRoute } from "../shared/appRoutes";
 import { getAllCourses, resolveCourseKey } from "../shared/courseRegistry";
 import { isNovaScotiaCourseSurface, isNovaScotiaPathSupported } from "../shared/novaScotiaPreparation";
+import { PENNSYLVANIA_BANKS, pennsylvaniaBank } from "../shared/pennsylvaniaBanks";
 
 const app = readFileSync("client/src/App.tsx", "utf8");
 const shell = readFileSync("client/src/components/QuizShell.tsx", "utf8");
@@ -19,6 +20,19 @@ describe("course-specific interactive navigation", () => {
 
   it("links supported active registry quizzes to their canonical course-specific routes", () => {
     for (const course of getAllCourses().filter((item) => item.isActive)) {
+      if (pennsylvaniaBank(course.courseKey)) {
+        expect(course.quizPath).toBe(`/us/practice/${course.courseKey}`);
+        expect(app).toContain('<Route path={"/us/practice/:courseKey"}>{() => <UsBankStudyRoute tool="practice" />}</Route>');
+        expect(app).toContain('lazy(() => import("./pages/UsBankStudyRoute"))');
+        const route = readFileSync("client/src/pages/UsBankStudyRoute.tsx", "utf8");
+        expect(route).toContain("const bank = pennsylvaniaBank(courseKey)");
+        expect(route).toContain('<UsBankQuiz key={courseKey} courseKey={bank.courseKey} />');
+        const quiz = readFileSync("client/src/pages/UsBankQuiz.tsx", "utf8");
+        expect(quiz.match(/<QuizShell\b([\s\S]*?)\/>/)?.[1]).toContain("examType={courseKey}");
+        expect(classifyAppRoute(course.quizPath).kind).toBe("public");
+        expect(getCourseInteractiveHref(course.courseKey, "")).toBeUndefined();
+        continue;
+      }
       const routeMatch = app.match(new RegExp(`<Route path=\\{"${course.quizPath}"\\} component=\\{(\\w+)\\} \\/>`));
       expect(routeMatch, course.quizPath).not.toBeNull();
       const component = routeMatch![1];
@@ -47,6 +61,11 @@ describe("course-specific interactive navigation", () => {
     expect(resolveCourseKey("class1-ww")?.isActive).toBe(true);
     expect(getCourseInteractiveHref("class1-ww", "province=ON"))
       .toBe("/courses/class1-ww/interactive?province=ON");
+  });
+
+  it.each(PENNSYLVANIA_BANKS)("does not advertise unreleased games for $courseKey", bank => {
+    expect(resolveCourseKey(bank.courseKey)?.isActive).toBe(true);
+    expect(getCourseInteractiveHref(bank.courseKey, "country=US&state=PA&province=ON")).toBeUndefined();
   });
 
   it("normalizes aliases and preserves the existing province or US study context", () => {

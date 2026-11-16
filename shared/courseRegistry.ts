@@ -863,27 +863,6 @@ const REGISTRY: CourseEntry[] = [
       "aliases": [],
       "isActive": true
   },
-  // PA learner registration only: standard preview and exact-course guards apply.
-  // No catalogue product, checkout release, Canadian subscription or team grant.
-  {
-      "courseKey": "pa-class-e-water-distribution",
-      "displayName": "Pennsylvania Class E Water Distribution",
-      "shortName": "PA Class E Distribution",
-      "provinceOrRegion": "united-states",
-      "examFamily": "us-state",
-      "track": "water-distribution",
-      "classLevel": 0,
-      "quizPath": "/us/practice/pa-class-e-water-distribution",
-      "mockExamPath": "/us/mock/pa-class-e-water-distribution",
-      "flashcardPath": "/us/flashcards/pa-class-e-water-distribution",
-      "formulaPath": null,
-      "productKey": "pa-class-e-water-distribution",
-      "subscriptionTier": "all-access",
-      "questionBankKey": "pa-class-e-water-distribution",
-      "teamAssignable": false,
-      "aliases": [],
-      "isActive": true
-  },
   {
       "courseKey": "pa-wastewater-collection-e4",
       "displayName": "Pennsylvania Wastewater Collection (Class E, Subclass 4)",

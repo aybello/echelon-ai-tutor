@@ -2,7 +2,8 @@ import { randomInt, randomUUID, createHash } from "node:crypto";
 import { openSync, closeSync, readFileSync, fstatSync, lstatSync, realpathSync, constants } from "node:fs";
 import { dirname, resolve, relative, isAbsolute, basename } from "node:path";
 import { fileURLToPath } from "node:url";
-import { getCourseByKey, getAllActiveCourseKeys } from "../../../shared/courseRegistry";
+import { getCourseByKey } from "../../../shared/courseRegistry";
+import { eligibleInteractiveCourseKeys } from "../../../shared/interactiveEligibility";
 import { interactiveModes, interactiveCatalogResponseSchema, interactiveSessionResponseSchema, type InteractiveCatalogResponse, type InteractiveDrillExample, type InteractiveMode, type InteractiveSessionResponse, type InteractiveStartSessionInput } from "../../../shared/interactiveSessions";
 import { interactivePackageSchema, type InteractivePackage } from "../schema";
 import { activeCheckedRelease, trustedApproval } from "../../../scripts/content-engine/trusted-corpora";
@@ -20,7 +21,7 @@ const json = (value: unknown) => JSON.stringify(value);
 // Fingerprint of the public runtime behavior sources, including this file with
 // this constant normalized to zeros (see regression test). Changing behavior
 // requires restamping it. It is not an approval of the effective release.
-export const BEHAVIOR_POLICY_SHA256 = "572ec44a6a1eb15cff5b11c4b1f931313ba54e819c1da28a45cd7dac6e01b9b7";
+export const BEHAVIOR_POLICY_SHA256 = "49566ace92b4c02dabeb9879444b548bd1bc3cc97a0d00c0e2e9573c8f0d8881";
 const canonical = (value: unknown): string => {
   if (Array.isArray(value)) return `[${value.map(canonical).join(",")}]`;
   if (value !== null && typeof value === "object") return `{${Object.entries(value).filter(([, v]) => v !== undefined).sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0).map(([k, v]) => `${json(k)}:${canonical(v)}`).join(",")}}`;
@@ -143,7 +144,7 @@ export class InteractiveContentEngine {
     if (!course?.isActive || courseKey === "electrician-309a") fail();
     const registration = this.read("registry.json", ENGINE_LIMITS.registrationBytes, input => {
       const registry = engineRegistrationSchema.parse(input);
-      const eligible = new Set(getAllActiveCourseKeys().filter(key => key !== "electrician-309a"));
+      const eligible = new Set(eligibleInteractiveCourseKeys());
       // This release registers every one of the canonical 38 eligible courses.
       // Deleting a registered entry is corruption, never an absent/legacy fallback.
       if (eligible.size !== 38 || Object.keys(registry.courses).length !== eligible.size) fail();

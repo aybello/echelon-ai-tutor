@@ -1,3 +1,4 @@
+import { eligibleInteractiveCourseKeys } from "../shared/interactiveEligibility";
 import { EventEmitter } from "node:events";
 import { nodeHTTPRequestHandler } from "@trpc/server/adapters/node-http";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -169,7 +170,7 @@ describe("AI-source-reviewed software release package validation", () => {
       "wpi-class4-wastewater", "wpi-class4-water", "wpi-class4-water-coll", "wpi-class4-water-dist", "wqa",
     ].sort();
     expect(Object.keys(releasePackages).sort()).toEqual(expected);
-    expect(getAllCourses().filter(c => c.isActive && c.track !== "construction-electrician").map(c => c.courseKey).sort()).toEqual(expected);
+    expect(eligibleInteractiveCourseKeys()).toEqual(expected);
     const ids = new Set<string>();
     const modes = Object.fromEntries(interactiveModes.map(mode => [mode, 0]));
     for (const key of expected) {

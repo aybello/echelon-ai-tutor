@@ -1,7 +1,8 @@
 import { eligibleCourseKeys } from "./interactiveContent/engine/compiler";
 import { describe, expect, it } from "vitest";
 import { PENNSYLVANIA_BANKS, PA_PRACTICE_MOCK } from "../shared/pennsylvaniaBanks";
-import { getCourseByKey, getCoursesForSubscriptionTier, courseKeyToTierStrict } from "../shared/courseRegistry";
+import { InteractiveContentEngine } from "./interactiveContent/engine/loader";
+import { getAllActiveCourseKeys, getCourseByKey, getCoursesForSubscriptionTier, courseKeyToTierStrict } from "../shared/courseRegistry";
 import { classifyAppRoute } from "../shared/appRoutes";
 import { matchedUSCourses, getStateBySlug, usCourseHref } from "../shared/usExamRouting";
 import { getActiveIndividualProductByKey } from "../shared/products";
@@ -15,6 +16,12 @@ import { FREE_EXAM_TYPES } from "./_core/access";
 import { getAllSubscriptionExamTypes, allowedCourseKeysForOrg } from "./stripe/subscriptionProducts";
 
 describe("Pennsylvania exact course identity and scope", () => {
+  it("registers exactly 40 unique active non-309A courses while preserving the 38 game courses", () => {
+    const keys = getAllActiveCourseKeys().filter(key => key !== "electrician-309a");
+    expect(keys).toHaveLength(40);
+    expect(new Set(keys).size).toBe(40);
+    expect(keys.filter(key => !eligibleCourseKeys().includes(key)).sort()).toEqual(PENNSYLVANIA_BANKS.map(bank => bank.courseKey).sort());
+  });
   it.each(PENNSYLVANIA_BANKS)("registers $courseKey without inventing a SKU, bank alias or access grant", bank => {
     const course = getCourseByKey(bank.courseKey)!;
     expect(course).toMatchObject({ isActive:true, examFamily:"us-state", track:bank.track, questionBankKey:bank.courseKey, productKey:bank.courseKey, teamAssignable:false, aliases:[] });
@@ -22,6 +29,7 @@ describe("Pennsylvania exact course identity and scope", () => {
     expect(FREE_EXAM_TYPES.has(bank.courseKey)).toBe(false);
     expect(eligibleCourseKeys()).not.toContain(bank.courseKey);
     expect(eligibleCourseKeys()).toHaveLength(38);
+    expect(new InteractiveContentEngine().getCatalog(bank.courseKey, true)).toMatchObject({ available: false, version: null, modes: [] });
     expect(getActiveIndividualProductByKey(bank.courseKey)).toBeUndefined();
     expect(resolveQuizGateOffer(bank.courseKey).available).toBe(false);
     expect(resolvePurchaseGateOffer({productKey:bank.courseKey}).available).toBe(false);

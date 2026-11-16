@@ -18,7 +18,7 @@ for (const path of [
   "server/interactiveContent/schema.ts",
   "shared/interactiveCauseEffect.ts",
   "shared/interactiveSessions.ts",
-  "shared/courseRegistry.ts",
+  "shared/courseRegistry.ts", "shared/interactiveEligibility.ts", "shared/pennsylvaniaBanks.ts",
 ]) {
   let source = readFileSync(path, "utf8");
   if (path === loader) {
