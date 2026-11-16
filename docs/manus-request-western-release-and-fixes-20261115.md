@@ -76,6 +76,20 @@ Every game item was reviewed by Claude models (`docs/spot-check/full-review/RESU
 - After the exclusions and the new tables, every Ontario Class 1 to 4 course and every western course is at or above 150 items in each of the six modes, counting drafts.
 - The fixes include: two Ontario chlorine-residual rules under O. Reg. 170/03 that were stated wrongly, the Gould sludge age definition, a settleometer reading, two pump power items, US units converted to metric across the western and Ontario tables, and swappable steps removed from sequences.
 
+## 6. Read-only export of the exam question table, so the exam banks can be reviewed
+
+The game content has now been read in full. The multiple-choice exam questions have not, because they live in the production `questions` table and the review session has no database access. Please send an export rather than a live connection. A snapshot shows exactly what is live, and it keeps database credentials out of the review session.
+
+What to export:
+
+- Every row of `questions`, all banks, with these columns: `id`, `bankKey`, `questionNum`, `module`, `difficulty`, `question`, `options`, `correctIndex`, `explanation`, `steps`, `tip`, `isCalc`, `topic`, `cognitiveLevel`. Please add whatever columns say whether a question is live, hidden, paused or approved, since the review needs to know which questions a learner can actually see.
+- One file per `bankKey` (JSON or CSV), plus a short list of row counts per `bankKey` and the time of the export.
+- Nothing else. No users, attempts, answers, emails or payment data.
+
+Where to put it: ask the owner. The simplest is a folder in the repo on `claude/hello-5oz7m4`, for example `docs/exam-bank-export/`, if the owner is comfortable with the questions being in the repository. Otherwise the owner can pass the files in directly.
+
+What comes back: a list of question IDs with a verdict, the reason, and a corrected question for each problem. Manus applies any change to the production table. The review session never writes to the database.
+
 ## What I will not do without a go-ahead
 
 Apply migrations, set environment flags, change the release gates, or open a pull request. All changes stay on `claude/hello-5oz7m4`.

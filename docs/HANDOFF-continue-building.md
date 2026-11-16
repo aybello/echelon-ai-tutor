@@ -33,7 +33,7 @@ Waiting on Manus (nothing for you to do until it reports back):
 1. **Review the exam question banks.** The game content is done; the multiple-choice exam questions have not been read.
    - They live in the production `questions` table, keyed by `bankKey` (for example `class1-wastewater-coll`). The table is not reachable from a cloud session, because `DATABASE_URL` is not set.
    - The repo holds the sources: `content/` (OIT, Class 1 and 3, others), `server/seeds/examBankGapQuestions.ts`, and the import scripts in `scripts/`. Start with those.
-   - Ask the owner for a read-only export of the `questions` table, or a connection, to cover anything not in the repo.
+   - A read-only export of the `questions` table has been requested from Manus (section 6 of the Manus request). Ask the owner whether it has arrived and where it is. Do not ask for database credentials; use the export.
    - Method: use the same approach as the game review. Chunk the questions, send each chunk to a reviewer with a brief like `scripts/game-authoring/full-review/INSTRUCTIONS.md` adapted to four options and `correctIndex`, plant known errors as a check, and apply the fixes. An existing script, `server/seeds/runExamBankQualityAudit.ts`, checks structure only; it cannot tell whether a statement is true.
 2. **US courses against each state's own exam outline.** The three US courses were read for truth but not matched to state outlines. The state dossiers are in `docs/us-launch/state-dossiers/`.
 3. **A Class 3 distribution gap table**, written the way the Class 1, 2 and 4 gap tables were.
