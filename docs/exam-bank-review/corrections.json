@@ -1,15 +1,15 @@
 {
  "export": "docs/exam-bank-export/2026-11-16 (commit d118897a)",
- "chunksDone": 110,
+ "chunksDone": 120,
  "chunksTotal": 174,
- "questionsReviewed": 15418,
+ "questionsReviewed": 16715,
  "questionsTotal": 24350,
- "problems": 930,
+ "problems": 1005,
  "byVerdict": {
-  "UNCLEAR": 298,
-  "WRONG": 444,
-  "JURISDICTION": 130,
-  "UNITS": 51,
+  "UNCLEAR": 329,
+  "WRONG": 453,
+  "JURISDICTION": 164,
+  "UNITS": 52,
   "OFF-TOPIC": 7
  },
  "byBank": {
@@ -33,7 +33,10 @@
   "oit": 56,
   "oit-ww": 38,
   "wpi-class1-wastewater": 92,
-  "wpi-class1-wastewater-coll": 30
+  "wpi-class1-wastewater-coll": 32,
+  "wpi-class1-water": 21,
+  "wpi-class1-water-dist": 37,
+  "wpi-class2-wastewater": 15
  },
  "chunks": [
   "chunk-001",
@@ -145,7 +148,17 @@
   "chunk-107",
   "chunk-108",
   "chunk-109",
-  "chunk-110"
+  "chunk-110",
+  "chunk-111",
+  "chunk-112",
+  "chunk-113",
+  "chunk-114",
+  "chunk-115",
+  "chunk-116",
+  "chunk-117",
+  "chunk-118",
+  "chunk-119",
+  "chunk-120"
  ],
  "corrections": [
   {
@@ -33429,6 +33442,2317 @@
     "correctIndex": 3,
     "explanation": "Collection system approvals and authorizations typically require overflow reporting, I/I reduction programs, capacity management, and documented maintenance.",
     "steps": null
+   }
+  },
+  {
+   "id": 47168,
+   "bankKey": "wpi-class1-wastewater-coll",
+   "questionNum": 455,
+   "verdict": "WRONG",
+   "note": "Specific speed ranges in US units (Hydraulic Institute) are roughly radial 500-4,200, mixed flow 4,200-9,000, axial above 9,000. An Ns of 2,000 is a radial (centrifugal) pump, not mixed flow. The cited boundaries in the explanation are incorrect. Also US units in a Canadian bank and marginal relevance for a collection operator; rewritten qualitatively.",
+   "original": {
+    "question": "A pump station's specific speed (Ns) of 2,000 (US units) indicates:",
+    "options": [
+     "A radial flow pump",
+     "A mixed flow pump",
+     "An axial flow pump",
+     "A positive displacement pump"
+    ],
+    "correctIndex": 1,
+    "explanation": "Specific speed ranges: radial flow <2,000, mixed flow 2,000–5,000, axial flow >5,000 (US units, RPM, GPM, ft)."
+   },
+   "fix": {
+    "question": "A centrifugal pump with a low specific speed (Ns of about 2,000 in US units) is classified as:",
+    "options": [
+     "A radial flow pump",
+     "A mixed flow pump",
+     "An axial flow pump",
+     "A positive displacement pump"
+    ],
+    "correctIndex": 0,
+    "explanation": "Low specific speed pumps (roughly 500 to 4,200 in US units) are radial flow centrifugal pumps; mixed flow pumps fall at higher values and axial flow pumps higher still (above about 9,000).",
+    "steps": null
+   }
+  },
+  {
+   "id": 47172,
+   "bankKey": "wpi-class1-wastewater-coll",
+   "questionNum": 459,
+   "verdict": "UNCLEAR",
+   "note": "Option B reads 'Both A and B are correct' but B is itself that option, so the reference is circular; the intended meaning is A and C (875,000 kWh = 875 MWh). Options A and C are each individually correct, so the question is ambiguous and self-referential.",
+   "original": {
+    "question": "A pump station's energy intensity is 0.35 kWh/m³. The annual flow is 2,500,000 m³. The annual energy consumption is:",
+    "options": [
+     "875,000 kWh",
+     "Both A and B are correct",
+     "875 MWh",
+     "8,750 MWh"
+    ],
+    "correctIndex": 1,
+    "explanation": "Energy = 0.35 kWh/m³ × 2,500,000 m³ = 875,000 kWh = 875 MWh; both A and B express the same value."
+   },
+   "fix": {
+    "question": "A pump station's energy intensity is 0.35 kWh/m³. The annual flow is 2,500,000 m³. The annual energy consumption is:",
+    "options": [
+     "875,000 kWh",
+     "87,500 kWh",
+     "8,750 MWh",
+     "875 kWh"
+    ],
+    "correctIndex": 0,
+    "explanation": "Energy = 0.35 kWh/m³ × 2,500,000 m³ = 875,000 kWh (equal to 875 MWh).",
+    "steps": [
+     {
+      "l": "Identify the formula for annual energy consumption",
+      "c": "Energy = energy intensity x annual flow"
+     },
+     {
+      "l": "Substitute the given values into the formula",
+      "c": "Energy = 0.35 kWh/m^3 x 2,500,000 m^3"
+     },
+     {
+      "l": "Calculate the total energy consumption in kWh",
+      "c": "Energy = 875,000 kWh"
+     },
+     {
+      "l": "Check the answer",
+      "c": "875,000 kWh (= 875 MWh) matches the correct option"
+     }
+    ]
+   }
+  },
+  {
+   "id": 41217,
+   "bankKey": "wpi-class1-water",
+   "questionNum": 58,
+   "verdict": "UNCLEAR",
+   "note": "Options carry stray 'A./B./C./D.' prefixes, and the explanation is garbled: it refers to 'option B incorrectly states it produces less residual iron', which is not an option and contradicts the key. Key (wider pH range) is correct, but option A ('cheaper than alum') is not reliably wrong (cost varies) and option D ('does not require pH adjustment') is overstated. Question wording 'purpose of ferric sulphate' is awkward. Repaired with clean options and a consistent explanation.",
+   "original": {
+    "question": "What is the purpose of ferric sulphate as a coagulant?",
+    "options": [
+     "A. It is cheaper than alum",
+     "B. It works over a wider pH range than alum",
+     "C. It is more effective at removing bacteria",
+     "D. It does not require pH adjustment"
+    ],
+    "correctIndex": 1,
+    "explanation": "Ferric sulphate is often chosen as a coagulant because it maintains its effectiveness over a broader pH range compared to alum, which is a significant operational advantage in water treatment plants. While option B incorrectly states it produces less residual iron (ferric salts typically leave more residual iron than aluminum salts at optimal pH), its wider effective pH range is a primary benefit. The choice of coagulant is critical for optimizing turbidity removal and meeting Canadian drinking water quality guidelines, such as those outlined in Health Canada's Guidelines for Canadian Drinking Water Quality, which emphasize effective pathogen removal and minimization of treatment chemical residuals."
+   },
+   "fix": {
+    "question": "What is a key operating advantage of ferric sulphate as a coagulant compared with alum?",
+    "options": [
+     "It is always cheaper than alum",
+     "It is effective over a wider pH range than alum",
+     "It is more effective at removing bacteria than any other coagulant",
+     "It never requires any pH adjustment"
+    ],
+    "correctIndex": 1,
+    "explanation": "Ferric salts form insoluble floc over a broader pH range (roughly 5.5 to 8.5) than alum (roughly 6.0 to 7.5), and they often perform better in cold water. Cost varies by location, ferric salts can leave residual iron, and pH adjustment may still be needed for optimum coagulation.",
+    "steps": null
+   }
+  },
+  {
+   "id": 41248,
+   "bankKey": "wpi-class1-water",
+   "questionNum": 89,
+   "verdict": "UNCLEAR",
+   "note": "Attributes a 0.2 mg/L free chlorine distribution minimum to Health Canada. Health Canada's chlorine guidance does not set a numeric minimum residual (it recommends maintaining a detectable residual); minimum residuals are set by provincial/territorial regulation or operating permit and differ between jurisdictions. Question is for Western Canada, so the explanation should not present a single federal figure as the rule. Key itself is correct.",
+   "original": {
+    "question": "What is the purpose of a chemical residual test in the distribution system?",
+    "options": [
+     "To measure the chemical inventory",
+     "To test for chemical contamination",
+     "To measure the chemical dose at the plant",
+     "To verify that adequate disinfectant residual is maintained throughout the distribution system"
+    ],
+    "correctIndex": 3,
+    "explanation": "Distribution system residual testing verifies that the minimum required disinfectant residual (0.2 mg/L free chlorine per Health Canada) is maintained throughout the system to protect against microbial contamination."
+   },
+   "fix": {
+    "question": "What is the purpose of a chemical residual test in the distribution system?",
+    "options": [
+     "To measure the chemical inventory",
+     "To test for chemical contamination",
+     "To measure the chemical dose at the plant",
+     "To verify that adequate disinfectant residual is maintained throughout the distribution system"
+    ],
+    "correctIndex": 3,
+    "explanation": "Distribution system residual testing verifies that the minimum disinfectant residual required by the provincial or territorial regulator or the system's operating permit is maintained at all points in the system, protecting against microbial contamination and regrowth.",
+    "steps": null
+   }
+  },
+  {
+   "id": 41356,
+   "bankKey": "wpi-class1-water",
+   "questionNum": 197,
+   "verdict": "WRONG",
+   "note": "Explanation states 80 K as the Class F temperature-rise limit. Under NEMA MG 1 / IEC 60034-1, 80 K is the Class B rise; Class F is 105 K (at 1.0 service factor). Answer key is fine; explanation example is wrong.",
+   "original": {
+    "question": "What is the purpose of a pump motor heat run test?",
+    "options": [
+     "To measure motor speed",
+     "To measure motor power factor",
+     "To specify motor efficiency",
+     "To verify that motor temperature rise at rated load does not exceed the insulation class limit"
+    ],
+    "correctIndex": 3,
+    "explanation": "Heat run tests operate the motor at rated load until thermal equilibrium is reached, measuring winding temperature rise. The temperature rise must not exceed the limit for the insulation class (e.g., 80 K for Class F)."
+   },
+   "fix": {
+    "question": "What is the purpose of a pump motor heat run test?",
+    "options": [
+     "To measure motor speed",
+     "To measure motor power factor",
+     "To specify motor efficiency",
+     "To verify that motor temperature rise at rated load does not exceed the insulation class limit"
+    ],
+    "correctIndex": 3,
+    "explanation": "Heat run tests operate the motor at rated load until thermal equilibrium is reached, measuring winding temperature rise. The temperature rise must not exceed the limit for the insulation class (e.g., 80 K for Class B, 105 K for Class F).",
+    "steps": null
+   }
+  },
+  {
+   "id": 41385,
+   "bankKey": "wpi-class1-water",
+   "questionNum": 226,
+   "verdict": "UNCLEAR",
+   "note": "Holding time for bacteriological samples differs by jurisdiction and method: 24 h is the preferred target, but Health Canada guidance and several western provincial programs allow up to 48 h at 4 C (Standard Methods uses 30 h), so '48 hours' is also defensible. Reword as the preferred/ideal time and drop 48 h.",
+   "original": {
+    "question": "What is the maximum holding time for a bacteriological water sample at 4 degrees C?",
+    "options": [
+     "24 hours",
+     "6 hours",
+     "48 hours",
+     "7 days"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bacteriological samples must be analyzed within 24 hours of collection when kept at 4 degrees C. Longer holding times allow bacterial populations to change, giving inaccurate results."
+   },
+   "fix": {
+    "question": "Within what time should a bacteriological water sample, kept at about 4 degrees C, ideally be analyzed?",
+    "options": [
+     "24 hours",
+     "6 hours",
+     "72 hours",
+     "7 days"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bacteriological samples should be analyzed as soon as possible, ideally within 24 hours of collection when kept at about 4 degrees C. Some jurisdictions permit up to 48 hours; follow the local lab and regulator requirement. Longer holding times allow bacterial populations to change.",
+    "steps": null
+   }
+  },
+  {
+   "id": 41409,
+   "bankKey": "wpi-class1-water",
+   "questionNum": 250,
+   "verdict": "UNCLEAR",
+   "note": "Option A ('measure the effectiveness of corrosion control') is also a genuine purpose of lead monitoring at the tap (the explanation itself ties lead to leaching), so two options are defensible. Replace the distractor.",
+   "original": {
+    "question": "What is the purpose of a lead analysis in drinking water?",
+    "options": [
+     "To measure the effectiveness of corrosion control",
+     "To measure the lead content of the source water",
+     "To verify that lead levels are below the Health Canada MAC of 5 ug/L at the tap",
+     "To test for industrial contamination"
+    ],
+    "correctIndex": 2,
+    "explanation": "Lead monitoring at consumer taps detects leaching from lead service lines and copper plumbing with lead solder. The Health Canada MAC for lead is 5 ug/L (as of 2019 revision)."
+   },
+   "fix": {
+    "question": "What is the purpose of a lead analysis in drinking water?",
+    "options": [
+     "To measure the chlorine residual at the tap",
+     "To measure the lead content of the source water",
+     "To verify that lead levels are below the Health Canada MAC of 5 ug/L at the tap",
+     "To test for industrial contamination"
+    ],
+    "correctIndex": 2,
+    "explanation": "Lead monitoring at consumer taps detects leaching from lead service lines and plumbing with lead solder or fittings. The Health Canada MAC for lead is 5 ug/L (2019 revision), and results also show whether corrosion control is working.",
+    "steps": null
+   }
+  },
+  {
+   "id": 41410,
+   "bankKey": "wpi-class1-water",
+   "questionNum": 251,
+   "verdict": "UNCLEAR",
+   "note": "Explanation gives manganese AO as 0.05 mg/L, which is outdated: Health Canada (2019) set a manganese MAC of 0.12 mg/L and an AO of 0.02 mg/L (iron AO 0.3 mg/L is correct). Also option B (effectiveness of oxidation treatment) is a defensible purpose of iron/manganese analysis and the explanation itself mentions treatment effectiveness.",
+   "original": {
+    "question": "What is the purpose of an iron and manganese analysis in drinking water?",
+    "options": [
+     "To verify that iron and manganese levels are below aesthetic objectives to prevent staining and taste problems",
+     "To measure the effectiveness of oxidation treatment",
+     "To measure the source water quality",
+     "To test for industrial contamination"
+    ],
+    "correctIndex": 0,
+    "explanation": "Iron (AO: 0.3 mg/L) and manganese (AO: 0.05 mg/L) monitoring verifies treatment effectiveness and ensures levels are below aesthetic objectives that cause staining of laundry and fixtures and metallic taste."
+   },
+   "fix": {
+    "question": "What is the purpose of an iron and manganese analysis in drinking water?",
+    "options": [
+     "To verify that iron and manganese levels are below aesthetic objectives to prevent staining and taste problems",
+     "To measure the turbidity of the water",
+     "To measure the chlorine demand of the water",
+     "To test for industrial contamination"
+    ],
+    "correctIndex": 0,
+    "explanation": "Iron (AO 0.3 mg/L) and manganese (AO 0.02 mg/L; MAC 0.12 mg/L, Health Canada 2019) are monitored so that levels stay below the guideline values and do not cause staining of laundry and fixtures or a metallic taste.",
+    "steps": null
+   }
+  },
+  {
+   "id": 41411,
+   "bankKey": "wpi-class1-water",
+   "questionNum": 252,
+   "verdict": "UNCLEAR",
+   "note": "Key (A, effectiveness of softening treatment) is narrower than C, which is the general purpose of a hardness analysis in drinking water (consumer acceptance, scaling/corrosion control). Hardness is measured in all systems, not only softening plants, so C is at least equally defensible; the explanation is self-contradictory and argues against its own distractor. Re-key to C.",
+   "original": {
+    "question": "What is the purpose of a hardness analysis in drinking water?",
+    "options": [
+     "To measure the effectiveness of softening treatment",
+     "To measure the source water quality",
+     "To verify that hardness levels are within acceptable ranges for consumer acceptance and corrosion control",
+     "To test for industrial contamination"
+    ],
+    "correctIndex": 0,
+    "explanation": "Hardness analysis is fundamentally performed to measure the effectiveness of softening treatment processes. While consumer acceptance and corrosion control (Option C) are important considerations for acceptable hardness levels, and source water quality (Option B) is a factor, the direct measurement of hardness is crucial for operational control and optimization of softening technologies. This aligns with operational monitoring requirements for water treatment plants to ensure treated water quality meets aesthetic objectives and operational targets, as outlined in Health Canada's Guidelines for Canadian Drinking Water Quality, which addresses parameters like hardness for aesthetic and operational reasons."
+   },
+   "fix": {
+    "question": "What is the purpose of a hardness analysis in drinking water?",
+    "options": [
+     "To measure the effectiveness of softening treatment",
+     "To measure the source water quality",
+     "To verify that hardness levels are within acceptable ranges for consumer acceptance and corrosion control",
+     "To test for industrial contamination"
+    ],
+    "correctIndex": 2,
+    "explanation": "Hardness (mg/L as CaCO3) is monitored to confirm it falls within acceptable ranges for consumer acceptance (scaling, soap use) and corrosion/scale control. It is also used to check softening performance where softening is practised, but that is a narrower use. Health Canada gives no health-based guideline for hardness; 80-100 mg/L is generally considered acceptable.",
+    "steps": null
+   }
+  },
+  {
+   "id": 41412,
+   "bankKey": "wpi-class1-water",
+   "questionNum": 253,
+   "verdict": "UNCLEAR",
+   "note": "Explanation cites a Health Canada pH range of 6.5-8.5 as the acceptable range. That was the former aesthetic objective; Health Canada (2015) removed it and now gives an operational guidance range of 7.0-10.5 with no health-based guideline. Answer key is fine; explanation should be corrected.",
+   "original": {
+    "question": "What is the purpose of a pH analysis in drinking water?",
+    "options": [
+     "To measure the taste of the water",
+     "To measure the alkalinity of the water",
+     "To verify that pH is within the acceptable range for corrosion control, disinfection, and regulatory compliance",
+     "To measure the hardness of the water"
+    ],
+    "correctIndex": 2,
+    "explanation": "pH monitoring verifies that pH is within the acceptable range (6.5-8.5 per Health Canada) for corrosion control, disinfection effectiveness (HOCl is dominant below pH 7.5), and consumer acceptance."
+   },
+   "fix": {
+    "question": "What is the purpose of a pH analysis in drinking water?",
+    "options": [
+     "To measure the taste of the water",
+     "To measure the alkalinity of the water",
+     "To verify that pH is within the acceptable range for corrosion control, disinfection, and regulatory compliance",
+     "To measure the hardness of the water"
+    ],
+    "correctIndex": 2,
+    "explanation": "pH monitoring verifies that pH is within the range suited to corrosion control, disinfection effectiveness (HOCl is dominant below about pH 7.5), and coagulation. Health Canada gives no health-based guideline for pH; its operational guidance range is 7.0 to 10.5, and provincial permits may set other limits.",
+    "steps": null
+   }
+  },
+  {
+   "id": 41482,
+   "bankKey": "wpi-class1-water",
+   "questionNum": 323,
+   "verdict": "JURISDICTION",
+   "note": "Cites Ontario O. Reg. 632/05 as the basis in a western Canada bank, and the claimed 'minimum three people' is not the general OHS requirement. Western provincial codes (e.g. Alberta OHS Code Part 5, WorkSafeBC OHS Reg. Part 9) require at minimum an entrant and a standby attendant outside, with rescue arrangements in place. Reworded so the key is the two-person minimum.",
+   "original": {
+    "question": "What is the minimum number of people required for a confined space entry operation, according to Canadian occupational health and safety regulations?",
+    "options": [
+     "One (the entrant)",
+     "Four (two entrants and two attendants)",
+     "Three (entrant, attendant, and supervisor)",
+     "Two (one entrant and one attendant outside)"
+    ],
+    "correctIndex": 2,
+    "explanation": "For a safe confined space entry operation in Canada, provincial occupational health and safety regulations (e.g., Ontario's O. Reg. 632/05, Confined Spaces) typically mandate a minimum of three individuals: the entrant, an attendant stationed outside the confined space, and a supervisor or a designated rescue person/team readily available. This ensures that in an emergency, there is someone to initiate rescue procedures and someone to supervise the overall operation. While two people (entrant and attendant) are at the immediate entry point, the overall operation requires more personnel for safety and rescue preparedness. Options A, B, and D do not meet the comprehensive safety requirements for confined space entry in Canada."
+   },
+   "fix": {
+    "question": "What is the minimum number of people required at the site of a confined space entry, according to western Canadian occupational health and safety codes (e.g. Alberta OHS Code, WorkSafeBC OHS Regulation)?",
+    "options": [
+     "One (the entrant)",
+     "Four (two entrants and two attendants)",
+     "Three (entrant, attendant, and supervisor)",
+     "Two (one entrant and one attendant stationed outside), with a rescue plan in place"
+    ],
+    "correctIndex": 3,
+    "explanation": "Western Canadian OHS codes require at least one entrant and one attendant (standby person) stationed outside the space who monitors the entrant and can summon rescue, along with a written rescue plan and equipment. A single person may never enter alone.",
+    "steps": null
+   }
+  },
+  {
+   "id": 41531,
+   "bankKey": "wpi-class1-water",
+   "questionNum": 372,
+   "verdict": "WRONG",
+   "note": "Key is index 3 ('To satisfy regulatory requirements'), a generic distractor used in dozens of sibling questions. The purpose of an incident reporting system is to report and investigate workplace incidents to prevent recurrence (index 2). Explanation also drifts into water-quality exceedance reporting and does not describe a workplace incident reporting system.",
+   "original": {
+    "question": "What is the purpose of a water system incident reporting system?",
+    "options": [
+     "To document water quality results",
+     "To measure water consumption",
+     "To report and investigate workplace incidents (injuries, near misses, property damage) to prevent recurrence",
+     "To satisfy regulatory requirements"
+    ],
+    "correctIndex": 3,
+    "explanation": "A water system incident reporting system is fundamentally established to satisfy regulatory requirements. Canadian provinces and territories, often through their respective environmental or health ministries, mandate the reporting of various incidents, such as water quality exceedances, treatment failures, and main breaks, to ensure public health protection and system accountability. While documenting water quality results (A) is part of system operation, and workplace incidents (C) are important, the overarching driver for a comprehensive 'water system incident reporting system' is compliance with these regulatory obligations. Measuring water consumption (B) is unrelated to incident reporting."
+   },
+   "fix": {
+    "question": "What is the purpose of a water system incident reporting system?",
+    "options": [
+     "To document water quality results",
+     "To measure water consumption",
+     "To report and investigate workplace incidents (injuries, near misses, property damage) to prevent recurrence",
+     "To satisfy regulatory requirements"
+    ],
+    "correctIndex": 2,
+    "explanation": "An incident reporting system captures injuries, near misses and property damage so they can be investigated, root causes found, and corrective actions taken to prevent recurrence. Regulatory reporting may be a by-product, but it is not the system's purpose.",
+    "steps": null
+   }
+  },
+  {
+   "id": 41532,
+   "bankKey": "wpi-class1-water",
+   "questionNum": 373,
+   "verdict": "WRONG",
+   "note": "Key is B ('To satisfy regulatory requirements'); the correct purpose of a HIRA is option D (identify hazards and assess risk to prioritize controls). Explanation cites Ontario's Safe Drinking Water Act as governing, wrong jurisdiction, and dismisses the correct option. Options also carry stray 'A.'-'D.' letter prefixes.",
+   "original": {
+    "question": "What is the purpose of a water system hazard identification and risk assessment (HIRA)?",
+    "options": [
+     "A. To measure water quality",
+     "B. To satisfy regulatory requirements",
+     "C. To measure water consumption",
+     "D. To systematically identify workplace hazards and assess the risk to workers to prioritize controls"
+    ],
+    "correctIndex": 1,
+    "explanation": "A water system Hazard Identification and Risk Assessment (HIRA) is primarily conducted to satisfy regulatory requirements, such as those outlined in provincial drinking water regulations (e.g., Ontario's Safe Drinking Water Act, 2002) or federal guidelines (e.g., Health Canada's Guidelines for Canadian Drinking Water Quality). These regulations often mandate risk assessments to ensure the safety and security of drinking water systems. While worker safety is a component of overall system management, the core purpose of a *water system* HIRA is broader, encompassing risks to water quality, public health, and system integrity. Options A and C relate to operational measurements, not the purpose of a HIRA, and option D, while describing a valid HIRA, is too narrowly focused on worker safety rather than the comprehensive scope of a water system HIRA."
+   },
+   "fix": {
+    "question": "What is the purpose of a water system hazard identification and risk assessment (HIRA)?",
+    "options": [
+     "To measure water quality",
+     "To satisfy regulatory requirements",
+     "To measure water consumption",
+     "To systematically identify workplace hazards and assess the risk to workers to prioritize controls"
+    ],
+    "correctIndex": 3,
+    "explanation": "A HIRA systematically identifies hazards, assesses their likelihood and severity, and ranks the risks so that controls (elimination, engineering, administrative, PPE) can be prioritized. Meeting regulatory requirements is a by-product, not the purpose.",
+    "steps": null
+   }
+  },
+  {
+   "id": 41540,
+   "bankKey": "wpi-class1-water",
+   "questionNum": 381,
+   "verdict": "JURISDICTION",
+   "note": "Explanation presents Ontario O. Reg. 170/03 as the governing rule in a western Canada bank. Filter effluent turbidity limits are set by each province (e.g. 0.3 NTU/95%, 1.0 NTU max under Alberta/BC conventional filtration criteria, with 0.1 NTU as a typical optimization target). The '<0.1 NTU = 2+ log Cryptosporidium credit' claim is also unsupported. Answer choice is fine; explanation needs correcting.",
+   "original": {
+    "question": "In a Class 1 water treatment facility, what is the purpose of routine turbidity monitoring at the filter effluent?",
+    "options": [
+     "Turbidity monitoring is optional",
+     "Only check turbidity daily",
+     "Filter effluent turbidity does not indicate pathogen removal",
+     "Continuously verify that filters are effectively removing particles and pathogens, with readings <0.3 NTU required for compliance and <0.1 NTU indicating optimal performance"
+    ],
+    "correctIndex": 3,
+    "explanation": "Filter effluent turbidity: regulatory requirement per O. Reg. 170/03 (continuous monitoring, <0.3 NTU for 95% of readings, never >1.0 NTU). Correlation with pathogen removal: <0.1 NTU = 2+ log Cryptosporidium removal credit. Turbidity spikes indicate: filter breakthrough, inadequate coagulation, or media problems. Continuous monitoring enables: immediate response to spikes, filter-to-waste triggering, and regulatory compliance documentation."
+   },
+   "fix": {
+    "question": "In a Class 1 water treatment facility, what is the purpose of routine turbidity monitoring at the filter effluent?",
+    "options": [
+     "Turbidity monitoring is optional",
+     "Only check turbidity daily",
+     "Filter effluent turbidity does not indicate pathogen removal",
+     "Continuously verify that filters are effectively removing particles and pathogens, with readings <0.3 NTU required for compliance and <0.1 NTU indicating optimal performance"
+    ],
+    "correctIndex": 3,
+    "explanation": "Continuous filter effluent turbidity monitoring verifies that each filter is removing particles and pathogens. Provincial permits and guidelines typically require conventional filtration to stay at or below 0.3 NTU in 95% of readings (never above 1.0 NTU), with 0.1 NTU or less as an optimization target; check your own permit. Turbidity spikes indicate filter breakthrough, inadequate coagulation, or media problems, and continuous monitoring allows immediate response and filter-to-waste triggering.",
+    "steps": null
+   }
+  },
+  {
+   "id": 41558,
+   "bankKey": "wpi-class1-water",
+   "questionNum": 399,
+   "verdict": "JURISDICTION",
+   "note": "Explanation cites Ontario O. Reg. 170/03 as the logbook requirement in a western Canada bank. Record-keeping duties come from the facility's provincial operating permit/regulation. Answer choice is correct; explanation needs correcting.",
+   "original": {
+    "question": "What is the purpose of a comprehensive operator logbook program in a Class 1 water treatment facility?",
+    "options": [
+     "Document all operational activities, observations, test results, and decisions to provide: regulatory compliance evidence, shift communication, troubleshooting history, and legal protection in the event of a water quality incident",
+     "Logbooks are optional",
+     "Only record unusual events",
+     "Electronic records replace logbooks"
+    ],
+    "correctIndex": 0,
+    "explanation": "Logbook requirements (O. Reg. 170/03): record all operational checks, test results, chemical additions, equipment status, unusual observations, and corrective actions. Legal significance: logbook entries are admissible evidence in regulatory proceedings and demonstrate due diligence. Best practices: entries in ink, no erasures (line through errors with initials), chronological order, and complete enough that another operator can understand what happened and why."
+   },
+   "fix": {
+    "question": "What is the purpose of a comprehensive operator logbook program in a Class 1 water treatment facility?",
+    "options": [
+     "Document all operational activities, observations, test results, and decisions to provide: regulatory compliance evidence, shift communication, troubleshooting history, and legal protection in the event of a water quality incident",
+     "Logbooks are optional",
+     "Only record unusual events",
+     "Electronic records replace logbooks"
+    ],
+    "correctIndex": 0,
+    "explanation": "Provincial operating permits and regulations require operational records: operational checks, test results, chemical additions, equipment status, unusual observations, and corrective actions. Logbook entries can serve as evidence in regulatory proceedings and demonstrate due diligence. Best practices: entries in ink, no erasures (line through errors with initials), chronological order, and complete enough that another operator can understand what happened and why.",
+    "steps": null
+   }
+  },
+  {
+   "id": 41562,
+   "bankKey": "wpi-class1-water",
+   "questionNum": 403,
+   "verdict": "JURISDICTION",
+   "note": "Explanation names the Ontario 'MOE Spills Action Centre' as the notification point in a western Canada bank. Release reporting goes to the relevant provincial authority (e.g. Alberta Environment and Protected Areas 24-hour line, BC Emergency Management/Provincial Emergency Program). Answer choice is correct; explanation needs correcting.",
+   "original": {
+    "question": "In a Class 1 water treatment facility, what is the significance of the facility's emergency response procedures for a chlorine gas release?",
+    "options": [
+     "Pre-planned procedures enable rapid response to protect operator safety, contain the release, notify emergency services, and protect the public from a potentially lethal toxic gas exposure",
+     "Chlorine releases are not dangerous",
+     "Only respond if gas is visible",
+     "Wait for emergency services before acting"
+    ],
+    "correctIndex": 0,
+    "explanation": "Chlorine gas response: immediate actions (evacuate upwind, don SCBA, activate alarm), containment (close cylinder valve if safe, activate scrubber if equipped), notification (911, MOE Spills Action Centre, downstream community), and public protection (shelter-in-place or evacuation depending on release size and wind direction). Chlorine: immediately dangerous to life at 10 ppm, detectable by smell at 0.5 ppm. All operators must be trained in SCBA use and emergency procedures."
+   },
+   "fix": {
+    "question": "In a Class 1 water treatment facility, what is the significance of the facility's emergency response procedures for a chlorine gas release?",
+    "options": [
+     "Pre-planned procedures enable rapid response to protect operator safety, contain the release, notify emergency services, and protect the public from a potentially lethal toxic gas exposure",
+     "Chlorine releases are not dangerous",
+     "Only respond if gas is visible",
+     "Wait for emergency services before acting"
+    ],
+    "correctIndex": 0,
+    "explanation": "Chlorine gas response: immediate actions (evacuate upwind, don SCBA, activate alarm), containment (close cylinder valve if safe, activate scrubber if equipped), notification (911, the provincial environmental emergency/spill reporting line, downstream community), and public protection (shelter-in-place or evacuation depending on release size and wind direction). Chlorine is immediately dangerous to life at 10 ppm and detectable by smell at about 0.5 ppm. All operators must be trained in SCBA use and emergency procedures.",
+    "steps": null
+   }
+  },
+  {
+   "id": 41581,
+   "bankKey": "wpi-class1-water",
+   "questionNum": 422,
+   "verdict": "JURISDICTION",
+   "note": "Explanation cites Ontario O. Reg. 170/03 ('detectable residual throughout system') as the regulatory driver in a western Canada bank. Distribution residual requirements come from the provincial regulation/permit (e.g. BC and Alberta set their own minimums). Answer choice is correct; explanation needs correcting.",
+   "original": {
+    "question": "In a Class 1 water treatment facility, what is the purpose of maintaining a minimum free chlorine residual in the distribution system?",
+    "options": [
+     "Distribution residual has no purpose",
+     "Only needed at the treatment plant",
+     "Biofilm does not grow in chlorinated water",
+     "Provide a continuous disinfection barrier that inactivates any microorganisms introduced through system breaches (main breaks, cross-connections) and suppresses biofilm regrowth on pipe walls"
+    ],
+    "correctIndex": 3,
+    "explanation": "Distribution residual functions: inactivate pathogens from system breaches (main breaks create entry points), suppress biofilm regrowth (pipe walls always have biofilm — residual limits growth), provide system integrity indicator (sudden loss of residual = possible contamination event), and meet regulatory requirements (O. Reg. 170/03: detectable residual throughout system). Target: 0.2-0.5 mg/L free chlorine at all points."
+   },
+   "fix": {
+    "question": "In a Class 1 water treatment facility, what is the purpose of maintaining a minimum free chlorine residual in the distribution system?",
+    "options": [
+     "Distribution residual has no purpose",
+     "Only needed at the treatment plant",
+     "Biofilm does not grow in chlorinated water",
+     "Provide a continuous disinfection barrier that inactivates any microorganisms introduced through system breaches (main breaks, cross-connections) and suppresses biofilm regrowth on pipe walls"
+    ],
+    "correctIndex": 3,
+    "explanation": "Distribution residual functions: inactivate pathogens from system breaches (main breaks create entry points), suppress biofilm regrowth, provide a system integrity indicator (sudden loss of residual = possible contamination event), and meet provincial regulatory or permit requirements for a detectable residual throughout the system. A common operating target is 0.2-0.5 mg/L free chlorine at all points, but the minimum is set by the provincial authority.",
+    "steps": null
+   }
+  },
+  {
+   "id": 41613,
+   "bankKey": "wpi-class1-water",
+   "questionNum": 454,
+   "verdict": "JURISDICTION",
+   "note": "Explanation states record keeping is 'Required under O. Reg. 170/03', an Ontario regulation, in a Western Canada bank. The answer itself is fine; remove the Ontario citation.",
+   "original": {
+    "question": "In a Class 1 water treatment facility, what is the purpose of maintaining detailed records of all treatment process changes and adjustments?",
+    "options": [
+     "Create a documented history that enables: troubleshooting (correlate quality changes with operational adjustments), regulatory compliance demonstration, knowledge transfer between operators, and continuous improvement",
+     "Records are unnecessary paperwork",
+     "Only record major changes",
+     "Memory is sufficient for operational history"
+    ],
+    "correctIndex": 0,
+    "explanation": "Record-keeping value: troubleshooting (when did turbidity increase? what changed before that?), regulatory (demonstrate due diligence and compliance), training (new operators learn from historical patterns), optimization (identify which adjustments produced best results), and legal (evidence of proper operation in event of incident). Records include: chemical doses, flow rates, equipment status, test results, and operator observations. Required under O. Reg. 170/03."
+   },
+   "fix": {
+    "question": "In a Class 1 water treatment facility, what is the purpose of maintaining detailed records of all treatment process changes and adjustments?",
+    "options": [
+     "Create a documented history that enables: troubleshooting (correlate quality changes with operational adjustments), regulatory compliance demonstration, knowledge transfer between operators, and continuous improvement",
+     "Records are unnecessary paperwork",
+     "Only record major changes",
+     "Memory is sufficient for operational history"
+    ],
+    "correctIndex": 0,
+    "explanation": "Record-keeping value: troubleshooting (when did turbidity increase? what changed before that?), regulatory (demonstrate due diligence and compliance with the operating permit/approval conditions), training (new operators learn from historical patterns), optimization (identify which adjustments produced best results), and legal (evidence of proper operation in event of incident). Records include: chemical doses, flow rates, equipment status, test results, and operator observations. Record keeping is a condition of the facility's operating approval or permit under the applicable provincial regulation.",
+    "steps": null
+   }
+  },
+  {
+   "id": 41616,
+   "bankKey": "wpi-class1-water",
+   "questionNum": 457,
+   "verdict": "UNCLEAR",
+   "note": "No single 6-hour holding time applies to drinking-water bacteriological samples. Standard Methods 9060 gives 30 h maximum for potable water (6 h is the figure for non-potable); Health Canada sampling guidance says analyze as soon as possible, ideally within 24 h and not beyond 48 h at about 4 C; Alberta and BC labs commonly accept 30-48 h. Marking 6 hours correct while 24 h and 48 h are also commonly cited is unfair. Not web-verified (knowledge-based).",
+   "original": {
+    "question": "What is the holding time for a bacteriological sample?",
+    "options": [
+     "24 hours",
+     "48 hours",
+     "6 hours (refrigerated at 4°C) from collection to analysis for total coliform and E. coli analysis",
+     "72 hours"
+    ],
+    "correctIndex": 2,
+    "explanation": "Bacteriological samples must be analyzed within 6 hours of collection (refrigerated at 4°C) to prevent changes in bacterial populations. Samples should be kept on ice during transport and analyzed as soon as possible."
+   },
+   "fix": {
+    "question": "Under Canadian drinking water sampling guidance, what is the maximum holding time from collection to analysis for a drinking water bacteriological sample kept cool (about 4°C) during transport?",
+    "options": [
+     "6 hours",
+     "24 hours",
+     "48 hours",
+     "72 hours"
+    ],
+    "correctIndex": 2,
+    "explanation": "Bacteriological samples should be analyzed as soon as possible, ideally within 24 hours, and not exceeding 48 hours from collection when kept cool at about 4°C (some provinces/labs set a shorter limit, e.g. 30 hours). Longer holding allows bacterial populations to change.",
+    "steps": null
+   }
+  },
+  {
+   "id": 41643,
+   "bankKey": "wpi-class1-water",
+   "questionNum": 484,
+   "verdict": "JURISDICTION",
+   "note": "Asks about the Ontario Clean Water Act (2006) source protection plans, which apply only in Ontario; this is a Western Canada bank. Western provinces do not use CWA source protection committees/plans in this form. Reframe generically.",
+   "original": {
+    "question": "What is the significance of the facility's compliance with the Ontario Clean Water Act source protection plan requirements?",
+    "options": [
+     "Source protection plans identify threats to drinking water sources and establish policies to reduce or eliminate those threats, with the treatment facility required to implement any policies that apply to their intake and contributing area",
+     "Source protection only applies to groundwater",
+     "Treatment plants are exempt from source protection",
+     "Source protection plans are voluntary"
+    ],
+    "correctIndex": 0,
+    "explanation": "Clean Water Act (2006): source protection plans identify significant drinking water threats (fuel storage, agricultural activities, waste disposal near intakes), establish policies (prohibition, risk management plans, restricted land uses), and require implementation by responsible parties. Treatment facility role: participate in source protection committee, implement applicable policies, monitor for threat-related contaminants, and report to source protection authority. Prevention is more reliable than treatment."
+   },
+   "fix": {
+    "question": "What is the significance of a facility's compliance with the source water protection plan or measures that apply to its watershed or aquifer?",
+    "options": [
+     "Source protection plans identify threats to drinking water sources and establish policies to reduce or eliminate those threats, with the treatment facility expected to implement any measures that apply to its intake and contributing area",
+     "Source protection only applies to groundwater",
+     "Treatment plants are exempt from source protection",
+     "Source protection plans are never relevant to operators"
+    ],
+    "correctIndex": 0,
+    "explanation": "Source protection plans and programs identify significant drinking water threats (fuel storage, agricultural activities, waste disposal near intakes) and establish policies (prohibition, risk management, restricted land uses). Treatment facility role: participate in local source protection planning, implement applicable measures, monitor for threat-related contaminants, and report to the responsible authority. Prevention is more reliable than treatment.",
+    "steps": null
+   }
+  },
+  {
+   "id": 41681,
+   "bankKey": "wpi-class1-water",
+   "questionNum": 522,
+   "verdict": "WRONG",
+   "note": "(1209/8740)*24 = 3.3198 = 3.32 hours, not 3.31. Marked option and explanation truncate instead of rounding.",
+   "original": {
+    "question": "A reservoir has a volume of 1209 m³ and a flow rate of 8740 m³/d. What is the detention time in hours?",
+    "options": [
+     "3.31 hours",
+     "0.14 hours",
+     "29.08 hours",
+     "79.44 hours"
+    ],
+    "correctIndex": 0,
+    "explanation": "Detention Time (hours) = (Volume ÷ Flow) × 24. DT = (1209 m³ ÷ 8740 m³/d) × 24 = 3.31 hours."
+   },
+   "fix": {
+    "question": "A reservoir has a volume of 1209 m³ and a flow rate of 8740 m³/d. What is the detention time in hours?",
+    "options": [
+     "3.32 hours",
+     "0.14 hours",
+     "29.08 hours",
+     "79.44 hours"
+    ],
+    "correctIndex": 0,
+    "explanation": "Detention Time (hours) = (Volume ÷ Flow) × 24. DT = (1209 m³ ÷ 8740 m³/d) × 24 = 3.32 hours.",
+    "steps": [
+     {
+      "l": "Formula",
+      "c": "DT = (Volume ÷ Flow) × 24"
+     },
+     {
+      "l": "Calculation",
+      "c": "(1209 ÷ 8740) × 24 = 3.32 hours"
+     }
+    ]
+   }
+  },
+  {
+   "id": 41686,
+   "bankKey": "wpi-class1-water",
+   "questionNum": 527,
+   "verdict": "UNCLEAR",
+   "note": "Answer (67.5 kg/d) is correct, but the explanation contains leftover editing commentary ('The original option A was incorrect due to a decimal error, and the original marked answer B...') that makes no sense to a learner and refers to options that are not shown. Clean the explanation.",
+   "original": {
+    "question": "A plant treats 3600 m³/d and requires a chemical dose of 15.0 mg/L. The chemical is 80% pure. What is the required chemical feed rate in kg/d?",
+    "options": [
+     "67.5 kg/d",
+     "54.0 kg/d",
+     "43.2 kg/d",
+     "43200.0 kg/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "To determine the required chemical feed rate, first calculate the mass of pure chemical needed per day using the flow and dose. Then, adjust this amount for the chemical's purity. The calculation shows that 54 kg/d of pure chemical is needed, and when adjusted for 80% purity, this requires 67.5 kg/d of the commercial product. The original option A was incorrect due to a decimal error, and the original marked answer B was incorrect because it represented the pure chemical needed, not the commercial product."
+   },
+   "fix": {
+    "question": "A plant treats 3600 m³/d and requires a chemical dose of 15.0 mg/L. The chemical is 80% pure. What is the required chemical feed rate in kg/d?",
+    "options": [
+     "67.5 kg/d",
+     "54.0 kg/d",
+     "43.2 kg/d",
+     "43200.0 kg/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "First calculate the mass of pure chemical needed per day from the flow and dose (3600 × 15.0 ÷ 1000 = 54.0 kg/d), then divide by the purity (0.80) to find the commercial product required: 54.0 ÷ 0.80 = 67.5 kg/d. Note that 54.0 kg/d is only the pure chemical and does not account for purity.",
+    "steps": [
+     {
+      "l": "Step 1: Mass of pure chemical per day",
+      "c": "Mass (kg/d) = Flow (m³/d) × Dose (mg/L) ÷ 1000 = 3600 × 15.0 ÷ 1000 = 54.0 kg/d"
+     },
+     {
+      "l": "Step 2: Adjust for purity",
+      "c": "Feed rate = 54.0 kg/d ÷ 0.80 = 67.5 kg/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 41690,
+   "bankKey": "wpi-class1-water",
+   "questionNum": 531,
+   "verdict": "WRONG",
+   "note": "Marked answer 7516.8 m³/d is correct (87 × 86.4), but the steps show '87 × 86400 = 7564800 L/d', which is an arithmetic error (correct: 7,516,800 L/d); the next step 7564800 ÷ 1000 would give 7564.8, contradicting the answer.",
+   "original": {
+    "question": "Convert a flow rate of 87 L/s to m³/d.",
+    "options": [
+     "7516.8 m³/d",
+     "52.2 m³/d",
+     "313.2 m³/d",
+     "7516800.0 m³/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "m³/d = L/s × 86400 s/d ÷ 1000 L/m³. Flow = 87 × 86400 ÷ 1000 = 7516.8 m³/d."
+   },
+   "fix": {
+    "question": "Convert a flow rate of 87 L/s to m³/d.",
+    "options": [
+     "7516.8 m³/d",
+     "52.2 m³/d",
+     "313.2 m³/d",
+     "7516800.0 m³/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "m³/d = L/s × 86400 s/d ÷ 1000 L/m³. Flow = 87 × 86400 ÷ 1000 = 7516.8 m³/d.",
+    "steps": [
+     {
+      "l": "Convert to L/d",
+      "c": "87 × 86400 = 7516800 L/d"
+     },
+     {
+      "l": "Convert to m³/d",
+      "c": "7516800 ÷ 1000 = 7516.8 m³/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 45886,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 2,
+   "verdict": "UNCLEAR",
+   "note": "Minimum acceptable pressure is not 275 kPa: 275-550 kPa (40-80 psi) is the normal operating range, while the commonly cited minimum residual pressure (e.g. during max day plus fire flow, Alberta/BC and Ten States guidance) is 140 kPa (20 psi). The 140 kPa option is also defensible as the 'minimum', so the question is ambiguous as worded.",
+   "original": {
+    "question": "What is the minimum acceptable residual pressure at a service connection during normal operating conditions?",
+    "options": [
+     "70 kPa (10 psi)",
+     "275 kPa (40 psi)",
+     "140 kPa (20 psi)",
+     "550 kPa (80 psi)"
+    ],
+    "correctIndex": 1,
+    "explanation": "The generally accepted minimum residual pressure at a service connection during normal operating conditions is 275 kPa (40 psi). This ensures adequate flow at fixtures and prevents backflow from negative pressure events."
+   },
+   "fix": {
+    "question": "During maximum day demand plus fire flow, what minimum residual pressure is generally required at any point in the distribution system?",
+    "options": [
+     "70 kPa (10 psi)",
+     "275 kPa (40 psi)",
+     "140 kPa (20 psi)",
+     "550 kPa (80 psi)"
+    ],
+    "correctIndex": 2,
+    "explanation": "Design and operating guidance in Canada and the US generally requires a minimum residual pressure of 140 kPa (20 psi) anywhere in the system during fire flow plus maximum day demand, to avoid negative pressure and backsiphonage. Normal operating pressure is typically 275-550 kPa (40-80 psi).",
+    "steps": null
+   }
+  },
+  {
+   "id": 45891,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 7,
+   "verdict": "UNCLEAR",
+   "note": "There is no universal minimum hydrant flow of 1,500 L/min; required fire flow depends on the local fire flow standard (the explanation itself says it varies). NFPA 291 classifies hydrants by rated capacity (Class C under 500 gpm, about 1,900 L/min). Question rewritten around the colour-coding classification.",
+   "original": {
+    "question": "A fire hydrant is connected to a water main. What is the minimum flow rate a hydrant should provide for fire fighting?",
+    "options": [
+     "250 L/min (65 gpm)",
+     "500 L/min (130 gpm)",
+     "1,500 L/min (400 gpm)",
+     "3,800 L/min (1,000 gpm)"
+    ],
+    "correctIndex": 2,
+    "explanation": "The minimum fire flow from a hydrant is typically 1,500 L/min (400 gpm) for residential areas, though requirements vary by jurisdiction and building type. Commercial and industrial areas may require much higher flows. Hydrant flow testing determines actual available flow."
+   },
+   "fix": {
+    "question": "Under the NFPA 291 hydrant colour-coding system, a hydrant with a red bonnet (Class C) is rated at less than:",
+    "options": [
+     "1,900 L/min (500 gpm)",
+     "3,800 L/min (1,000 gpm)",
+     "5,700 L/min (1,500 gpm)",
+     "950 L/min (250 gpm)"
+    ],
+    "correctIndex": 0,
+    "explanation": "NFPA 291 classifies hydrants by flow at 140 kPa (20 psi) residual: Class AA (light blue) 5,700 L/min (1,500 gpm) or more; Class A (green) 3,800-5,700 L/min (1,000-1,499 gpm); Class B (orange) 1,900-3,800 L/min (500-999 gpm); Class C (red) less than 1,900 L/min (500 gpm).",
+    "steps": null
+   }
+  },
+  {
+   "id": 45980,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 96,
+   "verdict": "UNCLEAR",
+   "note": "Both 0.1 mg/L and 0.2 mg/L are defensible; Health Canada generally recommends about 0.2 mg/L free chlorine at all points, while Alberta requires at least 0.1 mg/L free chlorine in the distribution system. 'Most Canadian guidelines' is vague and the explanation misattributes 0.1 mg/L to Health Canada. Anchored to Alberta.",
+   "original": {
+    "question": "What is the minimum free chlorine residual required in a distribution system according to most Canadian guidelines?",
+    "options": [
+     "0.05 mg/L",
+     "0.2 mg/L",
+     "0.1 mg/L",
+     "0.5 mg/L"
+    ],
+    "correctIndex": 2,
+    "explanation": "Health Canada's Guidelines for Canadian Drinking Water Quality recommend a minimum free chlorine residual of 0.1 mg/L at all points in the distribution system. Many provinces require a minimum of 0.2 mg/L. The maximum allowable concentration (MAC) for chlorine is 5 mg/L. Adequate residual prevents microbial regrowth and provides a barrier against contamination."
+   },
+   "fix": {
+    "question": "What is the minimum free chlorine residual required at all points in a distribution system under Alberta Environment standards?",
+    "options": [
+     "0.05 mg/L",
+     "0.2 mg/L",
+     "0.1 mg/L",
+     "0.5 mg/L"
+    ],
+    "correctIndex": 2,
+    "explanation": "Alberta standards require a free chlorine residual of at least 0.1 mg/L throughout the distribution system. Other jurisdictions and guidance (for example Health Canada's general recommendation) may use 0.2 mg/L, so operators must follow their own regulator's requirement. An adequate residual prevents microbial regrowth and provides a barrier against contamination.",
+    "steps": null
+   }
+  },
+  {
+   "id": 45983,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 99,
+   "verdict": "JURISDICTION",
+   "note": "Explanation says Canadian guidelines allow no more than 5% of monthly samples total coliform positive; that 5% limit is the US EPA Total Coliform Rule, not a Canadian rule. Health Canada requires no detectable E. coli and treats total coliforms as an operational indicator (should be absent), with provincial follow-up requirements. Key itself is fine.",
+   "original": {
+    "question": "What is the purpose of a bacteriological sample (total coliform test) in a distribution system?",
+    "options": [
+     "To measure the chlorine residual in the distribution system",
+     "To measure the turbidity of the water",
+     "To detect the presence of total coliform bacteria as an indicator of potential fecal contamination and treatment effectiveness",
+     "To detect the presence of specific pathogens"
+    ],
+    "correctIndex": 2,
+    "explanation": "Total coliform bacteria are used as indicator organisms for fecal contamination and treatment effectiveness. Their presence indicates that the treatment barrier may have been compromised or that contamination has entered the distribution system. Canadian guidelines require that no sample contain E. coli and that no more than 5% of monthly samples be total coliform positive."
+   },
+   "fix": {
+    "question": "What is the purpose of a bacteriological sample (total coliform test) in a distribution system?",
+    "options": [
+     "To measure the chlorine residual in the distribution system",
+     "To measure the turbidity of the water",
+     "To detect the presence of total coliform bacteria as an indicator of potential fecal contamination and treatment effectiveness",
+     "To detect the presence of specific pathogens"
+    ],
+    "correctIndex": 2,
+    "explanation": "Total coliform bacteria are used as indicator organisms for treatment effectiveness and possible contamination of the distribution system. Their presence indicates that the treatment barrier may have been compromised or that contamination has entered the distribution system. Under Health Canada guidelines no E. coli may be detected in drinking water, and total coliforms should be absent; provincial rules specify follow-up actions when a sample is positive.",
+    "steps": null
+   }
+  },
+  {
+   "id": 45993,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 109,
+   "verdict": "WRONG",
+   "note": "Explanation gives copper MAC = 1 mg/L; Health Canada (2019) set the copper MAC at 2 mg/L (1 mg/L is the aesthetic objective). 'Action levels' is a US Lead and Copper Rule concept, not a Health Canada term. Key itself is fine.",
+   "original": {
+    "question": "What is the purpose of monitoring lead and copper at customer taps in a distribution system?",
+    "options": [
+     "To measure the corrosivity of the source water",
+     "To measure the effectiveness of corrosion inhibitors added at the treatment plant",
+     "To detect industrial contamination of the water supply",
+     "To detect lead and copper leaching from service lines, solder, and plumbing fixtures, which can cause health risks especially for children"
+    ],
+    "correctIndex": 3,
+    "explanation": "Lead and copper monitoring at customer taps detects leaching from lead service lines, lead solder (in homes built before 1990), and copper plumbing. Lead causes neurological damage, especially in children; copper causes gastrointestinal illness at high levels. Health Canada guidelines: lead MAC = 5 μg/L; copper MAC = 1 mg/L. If action levels are exceeded, corrosion control treatment and service line replacement are required."
+   },
+   "fix": {
+    "question": "What is the purpose of monitoring lead and copper at customer taps in a distribution system?",
+    "options": [
+     "To measure the corrosivity of the source water",
+     "To measure the effectiveness of corrosion inhibitors added at the treatment plant",
+     "To detect industrial contamination of the water supply",
+     "To detect lead and copper leaching from service lines, solder, and plumbing fixtures, which can cause health risks especially for children"
+    ],
+    "correctIndex": 3,
+    "explanation": "Lead and copper monitoring at customer taps detects leaching from lead service lines, lead solder (in homes built before 1990), and copper plumbing. Lead causes neurological damage, especially in children; copper causes gastrointestinal illness at high levels. Health Canada guidelines: lead MAC = 5 ug/L; copper MAC = 2 mg/L (aesthetic objective 1 mg/L). If results exceed the guideline, corrosion control measures and service line replacement should be considered.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46031,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 147,
+   "verdict": "JURISDICTION",
+   "note": "Asks about Ontario's DWQMS (an Ontario regulatory instrument under the Safe Drinking Water Act, 2002) in a Western Canada bank; the explanation also states accreditation requirements specific to Ontario. Rewritten as a generic quality management system question.",
+   "original": {
+    "question": "What is the purpose of a 'drinking water quality management standard' (DWQMS) in Ontario?",
+    "options": [
+     "A standard for the design of water treatment plants",
+     "A standard for water quality monitoring frequency",
+     "A quality management system framework that requires drinking water systems to document, implement, and continually improve their management practices",
+     "A standard for operator certification requirements"
+    ],
+    "correctIndex": 2,
+    "explanation": "Ontario's Drinking Water Quality Management Standard (DWQMS) requires licensed drinking water systems to implement a quality management system (QMS). The QMS documents: operational plans; risk assessments; management review; internal audits; and continual improvement processes. Systems must be accredited by an approved accreditation body. DWQMS is based on ISO 9001 principles adapted for drinking water."
+   },
+   "fix": {
+    "question": "What is the purpose of a documented quality management system (QMS) for a drinking water utility?",
+    "options": [
+     "A standard for the design of water treatment plants",
+     "A standard for water quality monitoring frequency",
+     "A framework that requires the utility to document, implement, and continually improve its management and operating practices",
+     "A standard for operator certification requirements"
+    ],
+    "correctIndex": 2,
+    "explanation": "A drinking water quality management system (such as those based on ISO 9001 principles) documents operational plans, risk assessments, management review, internal audits, and continual improvement processes so that the utility consistently delivers safe water. Requirements for such systems differ by province and territory.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46035,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 151,
+   "verdict": "UNCLEAR",
+   "note": "No single 'typical minimum' cover applies across Canadian cold climates: depth is set by local frost penetration. Prairie utilities commonly bury mains 2.5-3.0 m, while milder BC areas use roughly 1.0-1.5 m, so both 1.5 m and 2.5 m are defensible. The question also depends on an unstated local rule.",
+   "original": {
+    "question": "What is the minimum cover depth (in metres) typically required over a water main in Canadian cold climates to prevent freezing?",
+    "options": [
+     "1.5 m",
+     "1.0 m",
+     "0.5 m",
+     "2.5 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "In most Canadian cold-climate jurisdictions, water mains must be buried at least 1.5 m below grade (measured to the top of the pipe) to keep the pipe below the frost line. Local codes may require greater depths in areas with deeper frost penetration. Insufficient cover leads to frozen mains, burst pipes, and service interruptions."
+   },
+   "fix": {
+    "question": "In cold climates, the minimum depth of cover over a water main is determined primarily by:",
+    "options": [
+     "Local frost penetration depth, plus a safety margin",
+     "The pipe diameter only",
+     "The pipe manufacturer's colour code",
+     "The number of service connections on the main"
+    ],
+    "correctIndex": 0,
+    "explanation": "Mains must be buried below the local frost line (measured to the top of the pipe) with a margin to prevent freezing. Required cover therefore varies with climate and soil: roughly 1.5 m in milder areas and 2.5 m or more on the Prairies. Always follow the local design standard.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46073,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 189,
+   "verdict": "UNCLEAR",
+   "note": "The GCDWQ does not set a numeric aesthetic objective for turbidity. The 1.0 NTU figure is Health Canada's recommended turbidity for water entering the distribution system (the treatment target is 0.1 NTU). 5 NTU is only a consumer-acceptance threshold. Calling 1 NTU 'the aesthetic objective' is inaccurate (checked Health Canada turbidity guideline document and summary table).",
+   "original": {
+    "question": "The aesthetic objective for turbidity in a drinking water distribution system under the GCDWQ is:",
+    "options": [
+     "0.1 NTU",
+     "10 NTU",
+     "5 NTU",
+     "1 NTU"
+    ],
+    "correctIndex": 3,
+    "explanation": "Health Canada's aesthetic objective for turbidity in drinking water is ≤1 NTU (nephelometric turbidity units). Turbidity above 1 NTU is noticeable to consumers and may indicate sediment disturbance, main breaks, or treatment problems. The treatment objective for filtered water is ≤0.1 NTU (95th percentile) to ensure effective disinfection."
+   },
+   "fix": {
+    "question": "Health Canada's Guidelines for Canadian Drinking Water Quality recommend what maximum turbidity for water entering the distribution system?",
+    "options": [
+     "0.1 NTU",
+     "10 NTU",
+     "5 NTU",
+     "1 NTU"
+    ],
+    "correctIndex": 3,
+    "explanation": "Health Canada recommends a turbidity of 1.0 NTU or less for water entering the distribution system. The treatment performance target for filtered water is 0.1 NTU. Turbidity above about 5 NTU becomes visible and objectionable to consumers.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46075,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 191,
+   "verdict": "WRONG",
+   "note": "Health Canada lowered the lead MAC in March 2019 from 0.010 mg/L to 0.005 mg/L (5 ug/L). The marked answer 0.01 mg/L is the old value, and the explanation's 'reduced from 0.05 mg/L in 2019' is also wrong.",
+   "original": {
+    "question": "What is the MAC for lead in drinking water under the Guidelines for Canadian Drinking Water Quality?",
+    "options": [
+     "0.005 mg/L",
+     "0.01 mg/L",
+     "0.05 mg/L",
+     "0.1 mg/L"
+    ],
+    "correctIndex": 1,
+    "explanation": "The MAC for lead in Canadian drinking water is 0.01 mg/L (10 μg/L). This was reduced from 0.05 mg/L in 2019. Lead has no known safe level of exposure, particularly for children. Utilities are required to implement corrosion control and lead service line replacement programs to minimize lead exposure."
+   },
+   "fix": {
+    "question": "What is the MAC for lead in drinking water under the Guidelines for Canadian Drinking Water Quality?",
+    "options": [
+     "0.005 mg/L",
+     "0.01 mg/L",
+     "0.05 mg/L",
+     "0.1 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "The MAC for lead in Canadian drinking water is 0.005 mg/L (5 ug/L). It was lowered from 0.010 mg/L in 2019. Lead has no known safe level of exposure, particularly for children. Utilities are expected to implement corrosion control and lead service line replacement programs to minimize lead exposure.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46080,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 196,
+   "verdict": "JURISDICTION",
+   "note": "'Notice of Adverse Water Quality Incident (NAQI)' is not a western Canada term. The Ontario process is the Adverse Water Quality Incident (AWQI) report under O. Reg. 170/03. The question should not use an invented or Ontario-specific acronym in a WPI/western Canada bank.",
+   "original": {
+    "question": "What information must be included in a 'Notice of Adverse Water Quality Incident' (NAQI) report to the regulator?",
+    "options": [
+     "Only the date and location of the incident",
+     "Only the corrective actions taken",
+     "Only the laboratory results",
+     "The nature of the adverse result, location, date/time, corrective actions taken, and any public notifications issued"
+    ],
+    "correctIndex": 3,
+    "explanation": "An NAQI (or equivalent adverse event report) must include: nature and description of the adverse result; location and date/time of discovery; potential causes; corrective actions taken or planned; public notifications issued (if any); and contact information. Timely and complete reporting is a regulatory requirement and supports public health protection."
+   },
+   "fix": {
+    "question": "What information should be included in an adverse water quality incident report to the regulator?",
+    "options": [
+     "Only the date and location of the incident",
+     "Only the corrective actions taken",
+     "Only the laboratory results",
+     "The nature of the adverse result, location, date/time, corrective actions taken, and any public notifications issued"
+    ],
+    "correctIndex": 3,
+    "explanation": "An adverse water quality report to the regulator should describe the nature of the adverse result, location and date/time of discovery, potential causes, corrective actions taken or planned, any public notifications issued, and contact information. Exact forms and timelines are set by the provincial regulator.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46090,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 206,
+   "verdict": "UNCLEAR",
+   "note": "1,500 L/min (25 L/s) is below typical design practice. Fire Underwriters Survey sets a minimum required fire flow of 2,000 L/min, and western Canadian design standards commonly use about 60 L/s (3,600 L/min) for single-family residential. The marked answer is not a defensible 'typical' value, and the 3,000 L/min option is arguably closer. Duration also varies by flow.",
+   "original": {
+    "question": "What is the typical design fire flow requirement for a residential area (single-family homes)?",
+    "options": [
+     "500 L/min for 30 minutes",
+     "5,000 L/min for 4 hours",
+     "3,000 L/min for 3 hours",
+     "1,500 L/min for 2 hours"
+    ],
+    "correctIndex": 3,
+    "explanation": "Fire flow requirements vary by land use and building type. For residential areas with single-family homes, the typical design fire flow is approximately 1,500 L/min (400 USGPM) for 2 hours. Commercial and industrial areas require higher flows (3,000–10,000+ L/min). Fire flow requirements are specified by the local fire authority and must be available while maintaining a minimum residual pressure of 140 kPa (20 psi)."
+   },
+   "fix": {
+    "question": "What is the minimum required fire flow recommended by the Fire Underwriters Survey (FUS) for fire protection design?",
+    "options": [
+     "500 L/min",
+     "1,000 L/min",
+     "2,000 L/min",
+     "10,000 L/min"
+    ],
+    "correctIndex": 2,
+    "explanation": "The FUS sets a minimum required fire flow of 2,000 L/min (about 33 L/s, 500 USGPM). Residential design flows in western Canadian standards are often higher, commonly about 3,000 to 3,600 L/min, and the local authority sets the requirement. Fire flow must be available while maintaining a residual pressure of at least 140 kPa (20 psi).",
+    "steps": null
+   }
+  },
+  {
+   "id": 46110,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 226,
+   "verdict": "JURISDICTION",
+   "note": "The explanation presents 275 kPa as an 'Ontario design standard' in a western Canada bank. Pressure criteria differ by province (e.g. Alberta and BC standards), and the stem depends on an unstated local rule.",
+   "original": {
+    "question": "What is the significance of the distribution system's minimum pressure standard for customer service?",
+    "options": [
+     "Pressure does not affect customer service",
+     "Any positive pressure is acceptable",
+     "Only maintain pressure during low demand",
+     "Maintaining minimum 275 kPa (40 psi) at all service connections during peak demand ensures: adequate flow to upper floors, proper operation of household appliances, and customer satisfaction while preventing backsiphonage from negative pressure"
+    ],
+    "correctIndex": 3,
+    "explanation": "Pressure standards: minimum 275 kPa at service connection during peak hour demand (Ontario design standard), maximum 700 kPa (above this: fixture damage, increased leakage, noise). Low pressure causes: inadequate flow to upper floors, appliance malfunction (dishwashers, washing machines), customer complaints, and backsiphonage risk during further pressure drops. Monitoring: pressure loggers at critical locations (high elevation, system extremities)."
+   },
+   "fix": {
+    "question": "Why do utilities set a minimum pressure standard (typically about 275 kPa at peak demand, with 140 kPa during fire flow) for customer service?",
+    "options": [
+     "Pressure does not affect customer service",
+     "Any positive pressure is acceptable",
+     "Pressure only needs to be maintained during low demand",
+     "It ensures adequate flow to upper floors and household appliances, customer satisfaction, and prevents backsiphonage caused by negative pressure"
+    ],
+    "correctIndex": 3,
+    "explanation": "Typical design criteria call for about 275 kPa (40 psi) at service connections under normal peak demand, and a maximum near 700 kPa (above this, fixture damage, leakage and noise increase). Exact values come from the local jurisdiction's design standard. Low pressure causes inadequate flow to upper floors, appliance malfunction, complaints, and backsiphonage risk if pressure drops further.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46127,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 243,
+   "verdict": "UNCLEAR",
+   "note": "Option A ('UDF uses higher water velocity and is more effective at removing sediment and biofilm') is also true and matches the explanation, and option C ('uses less water') is also claimed true in the explanation. More than one option is correct.",
+   "original": {
+    "question": "What is the purpose of 'unidirectional flushing' (UDF) compared to conventional flushing?",
+    "options": [
+     "UDF uses higher water velocity and is more effective at removing sediment and biofilm",
+     "UDF flushes water in one direction only by systematically closing valves to create high-velocity flow, which is more effective than conventional multi-directional flushing",
+     "UDF uses less water than conventional flushing",
+     "UDF is only used for new pipe commissioning"
+    ],
+    "correctIndex": 1,
+    "explanation": "Unidirectional flushing (UDF) systematically closes valves to force water flow in one direction through a pipe segment, creating high velocities (0.9–1.5 m/s) that scour sediment and biofilm from the pipe walls. Conventional flushing opens hydrants without valve manipulation, resulting in lower velocities and less effective cleaning. UDF uses more planning but achieves better results with less water waste."
+   },
+   "fix": {
+    "question": "What is the purpose of 'unidirectional flushing' (UDF) compared to conventional flushing?",
+    "options": [
+     "UDF reduces velocity so that sediment can settle in the pipe",
+     "UDF flushes water in one direction by systematically closing valves to create high-velocity flow that scours the pipe, which is more effective than conventional flushing",
+     "UDF requires no valve operation or planning",
+     "UDF is only used for new pipe commissioning"
+    ],
+    "correctIndex": 1,
+    "explanation": "Unidirectional flushing systematically closes valves to force water through a pipe segment in one direction at high velocity (about 0.9-1.5 m/s), scouring sediment and biofilm from the pipe walls. Conventional flushing opens hydrants without valve manipulation, giving lower velocities and less effective cleaning. UDF needs more planning but gives better results.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46204,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 320,
+   "verdict": "JURISDICTION",
+   "note": "Explanation states utilities are required to conduct vulnerability assessments 'under federal regulations' (US Bioterrorism Act/AWIA). Not a Canadian federal requirement.",
+   "original": {
+    "question": "What is 'vulnerability assessment' in water system security?",
+    "options": [
+     "An assessment of pipe condition and age",
+     "A systematic evaluation of a water system's assets, threats, and consequences of attack to identify and prioritize security improvements",
+     "An assessment of financial vulnerabilities",
+     "An evaluation of staff training needs"
+    ],
+    "correctIndex": 1,
+    "explanation": "Vulnerability assessment (VA) systematically evaluates: critical assets (source, treatment, storage, distribution); threats (physical attack, cyber attack, contamination); existing countermeasures; and consequences of successful attacks. The VA identifies security gaps and prioritizes improvements to reduce risk. Large utilities are required to conduct VAs under federal regulations."
+   },
+   "fix": {
+    "question": "What is 'vulnerability assessment' in water system security?",
+    "options": [
+     "An assessment of pipe condition and age",
+     "A systematic evaluation of a water system's assets, threats, and consequences of attack to identify and prioritize security improvements",
+     "An assessment of financial vulnerabilities",
+     "An evaluation of staff training needs"
+    ],
+    "correctIndex": 1,
+    "explanation": "Vulnerability assessment (VA) systematically evaluates: critical assets (source, treatment, storage, distribution); threats (physical attack, cyber attack, contamination); existing countermeasures; and consequences of successful attacks. The VA identifies security gaps and prioritizes improvements to reduce risk. In Canada, VAs are part of utility emergency preparedness and risk management, with requirements varying by province and operating permit.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46212,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 328,
+   "verdict": "JURISDICTION",
+   "note": "Explanation uses US consumer confidence report/MCL terminology and says CCRs are required for 'community water systems' (US SDWA). In Canada the standards are MACs/guidelines and annual reporting requirements are set provincially.",
+   "original": {
+    "question": "What is the purpose of 'annual water quality reports' (consumer confidence reports)?",
+    "options": [
+     "To report water quality violations to regulators",
+     "To inform customers about the source of their water, treatment methods, and detected contaminant levels compared to regulatory standards",
+     "To document internal water quality monitoring results",
+     "To report infrastructure condition to regulators"
+    ],
+    "correctIndex": 1,
+    "explanation": "Annual water quality reports (consumer confidence reports/CCRs) inform customers about: water source; treatment processes; detected contaminants and their levels; regulatory limits (MCLs); and any violations. CCRs promote transparency, build customer trust, and are required by regulation for community water systems. They must be delivered to customers by a specified date each year."
+   },
+   "fix": {
+    "question": "What is the purpose of 'annual water quality reports' provided to customers?",
+    "options": [
+     "To report water quality violations to regulators",
+     "To inform customers about the source of their water, treatment methods, and detected contaminant levels compared to drinking water standards and guidelines",
+     "To document internal water quality monitoring results",
+     "To report infrastructure condition to regulators"
+    ],
+    "correctIndex": 1,
+    "explanation": "Annual water quality reports inform customers about: water source; treatment processes; monitoring results and detected parameters; how results compare to the Guidelines for Canadian Drinking Water Quality and provincial standards (MACs and aesthetic objectives); and any exceedances. They promote transparency and build customer trust. Reporting requirements and deadlines are set by the provincial regulator or the utility's operating permit.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46227,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 343,
+   "verdict": "JURISDICTION",
+   "note": "'Action level' at the 90th percentile is the US EPA Lead and Copper Rule concept (15 ug/L); the explanation admits it is US-specific. In Canada the Health Canada guideline is a MAC of 0.005 mg/L at the tap (2019), so option A is arguably also correct. Replaced with a question on the Canadian MAC.",
+   "original": {
+    "question": "What is typically referred to as an 'action level' for lead in drinking water systems?",
+    "options": [
+     "The maximum acceptable concentration (MAC) for lead in treated water as per Health Canada guidelines",
+     "The 90th percentile lead level at customer taps that triggers required actions (e.g., corrosion control, public education, lead service line replacement programs)",
+     "The lead level that requires immediate issuance of a boil water advisory",
+     "The lead level that necessitates an immediate system shutdown"
+    ],
+    "correctIndex": 1,
+    "explanation": "In the context of lead in drinking water, an 'action level' typically refers to a specific concentration that, when exceeded, triggers mandatory corrective measures by the water system. While the term 'Lead and Copper Rule' is specific to the US EPA, the concept of a 90th percentile lead level at customer taps triggering actions like corrosion control or public education is consistent with approaches taken in Canadian jurisdictions, including Ontario, to manage lead in drinking water. The Health Canada Guideline for Canadian Drinking Water Quality for lead sets a Maximum Acceptable Concentration (MAC) of 0.005 mg/L, but also emphasizes a multi-barrier approach and proactive measures based on monitoring results, which aligns with the spirit of an action level. Options A, C, and D do not accurately describe the concept of an 'action level' as it relates to lead management in drinking water systems."
+   },
+   "fix": {
+    "question": "What is the Maximum Acceptable Concentration (MAC) for lead in drinking water, measured at the tap, in the Guidelines for Canadian Drinking Water Quality?",
+    "options": [
+     "0.005 mg/L",
+     "0.010 mg/L",
+     "0.015 mg/L",
+     "0.050 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "Health Canada lowered the MAC for lead to 0.005 mg/L (5 ug/L) in 2019, applied at the consumer's tap and as low as reasonably achievable. The earlier MAC was 0.010 mg/L, and 0.015 mg/L is the US EPA action level, which is not a Canadian standard.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46239,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 355,
+   "verdict": "JURISDICTION",
+   "note": "Explanation presents the US Public Notification Rule tiers (24-hour/30-day/annual) as the rule. Canadian notification timelines are set by provincial regulators and health authorities.",
+   "original": {
+    "question": "What is the purpose of 'public notification' requirements for water quality violations?",
+    "options": [
+     "To satisfy regulatory paperwork requirements",
+     "To notify regulators of violations only",
+     "To promptly inform customers of water quality violations so they can take protective actions and make informed decisions about water use",
+     "To document violations for legal purposes"
+    ],
+    "correctIndex": 2,
+    "explanation": "Public notification (PN) requirements ensure customers are promptly informed of water quality violations that may pose health risks. Tier 1 (acute health risk): 24-hour notification via broadcast media, posting, or direct contact. Tier 2 (non-acute): 30-day notification. Tier 3 (monitoring/reporting): annual notification. PN allows customers to take protective actions (use bottled water, boil water) while violations are corrected."
+   },
+   "fix": {
+    "question": "What is the purpose of 'public notification' requirements for water quality violations?",
+    "options": [
+     "To satisfy regulatory paperwork requirements",
+     "To notify regulators of violations only",
+     "To promptly inform customers of water quality violations so they can take protective actions and make informed decisions about water use",
+     "To document violations for legal purposes"
+    ],
+    "correctIndex": 2,
+    "explanation": "Public notification ensures customers are promptly informed of water quality problems that may pose health risks, such as a boil water advisory or do-not-consume notice. Content, method and timing are set by the provincial regulator and medical health officer; the more serious the health risk, the faster and wider the notice. Notification allows customers to take protective actions (use bottled water, boil water) while the problem is corrected.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46257,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 373,
+   "verdict": "JURISDICTION",
+   "note": "Explanation says corrosion control is required under the Lead and Copper Rule (US EPA). Not the governing rule in Canada.",
+   "original": {
+    "question": "What is 'corrosion control treatment' and why is it required?",
+    "options": [
+     "Treatment to prevent pipe corrosion from external soil conditions",
+     "Treatment to prevent biological corrosion of pipe materials",
+     "Treatment to remove corrosion products from water",
+     "Treatment to minimize the corrosivity of water to distribution system materials, reducing lead and copper leaching from pipes and plumbing"
+    ],
+    "correctIndex": 3,
+    "explanation": "Corrosion control treatment adjusts water chemistry (pH, alkalinity, orthophosphate addition) to minimize corrosion of distribution system materials, particularly lead and copper from service lines and plumbing. Orthophosphate forms a protective scale on pipe surfaces. Corrosion control is required under the Lead and Copper Rule when lead or copper action levels are exceeded."
+   },
+   "fix": {
+    "question": "What is 'corrosion control treatment' and why is it required?",
+    "options": [
+     "Treatment to prevent pipe corrosion from external soil conditions",
+     "Treatment to prevent biological corrosion of pipe materials",
+     "Treatment to remove corrosion products from water",
+     "Treatment to minimize the corrosivity of water to distribution system materials, reducing lead and copper leaching from pipes and plumbing"
+    ],
+    "correctIndex": 3,
+    "explanation": "Corrosion control treatment adjusts water chemistry (pH, alkalinity, orthophosphate addition) to minimize corrosion of distribution system materials, particularly lead and copper from service lines and plumbing. Orthophosphate forms a protective scale on pipe surfaces. In Canada it is used to keep tap levels below the Health Canada guidelines (lead MAC 0.005 mg/L, copper MAC 2 mg/L) and is directed by provincial regulators.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46271,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 387,
+   "verdict": "JURISDICTION",
+   "note": "Describes the US Lead and Copper Rule protocol (first-draw after 6+ hours stagnation). Health Canada guidance recommends a 30-minute stagnation sampling protocol (or random daytime sampling) rather than 6-hour first-draw. Reworded to be jurisdiction-neutral.",
+   "original": {
+    "question": "What is 'lead and copper sampling' and what are the requirements for sample collection?",
+    "options": [
+     "Samples collected from treatment plant effluent",
+     "Samples collected from distribution system hydrants",
+     "First-draw samples collected from customer taps after 6+ hours of no water use, targeting homes with lead service lines or copper plumbing with lead solder",
+     "Samples collected from storage tanks"
+    ],
+    "correctIndex": 2,
+    "explanation": "Lead and copper samples are first-draw samples collected from customer taps after at least 6 hours of no water use (stagnation). This maximizes contact time with lead-containing plumbing materials. Sampling sites are prioritized: homes with lead service lines; homes with copper plumbing and lead solder; and homes with lead-containing fixtures. Results determine whether corrosion control treatment is adequate."
+   },
+   "fix": {
+    "question": "What is 'lead and copper sampling' at the tap and what is the key sample collection requirement?",
+    "options": [
+     "Samples collected from treatment plant effluent",
+     "Samples collected from distribution system hydrants",
+     "Stagnation samples collected from customer taps after a defined period of no water use (for example 30 minutes under Health Canada guidance), targeting homes with lead service lines or lead solder/plumbing",
+     "Samples collected from storage tanks"
+    ],
+    "correctIndex": 2,
+    "explanation": "Lead and copper samples are collected at customer taps, where the water has been in contact with premise plumbing and service lines. The protocol specifies a stagnation period (Health Canada recommends 30-minute stagnation sampling, with the first litre analysed; other jurisdictions use longer periods such as 6 hours) and prioritizes homes with lead service lines or lead solder. Results show whether corrosion control is adequate.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46279,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 395,
+   "verdict": "JURISDICTION",
+   "note": "Explanation says enhanced coagulation is required under the US Disinfectants/Disinfection Byproducts Rule. Not a Canadian rule.",
+   "original": {
+    "question": "What is 'enhanced coagulation' and why is it used?",
+    "options": [
+     "Adding more coagulant than normally required for turbidity removal",
+     "Using multiple coagulants simultaneously",
+     "Optimizing coagulation to maximize removal of natural organic matter (NOM) to reduce disinfection byproduct formation potential",
+     "Coagulation at elevated temperatures"
+    ],
+    "correctIndex": 2,
+    "explanation": "Enhanced coagulation optimizes coagulant dose and pH to maximize removal of natural organic matter (NOM), which is the primary precursor to disinfection byproducts (THMs, HAAs). By removing NOM before disinfection, enhanced coagulation reduces DBP formation potential. It is required under the Disinfectants/Disinfection Byproducts Rule for systems using surface water or GWUDI."
+   },
+   "fix": {
+    "question": "What is 'enhanced coagulation' and why is it used?",
+    "options": [
+     "Adding more coagulant than normally required for turbidity removal",
+     "Using multiple coagulants simultaneously",
+     "Optimizing coagulation to maximize removal of natural organic matter (NOM) to reduce disinfection byproduct formation potential",
+     "Coagulation at elevated temperatures"
+    ],
+    "correctIndex": 2,
+    "explanation": "Enhanced coagulation optimizes coagulant dose and pH to maximize removal of natural organic matter (NOM), which is the primary precursor to disinfection byproducts (THMs, HAAs). By removing NOM before disinfection, enhanced coagulation reduces DBP formation potential and helps meet the Canadian guidelines for THMs and HAAs. It is commonly applied at surface water treatment plants.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46284,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 400,
+   "verdict": "JURISDICTION",
+   "note": "Explanation cites the US Lead and Copper Rule lead service line inventory requirement.",
+   "original": {
+    "question": "What is the purpose of 'service connection management' in a distribution system?",
+    "options": [
+     "To manage customer billing for water service",
+     "To maintain accurate records of all service connections, ensure proper installation standards, and manage service line materials (especially lead) for public health protection",
+     "To control water pressure at individual service connections",
+     "To manage meter reading schedules"
+    ],
+    "correctIndex": 1,
+    "explanation": "Service connection management involves: maintaining records of connection locations, sizes, and materials; ensuring new connections meet installation standards; identifying lead service lines for replacement programs; managing meter installations and replacements; and coordinating service connections with main extensions. Accurate service connection records are essential for lead service line inventory requirements under the Lead and Copper Rule."
+   },
+   "fix": {
+    "question": "What is the purpose of 'service connection management' in a distribution system?",
+    "options": [
+     "To manage customer billing for water service",
+     "To maintain accurate records of all service connections, ensure proper installation standards, and manage service line materials (especially lead) for public health protection",
+     "To control water pressure at individual service connections",
+     "To manage meter reading schedules"
+    ],
+    "correctIndex": 1,
+    "explanation": "Service connection management involves: maintaining records of connection locations, sizes, and materials; ensuring new connections meet installation standards; identifying lead service lines for replacement programs; managing meter installations and replacements; and coordinating service connections with main extensions. Accurate service connection records are essential for lead service line inventories and replacement programs under Health Canada guidance and provincial requirements.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46289,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 405,
+   "verdict": "JURISDICTION",
+   "note": "Explanation cites America's Water Infrastructure Act (US federal law) as the governing requirement.",
+   "original": {
+    "question": "What is the purpose of 'water system emergency response planning' requirements?",
+    "options": [
+     "To satisfy insurance requirements",
+     "To ensure water utilities have pre-planned responses to emergencies that protect public health and minimize service disruption",
+     "To document past emergency responses for regulatory review",
+     "To train operators on emergency procedures only"
+    ],
+    "correctIndex": 1,
+    "explanation": "Emergency response planning requirements (e.g., America's Water Infrastructure Act) require utilities to: assess risks and vulnerabilities; develop emergency response plans (ERPs) addressing identified risks; review and update plans regularly; and certify completion to regulators. ERPs must address: contamination events; natural disasters; cyber attacks; and other threats. Pre-planning enables faster, more effective emergency response."
+   },
+   "fix": {
+    "question": "What is the purpose of 'water system emergency response planning' requirements?",
+    "options": [
+     "To satisfy insurance requirements",
+     "To ensure water utilities have pre-planned responses to emergencies that protect public health and minimize service disruption",
+     "To document past emergency responses for regulatory review",
+     "To train operators on emergency procedures only"
+    ],
+    "correctIndex": 1,
+    "explanation": "Emergency response planning requirements, set by provincial regulators and operating permits, call for utilities to: assess risks and vulnerabilities; develop emergency response plans (ERPs) addressing identified risks; and review and update plans regularly. ERPs must address: contamination events; natural disasters; cyber attacks; and other threats. Pre-planning enables faster, more effective emergency response.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46294,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 410,
+   "verdict": "UNCLEAR",
+   "note": "Explanation gives manganese limit 0.05 mg/L (US SMCL). The Canadian aesthetic objective for manganese is 0.02 mg/L (MAC 0.12 mg/L); iron AO 0.3 mg/L is correct. Answer key is fine.",
+   "original": {
+    "question": "What is 'iron and manganese removal' and why is it important for distribution systems?",
+    "options": [
+     "Iron and manganese are removed only for aesthetic reasons",
+     "Iron and manganese removal is only required for industrial water users",
+     "Iron and manganese are removed to reduce corrosivity of water",
+     "Iron and manganese are removed to prevent discoloured water, staining of fixtures, taste problems, and accumulation of deposits in distribution pipes that can harbour bacteria"
+    ],
+    "correctIndex": 3,
+    "explanation": "Iron (>0.3 mg/L) and manganese (>0.05 mg/L) cause: discoloured water (red/brown from iron, black/grey from manganese); staining of laundry and fixtures; metallic taste; and accumulation of deposits in distribution pipes. Manganese deposits can harbour bacteria and release manganese under low-oxygen conditions. Treatment: oxidation (chlorine, permanganate, ozone) followed by filtration."
+   },
+   "fix": {
+    "question": "What is 'iron and manganese removal' and why is it important for distribution systems?",
+    "options": [
+     "Iron and manganese are removed only for aesthetic reasons",
+     "Iron and manganese removal is only required for industrial water users",
+     "Iron and manganese are removed to reduce corrosivity of water",
+     "Iron and manganese are removed to prevent discoloured water, staining of fixtures, taste problems, and accumulation of deposits in distribution pipes that can harbour bacteria"
+    ],
+    "correctIndex": 3,
+    "explanation": "Iron (above the 0.3 mg/L aesthetic objective) and manganese (above the 0.02 mg/L aesthetic objective in the Guidelines for Canadian Drinking Water Quality) cause: discoloured water (red/brown from iron, black/grey from manganese); staining of laundry and fixtures; metallic taste; and accumulation of deposits in distribution pipes. Manganese deposits can harbour bacteria and release manganese under changing conditions. Treatment: oxidation (chlorine, permanganate, ozone) followed by filtration.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46296,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 412,
+   "verdict": "WRONG",
+   "note": "A pressure vacuum breaker is suitable for continuous pressure (unlike an atmospheric vacuum breaker), so 'non-continuous pressure applications' and 'not suitable for continuous pressure applications' are incorrect. Standard installation is at least 300 mm (12 in) above the highest downstream outlet, not 150 mm.",
+   "original": {
+    "question": "What is a 'pressure vacuum breaker' (PVB) and where is it used?",
+    "options": [
+     "A device that breaks vacuum in water supply lines",
+     "A backflow preventer used for high-hazard connections",
+     "A device that prevents pressure surges in water mains",
+     "A backflow preventer that protects against backsiphonage only, used for irrigation systems and other non-continuous pressure applications"
+    ],
+    "correctIndex": 3,
+    "explanation": "A pressure vacuum breaker (PVB) contains a check valve and an air inlet valve that opens under negative pressure to break the siphon. PVBs protect against backsiphonage only (not backpressure) and must be installed at least 150mm above the highest downstream outlet. They are used for: irrigation systems; hose connections; and other applications where backpressure cannot occur. PVBs are not suitable for continuous pressure applications."
+   },
+   "fix": {
+    "question": "What is a 'pressure vacuum breaker' (PVB) and where is it used?",
+    "options": [
+     "A device that breaks vacuum in water supply lines",
+     "A backflow preventer used for high-hazard connections",
+     "A device that prevents pressure surges in water mains",
+     "A backflow preventer that protects against backsiphonage only (not backpressure), commonly used on irrigation systems where no backpressure can occur"
+    ],
+    "correctIndex": 3,
+    "explanation": "A pressure vacuum breaker (PVB) contains a spring-loaded check valve and an air inlet valve that opens under negative pressure to break the siphon. PVBs protect against backsiphonage only (not backpressure) and must be installed at least 300 mm above the highest downstream outlet or spill point. They are commonly used for irrigation systems and other applications where backpressure cannot occur, and, unlike atmospheric vacuum breakers, can be used under continuous pressure.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46297,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 413,
+   "verdict": "JURISDICTION",
+   "note": "Uses US MCL/MCLG terminology and the US regulatory framework. Canada uses MACs in the Guidelines for Canadian Drinking Water Quality, adopted into enforceable provincial regulations.",
+   "original": {
+    "question": "What is the purpose of 'water quality standards' (maximum contaminant levels)?",
+    "options": [
+     "To set ideal water quality targets for utilities",
+     "To establish legally enforceable limits for contaminants in drinking water that protect public health with an adequate margin of safety",
+     "To set minimum water quality requirements for industrial users",
+     "To establish water quality goals for source water protection"
+    ],
+    "correctIndex": 1,
+    "explanation": "Maximum contaminant levels (MCLs) are legally enforceable limits for contaminants in drinking water. MCLs are set as close to the maximum contaminant level goals (MCLGs, non-enforceable health goals) as is feasible considering available treatment technology and cost. MCLs protect public health by limiting exposure to contaminants that cause acute or chronic health effects."
+   },
+   "fix": {
+    "question": "What is the purpose of drinking water quality standards such as Maximum Acceptable Concentrations (MACs)?",
+    "options": [
+     "To set ideal water quality targets for utilities",
+     "To establish health-based limits for contaminants in drinking water that protect public health with an adequate margin of safety",
+     "To set minimum water quality requirements for industrial users",
+     "To establish water quality goals for source water protection"
+    ],
+    "correctIndex": 1,
+    "explanation": "Maximum Acceptable Concentrations (MACs) in the Guidelines for Canadian Drinking Water Quality are health-based limits set by Health Canada with the provinces and territories, with a margin of safety and considering treatment feasibility. The guidelines themselves are not law; they become enforceable when adopted by provincial or territorial regulations or operating permits. MACs protect public health by limiting exposure to contaminants that cause acute or chronic health effects.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46304,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 420,
+   "verdict": "JURISDICTION",
+   "note": "Describes the US EPA Ground Water Rule. Replaced with the equivalent Canadian concept (groundwater under the direct influence of surface water, GUDI), which applies in Western Canada.",
+   "original": {
+    "question": "What is the purpose of 'ground water rule' (GWR) requirements?",
+    "options": [
+     "To regulate groundwater withdrawal rates",
+     "To protect public water systems using groundwater from fecal contamination by requiring triggered source water monitoring and corrective action",
+     "To regulate groundwater quality standards for irrigation",
+     "To protect groundwater recharge areas from development"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Ground Water Rule (GWR) protects groundwater-based public water systems from fecal contamination. Requirements: sanitary surveys to identify significant deficiencies; triggered source water monitoring (when distribution system samples are positive for total coliform); corrective action for confirmed fecal contamination; and compliance monitoring. GWR recognizes that groundwater can be contaminated by nearby septic systems, agricultural activities, and surface water infiltration."
+   },
+   "fix": {
+    "question": "What is the purpose of assessing a well for 'groundwater under the direct influence of surface water' (GUDI)?",
+    "options": [
+     "To regulate groundwater withdrawal rates",
+     "To identify groundwater sources vulnerable to surface water contamination (such as Giardia, Cryptosporidium and bacteria) so they receive treatment appropriate to surface water, including filtration and disinfection",
+     "To regulate groundwater quality standards for irrigation",
+     "To protect groundwater recharge areas from development"
+    ],
+    "correctIndex": 1,
+    "explanation": "A GUDI assessment determines whether a groundwater source is influenced by nearby surface water through features such as shallow or poorly sealed wells, springs, infiltration galleries, and rapid changes in turbidity, temperature or conductivity after rain or runoff. Sources found to be GUDI can carry surface-borne pathogens and must be treated to surface water standards by the provincial regulator.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46309,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 425,
+   "verdict": "JURISDICTION",
+   "note": "Explanation gives US SMCL 2.0 mg/L and MCL 4.0 mg/L. Canada's Health Canada MAC for fluoride is 1.5 mg/L; the recommended optimal level is 0.7 mg/L. Answer key is fine.",
+   "original": {
+    "question": "What is 'fluoridation' and what is the recommended fluoride level in drinking water?",
+    "options": [
+     "Adding fluoride to water to prevent pipe corrosion",
+     "Adding fluoride to water at the recommended level (0.7 mg/L in Canada/US) to prevent dental cavities while avoiding dental fluorosis",
+     "Removing naturally occurring fluoride from water",
+     "Adding fluoride to water to improve taste"
+    ],
+    "correctIndex": 1,
+    "explanation": "Community water fluoridation adds fluoride to water at the recommended level (0.7 mg/L in the US; 0.7 mg/L in Canada) to prevent dental cavities (dental caries). Fluoride strengthens tooth enamel and inhibits bacterial acid production. The secondary maximum contaminant level (SMCL) for fluoride is 2.0 mg/L (aesthetic) and the MCL is 4.0 mg/L (health). Naturally occurring fluoride above 1.5 mg/L may cause dental fluorosis."
+   },
+   "fix": {
+    "question": "What is 'fluoridation' and what is the recommended fluoride level in drinking water?",
+    "options": [
+     "Adding fluoride to water to prevent pipe corrosion",
+     "Adding fluoride to water at the recommended level (0.7 mg/L in Canada) to prevent dental cavities while avoiding dental fluorosis",
+     "Removing naturally occurring fluoride from water",
+     "Adding fluoride to water to improve taste"
+    ],
+    "correctIndex": 1,
+    "explanation": "Community water fluoridation adds fluoride to water at the recommended level (0.7 mg/L, per Health Canada) to prevent dental cavities (dental caries). Fluoride strengthens tooth enamel and inhibits bacterial acid production. The Health Canada Maximum Acceptable Concentration for fluoride is 1.5 mg/L. Excess fluoride above recommended levels can cause dental fluorosis.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46320,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 436,
+   "verdict": "UNCLEAR",
+   "note": "Marked answer D ('total head available at the pump suction') omits the vapour-pressure term, and option A (minimum pressure at suction to prevent cavitation) is the NPSH required definition, so two options are defensible. The explanation also refers to 'Option A' while describing D. Reworded to NPSH available with a single clear answer.",
+   "original": {
+    "question": "What is 'net positive suction head' (NPSH) and why is it important for pump operation?",
+    "options": [
+     "The minimum pressure required at the pump suction to prevent cavitation, which occurs when water vaporizes due to low pressure causing pump damage and performance loss",
+     "The pressure difference between pump suction and discharge",
+     "The maximum suction lift a pump can achieve",
+     "The total head available at the pump suction"
+    ],
+    "correctIndex": 3,
+    "explanation": "Net Positive Suction Head (NPSH) is fundamentally the total absolute pressure at the suction side of a pump, minus the vapour pressure of the liquid, expressed in terms of head. Option A, \"The total head available at the pump suction,\" best describes NPSH Available (NPSHa), which is the actual head present at the pump's suction inlet. This is a critical parameter for ensuring proper pump operation and preventing cavitation, a phenomenon where low pressure causes water to vaporize, leading to pump damage and reduced efficiency. While Option B describes NPSH Required (NPSHr) and the consequences of cavitation, it is a specific aspect of NPSH, not the general definition. Options C and D describe other pump characteristics."
+   },
+   "fix": {
+    "question": "What is 'net positive suction head available' (NPSHa) and why is it important for pump operation?",
+    "options": [
+     "The pressure difference between pump suction and discharge",
+     "The maximum suction lift a pump can achieve",
+     "The total absolute head at the pump suction minus the vapour pressure head of the water; it must exceed the pump's required NPSH to avoid cavitation",
+     "The head the pump adds to the water"
+    ],
+    "correctIndex": 2,
+    "explanation": "NPSHa is the absolute total head at the pump suction (atmospheric or surface pressure head plus static head minus friction losses) minus the vapour pressure head of the water. The pump manufacturer specifies NPSH required (NPSHr); NPSHa must exceed NPSHr with a margin, otherwise water vaporizes at the impeller eye (cavitation), causing noise, damage and loss of performance.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46321,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 437,
+   "verdict": "UNCLEAR",
+   "note": "Explanation says the C651 slug method uses 200 mg/L; I recall AWWA C651 specifying 100 mg/L for 3 hours (older editions 300 mg/L for 15 minutes), not 200 mg/L. Could not verify exact edition; replaced with edition-neutral wording. Answer key is fine.",
+   "original": {
+    "question": "What is the purpose of 'water main disinfection' (AWWA C651) before placing new or repaired mains in service?",
+    "options": [
+     "To test pipe pressure before commissioning",
+     "To test water quality in new mains",
+     "To remove construction debris from new mains",
+     "To kill bacteria introduced during construction or repair before the main is connected to the distribution system and placed in service"
+    ],
+    "correctIndex": 3,
+    "explanation": "New and repaired water mains are disinfected per AWWA C651 to kill bacteria introduced during construction. Methods: continuous feed (maintain 25 mg/L chlorine for 24 hours); slug method (200 mg/L slug moved through the main); and tablet method (calcium hypochlorite tablets placed in pipe sections). After disinfection, mains are flushed, dechlorinated, and tested bacteriologically before connection to the system."
+   },
+   "fix": {
+    "question": "What is the purpose of 'water main disinfection' (AWWA C651) before placing new or repaired mains in service?",
+    "options": [
+     "To test pipe pressure before commissioning",
+     "To test water quality in new mains",
+     "To remove construction debris from new mains",
+     "To kill bacteria introduced during construction or repair before the main is connected to the distribution system and placed in service"
+    ],
+    "correctIndex": 3,
+    "explanation": "New and repaired water mains are disinfected per AWWA C651 or the local authority's standard to kill bacteria introduced during construction. Methods include: continuous feed (about 25 mg/L chlorine held for the specified contact period); slug method (a high-concentration chlorine slug moved through the main); and tablet method (calcium hypochlorite tablets placed in pipe sections). Exact doses and contact times depend on the edition of the standard in use. After disinfection, mains are flushed, dechlorinated, and tested bacteriologically before connection to the system.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46333,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 449,
+   "verdict": "JURISDICTION",
+   "note": "Bank is Western Canada; question and explanation present Ontario's Safe Drinking Water Act and O. Reg. 170/03 as the governing rule. Generalized to provincial/Canadian requirements.",
+   "original": {
+    "question": "What is the purpose of surface water treatment requirements in Ontario?",
+    "options": [
+     "To regulate surface water withdrawals",
+     "To require filtration and disinfection of surface water supplies to achieve specific log-inactivation of Giardia, Cryptosporidium, and viruses",
+     "To protect surface water quality from pollution",
+     "To regulate water temperature in surface water sources"
+    ],
+    "correctIndex": 1,
+    "explanation": "The primary purpose of regulations concerning surface water treatment, such as those outlined in Ontario's Safe Drinking Water Act, 2002 and its associated regulations (e.g., O. Reg. 170/03), is to ensure the safety of drinking water by requiring effective treatment. This includes mandatory filtration and disinfection for surface water supplies to achieve specific pathogen reduction targets, particularly for protozoa like Giardia and Cryptosporidium, and viruses. These requirements are critical for protecting public health from waterborne diseases. Other options, while related to water management, do not capture the core public health protection mandate of surface water treatment regulations."
+   },
+   "fix": {
+    "question": "What is the purpose of surface water treatment requirements set by provincial regulators in Canada?",
+    "options": [
+     "To regulate surface water withdrawals",
+     "To require filtration and disinfection of surface water supplies (or approved equivalent treatment) to achieve specific log-removal/inactivation of Giardia, Cryptosporidium, and viruses",
+     "To protect surface water quality from pollution",
+     "To regulate water temperature in surface water sources"
+    ],
+    "correctIndex": 1,
+    "explanation": "Provincial drinking water regulations and permits, guided by the Guidelines for Canadian Drinking Water Quality, require treatment of surface water sources to achieve minimum log removal/inactivation of enteric protozoa (Giardia, Cryptosporidium) and enteric viruses, typically through filtration plus disinfection or equivalent validated treatment. This protects public health from waterborne disease.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46336,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 452,
+   "verdict": "JURISDICTION",
+   "note": "Explanation cites Ontario O. Reg. 588/17 as the governing rule in a western Canada bank. Remove the Ontario-specific citation.",
+   "original": {
+    "question": "In a Class 1 water distribution system, what is the purpose of maintaining accurate infrastructure records and mapping?",
+    "options": [
+     "Records are unnecessary with experienced staff",
+     "Accurate records of pipe location, material, age, diameter, and valve positions enable: rapid emergency response (find and close correct valves), effective maintenance planning, reliable hydraulic modeling, and informed capital investment decisions",
+     "Only map new installations",
+     "Paper records are adequate for all purposes"
+    ],
+    "correctIndex": 1,
+    "explanation": "Record benefits: emergency response (locate correct valves in minutes vs hours of searching), maintenance planning (target condition assessment to oldest/most vulnerable pipes), hydraulic modeling (accurate pipe data = reliable model predictions), capital planning (know what you have, its condition, and when it needs replacement), and regulatory compliance (O. Reg. 588/17 asset management planning requires infrastructure inventory). GIS preferred for spatial analysis capability."
+   },
+   "fix": {
+    "question": "In a Class 1 water distribution system, what is the purpose of maintaining accurate infrastructure records and mapping?",
+    "options": [
+     "Records are unnecessary with experienced staff",
+     "Accurate records of pipe location, material, age, diameter, and valve positions enable: rapid emergency response (find and close correct valves), effective maintenance planning, reliable hydraulic modeling, and informed capital investment decisions",
+     "Only map new installations",
+     "Paper records are adequate for all purposes"
+    ],
+    "correctIndex": 1,
+    "explanation": "Record benefits: emergency response (locate correct valves in minutes vs hours of searching), maintenance planning (target condition assessment to oldest/most vulnerable pipes), hydraulic modeling (accurate pipe data = reliable model predictions), capital planning (know what you have, its condition, and when it needs replacement), and support for asset management planning and provincial or municipal infrastructure reporting. GIS preferred for spatial analysis capability.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46338,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 454,
+   "verdict": "JURISDICTION",
+   "note": "MCL is a US EPA term; in Canada the health-based limit is the Health Canada Maximum Acceptable Concentration (MAC), 0.010 mg/L for arsenic. Value is the same but the regulatory framing is US.",
+   "original": {
+    "question": "What is 'arsenic removal' from drinking water and what methods are used?",
+    "options": [
+     "Arsenic is removed only from industrial water supplies",
+     "Arsenic is naturally harmless and does not require removal",
+     "Arsenic is removed from drinking water to meet the MCL (10 μg/L) using coagulation/filtration, ion exchange, activated alumina, or reverse osmosis",
+     "Arsenic removal is only required for surface water systems"
+    ],
+    "correctIndex": 2,
+    "explanation": "Arsenic MCL is 10 μg/L (US and Canada). Arsenic occurs naturally in groundwater from geological sources. Removal methods: enhanced coagulation/filtration (removes arsenate As(V)); ion exchange (strong base anion resin); activated alumina (adsorption); reverse osmosis; and oxidation followed by filtration (converts arsenite As(III) to arsenate for better removal). Method selection depends on arsenic speciation, water chemistry, and system size."
+   },
+   "fix": {
+    "question": "What is 'arsenic removal' from drinking water and what methods are used?",
+    "options": [
+     "Arsenic is removed only from industrial water supplies",
+     "Arsenic is naturally harmless and does not require removal",
+     "Arsenic is removed from drinking water to meet the MAC (0.010 mg/L) using coagulation/filtration, ion exchange, activated alumina, or reverse osmosis",
+     "Arsenic removal is only required for surface water systems"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Canadian Guidelines for Drinking Water Quality set a MAC for arsenic of 0.010 mg/L (10 μg/L). Arsenic occurs naturally in groundwater from geological sources. Removal methods: enhanced coagulation/filtration (removes arsenate As(V)); ion exchange (strong base anion resin); activated alumina (adsorption); reverse osmosis; and oxidation followed by filtration (converts arsenite As(III) to arsenate for better removal). Method selection depends on arsenic speciation, water chemistry, and system size.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46341,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 457,
+   "verdict": "JURISDICTION",
+   "note": "Explanation cites EPCRA (a US federal law) as an applicable regulation in a Canadian bank. Replace with Canadian/provincial wording.",
+   "original": {
+    "question": "What is 'water utility environmental compliance' and what regulations apply?",
+    "options": [
+     "Compliance with water quality standards only",
+     "Compliance with environmental regulations governing water withdrawals, chemical handling, discharge of flushing water, and environmental impacts of utility operations",
+     "Compliance with workplace safety regulations only",
+     "Compliance with building codes for utility facilities"
+    ],
+    "correctIndex": 1,
+    "explanation": "Water utilities must comply with environmental regulations beyond drinking water standards: water withdrawal permits (surface water and groundwater); chemical handling and storage (EPCRA reporting, spill prevention); discharge permits (flushing water, filter backwash); hazardous waste disposal (spent filter media, chemicals); and environmental impact assessment for new infrastructure. Non-compliance can result in significant fines and operational restrictions."
+   },
+   "fix": {
+    "question": "What is 'water utility environmental compliance' and what regulations apply?",
+    "options": [
+     "Compliance with water quality standards only",
+     "Compliance with environmental regulations governing water withdrawals, chemical handling, discharge of flushing water, and environmental impacts of utility operations",
+     "Compliance with workplace safety regulations only",
+     "Compliance with building codes for utility facilities"
+    ],
+    "correctIndex": 1,
+    "explanation": "Water utilities must comply with environmental requirements beyond drinking water standards: water licences for surface water and groundwater withdrawals; chemical handling and storage (provincial and federal requirements, spill reporting, WHMIS); discharge approvals (flushing water, filter backwash, superchlorinated water); hazardous waste disposal (spent filter media, chemicals); and environmental assessment for new infrastructure. Non-compliance can result in significant fines and operational restrictions.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46346,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 462,
+   "verdict": "JURISDICTION",
+   "note": "Explanation cites NFPA 70E (US standard); the Canadian equivalent is CSA Z462 together with provincial OHS regulations.",
+   "original": {
+    "question": "What is the purpose of 'electrical safety programs' for water utility workers?",
+    "options": [
+     "To comply with electrical code requirements for utility facilities",
+     "To reduce electrical costs at utility facilities",
+     "To protect workers from electrical hazards (shock, arc flash, electrocution) through training, PPE, safe work procedures, and equipment maintenance",
+     "To maintain electrical equipment for regulatory compliance"
+    ],
+    "correctIndex": 2,
+    "explanation": "Electrical safety programs protect workers from: electrical shock (current through body causing injury or death); arc flash (explosive energy release from electrical faults causing burns and blast injuries); and electrocution. Program elements: NFPA 70E compliance; arc flash hazard analysis; appropriate PPE (arc-rated clothing, face shields, rubber insulating gloves); lockout/tagout; and worker training. Water utilities have significant electrical hazards from pump motors, control panels, and MCC equipment."
+   },
+   "fix": {
+    "question": "What is the purpose of 'electrical safety programs' for water utility workers?",
+    "options": [
+     "To comply with electrical code requirements for utility facilities",
+     "To reduce electrical costs at utility facilities",
+     "To protect workers from electrical hazards (shock, arc flash, electrocution) through training, PPE, safe work procedures, and equipment maintenance",
+     "To maintain electrical equipment for regulatory compliance"
+    ],
+    "correctIndex": 2,
+    "explanation": "Electrical safety programs protect workers from: electrical shock (current through body causing injury or death); arc flash (explosive energy release from electrical faults causing burns and blast injuries); and electrocution. Program elements: compliance with CSA Z462 and provincial OHS regulations; arc flash hazard analysis; appropriate PPE (arc-rated clothing, face shields, rubber insulating gloves); lockout/tagout; and worker training. Water utilities have significant electrical hazards from pump motors, control panels, and MCC equipment.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46358,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 474,
+   "verdict": "JURISDICTION",
+   "note": "The US Lead and Copper Rule and its 1.3 mg/L 90th-percentile action level do not govern in Canada. Health Canada guidance: copper MAC 2 mg/L (health) with an aesthetic objective of 1 mg/L; compliance is judged on tap samples, not an LCR action level.",
+   "original": {
+    "question": "What is 'copper monitoring' under the Lead and Copper Rule and what does it indicate?",
+    "options": [
+     "Monitoring copper at customer taps to assess corrosion control effectiveness and protect against copper toxicity at high levels",
+     "Monitoring copper levels in treatment chemicals",
+     "Monitoring copper in source water only",
+     "Monitoring copper in distribution system pipes"
+    ],
+    "correctIndex": 0,
+    "explanation": "Copper monitoring (action level 1.3 mg/L at 90th percentile) assesses corrosion control effectiveness. Elevated copper indicates: corrosive water attacking copper plumbing; inadequate pH or alkalinity; or aggressive water chemistry. While copper is an essential nutrient, high levels cause gastrointestinal illness. Copper monitoring sites are the same as lead monitoring sites — first-draw samples from homes with copper plumbing."
+   },
+   "fix": {
+    "question": "What is the purpose of copper monitoring at customer taps in a Canadian distribution system and what does it indicate?",
+    "options": [
+     "Monitoring copper at customer taps to assess corrosion control effectiveness and protect against copper toxicity at high levels",
+     "Monitoring copper levels in treatment chemicals",
+     "Monitoring copper in source water only",
+     "Monitoring copper in distribution system pipes"
+    ],
+    "correctIndex": 0,
+    "explanation": "Copper monitoring at consumer taps (Health Canada guideline: MAC 2 mg/L, aesthetic objective 1 mg/L) assesses corrosion control effectiveness. Elevated copper indicates: corrosive water attacking copper plumbing; inadequate pH or alkalinity; or aggressive water chemistry. While copper is an essential nutrient, high levels cause gastrointestinal illness. Samples are typically stagnation (first-draw) samples from homes with copper plumbing.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46359,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 475,
+   "verdict": "JURISDICTION",
+   "note": "Explanation and option use US MCLs (5 pCi/L radium, 30 μg/L uranium). In Canada the limits are Health Canada guideline values/MACs (e.g. uranium MAC 0.02 mg/L, radium-226 0.5 Bq/L), expressed in Bq/L.",
+   "original": {
+    "question": "What is 'radionuclide removal' from drinking water and what methods are used?",
+    "options": [
+     "Removing naturally occurring radionuclides (radium, uranium, radon) from groundwater to meet MCLs using ion exchange, reverse osmosis, or lime softening",
+     "Removing radioactive contamination from water after nuclear accidents only",
+     "Removing artificial radionuclides from surface water",
+     "Radionuclides cannot be removed from drinking water"
+    ],
+    "correctIndex": 0,
+    "explanation": "Naturally occurring radionuclides in groundwater include: radium-226/228 (MCL 5 pCi/L combined); uranium (MCL 30 μg/L); and gross alpha/beta emitters. Removal methods: ion exchange (cation exchange for radium, uranium); reverse osmosis (broad spectrum removal); lime softening (co-precipitation of radium with calcium carbonate); and aeration (radon removal — volatile gas). Method selection depends on radionuclide type and water chemistry."
+   },
+   "fix": {
+    "question": "What is 'radionuclide removal' from drinking water and what methods are used?",
+    "options": [
+     "Removing naturally occurring radionuclides (radium, uranium, radon) from groundwater to meet guideline limits using ion exchange, reverse osmosis, or lime softening",
+     "Removing radioactive contamination from water after nuclear accidents only",
+     "Removing artificial radionuclides from surface water",
+     "Radionuclides cannot be removed from drinking water"
+    ],
+    "correctIndex": 0,
+    "explanation": "Naturally occurring radionuclides in groundwater include radium-226/228, uranium (Health Canada MAC 0.02 mg/L), radon, and gross alpha/beta emitters; Canadian limits are expressed in Bq/L or mg/L. Removal methods: ion exchange (cation exchange for radium, uranium); reverse osmosis (broad spectrum removal); lime softening (co-precipitation of radium with calcium carbonate); and aeration (radon removal, a volatile gas). Method selection depends on radionuclide type and water chemistry.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46375,
+   "bankKey": "wpi-class1-water-dist",
+   "questionNum": 491,
+   "verdict": "JURISDICTION",
+   "note": "The key option names the US Lead and Copper Rule Revisions as the regulatory driver, which does not apply in western Canada. Health Canada lead MAC is 0.005 mg/L; inventories support provincial/municipal lead-reduction programs.",
+   "original": {
+    "question": "What is the purpose of 'lead service line inventory' requirements?",
+    "options": [
+     "To document all lead pipes in the distribution system for asset management",
+     "To identify lead service lines for corrosion control monitoring",
+     "To satisfy regulatory reporting requirements only",
+     "To identify all lead service lines in the distribution system to prioritize replacement and comply with Lead and Copper Rule Revisions requiring full inventory completion"
+    ],
+    "correctIndex": 3,
+    "explanation": "Lead service line (LSL) inventory requirements (Lead and Copper Rule Revisions) require utilities to: identify all service line materials (lead, galvanized requiring replacement, non-lead); complete full inventories within specified timeframes; make inventories publicly available; and update inventories as service lines are replaced. Complete inventories are essential for: LSL replacement programs; public health protection; and regulatory compliance."
+   },
+   "fix": {
+    "question": "What is the purpose of 'lead service line inventory' requirements?",
+    "options": [
+     "To document all lead pipes in the distribution system for asset management",
+     "To identify lead service lines for corrosion control monitoring",
+     "To satisfy regulatory reporting requirements only",
+     "To identify all lead service lines in the distribution system to prioritize replacement and support lead-reduction programs aligned with the Health Canada lead MAC of 0.005 mg/L"
+    ],
+    "correctIndex": 3,
+    "explanation": "A lead service line (LSL) inventory identifies all service line materials (lead, galvanized downstream of lead, non-lead), is kept up to date as service lines are replaced, and is shared with the public where required by the owner or province. Complete inventories are essential for LSL replacement programs, targeted sampling, public health protection, and meeting the Health Canada lead MAC of 0.005 mg/L at the tap.",
+    "steps": null
+   }
+  },
+  {
+   "id": 44090,
+   "bankKey": "wpi-class2-wastewater",
+   "questionNum": 18,
+   "verdict": "UNCLEAR",
+   "note": "Oxygen transfer efficiency (OTE) is expressed as a percentage of oxygen supplied that is transferred (the bank's own question 44204 treats OTE as 20-35%). kg O2/kWh is aeration efficiency (SAE), a different measure; '% saturation' is not OTE either. Reword to ask about aeration efficiency.",
+   "original": {
+    "question": "Oxygen transfer efficiency (OTE) in aeration systems is typically expressed as?",
+    "options": [
+     "mg/L per minute",
+     "% saturation",
+     "L/min",
+     "kg O2/kWh"
+    ],
+    "correctIndex": 3,
+    "explanation": "OTE is expressed as kg O2 transferred per kWh of energy consumed, used to compare aeration system efficiency."
+   },
+   "fix": {
+    "question": "The energy efficiency of an aeration system (aeration efficiency) is typically expressed as?",
+    "options": [
+     "mg/L per minute",
+     "% saturation",
+     "L/min",
+     "kg O2/kWh"
+    ],
+    "correctIndex": 3,
+    "explanation": "Aeration efficiency is expressed as kg O2 transferred per kWh of energy consumed, used to compare aeration systems. (OTE, by contrast, is the percentage of supplied oxygen transferred.)",
+    "steps": []
+   }
+  },
+  {
+   "id": 44098,
+   "bankKey": "wpi-class2-wastewater",
+   "questionNum": 26,
+   "verdict": "UNITS",
+   "note": "Explanation gives a US-unit parenthetical in a Canadian bank, and it is a wrong conversion: 15-40 m3/m2/d is about 370-980 gpd/ft2, not 600-1,600.",
+   "original": {
+    "question": "Surface overflow rate (SOR) in secondary clarifiers is typically?",
+    "options": [
+     "5–10 m³/m²/day",
+     "15–40 m³/m²/day",
+     "50–80 m³/m²/day",
+     "100+ m³/m²/day"
+    ],
+    "correctIndex": 1,
+    "explanation": "Secondary clarifiers are typically designed for SOR of 15–40 m³/m²/day (or 600–1,600 gpd/ft²) under average flow conditions."
+   },
+   "fix": {
+    "question": "Surface overflow rate (SOR) in secondary clarifiers is typically?",
+    "options": [
+     "5–10 m³/m²/day",
+     "15–40 m³/m²/day",
+     "50–80 m³/m²/day",
+     "100+ m³/m²/day"
+    ],
+    "correctIndex": 1,
+    "explanation": "Secondary clarifiers are typically designed for an SOR of 15–40 m³/m²/day under average flow conditions.",
+    "steps": []
+   }
+  },
+  {
+   "id": 44110,
+   "bankKey": "wpi-class2-wastewater",
+   "questionNum": 38,
+   "verdict": "UNCLEAR",
+   "note": "Key 9.6 mg/L is right, but the explanation names Al2(SO4)3·18H2O; 9.6:1 corresponds to the 14H2O hydrate (MW about 594). 18H2O (MW 666) gives about 10.7:1.",
+   "original": {
+    "question": "What is the stoichiometric dose of alum required to remove 1 mg/L of phosphorus?",
+    "options": [
+     "1 mg/L",
+     "50 mg/L",
+     "9.6 mg/L",
+     "100 mg/L"
+    ],
+    "correctIndex": 2,
+    "explanation": "**Step 1 — Identify Stoichiometric Ratio:**\nThe stoichiometric ratio for alum (Al2(SO4)3·18H2O) to phosphorus (P) removal is approximately 9.6:1.\n\n**Step 2 — Calculate Alum Dose:**\nFor 1 mg/L of phosphorus removal, the required alum dose is 1 mg/L * 9.6 = 9.6 mg/L.\n\nThe correct answer is **9.6 mg/L**."
+   },
+   "fix": {
+    "question": "What is the stoichiometric dose of alum required to remove 1 mg/L of phosphorus?",
+    "options": [
+     "1 mg/L",
+     "50 mg/L",
+     "9.6 mg/L",
+     "100 mg/L"
+    ],
+    "correctIndex": 2,
+    "explanation": "**Step 1 — Identify Stoichiometric Ratio:**\nFor alum (Al2(SO4)3·14H2O, MW about 594) reacting 1:1 on an Al:P molar basis, the ratio is about 9.6 mg alum per mg P.\n\n**Step 2 — Calculate Alum Dose:**\n1 mg/L P × 9.6 = 9.6 mg/L.\n\nThe correct answer is **9.6 mg/L**.",
+    "steps": [
+     {
+      "l": "Formula",
+      "c": "Alum Dose = Phosphorus Removed × Stoichiometric Ratio"
+     },
+     {
+      "l": "Substitute",
+      "c": "Alum Dose = 1 mg/L P × 9.6 mg Alum / mg P"
+     },
+     {
+      "l": "Calculate",
+      "c": "Alum Dose = 9.6 mg/L"
+     },
+     {
+      "l": "Result",
+      "c": "The stoichiometric dose of alum is 9.6 mg/L."
+     }
+    ]
+   }
+  },
+  {
+   "id": 44140,
+   "bankKey": "wpi-class2-wastewater",
+   "questionNum": 68,
+   "verdict": "UNCLEAR",
+   "note": "Options '5% or less' and '10% or less' overlap: any biosolids at 5% moisture or less also meets '10% or less', so two options are literally true.",
+   "original": {
+    "question": "Thermal drying of biosolids reduces moisture content to what level?",
+    "options": [
+     "50–60%",
+     "30–40%",
+     "5% or less",
+     "10% or less"
+    ],
+    "correctIndex": 3,
+    "explanation": "Thermal drying reduces biosolids moisture content to 10% or less (90%+ dry solids), producing a granular product suitable for fertilizer use."
+   },
+   "fix": {
+    "question": "Thermal drying of biosolids reduces moisture content to about what level?",
+    "options": [
+     "50–60%",
+     "30–40%",
+     "70–80%",
+     "10% or less"
+    ],
+    "correctIndex": 3,
+    "explanation": "Thermal drying reduces biosolids moisture content to about 10% or less (90%+ dry solids), producing a granular product suitable for fertilizer use.",
+    "steps": []
+   }
+  },
+  {
+   "id": 44155,
+   "bankKey": "wpi-class2-wastewater",
+   "questionNum": 83,
+   "verdict": "UNCLEAR",
+   "note": "20-30 mg/L is the regulatory secondary standard (WSER 25 mg/L CBOD), not what a well-operated plant typically achieves; 5-10 mg/L is also defensible for a well-operated plant. Reword as the standard.",
+   "original": {
+    "question": "What is the typical effluent BOD from a well-operated secondary treatment system?",
+    "options": [
+     "100–150 mg/L",
+     "5–10 mg/L",
+     "<1 mg/L",
+     "20–30 mg/L"
+    ],
+    "correctIndex": 3,
+    "explanation": "Well-operated secondary treatment typically achieves effluent BOD of 20–30 mg/L, meeting most regulatory requirements."
+   },
+   "fix": {
+    "question": "What effluent BOD level is typically used as the secondary treatment standard?",
+    "options": [
+     "100–150 mg/L",
+     "5–10 mg/L",
+     "<1 mg/L",
+     "20–30 mg/L"
+    ],
+    "correctIndex": 3,
+    "explanation": "Secondary treatment standards are typically set at about 20–30 mg/L BOD (the federal WSER limit is 25 mg/L CBOD5, monthly average).",
+    "steps": []
+   }
+  },
+  {
+   "id": 44161,
+   "bankKey": "wpi-class2-wastewater",
+   "questionNum": 89,
+   "verdict": "UNCLEAR",
+   "note": "20-30 mg/L TSS is the permit/standard level; a well-operated secondary clarifier typically produces 5-15 mg/L, which is also an option, so two answers are defensible.",
+   "original": {
+    "question": "What is the typical effluent TSS from a well-operated secondary clarifier?",
+    "options": [
+     "100–150 mg/L",
+     "20–30 mg/L",
+     "5–15 mg/L",
+     "<1 mg/L"
+    ],
+    "correctIndex": 1,
+    "explanation": "Well-operated secondary clarifiers typically produce effluent with TSS of 20–30 mg/L, meeting most secondary treatment standards."
+   },
+   "fix": {
+    "question": "What effluent TSS level is typically used as the secondary treatment standard?",
+    "options": [
+     "100–150 mg/L",
+     "20–30 mg/L",
+     "5–15 mg/L",
+     "<1 mg/L"
+    ],
+    "correctIndex": 1,
+    "explanation": "Secondary treatment standards are typically set at about 20–30 mg/L TSS (the federal WSER limit is 25 mg/L suspended solids, monthly average).",
+    "steps": []
+   }
+  },
+  {
+   "id": 44169,
+   "bankKey": "wpi-class2-wastewater",
+   "questionNum": 97,
+   "verdict": "UNCLEAR",
+   "note": "Could not verify: no CCME water reuse guideline sets a 'non-detectable' fecal coliform limit; provincial reclaimed-water rules (e.g. BC) use numeric MPN/100 mL limits. Question depends on an unstated local rule and the explanation cites a document I could not confirm. Replace with a treatment-train question.",
+   "original": {
+    "question": "What is the typical effluent fecal coliform limit for water reuse applications requiring the highest level of public health protection?",
+    "options": [
+     "10,000 CFU/100 mL",
+     "200 CFU/100 mL",
+     "Non-detectable",
+     "23 CFU/100 mL"
+    ],
+    "correctIndex": 2,
+    "explanation": "For many high-quality water reuse applications in Canada, particularly those involving unrestricted urban irrigation or recreational impoundments, the goal for fecal coliforms is often non-detectable. While specific provincial guidelines vary, the Canadian Council of Ministers of the Environment (CCME) guidelines for water reuse emphasize stringent quality for direct human contact applications. A non-detectable limit provides the highest level of public health protection, aligning with best practices for advanced wastewater treatment and disinfection for reuse."
+   },
+   "fix": {
+    "question": "Which level of treatment is generally required before reclaimed water is used for unrestricted urban irrigation?",
+    "options": [
+     "Primary treatment only",
+     "Secondary treatment only",
+     "Secondary treatment with filtration and disinfection",
+     "Screening and grit removal only"
+    ],
+    "correctIndex": 2,
+    "explanation": "Reclaimed water for uses with public contact generally requires secondary treatment followed by filtration and disinfection to achieve very low pathogen levels; exact limits are set by provincial rules.",
+    "steps": []
+   }
+  },
+  {
+   "id": 44175,
+   "bankKey": "wpi-class2-wastewater",
+   "questionNum": 103,
+   "verdict": "JURISDICTION",
+   "note": "NPDES is a US EPA permit program, not part of Western Canadian certification. The explanation admits it is a US system. Replace with the Canadian federal equivalent (WSER under the Fisheries Act).",
+   "original": {
+    "question": "What does NPDES stand for in the context of wastewater discharge?",
+    "options": [
+     "National Permit for Discharge and Effluent Standards",
+     "National Pollution Discharge Elimination System",
+     "Natural Process for Dissolved Effluent Solids",
+     "None of the above"
+    ],
+    "correctIndex": 1,
+    "explanation": "The National Pollution Discharge Elimination System (NPDES) is indeed the correct expansion of the acronym, representing the regulatory program in the United States that controls discharges of pollutants into U.S. waters. While this question refers to a U.S. system, Canadian operators should be aware of international regulatory frameworks as they often influence best practices and technology. In Canada, wastewater discharges are regulated by federal acts like the Fisheries Act and the Canadian Environmental Protection Act, 1999 (CEPA), along with provincial and territorial regulations, which collectively serve a similar purpose to the NPDES in controlling effluent quality."
+   },
+   "fix": {
+    "question": "Which federal regulation sets national minimum effluent quality standards for municipal wastewater systems in Canada?",
+    "options": [
+     "Wastewater Systems Effluent Regulations (Fisheries Act)",
+     "National Pollutant Discharge Elimination System",
+     "Ontario Regulation 170/03",
+     "Safe Drinking Water Act"
+    ],
+    "correctIndex": 0,
+    "explanation": "The Wastewater Systems Effluent Regulations (SOR/2012-139) under the federal Fisheries Act set minimum effluent standards (25 mg/L CBOD5 and 25 mg/L suspended solids, plus limits for total residual chlorine and un-ionized ammonia).",
+    "steps": []
+   }
+  },
+  {
+   "id": 44176,
+   "bankKey": "wpi-class2-wastewater",
+   "questionNum": 104,
+   "verdict": "UNCLEAR",
+   "note": "Depends on an unstated local rule. Under the federal WSER, CBOD/TSS sampling frequency depends on system size and discharge type (monthly for systems at or under 2,500 m3/d, every two weeks, then 3 days per week for larger; lagoons differ). Provincial permits set their own. Checked canada.ca WSER guidance.",
+   "original": {
+    "question": "What is the minimum frequency for effluent BOD and TSS monitoring at a Class II facility?",
+    "options": [
+     "Daily",
+     "Weekly",
+     "Monthly",
+     "Annually"
+    ],
+    "correctIndex": 1,
+    "explanation": "Class II wastewater facilities typically require weekly effluent BOD and TSS monitoring at minimum, with more frequent monitoring during upset conditions."
+   },
+   "fix": {
+    "question": "Under the federal Wastewater Systems Effluent Regulations, the minimum sampling frequency for CBOD and suspended solids in a continuously discharging system depends mainly on?",
+    "options": [
+     "The annual average daily volume of effluent deposited",
+     "The operator's certification class",
+     "The age of the facility",
+     "The colour of the effluent"
+    ],
+    "correctIndex": 0,
+    "explanation": "WSER sampling frequency increases with the annual average daily volume deposited (for example monthly at or below 2,500 m³/day, and more often for larger systems).",
+    "steps": []
+   }
+  },
+  {
+   "id": 44180,
+   "bankKey": "wpi-class2-wastewater",
+   "questionNum": 108,
+   "verdict": "JURISDICTION",
+   "note": "SPCC plan is a US EPA (40 CFR 112) requirement; not a Western Canadian term. Use spill contingency plan.",
+   "original": {
+    "question": "What is the purpose of a Spill Prevention, Control, and Countermeasure (SPCC) plan?",
+    "options": [
+     "Reduce energy use",
+     "Increase treatment capacity",
+     "Manage biosolids",
+     "Prevent oil and chemical spills and plan response"
+    ],
+    "correctIndex": 3,
+    "explanation": "SPCC plans are required for facilities storing significant quantities of oil or chemicals, outlining prevention measures and emergency response procedures."
+   },
+   "fix": {
+    "question": "What is the purpose of a spill contingency plan at a wastewater facility?",
+    "options": [
+     "Reduce energy use",
+     "Increase treatment capacity",
+     "Manage biosolids",
+     "Prevent oil and chemical spills and plan response"
+    ],
+    "correctIndex": 3,
+    "explanation": "A spill contingency plan outlines prevention measures and emergency response procedures for facilities storing significant quantities of oil or chemicals.",
+    "steps": []
+   }
+  },
+  {
+   "id": 44181,
+   "bankKey": "wpi-class2-wastewater",
+   "questionNum": 109,
+   "verdict": "UNCLEAR",
+   "note": "30 mg/L is the US secondary standard. Federal WSER sets 25 mg/L CBOD5 (monthly average) and Alberta uses 25 mg/L; 'typical' for a Western Canada bank should reflect this.",
+   "original": {
+    "question": "What is the typical permit limit for effluent BOD at a Class II facility?",
+    "options": [
+     "30 mg/L",
+     "200 mg/L",
+     "5 mg/L",
+     "0.5 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "Most secondary treatment permits require effluent BOD below 30 mg/L (30-day average), consistent with secondary treatment standards."
+   },
+   "fix": {
+    "question": "What is the typical permit limit for effluent CBOD5 at a secondary treatment facility under the federal WSER?",
+    "options": [
+     "25 mg/L",
+     "200 mg/L",
+     "5 mg/L",
+     "0.5 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "The Wastewater Systems Effluent Regulations limit average effluent CBOD5 to 25 mg/L.",
+    "steps": []
+   }
+  },
+  {
+   "id": 44182,
+   "bankKey": "wpi-class2-wastewater",
+   "questionNum": 110,
+   "verdict": "UNCLEAR",
+   "note": "30 mg/L is the US secondary standard. Federal WSER sets 25 mg/L suspended solids (average).",
+   "original": {
+    "question": "What is the typical permit limit for effluent TSS at a Class II facility?",
+    "options": [
+     "200 mg/L",
+     "30 mg/L",
+     "5 mg/L",
+     "0.5 mg/L"
+    ],
+    "correctIndex": 1,
+    "explanation": "Most secondary treatment permits require effluent TSS below 30 mg/L (30-day average), consistent with secondary treatment standards."
+   },
+   "fix": {
+    "question": "What is the typical permit limit for effluent TSS at a secondary treatment facility under the federal WSER?",
+    "options": [
+     "200 mg/L",
+     "25 mg/L",
+     "5 mg/L",
+     "0.5 mg/L"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Wastewater Systems Effluent Regulations limit average effluent suspended solids to 25 mg/L.",
+    "steps": []
+   }
+  },
+  {
+   "id": 44188,
+   "bankKey": "wpi-class2-wastewater",
+   "questionNum": 116,
+   "verdict": "JURISDICTION",
+   "note": "The 85% removal requirement is the US EPA (40 CFR 133) secondary treatment standard; Canada's WSER uses concentration limits (25 mg/L CBOD5 and SS) with no percent removal rule. Presented as the general standard.",
+   "original": {
+    "question": "What is the typical BOD removal efficiency required for secondary treatment?",
+    "options": [
+     "50%",
+     "95%",
+     "99%",
+     "85%"
+    ],
+    "correctIndex": 3,
+    "explanation": "Secondary treatment standards typically require 85% BOD removal or effluent BOD below 30 mg/L, whichever is more stringent."
+   },
+   "fix": {
+    "question": "Under Canada's federal Wastewater Systems Effluent Regulations, the average effluent limits for CBOD5 and suspended solids are?",
+    "options": [
+     "25 mg/L each",
+     "50 mg/L each",
+     "10 mg/L each",
+     "100 mg/L each"
+    ],
+    "correctIndex": 0,
+    "explanation": "The WSER sets average effluent limits of 25 mg/L CBOD5 and 25 mg/L suspended solids for secondary treatment.",
+    "steps": []
+   }
+  },
+  {
+   "id": 44196,
+   "bankKey": "wpi-class2-wastewater",
+   "questionNum": 124,
+   "verdict": "UNCLEAR",
+   "note": "Monthly or quarterly calibration is not a standard; regulatory flow measurement is typically verified/calibrated at least annually, and 'Annually' is also an option, so it is defensible against the key.",
+   "original": {
+    "question": "What is the typical frequency for calibrating flow meters at a wastewater facility?",
+    "options": [
+     "Monthly or quarterly",
+     "Daily",
+     "Annually",
+     "Every 5 years"
+    ],
+    "correctIndex": 0,
+    "explanation": "Flow meters should be calibrated monthly or quarterly, with more frequent calibration if meters are used for regulatory reporting."
+   },
+   "fix": {
+    "question": "What is the typical minimum frequency for calibrating or verifying flow meters used for regulatory reporting?",
+    "options": [
+     "Monthly",
+     "Daily",
+     "At least annually",
+     "Every 5 years"
+    ],
+    "correctIndex": 2,
+    "explanation": "Flow meters used for regulatory reporting are typically calibrated or verified at least annually, with more frequent checks if readings drift.",
+    "steps": []
+   }
+  },
+  {
+   "id": 44198,
+   "bankKey": "wpi-class2-wastewater",
+   "questionNum": 126,
+   "verdict": "UNCLEAR",
+   "note": "There is no standard fixed 15 C effluent temperature limit for cold-water fisheries; limits are usually a permitted rise above ambient or site-specific. Explanation/steps are speculative. Replace with the well-established reason.",
+   "original": {
+    "question": "What is the typical effluent temperature limit for discharge to cold-water fisheries?",
+    "options": [
+     "No limit",
+     "15°C",
+     "20°C",
+     "10°C"
+    ],
+    "correctIndex": 1,
+    "explanation": "For the protection of cold-water fisheries, which are highly sensitive to temperature changes, effluent discharge limits are typically set to prevent thermal shock and maintain suitable conditions for species like trout and salmon. While specific limits can vary by jurisdiction and receiving water body, a common guideline for protecting cold-water fish is to ensure effluent does not raise the receiving water temperature significantly, often aiming for discharge temperatures around 15°C or less, or a maximum increase of 1-3°C above ambient. A limit of 20°C is generally considered too high for the long-term health and survival of many cold-water species, as it can lead to stress, reduced oxygen solubility, and increased susceptibility to disease. Therefore, 15°C is a more appropriate and protective typical limit."
+   },
+   "fix": {
+    "question": "Why is warm effluent a concern when discharged to cold-water fisheries?",
+    "options": [
+     "Warm water holds less dissolved oxygen and stresses cold-water fish",
+     "Warm water increases water hardness",
+     "Warm water has no effect on fish",
+     "Warm water removes nutrients"
+    ],
+    "correctIndex": 0,
+    "explanation": "Warm water holds less dissolved oxygen and increases fish metabolic stress, so thermal discharges to cold-water habitat (trout, salmon) are restricted.",
+    "steps": []
    }
   }
  ]
