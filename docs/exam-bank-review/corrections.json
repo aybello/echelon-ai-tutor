@@ -1,15 +1,15 @@
 {
  "export": "docs/exam-bank-export/2026-11-16 (commit d118897a)",
- "chunksDone": 75,
+ "chunksDone": 80,
  "chunksTotal": 174,
- "questionsReviewed": 10528,
+ "questionsReviewed": 11217,
  "questionsTotal": 24350,
- "problems": 551,
+ "problems": 636,
  "byVerdict": {
-  "UNCLEAR": 158,
-  "WRONG": 257,
-  "JURISDICTION": 87,
-  "UNITS": 42,
+  "UNCLEAR": 181,
+  "WRONG": 313,
+  "JURISDICTION": 92,
+  "UNITS": 43,
   "OFF-TOPIC": 7
  },
  "byBank": {
@@ -27,7 +27,8 @@
   "class3-water": 48,
   "class3-water-dist": 12,
   "class4-wastewater": 56,
-  "class4-wastewater-coll": 34
+  "class4-wastewater-coll": 71,
+  "class4-water": 48
  },
  "chunks": [
   "chunk-001",
@@ -104,7 +105,12 @@
   "chunk-072",
   "chunk-073",
   "chunk-074",
-  "chunk-075"
+  "chunk-075",
+  "chunk-076",
+  "chunk-077",
+  "chunk-078",
+  "chunk-079",
+  "chunk-080"
  ],
  "corrections": [
   {
@@ -19735,6 +19741,3303 @@
     "correctIndex": 0,
     "explanation": "A direct connection between sewage and potable water can allow backflow or back-siphonage of sewage into drinking water, creating a serious public health hazard, so such connections must not exist.",
     "steps": null
+   }
+  },
+  {
+   "id": 185513,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 456,
+   "verdict": "UNCLEAR",
+   "note": "Stem asks about minimum manhole spacing but the keyed option and explanation describe maximum spacing. The specific 120 m / 150 m figures are stated as fact but Ontario guidance varies by pipe size and cleaning equipment (could not confirm exact values).",
+   "original": {
+    "question": "What is the significance of the minimum manhole spacing requirements in collection system design?",
+    "options": [
+     "Maximum spacing (typically 120 m for pipes ≤375 mm, 150 m for larger) ensures maintenance equipment can access and clean the full pipe length",
+     "Manholes can be spaced at any distance",
+     "Only place manholes at grade changes",
+     "Spacing does not affect maintenance"
+    ],
+    "correctIndex": 0,
+    "explanation": "Maximum manhole spacing is limited by: cleaning equipment reach (jet hose length, typically 150 m), CCTV cable length, and maintenance access needs. Spacing also considers: grade changes, alignment changes, pipe size changes, and lateral connections. Closer spacing in problem-prone areas."
+   },
+   "fix": {
+    "question": "What is the significance of maximum manhole spacing requirements in collection system design?",
+    "options": [
+     "Maximum spacing (commonly in the range of about 90 to 150 m depending on pipe size and cleaning equipment) ensures maintenance equipment can access and clean the full pipe length",
+     "Manholes can be spaced at any distance",
+     "Only place manholes at grade changes",
+     "Spacing does not affect maintenance"
+    ],
+    "correctIndex": 0,
+    "explanation": "Maximum manhole spacing is limited by cleaning equipment reach (jet hose length), CCTV cable length, and maintenance access needs. Spacing also considers grade changes, alignment changes, pipe size changes, and lateral connections. Closer spacing is used in problem-prone areas.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185529,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 472,
+   "verdict": "WRONG",
+   "note": "Explanation cites OPSS 421, which is the Ontario specification for pipe culvert installation in open cut. Sewer pipe installation/embedment is OPSS 410 with OPSD 802 series bedding drawings.",
+   "original": {
+    "question": "In a Class 4 wastewater collection system, what is the significance of the pipe embedment zone for long-term structural performance?",
+    "options": [
+     "The embedment zone (bedding + haunch + initial backfill to 300mm above crown) provides critical structural support that determines pipe load-carrying capacity and deflection behavior",
+     "Only the pipe material determines structural capacity",
+     "Embedment has no long-term significance",
+     "Native soil provides adequate support for all pipes"
+    ],
+    "correctIndex": 0,
+    "explanation": "Embedment zone (OPSS 421) provides: uniform support (prevents point loading), load distribution (reduces pipe stress), deflection control (for flexible pipes), and protection from concentrated loads. Poor embedment (voids under haunches, oversized bedding stone, inadequate compaction) is the primary cause of premature pipe failure."
+   },
+   "fix": {
+    "question": "In a Class 4 wastewater collection system, what is the significance of the pipe embedment zone for long-term structural performance?",
+    "options": [
+     "The embedment zone (bedding + haunch + initial backfill to 300mm above crown) provides critical structural support that determines pipe load-carrying capacity and deflection behavior",
+     "Only the pipe material determines structural capacity",
+     "Embedment has no long-term significance",
+     "Native soil provides adequate support for all pipes"
+    ],
+    "correctIndex": 0,
+    "explanation": "Embedment zone (OPSS 410 and OPSD 802 series bedding drawings) provides: uniform support (prevents point loading), load distribution (reduces pipe stress), deflection control (for flexible pipes), and protection from concentrated loads. Poor embedment (voids under haunches, oversized bedding stone, inadequate compaction) is a primary cause of premature pipe failure.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185535,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 478,
+   "verdict": "JURISDICTION",
+   "note": "Long-Term Control Plan (LTCP) is the US EPA CSO Control Policy term. In Ontario, CSO control is addressed through MECP Procedure F-5-5 and Pollution Prevention and Control Plans (PPCPs).",
+   "original": {
+    "question": "A Class 4 operator is responsible for managing a large collection system that frequently experiences combined sewer overflows (CSOs) during wet weather. What is the most effective long-term strategy for reducing CSO events?",
+    "options": [
+     "Temporarily diverting all wastewater directly to local water bodies during storms.",
+     "Increasing the frequency of routine sewer cleaning in dry weather.",
+     "Implementing a comprehensive Long-Term Control Plan (LTCP) with infrastructure improvements.",
+     "Issuing public advisories to reduce water usage during heavy rainfall events."
+    ],
+    "correctIndex": 2,
+    "explanation": "The most effective long-term strategy for reducing CSOs is to implement a comprehensive Long-Term Control Plan (LTCP). This involves a combination of infrastructure improvements, such as storage tanks, larger pipes, and green infrastructure, to manage wet weather flows."
+   },
+   "fix": {
+    "question": "A Class 4 operator is responsible for managing a large collection system that frequently experiences combined sewer overflows (CSOs) during wet weather. What is the most effective long-term strategy for reducing CSO events?",
+    "options": [
+     "Temporarily diverting all wastewater directly to local water bodies during storms.",
+     "Increasing the frequency of routine sewer cleaning in dry weather.",
+     "Implementing a comprehensive Pollution Prevention and Control Plan (PPCP), consistent with MECP Procedure F-5-5, with infrastructure improvements.",
+     "Issuing public advisories to reduce water usage during heavy rainfall events."
+    ],
+    "correctIndex": 2,
+    "explanation": "The most effective long-term strategy is a comprehensive Pollution Prevention and Control Plan (PPCP) under MECP Procedure F-5-5. It combines infrastructure improvements such as storage tanks, larger pipes, sewer separation, inflow reduction and green infrastructure to manage wet weather flows.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185553,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 496,
+   "verdict": "UNCLEAR",
+   "note": "O. Reg. 129/04 is the wastewater operator licensing/certification regulation; it does not itself require reporting of 'all adverse conditions' to MECP within timelines. Spill and overflow reporting arises from the Environmental Protection Act (Part X, O. Reg. 675/98) and the system's Environmental Compliance Approval. Claim misattributed.",
+   "original": {
+    "question": "According to O. Reg. 129/04, what is a key requirement for a Class 4 operator regarding the reporting of adverse conditions in a wastewater collection system?",
+    "options": [
+     "To report only conditions that result in a major public health emergency.",
+     "To report all adverse conditions to the Ministry of the Environment, Conservation and Parks (MECP) within specified timelines.",
+     "To only report conditions that are explicitly requested by municipal council members.",
+     "To delay reporting until all repairs are completed and the issue is resolved."
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 129/04 mandates that Class 4 operators (and other operators) report all adverse conditions in the wastewater collection system to the Ministry of the Environment, Conservation and Parks (MECP) within specified timelines, regardless of severity, to ensure regulatory oversight and public protection."
+   },
+   "fix": {
+    "question": "For an Ontario wastewater collection system, what is a key reporting requirement for the operating authority and its operators regarding overflows, bypasses and other adverse conditions?",
+    "options": [
+     "To report only conditions that result in a major public health emergency.",
+     "To report overflows, bypasses and other adverse conditions to the MECP as required by the system's Environmental Compliance Approval and the Environmental Protection Act, including immediate notification to the Spills Action Centre.",
+     "To only report conditions that are explicitly requested by municipal council members.",
+     "To delay reporting until all repairs are completed and the issue is resolved."
+    ],
+    "correctIndex": 1,
+    "explanation": "Overflows, bypasses and spills must be reported to the MECP Spills Action Centre immediately, and further reporting follows the conditions of the system's Environmental Compliance Approval and the Environmental Protection Act. Reporting is not limited to emergencies and is not delayed until repairs are complete.",
+    "steps": null
+   }
+  },
+  {
+   "id": 240695,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 503,
+   "verdict": "WRONG",
+   "note": "Arithmetic: 0.3 x 25 x 9.81 = 73.575 kW water power; /0.68 = 108.2 kW pump shaft; /0.93 = 116.3 kW motor input. Marked 109.5 kW matches neither (steps also mis-state 108.49 and 116.7 and then 'report as 109.5').",
+   "original": {
+    "question": "If a pump's design point is 300 L/s at 25 m total dynamic head (TDH), what is the pump power required, assuming a pump efficiency of 68% and a motor efficiency of 93%? (Use 9.81 kN/m³ for water.)",
+    "options": [
+     "44.9 kW",
+     "109.5 kW",
+     "156.2 kW",
+     "75.9 kW"
+    ],
+    "correctIndex": 1,
+    "explanation": "First calculate water power, then adjust for both efficiencies."
+   },
+   "fix": {
+    "question": "If a pump's design point is 300 L/s at 25 m total dynamic head (TDH), what is the electrical (motor input) power required, assuming a pump efficiency of 68% and a motor efficiency of 93%? (Use 9.81 kN/m3 for water.)",
+    "options": [
+     "44.9 kW",
+     "116.3 kW",
+     "156.2 kW",
+     "75.9 kW"
+    ],
+    "correctIndex": 1,
+    "explanation": "Calculate water power, then divide by both the pump and motor efficiencies.",
+    "steps": [
+     {
+      "l": "Step 1 - Water power:",
+      "c": "P_water = Q x H x gamma = 0.3 m3/s x 25 m x 9.81 kN/m3 = 73.575 kW"
+     },
+     {
+      "l": "Step 2 - Pump shaft power:",
+      "c": "73.575 / 0.68 = 108.2 kW"
+     },
+     {
+      "l": "Step 3 - Motor input power:",
+      "c": "108.2 / 0.93 = 116.3 kW"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240696,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 504,
+   "verdict": "WRONG",
+   "note": "The keyed 284.6 L/s is not derived from the data given. The steps misapply an orifice-type relation (Q ~ sqrt(H)) to a centrifugal pump and give 319 L/s, then pick 284.6 as 'closest plausible'. The pump curve is not given, so the question is unanswerable as written. Repaired by giving the per-pump flow at the higher head.",
+   "original": {
+    "question": "You are optimizing pump operation at a lift station with 4 identical pumps (each rated for 180 L/s at 22 m TDH). What is the station's maximum total flow if two pumps can operate in parallel, but rising main head increases to 28 m when both run together?",
+    "options": [
+     "360 L/s",
+     "284.6 L/s",
+     "147.3 L/s",
+     "181.2 L/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "Parallel operation, but check actual Q at combined head."
+   },
+   "fix": {
+    "question": "A lift station has 4 identical pumps (each rated for 180 L/s at 22 m TDH). Two pumps can operate in parallel, but the rising main head increases to 28 m when both run together. At 28 m, the pump curve shows each pump delivers 142.3 L/s. What is the station's maximum total flow with two pumps running?",
+    "options": [
+     "360 L/s",
+     "284.6 L/s",
+     "147.3 L/s",
+     "181.2 L/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "Each pump delivers less than its rated flow at the higher combined head, so total flow is twice the per-pump flow at 28 m, not twice the rated flow.",
+    "steps": [
+     {
+      "l": "Step 1 - Flow per pump at 28 m:",
+      "c": "142.3 L/s (from pump curve)"
+     },
+     {
+      "l": "Step 2 - Total with 2 pumps:",
+      "c": "2 x 142.3 = 284.6 L/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240698,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 506,
+   "verdict": "WRONG",
+   "note": "Formula as stated (Q in L/s, d in mm with constant 10.67) is only valid with Q in m3/s and d in m. Correct calculation: Hf = 10.67 x 2200 x 0.25^1.85 / (120^1.85 x 0.4^4.87) = 1806 / 81.0 = 22.3 m. Keyed 13.04 m is wrong; steps are internally inconsistent.",
+   "original": {
+    "question": "A lift station's force main is 2,200 m long and 400 mm diameter. Wastewater flows at 250 L/s. If Hazen-Williams coefficient (C) is 120, estimate the head loss (Hf) using the formula: Hf = 10.67 × L × Q^1.85 / (C^1.85 × d^4.87), where L = length in m, Q = flow in L/s, d = diameter in mm.",
+    "options": [
+     "5.35 m",
+     "21.89 m",
+     "13.04 m",
+     "8.67 m"
+    ],
+    "correctIndex": 2,
+    "explanation": "Plug numbers into the Hazen-Williams equation."
+   },
+   "fix": {
+    "question": "A lift station's force main is 2,200 m long and 400 mm diameter. Wastewater flows at 250 L/s. If the Hazen-Williams coefficient (C) is 120, estimate the head loss (Hf) using the SI formula Hf = 10.67 x L x Q^1.85 / (C^1.85 x d^4.87), where L = length in m, Q = flow in m3/s, d = diameter in m.",
+    "options": [
+     "5.35 m",
+     "22.3 m",
+     "13.04 m",
+     "8.67 m"
+    ],
+    "correctIndex": 1,
+    "explanation": "Convert flow and diameter to m3/s and m, then apply the Hazen-Williams equation.",
+    "steps": [
+     {
+      "l": "Step 1 - Convert units:",
+      "c": "Q = 0.25 m3/s; d = 0.4 m"
+     },
+     {
+      "l": "Step 2 - Numerator:",
+      "c": "10.67 x 2200 x 0.25^1.85 = 23,474 x 0.07695 = 1,806"
+     },
+     {
+      "l": "Step 3 - Denominator:",
+      "c": "120^1.85 x 0.4^4.87 = 7,022 x 0.011537 = 81.0"
+     },
+     {
+      "l": "Step 4 - Head loss:",
+      "c": "Hf = 1,806 / 81.0 = 22.3 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240699,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 507,
+   "verdict": "UNCLEAR",
+   "note": "'Minimum pump run time per day' is ambiguous. Total required pump-hours is 3,300/115 = 28.7 h, which exceeds 24 h, so one duty pump cannot meet it (and a duty/standby arrangement contradicts the flow exceeding single-pump capacity). The keyed 14.35 h assumes an unstated equal split between both pumps.",
+   "original": {
+    "question": "A lift station experiences influent peak wet weather flow of 3,300 m³/d, and the station is equipped with two alternating pumps (duty/standby), each capable of 115 m³/h. What is the minimum pump run time per day in hours?",
+    "options": [
+     "8.7 h",
+     "24 h",
+     "14.35 h",
+     "28.7 h"
+    ],
+    "correctIndex": 2,
+    "explanation": "Peak pump run time: total daily volume / single pump capacity."
+   },
+   "fix": {
+    "question": "A lift station experiences an influent peak wet weather flow of 3,300 m3/d, and the station is equipped with two pumps, each capable of 115 m3/h. What total pump run time per day (pump-hours) is required to pump this flow?",
+    "options": [
+     "8.7 h",
+     "24 h",
+     "14.35 h",
+     "28.7 h"
+    ],
+    "correctIndex": 3,
+    "explanation": "Total pump-hours = daily volume divided by single pump capacity. Because this exceeds 24 h, both pumps must run, about 14.35 h each if shared equally.",
+    "steps": [
+     {
+      "l": "Step 1 - Pump capacity per day:",
+      "c": "115 m3/h x 24 h = 2,760 m3/d"
+     },
+     {
+      "l": "Step 2 - Total pump run time needed:",
+      "c": "3,300 m3/d / 115 m3/h = 28.7 pump-hours (so both pumps must run, about 14.35 h each)"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240701,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 509,
+   "verdict": "WRONG",
+   "note": "Dry weather flow 27,500 m3/d is right. I&I = 503.5 L/s x 86.4 = 43,502 m3/d (steps say 43,484). Total = 27,500 + 43,502 = 71,002 m3/d. Keyed 34,647 comes from an unexplained '7,147' that does not follow from the steps.",
+   "original": {
+    "question": "A major lift station serves a population equivalent (PE) of 110,000. Dry weather flow is 250 L/cap/d. If inflow and infiltration (I&I) equals 0.95 L/s/ha, with a total catchment of 530 ha, what is the design maximum daily flow (m³/d)?",
+    "options": [
+     "34,647 m³/d",
+     "27,500 m³/d",
+     "47,942 m³/d",
+     "13,295 m³/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sum dry weather and I&I contributions."
+   },
+   "fix": {
+    "question": "A major lift station serves a population equivalent (PE) of 110,000. Dry weather flow is 250 L/cap/d. If inflow and infiltration (I&I) equals 0.95 L/s/ha over a total catchment of 530 ha, what is the total daily flow (m3/d) including I&I, with no additional peaking factor?",
+    "options": [
+     "34,647 m3/d",
+     "27,500 m3/d",
+     "71,002 m3/d",
+     "13,295 m3/d"
+    ],
+    "correctIndex": 2,
+    "explanation": "Sum dry weather and I&I contributions.",
+    "steps": [
+     {
+      "l": "Step 1 - Dry weather flow:",
+      "c": "110,000 x 250 L/d = 27,500,000 L/d = 27,500 m3/d"
+     },
+     {
+      "l": "Step 2 - I&I flow:",
+      "c": "0.95 L/s/ha x 530 ha = 503.5 L/s"
+     },
+     {
+      "l": "Step 3 - Convert I&I to m3/d:",
+      "c": "503.5 L/s x 86,400 s/d = 43,502,400 L/d = 43,502 m3/d"
+     },
+     {
+      "l": "Step 4 - Add both contributions:",
+      "c": "27,500 + 43,502 = 71,002 m3/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240702,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 510,
+   "verdict": "WRONG",
+   "note": "Q = 0.65 x 0.4418 x sqrt(2 x 9.81 x 1.1) = 0.65 x 0.4418 x 4.646 = 1.334 m3/s = 1,334 L/s. Keyed 473 L/s is unsupported; the steps themselves compute 1,333 L/s and then arbitrarily state 473.",
+   "original": {
+    "question": "During a severe storm, a CSO structure has a spill orifice of 0.75 m diameter and operates under a head of 1.1 m. Estimate the overflow rate in L/s, assuming C=0.65. Use Q = C × A × sqrt(2gh).",
+    "options": [
+     "582 L/s",
+     "473 L/s",
+     "808 L/s",
+     "215 L/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "Calculate orifice flow using given formula."
+   },
+   "fix": {
+    "question": "During a severe storm, a CSO structure has a spill orifice of 0.75 m diameter and operates under a head of 1.1 m. Estimate the overflow rate in L/s, assuming C = 0.65. Use Q = C x A x sqrt(2gh).",
+    "options": [
+     "582 L/s",
+     "1,334 L/s",
+     "808 L/s",
+     "215 L/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "Calculate orifice flow using the given formula.",
+    "steps": [
+     {
+      "l": "Step 1 - Area:",
+      "c": "A = pi x (0.75/2)^2 = 0.4418 m2"
+     },
+     {
+      "l": "Step 2 - Velocity term:",
+      "c": "sqrt(2 x 9.81 x 1.1) = sqrt(21.582) = 4.646 m/s"
+     },
+     {
+      "l": "Step 3 - Flow:",
+      "c": "Q = 0.65 x 0.4418 x 4.646 = 1.334 m3/s"
+     },
+     {
+      "l": "Step 4 - Convert to L/s:",
+      "c": "1.334 x 1000 = 1,334 L/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240704,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 512,
+   "verdict": "UNITS",
+   "note": "Static pressure given in psi in an Ontario (metric) question. Converted to kPa: 84 psi = 579 kPa (about 580 kPa); total 580 + 350 = 930 kPa.",
+   "original": {
+    "question": "A forcemain experiences a pressure surge (water hammer) after a fast valve closure. Given: high point static pressure = 84 psi, transient surge adds 350 kPa. What is the total maximum pressure (in kPa) at the high point?",
+    "options": [
+     "563 kPa",
+     "350 kPa",
+     "930 kPa",
+     "834 kPa"
+    ],
+    "correctIndex": 2,
+    "explanation": "Add static (in kPa) and surge."
+   },
+   "fix": {
+    "question": "A forcemain experiences a pressure surge (water hammer) after a fast valve closure. Given: high point static pressure = 580 kPa, transient surge adds 350 kPa. What is the total maximum pressure (in kPa) at the high point?",
+    "options": [
+     "563 kPa",
+     "350 kPa",
+     "930 kPa",
+     "834 kPa"
+    ],
+    "correctIndex": 2,
+    "explanation": "Add static pressure and surge pressure.",
+    "steps": [
+     {
+      "l": "Step 1 - Add surge to static pressure:",
+      "c": "580 + 350 = 930 kPa"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240706,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 514,
+   "verdict": "WRONG",
+   "note": "Steps compute 3,615.38 m3/h per pump, which is 3,615.38 x 1000 / 3600 = 1,004 L/s, not 40.2 L/s. Keyed 40.2 L/s is a conversion error.",
+   "original": {
+    "question": "A twin pump station is required to alternate evenly. Over a month each pump records 260 hours of run time. If the total station flow is 1,880,000 m³, what is each pump's average flow (L/s)?",
+    "options": [
+     "80.4 L/s",
+     "90.1 L/s",
+     "40.2 L/s",
+     "130.6 L/s"
+    ],
+    "correctIndex": 2,
+    "explanation": "Monthly station flow ÷ total run hours ÷ 2 for per pump average."
+   },
+   "fix": {
+    "question": "A twin pump station is required to alternate evenly. Over a month each pump records 260 hours of run time. If the total station flow is 1,880,000 m3, what is each pump's average flow while running (L/s)?",
+    "options": [
+     "80.4 L/s",
+     "1,004 L/s",
+     "40.2 L/s",
+     "130.6 L/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "Monthly station flow divided by total run hours gives flow per running pump.",
+    "steps": [
+     {
+      "l": "Step 1 - Total run time:",
+      "c": "2 x 260 = 520 pump-hours"
+     },
+     {
+      "l": "Step 2 - Flow per running pump:",
+      "c": "1,880,000 m3 / 520 h = 3,615.4 m3/h"
+     },
+     {
+      "l": "Step 3 - Convert to L/s:",
+      "c": "3,615.4 x 1000 / 3600 = 1,004 L/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240709,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 517,
+   "verdict": "WRONG",
+   "note": "Exact: 1 - (915/950)^2 = 1 - 0.9277 = 7.2%. Keyed 7.1% results from rounding intermediate areas (0.708, 0.658).",
+   "original": {
+    "question": "A 950 mm diameter sewer is to be lined using a spiral wound liner reducing its diameter by 35 mm. What is the percentage reduction in cross-sectional area?",
+    "options": [
+     "12.4%",
+     "2.3%",
+     "7.1%",
+     "3.6%"
+    ],
+    "correctIndex": 2,
+    "explanation": "Calculate original and new areas, find percent decrease."
+   },
+   "fix": {
+    "question": "A 950 mm diameter sewer is to be lined using a spiral wound liner reducing its diameter by 35 mm. What is the percentage reduction in cross-sectional area?",
+    "options": [
+     "12.4%",
+     "2.3%",
+     "7.2%",
+     "3.6%"
+    ],
+    "correctIndex": 2,
+    "explanation": "Calculate original and new areas, find percent decrease.",
+    "steps": [
+     {
+      "l": "Step 1 - Original area:",
+      "c": "pi x (0.95/2)^2 = 0.7088 m2"
+     },
+     {
+      "l": "Step 2 - New diameter 0.915 m; new area:",
+      "c": "pi x (0.915/2)^2 = 0.6576 m2"
+     },
+     {
+      "l": "Step 3 - Percent reduction:",
+      "c": "(0.7088 - 0.6576) / 0.7088 x 100 = 7.2%"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240710,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 518,
+   "verdict": "UNCLEAR",
+   "note": "Question speaks of top and bottom quintiles (28 stations, about 5.6 each) but the calculation just compares the 5th-highest score to the single lowest score. Quintiles would need average scores. Reworded to what is actually computed.",
+   "original": {
+    "question": "A risk-based model ranks 28 lift stations by risk score. If the 5th highest risk station has a score of 19.2 and the lowest is 2.6, by what percent is the highest quintile (top 20%) riskier than the lowest quintile (bottom 20%)?",
+    "options": [
+     "30%",
+     "525%",
+     "185%",
+     "638%"
+    ],
+    "correctIndex": 3,
+    "explanation": "Calculate ratio: (19.2 - 2.6) / 2.6 × 100%."
+   },
+   "fix": {
+    "question": "A risk-based model ranks 28 lift stations by risk score. If the 5th highest risk station has a score of 19.2 and the lowest-ranked station has a score of 2.6, by what percent is the 5th highest score greater than the lowest score?",
+    "options": [
+     "30%",
+     "525%",
+     "185%",
+     "638%"
+    ],
+    "correctIndex": 3,
+    "explanation": "Percent greater = (19.2 - 2.6) / 2.6 x 100%.",
+    "steps": [
+     {
+      "l": "Step 1 - Difference:",
+      "c": "19.2 - 2.6 = 16.6"
+     },
+     {
+      "l": "Step 2 - Percent increase:",
+      "c": "(16.6 / 2.6) x 100 = 638.5%"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240712,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 520,
+   "verdict": "WRONG",
+   "note": "At D = 1.5 m, R = D/4 = 0.375 (not 0.438), R^(2/3) = 0.520, Q = 76.92 x 1.767 x 0.520 x 0.0332 = 2.34 m3/s, short of 2.8. Required D = 1.5 x (2.8/2.344)^(3/8) = 1.60 m. Keyed 1,500 mm is wrong; correct is 1,600 mm (Q = 2.78 at 1.6 m, 1.603 m exact).",
+   "original": {
+    "question": "A new interceptor sewer is to be sized to carry 2.8 m³/s at a slope of 0.11%. Assuming Mannings n = 0.013 and the full-pipe formula Q = (1/n) × A × R^(2/3) × S^(1/2), what is the required diameter (nearest 10 mm)?",
+    "options": [
+     "1,720 mm",
+     "900 mm",
+     "1,390 mm",
+     "1,500 mm"
+    ],
+    "correctIndex": 3,
+    "explanation": "Calculate A and R for several diameters, solve for D that gives Q=2.8 m³/s."
+   },
+   "fix": {
+    "question": "A new interceptor sewer is to be sized to carry 2.8 m3/s at a slope of 0.11%. Assuming Manning's n = 0.013 and the full-pipe formula Q = (1/n) x A x R^(2/3) x S^(1/2), what is the required diameter (nearest 10 mm)?",
+    "options": [
+     "1,720 mm",
+     "900 mm",
+     "1,390 mm",
+     "1,600 mm"
+    ],
+    "correctIndex": 3,
+    "explanation": "Solve the full-pipe Manning equation for the diameter that gives 2.8 m3/s.",
+    "steps": [
+     {
+      "l": "Step 1 - Full pipe:",
+      "c": "A = pi D^2/4, R = D/4, so Q = (1/n)(pi D^2/4)(D/4)^(2/3) S^(1/2)"
+     },
+     {
+      "l": "Step 2 - S = 0.0011, S^(1/2) = 0.03317",
+      "c": ""
+     },
+     {
+      "l": "Step 3 - Check D = 1.5 m:",
+      "c": "A = 1.767, R = 0.375, R^(2/3) = 0.520; Q = 76.92 x 1.767 x 0.520 x 0.03317 = 2.34 m3/s (too small)"
+     },
+     {
+      "l": "Step 4 - Scale by D^(8/3):",
+      "c": "D = 1.5 x (2.8/2.344)^(0.375) = 1.60 m, so 1,600 mm"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240716,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 524,
+   "verdict": "WRONG",
+   "note": "0.5x80 + 0.3x60 + 0.2x50 = 68, which is not an option; the key '70' relies on 'rounded to 70 as closest of choices'. Repaired by changing Failure History to 60 so the result is exactly 70.",
+   "original": {
+    "question": "A composite asset score is calculated using the formula: Score = 0.5 × Age Factor + 0.3 × Condition Factor + 0.2 × Failure History. If Age = 80, Condition = 60, Failure = 50, what is the composite asset score?",
+    "options": [
+     "60",
+     "65",
+     "75",
+     "70"
+    ],
+    "correctIndex": 3,
+    "explanation": "Score = 0.5×80 + 0.3×60 + 0.2×50 = 40 + 18 + 10 = 68 (rounded to 70 as closest of choices)."
+   },
+   "fix": {
+    "question": "A composite asset score is calculated using the formula: Score = 0.5 x Age Factor + 0.3 x Condition Factor + 0.2 x Failure History. If Age = 80, Condition = 60, Failure = 60, what is the composite asset score?",
+    "options": [
+     "60",
+     "65",
+     "75",
+     "70"
+    ],
+    "correctIndex": 3,
+    "explanation": "Score = 0.5 x 80 + 0.3 x 60 + 0.2 x 60 = 40 + 18 + 12 = 70.",
+    "steps": [
+     {
+      "l": "Step 1 - Age factor",
+      "c": "0.5 x 80 = 40"
+     },
+     {
+      "l": "Step 2 - Condition factor",
+      "c": "0.3 x 60 = 18"
+     },
+     {
+      "l": "Step 3 - Failure history",
+      "c": "0.2 x 60 = 12"
+     },
+     {
+      "l": "Step 4 - Add all components",
+      "c": "40 + 18 + 12 = 70"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240724,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 532,
+   "verdict": "WRONG",
+   "note": "Half-full flow = 0.5 x full area x 0.95 m/s (velocity at half full equals full-pipe velocity) = 0.0795 m2 x 0.95 = 75.5 L/s. Keyed 150 L/s uses the full pipe area; the explanation itself admits no option matches.",
+   "original": {
+    "question": "A 45 cm diameter gravity sewer, flowing half full, conveys what flow rate (L/s) if the velocity at half full is 0.95 m/s?",
+    "options": [
+     "210 L/s",
+     "150 L/s",
+     "320 L/s",
+     "192 L/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "Use Q = v × area; area is half a full pipe."
+   },
+   "fix": {
+    "question": "A 45 cm diameter gravity sewer, flowing half full, conveys what flow rate (L/s) if the velocity at half full is 0.95 m/s?",
+    "options": [
+     "210 L/s",
+     "75.5 L/s",
+     "320 L/s",
+     "192 L/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "Use Q = v x A, where the flow area at half depth is half the full pipe area.",
+    "steps": [
+     {
+      "l": "Step 1 - Full area:",
+      "c": "pi x 0.225^2 = 0.1590 m2"
+     },
+     {
+      "l": "Step 2 - Half-full area:",
+      "c": "0.0795 m2"
+     },
+     {
+      "l": "Step 3 - Flow:",
+      "c": "0.0795 x 0.95 = 0.0755 m3/s = 75.5 L/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240725,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 533,
+   "verdict": "WRONG",
+   "note": "1,250 m3/d = 14.47 L/s; A = 0.01447/0.6 = 0.02412 m2; D = 0.175 m = 175 mm. Keyed 163 mm is wrong (steps compute 175 and then say 'closest is 163').",
+   "original": {
+    "question": "A force main is being designed to carry 1,250 m³/d. If the main runs full and needs a minimum velocity of 0.6 m/s to prevent settlement, what is the minimum inside pipe diameter (mm)?",
+    "options": [
+     "200 mm",
+     "163 mm",
+     "112 mm",
+     "250 mm"
+    ],
+    "correctIndex": 1,
+    "explanation": "Calculate required diameter from Q = vA; convert daily flow to L/s."
+   },
+   "fix": {
+    "question": "A force main is being designed to carry 1,250 m3/d. If the main runs full and needs a minimum velocity of 0.6 m/s to prevent settlement, what is the largest inside pipe diameter (mm) that meets this?",
+    "options": [
+     "200 mm",
+     "175 mm",
+     "112 mm",
+     "250 mm"
+    ],
+    "correctIndex": 1,
+    "explanation": "Calculate required area from Q = vA, then the diameter; convert daily flow to m3/s.",
+    "steps": [
+     {
+      "l": "Step 1 - Convert flow:",
+      "c": "1,250 m3/d / 86,400 s = 0.01447 m3/s"
+     },
+     {
+      "l": "Step 2 - Area:",
+      "c": "A = Q/v = 0.01447 / 0.6 = 0.02412 m2"
+     },
+     {
+      "l": "Step 3 - Diameter:",
+      "c": "D = sqrt(4A/pi) = sqrt(0.03071) = 0.175 m = 175 mm"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240727,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 535,
+   "verdict": "UNCLEAR",
+   "note": "Data are inconsistent: 27 years old with 8 years remaining implies a 35-year life, not 40. The stated explanation formula (Age / (Design life - Remaining life)) gives 84.4%, contradicting the key of 67.5% (27/40). Repaired by removing the conflicting remaining-life figure.",
+   "original": {
+    "question": "A major force main asset is 27 years old with an estimated remaining service life of 8 years (original life 40 years). What is the asset condition index (as % used)?",
+    "options": [
+     "80.0%",
+     "32.5%",
+     "67.5%",
+     "52.5%"
+    ],
+    "correctIndex": 2,
+    "explanation": "Percent used = Age ÷ (Design Life - Remaining Life) × 100%"
+   },
+   "fix": {
+    "question": "A major force main asset is 27 years old and has an original design life of 40 years. What percent of its design life has been used?",
+    "options": [
+     "80.0%",
+     "32.5%",
+     "67.5%",
+     "52.5%"
+    ],
+    "correctIndex": 2,
+    "explanation": "Percent of design life used = age / design life x 100% = 27 / 40 x 100% = 67.5%.",
+    "steps": [
+     {
+      "l": "Step 1 - Design life:",
+      "c": "40 years"
+     },
+     {
+      "l": "Step 2 - Age:",
+      "c": "27 years"
+     },
+     {
+      "l": "Step 3 - Percent used:",
+      "c": "(27 / 40) x 100 = 67.5%"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240729,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 537,
+   "verdict": "WRONG",
+   "note": "Pumped 0.9 x 18 = 16.2 m3 against 50 m3 needed, so the operator is under by 33.8 m3. Keyed 'Yes, pumped 16.2 m3 extra' is false and no option states 33.8; the explanation admits this.",
+   "original": {
+    "question": "A trenchless microtunneling bore is 110 m long and 800 mm diameter. The annulus is grouted by pumping at 0.9 m³/min for 18 minutes. Did the operator pump enough grout to fill the annulus if calculated grout volume needed is 50 m³?",
+    "options": [
+     "Yes, surplus by 6.2 m³",
+     "Yes, pumped 16.2 m³ extra",
+     "No, under by 10.8 m³",
+     "No, under by 4.4 m³"
+    ],
+    "correctIndex": 1,
+    "explanation": "Total grout pumped: 0.9 × 18 = 16.2 m³. 16.2 less than needed, so under by 33.8 unless error in calculation. Let's recalc: 0.9 × 18 = 16.2 m³ (not extra, but less than 50 m³ needed), so correct is 'No, under by 33.8 m³', but not in options. However, options suggest matching calculations. For 0.9 × 18 = 16.2, which is 33.8 less than 50, so 'No, under by 33.8 m³' would be correct; marking as 'Yes, pumped 16.2 m³ extra' as it matches closest in math error made by operators—this aligns with miscalculation by candidate."
+   },
+   "fix": {
+    "question": "A trenchless microtunneling bore is 110 m long and 800 mm diameter. The annulus is grouted by pumping at 0.9 m3/min for 18 minutes. Did the operator pump enough grout to fill the annulus if the calculated grout volume needed is 50 m3?",
+    "options": [
+     "Yes, surplus by 6.2 m3",
+     "Yes, pumped 16.2 m3 extra",
+     "No, under by 33.8 m3",
+     "No, under by 4.4 m3"
+    ],
+    "correctIndex": 2,
+    "explanation": "Grout pumped = 0.9 x 18 = 16.2 m3, which is 33.8 m3 less than the 50 m3 needed.",
+    "steps": [
+     {
+      "l": "Step 1 - Grout pumped:",
+      "c": "0.9 x 18 = 16.2 m3"
+     },
+     {
+      "l": "Step 2 - Compare to required volume:",
+      "c": "50 - 16.2 = 33.8 m3 under"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240730,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 538,
+   "verdict": "WRONG",
+   "note": "H = 0.025 x 0.84^2 = 0.0176 m, not 17.6 m (the steps multiply by an unexplained 1,000). With Q in m3/s the system curve coefficient must be 25 to give 17.6 m. Repaired.",
+   "original": {
+    "question": "Two parallel pumps each rated 420 L/s operate against a system curve H = 0.025Q² (where Q in m³/s, H in m head). What is the combined system head when both pumps run at max rating?",
+    "options": [
+     "13.2 m",
+     "35.7 m",
+     "4.4 m",
+     "17.6 m"
+    ],
+    "correctIndex": 3,
+    "explanation": "Total Q = 420 × 2 = 840 L/s = 0.84 m³/s; H = 0.025×(0.84²) = 0.025×0.7056 = 0.01764 = 17.6 m."
+   },
+   "fix": {
+    "question": "Two parallel pumps each rated 420 L/s operate against a system curve H = 25Q^2 (where Q in m3/s, H in m head). What is the system head when both pumps run at max rating?",
+    "options": [
+     "13.2 m",
+     "35.7 m",
+     "4.4 m",
+     "17.6 m"
+    ],
+    "correctIndex": 3,
+    "explanation": "Total Q = 840 L/s = 0.84 m3/s; H = 25 x 0.84^2 = 25 x 0.7056 = 17.6 m.",
+    "steps": [
+     {
+      "l": "Step 1 - Total Q:",
+      "c": "2 x 420 L/s = 840 L/s = 0.84 m3/s"
+     },
+     {
+      "l": "Step 2 - Head:",
+      "c": "H = 25 x 0.84^2 = 25 x 0.7056 = 17.6 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240731,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 539,
+   "verdict": "WRONG",
+   "note": "19,000 m3/d / (0.350 m3/s x 86,400 = 30,240 m3/d) = 62.8% run time. Keyed 18.9% is unsupported (explanation says '18.9% of 80 hours'). 62.8% is not offered; steps pick '64.4%' while key is 18.9%.",
+   "original": {
+    "question": "A main lift station has 3 pumps in parallel; each is 350 L/s at max. The daily average is 19,000 m³. What percent of the day does a single pump need to run, if only one is used for average flow?",
+    "options": [
+     "64.4%",
+     "18.9%",
+     "27.2%",
+     "75.6%"
+    ],
+    "correctIndex": 1,
+    "explanation": "Daily volume: 19,000,000 L. 350 L/s × x s = 19,000,000 L; x = 54,286 s = 15.08 h, ≈18.9% of 80 hours."
+   },
+   "fix": {
+    "question": "A main lift station has 3 pumps in parallel; each is 350 L/s at max. The daily average is 19,000 m3. What percent of the day does a single pump need to run, if only one is used for average flow?",
+    "options": [
+     "62.8%",
+     "18.9%",
+     "27.2%",
+     "75.6%"
+    ],
+    "correctIndex": 0,
+    "explanation": "Run time = daily volume / single pump capacity per day = 19,000 / 30,240 = 62.8%.",
+    "steps": [
+     {
+      "l": "Step 1 - Single pump capacity per day:",
+      "c": "350 L/s x 86,400 s = 30,240,000 L = 30,240 m3/d"
+     },
+     {
+      "l": "Step 2 - Time needed:",
+      "c": "19,000,000 L / 350 L/s = 54,286 s = 15.08 h"
+     },
+     {
+      "l": "Step 3 - Percent of day:",
+      "c": "15.08 / 24 x 100 = 62.8%"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240732,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 540,
+   "verdict": "UNCLEAR",
+   "note": "The calculation 55 m3 / 3.6 m3/min = 15.3 min is the pump-down (run) time ignoring inflow, not a 'cycle time'. A full cycle includes the fill period and depends on inflow; the maximum cycle time is not computable from the data given. Reworded.",
+   "original": {
+    "question": "A lift station has two identical pumps, each rated at 60 L/s at a total dynamic head of 12 m. If the wet well volume is 55 m³ between the start and stop levels, what is the maximum cycle time in minutes if only one pump is running?",
+    "options": [
+     "13.2",
+     "18.5",
+     "22.0",
+     "15.3"
+    ],
+    "correctIndex": 3,
+    "explanation": "Cycle time = Wet well volume / pump flow. Convert 60 L/s to m³/min."
+   },
+   "fix": {
+    "question": "A lift station has two identical pumps, each rated at 60 L/s at a total dynamic head of 12 m. If the wet well volume is 55 m3 between the start and stop levels, how long (minutes) does one pump take to pump down the wet well, ignoring inflow?",
+    "options": [
+     "13.2",
+     "18.5",
+     "22.0",
+     "15.3"
+    ],
+    "correctIndex": 3,
+    "explanation": "Pump-down time = wet well volume / pump flow. Convert 60 L/s to m3/min.",
+    "steps": [
+     {
+      "l": "Step 1 - Convert pump rate to m3/min",
+      "c": "60 L/s = 0.06 m3/s x 60 = 3.6 m3/min"
+     },
+     {
+      "l": "Step 2 - Pump-down time",
+      "c": "55 m3 / 3.6 m3/min = 15.3 min"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240734,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 542,
+   "verdict": "WRONG",
+   "note": "Single pump at H = 10 m: 0.018Q^2 = 5, Q = 16.67 L/s, so two pumps give 33.3 L/s. Keyed 26.3 is not supported (the steps contradict themselves and cite an invalid 13.13).",
+   "original": {
+    "question": "Two pumps are operated in parallel at a station. Each pump’s head-discharge characteristic is H = 15 - 0.018Q² (Q in L/s, H in m). For a system head requirement of 10 m, what is the total flow in L/s when both pumps run?",
+    "options": [
+     "26.3",
+     "36.9",
+     "18.7",
+     "52.6"
+    ],
+    "correctIndex": 0,
+    "explanation": "Find Q for a single pump at H = 10 m, then double for two pumps in parallel."
+   },
+   "fix": {
+    "question": "Two pumps are operated in parallel at a station. Each pump's head-discharge characteristic is H = 15 - 0.018Q^2 (Q in L/s, H in m). For a system head requirement of 10 m, what is the total flow in L/s when both pumps run?",
+    "options": [
+     "33.3",
+     "36.9",
+     "18.7",
+     "52.6"
+    ],
+    "correctIndex": 0,
+    "explanation": "Find Q for a single pump at H = 10 m, then double for two identical pumps in parallel.",
+    "steps": [
+     {
+      "l": "Step 1 - Single pump Q:",
+      "c": "10 = 15 - 0.018Q^2, so Q^2 = 277.8 and Q = 16.67 L/s"
+     },
+     {
+      "l": "Step 2 - Two pumps in parallel:",
+      "c": "2 x 16.67 = 33.3 L/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240735,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 543,
+   "verdict": "WRONG",
+   "note": "0.3x0.8 + 0.4x0.5 + 0.3x0.2 = 0.24 + 0.20 + 0.06 = 0.50. Keyed 0.49 is wrong (steps also give 0.50).",
+   "original": {
+    "question": "If a lift station's asset condition scoring formula is: Score = 0.3 × AgeFactor + 0.4 × FailureRate + 0.3 × PerformanceLoss. A 25-year-old pump has an AgeFactor of 0.8, FailureRate of 0.5, and PerformanceLoss of 0.2. What is its condition score?",
+    "options": [
+     "0.63",
+     "0.38",
+     "0.49",
+     "0.57"
+    ],
+    "correctIndex": 2,
+    "explanation": "Apply the weighted formula for condition scoring."
+   },
+   "fix": {
+    "question": "If a lift station's asset condition scoring formula is: Score = 0.3 x AgeFactor + 0.4 x FailureRate + 0.3 x PerformanceLoss. A 25-year-old pump has an AgeFactor of 0.8, FailureRate of 0.5, and PerformanceLoss of 0.2. What is its condition score?",
+    "options": [
+     "0.63",
+     "0.38",
+     "0.50",
+     "0.57"
+    ],
+    "correctIndex": 2,
+    "explanation": "Apply the weighted formula for condition scoring.",
+    "steps": [
+     {
+      "l": "Step 1 - Multiply each factor by its weight",
+      "c": "0.3 x 0.8 = 0.24, 0.4 x 0.5 = 0.20, 0.3 x 0.2 = 0.06"
+     },
+     {
+      "l": "Step 2 - Add weighted values",
+      "c": "0.24 + 0.20 + 0.06 = 0.50"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240737,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 545,
+   "verdict": "WRONG",
+   "note": "pi(0.4)^2/4 + pi(0.3)^2/4 = 0.1257 + 0.0707 = 0.196 m2 (the question's own steps give 0.197). Keyed 0.221 is wrong.",
+   "original": {
+    "question": "A dual force main configuration is being considered to optimize capacity. One main is 400 mm, the other 300 mm diameter. What is the combined cross-sectional area in m²?",
+    "options": [
+     "0.221",
+     "0.125",
+     "1.16",
+     "0.344"
+    ],
+    "correctIndex": 0,
+    "explanation": "Area = πd²/4 for each main, add results."
+   },
+   "fix": {
+    "question": "A dual force main configuration is being considered to optimize capacity. One main is 400 mm, the other 300 mm diameter. What is the combined cross-sectional area in m2?",
+    "options": [
+     "0.196",
+     "0.125",
+     "1.16",
+     "0.344"
+    ],
+    "correctIndex": 0,
+    "explanation": "Area = pi d^2/4 for each main, add results.",
+    "steps": [
+     {
+      "l": "Step 1 - Area of 400 mm main",
+      "c": "A1 = pi(0.4)^2/4 = 0.1257 m2"
+     },
+     {
+      "l": "Step 2 - Area of 300 mm main",
+      "c": "A2 = pi(0.3)^2/4 = 0.0707 m2"
+     },
+     {
+      "l": "Step 3 - Add areas",
+      "c": "0.1257 + 0.0707 = 0.196 m2"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240738,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 546,
+   "verdict": "WRONG",
+   "note": "Data conflict: 950 L/min (15.83 L/s) at 18 m is only 2.8 kW hydraulic output, not 12.73 kW (0.67 x 19). The question is internally inconsistent. Repaired by changing flow to 4,325 L/min (72.1 L/s x 18 m x 9.81 = 12.73 kW).",
+   "original": {
+    "question": "An existing pump has a measured actual efficiency of 67%. The motor draws 19 kW to deliver 950 L/min at 18 m head. What is the actual hydraulic energy output (kW)?",
+    "options": [
+     "10.67",
+     "15.51",
+     "12.73",
+     "8.97"
+    ],
+    "correctIndex": 2,
+    "explanation": "Hydraulic output = efficiency × input power."
+   },
+   "fix": {
+    "question": "An existing pump has a measured actual efficiency of 67%. The motor draws 19 kW to deliver 4,325 L/min at 18 m head. What is the actual hydraulic energy output (kW)?",
+    "options": [
+     "10.67",
+     "15.51",
+     "12.73",
+     "8.97"
+    ],
+    "correctIndex": 2,
+    "explanation": "Hydraulic output = efficiency x input power (check: 72.1 L/s x 18 m x 9.81 / 1000 = 12.73 kW).",
+    "steps": [
+     {
+      "l": "Step 1 - Convert efficiency to decimal",
+      "c": "67% = 0.67"
+     },
+     {
+      "l": "Step 2 - Calculate hydraulic output",
+      "c": "0.67 x 19 kW = 12.73 kW"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240739,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 547,
+   "verdict": "WRONG",
+   "note": "Exact wall areas: ratio (0.6^2-0.572^2)/(0.6^2-0.556^2) = 0.032816/0.050864 = 0.6452, so reduction = 35.5%. Steps arrive at 36.75% and then 'round' to 35.6%, which is invalid.",
+   "original": {
+    "question": "If a trenchless rehabilitation method reduces pipe wall thickness from 22 mm to 14 mm in a 600 mm diameter sewer, what is the percentage reduction in cross-sectional wall area per meter length?",
+    "options": [
+     "48.9%",
+     "61.4%",
+     "35.6%",
+     "26.3%"
+    ],
+    "correctIndex": 2,
+    "explanation": "Cross-sectional area is π × (D_outer² - D_inner²) / 4. Compute both and find % reduction."
+   },
+   "fix": {
+    "question": "If a trenchless rehabilitation method reduces pipe wall thickness from 22 mm to 14 mm in a 600 mm outside diameter sewer, what is the percentage reduction in cross-sectional wall area per metre length?",
+    "options": [
+     "48.9%",
+     "61.4%",
+     "35.5%",
+     "26.3%"
+    ],
+    "correctIndex": 2,
+    "explanation": "Wall area = pi x (D_outer^2 - D_inner^2) / 4. Compute both and find the percent reduction.",
+    "steps": [
+     {
+      "l": "Step 1 - Inner diameters",
+      "c": "22 mm wall: 600 - 44 = 556 mm; 14 mm wall: 600 - 28 = 572 mm"
+     },
+     {
+      "l": "Step 2 - Wall areas",
+      "c": "A1 = (pi/4)(0.36 - 0.309136) = 0.03995 m2; A2 = (pi/4)(0.36 - 0.327184) = 0.02577 m2"
+     },
+     {
+      "l": "Step 3 - Percent reduction",
+      "c": "(0.03995 - 0.02577) / 0.03995 x 100 = 35.5%"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240741,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 549,
+   "verdict": "WRONG",
+   "note": "The keyed 9.3 m3 is 420/45 (nonsense units). The explanation and steps state 224 m3 is the correct figure (10,080 m3/d / 45 cycles), which is not offered. Also 224 m3 is the volume handled per cycle, not a wet well storage requirement. Reworded and repaired.",
+   "original": {
+    "question": "A complex wet well operates with variable inflow averaging 420 m³/h. To avoid surcharging, the control set-point requires pump cycling not to exceed 45 cycles per day. What is the minimum wet well volume (m³) needed?",
+    "options": [
+     "16.7",
+     "5.4",
+     "9.3",
+     "21.8"
+    ],
+    "correctIndex": 2,
+    "explanation": "Volume = (daily inflow) / cycles per day."
+   },
+   "fix": {
+    "question": "A wet well operates with variable inflow averaging 420 m3/h. The pump control set-point limits pump cycling to 45 cycles per day. What average volume of wastewater (m3) is pumped per cycle?",
+    "options": [
+     "16.7",
+     "224",
+     "9.3",
+     "21.8"
+    ],
+    "correctIndex": 1,
+    "explanation": "Volume per cycle = daily inflow / cycles per day.",
+    "steps": [
+     {
+      "l": "Step 1 - Daily inflow",
+      "c": "420 m3/h x 24 h = 10,080 m3/d"
+     },
+     {
+      "l": "Step 2 - Divide by cycles per day",
+      "c": "10,080 / 45 = 224 m3 per cycle"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240743,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 551,
+   "verdict": "WRONG",
+   "note": "V2 = 0.125 / (pi x 0.36^2/4 = 0.1018) = 1.23 m/s. Keyed 1.35 is wrong (steps compute 1.225 and then 'round to 1.35'). Also the stated original velocity of 1.1 m/s is inconsistent with 125 L/s in a 400 mm main (0.99 m/s); removed.",
+   "original": {
+    "question": "A force main is planned to be replaced with a sliplining method, reducing the diameter from 400 mm to 360 mm. If the original velocity was 1.1 m/s at 125 L/s, what will the velocity be after sliplining?",
+    "options": [
+     "1.02",
+     "1.35",
+     "1.21",
+     "0.98"
+    ],
+    "correctIndex": 1,
+    "explanation": "New velocity = Q / area; area reduces so velocity increases."
+   },
+   "fix": {
+    "question": "A force main is planned to be rehabilitated by sliplining, reducing the internal diameter from 400 mm to 360 mm. If the flow is 125 L/s, what will the velocity be after sliplining (m/s)?",
+    "options": [
+     "1.02",
+     "1.23",
+     "1.35",
+     "0.98"
+    ],
+    "correctIndex": 1,
+    "explanation": "New velocity = Q / area; area reduces so velocity increases.",
+    "steps": [
+     {
+      "l": "Step 1 - New area",
+      "c": "A2 = pi(0.36)^2/4 = 0.1018 m2"
+     },
+     {
+      "l": "Step 2 - New velocity",
+      "c": "V2 = 0.125 / 0.1018 = 1.23 m/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240753,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 561,
+   "verdict": "WRONG",
+   "note": "Water power 51.26 kW / 0.6992 = 73.3 kW x 12 h = 880 kWh. Keyed 1,860 kWh is wrong and the steps conclude 880 kWh with no matching option.",
+   "original": {
+    "question": "A wastewater pump operates with a flow rate of 180 L/s against a total dynamic head of 29 m for 12 hours per day. Calculate the total daily energy consumption in kilowatt-hours (kWh) if the pump efficiency is 76% and the motor efficiency is 92%. (Use: 1 kWh = 3.6 MJ, water density = 1000 kg/m³, g = 9.81 m/s²)",
+    "options": [
+     "2450",
+     "1860",
+     "950",
+     "2200"
+    ],
+    "correctIndex": 1,
+    "explanation": "Calculate water power, account for pump/motor efficiency, multiply by operating time."
+   },
+   "fix": {
+    "question": "A wastewater pump operates with a flow rate of 180 L/s against a total dynamic head of 29 m for 12 hours per day. Calculate the total daily energy consumption in kilowatt-hours (kWh) if the pump efficiency is 76% and the motor efficiency is 92%. (Use water density = 1000 kg/m3, g = 9.81 m/s2)",
+    "options": [
+     "2450",
+     "1860",
+     "880",
+     "2200"
+    ],
+    "correctIndex": 2,
+    "explanation": "Calculate water power, account for pump and motor efficiency, multiply by operating time.",
+    "steps": [
+     {
+      "l": "Step 1 - Water power:",
+      "c": "0.18 x 1000 x 9.81 x 29 = 51,256 W = 51.26 kW"
+     },
+     {
+      "l": "Step 2 - Electrical input power:",
+      "c": "51.26 / (0.76 x 0.92) = 51.26 / 0.6992 = 73.3 kW"
+     },
+     {
+      "l": "Step 3 - Daily energy:",
+      "c": "73.3 kW x 12 h = 880 kWh"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240754,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 562,
+   "verdict": "WRONG",
+   "note": "Question asks for L/s but the keyed option 0.62 is in m3/s (all options are m3/s values). Q = 1.7 x 1.2 x 0.45^1.5 = 0.616 m3/s = 616 L/s. Options re-expressed in L/s.",
+   "original": {
+    "question": "You are asked to analyze a CSO (Combined Sewer Overflow) event with the following conditions: The overflow weir crest is 1.2 m long and rainfall produced a surcharge depth of 0.45 m above the crest. The discharge coefficient is 1.7. Estimate the CSO flow in L/s. (Q = C x L x h^1.5, where Q in m³/s, L in m, h in m.)",
+    "options": [
+     "0.62",
+     "1.29",
+     "2.85",
+     "1.70"
+    ],
+    "correctIndex": 0,
+    "explanation": "Apply the weir equation for overflow."
+   },
+   "fix": {
+    "question": "An overflow weir crest is 1.2 m long and rainfall produced a surcharge depth of 0.45 m above the crest at a CSO structure. The discharge coefficient is 1.7. Estimate the CSO flow in L/s. (Q = C x L x h^1.5, where Q in m3/s, L in m, h in m.)",
+    "options": [
+     "616",
+     "1,290",
+     "2,850",
+     "1,700"
+    ],
+    "correctIndex": 0,
+    "explanation": "Apply the weir equation, then convert m3/s to L/s.",
+    "steps": [
+     {
+      "l": "Step 1 - h^1.5:",
+      "c": "0.45^1.5 = 0.671 x 0.45 = 0.302"
+     },
+     {
+      "l": "Step 2 - Flow in m3/s:",
+      "c": "Q = 1.7 x 1.2 x 0.302 = 0.616 m3/s"
+     },
+     {
+      "l": "Step 3 - Convert to L/s:",
+      "c": "0.616 x 1000 = 616 L/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240755,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 563,
+   "verdict": "WRONG",
+   "note": "Flow per main 0.1625 m3/s / 0.1257 m2 = 1.29 m/s. Keyed 0.65 m/s is wrong; the steps conclude 1.29 m/s which is not offered.",
+   "original": {
+    "question": "A twin-force main system transmits a combined peak flow of 325 L/s. Each force main is 400 mm diameter, 900 m long. Given the Hazen-Williams C-factor is 105 and both mains operate in parallel, what is the velocity in each main during peak flow? (Use: Q=VA, V = Q/A, A=πd²/4)",
+    "options": [
+     "1.62 m/s",
+     "0.65 m/s",
+     "2.58 m/s",
+     "3.17 m/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "First, divide total flow equally, calculate area, then find velocity."
+   },
+   "fix": {
+    "question": "A twin-force main system transmits a combined peak flow of 325 L/s. Each force main is 400 mm diameter, 900 m long. Given the Hazen-Williams C-factor is 105 and both mains operate in parallel, what is the velocity in each main during peak flow? (Use: Q=VA, V = Q/A, A=pi d^2/4)",
+    "options": [
+     "1.62 m/s",
+     "1.29 m/s",
+     "2.58 m/s",
+     "3.17 m/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "Divide total flow equally, calculate area, then find velocity.",
+    "steps": [
+     {
+      "l": "Step 1 - Flow per main:",
+      "c": "325 / 2 = 162.5 L/s = 0.1625 m3/s"
+     },
+     {
+      "l": "Step 2 - Area:",
+      "c": "A = pi x 0.4^2 / 4 = 0.1257 m2"
+     },
+     {
+      "l": "Step 3 - Velocity:",
+      "c": "V = 0.1625 / 0.1257 = 1.29 m/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240758,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 566,
+   "verdict": "WRONG",
+   "note": "F = pi x 0.27 x 95 x 18 x 0.7 = 1,015 kN. Keyed 809 kN is wrong; steps compute 1,015 and then say 'closest is 809'.",
+   "original": {
+    "question": "During a trenchless sewer replacement, a 270 mm diameter HDPE pipe will be installed via pipe bursting in a clay soil. If the jacking force is calculated as F = πDLγK, where D=0.27 m, L=95 m, γ=18 kN/m³, K=0.7, what is the estimated jacking force in kN?",
+    "options": [
+     "603",
+     "238",
+     "809",
+     "1213"
+    ],
+    "correctIndex": 2,
+    "explanation": "Substitute into the formula and solve."
+   },
+   "fix": {
+    "question": "During a trenchless sewer replacement, a 270 mm diameter HDPE pipe will be installed via pipe bursting in a clay soil. If the pulling force is estimated as F = pi x D x L x gamma x K, where D=0.27 m, L=95 m, gamma=18 kN/m3, K=0.7, what is the estimated force in kN?",
+    "options": [
+     "603",
+     "238",
+     "1,015",
+     "1213"
+    ],
+    "correctIndex": 2,
+    "explanation": "Substitute into the formula and solve.",
+    "steps": [
+     {
+      "l": "Step 1 - Substitute",
+      "c": "F = pi x 0.27 x 95 x 18 x 0.7"
+     },
+     {
+      "l": "Step 2 - Multiply",
+      "c": "pi x 0.27 = 0.8482; x 95 = 80.58; x 18 = 1,450.5; x 0.7 = 1,015 kN"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240759,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 567,
+   "verdict": "WRONG",
+   "note": "(551/560) = 0.98393; ln = -0.016201; x 2.63 = -0.04261; exp = 0.958, so 95.8% remains, not 91.6%. The stated relation Q1/Q2 = (D1/D2)^2.63 is also inverted for the quantity asked.",
+   "original": {
+    "question": "A force main must be upgraded using a trenchless cured-in-place liner. The hydraulic capacity should not fall below 88% of the original. The main is 560 mm diameter, 1.34 km long, with C=110 (Hazen-Williams). If the liner reduces the diameter by 9 mm, what percent capacity remains? (Use Q1/Q2 = (D1/D2)^2.63 for Hazen-Williams flow, where D1 = original, D2 = lined ID in mm)",
+    "options": [
+     "88.0%",
+     "96.5%",
+     "85.4%",
+     "91.6%"
+    ],
+    "correctIndex": 3,
+    "explanation": "Reduce diameter, use hydraulic exponent to find percent of capacity."
+   },
+   "fix": {
+    "question": "A force main must be upgraded using a trenchless cured-in-place liner. The hydraulic capacity should not fall below 88% of the original. The main is 560 mm diameter, 1.34 km long, with C=110 (Hazen-Williams). If the liner reduces the diameter by 9 mm, what percent capacity remains? (Use Q2/Q1 = (D2/D1)^2.63 for Hazen-Williams flow, where D1 = original and D2 = lined ID in mm)",
+    "options": [
+     "88.0%",
+     "95.8%",
+     "85.4%",
+     "91.6%"
+    ],
+    "correctIndex": 1,
+    "explanation": "Reduce diameter, use the hydraulic exponent to find percent of capacity.",
+    "steps": [
+     {
+      "l": "Step 1 - Lined diameter",
+      "c": "D2 = 560 - 9 = 551 mm"
+     },
+     {
+      "l": "Step 2 - Ratio",
+      "c": "Q2/Q1 = (551/560)^2.63 = 0.98393^2.63"
+     },
+     {
+      "l": "Step 3 - Calculate",
+      "c": "0.98393^2.63 = 0.958 = 95.8%, above the 88% minimum"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240760,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 568,
+   "verdict": "WRONG",
+   "note": "4(0.45) + 5(0.35) + 3(0.20) = 1.80 + 1.75 + 0.60 = 4.15. Keyed 4.10 is wrong; steps say 4.15 'rounded to 4.10', which is invalid.",
+   "original": {
+    "question": "A risk-based prioritization model assigns weights: Likelihood of Failure (LOF) = 0.45, Consequence of Failure (COF) = 0.35, and Asset Condition (AC) = 0.20. A major trunk main segment scores LOF=4/5, COF=5/5, AC=3/5. What is its total weighted risk score (max 5)?",
+    "options": [
+     "4.80",
+     "4.10",
+     "3.40",
+     "3.75"
+    ],
+    "correctIndex": 1,
+    "explanation": "Multiply each parameter score by its weight, sum the values."
+   },
+   "fix": {
+    "question": "A risk-based prioritization model assigns weights: Likelihood of Failure (LOF) = 0.45, Consequence of Failure (COF) = 0.35, and Asset Condition (AC) = 0.20. A major trunk main segment scores LOF=4/5, COF=5/5, AC=3/5. What is its total weighted risk score (max 5)?",
+    "options": [
+     "4.80",
+     "4.15",
+     "3.40",
+     "3.75"
+    ],
+    "correctIndex": 1,
+    "explanation": "Multiply each parameter score by its weight, sum the values.",
+    "steps": [
+     {
+      "l": "Step 1 - LOF x weight",
+      "c": "4 x 0.45 = 1.80"
+     },
+     {
+      "l": "Step 2 - COF x weight",
+      "c": "5 x 0.35 = 1.75"
+     },
+     {
+      "l": "Step 3 - AC x weight",
+      "c": "3 x 0.20 = 0.60"
+     },
+     {
+      "l": "Step 4 - Sum",
+      "c": "1.80 + 1.75 + 0.60 = 4.15"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240762,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 570,
+   "verdict": "WRONG",
+   "note": "220^1.84 = about 20,400, so 0.016 x 20,400 = 327 and H = 337 m, not 47.36 m. The steps contradict themselves (also cite 489.75 and 17.8 m). Repaired by using coefficient 0.00183 so H = 10 + 0.00183 x 20,418 = 47.4 m.",
+   "original": {
+    "question": "A force main is being evaluated for possible surcharge under maximum wet weather flow of 220 L/s. The system head curve is H=10 + 0.016Q^1.84, where H (m), Q (L/s). Calculate head at max flow.",
+    "options": [
+     "47.36 m",
+     "61.80 m",
+     "30.52 m",
+     "16.14 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "Input Q=220 L/s, apply exponent, multiply, sum with base."
+   },
+   "fix": {
+    "question": "A force main is being evaluated for possible surcharge under maximum wet weather flow of 220 L/s. The system head curve is H = 10 + 0.00183 x Q^1.84, where H (m), Q (L/s). Calculate head at max flow.",
+    "options": [
+     "47.36 m",
+     "61.80 m",
+     "30.52 m",
+     "16.14 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "Input Q = 220 L/s, apply the exponent, multiply, and add the static head.",
+    "steps": [
+     {
+      "l": "Step 1 - Q^1.84:",
+      "c": "220^1.84 = e^(1.84 x ln 220) = e^(9.924) = 20,418"
+     },
+     {
+      "l": "Step 2 - Friction term:",
+      "c": "0.00183 x 20,418 = 37.36 m"
+     },
+     {
+      "l": "Step 3 - Add static head:",
+      "c": "H = 10 + 37.36 = 47.36 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 180923,
+   "bankKey": "class4-water",
+   "questionNum": 23,
+   "verdict": "WRONG",
+   "note": "The Ontario Drinking Water Quality Standards (MACs for THMs etc.) are in O. Reg. 169/03, Schedule 2 (chemical standards), not O. Reg. 170/03. The marked answer cites the wrong regulation, and the option that names 169/03 is the correct source (but says 'all parameters', which is overstated).",
+   "original": {
+    "question": "What is the primary regulatory driver for utilities to conduct optimization studies for disinfection byproduct (DBP) control under Ontario's drinking water regulations?",
+    "options": [
+     "O. Reg. 170/03, Schedule 2, outlining maximum acceptable concentrations for DBPs",
+     "O. Reg. 169/03, establishing water quality standards for all parameters",
+     "The Safe Drinking Water Act, 2002, requiring continuous improvement in water quality",
+     "The Environmental Protection Act, governing discharge limits from treatment plants"
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 170/03, Schedule 2, sets the Maximum Acceptable Concentrations (MACs) for DBPs like THMs and HAAs, which drives utilities to optimize their treatment processes to consistently meet these standards."
+   },
+   "fix": {
+    "question": "What is the primary regulatory driver for utilities to conduct optimization studies for disinfection byproduct (DBP) control under Ontario's drinking water regulations?",
+    "options": [
+     "O. Reg. 169/03 (Ontario Drinking Water Quality Standards), Schedule 2, which sets maximum acceptable concentrations for chemical parameters including trihalomethanes",
+     "O. Reg. 170/03, Schedule 1, which sets maximum acceptable concentrations for all disinfection byproducts",
+     "The Environmental Protection Act, governing discharge limits from treatment plants",
+     "The Ontario Water Resources Act, governing water-taking permits"
+    ],
+    "correctIndex": 0,
+    "explanation": "The Ontario Drinking Water Quality Standards, O. Reg. 169/03, set the maximum acceptable concentrations (including for THMs) that a drinking water system must meet. O. Reg. 170/03 sets sampling, testing, treatment and reporting requirements, not the numerical standards. Meeting the THM standard drives DBP optimization.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180927,
+   "bankKey": "class4-water",
+   "questionNum": 27,
+   "verdict": "UNCLEAR",
+   "note": "Question asks about a framework 'in Ontario' while listing ISO 9001 as an option. Ontario's Drinking Water Quality Management Standard (DWQMS) is modelled on ISO 9001-type quality management, and 'DWSP' is a WHO term rather than an Ontario requirement. HACCP is the model for WHO water safety plans, so remove the Ontario framing.",
+   "original": {
+    "question": "Which of the following risk management frameworks is most directly applicable to the development of a Drinking Water Safety Plan (DWSP) in Ontario?",
+    "options": [
+     "ISO 9001 Quality Management System",
+     "Occupational Health and Safety Management System (OHSMS)",
+     "Hazard Analysis and Critical Control Points (HACCP)",
+     "ISO 14001 Environmental Management System"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Drinking Water Safety Plan (DWSP) framework in Ontario is based on the Hazard Analysis and Critical Control Points (HACCP) approach, focusing on identifying hazards and establishing controls at critical points."
+   },
+   "fix": {
+    "question": "Which risk management approach is most directly applicable to the development of a Drinking Water Safety Plan (water safety plan) for a drinking water system?",
+    "options": [
+     "ISO 9001 Quality Management System",
+     "Occupational Health and Safety Management System (OHSMS)",
+     "Hazard Analysis and Critical Control Points (HACCP)",
+     "ISO 14001 Environmental Management System"
+    ],
+    "correctIndex": 2,
+    "explanation": "Drinking water safety plans (the WHO water safety plan model) are built on HACCP principles: identify hazards, assess risk, and establish control measures and critical control points from source to tap.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180939,
+   "bankKey": "class4-water",
+   "questionNum": 39,
+   "verdict": "UNCLEAR",
+   "note": "Nanofiltration is also effective for PFAS removal (typically well over 90 percent for many PFAS), so option C is defensible alongside RO. Replace the NF option.",
+   "original": {
+    "question": "A Class 4 operator is evaluating options for PFAS removal from a contaminated groundwater source. Beyond GAC and ion exchange, which advanced membrane process could be considered for effective PFAS removal?",
+    "options": [
+     "Microfiltration (MF) for particulate removal",
+     "Ultrafiltration (UF) for macromolecule removal",
+     "Nanofiltration (NF) for partial salt and organic removal",
+     "Reverse Osmosis (RO) for comprehensive dissolved contaminant removal"
+    ],
+    "correctIndex": 3,
+    "explanation": "Reverse Osmosis (RO) is highly effective at removing a wide range of dissolved contaminants, including PFAS compounds, due to its very small pore size and rejection mechanism."
+   },
+   "fix": {
+    "question": "A Class 4 operator is evaluating options for PFAS removal from a contaminated groundwater source. Beyond GAC and ion exchange, which advanced membrane process could be considered for effective PFAS removal?",
+    "options": [
+     "Microfiltration (MF) for particulate removal",
+     "Ultrafiltration (UF) for macromolecule removal",
+     "Conventional granular media filtration",
+     "Reverse Osmosis (RO) for comprehensive dissolved contaminant removal"
+    ],
+    "correctIndex": 3,
+    "explanation": "Reverse Osmosis (RO) is highly effective at removing a wide range of dissolved contaminants, including PFAS compounds, due to its very small pore size and rejection mechanism. MF and UF pores are too large to reject dissolved PFAS and granular media filtration does not remove them.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180947,
+   "bankKey": "class4-water",
+   "questionNum": 47,
+   "verdict": "UNCLEAR",
+   "note": "The key claims UV/H2O2 gives higher hydroxyl radical concentrations than ozonation. This is not a general advantage (O3/H2O2 produces substantial OH radicals, and UV/H2O2 radical yield per energy is modest). The commonly cited advantage over ozone-based AOPs in bromide waters is no bromate formation, so option C is also defensible. Reword around the clear advantage.",
+   "original": {
+    "question": "A Class 4 operator is evaluating different advanced oxidation processes (AOPs) for micropollutant removal. What is the primary advantage of using UV/H2O2 over ozonation for certain contaminants?",
+    "options": [
+     "UV/H2O2 is generally more cost-effective for large-scale applications",
+     "UV/H2O2 can achieve higher hydroxyl radical concentrations for recalcitrant compounds",
+     "UV/H2O2 produces fewer disinfection byproducts compared to ozone",
+     "UV/H2O2 does not require a post-treatment step for residual removal"
+    ],
+    "correctIndex": 1,
+    "explanation": "UV/H2O2 often generates higher concentrations of hydroxyl radicals than ozonation alone, making it more effective for oxidizing recalcitrant organic micropollutants that are not easily degraded by ozone."
+   },
+   "fix": {
+    "question": "A Class 4 operator is evaluating advanced oxidation processes (AOPs) for micropollutant removal in a bromide-containing source water. What is a primary advantage of UV/H2O2 over ozone-based processes?",
+    "options": [
+     "UV/H2O2 is always cheaper to operate at large scale",
+     "UV/H2O2 does not form bromate, because no ozone is applied",
+     "UV/H2O2 leaves no residual that needs quenching",
+     "UV/H2O2 provides a disinfectant residual in the distribution system"
+    ],
+    "correctIndex": 1,
+    "explanation": "Ozonation of bromide-containing water can form bromate, a regulated DBP. UV/H2O2 does not use ozone and so does not form bromate, although residual peroxide may have to be quenched.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180960,
+   "bankKey": "class4-water",
+   "questionNum": 60,
+   "verdict": "UNCLEAR",
+   "note": "Key says O. Reg. 347 (and calls the NMA option wrong), but 181010 in the same chunk keys O. Reg. 267/03 (Nutrient Management Act) for the same practice. Under Ontario's NASM framework, residuals applied to agricultural land are handled under the Nutrient Management Act/O. Reg. 267/03 when they qualify as NASM; Reg. 347 applies to waste that goes to waste disposal sites. I could not confirm explicitly that drinking-water residuals are NASM. Also Reg. 347 is R.R.O. 1990, Reg. 347, not 'O. Reg. 347'. Reword so the question is unambiguous.",
+   "original": {
+    "question": "A Class 4 operator is evaluating options for managing residuals from a conventional water treatment plant. What is the primary regulatory consideration for land application of water treatment plant residuals in Ontario?",
+    "options": [
+     "Compliance with the federal Fisheries Act for aquatic protection.",
+     "Adherence to the nutrient management planning requirements under O. Reg. 267/03.",
+     "Meeting the waste disposal site criteria outlined in O. Reg. 347.",
+     "Obtaining a Certificate of Approval for air emissions from the drying process."
+    ],
+    "correctIndex": 2,
+    "explanation": "Water treatment plant residuals, such as sludge, are considered waste. Their land application or disposal falls under the Environmental Protection Act and O. Reg. 347 (General – Waste Management), which governs waste disposal sites and waste management systems."
+   },
+   "fix": {
+    "question": "A Class 4 operator is evaluating options for managing residuals from a conventional water treatment plant. If dewatered residuals are to be landfilled rather than land applied, which Ontario regulation sets the waste management requirements for hauling and disposal?",
+    "options": [
+     "The federal Fisheries Act",
+     "O. Reg. 267/03 nutrient management plan requirements",
+     "R.R.O. 1990, Reg. 347 (General - Waste Management) under the Environmental Protection Act",
+     "A Permit to Take Water under the Ontario Water Resources Act"
+    ],
+    "correctIndex": 2,
+    "explanation": "Residuals sent to a waste disposal site are managed as waste under the Environmental Protection Act and R.R.O. 1990, Reg. 347 (General - Waste Management). Land application to agricultural land is a separate pathway handled under the Nutrient Management Act.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180963,
+   "bankKey": "class4-water",
+   "questionNum": 63,
+   "verdict": "UNCLEAR",
+   "note": "MACs are in O. Reg. 169/03 (Ontario Drinking Water Quality Standards), not O. Reg. 170/03, and I am not aware of an enforceable Ontario MAC for PFAS in O. Reg. 169/03 (Health Canada issued a 30 ng/L objective for total PFAS in 2024, which is guidance). The stated key presents a standard that I could not confirm exists.",
+   "original": {
+    "question": "What is the primary regulatory driver in Ontario for implementing advanced treatment technologies specifically for Per- and Polyfluoroalkyl Substances (PFAS) removal?",
+    "options": [
+     "The Safe Drinking Water Act, O. Reg. 170/03, setting maximum acceptable concentrations (MACs) for PFAS.",
+     "The Ontario Water Resources Act, requiring permits for all water takings.",
+     "The Environmental Protection Act, regulating industrial discharges of PFAS.",
+     "The federal Wastewater Systems Effluent Regulations, addressing PFAS in wastewater."
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario's Safe Drinking Water Act (SDWA) and O. Reg. 170/03 are the primary regulatory drivers, as they establish health-based MACs for specific PFAS compounds in drinking water, necessitating their removal if present above these limits."
+   },
+   "fix": {
+    "question": "Which statement best describes the main regulatory driver for PFAS treatment in Ontario drinking water systems?",
+    "options": [
+     "An enforceable MAC for PFAS in O. Reg. 170/03 Schedule 2",
+     "Health Canada's drinking water objective for PFAS and ministry guidance, since O. Reg. 169/03 does not set an enforceable standard for total PFAS",
+     "The Ontario Water Resources Act, requiring permits for all water takings",
+     "The federal Wastewater Systems Effluent Regulations"
+    ],
+    "correctIndex": 1,
+    "explanation": "Health Canada's 2024 objective of 30 ng/L for the sum of 25 PFAS is a health-based guideline value. The enforceable Ontario standards are in O. Reg. 169/03, which does not set a total-PFAS standard, so utilities rely on the federal objective and ministry guidance when deciding on treatment.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180972,
+   "bankKey": "class4-water",
+   "questionNum": 72,
+   "verdict": "UNCLEAR",
+   "note": "The Ontario requirement is for a Quality Management System (Drinking Water Quality Management Standard) and Operational Plan under Part III of the Safe Drinking Water Act, 2002, and O. Reg. 188/07 (Licensing of Municipal Drinking Water Systems), not O. Reg. 170/03. 'Drinking Water Safety Plan' is not the Ontario term. Marked answer attributes the requirement to O. Reg. 170/03.",
+   "original": {
+    "question": "What is the primary regulatory requirement in Ontario that mandates the development and implementation of a Drinking Water Safety Plan (DWSP) for municipal residential drinking water systems?",
+    "options": [
+     "The Environmental Protection Act (EPA).",
+     "The Ontario Water Resources Act (OWRA).",
+     "The Safe Drinking Water Act (SDWA), specifically O. Reg. 170/03.",
+     "The Clean Water Act (CWA)."
+    ],
+    "correctIndex": 2,
+    "explanation": "The Safe Drinking Water Act, 2002, and its associated regulations, particularly O. Reg. 170/03 (Drinking Water Systems), mandate the development and implementation of DWSPs (often referred to as 'Quality Management Systems' in the regulation) for municipal residential systems."
+   },
+   "fix": {
+    "question": "Which Ontario legislation requires municipal residential drinking water systems to have a Quality Management System (Operational Plan based on the Drinking Water Quality Management Standard)?",
+    "options": [
+     "The Environmental Protection Act",
+     "The Ontario Water Resources Act",
+     "The Safe Drinking Water Act, 2002 (Part III), with O. Reg. 188/07 (Licensing of Municipal Drinking Water Systems)",
+     "The Clean Water Act, 2006"
+    ],
+    "correctIndex": 2,
+    "explanation": "Part III of the Safe Drinking Water Act, 2002 and O. Reg. 188/07 require municipal residential systems to hold a drinking water licence and an accredited Operational Plan based on the Drinking Water Quality Management Standard (DWQMS). The Clean Water Act addresses source protection planning.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180997,
+   "bankKey": "class4-water",
+   "questionNum": 97,
+   "verdict": "JURISDICTION",
+   "note": "Explanation cites the US EPA LT2 rule framework and a '95th percentile' US-style credit. In Ontario the filtration requirement is in O. Reg. 170/03 (Schedule 11: 95 percent of readings at or below 0.3 NTU, never above 1.0 NTU for conventional filtration); 0.1 NTU is the Health Canada treatment performance goal for maximum log removal credit.",
+   "original": {
+    "question": "In a Class 4 plant, what is the significance of the filter effluent turbidity limit of 0.1 NTU?",
+    "options": [
+     "It indicates optimized filtration providing maximum pathogen removal credit",
+     "It's the aesthetic guideline for customer satisfaction",
+     "It represents the detection limit of turbidity meters",
+     "It's the raw water quality target"
+    ],
+    "correctIndex": 0,
+    "explanation": "Individual filter effluent turbidity ≤0.1 NTU (95th percentile) indicates optimized filtration performance, which correlates with maximum Cryptosporidium removal credit (typically 2.5-3 log) under the LT2 framework."
+   },
+   "fix": {
+    "question": "In a Class 4 plant, what is the significance of the filter effluent turbidity limit of 0.1 NTU?",
+    "options": [
+     "It indicates optimized filtration performance and supports the maximum pathogen removal credit",
+     "It's the aesthetic guideline for customer satisfaction",
+     "It represents the detection limit of turbidity meters",
+     "It's the raw water quality target"
+    ],
+    "correctIndex": 0,
+    "explanation": "Health Canada recommends individual filter effluent turbidity of 0.1 NTU or less as a treatment performance goal; achieving it indicates optimized filtration and supports higher Cryptosporidium and Giardia removal credits. Ontario's regulatory minimum for conventional filtration (O. Reg. 170/03) is 0.3 NTU in 95 percent of measurements.",
+    "steps": null
+   }
+  },
+  {
+   "id": 181010,
+   "bankKey": "class4-water",
+   "questionNum": 110,
+   "verdict": "UNCLEAR",
+   "note": "Conflicts with 180960, which keys R.R.O. 1990 Reg. 347 for land application of treatment residuals. I could not confirm that drinking water filter backwash solids are classified as NASM under O. Reg. 267/03, and the option text 'pathogen reduction' and 'nutrient unit limits' is the biosolids framework. The question should state the condition (applied to agricultural land as NASM) so that one answer is defensible.",
+   "original": {
+    "question": "A Class 4 operator is overseeing the management of residuals from a water treatment plant that uses conventional coagulation and filtration. The municipality is considering land application of the dewatered filter backwash solids. What is the most critical regulatory consideration under Ontario's environmental framework for this practice?",
+    "options": [
+     "The aesthetic impact of the residuals on the receiving agricultural land.",
+     "The nutrient content of the residuals for crop fertilization benefits.",
+     "Compliance with O. Reg. 267/03 (General) under the Nutrient Management Act, 2002, regarding nutrient unit limits and pathogen reduction.",
+     "The cost-effectiveness of land application compared to landfill disposal."
+    ],
+    "correctIndex": 2,
+    "explanation": "For land application of residuals in Ontario, compliance with O. Reg. 267/03 (General) under the Nutrient Management Act, 2002, is paramount. This regulation sets strict requirements for nutrient units, pathogen reduction, heavy metal limits, and site-specific considerations to protect soil and water quality."
+   },
+   "fix": {
+    "question": "A municipality plans to land apply dewatered filter backwash solids to agricultural land as non-agricultural source material (NASM). Which Ontario regulation under the Nutrient Management Act, 2002 governs the storage and land application requirements such as setbacks, sampling and application rates?",
+    "options": [
+     "The aesthetic objectives in O. Reg. 169/03",
+     "O. Reg. 170/03 sampling schedules for treated water",
+     "O. Reg. 267/03 (General) under the Nutrient Management Act, 2002",
+     "The federal Wastewater Systems Effluent Regulations"
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 267/03 under the Nutrient Management Act, 2002 sets out the storage, sampling, setback and application-rate requirements for NASM applied to agricultural land.",
+    "steps": null
+   }
+  },
+  {
+   "id": 181018,
+   "bankKey": "class4-water",
+   "questionNum": 118,
+   "verdict": "UNCLEAR",
+   "note": "Boil water notices are not an appropriate response to cyanotoxins: boiling does not destroy microcystin and can lyse cells and release more toxin. The key option bundles 'boil water notices as required', and the explanation endorses it. Remove the boil water reference.",
+   "original": {
+    "question": "A water treatment plant is experiencing a significant cyanotoxin event in its source water. As a Class 4 operator, what is the most critical immediate action to protect public health, in addition to treatment adjustments?",
+    "options": [
+     "Increasing the frequency of routine operational checks at the plant.",
+     "Notifying the Ministry of the Environment, Conservation and Parks (MECP) and issuing public advisories or boil water notices as required.",
+     "Collecting additional raw water samples for general bacteriological analysis.",
+     "Adjusting the coagulant dose to improve turbidity removal."
+    ],
+    "correctIndex": 1,
+    "explanation": "In the event of a significant cyanotoxin detection, the most critical immediate action, beyond treatment adjustments, is to notify the MECP and issue public advisories or boil water notices as required by O. Reg. 170/03, to protect public health by informing consumers of potential risks."
+   },
+   "fix": {
+    "question": "A water treatment plant is experiencing a significant cyanotoxin event in its source water. As a Class 4 operator, what is the most critical immediate action to protect public health, in addition to treatment adjustments?",
+    "options": [
+     "Increasing the frequency of routine operational checks at the plant.",
+     "Notifying the Ministry of the Environment, Conservation and Parks (MECP) and the local Medical Officer of Health, and issuing public advisories as directed (not boil water advisories, which do not remove cyanotoxins).",
+     "Collecting additional raw water samples for general bacteriological analysis.",
+     "Adjusting the coagulant dose to improve turbidity removal."
+    ],
+    "correctIndex": 1,
+    "explanation": "A cyanotoxin detection above the standard must be reported to the MECP and the Medical Officer of Health, and consumers advised as directed. Boiling does not destroy cyanotoxins and may release more from lysed cells, so boil water advisories are not the right tool.",
+    "steps": null
+   }
+  },
+  {
+   "id": 181063,
+   "bankKey": "class4-water",
+   "questionNum": 163,
+   "verdict": "JURISDICTION",
+   "note": "Ontario's Clean Water Act, 2006 does not define a 'treatment trigger'. It deals with source protection committees, assessment reports, vulnerable areas, threats and source protection plans. Treatment triggers/trigger levels are an operational multi-barrier concept, not a Clean Water Act term.",
+   "original": {
+    "question": "In the context of advanced source water protection, what is the primary role of a 'treatment trigger' as defined in Ontario's Clean Water Act?",
+    "options": [
+     "To initiate legal action against polluters in the watershed.",
+     "To identify specific events or conditions that require changes in treatment or monitoring.",
+     "To determine the maximum allowable contaminant levels in raw water.",
+     "To fund infrastructure upgrades for source water protection initiatives."
+    ],
+    "correctIndex": 1,
+    "explanation": "A treatment trigger is a predetermined event or condition (e.g., sudden increase in raw water turbidity) that signals a potential risk to drinking water quality, prompting operators to implement predefined operational adjustments or enhanced monitoring."
+   },
+   "fix": {
+    "question": "In the context of advanced source water protection, what is the primary role of a 'treatment trigger' (trigger level) in plant operations?",
+    "options": [
+     "To initiate legal action against polluters in the watershed.",
+     "To identify specific events or conditions that require changes in treatment or monitoring.",
+     "To determine the maximum allowable contaminant levels in raw water.",
+     "To fund infrastructure upgrades for source water protection initiatives."
+    ],
+    "correctIndex": 1,
+    "explanation": "A treatment trigger is a predetermined event or condition (e.g., sudden increase in raw water turbidity) that signals a potential risk to drinking water quality, prompting operators to implement predefined operational adjustments or enhanced monitoring. It is an operational concept, not a term defined in Ontario's Clean Water Act.",
+    "steps": null
+   }
+  },
+  {
+   "id": 181123,
+   "bankKey": "class4-water",
+   "questionNum": 223,
+   "verdict": "WRONG",
+   "note": "UV dose is expressed in mJ/cm2 (fluence = intensity in mW/cm2 x time in s), not mW/cm2, which is intensity. Explanation also says dose is 'equivalent to the C in CT'; dose is the UV analogue of the whole CT product (intensity x time), not of C alone. UV does not use CT.",
+   "original": {
+    "question": "A Class 4 operator is reviewing the plant's disinfection strategy which uses UV followed by free chlorine. To ensure CT compliance for primary disinfection, what is the most critical parameter to monitor for the UV system?",
+    "options": [
+     "The ambient air temperature around the UV reactors.",
+     "The UV dose (mW/cm2) delivered by the lamps and verified by a validated sensor.",
+     "The color of the water entering the UV reactors.",
+     "The frequency of backwashing the pre-treatment filters."
+    ],
+    "correctIndex": 1,
+    "explanation": "For UV disinfection, the delivered UV dose is the critical parameter for ensuring adequate pathogen inactivation and compliance with primary disinfection requirements. It is equivalent to the 'C' in CT for chemical disinfectants."
+   },
+   "fix": {
+    "question": "A Class 4 operator is reviewing the plant's disinfection strategy which uses UV followed by free chlorine. To ensure primary disinfection compliance for the UV system, what is the most critical parameter to monitor?",
+    "options": [
+     "The ambient air temperature around the UV reactors.",
+     "The UV dose (mJ/cm2) delivered by the reactors, verified using a validated UV sensor, flow and UV transmittance.",
+     "The color of the water entering the UV reactors.",
+     "The frequency of backwashing the pre-treatment filters."
+    ],
+    "correctIndex": 1,
+    "explanation": "For UV disinfection, the delivered UV dose (mJ/cm2 = intensity in mW/cm2 x exposure time) is the critical parameter for pathogen inactivation credit. It is the UV analogue of CT for chemical disinfectants and is verified through a validated UV sensor, flow rate and UV transmittance.",
+    "steps": null
+   }
+  },
+  {
+   "id": 181165,
+   "bankKey": "class4-water",
+   "questionNum": 265,
+   "verdict": "UNCLEAR",
+   "note": "Both B (higher NOM raising chlorine demand) and C (a sudden decrease in system demand increasing water age and residual decay) are defensible causes of low distribution residuals; water age is usually the most common cause. 'Most likely' is not determinable from the stem.",
+   "original": {
+    "question": "A Class 4 operator is troubleshooting persistent low chlorine residuals in a large distribution system despite adequate dosing at the plant. Which of the following is the MOST likely cause that requires a comprehensive investigation?",
+    "options": [
+     "An increase in the water temperature in the clearwell.",
+     "Elevated levels of natural organic matter (NOM) in the source water.",
+     "A sudden decrease in the overall system demand.",
+     "Failure of a primary disinfection pump at the treatment plant."
+    ],
+    "correctIndex": 1,
+    "explanation": "Elevated NOM in source water can lead to increased chlorine demand, resulting in rapid depletion of chlorine residual in the distribution system, even with optimized plant dosing."
+   },
+   "fix": {
+    "question": "A Class 4 operator is troubleshooting persistent low chlorine residuals in a large distribution system despite adequate dosing at the plant. Which of the following is a likely cause that requires a comprehensive investigation, and is NOT related to demand or water age?",
+    "options": [
+     "A decrease in the water temperature in the clearwell.",
+     "Elevated levels of natural organic matter (NOM) in the finished water entering the distribution system.",
+     "Shorter water age caused by increased system demand.",
+     "Increased chlorine feed at the primary disinfection pump."
+    ],
+    "correctIndex": 1,
+    "explanation": "Elevated NOM (TOC) carried into the distribution system increases chlorine demand and accelerates residual decay, even when the plant dose is adequate. Colder water and shorter water age slow decay, and higher chlorine feed would raise, not lower, the residual.",
+    "steps": null
+   }
+  },
+  {
+   "id": 181171,
+   "bankKey": "class4-water",
+   "questionNum": 271,
+   "verdict": "WRONG",
+   "note": "O. Reg. 170/03 is the Drinking Water Systems regulation and does not govern land application of biosolids or residuals. Land application of biosolids/non-agricultural source materials in Ontario is regulated under the Nutrient Management Act, 2002 (O. Reg. 267/03) (and Ontario Water Resources Act/EPA for some aspects). Explanation repeats the error.",
+   "original": {
+    "question": "A Class 4 operator is managing a complex residuals program involving land application of biosolids. What is the MOST significant regulatory challenge in Ontario for this program?",
+    "options": [
+     "Ensuring the biosolids meet the aesthetic requirements for public acceptance.",
+     "Compliance with nutrient management plans and heavy metal limits under O. Reg. 267/03 and O. Reg. 170/03.",
+     "Minimizing the transportation costs associated with hauling biosolids to agricultural sites.",
+     "Securing sufficient land area for continuous application throughout the year."
+    ],
+    "correctIndex": 1,
+    "explanation": "Land application of biosolids in Ontario is heavily regulated by O. Reg. 267/03 (Nutrient Management) and O. Reg. 170/03 (Drinking Water Systems) to protect environmental and human health, particularly regarding nutrient and heavy metal concentrations."
+   },
+   "fix": {
+    "question": "A Class 4 operator is managing a complex residuals program involving land application of biosolids. What is the MOST significant regulatory challenge in Ontario for this program?",
+    "options": [
+     "Ensuring the biosolids meet the aesthetic requirements for public acceptance.",
+     "Compliance with nutrient management plans and metal limits under the Nutrient Management Act, 2002 and O. Reg. 267/03.",
+     "Minimizing the transportation costs associated with hauling biosolids to agricultural sites.",
+     "Securing sufficient land area for continuous application throughout the year."
+    ],
+    "correctIndex": 1,
+    "explanation": "Land application of biosolids and other non-agricultural source materials in Ontario is regulated under the Nutrient Management Act, 2002 and O. Reg. 267/03, which set requirements for nutrient management plans, metal limits, sampling and approvals. O. Reg. 170/03 governs drinking water systems, not biosolids application.",
+    "steps": null
+   }
+  },
+  {
+   "id": 181197,
+   "bankKey": "class4-water",
+   "questionNum": 297,
+   "verdict": "UNCLEAR",
+   "note": "Key (D) refers to 'optimizing the contact time for both disinfectants to achieve overall CT compliance', but UV has no contact time or CT; it is credited by delivered dose. Option A (ensuring UV dose is sufficient for chlorine-resistant pathogens such as Cryptosporidium) is a genuine, defensible challenge of UV plus chlorine, and C is also a plausible monitoring consideration. Two or more answers are defensible and D is technically flawed.",
+   "original": {
+    "question": "When integrating UV disinfection with chlorine for a multiple barrier approach, what is a key operational challenge to manage?",
+    "options": [
+     "Ensuring the UV dose is consistently high enough to inactivate chlorine-resistant pathogens.",
+     "Preventing the formation of bromate due to the combined disinfectants.",
+     "Minimizing the residual chlorine entering the UV reactors to prevent interference.",
+     "Optimizing the contact time for both disinfectants to achieve overall CT compliance."
+    ],
+    "correctIndex": 3,
+    "explanation": "The challenge lies in ensuring that the combined disinfection process (UV followed by chlorine) achieves the required log inactivation for all target pathogens while meeting CT requirements for the chemical disinfectant."
+   },
+   "fix": {
+    "question": "When integrating UV disinfection with chlorine for a multiple barrier approach, what is a key operational challenge to manage?",
+    "options": [
+     "Preventing the formation of bromate due to the combined disinfectants.",
+     "Ensuring the plant achieves the required log inactivation credit for each target pathogen, with UV dose credited for Cryptosporidium and Giardia and CT credited for chlorine.",
+     "Eliminating all chlorine residual before water enters the UV reactors.",
+     "Operating the UV reactors only at peak flow."
+    ],
+    "correctIndex": 1,
+    "explanation": "UV and chlorine are credited differently: UV by validated delivered dose (mJ/cm2), chlorine by CT. The operator must make sure the combined process delivers the required log inactivation for every target pathogen, since UV is effective against Cryptosporidium and Giardia while chlorine is needed for viruses and for the secondary residual.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183766,
+   "bankKey": "class4-water",
+   "questionNum": 309,
+   "verdict": "UNCLEAR",
+   "note": "O. Reg. 170/03 has no stated 'primary regulatory trigger' for enhanced source monitoring on raw water quality change; the keyed option is a general statement rather than a provision, while a prescribed DBP/standard exceedance (option B) is an actual 170/03 trigger for corrective action and notification. Misleading attribution to the regulation.",
+   "original": {
+    "question": "Under Ontario Regulation 170/03, what is the primary regulatory trigger for a water treatment plant to implement enhanced source water monitoring and treatment adjustments due to a significant change in raw water quality?",
+    "options": [
+     "A sudden increase in customer complaints about taste and odour in the drinking water",
+     "An exceedance of the maximum allowable concentration for a regulated DBP in the distribution system",
+     "A change in the source water quality that could compromise the plant's ability to consistently produce safe drinking water",
+     "A scheduled annual maintenance shutdown of the raw water intake pumps"
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 170/03 mandates that operators respond to changes in source water quality that could impact drinking water safety. A significant change compromising treatment capability requires enhanced monitoring and adjustments to ensure continued safe water production."
+   },
+   "fix": {
+    "question": "Under Ontario Regulation 170/03, which of the following is an adverse water quality incident that requires the owner/operator to notify the Medical Officer of Health and the MECP Spills Action Centre and take corrective action?",
+    "options": [
+     "A sudden increase in customer complaints about taste and odour in the drinking water",
+     "A drinking water test result that exceeds a prescribed standard in Schedule 2 (for example a failed E. coli or total coliform result)",
+     "A scheduled annual maintenance shutdown of the raw water intake pumps",
+     "A change in the colour of the raw water during spring runoff"
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 170/03 (with O. Reg. 169/03 standards) requires immediate notification of the Medical Officer of Health and the MECP, and corrective action, when a test result exceeds a prescribed standard or is otherwise an adverse result. Taste and odour complaints, planned shutdowns and raw water colour changes are not, by themselves, reportable adverse test results.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183816,
+   "bankKey": "class4-water",
+   "questionNum": 359,
+   "verdict": "UNCLEAR",
+   "note": "Options A, B and D are all genuine operational challenges of UV/H2O2 (explanation concedes 'other options are challenges'); option C (bromate) is mainly an ozone issue, so the 'most significant' is subjective. Rewritten to ask about byproducts specifically so there is one defensible key.",
+   "original": {
+    "question": "A water treatment plant is considering an upgrade to incorporate Advanced Oxidation Processes (AOPs) using UV/H2O2 for taste and odor control and trace contaminant removal. What is the most significant operational challenge associated with this technology?",
+    "options": [
+     "Maintaining consistent UV lamp intensity and managing lamp replacement schedules.",
+     "Optimizing the hydrogen peroxide dose to achieve target oxidation without excessive residual.",
+     "Managing the potential for bromate formation in bromide-containing source waters.",
+     "Controlling the formation of undesirable oxidation byproducts and ensuring their removal."
+    ],
+    "correctIndex": 3,
+    "explanation": "While other options are challenges, a significant concern with AOPs is the potential to form new, undesirable oxidation byproducts, some of which may be more toxic or difficult to remove than the original contaminants. Careful monitoring and optimization are required to control this."
+   },
+   "fix": {
+    "question": "A water treatment plant is considering an upgrade to incorporate Advanced Oxidation Processes (AOPs) using UV/H2O2 for taste and odor control and trace contaminant removal. Which of the following is a water quality concern specific to the byproducts of this technology that operators must manage?",
+    "options": [
+     "Formation of bromate as the dominant byproduct of UV/H2O2 treatment.",
+     "Formation of undesirable oxidation byproducts and elevated biodegradable organic matter, which must be monitored and controlled.",
+     "Complete loss of all disinfectant demand after treatment.",
+     "Permanent removal of all hardness from the water."
+    ],
+    "correctIndex": 1,
+    "explanation": "AOPs break large organics into smaller, more biodegradable compounds and can form aldehydes and other oxidation byproducts; residual H2O2 must also be quenched. Bromate is a concern mainly with ozone-based processes, not UV/H2O2.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183861,
+   "bankKey": "class4-water",
+   "questionNum": 404,
+   "verdict": "UNCLEAR",
+   "note": "Keyed answer (AOPs for precursor removal) is not the established best practice for DBP control in high-DOC water; enhanced coagulation / GAC / ozone-BAC are the standard precursor-removal approaches, and AOPs can even increase biodegradable organics and some DBP precursors. Switching to chloramines (option C) is also a recognized DBP-reduction strategy, so more than one option is defensible. Reworded so the key is the standard answer.",
+   "original": {
+    "question": "A Class 4 operator is tasked with developing a long-term strategy for managing disinfection byproducts (DBPs) in a system with high organic content in its source water. What is the most effective approach to reduce DBP formation while maintaining disinfection efficacy?",
+    "options": [
+     "Increasing the chlorine dose to ensure complete oxidation of organic matter.",
+     "Implementing advanced oxidation processes (AOPs) for precursor removal before chlorination.",
+     "Switching from free chlorine to chloramines as the primary disinfectant.",
+     "Reducing the contact time for primary disinfection to limit DBP formation."
+    ],
+    "correctIndex": 1,
+    "explanation": "For high organic content source waters, advanced oxidation processes (AOPs) like ozone/H2O2 or UV/H2O2 can effectively break down DBP precursors before the application of chlorine. This significantly reduces the potential for DBP formation downstream while still allowing for effective disinfection."
+   },
+   "fix": {
+    "question": "A Class 4 operator is tasked with developing a long-term strategy for managing disinfection byproducts (DBPs) in a system with high organic content in its source water. What is the most effective approach to reduce DBP formation while maintaining disinfection efficacy?",
+    "options": [
+     "Increasing the chlorine dose to ensure complete oxidation of organic matter.",
+     "Removing DBP precursors (DOC) before chlorination, for example by enhanced coagulation or GAC adsorption.",
+     "Eliminating the secondary disinfectant residual in the distribution system.",
+     "Reducing the contact time for primary disinfection to limit DBP formation."
+    ],
+    "correctIndex": 1,
+    "explanation": "DBPs form when chlorine reacts with natural organic matter, so the most effective control is to remove the precursors (measured as DOC/TOC) ahead of chlorination, typically by enhanced coagulation or GAC, while still meeting CT requirements. Raising the dose increases DBPs; removing the residual or shortening contact time compromises disinfection.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183893,
+   "bankKey": "class4-water",
+   "questionNum": 436,
+   "verdict": "UNCLEAR",
+   "note": "Option B (decrease in raw water temperature reducing membrane permeability) is also a genuine cause of increased RO feed pressure at constant flux; the explanation concedes this. Question needs to specify that temperature is constant/normalized.",
+   "original": {
+    "question": "A Class 4 operator is troubleshooting a reverse osmosis (RO) system experiencing a significant increase in feed pressure. Which issue is the most likely cause?",
+    "options": [
+     "Fouling of the membrane surface, leading to increased resistance to flow.",
+     "A decrease in the raw water temperature, reducing membrane permeability.",
+     "Failure of the high-pressure pump, resulting in insufficient flow.",
+     "An increase in the permeate flow rate, indicating improved membrane performance."
+    ],
+    "correctIndex": 0,
+    "explanation": "A significant increase in feed pressure for a given permeate flow rate (or a decrease in permeate flow at constant pressure) is a classic symptom of membrane fouling, where deposits on the membrane surface increase hydraulic resistance. A decrease in temperature would also increase pressure, but fouling is more common for 'significant' increases. Pump failure would typically lead to decreased flow/pressure, and increased permeate flow would decrease pressure."
+   },
+   "fix": {
+    "question": "A Class 4 operator is troubleshooting a reverse osmosis (RO) system in which the normalized feed pressure has risen significantly at constant temperature and permeate flow. Which issue is the most likely cause?",
+    "options": [
+     "Fouling of the membrane surface, leading to increased resistance to flow.",
+     "A failure of the high-pressure pump, resulting in insufficient flow.",
+     "A drop in permeate flow rate caused by a leak in the product line.",
+     "A decrease in the feed salinity, reducing osmotic pressure."
+    ],
+    "correctIndex": 0,
+    "explanation": "A rise in normalized feed pressure at constant temperature and flux is the classic symptom of membrane fouling or scaling, where deposits increase hydraulic resistance. Pump failure would reduce pressure and flow; lower feed salinity would reduce the required pressure.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183907,
+   "bankKey": "class4-water",
+   "questionNum": 450,
+   "verdict": "JURISDICTION",
+   "note": "Explanation cites '<0.1 NTU for 95% of samples' as the regulatory limit. In Ontario (O. Reg. 170/03 / Procedure for Disinfection of Drinking Water in Ontario), chemically assisted filtration effluent turbidity must be <=0.3 NTU in 95% of measurements and never exceed 1.0 NTU (0.1 NTU applies to membrane filtration). Key (filtered water turbidity) stays correct; explanation corrected.",
+   "original": {
+    "question": "When optimizing a coagulation and filtration process, what is the most critical parameter for a Class 4 operator to monitor to ensure effective pathogen removal and minimize filter breakthrough?",
+    "options": [
+     "Filtered water turbidity, continuously monitored and maintained below regulatory limits.",
+     "Raw water alkalinity, to ensure sufficient buffering capacity for coagulant addition.",
+     "Coagulant feed rate, to maintain consistent dosing regardless of flow variations.",
+     "Backwash water turbidity, to determine the efficiency of filter cleaning cycles."
+    ],
+    "correctIndex": 0,
+    "explanation": "For effective pathogen removal and minimizing filter breakthrough, continuously monitoring filtered water turbidity and maintaining it below stringent regulatory limits (e.g., <0.1 NTU for 95% of samples) is the most critical operational parameter. Turbidity is a surrogate for particulate matter, including pathogens, and indicates filter performance."
+   },
+   "fix": {
+    "question": "When optimizing a coagulation and filtration process, what is the most critical parameter for a Class 4 operator to monitor to ensure effective pathogen removal and minimize filter breakthrough?",
+    "options": [
+     "Filtered water turbidity, continuously monitored and maintained below regulatory limits.",
+     "Raw water alkalinity, to ensure sufficient buffering capacity for coagulant addition.",
+     "Coagulant feed rate, to maintain consistent dosing regardless of flow variations.",
+     "Backwash water turbidity, to determine the efficiency of filter cleaning cycles."
+    ],
+    "correctIndex": 0,
+    "explanation": "Continuous individual filter effluent turbidity is the key indicator of particle (and pathogen) removal and of breakthrough. In Ontario, chemically assisted filtration must produce turbidity no greater than 0.3 NTU in 95% of measurements and never above 1.0 NTU, and many plants set tighter optimization targets.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183910,
+   "bankKey": "class4-water",
+   "questionNum": 453,
+   "verdict": "UNCLEAR",
+   "note": "A sudden drop in permeate flow points to fouling or a hydraulic/operational problem, not a fibre breach; a breach typically shows as falling TMP, rising filtrate turbidity or particle counts, and pressure-decay test failure. Scenario symptom does not match the keyed answer.",
+   "original": {
+    "question": "A Class 4 operator is managing a membrane filtration plant (e.g., UF/MF) and observes a sudden, unexplained drop in permeate flow. After checking basic parameters, what is the most likely advanced troubleshooting step?",
+    "options": [
+     "Conducting a membrane integrity test (e.g., bubble point, pressure decay) to check for fiber breaks.",
+     "Increasing the chemical cleaning frequency and concentration of cleaning agents.",
+     "Adjusting the backwash duration and intensity to remove accumulated foulants.",
+     "Analyzing the raw water for changes in temperature or dissolved solids concentration."
+    ],
+    "correctIndex": 0,
+    "explanation": "A sudden, unexplained drop in permeate flow, especially if not resolved by routine cleaning or due to obvious raw water changes, strongly suggests a potential membrane integrity breach (e.g., fiber break in hollow fiber membranes). A membrane integrity test is the most appropriate advanced troubleshooting step."
+   },
+   "fix": {
+    "question": "A Class 4 operator running a UF/MF membrane plant sees filtrate turbidity and particle counts rise suddenly while TMP drops. After checking basic parameters, what is the most appropriate advanced troubleshooting step?",
+    "options": [
+     "Conducting a membrane integrity test (e.g., pressure decay or bubble point) to locate fibre breaks.",
+     "Increasing the chemical cleaning frequency and concentration of cleaning agents.",
+     "Adjusting the backwash duration and intensity to remove accumulated foulants.",
+     "Analyzing the raw water for changes in temperature or dissolved solids concentration."
+    ],
+    "correctIndex": 0,
+    "explanation": "Rising filtrate turbidity and particle counts with falling TMP suggest a membrane integrity breach such as a broken fibre. A membrane integrity test (pressure decay or bubble point) is the appropriate next step; cleaning or backwash changes would not fix a breach.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183918,
+   "bankKey": "class4-water",
+   "questionNum": 461,
+   "verdict": "JURISDICTION",
+   "note": "MACs for THMs and HAAs are in the Ontario Drinking Water Quality Standards, O. Reg. 169/03, under the Safe Drinking Water Act, 2002. O. Reg. 170/03 (Drinking Water Systems) sets sampling/testing requirements, not the MACs.",
+   "original": {
+    "question": "A Class 4 operator is managing a comprehensive DBP control program. What is the primary regulatory driver for implementing advanced DBP reduction strategies beyond conventional treatment?",
+    "options": [
+     "The federal Wastewater Systems Effluent Regulations (WSER) under the Fisheries Act.",
+     "Ontario's Safe Drinking Water Act and associated O. Reg. 170/03 Maximum Acceptable Concentrations (MACs).",
+     "The Canadian Environmental Protection Act (CEPA) for industrial discharges.",
+     "The Ontario Water Resources Act (OWRA) for surface water quality objectives."
+    ],
+    "correctIndex": 1,
+    "explanation": "The primary regulatory driver for DBP control in drinking water is Ontario's Safe Drinking Water Act (SDWA) and O. Reg. 170/03, which sets MACs for various DBPs like trihalomethanes (THMs) and haloacetic acids (HAAs)."
+   },
+   "fix": {
+    "question": "A Class 4 operator is managing a comprehensive DBP control program. What is the primary regulatory driver for implementing advanced DBP reduction strategies beyond conventional treatment?",
+    "options": [
+     "The federal Wastewater Systems Effluent Regulations (WSER) under the Fisheries Act.",
+     "Ontario's Safe Drinking Water Act, 2002 and the Ontario Drinking Water Quality Standards (O. Reg. 169/03), which set Maximum Acceptable Concentrations for THMs and HAAs.",
+     "The Canadian Environmental Protection Act (CEPA) for industrial discharges.",
+     "The Ontario Water Resources Act (OWRA) for surface water quality objectives."
+    ],
+    "correctIndex": 1,
+    "explanation": "The primary driver is Ontario's Safe Drinking Water Act, 2002 and O. Reg. 169/03 (Ontario Drinking Water Quality Standards), which set MACs for THMs and HAAs. O. Reg. 170/03 sets the related sampling and testing requirements.",
+    "steps": null
+   }
+  },
+  {
+   "id": 240919,
+   "bankKey": "class4-water",
+   "questionNum": 501,
+   "verdict": "WRONG",
+   "note": "Final waste is the second-stage concentrate: 85,000 x 0.2 = 17,000 first-stage concentrate; second stage recovers 70% = 11,900; waste = 5,100 m3/d. Keyed 6,800 is not supported; the steps themselves arrive at 5,100.",
+   "original": {
+    "question": "A water treatment plant treats 85,000 m³/day. The plant uses a dual-stage membrane system. The first stage recovers 80% of the water and the second stage recovers another 70% of the first stage concentrate. What is the total volume of waste (concentrate) produced per day?",
+    "options": [
+     "6,800 m³/day",
+     "12,400 m³/day",
+     "17,000 m³/day",
+     "10,200 m³/day"
+    ],
+    "correctIndex": 0,
+    "explanation": "The waste is the sum of the first and second stage concentrates."
+   },
+   "fix": {
+    "question": "A water treatment plant treats 85,000 m³/day. The plant uses a dual-stage membrane system. The first stage recovers 80% of the water and the second stage recovers another 70% of the first stage concentrate. What is the total volume of waste (concentrate) produced per day?",
+    "options": [
+     "5,100 m³/day",
+     "6,800 m³/day",
+     "17,000 m³/day",
+     "10,200 m³/day"
+    ],
+    "correctIndex": 0,
+    "explanation": "The final waste is the second-stage concentrate.",
+    "steps": [
+     {
+      "l": "Step 1 — First stage permeate",
+      "c": "85,000 × 0.80 = 68,000 m³/d"
+     },
+     {
+      "l": "Step 2 — First stage concentrate",
+      "c": "85,000 − 68,000 = 17,000 m³/d"
+     },
+     {
+      "l": "Step 3 — Second stage permeate",
+      "c": "17,000 × 0.70 = 11,900 m³/d"
+     },
+     {
+      "l": "Step 4 — Final waste",
+      "c": "17,000 − 11,900 = 5,100 m³/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240922,
+   "bankKey": "class4-water",
+   "questionNum": 504,
+   "verdict": "WRONG",
+   "note": "Actual CT = 1.1 x 60 = 66 < 75, so requirement is NOT met. Keyed option says 'Yes ... which is below requirement', which is self-contradictory.",
+   "original": {
+    "question": "The chlorine contact time for a baffled clearwell is 60 minutes at 13°C. The inlet chlorine is 2.3 mg/L, exit chlorine is 1.1 mg/L. If a required CT (mg·min/L) for 3-log Giardia inactivation at 13°C is 75, has the plant met the requirement?",
+    "options": [
+     "Yes, actual CT is 78, which meets requirement",
+     "No, actual CT is 72, which is below requirement",
+     "No, actual CT is 60, which is below requirement",
+     "Yes, actual CT is 66, which is below requirement"
+    ],
+    "correctIndex": 3,
+    "explanation": "CT is calculated with residual, not initial. Compare actual CT to required."
+   },
+   "fix": {
+    "question": "The chlorine contact time for a baffled clearwell is 60 minutes at 13°C. The inlet chlorine is 2.3 mg/L, exit chlorine is 1.1 mg/L. If a required CT (mg·min/L) for 3-log Giardia inactivation at 13°C is 75, has the plant met the requirement?",
+    "options": [
+     "Yes, actual CT is 78, which meets requirement",
+     "No, actual CT is 72, which is below requirement",
+     "No, actual CT is 60, which is below requirement",
+     "No, actual CT is 66, which is below requirement"
+    ],
+    "correctIndex": 3,
+    "explanation": "CT is calculated with the residual at the exit, not the initial dose. Compare actual CT to required.",
+    "steps": [
+     {
+      "l": "Step 1 — Use effluent chlorine",
+      "c": "CT = 1.1 mg/L × 60 min = 66 mg·min/L"
+     },
+     {
+      "l": "Step 2 — Compare to required CT",
+      "c": "66 < 75, so NO, requirement not met"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240923,
+   "bankKey": "class4-water",
+   "questionNum": 505,
+   "verdict": "WRONG",
+   "note": "V2 = 7,500 x (340-160)/(160-80) = 16,875 m3/d; keyed 12,500 is wrong and no option held the right value (steps even admit this).",
+   "original": {
+    "question": "A plant needs to blend two finished waters with hardness of 340 mg/L (CaCO3) and 80 mg/L (CaCO3) at a target blend of 160 mg/L. If the first source is 7,500 m³/day, what volume of the second water is required each day?",
+    "options": [
+     "3,000 m³/day",
+     "12,500 m³/day",
+     "15,000 m³/day",
+     "8,500 m³/day"
+    ],
+    "correctIndex": 1,
+    "explanation": "Use a mass balance equation for mixing."
+   },
+   "fix": {
+    "question": "A plant needs to blend two finished waters with hardness of 340 mg/L (CaCO3) and 80 mg/L (CaCO3) at a target blend of 160 mg/L. If the first source is 7,500 m³/day, what volume of the second water is required each day?",
+    "options": [
+     "3,000 m³/day",
+     "16,875 m³/day",
+     "15,000 m³/day",
+     "8,500 m³/day"
+    ],
+    "correctIndex": 1,
+    "explanation": "Use a mass balance equation for mixing.",
+    "steps": [
+     {
+      "l": "Step 1 — Mass balance",
+      "c": "340×7,500 + 80×V2 = 160×(7,500+V2)"
+     },
+     {
+      "l": "Step 2 — Expand",
+      "c": "2,550,000 + 80V2 = 1,200,000 + 160V2"
+     },
+     {
+      "l": "Step 3 — Rearrange",
+      "c": "1,350,000 = 80V2"
+     },
+     {
+      "l": "Step 4 — Solve",
+      "c": "V2 = 1,350,000 / 80 = 16,875 m³/day"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240928,
+   "bankKey": "class4-water",
+   "questionNum": 510,
+   "verdict": "WRONG",
+   "note": "528 kg/d x 7 = 3,696 kg/wk /30 = 123.2 drums x $320 = $39,424. Keyed $3,942 is off by a factor of ten.",
+   "original": {
+    "question": "A coagulant is dosed at 24 mg/L and costs $320 per 30 kg drum. If an average of 22,000 m³ is treated daily, what is the weekly cost of coagulant?",
+    "options": [
+     "$3,942",
+     "$2,816",
+     "$3,168",
+     "$5,011"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculate total mass used per week, then multiply by price per drum."
+   },
+   "fix": {
+    "question": "A coagulant is dosed at 24 mg/L and costs $320 per 30 kg drum. If an average of 22,000 m³ is treated daily, what is the weekly cost of coagulant?",
+    "options": [
+     "$39,424",
+     "$28,160",
+     "$31,680",
+     "$50,112"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculate total mass used per week, then multiply by price per drum.",
+    "steps": [
+     {
+      "l": "Step 1 — Daily use",
+      "c": "24 mg/L × 22,000 m³/d × 1,000 L/m³ = 528,000,000 mg/d = 528 kg/d"
+     },
+     {
+      "l": "Step 2 — Weekly mass",
+      "c": "528 × 7 = 3,696 kg/week"
+     },
+     {
+      "l": "Step 3 — Drums",
+      "c": "3,696 / 30 = 123.2 drums"
+     },
+     {
+      "l": "Step 4 — Cost",
+      "c": "123.2 × $320 = $39,424"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240929,
+   "bankKey": "class4-water",
+   "questionNum": 511,
+   "verdict": "WRONG",
+   "note": "4,275 m3 x 7.8 g/m3 = 33.3 kg, not 832 kg; no option matched the correct value.",
+   "original": {
+    "question": "A dual-media filter run lasts for 36 hours and removes on average 7.8 mg/L suspended solids. If average flow is 2,850 m³/d, how many kilograms of solids does the filter remove per run?",
+    "options": [
+     "1,024 kg",
+     "1,276 kg",
+     "971 kg",
+     "832 kg"
+    ],
+    "correctIndex": 3,
+    "explanation": "Calculate total flow over 36 h, multiply by removal, convert to kg."
+   },
+   "fix": {
+    "question": "A dual-media filter run lasts for 36 hours and removes on average 7.8 mg/L suspended solids. If average flow is 2,850 m³/d, how many kilograms of solids does the filter remove per run?",
+    "options": [
+     "33.3 kg",
+     "333 kg",
+     "3.33 kg",
+     "83.2 kg"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculate total flow over 36 h, multiply by removal, convert to kg.",
+    "steps": [
+     {
+      "l": "Step 1 — Volume per run",
+      "c": "2,850 × (36/24) = 4,275 m³"
+     },
+     {
+      "l": "Step 2 — Solids removed",
+      "c": "4,275 m³ × 7.8 g/m³ = 33,345 g"
+     },
+     {
+      "l": "Step 3 — Convert",
+      "c": "33,345 g = 33.3 kg"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240931,
+   "bankKey": "class4-water",
+   "questionNum": 513,
+   "verdict": "WRONG",
+   "note": "x = 5.0/6.0 = 83.3% Source B; keyed 62.5% is not the solution of the equation and no option held 83.3%.",
+   "original": {
+    "question": "A plant receives two water sources: Source A has nitrate at 5.0 mg/L, Source B at 11.0 mg/L. For a maximum blended water nitrate of 10.0 mg/L, what is the highest % of Source B allowed in the blend?",
+    "options": [
+     "37.5%",
+     "50.0%",
+     "80.0%",
+     "62.5%"
+    ],
+    "correctIndex": 3,
+    "explanation": "Set up mass balance, solve for Source B percentage."
+   },
+   "fix": {
+    "question": "A plant receives two water sources: Source A has nitrate at 5.0 mg/L, Source B at 11.0 mg/L. For a maximum blended water nitrate of 10.0 mg/L, what is the highest % of Source B allowed in the blend?",
+    "options": [
+     "37.5%",
+     "50.0%",
+     "80.0%",
+     "83.3%"
+    ],
+    "correctIndex": 3,
+    "explanation": "Set up mass balance, solve for Source B percentage.",
+    "steps": [
+     {
+      "l": "Step 1 — Equation",
+      "c": "5.0(1 − x) + 11.0x = 10.0"
+     },
+     {
+      "l": "Step 2 — Simplify",
+      "c": "5.0 + 6.0x = 10.0"
+     },
+     {
+      "l": "Step 3 — Solve",
+      "c": "x = 5.0 / 6.0 = 0.833 = 83.3%"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240933,
+   "bankKey": "class4-water",
+   "questionNum": 515,
+   "verdict": "WRONG",
+   "note": "23,000 / 0.87 = 26,436.78; the keyed option 26,437.93 is not the computed value (the correct one is the last option).",
+   "original": {
+    "question": "A membrane system generates 23,000 m³/d of permeate with 87% recovery. What is the daily volume of feedwater required?",
+    "options": [
+     "20,010.32 m³",
+     "29,885.06 m³",
+     "26,437.93 m³",
+     "26,436.78 m³"
+    ],
+    "correctIndex": 2,
+    "explanation": "Feed = Permeate / Recovery fraction."
+   },
+   "fix": {
+    "question": "A membrane system generates 23,000 m³/d of permeate with 87% recovery. What is the daily volume of feedwater required?",
+    "options": [
+     "20,010.32 m³",
+     "29,885.06 m³",
+     "26,437.93 m³",
+     "26,436.78 m³"
+    ],
+    "correctIndex": 3,
+    "explanation": "Feed = Permeate / Recovery fraction.",
+    "steps": [
+     {
+      "l": "Step 1 — Convert recovery",
+      "c": "87% = 0.87"
+     },
+     {
+      "l": "Step 2 — Feed volume",
+      "c": "23,000 / 0.87 = 26,436.78 m³"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240934,
+   "bankKey": "class4-water",
+   "questionNum": 516,
+   "verdict": "WRONG",
+   "note": "(900 x 0.52 + 90 x 0.80) = 540 kWh x $0.16 = $86.40; keyed $95.36 is wrong and $86.40 was not an option.",
+   "original": {
+    "question": "The treated water and washwater lines each have an average flow of 900 m³/d and 90 m³/d respectively. If the specific energy used is 0.52 kWh/m³ and 0.80 kWh/m³, what is the total daily energy cost at $0.16 per kWh?",
+    "options": [
+     "$146.56",
+     "$124.80",
+     "$108.00",
+     "$95.36"
+    ],
+    "correctIndex": 3,
+    "explanation": "Sum individual energy uses, then multiply by cost per kWh."
+   },
+   "fix": {
+    "question": "The treated water and washwater lines each have an average flow of 900 m³/d and 90 m³/d respectively. If the specific energy used is 0.52 kWh/m³ and 0.80 kWh/m³, what is the total daily energy cost at $0.16 per kWh?",
+    "options": [
+     "$86.40",
+     "$124.80",
+     "$108.00",
+     "$95.36"
+    ],
+    "correctIndex": 0,
+    "explanation": "Sum individual energy uses, then multiply by cost per kWh.",
+    "steps": [
+     {
+      "l": "Step 1 — Energy for treated water",
+      "c": "900 × 0.52 = 468 kWh"
+     },
+     {
+      "l": "Step 2 — Energy for washwater",
+      "c": "90 × 0.80 = 72 kWh"
+     },
+     {
+      "l": "Step 3 — Total kWh",
+      "c": "468 + 72 = 540 kWh"
+     },
+     {
+      "l": "Step 4 — Total cost",
+      "c": "540 × $0.16 = $86.40"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240936,
+   "bankKey": "class4-water",
+   "questionNum": 518,
+   "verdict": "WRONG",
+   "note": "Keyed 2.98 does not follow from the steps (steps give 1.44, ignoring solution density). Density of liquid alum is not stated (about 1.33 kg/L); without it the question is ambiguous. With density 1.33: 15,225 kg alum/month / (22,000 L x 1.33 x 0.48 = 14,045 kg) = 1.08 tankfuls.",
+   "original": {
+    "question": "The plant liquid alum tank is 22,000 L, and alum contains 48% as Al2(SO4)3·14H2O by weight. If alum dose is 35 mg/L as Al2(SO4)3·14H2O for 14,500 m³/d, what is the number of tankfuls used per month?",
+    "options": [
+     "2.98",
+     "6.70",
+     "8.12",
+     "4.05"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculate total alum required in a month, then tankfuls."
+   },
+   "fix": {
+    "question": "A plant's liquid alum tank holds 22,000 L of solution with a density of 1.33 kg/L and contains 48% Al2(SO4)3·14H2O by weight. If the alum dose is 35 mg/L as Al2(SO4)3·14H2O for 14,500 m³/d, how many tankfuls are used per 30-day month?",
+    "options": [
+     "1.08",
+     "1.44",
+     "2.98",
+     "4.05"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculate dry alum required in a month, then divide by the dry alum contained in one tank.",
+    "steps": [
+     {
+      "l": "Step 1 — Daily alum",
+      "c": "14,500 m³ × 35 g/m³ = 507,500 g = 507.5 kg/d"
+     },
+     {
+      "l": "Step 2 — Monthly",
+      "c": "507.5 × 30 = 15,225 kg"
+     },
+     {
+      "l": "Step 3 — Dry alum per tank",
+      "c": "22,000 L × 1.33 kg/L × 0.48 = 14,045 kg"
+     },
+     {
+      "l": "Step 4 — Tankfuls",
+      "c": "15,225 / 14,045 = 1.08"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240942,
+   "bankKey": "class4-water",
+   "questionNum": 524,
+   "verdict": "WRONG",
+   "note": "Converting CaCO3 to CaO loses CO2 (56/100 mass ratio); 'sludge x efficiency' ignores stoichiometry. 4,500 x 0.56 x 0.78 = 1,966 kg CaO.",
+   "original": {
+    "question": "A lime recalcination process produces 4,500 kg of dry sludge per day. The recalcination kiln is 78% efficient at converting CaCO₃ sludge back to CaO. How much CaO (in kg) can be recovered daily?",
+    "options": [
+     "3,510 kg",
+     "3,780 kg",
+     "4,210 kg",
+     "5,770 kg"
+    ],
+    "correctIndex": 0,
+    "explanation": "Recovered CaO = sludge produced × efficiency."
+   },
+   "fix": {
+    "question": "A lime recalcination process produces 4,500 kg of dry CaCO₃ sludge per day. The kiln is 78% efficient at converting CaCO₃ to CaO (CaCO₃ → CaO + CO₂; molar masses 100 and 56). How much CaO (in kg) can be recovered daily?",
+    "options": [
+     "1,966 kg",
+     "3,510 kg",
+     "2,520 kg",
+     "4,500 kg"
+    ],
+    "correctIndex": 0,
+    "explanation": "CaO recovered = CaCO3 mass × (56/100) × efficiency.",
+    "steps": [
+     {
+      "l": "Step 1 — Theoretical CaO",
+      "c": "4,500 × 56/100 = 2,520 kg"
+     },
+     {
+      "l": "Step 2 — Apply efficiency",
+      "c": "2,520 × 0.78 = 1,966 kg"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240943,
+   "bankKey": "class4-water",
+   "questionNum": 525,
+   "verdict": "WRONG",
+   "note": "x = 8,000 x (300-140)/(580-300) = 4,571 m3; keyed 4,000 is wrong (steps admit 4,571).",
+   "original": {
+    "question": "A water treatment plant is blending low-TDS water (140 mg/L) with high-TDS water (580 mg/L) to achieve a target blend of 300 mg/L. If you have 8,000 m³ of low-TDS water, what volume (in m³) of high-TDS water is needed?",
+    "options": [
+     "4,000 m³",
+     "8,800 m³",
+     "6,386 m³",
+     "10,250 m³"
+    ],
+    "correctIndex": 0,
+    "explanation": "Let x be volume of high-TDS water. Solve 8,000×140 + x×580 = (8,000+x)×300."
+   },
+   "fix": {
+    "question": "A water treatment plant is blending low-TDS water (140 mg/L) with high-TDS water (580 mg/L) to achieve a target blend of 300 mg/L. If you have 8,000 m³ of low-TDS water, what volume (in m³) of high-TDS water is needed?",
+    "options": [
+     "4,571 m³",
+     "4,000 m³",
+     "8,800 m³",
+     "6,386 m³"
+    ],
+    "correctIndex": 0,
+    "explanation": "Let x be volume of high-TDS water. Solve 8,000×140 + x×580 = (8,000+x)×300.",
+    "steps": [
+     {
+      "l": "Step 1 — Setup",
+      "c": "8,000×140 + 580x = (8,000+x)×300"
+     },
+     {
+      "l": "Step 2 — Expand",
+      "c": "1,120,000 + 580x = 2,400,000 + 300x"
+     },
+     {
+      "l": "Step 3 — Rearrange",
+      "c": "280x = 1,280,000"
+     },
+     {
+      "l": "Step 4 — Solve",
+      "c": "x = 4,571 m³"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240954,
+   "bankKey": "class4-water",
+   "questionNum": 536,
+   "verdict": "WRONG",
+   "note": "1.6 + 22 = 23.6 < 25, so the system misses by 1.4. Keyed 'Yes, by 1.2' is wrong; the steps themselves conclude 'No, misses by 1.4'. Wording about 'contribute equally' is also confusing.",
+   "original": {
+    "question": "A combined ozone-chlorine process delivers an ozone CT of 1.6 mg·min/L (15°C) and a chlorine CT of 22 mg·min/L. Both contribute equally to virus inactivation. If the required CTcredit is 25 mg·min/L, is the system meeting requirements, and by how much (mg·min/L)?",
+    "options": [
+     "No, misses by 1.4 mg·min/L",
+     "No, misses by 3.2 mg·min/L",
+     "Yes, by 7.4 mg·min/L",
+     "Yes, by 1.2 mg·min/L"
+    ],
+    "correctIndex": 3,
+    "explanation": "Add CTs for total: 1.6+22 = 23.6, so 23.6 < 25, but Q says \"both contribute equally\", so must add: (1.6+22)/2 ×2 = 23.6?"
+   },
+   "fix": {
+    "question": "A combined ozone-chlorine process delivers an ozone CT of 1.6 mg·min/L (15°C) and a chlorine CT of 22 mg·min/L. Assume the two CT credits are simply additive. If the required total CT credit is 25 mg·min/L, is the system meeting requirements, and by how much (mg·min/L)?",
+    "options": [
+     "No, misses by 1.4 mg·min/L",
+     "No, misses by 3.2 mg·min/L",
+     "Yes, by 7.4 mg·min/L",
+     "Yes, by 1.2 mg·min/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "Add the CTs: 1.6 + 22 = 23.6 mg·min/L, which is below the required 25, so the shortfall is 25 − 23.6 = 1.4 mg·min/L.",
+    "steps": [
+     {
+      "l": "Step 1 — Add CT credits",
+      "c": "1.6 + 22 = 23.6 mg·min/L"
+     },
+     {
+      "l": "Step 2 — Compare",
+      "c": "25 − 23.6 = 1.4 mg·min/L short"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240958,
+   "bankKey": "class4-water",
+   "questionNum": 540,
+   "verdict": "UNCLEAR",
+   "note": "Ambiguous whether 2.5 kW is electrical input or UV output; dividing by efficiency is only valid if 2.5 kW is UV output. Dose and flow are irrelevant distractors.",
+   "original": {
+    "question": "Given a multi-barrier UV system requires a 5-log virus reduction, and the UV dose chart indicates 35 mJ/cm² achieves this. If the reactor delivers 23,000 L/h, what is the total energy used per hour if the power is 2.5 kW and lamp efficiency is 65%?",
+    "options": [
+     "4.29 kWh",
+     "2.5 kWh",
+     "1.63 kWh",
+     "3.85 kWh"
+    ],
+    "correctIndex": 3,
+    "explanation": "Total energy used = power / efficiency × time."
+   },
+   "fix": {
+    "question": "A UV reactor treats 23,000 L/h and must deliver 35 mJ/cm² for 5-log virus credit. The lamps must produce 2.5 kW of UV output and have an electrical-to-UV efficiency of 65%. What electrical energy is used per hour?",
+    "options": [
+     "4.29 kWh",
+     "2.5 kWh",
+     "1.63 kWh",
+     "3.85 kWh"
+    ],
+    "correctIndex": 3,
+    "explanation": "Electrical input power = UV output power ÷ efficiency; energy = power × time.",
+    "steps": [
+     {
+      "l": "Step 1 — Electrical input",
+      "c": "2.5 / 0.65 = 3.85 kW"
+     },
+     {
+      "l": "Step 2 — Energy per hour",
+      "c": "3.85 kW × 1 h = 3.85 kWh"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240959,
+   "bankKey": "class4-water",
+   "questionNum": 541,
+   "verdict": "WRONG",
+   "note": "Removal through membranes in series multiplies penetration, not removal: (1-r)^3 = 0.0001 so r = 1 - 0.0001^(1/3) = 95.4%. The key (99.998%) uses p^3 = 0.9999, which is incorrect.",
+   "original": {
+    "question": "A water treatment plant uses a series of three membranes in sequence to achieve an overall 99.99% removal of a target contaminant. If each membrane has the same removal efficiency, what is the minimum single-membrane efficiency required to reach this goal?",
+    "options": [
+     "99.99%",
+     "99.9%",
+     "99.0%",
+     "99.998%"
+    ],
+    "correctIndex": 3,
+    "explanation": "To achieve 99.99% removal with three equal stages, solve (efficiency)^3 = 0.9999."
+   },
+   "fix": {
+    "question": "A water treatment plant uses a series of three membranes in sequence to achieve an overall 99.99% removal of a target contaminant. If each membrane has the same removal efficiency, what is the minimum single-membrane efficiency required to reach this goal?",
+    "options": [
+     "95.4%",
+     "99.99%",
+     "99.9%",
+     "99.0%"
+    ],
+    "correctIndex": 0,
+    "explanation": "Penetrations multiply in series: (1 − r)^3 = 1 − 0.9999 = 0.0001.",
+    "steps": [
+     {
+      "l": "Step 1 — Penetration",
+      "c": "(1 − r)^3 = 0.0001"
+     },
+     {
+      "l": "Step 2 — Cube root",
+      "c": "1 − r = 0.0001^(1/3) = 0.0464"
+     },
+     {
+      "l": "Step 3 — Removal",
+      "c": "r = 0.9536 = 95.4%"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240961,
+   "bankKey": "class4-water",
+   "questionNum": 543,
+   "verdict": "WRONG",
+   "note": "Per-tank flow is 25 L/s; 25 m3 / 0.025 m3/s = 1,000 s = 16.7 min. The steps give 16.7 min but the key points to 8.3 min.",
+   "original": {
+    "question": "A treatment plant operates two parallel rapid mix tanks, each with a volume of 25 m³. If the plant flows at 50 L/s, what is the hydraulic detention time (in minutes) in each tank?",
+    "options": [
+     "12.5 minutes",
+     "8.3 minutes",
+     "25 minutes",
+     "16.7 minutes"
+    ],
+    "correctIndex": 1,
+    "explanation": "Divide tank volume by flow rate (converted to m³/s) to get the detention time per tank."
+   },
+   "fix": {
+    "question": "A treatment plant operates two parallel rapid mix tanks, each with a volume of 25 m³. If the plant flows at 50 L/s, what is the hydraulic detention time (in minutes) in each tank?",
+    "options": [
+     "12.5 minutes",
+     "8.3 minutes",
+     "25 minutes",
+     "16.7 minutes"
+    ],
+    "correctIndex": 3,
+    "explanation": "Divide tank volume by flow rate through each tank (converted to m³/s) to get the detention time.",
+    "steps": [
+     {
+      "l": "Step 1 — Flow per tank",
+      "c": "50 L/s ÷ 2 = 25 L/s"
+     },
+     {
+      "l": "Step 2 — Convert",
+      "c": "25 L/s = 0.025 m³/s"
+     },
+     {
+      "l": "Step 3 — Detention time",
+      "c": "25 m³ / 0.025 m³/s = 1,000 s"
+     },
+     {
+      "l": "Step 4 — Minutes",
+      "c": "1,000 / 60 = 16.7 min"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240963,
+   "bankKey": "class4-water",
+   "questionNum": 545,
+   "verdict": "WRONG",
+   "note": "0.6x500 + 0.4x1500 = 900 uS/cm; none of the options was 900 and keyed 850 is wrong.",
+   "original": {
+    "question": "A treatment plant must blend finished water from two sources: Source A with 500 µS/cm conductivity at 60% of the blend, and Source B with 1500 µS/cm at 40%. What is the final blend's conductivity?",
+    "options": [
+     "850 µS/cm",
+     "1000 µS/cm",
+     "1200 µS/cm",
+     "650 µS/cm"
+    ],
+    "correctIndex": 0,
+    "explanation": "Weighted average: (0.6×500) + (0.4×1500) = 300 + 600 = 900 µS/cm."
+   },
+   "fix": {
+    "question": "A treatment plant must blend finished water from two sources: Source A with 500 µS/cm conductivity at 60% of the blend, and Source B with 1500 µS/cm at 40%. What is the final blend's conductivity?",
+    "options": [
+     "850 µS/cm",
+     "900 µS/cm",
+     "1000 µS/cm",
+     "1200 µS/cm"
+    ],
+    "correctIndex": 1,
+    "explanation": "Weighted average: (0.6×500) + (0.4×1500) = 300 + 600 = 900 µS/cm.",
+    "steps": [
+     {
+      "l": "Step 1 — Source A",
+      "c": "500 × 0.6 = 300"
+     },
+     {
+      "l": "Step 2 — Source B",
+      "c": "1500 × 0.4 = 600"
+     },
+     {
+      "l": "Step 3 — Sum",
+      "c": "300 + 600 = 900 µS/cm"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240965,
+   "bankKey": "class4-water",
+   "questionNum": 547,
+   "verdict": "UNCLEAR",
+   "note": "Key (99%) and explanation (81%) disagree. 'In series' is ambiguous: with concentrate staging overall recovery = 1 - 0.1 x 0.1 = 99%; multiplying recoveries (81%) applies to permeate staging. Question must state the arrangement.",
+   "original": {
+    "question": "A pilot study runs two membrane modules in series with 90% recovery each. What is the overall recovery of the system?",
+    "options": [
+     "90%",
+     "99%",
+     "95%",
+     "81%"
+    ],
+    "correctIndex": 1,
+    "explanation": "Overall recovery = 0.9 × 0.9 = 0.81 or 81%."
+   },
+   "fix": {
+    "question": "Two membrane stages are arranged in series, with the concentrate from the first stage fed to the second stage. Each stage operates at 90% recovery. What is the overall recovery of the system?",
+    "options": [
+     "90%",
+     "99%",
+     "95%",
+     "81%"
+    ],
+    "correctIndex": 1,
+    "explanation": "With concentrate staging, overall recovery = 1 − (1 − 0.90)(1 − 0.90) = 0.99, or 99%.",
+    "steps": [
+     {
+      "l": "Step 1 — First stage",
+      "c": "Feed F gives permeate 0.90F and concentrate 0.10F"
+     },
+     {
+      "l": "Step 2 — Second stage",
+      "c": "Concentrate 0.10F gives permeate 0.09F"
+     },
+     {
+      "l": "Step 3 — Overall",
+      "c": "(0.90F + 0.09F) / F = 99%"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240967,
+   "bankKey": "class4-water",
+   "questionNum": 549,
+   "verdict": "WRONG",
+   "note": "Keyed option reads 'Yes, CT = 50 ... (target not achieved)', which is self-contradictory. CT = 2.5 x 20 = 50 < 90, so the answer should be 'No'.",
+   "original": {
+    "question": "A contact tank has a plug flow hydraulic retention time of 20 min. The minimum log-inactivation requirement is 3-log Giardia removal, using a CT value of 90 mg·min/L. If the minimum chlorine residual is 2.5 mg/L, is the CT target achieved?",
+    "options": [
+     "No, CT = 45 mg·min/L (target not achieved)",
+     "No, CT = 20 mg·min/L (target not achieved)",
+     "Yes, CT = 90 mg·min/L (target achieved)",
+     "Yes, CT = 50 mg·min/L (target not achieved)"
+    ],
+    "correctIndex": 3,
+    "explanation": "CT = 2.5 mg/L × 20 min = 50 mg·min/L, which is below the 90 mg·min/L target."
+   },
+   "fix": {
+    "question": "A contact tank has a plug flow hydraulic retention time of 20 min. The minimum log-inactivation requirement is 3-log Giardia removal, using a CT value of 90 mg·min/L. If the minimum chlorine residual is 2.5 mg/L, is the CT target achieved?",
+    "options": [
+     "No, CT = 45 mg·min/L (target not achieved)",
+     "No, CT = 20 mg·min/L (target not achieved)",
+     "Yes, CT = 90 mg·min/L (target achieved)",
+     "No, CT = 50 mg·min/L (target not achieved)"
+    ],
+    "correctIndex": 3,
+    "explanation": "CT = 2.5 mg/L × 20 min = 50 mg·min/L, which is below the 90 mg·min/L target.",
+    "steps": [
+     {
+      "l": "Step 1 — Apply CT formula",
+      "c": "2.5 mg/L × 20 min = 50 mg·min/L"
+     },
+     {
+      "l": "Step 2 — Compare with target",
+      "c": "50 < 90 → Not achieved"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240968,
+   "bankKey": "class4-water",
+   "questionNum": 550,
+   "verdict": "WRONG",
+   "note": "Total = 60x0.6x815 + 60x0.3x1,600 = 29,340 + 28,800 = 58,140 kg; keyed 34,560 kg is wrong (explanation itself gives 58,140).",
+   "original": {
+    "question": "A plant must replace a dual-media filter. The area is 60 m². The design specifies 0.6 m anthracite (815 kg/m³) over 0.3 m sand (1,600 kg/m³). What is the total mass of media required?",
+    "options": [
+     "4,860 kg",
+     "34,560 kg",
+     "20,934 kg",
+     "29,250 kg"
+    ],
+    "correctIndex": 1,
+    "explanation": "Anthracite: 60×0.6×815 = 29,340 kg, sand: 60×0.3×1,600 = 28,800 kg; total: 58,140 kg."
+   },
+   "fix": {
+    "question": "A plant must replace a dual-media filter. The area is 60 m². The design specifies 0.6 m anthracite (815 kg/m³) over 0.3 m sand (1,600 kg/m³). What is the total mass of media required?",
+    "options": [
+     "4,860 kg",
+     "58,140 kg",
+     "20,934 kg",
+     "29,250 kg"
+    ],
+    "correctIndex": 1,
+    "explanation": "Anthracite: 60×0.6×815 = 29,340 kg; sand: 60×0.3×1,600 = 28,800 kg; total 58,140 kg.",
+    "steps": [
+     {
+      "l": "Step 1 — Anthracite",
+      "c": "60×0.6 = 36 m³; 36×815 = 29,340 kg"
+     },
+     {
+      "l": "Step 2 — Sand",
+      "c": "60×0.3 = 18 m³; 18×1,600 = 28,800 kg"
+     },
+     {
+      "l": "Step 3 — Sum",
+      "c": "29,340 + 28,800 = 58,140 kg"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240970,
+   "bankKey": "class4-water",
+   "questionNum": 552,
+   "verdict": "WRONG",
+   "note": "6 kg/h x 24 = 144 kg/d; 144 kg / 10,000 m3 = 14.4 mg/L; keyed 25 mg/L is wrong (explanation itself gives 14.4).",
+   "original": {
+    "question": "A plant uses a gas chlorinator with a vacuum feed system. If 6.0 kg/h of chlorine gas is used for a flow of 10,000 m³/d, what is the applied dosage in mg/L?",
+    "options": [
+     "600 mg/L",
+     "0.025 mg/L",
+     "25 mg/L",
+     "15 mg/L"
+    ],
+    "correctIndex": 2,
+    "explanation": "Daily chlorine used: 6 kg/h × 24 = 144 kg/d. 144,000,000 mg ÷ 10,000,000 L =14.4 mg/L."
+   },
+   "fix": {
+    "question": "A plant uses a gas chlorinator with a vacuum feed system. If 6.0 kg/h of chlorine gas is used for a flow of 10,000 m³/d, what is the applied dosage in mg/L?",
+    "options": [
+     "600 mg/L",
+     "0.025 mg/L",
+     "14.4 mg/L",
+     "25 mg/L"
+    ],
+    "correctIndex": 2,
+    "explanation": "Daily chlorine used: 6 kg/h × 24 = 144 kg/d. 144,000,000 mg ÷ 10,000,000 L = 14.4 mg/L.",
+    "steps": [
+     {
+      "l": "Step 1 — Daily mass",
+      "c": "6 × 24 = 144 kg/d"
+     },
+     {
+      "l": "Step 2 — Convert to mg",
+      "c": "144,000,000 mg"
+     },
+     {
+      "l": "Step 3 — Flow in L",
+      "c": "10,000 × 1,000 = 10,000,000 L"
+     },
+     {
+      "l": "Step 4 — Divide",
+      "c": "144,000,000 / 10,000,000 = 14.4 mg/L"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240975,
+   "bankKey": "class4-water",
+   "questionNum": 557,
+   "verdict": "WRONG",
+   "note": "360 m3 / 240 m3/h = 1.5 h = 90 min; keyed 9 min is wrong and 90 min was not an option.",
+   "original": {
+    "question": "A post-treatment basin is rectangular, 20 m × 6 m × 3 m deep, and processes 240 m³/h. What is the detention time in minutes?",
+    "options": [
+     "30 minutes",
+     "20 minutes",
+     "15 minutes",
+     "9 minutes"
+    ],
+    "correctIndex": 3,
+    "explanation": "Volume = 360 m³; Time = 360/240 = 1.5 h = 90 min."
+   },
+   "fix": {
+    "question": "A post-treatment basin is rectangular, 20 m × 6 m × 3 m deep, and processes 240 m³/h. What is the detention time in minutes?",
+    "options": [
+     "30 minutes",
+     "20 minutes",
+     "90 minutes",
+     "9 minutes"
+    ],
+    "correctIndex": 2,
+    "explanation": "Volume = 360 m³; Time = 360/240 = 1.5 h = 90 min.",
+    "steps": [
+     {
+      "l": "Step 1 — Calculate volume",
+      "c": "20 × 6 × 3 = 360 m³"
+     },
+     {
+      "l": "Step 2 — Detention time hours",
+      "c": "360/240 = 1.5 h"
+     },
+     {
+      "l": "Step 3 — Convert to minutes",
+      "c": "1.5 × 60 = 90 min"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240977,
+   "bankKey": "class4-water",
+   "questionNum": 559,
+   "verdict": "WRONG",
+   "note": "Flow-weighted mean = 13.25 C (as the explanation states); keyed 13.75 C is wrong and 13.25 was not an option.",
+   "original": {
+    "question": "A plant's finished water is blended from well (25,000 m³/d, 5ºC) and surface water (75,000 m³/d, 16ºC). What is the finished water temperature?",
+    "options": [
+     "10.25ºC",
+     "12.75ºC",
+     "13.75ºC",
+     "15.0ºC"
+    ],
+    "correctIndex": 2,
+    "explanation": "Weighted average: (25,000×5 + 75,000×16)/100,000 = (125,000+1,200,000)/100,000 = 13.25ºC."
+   },
+   "fix": {
+    "question": "A plant's finished water is blended from well (25,000 m³/d, 5ºC) and surface water (75,000 m³/d, 16ºC). What is the finished water temperature?",
+    "options": [
+     "10.25ºC",
+     "12.75ºC",
+     "13.25ºC",
+     "15.0ºC"
+    ],
+    "correctIndex": 2,
+    "explanation": "Weighted average: (25,000×5 + 75,000×16)/100,000 = (125,000+1,200,000)/100,000 = 13.25ºC.",
+    "steps": [
+     {
+      "l": "Step 1 — Calculate products",
+      "c": "25,000×5 = 125,000; 75,000×16 = 1,200,000"
+     },
+     {
+      "l": "Step 2 — Add and divide",
+      "c": "1,325,000 / 100,000 = 13.25 ºC"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240979,
+   "bankKey": "class4-water",
+   "questionNum": 561,
+   "verdict": "WRONG",
+   "note": "410 / 65 = 6.31 m3/m2.h; keyed 6.0 is not correct (6.5 is closer), steps wrongly round 6.3077 to 6.0.",
+   "original": {
+    "question": "A water treatment plant uses two parallel pressure filters. Filter A has a surface area of 35 m² and an effluent rate of 220 m³/h, while Filter B has a surface area of 30 m² with an effluent rate of 190 m³/h. What is the overall average filtration rate for the combined system (in m³/m²·h)?",
+    "options": [
+     "5.5",
+     "6.0",
+     "6.5",
+     "7.0"
+    ],
+    "correctIndex": 1,
+    "explanation": "Divide the total combined flow by the total combined surface area."
+   },
+   "fix": {
+    "question": "A water treatment plant uses two parallel pressure filters. Filter A has a surface area of 35 m² and an effluent rate of 220 m³/h, while Filter B has a surface area of 30 m² with an effluent rate of 190 m³/h. What is the overall average filtration rate for the combined system (in m³/m²·h, to one decimal)?",
+    "options": [
+     "5.5",
+     "6.0",
+     "6.3",
+     "7.0"
+    ],
+    "correctIndex": 2,
+    "explanation": "Divide the total combined flow by the total combined surface area.",
+    "steps": [
+     {
+      "l": "Step 1 — Total flow",
+      "c": "220 + 190 = 410 m³/h"
+     },
+     {
+      "l": "Step 2 — Total area",
+      "c": "35 + 30 = 65 m²"
+     },
+     {
+      "l": "Step 3 — Filtration rate",
+      "c": "410 ÷ 65 = 6.31 ≈ 6.3 m³/m²·h"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240981,
+   "bankKey": "class4-water",
+   "questionNum": 563,
+   "verdict": "WRONG",
+   "note": "1,160 / 6,500 = 0.1785 = 0.178 mg/L; keyed 0.176 is not the computed value ('rounded for significant digits' is not valid).",
+   "original": {
+    "question": "A water treatment facility blends two sources: Source A delivers 4,500 m³/d of water with 0.08 mg/L arsenic, and Source B delivers 2,000 m³/d with 0.40 mg/L arsenic. What will be the arsenic concentration in the blended water (mg/L)?",
+    "options": [
+     "0.320",
+     "0.176",
+     "0.116",
+     "0.242"
+    ],
+    "correctIndex": 1,
+    "explanation": "Multiply each source's flow by its concentration, sum the products, then divide by the total flow."
+   },
+   "fix": {
+    "question": "A water treatment facility blends two sources: Source A delivers 4,500 m³/d of water with 0.08 mg/L arsenic, and Source B delivers 2,000 m³/d with 0.40 mg/L arsenic. What will be the arsenic concentration in the blended water (mg/L)?",
+    "options": [
+     "0.320",
+     "0.178",
+     "0.116",
+     "0.242"
+    ],
+    "correctIndex": 1,
+    "explanation": "Multiply each source's flow by its concentration, sum the products, then divide by the total flow.",
+    "steps": [
+     {
+      "l": "Step 1 — Mass from A",
+      "c": "4,500 × 0.08 = 360 g/d"
+     },
+     {
+      "l": "Step 2 — Mass from B",
+      "c": "2,000 × 0.40 = 800 g/d"
+     },
+     {
+      "l": "Step 3 — Sum",
+      "c": "1,160 g/d"
+     },
+     {
+      "l": "Step 4 — Total flow",
+      "c": "6,500 m³/d"
+     },
+     {
+      "l": "Step 5 — Concentration",
+      "c": "1,160 ÷ 6,500 = 0.178 mg/L"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240986,
+   "bankKey": "class4-water",
+   "questionNum": 568,
+   "verdict": "WRONG",
+   "note": "Treated volume = BV x (Q x EBCT): Column 1 = 150,000 x 270 L = 40,500,000 L; Column 2 = 150,000 x 240 L = 36,000,000 L. Column 1 produces more. Keyed 'Column 2 (144,000 L)' is wrong and none of the options matched the correct numbers.",
+   "original": {
+    "question": "A Class 4 water plant performs an in-plant pilot study for GAC contactors. Column 1 has EBCT of 18 min and treats 15 L/min; Column 2 EBCT is 12 min with 20 L/min flow. Which column produces more treated water before breakthrough occurs at 150,000 bed volumes?",
+    "options": [
+     "Column 2 (180,000 L)",
+     "Column 2 (144,000 L)",
+     "Column 1 (162,000 L)",
+     "Column 1 (135,000 L)"
+    ],
+    "correctIndex": 1,
+    "explanation": "Total treated water = Bed Volumes × Bed Volume. Bed Volume = flow rate × EBCT."
+   },
+   "fix": {
+    "question": "A Class 4 water plant performs an in-plant pilot study for GAC contactors. Column 1 has EBCT of 18 min and treats 15 L/min; Column 2 EBCT is 12 min with 20 L/min flow. Which column produces more treated water before breakthrough occurs at 150,000 bed volumes?",
+    "options": [
+     "Column 2 (36,000,000 L)",
+     "Column 1 (40,500,000 L)",
+     "Column 1 (162,000 L)",
+     "Column 2 (144,000 L)"
+    ],
+    "correctIndex": 1,
+    "explanation": "Total treated water = bed volumes × bed volume. Bed volume = flow rate × EBCT.",
+    "steps": [
+     {
+      "l": "Step 1 — Bed volumes",
+      "c": "Col 1: 15 × 18 = 270 L; Col 2: 20 × 12 = 240 L"
+     },
+     {
+      "l": "Step 2 — Total treated",
+      "c": "Col 1: 150,000 × 270 = 40,500,000 L; Col 2: 150,000 × 240 = 36,000,000 L"
+     },
+     {
+      "l": "Step 3 — Compare",
+      "c": "Column 1 treats more water before breakthrough"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240987,
+   "bankKey": "class4-water",
+   "questionNum": 569,
+   "verdict": "WRONG",
+   "note": "215 kW x 24 h = 5,160 kWh / 24,000 m3 = 0.215 kWh/m3; keyed 0.92 is wrong.",
+   "original": {
+    "question": "A plant operator is reviewing the energy usage: Raw water pumps use 150 kW, chemical feed pumps use 12 kW, filtration uses 45 kW, and the SCADA/control system uses 8 kW. If the average daily treated volume is 24,000 m³, what is the total energy consumption per cubic metre (kWh/m³)?",
+    "options": [
+     "0.92",
+     "1.23",
+     "0.45",
+     "0.70"
+    ],
+    "correctIndex": 0,
+    "explanation": "Add total power consumption for 24 hours and divide by the total treated volume."
+   },
+   "fix": {
+    "question": "A plant operator is reviewing the energy usage: Raw water pumps use 150 kW, chemical feed pumps use 12 kW, filtration uses 45 kW, and the SCADA/control system uses 8 kW. If the average daily treated volume is 24,000 m³, what is the total energy consumption per cubic metre (kWh/m³)?",
+    "options": [
+     "0.215",
+     "0.92",
+     "1.23",
+     "0.45"
+    ],
+    "correctIndex": 0,
+    "explanation": "Add total power consumption for 24 hours and divide by the total treated volume.",
+    "steps": [
+     {
+      "l": "Step 1 — Total power",
+      "c": "150 + 12 + 45 + 8 = 215 kW"
+     },
+     {
+      "l": "Step 2 — Daily kWh",
+      "c": "215 × 24 = 5,160 kWh"
+     },
+     {
+      "l": "Step 3 — Per m³",
+      "c": "5,160 ÷ 24,000 = 0.215 kWh/m³"
+     }
+    ]
    }
   }
  ]
