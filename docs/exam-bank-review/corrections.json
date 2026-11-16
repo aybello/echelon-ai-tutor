@@ -1,15 +1,15 @@
 {
  "export": "docs/exam-bank-export/2026-11-16 (commit d118897a)",
- "chunksDone": 65,
+ "chunksDone": 70,
  "chunksTotal": 174,
- "questionsReviewed": 9119,
+ "questionsReviewed": 9790,
  "questionsTotal": 24350,
- "problems": 449,
+ "problems": 479,
  "byVerdict": {
-  "UNCLEAR": 129,
-  "WRONG": 216,
-  "JURISDICTION": 58,
-  "UNITS": 39,
+  "UNCLEAR": 144,
+  "WRONG": 218,
+  "JURISDICTION": 70,
+  "UNITS": 40,
   "OFF-TOPIC": 7
  },
  "byBank": {
@@ -24,7 +24,9 @@
   "class2-water-dist": 73,
   "class3-wastewater": 49,
   "class3-wastewater-coll": 73,
-  "class3-water": 48
+  "class3-water": 48,
+  "class3-water-dist": 12,
+  "class4-wastewater": 18
  },
  "chunks": [
   "chunk-001",
@@ -91,7 +93,12 @@
   "chunk-062",
   "chunk-063",
   "chunk-064",
-  "chunk-065"
+  "chunk-065",
+  "chunk-066",
+  "chunk-067",
+  "chunk-068",
+  "chunk-069",
+  "chunk-070"
  ],
  "corrections": [
   {
@@ -16233,6 +16240,961 @@
       "c": "531.25 ÷ 3.0 = 177 days"
      }
     ]
+   }
+  },
+  {
+   "id": 240564,
+   "bankKey": "class3-water-dist",
+   "questionNum": 506,
+   "verdict": "UNCLEAR",
+   "note": "Excess night flow (minimum night flow minus legitimate night use) is an estimate of real leakage, not 'apparent leakage'. Apparent losses are metering/billing/unauthorized-use losses. Arithmetic (7 L/s = 604.8 m3/day) is correct; the term is wrong/misleading.",
+   "original": {
+    "question": "A distribution system's nighttime minimum flow is 52 L/s, while the sum of known legitimate uses is 45 L/s. What is the apparent leakage rate in m³/day?",
+    "options": [
+     "1,239 m³/day",
+     "907.2 m³/day",
+     "425.6 m³/day",
+     "604.8 m³/day"
+    ],
+    "correctIndex": 3,
+    "explanation": "Excess night flow = 52 − 45 = 7 L/s. Daily volume = 7 × 86,400 / 1,000 = 604.8 m³/day."
+   },
+   "fix": {
+    "question": "A distribution system's nighttime minimum flow is 52 L/s, while the sum of known legitimate uses is 45 L/s. What is the estimated leakage rate in m³/day?",
+    "options": [
+     "1,239 m³/day",
+     "907.2 m³/day",
+     "425.6 m³/day",
+     "604.8 m³/day"
+    ],
+    "correctIndex": 3,
+    "explanation": "Excess night flow = 52 − 45 = 7 L/s, which is attributed to leakage (real loss). Daily volume = 7 × 86,400 / 1,000 = 604.8 m³/day.",
+    "steps": [
+     {
+      "l": "State the formula for estimated leakage",
+      "c": "Leakage Rate = Nighttime Minimum Flow - Known Legitimate Night Uses."
+     },
+     {
+      "l": "Substitute the given flow values",
+      "c": "Leakage Rate = 52 L/s - 45 L/s = 7 L/s."
+     },
+     {
+      "l": "State the conversion from L/s to m^3/day",
+      "c": "Volume (m^3/day) = Flow (L/s) * 86,400 s/day / 1,000 L/m^3."
+     },
+     {
+      "l": "Substitute the leakage rate into the conversion",
+      "c": "Volume = 7 L/s * 86,400 s/day / 1,000 L/m^3."
+     },
+     {
+      "l": "Calculate the daily volume",
+      "c": "Volume = 604,800 L/day / 1,000 L/m^3 = 604.8 m^3/day."
+     },
+     {
+      "l": "Check the answer",
+      "c": "604.8 m^3/day matches the correct option."
+     }
+    ]
+   }
+  },
+  {
+   "id": 240584,
+   "bankKey": "class3-water-dist",
+   "questionNum": 526,
+   "verdict": "UNCLEAR",
+   "note": "Premise 'refilled once every 24 hours' conflicts with 720 m3/day demand and makes 1.00 day (one fill per 24 h) defensible as water age alongside 0.69 days (500/720). Remove the contradictory refill statement so the nominal age = volume / demand reading is the only one.",
+   "original": {
+    "question": "A 500 m³ tank is refilled once every 24 hours. If the average daily system demand is 720 m³, what is the average water age (in days) in the tank?",
+    "options": [
+     "0.69 days",
+     "1.44 days",
+     "0.48 days",
+     "1.00 days"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nominal residence time = 500 m³ / 720 m³/day = 0.694 day."
+   },
+   "fix": {
+    "question": "A 500 m³ tank supplies an average daily demand of 720 m³. What is the nominal average water age (in days) in the tank, using volume divided by daily demand?",
+    "options": [
+     "0.69 days",
+     "1.44 days",
+     "0.48 days",
+     "1.00 days"
+    ],
+    "correctIndex": 0,
+    "explanation": "Nominal residence time = 500 m³ / 720 m³/day = 0.694 day.",
+    "steps": [
+     {
+      "l": "Identify the formula for average water age",
+      "c": "Nominal water age = Tank Volume / Average Daily Demand"
+     },
+     {
+      "l": "Substitute the given values",
+      "c": "Water Age = 500 m^3 / 720 m^3/day"
+     },
+     {
+      "l": "Calculate the result",
+      "c": "500 / 720 = 0.694 days"
+     },
+     {
+      "l": "Final answer check",
+      "c": "Rounded to two decimals this is 0.69 days, which matches the correct option."
+     }
+    ]
+   }
+  },
+  {
+   "id": 240591,
+   "bankKey": "class3-water-dist",
+   "questionNum": 533,
+   "verdict": "UNITS",
+   "note": "Question uses psi in an Ontario (metric) bank. Converted: 48 psi = 330 kPa, 82 psi = 565 kPa, increase 235 kPa.",
+   "original": {
+    "question": "A booster station increases water pressure from 48 psi to 82 psi. What is the pressure increase in kilopascals?",
+    "options": [
+     "332 kPa",
+     "468 kPa",
+     "282 kPa",
+     "234 kPa"
+    ],
+    "correctIndex": 3,
+    "explanation": "Pressure increase = (82−48) psi × 6.895 kPa/psi = 234.43 kPa, about 234 kPa."
+   },
+   "fix": {
+    "question": "A booster station increases water pressure from 330 kPa to 565 kPa. What is the pressure increase in kilopascals?",
+    "options": [
+     "565 kPa",
+     "895 kPa",
+     "330 kPa",
+     "235 kPa"
+    ],
+    "correctIndex": 3,
+    "explanation": "Pressure increase = 565 − 330 = 235 kPa.",
+    "steps": [
+     {
+      "l": "Identify the pressure increase",
+      "c": "Pressure Increase (kPa) = Final Pressure - Initial Pressure"
+     },
+     {
+      "l": "Substitute values",
+      "c": "Pressure Increase = 565 kPa - 330 kPa = 235 kPa"
+     },
+     {
+      "l": "Match with the options",
+      "c": "235 kPa matches the correct option."
+     }
+    ]
+   }
+  },
+  {
+   "id": 1708907,
+   "bankKey": "class3-water-dist",
+   "questionNum": 2032,
+   "verdict": "UNCLEAR",
+   "note": "Options A (pipe diameters, lengths, roughness), C (valve status, demands, elevations, boundary conditions) and D (demand pattern timing) are all legitimate model inputs to check, so the 'first' choice is not uniquely C. Distractors rewritten to be clearly wrong.",
+   "original": {
+    "question": "A hydraulic model predicts adequate pressure, but field gauges show lower pressure under comparable conditions. Which model inputs should be checked first?",
+    "options": [
+     "Check whether the model uses current pipe diameters, lengths, and roughness assumptions.",
+     "Check whether field pressure gauges were calibrated and read at comparable locations and times.",
+     "Check valve status, demands, elevations, and the model boundary conditions.",
+     "Check whether the model demand pattern matches the timing of the observed field condition."
+    ],
+    "correctIndex": 2,
+    "explanation": "Model-field disagreement can result from incorrect network connectivity, valve status, demand allocation, elevation data, source conditions, or other boundary assumptions. Calibration should use comparable field conditions and verified data."
+   },
+   "fix": {
+    "question": "A hydraulic model predicts adequate pressure, but field gauges show lower pressure under comparable conditions. Which model inputs should be checked first?",
+    "options": [
+     "The billing rates and customer account classes assigned in the model",
+     "The chemical feed rates assumed at the treatment plant",
+     "Valve status, demands, elevations, and the model boundary conditions",
+     "The colour scheme used for the model's result maps"
+    ],
+    "correctIndex": 2,
+    "explanation": "Model-field disagreement can result from incorrect network connectivity, valve status, demand allocation, elevation data, source conditions, or other boundary assumptions. Calibration should use comparable field conditions and verified data.",
+    "steps": null
+   }
+  },
+  {
+   "id": 1708914,
+   "bankKey": "class3-water-dist",
+   "questionNum": 2039,
+   "verdict": "UNCLEAR",
+   "note": "All four options (demand variation and pressure records, upstream pressure fluctuation, isolation valve position, pilot/sensing lines and sizing) are reasonable things to review before changing a PRV set point; D is only the most comprehensive. Distractors rewritten to be clearly weaker.",
+   "original": {
+    "question": "A pressure-reducing valve repeatedly cycles between high and low downstream pressure. What should the supervisor review before changing the pressure set point?",
+    "options": [
+     "Review downstream demand variation and pressure-recording data before changing the set point.",
+     "Review whether upstream pressure fluctuations are contributing to unstable downstream control.",
+     "Review whether isolation valves near the pressure-reducing valve are fully open and correctly positioned.",
+     "Review pilot and sensing-line condition, valve configuration, actual flow relative to its operating range, and the approved operating procedure."
+    ],
+    "correctIndex": 3,
+    "explanation": "PRV instability can result from pilot or sensing problems, valve sizing or operating-range issues, installation conditions, or control settings. Changes should follow the applicable approved procedure."
+   },
+   "fix": {
+    "question": "A pressure-reducing valve repeatedly cycles between high and low downstream pressure. What should the supervisor review before changing the pressure set point?",
+    "options": [
+     "Raise the set point first and see whether the cycling stops",
+     "Review the customer billing records for the zone",
+     "Replace the valve with a larger one before reviewing any data",
+     "Review pilot and sensing-line condition, valve configuration, actual flow relative to its operating range, and the approved operating procedure."
+    ],
+    "correctIndex": 3,
+    "explanation": "PRV instability can result from pilot or sensing problems, valve sizing or operating-range issues, installation conditions, or control settings. Changes should follow the applicable approved procedure.",
+    "steps": null
+   }
+  },
+  {
+   "id": 1708953,
+   "bankKey": "class3-water-dist",
+   "questionNum": 2078,
+   "verdict": "UNCLEAR",
+   "note": "Options B (timed register check with uses isolated), C (check for continuous users such as irrigation or relief devices) and D (inspect customer-side piping) are all valid next checks, not just A. Distractors rewritten to be clearly wrong.",
+   "original": {
+    "question": "A customer meter registers continuous flow while the customer reports all fixtures are closed. What is the next useful check?",
+    "options": [
+     "Investigate for a leak or legitimate continuous use on the customer-side plumbing.",
+     "Confirm that the meter register is advancing over a timed interval with all known uses isolated.",
+     "Check whether a pressure-relief device, irrigation system, or process equipment is continuously using water.",
+     "Inspect accessible customer-side piping and fixtures for leakage before replacing the meter."
+    ],
+    "correctIndex": 0,
+    "explanation": "Continuous registered flow may reflect a leak or an unrecognized continuous demand. A systematic check of downstream use and leakage is appropriate before concluding that the meter is defective."
+   },
+   "fix": {
+    "question": "A customer meter registers continuous flow while the customer reports all fixtures are closed. What is the next useful check?",
+    "options": [
+     "Investigate for a leak or legitimate continuous use on the customer-side plumbing.",
+     "Replace the meter immediately without checking the customer-side plumbing.",
+     "Bill the customer an estimated average and take no further action.",
+     "Ignore the reading until the next scheduled meter read."
+    ],
+    "correctIndex": 0,
+    "explanation": "Continuous registered flow may reflect a leak or an unrecognized continuous demand. A systematic check of downstream use and leakage is appropriate before concluding that the meter is defective.",
+    "steps": null
+   }
+  },
+  {
+   "id": 1708954,
+   "bankKey": "class3-water-dist",
+   "questionNum": 2079,
+   "verdict": "UNCLEAR",
+   "note": "Options A (inflow vs outflow balance), C (meter test range vs operating flow) and D (comparison with a calibrated reference meter) are all valid diagnostics for under-registration, so B is not uniquely best. Distractors rewritten to be clearly wrong.",
+   "original": {
+    "question": "A large meter indicates unexpectedly low flow during a known high-demand period. What comparison would best help diagnose possible under-registration?",
+    "options": [
+     "Compare measured inflow and outflow over the same interval to identify an unexplained flow difference.",
+     "Compare an independent flow balance with meter test results.",
+     "Compare the meter test flow range with the expected high-demand operating flow.",
+     "Compare the meter's registration against a temporary calibrated reference meter under similar flow conditions."
+    ],
+    "correctIndex": 1,
+    "explanation": "Independent flow information and a suitable meter test can help distinguish meter under-registration from an incorrect demand estimate or another system condition."
+   },
+   "fix": {
+    "question": "A large meter indicates unexpectedly low flow during a known high-demand period. What comparison would best help diagnose possible under-registration?",
+    "options": [
+     "Compare the meter's serial number with the asset register entry only",
+     "Compare an independent flow balance with meter test results.",
+     "Compare the meter's housing colour with other meters in the zone",
+     "Compare the meter reading with last year's total billing revenue"
+    ],
+    "correctIndex": 1,
+    "explanation": "Independent flow information and a suitable meter test can help distinguish meter under-registration from an incorrect demand estimate or another system condition.",
+    "steps": null
+   }
+  },
+  {
+   "id": 1708980,
+   "bankKey": "class3-water-dist",
+   "questionNum": 2105,
+   "verdict": "UNCLEAR",
+   "note": "Options A, B and D each describe a legitimate prioritization factor (consequence, failure history with no manual backup, frequency/lead time); C is only the most complete. Distractors rewritten to be clearly wrong.",
+   "original": {
+    "question": "An isolation-valve actuator has failed repeatedly. How should the maintenance work be prioritized?",
+    "options": [
+     "Prioritize the actuator where failure would isolate the largest operationally important service area.",
+     "Prioritize the actuator with repeated failures where no reliable manual or temporary control is available.",
+     "Prioritize using asset criticality, failure history, consequence of lost isolation, and available interim controls.",
+     "Prioritize the actuator after assessing failure frequency, repair lead time, and isolation consequences."
+    ],
+    "correctIndex": 2,
+    "explanation": "A risk-based priority considers both the likelihood of further failure and the operational consequences if the valve is needed."
+   },
+   "fix": {
+    "question": "An isolation-valve actuator has failed repeatedly. How should the maintenance work be prioritized?",
+    "options": [
+     "Prioritize whichever actuator was installed most recently.",
+     "Prioritize the actuator that is cheapest to repair.",
+     "Prioritize using asset criticality, failure history, consequence of lost isolation, and available interim controls.",
+     "Defer all actuator work until a valve is needed in an emergency."
+    ],
+    "correctIndex": 2,
+    "explanation": "A risk-based priority considers both the likelihood of further failure and the operational consequences if the valve is needed.",
+    "steps": null
+   }
+  },
+  {
+   "id": 1708984,
+   "bankKey": "class3-water-dist",
+   "questionNum": 2109,
+   "verdict": "UNCLEAR",
+   "note": "All four options are valid reassessments after a high-point change (air accumulation, air-valve elevation/access, hydraulic performance, air-valve adequacy/location); D is not uniquely correct. Distractors rewritten to be clearly wrong.",
+   "original": {
+    "question": "A new watermain's as-built profile differs from the design at a high point. Which assessment may need to be revisited?",
+    "options": [
+     "Revisit whether the revised profile creates a location where air could accumulate during filling or draining.",
+     "Revisit the elevation and accessibility of air-management provisions relative to the constructed profile.",
+     "Revisit whether the changed high point affects hydraulic performance during normal and abnormal operation.",
+     "Revisit the adequacy and location of air-management provisions at the actual high point."
+    ],
+    "correctIndex": 3,
+    "explanation": "Air can collect at local high points. A changed profile may affect the suitability of planned air-release or air-vacuum provisions."
+   },
+   "fix": {
+    "question": "A new watermain's as-built profile differs from the design at a high point. Which assessment may need to be revisited?",
+    "options": [
+     "Revisit the colour coding of the pipe at the high point.",
+     "Revisit only the customer billing zones affected by the change.",
+     "Revisit nothing, because a changed profile never affects air management.",
+     "Revisit the adequacy and location of air-management provisions at the actual high point."
+    ],
+    "correctIndex": 3,
+    "explanation": "Air can collect at local high points. A changed profile may affect the suitability of planned air-release or air-vacuum provisions.",
+    "steps": null
+   }
+  },
+  {
+   "id": 1709007,
+   "bankKey": "class3-water-dist",
+   "questionNum": 2132,
+   "verdict": "UNCLEAR",
+   "note": "All four options (short-circuiting/inlet-outlet layout, operating range and drawdown, representative residual sampling, residence time and mixing) are valid first reviews for residual loss in a low-turnover tank; D is not uniquely correct. Distractors rewritten to be clearly wrong.",
+   "original": {
+    "question": "Residual declines across an older storage tank with low drawdown. Which factor deserves review first?",
+    "options": [
+     "Review whether inflow and outflow locations promote short-circuiting or stagnant water zones.",
+     "Review the tank operating level range and whether low drawdown is limiting water turnover.",
+     "Review representative residual samples at the tank inlet, outlet, and within the storage volume.",
+     "Review residence time and mixing conditions within the tank."
+    ],
+    "correctIndex": 3,
+    "explanation": "Low turnover and poor mixing can create long water age and localized disinfectant decay in storage."
+   },
+   "fix": {
+    "question": "Residual declines across an older storage tank with low drawdown. Which factor deserves review first?",
+    "options": [
+     "The exterior paint colour of the tank",
+     "The number of customer accounts billed each month",
+     "The chlorine feed-pump manufacturer's warranty terms",
+     "Residence time and mixing conditions within the tank"
+    ],
+    "correctIndex": 3,
+    "explanation": "Low turnover and poor mixing can create long water age and localized disinfectant decay in storage.",
+    "steps": null
+   }
+  },
+  {
+   "id": 1709046,
+   "bankKey": "class3-water-dist",
+   "questionNum": 2171,
+   "verdict": "UNCLEAR",
+   "note": "All four options (flow paths and analyser validity, low turnover/dead ends, sample collection and analyser verification, valve positions) are reasonable next reviews; A is not uniquely correct. Distractors rewritten to be clearly wrong.",
+   "original": {
+    "question": "A low-residual alarm persists at one far-end location after a flushing program. What should be reviewed next?",
+    "options": [
+     "Review actual flow paths, turnover conditions, analyser validity, and representative field samples.",
+     "Review whether the far-end area has low turnover, dead-end sections, or changing flow direction.",
+     "Review field sample collection and analyser verification before concluding that residual remains low.",
+     "Review valve positions and operating conditions that could alter flow paths to the far-end location."
+    ],
+    "correctIndex": 0,
+    "explanation": "A persistent localized low reading should be confirmed and evaluated using valid measurements and the area's hydraulic and turnover conditions before selecting further action."
+   },
+   "fix": {
+    "question": "A low-residual alarm persists at one far-end location after a flushing program. What should be reviewed next?",
+    "options": [
+     "Review actual flow paths, turnover conditions, analyser validity, and representative field samples.",
+     "Review the colour of the hydrant caps in the far-end area.",
+     "Review the treatment plant's chemical purchase invoices only.",
+     "Review the heating schedule of the pump-station building."
+    ],
+    "correctIndex": 0,
+    "explanation": "A persistent localized low reading should be confirmed and evaluated using valid measurements and the area's hydraulic and turnover conditions before selecting further action.",
+    "steps": null
+   }
+  },
+  {
+   "id": 1709116,
+   "bankKey": "class3-water-dist",
+   "questionNum": 2241,
+   "verdict": "UNCLEAR",
+   "note": "All four options are reasonable sets of records to preserve for an after-action review (pressure readings, pump and tank records, valve verification, alarms, operator actions); the stem asks which should be preserved without a single best answer, so the other options are also defensible. Distractors rewritten to be clearly weaker.",
+   "original": {
+    "question": "During a fire event, system pressures fall outside the forecast. Which records should be preserved for after-action review?",
+    "options": [
+     "Preserve hydrant demand, pump and tank status, pressure trends, and the verified valve configuration.",
+     "Preserve time-stamped pressure readings, pump operation records, and tank-level trends during the event.",
+     "Preserve the fire-flow demand estimate, hydrants in use, and changes in system operating conditions.",
+     "Preserve valve-status verification, control-system alarms, and operator actions taken during the event."
+    ],
+    "correctIndex": 0,
+    "explanation": "Concurrent operating data are needed to assess hydraulic performance and identify whether configuration or operating conditions contributed to the deviation."
+   },
+   "fix": {
+    "question": "During a fire event, system pressures fall outside the forecast. Which records should be preserved for after-action review?",
+    "options": [
+     "Preserve hydrant demand, pump and tank status, pressure trends, and the verified valve configuration.",
+     "Preserve only the final pressure reading taken after the event ended.",
+     "Preserve the pavement restoration schedule and traffic-control permits for the area.",
+     "Preserve the customer billing records for the affected zone."
+    ],
+    "correctIndex": 0,
+    "explanation": "Concurrent operating data are needed to assess hydraulic performance and identify whether configuration or operating conditions contributed to the deviation.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182703,
+   "bankKey": "class4-wastewater",
+   "questionNum": 4,
+   "verdict": "JURISDICTION",
+   "note": "'Class A EQ' is a US EPA 40 CFR 503 term, not an Ontario classification. Ontario regulates biosolids land application as non-agricultural source material (NASM) under the Nutrient Management Act, 2002 and O. Reg. 267/03, using its own pathogen/metal categories.",
+   "original": {
+    "question": "In the context of advanced biosolids management, what is the primary regulatory driver for producing 'Class A EQ' biosolids in Ontario?",
+    "options": [
+     "The Clean Water Act, 2006, to protect source water quality.",
+     "The Safe Drinking Water Act, 2002, to ensure potable water standards.",
+     "Ontario Regulation 267/03 (Nutrient Management) under the Nutrient Management Act, 2002.",
+     "The Environmental Protection Act, R.S.O. 1990, for general waste management."
+    ],
+    "correctIndex": 2,
+    "explanation": "Ontario Regulation 267/03 under the Nutrient Management Act sets the standards for the beneficial use of biosolids, including the criteria for Class A EQ biosolids, which have stringent pathogen and vector attraction reduction requirements for unrestricted use."
+   },
+   "fix": {
+    "question": "In Ontario, which regulation sets the standards for land application of biosolids from municipal wastewater treatment plants (as non-agricultural source material)?",
+    "options": [
+     "The Clean Water Act, 2006, to protect source water quality.",
+     "The Safe Drinking Water Act, 2002, to ensure potable water standards.",
+     "Ontario Regulation 267/03 (General) under the Nutrient Management Act, 2002.",
+     "The Environmental Protection Act, R.S.O. 1990, for general waste management."
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 267/03 under the Nutrient Management Act, 2002 sets the requirements for land application of biosolids and other non-agricultural source material (NASM), including pathogen and metal categories, setbacks and NASM plans.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182721,
+   "bankKey": "class4-wastewater",
+   "questionNum": 22,
+   "verdict": "WRONG",
+   "note": "Explanation claim is wrong: aeration typically accounts for roughly 45-75% of a plant's electricity use; energy is not 50-60% of total operating costs (typically about 25-40%). Key (A) is correct.",
+   "original": {
+    "question": "In a Class 4 wastewater plant, what is the significance of the oxygen transfer efficiency (OTE) in fine bubble diffused aeration?",
+    "options": [
+     "It determines the percentage of supplied oxygen actually dissolved in wastewater, directly affecting energy costs",
+     "It measures the volume of air supplied",
+     "It calculates blower motor size",
+     "It determines pipe diameter for air distribution"
+    ],
+    "correctIndex": 0,
+    "explanation": "OTE (typically 25-35% for fine bubble at 4.5m depth) determines how much of the energy spent compressing air actually delivers dissolved oxygen. Higher OTE means lower energy costs, which typically represent 50-60% of plant operating costs."
+   },
+   "fix": {
+    "question": "In a Class 4 wastewater plant, what is the significance of the oxygen transfer efficiency (OTE) in fine bubble diffused aeration?",
+    "options": [
+     "It determines the percentage of supplied oxygen actually dissolved in wastewater, directly affecting energy costs",
+     "It measures the volume of air supplied",
+     "It calculates blower motor size",
+     "It determines pipe diameter for air distribution"
+    ],
+    "correctIndex": 0,
+    "explanation": "OTE (typically 25-35% for fine bubble at 4.5 m depth) determines how much of the energy spent compressing air actually delivers dissolved oxygen. Aeration typically accounts for about 45-75% of a plant's electricity use, so higher OTE means significantly lower energy costs.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182736,
+   "bankKey": "class4-wastewater",
+   "questionNum": 37,
+   "verdict": "JURISDICTION",
+   "note": "'Class A EQ' is a US EPA 503 term; Ontario uses NASM categories under O. Reg. 267/03, and 'vector attraction reduction' is a US 503 construct.",
+   "original": {
+    "question": "What is the primary regulatory challenge associated with the beneficial use of Class A EQ biosolids in Ontario?",
+    "options": [
+     "The high cost of transportation to agricultural fields.",
+     "Ensuring public acceptance and addressing potential odor concerns.",
+     "Meeting stringent pathogen reduction and vector attraction reduction requirements.",
+     "The limited availability of suitable land for application."
+    ],
+    "correctIndex": 2,
+    "explanation": "Producing Class A EQ biosolids requires meeting very strict pathogen reduction and vector attraction reduction standards (as per O. Reg. 267/03) to allow for unrestricted public access and use, which often necessitates advanced treatment technologies."
+   },
+   "fix": {
+    "question": "What is the primary regulatory challenge in producing highly treated, low-pathogen biosolids for beneficial use in Ontario?",
+    "options": [
+     "The high cost of transportation to agricultural fields.",
+     "Ensuring public acceptance and addressing potential odor concerns.",
+     "Meeting stringent pathogen reduction and stabilization requirements, which often necessitate advanced treatment.",
+     "The limited availability of suitable land for application."
+    ],
+    "correctIndex": 2,
+    "explanation": "Producing the lowest-pathogen category of biosolids for land application under O. Reg. 267/03 (NASM) requires meeting strict pathogen reduction and stabilization criteria, which often requires advanced treatment technologies.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182743,
+   "bankKey": "class4-wastewater",
+   "questionNum": 44,
+   "verdict": "JURISDICTION",
+   "note": "'Class A EQ' and 'vector attraction reduction' are US EPA 40 CFR 503 terms, not Ontario classifications.",
+   "original": {
+    "question": "When managing advanced biosolids programs, what is the significance of the 'vector attraction reduction' requirement for Class A EQ biosolids?",
+    "options": [
+     "It ensures that the biosolids are free of heavy metals and organic contaminants.",
+     "It prevents the attraction of disease vectors like flies, rodents, and birds to the biosolids.",
+     "It reduces the moisture content of the biosolids for easier handling.",
+     "It guarantees the complete removal of all pathogens from the biosolids."
+    ],
+    "correctIndex": 1,
+    "explanation": "Vector attraction reduction (VAR) is a critical requirement for Class A EQ biosolids, aiming to reduce the potential for disease vectors (e.g., flies, rodents) to be attracted to and spread pathogens from the biosolids, ensuring public health safety."
+   },
+   "fix": {
+    "question": "In biosolids management, what is the significance of vector attraction reduction (stabilization) requirements?",
+    "options": [
+     "It ensures that the biosolids are free of heavy metals and organic contaminants.",
+     "It prevents the attraction of disease vectors like flies, rodents, and birds to the biosolids.",
+     "It reduces the moisture content of the biosolids for easier handling.",
+     "It guarantees the complete removal of all pathogens from the biosolids."
+    ],
+    "correctIndex": 1,
+    "explanation": "Vector attraction reduction (stabilization) lowers the potential for flies, rodents and birds to be attracted to the biosolids and spread pathogens, protecting public health.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182753,
+   "bankKey": "class4-wastewater",
+   "questionNum": 54,
+   "verdict": "UNCLEAR",
+   "note": "Option B (population growth trends and zoning) is at least as defensible as C for 'most critical factor' in growth projections; industrial development is not more critical than population/land-use growth for most municipalities. Compare 182708, which keys municipal growth, zoning and industrial together.",
+   "original": {
+    "question": "When developing a strategic plan for wastewater treatment capacity, what is the most critical factor to consider regarding future growth projections?",
+    "options": [
+     "The current average daily flow and peak flow rates of the existing plant.",
+     "Historical population growth trends and current municipal zoning bylaws.",
+     "Projected industrial development and anticipated water conservation efforts.",
+     "The remaining useful life of existing major equipment and infrastructure."
+    ],
+    "correctIndex": 2,
+    "explanation": "Strategic planning for capacity must account for projected industrial development, which significantly impacts wastewater volume and characteristics, alongside anticipated water conservation efforts that can reduce per capita flows."
+   },
+   "fix": {
+    "question": "When developing a strategic plan for wastewater treatment capacity, which information is most essential for projecting future flows and loads?",
+    "options": [
+     "The current average daily flow and peak flow of the existing plant only.",
+     "The remaining useful life of existing major equipment.",
+     "Projected population growth, land-use/zoning changes, industrial development and anticipated water conservation.",
+     "The historical energy use of the plant."
+    ],
+    "correctIndex": 2,
+    "explanation": "Future flows and loads depend on the growth of the service area (population, zoning/land use, industrial development) combined with expected per capita changes such as water conservation.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182755,
+   "bankKey": "class4-wastewater",
+   "questionNum": 56,
+   "verdict": "WRONG",
+   "note": "'Ontario Regulation 508/18 (Biosolids Management)' with 'Category A' does not exist. Ontario regulates biosolids as non-agricultural source material (NASM) under O. Reg. 267/03 of the Nutrient Management Act, 2002, with its own CP/CM categories.",
+   "original": {
+    "question": "Under Ontario Regulation 508/18 (Biosolids Management), what is a key requirement for land application of biosolids to be classified as 'Category A' (highest quality)?",
+    "options": [
+     "The biosolids must be dewatered to at least 25% total solids content.",
+     "Pathogen reduction must meet Class B standards and vector attraction reduction must be achieved.",
+     "Heavy metal concentrations must be below specified limits, and pathogen reduction must meet Class A standards.",
+     "The biosolids must be composted for a minimum of 60 days at elevated temperatures."
+    ],
+    "correctIndex": 2,
+    "explanation": "For Category A biosolids under O. Reg. 508/18, strict limits on heavy metals and pathogens (Class A pathogen reduction) are required to ensure the highest quality for beneficial use, including unrestricted public access sites."
+   },
+   "fix": {
+    "question": "Under the Nutrient Management Act, 2002 and O. Reg. 267/03, how are municipal biosolids applied to agricultural land regulated?",
+    "options": [
+     "As agricultural source material (ASM) only.",
+     "As non-agricultural source material (NASM).",
+     "As hazardous waste exempt from the Act.",
+     "As commercial fertilizer exempt from all rules."
+    ],
+    "correctIndex": 1,
+    "explanation": "Biosolids from municipal sewage treatment are regulated in Ontario as non-agricultural source material (NASM) under O. Reg. 267/03, with requirements for pathogen and metal quality, storage, setbacks and NASM plans.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182777,
+   "bankKey": "class4-wastewater",
+   "questionNum": 78,
+   "verdict": "JURISDICTION",
+   "note": "'Class A EQ (Exceptional Quality)' is a US EPA 503 designation, not an Ontario term.",
+   "original": {
+    "question": "What is the main benefit of using advanced biosolids management techniques to produce Class A EQ biosolids?",
+    "options": [
+     "Reduced transportation costs due to lower moisture content.",
+     "Elimination of the need for any further treatment or stabilization.",
+     "Greater flexibility in beneficial use options, including public access sites.",
+     "Increased nutrient content for agricultural land application."
+    ],
+    "correctIndex": 2,
+    "explanation": "Class A EQ (Exceptional Quality) biosolids have undergone extensive pathogen reduction and vector attraction reduction, allowing for wider beneficial use options, including application to public access lands with fewer restrictions."
+   },
+   "fix": {
+    "question": "What is the main benefit of using advanced biosolids management techniques to produce biosolids with very low pathogen levels?",
+    "options": [
+     "Reduced transportation costs due to lower moisture content.",
+     "Elimination of the need for any further treatment or stabilization.",
+     "Greater flexibility in beneficial use options, with fewer site restrictions.",
+     "Increased nutrient content for agricultural land application."
+    ],
+    "correctIndex": 2,
+    "explanation": "Biosolids treated to very low pathogen levels and stabilized have fewer restrictions on where and how they can be beneficially used.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182797,
+   "bankKey": "class4-wastewater",
+   "questionNum": 98,
+   "verdict": "UNCLEAR",
+   "note": "For municipal wastewater (low strength, cold climate such as Ontario) the dominant UASB challenge is low temperature for methanogens, so option A is as defensible as C.",
+   "original": {
+    "question": "What is the most significant operational challenge when implementing an Upflow Anaerobic Sludge Blanket (UASB) reactor for municipal wastewater?",
+    "options": [
+     "Maintaining optimal temperature conditions for methanogenic bacteria.",
+     "Achieving high levels of nitrogen and phosphorus removal simultaneously.",
+     "Managing sludge granulation and preventing washout of active biomass.",
+     "Coping with highly variable influent flow rates and organic loads."
+    ],
+    "correctIndex": 2,
+    "explanation": "A key challenge in UASB operation is maintaining stable sludge granulation and preventing the washout of the active granular biomass, which is crucial for efficient organic removal and biogas production."
+   },
+   "fix": {
+    "question": "What is the most significant operational challenge when applying an Upflow Anaerobic Sludge Blanket (UASB) reactor to municipal wastewater in a cold climate such as Ontario?",
+    "options": [
+     "Maintaining adequate temperature for methanogenic activity at low winter wastewater temperatures.",
+     "Achieving high levels of nitrogen and phosphorus removal simultaneously.",
+     "Excess dissolved oxygen inhibiting the sludge blanket.",
+     "Providing external carbon for denitrification."
+    ],
+    "correctIndex": 0,
+    "explanation": "Municipal wastewater is dilute and cold in winter, which slows methanogenesis in a UASB and limits stable performance.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182802,
+   "bankKey": "class4-wastewater",
+   "questionNum": 103,
+   "verdict": "JURISDICTION",
+   "note": "'Class A EQ' is a US EPA 503 term, and Ontario no longer issues a 'Certificate of Approval' (replaced by ECA).",
+   "original": {
+    "question": "A Class 4 operator is reviewing a proposed upgrade to a municipal wastewater treatment plant to achieve Class A EQ biosolids. What is a critical regulatory requirement under Ontario's Nutrient Management Act, 2002 (NMA) and O. Reg. 267/03 for land application of such biosolids?",
+    "options": [
+     "The biosolids must meet specific pathogen reduction and vector attraction reduction standards.",
+     "The land application rate is solely determined by the nitrogen content of the biosolids.",
+     "A Certificate of Approval from the Ministry of the Environment, Conservation and Parks (MECP) is not required for Class A EQ biosolids.",
+     "The biosolids can only be applied to agricultural land during the growing season."
+    ],
+    "correctIndex": 0,
+    "explanation": "To be designated Class A EQ (Exceptional Quality) biosolids, they must meet stringent pathogen reduction and vector attraction reduction criteria as outlined in O. Reg. 267/03 under the NMA, allowing for broader beneficial use."
+   },
+   "fix": {
+    "question": "A Class 4 operator is reviewing an upgrade to produce biosolids with very low pathogen levels. Which requirement applies under Ontario's Nutrient Management Act, 2002 and O. Reg. 267/03 for land application of such biosolids?",
+    "options": [
+     "The biosolids must meet the pathogen and stabilization criteria for their NASM category before land application.",
+     "Land application can occur at any rate regardless of crop nutrient needs.",
+     "Land application rates are not restricted by soil or crop considerations.",
+     "The biosolids can only be applied to agricultural land during the growing season."
+    ],
+    "correctIndex": 0,
+    "explanation": "Under O. Reg. 267/03, biosolids applied as NASM must meet the pathogen, metal and stabilization criteria of their category and be applied according to crop nutrient needs and setbacks.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182817,
+   "bankKey": "class4-wastewater",
+   "questionNum": 118,
+   "verdict": "JURISDICTION",
+   "note": "'Class A EQ' and 'vector attraction reduction' are US EPA 503 terms, not an Ontario program.",
+   "original": {
+    "question": "When managing a Class A EQ biosolids program, what is a key regulatory aspect related to public acceptance and beneficial use?",
+    "options": [
+     "The requirement for extensive public consultation prior to any land application.",
+     "Strict limitations on the types of crops that can be grown on land where Class A EQ biosolids are applied.",
+     "The need to demonstrate pathogen reduction and vector attraction reduction to facilitate unrestricted public access.",
+     "The mandate to incinerate all Class A EQ biosolids to prevent environmental release."
+    ],
+    "correctIndex": 2,
+    "explanation": "Class A EQ biosolids must meet stringent pathogen reduction and vector attraction reduction standards, which are designed to ensure public health safety and facilitate broader public acceptance and beneficial use, including application to public access lands."
+   },
+   "fix": {
+    "question": "When managing a program producing highly treated, low-pathogen biosolids, what is a key regulatory aspect related to beneficial use?",
+    "options": [
+     "The requirement for extensive public consultation prior to any land application.",
+     "Strict limitations on the types of crops that can be grown on land where such biosolids are applied.",
+     "The need to demonstrate pathogen reduction and stabilization to qualify for beneficial use with fewer restrictions.",
+     "The mandate to incinerate all such biosolids to prevent environmental release."
+    ],
+    "correctIndex": 2,
+    "explanation": "Highly treated biosolids must demonstrate pathogen reduction and stabilization to qualify for beneficial use with fewer restrictions.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182836,
+   "bankKey": "class4-wastewater",
+   "questionNum": 137,
+   "verdict": "JURISDICTION",
+   "note": "'Class A EQ' is a US EPA 503 designation, not an Ontario term.",
+   "original": {
+    "question": "When considering the long-term management of Class A EQ biosolids, what is a key advantage of beneficial land application compared to landfilling or incineration?",
+    "options": [
+     "It completely eliminates the need for any regulatory oversight.",
+     "It recovers nutrients and organic matter, improving soil health and reducing reliance on synthetic fertilizers.",
+     "It is always the least expensive disposal option regardless of transportation costs.",
+     "It significantly reduces the volume of biosolids requiring management by 90% or more."
+    ],
+    "correctIndex": 1,
+    "explanation": "Beneficial land application of Class A EQ biosolids recycles valuable nutrients (nitrogen, phosphorus) and organic matter back to agricultural lands, enhancing soil fertility, structure, and water retention, and reducing the need for synthetic fertilizers."
+   },
+   "fix": {
+    "question": "When considering the long-term management of treated biosolids, what is a key advantage of beneficial land application compared to landfilling or incineration?",
+    "options": [
+     "It completely eliminates the need for any regulatory oversight.",
+     "It recovers nutrients and organic matter, improving soil health and reducing reliance on synthetic fertilizers.",
+     "It is always the least expensive disposal option regardless of transportation costs.",
+     "It significantly reduces the volume of biosolids requiring management by 90% or more."
+    ],
+    "correctIndex": 1,
+    "explanation": "Beneficial land application recycles nutrients (nitrogen, phosphorus) and organic matter to agricultural land, enhancing soil fertility, structure and water retention and reducing the need for synthetic fertilizers.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182838,
+   "bankKey": "class4-wastewater",
+   "questionNum": 139,
+   "verdict": "UNCLEAR",
+   "note": "Both the Environmental Protection Act (s.14 discharge prohibition, ECAs under Part II.1) and the Ontario Water Resources Act (s.30, s.53) govern discharge of treated wastewater; the bank itself keys EPA in 182707 and 182765. Two options defensible.",
+   "original": {
+    "question": "What is the primary regulatory document in Ontario that governs the discharge of treated wastewater from municipal facilities?",
+    "options": [
+     "The Safe Drinking Water Act, 2002.",
+     "The Environmental Protection Act, 1990.",
+     "The Ontario Water Resources Act, 1990.",
+     "The Nutrient Management Act, 2002."
+    ],
+    "correctIndex": 2,
+    "explanation": "The Ontario Water Resources Act (OWRA) is the primary legislation governing water taking, sewage works, and the discharge of contaminants to surface and groundwater in Ontario, including treated wastewater from municipal facilities."
+   },
+   "fix": {
+    "question": "Which Ontario statute contains the primary prohibition on discharging material that may impair water quality, and governs sewage works discharging treated wastewater to water?",
+    "options": [
+     "The Safe Drinking Water Act, 2002.",
+     "The Clean Water Act, 2006.",
+     "The Ontario Water Resources Act, 1990.",
+     "The Nutrient Management Act, 2002."
+    ],
+    "correctIndex": 2,
+    "explanation": "The Ontario Water Resources Act (s.30 and s.53) prohibits discharge of material that may impair water quality and governs sewage works, including municipal wastewater treatment plants.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182863,
+   "bankKey": "class4-wastewater",
+   "questionNum": 164,
+   "verdict": "JURISDICTION",
+   "note": "'Class A Equivalent (EQ)' is US EPA 40 CFR 503 terminology, not an Ontario category under O. Reg. 267/03. Ontario regulates sewage biosolids as non-agricultural source material (NASM) with pathogen categories (CP1/CP2) and metal limits.",
+   "original": {
+    "question": "What is the primary regulatory requirement for producing Class A Equivalent (EQ) biosolids in Ontario under O. Reg. 267/03?",
+    "options": [
+     "Meeting specific pathogen reduction and vector attraction reduction criteria",
+     "Achieving a minimum solids content of 20% for dewatered sludge",
+     "Ensuring the biosolids are completely free of all heavy metals",
+     "Applying biosolids only to agricultural lands with specific crop types"
+    ],
+    "correctIndex": 0,
+    "explanation": "To be classified as Class A EQ biosolids in Ontario under O. Reg. 267/03, the material must meet stringent pathogen reduction (e.g., fecal coliform or Salmonella limits) and vector attraction reduction requirements to ensure safe public contact and environmental protection."
+   },
+   "fix": {
+    "question": "What is a primary regulatory requirement for land applying municipal sewage biosolids as non-agricultural source material (NASM) in Ontario under O. Reg. 267/03?",
+    "options": [
+     "Meeting the prescribed pathogen category and metal concentration criteria for NASM before application",
+     "Achieving a minimum solids content of 20% for dewatered sludge",
+     "Ensuring the biosolids are completely free of all heavy metals",
+     "Applying biosolids only to agricultural lands with specific crop types"
+    ],
+    "correctIndex": 0,
+    "explanation": "In Ontario, sewage biosolids applied to land are managed as NASM under O. Reg. 267/03 (Nutrient Management Act). They must meet the prescribed pathogen category and metal concentration limits and be applied under a NASM plan. 'Class A EQ' is a US EPA term, not an Ontario category.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182886,
+   "bankKey": "class4-wastewater",
+   "questionNum": 187,
+   "verdict": "JURISDICTION",
+   "note": "'Class A EQ biosolids' is US EPA 503 terminology presented in an Ontario bank; Ontario uses NASM categories under O. Reg. 267/03.",
+   "original": {
+    "question": "What is the primary objective of implementing a robust biosolids beneficial use program, such as land application of Class A EQ biosolids?",
+    "options": [
+     "To eliminate all regulatory oversight of biosolids management",
+     "To dispose of biosolids in landfills as the lowest-cost option",
+     "To recycle nutrients and organic matter back to agricultural lands, reducing reliance on synthetic fertilizers",
+     "To incinerate all biosolids to generate electricity"
+    ],
+    "correctIndex": 2,
+    "explanation": "Beneficial use programs, especially land application of Class A EQ biosolids, aim to safely and effectively recycle valuable nutrients (nitrogen, phosphorus) and organic matter back to soils, improving soil health and reducing the need for manufactured fertilizers."
+   },
+   "fix": {
+    "question": "What is the primary objective of implementing a robust biosolids beneficial use program, such as land application of treated biosolids as NASM under an approved plan in Ontario?",
+    "options": [
+     "To eliminate all regulatory oversight of biosolids management",
+     "To dispose of biosolids in landfills as the lowest-cost option",
+     "To recycle nutrients and organic matter back to agricultural lands, reducing reliance on synthetic fertilizers",
+     "To incinerate all biosolids to generate electricity"
+    ],
+    "correctIndex": 2,
+    "explanation": "Beneficial use programs, such as land application of treated biosolids under a NASM plan, aim to safely recycle valuable nutrients (nitrogen, phosphorus) and organic matter back to soils, improving soil health and reducing the need for manufactured fertilizers.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182911,
+   "bankKey": "class4-wastewater",
+   "questionNum": 212,
+   "verdict": "JURISDICTION",
+   "note": "'Class A EQ biosolids' is a US EPA 503 concept, not an Ontario O. Reg. 267/03 category. Also option A (agronomic rates per crop nutrient needs) is itself a correct O. Reg. 267/03 requirement, so the marked key C was not uniquely correct.",
+   "original": {
+    "question": "Under Ontario's O. Reg. 267/03 (Nutrient Management Act), what is a key requirement for land application of Class A Equivalent (EQ) biosolids?",
+    "options": [
+     "Biosolids must be applied at agronomic rates based on crop nutrient needs",
+     "A permit from the Ministry of the Environment, Conservation and Parks (MECP) is required for each application site",
+     "The biosolids must undergo a full pathogen destruction process and meet strict vector attraction reduction standards",
+     "Annual soil testing is optional for sites receiving Class A EQ biosolids"
+    ],
+    "correctIndex": 2,
+    "explanation": "For Class A EQ biosolids, O. Reg. 267/03 requires that the biosolids undergo processes to significantly reduce pathogens and meet specific vector attraction reduction requirements, making them safe for unrestricted public contact and land application."
+   },
+   "fix": {
+    "question": "Under Ontario's O. Reg. 267/03 (Nutrient Management Act), what is a key requirement for land application of non-agricultural source material (NASM) such as treated municipal biosolids?",
+    "options": [
+     "Application must be at agronomic rates based on crop nutrient needs, as set out in a NASM plan",
+     "A permit from the Ministry of the Environment, Conservation and Parks (MECP) is required for each application site",
+     "The biosolids must be incinerated to ash before land application",
+     "Annual soil testing is optional for sites receiving treated biosolids"
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 267/03 requires NASM, including treated biosolids, to be applied to land in accordance with a NASM plan at rates based on crop nutrient needs and soil conditions, with soil testing and setback requirements. 'Class A EQ' is a US EPA term, not an Ontario category.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182947,
+   "bankKey": "class4-wastewater",
+   "questionNum": 248,
+   "verdict": "UNCLEAR",
+   "note": "Keyed answer is physically backwards: higher salt rejection increases the osmotic pressure difference across the membrane. Osmotic pressure is overcome by applied pressure (staged systems with interstage boosting, recovery limits), not by selecting higher-rejection membranes.",
+   "original": {
+    "question": "When designing a membrane system for wastewater reuse, what is a key consideration for managing the osmotic pressure difference across the membrane, especially with high-salinity feedwaters?",
+    "options": [
+     "Reducing the frequency of chemical cleaning",
+     "Operating at lower transmembrane pressures",
+     "Selecting membranes with higher salt rejection rates and potentially using multi-stage systems",
+     "Increasing the temperature of the feedwater"
+    ],
+    "correctIndex": 2,
+    "explanation": "For high-salinity feedwaters, managing osmotic pressure is crucial. Selecting membranes with higher salt rejection and implementing multi-stage RO systems helps overcome the osmotic pressure barrier, allowing for higher water recovery and efficient salt removal."
+   },
+   "fix": {
+    "question": "When designing a membrane system for wastewater reuse, what is a key consideration for managing the osmotic pressure difference across the membrane, especially with high-salinity feedwaters?",
+    "options": [
+     "Reducing the frequency of chemical cleaning",
+     "Operating at lower transmembrane pressures",
+     "Applying feed pressure sufficiently above the feed osmotic pressure, using staged systems with interstage boosting and limiting recovery",
+     "Lowering the feed pressure to reduce scaling"
+    ],
+    "correctIndex": 2,
+    "explanation": "In RO, the applied pressure must exceed the osmotic pressure of the (concentrating) feed to produce permeate. For high-salinity feeds, designers use higher operating pressure, multi-stage arrangements with interstage boosting, and recovery limits to manage the rising osmotic pressure along the system.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182950,
+   "bankKey": "class4-wastewater",
+   "questionNum": 251,
+   "verdict": "JURISDICTION",
+   "note": "'Class B biosolids' and 'Class A EQ' are US EPA 503 terms; Ontario regulates biosolids as NASM under O. Reg. 267/03 using pathogen categories, not Class A/B.",
+   "original": {
+    "question": "Under Ontario's regulatory framework, what is a key consideration for a wastewater treatment plant when planning for the beneficial use of Class B biosolids on agricultural land?",
+    "options": [
+     "Class B biosolids can be applied without any restrictions on public access or crop harvesting",
+     "A Nutrient Management Plan (NMP) is required, and specific setback distances from water bodies and residences must be observed",
+     "Class B biosolids must be thermally dried to 90% solids before land application",
+     "Only Class A EQ biosolids are permitted for agricultural land application"
+    ],
+    "correctIndex": 1,
+    "explanation": "For Class B biosolids, Ontario's O. Reg. 267/03 mandates the development of a Nutrient Management Plan (NMP) and requires specific setback distances from sensitive receptors (e.g., wells, surface water, residences) to protect public health and the environment."
+   },
+   "fix": {
+    "question": "Under Ontario's regulatory framework, what is a key consideration for a wastewater treatment plant planning beneficial use of treated biosolids that have not met the highest pathogen reduction category on agricultural land?",
+    "options": [
+     "They can be applied without any restrictions on public access or crop harvesting",
+     "A NASM plan is required under O. Reg. 267/03, and specific setback distances from water bodies, wells and residences must be observed",
+     "They must be thermally dried to 90% solids before land application",
+     "Only biosolids meeting the highest pathogen category are permitted for agricultural land application"
+    ],
+    "correctIndex": 1,
+    "explanation": "Biosolids applied to agricultural land in Ontario are NASM under O. Reg. 267/03. A NASM plan is required and setbacks from sensitive features (wells, surface water, residences) must be respected; lower-pathogen-category material also carries harvesting and access restrictions. 'Class A/B' is US EPA terminology.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182983,
+   "bankKey": "class4-wastewater",
+   "questionNum": 284,
+   "verdict": "JURISDICTION",
+   "note": "'Class A EQ (Exceptional Quality)' is a US EPA 503 designation; it is not an Ontario category. Also 'unrestricted land application' overstates what Ontario allows.",
+   "original": {
+    "question": "What is the primary objective of achieving Class A EQ (Exceptional Quality) biosolids in Ontario?",
+    "options": [
+     "To allow for unrestricted land application without public health concerns.",
+     "To reduce the overall volume of biosolids requiring disposal.",
+     "To increase the moisture content of the biosolids for easier pumping.",
+     "To eliminate the need for any further treatment of the wastewater."
+    ],
+    "correctIndex": 0,
+    "explanation": "Class A EQ biosolids meet stringent pathogen reduction and vector attraction reduction requirements, making them suitable for a wider range of beneficial uses, including unrestricted public access sites, with minimal public health risk."
+   },
+   "fix": {
+    "question": "What is the primary benefit of treating biosolids to the highest pathogen reduction category (comparable to US EPA Class A) in Ontario?",
+    "options": [
+     "Fewer land-application restrictions and minimal public health risk",
+     "To reduce the overall volume of biosolids requiring disposal",
+     "To increase the moisture content of the biosolids for easier pumping",
+     "To eliminate the need for any further treatment of the wastewater"
+    ],
+    "correctIndex": 0,
+    "explanation": "Biosolids treated to the highest pathogen reduction category (with vector attraction reduction) pose minimal public health risk and face fewer restrictions on use under Ontario's NASM requirements (O. Reg. 267/03). 'Class A EQ' is US EPA terminology.",
+    "steps": null
    }
   }
  ]
