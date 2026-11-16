@@ -47,6 +47,7 @@ export function parseSources(config) {
       if (line.startsWith('@')) {
         [module, source, topic] = line.slice(1).split('|').map(s => s.trim());
         if (!module || !config.sources[source] || !topic) problems.push(`${where}: invalid section header (unknown source or missing part)`);
+        else if (module.length > 128 || topic.length > 128) problems.push(`${where}: section module or topic name is over 128 characters; shorten it`);
         return;
       }
       if (!module) return problems.push(`${where}: row before any section header`);

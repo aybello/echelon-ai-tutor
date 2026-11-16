@@ -85,3 +85,31 @@ Calculations that rely on a simplified assumption:
 - The emergency reserve item assumes 50,000 gal.
 - The "tank turns over once" items assume a fully mixed tank.
 - The hydropneumatic item converts a psi range to feet, assuming pump start and stop settings are the range.
+
+## Batch 4: Water quality and monitoring
+
+Conceptual:
+1. "Why might a utility switch temporarily to free chlorine in a chloraminated system with nitrification?" A practice some utilities use.
+2. "Why is a sample bottle ... supplied with a dechlorinating agent" and "Why are samples for bacteria generally kept cool and delivered within a limited time". General practice, no times or temperatures.
+3. "A routine sample shows a positive result for total coliform ... What does this generally mean?" and "What is the general next step after a positive routine bacteriological result?" Detail varies.
+4. "What do heterotrophic plate count bacteria give a general picture of?" A simplification.
+5. "A rise in white or cloudy water complaints in cold months is often tied to what?" Dissolved air. Typical, not universal.
+6. "What is a possible cause of rotten egg odor at hot water taps only?" Water heater bacteria and anode reactions are typical.
+7. "Low pressure complaints from a single customer ... most often point to" a property-side problem. A tendency.
+8. "Compared with free chlorine, how does chloramine usually behave" and "How does warm water usually affect chlorine residual decay". Tendencies.
+9. "Why does a larger-diameter main in a low-demand area tend to raise water age?" and the "subdivision planned for many homes" question. Assume low demand and plug flow.
+10. "How does unidirectional flushing differ from conventional flushing?" Depends on the program.
+11. "Why do operators think about where flushed water goes?" and "Why is a flushing program usually planned with a map and a sequence?"
+12. "Why do renewal projects often include replacing old service lines?" and "When might replacing a main make more sense than cleaning and lining it?" Planning judgements.
+13. "Why might a cleaned main need renewed attention to its disinfectant residual?" A generalisation.
+14. "Why can a change in the source or treatment of water lead to colored water complaints?" and "How might lead or copper in tap water relate to the distribution system and plumbing?"
+15. "Why is cement-mortar lining often used ... with regard to corrosion?" The pH claim holds for fresh cement mortar and is variable.
+16. "Who should test a backflow prevention assembly, in general terms?" Tester certification varies by jurisdiction. The related containment versus isolation question is a policy choice.
+
+Calculations that rely on a stated simplification:
+- The residual-loss item (0.15 mg/L per day for 2 days, then 0.05) is an invented decay pattern, stated in the question.
+- The 12.5% hypochlorite item assumes 8.34 lb/gal, stated and slightly off in reality.
+- The dead-end water age items treat the main as a single plug.
+- The negative-pressure item is a simplified static illustration.
+- Percent-of-samples and percent-positive items use targets or counts stated in the question, not regulatory limits.
+- The coupon item assumes a steady corrosion rate.
