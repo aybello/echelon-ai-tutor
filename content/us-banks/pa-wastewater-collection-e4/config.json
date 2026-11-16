@@ -1,0 +1,21 @@
+{
+  "id": "pa-wastewater-collection-e4",
+  "bankKey": "pa-wastewater-collection-e4",
+  "itemPrefix": "PA-E4-COLL",
+  "version": "2026-11-16-v1",
+  "state": "PA",
+  "stream": "wastewater-collection",
+  "label": "Pennsylvania Wastewater Collection (Class E, Subclass 4)",
+  "startNumber": 1,
+  "count": 500,
+  "calcCount": 145,
+  "purpose": "Practice questions for the Pennsylvania wastewater Class E, Subclassification 4 (WWE4) stand-alone collection systems examination. Original items in US units. Not an official exam blueprint.",
+  "reviewIntro": "500 original practice questions: 355 conceptual and 145 calculations, in US customary units. This is a local content package, not proof of a production import.",
+  "sources": {
+    "PADEP23": ["Pennsylvania DEP Module WW-23: Collection Systems Part I (topic structure for the E4 exam)", "http://files.dep.state.pa.us/Water/BSDW/OperatorCertification/TrainingModules/WW-23%20Collection%20Sys%201_WB_Final.pdf"],
+    "PADEP24": ["Pennsylvania DEP Module WW-24: Collection Systems Part II (topic structure for the E4 exam)", "http://files.dep.state.pa.us/Water/BSDW/OperatorCertification/TrainingModules/WW-24%20Collection%20Sys%202_WB_Final.pdf"],
+    "PADEP22": ["Pennsylvania DEP Module WW-22: Industrial Pretreatment Programs (topic structure for the E4 exam)", "http://files.dep.state.pa.us/Water/BSDW/OperatorCertification/TrainingModules/WW-22%20Industrial%20Pretreatment_WB_Final.pdf"],
+    "CMOM": ["US EPA, CMOM Guide for Sanitary Sewer Collection Systems", "https://www.epa.gov/sites/default/files/2015-10/documents/cmom_guide_for_collection_systems.pdf"],
+    "EPANET": ["US EPA, EPANET hydraulic modelling", "https://www.epa.gov/water-research/epanet"]
+  }
+}
