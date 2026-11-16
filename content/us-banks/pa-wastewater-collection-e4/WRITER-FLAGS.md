@@ -22,3 +22,26 @@ Conceptual:
 Calculations:
 - The "gpd per inch-mile" item defines the unit. The 14 gpm night flow is treated as pure infiltration, as stated in the question.
 - The "percent of peak flow is I/I" item treats everything above dry-weather flow as I/I, as stated in the question.
+
+## Batch 2: Pumping stations and industrial pretreatment
+
+Conceptual:
+1. "Why do many stations pair a transducer for normal control with float switches as a backup?" Backup floats are common, not universal.
+2. "Which setting would most favor a vacuum sewer system over a conventional gravity system with pump stations?" Design judgement.
+3. "Why is a suction-lift station practical only when the pump sits a limited height above the liquid in the wet well?" The lift limit is stated without a number.
+4. "What does an automatic transfer switch do?" Generator-start detail varies by installation.
+5. "Why is a station's stored alarm history useful?" Depends on the station's telemetry.
+6. "Why does a pump that starts too often cause trouble?" The limit itself is manufacturer-specific.
+7. "Which of these is a normal part of a routine station inspection?" Routine contents vary by owner.
+8. "How does the flow of a positive-displacement pump respond to a rise in discharge pressure, compared with a centrifugal pump?" Ideal behaviour.
+9. "What is the basic idea behind a local limit in a pretreatment program?" Programs differ.
+10. "An industrial user turns in a monitoring report late once, with no harm from its discharge. Which response best fits the idea of proportional enforcement?" Enforcement response varies by authority.
+11. "Why is a grab sample often used instead of a composite sample for something like oil and grease?" Depends on the parameter and program.
+12. "Why must a grease trap be pumped out on a regular schedule?" and "What is the purpose of a grease interceptor or grease trap at a restaurant?" The schedule is owner-specific.
+13. "Why does a pretreatment program include inspections of industrial users?" and "What does a permit or similar authorization for an industrial user typically do?"
+14. "Why do industrial users sample and monitor their discharge?" Self-monitoring versus authority sampling varies.
+
+Calculations:
+- The drawdown-test item adds an estimated 40 gpm inflow, stated in the question.
+- The grease trap pump-out item uses a 25 percent pump-out level, stated as an assumption.
+- The energy item states 55 percent overall efficiency in the question.
