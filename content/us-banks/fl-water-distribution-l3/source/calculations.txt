@@ -1,0 +1,29 @@
+@Math|FLDS|Unit conversions
+A booster pump delivers 1200 gpm. Use 1 day = 1440 minutes. How many MGD is that?|MGD = gpm times 1440 divided by 1,000,000|1200*1440/1000000|MGD|2|0.07,17.28,0.03|m
+A hydrant gauge reads 62 psi. Use 1 psi = 2.31 ft of water. What is the pressure in feet of head?|Feet of head = psi times 2.31|62*2.31|ft|1|26.8,64.3,11.9|m
+The water surface in an elevated tank is 46 ft above a service gauge. Use 1 psi = 2.31 ft of water. What pressure in psi does the gauge show?|psi = feet of head divided by 2.31|46/2.31|psi|1|106.3,43.7,199.1|m
+A meter vault has a volume of 85 ft3. Use 1 ft3 = 7.48 gal. How many gallons would the vault hold if it were full?|Gallons = cubic feet times 7.48|85*7.48|gal|0|11,709,4756|m
+A treatment plant sends out 3.2 MGD. Use 1 MGD = 1.547 cfs. What is the flow in cfs?|cfs = MGD times 1.547|3.2*1.547|cfs|2|2.07,2222.08,1.65|m
+@Math|FLDS|Area and volume
+A circular clearwell floor has a diameter of 36 ft. Use area = 0.785 x D x D. What is the floor area in ft2?|Area = 0.785 times diameter squared|0.785*36*36|ft2|1|4069.4,28.3,254.3|m
+A trench is 120 ft long, 3 ft wide and 5 ft deep. Use 1 yd3 = 27 ft3. How many cubic yards of soil are removed?|Cubic yards = length times width times depth divided by 27|120*3*5/27|yd3|1|1800,200,13464|h
+A 10 inch main has a diameter of 10/12 ft and is 600 ft long. Use volume = 0.785 x D x D x length x 7.48 gal per ft3. How many gallons does the pipe run hold?|Gallons = 0.785 times diameter squared times length times 7.48|0.785*(10/12)*(10/12)*600*7.48|gal|0|352308,327,9786|h
+A cylindrical standpipe is 30 ft in diameter and holds water 22 ft deep. Use volume = 0.785 x D x D x depth x 7.48 gal per ft3. How many gallons are stored?|Gallons = 0.785 times diameter squared times depth times 7.48|0.785*30*30*22*7.48|gal|0|15543,29066,3875|m
+A service trench is 85 ft long, 2.5 ft wide and 4 ft deep. How many cubic feet of soil are removed?|Cubic feet = length times width times depth|85*2.5*4|ft3|0|31,92,6358|m
+@Math|FLDS|Flow and velocity
+Water moves through a 12 inch main (1.0 ft diameter) at 2.5 ft/s. Use Q = A x V with A = 0.785 x D x D, 7.48 gal per ft3 and 60 s per minute. What is the flow in gpm?|gpm = 0.785 times diameter squared times velocity times 7.48 times 60|0.785*1*1*2.5*7.48*60|gpm|0|15,118,6588|h
+A flow of 350 gpm moves through a 6 inch main (0.5 ft diameter). Use 7.48 gal per ft3, 60 s per minute and A = 0.785 x D x D. What is the velocity in ft/s?|Velocity = flow in cfs divided by pipe area|350/(7.48*60)/(0.785*0.5*0.5)|ft/s|2|0.78,0.99,238.4|h
+An 8 inch main (8/12 ft diameter) is 1000 ft long and is flushed at 200 gpm. Use volume = 0.785 x D x D x length x 7.48 gal per ft3. How many minutes does one full volume of the pipe take to flush?|Minutes = pipe volume in gallons divided by gpm|0.785*(8/12)*(8/12)*1000*7.48/200|min|1|1.7,52.2,0.1|h
+A well pump delivers 0.9 MGD. Use 1 MGD = 694.4 gpm. What is the flow in gpm?|gpm = MGD times 694.4|0.9*694.4|gpm|0|1296,15000,37500|m
+@Math|FLDS|Pressure, percent, ratios and averages
+Daily demand readings for five days were 2.4, 2.9, 3.1, 2.6 and 3.0 MGD. What is the average daily demand in MGD?|Average = sum of readings divided by number of readings|(2.4+2.9+3.1+2.6+3.0)/5|MGD|1|14.0,3.5,0.7|m
+A utility produced 4.8 MG in a month and billed 4.2 MG. Percent unaccounted-for water is the difference divided by the amount produced, times 100. What is the percent?|Percent = (produced minus billed) divided by produced times 100|(4.8-4.2)/4.8*100|percent|1|87.5,14.3,0.6|h
+A tank water surface is at elevation 1085 ft and a hydrant is at elevation 920 ft. Use 1 psi = 2.31 ft of water. What is the static pressure at the hydrant in psi?|psi = elevation difference divided by 2.31|(1085-920)/2.31|psi|1|381.2,469.7,7.1|h
+A customer meter registered 1008 gal while a test tank received 1050 gal. Accuracy is registered volume divided by actual volume, times 100. What is the meter accuracy in percent?|Accuracy = registered divided by actual times 100|1008/1050*100|percent|1|104.2,42.0,4.0|m
+@Disinfection|FLDS|Chlorine dose, volume and demand calculations
+How many lb of chlorine are needed to dose 1.8 MG of water at 3.5 mg/L? Use 8.34 lb/gal.|Pounds = volume in MG times dose in mg/L times 8.34|1.8*3.5*8.34|lb|2|6.30,29.19,15.01|m
+A 0.75 MG tank is dosed at 3 mg/L using hypochlorite that is 10 percent available chlorine by weight. Use 8.34 lb/gal for both water and the solution. How many gallons of solution are needed?|Gallons = pounds of chlorine divided by (8.34 times strength as a decimal)|0.75*3*8.34/(8.34*0.10)|gal|1|18.8,225.0,2.3|h
+A feed pump adds 25 lb/day of chlorine to a flow of 1.2 MGD, and the residual after contact time is 1.1 mg/L. Use 8.34 lb/gal. What is the chlorine demand in mg/L?|Demand = dose (lb/day divided by MGD times 8.34) minus residual|25/(1.2*8.34)-1.1|mg/L|1|2.5,3.6,19.7|h
+A 12 inch main (1.0 ft diameter) is 2400 ft long. Use volume = 0.785 x D x D x length x 7.48 gal per ft3. How many gallons of water must be disinfected?|Gallons = 0.785 times diameter squared times length times 7.48|0.785*1*1*2400*7.48|gal|0|1884,56369,17952|m
+A 6 inch main (0.5 ft diameter) is 3000 ft long and will be chlorinated at 50 mg/L. Use volume = 0.785 x D x D x length x 7.48 gal per ft3 and 8.34 lb/gal. How many lb of chlorine are needed?|Pounds = main volume in MG times dose times 8.34|0.785*0.5*0.5*3000*7.48/1000000*50*8.34|lb|2|0.25,7.35,18.36|h
+A 30000 gal tank is dosed at 5 mg/L with household bleach that is 5.25 percent available chlorine by weight. Use 8.34 lb/gal for both water and the solution. How many gallons of bleach are needed?|Gallons = pounds of chlorine divided by (8.34 times strength as a decimal)|30000/1000000*5*8.34/(8.34*0.0525)|gal|2|1.25,23.8,285.7|h
