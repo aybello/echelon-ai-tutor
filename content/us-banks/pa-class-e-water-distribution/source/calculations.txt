@@ -50,3 +50,66 @@ A leak runs at 8 gpm for 45 days. Water costs the utility $0.95 per 1,000 gal to
 @Network components|PADEP8|Main installation, repair and return to service (general practice only, no worksite safety instructions)
 A new main holds 4,200 gal. It will be disinfected at a dose of 25 mg/L. Use lb = volume (MG) × dose (mg/L) × 8.34. How many pounds of chlorine are needed?|Pounds = volume in million gallons times dose times 8.34|4200/1000000*25*8.34|lb|3|0.105,875.700,8.757|m
 A 6-inch main (0.5 ft diameter) is 2,000 ft long. Use volume = 0.785 × D² × length × 7.48 gal per ft³. It is filled at 120 gpm. How many minutes does filling take?|Time = pipe volume in gallons divided by fill rate|0.785*0.5*0.5*2000*7.48/120|min|2|3523.08,6.12,3.27|h
+
+
+@Hydraulics|PADEP8|Pressure and head: static, residual and dynamic pressure; elevation; psi and feet of head; zones and pressure reducing
+A gauge reads 65 psi. Use 2.31 ft of head per psi. What is this pressure in feet of head?|Head = psi x 2.31|65*2.31|ft|2|28.14,67.31,346.77|m
+The water level in a tank is 185 ft above a gauge. Use 0.433 psi per ft of head. What pressure does the gauge read at no flow?|Pressure = height x 0.433|185*0.433|psi|1|427.3,427.4,34.7|m
+With no flow, a gauge on a main reads 72 psi. A hydrant on the same main stands 40 ft higher. Use 0.433 psi per ft. What would a gauge there read?|Pressure = 72 minus (40 x 0.433)|72-40*0.433|psi|1|89.3,32.0,17.3|m
+A high-zone tank water surface is 1,120 ft and a customer sits at 760 ft elevation. Use 0.433 psi per ft. A pressure reducing valve is set to hold 75 psi on the low side. How many psi must the valve take off the static pressure?|Static psi = elevation difference x 0.433, then subtract the outlet setting|(1120-760)*0.433-75|psi|2|230.88,285.00,756.60|h
+During a hydrant flow test the static pressure is 74 psi and the residual pressure is 58 psi. What is the pressure drop as a percent of the static pressure?|Percent drop = (static - residual) / static x 100|(74-58)/74*100|%|1|27.6,78.4,16.0|m
+A point on a main is at elevation 610 ft and must have 55 psi of pressure. Use 2.31 ft of head per psi. What water surface elevation will give this pressure with no flow?|Surface elevation = point elevation + psi x 2.31|610+55*2.31|ft|2|633.82,482.95,127.05|h
+A tank overflow is at 1,050 ft and a customer is at 760 ft. Use 0.433 psi per ft. What is the static pressure at the customer?|Pressure = elevation difference x 0.433|(1050-760)*0.433|psi|2|669.90,454.65,329.08|m
+A main reads 60 psi at one point with no flow. A second point is 85 ft higher. Use 0.433 psi per ft. What is the pressure at the second point?|Pressure = 60 minus (85 x 0.433)|60-85*0.433|psi|1|96.8,36.8,53.6|h
+The water level in a tank falls from 32 ft to 21 ft. Use 0.433 psi per ft. By how many psi does the pressure at the tank base drop?|Pressure change = level change x 0.433|(32-21)*0.433|psi|2|25.41,13.86,25.40|h
+
+@Hydraulics|PADEP8|Flow, velocity and continuity: gpm, cfs, MGD; flow = area x velocity; pipe velocity and why it matters
+A plant sends out 1.8 MGD. Use 1 MGD = 694.4 gpm. What is the average flow in gpm?|gpm = MGD x 694.4|1.8*694.4|gpm|0|3,1,30000|m
+A line carries 2,400 gpm. Use 1 cfs = 448.8 gpm. What is the flow in cfs?|cfs = gpm / 448.8|2400/448.8|cfs|2|1077120.00,320.86,299.20|m
+A pipe carries 3.6 cfs. Use 1 cfs = 448.8 gpm. What is the flow in gpm?|gpm = cfs x 448.8|3.6*448.8|gpm|0|96941,27,6|m
+A pump station delivers 950 gpm. Use 1 MGD = 694.4 gpm. What is the flow in MGD?|MGD = gpm / 694.4|950/694.4|MGD|2|1469.65,2.12,0.66|m
+An 8-inch main (8/12 ft) carries 500 gpm. Use 1 cfs = 448.8 gpm and area = 0.785 x D squared. What is the velocity in ft per second?|Velocity = flow in cfs / area|(500/448.8)/(0.785*(8/12)*(8/12))|fps|2|0.80,0.39,1433.12|h
+A 10-inch main (10/12 ft) carries 1,100 gpm. Use 1 cfs = 448.8 gpm and area = 0.785 x D squared. What is the velocity in ft per second?|Velocity = flow in cfs / area|(1100/448.8)/(0.785*(10/12)*(10/12))|fps|2|1.34,2017.83,1.12|m
+Water moves at 3.5 ft/s in an 8-inch main (8/12 ft). Use area = 0.785 x D squared and 1 cfs = 448.8 gpm. What is the flow in gpm?|Flow = area x velocity x 448.8|0.785*(8/12)*(8/12)*3.5*448.8|gpm|0|2192,9,822|h
+A tank holding 120,000 gal is filled at a steady 400 gpm. How many hours does it take?|Hours = gallons / gpm / 60|120000/400/60|hr|1|300.0,18000.0,0.2|m
+An 8-inch main (8/12 ft) is 2,400 ft long. Use volume = 0.785 x D squared x length x 7.48 gal per ft cubed. How many gallons does the pipe hold?|Volume = area x length x 7.48|0.785*(8/12)*(8/12)*2400*7.48|gal|0|837,9395,112|m
+A reservoir drains at a steady 2.5 cfs for 3 hours. Use 1 ft cubed = 7.48 gal. How many gallons leave the reservoir?|Gallons = cfs x seconds x 7.48|2.5*3*3600*7.48|gal|0|3366,27000,3610|h
+A 6-inch main (0.5 ft) carries 350 gpm during flushing. Use 1 cfs = 448.8 gpm and area = 0.785 x D squared. What is the velocity in ft per second?|Velocity = flow in cfs / area|(350/448.8)/(0.785*0.5*0.5)|fps|2|0.99,1783.44,0.15|m
+A 12-inch main carries water at 2.0 ft/s and reduces to an 8-inch main with no loss of flow. Use velocity x area = constant and area proportional to D squared. What is the velocity in the 8-inch main in ft per second?|V2 = V1 x (D1 / D2) squared|2*(12*12)/(8*8)|fps|2|3.00,0.89,6.75|h
+
+@Hydraulics|PADEP8|Energy loss: friction loss, minor losses, effect of pipe diameter, roughness and age
+A main loses 4.2 ft of head per 1,000 ft of pipe, and the run is 3,500 ft. Use 0.433 psi per ft. What is the pressure lost to friction in psi?|Pressure loss = (4.2 x length/1000) x 0.433|4.2*3.5*0.433|psi|2|6365.10,33.96,14.70|m
+The pressure at the start of a flat main is 70 psi. The main loses 6.2 ft of head per 1,000 ft and is 2,800 ft long. Use 0.433 psi per ft. What is the pressure at the far end?|Pressure = 70 minus friction loss in psi|70-6.2*2.8*0.433|psi|2|52.64,29.90,77.52|h
+Water moves at 6 ft/s in a main. Use velocity head = V squared / (2 x 32.2). What is the velocity head in feet?|Velocity head = V squared / 64.4|6*6/64.4|ft|3|1.118,0.093,2318.400|m
+A fitting has a loss coefficient K = 1.5 and the velocity is 5 ft/s. Use minor loss = K x V squared / (2 x 32.2). What is the minor loss in feet of head?|Loss = K x V squared / 64.4|1.5*5*5/64.4|ft|3|1.165,0.116,0.388|m
+
+@Hydraulics|PADEP8|Customer demand: average day, maximum day, peak hour; diurnal pattern; peaking factors; fire flow as a demand
+Average day demand is 2.4 MGD and the maximum day factor is 1.8. What is the maximum day demand in MGD?|Max day = average day x factor|2.4*1.8|MGD|2|1.33,4.20,2999.81|m
+Average day demand is 2.0 MGD and the maximum day was 3.6 MGD. What is the maximum day peaking factor?|Factor = max day / average day|3.6/2.0|times|2|0.56,1.60,7.20|m
+Average day demand is 1.5 MGD and the peak hour factor is 3.0. Use 1 MGD = 694.4 gpm. What is the peak hour flow in gpm?|Peak flow = MGD x 694.4 x factor|1.5*694.4*3.0|gpm|0|5,1042,6480|h
+A town of 8,500 people uses 95 gallons per person per day. What is the average day demand in MGD?|MGD = people x gpcd / 1,000,000|8500*95/1000000|MGD|3|807500.000,89.474,560.764|m
+A system has 12,000 connections, each using 310 gal per day on average. The maximum day factor is 1.9. What is the maximum day demand in MGD?|Max day = connections x gpd x factor / 1,000,000|12000*310*1.9/1000000|MGD|2|3.72,7068000.00,1.96|h
+On a maximum day the system uses 2,100,000 gal. A fire flow of 3,500 gpm also runs for 3 hours. How many gallons are needed that day in total?|Total = max day gallons + fire gpm x 60 x hours|2100000+3500*60*3|gal|0|2110500,2310000,630000|h
+Maximum day demand is 2.1 MGD and a fire flow of 3,500 gpm is added. Use 1 MGD = 694.4 gpm. What is the total flow the system must supply in gpm?|Total gpm = MGD x 694.4 + fire gpm|2.1*694.4+3500|gpm|0|3502,1458,6524|m
+Between 5:00 and 7:00 a.m. the system flow rises from 600 gpm to 1,500 gpm. What is the average increase in gpm per hour?|Rate of rise = (1,500 - 600) / 2|(1500-600)/2|gpm per hr|0|900,3,1050|m
+A system delivered 62 MG in a 31-day month, and its highest day was 3.5 MG. What is the maximum day peaking factor against the average day?|Factor = max day / (monthly total / days)|3.5/(62/31)|times|2|7.00,0.57,0.06|m
+A system supplies 1,850,000 gal per day to 14,000 people. What is the per capita use in gallons per person per day?|gpcd = gallons per day / population|1850000/14000|gpcd|1|0.0,5.5,7567.6|m
+A fire demand is 2,500 gpm for 2 hours. How many gallons does the fire use?|Gallons = gpm x 60 x hours|2500*60*2|gal|0|5000,40107,7200000|m
+
+@Hydraulics|PADEP8|Pumps and hydraulics: head, flow, pump curve idea, efficiency, water and brake horsepower
+A pump discharges at 92 psi and the suction gauge reads 8 psi. Use 2.31 ft per psi. What is the total head in feet?|Head = (discharge psi - suction psi) x 2.31|(92-8)*2.31|ft|2|231.00,212.52,36.37|h
+A pump moves 600 gpm against 150 ft of head. Use water horsepower = flow x head / 3,960. What is the water horsepower?|WHP = gpm x ft / 3,960|600*150/3960|hp|2|90000.00,17.05,30.30|m
+A pump delivers 900 gpm at 110 ft of head with an efficiency of 72%. Use WHP = flow x head / 3,960. What is the brake horsepower?|BHP = WHP / efficiency|900*110/3960/0.72|hp|1|18.0,25.0,347.2|m
+A pump develops 40 water horsepower from 52 brake horsepower. What is its efficiency in percent?|Efficiency = WHP / BHP x 100|40/52*100|%|1|130.0,12.0,43.5|m
+A pump raises pressure from 25 psi to 85 psi at 700 gpm. Use 2.31 ft per psi and WHP = flow x head / 3,960. What is the water horsepower?|Head = psi gain x 2.31, then WHP = gpm x head / 3,960|(85-25)*2.31*700/3960|hp|1|4.6,34.7,10.6|h
+A motor delivers 30 brake horsepower, has an efficiency of 90%, and 1 hp = 0.746 kW. What is the electrical input in kW?|Input kW = bhp x 0.746 / efficiency|30*0.746/0.9|kW|2|20.14,40.21,22.38|h
+A pump takes 25 kW and runs 14 hours per day. Power costs $0.11 per kWh. What is the daily power cost in dollars?|Cost = kW x hours x rate|25*14*0.11|$|2|2.75,350.00,66.00|m
+A pump must supply 33 water horsepower. The pump efficiency is 78% and the motor efficiency is 90%. What input horsepower does the motor draw?|Input hp = WHP / pump efficiency / motor efficiency|33/0.78/0.9|hp|1|42.3,23.2,19.6|h
+A pump delivers 500 gpm and runs for 22 hours. How many gallons does it deliver?|Gallons = gpm x 60 x hours|500*60*22|gal|0|11000,88235,720000|m
+A pump at 1,750 rpm delivers 800 gpm. Use flow proportional to speed. What flow results at 1,400 rpm?|Q2 = Q1 x (N2 / N1)|800*1400/1750|gpm|0|1000,512,450|m
+A pump at 1,750 rpm gives 120 ft of head. Use head proportional to speed squared. What head results at 1,400 rpm?|H2 = H1 x (N2 / N1) squared|120*(1400/1750)*(1400/1750)|ft|1|96.0,187.5,-230.0|h
+
+@Hydraulics|PADEP8|System performance reading: what a pressure or flow test shows; hydraulic grade line idea
+A gauge on a main at 700 ft elevation reads 62 psi. Use 2.31 ft of head per psi. What is the hydraulic grade line elevation at that point?|HGL = elevation + psi x 2.31|700+62*2.31|ft|2|726.85,762.00,143.22|h
+The grade line at point A is 880 ft and at point B, 3,000 ft downstream, it is 862 ft. What is the head loss in feet per 1,000 ft?|Loss per 1,000 ft = (880 - 862) / (3,000 / 1,000)|(880-862)/(3000/1000)|ft|1|0.6,54.0,18.0|m
+A flow test shows 62 psi static and 50 psi residual with 1,150 gpm flowing. What is the pressure drop per 100 gpm of flow in psi?|Drop per 100 gpm = (static - residual) / (gpm / 100)|(62-50)/(1150/100)|psi|2|0.01,5.39,4.35|m
