@@ -60,3 +60,20 @@ Use 2.31 ft of head per psi. What head in feet corresponds to 40 psi?|Head = psi
 Use 2.31 ft of head per psi. What pressure in psi corresponds to 150 ft of water?|psi = head divided by 2.31|150/2.31|psi|1|346.5,147.7,6.5|m
 A pump discharge gauge reads 62 psi and the suction gauge reads 8 psi, both at the same elevation. Use 2.31 ft per psi. What is the total head the pump adds in feet?|Head = (discharge psi minus suction psi) times 2.31|(62-8)*2.31|ft|1|161.7,54.0,143.2|h
 A gauge sits at the base of a tank where the water is 28 ft deep. Use 2.31 ft of head per psi. What psi does the gauge read?|psi = depth divided by 2.31|28/2.31|psi|1|64.7,25.7,1.2|m
+@Laboratory procedures|CAT1|Solution concentration
+A student dissolves 250 mg of a chemical and brings the solution to 0.5 L. What is the concentration in mg/L?|mg/L = mg divided by liters|250/0.5|mg/L|1|125,0.5,1000|m
+A lab dissolves 12 g of a chemical and makes it up to 4 L. Use 1 g = 1,000 mg. What is the concentration in mg/L?|mg/L = grams times 1000 divided by liters|12*1000/4|mg/L|0|3,12000,48000|m
+A standard is made by dissolving 0.75 g and diluting to 500 mL. Use 1 g = 1,000 mg and 1 L = 1,000 mL. What is the concentration in mg/L?|mg/L = (grams times 1000) divided by (mL divided by 1000)|0.75*1000/(500/1000)|mg/L|1|1.5,375,750|h
+A solution holds 18 g of salt in 600 mL. Use 1 L = 1,000 mL. What is the concentration in g/L?|g/L = grams divided by (mL divided by 1000)|18/(600/1000)|g/L|1|0.03,10800,3|h
+A lab dissolves 2 g of a chemical in water and makes up 800 mL. Use 1 g = 1,000 mg and 1 L = 1,000 mL. What is the concentration in mg/L?|mg/L = grams times 1000 divided by liters|2*1000/(800/1000)|mg/L|1|2.5,1600,2000|m
+@Laboratory procedures|CAT1|Dilution and chemical needed
+A stock standard is 100 mg/L. Use C1 × V1 = C2 × V2. How many mL of stock are needed to make 500 mL of a 10 mg/L standard?|V1 = (C2 times V2) divided by C1|10*500/100|mL|0|5000,5,450|m
+A stock solution is 1,000 mg/L. Use C1 × V1 = C2 × V2 and 1 L = 1,000 mL. How many mL of stock are needed to make 2 L of a 25 mg/L solution?|V1 in liters = (C2 times V2) divided by C1, then times 1000|25*2/1000*1000|mL|1|0.1,50000,12.5|h
+How many mg of a pure chemical are needed to make 3 L of a solution at 30 mg/L?|mg = concentration times volume in liters|30*3|mg|0|10,33,900|m
+A chemical is 80 percent pure. Use mg of product = mg of pure chemical divided by the decimal purity. How many mg of product are needed to make 2 L at 40 mg/L?|Product mg = (concentration times liters) divided by decimal purity|40*2/0.8|mg|0|64,80,160|h
+How many mg of a pure chemical are needed to make 4 L of a solution at 2.5 mg/L?|mg = concentration times volume in liters|2.5*4|mg|1|1.6,6.5,2.5|m
+@Laboratory procedures|CAT1|Percent strength and replicate averages
+Use 1 percent = 10,000 mg/L. A solution is 0.5 percent. What is its strength in mg/L?|mg/L = percent times 10,000|0.5*10000|mg/L|0|500,50000,50|m
+Use 1 percent = 10,000 mg/L and 1 L = 1,000 mL. A 10 mL portion of a 1 percent solution is added to water to make 1 L. What is the final concentration in mg/L?|mg/L = (percent times 10,000 times mL) divided by total mL|1*10000*10/1000|mg/L|0|1000,1,10|h
+Four replicate turbidity readings are 0.32, 0.28, 0.30 and 0.34 NTU. What is the average in NTU?|Average = sum of readings divided by number of readings|(0.32+0.28+0.30+0.34)/4|NTU|2|1.24,0.25,0.34|m
+Four free chlorine readings are 0.8, 1.1, 0.9 and 1.0 mg/L. A total chlorine reading is 1.45 mg/L. Use combined = total minus the average free chlorine. What is the combined chlorine in mg/L?|Combined = total minus (sum of free readings divided by 4)|1.45-(0.8+1.1+0.9+1.0)/4|mg/L|2|0.45,0.95,2.40|h
