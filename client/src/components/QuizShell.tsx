@@ -509,7 +509,7 @@ export default function QuizShell({
   if (shouldShowPracticeQuestionStatus(questionStatus)) {
     return <><SiteNav currentPath={currentPath} /><PracticeSaveStatus courseKey={examType} /><main className="mx-auto max-w-3xl p-6 text-slate-900">
       <h1 className="text-xl font-bold">{courseTitle}</h1>
-      {interactiveHref && <Link href={interactiveHref} className="practice-interactive-link">Interactive activities</Link>}
+      {interactiveHref && <Link href={interactiveHref} className="practice-interactive-link">🎮 Play games</Link>}
       <PracticeQuestionStatus status={questionStatus} error={questionError} answerCount={history.length}
         modules={modules} selectedModule={selectedModule} calcOnly={calcOnly} hasCalcOnly={hasCalcOnly}
         onModuleChange={onModuleChange} onCalcOnlyToggle={onCalcOnlyToggle}
@@ -557,7 +557,7 @@ export default function QuizShell({
               {sessionSize ? ` · ${sessionSize} questions` : ""}
             </p>
             {canonicalCourse?.courseKey && <NextStepCard courseKey={canonicalCourse.courseKey} className="mb-4 text-left" />}
-            {interactiveHref && <Link href={interactiveHref} className="practice-interactive-link">Interactive activities</Link>}
+            {interactiveHref && <Link href={interactiveHref} className="practice-interactive-link">🎮 Play games</Link>}
             {/* Google Review prompt — shown when user scores 70%+ AND review prompt budget allows */}
             {pct >= 70 && shouldShowReviewPrompt() && (
               <a
@@ -713,7 +713,7 @@ export default function QuizShell({
             <span className="workspace-eyebrow">{courseLabel}</span>
             <h1>{courseTitle}</h1>
             {displaySubtitle && <p>{displaySubtitle}</p>}
-            {interactiveHref && <Link href={interactiveHref} className="practice-interactive-link">Interactive activities</Link>}
+            {interactiveHref && <Link href={interactiveHref} className="practice-interactive-link">🎮 Play games</Link>}
           </div></div>
           <div className="practice-session-stats" aria-live="polite">
             <span><strong>{confirmed ? history.length : history.length + 1}{sessionSize ? ` / ${sessionSize}` : ""}</strong> questions</span>

@@ -10,6 +10,7 @@ vi.mock("@/_core/hooks/useAuth", () => ({ useAuth: () => ({ isAuthenticated: sta
 vi.mock("@/hooks/usePageMeta", () => ({ usePageMeta: vi.fn() }));
 vi.mock("@/components/SiteNav", () => ({ default: () => null }));
 vi.mock("@/components/ExamDateTracker", () => ({ default: () => null }));
+vi.mock("@/components/GamesPassButton", () => ({ default: () => null }));
 vi.mock("@/lib/trpc", () => ({
   trpc: new Proxy({}, { get: (_target, namespace) => new Proxy({}, { get: (_target, procedure) => ({
     useQuery: (_input: unknown, options: unknown) => {

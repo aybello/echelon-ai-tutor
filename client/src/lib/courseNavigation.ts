@@ -17,7 +17,7 @@ export function getCourseInteractiveHref(courseKey: string | undefined, search: 
 export type CourseWorkspaceTab = {
   label: string;
   href: string;
-  kind: "practice" | "mock" | "flashcards" | "notes" | "formulas" | "tutor" | "progress";
+  kind: "practice" | "mock" | "flashcards" | "games" | "notes" | "formulas" | "tutor" | "progress";
 };
 
 const MOBILE_PRIMARY_TOOL_KINDS: CourseWorkspaceTab["kind"][] = ["practice", "mock", "flashcards"];
@@ -48,6 +48,9 @@ export function getCourseWorkspaceTabs(course: CourseEntry): CourseWorkspaceTab[
   if (course.flashcardPath) {
     tabs.push({ label: "Flashcards", href: course.flashcardPath, kind: "flashcards" });
   }
+
+  const gamesHref = getCourseInteractiveHref(course.courseKey, "");
+  if (gamesHref) tabs.push({ label: "Games", href: gamesHref, kind: "games" });
 
   tabs.push({ label: "Notes", href: `${course.quizPath}?panel=notes`, kind: "notes" });
 
@@ -80,6 +83,7 @@ export function getActiveWorkspaceTab(path: string, course: CourseEntry): Course
   if (current === cleanPath(course.mockExamPath)) return "mock";
   if (course.flashcardPath && current === cleanPath(course.flashcardPath)) return "flashcards";
   if (course.formulaPath && current === cleanPath(course.formulaPath)) return "formulas";
+  if (current === cleanPath(`/courses/${course.courseKey}/interactive`)) return "games";
   if (current === "/dashboard") return "progress";
   return null;
 }

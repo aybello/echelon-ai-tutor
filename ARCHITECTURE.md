@@ -227,6 +227,7 @@ All keys are prefixed `echelon_`. Never create new keys without documenting here
 
 | Key | Set by | Purpose |
 |---|---|---|
+| `echelon_games_new_seen_v1` | GamesCard (dashboard) | Set to `1` once the learner has opened or dismissed the "New" label on the games card |
 | `echelon_subscription_email` | OTP login, Account restore, Purchase success | Student's email — used for attempt tracking and Account page auto-populate |
 | `echelon_trial_email` | OTP login, Account restore | Alias for subscription email |
 | `echelon_trial_unlocked` | OTP login, Account restore | `"true"` if student has any access |
