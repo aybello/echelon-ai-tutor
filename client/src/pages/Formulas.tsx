@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import SiteNav from "@/components/SiteNav";
+import { getAllCourses } from "@shared/courseRegistry";
 
 // ── TYPES ────────────────────────────────────────────────────────────────────
 interface Formula {
@@ -559,6 +560,29 @@ const CATEGORIES: FormulaCategory[] = [
 
 const STARRED_KEY = "echelon_formula_stars_v1";
 
+/** Every course formula sheet, grouped by region, built from the course registry so new sheets show up here. */
+const SHEET_GROUPS: { label: string; note: string; families: string[] }[] = [
+  { label: "Ontario", note: "metric units", families: ["ontario"] },
+  { label: "Western Canada (BC, AB, SK, MB)", note: "metric units", families: ["western"] },
+  { label: "United States", note: "US customary units: gpm, lb/day, psi", families: ["us-wpi", "us-state"] },
+];
+function formulaSheetsFor(families: string[]) {
+  const sheets = new Map<string, { label: string; tracks: Set<string> }>();
+  for (const c of getAllCourses()) {
+    if (!c.isActive || !c.formulaPath || !families.includes(c.examFamily)) continue;
+    const entry = sheets.get(c.formulaPath) ?? { label: c.displayName, tracks: new Set<string>() };
+    entry.tracks.add(c.track ?? "");
+    sheets.set(c.formulaPath, entry);
+  }
+  // One sheet can serve several courses (for example treatment and distribution); say so in the label.
+  return Array.from(sheets, ([href, { label, tracks }]) => ({
+    href,
+    label: label
+      + (tracks.has("water-distribution") ? " + Distribution" : "")
+      + (tracks.has("wastewater-collection") ? " + Collection" : ""),
+  }));
+}
+
 // ── FORMULA CARD ─────────────────────────────────────────────────────────────
 function FormulaCard({ formula, color, bg }: { formula: Formula; color: string; bg: string }) {
   const [expanded, setExpanded] = useState(false);
@@ -720,8 +744,8 @@ function FormulaCard({ formula, color, bg }: { formula: Formula; color: string; 
 // ── MAIN PAGE ────────────────────────────────────────────────────────────────
 export default function Formulas() {
   usePageMeta({
-    title: "Ontario Operator Exam Formula Sheet",
-    description: `${CATEGORIES.reduce((sum, c) => sum + c.formulas.length, 0)} Ontario water and wastewater operator exam formulas with worked examples and exam tips. CT values, SVI, chlorine dose, flow calculations, and more.`,
+    title: "Operator Exam Formula Library",
+    description: `${CATEGORIES.reduce((sum, c) => sum + c.formulas.length, 0)} core water and wastewater operator exam formulas (metric units) with worked examples and exam tips, plus links to the Ontario, western Canada and US formula sheets.`,
     path: "/formulas",
     noindex: true
   });
@@ -781,14 +805,28 @@ export default function Formulas() {
       {/* ── COMPACT HEADER ── */}
       <header className="formulas-intro" style={{ background: "#fff", borderBottom: "1px solid #E5E7EB", padding: "20px 24px 14px" }}>
         <div style={{ maxWidth: 960, margin: "0 auto" }}>
-          <p style={{ margin: 0, fontSize: 13, fontWeight: 700, color: "#1757B8", letterSpacing: "0.06em", textTransform: "uppercase" }}>Ontario water and wastewater, metric units</p>
+          <p style={{ margin: 0, fontSize: 13, fontWeight: 700, color: "#1757B8", letterSpacing: "0.06em", textTransform: "uppercase" }}>Canada and the United States</p>
           <h1 style={{ fontSize: "clamp(24px, 4vw, 32px)", fontWeight: 800, color: "#000", margin: "4px 0 6px" }}>Formula library</h1>
           <p style={{ margin: 0, fontSize: 15, color: "#000", lineHeight: 1.5 }}>
-            {totalFormulas} formulas for the OIT, Class 1 to 4 and WQA exams, with worked examples. Tap a formula to open it.
+            Find the formula sheet for your exam below. The core formulas on this page use metric units and come with worked examples.
           </p>
-          <p style={{ margin: "10px 0 0", fontSize: 15, display: "flex", gap: 16, flexWrap: "wrap" }}>
+          <details className="formula-sheet-picker" style={{ marginTop: 12 }}>
+            <summary style={{ cursor: "pointer", fontWeight: 700, fontSize: 15, color: "#1757B8", minHeight: 44, display: "flex", alignItems: "center" }}>Find the formula sheet for your exam</summary>
+            <div style={{ display: "grid", gap: 14, padding: "6px 0 10px" }}>
+              {SHEET_GROUPS.map(group => (
+                <div key={group.label}>
+                  <p style={{ margin: "0 0 6px", fontSize: 14, color: "#000" }}><strong>{group.label}</strong> · {group.note}</p>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                    {formulaSheetsFor(group.families).map(sheet => (
+                      <Link key={sheet.href} href={sheet.href} style={{ display: "inline-flex", alignItems: "center", minHeight: 40, padding: "0 12px", borderRadius: 999, border: "1.5px solid #CBD5E1", background: "#fff", color: "#000", fontWeight: 600, fontSize: 14, textDecoration: "none" }}>{sheet.label}</Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </details>
+          <p style={{ margin: "6px 0 0", fontSize: 15 }}>
             <Link href="/math-practice" style={{ color: "#1757B8", fontWeight: 700 }}>Practise calculation questions →</Link>
-            <Link href="/us" style={{ color: "#1757B8", fontWeight: 700 }}>Studying in the US (gpm, lb/day, psi)? Find your US formula sheet →</Link>
           </p>
         </div>
       </header>
