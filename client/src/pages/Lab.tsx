@@ -209,7 +209,7 @@ function ChainOfCustody() {
         <button onClick={addEntry} style={{ flex: 1, padding: "12px", borderRadius: 12, border: "2px dashed #CBD5E1", background: "#F8FAFC", color: "#64748B", fontSize: 12, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
           + Add Sample
         </button>
-        <button onClick={() => setSubmitted(true)} style={{ flex: 2, padding: "12px", borderRadius: 12, border: "none", background: "linear-gradient(135deg, #1D4ED8, #0F766E)", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
+        <button onClick={() => setSubmitted(true)} style={{ flex: 2, padding: "12px", borderRadius: 12, border: "none", background: "linear-gradient(135deg, #1D4ED8, #1757B8)", color: "#fff", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
           Submit Chain of Custody ✓
         </button>
       </div>
@@ -424,7 +424,7 @@ export default function Lab() {
       <div className="lab-main" style={{ maxWidth: 900, margin: "0 auto", padding: "28px 20px 80px", animation: "fadeUp 0.3s ease both" }}>
 
         {/* Hero */}
-        <div className="lab-card" style={{ background: "linear-gradient(135deg, #0F766E, #1D4ED8)", borderRadius: 20, padding: "28px 32px", marginBottom: 24, color: "#fff" }}>
+        <div className="lab-card" style={{ background: "linear-gradient(135deg, #1757B8, #1D4ED8)", borderRadius: 20, padding: "28px 32px", marginBottom: 24, color: "#fff" }}>
           <h1 style={{ fontSize: 22, fontWeight: 800, margin: "0 0 6px" }}>🔬 Lab & Sampling Module</h1>
           <p style={{ fontSize: 13, opacity: 0.9, margin: 0, lineHeight: 1.6 }}>
             Sampling procedures, chain of custody forms, QA/QC controls, parameter reference table, and lab calculators — everything you need for the lab section of your certification exam.

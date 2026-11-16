@@ -44,7 +44,7 @@ export default function OITWastewaterQuiz() {
       courseLabel="Ontario OIT · Wastewater Treatment"
       courseTitle="OIT Wastewater Practice Quiz"
       courseSubtitle="Ontario OIT Wastewater Exam Prep"
-      headerGradient="linear-gradient(135deg, #0F766E 0%, #0369A1 100%)"
+      headerGradient="linear-gradient(135deg, #1757B8 0%, #0369A1 100%)"
       headerIcon="🌊"
       headerActions={[
         { label: "📝 Mock Exam", href: "/oit-ww-mock" },

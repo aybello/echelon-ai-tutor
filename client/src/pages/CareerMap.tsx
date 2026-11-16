@@ -294,7 +294,7 @@ function CareerTimeline({ onSelect, selected, province }: {
           {/* Gradient line */}
           <div style={{
             position: "absolute", top: 20, left: 20, right: 20, height: 3,
-            background: "linear-gradient(90deg,#64748B,#0369A1,#0F766E,#7C3AED,#B45309)",
+            background: "linear-gradient(90deg,#64748B,#0369A1,#1757B8,#7C3AED,#B45309)",
             borderRadius: 99, zIndex: 0,
           }} />
           {/* Nodes */}

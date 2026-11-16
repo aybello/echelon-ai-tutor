@@ -241,7 +241,7 @@ function ActivationFlow({ auth, oauth }: {
       <SiteNav currentPath="/dashboard" />
       <main className="mx-auto max-w-4xl px-5 py-8 pb-24 sm:py-12">
         <div className="mb-8 text-center">
-          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-700 to-teal-600 text-white shadow-lg shadow-blue-200">
+          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-700 to-blue-600 text-white shadow-lg shadow-blue-200">
             <Compass className="h-7 w-7" />
           </div>
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-700">Personalized onboarding</p>
@@ -256,7 +256,7 @@ function ActivationFlow({ auth, oauth }: {
         <div className="mb-8 grid grid-cols-3 gap-2">
           {STEP_LABELS.map((label, index) => (
             <div key={label} className="text-center">
-              <div className={`mx-auto mb-2 h-2 rounded-full transition-colors ${index <= activeStep ? "bg-gradient-to-r from-blue-700 to-teal-500" : "bg-slate-200"}`} />
+              <div className={`mx-auto mb-2 h-2 rounded-full transition-colors ${index <= activeStep ? "bg-gradient-to-r from-blue-700 to-blue-500" : "bg-slate-200"}`} />
               <span className={`text-[11px] font-bold sm:text-xs ${index <= activeStep ? "text-blue-800" : "text-slate-400"}`}>{label}</span>
             </div>
           ))}
@@ -265,7 +265,7 @@ function ActivationFlow({ auth, oauth }: {
         {step === "profile" && (
           <Card className="overflow-hidden border-slate-200 shadow-xl shadow-slate-200/50">
             <div className="bg-gradient-to-r from-slate-950 to-blue-950 px-6 py-6 text-white sm:px-8">
-              <div className="flex items-center gap-3"><Target className="h-6 w-6 text-teal-300" /><h2 className="text-xl font-extrabold">Build your study rhythm</h2></div>
+              <div className="flex items-center gap-3"><Target className="h-6 w-6 text-blue-300" /><h2 className="text-xl font-extrabold">Build your study rhythm</h2></div>
               <p className="mt-2 text-sm text-slate-300">These choices shape the weekly target on your dashboard. You can adjust them later.</p>
             </div>
             <CardContent className="space-y-7 p-6 sm:p-8">
@@ -288,7 +288,7 @@ function ActivationFlow({ auth, oauth }: {
                 <span className="mb-3 flex items-center gap-2 text-sm font-bold text-slate-800"><Clock3 className="h-4 w-4 text-blue-700" /> Preferred session length</span>
                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
                   {([15, 25, 40, 60] as const).map(minutes => (
-                    <button key={minutes} type="button" onClick={() => setSessionMinutes(minutes)} className={`rounded-xl border px-3 py-3 text-sm font-bold transition ${sessionMinutes === minutes ? "border-teal-700 bg-teal-50 text-teal-800 ring-2 ring-teal-100" : "border-slate-200 bg-white text-slate-600 hover:border-teal-300"}`}>{minutes} min</button>
+                    <button key={minutes} type="button" onClick={() => setSessionMinutes(minutes)} className={`rounded-xl border px-3 py-3 text-sm font-bold transition ${sessionMinutes === minutes ? "border-blue-700 bg-blue-50 text-blue-800 ring-2 ring-blue-100" : "border-slate-200 bg-white text-slate-600 hover:border-blue-300"}`}>{minutes} min</button>
                   ))}
                 </div>
               </div>
@@ -309,7 +309,7 @@ function ActivationFlow({ auth, oauth }: {
                 </div>
               </div>
 
-              <Button onClick={submitProfile} disabled={saveProfile.isPending} className="h-12 w-full bg-gradient-to-r from-blue-700 to-teal-600 text-base font-extrabold hover:from-blue-800 hover:to-teal-700">
+              <Button onClick={submitProfile} disabled={saveProfile.isPending} className="h-12 w-full bg-gradient-to-r from-blue-700 to-blue-600 text-base font-extrabold hover:from-blue-800 hover:to-blue-700">
                 {saveProfile.isPending ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Saving…</> : <>Start My 15-Question Diagnostic <ArrowRight className="ml-2 h-4 w-4" /></>}
               </Button>
             </CardContent>
@@ -320,10 +320,10 @@ function ActivationFlow({ auth, oauth }: {
           <Card className="overflow-hidden border-slate-200 shadow-xl shadow-slate-200/50">
             <div className="border-b border-slate-200 bg-white px-6 py-5 sm:px-8">
               <div className="flex items-center justify-between gap-4">
-                <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-teal-700">Starting baseline</p><h2 className="mt-1 text-xl font-extrabold text-slate-950">Question {questionIndex + 1} of 15</h2></div>
+                <div><p className="text-xs font-bold uppercase tracking-[0.16em] text-blue-700">Starting baseline</p><h2 className="mt-1 text-xl font-extrabold text-slate-950">Question {questionIndex + 1} of 15</h2></div>
                 <div className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">About 8 minutes</div>
               </div>
-              <div className="mt-4 h-2 overflow-hidden rounded-full bg-slate-100"><div className="h-full rounded-full bg-gradient-to-r from-blue-700 to-teal-500 transition-all" style={{ width: `${((questionIndex + 1) / 15) * 100}%` }} /></div>
+              <div className="mt-4 h-2 overflow-hidden rounded-full bg-slate-100"><div className="h-full rounded-full bg-gradient-to-r from-blue-700 to-blue-500 transition-all" style={{ width: `${((questionIndex + 1) / 15) * 100}%` }} /></div>
             </div>
             <CardContent className="p-6 sm:p-8">
               {resumedDraft && <div role="status" className="mb-4 text-sm text-blue-800">Resumed your diagnostic on this browser. <button type="button" disabled={submitDiagnostic.isPending} onClick={restartDiagnostic} className="underline">Restart diagnostic</button></div>}
@@ -349,7 +349,7 @@ function ActivationFlow({ auth, oauth }: {
                     {questionIndex < 14 ? (
                       <Button disabled={currentAnswer === undefined} onClick={() => setQuestionIndex(index => Math.min(14, index + 1))} className="bg-blue-700 hover:bg-blue-800">Next <ArrowRight className="ml-2 h-4 w-4" /></Button>
                     ) : (
-                      <Button disabled={currentAnswer === undefined || submitDiagnostic.isPending} onClick={finishDiagnostic} className="bg-gradient-to-r from-blue-700 to-teal-600 font-extrabold">
+                      <Button disabled={currentAnswer === undefined || submitDiagnostic.isPending} onClick={finishDiagnostic} className="bg-gradient-to-r from-blue-700 to-blue-600 font-extrabold">
                         {submitDiagnostic.isPending ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Building plan…</> : <>Build My Study Plan <Sparkles className="ml-2 h-4 w-4" /></>}
                       </Button>
                     )}
@@ -363,15 +363,15 @@ function ActivationFlow({ auth, oauth }: {
         {step === "result" && result && (
           <div className="space-y-5">
             <Card className="overflow-hidden border-0 shadow-2xl shadow-blue-200/60">
-              <div className="bg-gradient-to-br from-slate-950 via-blue-950 to-teal-800 px-6 py-8 text-white sm:px-10">
+              <div className="bg-gradient-to-br from-slate-950 via-blue-950 to-blue-800 px-6 py-8 text-white sm:px-10">
                 <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
                   <div>
-                    <div className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-teal-200"><CheckCircle2 className="h-4 w-4" /> Your starting baseline</div>
+                    <div className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-blue-200"><CheckCircle2 className="h-4 w-4" /> Your starting baseline</div>
                     <h2 className="text-3xl font-black">{result.label}</h2>
                     <p className="mt-3 max-w-xl text-sm leading-6 text-slate-200">This is where your plan begins. Echelon will update your priorities as you practise and complete mock exams.</p>
                   </div>
                   <div className="flex h-28 w-28 shrink-0 flex-col items-center justify-center rounded-full border-8 border-white/20 bg-white/10 shadow-inner">
-                    <span className="text-3xl font-black">{result.score}%</span><span className="text-[10px] font-bold uppercase tracking-widest text-teal-200">Baseline</span>
+                    <span className="text-3xl font-black">{result.score}%</span><span className="text-[10px] font-bold uppercase tracking-widest text-blue-200">Baseline</span>
                   </div>
                 </div>
               </div>
@@ -401,7 +401,7 @@ function ActivationFlow({ auth, oauth }: {
                     <p className="mt-2 text-sm leading-6 text-slate-600">Answer about {Math.max(5, Math.round((status.data?.profile?.sessionMinutes ?? 25) / 2))} targeted questions. Your dashboard will then reorder the plan using your newest evidence.</p>
                     <p className="mt-3 text-xs font-bold text-blue-800">Weekly target: {status.data?.profile?.weeklyQuestionGoal ?? 39} questions across {status.data?.profile?.studyDaysPerWeek ?? 3} study days.</p>
                   </div>
-                  <Button asChild className="h-12 shrink-0 bg-gradient-to-r from-blue-700 to-teal-600 px-6 text-base font-extrabold"><a href={todayPlanHref}>Continue studying <ArrowRight className="ml-2 h-4 w-4" /></a></Button>
+                  <Button asChild className="h-12 shrink-0 bg-gradient-to-r from-blue-700 to-blue-600 px-6 text-base font-extrabold"><a href={todayPlanHref}>Continue studying <ArrowRight className="ml-2 h-4 w-4" /></a></Button>
                 </div>
               </CardContent>
             </Card>

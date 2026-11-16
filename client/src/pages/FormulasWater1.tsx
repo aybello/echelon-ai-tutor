@@ -619,7 +619,7 @@ export default function FormulasWater1() {
 
       {/* Header */}
       <div style={{
-        background: "linear-gradient(135deg, #1D4ED8 0%, #0369A1 60%, #0F766E 100%)",
+        background: "linear-gradient(135deg, #1D4ED8 0%, #0369A1 60%, #1757B8 100%)",
         padding: "48px 24px 40px",
         color: "#fff",
       }}>

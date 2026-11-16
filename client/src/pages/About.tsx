@@ -219,7 +219,7 @@ export default function About() {
             top: 8,
             bottom: 8,
             width: 2,
-            background: "linear-gradient(180deg, #1D4ED8, #0F766E)",
+            background: "linear-gradient(180deg, #1D4ED8, #1757B8)",
             borderRadius: 2,
           }} />
 
@@ -233,7 +233,7 @@ export default function About() {
                 width: 22,
                 height: 22,
                 borderRadius: "50%",
-                background: "linear-gradient(135deg, #1D4ED8, #0F766E)",
+                background: "linear-gradient(135deg, #1D4ED8, #1757B8)",
                 border: "3px solid #F8FAFC",
                 boxShadow: "0 0 0 2px #1D4ED8",
                 display: "flex",
@@ -375,7 +375,7 @@ export default function About() {
             Enjoying Echelon? Leave us a Google Review
           </a>
           <div className="about-cta-btns" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/quiz" style={{ padding: "14px 28px", borderRadius: 10, background: "linear-gradient(135deg, #1D4ED8, #0F766E)", color: "#fff", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 16px rgba(29,78,216,0.3)", textDecoration: "none", textAlign: "center" }}>
+            <Link href="/quiz" style={{ padding: "14px 28px", borderRadius: 10, background: "linear-gradient(135deg, #1D4ED8, #1757B8)", color: "#fff", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 16px rgba(29,78,216,0.3)", textDecoration: "none", textAlign: "center" }}>
               Start Free OIT Practice →
             </Link>
             <Link href="/formulas" style={{ padding: "14px 28px", borderRadius: 10, border: "1.5px solid rgba(255,255,255,0.3)", background: "rgba(255,255,255,0.1)", color: "#fff", fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit", textDecoration: "none", textAlign: "center" }}>

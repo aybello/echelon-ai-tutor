@@ -500,7 +500,7 @@ export default function FormulasWQA() {
 
       <SiteNav currentPath="/formulas-wqa" />
       {/* ── HEADER ── */}
-      <div style={{ background: "linear-gradient(135deg, #0369A1 0%, #0F766E 100%)", padding: "40px 20px 32px" }}>
+      <div style={{ background: "linear-gradient(135deg, #0369A1 0%, #1757B8 100%)", padding: "40px 20px 32px" }}>
         <div style={{ maxWidth: 760, margin: "0 auto" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
             <Link href="/wqa">

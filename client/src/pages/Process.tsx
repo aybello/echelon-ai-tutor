@@ -386,7 +386,7 @@ export default function Process() {
                     disabled={stepIdx === STEPS.length - 1}
                     style={{
                       flex: 1, padding: "11px", borderRadius: 10, border: "none",
-                      background: stepIdx === STEPS.length - 1 ? "#E5E7EB" : "linear-gradient(135deg,#1D4ED8,#0F766E)",
+                      background: stepIdx === STEPS.length - 1 ? "#E5E7EB" : "linear-gradient(135deg,#1D4ED8,#1757B8)",
                       color: stepIdx === STEPS.length - 1 ? "#94A3B8" : "#fff",
                       fontSize: 12, fontWeight: 700,
                       cursor: stepIdx === STEPS.length - 1 ? "not-allowed" : "pointer",

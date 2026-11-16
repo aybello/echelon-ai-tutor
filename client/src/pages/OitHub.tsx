@@ -32,7 +32,7 @@ export default function OitHub() {
       <SiteNav currentPath="/oit" />
 
       <section className="mx-auto max-w-5xl px-5 pb-8 pt-12 text-center sm:px-8 sm:pt-16">
-        <p className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-teal-700">
+        <p className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-blue-700">
           Ontario Operator-in-Training
         </p>
         <h1 className="text-3xl font-extrabold tracking-tight sm:text-5xl">
@@ -45,7 +45,7 @@ export default function OitHub() {
         </p>
         <Link
           href="/interactive-learning"
-          className="mt-5 inline-block rounded-lg font-semibold text-teal-700 underline underline-offset-4 hover:text-teal-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2"
+          className="mt-5 inline-block rounded-lg font-semibold text-blue-700 underline underline-offset-4 hover:text-blue-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
         >
           Try an introductory interactive example →
         </Link>
@@ -66,20 +66,20 @@ export default function OitHub() {
             </p>
             <Link
               href={stream.practiceHref}
-              className="mt-5 block rounded-xl bg-teal-700 px-4 py-3 text-center font-bold text-white transition-colors hover:bg-teal-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2"
+              className="mt-5 block rounded-xl bg-blue-700 px-4 py-3 text-center font-bold text-white transition-colors hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
             >
               Try 15 free questions
             </Link>
             <div className="mt-3 grid grid-cols-2 gap-3">
               <Link
                 href={stream.flashcardsHref}
-                className="rounded-xl border border-slate-300 px-3 py-2.5 text-center text-sm font-semibold hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
+                className="rounded-xl border border-slate-300 px-3 py-2.5 text-center text-sm font-semibold hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
               >
                 Flashcards
               </Link>
               <Link
                 href={stream.mockHref}
-                className="rounded-xl border border-slate-300 px-3 py-2.5 text-center text-sm font-semibold hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
+                className="rounded-xl border border-slate-300 px-3 py-2.5 text-center text-sm font-semibold hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
               >
                 Mock exam
               </Link>
@@ -110,7 +110,7 @@ export default function OitHub() {
             </Link>
             <Link
               href="/canada/ontario"
-              className="rounded-xl border border-slate-300 px-5 py-3 text-center font-bold hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
+              className="rounded-xl border border-slate-300 px-5 py-3 text-center font-bold hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
             >
               Browse Ontario courses
             </Link>
@@ -123,7 +123,7 @@ export default function OitHub() {
           OWWCO sets eligibility, registration, permitted references, and exam
           requirements. Confirm the current rules on the{" "}
           <a
-            className="font-semibold text-teal-700 underline underline-offset-2"
+            className="font-semibold text-blue-700 underline underline-offset-2"
             href="https://owwco.ca"
             rel="noopener noreferrer"
             target="_blank"

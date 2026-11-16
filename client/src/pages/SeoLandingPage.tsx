@@ -61,7 +61,7 @@ function CourseCard({ course }: { course: CourseSeoPage }) {
     <article className="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="text-xs font-bold uppercase tracking-[0.14em] text-teal-700">
+          <p className="text-xs font-bold uppercase tracking-[0.14em] text-blue-700">
             {course.trackLabel}
           </p>
           <h3 className="mt-2 text-lg font-bold text-slate-950">
@@ -147,7 +147,7 @@ function RegionPage({ page }: { page: RegionSeoPage }) {
   return (
     <main className="public-redesign public-redesign-seo min-h-screen bg-slate-50 text-slate-900">
       <SiteNav currentPath={page.path} variant="marketing" />
-      <section className="border-b border-slate-200 bg-gradient-to-br from-slate-950 via-blue-950 to-teal-900 text-white">
+      <section className="border-b border-slate-200 bg-gradient-to-br from-slate-950 via-blue-950 to-blue-900 text-white">
         <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
           <Breadcrumbs
             items={[
@@ -215,7 +215,7 @@ function RegionPage({ page }: { page: RegionSeoPage }) {
 
       <section id="courses" className="mx-auto max-w-6xl px-6 pb-16">
         <div className="max-w-3xl">
-          <p className="text-sm font-bold uppercase tracking-[0.14em] text-teal-700">
+          <p className="text-sm font-bold uppercase tracking-[0.14em] text-blue-700">
             Course catalogue
           </p>
           <h2 className="mt-2 text-3xl font-black tracking-tight">
@@ -382,7 +382,7 @@ function CoursePage({ course }: { course: CourseSeoPage }) {
 
       <section className="mx-auto grid max-w-6xl gap-8 px-6 py-14 lg:grid-cols-[1.1fr_0.9fr]">
         <article>
-          <p className="text-sm font-bold uppercase tracking-[0.14em] text-teal-700">
+          <p className="text-sm font-bold uppercase tracking-[0.14em] text-blue-700">
             Included study tools
           </p>
           <h2 className="mt-2 text-3xl font-black tracking-tight">
@@ -395,7 +395,7 @@ function CoursePage({ course }: { course: CourseSeoPage }) {
                 className="flex gap-3 rounded-xl border border-slate-200 bg-white p-4"
               >
                 <CheckCircle2
-                  className="mt-0.5 shrink-0 text-teal-700"
+                  className="mt-0.5 shrink-0 text-blue-700"
                   size={20}
                 />
                 <span className="leading-6 text-slate-700">{tool}</span>
@@ -404,7 +404,7 @@ function CoursePage({ course }: { course: CourseSeoPage }) {
           </ul>
         </article>
         <article className="rounded-2xl bg-slate-950 p-7 text-white">
-          <BookOpenCheck size={30} className="text-teal-300" />
+          <BookOpenCheck size={30} className="text-blue-300" />
           <h2 className="mt-5 text-2xl font-bold">
             Use the exam blueprint as the source of truth
           </h2>
@@ -416,7 +416,7 @@ function CoursePage({ course }: { course: CourseSeoPage }) {
           </p>
           <Link
             href={course.regionPath}
-            className="mt-6 inline-flex items-center gap-2 font-bold text-teal-300 hover:underline"
+            className="mt-6 inline-flex items-center gap-2 font-bold text-blue-300 hover:underline"
           >
             <Building2 size={17} /> Review jurisdiction guidance
           </Link>
