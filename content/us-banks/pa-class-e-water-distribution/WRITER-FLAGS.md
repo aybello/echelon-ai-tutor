@@ -55,3 +55,33 @@ Calculations to check:
 - "Pump discharges at 92 psi, suction 8 psi": total head ignores velocity head and gauge elevation difference.
 - Pressure-drop-per-100-gpm and head-loss-per-1,000-ft items are simple ratios.
 - The two peaking-factor items use the unit "times" for a unitless ratio.
+
+## Batch 3: Storage
+
+Conceptual (the questions below depend on practice that varies or on a stated simplification):
+1. "Why do many utilities keep routine tank cycling above the fire reserve level?"
+2. "Which tank volume is normally drawn on first when demand exceeds supply?" Assumes the usual layout.
+3. "Why can a pump station with a tank on the system be sized for maximum day demand instead of peak hour demand?" Design convention.
+4. "Why is the pump start level set above the fire reserve level?"
+5. "Why do many systems fill a tank during the night?"
+6. "A level transmitter is on a pipe that carries flow instead of at the tank wall. Why might its reading mislead?"
+7. "Why is the lower part of a tall standpipe often poor at supplying the zone by gravity?"
+8. "A ground-level reservoir has a water surface lower than the zone needs... what happens to zone pressure if the pump stops?"
+9. "Why might a small system choose a hydropneumatic tank?" and "Why can a hydropneumatic tank that has lost its air cushion cause the pump to cycle often?"
+10. "How is a roof hatch commonly protected from contamination?"
+11. "Why does an overflow pipe usually end with an air gap and a screen or flap?" and "Why is an overflow pipe sized to carry at least the maximum inflow rate?"
+12. "What do cathodic protection systems in some steel tanks do?"
+13. "Why is a tank often disinfected before it returns to service after cleaning?" and "Why is the water in a tank often tested for bacteria after cleaning and before service?"
+14. "Why must some tank inspections be done with the tank taken out of service?"
+15. "Why can an early recoat be sensible before the tank leaks?"
+16. "Why are tank sites often fenced and monitored?"
+17. "Which sign points to pitting corrosion on tank steel?"
+18. "Why do warm summer temperatures add to a tank water quality concern?"
+19. "Why might the chlorine residual in a tank be lower than in the mains feeding it?"
+20. "A tank is made larger but the daily demand stays the same. What happens to water age?" and "A tall narrow tank and a short wide tank hold the same volume. Which statement is correct for the same draw?"
+
+Calculations that rely on a simplified assumption:
+- The fire plus equalizing item assumes equalizing volume of 25% of maximum day demand.
+- The emergency reserve item assumes 50,000 gal.
+- The "tank turns over once" items assume a fully mixed tank.
+- The hydropneumatic item converts a psi range to feet, assuming pump start and stop settings are the range.
