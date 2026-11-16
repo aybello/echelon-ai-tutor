@@ -569,7 +569,7 @@ export default function QuizShell({
               {correctCount} correct · {wrongCount} incorrect
               {sessionSize ? ` · ${sessionSize} questions` : ""}
             </p>
-            {canonicalCourse?.courseKey && <NextStepCard courseKey={canonicalCourse.courseKey} className="mb-4 text-left" />}
+            {canonicalCourse?.courseKey && <NextStepCard courseKey={canonicalCourse.courseKey} className="mb-4 text-left" forceDocumentNavigation />}
             {interactiveHref && <Link href={interactiveHref} className="practice-interactive-link">🎮 Play games</Link>}
             {/* Google Review prompt — shown when user scores 70%+ AND review prompt budget allows */}
             {pct >= 70 && shouldShowReviewPrompt() && (
