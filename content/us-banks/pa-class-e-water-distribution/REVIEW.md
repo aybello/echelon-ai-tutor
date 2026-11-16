@@ -476,14 +476,14 @@ A PRV holds a set downstream pressure when upstream pressure is higher, as in lo
 
 What does an altitude valve do at a ground-level tank?
 
-- **A.** It vents air from the top of the tank as it fills with water
-- **B.** It reduces the tank pressure to the setting needed by the zone
+- **A.** It reduces the tank pressure to the setting needed by the zone
+- **B.** It vents air from the top of the tank as it fills with water
 - **C.** It shuts the outlet when the level falls too low in the tank
 - **D.** It shuts the inlet when the tank is full
 
 **Answer: D. It shuts the inlet when the tank is full**
 
-An altitude valve responds to water level. It stops filling at the high level and allows flow back into the system when pressure drops.
+An altitude valve senses tank level and closes the inlet when the tank reaches its high level, which prevents overflow. Some are two-way valves that also let water flow back out to the system when pressure drops; other installations return water through a separate line with a check valve.
 
 ### 38: Valves: gate, butterfly, check, air release, pressure reducing, altitude; operation and exercising (medium)
 
@@ -2349,9 +2349,9 @@ A fast closure stops the water abruptly, which creates the surge.
 What can follow a sudden pump stop after a power loss?
 
 - **A.** Pressure surges and pressure drops in the line
-- **B.** A steady rise in grade
-- **C.** Lower velocity upstream
-- **D.** Quiet flow reversal with no pressure change
+- **B.** A steady rise in the grade line over several hours
+- **C.** Flow reversal with no pressure change at all
+- **D.** A gain in flow through the stopped pump
 
 **Answer: A. Pressure surges and pressure drops in the line**
 
@@ -3284,9 +3284,9 @@ The open discharge is a possible entry point, so it is protected from animals an
 
 Why is ice a concern for tanks in cold climates?
 
-- **A.** It improves residual by trapping chlorine in the water
-- **B.** It reduces the volume that the tank can hold
-- **C.** It makes the stored water denser and raises pressure
+- **A.** It makes the water flow out of the tank faster
+- **B.** It makes the stored water denser and raises pressure
+- **C.** It improves residual by trapping chlorine in the water
 - **D.** It can damage the coating, structure and level equipment
 
 **Answer: D. It can damage the coating, structure and level equipment**

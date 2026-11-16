@@ -14,7 +14,7 @@
   "file": "questions/bank-500.json",
   "count": 500,
   "calculations": 120,
-  "sha256": "4606c9a8d9e5bb172452d1ead8cee499ff52dc048944118b7c8a0cdb6b496bbe",
+  "sha256": "cf2f08d89e09ec74f8cff41578ce89fd6058f2610edacd40c1876e40dac491af",
   "modules": {
     "Network components": 150,
     "Hydraulics": 130,
@@ -78,7 +78,7 @@
     ],
     "answerCues": {
       "conceptualCount": 380,
-      "longestRate": 0.3394736842105263,
+      "longestRate": 0.3368421052631579,
       "shortestRate": 0.24473684210526317,
       "longTells": [],
       "shortTells": [],
