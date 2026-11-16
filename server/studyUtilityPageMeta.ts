@@ -67,7 +67,10 @@ function mockPageMeta(course: CourseEntry): StudyUtilityPageMeta {
   const path = course.mockExamPath;
   const display = course.displayName;
   const title = `${display} Mock Exam | Echelon Institute`;
-  const description = `Take a full-length ${display} mock exam with a realistic timer, question flags, and module-level scoring. Prepare for the certification exam under real test conditions.`;
+  const fullDescription = `Take a full-length ${display} mock exam with a realistic timer, question flags, and module-level scoring. Prepare for the certification exam under real test conditions.`;
+  const description = fullDescription.length < 200
+    ? fullDescription
+    : `Prepare for ${display} with a timed mock exam, question flags, and module-level scoring.`;
   return {
     path,
     title,
