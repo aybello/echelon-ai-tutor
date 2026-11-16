@@ -45,3 +45,31 @@ Calculations:
 - The drawdown-test item adds an estimated 40 gpm inflow, stated in the question.
 - The grease trap pump-out item uses a 25 percent pump-out level, stated as an assumption.
 - The energy item states 55 percent overall efficiency in the question.
+
+## Batch 3: Work hazards
+
+Recognition-level safety questions only. Read these with the dossier's exclusions in mind (no procedures, thresholds, rescue steps or regulation wording):
+1. "How does methane differ from hydrogen sulfide in where it tends to gather in a space?" Methane is not always present. Hydrogen sulfide is heavier than air.
+2. "Which statement about hydrogen sulfide gas is true?" Distractor 3 ("no effect at low levels but burns at high levels") is loosely worded.
+3. "Why is smell an unreliable way to tell whether hydrogen sulfide is present?" Close to an exposure-limit topic.
+4. "Why is air tested at more than one height within a space?" Some programs test at set depths.
+5. "What does forced ventilation do for a space where work will take place?" The "does not replace testing" line is practice, not a rule.
+6. "What is the general role of an attendant for a confined space job?" Check that no regulation wording crept in.
+7. "A space tested safe when work began. Why is that not the end of concern about its air?" Close to a continuous-monitoring requirement.
+8. "Why might a crew place a heavy truck between the work area and approaching traffic?" Common, not universal.
+9. "What is the role of the transition area in a work zone?" Zone names vary by traffic control standard.
+10. "Why do traffic control needs for a job on a busy arterial road differ from those on a quiet side street?" Distractor 3 about "wastewater flows beneath busy roads" is odd.
+11. "Why does night work raise the risk of a traffic work zone?" Distractor 2 ("traffic is heavier at night") is not universally false.
+12. "How does a trench shield, often called a trench box, protect workers?" Terminology varies.
+13. "Why does loose, dry sand usually hold a steep wall less well than firm, sticky soil?" Distractor 2 ("heavier than clay") is loose.
+14. "Rain fell overnight on a trench left open. Why should the trench be looked at again...?" Hazard recognition, not a duty.
+15. "Why is a ladder or ramp placed within easy reach of workers in a trench?" Leans toward a requirement.
+16. "Why are buried utility locations marked before digging begins?" Check the locate-call system is not implied.
+17. "After equipment has been locked out, why is it still checked to confirm it is de-energized?" Could read as a procedural step.
+18. "What does a ground-fault circuit interrupter do?" and "What is the idea behind grounding electrical equipment?" Simplified.
+19. "Why does a standby generator add a hazard for people working on station equipment?" Assumes an automatic standby unit.
+20. "Why must cranes and booms be kept clear of overhead power lines at a work site?" No distances are given.
+
+Calculations:
+- Trench sloping: 1.5H:1V on a 7 ft depth gives a 10.5 ft run on each side. Arithmetic only, no soil rule.
+- Ventilation: 0.785 × D² area and 500 cfm give 1.5 min for one air change. Simple arithmetic only.
