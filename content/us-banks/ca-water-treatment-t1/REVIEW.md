@@ -34,12 +34,12 @@ A totalizer adds up the volume over time, like an odometer. A rate indicator sho
 
 In open-channel flow measurement, what does a weir use to indicate how much water is passing?
 
-- **A.** The height of water above the weir crest
-- **B.** The pressure inside a closed pipe
-- **C.** The voltage induced as water moves through a field
-- **D.** The speed of a rotor turned by the water
+- **A.** The height of water above the crest
+- **B.** The width of the water surface across the channel
+- **C.** The slope of the channel bed over a known length
+- **D.** The speed of a float carried along the channel
 
-**Answer: A. The height of water above the weir crest**
+**Answer: A. The height of water above the crest**
 
 Water depth over a weir crest increases as flow increases, following the weir's head-discharge relationship, so a measured head above the crest can be converted to a flow rate.
 
@@ -470,7 +470,7 @@ Which reading is a sign of abnormal well operation?
 
 **Answer: D. A pumping level deeper than usual for the same flow**
 
-A deeper pumping level at an unchanged rate may reflect a lower static water level or more drawdown. Comparing static and pumping levels shows which, and either can point to screen plugging or a declining supply.
+A deeper pumping level at the same rate has two possible causes. A lower static level points to declining groundwater levels, while more drawdown at the same pumping rate can point to screen plugging or reduced well efficiency.
 
 ### 37: Abnormal water conditions and reservoir warning signs (hard)
 
@@ -828,9 +828,9 @@ A residual keeps working after the plant, helping control microbial regrowth or 
 In principle, what does an acceptable residual mean?
 
 - **A.** Protection without exceeding the maximum or causing complaints
-- **B.** A residual equal to the dose that was applied at the plant
-- **C.** Whatever residual was measured during the week before
-- **D.** The highest residual that the feed equipment is able to produce
+- **B.** A residual that matches the dose applied at the plant
+- **C.** A residual set by what the feed equipment can deliver
+- **D.** A residual that ignores demand and uses only the total residual
 
 **Answer: A. Protection without exceeding the maximum or causing complaints**
 
@@ -1059,10 +1059,10 @@ Activated carbon holds taste and odor compounds on its surface. Settling and ord
 
 ### 82: Taste and odor (hard)
 
-Why can aeration reduce some taste and odor problems?
+Through what mechanism can aeration remove some odor-causing compounds from water?
 
 - **A.** Oxygen raises the pH and neutralizes the chlorine residual
-- **B.** Air makes the compounds precipitate as a sludge that settles out
+- **B.** Oxygen breaks the compounds into harmless salts that stay dissolved
 - **C.** Air bubbles make the compounds stick to the basin walls and settle
 - **D.** Gases such as hydrogen sulfide pass out of the water into the air
 
@@ -1783,7 +1783,7 @@ A colorimeter is zeroed with an untreated portion of the sample before the reage
 
 **Answer: C. To remove the sample's own color and cloudiness from the reading**
 
-The blank sets the instrument to read zero for the sample as it is. The reading after reagent addition then reflects only color formed by the chlorine test.
+The blank sets the instrument to read zero for the sample as it is. Blanking compensates for the untreated sample's background color and optical effects, but other interferences must still be handled by the analytical method.
 
 ### 138: pH analysis (medium)
 
@@ -1939,7 +1939,7 @@ Which pair of organisms is a concern in raw surface water because their cysts an
 
 **Answer: A. Giardia and Cryptosporidium**
 
-Giardia and Cryptosporidium are shed by animals and people into surface sources and resist ordinary disinfection. The other pairs are bacteria or viruses that disinfection controls more readily.
+Giardia and Cryptosporidium are shed by animals and people into surface sources and are relatively resistant to chlorine compared with most vegetative bacteria. Cryptosporidium is especially chlorine-resistant, so filtration is important. The other pairs are bacteria or viruses that disinfection controls more readily.
 
 ### 150: Unit processes and water quality reports (easy)
 
@@ -2530,7 +2530,7 @@ Chlorine is reactive and also lost to light and agitation. A delayed reading wou
 
 Before chlorine samples are read on a colorimeter, the instrument is zeroed with a blank. What is that blank under the usual method?
 
-- **A.** A cell left empty so no light reaches the sensor
+- **A.** A cell filled with distilled water as the blank
 - **B.** The same sample without the color-forming reagent added
 - **C.** A cell filled with sample after the reagent has developed
 - **D.** A cell holding a standard of known concentration
@@ -3607,7 +3607,7 @@ mg/L = percent times 10,000. Substitute the stated values: 12.5 × 10000 = 125,0
 
 ### 278: Chemical strength conversions (hard)
 
-Use 1 percent = 10,000 mg/L. A spill-cleanup solution must be diluted from 5 percent to 0.5 percent. How many gallons of water must be added to 2 gal of the 5 percent solution? Use C1 x V1 = C2 x V2.
+A spill-cleanup solution must be diluted from 5 percent to 0.5 percent. Both concentrations are percent by weight/volume of available chlorine, and the volumes add. How many gallons of water must be added to 2 gal of the 5 percent solution? Use C1 x V1 = C2 x V2.
 
 - **A.** 18 gal
 - **B.** 20 gal

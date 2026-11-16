@@ -17,7 +17,7 @@ Written 2026-11-16. The owner's direction: set up the exam bank for every state'
 |---:|---|---:|---|---|---|
 | 1 | California | 11,630 | wastewater-collection | Suitable | Done: 295 questions (250 plus 45 added after checking the CWEA outline), reviewed |
 | 2 | California | 11,630 | water-distribution | Suitable | Done: 250 questions (State Water Board D1 outline), reviewed; dossier comparison with the US Class I package waived by the owner |
-| 3 | California | 11,630 | water-treatment | Narrow | Queued |
+| 3 | California | 11,630 | water-treatment | Narrow | Done: 280 questions (State Water Board T1 outline), reviewed; dossier comparison with the US Class I package waived |
 | 4 | Florida | 7,440 | water-distribution | Narrow | Queued |
 | 5 | Florida | 7,440 | water-treatment | Narrow | Queued |
 | 6 | Pennsylvania | 4,660 | wastewater-collection | Suitable | In progress: 250 questions, batch 2 of 4 |
