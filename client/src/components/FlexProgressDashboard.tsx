@@ -72,7 +72,7 @@ export function FlexProgressDashboard({ orgId }: { orgId: number }) {
     <Card className="teams-flex-progress mt-6">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <TrendingUp className="h-5 w-5 text-teal-600" />
+          <TrendingUp className="h-5 w-5 text-blue-600" />
           <span>Course Pass Progress</span>
           <Badge
             variant="outline"

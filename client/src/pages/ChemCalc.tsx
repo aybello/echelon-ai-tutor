@@ -407,7 +407,7 @@ export default function ChemCalc() {
       <div className="chemcalc-main" style={{ maxWidth: 800, margin: "0 auto", padding: "28px 20px 80px", animation: "fadeUp 0.3s ease both" }}>
 
         {/* Hero */}
-        <div className="chemcalc-hero" style={{ background: "linear-gradient(135deg, #1D4ED8, #0F766E)", borderRadius: 20, padding: "28px 32px", marginBottom: 24, color: "#fff" }}>
+        <div className="chemcalc-hero" style={{ background: "linear-gradient(135deg, #1D4ED8, #1757B8)", borderRadius: 20, padding: "28px 32px", marginBottom: 24, color: "#fff" }}>
           <h1 style={{ fontSize: 22, fontWeight: 800, margin: "0 0 6px" }}>🧪 Chemical Feed Calculator</h1>
           <p style={{ fontSize: 13, opacity: 0.9, margin: 0, lineHeight: 1.6 }}>
             Live dosing calculations for all major water treatment chemicals. Enter your flow rate and target dose — get feed rates instantly.

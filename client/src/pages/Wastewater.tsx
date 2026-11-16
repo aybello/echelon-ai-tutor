@@ -64,7 +64,7 @@ function FlowMap({ active, onSelect }: { active: WastewaterStep; onSelect: (s: W
                 textAlign: "center", lineHeight: 1.3,
               }}>{s.label}</div>
               <div style={{ fontSize: 9, color: "#94A3B8", textAlign: "center", lineHeight: 1.3 }}>{s.shortDesc}</div>
-              {s.id === "secondary" && <span className="rounded bg-teal-50 px-2 py-0.5 text-[10px] font-bold text-teal-800">3D available</span>}
+              {s.id === "secondary" && <span className="rounded bg-blue-50 px-2 py-0.5 text-[10px] font-bold text-blue-800">3D available</span>}
             </button>
             {i < WW_STEPS.length - 1 && (
               <div style={{ flexShrink: 0, display: "flex", alignItems: "center" }}>

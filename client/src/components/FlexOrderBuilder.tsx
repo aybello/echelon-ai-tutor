@@ -236,7 +236,7 @@ export function FlexOrderBuilder({ initialRegion = "ontario" }: { initialRegion?
           {discount > 0 && <p className="text-right text-xs text-green-600">You save {formatCAD(discountAmount)} through volume pricing.</p>}
         </div>
 
-        <Button className="teams-checkout-button w-full bg-gradient-to-r from-blue-600 to-teal-500 py-3 font-semibold text-white" onClick={handleSubmit} disabled={identity.isLoading || availability.isLoading || createOrder.isPending || total === 0}>
+        <Button className="teams-checkout-button w-full bg-gradient-to-r from-blue-600 to-blue-500 py-3 font-semibold text-white" onClick={handleSubmit} disabled={identity.isLoading || availability.isLoading || createOrder.isPending || total === 0}>
           {createOrder.isPending ? "Creating secure checkout…" : `Proceed to secure checkout — ${formatCAD(total)}`}
         </Button>
         <p className="text-center text-xs text-gray-400">Unused licences can be reassigned. Each operator starts their own study term when they activate the assigned Course Pass.</p>

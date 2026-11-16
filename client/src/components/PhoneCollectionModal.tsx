@@ -79,7 +79,7 @@ export default function PhoneCollectionModal({ onComplete }: Props) {
             width: 56,
             height: 56,
             borderRadius: 16,
-            background: "linear-gradient(135deg, #1D4ED8, #0F766E)",
+            background: "linear-gradient(135deg, #1D4ED8, #1757B8)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -187,7 +187,7 @@ export default function PhoneCollectionModal({ onComplete }: Props) {
               background:
                 updatePhone.isPending || phone.trim().length < 7
                   ? "#334155"
-                  : "linear-gradient(135deg, #1D4ED8, #0F766E)",
+                  : "linear-gradient(135deg, #1D4ED8, #1757B8)",
               color:
                 updatePhone.isPending || phone.trim().length < 7
                   ? "#64748B"

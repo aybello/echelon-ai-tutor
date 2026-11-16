@@ -70,7 +70,7 @@ function timeAgo(date: Date | string | null) {
 function ProvinceBadge({ province }: { province: string | null }) {
   const colors: Record<string, string> = {
     ON: "bg-blue-50 text-blue-700 border-blue-100",
-    BC: "bg-teal-50 text-teal-700 border-teal-100",
+    BC: "bg-blue-50 text-blue-700 border-blue-100",
     AB: "bg-amber-50 text-amber-700 border-amber-100",
     SK: "bg-green-50 text-green-700 border-green-100",
     MB: "bg-purple-50 text-purple-700 border-purple-100",

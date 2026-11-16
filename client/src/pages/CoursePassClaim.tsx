@@ -76,11 +76,11 @@ export default function CoursePassClaim() {
       <main className="mx-auto max-w-2xl px-5 py-14">
         <Card className="border-slate-200 shadow-xl shadow-slate-200/50">
           <CardHeader className="space-y-4 text-center">
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-teal-100 text-teal-700">
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-100 text-blue-700">
               <GraduationCap className="h-7 w-7" />
             </div>
             <div>
-              <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-teal-700">Echelon Course Pass</p>
+              <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-blue-700">Echelon Course Pass</p>
               <CardTitle className="text-2xl text-slate-900">{courseName}</CardTitle>
               {termMonths && <p className="mt-2 text-sm text-slate-600">{termMonths}-month access, beginning when you activate</p>}
             </div>
@@ -98,7 +98,7 @@ export default function CoursePassClaim() {
                   <div className="mb-1 flex items-center gap-2 font-semibold"><ShieldCheck className="h-4 w-4" /> Verify your work email</div>
                   Sign in as {invitation.data.maskedEmail}. We will send a one-time code to confirm the Course Pass belongs to you.
                 </div>
-                <Button asChild className="h-12 w-full bg-teal-700 text-base hover:bg-teal-800">
+                <Button asChild className="h-12 w-full bg-blue-700 text-base hover:bg-blue-800">
                   <Link href={loginUrl}>Verify Email &amp; Continue</Link>
                 </Button>
               </div>
@@ -108,7 +108,7 @@ export default function CoursePassClaim() {
               <div className="space-y-4">
                 <p className="text-center text-sm text-slate-600">Signed in as <strong>{session.data?.email}</strong></p>
                 <Button
-                  className="h-12 w-full bg-teal-700 text-base hover:bg-teal-800"
+                  className="h-12 w-full bg-blue-700 text-base hover:bg-blue-800"
                   disabled={claim.isPending}
                   onClick={() => claim.mutate({ token })}
                 >
@@ -124,7 +124,7 @@ export default function CoursePassClaim() {
                   Choose Activate Course only when you are ready to begin. Your {pass.termMonths}-month study period starts immediately and cannot be paused.
                 </div>
                 <Button
-                  className="h-12 w-full bg-teal-700 text-base hover:bg-teal-800"
+                  className="h-12 w-full bg-blue-700 text-base hover:bg-blue-800"
                   disabled={activate.isPending}
                   onClick={() => activate.mutate({ licenceId: pass.id })}
                 >
@@ -140,7 +140,7 @@ export default function CoursePassClaim() {
                   You can now use the full question bank and mock exams. Access ends {pass.accessEndsAt ? new Date(pass.accessEndsAt).toLocaleDateString() : "at the end of your term"}.
                 </div>
                 <div className="grid gap-3 sm:grid-cols-2">
-                  <Button asChild className="h-12 bg-teal-700 hover:bg-teal-800"><Link href={`/activate/${encodeURIComponent(pass.courseKey)}`}>Set Up My Study Plan</Link></Button>
+                  <Button asChild className="h-12 bg-blue-700 hover:bg-blue-800"><Link href={`/activate/${encodeURIComponent(pass.courseKey)}`}>Set Up My Study Plan</Link></Button>
                   <Button asChild variant="outline" className="h-12"><Link href={pass.mockExamPath}>Take a Mock Exam</Link></Button>
                 </div>
                 {extensionEligibility.data?.eligible && <div className="rounded-xl border border-blue-200 bg-blue-50 p-4 text-sm text-blue-950">

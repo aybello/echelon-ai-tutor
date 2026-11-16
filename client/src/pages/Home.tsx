@@ -64,7 +64,7 @@ export default function Home() {
       courseLabel="Ontario OIT · Water Treatment"
       courseTitle={courseTitle}
       courseSubtitle="Ontario OIT Water Exam Prep"
-      headerGradient="linear-gradient(135deg, #1D4ED8 0%, #0F766E 100%)"
+      headerGradient="linear-gradient(135deg, #1D4ED8 0%, #1757B8 100%)"
       headerIcon="💧"
       headerActions={[
         { label: "📝 Mock Exam", href: "/oit-mock" },
