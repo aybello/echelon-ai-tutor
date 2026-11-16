@@ -81,6 +81,7 @@ import { FlexLicencePanel } from "@/components/FlexLicencePanel";
 import "@/components/StudyWorkspace.css";
 import { filterRosterMembers, getOperatorStudyStage } from "@/lib/managerRoster";
 import { FlexProgressDashboard } from "@/components/FlexProgressDashboard";
+import ExamOutcomesPanel from "@/components/ExamOutcomesPanel";
 import { safeSupervisorCsvCell, supervisorNextAction } from "@shared/supervisorActionPlan";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -289,6 +290,7 @@ export default function OrgDashboard() {
       toast.success("Exam result recorded");
       setOutcomeTarget(null);
       passRateQuery.refetch();
+      utils.orgIntel.getExamOutcomeSummary.invalidate();
     },
     onError: (err) => toast.error(err.message),
   });
@@ -743,14 +745,18 @@ export default function OrgDashboard() {
           <button type="button" aria-pressed={managerView === "reports"} onClick={() => setManagerView("reports")}>Reports and outcomes</button>
         </nav>
         {managerView === "operators" && <section aria-label="Operator management" className="manager-operators">
-        {/* Pass rate summary */}
+        {/* Pass rate summary: same definition as the Exam results panel on the Reports tab */}
         {passRateQuery.data && passRateQuery.data.total > 0 && (
-          <div className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-center justify-between">
+          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 flex items-center justify-between">
             <div>
-              <p className="text-sm font-semibold text-green-800">First recorded outcome pass rate this term</p>
-              <p className="text-xs text-green-600 mt-0.5">{passRateQuery.data.passed} of {passRateQuery.data.total} learner-course records show a pass; first official attempts are not verified</p>
+              <p className="text-sm font-semibold text-blue-900">Pass rate this term</p>
+              <p className="text-xs text-blue-800 mt-0.5">
+                {passRateQuery.data.passed} of {passRateQuery.data.total} who sat the exam passed (first recorded result per operator and course
+                {passRateQuery.data.noShow ? `; ${passRateQuery.data.noShow} no-show${passRateQuery.data.noShow === 1 ? "" : "s"} not counted` : ""}).
+                Results are entered by managers and are not verified.
+              </p>
             </div>
-            <span className="text-3xl font-bold text-green-700">{passRateQuery.data.passRate}%</span>
+            <span className="text-3xl font-bold text-blue-900">{passRateQuery.data.passRate}%</span>
           </div>
         )}
 
@@ -1137,6 +1143,7 @@ export default function OrgDashboard() {
         </div>
 
         {(readinessSummaryQuery.isError || operatorReadinessQuery.isError) && <p role="alert" className="text-sm text-amber-800">Part of the report could not load. <button type="button" className="workspace-text-link" onClick={() => { void readinessSummaryQuery.refetch(); void operatorReadinessQuery.refetch(); }}>Retry report</button></p>}
+        <ExamOutcomesPanel orgInput={orgInput} />
         {/* Team Readiness Summary */}
         {readinessSummaryQuery.data && (
           <div className="mt-8">

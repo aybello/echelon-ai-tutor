@@ -38,6 +38,7 @@ import { normalizeEmail } from "../_core/access";
 import { sendTeamEnrollmentEmail, sendOperatorStudyReminderEmail, type TeamEnrollmentEmailPayload } from "../email";
 import { courseKeyToTierStrict, isValidCourseKey } from "../../shared/products";
 import { courseKeyToLabel, getExamTypesForCourseKey, resolveCourseKey } from "../../shared/courseRegistry";
+import { summariseExamOutcomes } from "../teams/examOutcomeSummary";
 import { allowedCourseKeysForOrg, subscriptionProvinceForOrg, isSubscriptionTier, validateOrgCourseKeys } from "../stripe/subscriptionProducts";
 import { trackEvent } from "../analytics";
 import { safeSupervisorCsvCell } from "../../shared/supervisorActionPlan";
@@ -1395,7 +1396,7 @@ export const orgRouter = router({
         .where(eq(organizations.id, orgId))
         .limit(1)
         .then(r => r[0]);
-      if (!org) return { total: 0, passed: 0, passRate: 0 };
+      if (!org) return { total: 0, passed: 0, passRate: 0, noShow: 0 };
       const termStart = resolveTermStart(org);
       const rows = await db
         .select({
@@ -1407,23 +1408,44 @@ export const orgRouter = router({
         .from(examOutcomes)
         .where(and(eq(examOutcomes.orgId, orgId), gte(examOutcomes.recordedAt, termStart)))
         .orderBy(examOutcomes.recordedAt);
-      const seen = new Set<string>();
-      let total = 0;
-      let passed = 0;
-      for (const row of rows) {
-        const key = `${row.memberEmail}::${row.courseKey}`;
-        if (seen.has(key)) continue;
-        seen.add(key);
-        total++;
-        if (row.result === "passed") passed++;
-      }
-      return { total, passed, passRate: total > 0 ? Math.round((passed / total) * 100) : 0 };
+      // Same definition as the Reports tab: first recorded result per operator and course this term. A no-show is
+      // not a fail, so it is left out of total and passRate and reported separately.
+      const summary = summariseExamOutcomes(rows.map(r => ({ ...r, examDate: null, readinessScoreAtOutcome: null })));
+      return { total: summary.sat, passed: summary.passed, passRate: summary.passRate ?? 0, noShow: summary.noShow };
     }),
 });
 
 // ── Phase 5: Teams Manager Intelligence ──────────────────────────────────────
 
 export const orgIntelRouter = router({
+  /**
+   * getExamOutcomeSummary: pass rate and counts from the exam results this organization's managers recorded this
+   * term (the same rows recordExamOutcome writes; first recorded result per operator and course). Scoped to the manager's organization; learner self-reports are stored
+   * under orgId 0 and never appear here.
+   */
+  getExamOutcomeSummary: teamProcedure.query(async ({ ctx }) => {
+    const { orgId } = await resolveOrgManager(ctx);
+    const db = await getDb();
+    if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+    const termOrg = await db.select({ termEnd: organizations.termEnd, termStart: organizations.termStart })
+      .from(organizations).where(eq(organizations.id, orgId)).limit(1).then(r => r[0]);
+    if (!termOrg) throw new TRPCError({ code: "NOT_FOUND", message: "Organization not found" });
+    const rows = await db
+      .select({
+        memberEmail: examOutcomes.memberEmail, courseKey: examOutcomes.courseKey, result: examOutcomes.result,
+        examDate: examOutcomes.examDate, recordedAt: examOutcomes.recordedAt,
+        readinessScoreAtOutcome: examOutcomes.readinessScoreAtOutcome,
+      })
+      .from(examOutcomes)
+      .where(and(eq(examOutcomes.orgId, orgId), gte(examOutcomes.recordedAt, resolveTermStart(termOrg))));
+    const summary = summariseExamOutcomes(rows);
+    return {
+      ...summary,
+      byCourse: summary.byCourse.map(c => ({ ...c, courseLabel: courseKeyToLabel(c.courseKey) })),
+      recent: summary.recent.map(r => ({ ...r, courseLabel: courseKeyToLabel(r.courseKey) })),
+    };
+  }),
+
   /**
    * getTeamReadinessSummary — enhanced overview with readiness breakdown,
    * exam-ready count, at-risk count, inactive count, and top weak topics.
