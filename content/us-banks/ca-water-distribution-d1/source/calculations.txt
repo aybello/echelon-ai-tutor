@@ -57,3 +57,20 @@ A service line holds 12 gal. It is flushed for three line volumes at 5 gpm. How 
 A hydrant flows 900 gpm for 25 minutes. Use 1 ft3 = 7.48 gal. How many cubic feet of water are discharged?|Cubic feet = gpm times minutes divided by 7.48|900*25/7.48|ft3|0|168300,22500,36|m
 A 2,500 ft run of 6-inch main (0.5 ft) is flushed with two pipe volumes at 400 gpm. Use volume = 0.785 x D2 x length x 7.48 gal/ft3. How many minutes does the flushing take?|Minutes = 2 times main volume in gallons divided by flow in gpm|2*0.785*0.5*0.5*2500*7.48/400|min|2|9.17,45.90,1100.96|h
 A flow of 0.75 MGD is to be stated in gpm. Use 1 MGD = 694.4 gpm. What is the flow in gpm?|gpm = MGD times 694.4|0.75*694.4|gpm|1|1080.0,45.0,925.9|m
+@Equipment operation, maintenance and inspections|CAD1|Chemical feeder dosage from graduated cylinder readings
+A feeder discharges 240 mL into a graduated cylinder in 60 seconds. Use 3785 mL per gallon and 1440 min per day. How many gallons per day does the feeder deliver?|Gal per day = mL per minute times 1440 divided by 3785|240*1440/3785|gal/day|1|630.8,345600,3.8|m
+A graduated cylinder collects 90 mL in 45 seconds. How many mL per minute is the feeder delivering?|mL per minute = mL collected times 60 divided by seconds|90*60/45|mL/min|0|2,4050,67.5|m
+A feeder delivers 400 mL per minute. Use 3785 mL per gallon and 1440 min per day. How many gallons per day is this?|Gal per day = mL per minute times 1440 divided by 3785|400*1440/3785|gal/day|1|1053.0,576000,6.3|m
+A feeder delivers 180 mL per minute of a solution that weighs 9.5 lb/gal. Use 3785 mL per gallon and 1440 min per day. How many pounds of solution are fed per day?|Lb per day = mL per minute times 1440 divided by 3785 times 9.5|180*1440/3785*9.5|lb/day|1|68.5,7.2,259200.0|h
+A feeder fills a cylinder with 500 mL in 2 minutes. The solution weighs 8.8 lb/gal. Use 3785 mL per gallon and 1440 min per day. How many pounds of solution are fed per day?|Lb per day = (mL collected divided by minutes) times 1440 divided by 3785 times 8.8|500/2*1440/3785*8.8|lb/day|1|1674.0,95.1,10.8|h
+@Equipment operation, maintenance and inspections|CAD1|Hydrant flushing flow and volume
+A hydrant flows at 750 gpm for 20 minutes. Use 1 ft3 = 7.48 gal. How many cubic feet of water are discharged?|Cubic feet = gpm times minutes divided by 7.48|750*20/7.48|ft3|1|15000.0,112200.0,5.0|m
+A hydrant flows at 650 gpm for 2 hours and 15 minutes. How many gallons are discharged?|Gallons = gpm times total minutes, with 2 h 15 min equal to 135 min|650*(2*60+15)|gal|0|1398,5850,117000|m
+A 1,200 ft run of 12-inch main (1 ft diameter) is flushed for one pipe volume at 1,000 gpm. Use volume = 0.785 x D2 x length x 7.48 gal/ft3. How many minutes does flushing take?|Minutes = main volume in gallons divided by flow in gpm|0.785*1*1*1200*7.48/1000|min|2|7046.20,125.94,0.94|h
+Two hydrants flow at 900 gpm and 650 gpm for 40 minutes at the same time. How many gallons are discharged in total?|Gallons = (900 plus 650) times 40|(900+650)*40|gal|0|36000,26000,1550|h
+@Equipment operation, maintenance and inspections|CAD1|Meter conversions and well drawdown
+A meter shows 4,820 ft3 used in a month. Use 1 ft3 = 7.48 gal. How many gallons were used?|Gallons = cubic feet times 7.48|4820*7.48|gal|1|644.4,4820.0,3605.4|m
+A customer used 38,500 gal in a month. One CCF is 100 ft3 and 1 ft3 = 7.48 gal. How many CCF is this?|CCF = gallons divided by 7.48 divided by 100|38500/7.48/100|CCF|2|5147.06,287980.0,0.51|m
+A well has a static water level of 85 ft below ground and a pumping water level of 118 ft below ground. What is the drawdown in feet?|Drawdown = pumping level minus static level|118-85|ft|0|203,85,1|m
+A pump intake is set 175 ft below ground. While pumping, 22 ft of water stands above the intake. The static level is 128 ft below ground. What is the drawdown in feet?|Drawdown = (intake depth minus water above intake) minus static level|(175-22)-128|ft|0|197,47,75|h
+A customer averages 0.12 MGD. Use 1 MGD = 694.4 gpm and 60 min per hour. How many gallons per hour is this?|Gal per hour = MGD times 694.4 times 60|0.12*694.4*60|gal/hr|0|83,120000,1.39|h
