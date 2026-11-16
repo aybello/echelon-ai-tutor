@@ -7,3 +7,8 @@ A basin averages 288,000 gallons per day. Use 1,440 min/day. What is the average
 A 10-in sewer (0.833 ft diameter) is 400 ft long. Use volume = 0.785 × D² × length and 1 ft³ = 7.48 gal. How many gallons does the pipe hold when full?|Gallons = 0.785 times diameter squared times length times 7.48|0.785*0.833*0.833*400*7.48|gal|0|218,408,234872|m
 A jetting nozzle uses 70 gpm and the crew cleans 1,200 ft of sewer at 20 ft/min. How many gallons of water are used?|Gallons = (length divided by pace) times gpm|1200/20*70|gal|0|343,84000,17|h
 A circular wet well is 6 ft in diameter. With the pumps off, the level rises 2.0 ft in 10 minutes. Use volume = 0.785 × D² × H and 1 ft³ = 7.48 gal. What is the inflow in gpm?|Inflow = volume gained divided by time|0.785*6*6*2*7.48/10|gpm|0|423,6,11|h
+@Tools and equipment|CWEAHB|Equipment calculations
+A pump fills a 30 gal container in 45 seconds. What is the pump flow in gpm?|gpm = gallons divided by seconds, times 60|30/45*60|gpm|0|0.67,1350,90|m
+A 4-in discharge hose (0.333 ft diameter) is 100 ft long. Use volume = 0.785 × D² × length and 1 ft³ = 7.48 gal. How many gallons does the full hose hold?|Gallons = 0.785 times diameter squared times length times 7.48|0.785*0.333*0.333*100*7.48|gal|0|260,9396,9|h
+A jetting truck carries a 1,500 gal water tank. The crew keeps 10 percent of the tank in reserve, and the jetter uses 60 gpm. How many minutes can the jetter run before the tank is down to the reserve?|Minutes = tank times 0.9 divided by gpm|1500*0.9/60|min|1|25,2.5,27.8|h
+A trash pump moves 900 gpm. Use 1 cfs = 448.8 gpm. What is the flow in cfs?|cfs = gpm divided by 448.8|900/448.8|cfs|2|403920,120.32,15|m
