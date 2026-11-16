@@ -93,3 +93,9 @@ Review of every row of the production `questions` table, using the read-only exp
 - `needs-source-check.txt`: findings that rest on unconfirmed facts.
 - `units-unflagged-candidates.json`: question ids per bank with US-unit terms that no reviewer flagged.
 - `MANUS-REQUEST.md`: what Manus should do with these.
+
+## Spot-check of the fixes
+
+A second reviewer, working independently, checked a random sample of 63 fixes (22 wrong-answer, 14 jurisdiction, 14 units, 12 unclear, 1 off-topic). Four fixes were deliberately broken (key moved to a wrong option) to prove it was reading; **all 4 were caught**. Of the 59 real fixes, **all 59 were judged correct** and none were marked unsure.
+
+What this does and does not show: with 59 clean results, the true error rate is probably under about 5%, but a sample cannot rule out a small number of bad fixes among 1,769. The checker is the same model family as the original reviewers, so a shared blind spot would not show up, and it reported no unsure items even though some fixes rest on Ontario figures nobody confirmed. The `needs-source-check.txt` items should still be held until someone confirms them.
