@@ -1,15 +1,15 @@
 {
  "export": "docs/exam-bank-export/2026-11-16 (commit d118897a)",
- "chunksDone": 85,
+ "chunksDone": 90,
  "chunksTotal": 174,
- "questionsReviewed": 11935,
+ "questionsReviewed": 12685,
  "questionsTotal": 24350,
- "problems": 736,
+ "problems": 770,
  "byVerdict": {
-  "UNCLEAR": 210,
-  "WRONG": 370,
+  "UNCLEAR": 228,
+  "WRONG": 383,
   "JURISDICTION": 102,
-  "UNITS": 47,
+  "UNITS": 50,
   "OFF-TOPIC": 7
  },
  "byBank": {
@@ -30,7 +30,7 @@
   "class4-wastewater-coll": 71,
   "class4-water": 48,
   "class4-water-dist": 78,
-  "oit": 22
+  "oit": 56
  },
  "chunks": [
   "chunk-001",
@@ -117,7 +117,12 @@
   "chunk-082",
   "chunk-083",
   "chunk-084",
-  "chunk-085"
+  "chunk-085",
+  "chunk-086",
+  "chunk-087",
+  "chunk-088",
+  "chunk-089",
+  "chunk-090"
  ],
  "corrections": [
   {
@@ -25989,7 +25994,7 @@
    "bankKey": "oit",
    "questionNum": 23,
    "verdict": "WRONG",
-   "note": "Self-contradictory: 0.08 mg/L is above 0.05 mg/L so the explanation's 'out of compliance' claim is false. Residual at entry to distribution is judged against the CT-required primary-disinfection residual, not 0.05 mg/L. The '24 hours notify the Director' rule is invented; adverse results under O. Reg. 170/03 Schedule 16 / SDWA s.18 are reported immediately to the MOH and the MECP Spills Action Centre, with corrective action per Schedule 17.",
+   "note": "0.08 mg/L is above the 0.05 mg/L minimum, so the explanation contradicts itself ('out of compliance'). The 24-hour Director notification is not in O. Reg. 170/03. A low-residual adverse result (<0.05 mg/L free chlorine in distribution) triggers immediate reporting to the MOH and the MECP Spills Action Centre and Schedule 17 corrective actions.",
    "original": {
     "question": "Under O. Reg. 170/03, a water treatment plant operator discovers that the chlorine residual at the entry to the distribution system has dropped to 0.08 mg/L. What is the required action?",
     "options": [
@@ -26002,15 +26007,15 @@
     "explanation": "O. Reg. 170/03 requires a minimum free chlorine residual of 0.05 mg/L at the entry to the distribution system. At 0.08 mg/L, the system is out of compliance. The operator must immediately investigate, take corrective action, and notify the Director if the adverse condition cannot be corrected within 24 hours."
    },
    "fix": {
-    "question": "Under O. Reg. 170/03, a distribution-system sample from a chlorinated system shows a free chlorine residual of 0.03 mg/L. What is the required reporting?",
+    "question": "Under O. Reg. 170/03, a distribution-system sample in a chlorinated municipal residential system shows a free chlorine residual of 0.03 mg/L. What is the required action?",
     "options": [
-     "Notify the Medical Officer of Health and the MECP Spills Action Centre immediately and take corrective action",
-     "Log the result and recheck at the next routine sample",
-     "Notify the MECP only if the result persists for 24 hours",
-     "Report it in the annual report only"
+     "Immediately report the adverse result to the local medical officer of health and the MECP Spills Action Centre, and take corrective action (e.g. flush, resample, restore the residual)",
+     "Log the result and continue monitoring because 0.03 mg/L is above zero",
+     "Increase the chlorine dose and collect a confirmation sample within 7 days before reporting",
+     "Report the result in the next annual report"
     ],
     "correctIndex": 0,
-    "explanation": "A free chlorine residual below 0.05 mg/L in distribution is an adverse test result under Schedule 16 of O. Reg. 170/03 and s.18 of the SDWA. It must be reported immediately to the local Medical Officer of Health and the MECP Spills Action Centre, and corrective action (e.g. flushing, increasing dose, resampling) must follow.",
+    "explanation": "A free chlorine residual below 0.05 mg/L in the distribution system is an adverse test result under O. Reg. 170/03 (Schedule 16). It must be reported immediately to the medical officer of health and the MECP Spills Action Centre, and the corrective actions required by the regulation must be taken.",
     "steps": null
    }
   },
@@ -26018,8 +26023,8 @@
    "id": 35088,
    "bankKey": "oit",
    "questionNum": 63,
-   "verdict": "JURISDICTION",
-   "note": "Ontario regulations do not set a 10 m (about 98 kPa) minimum static pressure. The MECP Design Guidelines for Drinking-Water Systems (guidance, not regulation) call for at least 140 kPa (20 psi) at ground level at all points under all flow conditions including fire flow, with about 275 kPa normal minimum. Confirmed via MECP-based watermain design criteria (140 kPa at max day plus fire flow).",
+   "verdict": "WRONG",
+   "note": "Ontario regulations do not set a 10 m minimum static pressure. MECP Design Guidelines for Drinking-Water Systems (guidance, not regulation) use 140 kPa (about 14 m) minimum at ground level under maximum-day-plus-fire-flow, and 275 kPa under normal conditions. Confirmed 140 kPa for max day + fire via Ontario watermain design criteria page; 'all conditions' wording not confirmed so fix scopes to max day plus fire flow.",
    "original": {
     "question": "According to Ontario regulations, what is the minimum static pressure that must be maintained in a municipal water distribution system?",
     "options": [
@@ -26032,15 +26037,15 @@
     "explanation": "Ontario regulations require a minimum static pressure of 10 meters of water column in municipal water distribution systems to ensure adequate flow and service."
    },
    "fix": {
-    "question": "According to the MECP Design Guidelines for Drinking-Water Systems, what minimum pressure should a distribution system maintain at ground level at all points, including during maximum day demand plus fire flow?",
+    "question": "According to Ontario's Design Guidelines for Drinking-Water Systems, what minimum pressure at ground level should a municipal distribution system be designed to maintain under maximum-day demand plus fire flow?",
     "options": [
-     "70 kPa",
      "140 kPa",
-     "275 kPa",
+     "35 kPa",
+     "70 kPa",
      "550 kPa"
     ],
-    "correctIndex": 1,
-    "explanation": "The MECP design guidance calls for at least 140 kPa (about 14 m of water, 20 psi) at ground level under maximum day demand plus fire flow. About 275 kPa is the usual minimum under normal conditions. This is design guidance, not a regulatory limit.",
+    "correctIndex": 0,
+    "explanation": "Ontario's design guidance uses a minimum of 140 kPa (about 14 m of water) at ground level under maximum-day demand plus fire flow, and about 275 kPa under normal operating conditions. This is design guidance applied with professional judgment, not a provision of the Safe Drinking Water Act.",
     "steps": null
    }
   },
@@ -26048,8 +26053,8 @@
    "id": 35101,
    "bankKey": "oit",
    "questionNum": 76,
-   "verdict": "UNCLEAR",
-   "note": "Answer is right, but the steps are unrelated (monthly pump-station inspections under O. Reg. 170/03, drinking water) and would mislead a learner on a sewage-works design question.",
+   "verdict": "WRONG",
+   "note": "Steps are irrelevant to the question (they discuss drinking-water legislation and monthly inspection frequency) and do not support the answer.",
    "original": {
     "question": "According to Ontario's Design Guidelines for Sewage Works, how should a sewage pumping station with two pump units be configured for reliable service?",
     "options": [
@@ -26075,11 +26080,54 @@
    }
   },
   {
+   "id": 35102,
+   "bankKey": "oit",
+   "questionNum": 77,
+   "verdict": "WRONG",
+   "note": "Arithmetic: 58.86/0.80 = 73.575 kW, which rounds to 73.6 kW, not 73.5 kW.",
+   "original": {
+    "question": "A pump delivers water at a flow rate of 150 L/s against a total head of 40 m. If the pump efficiency is 80%, what is the required motor power in kW? (Assume water density = 1000 kg/m³, gravity = 9.81 m/s²)",
+    "options": [
+     "49.0 kW",
+     "58.8 kW",
+     "61.3 kW",
+     "73.5 kW"
+    ],
+    "correctIndex": 3,
+    "explanation": "Q = 150 L/s = 0.15 m³/s. Hydraulic Power = (0.15 × 40 × 1000 × 9.81) / 1000 = 58.86 kW. Motor Power = 58.86 / 0.80 = 73.575 kW ≈ 73.5 kW."
+   },
+   "fix": {
+    "question": "A pump delivers water at a flow rate of 150 L/s against a total head of 40 m. If the pump efficiency is 80%, what is the required motor power in kW? (Assume water density = 1000 kg/m³, gravity = 9.81 m/s²)",
+    "options": [
+     "49.0 kW",
+     "58.8 kW",
+     "61.3 kW",
+     "73.6 kW"
+    ],
+    "correctIndex": 3,
+    "explanation": "Q = 150 L/s = 0.15 m³/s. Hydraulic Power = (0.15 × 40 × 1000 × 9.81) / 1000 = 58.86 kW. Motor Power = 58.86 / 0.80 = 73.58 kW ≈ 73.6 kW.",
+    "steps": [
+     {
+      "l": "Convert Q",
+      "c": "150 L/s ÷ 1000 = 0.15 m³/s"
+     },
+     {
+      "l": "Hydraulic P",
+      "c": "P_h = (0.15 × 40 × 1000 × 9.81) / 1000 = 58.86 kW"
+     },
+     {
+      "l": "Motor P",
+      "c": "P_m = 58.86 / 0.80 = 73.58 kW ≈ 73.6 kW"
+     }
+    ]
+   }
+  },
+  {
    "id": 35107,
    "bankKey": "oit",
    "questionNum": 82,
-   "verdict": "UNCLEAR",
-   "note": "Answer 194 kPa is correct, but the explanation is truncated and contains editing leakage ('original explanation ... not B as').",
+   "verdict": "WRONG",
+   "note": "Key (194 kPa) and arithmetic are correct, but the explanation is a garbled editing artifact ('The calculation in the original explanation is correct... not B as' truncated, refers to 'option A').",
    "original": {
     "question": "Water flows through a horizontal pipe. At point A, the velocity is 2 m/s and the pressure is 200 kPa. At point B, the velocity increases to 4 m/s. What is the pressure at point B, according to Bernoulli\\'s principle? (Assume water density = 1000 kg/m³)",
     "options": [
@@ -26092,7 +26140,7 @@
     "explanation": "The calculation in the original explanation is correct. Using Bernoulli's principle for a horizontal pipe, the pressure at point B (P2) can be calculated as P1 + 0.5ρ(V1² - V2²). Plugging in the given values, P2 = 200,000 Pa + 0.5 × 1000 kg/m³ × ((2 m/s)² - (4 m/s)²) = 194,000 Pa, which converts to 194 kPa. Therefore, option A is the correct answer, not B as"
    },
    "fix": {
-    "question": "Water flows through a horizontal pipe. At point A, the velocity is 2 m/s and the pressure is 200 kPa. At point B, the velocity increases to 4 m/s. What is the pressure at point B, according to Bernoulli's principle? (Assume water density = 1000 kg/m3)",
+    "question": "Water flows through a horizontal pipe. At point A, the velocity is 2 m/s and the pressure is 200 kPa. At point B, the velocity increases to 4 m/s. What is the pressure at point B, according to Bernoulli's principle? (Assume water density = 1000 kg/m³)",
     "options": [
      "194 kPa",
      "188 kPa",
@@ -26100,16 +26148,33 @@
      "176 kPa"
     ],
     "correctIndex": 0,
-    "explanation": "For a horizontal pipe, P2 = P1 + 0.5 x rho x (V1^2 - V2^2) = 200,000 + 0.5 x 1000 x (4 - 16) = 200,000 - 6,000 = 194,000 Pa = 194 kPa.",
-    "steps": null
+    "explanation": "For a horizontal pipe, P1 + 0.5ρV1² = P2 + 0.5ρV2². So P2 = 200,000 Pa + 0.5 × 1000 × (2² − 4²) = 200,000 − 6,000 = 194,000 Pa = 194 kPa. Pressure falls as velocity rises.",
+    "steps": [
+     {
+      "l": "Step 1: State Bernoulli's Equation for a horizontal pipe.",
+      "c": "For a horizontal pipe (Z1 = Z2), P1 + 0.5ρV1² = P2 + 0.5ρV2²."
+     },
+     {
+      "l": "Step 2: Solve for P2.",
+      "c": "P2 = P1 + 0.5ρ(V1² − V2²)."
+     },
+     {
+      "l": "Step 3: Substitute.",
+      "c": "P2 = 200,000 Pa + 0.5 × 1000 kg/m³ × (4 − 16) m²/s² = 200,000 − 6,000 Pa."
+     },
+     {
+      "l": "Step 4: Convert.",
+      "c": "P2 = 194,000 Pa = 194 kPa."
+     }
+    ]
    }
   },
   {
    "id": 35108,
    "bankKey": "oit",
    "questionNum": 83,
-   "verdict": "UNCLEAR",
-   "note": "Answer 5.73 m is correct, but the explanation contains editing leakage ('The options have been corrected to include the calculated value').",
+   "verdict": "WRONG",
+   "note": "Key and arithmetic correct (5.73 m), but explanation contains an editing artifact ('The options have been corrected to include the calculated value').",
    "original": {
     "question": "A 500-meter long pipe with a diameter of 0.2 m has a friction factor of 0.02. If water flows at 1.5 m/s, calculate the head loss due to friction using the Darcy-Weisbach equation. (g = 9.81 m/s²)",
     "options": [
@@ -26122,7 +26187,7 @@
     "explanation": "The head loss due to friction is calculated using the Darcy-Weisbach equation: hf = f × (L/D) × (V²/2g). Plugging in the given values: hf = 0.02 × (500 m / 0.2 m) × ((1.5 m/s)² / (2 × 9.81 m/s²)). This simplifies to 0.02 × 2500 × (2.25 / 19.62), which results in 50 × 0.1146789 ≈ 5.73 m. The options have been corrected to include the calculated value."
    },
    "fix": {
-    "question": "A 500-meter long pipe with a diameter of 0.2 m has a friction factor of 0.02. If water flows at 1.5 m/s, calculate the head loss due to friction using the Darcy-Weisbach equation. (g = 9.81 m/s2)",
+    "question": "A 500-meter long pipe with a diameter of 0.2 m has a friction factor of 0.02. If water flows at 1.5 m/s, calculate the head loss due to friction using the Darcy-Weisbach equation. (g = 9.81 m/s²)",
     "options": [
      "5.73 m",
      "11.47 m",
@@ -26130,7 +26195,7 @@
      "13.47 m"
     ],
     "correctIndex": 0,
-    "explanation": "hf = f x (L/D) x (V^2/2g) = 0.02 x (500/0.2) x (2.25/19.62) = 0.02 x 2500 x 0.11468 = 5.73 m.",
+    "explanation": "hf = f × (L/D) × (V²/2g) = 0.02 × (500 / 0.2) × (2.25 / 19.62) = 0.02 × 2500 × 0.11468 ≈ 5.73 m.",
     "steps": null
    }
   },
@@ -26138,8 +26203,8 @@
    "id": 35110,
    "bankKey": "oit",
    "questionNum": 85,
-   "verdict": "UNCLEAR",
-   "note": "Answer 0.6 m/s is consistent with the sewage-works guideline for forcemains, but the steps are about OBC minimum slopes of building drainage pipes and are unrelated.",
+   "verdict": "WRONG",
+   "note": "Key (0.6 m/s) is fine, but the steps are unrelated (Ontario Building Code drain slopes) and describe an answer 'Option A 1:100' that does not exist.",
    "original": {
     "question": "According to Ontario's Design Guidelines for Sewage Works, what minimum velocity is identified for a sewage-pumping-station forcemain at the stated firm-capacity design condition?",
     "options": [
@@ -26169,7 +26234,7 @@
    "bankKey": "oit",
    "questionNum": 86,
    "verdict": "WRONG",
-   "note": "Steps substitute L = 10 m (and L/D = 66.67) instead of the stated 100 m; with those numbers hf would be about 0.109 m, not 1.088 m. Correct arithmetic: V = 1.132 m/s, hf = 0.025 x 666.67 x 0.06529 = 1.088 m, which rounds to 1.1 m; the key of 1.0 m is only the nearest option.",
+   "note": "Key (1.0 m, from 1.088 m) is fine, but step 4 substitutes L = 10 m instead of 100 m while step 5 gives 66.67 for L/D; inconsistent steps.",
    "original": {
     "question": "A pump is installed 5 meters above a clearwell. The suction pipe is 100 meters long with a diameter of 0.15 m. If the flow rate is 0.02 m³/s and the friction factor is 0.025, calculate the friction head loss in the suction pipe. (g = 9.81 m/s²)",
     "options": [
@@ -26182,31 +26247,31 @@
     "explanation": "Use the Darcy-Weisbach equation: hf = f × (L/D) × (V²/2g)\n\nStep 1 — Calculate pipe cross-sectional area:\nA = π/4 × D² = π/4 × (0.15)² = 0.01767 m²\n\nStep 2 — Calculate flow velocity:\nV = Q/A = 0.02 / 0.01767 = 1.132 m/s\n\nStep 3 — Apply Darcy-Weisbach:\nhf = 0.025 × (100/0.15) × (1.132²/(2 × 9.81))\nhf = 0.025 × 666.67 × (1.281/19.62)\nhf = 0.025 × 666.67 × 0.06529\nhf ≈ 1.088 m ≈ 1.0 m\n\nThe friction head loss is approximately 1.0 m."
    },
    "fix": {
-    "question": "A pump is installed 5 meters above a clearwell. The suction pipe is 100 meters long with a diameter of 0.15 m. If the flow rate is 0.02 m3/s and the friction factor is 0.025, calculate the friction head loss in the suction pipe. (g = 9.81 m/s2)",
+    "question": "A pump is installed 5 meters above a clearwell. The suction pipe is 100 meters long with a diameter of 0.15 m. If the flow rate is 0.02 m³/s and the friction factor is 0.025, calculate the friction head loss in the suction pipe. (g = 9.81 m/s²)",
     "options": [
      "0.5 m",
-     "1.1 m",
+     "2.0 m",
      "1.5 m",
-     "2.0 m"
+     "1.0 m"
     ],
-    "correctIndex": 1,
-    "explanation": "hf = f x (L/D) x (V^2/2g). A = pi/4 x 0.15^2 = 0.01767 m2; V = 0.02/0.01767 = 1.132 m/s; hf = 0.025 x (100/0.15) x (1.281/19.62) = 0.025 x 666.67 x 0.06529 = 1.09 m, about 1.1 m.",
+    "correctIndex": 3,
+    "explanation": "hf = f × (L/D) × (V²/2g). A = π/4 × 0.15² = 0.01767 m²; V = 0.02/0.01767 = 1.132 m/s; hf = 0.025 × (100/0.15) × (1.281/19.62) = 0.025 × 666.67 × 0.06529 ≈ 1.09 m, closest to 1.0 m.",
     "steps": [
      {
-      "l": "Cross-sectional area",
-      "c": "A = pi x (0.15/2)^2 = 0.01767 m2"
+      "l": "Step 1: Area",
+      "c": "A = π × (0.075 m)² ≈ 0.01767 m²"
      },
      {
-      "l": "Velocity",
-      "c": "V = Q/A = 0.02 / 0.01767 = 1.132 m/s"
+      "l": "Step 2: Velocity",
+      "c": "V = 0.02 / 0.01767 ≈ 1.132 m/s"
      },
      {
-      "l": "Apply Darcy-Weisbach",
-      "c": "hf = 0.025 x (100 m / 0.15 m) x (1.132^2 / (2 x 9.81)) = 0.025 x 666.67 x 0.06529"
+      "l": "Step 3: Darcy-Weisbach",
+      "c": "hf = 0.025 × (100 m / 0.15 m) × (1.132² / (2 × 9.81))"
      },
      {
-      "l": "Result",
-      "c": "hf = 1.09 m, about 1.1 m"
+      "l": "Step 4: Calculate",
+      "c": "hf = 0.025 × 666.67 × 0.06529 ≈ 1.09 m, closest to 1.0 m"
      }
     ]
    }
@@ -26216,7 +26281,7 @@
    "bankKey": "oit",
    "questionNum": 96,
    "verdict": "WRONG",
-   "note": "P = 250,000 Pa x 0.008333 m3/s = 2,083 W = 2.08 kW; the marked option 2.05 kW does not match the stated explanation value of 2.083 kW (option should read 2.08 kW).",
+   "note": "Power = 250,000 Pa × 0.008333 m³/s = 2083 W = 2.08 kW; the keyed option 2.05 kW does not match the explanation's own 2.083 kW.",
    "original": {
     "question": "If a pump delivers 500 L/min at a pressure of 250 kPa, what is the approximate power output of the pump in kilowatts (kW)? (Assuming water density = 1000 kg/m³ and gravity = 9.81 m/s²).",
     "options": [
@@ -26229,7 +26294,7 @@
     "explanation": "Power (W) = Pressure (Pa) × Flow rate (m³/s). Convert units: 250 kPa = 250,000 Pa, 500 L/min = 0.00833 m³/s. Power = 250,000 × 0.00833 = 2083 W = 2.083 kW."
    },
    "fix": {
-    "question": "If a pump delivers 500 L/min at a pressure of 250 kPa, what is the approximate power output of the pump in kilowatts (kW)? (Assuming water density = 1000 kg/m3 and gravity = 9.81 m/s2).",
+    "question": "If a pump delivers 500 L/min at a pressure of 250 kPa, what is the approximate power output of the pump in kilowatts (kW)? (Assuming water density = 1000 kg/m³ and gravity = 9.81 m/s²).",
     "options": [
      "0.82 kW",
      "3.06 kW",
@@ -26237,23 +26302,23 @@
      "2.08 kW"
     ],
     "correctIndex": 3,
-    "explanation": "Power (W) = Pressure (Pa) x Flow (m3/s) = 250,000 x 0.008333 = 2,083 W = 2.08 kW.",
+    "explanation": "Power (W) = Pressure (Pa) × Flow rate (m³/s). 250 kPa = 250,000 Pa; 500 L/min = 0.00833 m³/s. Power = 250,000 × 0.00833 = 2083 W = 2.08 kW.",
     "steps": [
      {
-      "l": "Convert pressure",
-      "c": "250 kPa = 250,000 Pa"
+      "l": "Convert pressure to Pascals",
+      "c": "250 kPa × 1000 = 250,000 Pa"
      },
      {
-      "l": "Convert flow",
-      "c": "500 L/min / 1000 / 60 = 0.008333 m3/s"
+      "l": "Convert flow rate to m³/s",
+      "c": "500 L/min ÷ 1000 ÷ 60 = 0.00833 m³/s"
      },
      {
-      "l": "Power",
-      "c": "250,000 x 0.008333 = 2,083 W"
+      "l": "Calculate power in Watts",
+      "c": "250,000 × 0.00833 = 2083 W"
      },
      {
-      "l": "To kW",
-      "c": "2,083 W / 1000 = 2.08 kW"
+      "l": "Convert to kilowatts",
+      "c": "2083 W ÷ 1000 = 2.08 kW"
      }
     ]
    }
@@ -26263,7 +26328,7 @@
    "bankKey": "oit",
    "questionNum": 97,
    "verdict": "WRONG",
-   "note": "O. Reg. 169/03 does not list a 0.2 mg/L aesthetic objective for free chlorine; the explanation also invents an MAC and the steps contradict the key (they argue for 0.5 mg/L). 0.2 mg/L is the capability/target figure from O. Reg. 170/03 and the disinfection procedure, not an AO. Also off-module (Hydraulics).",
+   "note": "O. Reg. 169/03 does not list an aesthetic objective for free chlorine, and 2.0 mg/L is not an Ontario MAC. 0.2 mg/L is the recommended optimum free chlorine target in the distribution system per the Procedure for Disinfection (consistent with q35046). Steps contradict the answer (conclude 0.5 mg/L).",
    "original": {
     "question": "Under Ontario's Drinking Water Quality Standards (O. Reg. 169/03), what is the aesthetic objective (AO) for free chlorine in drinking water?",
     "options": [
@@ -26276,15 +26341,15 @@
     "explanation": "The aesthetic objective (AO) for free chlorine in Ontario drinking water is ≤0.2 mg/L. This is not a health-based standard but rather a guideline to minimize taste and odour complaints. The maximum acceptable concentration (MAC) for chlorine is 2.0 mg/L based on health considerations. Operators must balance maintaining adequate disinfection residual (minimum 0.05 mg/L in distribution) while keeping levels below the AO to minimize customer complaints."
    },
    "fix": {
-    "question": "Under O. Reg. 170/03, secondary-disinfection equipment must be designed to be capable of achieving what free chlorine residual at all locations in the distribution system?",
+    "question": "According to Ontario's Procedure for Disinfection of Drinking Water, what free chlorine residual is identified as the recommended optimum target at locations in the distribution system?",
     "options": [
-     "0.05 mg/L",
-     "0.20 mg/L",
-     "0.50 mg/L",
-     "2.0 mg/L"
+     "0.5 mg/L",
+     "0.2 mg/L",
+     "2.0 mg/L",
+     "4.0 mg/L"
     ],
     "correctIndex": 1,
-    "explanation": "O. Reg. 170/03 requires secondary-disinfection equipment to be designed to be capable of achieving a free chlorine residual of 0.20 mg/L at all distribution locations. The minimum that must be maintained at all times in a chlorinated system is lower (0.05 mg/L).",
+    "explanation": "Ontario's Procedure for Disinfection of Drinking Water identifies 0.2 mg/L free chlorine as the recommended optimum target in the distribution system, while O. Reg. 170/03 sets 0.05 mg/L as the minimum that must be maintained at all times and locations for chlorinated systems.",
     "steps": null
    }
   },
@@ -26293,7 +26358,7 @@
    "bankKey": "oit",
    "questionNum": 100,
    "verdict": "UNCLEAR",
-   "note": "Circular question (answer repeats the name in the stem). OWWCO is the MECP branch that administers certification; MECP is therefore also defensible. Under O. Reg. 128/04 certificates are issued by the Director.",
+   "note": "Circular question: the Ontario Water and Wastewater Certification Office is the MECP's own office, so 'MECP' (option C) is equally defensible; explanation wrongly treats OWWCO as separate from the ministry. Also the question says 'distribution operators' but 128/04 certifies drinking-water operators generally.",
    "original": {
     "question": "Which organization is responsible for certifying water distribution operators in Ontario under the Ontario Water and Wastewater Certification Office (OWWCO)?",
     "options": [
@@ -26306,15 +26371,15 @@
     "explanation": "The Ontario Water and Wastewater Certification Office (OWWCO) is the specific organization mandated to certify water distribution operators in Ontario. While the Ministry of the Environment, Conservation and Parks (MECP) establishes the regulatory framework and oversees the certification program under O. Reg. 128/04 (Certification of Drinking Water System Operators and Water Quality Analysts), OWWCO is the body that directly administers the certification exams, issues certificates, and maintains operator records. The Ontario Clean Water Agency (OCWA) is an operational agency, and the Environmental Commissioner of Ontario (ECO) is an independent officer of the Legislature, neither of which are certifying bodies for operators."
    },
    "fix": {
-    "question": "Which Ontario body administers operator certification for drinking-water operators under O. Reg. 128/04?",
+    "question": "Which provincial authority administers operator certification under O. Reg. 128/04 (Certification of Drinking Water System Operators and Water Quality Analysts)?",
     "options": [
-     "The MECP, through its Ontario Water and Wastewater Certification Office (OWWCO)",
-     "Ontario Clean Water Agency (OCWA)",
-     "Environmental Commissioner of Ontario (ECO)",
-     "The local Medical Officer of Health"
+     "The Ministry of the Environment, Conservation and Parks, through its Ontario Water and Wastewater Certification Office",
+     "The Ontario Clean Water Agency (OCWA)",
+     "The Environmental Commissioner of Ontario (ECO)",
+     "The local medical officer of health"
     ],
     "correctIndex": 0,
-    "explanation": "Operator certification under O. Reg. 128/04 is administered by the MECP through the Ontario Water and Wastewater Certification Office. OCWA is an operating agency, the ECO is an independent legislative officer, and the Medical Officer of Health is a public-health authority.",
+    "explanation": "Operator certification under O. Reg. 128/04 is administered by the Ministry of the Environment, Conservation and Parks through its Ontario Water and Wastewater Certification Office. OCWA is an operating agency, the ECO is an independent officer of the Legislature, and medical officers of health have public-health roles, not certification.",
     "steps": null
    }
   },
@@ -26323,7 +26388,7 @@
    "bankKey": "oit",
    "questionNum": 107,
    "verdict": "WRONG",
-   "note": "Key points to 'Control water pricing' (index 2). Correct answer is option 0, protecting public health through a framework of standards, testing and accountability.",
+   "note": "Key is wrong: marked index 2 ('Control water pricing'); the correct option is index 0 (protect public health via a framework of standards, testing, accountability), as the explanation says.",
    "original": {
     "question": "What is the primary purpose of the Safe Drinking Water Act (SDWA) in Ontario?",
     "options": [
@@ -26344,7 +26409,7 @@
      "Manage water conservation"
     ],
     "correctIndex": 0,
-    "explanation": "The Safe Drinking Water Act, 2002 was enacted after the Walkerton tragedy to protect human health and prevent drinking-water health hazards through regulation of drinking-water systems and testing. Wastewater discharge, pricing and conservation are governed elsewhere.",
+    "explanation": "The Safe Drinking Water Act, 2002 was enacted following the Walkerton tragedy to protect human health through a multi-barrier approach. It provides for drinking water quality standards (O. Reg. 169/03), testing and reporting requirements (O. Reg. 170/03), operator certification and legal accountability for owners and operators.",
     "steps": null
    }
   },
@@ -26353,7 +26418,7 @@
    "bankKey": "oit",
    "questionNum": 112,
    "verdict": "WRONG",
-   "note": "O. Reg. 128/04 (drinking water) does not set a flat 40 hours per year; training hours vary by class and are tallied over the three-year certificate period (MECP renewal guidance). The flat 40 hours per calendar year is the O. Reg. 129/04 (wastewater) requirement.",
+   "note": "O. Reg. 128/04 does not require 40 hours per year. Drinking water certificates run three years; renewal requires the mandatory renewal course, class-dependent continuing education (about 21-42 hours per 3 years) and on-the-job training. The 40 hours per year (averaged over 3 years since 2022) applies to wastewater operators under O. Reg. 129/04. Source: ontario.ca training requirements for drinking water operators.",
    "original": {
     "question": "According to O. Reg. 128/04, what is the minimum training requirement for a certified drinking water system operator in Ontario?",
     "options": [
@@ -26366,15 +26431,15 @@
     "explanation": "Ontario Regulation 128/04, specifically Section 23, mandates that every certified operator of a drinking water system must complete at least 40 hours of approved training during each 12-month period. This requirement ensures operators maintain and enhance their competency in managing drinking water systems, which is crucial for public health protection. Options B, C, and D are incorrect as they do not align with the specific training hours stipulated in the regulation."
    },
    "fix": {
-    "question": "Under O. Reg. 129/04, how many hours of annual training must an owner ensure each wastewater operator receives each calendar year?",
+    "question": "Which of the following is required for a drinking water operator to renew a certificate under O. Reg. 128/04?",
     "options": [
-     "40 hours",
-     "20 hours",
-     "10 hours",
-     "No specific hours are mandated"
+     "The mandatory renewal course, continuing education hours and on-the-job practical training over the three-year certificate term",
+     "Forty hours of training in every single calendar year",
+     "Re-writing the certification exam every three years",
+     "No training, only payment of a renewal fee"
     ],
     "correctIndex": 0,
-    "explanation": "O. Reg. 129/04 requires owners to ensure operators receive at least 40 hours of annual training every calendar year (with limited exceptions for short employment). Drinking-water training hours under O. Reg. 128/04 are set differently and counted over the certificate period.",
+    "explanation": "Drinking water operator certificates are valid for three years. Renewal under O. Reg. 128/04 requires completing the mandatory renewal course, a class-dependent number of continuing education hours and on-the-job practical training. The 40-hours-per-year figure applies to wastewater operators under O. Reg. 129/04.",
     "steps": null
    }
   },
@@ -26383,7 +26448,7 @@
    "bankKey": "oit",
    "questionNum": 113,
    "verdict": "WRONG",
-   "note": "O. Reg. 128/04 does not require 40 hours per year for Class 1-4; required hours vary and are counted over the three-year certificate period (the 40-hour figure belongs to O. Reg. 129/04 wastewater).",
+   "note": "Same error: O. Reg. 128/04 does not set 40 hours per year for Class 1-4; renewal requires the mandatory renewal course, class-dependent continuing education and on-the-job training over the three-year term.",
    "original": {
     "question": "Under O. Reg. 128/04, a certified water treatment operator's licence is about to expire. What must the operator do to maintain their certification?",
     "options": [
@@ -26396,15 +26461,15 @@
     "explanation": "Under O. Reg. 128/04, certified operators must complete 40 hours of approved training per year (averaged over the licence period) and submit a renewal application with proof of training to maintain their certification. Failure to meet training requirements results in licence expiry and the operator cannot legally operate the facility."
    },
    "fix": {
-    "question": "Under O. Reg. 128/04, a certified drinking-water operator's certificate is approaching expiry. What must the operator do to renew it?",
+    "question": "Under O. Reg. 128/04, a certified water treatment operator's certificate is about to expire. What must the operator do to renew it?",
     "options": [
-     "Complete the required training hours for the certificate period and submit a renewal application",
+     "Complete the mandatory renewal course, the required continuing education and on-the-job training for the three-year term, and submit a renewal application",
      "Write the certification exam again",
      "Apply for a new OIT designation and restart the certification process",
      "Certification does not expire, so no action is required"
     ],
     "correctIndex": 0,
-    "explanation": "Under O. Reg. 128/04 a certificate is renewed by completing the required training for the certificate period (including the mandatory renewal course) and applying for renewal before expiry. Certificates do expire and an exam rewrite is not the renewal route.",
+    "explanation": "Drinking water operator certificates are valid for three years. To renew, the operator must complete the mandatory renewal course, the class-dependent continuing education and on-the-job practical training, and submit a renewal application.",
     "steps": null
    }
   },
@@ -26413,7 +26478,7 @@
    "bankKey": "oit",
    "questionNum": 115,
    "verdict": "UNCLEAR",
-   "note": "O. Reg. 128/04 does not make the supervising operator the one who 'bears primary regulatory responsibility'; under the SDWA the owner and operating authority are responsible for compliance, so option C (the municipality as owner) is also defensible.",
+   "note": "O. Reg. 128/04 does not make the supervising operator the party with 'primary regulatory responsibility' for violations; under the SDWA the owner (option C) and operating authority carry statutory duties, so C is defensible.",
    "original": {
     "question": "An OIT at a water treatment plant makes an operational decision that results in a regulatory violation. Under O. Reg. 128/04, who bears primary regulatory responsibility?",
     "options": [
@@ -26426,24 +26491,43 @@
     "explanation": "Under O. Reg. 128/04, the certified supervising operator bears primary regulatory responsibility for an OIT's actions. The OIT is working under the supervision of the certified operator, who is responsible for ensuring the OIT's work meets regulatory requirements. This is why adequate supervision is a legal requirement, not just a best practice."
    },
    "fix": {
-    "question": "An OIT at a water treatment plant makes an operational decision that results in a regulatory violation. Who remains accountable under the Safe Drinking Water Act, 2002 for the system's compliance?",
+    "question": "Under O. Reg. 128/04, an operator-in-training (OIT) performing operations at a drinking-water subsystem must work under whose direction?",
     "options": [
-     "The OIT alone",
-     "The Ministry of the Environment, Conservation and Parks",
-     "The system owner and operating authority",
-     "No one, because OITs are exempt"
+     "A certified operator (such as the operator-in-charge) who holds a certificate for the subsystem",
+     "Any employee of the municipality",
+     "No one, once the OIT has passed one exam",
+     "The local medical officer of health"
     ],
-    "correctIndex": 2,
-    "explanation": "Under the SDWA the owner and operating authority are accountable for system compliance, and operators also carry duties of care. An OIT works under the supervision of a certified operator, but responsibility does not rest on the OIT alone.",
+    "correctIndex": 0,
+    "explanation": "An OIT works under the direction of a certified operator qualified for the subsystem, such as the operator-in-charge. The OIT certificate does not by itself authorize independent operation.",
     "steps": null
    }
+  },
+  {
+   "id": 35147,
+   "bankKey": "oit",
+   "questionNum": 122,
+   "verdict": "UNCLEAR",
+   "note": "Could not verify a 5-year OIT certificate validity; the explanation cites s.10(1) for this and q35165 cites the same s.10(1) for a conditional-certificate duration (conditional certificates are s.11), so the citations are inconsistent. A secondary source says OITs have about one year to gain experience.",
+   "original": {
+    "question": "According to O. Reg. 128/04, what is the maximum period an Operator-in-Training (OIT) certificate is valid before renewal or upgrade is required?",
+    "options": [
+     "1 year.",
+     "2 years.",
+     "5 years.",
+     "3 years."
+    ],
+    "correctIndex": 2,
+    "explanation": "Under O. Reg. 128/04, Section 10 (1), an Operator-in-Training certificate is valid for a maximum period of 5 years. This allows sufficient time for OITs to gain the necessary experience and pass the certification exams to upgrade to a higher class of certificate. Options of 1, 2, or 3 years are incorrect as they do not align with the specified regulatory period for OIT certificate validity in Ontario."
+   },
+   "fix": null
   },
   {
    "id": 35148,
    "bankKey": "oit",
    "questionNum": 123,
-   "verdict": "UNCLEAR",
-   "note": "Key (Class IV at 76 points) is right but the steps are an unrelated 55-point illustrative calculation that concludes Class III, contradicting the key.",
+   "verdict": "WRONG",
+   "note": "Key (Class IV at 76+ points) is right, but the steps are fabricated and reach Class III (55 illustrative points, 10,000 m3/day), contradicting the answer.",
    "original": {
     "question": "Under O. Reg. 129/04, a wastewater treatment facility has 76 classification points. What is the minimum class of wastewater treatment operator licence required for the Overall Responsible Operator (ORO)?",
     "options": [
@@ -26469,11 +26553,41 @@
    }
   },
   {
+   "id": 35151,
+   "bankKey": "oit",
+   "questionNum": 126,
+   "verdict": "UNCLEAR",
+   "note": "'Annual training requirements' do not apply to drinking water operators under O. Reg. 128/04 (renewal training is per three-year term). Failing renewal requirements means the certificate cannot be renewed and expires; suspension or revocation is not the standard consequence.",
+   "original": {
+    "question": "According to O. Reg. 128/04, what is the consequence if a certified operator fails to meet the annual training requirements?",
+    "options": [
+     "The operator's certificate may be suspended or revoked.",
+     "A warning letter is issued, with no further action.",
+     "The operator is required to pay a fine but retains certification.",
+     "The operator is automatically demoted to an Operator-in-Training (OIT) status."
+    ],
+    "correctIndex": 0,
+    "explanation": "Failure to meet the annual training requirements, as stipulated in O. Reg. 128/04 (Certification of Drinking Water System Operators and Water Quality Analysts), is a serious compliance issue. This regulation outlines the duties of certified operators, including the obligation to complete prescribed training. Non-compliance can lead to disciplinary actions by the Director, which include the suspension or revocation of an operator's certificate. The other options describe less severe or incorrect consequences not aligned with the regulatory framework for maintaining operator certification in Ontario."
+   },
+   "fix": {
+    "question": "According to O. Reg. 128/04, what happens if a certified drinking water operator does not complete the training required for renewal by the end of the three-year certificate term?",
+    "options": [
+     "The certificate cannot be renewed and expires",
+     "A warning letter is issued, with no further action",
+     "The operator pays a fine but retains the certificate",
+     "The operator is automatically upgraded"
+    ],
+    "correctIndex": 0,
+    "explanation": "A drinking water operator certificate is valid for three years. If the required renewal training is not completed, the certificate cannot be renewed and expires, so the person may not act as a certified operator.",
+    "steps": null
+   }
+  },
+  {
    "id": 35152,
    "bankKey": "oit",
    "questionNum": 127,
    "verdict": "WRONG",
-   "note": "Explanation wrongly says O. Reg. 129/04 is 'now O. Reg. 170/03 for drinking water and O. Reg. 128/04 for wastewater'. O. Reg. 129/04 is the current wastewater operator licensing regulation; 128/04 is drinking water. Answer itself is fine.",
+   "note": "Explanation says O. Reg. 129/04 is 'now O. Reg. 170/03 for drinking water ... and O. Reg. 128/04 for wastewater'; this is false (170/03 is the drinking-water systems regulation, 128/04 is drinking-water operator certification, 129/04 is wastewater operator licensing, all in force). Key is fine.",
    "original": {
     "question": "Under O. Reg. 129/04, what is the primary responsibility of the Overall Responsible Operator (ORO) for a wastewater facility?",
     "options": [
@@ -26494,7 +26608,7 @@
      "To design and construct new wastewater infrastructure."
     ],
     "correctIndex": 0,
-    "explanation": "Under O. Reg. 129/04 the ORO is the licensed operator with overall responsibility for the operation of the facility, including ensuring it is operated in compliance with applicable requirements. The ORO may delegate daily tasks and is not responsible for budgeting or design.",
+    "explanation": "The ORO has overall responsibility for the operation of the facility, including ensuring it is operated in compliance with applicable regulatory requirements, overseeing operational activities and maintenance, and ensuring records are kept. The ORO delegates daily tasks and is not responsible for budgeting or design.",
     "steps": null
    }
   },
@@ -26502,8 +26616,8 @@
    "id": 35156,
    "bankKey": "oit",
    "questionNum": 131,
-   "verdict": "UNCLEAR",
-   "note": "Key is acceptable, but the steps relate to a different question (classification of a collection facility at 5,000 m3/day, Class II, OIC licence) and do not support the answer.",
+   "verdict": "WRONG",
+   "note": "Key is fine, but the steps are unrelated (collection-facility points for 5,000 m3/day and an OIC) and do not support the answer.",
    "original": {
     "question": "Under O. Reg. 129/04, which licence relationship normally applies to the Overall Responsible Operator of a wastewater facility?",
     "options": [
@@ -26529,41 +26643,11 @@
    }
   },
   {
-   "id": 35162,
-   "bankKey": "oit",
-   "questionNum": 137,
-   "verdict": "UNCLEAR",
-   "note": "OWWCO is a branch of the MECP, not a separate body to which the MECP 'delegates' issuance; certificates under O. Reg. 128/04 are issued by the Director. Option B (MECP issues certificates) is therefore also defensible.",
-   "original": {
-    "question": "According to O. Reg. 128/04, what is the role of the Ministry of the Environment, Conservation and Parks (MECP) in the certification of drinking water operators?",
-    "options": [
-     "The MECP directly trains all operators.",
-     "The MECP issues all operator certificates.",
-     "The MECP sets the standards and oversees the certification process, often delegating issuance to OWWCO.",
-     "The MECP is not involved in operator certification."
-    ],
-    "correctIndex": 2,
-    "explanation": "While the Ontario Water Wastewater Certification Office (OWWCO) is responsible for issuing certificates, O. Reg. 128/04 outlines that the MECP sets the overall standards, requirements, and framework for operator certification. The MECP maintains oversight to ensure the integrity and effectiveness of the certification program."
-   },
-   "fix": {
-    "question": "According to O. Reg. 128/04, which statement best describes the role of the Ministry of the Environment, Conservation and Parks (MECP) in drinking-water operator certification?",
-    "options": [
-     "The MECP directly trains all operators.",
-     "The MECP sets the requirements and, through the Director and its certification office, administers and issues certificates.",
-     "The MECP delegates all certification to municipalities.",
-     "The MECP is not involved in operator certification."
-    ],
-    "correctIndex": 1,
-    "explanation": "O. Reg. 128/04 sets the classes, education, experience, exam and training requirements, and the Director (through the MECP's Ontario Water and Wastewater Certification Office) issues and renews certificates. The MECP does not deliver all operator training.",
-    "steps": null
-   }
-  },
-  {
    "id": 35165,
    "bankKey": "oit",
    "questionNum": 140,
    "verdict": "UNCLEAR",
-   "note": "Could not verify that O. Reg. 128/04 provides a 'conditional operator's certificate' with a one-year maximum, or that s.10(1) says so; the regulation's certificate types are OIT and Classes 1 to 4. Likely fabricated detail.",
+   "note": "Could not verify 'maximum one year' for a conditional certificate; conditional certificates are s.11 of O. Reg. 128/04, not s.10(1) as cited (s.10 is OIT certificates), and a secondary source says conditional certificates are not issued to OIT holders. Unverified.",
    "original": {
     "question": "Under O. Reg. 128/04, what is the maximum duration a conditional operator's certificate can be issued for?",
     "options": [
@@ -26578,30 +26662,11 @@
    "fix": null
   },
   {
-   "id": 35168,
-   "bankKey": "oit",
-   "questionNum": 143,
-   "verdict": "UNCLEAR",
-   "note": "Could not verify an owner duty under O. Reg. 129/04 to 'immediately apply for reclassification' on a change in flow. Classification of facilities is by the Director per the regulation's point system; the notification mechanism and timing stated are unsupported.",
-   "original": {
-    "question": "Under O. Reg. 129/04, a wastewater treatment facility is classified as Class III. If the facility\\'s average daily flow increases by 25% and its complexity points increase, potentially pushing it into a Class IV category, what is the owner\\'s immediate obligation?",
-    "options": [
-     "The owner must hire additional Class III operators within 6 months.",
-     "The owner must immediately apply for a reclassification of the facility.",
-     "The owner must notify the MECP within 30 days of the change.",
-     "No action is required until the current operating license expires."
-    ],
-    "correctIndex": 1,
-    "explanation": "O. Reg. 129/04 requires that if there is a change in a wastewater facility's characteristics that could affect its classification, the owner must immediately apply for a reclassification of the facility. This ensures that the facility is always operated by appropriately licensed operators for its current complexity and capacity."
-   },
-   "fix": null
-  },
-  {
    "id": 35171,
    "bankKey": "oit",
    "questionNum": 146,
    "verdict": "UNCLEAR",
-   "note": "Explanation admits both B (diploma) and C (degree) satisfy the 'or' requirement, so two options are correct; the steps are also editing leakage ('Original option C ...'). Exact education requirement for Class 4 was not verified.",
+   "note": "The explanation itself states the regulation allows a post-secondary diploma OR a university degree, so options B and C are both correct; the question has two defensible answers. Steps also refer to 'original options' that are not shown. Could not verify the current Class IV education wording; needs rewording against the regulation.",
    "original": {
     "question": "According to O. Reg. 128/04, what is the specific educational requirement for an individual to qualify for a Class IV Water Treatment Operator certificate, in addition to experience?",
     "options": [
@@ -26619,8 +26684,8 @@
    "id": 35172,
    "bankKey": "oit",
    "questionNum": 147,
-   "verdict": "JURISDICTION",
-   "note": "O. Reg. 129/04 governs wastewater operator licensing; it contains no power-outage reporting requirement. Reporting of bypasses/spills comes from the Environmental Protection Act (Part X, O. Reg. 675/98) and the facility's Environmental Compliance Approval, with reports to the MECP Spills Action Centre.",
+   "verdict": "WRONG",
+   "note": "O. Reg. 129/04 is the wastewater operator licensing regulation and has no power-outage reporting requirement. Reporting of discharges is under Part X of the Environmental Protection Act and O. Reg. 675/98 (Spills Action Centre, immediate).",
    "original": {
     "question": "Under O. Reg. 129/04, if a Class IV wastewater treatment facility experiences a prolonged power outage exceeding 4 hours, what is the immediate reporting requirement to the MECP?",
     "options": [
@@ -26633,16 +26698,1077 @@
     "explanation": "O. Reg. 129/04 mandates immediate reporting to the MECP for any event that may impair the proper operation of a sewage works, including prolonged power outages that could affect treatment processes. This ensures timely intervention to prevent environmental contamination."
    },
    "fix": {
-    "question": "A Class IV wastewater treatment plant loses power for several hours and untreated sewage bypasses to a watercourse. What is the required reporting?",
+    "question": "A Class IV wastewater treatment plant loses power and untreated sewage overflows to a watercourse. Under Ontario spill-reporting requirements (Environmental Protection Act, Part X, and O. Reg. 675/98), when must the discharge be reported to the MECP Spills Action Centre?",
     "options": [
-     "Report immediately to the MECP Spills Action Centre",
-     "Report within 24 hours in writing only",
-     "Report in the next annual performance report",
-     "No reporting is required if standby power is installed"
+     "Immediately (as soon as the person knows of it)",
+     "Within 24 hours",
+     "Within 7 days",
+     "Not required if backup power is installed"
     ],
     "correctIndex": 0,
-    "explanation": "A discharge of untreated or partially treated sewage to the natural environment is a reportable spill under the Environmental Protection Act and must be reported immediately to the MECP Spills Action Centre, as well as meeting any conditions in the facility's Environmental Compliance Approval.",
+    "explanation": "A discharge of a contaminant that is out of the normal course of events and causes or is likely to cause an adverse effect must be reported immediately to the MECP Spills Action Centre under Part X of the Environmental Protection Act and O. Reg. 675/98.",
     "steps": null
+   }
+  },
+  {
+   "id": 35182,
+   "bankKey": "oit",
+   "questionNum": 157,
+   "verdict": "UNCLEAR",
+   "note": "Answer 0.3 days is correct (2,500 m3 / 8,000 m3/d = 0.3125), but the explanation contains leaked editing text ('The original marked correct answer was incorrect') that would confuse learners.",
+   "original": {
+    "question": "A reservoir holds 2.5 ML (megalitres) of water. The plant treats 8,000 m³/day. How many days of storage does the reservoir provide?",
+    "options": [
+     "0.3 days",
+     "312.5 days",
+     "31.3 days",
+     "3.1 days"
+    ],
+    "correctIndex": 0,
+    "explanation": "To determine the number of days of storage, first convert the reservoir volume to cubic meters to match the plant's treatment rate. Then, divide the total storage volume by the daily treatment rate. The calculation shows that the reservoir provides 0.3125 days of storage, which rounds to 0.3 days. The original marked correct answer was incorrect."
+   },
+   "fix": {
+    "question": "A reservoir holds 2.5 ML (megalitres) of water. The plant treats 8,000 m³/day. How many days of storage does the reservoir provide?",
+    "options": [
+     "0.3 days",
+     "312.5 days",
+     "31.3 days",
+     "3.1 days"
+    ],
+    "correctIndex": 0,
+    "explanation": "Convert the reservoir volume to cubic metres (1 ML = 1,000 m³): 2.5 ML = 2,500 m³. Storage days = 2,500 m³ ÷ 8,000 m³/day = 0.3125 days, which rounds to 0.3 days.",
+    "steps": [
+     {
+      "l": "Step 1: Convert reservoir volume from ML to m³.",
+      "c": "1 ML = 1,000 m³ (since 1 ML = 1,000,000 L and 1 m³ = 1,000 L). Reservoir volume = 2.5 ML * 1,000 m³/ML = 2,500 m³."
+     },
+     {
+      "l": "Step 2: Calculate the number of days of storage.",
+      "c": "Storage days = Total storage volume / Daily treatment rate. Storage days = 2,500 m³ / 8,000 m³/day = 0.3125 days."
+     },
+     {
+      "l": "Step 3: Round the result to one decimal place.",
+      "c": "0.3125 days rounds to 0.3 days."
+     }
+    ]
+   }
+  },
+  {
+   "id": 35205,
+   "bankKey": "oit",
+   "questionNum": 180,
+   "verdict": "UNCLEAR",
+   "note": "15 L/s x 86,400 s = 1.296 ML. Options '1.296 ML' and '1.30 ML' are the same value at different rounding, so two options are defensible (explanation itself says 1.296 ≈ 1.30). Replace the 1.30 ML distractor.",
+   "original": {
+    "question": "A well pump delivers 15 L/s. How many Megaliters (ML) will it pump in a 24-hour period?",
+    "options": [
+     "1.296 ML",
+     "13.0 ML",
+     "0.13 ML",
+     "1.30 ML"
+    ],
+    "correctIndex": 0,
+    "explanation": "Volume = Flow Rate × Time\n\n  Volume = 15 L/s × 86,400 s/d\n  Volume = 1,296,000 L/d\n  Volume = 1.296 ML/d ≈ 1.30 ML/d\n\nThe pump delivers 1.296 ML (approximately 1.30 ML) per 24-hour period."
+   },
+   "fix": {
+    "question": "A well pump delivers 15 L/s. How many Megaliters (ML) will it pump in a 24-hour period?",
+    "options": [
+     "1.296 ML",
+     "13.0 ML",
+     "0.13 ML",
+     "0.65 ML"
+    ],
+    "correctIndex": 0,
+    "explanation": "Volume = Flow Rate × Time = 15 L/s × 86,400 s/d = 1,296,000 L/d = 1.296 ML per 24-hour period.",
+    "steps": [
+     {
+      "l": "Identify given values",
+      "c": "Note the pump flow rate in L/s and the time period for the calculation."
+     },
+     {
+      "l": "Apply conversion factor",
+      "c": "Convert the flow rate from L/s to L/day by multiplying by the number of seconds in a day (86,400)."
+     },
+     {
+      "l": "Convert to Megaliters",
+      "c": "Divide the total daily volume in Liters by 1,000,000 to convert it to Megaliters (ML): 1,296,000 L ÷ 1,000,000 = 1.296 ML."
+     }
+    ]
+   }
+  },
+  {
+   "id": 35226,
+   "bankKey": "oit",
+   "questionNum": 201,
+   "verdict": "WRONG",
+   "note": "Ontario Reg. 833 OEL for H2S is 10 ppm TWA and 15 ppm STEL (checked ontario.ca OEL table), not a 10 ppm ceiling. Also O2 at 19.0% is already below the 19.5% minimum acceptable in a confined space (O. Reg. 632/05), the stronger reason to exit. Key (exit) is right but the stated rule is wrong.",
+   "original": {
+    "question": "An operator enters a wet well to perform maintenance. The oxygen level reads 19.0% and hydrogen sulfide reads 12 ppm. What should the operator do?",
+    "options": [
+     "Proceed — oxygen is above the 18% minimum and H₂S is below the IDLH of 100 ppm",
+     "Ventilate the space for 5 minutes and re-enter",
+     "Exit immediately — H₂S at 12 ppm exceeds the Ontario occupational exposure limit (OEL) of 10 ppm (ceiling) and the space is not safe",
+     "Don a half-face respirator with organic vapour cartridge and proceed"
+    ],
+    "correctIndex": 2,
+    "explanation": "Ontario's occupational exposure limit for H₂S is 10 ppm (ceiling — not to be exceeded at any time). At 12 ppm, the H₂S exceeds the OEL ceiling. The operator must exit, ventilate the space, and re-test before re-entry. A half-face respirator is not appropriate for H₂S — SCBA is required if entry is necessary at elevated levels."
+   },
+   "fix": {
+    "question": "An operator enters a wet well to perform maintenance. The oxygen level reads 19.0% and hydrogen sulfide reads 12 ppm. What should the operator do?",
+    "options": [
+     "Proceed — oxygen is above the 18% minimum and H₂S is below the IDLH of 100 ppm",
+     "Ventilate the space for 5 minutes and re-enter",
+     "Exit immediately — oxygen is below the 19.5% minimum and H₂S at 12 ppm exceeds the Ontario 10 ppm time-weighted average limit, so the space is not safe",
+     "Don a half-face respirator with organic vapour cartridge and proceed"
+    ],
+    "correctIndex": 2,
+    "explanation": "A confined space atmosphere must have at least 19.5% oxygen, and 19.0% is below that. In addition, Ontario's occupational exposure limit for H₂S (Reg. 833) is 10 ppm TWA (15 ppm STEL), so 12 ppm is above the 8-hour limit. The operator must exit, ventilate the space, and re-test before re-entry. A half-face respirator is not appropriate for H₂S; supplied-air respiratory protection is required if entry is necessary at elevated levels.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35230,
+   "bankKey": "oit",
+   "questionNum": 205,
+   "verdict": "JURISDICTION",
+   "note": "Explanation cites the US OSHA PEL as the exposure limit in an Ontario question. Ontario Reg. 833 chlorine limits are 0.5 ppm TWA and 1 ppm STEL. Answer key is correct.",
+   "original": {
+    "question": "An operator discovers a chlorine gas leak in the chemical room. The leak detector alarm is sounding at 1 ppm. What is the correct response sequence?",
+    "options": [
+     "Locate and fix the leak immediately using a wrench",
+     "Don SCBA, evacuate non-essential personnel, isolate the area, notify the supervisor, and follow the emergency response plan",
+     "Open all windows and doors to ventilate the room, then locate the leak",
+     "Don a half-face respirator with chlorine cartridge and attempt to fix the leak"
+    ],
+    "correctIndex": 1,
+    "explanation": "Chlorine gas is extremely hazardous (IDLH = 10 ppm; OSHA PEL = 1 ppm ceiling). At 1 ppm, the alarm threshold is reached. The correct response is: don SCBA (not a half-face respirator), evacuate non-essential personnel, isolate the area, notify the supervisor, and follow the site emergency response plan. Never attempt to fix a chlorine leak without proper respiratory protection and training."
+   },
+   "fix": {
+    "question": "An operator discovers a chlorine gas leak in the chemical room. The leak detector alarm is sounding at 1 ppm. What is the correct response sequence?",
+    "options": [
+     "Locate and fix the leak immediately using a wrench",
+     "Don SCBA, evacuate non-essential personnel, isolate the area, notify the supervisor, and follow the emergency response plan",
+     "Open all windows and doors to ventilate the room, then locate the leak",
+     "Don a half-face respirator with chlorine cartridge and attempt to fix the leak"
+    ],
+    "correctIndex": 1,
+    "explanation": "Chlorine gas is extremely hazardous (IDLH = 10 ppm; Ontario Reg. 833 limits are 0.5 ppm TWA and 1 ppm STEL). At 1 ppm the alarm threshold is reached. The correct response is: don SCBA (not a half-face respirator), evacuate non-essential personnel, isolate the area, notify the supervisor, and follow the site emergency response plan. Never attempt to fix a chlorine leak without proper respiratory protection and training.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35260,
+   "bankKey": "oit",
+   "questionNum": 235,
+   "verdict": "UNCLEAR",
+   "note": "Explanation contradicts the options: it says the option states 'Personal Protection Equipment', but option B reads 'Personal Protective Equipment'. Misleading explanation; answer key is correct.",
+   "original": {
+    "question": "What does PPE stand for?",
+    "options": [
+     "A. Public Protection Effort",
+     "B. Personal Protective Equipment",
+     "C. Primary Prevention Education",
+     "D. Personnel Planning and Evaluation"
+    ],
+    "correctIndex": 1,
+    "explanation": "Personal Protective Equipment (PPE) is the universally recognized acronym for safety gear designed to protect workers from hazards. While the option states 'Personal Protection Equipment,' this is a common slight variation in phrasing that still refers to the same concept. In Canada, provincial occupational health and safety regulations, such as those under the Occupational Health and Safety Act in Ontario or similar legislation across other provinces, mandate the use and proper training for PPE to ensure worker safety in water and wastewater treatment facilities. The other options are unrelated to safety equipment."
+   },
+   "fix": {
+    "question": "What does PPE stand for?",
+    "options": [
+     "Public Protection Effort",
+     "Personal Protective Equipment",
+     "Primary Prevention Education",
+     "Personnel Planning and Evaluation"
+    ],
+    "correctIndex": 1,
+    "explanation": "Personal Protective Equipment (PPE) is the standard term for safety gear designed to protect workers from hazards. In Ontario, the Occupational Health and Safety Act and its regulations require employers to provide PPE and workers to use it. The other options are unrelated to safety equipment.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35293,
+   "bankKey": "oit",
+   "questionNum": 268,
+   "verdict": "UNCLEAR",
+   "note": "Question asks for a 'maximum acceptable concentration' but iron has only an aesthetic objective (0.3 mg/L), not a MAC. Also aesthetic objectives are in the MECP ODWQS / Technical Support Document, not O. Reg. 169/03, which sets health-based standards. Key 0.3 mg/L is correct in substance.",
+   "original": {
+    "question": "Under O. Reg. 169/03, what is the maximum acceptable concentration (MAC) for iron in Ontario drinking water?",
+    "options": [
+     "0.05 mg/L (aesthetic objective)",
+     "1.0 mg/L (health-based MAC)",
+     "0.3 mg/L (aesthetic objective)",
+     "0.01 mg/L (health-based MAC)"
+    ],
+    "correctIndex": 2,
+    "explanation": "The aesthetic objective for iron in Ontario drinking water is 0.3 mg/L under O. Reg. 169/03. Iron above this level causes staining of plumbing fixtures and laundry, and imparts a metallic taste. There is no health-based MAC for iron at typical drinking water concentrations."
+   },
+   "fix": {
+    "question": "What is the Ontario Drinking Water Quality Standards aesthetic objective for iron in drinking water?",
+    "options": [
+     "0.05 mg/L (aesthetic objective)",
+     "1.0 mg/L (health-based MAC)",
+     "0.3 mg/L (aesthetic objective)",
+     "0.01 mg/L (health-based MAC)"
+    ],
+    "correctIndex": 2,
+    "explanation": "The aesthetic objective for iron in Ontario drinking water is 0.3 mg/L (Ontario Drinking Water Quality Standards, Objectives and Guidelines). Iron above this level causes staining of plumbing fixtures and laundry and imparts a metallic taste. There is no health-based MAC for iron at typical drinking water concentrations.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35294,
+   "bankKey": "oit",
+   "questionNum": 269,
+   "verdict": "UNCLEAR",
+   "note": "Question asks for a 'byproduct' of the reaction but the key ('Insufficient floc formation') is not a byproduct, while option 0 (carbon dioxide, which is the actual byproduct and drives pH down) is also defensible. Reword to ask for the problem and remove the CO2 distractor ambiguity.",
+   "original": {
+    "question": "During coagulation, an operator adds alum to the rapid mix tank. The alum reacts with the natural alkalinity in the water. What byproduct of this reaction can cause problems if alkalinity is too low?",
+    "options": [
+     "Carbon dioxide — causes pH to drop too low",
+     "Aluminum sulfate precipitate — clogs the rapid mix impeller",
+     "Insufficient floc formation — poor coagulation due to lack of buffering capacity",
+     "Excess sulfate — exceeds the aesthetic objective for sulfate"
+    ],
+    "correctIndex": 2,
+    "explanation": "Alum reacts with natural alkalinity (bicarbonate) to form aluminum hydroxide floc and releases CO₂. If alkalinity is too low, there is insufficient buffering capacity, pH drops sharply, and floc formation is poor. Supplemental alkalinity (lime or soda ash) may need to be added."
+   },
+   "fix": {
+    "question": "During coagulation, an operator adds alum to the rapid mix tank. The alum consumes the natural alkalinity in the water. What problem can occur if the alkalinity is too low?",
+    "options": [
+     "Aluminum sulfate precipitate clogs the rapid mix impeller",
+     "Poor floc formation, because there is insufficient buffering capacity and the pH falls below the effective range for alum",
+     "Excess sulfate exceeds the aesthetic objective for sulfate",
+     "The alum dose is automatically reduced because it is tied to alkalinity"
+    ],
+    "correctIndex": 1,
+    "explanation": "Alum reacts with natural alkalinity (bicarbonate) to form aluminum hydroxide floc and releases CO₂. If alkalinity is too low, there is insufficient buffering capacity, pH drops sharply, and floc formation is poor. Supplemental alkalinity (lime or soda ash) may need to be added.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35322,
+   "bankKey": "oit",
+   "questionNum": 297,
+   "verdict": "WRONG",
+   "note": "Key 0.17 kW is correct (173.6 W), but the final step says '0.174 kW ≈ 0.25 kW', which contradicts the key and is wrong. Fix the step.",
+   "original": {
+    "question": "A water treatment plant processes 5000 m³/day. If the target G value (velocity gradient) for flocculation is 50 s⁻¹ and the dynamic viscosity of water is 1.0 x 10⁻³ Pa·s, what is the approximate power input required for flocculation in kW, assuming a detention time of 20 minutes? (Power = G² * μ * V, where V is volume in m³)",
+    "options": [
+     "0.17 kW",
+     "0.25 kW",
+     "0.35 kW",
+     "0.50 kW"
+    ],
+    "correctIndex": 0,
+    "explanation": "Power input for flocculation is calculated using P = G² × μ × V, where G is the velocity gradient (50 s⁻¹), μ is dynamic viscosity (1.0×10⁻³ Pa·s), and V is the volume of the flocculation basin. Volume = (5000 m³/day ÷ 1440 min/day) × 20 min = 69.44 m³. Therefore, P = 50² × 0.001 × 69.44 = 173.6 W ≈ 0.17 kW."
+   },
+   "fix": {
+    "question": "A water treatment plant processes 5000 m³/day. If the target G value (velocity gradient) for flocculation is 50 s⁻¹ and the dynamic viscosity of water is 1.0 x 10⁻³ Pa·s, what is the approximate power input required for flocculation in kW, assuming a detention time of 20 minutes? (Power = G² * μ * V, where V is volume in m³)",
+    "options": [
+     "0.17 kW",
+     "0.25 kW",
+     "0.35 kW",
+     "0.50 kW"
+    ],
+    "correctIndex": 0,
+    "explanation": "Power input for flocculation is calculated using P = G² × μ × V, where G is the velocity gradient (50 s⁻¹), μ is dynamic viscosity (1.0×10⁻³ Pa·s), and V is the volume of the flocculation basin. Volume = (5000 m³/day ÷ 1440 min/day) × 20 min = 69.44 m³. Therefore, P = 50² × 0.001 × 69.44 = 173.6 W ≈ 0.17 kW.",
+    "steps": [
+     {
+      "l": "Basin volume",
+      "c": "V = 5000 × (20/1440) = 69.44 m³"
+     },
+     {
+      "l": "Power (W)",
+      "c": "P = G² × μ × V = 50² × 0.001 × 69.44 = 173.6 W"
+     },
+     {
+      "l": "Power (kW)",
+      "c": "173.6 W ÷ 1000 = 0.174 kW ≈ 0.17 kW"
+     }
+    ]
+   }
+  },
+  {
+   "id": 35328,
+   "bankKey": "oit",
+   "questionNum": 303,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 129/04 is the operator-certification regulation for wastewater (licensing, O&M manuals); it sets no effluent TSS limit. Effluent limits are set in each plant's Environmental Compliance Approval. 25 mg/L monthly average is a typical secondary-treatment ECA value, so the answer is fine once the source is corrected.",
+   "original": {
+    "question": "According to O. Reg. 129/04, what is the typical maximum monthly average concentration limit for Total Suspended Solids (TSS) in effluent discharged from a municipal wastewater treatment plant?",
+    "options": [
+     "5 mg/L",
+     "15 mg/L",
+     "10 mg/L",
+     "25 mg/L"
+    ],
+    "correctIndex": 3,
+    "explanation": "Under O. Reg. 129/04, which outlines the certification of drinking water system operators and water quality analysts in Ontario, the typical maximum monthly average concentration limit for Total Suspended Solids (TSS) in effluent discharged from a municipal wastewater treatment plant is 25 mg/L. This standard is a common benchmark for secondary treatment facilities in Canada. Options such as 5 mg/L, 10 mg/L, or 15 mg/L are generally associated with more advanced treatment processes or specific site-specific requirements, not the typical monthly average for conventional secondary treatment as per the regulation's general expectations."
+   },
+   "fix": {
+    "question": "What is a typical maximum monthly average effluent Total Suspended Solids (TSS) limit set in an Ontario Environmental Compliance Approval for a conventional secondary municipal wastewater treatment plant?",
+    "options": [
+     "5 mg/L",
+     "15 mg/L",
+     "10 mg/L",
+     "25 mg/L"
+    ],
+    "correctIndex": 3,
+    "explanation": "Effluent limits are set plant-by-plant in the Environmental Compliance Approval (not in O. Reg. 129/04, which deals with certification of wastewater operators). For conventional secondary treatment, a monthly average of 25 mg/L TSS (with 25 mg/L CBOD5) is typical; 5, 10 or 15 mg/L limits are associated with tertiary treatment or sensitive receivers.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35331,
+   "bankKey": "oit",
+   "questionNum": 306,
+   "verdict": "UNCLEAR",
+   "note": "Key (more manual raking) does not address rags that PASS through the bars; fine screens or a comminutor/macerator are also defensible fixes for passing rags. Explanation itself calls the alternatives valid. Reword so that raking is the single best immediate operational answer.",
+   "original": {
+    "question": "A wastewater treatment plant operator notices that the bar screens are passing rags and large debris that are clogging downstream pumps. What is the most appropriate corrective action?",
+    "options": [
+     "A. Install a comminutor upstream of the screens to shred the debris",
+     "B. Replace the coarse bar screens with fine screens (≤6 mm opening) to capture the debris",
+     "C. Increase the frequency of manual raking of the bar screens",
+     "D. Install a bypass line to route flow around the screens during high-debris events"
+    ],
+    "correctIndex": 2,
+    "explanation": "When bar screens are passing rags and large debris, the most immediate and operationally appropriate corrective action is to increase the frequency of manual raking. This directly addresses the issue of debris accumulation and passage by ensuring the screens are cleared more often, preventing material from building up and being forced through or over the screens. While replacing screens or installing a comminutor are capital-intensive solutions that might be considered for long-term improvements, they are not the 'most appropriate corrective action' for an immediate operational problem. Installing a bypass line would divert flow around the screens, exacerbating the problem of debris entering downstream processes, which is contrary to the goal of screening."
+   },
+   "fix": {
+    "question": "Debris is building up on a wastewater plant's bar screens faster than it is being removed and is being forced through the bars, clogging downstream pumps. What is the most appropriate immediate operational corrective action?",
+    "options": [
+     "A. Install a comminutor upstream of the screens to shred the debris",
+     "B. Replace the coarse bar screens with fine screens (6 mm opening or less) to capture the debris",
+     "C. Increase the frequency of raking (or mechanical rake cycles) on the bar screens",
+     "D. Install a bypass line to route flow around the screens during high-debris events"
+    ],
+    "correctIndex": 2,
+    "explanation": "When screenings accumulate faster than they are removed, the mat blinds the screen, head loss rises and debris is forced through. The most immediate operational response is to rake or cycle the rakes more often. Fine screens or a comminutor are capital changes for long-term improvement, and a bypass would send debris downstream.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35338,
+   "bankKey": "oit",
+   "questionNum": 313,
+   "verdict": "UNCLEAR",
+   "note": "Aesthetic objectives (iron 0.3 mg/L) are not in O. Reg. 169/03; they are in the MECP Ontario Drinking Water Quality Standards, Objectives and Guidelines (ODWSOG) technical support document. O. Reg. 169/03 contains only the enforceable standards (Schedules 1-3).",
+   "original": {
+    "question": "A distribution system customer reports red/brown staining on fixtures and laundry. The operator tests the water and finds iron at 0.45 mg/L. What is the most likely source and what regulatory standard applies?",
+    "options": [
+     "Iron from source water exceeding the MAC of 0.3 mg/L — treatment must be improved",
+     "Iron from the treatment plant exceeding the health-based MAC of 0.05 mg/L",
+     "Iron from corrosion of cast iron distribution mains exceeding the aesthetic objective of 0.3 mg/L — investigate the distribution system",
+     "Iron from customer plumbing — no regulatory action required"
+    ],
+    "correctIndex": 2,
+    "explanation": "The aesthetic objective for iron in Ontario is 0.3 mg/L under O. Reg. 169/03. At 0.45 mg/L, it exceeds this objective. Red/brown staining in the distribution system often indicates corrosion of cast iron mains or tuberculation, not necessarily a treatment failure. The operator should investigate the distribution system for corrosion issues."
+   },
+   "fix": {
+    "question": "A distribution system customer reports red/brown staining on fixtures and laundry. The operator tests the water and finds iron at 0.45 mg/L. What is the most likely source and what Ontario objective applies?",
+    "options": [
+     "Iron from source water exceeding the MAC of 0.3 mg/L — treatment must be improved",
+     "Iron from the treatment plant exceeding the health-based MAC of 0.05 mg/L",
+     "Iron from corrosion of cast iron distribution mains exceeding the aesthetic objective of 0.3 mg/L — investigate the distribution system",
+     "Iron from customer plumbing — no regulatory action required"
+    ],
+    "correctIndex": 2,
+    "explanation": "Ontario's aesthetic objective for iron is 0.3 mg/L (Ontario Drinking Water Quality Standards, Objectives and Guidelines; it is not a Schedule standard in O. Reg. 169/03). At 0.45 mg/L it is exceeded. Red/brown staining in the distribution system often indicates corrosion of cast iron mains or tuberculation, not necessarily a treatment failure, so the operator should investigate the distribution system.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35339,
+   "bankKey": "oit",
+   "questionNum": 314,
+   "verdict": "UNCLEAR",
+   "note": "The manganese aesthetic objective (0.05 mg/L) comes from the ODWSOG, not from O. Reg. 169/03, which lists only enforceable standards.",
+   "original": {
+    "question": "A customer reports black staining on fixtures. Testing shows manganese at 0.08 mg/L. Under O. Reg. 169/03, what is the aesthetic objective for manganese and what action is required?",
+    "options": [
+     "Aesthetic objective is 0.05 mg/L — the result exceeds the objective; investigate and improve treatment",
+     "MAC is 0.05 mg/L — this is a health violation requiring immediate corrective action",
+     "Aesthetic objective is 0.1 mg/L — the result is within the objective; no action required",
+     "There is no standard for manganese in Ontario"
+    ],
+    "correctIndex": 0,
+    "explanation": "The aesthetic objective for manganese in Ontario is 0.05 mg/L under O. Reg. 169/03. At 0.08 mg/L, the result exceeds this objective. While not a health-based MAC exceedance, it causes black staining and the operator should investigate the source (treatment failure or distribution system corrosion) and take corrective action."
+   },
+   "fix": {
+    "question": "A customer reports black staining on fixtures. Testing shows manganese at 0.08 mg/L. Under Ontario's drinking water quality standards, objectives and guidelines, what is the aesthetic objective for manganese and what action is appropriate?",
+    "options": [
+     "Aesthetic objective is 0.05 mg/L — the result exceeds the objective; investigate and improve treatment",
+     "MAC is 0.05 mg/L — this is a health violation requiring immediate corrective action",
+     "Aesthetic objective is 0.1 mg/L — the result is within the objective; no action required",
+     "There is no standard for manganese in Ontario"
+    ],
+    "correctIndex": 0,
+    "explanation": "The Ontario aesthetic objective for manganese is 0.05 mg/L (ODWSOG; it is not a Schedule standard of O. Reg. 169/03). At 0.08 mg/L the objective is exceeded. It is not a health-based MAC exceedance, but it causes black staining, so the operator should investigate the source (treatment or distribution system) and take corrective action.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35341,
+   "bankKey": "oit",
+   "questionNum": 316,
+   "verdict": "UNCLEAR",
+   "note": "Two options are things to avoid: rinsing the bottle with sample water (it contains the dechlorinating agent/is sterile) is also a wrong practice, and filling completely is also discouraged (headspace needed). Only touching the inside of the lid/bottle is unambiguous if the others are made acceptable practices.",
+   "original": {
+    "question": "When collecting a water sample for bacteriological analysis, what should you avoid doing to the sample bottle?",
+    "options": [
+     "Filling it completely.",
+     "Rinsing it with the sample water.",
+     "Touching the inside of the lid or bottle.",
+     "Labeling it after collection."
+    ],
+    "correctIndex": 2,
+    "explanation": "It is crucial to avoid touching the inside of the sample bottle or its lid when collecting bacteriological samples. This prevents contamination from hands or other surfaces, which could lead to inaccurate results."
+   },
+   "fix": {
+    "question": "When collecting a water sample for bacteriological analysis, what should you avoid doing to the sample bottle?",
+    "options": [
+     "Leaving a small air space at the top of the bottle.",
+     "Wearing clean gloves while sampling.",
+     "Touching the inside of the lid or bottle.",
+     "Labelling it after collection."
+    ],
+    "correctIndex": 2,
+    "explanation": "Avoid touching the inside of the sample bottle or lid when collecting bacteriological samples; this prevents contamination from hands or other surfaces. A small headspace should be left, clean gloves are acceptable, and labelling after collection is fine.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35342,
+   "bankKey": "oit",
+   "questionNum": 317,
+   "verdict": "UNCLEAR",
+   "note": "The explanation itself says collecting from a different tap without an aerator is acceptable, so option B is also defensible. Make B clearly wrong.",
+   "original": {
+    "question": "An operator is collecting a bacteriological sample from a distribution system tap. After flushing the tap for 2 minutes, the operator notices the tap has a rubber aerator screen. What should the operator do?",
+    "options": [
+     "Continue sampling — the flush time is sufficient to clear the aerator",
+     "Collect the sample from a different tap without an aerator",
+     "Remove the aerator, flame the tap, and allow it to cool before collecting the sample",
+     "Add extra sodium thiosulfate to neutralize any contamination from the aerator"
+    ],
+    "correctIndex": 2,
+    "explanation": "Aerator screens harbour biofilm and can contaminate bacteriological samples. The correct procedure is to remove the aerator, disinfect the tap by flaming or wiping with alcohol, allow it to cool, then flush and collect the sample. Collecting from a different tap is acceptable if available, but the aerator must be removed if that tap is used."
+   },
+   "fix": {
+    "question": "An operator is collecting a bacteriological sample from a distribution system tap. After flushing the tap for 2 minutes, the operator notices the tap has a rubber aerator screen. What should the operator do?",
+    "options": [
+     "Continue sampling — the flush time is sufficient to clear the aerator",
+     "Wipe the outside of the aerator with a dry cloth and continue sampling",
+     "Remove the aerator, disinfect the tap (e.g., flame or alcohol as appropriate), allow it to cool, flush, and then collect the sample",
+     "Add extra sodium thiosulfate to neutralize any contamination from the aerator"
+    ],
+    "correctIndex": 2,
+    "explanation": "Aerator screens harbour biofilm and can contaminate bacteriological samples. The aerator should be removed, the tap disinfected, allowed to cool, then flushed before collecting the sample.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35345,
+   "bankKey": "oit",
+   "questionNum": 320,
+   "verdict": "UNCLEAR",
+   "note": "Answer follows from the stated premise (24 h), but the explanation asserts that the hold time for bacteriological samples is 24 hours. Ontario practice (and Health Canada guidance) allows a maximum of 48 hours (ideally analysis sooner); the explanation presents a non-Ontario/incorrect general rule.",
+   "original": {
+    "question": "A water sample for total coliform analysis has a hold time of 24 hours. The sample was collected at 8:00 AM Monday. By what time must it be analyzed?",
+    "options": [
+     "8:00 AM Tuesday",
+     "8:00 PM Monday",
+     "8:00 AM Wednesday",
+     "Hold time does not apply to bacteriological samples"
+    ],
+    "correctIndex": 0,
+    "explanation": "The hold time for bacteriological samples (total coliform, E. coli) is 24 hours from collection. A sample collected at 8:00 AM Monday must be analyzed by 8:00 AM Tuesday. Samples not analyzed within the hold time must be discarded and a new sample collected."
+   },
+   "fix": {
+    "question": "A water sample for total coliform analysis has a stated hold time of 24 hours. The sample was collected at 8:00 AM Monday. By what time must it be analyzed?",
+    "options": [
+     "8:00 AM Tuesday",
+     "8:00 PM Monday",
+     "8:00 AM Wednesday",
+     "Hold time does not apply to bacteriological samples"
+    ],
+    "correctIndex": 0,
+    "explanation": "With a 24-hour hold time, a sample collected at 8:00 AM Monday must be analyzed by 8:00 AM Tuesday. (Note: the hold time that applies is the one specified by the method or regulation; Ontario allows up to 48 hours for drinking-water microbiological samples.) Samples exceeding the hold time should not be used for compliance.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35349,
+   "bankKey": "oit",
+   "questionNum": 324,
+   "verdict": "WRONG",
+   "note": "The standards are in O. Reg. 169/03 (Ontario Drinking Water Quality Standards). O. Reg. 170/03 is the Drinking Water Systems regulation (treatment, sampling, monitoring, reporting). The key marks 170/03, and the steps themselves conclude 169/03.",
+   "original": {
+    "question": "Which regulation sets out the drinking water quality standards in Ontario?",
+    "options": [
+     "O. Reg. 170/03.",
+     "O. Reg. 188/08.",
+     "O. Reg. 242/05.",
+     "O. Reg. 169/03."
+    ],
+    "correctIndex": 0,
+    "explanation": "In Ontario, O. Reg. 170/03, known as the Drinking Water Systems Regulation, is the primary regulation that sets out the drinking water quality standards. This regulation specifies the requirements for sampling, testing, reporting, and corrective actions related to drinking water quality. While other regulations like O. Reg. 169/03 (Ontario Drinking Water Quality Standards) exist, O. Reg. 170/03 is the overarching regulation that directly mandates the quality standards for drinking water systems. O. Reg. 188/08 and O. Reg. 242/05 pertain to other environmental aspects and are not directly related to drinking water quality standards."
+   },
+   "fix": {
+    "question": "Which regulation sets out the drinking water quality standards in Ontario?",
+    "options": [
+     "O. Reg. 170/03.",
+     "O. Reg. 188/08.",
+     "O. Reg. 242/05.",
+     "O. Reg. 169/03."
+    ],
+    "correctIndex": 3,
+    "explanation": "O. Reg. 169/03, Ontario Drinking Water Quality Standards, sets the microbiological, chemical and radiological standards. O. Reg. 170/03 (Drinking Water Systems) sets treatment, sampling, testing, monitoring, reporting and corrective-action requirements rather than the quality standards themselves.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35358,
+   "bankKey": "oit",
+   "questionNum": 333,
+   "verdict": "UNCLEAR",
+   "note": "Ontario and Health Canada guidance allow up to 48 hours from collection to analysis for E. coli/total coliform (24-30 h is ideal; Standard Methods cites 30 h). With 48 hours offered as an option, 24 hours as the 'maximum' is not defensible; explanation also wrongly calls 48 h 'unacceptable'. Could not open the regulation text to confirm the exact wording.",
+   "original": {
+    "question": "What is the recommended maximum hold time for E. coli and total coliform samples from collection to initiation of analysis?",
+    "options": [
+     "24 hours.",
+     "6 hours.",
+     "48 hours.",
+     "72 hours."
+    ],
+    "correctIndex": 0,
+    "explanation": "For E. coli and total coliform samples, the recommended maximum hold time from collection to the initiation of analysis is 24 hours. This standard is widely adopted in Canadian drinking water quality guidelines and regulations, such as those outlined by Health Canada in the Guidelines for Canadian Drinking Water Quality, which emphasize minimizing the time between sampling and analysis to ensure the integrity and accuracy of microbiological results. Exceeding this 24-hour window can lead to significant changes in bacterial populations, potentially causing false negative or false positive results, thereby compromising public health protection. Shorter hold times like 6 hours are ideal but not always practically achievable, while longer times such as 48 or 72 hours are generally unacceptable for microbiological parameters due to potential bacterial growth or die-off."
+   },
+   "fix": {
+    "question": "What is the generally accepted maximum hold time under Ontario/Health Canada guidance for E. coli and total coliform samples from collection to start of analysis?",
+    "options": [
+     "24 hours.",
+     "6 hours.",
+     "48 hours.",
+     "72 hours."
+    ],
+    "correctIndex": 2,
+    "explanation": "Drinking-water bacteriological samples should be analyzed as soon as possible, ideally within 24-30 hours, and no later than 48 hours after collection under Ontario and Health Canada guidance. Longer holds allow die-off or regrowth and make the result unreliable.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35362,
+   "bankKey": "oit",
+   "questionNum": 337,
+   "verdict": "UNCLEAR",
+   "note": "O. Reg. 169/03 does not distinguish health-based vs aesthetic objectives and does not list iron; aesthetic objectives/operational guidelines are in the MECP ODWSOG document. Premise misattributes.",
+   "original": {
+    "question": "O. Reg. 169/03 distinguishes between health-based and aesthetic objectives. Which of the following is primarily an aesthetic objective?",
+    "options": [
+     "Iron.",
+     "Lead.",
+     "Turbidity.",
+     "E. coli."
+    ],
+    "correctIndex": 0,
+    "explanation": "While high turbidity can impact health by shielding pathogens, iron is primarily considered an aesthetic objective in O. Reg. 169/03 due to its impact on taste, odour, and staining at typical concentrations. E. coli and Lead are health-based parameters."
+   },
+   "fix": {
+    "question": "Ontario's drinking water standards (O. Reg. 169/03) are enforceable health-based standards, while aesthetic objectives are published in the MECP Ontario Drinking Water Quality Standards, Objectives and Guidelines. Which of the following is primarily managed by an aesthetic objective?",
+    "options": [
+     "Iron.",
+     "Lead.",
+     "Turbidity.",
+     "E. coli."
+    ],
+    "correctIndex": 0,
+    "explanation": "Iron (aesthetic objective 0.3 mg/L) is primarily an aesthetic parameter affecting taste, colour and staining. Lead and E. coli have health-based standards in O. Reg. 169/03, and turbidity is controlled for health reasons through filtration performance criteria.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35377,
+   "bankKey": "oit",
+   "questionNum": 352,
+   "verdict": "UNCLEAR",
+   "note": "Exceeding the hold time can cause die-off of E. coli and a false negative, so option A is also defensible; the explanation's claim that hold time exceedance would only cause false positives is incorrect.",
+   "original": {
+    "question": "What could lead to a false negative result for E. coli in a drinking water sample?",
+    "options": [
+     "Exceeding the sample hold time before analysis.",
+     "Inadequate disinfection of the sample bottle.",
+     "Collecting the sample from a heavily contaminated source.",
+     "Using a sample bottle without sodium thiosulfate for chlorinated water."
+    ],
+    "correctIndex": 3,
+    "explanation": "Using a sample bottle without sodium thiosulfate for chlorinated water will neutralize any E. coli present in the sample, leading to a false negative result. Sodium thiosulfate is crucial for dechlorinating the sample at the time of collection, preventing the residual chlorine from killing the bacteria before analysis. This is a critical requirement outlined in Health Canada's Guidance on Monitoring and Related Information for Drinking Water Quality, ensuring the sample accurately reflects the water quality at the time of collection. Exceeding the sample hold time, inadequate disinfection of the sample bottle, or collecting from a heavily contaminated source would likely lead to false positive results or accurate positive results, not false negatives."
+   },
+   "fix": {
+    "question": "What could lead to a false negative result for E. coli in a chlorinated drinking water sample?",
+    "options": [
+     "Storing the sample on ice during transport.",
+     "Inadequate disinfection of the sample bottle.",
+     "Collecting the sample from a heavily contaminated source.",
+     "Using a sample bottle without sodium thiosulfate for chlorinated water."
+    ],
+    "correctIndex": 3,
+    "explanation": "Without sodium thiosulfate, residual chlorine keeps killing bacteria in the bottle after collection, giving a false negative. Contaminated bottles or sources would give false or true positives, and cooling during transport is correct practice.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35380,
+   "bankKey": "oit",
+   "questionNum": 355,
+   "verdict": "UNCLEAR",
+   "note": "The standard is 0.3 NTU or less in 95% of measurements each month (and never above 1.0 NTU), so a single 0.45 NTU reading is not itself a non-compliance; option A (below 1 NTU maximum) is arguably also correct for a single reading. Reword.",
+   "original": {
+    "question": "A nephelometer reading shows 0.45 NTU for filtered water. Under O. Reg. 170/03, does this result comply with the turbidity standard for a conventional surface water treatment plant?",
+    "options": [
+     "Yes — 0.45 NTU is below the 1 NTU maximum",
+     "No — the maximum allowed is 0.1 NTU for surface water plants",
+     "Yes — turbidity standards only apply to unfiltered systems",
+     "No — 0.45 NTU exceeds the 0.3 NTU standard that must be met in 95% of measurements"
+    ],
+    "correctIndex": 3,
+    "explanation": "O. Reg. 170/03 requires filtered water turbidity to be ≤0.3 NTU in at least 95% of measurements in any calendar month. A single reading of 0.45 NTU exceeds the 0.3 NTU standard. While it is below the absolute maximum of 1 NTU, it would count as a non-compliant measurement against the 95% requirement."
+   },
+   "fix": {
+    "question": "A single filtered-water turbidity reading of 0.45 NTU is recorded at a conventional surface-water treatment plant. Under O. Reg. 170/03 (0.3 NTU or less in 95% of measurements each month, and never above 1.0 NTU), what is correct?",
+    "options": [
+     "It is a violation by itself because it exceeds 0.3 NTU",
+     "It is not a violation by itself; it counts among the up to 5% of measurements allowed above 0.3 NTU, provided it does not exceed 1.0 NTU",
+     "Turbidity standards apply only to unfiltered systems",
+     "It is a violation because the maximum allowed is 0.1 NTU"
+    ],
+    "correctIndex": 1,
+    "explanation": "Filtered water must be at or below 0.3 NTU in at least 95% of measurements each month and must never exceed 1.0 NTU. A single 0.45 NTU reading is one of the permitted exceedances of 0.3 NTU, but the monthly percentage must still be tracked.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35382,
+   "bankKey": "oit",
+   "questionNum": 357,
+   "verdict": "UNCLEAR",
+   "note": "Ontario's Schedule 15.1 plumbing/tap protocol uses a 30-minute stagnation 'standing' sample and a flushed sample (flush then 30-minute stagnation), per Ontario guidance and Health Canada's comparison table; a 6-hour/overnight first-draw is used in some school/other protocols. Could not open Schedule 15.1 text to confirm, so the stated 'required protocol' is not reliable.",
+   "original": {
+    "question": "An operator is collecting samples for a lead and copper survey under O. Reg. 170/03. What is the required sampling protocol for lead at the tap?",
+    "options": [
+     "Collect a first-draw sample after the water has been stagnant in the plumbing for at least 6 hours (overnight stagnation)",
+     "Collect a first-draw sample after flushing the tap for 5 minutes",
+     "Collect a running water sample from the cold water tap",
+     "Collect a sample from the water main, not the customer tap"
+    ],
+    "correctIndex": 0,
+    "explanation": "Lead sampling under O. Reg. 170/03 requires first-draw samples collected after a minimum 6-hour stagnation period (typically overnight). This captures water that has been in contact with lead service lines or lead solder, giving the worst-case lead concentration at the tap."
+   },
+   "fix": {
+    "question": "Why are lead samples at a customer tap collected after the water has stagnated in the plumbing (for example 30 minutes or overnight) rather than from a running tap?",
+    "options": [
+     "To capture water that has been in contact with lead service lines, solder or fixtures long enough to show lead released from plumbing",
+     "To remove chlorine from the sample before analysis",
+     "To ensure the water has the same temperature as the distribution main",
+     "Stagnation is not used in lead sampling; only running-water samples are valid"
+    ],
+    "correctIndex": 0,
+    "explanation": "Stagnant water picks up lead from lead pipes, solder and brass fixtures, so a stagnation sample represents a worst case at the tap. The stagnation time depends on the protocol in use (Ontario's Schedule 15.1 approach uses a 30-minute stagnation period).",
+    "steps": null
+   }
+  },
+  {
+   "id": 35393,
+   "bankKey": "oit",
+   "questionNum": 368,
+   "verdict": "UNCLEAR",
+   "note": "Could not verify the 'section 27' citation. Search of e-Laws indices placed s.27 of O. Reg. 128/04 under duties of the operator-in-charge, with record-keeping at s.28 and O&M manuals at s.29. Citation likely wrong; the explanation also refers to unsupplied 'evidence'.",
+   "original": {
+    "question": "Which categories of records are identified in section 27 of O. Reg. 128/04 as records that the owner or operating authority must ensure are kept as required?",
+    "options": [
+     "Operation, maintenance and water-quality records",
+     "Only records of major pump repairs",
+     "Only treatment-plant pump records, excluding distribution equipment",
+     "Payroll, procurement and employee scheduling records"
+    ],
+    "correctIndex": 0,
+    "explanation": "Section 27 of O. Reg. 128/04 requires the owner or operating authority to ensure that operation, maintenance and water-quality records are kept as required. The supplied evidence does not support the original claim that O. Reg. 170/03 universally requires pump records to list every maintenance activity, repair and inspection together with dates and personnel."
+   },
+   "fix": {
+    "question": "Which categories of records does O. Reg. 128/04 identify as records that the owner or operating authority must ensure are kept as required?",
+    "options": [
+     "Operation, maintenance and water-quality records",
+     "Only records of major pump repairs",
+     "Only treatment-plant pump records, excluding distribution equipment",
+     "Payroll, procurement and employee scheduling records"
+    ],
+    "correctIndex": 0,
+    "explanation": "The owner or operating authority must ensure that operation, maintenance and water-quality records are kept as required. The other options describe records outside the regulation's scope.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35397,
+   "bankKey": "oit",
+   "questionNum": 372,
+   "verdict": "UNITS",
+   "note": "US gallons per minute, feet and horsepower in an Ontario bank. Converted to L/s, m and kW. 9.81 x 0.030 x 30 = 8.829 kW; /0.70 = 12.61 kW.",
+   "original": {
+    "question": "If a pump is designed to deliver 500 US gallons per minute (GPM) and the system requires a total head of 100 feet, what is the approximate brake horsepower (BHP) required if the pump efficiency is 70%? (1 GPM = 0.002228 cubic feet per second, 1 cubic foot of water = 62.4 lbs)",
+    "options": [
+     "18.0 BHP",
+     "15.4 BHP",
+     "12.5 BHP",
+     "10.8 BHP"
+    ],
+    "correctIndex": 0,
+    "explanation": "Hydraulic Horsepower (HHP) = (GPM * Head (ft)) / 3960 = (500 * 100) / 3960 = 12.62 HHP. Brake Horsepower (BHP) = HHP / Efficiency = 12.62 / 0.70 = 18.03 BHP, approximately 18.0 BHP."
+   },
+   "fix": {
+    "question": "A pump is designed to deliver 30 L/s against a total head of 30 m. What is the approximate brake power required if the pump efficiency is 70%? (Specific weight of water = 9.81 kN/m³)",
+    "options": [
+     "12.6 kW",
+     "8.8 kW",
+     "10.5 kW",
+     "17.7 kW"
+    ],
+    "correctIndex": 0,
+    "explanation": "Hydraulic power = 9.81 kN/m³ × 0.030 m³/s × 30 m = 8.83 kW. Brake power = 8.83 / 0.70 = 12.6 kW.",
+    "steps": [
+     {
+      "l": "Convert flow",
+      "c": "30 L/s = 0.030 m³/s"
+     },
+     {
+      "l": "Hydraulic power",
+      "c": "P_h = 9.81 × 0.030 × 30 = 8.83 kW"
+     },
+     {
+      "l": "Brake power",
+      "c": "P_b = 8.83 / 0.70 = 12.6 kW"
+     }
+    ]
+   }
+  },
+  {
+   "id": 35398,
+   "bankKey": "oit",
+   "questionNum": 373,
+   "verdict": "WRONG",
+   "note": "(300-50)/9.81 = 25.48 m; + 12 = 37.48 m. Marked 37.53 m does not match the stated computation (37.53 would need a specific weight of ~9.79).",
+   "original": {
+    "question": "A pump is operating with a suction pressure of 50 kPa and a discharge pressure of 300 kPa. The elevation difference between the discharge and suction points is 12 meters (discharge higher than suction). Assuming specific gravity of water = 1 and no friction losses, what is the total dynamic head (TDH) in meters? (g = 9.81 m/s²)",
+    "options": [
+     "37.53 m",
+     "27.53 m",
+     "30.58 m",
+     "25.48 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "Convert pressures to head: Suction Head = 50 kPa / (9.81 kN/m³) = 5.097 m. Discharge Head = 300 kPa / (9.81 kN/m³) = 30.581 m. Total Dynamic Head (TDH) = (Discharge Pressure Head - Suction Pressure Head) + Elevation Difference. TDH = (30.581 m - 5.097 m) + 12 m = 25.484 m + 12 m = 37.484 m, approximately 37.53 m."
+   },
+   "fix": {
+    "question": "A pump is operating with a suction pressure of 50 kPa and a discharge pressure of 300 kPa. The elevation difference between the discharge and suction points is 12 meters (discharge higher than suction). Assuming specific gravity of water = 1 and no friction losses, what is the total dynamic head (TDH) in meters? (g = 9.81 m/s²)",
+    "options": [
+     "37.48 m",
+     "27.53 m",
+     "30.58 m",
+     "25.48 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "Pressure head difference = (300 - 50) kPa / 9.81 kN/m³ = 25.48 m. TDH = 25.48 m + 12 m = 37.48 m.",
+    "steps": [
+     {
+      "l": "Pressure difference",
+      "c": "300 - 50 = 250 kPa"
+     },
+     {
+      "l": "Convert to head",
+      "c": "250 / 9.81 = 25.48 m"
+     },
+     {
+      "l": "Add elevation",
+      "c": "25.48 + 12 = 37.48 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 35434,
+   "bankKey": "oit",
+   "questionNum": 409,
+   "verdict": "UNCLEAR",
+   "note": "Key and explanation say 24 hours but the steps say the maximum recommended is 30 hours; they contradict each other. Both 24 and 30 h are listed as options. Could not open Ontario Design Guidelines (Chapter 20) to confirm the figure.",
+   "original": {
+    "question": "What is the maximum recommended capacity for chemical day tanks, in terms of chemical consumption?",
+    "options": [
+     "12-hour supply",
+     "30-hour supply",
+     "24-hour supply",
+     "48-hour supply"
+    ],
+    "correctIndex": 2,
+    "explanation": "A 24-hour supply is generally considered the maximum recommended capacity for chemical day tanks in Canadian water and wastewater treatment facilities. This duration balances the need for continuous chemical feed with safety considerations, minimizing the amount of hazardous chemicals stored on-site. While specific provincial regulations may vary, this aligns with common industry best practices and guidelines, such as those often referenced in Ontario's Ministry of the Environment, Conservation and Parks (MECP) design guidelines for water and wastewater treatment plants, which emphasize minimizing chemical storage to reduce risks. A 30-hour supply, while sometimes mentioned, is less universally accepted as a maximum compared to the 24-hour standard."
+   },
+   "fix": null
+  },
+  {
+   "id": 35435,
+   "bankKey": "oit",
+   "questionNum": 410,
+   "verdict": "UNCLEAR",
+   "note": "Question premise 'even if normal delivery can be assured' makes the key (chemicals degrade) a strained reading; degradation argues for LESS storage, and the usual reason for increased storage in isolated locations is delivery disruption (option B). Two answers defensible.",
+   "original": {
+    "question": "Why might increased storage capacity be necessary for certain chemicals in isolated locations, even if normal delivery can be assured?",
+    "options": [
+     "Because some chemicals degrade with time",
+     "To ensure supply continuity during delivery disruptions",
+     "To increase chemical potency",
+     "To simplify inventory tracking"
+    ],
+    "correctIndex": 0,
+    "explanation": "While ensuring supply continuity is a critical reason for increased storage in isolated locations, the question specifically asks 'even if normal delivery can be assured'. This clause points to a factor independent of delivery reliability. Chemical degradation over time, such as with sodium hypochlorite, means that a larger initial quantity must be stored to account for the loss of effective concentration, ensuring a sufficient usable supply remains until the next delivery. Option B is a valid reason for increased storage but doesn't fit the 'even if normal delivery can be assured' clause as well as degradation. Options C and D are incorrect as increased storage does not increase potency or simplify tracking."
+   },
+   "fix": {
+    "question": "Why might increased chemical storage capacity be necessary at a plant in an isolated location?",
+    "options": [
+     "To increase chemical potency",
+     "To ensure supply continuity during delivery disruptions",
+     "To make chemicals degrade more slowly",
+     "To simplify inventory tracking"
+    ],
+    "correctIndex": 1,
+    "explanation": "Isolated locations are subject to longer delivery times and road or weather disruptions, so a larger on-site chemical inventory is needed to maintain treatment. Storing more does not raise potency, slow degradation or simplify inventory tracking.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35436,
+   "bankKey": "oit",
+   "questionNum": 411,
+   "verdict": "UNITS",
+   "note": "US customary (°F) shown in an Ontario question; metric only required.",
+   "original": {
+    "question": "What is the minimum recommended temperature for chlorine gas areas in sewage treatment plants?",
+    "options": [
+     "0 °C (32 °F)",
+     "15 °C (59 °F)",
+     "10 °C (50 °F)",
+     "20 °C (68 °F)"
+    ],
+    "correctIndex": 1,
+    "explanation": "Maintaining a minimum temperature of 15 °C (59 °F) in chlorine gas areas is important to prevent liquefaction of chlorine and ensure proper operation of equipment."
+   },
+   "fix": {
+    "question": "What is the minimum recommended temperature for chlorine gas areas in sewage treatment plants?",
+    "options": [
+     "0 °C",
+     "15 °C",
+     "10 °C",
+     "20 °C"
+    ],
+    "correctIndex": 1,
+    "explanation": "Maintaining a minimum temperature of 15 °C in chlorine gas areas helps ensure proper gas withdrawal and operation of equipment and avoids condensation and cold-related problems.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35443,
+   "bankKey": "oit",
+   "questionNum": 418,
+   "verdict": "UNCLEAR",
+   "note": "Chlorine cylinders must be stored in a dry location; moisture/dampness corrodes cylinders and valves and leaking chlorine plus moisture is highly corrosive. All four listed items should be protected against, so the 'EXCEPT' answer is not defensible.",
+   "original": {
+    "question": "Chlorine cylinders need to be protected from all of the following EXCEPT:",
+    "options": [
+     "Excessive heat",
+     "Direct sunlight",
+     "Mechanical damage",
+     "Dampness"
+    ],
+    "correctIndex": 3,
+    "explanation": "Chlorine cylinders must be protected from excessive heat, direct sunlight (which causes excessive heat), and mechanical damage to prevent leaks, cylinder failure, or explosions. While dampness can lead to corrosion over time, it is generally considered less critical for immediate safety than protection from heat or physical impact. Therefore, dampness is the 'EXCEPT' item in this context, as the other three are crucial for safe storage."
+   },
+   "fix": {
+    "question": "Chlorine cylinders need to be protected from all of the following EXCEPT:",
+    "options": [
+     "Excessive heat",
+     "Direct sunlight",
+     "Mechanical damage",
+     "Adequate ventilation"
+    ],
+    "correctIndex": 3,
+    "explanation": "Cylinders must be protected from excessive heat, direct sunlight and mechanical damage (and from dampness, which causes corrosion). Adequate ventilation is a requirement of the storage area, not something cylinders need protection from.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35456,
+   "bankKey": "oit",
+   "questionNum": 431,
+   "verdict": "UNITS",
+   "note": "Imperial inch equivalents given in parentheses in an Ontario question.",
+   "original": {
+    "question": "What is the minimum recommended line size for chemical feed lines, unless the material pumped exhibits scale-forming tendencies?",
+    "options": [
+     "6 mm (0.25 in)",
+     "19 mm (0.75 in)",
+     "12 mm (0.5 in)",
+     "25 mm (1 in)"
+    ],
+    "correctIndex": 2,
+    "explanation": "The minimum line size for chemical feed lines is 12 mm (0.5 in), but larger sizes are recommended for scale-forming chemicals to prevent blockages."
+   },
+   "fix": {
+    "question": "What is the minimum recommended line size for chemical feed lines, unless the material pumped exhibits scale-forming tendencies?",
+    "options": [
+     "6 mm",
+     "19 mm",
+     "12 mm",
+     "25 mm"
+    ],
+    "correctIndex": 2,
+    "explanation": "The minimum line size for chemical feed lines is 12 mm, but larger sizes are recommended for scale-forming chemicals to prevent blockages.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35486,
+   "bankKey": "oit",
+   "questionNum": 461,
+   "verdict": "UNCLEAR",
+   "note": "Premise is doubtful: 45 m3/m2/d is within the normal range for primary clarifiers at average flow (typically about 30-50 m3/m2/d; Metcalf & Eddy, MECP Design Guidelines about 40-50), so calling it too high and the cause of poor settling is not supported. Explanation's 'typical design 24-32' is low. Fix uses an overflow rate that is clearly excessive.",
+   "original": {
+    "question": "A primary clarifier is experiencing poor solids settling, with high suspended solids (TSS) in the primary effluent. The overflow rate is 45 m³/m²/day. What operational change would most improve performance?",
+    "options": [
+     "Reduce the flow rate through the clarifier to lower the surface overflow rate",
+     "Increase the sludge withdrawal rate to remove more solids",
+     "Add polymer to the primary influent to improve settling",
+     "Increase the depth of the clarifier"
+    ],
+    "correctIndex": 0,
+    "explanation": "Primary clarifier performance is primarily controlled by surface overflow rate (SOR). At 45 m³/m²/day, the SOR may be too high for effective settling (typical design is 24–32 m³/m²/day). Reducing flow rate lowers SOR and gives particles more time to settle. Adding polymer is an option but addresses the symptom, not the hydraulic overloading."
+   },
+   "fix": {
+    "question": "A primary clarifier is experiencing poor solids settling, with high suspended solids (TSS) in the primary effluent. The overflow rate is 90 m³/m²/day at average flow. What operational change would most improve performance?",
+    "options": [
+     "Reduce the flow rate through the clarifier to lower the surface overflow rate (for example by placing additional clarifiers in service)",
+     "Increase the sludge withdrawal rate to remove more solids",
+     "Add polymer to the primary influent to improve settling",
+     "Increase the depth of the clarifier"
+    ],
+    "correctIndex": 0,
+    "explanation": "Primary clarifier performance is largely controlled by surface overflow rate (SOR). At 90 m³/m²/day the SOR is well above typical average-flow design values (about 30-50 m³/m²/day), so particles do not have time to settle. Lowering the SOR, for example by placing more clarifiers in service, addresses the hydraulic overloading. Polymer addresses the symptom, not the cause.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35496,
+   "bankKey": "oit",
+   "questionNum": 471,
+   "verdict": "UNCLEAR",
+   "note": "Two answers defensible. Falling gas production and VSR with pH 6.8 and alkalinity of only 800 mg/L as CaCO3 (healthy digesters run roughly 2,000-5,000 mg/L) strongly suggest acid upset/loss of buffer (option D), yet the key is A (overload). The explanation argues that 800 mg/L is not critically low, which is not credible. Overload is the cause of upset, so A and D are not distinguishable from the data given. Fix makes the stem point to overload only.",
+   "original": {
+    "question": "An anaerobic digester is producing less biogas than normal and the volatile solids reduction has dropped from 55% to 35%. The pH is 6.8 and alkalinity is 800 mg/L as CaCO₃. What is the most likely problem?",
+    "options": [
+     "The digester is overloaded with volatile solids — reduce the feed rate",
+     "The mixing system is failing — repair the mixer",
+     "The digester temperature has dropped — increase heating",
+     "The digester is experiencing acid upset — methanogens are being inhibited by low pH and insufficient alkalinity"
+    ],
+    "correctIndex": 0,
+    "explanation": "Reduced biogas production and a significant drop in volatile solids reduction (from 55% to 35%) are strong indicators of an overloaded digester. When an anaerobic digester is overloaded with volatile solids, the rate of acid formation by acid-forming bacteria can exceed the rate of acid consumption by methanogenic bacteria. This leads to an accumulation of volatile fatty acids, which consumes alkalinity and can eventually lower the pH. While the pH of 6.8 is still within an acceptable range for anaerobic digestion, and 800 mg/L alkalinity is on the lower side but not critically low for immediate acid upset, the primary issue driving these symptoms is the inability of the digester to process the incoming organic load efficiently. This aligns with best practices for anaerobic digestion operation, which emphasize maintaining a balanced organic loading rate to prevent process instability. Options B and C would typically present with different symptom profiles, and option D incorrectly identifies the current pH and alkalinity as definitive signs of acid upset at this stage."
+   },
+   "fix": {
+    "question": "An anaerobic digester is producing less biogas than normal and the volatile solids reduction has dropped from 55% to 35%. The pH is 7.0 and alkalinity is 2,500 mg/L as CaCO₃. Raw sludge feed has recently doubled in volatile solids load. What is the most likely problem?",
+    "options": [
+     "The digester is overloaded with volatile solids — reduce the feed rate",
+     "The mixing system is failing — repair the mixer",
+     "The digester temperature has dropped — increase heating",
+     "The digester has excess alkalinity — add acid to lower the pH"
+    ],
+    "correctIndex": 0,
+    "explanation": "Reduced biogas production and a drop in volatile solids reduction after a large increase in volatile solids loading indicate an overloaded digester. Methanogens cannot keep pace with acid formers, so the feed rate should be reduced and pH and alkalinity monitored. The pH and alkalinity are still in a healthy range, so this is not yet acid upset, and adding acid would be harmful.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35539,
+   "bankKey": "oit",
+   "questionNum": 514,
+   "verdict": "UNCLEAR",
+   "note": "The 140 kPa (20 psi) minimum is the standard Ontario design value (MECP Design Guidelines for Drinking-Water Systems, and disinfection procedures requiring positive pressure at or above 140 kPa), but I could not confirm that O. Reg. 170/03 itself prescribes a minimum operating pressure; attributing it to the regulation is unverified. Not web-checked. Answer value is fine; attribution should be to MECP guidelines.",
+   "original": {
+    "question": "What is the minimum operating pressure that must be maintained in a water distribution system in Ontario?",
+    "options": [
+     "275 kPa (40 psi)",
+     "140 kPa (20 psi)",
+     "345 kPa (50 psi)",
+     "415 kPa (60 psi)"
+    ],
+    "correctIndex": 1,
+    "explanation": "Ontario Regulation 170/03 requires a minimum operating pressure of 140 kPa (approximately 20 psi) at all service connections at all times. Pressures below this threshold can allow contaminants to enter the system through leaks and may be insufficient for fire suppression."
+   },
+   "fix": {
+    "question": "What is the minimum operating pressure that should be maintained at all points in a water distribution system under Ontario design guidelines?",
+    "options": [
+     "275 kPa (40 psi)",
+     "140 kPa (20 psi)",
+     "345 kPa (50 psi)",
+     "415 kPa (60 psi)"
+    ],
+    "correctIndex": 1,
+    "explanation": "The MECP Design Guidelines for Drinking-Water Systems call for a minimum pressure of 140 kPa (about 20 psi) at ground level at all points in the distribution system under all conditions, including maximum day plus fire flow (normal operating pressure is typically 275-550 kPa). Low pressures can allow contaminants to enter through leaks and may be insufficient for fire suppression.",
+    "steps": null
+   }
+  },
+  {
+   "id": 35565,
+   "bankKey": "oit",
+   "questionNum": 540,
+   "verdict": "UNCLEAR",
+   "note": "Question text is truncated mid-word ('real and app') so the question as shown is incomplete. Explanation also states NRW is system input minus 'authorized consumption' when the calculation uses billed authorized consumption. Arithmetic is correct: NRW = 1,200 m3/d (24%); real + apparent losses = 1,200 - 100 = 1,100 m3/d.",
+   "original": {
+    "question": "An operator is conducting a water audit and finds that the system produces 5,000 m³/day but only 3,800 m³/day is billed to customers. The authorized unbilled consumption (flushing, firefighting, etc.) is 100 m³/day. What is the volume of real and app",
+    "options": [
+     "Real + apparent losses = 1,100 m³/day; NRW = 24%",
+     "Real + apparent losses = 1,100 m³/day; NRW = 22%",
+     "Real + apparent losses = 1,000 m³/day; NRW = 20%",
+     "Real + apparent losses = 900 m³/day; NRW = 18%"
+    ],
+    "correctIndex": 0,
+    "explanation": "Non-Revenue Water (NRW) is the difference between the system input volume and the authorized consumption. In this case, NRW = 5,000 m³/day - 3,800 m³/day = 1,200 m³/day. As a percentage of system production, NRW is (1,200 m³/day / 5,000 m³/day) * 100% = 24%. Real and apparent losses are calculated by subtracting authorized unbilled consumption from the total NRW: 1,200 m³/day - 100 m³/day = 1,100 m³/day. This aligns with the water balance principles outlined in Canadian best practices for water loss management, such as those promoted by the Canadian Water and Wastewater Association (CWWA)."
+   },
+   "fix": {
+    "question": "An operator is conducting a water audit and finds that the system produces 5,000 m³/day but only 3,800 m³/day is billed to customers. The authorized unbilled consumption (flushing, firefighting, etc.) is 100 m³/day. What is the volume of real and apparent losses, and what is the non-revenue water (NRW) percentage?",
+    "options": [
+     "Real + apparent losses = 1,100 m³/day; NRW = 24%",
+     "Real + apparent losses = 1,100 m³/day; NRW = 22%",
+     "Real + apparent losses = 1,000 m³/day; NRW = 20%",
+     "Real + apparent losses = 900 m³/day; NRW = 18%"
+    ],
+    "correctIndex": 0,
+    "explanation": "Non-revenue water is the system input volume minus billed authorized consumption: 5,000 - 3,800 = 1,200 m³/day, or 24% of system input. Because NRW includes unbilled authorized consumption, real plus apparent losses = 1,200 - 100 = 1,100 m³/day.",
+    "steps": [
+     {
+      "l": "Step 1: Calculate Non-Revenue Water (NRW) volume.",
+      "c": "NRW = Total Production - Billed Consumption = 5,000 m³/day - 3,800 m³/day = 1,200 m³/day"
+     },
+     {
+      "l": "Step 2: Calculate Real + Apparent Losses volume.",
+      "c": "Real + Apparent Losses = NRW - Authorized Unbilled Consumption = 1,200 m³/day - 100 m³/day = 1,100 m³/day"
+     },
+     {
+      "l": "Step 3: Calculate Non-Revenue Water (NRW) percentage.",
+      "c": "NRW % = (1,200 / 5,000) * 100 = 24%"
+     },
+     {
+      "l": "Step 4: Match calculated values to the options.",
+      "c": "Option A matches: real + apparent losses = 1,100 m³/day; NRW = 24%."
+     }
+    ]
    }
   }
  ]
