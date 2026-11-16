@@ -3,6 +3,19 @@
 const fs = require('node:fs');
 const net = require('node:net');
 const Module = require('node:module');
+// Disable only the unrelated eager payment initializer, in memory. No fake key.
+// Interactive routes/engine and the on-disk production artifact remain intact.
+Module.registerHooks({ load(url, context, nextLoad) {
+  const result = nextLoad(url, context);
+  if (url === require('node:url').pathToFileURL(require('node:path').resolve('dist/index.js')).href) {
+    const original = '    if (!process.env.STRIPE_SECRET_KEY) {\n      throw new Error("STRIPE_SECRET_KEY is not set");\n    }\n    stripe = new Stripe3(process.env.STRIPE_SECRET_KEY, {\n      apiVersion: "2026-07-29.dahlia"\n    });';
+    const source = String(result.source);
+    if (source.split(original).length !== 2) throw new Error('Offline payment initializer contract changed');
+    fs.writeSync(2, '[offline acceptance] disabled unrelated eager payment client; any use throws\n');
+    return { ...result, source: source.replace(original, '    stripe = new Proxy({}, { get() { throw new Error("Payment client disabled in offline acceptance"); } });') };
+  }
+  return result;
+} });
 for (const [key, value] of Object.entries(process.env)) {
   if (value && /DATABASE_URL|API_KEY|SECRET|TOKEN|PASSWORD|SMTP_PASS|FORGE/.test(key)) throw new Error('Offline acceptance forbids credentials');
 }
