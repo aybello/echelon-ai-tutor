@@ -73,3 +73,22 @@ Recognition-level safety questions only. Read these with the dossier's exclusion
 Calculations:
 - Trench sloping: 1.5H:1V on a 7 ft depth gives a 10.5 ft run on each side. Arithmetic only, no soil rule.
 - Ventilation: 0.785 × D² area and 500 cfm give 1.5 min for one air change. Simple arithmetic only.
+
+## Batch 4: Flow, hydraulics and math
+
+Conceptual:
+1. "Circular gravity sewer, half full versus full, same slope." Assumes uniform flow and constant roughness.
+2. "Why is the peaking factor usually larger for a small collection system than for a large one?" General practice.
+3. "Two identical pumps into one shared force main, why less than double flow." Simplifies pump-curve behaviour.
+4. "A level-based flow meter in a sewer reads steady depth while a storm backs the pipe up." Backwater effects vary by meter type.
+5. "What does the point where a pump curve crosses the system curve show?" The best-efficiency wrong option is a common confusion.
+
+Calculations:
+- Weir item: Q = 3.33 × L × H^1.5 is given, with H^1.5 = 0.125 supplied (no exponents in the expression syntax).
+- Six-digit totalizer rollover assumes exactly one rollover at 1,000,000.
+- Ferric chloride dose of 40 mg/L at 0.75 MGD is an example, not a dose recommendation. The 11.3 lb/gal product weight is assumed.
+- "10-in and 8-in gravity sewer each flow full at the same velocity": capacity ratio by D² is a simplification.
+- The 15-hp motor cost item treats 15 hp as input power, with 0.746 kW/hp and $0.11/kWh.
+- Peaking factor from seven hourly readings treats seven readings as the whole record.
+- Area-velocity item gives the wetted area (0.62 ft²) and uses 1 cfs = 0.646 MGD.
+- Peaking-factor items use the unit "ratio" because the checker rejects an empty unit field.
