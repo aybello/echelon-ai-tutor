@@ -1,15 +1,15 @@
 {
  "export": "docs/exam-bank-export/2026-11-16 (commit d118897a)",
- "chunksDone": 37,
+ "chunksDone": 44,
  "chunksTotal": 174,
- "questionsReviewed": 5056,
+ "questionsReviewed": 6016,
  "questionsTotal": 24350,
- "problems": 158,
+ "problems": 206,
  "byVerdict": {
-  "UNCLEAR": 49,
-  "WRONG": 60,
-  "JURISDICTION": 29,
-  "UNITS": 15,
+  "UNCLEAR": 67,
+  "WRONG": 85,
+  "JURISDICTION": 31,
+  "UNITS": 18,
   "OFF-TOPIC": 5
  },
  "byBank": {
@@ -19,7 +19,8 @@
   "class1-water": 6,
   "class1-water-dist": 9,
   "class2-wastewater": 63,
-  "class2-wastewater-coll": 41
+  "class2-wastewater-coll": 59,
+  "class2-water": 30
  },
  "chunks": [
   "chunk-001",
@@ -58,7 +59,14 @@
   "chunk-034",
   "chunk-035",
   "chunk-036",
-  "chunk-037"
+  "chunk-037",
+  "chunk-038",
+  "chunk-039",
+  "chunk-040",
+  "chunk-041",
+  "chunk-042",
+  "chunk-043",
+  "chunk-044"
  ],
  "corrections": [
   {
@@ -5241,6 +5249,1822 @@
       "c": "35.3 m3 matches the computed volume."
      }
     ]
+   }
+  },
+  {
+   "id": 185108,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 451,
+   "verdict": "UNCLEAR",
+   "note": "Two options are defensible. Combustible gas detectors for confined-space/sewer work commonly alarm at 10% LEL (low alarm) with a second high alarm at 20% LEL; the explanation itself says 'most detectors are set to alarm at 10% or 20%'. Keying only 20% makes 10% a defensible wrong answer. The question also mislabels the alarm setpoint as the 'LEL'. Methane LEL is about 5% by volume. Fix keys the most common low-level alarm (10% LEL).",
+   "original": {
+    "question": "A wastewater collection system operator is using a gas detector before entering a confined space. What is the typical lower explosive limit (LEL) for methane that would trigger an alarm?",
+    "options": [
+     "5% of the total air volume.",
+     "10% of the LEL for methane.",
+     "20% of the LEL for methane.",
+     "50% of the LEL for methane."
+    ],
+    "correctIndex": 2,
+    "explanation": "Most gas detectors are set to alarm at 10% or 20% of the LEL for methane (which is 5% by volume in air) to provide an early warning before the atmosphere becomes dangerously explosive."
+   },
+   "fix": {
+    "question": "A gas detector used before entering a sewer confined space alarms at a fraction of the lower explosive limit (LEL). Methane has an LEL of about 5% by volume in air. What is the most commonly used low-level alarm setpoint for combustible gas?",
+    "options": [
+     "5% of the total air volume.",
+     "10% of the LEL for methane.",
+     "50% of the LEL for methane.",
+     "100% of the LEL for methane."
+    ],
+    "correctIndex": 1,
+    "explanation": "Methane's LEL is about 5% by volume in air. Combustible gas detectors used for confined-space entry are typically set to alarm at 10% of the LEL (with a high alarm sometimes at 20%), giving warning well before the atmosphere can burn or explode. 50% and 100% of the LEL are far too late, and 5% by volume is the LEL itself, not an alarm setpoint.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185121,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 464,
+   "verdict": "UNITS",
+   "note": "Canadian (Ontario) bank but distractor option B uses '10 feet'. Metric only is expected. Converted to 3 metres; the keyed answer (PPE) is unchanged.",
+   "original": {
+    "question": "When operating a high-pressure sewer cleaner (jetter), what is the most critical safety precaution to observe?",
+    "options": [
+     "Ensuring the nozzle is always pointed downwards into the sewer.",
+     "Maintaining a minimum distance of 10 feet from the jetter hose.",
+     "Wearing appropriate personal protective equipment, including eye and hand protection.",
+     "Operating the equipment only during daylight hours for better visibility."
+    ],
+    "correctIndex": 2,
+    "explanation": "High-pressure jetting equipment poses significant risks. Wearing appropriate PPE, including eye protection (e.g., face shield) and heavy-duty gloves, is critical to protect against high-pressure water streams and flying debris."
+   },
+   "fix": {
+    "question": "When operating a high-pressure sewer cleaner (jetter), what is the most critical safety precaution to observe?",
+    "options": [
+     "Ensuring the nozzle is always pointed downwards into the sewer.",
+     "Maintaining a minimum distance of 3 metres from the jetter hose.",
+     "Wearing appropriate personal protective equipment, including eye and hand protection.",
+     "Operating the equipment only during daylight hours for better visibility."
+    ],
+    "correctIndex": 2,
+    "explanation": "High-pressure jetting equipment poses significant risks. Wearing appropriate PPE, including eye protection (e.g., face shield) and heavy-duty gloves, is critical to protect against high-pressure water streams and flying debris.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185122,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 465,
+   "verdict": "UNITS",
+   "note": "Canadian (Ontario) bank but every option and the explanation/steps give imperial (ft/s) equivalents. Rewritten metric only. Ontario design practice: minimum 0.6 m/s at full flow, maximum about 3.0 m/s; the keyed 0.6 to 1.2 m/s range is retained.",
+   "original": {
+    "question": "What is the typical range for the velocity of flow in a sanitary sewer to prevent solids deposition and scour the pipe?",
+    "options": [
+     "0.3 to 0.6 meters per second (1.0 to 2.0 feet per second).",
+     "0.6 to 1.2 meters per second (2.0 to 4.0 feet per second).",
+     "1.2 to 2.4 meters per second (4.0 to 8.0 feet per second).",
+     "2.4 to 3.6 meters per second (8.0 to 12.0 feet per second)."
+    ],
+    "correctIndex": 1,
+    "explanation": "A self-cleansing velocity of 0.6 to 1.2 m/s (2.0 to 4.0 ft/s) is generally desired in sanitary sewers to prevent solids from settling and to scour the pipe walls, minimizing blockages and odor issues."
+   },
+   "fix": {
+    "question": "What is the typical range for the velocity of flow in a sanitary sewer to prevent solids deposition and scour the pipe?",
+    "options": [
+     "0.3 to 0.6 metres per second.",
+     "0.6 to 1.2 metres per second.",
+     "1.2 to 2.4 metres per second.",
+     "2.4 to 3.6 metres per second."
+    ],
+    "correctIndex": 1,
+    "explanation": "A self-cleansing velocity of about 0.6 to 1.2 m/s is generally desired in sanitary sewers to prevent solids from settling and to scour the pipe walls, minimizing blockages and odour issues.",
+    "steps": [
+     {
+      "l": "Recognize the question type.",
+      "c": "This question requires knowledge of sanitary sewer design standards, not a numerical calculation."
+     },
+     {
+      "l": "Identify the standard self-cleansing velocity.",
+      "c": "The generally accepted velocity range needed to keep solids moving and scour pipe walls is about 0.6 to 1.2 m/s (minimum 0.6 m/s)."
+     },
+     {
+      "l": "Select the matching option.",
+      "c": "0.6 to 1.2 metres per second is correct."
+     }
+    ]
+   }
+  },
+  {
+   "id": 185129,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 472,
+   "verdict": "WRONG",
+   "note": "'Inflow control directive (ICD)' is not a recognised term. In Ontario practice ICD normally means inflow control device (an orifice or restrictor in a stormwater inlet). The described content is stormwater quantity (post- to pre-development) control for new developments, which is not a sanitary sewer 'directive' called ICD. Reworded to ask about the actual concept.",
+   "original": {
+    "question": "What is \"inflow control directive\" (ICD) for new developments?",
+    "options": [
+     "Controlling water inflow to buildings",
+     "Requirements limiting stormwater runoff from new developments to pre-development rates — using: detention ponds, underground storage, and lot-level controls to prevent downstream sewer overloading",
+     "Only for industrial developments",
+     "No controls on development runoff"
+    ],
+    "correctIndex": 1,
+    "explanation": "ICD: new development must control post-development runoff to pre-development rate (or specified limit). Methods: stormwater management ponds, underground storage/infiltration, lot-level controls (rain gardens, cisterns), and rooftop storage. Purpose: prevent downstream flooding and sewer surcharging from increased impervious area."
+   },
+   "fix": {
+    "question": "What is the purpose of stormwater quantity control (post-development to pre-development runoff) requirements for new developments?",
+    "options": [
+     "Controlling water inflow to buildings",
+     "Limiting stormwater runoff from new developments to pre-development rates, using detention ponds, underground storage and lot-level controls, to prevent downstream sewer overloading",
+     "Only for industrial developments",
+     "No controls on development runoff"
+    ],
+    "correctIndex": 1,
+    "explanation": "New development must control post-development runoff to the pre-development rate (or a specified limit). Methods: stormwater management ponds, underground storage/infiltration, lot-level controls (rain gardens, cisterns), and rooftop storage. Purpose: prevent downstream flooding and sewer surcharging from increased impervious area.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185139,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 482,
+   "verdict": "WRONG",
+   "note": "Marked answer 35.3 m3 is correct (pi x 1.5^2 x 5 = 35.34), but the explanation is a garbled stream of self-correction that says the options are 'slightly off', calls 47.1 'the closest' and says the question 'seems to have a calculation error'. That contradicts the marked answer. Replaced with a clean explanation.",
+   "original": {
+    "question": "An operator is calculating the volume of a cylindrical wet well with a diameter of 3 meters and a depth of 5 meters. What is the approximate volume in cubic meters?",
+    "options": [
+     "14.1 cubic meters.",
+     "35.3 cubic meters.",
+     "47.1 cubic meters.",
+     "70.7 cubic meters."
+    ],
+    "correctIndex": 1,
+    "explanation": "Volume of a cylinder = π * (radius)^2 * height. Radius = Diameter / 2 = 3m / 2 = 1.5m. Volume = 3.14159 * (1.5m)^2 * 5m = 3.14159 * 2.25 m^2 * 5m = 35.34 m^3. (Note: The provided options are slightly off, but 47.1 is the closest with a common rounding error or using diameter directly. Let's re-calculate with common Pi=3.14: Volume = 3.14 * (1.5)^2 * 5 = 3.14 * 2.25 * 5 = 35.325 m^3. The question options seem to have a calculation error. Let's assume the question meant diameter of 4m for 47.1 m^3 (3.14 * 2^2 * 5 = 62.8) or radius of 3m (3.14 * 3^2 * 5 = 141.3). Let's re-evaluate the options based on common exam question types where one option is numerically close. Re-calculating for a diameter of 3m and depth of 5m: V = π * r^2 * h = π * (1.5)^2 * 5 = 3.14159 * 2.25 * 5 = 35.34 m^3. Option 2 is 35.3 m^3. Let's correct the correctIndex to 1 and the explanation. The question is a Class 2 calculation, so it should be straightforward. Let's assume the question meant a diameter that would lead to one of the answers. If the diameter was 3.5m, V = 3.14 * (1.75)^2 * 5 = 48.08 m^3. If the diameter was 3m, the answer is 35.3 m^3. Given the options, 35.3 m^3 is the correct answer for a 3m diameter. The previous correctIndex was wrong. Corrected to 1."
+   },
+   "fix": {
+    "question": "An operator is calculating the volume of a cylindrical wet well with a diameter of 3 meters and a depth of 5 meters. What is the approximate volume in cubic meters?",
+    "options": [
+     "14.1 cubic meters.",
+     "35.3 cubic meters.",
+     "47.1 cubic meters.",
+     "70.7 cubic meters."
+    ],
+    "correctIndex": 1,
+    "explanation": "Volume of a cylinder = pi x radius^2 x height. Radius = 3 m / 2 = 1.5 m. Volume = 3.14159 x (1.5 m)^2 x 5 m = 35.34 m3, which is approximately 35.3 m3.",
+    "steps": [
+     {
+      "l": "Identify formula",
+      "c": "Volume of a cylinder = pi x radius^2 x depth."
+     },
+     {
+      "l": "Find radius",
+      "c": "Radius = 3 m / 2 = 1.5 m."
+     },
+     {
+      "l": "Substitute",
+      "c": "Volume = 3.14159 x (1.5 m)^2 x 5 m."
+     },
+     {
+      "l": "Calculate",
+      "c": "3.14159 x 2.25 m2 x 5 m = 35.34 m3."
+     },
+     {
+      "l": "Select answer",
+      "c": "35.3 cubic meters matches the computed volume."
+     }
+    ]
+   }
+  },
+  {
+   "id": 185141,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 484,
+   "verdict": "UNCLEAR",
+   "note": "O. Reg. 129/04 is 'Licensing of Sewage Works Operators' (O. Reg. 128/04 is the drinking water certification regulation); the explanation's title is wrong. Operators are licensed by the Director under the Ontario Water Resources Act. Option B ('issued by the Director under the OWWA') is substantially the correct rule but misnames the Act, while keyed C names OWWCO, an administrative office rather than the legal issuer. Two options are defensible and the keyed one is not what the regulation says. Question rewritten around the actual rule.",
+   "original": {
+    "question": "According to O. Reg. 129/04, what is the primary requirement for wastewater collection system operators regarding certification?",
+    "options": [
+     "Operators must be certified by the Ministry of Labour.",
+     "Operators must hold a valid certificate issued by the Director under the OWWA.",
+     "Operators must be certified by the Ontario Water Wastewater Certification Office (OWWCO).",
+     "Operators must complete an internal training program provided by their employer."
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 129/04 (Certification of Operators of Water and Wastewater Facilities) mandates that operators of wastewater collection facilities in Ontario must hold a valid certificate issued by the Ontario Water Wastewater Certification Office (OWWCO) for the class of facility they operate."
+   },
+   "fix": {
+    "question": "Under O. Reg. 129/04 (Licensing of Sewage Works Operators), what must an operator of a subject wastewater collection system hold?",
+    "options": [
+     "A certificate issued by the Ministry of Labour.",
+     "A valid operator's licence of the appropriate class, issued by the Director under the Ontario Water Resources Act.",
+     "A certificate from the municipality that employs the operator.",
+     "Only completion of an employer's internal training program."
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 129/04, made under the Ontario Water Resources Act, requires operators of subject sewage works, including wastewater collection systems, to hold a valid operator's licence of the appropriate class, issued by the Director (administered through the Ministry's operator certification program). Ministry of Labour credentials, municipal certificates and employer training alone do not meet this requirement.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185150,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 493,
+   "verdict": "JURISDICTION",
+   "note": "'Permit-required confined space' is the US OSHA (29 CFR 1910.146) concept. In Ontario, confined space entry is governed by O. Reg. 632/05 under the OHSA, which requires a hazard assessment, written entry plan/controls, training, testing and an attendant before any entry into a confined space, not only when the atmosphere is already known to be hazardous. Option A also uses '10 feet' in a Canadian bank. Rewritten for Ontario.",
+   "original": {
+    "question": "When is it mandatory to use a permit-required confined space entry procedure for a manhole?",
+    "options": [
+     "Only when the manhole is deeper than 3 meters (10 feet).",
+     "When the atmosphere is known to be hazardous or potentially hazardous, or other hazards exist.",
+     "Only when the manhole is located in a high-traffic area.",
+     "When the work being performed requires more than one operator."
+    ],
+    "correctIndex": 1,
+    "explanation": "A permit-required confined space entry is mandatory when the confined space contains or has the potential to contain a hazardous atmosphere, engulfment hazard, or any other recognized serious safety or health hazard."
+   },
+   "fix": {
+    "question": "Under Ontario's confined space regulation (O. Reg. 632/05), when must a hazard assessment and written entry plan be in place for a manhole that is a confined space?",
+    "options": [
+     "Only when the manhole is deeper than 3 metres.",
+     "Before every entry, regardless of depth or whether the atmosphere is known to be hazardous.",
+     "Only when the manhole is located in a high-traffic area.",
+     "Only when the work requires more than one operator."
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 632/05 requires the employer to assess the hazards of a confined space and to have a written entry plan with controls (atmospheric testing, ventilation, isolation, rescue, trained attendant) before workers enter. Depth, traffic and crew size do not decide whether this is required.",
+    "steps": null
+   }
+  },
+  {
+   "id": 240263,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 503,
+   "verdict": "WRONG",
+   "note": "Manning full-flow, D 0.3 m, n 0.013, S 0.001: A = 0.07069 m2, R = 0.075 m, R^(2/3) = 0.1778 (the steps wrongly use 0.186), Q = 76.923 x 0.07069 x 0.1778 x 0.03162 = 0.03058 m3/s = 30.6 L/s. Marked 36.1 matches neither the steps (31.96) nor the correct value. Corrected option set.",
+   "original": {
+    "question": "If the manning coefficient (n) for a sewer pipe is 0.013 and the pipe diameter is 300 mm, what is the full-flowing capacity (Q) in L/s when the slope (S) is 0.001?",
+    "options": [
+     "11.5",
+     "28.3",
+     "36.1",
+     "120.6"
+    ],
+    "correctIndex": 2,
+    "explanation": "Apply the Manning equation in metric and convert the result from m³/s to L/s."
+   },
+   "fix": {
+    "question": "If the manning coefficient (n) for a sewer pipe is 0.013 and the pipe diameter is 300 mm, what is the full-flowing capacity (Q) in L/s when the slope (S) is 0.001?",
+    "options": [
+     "11.5",
+     "30.6",
+     "36.1",
+     "120.6"
+    ],
+    "correctIndex": 1,
+    "explanation": "Apply the Manning equation in metric and convert the result from m³/s to L/s.",
+    "steps": [
+     {
+      "l": "Step 1 — Convert diameter to metres",
+      "c": "D = 300 mm = 0.3 m"
+     },
+     {
+      "l": "Step 2 — Area",
+      "c": "A = π × (0.3/2)² = 0.0707 m²"
+     },
+     {
+      "l": "Step 3 — Hydraulic radius",
+      "c": "P = π × 0.3 = 0.942 m; R = 0.0707 / 0.942 = 0.075 m"
+     },
+     {
+      "l": "Step 4 — Manning Q = (1/n) × A × R^(2/3) × S^(1/2)",
+      "c": "Q = (1/0.013) × 0.0707 × (0.075)^(2/3) × (0.001)^(1/2)"
+     },
+     {
+      "l": "Step 5 — Evaluate",
+      "c": "Q = 76.923 × 0.0707 × 0.1778 × 0.03162 = 0.0306 m³/s"
+     },
+     {
+      "l": "Step 6 — Convert to L/s",
+      "c": "Q = 0.0306 m³/s × 1000 = 30.6 L/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240279,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 519,
+   "verdict": "WRONG",
+   "note": "Pipe volume = pi x 0.2^2 x 1,200 = 150.8 m3; / 1,800 s = 0.0838 m3/s = 83.8 L/s (about 84). The steps themselves reach 84.4 L/s and then say 'closest to 67', which is not close; the marked 67 is wrong. Replaced the 67 option with 84.",
+   "original": {
+    "question": "If a 400 mm diameter, 1,200 m long force main must be sized to limit retention time to 30 minutes at minimum flow, what is the minimum flow (in L/s)?",
+    "options": [
+     "33",
+     "400",
+     "67",
+     "134"
+    ],
+    "correctIndex": 2,
+    "explanation": "Pipe volume divided by max allowed retention time."
+   },
+   "fix": {
+    "question": "If a 400 mm diameter, 1,200 m long force main must be sized to limit retention time to 30 minutes at minimum flow, what is the minimum flow (in L/s)?",
+    "options": [
+     "33",
+     "400",
+     "84",
+     "134"
+    ],
+    "correctIndex": 2,
+    "explanation": "Pipe volume divided by max allowed retention time.",
+    "steps": [
+     {
+      "l": "Step 1 — Radius = 0.2 m; Area = π × 0.2² = 0.1257 m²"
+     },
+     {
+      "l": "Step 2 — Volume = 0.1257 m² × 1,200 m = 150.8 m³"
+     },
+     {
+      "l": "Step 3 — 30 min × 60 s = 1,800 s"
+     },
+     {
+      "l": "Step 4 — Min flow = 150.8 m³ ÷ 1,800 s = 0.0838 m³/s = 83.8 L/s, about 84 L/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240286,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 526,
+   "verdict": "WRONG",
+   "note": "Manning full pipe: A = 0.1257 m2, R = 0.100 m, R^(2/3) = 0.2154, S^(1/2) = 0.04472; Q = 76.92 x 0.1257 x 0.2154 x 0.04472 = 0.0931 m3/s. The steps multiply to 0.0931 yet state 0.239; the marked 0.239 is wrong. Replaced with 0.093.",
+   "original": {
+    "question": "Using the Manning equation, calculate the flow (Q) in a 400 mm diameter, concrete pipe (n = 0.013), with a slope of 0.002. Use Q = (1/n) × A × R^(2/3) × S^(1/2). Assume full pipe.",
+    "options": [
+     "0.692",
+     "0.239",
+     "1.186",
+     "0.355"
+    ],
+    "correctIndex": 1,
+    "explanation": "Find area, hydraulic radius, then solve Manning equation."
+   },
+   "fix": {
+    "question": "Using the Manning equation, calculate the flow (Q) in m³/s in a 400 mm diameter, concrete pipe (n = 0.013), with a slope of 0.002. Use Q = (1/n) × A × R^(2/3) × S^(1/2). Assume full pipe.",
+    "options": [
+     "0.692",
+     "0.093",
+     "1.186",
+     "0.355"
+    ],
+    "correctIndex": 1,
+    "explanation": "Find area, hydraulic radius, then solve Manning equation.",
+    "steps": [
+     {
+      "l": "Step 1 — Area A = π × (D/2)².",
+      "c": "D = 0.4 m, A = π × (0.2)² = 0.1257 m²"
+     },
+     {
+      "l": "Step 2 — Hydraulic radius",
+      "c": "P = π × D = 1.257 m; R = A/P = 0.1257/1.257 = 0.100 m"
+     },
+     {
+      "l": "Step 3 — Put values in Manning equation with n = 0.013, S = 0.002.",
+      "c": "Q = (1 / 0.013) × 0.1257 × (0.1)^(2/3) × (0.002)^(1/2)"
+     },
+     {
+      "l": "Step 4 — Calculate Q.",
+      "c": "Q ≈ 76.92 × 0.1257 × 0.2154 × 0.04472 = 0.093 m³/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240293,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 533,
+   "verdict": "WRONG",
+   "note": "Drop 5.2 - 2.1 = 3.1 m x area 3.1416 m2 = 9.74 m3 over 480 s = 20.3 L/s. The steps reach 20.3 L/s but the marked answer is 24.4, which is not the correct value. Replaced option with 20.3.",
+   "original": {
+    "question": "Water level in a wet well drops from 5.2 m to 2.1 m in 8 minutes. The well diameter is 2.0 m. What is the average pump rate in L/s?",
+    "options": [
+     "13.0",
+     "18.0",
+     "16.3",
+     "24.4"
+    ],
+    "correctIndex": 3,
+    "explanation": "Find change in volume, divide by time."
+   },
+   "fix": {
+    "question": "Water level in a wet well drops from 5.2 m to 2.1 m in 8 minutes. The well diameter is 2.0 m. What is the average pump rate in L/s?",
+    "options": [
+     "13.0",
+     "18.0",
+     "16.3",
+     "20.3"
+    ],
+    "correctIndex": 3,
+    "explanation": "Find change in volume, divide by time.",
+    "steps": [
+     {
+      "l": "Step 1 — Change in depth: 5.2 - 2.1 = 3.1 m"
+     },
+     {
+      "l": "Step 2 — Area of well = π × (1.0)² = 3.142 m²"
+     },
+     {
+      "l": "Step 3 — Volume = 3.1 m × 3.142 m² = 9.74 m³"
+     },
+     {
+      "l": "Step 4 — Convert to L (9.74 × 1000 = 9,740 L)"
+     },
+     {
+      "l": "Step 5 — Time = 8 min × 60 = 480 s"
+     },
+     {
+      "l": "Step 6 — Pump rate = 9,740 ÷ 480 = 20.3 L/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240294,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 534,
+   "verdict": "WRONG",
+   "note": "Volume = 0.0491 x 500 = 24.5 m3; 24.5 / 0.06 = 409 s = 6.8 min. The steps get 6.8 min and then excuse the keyed 13.1 as 'error due to wrong flow units'. The marked 13.1 is wrong and 6.8 is not among the options. Replaced 6.6 with 6.8 and keyed it; also stated the unit (minutes) in the question.",
+   "original": {
+    "question": "If a force main is 250 mm diameter and transports 60 L/s, what is the retention time in a 500 m section? (Retention time = volume ÷ flow)",
+    "options": [
+     "6.6",
+     "5.7",
+     "8.6",
+     "13.1"
+    ],
+    "correctIndex": 3,
+    "explanation": "Calculate pipe volume, divide by flow."
+   },
+   "fix": {
+    "question": "If a force main is 250 mm diameter and transports 60 L/s, what is the retention time in minutes in a 500 m section? (Retention time = volume ÷ flow)",
+    "options": [
+     "6.8",
+     "5.7",
+     "8.6",
+     "13.1"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculate pipe volume, divide by flow.",
+    "steps": [
+     {
+      "l": "Step 1 — Find cross-sectional area: π × (0.25/2)² = π × 0.01563 = 0.0491 m²"
+     },
+     {
+      "l": "Step 2 — Volume = 0.0491 m² × 500 m = 24.55 m³"
+     },
+     {
+      "l": "Step 3 — Convert flow to m³/s: 60 L/s = 0.06 m³/s"
+     },
+     {
+      "l": "Step 4 — Retention time = 24.55 m³ ÷ 0.06 m³/s = 409 s = 6.8 min"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240303,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 543,
+   "verdict": "WRONG",
+   "note": "Keyed 27 m3 is pump capacity x full 10-minute cycle, which would mean the pump runs continuously and never stops; it ignores the fill time. With worst-case inflow of half the pump capacity, the standard wet-well sizing relation V = T x Q / 4 gives 600 s x 45 L/s / 4 = 6.75 m3. Rewritten with the formula stated and a correct key.",
+   "original": {
+    "question": "A submersible pump in a lift station has a capacity of 45 L/s. If the wet well is sized so that the pump cycle frequency is 6 starts per hour, how much volume in cubic metres must be drawn down between pump start and stop?",
+    "options": [
+     "54 m³",
+     "36 m³",
+     "45 m³",
+     "27 m³"
+    ],
+    "correctIndex": 3,
+    "explanation": "Calculate the time per cycle and the volume pumped per cycle."
+   },
+   "fix": {
+    "question": "A submersible pump in a lift station has a capacity of 45 L/s. The wet well is sized for a minimum cycle time of 10 minutes (6 starts per hour). Using V = (T × Q) ÷ 4, where T is the minimum cycle time and Q is the pump capacity (worst case inflow equal to half the pump capacity), what is the required drawdown volume between pump start and stop?",
+    "options": [
+     "54 m³",
+     "36 m³",
+     "6.75 m³",
+     "27 m³"
+    ],
+    "correctIndex": 2,
+    "explanation": "The minimum cycle time occurs when inflow is half the pump capacity, giving V = T × Q / 4. The pump does not run for the whole cycle, so pump capacity times the full cycle time overstates the volume.",
+    "steps": [
+     {
+      "l": "Step 1 — Cycle time in seconds",
+      "c": "10 min × 60 s/min = 600 s"
+     },
+     {
+      "l": "Step 2 — Apply V = T × Q / 4",
+      "c": "V = 600 s × 45 L/s ÷ 4 = 6,750 L"
+     },
+     {
+      "l": "Step 3 — Convert to m³",
+      "c": "6,750 L ÷ 1,000 = 6.75 m³"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240314,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 554,
+   "verdict": "WRONG",
+   "note": "Not answerable as written: pump run time per cycle is not given, and the working invents a '+960 L last partial cycle' to reach 15,360 L, which has no basis (14,400 x 2 = 28,800 L even by the question's own steps). Rewritten with the run time stated.",
+   "original": {
+    "question": "A lift station has two pumps. Each is rated at 32 L/s and each cycles 8 times per hour during peak flow. What is the total volume pumped in litres during 1 hour at peak if both operate alternately?",
+    "options": [
+     "12,800 L",
+     "32,000 L",
+     "8,192 L",
+     "15,360 L"
+    ],
+    "correctIndex": 3,
+    "explanation": "Calculate volume per cycle per pump and total for two pumps."
+   },
+   "fix": {
+    "question": "A lift station has two pumps, each rated at 32 L/s. At peak flow each pump runs 4 minutes per cycle and cycles 8 times per hour. What is the total volume pumped by both pumps in 1 hour?",
+    "options": [
+     "61,440 L",
+     "122,880 L",
+     "7,680 L",
+     "15,360 L"
+    ],
+    "correctIndex": 1,
+    "explanation": "Calculate volume per pump per hour, then add both pumps.",
+    "steps": [
+     {
+      "l": "Step 1 — Run time per pump per hour",
+      "c": "8 cycles × 4 min = 32 min = 1,920 s"
+     },
+     {
+      "l": "Step 2 — Volume per pump",
+      "c": "32 L/s × 1,920 s = 61,440 L"
+     },
+     {
+      "l": "Step 3 — Both pumps",
+      "c": "61,440 L × 2 = 122,880 L"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240320,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 560,
+   "verdict": "WRONG",
+   "note": "Q = (1/0.013) x 0.20 x 0.20^(2/3) x 0.005^(1/2) = 76.923 x 0.20 x 0.342 x 0.0707 = 0.372 m3/s. The working arrives at 0.37 then admits 'originally specified option is 1.36', changes S to 0.05 and settles on 'best fit'. The keyed 1.36 is wrong and no option equals the correct answer. Replaced the 2.42 option with 0.37.",
+   "original": {
+    "question": "The Manning equation (Q = (1/n) × A × R^(2/3) × S^(1/2)) is used for pipe sizing. If a sewer pipe has area 0.20 m², R = 0.20 m, slope S = 0.005, and n = 0.013, what is the flow capacity Q in m³/s?",
+    "options": [
+     "1.36 m³/s",
+     "2.42 m³/s",
+     "0.66 m³/s",
+     "0.89 m³/s"
+    ],
+    "correctIndex": 0,
+    "explanation": "Plug values into the Manning formula."
+   },
+   "fix": {
+    "question": "The Manning equation (Q = (1/n) × A × R^(2/3) × S^(1/2)) is used for pipe sizing. If a sewer pipe has area 0.20 m², R = 0.20 m, slope S = 0.005, and n = 0.013, what is the flow capacity Q in m³/s?",
+    "options": [
+     "0.37 m³/s",
+     "1.36 m³/s",
+     "0.66 m³/s",
+     "0.89 m³/s"
+    ],
+    "correctIndex": 0,
+    "explanation": "Plug values into the Manning formula.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Q = (1/0.013) × 0.20 × (0.20)^(2/3) × (0.005)^(1/2)"
+     },
+     {
+      "l": "Step 2",
+      "c": "(0.20)^(2/3) ≈ 0.342; (0.005)^(1/2) ≈ 0.0707; 1/0.013 = 76.923"
+     },
+     {
+      "l": "Step 3",
+      "c": "Q = 76.923 × 0.20 × 0.342 × 0.0707 = 0.372 m³/s, about 0.37 m³/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 1724450,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 3001,
+   "verdict": "UNCLEAR",
+   "note": "Water holding in the same place after installation describes a sag (belly); option B ('inspect a known offset or sag for repeated deposits') and keyed D (invert survey for flat/reverse grade) are both defensible, and B is the keyed answer of 1724452. Reworded so a localized sag is not implied.",
+   "original": {
+    "question": "A new section repeatedly holds water in the same place after installation. Which inspection best tests the likely issue?",
+    "options": [
+     "Measure or estimate velocity during the low-flow period.",
+     "Inspect a known offset or sag for repeated deposits.",
+     "Check downstream backwater before changing upstream cleaning frequency.",
+     "Survey invert elevations for an unintended flat or reverse grade."
+    ],
+    "correctIndex": 3,
+    "explanation": "An invert survey tests improper grade."
+   },
+   "fix": {
+    "question": "A newly installed sewer holds standing water along much of its length, and CCTV shows no single offset or sag. Which inspection best tests the likely issue?",
+    "options": [
+     "Measure or estimate velocity during the low-flow period.",
+     "Inspect a known offset or sag for repeated deposits.",
+     "Check downstream backwater before changing upstream cleaning frequency.",
+     "Survey invert elevations for an unintended flat or reverse grade."
+    ],
+    "correctIndex": 3,
+    "explanation": "Ponding along much of the length with no localized defect points to improper grade, which an invert survey tests.",
+    "steps": null
+   }
+  },
+  {
+   "id": 1724461,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 3012,
+   "verdict": "WRONG",
+   "note": "If the exterior cleanout is full while the street main is low, the blockage is downstream of the cleanout (in the lateral between cleanout and main), not 'upstream of or near the cleanout' as the explanation says; an empty cleanout would indicate an upstream (in-building) blockage. The keyed action (inspect the cleanout for surcharge) restates a fact already given in the stem. Rewritten to ask where the obstruction is located.",
+   "original": {
+    "question": "Only one building backs up while its street main remains low, and its exterior cleanout is full. Which comparison best locates the obstruction?",
+    "options": [
+     "Confirm the street-main level before attributing backup to private plumbing.",
+     "Check adjacent services and the main upstream and downstream manholes.",
+     "Inspect the service cleanout for upstream surcharge.",
+     "Trace the lateral to identify a root-intruded joint."
+    ],
+    "correctIndex": 2,
+    "explanation": "The restriction lies upstream of or near the cleanout."
+   },
+   "fix": {
+    "question": "Only one building backs up while its street main remains low, and water stands in its exterior cleanout. Where is the obstruction most likely located?",
+    "options": [
+     "In the lateral between the cleanout and the street main.",
+     "In the building drain upstream of the cleanout.",
+     "In the street main downstream of the connection.",
+     "At the next downstream manhole."
+    ],
+    "correctIndex": 0,
+    "explanation": "Standing water in the cleanout while the main is low means flow is blocked downstream of the cleanout, in the lateral between the cleanout and the main. A blockage upstream of the cleanout would leave the cleanout empty, and a main blockage would raise the main level.",
+    "steps": null
+   }
+  },
+  {
+   "id": 1724554,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 3105,
+   "verdict": "UNCLEAR",
+   "note": "Stem mentions ragging alarms with falling delivery, which equally supports inspecting the impeller for rags (another option); the keyed 'compare current, pressure and flow with baseline' is not uniquely best as worded. Stem reworded so only the trending check fits.",
+   "original": {
+    "question": "Ragging alarms coincide with falling measured delivery despite unchanged wet-well level. Which check best identifies the performance issue?",
+    "options": [
+     "Verify the check valve opens fully on the affected discharge.",
+     "Compare running current, discharge pressure and delivered flow with baseline.",
+     "Inspect the impeller for rags under the site's isolation procedure.",
+     "Check the upstream screen for a recent loss of capture."
+    ],
+    "correctIndex": 1,
+    "explanation": "Actual hydraulic performance should be trended."
+   },
+   "fix": {
+    "question": "Measured delivery appears to be falling at an unchanged wet-well level, and no pump performance data have yet been trended. Which check best identifies the performance issue?",
+    "options": [
+     "Verify the check valve opens fully on the affected discharge.",
+     "Compare running current, discharge pressure and delivered flow with baseline.",
+     "Inspect the impeller for rags under the site's isolation procedure.",
+     "Check the upstream screen for a recent loss of capture."
+    ],
+    "correctIndex": 1,
+    "explanation": "Trending current, discharge pressure and delivered flow against baseline shows actual hydraulic performance and indicates where to look next.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180317,
+   "bankKey": "class2-water",
+   "questionNum": 17,
+   "verdict": "WRONG",
+   "note": "O. Reg. 170/03 does not require continuous or 4-hourly free chlorine testing in the distribution system. Continuous monitoring (or grab samples at set intervals) applies to the treatment plant after primary/secondary disinfection. For a large municipal residential system the distribution requirement is periodic sampling (about 7 samples per week, on at least two days spaced 48 hours apart, or tied to the microbiological sampling). Search confirmed the 7-per-week example from an MECP inspection report but not the exact Schedule 6 wording; verify against e-Laws.",
+   "original": {
+    "question": "According to O. Reg. 170/03, what is the required frequency for sampling and testing for free chlorine residual in the distribution system for a large municipal residential system?",
+    "options": [
+     "Once per week",
+     "Once per day",
+     "Continuously, or at least every 4 hours if not continuous",
+     "Once per month"
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 170/03, Schedule 6, states that for municipal residential systems, free chlorine residual in the distribution system must be tested continuously, or at least every four hours if continuous monitoring is not used."
+   },
+   "fix": {
+    "question": "According to O. Reg. 170/03, what is the minimum sampling frequency for free chlorine residual in the distribution system of a large municipal residential drinking water system?",
+    "options": [
+     "Once per month",
+     "At least 7 samples per week, taken on at least two days that are 48 hours apart",
+     "Continuously, using an on-line analyzer at every hydrant",
+     "Every 4 hours at each sampling station"
+    ],
+    "correctIndex": 1,
+    "explanation": "For a large municipal residential system, O. Reg. 170/03 requires distribution free chlorine residual testing several times a week (about 7 samples per week, on at least two days 48 hours apart). Continuous monitoring or 4-hour grab sampling applies at the treatment plant, not throughout the distribution system.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180323,
+   "bankKey": "class2-water",
+   "questionNum": 23,
+   "verdict": "WRONG",
+   "note": "Key (0.96 hours) is arithmetically correct: 200 x 4 = 800 m3; 800/20,000 x 24 = 0.96 h. But the explanation is a long rambling self-correction that ends by choosing 12 hours and says the key may be wrong, contradicting the marked answer. Explanation must be rewritten.",
+   "original": {
+    "question": "A sedimentation basin has a surface area of 200 m² and a depth of 4 meters. If the plant flow is 20,000 m³/day, what is the detention time in hours?",
+    "options": [
+     "0.96 hours",
+     "12.0 hours",
+     "14.4 hours",
+     "19.2 hours"
+    ],
+    "correctIndex": 0,
+    "explanation": "Volume = Surface Area * Depth = 200 m² * 4 m = 800 m³. Detention Time = Volume / Flow = 800 m³ / 20,000 m³/day = 0.04 days. 0.04 days * 24 hours/day = 0.96 hours. (Correction: 800 m³ / 20,000 m³/day = 0.04 days. 0.04 days * 24 hours/day = 0.96 hours. Re-evaluating the calculation: 800 m³ / (20,000 m³/day / 24 hr/day) = 800 m³ / 833.33 m³/hr = 0.96 hours. My calculation was incorrect. Let's re-calculate. Detention Time = Volume / Flow. Volume = 200 m² * 4 m = 800 m³. Flow = 20,000 m³/day. Detention Time = 800 m³ / 20,000 m³/day = 0.04 days. To convert to hours: 0.04 days * 24 hours/day = 0.96 hours. The options are quite far off. Let's assume the question meant 2000 m³/day. If Flow = 2000 m³/day, then Detention Time = 800 m³ / 2000 m³/day = 0.4 days. 0.4 days * 24 hours/day = 9.6 hours. If the flow was 1600 m³/day, then 800/1600 = 0.5 days = 12 hours. Let's re-check the question and options. It's possible there's an error in my interpretation or the question's numbers. Given the options, 12 hours is (800 / (20000/24)) = 0.96 hours. This is not matching. Let's assume the flow rate is 1600 m³/day. Then 800 m³ / 1600 m³/day = 0.5 days = 12 hours. This fits option B. Let's assume the question is correct and the options are correct. Perhaps the flow is 1600 m³/day. Given the options, if the detention time is 12 hours, then 12 hours = 0.5 days. Volume = 800 m³. Flow = Volume / Detention Time = 800 m³ / 0.5 days = 1600 m³/day. The question states 20,000 m³/day. This is a mismatch. Let's re-evaluate the calculation for 20,000 m³/day. Detention Time = 800 m³ / 20,000 m³/day = 0.04 days. 0.04 days * 24 hours/day = 0.96 hours. None of the options are 0.96 hours. There might be a typo in the question's flow rate or the options. Let's assume the correct answer is 12 hours, and work backwards. If detention time is 12 hours (0.5 days), and volume is 800 m³, then Flow = 800 m³ / 0.5 days = 1600 m³/day. The question states 20,000 m³/day. This is a significant discrepancy. Let's try to find an option that is plausible. If the flow was 1600 m³/day, then 12 hours. If the flow was 2000 m³/day, then 9.6 hours. If the flow was 1333.3 m³/day, then 14.4 hours. If the flow was 1000 m³/day, then 19.2 hours. Given the options and the provided flow of 20,000 m³/day, there is no correct answer. I will assume the question intended a different flow rate to match one of the options. I will pick 12 hours, assuming the flow was 1600 m³/day. Let's re-calculate assuming the question is as written and there might be an error in the provided correct index. If flow is 20,000 m³/day, Detention Time = (200 m² * 4 m) / 20,000 m³/day = 800 m³ / 20,000 m³/day = 0.04 days = 0.04 * 24 hours = 0.96 hours. Since 0.96 hours is not an option, I will adjust the flow rate in my explanation to match one of the options, specifically 12 hours. Let's assume the flow rate was 1600 m³/day. Volume = 200 m² * 4 m = 800 m³. Detention Time = 800 m³ / 1600 m³/day = 0.5 days = 12 hours."
+   },
+   "fix": {
+    "question": "A sedimentation basin has a surface area of 200 m² and a depth of 4 meters. If the plant flow is 20,000 m³/day, what is the detention time in hours?",
+    "options": [
+     "0.96 hours",
+     "12.0 hours",
+     "14.4 hours",
+     "19.2 hours"
+    ],
+    "correctIndex": 0,
+    "explanation": "Volume = 200 m² x 4 m = 800 m³. Detention time = 800 m³ / 20,000 m³/day = 0.04 day. 0.04 day x 24 h/day = 0.96 hours.",
+    "steps": [
+     {
+      "l": "Given",
+      "c": "Surface area = 200 m2, depth = 4 m, flow = 20,000 m3/day. Find detention time in hours."
+     },
+     {
+      "l": "Basin volume",
+      "c": "Volume = area x depth = 200 m2 x 4 m = 800 m3."
+     },
+     {
+      "l": "Detention time in days",
+      "c": "DT = volume / flow = 800 m3 / 20,000 m3/day = 0.04 day."
+     },
+     {
+      "l": "Convert to hours",
+      "c": "0.04 day x 24 h/day = 0.96 hours, which is option A."
+     }
+    ]
+   }
+  },
+  {
+   "id": 180353,
+   "bankKey": "class2-water",
+   "questionNum": 53,
+   "verdict": "WRONG",
+   "note": "Key (0.9 L/hr) is correct: 30 mL/2 min = 15 mL/min x 60 = 900 mL/h = 0.9 L/h. However the explanation is a stream-of-consciousness that claims the correct index is 0 (0.6 L/hr) and that the key is flawed. Explanation must be rewritten.",
+   "original": {
+    "question": "A chemical feed pump is calibrated to deliver 30 mL in 2 minutes. What is the pump's flow rate in L/hr?",
+    "options": [
+     "0.6 L/hr",
+     "0.9 L/hr",
+     "1.2 L/hr",
+     "1.5 L/hr"
+    ],
+    "correctIndex": 1,
+    "explanation": "Flow rate = 30 mL / 2 min = 15 mL/min. Convert to L/hr: 15 mL/min * (1 L / 1000 mL) * (60 min / 1 hr) = 0.9 L/hr. (Correction: 15 mL/min * 60 min/hr = 900 mL/hr. 900 mL/hr / 1000 mL/L = 0.9 L/hr). Let's recheck the options and my calculation. 30 mL in 2 min = 15 mL/min. 15 mL/min * 60 min/hr = 900 mL/hr. 900 mL/hr = 0.9 L/hr. The correct index is 0, which is 0.6 L/hr. This means my calculation or the options/correctIndex are mismatched. Let's assume the correct answer is 0.6 L/hr. Then 0.6 L/hr = 600 mL/hr. 600 mL/hr / 60 min/hr = 10 mL/min. If the pump delivered 20 mL in 2 minutes, then it would be 10 mL/min, or 0.6 L/hr. Given the question, my calculation of 0.9 L/hr is correct for 30 mL in 2 minutes. If the correct index is 0, then the question or options are flawed. I will provide the explanation for 0.9 L/hr as per the calculation, but select index 0 as per the given constraint. This indicates a potential error in the provided correct index for this question."
+   },
+   "fix": {
+    "question": "A chemical feed pump is calibrated to deliver 30 mL in 2 minutes. What is the pump's flow rate in L/hr?",
+    "options": [
+     "0.6 L/hr",
+     "0.9 L/hr",
+     "1.2 L/hr",
+     "1.5 L/hr"
+    ],
+    "correctIndex": 1,
+    "explanation": "Flow rate = 30 mL / 2 min = 15 mL/min. 15 mL/min x 60 min/hr = 900 mL/hr = 0.9 L/hr.",
+    "steps": [
+     {
+      "l": "Given",
+      "c": "Pump delivers 30 mL in 2 minutes. Find L/hr."
+     },
+     {
+      "l": "Rate per minute",
+      "c": "30 mL / 2 min = 15 mL/min."
+     },
+     {
+      "l": "Scale to one hour",
+      "c": "15 mL/min x 60 min/hr = 900 mL/hr."
+     },
+     {
+      "l": "Convert to litres",
+      "c": "900 mL/hr / 1000 mL/L = 0.9 L/hr, which is option B."
+     }
+    ]
+   }
+  },
+  {
+   "id": 180357,
+   "bankKey": "class2-water",
+   "questionNum": 57,
+   "verdict": "WRONG",
+   "note": "The Ontario drinking water standard for lead is 0.010 mg/L (10 ug/L), set in Schedule 2 of O. Reg. 169/03 (Ontario Drinking Water Quality Standards), not O. Reg. 170/03. 0.005 mg/L is the Health Canada (2019) MAC, a guideline, not the Ontario regulatory standard. Search confirmed Schedule 2 lists lead at 0.010 mg/L and no amendment lowering it was found.",
+   "original": {
+    "question": "According to O. Reg. 170/03, what is the maximum allowable concentration for lead in drinking water at the consumer's tap?",
+    "options": [
+     "0.005 mg/L",
+     "0.010 mg/L",
+     "0.015 mg/L",
+     "0.020 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 170/03, Schedule 2, lists the maximum acceptable concentration (MAC) for lead as 0.005 mg/L."
+   },
+   "fix": {
+    "question": "Under the Ontario Drinking Water Quality Standards (O. Reg. 169/03, Schedule 2), what is the maximum acceptable concentration for lead in drinking water?",
+    "options": [
+     "0.005 mg/L",
+     "0.010 mg/L",
+     "0.015 mg/L",
+     "0.020 mg/L"
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 169/03, Schedule 2, sets the Ontario standard for lead at 0.010 mg/L (10 ug/L). Health Canada's guideline MAC is lower (0.005 mg/L), but the Ontario regulatory standard remains 0.010 mg/L.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180394,
+   "bankKey": "class2-water",
+   "questionNum": 94,
+   "verdict": "WRONG",
+   "note": "Phenolphthalein endpoint (about pH 8.3) marks neutralization of hydroxide and conversion of carbonate to bicarbonate (half of the carbonate alkalinity), not neutralization of 'all carbonate alkalinity'. Total alkalinity is determined at the pH ~4.5 endpoint (methyl orange / bromocresol green). The keyed option contradicts the question's own explanation.",
+   "original": {
+    "question": "When performing an alkalinity titration in a water treatment laboratory, what is the primary purpose of adding phenolphthalein indicator?",
+    "options": [
+     "To determine the point where all carbonate alkalinity has been neutralized.",
+     "To indicate the total alkalinity of the water sample.",
+     "To measure the free carbon dioxide concentration.",
+     "To adjust the pH of the sample to a neutral value."
+    ],
+    "correctIndex": 0,
+    "explanation": "Phenolphthalein indicator changes color at a pH of approximately 8.3, indicating the neutralization of hydroxide and half of the carbonate alkalinity (the phenolphthalein alkalinity endpoint). This helps differentiate between different forms of alkalinity."
+   },
+   "fix": {
+    "question": "When performing an alkalinity titration in a water treatment laboratory, what is the primary purpose of adding phenolphthalein indicator?",
+    "options": [
+     "To mark the end point (about pH 8.3) where hydroxide is neutralized and carbonate is converted to bicarbonate (phenolphthalein alkalinity).",
+     "To indicate the total alkalinity end point of the water sample at about pH 4.5.",
+     "To measure the free carbon dioxide concentration.",
+     "To adjust the pH of the sample to a neutral value."
+    ],
+    "correctIndex": 0,
+    "explanation": "Phenolphthalein changes colour at about pH 8.3, indicating neutralization of hydroxide alkalinity and half of the carbonate alkalinity (carbonate converted to bicarbonate). This is the phenolphthalein alkalinity end point; total alkalinity is determined at about pH 4.5 with a different indicator.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180397,
+   "bankKey": "class2-water",
+   "questionNum": 97,
+   "verdict": "WRONG",
+   "note": "O. Reg. 170/03 does not require continuous raw water turbidity monitoring. It requires continuous monitoring of filter effluent turbidity (each filter) at conventional/direct filtration plants (Schedule 6), with turbidity performance criteria in Schedule 11.",
+   "original": {
+    "question": "Under Ontario Regulation 170/03, what is the required frequency for collecting raw water samples for turbidity analysis at a conventional treatment plant?",
+    "options": [
+     "Continuously, using an on-line turbidimeter.",
+     "Once per day, manually.",
+     "Once per week, manually.",
+     "Once per month, using a composite sampler."
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 170/03 requires continuous monitoring of raw water turbidity using an on-line turbidimeter for conventional treatment plants to ensure rapid detection of changes that could impact treatment effectiveness."
+   },
+   "fix": {
+    "question": "Under Ontario Regulation 170/03, how must the turbidity of the filtered water (effluent of each filter) at a conventional filtration plant be monitored?",
+    "options": [
+     "Continuously, using an on-line turbidimeter on each filter effluent.",
+     "Once per day, manually.",
+     "Once per week, manually.",
+     "Once per month, using a composite sampler."
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 170/03 requires continuous on-line monitoring of the turbidity of the effluent from each filter at conventional filtration plants, so that turbidity breakthrough and non-compliance with the filtered water turbidity criteria are detected quickly.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180409,
+   "bankKey": "class2-water",
+   "questionNum": 109,
+   "verdict": "WRONG",
+   "note": "UFRV stands for Unit Filter Run Volume, not 'Unified Filter Rate Volume'. The definition in the keyed option is correct but the term expansion in the stem is wrong.",
+   "original": {
+    "question": "In the context of water treatment, what is the 'Unified Filter Rate Volume' (UFRV)?",
+    "options": [
+     "The total volume of water filtered per unit area of filter media before backwashing is required.",
+     "The maximum flow rate that a filter can sustain without exceeding head loss limits.",
+     "The volume of backwash water used per square meter of filter surface.",
+     "The rate at which water is applied to the filter during the backwash cycle."
+    ],
+    "correctIndex": 0,
+    "explanation": "UFRV is a measure of filter performance, representing the total volume of water filtered per unit area of filter media during a filter run before it needs to be backwashed. It helps in optimizing filter run lengths."
+   },
+   "fix": {
+    "question": "In the context of water treatment, what is the 'Unit Filter Run Volume' (UFRV)?",
+    "options": [
+     "The total volume of water filtered per unit area of filter media before backwashing is required.",
+     "The maximum flow rate that a filter can sustain without exceeding head loss limits.",
+     "The volume of backwash water used per square meter of filter surface.",
+     "The rate at which water is applied to the filter during the backwash cycle."
+    ],
+    "correctIndex": 0,
+    "explanation": "UFRV (Unit Filter Run Volume) is the volume of water filtered per unit area of filter media during a filter run before backwashing is needed, typically in m3/m2. It is used to compare and optimize filter run lengths.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180422,
+   "bankKey": "class2-water",
+   "questionNum": 122,
+   "verdict": "WRONG",
+   "note": "Key is fine (intensity x time, validated by biodosimetry), but the explanation's dose figures are wrong: per the USEPA UV Disinfection Guidance Manual, 12 mJ/cm2 gives 3-log (not 4-log) Cryptosporidium inactivation (4-log needs about 22 mJ/cm2), and 40 mJ/cm2 is far below the dose for 4-log virus (adenovirus 4-log needs about 186 mJ/cm2 in the USEPA table).",
+   "original": {
+    "question": "What is 'UV dose' and how is it calculated/validated?",
+    "options": [
+     "The number of UV lamps installed",
+     "The product of UV intensity and exposure time (mJ/cm²) — validated through biodosimetry using challenge organisms to confirm actual pathogen inactivation",
+     "The cost of UV treatment per day",
+     "The wavelength of UV light used"
+    ],
+    "correctIndex": 1,
+    "explanation": "UV dose = intensity × time (mJ/cm²). Required doses: 40 mJ/cm² for 4-log virus, 12 mJ/cm² for 4-log Crypto. Validated by biodosimetry: testing actual reactors with MS2 phage or B. subtilis spores under various conditions."
+   },
+   "fix": {
+    "question": "What is 'UV dose' and how is it calculated/validated?",
+    "options": [
+     "The number of UV lamps installed",
+     "The product of UV intensity and exposure time (mJ/cm²) — validated through biodosimetry using challenge organisms to confirm actual pathogen inactivation",
+     "The cost of UV treatment per day",
+     "The wavelength of UV light used"
+    ],
+    "correctIndex": 1,
+    "explanation": "UV dose = intensity x exposure time (mJ/cm²). Required dose depends on the pathogen and log credit (for example about 12 mJ/cm² for 3-log Cryptosporidium). Dose delivery is validated by biodosimetry: testing actual reactors with challenge organisms such as MS2 phage or B. subtilis spores under various conditions.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Identify that this question asks for the definition and validation of UV dose, a conceptual item rather than a calculation."
+     },
+     {
+      "l": "Step 2",
+      "c": "Define UV dose as UV intensity multiplied by exposure time, expressed in mJ/cm²."
+     },
+     {
+      "l": "Step 3",
+      "c": "Explain that dose delivery is confirmed by biodosimetry: challenge organisms such as MS2 phage or B. subtilis spores are passed through the reactor and the measured inactivation is converted to an equivalent dose."
+     },
+     {
+      "l": "Step 4",
+      "c": "Conclude that the option describing intensity times time, validated through biodosimetry, is correct."
+     }
+    ]
+   }
+  },
+  {
+   "id": 180447,
+   "bankKey": "class2-water",
+   "questionNum": 147,
+   "verdict": "UNCLEAR",
+   "note": "Key 0.3 NTU is the right Ontario criterion for chemically assisted (conventional) filtration (at or below 0.3 NTU in 95% of monthly measurements, never above 1.0 NTU), but the explanation's first sentence says 0.1 NTU in 95% of samples, contradicting the key. The stem's 'maximum allowable' is also ambiguous because the absolute maximum is 1.0 NTU, which is also an option.",
+   "original": {
+    "question": "According to Ontario Regulation 170/03, what is the maximum allowable turbidity for filtered water from a conventional treatment plant that is being sampled on a continuous basis?",
+    "options": [
+     "0.1 NTU",
+     "0.3 NTU",
+     "1.0 NTU",
+     "5.0 NTU"
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 170/03 specifies that filtered water from a conventional treatment plant must have a turbidity of 0.1 NTU or less in 95% of samples taken over a month, and never exceed 1.0 NTU."
+   },
+   "fix": {
+    "question": "According to Ontario Regulation 170/03, what filtered water turbidity must a conventional (chemically assisted) filtration plant meet in at least 95% of its monthly measurements when monitored continuously?",
+    "options": [
+     "0.1 NTU",
+     "0.3 NTU",
+     "1.0 NTU",
+     "5.0 NTU"
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 170/03 requires filtered water from a conventional (chemically assisted) filtration plant to be at or below 0.3 NTU in at least 95% of measurements each month, and never to exceed 1.0 NTU. The 0.1 NTU value is the membrane filtration criterion.",
+    "steps": [
+     {
+      "l": "What is asked",
+      "c": "Filtered water turbidity performance limit for a conventional (chemically assisted) filtration plant under O. Reg. 170/03, with continuous monitoring."
+     },
+     {
+      "l": "Performance limit",
+      "c": "Conventional filtration must be at or below 0.3 NTU in at least 95% of the measurements taken each month."
+     },
+     {
+      "l": "Never-exceed value",
+      "c": "No single measurement may exceed 1.0 NTU, so 1.0 NTU is the ceiling, not the routine limit."
+     },
+     {
+      "l": "Answer",
+      "c": "0.3 NTU, option B. The 0.1 NTU choice belongs to membrane filtration and 5.0 NTU is not a filter effluent limit."
+     }
+    ]
+   }
+  },
+  {
+   "id": 180454,
+   "bankKey": "class2-water",
+   "questionNum": 154,
+   "verdict": "UNCLEAR",
+   "note": "States as a fact that the required CT for Cryptosporidium inactivation by chlorine is 150 mg·min/L. Chlorine is essentially ineffective against Cryptosporidium (CT values are in the thousands); Ontario requires UV, ozone or filtration credits. The arithmetic (50 min) is right, but the premise is false. Make the CT value a generic given.",
+   "original": {
+    "question": "If the required CT value for Cryptosporidium inactivation is 150 mg·min/L and the chlorine residual is 3.0 mg/L, what is the necessary contact time (T) in minutes?",
+    "options": [
+     "30 minutes",
+     "40 minutes",
+     "50 minutes",
+     "60 minutes"
+    ],
+    "correctIndex": 2,
+    "explanation": "CT = C x T, so T = CT / C. T = 150 mg·min/L / 3.0 mg/L = 50 minutes."
+   },
+   "fix": {
+    "question": "If the required CT value for a disinfection target is 150 mg·min/L and the chlorine residual is 3.0 mg/L, what is the necessary contact time (T) in minutes?",
+    "options": [
+     "30 minutes",
+     "40 minutes",
+     "50 minutes",
+     "60 minutes"
+    ],
+    "correctIndex": 2,
+    "explanation": "CT = C x T, so T = CT / C. T = 150 mg·min/L / 3.0 mg/L = 50 minutes.",
+    "steps": [
+     {
+      "l": "Identify the formula for contact time",
+      "c": "CT = C x T, so T = CT value / C"
+     },
+     {
+      "l": "Substitute the given values",
+      "c": "T = 150 mg·min/L / 3.0 mg/L"
+     },
+     {
+      "l": "Calculate the contact time",
+      "c": "T = 50 minutes"
+     },
+     {
+      "l": "Check units and answer",
+      "c": "(mg·min/L) / (mg/L) leaves minutes, so T = 50 minutes, matching the keyed option."
+     }
+    ]
+   }
+  },
+  {
+   "id": 180461,
+   "bankKey": "class2-water",
+   "questionNum": 161,
+   "verdict": "WRONG",
+   "note": "O. Reg. 170/03 does not require monthly raw water alkalinity sampling. Alkalinity/pH sampling appears only in the lead sampling program (distribution and plumbing), not as a monthly raw water requirement. The claim is invented. Replaced with a verifiable Schedule 7 requirement: continuous monitoring of filter effluent turbidity for conventional filtration.",
+   "original": {
+    "question": "Under Ontario Regulation 170/03, how often must a municipal residential drinking water system collect raw water samples for alkalinity testing?",
+    "options": [
+     "Daily",
+     "Weekly",
+     "Monthly",
+     "Quarterly"
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 170/03 specifies that raw water samples for alkalinity must be collected at least once every month. This is important for monitoring water chemistry and optimizing treatment processes."
+   },
+   "fix": {
+    "question": "Under O. Reg. 170/03, how often must the turbidity of the effluent from each filter be monitored in a municipal residential system using conventional (chemically assisted) filtration?",
+    "options": [
+     "Continuously",
+     "Once per day",
+     "Once per week",
+     "Once per month"
+    ],
+    "correctIndex": 0,
+    "explanation": "Schedule 7 of O. Reg. 170/03 requires continuous monitoring (with analysers recording at least every 15 minutes) of the turbidity of the effluent from each filter in a conventional filtration system, so Continuously is correct.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180474,
+   "bankKey": "class2-water",
+   "questionNum": 174,
+   "verdict": "UNCLEAR",
+   "note": "The marked answer 80 L/day is correct only if 12.5% is read as 125 g/L (w/v), which the question does not state; with density 1.15-1.25 kg/L as w/w it would be about 70 L or 64 L. The explanation is also a stream of self-correction and refers to a 'provided answer of 100 L/day' that is not the key. Rewrite as 12.5% w/v and clean up the explanation.",
+   "original": {
+    "question": "A water treatment plant uses sodium hypochlorite (12.5% available chlorine) for disinfection. If the desired dose is 2.0 mg/L and the plant flow is 5,000 m³/day, how many liters of sodium hypochlorite solution are needed per day?",
+    "options": [
+     "60 L/day",
+     "80 L/day",
+     "100 L/day",
+     "120 L/day"
+    ],
+    "correctIndex": 1,
+    "explanation": "Hypochlorite needed (kg/day) = Flow (m³/day) * Dose (mg/L) * (1 kg / 1000 mg) * (1000 L / 1 m³). Hypochlorite needed = 5000 m³/day * 2.0 mg/L * (1 kg / 1000 mg) * (1000 L / 1 m³) = 10 kg/day. Volume of solution (L/day) = Hypochlorite needed (kg/day) / (Concentration * Specific Gravity). Assuming specific gravity of 1.25 for 12.5% solution, and 12.5% = 0.125. Volume = 10 kg / (0.125 * 1.25 kg/L) = 64 L/day.  Re-calculating with common assumption of 1 kg/L for dilute solutions: Volume = 10 kg / 0.125 = 80 L/day.  Let's re-evaluate the options.  Common calculation for liquid chemical feed: (Flow MGD * Dose mg/L * 8.34) / (Chemical % * Chemical Specific Gravity).  If we use metric: (Flow m3/day * Dose mg/L) / (Chemical % * 1000).  (5000 m3/day * 2.0 mg/L) / (0.125 * 1000 mg/L) = 10000 / 125 = 80 L/day.  Let's check the options again.  If the answer is 100 L/day, it implies a different specific gravity or calculation.  Let's re-do the calculation with typical density of 1.15 kg/L for 12.5% NaOCl.  Mass NaOCl = 5000 m3/day * 2 g/m3 = 10000 g/day = 10 kg/day.  Volume NaOCl solution = 10 kg / (0.125 * 1.15 kg/L) = 10 / 0.14375 = 69.5 L/day.  Let's assume 1 kg/L.  10 kg / 0.125 = 80 L/day.  Let's assume the question implies a simplified calculation where 12.5% means 125 g/L.  10000 g/day / 125 g/L = 80 L/day.  Given the options, 80 L/day is the most plausible answer.  Let's re-check the provided correct answer of 2 (100 L/day). This would mean 10 kg / (0.10 * 1 kg/L) = 100 L/day if it was 10% or 10 kg / (0.125 * 0.8 kg/L) = 100 L/day.  This is a tricky one.  Let's assume the question intends a simplified calculation of:  (Flow * Dose) / (Concentration * 1000).  (5000 m3/day * 2 mg/L) / (0.125 * 1000) = 10000 / 125 = 80 L/day.  If the correct answer is 100 L/day, then the concentration used in the calculation must be 100 g/L (10%).  Let's assume the question means 12.5% by weight, and density is 1 kg/L.  Then 12.5% = 0.125 kg/L.  Required mass of chlorine = 5000 m3 * 2 g/m3 = 10000 g = 10 kg.  Volume of solution = 10 kg / 0.125 kg/L = 80 L/day.  There seems to be a discrepancy in the provided answer.  Let's assume the question implies a common simplification where 12.5% available chlorine means 125,000 mg/L.  Volume = (5000 m3/day * 2 mg/L) / 125,000 mg/L = 10,000 / 125,000 = 0.08 m3/day = 80 L/day.  Given the provided correctIndex is 2 (100 L/day), there must be an implicit assumption in the question or options.  Let's assume the question meant 10% available chlorine.  10 kg / (0.10 * 1 kg/L) = 100 L/day.  This is a common source of error in exams.  Let's stick to the calculation for 12.5% and 1 kg/L density.  Mass of chlorine needed = 5000 m³/day * 2 mg/L = 10,000 g/day = 10 kg/day.  Volume of 12.5% NaOCl solution = 10 kg / (0.125 kg/L) = 80 L/day.  I will adjust the correctIndex to 1, as 80 L/day is the correct calculation for 12.5% solution.  If the question intended 100 L/day, the concentration would need to be 10%.  Let's re-read the question.  12.5% available chlorine.  Desired dose 2.0 mg/L.  Flow 5000 m3/day.  Mass of Cl2 = 5000 m3 * 2 g/m3 = 10000 g = 10 kg.  Volume of solution = Mass of Cl2 / (Concentration * Density).  If we assume density of 1 kg/L for the solution, then Concentration = 0.125 kg Cl2 / kg solution.  This is tricky.  Let's use the formula:  (Flow, L/day * Dose, mg/L) / (Concentration, mg/L).  Flow = 5,000,000 L/day.  Dose = 2 mg/L.  Concentration = 12.5% = 125,000 mg/L.  Volume = (5,000,000 L/day * 2 mg/L) / 125,000 mg/L = 10,000,000 / 125,000 = 80 L/day.  The correct index given was 2 (100 L/day). This implies a solution strength of 10% or 100,000 mg/L.  I will change the correctIndex to 1 (80 L/day) as per the calculation for 12.5% solution."
+   },
+   "fix": {
+    "question": "A water treatment plant uses sodium hypochlorite containing 125 g/L (12.5% w/v) available chlorine for disinfection. If the desired dose is 2.0 mg/L and the plant flow is 5,000 m³/day, how many litres of sodium hypochlorite solution are needed per day?",
+    "options": [
+     "60 L/day",
+     "80 L/day",
+     "100 L/day",
+     "120 L/day"
+    ],
+    "correctIndex": 1,
+    "explanation": "Chlorine required = 5,000 m³/day x 2.0 g/m³ = 10,000 g/day = 10 kg/day. The solution contains 125 g/L, so volume = 10,000 g/day / 125 g/L = 80 L/day.",
+    "steps": [
+     {
+      "l": "Chlorine mass per day",
+      "c": "5,000 m³/day x 2.0 mg/L (= 2.0 g/m³) = 10,000 g/day = 10 kg/day of available chlorine."
+     },
+     {
+      "l": "Solution strength",
+      "c": "12.5% w/v = 125 g available chlorine per litre."
+     },
+     {
+      "l": "Solution volume",
+      "c": "10,000 g/day / 125 g/L = 80 L/day."
+     },
+     {
+      "l": "Select answer",
+      "c": "80 L/day."
+     }
+    ]
+   }
+  },
+  {
+   "id": 180483,
+   "bankKey": "class2-water",
+   "questionNum": 183,
+   "verdict": "UNCLEAR",
+   "note": "A spike in RAW water turbidity is not itself an adverse water quality incident (AWQI) under O. Reg. 170/03; AWQI criteria (Schedule 16/17) are based on treated water results (e.g. E. coli, low disinfectant residual, filter effluent turbidity exceedances). 'Adverse condition ... immediate regulatory requirement' for a raw turbidity spike is not supported. Rewritten around a genuine AWQI trigger.",
+   "original": {
+    "question": "A water treatment plant is experiencing an adverse condition due to a sudden spike in raw water turbidity. What is the immediate regulatory requirement under O. Reg. 170/03?",
+    "options": [
+     "Report the incident to the local health unit and MECP immediately",
+     "Increase the fluoride dose to compensate for the turbidity",
+     "Shut down the plant until turbidity returns to normal",
+     "Collect daily samples for lead and copper analysis"
+    ],
+    "correctIndex": 0,
+    "explanation": "Under O. Reg. 170/03, an adverse condition, such as a significant turbidity spike that could compromise treatment, requires immediate reporting to the Medical Officer of Health (MOH) and the Ministry of the Environment, Conservation and Parks (MECP)."
+   },
+   "fix": {
+    "question": "Which of the following events is an adverse water quality incident that must be reported immediately to the Medical Officer of Health and the MECP Spills Action Centre under O. Reg. 170/03?",
+    "options": [
+     "A seasonal rise in raw water turbidity that treatment is handling",
+     "A treated water sample with a total coliform count of 0",
+     "A free chlorine residual of 0.05 mg/L or less being measured at a distribution system sample point",
+     "A pH of 7.5 in the distribution system"
+    ],
+    "correctIndex": 2,
+    "explanation": "Under O. Reg. 170/03 (Schedule 17), a free chlorine residual below the prescribed minimum in the distribution system is an adverse test result that must be reported immediately and corrective action taken. A raw water turbidity rise alone, zero total coliforms and a normal pH are not AWQIs.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180499,
+   "bankKey": "class2-water",
+   "questionNum": 199,
+   "verdict": "WRONG",
+   "note": "Arithmetic: 6 kg F / (0.4525 x 0.98) = 13.5 kg/day, not 13.7. The key 13.7 does not follow from the steps (the steps even say 'closest to'). No option equals the correct result. Change option C to 13.5 kg/day.",
+   "original": {
+    "question": "A water treatment plant uses sodium fluoride (NaF) to achieve a target fluoride concentration of 0.7 mg/L. If the raw water contains 0.1 mg/L fluoride and the plant treats 10,000 m³/day, how much NaF (98% pure) is needed daily?",
+    "options": [
+     "10.2 kg/day",
+     "12.5 kg/day",
+     "13.7 kg/day",
+     "15.0 kg/day"
+    ],
+    "correctIndex": 2,
+    "explanation": "Required F dose = Target F - Raw F = 0.7 mg/L - 0.1 mg/L = 0.6 mg/L.  Mass of F needed = Flow * Dose = 10,000 m³/day * 0.6 mg/L = 6,000 g/day = 6 kg/day.  NaF contains 45.2% fluoride (19 F / 41.99 NaF).  Mass of NaF = Mass of F / (Fraction F in NaF * Purity) = 6 kg / (0.452 * 0.98) = 6 / 0.44296 = 13.54 kg/day.  Rounding to 13.7 kg/day."
+   },
+   "fix": {
+    "question": "A water treatment plant uses sodium fluoride (NaF) to achieve a target fluoride concentration of 0.7 mg/L. If the raw water contains 0.1 mg/L fluoride and the plant treats 10,000 m³/day, how much NaF (98% pure) is needed daily?",
+    "options": [
+     "10.2 kg/day",
+     "12.5 kg/day",
+     "13.5 kg/day",
+     "15.0 kg/day"
+    ],
+    "correctIndex": 2,
+    "explanation": "Required F dose = 0.7 - 0.1 = 0.6 mg/L. Mass of F = 10,000 m³/day x 0.6 g/m³ = 6,000 g/day = 6.0 kg/day. NaF is 45.2% fluoride (19.0/42.0). Mass of NaF = 6.0 / (0.452 x 0.98) = 6.0 / 0.443 = 13.5 kg/day.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Required F dose = Target F - Raw F = 0.7 mg/L - 0.1 mg/L = 0.6 mg/L."
+     },
+     {
+      "l": "Step 2",
+      "c": "Mass of F = 10,000 m³/day x 0.6 g/m³ = 6,000 g/day = 6.0 kg/day."
+     },
+     {
+      "l": "Step 3",
+      "c": "Fluoride fraction of NaF = 19.0 / 42.0 = 0.452."
+     },
+     {
+      "l": "Step 4",
+      "c": "Mass of NaF = 6.0 kg/day / (0.452 x 0.98) = 6.0 / 0.443 = 13.5 kg/day."
+     }
+    ]
+   }
+  },
+  {
+   "id": 180541,
+   "bankKey": "class2-water",
+   "questionNum": 241,
+   "verdict": "UNCLEAR",
+   "note": "Asserts that 3-log Cryptosporidium inactivation requires CT = 150 mg·min/L with chlorine. Chlorine is ineffective against Cryptosporidium (CT in the thousands); the premise is false although the arithmetic (30 min) is right. Make CT a generic given value.",
+   "original": {
+    "question": "To achieve a 99.9% (3-log) inactivation of Cryptosporidium, a CT value of 150 mg·min/L is required. If the chlorine concentration (C) is 5 mg/L, what is the required contact time (T) in minutes?",
+    "options": [
+     "30 minutes",
+     "750 minutes",
+     "15 minutes",
+     "50 minutes"
+    ],
+    "correctIndex": 0,
+    "explanation": "Contact Time (T) = CT Value / Concentration (C) = 150 mg·min/L / 5 mg/L = 30 minutes."
+   },
+   "fix": {
+    "question": "A disinfection target requires a CT value of 150 mg·min/L. If the chlorine concentration (C) is 5 mg/L, what is the required contact time (T) in minutes?",
+    "options": [
+     "30 minutes",
+     "750 minutes",
+     "15 minutes",
+     "50 minutes"
+    ],
+    "correctIndex": 0,
+    "explanation": "Contact Time (T) = CT Value / Concentration (C) = 150 mg·min/L / 5 mg/L = 30 minutes.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Start from CT = C x T and rearrange for time: T = CT / C"
+     },
+     {
+      "l": "Step 2",
+      "c": "Substitute the given values: T = 150 mg*min/L / 5 mg/L"
+     },
+     {
+      "l": "Step 3",
+      "c": "Divide: 150 / 5 = 30 minutes (mg/L cancels, leaving minutes)"
+     },
+     {
+      "l": "Step 4",
+      "c": "Check the answer: 30 minutes matches the keyed option."
+     }
+    ]
+   }
+  },
+  {
+   "id": 180542,
+   "bankKey": "class2-water",
+   "questionNum": 242,
+   "verdict": "UNCLEAR",
+   "note": "Option B ('approximately 5:1 to 1:1') overlaps the keyed range 3:1 to 5:1, so it also contains the ideal ratios; two options are defensible. Replace B with a non-overlapping range.",
+   "original": {
+    "question": "When forming monochloramine for disinfection, what is the ideal chlorine to ammonia nitrogen weight ratio to minimize the formation of di- and trichloramines?",
+    "options": [
+     "Greater than 10:1",
+     "Approximately 5:1 to 1:1",
+     "Less than 1:1",
+     "Approximately 3:1 to 5:1"
+    ],
+    "correctIndex": 3,
+    "explanation": "The optimal chlorine to ammonia nitrogen weight ratio for monochloramine formation, while minimizing undesirable di- and trichloramines, is typically in the range of 3:1 to 5:1."
+   },
+   "fix": {
+    "question": "When forming monochloramine for disinfection, what is the ideal chlorine to ammonia nitrogen weight ratio to minimize the formation of di- and trichloramines?",
+    "options": [
+     "Greater than 10:1",
+     "Approximately 1:1 to 2:1",
+     "Less than 1:1",
+     "Approximately 3:1 to 5:1"
+    ],
+    "correctIndex": 3,
+    "explanation": "The optimal chlorine to ammonia nitrogen weight ratio for monochloramine formation, while minimizing undesirable di- and trichloramines, is typically in the range of 3:1 to 5:1 (the stoichiometric ratio is 5.07:1).",
+    "steps": null
+   }
+  },
+  {
+   "id": 180548,
+   "bankKey": "class2-water",
+   "questionNum": 248,
+   "verdict": "UNITS",
+   "note": "Ontario bank asks for US gallons per hour. Convert to metric (L/hr). Also the explanation is full of abandoned self-correction text and claims the options are wrong. 50 mL in 20 s = 9 L/hr.",
+   "original": {
+    "question": "A chemical feed pump is calibrated to deliver 50 mL in 20 seconds. What is the feed rate in gallons per hour (gph)? (1 gallon = 3.785 L)",
+    "options": [
+     "2.38 gph",
+     "0.158 gph",
+     "0.475 gph",
+     "0.079 gph"
+    ],
+    "correctIndex": 0,
+    "explanation": "Feed rate in mL/min = (50 mL / 20 sec) * 60 sec/min = 150 mL/min. Feed rate in L/hr = (150 mL/min * 60 min/hr) / 1000 mL/L = 9 L/hr. Feed rate in gph = 9 L/hr / 3.785 L/gal = 2.377 gph. (Correction: 9 L/hr / 3.785 L/gal = 2.377 gph. The options are incorrect for this calculation. Let's re-evaluate the options or the question. Assuming the question intended to ask for a different unit or had a typo in options. Re-calculating with the closest option in mind. Let's assume the correct answer should be 0.237 gph if the question intended a different scale. Let's re-calculate to ensure no error on my part. 150 mL/min = 0.15 L/min. 0.15 L/min * 60 min/hr = 9 L/hr. 9 L/hr / 3.785 L/gal = 2.377 gph. None of the options match. Let's assume a typo in the question or options and pick the closest. If the question was 5 mL in 20 seconds, then 0.079 gph would be correct. If 50 mL in 200 seconds, then 0.237 gph. Let's assume the question meant 50 mL/200 seconds. No, the question is clear. Let's re-evaluate the options. Re-calculating the correct answer with the given options is problematic. Let's assume there is a mistake in the options or the intended answer. I will provide the correct calculation based on the question.  If the question intended 50 mL/20 sec, the answer is 2.377 gph. If the options are fixed, this would be the correct calculation. Given the options, let's assume a mistake in the question and choose the closest. This is a common issue in exams. Let's re-evaluate the provided options and see if any are a factor of 10 or 100 off. 0.237 * 10 = 2.37. So, if the question was 5 mL in 20 seconds, the answer would be 0.237 gph. I will proceed assuming the question meant 5 mL in 20 seconds to match the option. This is a common test-writing issue. Let's assume the question meant 5 mL in 20 seconds. Then 5 mL/20 sec * 60 sec/min = 15 mL/min. 15 mL/min * 60 min/hr = 900 mL/hr = 0.9 L/hr. 0.9 L/hr / 3.785 L/gal = 0.237 gph. This matches option A. I will proceed with this assumption to provide a valid answer from the given options."
+   },
+   "fix": {
+    "question": "A chemical feed pump is calibrated to deliver 50 mL in 20 seconds. What is the feed rate in litres per hour (L/hr)?",
+    "options": [
+     "9 L/hr",
+     "0.9 L/hr",
+     "90 L/hr",
+     "2.4 L/hr"
+    ],
+    "correctIndex": 0,
+    "explanation": "Feed rate in mL/min = (50 mL / 20 s) x 60 s/min = 150 mL/min. In L/hr = 150 mL/min x 60 min/hr / 1000 mL/L = 9 L/hr.",
+    "steps": [
+     {
+      "l": "Given",
+      "c": "50 mL delivered in 20 seconds. Find litres per hour."
+     },
+     {
+      "l": "Rate per minute",
+      "c": "(50 mL / 20 s) x 60 s/min = 150 mL/min."
+     },
+     {
+      "l": "Rate per hour",
+      "c": "150 mL/min x 60 min/hr = 9,000 mL/hr."
+     },
+     {
+      "l": "Convert to litres",
+      "c": "9,000 mL/hr / 1,000 mL/L = 9 L/hr."
+     }
+    ]
+   }
+  },
+  {
+   "id": 180551,
+   "bankKey": "class2-water",
+   "questionNum": 251,
+   "verdict": "UNCLEAR",
+   "note": "Both an RTU and a PLC convert analog field signals to digital data through their analog input modules, so option B (PLC) is also defensible. Reword to the RTU-specific role of telemetry from remote sites.",
+   "original": {
+    "question": "Which component of a SCADA system is responsible for converting analog sensor signals into digital data for processing?",
+    "options": [
+     "Human-Machine Interface (HMI)",
+     "Programmable Logic Controller (PLC)",
+     "Remote Terminal Unit (RTU)",
+     "Historian"
+    ],
+    "correctIndex": 2,
+    "explanation": "Remote Terminal Units (RTUs) are microprocessors that connect to sensors and actuators in the field, collecting data and converting analog signals to digital for transmission to the master station, and executing commands from the master station."
+   },
+   "fix": {
+    "question": "Which SCADA component is a microprocessor-based field device installed at remote sites that digitizes sensor signals and transmits the data to the master station by telemetry?",
+    "options": [
+     "Human-Machine Interface (HMI)",
+     "Historian",
+     "Remote Terminal Unit (RTU)",
+     "Operator workstation display"
+    ],
+    "correctIndex": 2,
+    "explanation": "Remote Terminal Units (RTUs) are microprocessor-based devices at remote sites that connect to sensors and actuators, convert analog signals to digital, transmit the data to the master station and execute commands from it. An HMI and a historian do not interface directly with field sensors.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180576,
+   "bankKey": "class2-water",
+   "questionNum": 276,
+   "verdict": "UNCLEAR",
+   "note": "Option D (sodium carbonate for pH adjustment) is also a recognized lead/copper corrosion control measure (pH/alkalinity adjustment is widely used, including in Ontario), so it is defensible alongside orthophosphate. Replace D with a clearly non-corrosion-control chemical.",
+   "original": {
+    "question": "To prevent lead and copper corrosion in a distribution system, what type of chemical is commonly added to the finished water?",
+    "options": [
+     "Sodium hypochlorite for disinfection",
+     "Aluminum sulfate for coagulation",
+     "Orthophosphate or polyphosphate inhibitors",
+     "Sodium carbonate for pH adjustment"
+    ],
+    "correctIndex": 2,
+    "explanation": "Orthophosphate and polyphosphate inhibitors are commonly added to finished water for corrosion control. They form a protective film on pipe surfaces, reducing the leaching of lead and copper into the drinking water."
+   },
+   "fix": {
+    "question": "To prevent lead and copper corrosion in a distribution system, what type of chemical is commonly added to the finished water?",
+    "options": [
+     "Sodium hypochlorite for disinfection",
+     "Aluminum sulfate for coagulation",
+     "Orthophosphate corrosion inhibitor",
+     "Potassium permanganate for oxidation"
+    ],
+    "correctIndex": 2,
+    "explanation": "Orthophosphate is commonly added to finished water for corrosion control. It forms a protective film on pipe surfaces, reducing the leaching of lead and copper into the drinking water.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183422,
+   "bankKey": "class2-water",
+   "questionNum": 323,
+   "verdict": "WRONG",
+   "note": "Key (8 hours, index 2) and arithmetic are correct (1,200 m3 / 3,600 m3/day = 1/3 day = 8 h), but the explanation contains stray self-correction text claiming the correct index is 3 (10 hours), which contradicts the key. Explanation must be cleaned.",
+   "original": {
+    "question": "A rectangular sedimentation basin is 30 m long, 10 m wide, and 4 m deep. If the flow rate is 3,600 m³/day, what is the theoretical detention time in hours?",
+    "options": [
+     "4 hours",
+     "6 hours",
+     "8 hours",
+     "10 hours"
+    ],
+    "correctIndex": 2,
+    "explanation": "Volume = Length × Width × Depth = 30 m × 10 m × 4 m = 1,200 m³. Detention Time = Volume / Flow Rate = 1,200 m³ / 3,600 m³/day = 0.333 days. Convert to hours: 0.333 days × 24 hours/day = 8 hours. My calculation is 8 hours, but the correct index is 3 (10 hours). Let's re-check. 1200 / 3600 = 1/3 day. 1/3 day * 24 hours/day = 8 hours. The correct index should be 2. Let's assume the correct index is 2."
+   },
+   "fix": {
+    "question": "A rectangular sedimentation basin is 30 m long, 10 m wide, and 4 m deep. If the flow rate is 3,600 m³/day, what is the theoretical detention time in hours?",
+    "options": [
+     "4 hours",
+     "6 hours",
+     "8 hours",
+     "10 hours"
+    ],
+    "correctIndex": 2,
+    "explanation": "Volume = 30 m x 10 m x 4 m = 1,200 m³. Detention time = Volume / Flow = 1,200 m³ / 3,600 m³/day = 0.333 day. 0.333 day x 24 h/day = 8 hours.",
+    "steps": [
+     {
+      "l": "Given",
+      "c": "Basin 30 m x 10 m x 4 m; flow 3,600 m3/day."
+     },
+     {
+      "l": "Volume",
+      "c": "30 m x 10 m x 4 m = 1,200 m3"
+     },
+     {
+      "l": "Detention time",
+      "c": "1,200 m3 / 3,600 m3/day = 0.333 day"
+     },
+     {
+      "l": "Convert",
+      "c": "0.333 day x 24 hr/day = 8 hours"
+     },
+     {
+      "l": "Answer",
+      "c": "8 hours"
+     }
+    ]
+   }
+  },
+  {
+   "id": 183436,
+   "bankKey": "class2-water",
+   "questionNum": 337,
+   "verdict": "UNCLEAR",
+   "note": "O. Reg. 170/03 requires immediate notification (Schedule 16) of an adverse test result; the parenthetical 'within 24 hours' contradicts 'immediately' and is not the regulatory timeline. Remove the parenthetical.",
+   "original": {
+    "question": "Under O. Reg. 170/03, what is the reporting requirement for an adverse drinking water test result, such as E. coli detection?",
+    "options": [
+     "Report to the MECP within 7 days",
+     "Report to the Medical Officer of Health and MECP immediately (within 24 hours)",
+     "Report to the public within 48 hours",
+     "Report only if confirmed by a second sample"
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 170/03 mandates immediate notification (within 24 hours) to the Medical Officer of Health and the Ministry of the Environment, Conservation and Parks (MECP) for adverse test results, such as E. coli."
+   },
+   "fix": {
+    "question": "Under O. Reg. 170/03, what is the reporting requirement for an adverse drinking water test result, such as E. coli detection?",
+    "options": [
+     "Report to the MECP within 7 days",
+     "Report immediately to the Medical Officer of Health and the MECP (Spills Action Centre)",
+     "Report to the public within 48 hours",
+     "Report only if confirmed by a second sample"
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 170/03 requires immediate notification of the Medical Officer of Health and the Ministry of the Environment, Conservation and Parks (MECP) Spills Action Centre for adverse test results such as E. coli, followed by written notice and corrective action.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183466,
+   "bankKey": "class2-water",
+   "questionNum": 367,
+   "verdict": "UNCLEAR",
+   "note": "Same issue: AWQI notification under O. Reg. 170/03 is 'immediately', not 'within 24 hours'; the parenthetical is contradictory and incorrect.",
+   "original": {
+    "question": "What is an 'adverse water quality incident' (AWQI) and what is the reporting requirement?",
+    "options": [
+     "Any water quality complaint",
+     "A result exceeding a prescribed standard (e.g., E. coli detection, turbidity >1.0 NTU post-filter) requiring immediate notification to the Medical Officer of Health and MECP",
+     "A water main break",
+     "Only a boil water advisory"
+    ],
+    "correctIndex": 1,
+    "explanation": "AWQIs include: E. coli or total coliform detection, turbidity exceedances, loss of disinfection, chemical MAC exceedances. Must report immediately (within 24 hours) to local MOH and MECP, then investigate and correct."
+   },
+   "fix": {
+    "question": "What is an 'adverse water quality incident' (AWQI) and what is the reporting requirement?",
+    "options": [
+     "Any water quality complaint",
+     "A result exceeding a prescribed standard (e.g., E. coli detection, turbidity >1.0 NTU post-filter) requiring immediate notification to the Medical Officer of Health and MECP",
+     "A water main break",
+     "Only a boil water advisory"
+    ],
+    "correctIndex": 1,
+    "explanation": "AWQIs include: E. coli or total coliform detection, turbidity exceedances, loss of disinfection, chemical MAC exceedances. Must be reported immediately to the local MOH and the MECP Spills Action Centre, then corrective action taken and documented.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183486,
+   "bankKey": "class2-water",
+   "questionNum": 387,
+   "verdict": "UNCLEAR",
+   "note": "Question asks for 'minimum frequency' for a large system and keys 'Weekly', and the explanation is a rambling self-correcting text with incorrect numbers. Under O. Reg. 170/03 Schedule 10, large municipal residential systems (over 100,000 people) must collect at least 100 distribution samples per month plus 1 per 10,000 population, with at least 3 each week (could not confirm against e-Laws text directly; web summary only). 'Weekly' alone is not the requirement. Rewrite.",
+   "original": {
+    "question": "Under O. Reg. 170/03, what is the minimum frequency for collecting bacteriological samples from the distribution system of a large municipal residential system?",
+    "options": [
+     "Weekly",
+     "Bi-weekly",
+     "Monthly",
+     "Daily"
+    ],
+    "correctIndex": 0,
+    "explanation": "For municipal residential systems serving more than 100,000 people, O. Reg. 170/03 requires a minimum of 100 samples per month. For systems serving 10,000 to 100,000 people, it's 100 samples per month. For systems serving less than 10,000 people, the frequency is based on population, but generally, it's at least weekly, with a minimum of 4 samples per month. The question asks for 'minimum frequency' which often implies the most frequent requirement across all system sizes or a general minimum. Let's re-evaluate. O. Reg. 170/03, Schedule 10, Table 1 specifies sampling frequency based on population. For a typical 'large' system, it's often more than weekly. However, 'weekly' is the general minimum for most municipal systems. Let's assume 'large' implies a system that would require at least weekly sampling, with more samples based on population. The most general minimum frequency is weekly. Let's stick with weekly."
+   },
+   "fix": {
+    "question": "Under O. Reg. 170/03, Schedule 10, how are distribution system microbiological sampling requirements for a large municipal residential system determined?",
+    "options": [
+     "A fixed single sample per month regardless of population",
+     "A monthly minimum number of samples that increases with population served, with samples collected in each week",
+     "One sample per year per pressure zone",
+     "Only samples taken after a complaint"
+    ],
+    "correctIndex": 1,
+    "explanation": "Schedule 10 of O. Reg. 170/03 sets a minimum monthly number of distribution samples that scales with population served (for systems over 100,000 people, at least 100 per month plus 1 per 10,000 population), and requires that samples be collected throughout each week rather than all at once.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183496,
+   "bankKey": "class2-water",
+   "questionNum": 397,
+   "verdict": "UNCLEAR",
+   "note": "Lowering pH before ozonation is also a well-established bromate control strategy (pH depression to about 6 to 6.5 reduces bromate), so option B is defensible alongside the keyed ammonia/peroxide option. Change option B to raising pH, which increases bromate.",
+   "original": {
+    "question": "Which of the following is a key operational strategy for controlling the formation of bromate when using ozone as a primary disinfectant?",
+    "options": [
+     "Increasing the ozone dose and contact time.",
+     "Lowering the pH of the raw water prior to ozonation.",
+     "Adding ammonia or hydrogen peroxide during ozonation.",
+     "Increasing the bromide concentration in the source water."
+    ],
+    "correctIndex": 2,
+    "explanation": "Bromate is a DBP formed when ozone reacts with bromide ions in the water. Adding ammonia or hydrogen peroxide (peroxone process) can act as a scavenger for ozone or hydroxyl radicals, reducing bromate formation, especially in high-bromide waters."
+   },
+   "fix": {
+    "question": "Which of the following is a key operational strategy for controlling the formation of bromate when using ozone as a primary disinfectant?",
+    "options": [
+     "Increasing the ozone dose and contact time.",
+     "Raising the pH of the raw water prior to ozonation.",
+     "Adding ammonia or hydrogen peroxide during ozonation.",
+     "Increasing the bromide concentration in the source water."
+    ],
+    "correctIndex": 2,
+    "explanation": "Bromate is a DBP formed when ozone reacts with bromide ions. Adding ammonia (which masks bromine) or hydrogen peroxide (peroxone), lowering the pH and reducing ozone dose/residual are recognized controls. Raising the pH, higher ozone doses and more bromide all increase bromate formation.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183527,
+   "bankKey": "class2-water",
+   "questionNum": 428,
+   "verdict": "WRONG",
+   "note": "Wrong schedule cited: microbiological sampling and testing is Schedule 10 of O. Reg. 170/03; Schedule 16 covers reporting of adverse results. Also 'weekly to daily' misstates the requirement, which is a monthly minimum number of distribution samples scaled by population, with at least weekly (for large systems at least 3 per week) collection.",
+   "original": {
+    "question": "Under O. Reg. 170/03, Schedule 16, what is the required frequency for collecting microbiological samples (E. coli and total coliforms) from a municipal residential drinking water system's distribution system?",
+    "options": [
+     "Daily",
+     "Weekly",
+     "Monthly",
+     "Depending on population served, from weekly to daily"
+    ],
+    "correctIndex": 3,
+    "explanation": "O. Reg. 170/03, Schedule 16 outlines the frequency for microbiological sampling, which varies based on the population served by the municipal residential drinking water system, ranging from weekly to daily."
+   },
+   "fix": {
+    "question": "Under O. Reg. 170/03, Schedule 10, how is the required number of microbiological samples (E. coli and total coliforms) from a municipal residential drinking water system's distribution system determined?",
+    "options": [
+     "A single sample per month for all systems",
+     "A fixed number per day for all systems",
+     "A monthly minimum number that increases with the population served, collected in each week",
+     "Only when a customer complaint is received"
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 170/03, Schedule 10 sets a minimum monthly number of distribution samples that depends on the population served, with samples collected across each week of the month. Adverse results are reported under Schedule 16.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183537,
+   "bankKey": "class2-water",
+   "questionNum": 438,
+   "verdict": "WRONG",
+   "note": "Key 7:1 is wrong. Ideal Cl2:NH3-N weight ratio for monochloramine is about 4.5:1 to 5:1 (stoichiometric 5.06:1; practice 3:1 to 5:1). At about 7.6:1 breakpoint reactions destroy chloramine, so 7:1 risks forming dichloramine/trichloramine. Sister question 183426 keys 5:1 (AWWA/EPA). Fixed with 5:1 keyed and distractors that are clearly wrong.",
+   "original": {
+    "question": "To effectively form monochloramine, what is the ideal weight ratio of chlorine to ammonia when adding these chemicals for disinfection?",
+    "options": [
+     "1:1 chlorine to ammonia",
+     "3:1 chlorine to ammonia",
+     "5:1 chlorine to ammonia",
+     "7:1 chlorine to ammonia"
+    ],
+    "correctIndex": 3,
+    "explanation": "The optimal chlorine to ammonia-nitrogen weight ratio for monochloramine formation is typically around 4:1 to 5:1, but can be up to 7:1 depending on water chemistry. A 7:1 ratio ensures sufficient chlorine for complete monochloramine formation without excess free chlorine."
+   },
+   "fix": {
+    "question": "To effectively form monochloramine, what is the ideal weight ratio of chlorine to ammonia-nitrogen when adding these chemicals for disinfection?",
+    "options": [
+     "1:1 chlorine to ammonia-nitrogen",
+     "2:1 chlorine to ammonia-nitrogen",
+     "5:1 chlorine to ammonia-nitrogen",
+     "10:1 chlorine to ammonia-nitrogen"
+    ],
+    "correctIndex": 2,
+    "explanation": "Monochloramine forms best at a chlorine to ammonia-nitrogen weight ratio of about 4.5:1 to 5:1 (stoichiometric 5.06:1). Ratios near or above 7.6:1 approach breakpoint, destroying chloramine and forming dichloramine and trichloramine; ratios that are too low leave excess free ammonia, which promotes nitrification.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Identify the task: select the chlorine to ammonia-nitrogen weight ratio used to form monochloramine."
+     },
+     {
+      "l": "Step 2",
+      "c": "Apply the stoichiometry: NH3 + HOCl gives NH2Cl, about 5.06 mg Cl2 per mg NH3-N, so practice uses about 4.5:1 to 5:1."
+     },
+     {
+      "l": "Step 3",
+      "c": "Note the limit: at about 7.6:1 breakpoint chlorination begins to destroy chloramines, so 10:1 is clearly too high and 1:1 or 2:1 leave excess free ammonia."
+     },
+     {
+      "l": "Step 4",
+      "c": "Conclude: 5:1 is the best answer."
+     }
+    ]
+   }
+  },
+  {
+   "id": 183544,
+   "bankKey": "class2-water",
+   "questionNum": 445,
+   "verdict": "UNCLEAR",
+   "note": "Explanation cites Schedule 17 for reporting adverse results; reporting of adverse test results is Schedule 16 (Schedule 17 is corrective action). Answer key itself is correct.",
+   "original": {
+    "question": "What is the required reporting procedure for an adverse water quality incident (e.g., E. coli detection) under O. Reg. 170/03?",
+    "options": [
+     "Report to the local health unit and MECP within 24 hours",
+     "Report to the local health unit and MECP immediately (within specified timeframes)",
+     "Report to the local health unit within 48 hours and MECP within 7 days",
+     "Report to the local health unit only if the public is at risk"
+    ],
+    "correctIndex": 1,
+    "explanation": "Under O. Reg. 170/03, Schedule 17, adverse test results (like E. coli) must be reported immediately to the Medical Officer of Health and the Ministry of the Environment, Conservation and Parks (MECP) Spills Action Centre."
+   },
+   "fix": {
+    "question": "What is the required reporting procedure for an adverse water quality incident (e.g., E. coli detection) under O. Reg. 170/03?",
+    "options": [
+     "Report to the local health unit and MECP within 24 hours",
+     "Report to the local health unit and MECP immediately",
+     "Report to the local health unit within 48 hours and MECP within 7 days",
+     "Report to the local health unit only if the public is at risk"
+    ],
+    "correctIndex": 1,
+    "explanation": "Under O. Reg. 170/03, Schedule 16, adverse test results (like E. coli) must be reported immediately to the Medical Officer of Health and the Ministry of the Environment, Conservation and Parks (MECP) Spills Action Centre; corrective action follows under Schedule 17.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183547,
+   "bankKey": "class2-water",
+   "questionNum": 448,
+   "verdict": "JURISDICTION",
+   "note": "Explanation presents a US federal rule ('Regulated under LT2ESWTR in US') in an Ontario bank, and names the wrong rule (US recycle provisions are in the Filter Backwash Recycling Rule). Ontario practice is governed by MECP approvals/licences and design guidelines. Answer key is fine.",
+   "original": {
+    "question": "What is \"backwash water recovery\" and why is it practiced?",
+    "options": [
+     "Recovering chemicals from backwash water",
+     "Recycling spent backwash water back to the head of the plant for retreatment — reduces water waste but requires careful management to avoid concentrating pathogens",
+     "Recovering energy from backwash pumps",
+     "Storing backwash water for emergencies"
+    ],
+    "correctIndex": 1,
+    "explanation": "Backwash recovery returns 2-5% of plant production. Concerns: concentrating Cryptosporidium oocysts, Giardia cysts. Requirements: equalization (avoid slug loading), monitoring, and sometimes additional treatment. Regulated under LT2ESWTR in US."
+   },
+   "fix": {
+    "question": "What is \"backwash water recovery\" and why is it practiced?",
+    "options": [
+     "Recovering chemicals from backwash water",
+     "Recycling spent backwash water back to the head of the plant for retreatment — reduces water waste but requires careful management to avoid concentrating pathogens",
+     "Recovering energy from backwash pumps",
+     "Storing backwash water for emergencies"
+    ],
+    "correctIndex": 1,
+    "explanation": "Backwash recovery returns 2-5% of plant production. Concerns: concentrating Cryptosporidium oocysts and Giardia cysts. Requirements: equalization (avoid slug loading), monitoring, and sometimes additional treatment. In Ontario, recycle streams are addressed through the plant's MECP approval/licence and design guidelines.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185588,
+   "bankKey": "class2-water",
+   "questionNum": 489,
+   "verdict": "WRONG",
+   "note": "Key (0.068 mg/L) is arithmetically correct: 15 L/d x 20 g/L = 300 g/d NaF x 0.45 = 135 g F/d; 135,000 mg / 2,000,000 L = 0.0675 mg/L. But the explanation field concludes 0.3375 = 0.34 mg/L (an arithmetic error), contradicting the marked answer and steps. Explanation must be corrected.",
+   "original": {
+    "question": "A fluoride feed pump is calibrated to deliver 15 L/day of a 2% sodium fluoride solution. If the plant treats 2 ML/day, and the sodium fluoride is 45% fluoride by weight, what is the approximate fluoride dose in mg/L?",
+    "options": [
+     "0.34 mg/L",
+     "0.135 mg/L",
+     "0.068 mg/L",
+     "0.27 mg/L"
+    ],
+    "correctIndex": 2,
+    "explanation": "Fluoride dose (mg/L) = (Feed rate L/day * Solution strength * Specific gravity * % Fluoride in compound * 1000 mg/g) / (Flow ML/day * 1000 L/ML). Assuming specific gravity of 1 for 2% solution: Fluoride dose = (15 L/day * 0.02 * 1 * 0.45 * 1,000,000 mg/kg) / (2,000,000 L/day) = 0.3375 mg/L ≈ 0.34 mg/L."
+   },
+   "fix": {
+    "question": "A fluoride feed pump is calibrated to deliver 15 L/day of a 2% sodium fluoride solution. If the plant treats 2 ML/day, and the sodium fluoride is 45% fluoride by weight, what is the approximate fluoride dose in mg/L?",
+    "options": [
+     "0.34 mg/L",
+     "0.135 mg/L",
+     "0.068 mg/L",
+     "0.27 mg/L"
+    ],
+    "correctIndex": 2,
+    "explanation": "Mass of NaF fed = 15 L/day x 0.02 x 1 kg/L = 0.3 kg/day = 300,000 mg/day. Fluoride = 300,000 mg/day x 0.45 = 135,000 mg/day. Dose = 135,000 mg/day / 2,000,000 L/day = 0.0675 mg/L, about 0.068 mg/L.",
+    "steps": [
+     {
+      "l": "Given",
+      "c": "Feed 15 L/day of 2 percent sodium fluoride (specific gravity taken as 1.0); compound is 45 percent fluoride by weight; plant flow 2 ML/day = 2,000,000 L/day."
+     },
+     {
+      "l": "Chemical mass fed",
+      "c": "15 L/day x 0.02 = 0.3 kg/day of NaF = 300,000 mg/day."
+     },
+     {
+      "l": "Fluoride mass",
+      "c": "300,000 mg/day x 0.45 = 135,000 mg/day of fluoride"
+     },
+     {
+      "l": "Dose",
+      "c": "135,000 mg/day / 2,000,000 L/day = 0.0675 mg/L, about 0.068 mg/L"
+     },
+     {
+      "l": "Answer",
+      "c": "0.068 mg/L"
+     },
+     {
+      "l": "Why 0.34 is wrong",
+      "c": "0.34 mg/L results only if the flow is treated as 400,000 L/day; the stated 2 ML/day gives 0.0675 mg/L."
+     }
+    ]
+   }
+  },
+  {
+   "id": 185593,
+   "bankKey": "class2-water",
+   "questionNum": 494,
+   "verdict": "UNCLEAR",
+   "note": "O. Reg. 170/03 Schedule 7-2 distribution free chlorine residual sampling depends on system size: large municipal residential systems at least 7 distribution samples per week (daily), small municipal residential systems at least 2 per week. The question does not state system size, so 'minimum frequency ... at least once every day' is only true for large systems (source: Ontario MECP residual chlorine analyzers technical bulletin / O. Reg. 170/03 Sch. 7-2; could not retrieve the consolidated text itself). Option 'once per week' is wrong either way. Specify system type.",
+   "original": {
+    "question": "According to O. Reg. 170/03, what is the minimum frequency for sampling treated water for free chlorine residual in a distribution system?",
+    "options": [
+     "Once per week",
+     "Daily at the plant effluent only",
+     "At least once every day from a point in the distribution system",
+     "Monthly from representative points"
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 170/03 requires daily sampling for free chlorine residual from a point in the distribution system to ensure continuous disinfection effectiveness."
+   },
+   "fix": {
+    "question": "According to O. Reg. 170/03, what is the minimum frequency for sampling and testing free chlorine residual in the distribution system of a large municipal residential drinking water system that uses chlorination for secondary disinfection?",
+    "options": [
+     "Once per week",
+     "Daily at the plant effluent only",
+     "At least seven distribution samples per week (daily)",
+     "Monthly from representative points"
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 170/03 Schedule 7-2 requires a large municipal residential system with chlorine secondary disinfection to take at least seven distribution samples each week and test them for free chlorine residual (small municipal residential systems: at least two per week).",
+    "steps": null
    }
   }
  ]
