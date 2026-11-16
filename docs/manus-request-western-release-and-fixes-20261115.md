@@ -37,7 +37,7 @@ Thirteen more small tables fill thin topics found by checking the content agains
 | `wpi-class1-water-coll-g1.ts` | `c1e8f24a` | public health for crews, flow monitoring, electrical controls, security |
 | `wpi-class2-water-g1.ts`, `wpi-class4-water-g1.ts` | `2bb6129a` | water treatment Class 2 and Class 4: blowers, dechlorination, security, generators, maintenance management, cross-connection control, electrical controls, cathodic protection |
 | `wpi-class2-water-dist-g1.ts`, `wpi-class4-water-dist-g1.ts` | `7a71969f` | distribution Class 2 and Class 4: electrical controls, generators, maintenance management, temporary service, swabbing, thawing, cold weather planning |
-| `wpi-class3-water-dist-g1.ts` | this commit | distribution Class 3: standby generators, electrical controls, swabbing, temporary service, maintenance management, safety equipment, fire flow testing, thawing, disinfecting new mains (98 items) |
+| `wpi-class3-water-dist-g1.ts` | `c979cc6b` | distribution Class 3: standby generators, electrical controls, swabbing, temporary service, maintenance management, safety equipment, fire flow testing, thawing, disinfecting new mains (98 items) |
 | `wpi-class2-wastewater-g1.ts`, `wpi-class4-wastewater-g1.ts` | `2b3b1d21` | wastewater treatment Class 2 and Class 4: security, public relations, flow equalization, flotation, standby power, communication |
 
 WPI is Water Professionals International, formerly the Association of Boards of Certification. The content is general operator knowledge. It is not matched line by line to the WPI exam outlines yet.
