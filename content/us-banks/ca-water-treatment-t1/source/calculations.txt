@@ -25,3 +25,21 @@ A well pumps 720 gpm. Use 1,440 min per day and 1 MG = 1,000,000 gal. What is th
 A plant treats 3.6 MGD. Use 1,440 min per day and 1 MG = 1,000,000 gal. What is the flow in gpm?|gpm = MGD times 1000000 divided by 1440|3.6*1000000/1440|gpm|0|5184,3600,150000|h
 A tank holds 85000 gal. Use 1 ft³ = 7.48 gal. How many cubic feet of water is that?|Cubic feet = gallons divided by 7.48|85000/7.48|ft³|0|635800,10192,1136|m
 A reservoir holds 12 acre-ft. Use 1 acre-ft = 43,560 ft³, 1 ft³ = 7.48 gal and 1 MG = 1,000,000 gal. How many MG is that?|MG = acre-ft times 43560 times 7.48 divided by 1000000|12*43560*7.48/1000000|MG|2|0.52,89.76,3909945.60|h
+@Water treatment processes|CAT1|Chemical dose in pounds per day
+A plant treats 3.5 MGD and applies 2.4 mg/L of chlorine. Use lb/day = flow (MGD) × dose (mg/L) × 8.34. How many lb/day of chlorine are fed?|lb/day = flow times dose times 8.34|3.5*2.4*8.34|lb/day|1|8.4,20.0,29.2|m
+A well pumps 0.75 MGD and the target chlorine dose is 1.8 mg/L. Use lb/day = flow (MGD) × dose (mg/L) × 8.34. How many lb/day of chlorine are needed?|lb/day = flow times dose times 8.34|0.75*1.8*8.34|lb/day|1|1.4,15.0,6.3|m
+A plant treats 2.2 MGD and feeds 1.5 mg/L of 100 percent chlorine gas. Use lb/day = flow (MGD) × dose (mg/L) × 8.34. How many pounds are used in 7 days?|Pounds per week = flow times dose times 8.34 times 7|2.2*1.5*8.34*7|lb|1|27.5,23.1,1348.6|h
+Flow is 4.2 MGD. The chlorine demand is 1.8 mg/L and a residual of 1.0 mg/L is wanted. Use dose = demand + residual and lb/day = flow (MGD) × dose (mg/L) × 8.34. How many lb/day of chlorine are needed?|lb/day = flow times (demand plus residual) times 8.34|4.2*(1.8+1.0)*8.34|lb/day|1|35.0,63.1,11.8|h
+@Water treatment processes|CAT1|Hypochlorite quantity for a stated strength
+A 12.5 percent sodium hypochlorite solution weighs 8.34 lb/gal in this problem, and 12.5 percent of that weight is available chlorine. How many gallons supply 40 lb of available chlorine?|Gallons = pounds needed divided by (8.34 times strength as a decimal)|40/(8.34*0.125)|gal|1|4.8,320.0,41.7|m
+Calcium hypochlorite is 65 percent available chlorine. How many pounds of the dry product supply 26 lb/day of chlorine?|Pounds of product = chlorine needed divided by the decimal strength|26/0.65|lb/day|1|16.9,74.3,400.0|m
+A plant treats 0.8 MGD at a chlorine dose of 2.5 mg/L using 12 percent sodium hypochlorite. Use 8.34 lb/gal for the solution and lb/day = flow × dose × 8.34. How many gallons per day of solution are needed?|Gallons/day = lb/day needed divided by (8.34 times strength as a decimal)|0.8*2.5*8.34/(8.34*0.12)|gal/day|1|139.0,2.0,0.2|h
+A plant treats 1.2 MGD at a chlorine dose of 2 mg/L using 65 percent calcium hypochlorite. Use lb/day = flow × dose × 8.34. How many lb/day of the dry product are needed?|Product lb/day = chlorine lb/day divided by the decimal strength|1.2*2*8.34/0.65|lb/day|1|20.0,13.0,3.7|h
+@Water treatment processes|CAT1|Chlorine solution strength
+Use 1 percent = 10,000 mg/L. A solution contains 1.5 percent available chlorine. What is its strength in mg/L?|mg/L = percent times 10,000|1.5*10000|mg/L|0|150,1500,15|m
+Use 1 percent = 10,000 mg/L. A chlorine solution is 8,000 mg/L. What is its strength as a percent?|Percent = mg/L divided by 10,000|8000/10000|percent|1|80.0,8.0,0.1|m
+A 12.5 percent hypochlorite solution is diluted to make 50 gal of a 1 percent solution. Use C1 × V1 = C2 × V2. How many gallons of the 12.5 percent solution are needed?|V1 = (C2 times V2) divided by C1|1*50/12.5|gal|1|46.0,625.0,0.1|h
+@Water treatment processes|CAT1|Chlorine demand and residual
+A water is dosed with 3.2 mg/L of chlorine and the residual after contact is 0.9 mg/L. Use demand = dose minus residual. What is the chlorine demand in mg/L?|Demand = dose minus residual|3.2-0.9|mg/L|1|4.1,0.3,3.2|m
+The chlorine demand is 1.9 mg/L and the plant wants a 0.8 mg/L residual. Use dose = demand + residual. What dose in mg/L is needed?|Dose = demand plus residual|1.9+0.8|mg/L|1|1.1,1.5,0.4|m
+A plant treats 1.8 MGD with a dose of 4.0 mg/L and a residual of 1.2 mg/L. Use demand = dose minus residual and lb/day = flow × concentration × 8.34. How many lb/day of chlorine are consumed by the demand?|lb/day of demand = flow times (dose minus residual) times 8.34|1.8*(4.0-1.2)*8.34|lb/day|1|60.1,18.0,5.0|h
