@@ -43,3 +43,20 @@ A 12.5 percent hypochlorite solution is diluted to make 50 gal of a 1 percent so
 A water is dosed with 3.2 mg/L of chlorine and the residual after contact is 0.9 mg/L. Use demand = dose minus residual. What is the chlorine demand in mg/L?|Demand = dose minus residual|3.2-0.9|mg/L|1|4.1,0.3,3.2|m
 The chlorine demand is 1.9 mg/L and the plant wants a 0.8 mg/L residual. Use dose = demand + residual. What dose in mg/L is needed?|Dose = demand plus residual|1.9+0.8|mg/L|1|1.1,1.5,0.4|m
 A plant treats 1.8 MGD with a dose of 4.0 mg/L and a residual of 1.2 mg/L. Use demand = dose minus residual and lb/day = flow × concentration × 8.34. How many lb/day of chlorine are consumed by the demand?|lb/day of demand = flow times (dose minus residual) times 8.34|1.8*(4.0-1.2)*8.34|lb/day|1|60.1,18.0,5.0|h
+@Operation and maintenance|CAT1|Feeder calibration and feed rate
+A calibration cylinder shows a feeder delivering 125 mL per minute. Use 3,785 mL per gal and 1,440 min per day. What is this feed rate in gal/day?|gal/day = mL/min times 1,440 divided by 3,785|125*1440/3785|gal/day|1|328.6,180000.0,5.7|m
+A feeder pumps 240 mL in 4 min during a calibration test. Use 3,785 mL per gal and 1,440 min per day. What is the feed rate in gal/day?|mL/min = volume divided by time; gal/day = mL/min times 1,440 divided by 3,785|240/4*1440/3785|gal/day|1|86400.0,157.7,190.4|m
+A feeder delivers 30 gal/day of a 12 percent hypochlorite solution. Use 8.34 lb/gal for the solution and 12 percent available chlorine by weight. How many lb/day of available chlorine are fed?|lb/day = gal/day times 8.34 times strength as a decimal|30*8.34*0.12|lb/day|1|250.2,3.6,2085.0|h
+A feeder is to deliver 38 gal/day. Use 3,785 mL per gal and 1,440 min per day. What mL/min should the calibration cylinder show?|mL/min = gal/day times 3,785 divided by 1,440|38*3785/1440|mL/min|1|14.5,143830.0,2397.2|m
+A plant treats 0.5 MGD and wants a 2 mg/L chlorine dose from a 10 percent solution weighing 8.9 lb/gal. Use lb/day = flow × dose × 8.34. How many gal/day of solution must be fed?|gal/day = lb/day needed divided by (lb/gal times strength as a decimal)|0.5*2*8.34/(8.9*0.10)|gal/day|1|93.7,10.0,1.1|h
+A dry chemical that is 80 percent pure is fed at a 3 mg/L dose to 2.4 MGD. Use lb/day = flow × dose × 8.34. How many lb/day of the dry product are fed?|lb/day of product = flow times dose times 8.34 divided by decimal purity|3*2.4*8.34/0.8|lb/day|1|60.0,48.0,9.0|h
+@Operation and maintenance|CAT1|Meter readings and flow
+A totalizing meter reads 483,920 gal at the start of a test and 512,450 gal at the end. How many gallons passed through the meter?|Volume = ending reading minus starting reading|512450-483920|gal|0|996370,28350,2853|m
+A meter register reads 04512 at the start and 04987 at the end. Each unit on the register stands for 100 gal. How many gallons passed?|Gallons = (end minus start) times 100|(4987-4512)*100|gal|0|475,4750,9499|m
+A meter shows 18,600 gal passed in 45 min. What is the average flow in gpm?|gpm = gallons divided by minutes|18600/45|gpm|1|310.0,6.9,837000.0|m
+A meter registers in cubic feet. The reading was 120,400 ft³ at 7:00 a.m. and 126,150 ft³ at 7:00 a.m. the next day. Use 7.48 gal per ft³. What is the daily flow in gal/day?|gal/day = (end minus start) times 7.48|(126150-120400)*7.48|gal/day|0|769,5750,47955|h
+@Operation and maintenance|CAT1|Pressure and head of water
+Use 2.31 ft of head per psi. What head in feet corresponds to 40 psi?|Head = psi times 2.31|40*2.31|ft|1|17.3,42.3,924.0|m
+Use 2.31 ft of head per psi. What pressure in psi corresponds to 150 ft of water?|psi = head divided by 2.31|150/2.31|psi|1|346.5,147.7,6.5|m
+A pump discharge gauge reads 62 psi and the suction gauge reads 8 psi, both at the same elevation. Use 2.31 ft per psi. What is the total head the pump adds in feet?|Head = (discharge psi minus suction psi) times 2.31|(62-8)*2.31|ft|1|161.7,54.0,143.2|h
+A gauge sits at the base of a tank where the water is 28 ft deep. Use 2.31 ft of head per psi. What psi does the gauge read?|psi = depth divided by 2.31|28/2.31|psi|1|64.7,25.7,1.2|m
