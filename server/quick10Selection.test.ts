@@ -81,6 +81,33 @@ describe("pickQuick10: mix across modules", () => {
   });
 });
 
+describe("pickQuick10: module cap", () => {
+  it("never takes more than three from one module while others still have questions, even when every miss is in one module", () => {
+    // Questions 1, 5, 9 ... are Network. All twenty Network questions were missed; everything else was answered correctly.
+    const entries: Array<[number, boolean, number]> = bank.map(q => [q.questionNum, q.module !== "Network", 1000 + q.questionNum]);
+    for (let seed = 1; seed <= 15; seed++) {
+      const picks = pickQuick10(bank, history(entries), seeded(seed));
+      expect(picks).toHaveLength(10);
+      expect(picks.filter(p => p.question.module === "Network")).toHaveLength(3);
+      expect(new Set(picks.map(p => p.question.module)).size).toBe(4);
+    }
+  });
+
+  it("among misses spread over modules, the newest are chosen", () => {
+    // Eight misses, one per question 1 to 8, newest is question 8. Two modules would otherwise hog the picks; with
+    // a cap of three per module the newest three of each module are taken before older ones.
+    const entries: Array<[number, boolean, number]> = bank.map(q => [q.questionNum, q.questionNum > 8, q.questionNum <= 8 ? 1000 + q.questionNum : 1]);
+    const picks = pickQuick10(bank, history(entries), seeded(21));
+    const missed = picks.filter(p => p.group === "missed").map(p => p.question.questionNum);
+    expect(missed.sort((a, b) => a - b)).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+  });
+
+  it("lifts the cap when it would leave the session short", () => {
+    const one = bank.filter(q => q.module === "Storage").slice(0, 8);
+    expect(pickQuick10(one, new Map(), seeded(22))).toHaveLength(8);
+  });
+});
+
 describe("pickQuick10: edge cases", () => {
   it("returns fewer than ten when the bank is small, with no duplicates", () => {
     const small = bank.slice(0, 6);

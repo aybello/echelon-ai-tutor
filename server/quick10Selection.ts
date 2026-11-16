@@ -6,8 +6,10 @@
  *   2. Questions the learner got wrong most recently (the most recent attempt was wrong), newest first.
  *   3. Anything else in the bank, in random order.
  *
- * Inside each group, questions are taken one module at a time in rotation, so a single session touches
- * several topics instead of ten questions from one module. Pure and deterministic given `random`.
+ * Each group is taken in its own order (newest miss first, otherwise random). To make one session touch several
+ * topics, no more than a fair share (three of ten when there are four or more modules) comes from any single
+ * module while other modules still have questions. If the cap leaves the session short, the cap is lifted for the
+ * remaining places. Pure and deterministic given `random`.
  */
 
 export const QUICK_10_SIZE = 10;
@@ -40,25 +42,6 @@ function shuffled<T>(items: readonly T[], random: () => number): T[] {
   return copy;
 }
 
-/** Take questions one module at a time in rotation. Each module's own order is kept. */
-function rotateByModule<T extends Quick10Candidate>(ordered: readonly T[], random: () => number): T[] {
-  const queues = new Map<string, T[]>();
-  for (const q of ordered) {
-    const queue = queues.get(q.module);
-    if (queue) queue.push(q); else queues.set(q.module, [q]);
-  }
-  const moduleOrder = shuffled([...queues.keys()], random);
-  const out: T[] = [];
-  let remaining = ordered.length;
-  while (remaining > 0) {
-    for (const name of moduleOrder) {
-      const next = queues.get(name)!.shift();
-      if (next) { out.push(next); remaining--; }
-    }
-  }
-  return out;
-}
-
 export function pickQuick10<T extends Quick10Candidate>(
   candidates: readonly T[],
   history: ReadonlyMap<number, Quick10History>,
@@ -75,16 +58,36 @@ export function pickQuick10<T extends Quick10Candidate>(
   const other = unique.filter(c => history.get(c.questionNum)?.lastCorrect === true);
 
   const groups: Array<[Quick10Group, T[]]> = [
-    ["never-attempted", rotateByModule(shuffled(neverAttempted, random), random)],
-    ["missed", rotateByModule(missed, random)],
-    ["other", rotateByModule(shuffled(other, random), random)],
+    ["never-attempted", shuffled(neverAttempted, random)],
+    ["missed", missed],
+    ["other", shuffled(other, random)],
   ];
 
+  // At most this many from one module: 3 of 10 with four or more modules, 4 with three, 5 with two.
+  const moduleCount = new Set(unique.map(c => c.module)).size;
+  const perModuleCap = Math.ceil(size / Math.max(1, Math.min(moduleCount, 4)));
+
   const picked: Array<Quick10Pick<T>> = [];
+  const taken = new Set<number>();
+  const perModule = new Map<string, number>();
+  const take = (group: Quick10Group, question: T) => {
+    picked.push({ question, group });
+    taken.add(question.questionNum);
+    perModule.set(question.module, (perModule.get(question.module) ?? 0) + 1);
+  };
+  // First pass: priority order, with the module cap.
   for (const [group, questions] of groups) {
     for (const question of questions) {
       if (picked.length >= size) break;
-      picked.push({ question, group });
+      if ((perModule.get(question.module) ?? 0) >= perModuleCap) continue;
+      take(group, question);
+    }
+  }
+  // Second pass: the cap left places empty, so fill them in priority order.
+  for (const [group, questions] of groups) {
+    for (const question of questions) {
+      if (picked.length >= size) break;
+      if (!taken.has(question.questionNum)) take(group, question);
     }
   }
   // The priority decides which questions are chosen, not the order they are asked in.

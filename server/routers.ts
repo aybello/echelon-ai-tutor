@@ -39,6 +39,7 @@ import { stripeRouter } from "./routers/stripeRouter";
 import { flashcardRouter } from "./routers/flashcardRouter";
 import { learnerQuestionColumns, parseLearnerQuestions, quizRouter } from "./routers/quizRouter";
 import { dashboardRouter } from "./routers/dashboardRouter";
+import { quick10Router } from "./routers/quick10Router";
 import { magicLinkRouter } from "./routers/magicLinkRouter";
 import { dashboardAuthRouter } from "./routers/dashboardAuthRouter";
 import { orgRouter, orgIntelRouter } from "./routers/orgRouter";
@@ -168,6 +169,7 @@ export const appRouter = router({
   quiz: quizRouter,
   interactive: interactiveRouter,
   dashboard: dashboardRouter,
+  quick10: quick10Router,
   magicLink: magicLinkRouter,
   dashboardAuth: dashboardAuthRouter,
   org: orgRouter,
