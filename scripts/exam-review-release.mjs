@@ -5,6 +5,7 @@ import { closeSync, fsyncSync, mkdirSync, openSync, readFileSync, writeFileSync 
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { FIELDS, MUTABLE, RELEASE_KEY, checkState, digest, loadInputs, makePlan, project } from './lib/examReviewRelease.mjs';
+import { RESTORATION_KEY, validateRestorationPlan } from './lib/examReviewRestoration.mjs';
 export function privateWrite(path, value) {
   mkdirSync(dirname(path), {recursive:true,mode:0o700});
   const fd = openSync(path,'wx',0o600);
@@ -16,8 +17,10 @@ export async function readRows(connection, ids, lock = false) {
   const [rows] = await connection.execute(`SELECT ${fields} FROM questions WHERE id IN (${ids.map(()=>'?').join(',')}) ORDER BY id${lock ? ' FOR UPDATE' : ''}`,ids);
   return rows.map(project);
 }
-export async function applyPlan(connection, plan, {rollback = false} = {}) {
-  if (plan.releaseKey !== RELEASE_KEY || plan.conflicts.length || plan.counts.conflicts || plan.actions.length !== new Set(plan.actions.map(a=>a.id)).size) throw new Error('Unready release plan');
+export async function applyPlan(connection, plan, {rollback = false, restorationInputs} = {}) {
+  if (plan.releaseKey === RESTORATION_KEY && restorationInputs) validateRestorationPlan(plan, restorationInputs.inputs, restorationInputs.original);
+  else if (plan.releaseKey !== RELEASE_KEY) throw new Error('Unready release plan');
+  if (plan.conflicts.length || plan.counts.conflicts || plan.actions.length !== new Set(plan.actions.map(a=>a.id)).size) throw new Error('Unready release plan');
   for (const a of plan.actions) {
     if (a.id !== a.before.id || a.id !== a.after.id || a.bankKey !== a.before.bankKey || a.questionNum !== a.before.questionNum || Object.keys(a.before).sort().join() !== [...FIELDS].sort().join() || Object.keys(a.after).sort().join() !== [...FIELDS].sort().join()) throw new Error('Invalid plan identity/columns');
     for (const field of FIELDS.filter(k=>!MUTABLE.includes(k))) if (digest(a.before[field]) !== digest(a.after[field])) throw new Error('Immutable field changed');
@@ -28,7 +31,7 @@ export async function applyPlan(connection, plan, {rollback = false} = {}) {
     const rows = await readRows(connection,plan.actions.map(a=>a.id),true);
     const effective = rollback ? {...plan,actions:plan.actions.map(a=>({...a,before:a.after,after:a.before,beforeSha256:a.afterSha256,afterSha256:a.beforeSha256}))} : plan;
     const state = checkState(effective,rows);
-    const [receipts] = await connection.execute('SELECT questionId, contentHash, payload FROM question_content_snapshots WHERE releaseKey = ? ORDER BY questionId FOR UPDATE',[RELEASE_KEY]);
+    const [receipts] = await connection.execute('SELECT questionId, contentHash, payload FROM question_content_snapshots WHERE releaseKey = ? ORDER BY questionId FOR UPDATE',[plan.releaseKey]);
     if (!state.pending.length) {
       if (receipts.length !== plan.actions.length || receipts.some(r=>{const a=plan.actions.find(a=>a.id===r.questionId); return !a || r.contentHash!==a.beforeSha256 || digest(JSON.parse(r.payload))!==a.beforeSha256;})) throw new Error('Idempotent state has missing/invalid receipts');
       await connection.rollback(); return {mode:rollback?'already-rolled-back':'already-applied',changed:0};
@@ -37,14 +40,14 @@ export async function applyPlan(connection, plan, {rollback = false} = {}) {
       if (receipts.length !== plan.actions.length || receipts.some(r=>{const a=plan.actions.find(a=>a.id===r.questionId);return !a || r.contentHash!==a.beforeSha256 || digest(JSON.parse(r.payload))!==a.beforeSha256;})) throw new Error('Rollback receipt mismatch');
     } else if (receipts.length) throw new Error('Release key already used; reconcile before continuing');
     for (const a of state.pending) {
-      if (!rollback) await connection.execute('INSERT INTO question_content_snapshots (releaseKey, bankKey, questionId, questionNum, sourceContentVersion, contentHash, payload) VALUES (?, ?, ?, ?, ?, ?, ?)',[RELEASE_KEY,a.bankKey,a.id,a.questionNum,0,a.beforeSha256,JSON.stringify(a.before)]);
+      if (!rollback) await connection.execute('INSERT INTO question_content_snapshots (releaseKey, bankKey, questionId, questionNum, sourceContentVersion, contentHash, payload) VALUES (?, ?, ?, ?, ?, ?, ?)',[plan.releaseKey,a.bankKey,a.id,a.questionNum,0,a.beforeSha256,JSON.stringify(a.before)]);
       const [result] = await connection.execute(`UPDATE questions SET ${MUTABLE.map(k=>'`'+k+'` = ?').join(',')} WHERE id = ? AND bankKey = ? AND questionNum = ?`,[...MUTABLE.map(k=>k==='reviewedAt' && a.after[k] ? new Date(a.after[k]) : a.after[k]),a.id,a.bankKey,a.questionNum]);
       if (result.affectedRows !== 1) throw new Error(`Exact row update failed ${a.id}`);
     }
     const after = await readRows(connection,plan.actions.map(a=>a.id),true);
     const verified = checkState(effective,after);
     if (verified.done.length !== plan.actions.length) throw new Error('After-image verification failed');
-    const [snapshots] = await connection.execute('SELECT questionId, contentHash, payload FROM question_content_snapshots WHERE releaseKey = ? ORDER BY questionId FOR UPDATE',[RELEASE_KEY]);
+    const [snapshots] = await connection.execute('SELECT questionId, contentHash, payload FROM question_content_snapshots WHERE releaseKey = ? ORDER BY questionId FOR UPDATE',[plan.releaseKey]);
     if (snapshots.length !== plan.actions.length || snapshots.some(r=>{const a=plan.actions.find(a=>a.id===r.questionId);return !a || r.contentHash!==a.beforeSha256 || digest(JSON.parse(r.payload))!==a.beforeSha256;})) throw new Error('Immutable receipt verification failed');
     await connection.commit(); committed = true;
     return {mode:rollback?'rolled-back':'applied',changed:state.pending.length,receipts:snapshots.length};
