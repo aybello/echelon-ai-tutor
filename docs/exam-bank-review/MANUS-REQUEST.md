@@ -12,7 +12,7 @@ Written from the review in `docs/exam-bank-review/RESULTS.md`. Nothing below has
 ## How
 
 - Each finding has `id`, `bankKey`, `questionNum` and a full corrected `fix` (question, four options, `correctIndex`, explanation, `steps`). Match on `id` (the `questions` table primary key in the export).
-- `fix: null` (34 findings): remove or rewrite; no repair was possible.
+- `replacement: true` (34 findings): the original could not be repaired, so `fix` is a new question on the same topic area; replace the original row with it. The same 34 are listed in `replacements.json`.
 - Where a question appears in several banks (176 appear in two, 17 in three), apply the fix to every copy; each copy has its own finding.
 - Before applying, check the items in `needs-source-check.txt` against the current regulation or guideline. If you cannot, hold those items.
 - Read and decide on the 144 candidates in `units-unflagged-candidates.json`.

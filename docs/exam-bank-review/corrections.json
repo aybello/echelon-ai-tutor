@@ -4607,7 +4607,19 @@
     "correctIndex": 0,
     "explanation": "O. Reg. 170/03 mandates immediate reporting of adverse water quality incidents to the MECP and the MOH to protect public health and ensure appropriate corrective actions are taken."
    },
-   "fix": null
+   "fix": {
+    "question": "A sanitary sewer is surcharging and sewage is overflowing from a manhole onto a street. What should the operator do first?",
+    "options": [
+     "Flush the overflow into the nearest storm drain to clear the street",
+     "Protect the public by restricting access, notify the supervisor and start the spill response procedure",
+     "Wait for the level to fall on its own before telling anyone",
+     "Lift neighbouring manhole covers to let more sewage escape"
+    ],
+    "correctIndex": 1,
+    "explanation": "An overflow exposes people to raw sewage and can reach a watercourse. The first priorities are to keep people away, report it and begin the facility's spill response steps. Sending sewage to a storm drain moves the pollution into a receiving water.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 155470,
@@ -4626,7 +4638,19 @@
     "correctIndex": 0,
     "explanation": "This question is for a wastewater collection systems exam, not a drinking water exam. O. Reg. 170/03 pertains to drinking water systems, and specifically outlines turbidity requirements for filtered water. The correct answer is 0.3 NTU in 95% of samples each month, but this regulation is not directly applicable to wastewater collection systems."
    },
-   "fix": null
+   "fix": {
+    "question": "What is the main purpose of cleaning gravity sewers on a regular schedule?",
+    "options": [
+     "To remove grease, grit and roots that reduce capacity and cause blockages and overflows",
+     "To raise the hydrogen sulfide concentration in the sewage",
+     "To increase the groundwater infiltration rate",
+     "To make the pipe walls rougher for better flow"
+    ],
+    "correctIndex": 0,
+    "explanation": "Grease, grit and roots build up in sewers and cut the flow area. Routine cleaning keeps the pipe at its design capacity and prevents blockages and backups.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 155473,
@@ -4828,7 +4852,19 @@
     "correctIndex": 1,
     "explanation": "This question is for a wastewater collection systems exam, not a drinking water exam. O. Reg. 170/03 pertains to drinking water systems, and specifically outlines sampling requirements. For a small drinking water system serving a population of 100 people, the required frequency for bacteriological sampling is typically weekly. However, this regulation is not directly applicable to wastewater collection systems."
    },
-   "fix": null
+   "fix": {
+    "question": "Which observation most strongly points to inflow, rather than infiltration, as the main source of extra flow in a sanitary sewer?",
+    "options": [
+     "Flow stays high for weeks after the rain stops and drops slowly",
+     "Flow is highest at night when little wastewater is produced and does not change with rain",
+     "Flow is unchanged during and after storms",
+     "Flow rises sharply during a storm and falls back to normal within hours after it ends"
+    ],
+    "correctIndex": 3,
+    "explanation": "Inflow enters directly through sources such as cross-connected roof drains or manhole covers, so it appears quickly with rainfall and ends quickly. Infiltration through cracks and joints rises and falls more slowly with the groundwater level.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 155511,
@@ -4894,7 +4930,19 @@
     "correctIndex": 3,
     "explanation": "O. Reg. 170/03 specifies immediate reporting to the Spills Action Centre (SAC) and the Medical Officer of Health (MOH) for adverse drinking water conditions."
    },
-   "fix": null
+   "fix": {
+    "question": "Why should an operator not rely on smell to tell whether hydrogen sulfide is present in a manhole?",
+    "options": [
+     "Hydrogen sulfide has no odour at any concentration, so smell cannot be used at all",
+     "The gas gives off a smell only when it has first been mixed with methane in the space",
+     "At higher concentrations it dulls the sense of smell, so the odour can disappear while the gas is still present",
+     "Only specially trained workers are physically able to smell the gas at any level"
+    ],
+    "correctIndex": 2,
+    "explanation": "Hydrogen sulfide smells like rotten eggs at low concentrations, but at higher levels it paralyses the sense of smell. A lack of odour is not a sign that the space is safe, so a gas monitor must be used.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 155539,
@@ -7524,7 +7572,19 @@
     "correctIndex": 0,
     "explanation": "O. Reg. 170/03 Schedule 1-1, Section 1-1 (1) states that an operator must attend at the drinking water system within 30 minutes after becoming aware of an alarm."
    },
-   "fix": null
+   "fix": {
+    "question": "Why should a hydrant valve be closed slowly after use?",
+    "options": [
+     "Closing quickly lets air enter the main and lowers the chlorine residual",
+     "A sudden stop in the flowing water causes a pressure surge (water hammer) that can damage pipes and fittings",
+     "Slow closing keeps the hydrant drained for winter",
+     "Fast closing makes the hydrant leak at the barrel"
+    ],
+    "correctIndex": 1,
+    "explanation": "Flowing water has momentum. When a valve closes quickly the water is stopped suddenly and the pressure spikes along the main. Closing slowly lets the velocity fall gradually.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 154738,
@@ -12975,7 +13035,19 @@
     "correctIndex": 0,
     "explanation": "O. Reg. 170/03 mandates immediate notification to the Medical Officer of Health and the MECP for any adverse water quality incidents to protect public health and ensure regulatory oversight."
    },
-   "fix": null
+   "fix": {
+    "question": "What is the purpose of a check valve on the discharge line of a lift station pump?",
+    "options": [
+     "To prevent flow from returning from the force main into the pump when it stops",
+     "To raise the discharge pressure of the pump while it is running at full speed",
+     "To let air escape from the wet well when the water level rises quickly",
+     "To measure the flow rate leaving the station and send it to the control room"
+    ],
+    "correctIndex": 0,
+    "explanation": "When a pump stops, the liquid in the force main would flow back toward the wet well. The check valve closes and keeps it in the line, which also protects the idle pump from spinning backward.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 185239,
@@ -12994,7 +13066,19 @@
     "correctIndex": 2,
     "explanation": "O. Reg. 170/03, Schedule 10, specifies sampling frequencies for E. coli and total coliforms based on population served, as outlined in the system's Drinking Water Works Permit or Municipal Drinking Water Licence."
    },
-   "fix": null
+   "fix": {
+    "question": "Which condition in a sewer force main most often leads to the formation of hydrogen sulfide?",
+    "options": [
+     "Fast flow with a high dissolved oxygen concentration",
+     "A low sewage temperature with frequent mixing",
+     "A short pipe with continuous aeration",
+     "Long detention times that let the sewage turn anaerobic"
+    ],
+    "correctIndex": 3,
+    "explanation": "When sewage sits in a full pipe for a long time the dissolved oxygen is used up. Bacteria then reduce sulfate to hydrogen sulfide, which is released at discharge points and causes odour, corrosion and safety hazards.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 185248,
@@ -25335,7 +25419,28 @@
     "correctIndex": 3,
     "explanation": "Head per pump increases by the square of the flow ratio according to system curve."
    },
-   "fix": null
+   "fix": {
+    "question": "Two identical pumps operate in parallel. Each delivers 65 L/s at a head of 38 m. What is the total flow when both run at that same head?",
+    "options": [
+     "65 L/s",
+     "76 L/s",
+     "130 L/s",
+     "260 L/s"
+    ],
+    "correctIndex": 2,
+    "explanation": "Pumps in parallel share the same head and their flows add. Two pumps at 65 L/s each deliver 130 L/s at 38 m (in a real system the head rises somewhat, so the flow is a little less).",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Pumps in parallel add flow at the same head."
+     },
+     {
+      "l": "Step 2",
+      "c": "Q = 65 L/s + 65 L/s = 130 L/s"
+     }
+    ]
+   },
+   "replacement": true
   },
   {
    "id": 240889,
@@ -26622,7 +26727,19 @@
     "correctIndex": 2,
     "explanation": "Under O. Reg. 128/04, Section 10 (1), an Operator-in-Training certificate is valid for a maximum period of 5 years. This allows sufficient time for OITs to gain the necessary experience and pass the certification exams to upgrade to a higher class of certificate. Options of 1, 2, or 3 years are incorrect as they do not align with the specified regulatory period for OIT certificate validity in Ontario."
    },
-   "fix": null
+   "fix": {
+    "question": "What does the term chlorine demand mean?",
+    "options": [
+     "The chlorine left in the water after disinfection",
+     "The amount of chlorine used up by reactions with substances in the water",
+     "The amount of chlorine stored in the cylinder",
+     "The dose needed to raise the pH to 7"
+    ],
+    "correctIndex": 1,
+    "explanation": "Chlorine demand is the dose added minus the residual that remains. It is consumed by organic matter, iron, manganese, ammonia and other substances in the water.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 35148,
@@ -26761,7 +26878,19 @@
     "correctIndex": 2,
     "explanation": "Under Ontario Regulation 128/04, Section 10(1), a conditional operator's certificate may be issued for a maximum period of one year. This provision allows individuals to gain the necessary experience or complete specific training requirements while working in a water or wastewater facility. The one-year duration provides a reasonable timeframe for operators to meet the conditions for a full certificate, ensuring public health and environmental protection through qualified personnel. Other durations like 6 months, 2 years, or 3 years are not specified as the maximum for a conditional certificate under this regulation."
    },
-   "fix": null
+   "fix": {
+    "question": "Which list shows the steps of conventional surface water treatment in the usual order?",
+    "options": [
+     "Coagulation, flocculation, sedimentation, filtration, disinfection",
+     "Filtration, sedimentation, coagulation, flocculation, disinfection",
+     "Disinfection, coagulation, filtration, flocculation, sedimentation",
+     "Sedimentation, coagulation, disinfection, filtration, flocculation"
+    ],
+    "correctIndex": 0,
+    "explanation": "Coagulant is mixed in first, flocculation grows the floc, sedimentation settles it, filtration removes what is left and disinfection is the final barrier.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 35171,
@@ -26780,7 +26909,19 @@
     "correctIndex": 1,
     "explanation": "O. Reg. 128/04, Schedule 1, Table 1, specifies that for a Class IV Water Treatment Operator certificate, the educational requirement is a post-secondary diploma or a university degree in a related field. While both B and C are technically correct based on the 'or' condition, option B, 'Post-secondary diploma in a related field,' represents the minimum post-secondary educational requirement. Option C, a university degree, is also acceptable but is a higher level of education than the minimum specified. Therefore, B is the most accurate representation of the minimum specific educational requirement among the choices provided."
    },
-   "fix": null
+   "fix": {
+    "question": "What is the purpose of backwashing a rapid gravity filter?",
+    "options": [
+     "To add a chlorine dose directly into the filter media before the water is filtered",
+     "To raise the turbidity of the filtered water so that it matches the raw water",
+     "To change the grain size of the sand each time the filter is put back in service",
+     "To remove the solids trapped in the media so the filter can run again at its normal capacity"
+    ],
+    "correctIndex": 3,
+    "explanation": "As a filter runs, particles fill the spaces in the media and head loss rises. Reversing the flow lifts and cleans the bed and washes the solids to waste.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 35172,
@@ -27614,7 +27755,19 @@
     "correctIndex": 2,
     "explanation": "A 24-hour supply is generally considered the maximum recommended capacity for chemical day tanks in Canadian water and wastewater treatment facilities. This duration balances the need for continuous chemical feed with safety considerations, minimizing the amount of hazardous chemicals stored on-site. While specific provincial regulations may vary, this aligns with common industry best practices and guidelines, such as those often referenced in Ontario's Ministry of the Environment, Conservation and Parks (MECP) design guidelines for water and wastewater treatment plants, which emphasize minimizing chemical storage to reduce risks. A 30-hour supply, while sometimes mentioned, is less universally accepted as a maximum compared to the 24-hour standard."
    },
-   "fix": null
+   "fix": {
+    "question": "What is a day tank used for in a chemical feed system?",
+    "options": [
+     "To store the plant's entire bulk chemical supply",
+     "To neutralize spilled chemical",
+     "To hold a small working supply of chemical near the feed pump",
+     "To mix two incompatible chemicals together"
+    ],
+    "correctIndex": 2,
+    "explanation": "A day tank holds about a day's use of chemical close to the feed pump. It limits the amount at hand and lets the operator check the feed rate by watching the level drop.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 35435,
@@ -29047,7 +29200,19 @@
     "correctIndex": 0,
     "explanation": "O. Reg. 128/04 specifies that for a Class 4 wastewater treatment plant, the overall responsible operator must visit the plant at least once every day. This regulation ensures regular oversight and management of the most complex facilities to maintain operational integrity and compliance."
    },
-   "fix": null
+   "fix": {
+    "question": "What does a high sludge volume index (SVI) in an activated sludge plant indicate?",
+    "options": [
+     "The sludge settles and compacts very well",
+     "The sludge settles poorly, as in bulking",
+     "The sludge has no filamentous bacteria",
+     "The plant has too little mixed liquor"
+    ],
+    "correctIndex": 1,
+    "explanation": "SVI is the volume in mL occupied by one gram of settled sludge. A high value means the floc is light and settles slowly, which risks solids carrying over the clarifier weir.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 60446,
@@ -35958,7 +36123,19 @@
     "correctIndex": 3,
     "explanation": "Class II BNR facilities typically require weekly effluent nutrient (TN, TP, NH4-N) monitoring to verify compliance with nutrient permit limits."
    },
-   "fix": null
+   "fix": {
+    "question": "What is the purpose of the anoxic zone in a biological nutrient removal process?",
+    "options": [
+     "To convert nitrate to nitrogen gas using the organic matter in the wastewater",
+     "To add dissolved oxygen so that ammonia can be converted to nitrate by bacteria",
+     "To settle the sludge out of the mixed liquor before it is returned to the tank",
+     "To disinfect the effluent with chlorine before it is discharged to the river"
+    ],
+    "correctIndex": 0,
+    "explanation": "In the anoxic zone there is no free dissolved oxygen, so bacteria use nitrate as the oxygen source and release nitrogen gas. This is denitrification and it removes nitrogen from the water.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 44266,
@@ -35977,7 +36154,19 @@
     "correctIndex": 3,
     "explanation": "Most permits require effluent DO of at least 2 mg/L to prevent oxygen depletion in receiving waters and protect aquatic life."
    },
-   "fix": null
+   "fix": {
+    "question": "Why is post-aeration often used before effluent is discharged?",
+    "options": [
+     "To lower the effluent temperature so that it is the same as the receiving water",
+     "To add more ammonia to the effluent so that the fish have more food to eat",
+     "To remove all of the remaining solids before the effluent reaches the outfall",
+     "To raise the dissolved oxygen in the effluent to protect life in the receiving water"
+    ],
+    "correctIndex": 3,
+    "explanation": "Treated effluent can leave with low dissolved oxygen, especially after disinfection or denitrification. Aerating it before release helps keep the receiving water able to support fish.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 44302,
@@ -48052,7 +48241,19 @@
     "correctIndex": 2,
     "explanation": "EEM studies are conducted on a schedule based on plant size and effluent quality. Larger plants or those with greater environmental impact conduct studies more frequently."
    },
-   "fix": null
+   "fix": {
+    "question": "What does a composite effluent sample show that a single grab sample does not?",
+    "options": [
+     "The quality at one instant only",
+     "The temperature of the sludge",
+     "The average quality over a period of time",
+     "The flow rate at the weir"
+    ],
+    "correctIndex": 2,
+    "explanation": "A composite is made from many small portions taken over time or in proportion to flow. It represents the average conditions, while a grab sample shows only the moment it was taken.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 45037,
@@ -49984,7 +50185,28 @@
     "correctIndex": 1,
     "explanation": "Per the GCDWQ and USEPA Surface Water Treatment Rule, 3-log Giardia inactivation with free chlorine at pH 7 and 10°C requires approximately 165 mg·min/L CT. Lower temperatures require higher CT values."
    },
-   "fix": null
+   "fix": {
+    "question": "A contact basin has a free chlorine residual of 1.2 mg/L and an effective contact time of 25 minutes. What is the CT value?",
+    "options": [
+     "20.8 mg·min/L",
+     "30 mg·min/L",
+     "26.2 mg·min/L",
+     "3.0 mg·min/L"
+    ],
+    "correctIndex": 1,
+    "explanation": "CT is the disinfectant residual multiplied by the effective contact time. 1.2 mg/L × 25 min = 30 mg·min/L.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "CT = C × T"
+     },
+     {
+      "l": "Step 2",
+      "c": "CT = 1.2 mg/L × 25 min = 30 mg·min/L"
+     }
+    ]
+   },
+   "replacement": true
   },
   {
    "id": 42755,
@@ -50003,7 +50225,28 @@
     "correctIndex": 2,
     "explanation": "**Step 1 — Calculate Total Adsorption Capacity:**\n20 mg/L PAC * 200 µg geosmin/mg PAC = 4000 µg geosmin/L\n\n**Step 2 — Convert Capacity to ng/L:**\n4000 µg geosmin/L * 1000 ng/µg = 4,000,000 ng geosmin/L\n\n**Step 3 — Compare Capacity to Raw Water Concentration:**\nRaw water geosmin concentration = 50 ng/L.\nSince 4,000,000 ng/L (PAC capacity) >> 50 ng/L (geosmin concentration), all geosmin can be adsorbed.\n\nThe correct answer is **100% (complete removal)**."
    },
-   "fix": null
+   "fix": {
+    "question": "A plant treats 8 ML/d and doses powdered activated carbon at 20 mg/L. How many kilograms of PAC are used per day?",
+    "options": [
+     "160 kg/d",
+     "16 kg/d",
+     "1,600 kg/d",
+     "80 kg/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "One mg/L applied to one ML/d is one kg/d. So 20 mg/L × 8 ML/d = 160 kg/d.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "1 mg/L × 1 ML/d = 1 kg/d"
+     },
+     {
+      "l": "Step 2",
+      "c": "20 × 8 = 160 kg/d"
+     }
+    ]
+   },
+   "replacement": true
   },
   {
    "id": 42759,
@@ -54158,7 +54401,19 @@
     "correctIndex": 1,
     "explanation": "Under Ontario's O. Reg. 170/03, Schedule 10, Table 1, for a large municipal residential system serving a population greater than 100,000, the required sampling frequency for total coliform and E. coli is weekly. Specifically, the regulation mandates a minimum of 100 samples per month plus one additional sample for every 10,000 persons or part thereof over 100,000. This translates to weekly sampling to meet the monthly minimums, not daily sampling. Daily, monthly, or quarterly sampling frequencies are incorrect for this population size."
    },
-   "fix": null
+   "fix": {
+    "question": "Why is a free chlorine residual kept in a distribution system?",
+    "options": [
+     "To make the water look clearer in the pipes and at the tap",
+     "To raise the pH of the water as it moves through the system",
+     "To remove the hardness from the water before it reaches customers",
+     "To keep protecting the water from microbial growth and contamination after it leaves the plant"
+    ],
+    "correctIndex": 3,
+    "explanation": "A residual that remains in the pipes keeps disinfecting as the water travels, and it gives a warning if contamination enters. Without it, bacteria can regrow in the system.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 43013,
@@ -54773,7 +55028,19 @@
     "correctIndex": 1,
     "explanation": "The Ontario Safe Drinking Water Act (SDWA) is primarily concerned with protecting public health through the provision of safe drinking water. A key requirement of the SDWA, specifically through its associated regulations and the Drinking Water Quality Management Standard (DWQMS), is the establishment of robust procedures for managing water quality incidents. Option B accurately describes this critical aspect, which is essential for ensuring public safety and compliance with the Act. The other options, while potentially related to water treatment operations, are not direct, overarching requirements of the SDWA itself."
    },
-   "fix": null
+   "fix": {
+    "question": "What is the idea behind the multi-barrier approach to drinking water safety?",
+    "options": [
+     "One strong disinfection step is enough, so the other safeguards can be skipped",
+     "Water is treated only when the source has been found to be badly polluted",
+     "Several independent safeguards are used, so one failing does not lead to unsafe water",
+     "Testing at the tap replaces the need for treatment at the plant"
+    ],
+    "correctIndex": 2,
+    "explanation": "The barriers include source protection, treatment, a protected distribution system and monitoring. Each layer backs up the others.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 43307,
@@ -54792,7 +55059,19 @@
     "correctIndex": 0,
     "explanation": "UV validation: bioassay testing (challenge organisms at various UVT and flow conditions), establishes validated operating conditions (minimum UVT, maximum flow, minimum UV intensity). Monitoring: online UVT measurement, UV intensity sensors (calibrated quarterly), flow measurement, and calculated dose. Dose must exceed validated minimum for log credit. Factors reducing dose: lamp aging, sleeve fouling, low UVT, and high flow."
    },
-   "fix": null
+   "fix": {
+    "question": "What does the UV transmittance (UVT) of a water sample measure?",
+    "options": [
+     "The number of UV lamps that are lit",
+     "The share of UV light that passes through the water",
+     "The chlorine demand of the water",
+     "The pH of the water"
+    ],
+    "correctIndex": 1,
+    "explanation": "UVT is the fraction of UV light that gets through the water over a set path length. Lower UVT means more light is absorbed, so less reaches the organisms and the UV dose falls.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 43308,
@@ -54811,7 +55090,19 @@
     "correctIndex": 0,
     "explanation": "Process control philosophy: defines target turbidity (<0.1 NTU vs regulatory 1.0 NTU), chlorine residual range, pH targets, and response to deviations. Includes: coagulant dose control strategy (streaming current, jar test, or operator judgment), filter management (run time limits, breakthrough criteria), and disinfection (Ct safety factor). Benefits: consistent quality across shifts, reduced operator-dependent variability, and defensible decision-making during events."
    },
-   "fix": null
+   "fix": {
+    "question": "What is the purpose of a standard operating procedure (SOP) in a treatment plant?",
+    "options": [
+     "To set out the steps of a task so that it is done the same way each time",
+     "To replace operator training completely",
+     "To let each operator choose a different method",
+     "To record the daily weather"
+    ],
+    "correctIndex": 0,
+    "explanation": "An SOP documents how a task should be done safely and correctly. It helps staff on different shifts get the same result and gives new operators a reference.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 43310,
@@ -55555,7 +55846,32 @@
     "correctIndex": 0,
     "explanation": "Remaining log inactivation needed = 3.0 - 1.5 - 0.5 = 1.0 log. From the USEPA CT tables for Giardia inactivation with free chlorine at 10°C and pH 7.0, 1.0-log inactivation requires a Ct of approximately 49 mg·min/L. This value is looked up from regulatory CT tables, not calculated from first principles."
    },
-   "fix": null
+   "fix": {
+    "question": "A plant needs a total of 3-log Giardia inactivation. Ozone provides 1.5-log and UV provides 0.5-log. How much log inactivation must the remaining disinfectant provide?",
+    "options": [
+     "0.5-log",
+     "1.5-log",
+     "2.0-log",
+     "1.0-log"
+    ],
+    "correctIndex": 3,
+    "explanation": "Log credits from each barrier add. The remaining requirement is the total minus the credits already given: 3.0 − 1.5 − 0.5 = 1.0.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Required total = 3.0-log"
+     },
+     {
+      "l": "Step 2",
+      "c": "Credits so far = 1.5 + 0.5 = 2.0-log"
+     },
+     {
+      "l": "Step 3",
+      "c": "Remaining = 3.0 − 2.0 = 1.0-log"
+     }
+    ]
+   },
+   "replacement": true
   },
   {
    "id": 270004,
@@ -60647,7 +60963,19 @@
     "correctIndex": 1,
     "explanation": "For a fire line, a Double Check Detector Assembly (DCDA) is typically required to protect against low hazard contamination and to detect unauthorized water use. For a domestic service to an industrial customer, especially where processes could introduce higher hazards, a Reduced Pressure Principle Detector Assembly (RPDA) is often mandated to provide high-hazard protection and detect unauthorized use. This combination effectively addresses both hazard levels and monitoring requirements."
    },
-   "fix": null
+   "fix": {
+    "question": "Which method of backflow protection gives the most reliable protection against a high-hazard cross-connection?",
+    "options": [
+     "A single check valve",
+     "A double check valve assembly",
+     "An air gap",
+     "A pressure vacuum breaker"
+    ],
+    "correctIndex": 2,
+    "explanation": "An air gap is a physical open space between the supply outlet and the possible source of contamination. Nothing can flow back across it, unlike mechanical devices that can foul or fail.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 91396,
@@ -60726,7 +61054,19 @@
     "correctIndex": 3,
     "explanation": "The Ontario Environmental Assessment Act is the primary driver for projects requiring comprehensive environmental impact assessments and public consultation, especially for significant undertakings by public bodies like municipalities. While other acts are relevant to water infrastructure, the EA Act specifically mandates these components for large-scale capital projects. Securing easements is a practical project component, but the regulatory framework for the assessment and public engagement is the EA Act."
    },
-   "fix": null
+   "fix": {
+    "question": "What is an easement?",
+    "options": [
+     "A pipe fitting that joins two water mains of different diameters together",
+     "A legal right to use a part of someone else's land for a specific purpose, such as a buried pipe",
+     "A permit that allows a utility to discharge treated water to a river",
+     "A type of valve that is installed on large transmission mains"
+    ],
+    "correctIndex": 1,
+    "explanation": "Utilities often need to place pipes across private land. An easement gives that right without transferring ownership of the land.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 91438,
@@ -60955,7 +61295,19 @@
     "correctIndex": 0,
     "explanation": "Under Ontario's Safe Drinking Water Act O. Reg. 170/03, water systems must have a cross-connection control program that identifies and protects all cross-connections. The type of backflow prevention device required depends on the hazard level: high-hazard connections (chemical, medical, industrial) require reduced pressure zone (RPZ) devices; medium-hazard connections require double check valves; low-hazard connections may use atmospheric vacuum breakers. All cross-connections must be protected — there is no exemption for residential connections."
    },
-   "fix": null
+   "fix": {
+    "question": "What is a cross-connection?",
+    "options": [
+     "A real or possible link between a drinking water system and a source of contamination",
+     "A valve that joins two water mains of the same quality",
+     "A pipe that carries water from a well to a plant",
+     "A meter installed at a customer's service"
+    ],
+    "correctIndex": 0,
+    "explanation": "A cross-connection lets contaminants enter the potable system if the pressure drops or flow reverses. Backflow prevention devices are used to protect against it.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 420020,
@@ -61424,7 +61776,19 @@
     "correctIndex": 2,
     "explanation": "Under O. Reg. 170/03, Schedule 10, the required frequency for microbiological sampling (E. coli and total coliforms) in a municipal residential system serving a population greater than 100,000 is 7 samples per week. This translates to daily sampling. While sampling frequency is indeed based on population, the regulation specifies a weekly minimum, not 'multiple samples per day' for routine microbiological analysis. Therefore, 'Daily' is the most accurate representation of the highest frequency required for such a large system."
    },
-   "fix": null
+   "fix": {
+    "question": "Why are distribution samples collected at several locations in the system and not only at the plant outlet?",
+    "options": [
+     "To avoid having to test for the chlorine residual anywhere in the system",
+     "Because the plant outlet is never allowed to be sampled by the operators",
+     "To reduce the total number of tests that the laboratory must carry out",
+     "To show the quality of the water at different points that customers receive it"
+    ],
+    "correctIndex": 3,
+    "explanation": "Water quality can change as it travels through pipes, storage and dead ends. Sampling around the system shows what customers actually get.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 40859,
@@ -61503,7 +61867,19 @@
     "correctIndex": 1,
     "explanation": "The Ontario Drinking Water Standards require a CT of 165 mg·min/L for 4-log Giardia inactivation using free chlorine at 10°C, as specified in the Procedure for Disinfection of Drinking Water in Ontario."
    },
-   "fix": null
+   "fix": {
+    "question": "What does a 4-log inactivation of an organism mean?",
+    "options": [
+     "A 99.9 percent reduction in the number of organisms present",
+     "A 90 percent reduction in the number of organisms present",
+     "A 99.99 percent reduction in the number of organisms",
+     "A 99.999 percent reduction in the number of organisms present"
+    ],
+    "correctIndex": 2,
+    "explanation": "Each log is a factor of ten: 1-log is 90 percent, 2-log is 99 percent, 3-log is 99.9 percent and 4-log is 99.99 percent.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 40864,
@@ -61702,7 +62078,19 @@
     "correctIndex": 2,
     "explanation": "Section 30 of the Safe Drinking Water Act, 2002 requires owners of municipal drinking water systems to prepare and maintain an Emergency Response Plan that addresses potential threats to the system."
    },
-   "fix": null
+   "fix": {
+    "question": "What should a water system's emergency response plan contain?",
+    "options": [
+     "Only the year that the plant was built and the name of the original designer",
+     "Contact information, assigned roles and the steps to follow during an emergency",
+     "Only the chemical supplier's price list and the delivery schedule for the year",
+     "Only a list of the customer complaints that were received in the past year"
+    ],
+    "correctIndex": 1,
+    "explanation": "The plan must tell people who to call, who does what, and what to do, so the system can respond quickly when something goes wrong.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 40885,
@@ -62039,7 +62427,28 @@
     "correctIndex": 3,
     "explanation": "To determine the log inactivation of Giardia, one must consult the CT tables for free chlorine, typically found in guidance documents like the 'Guidance on Drinking Water Disinfection' from Health Canada. At pH 7.5 and 10°C, a CT value of 120 mg·min/L falls between the values required for 1.5-log inactivation (e.g., 90 mg·min/L) and 2.5-log inactivation (e.g., 150 mg·min/L) for Giardia cysts. Specifically, a CT of 120 mg·min/L is closest to achieving 2.0-log inactivation, which often requires a CT around 100-120 mg·min/L depending on the specific table and interpolation. Therefore, 2.0-log inactivation is the most appropriate answer."
    },
-   "fix": null
+   "fix": {
+    "question": "A free chlorine residual of 0.8 mg/L is kept with an effective contact time of 40 minutes. What is the CT value?",
+    "options": [
+     "32 mg·min/L",
+     "320 mg·min/L",
+     "3.2 mg·min/L",
+     "50 mg·min/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "CT is the residual times the effective contact time: 0.8 mg/L × 40 min = 32 mg·min/L.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "CT = C × T"
+     },
+     {
+      "l": "Step 2",
+      "c": "CT = 0.8 mg/L × 40 min = 32 mg·min/L"
+     }
+    ]
+   },
+   "replacement": true
   },
   {
    "id": 40929,
@@ -62088,7 +62497,19 @@
     "correctIndex": 2,
     "explanation": "Microbiological samples must be analyzed within 24 hours of collection (6 hours is preferred). Samples must be kept at 4°C during transport. Longer holding times allow bacterial populations to change — coliforms may die off or non-target bacteria may multiply, leading to false results."
    },
-   "fix": null
+   "fix": {
+    "question": "Why must a sample for bacteriological testing be kept cool and delivered to the laboratory promptly?",
+    "options": [
+     "The sample would change colour and make the test result harder to read",
+     "The glass container would crack if the sample were allowed to warm up",
+     "The chlorine residual in the sample would increase while it was kept warm",
+     "Organisms in the sample can die or multiply, which would change the result"
+    ],
+    "correctIndex": 3,
+    "explanation": "Bacteria keep living and either die off or grow in the bottle. If the sample is held too long or warm, the count no longer reflects the water that was sampled.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 40952,
@@ -62137,7 +62558,19 @@
     "correctIndex": 1,
     "explanation": "Under O. Reg. 170/03, a first-draw lead sample exceeding the MAC of 10 μg/L is an adverse test result requiring notification of the Medical Officer of Health and corrective action investigation. The first-draw protocol is specifically designed to capture worst-case lead exposure from internal plumbing and service connections."
    },
-   "fix": null
+   "fix": {
+    "question": "Why are lead service lines a concern for drinking water?",
+    "options": [
+     "Lead makes the water taste of chlorine",
+     "Lead pipes remove minerals from the water",
+     "Lead can dissolve into water that stands in contact with the pipe",
+     "Lead reacts with the chlorine to form gas"
+    ],
+    "correctIndex": 2,
+    "explanation": "Lead can leach from pipe and plumbing, especially in water that has stood in the pipe for hours or has corrosive qualities. Lead is harmful to health, especially for children.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 40965,
@@ -62156,7 +62589,19 @@
     "correctIndex": 3,
     "explanation": "Microbiological samples must be analyzed within 24 hours of collection (6 hours is preferred for best results). The 24-hour maximum holding time applies to samples preserved at 4°C. Beyond this time, microbial populations change and results become unreliable."
    },
-   "fix": null
+   "fix": {
+    "question": "What is added to a sample bottle for bacteriological analysis of chlorinated water, and why?",
+    "options": [
+     "Sodium hydroxide, to raise the pH of the sample so bacteria survive longer",
+     "Sodium thiosulfate, to neutralize the chlorine so it stops killing bacteria in the bottle",
+     "Alum, to settle the particles out of the sample before it is tested",
+     "Extra chlorine, to preserve the sample until it reaches the laboratory"
+    ],
+    "correctIndex": 1,
+    "explanation": "Chlorine would keep disinfecting after collection and give a false low count. Sodium thiosulfate removes the residual at the time of sampling.",
+    "steps": null
+   },
+   "replacement": true
   },
   {
    "id": 40966,
@@ -62368,7 +62813,28 @@
     "correctIndex": 2,
     "explanation": "For large municipal residential systems (serving >10,000 people), O. Reg. 170/03 requires bacteriological sampling based on a site-specific sampling plan approved by the Director (MECP). The minimum frequency is typically daily for very large systems, but the exact frequency and sampling locations are specified in the approved sampling plan. Smaller systems have fixed minimum frequencies specified in Schedule 10 of O. Reg. 170/03."
    },
-   "fix": null
+   "fix": {
+    "question": "A system collects 60 distribution samples in a month and 3 test positive for total coliform. What percentage of the samples were positive?",
+    "options": [
+     "5 percent",
+     "3 percent",
+     "20 percent",
+     "0.5 percent"
+    ],
+    "correctIndex": 0,
+    "explanation": "Percent positive is positives divided by samples, times 100: 3 ÷ 60 × 100 = 5.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "% = positive ÷ total × 100"
+     },
+     {
+      "l": "Step 2",
+      "c": "3 ÷ 60 × 100 = 5%"
+     }
+    ]
+   },
+   "replacement": true
   },
   {
    "id": 41024,
@@ -62936,5 +63402,6 @@
     "steps": null
    }
   }
- ]
+ ],
+ "replacements": 34
 }

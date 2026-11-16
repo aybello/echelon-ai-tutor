@@ -22,7 +22,7 @@ Review of every row of the production `questions` table, using the read-only exp
 | UNITS | 278 | US units in a Canadian bank (answers recalculated in the fix) |
 | OFF-TOPIC | 7 | Not about the operator's field |
 
-34 findings have no fix (`fix: null`) because the reviewer could not repair them; remove or rewrite those.
+34 findings could not be repaired by the reviewer (off-topic, ill-posed, or dependent on a figure that could not be confirmed). For those, a new replacement question was written on the same topic area (marked `"replacement": true`, also listed in `replacements.json`). The replacements avoid regulatory figures and are model-written like the other fixes, so they still need the same spot-check.
 
 ### By bank (highest problem rate first)
 
@@ -88,6 +88,7 @@ Review of every row of the production `questions` table, using the read-only exp
 ## Files
 
 - `corrections.json`: every finding, with bank, question number, id, verdict, reviewer note, the original question and a full corrected question.
+- `replacements.json`: the 34 new questions that replace findings that could not be repaired.
 - `needs-source-check.txt`: findings that rest on unconfirmed facts.
 - `units-unflagged-candidates.json`: question ids per bank with US-unit terms that no reviewer flagged.
 - `MANUS-REQUEST.md`: what Manus should do with these.
