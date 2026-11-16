@@ -1,3 +1,4 @@
+import { resolveCourseKey } from "@shared/courseRegistry";
 import { withUSStudyContext } from "@shared/usStudyContext";
 import type { NextStepAction } from "@shared/nextStep";
 
@@ -25,4 +26,16 @@ export function nextStepHref(action: NextStepAction, course: CoursePaths, search
     case "quick-10":
       return quick10Href(course.courseKey, search);
   }
+}
+
+/**
+ * The old in-page Quick 10 (`?mode=quick10` on a quiz page) is replaced by the /quick-10 screen. Returns where an old
+ * link should go, or null when the page should not redirect (any other mode, an unknown course, or 309A, which keeps
+ * its own flow).
+ */
+export function legacyQuick10Redirect(mode: string | null, examType: string | undefined, search = ""): string | null {
+  if (mode !== "quick10" || !examType) return null;
+  const course = resolveCourseKey(examType);
+  if (!course?.isActive || course.courseKey === "electrician-309a") return null;
+  return quick10Href(course.courseKey, search);
 }

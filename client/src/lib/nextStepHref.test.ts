@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { nextStepHref, quick10Href } from "./nextStepHref";
+import { legacyQuick10Redirect, nextStepHref, quick10Href } from "./nextStepHref";
 
 const water = { courseKey: "class1-water", quizPath: "/class1-water", mockExamPath: "/class1-water-mock" };
 
@@ -29,5 +29,18 @@ describe("quick10Href", () => {
   it("carries the course and, optionally, a one-question limit", () => {
     expect(quick10Href("oit")).toBe("/quick-10?course=oit");
     expect(quick10Href("oit", "", 1)).toBe("/quick-10?course=oit&questions=1");
+  });
+});
+
+describe("legacyQuick10Redirect", () => {
+  it("sends an old ?mode=quick10 link to the Quick 10 screen for that course", () => {
+    expect(legacyQuick10Redirect("quick10", "class1-water")).toBe("/quick-10?course=class1-water");
+  });
+  it("leaves other modes, unknown courses and 309A alone", () => {
+    expect(legacyQuick10Redirect("missed", "class1-water")).toBeNull();
+    expect(legacyQuick10Redirect(null, "class1-water")).toBeNull();
+    expect(legacyQuick10Redirect("quick10", "no-such-course")).toBeNull();
+    expect(legacyQuick10Redirect("quick10", "electrician-309a")).toBeNull();
+    expect(legacyQuick10Redirect("quick10", undefined)).toBeNull();
   });
 });
