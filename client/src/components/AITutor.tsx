@@ -216,7 +216,7 @@ export default function AITutor({
 
   const headerGradient = patternMode
     ? "linear-gradient(135deg, #B45309, #92400E)"
-    : "linear-gradient(135deg, #1D4ED8, #0F766E)";
+    : "linear-gradient(135deg, #1D4ED8, #1757b8)";
 
   const panel = (
     <aside

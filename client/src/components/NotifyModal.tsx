@@ -85,7 +85,7 @@ export default function NotifyModal({ courseCode, courseTitle, onClose }: Notify
               onClick={onClose}
               style={{
                 padding: "10px 28px", borderRadius: 10, border: "none",
-                background: "linear-gradient(135deg, #1D4ED8, #0F766E)",
+                background: "linear-gradient(135deg, #1D4ED8, #1757b8)",
                 color: "#fff", fontSize: 14, fontWeight: 700,
                 cursor: "pointer", fontFamily: "inherit",
               }}
@@ -162,7 +162,7 @@ export default function NotifyModal({ courseCode, courseTitle, onClose }: Notify
                     flex: 2, padding: "10px", borderRadius: 10, border: "none",
                     background: joinWaitlist.isPending
                       ? "#94A3B8"
-                      : "linear-gradient(135deg, #1D4ED8, #0F766E)",
+                      : "linear-gradient(135deg, #1D4ED8, #1757b8)",
                     color: "#fff", fontSize: 13, fontWeight: 700,
                     cursor: joinWaitlist.isPending ? "not-allowed" : "pointer",
                     fontFamily: "inherit", transition: "opacity 0.15s",

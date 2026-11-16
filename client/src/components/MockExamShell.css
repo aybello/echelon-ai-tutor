@@ -35,7 +35,7 @@
 .mes-navigator[open] summary::after { content: "▴"; }
 .mes-navigator[open] summary { margin-bottom: 12px; }
 .mes-navigator button { min-height: 36px; }
-.mes-option-btn:focus-visible, .mes-navigator summary:focus-visible { outline: 3px solid #087f78; outline-offset: 3px; }
+.mes-option-btn:focus-visible, .mes-navigator summary:focus-visible { outline: 3px solid #1757b8; outline-offset: 3px; }
 .mes-question-card { min-width: 0; }
 @media(max-width:768px) {
   .mes-active-grid { padding: 16px 16px 72px!important; gap: 14px!important; }
