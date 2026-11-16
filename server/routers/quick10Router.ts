@@ -16,7 +16,7 @@ import { z } from "zod";
 import { publicProcedure, router } from "../_core/trpc";
 import { getDb } from "../db";
 import { questionAttempts, questions } from "../../drizzle/schema";
-import { resolveAccessForRequest } from "../_core/accessService";
+import { getAccessibleCoursesForIdentity, resolveAccessForRequest, resolveVerifiedIdentity } from "../_core/accessService";
 import { resolveEntitlementsByEmail } from "../_core/access";
 import { resolveLearningIdentity } from "../_core/learningIdentity";
 import { resolvePrimaryStudyFocus } from "../_core/studyFocus";
@@ -41,6 +41,24 @@ function assertNotCertificationCourse(courseKey: string) {
 }
 
 export const quick10Router = router({
+  /**
+   * The courses this learner can open and the one Quick 10 should use by default (the one studied most recently).
+   * Anonymous visitors get an empty list. The 309A course is never listed: it keeps its own flow.
+   */
+  courses: publicProcedure.query(async ({ ctx }) => {
+    const identity = resolveVerifiedIdentity(ctx);
+    if (identity.type === "anonymous") return { courses: [], currentCourseKey: null as string | null };
+    const accessible = (await getAccessibleCoursesForIdentity(identity)).filter(c => c.courseKey !== "electrician-309a");
+    const focus = await resolvePrimaryStudyFocus({ email: identity.email, unlockedExamTypes: accessible.map(c => c.courseKey) });
+    const current = accessible.find(c => c.courseKey === focus.courseKey)?.courseKey
+      ?? (focus.courseKey && resolveCourseKey(focus.courseKey)?.courseKey !== "electrician-309a" ? resolveCourseKey(focus.courseKey)?.courseKey ?? null : null)
+      ?? accessible[0]?.courseKey ?? null;
+    return {
+      courses: accessible.map(c => ({ courseKey: c.courseKey, displayName: c.displayName, shortName: c.shortName })),
+      currentCourseKey: current,
+    };
+  }),
+
   /** POST so an access token never appears in a URL. */
   start: publicProcedure
     .input(z.object({

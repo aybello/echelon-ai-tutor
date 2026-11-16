@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { questionAttempts, questions } from "../drizzle/schema";
 import { quick10Router } from "./routers/quick10Router";
 import { buildPreviewSample, previewRowsForBank, quizRouter } from "./routers/quizRouter";
-import { resolveAccessForRequest } from "./_core/accessService";
+import { getAccessibleCoursesForIdentity, resolveAccessForRequest } from "./_core/accessService";
 import { issuePracticeReceipt, practiceIdentity } from "./practiceQuestionReceipt";
 import { resolveLearningIdentity } from "./_core/learningIdentity";
 import { resolveAttemptAttribution } from "./teams/attemptAttribution";
@@ -12,7 +12,7 @@ import { FREE_TRIAL_LIMIT } from "./_core/access";
 import type { TrpcContext } from "./_core/context";
 
 vi.mock("./db", () => ({ getDb: vi.fn() }));
-vi.mock("./_core/accessService", async importOriginal => ({ ...await importOriginal<typeof import("./_core/accessService")>(), resolveAccessForRequest: vi.fn() }));
+vi.mock("./_core/accessService", async importOriginal => ({ ...await importOriginal<typeof import("./_core/accessService")>(), resolveAccessForRequest: vi.fn(), getAccessibleCoursesForIdentity: vi.fn() }));
 vi.mock("./practiceQuestionReceipt", async importOriginal => ({ ...await importOriginal<typeof import("./practiceQuestionReceipt")>(), practiceIdentity: vi.fn(), issuePracticeReceipt: vi.fn() }));
 vi.mock("./_core/learningIdentity", () => ({ resolveLearningIdentity: vi.fn() }));
 vi.mock("./teams/attemptAttribution", async importOriginal => ({ ...await importOriginal<typeof import("./teams/attemptAttribution")>(), resolveAttemptAttribution: vi.fn() }));
@@ -133,6 +133,34 @@ describe("quick10.start", () => {
   it("reads the learner's history only for the verified identity, never a typed email", async () => {
     await caller().start({ courseKey: "class1-water" });
     expect(resolveLearningIdentity).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe("quick10.courses", () => {
+  const course = (courseKey: string) => ({ courseKey, displayName: `${courseKey} full`, shortName: courseKey });
+  it("gives an anonymous visitor nothing", async () => {
+    const anon = quick10Router.createCaller({ user: null, studentEmail: null, req: {}, res: {} } as unknown as TrpcContext);
+    expect(await anon.courses()).toEqual({ courses: [], currentCourseKey: null });
+    expect(getAccessibleCoursesForIdentity).not.toHaveBeenCalled();
+  });
+  it("lists the courses a learner can open and picks the one studied most recently", async () => {
+    vi.mocked(getAccessibleCoursesForIdentity).mockResolvedValue([course("class1-water"), course("class2-water")] as never);
+    vi.mocked(resolvePrimaryStudyFocus).mockResolvedValue({ courseKey: "class2-water", examType: "class2-water", source: "attempts" } as never);
+    const result = await caller().courses();
+    expect(result.courses.map(c => c.courseKey)).toEqual(["class1-water", "class2-water"]);
+    expect(result.currentCourseKey).toBe("class2-water");
+  });
+  it("falls back to the first course the learner can open when the studied course is not one of them", async () => {
+    vi.mocked(getAccessibleCoursesForIdentity).mockResolvedValue([course("class1-water")] as never);
+    vi.mocked(resolvePrimaryStudyFocus).mockResolvedValue({ courseKey: null, examType: null, source: "none" } as never);
+    expect((await caller().courses()).currentCourseKey).toBe("class1-water");
+  });
+  it("never lists 309A", async () => {
+    vi.mocked(getAccessibleCoursesForIdentity).mockResolvedValue([course("electrician-309a"), course("class1-water")] as never);
+    vi.mocked(resolvePrimaryStudyFocus).mockResolvedValue({ courseKey: "electrician-309a", examType: "electrician-309a", source: "attempts" } as never);
+    const result = await caller().courses();
+    expect(result.courses.map(c => c.courseKey)).toEqual(["class1-water"]);
+    expect(result.currentCourseKey).toBe("class1-water");
   });
 });
 
