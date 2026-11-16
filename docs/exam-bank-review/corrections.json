@@ -1,15 +1,16 @@
 {
  "export": "docs/exam-bank-export/2026-11-16 (commit d118897a)",
- "chunksDone": 33,
+ "chunksDone": 37,
  "chunksTotal": 174,
- "questionsReviewed": 4456,
+ "questionsReviewed": 5056,
  "questionsTotal": 24350,
- "problems": 103,
+ "problems": 158,
  "byVerdict": {
-  "UNCLEAR": 32,
-  "WRONG": 39,
-  "JURISDICTION": 23,
-  "UNITS": 9
+  "UNCLEAR": 49,
+  "WRONG": 60,
+  "JURISDICTION": 29,
+  "UNITS": 15,
+  "OFF-TOPIC": 5
  },
  "byBank": {
   "class1": 30,
@@ -17,7 +18,8 @@
   "class1-wastewater-coll": 2,
   "class1-water": 6,
   "class1-water-dist": 9,
-  "class2-wastewater": 49
+  "class2-wastewater": 63,
+  "class2-wastewater-coll": 41
  },
  "chunks": [
   "chunk-001",
@@ -51,8 +53,12 @@
   "chunk-029",
   "chunk-030",
   "chunk-031",
+  "chunk-032",
   "chunk-033",
-  "chunk-034"
+  "chunk-034",
+  "chunk-035",
+  "chunk-036",
+  "chunk-037"
  ],
  "corrections": [
   {
@@ -3289,6 +3295,490 @@
    }
   },
   {
+   "id": 182158,
+   "bankKey": "class2-wastewater",
+   "questionNum": 458,
+   "verdict": "JURISDICTION",
+   "note": "'Class A biosolids ... as per Ontario regulations' uses US 40 CFR Part 503 terminology. Ontario's O. Reg. 267/03 (Nutrient Management Act) classifies sewage biosolids by pathogen category CP1/CP2 (and metals CM1/CM2), not Class A/B. Checked ontario.ca O. Reg. 267/03, which uses CP1/CP2.",
+   "original": {
+    "question": "What is a common method for achieving Class A biosolids for land application, as per Ontario regulations?",
+    "options": [
+     "Simple dewatering using a belt filter press.",
+     "Conventional mesophilic anaerobic digestion without further treatment.",
+     "Composting, heat drying, or autothermal thermophilic aerobic digestion (ATAD).",
+     "Direct land application of raw primary sludge."
+    ],
+    "correctIndex": 2,
+    "explanation": "To achieve Class A biosolids, stringent pathogen reduction processes are required. Common methods include composting, heat drying, autothermal thermophilic aerobic digestion (ATAD), or other processes that significantly reduce pathogens to below detectable limits."
+   },
+   "fix": {
+    "question": "Which of the following is a common treatment method for producing CP1 (pathogen category 1) sewage biosolids for land application under Ontario's O. Reg. 267/03?",
+    "options": [
+     "Simple dewatering using a belt filter press.",
+     "Conventional mesophilic anaerobic digestion without further treatment.",
+     "Composting, heat drying, or autothermal thermophilic aerobic digestion (ATAD).",
+     "Direct land application of raw primary sludge."
+    ],
+    "correctIndex": 2,
+    "explanation": "CP1 is Ontario's more stringent pathogen category for sewage biosolids. It requires high-temperature or equivalent processes that reduce pathogens to very low levels, such as composting, heat drying or thermophilic digestion (e.g., ATAD). Dewatering alone or conventional mesophilic digestion does not meet the CP1 standard, and raw sludge cannot be land applied.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182164,
+   "bankKey": "class2-wastewater",
+   "questionNum": 464,
+   "verdict": "WRONG",
+   "note": "Explanation states BOD is preserved with H2SO4 to pH<2. BOD samples are only cooled (≤6°C, not frozen); acidifying would kill the seed organisms and invalidate the test. Answer is fine; explanation corrected.",
+   "original": {
+    "question": "What is \"sample preservation\" and why is it critical?",
+    "options": [
+     "Preserving samples in a museum",
+     "Treating collected samples (cooling to 4°C, adding acid/base, or other preservatives) to prevent biological or chemical changes between collection and analysis",
+     "Only needed for long-term storage",
+     "Preservation is optional"
+    ],
+    "correctIndex": 1,
+    "explanation": "Preservation methods: cooling to 4°C (most parameters), H₂SO₄ to pH<2 (BOD, COD, nutrients, oil/grease), HNO₃ to pH<2 (metals), NaOH to pH>12 (cyanide). Without preservation: bacteria consume BOD, NH₃ converts, metals adsorb to container walls."
+   },
+   "fix": {
+    "question": "What is \"sample preservation\" and why is it critical?",
+    "options": [
+     "Preserving samples in a museum",
+     "Treating collected samples (cooling to 4°C, adding acid/base, or other preservatives) to prevent biological or chemical changes between collection and analysis",
+     "Only needed for long-term storage",
+     "Preservation is optional"
+    ],
+    "correctIndex": 1,
+    "explanation": "Preservation methods: cooling to about 4°C (≤6°C, not frozen) for most parameters, and this is the only preservation for BOD and TSS; H₂SO₄ to pH<2 for COD, ammonia, TKN and total phosphorus; H₂SO₄ or HCl to pH<2 for oil and grease; HNO₃ to pH<2 for metals; NaOH to pH>12 for cyanide. Without preservation, bacteria consume BOD, ammonia converts, and metals adsorb to container walls.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182165,
+   "bankKey": "class2-wastewater",
+   "questionNum": 465,
+   "verdict": "UNCLEAR",
+   "note": "Trickling filters are not 'backwashed'; standard ponding remedies (Sacramento State OWP, Operation of Wastewater Treatment Plants Vol. 1) are increasing recirculation to flush growth, chlorinating the filter influent, flooding, and resting/drying the filter. Option C (chemical dosing to inhibit growth, i.e., chlorination) is therefore also defensible, and the keyed option uses an incorrect term.",
+   "original": {
+    "question": "What is the primary operational strategy to mitigate ponding on a trickling filter?",
+    "options": [
+     "Increasing the organic loading to promote biomass growth",
+     "Reducing the recirculation ratio to decrease hydraulic loading",
+     "Dosing with chemicals to inhibit microbial activity",
+     "Backwashing the filter media or resting the filter"
+    ],
+    "correctIndex": 3,
+    "explanation": "Ponding on trickling filters is often caused by excessive biomass growth or media clogging. Backwashing or resting the filter helps to slough off excess biomass and clear blockages."
+   },
+   "fix": {
+    "question": "What is the primary operational strategy to mitigate ponding on a trickling filter?",
+    "options": [
+     "Increasing the organic loading to promote biomass growth",
+     "Reducing the recirculation ratio to decrease hydraulic loading",
+     "Shutting off ventilation to the filter underdrain",
+     "Increasing recirculation to flush excess growth, or taking the filter out of service to dry (rest) it"
+    ],
+    "correctIndex": 3,
+    "explanation": "Ponding is usually caused by excessive biological growth or debris plugging the media voids. Increasing the hydraulic load through recirculation helps flush and slough excess growth, and resting (drying) the filter causes the biofilm to dry and slough. Chlorinating or flooding the filter are other recognized remedies. More organic load, less recirculation, or reduced ventilation all make ponding worse.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182170,
+   "bankKey": "class2-wastewater",
+   "questionNum": 470,
+   "verdict": "UNCLEAR",
+   "note": "Stem says polymer consumption is excessive, but the key says 'polymer dose is too low' and the explanation cites 'insufficient polymer', which contradicts the stem. The intended answer (poor polymer makeup/mixing) is only half of the keyed option.",
+   "original": {
+    "question": "A belt filter press is operating with low cake solids content and excessive polymer consumption. What is the most likely operational issue?",
+    "options": [
+     "The belt speed is too slow, causing over-dewatering",
+     "The feed sludge solids concentration is too high",
+     "The polymer dose is too low or the polymer is not properly mixed",
+     "The wash water pressure for the belts is too high"
+    ],
+    "correctIndex": 2,
+    "explanation": "Low cake solids and high polymer use often indicate poor flocculation. This can be due to insufficient polymer, incorrect polymer type, or inadequate mixing, preventing proper solids aggregation."
+   },
+   "fix": {
+    "question": "A belt filter press is producing low cake solids and high suspended solids in the filtrate, although the polymer feed pump is running at its normal rate. What is the most likely operational issue?",
+    "options": [
+     "The belt speed is too slow, causing over-dewatering",
+     "The belt wash water sprays are clean and operating at full pressure",
+     "The polymer is poorly diluted, aged or mixed with the sludge, giving poor flocculation",
+     "The gravity drainage zone is releasing free water quickly"
+    ],
+    "correctIndex": 2,
+    "explanation": "Low cake solids together with dirty filtrate at a normal polymer feed rate point to poor flocculation. Common causes are improper polymer dilution or ageing, the wrong polymer, or inadequate mixing at the injection point, so solids do not form strong floc that releases water. A slow belt gives drier cake, clean sprays and fast free-water drainage are normal good operation.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182180,
+   "bankKey": "class2-wastewater",
+   "questionNum": 480,
+   "verdict": "WRONG",
+   "note": "O. Reg. 129/04 is Ontario's Licensing of Sewage Works Operators regulation and sets no effluent limits. Ontario plant limits are set in each plant's Environmental Compliance Approval; the 25/25 national minimum standard comes from the federal Wastewater Systems Effluent Regulations (SOR/2012-139) and is expressed as CBOD (not BOD5) and suspended solids.",
+   "original": {
+    "question": "Under Ontario Regulation 129/04, what are the typical effluent limits for biochemical oxygen demand (BOD5) and total suspended solids (TSS) for most municipal wastewater treatment plants?",
+    "options": [
+     "10 mg/L BOD5 and 10 mg/L TSS",
+     "25 mg/L BOD5 and 25 mg/L TSS",
+     "50 mg/L BOD5 and 50 mg/L TSS",
+     "100 mg/L BOD5 and 100 mg/L TSS"
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 129/04 typically sets effluent limits of 25 mg/L for both BOD5 and TSS as a monthly average for conventional municipal wastewater treatment plants, though site-specific limits may vary."
+   },
+   "fix": {
+    "question": "Under the federal Wastewater Systems Effluent Regulations, which apply to Ontario municipal wastewater systems along with each plant's Environmental Compliance Approval, what are the national minimum effluent quality standards (average) for carbonaceous biochemical oxygen demand (CBOD) and suspended solids (SS)?",
+    "options": [
+     "10 mg/L CBOD and 10 mg/L SS",
+     "25 mg/L CBOD and 25 mg/L SS",
+     "50 mg/L CBOD and 50 mg/L SS",
+     "100 mg/L CBOD and 100 mg/L SS"
+    ],
+    "correctIndex": 1,
+    "explanation": "The federal Wastewater Systems Effluent Regulations (SOR/2012-139) set national minimum standards of an average 25 mg/L CBOD and 25 mg/L suspended solids (plus limits for total residual chlorine and un-ionized ammonia). An Ontario plant's ECA sets its enforceable limits, which may be more stringent. O. Reg. 129/04 deals with operator licensing and does not set effluent limits.",
+    "steps": [
+     {
+      "l": "Recognize the task",
+      "c": "No calculation is required. This is a regulatory recall question."
+     },
+     {
+      "l": "Recall the national minimum standard",
+      "c": "The federal Wastewater Systems Effluent Regulations set an average of 25 mg/L CBOD and 25 mg/L suspended solids."
+     },
+     {
+      "l": "Note how limits are applied",
+      "c": "Each Ontario plant's Environmental Compliance Approval sets its enforceable limits, which may be more stringent than 25/25."
+     },
+     {
+      "l": "Answer check",
+      "c": "The correct option is 25 mg/L CBOD and 25 mg/L SS."
+     }
+    ]
+   }
+  },
+  {
+   "id": 182182,
+   "bankKey": "class2-wastewater",
+   "questionNum": 482,
+   "verdict": "WRONG",
+   "note": "Explanation gives H2S 8-hr TWA 10 ppm and STEL 15 ppm, which are outdated or non-Ontario values. Ontario OELs (R.R.O. 1990, Reg. 833, adopting ACGIH) are 1 ppm TWA and 5 ppm STEL. Answer is fine; explanation corrected.",
+   "original": {
+    "question": "What is \"hydrogen sulfide\" (H₂S) hazard at wastewater treatment plants?",
+    "options": [
+     "Only an odour nuisance",
+     "A toxic, flammable gas produced by anaerobic decomposition of sulfur compounds — immediately dangerous to life at 100 ppm; causes olfactory fatigue (cannot smell at high concentrations)",
+     "Only found in digesters",
+     "Not dangerous in outdoor areas"
+    ],
+    "correctIndex": 1,
+    "explanation": "H₂S: rotten egg odour (detectable at 0.5 ppb), olfactory fatigue at 100+ ppm (cannot smell it), IDLH 100 ppm, 8-hr TWA 10 ppm, 15-min STEL 15 ppm. Found in: collection system, headworks, primary tanks, digesters, sludge handling. Heavier than air, accumulates in low areas."
+   },
+   "fix": {
+    "question": "What is \"hydrogen sulfide\" (H₂S) hazard at wastewater treatment plants?",
+    "options": [
+     "Only an odour nuisance",
+     "A toxic, flammable gas produced by anaerobic decomposition of sulfur compounds — immediately dangerous to life at 100 ppm; causes olfactory fatigue (cannot smell at high concentrations)",
+     "Only found in digesters",
+     "Not dangerous in outdoor areas"
+    ],
+    "correctIndex": 1,
+    "explanation": "H₂S: rotten egg odour detectable well below 1 ppm, olfactory fatigue or paralysis at roughly 100 ppm and above (cannot smell it), IDLH 100 ppm. Ontario occupational exposure limits (Reg. 833) are 1 ppm 8-hour TWA and 5 ppm STEL. Found in the collection system, headworks, primary tanks, digesters and sludge handling. Heavier than air, it accumulates in low areas.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182185,
+   "bankKey": "class2-wastewater",
+   "questionNum": 485,
+   "verdict": "UNITS",
+   "note": "Explanation gives the arc flash temperature as 35,000°F in an Ontario bank and cites only NFPA 70E. Use about 19,000°C; the Canadian standard is CSA Z462 (harmonized with NFPA 70E).",
+   "original": {
+    "question": "What is \"arc flash\" hazard and how is it managed at treatment plants?",
+    "options": [
+     "A flash of light from welding",
+     "An explosive release of energy from an electrical fault creating extreme heat, pressure, and light — managed through: arc flash analysis, proper PPE, safe work practices, and equipment labeling",
+     "Only a concern for electricians",
+     "Not a concern at wastewater plants"
+    ],
+    "correctIndex": 1,
+    "explanation": "Arc flash: temperatures reach 35,000°F, creating molten metal spray, pressure blast, and intense UV. Management: arc flash study (NFPA 70E), equipment labels (incident energy, PPE category, boundaries), proper PPE (arc-rated clothing, face shield), and de-energize when possible."
+   },
+   "fix": {
+    "question": "What is \"arc flash\" hazard and how is it managed at treatment plants?",
+    "options": [
+     "A flash of light from welding",
+     "An explosive release of energy from an electrical fault creating extreme heat, pressure, and light — managed through: arc flash analysis, proper PPE, safe work practices, and equipment labeling",
+     "Only a concern for electricians",
+     "Not a concern at wastewater plants"
+    ],
+    "correctIndex": 1,
+    "explanation": "Arc flash: temperatures can reach about 19,000°C, creating molten metal spray, a pressure blast, and intense UV light. Management: arc flash study (CSA Z462 in Canada), equipment labels (incident energy, PPE category, boundaries), proper PPE (arc-rated clothing, face shield), and de-energizing equipment whenever possible.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182189,
+   "bankKey": "class2-wastewater",
+   "questionNum": 489,
+   "verdict": "JURISDICTION",
+   "note": "'38% VSR or PFRP/PSRP' is the US 40 CFR Part 503 vector attraction and pathogen reduction framework, presented as an Ontario O. Reg. 267/03 requirement. Ontario classifies biosolids by CP1/CP2 pathogen categories and does not use PFRP/PSRP; the explanation also conflates pathogen reduction with vector attraction reduction. Rewritten as a jurisdiction-neutral concept question.",
+   "original": {
+    "question": "What is a common regulatory requirement for the volatile solids reduction (VSR) in digested sludge prior to land application in Ontario?",
+    "options": [
+     "A minimum 10% VSR or a specific pathogen reduction process",
+     "A minimum 20% VSR or a vector attraction reduction method",
+     "A minimum 38% VSR or a process to further reduce pathogens (PFRP)",
+     "A minimum 50% VSR regardless of other treatment processes"
+    ],
+    "correctIndex": 2,
+    "explanation": "Ontario Regulation 267/03 specifies a minimum 38% VSR or the use of a Process to Further Reduce Pathogens (PFRP) or Process to Significantly Reduce Pathogens (PSRP) for biosolids land application."
+   },
+   "fix": {
+    "question": "In biosolids management, a volatile solids reduction of at least 38% during digestion is commonly used as a measure of what?",
+    "options": [
+     "Vector attraction reduction (adequate stabilization of the sludge)",
+     "Removal of heavy metals from the sludge",
+     "Increase in the nutrient value of the sludge",
+     "Improvement in sludge dewaterability"
+    ],
+    "correctIndex": 0,
+    "explanation": "A volatile solids reduction of at least 38% shows that enough of the readily degradable organic matter has been destroyed that the biosolids are stabilized and less attractive to vectors such as flies and rodents. VSR does not remove metals, increase nutrient value, or measure dewaterability.",
+    "steps": null
+   }
+  },
+  {
+   "id": 182191,
+   "bankKey": "class2-wastewater",
+   "questionNum": 491,
+   "verdict": "JURISDICTION",
+   "note": "Class A/Class B with PFRP/PSRP is US 40 CFR Part 503 terminology presented as Ontario's system. Ontario's O. Reg. 267/03 uses pathogen categories CP1 and CP2 (checked ontario.ca O. Reg. 267/03).",
+   "original": {
+    "question": "What is the main difference between Class A and Class B biosolids in terms of pathogen reduction and land application restrictions in Ontario?",
+    "options": [
+     "Class A has lower metal limits, Class B has higher pathogen limits",
+     "Class A requires PFRP and has fewer land application restrictions; Class B requires PSRP and has more restrictions",
+     "Class A is liquid, Class B is dewatered; both have similar pathogen requirements",
+     "Class A is for agricultural use, Class B is for horticultural use only"
+    ],
+    "correctIndex": 1,
+    "explanation": "Class A biosolids undergo Processes to Further Reduce Pathogens (PFRP) and have minimal restrictions. Class B biosolids undergo Processes to Significantly Reduce Pathogens (PSRP) and have more stringent land application restrictions, particularly regarding public access and crop harvesting."
+   },
+   "fix": {
+    "question": "Under Ontario's O. Reg. 267/03, what is the main difference between CP1 and CP2 sewage biosolids?",
+    "options": [
+     "CP1 refers to metal content and CP2 refers to pathogen content",
+     "CP1 meets a more stringent pathogen standard and has fewer land application restrictions; CP2 meets a less stringent pathogen standard and has more restrictions",
+     "CP1 is liquid and CP2 is dewatered; both have the same pathogen requirements",
+     "CP1 is for agricultural use only and CP2 is for horticultural use only"
+    ],
+    "correctIndex": 1,
+    "explanation": "CP1 and CP2 are Ontario's pathogen categories for non-agricultural source materials such as sewage biosolids. CP1 material meets the more stringent pathogen standard (typically from processes such as composting, heat drying or thermophilic treatment) and has fewer restrictions. CP2 material meets a less stringent standard and carries more restrictions, such as waiting periods before crop harvest or grazing. Metal content is classified separately as CM1 and CM2.",
+    "steps": null
+   }
+  },
+  {
+   "id": 240345,
+   "bankKey": "class2-wastewater",
+   "questionNum": 525,
+   "verdict": "WRONG",
+   "note": "18,000 ÷ 4,170 = 4.317, so 4.32 d, not 4.30 d as the step states. Option corrected.",
+   "original": {
+    "question": "An activated sludge system contains 18,000 kg of solids. Waste activated sludge is withdrawn at 450 m³/d with a concentration of 9,000 mg/L. The plant flow is 10,000 m³/d and final effluent TSS is 12 mg/L. What is the sludge age, assuming solids leave only through wasting and final effluent?",
+    "options": [
+     "4.44 d",
+     "4.30 d",
+     "5.00 d",
+     "4.00 d"
+    ],
+    "correctIndex": 1,
+    "explanation": "Sludge age equals the solids inventory divided by the total solids leaving in WAS and final effluent."
+   },
+   "fix": {
+    "question": "An activated sludge system contains 18,000 kg of solids. Waste activated sludge is withdrawn at 450 m³/d with a concentration of 9,000 mg/L. The plant flow is 10,000 m³/d and final effluent TSS is 12 mg/L. What is the sludge age, assuming solids leave only through wasting and final effluent?",
+    "options": [
+     "4.44 d",
+     "4.32 d",
+     "5.00 d",
+     "4.00 d"
+    ],
+    "correctIndex": 1,
+    "explanation": "Sludge age equals the solids inventory divided by the total solids leaving in WAS and final effluent.",
+    "steps": [
+     {
+      "l": "Step 1 — Calculate solids wasted",
+      "c": "WAS solids = 450 m³/d × 9,000 mg/L ÷ 1,000 = 4,050 kg/d"
+     },
+     {
+      "l": "Step 2 — Calculate effluent solids loss",
+      "c": "Effluent solids = 10,000 m³/d × 12 mg/L ÷ 1,000 = 120 kg/d"
+     },
+     {
+      "l": "Step 3 — Calculate total solids leaving",
+      "c": "Total solids leaving = 4,050 + 120 = 4,170 kg/d"
+     },
+     {
+      "l": "Step 4 — Calculate sludge age",
+      "c": "SRT = 18,000 kg ÷ 4,170 kg/d = 4.32 d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240346,
+   "bankKey": "class2-wastewater",
+   "questionNum": 526,
+   "verdict": "WRONG",
+   "note": "16,120 ÷ 2,162 = 7.456, so 7.46 d, not 7.47 d as the step states. Option corrected.",
+   "original": {
+    "question": "An activated sludge plant has 5,200 m³ of aeration volume with an MLSS concentration of 3,100 mg/L. Waste activated sludge is pumped at 250 m³/d with a concentration of 8,000 mg/L. Plant flow is 9,000 m³/d and final effluent TSS is 18 mg/L. What is the mean cell residence time (MCRT)?",
+    "options": [
+     "6.52 d",
+     "0.75 d",
+     "8.06 d",
+     "7.47 d"
+    ],
+    "correctIndex": 3,
+    "explanation": "MCRT is the solids inventory divided by the daily solids leaving in WAS and final effluent."
+   },
+   "fix": {
+    "question": "An activated sludge plant has 5,200 m³ of aeration volume with an MLSS concentration of 3,100 mg/L. Waste activated sludge is pumped at 250 m³/d with a concentration of 8,000 mg/L. Plant flow is 9,000 m³/d and final effluent TSS is 18 mg/L. What is the mean cell residence time (MCRT)?",
+    "options": [
+     "6.52 d",
+     "0.75 d",
+     "8.06 d",
+     "7.46 d"
+    ],
+    "correctIndex": 3,
+    "explanation": "MCRT is the solids inventory divided by the daily solids leaving in WAS and final effluent.",
+    "steps": [
+     {
+      "l": "Step 1 — Determine solids inventory",
+      "c": "Solids inventory = 5,200 m³ × 3,100 mg/L ÷ 1,000 = 16,120 kg"
+     },
+     {
+      "l": "Step 2 — Determine WAS solids loss",
+      "c": "WAS solids = 250 m³/d × 8,000 mg/L ÷ 1,000 = 2,000 kg/d"
+     },
+     {
+      "l": "Step 3 — Determine effluent solids loss",
+      "c": "Effluent solids = 9,000 m³/d × 18 mg/L ÷ 1,000 = 162 kg/d"
+     },
+     {
+      "l": "Step 4 — Calculate MCRT",
+      "c": "MCRT = 16,120 kg ÷ (2,000 + 162) kg/d = 7.46 d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240367,
+   "bankKey": "class2-wastewater",
+   "questionNum": 547,
+   "verdict": "UNCLEAR",
+   "note": "Stem says the clarifier receives 8.0 ML/d of mixed liquor from the aeration basin. That flow already includes RAS, so the influent would be 8.0 − 3.2 = 4.8 ML/d and R = 67%. The key (40%) treats 8.0 ML/d as plant influent. Reworded so 8.0 ML/d is the influent.",
+   "original": {
+    "question": "A secondary clarifier receives 8.0 ML/d of mixed liquor from the aeration basin. The return activated sludge (RAS) flow is 3.2 ML/d. A 30-minute settleability test shows a settled sludge volume of 280 mL/L, and the mixed liquor suspended solids concentration is 3,500 mg/L. What are the recirculation ratio and sludge volume index (SVI), respectively?",
+    "options": [
+     "250%; 80 mL/g",
+     "25%; 98 mL/g",
+     "40%; 80 mL/g",
+     "40%; 98 mL/g"
+    ],
+    "correctIndex": 2,
+    "explanation": "The recirculation ratio is RAS flow divided by influent flow. SVI is the 30-minute settled sludge volume divided by MLSS in g/L."
+   },
+   "fix": {
+    "question": "A plant receives an influent flow of 8.0 ML/d to the aeration basin. The return activated sludge (RAS) flow is 3.2 ML/d. A 30-minute settleability test shows a settled sludge volume of 280 mL/L, and the mixed liquor suspended solids concentration is 3,500 mg/L. What are the recirculation ratio and sludge volume index (SVI), respectively?",
+    "options": [
+     "250%; 80 mL/g",
+     "25%; 98 mL/g",
+     "40%; 80 mL/g",
+     "40%; 98 mL/g"
+    ],
+    "correctIndex": 2,
+    "explanation": "The recirculation ratio is RAS flow divided by influent flow. SVI is the 30-minute settled sludge volume divided by MLSS in g/L.",
+    "steps": [
+     {
+      "l": "Step 1 — Calculate recirculation ratio",
+      "c": "Recirculation ratio = 3.2 ML/d ÷ 8.0 ML/d = 0.40 = 40%"
+     },
+     {
+      "l": "Step 2 — Convert MLSS concentration to g/L",
+      "c": "3,500 mg/L ÷ 1,000 = 3.5 g/L"
+     },
+     {
+      "l": "Step 3 — Calculate SVI",
+      "c": "SVI = 280 mL/L ÷ 3.5 g/L = 80 mL/g"
+     }
+    ]
+   }
+  },
+  {
+   "id": 1724207,
+   "bankKey": "class2-wastewater",
+   "questionNum": 3007,
+   "verdict": "UNCLEAR",
+   "note": "High putrescible organics in grit is equally explained by option A (grit washing/classification not separating organics), which the explanation itself cites ('poor separation'). Two defensible answers. Replaced option A with a clearly unrelated finding.",
+   "original": {
+    "question": "Grit containers contain unusually high amounts of putrescible organic solids. Which observation best identifies the problem?",
+    "options": [
+     "The grit washing or classification equipment is not separating solids effectively.",
+     "Grit is passing through and accumulating in downstream basins.",
+     "Excess organic material is being removed with the grit.",
+     "An upstream change in flow has shortened effective grit residence."
+    ],
+    "correctIndex": 2,
+    "explanation": "Organic carryover implies poor separation or operating conditions."
+   },
+   "fix": {
+    "question": "Grit containers contain unusually high amounts of putrescible organic solids. Which observation best identifies the problem?",
+    "options": [
+     "Downstream pumps are wearing faster than normal.",
+     "Grit is passing through and accumulating in downstream basins.",
+     "Excess organic material is being removed with the grit.",
+     "An upstream change in flow has shortened effective grit residence."
+    ],
+    "correctIndex": 2,
+    "explanation": "Putrescible organics in the grit containers show that excess organic material is being captured with the grit, for example from too long a residence time, too little velocity or air control, or poor grit washing.",
+    "steps": null
+   }
+  },
+  {
+   "id": 1724226,
+   "bankKey": "class2-wastewater",
+   "questionNum": 3026,
+   "verdict": "UNCLEAR",
+   "note": "With the WAS valve found closed, option A (verify wasting pump run-time, flow and sludge concentration) diagnoses the problem as directly as the keyed option B (actual WAS mass rate versus target). Two defensible answers. Replaced option A with a clearly unrelated check.",
+   "original": {
+    "question": "MLSS rises for a week after the WAS valve is found closed. Which trend or action best diagnoses the issue?",
+    "options": [
+     "Verify wasting pump run-time, flow, and sludge concentration.",
+     "Check whether the actual WAS mass rate differs from its target.",
+     "Compare MLSS and SRT trends before increasing wasting.",
+     "Check the final effluent solids loss before attributing inventory change to wasting."
+    ],
+    "correctIndex": 1,
+    "explanation": "Reduced actual wasting permits solids inventory to build."
+   },
+   "fix": {
+    "question": "MLSS rises for a week after the WAS valve is found closed. Which trend or action best diagnoses the issue?",
+    "options": [
+     "Inspect scum or floating solids for denitrification signs.",
+     "Check whether the actual WAS mass rate differs from its target.",
+     "Compare MLSS and SRT trends before increasing wasting.",
+     "Check the final effluent solids loss before attributing inventory change to wasting."
+    ],
+    "correctIndex": 1,
+    "explanation": "A closed WAS valve means the actual mass of solids wasted has fallen below target, so the solids inventory builds.",
+    "steps": null
+   }
+  },
+  {
    "id": 1724431,
    "bankKey": "class2-wastewater",
    "questionNum": 3231,
@@ -3316,6 +3806,1441 @@
     "correctIndex": 1,
     "explanation": "An independent calibrated reading at the same point first establishes whether the fixed probe is wrong before troubleshooting its cause.",
     "steps": null
+   }
+  },
+  {
+   "id": 155253,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 3,
+   "verdict": "WRONG",
+   "note": "O. Reg. 170/03 (drinking water) requires adverse results to be reported immediately to the MECP Spills Action Centre and the local Medical Officer of Health, not 'MECP within 24 hours'. Also a drinking-water regulation in a wastewater collection bank. Replaced with the EPA Part X spill reporting rule for sewage overflows.",
+   "original": {
+    "question": "According to O. Reg. 170/03, what is the reporting requirement for an adverse drinking water quality incident?",
+    "options": [
+     "Report to the Ministry of the Environment, Conservation and Parks (MECP) within 7 days.",
+     "Report to the Medical Officer of Health immediately and MECP within 24 hours.",
+     "Report to the Municipal Council at the next scheduled meeting.",
+     "Report to the local fire department within 1 hour."
+    ],
+    "correctIndex": 1,
+    "explanation": "While O. Reg. 170/03 primarily governs drinking water, the question tests general regulatory knowledge often expected of Class 2 operators. Adverse drinking water quality incidents require immediate notification to the Medical Officer of Health and subsequent reporting to the MECP within 24 hours."
+   },
+   "fix": {
+    "question": "A sanitary sewer overflow discharges sewage to a watercourse in Ontario. Who must be notified immediately under the Environmental Protection Act?",
+    "options": [
+     "The Ministry of the Environment, Conservation and Parks (MECP) Spills Action Centre, and the municipality or owner of the sewage works",
+     "The Municipal Council at its next scheduled meeting",
+     "The local fire department within 1 hour",
+     "The MECP within 7 days by written report only"
+    ],
+    "correctIndex": 0,
+    "explanation": "Part X of the Ontario Environmental Protection Act requires the person who has control of a spilled pollutant to notify the MECP Spills Action Centre immediately, and to notify the municipality or owner of the sewage works, then take action to stop, contain and clean up the spill.",
+    "steps": null
+   }
+  },
+  {
+   "id": 155266,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 16,
+   "verdict": "WRONG",
+   "note": "Arithmetic: A = 0.2827 m2, Q = 0.3393 m3/s, x 86,400 = 29,315 m3/day. Marked option 2,930 m3/day is off by a factor of ten and no option is correct; the explanation admits a typo. Corrected options so 29,300 m3/day is present.",
+   "original": {
+    "question": "An operator calculates the daily flow through a sewer pipe with a diameter of 0.6 meters and an average velocity of 1.2 m/s. What is the approximate daily flow in cubic meters?",
+    "options": [
+     "2930 m³/day",
+     "1465 m³/day",
+     "732 m³/day",
+     "5860 m³/day"
+    ],
+    "correctIndex": 0,
+    "explanation": "Area (A) = π * (radius)² = π * (0.3 m)² = 0.2827 m². Flow (Q) = A * V = 0.2827 m² * 1.2 m/s = 0.3392 m³/s. Daily Flow = 0.3392 m³/s * 86400 s/day = 29304 m³/day. The closest option is 2930 m³/day, assuming a typo in the options or a rounding difference."
+   },
+   "fix": {
+    "question": "An operator calculates the daily flow through a sewer pipe with a diameter of 0.6 meters and an average velocity of 1.2 m/s. What is the approximate daily flow in cubic meters?",
+    "options": [
+     "29,300 m³/day",
+     "14,650 m³/day",
+     "2,930 m³/day",
+     "58,600 m³/day"
+    ],
+    "correctIndex": 0,
+    "explanation": "Area = π × (0.3 m)² = 0.2827 m². Q = 0.2827 m² × 1.2 m/s = 0.3393 m³/s. Daily flow = 0.3393 m³/s × 86,400 s/day = 29,315 m³/day, approximately 29,300 m³/day (pipe flowing full).",
+    "steps": [
+     {
+      "l": "State the area formula",
+      "c": "Area = π × (Radius)^2, assuming the pipe is flowing full."
+     },
+     {
+      "l": "Calculate the area",
+      "c": "Radius = 0.6 m / 2 = 0.3 m, so Area = 3.1416 × (0.3 m)^2 = 0.2827 m^2."
+     },
+     {
+      "l": "State the flow formula",
+      "c": "Flow (Q) = Area × Velocity"
+     },
+     {
+      "l": "Calculate flow in m^3/s",
+      "c": "Q = 0.2827 m^2 × 1.2 m/s = 0.3393 m^3/s"
+     },
+     {
+      "l": "Convert to daily flow",
+      "c": "0.3393 m^3/s × 86,400 s/day = 29,315 m^3/day"
+     },
+     {
+      "l": "Answer check",
+      "c": "Select 29,300 m^3/day, the approximate value."
+     }
+    ]
+   }
+  },
+  {
+   "id": 155274,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 24,
+   "verdict": "UNCLEAR",
+   "note": "Option D (consistently high incoming flow) is also a genuine cause of short pump cycling (as are an undersized wet well or setpoints set too close). Two defensible answers. Rewritten so only the control fault is correct.",
+   "original": {
+    "question": "A lift station is experiencing frequent pump cycling. What could be a potential cause?",
+    "options": [
+     "The wet well is operating at its maximum design capacity.",
+     "The level control floats or sensors are malfunctioning.",
+     "The discharge valve on the pump is partially closed.",
+     "The incoming flow rate to the wet well is consistently high."
+    ],
+    "correctIndex": 1,
+    "explanation": "Frequent pump cycling often indicates an issue with the level control system, where faulty floats or sensors are inaccurately reporting the wet well level, causing pumps to start and stop too frequently."
+   },
+   "fix": {
+    "question": "A lift station is experiencing frequent pump cycling (short cycling) even though inflow has not changed. What is the most likely cause?",
+    "options": [
+     "The pump start and stop levels are set too far apart",
+     "The level control floats or sensors are malfunctioning or set too close together",
+     "The discharge valve on the pump is partially closed",
+     "The wet well is larger than the design size"
+    ],
+    "correctIndex": 1,
+    "explanation": "Short cycling at unchanged inflow usually points to the level control system: faulty floats or sensors, or start/stop setpoints set too close together, make pumps start and stop too often. Wide setpoints, a partly closed discharge valve or a larger wet well lengthen, not shorten, the cycle.",
+    "steps": null
+   }
+  },
+  {
+   "id": 155281,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 31,
+   "verdict": "JURISDICTION",
+   "note": "Ontario O. Reg. 632/05 (Confined Spaces) defines acceptable oxygen as at least 19.5% and not more than 23% by volume. 23.5% is the US OSHA upper limit. Confirmed via CanLII text of O. Reg. 632/05 and Ontario confined spaces guideline.",
+   "original": {
+    "question": "When conducting a confined space entry, what is the acceptable oxygen level range?",
+    "options": [
+     "Below 19.5%",
+     "Between 19.5% and 23.5%",
+     "Above 23.5%",
+     "Any level, as long as there are no toxic gases."
+    ],
+    "correctIndex": 1,
+    "explanation": "The acceptable oxygen level for safe confined space entry is typically between 19.5% and 23.5%. Levels outside this range indicate a hazardous atmosphere."
+   },
+   "fix": {
+    "question": "Under Ontario's confined space regulation (O. Reg. 632/05), what is the acceptable oxygen level range for a confined space entry?",
+    "options": [
+     "Below 19.5%",
+     "Between 19.5% and 23%",
+     "Above 23%",
+     "Any level, as long as there are no toxic gases."
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 632/05 requires oxygen of at least 19.5% and not more than 23% by volume. Levels outside this range are an atmospheric hazard.",
+    "steps": null
+   }
+  },
+  {
+   "id": 155289,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 39,
+   "verdict": "UNCLEAR",
+   "note": "Siphonic (subatmospheric) conditions arise where a full-flowing pipe rises above the hydraulic grade line, not where it dips below it (a pipe below the HGL, as in an inverted siphon, is under positive pressure). The stated mechanism is wrong/contradicts q.155365. Reworded.",
+   "original": {
+    "question": "How does a siphonic action occur in a gravity sewer line, and what can it cause?",
+    "options": [
+     "It occurs when the pipe is under pressure, causing increased flow velocity.",
+     "It occurs when a section of pipe flows full and dips below the hydraulic grade line, leading to vacuum conditions and potential odor release.",
+     "It is a beneficial process that prevents blockages in the sewer.",
+     "It is caused by excessive aeration in the sewer, leading to foam formation."
+    ],
+    "correctIndex": 1,
+    "explanation": "Siphonic action in gravity sewers happens when the pipe runs full and dips below the hydraulic grade line, creating a vacuum. This can lead to negative pressures, drawing in air, releasing odors, and potentially causing structural damage."
+   },
+   "fix": {
+    "question": "How does siphonic action occur in a gravity sewer line, and what can it cause?",
+    "options": [
+     "It occurs when the pipe is under pressure, causing increased flow velocity.",
+     "It occurs when a full-flowing section of pipe rises above the hydraulic grade line, creating subatmospheric pressure that can draw in air and release odours.",
+     "It is a beneficial process that prevents blockages in the sewer.",
+     "It is caused by excessive aeration in the sewer, leading to foam formation."
+    ],
+    "correctIndex": 1,
+    "explanation": "Where a full-flowing pipe crown lies above the hydraulic grade line, pressure in the pipe is below atmospheric (vacuum). This can draw in air, release odours and, in severe cases, stress the pipe.",
+    "steps": null
+   }
+  },
+  {
+   "id": 155301,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 51,
+   "verdict": "WRONG",
+   "note": "Ontario O. Reg. 632/05 requires an entrant and an attendant (at least one worker outside) plus a rescue plan; a separate supervisor is not a required third person. Minimum is two (one entrant, one attendant). Key moved to option B.",
+   "original": {
+    "question": "A wastewater operator is preparing to enter a manhole. What is the minimum number of personnel required for a confined space entry?",
+    "options": [
+     "One (1) authorized entrant.",
+     "Two (2) people: one entrant and one attendant.",
+     "Three (3) people: one entrant, one attendant, and one supervisor.",
+     "Four (4) people: two entrants and two attendants."
+    ],
+    "correctIndex": 2,
+    "explanation": "For safe confined space entry, a minimum of three people are typically required: an authorized entrant, an attendant (to monitor from outside), and a supervisor (or designated rescuer) who is immediately available."
+   },
+   "fix": {
+    "question": "A wastewater operator is preparing to enter a manhole. What is the minimum number of personnel required for a confined space entry?",
+    "options": [
+     "One (1) authorized entrant.",
+     "Two (2) people: one entrant and one attendant.",
+     "Three (3) people: one entrant, one attendant, and one supervisor.",
+     "Four (4) people: two entrants and two attendants."
+    ],
+    "correctIndex": 1,
+    "explanation": "A confined space entry needs at least two people: an entrant and a trained attendant stationed outside who monitors the entrant, keeps communication and summons rescue. A rescue plan and trained rescue personnel must also be available.",
+    "steps": null
+   }
+  },
+  {
+   "id": 155304,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 54,
+   "verdict": "OFF-TOPIC",
+   "note": "O. Reg. 170/03 is a drinking water regulation; question is in a wastewater collection bank and the explanation itself says wastewater rules differ. Duplicate of 155253/155366 theme. Replaced with the EPA Part X spill notification question.",
+   "original": {
+    "question": "According to O. Reg. 170/03, what is the required notification period for an adverse water quality incident to the Ministry of the Environment, Conservation and Parks (MECP)?",
+    "options": [
+     "Within 24 hours of becoming aware of the incident.",
+     "Immediately upon becoming aware of the incident.",
+     "Within 7 days of the incident's occurrence.",
+     "At the end of the calendar month in which the incident occurred."
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 170/03, which primarily applies to drinking water, sets standards for immediate notification of adverse conditions. While wastewater regulations differ, the principle of immediate notification for significant environmental incidents is crucial in Ontario."
+   },
+   "fix": {
+    "question": "In Ontario, when must a spill of sewage that causes an adverse effect be reported to the MECP Spills Action Centre?",
+    "options": [
+     "Within 24 hours of becoming aware of the spill",
+     "Immediately upon becoming aware of the spill",
+     "Within 7 days of the spill",
+     "At the end of the calendar month"
+    ],
+    "correctIndex": 1,
+    "explanation": "Under Part X of the Ontario Environmental Protection Act, spills that cause or may cause an adverse effect must be reported immediately to the MECP Spills Action Centre.",
+    "steps": null
+   }
+  },
+  {
+   "id": 155338,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 88,
+   "verdict": "UNCLEAR",
+   "note": "Option A (very low flow) is also a recognised cause of centrifugal pump vibration (hydraulic recirculation far left of best efficiency point), so cavitation is not the only defensible answer. Replaced option A.",
+   "original": {
+    "question": "A centrifugal pump is observed to be vibrating excessively. Which of the following is a likely cause?",
+    "options": [
+     "The pump is running at a very low flow rate.",
+     "The pump is operating at its design efficiency point.",
+     "There is cavitation occurring in the pump.",
+     "The pump's discharge valve is fully open."
+    ],
+    "correctIndex": 2,
+    "explanation": "Cavitation, caused by insufficient net positive suction head, leads to the formation and collapse of vapor bubbles, resulting in noise, vibration, and damage to the impeller."
+   },
+   "fix": {
+    "question": "A centrifugal pump is observed to be vibrating excessively. Which of the following is a likely cause?",
+    "options": [
+     "The pump is operating steadily at its design flow with a clean, balanced impeller.",
+     "The pump is operating at its design efficiency point.",
+     "There is cavitation occurring in the pump.",
+     "The pump's discharge valve is fully open."
+    ],
+    "correctIndex": 2,
+    "explanation": "Cavitation, caused by insufficient net positive suction head, leads to the formation and collapse of vapor bubbles, resulting in noise, vibration, and damage to the impeller.",
+    "steps": null
+   }
+  },
+  {
+   "id": 155343,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 93,
+   "verdict": "UNITS",
+   "note": "Horsepower used in an Ontario (metric) bank. Key (15.1 hp) is arithmetically right but the explanation field contains rambling self-correction text referring to a different key. Converted to kW and cleaned the explanation: 15 x 0.75 = 11.25 kW.",
+   "original": {
+    "question": "If a wastewater pump operates at 75% efficiency and requires 15 kW of power, what is the approximate output power in horsepower (hp)? (1 hp = 0.746 kW)",
+    "options": [
+     "10.0 hp",
+     "15.1 hp",
+     "20.1 hp",
+     "26.8 hp"
+    ],
+    "correctIndex": 1,
+    "explanation": "Output power (kW) = Input power (kW) * Efficiency = 15 kW * 0.75 = 11.25 kW. Output power (hp) = 11.25 kW / 0.746 kW/hp = 15.08 hp. (Rounding to 15.1 hp is closest, but 20.1 hp is incorrect based on calculation. Let's re-evaluate the question or options. Assuming 15kW is input power, and output power is 11.25kW, then 11.25/0.746=15.08hp. If 15kW is output power, then input power is 15/0.75 = 20kW. So 20kW is 20/0.746 = 26.8hp. The question asks for output power in hp. Let's assume 15kW is input power. So output power in kW is 15 * 0.75 = 11.25 kW. Then convert to HP: 11.25 kW / 0.746 kW/hp = 15.08 hp. This is closest to 15.1 hp. Let's re-check the options and correct index. If 15kW is the input power, then output power is 15 * 0.75 = 11.25 kW. 11.25 kW / 0.746 kW/hp = 15.08 hp. If the question implies 15kW is the *rated* power, and it's running at 75% efficiency, this phrasing is ambiguous. Let's assume 'requires 15 kW of power' means input power. Then 15.1 hp is correct. If 15kW is output power, then 20.1 hp is incorrect. Let's assume 15kW is the input power. Output power = Input Power × Efficiency = 15 kW × 0.75 = 11.25 kW. Convert to HP: 11.25 kW / 0.746 kW/hp = 15.08 hp. The closest option is 15.1 hp. Let's check if the correct index points to 20.1 hp. If 20.1 hp is the correct answer, then the question implies 15kW is the *output* power, and it's asking for the *input* power in hp. No, it asks for output power. Let's re-evaluate. If the question meant 'input power required to achieve 15kW output power', then input power = 15 kW / 0.75 = 20 kW. 20 kW / 0.746 kW/hp = 26.8 hp. This is not 20.1 hp. Let's assume the question means '15 kW' is the *input* power. Then Output power = 15 kW * 0.75 = 11.25 kW. 11.25 kW / 0.746 kW/hp = 15.08 hp. The closest option is 15.1 hp. If 20.1 hp is the correct answer, the question must be asking for something else. Let's assume the question meant 'If a pump has an output of 15 kW and operates at 75% efficiency, what is the input power in hp?' Input Power = Output Power / Efficiency = 15 kW / 0.75 = 20 kW. 20 kW / 0.746 kW/hp = 26.8 hp. This is not 20.1 hp. Let's assume the question meant 'If a pump has an input of 15 kW and operates at 75% efficiency, what is the input power in hp?' This is redundant. Let's try to get 20.1 hp. If 15kW is the input power, and we want to find the output power in HP. Output power = 15 kW * 0.75 = 11.25 kW. 11.25 kW / 0.746 kW/hp = 15.08 hp. Let's assume the question meant 'If a pump has an output power of 15 hp, and it operates at 75% efficiency, what is the input power in kW?' Input power = 15 hp * 0.746 kW/hp / 0.75 = 14.92 kW. No. Let's assume the question is asking for the output power in HP, given 15kW input power and 75% efficiency. Output Power (kW) = 15 kW * 0.75 = 11.25 kW. Output Power (hp) = 11.25 kW / 0.746 kW/hp = 15.08 hp. This is closest to 15.1 hp. The correctIndex is 2 (20.1 hp). This means the calculation must be different. Let's consider if 15 kW is the *output* power. Then the input power would be 15 kW / 0.75 = 20 kW. This is not 20.1 hp. Let's assume 15kW is the *input* power, and the question is asking for the *input* power in hp. Then 15 kW / 0.746 kW/hp = 20.1 hp. This fits the correctIndex. So the question is asking for the input power in hp, given the input power in kW. This is a conversion, not an efficiency calculation. This makes the '75% efficiency' a distractor. Or the question is poorly phrased. Let's rephrase the question to match the intended answer. \"If a wastewater pump requires 15 kW of input power, what is this input power approximately in horsepower (hp)? (1 hp = 0.746 kW)\" This would make 20.1 hp correct. Let's assume the original question meant 'input power' for both. Input Power (hp) = 15 kW / 0.746 kW/hp = 20.10 hp. The efficiency value is a distractor if this is the case."
+   },
+   "fix": {
+    "question": "A wastewater pump operates at 75% efficiency and requires 15 kW of input power. What is the approximate output (delivered) power in kW?",
+    "options": [
+     "11.25 kW",
+     "15.0 kW",
+     "20.0 kW",
+     "8.4 kW"
+    ],
+    "correctIndex": 0,
+    "explanation": "Output power = input power × efficiency = 15 kW × 0.75 = 11.25 kW.",
+    "steps": [
+     {
+      "l": "Read what is given and asked",
+      "c": "The pump requires 15 kW, so 15 kW is the input power. The question asks for the output (delivered) power in kW."
+     },
+     {
+      "l": "State the efficiency relationship",
+      "c": "Output Power = Input Power × Efficiency"
+     },
+     {
+      "l": "Calculate output power",
+      "c": "Output Power = 15 kW × 0.75 = 11.25 kW"
+     },
+     {
+      "l": "Check the distractors",
+      "c": "15.0 kW ignores efficiency; 20.0 kW divides by efficiency (input needed for 15 kW output); 8.4 kW is 15 × 0.75 × 0.746 applied wrongly."
+     }
+    ]
+   }
+  },
+  {
+   "id": 155347,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 97,
+   "verdict": "WRONG",
+   "note": "O. Reg. 129/04 is Licensing of Sewage Works Operators, not 'Wastewater Certificates of Approval' (approvals are issued under OWRA s.53, now Environmental Compliance Approvals). Also there is no regulation requirement described. Replaced.",
+   "original": {
+    "question": "According to O. Reg. 129/04 (Wastewater Certificates of Approval), what is a key requirement for operating a wastewater collection system?",
+    "options": [
+     "To maintain a minimum of 50 full-time employees.",
+     "To have an approved operations and maintenance manual.",
+     "To only use gravity sewers for wastewater conveyance.",
+     "To discharge all wastewater directly to a receiving water body."
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 129/04, related to Certificates of Approval, requires the development and adherence to an operations and maintenance manual to ensure proper system management."
+   },
+   "fix": {
+    "question": "Which Ontario regulation sets out the licensing requirements for wastewater (sewage works) operators?",
+    "options": [
+     "O. Reg. 170/03",
+     "O. Reg. 129/04",
+     "O. Reg. 387/04",
+     "O. Reg. 347"
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 129/04, Licensing of Sewage Works Operators, under the Ontario Water Resources Act, sets the licence classes, education, experience and examination requirements for wastewater operators. O. Reg. 170/03 covers drinking water systems.",
+    "steps": null
+   }
+  },
+  {
+   "id": 155350,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 100,
+   "verdict": "UNITS",
+   "note": "Impeller diameter given in inches in an Ontario (metric) bank. Converted 12 in to 300 mm; answer unchanged (Q proportional to N).",
+   "original": {
+    "question": "If a pump operates at 1,750 RPM and has an impeller diameter of 12 inches, and a similar pump operates at 1,150 RPM with the same impeller, how would the flow rate likely compare?",
+    "options": [
+     "The flow rate would be significantly higher at 1,150 RPM.",
+     "The flow rate would be directly proportional to the change in RPM.",
+     "The flow rate would be inversely proportional to the change in RPM.",
+     "The flow rate would be unaffected by the change in RPM."
+    ],
+    "correctIndex": 1,
+    "explanation": "According to the pump affinity laws, for a given pump, the flow rate (Q) is directly proportional to the speed (N): Q1/Q2 = N1/N2. So, a decrease in RPM will result in a proportional decrease in flow rate."
+   },
+   "fix": {
+    "question": "If a pump operates at 1,750 RPM and has an impeller diameter of 300 mm, and a similar pump operates at 1,150 RPM with the same impeller, how would the flow rate likely compare?",
+    "options": [
+     "The flow rate would be significantly higher at 1,150 RPM.",
+     "The flow rate would be directly proportional to the change in RPM.",
+     "The flow rate would be inversely proportional to the change in RPM.",
+     "The flow rate would be unaffected by the change in RPM."
+    ],
+    "correctIndex": 1,
+    "explanation": "According to the pump affinity laws, for a given pump, the flow rate (Q) is directly proportional to the speed (N): Q1/Q2 = N1/N2. So, a decrease in RPM will result in a proportional decrease in flow rate.",
+    "steps": [
+     {
+      "l": "Recognize this item tests the pump affinity laws rather than a single numeric answer.",
+      "c": "Impeller diameter is unchanged (300 mm), so only the speed change affects performance."
+     },
+     {
+      "l": "State the affinity law relating flow to speed.",
+      "c": "Q1 / Q2 = N1 / N2 (flow varies directly with pump speed)"
+     },
+     {
+      "l": "Apply the speed ratio for this pump pair.",
+      "c": "N2 / N1 = 1,150 RPM / 1,750 RPM = 0.657, so flow at 1,150 RPM is about 65.7 percent of the flow at 1,750 RPM"
+     },
+     {
+      "l": "Select the matching option.",
+      "c": "Flow changes in direct proportion to RPM, so the correct option is that flow rate is directly proportional to the change in RPM."
+     }
+    ]
+   }
+  },
+  {
+   "id": 155366,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 116,
+   "verdict": "WRONG",
+   "note": "O. Reg. 170/03 requires immediate notification of adverse drinking water results; there is no 30-minute requirement. Marked key is invented, and the question is drinking water in a wastewater bank. Replaced with EPA Part X spill reporting.",
+   "original": {
+    "question": "According to O. Reg. 170/03, what is the required response time for an adverse water quality incident report?",
+    "options": [
+     "Within 72 hours of becoming aware of the incident",
+     "Immediately, but not more than 24 hours after becoming aware",
+     "Within 30 minutes of becoming aware of the incident",
+     "At the end of the next business day following the incident"
+    ],
+    "correctIndex": 2,
+    "explanation": "While O. Reg. 170/03 primarily pertains to drinking water, the principle of immediate reporting for adverse conditions is critical across all water sectors. For wastewater, adverse events affecting public health or the environment often require immediate notification to the Spills Action Centre (SAC) and the Ministry of the Environment, Conservation and Parks (MECP)."
+   },
+   "fix": {
+    "question": "A sewage spill is causing an adverse effect in Ontario. What is the required timing for reporting it to the MECP Spills Action Centre?",
+    "options": [
+     "Within 72 hours of becoming aware of the spill",
+     "Immediately upon becoming aware of the spill",
+     "Within 30 days by written report",
+     "At the end of the next business day"
+    ],
+    "correctIndex": 1,
+    "explanation": "Part X of the Ontario Environmental Protection Act requires immediate reporting of spills that cause or may cause an adverse effect to the MECP Spills Action Centre.",
+    "steps": null
+   }
+  },
+  {
+   "id": 155369,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 119,
+   "verdict": "WRONG",
+   "note": "H2S does not displace oxygen; its immediate hazard is acute toxicity (olfactory fatigue at high concentrations, respiratory paralysis, death). Key is wrong and contradicts q.155306. Oxygen displacement/asphyxiation is a different hazard (e.g., methane, CO2, nitrogen).",
+   "original": {
+    "question": "A collection system operator observes significant hydrogen sulfide (H2S) odour emanating from a manhole. What is the most immediate concern for operator safety?",
+    "options": [
+     "The potential for pipe corrosion due to sulfuric acid formation",
+     "The risk of explosion if H2S concentrations reach the lower explosive limit",
+     "The rapid displacement of oxygen, leading to asphyxiation",
+     "The strong odour causing public complaints and nuisance"
+    ],
+    "correctIndex": 2,
+    "explanation": "Hydrogen sulfide is a highly toxic gas that can rapidly displace oxygen, especially in confined spaces like manholes, leading to asphyxiation. While corrosion and explosion risks exist, immediate oxygen displacement is the most critical safety concern."
+   },
+   "fix": {
+    "question": "A collection system operator observes significant hydrogen sulfide (H2S) odour emanating from a manhole. What is the most immediate concern for operator safety?",
+    "options": [
+     "The potential for pipe corrosion due to sulfuric acid formation",
+     "The risk of explosion if H2S concentrations reach the lower explosive limit",
+     "Acute toxicity, which can cause loss of smell, respiratory paralysis and death at high concentrations",
+     "The strong odour causing public complaints and nuisance"
+    ],
+    "correctIndex": 2,
+    "explanation": "H2S is a highly toxic gas. At higher concentrations it deadens the sense of smell and can cause respiratory paralysis and death within minutes, so toxicity is the most immediate threat to a worker. Corrosion and explosion risks exist but are secondary, and H2S does not displace oxygen.",
+    "steps": null
+   }
+  },
+  {
+   "id": 155381,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 131,
+   "verdict": "UNCLEAR",
+   "note": "Two options cite O. Reg. 129/04 with different titles, and the keyed title 'Certification of Wastewater Operators' is not the real title (Licensing of Sewage Works Operators). O. Reg. 129/04 is not about hazardous waste. Rewrote options.",
+   "original": {
+    "question": "Which Ontario regulation governs the licensing and training requirements for wastewater operators?",
+    "options": [
+     "O. Reg. 170/03 (Drinking Water Systems)",
+     "O. Reg. 129/04 (Liquid Industrial and Hazardous Waste)",
+     "O. Reg. 188/08 (Water Taking and Transfer)",
+     "O. Reg. 129/04 (Certification of Wastewater Operators)"
+    ],
+    "correctIndex": 3,
+    "explanation": "O. Reg. 129/04, under the Ontario Water Resources Act, specifically outlines the requirements for certification of wastewater operators, including training, experience, and examinations."
+   },
+   "fix": {
+    "question": "Which Ontario regulation governs the licensing of wastewater operators?",
+    "options": [
+     "O. Reg. 170/03 (Drinking Water Systems)",
+     "O. Reg. 129/04 (Licensing of Sewage Works Operators)",
+     "O. Reg. 387/04 (Water Taking and Transfer)",
+     "O. Reg. 347 (General - Waste Management)"
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 129/04, Licensing of Sewage Works Operators, under the Ontario Water Resources Act, sets the requirements for licensing wastewater operators, including education, experience and examinations.",
+    "steps": null
+   }
+  },
+  {
+   "id": 155403,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 153,
+   "verdict": "WRONG",
+   "note": "Answer is fine, but the explanation cites O. Reg. 129/04 as the spill-reporting rule. O. Reg. 129/04 is Licensing of Sewage Works Operators. Spill reporting is under Part X of the Environmental Protection Act (and O. Reg. 675/98), with reports made to the MECP Spills Action Centre.",
+   "original": {
+    "question": "What is the immediate action an operator should take if a sanitary sewer overflow (SSO) is discovered?",
+    "options": [
+     "Wait for the overflow to stop on its own before taking action",
+     "Immediately notify the appropriate authorities (e.g., Spills Action Centre, supervisor) and begin containment efforts",
+     "Attempt to clear the blockage without any safety precautions",
+     "Document the incident extensively before making any notifications"
+    ],
+    "correctIndex": 1,
+    "explanation": "Upon discovering an SSO, the operator must immediately notify relevant authorities as per regulatory requirements (e.g., O. Reg. 129/04, Spills Action Centre) and initiate efforts to contain the spill and protect public health and the environment."
+   },
+   "fix": {
+    "question": "What is the immediate action an operator should take if a sanitary sewer overflow (SSO) is discovered?",
+    "options": [
+     "Wait for the overflow to stop on its own before taking action",
+     "Immediately notify the appropriate authorities (e.g., Spills Action Centre, supervisor) and begin containment efforts",
+     "Attempt to clear the blockage without any safety precautions",
+     "Document the incident extensively before making any notifications"
+    ],
+    "correctIndex": 1,
+    "explanation": "Upon discovering an SSO, the operator must immediately notify the supervisor/owner and report the spill to the MECP Spills Action Centre as required under Part X of the Environmental Protection Act, and initiate efforts to contain the spill and protect public health and the environment.",
+    "steps": null
+   }
+  },
+  {
+   "id": 155408,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 158,
+   "verdict": "WRONG",
+   "note": "No act called the 'Sustainable Water and Wastewater Management Act' exists (the 2002 statute is the Sustainable Water and Sewage Systems Act, 2002). O. Reg. 453/07 (Financial Plans) is made under the Safe Drinking Water Act, 2002, and applies to municipal drinking water systems. The key is wrong and the SDWA option is mislabelled with O. Reg. 170/03.",
+   "original": {
+    "question": "What is the primary regulatory instrument in Ontario that requires municipalities to have an approved financial plan for their water and wastewater systems?",
+    "options": [
+     "The Environmental Protection Act (EPA)",
+     "The Safe Drinking Water Act (SDWA), O. Reg. 170/03",
+     "The Ontario Water Resources Act (OWRA)",
+     "The Sustainable Water and Wastewater Management Act, 2002 (SWWMA)"
+    ],
+    "correctIndex": 3,
+    "explanation": "The Sustainable Water and Wastewater Management Act, 2002 (SWWMA) and its associated regulations (O. Reg. 453/07) require municipalities to develop and submit approved financial plans for their water and wastewater systems."
+   },
+   "fix": {
+    "question": "Which Ontario regulation requires municipal drinking water system owners to prepare and approve a financial plan as part of the drinking water licence?",
+    "options": [
+     "Environmental Protection Act, R.S.O. 1990, c. E.19",
+     "O. Reg. 453/07 (Financial Plans), under the Safe Drinking Water Act, 2002",
+     "Ontario Water Resources Act, R.S.O. 1990, c. O.40",
+     "Occupational Health and Safety Act, R.S.O. 1990, c. O.1"
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 453/07 (Financial Plans), made under the Safe Drinking Water Act, 2002, requires municipal owners to prepare and approve a financial plan for their drinking water system as a condition of the municipal drinking water licence.",
+    "steps": null
+   }
+  },
+  {
+   "id": 155416,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 166,
+   "verdict": "WRONG",
+   "note": "O. Reg. 129/04 is Licensing of Sewage Works Operators, not an effluent standard. Municipal effluent limits are set in the ECA and by the federal Wastewater Systems Effluent Regulations (25 mg/L CBOD5 and 25 mg/L TSS average). Also conflicts with duplicate 156817 which keys 80 mg/L.",
+   "original": {
+    "question": "According to O. Reg. 129/04, what is the maximum permissible concentration of Total Suspended Solids (TSS) in effluent discharged from a municipal wastewater treatment plant into a surface water body, unless otherwise specified by an Environmental Compliance Approval (ECA)?",
+    "options": [
+     "10 mg/L on a monthly average",
+     "25 mg/L on a monthly average",
+     "50 mg/L on a monthly average",
+     "80 mg/L on a monthly average"
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 129/04 sets the standard for TSS in effluent at 25 mg/L on a monthly average for municipal wastewater treatment plants, unless an ECA specifies different limits."
+   },
+   "fix": {
+    "question": "Under the federal Wastewater Systems Effluent Regulations, what is the maximum average concentration of total suspended solids (TSS) in effluent discharged to surface water from a wastewater system, unless the ECA sets a stricter limit?",
+    "options": [
+     "10 mg/L",
+     "25 mg/L",
+     "50 mg/L",
+     "80 mg/L"
+    ],
+    "correctIndex": 1,
+    "explanation": "The federal Wastewater Systems Effluent Regulations set a maximum average of 25 mg/L for both carbonaceous BOD5 and total suspended solids. An Ontario ECA may impose stricter limits.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "This item asks for a regulatory limit, not a calculation."
+     },
+     {
+      "l": "Step 2",
+      "c": "Refer to the federal Wastewater Systems Effluent Regulations."
+     },
+     {
+      "l": "Step 3",
+      "c": "The maximum average TSS concentration is 25 mg/L (same as CBOD5)."
+     },
+     {
+      "l": "Step 4",
+      "c": "Select 25 mg/L."
+     }
+    ]
+   }
+  },
+  {
+   "id": 155445,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 195,
+   "verdict": "UNCLEAR",
+   "note": "In hydraulics 'critical velocity' is the velocity at Froude number 1 (option B is a correct definition). The minimum velocity that keeps solids moving is the self-cleansing (scour) velocity. Two options defensible.",
+   "original": {
+    "question": "What is the significance of the 'critical velocity' in the design and operation of gravity sewers?",
+    "options": [
+     "It is the maximum velocity allowed before pipe erosion occurs",
+     "It is the velocity at which the Froude number equals one, indicating unstable flow",
+     "It is the minimum velocity required to prevent deposition of solids and maintain self-cleansing conditions",
+     "It is the velocity that maximizes the pipe's hydraulic capacity"
+    ],
+    "correctIndex": 2,
+    "explanation": "The critical velocity in sewers refers to the minimum velocity necessary to keep solids suspended and prevent their settling and accumulation, which would lead to blockages and reduced capacity."
+   },
+   "fix": {
+    "question": "What is the significance of the 'self-cleansing velocity' in the design and operation of gravity sewers?",
+    "options": [
+     "It is the maximum velocity allowed before pipe erosion occurs",
+     "It is the velocity at which the Froude number equals one, indicating unstable flow",
+     "It is the minimum velocity required to prevent deposition of solids and maintain self-cleansing conditions",
+     "It is the velocity that maximizes the pipe's hydraulic capacity"
+    ],
+    "correctIndex": 2,
+    "explanation": "The self-cleansing velocity is the minimum velocity necessary to keep solids suspended or moving and prevent their settling, which would lead to blockages and reduced capacity.",
+    "steps": null
+   }
+  },
+  {
+   "id": 155456,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 206,
+   "verdict": "OFF-TOPIC",
+   "note": "Drinking water adverse-incident reporting under O. Reg. 170/03 is not a wastewater collection operator topic; the stem is also contrived (a collection system failure causing an adverse drinking water incident).",
+   "original": {
+    "question": "According to O. Reg. 170/03, what action must be taken if an adverse water quality incident is detected in a drinking water system due to a wastewater collection system failure?",
+    "options": [
+     "The incident must be reported to the Ministry of the Environment, Conservation and Parks (MECP) and the Medical Officer of Health (MOH)",
+     "Only internal documentation of the incident is required for future reference",
+     "The incident must be reported to the local municipal council only",
+     "No specific reporting is required if the issue is resolved within 24 hours"
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 170/03 mandates immediate reporting of adverse water quality incidents to the MECP and the MOH to protect public health and ensure appropriate corrective actions are taken."
+   },
+   "fix": null
+  },
+  {
+   "id": 155470,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 220,
+   "verdict": "OFF-TOPIC",
+   "note": "Drinking water filtration turbidity under O. Reg. 170/03 is not in the scope of a wastewater collection exam; the explanation itself admits this.",
+   "original": {
+    "question": "According to O. Reg. 170/03, what is the maximum allowable turbidity for water leaving a conventional filtration plant?",
+    "options": [
+     "0.3 NTU in 95% of samples each month.",
+     "0.1 NTU in 90% of samples each month.",
+     "1.0 NTU as a daily average.",
+     "5.0 NTU at any given time."
+    ],
+    "correctIndex": 0,
+    "explanation": "This question is for a wastewater collection systems exam, not a drinking water exam. O. Reg. 170/03 pertains to drinking water systems, and specifically outlines turbidity requirements for filtered water. The correct answer is 0.3 NTU in 95% of samples each month, but this regulation is not directly applicable to wastewater collection systems."
+   },
+   "fix": null
+  },
+  {
+   "id": 155473,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 223,
+   "verdict": "WRONG",
+   "note": "Answer 19.5% is correct, but the explanation gives the upper limit as 23.5%. O. Reg. 632/05 uses 19.5% to 23% oxygen by volume.",
+   "original": {
+    "question": "When performing a confined space entry into a manhole, what is the minimum acceptable oxygen level?",
+    "options": [
+     "18.5%",
+     "19.5%",
+     "20.9%",
+     "23.5%"
+    ],
+    "correctIndex": 1,
+    "explanation": "According to Ontario's Confined Spaces Regulation (O. Reg. 632/05), the acceptable range for oxygen in a confined space is typically 19.5% to 23.5%. Below 19.5% is considered oxygen deficient."
+   },
+   "fix": {
+    "question": "When performing a confined space entry into a manhole, what is the minimum acceptable oxygen level?",
+    "options": [
+     "18.5%",
+     "19.5%",
+     "20.9%",
+     "23.5%"
+    ],
+    "correctIndex": 1,
+    "explanation": "Under Ontario's Confined Spaces Regulation (O. Reg. 632/05), the acceptable oxygen range in a confined space is 19.5% to 23% by volume. Below 19.5% is oxygen deficient.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Identify that this question asks for a safety threshold, not a calculation."
+     },
+     {
+      "l": "Step 2",
+      "c": "Recall the acceptable atmospheric oxygen range under O. Reg. 632/05: 19.5% to 23%."
+     },
+     {
+      "l": "Step 3",
+      "c": "Any reading below 19.5% is oxygen deficient and entry is not permitted without engineered controls and respiratory protection."
+     },
+     {
+      "l": "Step 4",
+      "c": "The minimum acceptable oxygen level is therefore 19.5%."
+     }
+    ]
+   }
+  },
+  {
+   "id": 155490,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 240,
+   "verdict": "WRONG",
+   "note": "Correct power is 0.05 x 20 x 9.81 / (0.75 x 0.90) = 14.53 kW, not 14.52. The explanation is garbled (rambles about the key being wrong and 19.36 kW). Option should read 14.53 kW and the explanation be cleaned up.",
+   "original": {
+    "question": "A pump is designed to deliver 50 L/s against a total dynamic head of 20 meters. If the motor efficiency is 90% and the pump efficiency is 75%, what is the motor's power requirement in kW?",
+    "options": [
+     "10.89 kW",
+     "14.52 kW",
+     "19.36 kW",
+     "25.81 kW"
+    ],
+    "correctIndex": 1,
+    "explanation": "Water Horsepower (WHP) = (Flow (m³/s) * Head (m) * 9.81 kN/m³) / 1 kW/kN·m/s. Convert L/s to m³/s: 50 L/s = 0.05 m³/s. WHP = (0.05 m³/s * 20 m * 9.81 kN/m³) = 9.81 kW. Brake Horsepower (BHP) = WHP / Pump Efficiency = 9.81 kW / 0.75 = 13.08 kW. Motor Power (Input) = BHP / Motor Efficiency = 13.08 kW / 0.90 = 14.53 kW. (Note: Calculation is slightly off in options, but 19.36 kW is the closest if using 746W/HP or other conversion factors. Re-evaluating: BHP = (Q * H * SG) / (3960 * Eff_pump) for US units, or for metric: Power (kW) = (Q (m³/s) * H (m) * 9.81) / Eff_pump. So, 0.05 * 20 * 9.81 / 0.75 = 13.08 kW (pump output). Motor input = 13.08 / 0.90 = 14.53 kW. Let's re-check the question's options based on common exam rounding or slight variations. If 19.36 is correct, it implies a different formula or conversion factor. Let's assume the formula Power (kW) = (Q * H * 9.81) / (Eff_pump * Eff_motor) is intended. Power = (0.05 * 20 * 9.81) / (0.75 * 0.90) = 9.81 / 0.675 = 14.53 kW. There might be an issue with the provided correct answer or options. Let's re-calculate using a different approach. Power (kW) = (Flow (m³/s) * Head (m) * Specific Gravity * 9.81) / (Pump Eff * Motor Eff). Assuming SG=1. Power = (0.05 * 20 * 1 * 9.81) / (0.75 * 0.90) = 9.81 / 0.675 = 14.53 kW. The closest answer is 14.52 kW. Let's adjust the correctIndex to 1."
+   },
+   "fix": {
+    "question": "A pump is designed to deliver 50 L/s against a total dynamic head of 20 meters. If the motor efficiency is 90% and the pump efficiency is 75%, what is the motor's power requirement in kW?",
+    "options": [
+     "10.89 kW",
+     "14.53 kW",
+     "19.36 kW",
+     "25.81 kW"
+    ],
+    "correctIndex": 1,
+    "explanation": "Convert 50 L/s to 0.05 m3/s. Water power = 0.05 x 20 x 9.81 = 9.81 kW. Shaft power = 9.81 / 0.75 = 13.08 kW. Motor input power = 13.08 / 0.90 = 14.53 kW.",
+    "steps": [
+     {
+      "l": "Convert the flow to m3/s",
+      "c": "50 L/s / 1000 L per m3 = 0.05 m3/s"
+     },
+     {
+      "l": "State the water power formula",
+      "c": "Water Power (kW) = Flow (m3/s) x Head (m) x 9.81 kN/m3"
+     },
+     {
+      "l": "Calculate water power",
+      "c": "0.05 x 20 x 9.81 = 9.81 kW"
+     },
+     {
+      "l": "Divide by pump efficiency to get shaft power",
+      "c": "9.81 kW / 0.75 = 13.08 kW"
+     },
+     {
+      "l": "Divide by motor efficiency to get motor input",
+      "c": "13.08 kW / 0.90 = 14.53 kW"
+     }
+    ]
+   }
+  },
+  {
+   "id": 155492,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 242,
+   "verdict": "UNCLEAR",
+   "note": "In collection-system work a 'cross-connection' is also commonly a sanitary-to-storm sewer connection (option A), so two options are defensible. Stem should specify the public-health (potable water) sense.",
+   "original": {
+    "question": "Which of the following describes a 'cross-connection' in a wastewater context?",
+    "options": [
+     "A connection between a sanitary sewer and a storm sewer.",
+     "A connection between two parallel force mains.",
+     "A connection that allows potable water to mix with wastewater.",
+     "A connection used for diverting flow during emergencies."
+    ],
+    "correctIndex": 2,
+    "explanation": "A cross-connection is an actual or potential physical connection between a potable water system and any non-potable water system or source, including wastewater, posing a serious public health risk."
+   },
+   "fix": {
+    "question": "In terms of protecting drinking water, which of the following describes a 'cross-connection' involving wastewater?",
+    "options": [
+     "A manhole joining two gravity sewers of different diameters",
+     "A connection between two parallel force mains",
+     "A connection that allows potable water to mix with wastewater",
+     "A connection used for diverting flow during emergencies"
+    ],
+    "correctIndex": 2,
+    "explanation": "A cross-connection is an actual or potential physical connection between a potable water system and any non-potable water system or source, including wastewater, posing a serious public health risk.",
+    "steps": null
+   }
+  },
+  {
+   "id": 155495,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 245,
+   "verdict": "WRONG",
+   "note": "Manning full pipe: R = 0.15 m, R^(2/3) = 0.2823, S^0.5 = 0.0447, V = 76.92 x 0.2823 x 0.0447 = 0.97 m/s. 1.05 m/s is not the result; the explanation itself computes 0.97 and picks the 'closest' option.",
+   "original": {
+    "question": "A gravity sewer pipe has a slope of 0.002 m/m. If the pipe is 600 mm in diameter and flowing full, what is the approximate velocity using Manning's equation with n=0.013?",
+    "options": [
+     "0.85 m/s",
+     "1.05 m/s",
+     "1.25 m/s",
+     "1.45 m/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "For a full pipe, Hydraulic Radius (R) = Diameter / 4 = 0.60 m / 4 = 0.15 m. Velocity (V) = (1/n) * R^(2/3) * S^(1/2) = (1/0.013) * (0.15)^(2/3) * (0.002)^(1/2) = 76.92 * 0.2817 * 0.0447 = 0.969 m/s. Closest option is 1.05 m/s. (Note: Manning's equation can be sensitive to rounding and specific 'n' values. The closest option is chosen based on standard calculations). Let's re-check the calculation: V = (1/0.013) * (0.15)^(0.6667) * (0.002)^(0.5) = 76.923 * 0.2817 * 0.04472 = 0.969 m/s. The options provided are not perfectly aligned with this exact calculation. However, 1.05 m/s is the closest plausible answer if slight variations in 'n' or rounding are considered."
+   },
+   "fix": {
+    "question": "A gravity sewer pipe has a slope of 0.002 m/m. If the pipe is 600 mm in diameter and flowing full, what is the approximate velocity using Manning's equation with n=0.013?",
+    "options": [
+     "0.85 m/s",
+     "0.97 m/s",
+     "1.25 m/s",
+     "1.45 m/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "For a full pipe, R = D/4 = 0.60/4 = 0.15 m. V = (1/0.013) x (0.15)^(2/3) x (0.002)^(1/2) = 76.92 x 0.2823 x 0.0447 = 0.97 m/s.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "For a circular pipe flowing full, Hydraulic Radius R = D / 4."
+     },
+     {
+      "l": "Step 2",
+      "c": "Convert diameter: 600 mm = 0.60 m, so R = 0.60 / 4 = 0.15 m."
+     },
+     {
+      "l": "Step 3",
+      "c": "Apply Manning's equation: V = (1/n) * R^(2/3) * S^(1/2)."
+     },
+     {
+      "l": "Step 4",
+      "c": "Substitute: V = (1/0.013) * (0.15)^(2/3) * (0.002)^(1/2)."
+     },
+     {
+      "l": "Step 5",
+      "c": "Evaluate terms: 1/0.013 = 76.92; (0.15)^(2/3) = 0.2823; (0.002)^(1/2) = 0.0447."
+     },
+     {
+      "l": "Step 6",
+      "c": "V = 76.92 * 0.2823 * 0.0447 = 0.97 m/s."
+     }
+    ]
+   }
+  },
+  {
+   "id": 155507,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 257,
+   "verdict": "OFF-TOPIC",
+   "note": "Drinking water sampling frequency under O. Reg. 170/03 is not a wastewater collection topic; the explanation itself admits this and hedges ('typically weekly').",
+   "original": {
+    "question": "Under O. Reg. 170/03, what is the required frequency for bacteriological sampling in a small drinking water system serving a population of 100 people?",
+    "options": [
+     "Daily.",
+     "Weekly.",
+     "Monthly.",
+     "Quarterly."
+    ],
+    "correctIndex": 1,
+    "explanation": "This question is for a wastewater collection systems exam, not a drinking water exam. O. Reg. 170/03 pertains to drinking water systems, and specifically outlines sampling requirements. For a small drinking water system serving a population of 100 people, the required frequency for bacteriological sampling is typically weekly. However, this regulation is not directly applicable to wastewater collection systems."
+   },
+   "fix": null
+  },
+  {
+   "id": 155511,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 261,
+   "verdict": "UNITS",
+   "note": "US gallons per minute, feet and US horsepower formula (3960) in an Ontario bank. Converted to metric: 125 L/s at 15 m head gives 0.125 x 15 x 9.81 = 18.4 kW water power.",
+   "original": {
+    "question": "If a wastewater pump delivers 2000 US gallons per minute (GPM) against a head of 50 feet, what is the approximate water horsepower (WHP)?",
+    "options": [
+     "15.2 WHP",
+     "25.3 WHP",
+     "35.4 WHP",
+     "45.5 WHP"
+    ],
+    "correctIndex": 1,
+    "explanation": "Water Horsepower (WHP) = (Flow (GPM) * Head (ft)) / 3960. WHP = (2000 GPM * 50 ft) / 3960 = 100,000 / 3960 = 25.25 WHP. The closest option is 25.3 WHP. Let's re-evaluate the options. If the correct index is 2, then 35.4 WHP is the answer, which implies a different formula or a significant error in the question or options. Re-checking the formula: WHP = (GPM x Head) / 3960 is standard. 2000 * 50 / 3960 = 25.25. Let's assume there's a typo in the correctIndex and it should be 1."
+   },
+   "fix": {
+    "question": "A wastewater pump delivers 125 L/s against a total head of 15 metres. What is the approximate water power in kW?",
+    "options": [
+     "1.9 kW",
+     "9.2 kW",
+     "18.4 kW",
+     "36.8 kW"
+    ],
+    "correctIndex": 2,
+    "explanation": "Water power (kW) = Flow (m3/s) x Head (m) x 9.81 = 0.125 x 15 x 9.81 = 18.4 kW.",
+    "steps": [
+     {
+      "l": "Convert flow",
+      "c": "125 L/s / 1000 = 0.125 m3/s"
+     },
+     {
+      "l": "State the formula",
+      "c": "Water power (kW) = Q (m3/s) x H (m) x 9.81 kN/m3"
+     },
+     {
+      "l": "Substitute",
+      "c": "0.125 x 15 x 9.81"
+     },
+     {
+      "l": "Calculate",
+      "c": "0.125 x 15 = 1.875; 1.875 x 9.81 = 18.4 kW"
+     }
+    ]
+   }
+  },
+  {
+   "id": 155525,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 275,
+   "verdict": "OFF-TOPIC",
+   "note": "Drinking water adverse-condition reporting under O. Reg. 170/03 is not an operator topic for a wastewater collection exam.",
+   "original": {
+    "question": "According to O. Reg. 170/03, what action must an operator take immediately upon discovering an adverse condition in a drinking water system?",
+    "options": [
+     "Notify the local public health unit within 24 hours.",
+     "Document the incident in the system's logbook for review.",
+     "Implement corrective actions and then report to the owner.",
+     "Report it to the Spills Action Centre and the Medical Officer of Health."
+    ],
+    "correctIndex": 3,
+    "explanation": "O. Reg. 170/03 specifies immediate reporting to the Spills Action Centre (SAC) and the Medical Officer of Health (MOH) for adverse drinking water conditions."
+   },
+   "fix": null
+  },
+  {
+   "id": 155539,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 289,
+   "verdict": "UNITS",
+   "note": "Jetting pressure given in psi in an Ontario bank. 1000-3000 psi is about 7,000-20,000 kPa.",
+   "original": {
+    "question": "What is 'high-pressure water jetting' for sewer cleaning?",
+    "options": [
+     "Spraying water on the outside of pipes",
+     "Using high-pressure water (1000-3000 psi) directed through specialized nozzles to clean pipe walls, cut roots, and remove deposits — the most common and versatile sewer cleaning method",
+     "Low-pressure flushing only",
+     "Only for large diameter sewers"
+    ],
+    "correctIndex": 1,
+    "explanation": "Jetting: truck-mounted pump delivers high-pressure water through hose and nozzle. Nozzle types: flushing (rear-facing jets — propels forward, flushes debris back), cutting (forward-facing — cuts roots, grease), and combination. Procedure: insert downstream, jet upstream (debris flows to downstream manhole for vacuum removal)."
+   },
+   "fix": {
+    "question": "What is 'high-pressure water jetting' for sewer cleaning?",
+    "options": [
+     "Spraying water on the outside of pipes",
+     "Using high-pressure water (about 7,000-20,000 kPa) directed through specialized nozzles to clean pipe walls, cut roots, and remove deposits — the most common and versatile sewer cleaning method",
+     "Low-pressure flushing only",
+     "Only for large diameter sewers"
+    ],
+    "correctIndex": 1,
+    "explanation": "Jetting: truck-mounted pump delivers high-pressure water through hose and nozzle. Nozzle types: flushing (rear-facing jets — propels forward, flushes debris back), cutting (forward-facing — cuts roots, grease), and combination. Procedure: insert downstream, jet upstream (debris flows to downstream manhole for vacuum removal).",
+    "steps": null
+   }
+  },
+  {
+   "id": 155546,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 296,
+   "verdict": "UNITS",
+   "note": "Distractor uses feet ('10 feet deep') in an Ontario bank. Converted to metres.",
+   "original": {
+    "question": "Which of the following is a critical safety procedure to follow when working near or in a trench excavation?",
+    "options": [
+     "Ensuring that the trench is at least 10 feet deep.",
+     "Placing excavated soil directly at the edge of the trench.",
+     "Using proper shoring or sloping techniques to prevent collapse.",
+     "Working alone to avoid distractions and improve efficiency."
+    ],
+    "correctIndex": 2,
+    "explanation": "Trench collapses are extremely dangerous. Proper shoring, shielding, or sloping is mandated by safety regulations to protect workers."
+   },
+   "fix": {
+    "question": "Which of the following is a critical safety procedure to follow when working near or in a trench excavation?",
+    "options": [
+     "Ensuring that the trench is at least 3 metres deep.",
+     "Placing excavated soil directly at the edge of the trench.",
+     "Using proper shoring or sloping techniques to prevent collapse.",
+     "Working alone to avoid distractions and improve efficiency."
+    ],
+    "correctIndex": 2,
+    "explanation": "Trench collapses are extremely dangerous. Proper shoring, shielding, or sloping is required under Ontario's Regulation for Construction Projects (O. Reg. 213/91) to protect workers.",
+    "steps": null
+   }
+  },
+  {
+   "id": 155549,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 299,
+   "verdict": "WRONG",
+   "note": "O. Reg. 129/04 is Licensing of Sewage Works Operators (it also sets sewage works classification); it is mislabelled here as 'Liquid Waste Management'. O. Reg. 188/07 is Licensing of Operating Authorities (drinking water), not operator certification. Key is wrong.",
+   "original": {
+    "question": "Which Ontario regulation governs the licensing of wastewater operators and the classification of wastewater facilities?",
+    "options": [
+     "O. Reg. 170/03 (Drinking Water Systems)",
+     "O. Reg. 129/04 (Liquid Waste Management)",
+     "O. Reg. 188/07 (Water and Wastewater Operator Certification)",
+     "O. Reg. 347 (General Waste Management)"
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 188/07 specifically addresses the certification of operators and the classification of drinking water and wastewater facilities in Ontario."
+   },
+   "fix": {
+    "question": "Which Ontario regulation governs the licensing of wastewater operators and the classification of wastewater facilities?",
+    "options": [
+     "O. Reg. 170/03 (Drinking Water Systems)",
+     "O. Reg. 129/04 (Licensing of Sewage Works Operators)",
+     "O. Reg. 188/07 (Licensing of Operating Authorities)",
+     "O. Reg. 347 (General - Waste Management)"
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 129/04, Licensing of Sewage Works Operators, made under the Ontario Water Resources Act, governs operator licensing and the classification of sewage works in Ontario.",
+    "steps": null
+   }
+  },
+  {
+   "id": 184961,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 304,
+   "verdict": "WRONG",
+   "note": "Explanation and steps give the Ontario oxygen range as 19.5% to 23.5%. O. Reg. 632/05 defines acceptable atmospheric oxygen as 19.5% to 23.0% by volume (confirmed in the regulation text). The key (19.5%) is right but the stated upper limit is wrong.",
+   "original": {
+    "question": "When performing a confined space entry into a wastewater collection system, what is the minimum acceptable oxygen level before entry without additional ventilation?",
+    "options": [
+     "22.5%",
+     "19.5%",
+     "16.0%",
+     "20.9%"
+    ],
+    "correctIndex": 1,
+    "explanation": "According to Ontario's Confined Spaces Regulation (O. Reg. 632/05), the oxygen content in a confined space must be between 19.5% and 23.5% by volume before entry without requiring additional ventilation or supplied air."
+   },
+   "fix": {
+    "question": "When performing a confined space entry into a wastewater collection system, what is the minimum acceptable oxygen level before entry without additional ventilation?",
+    "options": [
+     "22.5%",
+     "19.5%",
+     "16.0%",
+     "20.9%"
+    ],
+    "correctIndex": 1,
+    "explanation": "According to Ontario's Confined Spaces Regulation (O. Reg. 632/05), the oxygen content in a confined space must be between 19.5% and 23.0% by volume before entry without requiring additional ventilation or supplied air.",
+    "steps": [
+     {
+      "l": "Identify the question type",
+      "c": "This item tests a safety regulation limit, so no calculation is required."
+     },
+     {
+      "l": "Recall the acceptable oxygen range",
+      "c": "Under O. Reg. 632/05, the atmosphere must be between 19.5 and 23.0 percent oxygen by volume before entry without added ventilation or supplied air."
+     },
+     {
+      "l": "Screen the distractors",
+      "c": "16.0 percent is oxygen deficient and unsafe; 20.9 percent is normal ambient air, not the minimum; 22.5 percent is within the acceptable range but is an upper-range value, not the minimum."
+     },
+     {
+      "l": "Conclude the answer",
+      "c": "The minimum acceptable level is 19.5 percent oxygen by volume."
+     }
+    ]
+   }
+  },
+  {
+   "id": 184970,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 313,
+   "verdict": "UNCLEAR",
+   "note": "'First priority after ensuring public safety' has two defensible answers. In Ontario, an SSO that is likely to cause an adverse effect must be reported immediately to the MECP Spills Action Centre (EPA Part X), and stopping/containing the overflow also comes first. Determining the root cause is not clearly ahead of containment or notification. Reworded to ask for the first operational action.",
+   "original": {
+    "question": "An operator is responding to a sanitary sewer overflow (SSO). What is the first priority after ensuring public safety?",
+    "options": [
+     "Notify regulatory authorities and complete all required paperwork.",
+     "Determine the cause of the overflow and initiate corrective actions.",
+     "Collect samples of the overflowing wastewater for laboratory analysis.",
+     "Clean and disinfect the affected area immediately."
+    ],
+    "correctIndex": 1,
+    "explanation": "After ensuring public safety, the immediate priority is to identify the cause of the SSO (e.g., blockage, pump failure) and take corrective action to stop the overflow and restore normal operation."
+   },
+   "fix": {
+    "question": "An operator is responding to a sanitary sewer overflow (SSO). After ensuring public safety, what is the first operational action to limit environmental impact?",
+    "options": [
+     "Complete all required paperwork before leaving the site.",
+     "Stop and contain the overflow by locating and relieving the cause (for example, clearing the blockage or setting up bypass pumping).",
+     "Collect samples of the overflowing wastewater for laboratory analysis.",
+     "Clean and disinfect the affected area immediately."
+    ],
+    "correctIndex": 1,
+    "explanation": "After public safety is secured, the immediate priority is to stop and contain the overflow (clear the blockage, restore pumping or bypass) so that discharge to the environment ends. Spill reporting to the Spills Action Centre must also be made immediately, and sampling, cleanup and paperwork follow.",
+    "steps": null
+   }
+  },
+  {
+   "id": 184975,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 318,
+   "verdict": "UNCLEAR",
+   "note": "The marked option says H2S 'kills at >100 ppm', but the explanation says respiratory paralysis/death above 300 ppm; rapid fatality is generally cited at several hundred ppm (about 500-1000 ppm), with 100 ppm being the IDLH level. The option and explanation disagree and the figure is imprecise.",
+   "original": {
+    "question": "What is 'hydrogen sulphide' (H₂S) in collection systems and why is it dangerous?",
+    "options": [
+     "Only an odour nuisance",
+     "A toxic, corrosive gas produced by anaerobic decomposition of sewage — dangerous because: toxic at low concentrations (kills at >100 ppm), causes crown corrosion in concrete pipes, and creates explosive atmospheres",
+     "Only found in treatment plants",
+     "H₂S is harmless"
+    ],
+    "correctIndex": 1,
+    "explanation": "H₂S hazards: odour (0.5 ppm), eye irritation (10 ppm), olfactory fatigue — can't smell it (50-100 ppm), respiratory paralysis/death (>300 ppm). Corrosion: H₂S → H₂SO₄ on moist concrete surfaces (crown corrosion, pH drops to 1-2). Explosive: 4.3-46% in air. Heavier than air (accumulates in low points)."
+   },
+   "fix": {
+    "question": "What is 'hydrogen sulphide' (H₂S) in collection systems and why is it dangerous?",
+    "options": [
+     "Only an odour nuisance",
+     "A toxic, corrosive gas produced by anaerobic decomposition of sewage — dangerous because: toxic at low concentrations (immediately dangerous to life and health at 100 ppm, rapidly fatal at several hundred ppm), causes crown corrosion in concrete pipes, and creates explosive atmospheres",
+     "Only found in treatment plants",
+     "H₂S is harmless"
+    ],
+    "correctIndex": 1,
+    "explanation": "H₂S hazards: odour (0.5 ppm), eye irritation (10 ppm), olfactory fatigue — can't smell it (50-100 ppm), IDLH at 100 ppm, respiratory paralysis/death (several hundred ppm and above). Corrosion: H₂S → H₂SO₄ on moist concrete surfaces (crown corrosion, pH drops to 1-2). Explosive: 4.3-46% in air. Heavier than air (accumulates in low points).",
+    "steps": null
+   }
+  },
+  {
+   "id": 184981,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 324,
+   "verdict": "UNCLEAR",
+   "note": "A significant increase in dry-weather flow could equally be an industrial discharge or a surge in consumption; and 'I/I from a leaking water main' is not a clean example of I/I (a water main leak is not groundwater infiltration unless it enters sewer defects). The question needs a stem that points to infiltration.",
+   "original": {
+    "question": "An operator observes a significant increase in flow at a pump station during a dry weather period. What is the most likely cause?",
+    "options": [
+     "Increased industrial discharge from a local facility.",
+     "A sudden surge in residential water consumption.",
+     "Significant inflow and infiltration (I/I) from a leaking water main.",
+     "A malfunction in the flow meter calibration."
+    ],
+    "correctIndex": 2,
+    "explanation": "An increase in dry weather flow often indicates significant inflow and infiltration (I/I) entering the sanitary sewer system, suggesting groundwater or other non-wastewater sources are leaking into the pipes."
+   },
+   "fix": {
+    "question": "An operator observes a sustained increase in flow at a pump station during spring thaw with no rainfall and no change in known discharges. What is the most likely cause?",
+    "options": [
+     "Increased industrial discharge from a local facility.",
+     "A sudden surge in residential water consumption.",
+     "Groundwater infiltration through defective pipes, joints and manholes.",
+     "A malfunction in the flow meter calibration."
+    ],
+    "correctIndex": 2,
+    "explanation": "A sustained rise in dry-weather flow during high groundwater periods (such as spring thaw), with no rain and no change in known discharges, indicates groundwater infiltration through cracks, defective joints and manholes.",
+    "steps": null
+   }
+  },
+  {
+   "id": 184986,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 329,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 170/03 is the Drinking Water Systems regulation under the Safe Drinking Water Act. It does not govern wastewater collection systems or SSO reporting. SSO impacts on a watercourse are reported to the MECP Spills Action Centre under Part X of the Environmental Protection Act (spills reporting). The explanation itself admits the question is poorly phrased.",
+   "original": {
+    "question": "A wastewater collection system operator is required to report adverse conditions under O. Reg. 170/03 of the Safe Drinking Water Act. What type of event would typically trigger such a report?",
+    "options": [
+     "A minor blockage in a local sewer lateral.",
+     "A sanitary sewer overflow (SSO) that impacts a watercourse or public area.",
+     "A scheduled maintenance activity at a pump station.",
+     "A slight increase in the biochemical oxygen demand (BOD) of the influent wastewater."
+    ],
+    "correctIndex": 1,
+    "explanation": "While O. Reg. 170/03 primarily relates to drinking water, the question is poorly phrased for a wastewater collection exam. However, an SSO impacting a watercourse would be an adverse event requiring reporting to the MECP under the Environmental Protection Act (EPA) and the Ontario Water Resources Act (OWRA), which are related to environmental protection. For a Class 2 Collection exam, the intent is likely to test knowledge of reportable SSOs."
+   },
+   "fix": {
+    "question": "In Ontario, a wastewater collection system operator is required to report a spill under Part X of the Environmental Protection Act. What type of event would typically trigger such a report?",
+    "options": [
+     "A minor blockage in a local sewer lateral.",
+     "A sanitary sewer overflow (SSO) that impacts a watercourse or public area.",
+     "A scheduled maintenance activity at a pump station.",
+     "A slight increase in the biochemical oxygen demand (BOD) of the influent wastewater."
+    ],
+    "correctIndex": 1,
+    "explanation": "A sanitary sewer overflow that discharges to a watercourse or public area is a spill likely to cause an adverse effect and must be reported immediately to the MECP Spills Action Centre under Part X of the Environmental Protection Act (O. Reg. 170/03 applies to drinking water systems, not wastewater collection).",
+    "steps": null
+   }
+  },
+  {
+   "id": 185014,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 357,
+   "verdict": "WRONG",
+   "note": "Explanation and steps state the O. Reg. 632/05 oxygen range as 19.5% to 23.5%. The regulation says 19.5% to 23.0% by volume. Key (19.5%) is right.",
+   "original": {
+    "question": "A collection system operator is preparing to enter a confined space. What is the minimum required oxygen concentration before entry is permitted?",
+    "options": [
+     "16.5%",
+     "18.0%",
+     "19.5%",
+     "20.9%"
+    ],
+    "correctIndex": 2,
+    "explanation": "According to confined space entry regulations (e.g., O. Reg. 632/05), the oxygen concentration must be between 19.5% and 23.5% by volume for safe entry without supplied air."
+   },
+   "fix": {
+    "question": "A collection system operator is preparing to enter a confined space. What is the minimum required oxygen concentration before entry is permitted?",
+    "options": [
+     "16.5%",
+     "18.0%",
+     "19.5%",
+     "20.9%"
+    ],
+    "correctIndex": 2,
+    "explanation": "According to confined space entry regulations (O. Reg. 632/05), the oxygen concentration must be between 19.5% and 23.0% by volume for safe entry without supplied air.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Identify that this question asks for a regulatory threshold, not a mathematical calculation."
+     },
+     {
+      "l": "Step 2",
+      "c": "Recall confined space entry requirements for atmospheric testing: oxygen must be tested before entry."
+     },
+     {
+      "l": "Step 3",
+      "c": "The acceptable oxygen range for entry without supplied air is 19.5% to 23.0% by volume, so the minimum is 19.5%."
+     },
+     {
+      "l": "Step 4",
+      "c": "The correct option is 19.5%."
+     }
+    ]
+   }
+  },
+  {
+   "id": 185018,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 361,
+   "verdict": "UNCLEAR",
+   "note": "The premise contradicts the key: two 1,000 L/min pumps cannot handle 1,800 L/min with one out, so 'required capacity' of 1,800 is a restatement of the peak flow, and the explanation rambles and admits the station would not meet the requirement. Reframed as firm-capacity design question.",
+   "original": {
+    "question": "A wastewater collection system has a pump station with two pumps. Each pump has a capacity of 1,000 L/min. If the peak flow into the station is 1,800 L/min, what is the required pumping capacity for the station to handle the peak flow with one pump out of service?",
+    "options": [
+     "1,000 L/min",
+     "1,800 L/min",
+     "2,000 L/min",
+     "3,600 L/min"
+    ],
+    "correctIndex": 1,
+    "explanation": "The station must be able to handle peak flow with the largest pump out of service. If there are two 1,000 L/min pumps, and one is out, the remaining pump can handle 1,000 L/min. However, the question asks for the required capacity to handle the peak flow of 1,800 L/min with one pump out of service. This means the station needs at least 1,800 L/min capacity with one pump available. Since each pump is 1,000 L/min, the station with two pumps has a total capacity of 2,000 L/min. If one is out, 1,000 L/min is available. This implies that the station would not be able to handle 1,800 L/min with one pump out of service. The question is a bit tricky, asking for 'required pumping capacity'. If the peak flow is 1,800 L/min, and one pump is out, the remaining pump(s) must be able to handle 1,800 L/min. If the station has two 1,000 L/min pumps, and one is out, only 1,000 L/min is available, which is not enough. To meet the requirement of handling 1,800 L/min with one pump out, the remaining pump would need to be at least 1,800 L/min. This question implies the *minimum* capacity of the *remaining* operational pump(s) to handle the peak flow. Therefore, the required capacity is 1,800 L/min."
+   },
+   "fix": {
+    "question": "A pump station has two identical pumps. The peak flow into the station is 1,800 L/min. What is the minimum capacity each pump must have so the station can handle the peak flow with one pump out of service?",
+    "options": [
+     "900 L/min",
+     "1,800 L/min",
+     "2,700 L/min",
+     "3,600 L/min"
+    ],
+    "correctIndex": 1,
+    "explanation": "Firm capacity means the station must pass peak flow with the largest pump out of service. With two identical pumps, the one remaining pump must deliver the full peak flow, so each pump must be rated at least 1,800 L/min.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Peak flow to be handled = 1,800 L/min."
+     },
+     {
+      "l": "Step 2",
+      "c": "Apply the firm capacity rule: the station must pass peak flow with the largest pump out of service."
+     },
+     {
+      "l": "Step 3",
+      "c": "With one of the two pumps out, the remaining pump alone must deliver the full peak flow."
+     },
+     {
+      "l": "Step 4",
+      "c": "Each pump must therefore have a capacity of at least 1,800 L/min."
+     }
+    ]
+   }
+  },
+  {
+   "id": 185021,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 364,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 170/03 governs drinking water systems, and the stem ('adverse water quality incident in a drinking water system that could impact a wastewater collection system') is off-topic for a collection operator and incoherent. The explanation admits it is about drinking water. Replaced with the relevant Ontario spill-reporting rule (EPA Part X: report immediately).",
+   "original": {
+    "question": "According to Ontario Regulation 170/03, what is the reporting requirement for an adverse water quality incident in a drinking water system that could impact a wastewater collection system (e.g., cross-connection)?",
+    "options": [
+     "Report to the MECP within 24 hours of becoming aware of the incident.",
+     "Report to the MECP immediately after becoming aware of the incident.",
+     "Report to the local Medical Officer of Health within 48 hours.",
+     "Report to the MECP only if the incident results in a public health advisory."
+    ],
+    "correctIndex": 1,
+    "explanation": "While O. Reg. 170/03 specifically applies to drinking water systems, the principle of immediate reporting for adverse conditions that could affect public health or the environment (such as a cross-connection impacting drinking water) is critical and aligns with general environmental reporting duties under the Environmental Protection Act and OWRA."
+   },
+   "fix": {
+    "question": "Under Ontario's Environmental Protection Act (Part X), when must a spill such as a sewage overflow that causes or is likely to cause an adverse effect be reported to the MECP Spills Action Centre?",
+    "options": [
+     "Within 24 hours of becoming aware of the spill.",
+     "Immediately after becoming aware of the spill.",
+     "Within 48 hours, to the local Medical Officer of Health only.",
+     "Only if the spill results in a public health advisory."
+    ],
+    "correctIndex": 1,
+    "explanation": "Part X of the Environmental Protection Act and O. Reg. 675/98 require that a spill likely to cause an adverse effect be reported immediately to the MECP Spills Action Centre and to the municipality. O. Reg. 170/03 applies to drinking water systems, not collection systems.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185028,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 371,
+   "verdict": "UNCLEAR",
+   "note": "Flow rate (150 L/s) is given and the pipe size and depth of flow are known, so velocity can be found directly as V = Q/A with no further information. If Manning is used, the slope (from invert elevations, option B) is equally essential, so B is also defensible. Reworded to a Manning-only question where slope is given.",
+   "original": {
+    "question": "A collection system operator needs to calculate the flow velocity in a 300 mm diameter sewer pipe flowing at 75% full. The flow rate is 150 L/s. What additional information is most crucial for an accurate calculation?",
+    "options": [
+     "The material of the sewer pipe (e.g., PVC, concrete).",
+     "The upstream and downstream manhole invert elevations.",
+     "The Manning's roughness coefficient (n) for the pipe material.",
+     "The temperature of the wastewater flowing through the pipe."
+    ],
+    "correctIndex": 2,
+    "explanation": "To calculate flow velocity using Manning's equation (V = (1/n) * R^(2/3) * S^(1/2)), the Manning's roughness coefficient (n) is essential, along with the hydraulic radius (R) and slope (S)."
+   },
+   "fix": {
+    "question": "A collection system operator wants to calculate the velocity in a 300 mm diameter sewer pipe flowing 75% full using Manning's equation. The pipe slope is known. What additional information is needed?",
+    "options": [
+     "The age of the sewer pipe.",
+     "The depth of cover over the pipe.",
+     "The Manning's roughness coefficient (n) for the pipe material.",
+     "The temperature of the wastewater flowing through the pipe."
+    ],
+    "correctIndex": 2,
+    "explanation": "Manning's equation is V = (1/n) * R^(2/3) * S^(1/2). The diameter and 75% depth give the hydraulic radius R, and the slope S is known, so the remaining required input is the roughness coefficient n.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Recognize that this item asks which input is missing, not for a numeric answer."
+     },
+     {
+      "l": "Step 2",
+      "c": "Write Manning's equation: V = (1/n) * R^(2/3) * S^(1/2)."
+     },
+     {
+      "l": "Step 3",
+      "c": "Diameter and depth of flow (75% full) give the hydraulic radius R, and the slope S is stated as known."
+     },
+     {
+      "l": "Step 4",
+      "c": "The only remaining unknown is n, the roughness coefficient for the pipe material and condition."
+     },
+     {
+      "l": "Step 5",
+      "c": "The correct option is the Manning's roughness coefficient (n)."
+     }
+    ]
+   }
+  },
+  {
+   "id": 185053,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 396,
+   "verdict": "WRONG",
+   "note": "Ontario wastewater collection operators are licensed (not just certified) under O. Reg. 129/04, and licensing applies to all classes (OIT and Class I to IV), not only 'Class 2+'. Class 1 collection systems also require licensed operators. The key option and explanation say Class 2+ only, which misstates the rule.",
+   "original": {
+    "question": "What is 'collection system operator certification' in Ontario?",
+    "options": [
+     "No certification required for collection",
+     "Operators of Class 2+ wastewater collection systems must hold valid certification — obtained through education, experience, examination, and maintained through continuing education",
+     "Only treatment plant operators need certification",
+     "Certification is voluntary"
+    ],
+    "correctIndex": 1,
+    "explanation": "Ontario certification (O. Reg. 129/04): collection systems classified based on complexity (length, pump stations, force mains). Class 2+ requires certified operators. Requirements: education (Grade 12+), experience (varies by class), OWWCO exam, and CEU maintenance. ORO and OIC designations required."
+   },
+   "fix": {
+    "question": "What is 'collection system operator licensing' in Ontario?",
+    "options": [
+     "No licence is required for collection system operators",
+     "Operators of wastewater collection systems must hold a valid licence for the class of the system — obtained through education, experience, examination, and maintained through continuing education",
+     "Only treatment plant operators need a licence",
+     "Licensing is voluntary"
+    ],
+    "correctIndex": 1,
+    "explanation": "Ontario wastewater operator licensing (O. Reg. 129/04): collection systems are classified Class 1 to 4 by complexity, and operators in charge and the overall responsible operator must hold a licence of the appropriate class. Requirements include education, experience, an OWWCO examination, and continuing education to maintain the licence.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185059,
+   "bankKey": "class2-wastewater-coll",
+   "questionNum": 402,
+   "verdict": "UNCLEAR",
+   "note": "The answer 35.3 m³ is correct (π × 1.5² × 5 = 35.34), but the explanation says 'This calculation is incorrect' and rambles about re-checking the key, which would mislead a student.",
+   "original": {
+    "question": "A collection system operator is calculating the volume of a cylindrical wet well. The wet well has a diameter of 3 meters and a depth of 5 meters. What is the approximate volume in cubic meters? (Volume = π * (radius)^2 * height)",
+    "options": [
+     "14.1 m³",
+     "23.6 m³",
+     "35.3 m³",
+     "47.1 m³"
+    ],
+    "correctIndex": 2,
+    "explanation": "Diameter = 3 m, so Radius = 1.5 m. Depth (height) = 5 m. Volume = π * (1.5 m)^2 * 5 m = π * 2.25 m^2 * 5 m = 35.34 m^3. This calculation is incorrect. Let's re-calculate: Volume = π * (1.5)^2 * 5 = 3.14159 * 2.25 * 5 = 35.3428 m^3. The closest option is 35.3 m³. Let's recheck the options and calculation. If the options are 14.1, 23.6, 35.3, 47.1, then 35.3 is the closest. Let's re-evaluate the correct index based on the calculation. Volume = π * (1.5)^2 * 5 = 3.14159 * 2.25 * 5 = 35.3428 m^3. So, 35.3 m^3 is the correct answer. The correctIndex should be 2."
+   },
+   "fix": {
+    "question": "A collection system operator is calculating the volume of a cylindrical wet well. The wet well has a diameter of 3 meters and a depth of 5 meters. What is the approximate volume in cubic meters? (Volume = π * (radius)^2 * height)",
+    "options": [
+     "14.1 m³",
+     "23.6 m³",
+     "35.3 m³",
+     "47.1 m³"
+    ],
+    "correctIndex": 2,
+    "explanation": "Diameter = 3 m, so radius = 1.5 m. Volume = π × (1.5 m)² × 5 m = 3.14159 × 2.25 × 5 = 35.34 m³, approximately 35.3 m³.",
+    "steps": [
+     {
+      "l": "Identify formula",
+      "c": "Volume of a cylinder = pi x radius^2 x height."
+     },
+     {
+      "l": "Find radius",
+      "c": "Radius = Diameter / 2 = 3 m / 2 = 1.5 m."
+     },
+     {
+      "l": "Substitute",
+      "c": "Volume = 3.14159 x (1.5 m)^2 x 5 m."
+     },
+     {
+      "l": "Calculate",
+      "c": "3.14159 x 2.25 m2 = 7.0686 m2; 7.0686 m2 x 5 m = 35.34 m3."
+     },
+     {
+      "l": "Select answer",
+      "c": "35.3 m3 matches the computed volume."
+     }
+    ]
    }
   }
  ]
