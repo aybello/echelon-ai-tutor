@@ -1,15 +1,15 @@
 {
  "export": "docs/exam-bank-export/2026-11-16 (commit d118897a)",
- "chunksDone": 150,
+ "chunksDone": 155,
  "chunksTotal": 174,
- "questionsReviewed": 20981,
+ "questionsReviewed": 21742,
  "questionsTotal": 24350,
- "problems": 1484,
+ "problems": 1513,
  "byVerdict": {
-  "UNCLEAR": 456,
+  "UNCLEAR": 460,
   "WRONG": 581,
-  "JURISDICTION": 252,
-  "UNITS": 188,
+  "JURISDICTION": 260,
+  "UNITS": 205,
   "OFF-TOPIC": 7
  },
  "byBank": {
@@ -43,7 +43,8 @@
   "wpi-class3-wastewater": 32,
   "wpi-class3-wastewater-coll": 10,
   "wpi-class3-water": 47,
-  "wpi-class3-water-dist": 64
+  "wpi-class3-water-dist": 89,
+  "wpi-class4-wastewater": 4
  },
  "chunks": [
   "chunk-001",
@@ -195,7 +196,12 @@
   "chunk-147",
   "chunk-148",
   "chunk-149",
-  "chunk-150"
+  "chunk-150",
+  "chunk-151",
+  "chunk-152",
+  "chunk-153",
+  "chunk-154",
+  "chunk-155"
  ],
  "corrections": [
   {
@@ -52659,6 +52665,1028 @@
      "Use h_f = 10.67LQ^1.852/(C^1.852D^4.871), with h_f and L in m, Q in m3/s, D in m.",
      "Set L = 1,000 m; Q = 90 L/s = 0.090 m3/s; D = 0.300 m; C = 100.",
      "h_f = 10.67(1,000)(0.090)^1.852/[100^1.852(0.300)^4.871] = approximately 8.6 m per 1,000 m: option B."
+    ]
+   }
+  },
+  {
+   "id": 90794,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 452,
+   "verdict": "UNCLEAR",
+   "note": "Steps are an unrelated Hazen-Williams head-loss calculation in US units (GPM, feet) attached to a conceptual emergency-preparedness question; they do not belong to this question. The answer itself is fine.",
+   "original": {
+    "question": "In a Class 3 water distribution system, what is the significance of the system's emergency preparedness for extended power outages?",
+    "options": [
+     "Prolonged power loss eliminates pumping capability, requiring: backup generation at critical facilities, gravity storage utilization, demand reduction measures, and mutual aid activation to maintain minimum service",
+     "Power outages do not affect water supply",
+     "Generators are not needed",
+     "Storage provides unlimited supply"
+    ],
+    "correctIndex": 0,
+    "explanation": "Extended outage planning: prioritize generator deployment (treatment plant first, then critical pump stations), calculate storage duration at reduced demand, implement conservation messaging (reduce demand to extend storage), activate mutual aid (portable generators, tanker trucks), and prioritize service restoration (hospitals, vulnerable populations). Planning horizon: 72-hour self-sufficiency minimum."
+   },
+   "fix": {
+    "question": "In a Class 3 water distribution system, what is the significance of the system's emergency preparedness for extended power outages?",
+    "options": [
+     "Prolonged power loss eliminates pumping capability, requiring: backup generation at critical facilities, gravity storage utilization, demand reduction measures, and mutual aid activation to maintain minimum service",
+     "Power outages do not affect water supply",
+     "Generators are not needed",
+     "Storage provides unlimited supply"
+    ],
+    "correctIndex": 0,
+    "explanation": "Extended outage planning: prioritize generator deployment (treatment plant first, then critical pump stations), calculate storage duration at reduced demand, implement conservation messaging (reduce demand to extend storage), activate mutual aid (portable generators, tanker trucks), and prioritize service restoration (hospitals, vulnerable populations). Planning horizon: 72-hour self-sufficiency minimum.",
+    "steps": null
+   }
+  },
+  {
+   "id": 90801,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 459,
+   "verdict": "UNITS",
+   "note": "US customary units (12-inch, 500-foot) in a Canadian bank. C factor for new PVC (about 140-150) is correct.",
+   "original": {
+    "question": "The Hazen-Williams 'C' factor is used to quantify pipe roughness and friction losses. For a 12-inch diameter, 500-foot long new PVC pipe, what would be an appropriate 'C' factor to use in calculations?",
+    "options": [
+     "140",
+     "100",
+     "80",
+     "60"
+    ],
+    "correctIndex": 0,
+    "explanation": "New PVC pipe is very smooth and has minimal friction loss, hence it is assigned a high 'C' factor. A typical 'C' factor for new PVC pipe is 140 or even higher. Older or rougher pipes would have lower 'C' factors."
+   },
+   "fix": {
+    "question": "The Hazen-Williams 'C' factor is used to quantify pipe roughness and friction losses. For a 300 mm diameter, 150 m long new PVC pipe, what would be an appropriate 'C' factor to use in calculations?",
+    "options": [
+     "140",
+     "100",
+     "80",
+     "60"
+    ],
+    "correctIndex": 0,
+    "explanation": "New PVC pipe is very smooth and has minimal friction loss, hence it is assigned a high 'C' factor. A typical 'C' factor for new PVC pipe is 140 or even higher. Older or rougher pipes would have lower 'C' factors.",
+    "steps": []
+   }
+  },
+  {
+   "id": 90802,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 460,
+   "verdict": "UNITS",
+   "note": "US units (GPM, feet) in a Canadian bank. Converted to L/s and metres; answer logic unchanged.",
+   "original": {
+    "question": "A booster pump station is designed to deliver 1,000 GPM against a total dynamic head (TDH) of 200 feet. The system curve indicates that at 1,000 GPM, the friction losses are 50 feet. What is the static head that the pump must overcome?",
+    "options": [
+     "150 feet",
+     "250 feet",
+     "50 feet",
+     "200 feet"
+    ],
+    "correctIndex": 0,
+    "explanation": "Total Dynamic Head (TDH) is the sum of Static Head and Friction Head. Given TDH = 200 feet and Friction Head = 50 feet, the Static Head = TDH - Friction Head = 200 feet - 50 feet = 150 feet. This represents the elevation difference the pump must overcome."
+   },
+   "fix": {
+    "question": "A booster pump station is designed to deliver 60 L/s against a total dynamic head (TDH) of 60 m. The system curve indicates that at 60 L/s, the friction losses are 15 m. What is the static head that the pump must overcome?",
+    "options": [
+     "45 m",
+     "75 m",
+     "15 m",
+     "60 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "Total Dynamic Head (TDH) is the sum of Static Head and Friction Head. Given TDH = 60 m and Friction Head = 15 m, the Static Head = TDH - Friction Head = 60 m - 15 m = 45 m. This represents the elevation difference the pump must overcome.",
+    "steps": [
+     {
+      "l": "TDH = Static Head + Friction Head",
+      "c": "Total Dynamic Head equals Static Head plus Friction Head."
+     },
+     {
+      "l": "Static Head = TDH - Friction Head",
+      "c": "Rearrange the formula to solve for Static Head."
+     },
+     {
+      "l": "Static Head = 60 m - 15 m",
+      "c": "Substitute the given values for TDH and Friction Head."
+     },
+     {
+      "l": "Static Head = 45 m",
+      "c": "Calculate the Static Head."
+     }
+    ]
+   }
+  },
+  {
+   "id": 90803,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 461,
+   "verdict": "UNITS",
+   "note": "US customary units (US gpm, ft, in., ft3/s) in a Canadian bank. Original arithmetic was correct (about 123 ft). Rewritten in SI with the SI Hazen-Williams form: Q=0.095 m3/s, D=0.300 m, L=1500 m, C=100 gives hf = 10.67*1500*0.095^1.852/(100^1.852*0.3^4.871) = 14.2 m; minor 1.4 m; TDH = 25+14.2+1.4 = 40.6 m.",
+   "original": {
+    "question": "A booster pump supplies 1,500 US gpm through 5,000 ft of main with a 12-in. inside diameter and Hazen–Williams C = 100. Static lift is 75 ft; minor losses are estimated at 10% of pipe friction loss. Use h_f (ft) = 4.73 L Q^1.852/(C^1.852 D^4.871), where L and D are in feet and Q is in ft3/s; 1 ft3/s = 448.8 US gpm. What is the approximate total dynamic head?",
+    "options": [
+     "84 ft",
+     "119 ft",
+     "123 ft",
+     "148 ft"
+    ],
+    "correctIndex": 2,
+    "explanation": "Total dynamic head is static lift plus pipe friction and minor losses. The minor losses are 10% of the calculated pipe friction, giving approximately 123 ft of total dynamic head, matching option C."
+   },
+   "fix": {
+    "question": "A booster pump supplies 95 L/s through 1,500 m of main with a 300 mm inside diameter and Hazen-Williams C = 100. Static lift is 25 m; minor losses are estimated at 10% of pipe friction loss. Use h_f (m) = 10.67 L Q^1.852/(C^1.852 D^4.871), where L and D are in metres and Q is in m3/s. What is the approximate total dynamic head?",
+    "options": [
+     "28 m",
+     "37 m",
+     "41 m",
+     "48 m"
+    ],
+    "correctIndex": 2,
+    "explanation": "Total dynamic head is static lift plus pipe friction and minor losses. The minor losses are 10% of the calculated pipe friction, giving approximately 41 m of total dynamic head, matching option C.",
+    "steps": [
+     "Use H_TDH = H_s + h_f + h_m, with h_m = 0.10h_f and h_f = 10.67LQ^1.852/(C^1.852D^4.871). Here H_TDH is total dynamic head, H_s is static lift, h_f is pipe friction head loss, and h_m is minor-loss head (all in m). L is pipe length (m), Q is flow (m3/s), C is the dimensionless Hazen-Williams coefficient, and D is inside diameter (m); 10.67 is the coefficient for these SI units.",
+     "Set H_s = 25 m and L = 1,500 m. Convert Q = 95 L/s / 1,000 = 0.095 m3/s and D = 300 mm / 1,000 = 0.300 m; C = 100.",
+     "h_f = 10.67(1,500)(0.095)^1.852/[(100)^1.852(0.300)^4.871] = 204.2/14.38 = 14.2 m; h_m = 0.10(14.2 m) = 1.4 m.",
+     "H_TDH = 25 m + 14.2 m + 1.4 m = 40.6 m, about 41 m: option C."
+    ]
+   }
+  },
+  {
+   "id": 90809,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 467,
+   "verdict": "UNITS",
+   "note": "US units (16-inch, feet, GPM, lb/day) in a Canadian bank. Converted to metric: 30 L/s = 2,592 m3/d x 50 g/m3 = 129.6 kg/d.",
+   "original": {
+    "question": "A new 16-inch ductile iron water main, 5,000 feet long, needs to be disinfected using a continuous feed of 50 mg/L chlorine solution. The main has been thoroughly flushed. If the flow rate during disinfection is maintained at 500 GPM, what is the required chlorine feed rate in pounds per day (PPD)?",
+    "options": [
+     "600 PPD",
+     "300 PPD",
+     "150 PPD",
+     "75 PPD"
+    ],
+    "correctIndex": 1,
+    "explanation": "To calculate the chlorine feed rate, use the formula: Feed Rate (PPD) = Flow (MGD) * Dose (mg/L) * 8.34 lbs/gal. First, convert 500 GPM to MGD: 500 GPM * 60 min/hr * 24 hr/day / 1,000,000 gal/MG = 0.72 MGD. Then, 0.72 MGD * 50 mg/L * 8.34 lbs/gal = 300.24 PPD, which rounds to 300 PPD. The length and diameter of the pipe are not needed for the feed rate calculation but are relevant for contact time."
+   },
+   "fix": {
+    "question": "A new 400 mm ductile iron water main, 1,500 m long, needs to be disinfected using a continuous feed of 50 mg/L chlorine solution. The main has been thoroughly flushed. If the flow rate during disinfection is maintained at 30 L/s, what is the required chlorine feed rate in kg/d?",
+    "options": [
+     "260 kg/d",
+     "130 kg/d",
+     "65 kg/d",
+     "32 kg/d"
+    ],
+    "correctIndex": 1,
+    "explanation": "Feed rate (kg/d) = Flow (m3/d) x Dose (mg/L) / 1,000. First convert 30 L/s to m3/d: 30 x 86,400 / 1,000 = 2,592 m3/d. Then 2,592 m3/d x 50 mg/L / 1,000 = 129.6 kg/d, which rounds to 130 kg/d. The length and diameter of the pipe are not needed for the feed rate calculation but are relevant for contact time.",
+    "steps": [
+     {
+      "l": "Convert flow rate from L/s to m3/d:",
+      "c": "30 L/s x 86,400 s/d / 1,000 L/m3 = 2,592 m3/d"
+     },
+     {
+      "l": "Calculate chlorine feed rate: Feed Rate (kg/d) = Flow (m3/d) x Dose (mg/L) / 1,000:",
+      "c": "2,592 m3/d x 50 mg/L / 1,000 = 129.6 kg/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 90815,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 473,
+   "verdict": "UNITS",
+   "note": "US units (million gallons, 8.34 lb/gal) in a Canadian bank. Answer (2.0 + 1.5 = 3.5 mg/L) unchanged.",
+   "original": {
+    "question": "A Class 3 operator is tasked with calculating the required chlorine dose in mg/L for a clearwell with a volume of 5 million gallons, if a target free chlorine residual of 2.0 mg/L is desired after a contact time of 4 hours, and the estimated chlorine demand is 1.5 mg/L. Assume 1 gallon = 8.34 pounds.",
+    "options": [
+     "3.5 mg/L",
+     "2.0 mg/L",
+     "1.5 mg/L",
+     "0.5 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "The required chlorine dose is the sum of the desired free chlorine residual and the estimated chlorine demand. In this case, 2.0 mg/L (residual) + 1.5 mg/L (demand) = 3.5 mg/L. The tank volume and contact time are extraneous information for calculating the dose itself, but would be relevant for calculating the total amount of chlorine needed or CT values."
+   },
+   "fix": {
+    "question": "A Class 3 operator is tasked with calculating the required chlorine dose in mg/L for a clearwell with a volume of 19,000 m3, if a target free chlorine residual of 2.0 mg/L is desired after a contact time of 4 hours, and the estimated chlorine demand is 1.5 mg/L.",
+    "options": [
+     "3.5 mg/L",
+     "2.0 mg/L",
+     "1.5 mg/L",
+     "0.5 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "The required chlorine dose is the sum of the desired free chlorine residual and the estimated chlorine demand. In this case, 2.0 mg/L (residual) + 1.5 mg/L (demand) = 3.5 mg/L. The tank volume and contact time are extraneous information for calculating the dose itself, but would be relevant for calculating the total amount of chlorine needed or CT values.",
+    "steps": [
+     {
+      "l": "Required Dose = Desired Residual + Chlorine Demand",
+      "c": "Required Dose = 2.0 mg/L + 1.5 mg/L"
+     },
+     {
+      "l": "Required Dose = 3.5 mg/L",
+      "c": "Adding the desired free chlorine residual (2.0 mg/L) and estimated chlorine demand (1.5 mg/L) gives 3.5 mg/L of required chlorine dose."
+     }
+    ]
+   }
+  },
+  {
+   "id": 90817,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 475,
+   "verdict": "UNITS",
+   "note": "US units (GPM, ft, BHP) in a Canadian bank; also the steps round 63.16 to 63.2 and then pick 63.1, which is inconsistent. Converted to SI: brake kW = 9.81 x 0.060 x 60 / 0.80 = 44.1 kW.",
+   "original": {
+    "question": "A booster pump station designed to deliver 1,000 GPM against a total dynamic head (TDH) of 200 feet is being evaluated. If the pump efficiency is 80% and the motor efficiency is 90%, what is the approximate brake horsepower (BHP) required for a single pump?",
+    "options": [
+     "63.1 BHP",
+     "70.1 BHP",
+     "87.6 BHP",
+     "109.5 BHP"
+    ],
+    "correctIndex": 0,
+    "explanation": "Brake Horsepower (BHP) is the power required at the pump shaft and is calculated using the formula: (Flow Rate in GPM * Total Dynamic Head in feet) / (3960 * Pump Efficiency). Substituting the given values: (1000 GPM * 200 ft) / (3960 * 0.80) = 63.16 BHP. The motor efficiency is used to calculate wire horsepower, not brake horsepower. Therefore, 63.1 BHP is the correct answer."
+   },
+   "fix": {
+    "question": "A booster pump station designed to deliver 60 L/s against a total dynamic head (TDH) of 60 m is being evaluated. If the pump efficiency is 80% and the motor efficiency is 90%, what is the approximate brake power required at the pump shaft for a single pump?",
+    "options": [
+     "44.1 kW",
+     "35.3 kW",
+     "49.0 kW",
+     "55.2 kW"
+    ],
+    "correctIndex": 0,
+    "explanation": "Brake power is the power required at the pump shaft: (9.81 x Q in m3/s x H in m) / pump efficiency = (9.81 x 0.060 x 60) / 0.80 = 44.1 kW. Motor efficiency is used to find the electrical input power (49.0 kW), not brake power.",
+    "steps": [
+     {
+      "l": "Step 1: Identify the formula for brake power.",
+      "c": "Brake kW = (9.81 x Q x H) / pump efficiency, with Q in m3/s and H in m"
+     },
+     {
+      "l": "Step 2: Identify the given values.",
+      "c": "Q = 60 L/s = 0.060 m3/s; H = 60 m; pump efficiency = 0.80."
+     },
+     {
+      "l": "Step 3: Substitute and calculate.",
+      "c": "Water power = 9.81 x 0.060 x 60 = 35.3 kW; Brake power = 35.3 / 0.80 = 44.1 kW"
+     }
+    ]
+   }
+  },
+  {
+   "id": 90820,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 478,
+   "verdict": "UNCLEAR",
+   "note": "Options A (THMs) and B (HAAs) are also correct: both classes form during chlorination of bromide-containing water as brominated species. The keyed 'bromodichloromethane' is only 'more specific', which makes the item unfair. Reworded so that only one option is a brominated THM.",
+   "original": {
+    "question": "Which of the following disinfection byproducts (DBPs) is primarily associated with the chlorination of water containing bromide ions?",
+    "options": [
+     "Trihalomethanes (THMs)",
+     "Haloacetic Acids (HAAs)",
+     "Bromate",
+     "Bromodichloromethane"
+    ],
+    "correctIndex": 3,
+    "explanation": "Bromodichloromethane is a specific brominated Trihalomethane (THM) that is directly formed during the chlorination of water containing bromide ions and natural organic matter. While chlorination can lead to the formation of both brominated THMs and HAAs, bromodichloromethane is a clear example of a DBP resulting from this specific reaction. Bromate, on the other hand, is primarily associated with the ozonation of water containing bromide ions, although it can form under very specific and aggressive chlorination conditions."
+   },
+   "fix": {
+    "question": "Which of the following is a brominated trihalomethane that forms when chlorine reacts with natural organic matter in water containing bromide ions?",
+    "options": [
+     "Chloroform",
+     "Bromate",
+     "Chlorite",
+     "Bromodichloromethane"
+    ],
+    "correctIndex": 3,
+    "explanation": "Bromodichloromethane is a brominated trihalomethane (THM) formed when chlorine reacts with natural organic matter in the presence of bromide. Chloroform is a THM but contains no bromine; bromate is mainly associated with ozonation of bromide-containing water; chlorite is a chlorine dioxide by-product.",
+    "steps": null
+   }
+  },
+  {
+   "id": 90827,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 485,
+   "verdict": "UNITS",
+   "note": "US units (US gpm, ft, hp) in a Canadian bank. Original arithmetic was correct (87 hp). Converted: TDH 36+10=46 m, Q=95 L/s; water power 9.81x0.095x46 = 42.9 kW; /0.75 = 57.2 kW; /0.90 = 63.5 kW.",
+   "original": {
+    "question": "A pump delivers 1,500 US gpm against 120 ft of static head and 35 ft of friction head. Pump efficiency is 75% and motor efficiency is 90%. Using water horsepower = Q (US gpm) × head (ft) ÷ 3,960, what is the approximate horsepower equivalent of electrical input to the motor?",
+    "options": [
+     "59 hp",
+     "78 hp",
+     "87 hp",
+     "111 hp"
+    ],
+    "correctIndex": 2,
+    "explanation": "Add static and friction head to find total dynamic head. Divide water horsepower by the pump and motor efficiencies to obtain approximately 87 hp equivalent of electrical input, option C. This is not a motor nameplate rating."
+   },
+   "fix": {
+    "question": "A pump delivers 95 L/s against 36 m of static head and 10 m of friction head. Pump efficiency is 75% and motor efficiency is 90%. Using water power (kW) = 9.81 x Q (m3/s) x head (m), what is the approximate electrical input power to the motor?",
+    "options": [
+     "43 kW",
+     "57 kW",
+     "64 kW",
+     "76 kW"
+    ],
+    "correctIndex": 2,
+    "explanation": "Add static and friction head to find total dynamic head. Divide water power by the pump and motor efficiencies to obtain approximately 64 kW of electrical input, option C.",
+    "steps": [
+     "Use H = Hs + Hf, water power = 9.81 x Q x H, and electrical input = water power / (pump efficiency x motor efficiency).",
+     "H = 36 m + 10 m = 46 m; Q = 95 L/s = 0.095 m3/s.",
+     "Water power = 9.81 x 0.095 x 46 = 42.9 kW.",
+     "Pump shaft power = 42.9 / 0.75 = 57.2 kW; motor electrical input = 57.2 / 0.90 = 63.5 kW, about 64 kW: option C."
+    ]
+   }
+  },
+  {
+   "id": 90830,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 488,
+   "verdict": "UNITS",
+   "note": "US units (12-inch, GPM, feet) and US form of Hazen-Williams in a Canadian bank. Also the intermediate values in the steps are off ((0.25)^0.63 is 0.418 and (0.0055)^0.54 is 0.060, giving C about 85.6, not 83) though the keyed answer still lands near 85. Rebuilt in SI with V = 0.849 C R^0.63 S^0.54: Q=60 L/s, D=300 mm, head loss 1.7 m over 300 m gives C about 84.",
+   "original": {
+    "question": "When performing a C-factor test on a section of 12-inch ductile iron pipe that has been in service for 30 years, an operator measures a flow of 1,000 GPM and a head loss of 5.5 feet over a 1,000-foot section. Using the Hazen-Williams formula (V = 1.318 C R^0.63 S^0.54), what is the approximate C-factor for this pipe section? (Note: For a 12-inch pipe, the hydraulic radius (R) is approximately 0.25 ft. S = Head Loss / Length)",
+    "options": [
+     "85",
+     "100",
+     "120",
+     "70"
+    ],
+    "correctIndex": 0,
+    "explanation": "To determine the C-factor, first convert the flow rate from GPM to cubic feet per second (cfs) and calculate the pipe's cross-sectional area to find the velocity (V). Next, calculate the hydraulic slope (S) using the head loss and pipe length. Finally, rearrange the Hazen-Williams formula (V = 1.318 C R^0.63 S^0.54) to solve for C, substituting the calculated V, S, and given R. The calculated C-factor is approximately 83.22, which is closest to 85."
+   },
+   "fix": {
+    "question": "When performing a C-factor test on a section of 300 mm ductile iron pipe that has been in service for 30 years, an operator measures a flow of 60 L/s and a head loss of 1.7 m over a 300 m section. Using the Hazen-Williams formula (V = 0.849 C R^0.63 S^0.54, with V in m/s and R in m), what is the approximate C-factor for this pipe section? (Note: For a 300 mm pipe flowing full, the hydraulic radius R = D/4 = 0.075 m. S = Head Loss / Length)",
+    "options": [
+     "85",
+     "100",
+     "120",
+     "70"
+    ],
+    "correctIndex": 0,
+    "explanation": "Convert the flow to m3/s and divide by the pipe area to find velocity, calculate the slope S from head loss and length, then rearrange the Hazen-Williams formula to solve for C. The calculated C-factor is approximately 84, which is closest to 85.",
+    "steps": [
+     {
+      "l": "Step 1: Convert flow rate to m3/s.",
+      "c": "Q = 60 L/s / 1,000 = 0.060 m3/s."
+     },
+     {
+      "l": "Step 2: Calculate the cross-sectional area.",
+      "c": "Area = pi x (0.150 m)^2 = 0.0707 m2."
+     },
+     {
+      "l": "Step 3: Calculate velocity.",
+      "c": "V = 0.060 / 0.0707 = 0.849 m/s."
+     },
+     {
+      "l": "Step 4: Calculate slope.",
+      "c": "S = 1.7 m / 300 m = 0.00567."
+     },
+     {
+      "l": "Step 5: Solve for C.",
+      "c": "C = V / (0.849 x R^0.63 x S^0.54) = 0.849 / (0.849 x 0.1955 x 0.0613) = 1 / 0.01198 = about 84, closest to 85."
+     }
+    ]
+   }
+  },
+  {
+   "id": 90832,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 490,
+   "verdict": "UNITS",
+   "note": "US units (MG, MGD) in a Canadian bank. Converted: 2,850 m3 / 9,500 m3/d = 0.30 d = 432 min.",
+   "original": {
+    "question": "A contact basin has a usable operating volume of 0.75 million gallons (MG) and a steady flow of 2.5 million gallons per day (MGD). Using volume divided by flow, what is its nominal hydraulic detention time? Use 1 day = 1,440 minutes. Do not infer a disinfection credit from this calculation.",
+    "options": [
+     "180 minutes",
+     "360 minutes",
+     "432 minutes",
+     "480 minutes"
+    ],
+    "correctIndex": 2,
+    "explanation": "Nominal detention time is 432 minutes. This volume-and-flow calculation does not establish T10 or whether a disinfection target is met."
+   },
+   "fix": {
+    "question": "A contact basin has a usable operating volume of 2,850 m3 and a steady flow of 9,500 m3/d. Using volume divided by flow, what is its nominal hydraulic detention time? Use 1 day = 1,440 minutes. Do not infer a disinfection credit from this calculation.",
+    "options": [
+     "180 minutes",
+     "360 minutes",
+     "432 minutes",
+     "480 minutes"
+    ],
+    "correctIndex": 2,
+    "explanation": "Nominal detention time is 432 minutes. This volume-and-flow calculation does not establish T10 or whether a disinfection target is met.",
+    "steps": [
+     "Nominal time = volume / flow = 2,850 m3 / 9,500 m3/d = 0.30 day.",
+     "Convert to minutes: 0.30 day x 1,440 minutes/day = 432 minutes."
+    ]
+   }
+  },
+  {
+   "id": 90842,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 500,
+   "verdict": "UNITS",
+   "note": "US units (MGD, lb/day, 8.34) in a Canadian bank. Also the final step wrongly says 83 lb/day is 'residual only' (it is the demand only, 2.0x5x8.34). Converted: 19 ML/d x 3.5 mg/L = 66.5 kg/d.",
+   "original": {
+    "question": "A water treatment plant uses chlorine gas for disinfection. The plant is currently treating 5 MGD and maintains a chlorine residual of 1.5 mg/L in the clearwell. If the chlorine demand is consistently 2.0 mg/L, what is the approximate daily chlorine gas consumption in pounds per day (lb/day)?",
+    "options": [
+     "146 lb/day",
+     "83 lb/day",
+     "250 lb/day",
+     "41.7 lb/day"
+    ],
+    "correctIndex": 0,
+    "explanation": "To calculate the chlorine dose, add the desired residual (1.5 mg/L) and the chlorine demand (2.0 mg/L), which equals 3.5 mg/L. Then, use the formula: Dose (mg/L) x Flow (MGD) x 8.34 lb/gal = lb/day. So, 3.5 mg/L x 5 MGD x 8.34 = 145.95 lb/day, which is approximately 146 lb/day."
+   },
+   "fix": {
+    "question": "A water treatment plant uses chlorine gas for disinfection. The plant is currently treating 19 ML/d and maintains a chlorine residual of 1.5 mg/L in the clearwell. If the chlorine demand is consistently 2.0 mg/L, what is the approximate daily chlorine gas consumption in kg/d?",
+    "options": [
+     "66.5 kg/d",
+     "38 kg/d",
+     "114 kg/d",
+     "28.5 kg/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "Dose = residual (1.5 mg/L) + demand (2.0 mg/L) = 3.5 mg/L. Feed rate (kg/d) = Dose (mg/L) x Flow (ML/d) = 3.5 x 19 = 66.5 kg/d.",
+    "steps": [
+     {
+      "l": "State the chlorine dose relationship.",
+      "c": "Dose (mg/L) = Demand (mg/L) + Residual (mg/L)"
+     },
+     {
+      "l": "Calculate the required dose.",
+      "c": "Dose = 2.0 mg/L + 1.5 mg/L = 3.5 mg/L"
+     },
+     {
+      "l": "State the kg/d formula.",
+      "c": "Feed rate (kg/d) = Dose (mg/L) x Flow (ML/d)"
+     },
+     {
+      "l": "Calculate.",
+      "c": "3.5 x 19 = 66.5 kg/d"
+     },
+     {
+      "l": "Verify the answer.",
+      "c": "About 66.5 kg/d, matching the keyed option. 38 kg/d is the demand only (2.0 x 19), 28.5 kg/d the residual only, and 114 kg/d a 6 mg/L dose."
+     }
+    ]
+   }
+  },
+  {
+   "id": 90847,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 505,
+   "verdict": "UNCLEAR",
+   "note": "An RPZ is also an accepted high-level protection against backsiphonage and backpressure, and the stem names no contaminant source or hazard classification, so keyed air gap versus RPZ is arguable. Reworded to ask for the highest degree of protection so only the air gap is correct.",
+   "original": {
+    "question": "A booster pump station designed to serve a high-elevation zone experiences frequent pressure fluctuations and occasional negative pressures in the suction line during peak demand. This station is supplied directly from the main distribution system. What is the most appropriate backflow prevention strategy to protect the main distribution system from backsiphonage and backpressure from the booster station, considering the pressure dynamics?",
+    "options": [
+     "Install a Reduced Pressure Principle (RPZ) assembly immediately upstream of the booster pump suction.",
+     "Install an air gap separation between the main supply and a surge tank feeding the booster pumps.",
+     "Utilize a Double Check Valve Assembly (DCVA) on the suction side of the booster pumps.",
+     "Implement a pressure-sustaining valve on the discharge of the booster pumps."
+    ],
+    "correctIndex": 1,
+    "explanation": "An air gap separation provides the highest level of protection against both backsiphonage and backpressure, as it creates a physical break between the potable water supply and the potential contaminant source (the booster station experiencing negative suction pressure). While an RPZ offers good protection, an air gap is superior in scenarios with severe pressure fluctuations and potential for gross contamination, as it is fail-safe."
+   },
+   "fix": {
+    "question": "A booster pump station supplied directly from the main distribution system experiences negative suction pressures at peak demand. Which backflow prevention arrangement provides the highest degree of protection (a physical break, with no mechanical components) against both backsiphonage and backpressure between the main and the booster station suction supply?",
+    "options": [
+     "A reduced pressure principle (RPZ) assembly immediately upstream of the booster pump suction",
+     "An air gap between the main supply and a break/surge tank feeding the booster pumps",
+     "A double check valve assembly (DCVA) on the suction side of the booster pumps",
+     "A pressure-sustaining valve on the discharge of the booster pumps"
+    ],
+    "correctIndex": 1,
+    "explanation": "An air gap is a physical separation and provides the highest level of protection against both backsiphonage and backpressure. An RPZ is a mechanical assembly offering strong but lesser protection; a DCVA is for low-hazard use; a pressure-sustaining valve is not a backflow device.",
+    "steps": null
+   }
+  },
+  {
+   "id": 90890,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 548,
+   "verdict": "UNITS",
+   "note": "US units (5,000 feet) in a Canadian bank; also 'regulatory requirement ... AWWA standards' is not a Canadian regulation per se (AWWA C651 is a widely adopted standard, referenced by provincial guidance).",
+   "original": {
+    "question": "Your water system has just completed a major rehabilitation project involving the replacement of 5,000 feet of old cast iron pipe with new ductile iron pipe. What regulatory requirement is critical to ensure the safety and potability of the water in the newly installed mains before returning them to service?",
+    "options": [
+     "Conduct a visual inspection of all pipe joints for leaks.",
+     "Perform a hydraulic pressure test to verify system integrity.",
+     "Disinfect the new mains according to AWWA standards and collect bacteriological samples for clearance.",
+     "Update the system's GIS mapping with the new pipe locations."
+    ],
+    "correctIndex": 2,
+    "explanation": "Disinfection of new or repaired water mains is a critical regulatory requirement to eliminate potential bacterial contamination introduced during construction. Following AWWA standards for disinfection and obtaining satisfactory bacteriological samples (e.g., absence of total coliform and E. coli) are essential before returning the mains to service."
+   },
+   "fix": {
+    "question": "Your water system has just completed a major rehabilitation project involving the replacement of 1,500 m of old cast iron pipe with new ductile iron pipe. What step is critical to ensure the safety and potability of the water in the newly installed mains before returning them to service?",
+    "options": [
+     "Conduct a visual inspection of all pipe joints for leaks.",
+     "Perform a hydraulic pressure test to verify system integrity.",
+     "Disinfect the new mains according to accepted standards (e.g., AWWA C651) and collect bacteriological samples for clearance.",
+     "Update the system's GIS mapping with the new pipe locations."
+    ],
+    "correctIndex": 2,
+    "explanation": "Disinfection of new or repaired water mains is critical to eliminate potential bacterial contamination introduced during construction. Following accepted standards such as AWWA C651 and the applicable provincial requirements, and obtaining satisfactory bacteriological samples (absence of total coliform and E. coli), are essential before returning the mains to service.",
+    "steps": [
+     {
+      "l": "Identify the question type",
+      "c": "This is a procedural question, not a calculation."
+     },
+     {
+      "l": "Review the scenario",
+      "c": "A rehabilitation project replaced 1,500 m of old cast iron pipe with new ductile iron pipe, so the new mains have been open to construction conditions."
+     },
+     {
+      "l": "Determine the critical requirement",
+      "c": "Before new mains are returned to service they must be disinfected and cleared by bacteriological sampling (absence of total coliform and E. coli) to ensure potability."
+     },
+     {
+      "l": "Match with the correct option",
+      "c": "Disinfect the new mains according to accepted standards and collect bacteriological samples for clearance. Pressure testing, visual inspection, and GIS updates are important but do not verify potability."
+     }
+    ]
+   }
+  },
+  {
+   "id": 90893,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 551,
+   "verdict": "UNCLEAR",
+   "note": "The marked answer is fine, but the explanation discusses the US Safe Drinking Water Act, Clean Water Act, RCRA and CERCLA, which are not among the options. Explanation corrected to match the options.",
+   "original": {
+    "question": "Which of the following Canadian regulations or guidelines primarily governs the quality of drinking water provided by public water systems?",
+    "options": [
+     "Provincial/Territorial Drinking Water Regulations (based on Health Canada's Guidelines for Canadian Drinking Water Quality)",
+     "Canadian Environmental Protection Act (CEPA)",
+     "Fisheries Act",
+     "Transportation of Dangerous Goods Act"
+    ],
+    "correctIndex": 0,
+    "explanation": "The Safe Drinking Water Act (SDWA) is the primary federal law in the United States that protects public drinking water supplies. However, for Canadian operators, drinking water quality is primarily governed by provincial and territorial regulations, which are often based on Health Canada's Guidelines for Canadian Drinking Water Quality. The other options, such as the Clean Water Act, Resource Conservation and Recovery Act, and Comprehensive Environmental Response, Compensation, and Liability Act, address different aspects of environmental protection, such as surface water quality, waste management, and hazardous waste sites, respectively, and are also US federal laws."
+   },
+   "fix": {
+    "question": "Which of the following Canadian regulations or guidelines primarily governs the quality of drinking water provided by public water systems?",
+    "options": [
+     "Provincial/Territorial Drinking Water Regulations (based on Health Canada's Guidelines for Canadian Drinking Water Quality)",
+     "Canadian Environmental Protection Act (CEPA)",
+     "Fisheries Act",
+     "Transportation of Dangerous Goods Act"
+    ],
+    "correctIndex": 0,
+    "explanation": "In Canada, drinking water is regulated by the provinces and territories. Their drinking water regulations are typically based on Health Canada's Guidelines for Canadian Drinking Water Quality, which are not themselves legally binding. CEPA, the Fisheries Act and the Transportation of Dangerous Goods Act address toxic substances, fish habitat and dangerous goods transport respectively, not the quality of public drinking water.",
+    "steps": null
+   }
+  },
+  {
+   "id": 90905,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 563,
+   "verdict": "JURISDICTION",
+   "note": "US federal law (SDWA) question in a Western Canada bank; the operator is not governed by it. Replaced with the Canadian equivalent.",
+   "original": {
+    "question": "Which federal regulation primarily governs the quality of drinking water delivered by public water systems in the United States?",
+    "options": [
+     "Clean Water Act (CWA)",
+     "Safe Drinking Water Act (SDWA)",
+     "Resource Conservation and Recovery Act (RCRA)",
+     "Comprehensive Environmental Response, Compensation, and Liability Act (CERCLA)"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Safe Drinking Water Act (SDWA) is indeed the primary federal law in the United States that ensures the quality of Americans' drinking water. While the Clean Water Act (CWA) addresses surface water quality, it does not directly regulate drinking water systems. RCRA and CERCLA deal with hazardous waste and contaminated sites, respectively. For Canadian operators, the equivalent framework is Health Canada's Guidelines for Canadian Drinking Water Quality, which are implemented through provincial and territorial regulations."
+   },
+   "fix": {
+    "question": "In Canada, which level of government sets the legally enforceable drinking water requirements for public water systems?",
+    "options": [
+     "Provincial and territorial governments",
+     "The US Environmental Protection Agency",
+     "Health Canada, through legally binding national standards",
+     "The Canadian Coast Guard"
+    ],
+    "correctIndex": 0,
+    "explanation": "Drinking water is a provincial/territorial responsibility. Health Canada publishes the Guidelines for Canadian Drinking Water Quality, which provinces and territories adopt or adapt into their own regulations and permits; the guidelines are not directly enforceable on their own.",
+    "steps": null
+   }
+  },
+  {
+   "id": 90906,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 564,
+   "verdict": "JURISDICTION",
+   "note": "Cites Ontario Regulation 170/03 in a Western Canada bank. Reworded to a generic provincial requirement.",
+   "original": {
+    "question": "A water utility is required to submit an annual report to its customers. What is the primary purpose of this report, as mandated by Ontario Regulation 170/03?",
+    "options": [
+     "To provide detailed financial statements of the utility's operations.",
+     "To inform customers about the quality of their drinking water and its source.",
+     "To outline the utility's future infrastructure development plans.",
+     "To report the utility's compliance with wastewater discharge permits."
+    ],
+    "correctIndex": 1,
+    "explanation": "The primary purpose of an annual report, often referred to as a Consumer Confidence Report in other jurisdictions, is to inform customers about the quality of their drinking water, its source, and any detected contaminants. In Ontario, this is mandated by O. Reg. 170/03 (Drinking Water Systems) under the Safe Drinking Water Act, 2002, which requires owners and operating authorities of drinking water systems to prepare and provide annual reports to the public. These reports ensure transparency and public awareness regarding drinking water safety. Financial statements, infrastructure plans, or wastewater compliance are not the primary focus of these specific drinking water quality reports."
+   },
+   "fix": {
+    "question": "A water utility is required to submit an annual report on its drinking water system. What is the primary purpose of such a report under provincial drinking water requirements?",
+    "options": [
+     "To provide detailed financial statements of the utility's operations.",
+     "To inform customers and regulators about the quality of their drinking water and its source.",
+     "To outline the utility's future infrastructure development plans.",
+     "To report the utility's compliance with wastewater discharge permits."
+    ],
+    "correctIndex": 1,
+    "explanation": "Annual drinking water reports exist to give transparency about drinking water quality, the source, and any issues and responses. The exact content, recipients and deadlines are set by the applicable provincial or territorial requirements or the system's operating permit.",
+    "steps": null
+   }
+  },
+  {
+   "id": 90907,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 565,
+   "verdict": "JURISDICTION",
+   "note": "Explanation presents the Ontario Safe Drinking Water Act, 2002 as the governing basis in a Western Canada bank; also option text carries stray letter prefixes. Answer is a sound best practice.",
+   "original": {
+    "question": "During a routine inspection, a Class 3 operator discovers that the utility's emergency response plan (ERP) has not been updated in five years, despite significant changes in system infrastructure and personnel. According to regulatory best practices:",
+    "options": [
+     "A. Wait for the next scheduled regulatory audit to update the ERP.",
+     "B. Conduct an immediate, comprehensive review and update of the ERP, including new hazard assessments and coordination with local emergency responders.",
+     "C. Simply add an addendum to the existing ERP documenting the changes.",
+     "D. Delegate the ERP update to a junior operator without direct oversight."
+    ],
+    "correctIndex": 1,
+    "explanation": "Regular review and updating of an Emergency Response Plan (ERP) is a critical component of maintaining public safety and operational resilience for water utilities. Significant changes in system infrastructure or personnel necessitate an immediate, comprehensive update to ensure the plan remains relevant and effective. This aligns with best practices for risk management and emergency preparedness, as emphasized by the Ontario Safe Drinking Water Act, 2002, and associated regulations which mandate robust operational plans. Waiting for an audit, simply adding an addendum, or delegating without oversight would compromise the utility's ability to respond effectively to emergencies."
+   },
+   "fix": {
+    "question": "During a routine inspection, a Class 3 operator discovers that the utility's emergency response plan (ERP) has not been updated in five years, despite significant changes in system infrastructure and personnel. According to best practice:",
+    "options": [
+     "Wait for the next scheduled regulatory audit to update the ERP.",
+     "Conduct an immediate, comprehensive review and update of the ERP, including new hazard assessments and coordination with local emergency responders.",
+     "Simply add an addendum to the existing ERP documenting the changes.",
+     "Delegate the ERP update to a junior operator without direct oversight."
+    ],
+    "correctIndex": 1,
+    "explanation": "Regular review and updating of an emergency response plan is a critical part of public safety and operational resilience. Significant changes in infrastructure or personnel call for a prompt, comprehensive update so the plan stays relevant, in line with the utility's operating permit and provincial requirements. Waiting for an audit, adding only an addendum, or delegating without oversight would weaken the utility's ability to respond.",
+    "steps": []
+   }
+  },
+  {
+   "id": 90908,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 566,
+   "verdict": "JURISDICTION",
+   "note": "'Consumer Confidence Report' and its July 1 deadline, 10,000-person threshold and 40 CFR citations are US EPA concepts, and the steps ask about EPA regulations in a Canadian question. Reworded to a Canadian public water-quality report.",
+   "original": {
+    "question": "A Class 3 operator is reviewing the annual Consumer Confidence Report (CCR) for their utility. Which of the following statements about the CCR is TRUE according to general best practices for public water system reporting in Canada?",
+    "options": [
+     "The CCR must be distributed to all billing customers by July 1st of each year.",
+     "The CCR only needs to include information about violations that occurred in the previous calendar year.",
+     "The CCR must include the contact information for a utility representative who can answer questions about the report.",
+     "The CCR is only required for systems serving more than 10,000 people."
+    ],
+    "correctIndex": 2,
+    "explanation": "While the question references EPA regulations, which are not directly applicable in Canada, the underlying principle of providing contact information for inquiries is a best practice universally adopted in consumer confidence reporting, including in Canadian contexts. Canadian provinces and territories, under their respective safe drinking water acts and regulations, require water utilities to provide information to consumers, often including contact details for further questions. This ensures transparency and accountability, allowing consumers to seek clarification on water quality data or operational practices. Options A, B, and D reflect specific EPA regulatory details that do not directly align with Canadian reporting requirements, which vary by jurisdiction but generally focus on public health protection and information dissemination."
+   },
+   "fix": {
+    "question": "A Class 3 operator is reviewing the utility's annual public drinking-water quality report. Which of the following statements is generally TRUE of such reports in Canada?",
+    "options": [
+     "It must be distributed to all billing customers by July 1st of each year in every province.",
+     "It only needs to include information about violations that occurred in the previous calendar year.",
+     "It should include contact information for a utility representative who can answer questions about the report.",
+     "It is only required for systems serving more than 10,000 people in every province."
+    ],
+    "correctIndex": 2,
+    "explanation": "Reporting requirements vary by province and territory, so no single national deadline or population threshold applies, and reports normally cover more than violations. Providing contact information for a utility representative is a common, sound practice that lets customers get clarification.",
+    "steps": null
+   }
+  },
+  {
+   "id": 90917,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 575,
+   "verdict": "JURISDICTION",
+   "note": "Cites Ontario Regulation 170/03 as an example of provincial regulation in a Western Canada bank, and the explanation uses US 'Consumer Confidence Report' framing. Reworded generically.",
+   "original": {
+    "question": "A Class 3 operator is reviewing the annual report for accuracy before submission to the provincial authority. What is the primary purpose of this annual report, as mandated by provincial drinking water regulations (e.g., Ontario Regulation 170/03)?",
+    "options": [
+     "To inform customers about the quality of their drinking water and any detected contaminants.",
+     "To serve as an internal operational report for utility management.",
+     "To provide a summary of the utility's financial performance.",
+     "To document the maintenance history of the distribution system."
+    ],
+    "correctIndex": 0,
+    "explanation": "The primary purpose of a Consumer Confidence Report (CCR), or more broadly, annual reporting requirements under Canadian drinking water regulations, is to ensure transparency and inform consumers about the quality of their drinking water. This includes details on detected contaminants, compliance with provincial standards (such as those outlined in Ontario Regulation 170/03), and any corrective actions taken. This public disclosure empowers consumers to make informed decisions about their water. Options B, C, and D describe internal utility functions or financial reporting, which are not the primary public-facing purpose of these mandated reports."
+   },
+   "fix": {
+    "question": "A Class 3 operator is reviewing the annual drinking water report for accuracy before submission to the provincial authority. What is the primary purpose of such an annual report under provincial drinking water requirements?",
+    "options": [
+     "To inform customers about the quality of their drinking water and any detected contaminants.",
+     "To serve as an internal operational report for utility management.",
+     "To provide a summary of the utility's financial performance.",
+     "To document the maintenance history of the distribution system."
+    ],
+    "correctIndex": 0,
+    "explanation": "Annual drinking water reports exist to provide transparency and inform consumers about water quality, including detected contaminants and compliance with provincial standards. The specific content and deadlines are set by the applicable provincial or territorial requirements.",
+    "steps": null
+   }
+  },
+  {
+   "id": 90918,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 576,
+   "verdict": "JURISDICTION",
+   "note": "Asks about Ontario's governing law in a Western Canada bank, and the key is doubtful: cross-connection control and backflow device requirements in Canada sit mainly in plumbing codes and CSA B64 standards rather than the SDWA. The explanation also wrongly calls the other options 'US federal environmental laws'. Replaced with a nationally applicable CSA-standard question.",
+   "original": {
+    "question": "A Class 3 water distribution system operator is reviewing a proposed cross-connection control program update. Which of the following regulatory documents provides the primary framework and requirements for such programs in Ontario?",
+    "options": [
+     "A. Safe Drinking Water Act, 2002 (Ontario)",
+     "B. Ontario Water Resources Act",
+     "C. Environmental Protection Act (Ontario)",
+     "D. Health Canada's Guidelines for Canadian Drinking Water Quality"
+    ],
+    "correctIndex": 0,
+    "explanation": "In Ontario, the Safe Drinking Water Act, 2002, provides the overarching legislative framework for ensuring the safety of drinking water, which includes requirements for maintaining water quality within distribution systems. While specific cross-connection control programs are often detailed in municipal bylaws or provincial regulations like O. Reg. 170/03 (Drinking Water Systems), the SDWA, 2002, establishes the legal foundation for these measures. The other acts listed are US federal environmental laws that do not directly govern drinking water safety or cross-connection control in Canada."
+   },
+   "fix": {
+    "question": "A Class 3 water distribution system operator is reviewing a proposed cross-connection control program update. Which standard series is widely referenced in Canada for the selection, installation, maintenance and field testing of backflow preventers?",
+    "options": [
+     "CSA B64 series (e.g., B64.10 and B64.10.1)",
+     "AWWA C651 (disinfecting water mains)",
+     "CSA Z1600 (emergency and continuity management)",
+     "AWWA G200 (distribution systems operation and management)"
+    ],
+    "correctIndex": 0,
+    "explanation": "The CSA B64 series covers backflow preventers and vacuum breakers, with B64.10 for selection and installation and B64.10.1 for maintenance and field testing; it is referenced by Canadian plumbing codes and cross-connection programs. AWWA C651 addresses main disinfection, CSA Z1600 emergency management, and AWWA G200 general distribution operations.",
+    "steps": null
+   }
+  },
+  {
+   "id": 90923,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 581,
+   "verdict": "JURISDICTION",
+   "note": "Ontario-specific question (Ontario SDWA 2002) in a Western Canada bank; options also carry stray letter labels out of order.",
+   "original": {
+    "question": "Which of the following provincial regulations primarily governs the quality of drinking water delivered by public water systems in Ontario, Canada?",
+    "options": [
+     "B. Clean Water Act, 2006 (Ontario)",
+     "A. Safe Drinking Water Act, 2002 (Ontario)",
+     "C. Ontario Water Resources Act",
+     "D. Environmental Protection Act (Ontario)"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Safe Drinking Water Act, 2002 (Ontario) is the primary provincial legislation that governs the quality of drinking water delivered by public water systems in Ontario, Canada. This act sets out requirements for drinking water testing, treatment, and distribution to protect public health. The other options, such as the Clean Water Act (Ontario), primarily focus on source water protection, while the Ontario Water Resources Act deals with water taking and discharge, and the Environmental Protection Act covers broader environmental concerns."
+   },
+   "fix": {
+    "question": "Which level of government primarily regulates the quality of drinking water delivered by public water systems in Canada?",
+    "options": [
+     "Provincial and territorial governments, through their drinking water legislation and regulations",
+     "The US Environmental Protection Agency",
+     "Municipal planning departments",
+     "The Canadian Coast Guard"
+    ],
+    "correctIndex": 0,
+    "explanation": "Drinking water legislation and regulation in Canada are provincial and territorial responsibilities, generally based on Health Canada's Guidelines for Canadian Drinking Water Quality.",
+    "steps": null
+   }
+  },
+  {
+   "id": 90932,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 590,
+   "verdict": "JURISDICTION",
+   "note": "'State inspector', 'annual sanitary survey', civil penalties and injunctions are US regulatory framing in a Canadian bank; other options (boil advisory, operator revocation) are not clearly wrong and the 'key' presumes a US enforcement scheme. Reworded to provincial.",
+   "original": {
+    "question": "During an annual sanitary survey, a state inspector identifies several cross-connections in a commercial building connected to the distribution system. The operator receives an order to eliminate these cross-connections within 90 days. Failure to comply could result in which of the following regulatory actions?",
+    "options": [
+     "A civil penalty and potential enforcement action, including a compliance order or injunction.",
+     "A mandatory system-wide boil water advisory until the cross-connections are eliminated.",
+     "An immediate revocation of the operator's certification for negligence.",
+     "A requirement to install a new treatment process to mitigate contamination risk."
+    ],
+    "correctIndex": 0,
+    "explanation": "Failure to comply with regulatory orders, such as eliminating identified cross-connections within a specified timeframe, can lead to significant enforcement actions. These typically include civil penalties, compliance orders requiring specific actions, and potentially legal injunctions to ensure public health protection."
+   },
+   "fix": {
+    "question": "During an inspection, a provincial drinking-water inspector identifies several cross-connections in a commercial building connected to the distribution system. The operator receives an order to eliminate these cross-connections within 90 days. Failure to comply could result in which of the following?",
+    "options": [
+     "Further enforcement action under provincial legislation, such as a compliance order or penalties",
+     "A mandatory system-wide boil water advisory until the cross-connections are eliminated",
+     "An immediate revocation of the operator's certification for negligence",
+     "A requirement to install a new treatment process to mitigate contamination risk"
+    ],
+    "correctIndex": 0,
+    "explanation": "Failure to comply with a regulatory order can lead to escalated enforcement under provincial legislation, such as further orders or penalties. A system-wide advisory, automatic loss of certification, or new treatment are not standard consequences of an uncorrected cross-connection order.",
+    "steps": null
+   }
+  },
+  {
+   "id": 480003,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 603,
+   "verdict": "UNITS",
+   "note": "psi in a Canadian bank (arithmetic of 23.5% is correct). Rewritten in kPa.",
+   "original": {
+    "question": "For a preliminary leakage estimate, assume a zone's real-loss flow follows the explicitly stated model Q2/Q1 = (P2/P1)^1, where P is average zone pressure. If pressure decreases from 85 psi to 65 psi, what is the estimated percentage reduction in real-loss flow?",
+    "options": [
+     "Approximately 23.5%",
+     "Approximately 10.0%",
+     "Approximately 35.0%",
+     "Approximately 76.5%"
+    ],
+    "correctIndex": 0,
+    "explanation": "The stated pressure–loss relationship gives the final real-loss flow as a fraction of the initial flow. At a pressure of 65 psi rather than 85 psi, that fraction is 0.7647, giving an estimated reduction of approximately 23.5%, the keyed option."
+   },
+   "fix": {
+    "question": "For a preliminary leakage estimate, assume a zone's real-loss flow follows the explicitly stated model Q2/Q1 = (P2/P1)^1, where P is average zone pressure. If pressure decreases from 600 kPa to 450 kPa, what is the estimated percentage reduction in real-loss flow?",
+    "options": [
+     "Approximately 25.0%",
+     "Approximately 10.0%",
+     "Approximately 35.0%",
+     "Approximately 75.0%"
+    ],
+    "correctIndex": 0,
+    "explanation": "The stated pressure-loss relationship gives the final real-loss flow as a fraction of the initial flow. At 450 kPa rather than 600 kPa, that fraction is 0.75, giving an estimated reduction of 25.0%.",
+    "steps": [
+     "Formula: Q_final/Q_initial = (P_final/P_initial)^n, and R = [1 - (P_final/P_initial)^n] x 100%, with n = 1 in the stated model.",
+     "Substitute: Q_final/Q_initial = (450 kPa/600 kPa)^1 = 0.75 (dimensionless).",
+     "Calculate the reduction: R = [1 - 0.75] x 100% = 25.0%, the keyed option."
+    ]
+   }
+  },
+  {
+   "id": 480010,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 610,
+   "verdict": "UNITS",
+   "note": "psi in a Canadian bank. Converted to kPa (120 psi about 830 kPa, 65 psi about 450 kPa); logic unchanged.",
+   "original": {
+    "question": "A proposed pressure-reducing valve station has 120 psi upstream. The hydraulic review identifies 65 psi as the lowest acceptable downstream outlet setting across the evaluated operating conditions, including night operation. Which initial control choice is supported by this review?",
+    "options": [
+     "Use a fixed downstream outlet setting of 65 psi and verify performance after commissioning.",
+     "Use a night setting below 65 psi without further hydraulic assessment.",
+     "Use a pressure-sustaining valve to hold the downstream pressure at 120 psi.",
+     "Select a flow-modulated setting that drops below 65 psi whenever demand decreases."
+    ],
+    "correctIndex": 0,
+    "explanation": "A fixed 65 psi outlet setting is consistent with the stated hydraulic review. Lower night or flow-modulated settings are not supported when 65 psi is the lowest acceptable setting under the evaluated conditions."
+   },
+   "fix": {
+    "question": "A proposed pressure-reducing valve station has 830 kPa upstream. The hydraulic review identifies 450 kPa as the lowest acceptable downstream outlet setting across the evaluated operating conditions, including night operation. Which initial control choice is supported by this review?",
+    "options": [
+     "Use a fixed downstream outlet setting of 450 kPa and verify performance after commissioning.",
+     "Use a night setting below 450 kPa without further hydraulic assessment.",
+     "Use a pressure-sustaining valve to hold the downstream pressure at 830 kPa.",
+     "Select a flow-modulated setting that drops below 450 kPa whenever demand decreases."
+    ],
+    "correctIndex": 0,
+    "explanation": "A fixed 450 kPa outlet setting is consistent with the stated hydraulic review. Lower night or flow-modulated settings are not supported when 450 kPa is the lowest acceptable setting under the evaluated conditions.",
+    "steps": null
+   }
+  },
+  {
+   "id": 45852,
+   "bankKey": "wpi-class4-wastewater",
+   "questionNum": 574,
+   "verdict": "UNITS",
+   "note": "US gallons per minute in a Canadian bank. Ratio is unitless, so convert to m3/h; answer unchanged.",
+   "original": {
+    "question": "Flow into a secondary clarifier is 10,000 US gallons/min, comprising plant influent plus 4,000 US gallons/min of RAS. Ignore WAS and other flows. What is RAS divided by plant influent flow?",
+    "options": [
+     "0.400 RAS/influent flow",
+     "0.667 RAS/influent flow",
+     "1.500 RAS/influent flow",
+     "2.500 RAS/influent flow"
+    ],
+    "correctIndex": 1,
+    "explanation": "4000/(10000-4000) = 0.667 RAS/influent flow (rounded to 3 decimal places). Subtract RAS from combined clarifier feed before calculating RAS/plant influent."
+   },
+   "fix": {
+    "question": "Flow into a secondary clarifier is 2,400 m3/h, comprising plant influent plus 960 m3/h of RAS. Ignore WAS and other flows. What is RAS divided by plant influent flow?",
+    "options": [
+     "0.400 RAS/influent flow",
+     "0.667 RAS/influent flow",
+     "1.500 RAS/influent flow",
+     "2.500 RAS/influent flow"
+    ],
+    "correctIndex": 1,
+    "explanation": "Influent = 2400-960 = 1440 m3/h; 960/1440 = 0.667 RAS/influent flow. Subtract RAS from combined clarifier feed before calculating RAS/plant influent.",
+    "steps": [
+     {
+      "l": "Find plant influent",
+      "c": "2400-960 = 1440 m3/h"
+     },
+     {
+      "l": "Ratio",
+      "c": "960/1440 = 0.667"
+     }
+    ]
+   }
+  },
+  {
+   "id": 45854,
+   "bankKey": "wpi-class4-wastewater",
+   "questionNum": 576,
+   "verdict": "UNITS",
+   "note": "Million US gallons per day in a Canadian bank. Converted to ML.",
+   "original": {
+    "question": "A hypothetical digestion/CHP estimate uses 0.35 MWh of electricity per million US gallons treated. At 32.3 million US gallons/day, what daily electricity is predicted? Use half-up rounding to two decimals.",
+    "options": [
+     "11.31 MWh/day",
+     "0.01 MWh/day",
+     "92.29 MWh/day",
+     "31.95 MWh/day"
+    ],
+    "correctIndex": 0,
+    "explanation": "32.3*0.35 = 11.31 MWh/day (rounded to 2 decimal places). The supplied energy-per-volume coefficient multiplies the treated volume."
+   },
+   "fix": {
+    "question": "A hypothetical digestion/CHP estimate uses 0.10 MWh of electricity per megalitre (ML) treated. At 120 ML/day, what daily electricity is predicted?",
+    "options": [
+     "12.00 MWh/day",
+     "0.0008 MWh/day",
+     "1200.00 MWh/day",
+     "11.50 MWh/day"
+    ],
+    "correctIndex": 0,
+    "explanation": "120*0.10 = 12.00 MWh/day. The supplied energy-per-volume coefficient multiplies the treated volume.",
+    "steps": [
+     {
+      "l": "Multiply",
+      "c": "120*0.10 = 12.00 MWh/day"
+     }
+    ]
+   }
+  },
+  {
+   "id": 45858,
+   "bankKey": "wpi-class4-wastewater",
+   "questionNum": 580,
+   "verdict": "UNITS",
+   "note": "lb and US gallons in a Canadian bank. Converted to kg and m3 and recalculated.",
+   "original": {
+    "question": "An unusually overloaded reactor receives 4,000 lb BOD/day into 6,000 US gallons with MLSS 3,500 mg/L. Calculate loading on an MLSS basis (not MLVSS). Use 1 lb = 0.45359237 kg and 1 US gallon = 0.003785411784 m3.",
+    "options": [
+     "10.35 kg BOD/kg MLSS/day",
+     "0.02 kg BOD/kg MLSS/day",
+     "8.65 kg BOD/kg MLSS/day",
+     "22.82 kg BOD/kg MLSS/day"
+    ],
+    "correctIndex": 3,
+    "explanation": "4000*0.45359237/(6000*0.003785411784*3500/1000) = 22.82 kg BOD/kg MLSS/day (rounded to 2 decimal places). Convert pounds and US gallons explicitly; the extreme result signals overload, not a recommended F/M target."
+   },
+   "fix": {
+    "question": "An unusually overloaded reactor receives 1,800 kg BOD/day into 24 m3 with MLSS 3,500 mg/L. Calculate loading on an MLSS basis (not MLVSS).",
+    "options": [
+     "10.35 kg BOD/kg MLSS/day",
+     "0.05 kg BOD/kg MLSS/day",
+     "8.65 kg BOD/kg MLSS/day",
+     "21.43 kg BOD/kg MLSS/day"
+    ],
+    "correctIndex": 3,
+    "explanation": "1800/(24*3500/1000) = 21.43 kg BOD/kg MLSS/day. MLSS mass is 84 kg; the extreme result signals overload, not a recommended F/M target.",
+    "steps": [
+     {
+      "l": "MLSS mass",
+      "c": "24*3500/1000 = 84 kg"
+     },
+     {
+      "l": "Loading",
+      "c": "1800/84 = 21.43 kg BOD/kg MLSS/day"
+     }
+    ]
+   }
+  },
+  {
+   "id": 45870,
+   "bankKey": "wpi-class4-wastewater",
+   "questionNum": 592,
+   "verdict": "UNITS",
+   "note": "Cubic feet in a Canadian bank; convert to m3 (answer unchanged).",
+   "original": {
+    "question": "A digester has a volume of 5,000 cubic feet and an average daily flow of 200 cubic feet per day. What is the hydraulic retention time (HRT) of the digester?",
+    "options": [
+     "0.0 days",
+     "4.0 days",
+     "25.0 days",
+     "600.0 days"
+    ],
+    "correctIndex": 2,
+    "explanation": "5000/200 = 25.0 days (rounded to 1 decimal places). Cubic feet cancel, leaving days; no metric conversion is necessary."
+   },
+   "fix": {
+    "question": "A digester has a volume of 5,000 m3 and an average daily feed of 200 m3/day. What is the hydraulic retention time (HRT) of the digester?",
+    "options": [
+     "0.0 days",
+     "4.0 days",
+     "25.0 days",
+     "600.0 days"
+    ],
+    "correctIndex": 2,
+    "explanation": "5000/200 = 25.0 days. Volume divided by daily feed gives nominal days of liquid retention.",
+    "steps": [
+     {
+      "l": "Divide",
+      "c": "5000/200 = 25.0 days"
+     }
     ]
    }
   }
