@@ -1,15 +1,15 @@
 {
  "export": "docs/exam-bank-export/2026-11-16 (commit d118897a)",
- "chunksDone": 145,
+ "chunksDone": 150,
  "chunksTotal": 174,
- "questionsReviewed": 20270,
+ "questionsReviewed": 20981,
  "questionsTotal": 24350,
- "problems": 1398,
+ "problems": 1484,
  "byVerdict": {
-  "UNCLEAR": 445,
-  "WRONG": 567,
-  "JURISDICTION": 241,
-  "UNITS": 138,
+  "UNCLEAR": 456,
+  "WRONG": 581,
+  "JURISDICTION": 252,
+  "UNITS": 188,
   "OFF-TOPIC": 7
  },
  "byBank": {
@@ -42,7 +42,8 @@
   "wpi-class2-water-dist": 173,
   "wpi-class3-wastewater": 32,
   "wpi-class3-wastewater-coll": 10,
-  "wpi-class3-water": 25
+  "wpi-class3-water": 47,
+  "wpi-class3-water-dist": 64
  },
  "chunks": [
   "chunk-001",
@@ -189,7 +190,12 @@
   "chunk-142",
   "chunk-143",
   "chunk-144",
-  "chunk-145"
+  "chunk-145",
+  "chunk-146",
+  "chunk-147",
+  "chunk-148",
+  "chunk-149",
+  "chunk-150"
  ],
  "corrections": [
   {
@@ -49657,6 +49663,3003 @@
     "correctIndex": 0,
     "explanation": "The GCDWQ MAC for chlorite is 1.0 mg/L. Chlorite is a byproduct of chlorine dioxide disinfection and can cause hemolytic anemia in sensitive individuals. ClO₂ dose must be controlled to keep chlorite below the MAC.",
     "steps": null
+   }
+  },
+  {
+   "id": 42663,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 308,
+   "verdict": "WRONG",
+   "note": "Key is 18 m/h but the question's own working gives 720/(4x40)=4.5 m/h (option A). Key should be index 0.",
+   "original": {
+    "question": "A plant has 6 filters, each 40 m², operating at a combined flow of 720 m³/h. The design filtration rate is 10 m/h. One filter is in backwash (15 min) and one is in filter-to-waste (20 min). What is the filtration rate on the remaining 4 filters?",
+    "options": [
+     "4.5 m/h",
+     "10 m/h",
+     "18 m/h",
+     "9 m/h"
+    ],
+    "correctIndex": 2,
+    "explanation": "**Step 1 — Calculate Total Filter Area in Service:**\nNumber of filters in service = 6 total filters - 1 backwashing filter - 1 filter-to-waste filter = 4 filters\nArea per filter = 40 m²\nTotal area in service = 4 filters * 40 m²/filter = 160 m²\n\n**Step 2 — Calculate Filtration Rate:**\nCombined flow = 720 m³/h\nFiltration rate = Combined flow / Total area in service\nFiltration rate = 720 m³/h / 160 m² = 4.5 m/h\n\nThe correct answer is **A**."
+   },
+   "fix": {
+    "question": "A plant has 6 filters, each 40 m², operating at a combined flow of 720 m³/h. The design filtration rate is 10 m/h. One filter is in backwash (15 min) and one is in filter-to-waste (20 min). What is the filtration rate on the remaining 4 filters?",
+    "options": [
+     "4.5 m/h",
+     "10 m/h",
+     "18 m/h",
+     "9 m/h"
+    ],
+    "correctIndex": 0,
+    "explanation": "Filters in service = 6 - 1 - 1 = 4. Area in service = 4 x 40 m² = 160 m². Filtration rate = 720 m³/h / 160 m² = 4.5 m/h. The correct answer is A.",
+    "steps": [
+     {
+      "l": "Formula",
+      "c": "Number of operating filters = Total filters - Filters out of service"
+     },
+     {
+      "l": "Substitute",
+      "c": "Operating filters = 6 - 2 = 4 filters"
+     },
+     {
+      "l": "Formula",
+      "c": "Total operating filter area = Number of operating filters × Area per filter"
+     },
+     {
+      "l": "Substitute",
+      "c": "Total operating filter area = 4 × 40 m² = 160 m²"
+     },
+     {
+      "l": "Formula",
+      "c": "Filtration rate = Total flow / Total operating filter area"
+     },
+     {
+      "l": "Substitute",
+      "c": "Filtration rate = 720 m³/h / 160 m²"
+     },
+     {
+      "l": "Result",
+      "c": "Filtration rate = 4.5 m/h"
+     }
+    ]
+   }
+  },
+  {
+   "id": 42673,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 318,
+   "verdict": "WRONG",
+   "note": "Arithmetic: 1000x9.81x0.13889x20 = 27.25 kW; /0.65 = 41.9 kW, not 41.7 kW (explanation itself says 41.9 'approx 41.7'). Option should read 41.9 kW. Also isCalc should be true.",
+   "original": {
+    "question": "A plant's raw water pump has an efficiency of 65% and lifts 500 m³/h of water 20 m. What is the pump power consumption?",
+    "options": [
+     "65 kW",
+     "27.1 kW",
+     "41.7 kW",
+     "16.7 kW"
+    ],
+    "correctIndex": 2,
+    "explanation": "Hydraulic power = ρ × g × Q × H = 1000 × 9.81 × (500/3600) × 20 = 1000 × 9.81 × 0.139 × 20 = 27,250 W = 27.25 kW. Shaft power = Hydraulic power / efficiency = 27.25 / 0.65 = 41.9 kW ≈ 41.7 kW."
+   },
+   "fix": {
+    "question": "A plant's raw water pump has an efficiency of 65% and lifts 500 m³/h of water 20 m. What is the pump power consumption?",
+    "options": [
+     "65 kW",
+     "27.1 kW",
+     "41.9 kW",
+     "16.7 kW"
+    ],
+    "correctIndex": 2,
+    "explanation": "Hydraulic power = rho x g x Q x H = 1000 x 9.81 x (500/3600) x 20 = 27,250 W = 27.25 kW. Shaft power = 27.25 / 0.65 = 41.9 kW.",
+    "steps": [
+     {
+      "l": "Formula",
+      "c": "Hydraulic Power (kW) = (Flow (m³/s) × Head (m) × Specific Weight of Water (kN/m³)) / 1"
+     },
+     {
+      "l": "Substitute",
+      "c": "Flow = 500 m³/h / 3600 s/h = 0.13889 m³/s"
+     },
+     {
+      "l": "Calculate",
+      "c": "Hydraulic Power = (0.13889 m³/s × 20 m × 9.81 kN/m³) = 27.25 kW"
+     },
+     {
+      "l": "Formula",
+      "c": "Pump Power Consumption (kW) = Hydraulic Power (kW) / Efficiency"
+     },
+     {
+      "l": "Substitute",
+      "c": "Pump Power Consumption = 27.25 kW / 0.65"
+     },
+     {
+      "l": "Result",
+      "c": "Pump Power Consumption = 41.9 kW"
+     }
+    ]
+   }
+  },
+  {
+   "id": 42678,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 323,
+   "verdict": "UNCLEAR",
+   "note": "Explanation is self-contradictory: says NRW = Production - Authorized consumption, then says NRW includes unbilled authorized consumption. Under IWA/AWWA, NRW = production minus billed authorized consumption.",
+   "original": {
+    "question": "What is the purpose of a water system master meter?",
+    "options": [
+     "To measure individual customer use",
+     "To measure pressure",
+     "To measure total water production or supply entering the distribution system — used to calculate non-revenue water (NRW) by comparing production to the sum of all customer meter readings",
+     "To control pumps"
+    ],
+    "correctIndex": 2,
+    "explanation": "Master meters measure total system input. NRW = Production − Authorized consumption. NRW includes: real losses (leaks, main breaks), apparent losses (meter inaccuracy, theft), and unbilled authorized consumption (flushing, fire fighting). Master meter accuracy is critical for NRW calculations."
+   },
+   "fix": {
+    "question": "What is the purpose of a water system master meter?",
+    "options": [
+     "To measure individual customer use",
+     "To measure pressure",
+     "To measure total water production or supply entering the distribution system — used to calculate non-revenue water (NRW) by comparing production to the sum of all customer meter readings",
+     "To control pumps"
+    ],
+    "correctIndex": 2,
+    "explanation": "Master meters measure total system input. NRW = System input - Billed authorized consumption. NRW includes unbilled authorized consumption (flushing, fire fighting), real losses (leaks, main breaks) and apparent losses (meter inaccuracy, theft). Master meter accuracy is critical for NRW calculations.",
+    "steps": null
+   }
+  },
+  {
+   "id": 42679,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 324,
+   "verdict": "WRONG",
+   "note": "NRW (IWA/AWWA) = system input minus billed authorized consumption and includes authorized unbilled use: 5,000 - 4,200 = 800 m³/d = 16%. The marked 15% is 'water losses', and contradicts the bank's own definition in the previous question.",
+   "original": {
+    "question": "A water utility produces 5,000 m³/day. Customer meters record 4,200 m³/day. Authorized unbilled consumption (flushing, fire fighting) is 50 m³/day. What is the non-revenue water percentage?",
+    "options": [
+     "16%",
+     "14%",
+     "17%",
+     "15%"
+    ],
+    "correctIndex": 3,
+    "explanation": "Non-revenue water (NRW) is calculated by subtracting the total authorized consumption (billed and authorized unbilled) from the total water produced. First, sum the customer meter readings and authorized unbilled consumption to find the total authorized consumption. Then, subtract this from the production to find the NRW volume. Finally, divide the NRW volume by the total production and multiply by 100 to get the percentage. The calculated non-revenue water percentage is 15%."
+   },
+   "fix": {
+    "question": "A water utility produces 5,000 m³/day. Customer meters record 4,200 m³/day. Authorized unbilled consumption (flushing, fire fighting) is 50 m³/day. What is the non-revenue water percentage?",
+    "options": [
+     "16%",
+     "14%",
+     "17%",
+     "15%"
+    ],
+    "correctIndex": 0,
+    "explanation": "Non-revenue water is system input minus billed authorized consumption. It therefore includes authorized unbilled consumption plus real and apparent losses. NRW = 5,000 - 4,200 = 800 m³/day; 800 / 5,000 x 100 = 16%. (Subtracting the 50 m³/day unbilled use as well gives 15%, which is water losses, not NRW.)",
+    "steps": [
+     {
+      "l": "Step 1: NRW volume",
+      "c": "NRW = System input - Billed authorized consumption = 5,000 - 4,200 = 800 m³/day"
+     },
+     {
+      "l": "Step 2: Percentage",
+      "c": "NRW % = 800 / 5,000 × 100 = 16%"
+     }
+    ]
+   }
+  },
+  {
+   "id": 42689,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 334,
+   "verdict": "WRONG",
+   "note": "Numbers inconsistent: 995 of 1,000 is 99.5% and 5 adverse results, but the question says 99.2% and the answer says 8 adverse results (99.2% = 992 compliant, 8 adverse).",
+   "original": {
+    "question": "A utility's annual compliance rate for bacteriological monitoring is 99.2% (995 compliant samples out of 1,000). The regulatory requirement is 100% compliance (0 adverse results). What is the compliance status and required actions?",
+    "options": [
+     "99.2% is acceptable — close enough to 100%",
+     "Non-compliant — 8 adverse results require investigation, corrective action, and reporting. Each adverse result must be investigated to determine cause, corrective action taken, and the regulator notified. The utility must review its monitoring program and treatment processes to prevent recurrence",
+     "Only 1 adverse result requires action",
+     "The utility must shut down"
+    ],
+    "correctIndex": 1,
+    "explanation": "100% compliance means zero adverse results. Any adverse result (E. coli, total coliform in treated water) is a non-compliance requiring: immediate notification to the regulator; investigation of cause; corrective action; and verification sampling. Eight adverse results in a year indicates a systemic problem requiring a comprehensive investigation and corrective action plan."
+   },
+   "fix": {
+    "question": "A utility's annual compliance rate for bacteriological monitoring is 99.2% (992 compliant samples out of 1,000). The regulatory requirement is 100% compliance (0 adverse results). What is the compliance status and required actions?",
+    "options": [
+     "99.2% is acceptable — close enough to 100%",
+     "Non-compliant — 8 adverse results require investigation, corrective action, and reporting. Each adverse result must be investigated to determine cause, corrective action taken, and the regulator notified. The utility must review its monitoring program and treatment processes to prevent recurrence",
+     "Only 1 adverse result requires action",
+     "The utility must shut down"
+    ],
+    "correctIndex": 1,
+    "explanation": "100% compliance means zero adverse results. 1,000 - 992 = 8 adverse results. Any adverse result (E. coli, total coliform in treated water) is a non-compliance requiring immediate notification to the regulator, investigation of cause, corrective action and verification sampling.",
+    "steps": null
+   }
+  },
+  {
+   "id": 42691,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 336,
+   "verdict": "JURISDICTION",
+   "note": "'Permit to Take Water (PTTW)' is Ontario terminology (Ontario Water Resources Act). In western Canada water diversion is authorized by a water licence (e.g. BC Water Sustainability Act, Alberta Water Act, Sask. Water Security Agency, Manitoba Water Rights Act).",
+   "original": {
+    "question": "What is the purpose of a drinking water system permit to take water (PTTW)?",
+    "options": [
+     "A business permit",
+     "A legal authorization issued by the regulatory authority that specifies the maximum volume of water that may be taken from a source (surface water or groundwater) — required to protect water resources and other water users",
+     "A treatment permit",
+     "An operating permit"
+    ],
+    "correctIndex": 1,
+    "explanation": "PTTWs regulate water taking to ensure sustainable use of water resources. They specify: maximum daily and annual volumes; conditions on taking (e.g., minimum stream flow requirements); monitoring requirements; and reporting obligations. Taking water without a PTTW or exceeding PTTW limits is illegal."
+   },
+   "fix": {
+    "question": "What is the purpose of a water licence (water allocation) for a drinking water system?",
+    "options": [
+     "A business permit",
+     "A legal authorization issued by the provincial water authority that specifies the maximum volume of water that may be diverted from a source (surface water or groundwater) — required to protect water resources and other water users",
+     "A treatment permit",
+     "An operating permit"
+    ],
+    "correctIndex": 1,
+    "explanation": "Provincial water licences regulate water diversion to ensure sustainable use of water resources. They specify maximum volumes and rates, priority of use, conditions (e.g. minimum instream flow requirements), monitoring and reporting obligations. Diverting water without a licence or exceeding licence limits is illegal.",
+    "steps": null
+   }
+  },
+  {
+   "id": 42695,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 340,
+   "verdict": "WRONG",
+   "note": "Explanation says pressurized water is 40-60% of flow; DAF recycle is typically 5-15% of flow (and the next question uses 10%).",
+   "original": {
+    "question": "What is the purpose of a dissolved air flotation (DAF) clarifier?",
+    "options": [
+     "To add air to water",
+     "To remove low-density particles (algae, oil, colour, low-turbidity floc) by dissolving air under pressure and releasing it in the flotation tank, causing fine bubbles to attach to particles and float them to the surface for removal",
+     "To remove heavy particles",
+     "To aerate water"
+    ],
+    "correctIndex": 1,
+    "explanation": "DAF is particularly effective for source waters with high algae, colour, or low-density particles that do not settle well. Pressurized water (40–60% of flow) is saturated with air and released in the flotation tank, creating fine bubbles (10–100 μm) that attach to floc and float it to the surface where it is skimmed off."
+   },
+   "fix": {
+    "question": "What is the purpose of a dissolved air flotation (DAF) clarifier?",
+    "options": [
+     "To add air to water",
+     "To remove low-density particles (algae, oil, colour, low-turbidity floc) by dissolving air under pressure and releasing it in the flotation tank, causing fine bubbles to attach to particles and float them to the surface for removal",
+     "To remove heavy particles",
+     "To aerate water"
+    ],
+    "correctIndex": 1,
+    "explanation": "DAF is particularly effective for source waters with high algae, colour, or low-density particles that do not settle well. A recycle stream (typically 5–15% of the flow) is saturated with air at about 400–600 kPa and released in the flotation tank, creating fine bubbles (10–100 μm) that attach to floc and float it to the surface where it is skimmed off.",
+    "steps": null
+   }
+  },
+  {
+   "id": 42742,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 387,
+   "verdict": "UNCLEAR",
+   "note": "Free chlorine CT for Giardia depends on the chlorine residual (and pH, temperature); the question gives only pH and temperature, so no single CT is defined. Published 3-log values at 10°C, pH 7 vary with residual (roughly 140-170 mg·min/L) and I could not confirm 165 as the single value without a stated residual.",
+   "original": {
+    "question": "What CT value is required for 3-log (99.9%) inactivation of Giardia with free chlorine at pH 7 and 10°C?",
+    "options": [
+     "55 mg·min/L",
+     "165 mg·min/L",
+     "330 mg·min/L",
+     "82 mg·min/L"
+    ],
+    "correctIndex": 1,
+    "explanation": "Per the GCDWQ and USEPA Surface Water Treatment Rule, 3-log Giardia inactivation with free chlorine at pH 7 and 10°C requires approximately 165 mg·min/L CT. Lower temperatures require higher CT values."
+   },
+   "fix": null
+  },
+  {
+   "id": 42755,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 400,
+   "verdict": "UNCLEAR",
+   "note": "Treats PAC capacity as a stoichiometric sink (200 ug/mg x 20 mg/L), which ignores adsorption isotherm behaviour at ng/L concentrations and competition from NOM; 100% removal is not defensible, real geosmin removal at 20 mg/L PAC is typically 50-90% depending on contact time and NOM.",
+   "original": {
+    "question": "A plant adds 20 mg/L of PAC with a geosmin adsorption capacity of 200 μg geosmin/mg PAC. The raw water geosmin concentration is 50 ng/L. What fraction of geosmin is removed?",
+    "options": [
+     "20%",
+     "50%",
+     "100% (complete removal)",
+     "80%"
+    ],
+    "correctIndex": 2,
+    "explanation": "**Step 1 — Calculate Total Adsorption Capacity:**\n20 mg/L PAC * 200 µg geosmin/mg PAC = 4000 µg geosmin/L\n\n**Step 2 — Convert Capacity to ng/L:**\n4000 µg geosmin/L * 1000 ng/µg = 4,000,000 ng geosmin/L\n\n**Step 3 — Compare Capacity to Raw Water Concentration:**\nRaw water geosmin concentration = 50 ng/L.\nSince 4,000,000 ng/L (PAC capacity) >> 50 ng/L (geosmin concentration), all geosmin can be adsorbed.\n\nThe correct answer is **100% (complete removal)**."
+   },
+   "fix": null
+  },
+  {
+   "id": 42759,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 404,
+   "verdict": "WRONG",
+   "note": "Marked answer (6.1 mg/L, option C) is right, but the explanation says the correct answer is A (10.4 mg/L) and contains a muddled 'this step is incorrect' paragraph. Explanation disagrees with key.",
+   "original": {
+    "question": "A UV/H₂O₂ AOP system adds 5 mg/L of H₂O₂. After AOP, the residual H₂O₂ is 2 mg/L. Sodium bisulfite (NaHSO₃, MW=104) is added to quench the residual H₂O₂ (MW=34). The reaction is: H₂O₂ + NaHSO₃ → NaHSO₄ + H₂O. What dose of sodium bisulfite is required?",
+    "options": [
+     "10.4 mg/L",
+     "2 mg/L",
+     "6.1 mg/L",
+     "3.4 mg/L"
+    ],
+    "correctIndex": 2,
+    "explanation": "**Step 1 — Determine Residual H2O2:**\nResidual H2O2 = Initial H2O2 - Consumed H2O2 = 5 mg/L - 2 mg/L = 3 mg/L (This step is incorrect based on the provided solution. The solution assumes the residual H2O2 is 2 mg/L, which is stated in the problem as \"After AOP, the residual H2O2 is 2 mg/L.\" We will proceed with 2 mg/L as the residual to be quenched.)\n\n**Step 2 — Calculate NaHSO3 Dose:**\nNaHSO3 dose = Residual H2O2 × (MW NaHSO3 / MW H2O2)\nNaHSO3 dose = 2 mg/L × (104 / 34)\nNaHSO3 dose = 2 mg/L × 3.0588\nNaHSO3 dose = 6.1176 mg/L\n\nThe correct answer is **A**."
+   },
+   "fix": {
+    "question": "A UV/H₂O₂ AOP system adds 5 mg/L of H₂O₂. After AOP, the residual H₂O₂ is 2 mg/L. Sodium bisulfite (NaHSO₃, MW=104) is added to quench the residual H₂O₂ (MW=34). The reaction is: H₂O₂ + NaHSO₃ → NaHSO₄ + H₂O. What dose of sodium bisulfite is required?",
+    "options": [
+     "10.4 mg/L",
+     "2 mg/L",
+     "6.1 mg/L",
+     "3.4 mg/L"
+    ],
+    "correctIndex": 2,
+    "explanation": "Only the residual H₂O₂ (2 mg/L) needs quenching. The reaction is 1:1 on a molar basis, so NaHSO₃ dose = 2 mg/L x (104 / 34) = 6.1 mg/L. The correct answer is C.",
+    "steps": [
+     {
+      "l": "Formula:",
+      "c": "Dose NaHSO₃ = Residual H₂O₂ (mg/L) × (MW NaHSO₃ / MW H₂O₂)"
+     },
+     {
+      "l": "Substitute:",
+      "c": "2 mg/L × (104 / 34)"
+     },
+     {
+      "l": "Calculate:",
+      "c": "2 mg/L × 3.0588"
+     },
+     {
+      "l": "Result:",
+      "c": "6.1 mg/L"
+     }
+    ]
+   }
+  },
+  {
+   "id": 42761,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 406,
+   "verdict": "JURISDICTION",
+   "note": "IPZ-1/IPZ-2/IPZ-3 zoning is Ontario Clean Water Act (source protection plan) terminology, presented as the general scheme; not used in western Canada.",
+   "original": {
+    "question": "What is the purpose of an intake protection zone (IPZ)?",
+    "options": [
+     "A zone around the plant",
+     "A defined area around a surface water intake where activities that could contaminate the source water are restricted or prohibited — typically divided into IPZ-1 (immediate vicinity), IPZ-2 (extended area), and IPZ-3 (contributing area)",
+     "A zone around the clearwell",
+     "A zone around the distribution system"
+    ],
+    "correctIndex": 1,
+    "explanation": "IPZs define areas where land use restrictions protect the drinking water intake. IPZ-1 (immediate vicinity, typically 100–1,000 m) has the most stringent restrictions. IPZ-2 and IPZ-3 cover larger areas with progressively less stringent restrictions. Activities like fuel storage, pesticide application, and industrial discharges may be prohibited or regulated within IPZs."
+   },
+   "fix": {
+    "question": "What is the purpose of an intake protection zone (IPZ)?",
+    "options": [
+     "A zone around the plant",
+     "A defined area around a surface water intake where activities that could contaminate the source water are restricted or managed — typically with the most stringent controls closest to the intake and progressively broader management of the contributing area further away",
+     "A zone around the clearwell",
+     "A zone around the distribution system"
+    ],
+    "correctIndex": 1,
+    "explanation": "Intake protection zones define areas where land use controls protect the drinking water intake. The area immediately around the intake has the most stringent restrictions, with larger surrounding areas managed progressively less strictly. Activities like fuel storage, pesticide application, and industrial discharges may be prohibited or regulated within these zones. Zone naming and legal basis vary by province.",
+    "steps": null
+   }
+  },
+  {
+   "id": 42766,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 411,
+   "verdict": "JURISDICTION",
+   "note": "Explanation cites 'OHSA' (Ontario Occupational Health and Safety Act) as the regulation; western provinces use their own OHS acts/regulations (e.g. BC Workers Compensation Act/OHS Regulation, Alberta OHS Act).",
+   "original": {
+    "question": "What is the purpose of a comprehensive chemical storage and handling safety program in a Class 3 water treatment facility?",
+    "options": [
+     "Protect operator safety and prevent environmental releases through: proper storage segregation, secondary containment, ventilation, PPE requirements, and emergency response procedures for all treatment chemicals",
+     "Chemicals can be stored together",
+     "Safety programs are optional",
+     "Only train new employees"
+    ],
+    "correctIndex": 0,
+    "explanation": "Chemical safety: segregation (oxidizers separate from organics, acids from bases), secondary containment (110% of largest container volume), ventilation (chlorine gas rooms: 1 air change per minute), PPE (chemical-specific: SCBA for chlorine gas, face shield for caustic), emergency equipment (eyewash, safety showers, SCBA), and training (WHMIS, chemical-specific hazards, spill response). Regulatory: OHSA, WHMIS 2015, and facility-specific procedures."
+   },
+   "fix": {
+    "question": "What is the purpose of a comprehensive chemical storage and handling safety program in a Class 3 water treatment facility?",
+    "options": [
+     "Protect operator safety and prevent environmental releases through: proper storage segregation, secondary containment, ventilation, PPE requirements, and emergency response procedures for all treatment chemicals",
+     "Chemicals can be stored together",
+     "Safety programs are optional",
+     "Only train new employees"
+    ],
+    "correctIndex": 0,
+    "explanation": "Chemical safety: segregation (oxidizers separate from organics, acids from bases), secondary containment (typically 110% of largest container volume), ventilation, PPE (chemical-specific: SCBA for chlorine gas, face shield for caustic), emergency equipment (eyewash, safety showers, SCBA), and training (WHMIS, chemical-specific hazards, spill response). Regulatory: provincial occupational health and safety legislation, WHMIS 2015, and facility-specific procedures.",
+    "steps": null
+   }
+  },
+  {
+   "id": 42801,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 446,
+   "verdict": "UNCLEAR",
+   "note": "Two options are correct: 'A. 0% — pump is accurate' and 'B. 0% — 250/5 = 50 mL/min' both state 0% error.",
+   "original": {
+    "question": "A chemical feed pump is calibrated by collecting the output over 5 minutes. The collected volume is 250 mL. The pump is set to deliver 50 mL/min. What is the percent error?",
+    "options": [
+     "0% — pump is accurate",
+     "0% — 250/5 = 50 mL/min",
+     "10% error",
+     "5% error"
+    ],
+    "correctIndex": 1,
+    "explanation": "**Step 1 — Calculate Actual Flow Rate:**\nActual Flow Rate = Collected Volume / Time = 250 mL / 5 min = 50 mL/min\n\n**Step 2 — Compare to Setpoint:**\nThe actual flow rate (50 mL/min) is equal to the setpoint (50 mL/min).\n\n**Step 3 — Calculate Percent Error:**\nPercent Error = ((Actual Flow Rate - Setpoint) / Setpoint) * 100% = ((50 mL/min - 50 mL/min) / 50 mL/min) * 100% = 0%\n\nThe correct answer is **0% — 250/5 = 50 mL/min**."
+   },
+   "fix": {
+    "question": "A chemical feed pump is calibrated by collecting the output over 5 minutes. The collected volume is 250 mL. The pump is set to deliver 50 mL/min. What is the percent error?",
+    "options": [
+     "2% error",
+     "0% — 250/5 = 50 mL/min",
+     "10% error",
+     "5% error"
+    ],
+    "correctIndex": 1,
+    "explanation": "Actual flow = 250 mL / 5 min = 50 mL/min, equal to the setpoint. Percent error = (50 - 50) / 50 x 100 = 0%.",
+    "steps": [
+     {
+      "l": "Step 1 — Calculate Actual Flow Rate",
+      "c": "Actual Flow Rate = 250 mL / 5 min = 50 mL/min"
+     },
+     {
+      "l": "Step 2 — Compare to Setpoint",
+      "c": "Actual (50 mL/min) equals setpoint (50 mL/min)"
+     },
+     {
+      "l": "Step 3 — Calculate Percent Error",
+      "c": "((50 - 50) / 50) × 100% = 0%"
+     }
+    ]
+   }
+  },
+  {
+   "id": 42805,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 450,
+   "verdict": "WRONG",
+   "note": "Key (80%, option B) is correct but explanation states 'The correct answer is A' (130%); explanation disagrees with marked answer.",
+   "original": {
+    "question": "A matrix spike adds 1.0 mg/L of analyte to a sample with an initial concentration of 0.5 mg/L. The spiked sample result is 1.3 mg/L. What is the spike recovery?",
+    "options": [
+     "130%",
+     "80%",
+     "65%",
+     "93%"
+    ],
+    "correctIndex": 1,
+    "explanation": "**Step 1 — Identify Given Values:**\nInitial concentration (unspiked) = 0.5 mg/L\nSpike added = 1.0 mg/L\nSpiked sample result = 1.3 mg/L\n\n**Step 2 — Apply Spike Recovery Formula:**\nSpike Recovery (%) = [(Spiked Sample Result - Initial Concentration) / Spike Added] * 100%\nSpike Recovery (%) = [(1.3 mg/L - 0.5 mg/L) / 1.0 mg/L] * 100%\n\n**Step 3 — Calculate Recovery:**\nSpike Recovery (%) = [0.8 mg/L / 1.0 mg/L] * 100%\nSpike Recovery (%) = 0.8 * 100% = 80%\n\nThe correct answer is **A**."
+   },
+   "fix": {
+    "question": "A matrix spike adds 1.0 mg/L of analyte to a sample with an initial concentration of 0.5 mg/L. The spiked sample result is 1.3 mg/L. What is the spike recovery?",
+    "options": [
+     "130%",
+     "80%",
+     "65%",
+     "93%"
+    ],
+    "correctIndex": 1,
+    "explanation": "Spike recovery = (spiked result - initial concentration) / spike added x 100 = (1.3 - 0.5) / 1.0 x 100 = 80%. The correct answer is B.",
+    "steps": [
+     {
+      "l": "Formula:",
+      "c": "Spike Recovery (%) = ((Spiked Sample Result - Initial Concentration) / Spike Amount) × 100%"
+     },
+     {
+      "l": "Substitute:",
+      "c": "((1.3 mg/L - 0.5 mg/L) / 1.0 mg/L) × 100%"
+     },
+     {
+      "l": "Calculate:",
+      "c": "(0.8 mg/L / 1.0 mg/L) × 100%"
+     },
+     {
+      "l": "Result:",
+      "c": "Spike Recovery = 80%"
+     }
+    ]
+   }
+  },
+  {
+   "id": 42809,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 454,
+   "verdict": "UNCLEAR",
+   "note": "Explanation and steps say the correct answer is A but the key is option C (2:00 PM next day). Also, Health Canada guidance allows up to 48 h (24 h preferred) for total coliform; the question states 24 h so the maths is fine, but the letter in the explanation is wrong.",
+   "original": {
+    "question": "A water sample for total coliform analysis is collected in a 100 mL sterile bottle containing sodium thiosulfate. The sample is collected at 2:00 PM and must be analyzed within 24 hours. What is the latest acceptable analysis time?",
+    "options": [
+     "2:00 AM the next day",
+     "6:00 AM the next day",
+     "2:00 PM the next day",
+     "12:00 PM the next day"
+    ],
+    "correctIndex": 2,
+    "explanation": "**Step 1 — Identify Collection Time:**\nSample collected at 2:00 PM.\n\n**Step 2 — Apply Holding Time:**\nBacteriological samples must be analyzed within 24 hours of collection.\n\n**Step 3 — Calculate Latest Analysis Time:**\n2:00 PM + 24 hours = 2:00 PM the next day.\n\nThe correct answer is **A**."
+   },
+   "fix": {
+    "question": "A water sample for total coliform analysis is collected in a 100 mL sterile bottle containing sodium thiosulfate. The sample is collected at 2:00 PM and the laboratory's SOP requires analysis within 24 hours. What is the latest acceptable analysis time?",
+    "options": [
+     "2:00 AM the next day",
+     "6:00 AM the next day",
+     "2:00 PM the next day",
+     "12:00 PM the next day"
+    ],
+    "correctIndex": 2,
+    "explanation": "Step 1: Sample collected at 2:00 PM. Step 2: Holding time is 24 hours. Step 3: 2:00 PM + 24 hours = 2:00 PM the next day. The correct answer is C (2:00 PM the next day).",
+    "steps": null
+   }
+  },
+  {
+   "id": 42813,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 458,
+   "verdict": "JURISDICTION",
+   "note": "The 0.015 mg/L lead action level and 90th-percentile compliance approach are the US EPA Lead and Copper Rule. In Canada the Health Canada GCDWQ MAC for lead is 0.005 mg/L (2019) measured at the tap; it is not a 90th-percentile action level. Explanation also says answer B while key is C.",
+   "original": {
+    "question": "A utility collects 50 lead samples. The 90th percentile is calculated from the sample ranked at position 50 × 0.9 = 45. The 45th ranked sample is 0.012 mg/L. What is the compliance status?",
+    "options": [
+     "Non-compliant — exceeds 0.010 mg/L",
+     "Non-compliant — any lead is unacceptable",
+     "Compliant — 90th percentile (0.012 mg/L) is below the action level of 0.015 mg/L",
+     "Compliant — below 0.015 mg/L but should optimize"
+    ],
+    "correctIndex": 2,
+    "explanation": "**Step 1 — Identify 90th Percentile:**\nThe 90th percentile lead concentration is given as 0.012 mg/L.\n\n**Step 2 — Compare to Action Level:**\nThe action level for lead is 0.015 mg/L.\n0.012 mg/L (90th percentile) < 0.015 mg/L (Action Level)\n\n**Step 3 — Determine Compliance:**\nSince the 90th percentile is below the action level, the utility is compliant.\n\nThe correct answer is **B. Compliant — 90th percentile (0.012 mg/L) is below the action level of 0.015 mg/L**."
+   },
+   "fix": {
+    "question": "A utility's tap sample result for lead is 0.012 mg/L. The Canadian Guidelines for Drinking Water Quality set a maximum acceptable concentration (MAC) for lead of 0.005 mg/L. What is the compliance status of this sample?",
+    "options": [
+     "Exceeds the MAC of 0.005 mg/L - corrective action and investigation required",
+     "Compliant - below 0.015 mg/L",
+     "Compliant - lead is not regulated at the tap",
+     "Exceeds the MAC only if the 90th percentile is above 0.010 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "The Health Canada MAC for lead in drinking water is 0.005 mg/L. 0.012 mg/L is above 0.005 mg/L, so the result exceeds the MAC and the utility must investigate and take corrective action (e.g. corrosion control, lead service line replacement). The 0.015 mg/L value is the US EPA action level and does not apply in Canada.",
+    "steps": null
+   }
+  },
+  {
+   "id": 42885,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 530,
+   "verdict": "WRONG",
+   "note": "Key 4.0 log is right (2.5 + 1.5) but the steps say 5.0-log + 5.0-log = 10 log, contradicting the answer.",
+   "original": {
+    "question": "Filtration provides 2.5-log Cryptosporidium credit, UV provides 1.5-log. What is the total?",
+    "options": [
+     "1.0 log",
+     "2.5 log",
+     "1.5 log",
+     "4.0 log"
+    ],
+    "correctIndex": 3,
+    "explanation": "Total = 2.5 + 1.5 = 4.0 log."
+   },
+   "fix": {
+    "question": "Filtration provides 2.5-log Cryptosporidium credit, UV provides 1.5-log. What is the total?",
+    "options": [
+     "1.0 log",
+     "2.5 log",
+     "1.5 log",
+     "4.0 log"
+    ],
+    "correctIndex": 3,
+    "explanation": "Total = 2.5 + 1.5 = 4.0 log.",
+    "steps": [
+     {
+      "l": "Step 1 — Total Log Inactivation",
+      "c": "Total = Sum of all log credits from each treatment step"
+     },
+     {
+      "l": "Step 2 — Add Credits",
+      "c": "Total = 2.5-log + 1.5-log"
+     },
+     {
+      "l": "Step 3 — Calculate",
+      "c": "Total Log Inactivation = 4.0 log"
+     }
+    ]
+   }
+  },
+  {
+   "id": 390002,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 533,
+   "verdict": "UNCLEAR",
+   "note": "Contradicts the bank's own 24-hour total coliform holding time (Q 42809, 42807 area) and Health Canada guidance (analyze within 48 h, ideally 24 h, kept cool 4-10 C). The 6 h/8 h limit is a US non-potable (wastewater) rule. A sample at 4 C arriving at 22 h is normally acceptable. Key A (reject) is not defensible for drinking water.",
+   "original": {
+    "question": "A water treatment plant laboratory receives a sample for total coliform analysis. The sample is held at 4°C and arrives 22 hours after collection. What is the appropriate action?",
+    "options": [
+     "Reject the sample — holding time exceeded for microbiological samples",
+     "Accept the sample — 24-hour holding time applies to total coliform",
+     "Process the sample but note the extended holding time in the report",
+     "Dilute the sample before analysis to compensate for holding time"
+    ],
+    "correctIndex": 0,
+    "explanation": "Microbiological samples for total coliform and E. coli must be analyzed within 6 hours of collection (or 8 hours with ice). A 22-hour hold time far exceeds this limit. The sample must be rejected and a new sample collected. Holding time violations can lead to false negatives due to bacterial die-off or false positives due to regrowth."
+   },
+   "fix": {
+    "question": "A water treatment plant laboratory receives a drinking water sample for total coliform analysis. The sample was kept at 4°C and arrives 22 hours after collection. The lab SOP allows a 24-hour holding time. What is the appropriate action?",
+    "options": [
+     "Reject the sample - holding time exceeded for microbiological samples",
+     "Accept and analyze the sample - it arrived within the 24-hour holding time and was kept cold",
+     "Dilute the sample before analysis to compensate for holding time",
+     "Hold the sample another 48 hours before analysis"
+    ],
+    "correctIndex": 1,
+    "explanation": "Drinking water samples for total coliform and E. coli should be analyzed as soon as possible, ideally within 24 hours and no later than 48 hours (Health Canada), kept at about 4°C. A sample arriving at 22 hours is within the 24-hour holding time and should be analyzed with the receipt time and temperature recorded.",
+    "steps": null
+   }
+  },
+  {
+   "id": 390006,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 537,
+   "verdict": "UNCLEAR",
+   "note": "No single standard HPC condition. Standard Methods pour plate uses 35 C for 48 h; R2A uses 20-28 C for 5-7 days. '22 C for 72 h (R2A)' is not a standard Canadian/Standard Methods condition, and R2A is not run for 72 h. Key B is not defensible as the 'standard method'.",
+   "original": {
+    "question": "When performing a heterotrophic plate count (HPC) on treated water, the incubation temperature and time for the standard method are:",
+    "options": [
+     "35°C for 48 hours",
+     "22°C for 72 hours",
+     "35°C for 24 hours",
+     "28°C for 48 hours"
+    ],
+    "correctIndex": 1,
+    "explanation": "The standard HPC method (R2A agar) uses 22°C incubation for 72 hours (3 days). This lower temperature and longer incubation time allows slow-growing bacteria to develop, providing a more complete picture of the bacterial population in treated water. The 35°C/48-hour method is used for some other bacteriological tests but not standard HPC."
+   },
+   "fix": {
+    "question": "When performing a heterotrophic plate count (HPC) on treated water using the pour plate method with plate count agar (Standard Methods), the incubation temperature and time are:",
+    "options": [
+     "35°C for 48 hours",
+     "22°C for 72 hours",
+     "35°C for 24 hours",
+     "28°C for 12 hours"
+    ],
+    "correctIndex": 0,
+    "explanation": "The pour plate HPC method (Standard Methods 9215B) incubates plate count agar at 35°C for 48 hours. The low-nutrient R2A method uses a lower temperature (20-28°C) for a longer period (5-7 days).",
+    "steps": null
+   }
+  },
+  {
+   "id": 390025,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 556,
+   "verdict": "WRONG",
+   "note": "UV dose for 3-log Cryptosporidium inactivation is 12 mJ/cm2 (US EPA UVDGM / LT2); 10 mJ/cm2 is the 2.5-log value. Key concept (validation by bioassay) still holds.",
+   "original": {
+    "question": "A Class III plant is optimizing its UV disinfection system for Cryptosporidium inactivation. The UV dose required for 3-log inactivation of Cryptosporidium is 10 mJ/cm². The plant achieves a UV transmittance of 92% and a lamp output of 85% of rated power. What is the validated UV dose delivered?",
+    "options": [
+     "The validated dose must be determined through bioassay testing — calculated doses are not accepted",
+     "10 mJ/cm² — the required dose equals the delivered dose by definition",
+     "The dose is reduced proportionally to lamp output: 10 × 0.85 = 8.5 mJ/cm²",
+     "UV dose cannot be calculated without knowing the reactor volume and flow rate"
+    ],
+    "correctIndex": 0,
+    "explanation": "UV dose validation for regulatory credit must be performed through challenge testing (bioassay) using a surrogate organism, not by calculation alone. The validated dose accounts for all real-world factors including lamp aging, fouling, water quality effects, and reactor hydraulics. Calculated doses based on lamp output and transmittance are not accepted by regulators for Cryptosporidium inactivation credit. Class III operators must have a validated UV system with proper monitoring."
+   },
+   "fix": {
+    "question": "A Class III plant is optimizing its UV disinfection system for Cryptosporidium inactivation. The UV dose required for 3-log inactivation of Cryptosporidium is 12 mJ/cm². The plant achieves a UV transmittance of 92% and a lamp output of 85% of rated power. What is the validated UV dose delivered?",
+    "options": [
+     "The validated dose must be determined through bioassay testing - calculated doses are not accepted",
+     "12 mJ/cm² - the required dose equals the delivered dose by definition",
+     "The dose is reduced proportionally to lamp output: 12 × 0.85 = 10.2 mJ/cm²",
+     "UV dose cannot be calculated without knowing the reactor volume and flow rate"
+    ],
+    "correctIndex": 0,
+    "explanation": "UV dose validation for regulatory credit must be performed through challenge testing (bioassay) with a surrogate organism, not by calculation from lamp output and transmittance alone. The validated dose accounts for lamp aging, fouling, water quality and reactor hydraulics.",
+    "steps": null
+   }
+  },
+  {
+   "id": 390027,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 558,
+   "verdict": "UNCLEAR",
+   "note": "Key 32.9 L/day is correct for the stated '23% fluoride equivalent by mass' (9 kg F / 0.23 / 1.19 = 32.9 L), but the explanation is self-contradictory (says closest answer is 39.1 L/day and discusses H2SiF6 F content 0.182) and the steps are filler.",
+   "original": {
+    "question": "A Class III plant is reviewing its fluoridation system. The target fluoride concentration is 0.7 mg/L. The raw water contains 0.1 mg/L natural fluoride. The plant flow is 15 ML/day. If using a fluorosilicic acid solution that is 23% fluoride equivalent by mass, with a density of 1.19 kg/L, what volume of solution must be added per day?",
+    "options": [
+     "39.1 L/day",
+     "46.5 L/day",
+     "32.9 L/day",
+     "52.3 L/day"
+    ],
+    "correctIndex": 2,
+    "explanation": "Fluoride to add = 0.7 - 0.1 = 0.6 mg/L. Mass of fluoride needed = 0.6 mg/L × 15,000,000 L/day = 9,000,000 mg/day = 9,000 g/day = 9 kg/day. Fluorosilicic acid at 23% concentration: 1 kg solution contains 0.23 kg F equivalent (approximately — the actual F content of H2SiF6 at 23% is about 0.23 × 0.792 = 0.182 kg F/kg solution due to molecular weight). Using simplified approach: mass of solution = 9 kg F / (0.23 × 1.0) = 39.1 kg. Volume = 39.1 kg / 1.19 kg/L = 32.9 L ≈ 33 L/day. The closest answer is 39.1 L/day using direct percentage. This calculation requires knowing the actual fluoride content of the commercial product."
+   },
+   "fix": {
+    "question": "A Class III plant is reviewing its fluoridation system. The target fluoride concentration is 0.7 mg/L. The raw water contains 0.1 mg/L natural fluoride. The plant flow is 15 ML/day. If using a fluorosilicic acid solution that is 23% fluoride by mass, with a density of 1.19 kg/L, what volume of solution must be added per day?",
+    "options": [
+     "39.1 L/day",
+     "46.5 L/day",
+     "32.9 L/day",
+     "52.3 L/day"
+    ],
+    "correctIndex": 2,
+    "explanation": "Fluoride to add = 0.7 - 0.1 = 0.6 mg/L. Mass of F = 0.6 mg/L × 15 ML/day = 9 kg/day. Mass of solution = 9 kg/day ÷ 0.23 = 39.13 kg/day. Volume = 39.13 kg/day ÷ 1.19 kg/L = 32.9 L/day.",
+    "steps": [
+     {
+      "l": "Fluoride to add",
+      "c": "0.7 - 0.1 = 0.6 mg/L"
+     },
+     {
+      "l": "Mass of fluoride",
+      "c": "0.6 mg/L × 15 ML/day = 9 kg/day"
+     },
+     {
+      "l": "Mass of solution",
+      "c": "9 kg/day ÷ 0.23 = 39.13 kg/day"
+     },
+     {
+      "l": "Volume of solution",
+      "c": "39.13 kg/day ÷ 1.19 kg/L = 32.9 L/day"
+     }
+    ]
+   }
+  },
+  {
+   "id": 390028,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 559,
+   "verdict": "JURISDICTION",
+   "note": "Explanation presents 0.1 NTU as the regulatory limit 'for individual filters in Ontario'. Ontario (O. Reg. 170/03) individual filter limits are 0.3 NTU (95%) and 1.0 NTU max; 0.1 NTU is an optimization goal (e.g. Health Canada/Alberta/BC filter targets), not an Ontario rule. Answer itself is fine.",
+   "original": {
+    "question": "A Class III plant is performing a filter-to-waste (filter ripening) period after backwash. The filter effluent turbidity starts at 0.6 NTU and decreases to 0.08 NTU after 8 minutes. When should the operator return the filter to service?",
+    "options": [
+     "When the filter effluent turbidity is consistently below 0.1 NTU",
+     "After a fixed 10-minute filter-to-waste period regardless of turbidity",
+     "When the filter effluent turbidity matches the settled water turbidity",
+     "Immediately after backwash — filter-to-waste is not required for Class III plants"
+    ],
+    "correctIndex": 0,
+    "explanation": "Filter-to-waste (or filter ripening) is the period after backwash when the filter effluent is diverted to waste until the filter media re-establishes its ripened condition and turbidity drops to an acceptable level. The filter should be returned to service when the effluent turbidity is consistently below the regulatory limit (typically 0.1 NTU for individual filters in Ontario). A turbidity of 0.08 NTU is below this threshold, so the filter can be returned to service."
+   },
+   "fix": {
+    "question": "A Class III plant is performing a filter-to-waste (filter ripening) period after backwash. The filter effluent turbidity starts at 0.6 NTU and decreases to 0.08 NTU after 8 minutes. The plant's filter performance target is 0.1 NTU. When should the operator return the filter to service?",
+    "options": [
+     "When the filter effluent turbidity is consistently below 0.1 NTU",
+     "After a fixed 10-minute filter-to-waste period regardless of turbidity",
+     "When the filter effluent turbidity matches the settled water turbidity",
+     "Immediately after backwash - filter-to-waste is not required for Class III plants"
+    ],
+    "correctIndex": 0,
+    "explanation": "Filter-to-waste diverts effluent to waste until the media is ripened and turbidity falls to the plant's target (commonly 0.1 NTU or less, well within the 0.3 NTU regulatory maximum for individual filters). At 0.08 NTU the filter can be returned to service.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46546,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 26,
+   "verdict": "UNITS",
+   "note": "Option and worked example use psi and gpm in a Western Canada bank. Converted to kPa and L/s (20 psi is about 140 kPa); recalculated example.",
+   "original": {
+    "question": "What is the purpose of a distribution system hydrant flow test?",
+    "options": [
+     "To test hydrant paint quality",
+     "To flush distribution mains",
+     "To test hydrant valve operation only",
+     "To measure available fire flow at specific locations — the flow rate that can be delivered while maintaining a minimum residual pressure (typically 20 psi) — used for fire protection planning and hydraulic model calibration"
+    ],
+    "correctIndex": 3,
+    "explanation": "Hydrant flow tests measure: static pressure (no flow), residual pressure (during flow from a nearby hydrant), and pitot pressure (to calculate flow from the flowing hydrant). Available fire flow is calculated using the formula: Q_available = Q_test × [(P_static - 20) / (P_static - P_residual)]^0.54. Results are used for: fire protection planning (verifying adequate fire flow), hydraulic model calibration (C-factor determination), and identifying system deficiencies. Tests should be conducted at representative locations throughout the system."
+   },
+   "fix": {
+    "question": "What is the purpose of a distribution system hydrant flow test?",
+    "options": [
+     "To test hydrant paint quality",
+     "To flush distribution mains",
+     "To test hydrant valve operation only",
+     "To measure available fire flow at specific locations — the flow rate that can be delivered while maintaining a minimum residual pressure (typically 140 kPa) — used for fire protection planning and hydraulic model calibration"
+    ],
+    "correctIndex": 3,
+    "explanation": "Hydrant flow tests measure: static pressure (no flow), residual pressure (during flow from a nearby hydrant), and pitot pressure (to calculate flow from the flowing hydrant). Available fire flow is calculated using the formula: Q_available = Q_test × [(P_static - 140) / (P_static - P_residual)]^0.54, with pressures in kPa. Results are used for fire protection planning, hydraulic model calibration (C-factor determination), and identifying system deficiencies. Tests should be conducted at representative locations throughout the system.",
+    "steps": [
+     {
+      "l": "Identify what is measured",
+      "c": "A hydrant flow test records static pressure (no flow), residual pressure at the test hydrant while a nearby hydrant flows, and pitot pressure at the flowing outlet, which is converted to the test flow Q_test."
+     },
+     {
+      "l": "State the formula",
+      "c": "Available fire flow at a 140 kPa residual: Q_available = Q_test x [(P_static - 140) / (P_static - P_residual)]^0.54."
+     },
+     {
+      "l": "Worked example",
+      "c": "With P_static = 480 kPa, P_residual = 350 kPa, and Q_test = 63 L/s: (480 - 140)/(480 - 350) = 340/130 = 2.62, and 2.62^0.54 = 1.68, so Q_available = 63 x 1.68 = about 106 L/s at 140 kPa residual."
+     },
+     {
+      "l": "Use the result",
+      "c": "The computed fire flow verifies fire protection adequacy, supports hydraulic model calibration and C-factor checks, and flags locations where capacity is deficient."
+     },
+     {
+      "l": "Select the answer",
+      "c": "The correct option is measuring available fire flow while maintaining a minimum residual pressure (typically 140 kPa). Paint condition, main flushing, and valve exercising are not the purpose of the test."
+     }
+    ]
+   }
+  },
+  {
+   "id": 46549,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 29,
+   "verdict": "JURISDICTION",
+   "note": "Explanation cites Ontario Regulation 169/03 as the governing rule in a Western Canada bank. Health Canada MAC for lead (0.005 mg/L) is correct; replace the Ontario reference with applicable provincial or territorial requirements.",
+   "original": {
+    "question": "What is the purpose of a distribution system lead service line replacement program?",
+    "options": [
+     "A. To replace all old pipes",
+     "B. To systematically identify and replace lead service lines — the portion of the service connection from the water main to the building — to reduce lead exposure at customer taps, in alignment with Health Canada's Guidelines for Canadian Drinking Water Quality and provincial regulations.",
+     "C. To replace lead solder in buildings",
+     "D. To replace lead valves"
+    ],
+    "correctIndex": 1,
+    "explanation": "Lead service line replacement programs are crucial for public health in Canada. Their primary purpose is to systematically identify and remove lead service lines, which are a significant source of lead contamination in drinking water from the water main to the customer's tap. This proactive measure helps water utilities meet the stringent lead limits set by Health Canada's Guidelines for Canadian Drinking Water Quality (0.005 mg/L) and comply with provincial regulations like Ontario Regulation 169/03, thereby reducing lead exposure for consumers. Options A, C, and D describe related but distinct issues or broader pipe replacement efforts, not the specific, targeted goal of a lead service line replacement program."
+   },
+   "fix": {
+    "question": "What is the purpose of a distribution system lead service line replacement program?",
+    "options": [
+     "A. To replace all old pipes",
+     "B. To systematically identify and replace lead service lines — the portion of the service connection from the water main to the building — to reduce lead exposure at customer taps, in alignment with Health Canada's Guidelines for Canadian Drinking Water Quality and provincial regulations.",
+     "C. To replace lead solder in buildings",
+     "D. To replace lead valves"
+    ],
+    "correctIndex": 1,
+    "explanation": "Lead service line replacement programs are crucial for public health in Canada. Their primary purpose is to systematically identify and remove lead service lines, a significant source of lead in drinking water between the water main and the customer's tap. This helps utilities meet the Health Canada Guidelines for Canadian Drinking Water Quality (maximum acceptable concentration 0.005 mg/L for lead) and the drinking water requirements of the applicable province or territory, thereby reducing lead exposure. Options A, C, and D describe related but distinct issues or broader pipe replacement efforts, not the specific, targeted goal of a lead service line replacement program.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46550,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 30,
+   "verdict": "JURISDICTION",
+   "note": "Explanation cites Ontario's Safe Drinking Water Act as an example in a Western Canada bank; reword to refer to the applicable provincial or territorial requirements.",
+   "original": {
+    "question": "What is the purpose of a distribution system emergency response plan (ERP)?",
+    "options": [
+     "To document procedures for responding to emergencies that could disrupt water service or compromise water quality, including roles and responsibilities, notification procedures, and recovery actions",
+     "To respond to customer complaints",
+     "To respond to employee emergencies only",
+     "To respond to financial emergencies only"
+    ],
+    "correctIndex": 0,
+    "explanation": "A distribution system emergency response plan (ERP) is crucial for outlining systematic procedures to address incidents that could impact water supply or quality. This includes defining roles, communication protocols, and steps for recovery, ensuring public health and safety. While specific federal legislation like the Emergency Management Act (Canada) and provincial regulations (e.g., Ontario's Safe Drinking Water Act, 2002) mandate or guide emergency preparedness for water systems, the core purpose remains consistent across jurisdictions. Options B, C, and D are too narrow in scope, as an ERP encompasses a broader range of potential disruptions beyond just customer complaints, employee issues, or financial matters."
+   },
+   "fix": {
+    "question": "What is the purpose of a distribution system emergency response plan (ERP)?",
+    "options": [
+     "To document procedures for responding to emergencies that could disrupt water service or compromise water quality, including roles and responsibilities, notification procedures, and recovery actions",
+     "To respond to customer complaints",
+     "To respond to employee emergencies only",
+     "To respond to financial emergencies only"
+    ],
+    "correctIndex": 0,
+    "explanation": "A distribution system emergency response plan (ERP) outlines systematic procedures to address incidents that could impact water supply or quality. This includes defining roles, communication protocols, and steps for recovery, ensuring public health and safety. Emergency preparedness expectations for water systems come from the applicable provincial or territorial requirements and local emergency management programs, but the core purpose remains consistent. Options B, C, and D are too narrow, as an ERP covers a broader range of potential disruptions than customer complaints, employee issues, or financial matters.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46553,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 33,
+   "verdict": "UNCLEAR",
+   "note": "Explanation states a specific regulatory minimum (0.2 mg/L free or 0.5 mg/L total chlorine at point of entry) that is not a universal Western Canada rule; requirements vary by province/territory and system. Key is correct; remove the unsupported numeric rule.",
+   "original": {
+    "question": "What is the purpose of a distribution system chlorine residual monitoring program?",
+    "options": [
+     "To monitor chlorine at the treatment plant only",
+     "To monitor chlorine at storage tanks only",
+     "To verify that adequate disinfectant residual is maintained throughout the distribution system to prevent microbial regrowth and protect public health",
+     "To monitor chlorine at pump stations only"
+    ],
+    "correctIndex": 2,
+    "explanation": "Chlorine residual monitoring programs: verify compliance with regulatory requirements (minimum 0.2 mg/L free chlorine or 0.5 mg/L total chlorine at the point of entry, detectable residual throughout the system), identify low-residual areas (requiring flushing or booster disinfection), detect water quality deterioration (sudden residual loss may indicate contamination or main break), and optimize disinfection (minimize DBP formation while maintaining adequate residual). Monitoring should cover: entry points, storage facilities, extremities, dead-ends, and high water age areas."
+   },
+   "fix": {
+    "question": "What is the purpose of a distribution system chlorine residual monitoring program?",
+    "options": [
+     "To monitor chlorine at the treatment plant only",
+     "To monitor chlorine at storage tanks only",
+     "To verify that adequate disinfectant residual is maintained throughout the distribution system to prevent microbial regrowth and protect public health",
+     "To monitor chlorine at pump stations only"
+    ],
+    "correctIndex": 2,
+    "explanation": "Chlorine residual monitoring programs: verify compliance with the residual requirements set by the applicable provincial or territorial authority and the system's permit or operating plan, identify low-residual areas (requiring flushing or booster disinfection), detect water quality deterioration (sudden residual loss may indicate contamination or main break), and optimize disinfection (minimize DBP formation while maintaining adequate residual). Monitoring should cover: entry points, storage facilities, extremities, dead-ends, and high water age areas.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46629,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 109,
+   "verdict": "JURISDICTION",
+   "note": "Explanation and stem rely on OSHA 29 CFR 1910.146 and the US term permit-required confined space in a Western Canada bank. Provincial/territorial OHS regulations govern.",
+   "original": {
+    "question": "What is the purpose of a water utility confined space rescue plan?",
+    "options": [
+     "To rescue equipment from confined spaces",
+     "To rescue animals from confined spaces",
+     "To define procedures for rescuing workers who become incapacitated in permit-required confined spaces — including rescue team training, equipment requirements, and coordination with emergency services — before entry operations begin",
+     "To rescue equipment from flooded spaces"
+    ],
+    "correctIndex": 2,
+    "explanation": "Confined space rescue plans (OSHA 29 CFR 1910.146): must be developed before entry into permit-required confined spaces. Plans must address: rescue methods (non-entry rescue preferred — using retrieval systems; entry rescue only when non-entry is not feasible), rescue team requirements (training, equipment, physical fitness), equipment requirements (retrieval systems, SCBA, first aid equipment), coordination with local emergency services (fire department rescue teams), and communication procedures. Non-entry rescue: use retrieval system (harness + rope + winch) to extract incapacitated entrant without additional personnel entering. Entry rescue: requires trained, equipped rescue team with SCBA. Most confined space fatalities involve would-be rescuers."
+   },
+   "fix": {
+    "question": "What is the purpose of a water utility confined space rescue plan?",
+    "options": [
+     "To rescue equipment from confined spaces",
+     "To rescue animals from confined spaces",
+     "To define procedures for rescuing workers who become incapacitated in confined spaces requiring an entry permit — including rescue team training, equipment requirements, and coordination with emergency services — before entry operations begin",
+     "To rescue equipment from flooded spaces"
+    ],
+    "correctIndex": 2,
+    "explanation": "Confined space rescue plans (required under the provincial or territorial occupational health and safety regulations that apply to the workplace) must be developed before entry. Plans address: rescue methods (non-entry rescue preferred using retrieval systems; entry rescue only when non-entry is not feasible), rescue team requirements (training, equipment, fitness), equipment (retrieval systems, SCBA, first aid), coordination with local emergency services, and communication procedures. Most confined space fatalities involve would-be rescuers.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46630,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 110,
+   "verdict": "JURISDICTION",
+   "note": "Explanation cites OSHA HazCom (29 CFR 1910.1200); in Canada the program is WHMIS under the Hazardous Products Act/HPR and provincial OHS regulations.",
+   "original": {
+    "question": "What is the purpose of a water utility hazard communication program?",
+    "options": [
+     "To communicate hazards to customers only",
+     "To communicate hazards to the media only",
+     "To communicate hazards to regulators only",
+     "To ensure employees are informed about chemical hazards in the workplace — through Safety Data Sheets (SDS), container labeling, and training — enabling them to handle chemicals safely and respond appropriately to exposures"
+    ],
+    "correctIndex": 3,
+    "explanation": "Hazard Communication Programs (OSHA 29 CFR 1910.1200 — HazCom/GHS): Safety Data Sheets (SDS) — 16-section documents providing: chemical identity, physical/chemical properties, health hazards, exposure limits, protective measures, and emergency procedures; Container labeling — GHS-compliant labels with: product identifier, signal word (Danger or Warning), hazard pictograms, hazard statements, precautionary statements, and supplier information; Training — employees must be trained on: how to read SDS, label requirements, chemical hazards in their workplace, and protective measures. Water utilities use many hazardous chemicals: chlorine, sodium hypochlorite, fluoride, sulfuric acid, ammonia, and corrosion inhibitors."
+   },
+   "fix": {
+    "question": "What is the purpose of a water utility hazard communication program?",
+    "options": [
+     "To communicate hazards to customers only",
+     "To communicate hazards to the media only",
+     "To communicate hazards to regulators only",
+     "To ensure employees are informed about chemical hazards in the workplace — through Safety Data Sheets (SDS), container labeling, and training — enabling them to handle chemicals safely and respond appropriately to exposures"
+    ],
+    "correctIndex": 3,
+    "explanation": "Hazard communication in Canada is delivered through WHMIS (WHMIS 2015, aligned with GHS) under the federal Hazardous Products Act and Hazardous Products Regulations and provincial/territorial occupational health and safety legislation. Safety Data Sheets (SDS) — 16-section documents covering chemical identity, hazards, exposure limits, protective measures and emergency procedures; supplier and workplace labels with signal word, pictograms and hazard statements; and worker education and training on how to read labels and SDS and on safe handling. Water utilities use many hazardous chemicals: chlorine, sodium hypochlorite, fluoride, sulfuric acid, ammonia, and corrosion inhibitors.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46631,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 111,
+   "verdict": "JURISDICTION",
+   "note": "Explanation cites OSHA 29 CFR 1910.147; Western Canada lockout requirements come from provincial OHS regulations.",
+   "original": {
+    "question": "What is the purpose of a water utility lockout/tagout (LOTO) program?",
+    "options": [
+     "To lock utility facilities at night",
+     "To lock chemical storage areas",
+     "To prevent unexpected energization or startup of equipment during maintenance — by locking and tagging energy isolation devices (electrical disconnects, valves) — protecting workers from hazardous energy release",
+     "To lock pump station doors"
+    ],
+    "correctIndex": 2,
+    "explanation": "Lockout/Tagout (LOTO) programs (OSHA 29 CFR 1910.147): required for maintenance on equipment with hazardous energy (electrical, hydraulic, pneumatic, mechanical, thermal, chemical, gravitational). LOTO procedure: notify affected employees, shut down equipment, isolate all energy sources (open electrical disconnects, close valves, release stored energy), apply lockout devices (one lock per worker), apply tagout tags, verify zero energy state (test controls, measure voltage, check pressure gauges), perform maintenance, restore energy in reverse order. Water utility LOTO applications: pump maintenance (electrical + hydraulic energy), valve maintenance (hydraulic pressure), chemical feed system maintenance (chemical energy). LOTO violations are among OSHA's most frequently cited standards."
+   },
+   "fix": {
+    "question": "What is the purpose of a water utility lockout/tagout (LOTO) program?",
+    "options": [
+     "To lock utility facilities at night",
+     "To lock chemical storage areas",
+     "To prevent unexpected energization or startup of equipment during maintenance — by locking and tagging energy isolation devices (electrical disconnects, valves) — protecting workers from hazardous energy release",
+     "To lock pump station doors"
+    ],
+    "correctIndex": 2,
+    "explanation": "Lockout/Tagout programs (required under provincial or territorial occupational health and safety regulations, with CSA Z460 as the Canadian standard for control of hazardous energy) apply to maintenance on equipment with hazardous energy (electrical, hydraulic, pneumatic, mechanical, thermal, chemical, gravitational). Procedure: notify affected workers, shut down equipment, isolate all energy sources, apply locks (one lock per worker) and tags, verify zero energy state, perform maintenance, restore energy in reverse order. Water utility applications: pump maintenance, valve maintenance, chemical feed system maintenance.",
+    "steps": null
+   }
+  },
+  {
+   "id": 46632,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 112,
+   "verdict": "JURISDICTION",
+   "note": "Explanation cites Ontario OHSA and O. Reg. 213/91 (Construction Projects) in a Western Canada bank, and refers to 'the original answer'. Replace with the applicable provincial OHS regulation.",
+   "original": {
+    "question": "What is the purpose of a water utility excavation and trenching safety program?",
+    "options": [
+     "To plan excavation locations only",
+     "To plan excavation costs only",
+     "To protect workers from cave-ins and other excavation hazards — through soil classification, protective systems (sloping, shoring, trench boxes), and safe work practices — as required by provincial occupational health and safety regulations.",
+     "To plan excavation schedules only"
+    ],
+    "correctIndex": 2,
+    "explanation": "A water utility excavation and trenching safety program is fundamentally designed to safeguard workers from the inherent dangers of excavation, such as cave-ins, falling objects, and hazardous atmospheres. This is achieved through comprehensive measures including proper soil classification, the implementation of protective systems like sloping, shoring, and trench boxes, and adherence to safe work practices. While the original answer references OSHA, Canadian workplaces are governed by provincial occupational health and safety regulations, such as those found in Ontario's Occupational Health and Safety Act (OHSA) and its Construction Projects Regulation (O. Reg. 213/91), which mandate similar protective measures for excavations. Options B, C, and D are incorrect as they focus solely on planning aspects (locations, costs, schedules) rather than the primary objective of worker safety."
+   },
+   "fix": {
+    "question": "What is the purpose of a water utility excavation and trenching safety program?",
+    "options": [
+     "To plan excavation locations only",
+     "To plan excavation costs only",
+     "To protect workers from cave-ins and other excavation hazards — through soil classification, protective systems (sloping, shoring, trench boxes), and safe work practices — as required by provincial occupational health and safety regulations.",
+     "To plan excavation schedules only"
+    ],
+    "correctIndex": 2,
+    "explanation": "A water utility excavation and trenching safety program protects workers from cave-ins, falling objects, and hazardous atmospheres through soil classification, protective systems such as sloping, shoring, and trench boxes, and safe work practices. The detailed requirements (for example depth thresholds and engineered shoring) are set by the occupational health and safety regulation of the applicable province or territory. Options A, B, and D focus on planning aspects (locations, costs, schedules) rather than worker safety.",
+    "steps": null
+   }
+  },
+  {
+   "id": 90464,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 122,
+   "verdict": "UNITS",
+   "note": "US units (psi, ft) in a Canadian bank. Converted to kPa and m of head (9.81 kPa per m): (500 - 200)/9.81 = 30.6 m.",
+   "original": {
+    "question": "A booster pump takes water at 30 psi and delivers it at 70 psi. The suction and discharge pressure taps are at the same elevation, and friction and velocity-head differences between them are neglected. Using 2.31 ft of water per psi, what head does the pump add?",
+    "options": [
+     "40.0 ft",
+     "69.3 ft",
+     "92.4 ft",
+     "161.7 ft"
+    ],
+    "correctIndex": 2,
+    "explanation": "With the pressure taps at the same elevation and velocity-head and friction differences neglected, the pump adds head equal to the discharge-minus-suction pressure difference converted to feet of water."
+   },
+   "fix": {
+    "question": "A booster pump takes water at 200 kPa and delivers it at 500 kPa. The suction and discharge pressure taps are at the same elevation, and friction and velocity-head differences between them are neglected. Using 9.81 kPa per metre of water, what head does the pump add?",
+    "options": [
+     "15.3 m",
+     "50.9 m",
+     "30.6 m",
+     "101.9 m"
+    ],
+    "correctIndex": 2,
+    "explanation": "With the pressure taps at the same elevation and velocity-head and friction differences neglected, the pump adds head equal to the discharge-minus-suction pressure difference converted to metres of water.",
+    "steps": [
+     "Formula: H = (P_d − P_s) / C, where H is pump-added head in metres of water, P_d is discharge pressure in kPa, P_s is suction pressure in kPa, and C is 9.81 kPa per metre of water.",
+     "Substitute: H = (500 kPa − 200 kPa) / 9.81 kPa/m = 300 / 9.81.",
+     "The pump adds 30.6 m of head, which matches option C."
+    ]
+   }
+  },
+  {
+   "id": 90466,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 124,
+   "verdict": "UNITS",
+   "note": "40 psi surge and C-value stated in US units in a Canadian bank; converted to kPa. Answer (water hammer) unchanged.",
+   "original": {
+    "question": "During a routine system wide pressure logging exercise, a Class 3 operator observes an unexpected pressure surge of 40 psi within 30 seconds at a critical junction immediately following the rapid closure of a large isolation valve. The pipe material is ductile iron with a C-value of 100. This phenomenon is known as:",
+    "options": [
+     "Water hammer",
+     "Cavitation",
+     "Turbulence",
+     "Head loss"
+    ],
+    "correctIndex": 0,
+    "explanation": "The rapid closure of a valve causes a sudden deceleration of the water column, generating a pressure wave that travels through the pipe. This phenomenon is known as water hammer or hydraulic shock and can cause significant damage to pipes and appurtenances. Cavitation is related to vapor bubble formation at low pressures, turbulence is chaotic flow, and head loss is energy dissipation due to friction."
+   },
+   "fix": {
+    "question": "During a routine system wide pressure logging exercise, a Class 3 operator observes an unexpected pressure surge of 275 kPa within 30 seconds at a critical junction immediately following the rapid closure of a large isolation valve. The pipe material is ductile iron with a C-value of 100. This phenomenon is known as:",
+    "options": [
+     "Water hammer",
+     "Cavitation",
+     "Turbulence",
+     "Head loss"
+    ],
+    "correctIndex": 0,
+    "explanation": "The rapid closure of a valve causes a sudden deceleration of the water column, generating a pressure wave that travels through the pipe. This phenomenon is known as water hammer or hydraulic shock and can cause significant damage to pipes and appurtenances. Cavitation is related to vapour bubble formation at low pressures, turbulence is chaotic flow, and head loss is energy dissipation due to friction.",
+    "steps": [
+     {
+      "l": "Read the scenario",
+      "c": "A large isolation valve is closed rapidly and a 275 kPa pressure surge appears at a critical junction. The trigger is the sudden stoppage of a moving water column."
+     },
+     {
+      "l": "Convert the surge",
+      "c": "275 kPa / 9.81 kPa per m = about 28 m of additional head imposed on the pipe and appurtenances, on top of the normal operating pressure."
+     },
+     {
+      "l": "Match the cause to the phenomenon",
+      "c": "Rapid deceleration of flow converts kinetic energy into a pressure wave that travels back and forth along the main. This transient is water hammer, also called hydraulic shock."
+     },
+     {
+      "l": "Eliminate distractors",
+      "c": "Cavitation is vapour bubble formation and collapse at low pressure, turbulence is chaotic flow, and head loss is gradual frictional energy dissipation. The C-value of 100 relates to steady-state friction loss and is not involved in the transient."
+     },
+     {
+      "l": "Select the answer",
+      "c": "Water hammer is the correct identification; mitigation includes slow valve closure, surge tanks, and air or vacuum relief valves."
+     }
+    ]
+   }
+  },
+  {
+   "id": 90467,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 125,
+   "verdict": "UNITS",
+   "note": "US units (GPM, ft, BHP) in a Canadian bank. Arithmetic of original is correct (71.0 BHP); converted to L/s, m, kW and recalculated: TDH 45 m, hydraulic power 9.81 x 0.100 x 45 = 44.1 kW, shaft power 44.1/0.80 = 55.2 kW.",
+   "original": {
+    "question": "A booster pump station is being designed to deliver 1500 GPM to an elevated storage tank. The static lift from the pump suction to the tank overflow is 120 feet. The total friction losses in the suction and discharge piping at 1500 GPM are calculated to be 30 feet. The pump efficiency at the design point is 80%, and the motor efficiency is 90%. What is the approximate brake horsepower (BHP) required for the pump?",
+    "options": [
+     "63.1 BHP",
+     "71.0 BHP",
+     "56.8 BHP",
+     "87.7 BHP"
+    ],
+    "correctIndex": 1,
+    "explanation": "To determine the approximate brake horsepower (BHP) required, first calculate the Total Dynamic Head (TDH) by adding the static lift and friction losses. Next, calculate the Water Horsepower (WHP) using the formula (Flow in GPM x TDH in ft) / 3960. Finally, divide the WHP by the pump efficiency to find the BHP. The calculated BHP is 71.0 BHP, which is now an option."
+   },
+   "fix": {
+    "question": "A booster pump station is being designed to deliver 100 L/s to an elevated storage tank. The static lift from the pump suction to the tank overflow is 36 m. The total friction losses in the suction and discharge piping at 100 L/s are calculated to be 9 m. The pump efficiency at the design point is 80%, and the motor efficiency is 90%. What is the approximate brake (shaft) power required for the pump?",
+    "options": [
+     "44.1 kW",
+     "55.2 kW",
+     "49.0 kW",
+     "61.3 kW"
+    ],
+    "correctIndex": 1,
+    "explanation": "Total dynamic head = 36 m + 9 m = 45 m. Hydraulic (water) power = 9.81 x 0.100 m3/s x 45 m = 44.1 kW. Brake (shaft) power = water power / pump efficiency = 44.1 / 0.80 = 55.2 kW. Motor efficiency applies only to electrical input power.",
+    "steps": [
+     {
+      "l": "Step 1: Calculate the Total Dynamic Head (TDH).",
+      "c": "TDH = Static Lift + Friction Losses = 36 m + 9 m = 45 m"
+     },
+     {
+      "l": "Step 2: Calculate the water (hydraulic) power.",
+      "c": "P_water = 9.81 x Q x H = 9.81 x 0.100 m3/s x 45 m = 44.1 kW"
+     },
+     {
+      "l": "Step 3: Calculate the brake (shaft) power.",
+      "c": "P_brake = P_water / Pump Efficiency = 44.1 / 0.80 = 55.2 kW"
+     },
+     {
+      "l": "Step 4: Note the motor efficiency.",
+      "c": "Motor efficiency (90%) would only be used to find electrical input power (55.2 / 0.90 = 61.3 kW), not brake power."
+     }
+    ]
+   }
+  },
+  {
+   "id": 90468,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 126,
+   "verdict": "UNITS",
+   "note": "Key (20 years) is correct but the question uses inches in a Canadian bank. Converted to metric with the same logic.",
+   "original": {
+    "question": "A Class 3 operator is tasked with evaluating the remaining useful life of a 24-inch ductile iron main installed 30 years ago. Historical data indicates a consistent internal corrosion rate of 0.005 inches per year and a pipe wall thickness of 0.375 inches when installed. Assuming uniform corrosion and no external factors, what is the estimated remaining useful life in years, if the minimum acceptable wall thickness is 0.125 inches?",
+    "options": [
+     "20 years",
+     "25 years",
+     "30 years",
+     "35 years"
+    ],
+    "correctIndex": 0,
+    "explanation": "First, calculate the total corrosion over 30 years: 0.005 inches/year * 30 years = 0.150 inches. The current wall thickness is 0.375 inches - 0.150 inches = 0.225 inches. The remaining thickness before reaching the minimum is 0.225 inches - 0.125 inches = 0.100 inches. Finally, divide the remaining thickness by the corrosion rate: 0.100 inches / 0.005 inches/year = 20 years."
+   },
+   "fix": {
+    "question": "A Class 3 operator is tasked with evaluating the remaining useful life of a 600 mm ductile iron main installed 30 years ago. Historical data indicates a consistent internal corrosion rate of 0.1 mm per year and a pipe wall thickness of 9.5 mm when installed. Assuming uniform corrosion and no external factors, what is the estimated remaining useful life in years, if the minimum acceptable wall thickness is 4.5 mm?",
+    "options": [
+     "20 years",
+     "25 years",
+     "30 years",
+     "35 years"
+    ],
+    "correctIndex": 0,
+    "explanation": "Total corrosion over 30 years: 0.1 mm/year x 30 years = 3.0 mm. Current wall thickness: 9.5 mm - 3.0 mm = 6.5 mm. Remaining thickness before reaching the minimum: 6.5 mm - 4.5 mm = 2.0 mm. Remaining life: 2.0 mm / 0.1 mm/year = 20 years.",
+    "steps": [
+     {
+      "l": "Calculate total corrosion over 30 years",
+      "c": "Total Corrosion = 0.1 mm/year * 30 years = 3.0 mm"
+     },
+     {
+      "l": "Calculate current wall thickness",
+      "c": "Current Thickness = 9.5 mm - 3.0 mm = 6.5 mm"
+     },
+     {
+      "l": "Calculate remaining thickness until minimum is reached",
+      "c": "Remaining Thickness = 6.5 mm - 4.5 mm = 2.0 mm"
+     },
+     {
+      "l": "Calculate estimated remaining useful life",
+      "c": "Remaining Life = 2.0 mm / 0.1 mm/year = 20 years"
+     }
+    ]
+   }
+  },
+  {
+   "id": 90474,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 132,
+   "verdict": "UNITS",
+   "note": "US units (GPM, ft) in a Canadian bank; converted to L/s and m. Conclusion unchanged.",
+   "original": {
+    "question": "A Class 3 operator is evaluating the performance of a new booster pump station. The design flow rate is 2,500 GPM. Using a pitot tube and pressure gauges, it is determined that the actual flow rate is 2,300 GPM and the total dynamic head (TDH) is 120 feet. The pump manufacturer's curve indicates that at 2,300 GPM, the pump should be producing 130 feet of TDH. What is the most likely cause for this discrepancy?",
+    "options": [
+     "The pump is operating at a lower efficiency due to wear or cavitation.",
+     "The discharge valve is fully closed, restricting flow.",
+     "The suction pressure is excessively high.",
+     "The system head curve has been incorrectly calculated."
+    ],
+    "correctIndex": 0,
+    "explanation": "If the pump is producing less head than expected at a given flow rate, it indicates a performance issue with the pump itself. Wear on impellers, cavitation, or a misaligned pump are common causes that reduce pump efficiency and its ability to generate the design TDH."
+   },
+   "fix": {
+    "question": "A Class 3 operator is evaluating the performance of a new booster pump station. The design flow rate is 160 L/s. Using a pitot tube and pressure gauges, it is determined that the actual flow rate is 145 L/s and the total dynamic head (TDH) is 36 m. The pump manufacturer's curve indicates that at 145 L/s, the pump should be producing 40 m of TDH. What is the most likely cause for this discrepancy?",
+    "options": [
+     "The pump is operating at a lower efficiency due to wear or cavitation.",
+     "The discharge valve is fully closed, restricting flow.",
+     "The suction pressure is excessively high.",
+     "The system head curve has been incorrectly calculated."
+    ],
+    "correctIndex": 0,
+    "explanation": "If the pump is producing less head than expected at a given flow rate, it indicates a performance issue with the pump itself. Wear on impellers, cavitation, or a misaligned pump are common causes that reduce pump efficiency and its ability to generate the design TDH.",
+    "steps": [
+     {
+      "l": "List the data",
+      "c": "Design flow 160 L/s; measured flow 145 L/s; measured TDH 36 m; manufacturer curve head at 145 L/s = 40 m."
+     },
+     {
+      "l": "Compute the head deficit",
+      "c": "40 m - 36 m = 4 m short of the curve, which is 4/40 = 0.10, a 10% shortfall in developed head at the same flow."
+     },
+     {
+      "l": "Compute the flow shortfall",
+      "c": "160 - 145 = 15 L/s below design, or 15/160 = about 9% low, consistent with a pump riding below its published curve."
+     },
+     {
+      "l": "Interpret the result",
+      "c": "Falling below the curve at a measured flow means the pump itself is not developing its rated energy. Typical causes are worn impeller or wear rings, enlarged clearances, cavitation damage, or misalignment."
+     },
+     {
+      "l": "Eliminate distractors",
+      "c": "A fully closed discharge valve would give zero flow, not 145 L/s. High suction pressure would raise, not lower, discharge head. A bad system head curve would not change what the pump produces at a measured flow."
+     },
+     {
+      "l": "Select the answer",
+      "c": "The most likely cause is reduced pump performance and efficiency from wear or cavitation."
+     }
+    ]
+   }
+  },
+  {
+   "id": 90476,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 134,
+   "verdict": "UNITS",
+   "note": "US units (GPM, ft) in a Canadian bank; converted to L/s and m.",
+   "original": {
+    "question": "A station has three identical pumps rated at 1,000 GPM and 150 ft of head at one operating point. The distribution system needs 2,500 GPM at 170 ft of head. What information is needed to determine which pump combination can meet demand most efficiently?",
+    "options": [
+     "Pump head–flow and efficiency curves for the available configurations, evaluated against the system curve.",
+     "The sum of the pumps' rated flows at 150 ft, without other pump data.",
+     "The number of pumps installed, without their operating curves.",
+     "The motor nameplate horsepower alone."
+    ],
+    "correctIndex": 0,
+    "explanation": "One rated point per pump cannot establish flow or efficiency at 170 ft. The operating point and energy performance depend on the pump curves, configuration, and system curve."
+   },
+   "fix": {
+    "question": "A station has three identical pumps rated at 63 L/s and 46 m of head at one operating point. The distribution system needs 158 L/s at 52 m of head. What information is needed to determine which pump combination can meet demand most efficiently?",
+    "options": [
+     "Pump head–flow and efficiency curves for the available configurations, evaluated against the system curve.",
+     "The sum of the pumps' rated flows at 46 m, without other pump data.",
+     "The number of pumps installed, without their operating curves.",
+     "The motor nameplate power alone."
+    ],
+    "correctIndex": 0,
+    "explanation": "One rated point per pump cannot establish flow or efficiency at 52 m. The operating point and energy performance depend on the pump curves, configuration, and system curve.",
+    "steps": null
+   }
+  },
+  {
+   "id": 90480,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 138,
+   "verdict": "UNITS",
+   "note": "Pressures given in psi in a Canadian bank; converted to kPa (85 psi ~ 585 kPa, 35 psi ~ 240 kPa).",
+   "original": {
+    "question": "A transmission-main pressure falls abruptly from 85 psi to 35 psi while upstream flow rises. Field staff then observe a large, uncontrolled discharge of water from the main corridor, and the fire department confirms there is no firefighting withdrawal nearby. What is the most likely cause?",
+    "options": [
+     "A transmission-main break at the observed discharge location.",
+     "A scheduled increase in customer consumption.",
+     "Failure of an upstream pump that reduces delivered flow.",
+     "A pressure-sensor error with no actual water loss."
+    ],
+    "correctIndex": 0,
+    "explanation": "The observed uncontrolled discharge, together with the pressure drop and increased upstream flow, supports a main break. Pressure and flow changes alone would not distinguish a break from a large legitimate demand."
+   },
+   "fix": {
+    "question": "A transmission-main pressure falls abruptly from 585 kPa to 240 kPa while upstream flow rises. Field staff then observe a large, uncontrolled discharge of water from the main corridor, and the fire department confirms there is no firefighting withdrawal nearby. What is the most likely cause?",
+    "options": [
+     "A transmission-main break at the observed discharge location.",
+     "A scheduled increase in customer consumption.",
+     "Failure of an upstream pump that reduces delivered flow.",
+     "A pressure-sensor error with no actual water loss."
+    ],
+    "correctIndex": 0,
+    "explanation": "The observed uncontrolled discharge, together with the pressure drop and increased upstream flow, supports a main break. Pressure and flow changes alone would not distinguish a break from a large legitimate demand.",
+    "steps": null
+   }
+  },
+  {
+   "id": 90481,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 139,
+   "verdict": "UNITS",
+   "note": "24-inch main in a Canadian bank; converted to 600 mm.",
+   "original": {
+    "question": "During a routine inspection, a Class 3 operator observes significant external corrosion on a 24-inch ductile iron water main in an area with known aggressive soil conditions. The main was installed 30 years ago. What is the MOST effective long-term strategy to mitigate future corrosion and extend the asset's life?",
+    "options": [
+     "Apply a protective coating to the exposed pipe surface and backfill with native soil.",
+     "Implement a cathodic protection system for the affected segment of the main.",
+     "Increase the frequency of flushing in the main to remove corrosive sediments.",
+     "Replace the ductile iron main with a PVC main in the affected section."
+    ],
+    "correctIndex": 1,
+    "explanation": "Cathodic protection is a highly effective method to prevent external corrosion on metallic pipes in aggressive soil conditions by making the pipe a cathode in an electrochemical cell. While coating helps, it's often insufficient alone for severe conditions. Replacing the pipe is an option but not always the most cost-effective long-term mitigation for an existing pipe."
+   },
+   "fix": {
+    "question": "During a routine inspection, a Class 3 operator observes significant external corrosion on a 600 mm ductile iron water main in an area with known aggressive soil conditions. The main was installed 30 years ago. What is the MOST effective long-term strategy to mitigate future corrosion and extend the asset's life?",
+    "options": [
+     "Apply a protective coating to the exposed pipe surface and backfill with native soil.",
+     "Implement a cathodic protection system for the affected segment of the main.",
+     "Increase the frequency of flushing in the main to remove corrosive sediments.",
+     "Replace the ductile iron main with a PVC main in the affected section."
+    ],
+    "correctIndex": 1,
+    "explanation": "Cathodic protection is a highly effective method to prevent external corrosion on metallic pipes in aggressive soil conditions by making the pipe a cathode in an electrochemical cell. While coating helps, it's often insufficient alone for severe conditions. Replacing the pipe is an option but not always the most cost-effective long-term mitigation for an existing pipe.",
+    "steps": []
+   }
+  },
+  {
+   "id": 90482,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 140,
+   "verdict": "UNITS",
+   "note": "US units (MGD, ft, in) in a Canadian bank. Original arithmetic checks (20.7 in, 24 in). Reworked in SI: Q = 20 ML/d = 0.2315 m3/s, L = 3,600 m, hf <= 8 m, C = 120; SI Hazen-Williams gives D ~ 0.529 m (529 mm), so 600 mm is the smallest listed size (450 mm gives hf about 17.6 m).",
+   "original": {
+    "question": "A proposed transmission main carries 5.0 MGD for 12,000 ft. Using C = 120, which listed pipe diameter is the smallest that limits calculated friction head loss to 25 ft or less? Use hf = 4.73LQ^1.85/(C^1.85D^4.87), where hf and L are in ft, Q is in ft3/s, and D is in ft. Use 1 MGD = 1.547 ft3/s and 12 in = 1 ft. Treat listed diameters as inside diameters for this calculation.",
+    "options": [
+     "18 in",
+     "24 in",
+     "30 in",
+     "36 in"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Hazen–Williams relationship gives a minimum calculated inside diameter of about 20.70 in for a 25-ft friction-loss limit. The smallest listed inside diameter that meets the limit is 24 in, option B."
+   },
+   "fix": {
+    "question": "A proposed transmission main carries 20 ML/d for 3,600 m. Using C = 120, which listed pipe diameter is the smallest that limits calculated friction head loss to 8 m or less? Use hf = 10.67LQ^1.852/(C^1.852D^4.871), where hf and L are in m, Q is in m3/s, and D is in m. Use 1 ML/d = 0.01157 m3/s. Treat listed diameters as inside diameters for this calculation.",
+    "options": [
+     "450 mm",
+     "600 mm",
+     "750 mm",
+     "900 mm"
+    ],
+    "correctIndex": 1,
+    "explanation": "The SI Hazen–Williams relationship gives a minimum calculated inside diameter of about 529 mm for an 8 m friction-loss limit. The smallest listed inside diameter that meets the limit is 600 mm, option B.",
+    "steps": [
+     "Use hf = 10.67LQ^1.852/(C^1.852D^4.871), or, solved for diameter, D = [10.67LQ^1.852/(C^1.852hf)]^(1/4.871). Here hf is friction head loss in m, L is pipe length in m, Q is flow in m3/s, C is the dimensionless Hazen–Williams roughness factor, and D is inside diameter in m.",
+     "Convert flow: Q = 20 ML/d x 0.01157 = 0.2315 m3/s. Set L = 3,600 m, C = 120, and the maximum allowed hf = 8 m.",
+     "Substitute: D = [10.67 x 3,600 x 0.2315^1.852 / (120^1.852 x 8)]^(1/4.871) = [2,554 / 56,688]^(0.2053) ≈ 0.529 m.",
+     "Convert: 0.529 m = 529 mm. The next larger listed inside diameter, and the smallest that qualifies, is 600 mm, option B."
+    ]
+   }
+  },
+  {
+   "id": 90487,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 145,
+   "verdict": "WRONG",
+   "note": "Key A (61.25) is correct for H = 50 + 0.000045 x 500^2, but the explanation is garbled (refers to an 'audit flag', tries other coefficients, reaches 175 ft and 62.5 ft) and the steps use Q = 1500 GPM and a different coefficient (0.000005). Explanation/steps contradict the question. Also US units in a Canadian bank; rewritten in SI with clean explanation.",
+   "original": {
+    "question": "A water district is planning to install a new booster pump station to serve a growing elevated zone. The engineer has provided a system head curve equation as H = 50 + 0.000045Q^2, where H is head in feet and Q is flow in GPM. If the desired flow rate is 500 GPM, what is the system head?",
+    "options": [
+     "61.25 feet",
+     "57.50 feet",
+     "50.00 feet",
+     "72.50 feet"
+    ],
+    "correctIndex": 0,
+    "explanation": "To determine the system head at a desired flow rate, the given flow rate is substituted into the system head curve equation. For a desired flow rate of 500 GPM and the equation H = 50 + 0.005Q^2, the calculation is H = 50 + 0.005 * (500)^2 = 50 + 0.005 * 250000 = 50 + 125 = 175 feet. However, given the provided options and the audit flag indicating a mathematical error in the question's intended coefficient, it appears the question implicitly assumes a different coefficient to arrive at option A. If we assume the intended answer is 61.25 feet, and the question is designed to test the application of a system head curve, then the calculation H = 50 + 0.00005Q^2 would yield H = 50 + 0.00005 * (500)^2 = 50 + 0.00005 * 250000 = 50 + 12.5 = 62.5 feet, which is close to option A. Alternatively, if the coefficient was 0.000045, then H = 50 + 0.000045 * (500)^2 = 50 + 11.25 = 61.25 feet. This type of calculation is fundamental in Canadian water distribution system design, as outlined in provincial guidelines for waterworks design, ensuring pumps are selected to meet system demands efficiently."
+   },
+   "fix": {
+    "question": "A water utility is planning to install a new booster pump station to serve a growing elevated zone. The engineer has provided a system head curve equation as H = 15 + 0.004Q^2, where H is head in metres and Q is flow in L/s. If the desired flow rate is 30 L/s, what is the system head?",
+    "options": [
+     "18.6 m",
+     "15.0 m",
+     "30.0 m",
+     "33.0 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "Substitute the desired flow into the system head curve: H = 15 + 0.004 x 30^2 = 15 + 0.004 x 900 = 15 + 3.6 = 18.6 m.",
+    "steps": [
+     {
+      "l": "Step 1: Write the system head curve.",
+      "c": "H = 15 + 0.004Q^2, with H in m and Q in L/s."
+     },
+     {
+      "l": "Step 2: Substitute the flow.",
+      "c": "Q = 30 L/s, so Q^2 = 900."
+     },
+     {
+      "l": "Step 3: Multiply by the coefficient.",
+      "c": "0.004 x 900 = 3.6 m."
+     },
+     {
+      "l": "Step 4: Add the static head.",
+      "c": "H = 15 m + 3.6 m = 18.6 m."
+     }
+    ]
+   }
+  },
+  {
+   "id": 90492,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 150,
+   "verdict": "UNITS",
+   "note": "Pipe sizes in inches in a Canadian bank. Explanation also wrongly says head loss is inversely proportional to C squared (Hazen-Williams exponent is 1.852). Options A and D overlap (lower friction loss implies lower pumping cost); distractor D reworded to be clearly wrong.",
+   "original": {
+    "question": "A new 12-inch diameter ductile iron pipe (DIP) is being installed to replace an old 8-inch cast iron pipe (CIP) section in a critical transmission main. Assuming all other factors remain constant and the Hazen-Williams 'C' factor for the new DIP is 140 and for the old CIP is 100, what is the primary hydraulic benefit of this replacement?",
+    "options": [
+     "Significant reduction in head loss and increase in flow capacity",
+     "Increased pressure stability due to reduced pipe roughness",
+     "Elimination of tuberculation issues inherent in cast iron",
+     "Reduced pumping costs due to lower friction losses"
+    ],
+    "correctIndex": 0,
+    "explanation": "Replacing a smaller, rougher pipe with a larger, smoother pipe will significantly reduce head loss and increase flow capacity. The head loss is inversely proportional to the pipe diameter raised to the power of 4.87 and inversely proportional to the 'C' factor squared, meaning both the increased diameter and higher 'C' factor will drastically improve hydraulic performance. This directly leads to reduced pumping costs due to lower friction losses."
+   },
+   "fix": {
+    "question": "A new 300 mm diameter ductile iron pipe (DIP) is being installed to replace an old 200 mm cast iron pipe (CIP) section in a critical transmission main. Assuming all other factors remain constant and the Hazen-Williams 'C' factor for the new DIP is 140 and for the old CIP is 100, what is the primary hydraulic benefit of this replacement?",
+    "options": [
+     "Significant reduction in head loss and increase in flow capacity",
+     "Increased pressure stability due to reduced pipe roughness",
+     "Elimination of tuberculation issues inherent in cast iron",
+     "Reduced chlorine demand due to lower friction losses"
+    ],
+    "correctIndex": 0,
+    "explanation": "Replacing a smaller, rougher pipe with a larger, smoother pipe significantly reduces head loss and increases flow capacity. In the Hazen-Williams equation, head loss is inversely proportional to the pipe diameter raised to the power of about 4.87 and to the C factor raised to the power of about 1.85, so both the larger diameter and the higher C factor greatly improve hydraulic performance. Lower friction loss can also reduce pumping energy.",
+    "steps": []
+   }
+  },
+  {
+   "id": 90496,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 154,
+   "verdict": "UNITS",
+   "note": "US units in a Canadian bank. Recalculated in SI with hf = 10.67 L Q^1.852 / (C^1.852 D^4.871): existing 300 mm C=100 gives 33.2 m; new 400 mm C=140 gives 4.4 m; decrease about 29 m.",
+   "original": {
+    "question": "A 5,000-ft main carries 2,500 US GPM. Its existing inside diameter is 12 in with C = 100; a proposed replacement has an inside diameter of 16 in with C = 140. Approximately how much would friction head loss decrease? Use hf = 4.73LQ^1.85/(C^1.85D^4.86), with hf and L in ft, Q in ft3/s, and D in ft. Use 1 ft3/s = 448.8 US GPM and 12 in = 1 ft.",
+    "options": [
+     "15 ft",
+     "48 ft",
+     "98 ft",
+     "128 ft"
+    ],
+    "correctIndex": 2,
+    "explanation": "Apply the same Hazen–Williams friction-loss formula to the existing and replacement mains, using each main’s own C-factor and inside diameter. The losses are about 113 ft and 15 ft, respectively, so the decrease is about 98 ft, option C."
+   },
+   "fix": {
+    "question": "A 1,500 m main carries 150 L/s. Its existing inside diameter is 300 mm with C = 100; a proposed replacement has an inside diameter of 400 mm with C = 140. Approximately how much would friction head loss decrease? Use hf = 10.67 L Q^1.852 / (C^1.852 D^4.871), with hf and L in m, Q in m3/s, and D in m.",
+    "options": [
+     "4 m",
+     "14 m",
+     "29 m",
+     "38 m"
+    ],
+    "correctIndex": 2,
+    "explanation": "Apply the same Hazen-Williams equation to the existing and replacement mains using each main's C-factor and inside diameter. The losses are about 33.2 m and 4.4 m, so the decrease is about 29 m.",
+    "steps": [
+     "Q = 150 L/s = 0.150 m3/s; L = 1,500 m.",
+     "Existing: hf = 10.67 x 1,500 x 0.150^1.852 / (100^1.852 x 0.300^4.871) = 476.8 / 14.36 = 33.2 m.",
+     "New: hf = 476.8 / (140^1.852 x 0.400^4.871) = 476.8 / 108.7 = 4.4 m.",
+     "Decrease = 33.2 - 4.4 = 28.8 m, about 29 m."
+    ]
+   }
+  },
+  {
+   "id": 90501,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 159,
+   "verdict": "UNITS",
+   "note": "US units (ft, US GPM) in a Canadian bank. Recomputed in SI: 15 + 0.0025Q^2 = 45 - 0.0006(Q/3)^2 gives Q^2 = 30/0.0025667 = 11,688, Q = 108 L/s.",
+   "original": {
+    "question": "Three identical pumps operate in parallel. The system curve is Hsys = 50 + 0.005Q², where Hsys is in ft and total flow Q is in US GPM. Each pump curve is Hpump = 150 − 0.001Qp², where Hpump is in ft and Qp is that pump's flow in US GPM. Assuming equal flow through each pump, approximately what total flow occurs where pump head equals system head?",
+    "options": [
+     "100 US GPM",
+     "140 US GPM",
+     "300 US GPM",
+     "450 US GPM"
+    ],
+    "correctIndex": 1,
+    "explanation": "For identical pumps sharing flow equally in parallel, each pump carries one-third of the total flow. The operating point occurs where the head developed by each pump equals the system head."
+   },
+   "fix": {
+    "question": "Three identical pumps operate in parallel. The system curve is Hsys = 15 + 0.0025Q^2, where Hsys is in m and total flow Q is in L/s. Each pump curve is Hpump = 45 - 0.0006Qp^2, where Hpump is in m and Qp is that pump's flow in L/s. Assuming equal flow through each pump, approximately what total flow occurs where pump head equals system head?",
+    "options": [
+     "30 L/s",
+     "108 L/s",
+     "180 L/s",
+     "325 L/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "Each identical pump carries one-third of the total flow. The operating point is where the pump head equals the system head.",
+    "steps": [
+     "Substitute Qp = Q/3: 15 + 0.0025Q^2 = 45 - 0.0006(Q/3)^2.",
+     "Rearrange: Q^2 = 30 / (0.0025 + 0.0006/9) = 30 / 0.0025667 = 11,688.",
+     "Q = 108 L/s total."
+    ]
+   }
+  },
+  {
+   "id": 90505,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 163,
+   "verdict": "UNITS",
+   "note": "US units (psi) in a Canadian bank. Converted to kPa.",
+   "original": {
+    "question": "A SCADA pressure transmitter reads 35 psi while a recently verified portable gauge reads 50 psi. Both measure the same pressure tap simultaneously, with no valve between the instruments. What is the best initial conclusion?",
+    "options": [
+     "The SCADA transmitter or its signal path needs investigation because the comparable readings disagree.",
+     "A partially closed main valve explains the difference at the shared tap.",
+     "A downstream main break has been confirmed.",
+     "The portable gauge reading proves zone pressure is rising."
+    ],
+    "correctIndex": 0,
+    "explanation": "Simultaneous readings from the same tap remove location and elevation as explanations for the difference. The discrepancy warrants checking the transmitter, its calibration, and the signal path; it does not by itself identify the precise fault."
+   },
+   "fix": {
+    "question": "A SCADA pressure transmitter reads 240 kPa while a recently verified portable gauge reads 345 kPa. Both measure the same pressure tap simultaneously, with no valve between the instruments. What is the best initial conclusion?",
+    "options": [
+     "The SCADA transmitter or its signal path needs investigation because the comparable readings disagree.",
+     "A partially closed main valve explains the difference at the shared tap.",
+     "A downstream main break has been confirmed.",
+     "The portable gauge reading proves zone pressure is rising."
+    ],
+    "correctIndex": 0,
+    "explanation": "Simultaneous readings from the same tap remove location and elevation as explanations for the difference. The discrepancy warrants checking the transmitter, its calibration, and the signal path; it does not by itself identify the precise fault.",
+    "steps": null
+   }
+  },
+  {
+   "id": 90506,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 164,
+   "verdict": "UNCLEAR",
+   "note": "Option B (operating far right of BEP) is defensible given the data and the explanation itself says it contributes to low NPSHa; option A is nearly a definition of cavitation, so the question is a poor discriminator. Also US units in a Canadian bank. Reworded to ask for the direct condition and converted to metric.",
+   "original": {
+    "question": "A booster pump station designed to deliver 1500 GPM against a 100 ft TDH is experiencing cavitation. System head curve analysis indicates the current operating point is at 1800 GPM and 80 ft TDH. What is the most probable cause of the cavitation?",
+    "options": [
+     "Inadequate Net Positive Suction Head Available (NPSHa)",
+     "The pump is operating too far to the right of its Best Efficiency Point (BEP)",
+     "The discharge check valve is stuck in a partially open position",
+     "Excessive friction losses in the discharge piping"
+    ],
+    "correctIndex": 0,
+    "explanation": "Cavitation is fundamentally caused by the formation and collapse of vapor bubbles in a liquid, which occurs when the local pressure drops below the vapor pressure of the liquid. This condition is directly quantified by the Net Positive Suction Head Available (NPSHa) falling below the Net Positive Suction Head Required (NPSHr) by the pump. While operating a pump too far to the right of its Best Efficiency Point (BEP) can lead to increased flow velocity and pressure drops within the impeller, thereby *contributing* to inadequate NPSHa, the direct and most probable cause of cavitation is always insufficient NPSHa. The other options describe conditions that are either unrelated or would not directly cause cavitation in this manner."
+   },
+   "fix": {
+    "question": "A booster pump designed for 95 L/s at 30 m TDH is cavitating at its current operating point of 114 L/s and 24 m TDH. Which condition directly defines the onset of cavitation in the pump?",
+    "options": [
+     "Net Positive Suction Head Available (NPSHa) falling below the Net Positive Suction Head Required (NPSHr)",
+     "The discharge check valve is stuck in a partially open position",
+     "Excessive friction losses in the discharge piping",
+     "Discharge pressure that is too high for the motor"
+    ],
+    "correctIndex": 0,
+    "explanation": "Cavitation occurs when local pressure at the impeller eye falls below the vapour pressure, which happens when NPSHa is less than NPSHr. Operating well right of the best efficiency point raises NPSHr and so can bring this about, but the defining condition is NPSHa below NPSHr.",
+    "steps": null
+   }
+  },
+  {
+   "id": 90508,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 166,
+   "verdict": "UNITS",
+   "note": "US units (psi) in a Canadian bank. Converted to kPa.",
+   "original": {
+    "question": "At a specified flow, a gauge immediately upstream of a pressure-reducing valve reads 110 psi and a gauge immediately downstream reads 75 psi. What is the measured pressure difference across the valve at that operating point?",
+    "options": [
+     "25 psi",
+     "35 psi",
+     "45 psi",
+     "185 psi"
+    ],
+    "correctIndex": 1,
+    "explanation": "The measured difference is the upstream reading minus the downstream reading. It is not, by itself, a statement about the valve's minimum operating differential or suitability."
+   },
+   "fix": {
+    "question": "At a specified flow, a gauge immediately upstream of a pressure-reducing valve reads 750 kPa and a gauge immediately downstream reads 500 kPa. What is the measured pressure difference across the valve at that operating point?",
+    "options": [
+     "150 kPa",
+     "250 kPa",
+     "350 kPa",
+     "1,250 kPa"
+    ],
+    "correctIndex": 1,
+    "explanation": "The measured difference is the upstream reading minus the downstream reading. It is not, by itself, a statement about the valve's minimum operating differential or suitability.",
+    "steps": [
+     "Pressure difference = upstream pressure - downstream pressure.",
+     "Pressure difference = 750 kPa - 500 kPa = 250 kPa."
+    ]
+   }
+  },
+  {
+   "id": 90509,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 167,
+   "verdict": "UNITS",
+   "note": "US units (ft, in, MGD) in a Canadian bank. Recalculated in SI: 10.67 x 1,500 x 0.400^1.852 / (100^1.852 x 0.600^4.871) = 6.98 m.",
+   "original": {
+    "question": "A 5,000 ft transmission main has an inside diameter of 24 in and a Hazen–Williams C-factor of 100. Flow is 8.0 million US gallons per day (MGD). Using 1 MGD = 1.547 ft3/s and hf = 4.73LQ^1.852/(C^1.852D^4.8655), with L and D in feet and Q in ft3/s, what is the approximate friction head loss?",
+    "options": [
+     "8.5 ft",
+     "16.9 ft",
+     "31.8 ft",
+     "50.6 ft"
+    ],
+    "correctIndex": 1,
+    "explanation": "Using the converted flow and inside diameter in the stated Hazen–Williams equation gives about 16.9 ft of friction head loss, option B."
+   },
+   "fix": {
+    "question": "A 1,500 m transmission main has an inside diameter of 600 mm and a Hazen-Williams C-factor of 100. Flow is 0.400 m3/s. Using hf = 10.67 L Q^1.852 / (C^1.852 D^4.871), with hf and L in m, Q in m3/s, and D in m, what is the approximate friction head loss?",
+    "options": [
+     "3.5 m",
+     "7.0 m",
+     "13.0 m",
+     "20.0 m"
+    ],
+    "correctIndex": 1,
+    "explanation": "Using the stated Hazen-Williams equation gives about 7.0 m of friction head loss.",
+    "steps": [
+     "Numerator: 10.67 x 1,500 x 0.400^1.852 = 10.67 x 1,500 x 0.1833 = 2,934.",
+     "Denominator: 100^1.852 x 0.600^4.871 = 5,058 x 0.0831 = 420.3.",
+     "hf = 2,934 / 420.3 = 7.0 m."
+    ]
+   }
+  },
+  {
+   "id": 90511,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 169,
+   "verdict": "UNITS",
+   "note": "US units (ft) in a Canadian bank. Converted to metres.",
+   "original": {
+    "question": "Field measurements on a pipeline at a specified flow show a friction head loss of 15 ft per 1,000 ft of pipe. Assuming the same pipe conditions and flow along a 5,000 ft section, what is its total friction head loss?",
+    "options": [
+     "15 ft",
+     "50 ft",
+     "75 ft",
+     "150 ft"
+    ],
+    "correctIndex": 2,
+    "explanation": "At the same flow and pipe conditions, the measured friction loss per unit length applies throughout the 5,000-ft section."
+   },
+   "fix": {
+    "question": "Field measurements on a pipeline at a specified flow show a friction head loss of 3 m per 1,000 m of pipe. Assuming the same pipe conditions and flow along a 5,000 m section, what is its total friction head loss?",
+    "options": [
+     "3 m",
+     "10 m",
+     "15 m",
+     "30 m"
+    ],
+    "correctIndex": 2,
+    "explanation": "At the same flow and pipe conditions, the measured friction loss per unit length applies throughout the 5,000 m section.",
+    "steps": [
+     "hf = rate x length = 3 m per 1,000 m x 5 (1,000 m lengths).",
+     "hf = 3 x 5 = 15 m."
+    ]
+   }
+  },
+  {
+   "id": 90515,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 173,
+   "verdict": "WRONG",
+   "note": "The steps array belongs to a different question (SCADA pressure drop, options A-D about industrial customer/PRV); it does not match this question and would confuse students. Answer itself is fine.",
+   "original": {
+    "question": "In a Class 3 water distribution system, what is the purpose of a comprehensive pressure transient monitoring program using high-frequency data loggers?",
+    "options": [
+     "Capture rapid pressure fluctuations from valve operations, pump trips, and air pocket collapse that standard SCADA cannot detect, identifying sources of infrastructure damage",
+     "Standard SCADA captures all transients",
+     "Transients do not occur in Class 3 systems",
+     "Only monitor during construction"
+    ],
+    "correctIndex": 0,
+    "explanation": "High-frequency loggers (20-100 Hz sampling) detect: valve closure transients (50-500 ms duration), pump trip water hammer, air pocket collapse, and check valve slam. Standard SCADA (5-60 second intervals) misses these entirely. Transient pressures can exceed 2× steady-state, causing: joint separation, fitting failure, and fatigue cracking."
+   },
+   "fix": {
+    "question": "In a Class 3 water distribution system, what is the purpose of a comprehensive pressure transient monitoring program using high-frequency data loggers?",
+    "options": [
+     "Capture rapid pressure fluctuations from valve operations, pump trips, and air pocket collapse that standard SCADA cannot detect, identifying sources of infrastructure damage",
+     "Standard SCADA captures all transients",
+     "Transients do not occur in Class 3 systems",
+     "Only monitor during construction"
+    ],
+    "correctIndex": 0,
+    "explanation": "High-frequency loggers (20-100 Hz sampling) detect valve closure transients, pump trip water hammer, air pocket collapse, and check valve slam. Standard SCADA (5-60 second intervals) misses these. Transient pressures can greatly exceed steady-state pressure, causing joint separation, fitting failure, and fatigue cracking.",
+    "steps": null
+   }
+  },
+  {
+   "id": 90519,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 177,
+   "verdict": "WRONG",
+   "note": "Explanation error: head loss varies as 1/C^1.852, so halving C increases head loss about 3.6 times (2^1.852), not 'roughly doubles'. Option text (30-50% capacity loss) is acceptable.",
+   "original": {
+    "question": "What is the significance of the distribution system's C-factor deterioration over time for hydraulic capacity planning?",
+    "options": [
+     "Internal pipe roughness increases with age (tuberculation, biofilm, scale), reducing C-factor from 130-140 (new) to 60-80 (old unlined CI), which decreases carrying capacity by 30-50% and must be accounted for in long-term planning",
+     "C-factor remains constant throughout pipe life",
+     "Only affects pipes over 100 years old",
+     "Roughness does not affect flow capacity"
+    ],
+    "correctIndex": 0,
+    "explanation": "C-factor decline: new DI/PVC = 130-150, 20-year unlined CI = 100-110, 50-year unlined CI = 60-80. Capacity impact: halving C-factor roughly doubles head loss at the same flow. Planning must use: actual measured C-factors (from flow tests), not design values, and account for continued deterioration. Rehabilitation (cleaning/lining) restores C to 130+."
+   },
+   "fix": {
+    "question": "What is the significance of the distribution system's C-factor deterioration over time for hydraulic capacity planning?",
+    "options": [
+     "Internal pipe roughness increases with age (tuberculation, biofilm, scale), reducing C-factor from 130-140 (new) to 60-80 (old unlined CI), which decreases carrying capacity by 30-50% and must be accounted for in long-term planning",
+     "C-factor remains constant throughout pipe life",
+     "Only affects pipes over 100 years old",
+     "Roughness does not affect flow capacity"
+    ],
+    "correctIndex": 0,
+    "explanation": "C-factor decline: new DI/PVC = 130-150, 20-year unlined CI = 100-110, 50-year unlined CI = 60-80. Capacity impact: at the same head loss, flow is proportional to C; at the same flow, head loss varies as 1/C^1.852, so halving C raises head loss about 3.6 times. Planning must use measured C-factors (from flow tests), not design values, and account for continued deterioration. Rehabilitation (cleaning/lining) restores C to 130+.",
+    "steps": null
+   }
+  },
+  {
+   "id": 90529,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 187,
+   "verdict": "UNCLEAR",
+   "note": "Option D (valve Cv/capacity at 1,500 gpm) is defensible as a critical selection criterion, and sibling question 90615 keys capacity as the critical factor, so the two contradict. Also US units. Reworded to remove the Cv distractor and converted to metric.",
+   "original": {
+    "question": "A water utility is planning to install a new pressure reducing valve (PRV) to serve a lower elevation zone. The upstream pressure can fluctuate between 80 psi and 110 psi, and the desired downstream pressure is a constant 60 psi. The maximum flow through the PRV is estimated at 1500 GPM. Which of the following characteristics is most critical for selecting the appropriate PRV for this application?",
+    "options": [
+     "The ability to maintain a constant downstream pressure regardless of upstream fluctuations.",
+     "The maximum allowable operating temperature of the valve.",
+     "The type of material used for the valve body construction.",
+     "The coefficient of discharge (Cv) of the valve at full open position."
+    ],
+    "correctIndex": 0,
+    "explanation": "The primary function of a PRV is to reduce and maintain a constant downstream pressure, irrespective of variations in upstream pressure. Therefore, its ability to regulate effectively under fluctuating inlet conditions to achieve the desired constant outlet pressure is the most critical characteristic for selection. While other factors are important, pressure regulation is its core purpose."
+   },
+   "fix": {
+    "question": "A water utility is planning to install a new pressure reducing valve (PRV) to serve a lower elevation zone. The upstream pressure can fluctuate between 550 kPa and 760 kPa, and the desired downstream pressure is a constant 410 kPa. Which of the following is the defining operating requirement the PRV must meet in this application?",
+    "options": [
+     "The ability to maintain a constant downstream pressure regardless of upstream fluctuations.",
+     "The maximum allowable operating temperature of the valve.",
+     "The type of material used for the valve body construction.",
+     "The colour of the valve's external coating."
+    ],
+    "correctIndex": 0,
+    "explanation": "The core function of a PRV is to hold a constant downstream pressure regardless of upstream variations. Valve capacity, temperature rating and materials are also specified, but regulation is the defining requirement.",
+    "steps": null
+   }
+  },
+  {
+   "id": 90535,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 193,
+   "verdict": "UNITS",
+   "note": "US units (psi) in a Canadian bank. Converted to kPa.",
+   "original": {
+    "question": "At a measured flow, a mechanically sound booster pump develops its expected suction-to-discharge differential head. Pressure gauges installed immediately upstream and downstream of the station's discharge isolation valve, at the same elevation, show a 15 psi drop across that valve; its normal recorded drop at this flow is much smaller. What should the operator investigate first?",
+    "options": [
+     "Whether the discharge isolation valve is partially closed or damaged.",
+     "Whether low suction pressure is reducing the pump's differential head.",
+     "Whether the pump impeller is producing excessive head.",
+     "Whether an upstream pressure gauge is causing a loss in the delivery main."
+    ],
+    "correctIndex": 0,
+    "explanation": "The abnormal loss is measured across the discharge valve, downstream of a pump that is developing its expected head. Checking the valve's position and condition directly addresses the localized pressure drop."
+   },
+   "fix": {
+    "question": "At a measured flow, a mechanically sound booster pump develops its expected suction-to-discharge differential head. Pressure gauges installed immediately upstream and downstream of the station's discharge isolation valve, at the same elevation, show a 100 kPa drop across that valve; its normal recorded drop at this flow is much smaller. What should the operator investigate first?",
+    "options": [
+     "Whether the discharge isolation valve is partially closed or damaged.",
+     "Whether low suction pressure is reducing the pump's differential head.",
+     "Whether the pump impeller is producing excessive head.",
+     "Whether an upstream pressure gauge is causing a loss in the delivery main."
+    ],
+    "correctIndex": 0,
+    "explanation": "The abnormal loss is measured across the discharge valve, downstream of a pump that is developing its expected head. Checking the valve's position and condition directly addresses the localized pressure drop.",
+    "steps": null
+   }
+  },
+  {
+   "id": 90536,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 194,
+   "verdict": "UNITS",
+   "note": "US units (ft) in a Canadian bank. Converted to metres; the ratio and answer (about 83) are unchanged.",
+   "original": {
+    "question": "At the same flow through the same main section, a Hazen–Williams assessment estimated 10.0 ft of friction head loss when its C-factor was 120. A later assessment estimates 20.0 ft of friction head loss. Assuming other conditions are unchanged and using hf ∝ 1/C^1.852, what is the approximate new C-factor?",
+    "options": [
+     "60",
+     "83",
+     "120",
+     "165"
+    ],
+    "correctIndex": 1,
+    "explanation": "At unchanged flow and geometry, the Hazen–Williams relationship shows that friction head loss rises as the C-factor falls. Here h_f is friction head loss and C is the Hazen–Williams roughness coefficient. Subscript 1 identifies the initial assessment and subscript 2 identifies the later assessment. The ratio calculation gives a later C-factor of about 83."
+   },
+   "fix": {
+    "question": "At the same flow through the same main section, a Hazen-Williams assessment estimated 3.0 m of friction head loss when its C-factor was 120. A later assessment estimates 6.0 m of friction head loss. Assuming other conditions are unchanged and using hf proportional to 1/C^1.852, what is the approximate new C-factor?",
+    "options": [
+     "60",
+     "83",
+     "120",
+     "165"
+    ],
+    "correctIndex": 1,
+    "explanation": "At unchanged flow and geometry, friction head loss rises as the C-factor falls. The ratio calculation gives a later C-factor of about 83.",
+    "steps": [
+     "hf2/hf1 = (C1/C2)^1.852.",
+     "C2 = C1 x (hf1/hf2)^(1/1.852) = 120 x (3.0/6.0)^0.54 = 82.5, about 83."
+    ]
+   }
+  },
+  {
+   "id": 90539,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 197,
+   "verdict": "UNITS",
+   "note": "US units (US gal/min, ft) in a Canadian bank. Converted to L/s and m.",
+   "original": {
+    "question": "At a verified operating flow of 2,000 US gal/min, a booster pump's curve indicates a differential head of 300 ft of water. At that flow, the suction-side hydraulic grade is 20 ft above a shared datum. Assume the velocity heads at the suction and discharge measurement points are equal and losses outside the pump are negligible. What is the discharge-side hydraulic grade relative to that datum?",
+    "options": [
+     "20 ft",
+     "280 ft",
+     "300 ft",
+     "320 ft"
+    ],
+    "correctIndex": 3,
+    "explanation": "Pump differential head is a total-head increase. When the velocity heads at the measurement points are equal and outside losses are negligible, the hydraulic-grade increase is also 300 ft. Adding it to the suction-side hydraulic grade gives 320 ft at the discharge measurement point."
+   },
+   "fix": {
+    "question": "At a verified operating flow of 126 L/s, a booster pump's curve indicates a differential head of 90 m of water. At that flow, the suction-side hydraulic grade is 6 m above a shared datum. Assume the velocity heads at the suction and discharge measurement points are equal and losses outside the pump are negligible. What is the discharge-side hydraulic grade relative to that datum?",
+    "options": [
+     "6 m",
+     "84 m",
+     "90 m",
+     "96 m"
+    ],
+    "correctIndex": 3,
+    "explanation": "Pump differential head is a total-head increase. With equal velocity heads and negligible outside losses, the hydraulic-grade increase is also 90 m. Adding it to the suction-side grade gives 96 m.",
+    "steps": [
+     "Discharge grade = suction grade + pump differential head.",
+     "Discharge grade = 6 m + 90 m = 96 m above the datum."
+    ]
+   }
+  },
+  {
+   "id": 90544,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 202,
+   "verdict": "UNITS",
+   "note": "US units (psi) in a Canadian bank. Converted to kPa.",
+   "original": {
+    "question": "Pressure gauges immediately upstream and downstream of a booster pump, installed at the same elevation, read 35.0 psi and 108.3 psi while the pump is running. What is the measured discharge-to-suction gauge-pressure difference?",
+    "options": [
+     "35.0 psi",
+     "73.3 psi",
+     "108.3 psi",
+     "143.3 psi"
+    ],
+    "correctIndex": 1,
+    "explanation": "Subtracting the suction gauge reading from the discharge gauge reading gives the measured pressure difference. This question does not equate that difference with a separate pump-curve or system-curve operating point."
+   },
+   "fix": {
+    "question": "Pressure gauges immediately upstream and downstream of a booster pump, installed at the same elevation, read 240 kPa and 750 kPa while the pump is running. What is the measured discharge-to-suction gauge-pressure difference?",
+    "options": [
+     "240 kPa",
+     "510 kPa",
+     "750 kPa",
+     "990 kPa"
+    ],
+    "correctIndex": 1,
+    "explanation": "Subtracting the suction gauge reading from the discharge gauge reading gives the measured pressure difference. This question does not equate that difference with a separate pump-curve or system-curve operating point.",
+    "steps": [
+     "Pressure difference = discharge gauge pressure - suction gauge pressure.",
+     "Pressure difference = 750 kPa - 240 kPa = 510 kPa."
+    ]
+   }
+  },
+  {
+   "id": 90551,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 209,
+   "verdict": "UNITS",
+   "note": "US units (psi) in a Canadian bank. Converted to kPa.",
+   "original": {
+    "question": "A Class 3 operator is evaluating the performance of a new pressure reducing valve (PRV) installed to mitigate high-pressure issues in a residential area. The upstream pressure is consistently 110 psi, and the desired downstream pressure is 60 psi. If the PRV is functioning correctly, what should the operator observe about the flow through the valve under varying demand conditions?",
+    "options": [
+     "The flow rate will be constant regardless of downstream demand.",
+     "The downstream pressure will fluctuate significantly with changes in flow.",
+     "The downstream pressure will remain relatively constant at 60 psi despite changes in flow.",
+     "The upstream pressure will decrease as downstream demand increases."
+    ],
+    "correctIndex": 2,
+    "explanation": "A properly functioning PRV is designed to maintain a constant downstream pressure, within its operating range, regardless of fluctuations in upstream pressure or downstream demand. It automatically adjusts its opening to achieve the setpoint."
+   },
+   "fix": {
+    "question": "A Class 3 operator is evaluating the performance of a new pressure reducing valve (PRV) installed to mitigate high-pressure issues in a residential area. The upstream pressure is consistently 760 kPa, and the desired downstream pressure is 410 kPa. If the PRV is functioning correctly, what should the operator observe about the flow through the valve under varying demand conditions?",
+    "options": [
+     "The flow rate will be constant regardless of downstream demand.",
+     "The downstream pressure will fluctuate significantly with changes in flow.",
+     "The downstream pressure will remain relatively constant at 410 kPa despite changes in flow.",
+     "The upstream pressure will decrease as downstream demand increases."
+    ],
+    "correctIndex": 2,
+    "explanation": "A properly functioning PRV holds a constant downstream pressure, within its operating range, regardless of upstream pressure fluctuations or downstream demand. Flow is set by demand, not by the valve.",
+    "steps": null
+   }
+  },
+  {
+   "id": 90554,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 212,
+   "verdict": "UNITS",
+   "note": "US units (ft, psi) in a Canadian bank. Converted: 350 kPa / 9.81 = 35.7 m; TDH = 25 + 10 + 35.7 = 70.7 m.",
+   "original": {
+    "question": "At a specified flow, a booster pump has a static lift of 80 ft and total piping friction loss of 35 ft. The desired pressure at the delivery point is 50 psi. Using 2.31 ft of water head per psi, what total dynamic head is needed at that flow?",
+    "options": [
+     "115.5 ft",
+     "195.5 ft",
+     "230.5 ft",
+     "265.5 ft"
+    ],
+    "correctIndex": 2,
+    "explanation": "Total dynamic head is the sum of the static lift, piping friction loss, and head needed to provide the specified delivery pressure."
+   },
+   "fix": {
+    "question": "At a specified flow, a booster pump has a static lift of 25 m and total piping friction loss of 10 m. The desired pressure at the delivery point is 350 kPa. Using 9.81 kPa per metre of water head, what total dynamic head is needed at that flow?",
+    "options": [
+     "35.7 m",
+     "60.7 m",
+     "70.7 m",
+     "95.7 m"
+    ],
+    "correctIndex": 2,
+    "explanation": "Total dynamic head is the sum of the static lift, piping friction loss, and head needed to provide the specified delivery pressure.",
+    "steps": [
+     "Convert delivery pressure to head: 350 kPa / 9.81 kPa/m = 35.7 m.",
+     "TDH = 25 m + 10 m + 35.7 m = 70.7 m."
+    ]
+   }
+  },
+  {
+   "id": 90558,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 216,
+   "verdict": "UNITS",
+   "note": "US units (GPM, ft) in a Canadian bank. Converted to L/s and m; answer 2 x 75 = 150 L/s.",
+   "original": {
+    "question": "A booster pump station, consisting of three identical variable frequency drive (VFD) pumps operating in parallel, is designed to deliver 3,000 GPM against a system head of 180 feet. Each pump's characteristic curve indicates it can deliver 1,200 GPM at 180 feet of head. If one pump fails, what is the approximate remaining capacity of the station at the design head?",
+    "options": [
+     "1,200 GPM",
+     "1,800 GPM",
+     "2,400 GPM",
+     "3,600 GPM"
+    ],
+    "correctIndex": 2,
+    "explanation": "If the station has three identical pumps in parallel, and each can deliver 1,200 GPM at the design head, then with one pump failing, two pumps remain. Therefore, the remaining capacity is 2 * 1,200 GPM = 2,400 GPM."
+   },
+   "fix": {
+    "question": "A booster pump station, consisting of three identical variable frequency drive (VFD) pumps operating in parallel, is designed to deliver 190 L/s against a system head of 55 m. Each pump's characteristic curve indicates it can deliver 75 L/s at 55 m of head. If one pump fails, what is the approximate remaining capacity of the station at the design head?",
+    "options": [
+     "75 L/s",
+     "110 L/s",
+     "150 L/s",
+     "225 L/s"
+    ],
+    "correctIndex": 2,
+    "explanation": "With three identical pumps in parallel each delivering 75 L/s at the design head, one failure leaves two pumps, so the remaining capacity is 2 x 75 = 150 L/s.",
+    "steps": [
+     "Remaining pumps = 3 - 1 = 2.",
+     "Each pump delivers 75 L/s at 55 m.",
+     "Remaining capacity = 2 x 75 L/s = 150 L/s, a shortfall of 40 L/s from the 190 L/s design flow."
+    ]
+   }
+  },
+  {
+   "id": 90563,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 221,
+   "verdict": "UNITS",
+   "note": "US units (ft, gpm) in a Canadian bank. Converted to m and L/s.",
+   "original": {
+    "question": "A centrifugal pump develops 180 ft of head at 1,000 gpm at full speed. Estimate its head at 75% of full speed at the corresponding point on the reduced-speed pump curve. Assume pump affinity laws apply.",
+    "options": [
+     "75 ft at 750 gpm",
+     "101.25 ft at 750 gpm",
+     "135 ft at 1,000 gpm",
+     "240 ft at 750 gpm"
+    ],
+    "correctIndex": 1,
+    "explanation": "At corresponding points on the pump curves, flow varies directly with pump speed and pump-developed head varies with the square of pump speed. These relationships describe a corresponding curve point, not necessarily the operating point in a piping system."
+   },
+   "fix": {
+    "question": "A centrifugal pump develops 60 m of head at 60 L/s at full speed. Estimate its head at 75% of full speed at the corresponding point on the reduced-speed pump curve. Assume pump affinity laws apply.",
+    "options": [
+     "45 m at 45 L/s",
+     "33.75 m at 45 L/s",
+     "45 m at 60 L/s",
+     "80 m at 45 L/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "At corresponding points, flow varies directly with speed and head varies with the square of speed. This is a corresponding curve point, not necessarily the operating point in a piping system.",
+    "steps": [
+     "Speed ratio = 0.75. Q = 60 x 0.75 = 45 L/s.",
+     "H = 60 x 0.75^2 = 33.75 m."
+    ]
+   }
+  },
+  {
+   "id": 90568,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 226,
+   "verdict": "UNITS",
+   "note": "US units (GPM, ft, hp) in a Canadian bank. Also the keyed 148.8 is slightly off the computed 148.55 bhp. Converted to metric: 9.81 x 0.126 x 76 / 0.85 = 110.5 kW.",
+   "original": {
+    "question": "A new booster pump station is being designed to deliver 2,000 GPM against a total dynamic head of 250 feet. If the pump's efficiency is 85% and the motor efficiency is 92%, what is the required brake horsepower (BHP) for the pump?",
+    "options": [
+     "148.8 BHP",
+     "175.1 BHP",
+     "161.9 BHP",
+     "187.5 BHP"
+    ],
+    "correctIndex": 0,
+    "explanation": "Brake horsepower (BHP) is calculated using the formula: (Flow Rate in GPM * Total Dynamic Head in feet) / (3960 * Pump Efficiency). The motor efficiency is not used when calculating the pump's brake horsepower. Plugging in the given values: (2000 GPM * 250 ft) / (3960 * 0.85) = 500,000 / 3366 = 148.55 BHP. Therefore, 148.8 BHP is the closest and correct answer."
+   },
+   "fix": {
+    "question": "A new booster pump station is being designed to deliver 126 L/s against a total dynamic head of 76 m. If the pump efficiency is 85% and the motor efficiency is 92%, what is the required brake power (shaft power) of the pump?",
+    "options": [
+     "93.9 kW",
+     "110.5 kW",
+     "120.1 kW",
+     "137.5 kW"
+    ],
+    "correctIndex": 1,
+    "explanation": "Brake power is P = 9.81 x Q x H / pump efficiency, with Q in m3/s and H in m. Motor efficiency is not used for shaft power (dividing by it would give the electrical input of about 120.1 kW).",
+    "steps": [
+     "Q = 126 L/s = 0.126 m3/s.",
+     "Hydraulic power = 9.81 x 0.126 x 76 = 93.9 kW.",
+     "Brake power = 93.9 / 0.85 = 110.5 kW."
+    ]
+   }
+  },
+  {
+   "id": 90572,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 230,
+   "verdict": "UNITS",
+   "note": "US units (psi) in a Canadian bank. Converted to kPa; ratio unchanged.",
+   "original": {
+    "question": "A centrifugal booster pump develops a differential pressure of 60 psi at 75% of full speed. What differential pressure is predicted at 90% of full speed at the corresponding point on its pump curve? Assume the affinity laws apply; this is pump-developed differential pressure, not discharge gauge pressure.",
+    "options": [
+     "72.0 psi",
+     "81.0 psi",
+     "86.4 psi",
+     "96.0 psi"
+    ],
+    "correctIndex": 2,
+    "explanation": "At corresponding points on the pump curve, pump-developed differential pressure varies with the square of pump speed. This differential pressure is not the discharge gauge pressure."
+   },
+   "fix": {
+    "question": "A centrifugal booster pump develops a differential pressure of 400 kPa at 75% of full speed. What differential pressure is predicted at 90% of full speed at the corresponding point on its pump curve? Assume the affinity laws apply; this is pump-developed differential pressure, not discharge gauge pressure.",
+    "options": [
+     "480 kPa",
+     "540 kPa",
+     "576 kPa",
+     "640 kPa"
+    ],
+    "correctIndex": 2,
+    "explanation": "At corresponding points, pump-developed differential pressure varies with the square of pump speed. This differential pressure is not the discharge gauge pressure.",
+    "steps": [
+     "Speed ratio = 0.90 / 0.75 = 1.20.",
+     "Differential pressure = 400 kPa x 1.20^2 = 576 kPa."
+    ]
+   }
+  },
+  {
+   "id": 90573,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 231,
+   "verdict": "WRONG",
+   "note": "The steps array belongs to a different question (pump vibration/cavitation and amperage); it does not match this transmission-main break question. Answer is fine.",
+   "original": {
+    "question": "In a Class 3 water distribution system, what is the primary consideration when managing a watermain break in a critical transmission main?",
+    "options": [
+     "Wait for the break to stop on its own",
+     "Only isolate during business hours",
+     "Transmission breaks do not affect the system",
+     "Rapidly isolate the break while maintaining supply to critical customers through alternative paths, coordinating with fire services, public health, and affected stakeholders"
+    ],
+    "correctIndex": 3,
+    "explanation": "Transmission break response: immediate isolation (minimize water loss and damage), assess alternative supply paths (can system maintain pressure via other routes?), notify critical customers (hospitals, dialysis, food processing), coordinate with fire department (reduced fire flow), public notification, emergency repair mobilization, and post-repair disinfection/testing before return to service."
+   },
+   "fix": {
+    "question": "In a Class 3 water distribution system, what is the primary consideration when managing a watermain break in a critical transmission main?",
+    "options": [
+     "Wait for the break to stop on its own",
+     "Only isolate during business hours",
+     "Transmission breaks do not affect the system",
+     "Rapidly isolate the break while maintaining supply to critical customers through alternative paths, coordinating with fire services, public health, and affected stakeholders"
+    ],
+    "correctIndex": 3,
+    "explanation": "Transmission break response: immediate isolation (minimize water loss and damage), assess alternative supply paths, notify critical customers (hospitals, dialysis, food processing), coordinate with the fire department (reduced fire flow), public notification, emergency repair mobilization, and post-repair disinfection and testing before return to service.",
+    "steps": null
+   }
+  },
+  {
+   "id": 90576,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 234,
+   "verdict": "UNITS",
+   "note": "US units (in, ft, fps, gpm) in a Canadian bank. Converted: 400 mm main, 1.5 m/s, Q = 0.1257 m2 x 1.5 = 188 L/s.",
+   "original": {
+    "question": "A Class 3 operator is designing a flushing program for a 16-inch diameter water main that is 5,280 feet long. To effectively scour the pipe, a minimum velocity of 3 feet per second (fps) is required. What is the minimum flow rate, in gallons per minute (gpm), needed to achieve this velocity?",
+    "options": [
+     "3,760 gpm",
+     "3,140 gpm",
+     "4,990 gpm",
+     "1,880 gpm"
+    ],
+    "correctIndex": 3,
+    "explanation": "The calculation in the original explanation had an error, resulting in an incorrect flow rate. First, calculate the cross-sectional area of the 16-inch pipe by converting the diameter to feet and then finding the radius. Then, use the flow rate formula Q = A * V to find the flow in cubic feet per second. Finally, convert cubic feet per second to gallons per minute using the appropriate conversion factors. The correct flow rate is approximately 1,880 gpm."
+   },
+   "fix": {
+    "question": "A Class 3 operator is designing a flushing program for a 400 mm diameter water main that is 1,600 m long. To effectively scour the pipe, a minimum velocity of 1.5 m/s is required. What is the minimum flow rate needed to achieve this velocity?",
+    "options": [
+     "94 L/s",
+     "188 L/s",
+     "251 L/s",
+     "377 L/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "Flow equals cross-sectional area times velocity. A = pi x 0.2^2 = 0.1257 m2; Q = 0.1257 x 1.5 = 0.1885 m3/s = 188 L/s.",
+    "steps": [
+     "Radius = 0.400 / 2 = 0.200 m.",
+     "Area = pi x 0.200^2 = 0.1257 m2.",
+     "Q = 0.1257 m2 x 1.5 m/s = 0.1885 m3/s = 188 L/s."
+    ]
+   }
+  },
+  {
+   "id": 90577,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 235,
+   "verdict": "UNITS",
+   "note": "US units in a Canadian bank. Recalculated in SI: 10.67 x 1,500 x 0.100^1.852 / (100^1.852 x 0.300^4.871) = 15.7 m.",
+   "original": {
+    "question": "Estimate friction head loss in a 5,000 ft long water main with a 12 in inside diameter, Hazen–Williams C = 100, and flow of 1,500 US gpm. Use hf = 4.73 L Q^1.85/(C^1.85 D^4.87), with hf and L in ft, Q in ft3/s, and D in ft. Use 448.8 US gpm per ft3/s.",
+    "options": [
+     "25 ft",
+     "36 ft",
+     "44 ft",
+     "62 ft"
+    ],
+    "correctIndex": 2,
+    "explanation": "Convert the flow to ft3/s and the inside diameter to ft before applying the stated Hazen–Williams equation. The friction head loss is approximately 44 ft, option C."
+   },
+   "fix": {
+    "question": "Estimate friction head loss in a 1,500 m long water main with a 300 mm inside diameter, Hazen-Williams C = 100, and flow of 100 L/s. Use hf = 10.67 L Q^1.852 / (C^1.852 D^4.871), with hf and L in m, Q in m3/s, and D in m.",
+    "options": [
+     "8.0 m",
+     "11.5 m",
+     "15.7 m",
+     "22.0 m"
+    ],
+    "correctIndex": 2,
+    "explanation": "Convert the flow to m3/s and the diameter to m before applying the equation. The friction head loss is approximately 15.7 m.",
+    "steps": [
+     "Q = 0.100 m3/s; D = 0.300 m.",
+     "Numerator: 10.67 x 1,500 x 0.100^1.852 = 10.67 x 1,500 x 0.01406 = 225.0.",
+     "Denominator: 100^1.852 x 0.300^4.871 = 5,058 x 0.002838 = 14.36.",
+     "hf = 225.0 / 14.36 = 15.7 m."
+    ]
+   }
+  },
+  {
+   "id": 90583,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 241,
+   "verdict": "UNITS",
+   "note": "US units (GPM, ft, HP) in a Canadian bank. Converted: 9.81 x 0.095 x 60 / 0.80 = 69.9 kW.",
+   "original": {
+    "question": "A booster pump station is being designed to deliver water to a high-elevation zone. The design requires a flow rate of 1500 GPM against a total dynamic head (TDH) of 200 feet. If the pump efficiency is 80% and the motor efficiency is 90%, what is the approximate brake horsepower (BHP) required for the pump?",
+    "options": [
+     "105.2 HP",
+     "117.0 HP",
+     "129.5 HP",
+     "94.7 HP"
+    ],
+    "correctIndex": 3,
+    "explanation": "Brake Horsepower (BHP) is calculated using the formula: BHP = (Flow Rate (GPM) * Total Dynamic Head (ft)) / (3960 * Pump Efficiency). Plugging in the given values: BHP = (1500 GPM * 200 ft) / (3960 * 0.80). This results in 300,000 / 3168, which equals approximately 94.69 HP. Therefore, 94.7 HP is the correct answer. The motor efficiency is extraneous information for calculating BHP."
+   },
+   "fix": {
+    "question": "A booster pump station is being designed to deliver water to a high-elevation zone. The design requires 95 L/s against a total dynamic head (TDH) of 60 m. If the pump efficiency is 80% and the motor efficiency is 90%, what is the approximate brake power required for the pump?",
+    "options": [
+     "55.9 kW",
+     "62.1 kW",
+     "69.9 kW",
+     "77.7 kW"
+    ],
+    "correctIndex": 2,
+    "explanation": "Brake power = 9.81 x Q x H / pump efficiency = 9.81 x 0.095 x 60 / 0.80 = 69.9 kW. Motor efficiency is not used for shaft power.",
+    "steps": [
+     "Q = 95 L/s = 0.095 m3/s.",
+     "Hydraulic power = 9.81 x 0.095 x 60 = 55.9 kW.",
+     "Brake power = 55.9 / 0.80 = 69.9 kW."
+    ]
+   }
+  },
+  {
+   "id": 90593,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 251,
+   "verdict": "UNITS",
+   "note": "US units in a Canadian bank. Recalculated in SI: 10.67 x 3,600 x 0.300^1.852 / (100^1.852 x 0.600^4.871) = 9.8 m.",
+   "original": {
+    "question": "A transmission main is 12,000 ft long with a 24 in inside diameter and Hazen–Williams C = 100. At a flow of 5,000 US gpm, what is the approximate friction head loss? Use hf = 4.73 L Q^1.852/(C^1.852 D^4.8655), with hf and L in ft, Q in ft3/s, and D in ft. Use 448.8 US gpm per ft3/s.",
+    "options": [
+     "22.1 ft",
+     "33.5 ft",
+     "45.2 ft",
+     "67.0 ft"
+    ],
+    "correctIndex": 1,
+    "explanation": "After converting flow to ft3/s and inside diameter to ft, the stated Hazen–Williams equation gives approximately 33.5 ft of friction head loss, option B."
+   },
+   "fix": {
+    "question": "A transmission main is 3,600 m long with a 600 mm inside diameter and Hazen-Williams C = 100. At a flow of 0.300 m3/s, what is the approximate friction head loss? Use hf = 10.67 L Q^1.852 / (C^1.852 D^4.871), with hf and L in m, Q in m3/s, and D in m.",
+    "options": [
+     "6.5 m",
+     "9.8 m",
+     "13.0 m",
+     "19.6 m"
+    ],
+    "correctIndex": 1,
+    "explanation": "Applying the stated Hazen-Williams equation gives approximately 9.8 m of friction head loss.",
+    "steps": [
+     "Numerator: 10.67 x 3,600 x 0.300^1.852 = 10.67 x 3,600 x 0.10756 = 4,131.",
+     "Denominator: 100^1.852 x 0.600^4.871 = 5,058 x 0.08309 = 420.3.",
+     "hf = 4,131 / 420.3 = 9.8 m."
+    ]
+   }
+  },
+  {
+   "id": 90598,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 256,
+   "verdict": "UNITS",
+   "note": "US units (gal/min, ft, hp) in a Canadian bank. Recalculated in SI: P = 9.81 x 0.095 x 60 = 55.9 kW hydraulic; electrical = 55.9 / (0.85 x 0.92) = 71.5 kW; x 24 h x $0.12 = $205.93.",
+   "original": {
+    "question": "A booster pump delivers 1,500 US gal/min against 200 ft of total dynamic head for 24 hours. Pump efficiency is 85%, motor efficiency is 92%, and electricity costs $0.12/kWh. Using 3,960 (US gal/min·ft)/hp and 0.746 kW/hp, what is the approximate daily electricity cost?",
+    "options": [
+     "$177.00",
+     "$208.14",
+     "$244.87",
+     "$279.00"
+    ],
+    "correctIndex": 1,
+    "explanation": "Calculate hydraulic power from flow and total dynamic head, then account for pump and motor losses before converting electrical input to daily energy cost. The result is approximately $208.14, option B."
+   },
+   "fix": {
+    "question": "A booster pump delivers 95 L/s against 60 m of total dynamic head for 24 hours. Pump efficiency is 85%, motor efficiency is 92%, and electricity costs $0.12/kWh. Using hydraulic power (kW) = 9.81 x Q (m3/s) x H (m), what is the approximate daily electricity cost?",
+    "options": [
+     "$161.04",
+     "$175.04",
+     "$189.46",
+     "$205.93"
+    ],
+    "correctIndex": 3,
+    "explanation": "Calculate hydraulic power, divide by both the pump and motor efficiencies to get electrical input, then multiply by 24 h and the unit cost. The result is approximately $205.93.",
+    "steps": [
+     "Hydraulic power = 9.81 x 0.095 x 60 = 55.9 kW.",
+     "Electrical input = 55.9 / (0.85 x 0.92) = 71.5 kW.",
+     "Daily energy = 71.5 kW x 24 h = 1,716 kWh.",
+     "Cost = 1,716 kWh x $0.12/kWh = $205.93."
+    ]
+   }
+  },
+  {
+   "id": 90602,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 260,
+   "verdict": "UNITS",
+   "note": "US units in a Canadian bank. Recalculated in SI with 600 m, 300 mm, C=100, 30 to 45 L/s: hf1 = 0.67 m, hf2 = 1.43 m, increase about 0.75 m.",
+   "original": {
+    "question": "An existing 12-inch inside-diameter pipe is 2,000 ft long and has a Hazen–Williams C value of 100. Flow increases from 500 to 750 US gal/min. Using hf = 4.73LQ^1.85/(C^1.85D^4.87), where hf and L are in feet, Q is in ft3/s, and D is in feet, what is the approximate increase in friction head loss? Use 1 ft3/s = 448.83 US gal/min.",
+    "options": [
+     "0.6 ft",
+     "2.6 ft",
+     "4.9 ft",
+     "28.7 ft"
+    ],
+    "correctIndex": 1,
+    "explanation": "Use the Hazen–Williams equation at the initial and increased flows, then subtract the two friction head losses. Pipe length, diameter, and C remain unchanged."
+   },
+   "fix": {
+    "question": "An existing 300 mm inside-diameter pipe is 600 m long and has a Hazen-Williams C value of 100. Flow increases from 30 to 45 L/s. Using hf = 10.67 L Q^1.852 / (C^1.852 D^4.871), where hf and L are in m, Q is in m3/s, and D is in m, what is the approximate increase in friction head loss?",
+    "options": [
+     "0.2 m",
+     "0.75 m",
+     "1.4 m",
+     "8.4 m"
+    ],
+    "correctIndex": 1,
+    "explanation": "Use the Hazen-Williams equation at the initial and increased flows, then subtract. Length, diameter, and C remain unchanged.",
+    "steps": [
+     "Coefficient = 10.67 x 600 / (100^1.852 x 0.300^4.871) = 6,402 / 14.36 = 446.",
+     "hf1 (0.030 m3/s) = 446 x 0.030^1.852 = 446 x 0.001512 = 0.67 m.",
+     "hf2 (0.045 m3/s) = 446 x 0.045^1.852 = 446 x 0.003204 = 1.43 m.",
+     "Increase = 1.43 - 0.67 = 0.75 m."
+    ]
+   }
+  },
+  {
+   "id": 90608,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 266,
+   "verdict": "UNITS",
+   "note": "US units in a Canadian bank. Recalculated in SI: 10.67 x 1,500 x 0.150^1.852 / (120^1.852 x 0.300^4.871) = 23.7 m.",
+   "original": {
+    "question": "A pipe has a 12-inch inside diameter, a length of 5,000 ft, and a Hazen–Williams C value of 120. It carries 2,500 US gal/min. Using hf = 4.73LQ^1.85/(C^1.85D^4.87), where hf and L are in feet, Q is in ft3/s, and D is in feet, what is its approximate friction head loss? Use 1 ft3/s = 448.83 US gal/min.",
+    "options": [
+     "21 ft",
+     "40 ft",
+     "81 ft",
+     "160 ft"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Hazen–Williams calculation requires flow in ft3/s and inside diameter in feet. Convert both before calculating friction head loss."
+   },
+   "fix": {
+    "question": "A pipe has a 300 mm inside diameter, a length of 1,500 m, and a Hazen-Williams C value of 120. It carries 150 L/s. Using hf = 10.67 L Q^1.852 / (C^1.852 D^4.871), where hf and L are in m, Q is in m3/s, and D is in m, what is its approximate friction head loss?",
+    "options": [
+     "12 m",
+     "18 m",
+     "23.7 m",
+     "47 m"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Hazen-Williams calculation requires flow in m3/s and diameter in m. The friction head loss is about 23.7 m.",
+    "steps": [
+     "Q = 0.150 m3/s; D = 0.300 m.",
+     "Numerator: 10.67 x 1,500 x 0.150^1.852 = 10.67 x 1,500 x 0.02979 = 476.8.",
+     "Denominator: 120^1.852 x 0.300^4.871 = 7,090 x 0.002838 = 20.12.",
+     "hf = 476.8 / 20.12 = 23.7 m."
+    ]
+   }
+  },
+  {
+   "id": 90615,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 273,
+   "verdict": "UNITS",
+   "note": "US units (psi, GPM) in a Canadian bank. Converted to kPa and L/s.",
+   "original": {
+    "question": "A water utility is planning to install a new pressure reducing valve (PRV) in a section of its distribution system where the upstream pressure averages 120 psi and the desired downstream pressure is 60 psi. The maximum flow rate through this section is estimated to be 2,000 GPM. Which of the following considerations is most critical when selecting the appropriate PRV for this application?",
+    "options": [
+     "The type of pipe material used in the downstream section.",
+     "The capacity of the PRV to handle the maximum anticipated flow without excessive cavitation or noise.",
+     "The aesthetic appearance of the PRV in its vault.",
+     "The number of service connections immediately downstream of the PRV."
+    ],
+    "correctIndex": 1,
+    "explanation": "The most critical consideration for PRV selection is its ability to handle the full range of flow rates, particularly the maximum flow, while maintaining the desired pressure reduction. An undersized PRV can lead to cavitation, noise, wear, and an inability to maintain stable downstream pressure."
+   },
+   "fix": {
+    "question": "A water utility is planning to install a new pressure reducing valve (PRV) in a section of its distribution system where the upstream pressure averages 830 kPa and the desired downstream pressure is 410 kPa. The maximum flow rate through this section is estimated to be 125 L/s. Which of the following considerations is most critical when selecting the appropriate PRV for this application?",
+    "options": [
+     "The type of pipe material used in the downstream section.",
+     "The capacity of the PRV to handle the maximum anticipated flow without excessive cavitation or noise.",
+     "The aesthetic appearance of the PRV in its vault.",
+     "The number of service connections immediately downstream of the PRV."
+    ],
+    "correctIndex": 1,
+    "explanation": "The valve must handle the full range of flows, particularly the maximum, at the required pressure drop of about 420 kPa. An incorrectly sized PRV can cavitate, be noisy, wear quickly and fail to hold stable downstream pressure.",
+    "steps": null
+   }
+  },
+  {
+   "id": 90617,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 275,
+   "verdict": "UNITS",
+   "note": "US units (GPM, ft, BHP) in a Canadian bank; duplicate of 90583. Converted: 9.81 x 0.095 x 60 / 0.80 = 69.9 kW.",
+   "original": {
+    "question": "A booster pump station is designed to deliver 1500 GPM against a total dynamic head (TDH) of 200 feet. If the pump efficiency is 80% and the motor efficiency is 90%, what is the approximate brake horsepower (BHP) required for the pump?",
+    "options": [
+     "94.5 BHP",
+     "75.6 BHP",
+     "118.1 BHP",
+     "105.0 BHP"
+    ],
+    "correctIndex": 0,
+    "explanation": "The Brake Horsepower (BHP) required for a pump is calculated using the formula: BHP = (GPM x TDH) / (3960 x Pump Efficiency). In this case, GPM is 1500, TDH is 200 feet, and the pump efficiency is 80% (0.80). Plugging these values into the formula yields (1500 GPM x 200 ft) / (3960 x 0.80) = 300,000 / 3168 = 94.69 BHP. The motor efficiency is not used in the calculation of brake horsepower, as BHP refers to the power delivered to the pump shaft. Therefore, 94.69 BHP is closest to 94.5 BHP."
+   },
+   "fix": {
+    "question": "A booster pump station is designed to deliver 95 L/s against a total dynamic head (TDH) of 60 m. If the pump efficiency is 80% and the motor efficiency is 90%, what is the approximate brake power required for the pump?",
+    "options": [
+     "69.9 kW",
+     "55.9 kW",
+     "77.7 kW",
+     "62.1 kW"
+    ],
+    "correctIndex": 0,
+    "explanation": "Brake power = 9.81 x Q x H / pump efficiency = 9.81 x 0.095 x 60 / 0.80 = 69.9 kW. Motor efficiency is not used for shaft power.",
+    "steps": [
+     "Q = 95 L/s = 0.095 m3/s.",
+     "Hydraulic power = 9.81 x 0.095 x 60 = 55.9 kW.",
+     "Brake power = 55.9 / 0.80 = 69.9 kW."
+    ]
+   }
+  },
+  {
+   "id": 90673,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 331,
+   "verdict": "UNITS",
+   "note": "psi used in a Canadian bank; converted to kPa (45-65 psi = 310-450 kPa; 120 psi = 830 kPa). Answer unchanged.",
+   "original": {
+    "question": "A Class 3 operator is reviewing the SCADA alarm history for a remote pressure reducing valve (PRV) station. They notice a consistent pattern of the downstream pressure oscillating rapidly between 45 psi and 65 psi every few minutes for the past 24 hours, even though the upstream pressure is stable at 120 psi. What is the MOST likely cause of this behavior?",
+    "options": [
+     "A sudden increase in customer demand downstream of the PRV.",
+     "The PRV control pilot system is malfunctioning or fouled.",
+     "A major leak has developed upstream of the PRV.",
+     "The SCADA sensor for downstream pressure is inaccurately calibrated."
+    ],
+    "correctIndex": 1,
+    "explanation": "Rapid and consistent oscillation of downstream pressure in a PRV, while upstream pressure is stable, is a classic symptom of a malfunctioning or fouled control pilot system. The pilot system is responsible for sensing downstream pressure and adjusting the main valve, and issues here lead to hunting or instability. A sudden increase in demand would typically cause a sustained drop in downstream pressure, not oscillation."
+   },
+   "fix": {
+    "question": "A Class 3 operator is reviewing the SCADA alarm history for a remote pressure reducing valve (PRV) station. They notice a consistent pattern of the downstream pressure oscillating rapidly between 310 kPa and 450 kPa every few minutes for the past 24 hours, even though the upstream pressure is stable at 830 kPa. What is the MOST likely cause of this behavior?",
+    "options": [
+     "A sudden increase in customer demand downstream of the PRV.",
+     "The PRV control pilot system is malfunctioning or fouled.",
+     "A major leak has developed upstream of the PRV.",
+     "The SCADA sensor for downstream pressure is inaccurately calibrated."
+    ],
+    "correctIndex": 1,
+    "explanation": "Rapid and consistent oscillation of downstream pressure in a PRV, while upstream pressure is stable, is a classic symptom of a malfunctioning or fouled control pilot system. The pilot system senses downstream pressure and adjusts the main valve, and problems here lead to hunting or instability. A sudden increase in demand would typically cause a sustained drop in downstream pressure, not oscillation.",
+    "steps": [
+     {
+      "l": "Identify the nature of the question.",
+      "c": "This is a troubleshooting diagnosis from SCADA trend data, not a calculation."
+     },
+     {
+      "l": "Analyze the symptom pattern.",
+      "c": "Downstream pressure cycles rapidly between 310 and 450 kPa, roughly plus or minus 70 kPa around the setpoint, while upstream pressure holds steady at 830 kPa and the pattern has persisted for 24 hours."
+     },
+     {
+      "l": "Identify the component that controls the main valve.",
+      "c": "The pilot system senses downstream pressure and meters water to or from the main valve cover chamber to position the valve."
+     },
+     {
+      "l": "Rule out the other options.",
+      "c": "A demand surge would cause a sustained pressure drop, not continuous cycling; an upstream leak would show as falling upstream pressure; a miscalibrated sensor would show a steady offset, not oscillation."
+     },
+     {
+      "l": "Determine the most likely cause.",
+      "c": "Continuous hunting with a stable inlet points to a malfunctioning or fouled control pilot system."
+     }
+    ]
+   }
+  },
+  {
+   "id": 90692,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 350,
+   "verdict": "UNITS",
+   "note": "US units (US gpm, psi) in a Canadian bank. Key (44.0 psi) is arithmetically right; converted to metric: 30 to 36 L/s, 310 kPa, 16.5 kPa loss gives 303 kPa.",
+   "original": {
+    "question": "At a customer connection, the current flow through a main is 500 US gpm and residual pressure is 45.0 psi. Head loss through that main at this flow is 2.4 psi. Future flow through the same main is projected to be 600 US gpm. Assume upstream pressure and all other pressure losses stay unchanged. Using the Hazen–Williams relationship, in which head loss varies with flow to the power 1.85 for this unchanged main, what is the approximate future residual pressure?",
+    "options": [
+     "44.0 psi",
+     "39.0 psi",
+     "45.0 psi",
+     "42.1 psi"
+    ],
+    "correctIndex": 0,
+    "explanation": "For the unchanged main, Hazen–Williams loss scales with flow to the power 1.85. Because upstream pressure and other losses remain unchanged, only the increase in this main's loss reduces residual pressure."
+   },
+   "fix": {
+    "question": "At a customer connection, the current flow through a main is 30 L/s and residual pressure is 310 kPa. Head loss through that main at this flow is 16.5 kPa. Future flow through the same main is projected to be 36 L/s. Assume upstream pressure and all other pressure losses stay unchanged. Using the Hazen-Williams relationship, in which head loss varies with flow to the power 1.85 for this unchanged main, what is the approximate future residual pressure?",
+    "options": [
+     "303 kPa",
+     "270 kPa",
+     "310 kPa",
+     "290 kPa"
+    ],
+    "correctIndex": 0,
+    "explanation": "For the unchanged main, Hazen-Williams loss scales with flow to the power 1.85. Because upstream pressure and other losses remain unchanged, only the increase in this main's loss reduces residual pressure.",
+    "steps": [
+     "Formula: L_f = L_i(Q_f/Q_i)^1.85 and P_f = P_i - (L_f - L_i), where L is the pressure loss through the main in kPa, Q is flow in L/s and P is residual pressure in kPa. The flow ratio is dimensionless.",
+     "Substitute: L_f = 16.5 kPa x (36 L/s / 30 L/s)^1.85 = 16.5 x 1.401 = approximately 23.1 kPa.",
+     "Additional loss = 23.1 kPa - 16.5 kPa = 6.6 kPa. P_f = 310 kPa - 6.6 kPa = approximately 303 kPa, option A."
+    ]
+   }
+  },
+  {
+   "id": 90710,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 368,
+   "verdict": "UNITS",
+   "note": "US units (GPD) and US-specific 'lead and copper rule' in a Canadian bank; also phosphate 'sequestering' is not corrosion control (orthophosphate corrosion inhibitor is). Converted to L/d; arithmetic (x1.20) unchanged.",
+   "original": {
+    "question": "A Class 3 operator is tasked with optimizing a chemical feed system for phosphate sequestering to control lead and copper corrosion. The system currently feeds at a concentration of 1.5 mg/L as P (phosphate). Based on historical data and recent lead and copper rule sampling results, it is determined that a 20% increase in phosphate concentration is needed to achieve optimal corrosion control. If the current feed pump delivers 50 GPD of a 10% phosphate solution (by weight, specific gravity 1.15), what is the NEW required feed pump setting in GPD to achieve the desired 20% increase in phosphate concentration in the distribution system, assuming the system flow rate remains constant?",
+    "options": [
+     "55 GPD",
+     "60 GPD",
+     "62.5 GPD",
+     "75 GPD"
+    ],
+    "correctIndex": 1,
+    "explanation": "To achieve a 20% increase in phosphate concentration, the feed rate must also increase by 20%. The new feed rate will be 50 GPD * 1.20 = 60 GPD. The specific gravity and percentage solution are distractors as the question asks for the new pump setting based on a proportional increase from the current setting."
+   },
+   "fix": {
+    "question": "A Class 3 operator is optimizing a chemical feed system for orthophosphate corrosion inhibitor addition to control lead and copper corrosion. The system currently feeds at a concentration of 1.5 mg/L as P. Based on historical data and recent lead and copper tap sampling results, a 20% increase in phosphate concentration is needed to achieve optimal corrosion control. If the current feed pump delivers 200 L/d of a 10% phosphate solution (by weight, specific gravity 1.15), what NEW feed pump setting is required to achieve the 20% increase in phosphate concentration, assuming the system flow rate remains constant?",
+    "options": [
+     "220 L/d",
+     "240 L/d",
+     "250 L/d",
+     "300 L/d"
+    ],
+    "correctIndex": 1,
+    "explanation": "At constant system flow and constant solution strength, concentration is proportional to feed rate, so a 20% concentration increase needs a 20% feed increase: 200 L/d x 1.20 = 240 L/d. The solution strength and specific gravity are not needed.",
+    "steps": [
+     {
+      "l": "Calculate the required factor.",
+      "c": "1 + 0.20 = 1.20"
+     },
+     {
+      "l": "Multiply the current feed rate.",
+      "c": "200 L/d x 1.20 = 240 L/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 90739,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 397,
+   "verdict": "WRONG",
+   "note": "The steps field belongs to a different question (brake horsepower calculation in US units) and has nothing to do with chlorine decay and temperature. Remove it.",
+   "original": {
+    "question": "What is the significance of the distribution system's water temperature for chlorine residual maintenance?",
+    "options": [
+     "Higher water temperature accelerates chlorine decay (approximately doubling decay rate per 10°C increase), requiring higher initial doses and more frequent boosting during summer months to maintain adequate residual throughout the system",
+     "Temperature does not affect chlorine decay",
+     "Only affects surface water systems",
+     "Chlorine residual is constant regardless of temperature"
+    ],
+    "correctIndex": 0,
+    "explanation": "Temperature-chlorine relationship: decay rate constant approximately doubles per 10°C (Arrhenius relationship). Practical impact: winter residual of 0.5 mg/L may last 72 hours in the system, but summer residual of 0.5 mg/L may decay to zero in 24 hours. Operational response: increase plant dose in spring/summer, increase booster station output, increase flushing frequency, and monitor extremities more frequently."
+   },
+   "fix": {
+    "question": "What is the significance of the distribution system's water temperature for chlorine residual maintenance?",
+    "options": [
+     "Higher water temperature accelerates chlorine decay (approximately doubling decay rate per 10°C increase), requiring higher initial doses and more frequent boosting during summer months to maintain adequate residual throughout the system",
+     "Temperature does not affect chlorine decay",
+     "Only affects surface water systems",
+     "Chlorine residual is constant regardless of temperature"
+    ],
+    "correctIndex": 0,
+    "explanation": "Temperature-chlorine relationship: decay rate constant approximately doubles per 10°C (Arrhenius relationship). Practical impact: winter residual of 0.5 mg/L may last 72 hours in the system, but summer residual of 0.5 mg/L may decay to zero in 24 hours. Operational response: increase plant dose in spring/summer, increase booster station output, increase flushing frequency, and monitor extremities more frequently.",
+    "steps": null
+   }
+  },
+  {
+   "id": 90742,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 400,
+   "verdict": "UNITS",
+   "note": "US units (ft, in, US gpm, cfs) in a Canadian bank. Converted to SI Hazen-Williams h_f = 10.67 L Q^1.852/(C^1.852 d^4.871) (L m, Q m3/s, d m): 1,500 m, 400 mm, 125 L/s: C=100 gives 5.8 m, C=140 gives 3.1 m, reduction 2.7 m.",
+   "original": {
+    "question": "A 5,000-ft main carries 2,000 US gpm. An existing 16-in pipe has Hazen–Williams C = 100; a proposed pipe of the same diameter has C = 140. Using h_f = 4.73LQ^1.852/(C^1.852d^4.871), where h_f and L are in feet, Q is in cubic feet per second (cfs), and d is in feet, what is the approximate reduction in friction head loss? Use 1 cfs = 448.8 US gpm.",
+    "options": [
+     "4.5 ft",
+     "8.5 ft",
+     "18.3 ft",
+     "28.1 ft"
+    ],
+    "correctIndex": 1,
+    "explanation": "At the same pipe length, flow, and diameter, only the Hazen–Williams C value changes. Calculate each friction loss and subtract the proposed-pipe loss from the existing-pipe loss."
+   },
+   "fix": {
+    "question": "A 1,500-m main carries 125 L/s. An existing 400-mm pipe has Hazen-Williams C = 100; a proposed pipe of the same diameter has C = 140. Using h_f = 10.67LQ^1.852/(C^1.852d^4.871), where h_f and L are in metres, Q is in m3/s, and d is in metres, what is the approximate reduction in friction head loss?",
+    "options": [
+     "1.4 m",
+     "2.7 m",
+     "5.8 m",
+     "8.9 m"
+    ],
+    "correctIndex": 1,
+    "explanation": "At the same pipe length, flow, and diameter, only the Hazen-Williams C value changes. Calculate each friction loss and subtract the proposed-pipe loss from the existing-pipe loss.",
+    "steps": [
+     "Governing relationships: h_f = 10.67LQ^1.852/(C^1.852d^4.871), and reduction = h_f,existing - h_f,proposed. h_f is friction head loss (m); L is length (m); Q is flow (m3/s); C is the dimensionless coefficient; d is inside diameter (m).",
+     "Convert: Q = 125 L/s = 0.125 m3/s; d = 400 mm = 0.400 m.",
+     "Existing pipe, C = 100: h_f = 10.67(1,500)(0.125)^1.852/[100^1.852(0.400)^4.871] = approximately 5.8 m.",
+     "Proposed pipe, C = 140: h_f = 10.67(1,500)(0.125)^1.852/[140^1.852(0.400)^4.871] = approximately 3.1 m.",
+     "Reduction = 5.8 m - 3.1 m = approximately 2.7 m, option B."
+    ]
+   }
+  },
+  {
+   "id": 90746,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 404,
+   "verdict": "UNITS",
+   "note": "US units in a Canadian bank. Converted: 300-mm main, C=100, 190 L/s over 1,500 m gives approx 51 m (SI Hazen-Williams, coefficient 10.67).",
+   "original": {
+    "question": "A 12-in-diameter main has Hazen–Williams C = 100 and carries 3,000 US gpm over 5,000 ft. Using h_f = 4.73LQ^1.852/(C^1.852d^4.871), where h_f and L are in feet, Q is in cfs, and d is in feet, what is its approximate friction head loss? Use 1 cfs = 448.8 US gpm.",
+    "options": [
+     "63 ft",
+     "105 ft",
+     "158 ft",
+     "237 ft"
+    ],
+    "correctIndex": 2,
+    "explanation": "Convert flow to cfs and inside diameter to feet before applying the supplied Hazen–Williams equation."
+   },
+   "fix": {
+    "question": "A 300-mm-diameter main has Hazen-Williams C = 100 and carries 190 L/s over 1,500 m. Using h_f = 10.67LQ^1.852/(C^1.852d^4.871), where h_f and L are in metres, Q is in m3/s, and d is in metres, what is its approximate friction head loss?",
+    "options": [
+     "20 m",
+     "34 m",
+     "51 m",
+     "77 m"
+    ],
+    "correctIndex": 2,
+    "explanation": "Convert flow to m3/s and inside diameter to metres before applying the supplied Hazen-Williams equation.",
+    "steps": [
+     "Governing formula: h_f = 10.67LQ^1.852/(C^1.852d^4.871). h_f is friction head loss (m); L is length (m); Q is flow (m3/s); C is the dimensionless coefficient; d is inside diameter (m).",
+     "Convert: Q = 190 L/s = 0.190 m3/s; d = 300 mm = 0.300 m.",
+     "Substitute: h_f = 10.67(1,500)(0.190)^1.852/[100^1.852(0.300)^4.871] = approximately 51 m, option C."
+    ]
+   }
+  },
+  {
+   "id": 90749,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 407,
+   "verdict": "UNITS",
+   "note": "US units in a Canadian bank. Converted: 1,500 m, 300 mm, 125 L/s, C=100 gives approx 24 m.",
+   "original": {
+    "question": "A 5,000-ft, 12-in-diameter main carries 2,000 US gpm and has Hazen–Williams C = 100. Using h_f = 4.73LQ^1.852/(C^1.852d^4.871), where h_f and L are in feet, Q is in cfs, and d is in feet, what is the approximate friction head loss? Use 1 cfs = 448.8 US gpm.",
+    "options": [
+     "37 ft",
+     "53 ft",
+     "74 ft",
+     "105 ft"
+    ],
+    "correctIndex": 2,
+    "explanation": "The supplied equation uses cfs for flow and feet for inside diameter; entering gpm or inches directly would not give the stated friction loss."
+   },
+   "fix": {
+    "question": "A 1,500-m, 300-mm-diameter main carries 125 L/s and has Hazen-Williams C = 100. Using h_f = 10.67LQ^1.852/(C^1.852d^4.871), where h_f and L are in metres, Q is in m3/s, and d is in metres, what is the approximate friction head loss?",
+    "options": [
+     "12 m",
+     "17 m",
+     "24 m",
+     "34 m"
+    ],
+    "correctIndex": 2,
+    "explanation": "The supplied equation uses m3/s for flow and metres for inside diameter; entering L/s or millimetres directly would not give the stated friction loss.",
+    "steps": [
+     "Governing formula: h_f = 10.67LQ^1.852/(C^1.852d^4.871). h_f is friction head loss (m); L is length (m); Q is flow (m3/s); C is the dimensionless coefficient; d is inside diameter (m).",
+     "Convert: Q = 125 L/s = 0.125 m3/s; d = 300 mm = 0.300 m.",
+     "Substitute: h_f = 10.67(1,500)(0.125)^1.852/[100^1.852(0.300)^4.871] = approximately 24 m, option C."
+    ]
+   }
+  },
+  {
+   "id": 90751,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 409,
+   "verdict": "UNITS",
+   "note": "US units (feet, psi) in a Canadian bank. Converted: 45 m static, 9 m friction, 280 kPa residual (28.5 m at 9.81 kPa/m); TDH = 82.5 m.",
+   "original": {
+    "question": "A booster pump station is designed to deliver water to a zone with a static elevation difference of 150 feet and an average friction loss of 30 feet at peak flow. If the desired residual pressure at the highest point in the zone is 40 psi, what is the minimum total dynamic head (TDH) the pumps must be capable of providing?",
+    "options": [
+     "312 feet",
+     "220 feet",
+     "190 feet",
+     "272.4 feet"
+    ],
+    "correctIndex": 3,
+    "explanation": "Total Dynamic Head (TDH) is the sum of the static head, friction loss, and the desired residual pressure converted to feet of head. First, convert the desired residual pressure from psi to feet of head using the conversion factor 2.31 ft/psi. Then, add this value to the static elevation difference and the average friction loss. The calculated TDH is 272.4 feet."
+   },
+   "fix": {
+    "question": "A booster pump station is designed to deliver water to a zone with a static elevation difference of 45 m and an average friction loss of 9 m at peak flow. If the desired residual pressure at the highest point in the zone is 280 kPa, what is the minimum total dynamic head (TDH) the pumps must be capable of providing? Use 9.81 kPa per metre of head.",
+    "options": [
+     "95 m",
+     "67 m",
+     "58 m",
+     "82.5 m"
+    ],
+    "correctIndex": 3,
+    "explanation": "TDH is the sum of the static head, friction loss, and the desired residual pressure converted to metres of head (280 kPa / 9.81 kPa/m = 28.5 m). TDH = 45 + 9 + 28.5 = 82.5 m.",
+    "steps": [
+     {
+      "l": "Identify given values",
+      "c": "Static elevation difference = 45 m; friction loss = 9 m; residual pressure = 280 kPa"
+     },
+     {
+      "l": "Convert residual pressure to head",
+      "c": "280 kPa / 9.81 kPa per m = 28.5 m"
+     },
+     {
+      "l": "Calculate TDH",
+      "c": "TDH = 45 m + 9 m + 28.5 m = 82.5 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 90755,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 413,
+   "verdict": "UNITS",
+   "note": "US units (ft, psi) in a Canadian bank. Converted: 100 m of head gives 981 kPa (9.81 kPa per m).",
+   "original": {
+    "question": "At a specified flow, a booster pump adds 350 ft of head. Its suction and discharge pressure gauges are at the same elevation, and the suction gauge reads 0 psig. Ignoring velocity-head differences, what discharge gauge pressure corresponds to this pump head? Use 2.31 ft of water head per psi.",
+    "options": [
+     "65 psi",
+     "108 psi",
+     "152 psi",
+     "198 psi"
+    ],
+    "correctIndex": 2,
+    "explanation": "Discharge gauge pressure equals suction gauge pressure plus the pressure equivalent of the pump head. With the gauges at the same elevation and velocity-head differences ignored, 350 ft of head produces a discharge reading of approximately 152 psig, matching the keyed option, 152 psi."
+   },
+   "fix": {
+    "question": "At a specified flow, a booster pump adds 100 m of head. Its suction and discharge pressure gauges are at the same elevation, and the suction gauge reads 0 kPa (gauge). Ignoring velocity-head differences, what discharge gauge pressure corresponds to this pump head? Use 9.81 kPa per metre of water head.",
+    "options": [
+     "440 kPa",
+     "685 kPa",
+     "981 kPa",
+     "1,370 kPa"
+    ],
+    "correctIndex": 2,
+    "explanation": "Discharge gauge pressure equals suction gauge pressure plus the pressure equivalent of the pump head. With the gauges at the same elevation and velocity-head differences ignored, 100 m of head produces approximately 981 kPa.",
+    "steps": [
+     "Formula: P_discharge = P_suction + H_pump x 9.81, where pressures are in kPa (gauge) and H_pump is in metres of water. This applies because the gauges are at the same elevation and velocity-head differences are ignored.",
+     "Substitute: P_discharge = 0 kPa + (100 m)(9.81 kPa/m) = 981 kPa.",
+     "Result: approximately 981 kPa, option C."
+    ]
+   }
+  },
+  {
+   "id": 90759,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 417,
+   "verdict": "UNITS",
+   "note": "US units (ft, psi) in a Canadian bank. Converted: 45 m rise, 14 m friction, 200 kPa (20.4 m) gives about 79 m.",
+   "original": {
+    "question": "At the design flow, a booster pump takes water from a tank whose water surface is at elevation 150 ft and delivers it to a service point at elevation 300 ft. Friction losses are 45 ft, and the desired pressure at the service point is 30 psi. Neglecting velocity-head differences, what pump total dynamic head is needed? Use 2.31 ft of water head per psi.",
+    "options": [
+     "195 ft",
+     "219 ft",
+     "264 ft",
+     "345 ft"
+    ],
+    "correctIndex": 2,
+    "explanation": "With velocity-head differences neglected, the pump must supply the elevation rise, friction head loss, and head needed to provide the specified service pressure."
+   },
+   "fix": {
+    "question": "At the design flow, a booster pump takes water from a tank whose water surface is at elevation 45 m and delivers it to a service point at elevation 90 m. Friction losses are 14 m, and the desired pressure at the service point is 200 kPa. Neglecting velocity-head differences, what pump total dynamic head is needed? Use 9.81 kPa per metre of water head.",
+    "options": [
+     "59 m",
+     "65 m",
+     "79 m",
+     "104 m"
+    ],
+    "correctIndex": 2,
+    "explanation": "With velocity-head differences neglected, the pump must supply the elevation rise, friction head loss, and head needed to provide the specified service pressure.",
+    "steps": [
+     "Governing relationship: H_p = (z_service - z_tank) + h_f + p_service/9.81, with H_p in m, elevations in m, h_f in m and p_service in kPa.",
+     "Elevation rise: 90 m - 45 m = 45 m. Pressure head: 200 kPa / 9.81 kPa/m = 20.4 m.",
+     "Substitute: H_p = 45 + 14 + 20.4 = 79.4 m, approximately 79 m, option C."
+    ]
+   }
+  },
+  {
+   "id": 90764,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 422,
+   "verdict": "UNITS",
+   "note": "US units in a Canadian bank. Converted: 1,500 m, 300 mm, C=100, flow 95 to 190 L/s: 14.3 m to 51.5 m, increase approx 37 m.",
+   "original": {
+    "question": "A development would increase flow in an existing 5,000-ft, 12-in main from 1,500 to 3,000 US gpm. Its assumed Hazen–Williams C remains 100. Approximately how much does friction head loss increase? Use h_f = 4.73LQ^1.852/(C^1.852d^4.871), with h_f and L in feet, Q in cfs, d in feet, and 1 cfs = 448.8 US gpm. Calculate friction loss only; downstream service pressure is not specified.",
+    "options": [
+     "44 ft",
+     "79 ft",
+     "114 ft",
+     "158 ft"
+    ],
+    "correctIndex": 2,
+    "explanation": "Calculate friction head loss at each flow using the same pipe length, diameter, and C value, then subtract. Friction loss alone does not establish the available downstream service pressure."
+   },
+   "fix": {
+    "question": "A development would increase flow in an existing 1,500-m, 300-mm main from 95 to 190 L/s. Its assumed Hazen-Williams C remains 100. Approximately how much does friction head loss increase? Use h_f = 10.67LQ^1.852/(C^1.852d^4.871), with h_f and L in metres, Q in m3/s, and d in metres. Calculate friction loss only; downstream service pressure is not specified.",
+    "options": [
+     "14 m",
+     "26 m",
+     "37 m",
+     "51 m"
+    ],
+    "correctIndex": 2,
+    "explanation": "Calculate friction head loss at each flow using the same pipe length, diameter, and C value, then subtract. Friction loss alone does not establish the available downstream service pressure.",
+    "steps": [
+     "Governing relationships: h_f = 10.67LQ^1.852/(C^1.852d^4.871), and increase = h_f,190 - h_f,95.",
+     "Convert: d = 0.300 m; Q1 = 0.095 m3/s; Q2 = 0.190 m3/s.",
+     "At 95 L/s: h_f = 10.67(1,500)(0.095)^1.852/[100^1.852(0.300)^4.871] = approximately 14.3 m.",
+     "At 190 L/s: h_f = 10.67(1,500)(0.190)^1.852/[100^1.852(0.300)^4.871] = approximately 51.5 m.",
+     "Increase = 51.5 m - 14.3 m = approximately 37 m, option C."
+    ]
+   }
+  },
+  {
+   "id": 90770,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 428,
+   "verdict": "UNITS",
+   "note": "US units in a Canadian bank. Converted: 300 mm, C=100, 95 L/s gives about 9.5 m per 1,000 m.",
+   "original": {
+    "question": "A 12-in-diameter main with Hazen–Williams C = 100 carries 1,500 US gpm. What is its approximate friction head loss per 1,000 ft? Use h_f = 4.73LQ^1.852/(C^1.852d^4.871), where h_f and L are in feet, Q is in cfs, d is in feet, and 1 cfs = 448.8 US gpm.",
+    "options": [
+     "4.4 ft per 1,000 ft",
+     "8.7 ft per 1,000 ft",
+     "17.4 ft per 1,000 ft",
+     "43.7 ft per 1,000 ft"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Hazen–Williams equation gives friction head loss for the stated 1,000-ft length. Converting flow and inside diameter to the required units gives about 8.7 ft of loss per 1,000 ft, matching option B."
+   },
+   "fix": {
+    "question": "A 300-mm-diameter main with Hazen-Williams C = 100 carries 95 L/s. What is its approximate friction head loss per 1,000 m? Use h_f = 10.67LQ^1.852/(C^1.852d^4.871), where h_f and L are in metres, Q is in m3/s, and d is in metres.",
+    "options": [
+     "4.8 m per 1,000 m",
+     "9.5 m per 1,000 m",
+     "19 m per 1,000 m",
+     "47 m per 1,000 m"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Hazen-Williams equation gives friction head loss for the stated 1,000-m length. Converting flow and diameter to the required units gives about 9.5 m of loss per 1,000 m.",
+    "steps": [
+     "Use h_f = 10.67LQ^1.852/(C^1.852d^4.871), with h_f and L in m, Q in m3/s, d in m.",
+     "Set L = 1,000 m; Q = 95 L/s = 0.095 m3/s; d = 0.300 m; C = 100.",
+     "h_f = 10.67(1,000)(0.095)^1.852/[100^1.852(0.300)^4.871] = approximately 9.5 m per 1,000 m: option B."
+    ]
+   }
+  },
+  {
+   "id": 90779,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 437,
+   "verdict": "UNITS",
+   "note": "US units in a Canadian bank. Converted: 1,500 m, 300 mm, C=120, 125 L/s gives approx 17 m.",
+   "original": {
+    "question": "A 5,000-ft, 12-in-diameter main has Hazen–Williams C = 120 and carries 2,000 US gpm. Using h_f = 4.73LQ^1.852/(C^1.852d^4.871), where h_f and L are in feet, Q is in cfs, and d is in feet, what is the approximate friction head loss? Use 1 cfs = 448.8 US gpm.",
+    "options": [
+     "28 ft",
+     "40 ft",
+     "53 ft",
+     "74 ft"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Hazen–Williams equation calculates friction head loss over the full 5,000-ft main. With flow and inside diameter in the required units, the loss is approximately 53 ft, matching option C."
+   },
+   "fix": {
+    "question": "A 1,500-m, 300-mm-diameter main has Hazen-Williams C = 120 and carries 125 L/s. Using h_f = 10.67LQ^1.852/(C^1.852d^4.871), where h_f and L are in metres, Q is in m3/s, and d is in metres, what is the approximate friction head loss?",
+    "options": [
+     "9 m",
+     "13 m",
+     "17 m",
+     "24 m"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Hazen-Williams equation calculates friction head loss over the full 1,500-m main. With flow and inside diameter in the required units, the loss is approximately 17 m, option C.",
+    "steps": [
+     "Use h_f = 10.67LQ^1.852/(C^1.852d^4.871), with h_f and L in m, Q in m3/s, d in m.",
+     "Set L = 1,500 m; Q = 125 L/s = 0.125 m3/s; d = 0.300 m; C = 120.",
+     "h_f = 10.67(1,500)(0.125)^1.852/[120^1.852(0.300)^4.871] = approximately 17 m: option C."
+    ]
+   }
+  },
+  {
+   "id": 90787,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 445,
+   "verdict": "UNITS",
+   "note": "US units in a Canadian bank. Converted: 47 L/s through 600 m of 200-mm main, C=100, gives approx 11 m.",
+   "original": {
+    "question": "An uphill zone receives 750 US gpm through 2,000 ft of 8-in. inside-diameter main. For this question, use a Hazen–Williams coefficient C = 100 and h_f (ft) = 4.73 L Q^1.852/(C^1.852 D^4.871), where L and D are in feet and Q is in ft3/s. Use 1 ft3/s = 448.8 US gpm. Approximately how much friction head is lost in this main?",
+    "options": [
+     "12 ft",
+     "25 ft",
+     "35 ft",
+     "55 ft"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Hazen–Williams equation estimates friction head loss along the 2,000-ft main. Using flow and inside diameter in the specified units gives about 35 ft, matching option C."
+   },
+   "fix": {
+    "question": "An uphill zone receives 47 L/s through 600 m of 200-mm inside-diameter main. For this question, use a Hazen-Williams coefficient C = 100 and h_f (m) = 10.67 L Q^1.852/(C^1.852 D^4.871), where L and D are in metres and Q is in m3/s. Approximately how much friction head is lost in this main?",
+    "options": [
+     "4 m",
+     "8 m",
+     "11 m",
+     "17 m"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Hazen-Williams equation estimates friction head loss along the 600-m main. Using flow and inside diameter in the specified units gives about 11 m, option C.",
+    "steps": [
+     "Use h_f = 10.67LQ^1.852/(C^1.852D^4.871), with h_f and L in m, Q in m3/s, D in m.",
+     "Set L = 600 m; Q = 47 L/s = 0.047 m3/s; D = 0.200 m; C = 100.",
+     "h_f = 10.67(600)(0.047)^1.852/[100^1.852(0.200)^4.871] = approximately 11 m: option C."
+    ]
+   }
+  },
+  {
+   "id": 90791,
+   "bankKey": "wpi-class3-water-dist",
+   "questionNum": 449,
+   "verdict": "UNITS",
+   "note": "US units in a Canadian bank. Converted: 300 mm, C=100, 90 L/s, 1,000 m gives approx 8.6 m.",
+   "original": {
+    "question": "A main carries 1,500 US gpm through 1,000 ft of pipe with an inside diameter of 12 in. Use C = 100 and h_f (ft) = 4.73 L Q^1.852/(C^1.852 D^4.871), with L and D in feet and Q in ft3/s. Use 1 ft3/s = 448.8 US gpm. What is the approximate friction loss per 1,000 ft?",
+    "options": [
+     "4.4 ft per 1,000 ft",
+     "8.8 ft per 1,000 ft",
+     "15 ft per 1,000 ft",
+     "26 ft per 1,000 ft"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Hazen–Williams equation gives approximately 8.74 ft of friction loss over the stated 1,000-ft pipe length. The closest listed answer is 8.8 ft per 1,000 ft, option B."
+   },
+   "fix": {
+    "question": "A main carries 90 L/s through 1,000 m of pipe with an inside diameter of 300 mm. Use C = 100 and h_f (m) = 10.67 L Q^1.852/(C^1.852 D^4.871), with L and D in metres and Q in m3/s. What is the approximate friction loss per 1,000 m?",
+    "options": [
+     "4.3 m per 1,000 m",
+     "8.6 m per 1,000 m",
+     "14 m per 1,000 m",
+     "24 m per 1,000 m"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Hazen-Williams equation gives approximately 8.6 m of friction loss over the stated 1,000-m pipe length, option B.",
+    "steps": [
+     "Use h_f = 10.67LQ^1.852/(C^1.852D^4.871), with h_f and L in m, Q in m3/s, D in m.",
+     "Set L = 1,000 m; Q = 90 L/s = 0.090 m3/s; D = 0.300 m; C = 100.",
+     "h_f = 10.67(1,000)(0.090)^1.852/[100^1.852(0.300)^4.871] = approximately 8.6 m per 1,000 m: option B."
+    ]
    }
   }
  ]
