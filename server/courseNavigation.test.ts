@@ -3,6 +3,16 @@ import { getCourseForPath, getCourseWorkspaceTabs, getMobileWorkspaceTabs } from
 import { getAllCourses } from "../shared/courseRegistry";
 import { readFileSync } from "node:fs";
 
+// App.tsx registers both literal routes and whole-segment :courseKey routes.
+// Match the entire path: a dynamic segment cannot consume a slash or be empty.
+function matchesRegisteredPath(pattern: string, path: string): boolean {
+  const patternSegments = pattern.split("/");
+  const segments = path.split("/");
+  return patternSegments.length === segments.length && patternSegments.every((segment, index) =>
+    /^:[A-Za-z][A-Za-z0-9_]*$/.test(segment) ? segments[index].length > 0 : segment === segments[index],
+  );
+}
+
 describe("course workspace navigation", () => {
   it("keeps Ontario course tools in one canonical workspace", () => {
     const course = getCourseForPath("/class2-water-mock");
@@ -43,9 +53,21 @@ describe("course workspace navigation", () => {
     for (const course of getAllCourses().filter((entry) => entry.isActive)) {
       for (const tab of getCourseWorkspaceTabs(course)) {
         const path = tab.href.split("?")[0];
-        expect(routedPaths.has(path), `${course.courseKey} → ${tab.label} (${path})`).toBe(true);
+        expect([...routedPaths].some(pattern => matchesRegisteredPath(pattern, path)), `${course.courseKey} → ${tab.label} (${path})`).toBe(true);
       }
     }
+  });
+
+  it("matches only complete registered paths, including parameterized US study routes", () => {
+    for (const tool of ["practice", "mock", "flashcards"]) {
+      const pattern = `/us/${tool}/:courseKey`;
+      expect(matchesRegisteredPath(pattern, `/us/${tool}/pa-class-e-water-distribution`)).toBe(true);
+      expect(matchesRegisteredPath(pattern, `/us/${tool}/`)).toBe(false);
+      expect(matchesRegisteredPath(pattern, `/us/${tool}/course/extra`)).toBe(false);
+      expect(matchesRegisteredPath(pattern, `/us/not-${tool}/course`)).toBe(false);
+    }
+    expect(matchesRegisteredPath("/class2-water", "/class2-water-missing")).toBe(false);
+    expect(matchesRegisteredPath("/dashboard", "/dashboard")).toBe(true);
   });
 
   it("uses the compact mobile course-tools menu in the shared navigation", () => {

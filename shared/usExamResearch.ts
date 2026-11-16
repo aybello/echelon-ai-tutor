@@ -4322,6 +4322,7 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
           }
         ],
         "stream": "water-distribution",
+        "directCourseKeys": ["pa-class-e-water-distribution"],
         "verifiedSharedLevels": []
       },
       {
@@ -4374,6 +4375,7 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
           }
         ],
         "stream": "wastewater-collection",
+        "directCourseKeys": ["pa-wastewater-collection-e4"],
         "verifiedSharedLevels": []
       }
     ]

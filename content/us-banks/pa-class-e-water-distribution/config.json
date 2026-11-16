@@ -1,0 +1,20 @@
+{
+  "id": "pa-class-e-water-distribution",
+  "bankKey": "pa-class-e-water-distribution",
+  "itemPrefix": "PA-E-DIST",
+  "version": "2026-11-16-v1",
+  "state": "PA",
+  "stream": "water-distribution",
+  "label": "Pennsylvania Class E Water Distribution",
+  "startNumber": 1,
+  "count": 500,
+  "calcCount": 120,
+  "purpose": "Practice questions for the Pennsylvania Drinking Water Class E stand-alone Distribution Examination. Original items in US units. Not an official exam blueprint.",
+  "reviewIntro": "500 original practice questions: 380 conceptual and 120 calculations, in US customary units. This is a local content package, not proof of a production import.",
+  "sources": {
+    "PADEP8": ["Pennsylvania DEP Module 8: Distribution Systems (topic structure for the Class E exam)", "https://files.dep.state.pa.us/Water/BSDW/OperatorCertification/TrainingModules/dw-08_distribution_sys_wb.pdf"],
+    "DIST": ["US EPA, Small Drinking Water Systems Handbook", "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=100046K6.TXT"],
+    "BACKFLOW": ["US EPA, Cross-Connection Control Manual", "https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=2000262T.TXT"],
+    "EPANET": ["US EPA, EPANET hydraulic modelling", "https://www.epa.gov/water-research/epanet"]
+  }
+}

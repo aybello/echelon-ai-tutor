@@ -141,3 +141,21 @@ All four items from the Claude-authored fix ticket are closed. The blog EOCP fac
 - `scripts/migrate-merge-split-profiles.mjs`: Step 4c comment corrected
 - `server/round5.test.ts`: Absolute sandbox paths replaced with process.cwd()-relative paths
 - `collab/KNOWN_ISSUES.md`: KI-001 status updated to "Fixed — runtime + migration"
+
+---
+
+### Session: 2026-11-16 — PR #240 main reconciliation and hosted failure repair
+
+Merged exact main `e86c231ece23e4c1d500de8fb9b2fe67bec21e5a` into Pennsylvania head `f9099f5839a9482699eadcaeaf70a1071908dade`, retaining Pennsylvania as first parent. Resolved only the Quality Gate command conflict: original exam-review 9, restoration 9 and Pennsylvania 28 Node tests all remain credential-stripped with the mandatory safety preload. The exact two historical object fetches and global 35-minute timeout remain unchanged; no skip was added.
+
+Downloaded failed hosted run `43943542920` before editing to ignored `outputs/pa-latest-hosted-failure.log`. Its deterministic stage had exactly two failing tests (4,852 passed): navigation incorrectly required literal route equality despite registered `/us/{practice,mock,flashcards}/:courseKey` routes, and the expanded course names generated mock metadata descriptions of 214 characters against the existing under-200 invariant. The navigation test now validates complete parameterized segments with empty/extra/wrong-path negatives, without skipping any active course. Overlong mock descriptions now use concise complete wording retaining the full course name; existing shorter descriptions remain unchanged. The metadata length and uniqueness assertions are unchanged.
+
+Validation on this merge tree (all test commands use `env -i`, `NODE_ENV=test`, and `--require ./scripts/test-safety.cjs`):
+
+- `node --test scripts/exam-review-release.test.mjs scripts/exam-review-restoration.test.mjs scripts/pennsylvania-release.test.mjs`: 46/46 PASS, including 9 + 9 + 28. Exact history objects were verified locally. Log: `outputs/pa-merge-node-tests.log`.
+- `node ./node_modules/vitest/vitest.mjs run --maxWorkers 1 --minWorkers 1 server/courseNavigation.test.ts server/studyUtilityPageMeta.test.ts server/courseInteractiveNavigation.test.ts server/pennsylvaniaRoutes.test.ts server/pennsylvaniaIntegration.test.ts`: 36/36 PASS across five files. Only CI-approved synthetic Stripe/SMTP/JWT fixtures were supplied, with no database URL. The first invocation omitted the synthetic Stripe fixture and failed module initialization; the corrected complete invocation passed. Log: `outputs/pa-merge-targeted-tests.log`.
+- Guarded `tsc --noEmit` and `tsc --noEmit -p tsconfig.scripts.json`: both PASS. Log: `outputs/pa-merge-typecheck.log`.
+- Read-only behavior digest derivation matches the existing loader stamp `49566ace92b4c02dabeb9879444b548bd1bc3cc97a0d00c0e2e9573c8f0d8881`; no stamp rewrite or behavior-contract change. No engine/resource rerun or broad inherited suite was performed.
+- Restoration scripts/core and restoration documentation are byte-identical to the specified main head. Pennsylvania content, manifest/importer/tests, package/lockfile, client navigation helper and engine loader remain unchanged from the specified PA head. Preservation hashes: `outputs/pa-merge-preservation.log`.
+
+Production boundary: parent reports all 604 restoration rows already APPLIED and verified. This repair performed no database operation, no customer/service call, no content regeneration and no new AI review. Do not repeat restoration application. This is a code/CI repair, not a publish: the parent must inspect the new exact-head hosted run and handle any release checkpoint/publish decision separately. New hosted registration and final merge SHA are supplied in the task handoff rather than guessed here before commit.

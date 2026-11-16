@@ -4,7 +4,7 @@ import { mkdtempSync, readFileSync, writeFileSync, rmSync, symlinkSync, copyFile
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { build } from "esbuild";
-import { getAllActiveCourseKeys } from "../../../shared/courseRegistry";
+import { eligibleInteractiveCourseKeys } from "../../../shared/interactiveEligibility";
 import { interactiveModes } from "../../../shared/interactiveSessions";
 import { InteractiveContentEngine, effectiveReleaseVersion } from "./loader";
 import { committedOverlayDocuments, compileOverlays, type ContentOverlay } from "./overlay";
@@ -80,7 +80,7 @@ describe("bounded external overlay runtime", () => {
     const documents = committedOverlayDocuments() as ContentOverlay[];
     const reference = new InteractiveContentEngine(undefined, documents) as any;
     const lazy = new InteractiveContentEngine() as any;
-    const keys = getAllActiveCourseKeys().filter(key => key !== "electrician-309a"); expect(keys).toHaveLength(38);
+    const keys = eligibleInteractiveCourseKeys(); expect(keys).toHaveLength(38);
     const proofs: unknown[] = [];
     for (const key of keys) {
       expect(lazy.getCatalog(key, true)).toEqual(reference.getCatalog(key, true));

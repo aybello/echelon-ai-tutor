@@ -1,0 +1,88 @@
+{
+  "version": "2026-11-16-v1",
+  "status": "validated-local-candidate-not-imported",
+  "bankKey": "pa-class-e-water-distribution",
+  "state": "PA",
+  "stream": "water-distribution",
+  "label": "Pennsylvania Class E Water Distribution",
+  "numberRange": {
+    "start": 1,
+    "end": 500,
+    "status": "proposed-not-reserved-in-production"
+  },
+  "purpose": "Practice questions for the Pennsylvania Drinking Water Class E stand-alone Distribution Examination. Original items in US units. Not an official exam blueprint.",
+  "file": "questions/bank-500.json",
+  "count": 500,
+  "calculations": 120,
+  "sha256": "1e62629fc9a1da75f09c2c57b3c07066c16228160e102a040afa694da64d500d",
+  "modules": {
+    "Network components": 150,
+    "Hydraulics": 130,
+    "Storage": 100,
+    "Water quality and monitoring": 120
+  },
+  "difficulty": {
+    "easy": 117,
+    "medium": 276,
+    "hard": 107
+  },
+  "topics": {
+    "Transmission versus distribution mains, grid layouts (looped, branched, dead ends)": 12,
+    "Pipe materials (ductile iron, PVC, HDPE, steel, concrete): traits, uses, corrosion and handling": 13,
+    "Joints, fittings and thrust restraint": 13,
+    "Valves: gate, butterfly, check, air release, pressure reducing, altitude; operation and exercising": 12,
+    "Fire hydrants: types, operation, flow testing, maintenance": 13,
+    "Service connections: corporation stop, curb stop, service line, meter setting": 12,
+    "Water meters: types, sizing, accuracy, testing, reading": 13,
+    "Booster pump stations and pumping basics": 13,
+    "Backflow prevention assemblies and air gaps: what each type is for": 12,
+    "Mapping, records and valve and hydrant inventories": 12,
+    "Water loss and leak detection basics": 13,
+    "Main installation, repair and return to service (general practice only, no worksite safety instructions)": 12,
+    "Pressure and head: static, residual and dynamic pressure; elevation; psi and feet of head; zones and pressure reducing": 21,
+    "Flow, velocity and continuity: gpm, cfs, MGD; flow = area x velocity; pipe velocity and why it matters": 22,
+    "Energy loss: friction loss, minor losses, effect of pipe diameter, roughness and age (the C factor idea)": 12,
+    "Customer demand: average day, maximum day, peak hour; diurnal pattern; peaking factors; fire flow as a demand": 23,
+    "Pumps and hydraulics: head, flow, pump curve idea, efficiency, water and brake horsepower, cavitation": 12,
+    "Transients: water hammer, causes and general protection": 10,
+    "System performance reading: what a pressure or flow test shows; hydraulic grade line idea": 15,
+    "Purposes of storage: equalizing demand, fire reserve, emergency reserve, pressure maintenance, operating versus dead storage": 16,
+    "Types of storage: ground-level reservoirs, standpipes, elevated tanks, hydropneumatic tanks, and how each affects pressure": 15,
+    "Level control and operation": 15,
+    "Water quality in storage: turnover, water age, stratification and mixing, short circuiting, why residual can fall in a tank": 13,
+    "Tank appurtenances and protection: vents, screens, hatches, overflow pipes, ladders, security, freezing and ice": 11,
+    "Inspection, cleaning and maintenance": 12,
+    "Storage volume thinking: equalization and fire volumes, level versus volume, drawdown": 18,
+    "Disinfectant residual: free chlorine versus chloramine, why residual falls, measuring it": 16,
+    "Water age and residence time: dead ends, low-use areas, looping": 14,
+    "Flushing: why and where, unidirectional versus conventional, planning and judging a program": 14,
+    "Sampling and monitoring: why, site choice, collection technique, what results mean": 15,
+    "Cross-connection control in the system: hazards, protection, testing and records": 12,
+    "Main cleaning and renewal: swabbing, pigging, lining, replacement": 13,
+    "Customer complaints as a monitoring tool": 12,
+    "Corrosion, scale and biofilm in the distribution system": 13,
+    "Nitrification in chloraminated systems": 11,
+    "Energy loss: friction loss, minor losses, effect of pipe diameter, roughness and age": 4,
+    "Pumps and hydraulics: head, flow, pump curve idea, efficiency, water and brake horsepower": 11
+  },
+  "validation": {
+    "valid": true,
+    "errors": [],
+    "count": 500,
+    "calculations": 120,
+    "answerPositions": [
+      125,
+      125,
+      125,
+      125
+    ],
+    "answerCues": {
+      "conceptualCount": 380,
+      "longestRate": 0.3368421052631579,
+      "shortestRate": 0.24473684210526317,
+      "longTells": [],
+      "shortTells": [],
+      "qualifierTells": []
+    }
+  }
+}

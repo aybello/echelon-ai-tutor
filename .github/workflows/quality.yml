@@ -68,6 +68,10 @@ jobs:
           env -i PATH="$PATH" HOME=/tmp NODE_ENV=test \
             ECHELON_TEST_DATABASE=I_UNDERSTAND_THIS_IS_A_DISPOSABLE_LOCAL_DATABASE \
             node --require ./scripts/test-safety.cjs --test scripts/exam-review-release.test.mjs scripts/exam-review-restoration.test.mjs
+      - name: Validate guarded Pennsylvania bank importer transactions
+        run: >-
+          env -i PATH="$PATH" HOME=/tmp NODE_ENV=test
+          node --require ./scripts/test-safety.cjs --test scripts/pennsylvania-release.test.mjs
       - name: Validate blog binding recovery guards
         run: node --test scripts/blogBindingRecovery.test.mjs
       - name: Validate Class III distribution repair content
