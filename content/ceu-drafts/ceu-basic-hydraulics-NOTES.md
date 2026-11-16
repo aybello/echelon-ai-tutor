@@ -41,3 +41,16 @@ To make room I dropped the quick checks on the C factor-driven flow decline, the
 - Module 1 lesson exceeds the word target by about 86 words.
 - Fictional scenario names (Larkspur Hollow, Brightwater Bluffs, Cedar Fork, Willow Gap, Marsh Landing, Pine Terrace, Heron Bay) were not checked against real places.
 - The energy example's per-kWh price (0.10) is a fictional figure and is not given in any question.
+
+## Diagrams
+
+Six original inline SVG figures were added to module lessons (viewBox-only, role="img", aria-label and title, blue #2f6db2 plus greys, each under 3 KB). Drawn from scratch; no outside images used.
+
+- Module 1: pressure at depth, wide and narrow tank, 0/10/20 ft = 0/4.33/8.66 psi (0.433 psi per ft), after the "elevated tanks" paragraph.
+- Module 2: reducer with velocity arrows and Q = A x V, after the continuity "most tested idea" paragraph.
+- Module 3: suction lift versus suction head layouts with TDH terms, after the pressurised-tank sentence in the TDH section.
+- Module 3: pump curve and system curve crossing at the operating point (qualitative, no numbers), after "ask which curve moved".
+- Module 4: water hammer pressure trace (qualitative), after the water hammer paragraph.
+- Module 4: valve recognition strip (gate, globe, ball, butterfly, check), after "Throttling versus isolation".
+
+Reviewer notes: the pump-curve and water-hammer shapes are schematic only. The TDH formulas shown for lift and head layouts take static discharge head from the pump centreline.
