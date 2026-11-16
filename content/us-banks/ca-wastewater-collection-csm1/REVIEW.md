@@ -54,7 +54,7 @@ How does a trunk sewer differ from a typical collector main on a residential str
 
 **Answer: A. It is larger and receives flow from several smaller mains**
 
-Trunk sewers sit higher in the network. They gather flow from many collector mains and are generally bigger than the lines feeding them.
+Trunk sewers sit further downstream in the network. They gather flow from many collector mains and are generally bigger than the lines feeding them.
 
 ### 5: Types of collection systems and their parts (medium)
 
@@ -2008,7 +2008,7 @@ A buffer keeps a vehicle that leaves its lane from reaching workers.
 
 ### 155: Traffic control and work-zone awareness (medium)
 
-Why is a work truck sometimes parked ahead of the crew in the lane?
+Why is a work truck sometimes parked in the lane on the traffic side of the crew?
 
 - **A.** To act as a barrier between traffic and the workers
 - **B.** To mark where the next manhole sits
@@ -2043,7 +2043,7 @@ Which of these is a protective system used in trenching?
 
 **Answer: A. A trench shield or shoring supports**
 
-Protective systems keep the walls from collapsing onto workers. Shields, shoring and sloping are common types.
+Protective systems protect workers from a cave-in. Shields, shoring and sloping are common types.
 
 ### 158: Trenching and shoring awareness (medium)
 
@@ -2307,11 +2307,11 @@ Wet conditions greatly increase the chance of electric shock, especially around 
 
 ### 178: Electrical, lockout/tagout and mechanical energy awareness (medium)
 
-What is stored energy in a piece of equipment?
+What is stored energy in a piece of equipment that has been shut off?
 
 - **A.** The energy used to run the work lights
-- **B.** Fuel that is kept in the truck's tank
-- **C.** The charge stored on a gas meter battery
+- **B.** The noise the engine makes while running
+- **C.** The label that shows the rated capacity
 - **D.** Pressure or a load held after power is off
 
 **Answer: D. Pressure or a load held after power is off**
@@ -2892,16 +2892,16 @@ cfs = gpm divided by 448.8. Substitute the stated values: 900 ÷ 448.8 = 2.01 cf
 
 ### 223: Time, materials and records arithmetic (medium)
 
-A 3-person crew works 6.5 hours each on a cleaning job. How many crew-hours should be recorded for the job?
+A 3-person crew works 6.5 hours each on a cleaning job. How many labor-hours (total hours worked by all crew members) should be recorded for the job?
 
-- **A.** 19.5 crew-hours
-- **B.** 195.0 crew-hours
-- **C.** 2.2 crew-hours
-- **D.** 9.5 crew-hours
+- **A.** 19.5 labor-hours
+- **B.** 195.0 labor-hours
+- **C.** 2.2 labor-hours
+- **D.** 9.5 labor-hours
 
-**Answer: A. 19.5 crew-hours**
+**Answer: A. 19.5 labor-hours**
 
-Crew-hours = number of workers times hours worked. Substitute the stated values: 3 × 6.5 = 19.5 crew-hours. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
+Labor-hours = number of workers times hours worked. Substitute the stated values: 3 × 6.5 = 19.5 labor-hours. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
 ### 224: Time, materials and records arithmetic (hard)
 
@@ -3204,7 +3204,7 @@ Percent = footage cleaned divided by footage planned times 100. Substitute the s
 
 ### 247: Percentages, averages and rates (medium)
 
-Four flow readings are 4.2, 3.8, 4.6 and 4.0 ft/s. What is the average reading?
+Four velocity readings are 4.2, 3.8, 4.6 and 4.0 ft/s. What is the average reading?
 
 - **A.** 16.60 ft/s
 - **B.** 4.60 ft/s

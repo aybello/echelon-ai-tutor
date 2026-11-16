@@ -13,7 +13,7 @@ A 4-in discharge hose (0.333 ft diameter) is 100 ft long. Use volume = 0.785 × 
 A jetting truck carries a 1,500 gal water tank. The crew keeps 10 percent of the tank in reserve, and the jetter uses 60 gpm. How many minutes can the jetter run before the tank is down to the reserve?|Minutes = tank times 0.9 divided by gpm|1500*0.9/60|min|1|25,2.5,27.8|h
 A trash pump moves 900 gpm. Use 1 cfs = 448.8 gpm. What is the flow in cfs?|cfs = gpm divided by 448.8|900/448.8|cfs|2|403920,120.32,15|m
 @Administration|CWEAHB|Time, materials and records arithmetic
-A 3-person crew works 6.5 hours each on a cleaning job. How many crew-hours should be recorded for the job?|Crew-hours = number of workers times hours worked|3*6.5|crew-hours|1|9.5,2.2,195|m
+A 3-person crew works 6.5 hours each on a cleaning job. How many labor-hours (total hours worked by all crew members) should be recorded for the job?|Labor-hours = number of workers times hours worked|3*6.5|labor-hours|1|9.5,2.2,195|m
 A stockroom has 480 ft of pipe. One job uses 6 sections that are each 20 ft long, and a second job uses 4 sections that are each 20 ft long. How many feet of pipe remain?|Remaining = starting feet minus the feet used on both jobs|480-(6*20+4*20)|ft|0|200,400,360|h
 A work truck odometer reads 45230 miles at the start of a shift and 45312 miles at the end. The truck uses 1 gallon of fuel for every 8 miles. How many gallons were used?|Gallons = (end reading minus start reading) divided by miles per gallon|(45312-45230)/8|gal|2|656,0.1,74|m
 @Math|CWEAHB|Unit conversions
@@ -42,7 +42,7 @@ The upstream invert is 101.75 ft and the downstream invert is 100.95 ft, with 25
 A new 300 ft sewer must be laid at a minimum slope of 0.4 percent. What is the minimum fall in feet over the run?|Fall = length times percent divided by 100|300*0.4/100|ft|1|120,750,12|m
 @Math|CWEAHB|Percentages, averages and rates
 A crew plans to clean 2,500 ft of sewer and has finished 1,850 ft. What percent of the planned footage has been cleaned?|Percent = footage cleaned divided by footage planned times 100|1850/2500*100|%|0|26,135,650|m
-Four flow readings are 4.2, 3.8, 4.6 and 4.0 ft/s. What is the average reading?|Average = sum of readings divided by number of readings|(4.2+3.8+4.6+4.0)/4|ft/s|2|16.6,5.53,4.60|m
+Four velocity readings are 4.2, 3.8, 4.6 and 4.0 ft/s. What is the average reading?|Average = sum of readings divided by number of readings|(4.2+3.8+4.6+4.0)/4|ft/s|2|16.6,5.53,4.60|m
 A crew cleans 1,260 ft of sewer in 4.5 hours. How many feet are cleaned per hour?|Feet per hour = footage divided by hours|1260/4.5|ft/hr|0|5670,1256,840|m
 A service area has 18,000 people and an average flow of 1.35 MGD. Use 1 MGD = 1,000,000 gal per day. What is the flow in gallons per person per day?|Gallons per person per day = flow in gallons per day divided by population|1.35*1000000/18000|gal/person/day|0|13333,1350000,7500|h
 Dry-weather flow in a basin is 0.8 MGD and the peak wet-weather flow is 2.0 MGD. By what percent does the peak exceed the dry-weather flow?|Percent increase = (peak minus dry) divided by dry times 100|(2.0-0.8)/0.8*100|%|0|250,60,40|h

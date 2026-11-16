@@ -21,3 +21,18 @@ All 250 questions were read in two chunks of 125. Each chunk also held two delib
 - The CWEA candidate handbook was not available to the writers or reviewers here. The questions follow the exam outline and domain weights in the dossier and general, well-established collection-system practice. They are not checked line by line against the handbook.
 - Weaker wrong options remain in a few questions (for example CA-CSM1-101). They are not wrong, only easy to rule out.
 - No question here has been imported, activated or shown to learners.
+
+## Second review by other companies' models (2026-11-16)
+
+After the corrections above, the rebuilt bank was sent to five more models in the same two chunks of 125, with a fresh set of two planted errors per chunk: Gemini 4 (hydrogen, argon, carbon) and GPT-6 Sol and GPT-6.1 Sol.
+
+- **Planted errors caught: all five models caught all 4 of 4.**
+- **Real problems they found, corrected here:**
+  - CA-CSM1-004 (Gemini hydrogen and carbon): the explanation said trunk sewers "sit higher in the network", which can be read as higher in elevation. It now says "further downstream". The Claude reviewers had passed this one.
+  - CA-CSM1-155 (both GPT models): "parked ahead of the crew" did not say which side. It now says "on the traffic side of the crew".
+  - CA-CSM1-223 (both GPT models): "crew-hours" could mean the crew as a unit. It now says labor-hours, defined as total hours worked by all crew members.
+  - CA-CSM1-157 (GPT-6): the explanation said a protective system keeps trench walls from collapsing; a shield protects workers from a cave-in. Reworded.
+  - CA-CSM1-178 (GPT-6.1 Sol): fuel and battery charge are also stored energy. The question now says equipment that has been shut off, and those two options were replaced.
+  - CA-CSM1-247 (GPT-6.1 Sol): four readings in ft/s were called flow readings. They are now velocity readings.
+- **Flagged but left as written:** GPT-6.1 Sol raised about 15 more points that are judgement calls at entry level (for example CA-CSM1-011, 012, 013, 031, 056, 109, 138, 164, 167). They were read and judged acceptable for a Grade 1 recognition-level question. They are listed so a later reviewer can look again.
+- The bank was rebuilt after these edits: 250 questions, build check passes.
