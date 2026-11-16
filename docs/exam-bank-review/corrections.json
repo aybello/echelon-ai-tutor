@@ -1,16 +1,16 @@
 {
  "export": "docs/exam-bank-export/2026-11-16 (commit d118897a)",
- "chunksDone": 54,
+ "chunksDone": 60,
  "chunksTotal": 174,
- "questionsReviewed": 7534,
+ "questionsReviewed": 8406,
  "questionsTotal": 24350,
- "problems": 328,
+ "problems": 418,
  "byVerdict": {
-  "UNCLEAR": 98,
-  "WRONG": 145,
-  "JURISDICTION": 44,
-  "UNITS": 36,
-  "OFF-TOPIC": 5
+  "UNCLEAR": 125,
+  "WRONG": 189,
+  "JURISDICTION": 58,
+  "UNITS": 39,
+  "OFF-TOPIC": 7
  },
  "byBank": {
   "class1": 30,
@@ -22,7 +22,9 @@
   "class2-wastewater-coll": 59,
   "class2-water": 30,
   "class2-water-dist": 73,
-  "class3-wastewater": 49
+  "class3-wastewater": 49,
+  "class3-wastewater-coll": 73,
+  "class3-water": 17
  },
  "chunks": [
   "chunk-001",
@@ -78,7 +80,13 @@
   "chunk-051",
   "chunk-052",
   "chunk-053",
-  "chunk-054"
+  "chunk-054",
+  "chunk-055",
+  "chunk-056",
+  "chunk-057",
+  "chunk-058",
+  "chunk-059",
+  "chunk-060"
  ],
  "corrections": [
   {
@@ -11711,6 +11719,3253 @@
       "c": "0.14 x 0.573 = 0.080 d⁻¹"
      }
     ]
+   }
+  },
+  {
+   "id": 156158,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 8,
+   "verdict": "UNCLEAR",
+   "note": "Premise is invented: O. Reg. 170/03 (Drinking Water Systems) requires owners/operating authorities of drinking water systems to report adverse test results immediately to the Spills Action Centre and the local Medical Officer of Health; it does not treat a wastewater collection failure as an adverse condition. Explanation is not supported by the regulation. Reframed to the actual requirement.",
+   "original": {
+    "question": "Under O. Reg. 170/03 of the Safe Drinking Water Act, what is the reporting requirement for an adverse water quality incident that affects a municipal drinking water system due to a wastewater collection system failure?",
+    "options": [
+     "Reporting is only required if there is a direct impact on public health.",
+     "The incident must be reported to the Spills Action Centre (SAC) immediately upon discovery.",
+     "Reporting is not required under O. Reg. 170/03 as it pertains to wastewater.",
+     "A written report must be submitted within 7 days to the local Medical Officer of Health."
+    ],
+    "correctIndex": 1,
+    "explanation": "While O. Reg. 170/03 primarily concerns drinking water, any wastewater collection system failure that could impact a drinking water source or system is considered an adverse condition and must be immediately reported to the Spills Action Centre (SAC)."
+   },
+   "fix": {
+    "question": "Under O. Reg. 170/03 (Drinking Water Systems) of the Safe Drinking Water Act, how must an adverse drinking water test result or other adverse water quality incident be reported?",
+    "options": [
+     "Reporting is only required if there is a confirmed direct impact on public health.",
+     "Immediately to the Spills Action Centre (SAC) and the local Medical Officer of Health.",
+     "Reporting is not required if the system is later flushed and resampled.",
+     "A written report within 7 days to the local Medical Officer of Health only."
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 170/03 requires adverse water quality incidents to be reported immediately to the Spills Action Centre and the local Medical Officer of Health, followed by corrective action and resampling.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156164,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 14,
+   "verdict": "WRONG",
+   "note": "O. Reg. 242/05 is not the Ontario spills regulation. Spills are governed by Part X of the Environmental Protection Act and O. Reg. 675/98 (Classification and Exemption of Spills and Reporting of Discharges). Reportable spills must be reported immediately to the MECP Spills Action Centre; a written report is only required if requested by the Ministry. The 'no later than 30 days' rule is not in the regulation.",
+   "original": {
+    "question": "According to O. Reg. 242/05 (Spills Regulation) under the Environmental Protection Act, what is the maximum time allowed for a written report to be submitted to the Ministry of the Environment, Conservation and Parks (MECP) after a spill has occurred?",
+    "options": [
+     "Immediately, via telephone, followed by a written report within 24 hours.",
+     "Within 7 days of the spill's discovery, regardless of its magnitude.",
+     "As soon as reasonably possible, but no later than 30 days.",
+     "Only if requested by a Provincial Officer, within a specified timeframe."
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 242/05 requires immediate notification of spills to the Spills Action Centre (SAC). A written report must be submitted as soon as reasonably possible, but no later than 30 days after the spill, unless an extension is granted."
+   },
+   "fix": {
+    "question": "Under Part X of the Environmental Protection Act (and O. Reg. 675/98), how must an operator report a spill of sewage that is above the reportable threshold or causes an adverse effect?",
+    "options": [
+     "Immediately to the Ministry's Spills Action Centre (SAC) by telephone.",
+     "By written report within 7 days to the local municipal council.",
+     "Within 30 days to the Medical Officer of Health.",
+     "Only after a Provincial Officer has visited the site."
+    ],
+    "correctIndex": 0,
+    "explanation": "Part X of the EPA requires immediate notification of a reportable spill to the Ministry (Spills Action Centre) and to the municipality and owner of the substance; a written report is provided if the Ministry requires one.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156165,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 15,
+   "verdict": "UNCLEAR",
+   "note": "Pipe bursting is generally limited to small and medium diameters and is not the standard choice for a severely deteriorated large-diameter trunk sewer; CIPP (option B) is a standard solution that restores structure with minimal diameter reduction, so option B is at least equally defensible and is the better answer. Conflicts with 156202 which keys CIPP for the same scenario.",
+   "original": {
+    "question": "Which trenchless technology is most suitable for rehabilitating a severely deteriorated, large-diameter trunk sewer with significant structural damage, where maintaining the existing pipe's hydraulic capacity is critical?",
+    "options": [
+     "Sliplining with a smaller diameter pipe, reducing hydraulic capacity.",
+     "Cured-in-place pipe (CIPP) lining, which can restore structural integrity with minimal diameter reduction.",
+     "Pipe bursting, which replaces the existing pipe with a new one of the same or larger diameter.",
+     "Open-cut excavation and replacement, which is not a trenchless method."
+    ],
+    "correctIndex": 2,
+    "explanation": "Pipe bursting replaces the old pipe with a new one, often of the same or larger diameter, thereby maintaining or increasing hydraulic capacity while addressing severe structural damage without extensive excavation."
+   },
+   "fix": {
+    "question": "Which trenchless technology is most suitable for rehabilitating a severely deteriorated, large-diameter trunk sewer with significant structural damage, where maintaining the existing pipe's hydraulic capacity is critical?",
+    "options": [
+     "Sliplining with a smaller diameter pipe, reducing hydraulic capacity.",
+     "Cured-in-place pipe (CIPP) lining, which restores structural integrity with minimal diameter reduction.",
+     "Open-cut excavation and replacement, which is not a trenchless method.",
+     "Leaving the pipe in place and relying on increased jetting frequency."
+    ],
+    "correctIndex": 1,
+    "explanation": "CIPP forms a new structural, jointless pipe inside the old one with minimal loss of diameter, and its smooth wall helps preserve hydraulic capacity, without extensive excavation. Sliplining reduces capacity, open-cut is not trenchless, and jetting does not address structural damage.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156168,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 18,
+   "verdict": "UNCLEAR",
+   "note": "Answer is not defensible as 'most likely': a potable water main leaking into a sanitary sewer is rare, while a new illicit connection or discharge, industrial discharge, or elevated groundwater are all more common explanations of increased dry weather flow. Reframed so one answer is clearly best.",
+   "original": {
+    "question": "A Class 3 operator is reviewing flow monitoring data from a sub-catchment area. A sudden, unexplained increase in dry weather flow is observed. What is the most likely cause?",
+    "options": [
+     "Increased industrial discharge during the night shift.",
+     "A significant rise in groundwater infiltration into the sewer system.",
+     "An undetected cross-connection from a potable water main.",
+     "Seasonal increase in residential water consumption."
+    ],
+    "correctIndex": 2,
+    "explanation": "An unexplained increase in dry weather flow often indicates an illicit connection or a cross-connection, such as a leaking water main directly into the sewer, as groundwater infiltration is more variable and seasonal."
+   },
+   "fix": {
+    "question": "A Class 3 operator reviewing flow monitoring data from a sub-catchment sees a sudden, sustained step increase in dry weather flow with no rainfall, a flat diurnal pattern shape change, and no change in groundwater levels. What should be investigated first?",
+    "options": [
+     "A new illicit connection or unauthorized discharge (e.g., sump pump, pool drain or cooling water) to the sanitary sewer",
+     "A rainfall-derived inflow event",
+     "A seasonal decrease in residential water use",
+     "A calibration drift that would lower, not raise, the reading"
+    ],
+    "correctIndex": 0,
+    "explanation": "A sudden, sustained step change in dry weather flow with no rainfall or groundwater change points to a new connection or discharge, such as a sump pump, drain or cooling water connected to the sanitary sewer. Rain-derived inflow needs rainfall, and a seasonal decrease in water use would reduce flow.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156205,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 55,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 170/03 is the Drinking Water Systems regulation and does not govern SSO reporting; the explanation concedes this. Sewage overflow/spill reporting is under Part X of the EPA and O. Reg. 675/98 (immediate report to the Spills Action Centre and the municipality).",
+   "original": {
+    "question": "When developing an emergency response plan for a major sanitary sewer overflow (SSO) in a sensitive environmental area, what is the primary regulatory requirement for reporting under Ontario Regulation 170/03?",
+    "options": [
+     "Immediate notification to the Spills Action Centre (SAC) and the Medical Officer of Health",
+     "Submission of a detailed written report to the Ministry of the Environment, Conservation and Parks (MECP) within 72 hours",
+     "Notification of affected residents within 24 hours of the overflow event",
+     "Reporting the incident to the local municipal council within one week"
+    ],
+    "correctIndex": 0,
+    "explanation": "Under O. Reg. 170/03 (Safe Drinking Water Act, not directly for SSO but similar reporting principles apply for environmental spills), and more broadly O. Reg. 675/98 (Spills of Pollutants), immediate notification to the Spills Action Centre (SAC) and the Medical Officer of Health is crucial for any adverse event, including significant SSOs."
+   },
+   "fix": {
+    "question": "When developing an emergency response plan for a major sanitary sewer overflow (SSO) in a sensitive environmental area, what is the primary regulatory reporting requirement under Part X of the Environmental Protection Act and O. Reg. 675/98?",
+    "options": [
+     "Immediate notification to the Spills Action Centre (SAC) and the municipality",
+     "Submission of a detailed written report to the Ministry within 72 hours in all cases",
+     "Notification of affected residents within 24 hours of the overflow event",
+     "Reporting the incident to the local municipal council within one week"
+    ],
+    "correctIndex": 0,
+    "explanation": "Part X of the EPA and O. Reg. 675/98 require immediate notification of a reportable spill, including a sewage overflow, to the Ministry's Spills Action Centre and the municipality. A written report is provided if the Ministry requires one.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156211,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 61,
+   "verdict": "UNCLEAR",
+   "note": "O. Reg. 632/05 requires a hazard assessment, a written entry plan, atmospheric testing, ventilation, rescue provisions, and trained workers; it does not literally mandate a 'confined space entry permit' (a permit system is common practice). Explanation overstates the regulation.",
+   "original": {
+    "question": "A Class 3 operator is preparing to enter a confined space for sewer inspection. According to Ontario Regulation 632/05 (Confined Spaces), what is the most important step to take before entry?",
+    "options": [
+     "Completing a confined space entry permit and ensuring all atmospheric hazards are controlled",
+     "Notifying the local fire department of the planned entry beforehand",
+     "Ensuring all personnel have completed basic first aid training",
+     "Having a spare SCBA unit readily available at the entry point"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario Regulation 632/05 mandates the completion of a confined space entry permit and ensuring all atmospheric hazards (e.g., oxygen deficiency, toxic gases) are controlled or continuously monitored before anyone enters a confined space."
+   },
+   "fix": {
+    "question": "A Class 3 operator is preparing to enter a confined space for sewer inspection. According to Ontario Regulation 632/05 (Confined Spaces), what is the most important step to take before entry?",
+    "options": [
+     "Completing the hazard assessment and written entry plan, and ensuring atmospheric hazards are tested and controlled",
+     "Notifying the local fire department of the planned entry beforehand",
+     "Ensuring all personnel have completed basic first aid training",
+     "Having a spare SCBA unit readily available at the entry point"
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 632/05 requires a hazard assessment, a written entry plan (including atmospheric testing, ventilation, and rescue procedures), and trained workers before entry. Many employers also use an entry permit to document this.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156222,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 72,
+   "verdict": "UNCLEAR",
+   "note": "Both HDPE and vitrified clay pipe (VCP) are classically cited as highly resistant to chemical corrosion and abrasion; VCP is often considered the most chemically inert, so the question has two defensible answers. Rewritten with clearly inferior distractors.",
+   "original": {
+    "question": "A Class 3 operator is evaluating different pipe materials for a new sanitary sewer installation in an area with aggressive soil conditions. Which material would offer the best resistance to chemical corrosion and abrasion?",
+    "options": [
+     "High-Density Polyethylene (HDPE) pipe",
+     "Vitrified Clay Pipe (VCP)",
+     "Ductile Iron Pipe (DIP)",
+     "Reinforced Concrete Pipe (RCP)"
+    ],
+    "correctIndex": 0,
+    "explanation": "HDPE pipe is known for its excellent chemical resistance to a wide range of corrosive substances found in aggressive soils and wastewater, as well as its high abrasion resistance, making it suitable for challenging environments."
+   },
+   "fix": {
+    "question": "A Class 3 operator is evaluating different pipe materials for a new sanitary sewer installation in an area with aggressive soil conditions. Which material would offer the best resistance to chemical corrosion?",
+    "options": [
+     "Unprotected reinforced concrete pipe",
+     "Unlined ductile iron pipe",
+     "Corrugated metal pipe",
+     "High-Density Polyethylene (HDPE) pipe"
+    ],
+    "correctIndex": 3,
+    "explanation": "HDPE has excellent chemical resistance to aggressive soils and wastewater and is highly abrasion resistant. Unprotected concrete, unlined ductile iron, and corrugated metal are all susceptible to acid, sulfide, or soil corrosion.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156226,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 76,
+   "verdict": "JURISDICTION",
+   "note": "CMOM is a US EPA framework; Ontario does not have a CMOM regulatory program. 'Ensure regulatory compliance' presents it as a governing framework. Reframe as US EPA concept or use Ontario ECA / MECP framework.",
+   "original": {
+    "question": "What is the primary objective of a 'Capacity, Management, Operations, and Maintenance' (CMOM) program for a wastewater collection system?",
+    "options": [
+     "To reduce sanitary sewer overflows (SSOs) and ensure regulatory compliance",
+     "To maximize the lifespan of all collection system infrastructure assets",
+     "To minimize the operational budget for collection system maintenance",
+     "To implement advanced SCADA systems across the entire network"
+    ],
+    "correctIndex": 0,
+    "explanation": "A CMOM program is a comprehensive framework designed to identify and address deficiencies in a collection system's capacity, management, operations, and maintenance practices with the primary goal of reducing SSOs and achieving regulatory compliance."
+   },
+   "fix": {
+    "question": "In the US EPA's 'Capacity, Management, Operations, and Maintenance' (CMOM) framework, what is the primary objective of a CMOM program for a wastewater collection system?",
+    "options": [
+     "To reduce sanitary sewer overflows (SSOs) and demonstrate proper system management",
+     "To maximize the lifespan of all collection system infrastructure assets",
+     "To minimize the operational budget for collection system maintenance",
+     "To implement advanced SCADA systems across the entire network"
+    ],
+    "correctIndex": 0,
+    "explanation": "The US EPA CMOM framework is a comprehensive approach to identify and address deficiencies in capacity, management, operations, and maintenance, with the goal of reducing SSOs. In Ontario the comparable obligations are set through the system's Environmental Compliance Approval.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156271,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 121,
+   "verdict": "WRONG",
+   "note": "O. Reg. 129/04 is the Licensing of Sewage Works Operators regulation. It does not contain an owner duty to prevent bypasses and overflows; those obligations arise from the ECA and Part X of the EPA / OWRA.",
+   "original": {
+    "question": "According to O. Reg. 129/04, what is the primary responsibility of a wastewater collection system owner regarding bypasses or overflows?",
+    "options": [
+     "To report all bypasses and overflows to the local municipality within 72 hours.",
+     "To prevent bypasses and overflows to the maximum extent possible.",
+     "To ensure all bypasses and overflows are treated with chlorine before discharge.",
+     "To collect samples from all bypasses and overflows for laboratory analysis."
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 129/04 emphasizes the responsibility of the system owner to prevent bypasses and overflows to the maximum extent possible. While reporting and sampling are often required, the overarching principle is prevention. Treatment is not always feasible or required for all overflows."
+   },
+   "fix": {
+    "question": "Which Ontario regulation governs the licensing of wastewater (sewage works) operators?",
+    "options": [
+     "O. Reg. 170/03",
+     "O. Reg. 129/04",
+     "O. Reg. 903",
+     "O. Reg. 632/05"
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 129/04 (Licensing of Sewage Works Operators) sets the classification and licensing requirements for wastewater operators. O. Reg. 170/03 covers drinking water systems and O. Reg. 632/05 covers confined spaces.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156272,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 122,
+   "verdict": "JURISDICTION",
+   "note": "CMOM (and 'demonstrating proper system management to regulators', 'CMOM is voluntary') is a US EPA concept, not an Ontario regulatory program; Ontario requirements come from the ECA and MECP procedures.",
+   "original": {
+    "question": "What is 'capacity, management, operation, and maintenance' (CMOM) program?",
+    "options": [
+     "A type of sewer cleaning chemical",
+     "A comprehensive program framework for managing collection systems: Capacity (adequate for current/future flows), Management (asset management, staffing, funding), Operation (monitoring, optimization), and Maintenance (preventive, corrective, emergency) — demonstrating proper system management to regulators",
+     "CMOM is voluntary",
+     "Only large systems need CMOM"
+    ],
+    "correctIndex": 1,
+    "explanation": "CMOM elements: Capacity (system evaluation, I&I program, capital planning for growth), Management (organizational structure, adequate staffing, training, funding mechanism, information management), Operation (monitoring — flow, SCADA; optimization — pump scheduling, storage use; emergency response), and Maintenance (preventive — cleaning, inspection schedules; corrective — repair prioritization; equipment — pump station maintenance). Purpose: demonstrate due diligence, reduce SSOs, and satisfy regulatory requirements."
+   },
+   "fix": {
+    "question": "In the US EPA's 'capacity, management, operation, and maintenance' (CMOM) framework, what is a CMOM program?",
+    "options": [
+     "A type of sewer cleaning chemical",
+     "A comprehensive program framework for managing collection systems: Capacity, Management, Operation, and Maintenance, used to demonstrate proper system management and reduce SSOs",
+     "A framework that is mandatory under all Ontario Environmental Compliance Approvals",
+     "A program only large systems may adopt"
+    ],
+    "correctIndex": 1,
+    "explanation": "CMOM is a US EPA framework covering capacity (system evaluation, I&I program), management (organization, staffing, funding), operation (monitoring, optimization, emergency response), and maintenance (preventive, corrective). It is not an Ontario-specific regulatory requirement.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156282,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 132,
+   "verdict": "JURISDICTION",
+   "note": "Explanation and option wording rely on the US EPA Nine Minimum Controls and Long Term Control Plan (LTCP). In Ontario, CSO control is governed by MECP Procedures F-5-1 and F-5-5 and the system's ECA. The option text should not rely on the US LTCP framework.",
+   "original": {
+    "question": "What is 'combined sewer overflow' (CSO) management and long-term control?",
+    "options": [
+     "Combining different sewer types",
+     "Managing overflows from combined sewers during wet weather: short-term (maximize in-system storage, real-time control), medium-term (separation, storage tunnels, treatment), and long-term control plan (LTCP) — balancing: environmental protection, affordability, and implementation timeline",
+     "CSOs are not regulated",
+     "Only separate the sewers"
+    ],
+    "correctIndex": 1,
+    "explanation": "CSO management: Nine Minimum Controls (NMC — immediate: proper O&M, maximize storage, maximize treatment, pretreatment, public notification, monitoring, pollution prevention, dry weather overflow elimination, and control of solid/floatable materials). LTCP: characterize system (model, monitor), demonstrate NMC implementation, evaluate alternatives (separation, storage, treatment, green infrastructure), select controls (cost-effective, meet water quality objectives), and implement (phased — often 20+ year program). Goal: meet water quality standards in receiving water."
+   },
+   "fix": {
+    "question": "What is combined sewer overflow (CSO) management and long-term control in Ontario?",
+    "options": [
+     "Combining different sewer types",
+     "Managing overflows from combined sewers during wet weather per MECP Procedure F-5-5: maximize in-system storage and real-time control, then separation, storage, or treatment, within a long-term CSO control plan balancing environmental protection, affordability, and schedule",
+     "CSOs are not regulated",
+     "Only separate the sewers"
+    ],
+    "correctIndex": 1,
+    "explanation": "In Ontario, MECP Procedures F-5-1 and F-5-5 set the treatment and control requirements for combined sewer systems. Controls include maximizing in-system storage, real-time control, storage tanks or tunnels, treatment, green infrastructure, and sewer separation, phased over a long-term program. The US EPA Nine Minimum Controls framework does not apply in Ontario.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156285,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 135,
+   "verdict": "JURISDICTION",
+   "note": "22.0% upper limit is the US OSHA figure. Ontario O. Reg. 632/05 defines an oxygen-enriched atmosphere as more than 23.0% oxygen; acceptable range is 19.5% to 23.0%.",
+   "original": {
+    "question": "A Class 3 operator is performing a confined space entry into a sewer manhole. What is the minimum acceptable oxygen concentration for safe entry without respiratory protection?",
+    "options": [
+     "16.5% to 20.0%",
+     "18.0% to 23.5%",
+     "19.5% to 22.0%",
+     "20.9% (atmospheric oxygen level)"
+    ],
+    "correctIndex": 2,
+    "explanation": "The generally accepted safe oxygen concentration for confined space entry without respiratory protection is 19.5% to 22.0%. Below 19.5% is considered oxygen deficient, and above 22.0% is considered oxygen enriched, both of which are hazardous."
+   },
+   "fix": {
+    "question": "A Class 3 operator is performing a confined space entry into a sewer manhole in Ontario. What is the acceptable oxygen concentration range for entry without respiratory protection under O. Reg. 632/05?",
+    "options": [
+     "16.5% to 20.0%",
+     "18.0% to 23.5%",
+     "19.5% to 23.0%",
+     "20.9% (atmospheric oxygen level)"
+    ],
+    "correctIndex": 2,
+    "explanation": "Under O. Reg. 632/05, an atmosphere with less than 19.5% oxygen is oxygen deficient and one with more than 23.0% is oxygen enriched. Both are hazardous, so the acceptable range for entry without respiratory protection is 19.5% to 23.0%.",
+    "steps": [
+     {
+      "l": "Identify Question Type",
+      "c": "The question asks for the acceptable oxygen concentration range for confined space entry into a manhole without respiratory protection. This is a safety limit recall question."
+     },
+     {
+      "l": "Recall the Benchmarks",
+      "c": "Normal atmospheric oxygen is 20.9 percent. Below 19.5 percent the atmosphere is oxygen deficient, and above 23.0 percent it is oxygen enriched under Ontario's O. Reg. 632/05."
+     },
+     {
+      "l": "Compare the Options",
+      "c": "Options starting at 16.5 and 18.0 percent allow oxygen-deficient entry, and 20.9 percent alone is a single value rather than an acceptance range."
+     },
+     {
+      "l": "Select Correct Answer",
+      "c": "Option C, 19.5 percent to 23.0 percent, is the Ontario range. Continuous monitoring plus ventilation are still required."
+     }
+    ]
+   }
+  },
+  {
+   "id": 156300,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 150,
+   "verdict": "UNCLEAR",
+   "note": "Two options share the regulation number O. Reg. 129/04 with different titles; the real title of O. Reg. 129/04 is 'Licensing of Sewage Works Operators'. The explanation's cited title ('Training and Certification of Operators of Water and Wastewater Facilities') is not the regulation's title (O. Reg. 128/04 covers drinking water operators).",
+   "original": {
+    "question": "What is the primary regulatory document that governs the licensing and certification of wastewater operators in Ontario?",
+    "options": [
+     "The Environmental Protection Act (EPA).",
+     "The Ontario Water Resources Act (OWRA).",
+     "O. Reg. 129/04 (Sewage Works Certificates of Approval).",
+     "O. Reg. 129/04 (Wastewater Operator Certification)."
+    ],
+    "correctIndex": 3,
+    "explanation": "O. Reg. 129/04, specifically 'O. Reg. 129/04: Training and Certification of Operators of Water and Wastewater Facilities', is the primary regulatory document that governs the licensing and certification of wastewater operators in Ontario. The other regulations listed are relevant to wastewater but do not specifically govern operator certification."
+   },
+   "fix": {
+    "question": "What is the primary regulatory document that governs the licensing of wastewater operators in Ontario?",
+    "options": [
+     "The Environmental Protection Act (EPA).",
+     "The Ontario Water Resources Act (OWRA).",
+     "O. Reg. 128/04 (Certification of Drinking Water System Operators and Water Quality Analysts).",
+     "O. Reg. 129/04 (Licensing of Sewage Works Operators)."
+    ],
+    "correctIndex": 3,
+    "explanation": "O. Reg. 129/04, Licensing of Sewage Works Operators, under the OWRA, governs the licensing and classification of wastewater operators in Ontario. O. Reg. 128/04 covers drinking water operators.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156306,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 156,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 170/03 is the Drinking Water Systems regulation under the Safe Drinking Water Act; it does not govern sanitary sewer overflows. Sewage spill reporting in Ontario falls under Part X of the Environmental Protection Act and O. Reg. 675/98 (reporting to the Spills Action Centre). The marked action is right but the cited authority is wrong.",
+   "original": {
+    "question": "During a significant storm event, a Class 3 operator observes a sanitary sewer overflow (SSO) from a manhole. What is the immediate priority action, in accordance with O. Reg. 170/03 and best operating practices?",
+    "options": [
+     "Notify the local media about the incident to preempt public complaints.",
+     "Initiate immediate containment and cleanup efforts, and notify the Spills Action Centre (SAC) and Medical Officer of Health.",
+     "Wait for the storm to subside before investigating the cause of the overflow.",
+     "Divert the flow to a nearby storm sewer to alleviate pressure in the sanitary system."
+    ],
+    "correctIndex": 1,
+    "explanation": "In Ontario, any discharge of sewage to the natural environment is considered a spill. O. Reg. 170/03 requires immediate notification of adverse conditions, including spills, to the Spills Action Centre (SAC) and the Medical Officer of Health, along with taking steps to contain and clean up the spill."
+   },
+   "fix": {
+    "question": "During a significant storm event, a Class 3 operator observes a sanitary sewer overflow (SSO) from a manhole. What is the immediate priority action, in accordance with Part X of the Environmental Protection Act (spills) and best operating practices?",
+    "options": [
+     "Notify the local media about the incident to preempt public complaints.",
+     "Initiate immediate containment and cleanup efforts, and notify the Spills Action Centre (SAC) and Medical Officer of Health.",
+     "Wait for the storm to subside before investigating the cause of the overflow.",
+     "Divert the flow to a nearby storm sewer to alleviate pressure in the sanitary system."
+    ],
+    "correctIndex": 1,
+    "explanation": "In Ontario, a discharge of sewage to the natural environment is a spill. Part X of the Environmental Protection Act and O. Reg. 675/98 require immediate reporting to the Ministry's Spills Action Centre (and notification of the local Medical Officer of Health and municipality as per the system's procedures), along with taking steps to contain and clean up the spill.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156314,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 164,
+   "verdict": "WRONG",
+   "note": "The description (inserting a new, smaller-diameter pipe into the existing pipe) is sliplining, not CIPP. CIPP is a resin-impregnated tube cured to the host pipe wall, not a smaller pipe inserted. Pipe bursting breaks the old pipe. No option matches the stem as written; key is wrong.",
+   "original": {
+    "question": "A Class 3 operator is evaluating different rehabilitation methods for a structurally failing sanitary sewer. Which method involves inserting a new, smaller diameter pipe into the existing pipe without excavation?",
+    "options": [
+     "Open-cut replacement.",
+     "Cured-in-place pipe (CIPP) lining.",
+     "Point repair with excavation.",
+     "Pipe bursting."
+    ],
+    "correctIndex": 1,
+    "explanation": "Cured-in-place pipe (CIPP) lining is a trenchless rehabilitation method where a resin-impregnated felt tube is inverted or pulled into an existing pipe and then cured, forming a new, structural pipe within the old one."
+   },
+   "fix": {
+    "question": "A Class 3 operator is evaluating different rehabilitation methods for a structurally failing sanitary sewer. Which method involves inserting a new, smaller diameter pipe into the existing pipe without excavating the full length?",
+    "options": [
+     "Open-cut replacement.",
+     "Cured-in-place pipe (CIPP) lining.",
+     "Point repair with excavation.",
+     "Sliplining."
+    ],
+    "correctIndex": 3,
+    "explanation": "Sliplining pushes or pulls a new, smaller-diameter pipe (e.g., HDPE) through the existing host pipe and grouts the annular space, needing only insertion and receiving pits. It reduces diameter and hydraulic capacity. CIPP instead cures a resin-impregnated felt tube against the host pipe wall, and pipe bursting fractures the old pipe while pulling in a new one.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156335,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 185,
+   "verdict": "UNCLEAR",
+   "note": "A conventional magnetic flow meter requires a full pipe and is not suited to a partially full gravity trunk sewer, where area-velocity (ultrasonic) or flume/weir measurement is normal. Ultrasonic is also defensible. The stem as written gives two arguable answers; restated for a full-flowing force main where mag meters are the standard choice.",
+   "original": {
+    "question": "A Class 3 operator is preparing to install a new flow meter in a critical trunk sewer. What type of flow meter is generally preferred for its accuracy and minimal obstruction to flow in large diameter sewers?",
+    "options": [
+     "Weir and flume meters.",
+     "Magnetic flow meters.",
+     "Ultrasonic (Doppler) flow meters.",
+     "Propeller meters."
+    ],
+    "correctIndex": 1,
+    "explanation": "Magnetic flow meters are highly accurate for conductive fluids like wastewater, offer minimal head loss as they do not obstruct the flow path, and are less affected by solids or debris, making them ideal for large diameter sewer applications."
+   },
+   "fix": {
+    "question": "A Class 3 operator is preparing to install a new flow meter on a large-diameter, full-flowing force main. What type of flow meter is generally preferred for its accuracy and minimal obstruction to flow?",
+    "options": [
+     "Weir and flume meters.",
+     "Magnetic flow meters.",
+     "Orifice plate meters.",
+     "Propeller meters."
+    ],
+    "correctIndex": 1,
+    "explanation": "Magnetic flow meters are accurate on conductive fluids like wastewater in full pipes, have no moving parts or obstruction (negligible head loss), and are not affected by solids, making them well suited to large force mains. Weirs and flumes are for open channels, and orifice plates and propellers obstruct the flow and foul with solids.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156339,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 189,
+   "verdict": "UNCLEAR",
+   "note": "O. Reg. 129/04 is the Licensing of Sewage Works Operators regulation; it contains no requirement that operational procedures be reviewed every two years. This stated rule could not be confirmed and appears fabricated (review cycles of that type belong to drinking-water quality management systems). Rewritten as a non-regulatory good-practice question.",
+   "original": {
+    "question": "According to O. Reg. 129/04, how often must a Class 3 operator review and update the operational procedures for a wastewater collection system?",
+    "options": [
+     "Only when a major system upgrade is implemented.",
+     "At least once every two years, or more frequently if significant changes occur.",
+     "Only when directed by the Ministry of the Environment, Conservation and Parks.",
+     "Annually, regardless of any changes or upgrades to the system."
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 129/04 requires that operational plans and procedures be reviewed and updated at least once every two years, or more frequently if there are significant changes to the system or its operation."
+   },
+   "fix": {
+    "question": "How should a Class 3 operator approach the review of the operational procedures for a wastewater collection system?",
+    "options": [
+     "Only when a major system upgrade is implemented.",
+     "On a regular scheduled basis, and whenever significant changes occur to the system or its operation.",
+     "Only when directed by the Ministry of the Environment, Conservation and Parks.",
+     "Never, once the procedures have been approved."
+    ],
+    "correctIndex": 1,
+    "explanation": "Operating procedures should be reviewed on a regular schedule and updated whenever the system, equipment, regulations or operating conditions change, so that they stay accurate and current.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156377,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 227,
+   "verdict": "WRONG",
+   "note": "The explanation states a target of 'minimum 6 starts/hour per pump'. Wet well sizing limits starts to a maximum (commonly about 6 per hour) to prevent excessive cycling; a minimum number of starts would encourage short-cycling and contradicts the explanation's own point. Key is right; explanation is wrong.",
+   "original": {
+    "question": "What is 'wet well design' for wastewater pump stations?",
+    "options": [
+     "A well that is wet from rain",
+     "The receiving chamber where sewage collects before pumping: designed for adequate volume (prevent excessive pump cycling), proper geometry (minimize turbulence, prevent solids settling), and level control (start/stop levels, high-level alarm) — critical for pump performance and reliability",
+     "Any tank works as a wet well",
+     "Wet well size doesnt matter"
+    ],
+    "correctIndex": 1,
+    "explanation": "Wet well design: volume (balance between too small — excessive cycling/wear, and too large — septicity/odour; target: minimum 6 starts/hour per pump), geometry (sloped floor to pump suction — prevent dead zones, benching at sides — prevent solids accumulation, submergence — adequate depth above pump intake to prevent vortex), level controls (lead pump on, lag pump on, high-level alarm, overflow level), and ventilation (continuous air exchange — H₂S, corrosion prevention). Shape: typically rectangular or circular with sloped bottom."
+   },
+   "fix": {
+    "question": "What is 'wet well design' for wastewater pump stations?",
+    "options": [
+     "A well that is wet from rain",
+     "The receiving chamber where sewage collects before pumping: designed for adequate volume (prevent excessive pump cycling), proper geometry (minimize turbulence, prevent solids settling), and level control (start/stop levels, high-level alarm) — critical for pump performance and reliability",
+     "Any tank works as a wet well",
+     "Wet well size doesnt matter"
+    ],
+    "correctIndex": 1,
+    "explanation": "Wet well design: volume (balance between too small — excessive cycling/wear, and too large — septicity/odour; typical design limit: maximum of about 6 starts/hour per pump), geometry (sloped floor to pump suction — prevent dead zones, benching at sides — prevent solids accumulation, submergence — adequate depth above pump intake to prevent vortex), level controls (lead pump on, lag pump on, high-level alarm, overflow level), and ventilation (continuous air exchange — H₂S, corrosion prevention). Shape: typically rectangular or circular with sloped bottom.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156381,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 231,
+   "verdict": "UNCLEAR",
+   "note": "Laser profiling plus CCTV measures internal shape and shows visible joint condition but cannot detect voids behind the lining; surface GPR (and similar) is the method for voids outside the pipe wall, as the bank's own questions 156403 and 156359 state. Key conflicts with them. Stem narrowed to voids behind the lining.",
+   "original": {
+    "question": "A Class 3 operator is evaluating the structural integrity of a large diameter brick sewer. Which non-destructive testing method is most suitable for assessing the condition of the mortar joints and potential voids behind the lining?",
+    "options": [
+     "Acoustic inspection using hydrophones.",
+     "Ground Penetrating Radar (GPR) from the surface.",
+     "Laser profiling combined with CCTV inspection.",
+     "Visual inspection with a remotely operated vehicle (ROV)."
+    ],
+    "correctIndex": 2,
+    "explanation": "Laser profiling combined with CCTV inspection can provide detailed geometric data and visual information about the pipe's internal condition, including mortar joint deterioration and potential deformation, which can indicate voids or structural issues."
+   },
+   "fix": {
+    "question": "A Class 3 operator is evaluating the structural integrity of a large diameter brick sewer. Which non-destructive testing method is most suitable for detecting potential voids in the soil behind the lining?",
+    "options": [
+     "Acoustic inspection using hydrophones.",
+     "Ground Penetrating Radar (GPR) from the surface.",
+     "Laser profiling combined with CCTV inspection.",
+     "Visual inspection with a remotely operated vehicle (ROV)."
+    ],
+    "correctIndex": 1,
+    "explanation": "GPR from the surface can detect subsurface anomalies such as voids behind a sewer lining. CCTV, ROV and laser profiling only see the internal surface and shape of the pipe, and hydrophones are used mainly for leak or blockage detection.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156408,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 258,
+   "verdict": "UNCLEAR",
+   "note": "Several options are defensible as the 'highest priority' basis for PM frequency (manufacturer intervals and failure history are standard starting points). The question needs to ask for the operating data that reflects wear.",
+   "original": {
+    "question": "A Class 3 operator is tasked with developing a preventative maintenance schedule for a critical pumping station. Which factor should be given the highest priority when determining the frequency of pump inspections and overhauls?",
+    "options": [
+     "The availability of spare parts in the municipal inventory.",
+     "The historical maintenance records and failure rates of similar pumps.",
+     "The manufacturer's recommended maintenance intervals and warranty conditions.",
+     "The average daily flow rate and the number of pump starts per day."
+    ],
+    "correctIndex": 3,
+    "explanation": "The average daily flow rate and pump starts per day directly reflect the operational stress and wear on the pumps. Higher usage typically necessitates more frequent inspections and maintenance to prevent failures."
+   },
+   "fix": {
+    "question": "A Class 3 operator is developing a preventative maintenance schedule for a critical pumping station. Which operating information most directly reflects the wear a pump experiences and should be used to adjust the frequency of inspections and overhauls?",
+    "options": [
+     "The availability of spare parts in the municipal inventory.",
+     "The purchase price of the pump.",
+     "The age of the station's control panel.",
+     "The average daily flow rate and the number of pump starts per day."
+    ],
+    "correctIndex": 3,
+    "explanation": "Run time, flow and starts per day directly reflect the operational stress and wear on the pumps. Higher usage typically calls for more frequent inspections and maintenance to prevent failures.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156409,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 259,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 170/03 (Safe Drinking Water Act) governs drinking water systems and adverse water quality incidents; it does not impose notification duties on wastewater collection operators. Reframed around spill reporting under Part X of the Environmental Protection Act.",
+   "original": {
+    "question": "Under Ontario Regulation 170/03 of the Safe Drinking Water Act, which of the following is NOT an adverse water quality incident that would typically require immediate notification by a wastewater collection system operator?",
+    "options": [
+     "A significant overflow from a sanitary sewer reaching a drinking water intake.",
+     "A major sewer main break causing a widespread road closure and property damage.",
+     "The discovery of a cross-connection between a sanitary sewer and a potable water line.",
+     "A significant discharge of untreated wastewater into a source water protection area."
+    ],
+    "correctIndex": 1,
+    "explanation": "While a sewer main break causing road closure and property damage is a serious operational incident, it does not directly relate to drinking water quality as defined under O. Reg. 170/03 unless it impacts a drinking water source. The other options directly threaten drinking water quality."
+   },
+   "fix": {
+    "question": "Which of the following would NOT typically require immediate notification to the Spills Action Centre by a wastewater collection system operator?",
+    "options": [
+     "A sanitary sewer overflow reaching a creek or ditch.",
+     "A sewer main break causing a road closure and property damage, with no discharge of sewage to the natural environment.",
+     "A sewage spill onto land that causes an adverse effect.",
+     "A significant discharge of untreated wastewater into a source water protection area."
+    ],
+    "correctIndex": 1,
+    "explanation": "Under Part X of the Environmental Protection Act, a discharge of sewage to the natural environment that causes or may cause an adverse effect must be reported immediately to the Spills Action Centre. A main break that causes road closure and property damage but releases no sewage to the natural environment is an operational incident, not a reportable spill.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156412,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 262,
+   "verdict": "JURISDICTION",
+   "note": "CMOM (Capacity, Management, Operation, and Maintenance) is a United States EPA program under the Clean Water Act, not an Ontario framework. Removed the US program name.",
+   "original": {
+    "question": "What is the primary objective of a comprehensive Capacity, Management, Operation, and Maintenance (CMOM) program for a wastewater collection system?",
+    "options": [
+     "To ensure compliance with effluent discharge limits at the treatment plant.",
+     "To minimize sanitary sewer overflows (SSOs) and extend infrastructure life.",
+     "To reduce operational costs by optimizing energy consumption in pumping stations.",
+     "To develop a capital improvement plan for future system expansion projects."
+    ],
+    "correctIndex": 1,
+    "explanation": "The primary objective of a CMOM program is to prevent SSOs and basement backups, protect public health and the environment, and ensure the long-term integrity and performance of the collection system infrastructure."
+   },
+   "fix": {
+    "question": "What is the primary objective of a comprehensive proactive capacity, management, operation and maintenance program for a wastewater collection system?",
+    "options": [
+     "To ensure compliance with effluent discharge limits at the treatment plant.",
+     "To minimize sanitary sewer overflows (SSOs) and extend infrastructure life.",
+     "To reduce operational costs by optimizing energy consumption in pumping stations.",
+     "To develop a capital improvement plan for future system expansion projects."
+    ],
+    "correctIndex": 1,
+    "explanation": "The primary objective of a comprehensive proactive operation and maintenance program is to prevent SSOs and basement backups, protect public health and the environment, and ensure the long-term integrity and performance of the collection system infrastructure.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156419,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 269,
+   "verdict": "UNCLEAR",
+   "note": "Both the Ontario Water Resources Act (s.30 sewage discharge) and the Environmental Protection Act (s.14 discharge of contaminants; Part X spills) govern sewage discharges, so 'primary instrument' is defensible either way. Reframed to the clear OWRA fact: s.53 approval of sewage works.",
+   "original": {
+    "question": "In Ontario, what is the primary regulatory instrument governing the discharge of sanitary sewage from a municipal collection system into the natural environment, particularly concerning bypasses and overflows?",
+    "options": [
+     "The Safe Drinking Water Act, O. Reg. 170/03.",
+     "The Environmental Protection Act, R.S.O. 1990.",
+     "The Ontario Water Resources Act, R.S.O. 1990.",
+     "The Clean Water Act, S.O. 2006."
+    ],
+    "correctIndex": 2,
+    "explanation": "The Ontario Water Resources Act (OWRA) is the primary provincial legislation governing water quality and quantity, including the discharge of sewage and the management of wastewater works, making it central to regulating bypasses and overflows."
+   },
+   "fix": {
+    "question": "In Ontario, under which statute is approval (now an Environmental Compliance Approval) required to establish or alter sewage works such as a municipal collection system?",
+    "options": [
+     "The Safe Drinking Water Act, O. Reg. 170/03.",
+     "The Clean Water Act, S.O. 2006.",
+     "The Ontario Water Resources Act, R.S.O. 1990.",
+     "The Nutrient Management Act, S.O. 2002."
+    ],
+    "correctIndex": 2,
+    "explanation": "Section 53 of the Ontario Water Resources Act requires approval from the Ministry (now issued as an Environmental Compliance Approval) to establish, alter, extend or replace sewage works, including collection systems and pumping stations. The Safe Drinking Water Act and Clean Water Act address drinking water and source protection.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156443,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 293,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 129/04 is the Licensing of Sewage Works Operators regulation (operator classification and certification); it does not set bypass and overflow record-keeping duties. Those come from the sewage works' Environmental Compliance Approval conditions and EPA Part X spill reporting. Also, it is a regulation under the OWRA, which the stem states correctly, but the content attributed to it is wrong.",
+   "original": {
+    "question": "Under Ontario Regulation 129/04 of the Ontario Water Resources Act, what is the primary requirement for operators of wastewater collection systems regarding operational data?",
+    "options": [
+     "To submit daily reports on the aesthetic quality of the effluent.",
+     "To maintain records of all bypasses and overflows, including duration and estimated volume.",
+     "To conduct monthly chemical analyses of wastewater at various points in the collection system.",
+     "To report annual budgets for infrastructure repair and replacement."
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 129/04 (Licensing of Sewage Works Operators) and other related environmental regulations in Ontario mandate the meticulous record-keeping and reporting of bypasses and overflows as they represent unpermitted discharges to the environment."
+   },
+   "fix": {
+    "question": "Under the conditions of a municipal sewage works' Environmental Compliance Approval (ECA) in Ontario, what is a typical requirement for operators of wastewater collection systems regarding operational data?",
+    "options": [
+     "To submit daily reports on the aesthetic quality of the effluent.",
+     "To maintain records of all bypasses and overflows, including duration and estimated volume.",
+     "To conduct monthly chemical analyses of wastewater at various points in the collection system.",
+     "To report annual budgets for infrastructure repair and replacement."
+    ],
+    "correctIndex": 1,
+    "explanation": "ECA conditions for sewage works (together with spill reporting under Part X of the Environmental Protection Act) require records and reporting of bypasses and overflows, since they are unpermitted discharges to the environment. O. Reg. 129/04 deals with licensing of sewage works operators, not this record-keeping.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185163,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 306,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 170/03 is the Drinking Water Systems regulation (SDWA); it does not govern wastewater collection operators. A Class 3 wastewater collection operator's duty for a sewage overflow/bypass comes from the EPA/OWRA spill-reporting provisions and the system ECA (notify MECP Spills Action Centre and the local Medical Officer of Health). Question also is largely drinking-water content in a wastewater bank.",
+   "original": {
+    "question": "According to O. Reg. 170/03, what is the primary responsibility of a Class 3 operator regarding adverse water quality incidents in the collection system that could impact a drinking water system?",
+    "options": [
+     "To immediately notify the local fire department and municipal council.",
+     "To document the incident and report it to the Ministry of the Environment, Conservation and Parks (MECP) and the Medical Officer of Health.",
+     "To independently determine the root cause and implement long-term corrective actions.",
+     "To inform only the wastewater treatment plant supervisor of the issue."
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 170/03 outlines strict reporting requirements for adverse conditions. Any incident in the collection system that could affect drinking water quality must be immediately reported to MECP and the Medical Officer of Health, in addition to internal reporting."
+   },
+   "fix": {
+    "question": "Under Ontario spill-reporting requirements and a typical ECA, what must a Class 3 wastewater collection operator do when a sanitary sewer overflow or bypass discharges to the environment?",
+    "options": [
+     "Immediately notify the local fire department and municipal council only.",
+     "Immediately notify the MECP Spills Action Centre and the local Medical Officer of Health, then document the event and follow up in writing.",
+     "Independently determine the root cause and implement long-term corrective actions before notifying anyone.",
+     "Inform only the wastewater treatment plant supervisor of the issue."
+    ],
+    "correctIndex": 1,
+    "explanation": "Discharges of sewage to the natural environment must be reported immediately to the MECP Spills Action Centre (1-800-268-6060) and the local Medical Officer of Health where there is a threat to health, followed by written documentation and corrective actions. Internal reporting alone is not sufficient.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185171,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 314,
+   "verdict": "UNITS",
+   "note": "Formula answer (BHP = WHP / pump efficiency) is correct, but the steps use US units (gpm, ft, 3,960) in an Ontario/metric bank. Converted to kW.",
+   "original": {
+    "question": "A Class 3 operator is evaluating the efficiency of a wastewater pumping station. What is the formula used to calculate the brake horsepower (BHP) of a pump?",
+    "options": [
+     "BHP = (Water Horsepower × Motor Efficiency) / Pump Efficiency",
+     "BHP = (Water Horsepower) / (Pump Efficiency × Motor Efficiency)",
+     "BHP = (Water Horsepower × Pump Efficiency) / Motor Efficiency",
+     "BHP = (Water Horsepower) / (Pump Efficiency)"
+    ],
+    "correctIndex": 3,
+    "explanation": "Brake Horsepower (BHP) is the power delivered to the pump shaft. It is calculated by dividing the Water Horsepower (WHP) by the pump's efficiency (expressed as a decimal). The motor efficiency is used to calculate the electrical input horsepower."
+   },
+   "fix": {
+    "question": "A Class 3 operator is evaluating the efficiency of a wastewater pumping station. What is the formula used to calculate the brake power (BHP) of a pump?",
+    "options": [
+     "BHP = (Water Power × Motor Efficiency) / Pump Efficiency",
+     "BHP = (Water Power) / (Pump Efficiency × Motor Efficiency)",
+     "BHP = (Water Power × Pump Efficiency) / Motor Efficiency",
+     "BHP = (Water Power) / (Pump Efficiency)"
+    ],
+    "correctIndex": 3,
+    "explanation": "Brake power is the power delivered to the pump shaft. It is calculated by dividing the water (hydraulic) power by the pump efficiency (as a decimal). Motor efficiency is used afterward to calculate the electrical input power.",
+    "steps": [
+     {
+      "l": "What is asked",
+      "c": "Identify the formula for brake power, the power delivered to the pump shaft."
+     },
+     {
+      "l": "Starting point",
+      "c": "Water power is the useful power imparted to the water: WP (kW) = 9.81 x flow (m3/s) x head (m)."
+     },
+     {
+      "l": "Account for pump losses",
+      "c": "Pump efficiency is less than 100 percent, so shaft power must exceed water power: BP = WP / pump efficiency."
+     },
+     {
+      "l": "Where motor efficiency fits",
+      "c": "Motor efficiency is applied one step later to get electrical input power: Motor input kW = BP / motor efficiency."
+     },
+     {
+      "l": "Answer",
+      "c": "BP = (Water Power) / (Pump Efficiency), option D."
+     }
+    ]
+   }
+  },
+  {
+   "id": 185177,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 320,
+   "verdict": "UNCLEAR",
+   "note": "Answer 55.6 min is correct (50 / 0.9 = 55.56). Explanation contains rambling self-corrections ('options are slightly off', 'Option 1 is 33.3...') and is confusing. Explanation cleaned.",
+   "original": {
+    "question": "A Class 3 operator is calculating the detention time (in minutes) of a wet well with a usable volume of 50 m³ and an average inflow rate of 15 L/s. What is the detention time?",
+    "options": [
+     "33.3 minutes",
+     "55.6 minutes",
+     "200 minutes",
+     "3333 minutes"
+    ],
+    "correctIndex": 1,
+    "explanation": "First, convert inflow rate to m³/minute: 15 L/s * (1 m³/1000 L) * (60 s/1 min) = 0.9 m³/min. Then, Detention Time = Volume / Flow Rate = 50 m³ / 0.9 m³/min = 55.56 minutes. (Correction: 15 L/s = 0.015 m³/s. 50 m³ / 0.015 m³/s = 3333.33 seconds. 3333.33 / 60 = 55.56 minutes. The options are slightly off, but 55.6 is the closest if we assume a rounded calculation in the options. Re-evaluating the question and options to ensure correct calculation and answer. Let's re-calculate: 50 m³ / (15 L/s * 0.001 m³/L) = 50 / 0.015 = 3333.33 seconds. 3333.33 seconds / 60 seconds/minute = 55.56 minutes. Option 1 is 33.3 minutes, Option 2 is 55.6 minutes. So 55.6 minutes is correct. Let's make sure the options are not confusing. Let's use 15 L/s = 0.9 m³/min. 50 m³ / 0.9 m³/min = 55.55 minutes. This is correct. The previous calculation was slightly off. The explanation should be: Detention Time (min) = Volume (m³) / Flow Rate (m³/min). Convert flow rate: 15 L/s * (60 s/min) * (1 m³/1000 L) = 0.9 m³/min. Detention Time = 50 m³ / 0.9 m³/min = 55.56 minutes."
+   },
+   "fix": {
+    "question": "A Class 3 operator is calculating the detention time (in minutes) of a wet well with a usable volume of 50 m³ and an average inflow rate of 15 L/s. What is the detention time?",
+    "options": [
+     "33.3 minutes",
+     "55.6 minutes",
+     "200 minutes",
+     "3333 minutes"
+    ],
+    "correctIndex": 1,
+    "explanation": "Convert flow: 15 L/s x 60 s/min x (1 m3 / 1000 L) = 0.9 m3/min. Detention time = volume / flow = 50 m3 / 0.9 m3/min = 55.56 minutes, about 55.6 minutes.",
+    "steps": [
+     {
+      "l": "Given",
+      "c": "Usable wet well volume 50 m3; average inflow 15 L/s."
+     },
+     {
+      "l": "Convert the flow",
+      "c": "15 L/s x 60 s/min = 900 L/min = 0.9 m3/min."
+     },
+     {
+      "l": "Formula",
+      "c": "Detention time = volume / flow rate."
+     },
+     {
+      "l": "Compute",
+      "c": "50 m3 / 0.9 m3/min = 55.56 minutes."
+     },
+     {
+      "l": "Answer",
+      "c": "55.6 minutes (option B)."
+     }
+    ]
+   }
+  },
+  {
+   "id": 185181,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 324,
+   "verdict": "JURISDICTION",
+   "note": "Explanation cites EOCP (Environmental Operators Certification Program) as the exam body; EOCP is British Columbia's program. Ontario operator certification is under O. Reg. 128/04 (certification of operators and exam administration through the MECP / Walkerton-era program) and O. Reg. 129/04 (licensing of subsystems). Also wastewater collection classes are 1 to 4 under O. Reg. 129/04. Key answer is otherwise acceptable.",
+   "original": {
+    "question": "What is 'operator certification' requirements for collection systems in Ontario?",
+    "options": [
+     "Only treatment operators need certification",
+     "Ontario requires certified operators for wastewater collection systems: classification based on system complexity (Class I-IV), operators must hold certificate at or above system class, and continuing education (CEUs) required for renewal",
+     "No certification needed for collection",
+     "Only the supervisor needs certification"
+    ],
+    "correctIndex": 1,
+    "explanation": "Collection system certification (O. Reg. 129/04): system classification (Class I — simple gravity, to Class IV — complex with multiple pump stations, force mains, CSO facilities), operator certification (must hold valid certificate at system class level or higher — OIT can work under supervision), overall responsible operator (ORO — designated, must hold certificate at system class), and continuing education (CEUs required for renewal — training hours in relevant topics). Examination: EOCP or equivalent — covers collection system operation, maintenance, safety, and regulations."
+   },
+   "fix": {
+    "question": "What is 'operator certification' requirements for collection systems in Ontario?",
+    "options": [
+     "Only treatment operators need certification",
+     "Ontario requires certified operators for wastewater collection systems: classification based on system complexity (Class I-IV), operators must hold certificate at or above system class, and continuing education (CEUs) required for renewal",
+     "No certification needed for collection",
+     "Only the supervisor needs certification"
+    ],
+    "correctIndex": 1,
+    "explanation": "Collection system certification (O. Reg. 128/04 for operator certification and O. Reg. 129/04 for licensing): system classification (Class 1 - simple gravity, to Class 4 - complex with multiple pump stations, force mains and CSO facilities), operators in charge must hold a valid certificate of the same class as the subsystem or higher, an overall responsible operator (ORO) is designated, operators-in-training work under supervision, and continuing education (CEUs/training hours) is required for renewal. Examinations are administered under the Ontario program, not EOCP (which is British Columbia).",
+    "steps": null
+   }
+  },
+  {
+   "id": 185187,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 330,
+   "verdict": "UNCLEAR",
+   "note": "Answer 35.34 m3 (index 1) is correct, but the explanation contains leftover self-correction text ('I made a calculation error in my head', 'previous internal note was wrong') that is confusing and unprofessional. Duplicate of 185893. Explanation cleaned.",
+   "original": {
+    "question": "A Class 3 operator is tasked with calculating the volume of wastewater in a circular force main that is 500 meters long with an internal diameter of 300 mm. What is the approximate volume in cubic meters?",
+    "options": [
+     "11.78 m³",
+     "35.34 m³",
+     "70.69 m³",
+     "141.37 m³"
+    ],
+    "correctIndex": 1,
+    "explanation": "Volume of a cylinder = π * (radius)² * length. Radius = 300 mm / 2 = 150 mm = 0.15 m. Length = 500 m. Volume = π * (0.15 m)² * 500 m = π * 0.0225 m² * 500 m = 35.34 m³. (Correction: 0.15^2 = 0.0225. 0.0225 * 500 = 11.25. 11.25 * pi = 35.34. The correct answer should be 35.34 m³. Let's recheck the options. Ah, I made a calculation error in my head. The correct answer is 35.34 m³. Option 2. I need to ensure the options are correct for the calculation. Let's re-calculate: Diameter = 300 mm = 0.3 m. Radius = 0.15 m. Length = 500 m. Volume = π * (0.15 m)² * 500 m = 3.14159 * 0.0225 m² * 500 m = 35.34 m³. Option 2 is 35.34 m³. So, the calculation is correct for option 2. The previous internal note was wrong.)"
+   },
+   "fix": {
+    "question": "A Class 3 operator is tasked with calculating the volume of wastewater in a circular force main that is 500 meters long with an internal diameter of 300 mm. What is the approximate volume in cubic meters?",
+    "options": [
+     "11.78 m³",
+     "35.34 m³",
+     "70.69 m³",
+     "141.37 m³"
+    ],
+    "correctIndex": 1,
+    "explanation": "Volume of a cylinder = pi x r^2 x L. r = 0.15 m, L = 500 m. Volume = 3.14159 x 0.0225 m2 x 500 m = 35.34 m3.",
+    "steps": [
+     {
+      "l": "State the formula",
+      "c": "Volume of a cylinder = π × r² × L"
+     },
+     {
+      "l": "Define the components",
+      "c": "r is the internal radius of the force main in meters, and L is the pipe length in meters."
+     },
+     {
+      "l": "Convert units",
+      "c": "r = 300 mm ÷ 2 = 150 mm = 0.15 m; L = 500 m."
+     },
+     {
+      "l": "Substitute values",
+      "c": "Volume = π × (0.15 m)² × 500 m"
+     },
+     {
+      "l": "Calculate",
+      "c": "(0.15)² = 0.0225 m²; 0.0225 × 500 = 11.25; 11.25 × 3.14159 = 35.34 m³"
+     },
+     {
+      "l": "Select answer",
+      "c": "35.34 m³ (option B)"
+     }
+    ]
+   }
+  },
+  {
+   "id": 185191,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 334,
+   "verdict": "WRONG",
+   "note": "Explanation lists Leptospira as a fungus; Leptospira is a spirochete bacterium (leptospirosis from rat urine). Marked answer is fine.",
+   "original": {
+    "question": "What is 'biological hazard' management for collection system workers?",
+    "options": [
+     "Only wearing gloves",
+     "Protecting workers from pathogens in sewage: PPE (gloves, eye protection, waterproof clothing), hygiene (handwashing before eating/drinking, no eating in work areas), immunization (hepatitis A/B, tetanus), wound care (immediate cleaning of any cuts), and training (hazard awareness, proper procedures)",
+     "Sewage is not hazardous",
+     "Only laboratory workers face biological hazards"
+    ],
+    "correctIndex": 1,
+    "explanation": "Biological hazards in sewage: bacteria (E. coli, Salmonella, Shigella — gastrointestinal illness), viruses (hepatitis A, norovirus — serious illness), parasites (Giardia, Cryptosporidium — gastrointestinal), and fungi (Leptospira — from rat urine in sewers). Protection: PPE (nitrile gloves, safety glasses/face shield for splash risk, waterproof coveralls for immersion risk), hygiene (wash hands/face before eating/drinking/smoking, shower after heavy exposure, no eating/drinking in work areas), immunization (hepatitis A and B vaccines, tetanus current), and wound care (any break in skin exposed to sewage — immediate thorough cleaning, medical attention if needed)."
+   },
+   "fix": {
+    "question": "What is 'biological hazard' management for collection system workers?",
+    "options": [
+     "Only wearing gloves",
+     "Protecting workers from pathogens in sewage: PPE (gloves, eye protection, waterproof clothing), hygiene (handwashing before eating/drinking, no eating in work areas), immunization (hepatitis A/B, tetanus), wound care (immediate cleaning of any cuts), and training (hazard awareness, proper procedures)",
+     "Sewage is not hazardous",
+     "Only laboratory workers face biological hazards"
+    ],
+    "correctIndex": 1,
+    "explanation": "Biological hazards in sewage: bacteria (E. coli, Salmonella, Shigella, and Leptospira from rat urine), viruses (hepatitis A, norovirus), and parasites (Giardia, Cryptosporidium). Protection: PPE (nitrile gloves, safety glasses/face shield for splash risk, waterproof coveralls for immersion risk), hygiene (wash hands/face before eating/drinking/smoking, shower after heavy exposure, no eating/drinking in work areas), immunization (hepatitis A and B vaccines, tetanus current), and wound care (any break in skin exposed to sewage - immediate thorough cleaning, medical attention if needed).",
+    "steps": null
+   }
+  },
+  {
+   "id": 185207,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 350,
+   "verdict": "UNCLEAR",
+   "note": "Answer 0.5 kg is correct (100,000 L x 5 mg/L = 500,000 mg). Explanation has leftover self-correction text ('My calculation was off... previous index was 0') that is confusing. Explanation cleaned.",
+   "original": {
+    "question": "A Class 3 operator is calculating the required chemical dosage for odour control in a wet well. If the wet well has a volume of 100 m³ and the desired chemical concentration is 5 mg/L, how many kilograms of chemical are needed?",
+    "options": [
+     "0.05 kg",
+     "0.5 kg",
+     "5 kg",
+     "50 kg"
+    ],
+    "correctIndex": 1,
+    "explanation": "Mass = Volume × Concentration. Convert volume to Liters: 100 m³ * 1000 L/m³ = 100,000 L. Mass = 100,000 L * 5 mg/L = 500,000 mg. Convert to kg: 500,000 mg * (1 g/1000 mg) * (1 kg/1000 g) = 0.5 kg. (Correction: My calculation was off. 100 m³ * 5 mg/L = 100,000 L * 5 mg/L = 500,000 mg = 0.5 kg. Option 2 is 0.5 kg. Let's re-evaluate the options and correct index. The correct index should be 1 for 0.5 kg. The previous index was 0 for 0.05 kg which is incorrect.)"
+   },
+   "fix": {
+    "question": "A Class 3 operator is calculating the required chemical dosage for odour control in a wet well. If the wet well has a volume of 100 m³ and the desired chemical concentration is 5 mg/L, how many kilograms of chemical are needed?",
+    "options": [
+     "0.05 kg",
+     "0.5 kg",
+     "5 kg",
+     "50 kg"
+    ],
+    "correctIndex": 1,
+    "explanation": "Mass = volume x concentration. 100 m3 x 1000 L/m3 = 100,000 L. Mass = 100,000 L x 5 mg/L = 500,000 mg = 0.5 kg.",
+    "steps": [
+     {
+      "l": "State the formula",
+      "c": "Mass = Volume × Concentration"
+     },
+     {
+      "l": "Define the components",
+      "c": "Volume is the water volume in liters and concentration is the dose in mg/L; mass results in mg."
+     },
+     {
+      "l": "Convert units",
+      "c": "100 m³ × 1,000 L/m³ = 100,000 L"
+     },
+     {
+      "l": "Substitute values",
+      "c": "Mass = 100,000 L × 5 mg/L"
+     },
+     {
+      "l": "Calculate",
+      "c": "Mass = 500,000 mg"
+     },
+     {
+      "l": "Convert and select answer",
+      "c": "500,000 mg ÷ 1,000,000 mg/kg = 0.5 kg (option B)"
+     }
+    ]
+   }
+  },
+  {
+   "id": 185211,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 354,
+   "verdict": "WRONG",
+   "note": "Explanation cites 'O. Reg. 851 s. 29 - employer must establish measures for workers working alone'. Section 29 of Reg. 851 deals with abrasive wheels (grinding); Ontario has no general working-alone regulation under the OHSA (employers rely on the general duty clause s. 25(2)(h) and sector rules). Searched e-Laws/secondary sources.",
+   "original": {
+    "question": "What is 'working alone' policy for collection system operations?",
+    "options": [
+     "Working alone is always acceptable",
+     "Procedures ensuring safety when operators work without direct supervision: check-in schedule (regular contact — radio, phone), monitoring system (GPS, lone worker device — automatic alarm if no response), risk assessment (some tasks prohibited alone — confined space entry), and emergency procedures",
+     "Collection workers never work alone",
+     "Only office workers need lone worker policies"
+    ],
+    "correctIndex": 1,
+    "explanation": "Working alone in collection: risk assessment (identify tasks that can/cannot be done alone — confined space entry NEVER alone, routine inspection/monitoring acceptable with controls), check-in (scheduled contact with dispatch/supervisor — every 1-2 hours, missed check-in triggers response), technology (lone worker devices — automatic check-in, fall detection, panic button, GPS location; or cell phone with scheduled calls), and procedures (leave itinerary, expected return time, vehicle GPS tracking). Regulatory: O. Reg. 851 s. 29 — employer must establish measures for workers working alone."
+   },
+   "fix": {
+    "question": "What is 'working alone' policy for collection system operations?",
+    "options": [
+     "Working alone is always acceptable",
+     "Procedures ensuring safety when operators work without direct supervision: check-in schedule (regular contact - radio, phone), monitoring system (GPS, lone worker device - automatic alarm if no response), risk assessment (some tasks prohibited alone - confined space entry), and emergency procedures",
+     "Collection workers never work alone",
+     "Only office workers need lone worker policies"
+    ],
+    "correctIndex": 1,
+    "explanation": "Working alone in collection: risk assessment (identify tasks that can or cannot be done alone - confined space entry never alone, routine inspection acceptable with controls), check-in (scheduled contact with dispatch/supervisor, missed check-in triggers response), technology (lone worker devices with automatic check-in, fall detection, panic button, GPS), and procedures (leave itinerary and expected return time). Ontario has no general working-alone regulation; employers address it through the OHSA general duty to take every precaution reasonable in the circumstances (s. 25(2)(h)) and applicable regulations such as O. Reg. 632/05 for confined spaces.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185218,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 361,
+   "verdict": "WRONG",
+   "note": "Explanation contradicts the marked answer: it says 0.1 NTU in 95% while the key is 0.3 NTU (the steps say 0.3). The correct Ontario criterion for chemically assisted filtration is 0.3 NTU in 95% of measurements each month and never above 1.0 NTU (O. Reg. 170/03 Schedule 2/Schedule 11 monitoring). Key 0.3 is correct. Also drinking-water treatment content is off-topic for a wastewater collection bank (isCalc is also wrongly true).",
+   "original": {
+    "question": "According to O. Reg. 170/03, what is the maximum allowable turbidity for treated water entering the distribution system from a conventional treatment plant?",
+    "options": [
+     "0.1 NTU in 95% of samples.",
+     "0.3 NTU in 95% of samples.",
+     "0.5 NTU in 95% of samples.",
+     "1.0 NTU in 95% of samples."
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 170/03, Schedule 2, states that for conventional treatment, the turbidity of water entering the distribution system must be 0.1 NTU or less in 95% of samples collected in a month, and never exceed 1.0 NTU."
+   },
+   "fix": {
+    "question": "According to O. Reg. 170/03, what is the maximum allowable turbidity for treated water entering the distribution system from a conventional (chemically assisted) filtration plant?",
+    "options": [
+     "0.1 NTU in 95% of samples.",
+     "0.3 NTU in 95% of samples.",
+     "0.5 NTU in 95% of samples.",
+     "1.0 NTU in 95% of samples."
+    ],
+    "correctIndex": 1,
+    "explanation": "For chemically assisted (conventional) filtration, O. Reg. 170/03 requires filtered water turbidity of 0.3 NTU or less in at least 95% of measurements each month, and never above 1.0 NTU.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185229,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 372,
+   "verdict": "OFF-TOPIC",
+   "note": "Asks about O. Reg. 170/03 adverse water quality incidents in a drinking water system; this is drinking water regulation, not wastewater collection. Also isCalc true wrongly. Not repairable within the bank scope.",
+   "original": {
+    "question": "Under O. Reg. 170/03, what is the operator's responsibility regarding adverse water quality incidents in a drinking water system?",
+    "options": [
+     "To notify the Medical Officer of Health and the Ministry of the Environment, Conservation and Parks (MECP) immediately.",
+     "To conduct a full investigation and submit a report within 30 days.",
+     "To only notify the public if the incident poses a severe health risk.",
+     "To wait for a supervisor's approval before taking any action."
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 170/03 mandates immediate notification to the Medical Officer of Health and the MECP for any adverse water quality incidents to protect public health and ensure regulatory oversight."
+   },
+   "fix": null
+  },
+  {
+   "id": 185239,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 382,
+   "verdict": "OFF-TOPIC",
+   "note": "Drinking water microbiological sampling under O. Reg. 170/03 Schedule 10 is outside the wastewater collection scope. Also the key's explanation is inaccurate: sampling frequencies for distribution E. coli/total coliform are set in the regulation itself (Schedule 10, by population served), not at a frequency specified in the system's approval. isCalc wrongly true.",
+   "original": {
+    "question": "According to O. Reg. 170/03, how often must a drinking water system typically collect samples for E. coli and total coliforms from the distribution system?",
+    "options": [
+     "Daily, if the system serves more than 100,000 people.",
+     "Weekly, regardless of system size.",
+     "At a frequency specified in the system's approval, based on population served.",
+     "Monthly, for all municipal residential systems."
+    ],
+    "correctIndex": 2,
+    "explanation": "O. Reg. 170/03, Schedule 10, specifies sampling frequencies for E. coli and total coliforms based on population served, as outlined in the system's Drinking Water Works Permit or Municipal Drinking Water Licence."
+   },
+   "fix": null
+  },
+  {
+   "id": 185248,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 391,
+   "verdict": "UNCLEAR",
+   "note": "Marked 'determine if the backup is on private property or in the municipal system' as the immediate priority, but dispatching a crew to respond/clear the main is equally defensible, and sister question 185204 says the first priority is protecting public health and safety. Wording lets two answers stand; reword so only one reading fits.",
+   "original": {
+    "question": "When responding to a public complaint about a sewer backup, what is the Class 3 operator's immediate priority?",
+    "options": [
+     "Determining if the backup is on private property or within the municipal system.",
+     "Immediately dispatching a crew to clear the blockage.",
+     "Collecting a sample of the overflowing wastewater for analysis.",
+     "Informing the media about the incident before investigation."
+    ],
+    "correctIndex": 0,
+    "explanation": "Identifying the location of the backup (private vs. municipal) is crucial for determining responsibility, appropriate response, and avoiding unnecessary municipal intervention on private property."
+   },
+   "fix": {
+    "question": "A homeowner calls to report a sewage backup in their basement. After the crew is dispatched, what is the first thing the operator should establish on site to determine the appropriate response and who is responsible for clearing it?",
+    "options": [
+     "Whether the blockage is in the private lateral or in the municipal sewer main.",
+     "The exact cost of the property damage.",
+     "The laboratory results for a sample of the backed-up wastewater.",
+     "Whether the media has been informed."
+    ],
+    "correctIndex": 0,
+    "explanation": "Determining whether the blockage is in the private lateral or the municipal main (for example by checking the downstream maintenance hole) determines the response and responsibility, after safety concerns have been addressed.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185249,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 392,
+   "verdict": "WRONG",
+   "note": "Explanation cites O. Reg. 308/09 as an associated sewage works regulation; it is not a sewage works regulation (the number belongs to an unrelated instrument, mineral exploration under the Mining Act per my recollection; search could not confirm it as a sewage regulation). Wastewater collection systems in Ontario are governed by OWRA s. 53 Environmental Compliance Approvals and the EPA, with operator licensing under O. Reg. 128/04 and 129/04. Key (EPA and OWRA) is acceptable.",
+   "original": {
+    "question": "What is the primary regulatory document governing the operation of municipal wastewater collection systems in Ontario?",
+    "options": [
+     "The Ontario Building Code.",
+     "The Safe Drinking Water Act, 2002 (SDWA).",
+     "The Environmental Protection Act (EPA) and the Ontario Water Resources Act (OWRA).",
+     "The Occupational Health and Safety Act (OHSA)."
+    ],
+    "correctIndex": 2,
+    "explanation": "The EPA and OWRA, along with their associated regulations (e.g., O. Reg. 308/09 for sewage works), form the primary legislative framework for wastewater collection and treatment in Ontario."
+   },
+   "fix": {
+    "question": "What is the primary regulatory document governing the operation of municipal wastewater collection systems in Ontario?",
+    "options": [
+     "The Ontario Building Code.",
+     "The Safe Drinking Water Act, 2002 (SDWA).",
+     "The Environmental Protection Act (EPA) and the Ontario Water Resources Act (OWRA).",
+     "The Occupational Health and Safety Act (OHSA)."
+    ],
+    "correctIndex": 2,
+    "explanation": "The OWRA (including s. 53 Environmental Compliance Approvals for sewage works) and the EPA (including Part X spill reporting) form the primary legislative framework for wastewater collection in Ontario, with operator certification and licensing under O. Reg. 128/04 and O. Reg. 129/04.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185311,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 454,
+   "verdict": "UNCLEAR",
+   "note": "Explanation cites O. Reg. 242/05 as the source-protection regulation under the SDWA. Source protection in Ontario is legislated under the Clean Water Act, 2006 (source protection plans, committees); the SDWA provides the multi-barrier / source-to-tap framework. Citation unverified/incorrect.",
+   "original": {
+    "question": "According to Ontario's 'Safe Drinking Water Act, 2002' (SDWA), what is the overarching principle that guides the protection of drinking water sources, relevant to wastewater operations?",
+    "options": [
+     "The 'polluter pays' principle, focusing solely on financial penalties.",
+     "The 'source to tap' approach, emphasizing protection at every stage, including source water.",
+     "The 'treatment only' approach, assuming all contamination can be removed at the plant.",
+     "The 'public awareness only' approach, relying solely on citizen reporting."
+    ],
+    "correctIndex": 1,
+    "explanation": "The SDWA and its associated regulations (like O. Reg. 170/03 and O. Reg. 242/05 for Source Protection) are based on a 'source to tap' approach, meaning protection efforts extend from the raw water source through treatment, distribution, and ultimately to the consumer's tap. Wastewater operations play a crucial role in protecting source waters."
+   },
+   "fix": {
+    "question": "According to Ontario's 'Safe Drinking Water Act, 2002' (SDWA), what is the overarching principle that guides the protection of drinking water, relevant to wastewater operations?",
+    "options": [
+     "The 'polluter pays' principle, focusing solely on financial penalties.",
+     "The 'source to tap' multi-barrier approach, emphasizing protection at every stage, including source water.",
+     "The 'treatment only' approach, assuming all contamination can be removed at the plant.",
+     "The 'public awareness only' approach, relying solely on citizen reporting."
+    ],
+    "correctIndex": 1,
+    "explanation": "Ontario's drinking water framework (SDWA, O. Reg. 170/03, and the Clean Water Act, 2006 for source protection) follows a source-to-tap multi-barrier approach, from the raw water source through treatment, distribution and the tap. Wastewater operations help protect source waters.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185350,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 493,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 339/94 is not the spills regulation. Spill notification duties are in Part X of the Environmental Protection Act (s. 92, notify the Ministry, the owner/person in control, and the municipality), with classification/exemptions in O. Reg. 675/98 (now R.R.O. 1990, Reg. 360). Citation corrected; answer unchanged.",
+   "original": {
+    "question": "According to O. Reg. 339/94 (Spills Regulation) under the Environmental Protection Act, what is the primary duty of an operator upon becoming aware of a spill of sewage?",
+    "options": [
+     "To immediately begin clean-up operations without reporting.",
+     "To notify the owner of the sewage works and the Ministry of the Environment, Conservation and Parks (MECP).",
+     "To wait for a supervisor to assess the situation before taking any action.",
+     "To document the spill in the daily logbook and report it at the end of the shift."
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 339/94 mandates that any person who has control of a pollutant (including sewage) that is spilled must forthwith notify the owner and the Ministry of the Environment, Conservation and Parks (MECP) of the spill."
+   },
+   "fix": {
+    "question": "Under Part X (Spills) of Ontario's Environmental Protection Act, what is the primary duty of an operator upon becoming aware of a spill of sewage?",
+    "options": [
+     "To immediately begin clean-up operations without reporting.",
+     "To notify the owner of the sewage works and the Ministry of the Environment, Conservation and Parks (MECP) (Spills Action Centre).",
+     "To wait for a supervisor to assess the situation before taking any action.",
+     "To document the spill in the daily logbook and report it at the end of the shift."
+    ],
+    "correctIndex": 1,
+    "explanation": "Part X of the EPA (s. 92) requires a person who has control of a spilled pollutant, such as sewage, to notify the Ministry (Spills Action Centre), the owner and the municipality forthwith, and to do everything practicable to contain and clean up the spill. Spill classes and exemptions are in O. Reg. 675/98.",
+    "steps": null
+   }
+  },
+  {
+   "id": 240406,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 501,
+   "verdict": "WRONG",
+   "note": "V = (1/0.012) x 0.1^(2/3) x 0.002^0.5 = 83.33 x 0.2154 x 0.04472 = 0.80 m/s, not 2.36. No option was correct.",
+   "original": {
+    "question": "A circular wastewater force main has a diameter of 400 mm and a slope of 0.002. If the roughness coefficient (n) is 0.012 and the pipe is flowing full, what is the velocity of flow according to Manning’s equation?",
+    "options": [
+     "2.91 m/s",
+     "2.36 m/s",
+     "3.15 m/s",
+     "1.67 m/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "Apply the Manning equation for velocity: V = (1/n) * R^(2/3) * S^(1/2). For a full pipe, the hydraulic radius R = D/4."
+   },
+   "fix": {
+    "question": "A circular pipe has a diameter of 400 mm and a slope of 0.002. If the roughness coefficient (n) is 0.012 and the pipe is flowing full, what is the velocity of flow according to Manning's equation?",
+    "options": [
+     "0.80 m/s",
+     "2.36 m/s",
+     "1.67 m/s",
+     "3.15 m/s"
+    ],
+    "correctIndex": 0,
+    "explanation": "Apply Manning: V = (1/n) × R^(2/3) × S^(1/2); for a full pipe R = D/4.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "R = 0.4/4 = 0.1 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "R^(2/3) = 0.2154; S^(1/2) = 0.04472"
+     },
+     {
+      "l": "Step 3",
+      "c": "V = 83.33 × 0.2154 × 0.04472 = 0.80 m/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240408,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 503,
+   "verdict": "WRONG",
+   "note": "Formula as given is the SI form requiring Q in m3/s and d in m; with Q = 0.050 m3/s, d = 0.250 m, C = 130, L = 300 m, hf = 10.67x300x0.003896/(8223x0.001171) = 1.30 m, not 5.16. Power-term values in steps also wrong (50^1.852 = 1,401).",
+   "original": {
+    "question": "If a 300 m length of 250 mm diameter force main has to deliver a flow of 50 L/s, what is the head loss in the pipe if the Hazen-Williams coefficient C is 130? (Use: h_f = 10.67 × L × Q^1.852 / (C^1.852 × d^4.87), L in m, Q in L/s, d in mm)",
+    "options": [
+     "3.48 m",
+     "5.16 m",
+     "7.85 m",
+     "2.42 m"
+    ],
+    "correctIndex": 1,
+    "explanation": "Careful substitution and exponent handling for the Hazen-Williams formula is required."
+   },
+   "fix": {
+    "question": "A 300 m length of 250 mm diameter force main delivers a flow of 50 L/s. What is the head loss if the Hazen-Williams coefficient C is 130? (Use hf = 10.67 × L × Q^1.852 / (C^1.852 × d^4.87), with L in m, Q in m³/s and d in m.)",
+    "options": [
+     "1.30 m",
+     "3.48 m",
+     "5.16 m",
+     "2.42 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "Convert Q = 0.050 m³/s and d = 0.250 m, then apply the SI Hazen-Williams equation.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Q = 0.050 m³/s, d = 0.250 m, C = 130, L = 300 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "Q^1.852 = 0.003896; C^1.852 = 8,223; d^4.87 = 0.001171"
+     },
+     {
+      "l": "Step 3",
+      "c": "hf = 10.67 × 300 × 0.003896 / (8,223 × 0.001171) = 1.30 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240409,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 504,
+   "verdict": "WRONG",
+   "note": "Steps are incoherent (4.8 + 1.0 + 1.4 = 7.2, not the keyed 5.8) and the stem gives no pump/wet-well water level reference. Rewrote with a stated datum and the high point controlling: static 6.0 m + 1.4 m friction = 7.4 m.",
+   "original": {
+    "question": "The invert of a new force main at pump discharge is 1.2 m above the wet well floor. The forcemain rises an additional 4.8 m before reaching its peak and then drops to discharge 2.2 m above the wet well floor. If friction losses are 1.4 m, what is the Total Dynamic Head (TDH) the pump must overcome?",
+    "options": [
+     "6.6 m",
+     "7.2 m",
+     "4.4 m",
+     "5.8 m"
+    ],
+    "correctIndex": 3,
+    "explanation": "TDH = static lift (difference in elevation) + friction loss."
+   },
+   "fix": {
+    "question": "A pump takes suction from a wet well whose low water level is at the wet well floor elevation. The force main crosses a high point 6.0 m above the wet well floor, then drops to discharge 2.2 m above the floor. Friction losses are 1.4 m. If the high point controls the static head (no siphon credited), what is the Total Dynamic Head (TDH)?",
+    "options": [
+     "7.4 m",
+     "6.2 m",
+     "3.6 m",
+     "5.8 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "TDH = static head to the controlling high point + friction loss.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Static head = 6.0 m − 0 m = 6.0 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "TDH = 6.0 + 1.4 = 7.4 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240411,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 506,
+   "verdict": "WRONG",
+   "note": "With R = 0.33D = 0.198 m: R^(2/3) = 0.340, V = 76.92 x 0.340 x 0.03873 = 1.01 m/s, not 2.06. Also at 75% depth R = 0.302D, not 0.33D; corrected to 0.30D, V = 0.95 m/s.",
+   "original": {
+    "question": "A 600 mm diameter circular sewer flows 75% full. If the slope of the pipe is 0.0015 and n = 0.013, estimate the velocity using the partial flow Manning's approach. Assuming R (hydraulic radius) = 0.33 × D for 75% full.",
+    "options": [
+     "1.21 m/s",
+     "3.77 m/s",
+     "2.06 m/s",
+     "2.88 m/s"
+    ],
+    "correctIndex": 2,
+    "explanation": "Use V = (1/n) × R^(2/3) × S^(1/2), with R = 0.33 × D for 75% full."
+   },
+   "fix": {
+    "question": "A 600 mm diameter circular sewer flows 75% full. If the slope is 0.0015 and n = 0.013, estimate the velocity using Manning's equation. Assume R (hydraulic radius) = 0.30 × D for 75% full.",
+    "options": [
+     "0.95 m/s",
+     "1.21 m/s",
+     "2.06 m/s",
+     "2.88 m/s"
+    ],
+    "correctIndex": 0,
+    "explanation": "Use V = (1/n) × R^(2/3) × S^(1/2), with R = 0.30 × D.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "R = 0.30 × 0.6 = 0.18 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "R^(2/3) = 0.319; S^(1/2) = 0.03873"
+     },
+     {
+      "l": "Step 3",
+      "c": "V = 76.92 × 0.319 × 0.03873 = 0.95 m/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240412,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 507,
+   "verdict": "WRONG",
+   "note": "Crown = 93.5 + 0.45 = 93.95; HGL = 93.95 + 2.4 = 96.35 m, not 95.425 m. No option was correct.",
+   "original": {
+    "question": "During a surcharging event, the hydraulic grade line (HGL) rises 2.4 m above the crown of a 450 mm diameter sewer pipe. If the pipe invert is at 93.5 m elevation, what is the elevation of the HGL during this event?",
+    "options": [
+     "93.950 m",
+     "95.425 m",
+     "94.400 m",
+     "94.675 m"
+    ],
+    "correctIndex": 1,
+    "explanation": "Add pipe invert, pipe diameter, and the surcharge to get HGL."
+   },
+   "fix": {
+    "question": "During a surcharging event, the hydraulic grade line (HGL) rises 2.4 m above the crown of a 450 mm diameter sewer pipe. If the pipe invert is at 93.5 m elevation, what is the elevation of the HGL during this event?",
+    "options": [
+     "96.350 m",
+     "95.425 m",
+     "94.400 m",
+     "94.675 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "Add pipe invert, pipe diameter, and the surcharge to get HGL.",
+    "steps": [
+     {
+      "l": "Step 1 — Pipe crown elevation",
+      "c": "93.5 + 0.45 = 93.95 m"
+     },
+     {
+      "l": "Step 2 — HGL elevation",
+      "c": "93.95 + 2.4 = 96.35 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240417,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 512,
+   "verdict": "WRONG",
+   "note": "Full 750 mm pipe: R = 0.1875, R^(2/3) = 0.3276, V = 76.92 x 0.3276 x 0.04472 = 1.13 m/s, not 1.92 (the step arithmetic itself gives 1.18, not 1.92). The 290 L/s in the stem is inconsistent with this velocity (would be 0.50 m3/s) and was removed.",
+   "original": {
+    "question": "A 750 mm diameter force main is required to transmit 290 L/s of flow. If the pipe slope is 0.002 and the Manning’s n = 0.013, estimate the velocity if the pipe flows full.",
+    "options": [
+     "1.92 m/s",
+     "2.77 m/s",
+     "1.53 m/s",
+     "3.41 m/s"
+    ],
+    "correctIndex": 0,
+    "explanation": "Use Manning's formula for a full circular pipe, R = D/4."
+   },
+   "fix": {
+    "question": "A 750 mm diameter concrete sewer is laid at a slope of 0.002 with Manning's n = 0.013. Estimate the velocity if the pipe flows full.",
+    "options": [
+     "1.13 m/s",
+     "1.92 m/s",
+     "2.77 m/s",
+     "3.41 m/s"
+    ],
+    "correctIndex": 0,
+    "explanation": "Use Manning's formula for a full circular pipe, R = D/4.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "R = 0.75/4 = 0.1875 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "R^(2/3) = 0.3276; S^(1/2) = 0.04472"
+     },
+     {
+      "l": "Step 3",
+      "c": "V = 76.92 × 0.3276 × 0.04472 = 1.13 m/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240418,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 513,
+   "verdict": "WRONG",
+   "note": "Using Q = 0.180 m3/s, d = 0.350 m, C = 110, L = 1200: hf = 10.67x1200x0.04184/(6034x0.006006) = 14.8 m, not 29.08. The steps' own division (54.6e6/2.277e16 or 1,877,048) is internally inconsistent; formula needs m3/s and m.",
+   "original": {
+    "question": "A force main conveys a flow of 180 L/s over a distance of 1,200 m. Suppose the Hazen-Williams C is 110 and the diameter is 350 mm. Using the simplified Hazen-Williams formula (h_f = 10.67 × L × Q^1.852 / (C^1.852 × d^4.87)), what is the approximate head loss?",
+    "options": [
+     "29.08 m",
+     "22.66 m",
+     "17.44 m",
+     "48.11 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "Apply Hazen-Williams for head loss using proper units and exponents."
+   },
+   "fix": {
+    "question": "A force main conveys 180 L/s over 1,200 m. The Hazen-Williams C is 110 and the diameter is 350 mm. Using hf = 10.67 × L × Q^1.852 / (C^1.852 × d^4.87) with L in m, Q in m³/s and d in m, what is the approximate head loss?",
+    "options": [
+     "14.8 m",
+     "22.7 m",
+     "17.4 m",
+     "29.1 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "Convert Q = 0.180 m³/s and d = 0.350 m, then apply the SI Hazen-Williams equation.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Q^1.852 = 0.04184; C^1.852 = 6,034; d^4.87 = 0.006006"
+     },
+     {
+      "l": "Step 2",
+      "c": "Numerator = 10.67 × 1,200 × 0.04184 = 535.7"
+     },
+     {
+      "l": "Step 3",
+      "c": "hf = 535.7 / (6,034 × 0.006006) = 14.8 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240419,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 514,
+   "verdict": "WRONG",
+   "note": "Volume = 0.60 m x 8.042 m2 = 4.83 m3; the key 6.44 m3 is not the calculated result (steps admit this). No option was correct.",
+   "original": {
+    "question": "A wet well has a diameter of 3.2 m and is operated with a single pump cycle between elevations 114.20 m and 114.80 m. What is the volume of water pumped during one cycle?",
+    "options": [
+     "30.89 m³",
+     "6.44 m³",
+     "8.76 m³",
+     "15.29 m³"
+    ],
+    "correctIndex": 1,
+    "explanation": "Wet well volume change is height change × area (circular tank)."
+   },
+   "fix": {
+    "question": "A wet well has a diameter of 3.2 m and is operated with a single pump cycle between elevations 114.20 m and 114.80 m. What is the volume of water pumped during one cycle?",
+    "options": [
+     "4.83 m³",
+     "6.44 m³",
+     "8.76 m³",
+     "15.29 m³"
+    ],
+    "correctIndex": 0,
+    "explanation": "Volume = level change × area of the circular well.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Level change = 114.80 − 114.20 = 0.60 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "Area = π × 1.6² = 8.042 m²"
+     },
+     {
+      "l": "Step 3",
+      "c": "Volume = 0.60 × 8.042 = 4.83 m³"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240420,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 515,
+   "verdict": "WRONG",
+   "note": "2x80 + 20x30 + 2x100 L/s-h: 576 + 2,160 + 720 = 3,456 m3. Key 3,808 is not the computed value (steps admit it). No option was correct.",
+   "original": {
+    "question": "The daily flow to a lift station is measured as follows: 2 hours at 80 L/s, 20 hours at 30 L/s, and 2 hours at 100 L/s due to infiltration following rain. What is the total daily volume handled by the lift station?",
+    "options": [
+     "4,920 m³",
+     "5,280 m³",
+     "3,808 m³",
+     "7,200 m³"
+    ],
+    "correctIndex": 2,
+    "explanation": "Volume = flow × time for each period; sum for total daily volume."
+   },
+   "fix": {
+    "question": "The daily flow to a lift station is measured as follows: 2 hours at 80 L/s, 20 hours at 30 L/s, and 2 hours at 100 L/s due to infiltration following rain. What is the total daily volume handled by the lift station?",
+    "options": [
+     "3,456 m³",
+     "4,920 m³",
+     "5,280 m³",
+     "7,200 m³"
+    ],
+    "correctIndex": 0,
+    "explanation": "Volume = flow × time for each period; sum for total daily volume.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "80 × 3,600 × 2 = 576 m³"
+     },
+     {
+      "l": "Step 2",
+      "c": "30 × 3,600 × 20 = 2,160 m³"
+     },
+     {
+      "l": "Step 3",
+      "c": "100 × 3,600 × 2 = 720 m³"
+     },
+     {
+      "l": "Step 4",
+      "c": "Total = 576 + 2,160 + 720 = 3,456 m³"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240421,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 516,
+   "verdict": "WRONG",
+   "note": "HGL at pump discharge = outfall elevation + friction loss = 123.1 + 8.6 = 131.7 m (= 116.3 + 6.8 + 8.6), which is option index 3. Key 124.7 matches no valid calculation.",
+   "original": {
+    "question": "The friction headloss in a 1,000 m long force main is calculated as 8.6 m. What is the hydraulic grade line elevation at the pump discharge if the pump centerline elevation is 116.3 m and the discharge invert at outfall is 123.1 m?",
+    "options": [
+     "124.7 m",
+     "120.9 m",
+     "128.0 m",
+     "131.7 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "HGL at discharge = pump centerline + total head (static rise + friction loss)."
+   },
+   "fix": {
+    "question": "The friction headloss in a 1,000 m long force main is calculated as 8.6 m. What is the hydraulic grade line elevation at the pump discharge if the pump centerline elevation is 116.3 m and the discharge invert at outfall is 123.1 m?",
+    "options": [
+     "124.7 m",
+     "120.9 m",
+     "128.0 m",
+     "131.7 m"
+    ],
+    "correctIndex": 3,
+    "explanation": "HGL at pump discharge = pump centerline + static rise + friction loss.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Static lift = 123.1 − 116.3 = 6.8 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "Total head = 6.8 + 8.6 = 15.4 m"
+     },
+     {
+      "l": "Step 3",
+      "c": "HGL = 116.3 + 15.4 = 131.7 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240423,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 518,
+   "verdict": "WRONG",
+   "note": "R = 0.1 m, R^(2/3) = 0.2154, V = 76.92 x 0.2154 x 0.05 = 0.83 m/s, not 1.74 (76.92x0.215x0.05 = 0.83). No option was correct.",
+   "original": {
+    "question": "A 400 mm diameter sewer pipe with n=0.013, flowing half full, has a slope of 0.0025. Using Manning's equation (V = (1/n) × R^(2/3) × S^(1/2)), what is the flow velocity?",
+    "options": [
+     "1.74 m/s",
+     "1.10 m/s",
+     "2.40 m/s",
+     "2.92 m/s"
+    ],
+    "correctIndex": 0,
+    "explanation": "At half-full, R = D/4; apply Manning formula."
+   },
+   "fix": {
+    "question": "A 400 mm diameter sewer pipe with n = 0.013, flowing half full, has a slope of 0.0025. Using Manning's equation, what is the flow velocity?",
+    "options": [
+     "0.83 m/s",
+     "1.74 m/s",
+     "1.10 m/s",
+     "2.40 m/s"
+    ],
+    "correctIndex": 0,
+    "explanation": "At half-full, R = D/4; apply Manning's formula.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "R = 0.4/4 = 0.1 m; R^(2/3) = 0.2154"
+     },
+     {
+      "l": "Step 2",
+      "c": "S^(1/2) = 0.05"
+     },
+     {
+      "l": "Step 3",
+      "c": "V = 76.92 × 0.2154 × 0.05 = 0.83 m/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240425,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 520,
+   "verdict": "WRONG",
+   "note": "Q = (1/0.013) x 0.2827 x 0.15^(2/3) x 0.002^0.5 = 76.92 x 0.2827 x 0.2823 x 0.04472 = 0.2746 m3/s = 275 L/s, not 171.4. No option was correct.",
+   "original": {
+    "question": "A circular sewer pipe has a diameter of 600 mm and a slope of 0.002. If the Manning's n is 0.013 and the pipe is flowing full, what is the flow rate in L/s?",
+    "options": [
+     "85.7",
+     "114.2",
+     "257.1",
+     "171.4"
+    ],
+    "correctIndex": 3,
+    "explanation": "Apply Manning’s equation for full pipe; ensure units are consistent (m, m³/s, then convert to L/s)."
+   },
+   "fix": {
+    "question": "A circular sewer pipe has a diameter of 600 mm and a slope of 0.002. If Manning's n is 0.013 and the pipe is flowing full, what is the flow rate in L/s?",
+    "options": [
+     "275",
+     "171.4",
+     "114.2",
+     "257.1"
+    ],
+    "correctIndex": 0,
+    "explanation": "Apply Manning's equation for a full pipe (m, m³/s, then convert to L/s).",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "A = π/4 × 0.6² = 0.2827 m²; R = 0.15 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "R^(2/3) = 0.2823; S^(1/2) = 0.04472"
+     },
+     {
+      "l": "Step 3",
+      "c": "Q = 76.92 × 0.2827 × 0.2823 × 0.04472 = 0.2746 m³/s = 275 L/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240431,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 526,
+   "verdict": "WRONG",
+   "note": "Half-full 1.2 m, n = 0.014, S = 0.0015: Q = 71.43 x 0.5655 x 0.3^(2/3) (0.4481) x 0.03873 = 0.70 m3/s, not 1.09. No option was correct.",
+   "original": {
+    "question": "A 1.2 m diameter sewer pipe with Manning's n = 0.014 is laid at a slope of 0.0015. What is its capacity (flow, m³/s) when flowing half-full?",
+    "options": [
+     "4.37",
+     "0.54",
+     "2.18",
+     "1.09"
+    ],
+    "correctIndex": 3,
+    "explanation": "Manning's Q for half-full pipe uses same A and R as full pipe but area halved."
+   },
+   "fix": {
+    "question": "A 1.2 m diameter sewer pipe with Manning's n = 0.014 is laid at a slope of 0.0015. What is its capacity (flow, m³/s) when flowing half-full?",
+    "options": [
+     "0.70",
+     "0.54",
+     "2.18",
+     "1.09"
+    ],
+    "correctIndex": 0,
+    "explanation": "Half-full: A = πD²/8 and R = D/4 = 0.3 m.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "A = π/8 × 1.2² = 0.5655 m²; R = 0.3 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "R^(2/3) = 0.4481; S^(1/2) = 0.03873"
+     },
+     {
+      "l": "Step 3",
+      "c": "Q = 71.43 × 0.5655 × 0.4481 × 0.03873 = 0.70 m³/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240433,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 528,
+   "verdict": "WRONG",
+   "note": "17.6 L/s x 86,400 s = 1,520,640 L = 1,520.6 m3, not 1,521.6 (arithmetic slip).",
+   "original": {
+    "question": "If the I/I rate in a system is 0.55 L/s/km and the total collection system is 32 km, what is the total daily volume of I/I in cubic meters?",
+    "options": [
+     "1,521.6",
+     "264",
+     "528",
+     "2,534.4"
+    ],
+    "correctIndex": 0,
+    "explanation": "Multiply rate by length and convert to total daily volume."
+   },
+   "fix": {
+    "question": "If the I/I rate in a system is 0.55 L/s/km and the total collection system is 32 km, what is the total daily volume of I/I in cubic meters?",
+    "options": [
+     "1,520.6",
+     "264",
+     "528",
+     "2,534.4"
+    ],
+    "correctIndex": 0,
+    "explanation": "Multiply rate by length and convert to total daily volume.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Total flow: 0.55 × 32 = 17.6 L/s"
+     },
+     {
+      "l": "Step 2",
+      "c": "Daily volume: 17.6 × 86,400 = 1,520,640 L"
+     },
+     {
+      "l": "Step 3",
+      "c": "= 1,520.6 m³"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240434,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 529,
+   "verdict": "WRONG",
+   "note": "P = 9.81 x 0.180 x 21 / 0.68 = 54.5 kW. The keyed 55.3 kW is not the calculated result; explanation justifies it only as a larger listed option while also admitting 75.6 is adequate. Replace the option with 54.5.",
+   "original": {
+    "question": "A lift station pumps against a total head of 21 m and must deliver 180 L/s. What minimum pump power in kW is required, assuming overall pump efficiency of 68%?",
+    "options": [
+     "55.3",
+     "12.8",
+     "75.6",
+     "32.4"
+    ],
+    "correctIndex": 0,
+    "explanation": "For water, use P_input = gamma Q H/eta with gamma = 9.81 kN/m3, Q = 0.180 m3/s, H = 21 m and eta = 0.68. Thus P_input = (9.81)(0.180)(21)/0.68 = 54.5320588 kW, or 54.5 kW to one decimal. Among the offered powers, 55.3 kW is the smallest that meets this minimum; 12.8 kW and 32.4 kW are insufficient, while 75.6 kW is larger than necessary. Select the unchanged keyed 55.3 kW as the minimum adequate listed choice. Do not describe 55.3 kW as a rounded calculation or add an unstated safety factor."
+   },
+   "fix": {
+    "question": "A lift station pumps against a total head of 21 m and must deliver 180 L/s. What is the required pump input power in kW, assuming overall pump efficiency of 68%?",
+    "options": [
+     "54.5",
+     "12.8",
+     "75.6",
+     "32.4"
+    ],
+    "correctIndex": 0,
+    "explanation": "P_input = γQH/η = (9.81)(0.180)(21)/0.68 = 54.5 kW.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Hydraulic power = 9.81 × 0.180 × 21 = 37.08 kW"
+     },
+     {
+      "l": "Step 2",
+      "c": "Input power = 37.08 / 0.68 = 54.5 kW"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240436,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 531,
+   "verdict": "WRONG",
+   "note": "Volume 9 x 1.6 = 14.4 m3; net outflow 2x175 - 50 = 300 L/s; time = 48 s = 0.80 min, not 1.46 (explanation's 'rounding for cutoff lag' is unjustified).",
+   "original": {
+    "question": "A dual-pump lift station has pumps rated for 175 L/s each. The wet well area is 9 m². If both pumps turn on when water rises 1.6 m, how long (minutes) will it take to empty from the start level to the cutoff (assuming average in = 50 L/s)?",
+    "options": [
+     "2.92",
+     "0.86",
+     "3.25",
+     "1.46"
+    ],
+    "correctIndex": 3,
+    "explanation": "Net outflow rate = 350 - 50 = 300 L/s. Volume = area × height."
+   },
+   "fix": {
+    "question": "A dual-pump lift station has pumps rated at 175 L/s each. The wet well area is 9 m². Both pumps run while the level falls 1.6 m from the start level to the cutoff level. If average inflow is 50 L/s, how long (minutes) does this take?",
+    "options": [
+     "0.80",
+     "1.46",
+     "2.92",
+     "3.25"
+    ],
+    "correctIndex": 0,
+    "explanation": "Net outflow rate = 350 − 50 = 300 L/s. Volume = area × height.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Volume = 9 × 1.6 = 14.4 m³ = 14,400 L"
+     },
+     {
+      "l": "Step 2",
+      "c": "Net outflow = 2 × 175 − 50 = 300 L/s"
+     },
+     {
+      "l": "Step 3",
+      "c": "Time = 14,400 / 300 = 48 s = 0.80 min"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240437,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 532,
+   "verdict": "WRONG",
+   "note": "At 75% depth (y/D = 0.75) with D = 0.914 m: A = 0.528 m2, R = 0.276 m, Q = 71.43 x 0.528 x 0.4234 x 0.02828 = 0.451 m3/s = 451 L/s, not 2,625 L/s (steps use wrong A and R and the result is not what they compute).",
+   "original": {
+    "question": "A 36-inch (0.914 m) sewer at slope 0.0008, Manning’s n = 0.014, flows three-quarters full. What flowrate (in L/s) can it convey?",
+    "options": [
+     "3,937",
+     "1,313",
+     "2,625",
+     "875"
+    ],
+    "correctIndex": 2,
+    "explanation": "Manning's formula, A and R for 3/4 full pipe; use correct conversion."
+   },
+   "fix": {
+    "question": "A 36-inch (0.914 m) sewer at slope 0.0008, Manning's n = 0.014, flows three-quarters full. What flow rate (in L/s) can it convey?",
+    "options": [
+     "451",
+     "1,313",
+     "2,625",
+     "875"
+    ],
+    "correctIndex": 0,
+    "explanation": "Manning's formula with A and R for a pipe flowing 3/4 full.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "θ = 240° (4.189 rad); A = D²(θ − sinθ)/8 = 0.528 m²"
+     },
+     {
+      "l": "Step 2",
+      "c": "P = Dθ/2 = 1.914 m; R = 0.2757 m; R^(2/3) = 0.4234"
+     },
+     {
+      "l": "Step 3",
+      "c": "Q = (1/0.014) × 0.528 × 0.4234 × 0.02828 = 0.451 m³/s = 451 L/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240438,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 533,
+   "verdict": "WRONG",
+   "note": "Explanation itself computes 11.7 m ((216-101) kPa / 9.81) then asserts 22.0 m 'due to additional head factors', contradicting the stem (all other losses negligible). Correct static lift = 11.7 m; 22.0 m would only result if 216 kPa were gauge, which the stem's atmospheric-pressure statement contradicts.",
+   "original": {
+    "question": "A 1000 m long, 300 mm diameter force main carries a peak flow of 120 L/s. If system pressure at the pump is measured at 216 kPa, what is the approximate static lift (height difference) in meters? (Atmospheric pressure 101 kPa, all other losses are negligible.)",
+    "options": [
+     "14.7",
+     "22.0",
+     "30.0",
+     "11.0"
+    ],
+    "correctIndex": 1,
+    "explanation": "Pressure = ρgh; convert kPa to meters of water."
+   },
+   "fix": {
+    "question": "A 1,000 m long, 300 mm diameter force main carries a peak flow of 120 L/s. The absolute pressure at the pump discharge is measured at 216 kPa. What is the approximate static lift (height difference) in metres? (Atmospheric pressure 101 kPa; all other losses negligible.)",
+    "options": [
+     "11.7",
+     "22.0",
+     "14.7",
+     "30.0"
+    ],
+    "correctIndex": 0,
+    "explanation": "Convert gauge pressure to metres of water.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Gauge pressure = 216 − 101 = 115 kPa"
+     },
+     {
+      "l": "Step 2",
+      "c": "Head = 115 / 9.81 = 11.7 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240441,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 536,
+   "verdict": "UNCLEAR",
+   "note": "Stem says 40% of the wet weather peak is I/I (0.4 x 450 = 180 L/s), but the key/explanation uses 40% of (wet - dry) = 108 L/s. The data are also inconsistent with the stem reading (dry 180 + I/I 180 would not equal 450). Reworded so the key is unambiguous.",
+   "original": {
+    "question": "A system receives peak dry weather flow of 180 L/s and wet weather peak of 450 L/s. If 40% of wet weather peak is due to I/I, what is the I/I peak rate in L/s?",
+    "options": [
+     "180",
+     "112.5",
+     "72",
+     "108"
+    ],
+    "correctIndex": 3,
+    "explanation": "I/I = (wet - dry) × % due to I/I."
+   },
+   "fix": {
+    "question": "A system receives a peak dry weather flow of 180 L/s and a wet weather peak of 450 L/s. If 40% of the increase over dry weather flow is due to I/I, what is the I/I peak rate in L/s?",
+    "options": [
+     "180",
+     "112.5",
+     "72",
+     "108"
+    ],
+    "correctIndex": 3,
+    "explanation": "I/I = (wet − dry) × % due to I/I.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Increase = 450 − 180 = 270 L/s"
+     },
+     {
+      "l": "Step 2",
+      "c": "I/I = 270 × 0.4 = 108 L/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240442,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 537,
+   "verdict": "WRONG",
+   "note": "With Q = 0.085 m3/s, d = 0.200 m, C = 130, L = 600 m: hf = 10.67x600x0.010406/(8223x0.000395) = 20.5 m, not 10.6. Formula needs SI units (m3/s, m) and the steps use mm/L/s.",
+   "original": {
+    "question": "The friction loss in a 600 m long, 200 mm diameter force main at 85 L/s, using Hazen-Williams C=130, is closest to:",
+    "options": [
+     "42.5",
+     "21.3",
+     "10.6",
+     "5.3"
+    ],
+    "correctIndex": 2,
+    "explanation": "Apply Hazen-Williams metric formula."
+   },
+   "fix": {
+    "question": "The friction loss in a 600 m long, 200 mm diameter force main carrying 85 L/s, using Hazen-Williams C = 130, is closest to (metres; use hf = 10.67 × L × Q^1.852 / (C^1.852 × d^4.87) with Q in m³/s and d in m):",
+    "options": [
+     "20.5",
+     "10.6",
+     "42.5",
+     "5.3"
+    ],
+    "correctIndex": 0,
+    "explanation": "Apply the SI Hazen-Williams formula.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Q = 0.085 m³/s; d = 0.200 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "Q^1.852 = 0.01041; C^1.852 = 8,223; d^4.87 = 3.95×10⁻⁴"
+     },
+     {
+      "l": "Step 3",
+      "c": "hf = 10.67 × 600 × 0.01041 / (8,223 × 3.95×10⁻⁴) = 20.5 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240443,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 538,
+   "verdict": "UNITS",
+   "note": "HP in an Ontario (metric) question; also the arithmetic is wrong: 7.29 kW / 0.746 = 9.77 hp, not 7.95 hp (step divides by 0.915). Converted to kW: 0.015278 x 35 x 9.81 / 0.72 = 7.29 kW.",
+   "original": {
+    "question": "A pump draws 1,320 m³/day at 35 m total dynamic head with an efficiency of 72%. What is the brake horsepower (1 HP = 0.746 kW)?",
+    "options": [
+     "7.95",
+     "15.9",
+     "3.85",
+     "11.6"
+    ],
+    "correctIndex": 0,
+    "explanation": "First, get flow in m³/s, then calculate kW, then convert kW to HP."
+   },
+   "fix": {
+    "question": "A pump delivers 1,320 m³/day at 35 m total dynamic head with an efficiency of 72%. What is the brake power (kW)?",
+    "options": [
+     "7.29",
+     "5.25",
+     "10.1",
+     "3.85"
+    ],
+    "correctIndex": 0,
+    "explanation": "Convert flow to m³/s, then P = ρgQH/η.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Q = 1,320 / 86,400 = 0.01528 m³/s"
+     },
+     {
+      "l": "Step 2",
+      "c": "Hydraulic power = 0.01528 × 35 × 9.81 = 5.25 kW"
+     },
+     {
+      "l": "Step 3",
+      "c": "Brake power = 5.25 / 0.72 = 7.29 kW"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240445,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 540,
+   "verdict": "WRONG",
+   "note": "At y/D = 0.70, D = 1.2192 m: A = 0.873 m2, P = 2.417 m, R = 0.361 m; Q = 76.92 x 0.873 x 0.5073 x 0.03464 = 1.18 m3/s, not 2.71 (steps' A = 0.818 and R = 0.235 are wrong, and their own formula does not give 2.71).",
+   "original": {
+    "question": "A 48-inch (1.2192 m) diameter concrete pipe (n=0.013), carrying peak flow at 70% full, is laid at a slope of 0.0012. What is the flow capacity (m³/s, rounded)?",
+    "options": [
+     "2.71",
+     "4.09",
+     "1.96",
+     "3.82"
+    ],
+    "correctIndex": 0,
+    "explanation": "For 70% full, use approximate area and wetted perimeter multipliers."
+   },
+   "fix": {
+    "question": "A 48-inch (1.2192 m) diameter concrete pipe (n = 0.013), carrying peak flow at 70% full, is laid at a slope of 0.0012. What is the flow capacity (m³/s)?",
+    "options": [
+     "1.18",
+     "2.71",
+     "1.96",
+     "4.09"
+    ],
+    "correctIndex": 0,
+    "explanation": "For 70% full, compute area and wetted perimeter from the central angle.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "θ = 227.2° (3.965 rad); A = D²(θ − sinθ)/8 = 0.873 m²"
+     },
+     {
+      "l": "Step 2",
+      "c": "P = Dθ/2 = 2.417 m; R = 0.361 m; R^(2/3) = 0.507"
+     },
+     {
+      "l": "Step 3",
+      "c": "Q = 76.92 × 0.873 × 0.507 × 0.03464 = 1.18 m³/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240446,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 541,
+   "verdict": "UNCLEAR",
+   "note": "Stem says to use the Manning equation, but no slope is given and the answer uses Q/A. Wording misleading; Manning cannot yield the answer. Answer 1.70 m/s itself is right.",
+   "original": {
+    "question": "A 300 m long force main made of ductile iron (Manning’s n = 0.012) has a diameter of 300 mm and needs to convey 120 L/s. Using the Manning equation, what is the velocity of flow in the pipe?",
+    "options": [
+     "0.85 m/s",
+     "1.70 m/s",
+     "2.55 m/s",
+     "3.10 m/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "The velocity is calculated with the discharge and area. Area = π/4 × d². Then velocity = Q/A."
+   },
+   "fix": {
+    "question": "A 300 m long ductile iron force main has a diameter of 300 mm and needs to convey 120 L/s. What is the velocity of flow in the pipe?",
+    "options": [
+     "0.85 m/s",
+     "1.70 m/s",
+     "2.55 m/s",
+     "3.10 m/s"
+    ],
+    "correctIndex": 1,
+    "explanation": "Area = π/4 × d². Then velocity = Q/A.",
+    "steps": [
+     {
+      "l": "Step 1 — Area",
+      "c": "A = π/4 × (0.3 m)² = 0.0707 m²"
+     },
+     {
+      "l": "Step 2 — Velocity",
+      "c": "V = 0.12 / 0.0707 = 1.70 m/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240447,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 542,
+   "verdict": "WRONG",
+   "note": "If both duty pumps together handle the 40.5 L/s peak, each pump is 20.25 L/s (the explanation's step 3 first computes this and then reverses it). Key 40.5 is the combined flow; no option equals 20.25.",
+   "original": {
+    "question": "A pump station receives an average diurnal flow of 1,400 m³/d and has two duty pumps operating in parallel. What is the capacity in L/s for each pump if both are to handle peak flow simultaneously at 2.5 times average?",
+    "options": [
+     "35.0 L/s",
+     "53.6 L/s",
+     "40.5 L/s",
+     "28.5 L/s"
+    ],
+    "correctIndex": 2,
+    "explanation": "Calculate peak flow, divide between 2 pumps, convert units."
+   },
+   "fix": {
+    "question": "A pump station receives an average daily flow of 1,400 m³/d and has two duty pumps operating in parallel. What is the capacity in L/s of each pump if together they handle a peak flow of 2.5 times average?",
+    "options": [
+     "20.3 L/s",
+     "40.5 L/s",
+     "35.0 L/s",
+     "53.6 L/s"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculate peak flow, divide between the 2 pumps, convert units.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Peak = 1,400 × 2.5 = 3,500 m³/d"
+     },
+     {
+      "l": "Step 2",
+      "c": "3,500 × 1,000 / 86,400 = 40.5 L/s"
+     },
+     {
+      "l": "Step 3",
+      "c": "Each pump = 40.5 / 2 = 20.3 L/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240449,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 544,
+   "verdict": "WRONG",
+   "note": "A = 0.0491 m2, Q = 0.108 m3/s = 389 m3/h (steps even show 389.5). Key 3895 is ten times too large.",
+   "original": {
+    "question": "A force main is 250 mm in diameter and has a full pipe velocity of 2.2 m/s. What is the flow rate in m³/h?",
+    "options": [
+     "3895 m³/h",
+     "392 m³/h",
+     "1550 m³/h",
+     "1125 m³/h"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculate sectional area, multiply by velocity, convert to hourly."
+   },
+   "fix": {
+    "question": "A force main is 250 mm in diameter and has a full pipe velocity of 2.2 m/s. What is the flow rate in m³/h?",
+    "options": [
+     "389 m³/h",
+     "3,895 m³/h",
+     "1,550 m³/h",
+     "1,125 m³/h"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculate sectional area, multiply by velocity, convert to hourly.",
+    "steps": [
+     {
+      "l": "Step 1 — Area",
+      "c": "A = π/4 × 0.25² = 0.0491 m²"
+     },
+     {
+      "l": "Step 2 — Flow Rate",
+      "c": "Q = 0.0491 × 2.2 = 0.108 m³/s"
+     },
+     {
+      "l": "Step 3 — Convert to m³/h",
+      "c": "0.108 × 3,600 = 389 m³/h"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240450,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 545,
+   "verdict": "WRONG",
+   "note": "R = 0.09375, R^(2/3) = 0.2064, V = 76.92 x 0.2064 x 0.03873 = 0.61 m/s, not 1.52 (steps' own numbers give 0.63).",
+   "original": {
+    "question": "Using Manning's equation, estimate the velocity in a 375 mm concrete sewer (n = 0.013) flowing half-full with a slope of 0.0015 m/m.",
+    "options": [
+     "2.24 m/s",
+     "1.92 m/s",
+     "1.12 m/s",
+     "1.52 m/s"
+    ],
+    "correctIndex": 3,
+    "explanation": "Use Manning’s formula remembering for half-full, R and S remain same."
+   },
+   "fix": {
+    "question": "Using Manning's equation, estimate the velocity in a 375 mm concrete sewer (n = 0.013) flowing half-full with a slope of 0.0015 m/m.",
+    "options": [
+     "0.61 m/s",
+     "1.92 m/s",
+     "1.12 m/s",
+     "1.52 m/s"
+    ],
+    "correctIndex": 0,
+    "explanation": "For half-full, R = D/4.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "R = 0.375/4 = 0.09375 m; R^(2/3) = 0.2064"
+     },
+     {
+      "l": "Step 2",
+      "c": "S^(1/2) = 0.03873"
+     },
+     {
+      "l": "Step 3",
+      "c": "V = 76.92 × 0.2064 × 0.03873 = 0.61 m/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240452,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 547,
+   "verdict": "WRONG",
+   "note": "Q = 90.91 x 0.1257 x 0.2154 x 0.04472 = 0.110 m3/s = 110 L/s, not 604 L/s (the step's own product is 0.110).",
+   "original": {
+    "question": "A 400 mm diameter force main has a slope of 0.002 and Manning's n of 0.011. If the pipe is full, what is the maximum capacity in L/s?",
+    "options": [
+     "604 L/s",
+     "899 L/s",
+     "726 L/s",
+     "412 L/s"
+    ],
+    "correctIndex": 0,
+    "explanation": "Use Manning’s Q = (1/n) × A × R^(2/3) × S^(1/2)."
+   },
+   "fix": {
+    "question": "A 400 mm diameter pipe has a slope of 0.002 and Manning's n of 0.011. If the pipe is full, what is the capacity in L/s?",
+    "options": [
+     "110 L/s",
+     "604 L/s",
+     "726 L/s",
+     "412 L/s"
+    ],
+    "correctIndex": 0,
+    "explanation": "Use Manning's Q = (1/n) × A × R^(2/3) × S^(1/2).",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "A = π/4 × 0.4² = 0.1257 m²; R = 0.1 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "Q = 90.91 × 0.1257 × 0.2154 × 0.04472"
+     },
+     {
+      "l": "Step 3",
+      "c": "Q = 0.110 m³/s = 110 L/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240453,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 548,
+   "verdict": "WRONG",
+   "note": "With H = 8 + 0.04Q2 and H = 14, Q = 12.25 m3/s; the keyed 0.39 m3/s requires a coefficient of 40 (H = 8 + 40Q2). Steps in the item acknowledge the mismatch. Corrected coefficient.",
+   "original": {
+    "question": "The system head curve for a pump station is given by H = 8 + 0.04Q², where H is the head in meters and Q is flow in m³/s. If the pump provides 14 m of head, what is the station’s flow (to 2 decimal places, m³/s)?",
+    "options": [
+     "0.25 m³/s",
+     "0.48 m³/s",
+     "0.39 m³/s",
+     "0.45 m³/s"
+    ],
+    "correctIndex": 2,
+    "explanation": "Solve for Q in the head equation."
+   },
+   "fix": {
+    "question": "The system head curve for a pump station is given by H = 8 + 40Q², where H is the head in metres and Q is flow in m³/s. If the pump provides 14 m of head, what is the station's flow (to 2 decimal places, m³/s)?",
+    "options": [
+     "0.25 m³/s",
+     "0.48 m³/s",
+     "0.39 m³/s",
+     "0.45 m³/s"
+    ],
+    "correctIndex": 2,
+    "explanation": "Solve for Q in the head equation.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "14 = 8 + 40Q²"
+     },
+     {
+      "l": "Step 2",
+      "c": "Q² = 6/40 = 0.15"
+     },
+     {
+      "l": "Step 3",
+      "c": "Q = √0.15 = 0.39 m³/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240462,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 557,
+   "verdict": "UNCLEAR",
+   "note": "Volume per cycle is taken as pump rate x full 10-min cycle, which assumes the pump never stops. Standard minimum-cycle-time sizing is V = Q x t / 4 (or Q x t_min /4), giving 8.25 m3 and 4.6 m2. Stem does not state the method used.",
+   "original": {
+    "question": "A pump station has a duty pump rated at 55 L/s and a standby at 55 L/s. The wet well’s high-to-low level is 1.8 m. If pumps cycle every 10 minutes, what is the minimum wet well surface area needed (in m²)?",
+    "options": [
+     "12.5 m²",
+     "22.5 m²",
+     "18.3 m²",
+     "8.2 m²"
+    ],
+    "correctIndex": 2,
+    "explanation": "Volume per cycle = Q × cycle, then divides by level difference."
+   },
+   "fix": {
+    "question": "A pump station has a duty pump rated at 55 L/s. The wet well high-to-low level range is 1.8 m. For a minimum cycle time of 10 minutes, use the minimum-cycle relationship V = Q × t / 4. What minimum wet well surface area is needed (m²)?",
+    "options": [
+     "4.6 m²",
+     "12.5 m²",
+     "18.3 m²",
+     "22.5 m²"
+    ],
+    "correctIndex": 0,
+    "explanation": "Volume = Q × t / 4, then divide by the level range.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "V = 55 L/s × 600 s / 4 = 8,250 L = 8.25 m³"
+     },
+     {
+      "l": "Step 2",
+      "c": "A = 8.25 / 1.8 = 4.6 m²"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240467,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 562,
+   "verdict": "WRONG",
+   "note": "V = 0.2/0.0962 = 2.08 m/s; R = 0.0875, R^(2/3) = 0.1971; S = (2.08 x 0.013 / 0.1971)^2 = 0.0188; hf = 0.0188 x 400 = 7.5 m, not 2.14 m (S = 0.00535 is an arithmetic error).",
+   "original": {
+    "question": "A 400 m long force main has a diameter of 350 mm and carries a flow of 200 L/s. Using the Manning equation with n = 0.013, what is the head loss due to friction in the force main? (Assume the pipe is flowing full; g = 9.81 m/s²)",
+    "options": [
+     "2.14 m",
+     "1.05 m",
+     "4.69 m",
+     "5.87 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "Use the Manning equation for full pipe flow to find velocity, then head loss using Darcy-Weisbach approximation."
+   },
+   "fix": {
+    "question": "A 400 m long force main has a diameter of 350 mm and carries 200 L/s. Using the Manning equation with n = 0.013 and assuming the pipe is flowing full, what is the head loss due to friction?",
+    "options": [
+     "7.52 m",
+     "2.14 m",
+     "4.69 m",
+     "5.87 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "Find velocity from Q = VA, solve Manning's for slope, then hf = S × L.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "A = π × 0.175² = 0.0962 m²; V = 0.2/0.0962 = 2.08 m/s"
+     },
+     {
+      "l": "Step 2",
+      "c": "R = 0.0875 m; R^(2/3) = 0.1971"
+     },
+     {
+      "l": "Step 3",
+      "c": "S = (2.08 × 0.013 / 0.1971)² = 0.0188"
+     },
+     {
+      "l": "Step 4",
+      "c": "hf = 0.0188 × 400 = 7.52 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240470,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 565,
+   "verdict": "WRONG",
+   "note": "I/I = 4,200 m3/d = 48.6 L/s over 120 ha = 0.405 L/s/ha. Key 3.94 is wrong and no option was correct (steps acknowledge this).",
+   "original": {
+    "question": "During an intense rain event, the daily flow into a sanitary lift station increases from a dry weather average of 2,600 m³/d to 6,800 m³/d. If the sewershed area is 1.2 km², what is the I/I rate in L/s/ha for that day?",
+    "options": [
+     "10.24 L/s/ha",
+     "3.94 L/s/ha",
+     "7.17 L/s/ha",
+     "2.75 L/s/ha"
+    ],
+    "correctIndex": 1,
+    "explanation": "Calculate I/I volume, convert to L/s, then divide by area in hectares."
+   },
+   "fix": {
+    "question": "During an intense rain event, the daily flow into a sanitary lift station increases from a dry weather average of 2,600 m³/d to 6,800 m³/d. If the sewershed area is 1.2 km², what is the I/I rate in L/s/ha for that day?",
+    "options": [
+     "0.41 L/s/ha",
+     "4.05 L/s/ha",
+     "0.20 L/s/ha",
+     "1.21 L/s/ha"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculate I/I volume, convert to L/s, then divide by area in hectares.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "I/I = 6,800 − 2,600 = 4,200 m³/d"
+     },
+     {
+      "l": "Step 2",
+      "c": "4,200,000 L / 86,400 s = 48.6 L/s"
+     },
+     {
+      "l": "Step 3",
+      "c": "1.2 km² = 120 ha"
+     },
+     {
+      "l": "Step 4",
+      "c": "48.6 / 120 = 0.41 L/s/ha"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240471,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 566,
+   "verdict": "WRONG",
+   "note": "A = 0.2165 m2, R = 0.13125 m, R^(2/3) = 0.2584, Q = 76.92 x 0.2165 x 0.2584 x 0.02646 = 0.114 m3/s = 114 L/s, not 416 L/s. No option was correct.",
+   "original": {
+    "question": "A 480 m section of 525 mm concrete sewer (n = 0.013) is laid on a slope of 0.0007. Calculate the capacity (flow rate in L/s) when flowing full using the Manning equation.",
+    "options": [
+     "677 L/s",
+     "531 L/s",
+     "902 L/s",
+     "416 L/s"
+    ],
+    "correctIndex": 3,
+    "explanation": "Use the full-pipe Manning formula Q = (1/n) × A × R^{2/3} × S^{1/2}."
+   },
+   "fix": {
+    "question": "A 480 m section of 525 mm concrete sewer (n = 0.013) is laid on a slope of 0.0007. Calculate the capacity (flow rate in L/s) when flowing full using the Manning equation.",
+    "options": [
+     "114 L/s",
+     "531 L/s",
+     "677 L/s",
+     "902 L/s"
+    ],
+    "correctIndex": 0,
+    "explanation": "Use the full-pipe Manning formula Q = (1/n) × A × R^(2/3) × S^(1/2).",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "A = π × 0.2625² = 0.2165 m²; R = 0.525/4 = 0.1313 m"
+     },
+     {
+      "l": "Step 2",
+      "c": "R^(2/3) = 0.2584; S^(1/2) = 0.02646"
+     },
+     {
+      "l": "Step 3",
+      "c": "Q = 76.92 × 0.2165 × 0.2584 × 0.02646 = 0.114 m³/s = 114 L/s"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240472,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 567,
+   "verdict": "WRONG",
+   "note": "V = 12.566 x 0.5 = 6.283 m3; at 0.09 m3/s, t = 69.8 s = 1.16 min, not 7.75 min (steps acknowledge the mismatch).",
+   "original": {
+    "question": "A pump station draws from a wet well with a diameter of 4.0 m. If inflow is 90 L/s and the water level rises by 0.5 m, how long (minutes) will it take the wet well to fill from empty to the 0.5 m mark?",
+    "options": [
+     "5.52 min",
+     "4.65 min",
+     "11.6 min",
+     "7.75 min"
+    ],
+    "correctIndex": 3,
+    "explanation": "Calculate wet well volume up to 0.5 m, then divide by inflow rate."
+   },
+   "fix": {
+    "question": "A pump station draws from a wet well with a diameter of 4.0 m. If inflow is 90 L/s, how long (minutes) will it take the wet well to fill from empty to the 0.5 m mark?",
+    "options": [
+     "1.16 min",
+     "4.65 min",
+     "5.52 min",
+     "11.6 min"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculate wet well volume up to 0.5 m, then divide by inflow rate.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "A = π × 2² = 12.566 m²"
+     },
+     {
+      "l": "Step 2",
+      "c": "V = 12.566 × 0.5 = 6.283 m³"
+     },
+     {
+      "l": "Step 3",
+      "c": "t = 6.283 / 0.09 = 69.8 s = 1.16 min"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240476,
+   "bankKey": "class3-wastewater-coll",
+   "questionNum": 571,
+   "verdict": "WRONG",
+   "note": "SI form needs Q in m3/s and d in m: Q = 0.060, d = 0.200, C = 130, L = 360: hf = 10.67x360x0.005461/(8223x0.000395) = 6.5 m, not 3.15 m (power-term values in steps also wrong; 60^1.852 = 1,966).",
+   "original": {
+    "question": "A 360 m long 200 mm diameter force main is to be designed for a flow of 60 L/s. If the Hazen-Williams coefficient is 130, what is the head loss in metres? (Use: hL = 10.67 × L × Q^{1.852} / (C^{1.852} × d^{4.87}), Q in L/s, d in mm)",
+    "options": [
+     "3.15 m",
+     "1.02 m",
+     "6.32 m",
+     "9.70 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "Apply head loss formula using given values and correct Hazen-Williams units."
+   },
+   "fix": {
+    "question": "A 360 m long, 200 mm diameter force main is designed for a flow of 60 L/s. If the Hazen-Williams coefficient is 130, what is the head loss in metres? (Use hL = 10.67 × L × Q^1.852 / (C^1.852 × d^4.87), with Q in m³/s and d in m.)",
+    "options": [
+     "6.46 m",
+     "3.15 m",
+     "1.02 m",
+     "9.70 m"
+    ],
+    "correctIndex": 0,
+    "explanation": "Convert Q = 0.060 m³/s and d = 0.200 m, then apply the SI Hazen-Williams equation.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Q^1.852 = 0.005461; C^1.852 = 8,223; d^4.87 = 3.95×10⁻⁴"
+     },
+     {
+      "l": "Step 2",
+      "c": "Numerator = 10.67 × 360 × 0.005461 = 20.98"
+     },
+     {
+      "l": "Step 3",
+      "c": "hL = 20.98 / (8,223 × 3.95×10⁻⁴) = 6.46 m"
+     }
+    ]
+   }
+  },
+  {
+   "id": 180608,
+   "bankKey": "class3-water",
+   "questionNum": 8,
+   "verdict": "UNCLEAR",
+   "note": "Distractor C labels filtration rate as '(UFRV)'. UFRV is Unit Filter Run Volume, not a filtration rate, so the option is misleading.",
+   "original": {
+    "question": "A Class 3 operator is overseeing a biological filter for manganese removal. What is a critical operational parameter to ensure optimal biological activity?",
+    "options": [
+     "Maintaining a high chlorine residual entering the filter",
+     "Ensuring adequate dissolved oxygen (DO) levels in the influent water",
+     "Operating the filter at a very high filtration rate (UFRV)",
+     "Minimizing the empty bed contact time (EBCT)"
+    ],
+    "correctIndex": 1,
+    "explanation": "Biological filtration for manganese removal relies on aerobic bacteria. Therefore, maintaining adequate dissolved oxygen levels in the influent water is crucial for their metabolic activity and efficient manganese oxidation."
+   },
+   "fix": {
+    "question": "A Class 3 operator is overseeing a biological filter for manganese removal. What is a critical operational parameter to ensure optimal biological activity?",
+    "options": [
+     "Maintaining a high chlorine residual entering the filter",
+     "Ensuring adequate dissolved oxygen (DO) levels in the influent water",
+     "Operating the filter at a very high filtration rate",
+     "Minimizing the empty bed contact time (EBCT)"
+    ],
+    "correctIndex": 1,
+    "explanation": "Biological filtration for manganese removal relies on aerobic bacteria. Therefore, maintaining adequate dissolved oxygen levels in the influent water is crucial for their metabolic activity and efficient manganese oxidation.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180637,
+   "bankKey": "class3-water",
+   "questionNum": 37,
+   "verdict": "UNCLEAR",
+   "note": "Distractor B labels filtration rate as '(UFRV)'. UFRV is Unit Filter Run Volume, not a filtration rate, so the option is misleading.",
+   "original": {
+    "question": "In the event of a significant cyanobacterial bloom in the source water, what is a key consideration for filter operation to prevent toxin breakthrough?",
+    "options": [
+     "Increasing filter run times to maximize solids loading",
+     "Maintaining a high uniform filtration rate (UFRV)",
+     "Reducing filter loading rates and potentially increasing backwash frequency",
+     "Bypassing the filters to prevent clogging"
+    ],
+    "correctIndex": 2,
+    "explanation": "During a cyanobacterial bloom, reducing filter loading rates and increasing backwash frequency helps manage the increased particulate load (algal cells) and prevent premature filter clogging or breakthrough of cells and associated toxins."
+   },
+   "fix": {
+    "question": "In the event of a significant cyanobacterial bloom in the source water, what is a key consideration for filter operation to prevent toxin breakthrough?",
+    "options": [
+     "Increasing filter run times to maximize solids loading",
+     "Maintaining a high, uniform filtration rate",
+     "Reducing filter loading rates and potentially increasing backwash frequency",
+     "Bypassing the filters to prevent clogging"
+    ],
+    "correctIndex": 2,
+    "explanation": "During a cyanobacterial bloom, reducing filter loading rates and increasing backwash frequency helps manage the increased particulate load (algal cells) and prevent premature filter clogging or breakthrough of cells and associated toxins.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180645,
+   "bankKey": "class3-water",
+   "questionNum": 45,
+   "verdict": "UNCLEAR",
+   "note": "Lowering pH before ozonation (option C) is a well-established, widely recommended bromate control (with ammonia addition), so two options are defensible. The peroxone explanation (scavenging hydroxyl radicals) is also questionable. Make pH depression the key and make the pH option in the wrong set a pH increase.",
+   "original": {
+    "question": "A Class 3 operator is evaluating strategies to reduce bromate formation in an ozonation system. Which approach is most effective?",
+    "options": [
+     "Increasing the ozone dose to ensure complete oxidation",
+     "Adding hydrogen peroxide to the ozonation process (peroxone process)",
+     "Lowering the pH of the water prior to ozonation",
+     "Increasing the contact time in the ozone contactor"
+    ],
+    "correctIndex": 1,
+    "explanation": "The peroxone process (ozone with hydrogen peroxide) can effectively reduce bromate formation by scavenging hydroxyl radicals, which are key intermediates in the bromate formation pathway, while still providing strong oxidation."
+   },
+   "fix": {
+    "question": "A Class 3 operator is evaluating strategies to reduce bromate formation in an ozonation system. Which approach is most effective?",
+    "options": [
+     "Increasing the ozone dose to ensure complete oxidation",
+     "Raising the pH of the water to above 8.5 before ozonation",
+     "Lowering the pH of the water prior to ozonation (e.g., to about 6.5-7.0)",
+     "Increasing the contact time in the ozone contactor"
+    ],
+    "correctIndex": 2,
+    "explanation": "Bromate formation increases with pH, ozone dose and contact time. Depressing the pH before ozonation shifts HOBr/OBr- equilibrium toward HOBr and reduces bromate formation; ammonia addition is another common control.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180652,
+   "bankKey": "class3-water",
+   "questionNum": 52,
+   "verdict": "JURISDICTION",
+   "note": "States enhanced coagulation is 'required under DBP rules when TOC >2 mg/L'. That is the US EPA Stage 1 DBPR TOC-removal requirement; Ontario (O. Reg. 170/03) has no equivalent mandatory enhanced coagulation requirement.",
+   "original": {
+    "question": "What is 'enhanced coagulation' and when is it required?",
+    "options": [
+     "Using more coagulant than normal",
+     "Optimized coagulation specifically targeting NOM (natural organic matter) removal to minimize DBP formation — required when source water TOC exceeds specific thresholds relative to alkalinity",
+     "Only for turbid water",
+     "The same as conventional coagulation"
+    ],
+    "correctIndex": 1,
+    "explanation": "Enhanced coagulation: lower pH (5.5-6.5), higher coagulant dose, targets dissolved NOM removal (measured as TOC). Required under DBP rules when TOC >2 mg/L and alkalinity-dependent removal targets must be met. Jar testing determines optimal conditions. May require pH adjustment post-treatment."
+   },
+   "fix": {
+    "question": "What is 'enhanced coagulation' and when is it typically applied?",
+    "options": [
+     "Using more coagulant than normal",
+     "Optimized coagulation specifically targeting NOM (natural organic matter) removal to minimize DBP formation — typically considered when source water TOC is high relative to alkalinity",
+     "Only for turbid water",
+     "The same as conventional coagulation"
+    ],
+    "correctIndex": 1,
+    "explanation": "Enhanced coagulation: lower pH (5.5-6.5), higher coagulant dose, targets dissolved NOM removal (measured as TOC). It is considered when source water TOC is elevated; the US EPA Stage 1 DBPR TOC-removal matrix is a common benchmark, but Ontario has no equivalent mandatory requirement. Jar testing determines optimal conditions. May require pH adjustment post-treatment.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180667,
+   "bankKey": "class3-water",
+   "questionNum": 67,
+   "verdict": "WRONG",
+   "note": "Explanation values are wrong: per EPA UVDGM, 4-log virus needs about 186 mJ/cm2 (40 mJ/cm2 is only about 0.5-log virus), while Crypto 3-log is about 12 and 4-log about 22 mJ/cm2, not 186. Key is right, explanation is wrong.",
+   "original": {
+    "question": "What is 'UV disinfection' dose requirements and factors affecting performance?",
+    "options": [
+     "Any UV light kills pathogens",
+     "Minimum UV dose (mJ/cm²) required for pathogen inactivation — affected by: UV transmittance (UVT), flow rate, lamp age, fouling, and short-circuiting",
+     "UV dose is always the same",
+     "Only intensity matters"
+    ],
+    "correctIndex": 1,
+    "explanation": "UV dose = Intensity × Time. Requirements: 40 mJ/cm² for 4-log virus (typical), 186 mJ/cm² for Crypto (high). Factors reducing dose: low UVT (NOM absorbs UV), high flow (reduced contact time), lamp aging (output decreases), sleeve fouling (reduces transmission), and hydraulic short-circuiting. Validated by biodosimetry."
+   },
+   "fix": {
+    "question": "What is 'UV disinfection' dose requirements and factors affecting performance?",
+    "options": [
+     "Any UV light kills pathogens",
+     "Minimum UV dose (mJ/cm²) required for pathogen inactivation — affected by: UV transmittance (UVT), flow rate, lamp age, fouling, and short-circuiting",
+     "UV dose is always the same",
+     "Only intensity matters"
+    ],
+    "correctIndex": 1,
+    "explanation": "UV dose = Intensity × Time. Required dose depends on the target organism and log credit: about 12 mJ/cm² for 3-log Crypto and 22 mJ/cm² for 4-log Crypto, 11 mJ/cm² for 3-log Giardia, but about 186 mJ/cm² for 4-log virus (adenovirus is the limiting organism). Factors reducing dose: low UVT (NOM absorbs UV), high flow (reduced contact time), lamp aging (output decreases), sleeve fouling (reduces transmission), and hydraulic short-circuiting. Validated by biodosimetry.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180672,
+   "bankKey": "class3-water",
+   "questionNum": 72,
+   "verdict": "WRONG",
+   "note": "UC = d60/d10, so a rising UC means a WIDER size distribution (less uniform), e.g. from attrition or mixing. Loss of fines raises d10 and would lower UC, so the keyed explanation ('loss of finer particles') is backwards.",
+   "original": {
+    "question": "A Class 3 operator is troubleshooting declining filter performance in a conventional plant. After reviewing historical data, they notice a gradual increase in the Uniformity Coefficient (UC) of the filter media. What does this indicate?",
+    "options": [
+     "The filter media is becoming more uniform in size, improving filtration.",
+     "The filter media is experiencing a loss of finer particles, leading to poor filtration.",
+     "The filter media bed is expanding excessively during the backwash cycle.",
+     "The filter media is becoming clogged with biological growth, increasing headloss."
+    ],
+    "correctIndex": 1,
+    "explanation": "An increasing Uniformity Coefficient (UC) indicates a widening range of particle sizes in the filter media, often due to the loss of finer media particles during backwashing or attrition. This can lead to poorer filtration and potential breakthrough."
+   },
+   "fix": {
+    "question": "A Class 3 operator is troubleshooting declining filter performance in a conventional plant. After reviewing historical data, they notice a gradual increase in the Uniformity Coefficient (UC) of the filter media. What does this indicate?",
+    "options": [
+     "The filter media is becoming more uniform in size, improving filtration.",
+     "The grain-size range of the media is widening (less uniform), for example from attrition and fines or mixing of layers, which can impair filtration and backwash stratification.",
+     "The filter media bed is expanding excessively during the backwash cycle.",
+     "The filter media is becoming clogged with biological growth, increasing headloss."
+    ],
+    "correctIndex": 1,
+    "explanation": "UC = d60/d10. An increasing UC means the media is becoming less uniform, with a wider spread of grain sizes (for example from attrition producing fines or mixing), which can hurt filtration and backwash stratification.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180686,
+   "bankKey": "class3-water",
+   "questionNum": 86,
+   "verdict": "UNCLEAR",
+   "note": "Adding hydrogen peroxide (peroxone) is also a recognized bromate-reduction strategy, so option D is defensible alongside pH depression. Replace D with a clearly wrong option.",
+   "original": {
+    "question": "A water treatment plant is experiencing high levels of bromate in the finished water after ozone disinfection. Which operational adjustment would be most effective in reducing bromate formation?",
+    "options": [
+     "Increasing the ozone dose to ensure complete oxidation of all precursors.",
+     "Lowering the pH of the water prior to ozonation to below 7.0.",
+     "Increasing the contact time in the ozone contactor to ensure full reaction.",
+     "Adding hydrogen peroxide (H2O2) to the water prior to ozonation."
+    ],
+    "correctIndex": 1,
+    "explanation": "Bromate formation is highly dependent on pH. Lowering the pH of the water prior to ozonation (typically to below 7.0) can significantly reduce the formation of bromate by altering the reaction pathways."
+   },
+   "fix": {
+    "question": "A water treatment plant is experiencing high levels of bromate in the finished water after ozone disinfection. Which operational adjustment would be most effective in reducing bromate formation?",
+    "options": [
+     "Increasing the ozone dose to ensure complete oxidation of all precursors.",
+     "Lowering the pH of the water prior to ozonation to below 7.0.",
+     "Increasing the contact time in the ozone contactor to ensure full reaction.",
+     "Raising the pH of the water to above 8.5 prior to ozonation."
+    ],
+    "correctIndex": 1,
+    "explanation": "Bromate formation is highly dependent on pH. Lowering the pH of the water prior to ozonation (typically to below 7.0) can significantly reduce the formation of bromate by altering the reaction pathways.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180688,
+   "bankKey": "class3-water",
+   "questionNum": 88,
+   "verdict": "UNCLEAR",
+   "note": "Switching from free chlorine to monochloramine is also a standard, effective way to reduce HAA (and THM) formation, so option C is defensible as well as optimized coagulation. Replace C with a clearly wrong option.",
+   "original": {
+    "question": "Which of the following is a common strategy for controlling the formation of haloacetic acids (HAAs) in a water treatment plant?",
+    "options": [
+     "Increasing the chlorine dose and contact time significantly.",
+     "Optimizing coagulation to remove natural organic matter (NOM) precursors.",
+     "Switching from free chlorine to monochloramine as the primary disinfectant.",
+     "Maintaining a high pH (above 8.5) throughout the treatment process."
+    ],
+    "correctIndex": 1,
+    "explanation": "Haloacetic acids (HAAs) are formed when chlorine reacts with natural organic matter (NOM). Optimizing coagulation to remove NOM precursors before chlorination is a highly effective strategy for controlling HAA formation."
+   },
+   "fix": {
+    "question": "Which of the following is a common strategy for controlling the formation of haloacetic acids (HAAs) in a water treatment plant?",
+    "options": [
+     "Increasing the chlorine dose and contact time significantly.",
+     "Optimizing coagulation to remove natural organic matter (NOM) precursors.",
+     "Switching from monochloramine to free chlorine as the primary disinfectant.",
+     "Maintaining a high pH (above 8.5) throughout the treatment process."
+    ],
+    "correctIndex": 1,
+    "explanation": "Haloacetic acids (HAAs) are formed when chlorine reacts with natural organic matter (NOM). Optimizing coagulation to remove NOM precursors before chlorination is a highly effective strategy for controlling HAA formation.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180701,
+   "bankKey": "class3-water",
+   "questionNum": 101,
+   "verdict": "UNITS",
+   "note": "Distractor D uses 'cost per gallon of capacity' (US unit) in an Ontario/metric bank.",
+   "original": {
+    "question": "A Class 3 operator is tasked with developing a Capital Improvement Plan (CIP) for a water treatment plant. What is a critical element of cost estimation for major equipment replacement?",
+    "options": [
+     "Estimating the cost based solely on the original purchase price of the equipment.",
+     "Ignoring inflation and future material costs for long-term projects.",
+     "Including costs for procurement, installation, commissioning, and disposal of old assets.",
+     "Using a generic cost per gallon of capacity for all equipment types."
+    ],
+    "correctIndex": 2,
+    "explanation": "Accurate cost estimation for capital projects must include all relevant expenses, such as procurement, shipping, installation, commissioning, engineering, project management, and the disposal or demolition of existing assets."
+   },
+   "fix": {
+    "question": "A Class 3 operator is tasked with developing a Capital Improvement Plan (CIP) for a water treatment plant. What is a critical element of cost estimation for major equipment replacement?",
+    "options": [
+     "Estimating the cost based solely on the original purchase price of the equipment.",
+     "Ignoring inflation and future material costs for long-term projects.",
+     "Including costs for procurement, installation, commissioning, and disposal of old assets.",
+     "Using a generic cost per cubic metre of capacity for all equipment types."
+    ],
+    "correctIndex": 2,
+    "explanation": "Accurate cost estimation for capital projects must include all relevant expenses, such as procurement, shipping, installation, commissioning, engineering, project management, and the disposal or demolition of existing assets.",
+    "steps": [
+     {
+      "l": "Frame the problem",
+      "c": "This is a budgeting judgment question about estimating the cost of major equipment replacement in a CIP."
+     },
+     {
+      "l": "Identify the full cost scope",
+      "c": "A defensible estimate covers procurement, shipping, engineering and design, installation, electrical and controls tie-in, startup and commissioning, and removal or disposal of the old asset."
+     },
+     {
+      "l": "Account for timing",
+      "c": "Multi-year CIP projects must also escalate material and labor costs for inflation and include contingency."
+     },
+     {
+      "l": "Eliminate the other options",
+      "c": "Using only the original purchase price, ignoring inflation, or applying a generic cost per cubic metre all produce unreliable estimates, so option C is correct."
+     }
+    ]
+   }
+  },
+  {
+   "id": 180702,
+   "bankKey": "class3-water",
+   "questionNum": 102,
+   "verdict": "JURISDICTION",
+   "note": "Ontario does not mandate a 'Water Safety Plan' via OWWCO; OWWCO is the operator certification office. The Ontario requirement is the Drinking Water Quality Management Standard (DWQMS) under the Safe Drinking Water Act, 2002.",
+   "original": {
+    "question": "What is the primary objective of a Water Safety Plan (WSP) as mandated by regulatory bodies like the OWWCO and MECP?",
+    "options": [
+     "To solely focus on the financial viability of the water utility.",
+     "To identify and manage risks from source to tap to ensure drinking water safety.",
+     "To document only the emergency response procedures for natural disasters.",
+     "To replace the need for routine operational monitoring and testing."
+    ],
+    "correctIndex": 1,
+    "explanation": "A Water Safety Plan (WSP) is a comprehensive risk assessment and management approach that identifies potential hazards from the water source to the consumer's tap and establishes control measures to ensure the continuous safety of drinking water."
+   },
+   "fix": {
+    "question": "What is the primary objective of the Drinking Water Quality Management Standard (DWQMS) required of Ontario municipal residential drinking water systems under the Safe Drinking Water Act, 2002?",
+    "options": [
+     "To solely focus on the financial viability of the water utility.",
+     "To provide a risk-based quality management framework that identifies and manages risks from source to tap to ensure drinking water safety.",
+     "To document only the emergency response procedures for natural disasters.",
+     "To replace the need for routine operational monitoring and testing."
+    ],
+    "correctIndex": 1,
+    "explanation": "The DWQMS requires an operating authority to maintain a documented quality management system, including risk assessment from source to tap, with continual improvement, to ensure drinking water safety.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180713,
+   "bankKey": "class3-water",
+   "questionNum": 113,
+   "verdict": "WRONG",
+   "note": "PFAS are resistant to hydroxyl-radical AOPs; they are removed by GAC, ion exchange, RO or high-pressure membranes. AOPs target trace organics such as pharmaceuticals, pesticides, 1,4-dioxane, and taste and odour compounds.",
+   "original": {
+    "question": "Which emerging contaminant class is primarily targeted by advanced oxidation processes (AOPs) due to their recalcitrant nature and potential health effects?",
+    "options": [
+     "Naturally occurring inorganic minerals.",
+     "Particulate matter and suspended solids.",
+     "Per- and polyfluoroalkyl substances (PFAS).",
+     "Common disinfection byproducts like THMs."
+    ],
+    "correctIndex": 2,
+    "explanation": "Advanced Oxidation Processes (AOPs) are often employed to treat recalcitrant organic contaminants like PFAS, which are difficult to remove by conventional methods due to their strong chemical bonds."
+   },
+   "fix": {
+    "question": "Which emerging contaminant class is primarily targeted by advanced oxidation processes (AOPs) due to their recalcitrant nature and potential health effects?",
+    "options": [
+     "Naturally occurring inorganic minerals.",
+     "Particulate matter and suspended solids.",
+     "Trace organic contaminants such as pharmaceuticals and pesticides (e.g., 1,4-dioxane).",
+     "Common disinfection byproducts like THMs."
+    ],
+    "correctIndex": 2,
+    "explanation": "AOPs (e.g., UV/H2O2, ozone/H2O2) generate hydroxyl radicals that oxidize recalcitrant trace organics such as pharmaceuticals, pesticides and 1,4-dioxane. PFAS resist hydroxyl-radical attack and are removed mainly by GAC, ion exchange or RO.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180724,
+   "bankKey": "class3-water",
+   "questionNum": 124,
+   "verdict": "WRONG",
+   "note": "UFRV is Unit Filter Run Volume (m3/m2 of water filtered per run), not a flow rate and not 'Uniform Filter Rate Velocity'. The parameter for flow per unit area is the filtration rate (surface loading rate, m/h); no option states it correctly.",
+   "original": {
+    "question": "Which advanced filtration parameter is used to express the flow rate through a filter relative to its surface area, indicating its hydraulic loading?",
+    "options": [
+     "Empty bed contact time (EBCT).",
+     "Filter aid dosage (FAD).",
+     "Uniformity coefficient (UC).",
+     "Uniform filter rate velocity (UFRV)."
+    ],
+    "correctIndex": 3,
+    "explanation": "Uniform Filter Rate Velocity (UFRV), also known as filtration rate or surface loading rate, is a critical parameter that expresses the flow rate per unit area of the filter, indicating the hydraulic stress on the filter."
+   },
+   "fix": {
+    "question": "Which advanced filtration parameter is used to express the flow rate through a filter relative to its surface area, indicating its hydraulic loading?",
+    "options": [
+     "Empty bed contact time (EBCT).",
+     "Filter aid dosage (FAD).",
+     "Uniformity coefficient (UC).",
+     "Filtration rate (surface loading rate)."
+    ],
+    "correctIndex": 3,
+    "explanation": "Filtration rate (surface loading rate) expresses flow per unit filter area, in m3/m2/h or m/h, and indicates the hydraulic loading on the filter.",
+    "steps": [
+     {
+      "l": "Identify what is being described",
+      "c": "The question describes flow rate per unit of filter surface area: rate = flow (m3/h) / filter area (m2), giving m3/m2/h, which simplifies to m/h."
+     },
+     {
+      "l": "Match to the option list",
+      "c": "Only the filtration rate (surface loading rate) is expressed as flow per unit area."
+     },
+     {
+      "l": "Rule out the distractors",
+      "c": "EBCT is a contact time (volume / flow, in minutes), filter aid dosage is a chemical feed rate in mg/L, and uniformity coefficient is a dimensionless media gradation ratio (d60/d10)."
+     },
+     {
+      "l": "Worked check",
+      "c": "Example: 450 m3/h through a 75 m2 filter gives 450 / 75 = 6 m/h."
+     }
+    ]
+   }
+  },
+  {
+   "id": 180795,
+   "bankKey": "class3-water",
+   "questionNum": 195,
+   "verdict": "UNCLEAR",
+   "note": "'Uniform Filtration Rate Velocity (UFRV)' is not a real term; UFRV is Unit Filter Run Volume (m3/m2), which is a volume per area, not a rate. Wording is misleading; reword around filtration rate.",
+   "original": {
+    "question": "To achieve a higher Uniform Filtration Rate Velocity (UFRV) in a conventional filter while maintaining effluent quality, what upstream process optimization is typically required?",
+    "options": [
+     "Decreased coagulant dose to reduce chemical costs",
+     "Improved flocculation and sedimentation to reduce filter loading",
+     "Reduced backwash frequency to save water",
+     "Increased filter media size to allow faster flow"
+    ],
+    "correctIndex": 1,
+    "explanation": "A higher UFRV can only be sustained with excellent upstream treatment (coagulation, flocculation, sedimentation) that delivers very low turbidity water to the filters, minimizing filter loading and preventing breakthrough."
+   },
+   "fix": {
+    "question": "To operate a conventional filter at a higher filtration rate while maintaining effluent quality, what upstream process optimization is typically required?",
+    "options": [
+     "Decreased coagulant dose to reduce chemical costs",
+     "Improved flocculation and sedimentation to reduce filter loading",
+     "Reduced backwash frequency to save water",
+     "Increased filter media size to allow faster flow"
+    ],
+    "correctIndex": 1,
+    "explanation": "A higher filtration rate can only be sustained with excellent upstream treatment (coagulation, flocculation, sedimentation) that delivers very low turbidity water to the filters, minimizing filter loading and preventing breakthrough.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180848,
+   "bankKey": "class3-water",
+   "questionNum": 248,
+   "verdict": "WRONG",
+   "note": "UFRV is Unit Filter Run Volume (m3 of water filtered per m2 of filter area per run, e.g. m3/m2), not 'Unified Filter Rate Velocity' and not a rate in L/s/m2. It is used to judge filter run productivity, not to equalize filtration rates across filters. Question, key and explanation all misdefine it.",
+   "original": {
+    "question": "What is the primary purpose of a Unified Filter Rate Velocity (UFRV) target in filter performance optimization?",
+    "options": [
+     "To determine the optimal backwash flow rate for the filter.",
+     "To ensure consistent filtration rates across all filters, regardless of their size.",
+     "To calculate the total volume of water produced by the filter.",
+     "To measure the head loss across the filter bed accurately."
+    ],
+    "correctIndex": 1,
+    "explanation": "UFRV (e.g., L/s/m²) is used to normalize filter loading, allowing for consistent and comparable operation of filters of different sizes within a plant or across different plants, optimizing performance and preventing overloading."
+   },
+   "fix": {
+    "question": "What is the primary purpose of tracking Unit Filter Run Volume (UFRV) in filter performance optimization?",
+    "options": [
+     "To determine the backwash flow rate for the filter.",
+     "To compare the volume of water produced per unit of filter area per run, as a measure of filter run productivity.",
+     "To measure the head loss across the filter bed.",
+     "To set the media depth of the filter."
+    ],
+    "correctIndex": 1,
+    "explanation": "UFRV (m3/m2) is the volume of water filtered per unit of filter surface area between backwashes. Tracking it lets operators compare filter runs and judge the effect of coagulation, loading rate and backwash changes on filter productivity.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180849,
+   "bankKey": "class3-water",
+   "questionNum": 249,
+   "verdict": "UNCLEAR",
+   "note": "Options C (reduced UVT of the water) and D (fouling on quartz sleeves) are both genuine causes of reduced UV dose, so two answers are defensible. Replace C with a clearly wrong option.",
+   "original": {
+    "question": "A Class 3 operator is troubleshooting a UV disinfection system with declining performance. After checking lamp intensity, what is the next most likely cause for reduced UV dose delivery?",
+    "options": [
+     "Increased water temperature in the reactor.",
+     "Decreased flow rate through the reactor.",
+     "Reduced UV transmittance (UVT) of the treated water.",
+     "Accumulation of scale or fouling on the quartz sleeves."
+    ],
+    "correctIndex": 3,
+    "explanation": "Fouling or scaling on the quartz sleeves surrounding the UV lamps significantly reduces the transmission of UV light into the water, thereby decreasing the effective UV dose. This is a common operational issue."
+   },
+   "fix": {
+    "question": "A Class 3 operator is troubleshooting a UV disinfection system with declining performance. After checking lamp intensity, what is the next most likely cause for reduced UV dose delivery?",
+    "options": [
+     "Increased water temperature in the reactor.",
+     "Decreased flow rate through the reactor.",
+     "Increased dissolved oxygen in the water.",
+     "Accumulation of scale or fouling on the quartz sleeves."
+    ],
+    "correctIndex": 3,
+    "explanation": "Fouling or scaling on the quartz sleeves surrounding the UV lamps significantly reduces the transmission of UV light into the water, thereby decreasing the effective UV dose. This is a common operational issue.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180859,
+   "bankKey": "class3-water",
+   "questionNum": 259,
+   "verdict": "WRONG",
+   "note": "The primary purpose of monitoring UVT is to determine/ensure the delivered UV dose is sufficient (UVT governs dose delivery; consistent with Q180797 and Q180808). Option C is the standard answer. Key D is weaker and its explanation wrongly ties water UVT to lamp fouling (lamp/sleeve fouling is detected by the UV intensity sensor, not water UVT).",
+   "original": {
+    "question": "When operating an ultraviolet (UV) disinfection system, what is the primary purpose of monitoring the UV transmittance (UVT) of the treated water?",
+    "options": [
+     "To determine the required UV lamp replacement schedule",
+     "To calculate the total energy consumption of the UV system",
+     "To ensure the applied UV dose is sufficient for disinfection",
+     "To detect potential lamp fouling or water quality changes"
+    ],
+    "correctIndex": 3,
+    "explanation": "UVT directly impacts the effectiveness of UV disinfection. A decrease in UVT indicates reduced light penetration, which could be due to lamp fouling or changes in water quality, necessitating dose adjustments or cleaning."
+   },
+   "fix": {
+    "question": "When operating an ultraviolet (UV) disinfection system, what is the primary purpose of monitoring the UV transmittance (UVT) of the treated water?",
+    "options": [
+     "To determine the required UV lamp replacement schedule",
+     "To calculate the total energy consumption of the UV system",
+     "To ensure the applied UV dose is sufficient for disinfection",
+     "To measure the residual disinfectant after UV treatment"
+    ],
+    "correctIndex": 2,
+    "explanation": "UVT determines how much UV light penetrates the water, and therefore the UV dose delivered to microorganisms. Monitoring it lets operators confirm that the dose is sufficient or adjust the lamp power and flow accordingly.",
+    "steps": null
+   }
+  },
+  {
+   "id": 180897,
+   "bankKey": "class3-water",
+   "questionNum": 297,
+   "verdict": "UNCLEAR",
+   "note": "'Uniform filtration rate velocity (UFRV)' is a misnomer; UFRV in operator usage is Unit Filter Run Volume (m3/m2). Question intends uniform filtration rate across filters; reword.",
+   "original": {
+    "question": "What is the primary objective of maintaining a uniform filtration rate velocity (UFRV) in rapid gravity filters?",
+    "options": [
+     "To minimize the amount of backwash water used",
+     "To ensure consistent filter performance and effluent quality",
+     "To increase the overall plant production capacity",
+     "To reduce the frequency of filter backwashing"
+    ],
+    "correctIndex": 1,
+    "explanation": "Maintaining a uniform filtration rate ensures that all filters are operating under similar conditions, leading to consistent effluent quality and predictable filter run times."
+   },
+   "fix": {
+    "question": "What is the primary objective of maintaining a uniform filtration rate across all rapid gravity filters in a plant?",
+    "options": [
+     "To minimize the amount of backwash water used",
+     "To ensure consistent filter performance and effluent quality",
+     "To increase the overall plant production capacity",
+     "To reduce the frequency of filter backwashing"
+    ],
+    "correctIndex": 1,
+    "explanation": "Maintaining a uniform filtration rate ensures that all filters are operating under similar conditions, leading to consistent effluent quality and predictable filter run times.",
+    "steps": null
    }
   }
  ]
