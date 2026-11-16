@@ -1,0 +1,1077 @@
+{
+  "key": "ceu-basic-hydraulics",
+  "version": "2026-11-16.1",
+  "title": "Basic Hydraulics for Water and Wastewater Operators",
+  "shortTitle": "Basic Hydraulics",
+  "stream": "drinking_water",
+  "audience": "Operators and trainees across the US and Canada preparing for certification exams and renewal in water and wastewater work.",
+  "prerequisites": "Basic arithmetic, a calculator and familiarity with pipes, pumps and tanks. US customary units are primary with metric equivalents; all scenarios and facility data are fictional.",
+  "introduction": "Build the hydraulic arithmetic every operator uses: convert pressure to head, move among flow units, find velocity from pipe size, add up pump head, and calculate tank levels. Each module ends with worked examples that name the usual mistakes.",
+  "plannedMinutes": 180,
+  "delivery": "Self-paced lessons, optional quick checks, a graded final exam and a non-credit certificate. Duration is being validated; no contact-hour award is made.",
+  "sources": [
+    {
+      "id": "epanet",
+      "title": "US EPA: EPANET",
+      "url": "https://www.epa.gov/water-research/epanet",
+      "section": "Pipe network hydraulics: head loss, pumps, tanks and demand patterns; software and documentation landing page",
+      "jurisdiction": "US technical guidance",
+      "accessed": "2026-11-16"
+    },
+    {
+      "id": "csus",
+      "title": "Sacramento State Office of Water Programs: Courses",
+      "url": "https://www.owp.csus.edu/courses/",
+      "section": "Operator training course listings (water treatment, distribution, collection and wastewater); confirm current manual edition for your exam",
+      "jurisdiction": "US university operator training; verify your certifying agency reference list",
+      "accessed": "2026-11-16"
+    },
+    {
+      "id": "npdes",
+      "title": "US EPA: NPDES Training",
+      "url": "https://www.epa.gov/npdes/npdes-training",
+      "section": "Wastewater program training resources; general context for wastewater use of these hydraulics",
+      "jurisdiction": "US technical guidance; not Canadian guidance",
+      "accessed": "2026-11-16"
+    }
+  ],
+  "modules": [
+    {
+      "id": "pressure-head",
+      "title": "Pressure and head",
+      "objectives": [
+        "Distinguish static, dynamic and residual pressure and convert between psi and feet of head.",
+        "Explain gauge versus absolute pressure and pressure at depth."
+      ],
+      "lesson": "### Start with what the gauge is telling you\n\nEvery operator reads pressure many times a shift, yet exam questions and real troubleshooting both depend on knowing *which* pressure you are looking at. Pressure is force per unit area, and in water systems it is almost always reported in pounds per square inch (psi). The metric equivalent is the kilopascal (kPa): 1 psi = 6.895 kPa.\n\n> **Your job:** connect every pressure reading to a water height, so that a gauge, a tank level and a hydraulic profile can all be compared on one scale.\n\n### Static, dynamic and residual pressure\n\n**Static pressure** is the pressure in a pipe or tank when water is not moving. Open a hydrant on a quiet night with no flow and the gauge on the cap shows static pressure. It depends only on the height of water above that point.\n\n**Dynamic pressure** is the pressure at a point while water is flowing. It is lower than static pressure at the same point because some energy is spent moving the water through pipe, fittings and valves.\n\n**Residual pressure** is the pressure that remains at a point while a stated flow is being drawn elsewhere. You meet it in hydrant flow tests: read static pressure at one hydrant, open another to flow, and read the residual pressure at the first. The difference between static and residual tells you how hard the system is working at that flow. A large drop means the water has a long or restricted path to travel.\n\n| Term | When it is read | What it tells you |\n| --- | --- | --- |\n| Static | No flow | Height of water above the gauge |\n| Dynamic | While water flows | Pressure left after losses at that moment |\n| Residual | While a stated flow is drawn nearby | Margin that remains for customers or fire flow |\n\n### The two constants you must know\n\nFresh water weighs about 62.4 pounds per cubic foot. A column of water one foot tall and one square inch in cross-section therefore exerts a fixed pressure at its base. Rounded for operator use:\n\n- **0.433 psi per foot of water depth** (metric: 9.79 kPa per metre)\n- **2.31 feet of water per psi** (metric: 0.102 m per kPa, or about 0.704 m per psi)\n\nThese are two forms of the same fact. 0.433 multiplied by 2.31 is very nearly 1.\n\nUse them like this:\n\n**psi = feet of water x 0.433**\n\n**feet of water = psi x 2.31**\n\nThe quick sense-check is direction. Feet are a bigger number than psi (about 2.3 times bigger), so converting psi to feet should make the number larger, and converting feet to psi should make it smaller. If your answer moves the wrong way, you used the wrong constant.\n\n### Head: pressure expressed as height\n\nOperators call a height of water **head**. A pump rated at 120 ft of head can lift water 120 ft, or push against a pressure of 120 x 0.433 = 52.0 psi. Head is useful because it does not depend on the fluid being pressurised or the pipe size. Elevation, pressure and the energy added by a pump can all be added and subtracted in feet.\n\nThe pressure at a point in a tank depends on the **depth of water above that point**, not on the tank's width, shape or total volume. A narrow standpipe and a wide reservoir, each holding water 40 ft above the same gauge, give the same reading. This is why elevated tanks are built high rather than wide when the goal is pressure.\n\n### Gauge versus absolute pressure (concept level)\n\nMost gauges read zero when open to the air. That reading is **gauge pressure**, written psig. **Absolute pressure** is measured from a perfect vacuum, so it equals gauge pressure plus atmospheric pressure. At sea level atmospheric pressure is about 14.7 psi (101.3 kPa).\n\nFor nearly all distribution work you use gauge pressure. Absolute pressure matters on the suction side of a pump, where the water can be pulled down toward the pressure at which it begins to vaporise. A suction gauge reading below zero means the absolute pressure is less than atmospheric. You will see this idea again in cavitation in Module 4.\n\n### Worked example: tank, hydrant and pump\n\n*The Larkspur Hollow system is fictional. Use 0.433 psi per ft and 2.31 ft per psi.*\n\n**Part A: pressure at depth.** The water surface in the Larkspur Hollow elevated tank is 54 ft above a hydrant gauge. Static pressure at the gauge:\n\n54 ft x 0.433 psi/ft = **23.4 psi**\n\n(Metric check: 54 ft is 16.5 m, and 16.5 m x 9.79 kPa/m is about 161 kPa. 23.4 psi x 6.895 is also about 161 kPa.)\n\n**Part B: head from pressure.** A booster pump at Larkspur Hollow has a discharge gauge reading of 120 psi and a suction gauge reading of 8 psi. The pressure the pump adds is 120 minus 8 = 112 psi. As head:\n\n112 psi x 2.31 ft/psi = **258.7 ft**\n\nNotice that the pump's contribution is the *difference* between the two gauges, not the discharge reading alone. A common error is to convert the discharge gauge only, which credits the pump with energy the incoming water already carried.\n\n**Part C: a flow test.** Static pressure at test hydrant 1 is 70 psi. With hydrant 2 flowing, residual pressure at hydrant 1 is 52 psi. The drop is 70 minus 52 = 18 psi, which is 18 x 2.31 = **41.6 ft** of head consumed by the flow. That is a useful number: it is the same size as 4 or 5 storeys of building height.\n\n### Using head to compare two gauges at different elevations\n\nTwo connected points in a pipe that is not flowing share the same water surface level, so their pressures differ by the elevation difference. If a gauge sits 30 ft lower than another, it reads 30 x 0.433 = 13.0 psi higher. Moving down the hill adds pressure; moving up subtracts it. This is why customers at the bottom of a pressure zone see high pressure and those at the top see low pressure, even with no flow at all.\n\nWhen water is flowing, you also subtract the head lost to friction between the two points. That is the subject of Module 3.\n\n### Common mistakes to watch for\n\n- **Wrong direction.** Multiplying psi by 0.433 or feet by 2.31 gives a number that looks plausible but moves the wrong way. Always check the direction.\n- **Reading discharge alone.** Pump head comes from the pressure difference between discharge and suction, not the discharge gauge by itself.\n- **Mixing gauge and absolute.** A \"35 psi\" gauge reading is about 49.7 psi absolute at sea level. Use absolute only when the question says so.\n- **Tank shape.** Pressure at the base depends on depth only; do not multiply by tank diameter or volume.\n- **Elevation of the gauge.** Compare gauges only after accounting for their elevation difference. Two gauges on the same pipe at different heights will read differently even with no flow.\n- **Unit slips.** Keep psi, feet and kPa labelled in every line of your work.\n\n### Before you move on\n\nYou should now be able to state what static, dynamic and residual pressure each mean, convert in both directions between psi and feet of head using 0.433 and 2.31, explain why only depth matters for pressure at the bottom of a tank, and say what the difference between gauge and absolute pressure is. Module 2 moves from pressure to flow, where the pipe's size becomes the main character.",
+      "evidence": "### Fictional scenario: the Larkspur Hollow pressure complaint\n\nLarkspur Hollow is a fictional village. The operator reads a hydrant gauge at the base of the elevated tank on a quiet night: **65 psi static**. At the top of a hill 90 ft above that gauge, a customer reports weak pressure. During a flow test a hydrant on the hill is opened, and the pressure at the base hydrant falls from 65 to 49 psi.\n\n### Your decision\n\nConvert each number to feet of head with 2.31 ft per psi and 0.433 psi per ft. State which readings are static and which are residual. Estimate the static pressure on the hill and explain why the flowing reading is lower.",
+      "assignment": "Prepare a one-page gauge log for the Larkspur Hollow readings. For each reading label it as static or residual, convert it between psi and feet, and compute the expected static pressure 90 ft higher. Explain in two sentences why residual is lower than static.",
+      "rubric": [
+        "Labels static and residual readings correctly.",
+        "Uses 2.31 ft per psi and 0.433 psi per ft in the right direction.",
+        "Subtracts elevation gain when moving uphill."
+      ],
+      "facilitatorGuide": "Base static 65 psi = 150.2 ft. Residual 49 psi = 113.2 ft; drop 16 psi = 37.0 ft. Hill static is 65 - 90 x 0.433 = 26.0 psi. Residual is lower because friction takes head while water flows. Do not accept a direction error in either conversion.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 12,
+          "instruction": "Study the lesson and reproduce the worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 8,
+          "instruction": "Read the source sections and note one use of the constants in your own work."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 5,
+          "instruction": "Compare one answer with a distractor mistake, then self-check against the case evidence. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "epanet",
+        "csus"
+      ],
+      "checks": [
+        {
+          "id": "ceu-basic-hydraulics-pressure-head-c1",
+          "objective": "pressure-head",
+          "prompt": "A fictional operator closes a hydrant cap gauge on a quiet night with no demand anywhere on the zone. The reading is best described as:",
+          "choices": [
+            "Static pressure, set by the height of water above the gauge",
+            "Dynamic pressure, set by the pump running at full flow",
+            "Residual pressure, set by the flow drawn at a nearby hydrant",
+            "Absolute pressure, set from a perfect vacuum upward"
+          ],
+          "correctIndex": 0,
+          "explanation": "With no flow, the gauge shows static pressure, which depends only on the height of water above it. The \"Dynamic pressure, set by the pump running at full flow\" choice confuses static with dynamic pressure, which is read only while water moves. The \"Residual pressure, set by the flow drawn at a nearby hydrant\" choice confuses static with residual pressure, which needs a stated flow elsewhere. The \"Absolute pressure, set from a perfect vacuum upward\" choice mixes up the zero reference, because a cap gauge reads gauge pressure."
+        },
+        {
+          "id": "ceu-basic-hydraulics-pressure-head-c2",
+          "objective": "pressure-head",
+          "prompt": "A fictional standpipe holds water 40 ft deep above a gauge at its base. Using 0.433 psi per ft (9.79 kPa per m), the gauge pressure is:",
+          "choices": [
+            "92.4 psi",
+            "32.0 psi",
+            "17.3 psi",
+            "0.011 psi"
+          ],
+          "correctIndex": 2,
+          "explanation": "40 x 0.433 = 17.32 psi, about 17.3 psi. The \"92.4 psi\" choice multiplied by 2.31, the feet-per-psi constant, which is the wrong direction for converting feet to psi. The \"32.0 psi\" choice added atmospheric pressure to a gauge reading, which converts it to absolute pressure. The \"0.011 psi\" choice divided the constant by the depth instead of multiplying depth by the constant."
+        },
+        {
+          "id": "ceu-basic-hydraulics-pressure-head-c3",
+          "objective": "pressure-head",
+          "prompt": "A fictional booster pump raises water pressure by 52 psi. Using 2.31 ft of head per psi (0.704 m per psi), the head added is:",
+          "choices": [
+            "120.1 ft",
+            "22.5 ft",
+            "358.5 ft",
+            "54.3 ft"
+          ],
+          "correctIndex": 0,
+          "explanation": "52 x 2.31 = 120.1 ft of head. The \"22.5 ft\" choice multiplied by 0.433, which converts feet to psi, so psi was treated as feet. The \"358.5 ft\" choice multiplied by 6.895, the psi-to-kPa constant, and labelled the answer feet. The \"54.3 ft\" choice added the constant instead of multiplying by it."
+        },
+        {
+          "id": "ceu-basic-hydraulics-pressure-head-c4",
+          "objective": "pressure-head",
+          "prompt": "A fictional gauge on a sea-level main reads 60 psi (gauge). Taking atmospheric pressure as 14.7 psi (101.3 kPa), the absolute pressure is:",
+          "choices": [
+            "45.3 psi",
+            "60.0 psi",
+            "882.0 psi",
+            "74.7 psi"
+          ],
+          "correctIndex": 3,
+          "explanation": "Absolute equals gauge plus atmospheric: 60 + 14.7 = 74.7 psi. The \"45.3 psi\" choice subtracted atmospheric pressure, which moves from absolute toward gauge instead of from gauge to absolute. The \"60.0 psi\" choice treated the gauge reading as absolute and ignored atmospheric pressure. The \"882.0 psi\" choice multiplied by atmospheric pressure instead of adding it."
+        },
+        {
+          "id": "ceu-basic-hydraulics-pressure-head-c5",
+          "objective": "pressure-head",
+          "prompt": "During a fictional hydrant flow test, the pressure read at the observation hydrant while another hydrant is flowing is called the:",
+          "choices": [
+            "Static pressure, the pressure measured with the system at rest",
+            "Residual pressure, the pressure remaining while the stated flow is drawn",
+            "Absolute pressure, the pressure measured from a vacuum reference",
+            "Shutoff pressure, the pressure a pump makes at zero flow"
+          ],
+          "correctIndex": 1,
+          "explanation": "Residual pressure is what remains at the observation point while the test flow is drawn, and the drop from static shows how hard the system is working. The \"Static pressure, the pressure measured with the system at rest\" choice confuses residual with static, which is read before the flow starts. The \"Absolute pressure, the pressure measured from a vacuum reference\" choice confuses residual with absolute, which only changes the zero point. The \"Shutoff pressure, the pressure a pump makes at zero flow\" choice confuses residual with a pump characteristic that has nothing to do with a hydrant test."
+        },
+        {
+          "id": "ceu-basic-hydraulics-pressure-head-c6",
+          "objective": "pressure-head",
+          "prompt": "Fictional tank A is narrow and tank B is wide. Each holds water 25 ft deep above a bottom gauge. Compared with the gauge on tank A, the gauge on tank B reads:",
+          "choices": [
+            "Higher pressure, because the larger volume weighs more",
+            "The same pressure, because depth of water sets the pressure",
+            "Lower pressure, because the force spreads over a wider floor",
+            "Higher pressure, because a wide tank has a longer flow path"
+          ],
+          "correctIndex": 1,
+          "explanation": "Pressure at a point depends only on the depth of water above it, so both gauges read 25 x 0.433 = 10.8 psi. The \"Higher pressure, because the larger volume weighs more\" choice assumes pressure follows total volume instead of depth. The \"Lower pressure, because the force spreads over a wider floor\" choice assumes pressure falls as tank width grows, which confuses pressure with total force. The \"Higher pressure, because a wide tank has a longer flow path\" choice mixes up flow friction with static pressure, which involves no flow."
+        }
+      ]
+    },
+    {
+      "id": "flow-velocity",
+      "title": "Flow, area and velocity",
+      "objectives": [
+        "Apply Q = A x V and continuity to circular pipes and rectangular channels.",
+        "Convert among gpm, cfs and MGD and predict velocity changes with pipe size."
+      ],
+      "lesson": "### Start with the question the flow meter answers\n\nA flow meter answers one question: how much water passes a point per unit time? Operators then need to translate that number into pipe velocity, tank filling time or plant throughput, and across the US and Canada the same flow is quoted in several units. This module gives you one relationship, **Q = A x V**, and a short list of conversions that cover almost every exam problem.\n\n> **Your job:** keep the units consistent. Most wrong answers in flow problems come from mixing feet, inches, gallons and minutes in one line of arithmetic.\n\n### The flow equation\n\nFor water filling a pipe or channel, the flow rate equals the cross-sectional area of the flowing water multiplied by its average velocity:\n\n**Q = A x V**\n\n- Q is flow in cubic feet per second (cfs) when A is in square feet and V is in feet per second (ft/s).\n- A is the area at right angles to the direction of flow.\n- V is the average velocity. (1 ft/s = 0.305 m/s.)\n\nRearranged, **V = Q / A** and **A = Q / V**. Because A sits in the denominator of the velocity equation, the same flow moves *faster* through a smaller area. That single fact explains why a partly closed valve jets water, why a small service line is noisy, and why velocity rises in a reducer.\n\n### Areas you need\n\n**Circular pipe** flowing full:\n\n**A = pi x d squared / 4**, or equivalently pi x r squared, where r is the radius, half the diameter.\n\nDiameters are quoted in inches but the equation needs feet, so divide by 12 first. (1 in = 25.4 mm.) For an 8 in pipe, d = 8 / 12 = 0.667 ft and A = 3.1416 x 0.667 squared / 4 = **0.349 square feet**.\n\nTwo classic errors: using the diameter where the formula wants the radius, which overstates area four-fold, and forgetting to square.\n\n**Rectangular channel**:\n\n**A = width x depth of water**\n\nUse the depth of the *water*, not the depth of the channel wall. A 3 ft wide channel with water 1.5 ft deep has A = 4.5 square feet.\n\n### The conversions\n\nOperators move between four common flow units. Learn the constants and what each one links.\n\n| Constant | Meaning | Metric equivalent |\n| --- | --- | --- |\n| 7.48 gal per cubic foot | volume | 1 ft3 = 28.3 L |\n| 449 gpm per cfs | flow, gallons per minute and cubic feet per second | 1 cfs = 28.3 L/s; 1 gpm = 0.0631 L/s |\n| 1.547 cfs per MGD | flow, million gallons per day and cfs | 1 MGD = 43.8 L/s |\n| 694.4 gpm per MGD | 1,000,000 gal per day divided by 1,440 min per day | 1 MGD = 43.8 L/s |\n\nWhere do they come from? 1 cfs is 7.48 gal each second, and there are 60 seconds in a minute, so 7.48 x 60 = 448.8, rounded to 449 gpm. One MGD is 1,000,000 gal per day, which is 1,000,000 / 1,440 = 694.4 gpm, and 694.4 / 449 = 1.547 cfs. Knowing the derivation helps you rebuild a constant if you forget one.\n\nThe sense-check for direction: a cfs is a large unit (449 gpm), so converting gpm to cfs makes the number smaller, and converting cfs to gpm makes it bigger. MGD to gpm makes the number much bigger.\n\n### Continuity: the same flow, different pipe sizes\n\nFor steady flow with nothing added or removed, the flow is the same at every section of a pipe. So\n\n**Q = A1 x V1 = A2 x V2**\n\nand therefore **V2 = V1 x (A1 / A2)**.\n\nBecause area depends on the *square* of the diameter, halving a pipe's diameter makes the area one-quarter and the velocity four times higher. Doubling the diameter drops the velocity to one-quarter. Velocity does not change in proportion to diameter; it changes in proportion to its square. That is the most tested continuity idea.\n\nHigher velocity matters for operations: friction losses climb (Module 3), surge pressures from a sudden stop are larger (Module 4), and scour or noise can develop in fittings.\n\n### Worked example: a transfer main with a reducer\n\n*The Brightwater Bluffs booster station is fictional. Use 7.48 gal per ft3, 449 gpm per cfs.*\n\nA 10 in main carries 700 gpm and then narrows to a 6 in line.\n\n**Step 1: convert the flow to cfs.** 700 gpm / 449 gpm per cfs = **1.559 cfs**.\n\n**Step 2: area of the 10 in main.** d = 10 / 12 = 0.8333 ft. A = 3.1416 x 0.8333 squared / 4 = **0.5454 ft2**.\n\n**Step 3: velocity in the 10 in main.** V = Q / A = 1.559 / 0.5454 = **2.86 ft/s** (0.87 m/s).\n\n**Step 4: area of the 6 in line.** d = 0.5 ft, A = 3.1416 x 0.5 squared / 4 = **0.1963 ft2**.\n\n**Step 5: velocity in the 6 in line.** V = 1.559 / 0.1963 = **7.94 ft/s** (2.42 m/s).\n\n**Sense-check by ratio.** The area ratio is (10 / 6) squared = 2.78, and 2.86 x 2.78 = 7.94 ft/s. The calculation agrees. Notice that the diameter ratio alone (1.67) would have given only 4.8 ft/s, which is the typical shortcut error.\n\n### A second example: from MGD to channel velocity\n\nA plant effluent channel is 4 ft wide with water 2 ft deep. The plant is passing 3.0 MGD. Convert: 3.0 MGD x 1.547 = 4.64 cfs. Area = 4 x 2 = 8 ft2. Velocity = 4.64 / 8 = **0.58 ft/s**. A low velocity such as this is typical of a settling or effluent channel. If the same flow were forced through a half-depth channel the velocity would double, because the area halved.\n\n### Common mistakes to watch for\n\n- **Diameter in inches in the area formula.** Convert to feet first, or your area will be in square inches and 144 times too large when mixed with cfs.\n- **Radius versus diameter.** Check which one the formula wants. Pi x d squared / 4 uses diameter; pi x r squared uses radius.\n- **Forgetting to convert gpm to cfs.** If the answer is in the thousands of ft/s, a conversion step was skipped.\n- **Dividing when you should multiply.** Remember cfs are bigger units than gpm. Use the direction check.\n- **Comparing diameters rather than areas.** Velocity scales with the square of the diameter ratio.\n- **Using channel depth rather than water depth.** Area is the wetted section only.\n\n### Before you move on\n\nYou should now be able to compute the area of a circular pipe or rectangular channel, apply Q = A x V in either direction, convert among gpm, cfs and MGD using 449, 7.48 and 1.547, and predict qualitatively how velocity changes when pipe size changes. Module 3 asks what that velocity costs in energy.",
+      "evidence": "### Fictional scenario: the Brightwater Bluffs reducer\n\nBrightwater Bluffs is a fictional town. A booster station moves **700 gpm** through a 10 in main that reduces to a 6 in line. The operator hears noise at the reducer and asks whether velocity is part of the cause. A second question: a 4 ft wide effluent channel carries 3.0 MGD at 2 ft depth.\n\n### Your decision\n\nConvert flows with 449 gpm per cfs and 1.547 cfs per MGD, compute the areas, and find both velocities in the pipe and the velocity in the channel. State which section is fastest.",
+      "assignment": "Produce a worked table for the Brightwater Bluffs pipes and channel showing area, flow in cfs and velocity for each section. Add a one-line explanation of why velocity rises at the reducer.",
+      "rubric": [
+        "Converts gpm to cfs before dividing by area.",
+        "Uses diameter in feet and squares the radius or diameter correctly.",
+        "Explains the velocity change using areas, not diameters."
+      ],
+      "facilitatorGuide": "700 gpm = 1.559 cfs. 10 in: A 0.5454 ft2, V 2.86 ft/s. 6 in: A 0.1963 ft2, V 7.94 ft/s. Channel: 3.0 MGD = 4.64 cfs, A = 8 ft2, V = 0.58 ft/s. The 6 in section is fastest. Reject any answer that scales by the diameter ratio alone.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 12,
+          "instruction": "Study the lesson and reproduce the worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 8,
+          "instruction": "Read the source sections and note one use of the constants in your own work."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 5,
+          "instruction": "Compare one answer with a distractor mistake, then self-check against the case evidence. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "epanet",
+        "csus"
+      ],
+      "checks": [
+        {
+          "id": "ceu-basic-hydraulics-flow-velocity-c1",
+          "objective": "flow-velocity",
+          "prompt": "A fictional operator wants the flow in a full pipe from its size and speed. Which relationship gives flow?",
+          "choices": [
+            "Flow equals cross-sectional area multiplied by average velocity",
+            "Flow equals cross-sectional area divided by average velocity",
+            "Flow equals pipe length multiplied by average velocity",
+            "Flow equals average velocity divided by cross-sectional area"
+          ],
+          "correctIndex": 0,
+          "explanation": "Q = A x V, with area in square feet and velocity in ft/s giving cfs. The \"Flow equals cross-sectional area divided by average velocity\" choice divided instead of multiplied, which gives a time-like quantity rather than flow. The \"Flow equals pipe length multiplied by average velocity\" choice swaps area for length, which has the wrong dimensions. The \"Flow equals average velocity divided by cross-sectional area\" choice inverts the relationship, which is the equation for nothing in this case."
+        },
+        {
+          "id": "ceu-basic-hydraulics-flow-velocity-c2",
+          "objective": "flow-velocity",
+          "prompt": "A fictional 8 in diameter pipe flows full. The cross-sectional area, in square feet, is:",
+          "choices": [
+            "1.396 ft2",
+            "0.349 ft2",
+            "1.047 ft2",
+            "50.27 ft2"
+          ],
+          "correctIndex": 1,
+          "explanation": "d = 8/12 = 0.6667 ft and A = pi x d squared / 4 = 0.3491 ft2. The \"1.396 ft2\" choice used the diameter in place of the radius, which overstates area four-fold. The \"1.047 ft2\" choice used pi times the radius without squaring it. The \"50.27 ft2\" choice forgot to convert inches to feet, which gives square inches."
+        },
+        {
+          "id": "ceu-basic-hydraulics-flow-velocity-c3",
+          "objective": "flow-velocity",
+          "prompt": "A fictional 8 in pipe carries 450 gpm. Using 449 gpm per cfs (1 cfs = 28.3 L/s) and a full-pipe area of 0.3491 ft2, the velocity is:",
+          "choices": [
+            "0.35 ft/s",
+            "0.72 ft/s",
+            "2.87 ft/s",
+            "1,289 ft/s"
+          ],
+          "correctIndex": 2,
+          "explanation": "450 / 449 = 1.002 cfs and V = Q / A = 1.002 / 0.3491 = 2.87 ft/s. The \"0.35 ft/s\" choice multiplied flow by area instead of dividing flow by area. The \"0.72 ft/s\" choice used the diameter as the radius when finding area and ignored the supplied area. The \"1,289 ft/s\" choice forgot to convert gpm to cfs before dividing by area."
+        },
+        {
+          "id": "ceu-basic-hydraulics-flow-velocity-c4",
+          "objective": "flow-velocity",
+          "prompt": "Fictional flow of constant rate passes from a 12 in pipe into a 6 in pipe. Compared with the 12 in section, velocity in the 6 in section is:",
+          "choices": [
+            "Twice as high, because the diameter is half as large",
+            "Four times lower, because the area is one-quarter as large",
+            "The same, because the flow rate does not change",
+            "Four times higher, because the area is one-quarter as large"
+          ],
+          "correctIndex": 3,
+          "explanation": "Halving the diameter cuts area to one-quarter, so by Q = A x V the velocity rises four times. The \"Twice as high, because the diameter is half as large\" choice compared diameters instead of areas, which depend on the square of diameter. The \"Four times lower, because the area is one-quarter as large\" choice inverted the relationship between area and velocity. The \"The same, because the flow rate does not change\" choice forgot that constant flow through a smaller area needs a higher velocity."
+        },
+        {
+          "id": "ceu-basic-hydraulics-flow-velocity-c5",
+          "objective": "flow-velocity",
+          "prompt": "A fictional plant treats 2.5 MGD. Using 1.547 cfs per MGD (1 MGD = 43.8 L/s), the flow in cfs is:",
+          "choices": [
+            "1.62 cfs",
+            "3.87 cfs",
+            "1,122 cfs",
+            "1,736 cfs"
+          ],
+          "correctIndex": 1,
+          "explanation": "2.5 x 1.547 = 3.87 cfs. The \"1.62 cfs\" choice divided by 1.547 instead of multiplying, moving the conversion the wrong way. The \"1,122 cfs\" choice multiplied by 449, the gpm-per-cfs constant, which is a different conversion. The \"1,736 cfs\" choice multiplied by 694.4, the gpm-per-MGD constant, and labelled the result cfs."
+        },
+        {
+          "id": "ceu-basic-hydraulics-flow-velocity-c6",
+          "objective": "flow-velocity",
+          "prompt": "Water 1.5 ft deep flows at an average 2.5 ft/s in a fictional rectangular channel 4 ft wide. The flow is:",
+          "choices": [
+            "15.0 cfs",
+            "6.0 cfs",
+            "10.0 cfs",
+            "6,735 cfs"
+          ],
+          "correctIndex": 0,
+          "explanation": "A = 4 x 1.5 = 6.0 ft2 and Q = 6.0 x 2.5 = 15.0 cfs. The \"6.0 cfs\" choice stopped at the area and never multiplied by velocity. The \"10.0 cfs\" choice left the water depth out of the area calculation. The \"6,735 cfs\" choice converted to gpm with 449 but kept the cfs label."
+        }
+      ]
+    },
+    {
+      "id": "friction-pumps",
+      "title": "Friction, energy and pumps",
+      "objectives": [
+        "Identify what drives friction loss and interpret the Hazen-Williams C factor.",
+        "Build a total dynamic head, calculate water and brake horsepower and recognise operating point shifts."
+      ],
+      "lesson": "### Start with energy, not just pressure\n\nWater in a pipe carries energy as height, pressure and motion. A pump adds energy and friction removes it. Module 1 let you write pressure and elevation as head in feet, and this module keeps using that currency to explain why a pump delivers what it does.\n\n> **Your job:** say where the energy goes between the pump and the customer, and what changes when that path changes.\n\n### What drives friction loss\n\nRubbing against the pipe wall and turbulence turn some energy into heat. That energy leaves the hydraulic system as **friction head loss**, in feet. Four things drive it: **flow** (loss rises faster than flow, roughly with its 1.85 power), **diameter** (smaller pipe means higher velocity and much more loss), **length** (loss is proportional to length) and **roughness**. Fittings, valves and strainers add **minor losses**.\n\nIn the Hazen-Williams equation the roughness coefficient **C** works backward from what the word suggests: a **higher C** is a **smoother** pipe with **less** loss, and a **lower C** is a rougher, older pipe with more loss. C falls as pipe ages, so a pump that suited a new main can fall short years later.\n\n### Total dynamic head: static, friction and velocity\n\nThe head a pump must supply is its **total dynamic head (TDH)**:\n\n**TDH = static head + friction head + velocity head**\n\n- **Static head** is the elevation difference between the source water level and the discharge point.\n- **Friction head** includes pipe and minor losses at the pumped flow.\n- **Velocity head** is the energy of motion written as a height: **V squared / (2 x g)**, with V in ft/s and g = 32.2 ft/s squared (9.81 m/s squared). At the 2 to 8 ft/s typical of pipes it is usually well under a foot, so it is small but not zero.\n\nIf the pump delivers into a pressurised tank, add the required pressure head, converting psi to feet with 2.31 ft per psi.\n\n**Worked example (fictional Marsh Landing pump).** Static head 52 ft. Friction head at the pumped flow 14 ft. Discharge velocity 6 ft/s.\n\nVelocity head = 6 squared / 64.4 = 36 / 64.4 = **0.56 ft**.\n\nTDH = 52 + 14 + 0.56 = **66.56 ft**, about 66.6 ft (20.3 m).\n\nBecause friction and velocity both depend on flow, TDH is not one number; it changes with the flow being pumped.\n\n### Net positive suction head, conceptually\n\nA pump can fail on the *suction* side even when its discharge side is fine. **Net positive suction head available (NPSHa)** is how much energy the water has at the suction, above the point where it would begin to vaporise. It grows with atmospheric pressure (14.7 psi, about 34 ft of water at sea level; 101.3 kPa) and with water standing above the pump, and it shrinks with suction lift, suction-line friction and warmer water, which vaporises more easily.\n\n**NPSH required (NPSHr)** is a property of the pump, published by the manufacturer, and it rises with flow. The rule is plain: **NPSHa must be at least NPSHr**, with a safety margin. When it is not, vapour bubbles form at the impeller and the pump cavitates (Module 4). Raising the wet-well level, shortening the suction line or cooling the water raises NPSHa; running the pump at higher flow raises NPSHr.\n\n### Pump curve and operating point\n\nAt zero flow a centrifugal pump gives its highest head, the **shutoff head**; as flow rises, head falls. Plot the system's required head on the same axes. The **operating point** is where the curves cross. Throttle a valve, raise the tank level or let the pipe get rougher, and the system curve steepens or rises, so the point moves to lower flow. Impeller wear lowers the pump curve instead. When flow disappoints, ask which curve moved.\n\n### Affinity laws: changing pump speed\n\nFor the same pump and the same system, changing speed N (rpm) scales performance in a fixed pattern:\n\n- **Flow** varies with speed: Q2 = Q1 x (N2 / N1)\n- **Head** varies with speed squared: H2 = H1 x (N2 / N1) squared\n- **Power** varies with speed cubed: P2 = P1 x (N2 / N1) cubed\n\n**Worked example (fictional Pine Terrace pump).** At 1,750 rpm the pump delivers 1,200 gpm at 80 ft and draws 30 BHP. A variable-speed drive lowers it to 1,400 rpm, a ratio of 0.80.\n\nFlow: 1,200 x 0.80 = **960 gpm**. Head: 80 x 0.80 squared = 80 x 0.64 = **51.2 ft**. Power: 30 x 0.80 cubed = 30 x 0.512 = **15.4 BHP**.\n\n**Calculation check.** A 20 percent speed cut gives 20 percent less flow but nearly half the power (0.512), which is why speed control saves energy. If your power fell only 20 percent, you applied the flow law to power.\n\n### Water horsepower and brake horsepower: keep them separate\n\n**Water horsepower (WHP)** is the power delivered to the water:\n\n**WHP = Q x H / 3,960**, with Q in gpm and H in ft. The constant 3,960 is 33,000 ft-lb per min per hp divided by 8.34 lb per gal.\n\n**Brake horsepower (BHP)** is the power the pump shaft must receive:\n\n**BHP = WHP / pump efficiency**, with efficiency as a decimal.\n\nWHP never includes efficiency; BHP always does, and BHP is the larger. Motor losses add a further step: **input hp = BHP / motor efficiency**. (1 hp = 0.746 kW.)\n\n### Pumping energy and the cost of one extra foot\n\n**Worked example (fictional Heron Bay station).** Flow 1,000 gpm, TDH 90 ft, pump efficiency 70 percent, motor efficiency 92 percent, running 8,760 hours per year.\n\nWHP = 1,000 x 90 / 3,960 = **22.73 hp**. BHP = 22.73 / 0.70 = **32.47 hp**. Input = 32.47 / 0.92 = **35.29 hp**. In kW: 35.29 x 0.746 = **26.33 kW**. Energy: 26.33 x 8,760 = **230,624 kWh per year**.\n\nPower rises in proportion to head at fixed flow and efficiency, so one extra foot of lift costs 230,624 / 90 = **about 2,562 kWh per year**. At a fictional 0.10 per kWh that is roughly 256 per year per foot, so a few feet of avoidable throttling or friction is real money.\n\n### Gauge versus absolute pressure\n\nGauge pressure reads zero at the air around you; absolute pressure adds atmosphere (14.7 psi at sea level). Hydraulic calculations use gauge pressure, but NPSH and cavitation depend on *absolute* suction pressure, which is why a suction gauge in vacuum matters.\n\n### Common mistakes to watch for\n\n- **Leaving out a term of TDH,** or subtracting losses.\n- **Treating NPSHa and NPSHr as the same thing;** one belongs to the system, the other to the pump.\n- **Applying one affinity law to all three quantities.**\n- **Mixing WHP and BHP,** or multiplying by efficiency.\n- **Forgetting 3,960** or labelling kW as hp.\n\n### Before you move on\n\nYou should be able to build TDH from static, friction and velocity head, state the NPSH rule, scale a pump with the affinity laws, keep WHP and BHP separate, and turn power into kWh per year. Module 4 uses these ideas to read problems on the plant floor.",
+      "evidence": "### Fictional scenario: the Cedar Fork booster\n\nCedar Fork is a fictional district. A booster pumps **800 gpm** to an elevated tank with 48 ft of static head, 11 ft of friction loss and 6 ft of minor losses. The pump is 72 percent efficient. Last winter an operator partly closed the discharge valve, adding 10 ft of loss, and the flow fell.\n\n### Your decision\n\nCompute TDH, WHP and BHP using WHP = Q x H / 3,960 and BHP = WHP / efficiency. Then explain why the flow fell after throttling although the pump itself did not change.",
+      "assignment": "Write a calculation sheet for Cedar Fork with TDH, WHP and BHP, then add a short operating-point explanation describing how the valve changed the system curve.",
+      "rubric": [
+        "Adds static, friction and minor head.",
+        "Divides by 3,960 and then by efficiency in the right order.",
+        "Explains the shift using system and pump curves."
+      ],
+      "facilitatorGuide": "TDH = 48 + 11 + 6 = 65 ft. WHP = 800 x 65 / 3,960 = 13.13 hp. BHP = 13.13 / 0.72 = 18.24 hp. Throttling adds 10 ft, steepens the system curve and moves the crossing to lower flow and higher head. Reject any answer that multiplies by efficiency.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 12,
+          "instruction": "Study the lesson and reproduce the worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 8,
+          "instruction": "Read the source sections and note one use of the constants in your own work."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 5,
+          "instruction": "Compare one answer with a distractor mistake, then self-check against the case evidence. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "epanet",
+        "csus"
+      ],
+      "checks": [
+        {
+          "id": "ceu-basic-hydraulics-friction-pumps-c1",
+          "objective": "friction-pumps",
+          "prompt": "A fictional main must carry the same flow with less friction loss. Which change helps?",
+          "choices": [
+            "Increasing the flow pushed through the existing pipe",
+            "Replacing it with a larger-diameter pipe of the same material",
+            "Rerouting the water through a longer pipe path",
+            "Allowing scale to build up on the interior pipe wall"
+          ],
+          "correctIndex": 1,
+          "explanation": "Larger diameter lowers velocity, so friction loss for the same flow falls sharply. The \"Increasing the flow pushed through the existing pipe\" choice raises velocity, and friction rises faster than flow. The \"Rerouting the water through a longer pipe path\" choice adds length, and friction loss is proportional to length. The \"Allowing scale to build up on the interior pipe wall\" choice raises roughness, which increases friction."
+        },
+        {
+          "id": "ceu-basic-hydraulics-friction-pumps-c2",
+          "objective": "friction-pumps",
+          "prompt": "In the Hazen-Williams equation, a fictional pipe with a higher C factor is described as:",
+          "choices": [
+            "Rougher, so it has less friction loss at the same flow",
+            "Smoother, so it has more friction loss at the same flow",
+            "Smoother, so it has less friction loss at the same flow",
+            "Rougher, so it has more friction loss at the same flow"
+          ],
+          "correctIndex": 2,
+          "explanation": "A higher C means a smoother pipe and lower friction loss. Old tuberculated iron has a low C. The \"Rougher, so it has less friction loss at the same flow\" choice reverses the meaning of C and links roughness to lower loss. The \"Smoother, so it has more friction loss at the same flow\" choice gets smoothness right but reverses the effect on loss. The \"Rougher, so it has more friction loss at the same flow\" choice reverses the meaning of C even though the effect on loss is right."
+        },
+        {
+          "id": "ceu-basic-hydraulics-friction-pumps-c3",
+          "objective": "friction-pumps",
+          "prompt": "A fictional pump lifts water 45 ft from the wet well level to the discharge elevation, and friction in the pipe is 12 ft at the pumped flow. The total dynamic head is:",
+          "choices": [
+            "57 ft",
+            "33 ft",
+            "45 ft",
+            "540 ft"
+          ],
+          "correctIndex": 0,
+          "explanation": "TDH = static head + friction head = 45 + 12 = 57 ft. The \"33 ft\" choice subtracted friction loss, when friction adds to the head the pump must supply. The \"45 ft\" choice counted static head alone and left out the friction loss. The \"540 ft\" choice multiplied static head by friction loss instead of adding them."
+        },
+        {
+          "id": "ceu-basic-hydraulics-friction-pumps-c4",
+          "objective": "friction-pumps",
+          "prompt": "A fictional pump delivers 600 gpm at 90 ft of total head. Using WHP = Q x H / 3,960 (1 hp = 0.746 kW), the water horsepower is:",
+          "choices": [
+            "54,000 hp",
+            "10.2 hp",
+            "0.073 hp",
+            "13.6 hp"
+          ],
+          "correctIndex": 3,
+          "explanation": "600 x 90 / 3,960 = 13.64 hp. The \"54,000 hp\" choice forgot to divide by 3,960. The \"10.2 hp\" choice multiplied by 0.746, which converts to kW, and kept the hp label. The \"0.073 hp\" choice inverted the equation and divided 3,960 by the product."
+        },
+        {
+          "id": "ceu-basic-hydraulics-friction-pumps-c5",
+          "objective": "friction-pumps",
+          "prompt": "A fictional pump has an efficiency below 100 percent. Compared with water horsepower, the brake horsepower needed is:",
+          "choices": [
+            "Greater, because BHP equals WHP divided by efficiency",
+            "Smaller, because BHP equals WHP multiplied by efficiency",
+            "Equal, because the water receives the full shaft power",
+            "Smaller, because friction in the pump reduces the load on the motor"
+          ],
+          "correctIndex": 0,
+          "explanation": "BHP = WHP / efficiency, with efficiency as a decimal below one, so BHP is always larger than WHP. The \"Smaller, because BHP equals WHP multiplied by efficiency\" choice multiplied by efficiency, which would imply the pump creates energy. The \"Equal, because the water receives the full shaft power\" choice assumes a perfect pump, which does not exist. The \"Smaller, because friction in the pump reduces the load on the motor\" choice treats pump losses as a benefit instead of an added load."
+        },
+        {
+          "id": "ceu-basic-hydraulics-friction-pumps-c6",
+          "objective": "friction-pumps",
+          "prompt": "A fictional pump is cavitating at its suction. For a pump to avoid this, the usual rule for net positive suction head is that:",
+          "choices": [
+            "Required NPSH must be at least equal to the NPSH available",
+            "Available NPSH must be at least equal to the NPSH the pump requires",
+            "Available NPSH must equal the discharge head of the pump",
+            "Required NPSH must be zero whenever the water is cool"
+          ],
+          "correctIndex": 1,
+          "explanation": "NPSHa belongs to the system and NPSHr to the pump, and NPSHa must meet or exceed NPSHr, with a margin, or vapour forms at the impeller. The \"Required NPSH must be at least equal to the NPSH available\" choice reverses the rule, as if the pump set the supply and not the system. The \"Available NPSH must equal the discharge head of the pump\" choice mixes up a suction-side margin with total pump head. The \"Required NPSH must be zero whenever the water is cool\" choice treats a pump property as if it depended on water temperature alone."
+        }
+      ]
+    },
+    {
+      "id": "operating-problems",
+      "title": "Common operating problems",
+      "objectives": [
+        "Recognise water hammer, air binding, cavitation, low pressure and valve effects from symptoms.",
+        "Read a pressure and flow trend and calculate tank fill and drain."
+      ],
+      "lesson": "### Start with the symptom\n\nOperators see low pressure, noise, vibration or a tank that will not fill, not a named cause. This module links symptoms to the ideas in Modules 1 to 3 and teaches tank arithmetic. It is **recognition-level**: it helps you name what you see and ask the right question. It does not replace your system's procedures or your supervisor's direction.\n\n> **Your job:** match a pattern in pressure, flow, sound or power draw to its usual hydraulic cause, then calculate what you can.\n\n### Pump classification\n\nA **kinetic pump**, such as a centrifugal pump, spins an impeller to give water speed and turns that speed into pressure. Its flow changes with system head along the pump curve, and it can run against a closed valve for a short time. A **positive displacement pump**, such as a piston, diaphragm or progressing-cavity pump, traps a fixed volume and pushes it out each stroke or turn. Its flow stays nearly constant whatever the head, so a closed discharge can build dangerous pressure and needs a relief device. Centrifugal pumps move most water and wastewater; positive displacement pumps meter chemicals and move thick sludge.\n\n### Cavitation: recognition\n\nCavitation starts when pressure at the impeller eye falls so low that water vaporises. The bubbles then collapse hard as pressure rises inside the pump. Look for **noise** like gravel or crackling, **vibration**, pitting on the impeller and **falling flow and head**. Usual causes are too much suction lift, a plugged intake screen, a restricted suction valve, warm water, or running far off the design flow. This is the NPSH rule failing: available suction head has dropped below required.\n\n### Air binding\n\nAir in the casing or suction line makes a pump surge, gurgle or deliver little, often with lower motor current. Typical causes are leaking suction joints and a vortex at a low wet-well level. Air is air that should not be there; cavitation is vapour formed from low pressure.\n\n### Water hammer\n\nIf velocity changes quickly, the moving water's momentum becomes a pressure spike. Triggers include fast valve closure, a sudden pump stop or a slamming check valve. Risk grows with higher velocity, longer pipe and faster change. There is no single closing time that suits every pipe; any figure you hear is only a guideline, and the right rate comes from your system's own data.\n\n### Cause-to-symptom table for common pump problems\n\n| Symptom | Common causes |\n| --- | --- |\n| Low flow | Worn impeller, partly closed or blocked valve, air in suction, rougher pipe, speed too low |\n| Low pressure | Large demand or break downstream, worn impeller, low speed, air binding |\n| Erratic operation | Air entering suction, low wet-well level, cycling control, unstable suction supply |\n| High power draw | Running far out on the curve at high flow, binding or misaligned parts, clogged impeller, tight packing |\n| Vibration | Cavitation, misalignment, worn bearings, imbalance, air, running off the design flow |\n\nUse the table to form a question, then confirm with instruments and your maintenance staff.\n\n### Valve types\n\n| Valve | Purpose and typical use |\n| --- | --- |\n| Gate | Isolation; fully open or fully closed, low loss when open |\n| Globe | Throttling and flow control; high loss even when open |\n| Ball | Quick isolation or on and off; low loss, quarter turn |\n| Butterfly | Isolation and moderate throttling in large lines; disc stays in the flow |\n| Check | One-way flow; stops reverse flow at a pump discharge |\n| Plug | Isolation or switching in gas, sludge and slurry lines; quarter turn |\n| Knife gate | Isolation in thick sludge or solids; the blade cuts through |\n| Pinch | Throttling and isolation of slurries and powders; a flexible sleeve squeezes shut |\n\n**Throttling versus isolation.** An isolation valve should be fully open or fully closed. Holding a gate valve partly open to control flow can damage the gate and seat. A valve intended for throttling, such as a globe, is built to sit part open, and every throttled valve adds head loss that raises pressure upstream and cuts flow.\n\n### Low pressure and dead ends\n\nPressure falls wherever friction takes head. A dip that appears each evening and recovers overnight shows friction rising with demand. A dead-end main has one path in, so friction accumulates and the far customer sees the lowest pressure. Higher ground starts with less static pressure, so extra loss shows up there first.\n\n### Reading a pressure and flow trend\n\nFlow up with pressure down suggests a bigger draw such as a break or open hydrant. Flow down with pressure up suggests a restriction downstream of the gauge. Both falling points to supply, such as pump wear or suction trouble. Sharp spikes follow fast valve or pump changes. Treat a pattern as a hint, not a diagnosis.\n\n### Tank level, fill and drain\n\nVolume per foot of depth is area x 1 ft, and A = pi x d squared / 4 with d in feet. Convert ft3 to gallons with 7.48 gal per ft3 (1 ft3 = 28.3 L). Net flow is inflow minus outflow, and the level changes at net ft3/min divided by tank area.\n\n**Worked example (fictional Willow Gap tank).** The tank is 36 ft in diameter. Pumps supply 600 gpm and customers draw 850 gpm.\n\nNet flow = 600 - 850 = **-250 gpm**. Area = 3.1416 x 36 squared / 4 = **1,017.9 ft2**. Net in ft3/min = 250 / 7.48 = **33.42**. Rate = 33.42 / 1,017.9 = 0.03283 ft/min, or x 60 = **1.97 ft per hour**. Time to fall 5 ft = 5 / 1.97 = **2.54 hours**.\n\n**Sense-check.** One foot holds 1,017.9 x 7.48 = 7,614 gal, so 5 ft is 38,070 gal, and at 250 gpm that takes 152 min or 2.54 h. If demand drops to 450 gpm the net becomes +150 gpm and the level rises about 1.18 ft per hour.\n\n### Common mistakes to watch for\n\n- Forgetting 7.48, or using diameter as radius in the tank area.\n- Using inflow or outflow alone instead of the difference.\n- Mixing minutes and hours.\n- Using a throttling valve as an isolation valve, or the reverse.\n- Treating one symptom or trend as proof of cause.\n\n### Before you move on\n\nYou should be able to separate kinetic from positive displacement pumps, recognise cavitation, air binding and water hammer, use the symptom table, pick the right valve type for isolation or throttling, and calculate tank levels. Together the modules give you the vocabulary and arithmetic for most basic hydraulics exam items.",
+      "evidence": "### Fictional scenario: the Willow Gap tank\n\nWillow Gap is a fictional community with a 36 ft diameter cylindrical tank. Pumps supply **600 gpm** while customers draw **850 gpm** in the evening. A trend shows pressure sliding while flow rises, and the pump at the plant has been making a gurgling noise at low wet-well levels.\n\n### Your decision\n\nCompute the rate of level fall and the time to fall 5 ft using 7.48 gal per ft3. Then match each symptom in the trend and the noise to the most likely hydraulic cause.",
+      "assignment": "Prepare a short operating note for Willow Gap with the tank calculation and a symptom-to-cause table covering the falling pressure with rising flow and the gurgling pump.",
+      "rubric": [
+        "Uses net flow, tank area and 7.48 correctly.",
+        "Links flow up with pressure down to a larger draw.",
+        "Links gurgling at low level to air entering the suction."
+      ],
+      "facilitatorGuide": "Net -250 gpm. Area 1,017.9 ft2. Fall 0.0328 ft/min = 1.97 ft/h. Time for 5 ft = 2.54 h. Flow up and pressure down points to higher demand. Gurgling at a low wet-well level points to a vortex drawing air into the suction. Do not accept a diagnosis stated as certain from a single trend.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 12,
+          "instruction": "Study the lesson and reproduce the worked example."
+        },
+        {
+          "kind": "reading",
+          "minutes": 8,
+          "instruction": "Read the source sections and note one use of the constants in your own work."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 15,
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 5,
+          "instruction": "Compare one answer with a distractor mistake, then self-check against the case evidence. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 5,
+          "instruction": "Complete the checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "epanet",
+        "csus",
+        "npdes"
+      ],
+      "checks": [
+        {
+          "id": "ceu-basic-hydraulics-operating-problems-c1",
+          "objective": "operating-problems",
+          "prompt": "In a fictional transmission main, a large pressure spike with banging in the pipe follows a quick valve closure. This pattern is recognised as:",
+          "choices": [
+            "Cavitation, caused by vapour forming at the impeller",
+            "Air binding, caused by air trapped in the pump casing",
+            "Dead-end loss, caused by one path feeding a customer",
+            "Water hammer, caused by a rapid change in water velocity"
+          ],
+          "correctIndex": 3,
+          "explanation": "Fast changes in velocity convert the moving water's momentum to a pressure spike, which is water hammer. The \"Cavitation, caused by vapour forming at the impeller\" choice confuses a pipeline surge with a pump suction problem. The \"Air binding, caused by air trapped in the pump casing\" choice confuses a pipeline surge with an air problem inside a pump. The \"Dead-end loss, caused by one path feeding a customer\" choice confuses a sudden event with a steady low-pressure pattern."
+        },
+        {
+          "id": "ceu-basic-hydraulics-operating-problems-c2",
+          "objective": "operating-problems",
+          "prompt": "A fictional pump runs with lower-than-normal motor current, a gurgling suction and a surging discharge gauge. The most likely cause is:",
+          "choices": [
+            "Air entering or trapped in the suction side of the pump",
+            "A discharge valve closed fast enough to cause surge",
+            "A pump impeller pitted by long-running cavitation damage",
+            "A long dead-end main creating friction at peak demand"
+          ],
+          "correctIndex": 0,
+          "explanation": "Gurgling, surging pressure and low amps are typical signs of air in the suction, known as air binding. The \"A discharge valve closed fast enough to cause surge\" choice links a sustained surging gauge with a one-time valve event. The \"A pump impeller pitted by long-running cavitation damage\" choice assumes damage from a past problem explains the low current right now. The \"A long dead-end main creating friction at peak demand\" choice links a suction symptom with a distribution layout."
+        },
+        {
+          "id": "ceu-basic-hydraulics-operating-problems-c3",
+          "objective": "operating-problems",
+          "prompt": "A fictional pump makes a crackling noise like gravel, vibrates, and pits its impeller. Suction pressure at the pump is very low. This pattern is recognised as:",
+          "choices": [
+            "Water hammer, where a rapid velocity change makes a spike",
+            "Air binding, where air blocks the casing and flow stops",
+            "Cavitation, where low pressure lets water vaporise at the impeller",
+            "Throttling, where a partly closed valve raises pressure"
+          ],
+          "correctIndex": 2,
+          "explanation": "Gravel-like noise, vibration and impeller pitting at very low suction pressure indicate cavitation. The \"Water hammer, where a rapid velocity change makes a spike\" choice confuses gravel-like noise with banging in the pipeline. The \"Air binding, where air blocks the casing and flow stops\" choice confuses vapour that formed from low pressure with outside air. The \"Throttling, where a partly closed valve raises pressure\" choice confuses a suction-side problem with a discharge-side effect."
+        },
+        {
+          "id": "ceu-basic-hydraulics-operating-problems-c4",
+          "objective": "operating-problems",
+          "prompt": "Fictional operators need a valve that lets water pass in one direction only at a pump discharge. The valve type built for that purpose is the:",
+          "choices": [
+            "Check valve, which closes itself when flow tries to reverse",
+            "Gate valve, which seals by lowering a wedge across the pipe",
+            "Globe valve, which controls flow with a plug and seat",
+            "Pinch valve, which squeezes a flexible sleeve shut"
+          ],
+          "correctIndex": 0,
+          "explanation": "A check valve opens with forward flow and closes on reverse flow, so it protects pumps and lines without an operator. The \"Gate valve, which seals by lowering a wedge across the pipe\" choice names an isolation valve, which does not stop reverse flow by itself. The \"Globe valve, which controls flow with a plug and seat\" choice names a throttling valve, which the operator adjusts by hand. The \"Pinch valve, which squeezes a flexible sleeve shut\" choice names a slurry valve, which is also operated rather than self-acting."
+        },
+        {
+          "id": "ceu-basic-hydraulics-operating-problems-c5",
+          "objective": "operating-problems",
+          "prompt": "A fictional cylindrical tank is 40 ft in diameter. Pumps supply 800 gpm while customers draw 500 gpm. Using 7.48 gal per ft3, the level changes by about:",
+          "choices": [
+            "Rises 0.03 ft per hour",
+            "Rises 1.9 ft per hour",
+            "Rises 0.48 ft per hour",
+            "Rises 5.1 ft per hour"
+          ],
+          "correctIndex": 1,
+          "explanation": "Net = 300 gpm. Area = 1256.6 ft2. 300/7.48 = 40.11 ft3/min, so 0.0319 ft/min, or 1.91 ft per hour. The \"Rises 0.03 ft per hour\" choice forgot to multiply the per-minute rate by 60 to get per hour. The \"Rises 0.48 ft per hour\" choice used the diameter as the radius when finding tank area. The \"Rises 5.1 ft per hour\" choice used the inflow alone instead of the net flow."
+        },
+        {
+          "id": "ceu-basic-hydraulics-operating-problems-c6",
+          "objective": "operating-problems",
+          "prompt": "A fictional operator partly closes a throttling valve in a line. Compared with before, the result is generally:",
+          "choices": [
+            "Less head loss in the line, higher flow and lower upstream pressure",
+            "More head loss in the line, lower flow and higher upstream pressure",
+            "More head loss in the line, higher flow and lower upstream pressure",
+            "No change in head loss, because valves do not add friction"
+          ],
+          "correctIndex": 1,
+          "explanation": "A throttled valve adds friction head, so flow falls and pressure upstream of the valve rises. The \"Less head loss in the line, higher flow and lower upstream pressure\" choice reverses the effect of adding a restriction. The \"More head loss in the line, higher flow and lower upstream pressure\" choice gets the loss right but links it with a rise in flow. The \"No change in head loss, because valves do not add friction\" choice treats a valve as a free fitting, when it is a deliberate loss."
+        }
+      ]
+    }
+  ],
+  "finalAssessment": [
+    {
+      "id": "ceu-basic-hydraulics-pressure-head-f1",
+      "objective": "pressure-head",
+      "prompt": "A fictional elevated tank has its water surface 185 ft above a hydrant gauge. Using 0.433 psi per ft (9.79 kPa per m) and no flow, the static pressure is:",
+      "choices": [
+        "427.4 psi",
+        "80.1 psi",
+        "94.8 psi",
+        "427.3 psi"
+      ],
+      "correctIndex": 1,
+      "explanation": "185 x 0.433 = 80.11 psi, about 80.1 psi. The \"427.4 psi\" choice multiplied by 2.31, which is the feet-per-psi constant used in the wrong direction. The \"94.8 psi\" choice added 14.7 psi atmospheric pressure to a gauge reading. The \"427.3 psi\" choice divided by 0.433 instead of multiplying by it."
+    },
+    {
+      "id": "ceu-basic-hydraulics-flow-velocity-f1",
+      "objective": "flow-velocity",
+      "prompt": "A fictional plant sends 3.2 MGD through a 16 in pipe flowing full. Use 1.547 cfs per MGD (1 MGD = 43.8 L/s) and a pipe area of 1.396 ft2. The velocity is:",
+      "choices": [
+        "2.29 ft/s",
+        "3.55 ft/s",
+        "6.91 ft/s",
+        "0.89 ft/s"
+      ],
+      "correctIndex": 1,
+      "explanation": "3.2 x 1.547 = 4.950 cfs and V = 4.950 / 1.396 = 3.55 ft/s. The \"2.29 ft/s\" choice skipped the MGD to cfs conversion before dividing by area. The \"6.91 ft/s\" choice multiplied flow by area instead of dividing flow by area. The \"0.89 ft/s\" choice used a diameter-as-radius area of 5.585 ft2 for the division."
+    },
+    {
+      "id": "ceu-basic-hydraulics-friction-pumps-f1",
+      "objective": "friction-pumps",
+      "prompt": "A fictional pump lifts water 38 ft from the wet well level to a tank overflow. Friction head is 14.5 ft and discharge velocity is 8 ft/s. Using velocity head = V squared / (2 x g) with g = 32.2 ft/s squared (9.81 m/s squared), the total dynamic head is:",
+      "choices": [
+        "53.5 ft",
+        "52.5 ft",
+        "54.5 ft",
+        "52.6 ft"
+      ],
+      "correctIndex": 0,
+      "explanation": "Velocity head = 8 squared / 64.4 = 0.994 ft, and TDH = 38 + 14.5 + 0.994 = 53.49 ft. The \"52.5 ft\" choice left out the velocity head. The \"54.5 ft\" choice divided V squared by g and forgot the factor of 2 in the velocity head. The \"52.6 ft\" choice forgot to square the velocity before dividing."
+    },
+    {
+      "id": "ceu-basic-hydraulics-operating-problems-f1",
+      "objective": "operating-problems",
+      "prompt": "A fictional cylindrical tank is 30 ft in diameter with no inflow. Customers draw 350 gpm. Using 7.48 gal per ft3, the time for the level to fall 8 ft is about:",
+      "choices": [
+        "16.2 minutes",
+        "120.9 minutes",
+        "483.4 minutes",
+        "2.0 minutes"
+      ],
+      "correctIndex": 1,
+      "explanation": "Area = 706.9 ft2, volume = 5654.9 ft3 = 42,298 gal, and 42,298 / 350 = 120.9 min. The \"16.2 minutes\" choice forgot to convert cubic feet to gallons with 7.48. The \"483.4 minutes\" choice used the diameter as the radius when finding tank area. The \"2.0 minutes\" choice divided by 60 and kept the minutes label, which gives hours."
+    },
+    {
+      "id": "ceu-basic-hydraulics-pressure-head-f2",
+      "objective": "pressure-head",
+      "prompt": "In a fictional pressure zone with no flow, gauge A sits at elevation 540 ft and reads 52 psi. Gauge B is on the same connected main at elevation 480 ft. Using 2.31 ft per psi, the static pressure at gauge B is:",
+      "choices": [
+        "26.0 psi",
+        "112.0 psi",
+        "52.0 psi",
+        "78.0 psi"
+      ],
+      "correctIndex": 3,
+      "explanation": "Gauge A holds 120.1 ft of head, so the water surface is 660.1 ft elevation. At gauge B the head is 180.1 ft, which is 77.97 psi. Equivalently 52 + 60 x 0.433 = 77.98 psi. The \"26.0 psi\" choice subtracted the elevation difference, which is the wrong direction because gauge B is lower and reads higher. The \"112.0 psi\" choice added 60 ft of elevation directly to psi without converting feet to psi. The \"52.0 psi\" choice assumed both gauges read alike, ignoring the 60 ft elevation difference."
+    },
+    {
+      "id": "ceu-basic-hydraulics-flow-velocity-f2",
+      "objective": "flow-velocity",
+      "prompt": "A fictional cylindrical tank is 20 ft in diameter and holds water 12 ft deep. Using 7.48 gal per ft3 (1 ft3 = 28.3 L), the volume in gallons is:",
+      "choices": [
+        "28,199 gal",
+        "112,796 gal",
+        "3,770 gal",
+        "504 gal"
+      ],
+      "correctIndex": 0,
+      "explanation": "Area = pi x 20 squared / 4 = 314.2 ft2, volume = 3769.9 ft3, and x 7.48 = 28,199 gal. The \"112,796 gal\" choice used the diameter in place of the radius, overstating area four-fold. The \"3,770 gal\" choice left the volume in cubic feet and never applied 7.48. The \"504 gal\" choice divided by 7.48 instead of multiplying."
+    },
+    {
+      "id": "ceu-basic-hydraulics-friction-pumps-f2",
+      "objective": "friction-pumps",
+      "prompt": "A fictional pump delivers 1,200 gpm at 75 ft of total head with an efficiency of 80 percent. Using WHP = Q x H / 3,960 and BHP = WHP / efficiency, the brake horsepower is:",
+      "choices": [
+        "18.2 hp",
+        "22.7 hp",
+        "28.4 hp",
+        "112,500 hp"
+      ],
+      "correctIndex": 2,
+      "explanation": "WHP = 1200 x 75 / 3,960 = 22.73 hp and BHP = 22.73 / 0.8 = 28.41 hp. The \"18.2 hp\" choice multiplied water horsepower by efficiency instead of dividing. The \"22.7 hp\" choice stopped at water horsepower and left out the efficiency. The \"112,500 hp\" choice divided by efficiency but forgot to divide by 3,960."
+    },
+    {
+      "id": "ceu-basic-hydraulics-operating-problems-f2",
+      "objective": "operating-problems",
+      "prompt": "A fictional trend shows discharge pressure sliding from 62 psi to 48 psi over two hours while the metered flow rises. The pattern most often indicates:",
+      "choices": [
+        "A partly closed valve that is restricting the line downstream",
+        "Air trapped in the pump casing so little water is moved",
+        "A large uncontrolled draw downstream, such as a break or open hydrant",
+        "A tank filling and raising the pressure at the pump"
+      ],
+      "correctIndex": 2,
+      "explanation": "Flow up with pressure down means friction rises with a larger draw, so look for a break, an open hydrant or heavy demand. The \"A partly closed valve that is restricting the line downstream\" choice would cut flow while raising pressure, the opposite of this trend. The \"Air trapped in the pump casing so little water is moved\" choice would reduce flow, but the meter shows more flow. The \"A tank filling and raising the pressure at the pump\" choice would raise pressure, but the trend shows it falling."
+    },
+    {
+      "id": "ceu-basic-hydraulics-pressure-head-f3",
+      "objective": "pressure-head",
+      "prompt": "A fictional pump has a discharge gauge reading of 88 psi and a suction gauge reading of 6 psi. Using 2.31 ft per psi, the head the pump adds is:",
+      "choices": [
+        "203.3 ft",
+        "82.0 ft",
+        "189.4 ft",
+        "35.5 ft"
+      ],
+      "correctIndex": 2,
+      "explanation": "Pressure added is 88 - 6 = 82 psi, and 82 x 2.31 = 189.4 ft. The \"203.3 ft\" choice converted the discharge gauge alone, which credits the pump with energy already in the suction water. The \"82.0 ft\" choice left the answer in psi and labelled it feet, with no conversion by 2.31. The \"35.5 ft\" choice multiplied by 0.433, the feet-to-psi constant, in the wrong direction."
+    },
+    {
+      "id": "ceu-basic-hydraulics-flow-velocity-f3",
+      "objective": "flow-velocity",
+      "prompt": "Constant flow passes from a fictional 24 in main into a 12 in main. Velocity in the 24 in main is 1.8 ft/s. Velocity in the 12 in main is:",
+      "choices": [
+        "3.6 ft/s",
+        "0.45 ft/s",
+        "1.8 ft/s",
+        "7.2 ft/s"
+      ],
+      "correctIndex": 3,
+      "explanation": "Area falls to one-quarter, so velocity rises by 4: 1.8 x 4 = 7.2 ft/s. The \"3.6 ft/s\" choice scaled by the diameter ratio instead of the area ratio. The \"0.45 ft/s\" choice inverted the area ratio, treating the smaller pipe as slower. The \"1.8 ft/s\" choice assumed velocity stays the same because flow is constant."
+    },
+    {
+      "id": "ceu-basic-hydraulics-friction-pumps-f3",
+      "objective": "friction-pumps",
+      "prompt": "A fictional operator partly closes the discharge valve on a pump. The pump curve does not change. The operating point moves toward:",
+      "choices": [
+        "Higher flow and lower head, because system friction has risen",
+        "Lower flow and lower head, because the pump has become weaker",
+        "Higher flow and higher head, because the pump runs harder",
+        "Lower flow and higher head, because system friction has risen"
+      ],
+      "correctIndex": 3,
+      "explanation": "Throttling steepens the system curve, so it crosses the unchanged pump curve at lower flow and higher head. The \"Higher flow and lower head, because system friction has risen\" choice reverses the shift along the pump curve, since higher friction cannot raise flow. The \"Lower flow and lower head, because the pump has become weaker\" choice blames the pump curve, which did not change. The \"Higher flow and higher head, because the pump runs harder\" choice assumes the pump adds energy, when the valve only changes the system curve."
+    },
+    {
+      "id": "ceu-basic-hydraulics-operating-problems-f3",
+      "objective": "operating-problems",
+      "prompt": "A fictional centrifugal pump shows very high power draw while it delivers far more flow than its design flow. The most likely cause is:",
+      "choices": [
+        "The pump is running far out on its curve, with the discharge too open",
+        "The pump is running near shutoff, with the discharge nearly closed",
+        "The suction is drawing air, so the pump moves little water",
+        "The pump speed has been cut by a variable-speed drive"
+      ],
+      "correctIndex": 0,
+      "explanation": "Power rises as a centrifugal pump runs out on its curve to high flow, so a very open discharge can overload the motor. The \"The pump is running near shutoff, with the discharge nearly closed\" choice reverses the effect, since a nearly closed discharge lowers power draw. The \"The suction is drawing air, so the pump moves little water\" choice links air binding to high power, though it usually lowers motor current. The \"The pump speed has been cut by a variable-speed drive\" choice links a lower speed to higher power, though power falls with speed."
+    },
+    {
+      "id": "ceu-basic-hydraulics-pressure-head-f4",
+      "objective": "pressure-head",
+      "prompt": "A fictional hydrant flow test shows static pressure of 68 psi and residual pressure of 41 psi at the observation hydrant. Using 2.31 ft per psi, the head consumed by the test flow is:",
+      "choices": [
+        "62.4 ft",
+        "27.0 ft",
+        "157.1 ft",
+        "94.7 ft"
+      ],
+      "correctIndex": 0,
+      "explanation": "The drop is 68 - 41 = 27 psi, and 27 x 2.31 = 62.4 ft. The \"27.0 ft\" choice forgot to convert the psi drop into feet of head. The \"157.1 ft\" choice converted only the static reading, which is total head and not the drop. The \"94.7 ft\" choice converted only the residual reading, which is the head left and not the head consumed."
+    },
+    {
+      "id": "ceu-basic-hydraulics-flow-velocity-f4",
+      "objective": "flow-velocity",
+      "prompt": "A fictional well pump delivers 1,800 gpm. Using 449 gpm per cfs (1 cfs = 28.3 L/s), the flow in cfs is:",
+      "choices": [
+        "808,200 cfs",
+        "240.6 cfs",
+        "4.01 cfs",
+        "30.0 cfs"
+      ],
+      "correctIndex": 2,
+      "explanation": "1800 / 449 = 4.01 cfs. The \"808,200 cfs\" choice multiplied by 449 instead of dividing, so the conversion went the wrong way. The \"240.6 cfs\" choice divided gallons by 7.48 and stopped, leaving cubic feet per minute. The \"30.0 cfs\" choice divided by 60 only, which gives gallons per second."
+    },
+    {
+      "id": "ceu-basic-hydraulics-friction-pumps-f4",
+      "objective": "friction-pumps",
+      "prompt": "A fictional pump makes 80 ft of head at 1,750 rpm. Using the affinity law that head varies with the square of speed, the head at 1,400 rpm with the same impeller is:",
+      "choices": [
+        "51.2 ft",
+        "64.0 ft",
+        "41.0 ft",
+        "125.0 ft"
+      ],
+      "correctIndex": 0,
+      "explanation": "Speed ratio = 1400/1750 = 0.80, and head = 80 x 0.80 squared = 51.2 ft. The \"64.0 ft\" choice scaled head in direct proportion to speed, which is the flow law. The \"41.0 ft\" choice cubed the speed ratio, which is the power law. The \"125.0 ft\" choice inverted the speed ratio and raised head when speed was cut."
+    },
+    {
+      "id": "ceu-basic-hydraulics-operating-problems-f4",
+      "objective": "operating-problems",
+      "prompt": "A fictional tank is 25 ft in diameter. With no inflow, its level falls 3.5 ft in 6 hours. Using 7.48 gal per ft3, the average demand is about:",
+      "choices": [
+        "35.7 gpm",
+        "214 gpm",
+        "142.8 gpm",
+        "4.8 gpm"
+      ],
+      "correctIndex": 0,
+      "explanation": "Area = 490.9 ft2, volume = 1718.1 ft3 = 12,851 gal over 360 min is 35.7 gpm. The \"214 gpm\" choice divided by 60 instead of the number of minutes in six hours. The \"142.8 gpm\" choice used the diameter as the radius when finding tank area. The \"4.8 gpm\" choice forgot to convert cubic feet to gallons with 7.48."
+    },
+    {
+      "id": "ceu-basic-hydraulics-pressure-head-f5",
+      "objective": "pressure-head",
+      "prompt": "A fictional pump suction gauge reads 4 psi of vacuum, written as -4 psi (gauge). Taking atmospheric pressure as 14.7 psi (101.3 kPa), the absolute suction pressure is:",
+      "choices": [
+        "10.7 psi",
+        "18.7 psi",
+        "4.0 psi",
+        "14.7 psi"
+      ],
+      "correctIndex": 0,
+      "explanation": "Absolute equals gauge plus atmospheric: -4 + 14.7 = 10.7 psi, which is below atmospheric. The \"18.7 psi\" choice added the vacuum reading to atmospheric pressure, which treats the vacuum as positive pressure. The \"4.0 psi\" choice dropped atmospheric pressure and reported only the size of the vacuum reading. The \"14.7 psi\" choice ignored the vacuum reading and reported atmospheric pressure alone."
+    },
+    {
+      "id": "ceu-basic-hydraulics-flow-velocity-f5",
+      "objective": "flow-velocity",
+      "prompt": "A fictional rectangular channel is 3 ft wide with water 0.8 ft deep, carrying 3.6 cfs. The average velocity is:",
+      "choices": [
+        "1.50 ft/s",
+        "0.67 ft/s",
+        "8.64 ft/s",
+        "4.50 ft/s"
+      ],
+      "correctIndex": 0,
+      "explanation": "A = 3 x 0.8 = 2.4 ft2 and V = Q / A = 3.6 / 2.4 = 1.50 ft/s. The \"0.67 ft/s\" choice inverted the equation and divided area by flow. The \"8.64 ft/s\" choice multiplied flow by area instead of dividing. The \"4.50 ft/s\" choice divided by depth alone and left the channel width out of the area."
+    },
+    {
+      "id": "ceu-basic-hydraulics-friction-pumps-f5",
+      "objective": "friction-pumps",
+      "prompt": "A fictional pump delivers 1,000 gpm at 90 ft total head, pump efficiency 70 percent, motor efficiency 92 percent, and runs 8,760 h per year. Using WHP = Q x H / 3,960, BHP = WHP / pump efficiency, input hp = BHP / motor efficiency and 0.746 kW per hp, the yearly energy is about:",
+      "choices": [
+        "148,522 kWh",
+        "230,624 kWh",
+        "309,147 kWh",
+        "95,648 kWh"
+      ],
+      "correctIndex": 1,
+      "explanation": "WHP = 22.73, BHP = 32.47, input = 35.29 hp = 26.33 kW, and x 8760 h = 230,624 kWh. The \"148,522 kWh\" choice left out both efficiencies, using water horsepower as the power drawn. The \"309,147 kWh\" choice forgot to convert horsepower to kW with 0.746. The \"95,648 kWh\" choice multiplied by the efficiencies instead of dividing by them."
+    },
+    {
+      "id": "ceu-basic-hydraulics-operating-problems-f5",
+      "objective": "operating-problems",
+      "prompt": "A fictional plant moves a thick, abrasive sludge at a fixed rate with little change in flow as discharge pressure varies. The pump type best matching this is:",
+      "choices": [
+        "A centrifugal pump, which moves less flow as head rises",
+        "A centrifugal pump, which spins an impeller at high speed",
+        "A kinetic pump, which turns water speed into pressure",
+        "A positive displacement pump, which moves a fixed volume per stroke or turn"
+      ],
+      "correctIndex": 3,
+      "explanation": "Positive displacement pumps trap a fixed volume each stroke or turn, so flow stays nearly constant while pressure varies. The \"A centrifugal pump, which moves less flow as head rises\" choice names a kinetic pump whose flow follows the system head along its curve. The \"A centrifugal pump, which spins an impeller at high speed\" choice names a kinetic pump, which does not hold a fixed rate against varying head. The \"A kinetic pump, which turns water speed into pressure\" choice names the pump class that includes centrifugal pumps, whose flow changes with head."
+    }
+  ],
+  "alternateFinalAssessment": [
+    {
+      "id": "ceu-basic-hydraulics-pressure-head-a1",
+      "objective": "pressure-head",
+      "prompt": "A fictional ground-level reservoir has water 95 ft deep over its outlet gauge. Using 0.433 psi per ft (9.79 kPa per m), the static pressure at the gauge is:",
+      "choices": [
+        "219.5 psi",
+        "41.1 psi",
+        "55.8 psi",
+        "95.4 psi"
+      ],
+      "correctIndex": 1,
+      "explanation": "95 x 0.433 = 41.13 psi, about 41.1 psi. The \"219.5 psi\" choice multiplied by 2.31, which moves the answer in the wrong direction for feet to psi. The \"55.8 psi\" choice added atmospheric pressure to a gauge reading. The \"95.4 psi\" choice added the constant to the depth instead of multiplying."
+    },
+    {
+      "id": "ceu-basic-hydraulics-flow-velocity-a1",
+      "objective": "flow-velocity",
+      "prompt": "Water moves at an average 3 ft/s in a fictional 8 in pipe flowing full (area 0.3491 ft2). Using 449 gpm per cfs (1 cfs = 28.3 L/s), the flow in gpm is:",
+      "choices": [
+        "470 gpm",
+        "1.05 gpm",
+        "1,881 gpm",
+        "0.0023 gpm"
+      ],
+      "correctIndex": 0,
+      "explanation": "Q = 0.3491 x 3 = 1.047 cfs and x 449 = 470 gpm. The \"1.05 gpm\" choice stopped at cfs and never converted to gpm. The \"1,881 gpm\" choice used a diameter-as-radius area of 1.396 ft2. The \"0.0023 gpm\" choice divided by 449 instead of multiplying."
+    },
+    {
+      "id": "ceu-basic-hydraulics-friction-pumps-a1",
+      "objective": "friction-pumps",
+      "prompt": "A fictional pump draws 30 BHP at 1,750 rpm. Using the affinity law that power varies with the cube of speed, the BHP at 1,400 rpm with the same impeller and system is:",
+      "choices": [
+        "24.0 BHP",
+        "15.4 BHP",
+        "19.2 BHP",
+        "58.6 BHP"
+      ],
+      "correctIndex": 1,
+      "explanation": "Speed ratio = 0.80, and power = 30 x 0.80 cubed = 15.36 BHP. The \"24.0 BHP\" choice scaled power in direct proportion to speed, which is the flow law. The \"19.2 BHP\" choice squared the speed ratio, which is the head law. The \"58.6 BHP\" choice inverted the speed ratio, which raises power when speed was cut."
+    },
+    {
+      "id": "ceu-basic-hydraulics-operating-problems-a1",
+      "objective": "operating-problems",
+      "prompt": "A fictional cylindrical tank is 50 ft in diameter. The net inflow is 1,200 gpm. Using 7.48 gal per ft3, the time for the level to rise 4 ft is about:",
+      "choices": [
+        "6.5 minutes",
+        "195.8 minutes",
+        "49.0 minutes",
+        "0.82 minutes"
+      ],
+      "correctIndex": 2,
+      "explanation": "Area = 1963.5 ft2, volume = 7854.0 ft3 = 58,748 gal, and 58,748 / 1200 = 49.0 min. The \"6.5 minutes\" choice forgot to convert cubic feet to gallons with 7.48. The \"195.8 minutes\" choice used the diameter as the radius when finding tank area. The \"0.82 minutes\" choice divided by 60 and kept the minutes label, which gives hours."
+    },
+    {
+      "id": "ceu-basic-hydraulics-pressure-head-a2",
+      "objective": "pressure-head",
+      "prompt": "A fictional customer reports a steady 30 psi at a service tap. Using 2.31 ft per psi (0.704 m per psi), the same pressure expressed as head is:",
+      "choices": [
+        "69.3 ft",
+        "13.0 ft",
+        "206.8 ft",
+        "32.3 ft"
+      ],
+      "correctIndex": 0,
+      "explanation": "30 x 2.31 = 69.3 ft of head. The \"13.0 ft\" choice multiplied by 0.433, so feet and psi were swapped. The \"206.8 ft\" choice used 6.895, the kPa-per-psi constant, and called the answer feet. The \"32.3 ft\" choice added the constant instead of multiplying."
+    },
+    {
+      "id": "ceu-basic-hydraulics-flow-velocity-a2",
+      "objective": "flow-velocity",
+      "prompt": "A fictional plant averages 5.6 MGD. Using 1,000,000 gal per MGD, 1,440 min per day and 1 MGD = 43.8 L/s, the flow in gpm is:",
+      "choices": [
+        "8,064 gpm",
+        "233,333 gpm",
+        "3,889 gpm",
+        "8.66 gpm"
+      ],
+      "correctIndex": 2,
+      "explanation": "5.6 x 1,000,000 / 1,440 = 3,889 gpm. The \"8,064 gpm\" choice multiplied by 1,440 instead of dividing, which is the wrong direction for a per-day to per-minute conversion. The \"233,333 gpm\" choice divided by 24 only, which gives gallons per hour. The \"8.66 gpm\" choice used the cfs-per-MGD constant, so the answer is cfs and not gpm."
+    },
+    {
+      "id": "ceu-basic-hydraulics-friction-pumps-a2",
+      "objective": "friction-pumps",
+      "prompt": "A fictional pump delivers 2,500 gpm at 40 ft of total head. Using WHP = Q x H / 3,960 (1 hp = 0.746 kW), the water horsepower is:",
+      "choices": [
+        "25.3 hp",
+        "100,000 hp",
+        "18.8 hp",
+        "0.040 hp"
+      ],
+      "correctIndex": 0,
+      "explanation": "2500 x 40 / 3,960 = 25.25 hp. The \"100,000 hp\" choice forgot to divide by 3,960. The \"18.8 hp\" choice multiplied by 0.746, which converts to kW, and kept the hp label. The \"0.040 hp\" choice inverted the equation and divided 3,960 by the product."
+    },
+    {
+      "id": "ceu-basic-hydraulics-operating-problems-a2",
+      "objective": "operating-problems",
+      "prompt": "A fictional pump shows falling flow, crackling noise like gravel and vibration. Which condition is a usual cause of this cavitation?",
+      "choices": [
+        "A plugged intake screen that starves the pump suction",
+        "A slow, steady rise in demand through the afternoon",
+        "A check valve that opens fully when the pump starts",
+        "A larger discharge pipe that lowers velocity and friction"
+      ],
+      "correctIndex": 0,
+      "explanation": "A plugged screen drops suction pressure at the impeller, so NPSH available falls below required and vapour forms. The \"A slow, steady rise in demand through the afternoon\" choice describes a gradual demand change, which does not lower suction pressure at the impeller. The \"A check valve that opens fully when the pump starts\" choice describes normal valve action, which does not starve the suction. The \"A larger discharge pipe that lowers velocity and friction\" choice describes a change that lowers discharge-side losses and does not cause cavitation."
+    },
+    {
+      "id": "ceu-basic-hydraulics-pressure-head-a3",
+      "objective": "pressure-head",
+      "prompt": "At a fictional pump suction, which description matches dynamic pressure?",
+      "choices": [
+        "Pressure measured at a point while water is at rest",
+        "Pressure measured from a vacuum rather than from the air",
+        "Pressure produced by a pump at zero flow with the valve shut",
+        "Pressure measured at a point while water is flowing"
+      ],
+      "correctIndex": 3,
+      "explanation": "Dynamic pressure is the pressure at a point while water is moving, lower than static because energy is spent on friction. The \"Pressure measured at a point while water is at rest\" choice describes static pressure instead. The \"Pressure measured from a vacuum rather than from the air\" choice describes absolute pressure instead. The \"Pressure produced by a pump at zero flow with the valve shut\" choice describes shutoff pressure instead."
+    },
+    {
+      "id": "ceu-basic-hydraulics-flow-velocity-a3",
+      "objective": "flow-velocity",
+      "prompt": "For steady flow through a fictional pipe that changes diameter, the continuity relationship says that:",
+      "choices": [
+        "Flow is the same at both sections, so velocity is higher where area is smaller",
+        "Velocity is the same at both sections, so flow is higher where area is larger",
+        "Flow is higher where the pipe is narrower, because the water is squeezed",
+        "Pressure is the same at both sections, so the pipe size does not matter"
+      ],
+      "correctIndex": 0,
+      "explanation": "Steady flow means Q = A1 x V1 = A2 x V2, so a smaller area must carry water at a higher velocity. The \"Velocity is the same at both sections, so flow is higher where area is larger\" choice assumes velocity stays fixed and lets flow change, the reverse of steady flow. The \"Flow is higher where the pipe is narrower, because the water is squeezed\" choice confuses a higher velocity with a higher flow. The \"Pressure is the same at both sections, so the pipe size does not matter\" choice mixes up pressure with flow and ignores area."
+    },
+    {
+      "id": "ceu-basic-hydraulics-friction-pumps-a3",
+      "objective": "friction-pumps",
+      "prompt": "A fictional pump delivers 900 gpm at 55 ft of total head with an efficiency of 65 percent. Using WHP = Q x H / 3,960 and BHP = WHP / efficiency, the brake horsepower is:",
+      "choices": [
+        "8.1 hp",
+        "12.5 hp",
+        "19.2 hp",
+        "76,154 hp"
+      ],
+      "correctIndex": 2,
+      "explanation": "WHP = 900 x 55 / 3,960 = 12.50 hp and BHP = 12.50 / 0.65 = 19.23 hp. The \"8.1 hp\" choice multiplied water horsepower by efficiency instead of dividing. The \"12.5 hp\" choice stopped at water horsepower and left out the efficiency. The \"76,154 hp\" choice divided by efficiency but forgot to divide by 3,960."
+    },
+    {
+      "id": "ceu-basic-hydraulics-operating-problems-a3",
+      "objective": "operating-problems",
+      "prompt": "Which event is a typical trigger for water hammer in a fictional main moving water at high velocity?",
+      "choices": [
+        "A pump trips on power loss and the flow stops abruptly",
+        "A tank level rises slowly over several hours of operation",
+        "A slow, steady increase in demand through the afternoon",
+        "A gradual build-up of scale on the inside of the pipe"
+      ],
+      "correctIndex": 0,
+      "explanation": "Abrupt stops of moving water, such as a power-loss pump trip, create the pressure spikes known as water hammer. The \"A tank level rises slowly over several hours of operation\" choice describes a gradual change, which does not create a surge. The \"A slow, steady increase in demand through the afternoon\" choice describes a gradual change in velocity, which does not create a surge. The \"A gradual build-up of scale on the inside of the pipe\" choice describes a slow roughness change, which affects friction and not surge."
+    },
+    {
+      "id": "ceu-basic-hydraulics-pressure-head-a4",
+      "objective": "pressure-head",
+      "prompt": "A fictional metric tank has water 12 m deep over a gauge. Using 9.79 kPa per m and 101.3 kPa for atmosphere, the gauge pressure is:",
+      "choices": [
+        "218.8 kPa",
+        "1.2 kPa",
+        "117.5 kPa",
+        "17.0 kPa"
+      ],
+      "correctIndex": 2,
+      "explanation": "12 x 9.79 = 117.5 kPa gauge. The \"218.8 kPa\" choice added atmospheric pressure to a gauge reading, which gives absolute pressure. The \"1.2 kPa\" choice divided depth by the constant instead of multiplying. The \"17.0 kPa\" choice used the feet-to-psi constant on metres and labelled the result kPa."
+    },
+    {
+      "id": "ceu-basic-hydraulics-flow-velocity-a4",
+      "objective": "flow-velocity",
+      "prompt": "Water 0.5 ft deep moves at an average 3 ft/s in a fictional rectangular channel 2 ft wide. Using 449 gpm per cfs, the flow in gpm is:",
+      "choices": [
+        "3.0 gpm",
+        "22.4 gpm",
+        "0.007 gpm",
+        "1,347 gpm"
+      ],
+      "correctIndex": 3,
+      "explanation": "A = 2 x 0.5 = 1.0 ft2, Q = 1.0 x 3 = 3.0 cfs, and x 449 = 1,347 gpm. The \"3.0 gpm\" choice stopped at the flow in cfs and never converted to gpm. The \"22.4 gpm\" choice multiplied by 7.48 only, which gives gallons per second. The \"0.007 gpm\" choice divided by 449 instead of multiplying."
+    },
+    {
+      "id": "ceu-basic-hydraulics-friction-pumps-a4",
+      "objective": "friction-pumps",
+      "prompt": "A fictional pump delivers 1,000 gpm with pump efficiency 70 percent and motor efficiency 92 percent, running 8,760 h per year. Using WHP = Q x H / 3,960, BHP = WHP / pump efficiency, input hp = BHP / motor efficiency and 0.746 kW per hp, one extra foot of head costs about this much energy per year:",
+      "choices": [
+        "2,562 kWh",
+        "1,650 kWh",
+        "3,435 kWh",
+        "230,624 kWh"
+      ],
+      "correctIndex": 0,
+      "explanation": "Per foot: 1000 x 1 / 3,960 = 0.2525 WHP, / 0.7 / 0.92 = 0.3921 hp, x 0.746 = 0.2925 kW, x 8,760 = 2,562 kWh. The \"1,650 kWh\" choice left out both efficiencies. The \"3,435 kWh\" choice forgot to convert hp to kW with 0.746. The \"230,624 kWh\" choice used the full 90 ft of head instead of the one extra foot."
+    },
+    {
+      "id": "ceu-basic-hydraulics-operating-problems-a4",
+      "objective": "operating-problems",
+      "prompt": "A fictional crew wants to hold a line at a steady partial flow for several weeks. Which valve choice suits that duty?",
+      "choices": [
+        "A gate valve, because it seals tightly when fully closed",
+        "A check valve, because it passes flow in one direction",
+        "A knife gate valve, because its blade cuts through solids",
+        "A globe valve, because it is built to operate partly open"
+      ],
+      "correctIndex": 3,
+      "explanation": "Globe valves are made to sit partly open, while gate and knife gate valves are for isolation and are not meant for throttling. The \"A gate valve, because it seals tightly when fully closed\" choice uses an isolation valve for throttling, which can damage its gate and seat. The \"A check valve, because it passes flow in one direction\" choice uses a self-acting valve for control, which gives no adjustable flow. The \"A knife gate valve, because its blade cuts through solids\" choice uses an isolation valve for throttling, since it is meant to be open or closed."
+    },
+    {
+      "id": "ceu-basic-hydraulics-pressure-head-a5",
+      "objective": "pressure-head",
+      "prompt": "In a fictional distribution zone, residual pressure during a large draw is lower than static pressure at the same hydrant. The main reason is:",
+      "choices": [
+        "Energy is lost to friction while the water is moving through the pipes",
+        "The water in the zone weighs less once it begins to flow",
+        "Atmospheric pressure drops when the hydrant valve is opened",
+        "The gauge shows absolute pressure rather than gauge pressure"
+      ],
+      "correctIndex": 0,
+      "explanation": "Moving water spends head on friction and fittings, so the pressure remaining while flowing is lower than the static value. The \"The water in the zone weighs less once it begins to flow\" choice assumes flow changes the weight of water, which does not happen. The \"Atmospheric pressure drops when the hydrant valve is opened\" choice assumes air pressure changes at a hydrant, which has no effect on gauge readings. The \"The gauge shows absolute pressure rather than gauge pressure\" choice mixes up the zero reference with a flow effect."
+    },
+    {
+      "id": "ceu-basic-hydraulics-flow-velocity-a5",
+      "objective": "flow-velocity",
+      "prompt": "A fictional 6 in pipe carries 400 gpm. Using 449 gpm per cfs and a full-pipe area of 0.1963 ft2, the velocity is:",
+      "choices": [
+        "2,037 ft/s",
+        "4.54 ft/s",
+        "1.13 ft/s",
+        "0.17 ft/s"
+      ],
+      "correctIndex": 1,
+      "explanation": "400 / 449 = 0.8909 cfs and V = 0.8909 / 0.1963 = 4.54 ft/s. The \"2,037 ft/s\" choice skipped the conversion from gpm to cfs. The \"1.13 ft/s\" choice used a diameter-as-radius area of 0.785 ft2 for the division. The \"0.17 ft/s\" choice multiplied flow by area instead of dividing."
+    },
+    {
+      "id": "ceu-basic-hydraulics-friction-pumps-a5",
+      "objective": "friction-pumps",
+      "prompt": "A fictional pump has a shutoff head of 90 ft, and the discharge point is 105 ft above the water source. At the pump, the result is:",
+      "choices": [
+        "Reduced flow, because the pump works against the extra 15 ft",
+        "Full flow, because water always follows the pump curve",
+        "Higher flow, because a higher static head raises the pump curve",
+        "No flow, because the pump cannot overcome the static head"
+      ],
+      "correctIndex": 3,
+      "explanation": "Shutoff head is the most head the pump can produce. If static head is above it, the pump cannot move water to the discharge. The \"Reduced flow, because the pump works against the extra 15 ft\" choice assumes some flow can occur when the pump cannot lift to the discharge. The \"Full flow, because water always follows the pump curve\" choice ignores that the system head must be below the pump head to move water. The \"Higher flow, because a higher static head raises the pump curve\" choice assumes static head changes the pump curve, when it only changes the system curve."
+    },
+    {
+      "id": "ceu-basic-hydraulics-operating-problems-a5",
+      "objective": "operating-problems",
+      "prompt": "A fictional tank is 20 ft in diameter with no inflow. Customers draw 90 gpm for 2 hours. Using 7.48 gal per ft3, the level falls about:",
+      "choices": [
+        "34.4 ft",
+        "4.6 ft",
+        "1.15 ft",
+        "0.08 ft"
+      ],
+      "correctIndex": 1,
+      "explanation": "90 x 120 min = 10,800 gal = 1443.9 ft3, and area is 314.2 ft2, so the level falls 4.60 ft. The \"34.4 ft\" choice forgot to convert gallons to cubic feet with 7.48. The \"1.15 ft\" choice used the diameter as the radius when finding tank area. The \"0.08 ft\" choice forgot to convert hours to minutes."
+    }
+  ]
+}
