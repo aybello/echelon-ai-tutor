@@ -1,3 +1,4 @@
+import { pennsylvaniaBank } from "../../../shared/pennsylvaniaBanks";
 import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, writeFileSync, lstatSync } from "node:fs";
 import { resolve, join } from "node:path";
@@ -12,10 +13,10 @@ import { ENGINE_LIMITS, engineExampleSchema, engineManifestSchema, engineRegistr
 export const digest = (data: string | Buffer) => createHash("sha256").update(data).digest("hex");
 export const canonicalJson = (data: unknown) => JSON.stringify(data);
 const encode = (data: unknown) => `${canonicalJson(data)}\n`;
-export const eligibleCourseKeys = () => getAllActiveCourseKeys().filter(key => key !== "electrician-309a").sort();
+export const eligibleCourseKeys = () => getAllActiveCourseKeys().filter(key => key !== "electrician-309a" && !pennsylvaniaBank(key)).sort();
 function canonicalCourse(courseKey: string) {
   const course = getCourseByKey(courseKey);
-  if (!course?.isActive || courseKey === "electrician-309a") throw new Error("Course is not eligible for interactive artifacts");
+  if (!course?.isActive || courseKey === "electrician-309a" || pennsylvaniaBank(courseKey)) throw new Error("Course is not eligible for interactive artifacts");
 }
 function artifact(root: string, file: string, data: unknown, limit: number): ArtifactDescriptor {
   const content = encode(data);

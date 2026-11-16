@@ -12,7 +12,7 @@ export default function USStatePage() {
     <USHero title={`${state.name} operator exam preparation`}>
       <span className="us-badge">{state.code} · Source check: {US_RESEARCH_CHECKED_DATE}</span>
       <p>Choose your certification stream first. We link shared WPI courses only where the standardized exam and class match are confirmed. Other programs need separate preparation.</p>
-      <Link href={`/us/courses?state=${state.code}`} className="us-action">View confirmed shared courses</Link>
+      <Link href={`/us/courses?state=${state.code}`} className="us-action">View matched preparation courses</Link>
     </USHero>
     <main className="us-main">
       <div className="us-notice"><h2>Confirm your exact exam</h2><p>Local grade names may not match WPI class numbers. Your authority sets eligibility, rules, exam dates, passing requirements and calculator policies. A WPI course is not a state-approved licence or a guarantee of complete exam coverage.</p></div>
@@ -28,7 +28,7 @@ export default function USStatePage() {
           <p className="us-coverage-note"><strong>{coverage.label}.</strong> {coverage.note}</p>
           {program.authorityUrl && <a href={program.authorityUrl} target="_blank" rel="noopener noreferrer">Official program information</a>}
           {courses.length > 0 ? <div className="us-card-grid" style={{ marginTop: 22 }}>{courses.map(course => <article key={course.courseKey} className="us-card" data-course-key={course.courseKey}>
-            <h3>{course.displayName}</h3><div className="us-actions">
+            <h3>{course.displayName}</h3>{state.code === "PA" && <p>Original practice in US customary units. Not an official exam blueprint. Free preview available after content publication; full Pennsylvania course-pass sales are not available yet.</p>}<div className="us-actions">
               <Link href={usCourseHref(course, "practice", state.code)!} className="us-action">Practice</Link>
               <Link href={usCourseHref(course, "mock", state.code)!} className="us-action us-action-secondary">Mock Exam</Link>
               {course.flashcardPath && <Link href={usCourseHref(course, "flashcards", state.code)!} className="us-action us-action-secondary">Flashcards</Link>}
@@ -46,7 +46,7 @@ export default function USStatePage() {
           <Link href="/us-texas-class-d-water-flashcards" className="us-action us-action-secondary">Flashcards</Link>
         </div>
       </section>}
-      {state.dedicatedCourseNeeds.length > 0 && <section className="us-card us-program"><h2>Dedicated course research</h2><p>{state.code === "TX" ? "The combined Texas Class D course is shown above. Other Texas credentials below remain research needs and are not offered as dedicated courses." : "These needs are separate from the shared WPI courses. Dedicated prep is not available or being sold yet."}</p><ul>{state.dedicatedCourseNeeds.map(item => <li key={item}>{item}</li>)}</ul></section>}
+      {state.dedicatedCourseNeeds.length > 0 && <section className="us-card us-program"><h2>Dedicated course research</h2><p>{state.code === "PA" ? "Class E distribution and E4 collection practice are linked above. Other Pennsylvania credentials remain research needs. These practice banks are not official exam blueprints." : state.code === "TX" ? "The combined Texas Class D course is shown above. Other Texas credentials below remain research needs and are not offered as dedicated courses." : "These needs are separate from the shared WPI courses. Dedicated prep is not available or being sold yet."}</p><ul>{state.dedicatedCourseNeeds.map(item => <li key={item}>{item}</li>)}</ul></section>}
       {state.limits.length > 0 && <section className="us-card us-program"><h2>What still needs confirmation</h2><ul>{state.limits.map(item => <li key={item}>{item}</li>)}</ul></section>}
       <Link href="/us/states" className="us-action us-action-secondary">Back to all states</Link>
     </main>

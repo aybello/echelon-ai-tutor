@@ -145,6 +145,7 @@ const FormulasUsClass1 = lazy(() => import("./pages/FormulasUsClass1"));
 const FormulasWpiClass1Ww = lazy(() => import("./pages/FormulasWpiClass1Ww"));
 
 // US Class I (dedicated US-authored banks, separate from the Canadian WPI courses)
+const UsBankStudyRoute = lazy(() => import("./pages/UsBankStudyRoute"));
 const UsClass1WaterQuiz = lazy(() => import("./pages/UsClass1WaterQuiz"));
 const UsClass1WaterMockExam = lazy(() => import("./pages/UsClass1WaterMockExam"));
 const UsClass1WaterFlashcards = lazy(() => import("./pages/UsClass1WaterFlashcards"));
@@ -325,6 +326,9 @@ function Router() {
         <Route path={"/formulas-ww4"} component={FormulasWW4} />
         <Route path={"/wpi-class1-water"} component={WpiClass1WaterQuiz} />
         <Route path={"/wpi-class1-water-mock"} component={WpiClass1WaterMockExam} />
+        <Route path={"/us/practice/:courseKey"}>{() => <UsBankStudyRoute tool="practice" />}</Route>
+        <Route path={"/us/mock/:courseKey"}>{() => <UsBankStudyRoute tool="mock" />}</Route>
+        <Route path={"/us/flashcards/:courseKey"}>{() => <UsBankStudyRoute tool="flashcards" />}</Route>
         <Route path={"/us-class1-water"} component={UsClass1WaterQuiz} />
         <Route path={"/us-class1-water-mock"} component={UsClass1WaterMockExam} />
         <Route path={"/us-class1-water-flashcards"} component={UsClass1WaterFlashcards} />
