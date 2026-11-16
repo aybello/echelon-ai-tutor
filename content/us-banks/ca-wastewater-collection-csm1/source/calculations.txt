@@ -46,3 +46,10 @@ Four velocity readings are 4.2, 3.8, 4.6 and 4.0 ft/s. What is the average readi
 A crew cleans 1,260 ft of sewer in 4.5 hours. How many feet are cleaned per hour?|Feet per hour = footage divided by hours|1260/4.5|ft/hr|0|5670,1256,840|m
 A service area has 18,000 people and an average flow of 1.35 MGD. Use 1 MGD = 1,000,000 gal per day. What is the flow in gallons per person per day?|Gallons per person per day = flow in gallons per day divided by population|1.35*1000000/18000|gal/person/day|0|13333,1350000,7500|h
 Dry-weather flow in a basin is 0.8 MGD and the peak wet-weather flow is 2.0 MGD. By what percent does the peak exceed the dry-weather flow?|Percent increase = (peak minus dry) divided by dry times 100|(2.0-0.8)/0.8*100|%|0|250,60,40|h
+@Math|CWEAHB|Spill calculations
+A broken main spills at a steady 30 gpm for 2.5 hours. How many gallons spilled?|Gallons = flow in gpm times minutes (2.5 hr x 60)|30*2.5*60|gal|0|75,4500,450|m
+A manhole is 4 ft in diameter and the sewage rose 1.5 ft above the normal level before overflowing and stopping. Use 0.785 for the area factor and 7.48 gal per cubic ft. How many gallons were held in that 1.5 ft depth?|Gallons = 0.785 x D squared x depth x 7.48|0.785*4*4*1.5*7.48|gal|0|141,563,2250|h
+Sewage covers a flat paved area of 20 ft by 15 ft to an average depth of 0.1 ft. Use 7.48 gal per cubic ft. About how many gallons spilled?|Gallons = length x width x depth x 7.48|20*15*0.1*7.48|gal|0|30,224,22440|h
+@Math|CWEAHB|Distance and elevation
+A sewer starts at station 4+50 and ends at station 7+25. Stations are in feet, so 4+50 means 450 ft. How long is the sewer in feet?|Length = ending station minus starting station|(725-450)|ft|0|1175,375,175|m
+A level reads 4.62 ft on a rod at point A and 7.18 ft on a rod at point B. Point A has an elevation of 100.00 ft. A higher rod reading means lower ground. What is the elevation of point B in feet?|Elevation B = A elevation plus rod A minus rod B|100+4.62-7.18|ft|2|102.56,111.80,97.44|h
