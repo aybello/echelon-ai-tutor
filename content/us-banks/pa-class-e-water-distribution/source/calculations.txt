@@ -1,0 +1,52 @@
+@Network components|PADEP8|Transmission versus distribution mains, grid layouts (looped, branched, dead ends)
+A 12-inch main (1.0 ft diameter) carries 1,400 gpm. Use 1 cfs = 448.8 gpm and pipe area = 0.785 × D². What is the velocity in ft/s?|Velocity = flow in cfs divided by pipe area|1400/448.8/(0.785*1*1)|ft/s|2|3.12,7.94,1.99|m
+A 16-inch transmission main (1.333 ft diameter) is 2,500 ft long. Use area = 0.785 × D² and 1 ft³ = 7.48 gal. How many gallons does the main hold?|Volume = 0.785 × D² × length × 7.48|0.785*1.333*1.333*2500*7.48|gal|0|3489,104388,6524|h
+@Network components|PADEP8|Pipe materials (ductile iron, PVC, HDPE, steel, concrete): traits, uses, corrosion and handling
+A crew will lay 1,850 ft of main using 20-ft lengths of pipe and orders 2% extra for waste. How many 20-ft lengths should be ordered, as a decimal before rounding up?|Lengths = run length times 1.02 divided by length of one pipe|1850*1.02/20|lengths|2|92.5,90.65,111|m
+Ductile iron pipe weighs 29 lb per ft. A truck brings 120 lengths that are each 18 ft long. What is the total weight in lb?|Weight = lb per ft times length of each pipe times number of pipes|29*18*120|lb|0|52200,626400,6264|m
+A pipe is rated for 150 psi. The water surface in a tank is 210 ft above the main. Use 0.433 psi per ft of head and a surge allowance of 35 psi. How many psi of margin remain after adding the static pressure and the surge allowance?|Margin = rating minus static pressure minus surge allowance|150-210*0.433-35|psi|2|59.07,94.07,10|h
+
+@Network components|PADEP8|Joints, fittings and thrust restraint
+An 8-inch main ends at a capped dead end with a pressure of 90 psi. Use thrust = pressure × 0.785 × D², with D in inches and the nominal 8 inches for D. What is the thrust in lb?|Thrust = pressure × 0.785 × diameter squared|90*0.785*8*8|lb|0|565,1130,18086|m
+A thrust block must resist 6,000 lb of thrust. The soil can safely carry 1,500 lb per ft² of contact area. What bearing area is needed in ft²?|Area = thrust divided by soil bearing capacity|6000/1500|ft²|2|0.25,4500,9000000|m
+A 12-inch main has a 90-degree bend at 120 psi. Use thrust = 2 × pressure × 0.785 × D² × sin(θ/2), take sin 45° = 0.707 and use D = 12 in. The soil carries 2,000 lb per ft². What bearing area is needed in ft²?|Area = thrust divided by soil bearing capacity|2*120*0.785*12*12*0.707/2000|ft²|2|4.79,13.56,19180|h
+
+@Network components|PADEP8|Valves: gate, butterfly, check, air release, pressure reducing, altitude; operation and exercising
+The water level in a tank is 240 ft above a low-lying zone. Use 0.433 psi per ft. A pressure-reducing valve will be set to 70 psi. How many psi must the valve take off the static pressure?|Pressure reduction = static pressure minus setting|240*0.433-70|psi|2|103.92,484.4,73.61|m
+A system has 1,260 valves. The program is to exercise 20% of them each year, and a crew can exercise 8 valves per working day. How many working days are needed per year?|Days = valves in program divided by valves per day|1260*0.2/8|days|1|157.5,252,63.0|h
+
+@Network components|PADEP8|Fire hydrants: types, operation, flow testing, maintenance
+Use Q = 29.83 × c × d² × √p, where c = 0.9, d = 2.5 in and the pitot reading p = 36 psi (√36 = 6). What is the hydrant flow in gpm?|Flow = 29.83 × coefficient × nozzle diameter squared × square root of pressure|29.83*0.9*2.5*2.5*6|gpm|0|1119,403,6041|m
+A flow test records a static pressure of 68 psi and a residual pressure of 51 psi. What is the percent drop in pressure?|Percent drop = (static minus residual) divided by static times 100|(68-51)/68*100|%|1|33.3,75.0,17.0|m
+A dead-end 8-inch main (8/12 ft) is 1,200 ft long. Use volume = 0.785 × D² × length × 7.48. A flushing plan calls for three main volumes to be discharged at 750 gpm. How many minutes is that?|Time = number of volumes times volume in gal divided by flow|3*0.785*(8/12)*(8/12)*1200*7.48/750|min|2|4.18,1.67,1803.82|h
+
+@Network components|PADEP8|Service connections: corporation stop, curb stop, service line, meter setting
+A 1-inch service line (1/12 ft diameter) is 80 ft long. Use volume = 0.785 × D² × length × 7.48 gal per ft³. How many gallons does it hold?|Volume = 0.785 × D² × length × 7.48|0.785*(1/12)*(1/12)*80*7.48|gal|2|469.74,0.44,0.82|m
+The pressure at the main is 72 psi. A house service enters 18 ft below the main, and a faucet is 25 ft above that entrance. Use 0.433 psi per ft. What is the static pressure at the faucet in psi?|Pressure = main pressure minus 0.433 times the net rise above the main|72-(25-18)*0.433|psi|2|53.38,75.03,61.18|h
+
+@Network components|PADEP8|Water meters: types, sizing, accuracy, testing, reading
+A meter test passes 10 gal of water through the meter, and the meter registers 9.6 gal. What is the meter accuracy in percent?|Accuracy = registered volume divided by actual volume times 100|9.6/10*100|%|1|104.2,4.0,0.96|m
+A meter read 48,215 ft³ last month and reads 49,068 ft³ now. Use 7.48 gal per ft³. How many gallons were used?|Gallons = (current read minus previous read) times 7.48|(49068-48215)*7.48|gal|0|853,114,7114|m
+A meter that is known to register 94% of the true flow shows 120,000 gal for a month. What is the actual volume used in gal?|Actual = registered volume divided by the accuracy fraction|120000/0.94|gal|0|112800,127200,7200|h
+
+@Network components|PADEP8|Booster pump stations and pumping basics
+A booster pump delivers 800 gpm against a total head of 120 ft. Use water horsepower = flow (gpm) × head (ft) ÷ 3,960. What is the water horsepower?|Water horsepower = flow times head divided by 3,960|800*120/3960|hp|2|2.91,29.09,96000|m
+A pump delivers 800 gpm at 120 ft of head. Use water horsepower = flow × head ÷ 3,960, a pump efficiency of 75% and a motor efficiency of 90%. What motor horsepower is drawn from the power line?|Input horsepower = water horsepower divided by pump efficiency and by motor efficiency|800*120/3960/0.75/0.9|hp|2|16.36,32.32,26.93|h
+A booster station must add 35 psi of pressure to the water. Use 2.31 ft of head per psi. How many feet of head must the pump produce?|Head in feet = pressure rise times 2.31|35*2.31|ft|2|15.15,161.70,242.55|m
+
+@Network components|PADEP8|Backflow prevention assemblies and air gaps: what each type is for
+The pressure in a main drops to 0 psi during a break. A fixture is 14 ft above the main. Use 0.433 psi per ft. How many psi of vacuum (suction) does the fixture see?|Vacuum = 0.433 times the height above the main|14*0.433|psi|2|32.34,14.00,7.00|m
+A pipe from a customer's process rises 120 ft above the connection point. The supply main there is at 40 psi. Use 0.433 psi per ft. By how many psi does the pressure from the 120 ft column exceed the supply pressure?|Excess = 0.433 times height minus supply pressure|120*0.433-40|psi|2|51.96,91.96,237.20|h
+
+@Network components|PADEP8|Mapping, records and valve and hydrant inventories
+A map is drawn at a scale of 1 inch = 200 ft. A main measures 4.5 inches on the map. What is its real length in ft?|Length = map distance times scale|4.5*200|ft|0|44,205,1800|m
+A utility has 850 hydrants. It plans to inspect 25% of them each year, and a crew can inspect 12 hydrants per working day. How many working days are needed per year?|Days = hydrants in program divided by hydrants per day|850*0.25/12|days|1|70.8,4.4,3.0|h
+
+@Network components|PADEP8|Water loss and leak detection basics
+A system put 62.0 million gallons into the network in a month and billed 51.8 million gallons. What is non-revenue water as a percent of water produced?|Percent = (produced minus billed) divided by produced times 100|(62-51.8)/62*100|%|1|19.7,83.5,10.2|m
+A hidden leak runs at a steady 3.5 gpm for 30 days. Use 1,440 minutes per day. How many gallons are lost?|Loss = flow times minutes per day times days|3.5*1440*30|gal|0|5040,6300,4536000|m
+A leak runs at 8 gpm for 45 days. Water costs the utility $0.95 per 1,000 gal to produce. Use 1,440 minutes per day. What is the cost of the water lost, in dollars?|Cost = flow times 1,440 times days divided by 1,000 times cost per 1,000 gal|8*1440*45/1000*0.95|dollars|2|518400,20.52,492480|h
+
+@Network components|PADEP8|Main installation, repair and return to service (general practice only, no worksite safety instructions)
+A new main holds 4,200 gal. It will be disinfected at a dose of 25 mg/L. Use lb = volume (MG) × dose (mg/L) × 8.34. How many pounds of chlorine are needed?|Pounds = volume in million gallons times dose times 8.34|4200/1000000*25*8.34|lb|3|0.105,875.700,8.757|m
+A 6-inch main (0.5 ft diameter) is 2,000 ft long. Use volume = 0.785 × D² × length × 7.48 gal per ft³. It is filled at 120 gpm. How many minutes does filling take?|Time = pipe volume in gallons divided by fill rate|0.785*0.5*0.5*2000*7.48/120|min|2|3523.08,6.12,3.27|h
