@@ -98,7 +98,7 @@ test("finder keeps province, system and level aligned, and resets dependent choi
 
 test("practice accepts an answer without confidence and filters the actual sample pool", async ({page}) => {
   await page.goto("/#/class1-water");
-  await expect(page.getByRole("button",{name:"Confirm Answer"})).toBeDisabled();
+  await expect(page.getByRole("button",{name:"Choose an answer",exact:true})).toBeDisabled();
   const answer=page.getByRole("button").filter({hasText:"Run jar tests using"});
   await expect(page.locator(".qs-question-card")).toBeVisible();
   await page.locator(".practice-options summary").click();
@@ -123,17 +123,21 @@ for (const width of [320, 390, 720, 820]) {
       await expect(question).toBeVisible();
       const firstQuestion = await question.innerText();
       const confirm = page.getByRole("button", {name:"Confirm Answer", exact:true});
-      await expect(confirm).toBeDisabled();
+      const chooseAnswer = page.getByRole("button", {name:"Choose an answer", exact:true});
+      await expect(chooseAnswer).toBeDisabled();
       await expect(page.getByRole("button", {name:"← Back to previous answer", exact:true})).toHaveCount(0);
       await page.locator('.qs-question-card button[aria-pressed]').first().click();
+      await expect(confirm).toBeEnabled();
       await confirm.click();
       await page.getByRole("button", {name:"Next Question →", exact:true}).click();
       await expect(question).not.toHaveText(firstQuestion);
       const secondQuestion = await question.innerText();
-      await expect(confirm).toBeDisabled();
+      await expect(chooseAnswer).toBeDisabled();
       await expect(page.getByRole("button", {name:"← Back to previous answer", exact:true})).toBeVisible();
-      expect(await confirm.evaluate(el => el.scrollWidth <= el.clientWidth && el.getBoundingClientRect().right <= innerWidth)).toBe(true);
+      expect(await chooseAnswer.evaluate(el => el.scrollWidth <= el.clientWidth && el.getBoundingClientRect().right <= innerWidth)).toBe(true);
       await page.locator('.qs-question-card button[aria-pressed]').first().click();
+      await expect(confirm).toBeEnabled();
+      expect(await confirm.evaluate(el => el.scrollWidth <= el.clientWidth && el.getBoundingClientRect().right <= innerWidth)).toBe(true);
       await confirm.click();
       if (tutorOpen) {
         await page.getByRole("button", {name:"Ask the Tutor about this question", exact:true}).click();
