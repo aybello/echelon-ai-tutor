@@ -54,10 +54,18 @@ export function loadPackage(root) {
     const manifest = JSON.parse(readFileSync(resolve(dir,'manifest.json'),'utf8'));
     const rows = JSON.parse(bytes); validateRows(spec,config,rows);
     assert(manifest.sha256 === spec.sha256 && manifest.count === spec.count, 'Manifest mismatch');
+    // Counts and metadata come from hash-verified rows, never manifest assertions.
+    const moduleCounts = new Map();
+    for (const row of rows) moduleCounts.set(row.module,(moduleCounts.get(row.module) ?? 0) + 1);
+    const canonicalEntries = entries => [...entries].sort(([a],[b])=>a < b ? -1 : a > b ? 1 : 0);
+    assert(manifest.modules !== null && typeof manifest.modules === 'object' && !Array.isArray(manifest.modules)
+      && JSON.stringify(canonicalEntries(Object.entries(manifest.modules))) === JSON.stringify(canonicalEntries(moduleCounts)), 'Manifest module tally mismatch');
+    // Row encounter order is deterministic and preserves the reviewed package digest.
+    const modules = [...moduleCounts.keys()];
     assert(lintSources(config).valid && validateBank(config,rows).valid, 'Source lint or bank validation failed');
     assert(JSON.stringify(buildBank(config),null,2)+'\n' === bytes.toString('utf8'), 'Source reconstruction mismatch');
     const mapped = rows.map(mapRow);
-    return { ...spec, modules:Object.keys(manifest.modules), rows:mapped, payloadSha256:digest(mapped), crosswalk:rows.map(row=>({itemId:row.itemId,bankKey:row.bankKey,questionNum:row.questionNum,payloadSha256:digest(mapRow(row))})) };
+    return { ...spec, modules, rows:mapped, payloadSha256:digest(mapped), crosswalk:rows.map(row=>({itemId:row.itemId,bankKey:row.bankKey,questionNum:row.questionNum,payloadSha256:digest(mapRow(row))})) };
   });
   const allStems = banks.flatMap(bank=>bank.rows.map(row=>row.question.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim()));
   assert(new Set(allStems).size === 750,'Cross-bank duplicate stem');

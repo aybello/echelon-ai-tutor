@@ -1,9 +1,48 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { fileURLToPath } from 'node:url';
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { loadPackage, COLUMNS, digest, ACTOR } from './lib/pennsylvaniaRelease.mjs';
 import { transact } from './pennsylvania-release.mjs';
 const pkg = loadPackage(fileURLToPath(new URL('..', import.meta.url)));
+const sourceRoot = fileURLToPath(new URL('../content/us-banks/', import.meta.url));
+function withManifestMutation(alter, check) {
+  const root = mkdtempSync(join(tmpdir(),'pa-manifest-'));
+  try {
+    for (const bank of pkg.banks) {
+      const original = join(sourceRoot,bank.key), target = join(root,'content/us-banks',bank.key);
+      mkdirSync(target,{recursive:true});
+      for (const file of ['questions','config.json','REVIEW-RESULT.md','WRITER-FLAGS.md']) symlinkSync(join(original,file),join(target,file));
+      const manifest = JSON.parse(readFileSync(join(original,'manifest.json'),'utf8'));
+      alter(manifest,bank);
+      writeFileSync(join(target,'manifest.json'),JSON.stringify(manifest));
+    }
+    check(root);
+  } finally { rmSync(root,{recursive:true,force:true}); }
+}
+for (const [name,alter] of [
+  ['wrong key',m=>{const key=Object.keys(m.modules)[0];m.modules.substituted=m.modules[key];delete m.modules[key];}],
+  ['wrong count',m=>{m.modules[Object.keys(m.modules)[0]]++;}],
+  ['string count',m=>{const key=Object.keys(m.modules)[0];m.modules[key]=String(m.modules[key]);}],
+  ['array count',m=>{const key=Object.keys(m.modules)[0];m.modules[key]=[m.modules[key]];}],
+  ['extra key',m=>{m.modules.extra=0;}],
+  ['missing key',m=>{delete m.modules[Object.keys(m.modules)[0]];}],
+  ['null tally',m=>{m.modules=null;}],
+  ['array tally',m=>{m.modules=Object.entries(m.modules);}],
+  ['missing tally',m=>{delete m.modules;}],
+]) for (const bank of pkg.banks) test(`${bank.key}: manifest-only ${name} is rejected with reviewed question bytes unchanged`,()=>{
+  withManifestMutation((manifest,spec)=>{if(spec.key===bank.key) alter(manifest);},root=>assert.throws(()=>loadPackage(root),/Manifest module tally mismatch/));
+});
+test('valid reordered module tallies preserve row-derived metadata and exact package hash',()=>{
+  withManifestMutation(m=>{m.modules=Object.fromEntries(Object.entries(m.modules).reverse());},root=>{
+    const actual=loadPackage(root);
+    assert.deepEqual(actual,pkg);
+    assert.equal(actual.packageSha256,'572376580d1032e49022c6e54416fdb22e0d2027315070ff5af7d3cf6faeaa6d');
+    for (const bank of actual.banks) assert.deepEqual(bank.modules,[...new Set(bank.rows.map(row=>row.module))]);
+  });
+});
 function database() {
   const db = { rows: [], meta: [], receipts: [], calls: [], committed: 0, rolledBack: 0, failCAS: false, outsideChanged: false };
   let baseline;
@@ -52,6 +91,7 @@ test('stage adds exact 750 payloads, bank metadata, auto IDs and before-null pro
   assert.equal(result.rows,750);assert.equal(db.committed,1);assert.equal(result.crosswalk.length,750);
   assert.deepEqual(db.rows.map(({id,reviewStatus,...row})=>row),pkg.banks.flatMap(b=>b.rows));
   assert.deepEqual(db.meta.map(m=>[m.bankKey,m.totalQuestions]),pkg.banks.map(b=>[b.key,b.count]));
+  assert.deepEqual(db.meta.map(m=>JSON.parse(m.modules)),pkg.banks.map(b=>[...new Set(b.rows.map(row=>row.module))]));
   assert.equal(events[0].phase,'empty-target-baseline');assert.deepEqual(events[0].metadata,[]);
   for(const r of db.receipts){const p=JSON.parse(r.payload);assert.equal(p.before,null);assert.equal(p.kind,'additive-insert');assert.equal(p.packageSha256,pkg.packageSha256);assert.equal(r.contentHash,digest(p));assert.equal(p.inserted.id,r.questionId);}
   assert.ok(db.rows.every(r=>r.reviewStatus==='in_review'));assert.equal(db.receipts.length,750);
@@ -78,7 +118,7 @@ test('failure to persist precommit audit receipt rolls back every insertion',asy
   assert.equal(db.rows.length,0);assert.equal(db.meta.length,0);assert.equal(db.receipts.length,0);assert.equal(db.committed,0);
 });
 test('publish rejects payload, snapshot and metadata tampering and already-approved rows',async()=>{
-  for(const alter of [d=>d.rows[0].question+=' changed',d=>d.receipts[0].contentHash='bad',d=>d.meta[0].formulaLinks='{}',d=>d.rows[0].reviewStatus='approved']){
+  for(const alter of [d=>d.rows[0].question+=' changed',d=>d.receipts[0].contentHash='bad',d=>d.meta[0].formulaLinks='{}',d=>d.meta[0].modules='["substituted"]',d=>d.rows[0].reviewStatus='approved']){
     const db=database();await transact(db,pkg,'stage');alter(db);await assert.rejects(transact(db,pkg,'publish'));assert.equal(db.committed,1);
   }
 });
