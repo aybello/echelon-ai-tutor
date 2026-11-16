@@ -127,3 +127,75 @@
   .practice-solution-step { gap: 12px; }
   .practice-screen.learning-redesign .practice-resource-actions :is(button, a) { min-height: 44px; }
 }
+
+/* ── Quiz page readability upgrades ── */
+.practice-interactive-link {
+  text-decoration: none;
+  padding: 0 16px;
+  margin-top: 6px;
+  border-radius: 999px;
+  background: #fff7ed;
+  color: #c2410c;
+  border: 1.5px solid #fed7aa;
+}
+.practice-screen .qs-question-card button.qs-option { min-height: 52px; font-size: 15px !important; line-height: 1.45 !important; }
+.qs-option-letter {
+  flex-shrink: 0; width: 26px; height: 26px; border-radius: 999px; background: rgba(15, 23, 42, 0.08);
+  display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800;
+}
+.practice-progress { height: 8px; border-radius: 999px; background: #dbe4f0; overflow: hidden; margin: 8px 0; }
+.practice-progress > span { display: block; height: 100%; border-radius: 999px; background: #1757b8; transition: width 0.4s ease; }
+.practice-preview-banner {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  margin: 8px 0; padding: 10px 14px; border-radius: 12px; background: #eff6ff; border: 1.5px solid #bfdbfe; color: #1e3a5f;
+}
+.practice-preview-banner p { margin: 0; font-size: 14px; }
+.practice-preview-unlock {
+  display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border-radius: 10px;
+  background: #1757b8; color: #fff; font-weight: 800; font-size: 14px; text-decoration: none;
+}
+.practice-quick-links { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+.practice-quick-links a {
+  display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; border-radius: 999px;
+  background: #fff; border: 1.5px solid #cbd5e1; color: #0f172a; font-weight: 700; font-size: 14px; text-decoration: none;
+}
+.practice-session-rail { display: none; }
+@media (min-width: 1280px) {
+  .practice-screen:not(.has-tutor) { grid-template: auto minmax(0, 1fr) / minmax(0, 1fr) 300px; }
+  .practice-screen > .practice-session-rail {
+    display: block; grid-column: 2; grid-row: 2; overflow-y: auto; padding: 20px 20px 20px 4px;
+  }
+  .practice-session-rail h2 { font-size: 15px; font-weight: 800; margin: 0 0 12px; color: #0f172a; }
+  .practice-session-rail ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .practice-rail-row { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; color: #25364b; }
+  .practice-rail-bar { height: 6px; border-radius: 999px; background: #dbe4f0; margin-top: 4px; overflow: hidden; }
+  .practice-rail-bar > span { display: block; height: 100%; background: #059669; border-radius: 999px; }
+  .practice-rail-empty, .practice-rail-missed { font-size: 13px; color: #526479; margin: 0 0 12px; }
+  .practice-rail-missed { margin-top: 16px; padding: 10px 12px; background: #fff7ed; border-radius: 10px; color: #9a3412; }
+}
+
+/* Keep the header short so the question stays in view, especially on phones. */
+.practice-quick-links .practice-interactive-link { min-height: 40px; margin-top: 0; font-size: 14px; }
+.practice-screen .practice-preview-banner { margin: 6px 0; padding: 8px 12px; }
+.practice-screen .practice-progress { margin: 6px 0; }
+@media (max-width: 720px) {
+  .practice-quick-links { flex-wrap: nowrap; overflow-x: auto; }
+  .practice-quick-links a { white-space: nowrap; min-height: 36px; padding: 0 12px; font-size: 13px; }
+  .practice-preview-banner p { font-size: 13px; }
+  .practice-preview-unlock { min-height: 36px; font-size: 13px; padding: 0 12px; }
+}
+@media (max-width: 720px) {
+  .practice-screen .practice-header { max-height: none; padding: 6px 12px; }
+  .practice-screen .practice-title-row h1 { font-size: 18px; margin: 2px 0; }
+  .practice-screen .practice-title-row p,
+  .practice-screen .practice-header .workspace-eyebrow { display: none; }
+  .practice-screen .practice-session-stats { margin: 2px 0; }
+  .practice-screen .practice-preview-banner { flex-wrap: nowrap; padding: 6px 10px; }
+  .practice-screen .practice-preview-banner p { font-size: 12px; }
+  .practice-screen .practice-preview-unlock { flex-shrink: 0; min-height: 32px; font-size: 12px; padding: 0 10px; }
+  .practice-screen .practice-quick-links { margin: 4px 0; }
+}
+@media (max-width: 720px) {
+  .practice-screen .practice-title-row h1 { font-size: 16px; line-height: 1.25; }
+  .practice-screen .practice-progress { margin: 4px 0; height: 6px; }
+}

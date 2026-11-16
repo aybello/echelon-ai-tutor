@@ -127,6 +127,7 @@ Before building anything new, check these first:
 
 | Component | Path | Use for |
 |---|---|---|
+| PracticeSessionRail | `client/src/components/PracticeSessionRail.tsx` | Desktop side panel on the practice page: this session's accuracy by topic and the missed-question count |
 | `SiteNav` | `components/SiteNav.tsx` | Top navigation bar — used on all public pages |
 | `MobileBottomNav` | `components/MobileBottomNav.tsx` | Mobile nav — used on all public pages |
 | `DashboardLayout` | `components/DashboardLayout.tsx` | Admin/dashboard sidebar layout |
