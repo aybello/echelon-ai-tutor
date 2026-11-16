@@ -60,10 +60,10 @@ Iron, manganese, hydrogen sulfide, ammonia and organic matter react with chlorin
 
 An operator finds a much lower chlorine residual at a tap far from the source than at the entry point. What is the most likely reason?
 
-- **A.** Chlorine settled out and collected at the pipe bottom
+- **A.** The tap sample sat too long before it was tested
 - **B.** Chlorine was consumed over time by the water and pipe wall
-- **C.** Higher pressure forced dissolved chlorine out of the water
-- **D.** Fresh chlorine formed in the pipe while the water sat
+- **C.** The entry point sample was drawn before the chlorine had mixed in
+- **D.** A different supply with less chlorine blended in near that tap
 
 **Answer: B. Chlorine was consumed over time by the water and pipe wall**
 
@@ -73,9 +73,9 @@ Residual decays as chlorine reacts with organics, biofilm and the pipe surface d
 
 Why does contact time matter when water is disinfected?
 
-- **A.** Pipe walls must absorb the chlorine before use
-- **B.** The color of the water must fade before it is safe
-- **C.** Chlorine only dissolves into the water after some minutes
+- **A.** Longer exposure lets the residual rise above the dose that was fed
+- **B.** Time is needed to bring the pH to the level chlorine requires
+- **C.** A strong chlorine level kills organisms the instant it touches them
 - **D.** Organisms need time in the disinfectant to be inactivated
 
 **Answer: D. Organisms need time in the disinfectant to be inactivated**
@@ -87,7 +87,7 @@ Kill depends on both the disinfectant level and how long organisms are exposed t
 A test kit reads zero free chlorine, yet the total chlorine reading is clearly above zero. What does this suggest?
 
 - **A.** The water contains a high level of dissolved oxygen
-- **B.** The free chlorine is too strong for the kit to show
+- **B.** The water holds no chlorine and the total reading is merely instrument noise
 - **C.** The chlorine present is bound with ammonia or organics
 - **D.** The sample holds strong free chlorine beyond what the kit can display
 
@@ -101,7 +101,7 @@ Why is a newly laid main usually flushed before the disinfectant is added?
 
 - **A.** To wash out dirt and debris that would use up chlorine
 - **B.** To fill the pipe with enough water to cool it
-- **C.** To test the pipe wall for hidden cracks and leaks
+- **C.** To bring the main up to its full working pressure before chlorine goes in
 - **D.** To check the new pipe wall for hidden cracks before it is filled
 
 **Answer: A. To wash out dirt and debris that would use up chlorine**
@@ -164,7 +164,7 @@ AWWA C651 sets out accepted methods for disinfecting new and repaired mains and 
 
 Which result is used to show that a newly disinfected main may go into service?
 
-- **A.** A pressure test held steady for several hours
+- **A.** A chlorine residual that stayed strong during the contact period
 - **B.** A pressure test that holds steady for several hours after filling
 - **C.** Passing bacteriological samples taken after the flush
 - **D.** A clear color in the water leaving the hydrant
@@ -178,9 +178,9 @@ After the disinfectant is flushed out, lab samples must show no coliform. Clear 
 During a main fill, an air pocket is trapped at a high point in the pipe. What is the likely problem for disinfection?
 
 - **A.** The pipe surface under the pocket is left untreated
-- **B.** The chlorine feed rate doubles inside that section
-- **C.** The air pocket raises the pH of the whole main
-- **D.** The disinfectant turns to a harmless gas in the pocket
+- **B.** Chlorine bleeds out through the pocket and lowers the dose downstream
+- **C.** Air in the pocket uses up chlorine faster than the water does
+- **D.** Water speeds up around the pocket and cuts contact time everywhere
 
 **Answer: A. The pipe surface under the pocket is left untreated**
 
@@ -201,7 +201,7 @@ An open or damaged casing top lets rain, runoff, insects and debris reach the wa
 
 ### 16: Well disinfection: contamination sources, depth, volume and dose (easy)
 
-Which tool is commonly used to measure the water depth in a well?
+Which tool is commonly used to find how far down the water surface lies from the top of a well?
 
 - **A.** A flow meter set on the well outlet
 - **B.** An electric sounder lowered on a marked cable
@@ -216,10 +216,10 @@ An electric sounder signals when its probe touches the water, and the marked cab
 
 Why must an operator know the volume of water in a well before disinfecting it?
 
-- **A.** To find the date when the well was first drilled
+- **A.** To choose the chlorine solution strength the supplier must stock
 - **B.** To work out how much chlorine to add for the target dose
-- **C.** To estimate how many customers the well can supply
-- **D.** To select the pump brand and motor that will fit inside the casing
+- **C.** To predict the residual that will be found after flushing
+- **D.** To set the contact time, which is longer for a bigger well
 
 **Answer: B. To work out how much chlorine to add for the target dose**
 
@@ -229,9 +229,9 @@ The chlorine amount needed depends on the water volume that must be treated, so 
 
 Which describes a typical way of disinfecting a well after repair work?
 
-- **A.** Run the pump for a minute, then take a sample for the laboratory
-- **B.** Run the pump for one minute and take a sample
-- **C.** Pour dry chlorine onto the ground around the casing
+- **A.** Run the pump briefly, then take a sample for the laboratory
+- **B.** Add a small chlorine dose, take a sample and return the well to service
+- **C.** Add a strong chlorine solution, then pump it out at once to waste
 - **D.** Add a strong chlorine solution, circulate it, hold, then flush
 
 **Answer: D. Add a strong chlorine solution, circulate it, hold, then flush**
@@ -256,9 +256,9 @@ Wastewater from a nearby septic system can travel through the soil to a well, so
 A pump is pulled from a well for repair and then reinstalled. Why is the well usually disinfected before it returns to service?
 
 - **A.** Tools and the pump column can bring contaminants into the well
-- **B.** The water table drops each time a pump is removed
-- **C.** The casing swells and traps air while the pump is out
-- **D.** Pulling the pump removes the chlorine that lives in the aquifer
+- **B.** Lowering the pump stirs up the aquifer and raises its bacteria count
+- **C.** Motor lubricant left on the column breeds bacteria in standing water
+- **D.** Pulling the pump draws untreated aquifer water up into the casing
 
 **Answer: A. Tools and the pump column can bring contaminants into the well**
 
@@ -268,9 +268,9 @@ Any equipment lowered into the well may carry bacteria from the surface. Disinfe
 
 Which is a common way for contamination to get into a storage tank?
 
-- **A.** A tank roof that is painted a light color
-- **B.** Water flowing into the tank through the inlet pipe at the bottom
-- **C.** The weight of the water pressing on the floor
+- **A.** An overflow pipe fitted with a flap gate and screen
+- **B.** A vent covered with fine screen and kept in good repair
+- **C.** A roof hatch with a raised, locked frame
 - **D.** Birds or animals entering through open hatches or damaged screens
 
 **Answer: D. Birds or animals entering through open hatches or damaged screens**
@@ -301,20 +301,20 @@ After a storage tank is cleaned, which method is often used to disinfect its int
 
 **Answer: C. Swabbing or spraying walls and floor with strong chlorine solution**
 
-Applying a strong chlorine solution to cleaned surfaces gives direct contact. The tank is then filled and flushed before use.
+Applying a strong chlorine solution to cleaned surfaces gives direct contact. Contact, filling, residual checks and bacteriological acceptance then follow the applicable method.
 
 ### 24: Storage reservoir disinfection and contamination sources (medium)
 
-Which measurement is needed to figure the chlorine dose for filling a cylindrical tank?
+A cylindrical tank is partly full. Which dimensions are needed to work out how much chlorine to add for a stated dose?
 
-- **A.** Its roof height and wall thickness
-- **B.** Its diameter and the water depth
-- **C.** The size of the inlet valve
-- **D.** The date it was last painted
+- **A.** The tank diameter and its overall wall height
+- **B.** The tank diameter and the depth of the water in it
+- **C.** The inlet pipe diameter and the fill time
+- **D.** The roof height and the wall thickness
 
-**Answer: B. Its diameter and the water depth**
+**Answer: B. The tank diameter and the depth of the water in it**
 
-Volume of a cylinder depends on its diameter and the water depth, and the chlorine needed depends on that volume.
+Volume of a cylinder depends on its diameter and the water depth, and the chlorine needed for a stated dose follows from that volume.
 
 ### 25: Storage reservoir disinfection and contamination sources (medium)
 
@@ -334,9 +334,9 @@ AWWA C652 describes accepted disinfection methods for storage facilities, includ
 Why is a tank cleaned of sediment before it is disinfected?
 
 - **A.** Sediment uses up chlorine and can shelter organisms
-- **B.** Sediment makes the tank water too heavy to move
-- **C.** Sediment makes the chlorine solution turn solid
-- **D.** Sediment raises the chlorine feed pump pressure
+- **B.** Sediment makes the chlorine solution settle out before it reaches the walls
+- **C.** Sediment adds hardness that blocks chlorine from reaching the water
+- **D.** Sediment turns chlorine into a form that stains the tank walls
 
 **Answer: A. Sediment uses up chlorine and can shelter organisms**
 
@@ -361,7 +361,7 @@ Why is the coliform group tested for in drinking water?
 
 - **A.** They show that enough chlorine has been added
 - **B.** They are the most dangerous disease-causing germs in drinking water
-- **C.** They add a pleasant taste to the water supply
+- **C.** Their absence proves the water holds no viruses or parasites
 - **D.** They indicate that contamination could have reached the water
 
 **Answer: D. They indicate that contamination could have reached the water**
@@ -385,12 +385,12 @@ E. coli lives in the intestines of warm-blooded animals, so finding it means fec
 
 Which is a common laboratory method for testing for coliform bacteria?
 
-- **A.** Color comparison against a turbidity standard
-- **B.** Measurement with a pressure gauge
-- **C.** Presence-absence testing in a growth medium
+- **A.** Spectrophotometer reading of the sample's color against a standard
+- **B.** Conductivity probe reading of dissolved salts in the sample
+- **C.** Presence-absence testing of the sample in a growth medium
 - **D.** Titration with a standard acid solution
 
-**Answer: C. Presence-absence testing in a growth medium**
+**Answer: C. Presence-absence testing of the sample in a growth medium**
 
 Presence-absence, membrane filter and multiple-tube methods grow the organisms and report whether, or how many, coliforms are found.
 
@@ -476,9 +476,9 @@ High nitrate can interfere with oxygen carrying in an infant's blood, a conditio
 
 At a tap, turbidity rises while the chlorine residual falls. Which explanation fits best?
 
-- **A.** The water is too clear for the residual to hold
-- **B.** More chlorine is being made by the particles
-- **C.** The residual fell because the turbidity meter is out of its range
+- **A.** The turbidity meter is reading high because the chlorine has faded
+- **B.** The chlorine feed at the source was cut back at the same hour
+- **C.** The sample bottle was dirty, so the turbidity reading is meaningless
 - **D.** Suspended particles are consuming chlorine and sheltering microbes
 
 **Answer: D. Suspended particles are consuming chlorine and sheltering microbes**
@@ -496,7 +496,7 @@ What is the idea behind unidirectional flushing?
 
 **Answer: A. Valves are set so water moves one way through the mains**
 
-Closing selected valves makes clean water flow in one direction past the hydrant being opened, so the pipes are scoured in an orderly path.
+Closing selected valves directs clean water through the chosen main segment and out the hydrant being opened, so the pipes are scoured in an orderly path.
 
 ### 39: Unidirectional flushing (medium)
 
@@ -528,10 +528,10 @@ A diffuser slows and spreads the discharge to avoid damage, and a pitot or meter
 
 Which is an expected impact of flushing on the system?
 
-- **A.** Pipe walls become thicker as they are scoured
+- **A.** Loosened sediment is pushed to the dead ends and stays there for good
 - **B.** Pressure drops and water briefly turns cloudy at nearby taps
 - **C.** Chlorine demand is removed from the whole system
-- **D.** The pH rises above normal throughout the system for a month afterward
+- **D.** Pressure rises at nearby taps and the water turns clear at once
 
 **Answer: B. Pressure drops and water briefly turns cloudy at nearby taps**
 
@@ -552,24 +552,24 @@ Water evaporates, condenses into clouds and falls as precipitation, then runs of
 
 ### 43: Hydrologic cycle, well depth and sanitary survey (medium)
 
-How is the total depth of a well commonly measured?
+How is the total depth of a well, measured to ground level, commonly found?
 
-- **A.** By lowering a weighted tape until it touches the bottom
-- **B.** By reading a pressure gauge at the pump discharge
-- **C.** By timing how long water takes to fill a bucket
-- **D.** By measuring the flow with a hydrant gauge
+- **A.** Lower a weighted tape to the bottom, then subtract the reference point's height above ground
+- **B.** By reading a gauge at the pump discharge and converting the pressure to feet of depth
+- **C.** By timing how long pumped water takes to fill a bucket and converting to feet
+- **D.** By measuring the flow rate with a hydrant gauge while the pump is running
 
-**Answer: A. By lowering a weighted tape until it touches the bottom**
+**Answer: A. Lower a weighted tape to the bottom, then subtract the reference point's height above ground**
 
-A weighted tape or line goes down until it rests on the bottom, and the marked length minus the height of the reference point gives the depth.
+A weighted tape goes down until it rests on the bottom. If depth is wanted from ground level, subtract the height of the reference point above ground from the marked length.
 
 ### 44: Hydrologic cycle, well depth and sanitary survey (medium)
 
 What is the purpose of a sanitary survey?
 
-- **A.** To list the employees working on the system
-- **B.** To rate the age of each valve in the system
-- **C.** To set the rate that customers will pay for their water each month
+- **A.** To check that the pumps can meet demand on the busiest day
+- **B.** To rate the condition and remaining life of the valves and mains
+- **C.** To measure the pressure and flow capacity at each hydrant
 - **D.** To find actual or possible sources of contamination in a system
 
 **Answer: D. To find actual or possible sources of contamination in a system**
@@ -645,14 +645,14 @@ Backflow is a reversal of flow, which can carry used or polluted water back into
 
 Which condition produces back-siphonage?
 
-- **A.** A valve closing quickly in the main
-- **B.** Trapped air collecting at a high point
-- **C.** Supply pressure falling below pressure at the connection
-- **D.** Customer-side pressure rising above supply pressure
+- **A.** A valve closing quickly in the main and sending a pressure surge
+- **B.** Trapped air collecting at a high point and blocking the flow
+- **C.** Supply pressure falling below atmospheric, drawing liquid from an open vessel
+- **D.** Customer-side pressure rising above the supply pressure in the line
 
-**Answer: C. Supply pressure falling below pressure at the connection**
+**Answer: C. Supply pressure falling below atmospheric, drawing liquid from an open vessel**
 
-Back-siphonage is a vacuum or negative-pressure effect, drawing water backward when the supply side drops lower than the connection point.
+Back-siphonage is a vacuum or negative-pressure effect: when supply pressure drops below atmospheric, liquid at an atmospheric vessel is drawn backward into the supply.
 
 ### 51: Backflow conditions and cross-connections (medium)
 
@@ -730,7 +730,7 @@ Which description fits a reduced pressure principle backflow assembly?
 
 **Answer: D. Two check valves with a relief valve between them**
 
-The zone between the two checks is kept at lower pressure, and the relief valve discharges if either check leaks or supply pressure drops.
+The zone between the two checks is kept at lower pressure, and the relief valve opens and discharges to the atmosphere when the required pressure differential across the first check is not maintained.
 
 ### 57: Backflow prevention methods and hazards (medium)
 
@@ -775,10 +775,10 @@ The corporation stop is placed on the main itself. The curb stop sits farther al
 
 What is the main benefit of making a wet tap?
 
-- **A.** The main is drained first so the work stays dry
+- **A.** The main is shut down and drained so the connection can be made dry
 - **B.** The connection is made without shutting off customers
-- **C.** The pipe wall is thinned so the fitting seats better
-- **D.** The new line is disinfected by the drilling
+- **C.** The excavation can be much smaller because pressure holds the fitting
+- **D.** Water pressure is lowered in the area to reduce leaks at the new fitting
 
 **Answer: B. The connection is made without shutting off customers**
 
@@ -814,9 +814,9 @@ With no loop to keep water moving, low demand at a branch end leaves old water s
 
 What is an arterial main?
 
-- **A.** A pipe that returns water from customers to the source
+- **A.** A small main serving customers along one street
 - **B.** A small pipe connecting one building to the street main
-- **C.** A main laid out without valves along its route
+- **C.** A short pipe that links a hydrant to the main
 - **D.** A large main feeding the smaller distribution lines
 
 **Answer: D. A large main feeding the smaller distribution lines**
@@ -838,16 +838,16 @@ Isolating a failed section with valves still leaves water reaching customers by 
 
 ### 65: Pressure, elevation, flow and storage (medium)
 
-Two points are fed from one tank, and one sits 100 ft higher. What does the higher point see?
+Two points are fed from one tank, and one point sits 100 ft higher than the other. How does static pressure at the higher point compare?
 
-- **A.** Higher static pressure, about 0.433 psi more per foot of rise
+- **A.** Higher static pressure, by about 43 psi
 - **B.** The same static pressure while the tank level holds
-- **C.** Lower static pressure, about 2.31 psi less per foot of rise
-- **D.** Lower static pressure, about 0.433 psi less per foot of rise
+- **C.** Lower static pressure, by about 231 psi
+- **D.** Lower static pressure, by about 43 psi
 
-**Answer: D. Lower static pressure, about 0.433 psi less per foot of rise**
+**Answer: D. Lower static pressure, by about 43 psi**
 
-Static pressure is set by the water height above the point, which is 0.433 psi per foot, so higher ground means lower pressure.
+Static pressure is set by the water height above the point, at 0.433 psi per foot, so 100 ft of extra rise means about 43 psi less.
 
 ### 66: Pressure, elevation, flow and storage (medium)
 
@@ -994,7 +994,7 @@ A large unexplained fall can mean a break, a stuck-open valve or a heavy unexpec
 
 ### 77: Static and dynamic pressure (hard)
 
-In a pipe section where the water speeds up, what happens to the pressure?
+In a level pipe section with no pump adding energy, what happens to the pressure where the water speeds up in a narrowed part?
 
 - **A.** It drops as more energy goes into motion
 - **B.** It rises as the pipe wall resists
@@ -1003,7 +1003,7 @@ In a pipe section where the water speeds up, what happens to the pressure?
 
 **Answer: A. It drops as more energy goes into motion**
 
-When velocity increases, pressure energy is traded for velocity energy, so pressure falls in a narrowed section.
+With no energy added in a level section, pressure energy is traded for velocity energy when velocity increases, so pressure falls in the narrowed part.
 
 ### 78: Flushing procedures and notification (easy)
 
@@ -1011,8 +1011,8 @@ Why do operators usually tell customers before a planned flushing of mains?
 
 - **A.** Water used during flushing is unsafe to drink for several days afterward
 - **B.** Pressure may dip and water may look cloudy for a while
-- **C.** Customers have to open their own valves to let the flow pass through
-- **D.** Flushing resets the meters and the readings must be corrected later
+- **C.** Water hammer from flushing will damage customer water heaters
+- **D.** Customers will be charged for the water used by flushing
 
 **Answer: B. Pressure may dip and water may look cloudy for a while**
 
@@ -1022,9 +1022,9 @@ Flushing can cause short pressure drops and discolored water at nearby taps, so 
 
 What should be considered when choosing where flushing water is discharged?
 
-- **A.** It should flow toward the nearest meter box to test its setting before use
-- **B.** It should be aimed at an open trench so the soil settles firmly
-- **C.** It should be sent back into the main through a nearby hydrant outlet
+- **A.** It should go to the closest creek because moving water carries it off fast
+- **B.** It should go to the nearest storm drain, even if that drain is already full
+- **C.** It should run onto bare slopes so the soil soaks it up quickly
 - **D.** It should drain without erosion, flooding or harm to creeks
 
 **Answer: D. It should drain without erosion, flooding or harm to creeks**
@@ -1074,10 +1074,10 @@ A temporary line keeps water flowing to customers during a repair or shutdown of
 
 What should be true of hose or pipe used for a temporary service line?
 
-- **A.** It must be dark in color so the water stays cool
-- **B.** It must be a used garden hose that is already flexible
+- **A.** It must be bright in color so crews and drivers can see it
+- **B.** It must be the same diameter as the hydrant nozzle, whatever its past use
 - **C.** It must be clean and suitable for contact with drinking water
-- **D.** It must be sized to fit the hydrant nozzle whatever the demand
+- **D.** It must be any hose rated for the pressure of the main, whatever its material
 
 **Answer: C. It must be clean and suitable for contact with drinking water**
 
@@ -1100,10 +1100,10 @@ A dewatering pump keeps the excavation from filling with water, which lets the c
 
 Where should the discharge hose of a dewatering pump be placed?
 
-- **A.** Pointed at the trench wall so the soil stays damp and firm while crews work
-- **B.** Across the pipe zone so the bedding stays moist and workable
+- **A.** Onto the road beside the trench so it runs to the nearest low spot
+- **B.** Onto the spoil pile beside the trench so the pile stays moist
 - **C.** Away from the trench to where water drains without damage
-- **D.** At the low end of the trench so the water returns toward the pump
+- **D.** Along the trench edge so the water soaks back into the trench wall
 
 **Answer: C. Away from the trench to where water drains without damage**
 
@@ -1137,29 +1137,29 @@ Marks show only approximate position, so careful hand digging near them lowers t
 
 ### 88: Excavation, notification and trench safety (easy)
 
-What is the purpose of shoring or another protective system in a deep trench?
+What hazard are shoring, sloping and shielding mainly meant to protect trench workers from?
 
-- **A.** To keep the trench walls from caving in on workers
-- **B.** To keep the spoil pile from washing back into the trench
-- **C.** To keep groundwater from seeping into the pipe zone
-- **D.** To hold the pipe steady at the correct grade while joining
+- **A.** Cave-ins of the trench walls onto the crew
+- **B.** Spoil washing back into the trench during rain
+- **C.** Groundwater seeping into the pipe zone around the joints
+- **D.** Pipe slipping off the correct grade while it is joined
 
-**Answer: A. To keep the trench walls from caving in on workers**
+**Answer: A. Cave-ins of the trench walls onto the crew**
 
-Cal-OSHA trench rules exist because unsupported walls can collapse suddenly. Protective systems guard the people in the trench.
+Cal-OSHA trench rules exist because unsupported walls can collapse suddenly. Shoring supports the walls and sloping lays them back, while shielding protects workers inside it without preventing the wall from failing.
 
 ### 89: Excavation, notification and trench safety (medium)
 
 Who is responsible for inspecting a trench and its protective system for hazards?
 
-- **A.** A designated competent person at the site
-- **B.** The pipe manufacturer representative
-- **C.** The inspector who approved the pipe order
-- **D.** The customer whose service is affected
+- **A.** A competent person designated by the employer for the site
+- **B.** The excavator operator, since the walls are in view all day
+- **C.** The purchasing clerk who ordered the pipe and fittings
+- **D.** The traffic flagger posted at the work area entrance
 
-**Answer: A. A designated competent person at the site**
+**Answer: A. A competent person designated by the employer for the site**
 
-Trenching rules call for a competent person who can recognize hazards and has authority to correct them. Suppliers and customers do not.
+Trenching rules call for a competent person, designated by the employer, who can recognize hazards and has authority to correct them. Operators, flaggers and clerks hold no such designation by role.
 
 ### 90: Bedding, backfill and compaction (easy)
 
@@ -1191,9 +1191,9 @@ A hard spot creates point loading that can break or damage the pipe wall, which 
 
 Why is backfill placed in thin layers and compacted?
 
-- **A.** Moisture drains out of the soil much more quickly through the layers
-- **B.** Less soil is needed to fill the trench once it is placed in layers
-- **C.** The pipe can be inspected again after each layer goes in and is covered
+- **A.** Thin layers cut compaction effort, so the job goes faster overall
+- **B.** Soaking each layer until it is soupy lets it settle without compaction effort
+- **C.** A thick pile compacts best since the weight on top squeezes the soil below
 - **D.** Each layer can be packed to uniform density, limiting later settling
 
 **Answer: D. Each layer can be packed to uniform density, limiting later settling**
@@ -1267,7 +1267,7 @@ A tee has an outlet at right angles to the run. An elbow turns a line, a reducer
 
 ### 98: Connecting pipe, joints and fittings (hard)
 
-A newly made joint leaks when the line is first pressurized. Which is the most sensible first check?
+A newly assembled push-on joint leaks when first pressurized. After the line is safely depressurized, which check is most sensible first?
 
 - **A.** Whether the nearby meter is the correct size
 - **B.** Whether the lubricant was wiped from the bell
@@ -1276,7 +1276,7 @@ A newly made joint leaks when the line is first pressurized. Which is the most s
 
 **Answer: D. Whether the gasket sits properly and the pipe was fully inserted**
 
-Leaks at a new push-on joint usually come from a misplaced gasket or a pipe not pushed home. Compaction and meters are not the cause.
+Gasket seating and full insertion are the appropriate first checks at a new push-on joint. Heavy backfill loads or poor compaction can also disturb a joint, but they are not the usual first suspects.
 
 ### 99: Pipe locating methods (easy)
 
@@ -1319,16 +1319,16 @@ Record drawings show installed locations and depths. The other documents do not 
 
 ### 102: Pipe materials and applications (easy)
 
-Which pipe material is widely used for large water mains and holds up well under high pressure?
+Which pipe is typically chosen for large, high-pressure distribution mains?
 
-- **A.** Corrugated drain pipe
-- **B.** Vitrified clay
-- **C.** Thin-wall electrical conduit
-- **D.** Ductile iron
+- **A.** Galvanized steel pipe
+- **B.** Polyethylene service tubing
+- **C.** Soft copper water tubing
+- **D.** Cement-lined ductile iron pipe
 
-**Answer: D. Ductile iron**
+**Answer: D. Cement-lined ductile iron pipe**
 
-Ductile iron is strong and tough, so it is a common choice for mains. The other materials are not used for pressurized drinking water.
+Ductile iron is strong and tough, so with a protective lining it is a common choice for large pressure mains. Polyethylene tubing, copper and galvanized steel suit small service lines or older plumbing.
 
 ### 103: Pipe materials and applications (medium)
 
@@ -1347,12 +1347,12 @@ Copper is easy to bend and joins well in small sizes, so it is common for servic
 
 Which statement is true of PVC water pipe?
 
-- **A.** It carries a locating signal as well as steel does
-- **B.** It is made of iron and needs a mortar lining
-- **C.** It does not rust and is light to handle
-- **D.** It breaks down quickly in wet soil
+- **A.** It is normally joined by fusing the pipe ends together with heat
+- **B.** It does not become brittle in cold weather or under sharp impact
+- **C.** It does not rust or corrode and is light to handle and cut
+- **D.** Its pressure rating stays the same however hot the water gets
 
-**Answer: C. It does not rust and is light to handle**
+**Answer: C. It does not rust or corrode and is light to handle and cut**
 
 PVC is a plastic that resists corrosion and weighs little, which makes it easy to install. It does not conduct a locating signal.
 
@@ -1400,13 +1400,13 @@ An insulating fitting breaks the electrical path between unlike metals so galvan
 Which requirement applies to a pipe, fitting or gasket that touches drinking water?
 
 - **A.** It must be made of metal
-- **B.** It must come from a local supplier
+- **B.** It must be installed within a year of manufacture
 - **C.** It must be approved for use with potable water
 - **D.** It must be new rather than previously used
 
 **Answer: C. It must be approved for use with potable water**
 
-Materials in contact with drinking water must be suitable and approved for that use. Where it comes from or its metal content is irrelevant.
+Materials in contact with drinking water must be suitable and approved for that use. Where it comes from, how old it is, or whether it is metal does not decide this.
 
 ### 109: Material compatibility (hard)
 
@@ -1426,8 +1426,8 @@ In a galvanic pair the less noble metal is attacked. Steel gives up metal to cop
 Why is a new service line flushed before the customer uses it?
 
 - **A.** To test the new meter for accuracy
-- **B.** To bring the water to room temperature
-- **C.** To raise the pressure in the nearby main
+- **B.** To find leaks at the new joints by watching the flow
+- **C.** To kill any organisms picked up during installation
 - **D.** To clear out dirt and cuttings left from the work
 
 **Answer: D. To clear out dirt and cuttings left from the work**
@@ -1449,16 +1449,16 @@ The tap and the line size are picked for the supply needed, while the meter is s
 
 ### 112: Service line installation (easy)
 
-How is the size of a water meter described?
+How is the size of a water meter named?
 
-- **A.** By its nominal connection size, such as 5/8 inch or 1 inch
-- **B.** By the pressure in psi it is built to hold
-- **C.** By the length of the meter box it sits in
-- **D.** By the number of gallons it has recorded so far
+- **A.** By its nominal size designation, such as 5/8 inch or 1 inch
+- **B.** By the exact thread size of its end connections on the inlet and outlet
+- **C.** By the working pressure in psi that the meter body is built to hold
+- **D.** By the maximum flow in gpm that its register is built to measure
 
-**Answer: A. By its nominal connection size, such as 5/8 inch or 1 inch**
+**Answer: A. By its nominal size designation, such as 5/8 inch or 1 inch**
 
-Meters are named by nominal size, for example 5/8 or 1 inch. Pressure rating and recorded volume do not name the size.
+Meters are named by a nominal size designation, for example 5/8 or 1 inch. This is not the connection size (a 5/8 inch meter often has 3/4 inch connections), the flow capacity or the pressure rating.
 
 ### 113: Service line installation (hard)
 
@@ -1532,7 +1532,7 @@ Why do crews record the number of turns needed to close a buried valve?
 - **A.** It tells how much water has passed through the valve body
 - **B.** It shows whether the valve reaches full travel or is blocked
 - **C.** It sets the pressure on the downstream side of the valve line
-- **D.** It proves the valve box lid was lubricated before closing
+- **D.** It proves the valve seat is watertight when the valve is closed
 
 **Answer: B. It shows whether the valve reaches full travel or is blocked**
 
@@ -1543,8 +1543,8 @@ A known turn count is a reference. A valve that stops short or turns too far sug
 Why is a buried valve box centered over the operating nut and kept from resting on the valve body?
 
 - **A.** The box lid then lies lower than the street level
-- **B.** Water can drain through the box into the main
-- **C.** The valve stays cool and keeps its seat tight in summer
+- **B.** The box slopes toward the nut so surface water can drain down to it
+- **C.** The box carries the valve's weight so the pipe does not settle
 - **D.** A key can reach the nut and traffic loads stay off the valve
 
 **Answer: D. A key can reach the nut and traffic loads stay off the valve**
@@ -1581,9 +1581,9 @@ A pressure-reducing valve throttles flow to keep downstream pressure close to it
 
 The downstream gauge of a pressure-reducing valve reads well above its set pressure. Which maintenance item is a sensible thing to check?
 
-- **A.** The length of the nearest service line
-- **B.** The depth of the valve vault
-- **C.** The paint on the valve body
+- **A.** Low water level in the tank feeding the zone
+- **B.** A high flow demand pulling pressure down through the valve
+- **C.** A partly closed isolation valve upstream of the regulator
 - **D.** Debris on the seat or a worn pilot part
 
 **Answer: D. Debris on the seat or a worn pilot part**
@@ -1594,8 +1594,8 @@ Trash on the seat or a worn control part can keep the valve from closing down, s
 
 Why is the small strainer on a regulating valve's control line cleaned during routine maintenance?
 
-- **A.** Debris on the screen adds chlorine to the water
-- **B.** Clean screens raise the upstream pressure
+- **A.** It keeps air out of the main so the valve does not chatter
+- **B.** It filters the water so customers do not receive sediment from the main
 - **C.** A plugged line can make the valve respond slowly or stick
 - **D.** The screen sets the valve's pressure range
 
@@ -1662,7 +1662,7 @@ Which description fits a dry-barrel hydrant?
 - **A.** The main valve sits at the nozzle, so the barrel stays full
 - **B.** The hydrant has no valve and is turned on at the main
 - **C.** The main valve sits at the base, so the barrel drains when closed
-- **D.** The hydrant is filled by truck before each use
+- **D.** The main valve sits at the base, and the barrel stays full when closed
 
 **Answer: C. The main valve sits at the base, so the barrel drains when closed**
 
@@ -1740,7 +1740,7 @@ Why is crushed stone placed around the base of a dry-barrel hydrant?
 - **A.** It gives the barrel a place to drain after closing
 - **B.** It marks the location for later excavation
 - **C.** It keeps the barrel from floating in wet soil
-- **D.** It adds chlorine to the standing water
+- **D.** It holds the hydrant against the thrust of the water pressure
 
 **Answer: A. It gives the barrel a place to drain after closing**
 
@@ -1748,14 +1748,14 @@ Coarse stone lets the water that leaves the drain port soak away, so the barrel 
 
 ### 135: Hydrant flushing, installation and testing (medium)
 
-What is the purpose of opening and closing a hydrant during a routine inspection?
+What is the purpose of operating a dry-barrel hydrant during a routine inspection?
 
 - **A.** To tighten the thrust block against the surrounding soil
 - **B.** To reseat the nozzle threads on the barrel outlets
-- **C.** To confirm the valve moves freely and the barrel drains
+- **C.** To confirm the valve moves freely and the hydrant empties afterward
 - **D.** To measure the chlorine in the main near the hydrant
 
-**Answer: C. To confirm the valve moves freely and the barrel drains**
+**Answer: C. To confirm the valve moves freely and the hydrant empties afterward**
 
 Working the hydrant shows whether the stem turns smoothly, the outlets flow and the water leaves the barrel after shutting off.
 
@@ -1804,7 +1804,7 @@ Why is a standby generator run on a regular test schedule?
 
 - **A.** To confirm it will start and carry the load in an outage
 - **B.** To calibrate the meters at the site on a schedule
-- **C.** To charge the water in the nearby storage tank
+- **C.** To show that it idles smoothly, since load makes no difference
 - **D.** To lower the electric bill for the station each month
 
 **Answer: A. To confirm it will start and carry the load in an outage**
@@ -1883,7 +1883,7 @@ Water surfaces in a street and pressure drops in the neighborhood at the same ti
 - **A.** Customers are using normal peak demand
 - **B.** A main or large fitting has broken
 - **C.** A storage tank is full and overflowing
-- **D.** A hydrant bonnet has been painted
+- **D.** A pump at the booster station has tripped off
 
 **Answer: B. A main or large fitting has broken**
 
@@ -1947,12 +1947,12 @@ Why is a lead and copper tap sample collected from water that has sat in the plu
 
 - **A.** It lets residual chlorine fade so the lab can read the metals
 - **B.** It allows fine particles to settle so the sample looks clear
-- **C.** It shows what the water picks up while standing in pipes and fixtures
-- **D.** It gives the water time to cool down to the temperature of the sample bottle and cooler
+- **C.** It lets metals build up in the standing water, showing what plumbing adds
+- **D.** It gives the water time to cool to the temperature of the sample bottle
 
-**Answer: C. It shows what the water picks up while standing in pipes and fixtures**
+**Answer: C. It lets metals build up in the standing water, showing what plumbing adds**
 
-Lead and copper enter water by contact with plumbing, so standing water captures the highest exposure a customer could get. Cooling, chlorine fade and settling are not the reason.
+Standing water in contact with plumbing lets lead and copper dissolve into it, so a stagnation sample helps show how much the plumbing contributes to tap water. Cooling, chlorine fade and settling are not the reason.
 
 ### 151: Lead and copper sampling and the MCL (easy)
 
@@ -1961,11 +1961,11 @@ A first-draw lead and copper sample is taken at a kitchen tap. What should the s
 - **A.** Writing the time on the label
 - **B.** Running the tap to flush the line
 - **C.** Capping the bottle after filling
-- **D.** Washing hands before touching the bottle
+- **D.** Washing hands at a different sink before going to the sample tap
 
 **Answer: B. Running the tap to flush the line**
 
-Flushing would replace the standing water with fresh water from the main and hide what the plumbing contributes. Hand washing and labeling do not change the water in the pipe.
+Flushing would replace the standing water with fresh water from the main and hide what the plumbing contributes. Washing hands at another fixture, labeling and capping do not disturb the water at the sampling tap.
 
 ### 152: Lead and copper sampling and the MCL (easy)
 
@@ -1984,20 +1984,20 @@ An MCL is a legal ceiling on a contaminant in delivered drinking water. Detectio
 
 Why do drinking water rules set an MCL for a contaminant?
 
-- **A.** To tell operators which chemical feed pump they should buy for each station
-- **B.** To fix the price a system may charge for its water
-- **C.** To decide how deep a new supply well has to be drilled
+- **A.** To state the lowest amount that a lab method can detect
+- **B.** To show how much of a contaminant a treatment process removes
+- **C.** To describe the level at which no health effect is expected
 - **D.** To protect health by capping how much consumers may be exposed to
 
 **Answer: D. To protect health by capping how much consumers may be exposed to**
 
-Limits are set from health effects, and the MCL is the enforceable cap on exposure. It does not dictate equipment, rates or well design.
+Limits are set from health effects, and the MCL is the enforceable cap on exposure. Detection limits, removal rates and non-enforceable health goals are different measures.
 
 ### 154: Sample siting, sampling techniques and holding times (medium)
 
 What does a written sample siting plan tell the people who collect routine bacteriological samples?
 
-- **A.** The route a flushing crew should follow through the mains after a main break
+- **A.** The route a flushing crew takes after a main break
 - **B.** The schedule for exercising the valves across the system
 - **C.** The designated places in the system where samples are taken
 - **D.** The chemical dose to feed at each booster pump station
@@ -2024,9 +2024,9 @@ Bacteria on hands, caps or rinse water can contaminate the sample and give a fal
 Many bacteriological sample bottles contain a small amount of sodium thiosulfate. What is its purpose?
 
 - **A.** It neutralizes residual chlorine so organisms are not killed in transit
-- **B.** It dilutes the sample so the count stays within the lab range
+- **B.** It dilutes the sample so the count stays in the lab range
 - **C.** It raises the pH of the sample so metals stay dissolved
-- **D.** It adds nutrients that help any bacteria multiply inside the bottle during transport
+- **D.** It adds nutrients so any bacteria multiply while in transport
 
 **Answer: A. It neutralizes residual chlorine so organisms are not killed in transit**
 
@@ -2034,22 +2034,22 @@ Chlorine would keep killing bacteria after collection and understate the count. 
 
 ### 157: Sample siting, sampling techniques and holding times (easy)
 
-Why must a sample be delivered to the lab within its holding time?
+Why must analysis start within a sample's holding time, so delivery is scheduled early enough?
 
 - **A.** The substances can change over time and give a misleading result
-- **B.** The sample takes up too much space in the shipping cooler
-- **C.** The lab charges a surcharge when the paperwork is dated more than a day earlier
-- **D.** The sample bottle becomes harder to open after a day
+- **B.** Bacteria hold steady, but the bottle seal weakens with time
+- **C.** Cold storage keeps the sample unchanged, so timing hardly matters
+- **D.** The preservative in the bottle wears off and the lab rejects the sample
 
 **Answer: A. The substances can change over time and give a misleading result**
 
-Holding times limit how long a sample can sit before biological, chemical or physical changes alter what the lab would measure. Exceeding it can invalidate the result.
+Holding times limit how long a sample can wait before analysis or another method-specified step, because biological, chemical or physical changes can alter what the lab would measure. Exceeding it can invalidate the result.
 
 ### 158: Sample siting, sampling techniques and holding times (medium)
 
 A preservative such as an acid is added to certain inorganic samples. What does it do?
 
-- **A.** It speeds up the reactions so the lab can read the sample sooner after arrival
+- **A.** It speeds up the reactions so the lab can read the sample sooner
 - **B.** It slows changes so the constituent stays stable until analysis
 - **C.** It tints the water so the sample is easy to recognize
 - **D.** It adjusts the sample to match the pH of the tap water
@@ -2075,14 +2075,14 @@ The Act focuses on the safety of water supplied to the public. Rates, wastewater
 
 Which area is a major component of the Safe Drinking Water Act?
 
-- **A.** Rules for the design of public swimming pools
-- **B.** Permits for cutting trees along utility rights of way
-- **C.** Funding for private garden irrigation systems
+- **A.** Limits on pollutants discharged from wastewater treatment plants
+- **B.** Permits for dredging and filling wetlands
+- **C.** Cleanup of abandoned hazardous waste sites
 - **D.** Standards for contaminants in public water systems
 
 **Answer: D. Standards for contaminants in public water systems**
 
-The Act establishes contaminant standards and related programs such as monitoring, source protection and operator and system support. Pools, gardens and tree cutting are outside it.
+The Act establishes contaminant standards and related programs such as monitoring, source protection and operator and system support. Wastewater discharge limits, hazardous waste cleanup and wetland permits fall under other laws.
 
 ### 161: Safe Drinking Water Act (medium)
 
@@ -2091,7 +2091,7 @@ Which item is a program area that the Safe Drinking Water Act addresses beyond s
 - **A.** Protection of the sources that supply drinking water
 - **B.** Standards for the paint used on storage tanks
 - **C.** Routing of traffic around construction zones
-- **D.** Pricing of bottled water sold at retail stores and vending machines
+- **D.** Pricing of bottled water sold at retail stores
 
 **Answer: A. Protection of the sources that supply drinking water**
 
@@ -2104,7 +2104,7 @@ Why do water systems take routine bacteriological samples under the Total Colifo
 - **A.** To work out the age of the water held in storage
 - **B.** To check for signs of microbial contamination in the system
 - **C.** To confirm the fluoride level at the entry point
-- **D.** To measure how much hardness the water carries from the source to the tap
+- **D.** To measure how hard the water is at the customer tap
 
 **Answer: B. To check for signs of microbial contamination in the system**
 
@@ -2114,9 +2114,9 @@ Total coliform results act as an indicator that organisms could be entering or s
 
 At concept level, what does a Total Coliform Rule sampling requirement address?
 
-- **A.** How large a crew is assigned to each repair
-- **B.** How the utility sets the schedule for its monthly customer bills
-- **C.** Which pipe materials are accepted for new mains
+- **A.** Which treatment must be added when a sample is positive
+- **B.** The brand of test equipment the lab must use
+- **C.** Which operator certification grade may collect each sample
 - **D.** How many samples are taken and where they are collected
 
 **Answer: D. How many samples are taken and where they are collected**
@@ -2138,22 +2138,22 @@ Acute violations involve a potential for near-term illness, so consumers must be
 
 ### 165: Total Coliform Rule and public notification (medium)
 
-In general terms, when is public notification required?
+In general terms, when must a water system notify its customers?
 
-- **A.** When the utility swaps out an aging customer meter
-- **B.** When a crew finishes the routine flushing of a water main in a zone
-- **C.** When a violation or event could affect the health of customers
-- **D.** When the system repaints its trucks with new lettering
+- **A.** When a scheduled flush of a main finishes in one zone
+- **B.** When a customer complaint about taste or odor is received
+- **C.** When certain violations or health-related situations occur in the system
+- **D.** When the system changes its chlorine dose within the normal range
 
-**Answer: C. When a violation or event could affect the health of customers**
+**Answer: C. When certain violations or health-related situations occur in the system**
 
-Notification exists to let consumers protect themselves when water quality or a rule violation presents a health concern. Routine work does not trigger it.
+Notification requirements cover specified violations and situations, including some monitoring and reporting failures as well as health-related events, even without an established immediate health concern. Routine operations do not trigger them.
 
 ### 166: OSHA, Cal-OSHA, IIPP and the safety program (easy)
 
 What is the general role of OSHA and Cal-OSHA safety regulations for a water utility?
 
-- **A.** They decide how large a distribution system may grow over the next decade
+- **A.** They decide how big the system may grow in ten years
 - **B.** They set workplace safety requirements that employers follow
 - **C.** They set the allowed contaminant levels in finished water
 - **D.** They govern the price of water sold to customers
@@ -2205,10 +2205,10 @@ A plan sets out who does what and how to reach them during an emergency. Billing
 
 What defines a pressure zone in a distribution system?
 
-- **A.** A stretch of main that is made of one pipe material
+- **A.** A stretch of main that is made of a single type of pipe material
 - **B.** An area served within a set pressure range, often tied to elevation
-- **C.** A group of customers who share the same billing date
-- **D.** An area read by one meter reader on a single monthly route through town
+- **C.** A group of customers who are billed on the same date each month
+- **D.** An area whose meters are read by one meter reader on a monthly route
 
 **Answer: B. An area served within a set pressure range, often tied to elevation**
 
@@ -2219,9 +2219,9 @@ Zones are laid out so customers at different elevations receive suitable pressur
 Why does a system split its service area into pressure zones?
 
 - **A.** To keep pressures in a suitable range as ground elevation changes
-- **B.** To make each customer pay a different rate for the water they use in each zone
-- **C.** To stop any flow between neighboring parts of town
-- **D.** To reduce the number of valves the system must own
+- **B.** To bill customers a different rate for the water used in each zone
+- **C.** To stop water flowing between neighboring parts of the town
+- **D.** To cut down the number of valves that the system has to own
 
 **Answer: A. To keep pressures in a suitable range as ground elevation changes**
 
@@ -2260,37 +2260,37 @@ Why are cones, signs and flaggers used where a crew works in a roadway?
 - **A.** To slow the flow of water in the nearby main
 - **B.** To warn drivers and guide traffic safely around the crew
 - **C.** To mark the path for the next hydrant test
-- **D.** To keep onlookers from reading the construction plans
+- **D.** To keep other utility crews from digging at the same spot
 
 **Answer: B. To warn drivers and guide traffic safely around the crew**
 
-Traffic control separates workers from vehicles by alerting and directing drivers. It has nothing to do with water flow, plans or hydrant tests.
+Traffic control separates workers from vehicles by alerting and directing drivers. It has nothing to do with water flow, utility locating or hydrant tests.
 
 ### 175: Hazardous materials, fire and electrical safety (medium)
 
 Where does a worker look first for the hazards of a chemical and the right protective gear?
 
-- **A.** The service record for the pump in use
-- **B.** The system map posted in the shop
-- **C.** The most recent customer bill mailed to the facility
+- **A.** The utility's general emergency response procedure
+- **B.** The training log from the last safety class
+- **C.** The operating manual for the feed pump
 - **D.** The safety data sheet for that product
 
 **Answer: D. The safety data sheet for that product**
 
-A safety data sheet lists hazards, first aid and recommended protection for the specific product. Bills, service records and maps do not carry that detail.
+A safety data sheet lists hazards, first aid and recommended protection for the specific product. Pump manuals, general procedures and training logs do not carry that product detail.
 
 ### 176: Hazardous materials, fire and electrical safety (medium)
 
-Which type of fire extinguisher is intended for use on energized electrical equipment?
+Which extinguisher class is intended for use on energized electrical equipment?
 
-- **A.** One rated for ordinary paper and wood
-- **B.** One filled with plain water
-- **C.** One rated for electrical fires
-- **D.** One designed for cooking grease
+- **A.** Class A
+- **B.** Class B
+- **C.** Class C
+- **D.** Class K
 
-**Answer: C. One rated for electrical fires**
+**Answer: C. Class C**
 
-Using water or the wrong class on a live electrical fire can spread it or cause shock. An extinguisher rated for electrical fires is made not to conduct.
+Class C extinguishers use a nonconductive agent, so they are rated for energized electrical equipment. Class A is for ordinary combustibles, Class B for flammable liquids and Class K for cooking oils and fats.
 
 ### 177: Hazardous materials, fire and electrical safety (hard)
 
@@ -2298,7 +2298,7 @@ Why should an operator confirm that equipment has been de-energized and locked o
 
 - **A.** To prevent it from starting or shocking someone during the work
 - **B.** To let the motor cool down to room temperature before anyone touches it
-- **C.** To reset the hour meter before the work begins
+- **C.** To make sure the control switch is off, because that isolates the equipment fully
 - **D.** To save electricity while the repair is under way
 
 **Answer: A. To prevent it from starting or shocking someone during the work**
@@ -2309,14 +2309,14 @@ Lockout keeps a source of power from being restored while hands are in the equip
 
 Which of these is most clearly a confined space?
 
-- **A.** An open parking lot beside the maintenance shop and the yard
+- **A.** An open parking lot beside the maintenance shop and yard
 - **B.** A buried valve vault with a narrow hatch and one way in or out
-- **C.** A flat roof with a handrail around the entire edge
+- **C.** A flat roof with a handrail around the full edge of it
 - **D.** A wide storage room with a large roll-up door on one wall
 
 **Answer: B. A buried valve vault with a narrow hatch and one way in or out**
 
-Confined spaces have limited entry and exit and are not meant for regular occupancy, and they can hold poor air. Open and well-ventilated areas lack those features.
+A confined space is large enough for a person to enter bodily, has restricted entry or exit, and is not designed for continuous occupancy. Atmospheric hazards are a separate issue, and spaces open to the sky can still qualify.
 
 ### 179: Confined spaces, chemical handling and asbestos-cement pipe (medium)
 
@@ -2401,7 +2401,7 @@ Gallons = pounds of chlorine needed divided by (8.34 times percent strength as a
 A well casing has a 6-inch diameter (0.5 ft) and holds water 85 ft deep. Use volume = 0.785 × D² × depth × 7.48 gal/ft³. How many gallons of water are in the well?
 
 - **A.** 17,969 gal
-- **B.** 17 gal
+- **B.** 250 gal
 - **C.** 499 gal
 - **D.** 125 gal
 
@@ -2413,10 +2413,10 @@ Volume = 0.785 times diameter squared times depth times 7.48. Substitute the sta
 
 A well is 240 ft deep. A sounder reads 118 ft from the reference point to the water, and the reference point is at the top of the casing. What is the water depth in the well in ft?
 
-- **A.** 0 ft
+- **A.** 240 ft
 - **B.** 122 ft
 - **C.** 358 ft
-- **D.** 2 ft
+- **D.** 118 ft
 
 **Answer: B. 122 ft**
 
@@ -2518,9 +2518,9 @@ Depth below ground = tape reading minus height of reference point above ground. 
 The static water level in a well is 112 ft below the reference point. While the pump runs, the water level is 148 ft below that point. What is the drawdown in ft?
 
 - **A.** 260 ft
-- **B.** 0 ft
+- **B.** 112 ft
 - **C.** 36 ft
-- **D.** 1 ft
+- **D.** 148 ft
 
 **Answer: C. 36 ft**
 
@@ -2531,7 +2531,7 @@ Drawdown = pumping level minus static level. Substitute the stated values: 148-1
 Water flows through an 8-inch main (8/12 ft) at 1,500 gpm. Use 1 cfs = 448.8 gpm and area = 0.785 × D². What is the velocity in ft/s?
 
 - **A.** 9.58 ft/s
-- **B.** 4,299.43 ft/s
+- **B.** 6.39 ft/s
 - **C.** 2.39 ft/s
 - **D.** 0.07 ft/s
 
@@ -2738,7 +2738,7 @@ Flow in gpm = area times velocity times 448.8. Substitute the stated values: 0.3
 
 A 10-inch pipe (10/12 ft) carries 900 gpm. Use area = 0.785 x D2 and 1 cfs = 448.8 gpm. What is the velocity in ft/s?
 
-- **A.** 1,651.00 ft/s
+- **A.** 3.07 ft/s
 - **B.** 3.68 ft/s
 - **C.** 2.01 ft/s
 - **D.** 14.71 ft/s
@@ -2832,7 +2832,7 @@ A trench is 60 ft long, 2.5 ft wide and 4 ft deep. Use 27 ft3 = 1 yd3. How many 
 - **A.** 80.21 yd3
 - **B.** 22.22 yd3
 - **C.** 66.67 yd3
-- **D.** 16,200.00 yd3
+- **D.** 600.00 yd3
 
 **Answer: B. 22.22 yd3**
 
@@ -2840,7 +2840,7 @@ Cubic yards = length times width times depth divided by 27. Substitute the state
 
 ### 219: Trench volume (hard)
 
-A trench is 80 ft long, 3 ft wide and 6 ft deep, and a 12-inch (1.0 ft) pipe is laid its full length. Use pipe volume = 0.785 x D2 x length and 27 ft3 = 1 yd3. How many cubic yards of backfill are needed to refill the trench around the pipe?
+A trench is 80 ft long, 3 ft wide and 6 ft deep. Assume the pipe laid its full length has an outside diameter of 1.0 ft. Use pipe volume = 0.785 x D2 x length, 27 ft3 = 1 yd3, and ignore compaction and waste. How many cubic yards of in-place backfill are needed around the pipe?
 
 - **A.** 51.01 yd3
 - **B.** 1,377.20 yd3
@@ -2910,7 +2910,7 @@ A 1-inch (1/12 ft) service line is 80 ft long. Use volume = 0.785 x D2 x length 
 - **A.** 3.26 gal
 - **B.** 39.15 gal
 - **C.** 0.44 gal
-- **D.** 469.74 gal
+- **D.** 0.06 gal
 
 **Answer: A. 3.26 gal**
 
@@ -3011,7 +3011,7 @@ Gal per day = mL per minute times 1440 divided by 3785. Substitute the stated va
 
 A graduated cylinder collects 90 mL in 45 seconds. How many mL per minute is the feeder delivering?
 
-- **A.** 2 mL/min
+- **A.** 5,400 mL/min
 - **B.** 68 mL/min
 - **C.** 4,050 mL/min
 - **D.** 120 mL/min
@@ -3038,7 +3038,7 @@ Gal per day = mL per minute times 1440 divided by 3785. Substitute the stated va
 A feeder delivers 180 mL per minute of a solution that weighs 9.5 lb/gal. Use 3785 mL per gallon and 1440 min per day. How many pounds of solution are fed per day?
 
 - **A.** 650.6 lb/day
-- **B.** 259,200.0 lb/day
+- **B.** 27.1 lb/day
 - **C.** 68.5 lb/day
 - **D.** 7.2 lb/day
 
@@ -3141,7 +3141,7 @@ CCF = gallons divided by 7.48 divided by 100. Substitute the stated values: 3850
 
 A well has a static water level of 85 ft below ground and a pumping water level of 118 ft below ground. What is the drawdown in feet?
 
-- **A.** 1 ft
+- **A.** 118 ft
 - **B.** 33 ft
 - **C.** 85 ft
 - **D.** 203 ft
@@ -3168,7 +3168,7 @@ Drawdown = (intake depth minus water above intake) minus static level. Substitut
 A customer averages 0.12 MGD. Use 1 MGD = 694.4 gpm and 60 min per hour. How many gallons per hour is this?
 
 - **A.** 83 gal/hr
-- **B.** 1 gal/hr
+- **B.** 2,000 gal/hr
 - **C.** 5,000 gal/hr
 - **D.** 120,000 gal/hr
 
@@ -3204,7 +3204,7 @@ Feet of head = psi times 2.31. Substitute the stated values: 58 × 2.31 = 134.0 
 
 ### 247: Pressure zones and head (hard)
 
-A main at elevation 940 ft shows 72 psi. Use 2.31 ft of head per psi. What is the hydraulic grade elevation in ft, which is ground elevation plus feet of head?
+A pressure gauge on a main at elevation 940 ft reads 72 psi. Use 2.31 ft of head per psi and take 940 ft as the elevation of the gauge. What is the hydraulic grade elevation in ft, which is the gauge elevation plus the pressure head?
 
 - **A.** 773.7 ft
 - **B.** 971.2 ft
@@ -3213,7 +3213,7 @@ A main at elevation 940 ft shows 72 psi. Use 2.31 ft of head per psi. What is th
 
 **Answer: C. 1,106.3 ft**
 
-Grade elevation = ground elevation plus (psi times 2.31). Substitute the stated values: 940+72 × 2.31 = 1,106.3 ft. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
+Grade elevation = gauge elevation plus (psi times 2.31). Substitute the stated values: 940+72 × 2.31 = 1,106.3 ft. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
 ### 248: Spill and container volumes (medium)
 
