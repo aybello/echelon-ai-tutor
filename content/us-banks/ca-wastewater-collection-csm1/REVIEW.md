@@ -140,16 +140,16 @@ Why can a very steep sewer also have maintenance problems?
 
 - **A.** Gases fail to rise to the manhole openings
 - **B.** The pipe is more likely to flood from below during storms
-- **C.** The water can outrun the solids and leave them behind
+- **C.** Fast flow can wear the pipe and cause turbulence
 - **D.** The flow becomes too slow to move toilet paper along
 
-**Answer: C. The water can outrun the solids and leave them behind**
+**Answer: C. Fast flow can wear the pipe and cause turbulence**
 
-On steep grades the liquid moves quickly and may leave heavier solids stranded. Pipe wear and scour at the next manhole are also concerns.
+On steep grades the liquid moves quickly, which can wear the pipe wall and cause turbulence and scour at the next manhole.
 
 ### 12: Gravity flow basics (hard)
 
-Two pipes of the same size carry the same flow. One is laid at 0.4 percent slope and the other at 1.0 percent. Which statement is most reasonable?
+Two pipes of the same size and roughness carry the same steady, partly full flow. One is laid at 0.4 percent slope and the other at 1.0 percent. Which statement is most reasonable?
 
 - **A.** The steeper pipe moves flow faster and is less prone to settling
 - **B.** The steeper pipe moves flow slower because it is deeper
@@ -164,14 +164,14 @@ Velocity rises with slope when the pipe size and roughness are the same. A faste
 
 Which part of a manhole sits at street level and is lifted off to get in?
 
-- **A.** Frame and cover
-- **B.** Steps and drop pipe
-- **C.** Channel and bench
-- **D.** Barrel and cone section
+- **A.** The cover
+- **B.** The drop pipe
+- **C.** The bench
+- **D.** The cone section
 
-**Answer: A. Frame and cover**
+**Answer: A. The cover**
 
-The cast iron frame is set into the pavement or a riser, and the removable cover closes the opening at the surface.
+The removable cover closes the opening at the surface. The cast iron frame stays set into the pavement or a riser.
 
 ### 14: Manholes and structures (easy)
 
@@ -401,11 +401,11 @@ Pumps at a station run much more often during storms than in dry weather. What d
 - **A.** Normal daily changes in water use
 - **B.** A failing check valve at the pump discharge
 - **C.** A plugged air release valve on the force main
-- **D.** Extra flow from inflow into the upstream sewers
+- **D.** Extra flow from inflow and infiltration upstream
 
-**Answer: D. Extra flow from inflow into the upstream sewers**
+**Answer: D. Extra flow from inflow and infiltration upstream**
 
-Rain-related runs point to stormwater getting into the sewer system. A dry-weather pattern would reflect household use instead.
+Rain-related runs point to stormwater and rain-driven groundwater getting into the sewer system. A dry-weather pattern would reflect household use instead.
 
 ### 32: Infiltration and inflow awareness (easy)
 
@@ -730,7 +730,7 @@ Video shows water standing in a section while flow upstream is low. What is the 
 
 **Answer: B. A sag holding water in the pipe**
 
-Standing water in a low-flow line shows that the pipe sits lower than the sections around it. This is a belly or sag.
+Standing water in a low-flow line usually means the pipe sits lower than the sections around it, a belly or sag. A restriction downstream can look similar, so crews also check the line downstream.
 
 ### 57: Roots, grease, FOG and overflow awareness (easy)
 
@@ -1410,7 +1410,7 @@ A rate reading, such as gpm, is instantaneous, while a totalizer adds up the gal
 
 ### 109: Reading and using gauges and meters (medium)
 
-What does a gas meter alarm tell the user?
+What does a gas meter's gas-reading alarm tell the user?
 
 - **A.** The work area is clear and the job is complete
 - **B.** The meter battery is fully charged and the unit is ready for use
@@ -1419,7 +1419,7 @@ What does a gas meter alarm tell the user?
 
 **Answer: C. The atmosphere has reached a set warning level**
 
-An alarm means a reading went past a preset limit, which is a signal to follow the crew training and safety plan.
+A gas-reading alarm means a reading went past a preset limit, which is a signal to follow the crew training and safety plan.
 
 ### 110: Reading collection-system maps and symbols (easy)
 
@@ -1787,14 +1787,14 @@ Gases may be colorless, odorless or numbing to the nose. Instruments are needed 
 
 ### 138: Hazardous atmospheres and gas detection awareness (medium)
 
-What is an oxygen-deficient atmosphere?
+Why is an oxygen-deficient atmosphere dangerous?
 
-- **A.** Air with less oxygen than normal breathing air
-- **B.** Air that carries a strong sewer smell
-- **C.** Air that is warmer than the outside air
-- **D.** Air with a high level of carbon dioxide alone
+- **A.** It can cause confusion or collapse with little warning
+- **B.** It makes gas meters give false alarms in the pipe
+- **C.** It leaves a strong sewer smell on clothing and gear
+- **D.** It makes the air too hot for a crew member to breathe
 
-**Answer: A. Air with less oxygen than normal breathing air**
+**Answer: A. It can cause confusion or collapse with little warning**
 
 When oxygen is displaced or used up, people can become confused or collapse quickly without warning.
 
@@ -1839,7 +1839,7 @@ Some gases are heavier than air and settle low, while others rise. Testing at di
 
 ### 142: Hazardous atmospheres and gas detection awareness (medium)
 
-How should a worker treat a gas meter alarm?
+How should a worker treat a gas meter's gas-reading alarm?
 
 - **A.** As a sign that the carrying strap needs replacing
 - **B.** As a signal that the pipe has filled with water
@@ -1848,7 +1848,7 @@ How should a worker treat a gas meter alarm?
 
 **Answer: C. As a warning that the air may be unsafe**
 
-An alarm means the atmosphere may be harmful. The worker backs away and lets the supervisor decide on next steps.
+A gas-reading alarm means the atmosphere may be harmful, so it is treated as a hazard. Workers follow the crew's established alarm and evacuation requirements.
 
 ### 143: Utility-location awareness (easy)
 
@@ -2004,7 +2004,7 @@ What is the purpose of the buffer space in a work zone?
 
 **Answer: B. It gives room if a driver strays toward the crew**
 
-A buffer keeps a vehicle that leaves its lane from reaching workers.
+A buffer gives recovery space and separation, which can reduce the chance or severity of a vehicle reaching workers.
 
 ### 155: Traffic control and work-zone awareness (medium)
 
@@ -2125,7 +2125,7 @@ A hard hat cushions the head from impacts. Other hazards need other protective e
 
 ### 164: Personal protective equipment and hygiene (easy)
 
-Why do crews wear safety glasses or a face shield when jetting or cutting?
+Why do crews wear eye protection such as safety glasses or goggles when jetting or cutting?
 
 - **A.** To help the worker see better inside a dim manhole
 - **B.** To keep spray and debris out of the eyes
@@ -2134,7 +2134,7 @@ Why do crews wear safety glasses or a face shield when jetting or cutting?
 
 **Answer: B. To keep spray and debris out of the eyes**
 
-Flying material and splashes of contaminated water can injure or infect the eyes.
+Flying material and splashes of contaminated water can injure or infect the eyes. A face shield may be worn over glasses for extra protection.
 
 ### 165: Personal protective equipment and hygiene (easy)
 
@@ -2164,10 +2164,10 @@ Eating and smoking in a contaminated area lets germs into the body. Breaks are t
 
 ### 167: Personal protective equipment and hygiene (medium)
 
-Why do crews wear steel-toe or protective boots?
+Why do crews wear heavy-duty work boots with reinforced toes and soles?
 
 - **A.** To keep gas from entering the body
-- **B.** To make the worker a little taller at the manhole
+- **B.** To keep the worker's feet warm in cold weather
 - **C.** To reduce the noise of equipment
 - **D.** To guard the feet from crushing and punctures
 
@@ -2283,14 +2283,14 @@ Unknown material may be hazardous. It should be reported so trained people can i
 
 What is the purpose of lockout/tagout?
 
-- **A.** To label the contents of a chemical drum
-- **B.** To keep equipment from starting during work
-- **C.** To count the hours that a pump has run
-- **D.** To mark the boundary of a traffic work zone
+- **A.** To label the contents of a chemical drum before storage
+- **B.** To keep equipment from starting or releasing energy
+- **C.** To count the hours that a pump has run since service
+- **D.** To mark the edge of a traffic work zone for drivers
 
-**Answer: B. To keep equipment from starting during work**
+**Answer: B. To keep equipment from starting or releasing energy**
 
-Locks and tags keep the equipment de-energized during service, so no one is hurt by a sudden start.
+Lockout/tagout keeps equipment from starting or releasing hazardous energy during service. Locks hold the energy source off, and tags warn others not to restore it.
 
 ### 177: Electrical, lockout/tagout and mechanical energy awareness (easy)
 
