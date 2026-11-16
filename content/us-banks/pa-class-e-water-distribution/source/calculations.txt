@@ -139,3 +139,41 @@ A tank is 50 ft in diameter. Use 0.785 for the area constant and 7.48 gal per ft
 Customers draw a net 300 gpm from a tank 20 ft in diameter. Use 0.785 for the area constant and 7.48 gal per ft3. How many feet per hour does the level fall?|Feet per hour = (gpm x 60) / (0.785 x D squared x 7.48)|300*60/(0.785*20*20*7.48)|ft/hr|1|30.7,0.1,76.6|h
 A 30 ft diameter tank drops from 25 ft deep to 15 ft deep at a steady 400 gpm draw with no inflow. Use 0.785 for the area constant and 7.48 gal per ft3. How many hours does that take?|Hours = 0.785 x D squared x drop x 7.48 / gpm / 60|0.785*30*30*(25-15)*7.48/400/60|hr|1|0.6,132.1,5.5|h
 A tank holds water 22 ft deep and is 20 ft in diameter. Use 0.785 for the area constant and 7.48 gal per ft3. How many gallons are in the tank?|Gallons = 0.785 x D squared x depth x 7.48|0.785*20*20*22*7.48|gal|1|12919.0,2583.9,6908.0|m
+
+@Water quality and monitoring|PADEP8|Disinfectant residual: free chlorine versus chloramine, why residual falls, measuring it
+A system treats 1.5 MGD and applies chlorine at 2.0 mg/L. Use lb/day = flow (MGD) × dose (mg/L) × 8.34. How many pounds of chlorine are fed per day?|Pounds per day = flow times dose times 8.34|1.5*2*8.34|lb/day|2|0.36,16.68,12.51|m
+Eight pounds of chlorine are mixed into 400,000 gal of water. Use mg/L = pounds ÷ (million gallons × 8.34). What is the resulting concentration in mg/L?|mg/L = pounds divided by (MG times 8.34)|8/(0.4*8.34)|mg/L|2|20,166.8,0.24|m
+A feed pump must supply 12 lb/day of available chlorine. The hypochlorite solution is 12.5% available chlorine (0.125) and weighs 8.34 lb/gal. How many gallons of solution are needed per day?|Gallons = pounds needed / (strength x 8.34)|12/(0.125*8.34)|gal/day|2|96,1.44,0.18|m
+Water leaves a source with 1.8 mg/L free chlorine. Assume the residual falls 0.15 mg/L per day for the first 2 days and then 0.05 mg/L per day afterward. What residual is expected in water that is 6 days old?|Residual = start minus first-period loss minus later loss|1.8-0.15*2-0.05*4|mg/L|2|0.90,1.50,1.60|h
+
+@Water quality and monitoring|PADEP8|Water age and residence time: dead ends, low-use areas, looping
+A dead-end main holds 12,000 gal and the customers on it use a total of 3,000 gal per day. Treat the main as one plug of water and give the average water age in days as volume divided by daily use.|Age in days = volume / daily use|12000/3000|days|1|0.3,96.0,36000000.0|m
+An 8-inch main (0.667 ft diameter) runs 1,800 ft to a single customer who uses 250 gal per day. Use volume = 0.785 × D² × length × 7.48 gal per ft³ and treat the main as one plug. How many days does the water sit in the main?|Days = pipe volume divided by daily use|0.785*0.667*0.667*1800*7.48/250|days|1|2.5,0.6,75.2|h
+A looped area is fed by two sources. Source A supplies 2 MGD with a chlorine residual of 1.0 mg/L and source B supplies 1 MGD at 0.4 mg/L. Assuming full mixing, what is the blended residual in mg/L?|Blend = sum of flow times concentration divided by total flow|(2*1.0+1*0.4)/(2+1)|mg/L|2|0.70,2.40,0.60|m
+
+@Water quality and monitoring|PADEP8|Flushing: why and where, unidirectional versus conventional, planning and judging a program
+A section of 6-inch main (0.5 ft diameter) is 1,000 ft long. Use volume = 0.785 × D² × length × 7.48 gal per ft³. How many gallons are needed to flush two full volumes of the pipe?|Gallons = two times pipe volume|0.785*0.5*0.5*1000*7.48*2|gal|0|1468,5872,393|m
+A main section holds 4,500 gal and the plan is to pass 3 pipe volumes through it. A hydrant flows at 750 gpm. How many minutes of flushing are needed?|Minutes = volume times number of volumes divided by flow|4500*3/750|min|1|6.0,0.5,10125000.0|m
+A hydrant flushes an 8-inch main (0.667 ft diameter) at 900 gpm. Use 1 cfs = 448.8 gpm and area = 0.785 × D². What is the velocity in the main in ft/s?|Velocity = flow in cfs divided by area|900/448.8/(0.785*0.667*0.667)|ft/s|2|3.83,2577.30,1.44|h
+
+@Water quality and monitoring|PADEP8|Sampling and monitoring: why, site choice, collection technique, what results mean
+A utility took 60 routine distribution samples. In this exercise the target is a residual of at least 0.2 mg/L, and 47 samples met it. What percent of samples met the target?|Percent = samples meeting target / total x 100|47/60*100|percent|1|21.7,127.7,0.8|m
+Chlorine residuals at six sample sites were 0.9, 0.5, 0.3, 0.1, 0.6 and 0.4 mg/L. What is the average residual in mg/L?|Average = sum divided by number of sites|(0.9+0.5+0.3+0.1+0.6+0.4)/6|mg/L|2|2.80,0.56,0.50|h
+Of 40 routine bacteriological samples in a month, 3 were positive for coliform. What percent of the samples were positive?|Percent positive = positives / total x 100|3/40*100|percent|1|0.1,13.3,92.5|h
+
+@Water quality and monitoring|PADEP8|Cross-connection control in the system: hazards, protection, testing and records
+An elevated process tank sits 30 ft above a service connection. Supply pressure at the connection falls to 8 psi. Use 0.433 psi per ft. What is the net pressure in psi at the tank connection from the supply alone (negative means below atmospheric)?|Net pressure = supply pressure minus 0.433 times height|8-30*0.433|psi|2|12.99,20.99,-61.28|h
+Of 190 backflow assemblies tested during a year, 172 passed. What percent passed?|Percent = passed / tested x 100|172/190*100|percent|1|9.5,110.5,0.9|m
+
+@Water quality and monitoring|PADEP8|Main cleaning and renewal: swabbing, pigging, lining, replacement
+A pig will be pushed by water through 2,400 ft of 10-inch main (0.833 ft diameter). Use volume = 0.785 × D² × length × 7.48 gal per ft³. How many gallons does the pipe hold, and so about how much water follows the pig through it?|Volume = 0.785 x D squared x length x 7.48|0.785*0.833*0.833*2400*7.48|gal|0|1307,39117,2445|m
+A cement lining reduces the inside diameter of a pipe from 6.0 in to 5.8 in. By what percent does the cross-sectional flow area fall? Use area proportional to D².|Percent loss = (1 - new D squared / old D squared) x 100|(1-(5.8*5.8)/(6*6))*100|percent|2|3.33,93.44,6.67|h
+
+@Water quality and monitoring|PADEP8|Customer complaints as a monitoring tool
+Customers on a zone of 12,000 connections made complaints at a rate of 4.0 per 1,000 customers last quarter and 5.5 per 1,000 this quarter. How many more complaints were received this quarter?|Extra complaints = rate change x customers / 1000|(5.5-4.0)*12000/1000|complaints|0|1.5,18000,66|h
+
+@Water quality and monitoring|PADEP8|Corrosion, scale and biofilm in the distribution system
+A corrosion coupon lost 18 mg of metal over 90 days. Assuming a steady rate, how many mg would it lose in 365 days?|Annual loss = loss per day x 365|18/90*365|mg|1|0.2,4.4,1620.0|m
+
+@Water quality and monitoring|PADEP8|Nitrification in chloraminated systems
+A chloramine residual measures 3.0 mg/L leaving a reservoir and 1.2 mg/L at a far point. By what percent did the residual fall?|Percent fall = (start - end) / start x 100|(3.0-1.2)/3.0*100|percent|1|40.0,150.0,1.8|m
