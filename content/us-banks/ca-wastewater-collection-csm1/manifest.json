@@ -14,7 +14,7 @@
   "file": "questions/bank-250.json",
   "count": 250,
   "calculations": 40,
-  "sha256": "82b7931cc9de8f86a2f6b99a63680a965140eb762c73c2d690a18bec660da724",
+  "sha256": "e688a347b75a0427bd5d54be5a42a46aaf2e17695091ca6537bf8eada0384476",
   "modules": {
     "Operations and maintenance": 71,
     "Tools and equipment": 50,
@@ -86,7 +86,7 @@
     "answerCues": {
       "conceptualCount": 210,
       "longestRate": 0.3380952380952381,
-      "shortestRate": 0.1380952380952381,
+      "shortestRate": 0.13333333333333333,
       "longTells": [],
       "shortTells": [],
       "qualifierTells": []

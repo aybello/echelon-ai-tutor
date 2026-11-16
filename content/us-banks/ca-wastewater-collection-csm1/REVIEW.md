@@ -139,7 +139,7 @@ Flat sewers lack the velocity needed to carry solids. Deposits build up and can 
 Why can a very steep sewer also have maintenance problems?
 
 - **A.** Gases fail to rise to the manhole openings
-- **B.** The pipe is more likely to flood from below
+- **B.** The pipe is more likely to flood from below during storms
 - **C.** The water can outrun the solids and leave them behind
 - **D.** The flow becomes too slow to move toilet paper along
 
@@ -347,7 +347,7 @@ The wet well is the storage chamber at the pump station. Pumps start and stop as
 What does a check valve on a pump discharge do?
 
 - **A.** Lets air into the force main to relieve pressure
-- **B.** Sets the speed of the pump motor
+- **B.** Sets the speed of the pump motor to match the incoming flow
 - **C.** Keeps pumped flow from running back into the pump
 - **D.** Measures the rate of flow leaving the station
 
@@ -492,7 +492,7 @@ Which task is an example of preventive maintenance?
 - **A.** Replacing a pump after it has failed
 - **B.** Cleaning a line on a set schedule before it blocks
 - **C.** Clearing a line after a customer reports a backup
-- **D.** Digging up a pipe that has collapsed
+- **D.** Digging up and replacing a pipe that has already collapsed
 
 **Answer: B. Cleaning a line on a set schedule before it blocks**
 
@@ -1035,7 +1035,7 @@ Smoke travels with the air and rises where there are cracks or illegal connectio
 
 What is a dye test used for?
 
-- **A.** To find the depth of a manhole by watching the dye sink
+- **A.** To mark the pavement where a pipe will be cut
 - **B.** To show where water from a fixture or drain travels
 - **C.** To measure pipe wall thickness near a corroded joint
 - **D.** To find the depth of a manhole by watching how fast the dye sinks
@@ -1088,7 +1088,7 @@ The transmitter puts a signal on a pipe or line, and the receiver picks it up at
 What is a sonde?
 
 - **A.** A priming device that fills a pump suction line
-- **B.** A hand tool for lifting covers from their frames and from the stands
+- **B.** A hand tool for lifting manhole covers out of their frames
 - **C.** A lens cleaning kit used on pipe inspection cameras
 - **D.** A small transmitter placed in a pipe so it can be located from above
 
@@ -1127,8 +1127,8 @@ A thin rod pushed into the ground can feel a lid, pipe or other buried object, s
 Why are marks from a locator treated as approximate?
 
 - **A.** Depth and position readings can be off, so the object may need to be exposed
-- **B.** The marks fade quickly when exposed to bright sunlight, rain and heavy traffic
-- **C.** Locator readings are filed as the legal record of the line
+- **B.** The paint used for the marks fades quickly in direct sun and rain
+- **C.** Locator readings are kept on file as the legal record of the line
 - **D.** Locators report pipe diameter but give no sense of position
 
 **Answer: A. Depth and position readings can be off, so the object may need to be exposed**
@@ -1204,7 +1204,7 @@ Air in the suction line stops many pumps from moving liquid. A self-priming type
 
 Why would a crew use a larger-diameter discharge hose on a long bypass run?
 
-- **A.** It lowers the engine noise
+- **A.** It lowers the engine noise while the bypass pump is running
 - **B.** It increases the suction lift
 - **C.** It stops the pump from needing fuel
 - **D.** It reduces friction loss in the hose
@@ -1220,7 +1220,7 @@ What is a tripod with a winch or hoist used for at a manhole?
 - **A.** Spraying water to clean the manhole walls
 - **B.** Marking pipe locations on the pavement surface
 - **C.** Lowering and raising equipment through the opening
-- **D.** Measuring the depth of flow in the lower pipe with a staff gauge
+- **D.** Measuring the depth of flow in the pipe below with a staff gauge
 
 **Answer: C. Lowering and raising equipment through the opening**
 
@@ -1296,7 +1296,7 @@ A trailer unit is lighter and easier to bring into tight spots, while a truck un
 Why should jet nozzles be cleaned after use?
 
 - **A.** Debris can clog the small openings and reduce performance
-- **B.** Clean nozzles give a heavier stream at the same pump pressure setting
+- **B.** Cleaning lets the same nozzle fit a larger hose size
 - **C.** Cleaning makes the water leaving the nozzle hotter
 - **D.** The nozzle metal must dry in sunlight to harden
 
@@ -1335,11 +1335,11 @@ A tag-out prevents others from using unsafe gear until it is repaired or replace
 Why should a camera cable and head be rinsed and cleaned after use?
 
 - **A.** To warm the lens so it does not fog in storage
-- **B.** To remove wastewater residue that can damage and spread germs
+- **B.** To remove wastewater residue that can damage parts and spread germs
 - **C.** To reset the footage counter before the next inspection is started
 - **D.** To loosen the cable so it coils flatter on the reel
 
-**Answer: B. To remove wastewater residue that can damage and spread germs**
+**Answer: B. To remove wastewater residue that can damage parts and spread germs**
 
 Residue can corrode parts and carry bacteria, so cleaning protects both the equipment and the next person who handles it.
 
@@ -2528,14 +2528,14 @@ Listening first shows respect and allows the employee to pass along an accurate 
 
 ### 195: Customer service and public communication (medium)
 
-The crew is doing scheduled sewer cleaning. A resident asks why a truck is parked at the manhole in front of the house. What is a good reply?
+A resident asks why a sewer truck is parked at the manhole in front of the house during scheduled maintenance. What is a good reply?
 
 - **A.** Suggest the resident ask the neighbors instead
-- **B.** Briefly explain that the crew is doing scheduled sewer cleaning
+- **B.** Briefly explain what the crew is doing and why
 - **C.** Say that crew work is private and ask the resident to step back
 - **D.** Tell the resident that a problem with the sewer was found
 
-**Answer: B. Briefly explain that the crew is doing scheduled sewer cleaning**
+**Answer: B. Briefly explain what the crew is doing and why**
 
 A short, plain explanation of the work builds trust. Guessing about problems or brushing the resident off creates worry or frustration.
 
