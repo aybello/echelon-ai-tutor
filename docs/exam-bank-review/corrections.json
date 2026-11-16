@@ -1,15 +1,15 @@
 {
  "export": "docs/exam-bank-export/2026-11-16 (commit d118897a)",
- "chunksDone": 155,
+ "chunksDone": 160,
  "chunksTotal": 174,
- "questionsReviewed": 21742,
+ "questionsReviewed": 22499,
  "questionsTotal": 24350,
- "problems": 1513,
+ "problems": 1520,
  "byVerdict": {
   "UNCLEAR": 460,
-  "WRONG": 581,
-  "JURISDICTION": 260,
-  "UNITS": 205,
+  "WRONG": 584,
+  "JURISDICTION": 263,
+  "UNITS": 206,
   "OFF-TOPIC": 7
  },
  "byBank": {
@@ -44,7 +44,8 @@
   "wpi-class3-wastewater-coll": 10,
   "wpi-class3-water": 47,
   "wpi-class3-water-dist": 89,
-  "wpi-class4-wastewater": 4
+  "wpi-class4-wastewater": 4,
+  "wpi-class4-wastewater-coll": 7
  },
  "chunks": [
   "chunk-001",
@@ -201,7 +202,12 @@
   "chunk-152",
   "chunk-153",
   "chunk-154",
-  "chunk-155"
+  "chunk-155",
+  "chunk-156",
+  "chunk-157",
+  "chunk-158",
+  "chunk-159",
+  "chunk-160"
  ],
  "corrections": [
   {
@@ -53688,6 +53694,254 @@
       "c": "5000/200 = 25.0 days"
      }
     ]
+   }
+  },
+  {
+   "id": 48319,
+   "bankKey": "wpi-class4-wastewater-coll",
+   "questionNum": 101,
+   "verdict": "WRONG",
+   "note": "For a wastewater collection utility, a water quality protection program protects receiving waters from SSOs/collection discharges (option B). Key marks drinking water, and the explanation cites Ontario SDWA, which is irrelevant and an Ontario rule in a western Canada bank.",
+   "original": {
+    "question": "What is the purpose of a utility's water quality protection program?",
+    "options": [
+     "To protect the quality of the sewage",
+     "To protect the quality of receiving waters (rivers, lakes, coastal waters) from the impacts of SSOs and other collection system discharges",
+     "To protect the quality of drinking water",
+     "To protect the quality of groundwater"
+    ],
+    "correctIndex": 2,
+    "explanation": "A utility's water quality protection program, in a general context, primarily focuses on safeguarding the quality of drinking water supplied to consumers. This aligns with the overarching goal of municipal water utilities to provide safe and potable water, as mandated by provincial drinking water regulations such as Ontario's Safe Drinking Water Act, 2002, or similar legislation across Canada. While protecting receiving waters (B) and groundwater (D) are crucial environmental considerations, they are typically addressed by wastewater utilities or broader environmental protection agencies, or as part of source water protection plans that feed into drinking water quality. Protecting sewage quality (A) is not a primary objective of a water quality protection program."
+   },
+   "fix": {
+    "question": "What is the purpose of a utility's water quality protection program?",
+    "options": [
+     "To protect the quality of the sewage",
+     "To protect the quality of receiving waters (rivers, lakes, coastal waters) from the impacts of SSOs and other collection system discharges",
+     "To protect the quality of drinking water",
+     "To protect the quality of groundwater"
+    ],
+    "correctIndex": 1,
+    "explanation": "For a wastewater collection utility, a water quality protection program protects receiving waters (rivers, lakes, coastal waters) from the impacts of sanitary sewer overflows and other collection system discharges, through measures such as overflow prevention, monitoring, and response. Drinking water quality is the concern of water supply utilities, and sewage quality itself is not what is being protected.",
+    "steps": null
+   }
+  },
+  {
+   "id": 48381,
+   "bankKey": "wpi-class4-wastewater-coll",
+   "questionNum": 163,
+   "verdict": "WRONG",
+   "note": "At 80% depth a circular pipe carries about 0.97-0.98 of full-pipe flow. Maximum flow (about 1.07-1.08 Qfull) occurs near 93-95% depth, not 80-85% (max velocity, about 1.14 Vfull, occurs near 81%). Keyed answer is wrong.",
+   "original": {
+    "question": "A circular sewer pipe flowing at 80% full depth has approximately what fraction of full-flow capacity:",
+    "options": [
+     "108% of full-pipe flow (maximum occurs near 80-85% full)",
+     "80%",
+     "60%",
+     "100%"
+    ],
+    "correctIndex": 0,
+    "explanation": "Maximum flow in a circular pipe occurs at approximately 80-85% full depth where Q/Qfull is approximately 1.08."
+   },
+   "fix": {
+    "question": "A circular sewer pipe flowing at 80% full depth carries approximately what fraction of full-pipe flow?",
+    "options": [
+     "About 98% of full-pipe flow (maximum flow of about 107% occurs near 93-95% full)",
+     "About 108% of full-pipe flow",
+     "About 80% of full-pipe flow",
+     "About 60% of full-pipe flow"
+    ],
+    "correctIndex": 0,
+    "explanation": "From the hydraulic elements of a circular pipe, Q/Qfull is about 0.98 at d/D = 0.8. Peak discharge (about 1.07 Qfull) occurs near d/D = 0.93-0.95, while peak velocity occurs near 0.81.",
+    "steps": null
+   }
+  },
+  {
+   "id": 48407,
+   "bankKey": "wpi-class4-wastewater-coll",
+   "questionNum": 189,
+   "verdict": "WRONG",
+   "note": "Standard wet well sizing is V = Q_pump x T_cycle / 4 (worst case when inflow = half of pump capacity). Using Q_in with /4 is wrong; at Q_in = Qp/2 it would be Q_in x T/2.",
+   "original": {
+    "question": "A pump station wet well minimum volume (active storage) is calculated using:",
+    "options": [
+     "Only inflow rate",
+     "V = Q_in times T_cycle divided by 4 where T_cycle = 1/N_max",
+     "Only pump capacity",
+     "Only wet well depth"
+    ],
+    "correctIndex": 1,
+    "explanation": "Active storage V = Q_in * T_cycle / 4, ensuring pump cycling frequency does not exceed motor manufacturer maximum starts per hour."
+   },
+   "fix": {
+    "question": "A pump station wet well minimum volume (active storage) is calculated using:",
+    "options": [
+     "Only inflow rate",
+     "V = Q_pump times T_cycle divided by 4 where T_cycle = 1/N_max",
+     "Only wet well depth",
+     "Only pump capacity with no cycle time"
+    ],
+    "correctIndex": 1,
+    "explanation": "Active storage V = Q_pump x T_cycle / 4, based on the worst case where inflow is half the pump capacity, so the pump does not exceed the motor's maximum starts per hour.",
+    "steps": [
+     {
+      "l": "Identify what is asked.",
+      "c": "The relationship used to size the minimum active storage volume of a wet well."
+     },
+     {
+      "l": "State the cycling constraint.",
+      "c": "Minimum cycle time T_cycle = 1 / N_max, where N_max is the maximum starts per hour."
+     },
+     {
+      "l": "Apply the formula.",
+      "c": "V_active = Q_pump x T_cycle / 4. The worst case is inflow equal to half pump capacity, giving the shortest cycle."
+     },
+     {
+      "l": "Check the distractors.",
+      "c": "Inflow alone, depth alone, or pump capacity without cycle time cannot define a volume that meets the cycle-time limit, so option B is correct."
+     }
+    ]
+   }
+  },
+  {
+   "id": 48409,
+   "bankKey": "wpi-class4-wastewater-coll",
+   "questionNum": 191,
+   "verdict": "UNITS",
+   "note": "Options are given primarily in psi in a Canadian (metric) bank.",
+   "original": {
+    "question": "High-velocity cleaning (hydro-jetting) of sewers uses water pressure in the range of:",
+    "options": [
+     "1000-4000 psi (70-275 bar)",
+     "50-100 psi",
+     "10000-15000 psi",
+     "5-50 psi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Hydro-jetting uses 1000-4000 psi water pressure to clean sewer pipes, removing grease, roots, and debris."
+   },
+   "fix": {
+    "question": "High-velocity cleaning (hydro-jetting) of sewers uses water pressure in the range of:",
+    "options": [
+     "7,000-28,000 kPa (7-28 MPa)",
+     "350-700 kPa",
+     "70,000-100,000 kPa",
+     "35-350 kPa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Hydro-jetting uses roughly 7-28 MPa (7,000-28,000 kPa) water pressure to clean sewer pipes, removing grease, roots, and debris.",
+    "steps": null
+   }
+  },
+  {
+   "id": 48430,
+   "bankKey": "wpi-class4-wastewater-coll",
+   "questionNum": 212,
+   "verdict": "JURISDICTION",
+   "note": "CMOM (Capacity, Management, Operation and Maintenance) is a US EPA/NPDES framework, not a requirement in western Canada. Reword to a generic, jurisdiction-neutral concept.",
+   "original": {
+    "question": "A CMOM program is required to:",
+    "options": [
+     "Only track finances",
+     "Demonstrate that collection systems are properly managed to prevent SSOs",
+     "Only track maintenance",
+     "Only track capital projects"
+    ],
+    "correctIndex": 1,
+    "explanation": "CMOM programs demonstrate to regulators that collection systems are properly managed, operated, and maintained to prevent SSOs."
+   },
+   "fix": {
+    "question": "A collection system operation and maintenance program is intended to:",
+    "options": [
+     "Only track finances",
+     "Demonstrate that the collection system is properly managed, operated and maintained to prevent overflows and meet regulatory approval conditions",
+     "Only track maintenance",
+     "Only track capital projects"
+    ],
+    "correctIndex": 1,
+    "explanation": "O&M programs demonstrate to regulators that the collection system is properly managed, operated, and maintained to prevent overflows and meet approval conditions.",
+    "steps": null
+   }
+  },
+  {
+   "id": 48470,
+   "bankKey": "wpi-class4-wastewater-coll",
+   "questionNum": 252,
+   "verdict": "JURISDICTION",
+   "note": "Explanation and steps cite Ontario regulations (O. Reg. 213/91, O. Reg. 632/05) in a western Canada bank; answer itself is fine. Use provincial OH&S code generically.",
+   "original": {
+    "question": "A multi-gas detector must be calibrated:",
+    "options": [
+     "Monthly only",
+     "Before each use (bump test) and regularly calibrated per manufacturer specifications",
+     "Annually only",
+     "Never"
+    ],
+    "correctIndex": 1,
+    "explanation": "Multi-gas detectors are critical safety devices that must be regularly verified for accuracy. A bump test, which checks sensor response, is required before each use to ensure the device is functioning correctly. A full calibration, which adjusts sensor readings to known gas concentrations, must be performed regularly according to the manufacturer's recommendations, which can range from monthly to annually depending on the device and usage. Therefore, option B accurately reflects these requirements, while options A, C, and D are incorrect as they do not cover both essential aspects of detector maintenance."
+   },
+   "fix": {
+    "question": "A multi-gas detector must be calibrated:",
+    "options": [
+     "Monthly only",
+     "Before each use (bump test) and regularly calibrated per manufacturer specifications",
+     "Annually only",
+     "Never"
+    ],
+    "correctIndex": 1,
+    "explanation": "Multi-gas detectors must be bump tested before each use to confirm sensor response and alarms, and fully calibrated at the intervals set by the manufacturer and the applicable provincial OH&S requirements.",
+    "steps": [
+     {
+      "l": "Step 1",
+      "c": "Understand the purpose of a multi-gas detector: to detect hazardous gases and ensure worker safety."
+     },
+     {
+      "l": "Step 2",
+      "c": "Provincial OH&S codes require monitoring equipment to be maintained and calibrated according to manufacturer's specifications."
+     },
+     {
+      "l": "Step 3",
+      "c": "A bump test is a quick check that sensors respond to gas and alarms function; do it before each use or shift."
+     },
+     {
+      "l": "Step 4",
+      "c": "A full calibration adjusts sensors against known gas concentrations at the manufacturer's recommended interval."
+     },
+     {
+      "l": "Step 5",
+      "c": "Option B covers both requirements; A and C are too restrictive and D is unsafe."
+     }
+    ]
+   }
+  },
+  {
+   "id": 48596,
+   "bankKey": "wpi-class4-wastewater-coll",
+   "questionNum": 378,
+   "verdict": "JURISDICTION",
+   "note": "Cites an OSHA ceiling of 10 ppm as the rule. OSHA's H2S ceiling is 20 ppm and OSHA is US federal; in western Canada, provincial OH&S codes govern (e.g. Alberta 8-h OEL 10 ppm, 15 ppm short-term). Reword without the US citation.",
+   "original": {
+    "question": "A sewer worker exposure to H2S above 10 ppm requires:",
+    "options": [
+     "Immediate evacuation and investigation of the source before re-entry",
+     "No action",
+     "Only ventilation increase",
+     "Only PPE upgrade"
+    ],
+    "correctIndex": 0,
+    "explanation": "H2S above 10 ppm (OSHA ceiling) requires immediate evacuation; re-entry requires investigation and control of the source."
+   },
+   "fix": {
+    "question": "A sewer worker whose gas monitor shows H2S at or above the 10 ppm occupational exposure limit set by provincial OH&S requirements should:",
+    "options": [
+     "Leave the area immediately and have the source investigated and controlled before re-entry",
+     "Take no action",
+     "Only increase ventilation and continue working",
+     "Only upgrade PPE and continue working"
+    ],
+    "correctIndex": 0,
+    "explanation": "Readings at or above the provincial exposure limit (10 ppm) require leaving the area; re-entry only after the source is investigated and controlled and the atmosphere is verified safe.",
+    "steps": null
    }
   }
  ]
