@@ -6,7 +6,7 @@ Written from the review in `docs/exam-bank-review/RESULTS.md`. Nothing below has
 
 1. **Broken items first.** Questions whose text and answers do not match, or whose steps belong to another question. These are visible faults. Filter `corrections.json` for notes mentioning "options are", "steps belong", "copied" or "do not match". The western `wpi-class1-wastewater`, `wpi-class2-wastewater` and `wpi-class2-water-dist` banks hold most of them.
 2. **Wrong keys and wrong arithmetic** (`verdict: WRONG`), especially the calculation block numbered in the 240,000s.
-3. **Jurisdiction and units** (`JURISDICTION`, `UNITS`), after a spot check of the fixes.
+3. **Jurisdiction and units** (`JURISDICTION`, `UNITS`).
 4. **Unclear items** (`UNCLEAR`) at your discretion; many have a fix that rewrites the stem to one defensible reading.
 
 ## How
@@ -21,3 +21,7 @@ Written from the review in `docs/exam-bank-review/RESULTS.md`. Nothing below has
 ## Not asked
 
 No migration, no environment flag, no release gate change and no pricing or access change.
+
+## Already checked
+
+A random sample of 63 fixes was independently re-checked: all 59 real fixes were correct, and 4 deliberately broken ones were caught (see "Spot-check of the fixes" in `RESULTS.md`). No further spot-check is needed before applying. The one exception is the items in `needs-source-check.txt`, which rest on figures nobody confirmed: hold those, and apply the rest.
