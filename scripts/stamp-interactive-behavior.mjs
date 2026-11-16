@@ -1,5 +1,5 @@
 // Offline behavior stamp maintenance. The independent effectiveReleaseVersion
-// regression must continue to verify this nine-source, zero-normalized contract.
+// regression must continue to verify this explicit-source, zero-normalized contract.
 import { createHash } from "node:crypto";
 import { readFileSync, writeFileSync } from "node:fs";
 
@@ -11,7 +11,7 @@ const pattern = /export const BEHAVIOR_POLICY_SHA256 = "[a-f0-9]{64}";/g;
 const hash = createHash("sha256");
 for (const path of [
   loader,
-  "server/interactiveContent/engine/overlay.ts",
+  "server/interactiveContent/engine/overlay.ts", "server/interactiveContent/engine/overlayFiles.ts", "server/interactiveContent/engine/overlayStore.ts", "server/interactiveContent/engine/overlayDescriptors.ts",
   "server/interactiveContent/engine/reviewReceipt.ts",
   "server/interactiveContent/engine/modeFit.ts",
   "server/interactiveContent/engine/schema.ts",

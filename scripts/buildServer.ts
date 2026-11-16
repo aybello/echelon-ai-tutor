@@ -4,6 +4,9 @@ import { tmpdir } from "node:os";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { build } from "esbuild";
+import { validateCommittedOverlays } from "./game-authoring/overlayDescriptors";
+import { overlayDescriptors, overlayPath, resolveOverlayRoot } from "../server/interactiveContent/engine/overlayFiles";
+import { mkdirSync, copyFileSync } from "node:fs";
 import { compileApprovedOrLegacyRelease } from "./content-engine/committed-release";
 import { compilePrivateInput } from "./content-engine/compile-checked";
 import { writeInteractiveArtifactManifest } from "./interactiveArtifactFingerprint";
@@ -173,6 +176,7 @@ if (
   if (checkedName !== undefined && !checkedName) throw new Error("Empty checked document name");
   const staging = checkedName === undefined ? undefined : mkdtempSync(resolve(tmpdir(), "interactive-checked-build-"));
   try {
+    validateCommittedOverlays();
     const interactiveArtifacts = checkedName === undefined ? compileApprovedOrLegacyRelease() : compilePrivateInput(checkedName, staging!);
     await build({
       entryPoints: ["server/_core/index.ts"],
@@ -190,6 +194,8 @@ if (
     // Private answers stay adjacent to the server, never in dist/public or public.
     rmSync(resolve("dist/interactive-content"), { recursive: true, force: true });
     cpSync(interactiveArtifacts.outputDir, resolve("dist/interactive-content"), { recursive: true });
+    mkdirSync(resolve("dist/interactive-content/overlays"));
+    for (const descriptor of overlayDescriptors) copyFileSync(overlayPath(resolveOverlayRoot(), descriptor), resolve("dist/interactive-content/overlays", descriptor.file));
     writeInteractiveArtifactManifest(resolve("dist/interactive-content"), resolve("dist/interactive-content-build-manifest.json"));
   } finally {
     if (staging) rmSync(staging, { recursive: true, force: true });

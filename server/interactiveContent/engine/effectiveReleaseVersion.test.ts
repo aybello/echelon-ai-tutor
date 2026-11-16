@@ -83,7 +83,7 @@ describe("effective interactive release version", () => {
 
   it("binds the actual loader, overlay, selection, schema and presentation behavior sources", () => {
     const hash = createHash("sha256");
-    for (const path of ["server/interactiveContent/engine/loader.ts", "server/interactiveContent/engine/overlay.ts", "server/interactiveContent/engine/reviewReceipt.ts", "server/interactiveContent/engine/modeFit.ts", "server/interactiveContent/engine/schema.ts", "server/interactiveContent/schema.ts", "shared/interactiveCauseEffect.ts", "shared/interactiveSessions.ts", "shared/courseRegistry.ts"]) {
+    for (const path of ["server/interactiveContent/engine/loader.ts", "server/interactiveContent/engine/overlay.ts", "server/interactiveContent/engine/overlayFiles.ts", "server/interactiveContent/engine/overlayStore.ts", "server/interactiveContent/engine/overlayDescriptors.ts", "server/interactiveContent/engine/reviewReceipt.ts", "server/interactiveContent/engine/modeFit.ts", "server/interactiveContent/engine/schema.ts", "server/interactiveContent/schema.ts", "shared/interactiveCauseEffect.ts", "shared/interactiveSessions.ts", "shared/courseRegistry.ts"]) {
       let source = readFileSync(path, "utf8");
       if (path.endsWith("/loader.ts")) {
         const pattern = /export const BEHAVIOR_POLICY_SHA256 = "[a-f0-9]{64}";/g;

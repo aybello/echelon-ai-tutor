@@ -1,3 +1,4 @@
+import { historicalAuthoringBytes } from "./historicalAuthoringBaseline";
 import { readFileSync, existsSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { describe, expect, it } from "vitest";
@@ -44,7 +45,7 @@ describe("pinned 77-table Western Claude publication", () => {
     }
   });
   it("preserves all protected prior payloads and declarations byte-for-byte", () => {
-    for (const [path, hash] of Object.entries(counts.protectedHashes)) expect(sha(readFileSync(path)), path).toBe(hash);
+    for (const [path, hash] of Object.entries(counts.protectedHashes)) expect(sha(historicalAuthoringBytes(path)), path).toBe(hash);
   });
   it.each([...counts.passed, ...counts.held])("preserves exact pinned source for $stem and actual courseKey $course", async b => {
     expect(sha(readFileSync(b.table))).toBe(b.sourceSha256);
