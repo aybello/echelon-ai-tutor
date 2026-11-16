@@ -7,25 +7,25 @@
   "label": "California Water Treatment Operator, Grade T1 (State Water Board)",
   "numberRange": {
     "start": 1,
-    "end": 250,
+    "end": 280,
     "status": "proposed-not-reserved-in-production"
   },
   "purpose": "Practice questions for the California State Water Resources Control Board Grade T1 Water Treatment Operator Examination. Original items in US units, written only from objectives the State Water Board marks as T1 in its Expected Range of Knowledge. Not an official exam blueprint.",
-  "file": "questions/bank-250.json",
-  "count": 250,
-  "calculations": 70,
-  "sha256": "617db76d563dedec28741526daf184ce06eb1c0f7c73b70ce70500ef058c5ecc",
+  "file": "questions/bank-280.json",
+  "count": 280,
+  "calculations": 72,
+  "sha256": "9e3c58ee72a92a79731259ac94cf6d5690f9efd4fe071cb6768af9e76b4c01a2",
   "modules": {
-    "Source water": 63,
+    "Source water": 71,
     "Water treatment processes": 62,
-    "Operation and maintenance": 50,
-    "Laboratory procedures": 38,
-    "Regulations, administrative duties and safety": 37
+    "Operation and maintenance": 52,
+    "Laboratory procedures": 50,
+    "Regulations, administrative duties and safety": 45
   },
   "difficulty": {
-    "easy": 56,
-    "medium": 139,
-    "hard": 55
+    "easy": 67,
+    "medium": 153,
+    "hard": 60
   },
   "topics": {
     "Flow measurement and water level devices": 5,
@@ -74,6 +74,22 @@
     "Safe work habits, hazards and PPE": 4,
     "Chemical hazards, SDS and compressed gas": 4,
     "Confined space, electrical safety and lockout": 3,
+    "Well total depth sounding": 2,
+    "Measuring static and pumping levels": 2,
+    "Cleaning and disinfecting a storage tank": 2,
+    "Replacing a chemical feeder part": 1,
+    "Replacing a pump part": 1,
+    "Chain of custody records": 2,
+    "Sample container selection": 2,
+    "Free and total chlorine readings": 2,
+    "Using a colorimeter correctly": 2,
+    "pH meter use and sample analysis": 2,
+    "Turbidity cell handling": 2,
+    "Groundwater Rule purpose": 2,
+    "Matching safety equipment to the hazard": 2,
+    "Permit-required confined spaces": 2,
+    "Operator record keeping": 1,
+    "Reading an MCL table (hypothetical)": 1,
     "Flow rate and water velocity": 5,
     "Storage volume and detention time": 5,
     "Well drawdown and specific capacity": 4,
@@ -89,23 +105,24 @@
     "Dilution and chemical needed": 5,
     "Percent strength and replicate averages": 4,
     "Pressure, container volume and hazard dilution": 4,
-    "Chemical strength conversions": 2
+    "Chemical strength conversions": 2,
+    "Well head pressure and feet of head": 2
   },
   "validation": {
     "valid": true,
     "errors": [],
-    "count": 250,
-    "calculations": 70,
+    "count": 280,
+    "calculations": 72,
     "answerPositions": [
-      63,
-      63,
-      62,
-      62
+      70,
+      70,
+      70,
+      70
     ],
     "answerCues": {
-      "conceptualCount": 180,
-      "longestRate": 0.3333333333333333,
-      "shortestRate": 0.2222222222222222,
+      "conceptualCount": 208,
+      "longestRate": 0.34615384615384615,
+      "shortestRate": 0.22115384615384615,
       "longTells": [],
       "shortTells": [],
       "qualifierTells": []

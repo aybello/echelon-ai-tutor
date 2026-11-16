@@ -85,3 +85,6 @@ A cylindrical drum is 2 ft in diameter and 3 ft high. Use volume = 0.785 x D squ
 @Regulations, administrative duties and safety|CAT1|Chemical strength conversions
 Use 1 percent = 10,000 mg/L. A hypochlorite stock is 12.5 percent. What is its strength in mg/L?|mg/L = percent times 10,000|12.5*10000|mg/L|0|12500,1250000,1250|m
 Use 1 percent = 10,000 mg/L. A spill-cleanup solution must be diluted from 5 percent to 0.5 percent. How many gallons of water must be added to 2 gal of the 5 percent solution? Use C1 x V1 = C2 x V2.|Added water = (C1 times V1 divided by C2) minus V1|(5*2/0.5)-2|gal|0|20,10,18.5|h
+@Source water|CAT1|Well head pressure and feet of head
+A gauge on a well head reads 48 psi. Use 2.31 ft of water per psi and 0.433 psi per ft. How many feet of head does the gauge reading equal?|Feet of head = psi times 2.31|48*2.31|ft|1|20.8,50.3,48.0|m
+A gauge on a well head reads 38 psi. A second tap on the same pipe sits 25 ft lower. Use 0.433 psi per ft and 2.31 ft per psi. What is the pressure at the lower tap in psi?|Lower psi = upper psi plus drop in feet times 0.433|38+25*0.433|psi|1|27.2,95.8,63.0|h

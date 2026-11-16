@@ -1,6 +1,6 @@
-# California Water Treatment Operator, Grade T1 (State Water Board): 250-question review
+# California Water Treatment Operator, Grade T1 (State Water Board): 280-question review
 
-250 original practice questions: 180 conceptual and 70 calculations, in US customary units, following the question counts by content category in the State Water Board's Expected Range of Knowledge for the T1 treatment exam (scaled from 100 to 250: source water 63, water treatment processes 62, operation and maintenance 50, laboratory procedures 38, regulations, administrative duties and safety 37). Only objectives marked for T1 are used. This is the first release size; more questions can be added later at the end of the source files. This is a local content package, not proof of a production import.
+280 original practice questions: 208 conceptual and 72 calculations, in US customary units, following the question counts by content category in the State Water Board's Expected Range of Knowledge for the T1 treatment exam (scaled from 100 to 250: source water 63, water treatment processes 62, operation and maintenance 50, laboratory procedures 38, regulations, administrative duties and safety 37). A sixth batch of 30 questions was added after a coverage check of the bank against the T1 objective list found objectives with no question. Only objectives marked for T1 are used. More questions can be added later at the end of the source files. This is a local content package, not proof of a production import.
 
 Correct answers are shown beneath each item. See README.md for scope, sources and limits.
 
@@ -2344,449 +2344,813 @@ Why is water near electrical equipment a hazard?
 
 Wet conditions lower the resistance of the body and surfaces, so a person can receive a serious shock. Keep electrical gear dry.
 
-### 181: Flow rate and water velocity (medium)
+### 181: Well total depth sounding (easy)
+
+A weighted tape is lowered in a well until the tape goes slack on the floor of the hole. What does this reading tell the operator?
+
+- **A.** The thickness of the screened water-bearing zone
+- **B.** The total depth of the well from the measuring point
+- **C.** The distance from the measuring point down to the water surface
+- **D.** The height the water rises after the pump is switched on
+
+**Answer: B. The total depth of the well from the measuring point**
+
+Slack tape means the weight has come to rest at the end of the well, so the marked tape gives total depth. Depth to water is read where the tape first meets the water.
+
+### 182: Well total depth sounding (hard)
+
+How does a total depth sounding differ from a depth-to-water reading taken with the same marked tape?
+
+- **A.** The sounding is taken with the pump running to keep the tape straight
+- **B.** The tape is read at the pump base rather than at the marked measuring point
+- **C.** The weight goes down to the well floor instead of stopping at the water
+- **D.** A heavier weight is needed because water pushes the tape upward
+
+**Answer: C. The weight goes down to the well floor instead of stopping at the water**
+
+Both readings start from the same measuring point, but a depth sounding continues past the water to the end of the well. The difference is where the tape stops.
+
+### 183: Measuring static and pumping levels (easy)
+
+When is the static water level of a well measured?
+
+- **A.** At the moment the pump reaches steady operation
+- **B.** Whenever the well head pressure gauge reads zero
+- **C.** During the first minute of pumping, when the level first drops
+- **D.** After the pump has been off long enough for the level to recover
+
+**Answer: D. After the pump has been off long enough for the level to recover**
+
+Static level is the resting water level with no pumping influence. The pumping level is read while the pump is running.
+
+### 184: Measuring static and pumping levels (hard)
+
+How should static and pumping levels be taken so the drawdown figure is meaningful?
+
+- **A.** With the same tool from the same reference point on the well
+- **B.** With a sounder for the static level and a pressure gauge for the pumping level
+- **C.** From the ground surface for one reading and the pump base for the other
+- **D.** With a wet tape for one reading and a dry tape for the other
+
+**Answer: A. With the same tool from the same reference point on the well**
+
+Drawdown is the difference between two levels, so both must be measured the same way. A changed tool or starting point would look like extra drawdown.
+
+### 185: Cleaning and disinfecting a storage tank (medium)
+
+Why is a tank interior scrubbed and rinsed before the disinfectant is applied?
+
+- **A.** Dirt and film can shield microbes from the disinfectant
+- **B.** Scrubbing removes the need to test the water afterward
+- **C.** Disinfectant must be mixed with the scrubbing water to work
+- **D.** Rinsing neutralizes the chlorine so the tank can refill sooner
+
+**Answer: A. Dirt and film can shield microbes from the disinfectant**
+
+Deposits protect microorganisms and use up disinfectant. Surfaces must be clean for the disinfectant to reach them.
+
+### 186: Cleaning and disinfecting a storage tank (medium)
+
+After a tank has been disinfected, why is the water tested before the tank returns to service?
+
+- **A.** Results show how much water the tank can now hold
+- **B.** Results show how long the tank was out of service
+- **C.** Results show whether the disinfection removed bacterial contamination
+- **D.** Results show whether the coating inside the tank has cured
+
+**Answer: C. Results show whether the disinfection removed bacterial contamination**
+
+A bacteriological test confirms the cleaning and disinfection worked. Water should not go to customers until the sample result is acceptable.
+
+### 187: Replacing a chemical feeder part (hard)
+
+A worn diaphragm on a chemical feeder is being replaced. Which pair of reasons explains the isolation step and the choice of the new part?
+
+- **A.** Isolation cools the pump head; the part needs to carry the same rated voltage
+- **B.** Isolation protects the chemical from air; the part needs to fit the housing
+- **C.** Isolation keeps the feed rate steady; the part needs to match the old part's color
+- **D.** Isolation stops chemical escaping; the part must resist that chemical
+
+**Answer: D. Isolation stops chemical escaping; the part must resist that chemical**
+
+Closing valves and relieving pressure keeps chemical from spraying out. A part made of the wrong material can be attacked by the chemical and fail early.
+
+### 188: Replacing a pump part (medium)
+
+Before a worn impeller is replaced, the pump is locked out and tagged. What is the reason, along with the requirement for the new impeller?
+
+- **A.** Lockout keeps the pump cool; the impeller must match the discharge pipe diameter
+- **B.** Lockout blocks accidental startup; the impeller must match the pump's size and design
+- **C.** Lockout relieves casing pressure; the impeller can be any size that fits the shaft
+- **D.** Lockout protects the bearings; the impeller must match the seal brand
+
+**Answer: B. Lockout blocks accidental startup; the impeller must match the pump's size and design**
+
+Lockout stops anyone from energizing the motor during repair. An impeller that differs from the original changes flow and head and can overload the motor.
+
+### 189: Chain of custody records (easy)
+
+What does a chain of custody record document for a sample?
+
+- **A.** The weather and flow conditions at the sampling site
+- **B.** Each person who held the sample and when it changed hands
+- **C.** The calibration history of the lab instruments
+- **D.** The chemical results as each analyst reads them
+
+**Answer: B. Each person who held the sample and when it changed hands**
+
+The form follows a sample from collection to the lab. Every handoff is signed and dated.
+
+### 190: Chain of custody records (medium)
+
+What does an unbroken chain of custody protect?
+
+- **A.** The sample from warming or changing chemically in transit
+- **B.** The lab from needing to repeat a test that went wrong
+- **C.** The container from leaking or breaking while in shipping
+- **D.** The ability to defend the result as that sample's
+
+**Answer: D. The ability to defend the result as that sample's**
+
+Documented control shows the sample was not swapped or altered. Cooling and fast delivery are separate steps that protect the sample itself.
+
+### 191: Sample container selection (medium)
+
+Why do labs call for different containers for different tests?
+
+- **A.** Material and preservative must suit the analyte and not alter it
+- **B.** Container size sets the holding time allowed for that test
+- **C.** Each test method needs its own bottle supplier approved
+- **D.** Colored lids are required by the state to sort samples
+
+**Answer: A. Material and preservative must suit the analyte and not alter it**
+
+Some analytes stick to certain plastics or react with certain glass, and many need a preservative. Using the specified bottle keeps the result true.
+
+### 192: Sample container selection (easy)
+
+A bacteriological bottle is supplied with a small amount of sodium thiosulfate. What is it for?
+
+- **A.** It lowers the sample pH so the bottle stays sterile
+- **B.** It preserves the sample's chlorine reading for later checking
+- **C.** It neutralizes chlorine so microbes in the sample survive until testing
+- **D.** It adds nutrients that help bacteria grow for easier counting
+
+**Answer: C. It neutralizes chlorine so microbes in the sample survive until testing**
+
+Chlorine in a sample would keep killing bacteria during transport and give a falsely good result. The agent removes it at collection.
+
+### 193: Free and total chlorine readings (easy)
+
+A test gives a free chlorine reading and a total chlorine reading. What does the total reading include?
+
+- **A.** Free chlorine minus the chlorine used up by demand
+- **B.** The chlorine dose applied at the feeder before demand
+- **C.** Free chlorine plus chlorine combined with ammonia or organic nitrogen
+- **D.** Free chlorine plus the chlorine still held in the feed tank
+
+**Answer: C. Free chlorine plus chlorine combined with ammonia or organic nitrogen**
+
+Total chlorine counts both free chlorine and combined chlorine. The combined portion is the difference between the two readings.
+
+### 194: Free and total chlorine readings (medium)
+
+Why should a chlorine sample be read soon after it is collected?
+
+- **A.** Warm samples turn the reagent color darker as time passes
+- **B.** The sample absorbs carbon dioxide from the air and its chlorine rises
+- **C.** The reagent loses strength once its bottle has been opened
+- **D.** Chlorine fades, so the reading drops as the sample stands
+
+**Answer: D. Chlorine fades, so the reading drops as the sample stands**
+
+Chlorine is reactive and also lost to light and agitation. A delayed reading would understate the residual.
+
+### 195: Using a colorimeter correctly (easy)
+
+Before samples are read, a colorimeter is zeroed with a blank. What is the blank?
+
+- **A.** A cell left empty so no light reaches the sensor
+- **B.** A cell of clear water without the color-forming chemical added
+- **C.** A cell filled with sample after the reagent has developed
+- **D.** A cell holding a standard of known concentration
+
+**Answer: B. A cell of clear water without the color-forming chemical added**
+
+The blank sets the instrument to zero for the water itself. Color from the reagent is then measured against that baseline.
+
+### 196: Using a colorimeter correctly (medium)
+
+An operator reads a standard of known value in the same matched cell used for samples. What is the purpose?
+
+- **A.** To confirm the instrument reads near the known value
+- **B.** To check that the reagent is the right color before use
+- **C.** To correct each later sample by adding the standard's reading
+- **D.** To replace the blank when the instrument is being zeroed
+
+**Answer: A. To confirm the instrument reads near the known value**
+
+A standard shows whether the colorimeter is reading accurately. Matched cells keep cell differences from adding error.
+
+### 197: pH meter use and sample analysis (easy)
+
+Why is a pH meter calibrated with buffer solutions before samples are read?
+
+- **A.** Buffers clean chlorine residue from the probe glass
+- **B.** Buffers coat the probe so it responds faster to samples
+- **C.** Buffers of known pH let the meter be adjusted to read true
+- **D.** Buffers remove the sample's alkalinity before it is read
+
+**Answer: C. Buffers of known pH let the meter be adjusted to read true**
+
+Calibration compares the probe to known values. Without it the readings could drift away from the true pH.
+
+### 198: pH meter use and sample analysis (medium)
+
+The probe is rinsed between samples, and each sample is stirred gently while the display settles. Why?
+
+- **A.** Rinsing dries the glass bulb and stirring adds air to speed the response
+- **B.** Rinsing prevents carryover and gentle stirring steadies the reading
+- **C.** Rinsing resets the buffer slope and stirring warms the sample evenly
+- **D.** Rinsing removes chlorine from the sample and stirring helps it dissolve
+
+**Answer: B. Rinsing prevents carryover and gentle stirring steadies the reading**
+
+Leftover liquid would mix into the next sample. Gentle stirring keeps the liquid at the probe fresh without driving gas in or out.
+
+### 199: Turbidity cell handling (easy)
+
+Why are turbidity sample cells wiped clean and checked for scratches before use?
+
+- **A.** Scratches in the glass change the sample temperature during the reading
+- **B.** Dirty cells absorb the light so the reading comes out low
+- **C.** Smudges on the cell react with the water and shift its pH
+- **D.** Marks and scratches scatter light and read as extra turbidity
+
+**Answer: D. Marks and scratches scatter light and read as extra turbidity**
+
+A turbidimeter measures scattered light, so marks on the glass add to it. Clean, matched cells keep the result from reflecting the cell.
+
+### 200: Turbidity cell handling (medium)
+
+Why is a turbidity sample inverted gently and left briefly to release trapped air before it is read?
+
+- **A.** Bubbles scatter light like particles, so they push the reading up
+- **B.** Air in the sample changes the instrument's calibration standard
+- **C.** Air bubbles absorb light and push the reading lower
+- **D.** Hard mixing breaks up particles and lowers the true turbidity
+
+**Answer: A. Bubbles scatter light like particles, so they push the reading up**
+
+Gas bubbles scatter light and read as turbidity that is not in the water. Gentle mixing suspends particles evenly without adding air.
+
+### 201: Groundwater Rule purpose (easy)
+
+What is the main purpose of the Groundwater Rule?
+
+- **A.** To require filtration of groundwater before distribution
+- **B.** To reduce illness from fecal contamination in wells
+- **C.** To set the amount of water a well may pump in a year
+- **D.** To control disinfection byproducts formed in groundwater systems
+
+**Answer: B. To reduce illness from fecal contamination in wells**
+
+The rule targets pathogens that can reach well water from fecal sources. It does not regulate pumping volume or require filtration.
+
+### 202: Groundwater Rule purpose (medium)
+
+Why does the Groundwater Rule pay attention to wells that serve a water system?
+
+- **A.** Aquifer water can carry fecal contamination and may lack a treatment barrier
+- **B.** Groundwater is hard and corrodes pipes faster than surface water
+- **C.** Groundwater has more turbidity than surface water and needs filters
+- **D.** Groundwater has less chlorine demand and is skipped by other rules
+
+**Answer: A. Aquifer water can carry fecal contamination and may lack a treatment barrier**
+
+Wells are often not filtered, so contamination reaching the aquifer can pass to customers. The rule addresses finding and reducing that risk.
+
+### 203: Matching safety equipment to the hazard (easy)
+
+A worker is transferring a corrosive liquid chemical. Which equipment best matches that hazard?
+
+- **A.** A dust mask with leather boots and a cotton shirt
+- **B.** Safety glasses with cloth work gloves and a shop apron
+- **C.** A hard hat with hearing protection and work gloves
+- **D.** Splash goggles, a face shield and resistant gloves
+
+**Answer: D. Splash goggles, a face shield and resistant gloves**
+
+Liquid splash needs eye and face coverage and gloves that resist the chemical. Cloth gloves and glasses would let liquid through or around.
+
+### 204: Matching safety equipment to the hazard (medium)
+
+Why is a respirator or glove type selected by checking the hazard it will face?
+
+- **A.** Each hazard needs a different color code for safety audits
+- **B.** Standard-issue gear loses its rating after a few uses of any kind
+- **C.** A material that stops one hazard may let another pass through
+- **D.** A heavier item blocks hazards regardless of type
+
+**Answer: C. A material that stops one hazard may let another pass through**
+
+Protection depends on the match between equipment and hazard. The safety data sheet and manufacturer information guide the choice.
+
+### 205: Permit-required confined spaces (easy)
+
+What does permit-required mean when a confined space is described?
+
+- **A.** The space must be inspected by the regulator before each entry
+- **B.** The space has serious hazards, so entry needs written authorization
+- **C.** The space is too small for a person to enter
+- **D.** The space may be entered once the supervisor is told by phone
+
+**Answer: B. The space has serious hazards, so entry needs written authorization**
+
+A permit space has hazards such as bad air or engulfment. Entry is controlled by a written permit that records the precautions.
+
+### 206: Permit-required confined spaces (medium)
+
+Why is the air tested before entry and an attendant posted outside a confined space?
+
+- **A.** Testing protects the equipment inside, and the attendant keeps others away
+- **B.** Testing confirms the tank is empty, and the attendant keeps the time record
+- **C.** Testing shows how long entry will take, and the attendant carries tools
+- **D.** Air can be unsafe without warning, and someone must watch and call for help
+
+**Answer: D. Air can be unsafe without warning, and someone must watch and call for help**
+
+Dangerous gases or low oxygen may not be noticed by the entrant. The attendant stays in contact and summons rescue if needed.
+
+### 207: Operator record keeping (medium)
+
+Which set of records does an operator keep to show how the plant ran and that monitoring was done?
+
+- **A.** Sample results, operating logs, and calibration records
+- **B.** Purchase orders, supplier contact lists and price quotes
+- **C.** Staff vacation schedules, shift swap forms and timesheets
+- **D.** Billing summaries, rate studies and board meeting minutes
+
+**Answer: A. Sample results, operating logs, and calibration records**
+
+Operating, monitoring and maintenance records document compliance and help trace problems. Billing and scheduling papers do not show process performance.
+
+### 208: Reading an MCL table (hypothetical) (hard)
+
+A published table lists a hypothetical contaminant, Example-X, with a limit of 0.050 mg/L. This value is invented for practice. What does the figure mean?
+
+- **A.** The concentration at which the contaminant first becomes detectable
+- **B.** The average level a typical raw water contains, in milligrams per liter
+- **C.** The top concentration allowed in treated water, in milligrams per liter
+- **D.** The amount of Example-X treatment must remove each day in pounds
+
+**Answer: C. The top concentration allowed in treated water, in milligrams per liter**
+
+An MCL is a maximum concentration, and its unit shows how it is expressed. Reading the unit with the number avoids mistakes.
+
+### 209: Flow rate and water velocity (medium)
 
 A 12-inch pipe (1.0 ft diameter) carries water at 2.5 ft/s. Use area = 0.785 × D², 1 ft³ = 7.48 gal and 60 s per min. What is the flow in gpm?
 
-- **A.** 1,122.0 gpm
-- **B.** 880.8 gpm
+- **A.** 2.0 gpm
+- **B.** 1,122.0 gpm
 - **C.** 14.7 gpm
-- **D.** 2.0 gpm
+- **D.** 880.8 gpm
 
-**Answer: B. 880.8 gpm**
+**Answer: D. 880.8 gpm**
 
 Flow in gpm = area times velocity times 7.48 times 60. Substitute the stated values: 0.785 × 1 × 1 × 2.5 × 7.48 × 60 = 880.8 gpm. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 182: Flow rate and water velocity (hard)
+### 210: Flow rate and water velocity (hard)
 
 An 8-inch main (8/12 ft) carries 450 gpm. Use area = 0.785 × D² and 1 cfs = 448.8 gpm. What is the velocity in ft/s?
 
-- **A.** 1,289.80 ft/s
-- **B.** 0.72 ft/s
-- **C.** 2.87 ft/s
-- **D.** 1.00 ft/s
+- **A.** 1.00 ft/s
+- **B.** 2.87 ft/s
+- **C.** 0.72 ft/s
+- **D.** 1,289.80 ft/s
 
-**Answer: C. 2.87 ft/s**
+**Answer: B. 2.87 ft/s**
 
 Velocity = flow in cfs divided by pipe area. Substitute the stated values: 450 ÷ 448.8 ÷ (0.785 × (8 ÷ 12) × (8 ÷ 12)) = 2.87 ft/s. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 183: Flow rate and water velocity (medium)
+### 211: Flow rate and water velocity (medium)
 
 A rectangular channel is 4 ft wide with water 1.5 ft deep moving at 2 ft/s. Use 1 cfs = 448.8 gpm. What is the flow in gpm?
 
-- **A.** 12 gpm
-- **B.** 2,693 gpm
-- **C.** 90 gpm
-- **D.** 5,386 gpm
+- **A.** 5,386 gpm
+- **B.** 90 gpm
+- **C.** 2,693 gpm
+- **D.** 12 gpm
 
-**Answer: D. 5,386 gpm**
+**Answer: A. 5,386 gpm**
 
 Flow in gpm = width times depth times velocity times 448.8. Substitute the stated values: 4 × 1.5 × 2 × 448.8 = 5,386 gpm. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 184: Flow rate and water velocity (hard)
+### 212: Flow rate and water velocity (hard)
 
 A 6-inch main (0.5 ft) carries 250 gpm. Use area = 0.785 × D², 1 ft³ = 7.48 gal and 60 s per min. What is the velocity in ft/s?
 
-- **A.** 2.84 ft/s
+- **A.** 0.71 ft/s
 - **B.** 170.30 ft/s
-- **C.** 0.71 ft/s
+- **C.** 2.84 ft/s
 - **D.** 0.35 ft/s
 
-**Answer: A. 2.84 ft/s**
+**Answer: C. 2.84 ft/s**
 
 Velocity = flow in gpm divided by (7.48 times 60 times area). Substitute the stated values: 250 ÷ 7.48 ÷ 60 ÷ (0.785 × 0.5 × 0.5) = 2.84 ft/s. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 185: Flow rate and water velocity (medium)
+### 213: Flow rate and water velocity (medium)
 
 Water moves at 2 ft/s through a 3000 ft pipeline. How many minutes does it take a drop of water to travel the full length?
 
-- **A.** 25.0 min
-- **B.** 50.0 min
-- **C.** 1,500.0 min
-- **D.** 90,000.0 min
+- **A.** 50.0 min
+- **B.** 90,000.0 min
+- **C.** 25.0 min
+- **D.** 1,500.0 min
 
-**Answer: A. 25.0 min**
+**Answer: C. 25.0 min**
 
 Time in minutes = length divided by velocity divided by 60. Substitute the stated values: 3000 ÷ 2 ÷ 60 = 25.0 min. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 186: Storage volume and detention time (medium)
+### 214: Storage volume and detention time (medium)
 
 A cylindrical tank is 50 ft in diameter and holds water 20 ft deep. Use volume = 0.785 × D² × depth × 7.48 gal/ft³. How many gallons does it hold?
 
-- **A.** 39,250 gal
-- **B.** 5,872 gal
-- **C.** 293,590 gal
+- **A.** 5,872 gal
+- **B.** 293,590 gal
+- **C.** 39,250 gal
 - **D.** 374,000 gal
 
-**Answer: C. 293,590 gal**
+**Answer: B. 293,590 gal**
 
 Volume = 0.785 times diameter squared times depth times 7.48. Substitute the stated values: 0.785 × 50 × 50 × 20 × 7.48 = 293,590 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 187: Storage volume and detention time (medium)
+### 215: Storage volume and detention time (medium)
 
 A rectangular reservoir is 80 ft long and 45 ft wide, with water 14 ft deep. Use 1 ft³ = 7.48 gal. How many gallons does it hold?
 
-- **A.** 1,040 gal
+- **A.** 376,992 gal
 - **B.** 50,400 gal
-- **C.** 26,928 gal
-- **D.** 376,992 gal
+- **C.** 1,040 gal
+- **D.** 26,928 gal
 
-**Answer: D. 376,992 gal**
+**Answer: A. 376,992 gal**
 
 Volume = length times width times depth times 7.48. Substitute the stated values: 80 × 45 × 14 × 7.48 = 376,992 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 188: Storage volume and detention time (hard)
+### 216: Storage volume and detention time (hard)
 
 A 0.75 MG tank is filled and drained at a steady 500 gpm. Use 1 MG = 1,000,000 gal. What is the detention time in hours?
 
-- **A.** 62.5 hr
-- **B.** 25.0 hr
-- **C.** 1,500.0 hr
-- **D.** 1.0 hr
+- **A.** 1,500.0 hr
+- **B.** 1.0 hr
+- **C.** 62.5 hr
+- **D.** 25.0 hr
 
-**Answer: B. 25.0 hr**
+**Answer: D. 25.0 hr**
 
 Hours = volume in gallons divided by flow in gpm divided by 60. Substitute the stated values: 0.75 × 1000000 ÷ 500 ÷ 60 = 25.0 hr. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 189: Storage volume and detention time (hard)
+### 217: Storage volume and detention time (hard)
 
 A circular basin is 30 ft in diameter and 12 ft deep and runs full. Flow through it is 400 gpm. Use 0.785 × D² × depth × 7.48 gal/ft³. What is the detention time in minutes?
 
-- **A.** 2.6 min
+- **A.** 202.0 min
 - **B.** 158.5 min
-- **C.** 202.0 min
+- **C.** 2.6 min
 - **D.** 21.2 min
 
 **Answer: B. 158.5 min**
 
 Minutes = basin volume in gallons divided by flow in gpm. Substitute the stated values: 0.785 × 30 × 30 × 12 × 7.48 ÷ 400 = 158.5 min. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 190: Storage volume and detention time (medium)
+### 218: Storage volume and detention time (medium)
 
 A 0.2 MG basin receives 2.4 MGD. Use 1,440 min per day. What is the detention time in minutes?
 
-- **A.** 17,280 min
+- **A.** 2 min
 - **B.** 691 min
-- **C.** 2 min
+- **C.** 17,280 min
 - **D.** 120 min
 
 **Answer: D. 120 min**
 
 Minutes = volume divided by flow in MGD times 1440. Substitute the stated values: 0.2 ÷ 2.4 × 1440 = 120 min. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 191: Well drawdown and specific capacity (medium)
+### 219: Well drawdown and specific capacity (medium)
 
 The static water level in a well is 85 ft below the measuring point. While pumping, the level is 132 ft below that point. What is the drawdown in ft?
 
-- **A.** 47 ft
-- **B.** 217 ft
-- **C.** 85 ft
-- **D.** 132 ft
+- **A.** 132 ft
+- **B.** 85 ft
+- **C.** 47 ft
+- **D.** 217 ft
 
-**Answer: A. 47 ft**
+**Answer: C. 47 ft**
 
 Drawdown = pumping level minus static level. Substitute the stated values: 132-85 = 47 ft. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 192: Well drawdown and specific capacity (medium)
+### 220: Well drawdown and specific capacity (medium)
 
 A well pumps 360 gpm with 24 ft of drawdown. What is its specific capacity in gpm per ft of drawdown?
 
-- **A.** 0.07 gpm/ft
-- **B.** 384.00 gpm/ft
-- **C.** 15.00 gpm/ft
-- **D.** 8,640.00 gpm/ft
+- **A.** 15.00 gpm/ft
+- **B.** 8,640.00 gpm/ft
+- **C.** 384.00 gpm/ft
+- **D.** 0.07 gpm/ft
 
-**Answer: C. 15.00 gpm/ft**
+**Answer: A. 15.00 gpm/ft**
 
 Specific capacity = flow divided by drawdown. Substitute the stated values: 360 ÷ 24 = 15.00 gpm/ft. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 193: Well drawdown and specific capacity (hard)
+### 221: Well drawdown and specific capacity (hard)
 
 A well has a static level of 62 ft and, while pumping 580 gpm, a pumping level of 91 ft, both measured below the same point. What is the specific capacity in gpm per ft?
 
-- **A.** 9.35 gpm/ft
-- **B.** 0.05 gpm/ft
-- **C.** 20.00 gpm/ft
-- **D.** 6.37 gpm/ft
+- **A.** 6.37 gpm/ft
+- **B.** 20.00 gpm/ft
+- **C.** 9.35 gpm/ft
+- **D.** 0.05 gpm/ft
 
-**Answer: C. 20.00 gpm/ft**
+**Answer: B. 20.00 gpm/ft**
 
 Specific capacity = flow divided by (pumping level minus static level). Substitute the stated values: 580 ÷ (91-62) = 20.00 gpm/ft. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 194: Well drawdown and specific capacity (hard)
+### 222: Well drawdown and specific capacity (hard)
 
 A well has a specific capacity of 12 gpm per ft of drawdown. If the drawdown is held at 35 ft, what yield in gpm is expected?
 
-- **A.** 23 gpm
+- **A.** 47 gpm
 - **B.** 3 gpm
-- **C.** 47 gpm
+- **C.** 23 gpm
 - **D.** 420 gpm
 
 **Answer: D. 420 gpm**
 
 Yield = specific capacity times drawdown. Substitute the stated values: 12 × 35 = 420 gpm. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 195: Pressure, head and well head pressure (medium)
+### 223: Pressure, head and well head pressure (medium)
 
 A gauge reads 54 psi. Use 1 psi = 2.31 ft of water. How many feet of head does that equal?
 
-- **A.** 23.4 ft
-- **B.** 124.7 ft
-- **C.** 249.5 ft
-- **D.** 56.3 ft
+- **A.** 56.3 ft
+- **B.** 23.4 ft
+- **C.** 124.7 ft
+- **D.** 249.5 ft
 
-**Answer: B. 124.7 ft**
+**Answer: C. 124.7 ft**
 
 Feet of head = psi times 2.31. Substitute the stated values: 54 × 2.31 = 124.7 ft. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 196: Pressure, head and well head pressure (hard)
+### 224: Pressure, head and well head pressure (hard)
 
 A pressure gauge on a closed well head sits at elevation 1240 ft and reads 31 psi. Use 1 psi = 2.31 ft of water. What is the water elevation in ft?
 
 - **A.** 1,311.6 ft
-- **B.** 71.6 ft
+- **B.** 1,271.0 ft
 - **C.** 1,168.4 ft
-- **D.** 1,271.0 ft
+- **D.** 71.6 ft
 
 **Answer: A. 1,311.6 ft**
 
 Water elevation = gauge elevation plus psi times 2.31. Substitute the stated values: 1240+31 × 2.31 = 1,311.6 ft. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 197: Pressure, head and well head pressure (medium)
+### 225: Pressure, head and well head pressure (medium)
 
 The water surface in a tank is 112 ft above a gauge. Use 1 psi = 2.31 ft of water. What is the static pressure in psi?
 
 - **A.** 0.02 psi
-- **B.** 258.72 psi
-- **C.** 48.48 psi
+- **B.** 48.48 psi
+- **C.** 258.72 psi
 - **D.** 109.69 psi
 
-**Answer: C. 48.48 psi**
+**Answer: B. 48.48 psi**
 
 Psi = feet of head divided by 2.31. Substitute the stated values: 112 ÷ 2.31 = 48.48 psi. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 198: Pressure, head and well head pressure (hard)
+### 226: Pressure, head and well head pressure (hard)
 
 A gauge at the base of a tank reads 65 psi. A second gauge 40 ft higher on the riser reads lower by the weight of the water between them. Use 0.433 psi per ft. What does the upper gauge read in psi?
 
-- **A.** 25.00 psi
-- **B.** 47.68 psi
+- **A.** 28.15 psi
+- **B.** 25.00 psi
 - **C.** 82.32 psi
-- **D.** 28.15 psi
+- **D.** 47.68 psi
 
-**Answer: B. 47.68 psi**
+**Answer: D. 47.68 psi**
 
 Upper psi = lower psi minus height times 0.433. Substitute the stated values: 65-40 × 0.433 = 47.68 psi. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 199: Unit conversions (medium)
+### 227: Unit conversions (medium)
 
 A well pumps 720 gpm. Use 1,440 min per day and 1 MG = 1,000,000 gal. What is the flow in MGD?
 
-- **A.** 1,036.80 MGD
-- **B.** 0.50 MGD
-- **C.** 43.20 MGD
-- **D.** 1.04 MGD
+- **A.** 0.50 MGD
+- **B.** 1,036.80 MGD
+- **C.** 1.04 MGD
+- **D.** 43.20 MGD
 
-**Answer: D. 1.04 MGD**
+**Answer: C. 1.04 MGD**
 
 MGD = gpm times 1440 divided by 1000000. Substitute the stated values: 720 × 1440 ÷ 1000000 = 1.04 MGD. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 200: Unit conversions (hard)
+### 228: Unit conversions (hard)
 
 A plant treats 3.6 MGD. Use 1,440 min per day and 1 MG = 1,000,000 gal. What is the flow in gpm?
 
 - **A.** 2,500 gpm
 - **B.** 150,000 gpm
-- **C.** 5,184 gpm
-- **D.** 3,600 gpm
+- **C.** 3,600 gpm
+- **D.** 5,184 gpm
 
 **Answer: A. 2,500 gpm**
 
 gpm = MGD times 1000000 divided by 1440. Substitute the stated values: 3.6 × 1000000 ÷ 1440 = 2,500 gpm. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 201: Unit conversions (medium)
+### 229: Unit conversions (medium)
 
 A tank holds 85000 gal. Use 1 ft³ = 7.48 gal. How many cubic feet of water is that?
 
-- **A.** 10,192 ft³
-- **B.** 11,364 ft³
+- **A.** 11,364 ft³
+- **B.** 10,192 ft³
 - **C.** 635,800 ft³
 - **D.** 1,136 ft³
 
-**Answer: B. 11,364 ft³**
+**Answer: A. 11,364 ft³**
 
 Cubic feet = gallons divided by 7.48. Substitute the stated values: 85000 ÷ 7.48 = 11,364 ft³. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 202: Unit conversions (hard)
+### 230: Unit conversions (hard)
 
 A reservoir holds 12 acre-ft. Use 1 acre-ft = 43,560 ft³, 1 ft³ = 7.48 gal and 1 MG = 1,000,000 gal. How many MG is that?
 
-- **A.** 3.91 MG
+- **A.** 3,909,945.60 MG
 - **B.** 89.76 MG
-- **C.** 0.52 MG
-- **D.** 3,909,945.60 MG
+- **C.** 3.91 MG
+- **D.** 0.52 MG
 
-**Answer: A. 3.91 MG**
+**Answer: C. 3.91 MG**
 
 MG = acre-ft times 43560 times 7.48 divided by 1000000. Substitute the stated values: 12 × 43560 × 7.48 ÷ 1000000 = 3.91 MG. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 203: Chemical dose in pounds per day (medium)
+### 231: Chemical dose in pounds per day (medium)
 
 A plant treats 3.5 MGD and applies 2.4 mg/L of chlorine. Use lb/day = flow (MGD) × dose (mg/L) × 8.34. How many lb/day of chlorine are fed?
 
-- **A.** 20.0 lb/day
-- **B.** 8.4 lb/day
-- **C.** 29.2 lb/day
+- **A.** 29.2 lb/day
+- **B.** 20.0 lb/day
+- **C.** 8.4 lb/day
 - **D.** 70.1 lb/day
 
 **Answer: D. 70.1 lb/day**
 
 lb/day = flow times dose times 8.34. Substitute the stated values: 3.5 × 2.4 × 8.34 = 70.1 lb/day. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 204: Chemical dose in pounds per day (medium)
+### 232: Chemical dose in pounds per day (medium)
 
 A well pumps 0.75 MGD and the target chlorine dose is 1.8 mg/L. Use lb/day = flow (MGD) × dose (mg/L) × 8.34. How many lb/day of chlorine are needed?
 
 - **A.** 15.0 lb/day
-- **B.** 6.3 lb/day
-- **C.** 11.3 lb/day
-- **D.** 1.4 lb/day
+- **B.** 11.3 lb/day
+- **C.** 1.4 lb/day
+- **D.** 6.3 lb/day
 
-**Answer: C. 11.3 lb/day**
+**Answer: B. 11.3 lb/day**
 
 lb/day = flow times dose times 8.34. Substitute the stated values: 0.75 × 1.8 × 8.34 = 11.3 lb/day. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 205: Chemical dose in pounds per day (hard)
+### 233: Chemical dose in pounds per day (hard)
 
 A plant treats 2.2 MGD and feeds 1.5 mg/L of 100 percent chlorine gas. Use lb/day = flow (MGD) × dose (mg/L) × 8.34. How many pounds are used in 7 days?
 
-- **A.** 27.5 lb
-- **B.** 192.7 lb
-- **C.** 23.1 lb
-- **D.** 1,348.6 lb
+- **A.** 192.7 lb
+- **B.** 1,348.6 lb
+- **C.** 27.5 lb
+- **D.** 23.1 lb
 
-**Answer: B. 192.7 lb**
+**Answer: A. 192.7 lb**
 
 Pounds per week = flow times dose times 8.34 times 7. Substitute the stated values: 2.2 × 1.5 × 8.34 × 7 = 192.7 lb. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 206: Chemical dose in pounds per day (hard)
+### 234: Chemical dose in pounds per day (hard)
 
 Flow is 4.2 MGD. The chlorine demand is 1.8 mg/L and a residual of 1.0 mg/L is wanted. Use dose = demand + residual and lb/day = flow (MGD) × dose (mg/L) × 8.34. How many lb/day of chlorine are needed?
 
-- **A.** 11.8 lb/day
-- **B.** 63.1 lb/day
-- **C.** 35.0 lb/day
-- **D.** 98.1 lb/day
+- **A.** 35.0 lb/day
+- **B.** 11.8 lb/day
+- **C.** 98.1 lb/day
+- **D.** 63.1 lb/day
 
-**Answer: D. 98.1 lb/day**
+**Answer: C. 98.1 lb/day**
 
 lb/day = flow times (demand plus residual) times 8.34. Substitute the stated values: 4.2 × (1.8+1.0) × 8.34 = 98.1 lb/day. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 207: Hypochlorite quantity for a stated strength (medium)
+### 235: Hypochlorite quantity for a stated strength (medium)
 
 A 12.5 percent sodium hypochlorite solution weighs 8.34 lb/gal in this problem, and 12.5 percent of that weight is available chlorine. How many gallons supply 40 lb of available chlorine?
 
-- **A.** 38.4 gal
-- **B.** 41.7 gal
-- **C.** 320.0 gal
-- **D.** 4.8 gal
+- **A.** 320.0 gal
+- **B.** 4.8 gal
+- **C.** 41.7 gal
+- **D.** 38.4 gal
 
-**Answer: A. 38.4 gal**
+**Answer: D. 38.4 gal**
 
 Gallons = pounds needed divided by (8.34 times strength as a decimal). Substitute the stated values: 40 ÷ (8.34 × 0.125) = 38.4 gal. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 208: Hypochlorite quantity for a stated strength (medium)
+### 236: Hypochlorite quantity for a stated strength (medium)
 
 Calcium hypochlorite is 65 percent available chlorine. How many pounds of the dry product supply 26 lb/day of chlorine?
 
-- **A.** 400.0 lb/day
-- **B.** 16.9 lb/day
-- **C.** 40.0 lb/day
+- **A.** 16.9 lb/day
+- **B.** 40.0 lb/day
+- **C.** 400.0 lb/day
 - **D.** 74.3 lb/day
 
-**Answer: C. 40.0 lb/day**
+**Answer: B. 40.0 lb/day**
 
 Pounds of product = chlorine needed divided by the decimal strength. Substitute the stated values: 26 ÷ 0.65 = 40.0 lb/day. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 209: Hypochlorite quantity for a stated strength (hard)
+### 237: Hypochlorite quantity for a stated strength (hard)
 
 A plant treats 0.8 MGD at a chlorine dose of 2.5 mg/L using 12 percent sodium hypochlorite. Use 8.34 lb/gal for the solution and lb/day = flow × dose × 8.34. How many gallons per day of solution are needed?
 
-- **A.** 2.0 gal/day
-- **B.** 0.2 gal/day
+- **A.** 16.7 gal/day
+- **B.** 2.0 gal/day
 - **C.** 139.0 gal/day
-- **D.** 16.7 gal/day
+- **D.** 0.2 gal/day
 
-**Answer: D. 16.7 gal/day**
+**Answer: A. 16.7 gal/day**
 
 Gallons/day = lb/day needed divided by (8.34 times strength as a decimal). Substitute the stated values: 0.8 × 2.5 × 8.34 ÷ (8.34 × 0.12) = 16.7 gal/day. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 210: Hypochlorite quantity for a stated strength (hard)
+### 238: Hypochlorite quantity for a stated strength (hard)
 
 A plant treats 1.2 MGD at a chlorine dose of 2 mg/L using 65 percent calcium hypochlorite. Use lb/day = flow × dose × 8.34. How many lb/day of the dry product are needed?
 
-- **A.** 13.0 lb/day
-- **B.** 30.8 lb/day
-- **C.** 20.0 lb/day
-- **D.** 3.7 lb/day
+- **A.** 3.7 lb/day
+- **B.** 13.0 lb/day
+- **C.** 30.8 lb/day
+- **D.** 20.0 lb/day
 
-**Answer: B. 30.8 lb/day**
+**Answer: C. 30.8 lb/day**
 
 Product lb/day = chlorine lb/day divided by the decimal strength. Substitute the stated values: 1.2 × 2 × 8.34 ÷ 0.65 = 30.8 lb/day. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 211: Chlorine solution strength (medium)
+### 239: Chlorine solution strength (medium)
 
 Use 1 percent = 10,000 mg/L. A solution contains 1.5 percent available chlorine. What is its strength in mg/L?
 
-- **A.** 15,000 mg/L
-- **B.** 15 mg/L
-- **C.** 1,500 mg/L
-- **D.** 150 mg/L
+- **A.** 15 mg/L
+- **B.** 15,000 mg/L
+- **C.** 150 mg/L
+- **D.** 1,500 mg/L
 
-**Answer: A. 15,000 mg/L**
+**Answer: B. 15,000 mg/L**
 
 mg/L = percent times 10,000. Substitute the stated values: 1.5 × 10000 = 15,000 mg/L. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 212: Chlorine solution strength (medium)
+### 240: Chlorine solution strength (medium)
 
 Use 1 percent = 10,000 mg/L. A chlorine solution is 8,000 mg/L. What is its strength as a percent?
 
-- **A.** 8.0 percent
-- **B.** 80.0 percent
-- **C.** 0.8 percent
-- **D.** 0.1 percent
+- **A.** 80.0 percent
+- **B.** 8.0 percent
+- **C.** 0.1 percent
+- **D.** 0.8 percent
 
-**Answer: C. 0.8 percent**
+**Answer: D. 0.8 percent**
 
 Percent = mg/L divided by 10,000. Substitute the stated values: 8000 ÷ 10000 = 0.8 percent. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 213: Chlorine solution strength (hard)
+### 241: Chlorine solution strength (hard)
 
 A 12.5 percent hypochlorite solution is diluted to make 50 gal of a 1 percent solution. Use C1 × V1 = C2 × V2. How many gallons of the 12.5 percent solution are needed?
 
 - **A.** 0.1 gal
-- **B.** 625.0 gal
-- **C.** 4.0 gal
-- **D.** 46.0 gal
+- **B.** 46.0 gal
+- **C.** 625.0 gal
+- **D.** 4.0 gal
 
-**Answer: C. 4.0 gal**
+**Answer: D. 4.0 gal**
 
 V1 = (C2 times V2) divided by C1. Substitute the stated values: 1 × 50 ÷ 12.5 = 4.0 gal. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 214: Chlorine demand and residual (medium)
+### 242: Chlorine demand and residual (medium)
 
 A water is dosed with 3.2 mg/L of chlorine and the residual after contact is 0.9 mg/L. Use demand = dose minus residual. What is the chlorine demand in mg/L?
 
-- **A.** 3.2 mg/L
+- **A.** 0.3 mg/L
 - **B.** 2.3 mg/L
 - **C.** 4.1 mg/L
-- **D.** 0.3 mg/L
+- **D.** 3.2 mg/L
 
 **Answer: B. 2.3 mg/L**
 
 Demand = dose minus residual. Substitute the stated values: 3.2-0.9 = 2.3 mg/L. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 215: Chlorine demand and residual (medium)
+### 243: Chlorine demand and residual (medium)
 
 The chlorine demand is 1.9 mg/L and the plant wants a 0.8 mg/L residual. Use dose = demand + residual. What dose in mg/L is needed?
 
@@ -2799,194 +3163,194 @@ The chlorine demand is 1.9 mg/L and the plant wants a 0.8 mg/L residual. Use dos
 
 Dose = demand plus residual. Substitute the stated values: 1.9+0.8 = 2.7 mg/L. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 216: Chlorine demand and residual (hard)
+### 244: Chlorine demand and residual (hard)
 
 A plant treats 1.8 MGD with a dose of 4.0 mg/L and a residual of 1.2 mg/L. Use demand = dose minus residual and lb/day = flow × concentration × 8.34. How many lb/day of chlorine are consumed by the demand?
 
 - **A.** 60.1 lb/day
 - **B.** 5.0 lb/day
-- **C.** 18.0 lb/day
-- **D.** 42.0 lb/day
+- **C.** 42.0 lb/day
+- **D.** 18.0 lb/day
 
-**Answer: D. 42.0 lb/day**
+**Answer: C. 42.0 lb/day**
 
 lb/day of demand = flow times (dose minus residual) times 8.34. Substitute the stated values: 1.8 × (4.0-1.2) × 8.34 = 42.0 lb/day. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 217: Feeder calibration and feed rate (medium)
+### 245: Feeder calibration and feed rate (medium)
 
 A calibration cylinder shows a feeder delivering 125 mL per minute. Use 3,785 mL per gal and 1,440 min per day. What is this feed rate in gal/day?
 
-- **A.** 5.7 gal/day
-- **B.** 47.6 gal/day
-- **C.** 180,000.0 gal/day
-- **D.** 328.6 gal/day
+- **A.** 328.6 gal/day
+- **B.** 180,000.0 gal/day
+- **C.** 47.6 gal/day
+- **D.** 5.7 gal/day
 
-**Answer: B. 47.6 gal/day**
+**Answer: C. 47.6 gal/day**
 
 gal/day = mL/min times 1,440 divided by 3,785. Substitute the stated values: 125 × 1440 ÷ 3785 = 47.6 gal/day. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 218: Feeder calibration and feed rate (medium)
+### 246: Feeder calibration and feed rate (medium)
 
 A feeder pumps 240 mL in 4 min during a calibration test. Use 3,785 mL per gal and 1,440 min per day. What is the feed rate in gal/day?
 
-- **A.** 190.4 gal/day
-- **B.** 157.7 gal/day
-- **C.** 86,400.0 gal/day
-- **D.** 22.8 gal/day
+- **A.** 22.8 gal/day
+- **B.** 86,400.0 gal/day
+- **C.** 190.4 gal/day
+- **D.** 157.7 gal/day
 
-**Answer: D. 22.8 gal/day**
+**Answer: A. 22.8 gal/day**
 
 mL/min = volume divided by time; gal/day = mL/min times 1,440 divided by 3,785. Substitute the stated values: 240 ÷ 4 × 1440 ÷ 3785 = 22.8 gal/day. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 219: Feeder calibration and feed rate (hard)
+### 247: Feeder calibration and feed rate (hard)
 
 A feeder delivers 30 gal/day of a 12 percent hypochlorite solution. Use 8.34 lb/gal for the solution and 12 percent available chlorine by weight. How many lb/day of available chlorine are fed?
 
 - **A.** 3.6 lb/day
-- **B.** 2,085.0 lb/day
-- **C.** 30.0 lb/day
+- **B.** 30.0 lb/day
+- **C.** 2,085.0 lb/day
 - **D.** 250.2 lb/day
 
-**Answer: C. 30.0 lb/day**
+**Answer: B. 30.0 lb/day**
 
 lb/day = gal/day times 8.34 times strength as a decimal. Substitute the stated values: 30 × 8.34 × 0.12 = 30.0 lb/day. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 220: Feeder calibration and feed rate (medium)
+### 248: Feeder calibration and feed rate (medium)
 
 A feeder is to deliver 38 gal/day. Use 3,785 mL per gal and 1,440 min per day. What mL/min should the calibration cylinder show?
 
-- **A.** 99.9 mL/min
-- **B.** 14.5 mL/min
-- **C.** 2,397.2 mL/min
-- **D.** 143,830.0 mL/min
+- **A.** 14.5 mL/min
+- **B.** 2,397.2 mL/min
+- **C.** 143,830.0 mL/min
+- **D.** 99.9 mL/min
 
-**Answer: A. 99.9 mL/min**
+**Answer: D. 99.9 mL/min**
 
 mL/min = gal/day times 3,785 divided by 1,440. Substitute the stated values: 38 × 3785 ÷ 1440 = 99.9 mL/min. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 221: Feeder calibration and feed rate (hard)
+### 249: Feeder calibration and feed rate (hard)
 
 A plant treats 0.5 MGD and wants a 2 mg/L chlorine dose from a 10 percent solution weighing 8.9 lb/gal. Use lb/day = flow × dose × 8.34. How many gal/day of solution must be fed?
 
-- **A.** 93.7 gal/day
+- **A.** 10.0 gal/day
 - **B.** 9.4 gal/day
-- **C.** 10.0 gal/day
+- **C.** 93.7 gal/day
 - **D.** 1.1 gal/day
 
 **Answer: B. 9.4 gal/day**
 
 gal/day = lb/day needed divided by (lb/gal times strength as a decimal). Substitute the stated values: 0.5 × 2 × 8.34 ÷ (8.9 × 0.10) = 9.4 gal/day. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 222: Feeder calibration and feed rate (hard)
+### 250: Feeder calibration and feed rate (hard)
 
 A dry chemical that is 80 percent pure is fed at a 3 mg/L dose to 2.4 MGD. Use lb/day = flow × dose × 8.34. How many lb/day of the dry product are fed?
 
-- **A.** 48.0 lb/day
-- **B.** 60.0 lb/day
-- **C.** 9.0 lb/day
-- **D.** 75.1 lb/day
+- **A.** 75.1 lb/day
+- **B.** 9.0 lb/day
+- **C.** 60.0 lb/day
+- **D.** 48.0 lb/day
 
-**Answer: D. 75.1 lb/day**
+**Answer: A. 75.1 lb/day**
 
 lb/day of product = flow times dose times 8.34 divided by decimal purity. Substitute the stated values: 3 × 2.4 × 8.34 ÷ 0.8 = 75.1 lb/day. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 223: Meter readings and flow (medium)
+### 251: Meter readings and flow (medium)
 
 A totalizing meter reads 483,920 gal at the start of a test and 512,450 gal at the end. How many gallons passed through the meter?
 
-- **A.** 996,370 gal
-- **B.** 28,350 gal
+- **A.** 2,853 gal
+- **B.** 996,370 gal
 - **C.** 28,530 gal
-- **D.** 2,853 gal
+- **D.** 28,350 gal
 
 **Answer: C. 28,530 gal**
 
 Volume = ending reading minus starting reading. Substitute the stated values: 512450-483920 = 28,530 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 224: Meter readings and flow (medium)
+### 252: Meter readings and flow (medium)
 
 A meter register reads 04512 at the start and 04987 at the end. Each unit on the register stands for 100 gal. How many gallons passed?
 
-- **A.** 47,500 gal
-- **B.** 475 gal
+- **A.** 475 gal
+- **B.** 9,499 gal
 - **C.** 4,750 gal
-- **D.** 9,499 gal
+- **D.** 47,500 gal
 
-**Answer: A. 47,500 gal**
+**Answer: D. 47,500 gal**
 
 Gallons = (end minus start) times 100. Substitute the stated values: (4987-4512) × 100 = 47,500 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 225: Meter readings and flow (medium)
+### 253: Meter readings and flow (medium)
 
 A meter shows 18,600 gal passed in 45 min. What is the average flow in gpm?
 
-- **A.** 837,000.0 gpm
-- **B.** 413.3 gpm
-- **C.** 310.0 gpm
-- **D.** 6.9 gpm
+- **A.** 413.3 gpm
+- **B.** 837,000.0 gpm
+- **C.** 6.9 gpm
+- **D.** 310.0 gpm
 
-**Answer: B. 413.3 gpm**
+**Answer: A. 413.3 gpm**
 
 gpm = gallons divided by minutes. Substitute the stated values: 18600 ÷ 45 = 413.3 gpm. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 226: Meter readings and flow (hard)
+### 254: Meter readings and flow (hard)
 
 A meter registers in cubic feet. The reading was 120,400 ft³ at 7:00 a.m. and 126,150 ft³ at 7:00 a.m. the next day. Use 7.48 gal per ft³. What is the daily flow in gal/day?
 
-- **A.** 47,955 gal/day
-- **B.** 769 gal/day
-- **C.** 5,750 gal/day
-- **D.** 43,010 gal/day
+- **A.** 5,750 gal/day
+- **B.** 47,955 gal/day
+- **C.** 43,010 gal/day
+- **D.** 769 gal/day
 
-**Answer: D. 43,010 gal/day**
+**Answer: C. 43,010 gal/day**
 
 gal/day = (end minus start) times 7.48. Substitute the stated values: (126150-120400) × 7.48 = 43,010 gal/day. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 227: Pressure and head of water (medium)
+### 255: Pressure and head of water (medium)
 
 Use 2.31 ft of head per psi. What head in feet corresponds to 40 psi?
 
 - **A.** 17.3 ft
-- **B.** 42.3 ft
-- **C.** 92.4 ft
-- **D.** 924.0 ft
+- **B.** 92.4 ft
+- **C.** 924.0 ft
+- **D.** 42.3 ft
 
-**Answer: C. 92.4 ft**
+**Answer: B. 92.4 ft**
 
 Head = psi times 2.31. Substitute the stated values: 40 × 2.31 = 92.4 ft. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 228: Pressure and head of water (medium)
+### 256: Pressure and head of water (medium)
 
 Use 2.31 ft of head per psi. What pressure in psi corresponds to 150 ft of water?
 
-- **A.** 64.9 psi
-- **B.** 6.5 psi
-- **C.** 147.7 psi
-- **D.** 346.5 psi
+- **A.** 6.5 psi
+- **B.** 147.7 psi
+- **C.** 346.5 psi
+- **D.** 64.9 psi
 
-**Answer: A. 64.9 psi**
+**Answer: D. 64.9 psi**
 
 psi = head divided by 2.31. Substitute the stated values: 150 ÷ 2.31 = 64.9 psi. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 229: Pressure and head of water (hard)
+### 257: Pressure and head of water (hard)
 
 A pump discharge gauge reads 62 psi and the suction gauge reads 8 psi, both at the same elevation. Use 2.31 ft per psi. What is the total head the pump adds in feet?
 
-- **A.** 124.7 ft
+- **A.** 143.2 ft
 - **B.** 54.0 ft
 - **C.** 161.7 ft
-- **D.** 143.2 ft
+- **D.** 124.7 ft
 
-**Answer: A. 124.7 ft**
+**Answer: D. 124.7 ft**
 
 Head = (discharge psi minus suction psi) times 2.31. Substitute the stated values: (62-8) × 2.31 = 124.7 ft. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 230: Pressure and head of water (medium)
+### 258: Pressure and head of water (medium)
 
 A gauge sits at the base of a tank where the water is 28 ft deep. Use 2.31 ft of head per psi. What psi does the gauge read?
 
-- **A.** 1.2 psi
-- **B.** 25.7 psi
+- **A.** 25.7 psi
+- **B.** 1.2 psi
 - **C.** 12.1 psi
 - **D.** 64.7 psi
 
@@ -2994,85 +3358,85 @@ A gauge sits at the base of a tank where the water is 28 ft deep. Use 2.31 ft of
 
 psi = depth divided by 2.31. Substitute the stated values: 28 ÷ 2.31 = 12.1 psi. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 231: Solution concentration (medium)
+### 259: Solution concentration (medium)
 
 A student dissolves 250 mg of a chemical and brings the solution to 0.5 L. What is the concentration in mg/L?
 
 - **A.** 1,000.0 mg/L
-- **B.** 0.5 mg/L
+- **B.** 500.0 mg/L
 - **C.** 125.0 mg/L
-- **D.** 500.0 mg/L
+- **D.** 0.5 mg/L
 
-**Answer: D. 500.0 mg/L**
+**Answer: B. 500.0 mg/L**
 
 mg/L = mg divided by liters. Substitute the stated values: 250 ÷ 0.5 = 500.0 mg/L. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 232: Solution concentration (medium)
+### 260: Solution concentration (medium)
 
 A lab dissolves 12 g of a chemical and makes it up to 4 L. Use 1 g = 1,000 mg. What is the concentration in mg/L?
 
-- **A.** 12,000 mg/L
-- **B.** 3,000 mg/L
-- **C.** 3 mg/L
-- **D.** 48,000 mg/L
+- **A.** 3,000 mg/L
+- **B.** 3 mg/L
+- **C.** 48,000 mg/L
+- **D.** 12,000 mg/L
 
-**Answer: B. 3,000 mg/L**
+**Answer: A. 3,000 mg/L**
 
 mg/L = grams times 1000 divided by liters. Substitute the stated values: 12 × 1000 ÷ 4 = 3,000 mg/L. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 233: Solution concentration (hard)
+### 261: Solution concentration (hard)
 
 A standard is made by dissolving 0.75 g and diluting to 500 mL. Use 1 g = 1,000 mg and 1 L = 1,000 mL. What is the concentration in mg/L?
 
-- **A.** 1,500.0 mg/L
-- **B.** 750.0 mg/L
-- **C.** 1.5 mg/L
-- **D.** 375.0 mg/L
+- **A.** 375.0 mg/L
+- **B.** 1.5 mg/L
+- **C.** 750.0 mg/L
+- **D.** 1,500.0 mg/L
 
-**Answer: A. 1,500.0 mg/L**
+**Answer: D. 1,500.0 mg/L**
 
 mg/L = (grams times 1000) divided by (mL divided by 1000). Substitute the stated values: 0.75 × 1000 ÷ (500 ÷ 1000) = 1,500.0 mg/L. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 234: Solution concentration (hard)
+### 262: Solution concentration (hard)
 
 A solution holds 18 g of salt in 600 mL. Use 1 L = 1,000 mL. What is the concentration in g/L?
 
-- **A.** 0.0 g/L
-- **B.** 3.0 g/L
-- **C.** 30.0 g/L
-- **D.** 10,800.0 g/L
+- **A.** 10,800.0 g/L
+- **B.** 30.0 g/L
+- **C.** 3.0 g/L
+- **D.** 0.0 g/L
 
-**Answer: C. 30.0 g/L**
+**Answer: B. 30.0 g/L**
 
 g/L = grams divided by (mL divided by 1000). Substitute the stated values: 18 ÷ (600 ÷ 1000) = 30.0 g/L. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 235: Solution concentration (medium)
+### 263: Solution concentration (medium)
 
 A lab dissolves 2 g of a chemical in water and makes up 800 mL. Use 1 g = 1,000 mg and 1 L = 1,000 mL. What is the concentration in mg/L?
 
-- **A.** 1,600.0 mg/L
+- **A.** 2,000.0 mg/L
 - **B.** 2.5 mg/L
-- **C.** 2,000.0 mg/L
-- **D.** 2,500.0 mg/L
+- **C.** 2,500.0 mg/L
+- **D.** 1,600.0 mg/L
 
-**Answer: D. 2,500.0 mg/L**
+**Answer: C. 2,500.0 mg/L**
 
 mg/L = grams times 1000 divided by liters. Substitute the stated values: 2 × 1000 ÷ (800 ÷ 1000) = 2,500.0 mg/L. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 236: Dilution and chemical needed (medium)
+### 264: Dilution and chemical needed (medium)
 
 A stock standard is 100 mg/L. Use C1 × V1 = C2 × V2. How many mL of stock are needed to make 500 mL of a 10 mg/L standard?
 
-- **A.** 5,000 mL
-- **B.** 50 mL
-- **C.** 450 mL
-- **D.** 5 mL
+- **A.** 50 mL
+- **B.** 450 mL
+- **C.** 5 mL
+- **D.** 5,000 mL
 
-**Answer: B. 50 mL**
+**Answer: A. 50 mL**
 
 V1 = (C2 times V2) divided by C1. Substitute the stated values: 10 × 500 ÷ 100 = 50 mL. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 237: Dilution and chemical needed (hard)
+### 265: Dilution and chemical needed (hard)
 
 A stock solution is 1,000 mg/L. Use C1 × V1 = C2 × V2 and 1 L = 1,000 mL. How many mL of stock are needed to make 2 L of a 25 mg/L solution?
 
@@ -3085,51 +3449,51 @@ A stock solution is 1,000 mg/L. Use C1 × V1 = C2 × V2 and 1 L = 1,000 mL. How 
 
 V1 in liters = (C2 times V2) divided by C1, then times 1000. Substitute the stated values: 25 × 2 ÷ 1000 × 1000 = 50.0 mL. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 238: Dilution and chemical needed (medium)
+### 266: Dilution and chemical needed (medium)
 
 How many mg of a pure chemical are needed to make 3 L of a solution at 30 mg/L?
 
-- **A.** 900 mg
+- **A.** 10 mg
 - **B.** 33 mg
 - **C.** 90 mg
-- **D.** 10 mg
+- **D.** 900 mg
 
 **Answer: C. 90 mg**
 
 mg = concentration times volume in liters. Substitute the stated values: 30 × 3 = 90 mg. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 239: Dilution and chemical needed (hard)
+### 267: Dilution and chemical needed (hard)
 
 A chemical is 80 percent pure. Use mg of product = mg of pure chemical divided by the decimal purity. How many mg of product are needed to make 2 L at 40 mg/L?
 
 - **A.** 160 mg
-- **B.** 100 mg
+- **B.** 80 mg
 - **C.** 64 mg
-- **D.** 80 mg
+- **D.** 100 mg
 
-**Answer: B. 100 mg**
+**Answer: D. 100 mg**
 
 Product mg = (concentration times liters) divided by decimal purity. Substitute the stated values: 40 × 2 ÷ 0.8 = 100 mg. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 240: Dilution and chemical needed (medium)
+### 268: Dilution and chemical needed (medium)
 
 How many mg of a pure chemical are needed to make 4 L of a solution at 2.5 mg/L?
 
-- **A.** 1.6 mg
-- **B.** 6.5 mg
-- **C.** 2.5 mg
-- **D.** 10.0 mg
+- **A.** 2.5 mg
+- **B.** 10.0 mg
+- **C.** 6.5 mg
+- **D.** 1.6 mg
 
-**Answer: D. 10.0 mg**
+**Answer: B. 10.0 mg**
 
 mg = concentration times volume in liters. Substitute the stated values: 2.5 × 4 = 10.0 mg. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 241: Percent strength and replicate averages (medium)
+### 269: Percent strength and replicate averages (medium)
 
 Use 1 percent = 10,000 mg/L. A solution is 0.5 percent. What is its strength in mg/L?
 
-- **A.** 50 mg/L
-- **B.** 500 mg/L
+- **A.** 500 mg/L
+- **B.** 50 mg/L
 - **C.** 50,000 mg/L
 - **D.** 5,000 mg/L
 
@@ -3137,51 +3501,51 @@ Use 1 percent = 10,000 mg/L. A solution is 0.5 percent. What is its strength in 
 
 mg/L = percent times 10,000. Substitute the stated values: 0.5 × 10000 = 5,000 mg/L. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 242: Percent strength and replicate averages (hard)
+### 270: Percent strength and replicate averages (hard)
 
 Use 1 percent = 10,000 mg/L and 1 L = 1,000 mL. A 10 mL portion of a 1 percent solution is added to water to make 1 L. What is the final concentration in mg/L?
 
 - **A.** 1 mg/L
 - **B.** 100 mg/L
-- **C.** 1,000 mg/L
-- **D.** 10 mg/L
+- **C.** 10 mg/L
+- **D.** 1,000 mg/L
 
 **Answer: B. 100 mg/L**
 
 mg/L = (percent times 10,000 times mL) divided by total mL. Substitute the stated values: 1 × 10000 × 10 ÷ 1000 = 100 mg/L. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 243: Percent strength and replicate averages (medium)
+### 271: Percent strength and replicate averages (medium)
 
 Four replicate turbidity readings are 0.32, 0.28, 0.30 and 0.34 NTU. What is the average in NTU?
 
 - **A.** 0.31 NTU
-- **B.** 1.24 NTU
-- **C.** 0.34 NTU
-- **D.** 0.25 NTU
+- **B.** 0.34 NTU
+- **C.** 0.25 NTU
+- **D.** 1.24 NTU
 
 **Answer: A. 0.31 NTU**
 
 Average = sum of readings divided by number of readings. Substitute the stated values: (0.32+0.28+0.30+0.34) ÷ 4 = 0.31 NTU. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 244: Percent strength and replicate averages (hard)
+### 272: Percent strength and replicate averages (hard)
 
 Four free chlorine readings are 0.8, 1.1, 0.9 and 1.0 mg/L. A total chlorine reading is 1.45 mg/L. Use combined = total minus the average free chlorine. What is the combined chlorine in mg/L?
 
-- **A.** 0.45 mg/L
+- **A.** 0.95 mg/L
 - **B.** 2.40 mg/L
 - **C.** 0.50 mg/L
-- **D.** 0.95 mg/L
+- **D.** 0.45 mg/L
 
 **Answer: C. 0.50 mg/L**
 
 Combined = total minus (sum of free readings divided by 4). Substitute the stated values: 1.45-(0.8+1.1+0.9+1.0) ÷ 4 = 0.50 mg/L. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 245: Pressure, container volume and hazard dilution (medium)
+### 273: Pressure, container volume and hazard dilution (medium)
 
 Use 1 psi = 2.31 ft of water. A gauge on a chemical feed line reads 26 psi. What is the head in feet of water?
 
-- **A.** 6.0 ft
-- **B.** 11.3 ft
+- **A.** 11.3 ft
+- **B.** 6.0 ft
 - **C.** 60.1 ft
 - **D.** 28.3 ft
 
@@ -3189,67 +3553,93 @@ Use 1 psi = 2.31 ft of water. A gauge on a chemical feed line reads 26 psi. What
 
 Head (ft) = psi times 2.31. Substitute the stated values: 26 × 2.31 = 60.1 ft. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
-### 246: Pressure, container volume and hazard dilution (medium)
+### 274: Pressure, container volume and hazard dilution (medium)
 
 Use 1 ft of water = 0.433 psi. A tank of water has a depth of 14 ft. What is the pressure at the bottom in psi?
 
-- **A.** 6.06 psi
-- **B.** 32.33 psi
-- **C.** 14.43 psi
-- **D.** 6.37 psi
+- **A.** 14.43 psi
+- **B.** 6.37 psi
+- **C.** 32.33 psi
+- **D.** 6.06 psi
 
-**Answer: A. 6.06 psi**
+**Answer: D. 6.06 psi**
 
 Pressure (psi) = depth times 0.433. Substitute the stated values: 14 × 0.433 = 6.06 psi. Round only the final result to 2 decimal place(s). The result uses the assumptions stated in the question.
 
-### 247: Pressure, container volume and hazard dilution (hard)
+### 275: Pressure, container volume and hazard dilution (hard)
 
 A cylindrical chemical tank is 4 ft in diameter and 5 ft high. Use volume = 0.785 x D squared x H and 1 ft3 = 7.48 gal. How many gallons does it hold when full?
 
-- **A.** 63 gal
+- **A.** 117 gal
 - **B.** 470 gal
-- **C.** 117 gal
+- **C.** 63 gal
 - **D.** 1,879 gal
 
 **Answer: B. 470 gal**
 
 Gallons = 0.785 times D squared times H times 7.48. Substitute the stated values: 0.785 × 4 × 4 × 5 × 7.48 = 470 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 248: Pressure, container volume and hazard dilution (medium)
+### 276: Pressure, container volume and hazard dilution (medium)
 
 A cylindrical drum is 2 ft in diameter and 3 ft high. Use volume = 0.785 x D squared x H and 1 ft3 = 7.48 gal. How many gallons does it hold when full?
 
-- **A.** 71 gal
-- **B.** 141 gal
-- **C.** 18 gal
-- **D.** 70 gal
+- **A.** 70 gal
+- **B.** 18 gal
+- **C.** 71 gal
+- **D.** 141 gal
 
-**Answer: D. 70 gal**
+**Answer: A. 70 gal**
 
 Gallons = 0.785 times D squared times H times 7.48. Substitute the stated values: 0.785 × 2 × 2 × 3 × 7.48 = 70 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 249: Chemical strength conversions (medium)
+### 277: Chemical strength conversions (medium)
 
 Use 1 percent = 10,000 mg/L. A hypochlorite stock is 12.5 percent. What is its strength in mg/L?
 
-- **A.** 1,250,000 mg/L
-- **B.** 125,000 mg/L
-- **C.** 12,500 mg/L
-- **D.** 1,250 mg/L
+- **A.** 1,250 mg/L
+- **B.** 12,500 mg/L
+- **C.** 125,000 mg/L
+- **D.** 1,250,000 mg/L
 
-**Answer: B. 125,000 mg/L**
+**Answer: C. 125,000 mg/L**
 
 mg/L = percent times 10,000. Substitute the stated values: 12.5 × 10000 = 125,000 mg/L. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 250: Chemical strength conversions (hard)
+### 278: Chemical strength conversions (hard)
 
 Use 1 percent = 10,000 mg/L. A spill-cleanup solution must be diluted from 5 percent to 0.5 percent. How many gallons of water must be added to 2 gal of the 5 percent solution? Use C1 x V1 = C2 x V2.
 
 - **A.** 18 gal
-- **B.** 19 gal
-- **C.** 20 gal
-- **D.** 10 gal
+- **B.** 20 gal
+- **C.** 10 gal
+- **D.** 19 gal
 
 **Answer: A. 18 gal**
 
 Added water = (C1 times V1 divided by C2) minus V1. Substitute the stated values: (5 × 2 ÷ 0.5)-2 = 18 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
+
+### 279: Well head pressure and feet of head (medium)
+
+A gauge on a well head reads 48 psi. Use 2.31 ft of water per psi and 0.433 psi per ft. How many feet of head does the gauge reading equal?
+
+- **A.** 48.0 ft
+- **B.** 110.9 ft
+- **C.** 20.8 ft
+- **D.** 50.3 ft
+
+**Answer: B. 110.9 ft**
+
+Feet of head = psi times 2.31. Substitute the stated values: 48 × 2.31 = 110.9 ft. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
+
+### 280: Well head pressure and feet of head (hard)
+
+A gauge on a well head reads 38 psi. A second tap on the same pipe sits 25 ft lower. Use 0.433 psi per ft and 2.31 ft per psi. What is the pressure at the lower tap in psi?
+
+- **A.** 63.0 psi
+- **B.** 95.8 psi
+- **C.** 27.2 psi
+- **D.** 48.8 psi
+
+**Answer: D. 48.8 psi**
+
+Lower psi = upper psi plus drop in feet times 0.433. Substitute the stated values: 38+25 × 0.433 = 48.8 psi. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
