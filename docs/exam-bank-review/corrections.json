@@ -4619,7 +4619,8 @@
     "explanation": "An overflow exposes people to raw sewage and can reach a watercourse. The first priorities are to keep people away, report it and begin the facility's spill response steps. Sending sewage to a storm drain moves the pollution into a receiving water.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 155470,
@@ -4650,7 +4651,8 @@
     "explanation": "Grease, grit and roots build up in sewers and cut the flow area. Routine cleaning keeps the pipe at its design capacity and prevents blockages and backups.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 155473,
@@ -4864,7 +4866,8 @@
     "explanation": "Inflow enters directly through sources such as cross-connected roof drains or manhole covers, so it appears quickly with rainfall and ends quickly. Infiltration through cracks and joints rises and falls more slowly with the groundwater level.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 155511,
@@ -4942,7 +4945,8 @@
     "explanation": "Hydrogen sulfide smells like rotten eggs at low concentrations, but at higher levels it paralyses the sense of smell. A lack of odour is not a sign that the space is safe, so a gas monitor must be used.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 155539,
@@ -7584,7 +7588,8 @@
     "explanation": "Flowing water has momentum. When a valve closes quickly the water is stopped suddenly and the pressure spikes along the main. Closing slowly lets the velocity fall gradually.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 154738,
@@ -13047,7 +13052,8 @@
     "explanation": "When a pump stops, the liquid in the force main would flow back toward the wet well. The check valve closes and keeps it in the line, which also protects the idle pump from spinning backward.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 185239,
@@ -13078,7 +13084,8 @@
     "explanation": "When sewage sits in a full pipe for a long time the dissolved oxygen is used up. Bacteria then reduce sulfate to hydrogen sulfide, which is released at discharge points and causes odour, corrosion and safety hazards.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 185248,
@@ -25440,7 +25447,8 @@
      }
     ]
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 240889,
@@ -26739,7 +26747,8 @@
     "explanation": "Chlorine demand is the dose added minus the residual that remains. It is consumed by organic matter, iron, manganese, ammonia and other substances in the water.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 35148,
@@ -26890,7 +26899,8 @@
     "explanation": "Coagulant is mixed in first, flocculation grows the floc, sedimentation settles it, filtration removes what is left and disinfection is the final barrier.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 35171,
@@ -26921,7 +26931,8 @@
     "explanation": "As a filter runs, particles fill the spaces in the media and head loss rises. Reversing the flow lifts and cleans the bed and washes the solids to waste.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 35172,
@@ -27767,7 +27778,8 @@
     "explanation": "A day tank holds about a day's use of chemical close to the feed pump. It limits the amount at hand and lets the operator check the feed rate by watching the level drop.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 35435,
@@ -29212,7 +29224,8 @@
     "explanation": "SVI is the volume in mL occupied by one gram of settled sludge. A high value means the floc is light and settles slowly, which risks solids carrying over the clarifier weir.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 60446,
@@ -36135,7 +36148,8 @@
     "explanation": "In the anoxic zone there is no free dissolved oxygen, so bacteria use nitrate as the oxygen source and release nitrogen gas. This is denitrification and it removes nitrogen from the water.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 44266,
@@ -36166,7 +36180,8 @@
     "explanation": "Treated effluent can leave with low dissolved oxygen, especially after disinfection or denitrification. Aerating it before release helps keep the receiving water able to support fish.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 44302,
@@ -48253,7 +48268,8 @@
     "explanation": "A composite is made from many small portions taken over time or in proportion to flow. It represents the average conditions, while a grab sample shows only the moment it was taken.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 45037,
@@ -50206,7 +50222,8 @@
      }
     ]
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 42755,
@@ -50246,7 +50263,8 @@
      }
     ]
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 42759,
@@ -54413,7 +54431,8 @@
     "explanation": "A residual that remains in the pipes keeps disinfecting as the water travels, and it gives a warning if contamination enters. Without it, bacteria can regrow in the system.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 43013,
@@ -55040,7 +55059,8 @@
     "explanation": "The barriers include source protection, treatment, a protected distribution system and monitoring. Each layer backs up the others.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 43307,
@@ -55071,7 +55091,8 @@
     "explanation": "UVT is the fraction of UV light that gets through the water over a set path length. Lower UVT means more light is absorbed, so less reaches the organisms and the UV dose falls.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 43308,
@@ -55102,7 +55123,8 @@
     "explanation": "An SOP documents how a task should be done safely and correctly. It helps staff on different shifts get the same result and gives new operators a reference.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 43310,
@@ -55871,7 +55893,8 @@
      }
     ]
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 270004,
@@ -60975,7 +60998,8 @@
     "explanation": "An air gap is a physical open space between the supply outlet and the possible source of contamination. Nothing can flow back across it, unlike mechanical devices that can foul or fail.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 91396,
@@ -61066,7 +61090,8 @@
     "explanation": "Utilities often need to place pipes across private land. An easement gives that right without transferring ownership of the land.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 91438,
@@ -61307,7 +61332,8 @@
     "explanation": "A cross-connection lets contaminants enter the potable system if the pressure drops or flow reverses. Backflow prevention devices are used to protect against it.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 420020,
@@ -61788,7 +61814,8 @@
     "explanation": "Water quality can change as it travels through pipes, storage and dead ends. Sampling around the system shows what customers actually get.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 40859,
@@ -61879,7 +61906,8 @@
     "explanation": "Each log is a factor of ten: 1-log is 90 percent, 2-log is 99 percent, 3-log is 99.9 percent and 4-log is 99.99 percent.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 40864,
@@ -62090,7 +62118,8 @@
     "explanation": "The plan must tell people who to call, who does what, and what to do, so the system can respond quickly when something goes wrong.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 40885,
@@ -62448,7 +62477,8 @@
      }
     ]
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 40929,
@@ -62509,7 +62539,8 @@
     "explanation": "Bacteria keep living and either die off or grow in the bottle. If the sample is held too long or warm, the count no longer reflects the water that was sampled.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 40952,
@@ -62570,7 +62601,8 @@
     "explanation": "Lead can leach from pipe and plumbing, especially in water that has stood in the pipe for hours or has corrosive qualities. Lead is harmful to health, especially for children.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 40965,
@@ -62601,7 +62633,8 @@
     "explanation": "Chlorine would keep disinfecting after collection and give a false low count. Sodium thiosulfate removes the residual at the time of sampling.",
     "steps": null
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 40966,
@@ -62834,7 +62867,8 @@
      }
     ]
    },
-   "replacement": true
+   "replacement": true,
+   "action": "delete_original_and_add_replacement"
   },
   {
    "id": 41024,
@@ -63403,5 +63437,6 @@
    }
   }
  ],
- "replacements": 34
+ "replacements": 34,
+ "deleteList": 34
 }

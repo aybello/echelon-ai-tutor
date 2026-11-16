@@ -88,7 +88,8 @@ Review of every row of the production `questions` table, using the read-only exp
 ## Files
 
 - `corrections.json`: every finding, with bank, question number, id, verdict, reviewer note, the original question and a full corrected question.
-- `replacements.json`: the 34 new questions that replace findings that could not be repaired.
+- `delete-list.json`: the 34 questions that could not be repaired and should be deleted from the table (by id).
+- `replacements.json`: the 34 new questions written for them, optional to add.
 - `needs-source-check.txt`: findings that rest on unconfirmed facts.
 - `units-unflagged-candidates.json`: question ids per bank with US-unit terms that no reviewer flagged.
 - `MANUS-REQUEST.md`: what Manus should do with these.
