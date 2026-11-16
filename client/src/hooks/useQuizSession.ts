@@ -17,7 +17,8 @@
  */
 
 import { useState, useCallback, useMemo, useEffect, useRef } from "react";
-import { useSearch } from "wouter";
+import { useLocation, useSearch } from "wouter";
+import { legacyQuick10Redirect } from "@/lib/nextStepHref";
 import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
 import { getAnonymousAnalyticsId } from "@/lib/anonymousAnalytics";
@@ -271,6 +272,12 @@ export function useQuizSession({
   // ── URL params ─────────────────────────────────────────────────────────────
   const searchString = useSearch();
   const _urlParams = new URLSearchParams(searchString);
+  const [, navigateTo] = useLocation();
+  // Old links to the in-page Quick 10 now open the Quick 10 screen, which chooses the questions on the server.
+  const legacyQuick10Target = legacyQuick10Redirect(_urlParams.get("mode"), examType, searchString);
+  useEffect(() => {
+    if (legacyQuick10Target) navigateTo(legacyQuick10Target, { replace: true });
+  }, [legacyQuick10Target, navigateTo]);
   const initialCalcOnly = _urlParams.get("calcOnly") === "true";
   const initialMode = (() => {
     const m = _urlParams.get("mode");

@@ -127,6 +127,8 @@ Before building anything new, check these first:
 
 | Component | Path | Use for |
 |---|---|---|
+| NextStepCard / Quick10Button | `client/src/components/NextStepCard.tsx`, `Quick10Button.tsx` | "What next" suggestion on quiz, Quick 10 and mock results (server-picked, rule in `shared/nextStep.ts`); one-tap Quick 10 button on the dashboard |
+| PracticeSessionRail | `client/src/components/PracticeSessionRail.tsx` | Desktop side panel on the practice page: this session's accuracy by topic and the missed-question count |
 | `SiteNav` | `components/SiteNav.tsx` | Top navigation bar — used on all public pages |
 | `MobileBottomNav` | `components/MobileBottomNav.tsx` | Mobile nav — used on all public pages |
 | `DashboardLayout` | `components/DashboardLayout.tsx` | Admin/dashboard sidebar layout |
@@ -175,6 +177,7 @@ All procedures are accessed via `trpc.<router>.<procedure>`.
 
 | Router | Prefix | Key procedures |
 |---|---|---|
+| quick10 | `quick10.*` | `courses`, `start` (ten questions chosen server-side, no answer key), `answer` (saves via `quiz.logAttempt`, then reveals the key) |
 | `system` | `trpc.system.*` | `notifyOwner` |
 | `admin` | `trpc.admin.*` | Admin CRUD, user management |
 | `stripe` | `trpc.stripe.*` | `createCheckoutSession`, `getMyPurchases`, `getPurchasesByEmail`, `getSubscriptionsByEmail`, `createPortalSession` |
@@ -225,6 +228,8 @@ All keys are prefixed `echelon_`. Never create new keys without documenting here
 
 | Key | Set by | Purpose |
 |---|---|---|
+| `echelon_games_new_seen_v1` | GamesCard (dashboard) | Set to `1` once the learner has opened or dismissed the "New" label on the games card |
+| `echelon_formula_stars_v1` | Formula library (`/formulas`) | JSON list of formula names the learner has starred |
 | `echelon_subscription_email` | OTP login, Account restore, Purchase success | Student's email — used for attempt tracking and Account page auto-populate |
 | `echelon_trial_email` | OTP login, Account restore | Alias for subscription email |
 | `echelon_trial_unlocked` | OTP login, Account restore | `"true"` if student has any access |
@@ -290,6 +295,7 @@ Public pages use `SiteNav` + `MobileBottomNav`. No sidebar.
 
 | Path | Component | Auth |
 |---|---|---|
+| `/quick-10` | `Quick10` | Learner (free preview draws only from preview questions) |
 | `/` | `Landing.tsx` | Public |
 | `/pricing` | `Pricing.tsx` | Public |
 | `/about` | `About.tsx` | Public |

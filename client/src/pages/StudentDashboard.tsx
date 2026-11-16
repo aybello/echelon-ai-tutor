@@ -11,6 +11,9 @@ import { signInHref } from "@shared/funnelNavigation";
 import { notifyIdentityChange } from "@shared/identityChange";
 import SiteNav from "@/components/SiteNav";
 import StudyHomeCard from "@/components/StudyHomeCard";
+import Quick10Button from "@/components/Quick10Button";
+import { isQuick10Eligible, quick10Href } from "@/lib/nextStepHref";
+import GamesCard from "@/components/GamesCard";
 import { TutorGuideMark } from "@/components/TutorGuideMark";
 import "@/components/StudyWorkspace.css";
 import { useMemo, useState, useEffect } from "react";
@@ -378,15 +381,18 @@ export default function StudentDashboard() {
           </div>
         </div>
 
+        <Quick10Button enabled={hasAccess} preferredCourseKey={selectedCourseKey} />
+
         {activation.isLoading || studyPlan.isLoading ? <div role="status" style={{ padding: 28, marginBottom: 24 }}>Finding your next study step…</div> : <StudyHomeCard
           course={focusCourse?.displayName ?? "Your courses"}
           title={setupNeeded ? "Build your study plan" : nextRecommendation?.title ?? (focusCourse ? "Pick up your next study session" : "Choose your course")}
           description={setupNeeded ? "A short diagnostic can help focus your practice. If you want to get started straight away, try a Quick 10." : nextRecommendation?.description ?? "Practise, review the explanation and keep building your understanding."}
           href={setupNeeded && focusCourse ? `/activate/${encodeURIComponent(focusCourse.courseKey)}` : nextRecommendation?.actionHref ?? focusCourse?.quizPath ?? "/account"}
           actionLabel={setupNeeded ? (activation.data?.status === "not_started" ? "Set up my plan" : "Continue setup") : nextRecommendation?.action ?? (focusCourse ? "Continue studying" : "Choose a course")}
-          secondaryHref={focusCourse ? `${focusCourse.quizPath}?mode=quick10` : undefined}
+          secondaryHref={focusCourse ? (isQuick10Eligible(focusCourse.courseKey) ? quick10Href(focusCourse.courseKey, dashboardSearch) : `${focusCourse.quizPath}?mode=quick10`) : undefined}
           weeklyGoal={activation.data?.profile?.weeklyQuestionGoal}
         />}
+        {hasAccess && <GamesCard courseKey={focusCourse?.courseKey} courseName={focusCourse?.shortName} />}
         {(studyPlan.isError || activation.isError) && <p role="alert" style={{ color: "#9a3412", fontSize: 14 }}>Your personalized plan could not load. Your course is still available. <button type="button" className="workspace-text-link" onClick={() => { void studyPlan.refetch(); void activation.refetch(); }}>Retry plan</button></p>}
         <nav className="workspace-view-tabs" aria-label="Dashboard views">
           <button type="button" aria-pressed={dashboardView === "study"} onClick={() => setDashboardView("study")}>Study</button>

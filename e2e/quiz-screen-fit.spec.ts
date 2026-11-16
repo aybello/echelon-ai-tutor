@@ -72,7 +72,7 @@ for (const [name, width, height, path] of [
     expect(await page.evaluate(() => scrollY)).toBe(0);
     if (width > 720) {
       await inScreen(page, page.getByTestId("practice-question"));
-      await inScreen(page, page.getByRole("button", { name: "Confirm Answer", exact: true }));
+      await inScreen(page, page.getByRole("button", { name: "Choose an answer", exact: true }));
       const quiz = await page.locator(".practice-screen-main").boundingBox();
       const tutor = await page.locator(".practice-tutor-slot").boundingBox();
       expect(quiz!.x + quiz!.width).toBeLessThanOrEqual(tutor!.x + 1);
@@ -87,6 +87,7 @@ for (const [name, width, height, path] of [
     await expect(page.locator(".ai-tutor-panel")).toHaveCount(0);
     expect(new URL(page.url()).searchParams.has("panel")).toBe(false);
     await page.locator('.qs-question-card button[aria-pressed]').first().click();
+    if (width > 720) await inScreen(page, page.getByRole("button", { name: "Confirm Answer", exact: true }));
     await page.getByRole("button", { name: "Confirm Answer", exact: true }).click();
     await expect(page.locator(".practice-explanation")).toContainText("Keep units consistent");
     const content = page.locator(".practice-content");

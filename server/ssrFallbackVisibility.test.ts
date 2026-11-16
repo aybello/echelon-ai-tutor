@@ -48,6 +48,14 @@ describe("initial application loading display", () => {
     expect(privatePage.html).not.toContain('rel="canonical"');
     expect(privatePage.html).not.toContain("synthetic");
   });
+  it("serves direct Quick 10 sessions with private metadata and rejects extra paths", () => {
+    for (const path of ["/quick-10", "/quick-10?course=class1-water", "/quick-10/"]) {
+      const result = prepareAppFallback(template, path);
+      expect(result.status).toBe(200);
+      expect(result.html).toContain('content="noindex, nofollow"');
+    }
+    expect(prepareAppFallback(template, "/quick-10/extra").status).toBe(404);
+  });
   it("serves canonical course activity routes with noindex before JavaScript", () => {
     const activity = prepareAppFallback(template, "/courses/class1-ww/interactive/?province=ON");
     expect(activity.status).toBe(200);
