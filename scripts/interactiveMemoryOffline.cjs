@@ -5,9 +5,10 @@ const net = require('node:net');
 const Module = require('node:module');
 // Disable only the unrelated eager payment initializer, in memory. No fake key.
 // Interactive routes/engine and the on-disk production artifact remain intact.
+const artifactUrl = require('node:url').pathToFileURL(require('node:path').resolve('dist/index.js')).href;
 Module.registerHooks({ load(url, context, nextLoad) {
   const result = nextLoad(url, context);
-  if (url === require('node:url').pathToFileURL(require('node:path').resolve('dist/index.js')).href) {
+  if (url === artifactUrl) {
     const original = '    if (!process.env.STRIPE_SECRET_KEY) {\n      throw new Error("STRIPE_SECRET_KEY is not set");\n    }\n    stripe = new Stripe3(process.env.STRIPE_SECRET_KEY, {\n      apiVersion: "2026-07-29.dahlia"\n    });';
     const source = String(result.source);
     if (source.split(original).length !== 2) throw new Error('Offline payment initializer contract changed');
