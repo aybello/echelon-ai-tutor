@@ -30,7 +30,7 @@ Waiting on Manus (nothing for you to do until it reports back):
 
 ## What to do next, in order
 
-1. **Review the exam question banks.** The game content is done; the multiple-choice exam questions have not been read.
+1. **Review the exam question banks.** The full plan and the reviewer brief are in `docs/exam-bank-review-plan.md`; follow it. The game content is done; the multiple-choice exam questions have not been read.
    - They live in the production `questions` table, keyed by `bankKey` (for example `class1-wastewater-coll`). The table is not reachable from a cloud session, because `DATABASE_URL` is not set.
    - The repo holds the sources: `content/` (OIT, Class 1 and 3, others), `server/seeds/examBankGapQuestions.ts`, and the import scripts in `scripts/`. Start with those.
    - A read-only export of the `questions` table has been requested from Manus (section 6 of the Manus request). Ask the owner whether it has arrived and where it is. Do not ask for database credentials; use the export.
