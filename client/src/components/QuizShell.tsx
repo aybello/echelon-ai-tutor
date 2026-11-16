@@ -41,6 +41,9 @@ import PreviewStudyPlanPrompt from "@/components/PreviewStudyPlanPrompt";
 import { resolveStudyNotesTopics } from "@/lib/studyNotesTopics";
 import "./StudyWorkspace.css";
 import "./PracticeWorkspace.css";
+import "./QuizPage.css";
+import type { QuizMode } from "./QuizModeBar";
+import { isQuick10Eligible, quick10Href } from "@/lib/nextStepHref";
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 
@@ -122,6 +125,7 @@ export interface QuizShellProps {
   onTutorOpen: () => void;
   onTutorClose: () => void;
   onResetSession: () => void;
+  onModeChange?: (mode: QuizMode) => void;
 
   // AI Tutor render prop (optional — caller renders its own AITutor)
   renderAITutor?: (onDismiss: () => void) => ReactNode;
@@ -257,6 +261,7 @@ export default function QuizShell({
   onTutorOpen,
   onTutorClose,
   onResetSession,
+  onModeChange,
   mockExamHref,
   formulaLinks,
   extraContent,
@@ -741,8 +746,8 @@ export default function QuizShell({
           )}
           <div className="practice-quick-links" aria-label="Quick ways to practise">
             {interactiveHref && <Link href={interactiveHref} className="practice-interactive-link">🎮 Play games</Link>}
-            <Link href={`${currentPath.split("?")[0]}?mode=quick10`}>⚡ Quick 10</Link>
-            {missedCount > 0 && <Link href={`${currentPath.split("?")[0]}?mode=missed`}>🔁 Retry {missedCount} {missedCount === 1 ? "mistake" : "mistakes"}</Link>}
+            {isQuick10Eligible(canonicalCourse?.courseKey) ? <Link href={quick10Href(canonicalCourse!.courseKey, search)}>⚡ Quick 10</Link> : onModeChange && <button type="button" className="practice-mode-shortcut" onClick={() => onModeChange("quick10")}>⚡ Quick 10</button>}
+            {missedCount > 0 && onModeChange && <button type="button" className="practice-mode-shortcut" onClick={() => onModeChange("missed")}>🔁 Retry {missedCount} {missedCount === 1 ? "mistake" : "mistakes"}</button>}
           </div>
           <PracticeOptions modules={modules} selectedModule={selectedModule} onModuleChange={onModuleChange}
             hasCalcOnly={hasCalcOnly} calcOnly={calcOnly} onCalcOnlyToggle={onCalcOnlyToggle}>

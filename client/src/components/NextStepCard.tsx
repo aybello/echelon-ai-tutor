@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Link, useSearch } from "wouter";
 import { trpc } from "@/lib/trpc";
-import { nextStepHref } from "@/lib/nextStepHref";
+import { isQuick10Eligible, nextStepHref } from "@/lib/nextStepHref";
 import { readAccessToken } from "@/lib/readAccessToken";
 import { getCourseByKey } from "@shared/courseRegistry";
 
@@ -15,10 +15,10 @@ export default function NextStepCard({ courseKey, className = "" }: { courseKey:
   const course = courseKey ? getCourseByKey(courseKey) : undefined;
   const query = trpc.dashboard.nextStep.useQuery(
     { courseKey, timezoneOffsetMinutes: new Date().getTimezoneOffset(), accessToken: readAccessToken() },
-    { enabled: Boolean(courseKey), retry: false, staleTime: 0, refetchOnMount: "always", refetchOnWindowFocus: false },
+    { enabled: isQuick10Eligible(courseKey), retry: false, staleTime: 0, refetchOnMount: "always", refetchOnWindowFocus: false },
   );
 
-  if (!course) return null;
+  if (!course || !isQuick10Eligible(courseKey)) return null;
   if (query.isLoading) {
     return <p role="status" className={`text-sm text-muted-foreground ${className}`}>Finding your next step…</p>;
   }

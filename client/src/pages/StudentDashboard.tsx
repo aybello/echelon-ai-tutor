@@ -12,7 +12,7 @@ import { notifyIdentityChange } from "@shared/identityChange";
 import SiteNav from "@/components/SiteNav";
 import StudyHomeCard from "@/components/StudyHomeCard";
 import Quick10Button from "@/components/Quick10Button";
-import { quick10Href } from "@/lib/nextStepHref";
+import { isQuick10Eligible, quick10Href } from "@/lib/nextStepHref";
 import GamesCard from "@/components/GamesCard";
 import { TutorGuideMark } from "@/components/TutorGuideMark";
 import "@/components/StudyWorkspace.css";
@@ -389,7 +389,7 @@ export default function StudentDashboard() {
           description={setupNeeded ? "A short diagnostic can help focus your practice. If you want to get started straight away, try a Quick 10." : nextRecommendation?.description ?? "Practise, review the explanation and keep building your understanding."}
           href={setupNeeded && focusCourse ? `/activate/${encodeURIComponent(focusCourse.courseKey)}` : nextRecommendation?.actionHref ?? focusCourse?.quizPath ?? "/account"}
           actionLabel={setupNeeded ? (activation.data?.status === "not_started" ? "Set up my plan" : "Continue setup") : nextRecommendation?.action ?? (focusCourse ? "Continue studying" : "Choose a course")}
-          secondaryHref={focusCourse ? quick10Href(focusCourse.courseKey) : undefined}
+          secondaryHref={focusCourse ? (isQuick10Eligible(focusCourse.courseKey) ? quick10Href(focusCourse.courseKey, dashboardSearch) : `${focusCourse.quizPath}?mode=quick10`) : undefined}
           weeklyGoal={activation.data?.profile?.weeklyQuestionGoal}
         />}
         {hasAccess && <GamesCard courseKey={focusCourse?.courseKey} courseName={focusCourse?.shortName} />}

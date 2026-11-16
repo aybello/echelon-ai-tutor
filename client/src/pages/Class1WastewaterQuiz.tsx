@@ -78,6 +78,7 @@ export default function Class1WastewaterQuiz() {
       onTutorOpen={() => session.setTutorOpen(true)}
       onTutorClose={() => session.setTutorOpen(false)}
       onResetSession={session.resetSession}
+      onModeChange={session.handleModeChange}
       timedSeconds={session.quizSettings.timedMode ? session.quizSettings.timedSeconds : 0}
       onTimeUp={session.handleTimeUp}
       mockExamHref="/class1-ww-mock"

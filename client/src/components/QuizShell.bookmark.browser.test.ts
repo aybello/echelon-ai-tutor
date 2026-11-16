@@ -40,7 +40,7 @@ beforeAll(async () => {
             correctCount={2} wrongCount={0} selectedModule={null} onModuleChange={()=>{}} calcOnly={false} onCalcOnlyToggle={()=>{}}
             current={questions[index]} selected={0} confidence={50} confirmed={true} showSteps={false} tutorOpen={false}
             onSelect={()=>{}} onConfirm={()=>{}} onNext={()=>setIndex(1)} onGoBack={()=>setIndex(0)} onConfidenceChange={()=>{}}
-            onToggleSteps={()=>{}} onTutorOpen={()=>{}} onTutorClose={()=>{}} onResetSession={()=>{}} examType={course} />;
+            onToggleSteps={()=>{}} onTutorOpen={()=>{}} onTutorClose={()=>{}} onResetSession={()=>{}} onModeChange={mode=>window.changedMode=mode} examType={course} />;
         }
         createRoot(document.getElementById('root')).render(<App/>);
       `,
@@ -51,6 +51,7 @@ beforeAll(async () => {
       setup(builder) {
         builder.onResolve({ filter: /^sonner$|^wouter$|^@\/components\/|^@\/lib\/|^@shared\// }, args => ({ path: args.path, namespace: "mock" }));
         builder.onLoad({ filter: /.*/, namespace: "mock" }, args => {
+          if (args.path === "@/lib/nextStepHref") return { contents: `export const isQuick10Eligible=key=>key && key!=="electrician-309a"; export const quick10Href=(key,search)=>"/quick-10?course="+key;` };
           if (args.path === "sonner") return { contents: `
             window.toasts=[];
             export const toast=Object.assign(message=>window.toasts.push(message), {error(message){window.toasts.push(message)},warning(message){window.toasts.push(message)}});
@@ -91,7 +92,7 @@ beforeAll(async () => {
               if (!window.auditConfig.manualRead) queueMicrotask(()=>window.auditConfig.readError ? reject(new Error('synthetic read failure')) : resolve(window.auditConfig.bookmarks));
               return promise;
             };
-            export const trpc={quiz:{getMissedQuestions:{useQuery:()=>({data:{total:0}})}},useUtils:()=>({client:{dashboard:{bookmarkedQuestions:{query}}},dashboard:{bookmarkedQuestions:{invalidate:async input=>{window.invalidations.push(input)}}}}),dashboard:{
+            export const trpc={quiz:{getMissedQuestions:{useQuery:()=>({data:{total:2}})}},useUtils:()=>({client:{dashboard:{bookmarkedQuestions:{query}}},dashboard:{bookmarkedQuestions:{invalidate:async input=>{window.invalidations.push(input)}}}}),dashboard:{
               bookmarkedQuestions:{useQuery:(input,options)=>{useAuditState();window.queryCalls.push({input,options});return window.auditConfig.readError
                 ? {isLoading:false,isFetching:false,isError:true,isSuccess:false}
                 : window.auditConfig.manualRead
@@ -138,6 +139,16 @@ async function expectBookmarkText(page: Page, text: string) {
 }
 
 describe("QuizShell saved bookmark state in an isolated browser", () => {
+  it("runs Retry and 309A ordinary Quick 10 through the active session handler", async () => {
+    const page = await setup();
+    try {
+      await page.getByRole("button", {name: /Retry 2 mistakes/}).click();
+      expect(await page.evaluate(() => (window as any).changedMode)).toBe("missed");
+      await page.evaluate(() => (window as any).showCourse("electrician-309a"));
+      await page.getByRole("button", {name: /Quick 10/}).click();
+      expect(await page.evaluate(() => (window as any).changedMode)).toBe("quick10");
+    } finally { await page.close(); }
+  });
   it("renders the durable bookmark for each displayed question", async () => {
     const page = await setup();
     try {

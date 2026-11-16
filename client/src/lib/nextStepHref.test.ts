@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { legacyQuick10Redirect, nextStepHref, quick10Href } from "./nextStepHref";
+import { chooseQuick10Course, isQuick10Eligible, legacyQuick10Redirect, nextStepHref, quick10Href } from "./nextStepHref";
 
 const water = { courseKey: "class1-water", quizPath: "/class1-water", mockExamPath: "/class1-water-mock" };
 
@@ -42,5 +42,15 @@ describe("legacyQuick10Redirect", () => {
     expect(legacyQuick10Redirect("quick10", "no-such-course")).toBeNull();
     expect(legacyQuick10Redirect("quick10", "electrician-309a")).toBeNull();
     expect(legacyQuick10Redirect("quick10", undefined)).toBeNull();
+  });
+});
+
+describe("Quick 10 CTA eligibility", () => {
+  it("does not let selected 309A override an eligible fallback", () => {
+    expect(chooseQuick10Course(["electrician-309a", "class1-water"], ["class1-water"])).toBe("class1-water");
+    expect(chooseQuick10Course(["electrician-309a"], ["class1-water"])).toBe("class1-water");
+    expect(chooseQuick10Course(["electrician-309a"], [])).toBeNull();
+    expect(isQuick10Eligible("electrician-309a")).toBe(false);
+    expect(isQuick10Eligible("no-such-course")).toBe(false);
   });
 });

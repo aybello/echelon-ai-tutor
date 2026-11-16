@@ -4,6 +4,15 @@ import type { NextStepAction } from "@shared/nextStep";
 
 type CoursePaths = { courseKey: string; quizPath: string; mockExamPath: string };
 
+/** Quick 10 is scored practice, not interactive games; 309A retains its own quiz. */
+export function isQuick10Eligible(courseKey: string | null | undefined): boolean {
+  const course = courseKey ? resolveCourseKey(courseKey) : undefined;
+  return Boolean(course?.isActive && course.courseKey !== "electrician-309a");
+}
+/** Prefer a supported selection, then a supported enrolled fallback. */
+export function chooseQuick10Course(preferred: readonly (string | null | undefined)[], available: readonly string[]): string | null {
+  return [...preferred, ...available].find(key => isQuick10Eligible(key)) ?? null;
+}
 /** The page of the Quick 10 screen, optionally limited to a single question (used to keep a streak). */
 export function quick10Href(courseKey: string, search = "", questions?: 1): string {
   const params = new URLSearchParams({ course: courseKey });

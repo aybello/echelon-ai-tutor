@@ -52,7 +52,7 @@ describe("course-specific interactive navigation", () => {
       expect(classifyAppRoute(href!).kind).toBe("public");
     }
     expect(shell).toContain("getCourseInteractiveHref(canonicalCourse?.courseKey, search)");
-    expect(shell).toContain('className="practice-interactive-link">Interactive activities</Link>');
+    expect(shell).toContain('className="practice-interactive-link">🎮 Play games</Link>');
   });
 
   it("does not advertise interactive activities for the active electrician course", () => {

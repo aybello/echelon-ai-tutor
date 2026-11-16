@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ArrowRight, Zap } from "lucide-react";
 import { Link } from "wouter";
-import { quick10Href } from "@/lib/nextStepHref";
+import { chooseQuick10Course, isQuick10Eligible, quick10Href } from "@/lib/nextStepHref";
 import { trpc } from "@/lib/trpc";
 
 /**
@@ -12,8 +12,8 @@ export default function Quick10Button({ enabled, preferredCourseKey }: { enabled
   const courses = trpc.quick10.courses.useQuery(undefined, { enabled, retry: false, refetchOnWindowFocus: false });
   const [chosen, setChosen] = useState<string | null>(null);
 
-  const list = courses.data?.courses ?? [];
-  const courseKey = chosen ?? preferredCourseKey ?? courses.data?.currentCourseKey ?? null;
+  const list = (courses.data?.courses ?? []).filter(course => isQuick10Eligible(course.courseKey));
+  const courseKey = enabled ? chooseQuick10Course([chosen, preferredCourseKey, courses.data?.currentCourseKey], list.map(course => course.courseKey)) : null;
   if (!courseKey) return null;
   const label = list.find(c => c.courseKey === courseKey)?.shortName;
 
