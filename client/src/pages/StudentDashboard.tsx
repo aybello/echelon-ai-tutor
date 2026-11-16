@@ -11,6 +11,7 @@ import { signInHref } from "@shared/funnelNavigation";
 import { notifyIdentityChange } from "@shared/identityChange";
 import SiteNav from "@/components/SiteNav";
 import StudyHomeCard from "@/components/StudyHomeCard";
+import GamesCard from "@/components/GamesCard";
 import { TutorGuideMark } from "@/components/TutorGuideMark";
 import "@/components/StudyWorkspace.css";
 import { useMemo, useState, useEffect } from "react";
@@ -387,6 +388,7 @@ export default function StudentDashboard() {
           secondaryHref={focusCourse ? `${focusCourse.quizPath}?mode=quick10` : undefined}
           weeklyGoal={activation.data?.profile?.weeklyQuestionGoal}
         />}
+        {hasAccess && <GamesCard courseKey={focusCourse?.courseKey} courseName={focusCourse?.shortName} />}
         {(studyPlan.isError || activation.isError) && <p role="alert" style={{ color: "#9a3412", fontSize: 14 }}>Your personalized plan could not load. Your course is still available. <button type="button" className="workspace-text-link" onClick={() => { void studyPlan.refetch(); void activation.refetch(); }}>Retry plan</button></p>}
         <nav className="workspace-view-tabs" aria-label="Dashboard views">
           <button type="button" aria-pressed={dashboardView === "study"} onClick={() => setDashboardView("study")}>Study</button>
