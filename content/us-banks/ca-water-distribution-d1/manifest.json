@@ -14,7 +14,7 @@
   "file": "questions/bank-250.json",
   "count": 250,
   "calculations": 70,
-  "sha256": "ac911e5a5ad4395e43b7390e679c750aad2e22523b10bc4d521ab02d075cd7bd",
+  "sha256": "fed337b4cee5e1a8880fa116394e0c328fb994da5debeb39d6fd3393959ab08a",
   "modules": {
     "Disinfection": 38,
     "Water Quality and water source": 25,
@@ -101,8 +101,8 @@
     ],
     "answerCues": {
       "conceptualCount": 180,
-      "longestRate": 0.28888888888888886,
-      "shortestRate": 0.18333333333333332,
+      "longestRate": 0.3,
+      "shortestRate": 0.17777777777777778,
       "longTells": [],
       "shortTells": [],
       "qualifierTells": []

@@ -84,14 +84,14 @@ Kill depends on both the disinfectant level and how long organisms are exposed t
 
 ### 7: Purpose of disinfection, chlorine demand, residual and total chlorine (hard)
 
-A test kit reads zero free chlorine, yet the total chlorine reading is clearly above zero. What does this suggest?
+A test kit reads zero free chlorine, yet the total chlorine reading is clearly above zero. Both readings were taken within the test method's valid range, with no interference. What does this suggest?
 
-- **A.** The water contains a high level of dissolved oxygen
-- **B.** The water holds no chlorine and the total reading is merely instrument noise
-- **C.** The chlorine present is bound with ammonia or organics
-- **D.** The sample holds strong free chlorine beyond what the kit can display
+- **A.** The water carries dissolved oxygen that displaced the free chlorine
+- **B.** The total reading is carryover from a previously tested sample
+- **C.** The chlorine present is combined with ammonia or organic matter
+- **D.** The free chlorine has converted into a stronger disinfecting form
 
-**Answer: C. The chlorine present is bound with ammonia or organics**
+**Answer: C. The chlorine present is combined with ammonia or organic matter**
 
 Total chlorine is free plus combined chlorine. A total reading with no free reading means the chlorine is in combined forms, which disinfect far more weakly.
 
@@ -177,12 +177,12 @@ After the disinfectant is flushed out, lab samples must show no coliform. Clear 
 
 During a main fill, an air pocket is trapped at a high point in the pipe. What is the likely problem for disinfection?
 
-- **A.** The pipe surface under the pocket is left untreated
-- **B.** Chlorine bleeds out through the pocket and lowers the dose downstream
-- **C.** Air in the pocket uses up chlorine faster than the water does
-- **D.** Water speeds up around the pocket and cuts contact time everywhere
+- **A.** The pipe surface inside the air pocket stays dry and untreated
+- **B.** Chlorine escapes through the pocket and lowers the dose downstream
+- **C.** Air in the pocket consumes chlorine faster than the water does
+- **D.** Water speeds up around the pocket and shortens contact time
 
-**Answer: A. The pipe surface under the pocket is left untreated**
+**Answer: A. The pipe surface inside the air pocket stays dry and untreated**
 
 Where air holds the water back, the pipe wall stays dry and out of contact with the chlorine, so organisms there can survive. Venting at high points prevents this.
 
@@ -266,14 +266,14 @@ Any equipment lowered into the well may carry bacteria from the surface. Disinfe
 
 ### 21: Storage reservoir disinfection and contamination sources (easy)
 
-Which is a common way for contamination to get into a storage tank?
+Which tank opening condition is a common contamination pathway?
 
-- **A.** An overflow pipe fitted with a flap gate and screen
-- **B.** A vent covered with fine screen and kept in good repair
-- **C.** A roof hatch with a raised, locked frame
-- **D.** Birds or animals entering through open hatches or damaged screens
+- **A.** An overflow outlet fitted with a screened flap gate
+- **B.** A vent opening fitted with a fine screen kept in repair
+- **C.** A hatch frame raised above the roof with a locked cover
+- **D.** A roof hatch left unlatched so animals and debris can enter
 
-**Answer: D. Birds or animals entering through open hatches or damaged screens**
+**Answer: D. A roof hatch left unlatched so animals and debris can enter**
 
 Open hatches, torn vent screens and roof openings let animals, droppings, insects and runoff reach the stored water.
 
@@ -554,12 +554,12 @@ Water evaporates, condenses into clouds and falls as precipitation, then runs of
 
 How is the total depth of a well, measured to ground level, commonly found?
 
-- **A.** Lower a weighted tape to the bottom, then subtract the reference point's height above ground
-- **B.** By reading a gauge at the pump discharge and converting the pressure to feet of depth
-- **C.** By timing how long pumped water takes to fill a bucket and converting to feet
-- **D.** By measuring the flow rate with a hydrant gauge while the pump is running
+- **A.** By lowering a weighted tape to the bottom, then subtracting the reference point's height above ground
+- **B.** By lowering an electric sounder to the water surface and recording that length as total depth
+- **C.** By lowering a weighted tape to the bottom and ignoring the casing stick-up above ground
+- **D.** By lowering a line to the pump intake and recording that length as total depth
 
-**Answer: A. Lower a weighted tape to the bottom, then subtract the reference point's height above ground**
+**Answer: A. By lowering a weighted tape to the bottom, then subtracting the reference point's height above ground**
 
 A weighted tape goes down until it rests on the bottom. If depth is wanted from ground level, subtract the height of the reference point above ground from the marked length.
 
@@ -1153,13 +1153,13 @@ Cal-OSHA trench rules exist because unsupported walls can collapse suddenly. Sho
 Who is responsible for inspecting a trench and its protective system for hazards?
 
 - **A.** A competent person designated by the employer for the site
-- **B.** The excavator operator, since the walls are in view all day
-- **C.** The purchasing clerk who ordered the pipe and fittings
-- **D.** The traffic flagger posted at the work area entrance
+- **B.** An equipment operator who works beside the trench walls
+- **C.** An outside inspector who visits once at project start
+- **D.** A supervisor who has no authority to correct hazards
 
 **Answer: A. A competent person designated by the employer for the site**
 
-Trenching rules call for a competent person, designated by the employer, who can recognize hazards and has authority to correct them. Operators, flaggers and clerks hold no such designation by role.
+Trenching rules call for a competent person, designated by the employer, who can recognize hazards and has authority to correct them. Operators, supervisors without that authority and occasional visitors hold no such designation by role.
 
 ### 90: Bedding, backfill and compaction (easy)
 
@@ -1579,14 +1579,14 @@ A pressure-reducing valve throttles flow to keep downstream pressure close to it
 
 ### 122: Pressure-regulating valve maintenance (medium)
 
-The downstream gauge of a pressure-reducing valve reads well above its set pressure. Which maintenance item is a sensible thing to check?
+The downstream gauge of a pressure-reducing valve reads well above its set pressure. What is the most likely cause?
 
 - **A.** Low water level in the tank feeding the zone
 - **B.** A high flow demand pulling pressure down through the valve
 - **C.** A partly closed isolation valve upstream of the regulator
-- **D.** Debris on the seat or a worn pilot part
+- **D.** Debris on the seat or a worn part in the pilot control
 
-**Answer: D. Debris on the seat or a worn pilot part**
+**Answer: D. Debris on the seat or a worn part in the pilot control**
 
 Trash on the seat or a worn control part can keep the valve from closing down, so the pressure creeps up past the setting.
 
@@ -1750,12 +1750,12 @@ Coarse stone lets the water that leaves the drain port soak away, so the barrel 
 
 What is the purpose of operating a dry-barrel hydrant during a routine inspection?
 
-- **A.** To tighten the thrust block against the surrounding soil
-- **B.** To reseat the nozzle threads on the barrel outlets
-- **C.** To confirm the valve moves freely and the hydrant empties afterward
-- **D.** To measure the chlorine in the main near the hydrant
+- **A.** To refill the barrel so it stays full and ready for use
+- **B.** To check the chlorine residual at the hydrant outlet
+- **C.** To confirm the valve moves freely and the barrel drains afterward
+- **D.** To test the strength of the main by running it at full flow
 
-**Answer: C. To confirm the valve moves freely and the hydrant empties afterward**
+**Answer: C. To confirm the valve moves freely and the barrel drains afterward**
 
 Working the hydrant shows whether the stem turns smoothly, the outlets flow and the water leaves the barrel after shutting off.
 
@@ -1803,9 +1803,9 @@ An engine needs fuel, oil and coolant to run safely. Water quality readings and 
 Why is a standby generator run on a regular test schedule?
 
 - **A.** To confirm it will start and carry the load in an outage
-- **B.** To calibrate the meters at the site on a schedule
-- **C.** To show that it idles smoothly, since load makes no difference
-- **D.** To lower the electric bill for the station each month
+- **B.** To seat the moving parts once so no further exercise is needed
+- **C.** To use up stored fuel so fresh fuel is delivered on schedule
+- **D.** To prove it starts, since an unloaded run shows full-load capability
 
 **Answer: A. To confirm it will start and carry the load in an outage**
 
@@ -1958,14 +1958,14 @@ Standing water in contact with plumbing lets lead and copper dissolve into it, s
 
 A first-draw lead and copper sample is taken at a kitchen tap. What should the sampler avoid doing just before collecting it?
 
-- **A.** Writing the time on the label
-- **B.** Running the tap to flush the line
-- **C.** Capping the bottle after filling
-- **D.** Washing hands at a different sink before going to the sample tap
+- **A.** Writing the time on the sample label
+- **B.** Running the tap to flush the line beforehand
+- **C.** Capping the bottle after filling it
+- **D.** Wearing disposable gloves while handling the bottle
 
-**Answer: B. Running the tap to flush the line**
+**Answer: B. Running the tap to flush the line beforehand**
 
-Flushing would replace the standing water with fresh water from the main and hide what the plumbing contributes. Washing hands at another fixture, labeling and capping do not disturb the water at the sampling tap.
+Flushing would replace the standing water with fresh water from the main and hide what the plumbing contributes. Wearing gloves, labeling and capping do not change the water that sat in the plumbing.
 
 ### 152: Lead and copper sampling and the MCL (easy)
 
@@ -2114,14 +2114,14 @@ Total coliform results act as an indicator that organisms could be entering or s
 
 At concept level, what does a Total Coliform Rule sampling requirement address?
 
-- **A.** Which treatment must be added when a sample is positive
-- **B.** The brand of test equipment the lab must use
-- **C.** Which operator certification grade may collect each sample
+- **A.** Which treatment is added after a positive result
+- **B.** Which brand of test equipment a laboratory must use
+- **C.** Which certification grade a collector must hold
 - **D.** How many samples are taken and where they are collected
 
 **Answer: D. How many samples are taken and where they are collected**
 
-Sampling requirements spell out the number and location of samples that fairly represent the distribution system. Billing, pipe materials and crew size are unrelated.
+Sampling requirements cover how many samples are taken and where, so the results fairly represent the distribution system. They do not prescribe treatment, equipment brands or collector certification grades.
 
 ### 164: Total Coliform Rule and public notification (hard)
 
@@ -2303,7 +2303,7 @@ Why should an operator confirm that equipment has been de-energized and locked o
 
 **Answer: A. To prevent it from starting or shocking someone during the work**
 
-Lockout keeps a source of power from being restored while hands are in the equipment. Cooling, hour meters and savings are side effects at best.
+Lockout keeps a source of power from being restored while hands are in the equipment. Switching controls off is not the same as isolating energy, so isolation and the absence of hazardous energy must be verified.
 
 ### 178: Confined spaces, chemical handling and asbestos-cement pipe (medium)
 
