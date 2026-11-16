@@ -1,15 +1,15 @@
 {
  "export": "docs/exam-bank-export/2026-11-16 (commit d118897a)",
- "chunksDone": 70,
+ "chunksDone": 75,
  "chunksTotal": 174,
- "questionsReviewed": 9790,
+ "questionsReviewed": 10528,
  "questionsTotal": 24350,
- "problems": 479,
+ "problems": 551,
  "byVerdict": {
-  "UNCLEAR": 144,
-  "WRONG": 218,
-  "JURISDICTION": 70,
-  "UNITS": 40,
+  "UNCLEAR": 158,
+  "WRONG": 257,
+  "JURISDICTION": 87,
+  "UNITS": 42,
   "OFF-TOPIC": 7
  },
  "byBank": {
@@ -26,7 +26,8 @@
   "class3-wastewater-coll": 73,
   "class3-water": 48,
   "class3-water-dist": 12,
-  "class4-wastewater": 18
+  "class4-wastewater": 56,
+  "class4-wastewater-coll": 34
  },
  "chunks": [
   "chunk-001",
@@ -98,7 +99,12 @@
   "chunk-067",
   "chunk-068",
   "chunk-069",
-  "chunk-070"
+  "chunk-070",
+  "chunk-071",
+  "chunk-072",
+  "chunk-073",
+  "chunk-074",
+  "chunk-075"
  ],
  "corrections": [
   {
@@ -17194,6 +17200,2540 @@
     ],
     "correctIndex": 0,
     "explanation": "Biosolids treated to the highest pathogen reduction category (with vector attraction reduction) pose minimal public health risk and face fewer restrictions on use under Ontario's NASM requirements (O. Reg. 267/03). 'Class A EQ' is US EPA terminology.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183048,
+   "bankKey": "class4-wastewater",
+   "questionNum": 349,
+   "verdict": "WRONG",
+   "note": "SUMO stands for Simulation of Urban MObility and is a traffic simulator, so option A is literally the correct description. SUMO (Dynamita) as a WWTP process simulator does not model collection systems either. The question as written has a wrong key. Reworded to ask about integrated collection-system/plant hydraulic modelling tools.",
+   "original": {
+    "question": "What is the primary objective of using SUMO (Simulation of Urban MObility) or similar modeling tools in a Class 4 context?",
+    "options": [
+     "To simulate traffic patterns around the treatment plant for operator commute planning.",
+     "To optimize the collection system and treatment plant interactions for flow management and capacity planning.",
+     "To model the atmospheric dispersion of odors from the plant's headworks.",
+     "To predict the stock market performance of utility companies."
+    ],
+    "correctIndex": 1,
+    "explanation": "SUMO, or similar integrated modeling tools, are used to simulate and optimize the interactions between the wastewater collection system and the treatment plant, helping with flow management, capacity planning, and mitigating combined sewer overflows."
+   },
+   "fix": {
+    "question": "What is the primary objective of using integrated collection-system and plant hydraulic modelling tools (e.g., InfoWorks ICM, PCSWMM) in a Class 4 context?",
+    "options": [
+     "To simulate vehicle traffic patterns around the treatment plant for operator commute planning.",
+     "To optimize the collection system and treatment plant interactions for flow management and capacity planning.",
+     "To model the atmospheric dispersion of odors from the plant's headworks.",
+     "To predict the stock market performance of utility companies."
+    ],
+    "correctIndex": 1,
+    "explanation": "Integrated hydraulic modelling tools simulate the interactions between the wastewater collection system and the treatment plant, helping with flow management, capacity planning, and mitigating combined sewer overflows.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183053,
+   "bankKey": "class4-wastewater",
+   "questionNum": 354,
+   "verdict": "JURISDICTION",
+   "note": "'Class A EQ' and vector attraction reduction are US EPA 40 CFR Part 503 concepts. Ontario regulates land application of sewage biosolids under O. Reg. 267/03 (Nutrient Management Act, 2002) using NASM metal categories CM1/CM2 and pathogen categories CP1/CP2 (E. coli), not Class A EQ (checked ontario.ca e-Laws/OMAFRA NASM pages).",
+   "original": {
+    "question": "When considering advanced biosolids management for Class A EQ product, what is a key regulatory requirement in Ontario?",
+    "options": [
+     "The biosolids must contain at least 50% moisture content for land application.",
+     "The biosolids must meet specific pathogen reduction and vector attraction reduction standards.",
+     "The biosolids can only be disposed of in a municipal landfill.",
+     "The biosolids must be completely free of all organic matter."
+    ],
+    "correctIndex": 1,
+    "explanation": "For Class A EQ biosolids in Ontario, stringent regulatory requirements mandate specific levels of pathogen reduction (e.g., fecal coliform or Salmonella limits) and vector attraction reduction to ensure safe handling and unrestricted beneficial use."
+   },
+   "fix": {
+    "question": "When considering advanced biosolids management for a high-quality, low-restriction product, what is a key regulatory requirement in Ontario?",
+    "options": [
+     "The biosolids must contain at least 50% moisture content for land application.",
+     "The biosolids must meet the metal (CM1/CM2) and pathogen (CP1/CP2) criteria in O. Reg. 267/03 to be land applied as NASM.",
+     "The biosolids can only be disposed of in a municipal landfill.",
+     "The biosolids must be completely free of all organic matter."
+    ],
+    "correctIndex": 1,
+    "explanation": "In Ontario, sewage biosolids land applied under the Nutrient Management Act must be sampled and analysed and meet the regulated metal categories (CM1/CM2) and pathogen categories (CP1/CP2, based on E. coli) in O. Reg. 267/03. Material above the CM2 or CP2 limits cannot be land applied as NASM.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183067,
+   "bankKey": "class4-wastewater",
+   "questionNum": 368,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 267/03 does not define 'Class A EQ' or require vector attraction reduction; those are US EPA Part 503 terms. O. Reg. 267/03 uses CM1/CM2 metal and CP1/CP2 pathogen categories for NASM including sewage biosolids.",
+   "original": {
+    "question": "Under Ontario's O. Reg. 267/03 (Nutrient Management), what is a key requirement for land application of Class A Equivalent (EQ) biosolids?",
+    "options": [
+     "Annual soil testing is not required due to the high quality of the biosolids.",
+     "The biosolids must meet specific pathogen reduction and vector attraction reduction standards.",
+     "Only agricultural land within 5 km of the treatment plant can receive Class A EQ biosolids.",
+     "A permit from the Ministry of Agriculture, Food and Rural Affairs is always required for each application."
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 267/03 specifies stringent pathogen reduction and vector attraction reduction requirements for biosolids to be classified as Class A EQ, enabling broader beneficial use with fewer restrictions."
+   },
+   "fix": {
+    "question": "Under Ontario's O. Reg. 267/03 (Nutrient Management Act, 2002), what is a key requirement for land application of sewage biosolids as non-agricultural source material (NASM)?",
+    "options": [
+     "Sampling and analysis are not required due to the high quality of municipal biosolids.",
+     "The biosolids must meet the regulated metal (CM1/CM2) and pathogen (CP1/CP2, E. coli) criteria.",
+     "Only agricultural land within 5 km of the treatment plant can receive biosolids.",
+     "A permit from the Ministry of Agriculture, Food and Rural Affairs is always required for each application."
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 267/03 sets metal categories (CM1/CM2) and pathogen categories (CP1/CP2, based on E. coli) for NASM including sewage biosolids. Material exceeding the CM2 metal limits or the CP2 pathogen standard cannot be land applied under the Act, and sampling and analysis are required.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183080,
+   "bankKey": "class4-wastewater",
+   "questionNum": 381,
+   "verdict": "JURISDICTION",
+   "note": "'Class A EQ' is a US EPA term and is not used in O. Reg. 267/03. Ontario distinguishes NASM by metal category CM1/CM2 and pathogen category CP1/CP2; land application of CM2 NASM (and Category 3 NASM) requires an approved NASM plan.",
+   "original": {
+    "question": "Under Ontario's Nutrient Management Act, 2002 (NMA) and O. Reg. 267/03, what is a key requirement for the land application of municipal biosolids that are not Class A EQ?",
+    "options": [
+     "They can be applied without restriction to any agricultural land.",
+     "A Nutrient Management Plan (NMP) or Strategy (NMS) is typically required, specifying application rates and setbacks.",
+     "They must be composted for a minimum of one year before land application.",
+     "Application is only permitted on Crown land, not private agricultural properties."
+    ],
+    "correctIndex": 1,
+    "explanation": "For biosolids that are not Class A EQ, the NMA and O. Reg. 267/03 impose stricter requirements, often necessitating a Nutrient Management Plan or Strategy to ensure environmentally sound application practices, including setbacks and rate limits."
+   },
+   "fix": {
+    "question": "Under Ontario's Nutrient Management Act, 2002 and O. Reg. 267/03, what is a key requirement for land application of municipal sewage biosolids that are CM2 NASM (exceeding the CM1 metal limits)?",
+    "options": [
+     "They can be applied without restriction to any agricultural land.",
+     "An approved NASM plan is required, specifying application rates and setbacks.",
+     "They must be composted for a minimum of one year before land application.",
+     "Application is only permitted on Crown land, not private agricultural properties."
+    ],
+    "correctIndex": 1,
+    "explanation": "Under O. Reg. 267/03, land application of CM2 NASM requires an approved NASM plan that sets out application rates, setbacks and other conditions to protect soil and water.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183100,
+   "bankKey": "class4-wastewater",
+   "questionNum": 401,
+   "verdict": "JURISDICTION",
+   "note": "Ontario regulations do not use the 'Class A EQ' classification (US EPA Part 503). Ontario uses CM1/CM2 and CP1/CP2 categories under O. Reg. 267/03.",
+   "original": {
+    "question": "Under Ontario's advanced biosolids regulations, what is the primary driver for producing Class A EQ biosolids?",
+    "options": [
+     "To reduce the overall volume of biosolids generated by the plant.",
+     "To enable broader beneficial reuse options with fewer restrictions, such as land application on food crops.",
+     "To eliminate the need for any further pathogen testing.",
+     "To increase the nitrogen content of the biosolids for agricultural benefit."
+    ],
+    "correctIndex": 1,
+    "explanation": "Producing Class A EQ biosolids, which meet stringent pathogen and vector attraction reduction standards, allows for a wider range of beneficial reuse options, including application to agricultural land growing food crops, expanding market opportunities."
+   },
+   "fix": {
+    "question": "Under Ontario's biosolids regulations (O. Reg. 267/03), what is the primary driver for producing biosolids that meet the most stringent metal (CM1) and pathogen (CP1) criteria?",
+    "options": [
+     "To reduce the overall volume of biosolids generated by the plant.",
+     "To enable broader beneficial reuse options with fewer regulatory restrictions on land application.",
+     "To eliminate the need for any further pathogen testing.",
+     "To increase the nitrogen content of the biosolids for agricultural benefit."
+    ],
+    "correctIndex": 1,
+    "explanation": "Biosolids that meet the lower metal (CM1) and pathogen (CP1) categories face fewer regulatory restrictions under O. Reg. 267/03 and have a wider range of beneficial reuse options, which expands market opportunities.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183138,
+   "bankKey": "class4-wastewater",
+   "questionNum": 439,
+   "verdict": "JURISDICTION",
+   "note": "'Class A EQ ... unrestricted use' and vector attraction reduction are US EPA Part 503 concepts, not Ontario O. Reg. 267/03 terms. Ontario uses CM1/CM2 metal and CP1/CP2 pathogen categories.",
+   "original": {
+    "question": "For a Class 4 wastewater treatment plant, what is a key regulatory requirement in Ontario for managing Class A EQ biosolids intended for unrestricted use?",
+    "options": [
+     "The biosolids must be dewatered to at least 50% solids content.",
+     "A site-specific Environmental Compliance Approval (ECA) is required for each application site.",
+     "The biosolids must meet specific pathogen reduction and vector attraction reduction criteria as per O. Reg. 267/03.",
+     "Annual testing for heavy metals is not required if the biosolids are from a municipal source."
+    ],
+    "correctIndex": 2,
+    "explanation": "Under O. Reg. 267/03 of the Nutrient Management Act, Class A EQ biosolids must meet stringent pathogen reduction and vector attraction reduction criteria. These criteria ensure the biosolids are safe for unrestricted use, including application to food crops and public access lands."
+   },
+   "fix": {
+    "question": "For a Class 4 wastewater treatment plant, what is a key regulatory requirement in Ontario for biosolids intended for land application as NASM?",
+    "options": [
+     "The biosolids must be dewatered to at least 50% solids content.",
+     "A site-specific Environmental Compliance Approval (ECA) is required for each application site.",
+     "The biosolids must meet the metal (CM1/CM2) and pathogen (CP1/CP2) criteria in O. Reg. 267/03.",
+     "Annual testing for heavy metals is not required if the biosolids are from a municipal source."
+    ],
+    "correctIndex": 2,
+    "explanation": "Under O. Reg. 267/03 of the Nutrient Management Act, 2002, sewage biosolids must be sampled and analysed and meet the regulated metal categories (CM1/CM2) and pathogen categories (CP1/CP2, based on E. coli) to be land applied. Metals testing is required for municipal sources.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183158,
+   "bankKey": "class4-wastewater",
+   "questionNum": 459,
+   "verdict": "JURISDICTION",
+   "note": "'Class A EQ' is US EPA 40 CFR 503 terminology; O. Reg. 267/03 (Nutrient Management Act) does not use it. Ontario regulates NASM/biosolids by quality criteria (pathogens, metals, stabilization) and NASM categories.",
+   "original": {
+    "question": "For a Class A EQ biosolids program, what is a critical aspect of regulatory compliance under Ontario's O. Reg. 267/03?",
+    "options": [
+     "Ensuring the biosolids are always applied to land at a depth of at least 1 meter.",
+     "Meeting specific pathogen reduction and vector attraction reduction criteria.",
+     "Discharging all liquid biosolids directly to surface water bodies.",
+     "Avoiding any testing for heavy metals in the biosolids."
+    ],
+    "correctIndex": 1,
+    "explanation": "Under O. Reg. 267/03, Class A EQ biosolids must meet specific pathogen reduction (e.g., fecal coliform or Salmonella limits) and vector attraction reduction criteria to ensure they are safe for unrestricted use and do not pose a public health risk."
+   },
+   "fix": {
+    "question": "For land application of treated municipal biosolids (NASM) under Ontario's O. Reg. 267/03, what is a critical aspect of regulatory compliance?",
+    "options": [
+     "Ensuring the biosolids are always applied to land at a depth of at least 1 metre.",
+     "Meeting the prescribed pathogen, metals and stabilization (vector attraction reduction) criteria for the NASM category being applied.",
+     "Discharging all liquid biosolids directly to surface water bodies.",
+     "Avoiding any testing for heavy metals in the biosolids."
+    ],
+    "correctIndex": 1,
+    "explanation": "Under the Nutrient Management Act and O. Reg. 267/03, biosolids (NASM) must meet quality criteria for pathogens, metals and stabilization and be applied under the regulation's requirements (NASM plan, setbacks, rates).",
+    "steps": null
+   }
+  },
+  {
+   "id": 183176,
+   "bankKey": "class4-wastewater",
+   "questionNum": 477,
+   "verdict": "UNCLEAR",
+   "note": "Effluent quality trading is not Ontario's 'primary mechanism' for relief from phosphorus limits; limits are set in the ECA and relief is sought through ECA amendment/justification, so the premise and key are unsupported (compliance schedule or ECA amendment are also defensible).",
+   "original": {
+    "question": "Under Ontario's regulatory strategy for wastewater treatment, what is the primary mechanism for a facility to obtain relief from stringent effluent phosphorus limits if achieving them is technically or economically infeasible?",
+    "options": [
+     "Negotiating an effluent quality trading agreement with another facility in the same watershed.",
+     "Applying for a temporary bypass authorization from the Ministry of the Environment, Conservation and Parks (MECP).",
+     "Requesting an amendment to the Environmental Compliance Approval (ECA) based on a cost-benefit analysis.",
+     "Implementing a phased compliance schedule outlined in a Director's Order issued by the MECP."
+    ],
+    "correctIndex": 0,
+    "explanation": "Effluent quality trading allows facilities in the same watershed to achieve overall water quality objectives more cost-effectively by enabling one facility to discharge more of a pollutant if another facility discharges less, provided it's permitted by the MECP."
+   },
+   "fix": {
+    "question": "Where permitted by the MECP, which approach lets dischargers in a watershed meet overall phosphorus objectives more cost-effectively than each facility meeting the same limit individually?",
+    "options": [
+     "Effluent quality trading between facilities in the same watershed.",
+     "Applying for a temporary bypass authorization from the MECP.",
+     "Ignoring the limit until a Director's Order is issued.",
+     "Mandating the same treatment technology at every facility."
+    ],
+    "correctIndex": 0,
+    "explanation": "Effluent quality (nutrient) trading lets facilities with lower abatement cost reduce loads further so that watershed-wide objectives are met more cost-effectively, where authorized by the MECP.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183183,
+   "bankKey": "class4-wastewater",
+   "questionNum": 484,
+   "verdict": "UNCLEAR",
+   "note": "A 'Nutrient Management Strategy' under the NMA is a farm/operation document; municipal biosolids are regulated as NASM under O. Reg. 267/03 with a NASM plan. The premise is misleading.",
+   "original": {
+    "question": "Under Ontario's advanced biosolids regulations, specifically the Nutrient Management Act, 2002 (NMA) and O. Reg. 267/03, what is the primary objective of the 'Nutrient Management Strategy' (NMS) for municipal biosolids?",
+    "options": [
+     "To ensure the beneficial use of biosolids on agricultural land while protecting soil, water, and crop quality.",
+     "To establish the maximum allowable heavy metal concentrations in biosolids for land application.",
+     "To determine the appropriate storage requirements for biosolids prior to land application.",
+     "To outline the pathogen reduction and vector attraction reduction processes required for biosolids."
+    ],
+    "correctIndex": 0,
+    "explanation": "The NMS under the NMA aims to manage the application of nutrients, including those from biosolids, to agricultural land in an environmentally responsible manner, preventing over-application and protecting natural resources."
+   },
+   "fix": {
+    "question": "Under the Nutrient Management Act, 2002 and O. Reg. 267/03, what is the primary objective of the requirements governing land application of NASM such as municipal biosolids?",
+    "options": [
+     "To ensure the beneficial use of biosolids on agricultural land while protecting soil, water, and crop quality.",
+     "To replace all other provincial environmental approvals for treatment plants.",
+     "To prohibit all land application of biosolids.",
+     "To set effluent limits for the wastewater treatment plant."
+    ],
+    "correctIndex": 0,
+    "explanation": "The NMA framework manages nutrient and NASM application to land in an environmentally responsible manner, preventing over-application and protecting soil, water and crops.",
+    "steps": null
+   }
+  },
+  {
+   "id": 183190,
+   "bankKey": "class4-wastewater",
+   "questionNum": 491,
+   "verdict": "JURISDICTION",
+   "note": "'Class A EQ' is US EPA terminology, not used in Ontario's framework; also the ECA option is a defensible alternative requirement.",
+   "original": {
+    "question": "When developing a beneficial use program for Class A EQ biosolids, what is the most critical regulatory consideration under Ontario's framework?",
+    "options": [
+     "Compliance with the land application requirements of O. Reg. 267/03 under the Nutrient Management Act, 2002.",
+     "Obtaining an Environmental Compliance Approval (ECA) for the biosolids treatment process.",
+     "Ensuring the biosolids meet the pathogen reduction criteria specified in the federal Fisheries Act.",
+     "Adhering to the waste disposal site permitting requirements under the Environmental Protection Act."
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 267/03 under the Nutrient Management Act specifically governs the land application of nutrients, including biosolids, setting out requirements for nutrient management plans, setbacks, and application rates to protect the environment."
+   },
+   "fix": {
+    "question": "When developing a beneficial use program for treated municipal biosolids to be land-applied in Ontario, what is the most critical regulatory consideration?",
+    "options": [
+     "Compliance with the land application requirements of O. Reg. 267/03 under the Nutrient Management Act, 2002.",
+     "Adhering to the federal Wastewater Systems Effluent Regulations discharge limits for the land application.",
+     "Ensuring the biosolids meet pathogen criteria specified in the federal Fisheries Act.",
+     "Using the waste disposal site permitting rules as the only requirement."
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 267/03 under the Nutrient Management Act governs land application of NASM including biosolids (plans, setbacks, rates).",
+    "steps": null
+   }
+  },
+  {
+   "id": 240763,
+   "bankKey": "class4-wastewater",
+   "questionNum": 501,
+   "verdict": "WRONG",
+   "note": "(220-8)x54,000/1000 = 11,448 kg/d; marked option 11,412 does not match the steps.",
+   "original": {
+    "question": "A wastewater treatment plant treats an average daily flow of 54,000 m³/d. The influent BOD5 is 220 mg/L and the effluent BOD5 after secondary treatment is 8 mg/L. What is the average daily mass of BOD5 removed by the plant (in kg/d)?",
+    "options": [
+     "9,800 kg/d",
+     "12,800 kg/d",
+     "11,412 kg/d",
+     "10,584 kg/d"
+    ],
+    "correctIndex": 2,
+    "explanation": "Mass removed = (Influent BOD5 - Effluent BOD5) × Flow × 1,000 (to convert to kg)."
+   },
+   "fix": {
+    "question": "A wastewater treatment plant treats an average daily flow of 54,000 m³/d. The influent BOD5 is 220 mg/L and the effluent BOD5 after secondary treatment is 8 mg/L. What is the average daily mass of BOD5 removed by the plant (in kg/d)?",
+    "options": [
+     "9,800 kg/d",
+     "12,800 kg/d",
+     "11,448 kg/d",
+     "10,584 kg/d"
+    ],
+    "correctIndex": 2,
+    "explanation": "Mass removed = (Influent - Effluent) mg/L x Flow m³/d / 1,000 = 212 x 54,000 / 1,000 = 11,448 kg/d.",
+    "steps": [
+     {
+      "l": "Step 1 — Concentration removed:",
+      "c": "220 - 8 = 212 mg/L"
+     },
+     {
+      "l": "Step 2 — Mass removed:",
+      "c": "212 g/m³ x 54,000 m³/d = 11,448,000 g/d = 11,448 kg/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240767,
+   "bankKey": "class4-wastewater",
+   "questionNum": 505,
+   "verdict": "WRONG",
+   "note": "Key points to 4,320 but steps give 3,600 kg/d; the question also assumes equal volumes of primary and WAS without stating it.",
+   "original": {
+    "question": "A plant processes primary sludge (3% solids) and waste activated sludge (1% solids) at a total combined volume of 180 m³/d. What is the total mass of solids (kg/d) to the digester?",
+    "options": [
+     "2,700 kg/d",
+     "5,400 kg/d",
+     "3,600 kg/d",
+     "4,320 kg/d"
+    ],
+    "correctIndex": 3,
+    "explanation": "Assume average solids concentration: [(3% + 1%) / 2 = 2%]. Total solids = Volume × Concentration × 1,000."
+   },
+   "fix": {
+    "question": "A plant sends primary sludge (3% solids) and waste activated sludge (1% solids), 90 m³/d of each (180 m³/d total, assume density 1,000 kg/m³), to the digester. What is the total mass of solids (kg/d) to the digester?",
+    "options": [
+     "2,700 kg/d",
+     "5,400 kg/d",
+     "3,600 kg/d",
+     "4,320 kg/d"
+    ],
+    "correctIndex": 2,
+    "explanation": "Primary: 90 m³/d x 30 kg/m³ = 2,700 kg/d; WAS: 90 x 10 = 900 kg/d; total 3,600 kg/d.",
+    "steps": [
+     {
+      "l": "Step 1 — Primary solids:",
+      "c": "90 x 1,000 x 0.03 = 2,700 kg/d"
+     },
+     {
+      "l": "Step 2 — WAS solids:",
+      "c": "90 x 1,000 x 0.01 = 900 kg/d"
+     },
+     {
+      "l": "Step 3 — Total:",
+      "c": "2,700 + 900 = 3,600 kg/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240768,
+   "bankKey": "class4-wastewater",
+   "questionNum": 506,
+   "verdict": "WRONG",
+   "note": "34 mg/L x 80,000 m³/d = 2,720 kg/d N x 4.6 = 12,512 kg/d; marked 12,496 is wrong.",
+   "original": {
+    "question": "A wastewater treatment plant needs to nitrify a daily flow of 80,000 m³/d. The influent ammonia-N concentration is 35 mg/L and the effluent is targeted at 1 mg/L. Given oxygen demand for nitrification is 4.6 g O₂ per g NH₃-N oxidized, what is the total daily oxygen demand (kg/d) for nitrification?",
+    "options": [
+     "12,496 kg/d",
+     "11,500 kg/d",
+     "10,280 kg/d",
+     "13,782 kg/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "O₂ demand = (Influent - Effluent) × Flow × 1,000 × 4.6 ÷ 1,000,000"
+   },
+   "fix": {
+    "question": "A wastewater treatment plant needs to nitrify a daily flow of 80,000 m³/d. The influent ammonia-N concentration is 35 mg/L and the effluent is targeted at 1 mg/L. Given oxygen demand for nitrification is 4.6 g O₂ per g NH₃-N oxidized, what is the total daily oxygen demand (kg/d) for nitrification?",
+    "options": [
+     "12,512 kg/d",
+     "11,500 kg/d",
+     "10,280 kg/d",
+     "13,782 kg/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "NH3-N removed = 34 x 80,000 / 1,000 = 2,720 kg/d; O2 = 2,720 x 4.6 = 12,512 kg/d.",
+    "steps": [
+     {
+      "l": "Step 1 — NH3-N removed:",
+      "c": "34 mg/L x 80,000 m³/d / 1,000 = 2,720 kg/d"
+     },
+     {
+      "l": "Step 2 — Oxygen demand:",
+      "c": "2,720 x 4.6 = 12,512 kg/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240770,
+   "bankKey": "class4-wastewater",
+   "questionNum": 508,
+   "verdict": "WRONG",
+   "note": "Volume = pi x 17.5² x 4.0 = 3,848 m³ (steps say 3,848.4); marked 3,847 is inconsistent (minor).",
+   "original": {
+    "question": "If a plant’s secondary clarifier has diameter 35 m and sidewater depth 4.0 m, what is the clarifier volume in m³?",
+    "options": [
+     "5,500 m³",
+     "3,847 m³",
+     "3,200 m³",
+     "4,200 m³"
+    ],
+    "correctIndex": 1,
+    "explanation": "Volume of a cylinder = π × (radius)² × height."
+   },
+   "fix": {
+    "question": "If a plant's secondary clarifier has diameter 35 m and sidewater depth 4.0 m, what is the clarifier volume in m³?",
+    "options": [
+     "5,500 m³",
+     "3,848 m³",
+     "3,200 m³",
+     "4,200 m³"
+    ],
+    "correctIndex": 1,
+    "explanation": "Volume of a cylinder = pi x r² x h = 3.1416 x 17.5² x 4.0 = 3,848 m³.",
+    "steps": [
+     {
+      "l": "Step 1 — Radius:",
+      "c": "35 / 2 = 17.5 m"
+     },
+     {
+      "l": "Step 2 — Area:",
+      "c": "3.1416 x 306.25 = 962.1 m²"
+     },
+     {
+      "l": "Step 3 — Volume:",
+      "c": "962.1 x 4.0 = 3,848 m³"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240774,
+   "bankKey": "class4-wastewater",
+   "questionNum": 512,
+   "verdict": "WRONG",
+   "note": "The question is incoherent: given 9,000 m³ x 3,750 mg/L = 33,750 kg and MCRT 15 d, the required wasting is 2,250 kg/d (a mass, not an inflow in m³/d). Inflow cannot be derived. The steps contradict themselves.",
+   "original": {
+    "question": "You need to achieve a mean cell residence time (MCRT) of 15 days in an aeration system with a total volume of 9,000 m³ and MLSS of 3,750 mg/L. If 650 kg/d of WAS is wasted, what should the average inflow be (m³/d)? Assume no biomass lost in effluent.",
+    "options": [
+     "3,000 m³/d",
+     "1,200 m³/d",
+     "1,650 m³/d",
+     "2,250 m³/d"
+    ],
+    "correctIndex": 3,
+    "explanation": "MCRT = (volume × MLSS)/ mass wasted per day; rearrange to solve for Flow."
+   },
+   "fix": {
+    "question": "You need to achieve a mean cell residence time (MCRT) of 15 days in an aeration system with a total volume of 9,000 m³ and MLSS of 3,750 mg/L. Assuming no solids are lost in the effluent, what mass of solids (kg/d) must be wasted?",
+    "options": [
+     "3,000 kg/d",
+     "1,200 kg/d",
+     "1,650 kg/d",
+     "2,250 kg/d"
+    ],
+    "correctIndex": 3,
+    "explanation": "Solids inventory = 9,000 m³ x 3.75 kg/m³ = 33,750 kg. Required wasting = 33,750 / 15 d = 2,250 kg/d.",
+    "steps": [
+     {
+      "l": "Step 1 — Solids inventory:",
+      "c": "9,000 x 3,750 / 1,000 = 33,750 kg"
+     },
+     {
+      "l": "Step 2 — Wasting for 15 d MCRT:",
+      "c": "33,750 / 15 = 2,250 kg/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240776,
+   "bankKey": "class4-wastewater",
+   "questionNum": 514,
+   "verdict": "WRONG",
+   "note": "20,640 x 0.38 = 7,843.2 MJ, not 7,833.6.",
+   "original": {
+    "question": "A plant optimizing energy recovery estimates biosolids yield of 1,200 kg/day, with energy content of 17.2 MJ/kg. If the conversion efficiency is 38%, what is the maximum amount of recoverable energy per day (in MJ)?",
+    "options": [
+     "16,456 MJ",
+     "4,216 MJ",
+     "19,900 MJ",
+     "7,833.6 MJ"
+    ],
+    "correctIndex": 3,
+    "explanation": "Energy = mass × content × efficiency."
+   },
+   "fix": {
+    "question": "A plant optimizing energy recovery estimates biosolids yield of 1,200 kg/day, with energy content of 17.2 MJ/kg. If the conversion efficiency is 38%, what is the maximum amount of recoverable energy per day (in MJ)?",
+    "options": [
+     "16,456 MJ",
+     "4,216 MJ",
+     "7,843.2 MJ",
+     "19,900 MJ"
+    ],
+    "correctIndex": 2,
+    "explanation": "Energy = 1,200 x 17.2 x 0.38 = 7,843.2 MJ.",
+    "steps": [
+     {
+      "l": "Step 1 — Gross energy:",
+      "c": "1,200 x 17.2 = 20,640 MJ"
+     },
+     {
+      "l": "Step 2 — Apply efficiency:",
+      "c": "20,640 x 0.38 = 7,843.2 MJ"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240777,
+   "bankKey": "class4-wastewater",
+   "questionNum": 515,
+   "verdict": "UNCLEAR",
+   "note": "Plant A needs only (14-12) x 5,000 = 10 kg/d, so 'how many credits can B sell to A' is arguably 10 kg/d (an offered option) rather than the 18 kg/d B generates.",
+   "original": {
+    "question": "In an effluent trading scheme, Plant A discharges 5,000 m³/d at 14 mg/L TP. If the regulated limit is 12 mg/L, and Plant B can sell credits for each mg/L below 7 mg/L on 6,000 m³/d, how many kg/d credits can Plant B sell to Plant A if Plant B reaches 4 mg/L?",
+    "options": [
+     "18 kg/d",
+     "22 kg/d",
+     "12 kg/d",
+     "10 kg/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "B's credits: (7-4) mg/L × 6,000 m³/d × 1,000 / 1,000,000 = 3 × 6 = 18 kg/d."
+   },
+   "fix": {
+    "question": "In an effluent trading scheme, Plant B earns credits for each mg/L of TP below 7 mg/L on 6,000 m³/d. If Plant B discharges at 4 mg/L, how many kg/d of credits does Plant B generate?",
+    "options": [
+     "18 kg/d",
+     "22 kg/d",
+     "12 kg/d",
+     "10 kg/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "Credits = (7 - 4) mg/L x 6,000 m³/d / 1,000 = 18 kg/d.",
+    "steps": [
+     {
+      "l": "Step 1 — Below benchmark:",
+      "c": "7 - 4 = 3 mg/L"
+     },
+     {
+      "l": "Step 2 — Mass:",
+      "c": "3 x 6,000 / 1,000 = 18 kg/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240779,
+   "bankKey": "class4-wastewater",
+   "questionNum": 517,
+   "verdict": "WRONG",
+   "note": "504 kg/d x 0.98 = 493.92 kg/d x 365 = 180,281 kg/yr; marked 179,844 matches neither the correct value nor the steps (494 x 365 = 180,310).",
+   "original": {
+    "question": "An advanced nutrient removal plant is designed for phosphorus effluent <0.6 mg/L. If annual flow averages 28,000 m³/d and Ferric Chloride (FeCl3) dosing achieves 98% P removal, how many kg/yr of P are removed? Influent P = 18 mg/L.",
+    "options": [
+     "163,340 kg/yr",
+     "187,872 kg/yr",
+     "152,460 kg/yr",
+     "179,844 kg/yr"
+    ],
+    "correctIndex": 3,
+    "explanation": "Annual P removed = (Influent P × Flow × Days × %removal)."
+   },
+   "fix": {
+    "question": "An advanced nutrient removal plant is designed for phosphorus effluent <0.6 mg/L. If annual flow averages 28,000 m³/d and Ferric Chloride (FeCl3) dosing achieves 98% P removal, how many kg/yr of P are removed? Influent P = 18 mg/L.",
+    "options": [
+     "163,340 kg/yr",
+     "187,872 kg/yr",
+     "152,460 kg/yr",
+     "180,281 kg/yr"
+    ],
+    "correctIndex": 3,
+    "explanation": "Annual P removed = 28,000 x 18 / 1,000 x 0.98 x 365 = 180,281 kg/yr.",
+    "steps": [
+     {
+      "l": "Step 1 — Influent P:",
+      "c": "28,000 x 18 / 1,000 = 504 kg/d"
+     },
+     {
+      "l": "Step 2 — Removed per day:",
+      "c": "504 x 0.98 = 493.92 kg/d"
+     },
+     {
+      "l": "Step 3 — Annual:",
+      "c": "493.92 x 365 = 180,281 kg/yr"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240781,
+   "bankKey": "class4-wastewater",
+   "questionNum": 519,
+   "verdict": "WRONG",
+   "note": "2,719.2 kg solids / 0.23 = 11,822.6 kg/d; marked 11,884 is wrong.",
+   "original": {
+    "question": "A centrifuge dewaters biosolids from 5.5% to 23% solids, processing 48 m³/d feed. Assuming density is 1,030 kg/m³ for both, what is the mass of dewatered biosolids (kg/d) produced daily?",
+    "options": [
+     "6,600 kg/d",
+     "15,720 kg/d",
+     "11,884 kg/d",
+     "8,225 kg/d"
+    ],
+    "correctIndex": 2,
+    "explanation": "Solids mass = Feed volume × feed solids × density = output mass as mass balance."
+   },
+   "fix": {
+    "question": "A centrifuge dewaters biosolids from 5.5% to 23% solids, processing 48 m³/d feed. Assuming density is 1,030 kg/m³ for both, what is the mass of dewatered biosolids (kg/d) produced daily? (Assume all solids are captured.)",
+    "options": [
+     "6,600 kg/d",
+     "15,720 kg/d",
+     "11,823 kg/d",
+     "8,225 kg/d"
+    ],
+    "correctIndex": 2,
+    "explanation": "Feed solids = 48 x 1,030 x 0.055 = 2,719.2 kg/d; cake mass = 2,719.2 / 0.23 = 11,823 kg/d.",
+    "steps": [
+     {
+      "l": "Step 1 — Feed mass:",
+      "c": "48 x 1,030 = 49,440 kg/d"
+     },
+     {
+      "l": "Step 2 — Solids:",
+      "c": "49,440 x 0.055 = 2,719.2 kg/d"
+     },
+     {
+      "l": "Step 3 — Cake mass:",
+      "c": "2,719.2 / 0.23 = 11,823 kg/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240785,
+   "bankKey": "class4-wastewater",
+   "questionNum": 523,
+   "verdict": "UNCLEAR",
+   "note": "MLSS is not given; the steps assume 2,100 mg/L, so MCRT cannot be determined from the question as written.",
+   "original": {
+    "question": "An activated sludge reactor (completely-mixed) has a volume of 20,000 m³ and receives a flow of 48,000 m³/day. What is its mean cell residence time (MCRT) if 4,800 kg of MLSS are wasted daily and the effluent contains 120 mg/L of SS?",
+    "options": [
+     "2.5 days",
+     "3.5 days",
+     "4.0 days",
+     "6.2 days"
+    ],
+    "correctIndex": 2,
+    "explanation": "Total solids in system divided by solids leaving (wasted + effluent)."
+   },
+   "fix": {
+    "question": "An activated sludge reactor (completely-mixed) has a volume of 20,000 m³, MLSS of 2,100 mg/L, and receives a flow of 48,000 m³/day. What is its mean cell residence time (MCRT) if 4,800 kg of MLSS are wasted daily and the effluent contains 120 mg/L of SS?",
+    "options": [
+     "2.5 days",
+     "3.5 days",
+     "4.0 days",
+     "6.2 days"
+    ],
+    "correctIndex": 2,
+    "explanation": "Inventory = 20,000 x 2.1 = 42,000 kg; losses = 4,800 + 5,760 = 10,560 kg/d; MCRT = 42,000/10,560 = 4.0 d.",
+    "steps": [
+     {
+      "l": "Step 1 — Inventory:",
+      "c": "20,000 x 2.1 = 42,000 kg"
+     },
+     {
+      "l": "Step 2 — Effluent solids:",
+      "c": "48,000 x 120 / 1,000 = 5,760 kg/d"
+     },
+     {
+      "l": "Step 3 — Total lost:",
+      "c": "4,800 + 5,760 = 10,560 kg/d"
+     },
+     {
+      "l": "Step 4 — MCRT:",
+      "c": "42,000 / 10,560 = 4.0 d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240796,
+   "bankKey": "class4-wastewater",
+   "questionNum": 534,
+   "verdict": "WRONG",
+   "note": "250 x 0.9985 x 0.79 = 197.2 kg MeOH x 1.5 = 295.8 kg COD/d; marked 296.2 ignores purity (and steps say 295.8).",
+   "original": {
+    "question": "A BNR plant applies an external carbon dose of methanol at 250 L/day (99.85% purity, density = 0.79 kg/L). How many kg of COD are supplied per day? (1 g MeOH = 1.5 g COD)",
+    "options": [
+     "266.7 kg COD/d",
+     "296.2 kg COD/d",
+     "297.5 kg COD/d",
+     "197.1 kg COD/d"
+    ],
+    "correctIndex": 1,
+    "explanation": "Calculate pure methanol mass, convert to COD equivalent."
+   },
+   "fix": {
+    "question": "A BNR plant applies an external carbon dose of methanol at 250 L/day (99.85% purity, density = 0.79 kg/L). How many kg of COD are supplied per day? (1 g MeOH = 1.5 g COD)",
+    "options": [
+     "266.7 kg COD/d",
+     "295.8 kg COD/d",
+     "297.5 kg COD/d",
+     "197.1 kg COD/d"
+    ],
+    "correctIndex": 1,
+    "explanation": "Pure methanol = 250 x 0.9985 x 0.79 = 197.2 kg/d; COD = 197.2 x 1.5 = 295.8 kg/d.",
+    "steps": [
+     {
+      "l": "Step 1 — Pure MeOH volume:",
+      "c": "250 x 0.9985 = 249.6 L"
+     },
+     {
+      "l": "Step 2 — Mass:",
+      "c": "249.6 x 0.79 = 197.2 kg"
+     },
+     {
+      "l": "Step 3 — COD:",
+      "c": "197.2 x 1.5 = 295.8 kg COD/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240798,
+   "bankKey": "class4-wastewater",
+   "questionNum": 536,
+   "verdict": "UNCLEAR",
+   "note": "Yield is per kg BOD removed but the solution uses the influent load; effluent BOD is not given, so the removed load is undefined unless complete removal is stated.",
+   "original": {
+    "question": "An EBPR (enhanced biological phosphorus removal) plant has a reactor with 38,000 m³, MLSS of 3,200 mg/L, and operates at 287,000 population equivalent. If the observed yield is 0.45 kg MLVSS/kg BOD removed and BOD influent is 265 mg/L (Q=83,000 m³/d), estimate the daily sludge production in tonnes.",
+    "options": [
+     "9.9 tonnes",
+     "15.4 tonnes",
+     "27.4 tonnes",
+     "5.2 tonnes"
+    ],
+    "correctIndex": 0,
+    "explanation": "Calculate BOD load removed and multiply by yield."
+   },
+   "fix": {
+    "question": "An EBPR (enhanced biological phosphorus removal) plant has a reactor with 38,000 m³, MLSS of 3,200 mg/L, and operates at 287,000 population equivalent. If the observed yield is 0.45 kg MLVSS/kg BOD removed and BOD influent is 265 mg/L (Q=83,000 m³/d), estimate the daily sludge production in tonnes. Assume essentially all of the influent BOD is removed.",
+    "options": [
+     "9.9 tonnes",
+     "15.4 tonnes",
+     "27.4 tonnes",
+     "5.2 tonnes"
+    ],
+    "correctIndex": 0,
+    "explanation": "BOD removed = 83,000 x 265 / 1,000 = 21,995 kg/d; sludge = 21,995 x 0.45 = 9,898 kg/d = 9.9 t/d.",
+    "steps": [
+     {
+      "l": "Step 1 — BOD load removed:",
+      "c": "83,000 x 265 / 1,000 = 21,995 kg/d"
+     },
+     {
+      "l": "Step 2 — Sludge:",
+      "c": "21,995 x 0.45 = 9,898 kg/d = 9.9 tonnes"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240804,
+   "bankKey": "class4-wastewater",
+   "questionNum": 542,
+   "verdict": "WRONG",
+   "note": "30,400 kg / 4,560 kg/d = 6.67 d, not 7.99 d; no option is correct.",
+   "original": {
+    "question": "An activated sludge system has an influent flow of 30,000 m³/d, an MLSS of 3,800 mg/L, and an aeration tank volume of 8,000 m³. Calculate the mean cell residence time (MCRT) in days if waste sludge is removed at a rate of 480 m³/d with a concentration of 9,500 mg/L.",
+    "options": [
+     "6.32 days",
+     "9.21 days",
+     "7.99 days",
+     "8.46 days"
+    ],
+    "correctIndex": 2,
+    "explanation": "MCRT = (Total solids in system)/(Solids leaving per day)."
+   },
+   "fix": {
+    "question": "An activated sludge system has an influent flow of 30,000 m³/d, an MLSS of 3,800 mg/L, and an aeration tank volume of 8,000 m³. Calculate the mean cell residence time (MCRT) in days if waste sludge is removed at a rate of 480 m³/d with a concentration of 9,500 mg/L (neglect effluent solids).",
+    "options": [
+     "6.32 days",
+     "9.21 days",
+     "6.67 days",
+     "8.46 days"
+    ],
+    "correctIndex": 2,
+    "explanation": "MCRT = 30,400 kg / 4,560 kg/d = 6.67 days.",
+    "steps": [
+     {
+      "l": "Step 1 — Solids in tank:",
+      "c": "8,000 x 3,800 / 1,000 = 30,400 kg"
+     },
+     {
+      "l": "Step 2 — Solids wasted:",
+      "c": "480 x 9,500 / 1,000 = 4,560 kg/d"
+     },
+     {
+      "l": "Step 3 — MCRT:",
+      "c": "30,400 / 4,560 = 6.67 d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240810,
+   "bankKey": "class4-wastewater",
+   "questionNum": 548,
+   "verdict": "WRONG",
+   "note": "Data missing (sludge flow/concentration is not given). The steps assume 30 kg/m³ and then get n = 2, but that assumption gives n = 22.7 digesters; the answer is unsupported.",
+   "original": {
+    "question": "A plant operates 3 digesters (each 2,400 m³ working volume) in parallel receiving a total primary sludge load of 68,000 kg VSS/d. The SRT is set at 24 days. What is the minimum number of digesters required to maintain this SRT?",
+    "options": [
+     "4",
+     "1",
+     "2",
+     "3"
+    ],
+    "correctIndex": 2,
+    "explanation": "SRT = (total volume × VSS) / VSS load. Solve for volume needed."
+   },
+   "fix": {
+    "question": "A plant operates digesters in parallel, each with a 2,400 m³ working volume, receiving a total sludge flow of 300 m³/d. If the SRT (equal to HRT for a flow-through digester) must be at least 24 days, what is the minimum number of digesters required?",
+    "options": [
+     "4",
+     "1",
+     "2",
+     "3"
+    ],
+    "correctIndex": 3,
+    "explanation": "Required volume = 300 m³/d x 24 d = 7,200 m³; 7,200 / 2,400 = 3 digesters.",
+    "steps": [
+     {
+      "l": "Step 1 — Required volume:",
+      "c": "300 x 24 = 7,200 m³"
+     },
+     {
+      "l": "Step 2 — Digesters:",
+      "c": "7,200 / 2,400 = 3"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240813,
+   "bankKey": "class4-wastewater",
+   "questionNum": 551,
+   "verdict": "WRONG",
+   "note": "Steps give 8,292 m³/d but marked option 10,248 is wrong and 8,292 is not offered.",
+   "original": {
+    "question": "A digestor co-digests food waste (12,000 kg VS/d) with thickened WAS (16,000 kg VS/d). If food waste produces 0.65 m³ biogas/kg VS destroyed and WAS produces 0.40 m³/kg, and the percent destruction is 62% for food and 54% for WAS, what is the total daily biogas (m³/d) produced?",
+    "options": [
+     "10,248 m³/d",
+     "15,920 m³/d",
+     "9,080 m³/d",
+     "13,572 m³/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "Compute VS destroyed for each, multiply by their yields, sum."
+   },
+   "fix": {
+    "question": "A digestor co-digests food waste (12,000 kg VS/d) with thickened WAS (16,000 kg VS/d). If food waste produces 0.65 m³ biogas/kg VS destroyed and WAS produces 0.40 m³/kg, and the percent destruction is 62% for food and 54% for WAS, what is the total daily biogas (m³/d) produced?",
+    "options": [
+     "10,248 m³/d",
+     "15,920 m³/d",
+     "8,292 m³/d",
+     "13,572 m³/d"
+    ],
+    "correctIndex": 2,
+    "explanation": "Compute VS destroyed for each, multiply by yields, and sum: 4,836 + 3,456 = 8,292 m³/d.",
+    "steps": [
+     {
+      "l": "Step 1 — Food waste destroyed:",
+      "c": "12,000 x 0.62 = 7,440 kg"
+     },
+     {
+      "l": "Step 2 — WAS destroyed:",
+      "c": "16,000 x 0.54 = 8,640 kg"
+     },
+     {
+      "l": "Step 3 — Biogas from food:",
+      "c": "7,440 x 0.65 = 4,836 m³"
+     },
+     {
+      "l": "Step 4 — Biogas from WAS:",
+      "c": "8,640 x 0.40 = 3,456 m³"
+     },
+     {
+      "l": "Step 5 — Total:",
+      "c": "4,836 + 3,456 = 8,292 m³/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240818,
+   "bankKey": "class4-wastewater",
+   "questionNum": 556,
+   "verdict": "WRONG",
+   "note": "V2 = (104/101.3)(273/304)(17,000) = 15,673 m³/d; marked 15,009 is wrong (steps' own factors multiply to ~0.922).",
+   "original": {
+    "question": "An anaerobic digester gas holds methane at 31°C and 104 kPa. Standard conditions are 0°C and 101.3 kPa. If the measured gas volume is 17,000 m³/d, what is the volume at standard conditions (in m³/d)?",
+    "options": [
+     "18,032 m³/d",
+     "17,375 m³/d",
+     "16,568 m³/d",
+     "15,009 m³/d"
+    ],
+    "correctIndex": 3,
+    "explanation": "Use combined gas law to convert volume to STP."
+   },
+   "fix": {
+    "question": "An anaerobic digester gas holds methane at 31°C and 104 kPa. Standard conditions are 0°C and 101.3 kPa. If the measured gas volume is 17,000 m³/d, what is the volume at standard conditions (in m³/d)?",
+    "options": [
+     "18,032 m³/d",
+     "17,375 m³/d",
+     "16,568 m³/d",
+     "15,673 m³/d"
+    ],
+    "correctIndex": 3,
+    "explanation": "Combined gas law: V2 = 17,000 x (104/101.3) x (273/304) = 15,673 m³/d.",
+    "steps": [
+     {
+      "l": "Step 1 — Pressure ratio:",
+      "c": "104/101.3 = 1.0267"
+     },
+     {
+      "l": "Step 2 — Temperature ratio:",
+      "c": "273/304 = 0.898"
+     },
+     {
+      "l": "Step 3 — Volume:",
+      "c": "17,000 x 1.0267 x 0.898 = 15,673 m³/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240820,
+   "bankKey": "class4-wastewater",
+   "questionNum": 558,
+   "verdict": "WRONG",
+   "note": "121,053 / 23,400 = 5.17 m³/h, not 5.22 (steps show 5.175).",
+   "original": {
+    "question": "An operator must supply 92,000 kJ/h of heat energy to a digester. If biogas has a heating value of 23.4 MJ/m³ and the boiler operates at 76% efficiency, how many m³/h of biogas are needed?",
+    "options": [
+     "4.58 m³/h",
+     "5.22 m³/h",
+     "2.67 m³/h",
+     "6.21 m³/h"
+    ],
+    "correctIndex": 1,
+    "explanation": "Divide required energy by efficiency and heating value."
+   },
+   "fix": {
+    "question": "An operator must supply 92,000 kJ/h of heat energy to a digester. If biogas has a heating value of 23.4 MJ/m³ and the boiler operates at 76% efficiency, how many m³/h of biogas are needed?",
+    "options": [
+     "4.58 m³/h",
+     "5.17 m³/h",
+     "2.67 m³/h",
+     "6.21 m³/h"
+    ],
+    "correctIndex": 1,
+    "explanation": "Fuel energy = 92,000 / 0.76 = 121,053 kJ/h; / 23,400 kJ/m³ = 5.17 m³/h.",
+    "steps": [
+     {
+      "l": "Step 1 — Fuel energy:",
+      "c": "92,000 / 0.76 = 121,053 kJ/h"
+     },
+     {
+      "l": "Step 2 — Heating value:",
+      "c": "23.4 MJ/m³ = 23,400 kJ/m³"
+     },
+     {
+      "l": "Step 3 — Volume:",
+      "c": "121,053 / 23,400 = 5.17 m³/h"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240821,
+   "bankKey": "class4-wastewater",
+   "questionNum": 559,
+   "verdict": "WRONG",
+   "note": "Stated area 937 m² gives 34,233/937 = 36.5; the steps use 1,249 m² (answer 27.4). Question and steps disagree.",
+   "original": {
+    "question": "A WWTP has 4 parallel secondary clarifiers. Each handles equal share of 79,000 m³/d. If one clarifier is out of service and another must handle a 30% flow surge, what hydraulic loading (m³/m²·d) does that clarifier see, if its area is 937 m²?",
+    "options": [
+     "30.18 m³/m²·d",
+     "27.43 m³/m²·d",
+     "22.59 m³/m²·d",
+     "19.62 m³/m²·d"
+    ],
+    "correctIndex": 1,
+    "explanation": "Reallocate flow, add surge, divide by area."
+   },
+   "fix": {
+    "question": "A WWTP has 4 parallel secondary clarifiers. Each handles equal share of 79,000 m³/d. If one clarifier is out of service and another must handle a 30% flow surge, what hydraulic loading (m³/m²·d) does that clarifier see, if its area is 1,249 m²?",
+    "options": [
+     "30.18 m³/m²·d",
+     "27.41 m³/m²·d",
+     "22.59 m³/m²·d",
+     "19.62 m³/m²·d"
+    ],
+    "correctIndex": 1,
+    "explanation": "Three units share 79,000 m³/d: 26,333 m³/d each; with 30% surge 34,233 m³/d; / 1,249 m² = 27.41 m³/m²·d.",
+    "steps": [
+     {
+      "l": "Step 1 — Flow per unit with 3 in service:",
+      "c": "79,000 / 3 = 26,333 m³/d"
+     },
+     {
+      "l": "Step 2 — Add 30% surge:",
+      "c": "26,333 x 1.3 = 34,233 m³/d"
+     },
+     {
+      "l": "Step 3 — Loading:",
+      "c": "34,233 / 1,249 = 27.41 m³/m²·d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240830,
+   "bankKey": "class4-wastewater",
+   "questionNum": 568,
+   "verdict": "WRONG",
+   "note": "135,000 kg / 32 kg/m³ = 4,219 m³; marked 6,750 uses 20,000 mg/L and the steps admit the mismatch.",
+   "original": {
+    "question": "You are designing a digester to co-digest food waste and primary sludge. The total daily volatile solids (VS) load is 5,400 kg and the digester retention time is 25 days. What is the required working volume of the digester in m³, assuming VS concentration is 32,000 mg/L?",
+    "options": [
+     "8,100 m³",
+     "5,200 m³",
+     "7,200 m³",
+     "6,750 m³"
+    ],
+    "correctIndex": 3,
+    "explanation": "Working volume = (VS load per day × retention time) / VS concentration."
+   },
+   "fix": {
+    "question": "You are designing a digester to co-digest food waste and primary sludge. The total daily volatile solids (VS) load is 5,400 kg and the digester retention time is 25 days. What is the required working volume of the digester in m³, assuming VS concentration is 32,000 mg/L?",
+    "options": [
+     "8,100 m³",
+     "5,200 m³",
+     "7,200 m³",
+     "4,219 m³"
+    ],
+    "correctIndex": 3,
+    "explanation": "VS in 25 d = 135,000 kg; 32,000 mg/L = 32 kg/m³; volume = 135,000 / 32 = 4,219 m³.",
+    "steps": [
+     {
+      "l": "Step 1 — VS over retention time:",
+      "c": "5,400 x 25 = 135,000 kg"
+     },
+     {
+      "l": "Step 2 — Concentration:",
+      "c": "32,000 mg/L = 32 kg/m³"
+     },
+     {
+      "l": "Step 3 — Volume:",
+      "c": "135,000 / 32 = 4,219 m³"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240831,
+   "bankKey": "class4-wastewater",
+   "questionNum": 569,
+   "verdict": "WRONG",
+   "note": "1,320 m³ x 35.8 = 47,256 MJ; marked 47,160 is a wrong 'rounding'.",
+   "original": {
+    "question": "A plant with a 34,000 m³ anaerobic digester produces 2,200 m³/d biogas (60% methane) at STP. If 1 m³ methane = 35.8 MJ, what is the total daily energy recovered, in MJ?",
+    "options": [
+     "52,800 MJ",
+     "54,300 MJ",
+     "42,700 MJ",
+     "47,160 MJ"
+    ],
+    "correctIndex": 3,
+    "explanation": "Calculate methane volume, multiply by energy content."
+   },
+   "fix": {
+    "question": "A plant with a 34,000 m³ anaerobic digester produces 2,200 m³/d biogas (60% methane) at STP. If 1 m³ methane = 35.8 MJ, what is the total daily energy recovered, in MJ?",
+    "options": [
+     "52,800 MJ",
+     "54,300 MJ",
+     "42,700 MJ",
+     "47,256 MJ"
+    ],
+    "correctIndex": 3,
+    "explanation": "Methane = 2,200 x 0.6 = 1,320 m³/d; energy = 1,320 x 35.8 = 47,256 MJ.",
+    "steps": [
+     {
+      "l": "Step 1 — Methane volume:",
+      "c": "2,200 x 0.6 = 1,320 m³/d"
+     },
+     {
+      "l": "Step 2 — Energy:",
+      "c": "1,320 x 35.8 = 47,256 MJ"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240833,
+   "bankKey": "class4-wastewater",
+   "questionNum": 571,
+   "verdict": "WRONG",
+   "note": "290 kg/d P = 9,355 mol x 2 x 162.5 g = 3,039 kg/d FeCl3; marked 303 kg/d is off by a factor of 10 (steps acknowledge 3,039).",
+   "original": {
+    "question": "An advanced phosphorus removal process requires addition of ferric chloride (FeCl₃) at a 2:1 molar ratio to phosphorus. If the influent P concentration is 10 mg/L, influent flow is 29,000 m³/d, and P MW = 31 g/mol, FeCl₃ MW = 162.5 g/mol, calculate the daily FeCl₃ requirement in kg/d.",
+    "options": [
+     "189 kg/d",
+     "420 kg/d",
+     "365 kg/d",
+     "303 kg/d"
+    ],
+    "correctIndex": 3,
+    "explanation": "Convert P to moles, apply molar ratio, convert moles FeCl₃ to grams, then to kg."
+   },
+   "fix": {
+    "question": "An advanced phosphorus removal process requires addition of ferric chloride (FeCl₃) at a 2:1 molar ratio to phosphorus. If the influent P concentration is 10 mg/L, influent flow is 29,000 m³/d, and P MW = 31 g/mol, FeCl₃ MW = 162.5 g/mol, calculate the daily FeCl₃ requirement in kg/d.",
+    "options": [
+     "1,890 kg/d",
+     "4,200 kg/d",
+     "3,650 kg/d",
+     "3,039 kg/d"
+    ],
+    "correctIndex": 3,
+    "explanation": "P load = 290 kg/d = 9,355 mol/d; FeCl3 = 2 x 9,355 = 18,710 mol x 162.5 g = 3,039 kg/d.",
+    "steps": [
+     {
+      "l": "Step 1 — P load:",
+      "c": "10 x 29,000 / 1,000 = 290 kg/d"
+     },
+     {
+      "l": "Step 2 — Moles P:",
+      "c": "290,000 g / 31 = 9,355 mol"
+     },
+     {
+      "l": "Step 3 — Moles FeCl3:",
+      "c": "9,355 x 2 = 18,710 mol"
+     },
+     {
+      "l": "Step 4 — Mass:",
+      "c": "18,710 x 162.5 = 3,040,000 g = 3,039 kg/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240834,
+   "bankKey": "class4-wastewater",
+   "questionNum": 572,
+   "verdict": "WRONG",
+   "note": "7,500 / 0.275 = 27,273 m³/d; marked 27,000 is a loose rounding (minor).",
+   "original": {
+    "question": "A wastewater plant wants to upgrade its aeration system to fine bubble diffusers, expected to improve oxygen transfer efficiency from 13% to 18%. If average oxygen required is 1,350 kg/d, what will the air usage (in m³/d) be after upgrade? Assume STP oxygen content in air is 0.275 kg/m³.",
+    "options": [
+     "32,153 m³/d",
+     "31,730 m³/d",
+     "28,850 m³/d",
+     "27,000 m³/d"
+    ],
+    "correctIndex": 3,
+    "explanation": "Air required = O₂ demand / (O₂ in air × transfer efficiency)"
+   },
+   "fix": {
+    "question": "A wastewater plant wants to upgrade its aeration system to fine bubble diffusers, expected to improve oxygen transfer efficiency from 13% to 18%. If average oxygen required is 1,350 kg/d, what will the air usage (in m³/d) be after upgrade? Assume STP oxygen content in air is 0.275 kg/m³.",
+    "options": [
+     "32,153 m³/d",
+     "31,730 m³/d",
+     "28,850 m³/d",
+     "27,273 m³/d"
+    ],
+    "correctIndex": 3,
+    "explanation": "O2 supplied = 1,350/0.18 = 7,500 kg/d; air = 7,500 / 0.275 = 27,273 m³/d.",
+    "steps": [
+     {
+      "l": "Step 1 — O2 to supply:",
+      "c": "1,350 / 0.18 = 7,500 kg/d"
+     },
+     {
+      "l": "Step 2 — Air:",
+      "c": "7,500 / 0.275 = 27,273 m³/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240839,
+   "bankKey": "class4-wastewater",
+   "questionNum": 577,
+   "verdict": "WRONG",
+   "note": "253.89 kg/d is correct; marked 254.34 is wrong (steps 'round' to match options).",
+   "original": {
+    "question": "In a sidestream deammonification process, influent NH₄⁺-N is 1,550 mg/L at 210 m³/d. If 78% ammonia removal is achieved, how much N (kg/d) is removed?",
+    "options": [
+     "283.57 kg/d",
+     "268.12 kg/d",
+     "254.34 kg/d",
+     "235.26 kg/d"
+    ],
+    "correctIndex": 2,
+    "explanation": "N removed = influent conc. × flow × 1,000 × % removal / 1,000,000"
+   },
+   "fix": {
+    "question": "In a sidestream deammonification process, influent NH₄⁺-N is 1,550 mg/L at 210 m³/d. If 78% ammonia removal is achieved, how much N (kg/d) is removed?",
+    "options": [
+     "283.57 kg/d",
+     "268.12 kg/d",
+     "253.89 kg/d",
+     "235.26 kg/d"
+    ],
+    "correctIndex": 2,
+    "explanation": "Load = 1,550 x 210 / 1,000 = 325.5 kg/d; removed = 325.5 x 0.78 = 253.89 kg/d.",
+    "steps": [
+     {
+      "l": "Step 1 — Influent load:",
+      "c": "1,550 x 210 / 1,000 = 325.5 kg/d"
+     },
+     {
+      "l": "Step 2 — Removed:",
+      "c": "325.5 x 0.78 = 253.89 kg/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240841,
+   "bankKey": "class4-wastewater",
+   "questionNum": 579,
+   "verdict": "WRONG",
+   "note": "Steps give 366 m³/d (23,500/18 - 23,500/25) but key is 495, justified by an 'operational fudge factor'. Also needs the assumption that WAS is at MLSS concentration.",
+   "original": {
+    "question": "You are tasked with reducing the SRT from 25 to 18 d in a 23,500 m³ activated sludge system with MLSS at 3,300 mg/L and Q = 52,000 m³/d. How much more WAS (in m³/d) should be wasted per day? (Assume no MLSS change.)",
+    "options": [
+     "495 m³/d",
+     "460 m³/d",
+     "510 m³/d",
+     "530 m³/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "Find current WAS rate, set up SRT = total solids / WAS solids, solve for new WAS"
+   },
+   "fix": {
+    "question": "You are tasked with reducing the SRT from 25 to 18 d in a 23,500 m³ activated sludge system with MLSS at 3,300 mg/L and Q = 52,000 m³/d. Assume WAS is drawn from the aeration tank at the MLSS concentration and no solids are lost in the effluent. How much more WAS (in m³/d) should be wasted per day?",
+    "options": [
+     "495 m³/d",
+     "460 m³/d",
+     "366 m³/d",
+     "530 m³/d"
+    ],
+    "correctIndex": 2,
+    "explanation": "Qw = V/SRT: 23,500/25 = 940 m³/d; 23,500/18 = 1,306 m³/d; difference = 366 m³/d.",
+    "steps": [
+     {
+      "l": "Step 1 — Current WAS:",
+      "c": "23,500 / 25 = 940 m³/d"
+     },
+     {
+      "l": "Step 2 — New WAS:",
+      "c": "23,500 / 18 = 1,306 m³/d"
+     },
+     {
+      "l": "Step 3 — Increase:",
+      "c": "1,306 - 940 = 366 m³/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240843,
+   "bankKey": "class4-wastewater",
+   "questionNum": 581,
+   "verdict": "WRONG",
+   "note": "Effluent load is 640 kg/d, below the 2,300 kg/d allocation, so nothing is exceeded; the key 338 is unsupported and the steps conclude the opposite.",
+   "original": {
+    "question": "A wastewater treatment plant treats an average flow of 80,000 m³/d. The influent BOD5 is 260 mg/L and effluent BOD5 is 8 mg/L. If the plant implements an effluent trading program and is allocated a load of 2,300 kg BOD5/d, how many kg BOD5 per day above the allocation is the plant currently discharging?",
+    "options": [
+     "420 kg/d",
+     "2,080 kg/d",
+     "338 kg/d",
+     "1,980 kg/d"
+    ],
+    "correctIndex": 2,
+    "explanation": "Calculate effluent BOD5 load and subtract allocation."
+   },
+   "fix": {
+    "question": "A wastewater treatment plant treats an average flow of 80,000 m³/d. The influent BOD5 is 260 mg/L and effluent BOD5 is 8 mg/L. If the plant implements an effluent trading program and is allocated a load of 300 kg BOD5/d, how many kg BOD5 per day above the allocation is the plant currently discharging?",
+    "options": [
+     "420 kg/d",
+     "2,080 kg/d",
+     "340 kg/d",
+     "1,980 kg/d"
+    ],
+    "correctIndex": 2,
+    "explanation": "Effluent load = 80,000 x 8 / 1,000 = 640 kg/d; excess = 640 - 300 = 340 kg/d.",
+    "steps": [
+     {
+      "l": "Step 1 — Effluent load:",
+      "c": "80,000 x 8 / 1,000 = 640 kg/d"
+     },
+     {
+      "l": "Step 2 — Above allocation:",
+      "c": "640 - 300 = 340 kg/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240844,
+   "bankKey": "class4-wastewater",
+   "questionNum": 582,
+   "verdict": "WRONG",
+   "note": "337.5 kg/d x 0.90 = 303.75 kg/d; marked 3,037.5 is 10 times too large.",
+   "original": {
+    "question": "An enhanced biological phosphorus removal (EBPR) system achieves 90% phosphorus removal. If the influent flow is 45,000 m³/d with a phosphorus (as PO4-P) concentration of 7.5 mg/L, how many kg of phosphorus are removed daily?",
+    "options": [
+     "2937.5 kg/d",
+     "3375 kg/d",
+     "540 kg/d",
+     "3037.5 kg/d"
+    ],
+    "correctIndex": 3,
+    "explanation": "Find daily phosphorus load, then apply removal percentage."
+   },
+   "fix": {
+    "question": "An enhanced biological phosphorus removal (EBPR) system achieves 90% phosphorus removal. If the influent flow is 45,000 m³/d with a phosphorus (as PO4-P) concentration of 7.5 mg/L, how many kg of phosphorus are removed daily?",
+    "options": [
+     "2,937.5 kg/d",
+     "3,375 kg/d",
+     "540 kg/d",
+     "303.75 kg/d"
+    ],
+    "correctIndex": 3,
+    "explanation": "Load = 45,000 x 7.5 / 1,000 = 337.5 kg/d; removed = 337.5 x 0.90 = 303.75 kg/d.",
+    "steps": [
+     {
+      "l": "Step 1 — Influent P load:",
+      "c": "45,000 x 7.5 / 1,000 = 337.5 kg/d"
+     },
+     {
+      "l": "Step 2 — Removed:",
+      "c": "337.5 x 0.90 = 303.75 kg/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240846,
+   "bankKey": "class4-wastewater",
+   "questionNum": 584,
+   "verdict": "WRONG",
+   "note": "MCRT from the given data is 92,400/1,716 = 53.9 d (or 33 d with effluent solids); the marked 12.0 d is unsupported and the steps never reach it.",
+   "original": {
+    "question": "A plant operates two parallel aeration tanks with a total tank volume of 22,000 m³. If the MLSS is 4,200 mg/L and the total daily flow is 54,000 m³/d, what is the mean cell residence time (MCRT) in days if 220 m³/d of waste activated sludge is wasted at 7,800 mg/L?",
+    "options": [
+     "11.1 days",
+     "14.2 days",
+     "8.5 days",
+     "12.0 days"
+    ],
+    "correctIndex": 3,
+    "explanation": "MCRT = Total solids in system / (total solids wasted + effluent solids)."
+   },
+   "fix": {
+    "question": "A plant operates two parallel aeration tanks with a total tank volume of 22,000 m³. If the MLSS is 4,200 mg/L, the total daily flow is 54,000 m³/d with effluent TSS of 20 mg/L, what is the mean cell residence time (MCRT) in days if 220 m³/d of waste activated sludge is wasted at 7,800 mg/L?",
+    "options": [
+     "33.0 days",
+     "53.9 days",
+     "12.0 days",
+     "25.0 days"
+    ],
+    "correctIndex": 0,
+    "explanation": "Inventory = 92,400 kg; wasted = 1,716 kg/d; effluent = 1,080 kg/d; MCRT = 92,400 / 2,796 = 33.0 d.",
+    "steps": [
+     {
+      "l": "Step 1 — Inventory:",
+      "c": "22,000 x 4,200 / 1,000 = 92,400 kg"
+     },
+     {
+      "l": "Step 2 — Wasted:",
+      "c": "220 x 7,800 / 1,000 = 1,716 kg/d"
+     },
+     {
+      "l": "Step 3 — Effluent:",
+      "c": "54,000 x 20 / 1,000 = 1,080 kg/d"
+     },
+     {
+      "l": "Step 4 — MCRT:",
+      "c": "92,400 / (1,716 + 1,080) = 33.0 d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 240847,
+   "bankKey": "class4-wastewater",
+   "questionNum": 585,
+   "verdict": "WRONG",
+   "note": "6,240 m³ CH4 x 35.8 = 223,392 MJ x 0.38 = 84,889 MJ / 3.6 = 23,580 kWh/d; marked 98,170 is wrong and steps themselves say numbers do not match.",
+   "original": {
+    "question": "For energy recovery, a cogeneration engine at a plant operates with 400 m³/h of biogas containing 65% CH₄. If methane has an energy content of 35.8 MJ/m³, and electrical generation is 38% efficient, how many kWh of electricity can be generated per day?",
+    "options": [
+     "36,480 kWh/d",
+     "71,940 kWh/d",
+     "85,140 kWh/d",
+     "98,170 kWh/d"
+    ],
+    "correctIndex": 3,
+    "explanation": "Calculate total CH₄ volume, multiply by energy content, apply efficiency and convert to kWh."
+   },
+   "fix": {
+    "question": "For energy recovery, a cogeneration engine at a plant operates with 400 m³/h of biogas containing 65% CH₄. If methane has an energy content of 35.8 MJ/m³, and electrical generation is 38% efficient, how many kWh of electricity can be generated per day?",
+    "options": [
+     "36,480 kWh/d",
+     "71,940 kWh/d",
+     "23,580 kWh/d",
+     "98,170 kWh/d"
+    ],
+    "correctIndex": 2,
+    "explanation": "Methane = 400 x 24 x 0.65 = 6,240 m³/d; energy 223,392 MJ/d; electrical 84,889 MJ/d / 3.6 = 23,580 kWh/d.",
+    "steps": [
+     {
+      "l": "Step 1 — Methane:",
+      "c": "400 x 24 x 0.65 = 6,240 m³/d"
+     },
+     {
+      "l": "Step 2 — Gross energy:",
+      "c": "6,240 x 35.8 = 223,392 MJ/d"
+     },
+     {
+      "l": "Step 3 — Electrical:",
+      "c": "223,392 x 0.38 = 84,889 MJ/d"
+     },
+     {
+      "l": "Step 4 — kWh:",
+      "c": "84,889 / 3.6 = 23,580 kWh/d"
+     }
+    ]
+   }
+  },
+  {
+   "id": 156454,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 4,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 170/03 is the Drinking Water Systems regulation under the Safe Drinking Water Act. It does not assign a wastewater collection operator duties to report incidents to SAC and the Medical Officer of Health (the explanation itself concedes this). Sewage spills are reported under Part X of the EPA (Spills Action Centre, 1-800-268-6060).",
+   "original": {
+    "question": "Under Ontario Regulation 170/03, what is the primary responsibility of a Class 4 operator regarding adverse water quality incidents in a collection system that could impact a drinking water system?",
+    "options": [
+     "To notify the local public health unit within 48 hours of the incident.",
+     "To immediately report the incident to the Spills Action Centre (SAC) and the Medical Officer of Health.",
+     "To conduct a detailed root cause analysis before reporting any incident.",
+     "To ensure all staff are trained on the proper use of personal protective equipment."
+    ],
+    "correctIndex": 1,
+    "explanation": "While O. Reg. 170/03 primarily applies to drinking water systems, the principle of immediate reporting of adverse conditions that could impact drinking water is paramount. Any incident in a wastewater collection system that could affect a drinking water source or system must be immediately reported to the Spills Action Centre and the Medical Officer of Health, as per the broader regulatory framework and good practice."
+   },
+   "fix": {
+    "question": "A sewage spill from a wastewater collection system in Ontario could affect a drinking water source. What is the Class 4 operator's primary reporting responsibility?",
+    "options": [
+     "To notify the local public health unit within 48 hours of the incident.",
+     "To immediately report the spill to the Ministry's Spills Action Centre (SAC) and notify the Medical Officer of Health and the affected drinking water system owner.",
+     "To conduct a detailed root cause analysis before reporting any incident.",
+     "To ensure all staff are trained on the proper use of personal protective equipment."
+    ],
+    "correctIndex": 1,
+    "explanation": "Spills from sewage works are reportable immediately under Part X of the Environmental Protection Act to the Spills Action Centre. Where a drinking water source could be affected, the Medical Officer of Health and the drinking water system owner should also be notified without delay. A 48-hour delay or a root cause analysis before reporting is not acceptable.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156480,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 30,
+   "verdict": "WRONG",
+   "note": "O. Reg. 242/05 is 'Compliance and Enforcement' under the Safe Drinking Water Act, 2002 (checked on e-Laws). Spill Prevention and Contingency Plans is O. Reg. 224/07 under the EPA (s. 91.1).",
+   "original": {
+    "question": "Under Ontario Regulation 242/05 (Spill Prevention and Contingency Plans), what is a key responsibility for a Class 4 operator regarding potential spills from the collection system?",
+    "options": [
+     "To ensure all spills are reported only to the municipal public works department.",
+     "To develop and implement a spill prevention and contingency plan for the system.",
+     "To delegate all spill response duties to external environmental consultants.",
+     "To solely focus on preventing spills from industrial facilities, not municipal infrastructure."
+    ],
+    "correctIndex": 1,
+    "explanation": "Ontario Regulation 242/05 requires facilities that handle or store pollutants to develop and implement a spill prevention and contingency plan. For a Class 4 operator, this means ensuring such a plan is in place and effectively implemented for the wastewater collection system to prevent and respond to spills."
+   },
+   "fix": {
+    "question": "Under Ontario Regulation 224/07 (Spill Prevention and Contingency Plans), what is a key responsibility regarding potential spills from a prescribed facility such as a sewage works?",
+    "options": [
+     "To ensure all spills are reported only to the municipal public works department.",
+     "To develop and implement a spill prevention and contingency plan for the facility.",
+     "To delegate all spill response duties to external environmental consultants.",
+     "To solely focus on preventing spills from industrial facilities, not municipal infrastructure."
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 224/07, made under the Environmental Protection Act, requires prescribed facilities to develop and implement spill prevention and contingency plans. For a Class 4 operator this means ensuring such a plan is in place, kept current and implemented to prevent and respond to spills.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156510,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 60,
+   "verdict": "UNCLEAR",
+   "note": "O. Reg. 129/04 (Licensing of Sewage Works Operators) governs operator licensing, not the development of an EMS or management of 'effluent quality' from a collection system. The question attributes a duty to the regulation that it does not contain.",
+   "original": {
+    "question": "Under O. Reg. 129/04, what is the primary responsibility of a Class 4 operator regarding the overall management of a large wastewater collection system's effluent quality and compliance?",
+    "options": [
+     "Directing the development and implementation of a robust environmental management system (EMS) for the collection system.",
+     "Conducting daily field inspections of all pumping stations and critical sewer infrastructure.",
+     "Personally performing all required sampling and laboratory analysis for effluent compliance.",
+     "Ensuring all operational staff are trained on basic safety procedures and equipment use."
+    ],
+    "correctIndex": 0,
+    "explanation": "A Class 4 operator's role extends to strategic oversight. Directing an EMS ensures systematic compliance, risk management, and continuous improvement, which is crucial for managing effluent quality from a collection system perspective under O. Reg. 129/04."
+   },
+   "fix": {
+    "question": "What is the primary responsibility of a Class 4 operator regarding the overall management of environmental compliance in a large wastewater collection system?",
+    "options": [
+     "Directing the development and implementation of a robust environmental management system (EMS) for the collection system.",
+     "Conducting daily field inspections of all pumping stations and critical sewer infrastructure.",
+     "Personally performing all required sampling and laboratory analysis.",
+     "Ensuring all operational staff are trained on basic safety procedures and equipment use."
+    ],
+    "correctIndex": 0,
+    "explanation": "A Class 4 operator's role extends to strategic oversight. Directing an environmental management system ensures systematic compliance with the system's Environmental Compliance Approval, risk management and continuous improvement. Routine inspections, sampling and basic safety training are delegated tasks.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156516,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 66,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 170/03 governs drinking water systems, not wastewater collection systems. Emergency planning for sewage works comes from ECA conditions and Part X of the EPA.",
+   "original": {
+    "question": "What is the primary objective of developing and maintaining a robust emergency response plan (ERP) for a wastewater collection system, as per O. Reg. 170/03 and other relevant regulations?",
+    "options": [
+     "To minimize the impact of adverse events on public health, safety, and the environment.",
+     "To secure additional funding from the provincial government for infrastructure upgrades.",
+     "To document all routine maintenance activities performed throughout the year.",
+     "To provide a detailed history of all past regulatory compliance issues."
+    ],
+    "correctIndex": 0,
+    "explanation": "An ERP is designed to provide a structured approach to managing emergencies, ensuring quick and effective responses to protect public health, safety, and the environment from the consequences of system failures or adverse events."
+   },
+   "fix": {
+    "question": "What is the primary objective of developing and maintaining a robust emergency response plan (ERP) for a wastewater collection system in Ontario?",
+    "options": [
+     "To minimize the impact of adverse events on public health, safety, and the environment.",
+     "To secure additional funding from the provincial government for infrastructure upgrades.",
+     "To document all routine maintenance activities performed throughout the year.",
+     "To provide a detailed history of all past regulatory compliance issues."
+    ],
+    "correctIndex": 0,
+    "explanation": "An ERP provides a structured approach to managing emergencies such as spills, bypasses and force main breaks, ensuring quick and effective response to protect public health, safety and the environment, and to meet spill reporting and ECA requirements.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156520,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 70,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 170/03 (Drinking Water Systems) adverse condition reporting applies to drinking water systems, not wastewater collection. Wastewater incidents (spills, bypasses, overflows) are reported under Part X of the EPA and ECA conditions.",
+   "original": {
+    "question": "In the context of O. Reg. 170/03, what is the Class 4 operator's overarching responsibility regarding adverse conditions in the wastewater collection system?",
+    "options": [
+     "To ensure that all adverse conditions are properly reported to the Ministry of the Environment, Conservation and Parks (MECP) and appropriate corrective actions are taken.",
+     "To personally respond to every single adverse condition reported within the collection system.",
+     "To delegate all adverse condition reporting responsibilities to the most junior operator.",
+     "To only report adverse conditions that result in a direct public complaint."
+    ],
+    "correctIndex": 0,
+    "explanation": "Under O. Reg. 170/03, the Class 4 operator, as a senior manager, is responsible for ensuring that the adverse condition reporting protocol is followed diligently, and that appropriate corrective actions are initiated and completed to address the issue and prevent recurrence."
+   },
+   "fix": {
+    "question": "Under Ontario's Environmental Protection Act (Part X) and the system's ECA conditions, what is the Class 4 operator's overarching responsibility regarding spills, bypasses and other adverse events in the wastewater collection system?",
+    "options": [
+     "To ensure that all such events are properly reported to the Ministry of the Environment, Conservation and Parks (MECP) and appropriate corrective actions are taken.",
+     "To personally respond to every single adverse event reported within the collection system.",
+     "To delegate all adverse event reporting responsibilities to the most junior operator.",
+     "To only report events that result in a direct public complaint."
+    ],
+    "correctIndex": 0,
+    "explanation": "As a senior operator, the Class 4 operator is responsible for ensuring the reporting protocol is followed (for example, to the Spills Action Centre) and that corrective actions are initiated and completed to address the event and prevent recurrence.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156530,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 80,
+   "verdict": "UNCLEAR",
+   "note": "O. Reg. 129/04 covers operator licensing; it does not set out the operational data and records duties described. Record-keeping requirements for a collection system come from its ECA conditions.",
+   "original": {
+    "question": "Under O. Reg. 129/04, what is the Class 4 operator's responsibility regarding the operational data and records for a wastewater collection system?",
+    "options": [
+     "To ensure that all operational data is accurately collected, maintained, and readily accessible for reporting and analysis.",
+     "To personally enter all daily operational data into the system.",
+     "To discard all operational records after one year to save storage space.",
+     "To only record data that is specifically requested by the municipal council."
+    ],
+    "correctIndex": 0,
+    "explanation": "Accurate and well-maintained operational data is critical for regulatory compliance, performance analysis, and informed decision-making, and the Class 4 operator is responsible for ensuring these practices are followed."
+   },
+   "fix": {
+    "question": "Under the conditions of a collection system's Environmental Compliance Approval (ECA), what is the Class 4 operator's responsibility regarding operational data and records?",
+    "options": [
+     "To ensure that all operational data is accurately collected, maintained, and readily accessible for reporting and analysis.",
+     "To personally enter all daily operational data into the system.",
+     "To discard all operational records after one year to save storage space.",
+     "To only record data that is specifically requested by the municipal council."
+    ],
+    "correctIndex": 0,
+    "explanation": "Accurate and well-maintained operational data is critical for regulatory compliance, performance analysis and informed decision-making, and the senior operator is responsible for ensuring records are kept as required by the ECA.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156538,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 88,
+   "verdict": "UNITS",
+   "note": "Explanation uses US units (psi) in a Canadian bank, and the figure is also low: vacuum sewers typically operate at about 50-70 kPa vacuum (roughly 15-20 in. Hg), not -5 to -7 psi.",
+   "original": {
+    "question": "What is the primary consideration when operating a Class 4 collection system's vacuum sewer system?",
+    "options": [
+     "Maintain adequate vacuum pressure throughout the system while managing valve cycling, collection tank levels, and vacuum pump operations",
+     "Vacuum systems operate identically to gravity",
+     "No maintenance is required",
+     "Only monitor at the vacuum station"
+    ],
+    "correctIndex": 0,
+    "explanation": "Vacuum systems require: maintaining -5 to -7 psi vacuum, monitoring valve pit levels and valve cycling (stuck valves = no collection), vacuum pump maintenance, leak detection (loss of vacuum), and collection tank management. Different operational philosophy than gravity/pressure systems."
+   },
+   "fix": {
+    "question": "What is the primary consideration when operating a Class 4 collection system's vacuum sewer system?",
+    "options": [
+     "Maintain adequate vacuum pressure throughout the system while managing valve cycling, collection tank levels, and vacuum pump operations",
+     "Vacuum systems operate identically to gravity",
+     "No maintenance is required",
+     "Only monitor at the vacuum station"
+    ],
+    "correctIndex": 0,
+    "explanation": "Vacuum systems require maintaining vacuum of about 50 to 70 kPa below atmospheric, monitoring valve pit levels and valve cycling (stuck valves = no collection), vacuum pump maintenance, leak detection (loss of vacuum), and collection tank management. This is a different operational philosophy than gravity or pressure systems.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156561,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 111,
+   "verdict": "UNCLEAR",
+   "note": "The Municipal Class EA is a process under the Environmental Assessment Act, not an instrument 'under the OWRA'. An ECA (the other option) is the OWRA instrument but does not itself provide the Environmental Assessment. Question wording misattributes the statute.",
+   "original": {
+    "question": "A municipality is planning a significant expansion of its wastewater collection system. What is the primary regulatory instrument under the Ontario Water Resources Act (OWRA) that requires an Environmental Assessment for such a project?",
+    "options": [
+     "Certificate of Approval (C of A) application for new works",
+     "Environmental Compliance Approval (ECA) for sewage works",
+     "Class Environmental Assessment (Class EA) for Municipal Sewage and Water Projects",
+     "Permit to Take Water (PTTW) for dewatering during construction"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Class Environmental Assessment for Municipal Sewage and Water Projects is the primary regulatory instrument under the OWRA that requires an Environmental Assessment for significant expansions of wastewater collection systems, streamlining the process for common municipal projects."
+   },
+   "fix": {
+    "question": "A municipality is planning a significant expansion of its wastewater collection system. Which planning process under Ontario's Environmental Assessment Act applies to such a project?",
+    "options": [
+     "Certificate of Approval (C of A) application for new works",
+     "Environmental Compliance Approval (ECA) for sewage works",
+     "Class Environmental Assessment (Class EA) for Municipal Sewage and Water Projects",
+     "Permit to Take Water (PTTW) for dewatering during construction"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Municipal Class Environmental Assessment (for Municipal Sewage and Water Projects) is the streamlined planning process under the Environmental Assessment Act that applies to many municipal sewage works expansions. An ECA under the Ontario Water Resources Act is a separate approval, and a PTTW only covers water taking.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156566,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 116,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 170/03 is the Drinking Water Systems regulation and does not assign Class 4 wastewater collection operators a duty to report cross-connections to a drinking water system owner. The explanation concedes it is a drinking water regulation.",
+   "original": {
+    "question": "Under O. Reg. 170/03 of the Safe Drinking Water Act, what is the primary responsibility of a Class 4 operator regarding cross-connections between potable water and wastewater systems?",
+    "options": [
+     "To ensure all new wastewater connections are inspected by a licensed plumber",
+     "To identify and report any potential cross-connections to the Drinking Water System owner",
+     "To install backflow prevention devices on all residential sewer laterals",
+     "To conduct annual pressure testing of all water and sewer lines"
+    ],
+    "correctIndex": 1,
+    "explanation": "While O. Reg. 170/03 specifically relates to drinking water, a Class 4 wastewater operator has a responsibility to identify and report potential cross-connections to the drinking water system owner to prevent contamination, as these pose a significant health risk."
+   },
+   "fix": {
+    "question": "A Class 4 wastewater collection operator discovers a potential cross-connection between a sanitary sewer and the potable water system. What is the appropriate responsibility?",
+    "options": [
+     "To ensure all new wastewater connections are inspected by a licensed plumber",
+     "To identify and report any potential cross-connections to the drinking water system owner",
+     "To install backflow prevention devices on all residential sewer laterals",
+     "To conduct annual pressure testing of all water and sewer lines"
+    ],
+    "correctIndex": 1,
+    "explanation": "Although the drinking water regulatory framework does not assign this duty to wastewater operators, good practice is for the operator to promptly report any potential cross-connection to the drinking water system owner so it can be corrected and contamination prevented.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156568,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 118,
+   "verdict": "JURISDICTION",
+   "note": "'CSO Control Policy' and 'Long-Term Control Plan' are US EPA concepts (1994 CSO Control Policy). Ontario's CSO requirements are in MECP Procedure F-5-5 (Guideline F-5 series) administered under the EPA/OWRA via ECAs, and the federal WSER also applies, so the keyed answer names a nonexistent Ontario policy.",
+   "original": {
+    "question": "Your collection system includes several combined sewer overflows (CSOs). What is the primary regulatory driver in Ontario for developing a Long-Term Control Plan (LTCP) for these CSOs?",
+    "options": [
+     "The federal Wastewater Systems Effluent Regulations (WSER) under the Fisheries Act",
+     "Ontario's Environmental Protection Act and MECP's CSO Control Policy",
+     "The Safe Drinking Water Act, O. Reg. 170/03 adverse condition reporting",
+     "The Ontario Water Resources Act, O. Reg. 129/04 effluent limits"
+    ],
+    "correctIndex": 1,
+    "explanation": "Ontario's Environmental Protection Act and the MECP's CSO Control Policy are the primary regulatory drivers for developing Long-Term Control Plans for combined sewer overflows, aiming to reduce their frequency and impact."
+   },
+   "fix": {
+    "question": "Which Ontario provincial MECP procedure sets the requirements for controlling and treating combined sewer overflows (CSOs)?",
+    "options": [
+     "The federal Wastewater Systems Effluent Regulations (WSER) under the Fisheries Act",
+     "MECP Procedure F-5-5 (Determination of Treatment Requirements for Municipal and Private Combined and Partially Separated Sewer Systems)",
+     "The Safe Drinking Water Act, O. Reg. 170/03 adverse condition reporting",
+     "The Ontario Water Resources Act, O. Reg. 129/04 effluent limits"
+    ],
+    "correctIndex": 1,
+    "explanation": "MECP Procedure F-5-5, part of the F-5 guideline series, sets provincial CSO control and treatment requirements, implemented through ECAs under the EPA and OWRA. WSER is federal, O. Reg. 170/03 covers drinking water, and O. Reg. 129/04 covers operator licensing.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156584,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 134,
+   "verdict": "WRONG",
+   "note": "Explanation says Type 3 is the 'least stable' soil; in Ontario's O. Reg. 213/91 classification Type 4 is the least stable. Also US feet in a Canadian bank. The 1.2 m answer is correct (workers may not enter an excavation deeper than 1.2 m unless the walls are supported or sloped).",
+   "original": {
+    "question": "What is the maximum allowable depth for a worker to enter an unshored excavation in Type 3 soil in Ontario?",
+    "options": [
+     "1.2 m (4 feet)",
+     "2.4 m (8 feet)",
+     "3.0 m (10 feet)",
+     "No limit with proper PPE"
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 213/91 (Construction Projects) specifies that excavations deeper than 1.2 m in Type 3 (granular) soil require shoring, trench boxes, or sloped walls. Type 3 soil is the least stable classification and has the strictest depth limits before protection is required."
+   },
+   "fix": {
+    "question": "What is the maximum allowable depth for a worker to enter an unshored excavation in Type 3 soil in Ontario?",
+    "options": [
+     "1.2 m",
+     "2.4 m",
+     "3.0 m",
+     "No limit with proper PPE"
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 213/91 (Construction Projects) does not allow a worker to enter an excavation deeper than 1.2 m in Type 3 soil unless the walls are supported by shoring or a trench box, or sloped back as required. PPE never substitutes for trench protection.",
+    "steps": [
+     {
+      "l": "Identify the task",
+      "c": "This is an excavation safety regulation question under O. Reg. 213/91 (Construction Projects), not a numerical calculation."
+     },
+     {
+      "l": "Recall the requirement",
+      "c": "A worker may not enter an excavation deeper than 1.2 m unless the walls are supported, shored, or sloped back as required for the soil type."
+     },
+     {
+      "l": "Apply the limit",
+      "c": "A worker may not enter an unprotected (unshored, unsloped) Type 3 excavation deeper than 1.2 m. PPE alone never substitutes for trench protection."
+     },
+     {
+      "l": "Conclusion",
+      "c": "The maximum allowable depth is 1.2 m."
+     }
+    ]
+   }
+  },
+  {
+   "id": 156610,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 160,
+   "verdict": "WRONG",
+   "note": "O. Reg. 128/04 is Certification of Drinking Water System Operators and Water Quality Analysts. Wastewater operator certification (Licensing of Sewage Works Operators) is O. Reg. 129/04.",
+   "original": {
+    "question": "When developing a 'training and competency program' for collection system operators, what is a key regulatory requirement from O. Reg. 128/04 (Certification of Wastewater Operators)?",
+    "options": [
+     "Operators must complete 100 hours of training annually regardless of class",
+     "Operators must obtain and maintain the appropriate class of certificate for the facility they operate and complete required CEUs",
+     "Only Class 4 operators are required to undergo training",
+     "Training must only focus on administrative tasks"
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 128/04 mandates that operators obtain and maintain the appropriate class of certificate for the facility they operate and complete the required Continuing Education Units (CEUs) to ensure ongoing competency."
+   },
+   "fix": {
+    "question": "When developing a 'training and competency program' for collection system operators, what is a key regulatory requirement from O. Reg. 129/04 (Licensing of Sewage Works Operators)?",
+    "options": [
+     "Operators must complete 100 hours of training annually regardless of class",
+     "Operators must obtain and maintain the appropriate class of certificate for the facility they operate and complete required CEUs",
+     "Only Class 4 operators are required to undergo training",
+     "Training must only focus on administrative tasks"
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 129/04 (Licensing of Sewage Works Operators) requires operators to hold and maintain the appropriate class of certificate for the sewage works they operate and to complete the required continuing education to maintain competency.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156621,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 171,
+   "verdict": "WRONG",
+   "note": "O. Reg. 129/04 is Licensing of Sewage Works Operators, not an effluent limits regulation. In Ontario effluent limits come from the ECA (and federal WSER). Marked answer is fine once the citation is corrected.",
+   "original": {
+    "question": "According to O. Reg. 129/04, which outlines effluent limits for sewage works, what is a key responsibility for a Class 4 operator regarding compliance with these limits, even if they primarily manage collection?",
+    "options": [
+     "To directly adjust treatment plant processes to meet effluent criteria.",
+     "To ensure that the collection system does not contribute to bypasses that violate effluent limits.",
+     "To conduct all required effluent sampling and laboratory analysis.",
+     "To prepare and submit the annual performance report to the MECP."
+    ],
+    "correctIndex": 1,
+    "explanation": "While O. Reg. 129/04 directly applies to effluent from sewage treatment plants, a Class 4 collection operator must understand how collection system issues (e.g., I&I, blockages, CSOs) can lead to bypasses or hydraulic overloads that compromise the treatment plant's ability to meet its effluent limits."
+   },
+   "fix": {
+    "question": "Effluent limits for a sewage treatment plant are set in its Environmental Compliance Approval (and the federal Wastewater Systems Effluent Regulations). What is a key responsibility for a Class 4 collection operator regarding compliance with these limits, even if they primarily manage collection?",
+    "options": [
+     "To directly adjust treatment plant processes to meet effluent criteria.",
+     "To ensure that the collection system does not contribute to bypasses that violate effluent limits.",
+     "To conduct all required effluent sampling and laboratory analysis.",
+     "To prepare and submit the annual performance report to the MECP."
+    ],
+    "correctIndex": 1,
+    "explanation": "Effluent limits apply to the treatment plant under its ECA, but a collection operator must understand how I&I, blockages and CSOs can cause bypasses or hydraulic overloads that compromise the plant's ability to meet its limits.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156623,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 173,
+   "verdict": "UNITS",
+   "note": "Explanation uses US units (10 psi) in a Canadian bank.",
+   "original": {
+    "question": "What is the primary consideration when selecting a pipe material for a sewer in high-groundwater conditions?",
+    "options": [
+     "Watertight joints that resist infiltration under sustained hydrostatic pressure from the water table",
+     "Lowest material cost",
+     "Fastest installation speed",
+     "Largest available diameter"
+    ],
+    "correctIndex": 0,
+    "explanation": "High groundwater creates continuous hydrostatic pressure on joints. Materials with inherently watertight joints (HDPE fusion-welded, PVC with gasket joints tested to 10 psi) minimize infiltration. Concrete pipe with standard joints may allow significant infiltration under sustained head."
+   },
+   "fix": {
+    "question": "What is the primary consideration when selecting a pipe material for a sewer in high-groundwater conditions?",
+    "options": [
+     "Watertight joints that resist infiltration under sustained hydrostatic pressure from the water table",
+     "Lowest material cost",
+     "Fastest installation speed",
+     "Largest available diameter"
+    ],
+    "correctIndex": 0,
+    "explanation": "High groundwater creates continuous hydrostatic pressure on joints. Materials with inherently watertight joints (HDPE fusion-welded, PVC with gasket joints tested to about 70 kPa) minimize infiltration. Concrete pipe with standard joints may allow significant infiltration under sustained head.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156635,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 185,
+   "verdict": "UNCLEAR",
+   "note": "O. Reg. 170/03 (Drinking Water Systems) does not set out a duty for a wastewater collection operator on cross-connections; citation is unsupported and off-field. Isolating the cross-connection is the sound practical answer, so keep it without the citation.",
+   "original": {
+    "question": "Under O. Reg. 170/03, if a cross-connection is discovered between a sanitary sewer and a drinking water system, what is the immediate and most critical action a Class 4 operator must ensure is taken?",
+    "options": [
+     "Document the incident thoroughly for future reference and reporting.",
+     "Immediately isolate the cross-connection to prevent contamination of the drinking water.",
+     "Notify the local public health unit within 24 hours of discovery.",
+     "Initiate a comprehensive sampling program for the affected drinking water system."
+    ],
+    "correctIndex": 1,
+    "explanation": "The immediate and most critical action is to isolate the cross-connection to prevent further contamination of the drinking water system, prioritizing public health and safety."
+   },
+   "fix": {
+    "question": "If a cross-connection is discovered between a sanitary sewer and a drinking water system, what is the immediate and most critical action a Class 4 operator must ensure is taken?",
+    "options": [
+     "Document the incident thoroughly for future reference and reporting.",
+     "Immediately isolate the cross-connection to prevent contamination of the drinking water.",
+     "Notify the local public health unit within 24 hours of discovery.",
+     "Initiate a comprehensive sampling program for the affected drinking water system."
+    ],
+    "correctIndex": 1,
+    "explanation": "The immediate and most critical action is to isolate the cross-connection to prevent further contamination of the drinking water system; notification, sampling and documentation follow.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156637,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 187,
+   "verdict": "UNCLEAR",
+   "note": "Explanation figures are inconsistent with Ontario MECP minimum slopes and with Q156638: 600 mm is about 0.08% (not 0.10%), and 900 mm at 0.07% would be steeper than 750 mm (about 0.058%). Answer key itself is fine.",
+   "original": {
+    "question": "What is the significance of the minimum slope requirements for gravity sewers at different diameters?",
+    "options": [
+     "Minimum slopes ensure self-cleansing velocity (0.6 m/s) at design flow, with smaller pipes requiring steeper slopes due to lower flow depths",
+     "Slope requirements are the same for all pipe sizes",
+     "Flatter slopes are always preferred",
+     "Slope only affects flow velocity at full pipe"
+    ],
+    "correctIndex": 0,
+    "explanation": "Minimum slope varies inversely with diameter: 200mm needs 0.40%, 300mm needs 0.22%, 600mm needs 0.10%, 900mm needs 0.07%. Smaller pipes have less flow depth at design conditions, requiring steeper slopes to achieve 0.6 m/s. Actual slopes must also consider maximum velocity limits."
+   },
+   "fix": {
+    "question": "What is the significance of the minimum slope requirements for gravity sewers at different diameters?",
+    "options": [
+     "Minimum slopes ensure self-cleansing velocity (0.6 m/s) at design flow, with smaller pipes requiring steeper slopes due to lower flow depths",
+     "Slope requirements are the same for all pipe sizes",
+     "Flatter slopes are always preferred",
+     "Slope only affects flow velocity at full pipe"
+    ],
+    "correctIndex": 0,
+    "explanation": "Minimum slope varies inversely with diameter: 200 mm needs 0.40%, 300 mm needs 0.22%, 450 mm needs 0.12%, 600 mm needs about 0.08%. Smaller pipes have less flow depth at design conditions, requiring steeper slopes to achieve 0.6 m/s. Actual slopes must also consider maximum velocity limits.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156657,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 207,
+   "verdict": "WRONG",
+   "note": "O. Reg. 129/04 is Licensing of Sewage Works Operators, not effluent limits (limits are in the ECA / federal WSER).",
+   "original": {
+    "question": "Under O. Reg. 129/04, which sets out effluent limits for sewage works, what is the Class 4 operator's indirect responsibility regarding the collection system's impact on treatment plant performance?",
+    "options": [
+     "To ensure that all industrial discharges are pre-treated to meet provincial standards.",
+     "To manage flows effectively to prevent hydraulic overloads at the treatment plant.",
+     "To conduct daily monitoring of the treatment plant's final effluent quality.",
+     "To design and implement new treatment processes to meet stricter effluent limits."
+    ],
+    "correctIndex": 1,
+    "explanation": "While O. Reg. 129/04 directly applies to effluent, a Class 4 collection operator has an indirect but critical responsibility to manage collection system flows (especially I&I) to prevent hydraulic overloads that can compromise the treatment plant's ability to meet its effluent limits."
+   },
+   "fix": {
+    "question": "Treatment plant effluent limits are set in the plant's Environmental Compliance Approval. What is the Class 4 operator's indirect responsibility regarding the collection system's impact on treatment plant performance?",
+    "options": [
+     "To ensure that all industrial discharges are pre-treated to meet provincial standards.",
+     "To manage flows effectively to prevent hydraulic overloads at the treatment plant.",
+     "To conduct daily monitoring of the treatment plant's final effluent quality.",
+     "To design and implement new treatment processes to meet stricter effluent limits."
+    ],
+    "correctIndex": 1,
+    "explanation": "Effluent limits apply to the plant under its ECA, but a collection operator has an indirect but critical responsibility to manage collection system flows (especially I&I) to prevent hydraulic overloads that compromise the plant's ability to meet its limits.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156658,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 208,
+   "verdict": "UNCLEAR",
+   "note": "'Most significant challenge' with three plausible challenges (cost, interpretation, staff skills) as distractors; key D is not uniquely defensible. Reworded to a foundational requirement.",
+   "original": {
+    "question": "What is the most significant challenge in implementing a successful predictive maintenance program for a large wastewater collection system?",
+    "options": [
+     "The high initial cost of purchasing all necessary diagnostic equipment.",
+     "The difficulty in accurately interpreting data from various sensors and technologies.",
+     "The lack of qualified personnel to analyze data and make informed decisions.",
+     "The need for a robust data management system and advanced analytical tools."
+    ],
+    "correctIndex": 3,
+    "explanation": "A successful predictive maintenance program relies heavily on collecting, managing, and analyzing large volumes of data from various sources (e.g., SCADA, sensors, historical records). This requires robust data management and advanced analytical capabilities."
+   },
+   "fix": {
+    "question": "Which of the following is a foundational requirement for a successful predictive maintenance program in a large wastewater collection system?",
+    "options": [
+     "Replacing all equipment with the newest models",
+     "A robust data management system and analytical tools to collect and interpret sensor and historical data",
+     "Eliminating all routine inspections",
+     "Reducing sensor coverage to limit the volume of data"
+    ],
+    "correctIndex": 1,
+    "explanation": "Predictive maintenance relies on collecting, managing and analyzing large volumes of data from SCADA, sensors and historical records, which requires robust data management and analytical capability.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156663,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 213,
+   "verdict": "WRONG",
+   "note": "500 L/mm/km/day is more than an order of magnitude too high. Typical Ontario municipal/OPSS-based limits are about 18 L/mm of diameter/km/day (ASTM C969 18.5; Blue Mountains protocol 0.075 L/mm/100 m/h). Also the explanation's worked example is internally inconsistent (says 10 L/day while steps say 10,000).",
+   "original": {
+    "question": "What is the maximum allowable exfiltration rate for a newly constructed sanitary sewer during acceptance testing in Ontario?",
+    "options": [
+     "500 litres per millimetre of pipe diameter per kilometre per day",
+     "200 L/mm/km/day",
+     "1000 L/mm/km/day",
+     "No exfiltration is acceptable"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario acceptance testing (typically per OPSS 410) allows maximum exfiltration of 500 L/mm diameter/km/day for new gravity sewers. For a 200mm pipe over 100m: max allowable = 500 × 200 × 0.1 / 1000 = 10 L/day. Exceeding this requires joint repair before acceptance."
+   },
+   "fix": {
+    "question": "What is a typical maximum allowable exfiltration rate for a newly constructed sanitary sewer during acceptance testing in Ontario?",
+    "options": [
+     "About 18 L per millimetre of pipe diameter per kilometre per day",
+     "500 L/mm/km/day",
+     "200 L/mm/km/day",
+     "No exfiltration is acceptable"
+    ],
+    "correctIndex": 0,
+    "explanation": "Ontario municipal acceptance testing based on OPSS 410 / ASTM C969 allows roughly 18 L/mm diameter/km/day. For a 200 mm pipe over 100 m: 18 x 200 x 0.1 = 360 L/day. Exceeding this requires joint repair before acceptance. Always confirm the limit in the project specification.",
+    "steps": [
+     {
+      "l": "Identify the goal",
+      "c": "Determine the typical allowable exfiltration rate for a new sanitary sewer in Ontario."
+     },
+     {
+      "l": "Recall the standard",
+      "c": "Municipal acceptance testing based on OPSS 410 and ASTM C969 allows about 18 L per mm of diameter per km per day."
+     },
+     {
+      "l": "Worked example",
+      "c": "For 200 mm pipe over 100 m: 18 x 200 x 0.1 = 360 L/day allowable."
+     },
+     {
+      "l": "Conclusion",
+      "c": "Option A is correct; the other values are far too large or unrealistic."
+     }
+    ]
+   }
+  },
+  {
+   "id": 156666,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 216,
+   "verdict": "UNCLEAR",
+   "note": "Explanation says Ministry of Citizenship and Multiculturalism is 'now Ministry of Tourism, Culture and Sport', which is backwards (archaeology program moved from MTCS to MCM) and the ministry name is unstable; also human remains involve police/coroner and the Registrar under the Funeral, Burial and Cremation Services Act. Key is fine.",
+   "original": {
+    "question": "During a major capital project involving the installation of a new trunk sewer, significant archaeological artifacts are discovered. What is the immediate and primary action required under Ontario regulations?",
+    "options": [
+     "Proceed with caution, documenting the findings with photographs, and continue construction if no further artifacts are found.",
+     "Immediately stop all work in the vicinity of the discovery and notify the Ministry of Citizenship and Multiculturalism.",
+     "Relocate the artifacts to a secure location on the construction site and consult with local historical societies.",
+     "Cover the artifacts to protect them from damage and continue work in other unaffected areas of the project."
+    ],
+    "correctIndex": 1,
+    "explanation": "Under the Ontario Heritage Act, any discovery of archaeological artifacts requires immediate cessation of work and notification to the Ministry of Citizenship and Multiculturalism (now Ministry of Tourism, Culture and Sport) for proper assessment and management."
+   },
+   "fix": {
+    "question": "During a major capital project involving the installation of a new trunk sewer, significant archaeological artifacts are discovered. What is the immediate and primary action required under Ontario regulations?",
+    "options": [
+     "Proceed with caution, documenting the findings with photographs, and continue construction if no further artifacts are found.",
+     "Immediately stop all work in the vicinity of the discovery and notify the responsible provincial ministry (archaeology program under the Ontario Heritage Act).",
+     "Relocate the artifacts to a secure location on the construction site and consult with local historical societies.",
+     "Cover the artifacts to protect them from damage and continue work in other unaffected areas of the project."
+    ],
+    "correctIndex": 1,
+    "explanation": "Under the Ontario Heritage Act, work at the site must stop immediately and the provincial ministry responsible for archaeology must be notified so a licensed archaeologist can assess it. If human remains are suspected, police or the coroner must also be contacted.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156683,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 233,
+   "verdict": "WRONG",
+   "note": "O. Reg. 319/08 is Small Drinking Water Systems under the Health Protection and Promotion Act, not a spills reporting regulation under the OWRA. Spill/bypass reporting to the Spills Action Centre is under Part X of the Environmental Protection Act (O. Reg. 675/98 classification). Marked answer is fine once the citation is fixed.",
+   "original": {
+    "question": "Under O. Reg. 319/08 of the Ontario Water Resources Act, what is a key requirement for a municipal sewage works regarding bypasses or overflows?",
+    "options": [
+     "All bypasses and overflows are strictly prohibited under any circumstances.",
+     "Bypasses and overflows must be reported to the Spills Action Centre immediately upon discovery.",
+     "The municipality must obtain a separate permit for each anticipated bypass event.",
+     "Only bypasses that result in fish kills or significant environmental damage require reporting."
+    ],
+    "correctIndex": 1,
+    "explanation": "Under O. Reg. 319/08 (Spills Reporting), any bypass or overflow from a municipal sewage works that is likely to cause an adverse effect must be reported to the Spills Action Centre immediately upon discovery."
+   },
+   "fix": {
+    "question": "Under Part X (Spills) of the Environmental Protection Act, what is a key requirement for a municipal sewage works regarding bypasses or overflows that cause or are likely to cause an adverse effect?",
+    "options": [
+     "All bypasses and overflows are strictly prohibited under any circumstances.",
+     "Bypasses and overflows must be reported to the Spills Action Centre immediately upon discovery.",
+     "The municipality must obtain a separate permit for each anticipated bypass event.",
+     "Only bypasses that result in fish kills or significant environmental damage require reporting."
+    ],
+    "correctIndex": 1,
+    "explanation": "Under Part X of the EPA, a spill, including a sewage bypass or overflow that is likely to cause an adverse effect, must be reported immediately to the MECP Spills Action Centre.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156702,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 252,
+   "verdict": "WRONG",
+   "note": "There is no 'O. Reg. 188/08 (Sewage Works)' under the OWRA; fabricated citation. The requirement to operate in accordance with the ECA comes from the OWRA and the ECA conditions. Key is fine.",
+   "original": {
+    "question": "Under O. Reg. 188/08 (Sewage Works) of the Ontario Water Resources Act, what is a key requirement for the operation of a municipal sewage works?",
+    "options": [
+     "All sewage works must be operated by a Class 4 operator, regardless of complexity.",
+     "The owner of the sewage works must ensure it is operated in accordance with its Environmental Compliance Approval (ECA).",
+     "Only licensed plumbers are permitted to perform maintenance on municipal sewer lines.",
+     "Annual performance reports must be submitted directly to the local conservation authority."
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 188/08 requires the owner of a municipal sewage works to ensure it is operated in accordance with its Environmental Compliance Approval (ECA), which outlines specific conditions and operational parameters."
+   },
+   "fix": {
+    "question": "Under the Ontario Water Resources Act and the Environmental Compliance Approval (ECA), what is a key requirement for the operation of a municipal sewage works?",
+    "options": [
+     "All sewage works must be operated by a Class 4 operator, regardless of complexity.",
+     "The owner of the sewage works must ensure it is operated in accordance with its Environmental Compliance Approval (ECA).",
+     "Only licensed plumbers are permitted to perform maintenance on municipal sewer lines.",
+     "Annual performance reports must be submitted directly to the local conservation authority."
+    ],
+    "correctIndex": 1,
+    "explanation": "The owner must ensure the sewage works is operated in accordance with its ECA, which sets the conditions and operational requirements; operator class is set by O. Reg. 129/04 according to the works' classification.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156714,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 264,
+   "verdict": "WRONG",
+   "note": "No 'O. Reg. 188/08' sets a QMS for sewage works. Mandatory QMS (Drinking Water Quality Management Standard) exists under the Safe Drinking Water Act for drinking water, not for wastewater collection.",
+   "original": {
+    "question": "What is the primary objective of a 'Quality Management System (QMS)' in the context of a wastewater collection system, as per O. Reg. 188/08?",
+    "options": [
+     "To ensure all operational staff hold the highest level of certification available.",
+     "To establish a documented framework for consistent and effective management of the sewage works.",
+     "To solely focus on minimizing the financial expenditures for maintenance and operations.",
+     "To provide a public-facing report on the environmental performance of the collection system."
+    ],
+    "correctIndex": 1,
+    "explanation": "Under O. Reg. 188/08, a Quality Management System (QMS) establishes a documented framework for consistent and effective management of the sewage works, ensuring compliance, performance, and continuous improvement."
+   },
+   "fix": {
+    "question": "What is the primary objective of a 'Quality Management System (QMS)' in the context of a wastewater collection system?",
+    "options": [
+     "To ensure all operational staff hold the highest level of certification available.",
+     "To establish a documented framework for consistent and effective management of the sewage works.",
+     "To solely focus on minimizing the financial expenditures for maintenance and operations.",
+     "To provide a public-facing report on the environmental performance of the collection system."
+    ],
+    "correctIndex": 1,
+    "explanation": "A QMS establishes a documented framework for consistent and effective management of the sewage works, supporting compliance, performance and continuous improvement. It is good practice for wastewater systems; it is not mandated by an Ontario sewage regulation.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156719,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 269,
+   "verdict": "WRONG",
+   "note": "O. Reg. 129/04 is Licensing of Sewage Works Operators; it is not titled 'Effluent Monitoring and Effluent Quality Standards' and does not set effluent limits (ECA / federal WSER do).",
+   "original": {
+    "question": "Under O. Reg. 129/04 (Effluent Monitoring and Effluent Quality Standards), what is the primary responsibility of a Class 4 wastewater collection operator regarding effluent quality?",
+    "options": [
+     "Directly adjusting treatment plant processes to meet effluent limits",
+     "Ensuring the collection system contributes to minimizing I/I and preventing sanitary sewer overflows (SSOs)",
+     "Conducting daily laboratory analysis of final effluent samples for compliance",
+     "Approving all discharges from industrial facilities into the collection system"
+    ],
+    "correctIndex": 1,
+    "explanation": "While O. Reg. 129/04 primarily applies to treatment plant effluent, a Class 4 collection operator's responsibility is to manage the collection system to prevent issues like SSOs and excessive I/I, which directly impact the treatment plant's ability to meet effluent limits."
+   },
+   "fix": {
+    "question": "Plant effluent quality is governed by the treatment plant's ECA conditions (and federal WSER). What is the primary responsibility of a Class 4 wastewater collection operator regarding effluent quality?",
+    "options": [
+     "Directly adjusting treatment plant processes to meet effluent limits",
+     "Ensuring the collection system contributes to minimizing I/I and preventing sanitary sewer overflows (SSOs)",
+     "Conducting daily laboratory analysis of final effluent samples for compliance",
+     "Approving all discharges from industrial facilities into the collection system"
+    ],
+    "correctIndex": 1,
+    "explanation": "Effluent limits apply to the treatment plant, but a collection operator manages the system to prevent SSOs and excessive I/I, which directly affect the plant's ability to meet its limits.",
+    "steps": null
+   }
+  },
+  {
+   "id": 156729,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 279,
+   "verdict": "UNCLEAR",
+   "note": "Claim that O. Reg. 170/03 adverse condition reporting applies to a wastewater collection operator is not supported; reporting duties there fall on drinking water system owners/operators and labs. Reworded.",
+   "original": {
+    "question": "What is the significance of the 'adverse condition' reporting requirement under O. Reg. 170/03 (Drinking Water Systems) for a wastewater collection system operator?",
+    "options": [
+     "It directly applies to the quality of wastewater discharged from the collection system.",
+     "It requires reporting of any event that could impact the safety of a drinking water system.",
+     "It specifies the maximum allowable levels of certain contaminants in wastewater.",
+     "It only applies to facilities that treat drinking water, not collection systems."
+    ],
+    "correctIndex": 1,
+    "explanation": "While O. Reg. 170/03 primarily governs drinking water, an adverse condition in a wastewater collection system (e.g., a major SSO near a drinking water intake) would necessitate reporting due to its potential impact on drinking water safety."
+   },
+   "fix": {
+    "question": "What is the relevance of O. Reg. 170/03 (Drinking Water Systems) to a wastewater collection system operator?",
+    "options": [
+     "It sets the maximum allowable contaminant levels in wastewater.",
+     "It governs drinking water systems; a collection operator who identifies an event that could affect drinking water (e.g., a major SSO near an intake) should promptly notify the drinking water system owner and the MECP Spills Action Centre.",
+     "It directly applies to the quality of wastewater discharged from the collection system.",
+     "It only applies to facilities that treat drinking water, so collection operators never need to consider it."
+    ],
+    "correctIndex": 1,
+    "explanation": "O. Reg. 170/03 governs drinking water systems, not wastewater. Collection system events such as a major SSO near a drinking water intake can threaten drinking water safety, so they should be communicated promptly to the drinking water owner and the MECP.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185361,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 304,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 170/03 is the Drinking Water Systems regulation under the Safe Drinking Water Act, 2002; it does not govern wastewater collection adverse-condition reporting. Wastewater overflows/bypasses are reported to the MECP (Spills Action Centre) under EPA Part X and ECA conditions.",
+   "original": {
+    "question": "Under Ontario Regulation 170/03, a Class 4 operator managing a municipal wastewater collection system must ensure that all adverse conditions related to the collection system are reported. What is the primary purpose of this reporting requirement?",
+    "options": [
+     "To track the frequency of maintenance activities performed on the system.",
+     "To inform the public about any potential health and safety risks.",
+     "To enable the Ministry of the Environment, Conservation and Parks (MECP) to assess system performance and compliance.",
+     "To justify budget requests for capital improvements and system upgrades."
+    ],
+    "correctIndex": 2,
+    "explanation": "The primary purpose of reporting adverse conditions under O. Reg. 170/03 is to inform the MECP, allowing them to assess system performance, compliance, and potential environmental impacts."
+   },
+   "fix": {
+    "question": "Under Ontario's Environmental Protection Act (Part X, spills) and the conditions of a municipal Environmental Compliance Approval, a Class 4 operator must report sewage overflows and bypasses from the collection system. What is the primary purpose of this reporting requirement?",
+    "options": [
+     "To track the frequency of maintenance activities performed on the system.",
+     "To inform the public about any potential health and safety risks.",
+     "To enable the Ministry of the Environment, Conservation and Parks (MECP) to respond, assess system performance and compliance, and limit environmental impact.",
+     "To justify budget requests for capital improvements and system upgrades."
+    ],
+    "correctIndex": 2,
+    "explanation": "Overflows and bypasses are reported to the MECP (Spills Action Centre) so the Ministry can respond, assess system performance and compliance, and limit environmental impacts. Drinking water adverse-condition reporting is a separate matter under O. Reg. 170/03.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185369,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 312,
+   "verdict": "WRONG",
+   "note": "The question asks for the least surface disruption among trenchless REHABILITATION methods. Microtunneling/pipe jacking is a new-installation method that needs launch and receiving shafts; CIPP is installed through existing manholes with essentially no surface excavation and is the least disruptive rehabilitation method. Key should be CIPP.",
+   "original": {
+    "question": "A Class 4 operator is evaluating different trenchless rehabilitation methods for a large-diameter sanitary sewer in a high-traffic urban area. Which method offers the least disruption to surface activities and traffic flow?",
+    "options": [
+     "Open-cut excavation and pipe replacement.",
+     "Pipe bursting with a pneumatic or hydraulic expander.",
+     "Cured-in-place pipe (CIPP) lining using a trenchless installation.",
+     "Microtunneling or pipe jacking from access shafts."
+    ],
+    "correctIndex": 3,
+    "explanation": "Microtunneling or pipe jacking from access shafts offers the least disruption to surface activities and traffic flow, as it involves minimal excavation at the surface."
+   },
+   "fix": {
+    "question": "A Class 4 operator is evaluating different trenchless rehabilitation methods for a large-diameter sanitary sewer in a high-traffic urban area. Which method offers the least disruption to surface activities and traffic flow?",
+    "options": [
+     "Open-cut excavation and pipe replacement.",
+     "Pipe bursting with a pneumatic or hydraulic expander.",
+     "Cured-in-place pipe (CIPP) lining installed through existing manholes.",
+     "Microtunneling or pipe jacking from access shafts."
+    ],
+    "correctIndex": 2,
+    "explanation": "CIPP lining is installed through existing manholes and needs little or no surface excavation, so it causes the least disruption to traffic. Pipe bursting needs launch and receiving pits, microtunneling needs shafts, and open cut disrupts the surface the most.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185383,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 326,
+   "verdict": "UNCLEAR",
+   "note": "O. Reg. 632/05 requires a written entry plan, hazard assessment, atmospheric testing and a rescue plan with attendant; it does not specifically require a 'signed permit' and both options C and D are mandatory pre-entry requirements, so 'most critical' has two defensible answers.",
+   "original": {
+    "question": "A Class 4 operator is responsible for ensuring the safety of personnel entering confined spaces in the collection system. According to Ontario Regulation 632/05, what is the most critical requirement before entry can commence?",
+    "options": [
+     "Ensuring all personnel have completed a basic first aid course.",
+     "Obtaining a signed permit from the municipal health and safety officer.",
+     "Completing a confined space entry permit and verifying atmospheric conditions.",
+     "Having a rescue plan in place and a standby person with rescue equipment."
+    ],
+    "correctIndex": 2,
+    "explanation": "According to O. Reg. 632/05, completing a confined space entry permit and verifying atmospheric conditions are critical requirements before entry can commence to ensure worker safety."
+   },
+   "fix": {
+    "question": "Under Ontario Regulation 632/05 (Confined Spaces), which of the following must be in place before a worker enters a confined space?",
+    "options": [
+     "A written entry plan covering hazards, atmospheric testing, controls and rescue procedures.",
+     "A signed permit from the municipal health and safety officer for every entry.",
+     "Ministry of Labour approval for each individual entry.",
+     "Nothing further, provided the worker carries a personal gas monitor."
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 632/05 requires the employer to have a written entry plan (with hazard assessment, atmospheric testing, hazard controls, and rescue procedures with an attendant) before workers enter a confined space. A municipal permit or Ministry approval is not required for each entry, and a gas monitor alone is not sufficient.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185412,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 355,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 242/05 is the Compliance and Enforcement regulation under the Safe Drinking Water Act, 2002 (confirmed on ontario.ca). Ontario sewer use by-laws are municipal by-laws passed under the Municipal Act, 2001, not a provincial regulation.",
+   "original": {
+    "question": "Under Ontario Regulation 242/05 (Sewer Use By-laws), what is the primary responsibility of a municipality regarding the enforcement of its sewer use by-law?",
+    "options": [
+     "To ensure that all discharges to the sanitary sewer system comply with the by-law's prohibitions and limits.",
+     "To obtain a Certificate of Approval from the Ministry of the Environment, Conservation and Parks for all industrial discharges.",
+     "To conduct daily sampling of all industrial discharges to verify compliance with effluent limits.",
+     "To provide financial incentives for industries that implement pre-treatment systems."
+    ],
+    "correctIndex": 0,
+    "explanation": "O. Reg. 242/05 mandates that municipalities establish and enforce sewer use by-laws to protect the collection system and treatment plant from harmful discharges. The primary responsibility is to ensure compliance with these by-laws."
+   },
+   "fix": {
+    "question": "Under Ontario's Municipal Act, 2001, municipalities may pass a sewer use by-law. What is the primary responsibility of a municipality regarding enforcement of its sewer use by-law?",
+    "options": [
+     "To ensure that all discharges to the sanitary sewer system comply with the by-law's prohibitions and limits.",
+     "To obtain a Certificate of Approval from the Ministry of the Environment, Conservation and Parks for all industrial discharges.",
+     "To conduct daily sampling of all industrial discharges to verify compliance with effluent limits.",
+     "To provide financial incentives for industries that implement pre-treatment systems."
+    ],
+    "correctIndex": 0,
+    "explanation": "Sewer use by-laws are passed under the Municipal Act, 2001 to protect the collection system, the treatment plant and the receiving water from harmful discharges. The municipality's primary responsibility is to ensure and enforce compliance with the by-law's prohibitions and limits.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185428,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 371,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 170/03 (Drinking Water Systems) does not address combined sewer overflows or collection systems; presenting CSO minimization as an implication of that regulation is incorrect. Reframe without citing 170/03.",
+   "original": {
+    "question": "Under Ontario Regulation 170/03 (Drinking Water Systems) and its implications for wastewater, what is a critical consideration for a Class 4 operator managing a collection system that includes combined sewers?",
+    "options": [
+     "Minimizing combined sewer overflows (CSOs) to protect source water for drinking water systems.",
+     "Ensuring that all wastewater treatment plant effluent meets drinking water standards.",
+     "Monitoring the chlorine residual in the collection system to prevent bacterial growth.",
+     "Reporting all sanitary sewer overflows (SSOs) to the local public health unit within one hour."
+    ],
+    "correctIndex": 0,
+    "explanation": "CSOs can discharge untreated wastewater into water bodies that may serve as sources for drinking water systems. Minimizing CSOs is therefore critical for source water protection, a key aspect of O. Reg. 170/03's broader intent to safeguard drinking water."
+   },
+   "fix": {
+    "question": "A Class 4 operator manages a collection system that includes combined sewers. Why is minimizing combined sewer overflows (CSOs) especially important?",
+    "options": [
+     "To protect receiving waters, including those used as sources for drinking water systems.",
+     "To ensure that all wastewater treatment plant effluent meets drinking water standards.",
+     "To monitor the chlorine residual in the collection system and prevent bacterial growth.",
+     "To report all sanitary sewer overflows (SSOs) to the local public health unit within one hour."
+    ],
+    "correctIndex": 0,
+    "explanation": "CSOs discharge untreated wastewater to water bodies that may be sources for drinking water systems, so minimizing them protects receiving waters and source water.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185446,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 389,
+   "verdict": "WRONG",
+   "note": "Explanation arithmetic is wrong: Manning's n rising from 0.011 to 0.015-0.020 is a 36-82% increase and, since Q is proportional to 1/n, reduces full-pipe capacity by about 27-45%, not 15-30%. Key is correct.",
+   "original": {
+    "question": "What is the significance of the effective pipe roughness in aged collection system capacity analysis?",
+    "options": [
+     "Aged pipes have significantly higher roughness than new pipes due to deposits, corrosion, and biofilm, reducing actual capacity below original design",
+     "Roughness does not change with age",
+     "Only new pipe roughness matters for design",
+     "Aged pipes have lower roughness"
+    ],
+    "correctIndex": 0,
+    "explanation": "New PVC Manning's n=0.011; aged concrete with deposits n=0.015-0.020. This 35-80% increase in roughness reduces capacity by 15-30%. Capacity analysis of existing systems must use measured or age-adjusted roughness values, not textbook values for new pipe."
+   },
+   "fix": {
+    "question": "What is the significance of the effective pipe roughness in aged collection system capacity analysis?",
+    "options": [
+     "Aged pipes have significantly higher roughness than new pipes due to deposits, corrosion, and biofilm, reducing actual capacity below original design",
+     "Roughness does not change with age",
+     "Only new pipe roughness matters for design",
+     "Aged pipes have lower roughness"
+    ],
+    "correctIndex": 0,
+    "explanation": "New PVC Manning's n = 0.011; aged concrete with deposits n = 0.015-0.020. This 36-82% increase in roughness reduces full-pipe capacity by roughly 27-45% (Q is proportional to 1/n). Capacity analysis of existing systems must use measured or age-adjusted roughness values, not textbook values for new pipe.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185458,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 401,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 166/06 is the Toronto and Region Conservation Authority regulation (Development, Interference with Wetlands and Alterations to Shorelines and Watercourses). Water taking and permits are governed by O. Reg. 387/04 (Water Taking and Transfer) under the Ontario Water Resources Act.",
+   "original": {
+    "question": "Under Ontario Regulation 166/06 (Water Taking and Transfer), what is a key consideration for a Class 4 operator managing a wastewater collection system that might involve dewatering activities?",
+    "options": [
+     "Ensuring that any dewatering activities during construction or maintenance comply with permit requirements for water taking and discharge.",
+     "That all dewatering activities must be performed by a licensed professional engineer.",
+     "That dewatering is strictly prohibited in all circumstances related to wastewater infrastructure.",
+     "That dewatering water must always be discharged directly to a natural watercourse without treatment."
+    ],
+    "correctIndex": 0,
+    "explanation": "Dewatering activities, such as those during trenching for sewer repairs, involve taking water. O. Reg. 166/06 governs water takings, requiring permits or registrations, and any discharge must also meet environmental regulations. Compliance is key."
+   },
+   "fix": {
+    "question": "Under Ontario Regulation 387/04 (Water Taking and Transfer), what is a key consideration for a Class 4 operator managing a wastewater collection system that might involve dewatering activities?",
+    "options": [
+     "Ensuring that any dewatering activities during construction or maintenance comply with permit or registration requirements for water taking and discharge.",
+     "That all dewatering activities must be performed by a licensed professional engineer.",
+     "That dewatering is strictly prohibited in all circumstances related to wastewater infrastructure.",
+     "That dewatering water must always be discharged directly to a natural watercourse without treatment."
+    ],
+    "correctIndex": 0,
+    "explanation": "Dewatering involves taking water. O. Reg. 387/04 under the Ontario Water Resources Act governs water takings, requiring a Permit to Take Water or an EASR registration depending on volume, and any discharge must also meet environmental requirements.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185465,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 408,
+   "verdict": "WRONG",
+   "note": "O. Reg. 525/98 is 'Approval Exemptions' made under the Ontario Water Resources Act, not the Environmental Protection Act, and it does not 'primarily govern' discharge of municipal sewage. Sewage works approval (ECA) comes from the Ontario Water Resources Act (s. 53) and the ECA process. Reframe as asking for the governing statute.",
+   "original": {
+    "question": "When managing a complex wastewater collection system, a Class 4 operator must ensure compliance with environmental regulations. Which Ontario regulation primarily governs the discharge of municipal sewage into the natural environment?",
+    "options": [
+     "Ontario Regulation 170/03 (Safe Drinking Water Act)",
+     "Ontario Regulation 267/03 (Nutrient Management Act)",
+     "Ontario Regulation 525/98 (Environmental Protection Act - Sewage Works)",
+     "Ontario Regulation 419/05 (Environmental Protection Act - Air Quality)"
+    ],
+    "correctIndex": 2,
+    "explanation": "Ontario Regulation 525/98, under the Environmental Protection Act, specifically addresses the approval and operation of sewage works, including the discharge of municipal sewage. The other regulations cover drinking water, nutrient management, and air quality, respectively."
+   },
+   "fix": {
+    "question": "When managing a complex wastewater collection system, a Class 4 operator must ensure compliance with environmental legislation. Which Ontario statute primarily governs the approval (Environmental Compliance Approval) and operation of municipal sewage works that discharge to the natural environment?",
+    "options": [
+     "Safe Drinking Water Act, 2002",
+     "Nutrient Management Act, 2002",
+     "Ontario Water Resources Act",
+     "Clean Water Act, 2006"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Ontario Water Resources Act (s. 53) requires approval (an Environmental Compliance Approval) for sewage works, including municipal collection systems and treatment plants, and prohibits discharges that may impair water quality. The Safe Drinking Water Act covers drinking water, the Nutrient Management Act covers agricultural materials, and the Clean Water Act covers source protection planning.",
+    "steps": null
+   }
+  },
+  {
+   "id": 185478,
+   "bankKey": "class4-wastewater-coll",
+   "questionNum": 421,
+   "verdict": "JURISDICTION",
+   "note": "O. Reg. 170/03 (Drinking Water Systems) does not assign wastewater collection operators any cross-connection control duty; cross-connection control is addressed by the Ontario Building Code/plumbing requirements and municipal programs. Reframe without attributing it to 170/03.",
+   "original": {
+    "question": "Under Ontario's O. Reg. 170/03, what is the primary responsibility of a Class 4 operator regarding cross-connection control within the collection system that could impact drinking water sources?",
+    "options": [
+     "To monitor drinking water quality at treatment plants.",
+     "To ensure that no connections exist between the wastewater collection system and the potable water distribution system.",
+     "To only inspect private plumbing systems for cross-connections.",
+     "To approve new drinking water system designs."
+    ],
+    "correctIndex": 1,
+    "explanation": "While O. Reg. 170/03 primarily governs drinking water, a Class 4 wastewater operator has a critical role in preventing cross-connections between wastewater and potable water systems, which could lead to contamination of drinking water sources. This is a shared responsibility for public health."
+   },
+   "fix": {
+    "question": "Why must a municipality ensure that there are no physical connections between the wastewater collection system and the potable water distribution system?",
+    "options": [
+     "To prevent sewage contamination of drinking water through backflow or back-siphonage.",
+     "To reduce the cost of treating wastewater at the plant.",
+     "To allow potable water to be used to flush sewers routinely.",
+     "To increase flow velocity in gravity sewers."
+    ],
+    "correctIndex": 0,
+    "explanation": "A direct connection between sewage and potable water can allow backflow or back-siphonage of sewage into drinking water, creating a serious public health hazard, so such connections must not exist.",
     "steps": null
    }
   }
