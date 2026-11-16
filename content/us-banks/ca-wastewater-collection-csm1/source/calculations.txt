@@ -1,0 +1,9 @@
+@Operations and maintenance|CWEAHB|Slope, flow, volume and travel time
+A sewer drops 2.4 ft over a run of 600 ft. What is the slope as a percent?|Slope percent = fall divided by length times 100|2.4/600*100|%|1|0.004,250,40|m
+A full 18-in sewer (1.5 ft diameter) has a velocity of 2.0 ft/s. Use area = 0.785 × D² and 1 cfs = 448.8 gpm. What is the flow in gpm?|Flow in cfs = area times velocity, then convert to gpm|0.785*1.5*1.5*2*448.8|gpm|0|3.5,396,1346|h
+A round manhole is 4 ft in diameter and holds 9 ft of water. Use volume = 0.785 × D² × depth and 1 ft³ = 7.48 gal. How many gallons does it hold?|Gallons = 0.785 times diameter squared times depth times 7.48|0.785*4*4*9*7.48|gal|0|113,211,1077|m
+Flow travels through 2,400 ft of sewer at an average velocity of 3.0 ft/s. How many minutes does it take to travel that distance?|Minutes = length divided by velocity, divided by 60|2400/3/60|min|1|800.0,48000.0,0.1|m
+A basin averages 288,000 gallons per day. Use 1,440 min/day. What is the average flow in gpm?|gpm = gallons per day divided by 1,440|288000/1440|gpm|0|4800,12000,415|m
+A 10-in sewer (0.833 ft diameter) is 400 ft long. Use volume = 0.785 × D² × length and 1 ft³ = 7.48 gal. How many gallons does the pipe hold when full?|Gallons = 0.785 times diameter squared times length times 7.48|0.785*0.833*0.833*400*7.48|gal|0|218,408,234872|m
+A jetting nozzle uses 70 gpm and the crew cleans 1,200 ft of sewer at 20 ft/min. How many gallons of water are used?|Gallons = (length divided by pace) times gpm|1200/20*70|gal|0|343,84000,17|h
+A circular wet well is 6 ft in diameter. With the pumps off, the level rises 2.0 ft in 10 minutes. Use volume = 0.785 × D² × H and 1 ft³ = 7.48 gal. What is the inflow in gpm?|Inflow = volume gained divided by time|0.785*6*6*2*7.48/10|gpm|0|423,6,11|h
