@@ -2736,7 +2736,7 @@ Direct supervision means following the supervisor's instructions. Concerns can b
 
 ### 211: Mechanical cleaning equipment in gravity lines (easy)
 
-A crew pushes a rotating cutter on a long flexible rod through a line to cut through root masses. Which equipment is this?
+A crew pushes a rotating blade tool on flexible steel sections through a line to cut through root masses. Which equipment is this?
 
 - **A.** A bucket machine on winch cables
 - **B.** A rodding machine with a cutter head
@@ -2751,9 +2751,9 @@ A rodding machine turns sectional or continuous rod with a cutter on the end, wh
 
 Which equipment is winched back and forth between two manholes to pull out heavy deposits like sand and gravel?
 
-- **A.** A root saw on a long rod
-- **B.** A chain flail on a rotating shaft
-- **C.** A rubber cleaning ball and line
+- **A.** Root saw
+- **B.** Chain flail
+- **C.** Cleaning ball
 - **D.** Bucket machine
 
 **Answer: D. Bucket machine**
@@ -2762,12 +2762,12 @@ A bucket machine is dragged between two access points and brings out settled deb
 
 ### 213: Mechanical cleaning equipment in gravity lines (medium)
 
-A crew uses a spinning shaft with swinging lengths of chain to scour grease and scale off the inside wall of a pipe. What is this tool called?
+A crew uses a spinning shaft with swinging metal links to scour grease and scale off the inside wall of a pipe. What is this tool called?
 
-- **A.** Bucket machine on cables
+- **A.** Bucket machine
 - **B.** Chain flail
-- **C.** Pipe plug on a hose
-- **D.** Balling tool for flushing
+- **C.** Cleaning ball
+- **D.** Pneumatic plug
 
 **Answer: B. Chain flail**
 
@@ -2778,9 +2778,9 @@ A chain flail spins chains against the pipe wall to clean off hardened grease an
 What condition in a pipe lets small roots find a way into a sewer line?
 
 - **A.** Cracks or open joints that let moisture escape
-- **B.** A smooth interior wall that guides roots along the pipe
-- **C.** Fast flow that carries seeds into the pipe from upstream
-- **D.** A steep slope that pulls roots downward into the line
+- **B.** A steep slope that speeds flow past the joints
+- **C.** Smooth interior walls with no grease buildup
+- **D.** Heavy flow that washes seeds into the line
 
 **Answer: A. Cracks or open joints that let moisture escape**
 
@@ -2790,9 +2790,9 @@ Roots follow moisture and nutrients, so defects in the pipe let them get inside 
 
 After roots are cut out of a line, why is a follow-up inspection and repeat cleaning schedule important?
 
-- **A.** The cutter leaves metal shavings that corrode the pipe wall
-- **B.** The slope of the line changes after the roots are cut
-- **C.** Cut roots turn into grease farther downstream
+- **A.** The cutter loosens the pipe joints it passes
+- **B.** The pipe wall softens where the roots were cut
+- **C.** Cut root pieces keep growing farther downstream
 - **D.** Roots regrow from the stubs at the defect
 
 **Answer: D. Roots regrow from the stubs at the defect**
@@ -2803,10 +2803,10 @@ Cutting removes the root mass but not the opening, so regrowth is expected and t
 
 How can a crew best find the exact section of a lateral that is damaged?
 
-- **A.** Ask the neighbors where they think the pipe might run
-- **B.** Dig along the entire lateral until damage appears
+- **A.** Measure the flow at the nearest manhole
+- **B.** Flush the lateral with a high-volume truck
 - **C.** Use a camera inspection to see the defect
-- **D.** Pour dye in the cleanout and wait a day
+- **D.** Smoke-test the main line from a manhole
 
 **Answer: C. Use a camera inspection to see the defect**
 
@@ -2816,10 +2816,10 @@ Camera inspection shows the location and type of defect so the repair can be lim
 
 Why does a repair crew judge how severe a pipe defect is before choosing how to fix it?
 
-- **A.** Severe damage can be left alone until it gets worse
-- **B.** Minor defects must be fixed with a larger pipe
+- **A.** Severe damage can be monitored until it gets worse
+- **B.** Any defect is repaired the same way with a full dig
 - **C.** The type of repair depends on the extent of the damage
-- **D.** Severity decides which manhole lid will be used
+- **D.** Severity decides which agency permit form is filed
 
 **Answer: C. The type of repair depends on the extent of the damage**
 
@@ -2829,23 +2829,23 @@ A small crack and a collapsed pipe call for different repair methods, so the cre
 
 Which information does a crew need to order materials for a main-line repair?
 
-- **A.** The age of the nearest tree and the soil color
-- **B.** The color of the paint on the manhole cover
-- **C.** The name of the last crew that cleaned the line
+- **A.** Flow rate and last cleaning date of the line
+- **B.** Manhole count and the slope of the street
+- **C.** Pipe age and the number of customers served
 - **D.** Pipe size, material and depth of the existing line
 
 **Answer: D. Pipe size, material and depth of the existing line**
 
-Replacement pipe and fittings must match the existing pipe in diameter and material, and depth affects excavation and shoring needs.
+Replacement pipe and fittings must be compatible with the existing pipe size and the repair design, and depth affects excavation and shoring needs.
 
 ### 219: Repair of gravity systems (easy)
 
 What is a basic reason for marking and preparing the site before excavation starts?
 
-- **A.** To make the spoil pile look neater for the neighbors
+- **A.** To reduce the amount of pipe that must be replaced
 - **B.** To protect the crew, utilities and public
-- **C.** To reduce the length of pipe that must be ordered
-- **D.** To avoid having to look at the map again later
+- **C.** To confirm the pipe material before digging begins
+- **D.** To avoid needing a map of the line later
 
 **Answer: B. To protect the crew, utilities and public**
 
@@ -2856,9 +2856,9 @@ Site preparation sets up traffic control, utility locations and work areas so di
 Why do crews use shoring or a trench shield when a repair excavation is deep?
 
 - **A.** The walls could cave in on workers in the trench
-- **B.** Dirt must be sorted by color before backfilling
-- **C.** Groundwater is kept out of the pipe by the shield
-- **D.** The pipe needs support from the sides while it cures
+- **B.** The pipe needs support from the sides while it cures
+- **C.** The shield keeps spoil from sliding onto the street
+- **D.** Groundwater is kept out of the pipe by the shield
 
 **Answer: A. The walls could cave in on workers in the trench**
 
@@ -2868,10 +2868,10 @@ Trench walls can collapse without warning, and protective systems keep workers f
 
 Why are repair couplings tightened to a set torque value?
 
-- **A.** Higher torque gives a longer service life for the fitting
+- **A.** The torque value keeps the coupling from rusting over time
 - **B.** Too little leaves a leak and too much can crack the fitting
-- **C.** A set torque is needed to color-code the coupling
-- **D.** The torque value tells the crew how deep the pipe is
+- **C.** A set torque lets the crew skip cleaning the pipe ends first
+- **D.** Higher torque gives the fitting a longer service life in the ground
 
 **Answer: B. Too little leaves a leak and too much can crack the fitting**
 
@@ -2881,9 +2881,9 @@ The manufacturer's torque spreads clamping force evenly, which seals the joint w
 
 A crew is about to lift a submersible pump out of a wet well with a hoist. Why do hand signals and rigging matter?
 
-- **A.** They are needed for the wet well to be pumped dry
-- **B.** They let the crew skip inspecting the lifting chain
-- **C.** They tell the pump how fast to run when restarted
+- **A.** They let the crew skip checking the rigging before lifts
+- **B.** They keep the pump motor from overheating while lifted
+- **C.** They set the pump speed when it is restarted later
 - **D.** They keep the load controlled and the crew clear
 
 **Answer: D. They keep the load controlled and the crew clear**
@@ -2895,9 +2895,9 @@ Suspended loads can swing or drop, so correct rigging and clear signals help the
 A section of main is blocked and sewage is rising upstream. How can a portable pump help while the line is cleared?
 
 - **A.** It moves sewage around the blockage to a point downstream
-- **B.** It lets the crew skip cleaning the line once the pump is running
-- **C.** It lowers the sewage level by cooling the sewage in the pipe
-- **D.** It breaks up the blockage by pushing water backward through the pipe
+- **B.** It lets the crew skip cleaning the line while pumping runs
+- **C.** It pulls the blockage out of the pipe into the pump
+- **D.** It pushes water backward to break up the blockage
 
 **Answer: A. It moves sewage around the blockage to a point downstream**
 
@@ -2907,10 +2907,10 @@ Bypass pumping carries flow around a blocked or damaged section so it does not b
 
 Why are wet wells cleaned and pumps checked for rags and debris during maintenance?
 
-- **A.** Clean wet wells make the pumps run backward at startup
-- **B.** It lets the station avoid using a float switch for control
+- **A.** Buildup mostly causes odor and does not affect pumps
+- **B.** Debris lowers the level setting on the float switch
 - **C.** Buildup can clog pumps and cut output
-- **D.** Debris is needed to keep the pumps lubricated between services
+- **D.** Rags coat the impeller and reduce wear between services
 
 **Answer: C. Buildup can clog pumps and cut output**
 
@@ -2920,12 +2920,12 @@ Solids and rags collect in wet wells and plug impellers, so cleaning protects pu
 
 Why do most collection agencies keep an emergency response plan?
 
-- **A.** It replaces the need for any worker training program
-- **B.** It describes how to design new treatment plant tanks
-- **C.** It lists the price of pipe and fittings for each project
-- **D.** It sets out how the agency responds to a spill or emergency
+- **A.** It takes the place of the training program for new collection workers
+- **B.** It sets the design basis for new tanks at a treatment plant
+- **C.** It lists the current prices of pipe and fittings for each repair project
+- **D.** It prepares staff to act quickly and in an organized way when something goes wrong
 
-**Answer: D. It sets out how the agency responds to a spill or emergency**
+**Answer: D. It prepares staff to act quickly and in an organized way when something goes wrong**
 
 A response plan prepares staff in advance so action is organized when a spill or other emergency happens.
 
@@ -2933,10 +2933,10 @@ A response plan prepares staff in advance so action is organized when a spill or
 
 What is the main purpose of containing a sewage spill, for example with sandbags or by blocking a storm drain inlet?
 
-- **A.** To make the sewage dry out more quickly on the pavement
+- **A.** To let the sewage soak into the ground more quickly
 - **B.** To keep sewage from reaching waterways
-- **C.** To make the clean-up area look much larger
-- **D.** To raise the water level in the sewer upstream
+- **C.** To lower the sewage level in the upstream pipe
+- **D.** To keep the spill warm so it breaks down faster
 
 **Answer: B. To keep sewage from reaching waterways**
 
@@ -2944,25 +2944,25 @@ Containment holds the spill in a small area so it does not enter storm drains or
 
 ### 227: Spills and emergency response (medium)
 
-After a spill is contained, which clean-up idea fits the job?
+What is the general purpose of cleaning up after a sewage spill has been contained?
 
-- **A.** Cover the area with soil and leave it in place
-- **B.** Let the next rain wash the area clean
-- **C.** Recover the sewage, then wash down and disinfect the area
-- **D.** Spray the sewage into the nearest drain inlet
+- **A.** To restore the appearance of the site for nearby residents
+- **B.** To collect evidence of the spill cause for the repair crew
+- **C.** To reduce public exposure and harm to the environment
+- **D.** To let the spilled sewage soak in and dry in place
 
-**Answer: C. Recover the sewage, then wash down and disinfect the area**
+**Answer: C. To reduce public exposure and harm to the environment**
 
-Recovering the spilled wastewater and cleaning and disinfecting the surface limits public contact and harm to the environment.
+Clean-up uses approved methods to limit public contact and environmental harm, and keeps contaminated runoff out of storm drains.
 
 ### 228: Spills and emergency response (medium)
 
 Spills are often grouped into categories. What general idea separates one category from another?
 
 - **A.** How much reached the environment and where it went
-- **B.** The color of the work truck used to respond to the call
-- **C.** The number of workers on the crew that responded
-- **D.** The brand of the cleaning equipment used on the site
+- **B.** How many customers called to report the problem
+- **C.** Which type of pipe material the spill came from
+- **D.** How long the crew took to arrive on site
 
 **Answer: A. How much reached the environment and where it went**
 
@@ -2970,25 +2970,25 @@ Categories reflect the seriousness of a spill, such as whether it reached a wate
 
 ### 229: Spills and emergency response (medium)
 
-What is a statewide sewer system management plan intended to do?
+Under the statewide sewer order, each agency prepares a sewer system management plan. What is it mainly intended to do?
 
-- **A.** Replace each agency's own emergency response plan
-- **B.** Set the wage scale for collection system workers and crews
-- **C.** Choose which treatment process a city will use
-- **D.** Help an agency reduce blockages and spills
+- **A.** Set design standards for new sewer construction
+- **B.** Set the rates customers pay for sewer service
+- **C.** List the approved contractors for sewer repair work
+- **D.** Help the agency reduce blockages and spills
 
-**Answer: D. Help an agency reduce blockages and spills**
+**Answer: D. Help the agency reduce blockages and spills**
 
-A management plan sets out maintenance, response and other programs so agencies work to prevent and respond to overflows.
+Each agency's plan sets out maintenance, response and other programs so it works to prevent and respond to overflows.
 
 ### 230: Spills and emergency response (hard)
 
 What do the statewide general discharge requirements for sanitary sewer systems provide?
 
-- **A.** A schedule of work hours for collection system crew members
+- **A.** Standard design drawings for lateral connections
 - **B.** A shared set of rules for agencies on managing sewers and spills
-- **C.** A design standard for the tanks at a treatment plant
-- **D.** A list of approved vendors for sewer equipment and supplies
+- **C.** A required list of pipe materials for new sewers
+- **D.** A schedule of rates for new sewer service connections
 
 **Answer: B. A shared set of rules for agencies on managing sewers and spills**
 
@@ -3012,9 +3012,9 @@ A plug is placed in the pipe and inflated to hold back flow, for example while a
 Which hazard is linked to a pneumatic plug holding back flow in a pipe?
 
 - **A.** The plug can shoot out or fail under pressure
-- **B.** The plug makes the sewage much hotter
-- **C.** The plug can change the diameter of the pipe
-- **D.** The plug can start a gas leak in the street
+- **B.** The plug can overheat from the pumped sewage
+- **C.** The plug can crush the pipe as it expands
+- **D.** The plug can release toxic gas as it inflates
 
 **Answer: A. The plug can shoot out or fail under pressure**
 
@@ -3022,12 +3022,12 @@ Backed-up flow pushes on the plug, and an improperly installed or overloaded plu
 
 ### 233: Tools for clearing vegetation (easy)
 
-Which tool is suited to cutting brush along an easement so equipment can reach a manhole?
+Which tool is suited to clearing thick vegetation and saplings along an easement so equipment can reach a manhole?
 
 - **A.** Chain saw or brush cutter
 - **B.** Manhole hook and pry bar
-- **C.** Pipe wrench and tamping rod
-- **D.** Torque wrench and hand level
+- **C.** Shovel and tamping rod
+- **D.** Pipe wrench and hand level
 
 **Answer: A. Chain saw or brush cutter**
 
@@ -3037,10 +3037,10 @@ Chain saws and brush cutters clear vegetation so crews can reach manholes and li
 
 Why do workers wear eye, face and leg protection when running a brush cutter?
 
-- **A.** Protective gear makes the cutter run more quietly
-- **B.** The gear is needed to keep work clothes clean
+- **A.** The gear steadies the cutter and cuts vibration
+- **B.** The gear lowers engine noise to a safe level
 - **C.** Flying debris and blades can cause serious injuries
-- **D.** The gear keeps the cutter from overheating in use
+- **D.** The gear shields the worker from engine exhaust heat
 
 **Answer: C. Flying debris and blades can cause serious injuries**
 
@@ -3077,9 +3077,9 @@ Shoring uses braces, panels and struts to support the wall, while sloping cuts t
 Why do operators check vehicles and heavy equipment before use, such as tires, lights and fluids?
 
 - **A.** To find problems that could cause a breakdown or accident
-- **B.** To record the weather conditions for the day
-- **C.** To decide which route is shortest to the job
-- **D.** To make the vehicle ready for a different driver
+- **B.** To log mileage for the supervisor's monthly report
+- **C.** To decide which crew member will drive each truck
+- **D.** To confirm the vehicle is cleaned before it leaves the yard
 
 **Answer: A. To find problems that could cause a breakdown or accident**
 
@@ -3100,25 +3100,25 @@ A truck with faulty brakes is unsafe, and needed repairs should be reported prom
 
 ### 239: Map discrepancies in the field (easy)
 
-A crew finds that the pipe size in the field does not match what the map shows. What is the correct action?
+A crew finds that the pipe size in the field differs from what the system map shows. What is the correct action?
 
-- **A.** Cover the manhole and keep the difference quiet
-- **B.** Report the difference so the map can be corrected
-- **C.** Ignore it because the map is the final authority
-- **D.** Change the pipe size on the map during the shift
+- **A.** Wait for the next map update before mentioning it
+- **B.** Follow the agency's process for reporting the difference
+- **C.** Treat the map as correct and ignore the difference
+- **D.** Mark the new size on the map without verification or approval
 
-**Answer: B. Report the difference so the map can be corrected**
+**Answer: B. Follow the agency's process for reporting the difference**
 
-Maps stay useful when differences found in the field are reported so records can be checked and updated.
+Maps stay useful when differences found in the field are reported through the agency's process so records can be checked and updated.
 
 ### 240: Map discrepancies in the field (medium)
 
 Why does it matter to report a map that shows a manhole in the wrong place?
 
-- **A.** It saves the cost of printing a new map set
-- **B.** Manholes move after they are installed in the ground
+- **A.** The agency must reprint the whole map set each time
+- **B.** Manholes drift out of place as the soil settles
 - **C.** Other crews could work from bad information
-- **D.** Wrong locations make the pipe grow in diameter
+- **D.** A misplaced symbol changes the pipe's flow capacity
 
 **Answer: C. Other crews could work from bad information**
 
@@ -3152,12 +3152,12 @@ Different colors stand for different kinds of utilities, such as gas or electric
 
 ### 243: Traffic control devices (easy)
 
-Which device is placed ahead of a work area to tell drivers what is coming?
+Which device is placed well before a work area to give drivers early notice of the road work?
 
 - **A.** Advance warning sign
-- **B.** Pipe plug marker tag
-- **C.** Manhole hook and handle
-- **D.** Torque wrench display
+- **B.** Channelizing cone line
+- **C.** Work area barricade
+- **D.** Lane closure taper
 
 **Answer: A. Advance warning sign**
 
@@ -3167,12 +3167,12 @@ Advance warning signs give drivers time to slow down and prepare before they rea
 
 What is a temporary traffic control zone?
 
-- **A.** The space inside a trench shield
-- **B.** The area where signs and devices guide traffic around work
-- **C.** The spot where crews park their trucks overnight
-- **D.** The section of pipe being repaired
+- **A.** The part of the pipe network that is isolated for a repair
+- **B.** The stretch of road where signs and devices guide drivers around the work
+- **C.** The route that crew trucks take between the yard and the job site
+- **D.** The yard area where the signs and cones are stored between jobs
 
-**Answer: B. The area where signs and devices guide traffic around work**
+**Answer: B. The stretch of road where signs and devices guide drivers around the work**
 
 The zone is set up with signs, cones and other devices so drivers and workers are protected around the job.
 
@@ -3180,10 +3180,10 @@ The zone is set up with signs, cones and other devices so drivers and workers ar
 
 A trench wall is cut back at an angle rather than straight down. Which protective method is this?
 
-- **A.** Bypassing the wall
-- **B.** Plugging the wall
+- **A.** Plugging
+- **B.** Shoring
 - **C.** Sloping
-- **D.** Priming the wall
+- **D.** Shielding
 
 **Answer: C. Sloping**
 
@@ -3206,23 +3206,23 @@ Whalers run along the trench and brace the sheeting or planks, which spreads the
 
 A worker gets a cut while handling debris from a sewer. Why is first-aid awareness important?
 
-- **A.** Small cuts heal fastest when they are left uncovered
-- **B.** Sewer debris is safe to touch with a minor wound
-- **C.** Reporting is needed just for deep cuts
-- **D.** Cleaning and reporting a wound lowers the chance of infection
+- **A.** Small cuts heal fastest when they are left open to the air
+- **B.** Sewer debris is safe to handle when the wound is minor
+- **C.** Just deep cuts need treatment, and shallow ones can be ignored
+- **D.** Wastewater carries germs, so prompt care lowers infection risk
 
-**Answer: D. Cleaning and reporting a wound lowers the chance of infection**
+**Answer: D. Wastewater carries germs, so prompt care lowers infection risk**
 
-Wastewater can carry germs, so wounds should be cleaned, covered and reported rather than ignored.
+Wastewater can carry germs, so even small cuts need prompt care and should be reported rather than ignored.
 
 ### 248: Heat-related illness (easy)
 
 Which of these is a warning sign of heat-related illness?
 
 - **A.** Heavy sweating, dizziness and headache
-- **B.** A sudden urge to work faster than usual
-- **C.** Cold hands and a stuffy nose
-- **D.** Better focus than usual on a hot day
+- **B.** Itchy palms, a runny nose and watery eyes
+- **C.** Sneezing, itchy eyes and a stuffy nose
+- **D.** Hunger, sore knees and a dry cough
 
 **Answer: A. Heavy sweating, dizziness and headache**
 
@@ -3245,12 +3245,12 @@ Regular fluids and rest in a cool area help the body cope with heat before sympt
 
 Easements often cross private yards. Which hazard might a crew meet there?
 
-- **A.** Fixed lighting and paved walkways
-- **B.** Dogs, uneven ground and brush
-- **C.** Marked lane closures and flaggers
-- **D.** A maintained road with a curb and gutter
+- **A.** Deep water and strong river currents
+- **B.** Dogs, uneven ground and overgrown brush
+- **C.** Fast traffic and tight lane closures
+- **D.** Forklifts and loaded racks in a warehouse
 
-**Answer: B. Dogs, uneven ground and brush**
+**Answer: B. Dogs, uneven ground and overgrown brush**
 
 Private property can hold hazards like animals, slopes and brush that crews should recognize before working.
 

@@ -1,5 +1,7 @@
 # Review result: California Collection System Maintenance Grade 1 (CWEA) bank
 
+**Current size: 295 questions** (250 conceptual, 45 calculations). The first 250 were reviewed first; a fifth batch of 45 was added after the bank was compared with the official outline (see the last section). Item IDs: because the builder lists conceptual questions first, adding conceptual questions renumbered the earlier calculation questions (they were 211 to 250, now 251 to 290). The question numbers in the first sections below are the old numbers for calculation questions only; all conceptual numbers are unchanged. Nothing has been imported, so no learner data depends on these numbers.
+
 Reviewed 2026-11-16 by Opus reviewers (Claude models), the owner's verification authority for this content.
 
 ## What was done
@@ -37,3 +39,15 @@ After the corrections above, the rebuilt bank was sent to five more models in th
 - **Flagged but left as written:** GPT-6.1 Sol raised about 15 more points that are judgement calls at entry level (for example CA-CSM1-011, 012, 013, 031, 056, 109, 138, 164, 167). They were read and judged acceptable for a Grade 1 recognition-level question. They are listed so a later reviewer can look again.
 - **Update, same day: all 12 of those left-as-written points were then changed** at the owner's direction, following GPT-6.1 Sol's suggested fixes while keeping the dossier's limits (entry level, no procedures, no thresholds): CA-CSM1-011, 012, 013, 031, 056, 109, 138, 142, 154, 164, 167, 176. The reworded questions were checked once more by Gemini 4 hydrogen, Gemini 4 carbon and GPT-6.1 Sol, who found three more small problems, also fixed: 013 (the key was the only single-item option), 167 (a word in the stem echoed the key), and 142 (the stem now says "gas-reading alarm").
 - The bank was rebuilt after these edits: 250 questions, build check passes.
+
+## Comparison with the official CWEA outline (2026-11-16)
+
+The owner supplied the CWEA CSM Candidate Handbook v2025.01. Its Grade 1 exam content outline confirmed the six domains and weights used for the bank (28, 20, 5, 26, 11, 10 percent). It also showed sub-domains with no or almost no questions in the first 250: repair of gravity systems; spills and emergency response (including general knowledge of the statewide sewer discharge requirements and sewer system management plans); mechanical cleaning equipment; pump removal and rigging; pneumatic plugs, vegetation tools and shoring equipment; map discrepancies; USA 811 colours, traffic control devices, trench protection devices; bloodborne pathogens, first aid and heat illness; and spill, distance and elevation calculations.
+
+**Batch 5** added 45 original questions (40 conceptual, 5 calculations) covering those gaps, written from the outline in the writer's own words at recognition level with no thresholds, timeframes or step-by-step procedures. The handbook itself is not stored in the repository.
+
+**Review of batch 5:** Opus, Gemini 4 hydrogen and GPT-6.1 Sol read all 45. One wrong key was planted and all three caught it (a second planted change turned out to be a no-op and is not counted). Real problems found and fixed: the sewer system management plan was described as statewide when each agency writes its own (229); several questions repeated a word from the stem in the correct answer or used a different option format for the correct answer (211, 212, 213, 225, 233, 245); one question asked for an ordered clean-up sequence (227); and many wrong options were too implausible. A writer rewrote 35 questions; after a second round by GPT-6.1 Sol and Gemini hydrogen, five more were changed (211, 229, 230, 247, 248).
+
+**Left as written:** about ten more points from GPT-6.1 Sol that call some wrong options "too weak" (for example 215, 217, 222, 225, 226, 236, 238, 239, 240, 249). They are not wrong, only easy to rule out. The explanation text added to every calculation question by the bank builder ("Round only the final result...") is template text and was not changed. "Whalers" in question 246 stays, because the handbook's own outline uses that word.
+
+**Still not covered:** the handbook is an outline, not a question bank, so the questions are original and have not been compared to any real exam. No question has been imported, activated or shown to learners.
