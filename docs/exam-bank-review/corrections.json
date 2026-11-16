@@ -1,15 +1,15 @@
 {
  "export": "docs/exam-bank-export/2026-11-16 (commit d118897a)",
- "chunksDone": 138,
+ "chunksDone": 145,
  "chunksTotal": 174,
- "questionsReviewed": 19310,
+ "questionsReviewed": 20270,
  "questionsTotal": 24350,
- "problems": 1354,
+ "problems": 1398,
  "byVerdict": {
-  "UNCLEAR": 434,
-  "WRONG": 549,
-  "JURISDICTION": 228,
-  "UNITS": 136,
+  "UNCLEAR": 445,
+  "WRONG": 567,
+  "JURISDICTION": 241,
+  "UNITS": 138,
   "OFF-TOPIC": 7
  },
  "byBank": {
@@ -40,7 +40,9 @@
   "wpi-class2-wastewater-coll": 18,
   "wpi-class2-water": 27,
   "wpi-class2-water-dist": 173,
-  "wpi-class3-wastewater": 23
+  "wpi-class3-wastewater": 32,
+  "wpi-class3-wastewater-coll": 10,
+  "wpi-class3-water": 25
  },
  "chunks": [
   "chunk-001",
@@ -180,7 +182,14 @@
   "chunk-135",
   "chunk-136",
   "chunk-137",
-  "chunk-138"
+  "chunk-138",
+  "chunk-139",
+  "chunk-140",
+  "chunk-141",
+  "chunk-142",
+  "chunk-143",
+  "chunk-144",
+  "chunk-145"
  ],
  "corrections": [
   {
@@ -48114,6 +48123,1539 @@
     ],
     "correctIndex": 2,
     "explanation": "Fall protection (guardrails, safety nets, or personal fall arrest systems) is generally required when working at heights of more than 3 m in most Canadian provincial occupational health and safety regulations, and at lower heights where there is a specific hazard such as an open tank or hazardous surface below.",
+    "steps": null
+   }
+  },
+  {
+   "id": 45137,
+   "bankKey": "wpi-class3-wastewater",
+   "questionNum": 466,
+   "verdict": "UNCLEAR",
+   "note": "Ozone dose is routinely expressed in mg O3/L (applied dose) as well as specific dose; option A is also defensible as worded. Question needs to specify normalisation across water matrices.",
+   "original": {
+    "question": "The ozone dose for advanced treatment of wastewater effluent is typically expressed as:",
+    "options": [
+     "mg O₃/L",
+     "% ozone in air",
+     "kg O₃/day",
+     "mg O₃/mg DOC (specific ozone dose)"
+    ],
+    "correctIndex": 3,
+    "explanation": "The specific ozone dose (mg O₃/mg DOC) is used to normalize ozone demand across different water matrices. Typical doses for micropollutant removal are 0.5–1.0 mg O₃/mg DOC."
+   },
+   "fix": {
+    "question": "To normalize ozone dose across wastewater effluents with different organic content, the dose is expressed as:",
+    "options": [
+     "mg O₃/L (applied dose only)",
+     "% ozone in air",
+     "kg O₃/day",
+     "mg O₃/mg DOC (specific ozone dose)"
+    ],
+    "correctIndex": 3,
+    "explanation": "The specific ozone dose (mg O₃/mg DOC) normalizes ozone demand across different water matrices. Typical doses for micropollutant removal are 0.5–1.0 mg O₃/mg DOC.",
+    "steps": []
+   }
+  },
+  {
+   "id": 45160,
+   "bankKey": "wpi-class3-wastewater",
+   "questionNum": 489,
+   "verdict": "JURISDICTION",
+   "note": "TMDL (with WLA/LA/MOS) is a US Clean Water Act framework, not a regulatory mechanism in western Canada (which uses site-specific effluent objectives and CCME/provincial guidelines). It is presented as a general rule in a Canadian bank. Needs to be framed as a US concept.",
+   "original": {
+    "question": "The total maximum daily load (TMDL) for a nutrient-impaired water body sets:",
+    "options": [
+     "Only the POTW's effluent limit",
+     "The maximum daily load of a pollutant that the water body can receive while meeting water quality standards, allocated among all sources",
+     "Only agricultural load limits",
+     "Only stormwater load limits"
+    ],
+    "correctIndex": 1,
+    "explanation": "A TMDL = ΣWLA (wasteload allocations for point sources) + ΣLA (load allocations for non-point sources) + MOS (margin of safety). It allocates the total allowable load among all contributing sources."
+   },
+   "fix": {
+    "question": "Under the US Clean Water Act, a total maximum daily load (TMDL) for a nutrient-impaired water body sets:",
+    "options": [
+     "Only the POTW's effluent limit",
+     "The maximum daily load of a pollutant that the water body can receive while meeting water quality standards, allocated among all sources",
+     "Only agricultural load limits",
+     "Only stormwater load limits"
+    ],
+    "correctIndex": 1,
+    "explanation": "In the US framework, a TMDL = ΣWLA (point sources) + ΣLA (non-point sources) + MOS (margin of safety). It allocates the total allowable load among all contributing sources. Canadian jurisdictions use different tools (e.g. site-specific effluent objectives and watershed management plans).",
+    "steps": []
+   }
+  },
+  {
+   "id": 45165,
+   "bankKey": "wpi-class3-wastewater",
+   "questionNum": 494,
+   "verdict": "UNCLEAR",
+   "note": "CCME guideline for cold-water biota is 9.5 mg/L for early life stages and 6.5 mg/L for other life stages. The question does not say which life stage, so both >6 and >9 are defensible (the explanation itself says >9 for spawning). Also CCME values are 6.5 and 9.5, not 6 and 9.",
+   "original": {
+    "question": "The dissolved oxygen (DO) standard for the protection of cold-water fish (salmonids) in Canadian receiving waters is typically:",
+    "options": [
+     ">2 mg/L",
+     ">9 mg/L",
+     ">4 mg/L",
+     ">6 mg/L (7-day mean minimum)"
+    ],
+    "correctIndex": 3,
+    "explanation": "Canadian water quality guidelines for the protection of cold-water fish (salmonids) require DO >6 mg/L (7-day mean minimum) and >9 mg/L for salmonid spawning areas."
+   },
+   "fix": {
+    "question": "The CCME dissolved oxygen guideline for protection of cold-water aquatic life (other than early life stages) in Canadian receiving waters is a minimum of:",
+    "options": [
+     ">2 mg/L",
+     ">9.5 mg/L",
+     ">4 mg/L",
+     ">6.5 mg/L"
+    ],
+    "correctIndex": 3,
+    "explanation": "The CCME guideline for cold-water biota is a minimum of 6.5 mg/L for other life stages and 9.5 mg/L for early life stages (such as salmonid spawning and incubation).",
+    "steps": []
+   }
+  },
+  {
+   "id": 45166,
+   "bankKey": "wpi-class3-wastewater",
+   "questionNum": 495,
+   "verdict": "WRONG",
+   "note": "Explanation refers to options by letter and says 'Option B provides a standard formula', but the correct option (index 2) is the third option (C); letters in the explanation do not match the answer. Reword without letters.",
+   "original": {
+    "question": "The effluent dilution required to protect receiving water quality is calculated using:",
+    "options": [
+     "Only the effluent concentration",
+     "Only the receiving water flow",
+     "The mixing zone model: C_mix = (Q_e × C_e + Q_r × C_r) / (Q_e + Q_r)",
+     "The POTW's treatment efficiency"
+    ],
+    "correctIndex": 2,
+    "explanation": "**Step 1 — Identify the Goal:**\nThe question asks for the method to calculate effluent dilution required to protect receiving water quality.\n\n**Step 2 — Evaluate Options:**\nOptions A, C, and D are incomplete or incorrect. Option B provides a standard formula for calculating mixed concentration in a receiving water body.\n\n**Step 3 — Apply Mixing Zone Model:**\nThe mixing zone model, C_mix = (Q_e × C_e + Q_r × C_r) / (Q_e + Q_r), directly calculates the concentration after effluent mixes with receiving water, which is essential for determining dilution and compliance with water quality standards.\n\nThe correct answer is **The mixing zone model: C_mix = (Q_e × C_e + Q_r × C_r) / (Q_e + Q_r)**."
+   },
+   "fix": {
+    "question": "The effluent dilution required to protect receiving water quality is calculated using:",
+    "options": [
+     "Only the effluent concentration",
+     "Only the receiving water flow",
+     "The mixing zone model: C_mix = (Q_e × C_e + Q_r × C_r) / (Q_e + Q_r)",
+     "The POTW's treatment efficiency"
+    ],
+    "correctIndex": 2,
+    "explanation": "The mixing zone mass balance, C_mix = (Q_e × C_e + Q_r × C_r) / (Q_e + Q_r), gives the concentration after effluent mixes with receiving water. Setting C_mix equal to the water quality criterion lets you back-calculate the dilution or allowable effluent concentration. The other choices each omit required terms.",
+    "steps": null
+   }
+  },
+  {
+   "id": 45194,
+   "bankKey": "wpi-class3-wastewater",
+   "questionNum": 523,
+   "verdict": "UNCLEAR",
+   "note": "Options A (0.171) and C (0.17) are the same value to rounding (3,000/17,500 = 0.1714), so two options are defensible. Change option C.",
+   "original": {
+    "question": "BOD load = 3,000 kg/d, MLVSS = 3,500 mg/L, basin = 5,000 m³. What is the F/M ratio?",
+    "options": [
+     "0.171 kg BOD/kg MLVSS/d",
+     "0.6 kg BOD/kg MLVSS/d",
+     "0.17 kg BOD/kg MLVSS/d",
+     "0.003 kg BOD/kg MLVSS/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "F/M = 3,000 / (3,500 × 5,000/1,000) = 3,000/17,500 = 0.171 kg BOD/kg MLVSS/d."
+   },
+   "fix": {
+    "question": "BOD load = 3,000 kg/d, MLVSS = 3,500 mg/L, basin = 5,000 m³. What is the F/M ratio?",
+    "options": [
+     "0.171 kg BOD/kg MLVSS/d",
+     "0.6 kg BOD/kg MLVSS/d",
+     "0.27 kg BOD/kg MLVSS/d",
+     "0.003 kg BOD/kg MLVSS/d"
+    ],
+    "correctIndex": 0,
+    "explanation": "F/M = 3,000 / (3,500 × 5,000/1,000) = 3,000/17,500 = 0.171 kg BOD/kg MLVSS/d.",
+    "steps": [
+     {
+      "l": "Solution",
+      "c": "F/M = 3,000 / (3,500 × 5,000/1,000) = 3,000/17,500 = 0.171 kg BOD/kg MLVSS/d."
+     }
+    ]
+   }
+  },
+  {
+   "id": 45245,
+   "bankKey": "wpi-class3-wastewater",
+   "questionNum": 574,
+   "verdict": "WRONG",
+   "note": "Arithmetic: 0.167 x 15,000 x 365 x 0.12 = $109,719/yr, not $109,535. Marked option is the only close one but the stated number is not what the steps give.",
+   "original": {
+    "question": "Energy use = 0.167 kWh/m³, Q = 15,000 m³/d, electricity = $0.12/kWh. What is the annual energy cost?",
+    "options": [
+     "$100,000/yr",
+     "$109,535/yr",
+     "$1,000,000/yr",
+     "$10,000/yr"
+    ],
+    "correctIndex": 1,
+    "explanation": "Annual cost = 0.167 × 15,000 × 365 × $0.12 = $109,535/yr."
+   },
+   "fix": {
+    "question": "Energy use = 0.167 kWh/m³, Q = 15,000 m³/d, electricity = $0.12/kWh. What is the annual energy cost?",
+    "options": [
+     "$100,000/yr",
+     "$109,719/yr",
+     "$1,000,000/yr",
+     "$10,000/yr"
+    ],
+    "correctIndex": 1,
+    "explanation": "Annual cost = 0.167 × 15,000 × 365 × $0.12 = $109,719/yr.",
+    "steps": [
+     {
+      "l": "Solution",
+      "c": "Annual cost = 0.167 × 15,000 × 365 × $0.12 = $109,719/yr."
+     }
+    ]
+   }
+  },
+  {
+   "id": 45246,
+   "bankKey": "wpi-class3-wastewater",
+   "questionNum": 575,
+   "verdict": "WRONG",
+   "note": "7.5 / 2.5 x 100 = 300%, not 299%. The explanation itself computes 300% and then picks '299%' as 'closest'. Option must read 300%. (Also the wording 'offset' should say generation as a percentage of plant use.)",
+   "original": {
+    "question": "CHP generates 7.5 MWh/d. Plant uses 2.5 MWh/d. What % of energy is offset?",
+    "options": [
+     "50%",
+     "299%",
+     "100%",
+     "25%"
+    ],
+    "correctIndex": 1,
+    "explanation": "The question asks what percentage of energy is offset. This implies comparing the energy generated by the CHP to the energy used by the plant. \n\nEnergy generated by CHP = 7.5 MWh/d\nEnergy used by plant = 2.5 MWh/d\n\nPercentage offset = (CHP Generation / Plant Use) * 100\nPercentage offset = (7.5 MWh/d / 2.5 MWh/d) * 100\nPercentage offset = 3 * 100\nPercentage offset = 300%\n\nThe closest option provided is 299%."
+   },
+   "fix": {
+    "question": "CHP generates 7.5 MWh/d. Plant uses 2.5 MWh/d. The CHP output equals what percentage of plant energy use?",
+    "options": [
+     "50%",
+     "300%",
+     "100%",
+     "25%"
+    ],
+    "correctIndex": 1,
+    "explanation": "Generation / use x 100 = 7.5 / 2.5 x 100 = 300%.",
+    "steps": [
+     {
+      "l": "Solution",
+      "c": "Percentage = 7.5 / 2.5 x 100 = 300%."
+     }
+    ]
+   }
+  },
+  {
+   "id": 45266,
+   "bankKey": "wpi-class3-wastewater",
+   "questionNum": 595,
+   "verdict": "WRONG",
+   "note": "Options B ('1000.0 m3/d') and D ('1,000 m3/d') are identical, so two options are correct. The bulk density (600 kg/m3) is not stated in the question, and the formula divides by solids fraction x bulk density, which double counts: bulk density already applies to the whole mix. 240,000 kg/d at 600 kg/m3 is 400 m3/d.",
+   "original": {
+    "question": "Biosolids + amendment = 240 tonne/d at 40% solids. What is the composting volume?",
+    "options": [
+     "96 m³/d",
+     "1000.0 m³/d",
+     "240 m³/d",
+     "1,000 m³/d"
+    ],
+    "correctIndex": 1,
+    "explanation": "The question requires calculating the composting volume based on the total mass of biosolids and amendment and its solids content. To determine the volume, the bulk density of the composted material is needed. Assuming a typical bulk density for composted biosolids at 40% solids is 600 kg/m³, the volume is calculated by dividing the total mass by the product of the solids fraction and the bulk density. This yields a volume of 1000 m³/d."
+   },
+   "fix": {
+    "question": "Biosolids + amendment = 240 tonne/d of compost mix at 40% solids with a bulk density of 600 kg/m3. What is the composting volume?",
+    "options": [
+     "96 m3/d",
+     "400 m3/d",
+     "240 m3/d",
+     "1,000 m3/d"
+    ],
+    "correctIndex": 1,
+    "explanation": "Volume = mass / bulk density = 240,000 kg/d / 600 kg/m3 = 400 m3/d.",
+    "steps": [
+     {
+      "l": "Solution",
+      "c": "Volume = 240,000 kg/d / 600 kg/m3 = 400 m3/d."
+     }
+    ]
+   }
+  },
+  {
+   "id": 45267,
+   "bankKey": "wpi-class3-wastewater",
+   "questionNum": 596,
+   "verdict": "WRONG",
+   "note": "Marked answer is 30,000 m3 (30-day curing at 1,000 m3/d) and the explanation agrees, but the steps compute 51,000 m3 (which is another option). Steps contradict the key.",
+   "original": {
+    "question": "Composting requires 21 days active + 30 days curing. Total = 51 days. What volume of curing pad is needed for 1,000 m³/d compost?",
+    "options": [
+     "21,000 m³",
+     "51,000 m³",
+     "30,000 m³",
+     "1,000 m³"
+    ],
+    "correctIndex": 2,
+    "explanation": "Curing pad volume = Daily composting volume × Curing period\n\n  Curing pad volume = 1,000 m³/d × 30 days\n  Curing pad volume = 30,000 m³\n\nThe curing pad must hold 30,000 m³ of material (30 days × 1,000 m³/day).\nNote: The active composting pad would require 1,000 × 21 = 21,000 m³ separately."
+   },
+   "fix": {
+    "question": "Composting requires 21 days active + 30 days curing. Total = 51 days. What volume of curing pad is needed for 1,000 m3/d compost?",
+    "options": [
+     "21,000 m3",
+     "51,000 m3",
+     "30,000 m3",
+     "1,000 m3"
+    ],
+    "correctIndex": 2,
+    "explanation": "Curing pad volume = daily composting volume x curing period = 1,000 m3/d x 30 d = 30,000 m3. The active composting pad would need 1,000 x 21 = 21,000 m3 separately.",
+    "steps": [
+     {
+      "l": "Solution",
+      "c": "Curing volume = 1,000 m3/d x 30 d = 30,000 m3."
+     }
+    ]
+   }
+  },
+  {
+   "id": 47767,
+   "bankKey": "wpi-class3-wastewater-coll",
+   "questionNum": 52,
+   "verdict": "JURISDICTION",
+   "note": "The explanation states emergency lighting must provide at least 90 minutes of illumination. That figure is the US (NFPA 101/IBC) duration; the National Building Code of Canada and provincial codes generally require 30 minutes (longer only for certain high buildings). The keyed answer is still right, but the stated rule is not correct for Canada.",
+   "original": {
+    "question": "What is the purpose of a pump station's emergency lighting system?",
+    "options": [
+     "To provide lighting for the pump station during normal operation",
+     "To provide adequate lighting for safe operation and emergency egress during a power failure",
+     "To provide lighting for the wet well during maintenance",
+     "To provide lighting for the force main during inspection"
+    ],
+    "correctIndex": 1,
+    "explanation": "Emergency lighting systems provide adequate lighting for safe operation and emergency egress during a power failure. Emergency lighting is required by building codes and occupational health and safety regulations. Battery-backed emergency lights activate automatically when power fails and must provide adequate illumination for at least 90 minutes."
+   },
+   "fix": {
+    "question": "What is the purpose of a pump station's emergency lighting system?",
+    "options": [
+     "To provide lighting for the pump station during normal operation",
+     "To provide adequate lighting for safe operation and emergency egress during a power failure",
+     "To provide lighting for the wet well during maintenance",
+     "To provide lighting for the force main during inspection"
+    ],
+    "correctIndex": 1,
+    "explanation": "Emergency lighting systems provide adequate lighting for safe operation and emergency egress during a power failure. Emergency lighting is required by building codes and occupational health and safety regulations. Battery-backed emergency lights activate automatically when power fails and must provide illumination for the minimum duration required by the applicable building and electrical codes (commonly at least 30 minutes in Canada).",
+    "steps": null
+   }
+  },
+  {
+   "id": 47867,
+   "bankKey": "wpi-class3-wastewater-coll",
+   "questionNum": 152,
+   "verdict": "WRONG",
+   "note": "Marked option says HGL is where pressure head plus elevation head equals TOTAL head. Total head (energy grade line) also includes velocity head, so HGL is below total head by V^2/2g. The explanation itself says HGL is not equal to total head, contradicting the key. HGL = P/gamma + z.",
+   "original": {
+    "question": "Hydraulic grade line (HGL) in a pressure pipe is located at:",
+    "options": [
+     "The pipe centerline",
+     "The energy grade line",
+     "The elevation where pressure head plus elevation head equals total head",
+     "The pipe invert"
+    ],
+    "correctIndex": 2,
+    "explanation": "The hydraulic grade line (HGL) represents the sum of the elevation head and the pressure head in a fluid flow system. It indicates the level to which water would rise in a piezometer tube connected to the pipe. The total head, as described by Bernoulli's principle, includes the velocity head in addition to the pressure and elevation heads. Therefore, the HGL is not equal to the total head, but rather a component of it. This concept is fundamental in fluid mechanics and is applied in the design and analysis of water and wastewater infrastructure, consistent with engineering principles recognized across Canada."
+   },
+   "fix": {
+    "question": "Hydraulic grade line (HGL) in a pressure pipe is located at:",
+    "options": [
+     "The pipe centerline",
+     "The energy grade line",
+     "A height equal to pressure head plus elevation head above a datum (the level water would rise in a piezometer)",
+     "The pipe invert"
+    ],
+    "correctIndex": 2,
+    "explanation": "The HGL plots pressure head plus elevation head (P/gamma + z) above a datum and shows the level water would rise to in a piezometer tied to the pipe. The energy grade line is higher than the HGL by the velocity head V^2/2g.",
+    "steps": null
+   }
+  },
+  {
+   "id": 47878,
+   "bankKey": "wpi-class3-wastewater-coll",
+   "questionNum": 163,
+   "verdict": "WRONG",
+   "note": "Key says a pipe at 80% depth carries 108% of full flow and that maximum flow occurs near 80-85% full. Maximum discharge (about 1.07-1.08 Qfull) occurs at roughly 93-94% depth; maximum velocity (about 1.14 Vfull) occurs near 81% depth. At d/D = 0.80, Q/Qfull is about 0.98 (standard partial-flow curves for Manning).",
+   "original": {
+    "question": "A circular sewer pipe flowing at 80% full depth has approximately what fraction of full-flow capacity:",
+    "options": [
+     "80%",
+     "108% of full-pipe flow (maximum occurs near 80-85% full)",
+     "60%",
+     "100%"
+    ],
+    "correctIndex": 1,
+    "explanation": "Maximum flow in a circular pipe occurs at approximately 80-85% full depth where Q/Qfull is approximately 1.08."
+   },
+   "fix": {
+    "question": "A circular sewer pipe flowing at 80% of full depth carries approximately what fraction of full-pipe flow capacity?",
+    "options": [
+     "80%",
+     "About 98% of full-pipe flow",
+     "60%",
+     "About 110% of full-pipe flow"
+    ],
+    "correctIndex": 1,
+    "explanation": "At 80% depth (d/D = 0.8), Manning flow is about 98% of full-pipe flow. Maximum discharge, about 107-108% of full-pipe flow, occurs near 93-94% depth, while maximum velocity occurs near 80-85% depth.",
+    "steps": null
+   }
+  },
+  {
+   "id": 47893,
+   "bankKey": "wpi-class3-wastewater-coll",
+   "questionNum": 178,
+   "verdict": "UNITS",
+   "note": "Steps use gallons and gallons per minute in a Canadian (metric) bank. Converted to m3 and L/s.",
+   "original": {
+    "question": "Pump run time per cycle is calculated as:",
+    "options": [
+     "V_active divided by Q_pump",
+     "V_active times Q_in divided by Q_pump",
+     "V_active times Q_pump",
+     "V_active divided by (Q_pump minus Q_in)"
+    ],
+    "correctIndex": 3,
+    "explanation": "Run time = V_active / (Q_pump - Q_in), where V_active is active storage volume."
+   },
+   "fix": {
+    "question": "Pump run time per cycle is calculated as:",
+    "options": [
+     "V_active divided by Q_pump",
+     "V_active times Q_in divided by Q_pump",
+     "V_active times Q_pump",
+     "V_active divided by (Q_pump minus Q_in)"
+    ],
+    "correctIndex": 3,
+    "explanation": "Run time = V_active / (Q_pump - Q_in), where V_active is active storage volume.",
+    "steps": [
+     {
+      "l": "Identify the goal",
+      "c": "Identify the expression for pump run time during one cycle."
+     },
+     {
+      "l": "Account for continuing inflow",
+      "c": "While the pump runs, wastewater keeps entering the wet well, so the level drops at the net rate Q_pump minus Q_in, not at the full pump rate."
+     },
+     {
+      "l": "Write and check the formula",
+      "c": "Run time = V_active / (Q_pump − Q_in). Units check: cubic metres divided by cubic metres per second (or litres divided by litres per second) gives seconds. The pump must be sized so Q_pump exceeds Q_in or the level never draws down."
+     },
+     {
+      "l": "Eliminate the other options and state the answer",
+      "c": "V_active / Q_pump ignores inflow and understates run time, while the product forms do not yield units of time. The correct answer is V_active divided by (Q_pump minus Q_in)."
+     }
+    ]
+   }
+  },
+  {
+   "id": 47904,
+   "bankKey": "wpi-class3-wastewater-coll",
+   "questionNum": 189,
+   "verdict": "WRONG",
+   "note": "Standard wet well sizing is V = Q_pump x T_cycle / 4 (worst case when inflow = half of pump capacity, giving T = 4V/Q_pump). The key uses Q_in, which is wrong: at Q_in = Q_pump/2 the volume is Q_in x T/2, not Q_in x T/4. The marked formula does not follow from the steps' own derivation.",
+   "original": {
+    "question": "A pump station wet well minimum volume (active storage) is calculated using:",
+    "options": [
+     "V = Q_in times T_cycle divided by 4 where T_cycle = 1/N_max",
+     "Only inflow rate",
+     "Only pump capacity",
+     "Only wet well depth"
+    ],
+    "correctIndex": 0,
+    "explanation": "Active storage V = Q_in * T_cycle / 4, ensuring pump cycling frequency does not exceed motor manufacturer maximum starts per hour."
+   },
+   "fix": {
+    "question": "A pump station wet well minimum volume (active storage) is calculated using:",
+    "options": [
+     "V = Q_pump times T_cycle divided by 4 where T_cycle = 1/N_max",
+     "Only inflow rate",
+     "Only wet well depth",
+     "Only the number of pumps"
+    ],
+    "correctIndex": 0,
+    "explanation": "Active storage V = Q_pump * T_cycle / 4, ensuring pump cycling frequency does not exceed the motor manufacturer's maximum starts per hour.",
+    "steps": [
+     {
+      "l": "Identify the goal",
+      "c": "Identify the expression for the minimum active (working) storage volume in a wet well."
+     },
+     {
+      "l": "Set the cycle limit",
+      "c": "The motor manufacturer sets a maximum number of starts per hour, N_max. The shortest allowable cycle is therefore T_cycle = 1 / N_max, where a cycle is one fill plus one pump-down."
+     },
+     {
+      "l": "Apply the sizing relationship",
+      "c": "Cycle time T = V/Q_in + V/(Q_pump − Q_in). This is shortest when inflow equals half the pump capacity (Q_in = Q_pump/2), giving T = 4V/Q_pump, so V = Q_pump × T_cycle / 4."
+     },
+     {
+      "l": "Select the answer",
+      "c": "Inflow alone or wet well depth alone cannot set the volume because neither fixes the cycle time. The correct answer is V = Q_pump × T_cycle / 4 with T_cycle = 1 / N_max."
+     }
+    ]
+   }
+  },
+  {
+   "id": 47906,
+   "bankKey": "wpi-class3-wastewater-coll",
+   "questionNum": 191,
+   "verdict": "UNITS",
+   "note": "Pressure given in psi in a Canadian bank. Converted to kPa (1000 psi = 6,895 kPa; 4000 psi = 27,580 kPa).",
+   "original": {
+    "question": "High-velocity cleaning (hydro-jetting) of sewers uses water pressure in the range of:",
+    "options": [
+     "1000-4000 psi (70-275 bar)",
+     "50-100 psi",
+     "10000-15000 psi",
+     "5-50 psi"
+    ],
+    "correctIndex": 0,
+    "explanation": "Hydro-jetting uses 1000-4000 psi water pressure to clean sewer pipes, removing grease, roots, and debris."
+   },
+   "fix": {
+    "question": "High-velocity cleaning (hydro-jetting) of sewers uses water pressure in the range of:",
+    "options": [
+     "7,000-28,000 kPa (70-280 bar)",
+     "350-700 kPa",
+     "70,000-100,000 kPa",
+     "35-350 kPa"
+    ],
+    "correctIndex": 0,
+    "explanation": "Hydro-jetting uses roughly 7,000-28,000 kPa (70-280 bar) water pressure to clean sewer pipes, removing grease, roots, and debris.",
+    "steps": null
+   }
+  },
+  {
+   "id": 47927,
+   "bankKey": "wpi-class3-wastewater-coll",
+   "questionNum": 212,
+   "verdict": "JURISDICTION",
+   "note": "CMOM (Capacity, Management, Operation and Maintenance) is a US EPA framework, not a requirement in western Canada; the question says a CMOM program 'is required' with no jurisdiction stated.",
+   "original": {
+    "question": "A CMOM program is required to:",
+    "options": [
+     "Only track finances",
+     "Demonstrate that collection systems are properly managed to prevent SSOs",
+     "Only track maintenance",
+     "Only track capital projects"
+    ],
+    "correctIndex": 1,
+    "explanation": "CMOM programs demonstrate to regulators that collection systems are properly managed, operated, and maintained to prevent SSOs."
+   },
+   "fix": {
+    "question": "A collection system management program (such as a CMOM-style program) is intended to:",
+    "options": [
+     "Only track finances",
+     "Demonstrate that the collection system is properly managed, operated and maintained to prevent overflows",
+     "Only track maintenance",
+     "Only track capital projects"
+    ],
+    "correctIndex": 1,
+    "explanation": "Collection system management programs (for example CMOM-style programs) document that the system is properly managed, operated, and maintained to prevent overflows and protect the environment.",
+    "steps": null
+   }
+  },
+  {
+   "id": 47943,
+   "bankKey": "wpi-class3-wastewater-coll",
+   "questionNum": 228,
+   "verdict": "UNCLEAR",
+   "note": "0.22% is the Ten States Standards minimum for 12-inch (300 mm) sewers, not 200 mm. For a 200 mm pipe at 0.6 m/s full-flow with n = 0.013, Manning gives S = (0.6 x 0.013 / 0.05^(2/3))^2 = 0.33%, and western Canadian standards typically specify 0.40% for 200 mm sanitary mains. At 0.22%, full-flow velocity is only about 0.49 m/s, below the stated 0.6 m/s.",
+   "original": {
+    "question": "Minimum slope for a 200 mm (8-inch) sewer to achieve self-cleansing is approximately:",
+    "options": [
+     "0.08%",
+     "1.0%",
+     "0.22% (1:450)",
+     "2.0%"
+    ],
+    "correctIndex": 2,
+    "explanation": "For a 200 mm sewer, minimum slope of approximately 0.22% achieves self-cleansing velocity of 0.6 m/s at design flow."
+   },
+   "fix": {
+    "question": "Minimum slope for a 200 mm sewer to achieve self-cleansing is approximately:",
+    "options": [
+     "0.08%",
+     "1.0%",
+     "0.40%",
+     "2.0%"
+    ],
+    "correctIndex": 2,
+    "explanation": "For a 200 mm sewer, a minimum slope of about 0.33% is needed for 0.6 m/s at full flow with n = 0.013, and design standards typically round this to 0.40%.",
+    "steps": [
+     {
+      "l": "Identify the goal",
+      "c": "Find the approximate minimum slope for a 200 mm sewer to be self-cleansing."
+     },
+     {
+      "l": "State the design criterion",
+      "c": "Self-cleansing requires a velocity of about 0.6 m/s at design flow so grit and organic solids stay in suspension."
+     },
+     {
+      "l": "Relate slope to velocity",
+      "c": "Manning: V = (1/n) R^(2/3) S^(1/2). With n = 0.013 and R = D/4 = 0.05 m, R^(2/3) = 0.136, so S = (0.6 x 0.013 / 0.136)^2 = 0.0033, about 0.33%. Design standards round this up to about 0.40%."
+     },
+     {
+      "l": "Eliminate the other options and state the answer",
+      "c": "0.08% is far too flat to reach self-cleansing velocity, while 1.0% and 2.0% greatly exceed the requirement and force excessive excavation depth. The correct answer is approximately 0.40%."
+     }
+    ]
+   }
+  },
+  {
+   "id": 48040,
+   "bankKey": "wpi-class3-wastewater-coll",
+   "questionNum": 325,
+   "verdict": "UNCLEAR",
+   "note": "Option A (L/s per km) is itself a correct normalized infiltration unit, and option B contains it, so two options are defensible. Better to make the distractor clearly wrong.",
+   "original": {
+    "question": "Groundwater infiltration rate is typically expressed as:",
+    "options": [
+     "L/s per km",
+     "L/s per km of sewer or L/ha/day, normalized for comparison between systems",
+     "m^3/day total only",
+     "% of average flow"
+    ],
+    "correctIndex": 1,
+    "explanation": "Groundwater infiltration rates are typically expressed in units that normalize the flow to allow for comparison between different sewer systems, regardless of their size. Common units for this normalization include litres per second per kilometre of sewer (L/s per km) or litres per hectare per day (L/ha/day). Option B correctly identifies both of these common and normalized expressions for infiltration rates, which are crucial for assessing system performance and identifying problem areas. Options A, C, and D are either incomplete or incorrect ways to express normalized infiltration rates."
+   },
+   "fix": {
+    "question": "Groundwater infiltration rate is typically expressed as:",
+    "options": [
+     "m^3/day total only",
+     "L/s per km of sewer or L/ha/day, normalized for comparison between systems",
+     "Percent of pipe diameter",
+     "Pump run time per day"
+    ],
+    "correctIndex": 1,
+    "explanation": "Infiltration is normalized by sewer length (e.g. L/s per km) or by serviced area (e.g. L/ha/day) so that systems of different sizes can be compared. A total volume alone cannot be compared between systems.",
+    "steps": null
+   }
+  },
+  {
+   "id": 48093,
+   "bankKey": "wpi-class3-wastewater-coll",
+   "questionNum": 378,
+   "verdict": "JURISDICTION",
+   "note": "Explanation cites 'OSHA ceiling' of 10 ppm, a US rule (and OSHA's general-industry ceiling is actually 20 ppm). In western Canada the provincial OH&S occupational exposure limit for H2S is 10 ppm (8-h TWA) with a 15 ppm short-term limit (Alberta, BC). Answer is fine; the rule cited is the wrong jurisdiction.",
+   "original": {
+    "question": "A sewer worker exposure to H2S above 10 ppm requires:",
+    "options": [
+     "No action",
+     "Only PPE upgrade",
+     "Only ventilation increase",
+     "Immediate evacuation and investigation of the source before re-entry"
+    ],
+    "correctIndex": 3,
+    "explanation": "H2S above 10 ppm (OSHA ceiling) requires immediate evacuation; re-entry requires investigation and control of the source."
+   },
+   "fix": {
+    "question": "A sewer worker exposure to H2S above 10 ppm requires:",
+    "options": [
+     "No action",
+     "Only PPE upgrade",
+     "Only ventilation increase",
+     "Immediate evacuation and investigation of the source before re-entry"
+    ],
+    "correctIndex": 3,
+    "explanation": "10 ppm is the provincial OH&S occupational exposure limit (8-hour TWA) for H2S in western Canada, with a 15 ppm short-term limit. Exposure above these limits requires immediate evacuation; re-entry requires investigation and control of the source.",
+    "steps": null
+   }
+  },
+  {
+   "id": 42375,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 20,
+   "verdict": "JURISDICTION",
+   "note": "Explanation cites the US 'Lead and Copper Rule' as the governing requirement in a Western Canada bank. Canada uses the GCDWQ lead MAC (5 ug/L) and provincial requirements. Answer itself is fine.",
+   "original": {
+    "question": "What is the purpose of corrosion control treatment in distribution systems?",
+    "options": [
+     "Increase pH above 9.5",
+     "Minimize leaching of lead and copper from pipes and fixtures into drinking water",
+     "Remove turbidity",
+     "Add fluoride"
+    ],
+    "correctIndex": 1,
+    "explanation": "Corrosion control treatment (e.g., pH/alkalinity adjustment, orthophosphate addition) forms a protective scale on pipe surfaces, minimizing lead and copper leaching under the Lead and Copper Rule requirements."
+   },
+   "fix": {
+    "question": "What is the purpose of corrosion control treatment in distribution systems?",
+    "options": [
+     "Increase pH above 9.5",
+     "Minimize leaching of lead and copper from pipes and fixtures into drinking water",
+     "Remove turbidity",
+     "Add fluoride"
+    ],
+    "correctIndex": 1,
+    "explanation": "Corrosion control treatment (e.g., pH/alkalinity adjustment, orthophosphate addition) forms a protective scale on pipe surfaces, minimizing lead and copper leaching and helping meet the GCDWQ guideline for lead.",
+    "steps": null
+   }
+  },
+  {
+   "id": 42390,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 35,
+   "verdict": "UNCLEAR",
+   "note": "Arithmetic is right (400 m3/h, option index 3) but the explanation says the correct answer is 'A', which is the 800 m3/h option; explanation disagrees with the key.",
+   "original": {
+    "question": "A filter has a surface area of 50 m² and a design filtration rate of 8 m/h. What is the design flow through this filter?",
+    "options": [
+     "800 m³/h",
+     "4 m³/h",
+     "50 m³/h",
+     "400 m³/h"
+    ],
+    "correctIndex": 3,
+    "explanation": "**Step 1 — Identify Given Values:**\nFilter Surface Area = 50 m²\nDesign Filtration Rate = 8 m/h\n\n**Step 2 — Apply Formula:**\nDesign Flow = Filtration Rate × Surface Area\nDesign Flow = 8 m/h × 50 m²\n\n**Step 3 — Calculate Design Flow:**\nDesign Flow = 400 m³/h\n\nThe correct answer is **A**."
+   },
+   "fix": {
+    "question": "A filter has a surface area of 50 m² and a design filtration rate of 8 m/h. What is the design flow through this filter?",
+    "options": [
+     "800 m³/h",
+     "4 m³/h",
+     "50 m³/h",
+     "400 m³/h"
+    ],
+    "correctIndex": 3,
+    "explanation": "**Step 1 — Identify Given Values:**\nFilter Surface Area = 50 m²\nDesign Filtration Rate = 8 m/h\n\n**Step 2 — Apply Formula:**\nDesign Flow = Filtration Rate × Surface Area = 8 m/h × 50 m²\n\n**Step 3 — Calculate Design Flow:**\nDesign Flow = 400 m³/h\n\nThe correct answer is **400 m³/h**.",
+    "steps": null
+   }
+  },
+  {
+   "id": 42391,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 36,
+   "verdict": "UNCLEAR",
+   "note": "'Both B and C' depends on option letter order, and the explanation supports only collecting filtered water and distributing backwash water (B). Option C (support the media) is only partly true depending on design. Also fragile if options are shuffled.",
+   "original": {
+    "question": "What is the purpose of the underdrain system in a granular media filter?",
+    "options": [
+     "Both B and C",
+     "To collect filtered water and distribute backwash water uniformly across the filter bed",
+     "To support the filter media",
+     "To add chemicals"
+    ],
+    "correctIndex": 0,
+    "explanation": "The underdrain system serves two purposes: (1) collects filtered water and conveys it to the clearwell, and (2) distributes backwash water and air uniformly across the filter bed during backwash to ensure even media expansion and cleaning."
+   },
+   "fix": {
+    "question": "What is the purpose of the underdrain system in a granular media filter?",
+    "options": [
+     "To add chemicals",
+     "To collect filtered water and distribute backwash water uniformly across the filter bed",
+     "To measure turbidity",
+     "To store backwash water"
+    ],
+    "correctIndex": 1,
+    "explanation": "The underdrain collects filtered water and conveys it to the clearwell, and distributes backwash water (and air) uniformly across the filter bed to ensure even media expansion and cleaning.",
+    "steps": null
+   }
+  },
+  {
+   "id": 42440,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 85,
+   "verdict": "UNCLEAR",
+   "note": "No single Canadian rule gives 275 kPa as the minimum; many western Canadian standards (e.g. Alberta, Ten States-style design) use a minimum of about 140 kPa under all conditions (and ~275-350 kPa as normal design pressure). Question depends on unstated local guideline.",
+   "original": {
+    "question": "What is the minimum pressure required in a distribution system under normal operating conditions in most Canadian guidelines?",
+    "options": [
+     "100 kPa",
+     "275 kPa",
+     "140 kPa",
+     "500 kPa"
+    ],
+    "correctIndex": 1,
+    "explanation": "Most Canadian guidelines require a minimum residual pressure of 275 kPa (40 psi) at service connections under normal operating conditions. During fire flow, a minimum of 140 kPa (20 psi) is typically required."
+   },
+   "fix": {
+    "question": "What is the generally accepted minimum pressure to be maintained at all points in a distribution system under all operating conditions, including fire flow?",
+    "options": [
+     "100 kPa",
+     "275 kPa",
+     "140 kPa",
+     "500 kPa"
+    ],
+    "correctIndex": 2,
+    "explanation": "Most Canadian and North American design standards require a minimum pressure of about 140 kPa (20 psi) at all points under all conditions, including fire flow. Normal operating pressures are typically 275-690 kPa.",
+    "steps": null
+   }
+  },
+  {
+   "id": 42451,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 96,
+   "verdict": "JURISDICTION",
+   "note": "Explanation uses 'Tier 1' public notification, a US EPA (Public Notification Rule) term, not a GCDWQ concept. Notification requirements are set by the provincial regulator.",
+   "original": {
+    "question": "A plant's quarterly E. coli result is 1 CFU/100 mL in the distribution system. What is the required response under the GCDWQ?",
+    "options": [
+     "Resample and wait for results",
+     "Log the result and continue monitoring",
+     "E. coli must not be detected — this is a MAC exceedance requiring immediate notification of the regulatory authority, investigation, corrective action, and public notification if required",
+     "Increase chlorine dose only"
+    ],
+    "correctIndex": 2,
+    "explanation": "E. coli must not be detected in any 100 mL sample of treated drinking water (MAC = 0). Detection of E. coli is a Tier 1 (immediate) notification event. Required actions: notify regulatory authority immediately, investigate source of contamination, take corrective action, increase monitoring, and issue public notification if required."
+   },
+   "fix": {
+    "question": "A plant's quarterly E. coli result is 1 CFU/100 mL in the distribution system. What is the required response under the GCDWQ?",
+    "options": [
+     "Resample and wait for results",
+     "Log the result and continue monitoring",
+     "E. coli must not be detected — this is a MAC exceedance requiring immediate notification of the regulatory authority, investigation, corrective action, and public notification if required",
+     "Increase chlorine dose only"
+    ],
+    "correctIndex": 2,
+    "explanation": "E. coli must not be detected in any 100 mL sample of treated drinking water (MAC = none detectable). Detection requires immediate notification of the regulatory authority per provincial requirements, investigation of the source, corrective action, increased monitoring, and public notification if required.",
+    "steps": null
+   }
+  },
+  {
+   "id": 42453,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 98,
+   "verdict": "JURISDICTION",
+   "note": "Asks about the Ontario DWQMS in a Western Canada bank; Ontario regulation presented as the rule.",
+   "original": {
+    "question": "What is the purpose of a Drinking Water Quality Management Standard (DWQMS) in Ontario?",
+    "options": [
+     "To provide a quality management framework for drinking water systems — requiring a QMS that includes documented procedures, trained operators, and continuous improvement",
+     "To set water rates",
+     "To design treatment plants",
+     "To regulate water utilities"
+    ],
+    "correctIndex": 0,
+    "explanation": "The DWQMS (Ontario) requires municipal drinking water systems to implement a Quality Management System (QMS) based on ISO 9001 principles. It includes an Operational Plan, documented procedures, trained operators, internal audits, and management review to ensure continuous improvement in drinking water safety."
+   },
+   "fix": {
+    "question": "What is the purpose of a Quality Management System (QMS) for a drinking water system?",
+    "options": [
+     "To provide a framework requiring documented procedures, trained operators, and continuous improvement for drinking water operations",
+     "To set water rates",
+     "To design treatment plants",
+     "To regulate water utilities"
+    ],
+    "correctIndex": 0,
+    "explanation": "A QMS (for example, one based on ISO 9001 principles) includes an operational plan, documented procedures, trained operators, internal audits, and management review to ensure continuous improvement in drinking water safety.",
+    "steps": null
+   }
+  },
+  {
+   "id": 42469,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 114,
+   "verdict": "JURISDICTION",
+   "note": "Explanation says the GCDWQ specifies minimum TOC removal percentages for enhanced coagulation (based on TOC and alkalinity). That is the US EPA Stage 1 DBP Rule, not GCDWQ. Arithmetic (3.9 mg/L) is correct.",
+   "original": {
+    "question": "A plant's TOC removal target is 35% (enhanced coagulation requirement). Influent TOC is 6.0 mg/L. What is the maximum allowable effluent TOC?",
+    "options": [
+     "2.1 mg/L",
+     "3.9 mg/L",
+     "4.2 mg/L",
+     "6.0 mg/L"
+    ],
+    "correctIndex": 1,
+    "explanation": "Required removal = 35%. Effluent TOC = 6.0 × (1 − 0.35) = 6.0 × 0.65 = 3.9 mg/L. Enhanced coagulation requirements under the GCDWQ specify minimum TOC removal percentages based on source water TOC and alkalinity."
+   },
+   "fix": {
+    "question": "A plant's TOC removal target is 35% (enhanced coagulation target). Influent TOC is 6.0 mg/L. What is the maximum allowable effluent TOC?",
+    "options": [
+     "2.1 mg/L",
+     "3.9 mg/L",
+     "4.2 mg/L",
+     "6.0 mg/L"
+    ],
+    "correctIndex": 1,
+    "explanation": "Required removal = 35%. Effluent TOC = 6.0 × (1 − 0.35) = 6.0 × 0.65 = 3.9 mg/L.",
+    "steps": [
+     {
+      "l": "Formula:",
+      "c": "Effluent TOC = Influent TOC × (1 - Removal Target)"
+     },
+     {
+      "l": "Substitute:",
+      "c": "Effluent TOC = 6.0 mg/L × (1 - 0.35)"
+     },
+     {
+      "l": "Calculate:",
+      "c": "Effluent TOC = 6.0 mg/L × 0.65"
+     },
+     {
+      "l": "Result:",
+      "c": "Effluent TOC = 3.9 mg/L"
+     }
+    ]
+   }
+  },
+  {
+   "id": 42485,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 130,
+   "verdict": "UNCLEAR",
+   "note": "Explanation misstates ACGIH TLV-TWA for ozone (0.05 ppm heavy, 0.08 moderate, 0.1 light work; 0.2 ppm for <=2 h). 'Maximum workplace limit' is ambiguous without naming the standard; 0.1 ppm is the light-work TLV/US OSHA PEL. Western Canadian OHS codes adopt ACGIH-based values.",
+   "original": {
+    "question": "What is the maximum workplace exposure limit for ozone?",
+    "options": [
+     "10 ppm",
+     "1 ppm",
+     "0.1 ppm",
+     "0.01 ppm"
+    ],
+    "correctIndex": 2,
+    "explanation": "The ACGIH TLV-TWA for ozone is 0.1 ppm (heavy work) to 0.2 ppm (light work). Ozone is toxic at low concentrations. Ozone contact chambers must be enclosed with off-gas destruction systems, and confined space entry procedures apply."
+   },
+   "fix": {
+    "question": "What is the commonly used 8-hour time-weighted average workplace exposure limit for ozone (ACGIH TLV, light work)?",
+    "options": [
+     "10 ppm",
+     "1 ppm",
+     "0.1 ppm",
+     "0.01 ppm"
+    ],
+    "correctIndex": 2,
+    "explanation": "The ACGIH TLV-TWA for ozone is 0.1 ppm for light work (lower, 0.05-0.08 ppm, for moderate to heavy work; 0.2 ppm for exposures of 2 hours or less). Ozone is toxic at low concentrations, so contact chambers must be enclosed with off-gas destruction and confined space procedures apply.",
+    "steps": null
+   }
+  },
+  {
+   "id": 42493,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 138,
+   "verdict": "JURISDICTION",
+   "note": "Explanation claims the GCDWQ requires a minimum 0.2 mg/L free chlorine residual throughout distribution. The GCDWQ does not set that; minimum residuals are provincial/territorial requirements or utility targets (Health Canada only recommends a detectable residual).",
+   "original": {
+    "question": "What is the purpose of secondary disinfection in a water treatment plant?",
+    "options": [
+     "To replace primary disinfection",
+     "To add fluoride",
+     "To remove turbidity",
+     "To maintain a disinfectant residual throughout the distribution system to prevent microbial regrowth and protect against contamination after treatment"
+    ],
+    "correctIndex": 3,
+    "explanation": "Secondary disinfection maintains a residual disinfectant (free chlorine or chloramines) in the distribution system. The GCDWQ requires a minimum free chlorine residual of 0.2 mg/L (or equivalent) at all points in the distribution system to prevent microbial regrowth."
+   },
+   "fix": {
+    "question": "What is the purpose of secondary disinfection in a water treatment plant?",
+    "options": [
+     "To replace primary disinfection",
+     "To add fluoride",
+     "To remove turbidity",
+     "To maintain a disinfectant residual throughout the distribution system to prevent microbial regrowth and protect against contamination after treatment"
+    ],
+    "correctIndex": 3,
+    "explanation": "Secondary disinfection maintains a residual disinfectant (free chlorine or chloramines) in the distribution system. Minimum residual requirements (commonly about 0.2 mg/L free chlorine) are set by the provincial/territorial regulator or utility, not by the GCDWQ itself.",
+    "steps": null
+   }
+  },
+  {
+   "id": 42494,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 139,
+   "verdict": "WRONG",
+   "note": "With Cl2:NH3 = 4:1, NH3 = 0.5 mg/L = 0.41 mg/L as N; the marked 0.36 does not follow, and the explanation openly invents a 5.55:1 ratio. Fix by stating the ratio as Cl2:NH3-N = 5:1 (typical 4.5-5:1 range), giving 0.4 mg/L.",
+   "original": {
+    "question": "A plant switches from free chlorine to chloramine disinfection. The chloramine dose is 2.0 mg/L as Cl₂ with a Cl₂:NH₃ ratio of 4:1 by weight. How much ammonia (as N) must be added?",
+    "options": [
+     "0.5 mg/L",
+     "0.14 mg/L",
+     "1.0 mg/L",
+     "0.36 mg/L"
+    ],
+    "correctIndex": 3,
+    "explanation": "To determine the amount of ammonia (as N) needed, first calculate the ammonia (as NH3) required based on the chlorine dose and Cl2:NH3 ratio. Ammonia (as NH3) = 2.0 mg/L / 4 = 0.5 mg/L. Next, convert ammonia (as NH3) to ammonia (as N) using their molecular weights. Ammonia (as N) = 0.5 mg/L * (14 / 17) = 0.41176 mg/L. The options provided do not include 0.41 mg/L. However, if the question intended a Cl2:N ratio of approximately 5.55:1, then 2.0 mg/L / 5.55 = 0.36 mg/L. Given that 0.36 mg/L is an option and the previous explanation incorrectly chose it as the closest to 0.41 mg/L, it suggests there might be an implicit rounding or a slightly different ratio intended to arrive at 0.36 mg/L. To align with the provided correct answer D, we assume a direct Cl2:N ratio that yields 0.36 mg/L. If the Cl2:N ratio was 5.55:1, then 2.0 mg/L / 5.55 = 0.36 mg/L. This aligns with option D."
+   },
+   "fix": {
+    "question": "A plant switches from free chlorine to chloramine disinfection. The chloramine dose is 2.0 mg/L as Cl₂ with a Cl₂:NH₃-N ratio of 5:1 by weight. How much ammonia (as N) must be added?",
+    "options": [
+     "0.5 mg/L",
+     "0.14 mg/L",
+     "1.0 mg/L",
+     "0.4 mg/L"
+    ],
+    "correctIndex": 3,
+    "explanation": "Ammonia-N = chlorine dose / ratio = 2.0 mg/L / 5 = 0.4 mg/L as N.",
+    "steps": [
+     {
+      "l": "Formula",
+      "c": "Ammonia-N = Cl₂ dose ÷ (Cl₂:NH₃-N ratio)"
+     },
+     {
+      "l": "Substitute",
+      "c": "NH₃-N = 2.0 mg/L ÷ 5"
+     },
+     {
+      "l": "Result",
+      "c": "NH₃-N = 0.4 mg/L"
+     }
+    ]
+   }
+  },
+  {
+   "id": 42502,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 147,
+   "verdict": "UNCLEAR",
+   "note": "Explanation contradicts the question. GCDWQ (turbidity 2012): conventional/direct filtration individual filter effluent <=0.3 NTU in 95% of measurements (max 1.0 NTU), with a treatment goal of <=0.1 NTU. Explanation wrongly says 0.1 NTU 95th percentile with max 0.3 NTU.",
+   "original": {
+    "question": "What is the significance of filter effluent turbidity exceeding 0.3 NTU?",
+    "options": [
+     "No significance — 0.3 NTU is acceptable",
+     "0.3 NTU is the backwash trigger",
+     "0.3 NTU is the maximum for source water",
+     "Under the GCDWQ, individual filter effluent turbidity should not exceed 0.3 NTU in more than 5% of measurements in any month — exceedance triggers investigation and corrective action"
+    ],
+    "correctIndex": 3,
+    "explanation": "The GCDWQ turbidity target for individual filter effluent is ≤0.1 NTU (95th percentile) with a maximum of 0.3 NTU. Exceedance of 0.3 NTU triggers investigation of filter performance, coagulation effectiveness, and potential filter breakthrough."
+   },
+   "fix": {
+    "question": "What is the significance of filter effluent turbidity exceeding 0.3 NTU?",
+    "options": [
+     "No significance — 0.3 NTU is acceptable",
+     "0.3 NTU is the backwash trigger",
+     "0.3 NTU is the maximum for source water",
+     "Under the GCDWQ, individual filter effluent turbidity should not exceed 0.3 NTU in more than 5% of measurements in any month — exceedance triggers investigation and corrective action"
+    ],
+    "correctIndex": 3,
+    "explanation": "The GCDWQ sets individual filter effluent turbidity for conventional and direct filtration at no more than 0.3 NTU in 95% of measurements (never above 1.0 NTU), with a treatment goal of 0.1 NTU or less. Exceedances trigger investigation of filter performance, coagulation effectiveness, and potential breakthrough.",
+    "steps": null
+   }
+  },
+  {
+   "id": 42525,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 170,
+   "verdict": "WRONG",
+   "note": "Marked answer 125 is correct (index 3) but the explanation says 'The correct answer is A', which is the 250 option.",
+   "original": {
+    "question": "A distribution system has 500 km of water mains. The average pipe age is 45 years. The annual main break rate is 25 breaks/100 km. What is the total number of main breaks expected per year?",
+    "options": [
+     "250",
+     "50",
+     "500",
+     "125"
+    ],
+    "correctIndex": 3,
+    "explanation": "**Step 1 — Identify Given Values:**\nMain length = 500 km\nBreak rate = 25 breaks/100 km\n\n**Step 2 — Calculate Total Breaks:**\nTotal Breaks = Main length × (Break rate / 100 km)\nTotal Breaks = 500 km × (25 breaks / 100 km)\nTotal Breaks = 125 breaks\n\nThe correct answer is **A**."
+   },
+   "fix": {
+    "question": "A distribution system has 500 km of water mains. The average pipe age is 45 years. The annual main break rate is 25 breaks/100 km. What is the total number of main breaks expected per year?",
+    "options": [
+     "250",
+     "50",
+     "500",
+     "125"
+    ],
+    "correctIndex": 3,
+    "explanation": "Total Breaks = 500 km × (25 breaks / 100 km) = 125 breaks per year. The correct answer is 125.",
+    "steps": [
+     {
+      "l": "Formula",
+      "c": "Total Breaks = Break Rate × Total Length"
+     },
+     {
+      "l": "Substitute",
+      "c": "Total Breaks = (25 breaks / 100 km) × 500 km"
+     },
+     {
+      "l": "Calculate",
+      "c": "Total Breaks = 0.25 breaks/km × 500 km"
+     },
+     {
+      "l": "Result",
+      "c": "Total Breaks = 125 breaks/year"
+     }
+    ]
+   }
+  },
+  {
+   "id": 42529,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 174,
+   "verdict": "JURISDICTION",
+   "note": "The 15 μg/L 90th-percentile action level and the required actions are the US EPA Lead and Copper Rule. In Canada the Health Canada GCDWQ MAC for lead is 5 μg/L (0.005 mg/L, 2019), applied at the tap, with no federal 90th-percentile action level.",
+   "original": {
+    "question": "A utility's 90th percentile lead action level is 15 μg/L. The 90th percentile result from 100 samples is 18 μg/L. What actions are required?",
+    "options": [
+     "The action level is exceeded — required actions include: enhanced corrosion control treatment, public education, lead service line replacement, and increased monitoring",
+     "No action — 18 μg/L is close to the limit",
+     "Increase chlorine dose",
+     "Reduce system pressure"
+    ],
+    "correctIndex": 0,
+    "explanation": "Exceeding the lead action level (15 μg/L at the 90th percentile) triggers: (1) enhanced corrosion control treatment (optimize pH, alkalinity, phosphate); (2) public education about lead risks; (3) lead service line replacement program; (4) increased monitoring; (5) notification to the regulatory authority."
+   },
+   "fix": {
+    "question": "A utility's first-draw tap sampling returns lead concentrations of 18 μg/L at several homes. The Canadian guideline MAC for lead is 5 μg/L. What actions are appropriate?",
+    "options": [
+     "The MAC is exceeded — actions include optimizing corrosion control treatment, public education, lead service line replacement, increased monitoring, and notifying the regulatory authority",
+     "No action — 18 μg/L is close to the limit",
+     "Increase chlorine dose",
+     "Reduce system pressure"
+    ],
+    "correctIndex": 0,
+    "explanation": "The GCDWQ MAC for lead is 5 μg/L at the tap. Exceedances call for corrosion control optimization (pH, alkalinity, phosphate), public education, lead service line replacement, increased monitoring and notification of the regulatory authority.",
+    "steps": null
+   }
+  },
+  {
+   "id": 42547,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 192,
+   "verdict": "WRONG",
+   "note": "Health Canada (2019) lowered the manganese aesthetic objective to 0.02 mg/L (MAC 0.12 mg/L); 0.05 mg/L is the old AO. Iron AO 0.3 mg/L is correct.",
+   "original": {
+    "question": "What is the purpose of iron and manganese removal treatment?",
+    "options": [
+     "To prevent aesthetic problems (staining, taste, colour) and to meet the GCDWQ AOs for iron (0.3 mg/L) and manganese (0.05 mg/L) — achieved by oxidation and filtration",
+     "Disinfection",
+     "To remove bacteria",
+     "To reduce hardness"
+    ],
+    "correctIndex": 0,
+    "explanation": "Iron and manganese cause staining (iron: red/brown; manganese: black), taste issues, and can deposit in distribution pipes. Treatment involves oxidation (aeration, chlorine, KMnO₄, ozone) to convert soluble forms to insoluble oxides, followed by filtration or sedimentation."
+   },
+   "fix": {
+    "question": "What is the purpose of iron and manganese removal treatment?",
+    "options": [
+     "To prevent aesthetic problems (staining, taste, colour) and to meet the GCDWQ AOs for iron (0.3 mg/L) and manganese (0.02 mg/L) — achieved by oxidation and filtration",
+     "Disinfection",
+     "To remove bacteria",
+     "To reduce hardness"
+    ],
+    "correctIndex": 0,
+    "explanation": "Iron and manganese cause staining (iron: red/brown; manganese: black), taste issues, and can deposit in distribution pipes. Treatment involves oxidation (aeration, chlorine, KMnO₄, ozone) to convert soluble forms to insoluble oxides, followed by filtration or sedimentation.",
+    "steps": null
+   }
+  },
+  {
+   "id": 42548,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 193,
+   "verdict": "WRONG",
+   "note": "Arithmetic and key (1.6 mg/L, index 1) are right, but the explanation says 'The correct answer is A' (2.5 mg/L).",
+   "original": {
+    "question": "A water has 2.5 mg/L Fe²⁺. The theoretical chlorine demand for iron oxidation is 0.64 mg Cl₂/mg Fe. What chlorine dose is required just for iron oxidation?",
+    "options": [
+     "2.5 mg/L",
+     "1.6 mg/L",
+     "0.64 mg/L",
+     "4.0 mg/L"
+    ],
+    "correctIndex": 1,
+    "explanation": "**Step 1 — Identify Given Values:**\nIron concentration = 2.5 mg/L Fe²⁺\nChlorine demand for iron oxidation = 0.64 mg Cl₂/mg Fe\n\n**Step 2 — Calculate Chlorine Dose:**\nChlorine dose = Iron concentration × Chlorine demand for iron oxidation\nChlorine dose = 2.5 mg/L × 0.64 mg Cl₂/mg Fe = 1.6 mg/L\n\nThe correct answer is **A**."
+   },
+   "fix": {
+    "question": "A water has 2.5 mg/L Fe²⁺. The theoretical chlorine demand for iron oxidation is 0.64 mg Cl₂/mg Fe. What chlorine dose is required just for iron oxidation?",
+    "options": [
+     "2.5 mg/L",
+     "1.6 mg/L",
+     "0.64 mg/L",
+     "4.0 mg/L"
+    ],
+    "correctIndex": 1,
+    "explanation": "Chlorine dose = 2.5 mg/L × 0.64 mg Cl₂/mg Fe = 1.6 mg/L. The correct answer is 1.6 mg/L.",
+    "steps": [
+     {
+      "l": "Formula",
+      "c": "Chlorine Dose = Iron Concentration × Chlorine Demand Ratio"
+     },
+     {
+      "l": "Substitute",
+      "c": "Chlorine Dose = 2.5 mg/L Fe²⁺ × 0.64 mg Cl₂/mg Fe"
+     },
+     {
+      "l": "Result",
+      "c": "Chlorine Dose = 1.6 mg/L"
+     }
+    ]
+   }
+  },
+  {
+   "id": 42554,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 199,
+   "verdict": "WRONG",
+   "note": "Option B 'Both A and B' is self-referential and illogical; the intended answer is 'both of the other options'. Nitrate MAC is 10 mg/L as N = 45 mg/L as NO3.",
+   "original": {
+    "question": "What is the GCDWQ MAC for nitrate in drinking water?",
+    "options": [
+     "10 mg/L as N",
+     "Both A and B (they are equivalent)",
+     "45 mg/L as NO₃⁻",
+     "1 mg/L as N"
+    ],
+    "correctIndex": 1,
+    "explanation": "The GCDWQ MAC for nitrate is 10 mg/L as nitrogen (NO₃-N), which is equivalent to 45 mg/L as nitrate (NO₃⁻). Both expressions refer to the same limit. The nitrogen form is used in most Canadian regulations."
+   },
+   "fix": {
+    "question": "What is the GCDWQ MAC for nitrate in drinking water?",
+    "options": [
+     "10 mg/L as N",
+     "45 mg/L as NO₃⁻",
+     "Both 10 mg/L as N and 45 mg/L as NO₃⁻ (they are equivalent)",
+     "1 mg/L as N"
+    ],
+    "correctIndex": 2,
+    "explanation": "The GCDWQ MAC for nitrate is 10 mg/L as nitrogen (NO₃-N), equivalent to 45 mg/L as nitrate (NO₃⁻). Both expressions refer to the same limit.",
+    "steps": null
+   }
+  },
+  {
+   "id": 42579,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 224,
+   "verdict": "WRONG",
+   "note": "Key 4 days (index 3) is correct but explanation says 'The correct answer is A' (0.25 days).",
+   "original": {
+    "question": "A storage tank has a volume of 2,000 m³ and an average daily throughput of 500 m³/day. What is the theoretical water age in the tank?",
+    "options": [
+     "0.25 days",
+     "2 days",
+     "1 day",
+     "4 days"
+    ],
+    "correctIndex": 3,
+    "explanation": "**Step 1 — Identify Given Values:**\nVolume = 2,000 m³\nFlow = 500 m³/day\n\n**Step 2 — Apply Formula:**\nWater Age = Volume / Flow\n\n**Step 3 — Calculate Water Age:**\nWater Age = 2,000 m³ / 500 m³/day = 4 days\n\nThe correct answer is **A**."
+   },
+   "fix": {
+    "question": "A storage tank has a volume of 2,000 m³ and an average daily throughput of 500 m³/day. What is the theoretical water age in the tank?",
+    "options": [
+     "0.25 days",
+     "2 days",
+     "1 day",
+     "4 days"
+    ],
+    "correctIndex": 3,
+    "explanation": "Water Age = Volume / Flow = 2,000 m³ / 500 m³/day = 4 days. The correct answer is 4 days.",
+    "steps": [
+     {
+      "l": "Formula:",
+      "c": "Water Age = Volume ÷ Throughput"
+     },
+     {
+      "l": "Substitute:",
+      "c": "Water Age = 2,000 m³ ÷ 500 m³/day"
+     },
+     {
+      "l": "Result:",
+      "c": "Water Age = 4 days"
+     }
+    ]
+   }
+  },
+  {
+   "id": 42589,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 234,
+   "verdict": "JURISDICTION",
+   "note": "Explanation presents Ontario MECP and the Ontario 'Tier 1/AWQI' framework as the rule; the question is for western Canada. E. coli notification is required immediately in all provinces, but the Ontario terminology should not be the basis.",
+   "original": {
+    "question": "An operator detects E. coli in a distribution system sample at 10 PM on a Friday. The regulatory authority's office is closed. What is the correct action?",
+    "options": [
+     "Resample and report only if confirmed",
+     "Immediately notify the regulatory authority using the after-hours emergency contact number — E. coli detection is a Tier 1 immediate notification event that cannot wait until business hours",
+     "Wait until Monday morning to report",
+     "Increase chlorine dose and report Monday"
+    ],
+    "correctIndex": 1,
+    "explanation": "E. coli detection in a drinking water distribution system is classified as a Tier 1 immediate notification event by regulatory authorities, such as the Ministry of the Environment, Conservation and Parks (MECP) in Ontario. This requires immediate notification using the emergency or after-hours contact number, regardless of the time or day. Waiting until business hours (Monday morning) or only reporting after resampling would be a serious regulatory violation and could endanger public health. While increasing the chlorine dose might be part of the operational response, it does not supersede the immediate reporting requirement."
+   },
+   "fix": {
+    "question": "An operator detects E. coli in a distribution system sample at 10 PM on a Friday. The regulatory authority's office is closed. What is the correct action?",
+    "options": [
+     "Resample and report only if confirmed",
+     "Immediately notify the regulatory authority (and the medical health officer) using the after-hours emergency contact number — an E. coli detection requires immediate notification that cannot wait until business hours",
+     "Wait until Monday morning to report",
+     "Increase chlorine dose and report Monday"
+    ],
+    "correctIndex": 1,
+    "explanation": "E. coli detection in treated or distributed drinking water is a serious health risk and requires immediate notification of the regulatory authority and health authority through the emergency or after-hours contact, as set out in provincial/territorial regulations and the system's operating permit. Waiting until business hours or reporting only after resampling is non-compliant. Increasing chlorine may be part of the response but does not replace immediate reporting.",
+    "steps": null
+   }
+  },
+  {
+   "id": 42591,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 236,
+   "verdict": "JURISDICTION",
+   "note": "Cites Ontario's DWQMS accreditation as the example for a western Canada bank; Ontario program should not be presented as the applicable standard.",
+   "original": {
+    "question": "What is the purpose of a drinking water quality management system (QMS) certification?",
+    "options": [
+     "To increase water rates",
+     "To train operators",
+     "To satisfy ISO requirements only",
+     "To provide independent verification that a water utility's QMS meets the requirements of the applicable standard (e.g., DWQMS in Ontario), demonstrating commitment to continuous improvement in drinking water safety"
+    ],
+    "correctIndex": 3,
+    "explanation": "QMS certification (e.g., DWQMS accreditation in Ontario) provides independent third-party verification that the utility's QMS is implemented and effective. It demonstrates accountability to regulators, elected officials, and the public, and drives continuous improvement through the audit and corrective action process."
+   },
+   "fix": {
+    "question": "What is the purpose of a drinking water quality management system (QMS) certification or audit?",
+    "options": [
+     "To increase water rates",
+     "To train operators",
+     "To satisfy ISO requirements only",
+     "To provide independent verification that a water utility's QMS meets the requirements of the applicable standard (e.g., ISO 9001 or a provincial program), demonstrating commitment to continuous improvement in drinking water safety"
+    ],
+    "correctIndex": 3,
+    "explanation": "Independent third-party verification confirms that the utility's QMS is implemented and effective. It demonstrates accountability to regulators, elected officials and the public, and drives continuous improvement through the audit and corrective action process.",
+    "steps": null
+   }
+  },
+  {
+   "id": 42623,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 268,
+   "verdict": "WRONG",
+   "note": "Steps give 626.4 kg/day (23.5 + 2.6 = 26.1 kg/h x 24), but marked answer is 576 kg/day and no option equals 626. Key does not match arithmetic.",
+   "original": {
+    "question": "A sedimentation basin receives 500 m³/h of water with 50 mg/L TSS. Alum dose is 20 mg/L (producing ~0.26 mg floc/mg alum). Settled water TSS is 3 mg/L. What is the sludge production rate (kg/day)?",
+    "options": [
+     "288 kg/day",
+     "576 kg/day",
+     "720 kg/day",
+     "144 kg/day"
+    ],
+    "correctIndex": 1,
+    "explanation": "The sludge production rate is calculated by summing the mass of TSS removed and the mass of floc produced from alum. The calculation confirms the provided answer is correct. Sludge = (TSS removed + Floc produced) * 24 h/day."
+   },
+   "fix": {
+    "question": "A sedimentation basin receives 500 m³/h of water with 50 mg/L TSS. Alum dose is 20 mg/L (producing ~0.26 mg floc/mg alum). Settled water TSS is 3 mg/L. What is the sludge production rate (kg/day)?",
+    "options": [
+     "288 kg/day",
+     "626 kg/day",
+     "720 kg/day",
+     "144 kg/day"
+    ],
+    "correctIndex": 1,
+    "explanation": "TSS removed = 500 × 47 / 1000 = 23.5 kg/h. Floc from alum = 500 × 20 × 0.26 / 1000 = 2.6 kg/h. Total = 26.1 kg/h × 24 h/day = 626.4 kg/day ≈ 626 kg/day.",
+    "steps": [
+     {
+      "l": "TSS removed (kg/h) = (500 m³/h * (50-3) mg/L) / 1000",
+      "c": "23.5 kg/h"
+     },
+     {
+      "l": "Floc produced (kg/h) = (500 m³/h * 20 mg/L * 0.26) / 1000",
+      "c": "2.6 kg/h"
+     },
+     {
+      "l": "Total sludge (kg/h) = TSS removed + Floc produced",
+      "c": "26.1 kg/h"
+     },
+     {
+      "l": "Sludge production rate (kg/day) = Total sludge * 24 h/day",
+      "c": "626.4 kg/day"
+     }
+    ]
+   }
+  },
+  {
+   "id": 42629,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 274,
+   "verdict": "WRONG",
+   "note": "0.8 x e^-0.35 = 0.8 x 0.7047 = 0.5637, which rounds to 0.56 mg/L, not 0.57.",
+   "original": {
+    "question": "A distribution system has a dead-end main 2 km long with a diameter of 150 mm. The water age at the dead end is 7 days. The chlorine decay rate is 0.05/day. If the initial residual is 0.8 mg/L, what is the residual at the dead end?",
+    "options": [
+     "0.3 mg/L",
+     "0.8 mg/L",
+     "0.4 mg/L",
+     "0.57 mg/L"
+    ],
+    "correctIndex": 3,
+    "explanation": "**Step 1 — Identify Formula:**\nThe chlorine decay follows first-order kinetics: C = C₀ × e^(-k × t)\n\n**Step 2 — Substitute Values:**\nC = 0.8 mg/L × e^(-0.05/day × 7 days)\n\n**Step 3 — Calculate Residual:**\nC = 0.8 mg/L × e^(-0.35) = 0.8 mg/L × 0.704688 = 0.56375 mg/L\n\n**Step 4 — Round Result:**\nC ≈ 0.57 mg/L\n\nThe correct answer is **0.57 mg/L**."
+   },
+   "fix": {
+    "question": "A distribution system has a dead-end main 2 km long with a diameter of 150 mm. The water age at the dead end is 7 days. The chlorine decay rate is 0.05/day. If the initial residual is 0.8 mg/L, what is the residual at the dead end?",
+    "options": [
+     "0.3 mg/L",
+     "0.8 mg/L",
+     "0.4 mg/L",
+     "0.56 mg/L"
+    ],
+    "correctIndex": 3,
+    "explanation": "First-order decay: C = C₀ × e^(-kt) = 0.8 × e^(-0.35) = 0.8 × 0.7047 = 0.5637 ≈ 0.56 mg/L.",
+    "steps": [
+     {
+      "l": "Formula:",
+      "c": "C = C₀ × e^(-kt)"
+     },
+     {
+      "l": "Substitute:",
+      "c": "C = 0.8 mg/L × e^(-0.05/day × 7 days)"
+     },
+     {
+      "l": "Calculate:",
+      "c": "C = 0.8 mg/L × e^(-0.35) = 0.8 mg/L × 0.7047"
+     },
+     {
+      "l": "Result:",
+      "c": "C = 0.5637 mg/L ≈ 0.56 mg/L"
+     }
+    ]
+   }
+  },
+  {
+   "id": 42633,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 278,
+   "verdict": "WRONG",
+   "note": "Correct math: 15,708 L x 25 mg/L = 0.3927 kg Cl2; / (0.12 x 1.2 kg/L = 0.144 kg/L) = 2.73 L, not 2.6 L. The steps use 50 mg/L and an assumed 25% hypochlorite 'to match the answer', which contradicts the question.",
+   "original": {
+    "question": "A 200 mm diameter water main, 500 m long, needs to be disinfected at 25 mg/L chlorine. What volume of 12% sodium hypochlorite solution (density 1.2 kg/L) is needed?",
+    "options": [
+     "260 L",
+     "26 L",
+     "0.26 L",
+     "2.6 L"
+    ],
+    "correctIndex": 3,
+    "explanation": "Step 1 — Find the volume of the water main:\nV = π/4 × d² × L = π/4 × (0.2 m)² × 500 m = 15.71 m³ = 15,708 L\n\nStep 2 — Calculate the mass of chlorine required:\nMass Cl₂ = Volume × Dose = 15,708 L × 25 mg/L = 392,700 mg = 0.3927 kg\n\nStep 3 — Calculate the volume of 12% NaOCl solution needed:\n12% NaOCl means 0.12 kg Cl₂ per kg of solution.\nMass of solution = 0.3927 kg ÷ 0.12 = 3.272 kg\nVolume = Mass ÷ Density = 3.272 kg ÷ 1.2 kg/L = 2.73 L ≈ 2.6 L\n\nAnswer: D — 2.6 L\n\nKey formula: V_solution = (V_pipe × Dose) ÷ (Concentration × Density)\nAlways convert pipe volume to litres and dose to kg before dividing."
+   },
+   "fix": {
+    "question": "A 200 mm diameter water main, 500 m long, needs to be disinfected at 25 mg/L chlorine. What volume of 12% sodium hypochlorite solution (density 1.2 kg/L) is needed?",
+    "options": [
+     "27 L",
+     "2.7 L",
+     "0.27 L",
+     "270 L"
+    ],
+    "correctIndex": 1,
+    "explanation": "Main volume = π/4 × 0.2² × 500 = 15.71 m³ = 15,708 L. Chlorine required = 15,708 L × 25 mg/L = 392,700 mg = 0.3927 kg. Solution mass = 0.3927 / 0.12 = 3.27 kg; volume = 3.27 / 1.2 = 2.73 L ≈ 2.7 L.",
+    "steps": [
+     {
+      "l": "Step 1: Calculate Volume of Main",
+      "c": "Volume = π/4 × (0.2 m)² × 500 m = 15.708 m³ = 15,708 L"
+     },
+     {
+      "l": "Step 2: Calculate Mass of Chlorine Needed",
+      "c": "Mass = 25 mg/L × 15,708 L = 392,700 mg = 0.3927 kg"
+     },
+     {
+      "l": "Step 3: Calculate Volume of 12% Sodium Hypochlorite",
+      "c": "Volume = 0.3927 kg / (0.12 × 1.2 kg/L) = 0.3927 / 0.144 = 2.73 L ≈ 2.7 L"
+     }
+    ]
+   }
+  },
+  {
+   "id": 42639,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 284,
+   "verdict": "JURISDICTION",
+   "note": "Answer relies on Ontario's Clean Water Act and Risk Management Officials, which do not apply in western Canada.",
+   "original": {
+    "question": "A utility's source protection plan identifies a large fuel storage facility within the IPZ-1 as a significant threat. The facility owner refuses to implement risk management measures. What regulatory tools are available?",
+    "options": [
+     "No tools — the utility cannot force compliance",
+     "Only the municipality can act",
+     "Only voluntary measures are available",
+     "The source protection authority can issue a Risk Management Official (RMO) order requiring the facility to implement specified risk management measures; non-compliance can result in fines and prosecution under the Clean Water Act"
+    ],
+    "correctIndex": 3,
+    "explanation": "Under provincial source protection legislation (e.g., Ontario's Clean Water Act), Risk Management Officials can negotiate and enforce Risk Management Plans with property owners whose activities pose significant threats to drinking water sources. Non-compliance with RMO orders can result in fines and prosecution."
+   },
+   "fix": {
+    "question": "A utility's source protection plan identifies a large fuel storage facility within the intake protection zone as a significant threat. The facility owner refuses to implement risk management measures. What regulatory tools are generally available?",
+    "options": [
+     "No tools — the utility cannot force compliance",
+     "Only the municipality can act",
+     "Only voluntary measures are available",
+     "Under provincial legislation, the responsible authority can require the owner to implement risk management measures by order or permit conditions; non-compliance can result in fines and prosecution"
+    ],
+    "correctIndex": 3,
+    "explanation": "Provincial legislation (water, environmental protection or public health acts) allows regulators to order owners whose activities threaten a drinking water source to implement risk management measures. Non-compliance can result in fines and prosecution.",
+    "steps": null
+   }
+  },
+  {
+   "id": 42649,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 294,
+   "verdict": "UNCLEAR",
+   "note": "Question asks for the 'design dose (before factors)' and key is 40 (given), but the steps compute 55.6 mJ/cm² and the explanation hedges. The question is self-contradictory; intended calc is the required applied dose after aging and fouling factors: 40/(0.8x0.9)=55.6.",
+   "original": {
+    "question": "A UV system is designed for 40 mJ/cm² at 95% UVT and 100% lamp output. The aging factor is 0.8 and the fouling factor is 0.9. What is the design UV dose (before factors)?",
+    "options": [
+     "40 mJ/cm²",
+     "32 mJ/cm²",
+     "55.6 mJ/cm²",
+     "44.4 mJ/cm²"
+    ],
+    "correctIndex": 0,
+    "explanation": "The question asks for the 'design UV dose (before factors)'. This refers to the initial target dose that the system is designed to deliver under ideal conditions, before accounting for aging or fouling. The problem statement explicitly gives this value:\n\n'A UV system is designed for 40 mJ/cm² at 95% UVT and 100% lamp output.'\n\nTherefore, the design UV dose (before factors) is 40 mJ/cm².\n\nIf the question had asked for the *required* UV dose *to be applied* considering aging and fouling to *achieve* a delivered dose of 40 mJ/cm², then the calculation would be:\n\nRequired Applied Dose = Delivered Dose / (Aging Factor × Fouling Factor)\nRequired Applied Dose = 40 mJ/cm² / (0.8 × 0.9)\nRequired Applied Dose = 40 mJ/cm² / 0.72\nRequired Applied Dose ≈ 55.6 mJ/cm²\n\nHowever, the question specifically asks for the 'design UV dose (before factors)', which is the given 40 mJ/cm²."
+   },
+   "fix": {
+    "question": "A UV system must deliver 40 mJ/cm² at 95% UVT. The lamp aging factor is 0.8 and the fouling factor is 0.9. What design UV dose (at 100% lamp output, clean sleeves) must the system be sized for?",
+    "options": [
+     "40 mJ/cm²",
+     "32 mJ/cm²",
+     "55.6 mJ/cm²",
+     "44.4 mJ/cm²"
+    ],
+    "correctIndex": 2,
+    "explanation": "Design dose = Required dose ÷ (aging factor × fouling factor) = 40 ÷ (0.8 × 0.9) = 40 ÷ 0.72 = 55.6 mJ/cm².",
+    "steps": [
+     {
+      "l": "Formula:",
+      "c": "Design UV Dose = Required Dose ÷ (Aging Factor × Fouling Factor)"
+     },
+     {
+      "l": "Substitute:",
+      "c": "Design UV Dose = 40 mJ/cm² ÷ (0.8 × 0.9)"
+     },
+     {
+      "l": "Calculate:",
+      "c": "Design UV Dose = 40 mJ/cm² ÷ 0.72"
+     },
+     {
+      "l": "Result:",
+      "c": "Design UV Dose = 55.56 mJ/cm² ≈ 55.6 mJ/cm²"
+     }
+    ]
+   }
+  },
+  {
+   "id": 42651,
+   "bankKey": "wpi-class3-water",
+   "questionNum": 296,
+   "verdict": "WRONG",
+   "note": "Health Canada GCDWQ MAC for chlorite (and chlorate) is 1.0 mg/L (2008), not 0.8 mg/L (0.8 is not the Canadian value; WHO provisional is 0.7).",
+   "original": {
+    "question": "What is the GCDWQ MAC for chlorite (ClO₂⁻) in drinking water?",
+    "options": [
+     "1.0 mg/L",
+     "0.1 mg/L",
+     "0.8 mg/L",
+     "0.5 mg/L"
+    ],
+    "correctIndex": 2,
+    "explanation": "The GCDWQ MAC for chlorite is 0.8 mg/L. Chlorite is a byproduct of chlorine dioxide disinfection. Chlorite can cause hemolytic anemia in sensitive individuals. ClO₂ dose must be controlled to keep chlorite below the MAC."
+   },
+   "fix": {
+    "question": "What is the GCDWQ MAC for chlorite (ClO₂⁻) in drinking water?",
+    "options": [
+     "1.0 mg/L",
+     "0.1 mg/L",
+     "0.8 mg/L",
+     "0.5 mg/L"
+    ],
+    "correctIndex": 0,
+    "explanation": "The GCDWQ MAC for chlorite is 1.0 mg/L. Chlorite is a byproduct of chlorine dioxide disinfection and can cause hemolytic anemia in sensitive individuals. ClO₂ dose must be controlled to keep chlorite below the MAC.",
     "steps": null
    }
   }
