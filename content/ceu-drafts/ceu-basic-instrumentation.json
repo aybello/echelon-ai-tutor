@@ -1,0 +1,1089 @@
+{
+  "key": "ceu-basic-instrumentation",
+  "version": "2026-11-17.1",
+  "title": "Basic Instrumentation for Water and Wastewater Operators",
+  "shortTitle": "Basic Instrumentation",
+  "stream": "drinking_water",
+  "audience": "Operators and trainees across the US and Canada preparing for certification exams and renewal in water and wastewater work.",
+  "prerequisites": "Basic arithmetic, a calculator and familiarity with treatment plants and pump stations. US customary units are primary with metric equivalents; all scenarios and facility data are fictional. Historian data, alarm records and SCADA record audits are covered in the applied instrumentation course.",
+  "introduction": "Build the foundations of plant instrumentation: how an instrument loop works, the 4-20 mA signal and its live zero, how pressure, level and flow devices measure and mislead, what analyzers measure and how they drift, how basic control and alarms behave, and how to read trends and troubleshoot in a logical order. Each module ends with worked examples that name the usual mistakes. Safety content is recognition and purpose only, and facility procedures govern.",
+  "plannedMinutes": 180,
+  "delivery": "Self-paced lessons, optional quick checks, a graded final exam and a non-credit certificate. Duration is being validated; no contact-hour award is made.",
+  "sources": [
+    {
+      "id": "ccohs-confined",
+      "title": "CCOHS: Confined Space - Introduction",
+      "url": "https://www.ccohs.ca/oshanswers/hsprograms/confinedspace_intro.html",
+      "section": "Why atmospheres in confined spaces need testing and monitoring; limits and procedures come from the applicable rule",
+      "jurisdiction": "Canadian occupational health guidance",
+      "accessed": "2026-11-17"
+    },
+    {
+      "id": "ccohs-lockout",
+      "title": "CCOHS: Lockout/Tag out",
+      "url": "https://www.ccohs.ca/oshanswers/hsprograms/lockout.html",
+      "section": "Purpose of lockout and why equipment must not start or be energised during work; procedures are set by the facility",
+      "jurisdiction": "Canadian occupational health guidance",
+      "accessed": "2026-11-17"
+    },
+    {
+      "id": "nist-uncertainty",
+      "title": "NIST: Uncertainty of Measurement Results",
+      "url": "https://physics.nist.gov/cuu/Uncertainty/index.html",
+      "section": "Why every measured value carries an uncertainty; accuracy and tolerances are set by the manufacturer and the facility",
+      "jurisdiction": "US measurement-science guidance",
+      "accessed": "2026-11-17"
+    },
+    {
+      "id": "epa-npdes-training",
+      "title": "US EPA: NPDES Training",
+      "url": "https://www.epa.gov/npdes/npdes-training",
+      "section": "EPA wastewater training resources for operators; general background only, with values set by the permit",
+      "jurisdiction": "US regulation and training overview",
+      "accessed": "2026-11-17"
+    }
+  ],
+  "modules": [
+    {
+      "id": "measurement-fundamentals",
+      "title": "Measurement fundamentals",
+      "objectives": [
+        "Describe the parts of an instrument loop and sort sensors into status, physical and analytical families.",
+        "Convert a 4-20 mA signal to engineering units and back, and explain the live zero.",
+        "Separate range, span, accuracy, resolution and repeatability, and explain calibration, verification, drift and uncertainty."
+      ],
+      "lesson": "### Why operators need to understand the loop\n\nEvery number on a plant screen has travelled through a chain of devices before it reached you. If you know the links in that chain, you can tell a process problem from an instrument problem, and that skill saves hours of chasing the wrong fault.\n\n> **Your job:** treat every reading as a measurement with a path behind it, and ask which link in the path could be wrong before you act on the number.\n\nA **sensor** is the part that touches the process and converts a process variable, such as pressure, level or pH, into a usable signal. A **transmitter** conditions that raw response into a standard signal and sends it to the controller and to the displays. The **controller** compares the signal with a setpoint, and a **control element** such as a valve, a blower or a variable speed pump acts on the process. The loop closes because the process changes, and the sensor sees the change.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 230\" role=\"img\" aria-label=\"Instrument loop block diagram. The process is measured by a sensor, a transmitter sends a 4 to 20 milliamp signal to the controller, the transmitter signal also feeds a display, and the controller commands a control element that acts back on the process.\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Instrument loop blocks</title>\n<defs><marker id=\"m1\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto\"><path d=\"M0 0L10 5L0 10z\" fill=\"#1d2d40\"/></marker></defs>\n<g fill=\"#eef1f5\" stroke=\"#1d2d40\" stroke-width=\"1.5\">\n<rect x=\"10\" y=\"50\" width=\"110\" height=\"44\" rx=\"4\"/><rect x=\"140\" y=\"50\" width=\"110\" height=\"44\" rx=\"4\"/><rect x=\"270\" y=\"50\" width=\"110\" height=\"44\" rx=\"4\" fill=\"#dce8f6\" stroke=\"#2f6db2\"/>\n<rect x=\"10\" y=\"130\" width=\"110\" height=\"44\" rx=\"4\"/><rect x=\"140\" y=\"130\" width=\"110\" height=\"44\" rx=\"4\"/><rect x=\"270\" y=\"130\" width=\"110\" height=\"44\" rx=\"4\" fill=\"#dce8f6\" stroke=\"#2f6db2\"/>\n</g>\n<g text-anchor=\"middle\" font-weight=\"bold\">\n<text x=\"65\" y=\"77\">Sensor</text><text x=\"195\" y=\"77\">Transmitter</text><text x=\"325\" y=\"77\">Controller</text>\n<text x=\"65\" y=\"157\">Process</text><text x=\"195\" y=\"157\">Display</text><text x=\"325\" y=\"150\">Control</text><text x=\"325\" y=\"166\">element</text>\n</g>\n<g stroke=\"#1d2d40\" stroke-width=\"1.5\" fill=\"none\" marker-end=\"url(#m1)\">\n<path d=\"M65 130V96\"/><path d=\"M122 72H138\"/><path d=\"M252 72H268\"/><path d=\"M325 96V128\"/><path d=\"M195 96V128\"/><path d=\"M325 176V200H65V178\"/>\n</g>\n<g text-anchor=\"middle\" font-size=\"12\">\n<text x=\"195\" y=\"38\" fill=\"#2f6db2\" font-weight=\"bold\">4-20 mA signal</text>\n<text x=\"65\" y=\"114\" text-anchor=\"start\" dx=\"4\">measures</text>\n<text x=\"195\" y=\"220\" fill=\"#5b6877\">acts on the process (valve, pump, blower)</text>\n</g>\n</svg>\n<figcaption>The instrument loop: a sensor, a transmitter, a controller, a control element and a display, with the signal path between them.</figcaption>\n</figure>\n\n### Three kinds of sensors\n\nSensors fall into three families, and the family tells you what the signal is used for.\n\n- **Status sensors** report a condition: a valve is open or closed, a motor is running or stopped, a selector switch sits in AUTO or MANUAL. They drive alarms and interlocks, such as stopping a pump that has lost suction.\n- **Physical sensors** measure a physical property: flow, pressure, temperature, speed. Operators use them to judge equipment performance and to build trends.\n- **Analytical sensors** measure water quality: pH, chlorine residual, turbidity, ORP, dissolved oxygen, ammonia, nitrate, nitrite and sludge density. They often feed automatic control. For example, a dissolved oxygen reading is compared with a setpoint, and the difference decides how hard a blower works.\n\n**Worked example.** A fictional plant at Alder Fork has a selector switch on a lift pump, a pressure transmitter on its discharge and a dissolved oxygen probe in an aeration basin. The switch is a status sensor, the pressure transmitter is physical and the probe is analytical. If the pump fails to start, the status sensor tells you the selector is in MANUAL, the physical sensor shows no discharge pressure, and neither tells you about oxygen. Each family answers a different question.\n\n### Control elements and panel instruments\n\nA **control element** is the device that changes the process because a signal told it to: a modulating valve, an aeration blower or a variable speed pump. The sensor supplies the input and the element supplies the action. Without an element, a loop only reports; with one, it controls.\n\nPanel instruments are the operator's local window onto a process: meters and indicators, status lights, alarm annunciators, chart or digital recorders, pushbuttons and selector switches. An annunciator shows which alarm has tripped, a recorder keeps the history, and the pushbuttons and selectors let the operator command equipment. They are still part of the loop, so a lamp that stays lit or a meter that never moves deserves the same suspicion as a screen value.\n\n### The 4-20 mA signal and the live zero\n\nMost transmitters send their reading as a current between 4 and 20 milliamps (mA). Current is used because it holds its value over long cable runs, where a small voltage signal would sag and pick up noise. The two ends of the signal match the two ends of the measuring range: 4 mA means the bottom of the range and 20 mA means the top.\n\nWhy start at 4 and not 0? That is the **live zero**. A reading of 0 mA is a true electrical zero, which a healthy transmitter never sends, so it tells you the loop is broken: a cut wire, a blown fuse or a dead power supply. If the range started at 0 mA, a real reading of zero and a dead loop would look the same. With a live zero, an empty tank gives 4 mA and a broken wire gives about 0 mA, and the difference is obvious.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 240\" role=\"img\" aria-label=\"A straight line graph. Current from 4 to 20 milliamps on the horizontal axis gives flow from 0 to 1600 gallons per minute on the vertical axis. The point 12 mA is 800 gpm and the point 9.6 mA is 560 gpm. The region below 4 mA is marked as a wire or power fault zone.\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>4-20 mA scaling line with live zero</title>\n<rect x=\"10\" y=\"30\" width=\"70\" height=\"150\" fill=\"#eef1f5\"/>\n<text x=\"45\" y=\"60\" text-anchor=\"middle\">fault</text><text x=\"45\" y=\"76\" text-anchor=\"middle\">zone</text><text x=\"45\" y=\"92\" text-anchor=\"middle\">below 4</text>\n<path d=\"M80 30V180H370\" fill=\"none\" stroke=\"#1d2d40\" stroke-width=\"1.5\"/>\n<path d=\"M80 180L360 40\" stroke=\"#2f6db2\" stroke-width=\"3\" fill=\"none\"/>\n<path d=\"M178 180V131H80M220 180V110H80\" stroke=\"#8a97a6\" stroke-dasharray=\"4 3\" fill=\"none\"/>\n<g fill=\"#2f6db2\"><circle cx=\"80\" cy=\"180\" r=\"5\"/><circle cx=\"178\" cy=\"131\" r=\"5\"/><circle cx=\"220\" cy=\"110\" r=\"5\"/><circle cx=\"360\" cy=\"40\" r=\"5\"/></g>\n<g font-size=\"12\">\n<text x=\"86\" y=\"198\">4</text><text x=\"170\" y=\"198\">9.6</text><text x=\"214\" y=\"198\">12</text><text x=\"352\" y=\"198\">20 mA</text>\n<text x=\"45\" y=\"172\" text-anchor=\"middle\">0 gpm</text>\n<text x=\"86\" y=\"126\" text-anchor=\"start\">560</text><text x=\"86\" y=\"104\" text-anchor=\"start\">800</text><text x=\"372\" y=\"30\" text-anchor=\"end\">1,600 gpm</text>\n</g>\n<text x=\"225\" y=\"222\" text-anchor=\"middle\" fill=\"#5b6877\">Live zero: 4 mA = 0 gpm, so 0 mA means a fault</text>\n<text x=\"10\" y=\"18\" font-weight=\"bold\">Flow (gpm) against loop current</text>\n</svg>\n<figcaption>A 4-20 mA signal is a straight line: subtract 4, divide by 16, multiply by the span. A reading near 0 mA is a fault, not a zero.</figcaption>\n</figure>\n\nBecause the signal is a straight line, converting it needs only proportion. Use the **span** of the signal, which is 20 - 4 = 16 mA, and the span of the measurement.\n\n**Worked example 1: mA to engineering units.** A fictional flow transmitter on the Heron Bend main is set so that 4 mA = 0 gpm and 20 mA = 1,600 gpm (1 gpm = 0.0631 L/s). The loop reads 9.6 mA.\n\n**Step 1:** subtract the live zero: 9.6 - 4 = **5.6 mA** above zero.\n\n**Step 2:** divide by the signal span: 5.6 / 16 = **0.35**, or 35 percent of range.\n\n**Step 3:** multiply by the measurement span: 0.35 x 1,600 gpm = **560 gpm**.\n\n**Sense-check:** 9.6 mA is a little below the middle of the signal (12 mA), so the flow should be a little below half of 1,600. It is.\n\n**Worked example 2: engineering units to mA.** A fictional clearwell level transmitter spans 0 to 12 ft (1 ft = 0.305 m). The level is 3.0 ft. Fraction of range = 3.0 / 12 = 0.25. Current = 4 + 0.25 x 16 = **8.0 mA**. The two most common slips are skipping the 4 mA offset, which gives 0.25 x 20 = 5.0 mA, and using 20 instead of 16 as the span. Both give a wrong answer that looks plausible, so always sense-check against the midpoint.\n\n### Range, span, accuracy, resolution and repeatability\n\nThese terms are often mixed up, and exams like to test them.\n\n- **Range** is the lowest and highest value the instrument is set to measure, such as 0 to 1,600 gpm. **Span** is the difference between them, here 1,600 gpm.\n- **Accuracy** is how close the reading is to the true value. It is often quoted as a percent of span, so the same percent covers a bigger error on a bigger span.\n- **Resolution** is the smallest change the instrument can show. A display that steps by 0.01 has fine resolution, but fine resolution does not make a reading accurate.\n- **Repeatability** is how closely repeated readings agree when the same value is measured again under the same conditions. A meter can repeat well and still be wrong by a steady amount.\n\n**Worked example 3: error as a percent of span.** A fictional pressure transmitter spans 0 to 100 psi (1 psi = 6.89 kPa). A reference gauge shows 62.0 psi while the transmitter reads 63.5 psi. Error = 63.5 - 62.0 = 1.5 psi. Percent of span = 1.5 / 100 x 100 = **1.5 percent of span**. Whether that is acceptable is set by the manufacturer and your facility procedure, not by this course.\n\n### Calibration, verification, drift and uncertainty\n\n**Verification** checks whether an instrument still agrees with a known reference, without changing it. **Calibration** compares the instrument with a reference and then adjusts it when it disagrees. Two adjustments appear in nearly every procedure: the **zero** adjustment sets the bottom of the range, and the **span** adjustment sets the top. A technician follows the manufacturer's method and the facility procedure for both.\n\nInstruments **drift**: the reading slowly moves away from the truth as a probe ages, a membrane fouls or electronics warm and cool. A zero shift moves every reading by the same amount. A span shift grows with the reading, so it hurts most near the top of the range. Verification is how drift is found before it matters.\n\nFinally, every reading has an **uncertainty**. The sensor, the transmitter, the conversion to a number and the sample itself each add a little. A reading of 560 gpm really means 560 gpm give or take a small amount, which is why a good operator trusts trends and cross-checks more than a single digit. Keep records of each calibration and verification, because a record of drift over months shows when an instrument needs repair, long before it fails outright.",
+      "evidence": "### Fictional scenario: the Alder Fork clearwell\n\nAlder Fork is a fictional plant. A level transmitter on its clearwell is set so that **4 mA = 0 ft and 20 mA = 12 ft**. This morning the loop current reads **13.6 mA**, the screen shows a level that looks high to the night operator, and a manual dip taken beside the tank gives **7.0 ft**.\n\n### Your decision\n\nConvert the current to a level, compare it with the dip, express the difference as a percent of span, and say whether you would call it a process change, drift or something else.",
+      "assignment": "Write a half-page note for the Alder Fork supervisor. Show the conversion step by step, give the difference as a percent of span, and say what you would do next. Do not state an acceptable error value; say the manufacturer and the facility procedure set it.",
+      "rubric": [
+        "Converts 13.6 mA to 7.2 ft using (13.6 - 4) / 16 x 12 with units shown.",
+        "Gives the 0.2 ft difference as about 1.7 percent of span and treats it as a comparison to be judged against the facility's tolerance.",
+        "Names a sensible next step such as repeating the dip and recording the comparison, without quoting an accuracy limit."
+      ],
+      "facilitatorGuide": "Current to level: (13.6 - 4) / 16 = 0.60 of range, and 0.60 x 12 ft = 7.2 ft. The dip is 7.0 ft, so the difference is 0.2 ft, or 0.2 / 12 x 100 = 1.7 percent of span. Accept answers that call this a small difference to be compared with the facility tolerance, and that suggest a second dip and a log entry. Do not accept a learner quoting a required accuracy number as a rule; the manufacturer and the procedure set it. Drift is only suspected if the difference grows over repeated checks.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 18,
+          "instruction": "Study the lesson and reproduce the worked examples."
+        },
+        {
+          "kind": "reading",
+          "minutes": 7,
+          "instruction": "Read the source sections and note one point that applies to your own plant."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 12,
+          "instruction": "Work through the case evidence and prepare the written assignment."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 4,
+          "instruction": "Compare one answer with a distractor mistake, then self-check against the case evidence. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 4,
+          "instruction": "Complete the checks and review the feedback."
+        }
+      ],
+      "sourceIds": [
+        "nist-uncertainty",
+        "epa-npdes-training"
+      ],
+      "checks": [
+        {
+          "id": "ceu-basic-instrumentation-measurement-fundamentals-c1",
+          "objective": "measurement-fundamentals",
+          "prompt": "In a basic instrument loop at a fictional plant, which device converts the sensor's response into a standard signal and sends it toward the controller and display?",
+          "choices": [
+            "The control element, which acts on the process",
+            "The transmitter, which conditions and sends the signal",
+            "The annunciator, which lights an alarm window",
+            "The setpoint, which holds the target value"
+          ],
+          "correctIndex": 1,
+          "explanation": "The transmitter takes the sensor's raw response and turns it into a standard signal, usually 4-20 mA, for the controller and display. The \"The control element, which acts on the process\" choice moves the output side of the loop to the input side, since the element receives commands rather than sending the measurement. The \"The annunciator, which lights an alarm window\" choice names a panel indicator that only shows an alarm after the signal has already arrived. The \"The setpoint, which holds the target value\" choice confuses a number the operator enters with a device that carries the measurement."
+        },
+        {
+          "id": "ceu-basic-instrumentation-measurement-fundamentals-c2",
+          "objective": "measurement-fundamentals",
+          "prompt": "A fictional level transmitter is set so that 4 mA means 0 ft and 20 mA means 15 ft, and the response is linear. The loop reads 10.4 mA. The level is:",
+          "choices": [
+            "7.8 ft",
+            "9.75 ft",
+            "9.0 ft",
+            "6.0 ft"
+          ],
+          "correctIndex": 3,
+          "explanation": "(10.4 - 4) / 16 = 0.40 of range, and 0.40 x 15 ft = 6.0 ft. The \"7.8 ft\" choice divided by 20 mA without removing the 4 mA live zero first. The \"9.75 ft\" choice divided by the 16 mA span but forgot to subtract the 4 mA offset from the reading. The \"9.0 ft\" choice turned the scale upside down, reading the level as the empty space above the water."
+        },
+        {
+          "id": "ceu-basic-instrumentation-measurement-fundamentals-c3",
+          "objective": "measurement-fundamentals",
+          "prompt": "A fictional operator asks why a 4-20 mA loop begins at 4 mA rather than 0 mA. The best answer is that the live zero:",
+          "choices": [
+            "separates a true zero reading from a broken wire",
+            "lets the signal travel farther than a 0 mA start",
+            "doubles the resolution of the transmitter",
+            "reduces the cost of the cable run"
+          ],
+          "correctIndex": 0,
+          "explanation": "With a live zero, a real empty reading is 4 mA, while a dead loop sits near 0 mA, so the two cases look different. The \"lets the signal travel farther than a 0 mA start\" choice gives the wrong reason; current carries over long runs because it holds its value, not because of the starting point. The \"doubles the resolution of the transmitter\" choice mixes up the offset with resolution, which depends on the electronics and the display. The \"reduces the cost of the cable run\" choice has no basis, since the cable is the same whichever range the signal uses."
+        },
+        {
+          "id": "ceu-basic-instrumentation-measurement-fundamentals-c4",
+          "objective": "measurement-fundamentals",
+          "prompt": "A limit switch on a fictional valve reports open or closed. In the three sensor families, this is a:",
+          "choices": [
+            "physical sensor, which tracks flow or pressure",
+            "analytical sensor, which measures water quality",
+            "status sensor, which can drive alarms and interlocks",
+            "control element, which acts on the process"
+          ],
+          "correctIndex": 2,
+          "explanation": "Open or closed, running or stopped, and AUTO or MANUAL are conditions, so they come from status sensors. The \"physical sensor, which tracks flow or pressure\" choice treats the valve as a measured physical quantity, but the switch only reports a condition. The \"analytical sensor, which measures water quality\" choice assigns it to the family for pH, residual and turbidity, which describe the water, not the valve. The \"control element, which acts on the process\" choice confuses a device that reports the valve position with the valve that moves."
+        },
+        {
+          "id": "ceu-basic-instrumentation-measurement-fundamentals-c5",
+          "objective": "measurement-fundamentals",
+          "prompt": "Which statement correctly separates calibration from verification?",
+          "choices": [
+            "Calibration compares without adjusting; verification adjusts zero and span",
+            "Verification checks agreement with a reference; calibration also adjusts the instrument",
+            "They are the same task done at different intervals",
+            "Verification replaces the sensor; calibration cleans it"
+          ],
+          "correctIndex": 1,
+          "explanation": "Verification asks whether the instrument still agrees with a reference. Calibration compares and then adjusts zero and span when it does not. The \"Calibration compares without adjusting; verification adjusts zero and span\" choice reverses the two terms, since adjusting zero and span belongs to calibration. The \"They are the same task done at different intervals\" choice treats two different actions as one, ignoring that only one of them changes the instrument. The \"Verification replaces the sensor; calibration cleans it\" choice invents roles for each term that neither one has."
+        },
+        {
+          "id": "ceu-basic-instrumentation-measurement-fundamentals-c6",
+          "objective": "measurement-fundamentals",
+          "prompt": "A fictional pressure transmitter reads 2 psi above a reference gauge at every test point from the bottom to the top of its range. The pattern is best described as:",
+          "choices": [
+            "a span shift, because the error grows with pressure",
+            "poor resolution, because the display steps are coarse",
+            "poor repeatability, because the readings scatter",
+            "a zero shift, because the error is the same size everywhere"
+          ],
+          "correctIndex": 3,
+          "explanation": "A constant error across the range moves every reading by the same amount, which is a zero shift. The \"a span shift, because the error grows with pressure\" choice describes an error that gets larger toward the top of the range, which is not what the test points show. The \"poor resolution, because the display steps are coarse\" choice mixes up a steady offset with the size of the smallest displayed step. The \"poor repeatability, because the readings scatter\" choice describes readings that disagree with each other, but these readings agree and are steadily high."
+        }
+      ]
+    },
+    {
+      "id": "pressure-level-flow",
+      "title": "Pressure, level and flow instruments",
+      "objectives": [
+        "Compare pressure, level and flow devices and name what each measures and how.",
+        "Convert head to pressure and pressure to level, and use a rating to turn flume head into flow.",
+        "Explain why partly full pipes, air, fouling, foam and poor installation make instruments read wrongly."
+      ],
+      "lesson": "### Pressure: why we measure it and how\n\nPressure tells an operator whether a pump is working, whether a regulator is holding and whether a treatment step has the force it needs, such as a filter that is loading up or a membrane feed that is struggling.\n\nTwo families of devices handle it. **Local gauges** use a Bourdon tube or a helical element: pressure tries to straighten a curved, sealed tube, and a linkage turns that small motion into a needle position. They need no power and show the value where you stand. **Transmitters** sense pressure with a diaphragm and send the result away, either as a pneumatic signal in older plants or as an electronic 4-20 mA signal, so a control room can see a pump discharge it never visits.\n\nA **differential pressure (DP)** device measures the difference between two points rather than one pressure against the atmosphere. DP across a filter shows loading. DP across a restriction in a pipe is also a way to measure flow, as discussed below.\n\n**Rate-of-flow control.** Pair a flow meter with an automatic control valve and a controller, and you can hold a flow steady. The meter reports the flow, the controller compares it with the setpoint, and the valve opens or closes to correct it. The valve is the control element and the meter is the sensor.\n\n### Level: three ways to look at a tank\n\nLevel information runs wet well pumps, tank fill and drain valves, and the level readings behind flume flow measurement. Methods fall into three groups.\n\n- **From above:** a ball float rides the surface and moves a switch or a transmitter arm. Ultrasonic and microwave (radar) sensors send a pulse down and time the echo from the surface. The sensor never touches the water.\n- **From below:** a pressure transmitter near the bottom senses the weight of the water above it. A bubbler tube releases a slow stream of air and measures the back pressure needed to push it out. A diaphragm bulb senses the pressure through a flexible membrane.\n- **Electrical:** conductance probes sense the water bridging two electrodes, and capacitance probes sense how the liquid changes an electrical field. They are common as high and low switches.\n\nPressure from below converts to level because water weight is proportional to depth. One foot of fresh water makes 0.433 psi, and one psi is 2.31 ft of water (1 psi = 6.89 kPa; 1 ft = 0.305 m).\n\n**Worked example 1: head to psi.** A fictional wet well at Quill Run is 8.0 ft deep and a submersible transmitter sits on the floor. Pressure = 8.0 ft x 0.433 psi per ft = **3.46 psi**. Check by the other constant: 8.0 / 2.31 = 3.46 psi.\n\n**Worked example 2: psi to level.** The same transmitter later reads 5.2 psi. Level = 5.2 psi x 2.31 ft per psi = **12.0 ft**. If the transmitter were mounted 1.0 ft above the floor, the true level would be 1.0 ft higher than the sensor reading suggests, which is why the mounting height must be part of the scaling.\n\n### Open channel flow: flumes and weirs\n\nEvery flow device rests on one idea: flow equals area times velocity. A meter either measures both, or measures one and relies on a known shape for the other.\n\nIn an open channel, such as a plant influent channel, the water has a free surface and no pipe walls above it. A **weir** (a notched dam) or a **flume** (a shaped, narrowing channel such as the Parshall flume) forces the water to behave in a known way. The device is the **primary element**: its shape guarantees that the depth of water, the **head** H, matches the flow through a known relationship called the **rating**. The **secondary device** is the level sensor, often ultrasonic, that measures that head. The sensor reports a level, and the rating converts it into flow.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 230\" role=\"img\" aria-label=\"Side view of an open channel flume. Water flows from left to right through a narrowing throat. An ultrasonic sensor above the upstream section looks down at the water surface and measures the distance to it, which gives the head H. A rating then turns head into flow.\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Flume with ultrasonic level sensor</title>\n<defs><marker id=\"m3\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto\"><path d=\"M0 0L10 5L0 10z\" fill=\"#1d2d40\"/></marker></defs>\n<path d=\"M10 130H150L190 160H260L300 130H380V190H10z\" fill=\"#c9d7e8\" opacity=\"0.8\"/>\n<path d=\"M10 130H150L190 160H260L300 130H380\" fill=\"none\" stroke=\"#1d2d40\" stroke-width=\"3\"/>\n<path d=\"M10 100H150C170 100 180 120 195 124H255C268 120 285 112 300 112H380\" stroke=\"#2f6db2\" stroke-width=\"2\" fill=\"none\"/>\n<rect x=\"90\" y=\"30\" width=\"60\" height=\"22\" rx=\"3\" fill=\"#eef1f5\" stroke=\"#1d2d40\" stroke-width=\"1.5\"/>\n<text x=\"120\" y=\"46\" text-anchor=\"middle\" font-weight=\"bold\">Sensor</text>\n<path d=\"M120 52V98\" stroke=\"#2f6db2\" stroke-width=\"2\" stroke-dasharray=\"5 3\" fill=\"none\" marker-end=\"url(#m3)\"/>\n<path d=\"M140 100V130\" stroke=\"#1d2d40\" stroke-width=\"1.5\" fill=\"none\"/>\n<text x=\"146\" y=\"120\">H</text>\n<text x=\"10\" y=\"86\" fill=\"#5b6877\">flow in</text>\n<text x=\"205\" y=\"150\" text-anchor=\"start\" fill=\"#1d2d40\" font-weight=\"bold\">throat</text>\n<path d=\"M300 112H340\" stroke=\"#1d2d40\" fill=\"none\" marker-end=\"url(#m3)\"/>\n<text x=\"195\" y=\"215\" text-anchor=\"middle\" fill=\"#2f6db2\" font-weight=\"bold\">Head H, then rating, gives flow</text>\n</svg>\n<figcaption>An open channel flume: the level sensor measures head, and the rating converts head into flow.</figcaption>\n</figure>\n\n**Worked example 3: level to flow.** Use a *fictional* rating for practice: Q = 3.0 x H^1.5, with Q in cubic feet per second (cfs) and H in feet (1 cfs = 448.8 gpm; 1 cfs = 28.3 L/s). A real flume has its own rating from its maker. With H = 0.80 ft:\n\n**Step 1:** 0.80^1.5 = 0.80 x 0.894 = **0.7155**.\n\n**Step 2:** Q = 3.0 x 0.7155 = **2.1465 cfs**, about 2.15 cfs.\n\n**Step 3:** convert: 2.1465 x 448.8 = **963 gpm**.\n\nNotice that flow rises faster than level: a rating with a power above 1 means a small level error is a larger flow error at the top of the range. A level sensor that sits at the wrong distance from the flume, or a flume with debris on the floor, produces confident but false flow numbers.\n\n### Closed pipe flow meters\n\nIn a full pipe, four meter types are common.\n\n**Differential pressure meters** such as the venturi and the orifice plate narrow the flow so that pressure drops. The flow is proportional to the square root of the DP, so doubling the flow quadruples the DP. A transmitter (or the controller) applies a square root so the displayed flow is linear.\n\n**Worked example 4: square root.** A fictional DP flow transmitter has a maximum flow of 2,000 gpm at the top of its DP span. The DP reads 36 percent of span. Flow fraction = square root of 0.36 = 0.60. Flow = 0.60 x 2,000 = **1,200 gpm** (1 gpm = 0.0631 L/s). Do not read it as 36 percent of 2,000, which would be 720 gpm. This assumes the square root is not already applied in the transmitter.\n\n**Mechanical propeller meters** use a propeller in the stream whose speed tracks flow. Parts to recognise: the bearings the propeller turns on, a magnetic coupling that passes the motion through the wall without a leaking shaft, a totalizer that counts total volume, straightening vanes that calm the flow, and in some designs a cable drive. Worn bearings and debris make them read low.\n\n**Magnetic meters** pass water through a magnetic field and sense the small voltage the moving water generates between two electrodes. They have no moving parts and need a conductive liquid. **Ultrasonic meters** send sound pulses through the water and measure how flow changes their travel time, from outside the pipe in clamp-on designs.\n\n**Worked example 5: area times velocity.** A fictional 12 in pipe (1 ft) carries water at 3.0 ft/s. Area = 0.785 x 1.0 x 1.0 = 0.785 sq ft. Q = 0.785 x 3.0 = 2.355 cfs, and 2.355 x 448.8 = **1,057 gpm**.\n\n### What makes each of them lie\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 230\" role=\"img\" aria-label=\"Two pipe cross sections. On the left a full pipe with electrodes on both sides in contact with water gives a true flow reading. On the right a pipe about forty percent full has its electrodes above the water, so the meter assumes a full pipe and over-reads the flow.\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Magnetic meter, full pipe versus partly full pipe</title>\n<g stroke=\"#1d2d40\" stroke-width=\"3\" fill=\"#ffffff\"><circle cx=\"100\" cy=\"90\" r=\"60\"/><circle cx=\"290\" cy=\"90\" r=\"60\"/></g>\n<path d=\"M45 90H155A55 55 0 0 1 45 90z\" fill=\"#c9d7e8\"/>\n<circle cx=\"100\" cy=\"90\" r=\"55\" fill=\"#c9d7e8\"/>\n<path d=\"M235 108H345A55 55 0 0 1 235 108z\" fill=\"#c9d7e8\"/>\n<g fill=\"#2f6db2\"><circle cx=\"40\" cy=\"90\" r=\"7\"/><circle cx=\"160\" cy=\"90\" r=\"7\"/><circle cx=\"230\" cy=\"90\" r=\"7\"/><circle cx=\"350\" cy=\"90\" r=\"7\"/></g>\n<g text-anchor=\"middle\">\n<text x=\"100\" y=\"26\" font-weight=\"bold\">Full pipe</text><text x=\"290\" y=\"26\" font-weight=\"bold\">Partly full</text>\n<text x=\"100\" y=\"175\">Electrodes wet</text><text x=\"100\" y=\"191\">Area known</text><text x=\"100\" y=\"207\" fill=\"#2f6db2\" font-weight=\"bold\">Reading is true</text>\n<text x=\"290\" y=\"175\">Electrodes dry</text><text x=\"290\" y=\"191\">Area unknown</text><text x=\"290\" y=\"207\" fill=\"#2f6db2\" font-weight=\"bold\">Reading is false</text>\n</g>\n</svg>\n<figcaption>A magnetic meter assumes a full pipe, so a partly full pipe makes the reading false.</figcaption>\n</figure>\n\n- **Partly full pipe.** A magnetic meter measures velocity and assumes the pipe is full. If it is only half full, the real area is half, so the meter reads about twice the true flow. The electrodes may also be dry.\n- **Air bubbles and entrained gas.** Bubbles disturb magnetic, ultrasonic and pressure-based readings, and air in impulse lines makes a DP signal unstable.\n- **Fouling and scale.** Coating on electrodes, ultrasonic faces and probes slows or distorts the signal. Grease and solids plug DP tubes.\n- **Foam and condensation.** An ultrasonic level sensor can echo off foam rather than water, and steam or heavy vapour changes sound speed.\n- **Wrong installation.** Too little straight pipe upstream of a meter, a sensor tilted off the surface, a transmitter mounted at the wrong height, or an unlevelled weir all produce a steady error that no calibration can fix.\n\nMany of these errors are steady. A steady error does not show up as noise, so only an independent check against a known value, such as a bucket test, a manual dip or a portable meter, will expose it. Record the cross-check in the maintenance log so the next operator does not repeat it.\n\nWhen a reading looks wrong, ask which of these conditions could apply before you suspect the electronics.",
+      "evidence": "### Fictional scenario: the Quill Run lift station\n\nQuill Run is a fictional lift station. A submersible transmitter on the wet well floor reads **4.6 psi**. The transmitter body is mounted **1.0 ft above the floor**. A small magnetic meter on the discharge reads high every dry morning, when the discharge pipe often runs part full.\n\n### Your decision\n\nFind the water depth above the floor, and say what the meter is doing wrong and what you would check or change.",
+      "assignment": "Write a short note for the station supervisor. Calculate the depth step by step with units, explain why the magnetic meter reads high in a part-full pipe, and name one installation fix. Do not quote any limit value.",
+      "rubric": [
+        "Calculates 4.6 x 2.31 = 10.6 ft above the sensor and adds the 1.0 ft mounting height for 11.6 ft.",
+        "Explains that the meter assumes a full pipe, so a part-full pipe makes it over-read.",
+        "Suggests keeping the pipe full at the meter or relocating it, and cross-checking with an independent measurement."
+      ],
+      "facilitatorGuide": "Depth above the sensor is 4.6 psi x 2.31 ft per psi = 10.6 ft. Add the 1.0 ft mounting height for 11.6 ft above the floor. A magnetic meter measures velocity and assumes the pipe is full, so half the area gives about twice the true flow. Accept a fix that keeps the pipe full at the meter or moves it. Do not accept a span change as the fix; that hides an installation problem.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 18,
+          "instruction": "Study the lesson and reproduce the worked examples."
+        },
+        {
+          "kind": "reading",
+          "minutes": 7,
+          "instruction": "Read the source sections and note one point that applies to your own plant."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 12,
+          "instruction": "Work through the case evidence and prepare the written assignment."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 4,
+          "instruction": "Compare one answer with a distractor mistake, then self-check against the case evidence. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 4,
+          "instruction": "Complete the checks and review the feedback."
+        }
+      ],
+      "sourceIds": [
+        "epa-npdes-training",
+        "nist-uncertainty"
+      ],
+      "checks": [
+        {
+          "id": "ceu-basic-instrumentation-pressure-level-flow-c1",
+          "objective": "pressure-level-flow",
+          "prompt": "In a fictional influent flume, the ultrasonic level sensor is the secondary device. Its job is to:",
+          "choices": [
+            "measure the head so a rating can convert it to flow",
+            "measure velocity directly and multiply by pipe area",
+            "count the volume that has passed as a totalizer",
+            "shape the water so that depth tracks flow"
+          ],
+          "correctIndex": 0,
+          "explanation": "The flume is the primary element and the level sensor is the secondary device. The sensor reports head and the rating turns it into flow. The \"measure velocity directly and multiply by pipe area\" choice describes a closed pipe meter, not a flume, where the shape fixes the link between head and flow. The \"count the volume that has passed as a totalizer\" choice confuses a level sensor with the register of a flow meter. The \"shape the water so that depth tracks flow\" choice describes the flume itself, which is the primary element."
+        },
+        {
+          "id": "ceu-basic-instrumentation-pressure-level-flow-c2",
+          "objective": "pressure-level-flow",
+          "prompt": "A fictional wet well uses a bubbler tube. Compared with an ultrasonic sensor, the bubbler measures level from:",
+          "choices": [
+            "above, by timing an echo from the surface",
+            "the side, by sensing water bridging two probes",
+            "below, by sensing the back pressure of the water column",
+            "above, by following the surface with a float"
+          ],
+          "correctIndex": 2,
+          "explanation": "A bubbler releases a slow stream of air, and the pressure needed to push it out tracks the depth, so it works from below. The \"above, by timing an echo from the surface\" choice describes the ultrasonic sensor that the question compares it with. The \"the side, by sensing water bridging two probes\" choice describes an electrical conductance probe, a third method. The \"above, by following the surface with a float\" choice describes a ball float, which rides the surface from above."
+        },
+        {
+          "id": "ceu-basic-instrumentation-pressure-level-flow-c3",
+          "objective": "pressure-level-flow",
+          "prompt": "A fictional wet well holds water 14.0 ft deep and a transmitter sits on the floor. Use 0.433 psi per ft of fresh water (1 psi = 6.89 kPa). The pressure at the transmitter is:",
+          "choices": [
+            "32.3 psi",
+            "6.1 psi",
+            "0.03 psi",
+            "14.4 psi"
+          ],
+          "correctIndex": 1,
+          "explanation": "Pressure = depth x 0.433 psi per ft = 14.0 x 0.433 = 6.1 psi. The \"32.3 psi\" choice multiplied by 2.31, which is the feet of water per psi and belongs on the other side. The \"0.03 psi\" choice divided the constant by the depth, inverting the relationship. The \"14.4 psi\" choice added the constant to the depth instead of multiplying."
+        },
+        {
+          "id": "ceu-basic-instrumentation-pressure-level-flow-c4",
+          "objective": "pressure-level-flow",
+          "prompt": "A fictional magnetic flow meter sits in a pipe that runs about half full. The meter will most likely read:",
+          "choices": [
+            "low, because less water touches the pipe wall",
+            "true, because it senses velocity directly",
+            "true, because magnetic meters have no moving parts",
+            "high, because it assumes the pipe is full"
+          ],
+          "correctIndex": 3,
+          "explanation": "Flow is area times velocity. The meter assumes the full area, so a half-full pipe makes the reading about twice the real flow. The \"low, because less water touches the pipe wall\" choice guesses that less water means a lower reading, but the meter multiplies velocity by the full area. The \"true, because it senses velocity directly\" choice forgets that flow needs area as well as velocity. The \"true, because magnetic meters have no moving parts\" choice mixes up reliability with correct use; a meter with no moving parts still needs a full pipe."
+        },
+        {
+          "id": "ceu-basic-instrumentation-pressure-level-flow-c5",
+          "objective": "pressure-level-flow",
+          "prompt": "A fictional operator wants a gauge that shows pressure at the pump discharge without any electrical or air supply. The best choice is:",
+          "choices": [
+            "a Bourdon tube gauge",
+            "a 4-20 mA pressure transmitter",
+            "a differential pressure transmitter",
+            "a conductance level probe"
+          ],
+          "correctIndex": 0,
+          "explanation": "A Bourdon or helical gauge moves a needle mechanically as pressure tries to straighten a curved tube. The \"a 4-20 mA pressure transmitter\" choice needs loop power, so it cannot show a value without it. The \"a differential pressure transmitter\" choice also needs power and compares two points rather than showing one pressure locally. The \"a conductance level probe\" choice measures level with electrodes and not pressure."
+        },
+        {
+          "id": "ceu-basic-instrumentation-pressure-level-flow-c6",
+          "objective": "pressure-level-flow",
+          "prompt": "Flow through a venturi is proportional to the square root of the differential pressure. If a fictional operator doubles the flow, the differential pressure will:",
+          "choices": [
+            "double along with the flow",
+            "rise by about 1.4 times",
+            "rise to about four times its earlier value",
+            "stay unchanged because the area is fixed"
+          ],
+          "correctIndex": 2,
+          "explanation": "If flow is proportional to the square root of DP, then DP is proportional to the square of flow, so doubling flow gives about four times the DP. The \"double along with the flow\" choice treats the relationship as a straight line instead of a square law. The \"rise by about 1.4 times\" choice applies the square root in the wrong direction. The \"stay unchanged because the area is fixed\" choice ignores that the flow through a fixed restriction depends on the pressure difference across it."
+        }
+      ]
+    },
+    {
+      "id": "analyzers-control",
+      "title": "Analytical instruments and basic control",
+      "objectives": [
+        "Describe what pH, turbidity, conductivity, dissolved oxygen and chlorine residual analyzers measure and how each fouls or drifts.",
+        "Explain on/off, proportional and PID control and flow pacing with residual trim, including sample delay.",
+        "Describe setpoints, deviation alarms and why nuisance alarms are dangerous."
+      ],
+      "lesson": "### What analyzers measure and how they go wrong\n\nAnalyzers turn water quality into a signal, and many of them feed control loops. Each one has a measuring principle, a typical way of drifting and a need for a clean, representative sample.\n\n- **pH** uses a glass electrode that develops a small voltage depending on hydrogen ion activity. It is checked against buffer solutions of known pH. Coating, age and a dry or damaged bulb cause slow response and drift.\n- **Turbidity** shines light through the sample and measures the light scattered by particles. It is checked against reference standards. Bubbles read as particles, and a stained or scratched cell reads high.\n- **Conductivity** measures how well the water carries current between electrodes, which tracks dissolved salts. Fouled electrodes read low, and the reading changes with temperature unless the instrument compensates.\n- **Dissolved oxygen (DO)** uses an electrochemical or optical sensing element. It is checked against air-saturated water or a lab method. Membranes foul, optical caps age, and low flow past the sensor makes it read low.\n- **Chlorine residual** analyzers use a colour reaction or an electrochemical cell and are checked against a lab or portable test. Reagents run out, tubing grows slime, and the type of residual measured (free or total) must match what the permit asks for.\n\nThink of an analyzer as a small laboratory running without a chemist. It needs clean reagents or a clean sensing surface, a steady sample and regular comparison with a known reference. The operator's lab result at the same time and place is often the quickest reality check. When the analyzer and the lab disagree, do not assume which one is right: check the sample, the sensor, and the lab method.\n\nOther analyzers you will meet are ORP, solids, sludge blanket, ammonia and nitrate. They differ in principle but share the same questions: what is the sensor touching, how clean is it, and when was it last verified?\n\n**Sample conditioning** is everything done to bring a representative sample to the sensor: a tap in the right place, a short sample line, a strainer, constant flow and sometimes a cooler or degasser. A poor sample makes a perfect analyzer wrong. Calibration and verification of each analyzer follow the manufacturer's method and the facility procedure.\n\n### Other physical sensors: temperature, weight and speed\n\n**Temperature** matters where heat controls a process, for example a chlorine evaporator and an anaerobic digester, whose microbes are sensitive to heat. Devices to recognise: liquid-in-glass thermometers, bimetal dials, thermocouples, filled expansion bulbs, thermistors, resistance temperature detectors (RTDs), infrared sensors and window tapes that change colour at set temperatures.\n\n**Weight** reveals chemical use directly. A **load cell**, a strain gauge arrangement that deforms slightly under load and sends a signal, is the usual way to weigh chlorine ton containers. The older weigh beam and the hydraulic load cell do the same job. A falling weight shows the feed rate.\n\n**Worked example 1: feed from weight.** A fictional chlorine container on a scale falls from 1,852 lb to 1,780 lb over 8.0 hours (1 lb = 0.454 kg). Used = 72 lb. Rate = 72 / 8.0 = **9.0 lb per hour**, or 9.0 x 24 = **216 lb per day** at that rate.\n\n**Speed and proximity.** Speed sensors report back the speed of a variable speed pump or a metering pump using a tachometer generator, a non-contact frequency pickup, or an optical or magnetic counter. A proximity or zero-speed switch senses the presence or motion of a gear tooth, belt, valve stem or machine part. A broken belt on a dewatering press is a classic example: the proximity switch sees no motion and the interlock stops the press.\n\n### Control concepts: on/off, proportional and PID\n\n**On/off control** switches a device fully on or off around a setpoint, like a home thermostat. It is simple and fine for sump pumps, but the process swings above and below the setpoint, and a gap called a deadband prevents rapid cycling.\n\n**Proportional control** changes the output in proportion to the error, which is setpoint minus measurement. The bigger the gap, the bigger the correction. A pure proportional loop usually settles slightly off the setpoint.\n\n**PID control** adds an **integral** action that keeps pushing while any error remains, so it removes that offset, and a **derivative** action that responds to how fast the error is changing. Operators seldom tune PID, but should know that a controller hunting back and forth may be tuned too aggressively, may be fighting a sticky valve, or may be reacting to a bad signal.\n\n**Worked example 2: proportional output.** A fictional aeration basin has a DO setpoint of 2.0 mg/L, and the probe reads 1.4 mg/L. The controller has a 50 percent output with no error and adds 10 percent of output for every 1.0 mg/L of error. Error = 2.0 - 1.4 = 0.6 mg/L. Output = 50 + 10 x 0.6 = **56 percent** blower speed.\n\n### Automatic loops in the plant\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 240\" role=\"img\" aria-label=\"Chlorine residual control loop. A flow meter sends a flow signal to a setpoint controller, which sets a motorised chlorinator valve. Chlorine goes into the contact chamber. An analyzer samples the chamber downstream and sends a residual trim signal back up to the controller.\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Chlorine residual feed loop</title>\n<defs><marker id=\"m6\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto\"><path d=\"M0 0L10 5L0 10z\" fill=\"#1d2d40\"/></marker></defs>\n<g fill=\"#eef1f5\" stroke=\"#1d2d40\" stroke-width=\"1.5\">\n<rect x=\"10\" y=\"40\" width=\"105\" height=\"48\" rx=\"4\"/><rect x=\"143\" y=\"40\" width=\"105\" height=\"48\" rx=\"4\" fill=\"#dce8f6\" stroke=\"#2f6db2\"/><rect x=\"275\" y=\"40\" width=\"105\" height=\"48\" rx=\"4\"/>\n<rect x=\"275\" y=\"150\" width=\"105\" height=\"48\" rx=\"4\"/><rect x=\"143\" y=\"150\" width=\"105\" height=\"48\" rx=\"4\"/>\n</g>\n<g text-anchor=\"middle\" font-weight=\"bold\">\n<text x=\"62\" y=\"68\">Flow meter</text><text x=\"195\" y=\"60\">Setpoint</text><text x=\"195\" y=\"76\">controller</text>\n<text x=\"327\" y=\"60\">Chlorinator</text><text x=\"327\" y=\"76\">valve</text>\n<text x=\"327\" y=\"170\">Contact</text><text x=\"327\" y=\"186\">chamber</text><text x=\"195\" y=\"170\">Residual</text><text x=\"195\" y=\"186\">analyzer</text>\n</g>\n<g stroke=\"#1d2d40\" stroke-width=\"1.5\" fill=\"none\" marker-end=\"url(#m6)\">\n<path d=\"M117 64H141\"/><path d=\"M250 64H273\"/><path d=\"M327 90V148\"/><path d=\"M273 174H250\"/><path d=\"M195 148V90\"/>\n</g>\n<g font-size=\"12\">\n<text x=\"62\" y=\"30\" text-anchor=\"middle\" fill=\"#2f6db2\" font-weight=\"bold\">pacing</text>\n<text x=\"333\" y=\"124\" text-anchor=\"start\">dose</text>\n<text x=\"201\" y=\"124\" text-anchor=\"start\" fill=\"#2f6db2\" font-weight=\"bold\">trim</text>\n<text x=\"195\" y=\"222\" text-anchor=\"middle\" fill=\"#5b6877\">sample delay: the analyzer sees dose changes late</text>\n</g>\n</svg>\n<figcaption>A chlorine residual loop: flow pacing sets the feed, and downstream residual trim corrects it, with a delay from the sample line.</figcaption>\n</figure>\n\n**Chlorine residual loop.** Three signals work together. The flow meter gives **flow pacing**, so chlorine feed rises and falls with flow. The analyzer measures the residual downstream in the contact chamber and gives **residual trim**, a small correction to the pacing for changing demand. The setpoint controller combines them and moves the motorised chlorinator valve. A minimum automated feed system therefore has a flow sensor, a residual analyzer, a controller with a setpoint, and a motorised valve or feeder.\n\nThe **sample location and transit time** matter. If the analyzer is far downstream, it only sees the result of a dose change after the water and the sample line have carried it there, and a loop that reacts to old information can swing.\n\n**Worked example 3: pacing and delay.** The fictional Linden Mill plant treats 1.5 MGD at a dose setpoint of 2.0 mg/L, with a feeder capacity of 100 lb/day. Feed = 2.0 x 1.5 x 8.34 = 25.0 lb/day, or **25.0 percent** of capacity. If the sample line holds 1.2 L and the sample flows at 0.40 L/min, the line adds 1.2 / 0.40 = **3.0 minutes** of delay before the analyzer even sees the water.\n\n**Digester temperature loop.** A temperature sensor in the digester feeds a setpoint controller, which positions a motorised valve on the heating water line.\n\n**Pump control by pressure or level.** A service water system uses a pressure signal because pressure shows demand on the system. A return sludge pump may follow a level or flow signal because it must match what the clarifier sends. The best control signal is the one that most directly tracks what the pump is serving.\n\n### Pump control by pressure or by level\n\nPumps are often started, stopped or speed-adjusted from a signal rather than by hand. A pressure control loop uses a pressure transmitter on the discharge main to hold a pressure setpoint; a service water or plant water pump is a common example, because its job is to keep the pressure steady for users. A level control loop uses a level sensor in a wet well or tank to start and stop pumps within a band; a return sludge pump is often run this way, because its job is to keep the wet well at a useful level. Choosing the signal follows the job: pressure for steady delivery, level for holding a storage point. The instrument signal is only as good as its sensor and its setpoint, so a drifting level sensor can cycle a pump too often or let a wet well run dry.\n\n### Setpoints and alarms\n\nA **setpoint** is the value you want. **Alarms** warn when the value leaves a sensible band: a **high alarm**, a **low alarm** and a **deviation alarm**, which trips when a measurement differs from the setpoint by more than a set amount, often catching a stuck control or a failed sensor sooner than a fixed limit would.\n\n**Worked example 4: a deviation alarm.** Suppose a fictional facility sets a deviation alarm at 0.5 mg/L on a DO loop with a 2.0 mg/L setpoint. At 1.4 mg/L the deviation is 0.6 mg/L, so the alarm trips even though neither a fixed low alarm nor a high alarm has. That is the value of a deviation alarm: it flags a loop that is not holding its setpoint, perhaps because a blower tripped or the probe is fouled.\n\nAlarm values come from the operating permit, the design and facility procedure, not from this course. Their quality matters more than their number. **Nuisance alarms** that trip constantly teach people to acknowledge without reading, and the one real alarm gets lost among them. That is dangerous. Fix a nuisance alarm by finding the cause, such as noise, a poor setpoint or a fouled sensor, and record the change, rather than silencing it.",
+      "evidence": "### Fictional scenario: the Linden Mill feed\n\nLinden Mill is a fictional plant treating **1.5 MGD** with a chlorine dose setpoint of **2.0 mg/L** and a feeder capacity of **100 lb/day**. Its residual analyzer sits on a sample line that holds **1.2 L** of water, with sample flowing at **0.40 L/min**. Operators complain that the residual swings up and down every few minutes.\n\n### Your decision\n\nCalculate the paced feed rate and the sample-line delay, and say why the delay matters to the swings.",
+      "assignment": "Write a half-page note for the Linden Mill supervisor. Calculate the feed in lb/day and as a percent of capacity, calculate the delay, and explain how the delay can make a trim loop swing. Do not state any required residual value; say the permit sets it.",
+      "rubric": [
+        "Calculates 2.0 x 1.5 x 8.34 = 25.0 lb/day, which is 25.0 percent of capacity.",
+        "Calculates 1.2 / 0.40 = 3.0 minutes of sample line delay.",
+        "Explains that a controller reacting to old information over-corrects and swings, and suggests a shorter sample line or gentler trim."
+      ],
+      "facilitatorGuide": "Feed = 2.0 mg/L x 1.5 MGD x 8.34 = 25.0 lb/day, or 25.0 percent of the 100 lb/day capacity. Delay = 1.2 L / 0.40 L/min = 3.0 minutes. The trim loop sees the effect of a dose change late, so it keeps correcting a situation that has already changed. Accept shorter sample lines, a faster sample flow or gentler trim as ideas. Do not accept any residual number as a requirement; the permit or rule sets it.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 18,
+          "instruction": "Study the lesson and reproduce the worked examples."
+        },
+        {
+          "kind": "reading",
+          "minutes": 7,
+          "instruction": "Read the source sections and note one point that applies to your own plant."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 12,
+          "instruction": "Work through the case evidence and prepare the written assignment."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 4,
+          "instruction": "Compare one answer with a distractor mistake, then self-check against the case evidence. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 4,
+          "instruction": "Complete the checks and review the feedback."
+        }
+      ],
+      "sourceIds": [
+        "nist-uncertainty",
+        "epa-npdes-training"
+      ],
+      "checks": [
+        {
+          "id": "ceu-basic-instrumentation-analyzers-control-c1",
+          "objective": "analyzers-control",
+          "prompt": "Which instrument in a fictional treatment train is an analytical sensor?",
+          "choices": [
+            "A zero-speed switch on a press belt",
+            "A dissolved oxygen probe in an aeration basin",
+            "A load cell under a chlorine container",
+            "A Bourdon gauge on a pump discharge"
+          ],
+          "correctIndex": 1,
+          "explanation": "Analytical sensors measure water quality, such as dissolved oxygen, pH, residual and turbidity. The \"A zero-speed switch on a press belt\" choice reports motion, which is a status or speed condition. The \"A load cell under a chlorine container\" choice measures weight, a physical property. The \"A Bourdon gauge on a pump discharge\" choice measures pressure, a physical property."
+        },
+        {
+          "id": "ceu-basic-instrumentation-analyzers-control-c2",
+          "objective": "analyzers-control",
+          "prompt": "Why does sample conditioning matter before a sample reaches a fictional analyzer?",
+          "choices": [
+            "It lets the analyzer skip periodic verification",
+            "It converts the reading to a 4-20 mA signal",
+            "It sets the alarm limits for the loop",
+            "A steady, clean and representative sample is needed for a trustworthy reading"
+          ],
+          "correctIndex": 3,
+          "explanation": "A poor sample makes a perfect analyzer wrong, so the tap, strainer, flow and line length matter. The \"It lets the analyzer skip periodic verification\" choice wrongly treats a good sample as a substitute for checking the instrument. The \"It converts the reading to a 4-20 mA signal\" choice confuses sample handling with the transmitter's output stage. The \"It sets the alarm limits for the loop\" choice confuses the sample line with a settings task that belongs to the facility."
+        },
+        {
+          "id": "ceu-basic-instrumentation-analyzers-control-c3",
+          "objective": "analyzers-control",
+          "prompt": "A fictional DO controller has a setpoint of 2.5 mg/L. It gives 40 percent output at zero error and adds 15 percent for each 1.0 mg/L the reading is below setpoint. The probe reads 1.9 mg/L. The output is:",
+          "choices": [
+            "49 percent",
+            "55 percent",
+            "31 percent",
+            "9 percent"
+          ],
+          "correctIndex": 0,
+          "explanation": "Error = 2.5 - 1.9 = 0.6 mg/L, and output = 40 + 15 x 0.6 = 49 percent. The \"55 percent\" choice added the 15 percent once instead of scaling it by the 0.6 mg/L error. The \"31 percent\" choice subtracted the correction when the low reading calls for more output. The \"9 percent\" choice left out the 40 percent output that the controller gives at zero error."
+        },
+        {
+          "id": "ceu-basic-instrumentation-analyzers-control-c4",
+          "objective": "analyzers-control",
+          "prompt": "What is the main danger of nuisance alarms in a fictional plant?",
+          "choices": [
+            "They raise the setpoint of the controller",
+            "They reduce the resolution of the transmitter",
+            "Operators learn to acknowledge without reading, so a real alarm is missed",
+            "They shorten the life of the sensor"
+          ],
+          "correctIndex": 2,
+          "explanation": "Constant false alarms train people to dismiss them, and the real one then gets lost. The \"They raise the setpoint of the controller\" choice invents a link between alarms and the controller's target. The \"They reduce the resolution of the transmitter\" choice confuses alarm frequency with the smallest step an instrument shows. The \"They shorten the life of the sensor\" choice imagines a physical effect, when the harm is to attention."
+        },
+        {
+          "id": "ceu-basic-instrumentation-analyzers-control-c5",
+          "objective": "analyzers-control",
+          "prompt": "In a fictional chlorine feed loop, flow pacing from the flow meter does what?",
+          "choices": [
+            "Corrects for changing demand using the downstream residual",
+            "Raises and lowers the chlorine feed along with the flow",
+            "Alarms when the residual drifts from the setpoint",
+            "Calibrates the analyzer to a reference sample"
+          ],
+          "correctIndex": 1,
+          "explanation": "Pacing makes the feed follow flow. Trim from the analyzer then adjusts for demand. The \"Corrects for changing demand using the downstream residual\" choice describes residual trim, which comes from the analyzer. The \"Alarms when the residual drifts from the setpoint\" choice describes a deviation alarm, not a pacing signal. The \"Calibrates the analyzer to a reference sample\" choice describes a maintenance task rather than a control signal."
+        },
+        {
+          "id": "ceu-basic-instrumentation-analyzers-control-c6",
+          "objective": "analyzers-control",
+          "prompt": "A load cell under a fictional chlorine ton container mainly shows:",
+          "choices": [
+            "gas pressure inside the container",
+            "the pH of the treated water",
+            "the speed of the feeder motor",
+            "chemical use, from the falling weight"
+          ],
+          "correctIndex": 3,
+          "explanation": "A falling weight shows how much chemical has been fed over time. The \"gas pressure inside the container\" choice confuses weight with pressure, which a gauge measures. The \"the pH of the treated water\" choice treats a physical sensor as an analytical one. The \"the speed of the feeder motor\" choice confuses weight with a speed signal."
+        }
+      ]
+    },
+    {
+      "id": "scada-troubleshooting",
+      "title": "SCADA basics and instrument troubleshooting",
+      "objectives": [
+        "Recognise PLCs, RTUs, SCADA and the HMI, and read trends as step change, drift, flat line or noise.",
+        "Apply the troubleshooting order of process, sensor, signal and display, and verify with a portable meter.",
+        "Explain the purpose of portable gas detectors, lockout and the operator and technician roles without any procedure steps."
+      ],
+      "lesson": "### Computers, PLCs and SCADA at recognition level\n\nA **programmable logic controller (PLC)** is a rugged industrial computer. It reads inputs from sensors, runs its stored logic, and writes outputs to control elements: start this pump, close that valve. A **remote terminal unit (RTU)** is a similar field device used at far-away sites such as tanks and lift stations, which collects local signals and reports them over radio, cellular or cable. PLCs and RTUs pass data over the plant network, and some plants use a **secondary data highway**, a separate communication path that links more devices. Recognition is the goal here: you should know what each device is and what it does, not how to program it.\n\n**SCADA** stands for supervisory control and data acquisition. It collects the data, shows it and lets operators command equipment. The **human-machine interface (HMI)** is the operator screen: graphics, trends, alarm lists, setpoint entry. Computer systems are cost effective because one screen replaces trips between sites, one network replaces many wires, and stored trends allow decisions that no walk-around could.\n\n### Reading trends: step, drift and flat line\n\nA trend plots a value against time, and its shape tells a story.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 290\" role=\"img\" aria-label=\"Two trend sketches. The top trend shows a level that holds steady, then jumps up in one step and holds the new value, labelled step change. The bottom trend shows a reading that creeps upward slowly the whole time, labelled drift.\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Trend with step change versus drift</title>\n<g fill=\"#eef1f5\" stroke=\"#8a97a6\"><rect x=\"10\" y=\"26\" width=\"370\" height=\"100\"/><rect x=\"10\" y=\"166\" width=\"370\" height=\"100\"/></g>\n<text x=\"10\" y=\"16\" font-weight=\"bold\">Step change: one sudden jump</text>\n<text x=\"10\" y=\"156\" font-weight=\"bold\">Drift: slow creep in one direction</text>\n<path d=\"M14 100L60 96L110 102L170 98L200 96V54L240 58L290 52L340 56L376 54\" fill=\"none\" stroke=\"#2f6db2\" stroke-width=\"2.5\"/>\n<path d=\"M14 246L60 242L110 238L170 232L230 224L290 214L340 206L376 196\" fill=\"none\" stroke=\"#2f6db2\" stroke-width=\"2.5\"/>\n<path d=\"M200 28V124\" stroke=\"#1d2d40\" stroke-dasharray=\"4 3\"/>\n<text x=\"206\" y=\"118\">event here</text>\n<text x=\"20\" y=\"190\" fill=\"#5b6877\">weeks of operation</text>\n<text x=\"370\" y=\"262\" text-anchor=\"end\" fill=\"#5b6877\">reference stays level</text>\n<path d=\"M14 246H376\" stroke=\"#8a97a6\" stroke-dasharray=\"2 3\" fill=\"none\"/>\n<text x=\"20\" y=\"40\">suspect process, power, setup</text>\n</svg>\n<figcaption>A step change points to an event; drift is a slow creep in one direction.</figcaption>\n</figure>\n\n- A **step change** is a sudden jump to a new steady value. It suggests an event: a pump started, a valve moved, a power glitch, a range or setup change, or a real change in the process.\n- **Drift** is a slow creep in one direction. It suggests an ageing sensor, a fouling probe or a creeping calibration.\n- A **flat line** with no noise at all is suspicious, because real signals wobble a little. It can mean a frozen signal, a failed input holding its last value, or a sensor stuck at one value.\n- **Noise** that suddenly grows can mean a loose connection, air in a line or electrical interference.\n\n**Process change or fault?** Compare related signals. If a flow reading steps up and the pump speed, the level and the amperage all agree, the process really changed. If only one instrument moved and its neighbours did not, suspect that instrument.\n\n### Signals that point to a fault\n\nA healthy 4-20 mA signal sits between its limits and wobbles a little. A reading well below 4 mA suggests a broken wire, a failed power supply or a dead transmitter. A reading above 20 mA suggests an over-range condition or an internal fault. Many systems flag these as bad quality, but some simply show a number, so the operator should know what the raw signal means.\n\n**Worked example 1: a dead loop.** At the fictional Reed Landing plant a 0 to 20 ft level transmitter shows 0.0 ft on the screen. A level of 0.0 ft would be 4.0 mA. The technician's meter in series reads 0.1 mA. Because 0.1 mA is far below the live zero, the loop is dead, not the tank empty. A tank that really is empty would give 4.0 mA and a calculated 0.0 ft, so the same screen number has two different causes, and only the current tells them apart.\n\nInside the PLC, the cycle repeats continuously: read inputs, run the logic, write outputs. If a signal is lost, the logic may keep using the last good value, which is why a frozen trend deserves a check against the field.\n\n### A logical troubleshooting order\n\nWork in the order that costs least and tells most: **process, sensor, signal, display.**\n\n1. **Process.** Is something actually happening? Look at the plant, the pump, the tank, and related instruments.\n2. **Sensor.** Is the sensor clean, wet, mounted correctly and in service?\n3. **Signal.** Is the 4-20 mA loop healthy, between its limits and steady?\n4. **Display.** Is the scaling, range and units on the screen the same as in the transmitter?\n\n**Manual verification** compares the instrument with an independent check, such as a portable meter or a lab result taken at the same time and place. Agreement points to the process; disagreement points to the instrument or the sample.\n\n**Worked example 2: reading a loop.** A technician measures the voltage across a 250 ohm resistor in a fictional loop (V = I x R) and reads 3.0 V. Current = 3.0 / 250 = 0.012 A = **12.0 mA**, the middle of the live-zero range. On a 0 to 10 ft transmitter that is 4 + 16 x 0.5, meaning **5.0 ft**. If the screen shows 6.0 ft, the display is scaled to a 0 to 12 ft range, a display error, not a process change.\n\n**Quantifying a disagreement.** Suppose the screen shows 11.8 ft, a portable check shows 9.4 ft, and the transmitter spans 0 to 20 ft. The difference is 11.8 - 9.4 = 2.4 ft, which is 2.4 / 20 x 100 = **12 percent of span**. A gap that large is not rounding or uncertainty. It points to a stuck sensor, a scaling mismatch or a dirty probe, and it belongs in a report to the technician. A small gap that sits inside the instrument's stated accuracy is normal.\n\n### Instrument maintenance and records\n\nRoutine maintenance depends on the instrument: cleaning probes, replacing reagents, inspecting tubing and checking mounting. The manufacturer and facility procedure set the tasks and timing. Records are the evidence: calibration and verification dates and results, repairs, sensor replacements, alarm events and the instrument tag. Over time they show which instruments drift and deserve replacement.\n\n### Personnel protection instruments and loop safety (purpose only)\n\nA **portable multi-gas detector** protects the person carrying it. It warns of a hazardous atmosphere: low oxygen, explosive gases or toxic gases such as hydrogen sulfide. Even when a space was tested earlier, the atmosphere can change when work starts, liquids move or ventilation stops, so a portable detector goes with the person entering a confined space. The alarm levels, the function checks and the entry rules come from the manufacturer, the facility procedure and the applicable rule.\n\nDetector records should cover calibration, repairs, sensor replacement and alarm events. Sensors are replaced following the manufacturer's advice or the unit's failure history, whichever comes sooner. A detector that has been dropped, fails its check or alarms without a cause is taken out of service for the technician.\n\n**Loop safety and lockout awareness.** Lockout exists so that equipment cannot be started or energised while someone works on it. Instrument loops add stored and remote energy: a transmitter powered from a panel, a control panel fed from two sources, a valve that moves on a command from the SCADA screen. The purpose of lockout is to remove that surprise. Follow your facility's lockout procedure; this course gives no steps.\n\n### The operator and the instrument technician\n\nThe **operator** reads, questions and cross-checks. The operator notices that a number does not fit the process, collects the portable check, records what was seen and reports clearly with the tag, time and reading. The **instrument technician** has the training and authority to calibrate, repair, rewire and reconfigure. An operator must not bypass an interlock, change a range or silence an alarm for convenience; those need approval under the facility's procedure.\n\n**Worked example 3: a clear report.** At the fictional Marsh Landing plant, the clearwell level trends upward, then flatlines at 11.8 ft for six hours with no noise, while the pumps and tank outflow suggest the level should be falling. A good report says: \"Level LT-204 flat at 11.8 ft for six hours with no noise, pump amps normal, portable check shows 9.4 ft, requesting technician.\" That one line gives the technician the tag, the symptom, the cross-check and the request.",
+      "evidence": "### Fictional scenario: the Marsh Landing clearwell\n\nMarsh Landing is a fictional plant. A **0 to 20 ft** level transmitter with **4 mA at 0 ft and 20 mA at 20 ft** shows **11.8 ft** on the screen and holds that value with no noise for six hours. A portable check shows **9.4 ft**. The meter in series with the loop reads **12.6 mA**.\n\n### Your decision\n\nConvert the loop current to a level, compare with the screen and the portable check, and write the report the instrument technician needs.",
+      "assignment": "Write a short report for the technician with the tag, symptom, the three readings, your conclusion about what the numbers suggest and the request. Do not change anything in the field; reporting and cross-checking are the operator's job.",
+      "rubric": [
+        "Converts 12.6 mA to 10.75 ft using (12.6 - 4) / 16 x 20 and compares it with 11.8 ft and 9.4 ft.",
+        "Notes that the three values disagree and a noiseless flat line suggests a frozen or faulty input.",
+        "Writes a clear report with tag, time, readings and a request, and does not touch interlocks or ranges."
+      ],
+      "facilitatorGuide": "Loop current to level: (12.6 - 4) / 16 = 0.5375 of range, and 0.5375 x 20 = 10.75 ft. The screen shows 11.8 ft and the portable check shows 9.4 ft, so three sources give three values. A flat, noiseless line suggests a frozen input or scaling fault. Accept a report that gives tag, time and readings, and asks for a technician. Do not accept any answer where the operator changes a range, bypasses an interlock or silences an alarm.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 18,
+          "instruction": "Study the lesson and reproduce the worked examples."
+        },
+        {
+          "kind": "reading",
+          "minutes": 7,
+          "instruction": "Read the source sections and note one point that applies to your own plant."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 12,
+          "instruction": "Work through the case evidence and prepare the written assignment."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 4,
+          "instruction": "Compare one answer with a distractor mistake, then self-check against the case evidence. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 4,
+          "instruction": "Complete the checks, review the feedback and take the final assessment."
+        }
+      ],
+      "sourceIds": [
+        "ccohs-confined",
+        "ccohs-lockout",
+        "nist-uncertainty"
+      ],
+      "checks": [
+        {
+          "id": "ceu-basic-instrumentation-scada-troubleshooting-c1",
+          "objective": "scada-troubleshooting",
+          "prompt": "In a fictional plant, which device reads input signals, runs stored logic and writes outputs to starters and valves?",
+          "choices": [
+            "The PLC, which runs the logic",
+            "The HMI, which presents screens to the operator",
+            "The totalizer, which counts total volume",
+            "The annunciator, which lights alarm windows"
+          ],
+          "correctIndex": 0,
+          "explanation": "A programmable logic controller reads inputs, runs its stored program and sets outputs. The \"The HMI, which presents screens to the operator\" choice describes the operator screen, not the controller beneath it. The \"The totalizer, which counts total volume\" choice describes a flow meter register. The \"The annunciator, which lights alarm windows\" choice describes a panel indicator."
+        },
+        {
+          "id": "ceu-basic-instrumentation-scada-troubleshooting-c2",
+          "objective": "scada-troubleshooting",
+          "prompt": "A fictional trend shows a probe creeping slowly in one direction over weeks while lab results stay level. This best suggests:",
+          "choices": [
+            "a step change from a process event",
+            "a dead loop from a broken wire",
+            "drift in the sensor, which verification should catch",
+            "a frozen input holding its last value"
+          ],
+          "correctIndex": 2,
+          "explanation": "A slow movement in one direction against a steady reference is the signature of drift. The \"a step change from a process event\" choice describes a sudden jump, not a slow creep. The \"a dead loop from a broken wire\" choice would send a reading near 0 mA rather than a smooth creep. The \"a frozen input holding its last value\" choice would give a flat line, not a moving trend."
+        },
+        {
+          "id": "ceu-basic-instrumentation-scada-troubleshooting-c3",
+          "objective": "scada-troubleshooting",
+          "prompt": "A technician measures 2.0 V across a 250 ohm resistor in a fictional 4-20 mA loop. Use I = V / R and 1 A = 1,000 mA. The loop current is:",
+          "choices": [
+            "500 mA",
+            "8.0 mA",
+            "125 mA",
+            "0.008 mA"
+          ],
+          "correctIndex": 1,
+          "explanation": "I = 2.0 / 250 = 0.008 A, and 0.008 x 1,000 = 8.0 mA. The \"500 mA\" choice multiplied voltage by resistance instead of dividing. The \"125 mA\" choice divided resistance by voltage, inverting Ohm's law. The \"0.008 mA\" choice left the answer in amps but wrote the unit as mA."
+        },
+        {
+          "id": "ceu-basic-instrumentation-scada-troubleshooting-c4",
+          "objective": "scada-troubleshooting",
+          "prompt": "Which order is a logical troubleshooting sequence for a suspect reading?",
+          "choices": [
+            "Display, signal, sensor, process",
+            "Sensor, display, process, signal",
+            "Signal, process, display, sensor",
+            "Process, sensor, signal, display"
+          ],
+          "correctIndex": 3,
+          "explanation": "Start with whether something really happened, then check the sensor, then the signal, then the display. The \"Display, signal, sensor, process\" choice starts with the screen and ends with the plant, which is the reverse of the cheapest checks first. The \"Sensor, display, process, signal\" choice jumps around, looking at the instrument before asking whether the process really changed. The \"Signal, process, display, sensor\" choice starts at the wiring, which is a late check."
+        },
+        {
+          "id": "ceu-basic-instrumentation-scada-troubleshooting-c5",
+          "objective": "scada-troubleshooting",
+          "prompt": "A fictional entrant carries a portable gas detector even though the space was tested earlier. Why?",
+          "choices": [
+            "Conditions can change after the test, so the atmosphere needs watching during work",
+            "The earlier test expires as soon as the entrant arrives",
+            "The detector replaces the entry permit and ventilation",
+            "The detector removes the need for a trained attendant"
+          ],
+          "correctIndex": 0,
+          "explanation": "Work, moving liquids and changing ventilation can alter the atmosphere, so the entrant keeps watching it. The facility procedure and the applicable rule govern the details. The \"The earlier test expires as soon as the entrant arrives\" choice invents an expiry that has no basis. The \"The detector replaces the entry permit and ventilation\" choice treats an alarm device as a substitute for the other protections. The \"The detector removes the need for a trained attendant\" choice treats an instrument as a replacement for people."
+        },
+        {
+          "id": "ceu-basic-instrumentation-scada-troubleshooting-c6",
+          "objective": "scada-troubleshooting",
+          "prompt": "The purpose of lockout during instrument work at a fictional plant is to:",
+          "choices": [
+            "tag an instrument so it is skipped at the next calibration",
+            "stop alarms from reaching the SCADA screen",
+            "keep equipment from starting or being energised while someone works on it",
+            "hold the controller at its last output for the shift"
+          ],
+          "correctIndex": 2,
+          "explanation": "Lockout removes the surprise of equipment starting. The facility's lockout procedure sets the steps. The \"tag an instrument so it is skipped at the next calibration\" choice mixes up a safety control with a maintenance schedule. The \"stop alarms from reaching the SCADA screen\" choice confuses isolation of energy with alarm handling. The \"hold the controller at its last output for the shift\" choice describes a control setting, not a safety isolation."
+        }
+      ]
+    }
+  ],
+  "finalAssessment": [
+    {
+      "id": "ceu-basic-instrumentation-measurement-fundamentals-f1",
+      "objective": "measurement-fundamentals",
+      "prompt": "A fictional flow transmitter is set so that 4 mA means 0 gpm and 20 mA means 1,200 gpm, with a linear signal. The flow is 450 gpm. The loop current is:",
+      "choices": [
+        "11.5 mA",
+        "10.0 mA",
+        "6.0 mA",
+        "14.0 mA"
+      ],
+      "correctIndex": 1,
+      "explanation": "450 / 1,200 = 0.375 of range, and 4 + 0.375 x 16 = 10.0 mA. The \"11.5 mA\" choice used 20 mA as the span instead of the 16 mA span above the live zero. The \"6.0 mA\" choice skipped the 4 mA offset, so it points to a current below the live zero. The \"14.0 mA\" choice measured from the top of the range instead of the bottom."
+    },
+    {
+      "id": "ceu-basic-instrumentation-measurement-fundamentals-f2",
+      "objective": "measurement-fundamentals",
+      "prompt": "A fictional pressure transmitter is set so that 4 mA means 0 psi and 20 mA means 250 psi, with a linear signal. The loop reads 15.2 mA. The pressure is:",
+      "choices": [
+        "190 psi",
+        "237.5 psi",
+        "75.0 psi",
+        "175 psi"
+      ],
+      "correctIndex": 3,
+      "explanation": "(15.2 - 4) / 16 = 0.70 of range, and 0.70 x 250 psi = 175 psi. The \"190 psi\" choice divided by 20 mA without removing the 4 mA live zero. The \"237.5 psi\" choice divided by the 16 mA span but forgot to subtract the 4 mA from the reading. The \"75.0 psi\" choice used the share of range left over instead of the share reached."
+    },
+    {
+      "id": "ceu-basic-instrumentation-measurement-fundamentals-f3",
+      "objective": "measurement-fundamentals",
+      "prompt": "A fictional level transmitter spans 0 to 20 ft. It indicates 9.0 ft while a reference measurement shows 8.6 ft. The error as a percent of span is:",
+      "choices": [
+        "2.0 percent of span",
+        "4.7 percent of span",
+        "0.4 percent of span",
+        "45.0 percent of span"
+      ],
+      "correctIndex": 0,
+      "explanation": "Error = 9.0 - 8.6 = 0.4 ft, and 0.4 / 20 x 100 = 2.0 percent of span. The \"4.7 percent of span\" choice divided by the reference reading, which gives percent of reading rather than percent of span. The \"0.4 percent of span\" choice reported the difference in feet as if it were already a percent. The \"45.0 percent of span\" choice divided the indicated reading by the span instead of the error."
+    },
+    {
+      "id": "ceu-basic-instrumentation-measurement-fundamentals-f4",
+      "objective": "measurement-fundamentals",
+      "prompt": "At a fictional plant, a signal from a dissolved oxygen controller changes the speed of an aeration blower. In loop terms, the blower is the:",
+      "choices": [
+        "sensor, because it responds to the signal",
+        "transmitter, because it carries the signal",
+        "control element, because it acts on the process",
+        "setpoint, because it holds the target value"
+      ],
+      "correctIndex": 2,
+      "explanation": "A blower, valve or variable speed pump is a control element: it takes the controller's output and changes the process. The \"sensor, because it responds to the signal\" choice treats the device that receives the command as the device that measures. The \"transmitter, because it carries the signal\" choice confuses a device that moves air with one that conditions and carries a measurement. The \"setpoint, because it holds the target value\" choice mistakes a number chosen by the operator for the equipment that is commanded."
+    },
+    {
+      "id": "ceu-basic-instrumentation-measurement-fundamentals-f5",
+      "objective": "measurement-fundamentals",
+      "prompt": "Each month a fictional operator compares a transmitter with a portable meter. The transmitter reads further above the portable meter each time, always in the same direction. This pattern best suggests:",
+      "choices": [
+        "a step change, which signals a sudden event",
+        "drift, which verification is meant to catch",
+        "a live zero fault, which reads near 0 mA",
+        "loss of resolution, which coarsens the display"
+      ],
+      "correctIndex": 1,
+      "explanation": "A reading that slowly moves away from the reference in one direction is drift, and regular verification finds it early. The \"a step change, which signals a sudden event\" choice describes a jump to a new level at one moment, not a slow creep over months. The \"a live zero fault, which reads near 0 mA\" choice describes a dead loop, while this transmitter is still sending sensible readings. The \"loss of resolution, which coarsens the display\" choice mixes up a growing error with the size of the smallest displayed step."
+    },
+    {
+      "id": "ceu-basic-instrumentation-pressure-level-flow-f1",
+      "objective": "pressure-level-flow",
+      "prompt": "A fictional pressure transmitter is mounted 1.5 ft above the floor of a tank and reads 4.7 psi. Use 2.31 ft of water per psi. The water depth above the floor is:",
+      "choices": [
+        "10.9 ft",
+        "9.4 ft",
+        "3.5 ft",
+        "12.4 ft"
+      ],
+      "correctIndex": 3,
+      "explanation": "Head above the sensor = 4.7 x 2.31 = 10.9 ft. Add the 1.5 ft below the sensor: 12.4 ft. The \"10.9 ft\" choice gave the head above the sensor but left out its mounting height above the floor. The \"9.4 ft\" choice subtracted the mounting height when it must be added. The \"3.5 ft\" choice multiplied by 0.433 instead of 2.31, so the unit step is wrong."
+    },
+    {
+      "id": "ceu-basic-instrumentation-pressure-level-flow-f2",
+      "objective": "pressure-level-flow",
+      "prompt": "A fictional flume has the rating Q = 2.4 x H^1.5 with Q in cfs and H in ft. The head is 0.60 ft. Use 448.8 gpm per cfs. The flow is:",
+      "choices": [
+        "501 gpm",
+        "388 gpm",
+        "1.12 gpm",
+        "969 gpm"
+      ],
+      "correctIndex": 0,
+      "explanation": "0.60^1.5 = 0.4648, Q = 2.4 x 0.4648 = 1.1155 cfs, and 1.1155 x 448.8 = 501 gpm. The \"388 gpm\" choice squared the head instead of raising it to the 1.5 power. The \"1.12 gpm\" choice left the answer in cfs and wrote the wrong unit. The \"969 gpm\" choice multiplied by 1.5 instead of raising the head to the 1.5 power."
+    },
+    {
+      "id": "ceu-basic-instrumentation-pressure-level-flow-f3",
+      "objective": "pressure-level-flow",
+      "prompt": "A fictional differential pressure flow transmitter reaches 1,500 gpm at the top of its DP span. The signal is not yet square-rooted and the DP reads 16 percent of span. The flow is:",
+      "choices": [
+        "240 gpm",
+        "900 gpm",
+        "600 gpm",
+        "38 gpm"
+      ],
+      "correctIndex": 2,
+      "explanation": "The square root of 0.16 is 0.40, and 0.40 x 1,500 = 600 gpm. The \"240 gpm\" choice took 16 percent of the maximum flow, treating DP and flow as a straight line. The \"900 gpm\" choice subtracted the square root from one instead of using the square root. The \"38 gpm\" choice squared the fraction instead of taking its square root."
+    },
+    {
+      "id": "ceu-basic-instrumentation-pressure-level-flow-f4",
+      "objective": "pressure-level-flow",
+      "prompt": "Foam builds on the surface above a fictional flume, and the ultrasonic level sensor starts to read the foam as the water surface. The flow readout will most likely:",
+      "choices": [
+        "not change, because the rating uses velocity",
+        "over-read, because the echo returns from above the water",
+        "under-read, because foam absorbs some of the flow",
+        "fall to zero, because foam blocks sound"
+      ],
+      "correctIndex": 1,
+      "explanation": "The sensor measures distance to the surface. Foam gives a shorter distance, so the head looks larger and the rating gives a higher flow. The \"not change, because the rating uses velocity\" choice confuses a flume rating, which uses head, with a meter that measures velocity. The \"under-read, because foam absorbs some of the flow\" choice imagines foam changing the real flow when it only changes the echo. The \"fall to zero, because foam blocks sound\" choice exaggerates the effect, since foam usually returns an echo that is too early rather than none."
+    },
+    {
+      "id": "ceu-basic-instrumentation-pressure-level-flow-f5",
+      "objective": "pressure-level-flow",
+      "prompt": "On a fictional propeller flow meter, the magnetic coupling is there to:",
+      "choices": [
+        "straighten the flow ahead of the propeller",
+        "sense water bridging two electrodes",
+        "count the total volume that has passed",
+        "pass the propeller's motion to the register without a leaking shaft"
+      ],
+      "correctIndex": 3,
+      "explanation": "The magnetic coupling carries the turning motion through the wall, so no shaft penetrates the pipe and leaks. The \"straighten the flow ahead of the propeller\" choice describes the straightening vanes. The \"sense water bridging two electrodes\" choice describes a magnetic flow meter's measuring principle, a different meter. The \"count the total volume that has passed\" choice describes the totalizer, which sits after the coupling."
+    },
+    {
+      "id": "ceu-basic-instrumentation-analyzers-control-f1",
+      "objective": "analyzers-control",
+      "prompt": "A fictional plant treats 2.5 MGD at a chlorine dose setpoint of 1.8 mg/L. The feeder capacity is 80 lb/day. Use 8.34 lb per gal. The feed rate as a percent of feeder capacity is:",
+      "choices": [
+        "46.9 percent",
+        "213 percent",
+        "37.5 percent",
+        "5.6 percent"
+      ],
+      "correctIndex": 0,
+      "explanation": "Feed = 1.8 x 2.5 x 8.34 = 37.5 lb/day, and 37.5 / 80 x 100 = 46.9 percent. The \"213 percent\" choice divided the capacity by the feed rate, inverting the ratio. The \"37.5 percent\" choice reported the feed in lb/day as if it were already a percent. The \"5.6 percent\" choice left out the 8.34 conversion from mg/L and MGD to lb/day."
+    },
+    {
+      "id": "ceu-basic-instrumentation-analyzers-control-f2",
+      "objective": "analyzers-control",
+      "prompt": "A fictional chlorine container falls from 2,310 lb to 2,214 lb in 6.0 hours on a scale. At that steady rate, the feed per day is:",
+      "choices": [
+        "16 lb/day",
+        "96 lb/day",
+        "384 lb/day",
+        "576 lb/day"
+      ],
+      "correctIndex": 2,
+      "explanation": "Used = 2,310 - 2,214 = 96 lb in 6.0 h, which is 16 lb/h, and 16 x 24 = 384 lb/day. The \"16 lb/day\" choice gave the rate per hour but wrote it as per day. The \"96 lb/day\" choice gave the total used in the 6 hours rather than the rate per day. The \"576 lb/day\" choice multiplied by the hours instead of dividing."
+    },
+    {
+      "id": "ceu-basic-instrumentation-analyzers-control-f3",
+      "objective": "analyzers-control",
+      "prompt": "A fictional chlorine analyzer sample line holds 2.4 L of water and the sample flows through it at 0.60 L/min. The delay before the analyzer sees the water is:",
+      "choices": [
+        "0.25 minutes",
+        "4.0 minutes",
+        "3.0 minutes",
+        "1.44 minutes"
+      ],
+      "correctIndex": 1,
+      "explanation": "Delay = volume / flow = 2.4 L / 0.60 L/min = 4.0 minutes. The \"0.25 minutes\" choice divided the flow by the volume, inverting the calculation. The \"3.0 minutes\" choice added the two numbers, which have different units. The \"1.44 minutes\" choice multiplied the volume by the flow instead of dividing."
+    },
+    {
+      "id": "ceu-basic-instrumentation-analyzers-control-f4",
+      "objective": "analyzers-control",
+      "prompt": "A fictional aeration loop with purely proportional control settles slightly below its DO setpoint. Which control action removes the leftover offset?",
+      "choices": [
+        "Derivative action, which responds to fast changes",
+        "A wider deadband, which delays switching",
+        "A higher alarm limit, which hides the gap",
+        "Integral action, which keeps pushing while error remains"
+      ],
+      "correctIndex": 3,
+      "explanation": "Integral action keeps adding output as long as an error remains, which removes the offset a proportional loop leaves. The \"Derivative action, which responds to fast changes\" choice reacts to the speed of change, not to a steady leftover gap. The \"A wider deadband, which delays switching\" choice helps on/off control, but widens the gap here. The \"A higher alarm limit, which hides the gap\" choice hides the symptom without changing the control."
+    },
+    {
+      "id": "ceu-basic-instrumentation-analyzers-control-f5",
+      "objective": "analyzers-control",
+      "prompt": "A fictional DO analyzer reads low while the blower runs fast and the basin looks well mixed. A good first step is to:",
+      "choices": [
+        "compare it with a portable meter or lab test at the same point",
+        "raise the DO setpoint until the reading moves",
+        "silence the low alarm until the shift ends",
+        "replace the blower motor before any other check"
+      ],
+      "correctIndex": 0,
+      "explanation": "An independent check separates a real oxygen problem from a sensor, sample or scaling problem. The \"raise the DO setpoint until the reading moves\" choice changes the target while the doubt about the reading remains. The \"silence the low alarm until the shift ends\" choice hides a warning that may be real or may point to a fault. The \"replace the blower motor before any other check\" choice assumes an equipment fault without checking the measurement."
+    },
+    {
+      "id": "ceu-basic-instrumentation-scada-troubleshooting-f1",
+      "objective": "scada-troubleshooting",
+      "prompt": "A technician's meter reads 14.4 mA in the loop of a fictional level transmitter, with 4 mA at 0 ft and 20 mA at 20 ft, linear. The level is:",
+      "choices": [
+        "14.4 ft",
+        "18.0 ft",
+        "13.0 ft",
+        "7.0 ft"
+      ],
+      "correctIndex": 2,
+      "explanation": "(14.4 - 4) / 16 = 0.65 of range, and 0.65 x 20 ft = 13.0 ft. The \"14.4 ft\" choice used the current in mA as if it were already feet, which only works if the range started at zero current. The \"18.0 ft\" choice divided by the span but skipped the 4 mA live zero. The \"7.0 ft\" choice read the scale from the top down."
+    },
+    {
+      "id": "ceu-basic-instrumentation-scada-troubleshooting-f2",
+      "objective": "scada-troubleshooting",
+      "prompt": "A fictional transmitter spans 0 to 10 ft (4-20 mA, linear) and sends 16.0 mA, but the PLC is scaled for 0 to 12 ft. By how much does the screen over-read?",
+      "choices": [
+        "2.0 ft",
+        "1.5 ft",
+        "7.5 ft",
+        "9.0 ft"
+      ],
+      "correctIndex": 1,
+      "explanation": "True level = 0.75 x 10 = 7.5 ft, screen = 0.75 x 12 = 9.0 ft, error = 1.5 ft. The \"2.0 ft\" choice reported the difference in the configured ranges rather than the difference in the readings. The \"7.5 ft\" choice gave the true level instead of the error. The \"9.0 ft\" choice gave the screen reading instead of the error."
+    },
+    {
+      "id": "ceu-basic-instrumentation-scada-troubleshooting-f3",
+      "objective": "scada-troubleshooting",
+      "prompt": "A fictional operator's meter reads 0.2 mA in a level loop whose range is 4-20 mA. The best conclusion is:",
+      "choices": [
+        "the process is at the bottom of its range",
+        "the transmitter is at the top of its range",
+        "the transmitter is perfectly calibrated at zero",
+        "the loop is broken or unpowered, not a real zero"
+      ],
+      "correctIndex": 3,
+      "explanation": "A current this far below the live zero points to an open wire or a power fault, not an empty tank. The \"the process is at the bottom of its range\" choice forgets that the bottom of the range is 4 mA, not 0 mA. The \"the transmitter is at the top of its range\" choice reverses the ends of the signal. The \"the transmitter is perfectly calibrated at zero\" choice assumes that a reading near zero means zero level."
+    },
+    {
+      "id": "ceu-basic-instrumentation-scada-troubleshooting-f4",
+      "objective": "scada-troubleshooting",
+      "prompt": "Which action belongs to the instrument technician rather than the operator at a fictional plant?",
+      "choices": [
+        "Changing the configured range of a transmitter under procedure",
+        "Reading a trend and comparing it with a portable meter",
+        "Recording the tag, time and reading in the log",
+        "Reporting a flat-lined signal so it can be checked"
+      ],
+      "correctIndex": 0,
+      "explanation": "Changing ranges, calibrating and rewiring need technician training and approval. The operator reads, questions, cross-checks and reports. The \"Reading a trend and comparing it with a portable meter\" choice is an operator task, since it checks the reading without changing the instrument. The \"Recording the tag, time and reading in the log\" choice is an operator task, since it keeps the evidence for the technician. The \"Reporting a flat-lined signal so it can be checked\" choice is an operator task, since reporting is how the problem reaches the technician."
+    },
+    {
+      "id": "ceu-basic-instrumentation-scada-troubleshooting-f5",
+      "objective": "scada-troubleshooting",
+      "prompt": "Which record belongs in the file of a fictional portable gas detector?",
+      "choices": [
+        "Entry permit signatures for each job",
+        "The flow rating of the nearest flume",
+        "Calibration, repairs, sensor replacements and alarm events",
+        "The setpoints used in the chlorine loop"
+      ],
+      "correctIndex": 2,
+      "explanation": "The detector's file shows its history: calibration, repairs, sensor changes and alarms. The \"Entry permit signatures for each job\" choice belongs to the entry permit file, not the instrument file. The \"The flow rating of the nearest flume\" choice is unrelated to a personal safety instrument. The \"The setpoints used in the chlorine loop\" choice belongs to the control records for the process."
+    }
+  ],
+  "alternateFinalAssessment": [
+    {
+      "id": "ceu-basic-instrumentation-measurement-fundamentals-a1",
+      "objective": "measurement-fundamentals",
+      "prompt": "A fictional tank transmitter is set so that 4 mA means 0 ft and 20 mA means 8 ft, with a linear signal. The loop reads 8.8 mA. The level is:",
+      "choices": [
+        "2.4 ft",
+        "3.5 ft",
+        "4.4 ft",
+        "5.6 ft"
+      ],
+      "correctIndex": 0,
+      "explanation": "(8.8 - 4) / 16 = 0.30 of range, and 0.30 x 8 ft = 2.4 ft. The \"3.5 ft\" choice divided by 20 mA without removing the 4 mA live zero. The \"4.4 ft\" choice divided by the 16 mA span but forgot to subtract the 4 mA offset. The \"5.6 ft\" choice read the scale from the top down instead of the bottom up."
+    },
+    {
+      "id": "ceu-basic-instrumentation-measurement-fundamentals-a2",
+      "objective": "measurement-fundamentals",
+      "prompt": "A fictional clearwell level transmitter spans 0 to 12 ft, with 4 mA at 0 ft and 20 mA at 12 ft, and a linear signal. The level is 9.0 ft. The loop current is:",
+      "choices": [
+        "15.0 mA",
+        "12.0 mA",
+        "16.0 mA",
+        "8.0 mA"
+      ],
+      "correctIndex": 2,
+      "explanation": "9.0 / 12 = 0.75 of range, and 4 + 0.75 x 16 = 16.0 mA. The \"15.0 mA\" choice left out the 4 mA offset and used 20 as the span. The \"12.0 mA\" choice left out the 4 mA offset, so the answer sits below the live zero. The \"8.0 mA\" choice used the empty space above the water in place of the water depth."
+    },
+    {
+      "id": "ceu-basic-instrumentation-measurement-fundamentals-a3",
+      "objective": "measurement-fundamentals",
+      "prompt": "A fictional pressure transmitter spans 0 to 80 psi. It indicates 41.2 psi while a reference gauge shows 40.0 psi. The error as a percent of span is:",
+      "choices": [
+        "3.0 percent of span",
+        "1.5 percent of span",
+        "1.2 percent of span",
+        "51.5 percent of span"
+      ],
+      "correctIndex": 1,
+      "explanation": "Error = 41.2 - 40.0 = 1.2 psi, and 1.2 / 80 x 100 = 1.5 percent of span. The \"3.0 percent of span\" choice used the reference reading as the divisor, which gives percent of reading. The \"1.2 percent of span\" choice took the difference in psi as if it were already a percent. The \"51.5 percent of span\" choice divided the indicated reading by the span instead of the error."
+    },
+    {
+      "id": "ceu-basic-instrumentation-measurement-fundamentals-a4",
+      "objective": "measurement-fundamentals",
+      "prompt": "At a fictional plant, a selector switch shows whether a lift pump is in AUTO or MANUAL. The switch feeds which kind of signal?",
+      "choices": [
+        "A physical signal, useful for performance trends",
+        "An analytical signal, useful for process control",
+        "A calibration signal, useful for zero adjustment",
+        "A status signal, useful for alarms and interlocks"
+      ],
+      "correctIndex": 3,
+      "explanation": "AUTO or MANUAL is a condition, not a measured quantity, so it comes from a status sensor. The \"A physical signal, useful for performance trends\" choice assigns a two-state condition to the family that measures quantities like flow and pressure. The \"An analytical signal, useful for process control\" choice assigns a mode switch to the family that measures water quality. The \"A calibration signal, useful for zero adjustment\" choice mixes up a plant operating condition with a step in instrument maintenance."
+    },
+    {
+      "id": "ceu-basic-instrumentation-measurement-fundamentals-a5",
+      "objective": "measurement-fundamentals",
+      "prompt": "A fictional digital level display shows two decimal places but disagrees with a manual dip by a steady 0.5 ft. The best description is:",
+      "choices": [
+        "fine resolution with poor accuracy",
+        "poor resolution with good accuracy",
+        "good accuracy because the display has many digits",
+        "poor repeatability because it disagrees with the dip"
+      ],
+      "correctIndex": 0,
+      "explanation": "Resolution is the smallest step displayed, while accuracy is closeness to the true value. Many digits do not make a reading correct. The \"poor resolution with good accuracy\" choice reverses the two, since two decimals is fine resolution and the steady disagreement is an accuracy problem. The \"good accuracy because the display has many digits\" choice treats the number of digits as a sign of correctness. The \"poor repeatability because it disagrees with the dip\" choice confuses a steady error with scatter between repeated readings."
+    },
+    {
+      "id": "ceu-basic-instrumentation-pressure-level-flow-a1",
+      "objective": "pressure-level-flow",
+      "prompt": "A fictional storage tank holds water 20.0 ft deep, with a transmitter on the floor. Use 0.433 psi per ft of fresh water. The pressure at the transmitter is:",
+      "choices": [
+        "46.2 psi",
+        "20.4 psi",
+        "8.7 psi",
+        "0.02 psi"
+      ],
+      "correctIndex": 2,
+      "explanation": "Pressure = 20.0 x 0.433 = 8.7 psi. The \"46.2 psi\" choice multiplied by 2.31, which is the feet of water per psi and belongs on the other side. The \"20.4 psi\" choice added the constant to the depth instead of multiplying. The \"0.02 psi\" choice divided the constant by the depth, inverting the relationship."
+    },
+    {
+      "id": "ceu-basic-instrumentation-pressure-level-flow-a2",
+      "objective": "pressure-level-flow",
+      "prompt": "A fictional DP flow transmitter reaches 900 gpm at the top of its DP span. The signal is not square-rooted and the DP reads 64 percent of span. The flow is:",
+      "choices": [
+        "576 gpm",
+        "720 gpm",
+        "180 gpm",
+        "369 gpm"
+      ],
+      "correctIndex": 1,
+      "explanation": "The square root of 0.64 is 0.80, and 0.80 x 900 = 720 gpm. The \"576 gpm\" choice took 64 percent of the maximum, treating DP and flow as a straight line. The \"180 gpm\" choice used the share left over from the square root instead of the square root. The \"369 gpm\" choice squared the fraction instead of taking its square root."
+    },
+    {
+      "id": "ceu-basic-instrumentation-pressure-level-flow-a3",
+      "objective": "pressure-level-flow",
+      "prompt": "A fictional 8 in pipe, which is 0.667 ft, runs full with water moving at 4.0 ft/s. Use area = 0.785 x d x d and 448.8 gpm per cfs. The flow is:",
+      "choices": [
+        "2,508 gpm",
+        "1.4 gpm",
+        "39 gpm",
+        "627 gpm"
+      ],
+      "correctIndex": 3,
+      "explanation": "Area = 0.785 x 0.667 x 0.667 = 0.349 sq ft, Q = 0.349 x 4.0 = 1.397 cfs, and 1.397 x 448.8 = 627 gpm. The \"2,508 gpm\" choice used 3.14 x d x d, which is the area from the radius, instead of 0.785 x d x d. The \"1.4 gpm\" choice left the result in cfs and wrote the wrong unit. The \"39 gpm\" choice divided the area by the velocity instead of multiplying."
+    },
+    {
+      "id": "ceu-basic-instrumentation-pressure-level-flow-a4",
+      "objective": "pressure-level-flow",
+      "prompt": "A fictional magnetic meter reads too high each dry morning, when the pipe runs part full. The fix that addresses the cause is to:",
+      "choices": [
+        "keep the pipe full at the meter by changing the piping or location",
+        "raise the 20 mA span to match the high reading",
+        "replace the transmitter with the same model",
+        "increase the damping so the reading smooths out"
+      ],
+      "correctIndex": 0,
+      "explanation": "The meter assumes a full pipe, so the cause is the partly full pipe. The fix is a full pipe at the meter. The \"raise the 20 mA span to match the high reading\" choice adjusts the signal range, but the error comes from area, not the span. The \"replace the transmitter with the same model\" choice swaps parts when the meter is working as designed for a full pipe. The \"increase the damping so the reading smooths out\" choice hides noise but leaves a steady over-reading in place."
+    },
+    {
+      "id": "ceu-basic-instrumentation-pressure-level-flow-a5",
+      "objective": "pressure-level-flow",
+      "prompt": "A capacitance probe in a fictional tank belongs to which level method group?",
+      "choices": [
+        "From above, timing an echo off the surface",
+        "From below, sensing the weight of the water column",
+        "Electrical, sensing how the liquid changes an electric field",
+        "From above, following the surface with a float"
+      ],
+      "correctIndex": 2,
+      "explanation": "Conductance and capacitance probes are the electrical group, often used as high and low level switches. The \"From above, timing an echo off the surface\" choice describes an ultrasonic or radar sensor. The \"From below, sensing the weight of the water column\" choice describes a pressure transmitter, bubbler or diaphragm bulb. The \"From above, following the surface with a float\" choice describes a ball float."
+    },
+    {
+      "id": "ceu-basic-instrumentation-analyzers-control-a1",
+      "objective": "analyzers-control",
+      "prompt": "A fictional plant treats 1.2 MGD at a chlorine dose setpoint of 2.5 mg/L. The feeder capacity is 60 lb/day. Use 8.34 lb per gal. The feed rate as a percent of feeder capacity is:",
+      "choices": [
+        "240 percent",
+        "41.7 percent",
+        "5.0 percent",
+        "25.0 percent"
+      ],
+      "correctIndex": 1,
+      "explanation": "Feed = 2.5 x 1.2 x 8.34 = 25.0 lb/day, and 25.0 / 60 x 100 = 41.7 percent. The \"240 percent\" choice inverted the ratio by dividing capacity by feed. The \"5.0 percent\" choice left out the 8.34 factor in the pounds formula. The \"25.0 percent\" choice reported the feed in lb/day as if it were a percent."
+    },
+    {
+      "id": "ceu-basic-instrumentation-analyzers-control-a2",
+      "objective": "analyzers-control",
+      "prompt": "A fictional chlorine container falls from 1,980 lb to 1,908 lb over 4.0 hours on a scale. At that steady rate, the feed per day is:",
+      "choices": [
+        "18 lb/day",
+        "72 lb/day",
+        "288 lb/day",
+        "432 lb/day"
+      ],
+      "correctIndex": 3,
+      "explanation": "Used = 72 lb in 4.0 h, which is 18 lb/h, and 18 x 24 = 432 lb/day. The \"18 lb/day\" choice gave the rate per hour but wrote it as per day. The \"72 lb/day\" choice gave the total over 4 hours, not the daily rate. The \"288 lb/day\" choice multiplied by the hours instead of dividing."
+    },
+    {
+      "id": "ceu-basic-instrumentation-analyzers-control-a3",
+      "objective": "analyzers-control",
+      "prompt": "A fictional sample line holds 1.5 L and the sample moves through it at 0.50 L/min. The delay before the analyzer sees the water is:",
+      "choices": [
+        "3.0 minutes",
+        "0.33 minutes",
+        "2.0 minutes",
+        "0.75 minutes"
+      ],
+      "correctIndex": 0,
+      "explanation": "Delay = 1.5 L / 0.50 L/min = 3.0 minutes. The \"0.33 minutes\" choice inverted the division, flow over volume. The \"2.0 minutes\" choice added a volume to a flow rate. The \"0.75 minutes\" choice multiplied the volume by the flow instead of dividing."
+    },
+    {
+      "id": "ceu-basic-instrumentation-analyzers-control-a4",
+      "objective": "analyzers-control",
+      "prompt": "A deviation alarm in a fictional plant differs from a fixed high alarm because it trips when:",
+      "choices": [
+        "the signal falls below the 4 mA live zero",
+        "the sensor is removed for cleaning",
+        "the measurement differs from the setpoint by more than a set amount",
+        "the operator acknowledges an earlier alarm"
+      ],
+      "correctIndex": 2,
+      "explanation": "A deviation alarm compares the measurement with the setpoint, so it catches a loop that is not holding its target. The \"the signal falls below the 4 mA live zero\" choice describes a signal fault, not a deviation from the setpoint. The \"the sensor is removed for cleaning\" choice describes a maintenance state, not a comparison with the setpoint. The \"the operator acknowledges an earlier alarm\" choice confuses acknowledgement with an alarm condition."
+    },
+    {
+      "id": "ceu-basic-instrumentation-analyzers-control-a5",
+      "objective": "analyzers-control",
+      "prompt": "A fictional pH probe in a sludgy basin responds slowly and reads off after several weeks. The most consistent cause is:",
+      "choices": [
+        "too little straight pipe upstream",
+        "a coated or aged glass bulb",
+        "an alarm limit set too close to the setpoint",
+        "a flume rating that is out of date"
+      ],
+      "correctIndex": 1,
+      "explanation": "Coating and age slow a glass electrode and cause drift, which is why it needs cleaning and verification. The \"too little straight pipe upstream\" choice applies to flow meters, not to a glass electrode. The \"an alarm limit set too close to the setpoint\" choice would cause nuisance alarms, not a slow or off reading. The \"a flume rating that is out of date\" choice applies to open channel flow, not to pH."
+    },
+    {
+      "id": "ceu-basic-instrumentation-scada-troubleshooting-a1",
+      "objective": "scada-troubleshooting",
+      "prompt": "A technician measures 6.4 mA in the loop of a fictional pressure transmitter, with 4 mA at 0 psi and 20 mA at 40 psi, linear. The pressure is:",
+      "choices": [
+        "12.8 psi",
+        "16.0 psi",
+        "34.0 psi",
+        "6.0 psi"
+      ],
+      "correctIndex": 3,
+      "explanation": "(6.4 - 4) / 16 = 0.15 of range, and 0.15 x 40 psi = 6.0 psi. The \"12.8 psi\" choice divided by 20 mA without removing the live zero. The \"16.0 psi\" choice divided by the span but skipped the 4 mA offset. The \"34.0 psi\" choice read the scale from the top down."
+    },
+    {
+      "id": "ceu-basic-instrumentation-scada-troubleshooting-a2",
+      "objective": "scada-troubleshooting",
+      "prompt": "A fictional transmitter spans 0 to 15 ft (4-20 mA, linear) and sends 12.0 mA, but the PLC is scaled for 0 to 20 ft. By how much does the screen over-read?",
+      "choices": [
+        "2.5 ft",
+        "5.0 ft",
+        "7.5 ft",
+        "10.0 ft"
+      ],
+      "correctIndex": 0,
+      "explanation": "True = 0.5 x 15 = 7.5 ft, screen = 0.5 x 20 = 10.0 ft, error = 2.5 ft. The \"5.0 ft\" choice gave the difference in the configured ranges rather than in the readings. The \"7.5 ft\" choice gave the true level instead of the error. The \"10.0 ft\" choice gave the screen reading instead of the error."
+    },
+    {
+      "id": "ceu-basic-instrumentation-scada-troubleshooting-a3",
+      "objective": "scada-troubleshooting",
+      "prompt": "A fictional transmitter in a 4-20 mA loop shows 22.5 mA on a technician's meter. The best conclusion is:",
+      "choices": [
+        "the measurement is valid and above the range top",
+        "the loop wiring is open",
+        "the signal is above its normal range, which suggests an over-range or internal fault",
+        "the reading is a true zero"
+      ],
+      "correctIndex": 2,
+      "explanation": "A healthy loop stays between its limits. A current above the top points to over-range or a fault. The \"the measurement is valid and above the range top\" choice treats a value outside the signal limits as a normal reading. The \"the loop wiring is open\" choice describes a reading near 0 mA, not a high one. The \"the reading is a true zero\" choice confuses a high current with the bottom of the range."
+    },
+    {
+      "id": "ceu-basic-instrumentation-scada-troubleshooting-a4",
+      "objective": "scada-troubleshooting",
+      "prompt": "A fictional flow trend is perfectly flat with no noise for hours while pumps change speed. The best first step is to:",
+      "choices": [
+        "accept it, since steady readings mean stable flow",
+        "compare it with a portable check or related signals for a frozen input",
+        "raise the high alarm so it stops tripping",
+        "increase the damping time of the transmitter"
+      ],
+      "correctIndex": 1,
+      "explanation": "A flat, noiseless line while the process moves suggests a frozen input, so cross-check it. The \"accept it, since steady readings mean stable flow\" choice trusts a signal that real flows rarely give; real signals wobble a little. The \"raise the high alarm so it stops tripping\" choice adjusts an alarm without finding out whether the signal is real. The \"increase the damping time of the transmitter\" choice smooths noise, but this trend has none."
+    },
+    {
+      "id": "ceu-basic-instrumentation-scada-troubleshooting-a5",
+      "objective": "scada-troubleshooting",
+      "prompt": "Which statement about SCADA is correct?",
+      "choices": [
+        "It replaces the field sensor and transmitter",
+        "It is a substitute for the lockout procedure",
+        "It is the power supply for the 4-20 mA loop",
+        "It collects data, displays it and lets operators command equipment from a screen"
+      ],
+      "correctIndex": 3,
+      "explanation": "SCADA is supervisory control and data acquisition: it collects, displays and commands, and it depends on the field devices beneath it. The \"It replaces the field sensor and transmitter\" choice confuses the software with the field devices that feed it. The \"It is a substitute for the lockout procedure\" choice treats a screen as a safety isolation. The \"It is the power supply for the 4-20 mA loop\" choice confuses a data system with loop power."
+    }
+  ]
+}
