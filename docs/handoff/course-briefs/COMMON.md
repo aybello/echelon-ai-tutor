@@ -34,3 +34,6 @@ JSON parses; counts hold; ids and prompts unique; every question 4 choices; no b
 2. Build a topic list from it and check each topic against our draft (lesson and questions): YES, PART or NO.
 3. Fill every NO and PART with original content in our own words, our own scenarios and our own correct numbers, from official or standard sources. Do not copy their wording, questions, examples, images or numbers. Do not write their exact numeric limits (their safety numbers are the regulators' and are not ours to restate; use "the applicable rule sets the value").
 4. Record the gap table and what changed in the course NOTES file.
+
+## Add-on notes for the supervisor and manager courses
+Royce U supervisor and manager courses are Florida-based in their rules and use illustrative financial figures. Teach general principles. Mark any jurisdiction-specific rule "check your state's or province's rules". Never state a tax, rate, interest, staffing or certification number as universal.
