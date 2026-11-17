@@ -41,6 +41,22 @@
       "section": "Public-health context for drinking water systems and waterborne disease",
       "jurisdiction": "US public health guidance",
       "accessed": "2026-11-17"
+    },
+    {
+      "id": "epa-distribution-tools",
+      "title": "EPA: drinking water distribution system tools and resources",
+      "url": "https://www.epa.gov/dwreginfo/drinking-water-distribution-system-tools-and-resources",
+      "section": "Distribution system operation, cross-connections, residuals",
+      "jurisdiction": "United States",
+      "accessed": "2026-11-17"
+    },
+    {
+      "id": "epa-backflow-issue-paper",
+      "title": "EPA issue paper: cross-connection and backflow in the Total Coliform Rule context",
+      "url": "https://www.epa.gov/sites/default/files/2015-09/documents/2007_05_18_disinfection_tcr_issuepaper_tcr_crossconnection-backflow.pdf",
+      "section": "Cross-connections and backflow prevention",
+      "jurisdiction": "United States",
+      "accessed": "2026-11-17"
     }
   ],
   "modules": [
