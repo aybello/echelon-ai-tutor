@@ -28,6 +28,7 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import SiteNav, { ECHELON_LOGO_URL } from "@/components/SiteNav";
 import { observeCeuShellLayout } from "@/lib/ceuShellLayout";
 import { ceuModuleSlides } from "@shared/ceuSlides";
+import { getCeuCourseByKey } from "@shared/ceuCourses";
 import { ceuFinalEntry } from "@shared/ceuFinalEntry";
 import type { CeuLearningRecord, CeuQuestion } from "@shared/ceuLearning";
 import "./ContinuingEducationCourse.css";
@@ -429,7 +430,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
               <span>Continuing education</span>
               <strong>{course.shortTitle}</strong>
             </Link>
-            <small>{course.stream === "drinking_water" ? "Ontario drinking water" : "Ontario wastewater"} · Pilot learning</small>
+            <small>{getCeuCourseByKey(course.key)?.regionLabel ?? (course.stream === "drinking_water" ? "Drinking water" : "Wastewater")} · Pilot learning</small>
           </div>
           <nav className="ceu-course-context-tabs" aria-label="Course workspace navigation">
             <button type="button" aria-current={view === "overview" ? "page" : undefined} className={view === "overview" ? "is-active" : ""} onClick={() => changeView("overview")}>Overview</button>
