@@ -1,7 +1,8 @@
 import catalogue from "./ceuCatalogueData.json";
 
 export type CeuApprovalStatus =
-  "director_approval_required" | "ceu_value_review_required";
+  "director_approval_required" | "ceu_value_review_required" | "not_submitted";
+export type CeuCourseGroup = "foundations" | "applied";
 export type CeuCourseStream = "drinking_water" | "wastewater";
 
 export interface CeuCourseModule {
@@ -17,6 +18,9 @@ export interface CeuCourse {
   title: string;
   shortTitle: string;
   stream: CeuCourseStream;
+  group: CeuCourseGroup;
+  regionLabel: string;
+  cover?: { src: string; alt: string };
   approvalStatus: CeuApprovalStatus;
   statusLabel: string;
   statusDescription: string;

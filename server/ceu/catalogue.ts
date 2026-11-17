@@ -8,6 +8,8 @@ import c6 from "./courses/ceu-instrumentation-scada.json";
 import c7 from "./courses/ceu-sampling-data-quality.json";
 import c8 from "./courses/ceu-wastewater-treatment-process-control.json";
 import c9 from "./courses/ceu-water-treatment-process-control.json";
+import c10 from "./courses/ceu-basic-hydraulics.json";
+import c11 from "./courses/ceu-basic-math.json";
 import type { CeuCurriculum } from "../../shared/ceuLearning";
 export const ceuCurricula = [
   c0,
@@ -20,6 +22,8 @@ export const ceuCurricula = [
   c7,
   c8,
   c9,
+  c10,
+  c11,
 ] as CeuCurriculum[];
 export function ceuCourse(key: string) {
   return ceuCurricula.find(c => c.key === key);

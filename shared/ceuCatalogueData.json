@@ -1,5 +1,121 @@
 [
   {
+    "key": "ceu-basic-hydraulics",
+    "interestCode": "ceu-hydraulics",
+    "title": "Basic Hydraulics for Water and Wastewater Operators",
+    "shortTitle": "Basic Hydraulics",
+    "stream": "drinking_water",
+    "group": "foundations",
+    "regionLabel": "Water and wastewater \u00b7 US and Canada",
+    "cover": {
+      "src": "/ceu-covers/ceu-basic-hydraulics.jpg",
+      "alt": "A water utility worker reads the gauge on a flow-test diffuser attached to a red fire hydrant."
+    },
+    "approvalStatus": "not_submitted",
+    "statusLabel": "Not submitted for approval",
+    "statusDescription": "Foundation pilot. No approval has been requested from any state, provincial or federal authority.",
+    "plannedContactHours": 3.0,
+    "audience": "Operators and trainees across the US and Canada preparing for certification exams and renewal in water and wastewater work.",
+    "outcomes": [
+      "Distinguish static, dynamic and residual pressure and convert between psi and feet of head.",
+      "Apply Q = A x V and continuity to circular pipes and rectangular channels.",
+      "Identify what drives friction loss and interpret the Hazen-Williams C factor.",
+      "Recognise water hammer, air binding, cavitation, low pressure and valve effects from symptoms."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Pressure and head",
+        "durationMinutes": 45,
+        "summary": "Distinguish static, dynamic and residual pressure and convert between psi and feet of head. Explain gauge versus absolute pressure and pressure at depth."
+      },
+      {
+        "number": 2,
+        "title": "Flow, area and velocity",
+        "durationMinutes": 45,
+        "summary": "Apply Q = A x V and continuity to circular pipes and rectangular channels. Convert among gpm, cfs and MGD and predict velocity changes with pipe size."
+      },
+      {
+        "number": 3,
+        "title": "Friction, energy and pumps",
+        "durationMinutes": 45,
+        "summary": "Identify what drives friction loss and interpret the Hazen-Williams C factor. Build a total dynamic head, calculate water and brake horsepower and recognise operating point shifts."
+      },
+      {
+        "number": 4,
+        "title": "Common operating problems",
+        "durationMinutes": 45,
+        "summary": "Recognise water hammer, air binding, cavitation, low pressure and valve effects from symptoms. Read a pressure and flow trend and calculate tank fill and drain."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. This foundation course has not been submitted for approval to any state, provincial or federal authority. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
+    "key": "ceu-basic-math",
+    "interestCode": "ceu-basic-math",
+    "title": "Basic Math for Water and Wastewater Operators",
+    "shortTitle": "Basic Math",
+    "stream": "drinking_water",
+    "group": "foundations",
+    "regionLabel": "Water and wastewater \u00b7 US and Canada",
+    "cover": {
+      "src": "/ceu-covers/ceu-basic-math.jpg",
+      "alt": "A circular clarifier tank at sunrise with a notebook and calculator on the railing."
+    },
+    "approvalStatus": "not_submitted",
+    "statusLabel": "Not submitted for approval",
+    "statusDescription": "Foundation pilot. No approval has been requested from any state, provincial or federal authority.",
+    "plannedContactHours": 3.5,
+    "audience": "Operators and trainees across the US and Canada preparing for certification exams and renewal in water and wastewater work.",
+    "outcomes": [
+      "Convert among fractions, decimals and percents and avoid the percent-as-decimal slip.",
+      "Convert length, area, volume, time, flow, weight, concentration and temperature using stated constants.",
+      "Calculate the area of rectangles, triangles and circles and the volume of tanks, pipes, trenches and cones.",
+      "Apply the pounds formula, feed rate, detention time, loading rates, percent removal, solution strength and dilution."
+    ],
+    "modules": [
+      {
+        "number": 1,
+        "title": "Number skills and percent",
+        "durationMinutes": 53,
+        "summary": "Convert among fractions, decimals and percents and avoid the percent-as-decimal slip. Apply ratio, proportion, order of operations, powers, square roots, averages and rounding in a word problem."
+      },
+      {
+        "number": 2,
+        "title": "Units and conversions",
+        "durationMinutes": 53,
+        "summary": "Convert length, area, volume, time, flow, weight, concentration and temperature using stated constants. Use unit analysis to set up and check a conversion."
+      },
+      {
+        "number": 3,
+        "title": "Areas and volumes",
+        "durationMinutes": 52,
+        "summary": "Calculate the area of rectangles, triangles and circles and the volume of tanks, pipes, trenches and cones. Convert volume to gallons and find water depth from a known volume."
+      },
+      {
+        "number": 4,
+        "title": "Treatment-plant formulas",
+        "durationMinutes": 52,
+        "summary": "Apply the pounds formula, feed rate, detention time, loading rates, percent removal, solution strength and dilution. Check an answer for reasonableness, units and rounding."
+      }
+    ],
+    "completionRequirements": [
+      "Complete all 4 modules at your own pace. Your place is saved as you move through the slides.",
+      "Use the optional quick checks to practise; they do not affect your final grade.",
+      "Score at least 80% on the final exam. Review your results and retry if needed.",
+      "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
+    ],
+    "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. This foundation course has not been submitted for approval to any state, provincial or federal authority. Use current facility procedures and applicable requirements for operational decisions.",
+    "ctaLabel": "Request course and review updates"
+  },
+  {
     "key": "ceu-drinking-water-compliance",
     "interestCode": "ceu-compliance",
     "title": "Drinking Water Operations and Regulatory Compliance",
@@ -63,7 +179,9 @@
       "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
     ],
     "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Director approval is required before approved drinking-water CEUs can be offered. Use current facility procedures and applicable requirements for operational decisions.",
-    "ctaLabel": "Request course and review updates"
+    "ctaLabel": "Request course and review updates",
+    "group": "applied",
+    "regionLabel": "Ontario drinking water"
   },
   {
     "key": "ceu-water-treatment-process-control",
@@ -129,7 +247,9 @@
       "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
     ],
     "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Director approval is required before approved drinking-water CEUs can be offered. Use current facility procedures and applicable requirements for operational decisions.",
-    "ctaLabel": "Request course and review updates"
+    "ctaLabel": "Request course and review updates",
+    "group": "applied",
+    "regionLabel": "Ontario drinking water"
   },
   {
     "key": "ceu-wastewater-treatment-process-control",
@@ -195,7 +315,9 @@
       "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
     ],
     "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Wastewater courses are not Director approved. Use current facility procedures and applicable requirements for operational decisions.",
-    "ctaLabel": "Request course and review updates"
+    "ctaLabel": "Request course and review updates",
+    "group": "applied",
+    "regionLabel": "Ontario wastewater"
   },
   {
     "key": "ceu-sampling-data-quality",
@@ -247,7 +369,9 @@
       "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
     ],
     "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Director approval is required before approved drinking-water CEUs can be offered. Use current facility procedures and applicable requirements for operational decisions.",
-    "ctaLabel": "Request course and review updates"
+    "ctaLabel": "Request course and review updates",
+    "group": "applied",
+    "regionLabel": "Ontario drinking water"
   },
   {
     "key": "ceu-disinfection-ct",
@@ -299,7 +423,9 @@
       "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
     ],
     "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Director approval is required before approved drinking-water CEUs can be offered. Use current facility procedures and applicable requirements for operational decisions.",
-    "ctaLabel": "Request course and review updates"
+    "ctaLabel": "Request course and review updates",
+    "group": "applied",
+    "regionLabel": "Ontario drinking water"
   },
   {
     "key": "ceu-coagulation-filtration",
@@ -351,7 +477,9 @@
       "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
     ],
     "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Director approval is required before approved drinking-water CEUs can be offered. Use current facility procedures and applicable requirements for operational decisions.",
-    "ctaLabel": "Request course and review updates"
+    "ctaLabel": "Request course and review updates",
+    "group": "applied",
+    "regionLabel": "Ontario drinking water"
   },
   {
     "key": "ceu-instrumentation-scada",
@@ -365,7 +493,7 @@
     "plannedContactHours": 3,
     "audience": "Practising drinking-water operators and supervisors seeking focused applied development.",
     "outcomes": [
-      "Convert a linear 4–20 mA signal to engineering units.",
+      "Convert a linear 4\u201320 mA signal to engineering units.",
       "Normalize timestamps using a documented offset.",
       "Distinguish an alarm acknowledgement from restoration.",
       "Assemble an auditable signal-quality report."
@@ -375,7 +503,7 @@
         "number": 1,
         "title": "From electrical signal to engineering units",
         "durationMinutes": 45,
-        "summary": "Convert a linear 4–20 mA signal to engineering units. Identify mismatched configured ranges."
+        "summary": "Convert a linear 4\u201320 mA signal to engineering units. Identify mismatched configured ranges."
       },
       {
         "number": 2,
@@ -403,7 +531,9 @@
       "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
     ],
     "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Director approval is required before approved drinking-water CEUs can be offered. Use current facility procedures and applicable requirements for operational decisions.",
-    "ctaLabel": "Request course and review updates"
+    "ctaLabel": "Request course and review updates",
+    "group": "applied",
+    "regionLabel": "Ontario drinking water"
   },
   {
     "key": "ceu-distribution-water-quality",
@@ -455,7 +585,9 @@
       "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
     ],
     "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Director approval is required before approved drinking-water CEUs can be offered. Use current facility procedures and applicable requirements for operational decisions.",
-    "ctaLabel": "Request course and review updates"
+    "ctaLabel": "Request course and review updates",
+    "group": "applied",
+    "regionLabel": "Ontario drinking water"
   },
   {
     "key": "ceu-collection-wet-weather",
@@ -507,7 +639,9 @@
       "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
     ],
     "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Wastewater courses are not Director approved. Use current facility procedures and applicable requirements for operational decisions.",
-    "ctaLabel": "Request course and review updates"
+    "ctaLabel": "Request course and review updates",
+    "group": "applied",
+    "regionLabel": "Ontario wastewater"
   },
   {
     "key": "ceu-activated-sludge-troubleshooting",
@@ -559,6 +693,8 @@
       "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional."
     ],
     "publicDisclosure": "No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. Wastewater courses are not Director approved. Use current facility procedures and applicable requirements for operational decisions.",
-    "ctaLabel": "Request course and review updates"
+    "ctaLabel": "Request course and review updates",
+    "group": "applied",
+    "regionLabel": "Ontario wastewater"
   }
 ]

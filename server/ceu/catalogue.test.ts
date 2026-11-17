@@ -3,9 +3,9 @@ import { ceuCurricula, publicCeuCourse } from "./catalogue";
 import { CEU_COURSES } from "../../shared/ceuCourses";
 
 describe("CEU curriculum release integrity", () => {
-  it("has ten distinct curricula matching public metadata and planned activities", () => {
-    expect(ceuCurricula).toHaveLength(10);
-    expect(new Set(ceuCurricula.map(c => c.key)).size).toBe(10);
+  it("has twelve distinct curricula matching public metadata and planned activities", () => {
+    expect(ceuCurricula).toHaveLength(12);
+    expect(new Set(ceuCurricula.map(c => c.key)).size).toBe(12);
     expect(ceuCurricula.filter(c => c.plannedMinutes === 600)).toHaveLength(3);
     for (const c of ceuCurricula) {
       const publicCourse = CEU_COURSES.find(p => p.key === c.key)!;

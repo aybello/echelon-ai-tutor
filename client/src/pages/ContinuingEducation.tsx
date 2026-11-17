@@ -6,6 +6,7 @@ import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { CEU_COURSES, type CeuCourse } from "@shared/ceuCourses";
 import "./ContinuingEducation.css";
+import "./ContinuingEducationFoundations.css";
 
 function CourseInterestForm({ course, onClose }: { course: CeuCourse; onClose: () => void }) {
   const [email, setEmail] = useState("");
@@ -44,14 +45,19 @@ function CourseInterestForm({ course, onClose }: { course: CeuCourse; onClose: (
   );
 }
 
+const COURSE_GROUPS = [
+  { id: "foundations", title: "Foundations", note: "Core skills for every operator, US and Canada" },
+  { id: "applied", title: "Applied operator courses", note: "Ontario drinking water and wastewater" },
+] as const;
+
 function CourseCard({ course, selected, onSelect, onRequestUpdates }: { course: CeuCourse; selected: boolean; onSelect: () => void; onRequestUpdates: () => void }) {
-  const streamLabel = course.stream === "drinking_water" ? "Ontario drinking water" : "Ontario wastewater";
   return (
     <article className={`ceu-course-card ${course.stream === "wastewater" ? "is-wastewater" : ""}${selected ? " is-expanded" : ""}`}>
       <div className="ceu-course-topline">
-        <span>{streamLabel}</span>
+        <span>{course.regionLabel}</span>
         <span className="ceu-course-stage"><ShieldCheck size={14} aria-hidden="true" /> Pilot course</span>
       </div>
+      {course.cover && <img className="ceu-course-cover" src={course.cover.src} alt={course.cover.alt} width={1600} height={1067} loading="lazy" decoding="async" />}
       <div className="ceu-course-heading">
         <div>
           <h2>{course.title}</h2>
@@ -103,8 +109,8 @@ function CourseCard({ course, selected, onSelect, onRequestUpdates }: { course: 
 
 export default function ContinuingEducation() {
   usePageMeta({
-    title: "Ontario Operator Continuing Education Courses | Echelon Institute",
-    description: "Explore Echelon Institute's applied pilot courses for Ontario drinking-water and wastewater operators.",
+    title: "Operator Continuing Education Courses | Echelon Institute",
+    description: "Explore Echelon Institute's foundation and applied pilot courses for water and wastewater operators.",
   });
   const [selectedCourseKey, setSelectedCourseKey] = useState<string>("");
   const [interestCourseKey, setInterestCourseKey] = useState<string | null>(null);
@@ -118,8 +124,8 @@ export default function ContinuingEducation() {
         <section className="ceu-hero">
           <div className="ceu-hero-copy">
             <p className="ceu-eyebrow">Echelon Institute professional learning</p>
-            <h1>Ten operator courses. One place to explore.</h1>
-            <p className="ceu-hero-summary">Self-paced pilot lessons, saved progress and final assessments for Ontario water and wastewater operators.</p>
+            <h1>Twelve operator courses. One place to explore.</h1>
+            <p className="ceu-hero-summary">Self-paced pilot lessons, saved progress and final assessments for water and wastewater operators. Foundation courses apply across the US and Canada; applied courses are written for Ontario.</p>
           </div>
           <aside className="ceu-hero-panel">
             <p>Public status</p>
@@ -131,20 +137,29 @@ export default function ContinuingEducation() {
         <section className="ceu-catalogue" aria-labelledby="ceu-catalogue-title">
           <div className="ceu-section-heading">
             <p className="ceu-eyebrow">Course catalogue</p>
-            <h2 id="ceu-catalogue-title">All 10 operator courses</h2>
+            <h2 id="ceu-catalogue-title">All {CEU_COURSES.length} operator courses</h2>
             <p>Open any course to preview its lessons. Expand an outline only when you want the detail.</p>
           </div>
-          <div className="ceu-course-list">
-            {CEU_COURSES.map((course) => (
-              <CourseCard
-                key={course.key}
-                course={course}
-                selected={selectedCourse?.key === course.key}
-                onSelect={() => setSelectedCourseKey((current) => current === course.key ? "" : course.key)}
-                onRequestUpdates={() => setInterestCourseKey(course.key)}
-              />
-            ))}
-          </div>
+          {COURSE_GROUPS.map((group) => {
+            const groupCourses = CEU_COURSES.filter((course) => course.group === group.id);
+            if (!groupCourses.length) return null;
+            return (
+              <div key={group.id} className="ceu-course-group" aria-labelledby={`ceu-group-${group.id}`}>
+                <h3 id={`ceu-group-${group.id}`} className="ceu-group-title">{group.title}<span>{group.note}</span></h3>
+                <div className="ceu-course-list">
+                  {groupCourses.map((course) => (
+                    <CourseCard
+                      key={course.key}
+                      course={course}
+                      selected={selectedCourse?.key === course.key}
+                      onSelect={() => setSelectedCourseKey((current) => current === course.key ? "" : course.key)}
+                      onRequestUpdates={() => setInterestCourseKey(course.key)}
+                    />
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </section>
 
         <section className="ceu-delivery-grid" aria-labelledby="ceu-delivery-title">
@@ -155,7 +170,7 @@ export default function ContinuingEducation() {
           <div className="ceu-delivery-cards">
             <article><ClipboardCheck size={22} aria-hidden="true" /><h3>Work through the lessons</h3><p>Complete the modules one slide at a time. Your progress is saved, and quick checks are optional practice.</p></article>
             <article><FileCheck2 size={22} aria-hidden="true" /><h3>Pass and receive your certificate</h3><p>Complete every module and score at least 80% on the final exam to receive your non-credit pilot certificate automatically. Review your results and retry if needed.</p></article>
-            <article><ShieldCheck size={22} aria-hidden="true" /><h3>Approval discipline</h3><p>Drinking-water courses follow the Director-approval route. Wastewater courses follow the OWWCO course-value review route.</p></article>
+            <article><ShieldCheck size={22} aria-hidden="true" /><h3>Approval discipline</h3><p>Ontario drinking-water courses follow the Director-approval route and wastewater courses follow the OWWCO course-value review route. Foundation courses have not been submitted for approval anywhere.</p></article>
           </div>
         </section>
 
