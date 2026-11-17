@@ -55,6 +55,23 @@ describe("course-specific interactive navigation", () => {
     expect(shell).toContain('className="practice-interactive-link">🎮 Play games</Link>');
   });
 
+  it.each([
+    ["fl-water-distribution-l3", "Florida", "/us/states/florida"],
+    ["pa-class-e-water-distribution", "Pennsylvania", "/us/states/pennsylvania"],
+    ["pa-wastewater-collection-e4", "Pennsylvania", "/us/states/pennsylvania"],
+  ])("keeps the %s preview gate copy and return link in its own state", (courseKey, stateName, href) => {
+    const bank = statePracticeBank(courseKey)!;
+    expect(bank.stateName).toBe(stateName);
+    expect(`/us/states/${bank.stateName.toLowerCase()}`).toBe(href);
+    const quiz = readFileSync("client/src/pages/UsBankQuiz.tsx", "utf8");
+    expect(quiz).toContain("const bank = statePracticeBank(courseKey)!");
+    const gate = quiz.slice(quiz.indexOf("gate={"));
+    expect(gate).toContain("session.trialDone && !session.trialUnlocked");
+    expect(gate).toContain("Full {bank.stateName} course-pass sales are not available yet. No other state or Canadian pass unlocks this course.");
+    expect(gate).toContain('<a href={`/us/states/${bank.stateName.toLowerCase()}`}>Back to {bank.stateName} preparation</a>');
+    expect(gate).not.toMatch(/Pennsylvania|pennsylvania|Florida|florida/);
+  });
+
   it("does not advertise interactive activities for the active electrician course", () => {
     expect(resolveCourseKey("electrician-309a")?.isActive).toBe(true);
     expect(getCourseInteractiveHref("electrician-309a", "province=ON")).toBeUndefined();

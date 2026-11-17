@@ -121,8 +121,8 @@ export default function UsBankQuiz({ courseKey }: { courseKey: StatePracticeCour
       gate={session.trialDone && !session.trialUnlocked ? (
         <div role="status" style={{ padding: 24, background: "#0F172A", color: "white" }}>
           <h2>Free preview complete</h2>
-          <p>Full Pennsylvania course-pass sales are not available yet. No other state or Canadian pass unlocks this course.</p>
-          <a href="/us/states/pennsylvania">Back to Pennsylvania preparation</a>
+          <p>Full {bank.stateName} course-pass sales are not available yet. No other state or Canadian pass unlocks this course.</p>
+          <a href={`/us/states/${bank.stateName.toLowerCase()}`}>Back to {bank.stateName} preparation</a>
         </div>
       ) : undefined}
     />
