@@ -44,3 +44,7 @@ No exposure limits, container weights as limits, residual targets, sample counts
 - Ejector, check valve and "water in rotameter" wording is general; confirm against a manufacturer manual.
 - Scenario names (Birch Ford, Willow Gap, Fern Hollow, Cinder Flat and others) were not checked against real places.
 - M4 lesson has two figures and is close to the density limit for a 210-minute course; consider trimming if the reviewer finds it heavy.
+
+## Photos and coverage fixes (2026-11-17)
+
+Cover and two lesson photos are in `content/ceu-drafts/covers/ceu-chlorination-principles-*.jpg`, generated with gpt-image-2.6-sunburst. Lesson figures reference `/ceu-covers/<file>`; copy the files into `client/public/ceu-covers/` when the course is registered. The photos show safe practice only, and the chlorine-room photo shows an operator in breathing apparatus standing back from the containers. Checked against the Royce U checklist after the review: added the heavier-than-air point, a recognition-level health and first-aid section (including the delayed lung effect), and a line on the pressure reducing valve. Module 1 is now about 1,650 words, over the 1,500 target.
