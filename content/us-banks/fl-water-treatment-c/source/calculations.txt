@@ -1,1 +1,14 @@
 # Florida Class C water treatment: calculation rows. See docs/us-launch/US_BANK_WRITER_BRIEF.md
+@Source Water|FLHB|Raw water quality calculations
+A raw water has an alkalinity of 80 mg/L as CaCO3. Alum is fed at 24 mg/L, and assume each 1 mg/L of alum uses 0.5 mg/L of alkalinity. What alkalinity is left after the alum reacts?|Remaining alkalinity = starting alkalinity minus alum dose times 0.5|80-24*0.5|mg/L|0|56,92,3.3|m
+A river sample at the plant intake reads 59 degrees F. Use C = (F - 32) x 5/9. What is the temperature in degrees C?|Celsius = (F minus 32) times 5 divided by 9|(59-32)*5/9|degrees C|0|27,32.8,138.2|m
+@Coagulation and Flocculation|FLHB|Coagulant feed and jar test calculations
+A plant treats 2.5 MGD and the desired alum dose is 18 mg/L. Use 8.34 lb/gal. How many pounds of alum per day must be fed?|Pounds per day = flow in MGD times dose in mg/L times 8.34|2.5*18*8.34|lb/day|1|45,150.1,1.2|m
+In a jar test, 3.0 mL of a stock solution holding 10 mg of alum per mL is added to a 1.0 L jar, and this dose works best. The plant flow is 1.8 MGD. Use 8.34 lb/gal. How many pounds of alum per day are needed to match the jar dose?|Jar dose in mg/L = mL times mg per mL divided by liters, then lb/day = flow times dose times 8.34|1.8*(3*10/1)*8.34|lb/day|1|54,45,150.1|h
+A plant feeds 420 lb/day of alum and treats 3.0 MGD. Use 8.34 lb/gal. What is the alum dose in mg/L?|Dose in mg/L = pounds per day divided by (flow in MGD times 8.34)|420/(3*8.34)|mg/L|1|140,10508.4,0.1|m
+@Clarification and Sedimentation|FLHB|Basin volume, detention time, overflow rate and weir loading
+A rectangular sedimentation basin is 60 ft long, 20 ft wide and holds water 12 ft deep. Use 1 ft3 = 7.48 gal. How many gallons does the basin hold?|Gallons = length times width times depth times 7.48|60*20*12*7.48|gal|0|14400,1925,8976|m
+A basin holds 350,000 gal and receives 2.1 MGD. Use 24 hr per day. What is the detention time in hours?|Detention time in hours = volume in gal divided by flow in gal per day times 24|350000/2100000*24|hr|1|0.2,6,144|m
+A circular clarifier is 50 ft in diameter and treats 1.5 MGD. Use area = 0.785 x D x D. What is the surface overflow rate in gpd/ft2?|Overflow rate = flow in gpd divided by surface area|1500000/(0.785*50*50)|gpd/ft2|1|3057.3,0.8,1962.5|h
+A circular clarifier 40 ft in diameter has an effluent weir around its full circumference and treats 1.0 MGD. Use circumference = 3.14 x D. What is the weir loading in gpd/ft?|Weir loading = flow in gpd divided by weir length|1000000/(3.14*40)|gpd/ft|1|796.2,15923.6,25000|h
+A rectangular clarifier is 80 ft long and 25 ft wide and treats 1.6 MGD. What is the surface overflow rate in gpd/ft2 (surface area = length times width)?|Overflow rate = flow in gpd divided by surface area|1600000/(80*25)|gpd/ft2|0|15238,1,107|m
