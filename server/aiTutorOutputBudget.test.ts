@@ -176,6 +176,12 @@ describe("AI Tutor truncated explanations", () => {
     expect(retryPrompt).toContain("LENGTH CONSTRAINT FOR THIS REPLY");
     // Compactness must not be bought by dropping calculation steps.
     expect(retryPrompt).toContain("Do not skip a calculation step");
+    expect(retryPrompt).toContain("Keep each variable's meaning and unit");
+    expect(retryPrompt).toContain("selected-answer misconception");
+    expect(retryPrompt).toContain("Omit follow-up practice");
+    expect(retryPrompt).toContain('"courseKey":"class1-water"');
+    expect(retryPrompt).toContain('"stream":"water-treatment","classLevel":1');
+    expect(retryPrompt).toContain("not recalled or purported real exam questions");
   });
 
   it("retries exactly once so a learner is not left waiting on a loop", async () => {

@@ -1144,6 +1144,7 @@ export const appRouter = router({
         }
 
         const systemPrompt = buildTutorSystemPrompt({
+          courseKey: course.courseKey,
           courseName: course.displayName,
           examFamily: course.examFamily,
           // Re-resolved server-side. An unrecognized or spoofed state becomes
