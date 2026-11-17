@@ -395,7 +395,7 @@ test("admin overview is compact with unchanged summary values and closed reports
   await expect(page.locator(".admin-portal")).toHaveCSS("font-family", /Source Sans 3/);
   // The fixture review toolbar is outside the real application workspace.
   expect(await page.locator(".admin-report-details").last().evaluate(element => element.getBoundingClientRect().bottom - element.closest(".admin-portal")!.getBoundingClientRect().top)).toBeLessThan(900);
-  await page.screenshot({path:"/home/ubuntu/outputs/admin-simplify-20261116/overview-desktop.png",fullPage:true});
+  await page.screenshot({path:"test-results/ui-workspace/overview-desktop.png",fullPage:true});
   await summary.locator("article").first().locator("summary").click();
   await expect(summary).toContainText("Not net of refunds, disputes or fees.");
   const teamSummary = summary.locator("article").nth(1);
@@ -443,7 +443,7 @@ test("admin mobile drawer preserves focus containment, disclosures and selected 
   await expect(drawer.getByRole("button", {name:"Feedback",exact:true})).toBeVisible();
   await page.keyboard.press("Escape");
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
-  await page.screenshot({path:"/home/ubuntu/outputs/admin-simplify-20261116/feedback-mobile.png",fullPage:true});
+  await page.screenshot({path:"test-results/ui-workspace/feedback-mobile.png",fullPage:true});
 });
 
 test("CEU final saves answers, shows results and presents the certificate", async ({page}) => {
