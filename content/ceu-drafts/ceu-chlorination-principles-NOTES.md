@@ -18,7 +18,7 @@ Draft only. Not committed, not registered in any catalogue. Key `ceu-chlorinatio
 I confirmed page titles for 1 to 3; the CCOHS page returned a title-less response to my fetch, so its `section` text is general and needs a human check. Module 2 (arithmetic) has only weak source support (landing-level EPA pages); a reviewer should add a certifying-agency math or treatment manual if one can be confirmed. Several guessed EPA and CDC URLs returned 404 and were not used.
 
 ## Constants used
-8.34 lb per gal; 1 MGD = 1,000,000 gal per day; 1,440 min per day; 24 h per day; 1 MGD = 133,680 ft3 per day (about 92.84 cfm); 1 gal = 3.785 L; 1 lb = 0.454 kg; kg/day = mg/L x ML/d. Hypochlorite examples use 8 to 12.5 percent available chlorine and 9.4 to 10.2 lb per gal; calcium hypochlorite 65 percent; cylinder 150 lb. These are practice values; the label and procedures govern.
+8.34 lb per gal; 1 MGD = 1,000,000 gal per day; 1,440 min per day; 24 h per day; 1 MGD = 133,680 ft3 per day (about 92.83 cfm); 1 gal = 3.785 L; 1 lb = 0.454 kg; kg/day = mg/L x ML/d. Hypochlorite examples use 8 to 12.5 percent available chlorine and 9.4 to 10.2 lb per gal; calcium hypochlorite 65 percent; cylinder 150 lb. These are practice values; the label and procedures govern.
 
 ## Gap checklist (Royce U `cpp`) coverage
 | Area | Status | Where |
