@@ -6,6 +6,7 @@ import { trpc } from "@/lib/trpc";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { CEU_COURSES, type CeuCourse } from "@shared/ceuCourses";
 import "./ContinuingEducation.css";
+import "./ContinuingEducationFoundations.css";
 
 function CourseInterestForm({ course, onClose }: { course: CeuCourse; onClose: () => void }) {
   const [email, setEmail] = useState("");
