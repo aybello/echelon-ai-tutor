@@ -96,3 +96,23 @@ All agree with the text:
 - The constants are the conventional rounded operator values (2.31, 0.433, 449, 7.48, 1.547, 3,960).
 - Reviewer models saw lessons with the SVGs stripped, so the figure check is mine alone.
 - Duration (180 min) has not been validated, and no contact hours are awarded.
+
+## Second round: five added topics (2026-11-17)
+
+After comparing the course with an outside free course on the same subject, five topics were added: hydrostatics versus hydrodynamics, static suction and discharge head, priming and starting a centrifugal pump (recognition level only), specific pump types, and mud and telescoping valves. To keep the course structure unchanged (6 checks per module, 5 final questions per module in each set), eight existing questions were replaced with new ones on the added topics (checks pressure-head-c6, friction-pumps-c1, operating-problems-c4 and c6; finals pressure-head-a3, friction-pumps-a2, operating-problems-a2 and a3). Two new figures were added or redrawn: a pump-types strip and a valve strip with seven valves.
+
+The whole course was reviewed again by GPT-6.1 Sol and Gemini 4 hydrogen on a review copy with 13 planted errors (a wrong key and an altered number or explanation per unit). **Both caught all 13 (13 of 13 each).** No Opus review was done in this round because the Claude usage limit was reached; the fixes below were applied by the main session instead, and the course has had one Opus review from the first round.
+
+**Real problems found in the added content and fixed:**
+- A pneumatic ejector was labelled "kinetic". It pushes batches out with compressed air, so it is now labelled "air displacement"; jet eductor and airlift were relabelled "jet-driven" and "air-driven", and the kinetic definition was changed to say it describes impeller and propeller pumps. The pump-types figure header now reads "Kinetic and air-driven" (found by GPT and Gemini).
+- Rotary lobe pumps were described as "two lobes"; they have two synchronized lobed rotors (GPT).
+- Air binding was described as outside air only; it is now air or gas gathered in the pump (GPT). Question c3's explanation was changed to match.
+- Water hammer was described as a pressure spike only; pressure waves can also drop pressure (GPT).
+- Question c4p said the pumped liquid lubricates bearings in general; it now refers to the shaft seal (GPT).
+- Question a2p said cavitation means "the pump still delivers some flow"; reworded (GPT).
+- Question f3 said power always rises with flow on a centrifugal pump; now "for many centrifugal pumps" and "usually" (GPT).
+- Question c6t's note on axial flow pumps now says "large, low-head flows" (Gemini).
+
+**Raised again and not changed:** GPT again raised the general-theory points rejected in round one (the full total-head equation, NPSH3 margin, affinity laws as corresponding points). Gemini noted two rounding differences (a 2,037 versus 2,038 ft/s distractor in flow-velocity-a5 and a 230,624 kWh figure computed from unrounded values). These were left as nits.
+
+**Not covered:** the fixes in this round were not reviewed a second time, and priming is deliberately kept at recognition level (no start-up procedure).
