@@ -340,7 +340,7 @@ test("formula and account screens retain their original functions and approved r
   await expect(page.locator(".account-page")).toHaveCSS("color", "rgb(0, 0, 0)");
 });
 
-test("admin keeps all fifteen destinations in five native navigation sections", async ({page}) => {
+test("admin keeps all sixteen destinations in five native navigation sections", async ({page}) => {
   await page.setViewportSize({width:1280,height:844});
   await page.goto("/#/admin");
   const navigation = page.getByRole("navigation", {name:"Admin sections"});
@@ -348,11 +348,11 @@ test("admin keeps all fifteen destinations in five native navigation sections", 
   await expect(navigation.locator(":scope > .admin-sidebar-group")).toHaveCount(5);
   await expect(navigation.locator("details")).toHaveCount(4);
   await expect(navigation.locator("details[open]")).toHaveCount(0);
-  await expect(navigation.locator(".admin-sidebar-button")).toHaveCount(15);
+  await expect(navigation.locator(".admin-sidebar-button")).toHaveCount(16);
   const groups = [
     ["Customers", ["Organizations", "Captured leads", "Trial signups", "Waitlist"]],
     ["Sales", ["Sales & purchases", "Subscriptions"]],
-    ["Learning", ["Question review", "Score history", "Feedback"]],
+    ["Learning", ["Learners", "Question review", "Score history", "Feedback"]],
     ["More tools", ["System health", "Error reports", "Recovery review", "Data explorer", "Changelog"]],
   ] as const;
   for (const [group, destinations] of groups) {
@@ -419,6 +419,28 @@ test("admin overview is compact with unchanged summary values and closed reports
   const sales = page.locator(".admin-sidebar-group").filter({has:page.locator("summary", {hasText:/^Sales$/})});
   await expect(sales).toHaveAttribute("open", "");
   await expect(page.locator(".admin-priority-item")).toHaveCount(0);
+});
+
+test("compact overview shortcut opens Learners and uses isolated search and activity fixtures", async ({page}) => {
+  await page.setViewportSize({width:390,height:844});
+  await page.goto("/#/admin");
+  const shortcut = page.locator(".admin-priority-card .admin-panel-heading").getByRole("button", {name:"View learner activity →", exact:true});
+  await expect(shortcut).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  await shortcut.click();
+  await expect(page.getByRole("heading", {name:"Learners", exact:true}).first()).toBeVisible();
+  await page.getByRole("textbox", {name:"Name or email"}).fill("jordan");
+  await page.getByRole("button", {name:"Search learners", exact:true}).click();
+  await page.getByRole("button", {name:"Jordan Mercer · jordan@example.test · Account #1", exact:true}).click();
+  await expect(page.getByText("No supported activity recorded in this window.", {exact:true})).toBeVisible();
+  await expect(page.getByLabel("History window")).toHaveValue("7");
+  await page.getByLabel("History window").selectOption("30");
+  await expect(page.getByText("No supported activity recorded in this window.", {exact:true})).toBeVisible();
+  await expect(page.getByRole("alert")).toHaveCount(0);
+  await page.getByRole("button", {name:"Open navigation", exact:true}).click();
+  const learning = page.getByRole("navigation", {name:"Admin sections"}).locator("details").filter({has:page.locator("summary", {hasText:/^Learning$/})});
+  await expect(learning).toHaveAttribute("open", "");
+  await expect(learning.getByRole("button", {name:"Learners", exact:true})).toHaveAttribute("aria-current", "page");
 });
 
 test("admin mobile drawer preserves focus containment, disclosures and selected destination", async ({page}) => {

@@ -1,3 +1,4 @@
+import { recordLearnerSignIn } from "../learnerSignIn";
 /**
  * dashboardAuthRouter — legacy route name for email verification / restore access.
  *
@@ -176,6 +177,7 @@ export const dashboardAuthRouter = router({
         ? await issueSubscriptionToken({ email, examTypes: entitlements.unlockedExamTypes })
         : null;
 
+      await recordLearnerSignIn(ctx.req, { email }, "dashboard_otp");
       return {
         success: true,
         email,

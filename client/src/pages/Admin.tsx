@@ -1,3 +1,4 @@
+import AdminLearnerActivity from "@/components/AdminLearnerActivity";
 import AdminGamesActivity from "@/components/AdminGamesActivity";
 import PurchaseEmailDelivery from "@/components/PurchaseEmailDelivery";
 // ADMIN DASHBOARD — /admin
@@ -38,7 +39,7 @@ import {
 import type { LucideIcon } from "lucide-react";
 import "./admin.css";
 
-type Tab = "insights" | "leads" | "trials" | "waitlist" | "errors" | "scores" | "revenue" | "subscriptions" | "health" | "feedback" | "orgs" | "questions" | "changelog" | "recovery" | "explorer";
+type Tab = "learners" | "insights" | "leads" | "trials" | "waitlist" | "errors" | "scores" | "revenue" | "subscriptions" | "health" | "feedback" | "orgs" | "questions" | "changelog" | "recovery" | "explorer";
 type ReviewStatus = "unreviewed" | "in_review" | "approved" | "rejected";
 
 type AdminNavigationGroup = {
@@ -68,6 +69,7 @@ const ADMIN_NAVIGATION: AdminNavigationGroup[] = [
     label: "Learning",
     tabs: [
       { id: "questions", label: "Question review", icon: CircleCheck },
+      { id: "learners", label: "Learners", icon: UsersRound },
       { id: "scores", label: "Score history", icon: ChartNoAxesCombined },
       { id: "feedback", label: "Feedback", icon: MessageSquare },
     ],
@@ -617,6 +619,7 @@ export default function Admin() {
   ];
   const activeSection = ADMIN_NAVIGATION.flatMap(group => group.tabs).find(tab => tab.id === activeTab);
   const activeDescription: Record<Tab, string> = {
+    learners: "Verified learner sign-ins and recorded learning activity.",
     insights: "A clear view of revenue signals, learner activity and open work.",
     revenue: "Review stored purchase records and check Stripe for missing records.",
     subscriptions: "Review subscription records and their current lifecycle state.",
@@ -711,6 +714,7 @@ export default function Admin() {
           </div>
         )}
 
+        {activeTab === "learners" && <AdminLearnerActivity />}
         {activeTab === "insights" && (
           <>
             <section className="admin-overview-summary" aria-label="Business summary">
@@ -729,7 +733,7 @@ export default function Admin() {
             {(stats.error || kpisQ.error || businessQ.error) && <p className="admin-panel-error" role="alert">Some summary data could not be refreshed. Use Refresh to try again.</p>}
 
             <section className="admin-priority-card" aria-labelledby="priority-title">
-              <div className="admin-panel-heading"><h2 id="priority-title">Priorities</h2></div>
+              <div className="admin-panel-heading"><h2 id="priority-title">Priorities</h2><button type="button" className="admin-text-action" onClick={() => selectSection("learners")}>View learner activity →</button></div>
               <div className="admin-priority-list">
                 {founderActions.map((item) => (
                   <button key={item.number} type="button" className="admin-priority-item" onClick={() => selectSection(item.tab)}>

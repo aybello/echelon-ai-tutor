@@ -1,3 +1,4 @@
+import { recordLearnerSignIn } from "../learnerSignIn";
 import { COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
 import type { Express, Request, Response } from "express";
 import * as db from "../db";
@@ -45,6 +46,7 @@ export function registerOAuthRoutes(app: Express) {
       const cookieOptions = getSessionCookieOptions(req);
       res.cookie(COOKIE_NAME, sessionToken, { ...cookieOptions, maxAge: ONE_YEAR_MS });
 
+      await recordLearnerSignIn(req, { openId: userInfo.openId }, "oauth");
       // Redirect to a small HTML page that reads the return path from sessionStorage
       // and navigates there, falling back to homepage
       res.send(`<!DOCTYPE html>
