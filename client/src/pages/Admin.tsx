@@ -728,7 +728,6 @@ export default function Admin() {
             </section>
             {(stats.error || kpisQ.error || businessQ.error) && <p className="admin-panel-error" role="alert">Some summary data could not be refreshed. Use Refresh to try again.</p>}
 
-            <AdminGamesActivity />
             <section className="admin-priority-card" aria-labelledby="priority-title">
               <div className="admin-panel-heading"><h2 id="priority-title">Priorities</h2></div>
               <div className="admin-priority-list">
@@ -909,6 +908,7 @@ export default function Admin() {
               </tr></tbody></table><p className="admin-ceu-disclosure">Certificate views are measured from this release onward. Public views and failed network saves are not included in these record-based counts.</p></div>}
             </section>
             </details>
+            <AdminGamesActivity />
           </>
         )}
 

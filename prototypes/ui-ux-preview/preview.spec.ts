@@ -395,6 +395,15 @@ test("admin overview is compact with unchanged summary values and closed reports
   await expect(page.locator(".admin-portal")).toHaveCSS("font-family", /Source Sans 3/);
   // The fixture review toolbar is outside the real application workspace.
   expect(await page.locator(".admin-report-details").last().evaluate(element => element.getBoundingClientRect().bottom - element.closest(".admin-portal")!.getBoundingClientRect().top)).toBeLessThan(900);
+  const games = page.getByRole("region", {name:"Games activity", exact:true});
+  await expect(games.getByRole("status")).toContainText("No tracked course-game answers in this period.");
+  expect(await games.evaluate(element => element.previousElementSibling?.matches("details.admin-report-details"))).toBe(true);
+  await expect(games.getByRole("combobox", {name:"Period"})).toHaveValue("30");
+  await games.getByRole("combobox", {name:"Period"}).selectOption("7");
+  await expect(games.getByRole("status")).toContainText("No tracked course-game answers in this period.");
+  await expect(games.getByRole("combobox", {name:"Period"})).toHaveValue("7");
+  await games.getByRole("combobox", {name:"Period"}).selectOption("30");
+  await expect(games.getByRole("status")).toContainText("No tracked course-game answers in this period.");
   await page.screenshot({path:"test-results/ui-workspace/overview-desktop.png",fullPage:true});
   await summary.locator("article").first().locator("summary").click();
   await expect(summary).toContainText("Not net of refunds, disputes or fees.");
