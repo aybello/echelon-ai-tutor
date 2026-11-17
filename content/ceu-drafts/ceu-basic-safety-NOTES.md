@@ -48,3 +48,32 @@ Reviewer notes: the gas-position figure is schematic (mixing and ventilation cha
 - Module 3 notes that a locate service does not make a trench safe; the one-call service name varies by region and is described generically.
 - The question explanations are generated from a lead sentence plus one "The ... choice" clause per distractor, so wording is formulaic; the rest of the text is hand-written.
 - The evidence scenarios use a fictional meter reading (3,000 ppm) and trench depth (8 ft) that appear in the facilitator guides and rubrics only.
+
+## Gap closure (Royce U `bsp` comparison, 2026-11-17)
+Gap list from `docs/handoff/gap-reports/basic-safety.md`. All additions are original wording and fictional scenarios; no Royce U wording, questions, examples or numbers were used, and no numeric safety limit is stated (the lessons say the applicable rule, permit or program sets the value).
+
+| Gap | Status | Where |
+| --- | --- | --- |
+| SCBA and IDLH | closed (recognition only) | Module 2, new section "Breathing apparatus and classified areas"; checks c4, a2 |
+| Explosion-proof equipment, classified areas | closed (recognition only) | Module 2, same section; a5 |
+| Hydrogen peroxide | closed | Module 4 table row and first aid line; a1 |
+| Cross-connection, non-potable marking | closed | Module 4 new section; c1, a4 |
+| Food and laboratory contamination | closed | Module 4 new section; a5 |
+| Sandblasting | closed | Module 1 new section "Dust, abrasive blasting, paint and solvents"; c5 |
+| Paint and solvents | closed | Module 1 same section |
+| Respirator fit test and medical review | closed | Module 1 PPE section; c6 |
+| PPE grades (hard hat, eyes, hearing, feet) | closed | Module 1 PPE section |
+| Toe-boards, falling objects, stacking | closed | Module 1 housekeeping section; a4 |
+| Vaccinations, hand washing, animal and insect bites | closed | Module 1 new section "Biological hazards and hygiene"; a5 |
+| Testing atmosphere types, ventilation and purge, attendant, harness and lifeline | closed | Module 2 safeguard table; a1 |
+| Grounding, GFCI, extension cords | closed | Module 3 new section; a4, a5 |
+| Welding and hot work, arc screens, filter lenses | closed | Module 3 new section; a2 |
+| Cranes, hoists, rigging; power tools | closed | Module 3 new section and tools paragraph; a1 |
+| De-energizing awareness | kept at recognition level (assume energized until verified) | Module 3 |
+| Batteries and electrolyte; cylinder regulators | closed | Module 4 "Cylinders, batteries and containers" |
+| First aid and CPR awareness | closed (awareness only) | Module 4 first aid section |
+| Fire classes, extinguishers, response order, ignition sources and smoking | closed (awareness only) | Module 4 fire section |
+
+Replaced questions (16, each keeps the original correct-answer position): hazard-ppe c5, c6, a4, a5; confined-atmosphere c4, a1, a2, a5; excavation-energy a1, a2, a4, a5; chemical-emergency c1, a1, a4, a5. Counts unchanged: 4 modules, 24 checks, 20 finals, 20 alternates, positions balanced (6/6/6/6 checks, 5/5/5/5 finals and alternates), 180 minutes, unique ids and prompts, four choices each, no banned words in options.
+
+Lesson words (text only, no SVG, table pipes excluded) are now 1,500 / 1,470 / 1,477 / 1,545 (module 4 is slightly over the target) after trimming padding in every module; headings per lesson 10 / 9 / 12 / 12. Each module gained one objective for the new topics. Evidence, rubrics and facilitator guides were not changed. Calculations and lesson figures (0.25 percent, 3,000 ppm, 12 and 10, 2.44 m, 8 days, 5.4 kg, 44 kg) were recomputed with `python3 -I` and match. No new sources were added; the new topics rest on standard operator teaching and are not tied to a verified URL, so a reviewer should confirm the SCBA, IDLH, explosion-proof, hydrogen peroxide, cross-connection and fire-class statements. Not recorded as numbers or procedures: nothing in these sections gives a limit, schedule or step list. Still NO: none. Pre-existing questions where the correct option is the longest (unchanged this pass): confined-atmosphere-c1, chemical-emergency-c2, chemical-emergency-c5, confined-atmosphere-f2, chemical-emergency-f3.

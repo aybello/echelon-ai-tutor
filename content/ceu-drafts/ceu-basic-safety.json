@@ -490,7 +490,7 @@
           "choices": [
             "A valve that links two treated water storage tanks to each other",
             "A fitting that couples two sections of the same water main pipe",
-            "A link between drinking water and a source that could contaminate it",
+            "A link from drinking water to a source of contamination",
             "A cross-shaped pipe fitting used where two water mains meet"
           ],
           "correctIndex": 2,
