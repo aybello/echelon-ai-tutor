@@ -177,7 +177,9 @@ for (const width of [1280, 390]) {
     await mockAdminHistory(page);
     await page.goto('/admin');
     if (width < 1024) await page.getByRole('button', { name: 'Open navigation', exact: true }).click();
-    await page.getByRole('button', { name: 'Score history', exact: true }).click();
+    const navigation = page.getByRole('navigation', { name: 'Admin sections', exact: true });
+    await navigation.locator('summary').filter({ hasText: /^Learning$/ }).click();
+    await navigation.getByRole('button', { name: 'Score history', exact: true }).click();
     const history = page.getByRole('region', { name: 'Exam score history', exact: true });
     await expect(history).toBeVisible();
     await expect(history.getByRole('columnheader', { name: 'Learner', exact: true })).toBeVisible();
@@ -213,7 +215,9 @@ for (const width of [1280, 390]) {
 test('admin history reports a load error instead of an empty result', async ({ page }) => {
   await mockAdminHistory(page, 'admin', true);
   await page.goto('/admin');
-  await page.getByRole('button', { name: 'Score history', exact: true }).click();
+  const navigation = page.getByRole('navigation', { name: 'Admin sections', exact: true });
+  await navigation.locator('summary').filter({ hasText: /^Learning$/ }).click();
+  await navigation.getByRole('button', { name: 'Score history', exact: true }).click();
   await expect(page.getByRole('alert')).toContainText('Score history could not be loaded');
   await expect(page.getByText('No exam results yet.', { exact: true })).toHaveCount(0);
 });
