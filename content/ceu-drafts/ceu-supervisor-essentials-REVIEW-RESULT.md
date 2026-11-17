@@ -110,3 +110,20 @@ GPT-6.2 Sol, GPT-6.2 Astra and Gemini 4 hydrogen reviewed review copies, not the
 - I recomputed every calculation with `python3 -I`: the lesson examples, evidence and facilitator values, and all 16 numeric questions with each distractor's derivation. The only problems were the explanation and stem issues listed above.
 - The NOTES file was not updated (outside this task's scope). Lesson word counts changed by a few words.
 - These fixes were not reviewed by a second model.
+
+## Second-model check of the fixes (after the Opus pass)
+
+GPT-6.2 Sol and Gemini 4 hydrogen re-read only what the Opus pass changed: 28 questions and the four lessons. The diagrams were unchanged (compared before and after), so none were re-rendered.
+
+- **Gemini 4 hydrogen:** no problems found in the changed questions or lessons. It re-checked the worked-example arithmetic and found it correct. Two nits: the "documentation loop" label on the roster note, and a "manager on leave" distractor in stepping-into-role-a5 that adds a fact the stem does not state.
+- **GPT-6.2 Sol:** no wrong keys, no arithmetic errors, no two-correct-answer problems. All the numbers it recomputed matched (for example 24 / 4 = 6, 15 / 40 = 37.5 percent, 168 / 32.4 rounded up to 6, 9 x 25 x 2 / 60 = 7.5 hours, 320,000 x 0.15 = 48,000). Its other points were assumptions and wording, listed below.
+
+Not applied, left for the next round (per the handoff, fix once and record leftovers):
+- Stems that could state one more assumption: management-styles-c5 (operators per supervisor, and 4 / 24 is a rounded 0.17), stepping-into-role-f3 (policy lets the supervisor handle a friend's attendance issue), stepping-into-role-f5 (the routine fault is the supervisor's to assign) and stepping-into-role-a1 (facts about Pat's independent judgement).
+- Wording points: capital-budget approver in stepping-into-role-c4; the choice in responsibility-accountability-c5 and the choice in responsibility-accountability-f2; the poor-performer sequence is presented as fixed; "consistent treatment" versus accommodation rules; the Legionella and "responsible charge" sentences; two gross-versus-net time points in worked examples.
+- Nits: the staffing figures are planning minimums, not proof of coverage; the "documentation loop" label; the "manager on leave" distractor.
+
+None of these changes a key. They are candidates for a next round if someone wants the questions tighter.
+
+## Sources re-checked
+All four sources returned HTTP 200 on 2026-11-17 after the fixes (`curl -sIL -m 20`).

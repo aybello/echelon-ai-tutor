@@ -51,3 +51,6 @@ Nothing in the checklist was left out. Module 4 content (delegation, coaching, p
 - Lesson 1 and 4 mention typical authority and discipline steps in general terms; labour agreements may change them, which the lessons say.
 - Source 3 and 4 are Canadian occupational-safety pages used for the general idea of supervisor duties and factual records; a reviewer may want a US supervision source (for example a state operator-training page) added.
 - The documentation-loop and escalation figures show a conceptual process only, not a facility procedure.
+
+## Review status (added after review)
+Reviewed 2026-11-17: planted-error review by GPT-6.2 Sol, GPT-6.2 Astra and Gemini 4 hydrogen (12 of 12 planted errors caught by each), then Opus read the real draft and applied the real fixes, then a second check by GPT-6.2 Sol and Gemini on the edited parts. See `ceu-supervisor-essentials-REVIEW-RESULT.md`. All four sources re-checked at HTTP 200 after the fixes. Diagrams unchanged. Still not registered in the catalogue and not live.
