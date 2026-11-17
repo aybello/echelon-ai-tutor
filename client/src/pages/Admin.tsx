@@ -48,10 +48,8 @@ type AdminNavigationGroup = {
 const ADMIN_NAVIGATION: AdminNavigationGroup[] = [
   { label: "Overview", tabs: [{ id: "insights", label: "Business overview", icon: LayoutDashboard }] },
   {
-    label: "Customers & sales",
+    label: "Customers",
     tabs: [
-      { id: "revenue", label: "Sales & purchases", icon: CreditCard },
-      { id: "subscriptions", label: "Subscriptions", icon: Repeat2 },
       { id: "orgs", label: "Organizations", icon: Building2 },
       { id: "leads", label: "Captured leads", icon: Mail },
       { id: "trials", label: "Trial signups", icon: Mail },
@@ -59,21 +57,28 @@ const ADMIN_NAVIGATION: AdminNavigationGroup[] = [
     ],
   },
   {
-    label: "Learning & content",
+    label: "Sales",
+    tabs: [
+      { id: "revenue", label: "Sales & purchases", icon: CreditCard },
+      { id: "subscriptions", label: "Subscriptions", icon: Repeat2 },
+    ],
+  },
+  {
+    label: "Learning",
     tabs: [
       { id: "questions", label: "Question review", icon: CircleCheck },
       { id: "scores", label: "Score history", icon: ChartNoAxesCombined },
       { id: "feedback", label: "Feedback", icon: MessageSquare },
-      { id: "changelog", label: "Changelog", icon: FileText },
     ],
   },
   {
-    label: "Operations & data",
+    label: "More tools",
     tabs: [
-      { id: "errors", label: "Error reports", icon: TriangleAlert },
       { id: "health", label: "System health", icon: Activity },
+      { id: "errors", label: "Error reports", icon: TriangleAlert },
       { id: "recovery", label: "Recovery review", icon: ShieldCheck },
       { id: "explorer", label: "Data explorer", icon: Database },
+      { id: "changelog", label: "Changelog", icon: FileText },
     ],
   },
 ];
@@ -423,6 +428,11 @@ export default function Admin() {
   }, [isMobileNavigation]);
 
   useEffect(() => {
+    const selectedGroup = navigationPanelRef.current?.querySelector<HTMLButtonElement>("button[aria-current='page']")?.closest("details");
+    if (selectedGroup) selectedGroup.open = true;
+  }, [activeTab, loading, user?.role]);
+
+  useEffect(() => {
     if (!navigationOpen || !isMobileNavigation) return;
     const previousOverflow = document.body.style.overflow;
     const panel = navigationPanelRef.current;
@@ -435,7 +445,7 @@ export default function Admin() {
         return;
       }
       if (event.key !== "Tab" || !panel) return;
-      const focusable = Array.from(panel.querySelectorAll<HTMLElement>("button:not([disabled]), a[href]"));
+      const focusable = Array.from(panel.querySelectorAll<HTMLElement>("button:not([disabled]), a[href], summary")).filter(element => element.getClientRects().length > 0);
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
       if (!first || !last) return;
@@ -624,7 +634,7 @@ export default function Admin() {
   };
 
   return (
-    <div className="admin-portal ops-admin-surface" style={{ minHeight: "100vh", background: "#F3F7F9", fontFamily: "'Sora', sans-serif", color: "#15283A" }}>
+    <div className="admin-portal ops-admin-surface admin-simplified" style={{ minHeight: "100vh", background: "#F3F7F9", fontFamily: "'Sora', sans-serif", color: "#15283A" }}>
       <a className="admin-skip-link" href="#admin-main-content">Skip to content</a>
       <style>{`
         .admin-row:hover { background: rgba(0,0,0,0.04) !important; }
@@ -653,15 +663,20 @@ export default function Admin() {
             <button type="button" className="admin-sidebar-close" aria-label="Close navigation" onClick={() => setNavigationOpen(false)}><X size={20} aria-hidden="true" /></button>
           </div>
           <nav className="admin-sidebar-navigation" aria-label="Admin sections">
-            {ADMIN_NAVIGATION.map(group => (
-              <section className="admin-sidebar-group" key={group.label} aria-label={group.label}>
-                <h2>{group.label}</h2>
-                {group.tabs.map(tab => {
-                  const Icon = tab.icon;
-                  return <button className="admin-sidebar-button" aria-current={activeTab === tab.id ? "page" : undefined} key={tab.id} type="button" onClick={() => selectSection(tab.id)}><Icon size={17} aria-hidden="true" /><span>{tab.label}</span></button>;
-                })}
-              </section>
-            ))}
+            {ADMIN_NAVIGATION.map(group => {
+              const destinations = group.tabs.map(tab => {
+                const Icon = tab.icon;
+                return <button className="admin-sidebar-button" aria-current={activeTab === tab.id ? "page" : undefined} key={tab.id} type="button" onClick={() => selectSection(tab.id)}><Icon size={17} aria-hidden="true" /><span>{tab.label}</span></button>;
+              });
+              return group.label === "Overview" ? (
+                <section className="admin-sidebar-group" key={group.label} aria-label={group.label}>{destinations}</section>
+              ) : (
+                <details className="admin-sidebar-group" key={group.label}>
+                  <summary>{group.label}</summary>
+                  <div className="admin-sidebar-children">{destinations}</div>
+                </details>
+              );
+            })}
           </nav>
           <div className="admin-sidebar-footer">
             <div className="admin-sidebar-user"><UsersRound size={17} aria-hidden="true" /><span>{user.name ?? user.email}</span></div>
@@ -678,32 +693,17 @@ export default function Admin() {
           <div className="admin-content-inner">
         {/* Page header */}
         {activeTab === "insights" ? (
-          <section className="admin-founder-header" aria-labelledby="admin-founder-title">
-            <div className="admin-founder-topline">
-              <div className="admin-eyebrow">Founder view <span aria-hidden="true">/</span> All Echelon</div>
-              <div className="admin-founder-controls">
-                <span className="admin-founder-period">Mixed reporting windows</span>
-                <button className="admin-btn admin-refresh-button" onClick={refreshActiveSection} disabled={stats.isFetching || kpisQ.isFetching}>
-                  {stats.isFetching || kpisQ.isFetching ? "Refreshing…" : "Refresh view"}
-                </button>
-              </div>
-            </div>
-            <div className="admin-founder-title-row">
-              <div>
-                <p className="admin-section-label">Founder decision surface</p>
-                <h1 id="admin-founder-title">Make the <em>next right move</em>,<br />with evidence.</h1>
-              </div>
-              <div className="admin-founder-purpose">
-                <strong>Purpose of this screen</strong>
-                <p>Show the few revenue, learner, and operations decisions that deserve attention before opening a full report.</p>
-              </div>
-            </div>
-          </section>
+          <header className="admin-overview-header">
+            <h1 id="admin-founder-title">Overview</h1>
+            <button className="admin-btn admin-refresh-button" onClick={refreshActiveSection} disabled={stats.isFetching || kpisQ.isFetching}>
+              {stats.isFetching || kpisQ.isFetching ? "Refreshing…" : "Refresh"}
+            </button>
+          </header>
         ) : (
           <div className="admin-header" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 26, gap: 16 }}>
             <div>
               <div className="admin-eyebrow">Echelon / administration</div>
-              <h1 style={{ fontSize: "clamp(27px, 3vw, 38px)", fontWeight: 800, margin: "5px 0 6px" }}>{activeSection?.label}</h1>
+              <h1 style={{ fontSize: "clamp(24px, 2vw, 28px)", fontWeight: 800, margin: "5px 0 6px" }}>{activeSection?.label}</h1>
               <p style={{ fontSize: 14, color: "#526779", margin: 0 }}>{activeDescription[activeTab]}</p>
             </div>
             <button className="admin-btn admin-refresh-button" onClick={refreshActiveSection}>Refresh</button>
@@ -712,79 +712,56 @@ export default function Admin() {
 
         {activeTab === "insights" && (
           <>
-            <div className="admin-founder-layout">
-              <section className="admin-ledger-card" aria-labelledby="decision-ledger-title">
-                <div className="admin-panel-heading">
-                  <div>
-                    <p className="admin-section-label">Decision ledger</p>
-                    <h2 id="decision-ledger-title">What needs a founder decision?</h2>
-                    <p>Each measure shows a defined source, an honest current value, and its fastest useful next step.</p>
-                  </div>
-                  <span className="admin-live-marker">{kpisQ.isFetching || stats.isFetching ? "UPDATING" : kpisQ.error || stats.error ? "REFRESH NEEDED" : "STORED RECORDS"}</span>
-                </div>
-                <div className="admin-ledger-table-wrap" role="region" aria-label="Founder decision ledger" tabIndex={0}>
-                  <table className="admin-ledger-table">
-                    <thead>
-                      <tr><th scope="col">Measure</th><th scope="col">Current</th><th scope="col">Meaning</th><th scope="col">Next action</th></tr>
-                    </thead>
-                    <tbody>
-                      {founderLedgerRows.map((row) => (
-                        <tr key={row.label}>
-                          <th scope="row">{row.label}</th>
-                          <td className="admin-ledger-value">{stats.isLoading || kpisQ.isLoading ? "…" : row.value}</td>
-                          <td>{row.definition}</td>
-                          <td><button type="button" className="admin-text-action" onClick={() => selectSection(row.tab)}>{row.action}</button></td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </section>
-
-              <aside className="admin-founder-aside" aria-label="Founder operating principles">
-                <section className="admin-trust-panel">
-                  <p className="admin-section-label">Trust layer</p>
-                  <h2>No metric without a trail.</h2>
-                  <p>Every decision stays tied to a period, a definition, and a source you can inspect.</p>
-                  <ol>
-                    <li><strong>Period and denominator</strong><span>Percentages state who is counted and which time window applies.</span></li>
-                    <li><strong>Source and freshness</strong><span>Consequential numbers come from stored operational records, not copied figures.</span></li>
-                    <li><strong>Human action</strong><span>Recommendations never quietly change money, access, or learner records.</span></li>
-                  </ol>
-                  <button type="button" className="admin-trust-link" onClick={() => selectSection("explorer")}>Open Data Explorer</button>
-                </section>
-
-                <section className="admin-operating-health" aria-labelledby="operating-health-title">
-                  <div className="admin-operating-heading"><h2 id="operating-health-title">Operating health</h2><span>Mixed windows</span></div>
-                  <div className="admin-operating-grid">
-                    {operatingMetrics.map((metric) => (
-                      <button key={metric.label} type="button" className="admin-operating-metric" onClick={() => selectSection(metric.tab)}>
-                        <span>{metric.label}</span>
-                        <strong>{kpisQ.isLoading || stats.isLoading ? "…" : metric.value}</strong>
-                        <small>{metric.note}</small>
-                      </button>
-                    ))}
-                  </div>
-                </section>
-              </aside>
-            </div>
+            <section className="admin-overview-summary" aria-label="Business summary">
+              {founderLedgerRows.map(row => (
+                <article className="admin-summary-metric" key={row.label}>
+                  <h2>{row.label}</h2>
+                  <strong>{stats.isLoading || kpisQ.isLoading ? "…" : row.value}</strong>
+                  <details className="admin-metric-definition">
+                    <summary>Definition and period</summary>
+                    <p>{row.definition}</p>
+                    <button type="button" className="admin-text-action" onClick={() => selectSection(row.tab)}>{row.action}</button>
+                  </details>
+                </article>
+              ))}
+            </section>
+            {(stats.error || kpisQ.error || businessQ.error) && <p className="admin-panel-error" role="alert">Some summary data could not be refreshed. Use Refresh to try again.</p>}
 
             <section className="admin-priority-card" aria-labelledby="priority-title">
-              <div className="admin-panel-heading admin-priority-heading">
-                <div>
-                  <p className="admin-section-label">Needs attention</p>
-                  <h2 id="priority-title">The work that changes the next outcome.</h2>
-                  <p>These are deliberate entry points, not an unfiltered alert feed.</p>
-                </div>
-                <span className="admin-priority-count">{founderActions.length} FOCUS AREAS</span>
+              <div className="admin-panel-heading"><h2 id="priority-title">Priorities</h2></div>
+              <div className="admin-priority-list">
+                {founderActions.map((item) => (
+                  <button key={item.number} type="button" className="admin-priority-item" onClick={() => selectSection(item.tab)}>
+                    <span className="admin-priority-number">{item.number}</span>
+                    <span className="admin-priority-copy"><strong>{item.title}</strong><small>{item.detail}</small></span>
+                    <span className="admin-priority-meta"><small>{item.status}</small><b>{item.action}</b></span>
+                  </button>
+                ))}
               </div>
             </section>
 
+            <details className="admin-report-details">
+              <summary>More business and learning metrics</summary>
+              <div className="admin-operating-heading"><h2>Operating metrics</h2><span>Mixed windows</span></div>
+              <div className="admin-operating-grid">
+                {operatingMetrics.map((metric) => (
+                  <button key={metric.label} type="button" className="admin-operating-metric" onClick={() => selectSection(metric.tab)}>
+                    <span>{metric.label}</span>
+                    <strong>{kpisQ.isLoading || stats.isLoading ? "…" : metric.value}</strong>
+                    <small>{metric.note}</small>
+                  </button>
+                ))}
+              </div>
+              <div className="admin-report-footer"><button type="button" className="admin-text-action" onClick={() => selectSection("explorer")}>Open Data Explorer</button></div>
+            </details>
+
+            <details className="admin-report-details">
+              <summary>Team orders and revenue</summary>
             <section className="admin-ledger-card" aria-labelledby="business-pipeline-title">
               <div className="admin-panel-heading">
                 <div>
                   <p className="admin-section-label">Business revenue</p>
-                  <h2 id="business-pipeline-title">Which employers are buying, and who stopped short.</h2>
+                  <h2 id="business-pipeline-title">Team orders</h2>
                   <p>Team money is paid through Stripe but stored outside the purchases table. Internal accounts are excluded so the pipeline reflects real demand.</p>
                 </div>
                 <span className="admin-live-marker">{businessQ.isFetching ? "UPDATING" : businessQ.error ? "REFRESH NEEDED" : "STORED RECORDS"}</span>
@@ -836,23 +813,10 @@ export default function Admin() {
               </div>
             </section>
 
-            <section className="admin-priority-card" aria-label="Founder priorities">
-              <div className="admin-priority-list">
-                {founderActions.map((item) => (
-                  <button key={item.number} type="button" className="admin-priority-item" onClick={() => selectSection(item.tab)}>
-                    <span className="admin-priority-number">{item.number}</span>
-                    <span className="admin-priority-copy"><strong>{item.title}</strong><small>{item.detail}</small></span>
-                    <span className="admin-priority-meta"><small>{item.status}</small><b>{item.action}</b></span>
-                  </button>
-                ))}
-              </div>
-              <div className="admin-priority-note">
-                <span>REVENUE / NEXT STEP</span>
-                <strong>Use the source and denominator before treating a rate as a decision signal.</strong>
-                <p>Checkout event ratios show recorded event counts. A matched conversion cohort needs identity and timing rules before it can guide a decision.</p>
-              </div>
-            </section>
+            </details>
 
+            <details className="admin-report-details">
+              <summary>Product metrics · last 30 days</summary>
             <section className="admin-product-scorecard" aria-labelledby="product-scorecard-title">
               <div className="admin-product-scorecard-header">
                 <div>
@@ -926,6 +890,10 @@ export default function Admin() {
               )}
             </section>
 
+            </details>
+
+            <details className="admin-report-details">
+              <summary>Continuing education · last 30 days</summary>
             <section className="admin-ceu-summary" aria-labelledby="ceu-summary-title">
               <div>
                 <p className="admin-section-label">Continuing education pilot</p>
@@ -938,6 +906,7 @@ export default function Admin() {
                 {[ceuKpisQ.data.enrollments, ceuKpisQ.data.learningStarted, ceuKpisQ.data.modulesCompleted, ceuKpisQ.data.finalStarted, ceuKpisQ.data.finalSubmitted, ceuKpisQ.data.retries, ceuKpisQ.data.completed, ceuKpisQ.data.certificatesViewed, `${ceuKpisQ.data.evaluations} ratings (${ceuKpisQ.data.averageRating ?? "—"}/5)`].map((value, index) => <td key={index}>{value}</td>)}
               </tr></tbody></table><p className="admin-ceu-disclosure">Certificate views are measured from this release onward. Public views and failed network saves are not included in these record-based counts.</p></div>}
             </section>
+            </details>
           </>
         )}
 

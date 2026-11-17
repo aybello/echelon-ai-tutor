@@ -340,36 +340,110 @@ test("formula and account screens retain their original functions and approved r
   await expect(page.locator(".account-page")).toHaveCSS("color", "rgb(0, 0, 0)");
 });
 
-test("admin keeps all fifteen sections and a keyboard-accessible mobile drawer", async ({page}) => {
+test("admin keeps all fifteen destinations in five native navigation sections", async ({page}) => {
+  await page.setViewportSize({width:1280,height:844});
+  await page.goto("/#/admin");
+  const navigation = page.getByRole("navigation", {name:"Admin sections"});
+  await expect(page.getByRole("heading", {name:"Overview", exact:true})).toBeVisible();
+  await expect(navigation.locator(":scope > .admin-sidebar-group")).toHaveCount(5);
+  await expect(navigation.locator("details")).toHaveCount(4);
+  await expect(navigation.locator("details[open]")).toHaveCount(0);
+  await expect(navigation.locator(".admin-sidebar-button")).toHaveCount(15);
+  const groups = [
+    ["Customers", ["Organizations", "Captured leads", "Trial signups", "Waitlist"]],
+    ["Sales", ["Sales & purchases", "Subscriptions"]],
+    ["Learning", ["Question review", "Score history", "Feedback"]],
+    ["More tools", ["System health", "Error reports", "Recovery review", "Data explorer", "Changelog"]],
+  ] as const;
+  for (const [group, destinations] of groups) {
+    const disclosure = navigation.locator("details").filter({has:page.locator("summary", {hasText:new RegExp(`^${group}$`)})});
+    await disclosure.locator("summary").focus();
+    await page.keyboard.press("Enter");
+    await expect(disclosure).toHaveAttribute("open", "");
+    for (const label of destinations) {
+      const destination = navigation.getByRole("button", {name:label, exact:true});
+      await destination.click();
+      await expect(destination).toHaveAttribute("aria-current", "page");
+      await expect(destination).toBeFocused();
+      await expect(page.getByRole("heading", {name:label, exact:true}).first()).toBeVisible();
+      // Wait for the synthetic transport too, not only the synchronous header.
+      await page.waitForTimeout(180);
+      await expect(page.locator(".admin-portal")).toBeVisible();
+      await expect(disclosure).toHaveAttribute("open", "");
+    }
+    await disclosure.locator("summary").focus();
+    await page.keyboard.press("Space");
+    await expect(disclosure).not.toHaveAttribute("open", "");
+  }
+  await navigation.getByRole("button", {name:"Business overview",exact:true}).click();
+  await expect(page.getByRole("heading", {name:"Overview",exact:true})).toBeVisible();
+});
+
+test("admin overview is compact with unchanged summary values and closed reports", async ({page}) => {
+  await page.setViewportSize({width:1440,height:900});
+  await page.goto("/#/admin");
+  const summary = page.getByRole("region", {name:"Business summary"});
+  await expect(summary).toContainText("CA$1980.00");
+  await expect(summary).toContainText("CA$400.00");
+  await expect(summary).toContainText("1 · CA$179.00");
+  await expect(summary).toContainText("66.7%");
+  await expect(summary).toContainText("60%");
+  await expect(page.locator(".admin-report-details")).toHaveCount(4);
+  await expect(page.locator(".admin-report-details[open], .admin-metric-definition[open]")).toHaveCount(0);
+  await expect(page.locator(".admin-priority-item")).toHaveCount(3);
+  await expect(page.locator("#admin-founder-title")).toHaveCSS("font-family", /Manrope/);
+  await expect(page.locator(".admin-portal")).toHaveCSS("font-family", /Source Sans 3/);
+  // The fixture review toolbar is outside the real application workspace.
+  expect(await page.locator(".admin-report-details").last().evaluate(element => element.getBoundingClientRect().bottom - element.closest(".admin-portal")!.getBoundingClientRect().top)).toBeLessThan(900);
+  await page.screenshot({path:"/home/ubuntu/outputs/admin-simplify-20261116/overview-desktop.png",fullPage:true});
+  await summary.locator("article").first().locator("summary").click();
+  await expect(summary).toContainText("Not net of refunds, disputes or fees.");
+  const teamSummary = summary.locator("article").nth(1);
+  await teamSummary.locator("summary").click();
+  await expect(teamSummary).toContainText("2 paid team orders covering 5 licences");
+  const teamReport = page.locator(".admin-report-details").filter({has:page.locator(":scope > summary", {hasText:"Team orders and revenue"})});
+  await teamReport.locator(":scope > summary").click();
+  await expect(page.locator('.admin-ledger-table-wrap[aria-label="Team orders"]')).toBeVisible();
+  await teamReport.locator(":scope > summary").click();
+  await page.getByRole("button", {name:/01 Inspect paid conversion/}).click();
+  await expect(page.getByRole("heading", {name:"Sales & purchases",exact:true})).toBeVisible();
+  const sales = page.locator(".admin-sidebar-group").filter({has:page.locator("summary", {hasText:/^Sales$/})});
+  await expect(sales).toHaveAttribute("open", "");
+  await expect(page.locator(".admin-priority-item")).toHaveCount(0);
+});
+
+test("admin mobile drawer preserves focus containment, disclosures and selected destination", async ({page}) => {
   await page.setViewportSize({width:390,height:844});
   await page.goto("/#/admin");
   await expect(page.locator("#admin-founder-title")).toBeVisible();
-  await expect(page.locator("#admin-founder-title")).toHaveCSS("font-family", /Manrope/);
-  // Approved blue redesign canvas (--ops-canvas #F3F7FC), applied Nov 4, 2026.
-  await expect(page.locator(".admin-portal")).toHaveCSS("background-color", "rgb(243, 247, 252)");
-  await expect(page.locator(".admin-portal")).toHaveCSS("color", "rgb(0, 0, 0)");
-  // The business pipeline panel reuses this table class, so scope the money
-  // assertion to the founder decision ledger specifically.
-  const ledger = page.getByRole("region", {name:"Founder decision ledger"}).locator(".admin-ledger-table");
-  await expect(ledger).toContainText("CA$1980.00");
-  // Team money must stay visible; a dashboard built on purchases alone reported it as zero.
-  await expect(ledger).toContainText("CA$400.00");
   const trigger=page.getByRole("button", {name:"Open navigation",exact:true});
   await trigger.click();
   const drawer=page.getByRole("dialog", {name:"Echelon administration navigation"});
   await expect(drawer).toBeVisible();
-  await expect(drawer.locator(".admin-sidebar-button")).toHaveCount(15);
-  // Captured leads must stay reachable; emails were being collected with no table to read them.
-  await expect(drawer.getByText("Captured leads", {exact:true})).toBeVisible();
+  await expect(drawer.getByRole("button", {name:"Close navigation",exact:true})).toBeFocused();
+  await page.keyboard.press("Shift+Tab");
+  await expect(drawer.getByRole("link", {name:"Back to website"})).toBeFocused();
+  await page.keyboard.press("Tab");
+  await expect(drawer.getByRole("button", {name:"Close navigation",exact:true})).toBeFocused();
+  const customers=drawer.locator("summary", {hasText:/^Customers$/});
+  await customers.focus();
+  await page.keyboard.press("Enter");
+  await expect(drawer.getByRole("button", {name:"Captured leads",exact:true})).toBeVisible();
   await page.keyboard.press("Escape");
   await expect(drawer).toHaveCount(0);
   await expect(trigger).toBeFocused();
   await trigger.click();
-  await page.locator(".admin-sidebar-button").filter({hasText:"Feedback"}).click();
+  await drawer.locator("summary", {hasText:/^Learning$/}).click();
+  await drawer.getByRole("button", {name:"Feedback",exact:true}).click();
   await expect(page.getByRole("heading", {name:"Feedback",exact:true})).toBeVisible();
   await expect(page.locator(".admin-sidebar")).toHaveAttribute("inert", "");
+  await expect(trigger).toBeFocused();
+  await trigger.click();
+  await expect(drawer.getByRole("button", {name:"Feedback",exact:true})).toHaveAttribute("aria-current", "page");
+  await expect(drawer.getByRole("button", {name:"Feedback",exact:true})).toBeVisible();
+  await page.keyboard.press("Escape");
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
-  await page.screenshot({path:"test-results/ui-workspace/admin-mobile.png",fullPage:true});
+  await page.screenshot({path:"/home/ubuntu/outputs/admin-simplify-20261116/feedback-mobile.png",fullPage:true});
 });
 
 test("CEU final saves answers, shows results and presents the certificate", async ({page}) => {
