@@ -60,3 +60,7 @@ A fifth candidate (Sacramento State OWP courses page) returned 200 but an empty 
 - The M3 proportional example uses a fictional controller with a "per 1.0 mg/L" gain and a 50 percent bias; real controllers often use proportional band.
 - Lesson lengths are measured by splitting on whitespace after removing figures; a different counter (for example one that includes markdown markers) may differ slightly.
 - Fictional place names (Alder Fork, Heron Bend, Quill Run, Linden Mill, Marsh Landing, Reed Landing) were not checked against real places.
+
+## Photos (2026-11-17)
+
+Cover and two lesson photos are in `content/ceu-drafts/covers/ceu-basic-instrumentation-*.jpg`, generated with gpt-image-2.6-sunburst. Lesson figures reference `/ceu-covers/<file>`; copy them into `client/public/ceu-covers/` when the course is registered. The photos show equipment and people working safely; no readable instrument values appear on any screen or dial.
