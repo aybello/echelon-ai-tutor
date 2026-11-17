@@ -61,3 +61,7 @@ Six original inline SVGs (each under 2.1 KB, viewBox only, blue #2f6db2 plus gre
 - M2: daily demand curve with tank level; dry-barrel hydrant parts.
 - M3: backflow symbols (air gap, RPZ, vacuum breaker, double check).
 Module 4 has no figure.
+
+## Photos (2026-11-17)
+
+Cover and two lesson photos are in `content/ceu-drafts/covers/ceu-water-distribution-overview-*.jpg`, generated with gpt-image-2.6-sunburst. Lesson figures reference `/ceu-covers/<file>`; copy them into `client/public/ceu-covers/` when the course is registered. Each photo shows safe practice; the valve photo shows traffic control set back from the work.
