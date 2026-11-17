@@ -28,3 +28,9 @@ At least five ORIGINAL inline SVG figures in lessons: `<figure><svg viewBox=... 
 
 ## Checks before you reply
 JSON parses; counts hold; ids and prompts unique; every question 4 choices; no banned words in options; recompute every calculation; lesson lengths in range. In the NOTES file: sources, counts, every constant used, anything you are unsure about, the scope limits applied. Reply in under 120 words.
+
+## Required step before writing or improving any course: read the Royce U equivalent
+1. Extract the equivalent Royce U course text into the scratchpad (`royce/<code>/data/slide<N>.js`; text from the `<span>` elements; `bsp` Basic Safety, `cpp` Chlorination Principles, `bip` Basic Instrumentation, `wdo1p` and `wdo2p` Water Distribution Overview, `bhp` Basic Hydraulics, `bmp` Basic Math). Read every slide, not a sample.
+2. Build a topic list from it and check each topic against our draft (lesson and questions): YES, PART or NO.
+3. Fill every NO and PART with original content in our own words, our own scenarios and our own correct numbers, from official or standard sources. Do not copy their wording, questions, examples, images or numbers. Do not write their exact numeric limits (their safety numbers are the regulators' and are not ours to restate; use "the applicable rule sets the value").
+4. Record the gap table and what changed in the course NOTES file.
