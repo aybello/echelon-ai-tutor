@@ -1,3 +1,5 @@
+import { issueGameCapability, recordGameActivity } from "../gameAnalytics";
+import { gameActivityInputSchema } from "../../shared/gameAnalytics";
 import { createHmac } from "node:crypto";
 import { ENV } from "../_core/env";
 import { TRPCError } from "@trpc/server";
@@ -59,9 +61,14 @@ export const interactiveRouter = router({
     if (learnerKey && savedProgressEnabled()) {
       try { preferIds = await dueItemIds(learnerKey, course.courseKey, input.mode, input.sessionSize); } catch { preferIds = []; }
     }
-    try { return getInteractiveContentEngine().startSession(input, FULL_PUBLIC_GAME_ACCESS, preferIds); }
+    try {
+      const session = getInteractiveContentEngine().startSession(input, FULL_PUBLIC_GAME_ACCESS, preferIds);
+      const analyticsCapability = issueGameCapability(session, ctx, input.analyticsVisitorId);
+      return { ...session, ...(analyticsCapability ? { analyticsCapability } : {}) };
+    }
     catch { return unavailable(); }
   }),
+  trackActivity: noStoreProcedure.input(gameActivityInputSchema).mutation(({ input, ctx }) => recordGameActivity(input, ctx)),
   /** Saves answers for a signed-in learner. Anonymous play returns stored: false and writes nothing. */
   recordResults: noStoreProcedure.input(interactiveRecordResultsInputSchema).output(interactiveRecordResultsResponseSchema).mutation(async ({ input, ctx }) => {
     const course = canonicalCourse(input.courseKey);

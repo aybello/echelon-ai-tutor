@@ -34,6 +34,7 @@ export function previewResult(path: string, input: any): any {
     // preview renders the same ledger rows the real dashboard does.
     case "admin.stats": return { totalRevenueCAD:1980, purchaseCount:20, subscriptionCount:0, trialCount:12, feedbackCount:8, avgRating:4.8, revenueBreakdown:{ purchasesCAD:1500, subscriptionsCAD:180, teamFlexGrossCAD:400, teamFlexAddedCAD:300, teamFlexAlreadyCountedCAD:100, paidFlexOrders:2, flexLicencesSold:5 } };
     case "admin.getCeuKpis": return { enrollments:0, learningStarted:0, modulesCompleted:0, finalStarted:0, finalSubmitted:0, retries:0, completed:0, certificatesViewed:0, evaluations:0, averageRating:null };
+    case "admin.gameActivity": return { players:0, identifiedPlayers:0, anonymousBrowsers:0, roundsStarted:0, roundsCompleted:0, questionsAnswered:0, returningPlayers:0, popularCourses:[], popularModes:[], firstTrackedAt:null };
     // Business revenue and lead inbox. Fictional figures; no customer records.
     case "admin.getBusinessRevenue": return { paidOrders:2, licencesSold:5, abandonedOrders:1, abandonedValueCAD:179, excludedInternal:0, buyerOrganizations:2, activeTeamPlans:1, activeTeamSeats:5, orders:[] };
     case "admin.getLeadCapture": return { totalLeads:3, uniquePeople:3, openLeads:2, convertedLeads:1, actionableOpenLeads:1, optedOutPeople:1, newLast7Days:2, newLast30Days:3, withPhone:1, bySource:{ courseTrial:1, abandonedCheckout:1, contactForm:1, examDateBooked:0, waitlist:0 }, people:[] };

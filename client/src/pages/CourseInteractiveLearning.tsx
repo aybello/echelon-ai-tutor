@@ -1,3 +1,4 @@
+import { createGameReporter, gameAnalyticsVisitor } from "@/lib/gameAnalytics";
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { flushSync } from "react-dom";
 import { onlineManager, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -128,7 +129,9 @@ function CoursePractice({ course }: { course: CourseEntry }) {
     (difficulty !== "" && !catalogMode?.difficulties.some(level => level.id === difficulty)));
   // The API accepts 5..50; free access is a server-fixed single example, not a
   // client-selected size. Send its default size without any paid filters.
+  const analyticsVisitorId = gameAnalyticsVisitor();
   const input = {
+    ...(analyticsVisitorId ? { analyticsVisitorId } : {}),
     courseKey: course.courseKey, accessToken: authority.accessToken, mode,
     sessionSize: locked ? 20 : sessionSize,
     ...(!locked && topicId ? { topicId } : {}),
@@ -296,6 +299,11 @@ function CoursePractice({ course }: { course: CourseEntry }) {
     const heading = sessionElement.current?.querySelector<HTMLElement>(".interactive-drill__content h2");
     if (heading) { focusNextRound.current = false; heading.focus(); }
   }, [session, roundRevision]);
+  const reportPlay = useMemo(() => createGameReporter(async event => {
+    const visitorId = gameAnalyticsVisitor();
+    if (!visitorId || visitorId !== analyticsVisitorId || !session?.analyticsCapability) return;
+    await transport.current.interactive.trackActivity.mutate({ capability: session.analyticsCapability, visitorId, ...event });
+  }), [analyticsVisitorId, session]);
   let status: React.ReactNode;
   if (!online || catalogQuery.fetchStatus === "paused" || sessionQuery.fetchStatus === "paused") {
     status = <div className="course-interactive__status" role="alert"><p>Practice activities are unavailable while offline. Check your connection and try again.</p><button type="button" onClick={refresh}>Try again</button></div>;
@@ -316,7 +324,7 @@ function CoursePractice({ course }: { course: CourseEntry }) {
   } else {
     const drillKey = JSON.stringify([course.courseKey, authority.revision, session.version, session.mode, session.filters,
       locked ? 30 : timerSeconds, roundRevision, session.sessionId, sessionQuery.dataUpdatedAt]);
-    status = <div style={{ whiteSpace: "pre-line" }}><InteractiveDrill key={drillKey} examples={session.examples} selectedMode={mode} hideModeNavigation timerSeconds={locked ? 30 : timerSeconds} onNewRound={locked ? undefined : newRound} onResult={progress ? recordResult : undefined} saveNote={progress ? saveNote : undefined} /></div>;
+    status = <div style={{ whiteSpace: "pre-line" }}><InteractiveDrill key={drillKey} examples={session.examples} selectedMode={mode} hideModeNavigation timerSeconds={locked ? 30 : timerSeconds} onNewRound={locked ? undefined : newRound} onResult={progress ? recordResult : undefined} onPlay={reportPlay} saveNote={progress ? saveNote : undefined} /></div>;
   }
 
   return (

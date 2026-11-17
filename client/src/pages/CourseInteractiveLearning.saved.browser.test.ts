@@ -32,6 +32,7 @@ beforeAll(async () => {
             getCatalog:{mutate:async()=>window.__catalog()},
             startSession:{mutate:async input=>{window.__sessionInputs.push(input);return window.__session(input);}},
             getProgress:{mutate:async()=>window.__getProgress()},
+            trackActivity:{mutate:async input=>{window.__activity.push(input);return {accepted:true};}},
             recordResults:{mutate:async input=>{window.__recorded.push(input);return window.__record(input);}}
           }}}),auth:{me:p(['auth','me'])},dashboardAuth:{me:p(['dashboardAuth','me'])},
           stripe:{checkAccess:p(['stripe','checkAccess'])},access:{auditMyEntitlements:p(['access','auditMyEntitlements'])}};`,
@@ -47,24 +48,27 @@ type ProgressShape = { identityToken?: string; stored: boolean; today: { answere
 const anonymous: ProgressShape = { stored: false, today: { answered: 0, correct: 0, goal: 20 }, streakDays: 0, dueCount: 0, modes: [] };
 const signedIn: ProgressShape = { identityToken: "account-a-binding", stored: true, today: { answered: 12, correct: 9, goal: 20 }, streakDays: 3, dueCount: 4, modes: [] };
 
-async function withPage(progress: ProgressShape, run: (page: Page) => Promise<void>, options: { recordFails?: boolean } = {}) {
+async function withPage(progress: ProgressShape, run: (page: Page) => Promise<void>, options: { recordFails?: boolean; analytics?: boolean } = {}) {
   const page = await browser.newPage();
-  await page.route("**/*", route => route.abort());
+  await page.route("**/*", route => route.request().url() === "http://localhost/game-activity-fixture"
+    ? route.fulfill({ contentType: "text/html", body: '<!doctype html><html><body><div id="root"></div></body></html>' }) : route.abort());
   try {
-    await page.setContent('<!doctype html><html><body><div id="root"></div></body></html>');
-    await page.evaluate(({ progress, modes, recordFails }) => {
+    if (options.analytics) await page.goto("http://localhost/game-activity-fixture");
+    else await page.setContent('<!doctype html><html><body><div id="root"></div></body></html>');
+    await page.evaluate(({ progress, modes, recordFails, analytics }) => {
       const w = window as any;
-      w.__sessionInputs = []; w.__recorded = [];
+      w.__sessionInputs = []; w.__recorded = []; w.__activity = [];
       w.__catalog = () => ({ courseKey: "oit", available: true, locked: false, version: "v1",
         modes: modes.map((mode: string) => ({ mode, totalCount: 8, topics: [], difficulties: [] })) });
       w.__session = (input: { mode: string }) => ({
+        ...(analytics ? { analyticsCapability: "synthetic-capability" } : {}),
         courseKey: "oit", available: true, locked: false, version: "v1", sessionId: `s-${w.__sessionInputs.length}`, mode: input.mode,
         totalAvailableCount: 8, filters: { topicId: null, difficulty: null, requestedSize: 20 },
         examples: Array.from({ length: 6 }, (_, i) => ({ id: `sw-${i + 1}`, mode: "rapid-swipe", prompt: `Synthetic statement ${i + 1}`, correctAnswer: true, explanation: "Synthetic explanation." })),
       });
       w.__getProgress = () => progress;
       w.__record = (input: { results: unknown[] }) => recordFails ? Promise.reject(new Error("storage down")) : ({ stored: true, saved: input.results.length, ignored: 0 });
-    }, { progress, modes, recordFails: options.recordFails ?? false });
+    }, { progress, modes, recordFails: options.recordFails ?? false, analytics: options.analytics ?? false });
     await page.addScriptTag({ content: script });
     await page.getByRole("button", { name: "Yes", exact: true }).waitFor();
     await run(page);
@@ -216,5 +220,22 @@ describe("progress card and replay", () => {
       const inputs = await page.evaluate(() => (window as any).__sessionInputs);
       expect(inputs.every((input: { focus?: string }) => input.focus === undefined)).toBe(true);
     });
+  });
+});
+
+describe("anonymous course engagement independent of progress", () => {
+  it("counts first answer but no page visit, independent of saved progress", async () => {
+    await withPage(anonymous, async page => {
+      expect(await page.evaluate(() => (window as any).__activity)).toEqual([]);
+      await page.getByRole("button", { name: "Yes", exact: true }).click();
+      await page.waitForFunction(() => (window as any).__activity.length === 1);
+      const [event] = await page.evaluate(() => (window as any).__activity);
+      expect(event).toMatchObject({ capability: "synthetic-capability", event: { kind: "answer", itemId: "sw-1", sequence: 0 } });
+      expect(event.visitorId).toMatch(/^[a-f0-9-]{36}$/);
+      expect(await page.evaluate(() => (window as any).__recorded)).toHaveLength(0);
+      await page.getByRole("button", { name: "New round", exact: true }).click();
+      await page.getByRole("button", { name: "No", exact: true }).click();
+      await page.waitForFunction(() => (window as any).__activity.length === 2);
+    }, { analytics: true });
   });
 });

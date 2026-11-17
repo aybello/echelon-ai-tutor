@@ -1,3 +1,4 @@
+import AdminGamesActivity from "@/components/AdminGamesActivity";
 import PurchaseEmailDelivery from "@/components/PurchaseEmailDelivery";
 // ADMIN DASHBOARD — /admin
 // Gated to role === 'admin'. Shows trial emails, waitlist signups, and error reports.
@@ -907,6 +908,7 @@ export default function Admin() {
               </tr></tbody></table><p className="admin-ceu-disclosure">Certificate views are measured from this release onward. Public views and failed network saves are not included in these record-based counts.</p></div>}
             </section>
             </details>
+            <AdminGamesActivity />
           </>
         )}
 

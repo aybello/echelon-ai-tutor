@@ -454,3 +454,16 @@
   .admin-simplified .admin-priority-item { gap: 10px; grid-template-columns: 22px minmax(0, 1fr); }
   .admin-simplified .admin-priority-meta { grid-column: 2; display: flex; align-items: center; gap: 8px; }
 }
+
+/* Games activity extends the restrained founder overview without a new dashboard. */
+.admin-games-activity label { color: var(--admin-ink); font-size: 13px; }
+.admin-games-activity select { background: var(--admin-surface); color: var(--admin-ink); border: 1px solid var(--admin-border); border-radius: 6px; min-height: 44px; padding: 6px 10px; }
+.admin-games-message { padding: 0 18px 16px; color: var(--admin-muted); font-size: 13px; line-height: 1.55; }
+.admin-games-metrics { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-block: 1px solid var(--admin-border); margin: 0; }
+.admin-games-metrics > div { padding: 16px 18px; min-width: 0; }
+.admin-games-metrics dt { color: var(--admin-muted); font-size: 13px; }
+.admin-games-metrics dd { margin: 8px 0 0; color: var(--admin-ink); font-size: 23px; font-weight: 800; overflow-wrap: anywhere; }
+.admin-games-popular { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; padding: 4px 18px; color: var(--admin-muted); font-size: 13px; line-height: 1.6; }
+.admin-games-popular strong { color: var(--admin-ink); }
+.admin-games-activity :is(select, button):focus-visible { outline: 3px solid var(--admin-focus); outline-offset: 3px; }
+@media (max-width: 700px) { .admin-games-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); } .admin-games-popular { grid-template-columns: minmax(0, 1fr); gap: 0; } }

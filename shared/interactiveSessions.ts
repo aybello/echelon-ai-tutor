@@ -69,6 +69,7 @@ export const interactiveStartSessionInputSchema = z.object({
   /** "review" puts the signed-in learner's due items first. Anonymous learners get the usual random sample. */
   focus: z.literal("review").optional(),
   accessToken,
+  analyticsVisitorId: z.string().uuid().optional(),
 }).strict();
 export const interactiveCatalogModeSchema = z.object({
   mode: interactiveModeSchema, totalCount: count,
@@ -82,6 +83,7 @@ export const interactiveCatalogResponseSchema = z.object({
 export const interactiveSessionResponseSchema = z.object({
   courseKey, available: z.boolean(), locked: z.boolean(), version,
   sessionId: z.string().min(1).max(80), mode: interactiveModeSchema,
+  analyticsCapability: z.string().max(12000).optional(),
   totalAvailableCount: count, examples: z.array(interactiveSessionExampleSchema).max(50),
   filters: z.object({
     topicId: interactiveSafeIdSchema.nullable(), difficulty: interactiveDifficultySchema.nullable(),
