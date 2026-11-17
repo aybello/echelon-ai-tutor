@@ -11,7 +11,7 @@ import { ontarioWastewaterMockProfile } from "../shared/ontarioWastewaterMock";
 import { resolveWastewaterMockArea } from "./wastewaterMockAreaResolver";
 import { ELECTRICIAN_309A_MODULES } from "../shared/electrician309aBlueprint";
 import { clearIdentityCookies } from "./_core/logout";
-import { invokeLLM } from "./_core/llm";
+import { invokeTutorLLM } from "./tutorLLM";
 import { getResourcesForProfile, formatResourcesForPrompt } from "./resourceIndex";
 import { resolveAnonymousTutorIdentity } from "./_core/anonymousTutorIdentity";
 import { notifyOwner } from "./_core/notification";
@@ -1144,6 +1144,7 @@ export const appRouter = router({
         }
 
         const systemPrompt = buildTutorSystemPrompt({
+          courseKey: course.courseKey,
           courseName: course.displayName,
           examFamily: course.examFamily,
           // Re-resolved server-side. An unrecognized or spoofed state becomes
@@ -1179,13 +1180,13 @@ export const appRouter = router({
           // for the same solution more compactly before giving up. Exactly one
           // retry: an unbounded chain would burn cost and make the learner
           // wait even longer for an answer that is not coming.
-          let response = await invokeLLM({
+          let response = await invokeTutorLLM({
             messages: [{ role: "system", content: systemPrompt }, ...conversation],
             maxTokens: AI_TUTOR_MAX_OUTPUT_TOKENS,
           });
           if (isTruncatedTutorCompletion(response?.choices?.[0]?.finish_reason)) {
             console.error("[AI Tutor] Explanation hit the output limit, retrying concisely");
-            response = await invokeLLM({
+            response = await invokeTutorLLM({
               messages: [
                 { role: "system", content: systemPrompt + AI_TUTOR_CONCISE_RETRY_INSTRUCTION },
                 ...conversation,
@@ -1270,7 +1271,7 @@ export const appRouter = router({
             .map((m) => `${m.role === "user" ? "Student" : "Tutor"}: ${m.content}`)
             .join("\n");
 
-          const summaryResponse = await invokeLLM({
+          const summaryResponse = await invokeTutorLLM({
             messages: [
               {
                 role: "system",

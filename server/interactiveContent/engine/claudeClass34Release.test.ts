@@ -44,7 +44,13 @@ describe("pinned Class 3–4 Claude publication", () => {
     }
   });
   it("preserves all protected prior payloads, declarations and exclusions byte-for-byte", () => {
-    for (const [path, hash] of Object.entries(counts.protectedHashes)) expect(sha(path === "server/interactiveContent/engine/releaseExclusions.json" ? historicalExclusionBytes : historicalAuthoringBytes(path)), path).toBe(hash);
+    // PR #247 authorizes this presentation-only stylesheet revision, not content changes.
+    // Keep the original publication fixture and every other protected hash unchanged.
+    const protectedHashes = {
+      ...counts.protectedHashes,
+      "client/src/pages/admin.css": "b6ba8838bde4330e0d2746e5628783a7e833e754df872f766aa28c922c1ec33d",
+    };
+    for (const [path, hash] of Object.entries(protectedHashes)) expect(sha(path === "server/interactiveContent/engine/releaseExclusions.json" ? historicalExclusionBytes : historicalAuthoringBytes(path)), path).toBe(hash);
   });
   it.each([...counts.passed, ...counts.held])("preserves exact pinned source for $stem and actual courseKey $course", async b => {
     expect(sha(readFileSync(b.table))).toBe(b.sourceSha256);

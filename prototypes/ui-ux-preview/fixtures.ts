@@ -35,11 +35,12 @@ export function previewResult(path: string, input: any): any {
     case "admin.stats": return { totalRevenueCAD:1980, purchaseCount:20, subscriptionCount:0, trialCount:12, feedbackCount:8, avgRating:4.8, revenueBreakdown:{ purchasesCAD:1500, subscriptionsCAD:180, teamFlexGrossCAD:400, teamFlexAddedCAD:300, teamFlexAlreadyCountedCAD:100, paidFlexOrders:2, flexLicencesSold:5 } };
     case "admin.getCeuKpis": return { enrollments:0, learningStarted:0, modulesCompleted:0, finalStarted:0, finalSubmitted:0, retries:0, completed:0, certificatesViewed:0, evaluations:0, averageRating:null };
     // Business revenue and lead inbox. Fictional figures; no customer records.
-    case "admin.getBusinessRevenue": return { paidOrders:2, licencesSold:5, abandonedOrders:1, abandonedValueCAD:179, excludedInternal:0, buyerOrganizations:2, activePlans:1, activeSeats:5, orders:[] };
+    case "admin.getBusinessRevenue": return { paidOrders:2, licencesSold:5, abandonedOrders:1, abandonedValueCAD:179, excludedInternal:0, buyerOrganizations:2, activeTeamPlans:1, activeTeamSeats:5, orders:[] };
     case "admin.getLeadCapture": return { totalLeads:3, uniquePeople:3, openLeads:2, convertedLeads:1, actionableOpenLeads:1, optedOutPeople:1, newLast7Days:2, newLast30Days:3, withPhone:1, bySource:{ courseTrial:1, abandonedCheckout:1, contactForm:1, examDateBooked:0, waitlist:0 }, people:[] };
-    case "admin.getSystemHealth": return { status:"ok", checks:[] };
+    case "admin.getSystemHealth": return { status:"ok", timestamp:now, checks:[], recentPurchases:[] };
     case "admin.getQuestionGovernanceStats": return { pending:0, approved:0, rejected:0 };
-    case "admin.getQuestionGovernanceBanks": case "admin.getQuestionGovernanceQueue": return [];
+    case "admin.getQuestionGovernanceBanks": return [];
+    case "admin.getQuestionGovernanceQueue": return {rows:[],total:0,page:1,pageSize:25};
     case "admin.getProductKpis": return {
       generatedAt:now, periodDays:30,
       funnel:{marketingPageViews:300, productSelections:50, buyerPathSelections:60, courseBrowses:120, previewPlansRequested:14, previewPlansOffered:60, previewGateHits:25, checkoutStarts:30, checkoutCompletions:20, signups:18, accessActivations:16, quizStarts:90, quizCompletions:40, diagnosticCompletions:10, mockExamCompletions:8},
@@ -51,7 +52,7 @@ export function previewResult(path: string, input: any): any {
     };
     case "admin.getPurchases": case "admin.getSubscriptions": case "admin.getTrialEmails": case "admin.getWaitlist": case "admin.getErrorReports": case "admin.getScoreHistory": case "admin.getFeedback": case "admin.listOrganizations": case "admin.getCustomerRecoveryEvidence": return [];
     case "admin.getDataExplorerCatalog": return {datasets:[]};
-    case "admin.getDataExplorerPage": return {rows:[], total:0, columns:[], page:1, pageSize:50};
+    case "admin.getDataExplorerPage": return {dataset:{label:"Synthetic users",description:"Fictional preview only",tableName:"users",restrictedColumns:[]},rows:[], total:0, totalPages:1, generatedAt:now, columns:[], page:1, pageSize:50};
     case "stripe.checkAccess": return { hasAccess: true };
     case "stripe.getCommercialAvailability": return { products: [
       { key: "class1-water", questionCount: 500 },

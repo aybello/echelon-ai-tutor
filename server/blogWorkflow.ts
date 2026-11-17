@@ -43,7 +43,7 @@ export type BlogWorkflowDependencies = {
 const CALLBACK_BUDGET_MS = 23_000;
 const RUN_MAX_AGE_MS = 30 * 60_000;
 const failurePhases: readonly BlogPhase[] = ["topic", "plan-submit", "plan-poll", "research", "draft-submit", "draft-poll", "review-submit", "review-poll", "publish"];
-const failureServices = ["forge", "anthropic", "openai", "maps", "notification", "storage", "image", "transcription", "audio", "data", "heartbeat", "editorial-source"] as const;
+const failureServices = ["forge", "anthropic", "openai", "google", "maps", "notification", "storage", "image", "transcription", "audio", "data", "heartbeat", "editorial-source"] as const;
 const outboundFailureKinds: readonly OutboundError["kind"][] = ["timeout", "cancelled", "network", "too_large", "http", "invalid_json"];
 /** Never serialize an error, its message, Zod issues, request data or arbitrary properties. */
 function safeBlogFailure(error: unknown, phase: BlogPhase, submissionUncertain: boolean) {
