@@ -1,3 +1,4 @@
+import type { GamePlayEvent } from "@shared/gameAnalytics";
 import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import type { PointerEvent } from "react";
 import { CAUSE_EFFECT_DIRECTION_LABELS, causeEffectDirections, scoreCauseEffect, type CauseEffectDirection, type CauseEffectEffect } from "@shared/interactiveCauseEffect";
@@ -100,6 +101,8 @@ export interface InteractiveDrillProps {
   onNewRound?: () => void;
   /** Called once per finished activity so a parent can save it. Not called for skipped activities. */
   onResult?: (result: DrillResult) => void;
+  /** Course-game engagement only; independent of signed-in saved progress. */
+  onPlay?: (event: GamePlayEvent) => void;
   /** Replaces the "Practice · not saved" pill text, for example when results are being saved. */
   saveNote?: string;
 }
@@ -456,7 +459,7 @@ function Activity({ example, index, count, onPrevious, onNext, onRestart, onNewR
 
 type RoundAnswer = { example: RapidSwipeExample; choice: boolean; correct: boolean };
 /** Timed rounds never invent material: they cycle through the supplied statements. */
-function RapidSwipeRound({ examples, onExit, timerSeconds, onResult, saveNote }: { examples: readonly RapidSwipeExample[]; onExit: () => void; timerSeconds: 30 | 60 | 90; onResult?: (result: DrillResult) => void; saveNote?: string }) {
+function RapidSwipeRound({ examples, onExit, timerSeconds, onResult, onComplete, saveNote }: { examples: readonly RapidSwipeExample[]; onExit: () => void; timerSeconds: 30 | 60 | 90; onResult?: (result: DrillResult) => void; onComplete?: () => void; saveNote?: string }) {
   type Phase = "answer" | "feedback" | "finished";
   const [phase, setPhase] = useState<Phase>("answer");
   const [remaining, setRemaining] = useState<number>(timerSeconds);
@@ -501,6 +504,7 @@ function RapidSwipeRound({ examples, onExit, timerSeconds, onResult, saveNote }:
     clock.current.started = null;
     clearSwipe();
     setPhase("finished");
+    onComplete?.();
   };
 
   useLayoutEffect(() => { headingRef.current?.focus(); }, []);
@@ -647,13 +651,33 @@ function RapidSwipeRound({ examples, onExit, timerSeconds, onResult, saveNote }:
 }
 
 /** A local-only practice UI. Switching activities resets their temporary state. */
-export function InteractiveDrill({ examples, className, selectedMode, onModeChange, availableModes: suppliedModes, hideModeNavigation = false, timerSeconds = 30, onNewRound, onResult, saveNote }: InteractiveDrillProps) {
+export function InteractiveDrill({ examples, className, selectedMode, onModeChange, availableModes: suppliedModes, hideModeNavigation = false, timerSeconds = 30, onNewRound, onResult, onPlay, saveNote }: InteractiveDrillProps) {
   const availableModes = DRILL_MODES.filter(mode => suppliedModes ? suppliedModes.includes(mode.id) : examples.some(example => example.mode === mode.id));
   const [requestedMode, setRequestedMode] = useState<DrillMode | null>(null);
   const [requestedIndex, setRequestedIndex] = useState(0);
   const [attempt, setAttempt] = useState(0);
   const [round, setRound] = useState(false);
   const headingFocusRequested = useRef(false);
+  const play = useRef({ round: 0, timed: false, sequence: 0, answered: new Set<string>(), completed: false });
+  const resetPlay = (timed: boolean) => {
+    play.current = { round: play.current.round + 1, timed, sequence: 0, answered: new Set(), completed: false };
+  };
+  const completePlay = () => {
+    const state = play.current;
+    if (!state.sequence || state.completed) return;
+    state.completed = true;
+    onPlay?.({ round: state.round, timed: state.timed, event: { kind: "complete" } });
+  };
+  const result = (value: DrillResult) => {
+    onResult?.(value);
+    const state = play.current;
+    // Browsing back/repeated callbacks are one answer per delivered item; timed
+    // cycling deliberately counts each distinct presented attempt.
+    if (!state.timed && state.answered.has(value.exampleId)) return;
+    state.answered.add(value.exampleId);
+    onPlay?.({ round: state.round, timed: state.timed, event: { kind: "answer", itemId: value.exampleId, sequence: state.sequence++ } });
+    if (!state.timed && modeExamples.every(item => state.answered.has(item.id))) completePlay();
+  };
   const activeMode = selectedMode !== undefined
     ? DRILL_MODES.find(mode => mode.id === selectedMode)
     : availableModes.find(mode => mode.id === requestedMode) ?? availableModes[0];
@@ -662,6 +686,7 @@ export function InteractiveDrill({ examples, className, selectedMode, onModeChan
   const example = modeExamples[index];
 
   const chooseMode = (mode: DrillMode) => {
+    resetPlay(false);
     headingFocusRequested.current = true;
     setRound(false);
     setRequestedMode(mode);
@@ -692,9 +717,9 @@ export function InteractiveDrill({ examples, className, selectedMode, onModeChan
             ))}
           </nav>}
           {!example ? <p className="interactive-drill__empty" role="status">No practice activities are available yet.</p> : round && activeMode?.id === "rapid-swipe" && timerSeconds !== null ? (
-            <RapidSwipeRound key={JSON.stringify([modeExamples, timerSeconds])} timerSeconds={timerSeconds} onResult={onResult} saveNote={saveNote} examples={modeExamples.filter((item): item is RapidSwipeExample => item.mode === "rapid-swipe")} onExit={() => { setRound(false); changeIndex(0); }} />
+            <RapidSwipeRound key={JSON.stringify([modeExamples, timerSeconds])} timerSeconds={timerSeconds} onResult={result} onComplete={completePlay} saveNote={saveNote} examples={modeExamples.filter((item): item is RapidSwipeExample => item.mode === "rapid-swipe")} onExit={() => { resetPlay(false); setRound(false); changeIndex(0); }} />
           ) : (
-            <Activity key={`${selectedMode ?? activeMode?.id}-${example.id}-${attempt}-${timerSeconds}`} timerSeconds={timerSeconds} example={example} index={index} count={modeExamples.length} onPrevious={() => changeIndex(index - 1)} onNext={() => changeIndex(index + 1)} onRestart={() => changeIndex(0)} onNewRound={onNewRound} onResult={onResult} saveNote={saveNote} onStartRound={() => setRound(true)} focusHeadingIfRequested={focusHeadingIfRequested} />
+            <Activity key={`${selectedMode ?? activeMode?.id}-${example.id}-${attempt}-${timerSeconds}`} timerSeconds={timerSeconds} example={example} index={index} count={modeExamples.length} onPrevious={() => changeIndex(index - 1)} onNext={() => changeIndex(index + 1)} onRestart={() => { resetPlay(false); changeIndex(0); }} onNewRound={onNewRound} onResult={result} saveNote={saveNote} onStartRound={() => { resetPlay(true); setRound(true); }} focusHeadingIfRequested={focusHeadingIfRequested} />
           )}
         </div>
     </div>

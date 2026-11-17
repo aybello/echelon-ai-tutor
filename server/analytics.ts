@@ -12,6 +12,8 @@ import { createHash } from "node:crypto";
  */
 
 export type AnalyticsEventName =
+  | "game_answered"
+  | "game_round_completed"
   | "signup"
   | "login"
   | "restore_access_requested"

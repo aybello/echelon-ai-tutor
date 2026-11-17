@@ -1,3 +1,4 @@
+import { readGameActivity } from "../gameAnalytics";
 import { validateApprovalSteps } from "../questionApproval";
 import { TRPCError } from "@trpc/server";
 import { purchaseEmailOutbox } from "../../drizzle/schema";
@@ -60,6 +61,7 @@ function getStripe() {
 }
 
 export const adminRouter = router({
+  gameActivity: adminProcedure.input(z.object({ days: z.union([z.literal(7), z.literal(30)]) }).strict()).query(({ input }) => readGameActivity(input.days)),
   getCeuKpis: adminProcedure.query(async () => {
     const db = await getDb();
     if (!db) throw new Error("Database unavailable");
