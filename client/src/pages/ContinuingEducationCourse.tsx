@@ -28,9 +28,11 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import SiteNav, { ECHELON_LOGO_URL } from "@/components/SiteNav";
 import { observeCeuShellLayout } from "@/lib/ceuShellLayout";
 import { ceuModuleSlides } from "@shared/ceuSlides";
+import { getCeuCourseByKey } from "@shared/ceuCourses";
 import { ceuFinalEntry } from "@shared/ceuFinalEntry";
 import type { CeuLearningRecord, CeuQuestion } from "@shared/ceuLearning";
 import "./ContinuingEducationCourse.css";
+import "./ContinuingEducationFoundations.css";
 
 export function LessonMarkdown({ text }: { text: string }) {
   const html = useMemo(
@@ -429,7 +431,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
               <span>Continuing education</span>
               <strong>{course.shortTitle}</strong>
             </Link>
-            <small>{course.stream === "drinking_water" ? "Ontario drinking water" : "Ontario wastewater"} · Pilot learning</small>
+            <small>{getCeuCourseByKey(course.key)?.regionLabel ?? (course.stream === "drinking_water" ? "Drinking water" : "Wastewater")} · Pilot learning</small>
           </div>
           <nav className="ceu-course-context-tabs" aria-label="Course workspace navigation">
             <button type="button" aria-current={view === "overview" ? "page" : undefined} className={view === "overview" ? "is-active" : ""} onClick={() => changeView("overview")}>Overview</button>
@@ -529,6 +531,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
           </section>
 
           <aside className="ceu-overview-side">
+            {getCeuCourseByKey(course.key)?.cover && <img className="ceu-overview-cover" src={getCeuCourseByKey(course.key)!.cover!.src} alt={getCeuCourseByKey(course.key)!.cover!.alt} />}
             <section className="ceu-info-card"><h2>How this course works</h2><ol><li><b>1</b><span>Work through the lesson slides at your own pace.</span></li><li><b>2</b><span>Use optional quick checks to reinforce the ideas.</span></li><li><b>3</b><span>Pass the final exam with 80% or higher.</span></li><li><b>4</b><span>Download your non-credit pilot certificate after you pass.</span></li></ol></section>
             <section className="ceu-info-card"><h2>What you will be able to do</h2><ul>{course.modules.flatMap(module => module.objectives).slice(0, 5).map(objective => <li key={objective}><Check size={17} />{objective}</li>)}</ul></section>
             <section className="ceu-reminder-card"><CircleCheck size={20} /><span>Your place saves as you learn. Check the saving status before you leave.</span></section>
@@ -562,6 +565,14 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
               <p className="ceu-slide-eyebrow">{activeSlide.eyebrow}</p>
               <h1>{activeSlide.title}</h1>
               <LessonMarkdown text={activeSlide.body} />
+              {course.key === "ceu-basic-safety" && activeSlide.kind === "overview" && (
+                <img className="ceu-safety-illustration" src={[
+                  "https://files.manuscdn.com/user_upload_by_module/session_file/310519663446228701/ztbBRbAujnhsMVVe.jpg",
+                  "https://files.manuscdn.com/user_upload_by_module/session_file/310519663446228701/UtfktYaLPENHeLZO.jpg",
+                  "https://files.manuscdn.com/user_upload_by_module/session_file/310519663446228701/dsfLwhhYyGVbbdoj.jpg",
+                  "https://files.manuscdn.com/user_upload_by_module/session_file/310519663446228701/WgPGTbndhUZWyZCE.jpg",
+                ][activeModuleIndex]} alt={`${activeModule.title}: illustrative training scene, not a work procedure`} />
+              )}
               {activeSlide.kind === "quick_check" && activeModule.checks.map(check => (
                 <QuickCheck key={`${activeModule.id}-${check.id}`} question={check}
                   savedChoice={activeModuleRecord?.checks[check.id]?.selectedIndex}

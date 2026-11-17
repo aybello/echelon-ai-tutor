@@ -4,7 +4,7 @@ import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { ENV } from "./_core/env";
 import type { LearningIdentity } from "./_core/learningIdentity";
-import { pennsylvaniaBank, PA_PRACTICE_MOCK } from "../shared/pennsylvaniaBanks";
+import { statePracticeBank, PA_PRACTICE_MOCK } from "../shared/pennsylvaniaBanks";
 import { resolveCourseKey } from "../shared/courseRegistry";
 import {
   TEXAS_CLASS_D_WATER_COURSE_KEY,
@@ -47,7 +47,7 @@ const MAX_ISSUED_SNAPSHOT_BYTES = 512_000;
 export const MOCK_SUBMISSION_GRACE_MS = 5 * 60_000;
 
 function mockRuntimeSettingsForCourseKey(courseKey: string) {
-  if (pennsylvaniaBank(courseKey)) return { count: PA_PRACTICE_MOCK.count, scoredCount: PA_PRACTICE_MOCK.count, duration: PA_PRACTICE_MOCK.duration };
+  if (statePracticeBank(courseKey)) return { count: PA_PRACTICE_MOCK.count, scoredCount: PA_PRACTICE_MOCK.count, duration: PA_PRACTICE_MOCK.duration };
   const isTexasClassD = courseKey === TEXAS_CLASS_D_WATER_COURSE_KEY;
   return {
     count: isTexasClassD ? TEXAS_CLASS_D_WATER_MOCK_QUESTIONS : courseKey === "oit-ww" ? 50 : courseKey === "wpi-class4-wastewater" ? 110 : 100,

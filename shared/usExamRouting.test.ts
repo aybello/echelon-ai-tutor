@@ -94,9 +94,14 @@ describe("source-backed US exam routing", () => {
     expect(matchedUSCourses(maryland, "water-distribution").map(item => item.courseKey)).toEqual(["us-class1-water-dist"]);
   });
   it("keeps dedicated, customized and incomplete state routes out of shared WPI claims", () => {
-    for (const slug of ["california", "florida", "utah", "iowa", "new-hampshire", "new-york", "west-virginia"]) {
+    for (const slug of ["california", "utah", "iowa", "new-hampshire", "new-york", "west-virginia"]) {
       expect(matchedUSCourses(getStateBySlug(slug)!)).toEqual([]);
     }
+    const florida = getStateBySlug("florida")!;
+    expect(matchedUSCourses(florida).map(course => course.courseKey)).toEqual(["fl-water-distribution-l3"]);
+    expect(matchedUSCourses(florida, "water-treatment")).toEqual([]);
+    expect(matchedUSCourses(florida).every(course => course.examFamily === "us-state")).toBe(true);
+    expect(florida.programs.every(program => !getUSProgramCoverage(program).hasSharedCourse)).toBe(true);
     const vermont = getStateBySlug("vermont")!;
     expect(matchedUSCourses(vermont, "water-treatment")).toEqual([]);
     expect(matchedUSCourses(vermont, "water-distribution")).toEqual([]);

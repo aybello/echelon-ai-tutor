@@ -2,7 +2,13 @@
 import curriculum from "../../server/ceu/courses/ceu-sampling-data-quality.json" with { type: "json" };
 import { ceuModuleSlideCount } from "../../shared/ceuSlides";
 import type { CeuCurriculum, CeuLearningRecord } from "../../shared/ceuLearning";
-export const course = curriculum as CeuCurriculum;
+import math from "../../server/ceu/courses/ceu-basic-math.json" with { type: "json" };
+import hydraulics from "../../server/ceu/courses/ceu-basic-hydraulics.json" with { type: "json" };
+import safety from "../../server/ceu/courses/ceu-basic-safety.json" with { type: "json" };
+// Course selection is confined to this isolated, in-memory review harness.
+const previewPath = typeof window === "undefined" ? "" : window.location.hash;
+export const course = ([math, hydraulics, safety].find(item => previewPath.startsWith(`#/continuing-education/${item.key}`)) ?? curriculum) as CeuCurriculum;
+const anonymous = previewPath.includes("previewAnonymous=1");
 const now = "2026-10-01T18:00:00.000Z";
 export const practiceQuestions = [
   { id: 1, module: "Coagulation & Flocculation", difficulty: "medium", question: "Raw-water turbidity rises after a storm. What is the most useful first step before changing the coagulant dose?", options: ["Double the existing dose immediately", "Run jar tests using a representative sample of the changed water", "Reduce the flocculation time by half", "Stop checking the settled-water turbidity"], correctIndex: 1, explanation: "Jar tests help compare doses under the changed raw-water conditions. Confirm sample representativeness, pH and alkalinity, then monitor the plant response before making further adjustments." },
@@ -77,10 +83,11 @@ export function previewResult(path: string, input: any): any {
     case "orgIntel.exportTeamCSV": return { orgName: "Sample team", csv: "Operator,Answers\nJordan,184\nLee,0" };
     case "teamFlex.listLicences": return [];
     case "teamFlex.getFlexProgress": return [{ licenceId: 101, operatorEmail: "taylor@example.test", courseKey: "wpi-class4-water-coll", status: "active", totalAttempts: 100, correctAttempts: 73, accuracy: 73, readinessScore: 58, activityAvailable: true, readinessAvailable: true, daysActive30: 3, accessEndsAt: "2027-06-01T18:00:00.000Z" }];
-    case "ceu.identity": return { signedIn: true, email: "jordan@example.test" };
+    case "ceu.identity": return anonymous ? { signedIn: false } : { signedIn: true, email: "jordan@example.test" };
     case "ceu.course": return clone({ ...course, modules: course.modules.map(module => ({ ...module, checks: module.checks.map(({correctIndex, explanation, ...question}) => question) })), finalQuestionCount: course.finalAssessment.length, finalAssessment: undefined, alternateFinalAssessment: undefined });
-    case "ceu.myRecord": return clone(record);
+    case "ceu.myRecord": return anonymous ? null : clone(record);
     case "ceu.assessment": return record.assessmentDraft ? course.finalAssessment.map(({correctIndex,explanation,...question}) => question) : [];
+    case "ceu.finalPreview":
     case "ceu.sampleQuestions": return course.modules.flatMap(module => module.checks).slice(0, 3).map(({correctIndex,explanation,...question}) => question);
     case "ceu.results": { const attempt = record.attempts.at(-1); return attempt ? { ...attempt, review: [] } : null; }
     case "ceu.save": {

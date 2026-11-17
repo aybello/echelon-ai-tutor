@@ -4,7 +4,7 @@ import { getCourseInteractiveHref } from "../client/src/lib/courseNavigation";
 import { classifyAppRoute } from "../shared/appRoutes";
 import { getAllCourses, resolveCourseKey } from "../shared/courseRegistry";
 import { isNovaScotiaCourseSurface, isNovaScotiaPathSupported } from "../shared/novaScotiaPreparation";
-import { PENNSYLVANIA_BANKS, pennsylvaniaBank } from "../shared/pennsylvaniaBanks";
+import { PENNSYLVANIA_BANKS, statePracticeBank } from "../shared/pennsylvaniaBanks";
 
 const app = readFileSync("client/src/App.tsx", "utf8");
 const shell = readFileSync("client/src/components/QuizShell.tsx", "utf8");
@@ -20,12 +20,12 @@ describe("course-specific interactive navigation", () => {
 
   it("links supported active registry quizzes to their canonical course-specific routes", () => {
     for (const course of getAllCourses().filter((item) => item.isActive)) {
-      if (pennsylvaniaBank(course.courseKey)) {
+      if (statePracticeBank(course.courseKey)) {
         expect(course.quizPath).toBe(`/us/practice/${course.courseKey}`);
         expect(app).toContain('<Route path={"/us/practice/:courseKey"}>{() => <UsBankStudyRoute tool="practice" />}</Route>');
         expect(app).toContain('lazy(() => import("./pages/UsBankStudyRoute"))');
         const route = readFileSync("client/src/pages/UsBankStudyRoute.tsx", "utf8");
-        expect(route).toContain("const bank = pennsylvaniaBank(courseKey)");
+        expect(route).toContain("const bank = statePracticeBank(courseKey)");
         expect(route).toContain('<UsBankQuiz key={courseKey} courseKey={bank.courseKey} />');
         const quiz = readFileSync("client/src/pages/UsBankQuiz.tsx", "utf8");
         expect(quiz.match(/<QuizShell\b([\s\S]*?)\/>/)?.[1]).toContain("examType={courseKey}");
@@ -53,6 +53,23 @@ describe("course-specific interactive navigation", () => {
     }
     expect(shell).toContain("getCourseInteractiveHref(canonicalCourse?.courseKey, search)");
     expect(shell).toContain('className="practice-interactive-link">🎮 Play games</Link>');
+  });
+
+  it.each([
+    ["fl-water-distribution-l3", "Florida", "/us/states/florida"],
+    ["pa-class-e-water-distribution", "Pennsylvania", "/us/states/pennsylvania"],
+    ["pa-wastewater-collection-e4", "Pennsylvania", "/us/states/pennsylvania"],
+  ])("keeps the %s preview gate copy and return link in its own state", (courseKey, stateName, href) => {
+    const bank = statePracticeBank(courseKey)!;
+    expect(bank.stateName).toBe(stateName);
+    expect(`/us/states/${bank.stateName.toLowerCase()}`).toBe(href);
+    const quiz = readFileSync("client/src/pages/UsBankQuiz.tsx", "utf8");
+    expect(quiz).toContain("const bank = statePracticeBank(courseKey)!");
+    const gate = quiz.slice(quiz.indexOf("gate={"));
+    expect(gate).toContain("session.trialDone && !session.trialUnlocked");
+    expect(gate).toContain("Full {bank.stateName} course-pass sales are not available yet. No other state or Canadian pass unlocks this course.");
+    expect(gate).toContain('<a href={`/us/states/${bank.stateName.toLowerCase()}`}>Back to {bank.stateName} preparation</a>');
+    expect(gate).not.toMatch(/Pennsylvania|pennsylvania|Florida|florida/);
   });
 
   it("does not advertise interactive activities for the active electrician course", () => {

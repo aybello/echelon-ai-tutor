@@ -20,7 +20,7 @@ describe("CEU server-issued finals", () => {
     }
   });
   it("keeps legacy ordering and rejects damaged manifests instead of misgrading", () => {
-    const c = ceuCurricula[0];
+    const c = ceuCurricula.find(course => course.key in legacy)!;
     const archive = legacy[c.key as keyof typeof legacy];
     expect(ceuExamQuestions(c)).toEqual(archive.primary);
     for (const q of [...archive.primary, ...archive.alternate]) {

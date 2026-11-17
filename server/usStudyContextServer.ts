@@ -10,7 +10,7 @@
  * query parameter. A learner typing "?state=CA" must not unlock advice about
  * California licensing.
  */
-import { pennsylvaniaBank } from "../shared/pennsylvaniaBanks";
+import { statePracticeBank } from "../shared/pennsylvaniaBanks";
 import { getCourseByKey } from "../shared/courseRegistry";
 import { sharedUSCourses, matchedUSCourses, getStateByCode } from "../shared/usExamRouting";
 import { usStateIdentity } from "../shared/usStateNames";
@@ -45,10 +45,10 @@ export function resolveUSStudyContext(
   const shared = course.examFamily === "western" && requestedCountry === "US"
     && sharedUSCourses().some(item => item.courseKey === course.courseKey && item.isActive);
   if (!shared && course.examFamily !== "us-wpi" && course.examFamily !== "us-state") return null;
-  const pa = pennsylvaniaBank(course.courseKey);
+  const pa = statePracticeBank(course.courseKey);
   if (!shared && !pa && !US_SUPPORTED_STREAMS.has(course.track)) return null;
-  // A PA course cannot accept another state, an unknown supplied state, or CA.
-  if (pa && (requestedCountry === "CA" || (requestedState != null && getStateByCode(requestedState)?.code !== "PA"))) return null;
+  // An independent state course cannot accept another state, an unknown supplied state, or CA.
+  if (pa && (requestedCountry === "CA" || (requestedState != null && getStateByCode(requestedState)?.code !== pa.stateCode))) return null;
   const state = getStateByCode(requestedState);
   if (shared && state && !matchedUSCourses(state).some(item => item.courseKey === course.courseKey)) return null;
 
@@ -59,10 +59,10 @@ export function resolveUSStudyContext(
   return {
     courseKey: course.courseKey,
     stream: course.track as ResolvedUSStudyContext["stream"],
-    stateCode: pa ? "PA" : identity?.code ?? null,
-    stateName: pa ? "Pennsylvania" : identity?.name ?? null,
+    stateCode: pa ? pa.stateCode : identity?.code ?? null,
+    stateName: pa ? pa.stateName : identity?.name ?? null,
     unitConvention: "us-customary",
-    criteriaEdition: pa ? "Pennsylvania original practice; not an official exam blueprint" : course.examFamily === "us-state"
+    criteriaEdition: pa ? `${pa.stateName} original practice; not an official exam blueprint` : course.examFamily === "us-state"
       ? "state-specific public operator criteria"
       : shared ? `Shared WPI Class ${course.classLevel} technical core; state adoption not established` : "WPI 2025 Class I criteria",
   };

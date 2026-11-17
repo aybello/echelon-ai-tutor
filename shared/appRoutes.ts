@@ -2,7 +2,7 @@ import { COURSE_SEO_PAGES, REGION_SEO_PAGES } from "./seoCatalog";
 import { CEU_COURSES } from "./ceuCourses";
 import { equipmentRoutes } from "./equipmentRegistry";
 import { US_STATE_NAMES } from "./usStateNames";
-import { pennsylvaniaBank } from "./pennsylvaniaBanks";
+import { statePracticeBank } from "./pennsylvaniaBanks";
 import { getCourseByKey } from "./courseRegistry";
 
 /** App.tsx route contract. The drift test must pass when routes are added. */
@@ -25,7 +25,7 @@ export function classifyAppRoute(url: string): AppRoute {
   if (privatePaths.has(path) || /^\/(?:activate\/[^/]+|training-hours\/records\/[^/]+)$/.test(path)) return { kind: "private", path };
   if (publicPaths.has(path) || cataloguePaths.has(path) || /^\/blog\/[a-z0-9-]{1,200}$/.test(path)) return { kind: "public", path };
   const paTool = /^\/us\/(?:practice|mock|flashcards)\/([a-z0-9-]+)$/.exec(path);
-  if (paTool && pennsylvaniaBank(paTool[1]) && getCourseByKey(paTool[1])?.isActive) return { kind: "public", path };
+  if (paTool && statePracticeBank(paTool[1]) && getCourseByKey(paTool[1])?.isActive) return { kind: "public", path };
   const activityCourse = /^\/courses\/([a-z0-9-]+)\/interactive$/.exec(path);
   if (activityCourse && getCourseByKey(activityCourse[1])?.isActive) return { kind: "public", path };
   return { kind: "not-found", path };
