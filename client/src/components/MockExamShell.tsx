@@ -23,6 +23,7 @@ import { shouldShowReviewPrompt } from "@/lib/reviewFunnel";
 import { getTutorFailureMessage, isTutorDismissKey } from "@/lib/tutorInteraction";
 import { useLearningActivitySession } from "@/hooks/useLearningActivitySession";
 import { TutorGuideMark } from "@/components/TutorGuideMark";
+import { readTutorStudyLocale } from "@shared/usStudyContext";
 
 // ─── Inline AI Tutor for review mode ─────────────────────────────────────────
 
@@ -63,6 +64,7 @@ function ReviewAITutor({ q, userAnswerIdx, examType, sessionToken, reviewToken }
       const result = await chatMutation.mutateAsync({
         messages: newMessages,
         examType,
+        ...readTutorStudyLocale(examType, typeof window === "undefined" ? "" : window.location.search),
         // ExamQuestion.id is the bank-scoped questionNum returned by quiz.getQuestions.
         questionNum: q.id,
         selectedIndex: userAnswerIdx,

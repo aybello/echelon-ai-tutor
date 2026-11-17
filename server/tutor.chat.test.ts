@@ -157,6 +157,57 @@ describe("tutor.chat", () => {
     expect(lookup.params).toEqual(["class1-water", 42, "in_review", "rejected"]);
   });
 
+  it("passes canonical wastewater identity and teaching guidance through the shared endpoint", async () => {
+    await appRouter.createCaller(createPaidContext()).tutor.chat({
+      examType: "class1-wastewater",
+      questionNum: 42,
+      selectedIndex: 1,
+      messages: [{ role: "user", content: "Explain the concept and my mistake." }],
+      patternMode: false, recentPerformance: [],
+    });
+    const prompt = mocks.invokeLLM.mock.calls[0][0].messages[0].content;
+    expect(prompt).toContain('"courseKey":"class1-ww"');
+    expect(prompt).toContain('"stream":"wastewater-treatment","classLevel":1');
+    expect(prompt).not.toContain('"stream":"water-treatment"');
+    expect(prompt).toContain('"selectedOptionText":"Turbidity"');
+    expect(prompt).toContain("one short original follow-up practice question");
+    expect(prompt).toContain("Define every symbol with its meaning and unit");
+    expect(mocks.invokeLLM).toHaveBeenCalledTimes(1);
+  });
+
+  it.each([
+    { examType: "wpi-class3-water-coll", stream: "wastewater-collection", classLevel: 3, country: undefined },
+    { examType: "wpi-class2-water", stream: "water-treatment", classLevel: 2, country: "US" as const },
+    { examType: "us-class1-water-dist", stream: "water-distribution", classLevel: 1, country: "US" as const },
+  ])("grounds $examType without changing the course or bank for locale", async ({ examType, stream, classLevel, country }) => {
+    await appRouter.createCaller(createPaidContext()).tutor.chat({
+      examType, questionNum: 42, usCountry: country,
+      messages: [{ role: "user", content: "Explain this concept at my course level." }],
+      patternMode: false, recentPerformance: [],
+    });
+    const prompt = mocks.invokeLLM.mock.calls[0][0].messages[0].content;
+    expect(prompt).toContain(`"courseKey":"${examType}"`);
+    expect(prompt).toContain(`"stream":"${stream}","classLevel":${classLevel}`);
+    if (country) {
+      expect(prompt).toContain('"studyJurisdiction":"united-states"');
+      expect(prompt).toContain("US gallons (never Imperial gallons)");
+    }
+    expect(mocks.resolveAccessForRequest).toHaveBeenCalledWith(expect.anything(), examType, { accessToken: undefined });
+    expect(mocks.invokeLLM).toHaveBeenCalledTimes(1);
+  });
+
+  it("rejects unknown course identity before access, quota, database or provider work", async () => {
+    await expect(appRouter.createCaller(createPaidContext()).tutor.chat({
+      examType: "unknown-water-class4",
+      messages: [{ role: "user", content: "Explain this exam question." }],
+      patternMode: false, recentPerformance: [],
+    })).rejects.toMatchObject({ code: "BAD_REQUEST" });
+    expect(mocks.resolveAccessForRequest).not.toHaveBeenCalled();
+    expect(mocks.enforceAiTutorDailyQuota).not.toHaveBeenCalled();
+    expect(mocks.getDb).not.toHaveBeenCalled();
+    expect(mocks.invokeLLM).not.toHaveBeenCalled();
+  });
+
   it("uses issued context after confirming that a changed canonical question remains learner-visible", async () => {
     const profileRows = {
       from: vi.fn(() => ({

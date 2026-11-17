@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { trpc } from "@/lib/trpc";
 import { getTutorFailureMessage, isTutorDismissKey } from "@/lib/tutorInteraction";
 import { TutorGuideMark } from "@/components/TutorGuideMark";
+import { readTutorStudyLocale } from "@shared/usStudyContext";
 
 interface ReviewAITutorProps {
   questionText: string;
@@ -46,6 +47,7 @@ export default function ReviewAITutor({ questionText, options, correctIndex, use
       const result = await chatMutation.mutateAsync({
         messages: newMessages,
         examType,
+        ...readTutorStudyLocale(examType, typeof window === "undefined" ? "" : window.location.search),
         questionNum,
         selectedIndex: userAnswerIndex,
         patternMode: false,
