@@ -44,11 +44,11 @@ describe("pinned Class 3–4 Claude publication", () => {
     }
   });
   it("preserves all protected prior payloads, declarations and exclusions byte-for-byte", () => {
-    // PR #247 authorizes this presentation-only stylesheet revision, not content changes.
+    // PRs #247 and #251 authorize presentation-only stylesheet revisions, not content changes.
     // Keep the original publication fixture and every other protected hash unchanged.
     const protectedHashes = {
       ...counts.protectedHashes,
-      "client/src/pages/admin.css": "b6ba8838bde4330e0d2746e5628783a7e833e754df872f766aa28c922c1ec33d",
+      "client/src/pages/admin.css": "008a798cf62d2d5582409e735f77d2513e3556fa140eed22206b47508cf8ec5e",
     };
     for (const [path, hash] of Object.entries(protectedHashes)) expect(sha(path === "server/interactiveContent/engine/releaseExclusions.json" ? historicalExclusionBytes : historicalAuthoringBytes(path)), path).toBe(hash);
   });
