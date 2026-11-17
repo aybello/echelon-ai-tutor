@@ -1,6 +1,6 @@
 import { eligibleCourseKeys } from "./interactiveContent/engine/compiler";
 import { describe, expect, it } from "vitest";
-import { PENNSYLVANIA_BANKS, PA_PRACTICE_MOCK } from "../shared/pennsylvaniaBanks";
+import { PENNSYLVANIA_BANKS, PA_PRACTICE_MOCK, US_STATE_PRACTICE_BANKS } from "../shared/pennsylvaniaBanks";
 import { InteractiveContentEngine } from "./interactiveContent/engine/loader";
 import { getAllActiveCourseKeys, getCourseByKey, getCoursesForSubscriptionTier, courseKeyToTierStrict } from "../shared/courseRegistry";
 import { classifyAppRoute } from "../shared/appRoutes";
@@ -16,11 +16,11 @@ import { FREE_EXAM_TYPES } from "./_core/access";
 import { getAllSubscriptionExamTypes, allowedCourseKeysForOrg } from "./stripe/subscriptionProducts";
 
 describe("Pennsylvania exact course identity and scope", () => {
-  it("registers exactly 40 unique active non-309A courses while preserving the 38 game courses", () => {
+  it("registers exactly 41 unique active non-309A courses while preserving the 38 game courses", () => {
     const keys = getAllActiveCourseKeys().filter(key => key !== "electrician-309a");
-    expect(keys).toHaveLength(40);
-    expect(new Set(keys).size).toBe(40);
-    expect(keys.filter(key => !eligibleCourseKeys().includes(key)).sort()).toEqual(PENNSYLVANIA_BANKS.map(bank => bank.courseKey).sort());
+    expect(keys).toHaveLength(41);
+    expect(new Set(keys).size).toBe(41);
+    expect(keys.filter(key => !eligibleCourseKeys().includes(key)).sort()).toEqual(US_STATE_PRACTICE_BANKS.map(bank => bank.courseKey).sort());
   });
   it.each(PENNSYLVANIA_BANKS)("registers $courseKey without inventing a SKU, bank alias or access grant", bank => {
     const course = getCourseByKey(bank.courseKey)!;

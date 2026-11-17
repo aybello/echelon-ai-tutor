@@ -842,8 +842,27 @@ const REGISTRY: CourseEntry[] = [
     aliases: [],
     isActive: true,
   },
-  // PA learner registration only: standard preview and exact-course guards apply.
+  // Independent state learner registration: standard preview and exact-course guards apply.
   // No catalogue product, checkout release, Canadian subscription or team grant.
+  {
+      "courseKey": "fl-water-distribution-l3",
+      "displayName": "Florida Water Distribution Level 3",
+      "shortName": "FL Level 3 Distribution",
+      "provinceOrRegion": "united-states",
+      "examFamily": "us-state",
+      "track": "water-distribution",
+      "classLevel": 0,
+      "quizPath": "/us/practice/fl-water-distribution-l3",
+      "mockExamPath": "/us/mock/fl-water-distribution-l3",
+      "flashcardPath": "/us/flashcards/fl-water-distribution-l3",
+      "formulaPath": null,
+      "productKey": "fl-water-distribution-l3",
+      "subscriptionTier": "all-access",
+      "questionBankKey": "fl-water-distribution-l3",
+      "teamAssignable": false,
+      "aliases": [],
+      "isActive": true
+  },
   {
       "courseKey": "pa-class-e-water-distribution",
       "displayName": "Pennsylvania Class E Water Distribution",

@@ -1,0 +1,10 @@
+/* Foundations / applied groups and course covers */
+.ceu-course-group + .ceu-course-group { margin-top: 48px; }
+.ceu-group-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin: 42px 0 0; font-size: 22px; letter-spacing: -0.02em; }
+.ceu-course-group:first-of-type .ceu-group-title { margin-top: 36px; }
+.ceu-group-title span { color: var(--ceu-muted); font-size: 14px; font-weight: 600; letter-spacing: normal; }
+.ceu-course-group .ceu-course-list { margin-top: 18px; }
+.ceu-course-cover { display: block; width: 100%; height: auto; max-height: 260px; margin: 16px 0 4px; border-radius: 12px; object-fit: cover; aspect-ratio: 3 / 1; background: #e8eef5; }
+@media (max-width: 760px) { .ceu-course-cover { aspect-ratio: 16 / 9; max-height: none; } .ceu-group-title { font-size: 19px; } }
+
+.ceu-overview-cover, .ceu-safety-illustration { display: block; width: 100%; height: auto; max-height: 380px; object-fit: cover; border-radius: 12px; margin-bottom: 20px; }

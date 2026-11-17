@@ -1035,6 +1035,7 @@ export const US_EXAM_RESEARCH: USStateResearch[] = [
           }
         ],
         "stream": "water-distribution",
+        "directCourseKeys": ["fl-water-distribution-l3"],
         "verifiedSharedLevels": []
       },
       {

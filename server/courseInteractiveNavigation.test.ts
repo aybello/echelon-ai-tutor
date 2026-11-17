@@ -4,7 +4,7 @@ import { getCourseInteractiveHref } from "../client/src/lib/courseNavigation";
 import { classifyAppRoute } from "../shared/appRoutes";
 import { getAllCourses, resolveCourseKey } from "../shared/courseRegistry";
 import { isNovaScotiaCourseSurface, isNovaScotiaPathSupported } from "../shared/novaScotiaPreparation";
-import { PENNSYLVANIA_BANKS, pennsylvaniaBank } from "../shared/pennsylvaniaBanks";
+import { PENNSYLVANIA_BANKS, statePracticeBank } from "../shared/pennsylvaniaBanks";
 
 const app = readFileSync("client/src/App.tsx", "utf8");
 const shell = readFileSync("client/src/components/QuizShell.tsx", "utf8");
@@ -20,12 +20,12 @@ describe("course-specific interactive navigation", () => {
 
   it("links supported active registry quizzes to their canonical course-specific routes", () => {
     for (const course of getAllCourses().filter((item) => item.isActive)) {
-      if (pennsylvaniaBank(course.courseKey)) {
+      if (statePracticeBank(course.courseKey)) {
         expect(course.quizPath).toBe(`/us/practice/${course.courseKey}`);
         expect(app).toContain('<Route path={"/us/practice/:courseKey"}>{() => <UsBankStudyRoute tool="practice" />}</Route>');
         expect(app).toContain('lazy(() => import("./pages/UsBankStudyRoute"))');
         const route = readFileSync("client/src/pages/UsBankStudyRoute.tsx", "utf8");
-        expect(route).toContain("const bank = pennsylvaniaBank(courseKey)");
+        expect(route).toContain("const bank = statePracticeBank(courseKey)");
         expect(route).toContain('<UsBankQuiz key={courseKey} courseKey={bank.courseKey} />');
         const quiz = readFileSync("client/src/pages/UsBankQuiz.tsx", "utf8");
         expect(quiz.match(/<QuizShell\b([\s\S]*?)\/>/)?.[1]).toContain("examType={courseKey}");

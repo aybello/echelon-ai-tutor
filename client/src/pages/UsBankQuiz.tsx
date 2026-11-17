@@ -8,13 +8,14 @@ import QuizSkeleton from "@/components/QuizSkeleton";
 import { usePageMeta } from "@/hooks/usePageMeta";
 
 import { getCourseByKey } from "@shared/courseRegistry";
-import { type PennsylvaniaCourseKey } from "@shared/pennsylvaniaBanks";
-export default function UsBankQuiz({ courseKey }: { courseKey: PennsylvaniaCourseKey }) {
+import { statePracticeBank, type StatePracticeCourseKey } from "@shared/pennsylvaniaBanks";
+export default function UsBankQuiz({ courseKey }: { courseKey: StatePracticeCourseKey }) {
   const course = getCourseByKey(courseKey)!;
+  const bank = statePracticeBank(courseKey)!;
 
   usePageMeta({
     title: `${course.displayName} Practice Questions`,
-    description: "Original Pennsylvania practice in US customary units. Independent preparation, not an official exam blueprint.",
+    description: `Original ${bank.stateName} practice in US customary units. Independent preparation, not an official exam blueprint.`,
     noindex: true,
   });
 
@@ -43,7 +44,7 @@ export default function UsBankQuiz({ courseKey }: { courseKey: PennsylvaniaCours
       currentPath={course.quizPath}
       courseLabel={course.shortName}
       courseTitle={`${course.displayName} Quiz`}
-      courseSubtitle="Pennsylvania · US customary units · Independent practice"
+      courseSubtitle={`${bank.stateName} · US customary units · Independent practice`}
       headerGradient="linear-gradient(135deg, #0F172A 0%, #1D4ED8 100%)"
       headerIcon="US"
       headerActions={[

@@ -9,7 +9,11 @@ import c7 from "./courses/ceu-sampling-data-quality.json";
 import c8 from "./courses/ceu-wastewater-treatment-process-control.json";
 import c9 from "./courses/ceu-water-treatment-process-control.json";
 import type { CeuCurriculum } from "../../shared/ceuLearning";
+import safety from "./courses/ceu-basic-safety.json";
+import hydraulics from "./courses/ceu-basic-hydraulics.json";
+import math from "./courses/ceu-basic-math.json";
 export const ceuCurricula = [
+  safety, hydraulics, math,
   c0,
   c1,
   c2,

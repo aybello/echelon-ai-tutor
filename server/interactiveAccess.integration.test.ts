@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { TrpcContext } from "./_core/context";
-import { getAllActiveCourseKeys } from "../shared/courseRegistry";
+import { eligibleInteractiveCourseKeys } from "../shared/interactiveEligibility";
 import { interactiveModes } from "./interactiveContent/schema";
 import { validateInteractivePackage } from "./interactiveContent/loader";
 import { issueSubscriptionToken } from "./_core/subscriptionToken";
@@ -88,14 +88,14 @@ async function check(identity: Identity, token?: string, email?: string, both = 
     expect(response).toMatchObject({ courseKey, available: true, locked: false, version: "synthetic-v1", mode,
       totalAvailableCount: 2, filters: { topicId: null, difficulty: null, requestedSize: 20 } });
     expect(response.examples.map(x => x.id)).toEqual(examples.filter(x => x.mode === mode).map(x => x.id));
-    expect(sessionEngine.startSession).toHaveBeenLastCalledWith(sessionInput, true);
+    expect(sessionEngine.startSession).toHaveBeenLastCalledWith(sessionInput, true, []);
   }
   expect(setHeader).toHaveBeenCalledTimes(8);
   expect(setHeader.mock.calls.every(call => call[0] === "Cache-Control" && call[1] === "private, no-store")).toBe(true);
   expect(getDb).not.toHaveBeenCalled();
 }
 const purchase = (productKey = "class1-water", status = "active", accessExpiresAt: Date | null = null) => ({ productKey, status, accessExpiresAt });
-const eligibleCourses = getAllActiveCourseKeys().filter(key => key !== "electrician-309a");
+const eligibleCourses = eligibleInteractiveCourseKeys();
 
 beforeEach(() => {
   vi.clearAllMocks();

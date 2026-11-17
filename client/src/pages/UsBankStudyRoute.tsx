@@ -1,6 +1,6 @@
 import { useParams } from "wouter";
 import { getCourseByKey } from "@shared/courseRegistry";
-import { pennsylvaniaBank, PA_PRACTICE_MOCK, type PennsylvaniaCourseKey } from "@shared/pennsylvaniaBanks";
+import { statePracticeBank, PA_PRACTICE_MOCK, type StatePracticeCourseKey } from "@shared/pennsylvaniaBanks";
 import UsBankQuiz from "./UsBankQuiz";
 import MockExamShell from "@/components/MockExamShell";
 import FlashcardShell, { type FlashcardQuestion } from "@/components/FlashcardShell";
@@ -12,23 +12,24 @@ import { useQuestionBank, useMockExamMetadata } from "@/hooks/useQuestionBank";
 type StudyTool = "practice" | "mock" | "flashcards";
 export default function UsBankStudyRoute({ tool }: { tool: StudyTool }) {
   const { courseKey = "" } = useParams<{ courseKey: string }>();
-  const bank = pennsylvaniaBank(courseKey);
+  const bank = statePracticeBank(courseKey);
   const course = getCourseByKey(courseKey);
-  if (!bank || !course?.isActive) return <main><h1>Course not found</h1><a href="/us/states/pennsylvania">Pennsylvania preparation</a></main>;
+  if (!bank || !course?.isActive) return <main><h1>Course not found</h1><a href="/us/states">State preparation</a></main>;
   if (tool === "practice") return <UsBankQuiz key={courseKey} courseKey={bank.courseKey} />;
   if (tool === "mock") return <UsBankMock key={courseKey} courseKey={bank.courseKey} />;
   return <UsBankFlashcards key={courseKey} courseKey={bank.courseKey} />;
 }
-function UsBankMock({ courseKey }: { courseKey: PennsylvaniaCourseKey }) {
+function UsBankMock({ courseKey }: { courseKey: StatePracticeCourseKey }) {
   const course = getCourseByKey(courseKey)!;
+  const bank = statePracticeBank(courseKey)!;
   const { isLoading, dbUnavailable } = useMockExamMetadata(courseKey);
   if (isLoading) return <QuizSkeleton />;
   if (dbUnavailable) return <QuizSkeleton dbUnavailable />;
   return <MockExamShell
     title={`${course.displayName} Practice Mock`}
-    badge="PENNSYLVANIA · INDEPENDENT PRACTICE"
+    badge={`${bank.stateName.toUpperCase()} · INDEPENDENT PRACTICE`}
     noindex
-    metaDescription="Echelon practice session, not an official Pennsylvania exam blueprint or prediction. Full course-pass sales are not available yet."
+    metaDescription={`Echelon practice session, not an official ${bank.stateName} exam blueprint or prediction. Full course-pass sales are not available yet.`}
     examQuestions={PA_PRACTICE_MOCK.count}
     examDuration={PA_PRACTICE_MOCK.duration}
     passThreshold={PA_PRACTICE_MOCK.passThreshold}
@@ -38,13 +39,13 @@ function UsBankMock({ courseKey }: { courseKey: PennsylvaniaCourseKey }) {
     practicePath={course.quizPath}
     practiceLabel={course.shortName}
     currentPath={course.mockExamPath}
-    infoLine="Echelon practice settings only: 100 questions, 3 hours, 70% practice target. Not Pennsylvania exam requirements. Full course-pass sales are not available yet."
+    infoLine={`Echelon practice settings only: 100 questions, 3 hours, 70% practice target. Not ${bank.stateName} exam requirements. Full course-pass sales are not available yet.`}
     stream={course.track === "wastewater-collection" ? "wastewater" : "water"}
     showProvinceSelector={false}
     accentColor="#0369A1"
   />;
 }
-function UsBankFlashcards({ courseKey }: { courseKey: PennsylvaniaCourseKey }) {
+function UsBankFlashcards({ courseKey }: { courseKey: StatePracticeCourseKey }) {
   const course = getCourseByKey(courseKey)!;
   const { questions, modules, isLoading, dbUnavailable } = useQuestionBank(courseKey, "full", "flashcards");
   if (isLoading) return <QuizSkeleton />;

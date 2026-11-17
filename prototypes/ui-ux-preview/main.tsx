@@ -20,6 +20,7 @@ import { useQuizSession } from "@/hooks/useQuizSession";
 import StudentDashboard from "@/pages/StudentDashboard";
 import OrgDashboard from "@/pages/OrgDashboard";
 import ContinuingEducationCourse from "@/pages/ContinuingEducationCourse";
+import ContinuingEducation from "@/pages/ContinuingEducation";
 import Landing from "@/pages/Landing";
 import Pricing from "@/pages/Pricing";
 import Admin from "@/pages/Admin";
@@ -94,7 +95,7 @@ function Preview() {
         return;
       }
       if(href.includes("-exam") || href.includes("mock")) navigate("/mock");
-      else if(href.startsWith("/continuing-education")) navigate(`/continuing-education/${course.key}`);
+      else if(href.startsWith("/continuing-education")) { window.location.hash = href; window.location.reload(); }
       else if(href.startsWith("/dashboard")) navigate("/dashboard");
       else if(href.startsWith("/team")) navigate("/team");
       else if(href.startsWith("/pricing")) navigate("/pricing");
@@ -114,6 +115,7 @@ function Preview() {
     :view === "/homepage" ? <Landing /> :view === "/pricing" ? <Pricing /> :view === "/dashboard" ? <StudentDashboard /> : view === "/team" ? <OrgDashboard />
     :view === "/admin" ? <Admin /> :view === "/account" ? <Account /> :view === "/formulas-water1" ? <FormulasWater1 />
     :view === "/flashcards" ? <FlashcardShell questions={questions} examName="Class 1 Water Treatment" examType="class1-water" backPath="/class1-water" modules={["Coagulation & Flocculation", "Sedimentation"]} />
+    :view === "/continuing-education" ? <ContinuingEducation />
     :view.startsWith("/continuing-education/") ? <><div className="preview-ceu-tools"><button onClick={() => { resetPreviewCourse(); void queryClient.invalidateQueries(); }}>Preview final exam with completed sample modules</button></div><ContinuingEducationCourse /></>
     :view === "/mock" ? <MockExamShell title="Class 1 Water · Mock exam preview" badge="ONTARIO CLASS 1" examQuestions={10} examDuration={3600} passThreshold={.7} moduleTargets={{"Coagulation & Flocculation":10}} moduleColors={{"Coagulation & Flocculation":{bg:"#eff6ff",color:"#1d4ed8"}}} productKey="class1-water" currentPath="/class1-water-exam" practicePath="/class1-water" practiceLabel="Return to practice" freeAccess />
     :<PracticePreview />}</ErrorBoundary>
