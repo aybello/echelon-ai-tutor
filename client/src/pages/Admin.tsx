@@ -733,7 +733,7 @@ export default function Admin() {
             {(stats.error || kpisQ.error || businessQ.error) && <p className="admin-panel-error" role="alert">Some summary data could not be refreshed. Use Refresh to try again.</p>}
 
             <section className="admin-priority-card" aria-labelledby="priority-title">
-              <div className="admin-panel-heading"><h2 id="priority-title">Priorities</h2></div>
+              <div className="admin-panel-heading"><h2 id="priority-title">Priorities</h2><button type="button" className="admin-text-action" onClick={() => selectSection("learners")}>View learner activity →</button></div>
               <div className="admin-priority-list">
                 {founderActions.map((item) => (
                   <button key={item.number} type="button" className="admin-priority-item" onClick={() => selectSection(item.tab)}>
@@ -912,7 +912,6 @@ export default function Admin() {
               </tr></tbody></table><p className="admin-ceu-disclosure">Certificate views are measured from this release onward. Public views and failed network saves are not included in these record-based counts.</p></div>}
             </section>
             </details>
-            <button type="button" className="admin-btn" onClick={() => setActiveTab("learners")}>View learner activity →</button>
             <AdminGamesActivity />
           </>
         )}
