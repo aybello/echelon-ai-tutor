@@ -314,14 +314,14 @@ What is a common reason for a routine hydrant flushing program?
 
 **Answer: A. To clear sediment and stale water from mains**
 
-Regular flushing moves out sediment and aged water, which helps keep water quality and velocity in the system healthy.
+Regular flushing moves out sediment and aged water, which helps keep water quality in the system healthy.
 
 ### 25: Valves and hydrants (hard)
 
 After a dry-barrel hydrant is shut down, its barrel stays full. What does this suggest?
 
 - **A.** The drain port is plugged or has failed
-- **B.** The main valve was left partly open
+- **B.** The nozzle caps were left off after the test
 - **C.** An isolation valve on the hydrant branch is closed
 - **D.** The operating nut has become worn
 
@@ -535,7 +535,7 @@ Why should a dry-barrel hydrant main valve be opened completely while flowing, i
 
 **Answer: D. The seat can wear and the drain can stay open**
 
-The drain port closes only as the main valve nears fully open. Partial opening lets water erode the seat and drain out through the port.
+The drain port closes as the main valve opens and can stay open at small openings. Throttling lets water erode the seat and drain out through the port.
 
 ### 42: Valves, hydrants, pumps and booster stations (easy)
 
@@ -645,10 +645,10 @@ Water pressure rises as ground gets lower and falls as ground gets higher. Zones
 
 What does an elevated storage tank do for the system during the hours of highest demand?
 
-- **A.** Raises the chlorine residual as water sits in the bowl above the system
+- **A.** Raises the chlorine residual as water sits in the tank
 - **B.** Lets the pumps shut down until the tank is empty
 - **C.** Supplies water and helps hold pressure while pumps catch up
-- **D.** Lets the pumps shut down until the tank has fully emptied out
+- **D.** Lowers system pressure so that leakage is reduced
 
 **Answer: C. Supplies water and helps hold pressure while pumps catch up**
 
@@ -808,7 +808,7 @@ Why must backflow assemblies be tested by a qualified tester on a regular schedu
 
 **Answer: C. Springs and seats wear or foul, so a failed device may go unnoticed**
 
-Backflow assemblies sit idle most of the time and can fail without any outward sign. Periodic testing finds failures before a reversal occurs.
+Backflow assemblies can foul or wear and fail without any outward sign. Periodic testing finds failures before a reversal occurs.
 
 ### 63: Hydrants, valves, meters, tanks, backflow and records (medium)
 
@@ -868,7 +868,7 @@ A customer reports rusty brown water right after a hydrant was flowed nearby. Wh
 
 - **A.** Minerals dropping out of the water because of hardness
 - **B.** Sediment and corrosion deposits stirred loose from the pipe walls
-- **C.** Minerals dropping out of the water because of its hardness level
+- **C.** Air trapped in the service line after the flow
 - **D.** A surge in the chlorine feed at the source
 
 **Answer: B. Sediment and corrosion deposits stirred loose from the pipe walls**
@@ -906,7 +906,7 @@ Turbidity is a measure of how much light is scattered by suspended particles suc
 When flushing a dead end for water quality, which observation shows the crew can stop?
 
 - **A.** The water temperature matches the air temperature
-- **B.** The water temperature matches the outside air temperature at the hydrant
+- **B.** A set time of five minutes has passed, whatever the water looks like
 - **C.** Water runs clear and a normal chlorine reading returns
 - **D.** The hydrant pressure gauge reads zero
 
@@ -1246,11 +1246,11 @@ Why is a disinfectant residual kept in the distribution system?
 - **A.** It prevents scale from forming on the pipe wall
 - **B.** It lowers friction losses in long water mains
 - **C.** It removes hardness from water before delivery
-- **D.** It gives lasting protection against microbes in the pipes
+- **D.** It protects against microbes in the pipes
 
-**Answer: D. It gives lasting protection against microbes in the pipes**
+**Answer: D. It protects against microbes in the pipes**
 
-Disinfection at the plant does not guard against later contamination. A lasting residual helps control bacteria in the pipes and storage.
+Plant disinfection alone does not guard against later contamination. A lasting residual helps control bacteria in the pipes and storage.
 
 ### 97: Federal and state roles, standards, monitoring, notices (medium)
 
@@ -1328,7 +1328,7 @@ Why do trench walls need shoring or another protection system when workers enter
 
 **Answer: D. Soil can collapse suddenly and bury a worker**
 
-Trench walls can cave in with little warning. Protective systems hold the soil back so workers can be in the trench safely.
+Trench walls can cave in with little warning. Protective systems hold the soil back or shield workers so they can be in the trench safely.
 
 ### 103: PPE, excavations, confined spaces, chlorine, security, response awareness (medium)
 
@@ -1341,7 +1341,7 @@ Why is a ladder or other means of exit required in a trench where people work?
 
 **Answer: C. It gives workers a quick way out if walls fail**
 
-A ready way out lets workers leave fast if conditions change, such as a cave-in or rising water.
+A ready way out lets workers leave fast if conditions change, such as rising water or a developing hazard.
 
 ### 104: PPE, excavations, confined spaces, chlorine, security, response awareness (hard)
 
@@ -1380,7 +1380,7 @@ What is a typical sign of a chlorine gas leak near cylinders?
 
 **Answer: C. A sharp, irritating odor and a greenish-yellow haze**
 
-Chlorine has a strong, biting odor and a pale greenish-yellow color. It irritates the eyes, nose and throat and is heavier than air.
+Chlorine has a strong, biting odor and a pale greenish-yellow color. It irritates the eyes, nose and throat and is heavier than air. A hazardous amount can be present without any visible color.
 
 ### 107: PPE, excavations, confined spaces, chlorine, security, response awareness (medium)
 
@@ -1540,7 +1540,7 @@ Gallons = cubic feet times 7.48. Substitute the stated values: 85 × 7.48 = 636 
 
 ### 119: Unit conversions (medium)
 
-A treatment plant sends out 3.2 MGD. Use 1 MGD = 1.547 cfs. What is the flow in cfs?
+A pumping station sends out 3.2 MGD. Use 1 MGD = 1.547 cfs. What is the flow in cfs?
 
 - **A.** 2,222.08 cfs
 - **B.** 2.07 cfs
@@ -1553,7 +1553,7 @@ cfs = MGD times 1.547. Substitute the stated values: 3.2 × 1.547 = 4.95 cfs. Ro
 
 ### 120: Area and volume (medium)
 
-A circular clearwell floor has a diameter of 36 ft. Use area = 0.785 x D x D. What is the floor area in ft2?
+A circular ground storage tank floor has a diameter of 36 ft. Use area = 0.785 x D x D. What is the floor area in ft2?
 
 - **A.** 28.3 ft2
 - **B.** 4,069.4 ft2
@@ -1757,7 +1757,7 @@ A feed pump adds 25 lb/day of chlorine to a flow of 1.2 MGD, and the residual af
 
 **Answer: A. 1.4 mg/L**
 
-Demand = dose (lb/day divided by MGD times 8.34) minus residual. Substitute the stated values: 25 ÷ (1.2 × 8.34)-1.1 = 1.4 mg/L. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
+Demand = dose minus residual, where dose in mg/L = lb/day divided by (MGD times 8.34). Substitute the stated values: 25 ÷ (1.2 × 8.34)-1.1 = 1.4 mg/L. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
 
 ### 136: Chlorine dose, volume and demand calculations (medium)
 
@@ -1824,18 +1824,18 @@ A 2160 ft main is laid in 18 ft lengths of pipe. The crew orders 10 percent extr
 
 Lengths = (main length divided by pipe length) times 1.10. Substitute the stated values: 2160 ÷ 18 × 1.1 = 132 lengths. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
-### 141: Trench volume, quantities and thrust blocks (hard)
+### 141: Trench volume, quantities and thrust blocks (medium)
 
-A fitting has a thrust force of 5400 lb. The soil bearing pressure is 1800 lb/ft2, and a safety factor of 1.5 is applied to the force. What bearing area of thrust block is needed in ft2?
+A ground storage tank is 40 ft in diameter and holds water 20 ft deep. Use volume = 0.785 x D x D x depth x 7.48 gal per ft3. How many gallons does the tank hold?
 
-- **A.** 6.8 ft2
-- **B.** 0.5 ft2
-- **C.** 3.0 ft2
-- **D.** 4.5 ft2
+- **A.** 9,395 gal
+- **B.** 46,974 gal
+- **C.** 25,120 gal
+- **D.** 187,898 gal
 
-**Answer: D. 4.5 ft2**
+**Answer: D. 187,898 gal**
 
-Area = force times safety factor divided by soil bearing pressure. Substitute the stated values: 5400 × 1.5 ÷ 1800 = 4.5 ft2. Round only the final result to 1 decimal place(s). The result uses the assumptions stated in the question.
+Volume = 0.785 times diameter squared times depth times 7.48. Substitute the stated values: 0.785 × 40 × 40 × 20 × 7.48 = 187,898 gal. Round only the final result to 0 decimal place(s). The result uses the assumptions stated in the question.
 
 ### 142: Pump flow, pressure from elevation and run time (medium)
 

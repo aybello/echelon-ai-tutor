@@ -48,3 +48,7 @@ Dossiers I did not open in full (about 40 others also mention calculations or ma
 - Some small distractor values are floating rounded (for example 0.00094 gpm); the rounding follows the same rule as the correct answer.
 - Fictional place names (Alder Creek, Quillfeather Reservoir, Marlow Bend, Spruce Landing, Tern Harbor, Pine Ridge, Copper Fen) were not checked against real places.
 - Module 4's quick check on reasonableness and the final question on doubling flow overlap in spirit with the lesson text; kept as distinct items.
+
+## Cover image
+
+`covers/ceu-basic-math-cover.jpg` (1600 px wide): AI-generated image of a circular clarifier at sunrise with a notebook, pen and calculator on the railing. Generated 2026-11-17 with gemini-3.1-flash-image-preview. The owner chose it. Not yet shown anywhere in the app.

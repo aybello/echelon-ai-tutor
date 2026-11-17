@@ -14,7 +14,7 @@
   "file": "questions/bank-150.json",
   "count": 150,
   "calculations": 36,
-  "sha256": "dbe6a57ff57cece49f266f63f5d904a3ae879b5a6bd20ec088763ee7ce434010",
+  "sha256": "3e03bc9e0fdfaa3ba954ce6964217e6d835ff7755f7e9cb08ab5361350a1251e",
   "modules": {
     "Disinfection": 16,
     "Install equipment": 14,
@@ -31,8 +31,8 @@
   },
   "difficulty": {
     "easy": 38,
-    "medium": 83,
-    "hard": 29
+    "medium": 84,
+    "hard": 28
   },
   "topics": {
     "Residuals, free and total chlorine, and demand": 5,
@@ -74,7 +74,7 @@
     "answerCues": {
       "conceptualCount": 114,
       "longestRate": 0.3157894736842105,
-      "shortestRate": 0.07894736842105263,
+      "shortestRate": 0.08771929824561403,
       "longTells": [],
       "shortTells": [],
       "qualifierTells": []

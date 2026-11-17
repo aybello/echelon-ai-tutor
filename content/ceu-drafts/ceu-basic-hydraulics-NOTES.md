@@ -54,3 +54,15 @@ Six original inline SVG figures were added to module lessons (viewBox-only, role
 - Module 4: valve recognition strip (gate, globe, ball, butterfly, check), after "Throttling versus isolation".
 
 Reviewer notes: the pump-curve and water-hammer shapes are schematic only. The TDH formulas shown for lift and head layouts take static discharge head from the pump centreline.
+
+## Cover image
+
+`covers/ceu-basic-hydraulics-cover.jpg` (1600 px wide): AI-generated image of a hydrant flow test with a flow-test diffuser on the open outlet and a worker reading its gauge. Generated 2026-11-17 with gpt-image-2.6-flare. The owner chose it. Not yet shown anywhere in the app. Check before wide use: the dial face is generated, so no reading on it should be relied on, and a real diffuser is often an angled elbow instead of a straight cylinder.
+
+## Gap additions
+
+Added in original wording, own scenarios and numbers: hydrostatics versus hydrodynamics (Module 1, 25 ft standpipe about 10.8 psi); static suction head, static suction lift and static discharge head from the pump centerline (Module 3, new section before TDH, Otter Run 47 ft with a lift and 37 ft with suction head); priming, foot valve, dry running, discharge valve position at start and lost-prime recognition (Module 4, recognition only, no start-up steps or numbers, facility procedures govern); 13-row pump type table, kinetic versus positive displacement (Module 4); mud and telescoping valve rows plus a plug/pinch reminder.
+Figures: new pump-types strip (2.75 KB) and redrawn valve strip with seven valves (2.9 KB), both rendered at 390 px and checked.
+Questions replaced (same correct-answer position, so balance is unchanged): checks pressure-head-c6, friction-pumps-c1, operating-problems-c4 and c6; finals pressure-head-a3, friction-pumps-a2, operating-problems-a2 and a3 (new ids end in h, s or p, t, v). Recomputed: 30 x 0.433 = 13.0 psi, 54 - 6 = 48 ft, 8 + 60 = 68 ft.
+Trimmed to fit: Module 3 gauge-versus-absolute section, Module 4 dead-end section, some padding. Module 4 lesson is about 1,425 words without table pipes.
+Not changed: older options in flow-velocity-a3 and friction-pumps-a5 contain "both", "cannot" or "always"; left as reviewed.

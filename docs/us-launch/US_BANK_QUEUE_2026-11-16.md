@@ -18,8 +18,8 @@ Written 2026-11-16. The owner's direction: set up the exam bank for every state'
 | 1 | California | 11,630 | wastewater-collection | Suitable | Done: 295 questions (250 plus 45 added after checking the CWEA outline), reviewed |
 | 2 | California | 11,630 | water-distribution | Suitable | Done: 250 questions (State Water Board D1 outline), reviewed; dossier comparison with the US Class I package waived by the owner |
 | 3 | California | 11,630 | water-treatment | Narrow | Done: 280 questions (State Water Board T1 outline), reviewed; dossier comparison with the US Class I package waived |
-| 4 | Florida | 7,440 | water-distribution | Narrow | Written: 150 questions (headings-only FL outline), lint passes; multi-model review pending |
-| 5 | Florida | 7,440 | water-treatment | Narrow | Queued |
+| 4 | Florida | 7,440 | water-distribution | Narrow | Reviewed local: 150 questions (headings-only FL outline, no weights), reviewed by Opus, GPT-6.1 Sol and Gemini; dossier comparison not run; not imported or published |
+| 5 | Florida | 7,440 | water-treatment | Narrow | Draft source: 76 of 150 planned questions (56 conceptual, 20 calculations), batches 1–2; lint valid; incomplete, not reviewed or published |
 | 6 | Pennsylvania | 4,660 | wastewater-collection | Suitable | Reviewed local: 250 questions; pending guarded import and publication |
 | 7 | Pennsylvania | 4,660 | water-distribution | Suitable | Reviewed local: 500 questions; pending guarded import and publication |
 | 8 | Pennsylvania | 4,660 | wastewater-treatment | Narrow | Queued |
