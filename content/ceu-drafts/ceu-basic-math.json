@@ -1,0 +1,1091 @@
+{
+  "key": "ceu-basic-math",
+  "version": "2026-11-16.1",
+  "title": "Basic Math for Water and Wastewater Operators",
+  "shortTitle": "Basic Math",
+  "stream": "drinking_water",
+  "audience": "Operators and trainees across the US and Canada preparing for certification exams and renewal in water and wastewater work.",
+  "prerequisites": "Basic arithmetic and a calculator. US customary units are primary with metric equivalents; all scenarios and facility data are fictional.",
+  "introduction": "Build the math every operator uses on exams and on the job: percents and word problems, unit conversions, tank areas and volumes, and the core treatment-plant formulas. Each module has worked examples with units and names the usual mistakes.",
+  "plannedMinutes": 210,
+  "delivery": "Self-paced lessons, optional quick checks, a graded final exam and a non-credit certificate. Duration is being validated; no contact-hour award is made.",
+  "sources": [
+    {
+      "id": "wi-sw-guide",
+      "title": "Wisconsin DNR Operator Certification: Surface Water Study Guide (Subclass S)",
+      "url": "https://dnr.wisconsin.gov/sites/default/files/topic/OpCert/DWSGSurfaceWater.pdf",
+      "section": "Chapter 4, Section 4.2 Calculations: detention time, chlorine feed rate and related treatment calculations",
+      "jurisdiction": "Wisconsin, US state certification agency; verify your own certifying agency reference list",
+      "accessed": "2026-11-16"
+    },
+    {
+      "id": "ca-t-range",
+      "title": "California State Water Resources Control Board: Expected Range of Knowledge for Drinking Water Treatment Exam",
+      "url": "https://www.waterboards.ca.gov/drinking_water/certlic/occupations/documents/opcert/2016/treat_range_of_know.pdf",
+      "section": "Calculation items: flow rates, volume in a storage facility, detention time and unit conversions such as gpm to MGD",
+      "jurisdiction": "California, US state certification agency; verify your own certifying agency reference list",
+      "accessed": "2026-11-16"
+    },
+    {
+      "id": "csus",
+      "title": "Sacramento State Office of Water Programs: Courses",
+      "url": "https://www.owp.csus.edu/courses/",
+      "section": "Operator training course listings (water treatment, distribution, collection and wastewater); confirm current manual edition for your exam",
+      "jurisdiction": "US university operator training; verify your certifying agency reference list",
+      "accessed": "2026-11-16"
+    },
+    {
+      "id": "npdes",
+      "title": "US EPA: NPDES Training",
+      "url": "https://www.epa.gov/npdes/npdes-training",
+      "section": "Wastewater program training resources; general context for wastewater use of these plant calculations",
+      "jurisdiction": "US technical guidance; not Canadian guidance",
+      "accessed": "2026-11-16"
+    }
+  ],
+  "modules": [
+    {
+      "id": "number-skills",
+      "title": "Number skills and percent",
+      "objectives": [
+        "Convert among fractions, decimals and percents and avoid the percent-as-decimal slip.",
+        "Apply ratio, proportion, order of operations, powers, square roots, averages and rounding in a word problem."
+      ],
+      "lesson": "### Why operators need the same few math skills every day\n\nCertification exams, lab sheets and daily logs all lean on one small toolkit: decimals, fractions, percents, ratios, averages and careful rounding. Many exam questions are missed not because the chemistry or hydraulics was hard, but because a decimal point slipped or a step was done in the wrong order.\n\n> **Your job:** turn any word problem into a short, ordered list of steps, do each step with units written down, and check that the answer is the right size.\n\n### Decimals, fractions and percents are one idea\n\nA fraction, a decimal and a percent are three ways to write the same part of a whole. To move between them:\n\n- Fraction to decimal: divide the top by the bottom. 3/8 = 3 / 8 = 0.375.\n- Decimal to percent: multiply by 100 (move the point two places right). 0.375 = 37.5 percent.\n- Percent to decimal: divide by 100 (move the point two places left). 6 percent = 0.06, and 0.5 percent = 0.005.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 210\" role=\"img\" aria-label=\"Five common values shown as fraction, decimal and percent: 1/8 is 0.125 is 12.5 percent, 1/4 is 0.25 is 25 percent, 1/2 is 0.5 is 50 percent, 3/4 is 0.75 is 75 percent, 1 is 1.0 is 100 percent, placed along a bar from 0 to 100 percent.\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Fraction, decimal and percent strip</title>\n<text x=\"195\" y=\"22\" text-anchor=\"middle\" font-weight=\"bold\">Same amount, three ways to write it</text>\n<g text-anchor=\"middle\">\n<text x=\"71\" y=\"62\" font-size=\"15\" font-weight=\"bold\">1/8</text><text x=\"112\" y=\"62\" font-size=\"15\" font-weight=\"bold\">1/4</text><text x=\"195\" y=\"62\" font-size=\"15\" font-weight=\"bold\">1/2</text><text x=\"277\" y=\"62\" font-size=\"15\" font-weight=\"bold\">3/4</text><text x=\"360\" y=\"62\" font-size=\"15\" font-weight=\"bold\">1</text>\n<text x=\"71\" y=\"98\">0.125</text><text x=\"112\" y=\"98\">0.25</text><text x=\"195\" y=\"98\">0.5</text><text x=\"277\" y=\"98\">0.75</text><text x=\"360\" y=\"98\">1.0</text>\n<text x=\"71\" y=\"134\" fill=\"#2f6db2\" font-weight=\"bold\">12.5%</text><text x=\"112\" y=\"134\" fill=\"#2f6db2\" font-weight=\"bold\">25%</text><text x=\"195\" y=\"134\" fill=\"#2f6db2\" font-weight=\"bold\">50%</text><text x=\"277\" y=\"134\" fill=\"#2f6db2\" font-weight=\"bold\">75%</text><text x=\"360\" y=\"134\" fill=\"#2f6db2\" font-weight=\"bold\">100%</text>\n</g>\n<path d=\"M71 70V80M112 70V80M195 70V80M277 70V80M360 70V80M71 106V116M112 106V116M195 106V116M277 106V116M360 106V116\" stroke=\"#8a97a6\" stroke-width=\"1\"/>\n<rect x=\"30\" y=\"156\" width=\"330\" height=\"12\" fill=\"#eef1f5\" stroke=\"#8a97a6\"/>\n<rect x=\"30\" y=\"156\" width=\"165\" height=\"12\" fill=\"#2f6db2\" opacity=\"0.35\"/>\n<path d=\"M71 150V174M112 150V174M195 150V174M277 150V174M360 150V174\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<text x=\"30\" y=\"190\">0</text><text x=\"360\" y=\"190\" text-anchor=\"end\">whole = 100%</text>\n<text x=\"195\" y=\"204\" text-anchor=\"middle\" fill=\"#5b6877\">decimal x 100 = percent;  percent / 100 = decimal</text>\n</svg>\n<figcaption>Fraction, decimal and percent are the same amount: multiply a decimal by 100 for percent, divide a percent by 100 for a decimal.</figcaption>\n</figure>\n\nA very common error is the **percent as decimal slip**: using 15 instead of 0.15, or 0.5 instead of 0.005. Before you multiply by a percent, always convert it to a decimal first and say it out loud: \"fifteen percent is point one five.\"\n\n### Worked example 1: percent of a quantity\n\nA fictional caustic tank at the Alder Creek plant holds 2,400 gal when full and is 35 percent full. How many gallons are in the tank?\n\n1. Convert the percent to a decimal: 35 / 100 = 0.35.\n2. Multiply by the full capacity: 0.35 x 2,400 gal = 840 gal.\n3. Check the size: 35 percent is a bit more than one third, and one third of 2,400 is 800, so 840 is reasonable.\n\n**Answer: 840 gal.** If you multiplied by 35 you would get 84,000 gal, far more than the tank can hold; that is the slip to watch for.\n\n### Ratio and proportion\n\nA ratio compares two amounts, such as 1 part polymer to 24 parts water. A proportion says two ratios are equal, so you can find a missing amount. Write the known ratio, write the unknown ratio with the same units in the same positions, then cross-multiply.\n\n### Worked example 2: proportion\n\nA fictional feed pump delivers 36 gal in 9 min. At the same rate, how long will it take to deliver 100 gal?\n\n1. Set up gallons over minutes on both sides: 36 gal / 9 min = 100 gal / x min.\n2. Cross-multiply and solve: x = (100 gal x 9 min) / 36 gal = 900 / 36 = 25 min.\n3. Units: the gallons cancel, leaving minutes.\n\n**Answer: 25 min.** Reasonableness: 100 gal is a little under three times 36 gal, so the time is a little under three times 9 min.\n\n### Order of operations, powers and square roots\n\nDo the steps in this order, left to right within each level: parentheses, then powers and roots, then multiplication and division, then addition and subtraction. A power tells you how many times to multiply a number by itself: 5 squared is 5 x 5 = 25, and 2 cubed is 2 x 2 x 2 = 8. A square root undoes a square: the square root of 144 is 12, and the square root of 2,500 is 50. Operators use square roots to find the side of a square basin from its area and to work backward from area to diameter.\n\n**Scientific notation** is a short way to write very large or very small numbers as a number from 1 up to (but not including) 10 times a power of 10. 3.6 x 10 to the power 5 means move the point five places right: 360,000. A small number such as 0.0042 is 4.2 x 10 to the power negative 3. You will meet it on lab reports for tiny concentrations; the power tells you how many places to move the point.\n\n### Worked example 3: order of operations\n\nEvaluate 3 + 2 x (4 + 1) squared / 5.\n\n1. Parentheses: 4 + 1 = 5.\n2. Power: 5 squared = 25.\n3. Multiply and divide left to right: 2 x 25 = 50, then 50 / 5 = 10.\n4. Add: 3 + 10 = 13.\n\n**Answer: 13.** Adding 3 + 2 first would give 5 x 25 / 5 = 25, which is a wrong answer from breaking the order.\n\n### Averages and rounding\n\nAn average is the sum of the values divided by how many values there are. Count the values, not the days you hoped to have.\n\n### Worked example 4: average and rounding\n\nA fictional plant logged daily flows of 2.10, 2.35, 2.20 and 2.55 MGD (1 MGD = 3.785 million L per day).\n\n1. Add: 2.10 + 2.35 + 2.20 + 2.55 = 9.20 MGD.\n2. Count the values: 4.\n3. Divide: 9.20 MGD / 4 = 2.30 MGD.\n\n**Answer: 2.30 MGD average flow.** To round, look at the first digit you are dropping. If it is 5 or more, round up; if it is 4 or less, keep the digit. 2.348 rounded to one decimal is 2.3, and 2.351 rounded to one decimal is 2.4. Never round in the middle of a calculation. Carry at least one extra digit and round only the final answer.\n\n### Setting up a word problem\n\n1. Read the whole problem and write down what is asked, with its unit.\n2. List every number given, with its unit, and mark any you do not need.\n3. Choose the formula or conversion that links them.\n4. Substitute with units, calculate, and round last.\n5. Ask: is the size reasonable, and is the unit the one the question asked for?\n\nThis course uses fictional plants and numbers, and every question states its constants. On a real exam, bring only what your certifying agency allows and use its formula sheet.\n\n### Quick reference\n\n| Task | Move |\n| --- | --- |\n| Percent to decimal | Divide by 100 |\n| Decimal to percent | Multiply by 100 |\n| Fraction to decimal | Top divided by bottom |\n| Average | Sum divided by number of values |\n| Round | Final answer only, 5 or more rounds up |\n",
+      "evidence": "### Fictional scenario: the Quillfeather Reservoir log\n\nQuillfeather Reservoir is a fictional plant. The Monday to Friday flows were 1.82, 1.95, 1.77, 2.06 and 1.90 MGD. The caustic tank has a 3,000 gal capacity and holds 1,260 gal. Polymer is mixed at 1 part polymer to 24 parts water, and the operator needs a 250 gal batch of finished mix. A reference card lists 7/8 as a fraction.\n\n### Your decision\n\nFind the average flow, state the caustic tank level as a percent, work out the gallons of polymer for the batch, and convert 7/8 to a decimal and a percent. Show every step and keep the units.",
+      "assignment": "Prepare a one-page worksheet for the Quillfeather log. Show the average flow, the percent full, the polymer volume and the 7/8 conversion with each step written out, then add two sentences on which step is most likely to cause a decimal slip.",
+      "rubric": [
+        "Adds the five flows and divides by 5, not another count.",
+        "Converts the percent correctly in both directions.",
+        "Uses 1 + 24 = 25 total parts for the polymer batch.",
+        "Rounds only the final answer and keeps units."
+      ],
+      "facilitatorGuide": "Average flow = 9.50 / 5 = 1.90 MGD. Percent full = 1,260 / 3,000 = 0.42 = 42 percent. Polymer = 250 / 25 = 10 gal. 7/8 = 0.875 = 87.5 percent. Watch for dividing by 24 parts instead of 25, and for the percent-as-decimal slip.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 14,
+          "instruction": "Study the lesson and reproduce each worked example, writing the units at every step."
+        },
+        {
+          "kind": "reading",
+          "minutes": 9,
+          "instruction": "Read the source sections and note one use of this math in your own work."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 17,
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 6,
+          "instruction": "Compare one answer with a distractor mistake, then self-check against the case evidence. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 7,
+          "instruction": "Complete the checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "wi-sw-guide",
+        "ca-t-range"
+      ],
+      "checks": [
+        {
+          "id": "ceu-basic-math-number-skills-c1",
+          "objective": "number-skills",
+          "prompt": "A fictional lab log shows that 0.375 of a sample volume was used. Written as a percent, that is:",
+          "choices": [
+            "0.375 percent",
+            "37.5 percent",
+            "3.75 percent",
+            "375 percent"
+          ],
+          "correctIndex": 1,
+          "explanation": "Decimal to percent means multiply by 100: 0.375 x 100 = 37.5 percent. The \"0.375 percent\" choice did not multiply the decimal by 100. The \"3.75 percent\" choice moved the decimal point only one place. The \"375 percent\" choice moved the decimal point three places."
+        },
+        {
+          "id": "ceu-basic-math-number-skills-c2",
+          "objective": "number-skills",
+          "prompt": "A fictional tank holds 2,500 gal when full and is 18 percent full. The volume in the tank is:",
+          "choices": [
+            "45 gal",
+            "138.9 gal",
+            "2,950 gal",
+            "450 gal"
+          ],
+          "correctIndex": 3,
+          "explanation": "18 percent = 0.18, and 0.18 x 2,500 gal = 450 gal. The \"45 gal\" choice used 0.018, a percent-as-decimal slip. The \"138.9 gal\" choice divided by 18 instead of multiplying by 0.18. The \"2,950 gal\" choice added 18 percent on top of the full capacity."
+        },
+        {
+          "id": "ceu-basic-math-number-skills-c3",
+          "objective": "number-skills",
+          "prompt": "Using the usual order of operations, 6 + 4 x 3 squared / 2 equals:",
+          "choices": [
+            "24",
+            "45",
+            "12",
+            "78"
+          ],
+          "correctIndex": 0,
+          "explanation": "Power first: 3 squared = 9. Then 4 x 9 = 36 and 36 / 2 = 18. Then 6 + 18 = 24. The \"45\" choice added 6 + 4 before multiplying. The \"12\" choice skipped the power. The \"78\" choice squared the product 4 x 3 instead of only the 3."
+        },
+        {
+          "id": "ceu-basic-math-number-skills-c4",
+          "objective": "number-skills",
+          "prompt": "A fictional pump fills 15 gal in 12 min. At the same rate, the volume it delivers in 40 min is:",
+          "choices": [
+            "4.5 gal",
+            "43 gal",
+            "32 gal",
+            "50 gal"
+          ],
+          "correctIndex": 3,
+          "explanation": "Set up 15 gal / 12 min = x / 40 min, so x = 15 x 40 / 12 = 50 gal. The \"4.5 gal\" choice inverted the proportion. The \"43 gal\" choice added the extra 28 min as if they were gallons. The \"32 gal\" choice cross-multiplied the wrong pair of quantities."
+        },
+        {
+          "id": "ceu-basic-math-number-skills-c5",
+          "objective": "number-skills",
+          "prompt": "A fictional plant logs daily flows of 1.42, 1.38, 1.51, 1.29 and 1.45 MGD. The average daily flow is:",
+          "choices": [
+            "7.05 MGD",
+            "1.76 MGD",
+            "1.41 MGD",
+            "1.51 MGD"
+          ],
+          "correctIndex": 2,
+          "explanation": "Sum = 7.05 MGD. Divide by 5 values: 7.05 / 5 = 1.41 MGD. The \"7.05 MGD\" choice forgot to divide the sum by the number of days. The \"1.76 MGD\" choice divided by 4 instead of the 5 values. The \"1.51 MGD\" choice reported the highest day instead of the average."
+        },
+        {
+          "id": "ceu-basic-math-number-skills-c6",
+          "objective": "number-skills",
+          "prompt": "A fictional lab report gives a volume as 4.5 x 10 to the power 6 gal. Written out in full, that is:",
+          "choices": [
+            "4,500,000 gal",
+            "450,000 gal",
+            "45,000,000 gal",
+            "4,500 gal"
+          ],
+          "correctIndex": 0,
+          "explanation": "The power 6 means move the decimal point six places to the right: 4.5 becomes 4,500,000. The \"450,000 gal\" choice moved the decimal point five places instead of six. The \"45,000,000 gal\" choice moved the decimal point seven places instead of six. The \"4,500 gal\" choice moved the decimal point three places instead of six."
+        }
+      ]
+    },
+    {
+      "id": "units-conversions",
+      "title": "Units and conversions",
+      "objectives": [
+        "Convert length, area, volume, time, flow, weight, concentration and temperature using stated constants.",
+        "Use unit analysis to set up and check a conversion."
+      ],
+      "lesson": "### Units are half of every answer\n\nA number with the wrong unit is a wrong answer. Operators convert between gallons and cubic feet, gpm and MGD, percent and mg/L, and Fahrenheit and Celsius all the time. The safest way to do this, and the one exam writers reward, is **unit analysis**: write the units, multiply by fractions that equal one, and cancel.\n\n> **Your job:** never convert by memory alone. Write the units and make sure they cancel to leave the unit you want.\n\n### Length, area, volume and time\n\nBasic US customary and metric equivalents to know: 12 in = 1 ft (1 in = 25.4 mm); 3 ft = 1 yd; 1 ft = 0.305 m; 27 cu ft = 1 cu yd. For area, squares of lengths: 1 sq ft = 144 sq in. Time: 60 s = 1 min, 60 min = 1 h, 24 h = 1 day, so **1,440 min = 1 day**.\n\nVolume of water: **1 cu ft = 7.48 gal** (US gallons; 1 cu ft = 28.3 L; 1 gal = 3.785 L). Gallons to cubic feet means divide by 7.48; cubic feet to gallons means multiply.\n\n### Flow units\n\nFlow is volume per time. The three you will meet most are gallons per minute (gpm), cubic feet per second (cfs) and million gallons per day (MGD).\n\n| Conversion | Constant | Metric note |\n| --- | --- | --- |\n| MGD to gpm | x 694.4 gpm per MGD | 1 MGD = 43.8 L/s |\n| MGD to cfs | x 1.547 cfs per MGD | 1 cfs = 28.3 L/s |\n| gpm to cfs | / 7.48, then / 60 | 1 gpm = 0.0631 L/s |\n\n694.4 is just 1,000,000 gal divided by 1,440 min. 1.547 is 1,000,000 gal / 7.48 / 86,400 s.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 200\" role=\"img\" aria-label=\"Unit cancellation: 2.5 MG per day times 1,000,000 gal per MG times 1 day per 1,440 min equals 1,736 gallons per minute. The units MG and day are crossed out because they appear on the top and bottom, leaving gal per min.\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Cancelling units to convert MGD to gpm</title>\n<text x=\"195\" y=\"22\" text-anchor=\"middle\" font-weight=\"bold\">Convert 2.5 MGD to gpm: cancel the units</text>\n<g text-anchor=\"middle\">\n<text x=\"50\" y=\"58\">2.5 <tspan fill=\"#5b6877\">MG</tspan></text><text x=\"50\" y=\"86\" fill=\"#5b6877\">day</text>\n<text x=\"180\" y=\"58\">1,000,000 gal</text><text x=\"180\" y=\"86\" fill=\"#5b6877\">MG</text>\n<text x=\"322\" y=\"58\" fill=\"#5b6877\">1 day</text><text x=\"322\" y=\"86\">1,440 min</text>\n<text x=\"100\" y=\"72\" font-size=\"16\">x</text><text x=\"256\" y=\"72\" font-size=\"16\">x</text>\n</g>\n<path d=\"M14 68H86M122 68H238M276 68H368\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<path d=\"M60 56L78 46M32 90L68 78M170 90L190 78M303 56L342 46\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<rect x=\"30\" y=\"112\" width=\"330\" height=\"40\" rx=\"6\" fill=\"#e3edf8\" stroke=\"#2f6db2\"/>\n<text x=\"195\" y=\"137\" text-anchor=\"middle\" font-size=\"14\" font-weight=\"bold\">2.5 x 1,000,000 / 1,440 = 1,736 gal/min</text>\n<text x=\"195\" y=\"176\" text-anchor=\"middle\">Grey units cancel (top meets bottom).</text>\n<text x=\"195\" y=\"192\" text-anchor=\"middle\" fill=\"#5b6877\">What is left, gal over min, is the unit you asked for.</text>\n</svg>\n<figcaption>Write the units, multiply by fractions that equal one, and cancel. What remains is the unit you asked for.</figcaption>\n</figure>\n\n### Worked example 1: MGD to gpm and cfs\n\nA fictional plant at Marlow Bend treats 1.8 MGD. Find the flow in gpm and in cfs.\n\n1. gpm: 1.8 MGD x 694.4 gpm per MGD = 1,249.9 gpm, about 1,250 gpm.\n2. cfs: 1.8 MGD x 1.547 cfs per MGD = 2.7846 cfs, about 2.78 cfs.\n3. Cross-check with the other path: 1,249.9 gpm / 7.48 gal per cu ft = 167.1 cu ft per min; / 60 s per min = 2.785 cfs. The two agree within the rounding of the constants.\n\n**Answer: about 1,250 gpm and 2.78 cfs.** The unit check is: MGD times gpm per MGD leaves gpm.\n\n### Weight of water and concentration\n\nWater weighs **8.34 lb per gal** and **62.4 lb per cu ft** (1 L of water is about 1 kg). Check them against each other: 7.48 gal x 8.34 lb per gal = 62.4 lb. To find the weight of a volume of water, multiply the volume by the matching weight constant, gallons with 8.34 and cubic feet with 62.4.\n\nConcentration in water is usually in milligrams per liter. **1 mg/L is taken as 1 ppm** (parts per million by weight) for water and dilute solutions, because a liter of water weighs about a million milligrams. For solutions quoted as a percent, operator math uses **1 percent = 10,000 mg/L**, so 0.5 percent is 5,000 mg/L. This treats the solution as weighing about the same as water; for strong, heavy chemicals use the supplier's data. To go the other way, divide mg/L by 10,000 to get percent.\n\n### Worked example 2: chemical solution strength\n\nA fictional hypochlorite day tank at Marlow Bend holds a 0.5 percent solution. A second tank holds 600 gal of water. Find the solution strength in mg/L and the weight of the water in the second tank.\n\n1. Strength: 0.5 percent x 10,000 mg/L per percent = 5,000 mg/L (also 5,000 ppm).\n2. Weight: 600 gal x 8.34 lb per gal = 5,004 lb.\n3. Units: gallons cancel against gallons, leaving pounds.\n\n**Answer: 5,000 mg/L and 5,004 lb.** Using 62.4 here would give 37,440, the mistake of using the cubic-foot constant for gallons.\n\n### Temperature\n\nTo convert Fahrenheit to Celsius, subtract 32, then multiply by 5/9: C = (F - 32) x 5/9. To convert Celsius to Fahrenheit, multiply by 9/5, then add 32: F = C x 9/5 + 32. Water freezes at 32 F (0 C) and boils at 212 F (100 C). Remember the order: with F to C you subtract first. With C to F you add last.\n\n### Worked example 3: temperature\n\nA fictional source water reads 11 C. Convert to Fahrenheit. Then convert a 77 F laboratory incubator to Celsius.\n\n1. C to F: 11 x 9/5 = 19.8; 19.8 + 32 = 51.8 F.\n2. F to C: 77 - 32 = 45; 45 x 5/9 = 25 C.\n3. Sense check: cold lake water near 50 F and a lab near 25 C (room temperature) both look right.\n\n**Answer: 51.8 F and 25 C.**\n\n### Unit analysis as the exam method\n\nWrite the quantity you start with. Multiply by conversion fractions placed so the unit you want to remove is on the opposite side of the fraction bar. Cancel. When only the target unit is left, calculate.\n\n### Worked example 4: gpm to MGD\n\nA fictional booster station pumps 850 gpm. Express this in MGD.\n\n1. Start: 850 gal / min.\n2. Multiply by 1,440 min / day to get gallons per day: 850 x 1,440 = 1,224,000 gal/day.\n3. Divide by 1,000,000 gal per million gallons: 1,224,000 / 1,000,000 = 1.224 MGD.\n4. Units: minutes cancel, leaving gallons per day; dividing by 1,000,000 gal per million gallons turns gallons into million gallons, leaving MGD.\n\n**Answer: 1.22 MGD.** Same result from the constant: 850 / 694.4 = 1.224 MGD.\n\n### Quick reference\n\n| Fact | Value |\n| --- | --- |\n| Gallons per cu ft | 7.48 |\n| Pounds per gal | 8.34 |\n| Pounds per cu ft | 62.4 |\n| gpm per MGD | 694.4 |\n| cfs per MGD | 1.547 |\n| mg/L per percent | 10,000 |\n| Minutes per day | 1,440 |\n",
+      "evidence": "### Fictional scenario: the Spruce Landing conversion sheet\n\nSpruce Landing is a fictional system. Plant flow is 2.2 MGD. A stock tank holds a 1.2 percent solution. A settling tank contains 450 cu ft of water. Raw water temperature is 54 F.\n\n### Your decision\n\nUsing 694.4 gpm per MGD, 1.547 cfs per MGD, 10,000 mg/L per percent, 62.4 lb per cu ft and C = (F - 32) x 5/9, convert the flow to gpm and cfs, the stock strength to mg/L, the water weight to pounds, and the temperature to Celsius. Write the units on every line.",
+      "assignment": "Prepare a conversion sheet for Spruce Landing with the flow in gpm and cfs, the stock strength in mg/L, the weight of water in the settling tank and the temperature in Celsius. Show the unit-cancellation setup for the flow conversion and note one constant you must not mix up.",
+      "rubric": [
+        "Multiplies MGD by the correct constant for each flow unit.",
+        "Uses 10,000 mg/L per percent in the right direction.",
+        "Uses 62.4 for cubic feet, not 8.34.",
+        "Subtracts 32 before multiplying by 5/9."
+      ],
+      "facilitatorGuide": "2.2 MGD x 694.4 = 1,527.7 gpm (about 1,528). 2.2 x 1.547 = 3.40 cfs. 1.2 percent x 10,000 = 12,000 mg/L. 450 x 62.4 = 28,080 lb. (54 - 32) x 5/9 = 12.2 C. Watch for 8.34 used with cubic feet and for adding instead of subtracting 32.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 14,
+          "instruction": "Study the lesson and reproduce each worked example, writing the units at every step."
+        },
+        {
+          "kind": "reading",
+          "minutes": 9,
+          "instruction": "Read the source sections and note one use of this math in your own work."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 17,
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 6,
+          "instruction": "Compare one answer with a distractor mistake, then self-check against the case evidence. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 7,
+          "instruction": "Complete the checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "wi-sw-guide",
+        "ca-t-range",
+        "csus"
+      ],
+      "checks": [
+        {
+          "id": "ceu-basic-math-units-conversions-c1",
+          "objective": "units-conversions",
+          "prompt": "A fictional plant treats 3.5 MGD. Using 694.4 gpm per MGD (1 MGD = 43.8 L/s) and 1.547 cfs per MGD, the flow in gpm is:",
+          "choices": [
+            "2,430 gpm",
+            "5.41 gpm",
+            "0.00504 gpm",
+            "58,333 gpm"
+          ],
+          "correctIndex": 0,
+          "explanation": "3.5 MGD x 694.4 gpm per MGD = 2,430.4 gpm, about 2,430 gpm. The \"5.41 gpm\" choice used the cfs constant 1.547 instead of 694.4. The \"0.00504 gpm\" choice divided by 694.4 instead of multiplying. The \"58,333 gpm\" choice divided gallons per day by 60 only, treating a day as an hour."
+        },
+        {
+          "id": "ceu-basic-math-units-conversions-c2",
+          "objective": "units-conversions",
+          "prompt": "A fictional chemical solution is 0.25 percent strength. Using 1 percent = 10,000 mg/L, its strength in mg/L is:",
+          "choices": [
+            "250 mg/L",
+            "25,000 mg/L",
+            "0.000025 mg/L",
+            "2,500 mg/L"
+          ],
+          "correctIndex": 3,
+          "explanation": "0.25 percent x 10,000 mg/L per percent = 2,500 mg/L. The \"250 mg/L\" choice used 1,000 mg/L per percent. The \"25,000 mg/L\" choice used 100,000 mg/L per percent. The \"0.000025 mg/L\" choice divided by 10,000 instead of multiplying."
+        },
+        {
+          "id": "ceu-basic-math-units-conversions-c3",
+          "objective": "units-conversions",
+          "prompt": "A fictional sample is at 68 F. Using C = (F - 32) x 5/9, the temperature in degrees Celsius is:",
+          "choices": [
+            "20.0 C",
+            "36.0 C",
+            "154.4 C",
+            "5.8 C"
+          ],
+          "correctIndex": 0,
+          "explanation": "68 - 32 = 36, then 36 x 5/9 = 20.0 C. The \"36.0 C\" choice subtracted 32 but forgot to multiply by 5/9. The \"154.4 C\" choice used the Celsius-to-Fahrenheit formula. The \"5.8 C\" choice multiplied by 5/9 before subtracting 32."
+        },
+        {
+          "id": "ceu-basic-math-units-conversions-c4",
+          "objective": "units-conversions",
+          "prompt": "A fictional sump holds 2.5 cu ft of water. Using 7.48 gal per cu ft (1 cu ft = 28.3 L), the volume in gallons is:",
+          "choices": [
+            "0.334 gal",
+            "156.0 gal",
+            "20.9 gal",
+            "18.7 gal"
+          ],
+          "correctIndex": 3,
+          "explanation": "2.5 cu ft x 7.48 gal per cu ft = 18.7 gal. The \"0.334 gal\" choice divided by 7.48 instead of multiplying. The \"156.0 gal\" choice used the weight constant 62.4 lb per cu ft. The \"20.9 gal\" choice used the weight constant 8.34 lb per gal."
+        },
+        {
+          "id": "ceu-basic-math-units-conversions-c5",
+          "objective": "units-conversions",
+          "prompt": "To change a volume in gallons to cubic feet by unit analysis (7.48 gal per cu ft), you multiply the gallons by:",
+          "choices": [
+            "7.48 gal over 1 cu ft",
+            "1 cu ft over 7.48 gal",
+            "1 cu ft over 8.34 gal",
+            "62.4 lb over 1 cu ft"
+          ],
+          "correctIndex": 1,
+          "explanation": "Gallons must cancel, so gallons go on the bottom: gal x (1 cu ft / 7.48 gal) leaves cubic feet. The \"7.48 gal over 1 cu ft\" choice inverted the fraction so gallons do not cancel. The \"1 cu ft over 8.34 gal\" choice used the weight constant 8.34 lb per gal as a volume factor. The \"62.4 lb over 1 cu ft\" choice used the weight constant, which changes cubic feet to pounds."
+        },
+        {
+          "id": "ceu-basic-math-units-conversions-c6",
+          "objective": "units-conversions",
+          "prompt": "A fictional tank holds 40 gal of water. Using 8.34 lb per gal and 62.4 lb per cu ft, the water weighs:",
+          "choices": [
+            "4.8 lb",
+            "2,496 lb",
+            "333.6 lb",
+            "299.2 lb"
+          ],
+          "correctIndex": 2,
+          "explanation": "40 gal x 8.34 lb per gal = 333.6 lb. The \"4.8 lb\" choice divided by 8.34 instead of multiplying. The \"2,496 lb\" choice used the cubic-foot constant 62.4 for gallons. The \"299.2 lb\" choice used 7.48, the gallons per cubic foot, as a weight."
+        }
+      ]
+    },
+    {
+      "id": "areas-volumes",
+      "title": "Areas and volumes",
+      "objectives": [
+        "Calculate the area of rectangles, triangles and circles and the volume of tanks, pipes, trenches and cones.",
+        "Convert volume to gallons and find water depth from a known volume."
+      ],
+      "lesson": "### From shapes to gallons\n\nEvery tank, basin, trench and pipe in a plant is a shape, and its capacity is found with the same few formulas. For any tank with straight vertical walls the method is the same: find the area of one face in square feet, multiply by the third dimension in feet to get cubic feet, then multiply by 7.48 for gallons. If you keep the lengths in feet and finish with 7.48, most mistakes disappear.\n\n> **Your job:** pick the right area formula, keep all lengths in feet, and convert cubic feet to gallons only once, at the end.\n\n### Areas\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 250\" role=\"img\" aria-label=\"Four shapes with formulas: rectangle area equals length times width; triangle area equals one half times base times height; circle area equals 0.785 times diameter squared; cylinder volume equals 0.785 times diameter squared times height.\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Area and volume shapes with formulas</title>\n<rect x=\"25\" y=\"25\" width=\"110\" height=\"55\" fill=\"#e3edf8\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<text x=\"80\" y=\"20\" text-anchor=\"middle\">length (L)</text><text x=\"144\" y=\"56\">W</text>\n<text x=\"80\" y=\"104\" text-anchor=\"middle\" font-weight=\"bold\">A = L x W</text>\n<path d=\"M225 80L285 80L255 25Z\" fill=\"#e3edf8\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<path d=\"M255 25V80\" stroke=\"#8a97a6\" stroke-dasharray=\"4 3\"/>\n<text x=\"255\" y=\"96\" text-anchor=\"middle\">base (b)</text><text x=\"262\" y=\"58\">h</text>\n<text x=\"255\" y=\"116\" text-anchor=\"middle\" font-weight=\"bold\">A = 0.5 x b x h</text>\n<circle cx=\"80\" cy=\"170\" r=\"30\" fill=\"#e3edf8\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<path d=\"M50 170H110\" stroke=\"#8a97a6\" stroke-dasharray=\"4 3\"/>\n<text x=\"80\" y=\"165\" text-anchor=\"middle\">d</text>\n<text x=\"80\" y=\"226\" text-anchor=\"middle\" font-weight=\"bold\">A = 0.785 x d x d</text>\n<path d=\"M225 160V205M285 160V205\" stroke=\"#2f6db2\" stroke-width=\"2\" fill=\"none\"/>\n<ellipse cx=\"255\" cy=\"160\" rx=\"30\" ry=\"9\" fill=\"#e3edf8\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<path d=\"M225 205A30 9 0 0 0 285 205\" fill=\"none\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<text x=\"293\" y=\"187\">h</text><text x=\"255\" y=\"148\" text-anchor=\"middle\">d</text>\n<text x=\"255\" y=\"226\" text-anchor=\"middle\" font-weight=\"bold\">V = 0.785 x d x d x h</text>\n<text x=\"195\" y=\"244\" text-anchor=\"middle\" fill=\"#5b6877\">sq ft x depth = cu ft;  cu ft x 7.48 = gal</text>\n</svg>\n<figcaption>Area formulas for a rectangle, triangle and circle, and the cylinder volume formula. Multiply cubic feet by 7.48 for gallons.</figcaption>\n</figure>\n\n- **Rectangle:** area = length x width. A 40 ft by 25 ft slab is 1,000 sq ft.\n- **Triangle:** area = 0.5 x base x height. The height is measured straight up from the base, not along a slanted side.\n- **Circle:** area = 0.785 x diameter squared, equal to 3.14 x radius squared. The radius is half the diameter. This course uses 0.785 and 3.14 as stated constants; 1 ft = 0.305 m and 1 sq ft = 0.0929 sq m.\n\nThe biggest circle mistake is using the diameter where the radius belongs (or the reverse). If the problem gives diameter, use 0.785 x d x d. If it gives radius, use 3.14 x r x r. Never mix.\n\n### Volumes\n\n- **Rectangular tank or basin:** volume = length x width x depth.\n- **Cylinder (circular tank):** volume = 0.785 x diameter squared x depth.\n- **Cone:** volume = one third of the base area times the height. A cone is exactly one third of the cylinder with the same base and height, so a quick check is easy.\n- **Pipe:** a pipe is a long cylinder. Convert the diameter from inches to feet by dividing by 12, then volume = 0.785 x d x d x length.\n- **Trench:** length x width x depth gives cubic feet; divide by 27 for cubic yards (1 cu yd = 27 cu ft = 0.765 cu m).\n\nUse **water depth**, not wall height, for tank capacity. A basin with 12 ft walls and 9 ft of water holds the 9 ft volume.\n\n### Worked example 1: rectangular tank capacity\n\nA fictional chemical-mix basin at Tern Harbor is 36 ft long, 14 ft wide and holds water 8 ft deep. How many gallons?\n\n1. Floor area: 36 ft x 14 ft = 504 sq ft.\n2. Volume: 504 sq ft x 8 ft = 4,032 cu ft.\n3. Gallons: 4,032 cu ft x 7.48 gal per cu ft = 30,159 gal.\n4. Units: feet x feet x feet gives cubic feet; cubic feet cancel against gal per cubic foot.\n\n**Answer: about 30,159 gal.** If you stop at step 2 you report cubic feet, the \"forgot to convert\" mistake.\n\n### Worked example 2: circular clarifier\n\nA fictional clarifier at Tern Harbor has a diameter of 44 ft and a water depth of 11 ft. Find its volume in gallons.\n\n1. Area: 0.785 x 44 ft x 44 ft = 0.785 x 1,936 = 1,519.76 sq ft (about 1,519.8).\n2. Volume: 1,519.76 sq ft x 11 ft = 16,717.4 cu ft (carry the unrounded area).\n3. Gallons: 16,717.4 cu ft x 7.48 gal per cu ft = 125,046 gal.\n4. Sense check: about 1,500 sq ft x 11 ft is about 16,500 cu ft, and 16,500 x 7.5 is about 124,000. Close.\n\n**Answer: about 125,000 gal.** Using 44 as the radius gives four times too much.\n\n### Worked example 3: pipe and trench\n\nA fictional 12 in main is 500 ft long. A trench beside it is 150 ft long, 2.5 ft wide and 4 ft deep.\n\n1. Pipe diameter in feet: 12 in / 12 in per ft = 1.0 ft.\n2. Pipe area: 0.785 x 1.0 x 1.0 = 0.785 sq ft. Volume: 0.785 x 500 = 392.5 cu ft. Gallons: 392.5 x 7.48 = 2,936 gal.\n3. Trench: 150 x 2.5 x 4 = 1,500 cu ft. Cubic yards: 1,500 / 27 = 55.6 cu yd.\n\n**Answers: about 2,936 gal in the pipe and 55.6 cu yd of excavation.** Forgetting to convert inches to feet inflates the pipe volume by a factor of 144.\n\n### Finding depth from volume\n\nOften the volume is known and the depth is not, such as when you ask how high the water will rise after you add a number of gallons. For a tank with straight vertical walls, work backward through the same steps:\n\n**depth (ft) = gallons / 7.48 / floor area (sq ft)**\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 230\" role=\"img\" aria-label=\"A rectangular tank 40 ft long and 15 ft wide holding 22,440 gallons. Gallons divided by 7.48 gives 3,000 cubic feet; dividing by the floor area of 600 square feet gives a water depth of 5.0 feet.\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Finding water depth from volume</title>\n<path d=\"M30 40V150H210V40\" fill=\"none\" stroke=\"#1d2d40\" stroke-width=\"3\"/>\n<rect x=\"31\" y=\"85\" width=\"178\" height=\"64\" fill=\"#e3edf8\"/>\n<path d=\"M31 85H209\" stroke=\"#2f6db2\" stroke-width=\"2\" stroke-dasharray=\"6 3\"/>\n<path d=\"M232 85V150M226 85h12M226 150h12\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<text x=\"244\" y=\"122\" font-weight=\"bold\" fill=\"#2f6db2\">depth = ?</text>\n<path d=\"M30 168H210M30 162v12M210 162v12\" stroke=\"#1d2d40\" stroke-width=\"2\"/>\n<text x=\"120\" y=\"186\" text-anchor=\"middle\">L = 40 ft (floor 40 x 15 = 600 sq ft)</text>\n<text x=\"120\" y=\"66\" text-anchor=\"middle\">water: 22,440 gal</text>\n<text x=\"195\" y=\"20\" text-anchor=\"middle\" font-weight=\"bold\">Depth = gal / 7.48 / floor area</text>\n<text x=\"195\" y=\"208\" text-anchor=\"middle\">22,440 / 7.48 = 3,000 cu ft;  3,000 / 600 = 5.0 ft</text>\n<text x=\"195\" y=\"224\" text-anchor=\"middle\" fill=\"#5b6877\">W = 15 ft (into the page)</text>\n</svg>\n<figcaption>Water depth from volume: gallons divided by 7.48 gives cubic feet; divide by floor area to get depth.</figcaption>\n</figure>\n\n### Worked example 4: depth from volume\n\nA fictional rectangular tank is 40 ft by 15 ft and contains 22,440 gal. What is the water depth?\n\n1. Gallons to cubic feet: 22,440 gal / 7.48 gal per cu ft = 3,000 cu ft.\n2. Floor area: 40 ft x 15 ft = 600 sq ft.\n3. Depth: 3,000 cu ft / 600 sq ft = 5.0 ft.\n4. Units: cubic feet divided by square feet leaves feet.\n\n**Answer: 5.0 ft.** If you skip the 7.48 you get 37.4 ft, deeper than a normal tank wall.\n\nFor a circular tank use the circular floor area 0.785 x d x d in step 2. For a cone-bottom tank, add the cone volume (one third of base area x cone height) to the cylinder volume above it.\n\n### Cone example in brief\n\nA fictional cone-shaped hopper has a base area of 50 sq ft and a height of 9 ft: volume = 1/3 x 50 x 9 = 150 cu ft, or 150 x 7.48 = 1,122 gal.\n\n### Quick reference\n\n| Shape | Formula | Result unit |\n| --- | --- | --- |\n| Rectangle area | L x W | sq ft |\n| Triangle area | 0.5 x b x h | sq ft |\n| Circle area | 0.785 x d x d | sq ft |\n| Rectangular tank | L x W x depth | cu ft |\n| Cylinder | 0.785 x d x d x depth | cu ft |\n| Cone | 1/3 x base area x height | cu ft |\n| cu ft to gal | x 7.48 | gal |\n| cu ft to cu yd | / 27 | cu yd |\n",
+      "evidence": "### Fictional scenario: the Pine Ridge tank survey\n\nPine Ridge is a fictional utility. A circular storage tank has a 36 ft diameter and 14 ft of water. A rectangular basin has a floor 50 ft by 18 ft and holds 47,000 gal. A trench for a new main is 120 ft long, 3 ft wide and 6 ft deep.\n\n### Your decision\n\nUsing 0.785 x d x d, 7.48 gal per cu ft and 27 cu ft per cu yd, find the circular tank volume in gallons, the water depth in the rectangular basin, and the trench excavation in cubic yards. Keep all lengths in feet.",
+      "assignment": "Prepare a one-page tank survey for Pine Ridge showing the circular tank volume, the basin depth and the trench excavation with each step written out. Add two sentences on where a diameter-for-radius mistake or a missed 7.48 would change the answer.",
+      "rubric": [
+        "Uses 0.785 x d x d with the diameter.",
+        "Converts cubic feet to gallons once, at the right point.",
+        "Divides gallons by 7.48 before dividing by floor area.",
+        "Divides trench cubic feet by 27."
+      ],
+      "facilitatorGuide": "Circular tank: 0.785 x 36 x 36 = 1,017.4 sq ft; x 14 = 14,243 cu ft; x 7.48 = 106,538 gal. Basin: 47,000 / 7.48 = 6,283 cu ft; / 900 sq ft = 7.0 ft. Trench: 120 x 3 x 6 = 2,160 cu ft; / 27 = 80.0 cu yd. Watch for the radius mistake and a missing 7.48.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 13,
+          "instruction": "Study the lesson and reproduce each worked example, writing the units at every step."
+        },
+        {
+          "kind": "reading",
+          "minutes": 9,
+          "instruction": "Read the source sections and note one use of this math in your own work."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 17,
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 6,
+          "instruction": "Compare one answer with a distractor mistake, then self-check against the case evidence. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 7,
+          "instruction": "Complete the checks and review feedback."
+        }
+      ],
+      "sourceIds": [
+        "wi-sw-guide",
+        "ca-t-range",
+        "csus"
+      ],
+      "checks": [
+        {
+          "id": "ceu-basic-math-areas-volumes-c1",
+          "objective": "areas-volumes",
+          "prompt": "A fictional concrete slab is 40 ft long and 25 ft wide. Its area is:",
+          "choices": [
+            "1,000 sq ft",
+            "130 sq ft",
+            "65 sq ft",
+            "500 sq ft"
+          ],
+          "correctIndex": 0,
+          "explanation": "Area = length x width = 40 ft x 25 ft = 1,000 sq ft. The \"130 sq ft\" choice found the perimeter instead of the area. The \"65 sq ft\" choice added length and width. The \"500 sq ft\" choice halved the product, as for a triangle."
+        },
+        {
+          "id": "ceu-basic-math-areas-volumes-c2",
+          "objective": "areas-volumes",
+          "prompt": "A fictional circular pad has a diameter of 30 ft. Using area = 0.785 x d x d (3.14 x r x r), its area is:",
+          "choices": [
+            "2,826.0 sq ft",
+            "706.5 sq ft",
+            "94.2 sq ft",
+            "47.1 sq ft"
+          ],
+          "correctIndex": 1,
+          "explanation": "0.785 x 30 x 30 = 0.785 x 900 = 706.5 sq ft. The \"2,826.0 sq ft\" choice used the diameter where the radius belongs with 3.14. The \"94.2 sq ft\" choice found the circumference instead of the area. The \"47.1 sq ft\" choice forgot to square the radius."
+        },
+        {
+          "id": "ceu-basic-math-areas-volumes-c3",
+          "objective": "areas-volumes",
+          "prompt": "A fictional rectangular basin is 20 ft long and 10 ft wide, with water 8 ft deep. Using 7.48 gal per cu ft, it holds:",
+          "choices": [
+            "1,600 gal",
+            "213.9 gal",
+            "11,968 gal",
+            "99,840 gal"
+          ],
+          "correctIndex": 2,
+          "explanation": "20 x 10 x 8 = 1,600 cu ft, and 1,600 x 7.48 = 11,968 gal. The \"1,600 gal\" choice reported cubic feet without converting to gallons. The \"213.9 gal\" choice divided by 7.48 instead of multiplying. The \"99,840 gal\" choice used the weight constant 62.4 in place of 7.48."
+        },
+        {
+          "id": "ceu-basic-math-areas-volumes-c4",
+          "objective": "areas-volumes",
+          "prompt": "A fictional triangular baffle plate has a base of 12 ft and a height of 5 ft, measured at a right angle to the base. Its area is:",
+          "choices": [
+            "60.0 sq ft",
+            "8.5 sq ft",
+            "17.0 sq ft",
+            "30.0 sq ft"
+          ],
+          "correctIndex": 3,
+          "explanation": "Area = 0.5 x base x height = 0.5 x 12 ft x 5 ft = 30.0 sq ft. The \"60.0 sq ft\" choice forgot the one-half. The \"8.5 sq ft\" choice averaged the base and height. The \"17.0 sq ft\" choice added the base and height."
+        },
+        {
+          "id": "ceu-basic-math-areas-volumes-c5",
+          "objective": "areas-volumes",
+          "prompt": "A fictional rectangular tank is 30 ft by 20 ft and holds 33,660 gal. Using 7.48 gal per cu ft, the water depth is:",
+          "choices": [
+            "56.1 ft",
+            "7.5 ft",
+            "419.6 ft",
+            "4,500 ft"
+          ],
+          "correctIndex": 1,
+          "explanation": "33,660 / 7.48 = 4,500 cu ft. Floor area is 30 x 20 = 600 sq ft. Depth = 4,500 / 600 = 7.5 ft. The \"56.1 ft\" choice divided by the floor area without converting gallons to cubic feet. The \"419.6 ft\" choice multiplied by 7.48 instead of dividing. The \"4,500 ft\" choice converted to cubic feet but never divided by the floor area."
+        },
+        {
+          "id": "ceu-basic-math-areas-volumes-c6",
+          "objective": "areas-volumes",
+          "prompt": "A fictional cone-shaped hopper has a base area of 50 sq ft and a height of 9 ft. Its volume in cubic feet is:",
+          "choices": [
+            "450 cu ft",
+            "225 cu ft",
+            "150 cu ft",
+            "1,122 cu ft"
+          ],
+          "correctIndex": 2,
+          "explanation": "Volume = 1/3 x base area x height = 1/3 x 50 x 9 = 150 cu ft. The \"450 cu ft\" choice forgot the one-third. The \"225 cu ft\" choice used one-half instead of one-third. The \"1,122 cu ft\" choice converted to gallons and still called it cubic feet."
+        }
+      ]
+    },
+    {
+      "id": "plant-formulas",
+      "title": "Treatment-plant formulas",
+      "objectives": [
+        "Apply the pounds formula, feed rate, detention time, loading rates, percent removal, solution strength and dilution.",
+        "Check an answer for reasonableness, units and rounding."
+      ],
+      "lesson": "### Putting the pieces together\n\nThe plant formulas are built from everything in the earlier modules: percents, unit conversions and tank volumes. They fall into a short list that covers most calculation questions on operator exams: the pounds formula, feed rate, detention time, loading rates, removal and solution strength. Learn them as families, not as separate facts.\n\n> **Your job:** recognise which formula a question wants, write it with units, substitute, then check the answer's size and unit.\n\n### The pounds formula\n\nWhen a concentration in mg/L acts on a flow in MGD, the weight of the substance per day is:\n\n**lb/day = mg/L x MGD x 8.34 lb per gal**\n\nThe 8.34 is the weight of one gallon of water in pounds. It works because 1 mg/L is about 1 part per million by weight: MGD x 8.34 is millions of pounds of water per day, and each part per million of that is 1 lb per day. The same formula works for chlorine, polymer, BOD and TSS loads.\n\n<figure>\n<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 390 230\" role=\"img\" aria-label=\"Pounds formula triangle: lb per day on top, and mg per L, MGD and 8.34 along the bottom. Cover the quantity you want: lb per day equals mg per L times MGD times 8.34; mg per L equals lb per day divided by MGD times 8.34.\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#1d2d40\">\n<title>Pounds formula triangle</title>\n<path d=\"M195 20L330 190H60Z\" fill=\"#e3edf8\" stroke=\"#2f6db2\" stroke-width=\"3\"/>\n<path d=\"M118 108H272\" stroke=\"#2f6db2\" stroke-width=\"2\"/>\n<text x=\"195\" y=\"88\" text-anchor=\"middle\" font-size=\"18\" font-weight=\"bold\">lb/day</text>\n<text x=\"120\" y=\"150\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"bold\">mg/L</text>\n<text x=\"195\" y=\"150\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"bold\">MGD</text>\n<text x=\"268\" y=\"150\" text-anchor=\"middle\" font-size=\"15\" font-weight=\"bold\">8.34</text>\n<text x=\"157\" y=\"150\" text-anchor=\"middle\">x</text><text x=\"232\" y=\"150\" text-anchor=\"middle\">x</text>\n<text x=\"195\" y=\"178\" text-anchor=\"middle\" fill=\"#5b6877\">lb per gal of water</text>\n<text x=\"195\" y=\"212\" text-anchor=\"middle\">Cover what you want. Bottom row multiplies; top over the rest divides.</text>\n</svg>\n<figcaption>The pounds formula triangle: lb/day on top, mg/L, MGD and 8.34 along the bottom.</figcaption>\n</figure>\n\nCover the quantity you want in the triangle. Cover lb/day and you multiply; cover mg/L and you divide lb/day by MGD x 8.34; cover MGD and you divide lb/day by mg/L x 8.34.\n\n### Worked example 1: chemical dosage\n\nA fictional plant at Copper Fen treats 1.6 MGD and applies a coagulant at 2.0 mg/L. How many pounds per day of the chemical are needed?\n\n1. Write the formula: lb/day = mg/L x MGD x 8.34.\n2. Substitute: 2.0 mg/L x 1.6 MGD x 8.34 lb per gal = 26.69 lb/day.\n3. Units: 1.6 MGD x 8.34 is 13.3 million lb of water per day; 2.0 parts per million of that is pounds per day.\n\n**Answer: about 26.7 lb/day.** Without the 8.34 the answer would be 3.2, the \"forgot the constant\" mistake.\n\n### Feed rate with purity, and dosage from feed\n\nIf the product is not 100 percent pure, divide the pounds needed by the decimal purity. For 26.69 lb/day of available chemical from a 65 percent product: 26.69 / 0.65 = 41.1 lb/day of product. Dividing by 65 instead of 0.65 is the percent slip. Going backward, dosage (mg/L) = lb/day / (MGD x 8.34).\n\n### Detention time\n\nDetention time is how long water stays in a tank at a given flow:\n\n**detention time (h) = volume (gal) / flow (gal per day) x 24 h per day**\n\nYou can also divide volume by flow in the same time basis: gallons divided by gpm gives minutes. Keep the unit of time the same on both sides, or convert with 1,440 min per day.\n\n### Worked example 2: detention time\n\nA fictional sedimentation basin at Copper Fen holds 80,000 gal and receives 1.6 MGD. Find the detention time in hours.\n\n1. Flow in gallons per day: 1.6 MGD x 1,000,000 = 1,600,000 gal/day.\n2. Days: 80,000 gal / 1,600,000 gal per day = 0.05 day.\n3. Hours: 0.05 day x 24 h per day = 1.2 h.\n4. Units: gallons cancel, leaving days; days x hours per day leaves hours.\n\n**Answer: 1.2 h (72 min).** If you stop at 0.05 you gave days, not hours.\n\n### Loading rates\n\n**Surface overflow rate (SOR) = flow (gal/day) / surface area (sq ft)**, in gal/day per sq ft. This is also called hydraulic loading when applied to a filter or tank surface.\n\n**Weir overflow rate = flow (gal/day) / weir length (ft)**, in gal/day per ft. For a circular weir the length is the circumference, 3.14 x diameter.\n\n### Worked example 3: surface overflow rate\n\nA fictional clarifier at Copper Fen has a surface area of 1,400 sq ft and receives 1.6 MGD.\n\n1. Flow: 1.6 MGD x 1,000,000 = 1,600,000 gal/day.\n2. SOR: 1,600,000 gal/day / 1,400 sq ft = 1,143 gal/day per sq ft.\n\n**Answer: about 1,143 gpd/sq ft** (metric: 1,143 x 0.0407 = 46.5 m3/day per sq m). The common error is dividing the flow in MGD without converting to gal/day.\n\n### Percent removal and efficiency\n\n**percent removal = (in - out) / in x 100**\n\nWorked example: a fictional influent has 150 mg/L and the effluent has 12 mg/L: (150 - 12) / 150 = 138 / 150 = 0.92, and 0.92 x 100 = 92.0 percent removed. Dividing out by in (12 / 150) gives 8 percent, the amount left, not the amount removed.\n\n### Solution strength and dilution\n\n**percent strength = lb of chemical / (lb of chemical + lb of water) x 100.** Count the chemical in the total, as 12 lb in 138 lb of water is 12 / 150 x 100 = 8.0 percent.\n\nFor dilution, the amount of chemical is conserved: **C1 x V1 = C2 x V2**. To make 300 gal of 3 percent from a 12 percent stock: V1 = 3 x 300 / 12 = 75 gal of stock, plus 225 gal of water. This exam shortcut treats both solutions as weighing about the same as water; for strong or heavy chemicals such as 12 percent hypochlorite, check the supplier's dilution data.\n\n### Worked example 4: dilution\n\nA fictional operator needs 500 gal of a 2 percent solution from a 10 percent stock. How much stock?\n\n1. Write C1 x V1 = C2 x V2 with C1 = 10 percent, C2 = 2 percent, V2 = 500 gal.\n2. Solve: V1 = 2 x 500 / 10 = 100 gal.\n3. Water to add: 500 - 100 = 400 gal.\n\n**Answer: 100 gal of stock.** Using 400 gal answers a different question: how much water.\n\n### Check your answer\n\n1. **Reasonableness.** Round the inputs and estimate. 8.34 is about 8, so 3 mg/L x 2 MGD gives roughly 3 x 2 x 8 = 48 lb/day. If you get 480 or 4.8, find the slip.\n2. **Units.** Does the unit cancel to what was asked? lb/day, hours, gpd per sq ft, percent?\n3. **Rounding.** Do not round until the end, and report no more precision than the inputs support.\n4. **Direction.** More flow means a higher lb/day and a shorter detention time. If your answer moves the wrong way, recheck.\n\n### Quick reference\n\n| Calculation | Formula |\n| --- | --- |\n| Pounds | mg/L x MGD x 8.34 |\n| Detention time (h) | volume gal / flow gal/day x 24 |\n| SOR | flow gal/day / area |\n| Weir overflow | flow gal/day / length |\n| Percent removal | (in - out) / in x 100 |\n| Dilution | C1 x V1 = C2 x V2 |\n",
+      "evidence": "### Fictional scenario: the Copper Fen daily sheet\n\nCopper Fen is a fictional plant treating 1.6 MGD. A coagulant is dosed at 2.0 mg/L. The sedimentation basin holds 80,000 gal. A clarifier has a surface area of 1,400 sq ft. Influent TSS is 150 mg/L and effluent is 12 mg/L.\n\n### Your decision\n\nUsing lb/day = mg/L x MGD x 8.34, calculate the coagulant feed, the basin detention time in hours, the clarifier surface overflow rate, and the percent TSS removal. Then state one reasonableness check for each answer.",
+      "assignment": "Prepare a daily calculation sheet for Copper Fen with the feed, detention time, surface overflow rate and percent removal, each with formula, substitution, units and a reasonableness check. Add two sentences on which answer would change most if the flow doubled.",
+      "rubric": [
+        "Uses 8.34 in the pounds formula.",
+        "Converts MGD to gal/day before computing detention time and SOR.",
+        "Calculates removal from the difference over the influent.",
+        "Gives a size or unit check for each answer."
+      ],
+      "facilitatorGuide": "Feed = 2.0 x 1.6 x 8.34 = 26.7 lb/day. Detention = 80,000 / 1,600,000 x 24 = 1.2 h. SOR = 1,600,000 / 1,400 = 1,143 gal/day per sq ft. Removal = (150 - 12) / 150 x 100 = 92.0 percent. If flow doubles, feed and SOR double and detention halves.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 13,
+          "instruction": "Study the lesson and reproduce each worked example, writing the units at every step."
+        },
+        {
+          "kind": "reading",
+          "minutes": 9,
+          "instruction": "Read the source sections and note one use of this math in your own work."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 17,
+          "instruction": "Work through the case evidence and prepare for the graded exercise."
+        },
+        {
+          "kind": "exercise",
+          "minutes": 6,
+          "instruction": "Compare one answer with a distractor mistake, then self-check against the case evidence. Optional notes can capture your reasoning; count only active work."
+        },
+        {
+          "kind": "assessment",
+          "minutes": 7,
+          "instruction": "Complete the checks, review the feedback and take the final assessment."
+        }
+      ],
+      "sourceIds": [
+        "wi-sw-guide",
+        "ca-t-range",
+        "npdes"
+      ],
+      "checks": [
+        {
+          "id": "ceu-basic-math-plant-formulas-c1",
+          "objective": "plant-formulas",
+          "prompt": "A fictional plant treats 4.5 MGD and doses a chemical at 2.8 mg/L. Using lb/day = mg/L x MGD x 8.34, the feed is:",
+          "choices": [
+            "12.6 lb/day",
+            "1.5 lb/day",
+            "105.1 lb/day",
+            "786.2 lb/day"
+          ],
+          "correctIndex": 2,
+          "explanation": "2.8 x 4.5 x 8.34 = 105.1 lb/day. The \"12.6 lb/day\" choice forgot the 8.34 factor. The \"1.5 lb/day\" choice divided by 8.34 instead of multiplying. The \"786.2 lb/day\" choice used 62.4, the cubic-foot weight, in place of 8.34."
+        },
+        {
+          "id": "ceu-basic-math-plant-formulas-c2",
+          "objective": "plant-formulas",
+          "prompt": "A fictional influent TSS is 220 mg/L and the effluent is 33 mg/L. The percent removal is:",
+          "choices": [
+            "85.0 percent",
+            "15.0 percent",
+            "0.85 percent",
+            "187.0 percent"
+          ],
+          "correctIndex": 0,
+          "explanation": "(220 - 33) / 220 x 100 = 187 / 220 x 100 = 85.0 percent. The \"15.0 percent\" choice reported what remained rather than what was removed. The \"0.85 percent\" choice left the answer as a decimal and called it a percent. The \"187.0 percent\" choice reported the difference in mg/L as a percent."
+        },
+        {
+          "id": "ceu-basic-math-plant-formulas-c3",
+          "objective": "plant-formulas",
+          "prompt": "A fictional basin holds 120,000 gal and receives 0.96 MGD. Using detention time (h) = volume / flow in gal per day x 24, the detention time is:",
+          "choices": [
+            "0.125 h",
+            "3.0 h",
+            "8.0 h",
+            "72.0 h"
+          ],
+          "correctIndex": 1,
+          "explanation": "Flow = 960,000 gal/day. 120,000 / 960,000 = 0.125 day. 0.125 x 24 = 3.0 h. The \"0.125 h\" choice left the answer in days. The \"8.0 h\" choice inverted flow over volume. The \"72.0 h\" choice applied the 24 hours per day twice."
+        },
+        {
+          "id": "ceu-basic-math-plant-formulas-c4",
+          "objective": "plant-formulas",
+          "prompt": "A fictional clarifier has a surface area of 1,600 sq ft and receives 0.8 MGD. Using SOR = flow in gal/day / area, the surface overflow rate is:",
+          "choices": [
+            "0.0005 gal/day per sq ft",
+            "1,280,000,000 gal/day per sq ft",
+            "2.0 gal/day per sq ft",
+            "500 gal/day per sq ft"
+          ],
+          "correctIndex": 3,
+          "explanation": "0.8 MGD = 800,000 gal/day. 800,000 / 1,600 = 500 gal/day per sq ft. The \"0.0005 gal/day per sq ft\" choice left the flow in MGD. The \"1,280,000,000 gal/day per sq ft\" choice multiplied flow by area. The \"2.0 gal/day per sq ft\" choice divided area by flow in thousands of gal per day."
+        },
+        {
+          "id": "ceu-basic-math-plant-formulas-c5",
+          "objective": "plant-formulas",
+          "prompt": "A fictional mix holds 12 lb of chemical in 138 lb of water. Using percent strength = chemical / (chemical + water) x 100, the strength is:",
+          "choices": [
+            "8.7 percent",
+            "8.0 percent",
+            "11.5 percent",
+            "0.08 percent"
+          ],
+          "correctIndex": 1,
+          "explanation": "Total = 12 + 138 = 150 lb. 12 / 150 x 100 = 8.0 percent. The \"8.7 percent\" choice left the chemical out of the total weight. The \"11.5 percent\" choice divided the water by the chemical (138 / 12) instead of the chemical by the total. The \"0.08 percent\" choice left the answer as a decimal and called it a percent."
+        },
+        {
+          "id": "ceu-basic-math-plant-formulas-c6",
+          "objective": "plant-formulas",
+          "prompt": "A fictional student calculates 3 mg/L x 2 MGD x 8.34 and reports 500.4 lb/day. A quick estimate with 3 x 2 x 8 gives about 48. The most likely error in the student's answer is:",
+          "choices": [
+            "Using 62.4 in place of 8.34 for the constant",
+            "Dividing by MGD instead of multiplying by it",
+            "Moving the decimal point one place to the right",
+            "Using mg/L as if it were a percent"
+          ],
+          "correctIndex": 2,
+          "explanation": "The estimate is about 48 and the true value is 50.04 lb/day, so 500.4 is ten times too large, a decimal-place slip. The \"Using 62.4 in place of 8.34 for the constant\" choice would be about 7.5 times too large, not 10 times, and is not the best fit. The \"Dividing by MGD instead of multiplying by it\" choice would give a much smaller number than the estimate. The \"Using mg/L as if it were a percent\" choice would be off by a factor of 10,000, far more than seen here."
+        }
+      ]
+    }
+  ],
+  "finalAssessment": [
+    {
+      "id": "ceu-basic-math-number-skills-f1",
+      "objective": "number-skills",
+      "prompt": "A fictional lab log records 5/8 of a sample as used. Written as a percent, that is:",
+      "choices": [
+        "0.625 percent",
+        "160 percent",
+        "62.5 percent",
+        "6.25 percent"
+      ],
+      "correctIndex": 2,
+      "explanation": "5 / 8 = 0.625, and 0.625 x 100 = 62.5 percent. The \"0.625 percent\" choice gave the decimal and called it a percent. The \"160 percent\" choice inverted the fraction before converting. The \"6.25 percent\" choice moved the decimal point only one place."
+    },
+    {
+      "id": "ceu-basic-math-units-conversions-f1",
+      "objective": "units-conversions",
+      "prompt": "A fictional pump moves 1,200 gpm. Using 7.48 gal per cu ft and 60 s per min, the flow in cfs is:",
+      "choices": [
+        "2.67 cfs",
+        "160.4 cfs",
+        "149.6 cfs",
+        "20.0 cfs"
+      ],
+      "correctIndex": 0,
+      "explanation": "1,200 / 7.48 = 160.4 cu ft per min. 160.4 / 60 = 2.67 cfs. The \"160.4 cfs\" choice left the flow per minute and skipped the 60. The \"149.6 cfs\" choice multiplied by 7.48 instead of dividing. The \"20.0 cfs\" choice divided by 60 but forgot to convert gallons to cubic feet."
+    },
+    {
+      "id": "ceu-basic-math-areas-volumes-f1",
+      "objective": "areas-volumes",
+      "prompt": "A fictional circular clarifier has a diameter of 60 ft and a water depth of 12 ft. Using 0.785 x d x d x depth and 7.48 gal per cu ft, its volume is:",
+      "choices": [
+        "253,662 gal",
+        "33,912 gal",
+        "1,014,647 gal",
+        "4,534 gal"
+      ],
+      "correctIndex": 0,
+      "explanation": "0.785 x 60 x 60 = 2,826 sq ft. 2,826 x 12 = 33,912 cu ft. 33,912 x 7.48 = 253,662 gal. The \"33,912 gal\" choice reported cubic feet without converting to gallons. The \"1,014,647 gal\" choice used the diameter as the radius with 3.14. The \"4,534 gal\" choice divided by 7.48 instead of multiplying."
+    },
+    {
+      "id": "ceu-basic-math-plant-formulas-f1",
+      "objective": "plant-formulas",
+      "prompt": "A fictional plant treats 2.2 MGD and applies a polymer at 3.5 mg/L. Using lb/day = mg/L x MGD x 8.34, the feed is:",
+      "choices": [
+        "7.7 lb/day",
+        "64.2 lb/day",
+        "0.9 lb/day",
+        "480.5 lb/day"
+      ],
+      "correctIndex": 1,
+      "explanation": "3.5 x 2.2 x 8.34 = 64.2 lb/day. The \"7.7 lb/day\" choice forgot the 8.34 factor. The \"0.9 lb/day\" choice divided by 8.34 instead of multiplying. The \"480.5 lb/day\" choice used 62.4 in place of 8.34."
+    },
+    {
+      "id": "ceu-basic-math-number-skills-f2",
+      "objective": "number-skills",
+      "prompt": "A fictional dosing chart gives 3/16 of a gallon per cycle. Rounded to the nearest hundredth, the decimal is:",
+      "choices": [
+        "0.18 gal",
+        "5.33 gal",
+        "0.19 gal",
+        "18.75 gal"
+      ],
+      "correctIndex": 2,
+      "explanation": "3 / 16 = 0.1875. The digit after the hundredths place is 7, so round up to 0.19. The \"0.18 gal\" choice dropped the extra digits instead of rounding up. The \"5.33 gal\" choice divided 16 by 3 instead of 3 by 16. The \"18.75 gal\" choice gave the percent instead of the decimal."
+    },
+    {
+      "id": "ceu-basic-math-units-conversions-f2",
+      "objective": "units-conversions",
+      "prompt": "A fictional plant flow is 4.2 MGD. Using 1.547 cfs per MGD and 694.4 gpm per MGD, the flow in cfs is:",
+      "choices": [
+        "2.71 cfs",
+        "2,916 cfs",
+        "6.50 cfs",
+        "5.75 cfs"
+      ],
+      "correctIndex": 2,
+      "explanation": "4.2 MGD x 1.547 cfs per MGD = 6.50 cfs. The \"2.71 cfs\" choice divided by 1.547 instead of multiplying. The \"2,916 cfs\" choice used the gpm constant 694.4. The \"5.75 cfs\" choice added the constant instead of multiplying."
+    },
+    {
+      "id": "ceu-basic-math-areas-volumes-f2",
+      "objective": "areas-volumes",
+      "prompt": "A fictional 12 in pipe is 500 ft long. Using 0.785 x d x d x length (d in ft) and 7.48 gal per cu ft, it holds:",
+      "choices": [
+        "392.5 gal",
+        "2,936 gal",
+        "422,770 gal",
+        "11,744 gal"
+      ],
+      "correctIndex": 1,
+      "explanation": "12 in = 1.0 ft. 0.785 x 1 x 1 x 500 = 392.5 cu ft. 392.5 x 7.48 = 2,936 gal. The \"392.5 gal\" choice reported cubic feet without converting to gallons. The \"422,770 gal\" choice used 12 in as 12 ft. The \"11,744 gal\" choice used 3.14 with the diameter as the radius."
+    },
+    {
+      "id": "ceu-basic-math-plant-formulas-f2",
+      "objective": "plant-formulas",
+      "prompt": "A fictional plant treats 1.5 MGD at a dose of 2.4 mg/L, using a product that is 65 percent available. Using lb/day = mg/L x MGD x 8.34, the product needed is:",
+      "choices": [
+        "19.5 lb/day",
+        "30.0 lb/day",
+        "0.46 lb/day",
+        "46.2 lb/day"
+      ],
+      "correctIndex": 3,
+      "explanation": "Pure chemical = 2.4 x 1.5 x 8.34 = 30.02 lb/day. Product = 30.02 / 0.65 = 46.2 lb/day. The \"19.5 lb/day\" choice multiplied by 0.65 instead of dividing. The \"30.0 lb/day\" choice ignored the product purity. The \"0.46 lb/day\" choice divided by 65 instead of 0.65."
+    },
+    {
+      "id": "ceu-basic-math-number-skills-f3",
+      "objective": "number-skills",
+      "prompt": "A fictional feeder delivers 0.8 gal every 5 min. At that rate, the volume delivered in 3 h is:",
+      "choices": [
+        "0.48 gal",
+        "1,125 gal",
+        "144 gal",
+        "28.8 gal"
+      ],
+      "correctIndex": 3,
+      "explanation": "3 h = 180 min. 180 / 5 = 36 cycles. 36 x 0.8 gal = 28.8 gal. The \"0.48 gal\" choice did not convert the hours to minutes. The \"1,125 gal\" choice inverted the proportion. The \"144 gal\" choice multiplied by the minutes but never divided by the 5-minute interval."
+    },
+    {
+      "id": "ceu-basic-math-units-conversions-f3",
+      "objective": "units-conversions",
+      "prompt": "A fictional stock solution is 12,500 mg/L. Using 1 percent = 10,000 mg/L, its strength in percent is:",
+      "choices": [
+        "125 percent",
+        "1.25 percent",
+        "0.125 percent",
+        "12.5 percent"
+      ],
+      "correctIndex": 1,
+      "explanation": "12,500 mg/L / 10,000 mg/L per percent = 1.25 percent. The \"125 percent\" choice divided by 100 instead of 10,000. The \"0.125 percent\" choice divided by 100,000 instead of 10,000. The \"12.5 percent\" choice divided by 1,000 instead of 10,000."
+    },
+    {
+      "id": "ceu-basic-math-areas-volumes-f3",
+      "objective": "areas-volumes",
+      "prompt": "A fictional trench is 200 ft long, 3 ft wide and 5 ft deep. Using 27 cu ft per cu yd, the excavation is:",
+      "choices": [
+        "3,000 cu yd",
+        "1,000 cu yd",
+        "81,000 cu yd",
+        "111.1 cu yd"
+      ],
+      "correctIndex": 3,
+      "explanation": "200 x 3 x 5 = 3,000 cu ft. 3,000 / 27 = 111.1 cu yd. The \"3,000 cu yd\" choice reported cubic feet as cubic yards. The \"1,000 cu yd\" choice divided by 3 ft per yard instead of 27. The \"81,000 cu yd\" choice multiplied by 27 instead of dividing."
+    },
+    {
+      "id": "ceu-basic-math-plant-formulas-f3",
+      "objective": "plant-formulas",
+      "prompt": "A fictional basin is 60 ft long, 20 ft wide and 10 ft deep and receives 1.8 MGD. Using 7.48 gal per cu ft, the detention time in hours is:",
+      "choices": [
+        "0.16 h",
+        "0.05 h",
+        "1.2 h",
+        "20.1 h"
+      ],
+      "correctIndex": 2,
+      "explanation": "Volume = 12,000 cu ft x 7.48 = 89,760 gal. Detention = 89,760 / 1,800,000 = 0.0499 day, x 24 = 1.2 h. The \"0.16 h\" choice forgot to convert cubic feet to gallons. The \"0.05 h\" choice left the answer in days. The \"20.1 h\" choice inverted flow over volume."
+    },
+    {
+      "id": "ceu-basic-math-number-skills-f4",
+      "objective": "number-skills",
+      "prompt": "Using the usual order of operations, (12 + 8) squared / 5 - 3 x 4 equals:",
+      "choices": [
+        "68",
+        "12.8",
+        "800",
+        "-4"
+      ],
+      "correctIndex": 0,
+      "explanation": "Parentheses: 20. Power: 400. Divide: 400 / 5 = 80. Multiply: 3 x 4 = 12. Subtract: 80 - 12 = 68. The \"12.8\" choice ignored the parentheses and squared only the 8. The \"800\" choice grouped 5 - 3 as a divisor. The \"-4\" choice multiplied by 2 instead of squaring."
+    },
+    {
+      "id": "ceu-basic-math-units-conversions-f4",
+      "objective": "units-conversions",
+      "prompt": "A fictional river reads 5 C. Using F = C x 9/5 + 32, the temperature in degrees Fahrenheit is:",
+      "choices": [
+        "9.0 F",
+        "41.0 F",
+        "-15.0 F",
+        "66.6 F"
+      ],
+      "correctIndex": 1,
+      "explanation": "5 x 9/5 = 9, then 9 + 32 = 41.0 F. The \"9.0 F\" choice forgot to add 32. The \"-15.0 F\" choice used the Fahrenheit-to-Celsius formula. The \"66.6 F\" choice added 32 before multiplying by 9/5."
+    },
+    {
+      "id": "ceu-basic-math-areas-volumes-f4",
+      "objective": "areas-volumes",
+      "prompt": "A fictional circular tank has a 40 ft diameter and holds 150,000 gal. Using 0.785 x d x d and 7.48 gal per cu ft, the water depth is:",
+      "choices": [
+        "119.4 ft",
+        "4.0 ft",
+        "638.6 ft",
+        "16.0 ft"
+      ],
+      "correctIndex": 3,
+      "explanation": "150,000 / 7.48 = 20,053.5 cu ft. Area = 0.785 x 1,600 = 1,256 sq ft. Depth = 20,053.5 / 1,256 = 16.0 ft. The \"119.4 ft\" choice did not convert gallons to cubic feet. The \"4.0 ft\" choice used the diameter as the radius with 3.14. The \"638.6 ft\" choice forgot to square the diameter in the area."
+    },
+    {
+      "id": "ceu-basic-math-plant-formulas-f4",
+      "objective": "plant-formulas",
+      "prompt": "A fictional circular clarifier weir has a diameter of 50 ft and passes 2.4 MGD. Using weir length = 3.14 x d and rate = flow in gal/day / length, the weir overflow rate is:",
+      "choices": [
+        "48,000 gal/day per ft",
+        "15,287 gal/day per ft",
+        "30,573 gal/day per ft",
+        "1,223 gal/day per ft"
+      ],
+      "correctIndex": 1,
+      "explanation": "Weir length = 3.14 x 50 = 157 ft. Flow = 2,400,000 gal/day. 2,400,000 / 157 = 15,287 gal/day per ft. The \"48,000 gal/day per ft\" choice used the diameter as the weir length. The \"30,573 gal/day per ft\" choice used half the circumference as the weir length. The \"1,223 gal/day per ft\" choice divided by the surface area instead of the weir length."
+    },
+    {
+      "id": "ceu-basic-math-number-skills-f5",
+      "objective": "number-skills",
+      "prompt": "A fictional tank holds 2,400 gal when full and is 35 percent full. The best first step in finding the volume is to:",
+      "choices": [
+        "Multiply 2,400 gal by 35, then divide by 10",
+        "Divide 2,400 gal by 0.35 to find the amount",
+        "Change 35 percent to 0.35, then multiply by 2,400 gal",
+        "Add 35 to 2,400 gal and round the result"
+      ],
+      "correctIndex": 2,
+      "explanation": "A percent of a quantity is found by turning the percent into a decimal and multiplying. The \"Multiply 2,400 gal by 35, then divide by 10\" choice mishandled the percent conversion. The \"Divide 2,400 gal by 0.35 to find the amount\" choice divided instead of multiplying by the decimal. The \"Add 35 to 2,400 gal and round the result\" choice treated the percent as gallons to add."
+    },
+    {
+      "id": "ceu-basic-math-units-conversions-f5",
+      "objective": "units-conversions",
+      "prompt": "For converting a fictional tank volume to weight, which pairing of constants is correct?",
+      "choices": [
+        "8.34 lb per gal for gallons, 62.4 lb per cu ft for cubic feet",
+        "62.4 lb per gal for gallons, 8.34 lb per cu ft for cubic feet",
+        "8.34 lb per gal for gallons, 7.48 lb per cu ft for cubic feet",
+        "7.48 lb per gal for gallons, 62.4 lb per cu ft for cubic feet"
+      ],
+      "correctIndex": 0,
+      "explanation": "One gallon of water weighs 8.34 lb and one cubic foot weighs 62.4 lb (7.48 x 8.34). The \"62.4 lb per gal for gallons, 8.34 lb per cu ft for cubic feet\" choice swapped the two weight constants. The \"8.34 lb per gal for gallons, 7.48 lb per cu ft for cubic feet\" choice used the gallons per cubic foot as a weight. The \"7.48 lb per gal for gallons, 62.4 lb per cu ft for cubic feet\" choice used gallons per cubic foot as the gallon weight."
+    },
+    {
+      "id": "ceu-basic-math-areas-volumes-f5",
+      "objective": "areas-volumes",
+      "prompt": "For a fictional circular tank with diameter d and water depth h, both in feet, which expression gives volume in cubic feet?",
+      "choices": [
+        "3.14 x d x d x h",
+        "0.785 x d x h",
+        "0.333 x 0.785 x d x d x h",
+        "0.785 x d x d x h"
+      ],
+      "correctIndex": 3,
+      "explanation": "A cylinder is base area times depth, and the base area is 0.785 x d x d. The \"3.14 x d x d x h\" choice used the diameter in place of the radius. The \"0.785 x d x h\" choice forgot to square the diameter. The \"0.333 x 0.785 x d x d x h\" choice applied the cone factor to a cylinder."
+    },
+    {
+      "id": "ceu-basic-math-plant-formulas-f5",
+      "objective": "plant-formulas",
+      "prompt": "A fictional basin has a fixed volume. If the plant flow doubles, the detention time in the basin will:",
+      "choices": [
+        "Be cut to one half",
+        "Double",
+        "Stay the same",
+        "Be cut to one quarter"
+      ],
+      "correctIndex": 0,
+      "explanation": "Detention time equals volume divided by flow, so doubling the flow halves the time. The \"Double\" choice inverted the relationship between flow and time. The \"Stay the same\" choice ignored that the same volume empties faster. The \"Be cut to one quarter\" choice applied the doubling twice."
+    }
+  ],
+  "alternateFinalAssessment": [
+    {
+      "id": "ceu-basic-math-number-skills-a1",
+      "objective": "number-skills",
+      "prompt": "A fictional hopper holds 640 lb and is loaded to 12.5 percent. The weight of material is:",
+      "choices": [
+        "8.0 lb",
+        "5,120 lb",
+        "652.5 lb",
+        "80.0 lb"
+      ],
+      "correctIndex": 3,
+      "explanation": "12.5 percent = 0.125, and 0.125 x 640 lb = 80.0 lb. The \"8.0 lb\" choice used 0.0125, a percent-as-decimal slip. The \"5,120 lb\" choice divided by 0.125 instead of multiplying. The \"652.5 lb\" choice added 12.5 to the capacity."
+    },
+    {
+      "id": "ceu-basic-math-units-conversions-a1",
+      "objective": "units-conversions",
+      "prompt": "A fictional booster station pumps 850 gpm. Using 1,440 min per day, the flow in MGD is:",
+      "choices": [
+        "1.22 MGD",
+        "0.051 MGD",
+        "1,224 MGD",
+        "0.59 MGD"
+      ],
+      "correctIndex": 0,
+      "explanation": "850 x 1,440 = 1,224,000 gal/day, and 1,224,000 / 1,000,000 = 1.22 MGD. The \"0.051 MGD\" choice used 60 min instead of 1,440 min per day. The \"1,224 MGD\" choice divided by 1,000 instead of 1,000,000. The \"0.59 MGD\" choice divided 850 by 1,440 instead of multiplying and skipped the million-gallon step."
+    },
+    {
+      "id": "ceu-basic-math-areas-volumes-a1",
+      "objective": "areas-volumes",
+      "prompt": "A fictional rectangular basin is 45 ft by 12 ft with 9 ft of water. Using 7.48 gal per cu ft, the volume is:",
+      "choices": [
+        "4,860 gal",
+        "36,353 gal",
+        "649.7 gal",
+        "303,264 gal"
+      ],
+      "correctIndex": 1,
+      "explanation": "45 x 12 x 9 = 4,860 cu ft. 4,860 x 7.48 = 36,353 gal. The \"4,860 gal\" choice reported cubic feet as gallons. The \"649.7 gal\" choice divided by 7.48 instead of multiplying. The \"303,264 gal\" choice used the weight constant 62.4 in place of 7.48."
+    },
+    {
+      "id": "ceu-basic-math-plant-formulas-a1",
+      "objective": "plant-formulas",
+      "prompt": "A fictional plant treats 3.2 MGD and feeds 54 lb/day of a chemical. Using mg/L = lb/day / (MGD x 8.34), the dose is:",
+      "choices": [
+        "16.9 mg/L",
+        "1,441 mg/L",
+        "2.0 mg/L",
+        "6.5 mg/L"
+      ],
+      "correctIndex": 2,
+      "explanation": "3.2 x 8.34 = 26.69. 54 / 26.69 = 2.0 mg/L. The \"16.9 mg/L\" choice forgot to divide by 8.34. The \"1,441 mg/L\" choice multiplied instead of dividing. The \"6.5 mg/L\" choice forgot to divide by the flow."
+    },
+    {
+      "id": "ceu-basic-math-number-skills-a2",
+      "objective": "number-skills",
+      "prompt": "A fictional square basin has a floor area of 625 sq ft. Each side measures:",
+      "choices": [
+        "312.5 ft",
+        "156.25 ft",
+        "390,625 ft",
+        "25 ft"
+      ],
+      "correctIndex": 3,
+      "explanation": "The side is the square root of the area: the square root of 625 is 25 ft. The \"312.5 ft\" choice divided the area by 2. The \"156.25 ft\" choice divided the area by 4. The \"390,625 ft\" choice squared the area instead of taking the square root."
+    },
+    {
+      "id": "ceu-basic-math-units-conversions-a2",
+      "objective": "units-conversions",
+      "prompt": "A fictional well pumps 0.65 MGD. Using 694.4 gpm per MGD and 1.547 cfs per MGD, the flow in gpm is:",
+      "choices": [
+        "451 gpm",
+        "0.00094 gpm",
+        "1.01 gpm",
+        "936 gpm"
+      ],
+      "correctIndex": 0,
+      "explanation": "0.65 MGD x 694.4 gpm per MGD = 451.4 gpm, about 451 gpm. The \"0.00094 gpm\" choice divided by 694.4 instead of multiplying. The \"1.01 gpm\" choice used the cfs constant 1.547. The \"936 gpm\" choice multiplied 0.65 by 1,440 instead of converting MGD to gallons and dividing by 1,440."
+    },
+    {
+      "id": "ceu-basic-math-areas-volumes-a2",
+      "objective": "areas-volumes",
+      "prompt": "A fictional circular pad has a diameter of 24 ft. Using area = 0.785 x d x d (3.14 x r x r), the area is:",
+      "choices": [
+        "1,808.6 sq ft",
+        "452.2 sq ft",
+        "75.4 sq ft",
+        "226.1 sq ft"
+      ],
+      "correctIndex": 1,
+      "explanation": "0.785 x 24 x 24 = 0.785 x 576 = 452.2 sq ft. The \"1,808.6 sq ft\" choice used the diameter as the radius with 3.14. The \"75.4 sq ft\" choice found the circumference instead of the area. The \"226.1 sq ft\" choice halved the area as for a triangle."
+    },
+    {
+      "id": "ceu-basic-math-plant-formulas-a2",
+      "objective": "plant-formulas",
+      "prompt": "A fictional clarifier has a diameter of 50 ft and receives 0.75 MGD. Using area = 0.785 x d x d and SOR = flow in gal/day / area, the surface overflow rate is:",
+      "choices": [
+        "95.5 gal/day per sq ft",
+        "15,000 gal/day per sq ft",
+        "0.00038 gal/day per sq ft",
+        "382.2 gal/day per sq ft"
+      ],
+      "correctIndex": 3,
+      "explanation": "Area = 0.785 x 2,500 = 1,962.5 sq ft. 750,000 / 1,962.5 = 382.2 gal/day per sq ft. The \"95.5 gal/day per sq ft\" choice used the diameter as the radius with 3.14. The \"15,000 gal/day per sq ft\" choice divided by the diameter instead of the area. The \"0.00038 gal/day per sq ft\" choice left the flow in MGD."
+    },
+    {
+      "id": "ceu-basic-math-number-skills-a3",
+      "objective": "number-skills",
+      "prompt": "A fictional plant reads turbidity values of 9.8, 10.4, 11.1 and 9.5 units. The average to the nearest tenth is:",
+      "choices": [
+        "10.2 units",
+        "40.8 units",
+        "10.1 units",
+        "8.2 units"
+      ],
+      "correctIndex": 0,
+      "explanation": "Sum = 40.8. Divide by 4 values: 40.8 / 4 = 10.2 units. The \"40.8 units\" choice forgot to divide the sum. The \"10.1 units\" choice reported the median of the values. The \"8.2 units\" choice divided by 5 instead of the 4 values."
+    },
+    {
+      "id": "ceu-basic-math-units-conversions-a3",
+      "objective": "units-conversions",
+      "prompt": "A fictional tank holds 85 cu ft of water. Using 62.4 lb per cu ft and 8.34 lb per gal (7.48 gal per cu ft), the water weighs:",
+      "choices": [
+        "10.2 lb",
+        "5,304 lb",
+        "709 lb",
+        "39,674 lb"
+      ],
+      "correctIndex": 1,
+      "explanation": "85 cu ft x 62.4 lb per cu ft = 5,304 lb. The \"10.2 lb\" choice divided by the gallon weight instead of multiplying by the cubic-foot weight. The \"709 lb\" choice used the gallon weight on cubic feet. The \"39,674 lb\" choice converted to gallons and then used the cubic-foot weight."
+    },
+    {
+      "id": "ceu-basic-math-areas-volumes-a3",
+      "objective": "areas-volumes",
+      "prompt": "A fictional rectangular tank is 25 ft by 16 ft and holds 20,000 gal. Using 7.48 gal per cu ft, the water depth is:",
+      "choices": [
+        "50.0 ft",
+        "374.0 ft",
+        "6.7 ft",
+        "2,674 ft"
+      ],
+      "correctIndex": 2,
+      "explanation": "20,000 / 7.48 = 2,673.8 cu ft. Floor = 25 x 16 = 400 sq ft. Depth = 2,673.8 / 400 = 6.7 ft. The \"50.0 ft\" choice did not convert gallons to cubic feet. The \"374.0 ft\" choice multiplied by 7.48 instead of dividing. The \"2,674 ft\" choice never divided by the floor area."
+    },
+    {
+      "id": "ceu-basic-math-plant-formulas-a3",
+      "objective": "plant-formulas",
+      "prompt": "A fictional plant treats 1.5 MGD. Influent BOD is 200 mg/L and effluent BOD is 30 mg/L. Using lb/day = mg/L x MGD x 8.34, the load removed is:",
+      "choices": [
+        "255.0 lb/day",
+        "375.3 lb/day",
+        "2,126.7 lb/day",
+        "2,502.0 lb/day"
+      ],
+      "correctIndex": 2,
+      "explanation": "Removed = 200 - 30 = 170 mg/L. 170 x 1.5 x 8.34 = 2,126.7 lb/day. The \"255.0 lb/day\" choice forgot the 8.34 factor. The \"375.3 lb/day\" choice used the effluent concentration only. The \"2,502.0 lb/day\" choice used the influent load instead of the load removed."
+    },
+    {
+      "id": "ceu-basic-math-number-skills-a4",
+      "objective": "number-skills",
+      "prompt": "A fictional batch mix is 2 parts polymer to 38 parts water by volume. The polymer needed for 500 gal of finished mix is:",
+      "choices": [
+        "26.3 gal",
+        "25.0 gal",
+        "13.2 gal",
+        "1,000 gal"
+      ],
+      "correctIndex": 1,
+      "explanation": "Total parts = 2 + 38 = 40. Polymer share = 2 / 40 = 0.05, and 0.05 x 500 gal = 25.0 gal. The \"26.3 gal\" choice compared polymer to water only instead of to the whole mix. The \"13.2 gal\" choice divided by the water parts only. The \"1,000 gal\" choice multiplied by the polymer parts without a total."
+    },
+    {
+      "id": "ceu-basic-math-units-conversions-a4",
+      "objective": "units-conversions",
+      "prompt": "A fictional dilute solution is 0.04 percent. Using 1 percent = 10,000 mg/L, its strength in mg/L is:",
+      "choices": [
+        "400 mg/L",
+        "40 mg/L",
+        "4,000 mg/L",
+        "4 mg/L"
+      ],
+      "correctIndex": 0,
+      "explanation": "0.04 percent x 10,000 mg/L per percent = 400 mg/L. The \"40 mg/L\" choice used 1,000 mg/L per percent. The \"4,000 mg/L\" choice used 100,000 mg/L per percent. The \"4 mg/L\" choice only multiplied the percent by 100."
+    },
+    {
+      "id": "ceu-basic-math-areas-volumes-a4",
+      "objective": "areas-volumes",
+      "prompt": "A fictional 8 in pipe is 1,000 ft long. Using 0.785 x d x d x length (d in ft) and 7.48 gal per cu ft, it holds:",
+      "choices": [
+        "3,915 gal",
+        "375,795 gal",
+        "2,610 gal",
+        "349 gal"
+      ],
+      "correctIndex": 2,
+      "explanation": "8 in = 0.6667 ft. Area = 0.785 x 0.4444 = 0.3489 sq ft. 0.3489 x 1,000 = 348.9 cu ft. 348.9 x 7.48 = 2,610 gal. The \"3,915 gal\" choice forgot to square the diameter in feet. The \"375,795 gal\" choice used 8 in as 8 ft. The \"349 gal\" choice reported cubic feet without converting to gallons."
+    },
+    {
+      "id": "ceu-basic-math-plant-formulas-a4",
+      "objective": "plant-formulas",
+      "prompt": "A fictional operator needs 500 gal of a 2 percent solution from a 10 percent stock. Using C1 x V1 = C2 x V2, the stock volume is:",
+      "choices": [
+        "2,500 gal",
+        "400 gal",
+        "1,000 gal",
+        "100 gal"
+      ],
+      "correctIndex": 3,
+      "explanation": "V1 = C2 x V2 / C1 = 2 x 500 / 10 = 100 gal of stock. The \"2,500 gal\" choice inverted the dilution equation. The \"400 gal\" choice reported the water to add instead of the stock volume. The \"1,000 gal\" choice multiplied the strength by the volume and never divided by the stock strength."
+    },
+    {
+      "id": "ceu-basic-math-number-skills-a5",
+      "objective": "number-skills",
+      "prompt": "A fictional lab reports a concentration of 0.4 percent. Written as a decimal, that is:",
+      "choices": [
+        "0.004",
+        "0.4",
+        "0.04",
+        "0.0004"
+      ],
+      "correctIndex": 0,
+      "explanation": "Percent to decimal means divide by 100: 0.4 / 100 = 0.004. The \"0.4\" choice left the percent number unchanged. The \"0.04\" choice moved the decimal point one place. The \"0.0004\" choice moved the decimal point three places instead of two."
+    },
+    {
+      "id": "ceu-basic-math-units-conversions-a5",
+      "objective": "units-conversions",
+      "prompt": "Which setup converts 2.4 MGD to gpm so that every unit cancels (1 MG = 1,000,000 gal; 1 day = 1,440 min)?",
+      "choices": [
+        "2.4 MG/day x 1,000,000 gal/MG x 1,440 min/day",
+        "2.4 MG/day x 1 MG/1,000,000 gal x 1 day/1,440 min",
+        "2.4 MG/day x 1,000,000 gal/MG x 1 day/60 min",
+        "2.4 MG/day x 1,000,000 gal/MG x 1 day/1,440 min"
+      ],
+      "correctIndex": 3,
+      "explanation": "Gallons per minute needs MG to cancel with gal/MG and days to cancel with day/min: 2.4 x 1,000,000 / 1,440 = 1,667 gpm. The \"2.4 MG/day x 1,000,000 gal/MG x 1,440 min/day\" choice put minutes per day on top, so days do not cancel. The \"2.4 MG/day x 1 MG/1,000,000 gal x 1 day/1,440 min\" choice inverted the million-gallon factor, so MG does not cancel. The \"2.4 MG/day x 1,000,000 gal/MG x 1 day/60 min\" choice used 60 min as a whole day."
+    },
+    {
+      "id": "ceu-basic-math-areas-volumes-a5",
+      "objective": "areas-volumes",
+      "prompt": "For a fictional triangular plate, which expression gives its area from the base and the perpendicular height?",
+      "choices": [
+        "base x height",
+        "0.5 x base x height",
+        "0.5 x (base + height)",
+        "0.785 x base x height"
+      ],
+      "correctIndex": 1,
+      "explanation": "A triangle is half of a rectangle with the same base and height. The \"base x height\" choice left out the one-half. The \"0.5 x (base + height)\" choice added the two lengths. The \"0.785 x base x height\" choice used the circle constant."
+    },
+    {
+      "id": "ceu-basic-math-plant-formulas-a5",
+      "objective": "plant-formulas",
+      "prompt": "In lb/day = mg/L x MGD x 8.34, the constant 8.34 stands for:",
+      "choices": [
+        "Gallons of water per pound",
+        "Pounds of water per cubic foot",
+        "Pounds of water per gallon",
+        "Milligrams per liter of water"
+      ],
+      "correctIndex": 2,
+      "explanation": "8.34 is the weight of one gallon of water in pounds, which converts mg/L and MGD to lb/day. The \"Gallons of water per pound\" choice inverted the unit. The \"Pounds of water per cubic foot\" choice confused it with 62.4. The \"Milligrams per liter of water\" choice confused it with the concentration unit."
+    }
+  ]
+}

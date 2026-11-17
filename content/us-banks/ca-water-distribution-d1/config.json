@@ -1,0 +1,24 @@
+{
+  "id": "ca-water-distribution-d1",
+  "bankKey": "ca-water-distribution-d1",
+  "itemPrefix": "CA-D1-DIST",
+  "version": "2026-11-16-v1",
+  "state": "CA",
+  "stream": "water-distribution",
+  "label": "California Water Distribution Operator, Grade D1 (State Water Board)",
+  "startNumber": 1,
+  "count": 250,
+  "calcCount": 70,
+  "purpose": "Practice questions for the California State Water Resources Control Board Grade D1 Water Distribution Operator Examination. Original items in US units, written only from objectives the State Water Board marks as D1 in its Expected Range of Knowledge. Not an official exam blueprint.",
+  "reviewIntro": "250 original practice questions: 180 conceptual and 70 calculations, in US customary units, following the question counts by content category in the State Water Board's Expected Range of Knowledge for the D1 distribution exam (scaled from 100 to 250: disinfection 38, distribution system design and hydraulics 50, equipment operation, maintenance and inspections 50, drinking water regulations, management and safety 37, water mains and piping 50, water quality and water source 25). Only objectives marked for D1 are used. This is the first release size; more questions can be added later at the end of the source files. This is a local content package, not proof of a production import.",
+  "sources": {
+    "CAD1": [
+      "California State Water Resources Control Board, Expected Range of Knowledge for Drinking Water Distribution Exam (Rev. 4/2020), Grade D1 objectives and question counts",
+      "https://www.waterboards.ca.gov/drinking_water/certlic/occupations/documents/opcert/2016/dist_range_of_know.pdf"
+    ],
+    "CASTUDY": [
+      "California State Water Resources Control Board, Water Distribution Study Material",
+      "https://www.waterboards.ca.gov/drinking_water/certlic/occupations/documents/opcert/distributionstudymaterial.pdf"
+    ]
+  }
+}
