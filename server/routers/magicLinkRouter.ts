@@ -1,3 +1,4 @@
+import { recordLearnerSignIn } from "../learnerSignIn";
 /**
  * Magic Link Authentication Router
  *
@@ -106,6 +107,7 @@ export const magicLinkRouter = router({
       await issueVerifiedEmailSessionCookie(ctx.res, link.email);
 
       await trackEvent("restore_access_completed", { email: link.email });
+      await recordLearnerSignIn(ctx.req, { email: link.email }, "legacy_magic_link");
       return {
         valid: true,
         email: link.email,

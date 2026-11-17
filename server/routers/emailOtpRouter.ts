@@ -1,3 +1,4 @@
+import { recordLearnerSignIn } from "../learnerSignIn";
 /**
  * Email OTP Router — 6-digit one-time passcode login for org operators.
  *
@@ -134,10 +135,12 @@ export const emailOtpRouter = router({
           ? await issueSubscriptionToken({ email, examTypes: entitlements.unlockedExamTypes })
           : "";
 
+      const isManager = entitlements.isManager || await hasRecoverableTeamBilling(email);
       // Issue verified email session cookie (same as magic link flow)
       await issueVerifiedEmailSessionCookie(ctx.res, email);
 
       await trackEvent("otp_verified", { email });
+      await recordLearnerSignIn(ctx.req, { email }, "email_otp");
 
       return {
         valid: true as const,
@@ -145,7 +148,7 @@ export const emailOtpRouter = router({
         examTypes: entitlements.unlockedExamTypes,
         accessToken,
         // This directs billing owners to their team page; course access stays live-only.
-        isManager: entitlements.isManager || await hasRecoverableTeamBilling(email),
+        isManager,
       };
     }),
 });

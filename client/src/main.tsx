@@ -1,3 +1,4 @@
+import { learnerActivityPreference } from "@/lib/learnerActivityPreference";
 import { startPrivacyAnalytics } from "@/lib/privacyAnalytics";
 import { enableFontStylesheet } from "@/lib/fontStylesheet";
 import { watchOtherTabLogout } from "@/lib/logout";
@@ -57,6 +58,7 @@ const trpcClient = trpc.createClient({
     httpBatchLink({
       url: "/api/trpc",
       transformer: superjson,
+      headers: () => ({ "x-echelon-activity": learnerActivityPreference() }),
       fetch(input, init) {
         return globalThis.fetch(input, {
           ...(init ?? {}),

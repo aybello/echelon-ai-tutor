@@ -1,3 +1,4 @@
+import { readLearnerActivity, searchLearners } from "../adminLearnerActivity";
 import { readGameActivity } from "../gameAnalytics";
 import { validateApprovalSteps } from "../questionApproval";
 import { TRPCError } from "@trpc/server";
@@ -60,7 +61,13 @@ function getStripe() {
   return new Stripe(key, { apiVersion: "2024-12-18.acacia" as any });
 }
 
+const learnerSelection = z.union([
+  z.object({ userId: z.number().int().positive() }).strict(),
+  z.object({ email: z.string().trim().toLowerCase().email().max(320) }).strict(),
+]);
 export const adminRouter = router({
+  learnerSearch: adminProcedure.input(z.object({ query: z.string().trim().min(3).max(320) }).strict()).query(({ input }) => searchLearners(input.query)),
+  learnerActivity: adminProcedure.input(z.object({ learner: learnerSelection, days: z.union([z.literal(7), z.literal(30)]) }).strict()).query(({ input }) => readLearnerActivity(input.learner, input.days)),
   gameActivity: adminProcedure.input(z.object({ days: z.union([z.literal(7), z.literal(30)]) }).strict()).query(({ input }) => readGameActivity(input.days)),
   getCeuKpis: adminProcedure.query(async () => {
     const db = await getDb();
