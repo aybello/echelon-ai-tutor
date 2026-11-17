@@ -54,3 +54,7 @@ Six original inline SVG figures were added to module lessons (viewBox-only, role
 - Module 4: valve recognition strip (gate, globe, ball, butterfly, check), after "Throttling versus isolation".
 
 Reviewer notes: the pump-curve and water-hammer shapes are schematic only. The TDH formulas shown for lift and head layouts take static discharge head from the pump centreline.
+
+## Cover image
+
+`covers/ceu-basic-hydraulics-cover.jpg` (1600 px wide): AI-generated image of a hydrant flow test with a flow-test diffuser on the open outlet and a worker reading its gauge. Generated 2026-11-17 with gpt-image-2.6-flare. The owner chose it. Not yet shown anywhere in the app. Check before wide use: the dial face is generated, so no reading on it should be relied on, and a real diffuser is often an angled elbow instead of a straight cylinder.
