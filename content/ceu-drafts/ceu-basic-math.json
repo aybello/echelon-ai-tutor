@@ -474,7 +474,7 @@
         {
           "kind": "assessment",
           "minutes": 7,
-          "instruction": "Complete the checks and review feedback."
+          "instruction": "Complete the checks, review the feedback and take the final assessment."
         }
       ],
       "sourceIds": [
