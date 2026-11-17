@@ -2,6 +2,7 @@
 export type OutboundService =
   | "forge"
   | "anthropic"
+  | "google"
   | "openai"
   | "maps"
   | "notification"

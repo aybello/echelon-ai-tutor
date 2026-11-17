@@ -201,6 +201,34 @@ describe("AI Tutor truncated explanations", () => {
     expect(mocks.recordAiTutorUsage).not.toHaveBeenCalled();
     expect(mocks.releaseAiTutorReservation).toHaveBeenCalledWith({ eventId: 501 });
   });
+
+  it("routes the real chat and concise retry through Gemini when configured", async () => {
+    vi.stubEnv("GEMINI_API_KEY", "synthetic-google-key");
+    const gemini = (finishReason: string, text: string) => new Response(JSON.stringify({
+      candidates: [{ finishReason, content: { parts: [{ text }] } }],
+    }));
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(gemini("MAX_TOKENS", "Partial calculation"))
+      .mockResolvedValueOnce(gemini("STOP", "Dose = demand + residual = 12 mg/L."));
+    vi.stubGlobal("fetch", fetchMock);
+    try {
+      const result = await ask();
+      expect(result.reply).toContain("12 mg/L");
+      expect(fetchMock).toHaveBeenCalledTimes(2);
+      expect(fetchMock.mock.calls[0][0]).toContain("gemini-4-hydrogen:generateContent");
+      const first = JSON.parse(fetchMock.mock.calls[0][1].body);
+      const retry = JSON.parse(fetchMock.mock.calls[1][1].body);
+      expect(first.generationConfig.maxOutputTokens).toBe(AI_TUTOR_MAX_OUTPUT_TOKENS);
+      expect(retry.systemInstruction.parts[0].text).toContain("LENGTH CONSTRAINT FOR THIS REPLY");
+      expect(first.contents.at(-1)).toEqual({ role: "user", parts: [{ text: "Work through the chlorine dose." }] });
+      expect(mocks.invokeLLM).not.toHaveBeenCalled();
+      expect(mocks.recordAiTutorUsage).toHaveBeenCalledWith({ eventId: 501 }, expect.anything());
+      expect(mocks.releaseAiTutorReservation).not.toHaveBeenCalled();
+    } finally {
+      vi.unstubAllGlobals();
+      vi.unstubAllEnvs();
+    }
+  });
 });
 
 describe("isTruncatedTutorCompletion", () => {
