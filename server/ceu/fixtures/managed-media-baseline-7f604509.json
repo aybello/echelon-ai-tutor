@@ -1,0 +1,19 @@
+{
+  "server/ceu/courses/ceu-activated-sludge-troubleshooting.json": "53775ab2699d893c1b9586f8c4b4ac269f7f503f1d31e98ddfcec784e6812aac",
+  "server/ceu/courses/ceu-coagulation-filtration.json": "456ee96c8556ac2d8f9703cbb4bb7e795afc7a16f863f7e3a39d588c90989c23",
+  "server/ceu/courses/ceu-collection-wet-weather.json": "d92542d9b3e6b6f5f484b0d5fbb4dc4fb36f31d20151af26026cf65906234752",
+  "server/ceu/courses/ceu-disinfection-ct.json": "a45242d91e5c7759899a6f74bc8a2b6545eeb1201d685a62737df44f019af2db",
+  "server/ceu/courses/ceu-distribution-water-quality.json": "61579e04951e088bcdb2e9cb4f07eec1c11706f62ee01695df38b258cc456b94",
+  "server/ceu/courses/ceu-drinking-water-compliance.json": "180df4555a55fbb22ee4cdcb2e790b6811ebc8821dfd7c2a3f7309096cdccbeb",
+  "server/ceu/courses/ceu-instrumentation-scada.json": "ccbfaf2b53c02277f8f6fd05316538a5ee59e69dd1c986d8f0221961ed0e8bf9",
+  "server/ceu/courses/ceu-sampling-data-quality.json": "32351c8305b9684f21aff25b7f1487b9e2843d850f4d664ff3fac0b31c76ae0f",
+  "server/ceu/courses/ceu-wastewater-treatment-process-control.json": "f11e5dbf119ca78060f0c3588c428b9250dc10cf3e966fd90c9f747cdd9464af",
+  "server/ceu/courses/ceu-water-treatment-process-control.json": "ee7e333369cdd3a962fde152fea6c5a0b9dcbc57b4fdc8dd83f2994af0f6a52c",
+  "server/ceu/courses/ceu-basic-safety.json": "3476a9c81bac7bd184b58cd832b99a63f4d9ed0b50a4e75d9290c4f5646ae75f",
+  "server/ceu/courses/ceu-chlorination-principles.json": "d6679b921d347a6b851cae38cb597d15708a2c7b1fa588d4a7c4b434fe3a461f",
+  "server/ceu/courses/ceu-basic-instrumentation.json": "76cfd56fa5b589fa77d8b23f3472ceac020e8ff1762488027884521783cb09b0",
+  "server/ceu/courses/ceu-water-distribution-overview.json": "374c94ec91eb918d67e944333fb26c991bb7f78c0645446e5edae41aa727af3b",
+  "server/ceu/courses/ceu-supervisor-essentials.json": "3f9a54eb9ec396923125c60b3e2efeec83eacc1aa7c72a48a79e3bc08f404983",
+  "shared/ceuCatalogueData.json": "5c9ff6994879afe27d01c49e2c676830fe197f7b63722ffa18bfab31904aa7f0",
+  "client/src/pages/ContinuingEducationCourse.tsx": "e67ddfdfa5edcb3e88cabded297841cfd4afb9e91aa447c40b041c60add56c02"
+}

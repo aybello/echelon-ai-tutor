@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { existsSync, readFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { gunzipSync } from "node:zlib";
 import type { CeuCurriculum } from "../../shared/ceuLearning";
@@ -8,6 +8,7 @@ import { ceuExamQuestions, issueCeuExam } from "./assessment";
 import { newCeuRecord, transitionCeu } from "./learningState";
 import { ceuModuleSlides } from "../../shared/ceuSlides";
 import legacy from "./legacyAssessments.json";
+import managedMedia from "../../shared/ceuManagedMedia.json";
 
 // Exact course JSON bytes from 4c4c105de457dbc5b7a775c64ac8240f613158a5.
 // Keep the baseline local: CI's depth-one checkout does not include that commit.
@@ -78,14 +79,18 @@ describe("18 November CEU content feedback", () => {
         const after = ceuModuleSlides(m);
         const layout = (slides: typeof before) => slides.map(s => ({ id: s.id, kind: s.kind, title: s.title }));
         expect(layout(after)).toEqual(layout(before));
-        // PR #264 changes only image URLs; preserve their exact slide and order.
+        // PR #264 and the managed-media migration change only image URLs;
+        // preserve the exact image, slide and order using the verified manifest.
         const images = (body: string) => [...body.matchAll(/<img src="([^"]+)"/g)].map(match => match[1]);
-        const approvedImagePath = (src: string) => src.replace(/^\/manus-storage\/(ceu-[a-z-]+)_[a-f0-9]+\.jpg$/, "/ceu-covers/$1.jpg");
+        const approvedImagePath = (src: string) => {
+          const oldPath = src.replace(/^\/manus-storage\/(ceu-[a-z-]+)_[a-f0-9]+\.jpg$/, "/ceu-covers/$1.jpg");
+          return managedMedia[oldPath as keyof typeof managedMedia]?.url ?? src;
+        };
         for (const [index, slide] of after.entries()) {
           expect(images(slide.body)).toEqual(images(before[index].body).map(approvedImagePath));
           for (const src of images(slide.body)) {
-            expect(src).toMatch(/^\/ceu-covers\/ceu-[a-z-]+\.jpg$/);
-            expect(existsSync(new URL(`../../client/public${src}`, import.meta.url))).toBe(true);
+            expect(src).toMatch(/^\/manus-storage\/ceu-[a-z-]+_[a-f0-9]+\.jpg$/);
+            expect(Object.values(managedMedia).some(asset => asset.url === src)).toBe(true);
           }
         }
         // IDs alone are numeric: explicitly pin the briefing image as well.
