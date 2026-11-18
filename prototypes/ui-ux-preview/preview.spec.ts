@@ -8,7 +8,15 @@ test("homepage managed organization logos all load offline on phone, tablet and 
   for (const width of [320, 390, 820, 1440]) {
     await page.setViewportSize({width, height:844});
     await page.goto("/#/homepage");
-    await expect(page.locator(".trusted-organizations img")).toHaveCount(4);
+    const originals = page.locator('.trusted-organizations-list:not([aria-hidden])');
+    const clone = page.locator('.trusted-organizations-list[aria-hidden="true"]');
+    await expect(originals.locator("li")).toHaveCount(3);
+    await expect(page.locator('.trusted-organizations-list:not([aria-hidden]) img, .trusted-organizations-supporter img')).toHaveCount(4);
+    await expect(page.locator(".trusted-organizations").getByRole("img")).toHaveCount(4);
+    await expect(clone).toHaveAttribute("role", "presentation");
+    await expect(clone.locator("li")).toHaveCount(3);
+    await expect(clone.locator("a, button, [tabindex]")).toHaveCount(0);
+    await expect(clone).toBeHidden();
     for (const organization of organizations) {
       expect(organization.logoDisplayAllowed).toBe(true);
       const image = page.getByRole("img", {name:`${organization.name} logo`, exact:true});
@@ -16,6 +24,114 @@ test("homepage managed organization logos all load offline on phone, tablet and 
       await expect(image).toBeVisible();
       await expect.poll(() => image.evaluate((element: HTMLImageElement) => element.complete && element.naturalWidth > 0)).toBe(true);
     }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  }
+});
+
+test("customer logo motion is seamless, pausable and static for reduced motion while BEA never moves", async ({page}) => {
+  test.setTimeout(60000);
+  await page.emulateMedia({reducedMotion:"no-preference"});
+  await page.setViewportSize({width:1440, height:844});
+  await page.goto("/#/homepage");
+  const customers = page.locator(".trusted-organizations-customers");
+  const original = page.locator('.trusted-organizations-list:not([aria-hidden])');
+  const clone = page.locator('.trusted-organizations-list[aria-hidden="true"]');
+  const supporter = page.locator(".trusted-organizations-supporter");
+  const pause = page.getByRole("button", {name:"Pause logo animation", exact:true});
+  await expect(pause).toBeVisible();
+  await expect(page.locator(".trusted-organizations img")).toHaveCount(7);
+  await expect(page.locator(".trusted-organizations").getByRole("img")).toHaveCount(4);
+  await expect(clone).toHaveAttribute("role", "presentation");
+  await expect(clone.locator("a, button, [tabindex]")).toHaveCount(0);
+  await page.mouse.move(0, 0);
+  const position = () => original.evaluate(element => element.getBoundingClientRect().left);
+  const initial = await position();
+  const bea = await supporter.boundingBox();
+  await expect.poll(position).toBeLessThan(initial - 1);
+  await expect(supporter).toHaveCSS("animation-name", "none");
+  expect(await supporter.boundingBox()).toEqual(bea);
+
+  await customers.hover();
+  await expect(original).toHaveCSS("animation-play-state", "paused");
+  await page.mouse.move(0, 0);
+  await expect(original).toHaveCSS("animation-play-state", "running");
+  await pause.focus();
+  await expect(pause).toBeFocused();
+  await expect(pause).toHaveCSS("outline-style", "solid");
+  await expect(original).toHaveCSS("animation-play-state", "paused");
+  await page.keyboard.press("Enter");
+  const resume = page.getByRole("button", {name:"Resume logo animation", exact:true});
+  await expect(resume).toHaveAttribute("aria-pressed", "true");
+  await page.keyboard.press("Tab");
+  await expect(original).toHaveCSS("animation-play-state", "paused");
+  const stopped = await position();
+  await page.waitForTimeout(100);
+  expect(await position()).toBeCloseTo(stopped, 2);
+  await resume.focus();
+  await page.keyboard.press("Space");
+  await expect(pause).toHaveAttribute("aria-pressed", "false");
+  // Focus pauses even after Resume; leaving the customer group resumes motion.
+  await expect(original).toHaveCSS("animation-play-state", "paused");
+  await page.keyboard.press("Tab");
+  await expect(original).toHaveCSS("animation-play-state", "running");
+  const resumed = await position();
+  await expect.poll(position).toBeLessThan(resumed - 1);
+  await pause.focus();
+  await page.keyboard.press("Enter");
+  await page.keyboard.press("Tab");
+
+  for (const width of [320, 390, 820, 1440]) {
+    await page.setViewportSize({width, height:844});
+    const geometry = await customers.evaluate(element => {
+      const viewport = element.querySelector(".trusted-organizations-viewport")!.getBoundingClientRect();
+      const groups = [...element.querySelectorAll(".trusted-organizations-list")];
+      const animations = groups.map(group => group.getAnimations()[0]);
+      if (animations.some(animation => !animation)) throw new Error("Both customer groups must animate");
+      const samples = [0, 6000, 12000, 18000, 23999, 24000].map(time => {
+        animations.forEach(animation => { animation.currentTime = time; });
+        const [first, second] = groups.map(group => group.getBoundingClientRect());
+        const firstTile = groups[0].firstElementChild!.getBoundingClientRect();
+        const cloneTile = groups[1].firstElementChild!.getBoundingClientRect();
+        return {time, firstLeft:first.left, firstWidth:first.width, secondWidth:second.width,
+          seam:second.left - first.right, leftCoverage:viewport.left - first.left,
+          rightCoverage:second.right - viewport.right, firstTile:firstTile.left, cloneTile:cloneTile.left};
+      });
+      return {viewportWidth:viewport.width, samples, timings:animations.map(animation => animation.effect!.getTiming())};
+    });
+    for (const timing of geometry.timings) {
+      expect(timing.duration).toBe(24000);
+      expect(timing.easing).toBe("linear");
+      expect(timing.iterations).toBe(Infinity);
+    }
+    for (const sample of geometry.samples) {
+      expect(sample.firstWidth).toBeGreaterThanOrEqual(geometry.viewportWidth);
+      expect(sample.secondWidth).toBeCloseTo(sample.firstWidth, 2);
+      expect(Math.abs(sample.seam)).toBeLessThan(0.1);
+      expect(sample.leftCoverage).toBeGreaterThanOrEqual(-0.1);
+      expect(sample.rightCoverage).toBeGreaterThanOrEqual(-0.1);
+    }
+    expect(geometry.samples[1].firstLeft).toBeLessThan(geometry.samples[0].firstLeft);
+    expect(Math.abs(geometry.samples[4].cloneTile - geometry.samples[0].firstTile)).toBeLessThan(1);
+    expect(geometry.samples[5].firstTile).toBeCloseTo(geometry.samples[0].firstTile, 2);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    expect(await supporter.evaluate(element => element.getAnimations({subtree:true}).length)).toBe(0);
+  }
+
+  await page.emulateMedia({reducedMotion:"reduce"});
+  for (const width of [320, 390, 820, 1440]) {
+    await page.setViewportSize({width, height:844});
+    await expect(clone).toBeHidden();
+    await expect(page.locator(".trusted-organizations-pause")).toBeHidden();
+    await expect(original).toHaveCSS("animation-name", "none");
+    await expect(original).toHaveCSS("transform", "none");
+    expect(await original.evaluate(element => {
+      const viewport = element.closest(".trusted-organizations-viewport")!.getBoundingClientRect();
+      return [...element.children].every(child => {
+        const rect = child.getBoundingClientRect();
+        return rect.left >= viewport.left - 0.1 && rect.right <= viewport.right + 0.1;
+      });
+    })).toBe(true);
+    await expect(page.locator(".trusted-organizations").getByRole("img")).toHaveCount(4);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   }
 });
