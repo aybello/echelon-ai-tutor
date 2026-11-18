@@ -17,6 +17,7 @@ import { ECHELON_LOGO_URL } from "@/components/SiteNav";
 import CoursePathHero from "@/components/CoursePathHero";
 import StepSolution from "@/components/StepSolution";
 import CourseFinder from "@/components/CourseFinder";
+import TrustedOrganizations from "@/components/TrustedOrganizations";
 import NationalWaitlistModal from "@/components/NationalWaitlistModal";
 import ProvinceBanner from "@/components/ProvinceBanner";
 import { usePageMeta } from "@/hooks/usePageMeta";
@@ -273,7 +274,7 @@ export default function Landing() {
             <CoursePathHero>
               <div className="homepage-customer-proof">
                 <span>Used by operators at</span>
-                <div className="homepage-customer-names"><strong>Utilities Kingston</strong><strong>City of Winnipeg</strong></div>
+                <div className="homepage-customer-names"><strong>Utilities Kingston</strong><strong>City of Winnipeg</strong><strong>City of Quinte West</strong></div>
               </div>
               <div className="homepage-hero-actions">
                 <a className="homepage-primary-button" href="#find-course">Find your course <ArrowRight size={18} aria-hidden="true" /></a>
@@ -291,6 +292,8 @@ export default function Landing() {
             <StudyWorkspacePreview />
           </div>
         </section>
+
+        <TrustedOrganizations />
 
         <section id="tools" className="homepage-section homepage-tools-section" aria-labelledby="homepage-tools-title">
           <div className="homepage-section-heading homepage-section-heading-left">

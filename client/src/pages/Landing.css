@@ -322,7 +322,7 @@
 .homepage-customer-proof > span { color: var(--home-muted); font-size: 13px; font-weight: 400; }
 .homepage-customer-names { display: inline-flex; gap: 5px; margin: 0; }
 .homepage-customer-names strong { color: var(--home-ink); font-size: 13px; }
-.homepage-customer-names strong + strong::before { content: "and "; font-weight: 400; }
+.homepage-customer-names strong + strong::before { content: "· "; font-weight: 400; }
 .homepage-hero-note { order: 2; margin-top: 14px; }
 .homepage-preview-inclusions { order: 3; color: var(--home-muted); }
 .homepage-preview-choice { order: 5; width: 100%; }
