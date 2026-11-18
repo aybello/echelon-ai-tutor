@@ -8,7 +8,7 @@
     "group": "foundations",
     "regionLabel": "Operator foundations",
     "cover": {
-      "src": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663446228701/qlvirWqFtbxUNoeG.jpg",
+      "src": "/ceu-covers/ceu-basic-safety-cover.jpg",
       "alt": "Water operator safety training equipment"
     },
     "approvalStatus": "not_submitted",
@@ -66,7 +66,7 @@
     "group": "foundations",
     "regionLabel": "Operator foundations",
     "cover": {
-      "src": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663446228701/txYeoebaOSmzZXAn.jpg",
+      "src": "/ceu-covers/ceu-basic-hydraulics-cover.jpg",
       "alt": "Water operator hydraulics training"
     },
     "approvalStatus": "not_submitted",
@@ -124,7 +124,7 @@
     "group": "foundations",
     "regionLabel": "Operator foundations",
     "cover": {
-      "src": "https://files.manuscdn.com/user_upload_by_module/session_file/310519663446228701/oAWVmiXiXiPCiMRH.jpg",
+      "src": "/ceu-covers/ceu-basic-math-cover.jpg",
       "alt": "Water operator mathematics training"
     },
     "approvalStatus": "not_submitted",
@@ -182,7 +182,7 @@
     "group": "foundations",
     "regionLabel": "Operator foundations",
     "cover": {
-      "src": "/manus-storage/ceu-chlorination-principles-cover_c42e1257.jpg",
+      "src": "/ceu-covers/ceu-chlorination-principles-cover.jpg",
       "alt": "Chlorination Principles for Water and Wastewater Operators: illustrative operator training scene"
     },
     "approvalStatus": "not_submitted",
@@ -240,7 +240,7 @@
     "group": "foundations",
     "regionLabel": "Operator foundations",
     "cover": {
-      "src": "/manus-storage/ceu-basic-instrumentation-cover_6aae2f03.jpg",
+      "src": "/ceu-covers/ceu-basic-instrumentation-cover.jpg",
       "alt": "Basic Instrumentation for Water and Wastewater Operators: illustrative operator training scene"
     },
     "approvalStatus": "not_submitted",
@@ -298,7 +298,7 @@
     "group": "foundations",
     "regionLabel": "Operator foundations",
     "cover": {
-      "src": "/manus-storage/ceu-water-distribution-overview-cover_773338af.jpg",
+      "src": "/ceu-covers/ceu-water-distribution-overview-cover.jpg",
       "alt": "Water Distribution Overview for Operators: illustrative operator training scene"
     },
     "approvalStatus": "not_submitted",
@@ -356,7 +356,7 @@
     "group": "foundations",
     "regionLabel": "Operator foundations",
     "cover": {
-      "src": "/manus-storage/ceu-supervisor-essentials-cover_37bf426d.jpg",
+      "src": "/ceu-covers/ceu-supervisor-essentials-cover.jpg",
       "alt": "Supervisor Essentials for Water and Wastewater Operators: illustrative operator training scene"
     },
     "approvalStatus": "not_submitted",
@@ -414,7 +414,7 @@
     "group": "applied",
     "regionLabel": "Ontario drinking water",
     "cover": {
-      "src": "/manus-storage/ceu-drinking-water-compliance-cover_2b2aaece.jpg",
+      "src": "/ceu-covers/ceu-drinking-water-compliance-cover.jpg",
       "alt": "Drinking Water Operations and Regulatory Compliance: illustrative operator training scene"
     },
     "approvalStatus": "director_approval_required",
@@ -486,7 +486,7 @@
     "group": "applied",
     "regionLabel": "Ontario drinking water",
     "cover": {
-      "src": "/manus-storage/ceu-water-treatment-process-control-cover_1d7b4b17.jpg",
+      "src": "/ceu-covers/ceu-water-treatment-process-control-cover.jpg",
       "alt": "Water Treatment Process Control and Optimization: illustrative operator training scene"
     },
     "approvalStatus": "director_approval_required",
@@ -558,7 +558,7 @@
     "group": "applied",
     "regionLabel": "Ontario wastewater",
     "cover": {
-      "src": "/manus-storage/ceu-wastewater-treatment-process-control-cover_9ef886dc.jpg",
+      "src": "/ceu-covers/ceu-wastewater-treatment-process-control-cover.jpg",
       "alt": "Wastewater Treatment Operations and Process Control: illustrative operator training scene"
     },
     "approvalStatus": "ceu_value_review_required",
@@ -630,7 +630,7 @@
     "group": "applied",
     "regionLabel": "Ontario drinking water",
     "cover": {
-      "src": "/manus-storage/ceu-sampling-data-quality-cover_76b13aa4.jpg",
+      "src": "/ceu-covers/ceu-sampling-data-quality-cover.jpg",
       "alt": "Sampling, Laboratory Results and Data Quality: illustrative operator training scene"
     },
     "approvalStatus": "director_approval_required",
@@ -688,7 +688,7 @@
     "group": "applied",
     "regionLabel": "Ontario drinking water",
     "cover": {
-      "src": "/manus-storage/ceu-disinfection-ct-cover_89cdf029.jpg",
+      "src": "/ceu-covers/ceu-disinfection-ct-cover.jpg",
       "alt": "Disinfection Verification and CT Calculations: illustrative operator training scene"
     },
     "approvalStatus": "director_approval_required",
@@ -746,7 +746,7 @@
     "group": "applied",
     "regionLabel": "Ontario drinking water",
     "cover": {
-      "src": "/manus-storage/ceu-coagulation-filtration-cover_d967e8b2.jpg",
+      "src": "/ceu-covers/ceu-coagulation-filtration-cover.jpg",
       "alt": "Coagulation, Filtration and Controlled Optimization: illustrative operator training scene"
     },
     "approvalStatus": "director_approval_required",
@@ -804,7 +804,7 @@
     "group": "applied",
     "regionLabel": "Ontario drinking water",
     "cover": {
-      "src": "/manus-storage/ceu-instrumentation-scada-cover_04a1b69b.jpg",
+      "src": "/ceu-covers/ceu-instrumentation-scada-cover.jpg",
       "alt": "Instrumentation, SCADA and Operational Data Integrity: illustrative operator training scene"
     },
     "approvalStatus": "director_approval_required",
@@ -862,7 +862,7 @@
     "group": "applied",
     "regionLabel": "Ontario drinking water",
     "cover": {
-      "src": "/manus-storage/ceu-distribution-water-quality-cover_77268031.jpg",
+      "src": "/ceu-covers/ceu-distribution-water-quality-cover.jpg",
       "alt": "Distribution Water Quality and System Integrity: illustrative operator training scene"
     },
     "approvalStatus": "director_approval_required",
@@ -920,7 +920,7 @@
     "group": "applied",
     "regionLabel": "Ontario wastewater",
     "cover": {
-      "src": "/manus-storage/ceu-collection-wet-weather-cover_4bd0574d.jpg",
+      "src": "/ceu-covers/ceu-collection-wet-weather-cover.jpg",
       "alt": "Collection Systems and Wet-Weather Response: illustrative operator training scene"
     },
     "approvalStatus": "ceu_value_review_required",
@@ -978,7 +978,7 @@
     "group": "applied",
     "regionLabel": "Ontario wastewater",
     "cover": {
-      "src": "/manus-storage/ceu-activated-sludge-troubleshooting-cover_19008779.jpg",
+      "src": "/ceu-covers/ceu-activated-sludge-troubleshooting-cover.jpg",
       "alt": "Activated Sludge Troubleshooting and Solids Control: illustrative operator training scene"
     },
     "approvalStatus": "ceu_value_review_required",

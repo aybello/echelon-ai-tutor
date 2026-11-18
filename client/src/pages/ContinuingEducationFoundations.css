@@ -8,3 +8,17 @@
 @media (max-width: 760px) { .ceu-course-cover { aspect-ratio: 16 / 9; max-height: none; } .ceu-group-title { font-size: 19px; } }
 
 .ceu-overview-cover, .ceu-safety-illustration { display: block; width: 100%; height: auto; max-height: 380px; object-fit: cover; border-radius: 12px; margin-bottom: 20px; }
+
+/* Short slides should not keep a tall empty card; the fixed minimum made
+   brief slides look unfinished. The card now grows only with its content. */
+.ceu-lesson-card { min-height: 0; }
+.ops-ceu-workspace .ceu-lesson-card { min-height: 0; }
+
+/* Wide authored tables (for example the chemical reference) must fit a phone
+   card without clipping the last column; rows wrap instead of overflowing. */
+@media (max-width: 760px) {
+  .ceu-reading table { font-size: 13px; }
+  .ceu-reading th, .ceu-reading td { padding: 7px 6px; vertical-align: top; }
+  .ceu-reading th:first-child, .ceu-reading td:first-child { min-width: 7.5em; }
+  .ceu-reading th:nth-child(2), .ceu-reading td:nth-child(2) { min-width: 6.5em; }
+}
