@@ -1,0 +1,1048 @@
+{
+  "key": "ceu-manager-essentials",
+  "version": "2026-11-18.1",
+  "title": "Manager Essentials for Water and Wastewater Utilities",
+  "shortTitle": "Manager Essentials",
+  "stream": "drinking_water",
+  "audience": "Operators and supervisors across the US and Canada who are moving into a utility manager role, or preparing for one, in water or wastewater work.",
+  "prerequisites": "No technical prerequisite beyond basic arithmetic and a calculator. Supervisory experience helps. All utilities, names, accounts and dollar figures are fictional. Budgets, rates, fees, staffing, personnel and public-notice rules differ between states and provinces, so the course teaches general principles and tells you to check your state's or province's rules.",
+  "introduction": "Build the habits of a utility manager: what the manager owns, how permits and procedures rank, how rates and budget requests are built and checked, how management ideas help with people decisions, and how to plan with evidence for a board and hand it over cleanly. Each module has worked examples, quick checks that name the mistakes behind wrong answers, and a short written case. The course gives general management principles, not any jurisdiction's rules.",
+  "plannedMinutes": 200,
+  "delivery": "Self-paced lessons, quick checks, a graded final exam and a non-credit certificate. Duration is being validated; no contact-hour award is made.",
+  "sources": [
+    {
+      "id": "ccohs-incident",
+      "title": "CCOHS: Incident Investigation",
+      "url": "https://www.ccohs.ca/oshanswers/hsprograms/investig.html",
+      "section": "Why and how to investigate and record incidents, collect facts and follow up; used for the factual-documentation and team-troubleshooting ideas",
+      "jurisdiction": "Canada, general occupational health and safety guidance",
+      "accessed": "2026-11-17"
+    },
+    {
+      "id": "ccohs-responsibilities",
+      "title": "CCOHS: Health and Safety Legislation in Canada - Basic Responsibilities",
+      "url": "https://www.ccohs.ca/oshanswers/legisl/responsi.html",
+      "section": "Supervisors act for the employer and carry duties for the work they direct; used as an example of how responsibility attaches to supervisors; provincial and federal detail differs",
+      "jurisdiction": "Canada, with notes that vary by jurisdiction; not a US rule",
+      "accessed": "2026-11-17"
+    },
+    {
+      "id": "epa-dist-tools",
+      "title": "US EPA: Drinking Water Distribution System Tools and Resources",
+      "url": "https://www.epa.gov/dwreginfo/drinking-water-distribution-system-tools-and-resources",
+      "section": "Context for distribution system operation and the public-health purpose of operators' routine work; used for background, not for supervision rules",
+      "jurisdiction": "United States",
+      "accessed": "2026-11-17"
+    },
+    {
+      "id": "epa-operator-cert",
+      "title": "US EPA: About Operator Certification",
+      "url": "https://www.epa.gov/dwcapacity/about-operator-certification",
+      "section": "Operator certification requirements vary from state to state; the page supports the course's instruction to check your state's or province's rules",
+      "jurisdiction": "United States overview; each state sets its own program",
+      "accessed": "2026-11-17"
+    }
+  ],
+  "modules": [
+    {
+      "id": "responsibilities-compliance",
+      "title": "Responsibilities and compliance",
+      "objectives": [
+        "Explain what the manager owns, how permits, design standards and procedures rank, and what records prove compliance.",
+        "Show the calculation or evidence behind each decision in responsibilities and compliance."
+      ],
+      "lesson": "### The manager owns resources, not just outcomes\n\nA manager is responsible for the utility's resources: people, money, equipment, information and the permit that allows the plant to operate. An operator is responsible for doing the work correctly. A supervisor is responsible for getting the crew to do it. A manager is responsible for making sure the system around the work can keep producing safe, compliant results year after year.\n\nThe public-health purpose is the reason the job exists. Drinking water and wastewater services protect people from disease and from pollution. Your decisions about staffing, budgets, equipment and records change whether that protection holds on a bad day, not only on a normal one.\n\n> **Your job in this course:** be able to say what you are responsible for, what you are not, and what evidence you would show a regulator, an elected board or a court.\n\n### Know which rule governs what\n\nThree kinds of rules often get mixed up:\n\n- **The operating permit** sets what the facility must do and how it must report. For the facility, it governs first.\n- **Design standards** describe how a facility should be built. A design standard does not give permission to run a plant in a way the permit prohibits.\n- **Facility procedures** turn permit conditions into daily work. They are written for your plant and they change when the plant changes.\n\nA common mistake is to treat the design standard as the operating rule. A new manager who reads only the design manual may approve a practice the permit does not allow. Check the permit first, then the procedures, then the design material.\n\nLocal, state, provincial and federal requirements can all apply at once. Which ones apply, and in what order, depends on where you operate. Check your state's or province's rules, and ask your regulator when the answer is unclear.\n\n<figure><svg viewBox=\"0 0 320 216\" role=\"img\" aria-label=\"Decision path for a permit and schedule conflict\"><title>Decision path for a permit and schedule conflict</title><rect x=\"50\" y=\"10\" width=\"220\" height=\"34\" rx=\"6\" fill=\"#eef4fb\" stroke=\"#2f6db2\" stroke-width=\"2\"/><line x1=\"160\" y1=\"44\" x2=\"160\" y2=\"60\" stroke=\"#5f6b7a\" stroke-width=\"2\"/><rect x=\"60\" y=\"60\" width=\"200\" height=\"40\" rx=\"6\" fill=\"#eef4fb\" stroke=\"#2f6db2\" stroke-width=\"2\"/><line x1=\"160\" y1=\"100\" x2=\"160\" y2=\"116\" stroke=\"#5f6b7a\" stroke-width=\"2\"/><rect x=\"60\" y=\"116\" width=\"200\" height=\"40\" rx=\"6\" fill=\"#eef4fb\" stroke=\"#2f6db2\" stroke-width=\"2\"/><line x1=\"160\" y1=\"156\" x2=\"160\" y2=\"172\" stroke=\"#5f6b7a\" stroke-width=\"2\"/><rect x=\"60\" y=\"172\" width=\"200\" height=\"34\" rx=\"6\" fill=\"#e6e9ee\" stroke=\"#1d2d40\" stroke-width=\"2\"/><g font-family=\"Arial, sans-serif\" font-size=\"12\" fill=\"#1d2d40\"><text x=\"160\" y=\"31\" text-anchor=\"middle\">Conflict found: task vs permit</text><text x=\"160\" y=\"85\" text-anchor=\"middle\">Stop and write the conflict down</text><text x=\"160\" y=\"141\" text-anchor=\"middle\">Escalate to the decision-maker</text><text x=\"160\" y=\"193\" text-anchor=\"middle\">Record the option chosen and why</text></g></svg><figcaption>Illustrative. Stop, record and escalate before the schedule changes. The regulator and the permit set what is allowed.</figcaption></figure>\n\n### Compliance is a system, not one report\n\nCompliance is what the records prove. A result that was not written down, dated or attributed to a person might as well not exist when a regulator asks about it. Good compliance practice has four parts:\n\n1. **Know the obligations.** Keep a current list of permit conditions, reporting deadlines and notice duties, with the person responsible for each.\n2. **Record what happened, when and by whom.** Keep logs complete and avoid overwriting entries. A correction is a new, attributed entry, not an erased one.\n3. **Keep chain of custody.** For any sample that matters, record who collected it, when, how it was held, and who received it.\n4. **Report on time and say what you know.** When a result is uncertain, say so. An honest qualified report is better than a clean report that later proves wrong.\n\nNon-compliance has consequences. They can include corrective orders, public notice, penalties and legal exposure for individuals as well as the utility. The manager's job is to prevent the situation from arising, and when it does, to show the regulator that the response was prompt, documented and sincere.\n\n### Relationships with regulators\n\nRegulators are not only enforcement. They are also the people who can answer a question before a problem becomes a violation. Managers who are known to be competent and candid tend to get better outcomes when something goes wrong: earlier warnings, clearer requirements and more reasonable timelines.\n\nKeep the relationship professional and factual. Call the regulator early when you expect a missed deadline. Bring the records. Do not promise results you cannot control. Staying current matters too. Rules change, and trade associations, periodicals and training courses are how you learn about changes before they bite.\n\n### Safety and liability are management duties\n\nManagers do not perform every task, but they set the conditions under which tasks are done. That includes the time and staff to do work safely, the equipment that works, the training that is current and the reporting culture that lets people raise concerns without fear. Insurance and risk reduction are part of the same picture. Insurance transfers some financial risk; it does not transfer the duty to protect people.\n\nThis course gives the purpose of each safeguard. The detailed steps belong in your facility procedures and your safety program, and you should check your state's or province's requirements for training, incident reporting and worker safety.\n\n### Worked example: the staffing gap\n\nA fictional plant runs its treatment process 24 hours a day with three 8-hour operator shifts. Each shift needs one operator on site. The plant operates 365 days a year.\n\n- Shifts needed per year: 3 shifts per day x 365 days = 1,095 shifts.\n- Hours to cover: 1,095 shifts x 8 hours = 8,760 hours.\n- A full-time operator is budgeted at 2,080 hours a year before leave and training.\n- Operators needed before leave: 8,760 / 2,080 = **4.21 full-time equivalents**.\n\nFour operators leave a gap of 0.21 of a full-time equivalent before any leave is taken. In practice a manager needs more than four people, because vacation, sick time and training will take hours out of the schedule. The arithmetic gives the floor, not the plan. A manager who staffs to exactly four people will rely on overtime and on people who are already tired, and that is a safety and compliance risk, not a saving.\n\n### When the permit and the schedule conflict\n\nSooner or later a planned task will collide with a permit condition. A repair is due on the day a sample is required, or a crew is short when a reporting deadline falls. The temptation is to adjust the schedule quietly and hope nobody notices. Do not do that.\n\nThe safe pattern is to stop, write down the conflict, and escalate it to the person who can decide. Ask three questions. Which permit condition is affected? What is the earliest date the work can be done without breaching it? Who must be told, and by when? The answer may be to bring in a contractor, move the task to a different shift, or ask the regulator for a temporary arrangement. Each option needs a record that shows who chose it and why.\n\nThe manager's role is to make the conflict visible early. A manager who hears about a conflict on the due date has fewer options than one who hears about it a month ahead, and the regulator is more likely to respond well to a warning given in time. Keep the record of the warning as part of the compliance file.\n\nYour state or province may have its own rules on temporary variances, notices and how long a condition can be relaxed. Check those before committing to any option.\n\n### Check your reasoning\n\nBefore you make a staffing or compliance decision, ask four questions. What does the permit require? Who is responsible for each duty? What record would show it was done? What would I say to a regulator who asked in six months? If you cannot answer, the decision is not ready.\n",
+      "evidence": "### Fictional scenario: Lakeview's permit file\n\nLakeview Water is a fictional utility with a new manager, Dana Okafor. The plant has a permit with reporting duties, and a design manual that describes a different practice. Dana finds a logbook with a corrected value that has no date, a sample whose chain of custody is incomplete, and a staffing plan that covers 24 hours with four people and no leave.",
+      "assignment": "Write a one-page memo to Dana's director on the three compliance gaps in the Lakeview file. For each gap, name the record or obligation affected, the correction or step you would take, and who is responsible. Calculate the staffing gap for a 24-hour, 365-day shift pattern using 2,080 hours per full-time equivalent, and state whether the plan is adequate.",
+      "rubric": [
+        "Separates the permit, design standards and facility procedures correctly.",
+        "Calculates the staffing gap with stated hours and shows the arithmetic.",
+        "Names an owner and a record for each compliance step.",
+        "Describes an honest, timely contact with the regulator."
+      ],
+      "facilitatorGuide": "Before the session, learners read the lesson and the Lakeview evidence. In the session, ask each learner to name the document that governs the practice first, then the record that proves it. Check the staffing arithmetic line by line. Discuss the conflict section: ask what the learner would do if the schedule and the permit disagreed next week. Close by asking what evidence the learner would show a regulator in six months, and mark any answer that depends on a rule the course does not state.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and reproduce the worked example."
+        },
+        {
+          "kind": "quick_checks",
+          "minutes": 10,
+          "instruction": "Answer the six quick checks and read each explanation."
+        },
+        {
+          "kind": "assignment",
+          "minutes": 15,
+          "instruction": "Complete the module assignment against the rubric."
+        }
+      ],
+      "sourceIds": [
+        "epa-operator-cert",
+        "ccohs-responsibilities"
+      ],
+      "checks": [
+        {
+          "id": "ceu-manager-essentials-responsibilities-compliance-c1",
+          "objective": "responsibilities-compliance",
+          "prompt": "Which statement best describes a manager's responsibility compared with an operator's?",
+          "choices": [
+            "The manager owns the resources and systems behind safe, compliant work",
+            "The manager performs the most complex hands-on tasks at the plant",
+            "The manager writes the permit conditions that the regulator must then follow",
+            "The manager's accountability ends once a task has been handed to a crew member"
+          ],
+          "correctIndex": 0,
+          "explanation": "A manager owns people, money, equipment, information and the permit system. The first distractor confuses the manager's role with the operator's; the third confuses the utility's permit with a rule the manager writes; the fourth treats delegation as ending accountability."
+        },
+        {
+          "id": "ceu-manager-essentials-responsibilities-compliance-c2",
+          "objective": "responsibilities-compliance",
+          "prompt": "A design manual and an operating permit disagree on a practice. Which should govern daily operation?",
+          "choices": [
+            "The design manual, because it was written by the engineers who built the plant",
+            "The operating permit, because it sets what the facility must do",
+            "Whichever document is more recent, regardless of who wrote it",
+            "The practice that costs less to carry out day to day"
+          ],
+          "correctIndex": 1,
+          "explanation": "The permit governs operation first. The design manual describes how a facility should be built and does not give permission to operate outside the permit. The distractors judge the rule by authorship, date or cost."
+        },
+        {
+          "id": "ceu-manager-essentials-responsibilities-compliance-c3",
+          "objective": "responsibilities-compliance",
+          "prompt": "A sample is collected in the morning and received by a laboratory the next day. Which record matters most for it?",
+          "choices": [
+            "A note that the result is probably fine, based on recent history",
+            "A summary chart of the week's results for the whole plant",
+            "Chain of custody: collector, time, handling and receiver",
+            "A copy of the laboratory's current price list for analyses"
+          ],
+          "correctIndex": 2,
+          "explanation": "Chain of custody proves what happened to a sample between collection and analysis. The distractors are conclusions or unrelated records, and a probability note cannot replace the custody trail."
+        },
+        {
+          "id": "ceu-manager-essentials-responsibilities-compliance-c4",
+          "objective": "responsibilities-compliance",
+          "prompt": "A logbook entry recorded the wrong reading. What is the right way to correct it?",
+          "choices": [
+            "Overwrite the old entry so the log looks clean and consistent",
+            "Delete the entry and write nothing, since the first reading was wrong",
+            "Correct it when a regulator later asks about that particular day",
+            "Add an attributed entry giving the correction, time and reason"
+          ],
+          "correctIndex": 3,
+          "explanation": "A visible, attributed correction keeps the history intact. Overwriting and deleting hide the history, and waiting for a question makes the correction look like a cover-up."
+        },
+        {
+          "id": "ceu-manager-essentials-responsibilities-compliance-c5",
+          "objective": "responsibilities-compliance",
+          "prompt": "A plan puts 4 operators on 8-hour shifts to cover 24 hours a day, 365 days a year, with no leave. Which statement is correct?",
+          "choices": [
+            "The plan needs 8,760 hours, or 4.21 full-time equivalents before leave",
+            "Four operators are enough, since each one works a single shift each day",
+            "The plan needs 2,080 hours, so one operator covers the whole site",
+            "The plan works if each operator works twelve hours a day instead"
+          ],
+          "correctIndex": 0,
+          "explanation": "Coverage needs 3 shifts x 365 days x 8 hours = 8,760 hours, and 8,760 / 2,080 = 4.21 full-time equivalents. The distractors count people rather than hours, use one operator's annual hours, or change the schedule without showing the arithmetic."
+        },
+        {
+          "id": "ceu-manager-essentials-responsibilities-compliance-c6",
+          "objective": "responsibilities-compliance",
+          "prompt": "Which action best reflects a candid relationship with a regulator when a deadline will be missed?",
+          "choices": [
+            "Wait until the deadline has passed, and then explain what happened",
+            "Call the regulator early with the records and a realistic plan",
+            "Promise to meet the deadline without first checking the schedule",
+            "Send a brief note on the due date with no supporting records attached"
+          ],
+          "correctIndex": 1,
+          "explanation": "Early contact with records and a realistic plan builds trust. The distractors delay the contact, promise an outcome the manager cannot control, or send a note without evidence."
+        }
+      ]
+    },
+    {
+      "id": "finance-budgets",
+      "title": "Finance, rates and budget requests",
+      "objectives": [
+        "Explain enterprise funding and rate structures, and check revenue and payback arithmetic with stated units.",
+        "Show the calculation or evidence behind each decision in finance, rates and budget requests."
+      ],
+      "lesson": "### Money has to be explained as well as spent\n\nA utility spends money on chemicals, power, labour, repairs and new assets. It raises money through rates, fees, charges and sometimes taxes or grants. The manager's job is to keep those two sides in balance and to explain both to the people who approve the budget.\n\nEvery figure in this module is fictional. Rate structures, fees and tax treatment differ between states, provinces and municipalities. Where a rule is jurisdiction-specific, check your state's or province's rules. The examples teach the method, not a number you can copy into your own budget.\n\n### Where the money comes from\n\nTwo funding models are common:\n\n- **General fund:** the utility is paid from tax revenue that also supports other municipal services. The utility competes with police, roads and parks for the same money.\n- **Enterprise fund:** the utility is run as a self-supporting business. Its costs are recovered through rates and charges, and the money stays with the utility.\n\nMost water and wastewater utilities use an enterprise fund, because rate-funded service keeps the cost of water and sewer service visible to the people who use it. Each model has trade-offs, and the approach your utility uses is set by its governing body and its legal structure.\n\n<figure><svg viewBox=\"0 0 320 200\" role=\"img\" aria-label=\"Residential revenue split into fixed and volume shares\"><title>Residential revenue split into fixed and volume shares</title><rect x=\"60\" y=\"30\" width=\"200\" height=\"90\" fill=\"#2f6db2\"/><rect x=\"60\" y=\"120\" width=\"200\" height=\"50\" fill=\"#cfe0f5\" stroke=\"#2f6db2\" stroke-width=\"2\"/><line x1=\"40\" y1=\"170\" x2=\"280\" y2=\"170\" stroke=\"#5f6b7a\" stroke-width=\"1.5\"/><g font-family=\"Arial, sans-serif\" font-size=\"12\" fill=\"#1d2d40\"><text x=\"160\" y=\"22\" text-anchor=\"middle\">Residential revenue, fictional year</text><text x=\"160\" y=\"80\" text-anchor=\"middle\" fill=\"#ffffff\">Fixed charges: $432,000 (70%)</text><text x=\"160\" y=\"150\" text-anchor=\"middle\">Volume charges: $184,500 (30%)</text><text x=\"160\" y=\"190\" text-anchor=\"middle\">Total: $616,500</text></g></svg><figcaption>Illustrative fictional figures from the worked example. The fixed share does not fall when water sales fall.</figcaption></figure>\n\n### How rates are built\n\nA rate structure has several parts, and each part does a different job:\n\n- **Fixed charges** pay for the costs that do not change with use, such as meters, billing, standby capacity and debt service. They are predictable for the utility.\n- **Volume charges** collect money in proportion to the water used or sewage discharged. They tend to track operating costs.\n- **Block rates** charge a different price for each band of use, for example a lower price for the first block and higher prices as use increases. Block rates can encourage conservation, but they also change how a large user's bill moves.\n- **Capital cost recovery** pays for the replacement and expansion of assets through charges that spread the cost over the life of the asset.\n\nEquivalent residential units, often called ERCs, are a way to compare the demand of a large or unusual customer with a typical home. They are a planning concept. How they are set and applied is a policy decision your utility must document.\n\nImpact fees charge new development for the capacity it will use. They are meant to cover growth-related costs, so existing customers do not carry them. Their rules are set locally and can be controlled by state or provincial law.\n\n### Worked example: a bill and the revenue it produces\n\nA fictional utility has 1,200 residential accounts. Each account pays a fixed charge of $30 per month. The utility also has a volume charge of $4.10 per 1,000 gallons of water sold. In a year the utility sells 45,000,000 gallons to residential customers.\n\n- Fixed revenue: 1,200 accounts x $30 x 12 months = **$432,000**.\n- Volume revenue: 45,000,000 gallons / 1,000 = 45,000 units; 45,000 x $4.10 = **$184,500**.\n- Total residential revenue: $432,000 + $184,500 = **$616,500**.\n\nThe fixed share is $432,000 / $616,500 = **70 percent**. This matters. If conservation lowers water sales by 10 percent, the volume revenue falls by $18,450, but the fixed revenue does not change. The utility still has to cover its fixed costs, so a rate study has to ask whether the fixed share is high enough for the risk it carries.\n\n### Capital improvement plans and capital budget requests\n\nA capital improvement plan lists the assets a utility expects to build, replace or rehabilitate over several years, with their estimated costs and the reasons for each. It turns a list of needs into a schedule, and it is the first document a board will ask for when it wants to know whether rates will rise.\n\nCapital projects are usually driven by one of four reasons:\n\n1. **Regulation:** the facility must change to meet a permit requirement.\n2. **Growth:** the system must add capacity for new customers.\n3. **Replacement:** equipment or pipe is at or near the end of its useful life.\n4. **Safety and reliability:** a failure would endanger people or stop service.\n\nA capital request has to explain which reason applies and what happens if the project is not built. Payback is a useful concept when a project saves money. Simple payback is the cost divided by the annual saving. A project that costs $240,000 and saves $36,000 a year has a simple payback of 240,000 / 36,000 = **6.7 years**. That number does not capture risk, life or regulatory need, so present it with the other reasons, not on its own.\n\nBuild the case with data, not with enthusiasm. Show the condition records, the failure history, the risk ranking and the options you rejected. Elected officials and boards respond to a case that shows what was considered and why one option was chosen.\n\n### Operating budget requests\n\nThe operating budget covers the costs of running the utility in a year: chemicals, electricity, materials, contract services, fuel, insurance and staff. Good operating budgets start from units consumed. Chemical cost is not a guess; it is the dose, the flow, the period and the price. If your records show the units, your forecast can be checked. If they do not, the forecast is an opinion.\n\nOutsourcing is a budget decision too. Contracting a task can reduce staffing needs, but it also moves cost into a contract line and it moves some control away from the utility. Compare the full cost, including supervision of the contractor, not only the invoice.\n\nFunding from federal and state programmes can change the picture, and eligibility and amounts change over time. Do not build a multi-year budget on a grant you have not been awarded.\n\n### Using records to build next year's budget\n\nThe best budget input is last year's records, cleaned up. Pull the consumption, repair and overtime history. Note the years that were unusual and why. Show a range rather than a single number when the history is uneven. A budget that explains its assumptions can be defended. A budget that hides them invites cuts that the operation will pay for later.\n\n### Building a rate study that holds up\n\nA rate study answers three questions. How much revenue does the utility need in total? How should the costs be split among customer groups? And how should the bill be designed so that each group pays its share in a predictable way? The first question is the revenue requirement: operating costs, debt service, capital replacement and reserves, less any other income. The second is the cost of service, which assigns each cost to the customers who cause it. The third is rate design, which turns the split into fixed charges, volume charges and any blocks.\n\nA common mistake is to set rates by adjusting last year's bill. That keeps old assumptions in place. A better habit is to rebuild the revenue requirement from the current budget and the capital plan, then check each rate against the cost it is meant to recover.\n\nKeep the study's assumptions visible. Write down the forecast volume, the growth rate, the cost of borrowing and the reserve target, and show what happens to the bill if any of them change. A board that can see the sensitivity can decide with confidence, and a board that cannot will eventually be surprised.\n\nRate increases affect households differently. Check the effect on typical bills, on low-income customers, and on large users. You may need an assistance programme, a phased increase or a clearer explanation of the reason for the change. Any such programme is a policy choice that your governing body makes, and its legal basis depends on your jurisdiction.\n\n### Check your reasoning\n\nBefore you present a budget or a capital request, check four things. Are the figures traceable to records? Are the assumptions written down? Would a reasonable person reach the same answer from the same inputs? And does the request explain what happens if it is not approved? If any answer is no, fix the request before it goes to the board.\n",
+      "evidence": "### Fictional scenario: Riverbend's rate study\n\nRiverbend Utilities is a fictional enterprise-fund utility with 800 residential accounts. Its board wants to know how a conservation campaign would affect revenue, and a capital request for a pump station is due next month. The manager must show the revenue arithmetic, the simple payback and the operating budget for chemicals.",
+      "assignment": "Prepare a two-page summary for the Riverbend board that shows the residential revenue under the current rates, the fixed share, the effect of a 10 percent conservation reduction in volume sales, the simple payback of the pump station project, and the annual chemical cost forecast. Show each calculation, its units and its assumptions.",
+      "rubric": [
+        "Shows the revenue arithmetic with units and the fixed share.",
+        "Calculates simple payback to one decimal place with the formula stated.",
+        "Explains the basis of the chemical forecast and its uncertainty.",
+        "States which figures are illustrative and which rules need checking."
+      ],
+      "facilitatorGuide": "Start with the revenue worked example and have learners reproduce each figure before moving on. Ask them to change one assumption, such as the conservation rate, and state how the fixed share and the payback respond. Keep every rate and cost illustrative and make learners name the rule they would need to check in their own state or province.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and reproduce the worked example."
+        },
+        {
+          "kind": "quick_checks",
+          "minutes": 10,
+          "instruction": "Answer the six quick checks and read each explanation."
+        },
+        {
+          "kind": "assignment",
+          "minutes": 15,
+          "instruction": "Complete the module assignment against the rubric."
+        }
+      ],
+      "sourceIds": [
+        "epa-dist-tools",
+        "epa-operator-cert"
+      ],
+      "checks": [
+        {
+          "id": "ceu-manager-essentials-finance-budgets-c1",
+          "objective": "finance-budgets",
+          "prompt": "A utility runs as an enterprise fund. What does that usually mean?",
+          "choices": [
+            "The utility is paid from general tax revenue alongside other city services",
+            "A self-supporting business that recovers its costs mainly through rates",
+            "The utility is exempt from rate regulation and sets its own prices freely",
+            "The utility sets its own permit conditions and reporting deadlines"
+          ],
+          "correctIndex": 1,
+          "explanation": "An enterprise fund is paid through rates and charges that match its costs. The second distractor describes a general fund; the third claims an exemption no utility can assume; the fourth confuses finance with the permit."
+        },
+        {
+          "id": "ceu-manager-essentials-finance-budgets-c2",
+          "objective": "finance-budgets",
+          "prompt": "Which rate element is designed to recover costs that do not change with how much water is used?",
+          "choices": [
+            "A volume charge that rises in proportion to the water sold",
+            "A block rate that charges more for each higher band of use",
+            "A fixed charge covering meters, billing and debt service",
+            "An impact fee paid once by a developer for new connections"
+          ],
+          "correctIndex": 2,
+          "explanation": "Fixed charges cover costs such as meters, billing and debt service, which stay the same whatever the use. Volume charges and block rates follow use, and impact fees are one-time charges for growth."
+        },
+        {
+          "id": "ceu-manager-essentials-finance-budgets-c3",
+          "objective": "finance-budgets",
+          "prompt": "A capital improvement plan is best described as:",
+          "choices": [
+            "A monthly list of chemical orders placed with suppliers each period",
+            "A record of past repairs kept for insurance claims",
+            "A rate table that a regulator approves each year",
+            "A multi-year schedule of planned assets with estimated costs"
+          ],
+          "correctIndex": 3,
+          "explanation": "A capital improvement plan schedules planned assets over several years, with costs and reasons. The distractors describe an operating record, an insurance file and a rate table, which are different documents."
+        },
+        {
+          "id": "ceu-manager-essentials-finance-budgets-c4",
+          "objective": "finance-budgets",
+          "prompt": "A project costs $180,000 and saves $28,000 a year. What is its simple payback to one decimal place?",
+          "choices": [
+            "6.4 years",
+            "3.6 years, since the saving is divided by the cost",
+            "6.9 years, because the decimal was rounded up",
+            "5.1 years, from subtracting the saving from cost"
+          ],
+          "correctIndex": 0,
+          "explanation": "Simple payback is cost divided by annual saving: 180,000 / 28,000 = 6.43, or 6.4 years. The 3.6 choice divides the saving by the cost; the other two are rounding errors from wrong division."
+        },
+        {
+          "id": "ceu-manager-essentials-finance-budgets-c5",
+          "objective": "finance-budgets",
+          "prompt": "A fictional utility has 800 residential accounts, each paying a $35 fixed charge a month. It sells 30,000,000 gallons at $3.80 per 1,000 gallons. What is the fixed share of residential revenue?",
+          "choices": [
+            "About 50 percent, since the two charges are equal in size",
+            "About 75 percent of the total residential revenue",
+            "About 88 percent, since fixed charges are usually the largest part",
+            "About 62 percent, after allowing for the volume charge discount"
+          ],
+          "correctIndex": 1,
+          "explanation": "Fixed revenue is 800 x $35 x 12 = $336,000. Volume revenue is 30,000 x $3.80 = $114,000. The total is $450,000, so the fixed share is 74.7 percent, about 75 percent. The other choices come from dividing by two or mixing up annual and monthly totals."
+        },
+        {
+          "id": "ceu-manager-essentials-finance-budgets-c6",
+          "objective": "finance-budgets",
+          "prompt": "A chemical forecast for the operating budget uses last year's invoice total, without the consumption figures. What is the main weakness?",
+          "choices": [
+            "It is too precise, since invoice totals are rounded and so are misleading",
+            "It fails mainly because chemicals are bought in bulk at a discount",
+            "It is hard to check, since units consumed and price are not shown",
+            "It is reliable, since invoices are the most dependable source of cost"
+          ],
+          "correctIndex": 2,
+          "explanation": "A forecast built on units and price can be checked, and a total without them cannot. The distractors invent a rounding problem, a rule about bulk buying, or treat an invoice as proof of a future cost."
+        }
+      ]
+    },
+    {
+      "id": "people-utilisation",
+      "title": "Utilising people",
+      "objectives": [
+        "Apply management ideas, styles, delegation and coaching to a real staffing or safety decision.",
+        "Show the calculation or evidence behind each decision in utilising people."
+      ],
+      "lesson": "### People are the utility's main resource\n\nA utility can have modern plants and good budgets and still fail if its people are not trained, supported and retained. Managers spend much of their time on people: hiring, assigning work, coaching, correcting problems and deciding who does what. Those decisions shape safety, compliance and service as directly as any capital project.\n\nManagement theory gives you useful vocabulary for these decisions. Use the ideas as tools to test your choices, not as rules that settle the question.\n\n### Four ideas from management theory\n\n- **Scientific management** (associated with Taylor) studies tasks to find a better way to do them. Its useful lesson for a utility is that a procedure should match the real work. A procedure written in an office that the crew cannot follow will be ignored on the floor.\n- **The process approach and Fayol's principles** treat management as planning, organising, directing, coordinating and controlling. They remind a manager that the job is not one task but a set of linked functions, and that unity of command helps a crew know who gives instructions.\n- **The Hawthorne effect** describes how people change their behaviour when they know they are being observed or valued. The lesson for managers is not that observation alone works. Attention, feedback and a sense of being heard can change performance, and they can also distort it if people only perform when someone is watching.\n- **Maslow's hierarchy of needs** proposes that people look first for basic security, then belonging and recognition, then growth. A crew worried about overtime, pay or safety will not respond much to a talk about personal development.\n\nManagement by objectives (MBO) asks managers and staff to agree specific objectives for a period, then review progress against them. It works best when the objectives are measurable and within the person's control, and when the review is a conversation, not a scorecard used against someone.\n\n### Management styles and when each fits\n\nA manager's style is the way they make decisions and involve people. Four styles are common:\n\n- **Authoritarian:** the manager decides and gives instructions. It is fast and clear when there is a real emergency or a safety rule that cannot be debated, and it is poor for building judgement in people over time.\n- **Consultative:** the manager asks for input and then decides. It is useful when the people closest to the work know something the manager does not.\n- **Democratic:** the group decides by vote or consensus. It builds buy-in, but it is slow and can stall when a decision is urgent or technical.\n- **Laissez-faire:** the manager sets little direction and lets people act. It can suit experienced, self-directed teams, and it fails when people are unclear about standards or responsibility.\n\nGood managers do not use one style for every situation. They match the style to the decision, and they say which style they are using. A line such as \"I need to decide this today; I want your input before I do\" tells people what is expected.\n\n### Communication, delegation and coaching\n\nCommunication is the most common management failure. A message that is clear to the manager may not be clear to the crew, especially across shifts. Ask people to repeat back the instruction. Write down decisions that affect safety or compliance. Check that the person receiving a task has the authority, equipment and training to do it.\n\nDelegation moves a task to someone else with the authority to finish it. It is not the same as dumping a job. When you delegate, state the outcome you need, the standard it must meet, the deadline and how you will check progress. Keep the accountability: the manager remains responsible for the result even when the task is delegated.\n\nCoaching is the work of helping someone improve. Ask what they tried, what they expected and what happened. Name one thing to change and agree how you will know it has changed. Coaching works best when it is regular and specific. A correction given weeks after the event is punishment, not coaching.\n\n### Decision-making under pressure\n\nSome decisions are routine, and some are not. Write down the decision, the options you considered, the information you had and the reason you chose the option you chose. This record protects the manager and the utility. It also lets someone else learn from the decision later.\n\n### Worked example: turnover and the cost of leaving\n\nA fictional utility has 12 operations staff. Over one year, 3 people leave. Turnover is the number who leave divided by the average headcount: 3 / 12 = **25 percent**.\n\nSuppose the utility estimates the cost to recruit and train a replacement at $8,000 per person, for an illustrative total of 3 x $8,000 = **$24,000** in one year. The number is not the whole story. The people who stay take on extra shifts, and the new hires need supervision while they learn. A manager who sees a 25 percent turnover rate should ask why people are leaving, whether the reasons are pay, schedule, training, leadership or safety, and what the exit interviews say. Fixing the cause is usually cheaper than repeating the hiring.\n\n### Turnover, exit information and keeping good people\n\nTurnover is a symptom. When people leave, the question is why. Exit interviews, when they are honest and recorded, show whether the reasons are pay, schedule, training, leadership, the equipment or a safety concern. Patterns matter more than single answers. Three people who leave within a year because of the same overtime rota point to a fixable cause.\n\nRetention is cheaper than recruitment, but it is not free. Good retention work includes a realistic schedule, a clear path for development, training that is current and recognised, supervisors who coach rather than only correct, and a way for people to raise concerns without fear. None of this requires a particular pay level or a particular benefit, and your state or province may set minimum standards for training, hours and leave that you must meet.\n\nRecord what you do and what happens afterwards. If you change a rota, note the date and check the overtime hours and the next year's turnover. A manager who can show the effect of a change can justify it to the board and to the crew.\n\n### Worked example: moving work off an overloaded senior operator\n\nA fictional senior operator at Hollow Creek works 56 hours a week. The utility's target for that role is 45 hours, so 56 - 45 = **11 hours a week** need to move to other people. Three colleagues have spare capacity of 4, 4 and 3 hours a week, which adds up to 4 + 4 + 3 = **11 hours**. The move balances exactly on paper.\n\nBefore the change, check three things. Does each colleague have the training for the tasks they are taking? Will the handover take time that the senior operator also needs to spend? And will the change itself cause new overtime for the colleagues? A balanced spreadsheet can still fail on the floor. Review the new weekly hours after four weeks, and record the overtime and the complaints as well as the tasks completed.\n\n### Check your reasoning\n\nBefore you make a people decision, ask what the work needs, what the person needs to do it, what evidence you have about the problem, and whether you would be comfortable explaining the decision to the affected person and to a third party. If the answer depends on a rule you have not read, check your state's or province's employment and training requirements.\n",
+      "evidence": "### Fictional scenario: Hollow Creek's crew\n\nHollow Creek is a fictional wastewater utility with 15 operations staff. Two experienced operators left this year, a senior operator is overloaded, and the crew has raised concerns about overtime. The new supervisor must decide how to delegate, which style to use for a safety issue and how to coach the operator who made an error.",
+      "assignment": "Write a plan for Hollow Creek's new supervisor covering delegation of the overloaded senior operator's tasks, the management style to use for the safety issue, a coaching conversation for the operator who made the error, and the turnover measure the utility should track. State the expected outcome of each action and how it will be checked.",
+      "rubric": [
+        "Links each action to a management idea or style and states why it fits.",
+        "Sets an outcome, a standard and a check for each delegated task.",
+        "Describes coaching that is specific, timely and agreed.",
+        "Calculates turnover correctly and proposes a measure to track."
+      ],
+      "facilitatorGuide": "Begin with the four management ideas and ask which idea explains a crew's concern. Role-play the coaching and delegation conversations in pairs, with one partner observing against the rubric. Check the turnover arithmetic and ask what the exit information would show. Do not suggest a staffing or pay level as a universal standard.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and reproduce the worked example."
+        },
+        {
+          "kind": "quick_checks",
+          "minutes": 10,
+          "instruction": "Answer the six quick checks and read each explanation."
+        },
+        {
+          "kind": "assignment",
+          "minutes": 15,
+          "instruction": "Complete the module assignment against the rubric."
+        }
+      ],
+      "sourceIds": [
+        "ccohs-responsibilities",
+        "ccohs-incident"
+      ],
+      "checks": [
+        {
+          "id": "ceu-manager-essentials-people-utilisation-c1",
+          "objective": "people-utilisation",
+          "prompt": "Which management idea is the best source for the lesson that a procedure should match the real work?",
+          "choices": [
+            "Maslow's hierarchy, which ranks what people need from their work",
+            "Management by objectives, which sets targets for a fixed period",
+            "Scientific management, which studies tasks to improve them",
+            "The Hawthorne effect, which describes changes when people are watched"
+          ],
+          "correctIndex": 2,
+          "explanation": "Scientific management studies how tasks are done and improves them. Maslow ranks needs, MBO sets objectives and the Hawthorne effect describes behaviour under observation. None of those is about matching a procedure to the work."
+        },
+        {
+          "id": "ceu-manager-essentials-people-utilisation-c2",
+          "objective": "people-utilisation",
+          "prompt": "A crew is worried about overtime and pay, and a manager spends the meeting on long-term career development. Which idea explains why this is likely to fail?",
+          "choices": [
+            "Taylor's time studies, which measure how long each task takes",
+            "The process approach, which divides the job into management functions",
+            "Laissez-faire management, which gives people little direction",
+            "Maslow's hierarchy, which puts basic security and pay before growth"
+          ],
+          "correctIndex": 3,
+          "explanation": "Maslow's hierarchy suggests that security and basic needs come before growth. Taylor is about tasks, the process approach about functions, and laissez-faire about the level of direction."
+        },
+        {
+          "id": "ceu-manager-essentials-people-utilisation-c3",
+          "objective": "people-utilisation",
+          "prompt": "A safety decision is needed today, and the decision itself is not open to debate. The crew has useful knowledge. Which style fits best?",
+          "choices": [
+            "Authoritarian for the decision, then consultative for follow-up",
+            "Laissez-faire, leaving the crew to decide how the work should be done",
+            "Laissez-faire, leaving the whole crew to decide how work is done and when",
+            "Consultative just, with no decision until a full consensus is reached"
+          ],
+          "correctIndex": 0,
+          "explanation": "A time-critical decision with a fixed requirement fits an authoritative decision, and the crew's knowledge is used afterwards to improve the procedure. The other styles are slow or absent in an urgent case."
+        },
+        {
+          "id": "ceu-manager-essentials-people-utilisation-c4",
+          "objective": "people-utilisation",
+          "prompt": "Which statement about delegation is correct?",
+          "choices": [
+            "Delegating a task transfers the manager's accountability to the person who does it",
+            "The manager stays accountable for the result even after delegating the task",
+            "Delegation means passing a task on without stating the outcome or deadline",
+            "A delegated task needs no check, because the person has the authority to act"
+          ],
+          "correctIndex": 1,
+          "explanation": "Delegation transfers the task and the authority, but the manager stays accountable for the result. The other choices describe a manager who has given up the outcome, skipped the standard or assumed authority is competence."
+        },
+        {
+          "id": "ceu-manager-essentials-people-utilisation-c5",
+          "objective": "people-utilisation",
+          "prompt": "A utility had 15 staff and 2 left during the year. What is the turnover for the year, to the nearest percent?",
+          "choices": [
+            "7 percent",
+            "18 percent, using 11 staff as the base",
+            "13 percent",
+            "2 percent"
+          ],
+          "correctIndex": 2,
+          "explanation": "Turnover is the number who left divided by average headcount: 2 / 15 = 13.3 percent. The 7 and 2 percent choices are division slips; 18 percent divides by 11, which is the wrong headcount."
+        },
+        {
+          "id": "ceu-manager-essentials-people-utilisation-c6",
+          "objective": "people-utilisation",
+          "prompt": "Which action best describes coaching, as opposed to correction?",
+          "choices": [
+            "Raising the problem at the next performance review, weeks after the event",
+            "Telling the person what they did wrong and what the penalty will be",
+            "Giving the same written instruction again without any discussion",
+            "Asking what the person tried, naming one change and agreeing a check"
+          ],
+          "correctIndex": 3,
+          "explanation": "Coaching is specific, close to the event and about the next improvement. The second and third choices are delayed or punitive, and the fourth is repetition without the conversation that makes coaching work."
+        }
+      ]
+    },
+    {
+      "id": "planning-decisions",
+      "title": "Planning, risk and decisions",
+      "objectives": [
+        "Build a risk-ranked, evidence-based plan for a board, hand it over cleanly and close the loop with a review date.",
+        "Show the calculation or evidence behind each decision in planning, risk and decisions."
+      ],
+      "lesson": "### A plan is a sequence of decisions\n\nBy the time a manager reaches the fourth module, the question is no longer what the rules are or how to pay for the work. It is how to turn everything into decisions that other people can review and carry out. A good plan does four things: it names the problem with evidence, it ranks the options, it says who decides and by when, and it states how success will be checked.\n\nThis module brings together records, risk and communication. The examples are fictional. Check your state's or province's rules for any reporting, approval or public-notice step you plan to use.\n\n### Records are the evidence\n\nRecords are the only way a manager can show what happened. They include operating logs, maintenance histories, sampling results, complaint files, training records and decision logs. A record that is complete, dated and attributed can support a decision months later. A record that has been overwritten or left blank cannot.\n\nKeep corrections visible. If a value was entered wrong, add a new entry that says what changed, when and why, and leave the original in place. A record that hides its own history invites doubt. A record that shows a correction gives reviewers confidence that the system works.\n\n<figure><svg viewBox=\"0 0 320 175\" role=\"img\" aria-label=\"Cost range around a fictional estimate\"><title>Cost range around a fictional estimate</title><line x1=\"40\" y1=\"90\" x2=\"280\" y2=\"90\" stroke=\"#5f6b7a\" stroke-width=\"2\"/><rect x=\"60\" y=\"78\" width=\"200\" height=\"24\" fill=\"#cfe0f5\" stroke=\"#2f6db2\" stroke-width=\"2\"/><line x1=\"160\" y1=\"72\" x2=\"160\" y2=\"108\" stroke=\"#1d2d40\" stroke-width=\"2\"/><g font-family=\"Arial, sans-serif\" font-size=\"12\" fill=\"#1d2d40\"><text x=\"60\" y=\"66\" text-anchor=\"middle\">$180,000</text><text x=\"160\" y=\"66\" text-anchor=\"middle\">$200,000 estimate</text><text x=\"260\" y=\"66\" text-anchor=\"middle\">$220,000</text><text x=\"160\" y=\"140\" text-anchor=\"middle\">Range: plus or minus 10 percent</text><text x=\"160\" y=\"160\" text-anchor=\"middle\">Largest driver: valve casting price</text></g></svg><figcaption>Illustrative. The board sees the range and the main assumption, not a single number.</figcaption></figure>\n\n### Ranking risk so the plan has priorities\n\nEvery utility has more needs than money or staff time. A simple risk ranking helps decide order. For each item, estimate how likely the failure is and how serious the consequence would be. Multiply them on a common scale, then review the result. Use it as a conversation starter, not a verdict, because the scale is only as good as the judgement behind it.\n\nA common mistake is to rank by the loudest complaint or the most recent failure. A quiet asset with a high consequence, such as a pump station that serves a hospital, may deserve more attention than a noisy but low-risk item.\n\n### Worked example: ranking two projects\n\nA fictional utility is choosing between two projects. Each is scored from 1 (low) to 5 (high) for likelihood of failure and for severity of consequence. The score is likelihood multiplied by severity.\n\n- Project A, a valve replacement at a main crossing: likelihood 4, severity 3, score 4 x 3 = **12**.\n- Project B, a control panel upgrade at a remote pump station: likelihood 2, severity 5, score 2 x 5 = **10**.\n\nProject A ranks higher on this scale. The manager should still ask whether a failure at the pump station would stop service to a large area or put a sensitive customer at risk, because the scale may not show that. The ranking shows where to look; it does not decide for the utility.\n\n### Making the case to a board\n\nElected officials and boards are responsible for many services. They need a clear summary, not the full technical file. A good summary states the problem in one sentence, gives the evidence in a few numbers, names the options and their costs, and recommends one. It also says what happens if the board does nothing, and when the decision is needed.\n\nBe honest about uncertainty. If a cost estimate could move by a meaningful amount, say so and show the range. If a rate increase would follow from the decision, say how large it would be and who it would affect. A board that is surprised later by a cost it was not told about loses trust in the manager and the utility.\n\n### Reporting within the utility\n\nManagers report up, across and down. Reporting up means telling the board, the director or the regulator what they need to know. Reporting across means aligning with other departments, such as finance, engineering and human resources. Reporting down means telling staff what has been decided and why, so that the decision is not a rumour.\n\nUse plain language. Define the terms you use, especially units, dates and the basis of any figure. A report that is technically correct but cannot be understood by the person reading it has not done its job.\n\n### Closing the loop\n\nA decision is not finished when it is approved. It is finished when the work is done, the result is checked against the objective, and the lessons are written down. Keep a short review date on every significant decision. At that date, ask whether the objective was met, what changed, and what you would do differently. Record the answer. This closes the loop and makes the next plan better.\n\n### Handover and continuity\n\nPlans outlive the people who wrote them. A manager may move on, a supervisor may be promoted and a board may change. A plan that depends on one person's memory will stall when that person leaves. A plan written for continuity transfers decisions, not only readings: it says what was decided, why, what remains open, who owns each open item and when the next review falls.\n\nA good handover note has five parts: the decision and its date, the evidence used, the options rejected and why, the commitments already made to the regulator, board or public, and the review date with the measure of success. Attach the decision log, the risk ranking and the cost assumptions. Do not hand over a summary without the evidence behind it, because the next person will need to test the reasoning when conditions change.\n\nContinuity also means keeping the public and the regulator informed through a change of manager. Tell them who is responsible now, and make sure notices and reports are not missed during the handover.\n\nCheck your state's or province's requirements for public notices, approvals and records retention before you assume that a plan can be carried forward unchanged.\n\n### Worked example: a cost range the board can use\n\nA fictional valve replacement is estimated at $200,000, with a range of plus or minus 10 percent. The low figure is 200,000 x 0.9 = **$180,000** and the high figure is 200,000 x 1.1 = **$220,000**. The board sees the range, the midpoint and the main assumption, which is the price of valve castings.\n\nAsk what would change the result. If castings rise by 20 percent, the valve share of the estimate moves, and the high end of the range may no longer hold. Show that effect in one line of the summary. A range that names its largest driver lets the board decide on the right question, rather than arguing about the single number.\n\n### Check your reasoning\n\nBefore you present a plan, check five things. Is the problem stated with evidence? Are the options ranked on a stated basis? Is it clear who decides and when? Is there a check on the result? And could the plan be explained to a regulator, a board and an operator in the same words? If not, simplify it until it can be.\n",
+      "evidence": "### Fictional scenario: Cedar Ridge's capital plan\n\nCedar Ridge is a fictional utility preparing a capital request for a valve replacement and a control panel upgrade. The board needs a one-page summary, a risk ranking and a clear statement of the cost range. The manager must record the decision, hand the plan over cleanly and set a review date.",
+      "assignment": "Produce a board summary for the Cedar Ridge capital request. Include the problem stated with evidence, a risk ranking of both items with the scoring basis, the cost range and its main assumptions, the recommended option, the consequence of not approving, a handover note for the next manager, and a review date with the measure of success.",
+      "rubric": [
+        "States the problem with evidence before the options.",
+        "Ranks items on a stated scoring basis and notes what the scale may miss.",
+        "Presents the cost range and the assumptions behind it.",
+        "Sets a review date, a measure of success and a handover note."
+      ],
+      "facilitatorGuide": "Ask learners to rank the two example items and then argue for the reverse order using a factor the scale does not show. Practise a one-page board summary and have a partner check that each figure has its basis stated. Have learners write a short handover note for a colleague who takes over the plan next month. Close by asking learners to write their own review date and measure of success for a decision they made recently.",
+      "activities": [
+        {
+          "kind": "lesson",
+          "minutes": 25,
+          "instruction": "Study the lesson and reproduce the worked example."
+        },
+        {
+          "kind": "quick_checks",
+          "minutes": 10,
+          "instruction": "Answer the six quick checks and read each explanation."
+        },
+        {
+          "kind": "final_assessment",
+          "minutes": 15,
+          "instruction": "Sit the final assessment for this course after the last module."
+        }
+      ],
+      "sourceIds": [
+        "epa-dist-tools",
+        "ccohs-incident"
+      ],
+      "checks": [
+        {
+          "id": "ceu-manager-essentials-planning-decisions-c1",
+          "objective": "planning-decisions",
+          "prompt": "Which step comes first when a manager writes a plan for a board?",
+          "choices": [
+            "Choose the option that costs the least money to deliver",
+            "Choose the option that costs the least money to deliver in year one",
+            "Ask the board to approve the plan before showing the data",
+            "State the problem, with the evidence that supports it"
+          ],
+          "correctIndex": 3,
+          "explanation": "A plan starts with the problem and the evidence for it; the options and costs follow. The distractors put the answer before the question, or ask for approval before the reasons are shown."
+        },
+        {
+          "id": "ceu-manager-essentials-planning-decisions-c2",
+          "objective": "planning-decisions",
+          "prompt": "A valve scores 4 for likelihood and 3 for severity. A pump station scores 2 for likelihood and 5 for severity. On likelihood times severity, which ranks higher?",
+          "choices": [
+            "The valve, at 12 against 10, though the scale is just a starting point",
+            "The pump station, since its severity of 5 is larger than the valve's",
+            "They tie, since both pairs of scores add up to exactly seven",
+            "The pump station, since severity usually counts for more than likelihood"
+          ],
+          "correctIndex": 0,
+          "explanation": "Multiplying gives 4 x 3 = 12 for the valve and 2 x 5 = 10 for the pump station, so the valve ranks higher. The distractors add the factors, which makes the two look equal, or invent a rule about which factor counts more."
+        },
+        {
+          "id": "ceu-manager-essentials-planning-decisions-c3",
+          "objective": "planning-decisions",
+          "prompt": "Which record best supports a decision made several months ago?",
+          "choices": [
+            "A verbal memory of what was said in the meeting that day",
+            "A dated decision log recording options, information and reason",
+            "A summary written after the decision was carried out and reviewed",
+            "A note recording that the decision seemed obvious at the time"
+          ],
+          "correctIndex": 1,
+          "explanation": "A dated decision log can be reviewed later, with the information the manager had. A memory, a later summary or a note that the decision seemed obvious does not show what was known when it was made."
+        },
+        {
+          "id": "ceu-manager-essentials-planning-decisions-c4",
+          "objective": "planning-decisions",
+          "prompt": "A project cost estimate could move by a large amount. What is the best way to present it to a board?",
+          "choices": [
+            "Give one figure and leave out the uncertainty to keep the message simple",
+            "Present the lowest estimate, so the board approves the project sooner",
+            "Show the range, its main assumptions and what would change it",
+            "Leave the estimate out until the work is finished and the cost is known"
+          ],
+          "correctIndex": 2,
+          "explanation": "A range and its assumptions give the board what it needs to decide, and avoid a later surprise. The distractors hide the uncertainty, choose the most favourable number or delay the information until it no longer helps."
+        },
+        {
+          "id": "ceu-manager-essentials-planning-decisions-c5",
+          "objective": "planning-decisions",
+          "prompt": "Which action best closes the loop on a significant decision?",
+          "choices": [
+            "Filing the approval and moving on to the next project on the list",
+            "Waiting for a complaint before looking at the decision again",
+            "Telling the crew the decision was correct without checking the result",
+            "Set a review date and record whether the objective was met"
+          ],
+          "correctIndex": 3,
+          "explanation": "A review date with a recorded answer turns the decision into learning. Filing and moving on, waiting for a complaint or asserting success without checking all leave the decision unchecked."
+        },
+        {
+          "id": "ceu-manager-essentials-planning-decisions-c6",
+          "objective": "planning-decisions",
+          "prompt": "A manager's report to the board is technically correct, but the board cannot follow the units or the basis of the figures. What is the main problem?",
+          "choices": [
+            "The report has failed, because readers could not follow the evidence",
+            "The report is too short to contain the technical detail the board needs",
+            "The report should have been written by the regulator rather than the manager",
+            "The board should have asked fewer questions about the figures"
+          ],
+          "correctIndex": 0,
+          "explanation": "A report that cannot be understood by its readers has not communicated its message, even if the arithmetic is correct. The distractors blame length, the author or the audience rather than the clarity of the evidence."
+        }
+      ]
+    }
+  ],
+  "finalAssessment": [
+    {
+      "id": "ceu-manager-essentials-responsibilities-compliance-f1",
+      "objective": "responsibilities-compliance",
+      "prompt": "A lab needs one analyst on site for 8 hours a day on 260 weekdays a year, with no leave. How many full-time equivalents does that need, at 2,080 hours per full-time equivalent?",
+      "choices": [
+        "1.00 full-time equivalent",
+        "0.75 full-time equivalents",
+        "1.25 full-time equivalents",
+        "2.00 full-time equivalents"
+      ],
+      "correctIndex": 0,
+      "explanation": "8 x 260 = 2,080 hours, which is exactly one full-time equivalent. The 0.75 choice uses 1,560 hours, and 1.25 and 2.00 add or double the count incorrectly."
+    },
+    {
+      "id": "ceu-manager-essentials-responsibilities-compliance-f2",
+      "objective": "responsibilities-compliance",
+      "prompt": "Which statement best describes the purpose of a chain-of-custody record?",
+      "choices": [
+        "It shows that the laboratory's result is correct and can be relied on",
+        "It proves what happened to a sample between collection and analysis",
+        "It replaces the need for a sampling plan with a fixed schedule",
+        "It records the price paid to the laboratory for each analysis"
+      ],
+      "correctIndex": 1,
+      "explanation": "Chain of custody proves handling, not correctness; a correct result still needs its handling trail. The distractors confuse custody with validation, plan replacement or cost."
+    },
+    {
+      "id": "ceu-manager-essentials-responsibilities-compliance-f3",
+      "objective": "responsibilities-compliance",
+      "prompt": "A manager is asked to change a permit condition because a design manual differs from it. What should happen first?",
+      "choices": [
+        "Change the operation now to match the design manual, which is newer",
+        "Ignore the permit, since design standards are the more current guidance",
+        "Check the permit, then raise any difference with the regulator",
+        "Ask the crew which rule they prefer to follow in daily work"
+      ],
+      "correctIndex": 2,
+      "explanation": "The permit governs operation, and a difference between documents is raised with the regulator, not settled by preference. The other choices put the design manual or the crew's preference above the permit."
+    },
+    {
+      "id": "ceu-manager-essentials-responsibilities-compliance-f4",
+      "objective": "responsibilities-compliance",
+      "prompt": "A daily record needs a correction. Which entry best keeps the record defensible?",
+      "choices": [
+        "A pencilled change on the original sheet, without a date or any name",
+        "A new value entered after deleting the original from the record",
+        "No entry, since the first value was probably close enough",
+        "A new attributed entry with the corrected value, date and reason"
+      ],
+      "correctIndex": 3,
+      "explanation": "A visible, attributed correction keeps the audit trail intact. The other choices make the change untraceable or delete the evidence that the correction happened."
+    },
+    {
+      "id": "ceu-manager-essentials-responsibilities-compliance-f5",
+      "objective": "responsibilities-compliance",
+      "prompt": "A manager proposes to contract out a lab function. Which cost comparison is most complete?",
+      "choices": [
+        "The full contract cost, including supervision, against in-house cost",
+        "The contract invoice compared with the current salary of the in-house analyst",
+        "The price per sample quoted by the contractor, without any supervision cost",
+        "The number of samples the contractor can process in a single working day"
+      ],
+      "correctIndex": 0,
+      "explanation": "A fair comparison includes the cost of managing the contractor and the full cost of in-house work. The other choices compare incomplete costs or measure capacity instead of cost."
+    },
+    {
+      "id": "ceu-manager-essentials-finance-budgets-f1",
+      "objective": "finance-budgets",
+      "prompt": "A utility has 1,000 residential accounts, each paying a $40 fixed charge a month. Its volume revenue for the year is $210,000. What is the total residential revenue for the year?",
+      "choices": [
+        "$570,000 for the year",
+        "$690,000",
+        "$480,000 for the year",
+        "$1,050,000"
+      ],
+      "correctIndex": 1,
+      "explanation": "Fixed revenue is 1,000 x $40 x 12 = $480,000. Adding the volume revenue of $210,000 gives $690,000. The $570,000 choice counts the fixed charge for about 10 months; $480,000 leaves out the volume revenue; $1,050,000 adds the volume figure twice."
+    },
+    {
+      "id": "ceu-manager-essentials-finance-budgets-f2",
+      "objective": "finance-budgets",
+      "prompt": "Which rate design is most likely to reduce water use among large users?",
+      "choices": [
+        "A flat price per gallon, because it is the simplest rate to read",
+        "A fixed charge alone, since customers then pay the same whatever they use",
+        "A block rate that raises the price of each higher band of use",
+        "A single impact fee paid once, which changes the price of growth"
+      ],
+      "correctIndex": 2,
+      "explanation": "Block rates raise the price of additional use in the higher bands, which encourages conservation. A flat price or a fixed-only charge gives no signal at the margin, and a one-time impact fee is not a use-based price."
+    },
+    {
+      "id": "ceu-manager-essentials-finance-budgets-f3",
+      "objective": "finance-budgets",
+      "prompt": "A capital request describes a pump station as old and at risk. What is the strongest improvement to the request?",
+      "choices": [
+        "Add more adjectives to explain how serious the risk feels in practice",
+        "Ask for approval first and describe the risk details in a later report",
+        "Reduce the requested amount so the project looks cheaper and easier to approve",
+        "State the failure history, risk ranking and consequence"
+      ],
+      "correctIndex": 3,
+      "explanation": "Specific evidence and considered options persuade a board. Adjectives and cost-cutting do not show the risk, and asking for approval before describing the risk puts the conclusion first."
+    },
+    {
+      "id": "ceu-manager-essentials-finance-budgets-f4",
+      "objective": "finance-budgets",
+      "prompt": "A project costs $240,000 and saves $36,000 a year. A second project costs $150,000 and saves $20,000 a year. Which has the shorter simple payback?",
+      "choices": [
+        "The first, at about 6.7 years, against about 7.5 years for the second",
+        "The second, at about 7.5 years, against roughly 6.7 years for the first",
+        "They are equal, since both are capital projects with a similar life",
+        "The first, at about 4.5 years, because its annual saving is the larger"
+      ],
+      "correctIndex": 0,
+      "explanation": "Payback is cost divided by annual saving: 240,000 / 36,000 = 6.7 years, and 150,000 / 20,000 = 7.5 years. The second choice reverses the division, the fourth divides the wrong values, and the third ignores the numbers."
+    },
+    {
+      "id": "ceu-manager-essentials-finance-budgets-f5",
+      "objective": "finance-budgets",
+      "prompt": "A chemical costs $0.90 per pound, and the plant uses 4,800 pounds a month. What annual chemical cost should be forecast?",
+      "choices": [
+        "$4,320, the monthly figure rather than the annual",
+        "$51,840",
+        "$25,920, using six months instead of twelve",
+        "$43,200, from a rounded price of $0.75"
+      ],
+      "correctIndex": 1,
+      "explanation": "The monthly cost is 4,800 x $0.90 = $4,320, and the annual cost is 12 x $4,320 = $51,840. The $4,320 choice gives the monthly figure, and the others divide by six or misplace the decimal."
+    },
+    {
+      "id": "ceu-manager-essentials-people-utilisation-f1",
+      "objective": "people-utilisation",
+      "prompt": "Which management idea is associated with changes in behaviour when people feel observed or valued?",
+      "choices": [
+        "Scientific management",
+        "Laissez-faire management",
+        "The Hawthorne effect",
+        "The process approach, which organises functions"
+      ],
+      "correctIndex": 2,
+      "explanation": "The Hawthorne effect names changes in behaviour linked to attention and observation. Scientific management is about task design, laissez-faire about direction and the process approach about organising functions."
+    },
+    {
+      "id": "ceu-manager-essentials-people-utilisation-f2",
+      "objective": "people-utilisation",
+      "prompt": "Which style is most appropriate for an experienced, self-directed team that understands the standards well?",
+      "choices": [
+        "Authoritarian, with close instructions for each task that is set",
+        "Democratic, with a vote on each routine task before it is started",
+        "Authoritarian for routine tasks, and laissez-faire just in emergencies",
+        "Laissez-faire, with clear standards and little day-to-day direction"
+      ],
+      "correctIndex": 3,
+      "explanation": "Laissez-faire can work with experienced people who know the standards. The other choices over-direct experienced staff or apply a style to routine work or emergencies where it does not fit."
+    },
+    {
+      "id": "ceu-manager-essentials-people-utilisation-f3",
+      "objective": "people-utilisation",
+      "prompt": "A manager wants to delegate an inspection and keep responsibility for the result. Which action is correct?",
+      "choices": [
+        "State the outcome, the standard, the deadline and how progress will be checked",
+        "Give the task with no further detail, so the person decides the standards and steps used",
+        "Tell the inspector that the result will be checked just if something goes wrong",
+        "Hand over the task and the accountability for its result together"
+      ],
+      "correctIndex": 0,
+      "explanation": "Delegation needs a stated outcome, standard, deadline and check, and the manager keeps accountability. The other choices leave out the standard, rely on failure to trigger a check, or transfer accountability."
+    },
+    {
+      "id": "ceu-manager-essentials-people-utilisation-f4",
+      "objective": "people-utilisation",
+      "prompt": "A utility had 25 staff, and 5 left in the year. What is the turnover for the year?",
+      "choices": [
+        "25 percent, using headcount as the numerator",
+        "20 percent",
+        "5 percent, using the new hires as the base",
+        "10 percent, from dividing by the number of posts"
+      ],
+      "correctIndex": 1,
+      "explanation": "Turnover is 5 / 25 = 20 percent. The 25 percent choice uses headcount as the numerator, and the 5 and 10 percent choices are fractions of the wrong base."
+    },
+    {
+      "id": "ceu-manager-essentials-people-utilisation-f5",
+      "objective": "people-utilisation",
+      "prompt": "A supervisor gives an operator feedback about an incident a month later, mentioning it in a review. What is the main problem?",
+      "choices": [
+        "The feedback is too gentle to change anything in the operator's work",
+        "The feedback belonged in the personnel file rather than in a conversation",
+        "The feedback is delayed and punitive, so it is correction, not coaching",
+        "The feedback is correct, so there is no problem with how it was given"
+      ],
+      "correctIndex": 2,
+      "explanation": "Coaching is timely, specific and forward-looking. Delayed feedback in a review is a punishment that is unlikely to change behaviour. The other choices misjudge tone, location or whether the feedback has any effect."
+    },
+    {
+      "id": "ceu-manager-essentials-planning-decisions-f1",
+      "objective": "planning-decisions",
+      "prompt": "Which record best shows what a manager knew when a decision was made?",
+      "choices": [
+        "A memory of the meeting, written up a year after it was held",
+        "A summary of the outcome that leaves out the options considered",
+        "A copy of the final budget that was approved for the project",
+        "A dated decision log with options and information"
+      ],
+      "correctIndex": 3,
+      "explanation": "A decision log dated at the time shows what was known. Later memories, outcome summaries and final budgets do not show the reasoning available when the decision was made."
+    },
+    {
+      "id": "ceu-manager-essentials-planning-decisions-f2",
+      "objective": "planning-decisions",
+      "prompt": "A project has likelihood 3 and severity 4 on a scale of 1 to 5. What is its score, and what should the manager still ask?",
+      "choices": [
+        "12, and whether the scale misses a consequence",
+        "7, and whether the total is the right way to combine the two factors",
+        "12, and whether the project can be ignored for the current budget year",
+        "3, since likelihood usually comes first when ranking a project"
+      ],
+      "correctIndex": 0,
+      "explanation": "The score is 3 x 4 = 12, and the scale is a guide that may miss consequences such as service to a sensitive customer. Adding the factors gives 7, which is the wrong combination, and the other choices invent rules about the score."
+    },
+    {
+      "id": "ceu-manager-essentials-planning-decisions-f3",
+      "objective": "planning-decisions",
+      "prompt": "A board is shown a cost range for a project, with its main assumptions and the effect of the largest uncertainty. What does this allow the board to do?",
+      "choices": [
+        "Approve the lowest number shown, without asking questions about it",
+        "Decide with the uncertainty visible, and question key assumptions",
+        "Approve the lowest number shown and ask no questions about its basis",
+        "Reject the project, because it carries any risk"
+      ],
+      "correctIndex": 1,
+      "explanation": "A visible range and its assumptions let the board decide with its eyes open. The distractors hide the risk, delay the decision indefinitely or reject the project for any uncertainty, which the information does not require."
+    },
+    {
+      "id": "ceu-manager-essentials-planning-decisions-f4",
+      "objective": "planning-decisions",
+      "prompt": "Which action best completes a significant decision?",
+      "choices": [
+        "Record the decision and move on to the next item on the agenda",
+        "Tell the crew the decision was right without any check on the result",
+        "Record whether the objective was met and what to change",
+        "Wait for the regulator to raise the question before looking at it again"
+      ],
+      "correctIndex": 2,
+      "explanation": "A review date and a recorded answer closes the loop and improves the next plan. The other choices stop at approval, assert success without evidence or wait for an external prompt."
+    },
+    {
+      "id": "ceu-manager-essentials-planning-decisions-f5",
+      "objective": "planning-decisions",
+      "prompt": "A manager's summary to the board uses terms such as 'the index' and 'the basis' without defining them. What should the manager do?",
+      "choices": [
+        "Add more terms so that the report sounds more expert and precise",
+        "Remove the figures from the summary and describe the trends in words",
+        "Send the full technical file in place of the one-page summary",
+        "Define each term and the basis of each figure in plain language"
+      ],
+      "correctIndex": 3,
+      "explanation": "Defining terms and the basis of figures makes the report understandable to its readers. More jargon, no figures or a full technical file do not solve the problem of clarity."
+    }
+  ],
+  "alternateFinalAssessment": [
+    {
+      "id": "ceu-manager-essentials-responsibilities-compliance-a1",
+      "objective": "responsibilities-compliance",
+      "prompt": "A plant has 2 operators on site 24 hours a day for 365 days, using 12-hour shifts. Using 2,080 hours per full-time equivalent, how many full-time equivalents does the coverage need?",
+      "choices": [
+        "About 2.10 full-time equivalents, counting one operator's shifts alone",
+        "About 8.42 full-time equivalents, double counting the shifts",
+        "About 4.21 full-time equivalents",
+        "About 1.00 full-time equivalent"
+      ],
+      "correctIndex": 2,
+      "explanation": "Two operators each day for 365 days is 730 twelve-hour shifts, or 8,760 hours. Divided by 2,080, that is 4.21 full-time equivalents. The 2.10 choice counts one operator's shifts, 8.42 double counts, and 1.00 uses one shift a day."
+    },
+    {
+      "id": "ceu-manager-essentials-responsibilities-compliance-a2",
+      "objective": "responsibilities-compliance",
+      "prompt": "Which statement about a sampling record is most accurate?",
+      "choices": [
+        "A sampling record is needed just after a violation has occurred on site",
+        "A sampling record is the same document as the laboratory's invoice",
+        "A sampling record can be kept in memory provided the result is correct",
+        "A sampling record keeps identity, handling and results together"
+      ],
+      "correctIndex": 3,
+      "explanation": "A sampling record keeps the chain of identity, handling and results together, which is what a reviewer needs. The distractors limit the record to violations, confuse it with an invoice or rely on memory."
+    },
+    {
+      "id": "ceu-manager-essentials-responsibilities-compliance-a3",
+      "objective": "responsibilities-compliance",
+      "prompt": "A regulator asks why a permit condition was not followed. Which response is most appropriate?",
+      "choices": [
+        "Give the records, reason, corrective action and date fixed",
+        "Explain that the design manual allowed the practice in question",
+        "Ask the regulator to accept an explanation without supporting records",
+        "Describe what the crew believed the permit meant at the time"
+      ],
+      "correctIndex": 0,
+      "explanation": "A regulator needs records, reasons and corrective actions. A design manual cannot override a permit, and explanations without evidence or based on what the crew believed do not answer the question."
+    },
+    {
+      "id": "ceu-manager-essentials-responsibilities-compliance-a4",
+      "objective": "responsibilities-compliance",
+      "prompt": "Which correction method best preserves a defensible record?",
+      "choices": [
+        "Overwrite the wrong value and keep the same entry number, for clarity",
+        "Enter a new attributed correction, keeping the original visible",
+        "Remove the record and rewrite it from memory a few days later",
+        "Correct the value and sign it with the supervisor's name alone"
+      ],
+      "correctIndex": 1,
+      "explanation": "A new attributed entry keeps the history visible. Overwriting, rewriting from memory or signing without attribution all weaken the record."
+    },
+    {
+      "id": "ceu-manager-essentials-responsibilities-compliance-a5",
+      "objective": "responsibilities-compliance",
+      "prompt": "A utility is deciding whether to build its own laboratory or contract the work. Which information matters most for the comparison?",
+      "choices": [
+        "The hourly rate charged by the contract laboratory for each sample",
+        "The number of samples the laboratory can process in one hour",
+        "The full cost of each option, including supervision and records",
+        "The brand name of the equipment that each laboratory uses"
+      ],
+      "correctIndex": 2,
+      "explanation": "A fair comparison uses full cost, including quality control and records. The distractors use an incomplete cost, a capacity figure or an irrelevant detail."
+    },
+    {
+      "id": "ceu-manager-essentials-finance-budgets-a1",
+      "objective": "finance-budgets",
+      "prompt": "A utility's fixed charge is $25 a month for 2,000 accounts, and its volume revenue is $300,000 a year. What is the total annual residential revenue?",
+      "choices": [
+        "$600,000 for the year, leaving out volume revenue",
+        "$1,200,000 for the year",
+        "$300,000 for the year, the volume figure alone",
+        "$900,000 for the year"
+      ],
+      "correctIndex": 3,
+      "explanation": "Fixed revenue is 2,000 x $25 x 12 = $600,000. Adding $300,000 volume revenue gives $900,000. The $600,000 choice leaves out volume revenue, $1,200,000 uses $50 a month, and $300,000 is the volume figure alone."
+    },
+    {
+      "id": "ceu-manager-essentials-finance-budgets-a2",
+      "objective": "finance-budgets",
+      "prompt": "A utility wants to recover costs that stay the same whether customers use more or less water. Which rate element matches this aim?",
+      "choices": [
+        "A fixed charge, which recovers costs that do not change with use",
+        "A volume charge, which is paid in proportion to the water used",
+        "A block rate, which rises as the customer's use moves into higher bands",
+        "An impact fee, which is charged on new development connecting to the system"
+      ],
+      "correctIndex": 0,
+      "explanation": "A fixed charge recovers costs that do not change with use. A volume charge and a block rate follow use, and an impact fee relates to new development rather than existing service."
+    },
+    {
+      "id": "ceu-manager-essentials-finance-budgets-a3",
+      "objective": "finance-budgets",
+      "prompt": "A capital request is most persuasive when it explains which reason applies and what happens if it is not approved. Which is the best example of the second part?",
+      "choices": [
+        "The project will be approved because it is important to the community",
+        "Without it, interruptions and repair costs are likely to rise",
+        "Other utilities in the region have already completed similar projects",
+        "The consulting engineer recommends the project to the board members"
+      ],
+      "correctIndex": 1,
+      "explanation": "A consequence statement says what happens if the project is not built. The other choices assert importance, cite other utilities or rely on authority rather than evidence about the consequence."
+    },
+    {
+      "id": "ceu-manager-essentials-finance-budgets-a4",
+      "objective": "finance-budgets",
+      "prompt": "Two projects are compared. Project X costs $120,000 and saves $15,000 a year. Project Y costs $200,000 and saves $25,000 a year. What is the simple payback of each?",
+      "choices": [
+        "X: 8.0 years; Y: 7.0 years, so Y pays back sooner",
+        "X: 7.0 years; Y: 8.0 years, so X pays back sooner",
+        "X: 8.0 years; Y: 8.0 years",
+        "X: 6.0 years; Y: 9.0 years, so X pays back sooner"
+      ],
+      "correctIndex": 2,
+      "explanation": "Payback is cost divided by saving: 120,000 / 15,000 = 8.0 years, and 200,000 / 25,000 = 8.0 years. The other choices make division or subtraction errors, so the two projects tie on this measure."
+    },
+    {
+      "id": "ceu-manager-essentials-finance-budgets-a5",
+      "objective": "finance-budgets",
+      "prompt": "A chemical costs $1.25 per pound, and the plant uses 3,200 pounds a month. What is the annual chemical cost to forecast?",
+      "choices": [
+        "$4,000, the monthly figure rather than the annual",
+        "$12,800, using a lower price than the invoice",
+        "$51,200, from using the wrong price per pound",
+        "$48,000"
+      ],
+      "correctIndex": 3,
+      "explanation": "The monthly cost is 3,200 x $1.25 = $4,000, and the annual cost is 12 x $4,000 = $48,000. The $4,000 choice gives the monthly figure, and $51,200 comes from using the wrong price."
+    },
+    {
+      "id": "ceu-manager-essentials-people-utilisation-a1",
+      "objective": "people-utilisation",
+      "prompt": "Which theorist's work is most closely associated with studying how tasks are done to find a better method?",
+      "choices": [
+        "Frederick Taylor, who studied task methods",
+        "Abraham Maslow, who ranked human needs",
+        "Henri Fayol, who described management functions",
+        "Elton Mayo, who led the attention studies at the works"
+      ],
+      "correctIndex": 0,
+      "explanation": "Taylor is associated with scientific management and task study. Maslow ranks needs, Fayol describes management functions, and Mayo is linked to the Hawthorne studies on attention and behaviour."
+    },
+    {
+      "id": "ceu-manager-essentials-people-utilisation-a2",
+      "objective": "people-utilisation",
+      "prompt": "Which style is most appropriate when a decision is urgent and the manager needs to act with clear authority?",
+      "choices": [
+        "Laissez-faire, giving little direction to the team",
+        "Authoritarian, giving clear direction at once",
+        "Democratic, with a vote on each decision first",
+        "Consensus, which waits until the whole team agrees"
+      ],
+      "correctIndex": 1,
+      "explanation": "An authoritarian style is appropriate when a decision is urgent and clear direction is needed. Laissez-faire gives no direction, and democratic and consensus approaches are slow in an urgent case."
+    },
+    {
+      "id": "ceu-manager-essentials-people-utilisation-a3",
+      "objective": "people-utilisation",
+      "prompt": "A manager wants to delegate an inspection. Which action keeps the manager accountable for the result?",
+      "choices": [
+        "Hand the inspector the task and let the inspector set the standard and steps",
+        "Tell the inspector to decide the standard that will be used",
+        "Agree the outcome, standard, deadline and how it will be checked",
+        "Hand over the task with no follow-up after it has been assigned"
+      ],
+      "correctIndex": 2,
+      "explanation": "Keeping accountability means agreeing the standard and the check. The other choices leave the standard to the delegate, skip follow-up or assume quality without evidence."
+    },
+    {
+      "id": "ceu-manager-essentials-people-utilisation-a4",
+      "objective": "people-utilisation",
+      "prompt": "A utility had 40 staff, and 6 left during the year. What is the turnover rate?",
+      "choices": [
+        "6 percent, using the staff who stayed as the base",
+        "17 percent, dividing by the staff who stayed",
+        "23 percent, from a wrong subtraction of staff",
+        "15 percent"
+      ],
+      "correctIndex": 3,
+      "explanation": "Turnover is 6 / 40 = 15 percent. The 6 percent choice is a numerator error, 17 percent divides by the staff who stayed, and 23 percent is a wrong subtraction."
+    },
+    {
+      "id": "ceu-manager-essentials-people-utilisation-a5",
+      "objective": "people-utilisation",
+      "prompt": "Which description best matches coaching?",
+      "choices": [
+        "Naming one improvement, agreeing a check, and following up soon",
+        "Telling the person what the penalty will be for the problem they caused",
+        "Giving the same written instruction again without any discussion of it",
+        "Waiting for the annual review, then mentioning the problem to the person"
+      ],
+      "correctIndex": 0,
+      "explanation": "Coaching is specific, timely and agreed. The penalty, repetition and deferred mention are all forms of correction or delay rather than coaching."
+    },
+    {
+      "id": "ceu-manager-essentials-planning-decisions-a1",
+      "objective": "planning-decisions",
+      "prompt": "A decision is taken in March. Which record best shows the reasons for the decision if it is questioned in September?",
+      "choices": [
+        "A summary written in September, after the outcome of the decision was known",
+        "A decision log dated in March, with options and information used",
+        "A verbal account given by the manager to the board in September",
+        "The final budget figure for the project, shown on its own"
+      ],
+      "correctIndex": 1,
+      "explanation": "A log written at the time shows what was known and why the choice was made. A September summary, a verbal account or the final figure may be shaped by hindsight."
+    },
+    {
+      "id": "ceu-manager-essentials-planning-decisions-a2",
+      "objective": "planning-decisions",
+      "prompt": "A valve scores 5 for likelihood and 2 for severity. Another item scores 3 for likelihood and 4 for severity. Which is higher on likelihood times severity?",
+      "choices": [
+        "The valve, at 10 against the item's 12, so the valve ranks higher",
+        "They tie, at 7 each",
+        "The item, at 12 against the valve's 10",
+        "The valve, at 7 against the item's 12"
+      ],
+      "correctIndex": 2,
+      "explanation": "The valve scores 5 x 2 = 10 and the item scores 3 x 4 = 12, so the item ranks higher. The valve choice reverses the scores, the tie adds the factors, and the last choice mixes the two numbers."
+    },
+    {
+      "id": "ceu-manager-essentials-planning-decisions-a3",
+      "objective": "planning-decisions",
+      "prompt": "A board is asked to approve a project with a cost range. What does the board need in order to decide well?",
+      "choices": [
+        "Just the lowest figure, so that the project can be approved quickly",
+        "A general statement that costs are uncertain, with no figures given",
+        "The contractor's name and the expected completion date of the work",
+        "The range, the main assumptions, and what would change the result"
+      ],
+      "correctIndex": 3,
+      "explanation": "The range, assumptions and sensitivity let the board decide with its eyes open. A single low figure hides uncertainty, and a general statement gives no basis for a decision."
+    },
+    {
+      "id": "ceu-manager-essentials-planning-decisions-a4",
+      "objective": "planning-decisions",
+      "prompt": "Which action best closes the loop on a decision?",
+      "choices": [
+        "Setting a review date and recording whether the objective was met",
+        "Filing the approval and moving straight on to the next project",
+        "Telling the staff that the decision was right, without checking it",
+        "Waiting for the next complaint before looking at the decision again"
+      ],
+      "correctIndex": 0,
+      "explanation": "A review date and recorded result make the decision a source of learning. Filing, asserting success or waiting for a complaint leave the decision unchecked."
+    },
+    {
+      "id": "ceu-manager-essentials-planning-decisions-a5",
+      "objective": "planning-decisions",
+      "prompt": "A report to the board uses terms that most readers do not know. What should the manager do?",
+      "choices": [
+        "Add more terms so that the report sounds more expert and precise",
+        "Define the terms and the basis of each figure",
+        "Remove the figures and leave just the written conclusions",
+        "Send the board the technical file in place of the summary report"
+      ],
+      "correctIndex": 1,
+      "explanation": "Defining terms and the basis of figures makes the report usable. More jargon, no figures or a technical file alone do not solve the problem of clarity."
+    }
+  ]
+}
