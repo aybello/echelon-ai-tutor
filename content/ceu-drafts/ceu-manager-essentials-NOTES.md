@@ -10,7 +10,7 @@ Status: draft, files only. Not registered in any catalogue, not live, not review
 - Activities total 200 minutes, matching plannedMinutes. The last activity of the last module names the final assessment.
 - Lessons: 1,025 to 1,359 words, with 8 or 9 level-three headings each. Module 4 is near the low end of the range.
 - Diagrams: three original inline SVG figures (modules 1, 2 and 4). The draft rule asks for at least five; this is a shortfall.
-- Cover photo: one illustrative fictional photo, to be added once generated.
+- Cover photo: one illustrative fictional photo, copied to client/public/ceu-covers/ceu-manager-essentials-cover.jpg and placed at the top of module 1.
 
 ## Sources (all from the supervisor draft, already verified, accessed 2026-11-17)
 - epa-dist-tools, epa-operator-cert, ccohs-responsibilities, ccohs-incident.
@@ -36,5 +36,4 @@ Status: draft, files only. Not registered in any catalogue, not live, not review
 ## Open items before any review or registration
 - Run the three-model planted-error review and an Opus fix pass (review harness: scratchpad/review_course_v2.py).
 - Add at least two more original SVG figures (the rule asks for five).
-- Add the cover photo and copy it into client/public/ceu-covers/.
 - Owner review of the content, then a separate PR to register it.
