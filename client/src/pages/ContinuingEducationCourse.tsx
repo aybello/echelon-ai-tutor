@@ -568,12 +568,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
               <h1>{activeSlide.title}</h1>
               <LessonMarkdown text={activeSlide.body} />
               {course.key === "ceu-basic-safety" && activeSlide.kind === "overview" && (
-                <img className="ceu-safety-illustration" src={[
-                  "https://files.manuscdn.com/user_upload_by_module/session_file/310519663446228701/ztbBRbAujnhsMVVe.jpg",
-                  "https://files.manuscdn.com/user_upload_by_module/session_file/310519663446228701/UtfktYaLPENHeLZO.jpg",
-                  "https://files.manuscdn.com/user_upload_by_module/session_file/310519663446228701/dsfLwhhYyGVbbdoj.jpg",
-                  "https://files.manuscdn.com/user_upload_by_module/session_file/310519663446228701/WgPGTbndhUZWyZCE.jpg",
-                ][activeModuleIndex]} alt={`${activeModule.title}: illustrative training scene, not a work procedure`} />
+                <img className="ceu-safety-illustration" src="/ceu-covers/ceu-basic-safety-cover.jpg" alt={`${activeModule.title}: illustrative training scene, not a work procedure`} />
               )}
               {activeSlide.kind === "quick_check" && activeModule.checks.map(check => (
                 <QuickCheck key={`${activeModule.id}-${check.id}`} question={check}

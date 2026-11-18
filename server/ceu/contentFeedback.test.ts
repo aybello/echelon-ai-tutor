@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { gunzipSync } from "node:zlib";
 import type { CeuCurriculum } from "../../shared/ceuLearning";
@@ -78,8 +78,19 @@ describe("18 November CEU content feedback", () => {
         const after = ceuModuleSlides(m);
         const layout = (slides: typeof before) => slides.map(s => ({ id: s.id, kind: s.kind, title: s.title }));
         expect(layout(after)).toEqual(layout(before));
-        // IDs alone are numeric: also pin the image to its original slide.
-        const briefing = (slides: typeof before) => slides.findIndex(s => s.body.includes("ceu-supervisor-essentials-shift-briefing_"));
+        // PR #264 changes only image URLs; preserve their exact slide and order.
+        const images = (body: string) => [...body.matchAll(/<img src="([^"]+)"/g)].map(match => match[1]);
+        const approvedImagePath = (src: string) => src.replace(/^\/manus-storage\/(ceu-[a-z-]+)_[a-f0-9]+\.jpg$/, "/ceu-covers/$1.jpg");
+        for (const [index, slide] of after.entries()) {
+          expect(images(slide.body)).toEqual(images(before[index].body).map(approvedImagePath));
+          for (const src of images(slide.body)) {
+            expect(src).toMatch(/^\/ceu-covers\/ceu-[a-z-]+\.jpg$/);
+            expect(existsSync(new URL(`../../client/public${src}`, import.meta.url))).toBe(true);
+          }
+        }
+        // IDs alone are numeric: explicitly pin the briefing image as well.
+        const briefing = (slides: typeof before) => slides.findIndex(s => /ceu-supervisor-essentials-shift-briefing(?:_[a-f0-9]+)?\.jpg/.test(s.body));
+        if (m.id === "management-styles") expect(briefing(before)).toBeGreaterThanOrEqual(0);
         expect(briefing(after)).toBe(briefing(before));
       }
     }
