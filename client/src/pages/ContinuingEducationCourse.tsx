@@ -87,13 +87,15 @@ function ChoiceList({
   );
 }
 
-function QuickCheck({ question, savedChoice, disabled, signedIn, onCheck }: {
+function QuickCheck({ question, savedChoice, previousAnsweredAt, disabled, signedIn, onCheck }: {
   question: CeuQuestion; savedChoice?: number; disabled: boolean; signedIn: boolean;
+  previousAnsweredAt?: string;
   onCheck: (choice: number) => Promise<string>;
 }) {
   const [choice, setChoice] = useState<number | undefined>(savedChoice);
   const [feedback, setFeedback] = useState("");
   return <section className="ceu-quick-check"><p>Optional and ungraded</p><h2>{question.prompt}</h2>
+    {previousAnsweredAt && <p>You answered an earlier version of this check on {previousAnsweredAt}. That response remains in your history, but its selection and grading do not apply to this revised check. You may answer the revised check separately; module completion is unchanged.</p>}
     <ChoiceList question={question} value={choice} disabled={disabled} onChange={value => { setChoice(value); setFeedback(""); }} />
     {signedIn ? <button type="button" className="ceu-secondary-button" disabled={disabled || choice === undefined}
       onClick={() => { if (choice !== undefined) onCheck(choice).then(setFeedback).catch(() => setFeedback("Not saved. Please retry.")); }}>Check answer</button>
@@ -576,6 +578,7 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
               {activeSlide.kind === "quick_check" && activeModule.checks.map(check => (
                 <QuickCheck key={`${activeModule.id}-${check.id}`} question={check}
                   savedChoice={activeModuleRecord?.checks[check.id]?.selectedIndex}
+                  previousAnsweredAt={check.previousQuestionId ? activeModuleRecord?.checks[check.previousQuestionId]?.answeredAt : undefined}
                   disabled={pending || !!record?.completion} signedIn={!!record}
                   onCheck={choice => save.mutateAsync({ courseKey, revision: record!.revision,
                     action: { type: "check", moduleId: activeModule.id, questionId: check.id, choice }

@@ -1,6 +1,8 @@
 /** Public contracts only. Answer keys and marking material live in server/ceu. */
 export interface CeuQuestion {
   id: string;
+  /** Display-only history link; never reuse an old selection or grade for this question. */
+  previousQuestionId?: string;
   objective: string;
   prompt: string;
   choices: string[];

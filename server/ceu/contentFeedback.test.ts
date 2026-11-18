@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
+import { execFileSync } from "node:child_process";
+import type { CeuCurriculum } from "../../shared/ceuLearning";
 import { ceuCourse, publicCeuCourse } from "./catalogue";
 import { ceuExamQuestions, issueCeuExam } from "./assessment";
 import { newCeuRecord, transitionCeu } from "./learningState";
@@ -19,6 +21,9 @@ describe("18 November CEU content feedback", () => {
     expect(q.prompt).toContain("Electrode position and empty-pipe behaviour are not known");
     expect(m.lesson).toContain("dry electrodes above the water, making the flow reading unreliable or invalid");
     expect(m.lesson).not.toContain("part-full pipe usually makes it over-read");
+    expect(m.assignment).toContain("reading is unreliable");
+    expect(m.rubric.join(" ")).toContain("unreliable or invalid");
+    expect(`${m.assignment} ${m.rubric.join(" ")}`).not.toMatch(/makes it over-read|why the magnetic meter reads high/);
     expect(m.evidence).toContain("pressure-sensing point, which is **1.0 ft above the wet well floor**");
     expect(m.evidence).not.toContain("transmitter on the wet well floor");
     expect(m.caseSolution).toContain("11.626 ft");
@@ -53,6 +58,73 @@ describe("18 November CEU content feedback", () => {
     const m = course("supervisor-essentials").modules.find(m => m.id === "management-styles")!;
     expect(m.lesson).toContain("simplified teaching models");
     expect(m.lesson).toContain("not rules linking a management style to an organisation chart");
+  });
+
+  it("preserves slide IDs, order and teaching boundaries against the actual pre-patch commit", () => {
+    for (const name of names) {
+      const baseline = JSON.parse(execFileSync("git", ["show", `4c4c105de457dbc5b7a775c64ac8240f613158a5:server/ceu/courses/ceu-${name}.json`], { encoding: "utf8" })) as CeuCurriculum;
+      const current = course(name);
+      expect(current.modules.map(m => m.id)).toEqual(baseline.modules.map(m => m.id));
+      for (const [i, m] of current.modules.entries()) {
+        const before = ceuModuleSlides(baseline.modules[i]);
+        const after = ceuModuleSlides(m);
+        const layout = (slides: typeof before) => slides.map(s => ({ id: s.id, kind: s.kind, title: s.title }));
+        expect(layout(after)).toEqual(layout(before));
+        // IDs alone are numeric: also pin the image to its original slide.
+        const briefing = (slides: typeof before) => slides.findIndex(s => s.body.includes("ceu-supervisor-essentials-shift-briefing_"));
+        expect(briefing(after)).toBe(briefing(before));
+      }
+    }
+  });
+
+  it("associates a saved old magnetic check with the revision without reusing its selection or grade", () => {
+    const c = course("basic-instrumentation");
+    const m = c.modules.find(m => m.id === "pressure-level-flow")!;
+    const q = publicCeuCourse(c).modules.find(m => m.id === "pressure-level-flow")!.checks.find(q => q.id.endsWith("c4-r2"))!;
+    expect(q.previousQuestionId).toBe("ceu-basic-instrumentation-pressure-level-flow-c4");
+    const record = newCeuRecord(c, "Fixture learner", "");
+    const historical = { selectedIndex: 3, correct: true, answeredAt: "2026-11-17T12:00:00.000Z" };
+    record.modules[m.id].checks[q.previousQuestionId!] = historical;
+    record.modules[m.id].completedAt = historical.answeredAt;
+    expect(record.modules[m.id].checks[q.id]).toBeUndefined();
+    const resumed = transitionCeu(c, record, { type: "resume", moduleId: m.id }, "fixture");
+    expect(resumed.modules).toEqual(record.modules);
+    const revised = transitionCeu(c, resumed, { type: "check", moduleId: m.id, questionId: q.id, choice: 0 }, "fixture");
+    expect(revised.modules[m.id].checks[q.previousQuestionId!]).toEqual(historical);
+    expect(revised.modules[m.id].checks[q.id]).toMatchObject({ selectedIndex: 0, correct: false });
+    expect(revised.modules[m.id].completedAt).toBe(historical.answeredAt);
+    expect(record.modules[m.id].checks[q.id]).toBeUndefined();
+    const ui = readFileSync(new URL("../../client/src/pages/ContinuingEducationCourse.tsx", import.meta.url), "utf8");
+    expect(ui).toContain("activeModuleRecord?.checks[check.previousQuestionId]?.answeredAt");
+    expect(ui).toContain("its selection and grading do not apply to this revised check");
+    expect(ui).toContain("savedChoice={activeModuleRecord?.checks[check.id]?.selectedIndex}");
+  });
+
+  it("uses distinct public distribution practice values rather than current or resumable exam answers", () => {
+    const c = course("water-distribution-overview");
+    const m = c.modules.find(m => m.id === "operating-system")!;
+    const payload = JSON.stringify(publicCeuCourse(c));
+    const gallons = Math.round(3.1416 * 28 ** 2 / 4 * 3.6 * 7.48).toLocaleString("en-US");
+    const velocity = ((840 / 449) / (3.1416 * (14 / 12) ** 2 / 4)).toFixed(2);
+    expect(m.evidence).toContain("28 ft inside-diameter");
+    expect(m.evidence).toContain("3.6 ft");
+    expect(m.evidence).toContain("14 in inside-diameter main at 840 gpm");
+    expect(m.assignment).toContain("14 in inside-diameter main");
+    for (const text of [m.caseSolution!, m.facilitatorGuide, m.rubric.join(" ")]) {
+      expect(text).toContain(`${gallons} gal`);
+      expect(text).toContain(`${velocity} ft/s`);
+    }
+    const archived = legacy["ceu-water-distribution-overview"];
+    for (const q of [...archived.primary, ...archived.alternate, ...c.finalAssessment, ...c.alternateFinalAssessment!].filter(q => /operating-system-f[12](?:-r2)?$/.test(q.id))) {
+      expect(payload).not.toContain(q.choices[q.correctIndex]);
+      expect(payload).not.toContain(q.prompt);
+    }
+    for (const name of names.slice(1)) {
+      const baseline = JSON.parse(execFileSync("git", ["show", `4c4c105de457dbc5b7a775c64ac8240f613158a5:server/ceu/courses/ceu-${name}.json`], { encoding: "utf8" })) as CeuCurriculum;
+      const archive = legacy[baseline.key as keyof typeof legacy];
+      expect(archive.primary).toEqual(baseline.finalAssessment);
+      expect(archive.alternate).toEqual(baseline.alternateFinalAssessment);
+    }
   });
 
   it("only publishes dedicated learner feedback, not privileged guides or final exam material", () => {
