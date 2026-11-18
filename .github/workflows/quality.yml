@@ -369,6 +369,7 @@ jobs:
       - name: Browser-test the approved workspaces and offline review
         run: |
           git fetch --no-tags --depth=1 origin 7f6045098c044aea234b3788dd2df8c73f591172
+          node --require ./scripts/test-safety.cjs --test prototypes/ui-ux-preview/prepare-media.test.mjs
           node prototypes/ui-ux-preview/prepare-media.mjs /tmp/echelon-preview-media
           node prototypes/ui-ux-preview/build-single-file.mjs /tmp/echelon-ui-preview.html
           node --require ./scripts/test-safety.cjs ./node_modules/@playwright/test/cli.js test --config prototypes/ui-ux-preview/playwright.config.ts

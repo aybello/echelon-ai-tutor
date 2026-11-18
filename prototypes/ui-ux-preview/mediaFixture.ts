@@ -12,7 +12,8 @@ export const test = base.extend<{ managedMedia: void }>({
       await page.route("**/manus-storage/**", async route => {
         const original = files.get(new URL(route.request().url()).pathname);
         if (!original) throw new Error("Unregistered preview media path");
-        await route.fulfill({ status: 200, contentType: "image/jpeg", body: await readFile(original) });
+        const contentType = original.endsWith(".svg") ? "image/svg+xml" : original.endsWith(".png") ? "image/png" : "image/jpeg";
+        await route.fulfill({ status: 200, contentType, body: await readFile(original) });
       });
     }
     await use();
