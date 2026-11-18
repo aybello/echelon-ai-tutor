@@ -11,9 +11,10 @@ afterEach(() => vi.unstubAllGlobals());
 const render = () => renderToStaticMarkup(React.createElement(TrustedOrganizations));
 const css = readFileSync(new URL("./TrustedOrganizations.css", import.meta.url), "utf8");
 const source = readFileSync(new URL("./TrustedOrganizations.tsx", import.meta.url), "utf8");
+const customerLists = (html: string) => [...html.matchAll(/<ul\b[^>]*>([\s\S]*?)<\/ul>/g)];
 
 describe("homepage trusted organizations", () => {
-  it("lists exactly the three requested customer organizations", () => {
+  it("lists exactly the three requested customer organizations in the original list", () => {
     expect(customers.map(item => item.name)).toEqual([
       "Utilities Kingston", "City of Winnipeg", "City of Quinte West",
     ]);
@@ -22,25 +23,38 @@ describe("homepage trusted organizations", () => {
     expect(customerGroup).toContain('aria-labelledby="trusted-organizations-title"');
     expect(customerGroup).toContain(">Trusted by</h2>");
     expect(customerGroup).toContain("Used by operators and teams at");
-    expect(customerGroup.match(/<li>/g)).toHaveLength(3);
-    for (const customer of customers) expect(customerGroup).toContain(`<figcaption>${customer.name}</figcaption>`);
+    const [original] = customerLists(customerGroup);
+    expect(original[0]).not.toContain("aria-hidden");
+    expect(original[1].match(/<li>/g)).toHaveLength(3);
+    for (const customer of customers) expect(original[1]).toContain(`<figcaption>${customer.name}</figcaption>`);
     expect(customerGroup).not.toContain("Black Entrepreneurship Alliance");
   });
 
-  it("labels BEA as support, never as a customer, funder or endorsement", () => {
+  it("duplicates only customers in an identical non-interactive, aria-hidden presentation list", () => {
+    const lists = customerLists(render());
+    expect(lists).toHaveLength(2);
+    const [original, clone] = lists;
+    expect(clone[0]).toContain('aria-hidden="true" role="presentation"');
+    expect(clone[1]).toBe(original[1]);
+    expect(clone[1].match(/<li>/g)).toHaveLength(3);
+    expect(clone[1]).not.toMatch(/<(?:a|button|input|select|textarea)\b|tabindex|\bid=/i);
+  });
+
+  it("labels BEA as static support, never as a customer, funder or endorsement", () => {
     expect(supporter.name).toBe("Black Entrepreneurship Alliance");
     expect(customers).not.toContainEqual(supporter);
     const supportGroup = render().split('class="trusted-organizations-supporter"')[1];
     expect(supportGroup).toContain('aria-labelledby="supported-organizations-title"');
     expect(supportGroup).toContain(">Supported by</h2>");
     expect(supportGroup).toContain("Black Entrepreneurship Alliance");
-    expect(supportGroup).not.toContain("Trusted by");
+    expect(supportGroup.match(/<img /g)).toHaveLength(1);
+    expect(supportGroup).not.toMatch(/Trusted by|trusted-organizations-(?:track|list)/);
     expect(render()).not.toMatch(/endorsed|official partner|funded by|applied to|Startup Canada|Black Founders Network/i);
   });
 
   it("uses managed official assets with meaningful alt text, dimensions and persistent labels", () => {
     const html = render();
-    expect(html.match(/<img /g)).toHaveLength(4);
+    expect(html.match(/<img /g)).toHaveLength(7);
     for (const organization of [...customers, supporter]) {
       expect(organization.runtimeUrl).toMatch(/^\/manus-storage\/[\w.-]+$/);
       expect(organization.sourcePage).toMatch(/^https:\/\//);
@@ -57,24 +71,48 @@ describe("homepage trusted organizations", () => {
       expect(html).toContain(`width="${organization.width}" height="${organization.height}"`);
       expect(html).toContain(`<figcaption>${organization.name}</figcaption>`);
     }
-    expect(html.match(/loading="eager" decoding="async"/g)).toHaveLength(4);
+    expect(html.match(/loading="eager" decoding="async"/g)).toHaveLength(7);
     expect(html).not.toContain("<a ");
-    expect(source).not.toMatch(/onError|useEffect|IntersectionObserver|setTimeout|carousel|scrollIntoView/);
+    expect(source).not.toMatch(/onError|useEffect|IntersectionObserver|ResizeObserver|setTimeout|setInterval|requestAnimationFrame|carousel|scrollIntoView/);
   });
 
-  it.each([false, undefined, "true"])("withholds a mark unless its display flag is strict true (%s)", flag => {
+  it.each([false, undefined, "true"])("withholds original and cloned marks unless the display flag is strict true (%s)", flag => {
     const winnipeg = customers.find(item => item.slug === "city-of-winnipeg")!;
     const allowed = winnipeg.logoDisplayAllowed;
     try {
       Object.assign(winnipeg, { logoDisplayAllowed: flag });
       const html = render();
-      expect(html.match(/<img /g)).toHaveLength(3);
+      expect(html.match(/<img /g)).toHaveLength(5);
       expect(html).not.toContain(`src="${winnipeg.runtimeUrl}"`);
-      expect(html).toContain("<figcaption>City of Winnipeg</figcaption>");
+      for (const list of customerLists(html)) expect(list[1]).toContain("<figcaption>City of Winnipeg</figcaption>");
       expect(html).not.toMatch(/permission|pending|written|legal/i);
     } finally {
       winnipeg.logoDisplayAllowed = allowed;
     }
+  });
+
+  it("offers a native, unpressed pause control with explicit toggle labels", () => {
+    expect(render()).toContain('data-paused="false"');
+    expect(render()).toMatch(/<button type="button" class="trusted-organizations-pause" aria-pressed="false">Pause logo animation<\/button>/);
+    expect(source).toContain('paused ? "Resume logo animation" : "Pause logo animation"');
+    expect(source).toContain("setPaused(value => !value)");
+    expect(css).toContain(".trusted-organizations-pause:focus-visible");
+    expect(css).toContain(".trusted-organizations-customers:hover .trusted-organizations-list");
+    expect(css).toContain(".trusted-organizations-customers:focus-within .trusted-organizations-list");
+    expect(css).toContain('.trusted-organizations-customers[data-paused="true"] .trusted-organizations-list { animation-play-state: paused; }');
+  });
+
+  it("uses equal viewport-filling groups and a transform-only 24-second seamless loop", () => {
+    expect(css).toContain(".trusted-organizations-track { display: flex; width: 100%; }");
+    expect(css).toMatch(/\.trusted-organizations-list\s*\{[^}]*flex-shrink: 0;[^}]*min-width: 100%;[^}]*width: max-content;[^}]*padding: 0 20px 0 0;/);
+    expect(css).toContain("animation: trusted-organizations-marquee 24s linear infinite");
+    expect(css).toContain("from { transform: translateX(0); }");
+    expect(css).toContain("to { transform: translateX(-100%); }");
+    expect(css).toContain("@media (prefers-reduced-motion: no-preference)");
+    expect(css).toContain("@media (prefers-reduced-motion: reduce)");
+    expect(css).toContain(".trusted-organizations-viewport { overflow: visible; }");
+    expect(css).toContain(".trusted-organizations-list[aria-hidden=\"true\"], .trusted-organizations-pause { display: none; }");
+    expect(css).toMatch(/@media \(prefers-reduced-motion: reduce\)[\s\S]*?animation: none;\s*transform: none;/);
   });
 
   it("keeps full-color contained marks on white with a separate mobile support row", () => {
@@ -86,7 +124,7 @@ describe("homepage trusted organizations", () => {
     expect(css).toContain("border-left: 1px solid");
     expect(css).toMatch(/\.trusted-organizations-mark--city-of-winnipeg \.trusted-organizations-logo\s*\{[^}]*padding: 12px 20%/);
     expect(css).toMatch(/@media \(max-width: 640px\)[\s\S]*?\.trusted-organizations-supporter\s*\{[^}]*border-left: 0;[^}]*border-top: 1px solid/);
-    expect(css).not.toMatch(/(?:^|[;{])\s*(?:filter|opacity|animation|transform)\s*:/m);
+    expect(css).not.toMatch(/(?:^|[;{])\s*(?:filter|opacity)\s*:/m);
     expect(css).not.toMatch(/object-fit:\s*cover/);
   });
 });

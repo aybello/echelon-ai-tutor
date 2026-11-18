@@ -1,4 +1,4 @@
-/* A static, full-width trust band. Official marks are never recolored or faded. */
+/* Only customer groups move. Official marks are never recolored or faded. */
 .trusted-organizations {
   border-block: 1px solid var(--home-border, #dbe6f1);
   background: #fff;
@@ -37,14 +37,46 @@
   line-height: 1.4;
   text-wrap: pretty;
 }
+.trusted-organizations-pause {
+  min-height: 44px;
+  padding: 8px 0;
+  border: 0;
+  background: transparent;
+  color: var(--home-teal, #1757b8);
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.trusted-organizations-pause:hover { text-decoration-thickness: 2px; }
+.trusted-organizations-pause:focus-visible { outline: 2px solid var(--home-teal, #1757b8); outline-offset: 3px; }
+.trusted-organizations-viewport { min-width: 0; overflow: hidden; }
+.trusted-organizations-track { display: flex; width: 100%; }
 .trusted-organizations-list {
+  box-sizing: border-box;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(120px, 1fr));
   align-items: start;
   gap: 20px;
+  flex-shrink: 0;
+  min-width: 100%;
+  width: max-content;
   margin: 0;
-  padding: 0;
+  /* Include the seam gap in each group's own width, not on the track. */
+  padding: 0 20px 0 0;
   list-style: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .trusted-organizations-list { animation: trusted-organizations-marquee 24s linear infinite; }
+  .trusted-organizations-customers:hover .trusted-organizations-list,
+  .trusted-organizations-customers:focus-within .trusted-organizations-list,
+  .trusted-organizations-customers[data-paused="true"] .trusted-organizations-list { animation-play-state: paused; }
+}
+/* Each equal group travels its own full width; the track is not transformed. */
+@keyframes trusted-organizations-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
 }
 .trusted-organizations-list li { min-width: 0; }
 .trusted-organizations-mark { min-width: 0; margin: 0; text-align: center; }
@@ -102,7 +134,7 @@
   .trusted-organizations-customers { gap: 20px; }
   .trusted-organizations-intro { display: block; text-align: center; }
   .trusted-organizations-intro p { margin-top: 5px; }
-  .trusted-organizations-list { gap: 14px; }
+  .trusted-organizations-list { gap: 14px; padding-right: 14px; }
   .trusted-organizations-logo, .trusted-organizations-logo img { max-height: 42px; }
   .trusted-organizations-mark figcaption { font-size: 11px; }
   .trusted-organizations-supporter { padding: 18px 0 0; border-left: 0; border-top: 1px solid var(--home-border, #dbe6f1); }
@@ -110,7 +142,20 @@
   .trusted-organizations-supporter .trusted-organizations-logo { width: 92px; flex: 0 0 92px; }
   .trusted-organizations-supporter figcaption { max-width: 160px; margin: 0; text-align: left; }
 }
-@media (max-width: 360px) {
-  .trusted-organizations-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px; }
-  .trusted-organizations-list li:last-child { grid-column: 1 / -1; width: calc(50% - 8px); justify-self: center; }
+@media (prefers-reduced-motion: reduce) {
+  .trusted-organizations-viewport { overflow: visible; }
+  .trusted-organizations-track { display: block; }
+  .trusted-organizations-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    min-width: 0;
+    width: 100%;
+    padding: 0;
+    animation: none;
+    transform: none;
+  }
+  .trusted-organizations-list[aria-hidden="true"], .trusted-organizations-pause { display: none; }
+  @media (max-width: 360px) {
+    .trusted-organizations-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px; }
+    .trusted-organizations-list li:last-child { grid-column: 1 / -1; width: calc(50% - 8px); justify-self: center; }
+  }
 }
