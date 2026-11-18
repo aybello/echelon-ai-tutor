@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./mediaFixture";
 import { course } from "./fixtures";
 import { readFile } from "node:fs/promises";
 import { pathToFileURL } from "node:url";

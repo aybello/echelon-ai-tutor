@@ -368,11 +368,14 @@ jobs:
           SMTP_PASS: test-only-placeholder
       - name: Browser-test the approved workspaces and offline review
         run: |
+          git fetch --no-tags --depth=1 origin c37d55eb22d377db4f2f784ee605671c49581762 96a48d7d3323308e28888b1b8fd5281964b7cb7c 1611871737ce5711af52a67ed8291092337d8c17 0dacf6d0d997a1879b4c428d983c705b70428dfe 2250f9e52ab5a3865f487f63e55500daeea55670
+          node prototypes/ui-ux-preview/prepare-media.mjs /tmp/echelon-preview-media
           node prototypes/ui-ux-preview/build-single-file.mjs /tmp/echelon-ui-preview.html
           node --require ./scripts/test-safety.cjs ./node_modules/@playwright/test/cli.js test --config prototypes/ui-ux-preview/playwright.config.ts
         env:
           CI: "1"
           UI_PREVIEW_HTML: /tmp/echelon-ui-preview.html
+          UI_PREVIEW_MEDIA_MANIFEST: /tmp/echelon-preview-media/assets.json
       - name: Upload Teams browser-test evidence
         if: always()
         uses: actions/upload-artifact@v7

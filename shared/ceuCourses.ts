@@ -1,4 +1,4 @@
-import catalogue from "./ceuCatalogueData.json";
+import catalogue from "./ceuCatalogueData.json" with { type: "json" };
 
 export type CeuApprovalStatus =
   "director_approval_required" | "ceu_value_review_required" | "not_submitted";
