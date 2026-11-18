@@ -567,10 +567,10 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
               <LessonMarkdown text={activeSlide.body} />
               {course.key === "ceu-basic-safety" && activeSlide.kind === "overview" && (
                 <img className="ceu-safety-illustration" src={[
-                  "https://files.manuscdn.com/user_upload_by_module/session_file/310519663446228701/ztbBRbAujnhsMVVe.jpg",
-                  "https://files.manuscdn.com/user_upload_by_module/session_file/310519663446228701/UtfktYaLPENHeLZO.jpg",
-                  "https://files.manuscdn.com/user_upload_by_module/session_file/310519663446228701/dsfLwhhYyGVbbdoj.jpg",
-                  "https://files.manuscdn.com/user_upload_by_module/session_file/310519663446228701/WgPGTbndhUZWyZCE.jpg",
+                  "/ceu-covers/ceu-basic-safety-ppe.jpg",
+                  "/ceu-covers/ceu-basic-safety-confined-space.jpg",
+                  "/ceu-covers/ceu-basic-safety-trench.jpg",
+                  "/ceu-covers/ceu-basic-safety-chemicals.jpg",
                 ][activeModuleIndex]} alt={`${activeModule.title}: illustrative training scene, not a work procedure`} />
               )}
               {activeSlide.kind === "quick_check" && activeModule.checks.map(check => (
