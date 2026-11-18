@@ -172,7 +172,8 @@
           "correctIndex": 1,
           "explanation": "9.4 x 0.08 = 0.752 lb of chlorine per gal. The \"75.2 lb per gal\" choice used 8 instead of 0.08, so the answer is 100 times too large. The \"117.5 lb per gal\" choice divided density by the decimal strength instead of multiplying. The \"0.851 lb per gal\" choice divided the whole percent, 8, by the density instead of multiplying the density by the decimal strength."
         }
-      ]
+      ],
+      "caseSolution": "Combined chlorine = 1.40 - 0.85 = **0.55 mg/L**. Free share = 0.85 / 1.40 x 100 = **60.7 percent**. At the higher pH, more free chlorine is present as OCl- rather than HOCl, so the same free residual alone does not establish equivalent disinfection. Verify the sample and analyzer result and review pH, mixing and contact conditions before considering an authorized dose change. Actual targets come from the applicable requirements and facility procedures."
     },
     {
       "id": "dose-calculations",
@@ -301,7 +302,8 @@
           "correctIndex": 3,
           "explanation": "Dose = lb/day / (MGD x 8.34), so double flow with fixed feed halves the dose. The \"Stay the same, because the feeder setting stayed the same\" choice confuses a feed rate with a dose. The \"Double, because more water carries more chlorine\" choice reverses the effect of added flow. The \"Rise slightly because of the 8.34 constant\" choice treats a constant as a variable."
         }
-      ]
+      ],
+      "caseSolution": "Dose = 1.25 + 1.05 = **2.30 mg/L**. Using 8.34 lb per MGD per mg/L, chlorine feed = 2.30 x 1.9 x 8.34 = **36.45 lb/day**. Available chlorine per gallon = 10.2 x 0.125 = **1.275 lb/gal**. Product feed = 36.4458 / 1.275 = **28.6 gal/day**. This uses the stated available-chlorine strength and density, not an assumed product concentration. It is a training calculation, not an authorized pump setting."
     },
     {
       "id": "contact-residual",
@@ -430,7 +432,8 @@
           "correctIndex": 2,
           "explanation": "Longer water age gives more reaction and decay, which lowers residual at dead ends. The \"Chlorine settles out of the water at low flow\" choice mistakes decay for settling. The \"The DPD test reads lower at low flow\" choice blames the method when the water itself has changed. The \"The plant dose rises with distance from the plant\" choice confuses dose with residual, since the dose is applied at the plant and it is the residual that falls along the way."
         }
-      ]
+      ],
+      "caseSolution": "Chamber volume = 36 x 14 x 9 = **4,536 ft3**. Flow = 1.1 x 133,680 / 1,440 = **102.12 ft3/min**. Nominal detention = 4,536 / 102.12 = **44.4 min**; actual effective contact time is not established by this quotient. Residual loss = 1.7 - 0.5 = **1.2 mg/L**, or **70.6 percent**; average loss = 1.2 / 60 = **0.020 mg/L per hour**. Verify representative residual readings and investigate dead-end turnover and mixing under the facility plan. Raising only the plant dose can increase near-plant by-products without resolving poor turnover."
     },
     {
       "id": "feed-problems",
@@ -559,7 +562,8 @@
           "correctIndex": 0,
           "explanation": "Wet chlorine attacks metals, so water can make the opening larger. The \"Water makes the gas lighter so it rises\" choice assumes water changes gas density. The \"Water turns chlorine into an inert salt on contact\" choice invents a safe reaction. The \"Water freezes the valve and seals it\" choice assumes freezing helps."
         }
-      ]
+      ],
+      "caseSolution": "Feed = 2.5 x 0.80 x 8.34 = **16.68 lb/day**. Idealized cylinder life = 150 / 16.68 = **9.0 days**, assuming all stated mass is usable and feed stays constant. Bounce and icing suggest checking withdrawal demand, pressure stability and equipment condition; erratic scale readings also warrant checking for binding. These symptoms are clues, not a confirmed diagnosis. Review cylinder-use, scale-verification and changeover-test records, including the unresolved failed test. Trained, authorized staff must follow the facility and manufacturer procedures; this is not a container-handling or repair procedure."
     }
   ],
   "finalAssessment": [

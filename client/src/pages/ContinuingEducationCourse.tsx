@@ -50,7 +50,7 @@ function moduleComplete(record: CeuLearningRecord | null | undefined, moduleId: 
 }
 
 function coursePresentationIntro(title: string) {
-  return `${title} is a self-paced operator learning pilot built around focused lessons, worked scenarios and a protected final exam. Progress is saved securely when you sign in.`;
+  return `${title} is a self-paced operator learning pilot built around focused lessons, practice scenarios and a protected final exam. Progress is saved securely when you sign in.`;
 }
 
 function ChoiceList({
@@ -582,8 +582,15 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
                   }).then(result => typeof result.feedback === "string" ? result.feedback : "Answer saved")} />
               ))}
               {activeSlide.kind === "evidence" && <p className="ceu-fictional-note">All facility names, records, values and scenarios in this lesson are fictional training material.</p>}
+              {activeSlide.kind === "evidence" && activeSlide.caseSolution && (
+                <details key={activeSlide.id} className="ceu-case-solution">
+                  <summary>Show a worked solution (optional)</summary>
+                  <p>Try your own response first, then compare your reasoning. This feedback is ungraded and is not an operating procedure.</p>
+                  <LessonMarkdown text={activeSlide.caseSolution} />
+                </details>
+              )}
             </article>
-            <section className="ceu-source-strip"><strong>Sources for this module</strong>{course.sources.filter(source => activeModule.sourceIds.includes(source.id)).map(source => <a key={source.id} href={source.url} target="_blank" rel="noreferrer">{source.title} <ArrowRight size={14} /></a>)}</section>
+            <section className="ceu-source-strip"><strong>Sources for this module</strong>{course.sources.filter(source => activeModule.sourceIds.includes(source.id)).map(source => <div key={source.id}><a href={source.url} target="_blank" rel="noreferrer">{source.title} <ArrowRight size={14} /></a><p>{source.section}</p><p><strong>Jurisdiction:</strong> {source.jurisdiction}</p></div>)}</section>
             <footer className="ceu-lesson-footer">
               <button type="button" className="ceu-back-button" disabled={pending || activeSlideIndex === 0} onClick={() => saveSlide(Math.max(0, activeSlideIndex - 1))}><ArrowLeft size={18} /> Back</button>
               <div className="ceu-slide-dots" aria-label={`Slide ${activeSlideIndex + 1} of ${slides.length}`}>{slides.map((slide, index) => <span key={slide.id} className={index === activeSlideIndex ? "is-active" : ""} />)}</div>

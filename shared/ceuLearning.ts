@@ -28,6 +28,8 @@ export interface CeuLesson {
   objectives: string[];
   lesson: string;
   evidence: string;
+  /** Authored for learners; never derive this from private marking material. */
+  caseSolution?: string;
   assignment: string;
   rubric: string[];
   facilitatorGuide: string;
