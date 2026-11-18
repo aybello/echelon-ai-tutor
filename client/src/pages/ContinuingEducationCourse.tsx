@@ -50,7 +50,7 @@ function moduleComplete(record: CeuLearningRecord | null | undefined, moduleId: 
 }
 
 function coursePresentationIntro(title: string) {
-  return `${title} is a self-paced operator learning pilot built around focused lessons, worked scenarios and a protected final exam. Progress is saved securely when you sign in.`;
+  return `${title} is a self-paced operator learning pilot built around focused lessons, practice scenarios and a protected final exam. Progress is saved securely when you sign in.`;
 }
 
 function ChoiceList({
@@ -87,13 +87,15 @@ function ChoiceList({
   );
 }
 
-function QuickCheck({ question, savedChoice, disabled, signedIn, onCheck }: {
+function QuickCheck({ question, savedChoice, previousAnsweredAt, disabled, signedIn, onCheck }: {
   question: CeuQuestion; savedChoice?: number; disabled: boolean; signedIn: boolean;
+  previousAnsweredAt?: string;
   onCheck: (choice: number) => Promise<string>;
 }) {
   const [choice, setChoice] = useState<number | undefined>(savedChoice);
   const [feedback, setFeedback] = useState("");
   return <section className="ceu-quick-check"><p>Optional and ungraded</p><h2>{question.prompt}</h2>
+    {previousAnsweredAt && <p>You answered an earlier version of this check on {previousAnsweredAt}. That response remains in your history, but its selection and grading do not apply to this revised check. You may answer the revised check separately; module completion is unchanged.</p>}
     <ChoiceList question={question} value={choice} disabled={disabled} onChange={value => { setChoice(value); setFeedback(""); }} />
     {signedIn ? <button type="button" className="ceu-secondary-button" disabled={disabled || choice === undefined}
       onClick={() => { if (choice !== undefined) onCheck(choice).then(setFeedback).catch(() => setFeedback("Not saved. Please retry.")); }}>Check answer</button>
@@ -571,14 +573,22 @@ function CourseWorkspace({ courseKey }: { courseKey: string }) {
               {activeSlide.kind === "quick_check" && activeModule.checks.map(check => (
                 <QuickCheck key={`${activeModule.id}-${check.id}`} question={check}
                   savedChoice={activeModuleRecord?.checks[check.id]?.selectedIndex}
+                  previousAnsweredAt={check.previousQuestionId ? activeModuleRecord?.checks[check.previousQuestionId]?.answeredAt : undefined}
                   disabled={pending || !!record?.completion} signedIn={!!record}
                   onCheck={choice => save.mutateAsync({ courseKey, revision: record!.revision,
                     action: { type: "check", moduleId: activeModule.id, questionId: check.id, choice }
                   }).then(result => typeof result.feedback === "string" ? result.feedback : "Answer saved")} />
               ))}
               {activeSlide.kind === "evidence" && <p className="ceu-fictional-note">All facility names, records, values and scenarios in this lesson are fictional training material.</p>}
+              {activeSlide.kind === "evidence" && activeSlide.caseSolution && (
+                <details key={activeSlide.id} className="ceu-case-solution">
+                  <summary>Show a worked solution (optional)</summary>
+                  <p>Try your own response first, then compare your reasoning. This feedback is ungraded and is not an operating procedure.</p>
+                  <LessonMarkdown text={activeSlide.caseSolution} />
+                </details>
+              )}
             </article>
-            <section className="ceu-source-strip"><strong>Sources for this module</strong>{course.sources.filter(source => activeModule.sourceIds.includes(source.id)).map(source => <a key={source.id} href={source.url} target="_blank" rel="noreferrer">{source.title} <ArrowRight size={14} /></a>)}</section>
+            <section className="ceu-source-strip"><strong>Sources for this module</strong>{course.sources.filter(source => activeModule.sourceIds.includes(source.id)).map(source => <div key={source.id}><a href={source.url} target="_blank" rel="noreferrer">{source.title} <ArrowRight size={14} /></a><p>{source.section}</p><p><strong>Jurisdiction:</strong> {source.jurisdiction}</p></div>)}</section>
             <footer className="ceu-lesson-footer">
               <button type="button" className="ceu-back-button" disabled={pending || activeSlideIndex === 0} onClick={() => saveSlide(Math.max(0, activeSlideIndex - 1))}><ArrowLeft size={18} /> Back</button>
               <div className="ceu-slide-dots" aria-label={`Slide ${activeSlideIndex + 1} of ${slides.length}`}>{slides.map((slide, index) => <span key={slide.id} className={index === activeSlideIndex ? "is-active" : ""} />)}</div>

@@ -1,6 +1,8 @@
 /** Public contracts only. Answer keys and marking material live in server/ceu. */
 export interface CeuQuestion {
   id: string;
+  /** Display-only history link; never reuse an old selection or grade for this question. */
+  previousQuestionId?: string;
   objective: string;
   prompt: string;
   choices: string[];
@@ -28,6 +30,8 @@ export interface CeuLesson {
   objectives: string[];
   lesson: string;
   evidence: string;
+  /** Authored for learners; never derive this from private marking material. */
+  caseSolution?: string;
   assignment: string;
   rubric: string[];
   facilitatorGuide: string;

@@ -13,11 +13,12 @@ export interface CeuSlide {
   eyebrow: string;
   title: string;
   body: string;
+  caseSolution?: string;
 }
 
 type SlideLesson = Pick<
   CeuLesson,
-  "id" | "title" | "objectives" | "lesson" | "evidence"
+  "id" | "title" | "objectives" | "lesson" | "evidence" | "caseSolution"
 >;
 
 /** Target size; keep authored tables and paragraphs intact. */
@@ -88,7 +89,7 @@ function slideHeading(body: string) {
 
 /**
  * Builds the same learning path on the client and server: an overview, one
- * slide per teaching section, the worked scenario, the optional quick check and
+ * slide per teaching section, a practice scenario, the optional quick check and
  * the takeaways. It preserves the authored lesson and evidence text without
  * putting marking guides or final-answer keys into the public course payload.
  */
@@ -104,7 +105,7 @@ export function ceuModuleSlides(module: SlideLesson): CeuSlide[] {
       kind: "overview",
       eyebrow: "Module overview",
       title: module.title,
-      body: `## What you will learn\n${objectives}\n\nThis module has ${lessonGroups.length} teaching slides, a worked scenario and optional quick checks. Sign in to save your place as you go.`,
+      body: `## What you will learn\n${objectives}\n\nThis module has ${lessonGroups.length} teaching slides, a practice scenario and optional quick checks. Sign in to save your place as you go.`,
     },
     ...lessonGroups.map((body, index) => {
       const heading = slideHeading(body);
@@ -131,9 +132,10 @@ export function ceuModuleSlides(module: SlideLesson): CeuSlide[] {
     {
       id: `${module.id}:evidence`,
       kind: "evidence",
-      eyebrow: "Worked scenario",
+      eyebrow: "Try this scenario",
       title: "Read the evidence before acting",
       body: `Facility names, records and numerical conditions are fictional.\n\n${presentationCopy(module.evidence)}`,
+      ...(module.caseSolution ? { caseSolution: module.caseSolution } : {}),
     },
     {
       id: `${module.id}:quick-check`,

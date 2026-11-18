@@ -276,3 +276,10 @@
 
 .ceu-course-context .ceu-save-status { color:#c0ebd0; }
 .ceu-course-context button:disabled { color:#a1b2c8; }
+
+/* Optional case feedback stays on the existing scenario slide to preserve progress. */
+.ceu-case-solution { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--ceu-line); }
+.ceu-case-solution summary { min-height: 44px; padding: 8px 0; color: var(--ceu-blue); font-weight: 750; cursor: pointer; }
+.ceu-case-solution summary:focus-visible { outline: 3px solid var(--ceu-blue); outline-offset: 3px; }
+.ceu-source-strip > div { flex: 1 1 260px; min-width: 0; overflow-wrap: anywhere; }
+.ceu-source-strip > div p { margin: 6px 0 0; line-height: 1.5; }
