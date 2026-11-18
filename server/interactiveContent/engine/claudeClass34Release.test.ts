@@ -45,10 +45,12 @@ describe("pinned Class 3–4 Claude publication", () => {
   });
   it("preserves all protected prior payloads, declarations and exclusions byte-for-byte", () => {
     // PRs #247 and #251 authorize presentation-only stylesheet revisions, not content changes.
+    // PR #265 adds optional CEU worked-solution and source-context presentation styles.
     // Keep the original publication fixture and every other protected hash unchanged.
     const protectedHashes = {
       ...counts.protectedHashes,
       "client/src/pages/admin.css": "008a798cf62d2d5582409e735f77d2513e3556fa140eed22206b47508cf8ec5e",
+      "client/src/pages/ContinuingEducationCourse.css": "3c791788f370ec2f7fda4b2c87d0d89162dad5a76d717accacbcef1f4803ae87",
     };
     for (const [path, hash] of Object.entries(protectedHashes)) expect(sha(path === "server/interactiveContent/engine/releaseExclusions.json" ? historicalExclusionBytes : historicalAuthoringBytes(path)), path).toBe(hash);
   });

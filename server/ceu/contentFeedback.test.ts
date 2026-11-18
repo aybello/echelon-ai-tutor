@@ -1,12 +1,20 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
-import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
+import { gunzipSync } from "node:zlib";
 import type { CeuCurriculum } from "../../shared/ceuLearning";
 import { ceuCourse, publicCeuCourse } from "./catalogue";
 import { ceuExamQuestions, issueCeuExam } from "./assessment";
 import { newCeuRecord, transitionCeu } from "./learningState";
 import { ceuModuleSlides } from "../../shared/ceuSlides";
 import legacy from "./legacyAssessments.json";
+
+// Exact course JSON bytes from 4c4c105de457dbc5b7a775c64ac8240f613158a5.
+// Keep the baseline local: CI's depth-one checkout does not include that commit.
+const baselineBytes = readFileSync(new URL("./fixtures/content-feedback-baseline-4c4c105d.json.gz", import.meta.url));
+expect(createHash("sha256").update(baselineBytes).digest("hex")).toBe("74a6d4a594e11a7f2a954b499b18f0eaeade7dc92eb9f6e3ad54bd3bf7a6762d");
+const baselineSources = JSON.parse(gunzipSync(baselineBytes).toString("utf8")) as Record<string, string>;
+const baselineCourse = (name: string) => JSON.parse(baselineSources[name]) as CeuCurriculum;
 
 const names = ["chlorination-principles", "basic-instrumentation", "water-distribution-overview", "supervisor-essentials"];
 const course = (name: string) => ceuCourse(`ceu-${name}`)!;
@@ -62,7 +70,7 @@ describe("18 November CEU content feedback", () => {
 
   it("preserves slide IDs, order and teaching boundaries against the actual pre-patch commit", () => {
     for (const name of names) {
-      const baseline = JSON.parse(execFileSync("git", ["show", `4c4c105de457dbc5b7a775c64ac8240f613158a5:server/ceu/courses/ceu-${name}.json`], { encoding: "utf8" })) as CeuCurriculum;
+      const baseline = baselineCourse(name);
       const current = course(name);
       expect(current.modules.map(m => m.id)).toEqual(baseline.modules.map(m => m.id));
       for (const [i, m] of current.modules.entries()) {
@@ -120,7 +128,7 @@ describe("18 November CEU content feedback", () => {
       expect(payload).not.toContain(q.prompt);
     }
     for (const name of names.slice(1)) {
-      const baseline = JSON.parse(execFileSync("git", ["show", `4c4c105de457dbc5b7a775c64ac8240f613158a5:server/ceu/courses/ceu-${name}.json`], { encoding: "utf8" })) as CeuCurriculum;
+      const baseline = baselineCourse(name);
       const archive = legacy[baseline.key as keyof typeof legacy];
       expect(archive.primary).toEqual(baseline.finalAssessment);
       expect(archive.alternate).toEqual(baseline.alternateFinalAssessment);
