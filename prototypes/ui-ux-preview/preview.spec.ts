@@ -3,6 +3,23 @@ import { course } from "./fixtures";
 import { readFile } from "node:fs/promises";
 import { pathToFileURL } from "node:url";
 
+test("homepage managed organization logos all load offline on phone, tablet and desktop", async ({page}) => {
+  const organizations = JSON.parse(await readFile(new URL("../../client/src/lib/trustedOrganizations.json", import.meta.url), "utf8"));
+  for (const width of [320, 390, 820, 1440]) {
+    await page.setViewportSize({width, height:844});
+    await page.goto("/#/homepage");
+    await expect(page.locator(".trusted-organizations img")).toHaveCount(4);
+    for (const organization of organizations) {
+      expect(organization.logoDisplayAllowed).toBe(true);
+      const image = page.getByRole("img", {name:`${organization.name} logo`, exact:true});
+      await expect(image).toHaveAttribute("src", organization.runtimeUrl);
+      await expect(image).toBeVisible();
+      await expect.poll(() => image.evaluate((element: HTMLImageElement) => element.complete && element.naturalWidth > 0)).toBe(true);
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  }
+});
+
 test("offline preview embeds and loads the approved Echelon font families without remote font URLs", async ({page}) => {
   const fonts = await readFile(new URL("./restoration-fonts.css", import.meta.url), "utf8");
   expect(fonts).toContain('font-family: "Manrope"');

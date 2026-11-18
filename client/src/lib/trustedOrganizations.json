@@ -1,0 +1,46 @@
+[
+  {
+    "slug": "utilities-kingston",
+    "name": "Utilities Kingston",
+    "sourcePage": "https://utilitieskingston.com/",
+    "sourceAsset": "https://utilitieskingston.com/web/images/2024-utilities-kingston-annual-report.pdf",
+    "runtimeUrl": "/manus-storage/utilities-kingston_ad5c63d6.png",
+    "width": 786,
+    "height": 318,
+    "sha256": "f9a3736b1b6b0eef95a86d74b3a967c7505de9e4ed8230635dbb586c499f8a66",
+    "logoDisplayAllowed": true
+  },
+  {
+    "slug": "city-of-winnipeg",
+    "name": "City of Winnipeg",
+    "sourcePage": "https://www.winnipeg.ca/csc/marketing-branding/logos/winnipeg/default.stm",
+    "sourceAsset": "https://www.winnipeg.ca/themes/custom/confluence/img/cw-h-dk_blue-rgb.svg",
+    "runtimeUrl": "/manus-storage/winnipeg_0a52a5b5.svg",
+    "width": 254.12,
+    "height": 86.64,
+    "sha256": "bd0a95a4a1ea6e0a11c185ed41cd42600d8852a4a634413091843124fbd57f30",
+    "logoDisplayAllowed": true
+  },
+  {
+    "slug": "city-of-quinte-west",
+    "name": "City of Quinte West",
+    "sourcePage": "https://quintewest.civicweb.net/Portal/",
+    "sourceAsset": "https://quintewest.civicweb.net/content/logo.png",
+    "runtimeUrl": "/manus-storage/quinte-west_fa850049.png",
+    "width": 209,
+    "height": 130,
+    "sha256": "4025684eb96b308ed7e0bc95f08558c736cc9a21cc5bad3675803bedd3ab996f",
+    "logoDisplayAllowed": true
+  },
+  {
+    "slug": "black-entrepreneurship-alliance",
+    "name": "Black Entrepreneurship Alliance",
+    "sourcePage": "https://www.yorku.ca/yspace/programs-streams/bea/",
+    "sourceAsset": "https://www.yorku.ca/yspace/wp-content/uploads/sites/231/2026/09/Logo-black-1024x326.png",
+    "runtimeUrl": "/manus-storage/bea_560997bf.png",
+    "width": 1024,
+    "height": 326,
+    "sha256": "1681e9c43e30edc28502f7e1d44b69b421c3fcfc569905d219c0c93da19a1480",
+    "logoDisplayAllowed": true
+  }
+]

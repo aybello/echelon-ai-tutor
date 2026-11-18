@@ -6,7 +6,7 @@ const read = (file: string) => readFileSync(join(process.cwd(), file), "utf8");
 
 describe("customer proof on public pages", () => {
   it.each(["client/src/pages/Landing.tsx", "client/src/pages/Teams.tsx"])(
-    "names the two customer organizations without implying an endorsement in %s",
+    "preserves the existing customer organizations without implying an endorsement in %s",
     file => {
       const source = read(file);
       expect(source).toContain("Used by operators at");
@@ -18,9 +18,17 @@ describe("customer proof on public pages", () => {
 
   it("shows the named proof in the homepage hero before the primary actions", () => {
     const source = read("client/src/pages/Landing.tsx");
+    expect(source).toContain("<strong>City of Quinte West</strong>");
+    expect(source).not.toContain("Black Entrepreneurship Alliance");
     expect(source.indexOf('className="homepage-customer-proof"')).toBeLessThan(
       source.indexOf('className="homepage-hero-actions"')
     );
+  });
+
+  it("places the static organization strip immediately after the hero and before tools", () => {
+    const source = read("client/src/pages/Landing.tsx");
+    expect(source).toMatch(/<StudyWorkspacePreview \/>[\s\S]*?<\/section>\s*<TrustedOrganizations \/>\s*<section id="tools"/);
+    expect(source.match(/<TrustedOrganizations \/>/g)).toHaveLength(1);
   });
 
   it("keeps the Teams proof label dark against its white background", () => {

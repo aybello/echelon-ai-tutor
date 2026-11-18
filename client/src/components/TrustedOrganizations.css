@@ -1,0 +1,116 @@
+/* A static, full-width trust band. Official marks are never recolored or faded. */
+.trusted-organizations {
+  border-block: 1px solid var(--home-border, #dbe6f1);
+  background: #fff;
+  color: #000;
+}
+.trusted-organizations-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 208px;
+  align-items: center;
+  gap: 32px;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding: 18px 56px;
+}
+.trusted-organizations-customers {
+  display: grid;
+  grid-template-columns: 155px minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+  min-width: 0;
+}
+.trusted-organizations .trusted-organizations-heading {
+  margin: 0;
+  color: var(--home-teal, #1757b8);
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+.trusted-organizations-intro p {
+  margin: 6px 0 0;
+  color: #000;
+  font-size: 13px;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+.trusted-organizations-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.trusted-organizations-list li { min-width: 0; }
+.trusted-organizations-mark { min-width: 0; margin: 0; text-align: center; }
+.trusted-organizations-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+}
+.trusted-organizations-logo img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 46px;
+  object-fit: contain;
+}
+/* Reserve the City's two-W clear space inside the shared, fixed-height slot. */
+.trusted-organizations-mark--city-of-winnipeg .trusted-organizations-logo {
+  box-sizing: border-box;
+  padding: 12px 20%;
+}
+.trusted-organizations-mark--city-of-winnipeg .trusted-organizations-logo img {
+  max-height: 22px;
+}
+.trusted-organizations-mark figcaption {
+  margin-top: 9px;
+  color: #000;
+  font-family: Manrope, "Source Sans 3", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+.trusted-organizations-supporter {
+  min-width: 0;
+  padding-left: 28px;
+  border-left: 1px solid var(--home-border, #dbe6f1);
+  text-align: center;
+}
+.trusted-organizations-supporter .trusted-organizations-heading { margin-bottom: 7px; }
+.trusted-organizations-supporter .trusted-organizations-logo { height: 34px; }
+.trusted-organizations-supporter .trusted-organizations-logo img { max-height: 34px; }
+.trusted-organizations-supporter figcaption { margin-top: 6px; font-size: 11px; }
+
+@media (max-width: 1100px) {
+  .trusted-organizations-inner { grid-template-columns: minmax(0, 1fr) 180px; gap: 24px; padding-inline: 24px; }
+  .trusted-organizations-customers { grid-template-columns: 1fr; gap: 15px; }
+  .trusted-organizations-intro { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 14px; }
+  .trusted-organizations-intro p { margin: 0; }
+  .trusted-organizations-supporter { padding-left: 24px; }
+}
+@media (max-width: 640px) {
+  .trusted-organizations-inner { grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 24px 20px; }
+  .trusted-organizations-customers { gap: 20px; }
+  .trusted-organizations-intro { display: block; text-align: center; }
+  .trusted-organizations-intro p { margin-top: 5px; }
+  .trusted-organizations-list { gap: 14px; }
+  .trusted-organizations-logo, .trusted-organizations-logo img { max-height: 42px; }
+  .trusted-organizations-mark figcaption { font-size: 11px; }
+  .trusted-organizations-supporter { padding: 18px 0 0; border-left: 0; border-top: 1px solid var(--home-border, #dbe6f1); }
+  .trusted-organizations-supporter .trusted-organizations-mark { display: flex; align-items: center; justify-content: center; gap: 14px; max-width: 280px; margin-inline: auto; }
+  .trusted-organizations-supporter .trusted-organizations-logo { width: 92px; flex: 0 0 92px; }
+  .trusted-organizations-supporter figcaption { max-width: 160px; margin: 0; text-align: left; }
+}
+@media (max-width: 360px) {
+  .trusted-organizations-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px; }
+  .trusted-organizations-list li:last-child { grid-column: 1 / -1; width: calc(50% - 8px); justify-self: center; }
+}
