@@ -1,10 +1,15 @@
-import { expect, test } from "@playwright/test";
+import new3 from "../../server/ceu/courses/ceu-supervisor-essentials.json" with { type: "json" };
+import new2 from "../../server/ceu/courses/ceu-water-distribution-overview.json" with { type: "json" };
+import new1 from "../../server/ceu/courses/ceu-basic-instrumentation.json" with { type: "json" };
+import new0 from "../../server/ceu/courses/ceu-chlorination-principles.json" with { type: "json" };
+import { CEU_COURSES } from "../../shared/ceuCourses";
+import { expect, test } from "./mediaFixture";
 import math from "../../server/ceu/courses/ceu-basic-math.json" with { type: "json" };
 import hydraulics from "../../server/ceu/courses/ceu-basic-hydraulics.json" with { type: "json" };
 import safety from "../../server/ceu/courses/ceu-basic-safety.json" with { type: "json" };
 import { ceuModuleSlides } from "../../shared/ceuSlides";
 
-for (const course of [math, hydraulics, safety]) {
+for (const course of [math, hydraulics, safety, new0, new1, new2, new3]) {
   test(`${course.key}: actual overview, every lesson slide, diagrams, images and sample quiz`, async ({ page }) => {
     test.setTimeout(120000);
     const errors: string[] = [];
@@ -34,6 +39,11 @@ for (const course of [math, hydraulics, safety]) {
           expect(await page.locator(".ceu-reading svg").first().evaluate(node => node.getBoundingClientRect().height)).toBeGreaterThan(20);
           await expect(page.locator(".ceu-reading script, .ceu-reading foreignObject")).toHaveCount(0);
         }
+        const lessonImages = page.locator(".ceu-reading img");
+        for (const image of await lessonImages.all()) {
+          await expect(image).toBeVisible();
+          await expect.poll(() => image.evaluate((element: HTMLImageElement) => element.complete && element.naturalWidth > 0)).toBe(true);
+        }
         const pictures = page.locator(".ceu-safety-illustration");
         if (await pictures.count()) {
           illustrationCount++;
@@ -43,6 +53,7 @@ for (const course of [math, hydraulics, safety]) {
           for (const check of module.checks) await expect(page.getByRole("heading", { name: check.prompt, exact: true })).toBeVisible();
         }
       }
+      await page.screenshot({ path: `test-results/ui-workspace/${course.key}-${module.id}-lesson.png`, fullPage: true });
     }
     expect(diagramCount).toBe(course.modules.reduce((sum, module) => sum + (module.lesson.match(/<svg\b/g) ?? []).length, 0));
     if (course.key === "ceu-basic-safety") expect(illustrationCount).toBe(4);
@@ -57,13 +68,15 @@ for (const course of [math, hydraulics, safety]) {
   });
 }
 
-test("foundation catalog has all thirteen courses and three real cover images", async ({ page }) => {
+test("catalog has all registered courses and working cover images", async ({ page }) => {
   await page.goto("/#/continuing-education");
-  for (const course of [math, hydraulics, safety]) {
+  await expect(page.getByRole("link", { name: "Open pilot course", exact: true })).toHaveCount(CEU_COURSES.length);
+  for (const course of CEU_COURSES) {
     await expect(page.getByRole("heading", { name: course.title, exact: true })).toBeVisible();
   }
-  await expect(page.locator(".ceu-course-cover")).toHaveCount(3);
+  await expect(page.locator(".ceu-course-cover")).toHaveCount(CEU_COURSES.filter(course => course.cover).length);
   for (const image of await page.locator(".ceu-course-cover").all()) {
+    await image.scrollIntoViewIfNeeded();
     await expect.poll(() => image.evaluate((element: HTMLImageElement) => element.complete && element.naturalWidth > 0)).toBe(true);
   }
   await page.screenshot({ path: "test-results/ui-workspace/foundation-catalog.png", fullPage: true });

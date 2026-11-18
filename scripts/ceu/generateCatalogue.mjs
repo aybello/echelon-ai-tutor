@@ -3,6 +3,11 @@ import { resolve } from "node:path";
 const root = resolve(import.meta.dirname, "../..");
 const order = [
   "basic-safety", "basic-hydraulics", "basic-math",
+  "chlorination-principles",
+  "basic-instrumentation",
+  "water-distribution-overview",
+  "supervisor-essentials",
+
   "drinking-water-compliance",
   "water-treatment-process-control",
   "wastewater-treatment-process-control",
@@ -16,6 +21,11 @@ const order = [
 ];
 const codes = [
   "ceu-basic-safety", "ceu-basic-hydraulics", "ceu-basic-math",
+  "ceu-chlorination-principles",
+  "ceu-basic-instrumentation",
+  "ceu-water-distribution-overview",
+  "ceu-supervisor-essentials",
+
   "ceu-compliance",
   "ceu-water-process",
   "ceu-wastewater-process",
@@ -42,25 +52,41 @@ const covers = {
   "ceu-basic-safety": { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663446228701/qlvirWqFtbxUNoeG.jpg", alt: "Water operator safety training equipment" },
   "ceu-basic-hydraulics": { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663446228701/txYeoebaOSmzZXAn.jpg", alt: "Water operator hydraulics training" },
   "ceu-basic-math": { src: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663446228701/oAWVmiXiXiPCiMRH.jpg", alt: "Water operator mathematics training" },
+  "ceu-activated-sludge-troubleshooting": { src: "/manus-storage/ceu-activated-sludge-troubleshooting-cover_19008779.jpg", alt: "Activated Sludge Troubleshooting and Solids Control: illustrative operator training scene" },
+  "ceu-coagulation-filtration": { src: "/manus-storage/ceu-coagulation-filtration-cover_d967e8b2.jpg", alt: "Coagulation, Filtration and Controlled Optimization: illustrative operator training scene" },
+  "ceu-collection-wet-weather": { src: "/manus-storage/ceu-collection-wet-weather-cover_4bd0574d.jpg", alt: "Collection Systems and Wet-Weather Response: illustrative operator training scene" },
+  "ceu-disinfection-ct": { src: "/manus-storage/ceu-disinfection-ct-cover_89cdf029.jpg", alt: "Disinfection Verification and CT Calculations: illustrative operator training scene" },
+  "ceu-distribution-water-quality": { src: "/manus-storage/ceu-distribution-water-quality-cover_77268031.jpg", alt: "Distribution Water Quality and System Integrity: illustrative operator training scene" },
+  "ceu-drinking-water-compliance": { src: "/manus-storage/ceu-drinking-water-compliance-cover_2b2aaece.jpg", alt: "Drinking Water Operations and Regulatory Compliance: illustrative operator training scene" },
+  "ceu-instrumentation-scada": { src: "/manus-storage/ceu-instrumentation-scada-cover_04a1b69b.jpg", alt: "Instrumentation, SCADA and Operational Data Integrity: illustrative operator training scene" },
+  "ceu-sampling-data-quality": { src: "/manus-storage/ceu-sampling-data-quality-cover_76b13aa4.jpg", alt: "Sampling, Laboratory Results and Data Quality: illustrative operator training scene" },
+  "ceu-wastewater-treatment-process-control": { src: "/manus-storage/ceu-wastewater-treatment-process-control-cover_9ef886dc.jpg", alt: "Wastewater Treatment Operations and Process Control: illustrative operator training scene" },
+  "ceu-water-treatment-process-control": { src: "/manus-storage/ceu-water-treatment-process-control-cover_1d7b4b17.jpg", alt: "Water Treatment Process Control and Optimization: illustrative operator training scene" },
+  "ceu-chlorination-principles": { src: "/manus-storage/ceu-chlorination-principles-cover_c42e1257.jpg", alt: "Chlorination Principles for Water and Wastewater Operators: illustrative operator training scene" },
+  "ceu-basic-instrumentation": { src: "/manus-storage/ceu-basic-instrumentation-cover_6aae2f03.jpg", alt: "Basic Instrumentation for Water and Wastewater Operators: illustrative operator training scene" },
+  "ceu-water-distribution-overview": { src: "/manus-storage/ceu-water-distribution-overview-cover_773338af.jpg", alt: "Water Distribution Overview for Operators: illustrative operator training scene" },
+  "ceu-supervisor-essentials": { src: "/manus-storage/ceu-supervisor-essentials-cover_37bf426d.jpg", alt: "Supervisor Essentials for Water and Wastewater Operators: illustrative operator training scene" },
+
 };
+const foundations = new Set(["ceu-basic-safety", "ceu-basic-hydraulics", "ceu-basic-math", "ceu-chlorination-principles", "ceu-basic-instrumentation", "ceu-water-distribution-overview", "ceu-supervisor-essentials"]);
 const data = curricula.map((c, i) => ({
   key: c.key,
   interestCode: codes[i],
   title: c.title,
   shortTitle: c.shortTitle,
   stream: c.stream,
-  group: covers[c.key] ? "foundations" : "applied",
-  regionLabel: covers[c.key] ? "Operator foundations" : c.stream === "drinking_water" ? "Ontario drinking water" : "Ontario wastewater",
+  group: foundations.has(c.key) ? "foundations" : "applied",
+  regionLabel: foundations.has(c.key) ? "Operator foundations" : c.stream === "drinking_water" ? "Ontario drinking water" : "Ontario wastewater",
   ...(covers[c.key] ? { cover: covers[c.key] } : {}),
-  approvalStatus: covers[c.key] ? "not_submitted" :
+  approvalStatus: foundations.has(c.key) ? "not_submitted" :
     c.stream === "drinking_water"
       ? "director_approval_required"
       : "ceu_value_review_required",
-  statusLabel: covers[c.key] ? "Not submitted for approval" :
+  statusLabel: foundations.has(c.key) ? "Not submitted for approval" :
     c.stream === "drinking_water"
       ? "Director approval required"
       : "OWWCO course-value review required",
-  statusDescription: covers[c.key] ? "Educational foundation course. Not submitted for regulatory approval in any jurisdiction." :
+  statusDescription: foundations.has(c.key) ? "Educational foundation course. Not submitted for regulatory approval in any jurisdiction." :
     c.stream === "drinking_water"
       ? "Pilot curriculum. Director approval is required before advertising approved drinking-water CEUs."
       : "Pilot curriculum. OWWCO review is required before stating an assessed wastewater CEU value.",
@@ -79,7 +105,7 @@ const data = curricula.map((c, i) => ({
     "Score at least 80% on the final exam. Review your results and retry if needed.",
     "Receive your non-credit pilot certificate automatically after passing. Course evaluation is optional.",
   ],
-  publicDisclosure: `No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. ${covers[c.key] ? "This foundation course has not been submitted for approval in any jurisdiction. " : c.stream === "wastewater" ? "Wastewater-only courses are not Director approved for drinking-water renewal. " : "Director approval is required before approved drinking-water CEUs can be offered. "}Use current facility procedures and applicable requirements for operational decisions.`,
+  publicDisclosure: `No approved CEUs or regulatory recognition are awarded. Duration is being validated; no contact-hour award is made by this pilot. ${foundations.has(c.key) ? "This foundation course has not been submitted for approval in any jurisdiction. " : c.stream === "wastewater" ? "Wastewater-only courses are not Director approved for drinking-water renewal. " : "Director approval is required before approved drinking-water CEUs can be offered. "}Use current facility procedures and applicable requirements for operational decisions.`,
   ctaLabel: "Request course and review updates",
 }));
 const path = resolve(root, "shared/ceuCatalogueData.json");

@@ -1,19 +1,23 @@
-import c0 from "./courses/ceu-activated-sludge-troubleshooting.json";
-import c1 from "./courses/ceu-coagulation-filtration.json";
-import c2 from "./courses/ceu-collection-wet-weather.json";
-import c3 from "./courses/ceu-disinfection-ct.json";
-import c4 from "./courses/ceu-distribution-water-quality.json";
-import c5 from "./courses/ceu-drinking-water-compliance.json";
-import c6 from "./courses/ceu-instrumentation-scada.json";
-import c7 from "./courses/ceu-sampling-data-quality.json";
-import c8 from "./courses/ceu-wastewater-treatment-process-control.json";
-import c9 from "./courses/ceu-water-treatment-process-control.json";
+import new0 from "./courses/ceu-chlorination-principles.json" with { type: "json" };
+import new1 from "./courses/ceu-basic-instrumentation.json" with { type: "json" };
+import new2 from "./courses/ceu-water-distribution-overview.json" with { type: "json" };
+import new3 from "./courses/ceu-supervisor-essentials.json" with { type: "json" };
+import c0 from "./courses/ceu-activated-sludge-troubleshooting.json" with { type: "json" };
+import c1 from "./courses/ceu-coagulation-filtration.json" with { type: "json" };
+import c2 from "./courses/ceu-collection-wet-weather.json" with { type: "json" };
+import c3 from "./courses/ceu-disinfection-ct.json" with { type: "json" };
+import c4 from "./courses/ceu-distribution-water-quality.json" with { type: "json" };
+import c5 from "./courses/ceu-drinking-water-compliance.json" with { type: "json" };
+import c6 from "./courses/ceu-instrumentation-scada.json" with { type: "json" };
+import c7 from "./courses/ceu-sampling-data-quality.json" with { type: "json" };
+import c8 from "./courses/ceu-wastewater-treatment-process-control.json" with { type: "json" };
+import c9 from "./courses/ceu-water-treatment-process-control.json" with { type: "json" };
 import type { CeuCurriculum } from "../../shared/ceuLearning";
-import safety from "./courses/ceu-basic-safety.json";
-import hydraulics from "./courses/ceu-basic-hydraulics.json";
-import math from "./courses/ceu-basic-math.json";
+import safety from "./courses/ceu-basic-safety.json" with { type: "json" };
+import hydraulics from "./courses/ceu-basic-hydraulics.json" with { type: "json" };
+import math from "./courses/ceu-basic-math.json" with { type: "json" };
 export const ceuCurricula = [
-  safety, hydraulics, math,
+  safety, hydraulics, math, new0, new1, new2, new3,
   c0,
   c1,
   c2,

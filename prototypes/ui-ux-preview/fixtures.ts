@@ -1,13 +1,11 @@
+import { ceuCurricula } from "../../server/ceu/catalogue";
 /** Fictional preview fixtures only. No customer records, database, email or payments. */
 import curriculum from "../../server/ceu/courses/ceu-sampling-data-quality.json" with { type: "json" };
 import { ceuModuleSlideCount } from "../../shared/ceuSlides";
 import type { CeuCurriculum, CeuLearningRecord } from "../../shared/ceuLearning";
-import math from "../../server/ceu/courses/ceu-basic-math.json" with { type: "json" };
-import hydraulics from "../../server/ceu/courses/ceu-basic-hydraulics.json" with { type: "json" };
-import safety from "../../server/ceu/courses/ceu-basic-safety.json" with { type: "json" };
 // Course selection is confined to this isolated, in-memory review harness.
 const previewPath = typeof window === "undefined" ? "" : window.location.hash;
-export const course = ([math, hydraulics, safety].find(item => previewPath.startsWith(`#/continuing-education/${item.key}`)) ?? curriculum) as CeuCurriculum;
+export const course = (ceuCurricula.find(item => previewPath.startsWith(`#/continuing-education/${item.key}`)) ?? curriculum) as CeuCurriculum;
 const anonymous = previewPath.includes("previewAnonymous=1");
 const now = "2026-10-01T18:00:00.000Z";
 export const practiceQuestions = [

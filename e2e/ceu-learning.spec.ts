@@ -1,3 +1,4 @@
+import { CEU_COURSES } from "../shared/ceuCourses";
 import { expect, test, type BrowserContext, type Locator, type Page } from "@playwright/test";
 import { SignJWT } from "jose";
 import { randomUUID } from "node:crypto";
@@ -98,7 +99,7 @@ test.afterAll(async () => {
 test("public CEU courses offer lessons and separate sample questions", async ({ page }, testInfo) => {
   await page.goto("/continuing-education");
   await expect(page.getByRole("main")).toHaveCount(1);
-  await expect(page.getByRole("link", { name: "Open pilot course", exact: true })).toHaveCount(13);
+  await expect(page.getByRole("link", { name: "Open pilot course", exact: true })).toHaveCount(CEU_COURSES.length);
   await expect(page.getByRole("heading", { name: "Lessons, final exam, certificate.", exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Review course outline", exact: true }).first().click();
   await expect(page.locator(".ceu-completion")).toContainText("Score at least 80% on the final exam");
