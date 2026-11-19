@@ -31,5 +31,16 @@
     "height": 130,
     "sha256": "4025684eb96b308ed7e0bc95f08558c736cc9a21cc5bad3675803bedd3ab996f",
     "logoDisplayAllowed": true
+  },
+  {
+    "slug": "city-of-peterborough",
+    "name": "City of Peterborough",
+    "sourcePage": "https://www.peterborough.ca/",
+    "sourceAsset": "https://files.manuscdn.com/search-media/310519663446228701/kf4bQuJbRxevyT4M6RPLMZ/osDjMezMNo4LKfWfs8823U.png",
+    "runtimeUrl": "/manus-storage/city-of-peterborough_b5524a31.png",
+    "width": 1608,
+    "height": 414,
+    "sha256": "b403fb6b786a21f83b62ec71f3360fe70df016471247e54bd4ec2bad2fd8f156",
+    "logoDisplayAllowed": true
   }
 ]
