@@ -6,9 +6,8 @@
 }
 .trusted-organizations-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 208px;
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
-  gap: 32px;
   max-width: 1240px;
   margin-inline: auto;
   padding: 18px 56px;
@@ -111,36 +110,21 @@
   line-height: 1.4;
   text-wrap: pretty;
 }
-.trusted-organizations-supporter {
-  min-width: 0;
-  padding-left: 28px;
-  border-left: 1px solid var(--home-border, #dbe6f1);
-  text-align: center;
-}
-.trusted-organizations-supporter .trusted-organizations-heading { margin-bottom: 7px; }
-.trusted-organizations-supporter .trusted-organizations-logo { height: 34px; }
-.trusted-organizations-supporter .trusted-organizations-logo img { max-height: 34px; }
-.trusted-organizations-supporter figcaption { margin-top: 6px; font-size: 11px; }
 
 @media (max-width: 1100px) {
-  .trusted-organizations-inner { grid-template-columns: minmax(0, 1fr) 180px; gap: 24px; padding-inline: 24px; }
+  .trusted-organizations-inner { padding-inline: 24px; }
   .trusted-organizations-customers { grid-template-columns: 1fr; gap: 15px; }
   .trusted-organizations-intro { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 14px; }
   .trusted-organizations-intro p { margin: 0; }
-  .trusted-organizations-supporter { padding-left: 24px; }
 }
 @media (max-width: 640px) {
-  .trusted-organizations-inner { grid-template-columns: minmax(0, 1fr); gap: 20px; padding: 24px 20px; }
+  .trusted-organizations-inner { padding: 24px 20px; }
   .trusted-organizations-customers { gap: 20px; }
   .trusted-organizations-intro { display: block; text-align: center; }
   .trusted-organizations-intro p { margin-top: 5px; }
   .trusted-organizations-list { gap: 14px; padding-right: 14px; }
   .trusted-organizations-logo, .trusted-organizations-logo img { max-height: 42px; }
   .trusted-organizations-mark figcaption { font-size: 11px; }
-  .trusted-organizations-supporter { padding: 18px 0 0; border-left: 0; border-top: 1px solid var(--home-border, #dbe6f1); }
-  .trusted-organizations-supporter .trusted-organizations-mark { display: flex; align-items: center; justify-content: center; gap: 14px; max-width: 280px; margin-inline: auto; }
-  .trusted-organizations-supporter .trusted-organizations-logo { width: 92px; flex: 0 0 92px; }
-  .trusted-organizations-supporter figcaption { max-width: 160px; margin: 0; text-align: left; }
 }
 @media (prefers-reduced-motion: reduce) {
   .trusted-organizations-viewport { overflow: visible; }

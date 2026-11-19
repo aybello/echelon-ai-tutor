@@ -3,7 +3,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { readFileSync } from "node:fs";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import TrustedOrganizations from "./TrustedOrganizations";
-import { customers, supporter } from "@/lib/trustedOrganizations";
+import { customers } from "@/lib/trustedOrganizations";
 
 beforeEach(() => vi.stubGlobal("React", React));
 afterEach(() => vi.unstubAllGlobals());
@@ -40,22 +40,18 @@ describe("homepage trusted organizations", () => {
     expect(clone[1]).not.toMatch(/<(?:a|button|input|select|textarea)\b|tabindex|\bid=/i);
   });
 
-  it("labels BEA as static support, never as a customer, funder or endorsement", () => {
-    expect(supporter.name).toBe("Black Entrepreneurship Alliance");
-    expect(customers).not.toContainEqual(supporter);
-    const supportGroup = render().split('class="trusted-organizations-supporter"')[1];
-    expect(supportGroup).toContain('aria-labelledby="supported-organizations-title"');
-    expect(supportGroup).toContain(">Supported by</h2>");
-    expect(supportGroup).toContain("Black Entrepreneurship Alliance");
-    expect(supportGroup.match(/<img /g)).toHaveLength(1);
-    expect(supportGroup).not.toMatch(/Trusted by|trusted-organizations-(?:track|list)/);
+  it("removes BEA and the supporter section entirely", () => {
+    expect(render()).not.toMatch(/Black Entrepreneurship Alliance|bea_560997bf|Supported by|trusted-organizations-supporter/);
+    expect(render()).toContain('aria-label="Customer organizations"');
+    const data = readFileSync(new URL("../lib/trustedOrganizations.json", import.meta.url), "utf8");
+    expect(data).not.toMatch(/black-entrepreneurship-alliance|bea_560997bf/);
     expect(render()).not.toMatch(/endorsed|official partner|funded by|applied to|Startup Canada|Black Founders Network/i);
   });
 
   it("uses managed official assets with meaningful alt text, dimensions and persistent labels", () => {
     const html = render();
-    expect(html.match(/<img /g)).toHaveLength(7);
-    for (const organization of [...customers, supporter]) {
+    expect(html.match(/<img /g)).toHaveLength(6);
+    for (const organization of customers) {
       expect(organization.runtimeUrl).toMatch(/^\/manus-storage\/[\w.-]+$/);
       expect(organization.sourcePage).toMatch(/^https:\/\//);
       expect(organization.sourceAsset).toMatch(/^https:\/\//);
@@ -71,7 +67,7 @@ describe("homepage trusted organizations", () => {
       expect(html).toContain(`width="${organization.width}" height="${organization.height}"`);
       expect(html).toContain(`<figcaption>${organization.name}</figcaption>`);
     }
-    expect(html.match(/loading="eager" decoding="async"/g)).toHaveLength(7);
+    expect(html.match(/loading="eager" decoding="async"/g)).toHaveLength(6);
     expect(html).not.toContain("<a ");
     expect(source).not.toMatch(/onError|useEffect|IntersectionObserver|ResizeObserver|setTimeout|setInterval|requestAnimationFrame|carousel|scrollIntoView/);
   });
@@ -82,7 +78,7 @@ describe("homepage trusted organizations", () => {
     try {
       Object.assign(winnipeg, { logoDisplayAllowed: flag });
       const html = render();
-      expect(html.match(/<img /g)).toHaveLength(5);
+      expect(html.match(/<img /g)).toHaveLength(4);
       expect(html).not.toContain(`src="${winnipeg.runtimeUrl}"`);
       for (const list of customerLists(html)) expect(list[1]).toContain("<figcaption>City of Winnipeg</figcaption>");
       expect(html).not.toMatch(/permission|pending|written|legal/i);
@@ -115,15 +111,15 @@ describe("homepage trusted organizations", () => {
     expect(css).toMatch(/@media \(prefers-reduced-motion: reduce\)[\s\S]*?animation: none;\s*transform: none;/);
   });
 
-  it("keeps full-color contained marks on white with a separate mobile support row", () => {
+  it("keeps full-color contained marks on white without an empty supporter column", () => {
     expect(css).toContain("background: #fff");
     expect(css).toContain("color: #000");
     expect(css).toContain("object-fit: contain");
     expect(css).toContain("grid-template-columns: repeat(3, minmax(0, 1fr))");
     expect(css).toContain("grid-template-columns: repeat(2, minmax(0, 1fr))");
-    expect(css).toContain("border-left: 1px solid");
+    expect(css).toMatch(/\.trusted-organizations-inner\s*\{[^}]*grid-template-columns: minmax\(0, 1fr\)/);
     expect(css).toMatch(/\.trusted-organizations-mark--city-of-winnipeg \.trusted-organizations-logo\s*\{[^}]*padding: 12px 20%/);
-    expect(css).toMatch(/@media \(max-width: 640px\)[\s\S]*?\.trusted-organizations-supporter\s*\{[^}]*border-left: 0;[^}]*border-top: 1px solid/);
+    expect(css).not.toContain(".trusted-organizations-supporter");
     expect(css).not.toMatch(/(?:^|[;{])\s*(?:filter|opacity)\s*:/m);
     expect(css).not.toMatch(/object-fit:\s*cover/);
   });

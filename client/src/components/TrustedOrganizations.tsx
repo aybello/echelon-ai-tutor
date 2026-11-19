@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { customers, supporter } from "@/lib/trustedOrganizations";
+import { customers } from "@/lib/trustedOrganizations";
 import "./TrustedOrganizations.css";
 
 function OrganizationMark({ organization }: { organization: (typeof customers)[number] }) {
@@ -26,7 +26,7 @@ export default function TrustedOrganizations() {
   const [paused, setPaused] = useState(false);
 
   return (
-    <section className="trusted-organizations" aria-label="Customer organizations and founder support">
+    <section className="trusted-organizations" aria-label="Customer organizations">
       <div className="trusted-organizations-inner">
         <div className="trusted-organizations-customers" role="group" aria-labelledby="trusted-organizations-title" data-paused={paused}>
           <div className="trusted-organizations-intro">
@@ -57,10 +57,6 @@ export default function TrustedOrganizations() {
               ))}
             </div>
           </div>
-        </div>
-        <div className="trusted-organizations-supporter" role="group" aria-labelledby="supported-organizations-title">
-          <h2 id="supported-organizations-title" className="trusted-organizations-heading">Supported by</h2>
-          <OrganizationMark organization={supporter} />
         </div>
       </div>
     </section>

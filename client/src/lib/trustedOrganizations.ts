@@ -8,6 +8,4 @@ function organizationFor(slug: string) {
   return organization;
 }
 
-// BEA is deliberately not part of the customer list.
 export const customers = customerSlugs.map(organizationFor);
-export const supporter = organizationFor("black-entrepreneurship-alliance");
