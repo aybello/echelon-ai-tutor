@@ -32,6 +32,7 @@ import { useProvince, type ProvinceId } from "@/hooks/useProvince";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { INDIVIDUAL_REFUND_SUMMARY, REFUND_CONTACT_EMAIL } from "@shared/refundPolicy";
 import type { ExamFamily } from "@shared/courseRegistry";
+import { CEU_COURSES } from "@shared/ceuCourses";
 import "./Landing.css";
 
 function PreviewChoice({ onClose }: { onClose: () => void }) {
@@ -297,7 +298,7 @@ export default function Landing() {
           <div className="homepage-section-heading homepage-section-heading-left">
             <span className="homepage-kicker">More than a question bank</span>
             <h2 id="homepage-tools-title">Learn it. Practise it. Put it to the test.</h2>
-            <p>Ask the AI tutor to explain a difficult concept. Work through a calculation. Practise with games, flashcards and questions, then test yourself under exam conditions and see where to focus next. Choose your course for its available tools.</p>
+            <p>Ask the AI tutor to explain a difficult concept. Practise with games, flashcards and questions, then test yourself under exam conditions. Keep developing your skills with self-paced continuing education. Choose your course for its available tools.</p>
           </div>
           <div className="homepage-tool-grid">
             <ToolCard icon={<MessageSquareText size={21} aria-hidden="true" />} title="AI tutor: get unstuck" description="Ask follow-up questions and work through concepts and calculations. Try the tutor in Water OIT practice." href="/quiz" />
@@ -305,16 +306,16 @@ export default function Landing() {
             <ToolCard icon={<BookOpen size={21} aria-hidden="true" />} title="Practice with explanations" description="Understand why an answer is right, not just whether you got it right. Try the Water OIT preview." href="/quiz" />
             <ToolCard icon={<Calculator size={21} aria-hidden="true" />} title="Work through the maths" description="Follow worked examples and keep the formulas behind the answer in reach." href="/formulas" />
             <ToolCard icon={<ClipboardCheck size={21} aria-hidden="true" />} title="Rehearse the exam" description="Practise pacing and review your results. Start with the Water OIT timed mock preview." href="/oit-mock" />
-            <ToolCard icon={<GraduationCap size={21} aria-hidden="true" />} title="Build your understanding" description="Use study guides to connect technical concepts to processes and equipment." href="/guides" />
+            <ToolCard icon={<GraduationCap size={21} aria-hidden="true" />} title="Continuing education courses" description={`${CEU_COURSES.length} self-paced operator courses with lessons, saved progress and final assessments. Explore non-credit pilot learning beyond exam prep.`} href="/continuing-education" />
           </div>
-          <p className="homepage-hero-note">Six game modes turn revision into active practice. Water OIT and Ontario Class 1 Water also include five deeper games, from Calculation Ladder to Exam Escape Room. Flashcards, study notes and progress tools are available through your course workspace.</p>
+          <p className="homepage-hero-note">Six game modes turn revision into active practice. Water OIT and Ontario Class 1 Water also include five deeper games, from Calculation Ladder to Exam Escape Room. Flashcards, study notes and progress tools are available through your course workspace. Continuing education courses are non-credit pilots; no approved CEUs, accreditation or regulatory recognition are awarded.</p>
         </section>
 
         <section className="homepage-proof-strip" aria-label="Echelon platform facts">
           <div><strong>AI tutoring</strong><span>explanations you can ask questions about</span></div>
           <div><strong>Interactive practice</strong><span>learn by solving, not just reading</span></div>
           <div><strong>Canada + U.S.</strong><span>course-specific certification preparation</span></div>
-          <div><strong>Progress tracking</strong><span>see strengths and topics to revisit</span></div>
+          <div><strong>Continuing education</strong><span>{CEU_COURSES.length} self-paced non-credit pilot courses</span></div>
         </section>
 
         <section id="courses" className="homepage-finder-section" aria-label="Find your certification course">
@@ -344,7 +345,7 @@ export default function Landing() {
             <FaqItem question="Can I try a course before I buy?" answer="Yes. Paid operator courses include a free practice preview without an account or credit card. Ontario 309A practice and mock exams are free." />
             <FaqItem question="How does course access work?" answer="For paid operator courses, an Individual Exam Pass provides 12 months of access to one selected course from successful payment, or access can come through an assigned team licence. Ontario 309A practice and mock exams are free." />
             <FaqItem question="Do the questions match the real exam?" answer="The question banks are designed around relevant exam blueprints and reviewed through Echelon's content-quality process. Echelon is an independent preparation provider; confirm current requirements with your certifying authority." />
-            <FaqItem question="What is included in a course?" answer="Echelon brings together practice questions with explanations, AI tutoring, timed mock exams, flashcards, study notes, formulas and progress tracking. Interactive games add another way to practise. Open your course to see its available tools; Ontario 309A currently offers free practice and mock exams. The pricing page confirms paid-course inclusions and access before checkout." />
+            <FaqItem question="What is included in a course?" answer="Echelon brings together practice questions with explanations, AI tutoring, timed mock exams, flashcards, study notes, formulas and progress tracking. Interactive learning games add another way to practise. Open your course to see its available tools; Ontario 309A currently offers free practice and mock exams. Continuing education courses offer separate self-paced non-credit pilot learning and do not award approved CEUs or regulatory recognition. The pricing page confirms paid-course inclusions and access before checkout." />
             <FaqItem question="Can I get a refund?" answer={`${INDIVIDUAL_REFUND_SUMMARY} Email ${REFUND_CONTACT_EMAIL} with your purchase email and Stripe receipt.`} />
           </div>
         </section>
@@ -355,9 +356,9 @@ export default function Landing() {
 
       <footer className="homepage-footer">
         <div className="homepage-footer-main">
-          <div className="homepage-footer-brand"><img className="homepage-footer-logo" src={ECHELON_LOGO_URL} alt="Echelon Institute logo" /><div><strong>Echelon Institute</strong><p>AI-powered exam preparation for the skilled-trades workforce, starting with water and wastewater.</p></div></div>
+          <div className="homepage-footer-brand"><img className="homepage-footer-logo" src={ECHELON_LOGO_URL} alt="Echelon Institute logo" /><div><strong>Echelon Institute</strong><p>AI-powered exam preparation, interactive learning and continuing education for the skilled-trades workforce, starting with water and wastewater.</p></div></div>
           <div className="homepage-footer-links">
-            <div><strong>Explore</strong><Link href="/#find-course">Find your course</Link><Link href="/guides">Study guides</Link><Link href="/formulas">Formula library</Link></div>
+            <div><strong>Explore</strong><Link href="/#find-course">Find your course</Link><Link href="/continuing-education">Continuing education</Link><Link href="/guides">Study guides</Link><Link href="/formulas">Formula library</Link></div>
             <div><strong>Teams</strong><Link href="/teams">Team training</Link><Link href="/partnerships">Partnerships</Link><Link href="/jobs">Jobs</Link></div>
             <div><strong>Support</strong><Link href="/about">About Echelon</Link><Link href="/refund">Refund policy</Link><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></div>
           </div>

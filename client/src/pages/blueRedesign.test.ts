@@ -29,7 +29,7 @@ describe("approved blue homepage presentation", () => {
     expect(landing).not.toContain("echelon-blue-hero_b6e705fa.webp");
     expect(hero).toContain("Understand the material.");
     expect(hero).toContain("Be ready for the exam.");
-    expect(hero).toContain("AI tutoring, learning games and exam preparation");
+    expect(hero).toContain("AI-powered exam prep, interactive learning and continuing education");
     expect(css).toContain("--home-teal: #1757B8");
     expect(css).toContain("--home-canvas: #F4F8FD");
     expect(css).toMatch(/@media \(max-width: 820px\)\s*\{(?:(?!\n\})[\s\S])*?\.homepage-hero\s*\{[^}]*grid-template-columns:\s*1fr/);

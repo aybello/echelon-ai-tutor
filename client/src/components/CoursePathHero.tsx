@@ -9,7 +9,7 @@ export default function CoursePathHero({ children }: { children?: ReactNode }) {
         Understand the material. <span>Be ready for the exam.</span>
       </h1>
       <p className="course-path-intro landing-hero-reveal landing-hero-reveal-2">
-        Turn complex material into clear explanations, interactive practice and a focused study routine. AI tutoring, learning games and exam preparation for the skilled-trades workforce across Canada and the United States, starting with water and wastewater.
+        AI-powered exam prep, interactive learning and continuing education for the skilled-trades workforce across Canada and the United States, starting with water and wastewater. Understand complex concepts, practise by doing and keep building your skills beyond the exam.
       </p>
       {children}
     </div>

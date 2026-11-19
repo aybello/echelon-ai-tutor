@@ -14,7 +14,7 @@ describe("premium homepage contracts", () => {
     expect(hero).toContain("AI-powered exam prep for skilled trades");
     expect(nav).toContain("Exam prep for skilled trades");
     expect(hero).toContain("Understand the material.");
-    expect(hero).toContain("AI tutoring, learning games and exam preparation");
+    expect(hero).toContain("AI-powered exam prep, interactive learning and continuing education");
     expect(hero).toContain("across Canada and the United States, starting with water and wastewater");
     expect(nav).not.toContain('"Operator certification prep"');
   });
@@ -26,6 +26,10 @@ describe("premium homepage contracts", () => {
     expect(landing).toContain("Water OIT and Ontario Class 1 Water also include five deeper games");
     expect(landing).toContain("Ontario 309A currently offers free practice and mock exams");
     expect(landing).toContain('href="/courses/oit/interactive"');
+    expect(landing).toContain('title="Continuing education courses"');
+    expect(landing).toContain('href="/continuing-education"');
+    expect(landing).toContain("${CEU_COURSES.length} self-paced operator courses");
+    expect(landing).toContain("no approved CEUs, accreditation or regulatory recognition are awarded");
     expect(landing).not.toContain("guaranteed pass");
   });
 
