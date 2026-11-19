@@ -8,7 +8,7 @@ describe("approved blue homepage presentation", () => {
     expect(landing).toContain('href="#find-course"');
     expect(landing).toContain('aria-controls="oit-preview-choice"');
     expect(landing).toContain("setShowOitPreviewChoice");
-    expect(landing).toContain('<HomepageCourseDiscovery initialProvince={province} onCourseSelected={recordCourseBrowse} />');
+    expect(landing).toContain('<HomepageCourseDiscovery initialProvince={province} onProvinceSelected={handleProvinceSelect} onCourseSelected={recordCourseBrowse} />');
     expect(landing).not.toContain("<ProvinceBanner");
   });
   it("uses a real interactive example and preserves the approved blue and mobile layout", () => {

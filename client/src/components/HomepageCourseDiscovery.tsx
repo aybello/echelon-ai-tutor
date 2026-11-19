@@ -5,6 +5,7 @@ import "./HomepageCourseDiscovery.css";
 
 export type HomepageCourseDiscoveryProps = {
   initialProvince?: string | null;
+  onProvinceSelected?: (province: string) => void;
   onCourseSelected?: (selection: { courseKey: string; examFamily: ExamFamily }) => void;
 };
 
@@ -17,6 +18,7 @@ type Country = (typeof COUNTRIES)[number]["id"];
 
 export default function HomepageCourseDiscovery({
   initialProvince,
+  onProvinceSelected,
   onCourseSelected,
 }: HomepageCourseDiscoveryProps) {
   const id = useId();
@@ -81,7 +83,7 @@ export default function HomepageCourseDiscovery({
         hidden={country !== "canada"}
         tabIndex={0}
       >
-        <CourseFinder initialProvince={initialProvince} onCourseSelected={onCourseSelected} />
+        <CourseFinder initialProvince={initialProvince} onProvinceSelected={onProvinceSelected} onCourseSelected={onCourseSelected} />
         <div className="homepage-course-discovery__trade">
           <div>
             <strong>Ontario 309A electrician</strong>

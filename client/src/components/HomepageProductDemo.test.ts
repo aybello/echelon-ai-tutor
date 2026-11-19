@@ -83,32 +83,39 @@ describe("HomepageProductDemo local interactive example", () => {
     const view = demo();
     view.type("25"); view.check();
     expect(view.content()).toContain("Not quite.");
-    expect(view.content()).toContain("First checked answer: 25 m³/d (incorrect).");
+    expect(view.content()).toContain("First incorrect answer: 25 m³/d.");
     expect(view.input().props.value).toBe("25");
     expect(view.input().props["aria-invalid"]).toBe(true);
     view.type("250"); view.check();
-    expect(view.content()).toContain("First checked answer: 25 m³/d (incorrect).");
+    expect(view.content()).toContain("First incorrect answer: 25 m³/d.");
     view.type("2160"); view.check();
     expect(view.content()).toContain("Correct. 25 × 86.4 = 2,160 m³/d.");
-    expect(view.content()).toContain("First checked answer: 25 m³/d (incorrect).");
+    expect(view.content()).toContain("First incorrect answer: 25 m³/d.");
     expect(view.input().props["aria-invalid"]).toBe(false);
   });
 
   it.each(["2160", "2,160", "2160.0", " 2,160.00 "])("accepts numeric answer %s", answer => {
     const view = demo(); view.type(answer); view.check();
     expect(view.content()).toContain("Correct.");
-    expect(view.content()).not.toContain("First checked answer:");
+    expect(view.content()).not.toContain("First incorrect answer:");
   });
 
   it.each(["", " ", "not a number", "Infinity", "NaN", "25 × 86.4", "21,60", "2,160 m³/d", "0x870"])("rejects invalid input %j without recording an attempt", answer => {
     const view = demo(); view.type(answer); view.check();
     expect(view.content()).toContain("Enter a number, with or without thousands commas.");
-    expect(view.content()).not.toContain("First checked answer:");
+    expect(view.content()).not.toContain("First incorrect answer:");
   });
 
   it("does not round an incorrect result up to the expected answer", () => {
     const view = demo(); view.type("2159.99"); view.check();
     expect(view.content()).toContain("Not quite.");
+  });
+
+  it("labels the first incorrect response honestly even after a correct check", () => {
+    const view = demo(); view.type("2160"); view.check();
+    view.type("25"); view.check();
+    expect(view.content()).toContain("First incorrect answer: 25 m³/d.");
+    expect(view.content()).not.toContain("First checked answer:");
   });
 
   it("reveals and collapses the existing shared worked solution with honest steps", () => {
@@ -129,7 +136,7 @@ describe("HomepageProductDemo local interactive example", () => {
     const view = demo(); view.type("10"); view.check(); view.click("Show worked solution");
     view.click(" Reset");
     expect(view.input().props.value).toBe("");
-    expect(view.content()).not.toContain("First checked answer:");
+    expect(view.content()).not.toContain("First incorrect answer:");
     expect(view.content()).not.toContain("Not quite.");
     expect(view.content()).toContain("this example isn’t saved");
     expect(view.solution()).toBeUndefined();

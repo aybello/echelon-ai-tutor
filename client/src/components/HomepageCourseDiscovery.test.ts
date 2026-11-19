@@ -29,9 +29,11 @@ beforeAll(async () => {
         import HomepageCourseDiscovery from './client/src/components/HomepageCourseDiscovery';
         import CourseFinder from './client/src/components/CourseFinder';
         window.selections = [];
+        window.provinceSelections = [];
         const Component = window.baseline ? CourseFinder : HomepageCourseDiscovery;
         createRoot(document.getElementById('root')).render(
           <Component initialProvince={window.initialProvince}
+            onProvinceSelected={province => window.provinceSelections.push(province)}
             onCourseSelected={selection => window.selections.push(selection)} />
         );
       `,
@@ -188,6 +190,21 @@ describe("HomepageCourseDiscovery actual render", () => {
     } finally {
       await page.close();
     }
+  });
+
+  it("saves explicit province selections once without treating country switches or defaults as choices", async () => {
+    const page = await render({ initialProvince: "on" });
+    const choices = () => page.evaluate(() => (window as unknown as { provinceSelections: string[] }).provinceSelections);
+    try {
+      expect(await choices()).toEqual([]);
+      await page.getByRole("tab", { name: "United States" }).click();
+      await page.getByRole("tab", { name: "Canada" }).click();
+      expect(await choices()).toEqual([]);
+      await page.getByLabel("1. Province").selectOption("bc");
+      expect(await choices()).toEqual(["bc"]);
+      await page.getByLabel("2. System").selectOption("water-treatment");
+      expect(await choices()).toEqual(["bc"]);
+    } finally { await page.close(); }
   });
 
   it("does not leak duplicate-row suppression or blue wrapper styles to standalone CourseFinder", async () => {

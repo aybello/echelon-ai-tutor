@@ -106,7 +106,7 @@ export default function HomepageProductDemo() {
             {feedback ? <p>{feedback.message}</p> : <p>Try it here. No account needed; this example isn’t saved.</p>}
           </div>
           {firstIncorrect !== null && (
-            <p className="homepage-product-demo__first-attempt">First checked answer: {firstIncorrect} m³/d (incorrect).</p>
+            <p className="homepage-product-demo__first-attempt">First incorrect answer: {firstIncorrect} m³/d.</p>
           )}
         </form>
 

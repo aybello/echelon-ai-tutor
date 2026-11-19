@@ -164,12 +164,13 @@ export default function Landing() {
   });
   useStructuredData(landingPageSchemas);
 
-  const { province: storedProvince } = useProvince();
+  const { province: storedProvince, setProvince } = useProvince();
   const search = useSearch();
   const routeProvince = new URLSearchParams(search).get("province")?.toLowerCase();
   const province: ProvinceId | null = routeProvince === "on" || routeProvince === "bc" || routeProvince === "ab" || routeProvince === "sk" || routeProvince === "mb" || routeProvince === "ns" ? routeProvince : storedProvince;
   const { isAuthenticated } = useAuth();
   const dashboardMe = trpc.dashboardAuth.me.useQuery(undefined, { retry: false, staleTime: 5 * 60 * 1000 });
+  const updateProvinceMutation = trpc.auth.updateProvince.useMutation();
   const trackCourseSelection = trpc.funnelAnalytics.track.useMutation();
   const isSignedIn = isAuthenticated || !!dashboardMe.data?.email;
   const [showOitPreviewChoice, setShowOitPreviewChoice] = useState(false);
@@ -189,6 +190,12 @@ export default function Landing() {
     if (!target) return;
     requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
   }, []);
+
+  const handleProvinceSelect = (value: string) => {
+    if (value !== "on" && value !== "bc" && value !== "ab" && value !== "sk" && value !== "mb" && value !== "ns") return;
+    setProvince(value);
+    if (isAuthenticated) updateProvinceMutation.mutate({ province: value });
+  };
 
   const closePreviewChoice = () => {
     setShowOitPreviewChoice(false);
@@ -236,7 +243,7 @@ export default function Landing() {
 
         <section id="courses" className="homepage-finder-section" aria-label="Find your certification course">
           <span id="find-course" className="homepage-anchor-target" aria-hidden="true" />
-          <HomepageCourseDiscovery initialProvince={province} onCourseSelected={recordCourseBrowse} />
+          <HomepageCourseDiscovery initialProvince={province} onProvinceSelected={handleProvinceSelect} onCourseSelected={recordCourseBrowse} />
           <div className="homepage-preview-entry">
             <button ref={previewTriggerRef} type="button" className="homepage-preview-button" aria-expanded={showOitPreviewChoice} aria-controls="oit-preview-choice" onClick={() => setShowOitPreviewChoice((value) => !value)}>
               <Play size={14} fill="currentColor" aria-hidden="true" /> New to the field? Try a free OIT preview

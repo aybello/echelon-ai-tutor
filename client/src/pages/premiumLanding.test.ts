@@ -16,7 +16,7 @@ describe("premium homepage contracts", () => {
   });
   it("puts course discovery ahead of feature explanations and keeps its attribution", () => {
     expect(landing.indexOf('id="courses"')).toBeLessThan(landing.indexOf('id="tools"'));
-    expect(landing).toContain('<HomepageCourseDiscovery initialProvince={province} onCourseSelected={recordCourseBrowse} />');
+    expect(landing).toContain('<HomepageCourseDiscovery initialProvince={province} onProvinceSelected={handleProvinceSelect} onCourseSelected={recordCourseBrowse} />');
     expect(landing).toContain('event: "course_browsed"');
     expect(landing).toContain('getMarketingAttribution("/")');
     expect(landing).not.toContain("<ProvinceBanner");
