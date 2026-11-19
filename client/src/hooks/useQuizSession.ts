@@ -29,9 +29,8 @@ import type { DBQuestion } from "@/hooks/useQuestionBank";
 import { PracticeQueue } from "@/lib/practiceQueue";
 import { useLearningActivitySession } from "@/hooks/useLearningActivitySession";
 import { useAssessmentActivity, type ActivityObservation } from "@/hooks/useAssessmentActivity";
-import { useVerifiedPracticeSaveScope } from "@/components/PracticeSaveStatus";
+import { useStablePracticeActorKey } from "@/components/PracticeSaveStatus";
 import { assessmentActivityActions, type AssessmentActivityCapability } from "@shared/assessmentActivity";
-
 // ─── Constants ───────────────────────────────────────────────────────────────
 // Default/fallback session size; actual size comes from quizSettings.sessionSize
 const DEFAULT_SESSION_SIZE = 15;
@@ -376,8 +375,7 @@ export function useQuizSession({
     useState<QuizSettings>(DEFAULT_QUIZ_SETTINGS);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [activityTracking, setActivityTracking] = useState<AssessmentActivityCapability | null>(null);
-  const actorScope = useVerifiedPracticeSaveScope(examType);
-  const actorKey = actorScope ? JSON.stringify(actorScope) : "unverified";
+  const actorKey = useStablePracticeActorKey(examType);
   const { observeFor: enqueueObservation, retry: retryActivity } = useAssessmentActivity(activityTracking, actorKey);
   // Exact-capability writes use the shared same-actor durable worker, including
   // late canonical acknowledgments and terminal Back/Next review.

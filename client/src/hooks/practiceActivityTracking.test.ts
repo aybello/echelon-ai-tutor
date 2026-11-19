@@ -32,7 +32,7 @@ vi.mock("react", async original => {
 vi.mock("wouter", () => ({ useSearch: () => "", useLocation: () => ["", vi.fn()], Link: () => null }));
 vi.mock("sonner", () => ({ toast: Object.assign(vi.fn(), { error: vi.fn() }) }));
 vi.mock("@/components/QuizGate", () => ({ setTrialUnlocked: vi.fn() }));
-vi.mock("@/components/PracticeSaveStatus", () => ({ useVerifiedPracticeSaveScope: () => ({ userId: 7 }) }));
+vi.mock("@/components/PracticeSaveStatus", () => ({ useStablePracticeActorKey: () => "user:7" }));
 vi.mock("@/components/QuizModeBar", () => ({ useAttemptLogger: () => harness.log }));
 vi.mock("@/hooks/useLearningActivitySession", () => ({ useLearningActivitySession: () => {} }));
 vi.mock("@/components/QuizSettingsDrawer", () => ({ DEFAULT_QUIZ_SETTINGS: { sessionSize: 2, difficulty: "all", timedMode: false } }));
