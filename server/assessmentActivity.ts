@@ -14,6 +14,7 @@ import { resolveVerifiedIdentity } from "./_core/accessService";
 import type { TrpcContext } from "./_core/context";
 import { ENV } from "./_core/env";
 import { getDb } from "./db";
+import { validateIssuedAttribution } from "./teams/attemptAttribution";
 
 const NOT_RECORDED: AssessmentActivityNotRecorded = { tracking: false, recorded: false, source: "observed" };
 const TTL_MS = 6 * 60 * 60 * 1000;
@@ -151,6 +152,23 @@ export type AssessmentActivityIssueOptions = {
   resolveSource?: (sourceSessionId: string, actor: AssessmentActivityActor, courseKey: string) => Promise<boolean>;
 };
 export type AssessmentActivityAttribution = { orgId: number | null; organizationMemberId: number | null; flexLicenceId: number | null };
+const LEARNER_ONLY: AssessmentActivityAttribution = { orgId: null, organizationMemberId: null, flexLicenceId: null };
+/** Read-only validation, never discovery/reassignment. A cleared session stays learner-only. */
+async function revalidateObservationAttribution(ctx: TrpcContext, courseKey: string, issued: AssessmentActivityAttribution, readDb?: Parameters<typeof validateIssuedAttribution>[3]): Promise<AssessmentActivityAttribution> {
+  if (!issued.orgId) return { ...LEARNER_ONLY };
+  const identity = resolveVerifiedIdentity(ctx);
+  if (identity.type === "anonymous") return { ...LEARNER_ONLY };
+  try {
+    const current = await validateIssuedAttribution({
+      userId: identity.type === "oauth" ? identity.userId : null, studentEmail: identity.email,
+    }, courseKey, issued, readDb);
+    return current?.orgId === issued.orgId && current.organizationMemberId === issued.organizationMemberId
+      && current.flexLicenceId === issued.flexLicenceId ? { ...issued } : { ...LEARNER_ONLY };
+  } catch {
+    // Resolver unavailability cannot preserve employer visibility for newly accepted activity.
+    return { ...LEARNER_ONLY };
+  }
+}
 /** UTC epoch milliseconds in storage; ISO conversion only at read boundaries. */
 export const assessmentActivityDate = (utcMs: number | null): string | null => utcMs == null ? null : new Date(utcMs).toISOString();
 
@@ -171,9 +189,10 @@ export async function issueAssessmentActivity(ctx: TrpcContext, supplied: Assess
     if (!actor || !consumeBudget(`issue:${actor.actorHash}`, 30)) return NOT_RECORDED;
     // sourceSessionId is trusted server issuer output, never copied from client diagnostics/session inputs.
     if (input.sourceSessionId && options.resolveSource && !await options.resolveSource(input.sourceSessionId, actor, course.courseKey)) return NOT_RECORDED;
-    const ownership = z.object({ orgId: z.number().int().positive().nullable(), organizationMemberId: z.number().int().positive().nullable(), flexLicenceId: z.number().int().positive().nullable() }).strict().parse(attribution ?? { orgId: null, organizationMemberId: null, flexLicenceId: null });
+    let ownership = z.object({ orgId: z.number().int().positive().nullable(), organizationMemberId: z.number().int().positive().nullable(), flexLicenceId: z.number().int().positive().nullable() }).strict().parse(attribution ?? { orgId: null, organizationMemberId: null, flexLicenceId: null });
     if ((ownership.organizationMemberId || ownership.flexLicenceId) && !ownership.orgId) return NOT_RECORDED;
     if (actor.identityKind === "anonymous" && (ownership.orgId || ownership.organizationMemberId || ownership.flexLicenceId)) return NOT_RECORDED;
+    ownership = await revalidateObservationAttribution(ctx, course.courseKey, ownership);
     // This is a separate observation-session ID, never an attempt ID invented by the browser.
     const sessionId = randomUUID();
     const now = Date.now();
@@ -221,6 +240,12 @@ export async function recordAssessmentActivity(ctx: TrpcContext, supplied: Asses
       const reduction = reduceAssessmentActivityBatch(session, items, input.events, existing);
       if (reduction.accepted.length) {
         const now = Date.now();
+        const ownership = await revalidateObservationAttribution(ctx, session.courseKey, session, tx);
+        if (session.orgId !== ownership.orgId || session.organizationMemberId !== ownership.organizationMemberId || session.flexLicenceId !== ownership.flexLicenceId) {
+          // Under the session lock, clear ALL attribution before accepting new observations.
+          // Hiding the whole session prevents later reactivation exposing a revoked interval.
+          await tx.update(assessmentActivitySessions).set(LEARNER_ONLY).where(eq(assessmentActivitySessions.sessionId, cap.sessionId));
+        }
         await tx.insert(assessmentActivityEvents).values(reduction.accepted.map(event => ({
           sessionId: cap.sessionId, eventId: event.eventId, sequence: event.sequence, action: event.action,
           itemId: event.itemId ?? null, stepId: event.stepId ?? null, chosenAnswer: event.chosenAnswer ?? null,

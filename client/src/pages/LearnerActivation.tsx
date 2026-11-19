@@ -221,7 +221,7 @@ function ActivationFlow({ auth, oauth }: {
     if (!currentQuestion || diagnosticCompleted || submitDiagnostic.isPending || currentAnswer === index) return;
     // Option clicks are observed selections/revisions, not verified correctness
     // or scored learning retries. Original option indices match issued aliases.
-    activity.observe({ action: "answer_submitted", itemId: String(currentQuestion.id), chosenAnswer: String(index) });
+    activity.observe({ action: currentAnswer === undefined ? "answer_submitted" : "selection_changed", itemId: String(currentQuestion.id), chosenAnswer: String(index) });
     setAnswers(previous => ({ ...previous, [currentQuestion.id]: index }));
   };
 

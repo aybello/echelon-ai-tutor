@@ -100,6 +100,8 @@ export interface InteractiveDrillProps {
   timerSeconds?: 30 | 60 | 90 | null;
   /** Ask the course parent for a fresh server-selected round after the last activity. */
   onNewRound?: () => void;
+  /** Renew a terminal delivery without changing preview navigation labels. */
+  onRenewDelivery?: () => void;
   /** Called once per finished activity so a parent can save it. Not called for skipped activities. */
   onResult?: (result: DrillResult) => void;
   /** Course-game engagement only; independent of signed-in saved progress. */
@@ -700,12 +702,13 @@ function RapidSwipeRound({ examples, onExit, timerSeconds, onResult, onComplete,
 }
 
 /** A local-only practice UI. Switching activities resets their temporary state. */
-export function InteractiveDrill({ examples, className, selectedMode, onModeChange, availableModes: suppliedModes, hideModeNavigation = false, timerSeconds = 30, onNewRound, onResult, onPlay, onActivity, saveNote }: InteractiveDrillProps) {
+export function InteractiveDrill({ examples, className, selectedMode, onModeChange, availableModes: suppliedModes, hideModeNavigation = false, timerSeconds = 30, onNewRound, onRenewDelivery, onResult, onPlay, onActivity, saveNote }: InteractiveDrillProps) {
   const availableModes = DRILL_MODES.filter(mode => suppliedModes ? suppliedModes.includes(mode.id) : examples.some(example => example.mode === mode.id));
   const [requestedMode, setRequestedMode] = useState<DrillMode | null>(null);
   const [requestedIndex, setRequestedIndex] = useState(0);
   const [attempt, setAttempt] = useState(0);
   const [round, setRound] = useState(false);
+  const [renewingDelivery, setRenewingDelivery] = useState(false);
   const headingFocusRequested = useRef(false);
   const play = useRef({ round: 0, timed: false, sequence: 0, answered: new Set<string>(), completed: false });
   const activityState = useRef({ started: false, completed: false, answered: new Set<string>(), steps: new Set<string>() });
@@ -728,8 +731,32 @@ export function InteractiveDrill({ examples, className, selectedMode, onModeChan
     activityState.current.completed = true;
     onActivity?.({ action: "completed" });
   };
-  const finishUntimedItem = () => {
-    if (!play.current.timed && modeExamples.every(item => play.current.answered.has(item.id))) finishActivity();
+  const leaveUntimedRound = () => {
+    // All cards answered is not an exit: Previous still supports genuine retries
+    // and explanation review. Seal this delivery only when leaving the round.
+    if (modeExamples.every(item => play.current.answered.has(item.id))) finishActivity();
+    const renew = onRenewDelivery ?? onNewRound;
+    if (renew) {
+      setRenewingDelivery(true);
+      renew();
+    } else {
+      // The standalone introductory demo has no server activity capability.
+      resetPlay(false);
+      changeIndex(0);
+    }
+  };
+  const exitTimedRound = () => {
+    const renew = onRenewDelivery ?? onNewRound;
+    if (renew) {
+      // A completed capability is terminal. The course parent must deliver a
+      // fresh server-selected round; never locally reopen the old capability.
+      setRenewingDelivery(true);
+      renew();
+      return;
+    }
+    resetPlay(false);
+    setRound(false);
+    changeIndex(0);
   };
   const resetPlay = (timed: boolean) => {
     play.current = { round: play.current.round + 1, timed, sequence: 0, answered: new Set(), completed: false };
@@ -788,10 +815,10 @@ export function InteractiveDrill({ examples, className, selectedMode, onModeChan
               </button>
             ))}
           </nav>}
-          {!example ? <p className="interactive-drill__empty" role="status">No practice activities are available yet.</p> : round && activeMode?.id === "rapid-swipe" && timerSeconds !== null ? (
-            <RapidSwipeRound key={JSON.stringify([modeExamples, timerSeconds])} timerSeconds={timerSeconds} onResult={result} onActivity={activity} onComplete={() => { completePlay(); finishActivity(); }} saveNote={saveNote} examples={modeExamples.filter((item): item is RapidSwipeExample => item.mode === "rapid-swipe")} onExit={() => { resetPlay(false); setRound(false); changeIndex(0); }} />
+          {renewingDelivery ? <p className="interactive-drill__empty" role="status">Loading your practice round…</p> : !example ? <p className="interactive-drill__empty" role="status">No practice activities are available yet.</p> : round && activeMode?.id === "rapid-swipe" && timerSeconds !== null ? (
+            <RapidSwipeRound key={JSON.stringify([modeExamples, timerSeconds])} timerSeconds={timerSeconds} onResult={result} onActivity={activity} onComplete={() => { completePlay(); finishActivity(); }} saveNote={saveNote} examples={modeExamples.filter((item): item is RapidSwipeExample => item.mode === "rapid-swipe")} onExit={exitTimedRound} />
           ) : (
-            <Activity key={`${selectedMode ?? activeMode?.id}-${example.id}-${attempt}-${timerSeconds}`} timerSeconds={timerSeconds} example={example} index={index} count={modeExamples.length} onPrevious={() => changeIndex(index - 1)} onNext={() => changeIndex(index + 1)} onRestart={() => { resetPlay(false); changeIndex(0); }} onNewRound={onNewRound} onResult={result} onActivity={activity} onFinished={finishUntimedItem} saveNote={saveNote} onStartRound={() => { resetPlay(true); setRound(true); }} focusHeadingIfRequested={focusHeadingIfRequested} />
+            <Activity key={`${selectedMode ?? activeMode?.id}-${example.id}-${attempt}-${timerSeconds}`} timerSeconds={timerSeconds} example={example} index={index} count={modeExamples.length} onPrevious={() => changeIndex(index - 1)} onNext={() => changeIndex(index + 1)} onRestart={leaveUntimedRound} onNewRound={onNewRound ? leaveUntimedRound : undefined} onResult={result} onActivity={activity} saveNote={saveNote} onStartRound={() => { resetPlay(true); setRound(true); }} focusHeadingIfRequested={focusHeadingIfRequested} />
           )}
         </div>
     </div>

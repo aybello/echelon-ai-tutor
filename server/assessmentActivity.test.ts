@@ -2,8 +2,9 @@ import { createHash, randomUUID } from "node:crypto";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { TrpcContext } from "./_core/context";
 import { assessmentActivityEventSchema, assessmentActivityIssueSchema, assessmentActivityRecordInputSchema, type AssessmentActivityEvent } from "../shared/assessmentActivity";
-const mocks = vi.hoisted(() => ({ getDb: vi.fn() }));
+const mocks = vi.hoisted(() => ({ getDb: vi.fn(), validateIssuedAttribution: vi.fn() }));
 vi.mock("./db", () => ({ getDb: mocks.getDb }));
+vi.mock("./teams/attemptAttribution", () => ({ validateIssuedAttribution: mocks.validateIssuedAttribution }));
 vi.mock("./_core/env", () => ({ ENV: { cookieSecret: "fixture-assessment-activity-only" } }));
 import { assessmentActivityAllowed, assessmentActivityDate, assessmentActivityEmailHash, assessmentActivityEventHash, createAssessmentActivitySecurity, issueAssessmentActivity, recordAssessmentActivity, reduceAssessmentActivityBatch, resumeAssessmentActivity, readAssessmentActivityItems } from "./assessmentActivity";
 
@@ -21,7 +22,10 @@ function token(context = ctx(), changes = {}) {
   return security.sign({ version: 1, sessionId: randomUUID(), courseKey: "oit", mode: "practice", actorHash: actor.actorHash, identityKind: actor.identityKind,
     manifestHash: "a".repeat(64), expires: Date.now() + 60000, ...(actor.identityKind === "anonymous" ? { anonymousNonce: "4f65f1d2-9a59-4a61-8ea5-5d205ba10a32" } : {}), ...changes });
 }
-beforeEach(() => { mocks.getDb.mockReset(); });
+beforeEach(() => {
+  mocks.getDb.mockReset();
+  mocks.validateIssuedAttribution.mockReset().mockImplementation(async (_identity, _key, issued) => issued);
+});
 
 describe("assessment activity privacy and identity", () => {
   it.each([{}, { "x-echelon-activity": "denied" }, { "x-echelon-activity": "allowed", dnt: "1" }, { "x-echelon-activity": "allowed", "sec-gpc": "1" }])("fails closed for preference %j", async headers => {
@@ -187,5 +191,129 @@ describe("assessment activity bounds and fail isolation", () => {
   it("server issuance does not claim participation; only later observed started is accepted", () => {
     expect(() => reduceAssessmentActivityBatch(initial, items, [event({ action: "issued", itemId: undefined, chosenAnswer: undefined, observedCorrect: undefined })], [])).toThrow();
     expect(reduceAssessmentActivityBatch(initial, items, [event({ action: "started", itemId: undefined, chosenAnswer: undefined, observedCorrect: undefined })], []).accepted).toHaveLength(1);
+  });
+});
+
+// No database: exercise the real record path against a locked, durable-row fixture.
+const annualOwnership = { orgId: 1, organizationMemberId: 2, flexLicenceId: null };
+const personalOwnership = { orgId: null, organizationMemberId: null, flexLicenceId: null };
+function recordFixture(context = ctx(), ownership: { orgId: number | null; organizationMemberId: number | null; flexLicenceId: number | null } = annualOwnership) {
+  const issuedItemsJson = JSON.stringify(items);
+  const manifestHash = createHash("sha256").update(issuedItemsJson).digest("hex");
+  const capability = token(context, { manifestHash });
+  const cap = security.verify(capability, context)!;
+  const row = { ...cap, ...security.actor(context)!, ...ownership, expiresAt: cap.expires, issuedItemsJson, ...initial };
+  const stored: { eventId: string; payloadHash: string }[] = [];
+  const writes: { kind: string; values: Record<string, unknown> | Record<string, unknown>[] }[] = [];
+  const lock = vi.fn(async () => [row]);
+  let selects = 0;
+  const tx = {
+    select: () => ({ from: () => ({ where: () => ++selects % 2 === 1 ? { limit: () => ({ for: lock }) } : Promise.resolve(stored) }) }),
+    update: vi.fn(() => ({ set: (values: Record<string, unknown>) => ({ where: async () => {
+      writes.push({ kind: "update", values }); Object.assign(row, values);
+    } }) })),
+    insert: vi.fn(() => ({ values: async (values: Record<string, unknown>[]) => {
+      writes.push({ kind: "events", values });
+      stored.push(...values.map(value => ({ eventId: String(value.eventId), payloadHash: String(value.payloadHash) })));
+    } })),
+  };
+  mocks.getDb.mockResolvedValue({ transaction: async (callback: (value: typeof tx) => unknown) => callback(tx) });
+  return { row, writes, tx, lock, capability, record: (events: AssessmentActivityEvent[]) => recordAssessmentActivity(context, { capability, events }) };
+}
+
+describe("observation attribution privacy under the session lock", () => {
+  it("revalidates a matching Annual assignment once per accepted batch with verified OAuth identity", async () => {
+    const fixture = recordFixture();
+    expect(await fixture.record([event(), event({ sequence: 3 })])).toMatchObject({ accepted: 2 });
+    expect(fixture.lock).toHaveBeenCalledWith("update");
+    expect(mocks.validateIssuedAttribution).toHaveBeenCalledTimes(1);
+    expect(mocks.validateIssuedAttribution).toHaveBeenCalledWith({ userId: 7, studentEmail: "same@example.test" }, "oit", expect.objectContaining(annualOwnership), fixture.tx);
+    expect(fixture.writes.map(write => write.kind)).toEqual(["events", "update"]);
+    expect(fixture.row).toMatchObject(annualOwnership);
+  });
+  it("clears every employer field before accepting observations during revocation", async () => {
+    const fixture = recordFixture();
+    mocks.validateIssuedAttribution.mockResolvedValue(personalOwnership);
+    expect(await fixture.record([event()])).toMatchObject({ recorded: true, accepted: 1 });
+    expect(fixture.writes[0]).toEqual({ kind: "update", values: personalOwnership });
+    expect(fixture.writes[1].kind).toBe("events");
+    expect(fixture.row).toMatchObject(personalOwnership);
+  });
+  it("reactivation cannot restore a previously cleared session or expose its earlier observations", async () => {
+    const fixture = recordFixture();
+    mocks.validateIssuedAttribution.mockResolvedValueOnce(personalOwnership);
+    await fixture.record([event()]);
+    mocks.validateIssuedAttribution.mockResolvedValue(annualOwnership);
+    expect(await fixture.record([event({ sequence: 3 })])).toMatchObject({ accepted: 1 });
+    expect(mocks.validateIssuedAttribution).toHaveBeenCalledTimes(1);
+    expect(fixture.row).toMatchObject(personalOwnership);
+    expect(fixture.writes.filter(write => write.kind === "update").every(write => (write.values as Record<string, unknown>).orgId !== 1)).toBe(true);
+  });
+  it.each([
+    { orgId: 3, organizationMemberId: 4, flexLicenceId: null },
+    { orgId: 1, organizationMemberId: 99, flexLicenceId: null },
+    { orgId: 1, organizationMemberId: null, flexLicenceId: 8 },
+  ])("does not reassign mismatched org/member/licence attribution %j", async current => {
+    const fixture = recordFixture();
+    mocks.validateIssuedAttribution.mockResolvedValue(current);
+    expect(await fixture.record([event()])).toMatchObject({ accepted: 1 });
+    expect(fixture.row).toMatchObject(personalOwnership);
+    expect(fixture.writes[0]).toEqual({ kind: "update", values: personalOwnership });
+  });
+  it("resolver failure permanently clears employer attribution instead of leaking a new observation", async () => {
+    const fixture = recordFixture();
+    mocks.validateIssuedAttribution.mockRejectedValue(new Error("resolver unavailable"));
+    expect(await fixture.record([event()])).toMatchObject({ accepted: 1 });
+    expect(fixture.writes[0]).toEqual({ kind: "update", values: personalOwnership });
+    expect(fixture.row).toMatchObject(personalOwnership);
+  });
+  it("does not insert new observations if clearing attribution fails", async () => {
+    const fixture = recordFixture();
+    mocks.validateIssuedAttribution.mockResolvedValue(personalOwnership);
+    fixture.tx.update.mockImplementation(() => { throw new Error("cannot clear attribution"); });
+    expect(await fixture.record([event()])).toMatchObject({ recorded: false });
+    expect(fixture.tx.insert).not.toHaveBeenCalled();
+  });
+  it("exact duplicate delivery neither writes nor needs revalidation", async () => {
+    const fixture = recordFixture(); const answer = event();
+    await fixture.record([answer]); fixture.writes.length = 0;
+    mocks.validateIssuedAttribution.mockClear();
+    expect(await fixture.record([answer])).toMatchObject({ accepted: 0, duplicates: 1 });
+    expect(fixture.writes).toEqual([]);
+    expect(mocks.validateIssuedAttribution).not.toHaveBeenCalled();
+  });
+  it("uses normalized verified-email identity for a Flex assignment", async () => {
+    const ownership = { orgId: 1, organizationMemberId: null, flexLicenceId: 8 };
+    const fixture = recordFixture(ctx("email", " Learner@Example.Test "), ownership);
+    expect(await fixture.record([event()])).toMatchObject({ accepted: 1 });
+    expect(mocks.validateIssuedAttribution).toHaveBeenCalledWith({ userId: null, studentEmail: "learner@example.test" }, "oit", expect.objectContaining(ownership), fixture.tx);
+    expect(fixture.row).toMatchObject(ownership);
+  });
+  it("never discovers an employer for an originally learner-only session", async () => {
+    const fixture = recordFixture(ctx(), personalOwnership);
+    mocks.validateIssuedAttribution.mockResolvedValue(annualOwnership);
+    expect(await fixture.record([event()])).toMatchObject({ accepted: 1 });
+    expect(mocks.validateIssuedAttribution).not.toHaveBeenCalled();
+    expect(fixture.row).toMatchObject(personalOwnership);
+  });
+  it.each(["revoked", "failure"])("issuance is learner-only when trusted attribution becomes %s", async reason => {
+    const writes: unknown[] = [];
+    const tx = { insert: () => ({ values: async (value: unknown) => { writes.push(value); } }) };
+    mocks.getDb.mockResolvedValue({ transaction: async (callback: (value: typeof tx) => unknown) => callback(tx) });
+    if (reason === "failure") mocks.validateIssuedAttribution.mockRejectedValue(new Error("unavailable"));
+    else mocks.validateIssuedAttribution.mockResolvedValue(personalOwnership);
+    expect(await issueAssessmentActivity(ctx(), issue, annualOwnership)).toMatchObject({ tracking: true });
+    expect(writes[0]).toMatchObject({ ...personalOwnership, userId: 7 });
+    expect(writes[1]).toMatchObject({ action: "issued" });
+  });
+});
+
+describe("read-only attribution executor reuse", () => {
+  it("the real validator resolves on the supplied transaction without acquiring a second connection", async () => {
+    const actual = await vi.importActual<typeof import("./teams/attemptAttribution")>("./teams/attemptAttribution");
+    const readDb = { select: vi.fn(() => ({ from: () => ({ where: async () => [] }) })) };
+    expect(await actual.validateIssuedAttribution({ userId: 7, studentEmail: null }, "oit", annualOwnership, readDb as never)).toEqual(personalOwnership);
+    expect(readDb.select).toHaveBeenCalledTimes(2);
+    expect(mocks.getDb).not.toHaveBeenCalled();
   });
 });

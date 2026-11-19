@@ -297,7 +297,7 @@ async function questionWorkingSet({ input, ctx }: {
   const attemptToken = await issuePracticeReceipt(course.questionBankKey, parsed.map(q => q.id), actor.owner, !hasAccess, attribution);
   // Flashcards, mock metadata and interactive fallback are not practice assessments.
   const activityTracking = !privilegedInteractiveAccess && (input.previewSurface ?? "practice") === "practice"
-    ? await issueAssessmentActivity(ctx, { courseKey: course.courseKey, mode: "practice", timed: input.activityTimed ?? null, items: practiceActivityItems(parsed) }, attribution)
+    ? await issueAssessmentActivity(actor.context, { courseKey: course.courseKey, mode: "practice", timed: input.activityTimed ?? null, items: practiceActivityItems(parsed) }, attribution)
     : { tracking: false as const };
   return { questions: parsed.map(q => ({ ...q, attemptToken, activityTracking })), activityTracking, locked: !hasAccess, total, trialLimit: previewLimit };
 }
@@ -392,7 +392,7 @@ export const quizRouter = router({
       const issuedIdentity = await resolveLearningIdentity(actor.context);
       const attribution = hasAccess ? await resolveAttemptAttribution(issuedIdentity, course.courseKey) : undefined;
       const attemptToken = await issuePracticeReceipt(course.questionBankKey, parsed.map(q => q.id), actor.owner, !hasAccess, attribution);
-      const activityTracking = await issueAssessmentActivity(ctx, { courseKey: course.courseKey, mode: "practice", timed: input.activityTimed ?? null, items: practiceActivityItems(parsed) }, attribution);
+      const activityTracking = await issueAssessmentActivity(actor.context, { courseKey: course.courseKey, mode: "practice", timed: input.activityTimed ?? null, items: practiceActivityItems(parsed) }, attribution);
       return { questions: parsed.map(q => ({ ...q, attemptToken, activityTracking })), activityTracking, locked: !hasAccess, total: Number(counts.total), hasMore: rows.length === input.limit, topicUnavailable };
     }),
 

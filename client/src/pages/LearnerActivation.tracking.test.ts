@@ -65,6 +65,7 @@ describe("real diagnostic UI handlers with offline hook harness", () => {
     tree = renderFlow();
     findHandler(tree, node => node.type === "button" && node.props.children?.[1]?.props?.children === "Original A").props.onClick();
     expect(testState.observe.mock.calls.map(call => call[0].chosenAnswer)).toEqual(["1", "0"]);
+    expect(testState.observe.mock.calls.map(call => call[0].action)).toEqual(["answer_submitted", "selection_changed"]);
     tree = renderFlow();
     findHandler(tree, node => node.type === "button" && node.props.children?.[1]?.props?.children === "Original A").props.onClick();
     expect(testState.observe).toHaveBeenCalledTimes(2);

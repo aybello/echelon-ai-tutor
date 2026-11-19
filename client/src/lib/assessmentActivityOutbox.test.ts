@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   acknowledgeAssessmentActivityOutbox, assessmentActivityOutboxKey, assessmentActivityOutboxSchema,
-  clearAssessmentActivityActor, loadAssessmentActivityOutbox, saveAssessmentActivityOutbox,
+  clearAssessmentActivityActor, loadAssessmentActivityOutbox, pendingAssessmentActivityOutboxes, saveAssessmentActivityOutbox,
   sequenceAssessmentActivityOutbox, type AssessmentActivityOutbox, type AssessmentActivityStorage,
 } from "./assessmentActivityOutbox";
 import type { AssessmentActivityEvent } from "@shared/assessmentActivity";
@@ -78,4 +78,30 @@ describe("browser assessment observation outbox", () => {
     expect(value.queue).toEqual([event()]);
     expect(clearAssessmentActivityActor(null, value.actorKey)).toBe(false);
   });
+  it("discovers only exact actor pending capabilities, bounded to ten without deleting overflow", () => {
+    const s = storage();
+    const boxes = Array.from({ length: 11 }, (_, i) => ({ ...box(), capability: { ...box().capability, capability: `cap-${i}` } }));
+    boxes.forEach(value => saveAssessmentActivityOutbox(s, value));
+    saveAssessmentActivityOutbox(s, { ...box(), actorKey: "anonymous" });
+    const pending = pendingAssessmentActivityOutboxes(s, "user:7");
+    expect(pending.values).toHaveLength(10); expect(pending.problem).toBe("limit");
+    expect(pending.values.every(value => value.actorKey === "user:7")).toBe(true);
+    expect(s.length).toBe(12);
+    expect(pendingAssessmentActivityOutboxes(s, "user:8").values).toEqual([]);
+  });
+  it("never salvages corrupt, oversized, or mismatched historical queues", () => {
+    const s = storage(); const value = box(); const key = assessmentActivityOutboxKey(value);
+    for (const raw of ["{", "x".repeat(256001), JSON.stringify({ ...value, actorKey: "anonymous" }), JSON.stringify({ ...value, queue: [...Array(251)].map((_, i) => event(i + 1)) })]) {
+      s.setItem(key, raw);
+      expect(pendingAssessmentActivityOutboxes(s, value.actorKey)).toEqual({ values: [], problem: "invalid" });
+    }
+    expect(pendingAssessmentActivityOutboxes(null, value.actorKey).problem).toBe("unavailable");
+  });
+  it("bounds storage-key enumeration even for unrelated hostile storage", () => {
+    const s = storage(); for (let i = 0; i < 1100; i++) s.setItem(`unrelated-${i}`, "x");
+    let reads = 0; const bounded = { ...s, get length() { return s.length; }, key: (i: number) => { reads++; return s.key(i); } };
+    expect(pendingAssessmentActivityOutboxes(bounded, "user:7")).toEqual({ values: [], problem: "limit" });
+    expect(reads).toBe(1000);
+  });
+
 });

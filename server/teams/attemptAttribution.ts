@@ -10,14 +10,15 @@ import { assignedAnnualCourseKeys } from "../trainingRecords";
 export type AttemptAttribution = { orgId: number | null; organizationMemberId: number | null; flexLicenceId: number | null };
 export const PERSONAL_ATTRIBUTION: AttemptAttribution = { orgId: null, organizationMemberId: null, flexLicenceId: null };
 type Identity = { userId: number | null; studentEmail: string | null };
+type AttributionReadDb = Pick<NonNullable<Awaited<ReturnType<typeof getDb>>>, "select">;
 
 /** Read-only: a licence is Flex membership. Never create an Annual membership to
  * attribute study, and never guess between employers, overlapping passes or a
  * personal entitlement. The signed issuance receipt carries this decision. */
-export async function resolveAttemptAttribution(identity: Identity, key: string, now = new Date()): Promise<AttemptAttribution> {
+export async function resolveAttemptAttribution(identity: Identity, key: string, now = new Date(), readDb?: AttributionReadDb): Promise<AttemptAttribution> {
   const course = resolveCourseKey(key);
   if (!course?.teamAssignable || (!identity.userId && !identity.studentEmail)) return { ...PERSONAL_ATTRIBUTION };
-  const db = await getDb();
+  const db = readDb ?? await getDb();
   if (!db) return { ...PERSONAL_ATTRIBUTION };
   const email = normalizeEmail(identity.studentEmail);
   const identityWhere = or(identity.userId ? eq(purchases.userId, identity.userId) : undefined, email ? eq(purchases.email, email) : undefined)!;
@@ -44,8 +45,8 @@ export async function resolveAttemptAttribution(identity: Identity, key: string,
 
 /** Prevent a later membership change from silently reassigning a issued attempt.
  * Legacy receipts without attribution remain learner-owned but unreported. */
-export async function validateIssuedAttribution(identity: Identity, key: string, issued?: AttemptAttribution | null) {
+export async function validateIssuedAttribution(identity: Identity, key: string, issued?: AttemptAttribution | null, readDb?: AttributionReadDb) {
   if (!issued?.orgId) return { ...PERSONAL_ATTRIBUTION };
-  const current = await resolveAttemptAttribution(identity, key);
+  const current = await resolveAttemptAttribution(identity, key, new Date(), readDb);
   return current.orgId === issued.orgId && current.organizationMemberId === issued.organizationMemberId && current.flexLicenceId === issued.flexLicenceId ? current : { ...PERSONAL_ATTRIBUTION };
 }

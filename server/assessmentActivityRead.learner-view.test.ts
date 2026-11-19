@@ -107,3 +107,49 @@ describe("learner-view exact observed read scope", () => {
     expect(org).toContain("annualAssessmentScope(orgId, input.memberId)");
   });
 });
+
+function flexFixture(changes: Record<string, unknown> = {}) {
+  const startsAt = new Date(Date.now() - 20000);
+  return { id: 88, organizationId: 9, status: "active", courseKey: "oit", operatorUserId: 42,
+    invitedEmail: " PERSON@Example.Test ", startsAt, activatedAt: new Date(startsAt.getTime() + 1000),
+    accessEndsAt: new Date(Date.now() + 86400000), reportingEndsAt: new Date(Date.now() + 172800000), ...changes };
+}
+describe("Flex exact-licence dual-auth SQL", () => {
+  it("allows exact assigned OAuth user OR hashed invited email, never a global email history join", async () => {
+    mockDb(new Map([[teamFlexLicences, [flexFixture()]]]));
+    const scope = await flexAssessmentScope(9, 88);
+    const query = sqlQuery(scope.predicate);
+    expect(query.params).toEqual(["user", 42, "verified-email", sqlQuery(assessmentActorFilter({ email: "person@example.test" })).params[1], 9, 88, "oit"]);
+    expect(query.sql).toContain(" or ");
+    expect(query.sql).toContain("`organizationMemberId` is null");
+    expect(query.sql).not.toContain("exists");
+    expect(query.sql).not.toContain("join");
+    expect(query.sql).toContain("`emailHash` is null");
+    expect(query.sql).toContain("`userId` is null");
+    const window = sqlQuery(assessmentReadPredicate(scope, 30).predicate);
+    expect(window.params).toContain(scope.startsAt);
+    expect(window.params).toContain(scope.endsAt);
+    expect(window.sql).toContain("`lastObservedAt` < ?");
+  });
+  it("when no account ID is assigned, allows users.email EXISTS OR the normalized invited-email hash", async () => {
+    mockDb(new Map([[teamFlexLicences, [flexFixture({ operatorUserId: null })]]]));
+    const scope = await flexAssessmentScope(9, 88);
+    const query = sqlQuery(scope.predicate);
+    expect(query.params).toEqual(["user", "person@example.test", "verified-email", sqlQuery(assessmentActorFilter({ email: "person@example.test" })).params[1], 9, 88, "oit"]);
+    expect(query.sql).toContain("exists (select 1 from `users`");
+    expect(query.sql).toContain("`users`.`id` = `assessment_activity_sessions`.`userId`");
+    expect(query.sql).toContain(" or ");
+    expect(query.sql).not.toContain("join");
+  });
+  it("does not invent an email branch for an ID-only Flex licence", async () => {
+    mockDb(new Map([[teamFlexLicences, [flexFixture({ invitedEmail: null })]]]));
+    const query = sqlQuery((await flexAssessmentScope(9, 88)).predicate);
+    expect(query.params).toEqual(["user", 42, 9, 88, "oit"]);
+    expect(query.params).not.toContain("verified-email");
+    expect(query.sql).not.toContain("exists");
+  });
+  it("does not authorize a Flex licence with no verifiable actor", async () => {
+    mockDb(new Map([[teamFlexLicences, [flexFixture({ operatorUserId: null, invitedEmail: null })]]]));
+    await expect(flexAssessmentScope(9, 88)).rejects.toMatchObject({ code: "NOT_FOUND" });
+  });
+});

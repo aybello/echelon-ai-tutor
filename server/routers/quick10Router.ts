@@ -117,7 +117,7 @@ export const quick10Router = router({
       const picks = pickQuick10(parsed.map(q => ({ questionNum: q.id, module: q.module, q })), history).slice(0, input?.questionCount ?? 10);
       const attribution = hasAccess ? await resolveAttemptAttribution(issued, course.courseKey) : undefined;
       const attemptToken = await issuePracticeReceipt(course.questionBankKey, picks.map(p => p.question.q.id), actor.owner, !hasAccess, attribution);
-      const activityTracking = await issueAssessmentActivity(ctx, { courseKey: course.courseKey, mode: "quick10", timed: false, items: practiceActivityItems(picks.map(p => p.question.q)) }, attribution);
+      const activityTracking = await issueAssessmentActivity(actor.context, { courseKey: course.courseKey, mode: "quick10", timed: false, items: practiceActivityItems(picks.map(p => p.question.q)) }, attribution);
 
       return {
         courseKey: course.courseKey,

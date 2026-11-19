@@ -28,7 +28,7 @@ import { DEFAULT_QUIZ_SETTINGS, type QuizSettings } from "@/components/QuizSetti
 import type { DBQuestion } from "@/hooks/useQuestionBank";
 import { PracticeQueue } from "@/lib/practiceQueue";
 import { useLearningActivitySession } from "@/hooks/useLearningActivitySession";
-import { useAssessmentActivity } from "@/hooks/useAssessmentActivity";
+import { useAssessmentActivity, type ActivityObservation } from "@/hooks/useAssessmentActivity";
 import { useVerifiedPracticeSaveScope } from "@/components/PracticeSaveStatus";
 import { assessmentActivityActions, type AssessmentActivityCapability } from "@shared/assessmentActivity";
 
@@ -166,7 +166,7 @@ export function createHistoryEntry(
     questionId: question.id,
     module: question.module,
     difficulty: question.difficulty ?? undefined,
-    correct: selectedOption !== null && selectedOption === (question.correctIndex ?? 0),
+    correct: selectedOption === null ? undefined : selectedOption === (question.correctIndex ?? 0),
     confidence,
     selectedOption,
     questionObj: question,
@@ -178,7 +178,7 @@ export function summarizeHistory(history: HistoryEntry[]): {
   wrongCount: number;
 } {
   const correctCount = history.filter((entry) => entry.correct === true).length;
-  return { correctCount, wrongCount: history.length - correctCount };
+  return { correctCount, wrongCount: history.filter(entry => entry.correct === false).length };
 }
 
 /**
@@ -378,7 +378,32 @@ export function useQuizSession({
   const [activityTracking, setActivityTracking] = useState<AssessmentActivityCapability | null>(null);
   const actorScope = useVerifiedPracticeSaveScope(examType);
   const actorKey = actorScope ? JSON.stringify(actorScope) : "unverified";
-  const { observe, retry: retryActivity } = useAssessmentActivity(activityTracking, actorKey);
+  const { observeFor: enqueueObservation, retry: retryActivity } = useAssessmentActivity(activityTracking, actorKey);
+  // Exact-capability writes use the shared same-actor durable worker, including
+  // late canonical acknowledgments and terminal Back/Next review.
+  type ObservedPage = { cap: AssessmentActivityCapability; ids: Set<number>; answers: Map<number, boolean | null>; left: boolean; closing: boolean; terminal: boolean; observed: boolean };
+  const observedPages = useRef(new Map<string, ObservedPage>());
+  const registerQuestions = useCallback((questions: DBQuestion[]) => {
+    for (const question of questions) {
+      const cap = (question as DBQuestion & { activityTracking?: AssessmentActivityCapability }).activityTracking;
+      if (!cap?.tracking) continue;
+      let page = observedPages.current.get(cap.capability);
+      if (!page) {
+        page = { cap, ids: new Set(), answers: new Map(), left: false, closing: false, terminal: false, observed: false };
+        observedPages.current.set(cap.capability, page);
+      }
+      page.ids.add(question.id);
+    }
+  }, []);
+  const settleObservedPages = useCallback(() => {
+    for (const page of observedPages.current.values()) {
+      if (!page.observed || page.terminal || [...page.answers.values()].some(answer => answer === null)) continue;
+      const complete = page.ids.size > 0 && [...page.ids].every(id => page.answers.get(id) === true);
+      if (!(page.closing || (page.left && [...page.ids].every(id => page.answers.has(id))))) continue;
+      page.terminal = true;
+      enqueueObservation(page.cap, { action: complete ? "completed" : "abandoned" });
+    }
+  }, [enqueueObservation]);
   const previousActor = useRef(actorKey);
   useEffect(() => {
     if (previousActor.current === actorKey) return;
@@ -386,19 +411,37 @@ export function useQuizSession({
     setHistory([]);
     setUsedIds(new Set());
     clearForwardNavigation();
+    observedPages.current.clear();
     setActivityTracking(null);
   }, [actorKey, clearForwardNavigation]);
   const questionTracking = (current as (DBQuestion & { activityTracking?: AssessmentActivityCapability }) | null)?.activityTracking;
-  const ownsActivityItem = Boolean(activityTracking && questionTracking?.tracking && questionTracking.capability === activityTracking.capability);
+  const ownsActivityItem = Boolean(questionTracking?.tracking);
+  useEffect(() => { setActivityTracking(questionTracking?.tracking ? questionTracking : null); }, [questionTracking]);
+  const observe = useCallback((event: ActivityObservation) => {
+    if (questionTracking?.tracking) enqueueObservation(questionTracking, event);
+  }, [questionTracking, enqueueObservation]);
+  const startedCapabilities = useRef(new Set<string>());
+  const previousQuestionCapability = useRef<string | undefined>(undefined);
+  useEffect(() => {
+    if (freeCourse) registerQuestions(allQuestions);
+    const previous = previousQuestionCapability.current;
+    if (previous && previous !== questionTracking?.capability) {
+      const page = observedPages.current.get(previous);
+      if (page) page.left = true;
+      settleObservedPages();
+    }
+    previousQuestionCapability.current = questionTracking?.capability;
+  }, [allQuestions, freeCourse, questionTracking, registerQuestions, settleObservedPages]);
   const presentationRef = useRef("");
-  const startedActivityRef = useRef("");
   useEffect(() => {
     if (!current || !ownsActivityItem) return;
-    if (startedActivityRef.current !== activityTracking?.sessionId) {
-      startedActivityRef.current = activityTracking?.sessionId ?? "";
+    const page = observedPages.current.get(questionTracking!.capability);
+    if (page) page.observed = true;
+    if (!startedCapabilities.current.has(questionTracking!.capability)) {
+      startedCapabilities.current.add(questionTracking!.capability);
       observe({ action: "started" });
     }
-    const key = `${activityTracking?.sessionId}:${current.id}`;
+    const key = `${questionTracking?.sessionId}:${current.id}`;
     if (presentationRef.current === key) return;
     presentationRef.current = key;
     observe({ action: "item_presented", itemId: String(current.id) });
@@ -407,7 +450,7 @@ export function useQuizSession({
   const explanationRef = useRef("");
   useEffect(() => {
     if (!current || !confirmed || !ownsActivityItem || !current.explanation) return;
-    const key = `${activityTracking?.sessionId}:${current.id}`;
+    const key = `${questionTracking?.sessionId}:${current.id}`;
     if (explanationRef.current === key) return;
     explanationRef.current = key;
     observe({ action: "explanation_opened", itemId: String(current.id) });
@@ -587,14 +630,25 @@ export function useQuizSession({
     accessToken: storedAccessTokenForAccess ?? null,
   }), [examType, selectedModule, selectedTopic, calcOnly, quizSettings.difficulty, quizSettings.timedMode, quizMode, revision, actorKey, storedAccessTokenForAccess]);
   const logAttemptFn = useAttemptLogger(examType, quizMode, practiceQueueScope);
-  const acknowledgedAnswers = useRef(new Map<string, boolean>());
-  const roundScopeRef = useRef(practiceQueueScope);
-  roundScopeRef.current = practiceQueueScope;
   const observeAcknowledgedFinish = useCallback(() => {
-    if (ownsActivityItem && history.length > 0 && history.every(entry => entry.selectedOption !== null && acknowledgedAnswers.current.get(`${practiceQueueScope}:${entry.questionId}`) === true)) {
-      observe({ action: "completed" });
-    }
-  }, [history, ownsActivityItem, practiceQueueScope, observe]);
+    for (const page of observedPages.current.values()) page.closing = true;
+    settleObservedPages();
+  }, [settleObservedPages]);
+  const saveCanonicalAnswer = useCallback((question: DBQuestion, save: Promise<boolean>) => {
+    const cap = (question as DBQuestion & { activityTracking?: AssessmentActivityCapability }).activityTracking;
+    const page = cap?.tracking ? observedPages.current.get(cap.capability) : undefined;
+    if (!page || page.terminal) return;
+    page.answers.set(question.id, null);
+    void save.then(saved => {
+      if (observedPages.current.get(page.cap.capability) !== page) return;
+      page.answers.set(question.id, saved === true);
+      settleObservedPages();
+    }, () => {
+      if (observedPages.current.get(page.cap.capability) !== page) return;
+      page.answers.set(question.id, false);
+      settleObservedPages();
+    });
+  }, [settleObservedPages]);
   const practiceQueueGenerationRef = useRef(0);
   const practiceQueueGeneration = useMemo(() => {
     practiceQueueGenerationRef.current += 1;
@@ -609,6 +663,7 @@ export function useQuizSession({
     if (!shouldApplyPracticePageResult(practiceQueueGeneration, activePracticeQueueGeneration.current)) {
       return page;
     }
+    registerQuestions(page.questions);
     if ("topicUnavailable" in page && page.topicUnavailable === true) {
       setSelectedTopic(null);
     }
@@ -627,13 +682,12 @@ export function useQuizSession({
     return page;
   },
     ["standard", "quick10"].includes(quizMode) ? visited.current : new Set<number>()),
-    [freeCourse, examType, selectedModule, selectedTopic, calcOnly, quizSettings.difficulty, quizMode, revision, storedAccessTokenForAccess, practiceQueueGeneration]);
+    [freeCourse, examType, selectedModule, selectedTopic, calcOnly, quizSettings.difficulty, quizMode, revision, storedAccessTokenForAccess, practiceQueueGeneration, registerQuestions]);
   const activeQueue = useRef(queue);
   activeQueue.current = queue;
   const retireActivity = useCallback(() => {
-    if (activityTracking) observe({ action: "abandoned" });
-    setActivityTracking(null);
-  }, [activityTracking, observe]);
+    observeAcknowledgedFinish();
+  }, [observeAcknowledgedFinish]);
   // A delayed answer belongs to its original queue and mounted session only.
   useEffect(() => cancelTimedAdvance, [queue, cancelTimedAdvance]);
   const fetching = useRef<PracticeQueue<DBQuestion> | null>(null);
@@ -647,18 +701,16 @@ export function useQuizSession({
       if (!shouldApplyPracticeQueueResult(queue, activeQueue.current)) return;
       setAvailableQuestionCount(queue.total);
       setCurrent(next);
-      const nextTracking = (next as (DBQuestion & { activityTracking?: AssessmentActivityCapability }) | null)?.activityTracking;
-      setActivityTracking(nextTracking?.tracking ? nextTracking : null);
       clearUI();
       if (next) clearForwardNavigation();
       setQuestionStatus(next ? undefined : "empty");
-      if (!next && history.length) trackQuizCompleted(history, "pool_exhausted");
+      if (!next && history.length) { observeAcknowledgedFinish(); trackQuizCompleted(history, "pool_exhausted"); }
     } catch (error) {
       if (!shouldApplyPracticeQueueResult(queue, activeQueue.current)) return;
       setQuestionError(error instanceof Error ? error.message : "Questions could not be loaded.");
       setQuestionStatus("error");
     } finally { if (fetching.current === queue) fetching.current = null; }
-  }, [queue, history, trialUnlocked, clearUI, trackQuizCompleted, clearForwardNavigation]);
+  }, [queue, history, trialUnlocked, clearUI, trackQuizCompleted, clearForwardNavigation, observeAcknowledgedFinish]);
   const requestNextRef = useRef(requestNext);
   requestNextRef.current = requestNext;
   useEffect(() => {
@@ -669,8 +721,11 @@ export function useQuizSession({
     activeQueue.current = queue;
     setInitialized(true);
     void requestNextRef.current();
-    return () => { if (activeQueue.current === queue) activeQueue.current = null; };
-  }, [queue, clearForwardNavigation]);
+    return () => {
+      observeAcknowledgedFinish();
+      if (activeQueue.current === queue) activeQueue.current = null;
+    };
+  }, [queue, clearForwardNavigation, observeAcknowledgedFinish]);
 
   // ── Initialize (call once when allQuestions loads) ──────────────────────────
   const initialize = useCallback(() => {
@@ -710,14 +765,13 @@ export function useQuizSession({
       ? (confidence <= 4 ? (confidence >= 3 ? 3 : 1) : confidence <= 33 ? 1 : confidence <= 66 ? 2 : 3)
       : null;
     // Log attempt to backend
-    const submittedScope = practiceQueueScope;
-    void logAttemptFn({
+    saveCanonicalAnswer(current, logAttemptFn({
       questionId: current.id,
       attemptToken: current.attemptToken,
       selectedIndex: selected ?? 0,
       bankKey: examType,
       confidenceLevel: confLevel,
-    }).then(saved => { if (roundScopeRef.current === submittedScope) acknowledgedAnswers.current.set(`${submittedScope}:${current.id}`, saved); });
+    }));
 
     // Refetch missed questions if wrong
     if (!isCorrect) setTimeout(() => refetchMissed(), 500);
@@ -757,6 +811,7 @@ export function useQuizSession({
     ownsActivityItem,
     observe,
     practiceQueueScope,
+    saveCanonicalAnswer,
   ]);
 
   // ── Next question (step 2: advance to next question) ───────────────────────
@@ -819,6 +874,7 @@ export function useQuizSession({
       next = getAdaptiveNext(history, recycledPool, trialUnlocked);
       if (!next) {
         // Truly exhausted (very small bank + long session) — end session cleanly
+        observeAcknowledgedFinish();
         trackQuizCompleted(history, "pool_exhausted");
         setCurrent(null);
         return;
@@ -858,8 +914,7 @@ export function useQuizSession({
 
   // ── Reset session ──────────────────────────────────────────────────────────
   const resetSession = useCallback(() => {
-    if (activityTracking) observe({ action: "abandoned" });
-    setActivityTracking(null);
+    retireActivity();
     resetAnalyticsTracking();
     clearForwardNavigation();
     setHistory([]);
@@ -882,7 +937,7 @@ export function useQuizSession({
     }
     setRevision(v => v + 1);
     setCurrent(pickRandom(newPool.length > 0 ? newPool : allQuestions));
-  }, [allQuestions, selectedModule, calcOnly, quizSettings.difficulty, clearUI, resetAnalyticsTracking, queue, clearForwardNavigation, activityTracking, observe]);
+  }, [allQuestions, selectedModule, calcOnly, quizSettings.difficulty, clearUI, resetAnalyticsTracking, queue, clearForwardNavigation, retireActivity]);
 
   // ── Mode change ────────────────────────────────────────────────────────────
   const handleModeChange = useCallback(
@@ -1024,16 +1079,16 @@ export function useQuizSession({
     const confLevel = latestConfidence != null
       ? (latestConfidence <= 4 ? (latestConfidence >= 3 ? 3 : 1) : latestConfidence <= 33 ? 1 : latestConfidence <= 66 ? 2 : 3)
       : null;
-    // Unanswered timeouts remain local incorrect outcomes, never invented choices.
+    // An unanswered timeout is neither a canonical answer nor an incorrect choice.
     if (effectiveSelected !== null) {
       if (ownsActivityItem) observe({ action: "answer_submitted", itemId: String(current.id), chosenAnswer: String(effectiveSelected), observedCorrect: effectiveSelected === correctIdx });
-      logAttemptFn({
+      saveCanonicalAnswer(current, logAttemptFn({
       questionId: current.id,
       attemptToken: current.attemptToken,
       selectedIndex: effectiveSelected,
       bankKey: examType,
       confidenceLevel: confLevel,
-      });
+      }));
     } else if (ownsActivityItem && (assessmentActivityActions as readonly string[]).includes("timed_out")) {
       observe({ action: "timed_out" as typeof assessmentActivityActions[number], itemId: String(current.id) });
     }
@@ -1048,7 +1103,7 @@ export function useQuizSession({
       timedAdvanceRef.current = null;
       handleNextRef.current();
     }, 800);
-  }, [confirmed, current, logAttemptFn, cancelTimedAdvance, ownsActivityItem, observe, examType]);
+  }, [confirmed, current, logAttemptFn, cancelTimedAdvance, ownsActivityItem, observe, examType, saveCanonicalAnswer]);
 
   // ── Gate unlocked handler ──────────────────────────────────────────────────
   const handleGateUnlocked = useCallback(() => {

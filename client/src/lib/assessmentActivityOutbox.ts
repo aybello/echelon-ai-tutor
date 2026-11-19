@@ -3,6 +3,8 @@ import { assessmentActivityEventSchema, type AssessmentActivityEvent } from "@sh
 
 export const ASSESSMENT_ACTIVITY_OUTBOX_PREFIX = "echelon:assessment-activity-outbox:v1:";
 export const ASSESSMENT_ACTIVITY_QUEUE_LIMIT = 250;
+export const ASSESSMENT_ACTIVITY_PENDING_CAPABILITY_LIMIT = 10;
+const MAX_STORAGE_KEYS = 1000;
 const MAX_BYTES = 256_000;
 export const assessmentActivityCapabilitySchema = z.object({
   tracking: z.literal(true), sessionId: z.string().uuid(),
@@ -46,11 +48,39 @@ export function loadAssessmentActivityOutbox(storage: AssessmentActivityStorage 
   catch { return { value: null, problem: "unavailable" }; }
   if (raw === null) return { value: null, problem: null };
   try {
-    if (raw.length > MAX_BYTES) throw Error("Oversized outbox");
+    if (raw.length > MAX_BYTES || new TextEncoder().encode(raw).byteLength > MAX_BYTES) throw Error("Oversized outbox");
     const value = assessmentActivityOutboxSchema.parse(JSON.parse(raw));
     if (assessmentActivityOutboxKey(value) !== assessmentActivityOutboxKey(scope)) throw Error("Scope mismatch");
     return { value, problem: null };
   } catch { return { value: null, problem: "invalid" }; }
+}
+/** Discover only exact actor scopes. Every capability is revalidated by resume/record;
+ * corrupt entries are never partially salvaged or relabelled as the current actor. */
+export function pendingAssessmentActivityOutboxes(storage: AssessmentActivityStorage | null, actorKey: string): {
+  values: AssessmentActivityOutbox[]; problem: "unavailable" | "invalid" | "limit" | null;
+} {
+  const values: AssessmentActivityOutbox[] = [];
+  if (!storage) return { values, problem: "unavailable" };
+  let problem: "unavailable" | "invalid" | "limit" | null = null;
+  try {
+    const length = storage.length;
+    if (length > MAX_STORAGE_KEYS) problem = "limit";
+    let matched = 0;
+    for (let i = 0; i < Math.min(length, MAX_STORAGE_KEYS); i++) {
+      const key = storage.key(i);
+      if (!key?.startsWith(ASSESSMENT_ACTIVITY_OUTBOX_PREFIX)) continue;
+      let tuple: unknown;
+      try { tuple = JSON.parse(key.slice(ASSESSMENT_ACTIVITY_OUTBOX_PREFIX.length)); } catch { continue; }
+      if (!Array.isArray(tuple) || tuple[0] !== actorKey) continue;
+      if (++matched > ASSESSMENT_ACTIVITY_PENDING_CAPABILITY_LIMIT) { problem = "limit"; break; }
+      if (tuple.length !== 3 || typeof tuple[1] !== "string" || typeof tuple[2] !== "string") { problem = "invalid"; continue; }
+      // Only the session/capability fields are used to construct the lookup key.
+      const loaded = loadAssessmentActivityOutbox(storage, { actorKey, capability: { sessionId: tuple[1], capability: tuple[2] } as Scope["capability"] });
+      if (loaded.problem) problem = loaded.problem;
+      else if (loaded.value?.queue.length) values.push(loaded.value);
+    }
+  } catch { problem = "unavailable"; }
+  return { values, problem };
 }
 /** Persist before sending, and after each explicit acknowledgement. Never claim durability on storage failure. */
 export function saveAssessmentActivityOutbox(storage: AssessmentActivityStorage | null, value: AssessmentActivityOutbox): boolean {
@@ -61,7 +91,7 @@ export function saveAssessmentActivityOutbox(storage: AssessmentActivityStorage 
     if (!parsed.queue.length) storage.removeItem(key);
     else {
       const raw = JSON.stringify(parsed);
-      if (raw.length > MAX_BYTES) return false;
+      if (raw.length > MAX_BYTES || new TextEncoder().encode(raw).byteLength > MAX_BYTES) return false;
       storage.setItem(key, raw);
     }
     return true;

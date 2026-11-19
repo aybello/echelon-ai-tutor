@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import React from "react";
-import type { DrillActivity, DrillExample } from "./InteractiveDrill";
+import type { DrillActivity, DrillExample, InteractiveDrillProps } from "./InteractiveDrill";
 
 // A deterministic hook harness exercises handlers without a DOM/browser, live
 // credentials or replacing the game logic with a test implementation.
@@ -41,13 +41,15 @@ function expand(element: any, path = "root"): Node[] {
 }
 function flatten(nodes: Node[]): Node[] { return nodes.flatMap(node => [node, ...flatten(node.children)]); }
 function text(node: Node): string { return node.type === "text" ? node.props.text : node.children.map(text).join(""); }
-async function drill(example: DrillExample | DrillExample[], timerSeconds: 30 | null = null) {
+async function drill(example: DrillExample | DrillExample[], timerSeconds: 30 | null = null, options: Partial<InteractiveDrillProps> = {}) {
   const events: DrillActivity[] = []; const results: any[] = [];
-  const props = { examples: Array.isArray(example) ? example : [example], timerSeconds, onActivity: (event: DrillActivity) => events.push(event), onResult: (result: any) => results.push(result) };
+  let delivery = 0;
+  const renew = vi.fn();
+  const props = { onRenewDelivery: renew, ...options, examples: Array.isArray(example) ? example : [example], timerSeconds, onActivity: (event: DrillActivity) => events.push(event), onResult: (result: any) => results.push(result) };
   let tree: Node[] = [];
-  const render = async () => { tree = expand(React.createElement(InteractiveDrill, props)); harness.effects.splice(0).forEach(effect => effect()); await Promise.resolve(); };
+  const render = async () => { tree = expand(React.createElement(InteractiveDrill, { ...props, key: `server-delivery-${delivery}` })); harness.effects.splice(0).forEach(effect => effect()); await Promise.resolve(); };
   await render();
-  return { events, results, render, async click(label: string) { const button = flatten(tree).find(node => node.type === "button" && text(node) === label); if (!button) throw new Error(`Missing ${label}`); button.props.onClick({ detail: 1 }); await render(); } };
+  return { events, results, renew, render, async deliver() { delivery++; await render(); }, buttons() { return flatten(tree).filter(node => node.type === "button").map(text); }, async click(label: string) { const button = flatten(tree).find(node => node.type === "button" && text(node) === label); if (!button) throw new Error(`Missing ${label}`); button.props.onClick({ detail: 1 }); await render(); } };
 }
 beforeEach(() => { harness.cells.clear(); harness.effects = []; vi.stubGlobal("React", React); });
 afterEach(() => vi.unstubAllGlobals());
@@ -57,7 +59,7 @@ describe("actual six-game meaningful observations, no browser", () => {
     const view = await drill({ id: "choice", mode, prompt: "Pick", options: [{ id: "long-one", label: "One" }, { id: "long-two", label: "Two" }], correctOptionId: "long-one", explanation: "Reason" });
     expect(view.events).toEqual([{ action: "started" }, { action: "item_presented", itemId: "choice" }]);
     await view.click("Two");
-    expect(view.events.slice(2)).toEqual([{ action: "answer_submitted", itemId: "choice", chosenAnswer: "1", observedCorrect: false }, { action: "explanation_opened", itemId: "choice" }, { action: "completed" }]);
+    expect(view.events.slice(2)).toEqual([{ action: "answer_submitted", itemId: "choice", chosenAnswer: "1", observedCorrect: false }, { action: "explanation_opened", itemId: "choice" }]);
     expect(view.results).toEqual([{ exampleId: "choice", mode, correct: false }]);
     await view.click("Two"); expect(view.results).toHaveLength(1);
   });
@@ -77,7 +79,9 @@ describe("actual six-game meaningful observations, no browser", () => {
     expect(view.events).toContainEqual({ action: "retry", itemId: "match", stepId: "pair:0" });
     expect(view.events.filter(event => event.action === "step_answer")).toHaveLength(4);
     expect(view.results).toEqual([{ exampleId: "match", mode: "speed-match", correct: false }]);
-    expect(view.events.slice(-2)).toEqual([{ action: "explanation_opened", itemId: "match" }, { action: "completed" }]);
+    expect(view.events.slice(-1)).toEqual([{ action: "explanation_opened", itemId: "match" }]);
+    await view.click("Start again");
+    expect(view.events.slice(-1)).toEqual([{ action: "completed" }]);
   });
   it("records effect choices on change and each response on Check; preserves aggregate all-effects score", async () => {
     const view = await drill({ id: "effect", mode: "cause-effect", prompt: "Predict", effects: [{ id: "p", parameter: "Pressure", direction: "decrease", explanation: "Reason" }] });
@@ -123,4 +127,64 @@ describe("actual six-game meaningful observations, no browser", () => {
     expect(view.results).toHaveLength(1);
     expect(view.events.slice(-1)).toEqual([{ action: "completed" }]);
   });
+  it("keeps untimed revisits, retries and explanation review in the live delivery until exit", async () => {
+    const example = { id: "one", mode: "rapid-swipe", prompt: "Statement", correctAnswer: true, explanation: "Reason" } as const;
+    const view = await drill([example, { ...example, id: "two" }]);
+    await view.click("Yes"); await view.click("Next activity →"); await view.click("No");
+    expect(view.events.some(event => event.action === "completed")).toBe(false);
+    await view.click("Previous"); await view.click("No");
+    expect(view.events).toContainEqual({ action: "retry", itemId: "one" });
+    expect(view.events.filter(event => event.action === "explanation_opened")).toHaveLength(3);
+    expect(view.results).toHaveLength(3);
+    await view.click("Next activity →"); await view.click("Start again");
+    expect(view.events.filter(event => event.action === "completed")).toHaveLength(1);
+    expect(view.renew).toHaveBeenCalledTimes(1);
+    expect(view.buttons()).not.toContain("Yes");
+    // Only a genuinely delivered replacement mounts a fresh observed lifecycle.
+    await view.deliver(); await view.click("Yes");
+    expect(view.events.filter(event => event.action === "started")).toHaveLength(2);
+    expect(view.events.filter(event => event.action === "answer_submitted")).toHaveLength(4);
+  });
+  it.each([false, true])("renews timed return before practice or another timed round (preview=%s)", async preview => {
+    vi.stubGlobal("document", { hidden: false, addEventListener() {}, removeEventListener() {} });
+    vi.stubGlobal("window", { setInterval: vi.fn(), clearInterval() {} });
+    const newRound = vi.fn();
+    const example = { id: "swipe", mode: "rapid-swipe", prompt: "Statement", correctAnswer: true, explanation: "Reason" } as const;
+    const view = await drill(example, 30, preview ? {} : { onNewRound: newRound, onRenewDelivery: undefined });
+    await view.click("Start 30-second round"); await view.click("No"); await view.click("End round");
+    const sealedLength = view.events.length;
+    await view.click("Back to practice");
+    expect(preview ? view.renew : newRound).toHaveBeenCalledTimes(1);
+    expect(view.buttons()).not.toContain("Yes");
+    expect(view.buttons()).not.toContain("Start 30-second round");
+    expect(view.events).toHaveLength(sealedLength);
+    await view.deliver(); await view.click("Yes");
+    await view.click("Start 30-second round"); await view.click("No");
+    expect(view.events.filter(event => event.action === "started")).toHaveLength(2);
+    expect(view.events.filter(event => event.action === "answer_submitted")).toHaveLength(3);
+    expect(view.events).toContainEqual({ action: "retry", itemId: "swipe" });
+  });
+
+  it("keeps canonical deduplication unchanged while recording educational retries", async () => {
+    const onPlay = vi.fn();
+    const example = { id: "one", mode: "rapid-swipe", prompt: "Statement", correctAnswer: true, explanation: "Reason" } as const;
+    const view = await drill([example, { ...example, id: "two" }], null, { onPlay });
+    await view.click("Yes"); await view.click("Next activity →"); await view.click("Yes");
+    await view.click("Previous"); await view.click("No");
+    expect(onPlay.mock.calls.map(([event]) => event.event.kind)).toEqual(["answer", "answer", "complete"]);
+    expect(view.events.filter(event => event.action === "answer_submitted")).toHaveLength(3);
+    expect(view.events).toContainEqual({ action: "retry", itemId: "one" });
+    await view.click("Next activity →"); await view.click("Start again");
+    expect(view.events.filter(event => event.action === "completed")).toHaveLength(1);
+  });
+  it("renews a skipped untimed delivery without inventing a completion", async () => {
+    const example = { id: "one", mode: "rapid-swipe", prompt: "Statement", correctAnswer: true, explanation: "Reason" } as const;
+    const view = await drill([example, { ...example, id: "two" }]);
+    await view.click("Next activity →"); await view.click("Yes"); await view.click("Start again");
+    expect(view.renew).toHaveBeenCalledTimes(1);
+    expect(view.buttons()).not.toContain("Yes");
+    expect(view.events.some(event => event.action === "completed")).toBe(false);
+    expect(view.results).toHaveLength(1);
+  });
+
 });

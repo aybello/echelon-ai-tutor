@@ -62,7 +62,13 @@ export async function flexAssessmentScope(orgId: number, licenceId: number): Pro
   const endsAt = timestamp(licence.accessEndsAt);
   const course = resolveCourseKey(licence.courseKey)?.courseKey;
   if (!course || !Number.isFinite(startsAt) || !Number.isFinite(endsAt) || startsAt >= endsAt || (!licence.operatorUserId && !licence.invitedEmail)) throw notFound();
-  const actor = assessmentActorFilter(licence.operatorUserId ? { userId: licence.operatorUserId } : { email: licence.invitedEmail! });
+  // Both verified auth methods are valid only inside this exact issued licence scope.
+  // With an assigned account ID, never broaden the account branch by email.
+  const actor = or(
+    licence.operatorUserId ? assessmentActorFilter({ userId: licence.operatorUserId })
+      : and(eq(sessions.identityKind, "user"), isNull(sessions.emailHash), sql`exists (select 1 from ${users} where ${users.id} = ${sessions.userId} and ${users.email} = ${normalize(licence.invitedEmail!)})`),
+    licence.invitedEmail ? assessmentActorFilter({ email: licence.invitedEmail }) : undefined,
+  );
   return { startsAt, endsAt, predicate: and(actor, eq(sessions.orgId, orgId), eq(sessions.flexLicenceId, licenceId), isNull(sessions.organizationMemberId), eq(sessions.courseKey, course))!,
     access: { source: "recorded assignment", status: licence.status, courses: [course], startsAt: new Date(startsAt).toISOString(), endsAt: new Date(endsAt).toISOString() } };
 }

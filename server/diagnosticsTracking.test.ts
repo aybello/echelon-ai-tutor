@@ -134,7 +134,7 @@ const source = readFileSync(new URL("./routers/activationRouter.ts", import.meta
 describe("diagnostic UI observation boundaries (source guards)", () => {
   it("observes actual option indices without client correctness, hints, steps or fabricated restored choices", () => {
     const select = page.slice(page.indexOf("const selectDiagnosticAnswer"), page.indexOf("const finishDiagnostic"));
-    expect(select).toContain('action: "answer_submitted"');
+    expect(select).toContain('currentAnswer === undefined ? "answer_submitted" : "selection_changed"');
     expect(select).toContain("chosenAnswer: String(index)");
     expect(select).toContain("currentAnswer === index");
     expect(page).not.toContain("observedCorrect:");

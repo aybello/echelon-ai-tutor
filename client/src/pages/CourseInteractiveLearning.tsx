@@ -6,6 +6,7 @@ import { onlineManager, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getQueryKey } from "@trpc/react-query";
 import { Link, useRoute, useSearch } from "wouter";
 import { DRILL_MODES, InteractiveDrill, type DrillMode, type DrillResult } from "@/components/InteractiveDrill";
+import { useVerifiedPracticeSaveScope } from "@/components/PracticeSaveStatus";
 import { useAssessmentActivity } from "@/hooks/useAssessmentActivity";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { LOGOUT_EVENT_KEY } from "@/lib/logout";
@@ -73,6 +74,8 @@ function localDateString(): string {
 /** Course sessions are temporary and never contribute to quiz history/readiness. */
 function CoursePractice({ course }: { course: CourseEntry }) {
   const queryClient = useQueryClient();
+  const actorScope = useVerifiedPracticeSaveScope(course.courseKey);
+  const stableActor = useRef("anonymous");
   const { client } = trpc.useUtils();
   const transport = useRef(client);
   transport.current = client;
@@ -303,10 +306,18 @@ function CoursePractice({ course }: { course: CourseEntry }) {
   const session = catalogReady && !missingFilter && Boolean(catalog?.available && catalogMode?.totalCount) &&
     !sessionQuery.isError && sessionQuery.fetchStatus === "idle" && !sessionQuery.isPending
     ? sessionQuery.data : undefined;
-  // Authority refresh unmounts the old game and retires its queue, even when a
-  // cookie sign-in changes identity without changing the local access token.
-  const activity = useAssessmentActivity(session?.activityTracking?.tracking ? session.activityTracking : null,
-    `${course.courseKey}:${authority.revision}`);
+  // A fetch is not a sign-out. Preserve the verified namespace while authority
+  // refreshes; only a settled identity change retires that actor's outbox.
+  // Anonymous observations retain their original server-bound capability and
+  // are never moved into a subsequently verified learner's namespace.
+  const identitySettled = [getQueryKey(trpc.auth.me, undefined, "query"), getQueryKey(trpc.dashboardAuth.me, undefined, "query")]
+    .every(key => {
+      const state = queryClient.getQueryState(key);
+      return state?.status === "success" && state.fetchStatus === "idle";
+    });
+  if (identitySettled) stableActor.current = actorScope ? JSON.stringify(actorScope) : "anonymous";
+  const activity = useAssessmentActivity(identitySettled && session?.activityTracking?.tracking ? session.activityTracking : null,
+    stableActor.current);
   useEffect(() => {
     if (!session || !focusNextRound.current) return;
     const heading = sessionElement.current?.querySelector<HTMLElement>(".interactive-drill__content h2");
@@ -337,7 +348,7 @@ function CoursePractice({ course }: { course: CourseEntry }) {
   } else {
     const drillKey = JSON.stringify([course.courseKey, authority.revision, session.version, session.mode, session.filters,
       locked ? 30 : timerSeconds, roundRevision, session.sessionId, sessionQuery.dataUpdatedAt]);
-    status = <div style={{ whiteSpace: "pre-line" }}><InteractiveDrill key={drillKey} examples={session.examples} selectedMode={mode} hideModeNavigation timerSeconds={locked ? 30 : timerSeconds} onNewRound={locked ? undefined : newRound} onResult={progress ? recordResult : undefined} onPlay={reportPlay} onActivity={activity.observe} saveNote={progress ? saveNote : undefined} /></div>;
+    status = <div style={{ whiteSpace: "pre-line" }}><InteractiveDrill key={drillKey} examples={session.examples} selectedMode={mode} hideModeNavigation timerSeconds={locked ? 30 : timerSeconds} onNewRound={locked ? undefined : newRound} onRenewDelivery={newRound} onResult={progress ? recordResult : undefined} onPlay={reportPlay} onActivity={activity.observe} saveNote={progress ? saveNote : undefined} /></div>;
   }
 
   return (
